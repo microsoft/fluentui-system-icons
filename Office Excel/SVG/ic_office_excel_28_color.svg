@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>ic_office_excel_28_color</title>
+    <desc>Created with Sketch.</desc>
+    <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_office_excel_28_color">
+            <path d="M18,3 L9,3 C8.448,3 8,3.448 8,4 L8,9 L18,14 L22,15.5 L26,14 L26,9 L18,3 Z" id="excel" fill="#21A366"></path>
+            <polygon id="excel" fill="#107C41" points="8 14 18 14 18 9.021 8 9.021"></polygon>
+            <path d="M26,4 L26,9 L18,9 L18,3 L25,3 C25.55,3 26,3.45 26,4" id="excel" fill="#33C481"></path>
+            <path d="M18,14 L8,14 L8,19.019 L8,19.061 L8,24 C8,24.552 8.448,25 9,25 L25,25 C25.552,25 26,24.552 26,24 L26,19 L18,14 Z" id="excel" fill="#185C37"></path>
+            <path d="M15.8333,8 L8.0003,8 L8.0003,22 L15.6043,22 C16.3123,22 17.0003,21.288 17.0003,20.646 L17.0003,9.167 C17.0003,8.525 16.4753,8 15.8333,8" id="excel" fill="#000000" opacity="0.5"></path>
+            <path d="M14.833,20.9995 L3.167,20.9995 C2.523,20.9995 2,20.4775 2,19.8325 L2,8.1665 C2,7.5225 2.523,7.0005 3.167,7.0005 L14.833,7.0005 C15.477,7.0005 16,7.5225 16,8.1665 L16,19.8325 C16,20.4775 15.477,20.9995 14.833,20.9995" id="excel" fill="#107C41"></path>
+            <path d="M5.4268,18 L8.0158,13.989 L5.6448,10 L7.5528,10 L8.8468,12.55 C8.9658,12.791 9.0478,12.972 9.0918,13.091 L9.1088,13.091 C9.1948,12.897 9.2838,12.709 9.3768,12.527 L10.7598,10 L12.5118,10 L10.0798,13.967 L12.5728,18 L10.7098,18 L9.2148,15.199 C9.1518,15.095 9.0918,14.971 9.0358,14.826 L9.0138,14.826 C8.9878,14.915 8.9308,15.036 8.8408,15.188 L7.3018,18 L5.4268,18 Z" id="excel" fill="#FFFFFF"></path>
+            <polygon id="excel" fill="#107C41" points="18 19 26 19 26 14 18 14"></polygon>
+        </g>
+    </g>
+</svg>

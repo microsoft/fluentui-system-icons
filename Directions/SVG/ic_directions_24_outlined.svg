@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>ic_directions_24_outlined</title>
+    <desc>Created with Sketch.</desc>
+    <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_directions_24_outlined">
+            <path d="M4.75,7.25 L4.75,16.75 C4.75,18.1307119 5.86928813,19.25 7.25,19.25 L16.75,19.25 C18.1307119,19.25 19.25,18.1307119 19.25,16.75 L19.25,7.25 C19.25,5.86928813 18.1307119,4.75 16.75,4.75 L7.25,4.75 C5.86928813,4.75 4.75,5.86928813 4.75,7.25 Z" id="guide" stroke="#212121" stroke-width="1.5" transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) "></path>
+            <path d="M12.3964466,8.33644661 C12.3964466,7.92223305 12.0606602,7.58644661 11.6464466,7.58644661 C11.232233,7.58644661 10.8964466,7.92223305 10.8964466,8.33644661 L10.8964466,11.1648737 C10.8964466,11.5790873 11.232233,11.9148737 11.6464466,11.9148737 L14.4748737,11.9148737 C14.8890873,11.9148737 15.2248737,11.5790873 15.2248737,11.1648737 C15.2248737,10.7506602 14.8890873,10.4148737 14.4748737,10.4148737 L12.3964466,10.4148737 L12.3964466,8.33644661 Z" id="Path" fill="#212121" fill-rule="nonzero" transform="translate(13.060660, 9.750660) rotate(-135.000000) translate(-13.060660, -9.750660) "></path>
+            <path d="M14.5,9.75 L11.75,9.75 C10.6454305,9.75 9.75,10.6454305 9.75,11.75 L9.75,15 L9.75,15" id="Path-53" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </g>
+</svg>

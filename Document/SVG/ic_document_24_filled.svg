@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>ic_document_24_filled</title>
+    <desc>Created with Sketch.</desc>
+    <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_document_24_filled" fill="#212121">
+            <path d="M11.5,2 C11.776,2 12,2.224 12,2.5 L12,2.5 L12,8 C12,9.104 12.896,10 14,10 L14,10 L19.5,10 C19.776,10 20,10.224 20,10.5 L20,10.5 L20,20 C20,21.104 19.104,22 18,22 L18,22 L6,22 C4.896,22 4,21.104 4,20 L4,20 L4,4 C4,2.896 4.896,2 6,2 L6,2 Z M13.593,2.724 C13.648,2.7 13.713,2.713 13.756,2.756 L13.756,2.756 L19.244,8.244 C19.287,8.287 19.3,8.352 19.276,8.407 C19.253,8.464 19.199,8.5 19.138,8.5 L19.138,8.5 L14,8.5 C13.724,8.5 13.5,8.276 13.5,8 L13.5,8 L13.5,2.862 C13.5,2.802 13.537,2.747 13.593,2.724 Z" id="🎨-Color"></path>
+        </g>
+    </g>
+</svg>
