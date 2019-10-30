@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>ic_table_24_filled</title>
+    <desc>Created with Sketch.</desc>
+    <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_table_24_filled" fill="#212121">
+            <path d="M3,15.999 L8,16 L8,21.004 L5.25,21.004591 C4.00735931,21.004591 3,19.9972317 3,18.754591 L3,15.999 Z M14.5,16 L14.5,21.004 L9.5,21.004 L9.5,16 L14.5,16 Z M21,15.999 L21,18.754591 C21,19.9972317 19.9926407,21.004591 18.75,21.004591 L16,21.004 L16,16 L21,15.999 Z M21,14.499 L16,14.5 L16,9.5 L21,9.499 L21,14.499 Z M3,9.499 L8,9.5 L8,14.5 L3,14.499 L3,9.499 Z M14.5,9.5 L14.5,14.5 L9.5,14.5 L9.5,9.5 L14.5,9.5 Z M21,5.25 L21,7.999 L16,8 L16,2.999 L18.75,3 C19.9926407,3 21,4.00735931 21,5.25 Z M8,2.999 L8,8 L3,7.999 L3,5.25 C3,4.00735931 4.00735931,3 5.25,3 L8,2.999 Z M14.5,2.999 L14.5,8 L9.5,8 L9.5,2.999 L14.5,2.999 Z" id="🎨-Color"></path>
+        </g>
+    </g>
+</svg>
