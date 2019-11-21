@@ -4,8 +4,8 @@
     <title>ic_office_24_mono</title>
     <desc>Created with Sketch.</desc>
     <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="ic_office_24_mono" fill="#212121">
-            <path d="M14.504496,2 L20.3288,4.00826051 L20.3288,20.0749431 L14.504496,22 L4.017,18.156 L14.57,19.562 L14.57,5.4871 L7.76374879,7.09550608 L7.76374879,16.5457148 L4.005,18.152 L4,18.1501856 L4,6.15299892 L14.504496,2 Z" id="🎨-Color"></path>
+        <g id="ic_office_24_mono" fill="#212121" fill-rule="nonzero">
+            <polygon id="🎨-Color" points="14.504496 2 20.3288 4.00826051 20.3288 20.0749431 14.504496 22 4.017 18.156 14.57 19.562 14.57 5.4871 7.76374879 7.09550608 7.76374879 16.5457148 4.005 18.152 4 18.1501856 4 6.15299892"></polygon>
         </g>
     </g>
 </svg>

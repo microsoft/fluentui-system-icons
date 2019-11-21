@@ -4,7 +4,7 @@
     <title>ic_office_word_24_color</title>
     <desc>Created with Sketch.</desc>
     <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="ic_office_word_24_color">
+        <g id="ic_office_word_24_color" fill-rule="nonzero">
             <path d="M21.1666,3 L7.8196,3 C7.3676,3 6.9996,3.367 6.9996,3.82 L6.9996,6.99 L14.4996,9.184 L21.9996,6.99 L21.9996,3.833 C21.9996,3.375 21.6246,3 21.1666,3" id="word" fill="#41A5EE"></path>
             <polygon id="word" fill="#2B7CD3" points="22 7 7 7 7 12 14.5 14.016 22 12"></polygon>
             <polygon id="word" fill="#185ABD" points="22 12 7 12 7 17 15 19 22 17"></polygon>

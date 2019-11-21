@@ -4,7 +4,7 @@
     <title>ic_office_skype_24_color</title>
     <desc>Created with Sketch.</desc>
     <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="ic_office_skype_24_color">
+        <g id="ic_office_skype_24_color" fill-rule="nonzero">
             <path d="M14,8.5 C14,11.538 11.538,14 8.5,14 C5.462,14 3,11.538 3,8.5 C3,5.462 5.462,3 8.5,3 C11.538,3 14,5.462 14,8.5" id="skype" fill="#28A8EA"></path>
             <path d="M21,15.5 C21,18.538 18.538,21 15.5,21 C12.462,21 10,18.538 10,15.5 C10,12.462 12.462,10 15.5,10 C18.538,10 21,12.462 21,15.5" id="skype" fill="#28A8EA"></path>
             <path d="M20.7831,13.9663 C20.1191,11.6753 18.0051,10.0003 15.5001,10.0003 C12.4621,10.0003 10.0001,12.4623 10.0001,15.5003 C10.0001,18.0053 11.6751,20.1193 13.9661,20.7833 C17.3531,20.0253 20.0251,17.3533 20.7831,13.9663" id="skype" fill="#000000" opacity="0.2"></path>

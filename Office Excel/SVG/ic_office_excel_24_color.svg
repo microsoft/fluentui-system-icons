@@ -4,7 +4,7 @@
     <title>ic_office_excel_24_color</title>
     <desc>Created with Sketch.</desc>
     <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="ic_office_excel_24_color">
+        <g id="ic_office_excel_24_color" fill-rule="nonzero">
             <path d="M15,3 L7.8,3 C7.358,3 7,3.298 7,3.667 L7,7 L15,12 L18.5,13.5 L22,12 L22,7 L15,3 Z" id="excel" fill="#21A366"></path>
             <polygon id="excel" fill="#107C41" points="7 12 15 12 15 7 7 7"></polygon>
             <path d="M22,3.8201 L22,7.0001 L15,7.0001 L15,3.0001 L21.17,3.0001 C21.63,3.0001 22,3.3701 22,3.8201" id="excel" fill="#33C481"></path>

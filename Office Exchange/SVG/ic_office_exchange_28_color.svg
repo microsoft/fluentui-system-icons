@@ -4,7 +4,7 @@
     <title>ic_office_exchange_28_color</title>
     <desc>Created with Sketch.</desc>
     <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="ic_office_exchange_28_color">
+        <g id="ic_office_exchange_28_color" fill-rule="nonzero">
             <path d="M4,4.5 L4,10.379 C4,10.777 4.158,11.158 4.439,11.439 L7,14 L15,14 L15,6 L12.439,3.439 C12.158,3.158 11.776,3 11.379,3 L5.5,3 C4.672,3 4,3.672 4,4.5" id="exchange" fill="#50D9FF"></path>
             <path d="M5.5,25 L11.379,25 C11.776,25 12.158,24.842 12.439,24.561 L15,22 L15,14 L7,14 L4.439,16.561 C4.158,16.842 4,17.223 4,17.621 L4,23.5 C4,24.328 4.672,25 5.5,25" id="exchange" fill="#28A8EA"></path>
             <path d="M26,23.5 L26,17.621 C26,17.223 25.842,16.842 25.561,16.561 L23,14 L15,14 L15,22 L17.561,24.561 C17.842,24.842 18.224,25 18.621,25 L24.5,25 C25.328,25 26,24.328 26,23.5" id="exchange" fill="#0078D4"></path>
