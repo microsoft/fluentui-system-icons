@@ -1,0 +1,61 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+  batch: true
+  paths:
+    include:
+    - assets/**
+  branches:
+   include:
+   - master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+name: 1.0.$(Rev:r)
+
+jobs:
+- job: build_android
+  displayName: Build Android
+  steps:
+  - template: pipelines/build-android.yml
+
+- job: build_ios
+  displayName: Build iOS
+  steps:
+  - template: pipelines/build-ios.yml
+
+- job: publish_android_lib
+  displayName: Publish Android library
+  dependsOn:
+  - build_android
+  - build_ios
+  steps:
+  - template: pipelines/publish-android-lib.yml
+
+- job: publish_ios_lib
+  displayName: Publish iOS library
+  dependsOn:
+  - build_android
+  - build_ios
+  steps:
+  - template: pipelines/publish-ios-lib.yml
+
+- job: tag_release
+  displayName: Tag release
+  dependsOn:
+  - publish_android_lib
+  - publish_ios_lib
+  steps:
+  - template: pipelines/tag-release.yml
+
+- job: publish_android_demo
+  displayName: Publish Android demo
+  dependsOn:
+  - tag_release
+  steps:
+  - template: pipelines/publish-android-demo.yml
+    

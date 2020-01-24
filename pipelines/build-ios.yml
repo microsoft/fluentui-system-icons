@@ -1,0 +1,21 @@
+steps:
+- checkout: self
+  clean: true
+  persistCredentials: true
+
+- task: UseNode@1
+  inputs:
+    version: '11.x'
+
+- task: Npm@1
+  displayName: Run npm install
+  inputs:
+    command: 'install'
+    workingDir: 'importer'
+
+- task: Npm@1
+  displayName: Run generate script
+  inputs:
+    command: 'custom'
+    workingDir: 'importer'
+    customCommand: 'run deploy:ios'

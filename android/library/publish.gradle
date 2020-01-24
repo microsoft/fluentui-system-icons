@@ -1,0 +1,25 @@
+apply plugin: 'maven-publish'
+
+project.afterEvaluate {
+    publishing {
+        publications {
+            fluenticons(MavenPublication) {
+                groupId project.POM_GROUP_ID
+                artifactId project.POM_ARTIFACT_ID
+                version System.getProperty("versionName", project.VERSION_NAME + "-SNAPSHOT")
+
+                artifact bundleReleaseAar
+            }
+        }
+
+        repositories {
+            maven {
+                url 'https://pkgs.dev.azure.com/microsoftdesign/951975d5-69cc-4771-9d98-92a4b1a82b2b/_packaging/fluent-icons/maven/v1'
+                credentials {
+                    username "microsoftdesign"
+                    password System.getProperty("vstsAccessToken", "")
+                }
+            }
+        }
+    }
+}

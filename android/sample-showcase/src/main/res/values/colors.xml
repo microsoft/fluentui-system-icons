@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2019.
+  ~ Microsoft Corporation. All rights reserved.
+  -->
+
+<resources>
+    <color name="window_background">@android:color/white</color>
+    <color name="colorPrimary">@android:color/white</color>
+    <color name="colorPrimaryDark">@android:color/white</color>
+    <color name="colorAccent">#2F80ED</color>
+    <color name="text_primary">@color/grey900</color>
+
+    <color name="grey900">#FF212121</color>
+    <color name="grey400">#FF919191</color>
+
+    <color name="divider">#FFE1E1E1</color>
+    <color name="item_highlight_color">#0E000000</color>
+</resources>

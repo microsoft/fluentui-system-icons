@@ -1,0 +1,16 @@
+PODS:
+  - FluentIcons (1.0.146)
+
+DEPENDENCIES:
+  - FluentIcons (from `../`)
+
+EXTERNAL SOURCES:
+  FluentIcons:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  FluentIcons: 89a4618cab78e2677e3c761aceda7c3173d908e5
+
+PODFILE CHECKSUM: af96719014e2deb0668944beffd86dc4da8092b5
+
+COCOAPODS: 1.8.4

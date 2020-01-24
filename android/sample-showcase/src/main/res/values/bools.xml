@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2019.
+  ~ Microsoft Corporation. All rights reserved.
+  -->
+
+<resources>
+    <bool name="outlook_app_is_light_nav_bar">true</bool>
+</resources>

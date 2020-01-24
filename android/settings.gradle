@@ -1,0 +1,2 @@
+include ':library', ':sample-showcase', ':sample-shrinkresources'
+rootProject.name='Fluent Mobile Icons'

@@ -1,0 +1,35 @@
+steps:
+- task: UseNode@1
+  inputs:
+    version: '11.x'
+
+- task: Npm@1
+  displayName: Run npm install
+  inputs:
+    command: 'install'
+    workingDir: 'importer'
+
+- task: Npm@1
+  displayName: Run generate script
+  inputs:
+    command: 'custom'
+    workingDir: 'importer'
+    customCommand: 'run deploy:android'
+
+- task: Gradle@2
+  displayName: Gradle publish
+  inputs:
+    gradleWrapperFile: 'android/gradlew'
+    workingDirectory: 'android'
+    options: '-DversionName=$(Build.BuildNumber) -DvstsAccessToken=$(System.AccessToken)'
+    tasks: 'publish'
+    publishJUnitResults: false
+    javaHomeOption: 'JDKVersion'
+    sonarQubeRunAnalysis: false
+
+- task: PublishPipelineArtifact@1
+  displayName: Publish library artifact to pipeline
+  inputs:
+    targetPath: 'android/library/build/outputs/aar/library-release.aar'
+    artifact: 'aar'
+    publishLocation: 'pipeline'

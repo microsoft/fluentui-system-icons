@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2019.
+  ~ Microsoft Corporation. All rights reserved.
+  -->
+
+<resources>
+    <dimen name="outlook_content_inset">16dp</dimen>
+
+    <dimen name="list_item_icon_size">24dp</dimen>
+    <dimen name="list_item_row_padding_top">12dp</dimen>
+    <dimen name="list_item_row_padding_bottom">12dp</dimen>
+    <dimen name="list_item_row_min_height">56dp</dimen>
+</resources>

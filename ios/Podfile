@@ -1,0 +1,7 @@
+use_frameworks!
+
+target 'FluentIcons_Example' do
+  pod 'FluentIcons', :path => '../'
+
+end
+

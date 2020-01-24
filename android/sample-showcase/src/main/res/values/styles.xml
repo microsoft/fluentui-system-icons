@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2019.
+  ~ Microsoft Corporation. All rights reserved.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.Fluent" parent="Theme.AppCompat.DayNight.NoActionBar">
+    </style>
+
+    <style name="Theme.Fluent" parent="Base.Theme.Fluent">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+
+        <item name="android:statusBarColor">?android:windowBackground</item>
+        <item name="android:windowBackground">@color/window_background</item>
+
+        <item name="homeAsUpIndicator">@drawable/ic_fluent_arrow_left_24_regular</item>
+        <item name="toolbarNavigationButtonStyle">@style/Widget.AppTheme.Toolbar.Button.Navigation</item>
+    </style>
+
+    <style name="Widget.AppTheme.Toolbar.Button.Navigation" parent="@style/Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:tint">@android:color/white</item>
+    </style>
+
+    <!-- List Item -->
+    <style name="ListItem"/>
+
+    <style name="ListItem.Row">
+        <item name="android:minHeight">@dimen/list_item_row_min_height</item>
+        <item name="android:paddingBottom">@dimen/list_item_row_padding_bottom</item>
+        <item name="android:paddingStart">@dimen/outlook_content_inset</item>
+        <item name="android:paddingEnd">@dimen/outlook_content_inset</item>
+        <item name="android:paddingTop">@dimen/list_item_row_padding_top</item>
+    </style>
+
+</resources>
