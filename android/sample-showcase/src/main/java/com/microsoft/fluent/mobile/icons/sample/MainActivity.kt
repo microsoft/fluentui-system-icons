@@ -23,6 +23,8 @@ import androidx.core.view.ViewCompat
 import androidx.lifecycle.*
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.microsoft.appcenter.AppCenter
+import com.microsoft.appcenter.distribute.Distribute
 
 class MainActivity : AppCompatActivity(), TextWatcher, Observer<List<IconInfo>>, View.OnClickListener {
 
@@ -38,6 +40,11 @@ class MainActivity : AppCompatActivity(), TextWatcher, Observer<List<IconInfo>>,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        AppCenter.start(
+            application,
+            "1bd6c3f7-e668-4fa4-b10a-8343db2539bf",
+            Distribute::class.java)
 
         val viewModel = ViewModelProviders.of(this).get(IconsViewModel::class.java)
         viewModel.getIconInfos().observe(this, this)

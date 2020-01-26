@@ -37,7 +37,7 @@ steps:
   displayName: Publish demo app to App Center
   inputs:
     serverEndpoint: 'Fluent mobile icons demo'
-    appSlug: 'olmobileleads-l4sg/Fluent-Mobile-Icons-Demo'
+    appSlug: 'Fluent-Design-Mobile/Fluent-Mobile-Icons-Demo'
     appFile: 'android/sample-showcase/build/outputs/apk/release/sample-showcase-release.apk'
     symbolsOption: 'Android'
     releaseNotesOption: 'input'
