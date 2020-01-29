@@ -38,7 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1FF42ABCEEAD7F7D259F0F23F0234862 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		1FF42ABCEEAD7F7D259F0F23F0234862 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		326FD00EB2AE014A1B65547B34BE7E3E /* FluentIcons-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FluentIcons-umbrella.h"; sourceTree = "<group>"; };
 		329427D42F2CFAC49235E55B4FACB388 /* FluentIcons.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FluentIcons.xcconfig; sourceTree = "<group>"; };
@@ -50,19 +50,19 @@
 		71E9825CA1233F80C8F9A3D38B58FF2F /* Pods-FluentIcons_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FluentIcons_Example.modulemap"; sourceTree = "<group>"; };
 		7E5BA3983EAAF37461BE1DF5AF5170CB /* Pods-FluentIcons_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FluentIcons_Example-dummy.m"; sourceTree = "<group>"; };
 		81285C0FF0C71FD81562BB5ADF570FEF /* remove_unused_fluent_icons.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = remove_unused_fluent_icons.swift; path = ios/FluentIcons/remove_unused_fluent_icons.swift; sourceTree = "<group>"; };
-		97C9765596E0A1EDE616154D74876EBC /* FluentIcons.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = FluentIcons.podspec; path = ios/FluentIcons.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		97C9765596E0A1EDE616154D74876EBC /* FluentIcons.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = FluentIcons.podspec; path = ios/FluentIcons.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BD7AF95CAB2EEB13034EC6DAF60DF90B /* Pods-FluentIcons_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FluentIcons_Example-frameworks.sh"; sourceTree = "<group>"; };
-		C195843D4141B98E48E147D0E299A835 /* Pods_FluentIcons_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FluentIcons_Example.framework; path = "Pods-FluentIcons_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C195843D4141B98E48E147D0E299A835 /* Pods_FluentIcons_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FluentIcons_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C24170EA5EAEADA38A849E97A15C4C47 /* FluentIcons.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FluentIcons.modulemap; sourceTree = "<group>"; };
 		C3747ECF3FD264316F3B9F8D23E17FA0 /* Pods-FluentIcons_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FluentIcons_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		C7786B54CAB76BEF5F1D3AFE48F1CA99 /* FluentIcons.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = FluentIcons.bundle; path = "FluentIcons-FluentIcons.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7786B54CAB76BEF5F1D3AFE48F1CA99 /* FluentIcons.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FluentIcons.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0FAFA699D8E0047753A607304A0BE0 /* Image+FluentIcon.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Image+FluentIcon.swift"; path = "ios/FluentIcons/Classes/Image+FluentIcon.swift"; sourceTree = "<group>"; };
-		CD17C4B574D7EF2E21B7C3E9598FE906 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		CD17C4B574D7EF2E21B7C3E9598FE906 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CD814A726917194A3735EBE493960D83 /* FluentIcons-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FluentIcons-Info.plist"; sourceTree = "<group>"; };
 		D4790A7F9B527DD2D710C9B23B554A33 /* FluentIcons-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FluentIcons-dummy.m"; sourceTree = "<group>"; };
 		D873EA2111D9EB3601D338E19C3800BF /* FluentIcon.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FluentIcon.swift; path = ios/FluentIcons/Classes/FluentIcon.swift; sourceTree = "<group>"; };
-		E0C3C77E7C273816D069497F6727DABC /* FluentIcons.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FluentIcons.framework; path = FluentIcons.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0C3C77E7C273816D069497F6727DABC /* FluentIcons.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FluentIcons.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0CECAEBE28C2438AFBFAEB49C085A3E /* Pods-FluentIcons_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FluentIcons_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		F43AE8995F262E09689D5A5CC80D0DB6 /* Pods-FluentIcons_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FluentIcons_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		FB5F7C6AF684C5D855AA43E0F81A54F8 /* ResourceBundle-FluentIcons-FluentIcons-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-FluentIcons-FluentIcons-Info.plist"; sourceTree = "<group>"; };
@@ -296,7 +296,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1130;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -442,8 +442,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -470,7 +469,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 329427D42F2CFAC49235E55B4FACB388 /* FluentIcons.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -519,7 +518,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 329427D42F2CFAC49235E55B4FACB388 /* FluentIcons.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -553,7 +552,6 @@
 			baseConfigurationReference = F43AE8995F262E09689D5A5CC80D0DB6 /* Pods-FluentIcons_Example.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -652,7 +650,6 @@
 			baseConfigurationReference = 3B52B2892E99831BD77D1E348E124E46 /* Pods-FluentIcons_Example.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
