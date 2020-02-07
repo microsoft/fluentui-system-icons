@@ -7,7 +7,7 @@ steps:
   displayName: Checkout the master branch
   inputs:
     targetType: 'inline'
-    script: 'git checkout library --'
+    script: 'git checkout master --'
 
 # Needs to be "-E" instead of "-r" on macOS
 - bash: |
