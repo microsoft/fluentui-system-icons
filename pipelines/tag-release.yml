@@ -42,7 +42,7 @@ steps:
   displayName: Push commit
   inputs:
     targetType: 'inline'
-    script: git push https://Personal%20Access%20Token:${SECURE_PAT}@dev.azure.com/microsoftdesign/Design%20System/_git/fluent-mobile-icons library
+    script: git push https://Personal%20Access%20Token:${SECURE_PAT}@dev.azure.com/microsoftdesign/Design%20System/_git/fluent-mobile-icons master
   env:
     SECURE_PAT: $(PAT)
 
