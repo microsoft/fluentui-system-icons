@@ -8,6 +8,7 @@ const DEST_PATH = argv.dest;
 const EXTENSION = argv.extension;
 const ICON_OUTLINE_STYLE = '_regular'
 const ICON_FILLED_STYLE = '_filled'
+const ICON_LIGHT_STYLE = '_light'
 const BRAND_MONO_STYLE = '_mono'
 const BRAND_COLOR_STYLE = '_color'
 const SELECTOR_SUFFIX = '_selector'
@@ -57,6 +58,7 @@ function processFolder(srcPath, destPath) {
           return;
         } else if (!file.endsWith(ICON_OUTLINE_STYLE + "." + EXTENSION)
           && !file.endsWith(ICON_FILLED_STYLE + "." + EXTENSION)
+          && !(EXTENSION === "pdf" && file.endsWith(ICON_LIGHT_STYLE + "." + EXTENSION))
           && !file.endsWith(BRAND_MONO_STYLE + "." + EXTENSION)
           && !file.endsWith(BRAND_COLOR_STYLE + "." + EXTENSION)) {
           // Only include icons in the desired configs
