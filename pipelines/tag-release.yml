@@ -31,7 +31,7 @@ steps:
   displayName: Config git credentials
   inputs:
     targetType: 'inline'
-    script: 'git config user.email "fluenticons@microsoft.com" && git config user.name "FluentIcons ADO"'
+    script: 'git config user.email "flubuild@microsoft.com" && git config user.name "Fluent Build System"'
 
 - bash: |
     git add -A

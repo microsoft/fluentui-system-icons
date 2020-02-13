@@ -7,7 +7,7 @@ steps:
   displayName: Checkout the master branch
   inputs:
     targetType: 'inline'
-    script: 'git checkout library --'
+    script: 'git checkout master --'
 
 - task: UseNode@1
   inputs:
@@ -30,7 +30,7 @@ steps:
   displayName: Config git credentials
   inputs:
     targetType: 'inline'
-    script: 'git config user.email "fluenticons@microsoft.com" && git config user.name "FluentIcons ADO"'
+    script: 'git config user.email "flubuild@microsoft.com" && git config user.name "Fluent Build System"'
 
 # Allow empty commits for now so we can make changes to the pod without new assets
 - bash: |
