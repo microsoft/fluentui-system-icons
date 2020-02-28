@@ -67,19 +67,21 @@ npm run
 
 Our [build pipeline](https://dev.azure.com/microsoftdesign/Design%20System/_build?definitionId=94&_a=summary) runs `deploy:android` and `deploy:ios` to create the libraries. The build definitions are in `azure-pipelines.yml` and `pipelines`.
 
-## Run the demo apps
-### Android
+## Demo apps
+
+You can download the demo apps from AppCenter or build them following the steps below.
+
+### Android ([Download](https://install.appcenter.ms/orgs/Fluent-Design-Mobile/apps/Fluent-Mobile-Icons-Demo))
 1. Open the [android](android) directory in Android Studio
 2. Select the `sample-showcase` in the build configuration dropdown
 3. Click run 
 
-### iOS
-
+### Mac ([Download](https://install.appcenter.ms/orgs/Fluent-Design-Mobile/apps/Fluent-Mac-App))
 1. `open ios/FluentIcons.xcworkspace/`
 2. Product > Run
 
 ## Contact
 Please feel free to reach out to the following points of contact with questions or requests.
-* [Joe Woodward](joe.woodward@microsoft.com) / [Janet Longhurst](jalonghu@microsoft.com) - Design
-* [Nick Romano](nick.romano@microsoft.com) - iOS
-* [Will Hou](wih@microsoft.com) - Android
+* [Joe Woodward](mailto:joe.woodward@microsoft.com) / [Janet Longhurst](mailto:jalonghu@microsoft.com) - Design
+* [Nick Romano](mailto:nick.romano@microsoft.com) - iOS
+* [Will Hou](mailto:wih@microsoft.com) - Android

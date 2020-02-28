@@ -113,7 +113,7 @@ DrawableCompat.setTintList(icon, ContextCompat.getColorStateList(this, R.color.w
 ```
 
 ## Shrink resources (Not working yet)
-To maintain a lean app size by excluding any unused icons in build time, set the `shrinkResources` to `true` in your `build.gradle` file, as follows:
+~~To maintain a lean app size by excluding any unused icons in build time, set the `shrinkResources` to `true` in your `build.gradle` file, as follows:~~
 ```groovy
 buildTypes {
     release {
@@ -123,4 +123,4 @@ buildTypes {
     }
 }
 ```
-If you prefer to only exclude the Fluent icons, please save the [keep.xml](android/sample-shrinkresources/src/main/res/raw/keep.xml) file at your project's `res/raw` directory. Please see this [Android developer guide](https://developer.android.com/studio/build/shrink-code#shrink-resources) for details about shrinking resources
+~~If you prefer to only exclude the Fluent icons, please save the [keep.xml](android/sample-shrinkresources/src/main/res/raw/keep.xml) file at your project's `res/raw` directory. Please see this [Android developer guide](https://developer.android.com/studio/build/shrink-code#shrink-resources) for details about shrinking resources~~
