@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
-    <title>ic_fluent_mic_20_filled</title>
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>ic_fluent_mic_on_20_filled</title>
     <desc>Created with Sketch.</desc>
     <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="ic_fluent_mic_20_filled" fill="#212121" fill-rule="nonzero">
+        <g id="ic_fluent_mic_on_20_filled" fill="#212121" fill-rule="nonzero">
             <path d="M15,9.5 C15.2761424,9.5 15.5,9.72385763 15.5,10 C15.5,12.8688125 13.3035698,15.2246211 10.5006121,15.4775233 L10.5,17.5 C10.5,17.7761424 10.2761424,18 10,18 C9.75454011,18 9.55039163,17.8231248 9.50805567,17.5898756 L9.5,17.5 L9.50039328,15.4776139 C6.69695546,15.2251845 4.5,12.8691554 4.5,10 C4.5,9.72385763 4.72385763,9.5 5,9.5 C5.27614237,9.5 5.5,9.72385763 5.5,10 C5.5,12.4852814 7.51471863,14.5 10,14.5 C12.4852814,14.5 14.5,12.4852814 14.5,10 C14.5,9.72385763 14.7238576,9.5 15,9.5 Z M10,2 C11.9329966,2 13.5,3.56700338 13.5,5.5 L13.5,10 C13.5,11.9329966 11.9329966,13.5 10,13.5 C8.06700338,13.5 6.5,11.9329966 6.5,10 L6.5,5.5 C6.5,3.56700338 8.06700338,2 10,2 Z" id="🎨-Color"></path>
         </g>
     </g>
