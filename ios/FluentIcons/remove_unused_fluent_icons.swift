@@ -7,6 +7,9 @@
 
 import Foundation
 
+let libraryName = "FluentIcon"
+let assetCatalogName = "IconAssets"
+
 let pathToSourceCode = CommandLine.arguments[1]
 let pathToFluentIconSource = CommandLine.arguments[2]
 
@@ -64,22 +67,38 @@ func getAllIconNames(at url: URL) -> (names: Set<String>, weights: Set<String>) 
   return (names: iconNames, weights: iconWeights)
 }
 
-let fluentIconSwiftURL = URL(fileURLWithPath: "\(pathToFluentIconSource)/ios/FluentIcons/Classes/FluentIcon.swift")
+let fluentIconSwiftURL = URL(fileURLWithPath: "\(pathToFluentIconSource)/ios/\(libraryName)s/Classes/\(libraryName).swift")
 let result = getAllIconNames(at: fluentIconSwiftURL)
 
-let grepCommandForAllPossibleIconReferences = """
+let grepCommandForAllPossibleSwiftIconReferences = """
 grep --recursive \
   --ignore-case \
   --no-filename \
-  --exclude=\"FluentIcon.swift\" \
+  --exclude=\"\(libraryName).swift\" \
   --extended-regexp \
   --include=\"*.swift\" \
-  \"\\.[a-zA-Z0-9]+[0-9]{2}(\(result.weights.map { $0.capitalized }.joined(separator: "|")))\" \(pathToSourceCode)*
+  \"\\.[a-zA-Z0-9]+[0-9]{2}(\(result.weights.map { $0.capitalized }.joined(separator: "|")))\" \(pathToSourceCode)
 """
 
-print(grepCommandForAllPossibleIconReferences)
+print(grepCommandForAllPossibleSwiftIconReferences)
 
-let allPossibleIconReferences = shell(grepCommandForAllPossibleIconReferences)
+let allPossibleSwiftIconReferences = shell(grepCommandForAllPossibleSwiftIconReferences)
+
+let grepCommandForAllPossibleObjcIconReferences = """
+grep --recursive \
+  --ignore-case \
+  --no-filename \
+  --extended-regexp \
+  --include=\"*.m\" \
+  --include=\"*.h\" \
+  \"\(libraryName)[a-zA-Z0-9]+[0-9]{2}\" \(pathToSourceCode)
+"""
+
+print(grepCommandForAllPossibleObjcIconReferences)
+
+let allPossibleObjcIconReferences = shell(grepCommandForAllPossibleObjcIconReferences)
+
+let allPossibleIconReferences = allPossibleSwiftIconReferences + allPossibleObjcIconReferences
 
 let allIconNames = result.names
 
@@ -92,7 +111,7 @@ for line in allPossibleIconReferences.split(separator: "\n") {
   }
 }
 
-let pathToFluentIconAssets = "\(pathToFluentIconSource)/ios/FluentIcons/Assets/IconAssets.xcassets"
+let pathToFluentIconAssets = "\(pathToFluentIconSource)/ios/\(libraryName)s/Assets/\(assetCatalogName).xcassets"
 
 let directories = try FileManager.default.contentsOfDirectory(
   at: URL(fileURLWithPath: pathToFluentIconAssets, isDirectory: true),
