@@ -105,7 +105,7 @@ let allIconNames = result.names
 var iconsUsed = Set<String>()
 for line in allPossibleIconReferences.split(separator: "\n") {
   for iconName in allIconNames {
-    if line.contains(iconName) {
+    if line.lowercased().contains(iconName.lowercased()) {
       iconsUsed.insert(iconName)
     }
   }
