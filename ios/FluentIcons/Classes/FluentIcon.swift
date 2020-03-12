@@ -1292,8 +1292,8 @@ import Foundation
   case print48Regular
   case pstnCall24Filled
   case pstnCall24Regular
-  case qrCode24Filled
-  case qrCode24Regular
+  case qrCode28Filled
+  case qrCode28Regular
   case radioButton24Filled
   case radioButton24Regular
   case reOrder16Filled
@@ -3186,8 +3186,8 @@ import Foundation
     case .print48Regular: return "ic_fluent_print_48_regular"
     case .pstnCall24Filled: return "ic_fluent_pstn_call_24_filled"
     case .pstnCall24Regular: return "ic_fluent_pstn_call_24_regular"
-    case .qrCode24Filled: return "ic_fluent_qr_code_24_filled"
-    case .qrCode24Regular: return "ic_fluent_qr_code_24_regular"
+    case .qrCode28Filled: return "ic_fluent_qr_code_28_filled"
+    case .qrCode28Regular: return "ic_fluent_qr_code_28_regular"
     case .radioButton24Filled: return "ic_fluent_radio_button_24_filled"
     case .radioButton24Regular: return "ic_fluent_radio_button_24_regular"
     case .reOrder16Filled: return "ic_fluent_re_order_16_filled"
@@ -5098,8 +5098,8 @@ import Foundation
     case .print48Regular: return ".print48Regular"
     case .pstnCall24Filled: return ".pstnCall24Filled"
     case .pstnCall24Regular: return ".pstnCall24Regular"
-    case .qrCode24Filled: return ".qrCode24Filled"
-    case .qrCode24Regular: return ".qrCode24Regular"
+    case .qrCode28Filled: return ".qrCode28Filled"
+    case .qrCode28Regular: return ".qrCode28Regular"
     case .radioButton24Filled: return ".radioButton24Filled"
     case .radioButton24Regular: return ".radioButton24Regular"
     case .reOrder16Filled: return ".reOrder16Filled"
@@ -6599,8 +6599,8 @@ import Foundation
       (name: "Print", weight: "regular", icons: [.print24Regular, .print48Regular]),
       (name: "Pstn Call", weight: "filled", icons: [.pstnCall24Filled]),
       (name: "Pstn Call", weight: "regular", icons: [.pstnCall24Regular]),
-      (name: "Qr Code", weight: "filled", icons: [.qrCode24Filled]),
-      (name: "Qr Code", weight: "regular", icons: [.qrCode24Regular]),
+      (name: "Qr Code", weight: "filled", icons: [.qrCode28Filled]),
+      (name: "Qr Code", weight: "regular", icons: [.qrCode28Regular]),
       (name: "Radio Button", weight: "filled", icons: [.radioButton24Filled]),
       (name: "Radio Button", weight: "regular", icons: [.radioButton24Regular]),
       (name: "Re Order", weight: "filled", icons: [.reOrder16Filled, .reOrder24Filled]),
