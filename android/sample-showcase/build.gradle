@@ -10,8 +10,8 @@ android {
         applicationId "com.microsoft.fluent.mobile.icons.sample"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode Integer.parseInt(System.getProperty("versionCode", "1"))
+        versionName "1.0." + Integer.parseInt(System.getProperty("versionName", "0"))
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
