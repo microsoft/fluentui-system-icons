@@ -2,8 +2,19 @@
 ///
 /// Call this with two arguments:
 /// ```
-/// swift remove_unused_fluent_icons.swift path-to-app-source path-to-fluent-icon-source
+/// swift remove_unused_fluent_icons.swift \
+///   path-to-app-source \
+///   path-to-fluent-icon-source
 /// ```
+///
+/// Optionally pass an additional parameter for a list of icons to keep
+/// ```
+/// swift remove_unused_fluent_icons.swift \
+///   path-to-app-source \
+///   path-to-fluent-icon-source \
+///   path-to-list-of-icons-to-keep.txt
+/// ```
+///
 
 import Foundation
 
@@ -12,6 +23,7 @@ let assetCatalogName = "IconAssets"
 
 let pathToSourceCode = CommandLine.arguments[1]
 let pathToFluentIconSource = CommandLine.arguments[2]
+let pathToListOfIconsToKeep: String? = CommandLine.arguments.count > 3 ? CommandLine.arguments[3] : nil
 
 func shell(_ command: String) -> String {
   let task = Process()
@@ -67,6 +79,12 @@ func getAllIconNames(at url: URL) -> (names: Set<String>, weights: Set<String>) 
   return (names: iconNames, weights: iconWeights)
 }
 
+func stringToLines(_ string: String) -> [String] {
+  return string.trimmingCharacters(in: .whitespacesAndNewlines)
+    .split(separator: "\n")
+    .map { String($0) }
+}
+
 let fluentIconSwiftURL = URL(fileURLWithPath: "\(pathToFluentIconSource)/ios/\(libraryName)s/Classes/\(libraryName).swift")
 let result = getAllIconNames(at: fluentIconSwiftURL)
 
@@ -82,7 +100,7 @@ grep --recursive \
 
 print(grepCommandForAllPossibleSwiftIconReferences)
 
-let allPossibleSwiftIconReferences = shell(grepCommandForAllPossibleSwiftIconReferences)
+let allPossibleSwiftIconReferences = stringToLines(shell(grepCommandForAllPossibleSwiftIconReferences))
 
 let grepCommandForAllPossibleObjcIconReferences = """
 grep --recursive \
@@ -96,14 +114,21 @@ grep --recursive \
 
 print(grepCommandForAllPossibleObjcIconReferences)
 
-let allPossibleObjcIconReferences = shell(grepCommandForAllPossibleObjcIconReferences)
+let allPossibleObjcIconReferences = stringToLines(shell(grepCommandForAllPossibleObjcIconReferences))
 
-let allPossibleIconReferences = allPossibleSwiftIconReferences + allPossibleObjcIconReferences
+var listOfIconsToKeep: [String] = []
+if let pathToListOfIconsToKeep = pathToListOfIconsToKeep {
+  let fileData = FileManager.default.contents(atPath: pathToListOfIconsToKeep)!
+  let fileContents = String(data: fileData, encoding: .utf8)!
+  listOfIconsToKeep.append(contentsOf: stringToLines(fileContents))
+}
+
+let allPossibleIconReferences = allPossibleSwiftIconReferences + allPossibleObjcIconReferences + listOfIconsToKeep
 
 let allIconNames = result.names
 
 var iconsUsed = Set<String>()
-for line in allPossibleIconReferences.split(separator: "\n") {
+for line in allPossibleIconReferences {
   for iconName in allIconNames {
     if line.lowercased().contains(iconName.lowercased()) {
       iconsUsed.insert(iconName)
