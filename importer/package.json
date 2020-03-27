@@ -18,6 +18,6 @@
   },
   "dependencies": {
     "avocado": "1.0.0",
-    "replace": "1.1.1"
+    "replace": "1.1.4"
   }
 }
