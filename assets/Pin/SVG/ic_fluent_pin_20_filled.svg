@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>ic_fluent_pin_20_filled</title>
+    <desc>Created with Sketch.</desc>
+    <g id="🔍-System-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_fluent_pin_20_filled" fill="#212121" fill-rule="nonzero">
+            <path d="M9.39693,2.38174 C8.96362,1.42821 7.71127,1.20105 6.97066,1.94165 L1.94052,6.97179 C1.19992,7.7124 1.42708,8.96475 2.38061,9.39807 L6.89171,11.448 C7.01831,11.5056 7.11523,11.6132 7.1592,11.7451 L8.71801,16.4216 C8.77281,16.586 8.90883,16.7103 9.07748,16.7501 C9.24613,16.7899 9.42338,16.7395 9.54591,16.617 L12.7279,13.435 L16.295,17.002 L16.297,17 L17,17 L17,16.297 L17.0021,16.2949 L13.435,12.7279 L16.617,9.54593 C16.7395,9.4234 16.7899,9.24616 16.75,9.07751 C16.7102,8.90885 16.5859,8.77284 16.4215,8.71804 L11.7432,7.15859 C11.6113,7.11462 11.5036,7.0177 11.4461,6.89111 L9.39693,2.38174 Z" id="🎨-Color"></path>
+        </g>
+    </g>
+</svg>
