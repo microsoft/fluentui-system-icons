@@ -24,10 +24,13 @@ FluentIcons
 
   # This podspec is symlinked to the root directory of this repo
   s.source_files = 'ios/FluentIcons/Classes/**/*'
-  s.resource_bundles = {
-    'FluentIcons' => ['ios/FluentIcons/Assets/IconAssets.xcassets'],
-  }
-  s.resource = 'ios/FluentIcons/remove_unused_fluent_icons.swift'
+  # Require this to be used as a dynamic framework
+  # `resource_bundles` are unable to load around 1 in a thousand times
+  # so we need to stick to `resources` here instead.
+  s.resources = [
+    'ios/FluentIcons/Assets/IconAssets.xcassets',
+    'ios/FluentIcons/remove_unused_fluent_icons.swift'
+  ]
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
