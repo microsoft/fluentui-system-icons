@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
     <title>ic_fluent_chevron_right_20_filled</title>
     <desc>Created with Sketch.</desc>
-    <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="🔍-System-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="ic_fluent_chevron_right_20_filled" fill="#212121" fill-rule="nonzero">
-            <path d="M6.90900974,6.03033009 C6.61611652,5.73743687 6.61611652,5.26256313 6.90900974,4.96966991 C7.20190296,4.6767767 7.6767767,4.6767767 7.96966991,4.96966991 L12.4696699,9.46966991 C12.7625631,9.76256313 12.7625631,10.2374369 12.4696699,10.5303301 L7.96966991,15.0303301 C7.6767767,15.3232233 7.20190296,15.3232233 6.90900974,15.0303301 C6.61611652,14.7374369 6.61611652,14.2625631 6.90900974,13.9696699 L10.8786797,10 L6.90900974,6.03033009 Z" id="🎨-Color"></path>
+            <path d="M6.21967,1.96967 C6.51256,1.67678 6.98744,1.67678 7.28033,1.96967 L14.7803,9.46967 C15.0732,9.76256 15.0732,10.2374 14.7803,10.5303 L7.28033,18.0303 C6.98744,18.3232 6.51256,18.3232 6.21967,18.0303 C5.92678,17.7374 5.92678,17.2626 6.21967,16.9697 L13.1893,10 L6.21967,3.03033 C5.92678,2.73744 5.92678,2.26256 6.21967,1.96967 Z" id="Path"></path>
         </g>
     </g>
 </svg>
