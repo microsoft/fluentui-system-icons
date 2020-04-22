@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
     <title>ic_fluent_chevron_up_12_regular</title>
     <desc>Created with Sketch.</desc>
-    <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="🔍-System-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="ic_fluent_chevron_up_12_regular" fill="#212121" fill-rule="nonzero">
-            <path d="M6,6.29289322 L2.85355339,3.14644661 C2.65829124,2.95118446 2.34170876,2.95118446 2.14644661,3.14644661 C1.95118446,3.34170876 1.95118446,3.65829124 2.14644661,3.85355339 L5.64644661,7.35355339 C5.84170876,7.54881554 6.15829124,7.54881554 6.35355339,7.35355339 L9.85355339,3.85355339 C10.0488155,3.65829124 10.0488155,3.34170876 9.85355339,3.14644661 C9.65829124,2.95118446 9.34170876,2.95118446 9.14644661,3.14644661 L6,6.29289322 Z" id="🎨-Color" transform="translate(6.000000, 5.250000) scale(1, -1) translate(-6.000000, -5.250000) "></path>
+            <path d="M2.64645,7.35355 C2.84171,7.54882 3.15829,7.54882 3.35355,7.35355 L5.9999975,4.70711 L8.64645,7.35355 C8.84171,7.54882 9.15829,7.54882 9.35355,7.35355 C9.54882,7.15829 9.54882,6.84171 9.35355,6.64645 L6.35355,3.64645 C6.15829,3.45118 5.84171,3.45118 5.64645,3.64645 L2.64645,6.64645 C2.45118,6.84171 2.45118,7.15829 2.64645,7.35355 Z" id="🎨-Color"></path>
         </g>
     </g>
 </svg>
