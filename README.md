@@ -21,7 +21,7 @@ repositories {
 ```
 Include the following dependency in your project's `build.gradle`
 ```groovy
-implementation 'com.microsoft.design:fluent-icons:1.0.215'
+implementation 'com.microsoft.design:fluent-icons:1.0.216'
 ```
 
 For library docs, see [android/README.md](android/README.md).
@@ -30,13 +30,13 @@ For library docs, see [android/README.md](android/README.md).
 #### Cocoapods
 
 ```ruby
-pod "FluentIcons", git: "https://microsoftdesign@dev.azure.com/microsoftdesign/Design%20System/_git/fluent-mobile-icons", tag: "1.0.215"
+pod "FluentIcons", git: "https://microsoftdesign@dev.azure.com/microsoftdesign/Design%20System/_git/fluent-mobile-icons", tag: "1.0.216"
 ```
 
 #### Carthage
 
 ```bash
-git "git@ssh.dev.azure.com:v3/microsoftdesign/Design%20System/fluent-mobile-icons" "1.0.215"
+git "git@ssh.dev.azure.com:v3/microsoftdesign/Design%20System/fluent-mobile-icons" "1.0.216"
 ```
 
 For library docs, see [ios/README.md](ios/README.md).
