@@ -7,6 +7,7 @@
 ### Cocoapods
 
 ```ruby
+use_frameworks!
 pod "FluentIcons", git: "https://microsoftdesign@dev.azure.com/microsoftdesign/Design%20System/_git/fluent-mobile-icons", tag: "1.0.215"
 ```
 
@@ -42,23 +43,30 @@ No more risky stringly typed `UIImage(named: "")!`
 At build/release time you can run the following script to ensure all unused assets are stripped from the app:
 
 Cocoapods
-```
-ICON_SOURCE_PATH="Pods/FluentIcons"
 
-swift $ICON_SOURCE_PATH/ios/FluentIcons/remove_unused_fluent_icons.swift \
-	MyProjectCode \
-	$ICON_SOURCE_PATH
+```
+ICON_SOURCE_PATH="./Pods/FluentIcons"
+
+$ICON_SOURCE_PATH/ios/remove-unused-fluent-icons/run \
+	--path-to-source-code "." \
+	--path-to-fluent-icon-source $ICON_SOURCE_PATH
 ```
 
 Carthage
-```
-ICON_SOURCE_PATH="Carthage/Checkouts/fluent-mobile-icons"
 
-swift $ICON_SOURCE_PATH/ios/FluentIcons/remove_unused_fluent_icons.swift \
-	MyProjectCode \
-	$ICON_SOURCE_PATH
+```
+ICON_SOURCE_PATH="./Carthage/Checkouts/fluent-mobile-icons"
+
+$ICON_SOURCE_PATH/ios/remove-unused-fluent-icons/run \
+	--path-to-source-code "." \
+	--path-to-fluent-icon-source $ICON_SOURCE_PATH
 
 carthage build --platform iOS fluent-mobile-icons
+```
+
+Optionally if you are using React Native or are referencing icons outside of your codebase, you can pass an icon list to prevent these icons from being removed.
+```
+--path-to-list-of-icons-to-keep OutlookReactNativeKit/ReactResources/FluentIcons.txt
 ```
 
 #### 3. Consistent asset rendering

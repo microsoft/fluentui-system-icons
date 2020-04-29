@@ -5,7 +5,6 @@ tmp
 dev_tests/automatic/screenshots
 importer/dist/*
 !importer/dist/.keep
-tests
 *.DS_Store
 
 .project
@@ -18,3 +17,4 @@ tests
 
 android/library/src/main/res/drawable/
 xcuserdata
+/ios/FluentIcons/Tests

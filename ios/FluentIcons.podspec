@@ -29,7 +29,7 @@ FluentIcons
   # so we need to stick to `resources` here instead.
   s.resources = [
     'ios/FluentIcons/Assets/IconAssets.xcassets',
-    'ios/FluentIcons/remove_unused_fluent_icons.swift'
+    'ios/remove-unused-fluent-icons/remove-unused-fluent-icons'
   ]
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
