@@ -9,7 +9,7 @@ import Foundation
 
 /// Fluent Icons
 ///
-/// Docs: https://dev.azure.com/microsoftdesign/Design%20System/_git/fluent-mobile-icons?path=%2Flibrary%2Fios%2FREADME.md&version=GBlibrary
+/// Docs: https://dev.azure.com/microsoftdesign/Design%20System/_git/fluent-mobile-icons?%2Fios%2FREADME.md
 @objc public enum FluentIcon: Int, Equatable {
   case accessTime24Filled = 0
   case accessTime24Regular
