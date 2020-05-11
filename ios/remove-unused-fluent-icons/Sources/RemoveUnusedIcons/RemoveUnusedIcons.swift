@@ -20,12 +20,21 @@ func getIconName(from url: URL) -> String {
   }.joined()
 }
 
-public func removeUnusedAssets(pathToFluentIconSource: String, pathToSourceCode: String, libraryName: String, assetCatalogName: String, pathToListOfIconsToKeep: String?) throws {
+/// Remove unused icons from a project
+///
+/// - Parameters:
+///   - libraryName: Name of the icon library (e.g. FluentIcons)
+///   - assetCatalogName: Name of the asset catalog that stores all the assets (e.g. IconAssets)
+///   - pathToSourceCode: Path to your app's source code.
+///   - pathToFluentIconSource: Path to the fluent icon library's source code
+///   - pathToListOfIconsToKeep: Path to a custom list of icons in use (for React Native, Optional).
+public func removeUnusedAssets(libraryName: String, assetCatalogName: String, pathToSourceCode: String, pathToFluentIconSource: String, pathToListOfIconsToKeep: String?) throws {
   var fileName = libraryName
   _ = fileName.removeLast() // Remove trailing "s"
 
   let result = try getAllIconNames(pathToFluentIconSource: pathToFluentIconSource, libraryName: libraryName, fileName: fileName)
 
+  print("Searching for possible swift icon references")
   let allPossibleSwiftIconReferences = searchForCodeReferences(
     in: pathToSourceCode,
     language: .swift,
@@ -33,6 +42,7 @@ public func removeUnusedAssets(pathToFluentIconSource: String, pathToSourceCode:
     excludingFileName: fileName
   )
 
+  print("Searching for possible objc icon references")
   let allPossibleObjcIconReferences = searchForCodeReferences(
     in: pathToSourceCode,
     language: .objc,
@@ -49,6 +59,18 @@ public func removeUnusedAssets(pathToFluentIconSource: String, pathToSourceCode:
   let allPossibleIconReferences = allPossibleSwiftIconReferences + allPossibleObjcIconReferences + listOfIconsToKeep
 
   let allIconNames = result.names
+
+  // Validate custom list provided to script has all valid icons
+  var invalidIcons: [String] = []
+  for icon in listOfIconsToKeep {
+    if !allIconNames.contains(icon) {
+      invalidIcons.append(icon)
+    }
+  }
+  if !invalidIcons.isEmpty {
+    print("List of icons provided contains invalid icons \(invalidIcons)")
+    exit(1)
+  }
 
   var iconsUsed = Set<String>()
   for line in allPossibleIconReferences {
@@ -69,10 +91,10 @@ public func removeUnusedAssets(pathToFluentIconSource: String, pathToSourceCode:
     $0.hasDirectoryPath
   }
 
+  print("Removing unused assets")
   for directory in directories {
     let iconName = getIconName(from: directory)
     if !iconsUsed.contains(iconName) {
-      print("Remove \(directory)")
       try FileManager.default.removeItem(at: directory)
     }
   }

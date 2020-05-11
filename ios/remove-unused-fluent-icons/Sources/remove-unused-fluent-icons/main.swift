@@ -27,10 +27,10 @@ struct Run: ParsableCommand {
 
   func run() throws {
     try removeUnusedAssets(
-      pathToFluentIconSource: pathToFluentIconSource,
-      pathToSourceCode: pathToSourceCode,
       libraryName: libraryName,
       assetCatalogName: assetCatalogName,
+      pathToSourceCode: pathToSourceCode,
+      pathToFluentIconSource: pathToFluentIconSource,
       pathToListOfIconsToKeep: pathToListOfIconsToKeep
     )
   }
