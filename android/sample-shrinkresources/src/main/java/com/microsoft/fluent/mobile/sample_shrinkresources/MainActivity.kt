@@ -1,8 +1,8 @@
 /*
- * Copyright (c) 2019.
- * Microsoft Corporation. All rights reserved.
+ * Copyright (c) Microsoft Corporation.
+ * Licensed under the MIT license.
  */
-
+ 
 package com.microsoft.fluent.mobile.sample_shrinkresources
 
 import android.app.Activity

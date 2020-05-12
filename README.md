@@ -1,7 +1,7 @@
-# Fluent design icons
-Fluent design icons is a set of mobile platform icons from Microsoft.
+# Fluent System Icons
+Fluent System iIcons is a set of mobile platform icons from Microsoft.
 
-![fluent design icons](art/readme-asset.png)
+![fluent system icons](art/readme-asset.png)
 
 ## Installation
 ### Android
@@ -82,6 +82,9 @@ You can download the demo apps from AppCenter or build them following the steps 
 
 ## Contact
 Please feel free to reach out to the following points of contact with questions or requests.
-* [Joe Woodward](mailto:joe.woodward@microsoft.com) / [Janet Longhurst](mailto:jalonghu@microsoft.com) - Design
+* [Joe Woodward](mailto:joe.woodward@microsoft.com) / [Jason Custer](mailto:jacust@microsoft.com) - Design
 * [Nick Romano](mailto:nick.romano@microsoft.com) - iOS
 * [Will Hou](mailto:wih@microsoft.com) - Android
+
+## Code of Conduct
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct) or contact opencode@microsoft.com with any additional questions or comments.

@@ -1,4 +1,9 @@
-package com.microsoft.fluent.mobile.icons.sample
+/*
+ * Copyright (c) Microsoft Corporation.
+ * Licensed under the MIT license.
+ */
+ 
+ package com.microsoft.fluent.mobile.icons.sample
 
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate

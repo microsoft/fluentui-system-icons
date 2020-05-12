@@ -112,8 +112,8 @@ DrawableCompat.setTint(icon, Color.WHITE);
 DrawableCompat.setTintList(icon, ContextCompat.getColorStateList(this, R.color.white_selector));
 ```
 
-## Shrink resources (Not working yet)
-~~To maintain a lean app size by excluding any unused icons in build time, set the `shrinkResources` to `true` in your `build.gradle` file, as follows:~~
+## Shrink resources
+To maintain a lean app size by excluding any unused icons in build time, set the `shrinkResources` to `true` in your `build.gradle` file, as follows:
 ```groovy
 buildTypes {
     release {

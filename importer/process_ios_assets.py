@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT license.
+
 import json
 import os
 import shutil
@@ -132,9 +135,9 @@ def process_assets():
 
     with open(swift_enum_path, 'w+') as swift_enum_file:
         swift_enum_file.write("//\n")
-        swift_enum_file.write("//  Copyright (c) Microsoft Corporation. All rights reserved.\n")
+        swift_enum_file.write("//  Copyright (c) Microsoft Corporation.\n")
+        swift_enum_file.write("//  Licensed under the MIT license.\n")
         swift_enum_file.write("//\n")
-
         swift_enum_file.write("//  This file is auto generated\n")
         swift_enum_file.write("//  Do not make edits or they will be removed later\n")
         swift_enum_file.write("//\n\n")
