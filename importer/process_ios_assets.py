@@ -96,6 +96,31 @@ def process_assets():
 
             imageset.write(json.dumps(contents, indent=2, sort_keys=True))
 
+    # Generate BUILD.gn for GN build system
+    gn_path = os.path.join(ios_directory, "BUILD.gn")
+    if os.path.exists(gn_path):
+        os.remove(gn_path)
+
+    with open(gn_path, 'w+') as gn_file:
+        gn_file.write("#\n")
+        gn_file.write("#  Copyright (c) Microsoft Corporation. All rights reserved.\n")
+        gn_file.write("#\n")
+
+        gn_file.write("#  This file is auto generated\n")
+        gn_file.write("#  Do not make edits or they will be removed later\n")
+        gn_file.write("#\n\n")
+
+        gn_file.write("import(\"//build/config/ios/asset_catalog.gni\")\n\n")
+
+        for file_name in file_names:
+            icon_name = file_name.replace('.pdf', '')
+
+            gn_file.write("imageset(\"{}\")".format(icon_name) + " {\n")
+            gn_file.write("  sources = [\n")
+            gn_file.write("    \"FluentIcons/Assets/IconAssets.xcassets/{}.imageset/Contents.json\"".format(icon_name) + ",\n")
+            gn_file.write("    \"FluentIcons/Assets/IconAssets.xcassets/{icon_name}.imageset/{icon_name}.pdf\"".format(icon_name=icon_name) + ",\n")
+            gn_file.write("  ]\n")
+            gn_file.write("}\n\n")
     swift_enum_path = os.path.join(ios_directory, LIBRARY_NAME + "s", "Classes", LIBRARY_NAME + ".swift")
     if os.path.exists(swift_enum_path):
         os.remove(swift_enum_path)
