@@ -1,5 +1,5 @@
 # Fluent System Icons
-Fluent System iIcons is a set of mobile platform icons from Microsoft.
+Fluent System Icons is a set of mobile platform icons from Microsoft.
 
 ![fluent system icons](art/readme-asset.png)
 
