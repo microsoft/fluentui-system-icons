@@ -64,7 +64,7 @@ jobs:
     - name: Commit version number change
       run: |
         git add -A
-        git commit -m 'Prepare release $(Build.BuildNumber)'
+        git commit -m "Prepare release 1.1.$GITHUB_RUN_NUMBER"
 
     - name: Tag release
       run: git tag "1.1.$GITHUB_RUN_NUMBER"
