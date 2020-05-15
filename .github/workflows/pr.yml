@@ -1,0 +1,51 @@
+name: CI
+
+on: pull_request
+
+jobs:
+  build-ios:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node 11
+      uses: actions/setup-node@v1
+      with:
+        node-version: 11.x
+
+    - run: npm install
+      working-directory: importer
+
+    - name: Run generate script
+      run: npm run deploy:ios
+      working-directory: importer
+
+  build-android:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node 11
+      uses: actions/setup-node@v1
+      with:
+        node-version: 11.x
+
+    - run: npm install
+      working-directory: importer
+
+    - name: Run generate script
+      run: npm run deploy:android
+      working-directory: importer
+
+    - uses: actions/setup-java@v1
+      with:
+        java-version: 11
+
+    # https://github.com/marketplace/actions/gradle-command
+    - uses: eskatos/gradle-command-action@v1
+      with:
+        arguments: assembleRelease
+        build-root-directory: android
+        wrapper-directory: android
