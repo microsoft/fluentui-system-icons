@@ -70,3 +70,8 @@ jobs:
       run: git tag "1.1.$GITHUB_RUN_NUMBER"
 
     - run: git log
+
+    # https://github.com/ad-m/github-push-action
+    - run: |
+        REMOTE_REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+        git push $REMOTE_REPO HEAD:master --follow-tags --tags;
