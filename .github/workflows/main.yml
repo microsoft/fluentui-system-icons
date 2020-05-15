@@ -10,7 +10,7 @@ env:
   LIBRARY_VERSION: 1.1.${{ github.run_number }}
 
 jobs:
-  publish-ios:
+  publish:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,38 +24,12 @@ jobs:
     - run: npm install
       working-directory: importer
 
+    ## iOS
     - name: Run generate script
       run: npm run deploy:ios
       working-directory: importer
 
-    - name: Config git credentials
-      run: git config user.email "flubuild@microsoft.com" && git config user.name "Fluent Build System"
-
-    # Allow empty commits for now so we can make changes to the pod without new assets
-    - name: Commit version number change
-      run: |
-        git add -A
-        git commit --allow-empty -m "Update iOS asset catalog"
-
-    - name: Push assets
-      run: |
-        REMOTE_REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-        git push $REMOTE_REPO HEAD:master
-
-  publish-android:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Use Node 11
-      uses: actions/setup-node@v1
-      with:
-        node-version: 11.x
-
-    - run: npm install
-      working-directory: importer
-
+    ## Android
     - name: Run generate script
       run: npm run deploy:android
       working-directory: importer
@@ -73,14 +47,7 @@ jobs:
         build-root-directory: android
         wrapper-directory: android
 
-  publish:
-    needs: [publish-ios, publish-android]
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-
+    ## Publish
     # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version numbers in README.md
       run: |
