@@ -66,4 +66,7 @@ jobs:
         git add -A
         git commit -m 'Prepare release $(Build.BuildNumber)'
 
+    - name: Tag release
+      run: git tag "1.1.$GITHUB_RUN_NUMBER"
+
     - run: git log
