@@ -1,0 +1,121 @@
+name: Build and Publish
+
+on:
+  push:
+    branches: [ master ]
+    # paths: assets/*
+  pull_request:
+    branches: [ master ]
+
+env:
+  LIBRARY_VERSION: 1.1.${{ github.run_number }}
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node 11
+      uses: actions/setup-node@v1
+      with:
+        node-version: 11.x
+
+    - run: npm install
+      working-directory: importer
+
+    ## iOS
+    - name: Run generate script
+      run: npm run deploy:ios
+      working-directory: importer
+
+    ## Android
+    - name: Run generate script
+      run: npm run deploy:android
+      working-directory: importer
+
+    - uses: actions/setup-java@v1
+      with:
+        java-version: 11
+
+    # https://github.com/marketplace/actions/gradle-command
+    - uses: eskatos/gradle-command-action@v1
+      with:
+        # publish
+        #  -DvstsAccessToken=$(System.AccessToken)
+        arguments: build -DversionName=$LIBRARY_VERSION
+        build-root-directory: android
+        wrapper-directory: android
+
+    ## Publish
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version numbers in README.md
+      run: |
+        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$LIBRARY_VERSION/g" README.md
+        rm README.md.bk
+
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version numbers in ios/README.md
+      run: |
+        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$LIBRARY_VERSION/g" ios/README.md
+        rm ios/README.md.bk
+
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in Podspec
+      run: |
+        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$LIBRARY_VERSION/g" ios/FluentIcons.podspec
+        rm ios/FluentIcons.podspec.bk
+
+    - name: Update icon sheet
+      run: python3 generate_icons_md.py
+
+    - name: Config git credentials
+      run: git config user.email "flubuild@microsoft.com" && git config user.name "Fluent Build System"
+
+    - name: Commit version number change
+      run: |
+        git add -A
+        git commit -m "Release $LIBRARY_VERSION"
+
+    - name: Tag release
+      run: git tag "$LIBRARY_VERSION"
+
+    - name: Push release
+      run: |
+        REMOTE_REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+        git push $REMOTE_REPO HEAD:master --follow-tags --tags
+
+  android-demo-app:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node 11
+      uses: actions/setup-node@v1
+      with:
+        node-version: 11.x
+
+    - run: npm install
+      working-directory: importer
+
+    - name: Run generate script
+      run: npm run deploy:android
+      working-directory: importer
+
+    - uses: actions/setup-java@v1
+      with:
+        java-version: 11
+
+    # # https://github.com/marketplace/actions/gradle-command
+    # - uses: eskatos/gradle-command-action@v1
+    #   with:
+    #     #  -Pandroid.injected.signing.store.file=$(keystore.secureFilePath) -Pandroid.injected.signing.store.password=$(store.password) -Pandroid.injected.signing.key.alias=$(key.alias) -Pandroid.injected.signing.key.password=$(key.password)'
+    #     options: '-DversionName=$LIBRARY_VERSION -DversionCode=$LIBRARY_VERSION'
+    #     arguments: ':sample-showcase:assembleRelease'
+    #     build-root-directory: android
+    #     wrapper-directory: android
+
+    # TODO
+    # https://github.com/marketplace/actions/app-center
