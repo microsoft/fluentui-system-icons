@@ -30,13 +30,30 @@ jobs:
     - run: npm install
       working-directory: importer
 
-    # Run generate script
-    - name: Run a one-line script
+    # TODO(nicroma) break these into multiple jobs
+
+    - name: Run generate script
       run: npm run deploy:ios
       working-directory: importer
 
-    # Runs a set of commands using the runners shell
-    - name: Run a multi-line script
+    - name: Run generate script
+      run: npm run deploy:android
+      working-directory: importer
+
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version numbers in README.md
       run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$(Build.BuildNumber)/g" $(System.DefaultWorkingDirectory)/README.md
+        rm $(System.DefaultWorkingDirectory)/README.md.bk
+
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version numbers in ios/README.md
+      run: |
+        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$(Build.BuildNumber)/g" $(System.DefaultWorkingDirectory)/ios/README.md
+        rm $(System.DefaultWorkingDirectory)/ios/README.md.bk
+
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in Podspec
+      run: |
+        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$(Build.BuildNumber)/g" $(System.DefaultWorkingDirectory)/ios/FluentIcons.podspec
+        rm $(System.DefaultWorkingDirectory)/ios/FluentIcons.podspec.bk
