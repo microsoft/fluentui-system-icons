@@ -43,17 +43,17 @@ jobs:
     # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version numbers in README.md
       run: |
-        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$(GITHUB_RUN_NUMBER)/g" README.md
+        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/1.1.$GITHUB_RUN_NUMBER/g" README.md
         rm README.md.bk
 
     # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version numbers in ios/README.md
       run: |
-        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$(GITHUB_RUN_NUMBER)/g" ios/README.md
+        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/1.1.$GITHUB_RUN_NUMBER/g" ios/README.md
         rm ios/README.md.bk
 
     # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version number in Podspec
       run: |
-        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$(GITHUB_RUN_NUMBER)/g" ios/FluentIcons.podspec
+        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/1.1.$GITHUB_RUN_NUMBER/g" ios/FluentIcons.podspec
         rm ios/FluentIcons.podspec.bk
