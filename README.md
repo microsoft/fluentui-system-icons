@@ -83,10 +83,6 @@ You can download the demo apps from AppCenter or build them following the steps 
 2. Select the `sample-showcase` in the build configuration dropdown
 3. Click run 
 
-### Mac ([Download](https://install.appcenter.ms/orgs/Fluent-Design-Mobile/apps/Fluent-Mac-App))
-1. `open ios/FluentIcons.xcworkspace/`
-2. Product > Run
-
 ## Contact
 Please feel free to reach out to the following points of contact with questions or requests.
 * [Joe Woodward](mailto:joe.woodward@microsoft.com) / [Jason Custer](mailto:jacust@microsoft.com) - Design
