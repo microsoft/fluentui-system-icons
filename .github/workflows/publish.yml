@@ -3,9 +3,6 @@ name: Build and Publish
 on:
   push:
     branches: [ master ]
-    # paths: assets/*
-  pull_request:
-    branches: [ master ]
 
 env:
   LIBRARY_VERSION: 1.1.${{ github.run_number }}
