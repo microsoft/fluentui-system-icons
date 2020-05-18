@@ -37,13 +37,13 @@ For library docs, see [android/README.md](android/README.md).
 #### Cocoapods
 
 ```ruby
-pod "FluentIcons", git: "https://microsoftdesign@dev.azure.com/microsoftdesign/Design%20System/_git/fluent-mobile-icons", tag: "1.1.1"
+pod "FluentIcons", git: "https://github.com/microsoft/fluent-system-icons.git", tag: "1.1.1"
 ```
 
 #### Carthage
 
 ```bash
-git "git@ssh.dev.azure.com:v3/microsoftdesign/Design%20System/fluent-mobile-icons" "1.1.1"
+git "git@github.com:microsoft/fluent-system-icons.git" "1.1.1"
 ```
 
 For library docs, see [ios/README.md](ios/README.md).
@@ -72,7 +72,7 @@ npm run
 
 ### Build Pipeline
 
-Our [build pipeline](https://dev.azure.com/microsoftdesign/Design%20System/_build?definitionId=94&_a=summary) runs `deploy:android` and `deploy:ios` to create the libraries. The build definitions are in `azure-pipelines.yml` and `pipelines`.
+Our [build pipeline](https://github.com/microsoft/fluent-system-icons/actions) runs `deploy:android` and `deploy:ios` to create the libraries. The build definitions are located in `.github/workflows/`.
 
 ## Demo apps
 

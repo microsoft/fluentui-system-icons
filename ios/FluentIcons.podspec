@@ -15,10 +15,10 @@ Pod::Spec.new do |s|
 FluentIcons
                        DESC
 
-  s.homepage         = 'https://dev.azure.com/microsoftdesign/Design%20System/_git/fluent-mobile-icons'
+  s.homepage         = 'https://github.com/microsoft/fluent-system-icons'
   s.license          = { :type => 'Microsoft', :file => 'LICENSE' }
   s.author           = { 'Microsoft, Inc.' => 'nicroma@microsoft.com' }
-  s.source           = { :git => 'https://microsoftdesign@dev.azure.com/microsoftdesign/Design%20System/_git/fluent-mobile-icons', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/microsoft/fluent-system-icons.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '8.0'
 
