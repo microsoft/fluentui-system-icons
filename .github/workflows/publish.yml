@@ -23,12 +23,12 @@ jobs:
       working-directory: importer
 
     ## iOS
-    - name: Run generate script
+    - name: Run iOS generate script
       run: npm run deploy:ios
       working-directory: importer
 
     ## Android
-    - name: Run generate script
+    - name: Run Android generate script
       run: npm run deploy:android
       working-directory: importer
 
