@@ -27,10 +27,10 @@ FluentIcons
   # Require this to be used as a dynamic framework
   # `resource_bundles` are unable to load around 1 in a thousand times
   # so we need to stick to `resources` here instead.
-  s.resources = [
-    'ios/FluentIcons/Assets/IconAssets.xcassets',
-    'ios/remove-unused-fluent-icons/run'
-  ]
+  s.resource = 'ios/FluentIcons/Assets/IconAssets.xcassets'
+
+  # Command line tool to remove unused fluent icons
+  s.preserve_path = 'ios/remove-unused-fluent-icons/run'
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
