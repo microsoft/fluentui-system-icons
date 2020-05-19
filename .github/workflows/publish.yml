@@ -2,7 +2,8 @@ name: Build and Publish
 
 on:
   push:
-    branches: [ master ]
+    #branches: [ master ]
+    branches: [ nicroma/github-migration ]
 
 env:
   LIBRARY_VERSION: 1.1.${{ github.run_number }}
