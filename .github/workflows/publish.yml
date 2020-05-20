@@ -9,7 +9,8 @@ env:
   LIBRARY_VERSION: 1.1.${{ github.run_number }}
 
 jobs:
-  publish:
+  publish-library:
+    name: Publish mobile libraries
     runs-on: ubuntu-latest
 
     steps:
@@ -84,8 +85,10 @@ jobs:
         REMOTE_REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
         git push $REMOTE_REPO HEAD:master --follow-tags --tags
 
-  android-demo-app:
+  publish-android-demo:
+    name: Publish Android demo app
     runs-on: ubuntu-latest
+    needs: publish-library
 
     steps:
     - uses: actions/checkout@v2
