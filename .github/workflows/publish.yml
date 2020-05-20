@@ -59,19 +59,19 @@ jobs:
     # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version numbers in README.md
       run: |
-        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$LIBRARY_VERSION/g" README.md
+        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" README.md
         rm README.md.bk
 
     # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version numbers in ios/README.md
       run: |
-        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$LIBRARY_VERSION/g" ios/README.md
+        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" ios/README.md
         rm ios/README.md.bk
 
     # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version number in Podspec
       run: |
-        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$LIBRARY_VERSION/g" ios/FluentIcons.podspec
+        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" ios/FluentIcons.podspec
         rm ios/FluentIcons.podspec.bk
 
     - name: Update icon sheet
@@ -83,10 +83,10 @@ jobs:
     - name: Commit version number change
       run: |
         git add -A
-        git commit -m "Release $LIBRARY_VERSION"
+        git commit -m "Release $NEW_VERSION"
 
     - name: Tag release
-      run: git tag "$LIBRARY_VERSION"
+      run: git tag "$NEW_VERSION"
 
     - name: Push release
       run: |
@@ -127,7 +127,7 @@ jobs:
     # - name: Build Android demo app
     #   uses: eskatos/gradle-command-action@v1
     #   with:
-    #     options: '-DversionName=$LIBRARY_VERSION -DversionCode=$LIBRARY_VERSION -Pandroid.injected.signing.store.file=release.keystore -Pandroid.injected.signing.store.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }} -Pandroid.injected.signing.key.alias=${{ secrets.ANDROID_KEYSTORE_ALIAS }} -Pandroid.injected.signing.key.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}'
+    #     options: '-DversionName=$NEW_VERSION -DversionCode=$NEW_VERSION -Pandroid.injected.signing.store.file=release.keystore -Pandroid.injected.signing.store.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }} -Pandroid.injected.signing.key.alias=${{ secrets.ANDROID_KEYSTORE_ALIAS }} -Pandroid.injected.signing.key.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}'
     #     arguments: ':sample-showcase:assembleRelease'
     #     build-root-directory: android
     #     wrapper-directory: android
