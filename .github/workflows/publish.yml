@@ -48,13 +48,10 @@ jobs:
       with:
         java-version: 8
 
-    # https://github.com/marketplace/actions/gradle-command
     - name: Build and publish Android library
       uses: eskatos/gradle-command-action@v1
       with:
-        # publish
-        #  -DvstsAccessToken=$(System.AccessToken) <-- Replace by Bintray token
-        arguments: build -DversionName=$LIBRARY_VERSION
+        arguments: bintrayUpload -DversionName=$LIBRARY_VERSION -DbintrayUser=${{ secrets.BINTRAY_USER }} -Dbintray.key=${{ secrets.BINTRAY_KEY }}
         build-root-directory: android
         wrapper-directory: android
 
