@@ -101,6 +101,16 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Bump version patch
+      run: |
+        grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec |
+            python3 -c """
+        import sys
+        current_version = sys.stdin.read().strip().split(\"'\")[1]
+        major, minor, patch = current_version.split('.')
+        print(f'::set-env name=NEW_VERSION::{major}.{minor}.{int(patch) + 1}')
+        """
+
     - name: Use Node 11
       uses: actions/setup-node@v1
       with:
@@ -121,24 +131,19 @@ jobs:
     - name: Restore release keystore
       run: |
         echo "${{ secrets.ANDROID_KEYSTORE }}" > release.keystore.asc
-        gpg -d --passphase "${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" --batch release.keystore.asc > release.keystore
+        gpg -d --passphrase "${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" --batch release.keystore.asc > release.keystore
 
-    # # https://github.com/marketplace/actions/gradle-command
-    # - name: Build Android demo app
-    #   uses: eskatos/gradle-command-action@v1
-    #   with:
-    #     options: '-DversionName=$NEW_VERSION -DversionCode=$NEW_VERSION -Pandroid.injected.signing.store.file=release.keystore -Pandroid.injected.signing.store.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }} -Pandroid.injected.signing.key.alias=${{ secrets.ANDROID_KEYSTORE_ALIAS }} -Pandroid.injected.signing.key.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}'
-    #     arguments: ':sample-showcase:assembleRelease'
-    #     build-root-directory: android
-    #     wrapper-directory: android
+    - name: Build Android demo app
+      uses: eskatos/gradle-command-action@v1
+      with:
+        arguments: ':sample-showcase:assembleRelease -DversionName=${{ env.NEW_VERSION }} -DversionCode=${{ github.run_number }} -Pandroid.injected.signing.store.file=/home/runner/work/fluent-system-icons/fluent-system-icons/release.keystore -Pandroid.injected.signing.store.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }} -Pandroid.injected.signing.key.alias=${{ secrets.ANDROID_KEYSTORE_ALIAS }} -Pandroid.injected.signing.key.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}'
+        build-root-directory: android
+        wrapper-directory: android
 
-    # TODO
-    # https://github.com/marketplace/actions/app-center
-    # - name: Publish apk to App Center
-    #   uses: wzieba/AppCenter-Github-Action@v1.0.0
-    #   with:
-    #     appName: ${{secrets.APP_CENTER_DEMO_APP_NAME}}
-    #     token: ${{secrets.APP_CENTER_TOKEN}}
-    #     group: Public
-    #     file: android/sample-showcase/build/outputs/apk/release/sample-showcase-release.apk
-    #     gitReleaseNotes: true
+    - name: Publish apk to App Center
+      uses: wzieba/AppCenter-Github-Action@v1.0.0
+      with:
+        appName: ${{ secrets.APP_CENTER_DEMO_APP_NAME }}
+        token: ${{ secrets.APP_CENTER_TOKEN }}
+        group: Public
+        file: android/sample-showcase/build/outputs/apk/release/sample-showcase-release.apk
