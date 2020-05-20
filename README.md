@@ -12,23 +12,16 @@ Fluent System Icons is a set of mobile platform icons from Microsoft.
 
 ## Installation
 ### Android
-Add the `microsoftdesign` repository to your project's top level `build.gradle`:
+The library is published via JCenter, please ensure that the `jcenter()` repository has been added to the root `build.gradle` file:
 ```groovy
 repositories {
-    maven {
-        name 'vsts-maven-microsoftdesign'
-        url 'https://pkgs.dev.azure.com/microsoftdesign/951975d5-69cc-4771-9d98-92a4b1a82b2b/_packaging/fluent-icons/maven/v1'
-        credentials {
-            username = [Your VSTS username]
-            password = [Your VSTS access token]
-        }
-    }
     ...
+    jcenter()
 }
 ```
 Include the following dependency in your project's `build.gradle`
 ```groovy
-implementation 'com.microsoft.design:fluent-icons:1.1.1'
+implementation 'com.microsoft.design:fluent-system-icons:1.1.1'
 ```
 
 For library docs, see [android/README.md](android/README.md).
