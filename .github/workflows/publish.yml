@@ -51,7 +51,7 @@ jobs:
     - name: Build and publish Android library
       uses: eskatos/gradle-command-action@v1
       with:
-        arguments: bintrayUpload -DversionName=$LIBRARY_VERSION -DbintrayUser=${{ secrets.BINTRAY_USER }} -Dbintray.key=${{ secrets.BINTRAY_KEY }}
+        arguments: bintrayUpload -DversionName=${{ env.LIBRARY_VERSION }} -DbintrayUser=${{ secrets.BINTRAY_USER }} -Dbintray.key=${{ secrets.BINTRAY_KEY }}
         build-root-directory: android
         wrapper-directory: android
 
