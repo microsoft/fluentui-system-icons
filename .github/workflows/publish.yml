@@ -46,14 +46,14 @@ jobs:
     - name: Setup Java
       uses: actions/setup-java@v1
       with:
-        java-version: 11
+        java-version: 8
 
     # https://github.com/marketplace/actions/gradle-command
     - name: Build and publish Android library
       uses: eskatos/gradle-command-action@v1
       with:
         # publish
-        #  -DvstsAccessToken=$(System.AccessToken)
+        #  -DvstsAccessToken=$(System.AccessToken) <-- Replace by Bintray token
         arguments: build -DversionName=$LIBRARY_VERSION
         build-root-directory: android
         wrapper-directory: android
@@ -116,18 +116,32 @@ jobs:
       run: npm run deploy:android
       working-directory: importer
 
-    - uses: actions/setup-java@v1
+    - name: Setup Java
+      uses: actions/setup-java@v1
       with:
-        java-version: 11
+        java-version: 8
+
+    - name: Restore release keystore
+      run: |
+        echo "${{ secrets.ANDROID_KEYSTORE }}" > release.keystore.asc
+        gpg -d --passphase "${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" --batch release.keystore.asc > release.keystore
 
     # # https://github.com/marketplace/actions/gradle-command
-    # - uses: eskatos/gradle-command-action@v1
+    # - name: Build Android demo app
+    #   uses: eskatos/gradle-command-action@v1
     #   with:
-    #     #  -Pandroid.injected.signing.store.file=$(keystore.secureFilePath) -Pandroid.injected.signing.store.password=$(store.password) -Pandroid.injected.signing.key.alias=$(key.alias) -Pandroid.injected.signing.key.password=$(key.password)'
-    #     options: '-DversionName=$LIBRARY_VERSION -DversionCode=$LIBRARY_VERSION'
+    #     options: '-DversionName=$LIBRARY_VERSION -DversionCode=$LIBRARY_VERSION -Pandroid.injected.signing.store.file=release.keystore -Pandroid.injected.signing.store.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }} -Pandroid.injected.signing.key.alias=${{ secrets.ANDROID_KEYSTORE_ALIAS }} -Pandroid.injected.signing.key.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}'
     #     arguments: ':sample-showcase:assembleRelease'
     #     build-root-directory: android
     #     wrapper-directory: android
 
     # TODO
     # https://github.com/marketplace/actions/app-center
+    # - name: Publish apk to App Center
+    #   uses: wzieba/AppCenter-Github-Action@v1.0.0
+    #   with:
+    #     appName: ${{secrets.APP_CENTER_DEMO_APP_NAME}}
+    #     token: ${{secrets.APP_CENTER_TOKEN}}
+    #     group: Public
+    #     file: android/sample-showcase/build/outputs/apk/release/sample-showcase-release.apk
+    #     gitReleaseNotes: true
