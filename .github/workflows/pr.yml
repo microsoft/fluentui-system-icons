@@ -1,4 +1,4 @@
-name: Pull Request Validation
+name: Pull request validation
 
 on: pull_request
 
