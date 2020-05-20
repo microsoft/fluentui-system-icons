@@ -4,6 +4,7 @@ on: pull_request
 
 jobs:
   build-ios:
+    name: Build iOS library
     runs-on: ubuntu-latest
 
     steps:
@@ -22,6 +23,7 @@ jobs:
       working-directory: importer
 
   build-android:
+    name: Build Android library
     runs-on: ubuntu-latest
 
     steps:
