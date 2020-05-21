@@ -147,3 +147,4 @@ jobs:
         token: ${{ secrets.APP_CENTER_TOKEN }}
         group: Public
         file: android/sample-showcase/build/outputs/apk/release/sample-showcase-release.apk
+        releaseNotes: Please enjoy this latest version(${{ env.NEW_VERSION }}) of Fluent System Icons Demo.
