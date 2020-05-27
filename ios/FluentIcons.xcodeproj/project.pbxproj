@@ -11,11 +11,18 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		743BAF758F26C6A0BC90114C /* Pods_FluentIcons_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6095EA0034E36758029F54F /* Pods_FluentIcons_Example.framework */; };
+		C14108D40B2E6B7B111B2C0B /* Pods_FluentIcons_ExampleMacOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0C623BD26DE1B27C5592055 /* Pods_FluentIcons_ExampleMacOS.framework */; };
+		C3A080A1247DD6AF0009D6E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A080A0247DD6AF0009D6E0 /* AppDelegate.swift */; };
+		C3A080A3247DD6AF0009D6E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A080A2247DD6AF0009D6E0 /* ViewController.swift */; };
+		C3A080A5247DD6B20009D6E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3A080A4247DD6B20009D6E0 /* Assets.xcassets */; };
+		C3A080A8247DD6B20009D6E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3A080A6247DD6B20009D6E0 /* Main.storyboard */; };
 		CD15FB5C238B31FD006B9848 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD15FB5B238B31FD006B9848 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		48D9F3B728B01FDD629D7762 /* Pods-FluentIcons_ExampleMacOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FluentIcons_ExampleMacOS.release.xcconfig"; path = "Target Support Files/Pods-FluentIcons_ExampleMacOS/Pods-FluentIcons_ExampleMacOS.release.xcconfig"; sourceTree = "<group>"; };
 		5D2FB745833D074488AF1C0F /* Pods_FluentIcons_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FluentIcons_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DE0A0C5C00FFB2845ABC282 /* Pods-FluentIcons_ExampleMacOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FluentIcons_ExampleMacOS.debug.xcconfig"; path = "Target Support Files/Pods-FluentIcons_ExampleMacOS/Pods-FluentIcons_ExampleMacOS.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* FluentIcons_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FluentIcons_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -29,7 +36,15 @@
 		B6AF71400C8A4B06862C1756 /* Pods-FluentIcons_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FluentIcons_Example.debug.xcconfig"; path = "Target Support Files/Pods-FluentIcons_Example/Pods-FluentIcons_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		B74AF2844CF02BD70CF47316 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		C38B6B752384A86100819765 /* FluentIcons_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FluentIcons_Example.entitlements; sourceTree = "<group>"; };
+		C3A0809E247DD6AF0009D6E0 /* FluentIcons_ExampleMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FluentIcons_ExampleMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3A080A0247DD6AF0009D6E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C3A080A2247DD6AF0009D6E0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C3A080A4247DD6B20009D6E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C3A080A7247DD6B20009D6E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C3A080A9247DD6B20009D6E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3A080AA247DD6B20009D6E0 /* FluentIcons_ExampleMacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FluentIcons_ExampleMacOS.entitlements; sourceTree = "<group>"; };
 		CD15FB5B238B31FD006B9848 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		E0C623BD26DE1B27C5592055 /* Pods_FluentIcons_ExampleMacOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FluentIcons_ExampleMacOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5EBAB2BA31AA78115CF3B81 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		FD7C83BF6B5A3F2C41D87EFA /* Pods-FluentIcons_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FluentIcons_Tests.release.xcconfig"; path = "Target Support Files/Pods-FluentIcons_Tests/Pods-FluentIcons_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -43,6 +58,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C3A0809B247DD6AF0009D6E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C14108D40B2E6B7B111B2C0B /* Pods_FluentIcons_ExampleMacOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -51,6 +74,7 @@
 			children = (
 				B6095EA0034E36758029F54F /* Pods_FluentIcons_Example.framework */,
 				5D2FB745833D074488AF1C0F /* Pods_FluentIcons_Tests.framework */,
+				E0C623BD26DE1B27C5592055 /* Pods_FluentIcons_ExampleMacOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -62,6 +86,7 @@
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for FluentIcons */,
 				607FACE81AFB9204008FA782 /* Tests */,
+				C3A0809F247DD6AF0009D6E0 /* FluentIcons_ExampleMacOS */,
 				607FACD11AFB9204008FA782 /* Products */,
 				D0E589EB785006D3BBB69010 /* Pods */,
 				0587610C1E999F25F0F425DF /* Frameworks */,
@@ -72,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACD01AFB9204008FA782 /* FluentIcons_Example.app */,
+				C3A0809E247DD6AF0009D6E0 /* FluentIcons_ExampleMacOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -123,6 +149,19 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
+		C3A0809F247DD6AF0009D6E0 /* FluentIcons_ExampleMacOS */ = {
+			isa = PBXGroup;
+			children = (
+				C3A080A0247DD6AF0009D6E0 /* AppDelegate.swift */,
+				C3A080A2247DD6AF0009D6E0 /* ViewController.swift */,
+				C3A080A4247DD6B20009D6E0 /* Assets.xcassets */,
+				C3A080A6247DD6B20009D6E0 /* Main.storyboard */,
+				C3A080A9247DD6B20009D6E0 /* Info.plist */,
+				C3A080AA247DD6B20009D6E0 /* FluentIcons_ExampleMacOS.entitlements */,
+			);
+			path = FluentIcons_ExampleMacOS;
+			sourceTree = "<group>";
+		};
 		D0E589EB785006D3BBB69010 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +169,8 @@
 				9360ADB40CE30DDFCC4653DD /* Pods-FluentIcons_Example.release.xcconfig */,
 				997639ECDC792108C808E4F6 /* Pods-FluentIcons_Tests.debug.xcconfig */,
 				FD7C83BF6B5A3F2C41D87EFA /* Pods-FluentIcons_Tests.release.xcconfig */,
+				5DE0A0C5C00FFB2845ABC282 /* Pods-FluentIcons_ExampleMacOS.debug.xcconfig */,
+				48D9F3B728B01FDD629D7762 /* Pods-FluentIcons_ExampleMacOS.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -157,13 +198,32 @@
 			productReference = 607FACD01AFB9204008FA782 /* FluentIcons_Example.app */;
 			productType = "com.apple.product-type.application";
 		};
+		C3A0809D247DD6AF0009D6E0 /* FluentIcons_ExampleMacOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3A080AD247DD6B20009D6E0 /* Build configuration list for PBXNativeTarget "FluentIcons_ExampleMacOS" */;
+			buildPhases = (
+				06EBEE8AA74B47AC897B3761 /* [CP] Check Pods Manifest.lock */,
+				C3A0809A247DD6AF0009D6E0 /* Sources */,
+				C3A0809B247DD6AF0009D6E0 /* Frameworks */,
+				C3A0809C247DD6AF0009D6E0 /* Resources */,
+				1B2F7E14526D194D4B3A42E3 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FluentIcons_ExampleMacOS;
+			productName = FluentIcons_ExampleMacOS;
+			productReference = C3A0809E247DD6AF0009D6E0 /* FluentIcons_ExampleMacOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		607FACC81AFB9204008FA782 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
@@ -171,6 +231,11 @@
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = UBF8T346G9;
 						LastSwiftMigration = 1110;
+					};
+					C3A0809D247DD6AF0009D6E0 = {
+						CreatedOnToolsVersion = 11.4.1;
+						DevelopmentTeam = 4337ZFV4M9;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -188,6 +253,7 @@
 			projectRoot = "";
 			targets = (
 				607FACCF1AFB9204008FA782 /* FluentIcons_Example */,
+				C3A0809D247DD6AF0009D6E0 /* FluentIcons_ExampleMacOS */,
 			);
 		};
 /* End PBXProject section */
@@ -202,9 +268,58 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C3A0809C247DD6AF0009D6E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3A080A5247DD6B20009D6E0 /* Assets.xcassets in Resources */,
+				C3A080A8247DD6B20009D6E0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		06EBEE8AA74B47AC897B3761 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FluentIcons_ExampleMacOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1B2F7E14526D194D4B3A42E3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FluentIcons_ExampleMacOS/Pods-FluentIcons_ExampleMacOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FluentIcons-macOS/FluentIcons.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FluentIcons.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FluentIcons_ExampleMacOS/Pods-FluentIcons_ExampleMacOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		45C4F6C404C00DB7088BBE3D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -234,7 +349,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FluentIcons_Example/Pods-FluentIcons_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/FluentIcons/FluentIcons.framework",
+				"${BUILT_PRODUCTS_DIR}/FluentIcons-iOS/FluentIcons.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -274,6 +389,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C3A0809A247DD6AF0009D6E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3A080A3247DD6AF0009D6E0 /* ViewController.swift in Sources */,
+				C3A080A1247DD6AF0009D6E0 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -283,6 +407,14 @@
 				607FACDF1AFB9204008FA782 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		C3A080A6247DD6B20009D6E0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C3A080A7247DD6B20009D6E0 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -436,6 +568,65 @@
 			};
 			name = Release;
 		};
+		C3A080AB247DD6B20009D6E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5DE0A0C5C00FFB2845ABC282 /* Pods-FluentIcons_ExampleMacOS.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = FluentIcons_ExampleMacOS/FluentIcons_ExampleMacOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 4337ZFV4M9;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = FluentIcons_ExampleMacOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.microsoft.FluentIcons-ExampleMacOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C3A080AC247DD6B20009D6E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48D9F3B728B01FDD629D7762 /* Pods-FluentIcons_ExampleMacOS.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = FluentIcons_ExampleMacOS/FluentIcons_ExampleMacOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 4337ZFV4M9;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = FluentIcons_ExampleMacOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.microsoft.FluentIcons-ExampleMacOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -453,6 +644,15 @@
 			buildConfigurations = (
 				607FACF01AFB9204008FA782 /* Debug */,
 				607FACF11AFB9204008FA782 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3A080AD247DD6B20009D6E0 /* Build configuration list for PBXNativeTarget "FluentIcons_ExampleMacOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3A080AB247DD6B20009D6E0 /* Debug */,
+				C3A080AC247DD6B20009D6E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

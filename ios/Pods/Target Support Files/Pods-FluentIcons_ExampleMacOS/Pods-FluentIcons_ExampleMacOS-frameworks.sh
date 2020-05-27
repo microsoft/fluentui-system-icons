@@ -197,10 +197,10 @@ if [ -r "${ARTIFACT_LIST_FILE}" ]; then
 fi
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/FluentIcons-iOS/FluentIcons.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/FluentIcons-macOS/FluentIcons.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/FluentIcons-iOS/FluentIcons.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/FluentIcons-macOS/FluentIcons.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

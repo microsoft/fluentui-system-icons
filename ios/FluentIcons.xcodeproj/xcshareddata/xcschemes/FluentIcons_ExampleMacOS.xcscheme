@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1130"
+   LastUpgradeVersion = "1140"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "87323DF34848D1588788E8CEC3ABE546"
-               BuildableName = "FluentIcons.framework"
-               BlueprintName = "FluentIcons"
-               ReferencedContainer = "container:Pods.xcodeproj">
+               BlueprintIdentifier = "C3A0809D247DD6AF0009D6E0"
+               BuildableName = "FluentIcons_ExampleMacOS.app"
+               BlueprintName = "FluentIcons_ExampleMacOS"
+               ReferencedContainer = "container:FluentIcons.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -40,6 +40,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "C3A0809D247DD6AF0009D6E0"
+            BuildableName = "FluentIcons_ExampleMacOS.app"
+            BlueprintName = "FluentIcons_ExampleMacOS"
+            ReferencedContainer = "container:FluentIcons.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -47,15 +57,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "87323DF34848D1588788E8CEC3ABE546"
-            BuildableName = "FluentIcons.framework"
-            BlueprintName = "FluentIcons"
-            ReferencedContainer = "container:Pods.xcodeproj">
+            BlueprintIdentifier = "C3A0809D247DD6AF0009D6E0"
+            BuildableName = "FluentIcons_ExampleMacOS.app"
+            BlueprintName = "FluentIcons_ExampleMacOS"
+            ReferencedContainer = "container:FluentIcons.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

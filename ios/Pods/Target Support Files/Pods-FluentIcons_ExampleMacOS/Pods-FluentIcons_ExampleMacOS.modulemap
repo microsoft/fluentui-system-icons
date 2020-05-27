@@ -1,0 +1,6 @@
+framework module Pods_FluentIcons_ExampleMacOS {
+  umbrella header "Pods-FluentIcons_ExampleMacOS-umbrella.h"
+
+  export *
+  module * { export * }
+}
