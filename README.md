@@ -69,12 +69,13 @@ Our [build pipeline](https://github.com/microsoft/fluent-system-icons/actions) r
 
 ## Demo apps
 
-You can download the demo apps from AppCenter or build them following the steps below.
+You can build and run the demo apps following the steps below.
 
-### Android ([Download](https://install.appcenter.ms/orgs/Fluent-Design-Mobile/apps/Fluent-Mobile-Icons-Demo))
-1. Open the [android](android) directory in Android Studio
-2. Select the `sample-showcase` in the build configuration dropdown
-3. Click run 
+### Android
+1. Follow the **Importer** section above and run the command `npm run deploy:android`
+2. Open the [android](android) directory in Android Studio
+3. Select the `sample-showcase` in the build configuration dropdown
+4. Click run 
 
 ## Contact
 Please feel free to reach out to the following points of contact with questions or requests.
