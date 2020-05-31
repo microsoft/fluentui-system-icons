@@ -19,7 +19,11 @@ git "git@github.com:microsoft/fluent-system-icons.git" "1.1.2"
 
 ## Usage
 
+### iOS
+
 ```swift
+import FluentIcons
+
 UIImage(fluent: .appStore24Filled)
 
 # To specify a tint color
@@ -28,6 +32,14 @@ imageView.tintColor = .label
 
 # or
 let imageView = UIImage(fluent: .appStore24Regular, tintColor: .label)
+```
+
+### macOS
+
+```swift
+import FluentIcons
+
+NSImage.fluentIcon(.appStore24Filled)
 ```
 
 ## Benefits

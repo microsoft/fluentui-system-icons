@@ -1,0 +1,6 @@
+framework module FluentIcons {
+  umbrella header "FluentIcons-iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

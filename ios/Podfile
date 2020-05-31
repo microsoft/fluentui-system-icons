@@ -5,3 +5,7 @@ target 'FluentIcons_Example' do
 
 end
 
+
+target 'FluentIcons_ExampleMacOS' do
+  pod 'FluentIcons', :path => '../'
+end

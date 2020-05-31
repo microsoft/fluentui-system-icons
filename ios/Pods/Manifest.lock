@@ -1,5 +1,5 @@
 PODS:
-  - FluentIcons (1.0.146)
+  - FluentIcons (1.0.223)
 
 DEPENDENCIES:
   - FluentIcons (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  FluentIcons: 89a4618cab78e2677e3c761aceda7c3173d908e5
+  FluentIcons: 56318fbd62a909db2a6a576e64c07fee75241c43
 
-PODFILE CHECKSUM: af96719014e2deb0668944beffd86dc4da8092b5
+PODFILE CHECKSUM: 73d333b05344abafcb0b3687585d836673c863f9
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1

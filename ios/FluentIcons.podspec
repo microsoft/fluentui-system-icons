@@ -21,9 +21,13 @@ FluentIcons
   s.source           = { :git => 'https://github.com/microsoft/fluent-system-icons.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '8.0'
+  s.osx.deployment_target  = '10.12'
 
   # This podspec is symlinked to the root directory of this repo
-  s.source_files = 'ios/FluentIcons/Classes/**/*'
+  s.source_files = 'ios/FluentIcons/Classes/*.swift'
+  s.ios.source_files   = 'ios/FluentIcons/Classes/ios/*.swift'
+  s.osx.source_files   = 'ios/FluentIcons/Classes/mac/*.swift'
+
   # Require this to be used as a dynamic framework
   # `resource_bundles` are unable to load around 1 in a thousand times
   # so we need to stick to `resources` here instead.

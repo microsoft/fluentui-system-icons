@@ -1,6 +1,0 @@
-framework module FluentIcons {
-  umbrella header "FluentIcons-umbrella.h"
-
-  export *
-  module * { export * }
-}
