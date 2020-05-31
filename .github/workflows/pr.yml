@@ -1,0 +1,55 @@
+name: Pull request validation
+
+on: pull_request
+
+jobs:
+  build-ios:
+    name: Build iOS library
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node 11
+      uses: actions/setup-node@v1
+      with:
+        node-version: 11.x
+
+    - run: npm install
+      working-directory: importer
+
+    - name: Run generate script
+      run: npm run deploy:ios
+      working-directory: importer
+
+  build-android:
+    name: Build Android library
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node 11
+      uses: actions/setup-node@v1
+      with:
+        node-version: 11.x
+
+    - run: npm install
+      working-directory: importer
+
+    - name: Run generate script
+      run: npm run deploy:android
+      working-directory: importer
+
+    - name: Setup Java
+      uses: actions/setup-java@v1
+      with:
+        java-version: 11
+
+    # https://github.com/marketplace/actions/gradle-command
+    - name: Build Android library
+      uses: eskatos/gradle-command-action@v1
+      with:
+        arguments: assembleRelease
+        build-root-directory: android
+        wrapper-directory: android

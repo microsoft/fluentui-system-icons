@@ -123,4 +123,4 @@ buildTypes {
     }
 }
 ```
-~~If you prefer to only exclude the Fluent icons, please save the [keep.xml](android/sample-shrinkresources/src/main/res/raw/keep.xml) file at your project's `res/raw` directory. Please see this [Android developer guide](https://developer.android.com/studio/build/shrink-code#shrink-resources) for details about shrinking resources~~
+If you prefer to only exclude the Fluent icons, please save the [keep.xml](sample-shrinkresources/src/main/res/raw/keep.xml) file at your project's `res/raw` directory. Please see this [Android developer guide](https://developer.android.com/studio/build/shrink-code#shrink-resources) for details about shrinking resources.

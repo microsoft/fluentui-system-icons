@@ -1,27 +1,27 @@
 # Fluent System Icons
+
+![CI](https://github.com/microsoft/fluent-system-icons/workflows/CI/badge.svg)
+
 Fluent System Icons is a set of mobile platform icons from Microsoft.
 
 ![fluent system icons](art/readme-asset.png)
 
+## Icon List
+
+[View the full list of icons](icons.md)
+
 ## Installation
 ### Android
-Add the `microsoftdesign` repository to your project's top level `build.gradle`:
+The library is published via JCenter, please ensure that the `jcenter()` repository has been added to the root `build.gradle` file:
 ```groovy
 repositories {
-    maven {
-        name 'vsts-maven-microsoftdesign'
-        url 'https://pkgs.dev.azure.com/microsoftdesign/951975d5-69cc-4771-9d98-92a4b1a82b2b/_packaging/fluent-icons/maven/v1'
-        credentials {
-            username = [Your VSTS username]
-            password = [Your VSTS access token]
-        }
-    }
     ...
+    jcenter()
 }
 ```
 Include the following dependency in your project's `build.gradle`
 ```groovy
-implementation 'com.microsoft.design:fluent-icons:1.0.226'
+implementation 'com.microsoft.design:fluent-system-icons:1.1.2'
 ```
 
 For library docs, see [android/README.md](android/README.md).
@@ -30,13 +30,13 @@ For library docs, see [android/README.md](android/README.md).
 #### Cocoapods
 
 ```ruby
-pod "FluentIcons", git: "https://microsoftdesign@dev.azure.com/microsoftdesign/Design%20System/_git/fluent-mobile-icons", tag: "1.0.226"
+pod "FluentIcons", git: "https://github.com/microsoft/fluent-system-icons.git", tag: "1.1.2"
 ```
 
 #### Carthage
 
 ```bash
-git "git@ssh.dev.azure.com:v3/microsoftdesign/Design%20System/fluent-mobile-icons" "1.0.226"
+git "git@github.com:microsoft/fluent-system-icons.git" "1.1.2"
 ```
 
 For library docs, see [ios/README.md](ios/README.md).
@@ -65,20 +65,17 @@ npm run
 
 ### Build Pipeline
 
-Our [build pipeline](https://dev.azure.com/microsoftdesign/Design%20System/_build?definitionId=94&_a=summary) runs `deploy:android` and `deploy:ios` to create the libraries. The build definitions are in `azure-pipelines.yml` and `pipelines`.
+Our [build pipeline](https://github.com/microsoft/fluent-system-icons/actions) runs `deploy:android` and `deploy:ios` to create the libraries. The build definitions are located in `.github/workflows/`.
 
 ## Demo apps
 
-You can download the demo apps from AppCenter or build them following the steps below.
+You can build and run the demo apps following the steps below.
 
-### Android ([Download](https://install.appcenter.ms/orgs/Fluent-Design-Mobile/apps/Fluent-Mobile-Icons-Demo))
-1. Open the [android](android) directory in Android Studio
-2. Select the `sample-showcase` in the build configuration dropdown
-3. Click run 
-
-### Mac ([Download](https://install.appcenter.ms/orgs/Fluent-Design-Mobile/apps/Fluent-Mac-App))
-1. `open ios/FluentIcons.xcworkspace/`
-2. Product > Run
+### Android
+1. Follow the **Importer** section above and run the command `npm run deploy:android`
+2. Open the [android](android) directory in Android Studio
+3. Select the `sample-showcase` in the build configuration dropdown
+4. Click run 
 
 ## Contact
 Please feel free to reach out to the following points of contact with questions or requests.

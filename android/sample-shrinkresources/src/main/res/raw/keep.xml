@@ -5,7 +5,7 @@
   -->
 
 <resources xmlns:tools="http://schemas.android.com/tools"
-    tools:keep="@drawable/*,@color/*,@layout/*,@xml/*,@dimen/*,@integer/*,@bool/*,@anim/*,@menu/*,@string/*,@array/*,@plurals/*,@style/*,@font/*"
+    tools:shrinkMode="strict"
     tools:discard="@drawable/ic_fluent_*" />
 <!-- 
     Save this file at your project's res/raw directory to exclude unused icons in build time.
