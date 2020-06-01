@@ -174,7 +174,9 @@ def process_assets():
 
         swift_enum_file.write("/// Fluent Icons\n")
         swift_enum_file.write("///\n")
-        swift_enum_file.write("/// Docs: https://dev.azure.com/microsoftdesign/Design%20System/_git/fluent-mobile-icons?path=%2Flibrary%2Fios%2FREADME.md&version=GBlibrary\n")
+        swift_enum_file.write("/// View the full list of icons here:\n")
+        swift_enum_file.write("/// https://github.com/microsoft/fluent-system-icons/blob/master/icons.md\n")
+        swift_enum_file.write("///\n")
         swift_enum_file.write("@objc public enum {}: Int, Equatable".format(LIBRARY_NAME) + " {\n")
 
         cases_output = []
