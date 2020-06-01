@@ -96,6 +96,21 @@ jobs:
         REMOTE_REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
         git push $REMOTE_REPO HEAD:master --follow-tags --tags
 
+  publish-to-cocoapods:
+    name: Publish to Cocoapods
+    runs-on: macos-latest
+    needs: publish-library
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Deploy to Cocoapods
+      run: |
+        pod spec lint --allow-warnings
+        pod trunk push --allow-warnings
+      env:
+        COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+
   publish-android-demo:
     name: Publish Android demo app
     runs-on: ubuntu-latest
