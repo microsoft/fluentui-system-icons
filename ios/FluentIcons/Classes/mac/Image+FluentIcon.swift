@@ -14,6 +14,6 @@ public extension NSImage {
     // Force unwrap here because the resource strings
     // are generated so we can be confident that the image
     // exits at runtime.
-    return NSImage.fluentIconBundle.image(forResource: fluent.resourceString)!
+    return NSImage.fluentIconBundle.image(forResource: NSImage.Name(fluent.resourceString))!
   }
 }
