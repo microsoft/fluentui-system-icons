@@ -1,6 +1,11 @@
 apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
 
+task sourceJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier "sources"
+}
+
 project.afterEvaluate {
     publishing {
         publications {
@@ -9,6 +14,7 @@ project.afterEvaluate {
                 artifactId project.POM_ARTIFACT_ID
                 version System.getProperty("versionName", project.VERSION_NAME + "-SNAPSHOT")
                 artifact bundleReleaseAar
+                artifact sourceJar
             }
         }
     }

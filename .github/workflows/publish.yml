@@ -9,11 +9,14 @@ env:
 
 jobs:
   publish-library:
+    if: "!contains(github.event.head_commit.author.email, 'flubuild@microsoft.com')"
     name: Publish mobile libraries
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.CI_GITHUB_TOKEN }}
 
     - name: Bump version patch
       run: |
@@ -76,7 +79,7 @@ jobs:
 
     - name: Update icon sheet
       run: python3 generate_icons_md.py
-
+    
     - name: Config git credentials
       run: git config user.email "flubuild@microsoft.com" && git config user.name "Fluent Build System"
 
@@ -84,7 +87,7 @@ jobs:
       run: |
         git add -A
         git commit -m "Release $NEW_VERSION"
-
+        
     - name: Tag release
       run: git tag "$NEW_VERSION"
 
