@@ -98,7 +98,7 @@ jobs:
 
   publish-to-cocoapods:
     name: Publish to Cocoapods
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     needs: publish-library
 
     steps:
@@ -106,6 +106,7 @@ jobs:
 
     - name: Deploy to Cocoapods
       run: |
+        pod spec lint --allow-warnings
         pod trunk push --allow-warnings
       env:
         COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
