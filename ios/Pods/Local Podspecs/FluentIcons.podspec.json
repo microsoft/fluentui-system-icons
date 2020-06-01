@@ -1,9 +1,9 @@
 {
   "name": "FluentIcons",
-  "version": "1.0.223",
+  "version": "1.1.4",
   "summary": "FluentIcons",
   "description": "FluentIcons",
-  "homepage": "https://dev.azure.com/microsoftdesign/Design%20System/_git/fluent-mobile-icons",
+  "homepage": "https://github.com/microsoft/fluent-system-icons",
   "license": {
     "type": "Microsoft",
     "file": "LICENSE"
@@ -12,8 +12,8 @@
     "Microsoft, Inc.": "nicroma@microsoft.com"
   },
   "source": {
-    "git": "https://microsoftdesign@dev.azure.com/microsoftdesign/Design%20System/_git/fluent-mobile-icons",
-    "tag": "1.0.223"
+    "git": "https://github.com/microsoft/fluent-system-icons.git",
+    "tag": "1.1.4"
   },
   "platforms": {
     "ios": "8.0",
