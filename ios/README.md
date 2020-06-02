@@ -1,14 +1,12 @@
 # FluentIcons iOS
 
-![fluent design icons](../../art/readme-asset.png)
-
 ## Installation
 
 ### Cocoapods
 
 ```ruby
 use_frameworks!
-pod "FluentIcons", git: "https://github.com/microsoft/fluent-system-icons.git", tag: "1.1.9"
+pod "FluentIcons", "1.1.9"
 ```
 
 ### Carthage
