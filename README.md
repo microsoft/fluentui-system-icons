@@ -30,7 +30,9 @@ For library docs, see [android/README.md](android/README.md).
 #### Cocoapods
 
 ```ruby
-pod "FluentIcons", git: "https://github.com/microsoft/fluent-system-icons.git", tag: "1.1.9"
+use_frameworks!
+
+pod "FluentIcons", "1.1.9"
 ```
 
 #### Carthage
