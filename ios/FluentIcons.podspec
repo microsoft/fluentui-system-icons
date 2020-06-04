@@ -24,17 +24,27 @@ FluentIcons
   s.osx.deployment_target  = '10.12'
 
   # This podspec is symlinked to the root directory of this repo
-  s.source_files = 'ios/FluentIcons/Classes/*.swift'
-  s.ios.source_files   = 'ios/FluentIcons/Classes/ios/*.swift'
-  s.osx.source_files   = 'ios/FluentIcons/Classes/mac/*.swift'
+  # so all paths will need the prefix `ios/FluentIcons`
 
-  # Require this to be used as a dynamic framework
-  # `resource_bundles` are unable to load around 1 in a thousand times
-  # so we need to stick to `resources` here instead.
-  s.resource = 'ios/FluentIcons/Assets/IconAssets.xcassets'
+  s.subspec 'Code' do |sp|
+    sp.source_files = 'ios/FluentIcons/Classes/*.swift'
+    sp.ios.source_files   = 'ios/FluentIcons/Classes/ios/*.swift'
+    sp.osx.source_files   = 'ios/FluentIcons/Classes/mac/*.swift'
+  end
 
-  # Command line tool to remove unused fluent icons
-  s.preserve_path = 'ios/remove-unused-fluent-icons/run'
+  s.subspec 'Assets' do |sp|
+    # Require this to be used as a dynamic framework
+    # `resource_bundles` are unable to load around 1 in a thousand times
+    # so we need to stick to `resources` here instead.
+    sp.resource = 'ios/FluentIcons/Assets/IconAssets.xcassets'
+  end
+
+  s.subspec 'RemovalScript' do |sp|
+    # Command line tool to remove unused fluent icons
+    sp.preserve_path = 'ios/remove-unused-fluent-icons/run'
+  end
+
+  s.default_subspecs = 'Code', 'Assets', 'RemovalScript'
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
