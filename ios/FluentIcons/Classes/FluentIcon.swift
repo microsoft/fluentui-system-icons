@@ -2818,8 +2818,12 @@ import Foundation
   case thinking24Regular
   case thumbDislike20Filled
   case thumbDislike20Regular
+  case thumbDislike24Filled
+  case thumbDislike24Regular
   case thumbLike20Filled
   case thumbLike20Regular
+  case thumbLike24Filled
+  case thumbLike24Regular
   case ticket20Filled
   case ticket20Regular
   case ticket24Filled
@@ -5955,8 +5959,12 @@ import Foundation
     case .thinking24Regular: return "ic_fluent_thinking_24_regular"
     case .thumbDislike20Filled: return "ic_fluent_thumb_dislike_20_filled"
     case .thumbDislike20Regular: return "ic_fluent_thumb_dislike_20_regular"
+    case .thumbDislike24Filled: return "ic_fluent_thumb_dislike_24_filled"
+    case .thumbDislike24Regular: return "ic_fluent_thumb_dislike_24_regular"
     case .thumbLike20Filled: return "ic_fluent_thumb_like_20_filled"
     case .thumbLike20Regular: return "ic_fluent_thumb_like_20_regular"
+    case .thumbLike24Filled: return "ic_fluent_thumb_like_24_filled"
+    case .thumbLike24Regular: return "ic_fluent_thumb_like_24_regular"
     case .ticket20Filled: return "ic_fluent_ticket_20_filled"
     case .ticket20Regular: return "ic_fluent_ticket_20_regular"
     case .ticket24Filled: return "ic_fluent_ticket_24_filled"
@@ -6047,12 +6055,12 @@ import Foundation
     case .viewDesktopMobile20Regular: return "ic_fluent_view_desktop_mobile_20_regular"
     case .viewDesktopMobile24Filled: return "ic_fluent_view_desktop_mobile_24_filled"
     case .viewDesktopMobile24Regular: return "ic_fluent_view_desktop_mobile_24_regular"
+    default: break }
+    switch self {
     case .voicemail24Filled: return "ic_fluent_voicemail_24_filled"
     case .voicemail24Regular: return "ic_fluent_voicemail_24_regular"
     case .wallpaper24Filled: return "ic_fluent_wallpaper_24_filled"
     case .wallpaper24Regular: return "ic_fluent_wallpaper_24_regular"
-    default: break }
-    switch self {
     case .warning16Filled: return "ic_fluent_warning_16_filled"
     case .warning16Regular: return "ic_fluent_warning_16_regular"
     case .warning20Filled: return "ic_fluent_warning_20_filled"
@@ -6149,12 +6157,12 @@ import Foundation
     case .weatherSnowShowerDay24Regular: return "ic_fluent_weather_snow_shower_day_24_regular"
     case .weatherSnowShowerDay48Filled: return "ic_fluent_weather_snow_shower_day_48_filled"
     case .weatherSnowShowerDay48Regular: return "ic_fluent_weather_snow_shower_day_48_regular"
+    default: break }
+    switch self {
     case .weatherSnowShowerNight20Filled: return "ic_fluent_weather_snow_shower_night_20_filled"
     case .weatherSnowShowerNight20Regular: return "ic_fluent_weather_snow_shower_night_20_regular"
     case .weatherSnowShowerNight24Filled: return "ic_fluent_weather_snow_shower_night_24_filled"
     case .weatherSnowShowerNight24Regular: return "ic_fluent_weather_snow_shower_night_24_regular"
-    default: break }
-    switch self {
     case .weatherSnowShowerNight48Filled: return "ic_fluent_weather_snow_shower_night_48_filled"
     case .weatherSnowShowerNight48Regular: return "ic_fluent_weather_snow_shower_night_48_regular"
     case .weatherSnowflake20Filled: return "ic_fluent_weather_snowflake_20_filled"
@@ -9102,8 +9110,12 @@ import Foundation
     case .thinking24Regular: return ".thinking24Regular"
     case .thumbDislike20Filled: return ".thumbDislike20Filled"
     case .thumbDislike20Regular: return ".thumbDislike20Regular"
+    case .thumbDislike24Filled: return ".thumbDislike24Filled"
+    case .thumbDislike24Regular: return ".thumbDislike24Regular"
     case .thumbLike20Filled: return ".thumbLike20Filled"
     case .thumbLike20Regular: return ".thumbLike20Regular"
+    case .thumbLike24Filled: return ".thumbLike24Filled"
+    case .thumbLike24Regular: return ".thumbLike24Regular"
     case .ticket20Filled: return ".ticket20Filled"
     case .ticket20Regular: return ".ticket20Regular"
     case .ticket24Filled: return ".ticket24Filled"
@@ -9194,12 +9206,12 @@ import Foundation
     case .viewDesktopMobile20Regular: return ".viewDesktopMobile20Regular"
     case .viewDesktopMobile24Filled: return ".viewDesktopMobile24Filled"
     case .viewDesktopMobile24Regular: return ".viewDesktopMobile24Regular"
+    default: break }
+    switch self {
     case .voicemail24Filled: return ".voicemail24Filled"
     case .voicemail24Regular: return ".voicemail24Regular"
     case .wallpaper24Filled: return ".wallpaper24Filled"
     case .wallpaper24Regular: return ".wallpaper24Regular"
-    default: break }
-    switch self {
     case .warning16Filled: return ".warning16Filled"
     case .warning16Regular: return ".warning16Regular"
     case .warning20Filled: return ".warning20Filled"
@@ -9296,12 +9308,12 @@ import Foundation
     case .weatherSnowShowerDay24Regular: return ".weatherSnowShowerDay24Regular"
     case .weatherSnowShowerDay48Filled: return ".weatherSnowShowerDay48Filled"
     case .weatherSnowShowerDay48Regular: return ".weatherSnowShowerDay48Regular"
+    default: break }
+    switch self {
     case .weatherSnowShowerNight20Filled: return ".weatherSnowShowerNight20Filled"
     case .weatherSnowShowerNight20Regular: return ".weatherSnowShowerNight20Regular"
     case .weatherSnowShowerNight24Filled: return ".weatherSnowShowerNight24Filled"
     case .weatherSnowShowerNight24Regular: return ".weatherSnowShowerNight24Regular"
-    default: break }
-    switch self {
     case .weatherSnowShowerNight48Filled: return ".weatherSnowShowerNight48Filled"
     case .weatherSnowShowerNight48Regular: return ".weatherSnowShowerNight48Regular"
     case .weatherSnowflake20Filled: return ".weatherSnowflake20Filled"
@@ -10925,10 +10937,10 @@ import Foundation
       (name: "Text", weight: "regular", icons: [.text24Regular]),
       (name: "Thinking", weight: "filled", icons: [.thinking20Filled, .thinking24Filled]),
       (name: "Thinking", weight: "regular", icons: [.thinking20Regular, .thinking24Regular]),
-      (name: "Thumb Dislike", weight: "filled", icons: [.thumbDislike20Filled]),
-      (name: "Thumb Dislike", weight: "regular", icons: [.thumbDislike20Regular]),
-      (name: "Thumb Like", weight: "filled", icons: [.thumbLike20Filled]),
-      (name: "Thumb Like", weight: "regular", icons: [.thumbLike20Regular]),
+      (name: "Thumb Dislike", weight: "filled", icons: [.thumbDislike20Filled, .thumbDislike24Filled]),
+      (name: "Thumb Dislike", weight: "regular", icons: [.thumbDislike20Regular, .thumbDislike24Regular]),
+      (name: "Thumb Like", weight: "filled", icons: [.thumbLike20Filled, .thumbLike24Filled]),
+      (name: "Thumb Like", weight: "regular", icons: [.thumbLike20Regular, .thumbLike24Regular]),
       (name: "Ticket", weight: "filled", icons: [.ticket20Filled, .ticket24Filled]),
       (name: "Ticket", weight: "regular", icons: [.ticket20Regular, .ticket24Regular]),
       (name: "Time And Weather", weight: "filled", icons: [.timeAndWeather24Filled]),
