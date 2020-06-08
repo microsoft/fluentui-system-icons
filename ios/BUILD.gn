@@ -21049,10 +21049,24 @@ imageset("ic_fluent_textbox_align_20_filled") {
   ]
 }
 
+imageset("ic_fluent_textbox_align_20_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_textbox_align_20_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_textbox_align_20_regular.imageset/ic_fluent_textbox_align_20_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_textbox_align_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_textbox_align_24_filled.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_textbox_align_24_filled.imageset/ic_fluent_textbox_align_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_textbox_align_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_textbox_align_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_textbox_align_24_regular.imageset/ic_fluent_textbox_align_24_regular.pdf",
   ]
 }
 
@@ -21105,10 +21119,24 @@ imageset("ic_fluent_textbox_vertical_20_filled") {
   ]
 }
 
-imageset("ic_fluent_textbox_vertical__24_filled") {
+imageset("ic_fluent_textbox_vertical_20_regular") {
   sources = [
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_textbox_vertical__24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_textbox_vertical__24_filled.imageset/ic_fluent_textbox_vertical__24_filled.pdf",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_textbox_vertical_20_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_textbox_vertical_20_regular.imageset/ic_fluent_textbox_vertical_20_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_textbox_vertical_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_textbox_vertical_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_textbox_vertical_24_filled.imageset/ic_fluent_textbox_vertical_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_textbox_vertical_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_textbox_vertical_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_textbox_vertical_24_regular.imageset/ic_fluent_textbox_vertical_24_regular.pdf",
   ]
 }
 
