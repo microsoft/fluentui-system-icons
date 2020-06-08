@@ -3020,7 +3020,9 @@ import Foundation
   case textbox20Filled
   case textbox24Filled
   case textboxAlign20Filled
+  case textboxAlign20Regular
   case textboxAlign24Filled
+  case textboxAlign24Regular
   case textboxAlignBottom20Filled
   case textboxAlignBottom24Filled
   case textboxAlignMiddle20Filled
@@ -3028,7 +3030,9 @@ import Foundation
   case textboxAlignTop20Filled
   case textboxAlignTop24Filled
   case textboxVertical20Filled
+  case textboxVertical20Regular
   case textboxVertical24Filled
+  case textboxVertical24Regular
   case thinking20Filled
   case thinking20Regular
   case thinking24Filled
@@ -6398,7 +6402,9 @@ import Foundation
     case .textbox20Filled: return "ic_fluent_textbox_20_filled"
     case .textbox24Filled: return "ic_fluent_textbox_24_filled"
     case .textboxAlign20Filled: return "ic_fluent_textbox_align_20_filled"
+    case .textboxAlign20Regular: return "ic_fluent_textbox_align_20_regular"
     case .textboxAlign24Filled: return "ic_fluent_textbox_align_24_filled"
+    case .textboxAlign24Regular: return "ic_fluent_textbox_align_24_regular"
     case .textboxAlignBottom20Filled: return "ic_fluent_textbox_align_bottom_20_filled"
     case .textboxAlignBottom24Filled: return "ic_fluent_textbox_align_bottom_24_filled"
     case .textboxAlignMiddle20Filled: return "ic_fluent_textbox_align_middle_20_filled"
@@ -6406,7 +6412,9 @@ import Foundation
     case .textboxAlignTop20Filled: return "ic_fluent_textbox_align_top_20_filled"
     case .textboxAlignTop24Filled: return "ic_fluent_textbox_align_top_24_filled"
     case .textboxVertical20Filled: return "ic_fluent_textbox_vertical_20_filled"
+    case .textboxVertical20Regular: return "ic_fluent_textbox_vertical_20_regular"
     case .textboxVertical24Filled: return "ic_fluent_textbox_vertical_24_filled"
+    case .textboxVertical24Regular: return "ic_fluent_textbox_vertical_24_regular"
     case .thinking20Filled: return "ic_fluent_thinking_20_filled"
     case .thinking20Regular: return "ic_fluent_thinking_20_regular"
     case .thinking24Filled: return "ic_fluent_thinking_24_filled"
@@ -6488,12 +6496,12 @@ import Foundation
     case .usbStick20Filled: return "ic_fluent_usb_stick_20_filled"
     case .usbStick20Regular: return "ic_fluent_usb_stick_20_regular"
     case .usbStick24Filled: return "ic_fluent_usb_stick_24_filled"
+    default: break }
+    switch self {
     case .usbStick24Regular: return "ic_fluent_usb_stick_24_regular"
     case .video16Filled: return "ic_fluent_video_16_filled"
     case .video16Regular: return "ic_fluent_video_16_regular"
     case .video20Filled: return "ic_fluent_video_20_filled"
-    default: break }
-    switch self {
     case .video20Regular: return "ic_fluent_video_20_regular"
     case .video24Filled: return "ic_fluent_video_24_filled"
     case .video24Regular: return "ic_fluent_video_24_regular"
@@ -6590,12 +6598,12 @@ import Foundation
     case .weatherRain24Filled: return "ic_fluent_weather_rain_24_filled"
     case .weatherRain24Regular: return "ic_fluent_weather_rain_24_regular"
     case .weatherRain48Filled: return "ic_fluent_weather_rain_48_filled"
+    default: break }
+    switch self {
     case .weatherRain48Regular: return "ic_fluent_weather_rain_48_regular"
     case .weatherRainShowersDay20Filled: return "ic_fluent_weather_rain_showers_day_20_filled"
     case .weatherRainShowersDay20Regular: return "ic_fluent_weather_rain_showers_day_20_regular"
     case .weatherRainShowersDay24Filled: return "ic_fluent_weather_rain_showers_day_24_filled"
-    default: break }
-    switch self {
     case .weatherRainShowersDay24Regular: return "ic_fluent_weather_rain_showers_day_24_regular"
     case .weatherRainShowersDay48Filled: return "ic_fluent_weather_rain_showers_day_48_filled"
     case .weatherRainShowersDay48Regular: return "ic_fluent_weather_rain_showers_day_48_regular"
@@ -6692,12 +6700,12 @@ import Foundation
     case .windowInprivateAccount20Filled: return "ic_fluent_window_inprivate_account_20_filled"
     case .windowInprivateAccount20Regular: return "ic_fluent_window_inprivate_account_20_regular"
     case .windowNew20Filled: return "ic_fluent_window_new_20_filled"
+    default: break }
+    switch self {
     case .windowNew20Regular: return "ic_fluent_window_new_20_regular"
     case .windowShield16Filled: return "ic_fluent_window_shield_16_filled"
     case .windowShield16Regular: return "ic_fluent_window_shield_16_regular"
     case .windowShield20Filled: return "ic_fluent_window_shield_20_filled"
-    default: break }
-    switch self {
     case .windowShield20Regular: return "ic_fluent_window_shield_20_regular"
     case .windowShield24Filled: return "ic_fluent_window_shield_24_filled"
     case .windowShield24Regular: return "ic_fluent_window_shield_24_regular"
@@ -9788,7 +9796,9 @@ import Foundation
     case .textbox20Filled: return ".textbox20Filled"
     case .textbox24Filled: return ".textbox24Filled"
     case .textboxAlign20Filled: return ".textboxAlign20Filled"
+    case .textboxAlign20Regular: return ".textboxAlign20Regular"
     case .textboxAlign24Filled: return ".textboxAlign24Filled"
+    case .textboxAlign24Regular: return ".textboxAlign24Regular"
     case .textboxAlignBottom20Filled: return ".textboxAlignBottom20Filled"
     case .textboxAlignBottom24Filled: return ".textboxAlignBottom24Filled"
     case .textboxAlignMiddle20Filled: return ".textboxAlignMiddle20Filled"
@@ -9796,7 +9806,9 @@ import Foundation
     case .textboxAlignTop20Filled: return ".textboxAlignTop20Filled"
     case .textboxAlignTop24Filled: return ".textboxAlignTop24Filled"
     case .textboxVertical20Filled: return ".textboxVertical20Filled"
+    case .textboxVertical20Regular: return ".textboxVertical20Regular"
     case .textboxVertical24Filled: return ".textboxVertical24Filled"
+    case .textboxVertical24Regular: return ".textboxVertical24Regular"
     case .thinking20Filled: return ".thinking20Filled"
     case .thinking20Regular: return ".thinking20Regular"
     case .thinking24Filled: return ".thinking24Filled"
@@ -9878,12 +9890,12 @@ import Foundation
     case .usbStick20Filled: return ".usbStick20Filled"
     case .usbStick20Regular: return ".usbStick20Regular"
     case .usbStick24Filled: return ".usbStick24Filled"
+    default: break }
+    switch self {
     case .usbStick24Regular: return ".usbStick24Regular"
     case .video16Filled: return ".video16Filled"
     case .video16Regular: return ".video16Regular"
     case .video20Filled: return ".video20Filled"
-    default: break }
-    switch self {
     case .video20Regular: return ".video20Regular"
     case .video24Filled: return ".video24Filled"
     case .video24Regular: return ".video24Regular"
@@ -9980,12 +9992,12 @@ import Foundation
     case .weatherRain24Filled: return ".weatherRain24Filled"
     case .weatherRain24Regular: return ".weatherRain24Regular"
     case .weatherRain48Filled: return ".weatherRain48Filled"
+    default: break }
+    switch self {
     case .weatherRain48Regular: return ".weatherRain48Regular"
     case .weatherRainShowersDay20Filled: return ".weatherRainShowersDay20Filled"
     case .weatherRainShowersDay20Regular: return ".weatherRainShowersDay20Regular"
     case .weatherRainShowersDay24Filled: return ".weatherRainShowersDay24Filled"
-    default: break }
-    switch self {
     case .weatherRainShowersDay24Regular: return ".weatherRainShowersDay24Regular"
     case .weatherRainShowersDay48Filled: return ".weatherRainShowersDay48Filled"
     case .weatherRainShowersDay48Regular: return ".weatherRainShowersDay48Regular"
@@ -10082,12 +10094,12 @@ import Foundation
     case .windowInprivateAccount20Filled: return ".windowInprivateAccount20Filled"
     case .windowInprivateAccount20Regular: return ".windowInprivateAccount20Regular"
     case .windowNew20Filled: return ".windowNew20Filled"
+    default: break }
+    switch self {
     case .windowNew20Regular: return ".windowNew20Regular"
     case .windowShield16Filled: return ".windowShield16Filled"
     case .windowShield16Regular: return ".windowShield16Regular"
     case .windowShield20Filled: return ".windowShield20Filled"
-    default: break }
-    switch self {
     case .windowShield20Regular: return ".windowShield20Regular"
     case .windowShield24Filled: return ".windowShield24Filled"
     case .windowShield24Regular: return ".windowShield24Regular"
@@ -11742,7 +11754,9 @@ import Foundation
       (name: "Textbox Align Middle", weight: "filled", icons: [.textboxAlignMiddle20Filled, .textboxAlignMiddle24Filled]),
       (name: "Textbox Align Top", weight: "filled", icons: [.textboxAlignTop20Filled, .textboxAlignTop24Filled]),
       (name: "Textbox Align", weight: "filled", icons: [.textboxAlign20Filled, .textboxAlign24Filled]),
+      (name: "Textbox Align", weight: "regular", icons: [.textboxAlign20Regular, .textboxAlign24Regular]),
       (name: "Textbox Vertical", weight: "filled", icons: [.textboxVertical20Filled, .textboxVertical24Filled]),
+      (name: "Textbox Vertical", weight: "regular", icons: [.textboxVertical20Regular, .textboxVertical24Regular]),
       (name: "Textbox", weight: "filled", icons: [.textbox20Filled, .textbox24Filled]),
       (name: "Thinking", weight: "filled", icons: [.thinking20Filled, .thinking24Filled]),
       (name: "Thinking", weight: "regular", icons: [.thinking20Regular, .thinking24Regular]),
