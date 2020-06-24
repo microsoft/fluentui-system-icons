@@ -12,7 +12,7 @@ pod "FluentIcons", "1.1.22"
 ### Carthage
 
 ```bash
-git "git@github.com:microsoft/fluent-system-icons.git" "1.1.22"
+git "git@github.com:microsoft/fluentui-system-icons.git" "1.1.22"
 ```
 
 ## Usage
