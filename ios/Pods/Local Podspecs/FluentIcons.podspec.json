@@ -3,7 +3,7 @@
   "version": "1.1.4",
   "summary": "FluentIcons",
   "description": "FluentIcons",
-  "homepage": "https://github.com/microsoft/fluent-system-icons",
+  "homepage": "https://github.com/microsoft/fluentui-system-icons",
   "license": {
     "type": "Microsoft",
     "file": "LICENSE"
@@ -12,7 +12,7 @@
     "Microsoft, Inc.": "nicroma@microsoft.com"
   },
   "source": {
-    "git": "https://github.com/microsoft/fluent-system-icons.git",
+    "git": "https://github.com/microsoft/fluentui-system-icons.git",
     "tag": "1.1.4"
   },
   "platforms": {
