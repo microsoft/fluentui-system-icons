@@ -139,7 +139,7 @@ jobs:
     - name: Build Android demo app
       uses: eskatos/gradle-command-action@v1
       with:
-        arguments: ':sample-showcase:assembleRelease -DversionName=${{ env.NEW_VERSION }} -DversionCode=${{ github.run_number }} -Pandroid.injected.signing.store.file=/home/runner/work/fluent-system-icons/fluent-system-icons/release.keystore -Pandroid.injected.signing.store.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }} -Pandroid.injected.signing.key.alias=${{ secrets.ANDROID_KEYSTORE_ALIAS }} -Pandroid.injected.signing.key.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}'
+        arguments: ':sample-showcase:assembleRelease -DversionName=${{ env.NEW_VERSION }} -DversionCode=${{ github.run_number }} -Pandroid.injected.signing.store.file=/home/runner/work/fluentui-system-icons/fluentui-system-icons/release.keystore -Pandroid.injected.signing.store.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }} -Pandroid.injected.signing.key.alias=${{ secrets.ANDROID_KEYSTORE_ALIAS }} -Pandroid.injected.signing.key.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}'
         build-root-directory: android
         wrapper-directory: android
 
