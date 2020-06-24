@@ -1,6 +1,6 @@
 # Fluent System Icons
 
-![CI](https://github.com/microsoft/fluent-system-icons/workflows/CI/badge.svg)
+![CI](https://github.com/microsoft/fluentui-system-icons/workflows/CI/badge.svg)
 
 Fluent System Icons is a set of mobile platform icons from Microsoft.
 
