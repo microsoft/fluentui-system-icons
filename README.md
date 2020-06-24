@@ -67,7 +67,7 @@ npm run
 
 ### Build Pipeline
 
-Our [build pipeline](https://github.com/microsoft/fluent-system-icons/actions) runs `deploy:android` and `deploy:ios` to create the libraries. The build definitions are located in `.github/workflows/`.
+Our [build pipeline](https://github.com/microsoft/fluentui-system-icons/actions) runs `deploy:android` and `deploy:ios` to create the libraries. The build definitions are located in `.github/workflows/`.
 
 ## Demo apps
 
