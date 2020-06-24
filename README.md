@@ -38,7 +38,7 @@ pod "FluentIcons", "1.1.22"
 #### Carthage
 
 ```bash
-git "git@github.com:microsoft/fluent-system-icons.git" "1.1.22"
+git "git@github.com:microsoft/fluentui-system-icons.git" "1.1.22"
 ```
 
 For library docs, see [ios/README.md](ios/README.md).
