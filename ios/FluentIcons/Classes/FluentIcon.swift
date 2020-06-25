@@ -42,12 +42,6 @@ import Foundation
   case addCircle24Regular
   case addCircle28Filled
   case addCircle28Regular
-  case addressBook16Filled
-  case addressBook16Regular
-  case addressBook20Filled
-  case addressBook20Regular
-  case addressBookNumber24Filled
-  case addressBookNumber24Regular
   case airplane20Filled
   case airplane20Regular
   case airplane24Filled
@@ -416,6 +410,12 @@ import Foundation
   case bookFormulaStatistics24Regular
   case bookFormulaText24Filled
   case bookFormulaText24Regular
+  case bookNumber16Filled
+  case bookNumber16Regular
+  case bookNumber20Filled
+  case bookNumber20Regular
+  case bookNumber24Filled
+  case bookNumber24Regular
   case bookmark16Filled
   case bookmark16Regular
   case bookmark24Filled
@@ -3327,12 +3327,6 @@ import Foundation
     case .addCircle24Regular: return "ic_fluent_add_circle_24_regular"
     case .addCircle28Filled: return "ic_fluent_add_circle_28_filled"
     case .addCircle28Regular: return "ic_fluent_add_circle_28_regular"
-    case .addressBook16Filled: return "ic_fluent_address_book_16_filled"
-    case .addressBook16Regular: return "ic_fluent_address_book_16_regular"
-    case .addressBook20Filled: return "ic_fluent_address_book_20_filled"
-    case .addressBook20Regular: return "ic_fluent_address_book_20_regular"
-    case .addressBookNumber24Filled: return "ic_fluent_address_book_number_24_filled"
-    case .addressBookNumber24Regular: return "ic_fluent_address_book_number_24_regular"
     case .airplane20Filled: return "ic_fluent_airplane_20_filled"
     case .airplane20Regular: return "ic_fluent_airplane_20_regular"
     case .airplane24Filled: return "ic_fluent_airplane_24_filled"
@@ -3399,14 +3393,14 @@ import Foundation
     case .arrowCounterclockwise20Regular: return "ic_fluent_arrow_counterclockwise_20_regular"
     case .arrowCounterclockwise24Filled: return "ic_fluent_arrow_counterclockwise_24_filled"
     case .arrowCounterclockwise24Regular: return "ic_fluent_arrow_counterclockwise_24_regular"
-    default: break }
-    switch self {
     case .arrowCurveRight20Filled: return "ic_fluent_arrow_curve_right_20_filled"
     case .arrowCurveRight20Regular: return "ic_fluent_arrow_curve_right_20_regular"
     case .arrowCurveRight24Filled: return "ic_fluent_arrow_curve_right_24_filled"
     case .arrowCurveRight24Regular: return "ic_fluent_arrow_curve_right_24_regular"
     case .arrowDown16Filled: return "ic_fluent_arrow_down_16_filled"
     case .arrowDown16Regular: return "ic_fluent_arrow_down_16_regular"
+    default: break }
+    switch self {
     case .arrowDown20Filled: return "ic_fluent_arrow_down_20_filled"
     case .arrowDown20Regular: return "ic_fluent_arrow_down_20_regular"
     case .arrowDown24Filled: return "ic_fluent_arrow_down_24_filled"
@@ -3501,14 +3495,14 @@ import Foundation
     case .arrowReplyAll16Regular: return "ic_fluent_arrow_reply_all_16_regular"
     case .arrowReplyAll20Filled: return "ic_fluent_arrow_reply_all_20_filled"
     case .arrowReplyAll20Regular: return "ic_fluent_arrow_reply_all_20_regular"
-    default: break }
-    switch self {
     case .arrowReplyAll24Filled: return "ic_fluent_arrow_reply_all_24_filled"
     case .arrowReplyAll24Regular: return "ic_fluent_arrow_reply_all_24_regular"
     case .arrowReplyAll48Filled: return "ic_fluent_arrow_reply_all_48_filled"
     case .arrowReplyAll48Regular: return "ic_fluent_arrow_reply_all_48_regular"
     case .arrowRight20Filled: return "ic_fluent_arrow_right_20_filled"
     case .arrowRight20Regular: return "ic_fluent_arrow_right_20_regular"
+    default: break }
+    switch self {
     case .arrowRight24Filled: return "ic_fluent_arrow_right_24_filled"
     case .arrowRight24Regular: return "ic_fluent_arrow_right_24_regular"
     case .arrowRight28Filled: return "ic_fluent_arrow_right_28_filled"
@@ -3603,14 +3597,14 @@ import Foundation
     case .battery020Regular: return "ic_fluent_battery_0_20_regular"
     case .battery024Filled: return "ic_fluent_battery_0_24_filled"
     case .battery024Regular: return "ic_fluent_battery_0_24_regular"
-    default: break }
-    switch self {
     case .battery120Filled: return "ic_fluent_battery_1_20_filled"
     case .battery120Regular: return "ic_fluent_battery_1_20_regular"
     case .battery124Filled: return "ic_fluent_battery_1_24_filled"
     case .battery124Regular: return "ic_fluent_battery_1_24_regular"
     case .battery220Filled: return "ic_fluent_battery_2_20_filled"
     case .battery220Regular: return "ic_fluent_battery_2_20_regular"
+    default: break }
+    switch self {
     case .battery224Filled: return "ic_fluent_battery_2_24_filled"
     case .battery224Regular: return "ic_fluent_battery_2_24_regular"
     case .battery320Filled: return "ic_fluent_battery_3_20_filled"
@@ -3705,10 +3699,16 @@ import Foundation
     case .bookFormulaRecent24Regular: return "ic_fluent_book_formula_recent_24_regular"
     case .bookFormulaStatistics24Filled: return "ic_fluent_book_formula_statistics_24_filled"
     case .bookFormulaStatistics24Regular: return "ic_fluent_book_formula_statistics_24_regular"
-    default: break }
-    switch self {
     case .bookFormulaText24Filled: return "ic_fluent_book_formula_text_24_filled"
     case .bookFormulaText24Regular: return "ic_fluent_book_formula_text_24_regular"
+    case .bookNumber16Filled: return "ic_fluent_book_number_16_filled"
+    case .bookNumber16Regular: return "ic_fluent_book_number_16_regular"
+    case .bookNumber20Filled: return "ic_fluent_book_number_20_filled"
+    case .bookNumber20Regular: return "ic_fluent_book_number_20_regular"
+    default: break }
+    switch self {
+    case .bookNumber24Filled: return "ic_fluent_book_number_24_filled"
+    case .bookNumber24Regular: return "ic_fluent_book_number_24_regular"
     case .bookmark16Filled: return "ic_fluent_bookmark_16_filled"
     case .bookmark16Regular: return "ic_fluent_bookmark_16_regular"
     case .bookmark24Filled: return "ic_fluent_bookmark_24_filled"
@@ -6682,12 +6682,6 @@ import Foundation
     case .addCircle24Regular: return ".addCircle24Regular"
     case .addCircle28Filled: return ".addCircle28Filled"
     case .addCircle28Regular: return ".addCircle28Regular"
-    case .addressBook16Filled: return ".addressBook16Filled"
-    case .addressBook16Regular: return ".addressBook16Regular"
-    case .addressBook20Filled: return ".addressBook20Filled"
-    case .addressBook20Regular: return ".addressBook20Regular"
-    case .addressBookNumber24Filled: return ".addressBookNumber24Filled"
-    case .addressBookNumber24Regular: return ".addressBookNumber24Regular"
     case .airplane20Filled: return ".airplane20Filled"
     case .airplane20Regular: return ".airplane20Regular"
     case .airplane24Filled: return ".airplane24Filled"
@@ -6754,14 +6748,14 @@ import Foundation
     case .arrowCounterclockwise20Regular: return ".arrowCounterclockwise20Regular"
     case .arrowCounterclockwise24Filled: return ".arrowCounterclockwise24Filled"
     case .arrowCounterclockwise24Regular: return ".arrowCounterclockwise24Regular"
-    default: break }
-    switch self {
     case .arrowCurveRight20Filled: return ".arrowCurveRight20Filled"
     case .arrowCurveRight20Regular: return ".arrowCurveRight20Regular"
     case .arrowCurveRight24Filled: return ".arrowCurveRight24Filled"
     case .arrowCurveRight24Regular: return ".arrowCurveRight24Regular"
     case .arrowDown16Filled: return ".arrowDown16Filled"
     case .arrowDown16Regular: return ".arrowDown16Regular"
+    default: break }
+    switch self {
     case .arrowDown20Filled: return ".arrowDown20Filled"
     case .arrowDown20Regular: return ".arrowDown20Regular"
     case .arrowDown24Filled: return ".arrowDown24Filled"
@@ -6856,14 +6850,14 @@ import Foundation
     case .arrowReplyAll16Regular: return ".arrowReplyAll16Regular"
     case .arrowReplyAll20Filled: return ".arrowReplyAll20Filled"
     case .arrowReplyAll20Regular: return ".arrowReplyAll20Regular"
-    default: break }
-    switch self {
     case .arrowReplyAll24Filled: return ".arrowReplyAll24Filled"
     case .arrowReplyAll24Regular: return ".arrowReplyAll24Regular"
     case .arrowReplyAll48Filled: return ".arrowReplyAll48Filled"
     case .arrowReplyAll48Regular: return ".arrowReplyAll48Regular"
     case .arrowRight20Filled: return ".arrowRight20Filled"
     case .arrowRight20Regular: return ".arrowRight20Regular"
+    default: break }
+    switch self {
     case .arrowRight24Filled: return ".arrowRight24Filled"
     case .arrowRight24Regular: return ".arrowRight24Regular"
     case .arrowRight28Filled: return ".arrowRight28Filled"
@@ -6958,14 +6952,14 @@ import Foundation
     case .battery020Regular: return ".battery020Regular"
     case .battery024Filled: return ".battery024Filled"
     case .battery024Regular: return ".battery024Regular"
-    default: break }
-    switch self {
     case .battery120Filled: return ".battery120Filled"
     case .battery120Regular: return ".battery120Regular"
     case .battery124Filled: return ".battery124Filled"
     case .battery124Regular: return ".battery124Regular"
     case .battery220Filled: return ".battery220Filled"
     case .battery220Regular: return ".battery220Regular"
+    default: break }
+    switch self {
     case .battery224Filled: return ".battery224Filled"
     case .battery224Regular: return ".battery224Regular"
     case .battery320Filled: return ".battery320Filled"
@@ -7060,10 +7054,16 @@ import Foundation
     case .bookFormulaRecent24Regular: return ".bookFormulaRecent24Regular"
     case .bookFormulaStatistics24Filled: return ".bookFormulaStatistics24Filled"
     case .bookFormulaStatistics24Regular: return ".bookFormulaStatistics24Regular"
-    default: break }
-    switch self {
     case .bookFormulaText24Filled: return ".bookFormulaText24Filled"
     case .bookFormulaText24Regular: return ".bookFormulaText24Regular"
+    case .bookNumber16Filled: return ".bookNumber16Filled"
+    case .bookNumber16Regular: return ".bookNumber16Regular"
+    case .bookNumber20Filled: return ".bookNumber20Filled"
+    case .bookNumber20Regular: return ".bookNumber20Regular"
+    default: break }
+    switch self {
+    case .bookNumber24Filled: return ".bookNumber24Filled"
+    case .bookNumber24Regular: return ".bookNumber24Regular"
     case .bookmark16Filled: return ".bookmark16Filled"
     case .bookmark16Regular: return ".bookmark16Regular"
     case .bookmark24Filled: return ".bookmark24Filled"
@@ -10022,10 +10022,6 @@ import Foundation
       (name: "Add Circle", weight: "regular", icons: [.addCircle20Regular, .addCircle24Regular, .addCircle28Regular]),
       (name: "Add", weight: "filled", icons: [.add12Filled, .add16Filled, .add20Filled, .add24Filled, .add28Filled]),
       (name: "Add", weight: "regular", icons: [.add12Regular, .add16Regular, .add20Regular, .add24Regular, .add28Regular]),
-      (name: "Address Book Number", weight: "filled", icons: [.addressBookNumber24Filled]),
-      (name: "Address Book Number", weight: "regular", icons: [.addressBookNumber24Regular]),
-      (name: "Address Book", weight: "filled", icons: [.addressBook16Filled, .addressBook20Filled]),
-      (name: "Address Book", weight: "regular", icons: [.addressBook16Regular, .addressBook20Regular]),
       (name: "Airplane", weight: "filled", icons: [.airplane20Filled, .airplane24Filled]),
       (name: "Airplane", weight: "regular", icons: [.airplane20Regular, .airplane24Regular]),
       (name: "Alert Off", weight: "filled", icons: [.alertOff20Filled, .alertOff24Filled, .alertOff28Filled]),
@@ -10222,6 +10218,8 @@ import Foundation
       (name: "Book Formula Statistics", weight: "regular", icons: [.bookFormulaStatistics24Regular]),
       (name: "Book Formula Text", weight: "filled", icons: [.bookFormulaText24Filled]),
       (name: "Book Formula Text", weight: "regular", icons: [.bookFormulaText24Regular]),
+      (name: "Book Number", weight: "filled", icons: [.bookNumber16Filled, .bookNumber20Filled, .bookNumber24Filled]),
+      (name: "Book Number", weight: "regular", icons: [.bookNumber16Regular, .bookNumber20Regular, .bookNumber24Regular]),
       (name: "Bookmark Off", weight: "filled", icons: [.bookmarkOff24Filled]),
       (name: "Bookmark Off", weight: "regular", icons: [.bookmarkOff24Regular]),
       (name: "Bookmark", weight: "filled", icons: [.bookmark16Filled, .bookmark24Filled]),
