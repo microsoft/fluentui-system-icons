@@ -1,10 +1,7 @@
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT license.
 
-import json
 import os
-import shutil
-from collections import defaultdict
 
 LIBRARY_NAME = 'library'
 
