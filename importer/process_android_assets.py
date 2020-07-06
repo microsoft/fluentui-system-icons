@@ -37,7 +37,6 @@ def process_assets():
         gn_file.write("#\n")
         gn_file.write("#  Copyright (c) Microsoft Corporation. All rights reserved.\n")
         gn_file.write("#\n")
-
         gn_file.write("#  This file is auto generated\n")
         gn_file.write("#  Do not make edits or they will be removed later\n")
         gn_file.write("#\n\n")
