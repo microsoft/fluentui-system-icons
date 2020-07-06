@@ -18,6 +18,7 @@ def process_assets():
             continue
         icon_file_names.append(file_name)
     icon_file_names.sort()
+
     #colors
     color_file_names = []
     for file_name in os.listdir(color_assets_path):
@@ -40,9 +41,7 @@ def process_assets():
         gn_file.write("#  This file is auto generated\n")
         gn_file.write("#  Do not make edits or they will be removed later\n")
         gn_file.write("#\n\n")
-
         gn_file.write("import(\"//build/config/android/rules.gni\")\n\n")
-        
         gn_file.write("android_resources(\"fluent_icon_resources\") {\n")
         gn_file.write("  custom_package = \"com.microsoft.fluent.mobile.icons\"\n")
         gn_file.write("  sources = [\n")
@@ -54,7 +53,6 @@ def process_assets():
         for file_name in color_file_names:
             file_path = "    \"../android/library/src/main/res/color/" + file_name + "\",\n"
             gn_file.write(file_path)
-
 
         gn_file.write("  ]\n")
         gn_file.write("}\n")
