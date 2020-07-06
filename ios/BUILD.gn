@@ -20881,6 +20881,13 @@ imageset("ic_fluent_text_sort_descending_20_regular") {
   ]
 }
 
+imageset("ic_fluent_text_strikethrough_20_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_20_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_20_filled.imageset/ic_fluent_text_strikethrough_20_filled.pdf",
+  ]
+}
+
 imageset("ic_fluent_text_strikethrough_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_20_regular.imageset/Contents.json",
