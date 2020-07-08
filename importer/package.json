@@ -8,7 +8,7 @@
     "clean": "rm -rf dist/*",
     "build:android": "node generate.js --source=../assets --dest=./dist --extension=svg && sh tools/vd-tool/bin/vd-tool -c -in ./dist -out ./dist && rm ./dist/*.svg && avocado $(find ./dist/ -type f ! -name \"*_selector.xml\") && replace '#212121' '@color/fluent_default_icon_tint' ./dist/* && replace '\"http://schemas.android.com/apk/res/android\"' '\"http://schemas.android.com/apk/res/android\" android:autoMirrored=\"true\"' $(awk '$0=\"./dist/\"$0\".xml\"' rtl.txt)",
     "build:ios": "node generate.js --source=../assets --dest=./dist --extension=pdf",
-    "deploy:android": "npm run build:android && rm -rf ../android/library/src/main/res/drawable && mkdir ../android/library/src/main/res/drawable && cp -a ./dist/*.xml ../android/library/src/main/res/drawable && python3 process_android_assets.py && npm run clean",
+    "deploy:android": "npm run build:android && rm -rf ../android/library/src/main/res/drawable && mkdir ../android/library/src/main/res/drawable && cp -a ./dist/*.xml ../android/library/src/main/res/drawable && npm run clean",
     "deploy:ios": "npm run build:ios && python3 process_ios_assets.py && npm run clean"
   },
   "author": "Microsoft Inc.",
