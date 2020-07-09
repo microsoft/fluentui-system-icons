@@ -15,6 +15,5 @@ importer/dist/*
 
 .vscode/
 
-android/library/src/main/res/drawable/
 xcuserdata
 /ios/FluentIcons/Tests
