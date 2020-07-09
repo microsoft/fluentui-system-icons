@@ -2996,6 +2996,7 @@ import Foundation
   case textSortAscending20Regular
   case textSortDescending20Filled
   case textSortDescending20Regular
+  case textStrikethrough20Filled
   case textStrikethrough20Regular
   case textStrikethrough24Filled
   case textStrikethrough24Regular
@@ -6377,6 +6378,7 @@ import Foundation
     case .textSortAscending20Regular: return "ic_fluent_text_sort_ascending_20_regular"
     case .textSortDescending20Filled: return "ic_fluent_text_sort_descending_20_filled"
     case .textSortDescending20Regular: return "ic_fluent_text_sort_descending_20_regular"
+    case .textStrikethrough20Filled: return "ic_fluent_text_strikethrough_20_filled"
     case .textStrikethrough20Regular: return "ic_fluent_text_strikethrough_20_regular"
     case .textStrikethrough24Filled: return "ic_fluent_text_strikethrough_24_filled"
     case .textStrikethrough24Regular: return "ic_fluent_text_strikethrough_24_regular"
@@ -6394,9 +6396,9 @@ import Foundation
     case .textUnderline24Regular: return "ic_fluent_text_underline_24_regular"
     case .textWordCount20Filled: return "ic_fluent_text_word_count_20_filled"
     case .textWordCount20Regular: return "ic_fluent_text_word_count_20_regular"
-    case .textWordCount24Filled: return "ic_fluent_text_word_count_24_filled"
     default: break }
     switch self {
+    case .textWordCount24Filled: return "ic_fluent_text_word_count_24_filled"
     case .textWordCount24Regular: return "ic_fluent_text_word_count_24_regular"
     case .textbox20Filled: return "ic_fluent_textbox_20_filled"
     case .textbox20Regular: return "ic_fluent_textbox_20_regular"
@@ -6496,9 +6498,9 @@ import Foundation
     case .usbPort24Filled: return "ic_fluent_usb_port_24_filled"
     case .usbPort24Regular: return "ic_fluent_usb_port_24_regular"
     case .usbStick20Filled: return "ic_fluent_usb_stick_20_filled"
-    case .usbStick20Regular: return "ic_fluent_usb_stick_20_regular"
     default: break }
     switch self {
+    case .usbStick20Regular: return "ic_fluent_usb_stick_20_regular"
     case .usbStick24Filled: return "ic_fluent_usb_stick_24_filled"
     case .usbStick24Regular: return "ic_fluent_usb_stick_24_regular"
     case .video16Filled: return "ic_fluent_video_16_filled"
@@ -6598,9 +6600,9 @@ import Foundation
     case .weatherRain20Filled: return "ic_fluent_weather_rain_20_filled"
     case .weatherRain20Regular: return "ic_fluent_weather_rain_20_regular"
     case .weatherRain24Filled: return "ic_fluent_weather_rain_24_filled"
-    case .weatherRain24Regular: return "ic_fluent_weather_rain_24_regular"
     default: break }
     switch self {
+    case .weatherRain24Regular: return "ic_fluent_weather_rain_24_regular"
     case .weatherRain48Filled: return "ic_fluent_weather_rain_48_filled"
     case .weatherRain48Regular: return "ic_fluent_weather_rain_48_regular"
     case .weatherRainShowersDay20Filled: return "ic_fluent_weather_rain_showers_day_20_filled"
@@ -6700,9 +6702,9 @@ import Foundation
     case .windowInprivate20Filled: return "ic_fluent_window_inprivate_20_filled"
     case .windowInprivate20Regular: return "ic_fluent_window_inprivate_20_regular"
     case .windowInprivateAccount20Filled: return "ic_fluent_window_inprivate_account_20_filled"
-    case .windowInprivateAccount20Regular: return "ic_fluent_window_inprivate_account_20_regular"
     default: break }
     switch self {
+    case .windowInprivateAccount20Regular: return "ic_fluent_window_inprivate_account_20_regular"
     case .windowNew20Filled: return "ic_fluent_window_new_20_filled"
     case .windowNew20Regular: return "ic_fluent_window_new_20_regular"
     case .windowShield16Filled: return "ic_fluent_window_shield_16_filled"
@@ -9772,6 +9774,7 @@ import Foundation
     case .textSortAscending20Regular: return ".textSortAscending20Regular"
     case .textSortDescending20Filled: return ".textSortDescending20Filled"
     case .textSortDescending20Regular: return ".textSortDescending20Regular"
+    case .textStrikethrough20Filled: return ".textStrikethrough20Filled"
     case .textStrikethrough20Regular: return ".textStrikethrough20Regular"
     case .textStrikethrough24Filled: return ".textStrikethrough24Filled"
     case .textStrikethrough24Regular: return ".textStrikethrough24Regular"
@@ -9789,9 +9792,9 @@ import Foundation
     case .textUnderline24Regular: return ".textUnderline24Regular"
     case .textWordCount20Filled: return ".textWordCount20Filled"
     case .textWordCount20Regular: return ".textWordCount20Regular"
-    case .textWordCount24Filled: return ".textWordCount24Filled"
     default: break }
     switch self {
+    case .textWordCount24Filled: return ".textWordCount24Filled"
     case .textWordCount24Regular: return ".textWordCount24Regular"
     case .textbox20Filled: return ".textbox20Filled"
     case .textbox20Regular: return ".textbox20Regular"
@@ -9891,9 +9894,9 @@ import Foundation
     case .usbPort24Filled: return ".usbPort24Filled"
     case .usbPort24Regular: return ".usbPort24Regular"
     case .usbStick20Filled: return ".usbStick20Filled"
-    case .usbStick20Regular: return ".usbStick20Regular"
     default: break }
     switch self {
+    case .usbStick20Regular: return ".usbStick20Regular"
     case .usbStick24Filled: return ".usbStick24Filled"
     case .usbStick24Regular: return ".usbStick24Regular"
     case .video16Filled: return ".video16Filled"
@@ -9993,9 +9996,9 @@ import Foundation
     case .weatherRain20Filled: return ".weatherRain20Filled"
     case .weatherRain20Regular: return ".weatherRain20Regular"
     case .weatherRain24Filled: return ".weatherRain24Filled"
-    case .weatherRain24Regular: return ".weatherRain24Regular"
     default: break }
     switch self {
+    case .weatherRain24Regular: return ".weatherRain24Regular"
     case .weatherRain48Filled: return ".weatherRain48Filled"
     case .weatherRain48Regular: return ".weatherRain48Regular"
     case .weatherRainShowersDay20Filled: return ".weatherRainShowersDay20Filled"
@@ -10095,9 +10098,9 @@ import Foundation
     case .windowInprivate20Filled: return ".windowInprivate20Filled"
     case .windowInprivate20Regular: return ".windowInprivate20Regular"
     case .windowInprivateAccount20Filled: return ".windowInprivateAccount20Filled"
-    case .windowInprivateAccount20Regular: return ".windowInprivateAccount20Regular"
     default: break }
     switch self {
+    case .windowInprivateAccount20Regular: return ".windowInprivateAccount20Regular"
     case .windowNew20Filled: return ".windowNew20Filled"
     case .windowNew20Regular: return ".windowNew20Regular"
     case .windowShield16Filled: return ".windowShield16Filled"
@@ -11673,7 +11676,7 @@ import Foundation
       (name: "Text Sort Ascending", weight: "regular", icons: [.textSortAscending20Regular]),
       (name: "Text Sort Descending", weight: "filled", icons: [.textSortDescending20Filled]),
       (name: "Text Sort Descending", weight: "regular", icons: [.textSortDescending20Regular]),
-      (name: "Text Strikethrough", weight: "filled", icons: [.textStrikethrough24Filled]),
+      (name: "Text Strikethrough", weight: "filled", icons: [.textStrikethrough20Filled, .textStrikethrough24Filled]),
       (name: "Text Strikethrough", weight: "regular", icons: [.textStrikethrough20Regular, .textStrikethrough24Regular]),
       (name: "Text Subscript", weight: "filled", icons: [.textSubscript20Filled, .textSubscript24Filled]),
       (name: "Text Subscript", weight: "regular", icons: [.textSubscript20Regular, .textSubscript24Regular]),
