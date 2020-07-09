@@ -59,7 +59,7 @@ jobs:
         wrapper-directory: android
 
     - name: Generate BUILD.gn file for Android
-      run: python3 generate_build_gn.py
+      run: python3 generate_build_gn_android.py
       working-directory: importer
 
     ## Publish
