@@ -1,11 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
-    <title>ic_fluent_chevron_up_12_filled</title>
-    <desc>Created with Sketch.</desc>
-    <g id="🔍-System-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="ic_fluent_chevron_up_12_filled" fill="#212121" fill-rule="nonzero">
-            <path d="M2.46967,7.53033 C2.76256,7.82322 3.23744,7.82322 3.53033,7.53033 L6,5.06066 L8.46967,7.53033 C8.76256,7.82322 9.23744,7.82322 9.53033,7.53033 C9.82322,7.23744 9.82322,6.76256 9.53033,6.46967 L6.53033,3.46967 C6.23744,3.17678 5.76256,3.17678 5.46967,3.46967 L2.46967,6.46967 C2.17678,6.76256 2.17678,7.23744 2.46967,7.53033 Z" id="🎨-Color"></path>
-        </g>
-    </g>
+<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.21967 7.53033C2.51256 7.82322 2.98744 7.82322 3.28033 7.53033L6 4.81066L8.71967 7.53033C9.01256 7.82322 9.48744 7.82322 9.78033 7.53033C10.0732 7.23744 10.0732 6.76256 9.78033 6.46967L6.53033 3.21967C6.23744 2.92678 5.76256 2.92678 5.46967 3.21967L2.21967 6.46967C1.92678 6.76256 1.92678 7.23744 2.21967 7.53033Z" fill="#212121"/>
 </svg>

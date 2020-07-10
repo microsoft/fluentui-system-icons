@@ -1,11 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
-    <title>ic_fluent_video_16_filled</title>
-    <desc>Created with Sketch.</desc>
-    <g id="🔍-System-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="ic_fluent_video_16_filled" fill="#212121" fill-rule="nonzero">
-            <path d="M8.5,4 C9.32843,4 10,4.67157 10,5.5 L10,10.5 C10,11.3284 9.32843,12 8.5,12 L3.5,12 C2.67157,12 2,11.3284 2,10.5 L2,5.5 C2,4.67157 2.67157,4 3.5,4 L8.5,4 Z M13.2484,4.17778 C13.5560615,4.00182308 13.9331669,4.19321101 13.9895199,4.52565995 L13.9967,4.61158 L13.9996001,11.388 C13.9997846,11.7424615 13.6462746,11.9749065 13.3296592,11.8587365 L13.2515,11.8223 L11.0003,10.5359 L11.0003,5.46373 L13.2484,4.17778 Z" id="🎨-Color"></path>
-        </g>
-    </g>
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10 5.5C10 4.39543 9.10457 3.5 8 3.5H4C2.89543 3.5 2 4.39543 2 5.5V10.5C2 11.6046 2.89543 12.5 4 12.5H8C9.10457 12.5 10 11.6046 10 10.5V5.5Z" fill="#212121"/>
+<path d="M11 6.33817V9.66185L12.7344 11.3037C13.2125 11.7563 14 11.4174 14 10.7591V5.24093C14 4.58261 13.2125 4.2437 12.7344 4.69628L11 6.33817Z" fill="#212121"/>
 </svg>
