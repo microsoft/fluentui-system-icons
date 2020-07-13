@@ -43,6 +43,10 @@ git "git@github.com:microsoft/fluentui-system-icons.git" "1.1.29"
 
 For library docs, see [ios/README.md](ios/README.md).
 
+### Flutter
+
+// TODO: @aakash1313
+
 ## Contributing
 
 ### Importer
@@ -79,11 +83,16 @@ You can build and run the demo apps following the steps below.
 3. Select the `sample-showcase` in the build configuration dropdown
 4. Click run 
 
+### Flutter
+
+// TODO: @aakash1313
+
 ## Contact
-Please feel free to reach out to the following points of contact with questions or requests.
-* [Joe Woodward](mailto:joe.woodward@microsoft.com) / [Jason Custer](mailto:jacust@microsoft.com) - Design
-* [Nick Romano](mailto:nick.romano@microsoft.com) - iOS
-* [Will Hou](mailto:wih@microsoft.com) - Android
+Please feel free to [open a GitHub issue](https://github.com/microsoft/fluentui-system-icons/issues/new) and assign to the following points of contact with questions or requests.
+* Joe Woodward(@thewoodpecker) / Jason Custer(@jasoncuster) / Spencer Nelson(@spencer-nelson) - Design
+* Nick Romano(@rickromano) - iOS
+* Will Hou(@willhou) - Android
+* Akashdeep Singh(@aakash1313) - Flutter
 
 ## Code of Conduct
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct) or contact opencode@microsoft.com with any additional questions or comments.
