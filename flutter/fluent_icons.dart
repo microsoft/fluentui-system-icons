@@ -170,7 +170,7 @@ class FluentIcons {
   static const IconData arrow_curve_right_20_regular = IconData(0xf133, fontFamily: 'FluentSystemIcons-Regular');
 
   /// fluent icon named "arrow_curve_right_24_regular" in size 24 and regular style.
-  static const IconData arrow_curve_right_24_regular = IconData(0xf134, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData arrow_curve_right_24_regular = IconData(0xf134, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_down_16_regular" in size 24 and regular style.
   static const IconData arrow_down_16_regular = IconData(0xf135, fontFamily: 'FluentSystemIcons-Regular');
@@ -185,13 +185,13 @@ class FluentIcons {
   static const IconData arrow_down_28_regular = IconData(0xf138, fontFamily: 'FluentSystemIcons-Regular');
 
   /// fluent icon named "arrow_down_left_24_regular" in size 24 and regular style.
-  static const IconData arrow_down_left_24_regular = IconData(0xf139, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData arrow_down_left_24_regular = IconData(0xf139, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_down_right_circle_16_regular" in size 24 and regular style.
-  static const IconData arrow_down_right_circle_16_regular = IconData(0xf13a, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData arrow_down_right_circle_16_regular = IconData(0xf13a, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_down_right_circle_24_regular" in size 24 and regular style.
-  static const IconData arrow_down_right_circle_24_regular = IconData(0xf13b, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData arrow_down_right_circle_24_regular = IconData(0xf13b, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_download_16_regular" in size 24 and regular style.
   static const IconData arrow_download_16_regular = IconData(0xf13c, fontFamily: 'FluentSystemIcons-Regular');
@@ -215,28 +215,28 @@ class FluentIcons {
   static const IconData arrow_export_20_regular = IconData(0xf142, fontFamily: 'FluentSystemIcons-Regular');
 
   /// fluent icon named "arrow_forward_16_regular" in size 24 and regular style.
-  static const IconData arrow_forward_16_regular = IconData(0xf143, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData arrow_forward_16_regular = IconData(0xf143, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_forward_20_regular" in size 24 and regular style.
-  static const IconData arrow_forward_20_regular = IconData(0xf144, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData arrow_forward_20_regular = IconData(0xf144, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_forward_24_regular" in size 24 and regular style.
-  static const IconData arrow_forward_24_regular = IconData(0xf145, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData arrow_forward_24_regular = IconData(0xf145, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_import_20_regular" in size 24 and regular style.
-  static const IconData arrow_import_20_regular = IconData(0xf146, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData arrow_import_20_regular = IconData(0xf146, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_import_24_regular" in size 24 and regular style.
-  static const IconData arrow_import_24_regular = IconData(0xf147, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData arrow_import_24_regular = IconData(0xf147, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_left_20_regular" in size 24 and regular style.
-  static const IconData arrow_left_20_regular = IconData(0xf148, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData arrow_left_20_regular = IconData(0xf148, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_left_24_regular" in size 24 and regular style.
-  static const IconData arrow_left_24_regular = IconData(0xf149, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData arrow_left_24_regular = IconData(0xf149, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_left_28_regular" in size 24 and regular style.
-  static const IconData arrow_left_28_regular = IconData(0xf14a, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData arrow_left_28_regular = IconData(0xf14a, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_maximize_16_regular" in size 24 and regular style.
   static const IconData arrow_maximize_16_regular = IconData(0xf14b, fontFamily: 'FluentSystemIcons-Regular');
@@ -263,16 +263,16 @@ class FluentIcons {
   static const IconData arrow_minimize_28_regular = IconData(0xf152, fontFamily: 'FluentSystemIcons-Regular');
 
   /// fluent icon named "arrow_next_20_regular" in size 24 and regular style.
-  static const IconData arrow_next_20_regular = IconData(0xf153, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData arrow_next_20_regular = IconData(0xf153, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_next_24_regular" in size 24 and regular style.
-  static const IconData arrow_next_24_regular = IconData(0xf154, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData arrow_next_24_regular = IconData(0xf154, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_previous_20_regular" in size 24 and regular style.
-  static const IconData arrow_previous_20_regular = IconData(0xf155, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData arrow_previous_20_regular = IconData(0xf155, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_previous_24_regular" in size 24 and regular style.
-  static const IconData arrow_previous_24_regular = IconData(0xf156, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData arrow_previous_24_regular = IconData(0xf156, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_redo_20_regular" in size 24 and regular style.
   static const IconData arrow_redo_20_regular = IconData(0xf157, fontFamily: 'FluentSystemIcons-Regular');
@@ -323,16 +323,16 @@ class FluentIcons {
   static const IconData arrow_reply_all_48_regular = IconData(0xf166, fontFamily: 'FluentSystemIcons-Regular');
 
   /// fluent icon named "arrow_right_20_regular" in size 24 and regular style.
-  static const IconData arrow_right_20_regular = IconData(0xf167, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData arrow_right_20_regular = IconData(0xf167, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_right_24_regular" in size 24 and regular style.
-  static const IconData arrow_right_24_regular = IconData(0xf168, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData arrow_right_24_regular = IconData(0xf168, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_right_28_regular" in size 24 and regular style.
-  static const IconData arrow_right_28_regular = IconData(0xf169, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData arrow_right_28_regular = IconData(0xf169, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_right_circle_24_regular" in size 24 and regular style.
-  static const IconData arrow_right_circle_24_regular = IconData(0xf16a, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData arrow_right_circle_24_regular = IconData(0xf16a, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_rotate_clockwise_20_regular" in size 24 and regular style.
   static const IconData arrow_rotate_clockwise_20_regular = IconData(0xf16b, fontFamily: 'FluentSystemIcons-Regular');
@@ -410,10 +410,10 @@ class FluentIcons {
   static const IconData arrow_up_circle_24_regular = IconData(0xf183, fontFamily: 'FluentSystemIcons-Regular');
 
   /// fluent icon named "arrow_up_left_24_regular" in size 24 and regular style.
-  static const IconData arrow_up_left_24_regular = IconData(0xf184, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData arrow_up_left_24_regular = IconData(0xf184, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_up_right_24_regular" in size 24 and regular style.
-  static const IconData arrow_up_right_24_regular = IconData(0xf185, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData arrow_up_right_24_regular = IconData(0xf185, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "arrows_bidirectional_24_regular" in size 24 and regular style.
   static const IconData arrows_bidirectional_24_regular = IconData(0xf186, fontFamily: 'FluentSystemIcons-Regular');
@@ -1043,34 +1043,34 @@ class FluentIcons {
   static const IconData chevron_down_circle_24_regular = IconData(0xf256, fontFamily: 'FluentSystemIcons-Regular');
 
   /// fluent icon named "chevron_left_12_regular" in size 24 and regular style.
-  static const IconData chevron_left_12_regular = IconData(0xf257, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData chevron_left_12_regular = IconData(0xf257, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "chevron_left_16_regular" in size 24 and regular style.
-  static const IconData chevron_left_16_regular = IconData(0xf258, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData chevron_left_16_regular = IconData(0xf258, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "chevron_left_20_regular" in size 24 and regular style.
-  static const IconData chevron_left_20_regular = IconData(0xf259, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData chevron_left_20_regular = IconData(0xf259, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "chevron_left_24_regular" in size 24 and regular style.
-  static const IconData chevron_left_24_regular = IconData(0xf25a, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData chevron_left_24_regular = IconData(0xf25a, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "chevron_left_28_regular" in size 24 and regular style.
-  static const IconData chevron_left_28_regular = IconData(0xf25b, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData chevron_left_28_regular = IconData(0xf25b, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "chevron_left_48_regular" in size 24 and regular style.
   static const IconData chevron_left_48_regular = IconData(0xf25c, fontFamily: 'FluentSystemIcons-Regular');
 
   /// fluent icon named "chevron_right_12_regular" in size 24 and regular style.
-  static const IconData chevron_right_12_regular = IconData(0xf25d, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData chevron_right_12_regular = IconData(0xf25d, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "chevron_right_16_regular" in size 24 and regular style.
-  static const IconData chevron_right_16_regular = IconData(0xf25e, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData chevron_right_16_regular = IconData(0xf25e, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "chevron_right_20_regular" in size 24 and regular style.
-  static const IconData chevron_right_20_regular = IconData(0xf25f, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData chevron_right_20_regular = IconData(0xf25f, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "chevron_right_24_regular" in size 24 and regular style.
-  static const IconData chevron_right_24_regular = IconData(0xf260, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData chevron_right_24_regular = IconData(0xf260, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "chevron_right_28_regular" in size 24 and regular style.
   static const IconData chevron_right_28_regular = IconData(0xf261, fontFamily: 'FluentSystemIcons-Regular');
@@ -2510,13 +2510,13 @@ class FluentIcons {
   static const IconData inspect_24_regular = IconData(0xf43f, fontFamily: 'FluentSystemIcons-Regular');
 
   /// fluent icon named "ios_arrow_left_24_regular" in size 24 and regular style.
-  static const IconData ios_arrow_left_24_regular = IconData(0xf440, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData ios_arrow_left_24_regular = IconData(0xf440, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "ios_chevron_24_regular" in size 24 and regular style.
-  static const IconData ios_chevron_24_regular = IconData(0xf441, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData ios_chevron_24_regular = IconData(0xf441, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "ios_chevron_right_20_regular" in size 24 and regular style.
-  static const IconData ios_chevron_right_20_regular = IconData(0xf442, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData ios_chevron_right_20_regular = IconData(0xf442, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "javascript_16_regular" in size 24 and regular style.
   static const IconData javascript_16_regular = IconData(0xf443, fontFamily: 'FluentSystemIcons-Regular');
@@ -4193,7 +4193,7 @@ class FluentIcons {
   static const IconData swipe_down_24_regular = IconData(0xf670, fontFamily: 'FluentSystemIcons-Regular');
 
   /// fluent icon named "swipe_right_24_regular" in size 24 and regular style.
-  static const IconData swipe_right_24_regular = IconData(0xf671, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData swipe_right_24_regular = IconData(0xf671, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "swipe_up_24_regular" in size 24 and regular style.
   static const IconData swipe_up_24_regular = IconData(0xf672, fontFamily: 'FluentSystemIcons-Regular');
@@ -4403,16 +4403,16 @@ class FluentIcons {
   static const IconData text_align_justify_24_regular = IconData(0xf6b6, fontFamily: 'FluentSystemIcons-Regular');
 
   /// fluent icon named "text_align_left_20_regular" in size 24 and regular style.
-  static const IconData text_align_left_20_regular = IconData(0xf6b7, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData text_align_left_20_regular = IconData(0xf6b7, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "text_align_left_24_regular" in size 24 and regular style.
-  static const IconData text_align_left_24_regular = IconData(0xf6b8, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData text_align_left_24_regular = IconData(0xf6b8, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "text_align_right_20_regular" in size 24 and regular style.
-  static const IconData text_align_right_20_regular = IconData(0xf6b9, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData text_align_right_20_regular = IconData(0xf6b9, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "text_align_right_24_regular" in size 24 and regular style.
-  static const IconData text_align_right_24_regular = IconData(0xf6ba, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData text_align_right_24_regular = IconData(0xf6ba, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "text_bold_20_regular" in size 24 and regular style.
   static const IconData text_bold_20_regular = IconData(0xf6bb, fontFamily: 'FluentSystemIcons-Regular');
@@ -4520,13 +4520,13 @@ class FluentIcons {
   static const IconData text_column_two_left_20_regular = IconData(0xf6dd, fontFamily: 'FluentSystemIcons-Regular');
 
   /// fluent icon named "text_column_two_left_24_regular" in size 24 and regular style.
-  static const IconData text_column_two_left_24_regular = IconData(0xf6de, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData text_column_two_left_24_regular = IconData(0xf6de, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "text_column_two_right_20_regular" in size 24 and regular style.
   static const IconData text_column_two_right_20_regular = IconData(0xf6df, fontFamily: 'FluentSystemIcons-Regular');
 
   /// fluent icon named "text_column_two_right_24_regular" in size 24 and regular style.
-  static const IconData text_column_two_right_24_regular = IconData(0xf6e0, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData text_column_two_right_24_regular = IconData(0xf6e0, fontFamily: 'FluentSystemIcons-Regular', matchTextDirection: 'true');
 
   /// fluent icon named "text_description_20_regular" in size 24 and regular style.
   static const IconData text_description_20_regular = IconData(0xf6e1, fontFamily: 'FluentSystemIcons-Regular');
@@ -5395,7 +5395,7 @@ class FluentIcons {
   static const IconData arrow_curve_right_20_filled = IconData(0xf133, fontFamily: 'FluentSystemIcons-Filled');
 
   /// fluent icon named "arrow_curve_right_24_filled" in size 24 and regular style.
-  static const IconData arrow_curve_right_24_filled = IconData(0xf134, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData arrow_curve_right_24_filled = IconData(0xf134, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_down_16_filled" in size 24 and regular style.
   static const IconData arrow_down_16_filled = IconData(0xf135, fontFamily: 'FluentSystemIcons-Filled');
@@ -5410,13 +5410,13 @@ class FluentIcons {
   static const IconData arrow_down_28_filled = IconData(0xf138, fontFamily: 'FluentSystemIcons-Filled');
 
   /// fluent icon named "arrow_down_left_24_filled" in size 24 and regular style.
-  static const IconData arrow_down_left_24_filled = IconData(0xf139, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData arrow_down_left_24_filled = IconData(0xf139, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_down_right_circle_16_filled" in size 24 and regular style.
-  static const IconData arrow_down_right_circle_16_filled = IconData(0xf13a, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData arrow_down_right_circle_16_filled = IconData(0xf13a, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_down_right_circle_24_filled" in size 24 and regular style.
-  static const IconData arrow_down_right_circle_24_filled = IconData(0xf13b, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData arrow_down_right_circle_24_filled = IconData(0xf13b, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_download_16_filled" in size 24 and regular style.
   static const IconData arrow_download_16_filled = IconData(0xf13c, fontFamily: 'FluentSystemIcons-Filled');
@@ -5440,28 +5440,28 @@ class FluentIcons {
   static const IconData arrow_export_20_filled = IconData(0xf142, fontFamily: 'FluentSystemIcons-Filled');
 
   /// fluent icon named "arrow_forward_16_filled" in size 24 and regular style.
-  static const IconData arrow_forward_16_filled = IconData(0xf143, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData arrow_forward_16_filled = IconData(0xf143, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_forward_20_filled" in size 24 and regular style.
-  static const IconData arrow_forward_20_filled = IconData(0xf144, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData arrow_forward_20_filled = IconData(0xf144, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_forward_24_filled" in size 24 and regular style.
-  static const IconData arrow_forward_24_filled = IconData(0xf145, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData arrow_forward_24_filled = IconData(0xf145, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_import_20_filled" in size 24 and regular style.
-  static const IconData arrow_import_20_filled = IconData(0xf146, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData arrow_import_20_filled = IconData(0xf146, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_import_24_filled" in size 24 and regular style.
-  static const IconData arrow_import_24_filled = IconData(0xf147, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData arrow_import_24_filled = IconData(0xf147, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_left_20_filled" in size 24 and regular style.
-  static const IconData arrow_left_20_filled = IconData(0xf148, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData arrow_left_20_filled = IconData(0xf148, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_left_24_filled" in size 24 and regular style.
-  static const IconData arrow_left_24_filled = IconData(0xf149, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData arrow_left_24_filled = IconData(0xf149, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_left_28_filled" in size 24 and regular style.
-  static const IconData arrow_left_28_filled = IconData(0xf14a, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData arrow_left_28_filled = IconData(0xf14a, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_maximize_16_filled" in size 24 and regular style.
   static const IconData arrow_maximize_16_filled = IconData(0xf14b, fontFamily: 'FluentSystemIcons-Filled');
@@ -5488,16 +5488,16 @@ class FluentIcons {
   static const IconData arrow_minimize_28_filled = IconData(0xf152, fontFamily: 'FluentSystemIcons-Filled');
 
   /// fluent icon named "arrow_next_20_filled" in size 24 and regular style.
-  static const IconData arrow_next_20_filled = IconData(0xf153, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData arrow_next_20_filled = IconData(0xf153, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_next_24_filled" in size 24 and regular style.
-  static const IconData arrow_next_24_filled = IconData(0xf154, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData arrow_next_24_filled = IconData(0xf154, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_previous_20_filled" in size 24 and regular style.
-  static const IconData arrow_previous_20_filled = IconData(0xf155, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData arrow_previous_20_filled = IconData(0xf155, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_previous_24_filled" in size 24 and regular style.
-  static const IconData arrow_previous_24_filled = IconData(0xf156, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData arrow_previous_24_filled = IconData(0xf156, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_redo_20_filled" in size 24 and regular style.
   static const IconData arrow_redo_20_filled = IconData(0xf157, fontFamily: 'FluentSystemIcons-Filled');
@@ -5548,16 +5548,16 @@ class FluentIcons {
   static const IconData arrow_reply_all_48_filled = IconData(0xf166, fontFamily: 'FluentSystemIcons-Filled');
 
   /// fluent icon named "arrow_right_20_filled" in size 24 and regular style.
-  static const IconData arrow_right_20_filled = IconData(0xf167, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData arrow_right_20_filled = IconData(0xf167, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_right_24_filled" in size 24 and regular style.
-  static const IconData arrow_right_24_filled = IconData(0xf168, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData arrow_right_24_filled = IconData(0xf168, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_right_28_filled" in size 24 and regular style.
-  static const IconData arrow_right_28_filled = IconData(0xf169, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData arrow_right_28_filled = IconData(0xf169, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_right_circle_24_filled" in size 24 and regular style.
-  static const IconData arrow_right_circle_24_filled = IconData(0xf16a, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData arrow_right_circle_24_filled = IconData(0xf16a, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_rotate_clockwise_20_filled" in size 24 and regular style.
   static const IconData arrow_rotate_clockwise_20_filled = IconData(0xf16b, fontFamily: 'FluentSystemIcons-Filled');
@@ -5635,10 +5635,10 @@ class FluentIcons {
   static const IconData arrow_up_circle_24_filled = IconData(0xf183, fontFamily: 'FluentSystemIcons-Filled');
 
   /// fluent icon named "arrow_up_left_24_filled" in size 24 and regular style.
-  static const IconData arrow_up_left_24_filled = IconData(0xf184, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData arrow_up_left_24_filled = IconData(0xf184, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "arrow_up_right_24_filled" in size 24 and regular style.
-  static const IconData arrow_up_right_24_filled = IconData(0xf185, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData arrow_up_right_24_filled = IconData(0xf185, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "arrows_bidirectional_24_filled" in size 24 and regular style.
   static const IconData arrows_bidirectional_24_filled = IconData(0xf186, fontFamily: 'FluentSystemIcons-Filled');
@@ -6268,34 +6268,34 @@ class FluentIcons {
   static const IconData chevron_down_circle_24_filled = IconData(0xf256, fontFamily: 'FluentSystemIcons-Filled');
 
   /// fluent icon named "chevron_left_12_filled" in size 24 and regular style.
-  static const IconData chevron_left_12_filled = IconData(0xf257, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData chevron_left_12_filled = IconData(0xf257, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "chevron_left_16_filled" in size 24 and regular style.
-  static const IconData chevron_left_16_filled = IconData(0xf258, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData chevron_left_16_filled = IconData(0xf258, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "chevron_left_20_filled" in size 24 and regular style.
-  static const IconData chevron_left_20_filled = IconData(0xf259, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData chevron_left_20_filled = IconData(0xf259, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "chevron_left_24_filled" in size 24 and regular style.
-  static const IconData chevron_left_24_filled = IconData(0xf25a, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData chevron_left_24_filled = IconData(0xf25a, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "chevron_left_28_filled" in size 24 and regular style.
-  static const IconData chevron_left_28_filled = IconData(0xf25b, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData chevron_left_28_filled = IconData(0xf25b, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "chevron_left_48_filled" in size 24 and regular style.
   static const IconData chevron_left_48_filled = IconData(0xf25c, fontFamily: 'FluentSystemIcons-Filled');
 
   /// fluent icon named "chevron_right_12_filled" in size 24 and regular style.
-  static const IconData chevron_right_12_filled = IconData(0xf25d, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData chevron_right_12_filled = IconData(0xf25d, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "chevron_right_16_filled" in size 24 and regular style.
-  static const IconData chevron_right_16_filled = IconData(0xf25e, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData chevron_right_16_filled = IconData(0xf25e, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "chevron_right_20_filled" in size 24 and regular style.
-  static const IconData chevron_right_20_filled = IconData(0xf25f, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData chevron_right_20_filled = IconData(0xf25f, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "chevron_right_24_filled" in size 24 and regular style.
-  static const IconData chevron_right_24_filled = IconData(0xf260, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData chevron_right_24_filled = IconData(0xf260, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "chevron_right_28_filled" in size 24 and regular style.
   static const IconData chevron_right_28_filled = IconData(0xf261, fontFamily: 'FluentSystemIcons-Filled');
@@ -7765,13 +7765,13 @@ class FluentIcons {
   static const IconData inspect_24_filled = IconData(0xf449, fontFamily: 'FluentSystemIcons-Filled');
 
   /// fluent icon named "ios_arrow_left_24_filled" in size 24 and regular style.
-  static const IconData ios_arrow_left_24_filled = IconData(0xf44a, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData ios_arrow_left_24_filled = IconData(0xf44a, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "ios_chevron_24_filled" in size 24 and regular style.
-  static const IconData ios_chevron_24_filled = IconData(0xf44b, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData ios_chevron_24_filled = IconData(0xf44b, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "ios_chevron_right_20_filled" in size 24 and regular style.
-  static const IconData ios_chevron_right_20_filled = IconData(0xf44c, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData ios_chevron_right_20_filled = IconData(0xf44c, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "javascript_16_filled" in size 24 and regular style.
   static const IconData javascript_16_filled = IconData(0xf44d, fontFamily: 'FluentSystemIcons-Filled');
@@ -9490,7 +9490,7 @@ class FluentIcons {
   static const IconData swipe_down_24_filled = IconData(0xf688, fontFamily: 'FluentSystemIcons-Filled');
 
   /// fluent icon named "swipe_right_24_filled" in size 24 and regular style.
-  static const IconData swipe_right_24_filled = IconData(0xf689, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData swipe_right_24_filled = IconData(0xf689, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "swipe_up_24_filled" in size 24 and regular style.
   static const IconData swipe_up_24_filled = IconData(0xf68a, fontFamily: 'FluentSystemIcons-Filled');
@@ -9700,16 +9700,16 @@ class FluentIcons {
   static const IconData text_align_justify_24_filled = IconData(0xf6ce, fontFamily: 'FluentSystemIcons-Filled');
 
   /// fluent icon named "text_align_left_20_filled" in size 24 and regular style.
-  static const IconData text_align_left_20_filled = IconData(0xf6cf, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData text_align_left_20_filled = IconData(0xf6cf, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "text_align_left_24_filled" in size 24 and regular style.
-  static const IconData text_align_left_24_filled = IconData(0xf6d0, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData text_align_left_24_filled = IconData(0xf6d0, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "text_align_right_20_filled" in size 24 and regular style.
-  static const IconData text_align_right_20_filled = IconData(0xf6d1, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData text_align_right_20_filled = IconData(0xf6d1, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "text_align_right_24_filled" in size 24 and regular style.
-  static const IconData text_align_right_24_filled = IconData(0xf6d2, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData text_align_right_24_filled = IconData(0xf6d2, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "text_bold_20_filled" in size 24 and regular style.
   static const IconData text_bold_20_filled = IconData(0xf6d3, fontFamily: 'FluentSystemIcons-Filled');
@@ -9817,13 +9817,13 @@ class FluentIcons {
   static const IconData text_column_two_left_20_filled = IconData(0xf6f5, fontFamily: 'FluentSystemIcons-Filled');
 
   /// fluent icon named "text_column_two_left_24_filled" in size 24 and regular style.
-  static const IconData text_column_two_left_24_filled = IconData(0xf6f6, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData text_column_two_left_24_filled = IconData(0xf6f6, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "text_column_two_right_20_filled" in size 24 and regular style.
   static const IconData text_column_two_right_20_filled = IconData(0xf6f7, fontFamily: 'FluentSystemIcons-Filled');
 
   /// fluent icon named "text_column_two_right_24_filled" in size 24 and regular style.
-  static const IconData text_column_two_right_24_filled = IconData(0xf6f8, fontFamily: 'FluentSystemIcons-Filled');
+  static const IconData text_column_two_right_24_filled = IconData(0xf6f8, fontFamily: 'FluentSystemIcons-Filled', matchTextDirection: 'true');
 
   /// fluent icon named "text_description_20_filled" in size 24 and regular style.
   static const IconData text_description_20_filled = IconData(0xf6f9, fontFamily: 'FluentSystemIcons-Filled');

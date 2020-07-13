@@ -50,18 +50,19 @@ if (!DEST_PATH) {
 processJsonFiles(SRC_PATHS, DEST_PATH)
 
 function processJsonFiles(srcPaths, destPath) {
+  var rtlIcons = fs.readFileSync('rtl.txt').toString().split("\n");
   let iconClassFile = path.join(destPath, ICON_CLASS_NAME);
   fs.writeFileSync(iconClassFile, "", writeErrorHandler);
   fs.appendFileSync(iconClassFile, ICON_CLASS_HEADER, writeErrorHandler);
 
-  srcPaths.forEach(function (srcPath, index) {
-    writeCodeForJson(srcPath, iconClassFile);
+  srcPaths.forEach(function (srcPath) {
+    writeCodeForJson(srcPath, iconClassFile, rtlIcons);
   })
 
   fs.appendFileSync(iconClassFile, ICON_CLASS_FOOTER, writeErrorHandler);
 }
 
-function writeCodeForJson(srcPath, iconClassFile) {
+function writeCodeForJson(srcPath, iconClassFile, rtlIcons) {
   let jsonData = require("./" + srcPath);
   let fontName = srcPath.substring(srcPath.lastIndexOf('/') + 1).replace(".json", "");
   var code = 
@@ -72,13 +73,14 @@ function writeCodeForJson(srcPath, iconClassFile) {
   fs.appendFileSync(iconClassFile, code, writeErrorHandler);
 
   for (var name in jsonData) {
+    let matchTextDirection = rtlIcons.includes(name) ? `, matchTextDirection: 'true'` : "";
     let codepoint = jsonData[name].replace("\\", "0x");
     let identifier = name.replace("ic_fluent_", "");
     // TODO: Regex to extract sie and style from identifier
     code = 
 `
   /// fluent icon named "${identifier}" in size 24 and regular style.
-  static const IconData ${identifier} = IconData(${codepoint}, fontFamily: '${fontName}');
+  static const IconData ${identifier} = IconData(${codepoint}, fontFamily: '${fontName}'${matchTextDirection});
 `;
     fs.appendFileSync(iconClassFile, code, writeErrorHandler);
   }
