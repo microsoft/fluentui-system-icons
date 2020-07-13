@@ -10,6 +10,8 @@ const argv = require("yargs")
   })
   .argv;
 
+const FILE_NAME_REGEX = /^ic_fluent_(\w+)_(\d+)_(\w+)/gm;
+
 const SRC_PATHS = argv.source;
 const DEST_PATH = argv.dest;
 const ICON_CLASS_NAME = 'fluent_icons.dart';
@@ -72,14 +74,20 @@ function writeCodeForJson(srcPath, iconClassFile, rtlIcons) {
 
   fs.appendFileSync(iconClassFile, code, writeErrorHandler);
 
-  for (var name in jsonData) {
-    let matchTextDirection = rtlIcons.includes(name) ? `, matchTextDirection: 'true'` : "";
-    let codepoint = jsonData[name].replace("\\", "0x");
-    let identifier = name.replace("ic_fluent_", "");
-    // TODO: Regex to extract sie and style from identifier
+  for (var fullName in jsonData) {
+    let match = FILE_NAME_REGEX.exec(fullName);
+    let name = match[1];
+    let size = match[2];
+    let style = match[3];
+    FILE_NAME_REGEX.lastIndex = 0;
+
+    let codepoint = jsonData[fullName].replace("\\", "0x");
+    let identifier = `${name}_${size}_${style}`;
+    let matchTextDirection = rtlIcons.includes(fullName) ? `, matchTextDirection: 'true'` : "";
+
     code = 
 `
-  /// fluent icon named "${identifier}" in size 24 and regular style.
+  /// fluent icon named "${name}" in size ${size} and ${style} style.
   static const IconData ${identifier} = IconData(${codepoint}, fontFamily: '${fontName}'${matchTextDirection});
 `;
     fs.appendFileSync(iconClassFile, code, writeErrorHandler);
