@@ -10,8 +10,11 @@
     "build:ios": "node generate.js --source=../assets --dest=./dist --extension=pdf",
     "deploy:android": "npm run build:android && rm -rf ../android/library/src/main/res/drawable && mkdir ../android/library/src/main/res/drawable && cp -a ./dist/*.xml ../android/library/src/main/res/drawable && npm run clean",
     "deploy:ios": "npm run build:ios && python3 process_ios_assets.py && npm run clean",
-    "build:flutter": "node generate.js --source=../assets --dest=./dist --extension=svg && mkdir dist/font && icon-font-generator dist/*_regular.svg -o dist/font --name FluentSystemIcons-Regular --types ttf --html false --css false && icon-font-generator dist/*_filled.svg -o dist/font --name FluentSystemIcons-Filled --types ttf --html false --css false",
-    "deploy:flutter": "npm run build:flutter && cp dist/font/* ../flutter && npm run clean"
+    "build:flutter": "node generate.js --source=../assets --dest=./dist --extension=svg && mkdir dist/flutter && npm run generate:flutter-font-regular && npm run generate:flutter-font-filled && npm run generate:flutter-icon-class",
+    "generate:flutter-font-regular": "icon-font-generator dist/*_regular.svg -o dist/flutter --name FluentSystemIcons-Regular --types ttf --html false --css false",
+    "generate:flutter-font-filled": "icon-font-generator dist/*_filled.svg -o dist/flutter --name FluentSystemIcons-Filled --types ttf --html false --css false",
+    "generate:flutter-icon-class": "node generate_flutter_class.js --source=dist/flutter/FluentSystemIcons-Regular.json dist/flutter/FluentSystemIcons-Filled.json --dest=dist/flutter",
+    "deploy:flutter": "npm run build:flutter && cp dist/flutter/* ../flutter && npm run clean"
   },
   "author": "Microsoft Inc.",
   "license": "Microsoft",

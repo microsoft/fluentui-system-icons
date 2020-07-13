@@ -3,112 +3,85 @@
 
 const fs = require("fs");
 const path = require("path");
-const process = require("process");
 const argv = require("yargs")
   .option('source', {
     type: 'array',
     desc: 'One or more json files'
   })
   .argv;
-const config = require('./config.json')
 
 const SRC_PATHS = argv.source;
 const DEST_PATH = argv.dest;
+const ICON_CLASS_NAME = 'fluent_icons.dart';
+const ICON_CLASS_HEADER = 
+`// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT license.
 
-const iconNames = new Set();
-const date = new Date();
+// @dart = 2.8
 
-if (!SRC_PATH) {
-  throw new Error("Icon source folder not specified by --source");
+import 'package:flutter/widgets.dart';
+
+class FluentIcons {
+
+  // This class is not meant to be instantiated or extended; this constructor
+  // prevents instantiation and extension.
+  // ignore: unused_element
+  FluentIcons._();
+
+  // Generated code: do not hand-edit.
+  // See https://github.com/microsoft/fluentui-system-icons
+  // BEGIN GENERATED
+`;
+const ICON_CLASS_FOOTER =
+`
+  // END GENERATED
+}
+`;
+
+const writeErrorHandler = (err) => {
+  if (err) throw err; 
+};
+
+if (!SRC_PATHS) {
+  throw new Error("Icon JSON sources not specified by --source");
 }
 if (!DEST_PATH) {
   throw new Error("Output destination folder not specified by --dest");
 }
-if (!EXTENSION) {
-  throw new Error("Desired icon extension not specified by --extension");
+
+processJsonFiles(SRC_PATHS, DEST_PATH)
+
+function processJsonFiles(srcPaths, destPath) {
+  let iconClassFile = path.join(destPath, ICON_CLASS_NAME);
+  fs.writeFileSync(iconClassFile, "", writeErrorHandler);
+  fs.appendFileSync(iconClassFile, ICON_CLASS_HEADER, writeErrorHandler);
+
+  srcPaths.forEach(function (srcPath, index) {
+    writeCodeForJson(srcPath, iconClassFile);
+  })
+
+  fs.appendFileSync(iconClassFile, ICON_CLASS_FOOTER, writeErrorHandler);
 }
 
-processFolder(SRC_PATH, DEST_PATH)
-
-function processFolder(srcPath, destPath) {
-  fs.readdir(srcPath, function (err, files) {
-    if (err) {
-      console.error("Could not list the directory.", err);
-      process.exit(1);
-    }
-
-    files.forEach(function (file, index) {
-      var srcFile = path.join(srcPath, file);
-  
-      fs.stat(srcFile, function (error, stat) {
-        if (error) {
-          console.error("Error stating file.", error);
-          return;
-        }
-  
-        if (stat.isDirectory()) {
-          processFolder(srcFile, destPath);
-          return;
-        } else if (file.startsWith('.')) {
-          // Skip invisible files
-          return;
-        } else if (file.startsWith('_')) {
-          // Skip invalid file names
-          return;
-        } else if (!file.endsWith(ICON_OUTLINE_STYLE + "." + EXTENSION)
-          && !file.endsWith(ICON_FILLED_STYLE + "." + EXTENSION)
-          && !(EXTENSION === "pdf" && file.endsWith(ICON_LIGHT_STYLE + "." + EXTENSION))
-          && !file.endsWith(BRAND_MONO_STYLE + "." + EXTENSION)
-          && !file.endsWith(BRAND_COLOR_STYLE + "." + EXTENSION)) {
-          // Only include icons in the desired configs
-          return;
-        }
-
-        // Apply 'fluent_' prefix
-        if (file.indexOf("_fluent_") < 0) {
-          file = file.replace("ic_", "ic_fluent_");
-        }
-
-        var destFile = path.join(destPath, file);
-        fs.copyFileSync(srcFile, destFile);
-
-        // Generate selector if both filled/regular styles are available
-        if (file.endsWith(SVG_EXTENSION)) {
-          var index = file.lastIndexOf(ICON_OUTLINE_STYLE);
-          if (index == -1) {
-            index = file.lastIndexOf(ICON_FILLED_STYLE);
-          }
-          if (index != -1) {
-            var name = file.substring(0, index)
-            if (!iconNames.has(name)) {
-              iconNames.add(name);
-            } else {
-              generateSelector(destPath, name)
-            }
-          }
-        }
-      });
-    });
-  });
-}
-
-function generateSelector(destPath, iconName) {
-  var selectorFile = path.join(destPath, iconName + SELECTOR_SUFFIX + XML_EXTENSION);
+function writeCodeForJson(srcPath, iconClassFile) {
+  let jsonData = require("./" + srcPath);
+  let fontName = srcPath.substring(srcPath.lastIndexOf('/') + 1).replace(".json", "");
   var code = 
-`<?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (c) ${date.getFullYear()}.
-  ~ Microsoft Corporation. All rights reserved.
-  -->
-
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/${iconName}${ICON_FILLED_STYLE}" android:state_activated="true"/>
-    <item android:drawable="@drawable/${iconName}${ICON_FILLED_STYLE}" android:state_checked="true"/>
-    <item android:drawable="@drawable/${iconName}${ICON_FILLED_STYLE}" android:state_selected="true"/>
-    <item android:drawable="@drawable/${iconName}${ICON_OUTLINE_STYLE}"/>
-</selector>
+`
+  // ${fontName}
 `;
-  fs.writeFile(selectorFile, code, (err) => {
-    if (err) throw err; 
-  });
+
+  fs.appendFileSync(iconClassFile, code, writeErrorHandler);
+
+  for (var name in jsonData) {
+    let codepoint = jsonData[name].replace("\\", "0x");
+    let identifier = name.replace("ic_fluent_", "");
+    // TODO: Regex to extract sie and style from identifier
+    code = 
+`
+  /// fluent icon named "${identifier}" in size 24 and regular style.
+  static const IconData ${identifier} = IconData(${codepoint}, fontFamily: '${fontName}');
+`;
+    fs.appendFileSync(iconClassFile, code, writeErrorHandler);
+  }
 }
