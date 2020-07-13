@@ -89,9 +89,9 @@ You can build and run the demo apps following the steps below.
 
 ## Contact
 Please feel free to [open a GitHub issue](https://github.com/microsoft/fluentui-system-icons/issues/new) and assign to the following points of contact with questions or requests.
-* Joe Woodward(@thewoodpecker) / Jason Custer(@jasoncuster) / Spencer Nelson(@spencer-nelson) - Design
-* Nick Romano(@rickromano) - iOS
-* Will Hou(@willhou) - Android
+* Joe Woodward([@thewoodpecker](https://github.com/thewoodpecker)) / Jason Custer([@jasoncuster](https://github.com/jasoncuster)) / Spencer Nelson([@spencer-nelson](https://github.com/spencer-nelson)) - Design
+* Nick Romano([@rickromano](https://github.com/rickromano)) - iOS
+* Will Hou([@willhou](https://github.com/willhou)) - Android
 * Akashdeep Singh(@aakash1313) - Flutter
 
 ## Code of Conduct
