@@ -1,8 +1,6 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
-// @dart = 2.8
-
 import 'package:flutter/widgets.dart';
 
 class FluentIcons {
