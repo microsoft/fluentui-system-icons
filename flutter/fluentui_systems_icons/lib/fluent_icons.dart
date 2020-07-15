@@ -1,5 +1,3 @@
-library fluentui_system_icons;
-
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
@@ -10538,8 +10536,5 @@ class FluentIcons {
   /// fluent icon named "zoom_out" in size 24 and filled style.
   static const IconData zoom_out_24_filled = IconData(0xf7e5, fontFamily: 'FluentSystemIcons-Filled');
 
-// END GENERATED
+  // END GENERATED
 }
-
-
-

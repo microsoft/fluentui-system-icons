@@ -83,7 +83,7 @@ function writeCodeForJson(srcPath, iconClassFile, rtlIcons) {
 
     let codepoint = jsonData[fullName].replace("\\", "0x");
     let identifier = `${name}_${size}_${style}`;
-    let matchTextDirection = rtlIcons.includes(fullName) ? `, matchTextDirection: 'true'` : "";
+    let matchTextDirection = rtlIcons.includes(fullName) ? `, matchTextDirection: true` : "";
 
     code = 
 `
