@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
+library fluentui_system_icons;
 
 import 'package:flutter/widgets.dart';
 
@@ -15,12 +16,14 @@ class FluentIcons {
   // BEGIN GENERATED
 
   // FluentSystemIcons-Regular
+  static const _kFontPkg = 'fluentui_system_icons';
+
 
   /// fluent icon named "access_time" in size 24 and regular style.
-  static const IconData access_time_24_regular = IconData(0xf101, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData access_time_24_regular = IconData(0xf101, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "accessibility" in size 16 and regular style.
-  static const IconData accessibility_16_regular = IconData(0xf102, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData accessibility_16_regular = IconData(0xf102, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "accessibility" in size 20 and regular style.
   static const IconData accessibility_20_regular = IconData(0xf103, fontFamily: 'FluentSystemIcons-Regular');
@@ -32,7 +35,7 @@ class FluentIcons {
   static const IconData accessibility_28_regular = IconData(0xf105, fontFamily: 'FluentSystemIcons-Regular');
 
   /// fluent icon named "activity" in size 24 and regular style.
-  static const IconData activity_24_regular = IconData(0xf106, fontFamily: 'FluentSystemIcons-Regular');
+  static const IconData activity_24_regular = IconData(0xf106, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "add" in size 12 and regular style.
   static const IconData add_12_regular = IconData(0xf107, fontFamily: 'FluentSystemIcons-Regular');

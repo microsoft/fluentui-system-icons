@@ -1,4 +1,4 @@
-# fluentui_systems_icons
+# fluentui_system_icons
 
 A new Flutter package project.
 

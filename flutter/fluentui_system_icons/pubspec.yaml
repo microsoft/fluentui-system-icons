@@ -1,4 +1,4 @@
-name: fluentui_systems_icons
+name: fluentui_system_icons
 description: A new Flutter package project.
 version: 0.0.1
 author:
@@ -23,8 +23,10 @@ flutter:
   fonts:
     - family: FluentSystemIcons-Regular
       fonts:
-        - asset: lib/fonts/FluentSystemIcons-Regular.ttf
-
+        - asset: packages/fluentui_system_icons/fonts/FluentSystemIcons-Regular.ttf
     - family: FluentSystemIcons-Filled
       fonts:
-        - asset: lib/fonts/FluentSystemIcons-Filled.ttf
+        - asset: packages/fluentui_system_icons/fonts/FluentSystemIcons-Filled.ttf
+
+  # For details regarding fonts in packages, see
+  # https://flutter.dev/custom-fonts/#from-packages
