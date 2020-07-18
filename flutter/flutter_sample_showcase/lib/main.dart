@@ -7,8 +7,8 @@
 //
 // ![](https://flutter.github.io/assets-for-api-docs/assets/material/icon_button_background.png)
 
-import 'package:fluentui_system_icons/fluent_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:fluentui_system_icons/fluent_icons.dart';
 
 void main() => runApp(MyApp());
 
