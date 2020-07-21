@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.FluentUI.System.Icons.Apple</id>
+    <version>$buildNumber$</version>
+    <authors>Microsoft</authors>
+    <description>Fluent UI Icons framework provides fluent icons for iOS</description>
+    <projectUrl>https://github.com/microsoft/fluentui-system-icons</projectUrl>
+    <repository type="git" url="$repoUri$" commit="$commitId$" />
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+  </metadata>
+  <files>
+    <!-- Zipped Build Output -->
+    <file src="DerivedData\Build\Products\nuget\BuildOutput.zip" target="Archives/BuildOutput.zip"/>
+  </files>
+</package>
