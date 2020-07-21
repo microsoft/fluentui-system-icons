@@ -1,11 +1,6 @@
-# 1. `production` tag at pipeline level declares that it builds
-#     binaries that can ship to external customers.
-#
-# 2. `multi-phased` tag declares that this is a multi phased build
-#     and indicates that the system should look for required steps
-#     in individual phases. This tag is important because otherwise
-#     the system would look for all tasks in all phases.
-variables: { tags: "production, multi-phased" }
+# `production` tag at pipeline level declares that it builds
+#  binaries that can ship to external customers.
+variables: { tags: "production" }
 
 # This file defines the Apple publish build steps
 name: 1.$(Date:yyyy).$(Date:MMdd)-v$(Rev:r)

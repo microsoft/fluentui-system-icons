@@ -43,19 +43,19 @@ cd $PRODUCTS_DIR
 
 make_dir_if_necessary "nuget/Debug-iphoneos"
 echo "Copy Debug-iphoneos build output into nuget folder"
-rsync -a Debug-iphoneos/FluentIcons_Example.swiftmodule/ nuget/Debug-iphoneos/FluentIcons_Example.swiftmodule/
+rsync -a Debug-iphoneos/FluentIcons-iOS/FluentIcons.framework/ nuget/Debug-iphoneos/FluentIcons-iOS/FluentIcons.framework/
 
 make_dir_if_necessary "nuget/Ship-iphoneos"
 echo "Copy Ship-iphoneos build output into nuget folder"
-rsync -a Release-iphoneos/FluentIcons_Example.swiftmodule/ nuget/Ship-iphoneos/FluentIcons_Example.swiftmodule/
+rsync -a Release-iphoneos/FluentIcons-iOS/FluentIcons.framework/ nuget/Ship-iphoneos/FluentIcons-iOS/FluentIcons.framework/
 
 make_dir_if_necessary "nuget/Debug-iphonesimulator"
 echo "Copy Debug-iphonesimulator build output into nuget folder"
-rsync -a Debug-iphonesimulator/FluentIcons_Example.swiftmodule/ nuget/Debug-iphonesimulator/FluentIcons_Example.swiftmodule/
+rsync -a Debug-iphonesimulator/FluentIcons-iOS/FluentIcons.framework/ nuget/Debug-iphonesimulator/FluentIcons-iOS/FluentIcons.framework/
 
 make_dir_if_necessary "nuget/Ship-iphonesimulator"
 echo "Copy Ship-iphonesimulator build output into nuget folder"
-rsync -a Release-iphonesimulator/FluentIcons_Example.swiftmodule/ nuget/Ship-iphonesimulator/FluentIcons_Example.swiftmodule/
+rsync -a Release-iphonesimulator/FluentIcons-iOS/FluentIcons.framework/ nuget/Ship-iphonesimulator/FluentIcons-iOS/FluentIcons.framework/
 
 # cd into our nuget folder to finally zip up our build output
 cd "nuget"
