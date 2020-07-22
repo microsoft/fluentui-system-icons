@@ -32,12 +32,6 @@ make_dir_if_necessary "$NUGET_OUTPUT_INCLUDE_DIR_IOS"
 NUGET_OUTPUT_INCLUDE_DIR_IOS_FLUENTICONS="$NUGET_OUTPUT_INCLUDE_DIR_IOS/FluentIcons"
 make_dir_if_necessary "$NUGET_OUTPUT_INCLUDE_DIR_IOS_FLUENTICONS"
 
-# Copy a single generated header into our output directory in an includes folder. Ensure we nest a FluentIcons folder for proper `#import <FluentIcons/FluentIcons-Swift.h>` imports
-# Pick the release simulator header since the device target has some arm64 specific ifdefs while the simulator version works on all platforms.
-# Rename the FluentIcons_Example-Swift.h to FluentIcons-Swift.h for consistency with Framework consumption
-echo "Copy iOS generated Swift header to include dir"
-rsync -a "DerivedData/Build/Intermediates.noindex/FluentIcons.build/Release-iphonesimulator/FluentIcons_Example.build/DerivedSources/FluentIcons_Example-Swift.h" "$NUGET_OUTPUT_INCLUDE_DIR_IOS_FLUENTICONS/FluentIcons-Swift.h"
-
 # cd into the products directory to make copying all the output easier
 cd $PRODUCTS_DIR
 
