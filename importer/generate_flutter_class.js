@@ -31,6 +31,8 @@ class FluentIcons {
   // Generated code: do not hand-edit.
   // See https://github.com/microsoft/fluentui-system-icons
   // BEGIN GENERATED
+
+  static const _kFontPkg = 'fluentui_system_icons';
 `;
 const ICON_CLASS_FOOTER =
 `
@@ -88,7 +90,7 @@ function writeCodeForJson(srcPath, iconClassFile, rtlIcons) {
     code = 
 `
   /// fluent icon named "${name}" in size ${size} and ${style} style.
-  static const IconData ${identifier} = IconData(${codepoint}, fontFamily: '${fontName}'${matchTextDirection});
+  static const IconData ${identifier} = IconData(${codepoint}, fontFamily: '${fontName}', fontPackage: _kFontPkg${matchTextDirection});
 `;
     fs.appendFileSync(iconClassFile, code, writeErrorHandler);
   }
