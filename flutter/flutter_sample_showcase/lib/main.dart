@@ -14,7 +14,7 @@ void main() => runApp(MyApp());
 
 /// This Widget is the main application widget.
 class MyApp extends StatelessWidget {
-  static const String _title = 'FluentUI Sample Showcase';
+  static const String _title = 'FluentUI';
 
   @override
   Widget build(BuildContext context) {
@@ -22,15 +22,15 @@ class MyApp extends StatelessWidget {
       title: _title,
       home: Scaffold(
         appBar: AppBar(title: const Text(_title)),
-        body: MyStatelessWidget(),
+        body: IconsAvailable(),
       ),
     );
   }
 }
 
 /// This is the stateless widget that the main application instantiates.
-class MyStatelessWidget extends StatelessWidget {
-  MyStatelessWidget({Key key}) : super(key: key);
+class IconsAvailable extends StatelessWidget {
+  IconsAvailable({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
