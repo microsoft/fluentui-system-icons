@@ -1,53 +1,145 @@
-// Flutter code sample for IconButton
-
-// In this sample the icon button's background color is defined with an [Ink]
-// widget whose child is an [IconButton]. The icon button's filled background
-// is a light shade of blue, it's a filled circle, and it's as big as the
-// button is.
-//
-// ![](https://flutter.github.io/assets-for-api-docs/assets/material/icon_button_background.png)
-
-import 'package:flutter/material.dart';
 import 'package:fluentui_system_icons/fluent_icons.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+import 'icons.dart';
 
-/// This Widget is the main application widget.
-class MyApp extends StatelessWidget {
-  static const String _title = 'FluentUI';
+void main() {
+  runApp(FluentUIIconKit());
+}
 
+class FluentUIIconKit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: _title,
-      home: Scaffold(
-        appBar: AppBar(title: const Text(_title)),
-        body: IconsAvailable(),
-      ),
+      debugShowCheckedModeBanner: false,
+      title: 'FluentUI Sample Showcase',
+      home: FluentUIShowcaseWidget(),
     );
   }
 }
 
-/// This is the stateless widget that the main application instantiates.
-class IconsAvailable extends StatelessWidget {
-  IconsAvailable({Key key}) : super(key: key);
+class FluentUIShowcaseWidget extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => FluentUIShowcaseWidgetState();
+}
+
+class FluentUIShowcaseWidgetState extends State<FluentUIShowcaseWidget> {
+  var _searchTerm = "";
+  var isListMode = true;
+  TextEditingController dismissText = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.white,
-      child: Center(
-        child: Ink(
-          decoration: const ShapeDecoration(
-            color: Colors.lightBlue,
-            shape: CircleBorder(),
-          ),
-          child: IconButton(
-            icon: Icon(FluentIcons.access_time_24_regular),
-            color: Colors.white,
-            onPressed: () {},
-          ),
+    /*24 is for notification bar on Android*/
+    final filteredIcons = icons
+        .where((icon) =>
+            _searchTerm.isEmpty ||
+            icon.iconName.toLowerCase().contains(_searchTerm.toLowerCase()))
+        .toList();
+
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          children: <Widget>[
+            _searchBar(context),
+            Expanded(
+              child: GridView.builder(
+                itemCount: filteredIcons.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: isListMode ? 1 : 4,
+                    childAspectRatio: isListMode
+                        ? (MediaQuery.of(context).size.height * 0.010)
+                        : 1),
+                itemBuilder: (context, index) {
+                  final icon = filteredIcons[index];
+                  return Padding(
+                    padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
+                    child: Wrap(
+                      direction: Axis.vertical,
+                      children: <Widget>[
+                        Icon(icon.iconData),
+                        SizedBox(
+                          width: 40,
+                        ),
+                        if (isListMode) Text(icon.iconName),
+                        if (isListMode)
+                          SizedBox(
+                            height: 400,
+                          ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
         ),
+      ),
+    );
+  }
+
+  Material _searchBar(BuildContext context) {
+    return Material(
+      elevation: 10.0,
+      child: Row(
+        children: <Widget>[
+          IconButton(
+            icon: Icon(
+              FluentIcons.search_24_regular,
+              color: Colors.grey,
+            ),
+            onPressed: () {
+              setState(
+                () {
+                  _searchTerm = "";
+                },
+              );
+            },
+          ),
+          Expanded(
+            child: TextField(
+              controller: dismissText,
+              onChanged: (text) => setState(() => _searchTerm = text),
+              style: TextStyle(fontSize: 18.0, color: Colors.black),
+              decoration: InputDecoration(
+                  border: InputBorder.none, hintText: 'Search icons'),
+            ),
+          ),
+          IconButton(
+            icon: Icon(
+              FluentIcons.dismiss_24_filled,
+              color: Colors.grey,
+            ),
+            onPressed: () {
+              setState(
+                () {
+                  _searchTerm = "";
+                  dismissText.text = "";
+                },
+              );
+            },
+          ),
+          IconButton(
+            icon: Icon(
+              isListMode
+                  ? FluentIcons.grid_24_regular
+                  : FluentIcons.list_24_regular,
+              color: Colors.grey,
+            ),
+            onPressed: () {
+              setState(
+                () {
+                  if (isListMode) {
+                    isListMode = false;
+                  } else {
+                    isListMode = true;
+                  }
+                },
+              );
+            },
+          ),
+        ],
       ),
     );
   }

@@ -1,6 +1,6 @@
 # flutter_sample_showcase
 
-Sample FluentUI App
+A new Flutter project.
 
 ## Getting Started
 
