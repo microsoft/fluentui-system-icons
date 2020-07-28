@@ -22,7 +22,7 @@ struct Run: ParsableCommand {
   @Option(name: .long, help: "Path to the fluent icon library's source code")
   var pathToFluentIconSource: String
 
-  @Option(name: .long, default: nil, help: "Path to a custom list of icons in use (for React Native, Optional).")
+  @Option(name: .long, default: nil, help: "Paths to lists of icons in use that aren't in the Swift/Objc codebase (for React Native, Optional). Multiple files can be separated with a comma.")
   var pathToListOfIconsToKeep: String?
 
   func run() throws {
