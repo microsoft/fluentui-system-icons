@@ -53,12 +53,17 @@ class FluentUIShowcaseWidgetState extends State<FluentUIShowcaseWidget> {
                         : 1),
                 itemBuilder: (context, index) {
                   final icon = filteredIcons[index];
+                  RegExp intRegex = RegExp(r'[0-9]', multiLine: true);
+                  var iconSizeStr =  intRegex.allMatches(icon.iconName).map((m) => m.group(0)).join();
+                  var iconSize = double.parse(iconSizeStr);
                   return Padding(
-                    padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
-                    child: Wrap(
-                      direction: Axis.vertical,
+                    padding: EdgeInsets.fromLTRB(16, 0, 0, 0),
+                    child: Row(
                       children: <Widget>[
-                        Icon(icon.iconData),
+                        SizedBox(
+                            child: Icon(icon.iconData, size: iconSize),
+                          width: 30,
+                        ),
                         SizedBox(
                           width: 40,
                         ),
