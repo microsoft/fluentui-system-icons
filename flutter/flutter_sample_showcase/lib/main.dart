@@ -1,5 +1,4 @@
 import 'package:fluentui_system_icons/fluent_icons.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'icons.dart';
@@ -54,14 +53,17 @@ class FluentUIShowcaseWidgetState extends State<FluentUIShowcaseWidget> {
                 itemBuilder: (context, index) {
                   final icon = filteredIcons[index];
                   RegExp intRegex = RegExp(r'[0-9]', multiLine: true);
-                  var iconSizeStr =  intRegex.allMatches(icon.iconName).map((m) => m.group(0)).join();
+                  var iconSizeStr = intRegex
+                      .allMatches(icon.iconName)
+                      .map((m) => m.group(0))
+                      .join();
                   var iconSize = double.parse(iconSizeStr);
                   return Padding(
                     padding: EdgeInsets.fromLTRB(16, 0, 0, 0),
                     child: Row(
                       children: <Widget>[
                         SizedBox(
-                            child: Icon(icon.iconData, size: iconSize),
+                          child: Icon(icon.iconData, size: iconSize),
                           width: 30,
                         ),
                         SizedBox(
