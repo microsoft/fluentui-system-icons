@@ -1,4 +1,4 @@
-# FluentIcons iOS
+# FluentIcons iOS & macOS
 
 ## Installation
 
