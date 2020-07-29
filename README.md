@@ -82,7 +82,7 @@ You can build and run the demo apps following the steps below.
 ## Contact
 Please feel free to reach out to the following points of contact with questions or requests.
 * [Joe Woodward](mailto:joe.woodward@microsoft.com) / [Jason Custer](mailto:jacust@microsoft.com) - Design
-* [Nick Romano](mailto:nick.romano@microsoft.com) - iOS
+* [Nick Romano](mailto:nick.romano@microsoft.com) - iOS/macOS
 * [Will Hou](mailto:wih@microsoft.com) - Android
 
 ## Code of Conduct
