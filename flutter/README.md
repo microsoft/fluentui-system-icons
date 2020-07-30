@@ -4,18 +4,18 @@
 
 Fluent System Icons is a flutter package for a set of mobile platform icons from Microsoft.
 
-![fluent system icons](../../art/readme-asset.png)
+![fluent system icons](../art/readme-asset.png)
 
 ## Icon List
 
-[View the full list of icons](../../icons.md)
+[View the full list of icons](../icons.md)
 
 ### Icon styles
 The library offers icons in two styles, `regular` and `filled`
 
 regular | filled
 --------|-------
-![ic_fluent_mail_regular](../../art/ic_fluent_mail_regular.png)|![ic_fluent_mail_filled](../../art/ic_fluent_mail_filled.png)
+![ic_fluent_mail_regular](../art/ic_fluent_mail_regular.png)|![ic_fluent_mail_filled](../art/ic_fluent_mail_filled.png)
 
 ## Getting started
 
