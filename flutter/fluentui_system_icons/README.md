@@ -4,6 +4,8 @@
 
 Fluent System Icons is a flutter package for a set of mobile platform icons from Microsoft.
 
+![fluent system icons](../../art/readme-asset.png)
+
 ## Icon List
 
 [View the full list of icons](../../icons.md)
@@ -13,7 +15,7 @@ The library offers icons in two styles, `regular` and `filled`
 
 regular | filled
 --------|-------
-![ic_fluent_mail_regular](https://github.com/microsoft/fluentui-system-icons/blob/flutter/art/ic_fluent_mail_regular.png)|![ic_fluent_mail_filled](https://github.com/microsoft/fluentui-system-icons/blob/flutter/art/ic_fluent_mail_filled.png)
+![ic_fluent_mail_regular](../../art/ic_fluent_mail_regular.png)|![ic_fluent_mail_filled](../../art/ic_fluent_mail_filled.png)
 
 ## Getting started
 
@@ -68,7 +70,7 @@ This generally when the app is not build properly. Please try the below steps:
  
 ## Changelog
 
-Please refer to the [ChangeLog](https://github.com/microsoft/fluentui-system-icons/blob/flutter/flutter/fluentui_system_icons/CHANGELOG.md) to get a list of changes 
+Please refer to the [ChangeLog](CHANGELOG.md) to get a list of changes 
 introduced in the various version
 
 ##Issues
