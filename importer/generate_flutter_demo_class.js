@@ -67,11 +67,14 @@ function writeCodeForJson(srcPath, iconClassFile, rtlIcons) {
     let match = FILE_NAME_REGEX.exec(fullName);
     let name = match[1];
     let size = match[2];
+    let style = match[3];
     FILE_NAME_REGEX.lastIndex = 0;
+
+    let identifier = `${name}_${size}_${style}`;
 
     var code = 
 `
-  FluentUISampleIcon(FluentIcons.${name}, '${name}', ${size}),
+  FluentUISampleIcon(FluentIcons.${identifier}, '${name}', ${size}),
 `;
     fs.appendFileSync(iconClassFile, code, writeErrorHandler);
   }
