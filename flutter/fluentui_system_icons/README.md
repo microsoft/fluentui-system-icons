@@ -13,7 +13,7 @@ The library offers icons in two styles, `regular` and `filled`
 
 regular | filled
 --------|-------
-![ic_fluent_mail_regular](../../ic_fluent_mail_regular.png)|![ic_fluent_mail_filled](../../ic_fluent_mail_filled.png)
+![ic_fluent_mail_regular](https://github.com/microsoft/fluentui-system-icons/blob/flutter/art/ic_fluent_mail_regular.png)|![ic_fluent_mail_filled](https://github.com/microsoft/fluentui-system-icons/blob/flutter/art/ic_fluent_mail_filled.png)
 
 ## Getting started
 
