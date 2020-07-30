@@ -73,7 +73,7 @@ This generally when the app is not build properly. Please try the below steps:
 Please refer to the [ChangeLog](CHANGELOG.md) to get a list of changes 
 introduced in the various version
 
-##Issues
+## Issues
 
 If you find a bug or want a feature, but don't know how to fix/implement it, please fill an [issue](https://github.com/microsoft/fluentui-system-icons/issues).
   
