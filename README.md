@@ -4,7 +4,7 @@
 
 Fluent System Icons is a set of mobile platform icons from Microsoft.
 
-![fluent system icons](art/readme-asset.png)
+![fluent system icons](art/readme-banner.png)
 
 ## Icon List
 
