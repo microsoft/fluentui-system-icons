@@ -14,6 +14,7 @@
 *.ipr
 *.iws
 .idea/
+.vscode/
 
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line
@@ -28,6 +29,8 @@
 .pub-cache/
 .pub/
 build/
+# If you're building an application, you may want to check-in your pubspec.lock
+pubspec.lock
 
 # Android related
 **/android/**/gradle-wrapper.jar
@@ -71,3 +74,15 @@ build/
 !**/ios/**/default.pbxuser
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+
+example/android/\.project
+
+example/android/\.settings/org\.eclipse\.buildship\.core\.prefs
+
+example/android/app/\.classpath
+
+example/android/app/\.project
+
+example/android/app/\.settings/org\.eclipse\.buildship\.core\.prefs
+
+example/ios/Flutter/flutter_export_environment\.sh
