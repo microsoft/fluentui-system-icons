@@ -12,7 +12,7 @@ class FluentUIIconKit extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'FluentUI Sample Showcase',
+      title: 'Fluent icons',
       home: FluentUIShowcaseWidget(),
     );
   }
