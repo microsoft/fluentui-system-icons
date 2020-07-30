@@ -36,7 +36,7 @@ class MyFlutterWidget extends StatelessWidget {
     return IconButton(
       // Use the FluentIcons + name of the icon you want
         icon: Icon(FluentIcons.access_time_24_regular),
-        onPressed: () { print("I am pressed"); }
+        onPressed: () { print("Button pressed"); }
     );
   }
 }
@@ -66,7 +66,7 @@ This generally when the app is not build properly. Please try the below steps:
 
  1. flutter pub get
  2. flutter clean
- 3. Invalidate caches and restart for Android Studio
+ 3. Invalidate caches and restart Android Studio
  
 ## Changelog
 
