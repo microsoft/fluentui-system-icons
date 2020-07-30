@@ -15,7 +15,7 @@
     "generate:flutter-font-filled": "icon-font-generator dist/*_filled.svg -o dist/flutter --name FluentSystemIcons-Filled --types ttf --html false --css false --codepoints ./font_codepoints/FluentSystemIcons-Filled.json",
     "generate:flutter-icon-lib-class": "node generate_flutter_lib_class.js --source=dist/flutter/FluentSystemIcons-Regular.json dist/flutter/FluentSystemIcons-Filled.json --dest=dist/flutter",
     "generate:flutter-icon-demo-class": "node generate_flutter_demo_class.js --source=dist/flutter/FluentSystemIcons-Regular.json dist/flutter/FluentSystemIcons-Filled.json --dest=dist/flutter",
-    "deploy:flutter": "npm run build:flutter && cp dist/flutter/*.ttf ../flutter/lib/fonts && cp dist/flutter/*.dart ../flutter/lib && cp dist/flutter/*.json font_codepoints/ && npm run clean"
+    "deploy:flutter": "npm run build:flutter && cp dist/flutter/*.ttf ../flutter/lib/fonts && cp dist/flutter/fluent_icons.dart ../flutter/lib/fluent_icons.dart && cp dist/flutter/sample_icons.dart ../flutter/example/lib/sample_icons.dart && cp dist/flutter/*.json font_codepoints/ && npm run clean"
   },
   "author": "Microsoft Inc.",
   "license": "Microsoft",

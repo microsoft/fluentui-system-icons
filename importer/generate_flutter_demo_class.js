@@ -14,30 +14,24 @@ const FILE_NAME_REGEX = /^ic_fluent_(\w+)_(\d+)_(\w+)/gm;
 
 const SRC_PATHS = argv.source;
 const DEST_PATH = argv.dest;
-const ICON_CLASS_NAME = 'fluent_icons.dart';
+const ICON_CLASS_NAME = 'sample_icons.dart';
 const ICON_CLASS_HEADER = 
 `// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
-import 'package:flutter/widgets.dart';
+import 'package:fluentui_system_icons/fluent_icons.dart';
 
-class FluentIcons {
+import 'fluentui_sample_icon.dart';
 
-  // This class is not meant to be instantiated or extended; this constructor
-  // prevents instantiation and extension.
-  // ignore: unused_element
-  FluentIcons._();
+final icons = <FluentUISampleIcon>[ 
 
   // Generated code: do not hand-edit.
-  // See https://github.com/microsoft/fluentui-system-icons
   // BEGIN GENERATED
-
-  static const _kFontPkg = 'fluentui_system_icons';
 `;
 const ICON_CLASS_FOOTER =
 `
   // END GENERATED
-}
+];
 `;
 
 const writeErrorHandler = (err) => {
@@ -68,29 +62,16 @@ function processJsonFiles(srcPaths, destPath) {
 
 function writeCodeForJson(srcPath, iconClassFile, rtlIcons) {
   let jsonData = require("./" + srcPath);
-  let fontName = srcPath.substring(srcPath.lastIndexOf('/') + 1).replace(".json", "");
-  var code = 
-`
-  // ${fontName}
-`;
-
-  fs.appendFileSync(iconClassFile, code, writeErrorHandler);
 
   for (var fullName in jsonData) {
     let match = FILE_NAME_REGEX.exec(fullName);
     let name = match[1];
     let size = match[2];
-    let style = match[3];
     FILE_NAME_REGEX.lastIndex = 0;
 
-    let codepoint = jsonData[fullName].replace("\\", "0x");
-    let identifier = `${name}_${size}_${style}`;
-    let matchTextDirection = rtlIcons.includes(fullName) ? `, matchTextDirection: true` : "";
-
-    code = 
+    var code = 
 `
-  /// fluent icon named "${name}" in size ${size} and ${style} style.
-  static const IconData ${identifier} = IconData(${codepoint}, fontFamily: '${fontName}', fontPackage: _kFontPkg${matchTextDirection});
+  FluentUISampleIcon(FluentIcons.${name}, '${name}', ${size}),
 `;
     fs.appendFileSync(iconClassFile, code, writeErrorHandler);
   }

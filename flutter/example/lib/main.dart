@@ -1,7 +1,7 @@
 import 'package:fluentui_system_icons/fluent_icons.dart';
 import 'package:flutter/material.dart';
 
-import 'icons.dart';
+import 'sample_icons.dart';
 
 void main() {
   runApp(FluentUIIconKit());
