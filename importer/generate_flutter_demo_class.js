@@ -74,7 +74,7 @@ function writeCodeForJson(srcPath, iconClassFile, rtlIcons) {
 
     var code = 
 `
-  FluentUISampleIcon(FluentIcons.${identifier}, '${name}', ${size}),
+  FluentUISampleIcon(FluentIcons.${identifier}, '${identifier}', ${size}),
 `;
     fs.appendFileSync(iconClassFile, code, writeErrorHandler);
   }
