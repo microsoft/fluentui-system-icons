@@ -43,7 +43,7 @@ with open("icons.md", "w") as icons_md:
 
         for weight in sorted(weights, reverse=True):
             icons_md.write(
-                f"|{asset_dir} ({weight})"
+                f"|{asset_dir} ({weight.title()})"
                 f'|<img src="{svg_dir}/{largest_svg_icon_path_by_weight[weight]}?raw=true" width="24" height="24">'
                 f'|{"<br />".join(ios_references_by_weight[weight])}'
                 f'|{"<br />".join(android_references_by_weight[weight])}|\n'
