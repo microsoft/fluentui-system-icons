@@ -48,19 +48,18 @@ if (!DEST_PATH) {
 processJsonFiles(SRC_PATHS, DEST_PATH)
 
 function processJsonFiles(srcPaths, destPath) {
-  var rtlIcons = fs.readFileSync('rtl.txt').toString().split("\n");
   let iconClassFile = path.join(destPath, ICON_CLASS_NAME);
   fs.writeFileSync(iconClassFile, "", writeErrorHandler);
   fs.appendFileSync(iconClassFile, ICON_CLASS_HEADER, writeErrorHandler);
 
   srcPaths.forEach(function (srcPath) {
-    writeCodeForJson(srcPath, iconClassFile, rtlIcons);
+    writeCodeForJson(srcPath, iconClassFile);
   })
 
   fs.appendFileSync(iconClassFile, ICON_CLASS_FOOTER, writeErrorHandler);
 }
 
-function writeCodeForJson(srcPath, iconClassFile, rtlIcons) {
+function writeCodeForJson(srcPath, iconClassFile) {
   let jsonData = require("./" + srcPath);
 
   for (var fullName in jsonData) {
