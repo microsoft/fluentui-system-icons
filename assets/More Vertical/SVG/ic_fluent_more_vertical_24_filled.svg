@@ -1,11 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
-    <title>ic_fluent_more_vertical_24_filled</title>
-    <desc>Created with Sketch.</desc>
-    <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="ic_fluent_more_vertical_24_filled" fill="#212121" fill-rule="nonzero">
-            <path d="M10,12 C10,10.896 10.896,10 12,10 C13.104,10 14,10.896 14,12 C14,13.104 13.104,14 12,14 C10.896,14 10,13.104 10,12 Z M10,19 C10,17.896 10.896,17 12,17 C13.104,17 14,17.896 14,19 C14,20.104 13.104,21 12,21 C10.896,21 10,20.104 10,19 Z M10,5 C10,3.896 10.896,3 12,3 C13.104,3 14,3.896 14,5 C14,6.104 13.104,7 12,7 C10.896,7 10,6.104 10,5 Z" id="🎨-Color"></path>
-        </g>
-    </g>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 8C10.8954 8 10 7.10457 10 6C10 4.89543 10.8954 4 12 4C13.1046 4 14 4.89543 14 6C14 7.10457 13.1046 8 12 8Z" fill="#212121"/>
+<path d="M12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12C14 13.1046 13.1046 14 12 14Z" fill="#212121"/>
+<path d="M10 18C10 19.1046 10.8954 20 12 20C13.1046 20 14 19.1046 14 18C14 16.8954 13.1046 16 12 16C10.8954 16 10 16.8954 10 18Z" fill="#212121"/>
 </svg>
