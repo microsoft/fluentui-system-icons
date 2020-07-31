@@ -45,7 +45,15 @@ For library docs, see [ios/README.md](ios/README.md).
 
 ### Flutter
 
-// TODO: @aakash1313
+In the `pubspec.yaml` of your flutter project, add the following dependency:
+
+```yaml
+dependencies:
+  ...
+  fluentui_system_icons: <latest_version>
+```
+
+For library docs, see [flutter/README.md](flutter/README.md)
 
 ## Contributing
 
