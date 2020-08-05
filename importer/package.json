@@ -12,9 +12,9 @@
     "build:ios": "npm run generate:pdf",
     "deploy:android": "npm run build:android && rm -rf ../android/library/src/main/res/drawable && mkdir ../android/library/src/main/res/drawable && cp -a ./dist/*.xml ../android/library/src/main/res/drawable && npm run clean",
     "deploy:ios": "npm run build:ios && python3 process_ios_assets.py && npm run clean",
-    "generate:font-regular": "icon-font-generator dist/*_regular.svg -o dist/fonts --name FluentSystemIcons-Regular --types ttf --html false --css false --codepoints ./font_codepoints/FluentSystemIcons-Regular.json",
-    "generate:font-filled": "icon-font-generator dist/*_filled.svg -o dist/fonts --name FluentSystemIcons-Filled --types ttf --html false --css false --codepoints ./font_codepoints/FluentSystemIcons-Filled.json",
-    "build:fonts": "npm run generate:svg && mkdir dist/fonts && npm run generate:font-regular && npm run generate:font-filled",
+    "generate:font-regular": "icon-font-generator dist/*_regular.svg -o dist/fonts --name FluentSystemIcons-Regular --types ttf --html false --css false --codepoints ../fonts/FluentSystemIcons-Regular.json --height 500",
+    "generate:font-filled": "icon-font-generator dist/*_filled.svg -o dist/fonts --name FluentSystemIcons-Filled --types ttf --html false --css false --codepoints ../fonts/FluentSystemIcons-Filled.json --height 500",
+    "build:fonts": "npm run generate:svg && svgo dist/*.svg --config svgo_config.yml && mkdir dist/fonts && npm run generate:font-regular && npm run generate:font-filled",
     "deploy:fonts": "npm run build:fonts && cp -a dist/fonts/ ../fonts && npm run clean",
     "generate:flutter-icon-lib-class": "node generate_flutter_lib_class.js --source=../fonts/FluentSystemIcons-Regular.json ../fonts/FluentSystemIcons-Filled.json --dest=dist/flutter",
     "generate:flutter-icon-demo-class": "node generate_flutter_demo_class.js --source=../fonts/FluentSystemIcons-Regular.json ../fonts/FluentSystemIcons-Filled.json --dest=dist/flutter",
@@ -29,6 +29,7 @@
   "dependencies": {
     "avocado": "1.0.0",
     "icon-font-generator": "^2.1.10",
-    "replace": "1.1.4"
+    "replace": "1.1.4",
+    "svgo": "1.3.2"
   }
 }
