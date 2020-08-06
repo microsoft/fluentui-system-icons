@@ -243,6 +243,8 @@
 |Bring To Front (Filled)|<img src="assets/Bring To Front/SVG/ic_fluent_bring_to_front_24_filled.svg?raw=true" width="24" height="24">|`bringToFront20Filled`<br />`bringToFront24Filled`|`ic_fluent_bring_to_front_20_filled`<br />`ic_fluent_bring_to_front_24_filled`|
 |Broad Activity Feed (Regular)|<img src="assets/Broad Activity Feed/SVG/ic_fluent_broad_activity_feed_24_regular.svg?raw=true" width="24" height="24">|`broadActivityFeed24Regular`|`ic_fluent_broad_activity_feed_24_regular`|
 |Broad Activity Feed (Filled)|<img src="assets/Broad Activity Feed/SVG/ic_fluent_broad_activity_feed_24_filled.svg?raw=true" width="24" height="24">|`broadActivityFeed24Filled`|`ic_fluent_broad_activity_feed_24_filled`|
+|Broom (Regular)|<img src="assets/Broom/SVG/ic_fluent_broom_24_regular.svg?raw=true" width="24" height="24">|`broom20Regular`<br />`broom24Regular`|`ic_fluent_broom_20_regular`<br />`ic_fluent_broom_24_regular`|
+|Broom (Filled)|<img src="assets/Broom/SVG/ic_fluent_broom_24_filled.svg?raw=true" width="24" height="24">|`broom20Filled`<br />`broom24Filled`|`ic_fluent_broom_20_filled`<br />`ic_fluent_broom_24_filled`|
 |Bug Report (Regular)|<img src="assets/Bug Report/SVG/ic_fluent_bug_report_24_regular.svg?raw=true" width="24" height="24">|`bugReport24Regular`|`ic_fluent_bug_report_24_regular`|
 |Bug Report (Filled)|<img src="assets/Bug Report/SVG/ic_fluent_bug_report_24_filled.svg?raw=true" width="24" height="24">|`bugReport24Filled`|`ic_fluent_bug_report_24_filled`|
 |Building (Regular)|<img src="assets/Building/SVG/ic_fluent_building_24_regular.svg?raw=true" width="24" height="24">|`building24Regular`|`ic_fluent_building_24_regular`|
@@ -657,8 +659,8 @@
 |Double Tap Swipe Down (Filled)|<img src="assets/Double Tap Swipe Down/SVG/ic_fluent_double_tap_swipe_down_24_filled.svg?raw=true" width="24" height="24">|`doubleTapSwipeDown24Filled`|`ic_fluent_double_tap_swipe_down_24_filled`|
 |Double Tap Swipe Up (Regular)|<img src="assets/Double Tap Swipe Up/SVG/ic_fluent_double_tap_swipe_up_24_regular.svg?raw=true" width="24" height="24">|`doubleTapSwipeUp24Regular`|`ic_fluent_double_tap_swipe_up_24_regular`|
 |Double Tap Swipe Up (Filled)|<img src="assets/Double Tap Swipe Up/SVG/ic_fluent_double_tap_swipe_up_24_filled.svg?raw=true" width="24" height="24">|`doubleTapSwipeUp24Filled`|`ic_fluent_double_tap_swipe_up_24_filled`|
-|Drafts (Regular)|<img src="assets/Drafts/SVG/ic_fluent_drafts_24_regular.svg?raw=true" width="24" height="24">|`drafts16Regular`<br />`drafts24Regular`|`ic_fluent_drafts_16_regular`<br />`ic_fluent_drafts_24_regular`|
-|Drafts (Filled)|<img src="assets/Drafts/SVG/ic_fluent_drafts_24_filled.svg?raw=true" width="24" height="24">|`drafts16Filled`<br />`drafts24Filled`|`ic_fluent_drafts_16_filled`<br />`ic_fluent_drafts_24_filled`|
+|Drafts (Regular)|<img src="assets/Drafts/SVG/ic_fluent_drafts_24_regular.svg?raw=true" width="24" height="24">|`drafts16Regular`<br />`drafts20Regular`<br />`drafts24Regular`|`ic_fluent_drafts_16_regular`<br />`ic_fluent_drafts_20_regular`<br />`ic_fluent_drafts_24_regular`|
+|Drafts (Filled)|<img src="assets/Drafts/SVG/ic_fluent_drafts_24_filled.svg?raw=true" width="24" height="24">|`drafts16Filled`<br />`drafts20Filled`<br />`drafts24Filled`|`ic_fluent_drafts_16_filled`<br />`ic_fluent_drafts_20_filled`<br />`ic_fluent_drafts_24_filled`|
 |Drag (Regular)|<img src="assets/Drag/SVG/ic_fluent_drag_24_regular.svg?raw=true" width="24" height="24">|`drag24Regular`|`ic_fluent_drag_24_regular`|
 |Drag (Filled)|<img src="assets/Drag/SVG/ic_fluent_drag_24_filled.svg?raw=true" width="24" height="24">|`drag24Filled`|`ic_fluent_drag_24_filled`|
 |Drink (Regular)|<img src="assets/Drink/SVG/ic_fluent_drink_24_regular.svg?raw=true" width="24" height="24">|`drink24Regular`|`ic_fluent_drink_24_regular`|
