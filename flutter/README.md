@@ -67,11 +67,6 @@ This generally when the app is not build properly. Please try the below steps:
  1. flutter pub get
  2. flutter clean
  3. Invalidate caches and restart Android Studio
- 
-## Changelog
-
-Please refer to the [ChangeLog](CHANGELOG.md) to get a list of changes 
-introduced in the various version
 
 ## Issues
 

@@ -92,8 +92,10 @@ You can build and run the demo apps following the steps below.
 4. Click run 
 
 ### Flutter
-
-// TODO: @aakash1313
+Prerequisite: Make sure you have flutter configured in Android Studio 
+1. Open the [flutter](flutter) directory in Android Studio
+2. Select the 'example' in the directory and open it in Android Studio
+3. Click run
 
 ## Contact
 Please feel free to [open a GitHub issue](https://github.com/microsoft/fluentui-system-icons/issues/new) and assign to the following points of contact with questions or requests.
