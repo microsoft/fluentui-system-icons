@@ -5,8 +5,10 @@
 
 import UIKit
 
+private class FluentIconsBundleCheck {}
+
 public extension UIImage {
-  @objc static let fluentIconBundle = FluentIconsBundle.resourceBundle
+  @objc static let fluentIconBundle = Bundle(for: FluentIconsBundleCheck.self)
 
   @objc convenience init(fluent: FluentIcon) {
     // Force unwrap here because the resource strings

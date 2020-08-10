@@ -234,7 +234,7 @@
 					};
 					C3A0809D247DD6AF0009D6E0 = {
 						CreatedOnToolsVersion = 11.4.1;
-						DevelopmentTeam = UBF8T346G9;
+						DevelopmentTeam = 4337ZFV4M9;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -583,7 +583,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = UBF8T346G9;
+				DEVELOPMENT_TEAM = 4337ZFV4M9;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = FluentIcons_ExampleMacOS/Info.plist;
@@ -613,7 +613,7 @@
 				CODE_SIGN_ENTITLEMENTS = FluentIcons_ExampleMacOS/FluentIcons_ExampleMacOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = UBF8T346G9;
+				DEVELOPMENT_TEAM = 4337ZFV4M9;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = FluentIcons_ExampleMacOS/Info.plist;
