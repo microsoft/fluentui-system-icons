@@ -162,11 +162,13 @@ def zipit(dir_list, zip_name):
     for dir in dir_list:
         zipdir(dir, zipf)
     zipf.close()
+    print('Zip file ' + zip_name + ' was successfully created.')
 
 # Create directory if missing
 def create_directory_if_necessary(x_path):
     if not os.path.exists(x_path):
         os.makedirs(x_path)
+        print('Create ' + x_path + ' directory.')
 
 full_assets_catalog_dir = 'ios/FluentIcons/Assets/IconAssets.xcassets/'
 
@@ -189,6 +191,7 @@ for path in os.listdir(full_assets_catalog_dir):
     if path in set:
         src_folder = os.path.join(full_assets_catalog_dir, path)
         if os.path.isdir(src_folder):
+            print('Copy: ' + src_folder + ' into Fluent Assets Catalog')
             shutil.copytree(src_folder, os.path.join(debug_iphoneos, path))
             shutil.copytree(src_folder, os.path.join(ship_iphoneos, path))
             shutil.copytree(src_folder, os.path.join(debug_iphonesimulator, path))
