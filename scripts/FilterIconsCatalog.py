@@ -155,7 +155,7 @@ def zipdir(dir_path, ziph):
         for file in files:
             ziph.write(os.path.join(root, file),
                        os.path.relpath(os.path.join(root, file),
-                                       os.path.join(dir_path, '..')))
+                                       os.path.join(dir_path, '../../')))
 
 def zipit(dir_list, zip_name):
     zipf = zipfile.ZipFile(zip_name, 'w', zipfile.ZIP_DEFLATED)
@@ -173,16 +173,16 @@ full_assets_catalog_dir = 'ios/FluentIcons/Assets/IconAssets.xcassets/'
 nuget_path = 'DerivedData/Build/Products/nuget'
 create_directory_if_necessary(nuget_path)
 
-debug_iphoneos = 'DerivedData/Build/Products/nuget/Debug-iphoneos'
+debug_iphoneos = 'DerivedData/Build/Products/nuget/Debug-iphoneos/FluentAssets.xcassets'
 create_directory_if_necessary(debug_iphoneos)
 
-ship_iphoneos = 'DerivedData/Build/Products/nuget/Ship-iphoneos'
+ship_iphoneos = 'DerivedData/Build/Products/nuget/Ship-iphoneos/FluentAssets.xcassets'
 create_directory_if_necessary(ship_iphoneos)
 
-debug_iphonesimulator = 'DerivedData/Build/Products/nuget/Debug-iphonesimulator'
+debug_iphonesimulator = 'DerivedData/Build/Products/nuget/Debug-iphonesimulator/FluentAssets.xcassets'
 create_directory_if_necessary(debug_iphonesimulator)
 
-ship_iphonesimulator = 'DerivedData/Build/Products/nuget/Ship-iphonesimulator'
+ship_iphonesimulator = 'DerivedData/Build/Products/nuget/Ship-iphonesimulator/FluentAssets.xcassets'
 create_directory_if_necessary(ship_iphonesimulator)
 
 for path in os.listdir(full_assets_catalog_dir):
