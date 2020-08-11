@@ -9,42 +9,6 @@ jobs:
   steps:
   # Select proper XCode version
   - template: apple-xcode-select.yml
-
-#  # iphonesimulator Library Debug
-#  - template: apple-xcode-build.yml
-#    parameters:
-#      xcode_sdk: 'iphonesimulator'
-#      xcode_workspacePath: 'ios/FluentIcons.xcworkspace'
-#      xcode_actions: 'build'
-#      xcode_scheme: 'FluentIcons-iOS'
-#      xcode_configuration: 'Debug'
-#  
-#  # iphonesimulator Library Release
-#  - template: apple-xcode-build.yml
-#    parameters:
-#      xcode_sdk: 'iphonesimulator'
-#      xcode_workspacePath: 'ios/FluentIcons.xcworkspace'
-#      xcode_actions: 'build'
-#      xcode_scheme: 'FluentIcons-iOS'
-#      xcode_configuration: 'Release'
-#
-#  # iphoneos Library Debug
-#  - template: apple-xcode-build.yml
-#    parameters:
-#      xcode_sdk: 'iphoneos'
-#      xcode_workspacePath: 'ios/FluentIcons.xcworkspace'
-#      xcode_actions: 'build'
-#      xcode_scheme: 'FluentIcons-iOS'
-#      xcode_configuration: 'Debug'
-#  
-#  # iphoneos Library Release
-#  - template: apple-xcode-build.yml
-#    parameters:
-#      xcode_sdk: 'iphoneos'
-#      xcode_workspacePath: 'ios/FluentIcons.xcworkspace'
-#      xcode_actions: 'build'
-#      xcode_scheme: 'FluentIcons-iOS'
-#      xcode_configuration: 'Release'
       
   # Zip our build output. It's important to zip here to preserve symlinks
   - bash: 'scripts/prepare_for_nuget_pack.sh'
