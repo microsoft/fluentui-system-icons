@@ -148,19 +148,16 @@ set = {
 "ic_fluent_person_block_24_regular.imageset"
 }
 
-# Create .zip file from a list of directories
-def zipdir(dir_path, ziph):
-    # ziph is zipfile handle
+# Create .zip file from a directory
+def zipit(dir_path, zip_name):
+    zipf = zipfile.ZipFile(zip_name, 'w', zipfile.ZIP_DEFLATED)
+    
     for root, dirs, files in os.walk(dir_path):
         for file in files:
-            ziph.write(os.path.join(root, file),
+            zipf.write(os.path.join(root, file),
                        os.path.relpath(os.path.join(root, file),
-                                       os.path.join(dir_path, '../../')))
-
-def zipit(dir_list, zip_name):
-    zipf = zipfile.ZipFile(zip_name, 'w', zipfile.ZIP_DEFLATED)
-    for dir in dir_list:
-        zipdir(dir, zipf)
+                                       os.path.join(dir_path, '..')))
+    
     zipf.close()
     print('Zip file ' + zip_name + ' was successfully created.')
 
@@ -175,26 +172,14 @@ full_assets_catalog_dir = 'ios/FluentIcons/Assets/IconAssets.xcassets/'
 nuget_path = 'DerivedData/Build/Products/nuget'
 create_directory_if_necessary(nuget_path)
 
-debug_iphoneos = 'DerivedData/Build/Products/nuget/Debug-iphoneos/FluentAssets.xcassets'
-create_directory_if_necessary(debug_iphoneos)
-
-ship_iphoneos = 'DerivedData/Build/Products/nuget/Ship-iphoneos/FluentAssets.xcassets'
-create_directory_if_necessary(ship_iphoneos)
-
-debug_iphonesimulator = 'DerivedData/Build/Products/nuget/Debug-iphonesimulator/FluentAssets.xcassets'
-create_directory_if_necessary(debug_iphonesimulator)
-
-ship_iphonesimulator = 'DerivedData/Build/Products/nuget/Ship-iphonesimulator/FluentAssets.xcassets'
-create_directory_if_necessary(ship_iphonesimulator)
+filtered_assets_catalog_dir = 'DerivedData/Build/Products/nuget/FluentAssets.xcassets'
+create_directory_if_necessary(filtered_assets_catalog_dir)
 
 for path in os.listdir(full_assets_catalog_dir):
     if path in set:
         src_folder = os.path.join(full_assets_catalog_dir, path)
         if os.path.isdir(src_folder):
             print('Copy: ' + src_folder + ' into Fluent Assets Catalog')
-            shutil.copytree(src_folder, os.path.join(debug_iphoneos, path))
-            shutil.copytree(src_folder, os.path.join(ship_iphoneos, path))
-            shutil.copytree(src_folder, os.path.join(debug_iphonesimulator, path))
-            shutil.copytree(src_folder, os.path.join(ship_iphonesimulator, path))
+            shutil.copytree(src_folder, os.path.join(filtered_assets_catalog_dir, path))
 
-zipit([debug_iphoneos, ship_iphoneos, debug_iphonesimulator, ship_iphonesimulator], os.path.join(nuget_path, 'BuildOutput.zip'))
+zipit(filtered_assets_catalog_dir, os.path.join(nuget_path, 'BuildOutput.zip'))
