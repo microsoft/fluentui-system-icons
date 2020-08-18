@@ -6,10 +6,7 @@ jobs:
   timeoutInMinutes: 60 # how long to run the job before automatically cancelling
   cancelTimeoutInMinutes: 5 # how much time to give 'run always even if cancelled tasks' before killing them
   
-  steps:
-  # Select proper XCode version
-  - template: apple-xcode-select.yml
-      
+  steps:      
   # Zip our build output. It's important to zip here to preserve symlinks
   - bash: 'scripts/prepare_for_nuget_pack.sh'
     displayName: 'Zip build output for NuGet'
