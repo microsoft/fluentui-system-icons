@@ -62,7 +62,7 @@ jobs:
       run: python3 generate_build_gn_android.py
       working-directory: importer
 
-    ## Flutter - TODO
+    ## Flutter - TODO: https://github.com/microsoft/fluentui-system-icons/issues/34
 
     ## Publish
     # Needs to be "-E" instead of "-r" on macOS
