@@ -3492,6 +3492,580 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.zoom_out_24_regular, 'zoom_out_24_regular', 24),
 
+  FluentUISampleIcon(FluentIcons.airplane_take_off_16_regular, 'airplane_take_off_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.airplane_take_off_20_regular, 'airplane_take_off_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.airplane_take_off_24_regular, 'airplane_take_off_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.alert_snooze_20_regular, 'alert_snooze_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.app_folder_20_regular, 'app_folder_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.app_span_16_regular, 'app_span_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.app_span_20_regular, 'app_span_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.app_span_28_regular, 'app_span_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.app_unspan_16_regular, 'app_unspan_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.app_unspan_20_regular, 'app_unspan_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.app_unspan_28_regular, 'app_unspan_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.approvals_app_24_regular, 'approvals_app_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.approvals_app_28_regular, 'approvals_app_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.apps_add_in_20_regular, 'apps_add_in_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_curve_down_left_20_regular, 'arrow_curve_down_left_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_curve_down_right_20_regular, 'arrow_curve_down_right_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_curve_up_left_20_regular, 'arrow_curve_up_left_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_curve_up_right_20_regular, 'arrow_curve_up_right_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_down_square_24_regular, 'arrow_down_square_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.arrow_maximize_vertical_20_regular, 'arrow_maximize_vertical_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_maximize_vertical_24_regular, 'arrow_maximize_vertical_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.arrow_minimize_vertical_24_regular, 'arrow_minimize_vertical_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.arrow_move_24_regular, 'arrow_move_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.arrow_reply_down_16_regular, 'arrow_reply_down_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.arrow_reply_down_20_regular, 'arrow_reply_down_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_reply_down_24_regular, 'arrow_reply_down_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.arrow_swap_20_regular, 'arrow_swap_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_sync_12_regular, 'arrow_sync_12_regular', 12),
+
+  FluentUISampleIcon(FluentIcons.arrow_sync_off_12_regular, 'arrow_sync_off_12_regular', 12),
+
+  FluentUISampleIcon(FluentIcons.arrow_up_left_circle_24_regular, 'arrow_up_left_circle_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.arrow_upload_20_regular, 'arrow_upload_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_upload_24_regular, 'arrow_upload_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.attach_forward_20_regular, 'attach_forward_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.attach_forward_24_regular, 'attach_forward_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.backspace_20_regular, 'backspace_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.book_globe_24_regular, 'book_globe_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.bookmark_20_regular, 'bookmark_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.bookmark_28_regular, 'bookmark_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.broom_20_regular, 'broom_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.broom_24_regular, 'broom_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.calendar_arrow_right_20_regular, 'calendar_arrow_right_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.calendar_assistant_20_regular, 'calendar_assistant_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.calendar_assistant_24_regular, 'calendar_assistant_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.calendar_checkmark_16_regular, 'calendar_checkmark_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.calendar_checkmark_20_regular, 'calendar_checkmark_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.calendar_clock_20_regular, 'calendar_clock_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.calendar_multiple_20_regular, 'calendar_multiple_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.calendar_multiple_24_regular, 'calendar_multiple_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.calendar_person_20_regular, 'calendar_person_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.calendar_reply_16_regular, 'calendar_reply_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.calendar_reply_20_regular, 'calendar_reply_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.calendar_reply_24_regular, 'calendar_reply_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.calendar_reply_28_regular, 'calendar_reply_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.calendar_settings_20_regular, 'calendar_settings_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.calendar_star_20_regular, 'calendar_star_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.calendar_star_24_regular, 'calendar_star_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.calendar_today_16_regular, 'calendar_today_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.calendar_today_20_regular, 'calendar_today_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.calendar_today_24_regular, 'calendar_today_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.calendar_today_28_regular, 'calendar_today_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.calendar_work_week_16_regular, 'calendar_work_week_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.calendar_work_week_20_regular, 'calendar_work_week_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.calendar_work_week_24_regular, 'calendar_work_week_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.camera_add_20_regular, 'camera_add_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.camera_add_48_regular, 'camera_add_48_regular', 48),
+
+  FluentUISampleIcon(FluentIcons.caret_12_regular, 'caret_12_regular', 12),
+
+  FluentUISampleIcon(FluentIcons.caret_16_regular, 'caret_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.caret_20_regular, 'caret_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.caret_24_regular, 'caret_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.caret_down_12_regular, 'caret_down_12_regular', 12),
+
+  FluentUISampleIcon(FluentIcons.caret_down_16_regular, 'caret_down_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.caret_down_20_regular, 'caret_down_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.caret_down_24_regular, 'caret_down_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.caret_left_12_regular, 'caret_left_12_regular', 12),
+
+  FluentUISampleIcon(FluentIcons.caret_left_16_regular, 'caret_left_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.caret_left_20_regular, 'caret_left_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.caret_left_24_regular, 'caret_left_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.caret_right_12_regular, 'caret_right_12_regular', 12),
+
+  FluentUISampleIcon(FluentIcons.caret_right_16_regular, 'caret_right_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.caret_right_20_regular, 'caret_right_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.caret_right_24_regular, 'caret_right_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.cart_24_regular, 'cart_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.cast_28_regular, 'cast_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.channel_16_regular, 'channel_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.checkbox_checked_20_regular, 'checkbox_checked_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.circle_16_regular, 'circle_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.circle_20_regular, 'circle_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.clipboard_more_24_regular, 'clipboard_more_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.comment_multiple_16_regular, 'comment_multiple_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.comment_multiple_20_regular, 'comment_multiple_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.comment_multiple_24_regular, 'comment_multiple_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.communication_16_regular, 'communication_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.communication_20_regular, 'communication_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.communication_24_regular, 'communication_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.compass_northwest_16_regular, 'compass_northwest_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.compass_northwest_20_regular, 'compass_northwest_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.compass_northwest_24_regular, 'compass_northwest_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.compass_northwest_28_regular, 'compass_northwest_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.compose_16_regular, 'compose_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.contact_card_20_regular, 'contact_card_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.cut_24_regular, 'cut_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.dentist_24_regular, 'dentist_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.dialpad_20_regular, 'dialpad_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.directions_20_regular, 'directions_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.doctor_24_regular, 'doctor_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.document_page_bottom_center_20_regular, 'document_page_bottom_center_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.document_page_bottom_left_20_regular, 'document_page_bottom_left_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.document_page_bottom_right_20_regular, 'document_page_bottom_right_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.drafts_16_regular, 'drafts_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.drafts_20_regular, 'drafts_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.drink_margarita_24_regular, 'drink_margarita_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.drink_wine_24_regular, 'drink_wine_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.dual_screen_mirror_24_regular, 'dual_screen_mirror_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.eye_show_12_regular, 'eye_show_12_regular', 12),
+
+  FluentUISampleIcon(FluentIcons.eye_show_16_regular, 'eye_show_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.flash_on_20_regular, 'flash_on_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.food_cake_24_regular, 'food_cake_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.glasses_24_regular, 'glasses_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.glasses_off_24_regular, 'glasses_off_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.globe_clock_24_regular, 'globe_clock_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.home_checkmark_24_regular, 'home_checkmark_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.image_48_regular, 'image_48_regular', 48),
+
+  FluentUISampleIcon(FluentIcons.important_12_regular, 'important_12_regular', 12),
+
+  FluentUISampleIcon(FluentIcons.info_16_regular, 'info_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.like_16_regular, 'like_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.line_horizontal_1_20_regular, 'line_horizontal_1_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.line_horizontal_3_20_regular, 'line_horizontal_3_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.line_horizontal_5_20_regular, 'line_horizontal_5_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.link_edit_24_regular, 'link_edit_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.live_20_regular, 'live_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.lock_12_regular, 'lock_12_regular', 12),
+
+  FluentUISampleIcon(FluentIcons.lock_shield_20_regular, 'lock_shield_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.mail_all_read_20_regular, 'mail_all_read_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.mail_all_unread_20_regular, 'mail_all_unread_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.mail_clock_20_regular, 'mail_clock_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.mail_inbox_16_regular, 'mail_inbox_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.mail_inbox_20_regular, 'mail_inbox_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.mail_inbox_add_16_regular, 'mail_inbox_add_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.mail_inbox_add_20_regular, 'mail_inbox_add_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.mail_inbox_add_24_regular, 'mail_inbox_add_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.mail_inbox_add_28_regular, 'mail_inbox_add_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.mail_inbox_dismiss_16_regular, 'mail_inbox_dismiss_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.mail_inbox_dismiss_20_regular, 'mail_inbox_dismiss_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.mail_inbox_dismiss_24_regular, 'mail_inbox_dismiss_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.mail_inbox_dismiss_28_regular, 'mail_inbox_dismiss_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.mail_read_20_regular, 'mail_read_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.meet_now_20_regular, 'meet_now_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.megaphone_16_regular, 'megaphone_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.megaphone_20_regular, 'megaphone_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.megaphone_28_regular, 'megaphone_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.mic_on_16_regular, 'mic_on_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.money_16_regular, 'money_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.money_20_regular, 'money_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.money_24_regular, 'money_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.news_20_regular, 'news_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.notepad_28_regular, 'notepad_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.open_16_regular, 'open_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.options_16_regular, 'options_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.options_20_regular, 'options_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.options_24_regular, 'options_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.organization_24_regular, 'organization_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.organization_28_regular, 'organization_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.pause_16_regular, 'pause_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.people_prohibited_20_regular, 'people_prohibited_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.people_settings_20_regular, 'people_settings_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.people_team_16_regular, 'people_team_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.person_call_24_regular, 'person_call_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.person_prohibited_20_regular, 'person_prohibited_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.person_question_mark_16_regular, 'person_question_mark_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.person_question_mark_20_regular, 'person_question_mark_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.person_question_mark_24_regular, 'person_question_mark_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.person_voice_20_regular, 'person_voice_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.presence_blocked_10_regular, 'presence_blocked_10_regular', 10),
+
+  FluentUISampleIcon(FluentIcons.presence_blocked_12_regular, 'presence_blocked_12_regular', 12),
+
+  FluentUISampleIcon(FluentIcons.presence_blocked_16_regular, 'presence_blocked_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.presence_offline_10_regular, 'presence_offline_10_regular', 10),
+
+  FluentUISampleIcon(FluentIcons.presence_offline_12_regular, 'presence_offline_12_regular', 12),
+
+  FluentUISampleIcon(FluentIcons.presence_offline_16_regular, 'presence_offline_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.presence_oof_10_regular, 'presence_oof_10_regular', 10),
+
+  FluentUISampleIcon(FluentIcons.presence_oof_12_regular, 'presence_oof_12_regular', 12),
+
+  FluentUISampleIcon(FluentIcons.presence_oof_16_regular, 'presence_oof_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.presence_unknown_10_regular, 'presence_unknown_10_regular', 10),
+
+  FluentUISampleIcon(FluentIcons.presence_unknown_12_regular, 'presence_unknown_12_regular', 12),
+
+  FluentUISampleIcon(FluentIcons.presence_unknown_16_regular, 'presence_unknown_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.prohibited_20_regular, 'prohibited_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.prohibited_24_regular, 'prohibited_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.prohibited_28_regular, 'prohibited_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.prohibited_48_regular, 'prohibited_48_regular', 48),
+
+  FluentUISampleIcon(FluentIcons.question_16_regular, 'question_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.question_20_regular, 'question_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.question_24_regular, 'question_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.question_28_regular, 'question_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.question_48_regular, 'question_48_regular', 48),
+
+  FluentUISampleIcon(FluentIcons.question_circle_16_regular, 'question_circle_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.question_circle_20_regular, 'question_circle_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.question_circle_24_regular, 'question_circle_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.question_circle_28_regular, 'question_circle_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.question_circle_48_regular, 'question_circle_48_regular', 48),
+
+  FluentUISampleIcon(FluentIcons.rating_mature_16_regular, 'rating_mature_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.rating_mature_20_regular, 'rating_mature_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.rating_mature_24_regular, 'rating_mature_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.reciept_20_regular, 'reciept_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.reciept_24_regular, 'reciept_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.resize_table_24_regular, 'resize_table_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.restore_16_regular, 'restore_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.reward_16_regular, 'reward_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.run_24_regular, 'run_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.send_clock_20_regular, 'send_clock_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.share_screen_20_regular, 'share_screen_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.shield_dismiss_20_regular, 'shield_dismiss_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.shield_dismiss_24_regular, 'shield_dismiss_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.shield_error_20_regular, 'shield_error_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.shield_error_24_regular, 'shield_error_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.shield_keyhole_16_regular, 'shield_keyhole_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.shield_keyhole_20_regular, 'shield_keyhole_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.shield_keyhole_24_regular, 'shield_keyhole_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.shield_prohibited_20_regular, 'shield_prohibited_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.shield_prohibited_24_regular, 'shield_prohibited_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.shifts_24h_20_regular, 'shifts_24h_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.shifts_24h_24_regular, 'shifts_24h_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.shifts_28_regular, 'shifts_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.shifts_open_20_regular, 'shifts_open_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.sim_16_regular, 'sim_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.sim_20_regular, 'sim_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.sim_24_regular, 'sim_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.slide_microphone_24_regular, 'slide_microphone_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.speaker_none_28_regular, 'speaker_none_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.sports_16_regular, 'sports_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.sports_20_regular, 'sports_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.sports_24_regular, 'sports_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.star_arrow_right_24_regular, 'star_arrow_right_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.star_arrow_right_start_24_regular, 'star_arrow_right_start_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.star_emphasis_24_regular, 'star_emphasis_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.star_prohibited_16_regular, 'star_prohibited_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.star_prohibited_20_regular, 'star_prohibited_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.star_prohibited_24_regular, 'star_prohibited_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.star_settings_24_regular, 'star_settings_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.sync_off_16_regular, 'sync_off_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.sync_off_20_regular, 'sync_off_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.tab_desktop_copy_20_regular, 'tab_desktop_copy_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.tab_desktop_multiple_20_regular, 'tab_desktop_multiple_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.tab_inprivate_account_20_regular, 'tab_inprivate_account_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.tab_inprivate_account_24_regular, 'tab_inprivate_account_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.table_column_delete_24_regular, 'table_column_delete_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.table_column_insert_24_regular, 'table_column_insert_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.table_column_resize_24_regular, 'table_column_resize_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.table_freeze_24_regular, 'table_freeze_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.table_freeze_column_24_regular, 'table_freeze_column_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.table_freeze_row_24_regular, 'table_freeze_row_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.table_insert_down_24_regular, 'table_insert_down_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.table_insert_left_24_regular, 'table_insert_left_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.table_insert_right_24_regular, 'table_insert_right_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.table_insert_up_24_regular, 'table_insert_up_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.table_move_down_24_regular, 'table_move_down_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.table_move_left_24_regular, 'table_move_left_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.table_move_right_24_regular, 'table_move_right_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.table_move_up_24_regular, 'table_move_up_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.table_row_delete_24_regular, 'table_row_delete_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.table_row_insert_24_regular, 'table_row_insert_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.table_row_resize_24_regular, 'table_row_resize_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.table_switch_24_regular, 'table_switch_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.task_list_add_20_regular, 'task_list_add_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.tasks_app_24_regular, 'tasks_app_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.tasks_app_28_regular, 'tasks_app_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.temperature_20_regular, 'temperature_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.tent_24_regular, 'tent_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.text_asterisk_20_regular, 'text_asterisk_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.text_bullet_list_add_24_regular, 'text_bullet_list_add_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.text_quote_20_regular, 'text_quote_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.text_wrap_24_regular, 'text_wrap_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.vehicle_bicycle_24_regular, 'vehicle_bicycle_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.vehicle_bus_24_regular, 'vehicle_bus_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.vehicle_cab_24_regular, 'vehicle_cab_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.vehicle_car_16_regular, 'vehicle_car_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.vehicle_car_20_regular, 'vehicle_car_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.vehicle_car_24_regular, 'vehicle_car_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.vehicle_truck_24_regular, 'vehicle_truck_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.video_person_24_regular, 'video_person_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.video_person_off_24_regular, 'video_person_off_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.video_person_star_24_regular, 'video_person_star_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.video_switch_24_regular, 'video_switch_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.voicemail_20_regular, 'voicemail_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.walkie_talkie_28_regular, 'walkie_talkie_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.weekend_12_regular, 'weekend_12_regular', 12),
+
+  FluentUISampleIcon(FluentIcons.window_ad_20_regular, 'window_ad_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.window_multiple_20_regular, 'window_multiple_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.wrench_24_regular, 'wrench_24_regular', 24),
+
   FluentUISampleIcon(FluentIcons.access_time_24_filled, 'access_time_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.accessibility_16_filled, 'accessibility_16_filled', 16),
@@ -7021,6 +7595,580 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.zoom_out_20_filled, 'zoom_out_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.zoom_out_24_filled, 'zoom_out_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.airplane_take_off_16_filled, 'airplane_take_off_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.airplane_take_off_20_filled, 'airplane_take_off_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.airplane_take_off_24_filled, 'airplane_take_off_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.alert_snooze_20_filled, 'alert_snooze_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.app_folder_20_filled, 'app_folder_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.app_span_16_filled, 'app_span_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.app_span_20_filled, 'app_span_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.app_span_28_filled, 'app_span_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.app_unspan_16_filled, 'app_unspan_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.app_unspan_20_filled, 'app_unspan_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.app_unspan_28_filled, 'app_unspan_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.approvals_app_24_filled, 'approvals_app_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.approvals_app_28_filled, 'approvals_app_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.apps_add_in_20_filled, 'apps_add_in_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_curve_down_left_20_filled, 'arrow_curve_down_left_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_curve_down_right_20_filled, 'arrow_curve_down_right_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_curve_up_left_20_filled, 'arrow_curve_up_left_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_curve_up_right_20_filled, 'arrow_curve_up_right_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_down_square_24_filled, 'arrow_down_square_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.arrow_maximize_vertical_20_filled, 'arrow_maximize_vertical_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_maximize_vertical_24_filled, 'arrow_maximize_vertical_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.arrow_minimize_vertical_24_filled, 'arrow_minimize_vertical_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.arrow_move_24_filled, 'arrow_move_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.arrow_reply_down_16_filled, 'arrow_reply_down_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.arrow_reply_down_20_filled, 'arrow_reply_down_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_reply_down_24_filled, 'arrow_reply_down_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.arrow_swap_20_filled, 'arrow_swap_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_sync_12_filled, 'arrow_sync_12_filled', 12),
+
+  FluentUISampleIcon(FluentIcons.arrow_sync_off_12_filled, 'arrow_sync_off_12_filled', 12),
+
+  FluentUISampleIcon(FluentIcons.arrow_up_left_circle_24_filled, 'arrow_up_left_circle_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.arrow_upload_20_filled, 'arrow_upload_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_upload_24_filled, 'arrow_upload_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.attach_forward_20_filled, 'attach_forward_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.attach_forward_24_filled, 'attach_forward_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.backspace_20_filled, 'backspace_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.book_globe_24_filled, 'book_globe_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.bookmark_20_filled, 'bookmark_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.bookmark_28_filled, 'bookmark_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.broom_20_filled, 'broom_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.broom_24_filled, 'broom_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.calendar_arrow_right_20_filled, 'calendar_arrow_right_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.calendar_assistant_20_filled, 'calendar_assistant_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.calendar_assistant_24_filled, 'calendar_assistant_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.calendar_checkmark_16_filled, 'calendar_checkmark_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.calendar_checkmark_20_filled, 'calendar_checkmark_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.calendar_clock_20_filled, 'calendar_clock_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.calendar_multiple_20_filled, 'calendar_multiple_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.calendar_multiple_24_filled, 'calendar_multiple_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.calendar_person_20_filled, 'calendar_person_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.calendar_reply_16_filled, 'calendar_reply_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.calendar_reply_20_filled, 'calendar_reply_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.calendar_reply_24_filled, 'calendar_reply_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.calendar_reply_28_filled, 'calendar_reply_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.calendar_settings_20_filled, 'calendar_settings_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.calendar_star_20_filled, 'calendar_star_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.calendar_star_24_filled, 'calendar_star_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.calendar_today_16_filled, 'calendar_today_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.calendar_today_20_filled, 'calendar_today_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.calendar_today_24_filled, 'calendar_today_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.calendar_today_28_filled, 'calendar_today_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.calendar_work_week_16_filled, 'calendar_work_week_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.calendar_work_week_20_filled, 'calendar_work_week_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.calendar_work_week_24_filled, 'calendar_work_week_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.camera_add_20_filled, 'camera_add_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.camera_add_48_filled, 'camera_add_48_filled', 48),
+
+  FluentUISampleIcon(FluentIcons.caret_12_filled, 'caret_12_filled', 12),
+
+  FluentUISampleIcon(FluentIcons.caret_16_filled, 'caret_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.caret_20_filled, 'caret_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.caret_24_filled, 'caret_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.caret_down_12_filled, 'caret_down_12_filled', 12),
+
+  FluentUISampleIcon(FluentIcons.caret_down_16_filled, 'caret_down_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.caret_down_20_filled, 'caret_down_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.caret_down_24_filled, 'caret_down_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.caret_left_12_filled, 'caret_left_12_filled', 12),
+
+  FluentUISampleIcon(FluentIcons.caret_left_16_filled, 'caret_left_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.caret_left_20_filled, 'caret_left_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.caret_left_24_filled, 'caret_left_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.caret_right_12_filled, 'caret_right_12_filled', 12),
+
+  FluentUISampleIcon(FluentIcons.caret_right_16_filled, 'caret_right_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.caret_right_20_filled, 'caret_right_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.caret_right_24_filled, 'caret_right_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.cart_24_filled, 'cart_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.cast_28_filled, 'cast_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.channel_16_filled, 'channel_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.checkbox_checked_20_filled, 'checkbox_checked_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.circle_16_filled, 'circle_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.circle_20_filled, 'circle_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.clipboard_more_24_filled, 'clipboard_more_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.comment_multiple_16_filled, 'comment_multiple_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.comment_multiple_20_filled, 'comment_multiple_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.comment_multiple_24_filled, 'comment_multiple_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.communication_16_filled, 'communication_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.communication_20_filled, 'communication_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.communication_24_filled, 'communication_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.compass_northwest_16_filled, 'compass_northwest_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.compass_northwest_20_filled, 'compass_northwest_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.compass_northwest_24_filled, 'compass_northwest_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.compass_northwest_28_filled, 'compass_northwest_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.compose_16_filled, 'compose_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.contact_card_20_filled, 'contact_card_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.cut_24_filled, 'cut_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.dentist_24_filled, 'dentist_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.dialpad_20_filled, 'dialpad_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.directions_20_filled, 'directions_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.doctor_24_filled, 'doctor_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.document_page_bottom_center_20_filled, 'document_page_bottom_center_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.document_page_bottom_left_20_filled, 'document_page_bottom_left_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.document_page_bottom_right_20_filled, 'document_page_bottom_right_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.drafts_16_filled, 'drafts_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.drafts_20_filled, 'drafts_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.drink_margarita_24_filled, 'drink_margarita_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.drink_wine_24_filled, 'drink_wine_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.dual_screen_mirror_24_filled, 'dual_screen_mirror_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.eye_show_12_filled, 'eye_show_12_filled', 12),
+
+  FluentUISampleIcon(FluentIcons.eye_show_16_filled, 'eye_show_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.flash_on_20_filled, 'flash_on_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.food_cake_24_filled, 'food_cake_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.glasses_24_filled, 'glasses_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.glasses_off_24_filled, 'glasses_off_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.globe_clock_24_filled, 'globe_clock_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.home_checkmark_24_filled, 'home_checkmark_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.image_48_filled, 'image_48_filled', 48),
+
+  FluentUISampleIcon(FluentIcons.important_12_filled, 'important_12_filled', 12),
+
+  FluentUISampleIcon(FluentIcons.info_16_filled, 'info_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.like_16_filled, 'like_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.line_horizontal_1_20_filled, 'line_horizontal_1_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.line_horizontal_3_20_filled, 'line_horizontal_3_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.line_horizontal_5_20_filled, 'line_horizontal_5_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.link_edit_24_filled, 'link_edit_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.live_20_filled, 'live_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.lock_12_filled, 'lock_12_filled', 12),
+
+  FluentUISampleIcon(FluentIcons.lock_shield_20_filled, 'lock_shield_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.mail_all_read_20_filled, 'mail_all_read_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.mail_all_unread_20_filled, 'mail_all_unread_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.mail_clock_20_filled, 'mail_clock_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.mail_inbox_16_filled, 'mail_inbox_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.mail_inbox_20_filled, 'mail_inbox_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.mail_inbox_add_16_filled, 'mail_inbox_add_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.mail_inbox_add_20_filled, 'mail_inbox_add_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.mail_inbox_add_24_filled, 'mail_inbox_add_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.mail_inbox_add_28_filled, 'mail_inbox_add_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.mail_inbox_dismiss_16_filled, 'mail_inbox_dismiss_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.mail_inbox_dismiss_20_filled, 'mail_inbox_dismiss_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.mail_inbox_dismiss_24_filled, 'mail_inbox_dismiss_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.mail_inbox_dismiss_28_filled, 'mail_inbox_dismiss_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.mail_read_20_filled, 'mail_read_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.meet_now_20_filled, 'meet_now_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.megaphone_16_filled, 'megaphone_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.megaphone_20_filled, 'megaphone_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.megaphone_28_filled, 'megaphone_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.mic_on_16_filled, 'mic_on_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.money_16_filled, 'money_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.money_20_filled, 'money_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.money_24_filled, 'money_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.news_20_filled, 'news_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.notepad_28_filled, 'notepad_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.open_16_filled, 'open_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.options_16_filled, 'options_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.options_20_filled, 'options_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.options_24_filled, 'options_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.organization_24_filled, 'organization_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.organization_28_filled, 'organization_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.pause_16_filled, 'pause_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.people_prohibited_20_filled, 'people_prohibited_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.people_settings_20_filled, 'people_settings_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.people_team_16_filled, 'people_team_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.person_call_24_filled, 'person_call_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.person_prohibited_20_filled, 'person_prohibited_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.person_question_mark_16_filled, 'person_question_mark_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.person_question_mark_20_filled, 'person_question_mark_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.person_question_mark_24_filled, 'person_question_mark_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.person_voice_20_filled, 'person_voice_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.presence_available_10_filled, 'presence_available_10_filled', 10),
+
+  FluentUISampleIcon(FluentIcons.presence_available_12_filled, 'presence_available_12_filled', 12),
+
+  FluentUISampleIcon(FluentIcons.presence_available_16_filled, 'presence_available_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.presence_away_10_filled, 'presence_away_10_filled', 10),
+
+  FluentUISampleIcon(FluentIcons.presence_away_12_filled, 'presence_away_12_filled', 12),
+
+  FluentUISampleIcon(FluentIcons.presence_away_16_filled, 'presence_away_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.presence_busy_10_filled, 'presence_busy_10_filled', 10),
+
+  FluentUISampleIcon(FluentIcons.presence_busy_12_filled, 'presence_busy_12_filled', 12),
+
+  FluentUISampleIcon(FluentIcons.presence_busy_16_filled, 'presence_busy_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.presence_dnd_10_filled, 'presence_dnd_10_filled', 10),
+
+  FluentUISampleIcon(FluentIcons.presence_dnd_12_filled, 'presence_dnd_12_filled', 12),
+
+  FluentUISampleIcon(FluentIcons.presence_dnd_16_filled, 'presence_dnd_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.prohibited_20_filled, 'prohibited_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.prohibited_24_filled, 'prohibited_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.prohibited_28_filled, 'prohibited_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.prohibited_48_filled, 'prohibited_48_filled', 48),
+
+  FluentUISampleIcon(FluentIcons.question_16_filled, 'question_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.question_20_filled, 'question_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.question_24_filled, 'question_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.question_28_filled, 'question_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.question_48_filled, 'question_48_filled', 48),
+
+  FluentUISampleIcon(FluentIcons.question_circle_16_filled, 'question_circle_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.question_circle_20_filled, 'question_circle_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.question_circle_24_filled, 'question_circle_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.question_circle_28_filled, 'question_circle_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.question_circle_48_filled, 'question_circle_48_filled', 48),
+
+  FluentUISampleIcon(FluentIcons.rating_mature_16_filled, 'rating_mature_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.rating_mature_20_filled, 'rating_mature_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.rating_mature_24_filled, 'rating_mature_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.reciept_20_filled, 'reciept_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.reciept_24_filled, 'reciept_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.resize_table_24_filled, 'resize_table_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.restore_16_filled, 'restore_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.reward_16_filled, 'reward_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.run_24_filled, 'run_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.send_clock_20_filled, 'send_clock_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.share_screen_20_filled, 'share_screen_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.shield_dismiss_20_filled, 'shield_dismiss_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.shield_dismiss_24_filled, 'shield_dismiss_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.shield_error_20_filled, 'shield_error_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.shield_error_24_filled, 'shield_error_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.shield_keyhole_16_filled, 'shield_keyhole_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.shield_keyhole_20_filled, 'shield_keyhole_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.shield_keyhole_24_filled, 'shield_keyhole_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.shield_prohibited_20_filled, 'shield_prohibited_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.shield_prohibited_24_filled, 'shield_prohibited_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.shifts_24h_20_filled, 'shifts_24h_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.shifts_24h_24_filled, 'shifts_24h_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.shifts_28_filled, 'shifts_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.shifts_open_20_filled, 'shifts_open_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.sim_16_filled, 'sim_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.sim_20_filled, 'sim_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.sim_24_filled, 'sim_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.slide_microphone_24_filled, 'slide_microphone_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.speaker_none_28_filled, 'speaker_none_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.sports_16_filled, 'sports_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.sports_20_filled, 'sports_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.sports_24_filled, 'sports_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.star_arrow_right_24_filled, 'star_arrow_right_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.star_arrow_right_start_24_filled, 'star_arrow_right_start_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.star_emphasis_24_filled, 'star_emphasis_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.star_prohibited_16_filled, 'star_prohibited_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.star_prohibited_20_filled, 'star_prohibited_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.star_prohibited_24_filled, 'star_prohibited_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.star_settings_24_filled, 'star_settings_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.sync_off_16_filled, 'sync_off_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.sync_off_20_filled, 'sync_off_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.tab_desktop_copy_20_filled, 'tab_desktop_copy_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.tab_desktop_multiple_20_filled, 'tab_desktop_multiple_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.tab_inprivate_account_20_filled, 'tab_inprivate_account_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.tab_inprivate_account_24_filled, 'tab_inprivate_account_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.table_column_delete_24_filled, 'table_column_delete_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.table_column_insert_24_filled, 'table_column_insert_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.table_column_resize_24_filled, 'table_column_resize_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.table_freeze_24_filled, 'table_freeze_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.table_freeze_column_24_filled, 'table_freeze_column_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.table_freeze_row_24_filled, 'table_freeze_row_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.table_insert_down_24_filled, 'table_insert_down_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.table_insert_left_24_filled, 'table_insert_left_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.table_insert_right_24_filled, 'table_insert_right_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.table_insert_up_24_filled, 'table_insert_up_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.table_move_down_24_filled, 'table_move_down_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.table_move_left_24_filled, 'table_move_left_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.table_move_right_24_filled, 'table_move_right_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.table_move_up_24_filled, 'table_move_up_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.table_row_delete_24_filled, 'table_row_delete_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.table_row_insert_24_filled, 'table_row_insert_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.table_row_resize_24_filled, 'table_row_resize_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.table_switch_24_filled, 'table_switch_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.task_list_add_20_filled, 'task_list_add_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.tasks_app_24_filled, 'tasks_app_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.tasks_app_28_filled, 'tasks_app_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.temperature_20_filled, 'temperature_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.tent_24_filled, 'tent_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.text_asterisk_20_filled, 'text_asterisk_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.text_bullet_list_add_24_filled, 'text_bullet_list_add_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.text_quote_20_filled, 'text_quote_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.text_wrap_24_filled, 'text_wrap_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.vehicle_bicycle_24_filled, 'vehicle_bicycle_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.vehicle_bus_24_filled, 'vehicle_bus_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.vehicle_cab_24_filled, 'vehicle_cab_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.vehicle_car_16_filled, 'vehicle_car_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.vehicle_car_20_filled, 'vehicle_car_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.vehicle_car_24_filled, 'vehicle_car_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.vehicle_truck_24_filled, 'vehicle_truck_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.video_person_24_filled, 'video_person_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.video_person_off_24_filled, 'video_person_off_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.video_person_star_24_filled, 'video_person_star_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.video_switch_24_filled, 'video_switch_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.voicemail_20_filled, 'voicemail_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.walkie_talkie_28_filled, 'walkie_talkie_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.weekend_12_filled, 'weekend_12_filled', 12),
+
+  FluentUISampleIcon(FluentIcons.window_ad_20_filled, 'window_ad_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.window_multiple_20_filled, 'window_multiple_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.wrench_24_filled, 'wrench_24_filled', 24),
 
   // END GENERATED
 ];
