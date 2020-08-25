@@ -1,4 +1,4 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">
-    <path android:pathData="M11.957 13.457l9.75-9.75c0.39-0.39 0.39-1.024 0-1.414-0.39-0.39-1.024-0.39-1.414 0l-9.75 9.75-0.293 1.707 1.707-0.293z" android:fillColor="#212121"/>
-    <path android:pathData="M6.5 3C4.567 3 3 4.567 3 6.5v11C3 19.433 4.567 21 6.5 21h11c1.933 0 3.5-1.567 3.5-3.5V10c0-0.552-0.448-1-1-1s-1 0.448-1 1v7.5c0 0.828-0.672 1.5-1.5 1.5h-11C5.672 19 5 18.328 5 17.5v-11C5 5.672 5.672 5 6.5 5H14c0.552 0 1-0.448 1-1s-0.448-1-1-1H6.5z" android:fillColor="#212121"/>
+    <path android:pathData="M11.957 13.457l9.75-9.75c0.39-0.39 0.39-1.024 0-1.414-0.39-0.39-1.024-0.39-1.414 0l-9.75 9.75-0.293 1.707 1.707-0.293z" android:fillColor="@color/fluent_default_icon_tint"/>
+    <path android:pathData="M6.5 3C4.567 3 3 4.567 3 6.5v11C3 19.433 4.567 21 6.5 21h11c1.933 0 3.5-1.567 3.5-3.5V10c0-0.552-0.448-1-1-1s-1 0.448-1 1v7.5c0 0.828-0.672 1.5-1.5 1.5h-11C5.672 19 5 18.328 5 17.5v-11C5 5.672 5.672 5 6.5 5H14c0.552 0 1-0.448 1-1s-0.448-1-1-1H6.5z" android:fillColor="@color/fluent_default_icon_tint"/>
 </vector>
