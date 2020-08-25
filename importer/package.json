@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "jshint": "jshint --reporter=node_modules/jshint-stylish src || true",
-    "clean": "find dist -type f -delete",
+    "clean": "find dist -type f ! -name '.keep' -delete",
     "generate:svg": "node generate.js --source=../assets --dest=./dist --extension=svg",
     "generate:pdf": "node generate.js --source=../assets --dest=./dist --extension=pdf",
     "build:android": "npm run generate:svg && sh tools/vd-tool/bin/vd-tool -c -in ./dist -out ./dist && rm ./dist/*.svg && find ./dist/ -type f ! -name '*_selector.xml' -exec avocado {} + -exec replace '#212121' '@color/fluent_default_icon_tint' {} + && replace '\"http://schemas.android.com/apk/res/android\"' '\"http://schemas.android.com/apk/res/android\" android:autoMirrored=\"true\"' $(awk '$0=\"./dist/\"$0\".xml\"' rtl.txt)",
