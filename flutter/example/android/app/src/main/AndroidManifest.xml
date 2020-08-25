@@ -1,3 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation.
+  ~ Licensed under the MIT license.
+  -->
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.flutter_sample_showcase">
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that

@@ -1,3 +1,7 @@
+//
+//  Copyright (c) Microsoft Corporation.
+//  Licensed under the MIT license.
+
 import UIKit
 import Flutter
 
