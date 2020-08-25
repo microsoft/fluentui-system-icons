@@ -2,9 +2,9 @@
 
 ![CI](https://github.com/microsoft/fluentui-system-icons/workflows/CI/badge.svg)
 
-Fluent System Icons is a set of mobile platform icons from Microsoft.
+Fluent System Icons are a collection of familiar, friendly and modern icons from Microsoft.
 
-![fluent system icons](art/readme-asset.png)
+![fluent system icons](art/readme-banner.png)
 
 ## Icon List
 
@@ -21,24 +21,24 @@ repositories {
 ```
 Include the following dependency in your project's `build.gradle`
 ```groovy
-implementation 'com.microsoft.design:fluent-system-icons:1.1.29'
+implementation 'com.microsoft.design:fluent-system-icons:1.1.46'
 ```
 
 For library docs, see [android/README.md](android/README.md).
 
-### iOS
+### iOS and macOS
 #### Cocoapods
 
 ```ruby
 use_frameworks!
 
-pod "FluentIcons", "1.1.29"
+pod "FluentIcons", "1.1.46"
 ```
 
 #### Carthage
 
 ```bash
-git "git@github.com:microsoft/fluentui-system-icons.git" "1.1.29"
+git "git@github.com:microsoft/fluentui-system-icons.git" "1.1.46"
 ```
 
 For library docs, see [ios/README.md](ios/README.md).
@@ -100,7 +100,7 @@ Prerequisite: Make sure you have flutter configured in Android Studio
 ## Contact
 Please feel free to [open a GitHub issue](https://github.com/microsoft/fluentui-system-icons/issues/new) and assign to the following points of contact with questions or requests.
 * Jason Custer([@jasoncuster](https://github.com/jasoncuster)) / Spencer Nelson([@spencer-nelson](https://github.com/spencer-nelson)) / Joe Woodward([@thewoodpecker](https://github.com/thewoodpecker)) - Design
-* Nick Romano([@rickromano](https://github.com/rickromano)) - iOS
+* Nick Romano([@rickromano](https://github.com/nickromano)) - iOS
 * Will Hou([@willhou](https://github.com/willhou)) - Android
 * Akashdeep Singh([@aakash1313](https://github.com/aakash1313)) - Flutter
 

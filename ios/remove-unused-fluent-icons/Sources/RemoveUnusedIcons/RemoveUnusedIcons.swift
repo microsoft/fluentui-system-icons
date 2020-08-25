@@ -52,8 +52,10 @@ public func removeUnusedAssets(libraryName: String, assetCatalogName: String, pa
 
   var listOfIconsToKeep: [String] = []
   if let pathToListOfIconsToKeep = pathToListOfIconsToKeep {
-    let fileContents = try String(contentsOfFile: pathToListOfIconsToKeep, encoding: .utf8)
-    listOfIconsToKeep.append(contentsOf: fileContents.mapToLines())
+    for path in pathToListOfIconsToKeep.split(separator: ",") {
+      let fileContents = try String(contentsOfFile: String(path), encoding: .utf8)
+      listOfIconsToKeep.append(contentsOf: fileContents.mapToLines())
+    }
   }
 
   let allPossibleIconReferences = allPossibleSwiftIconReferences + allPossibleObjcIconReferences + listOfIconsToKeep

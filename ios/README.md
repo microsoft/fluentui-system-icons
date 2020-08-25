@@ -1,4 +1,4 @@
-# FluentIcons iOS
+# FluentIcons iOS & macOS
 
 ## Installation
 
@@ -6,13 +6,13 @@
 
 ```ruby
 use_frameworks!
-pod "FluentIcons", "1.1.29"
+pod "FluentIcons", "1.1.46"
 ```
 
 ### Carthage
 
 ```bash
-git "git@github.com:microsoft/fluentui-system-icons.git" "1.1.29"
+git "git@github.com:microsoft/fluentui-system-icons.git" "1.1.46"
 ```
 
 ## Usage
