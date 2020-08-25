@@ -1,31 +1,5 @@
-# fluentui_system_icons
+# Documentation
 
-![CI](https://github.com/microsoft/fluentui-system-icons/workflows/CI/badge.svg)
-
-Fluent System Icons is a flutter package for a set of mobile platform icons from Microsoft.
-
-![fluent system icons](../art/readme-asset.png)
-
-## Icon List
-
-[View the full list of icons](../icons.md)
-
-### Icon styles
-The library offers icons in two styles, `regular` and `filled`
-
-regular | filled
---------|-------
-![ic_fluent_mail_regular](../art/ic_fluent_mail_regular.png)|![ic_fluent_mail_filled](../art/ic_fluent_mail_filled.png)
-
-## Getting started
-
-In the `pubspec.yaml` of your flutter project, add the following dependency:
-
-```yaml
-dependencies:
-  ...
-  fluentui_system_icons: <latest_version>
-```
 ## Usage
 
 ```dart
@@ -43,7 +17,7 @@ class MyFlutterWidget extends StatelessWidget {
 ```
 ## Example
 
-View the Flutter app in the `example` directory to see all the available `FluentUISystemIcons`.
+View the Flutter app in the [example](example) directory to see all the available `FluentUISystemIcons`.
 
 ## FAQs
 
@@ -67,13 +41,3 @@ This generally when the app is not build properly. Please try the below steps:
  1. flutter pub get
  2. flutter clean
  3. Invalidate caches and restart Android Studio
-
-## Issues
-
-If you find a bug or want a feature, but don't know how to fix/implement it, please fill an [issue](https://github.com/microsoft/fluentui-system-icons/issues).
-  
-
-
-
-
-

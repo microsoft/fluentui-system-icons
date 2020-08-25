@@ -50,7 +50,7 @@ In the `pubspec.yaml` of your flutter project, add the following dependency:
 ```yaml
 dependencies:
   ...
-  fluentui_system_icons: <latest_version>
+  fluentui_system_icons: "1.1.29"
 ```
 
 For library docs, see [flutter/README.md](flutter/README.md)
