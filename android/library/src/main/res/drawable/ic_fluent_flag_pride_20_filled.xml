@@ -6,5 +6,5 @@
     <path android:pathData="M4 8h12v1H4z" android:fillColor="#61BC51"/>
     <path android:pathData="M4 9h12v1H4z" android:fillColor="#1793E8"/>
     <path android:pathData="M4 10h12v1H4z" android:fillColor="#B73FBB"/>
-    <path android:pathData="M3.5 3h13C16.776 3 17 3.224 17 3.5v8c0 0.276-0.224 0.5-0.5 0.5H4v5.5C4 17.776 3.776 18 3.5 18S3 17.776 3 17.5v-14C3 3.224 3.224 3 3.5 3zM4 4v7h12V4H4z" android:fillColor="#212121"/>
+    <path android:pathData="M3.5 3h13C16.776 3 17 3.224 17 3.5v8c0 0.276-0.224 0.5-0.5 0.5H4v5.5C4 17.776 3.776 18 3.5 18S3 17.776 3 17.5v-14C3 3.224 3.224 3 3.5 3zM4 4v7h12V4H4z" android:fillColor="@color/fluent_default_icon_tint"/>
 </vector>
