@@ -1,4 +1,4 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="12dp" android:height="12dp" android:viewportWidth="12" android:viewportHeight="12">
-    <path android:pathData="M6.281 4.528c0.293-0.292 0.293-0.767 0-1.06-0.293-0.293-0.768-0.293-1.06 0L3.219 5.47c-0.293 0.293-0.293 0.768 0 1.06L5.22 8.533c0.292 0.292 0.767 0.292 1.06 0 0.293-0.293 0.293-0.768 0-1.061L5.56 6.75h2.69C8.665 6.75 9 6.414 9 6S8.665 5.25 8.25 5.25H5.56l0.722-0.722z" android:fillColor="@color/fluent_default_icon_tint"/>
-    <path android:pathData="M6 0C2.686 0 0 2.686 0 6s2.686 6 6 6 6-2.686 6-6-2.686-6-6-6zM1.5 6c0-2.485 2.015-4.5 4.5-4.5s4.5 2.015 4.5 4.5-2.015 4.5-4.5 4.5S1.5 8.485 1.5 6z" android:fillColor="@color/fluent_default_icon_tint"/>
+    <path android:pathData="M6.281 4.528c0.293-0.292 0.293-0.767 0-1.06-0.293-0.293-0.768-0.293-1.06 0L3.219 5.47c-0.293 0.293-0.293 0.768 0 1.06L5.22 8.533c0.292 0.292 0.767 0.292 1.06 0 0.293-0.293 0.293-0.768 0-1.061L5.56 6.75h2.69C8.665 6.75 9 6.414 9 6S8.665 5.25 8.25 5.25H5.56l0.722-0.722z" android:fillColor="#212121"/>
+    <path android:pathData="M6 0C2.686 0 0 2.686 0 6s2.686 6 6 6 6-2.686 6-6-2.686-6-6-6zM1.5 6c0-2.485 2.015-4.5 4.5-4.5s4.5 2.015 4.5 4.5-2.015 4.5-4.5 4.5S1.5 8.485 1.5 6z" android:fillColor="#212121"/>
 </vector>
