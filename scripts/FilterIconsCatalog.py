@@ -72,7 +72,6 @@ set = {
 "ic_fluent_more_24_regular.imageset",
 "ic_fluent_text_edit_style_24_regular.imageset",
 "ic_fluent_color_fill_24_regular.imageset",
-"ic_fluent_color_line_24_regular.imageset",
 "ic_fluent_text_effects_24_regular.imageset",
 "ic_fluent_text_color_24_regular.imageset",
 "ic_fluent_read_aloud_24_regular.imageset",
@@ -148,7 +147,11 @@ set = {
 "ic_fluent_star_24_regular.imageset",
 "ic_fluent_highlight_24_regular.imageset",
 "ic_fluent_arrow_rotate_icon_24_regular.imageset",
-"ic_fluent_person_block_24_regular.imageset"
+"ic_fluent_person_block_24_regular.imageset",
+"ic_fluent_classification_24_regular.imageset",
+"ic_fluent_document_page_24_regular.imageset",
+"ic_fluent_document_page_bottom_right_24_regular.imageset",
+"ic_fluent_document_page_top_right_24_regular.imageset",
 }
 
 # Create .zip file from a directory
