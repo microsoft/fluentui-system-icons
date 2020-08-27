@@ -10,7 +10,7 @@ env:
 jobs:
   publish-library:
     if: "!contains(github.event.head_commit.author.email, 'flubuild@microsoft.com')"
-    name: Publish mobile libraries
+    name: Publish icon libraries
     runs-on: ubuntu-latest
 
     steps:
@@ -75,6 +75,13 @@ jobs:
         skipTests: true
         accessToken: ${{ secrets.FLUTTER_OAUTH_ACCESS_TOKEN }}
         refreshToken: ${{ secrets.FLUTTER_OAUTH_REFRESH_TOKEN }}
+
+    ## SVG
+    - name: Run svg build
+      run: npm run publish
+      working-directory: packages/svg-icons
+      with:
+        registry-url: https://registry.npmjs.org
 
     ## Publish
     # Needs to be "-E" instead of "-r" on macOS
