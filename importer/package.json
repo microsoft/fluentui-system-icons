@@ -26,10 +26,6 @@
   },
   "author": "Microsoft Inc.",
   "license": "Microsoft",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/microsoft/fluentui-system-icons.git"
-  },
   "devDependencies": {
     "avocado": "1.0.0",
     "icon-font-generator": "^2.1.10",
