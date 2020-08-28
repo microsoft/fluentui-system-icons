@@ -1,8 +1,7 @@
 name: fluentui_system_icons
 description: The Fluent UI System Icons project.
-version: 1.1.29
-author:
-homepage:
+version: 1.1.50
+homepage: https://github.com/microsoft/fluentui-system-icons/tree/master
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
