@@ -68,6 +68,11 @@ function processJsonFiles(srcPaths, destPath) {
 
 function writeCodeForJson(srcPath, iconClassFile, rtlIcons) {
   let jsonData = require("./" + srcPath);
+  const orderedJsonData = {};
+  Object.keys(jsonData).sort().forEach(function(key) {
+    orderedJsonData[key] = jsonData[key];
+  });
+
   let fontName = srcPath.substring(srcPath.lastIndexOf('/') + 1).replace(".json", "");
   var code = 
 `
@@ -76,14 +81,14 @@ function writeCodeForJson(srcPath, iconClassFile, rtlIcons) {
 
   fs.appendFileSync(iconClassFile, code, writeErrorHandler);
 
-  for (var fullName in jsonData) {
+  for (var fullName in orderedJsonData) {
     let match = FILE_NAME_REGEX.exec(fullName);
     let name = match[1];
     let size = match[2];
     let style = match[3];
     FILE_NAME_REGEX.lastIndex = 0;
 
-    let codepoint = jsonData[fullName].replace("\\", "0x");
+    let codepoint = orderedJsonData[fullName].replace("\\", "0x");
     let identifier = `${name}_${size}_${style}`;
     let matchTextDirection = rtlIcons.includes(fullName) ? `, matchTextDirection: true` : "";
 

@@ -61,8 +61,12 @@ function processJsonFiles(srcPaths, destPath) {
 
 function writeCodeForJson(srcPath, iconClassFile) {
   let jsonData = require("./" + srcPath);
+  const orderedJsonData = {};
+  Object.keys(jsonData).sort().forEach(function(key) {
+    orderedJsonData[key] = jsonData[key];
+  });
 
-  for (var fullName in jsonData) {
+  for (var fullName in orderedJsonData) {
     let match = FILE_NAME_REGEX.exec(fullName);
     let name = match[1];
     let size = match[2];
