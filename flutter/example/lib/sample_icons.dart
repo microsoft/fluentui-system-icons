@@ -2120,6 +2120,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.mail_move_to_focussed_24_regular, 'mail_move_to_focussed_24_regular', 24),
 
+  FluentUISampleIcon(FluentIcons.mail_outbox_20_regular, 'mail_outbox_20_regular', 20),
+
   FluentUISampleIcon(FluentIcons.mail_outbox_24_regular, 'mail_outbox_24_regular', 24),
 
   FluentUISampleIcon(FluentIcons.mail_read_20_regular, 'mail_read_20_regular', 20),
@@ -6121,6 +6123,8 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.mail_inbox_dismiss_28_filled, 'mail_inbox_dismiss_28_filled', 28),
 
   FluentUISampleIcon(FluentIcons.mail_move_to_focussed_24_filled, 'mail_move_to_focussed_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.mail_outbox_20_filled, 'mail_outbox_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.mail_outbox_24_filled, 'mail_outbox_24_filled', 24),
 

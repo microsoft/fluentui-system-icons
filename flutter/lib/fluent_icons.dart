@@ -3183,6 +3183,9 @@ class FluentIcons {
   /// fluent icon named "mail_move_to_focussed" in size 24 and regular style.
   static const IconData mail_move_to_focussed_24_regular = IconData(0xf51f, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "mail_outbox" in size 20 and regular style.
+  static const IconData mail_outbox_20_regular = IconData(0xf8c8, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "mail_outbox" in size 24 and regular style.
   static const IconData mail_outbox_24_regular = IconData(0xf520, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -9187,6 +9190,9 @@ class FluentIcons {
 
   /// fluent icon named "mail_move_to_focussed" in size 24 and filled style.
   static const IconData mail_move_to_focussed_24_filled = IconData(0xf529, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "mail_outbox" in size 20 and filled style.
+  static const IconData mail_outbox_20_filled = IconData(0xf8e0, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "mail_outbox" in size 24 and filled style.
   static const IconData mail_outbox_24_filled = IconData(0xf52a, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
