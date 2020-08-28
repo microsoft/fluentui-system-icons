@@ -99,3 +99,7 @@ jobs:
     - name: Run generate script
       run: npm run deploy:flutter
       working-directory: importer
+
+    # TODO: https://github.com/microsoft/fluentui-system-icons/issues/34
+    # - name: Build Flutter library
+    #   uses: ?
