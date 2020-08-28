@@ -1,8 +1,8 @@
-# Fluent System Icons
+# Fluent UI System Icons
 
 ![CI](https://github.com/microsoft/fluentui-system-icons/workflows/CI/badge.svg)
 
-Fluent System Icons are a collection of familiar, friendly and modern icons from Microsoft.
+Fluent UI System Icons are a collection of familiar, friendly and modern icons from Microsoft.
 
 ![fluent system icons](art/readme-banner.png)
 
