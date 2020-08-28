@@ -96,6 +96,12 @@ jobs:
         sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" flutter/CHANGELOG.md
         rm flutter/CHANGELOG.md.bk
 
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in flutter/pubspec.yaml
+      run: |
+        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" pubspec.yaml
+        rm flutter/pubspec.yaml.bk
+
     - name: Update icon sheet
       run: python3 generate_icons_md.py
     
