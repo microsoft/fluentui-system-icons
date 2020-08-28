@@ -578,6 +578,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.calendar_checkmark_20_regular, 'calendar_checkmark_20_regular', 20),
 
+  FluentUISampleIcon(FluentIcons.calendar_checkmark_24_regular, 'calendar_checkmark_24_regular', 24),
+
   FluentUISampleIcon(FluentIcons.calendar_clock_20_regular, 'calendar_clock_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.calendar_clock_24_regular, 'calendar_clock_24_regular', 24),
@@ -4561,6 +4563,8 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.calendar_checkmark_16_filled, 'calendar_checkmark_16_filled', 16),
 
   FluentUISampleIcon(FluentIcons.calendar_checkmark_20_filled, 'calendar_checkmark_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.calendar_checkmark_24_filled, 'calendar_checkmark_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.calendar_clock_20_filled, 'calendar_clock_20_filled', 20),
 

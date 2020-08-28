@@ -870,6 +870,9 @@ class FluentIcons {
   /// fluent icon named "calendar_checkmark" in size 20 and regular style.
   static const IconData calendar_checkmark_20_regular = IconData(0xf21c, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "calendar_checkmark" in size 24 and regular style.
+  static const IconData calendar_checkmark_24_regular = IconData(0xf8c9, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "calendar_clock" in size 20 and regular style.
   static const IconData calendar_clock_20_regular = IconData(0xf21d, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -6847,6 +6850,9 @@ class FluentIcons {
 
   /// fluent icon named "calendar_checkmark" in size 20 and filled style.
   static const IconData calendar_checkmark_20_filled = IconData(0xf21c, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "calendar_checkmark" in size 24 and filled style.
+  static const IconData calendar_checkmark_24_filled = IconData(0xf8e1, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "calendar_clock" in size 20 and filled style.
   static const IconData calendar_clock_20_filled = IconData(0xf21d, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
