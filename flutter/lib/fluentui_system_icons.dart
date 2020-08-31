@@ -1,3 +1,3 @@
 library fluentui_system_icons;
 
-export 'fluent_icons.dart';
+export 'src/fluent_icons.dart';

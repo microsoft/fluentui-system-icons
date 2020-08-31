@@ -1,4 +1,4 @@
-import 'package:fluentui_system_icons/fluent_icons.dart';
+import 'file:///C:/Users/akas/AndroidStudioProjects/fluentui_outlook/fluentui-system-icons/flutter/lib/src/fluent_icons.dart';
 import 'package:flutter/material.dart';
 
 import 'sample_icons.dart';
