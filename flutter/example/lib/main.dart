@@ -1,5 +1,5 @@
-import 'file:///C:/Users/akas/AndroidStudioProjects/fluentui_outlook/fluentui-system-icons/flutter/lib/src/fluent_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 
 import 'sample_icons.dart';
 
