@@ -157,16 +157,16 @@ jobs:
         releaseNotes: Please enjoy this latest version(${{ env.NEW_VERSION }}) of Fluent System Icons Demo.
 
   # Only runs on the version update commit
-  # We need the new podspec available to publish to Cocoapods
+  # We need the new podspec available to publish to CocoaPods
   publish-to-cocoapods:
     if: "contains(github.event.head_commit.author.email, 'flubuild@microsoft.com')"
-    name: Publish to Cocoapods
+    name: Publish to CocoaPods
     runs-on: macos-latest
 
     steps:
     - uses: actions/checkout@v2
 
-    - name: Deploy to Cocoapods
+    - name: Deploy to CocoaPods
       run: |
         pod spec lint --allow-warnings
         pod trunk push --allow-warnings
