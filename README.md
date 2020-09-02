@@ -27,7 +27,7 @@ implementation 'com.microsoft.design:fluent-system-icons:1.1.51'
 For library docs, see [android/README.md](android/README.md).
 
 ### iOS and macOS
-#### Cocoapods
+#### CocoaPods
 
 ```ruby
 use_frameworks!
