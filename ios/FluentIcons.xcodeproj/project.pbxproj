@@ -225,7 +225,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1110;
-				ORGANIZATIONNAME = CocoaPods;
+				ORGANIZATIONNAME = Microsoft;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;

@@ -2,7 +2,7 @@
 
 ## Installation
 
-### Cocoapods
+### CocoaPods
 
 ```ruby
 use_frameworks!
@@ -52,7 +52,7 @@ No more risky stringly typed `UIImage(named: "")!`
 
 At build/release time you can run the following script to ensure all unused assets are stripped from the app:
 
-Cocoapods
+CocoaPods
 
 ```
 ICON_SOURCE_PATH="./Pods/FluentIcons"
