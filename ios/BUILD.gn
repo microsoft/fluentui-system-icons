@@ -203,6 +203,20 @@ imageset("ic_fluent_add_circle_28_regular") {
   ]
 }
 
+imageset("ic_fluent_add_square_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_add_square_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_add_square_24_filled.imageset/ic_fluent_add_square_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_add_square_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_add_square_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_add_square_24_regular.imageset/ic_fluent_add_square_24_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_airplane_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_airplane_20_filled.imageset/Contents.json",
@@ -791,6 +805,20 @@ imageset("ic_fluent_apps_list_24_regular") {
   ]
 }
 
+imageset("ic_fluent_archive_16_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_archive_16_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_archive_16_filled.imageset/ic_fluent_archive_16_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_archive_16_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_archive_16_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_archive_16_regular.imageset/ic_fluent_archive_16_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_archive_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_archive_20_filled.imageset/Contents.json",
@@ -844,6 +872,34 @@ imageset("ic_fluent_archive_48_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_archive_48_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_archive_48_regular.imageset/ic_fluent_archive_48_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_arrow_autofit_height_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_autofit_height_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_autofit_height_24_filled.imageset/ic_fluent_arrow_autofit_height_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_arrow_autofit_height_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_autofit_height_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_autofit_height_24_regular.imageset/ic_fluent_arrow_autofit_height_24_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_arrow_autofit_width_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_autofit_width_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_autofit_width_24_filled.imageset/ic_fluent_arrow_autofit_width_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_arrow_autofit_width_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_autofit_width_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_autofit_width_24_regular.imageset/ic_fluent_arrow_autofit_width_24_regular.pdf",
   ]
 }
 
@@ -931,6 +987,76 @@ imageset("ic_fluent_arrow_curve_down_right_20_regular") {
   ]
 }
 
+imageset("ic_fluent_arrow_curve_left_16_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_left_16_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_left_16_filled.imageset/ic_fluent_arrow_curve_left_16_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_arrow_curve_left_16_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_left_16_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_left_16_regular.imageset/ic_fluent_arrow_curve_left_16_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_arrow_curve_left_20_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_left_20_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_left_20_filled.imageset/ic_fluent_arrow_curve_left_20_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_arrow_curve_left_20_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_left_20_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_left_20_regular.imageset/ic_fluent_arrow_curve_left_20_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_arrow_curve_left_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_left_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_left_24_filled.imageset/ic_fluent_arrow_curve_left_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_arrow_curve_left_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_left_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_left_24_regular.imageset/ic_fluent_arrow_curve_left_24_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_arrow_curve_left_28_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_left_28_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_left_28_filled.imageset/ic_fluent_arrow_curve_left_28_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_arrow_curve_left_28_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_left_28_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_left_28_regular.imageset/ic_fluent_arrow_curve_left_28_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_arrow_curve_right_16_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_right_16_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_right_16_filled.imageset/ic_fluent_arrow_curve_right_16_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_arrow_curve_right_16_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_right_16_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_right_16_regular.imageset/ic_fluent_arrow_curve_right_16_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_arrow_curve_right_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_right_20_filled.imageset/Contents.json",
@@ -956,6 +1082,20 @@ imageset("ic_fluent_arrow_curve_right_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_right_24_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_right_24_regular.imageset/ic_fluent_arrow_curve_right_24_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_arrow_curve_right_28_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_right_28_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_right_28_filled.imageset/ic_fluent_arrow_curve_right_28_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_arrow_curve_right_28_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_right_28_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_curve_right_28_regular.imageset/ic_fluent_arrow_curve_right_28_regular.pdf",
   ]
 }
 
@@ -1194,6 +1334,34 @@ imageset("ic_fluent_arrow_export_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_export_20_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_export_20_regular.imageset/ic_fluent_arrow_export_20_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_arrow_fit_height_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_fit_height_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_fit_height_24_filled.imageset/ic_fluent_arrow_fit_height_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_arrow_fit_height_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_fit_height_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_fit_height_24_regular.imageset/ic_fluent_arrow_fit_height_24_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_arrow_fit_width_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_fit_width_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_fit_width_24_filled.imageset/ic_fluent_arrow_fit_width_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_arrow_fit_width_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_fit_width_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_fit_width_24_regular.imageset/ic_fluent_arrow_fit_width_24_regular.pdf",
   ]
 }
 
@@ -1558,6 +1726,34 @@ imageset("ic_fluent_arrow_redo_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_redo_24_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_redo_24_regular.imageset/ic_fluent_arrow_redo_24_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_arrow_redo_32_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_redo_32_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_redo_32_filled.imageset/ic_fluent_arrow_redo_32_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_arrow_redo_32_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_redo_32_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_redo_32_regular.imageset/ic_fluent_arrow_redo_32_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_arrow_redo_48_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_redo_48_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_redo_48_filled.imageset/ic_fluent_arrow_redo_48_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_arrow_redo_48_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_redo_48_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_redo_48_regular.imageset/ic_fluent_arrow_redo_48_regular.pdf",
   ]
 }
 
@@ -2440,6 +2636,20 @@ imageset("ic_fluent_autocorrect_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_autocorrect_24_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_autocorrect_24_regular.imageset/ic_fluent_autocorrect_24_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_autofit_content_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_autofit_content_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_autofit_content_24_filled.imageset/ic_fluent_autofit_content_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_autofit_content_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_autofit_content_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_autofit_content_24_regular.imageset/ic_fluent_autofit_content_24_regular.pdf",
   ]
 }
 
@@ -5089,6 +5299,20 @@ imageset("ic_fluent_caret_right_24_regular") {
   ]
 }
 
+imageset("ic_fluent_cart_20_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_cart_20_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_cart_20_filled.imageset/ic_fluent_cart_20_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_cart_20_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_cart_20_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_cart_20_regular.imageset/ic_fluent_cart_20_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_cart_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_cart_24_filled.imageset/Contents.json",
@@ -5352,6 +5576,34 @@ imageset("ic_fluent_cellular_unavailable_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_cellular_unavailable_24_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_cellular_unavailable_24_regular.imageset/ic_fluent_cellular_unavailable_24_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_center_horizontally_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_center_horizontally_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_center_horizontally_24_filled.imageset/ic_fluent_center_horizontally_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_center_horizontally_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_center_horizontally_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_center_horizontally_24_regular.imageset/ic_fluent_center_horizontally_24_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_center_vertically_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_center_vertically_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_center_vertically_24_filled.imageset/ic_fluent_center_vertically_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_center_vertically_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_center_vertically_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_center_vertically_24_regular.imageset/ic_fluent_center_vertically_24_regular.pdf",
   ]
 }
 
@@ -6573,6 +6825,20 @@ imageset("ic_fluent_clipboard_more_24_regular") {
   ]
 }
 
+imageset("ic_fluent_clipboard_paste_16_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_paste_16_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_paste_16_filled.imageset/ic_fluent_clipboard_paste_16_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_clipboard_paste_16_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_paste_16_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_paste_16_regular.imageset/ic_fluent_clipboard_paste_16_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_clipboard_paste_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_paste_20_filled.imageset/Contents.json",
@@ -7102,6 +7368,20 @@ imageset("ic_fluent_color_fill_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_color_fill_24_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_color_fill_24_regular.imageset/ic_fluent_color_fill_24_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_color_line_16_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_color_line_16_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_color_line_16_filled.imageset/ic_fluent_color_line_16_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_color_line_16_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_color_line_16_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_color_line_16_regular.imageset/ic_fluent_color_line_16_regular.pdf",
   ]
 }
 
@@ -7707,6 +7987,20 @@ imageset("ic_fluent_content_settings_24_regular") {
   ]
 }
 
+imageset("ic_fluent_convert_range_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_convert_range_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_convert_range_24_filled.imageset/ic_fluent_convert_range_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_convert_range_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_convert_range_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_convert_range_24_regular.imageset/ic_fluent_convert_range_24_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_convert_to_table_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_convert_to_table_24_filled.imageset/Contents.json",
@@ -7802,6 +8096,20 @@ imageset("ic_fluent_copy_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_copy_24_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_copy_24_regular.imageset/ic_fluent_copy_24_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_copy_add_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_copy_add_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_copy_add_24_filled.imageset/ic_fluent_copy_add_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_copy_add_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_copy_add_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_copy_add_24_regular.imageset/ic_fluent_copy_add_24_regular.pdf",
   ]
 }
 
@@ -7987,6 +8295,48 @@ imageset("ic_fluent_currency_24_regular") {
   ]
 }
 
+imageset("ic_fluent_currency_dollar_rupee_16_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_currency_dollar_rupee_16_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_currency_dollar_rupee_16_filled.imageset/ic_fluent_currency_dollar_rupee_16_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_currency_dollar_rupee_16_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_currency_dollar_rupee_16_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_currency_dollar_rupee_16_regular.imageset/ic_fluent_currency_dollar_rupee_16_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_currency_dollar_rupee_20_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_currency_dollar_rupee_20_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_currency_dollar_rupee_20_filled.imageset/ic_fluent_currency_dollar_rupee_20_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_currency_dollar_rupee_20_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_currency_dollar_rupee_20_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_currency_dollar_rupee_20_regular.imageset/ic_fluent_currency_dollar_rupee_20_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_currency_dollar_rupee_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_currency_dollar_rupee_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_currency_dollar_rupee_24_filled.imageset/ic_fluent_currency_dollar_rupee_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_currency_dollar_rupee_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_currency_dollar_rupee_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_currency_dollar_rupee_24_regular.imageset/ic_fluent_currency_dollar_rupee_24_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_cut_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_cut_20_filled.imageset/Contents.json",
@@ -8082,6 +8432,20 @@ imageset("ic_fluent_data_bar_vertical_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_data_bar_vertical_24_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_data_bar_vertical_24_regular.imageset/ic_fluent_data_bar_vertical_24_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_data_bar_vertical_add_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_data_bar_vertical_add_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_data_bar_vertical_add_24_filled.imageset/ic_fluent_data_bar_vertical_add_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_data_bar_vertical_add_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_data_bar_vertical_add_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_data_bar_vertical_add_24_regular.imageset/ic_fluent_data_bar_vertical_add_24_regular.pdf",
   ]
 }
 
@@ -8236,6 +8600,20 @@ imageset("ic_fluent_data_whisker_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_data_whisker_24_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_data_whisker_24_regular.imageset/ic_fluent_data_whisker_24_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_delete_16_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_delete_16_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_delete_16_filled.imageset/ic_fluent_delete_16_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_delete_16_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_delete_16_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_delete_16_regular.imageset/ic_fluent_delete_16_regular.pdf",
   ]
 }
 
@@ -10528,6 +10906,20 @@ imageset("ic_fluent_eraser_tool_24_regular") {
   ]
 }
 
+imageset("ic_fluent_error_circle_12_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_error_circle_12_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_error_circle_12_filled.imageset/ic_fluent_error_circle_12_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_error_circle_12_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_error_circle_12_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_error_circle_12_regular.imageset/ic_fluent_error_circle_12_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_error_circle_16_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_error_circle_16_filled.imageset/Contents.json",
@@ -10889,6 +11281,20 @@ imageset("ic_fluent_fingerprint_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_fingerprint_24_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_fingerprint_24_regular.imageset/ic_fluent_fingerprint_24_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_fixed_width_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_fixed_width_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_fixed_width_24_filled.imageset/ic_fluent_fixed_width_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_fixed_width_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_fixed_width_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_fixed_width_24_regular.imageset/ic_fluent_fixed_width_24_regular.pdf",
   ]
 }
 
@@ -11358,6 +11764,20 @@ imageset("ic_fluent_folder_link_48_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_folder_link_48_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_folder_link_48_regular.imageset/ic_fluent_folder_link_48_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_folder_move_16_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_folder_move_16_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_folder_move_16_filled.imageset/ic_fluent_folder_move_16_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_folder_move_16_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_folder_move_16_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_folder_move_16_regular.imageset/ic_fluent_folder_move_16_regular.pdf",
   ]
 }
 
@@ -12807,6 +13227,20 @@ imageset("ic_fluent_image_alt_text_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_image_alt_text_24_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_image_alt_text_24_regular.imageset/ic_fluent_image_alt_text_24_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_image_arrow_counterclockwise_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_image_arrow_counterclockwise_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_image_arrow_counterclockwise_24_filled.imageset/ic_fluent_image_arrow_counterclockwise_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_image_arrow_counterclockwise_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_image_arrow_counterclockwise_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_image_arrow_counterclockwise_24_regular.imageset/ic_fluent_image_arrow_counterclockwise_24_regular.pdf",
   ]
 }
 
@@ -14889,6 +15323,20 @@ imageset("ic_fluent_mail_outbox_24_regular") {
   ]
 }
 
+imageset("ic_fluent_mail_read_16_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_mail_read_16_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_mail_read_16_filled.imageset/ic_fluent_mail_read_16_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_mail_read_16_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_mail_read_16_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_mail_read_16_regular.imageset/ic_fluent_mail_read_16_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_mail_read_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_mail_read_20_filled.imageset/Contents.json",
@@ -15138,6 +15586,48 @@ imageset("ic_fluent_match_app_layout_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_match_app_layout_24_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_match_app_layout_24_regular.imageset/ic_fluent_match_app_layout_24_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_math_format_linear_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_math_format_linear_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_math_format_linear_24_filled.imageset/ic_fluent_math_format_linear_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_math_format_linear_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_math_format_linear_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_math_format_linear_24_regular.imageset/ic_fluent_math_format_linear_24_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_math_format_professional_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_math_format_professional_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_math_format_professional_24_filled.imageset/ic_fluent_math_format_professional_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_math_format_professional_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_math_format_professional_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_math_format_professional_24_regular.imageset/ic_fluent_math_format_professional_24_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_math_formula_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_math_formula_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_math_formula_24_filled.imageset/ic_fluent_math_formula_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_math_formula_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_math_formula_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_math_formula_24_regular.imageset/ic_fluent_math_formula_24_regular.pdf",
   ]
 }
 
@@ -16499,6 +16989,34 @@ imageset("ic_fluent_paint_brush_24_regular") {
   ]
 }
 
+imageset("ic_fluent_paint_brush_arrow_down_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_paint_brush_arrow_down_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_paint_brush_arrow_down_24_filled.imageset/ic_fluent_paint_brush_arrow_down_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_paint_brush_arrow_down_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_paint_brush_arrow_down_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_paint_brush_arrow_down_24_regular.imageset/ic_fluent_paint_brush_arrow_down_24_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_paint_brush_arrow_up_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_paint_brush_arrow_up_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_paint_brush_arrow_up_24_filled.imageset/ic_fluent_paint_brush_arrow_up_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_paint_brush_arrow_up_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_paint_brush_arrow_up_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_paint_brush_arrow_up_24_regular.imageset/ic_fluent_paint_brush_arrow_up_24_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_paint_bucket_16_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_paint_bucket_16_filled.imageset/Contents.json",
@@ -16947,6 +17465,20 @@ imageset("ic_fluent_people_community_add_24_regular") {
   ]
 }
 
+imageset("ic_fluent_people_prohibited_16_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_people_prohibited_16_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_people_prohibited_16_filled.imageset/ic_fluent_people_prohibited_16_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_people_prohibited_16_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_people_prohibited_16_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_people_prohibited_16_regular.imageset/ic_fluent_people_prohibited_16_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_people_prohibited_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_people_prohibited_20_filled.imageset/Contents.json",
@@ -17255,6 +17787,20 @@ imageset("ic_fluent_person_available_16_regular") {
   ]
 }
 
+imageset("ic_fluent_person_available_20_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_person_available_20_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_person_available_20_filled.imageset/ic_fluent_person_available_20_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_person_available_20_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_person_available_20_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_person_available_20_regular.imageset/ic_fluent_person_available_20_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_person_available_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_person_available_24_filled.imageset/Contents.json",
@@ -17339,6 +17885,48 @@ imageset("ic_fluent_person_call_24_regular") {
   ]
 }
 
+imageset("ic_fluent_person_clock_16_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_person_clock_16_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_person_clock_16_filled.imageset/ic_fluent_person_clock_16_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_person_clock_16_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_person_clock_16_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_person_clock_16_regular.imageset/ic_fluent_person_clock_16_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_person_clock_20_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_person_clock_20_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_person_clock_20_filled.imageset/ic_fluent_person_clock_20_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_person_clock_20_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_person_clock_20_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_person_clock_20_regular.imageset/ic_fluent_person_clock_20_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_person_clock_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_person_clock_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_person_clock_24_filled.imageset/ic_fluent_person_clock_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_person_clock_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_person_clock_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_person_clock_24_regular.imageset/ic_fluent_person_clock_24_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_person_delete_16_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_person_delete_16_filled.imageset/Contents.json",
@@ -17350,6 +17938,20 @@ imageset("ic_fluent_person_delete_16_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_person_delete_16_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_person_delete_16_regular.imageset/ic_fluent_person_delete_16_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_person_delete_20_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_person_delete_20_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_person_delete_20_filled.imageset/ic_fluent_person_delete_20_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_person_delete_20_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_person_delete_20_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_person_delete_20_regular.imageset/ic_fluent_person_delete_20_regular.pdf",
   ]
 }
 
@@ -18326,6 +18928,13 @@ imageset("ic_fluent_presence_available_10_filled") {
   ]
 }
 
+imageset("ic_fluent_presence_available_10_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_presence_available_10_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_presence_available_10_regular.imageset/ic_fluent_presence_available_10_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_presence_available_12_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_presence_available_12_filled.imageset/Contents.json",
@@ -18333,10 +18942,24 @@ imageset("ic_fluent_presence_available_12_filled") {
   ]
 }
 
+imageset("ic_fluent_presence_available_12_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_presence_available_12_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_presence_available_12_regular.imageset/ic_fluent_presence_available_12_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_presence_available_16_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_presence_available_16_filled.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_presence_available_16_filled.imageset/ic_fluent_presence_available_16_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_presence_available_16_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_presence_available_16_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_presence_available_16_regular.imageset/ic_fluent_presence_available_16_regular.pdf",
   ]
 }
 
@@ -18410,6 +19033,13 @@ imageset("ic_fluent_presence_dnd_10_filled") {
   ]
 }
 
+imageset("ic_fluent_presence_dnd_10_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_presence_dnd_10_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_presence_dnd_10_regular.imageset/ic_fluent_presence_dnd_10_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_presence_dnd_12_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_presence_dnd_12_filled.imageset/Contents.json",
@@ -18417,10 +19047,24 @@ imageset("ic_fluent_presence_dnd_12_filled") {
   ]
 }
 
+imageset("ic_fluent_presence_dnd_12_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_presence_dnd_12_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_presence_dnd_12_regular.imageset/ic_fluent_presence_dnd_12_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_presence_dnd_16_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_presence_dnd_16_filled.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_presence_dnd_16_filled.imageset/ic_fluent_presence_dnd_16_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_presence_dnd_16_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_presence_dnd_16_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_presence_dnd_16_regular.imageset/ic_fluent_presence_dnd_16_regular.pdf",
   ]
 }
 
@@ -21308,6 +21952,34 @@ imageset("ic_fluent_slide_microphone_24_regular") {
   ]
 }
 
+imageset("ic_fluent_slide_multiple_arrow_right_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_slide_multiple_arrow_right_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_slide_multiple_arrow_right_24_filled.imageset/ic_fluent_slide_multiple_arrow_right_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_slide_multiple_arrow_right_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_slide_multiple_arrow_right_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_slide_multiple_arrow_right_24_regular.imageset/ic_fluent_slide_multiple_arrow_right_24_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_slide_size_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_slide_size_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_slide_size_24_filled.imageset/ic_fluent_slide_size_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_slide_size_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_slide_size_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_slide_size_24_regular.imageset/ic_fluent_slide_size_24_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_slide_text_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_slide_text_24_filled.imageset/Contents.json",
@@ -23429,6 +24101,20 @@ imageset("ic_fluent_tabs_24_regular") {
   ]
 }
 
+imageset("ic_fluent_tag_16_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_tag_16_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_tag_16_filled.imageset/ic_fluent_tag_16_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_tag_16_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_tag_16_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_tag_16_regular.imageset/ic_fluent_tag_16_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_tag_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_tag_20_filled.imageset/Contents.json",
@@ -23989,6 +24675,20 @@ imageset("ic_fluent_text_asterisk_20_regular") {
   ]
 }
 
+imageset("ic_fluent_text_bold_16_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/ic_fluent_text_bold_16_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_text_bold_16_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/ic_fluent_text_bold_16_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_text_bold_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/Contents.json",
@@ -24367,6 +25067,20 @@ imageset("ic_fluent_text_collapse_24_regular") {
   ]
 }
 
+imageset("ic_fluent_text_color_16_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_16_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_16_filled.imageset/ic_fluent_text_color_16_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_text_color_16_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_16_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_16_regular.imageset/ic_fluent_text_color_16_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_text_color_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_20_filled.imageset/Contents.json",
@@ -24420,6 +25134,62 @@ imageset("ic_fluent_text_column_one_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_column_one_24_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_column_one_24_regular.imageset/ic_fluent_text_column_one_24_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_text_column_one_narrow_20_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_column_one_narrow_20_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_column_one_narrow_20_filled.imageset/ic_fluent_text_column_one_narrow_20_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_text_column_one_narrow_20_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_column_one_narrow_20_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_column_one_narrow_20_regular.imageset/ic_fluent_text_column_one_narrow_20_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_text_column_one_narrow_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_column_one_narrow_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_column_one_narrow_24_filled.imageset/ic_fluent_text_column_one_narrow_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_text_column_one_narrow_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_column_one_narrow_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_column_one_narrow_24_regular.imageset/ic_fluent_text_column_one_narrow_24_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_text_column_one_wide_20_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_column_one_wide_20_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_column_one_wide_20_filled.imageset/ic_fluent_text_column_one_wide_20_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_text_column_one_wide_20_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_column_one_wide_20_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_column_one_wide_20_regular.imageset/ic_fluent_text_column_one_wide_20_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_text_column_one_wide_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_column_one_wide_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_column_one_wide_24_filled.imageset/ic_fluent_text_column_one_wide_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_text_column_one_wide_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_column_one_wide_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_column_one_wide_24_regular.imageset/ic_fluent_text_column_one_wide_24_regular.pdf",
   ]
 }
 
@@ -25081,6 +25851,20 @@ imageset("ic_fluent_text_header_3_20_regular") {
   ]
 }
 
+imageset("ic_fluent_text_indent_decrease_20_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_filled.imageset/ic_fluent_text_indent_decrease_20_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_text_indent_decrease_20_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_regular.imageset/ic_fluent_text_indent_decrease_20_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_text_indent_decrease_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_24_filled.imageset/Contents.json",
@@ -25095,6 +25879,20 @@ imageset("ic_fluent_text_indent_decrease_24_regular") {
   ]
 }
 
+imageset("ic_fluent_text_indent_increase_20_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_20_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_20_filled.imageset/ic_fluent_text_indent_increase_20_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_text_indent_increase_20_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_20_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_20_regular.imageset/ic_fluent_text_indent_increase_20_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_text_indent_increase_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_24_filled.imageset/Contents.json",
@@ -25106,6 +25904,20 @@ imageset("ic_fluent_text_indent_increase_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_24_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_24_regular.imageset/ic_fluent_text_indent_increase_24_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_text_italic_16_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/ic_fluent_text_italic_16_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_text_italic_16_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/ic_fluent_text_italic_16_regular.pdf",
   ]
 }
 
@@ -25340,6 +26152,20 @@ imageset("ic_fluent_text_sort_descending_20_regular") {
   ]
 }
 
+imageset("ic_fluent_text_strikethrough_16_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_16_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_16_filled.imageset/ic_fluent_text_strikethrough_16_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_text_strikethrough_16_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_16_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_16_regular.imageset/ic_fluent_text_strikethrough_16_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_text_strikethrough_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_20_filled.imageset/Contents.json",
@@ -25421,6 +26247,20 @@ imageset("ic_fluent_text_superscript_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_superscript_24_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_superscript_24_regular.imageset/ic_fluent_text_superscript_24_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_text_underline_16_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_filled.imageset/ic_fluent_text_underline_16_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_text_underline_16_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_regular.imageset/ic_fluent_text_underline_16_regular.pdf",
   ]
 }
 
@@ -27881,6 +28721,20 @@ imageset("ic_fluent_window_dev_tools_24_regular") {
   ]
 }
 
+imageset("ic_fluent_window_horizontal_20_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_window_horizontal_20_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_window_horizontal_20_filled.imageset/ic_fluent_window_horizontal_20_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_window_horizontal_20_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_window_horizontal_20_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_window_horizontal_20_regular.imageset/ic_fluent_window_horizontal_20_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_window_inprivate_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_window_inprivate_20_filled.imageset/Contents.json",
@@ -27923,6 +28777,20 @@ imageset("ic_fluent_window_multiple_20_regular") {
   ]
 }
 
+imageset("ic_fluent_window_new_16_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_window_new_16_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_window_new_16_filled.imageset/ic_fluent_window_new_16_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_window_new_16_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_window_new_16_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_window_new_16_regular.imageset/ic_fluent_window_new_16_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_window_new_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_window_new_20_filled.imageset/Contents.json",
@@ -27934,6 +28802,20 @@ imageset("ic_fluent_window_new_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_window_new_20_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_window_new_20_regular.imageset/ic_fluent_window_new_20_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_window_new_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_window_new_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_window_new_24_filled.imageset/ic_fluent_window_new_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_window_new_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_window_new_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_window_new_24_regular.imageset/ic_fluent_window_new_24_regular.pdf",
   ]
 }
 
@@ -27976,6 +28858,20 @@ imageset("ic_fluent_window_shield_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_window_shield_24_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_window_shield_24_regular.imageset/ic_fluent_window_shield_24_regular.pdf",
+  ]
+}
+
+imageset("ic_fluent_window_vertical_20_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_window_vertical_20_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_window_vertical_20_filled.imageset/ic_fluent_window_vertical_20_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_window_vertical_20_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_window_vertical_20_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_window_vertical_20_regular.imageset/ic_fluent_window_vertical_20_regular.pdf",
   ]
 }
 

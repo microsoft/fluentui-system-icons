@@ -21,24 +21,24 @@ repositories {
 ```
 Include the following dependency in your project's `build.gradle`
 ```groovy
-implementation 'com.microsoft.design:fluent-system-icons:1.1.51'
+implementation 'com.microsoft.design:fluent-system-icons:1.1.56'
 ```
 
 For library docs, see [android/README.md](android/README.md).
 
 ### iOS and macOS
-#### Cocoapods
+#### CocoaPods
 
 ```ruby
 use_frameworks!
 
-pod "FluentIcons", "1.1.51"
+pod "FluentIcons", "1.1.56"
 ```
 
 #### Carthage
 
 ```bash
-git "git@github.com:microsoft/fluentui-system-icons.git" "1.1.51"
+git "git@github.com:microsoft/fluentui-system-icons.git" "1.1.56"
 ```
 
 For library docs, see [ios/README.md](ios/README.md).
