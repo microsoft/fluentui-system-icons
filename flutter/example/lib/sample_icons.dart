@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
-import 'package:fluentui_system_icons/fluentui_system_icons.dart';
+import 'package:fluentui_system_icons/fluent_icons.dart';
 
 import 'fluentui_sample_icon.dart';
 
