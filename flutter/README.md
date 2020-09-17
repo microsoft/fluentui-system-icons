@@ -1,5 +1,9 @@
 # Fluent UI System Icons
 
+Fluent UI System Icons are a collection of familiar, friendly and modern icons from Microsoft.
+
+ 👍 Like us on [pub.dev](https://pub.dev/packages/fluentui_system_icons)!
+
 ## Usage
 
 ```dart
@@ -41,3 +45,4 @@ This generally when the app is not build properly. Please try the below steps:
  1. flutter pub get
  2. flutter clean
  3. Invalidate caches and restart Android Studio
+ 
