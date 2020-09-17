@@ -62,6 +62,15 @@ jobs:
       run: python3 generate_build_gn_android.py
       working-directory: importer
 
+    ## Flutter
+    - name: Run Flutter generate script
+      run: npm run deploy:flutter
+      working-directory: importer
+
+    # TODO: https://github.com/microsoft/fluentui-system-icons/issues/34
+    # - name: Build and publish Flutter library
+    #   uses: ?
+
     ## Publish
     # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version numbers in README.md
@@ -80,6 +89,18 @@ jobs:
       run: |
         sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" ios/FluentIcons.podspec
         rm ios/FluentIcons.podspec.bk
+
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in flutter/CHANGELOG.md
+      run: |
+        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" flutter/CHANGELOG.md
+        rm flutter/CHANGELOG.md.bk
+
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in flutter/pubspec.yaml
+      run: |
+        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" pubspec.yaml
+        rm flutter/pubspec.yaml.bk
 
     - name: Update icon sheet
       run: python3 generate_icons_md.py

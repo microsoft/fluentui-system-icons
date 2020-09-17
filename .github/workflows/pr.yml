@@ -80,3 +80,26 @@ jobs:
     - name: Generate BUILD.gn file for Android
       run: python3 generate_build_gn_android.py
       working-directory: importer
+
+  build-flutter:
+    name: Build Flutter library
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node 11
+      uses: actions/setup-node@v1
+      with:
+        node-version: 11.x
+
+    - run: npm install
+      working-directory: importer
+
+    - name: Run generate script
+      run: npm run deploy:flutter
+      working-directory: importer
+
+    # TODO: https://github.com/microsoft/fluentui-system-icons/issues/34
+    # - name: Build Flutter library
+    #   uses: ?

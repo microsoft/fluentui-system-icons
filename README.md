@@ -1,8 +1,8 @@
-# Fluent System Icons
+# Fluent UI System Icons
 
 ![CI](https://github.com/microsoft/fluentui-system-icons/workflows/CI/badge.svg)
 
-Fluent System Icons are a collection of familiar, friendly and modern icons from Microsoft.
+Fluent UI System Icons are a collection of familiar, friendly and modern icons from Microsoft.
 
 ![fluent system icons](art/readme-banner.png)
 
@@ -43,6 +43,18 @@ git "git@github.com:microsoft/fluentui-system-icons.git" "1.1.57"
 
 For library docs, see [ios/README.md](ios/README.md).
 
+### Flutter
+
+In the `pubspec.yaml` of your flutter project, add the following dependency:
+
+```yaml
+dependencies:
+  ...
+  fluentui_system_icons: "1.1.29"
+```
+
+For library docs, see [flutter/README.md](flutter/README.md)
+
 ## Contributing
 
 ### Importer
@@ -79,11 +91,18 @@ You can build and run the demo apps following the steps below.
 3. Select the `sample-showcase` in the build configuration dropdown
 4. Click run 
 
+### Flutter
+Prerequisite: Make sure you have flutter configured in Android Studio 
+1. Open the [flutter](flutter) directory in Android Studio
+2. Select the 'example' in the directory and open it in Android Studio
+3. Click run
+
 ## Contact
 Please feel free to [open a GitHub issue](https://github.com/microsoft/fluentui-system-icons/issues/new) and assign to the following points of contact with questions or requests.
 * Jason Custer([@jasoncuster](https://github.com/jasoncuster)) / Spencer Nelson([@spencer-nelson](https://github.com/spencer-nelson)) / Joe Woodward([@thewoodpecker](https://github.com/thewoodpecker)) - Design
-* Nick Romano([@nickromano](https://github.com/nickromano)) - iOS
+* Nick Romano([@rickromano](https://github.com/nickromano)) - iOS
 * Will Hou([@willhou](https://github.com/willhou)) - Android
+* Akashdeep Singh([@aakash1313](https://github.com/aakash1313)) - Flutter
 
 ## Code of Conduct
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct) or contact opencode@microsoft.com with any additional questions or comments.
