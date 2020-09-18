@@ -5,11 +5,21 @@
   "main": "index.js",
   "scripts": {
     "jshint": "jshint --reporter=node_modules/jshint-stylish src || true",
-    "clean": "find dist -type f ! -name '.keep' -delete",
-    "build:android": "node generate.js --source=../assets --dest=./dist --extension=svg && sh tools/vd-tool/bin/vd-tool -c -in ./dist -out ./dist && rm ./dist/*.svg && find ./dist/ -type f ! -name '*_selector.xml' -exec avocado {} + -exec replace '#212121' '@color/fluent_default_icon_tint' {} + && replace '\"http://schemas.android.com/apk/res/android\"' '\"http://schemas.android.com/apk/res/android\" android:autoMirrored=\"true\"' $(awk '$0=\"./dist/\"$0\".xml\"' rtl.txt)",
-    "build:ios": "node generate.js --source=../assets --dest=./dist --extension=pdf",
+    "clean": "find dist -type f ! -name '.keep' -delete && rm -rf dist/*",
+    "generate:svg": "node generate.js --source=../assets --dest=./dist --extension=svg",
+    "generate:pdf": "node generate.js --source=../assets --dest=./dist --extension=pdf",
+    "build:android": "npm run generate:svg && sh tools/vd-tool/bin/vd-tool -c -in ./dist -out ./dist && rm ./dist/*.svg && find ./dist/ -type f ! -name '*_selector.xml' -exec avocado {} + -exec replace '#212121' '@color/fluent_default_icon_tint' {} + && replace '\"http://schemas.android.com/apk/res/android\"' '\"http://schemas.android.com/apk/res/android\" android:autoMirrored=\"true\"' $(awk '$0=\"./dist/\"$0\".xml\"' rtl.txt)",
+    "build:ios": "npm run generate:pdf",
     "deploy:android": "npm run build:android && rm -rf ../android/library/src/main/res/drawable && mkdir ../android/library/src/main/res/drawable && find ./dist/ -type f -name \"*.xml\" -exec cp {} ../android/library/src/main/res/drawable \\; && npm run clean",
-    "deploy:ios": "npm run build:ios && python3 process_ios_assets.py && npm run clean"
+    "deploy:ios": "npm run build:ios && python3 process_ios_assets.py && npm run clean",
+    "generate:font-regular": "icon-font-generator dist/*_regular.svg -o dist/fonts --name FluentSystemIcons-Regular --types ttf --html false --css false --codepoints ../fonts/FluentSystemIcons-Regular.json --height 500",
+    "generate:font-filled": "icon-font-generator dist/*_filled.svg -o dist/fonts --name FluentSystemIcons-Filled --types ttf --html false --css false --codepoints ../fonts/FluentSystemIcons-Filled.json --height 500",
+    "build:fonts": "npm run generate:svg && svgo dist/*.svg --config svgo_config.yml && mkdir dist/fonts && npm run generate:font-regular && npm run generate:font-filled && replace '\\\\\\\\' '0x' dist/fonts/*.json",
+    "deploy:fonts": "npm run build:fonts && cp -a dist/fonts/ ../fonts && npm run clean",
+    "generate:flutter-icon-lib-class": "node generate_flutter_lib_class.js --source=../fonts/FluentSystemIcons-Regular.json ../fonts/FluentSystemIcons-Filled.json --dest=dist/flutter",
+    "generate:flutter-icon-demo-class": "node generate_flutter_demo_class.js --source=../fonts/FluentSystemIcons-Regular.json ../fonts/FluentSystemIcons-Filled.json --dest=dist/flutter",
+    "build:flutter": "npm run deploy:fonts && mkdir dist/flutter && npm run generate:flutter-icon-lib-class && npm run generate:flutter-icon-demo-class",
+    "deploy:flutter": "npm run build:flutter && cp ../fonts/*.ttf ../flutter/lib/fonts && cp dist/flutter/fluent_icons.dart ../flutter/lib/src/fluent_icons.dart && cp dist/flutter/sample_icons.dart ../flutter/example/lib/sample_icons.dart && npm run clean"
   },
   "author": "Microsoft Inc.",
   "license": "Microsoft",
@@ -18,6 +28,8 @@
   },
   "dependencies": {
     "avocado": "1.0.0",
-    "replace": "1.1.4"
+    "icon-font-generator": "^2.1.10",
+    "replace": "1.1.4",
+    "svgo": "1.3.2"
   }
 }
