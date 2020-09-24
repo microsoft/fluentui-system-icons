@@ -1,6 +1,6 @@
 {
   "name": "FluentIcons",
-  "version": "1.1.4",
+  "version": "1.1.60",
   "summary": "FluentIcons",
   "description": "FluentIcons",
   "homepage": "https://github.com/microsoft/fluentui-system-icons",
@@ -13,19 +13,35 @@
   },
   "source": {
     "git": "https://github.com/microsoft/fluentui-system-icons.git",
-    "tag": "1.1.4"
+    "tag": "1.1.60"
   },
   "platforms": {
     "ios": "8.0",
     "osx": "10.12"
   },
-  "source_files": "ios/FluentIcons/Classes/*.swift",
-  "ios": {
-    "source_files": "ios/FluentIcons/Classes/ios/*.swift"
-  },
-  "osx": {
-    "source_files": "ios/FluentIcons/Classes/mac/*.swift"
-  },
-  "resources": "ios/FluentIcons/Assets/IconAssets.xcassets",
-  "preserve_paths": "ios/remove-unused-fluent-icons/run"
+  "default_subspecs": [
+    "Code",
+    "Assets",
+    "RemovalScript"
+  ],
+  "subspecs": [
+    {
+      "name": "Code",
+      "source_files": "ios/FluentIcons/Classes/*.swift",
+      "ios": {
+        "source_files": "ios/FluentIcons/Classes/ios/*.swift"
+      },
+      "osx": {
+        "source_files": "ios/FluentIcons/Classes/mac/*.swift"
+      }
+    },
+    {
+      "name": "Assets",
+      "resources": "ios/FluentIcons/Assets/IconAssets.xcassets"
+    },
+    {
+      "name": "RemovalScript",
+      "preserve_paths": "ios/remove-unused-fluent-icons/run"
+    }
+  ]
 }
