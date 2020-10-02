@@ -8,23 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		069C76CE85B95665BD90BC70D1DBDEBF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E0833F774141EB04DC79D0F4664C87 /* Cocoa.framework */; };
-		0A9287D77BA52C423C9895A390D010EB /* FluentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A999C949046B8939DBB37E329EB0347B /* FluentIcon.swift */; };
-		123C131CC0D3FD8718528BC6B16C3388 /* FluentIcons-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0F0561EC148171AF1769A25C216020 /* FluentIcons-macOS-dummy.m */; };
+		0A9287D77BA52C423C9895A390D010EB /* FluentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93F37B6C81573398F81AE061BDD1064 /* FluentIcon.swift */; };
+		123C131CC0D3FD8718528BC6B16C3388 /* FluentIcons-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 372E871A5169B12D7849034F39B48803 /* FluentIcons-macOS-dummy.m */; };
 		1B4472464A20900BE517C56F46B7B371 /* Pods-FluentIcons_ExampleMacOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DDBCB4C5C1E9A2EBB8966C761608AB0 /* Pods-FluentIcons_ExampleMacOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		267EEE2C6E70DFEE06367B29D0BD48D3 /* IconAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E06EB0A642072A5047C7F8505B7FF04 /* IconAssets.xcassets */; };
+		267EEE2C6E70DFEE06367B29D0BD48D3 /* IconAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B35231F41D737E7CE854C7ED7B5908BB /* IconAssets.xcassets */; };
 		41D6D7984752681054FB8931188BB3D2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF078200D3CDAD0F3FB03ED9391A7F0 /* Foundation.framework */; };
-		46E36BDDAD5B1679930909968228CCE5 /* FluentIcons-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DE55DC163ECCAFED69342B6E315B9C3 /* FluentIcons-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5A9C5D7291E4AC971A14108A8A688BED /* Image+FluentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433266BBCB1B363CD8ED5EB6801A13CD /* Image+FluentIcon.swift */; };
+		46E36BDDAD5B1679930909968228CCE5 /* FluentIcons-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9835497E33188EA7560F6679467DF249 /* FluentIcons-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5A9C5D7291E4AC971A14108A8A688BED /* Image+FluentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7248C4B7322886D2C733221D841EC61F /* Image+FluentIcon.swift */; };
 		5E1D308FD50EAFD1E41EF7AD80114037 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E0833F774141EB04DC79D0F4664C87 /* Cocoa.framework */; };
-		627FC2E3FF7F302F222300170A682E71 /* IconAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E06EB0A642072A5047C7F8505B7FF04 /* IconAssets.xcassets */; };
-		62BB0FF7B7CD422602D7DA9C391DB5FD /* Image+FluentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA388ACEDC5A3A59F88872DFF839C9A /* Image+FluentIcon.swift */; };
+		627FC2E3FF7F302F222300170A682E71 /* IconAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B35231F41D737E7CE854C7ED7B5908BB /* IconAssets.xcassets */; };
+		62BB0FF7B7CD422602D7DA9C391DB5FD /* Image+FluentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D1FBCD7F109F8FBD61E904D24DD926 /* Image+FluentIcon.swift */; };
 		6A8058471A2542998D952ADEC74E9CE2 /* Pods-FluentIcons_ExampleMacOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AC10C79A3E4FACA943DDADE0C9E421 /* Pods-FluentIcons_ExampleMacOS-dummy.m */; };
 		6AE42639D3E0DD28A3415CD1031EF476 /* Pods-FluentIcons_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A8D55EFB63A8350184EF2F1E4D7D10A /* Pods-FluentIcons_Example-dummy.m */; };
 		775DA069116017F7B9ABBD01E5CB09ED /* Pods-FluentIcons_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B3499DFB17C5849A069A12BEA7E5299 /* Pods-FluentIcons_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A5016FFFB53DE207FA94D3324479F54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF078200D3CDAD0F3FB03ED9391A7F0 /* Foundation.framework */; };
-		A35DEE5FAA272A2C118A0F201B272087 /* FluentIcons-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C6456E5F023FCDD6112279E808C0150A /* FluentIcons-iOS-dummy.m */; };
-		E0A9D8E01B9BEDFE78A70F685152383A /* FluentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A999C949046B8939DBB37E329EB0347B /* FluentIcon.swift */; };
-		F68D2A6EB878533C346DEEA974BE1CC6 /* FluentIcons-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA7868DCFE61AD6B60CAB5EF213A7A7 /* FluentIcons-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A35DEE5FAA272A2C118A0F201B272087 /* FluentIcons-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3DD8B00BD0CBF3A68533200F5DA4DC /* FluentIcons-iOS-dummy.m */; };
+		E0A9D8E01B9BEDFE78A70F685152383A /* FluentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93F37B6C81573398F81AE061BDD1064 /* FluentIcon.swift */; };
+		F68D2A6EB878533C346DEEA974BE1CC6 /* FluentIcons-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D28AAC5FE949A624BEAF228285211FA /* FluentIcons-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,51 +45,51 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00E2FF8DF51B1B49463F76C48FCC8E0C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		040E3CD20DAD35BB3F59B7409D9CDD82 /* Pods-FluentIcons_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FluentIcons_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		052877E147483D2798B22B1440F0F6F1 /* Pods-FluentIcons_ExampleMacOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FluentIcons_ExampleMacOS.release.xcconfig"; sourceTree = "<group>"; };
 		073E436358408CF18774906ACDBD3076 /* FluentIcons.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FluentIcons.framework; path = "FluentIcons-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0DE55DC163ECCAFED69342B6E315B9C3 /* FluentIcons-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FluentIcons-iOS-umbrella.h"; sourceTree = "<group>"; };
+		08554870F9B73FA745DF4755EB19328E /* FluentIcons-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "FluentIcons-iOS.modulemap"; sourceTree = "<group>"; };
+		10C98A7D60BD58CC62A573BE4D41B317 /* FluentIcons-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "FluentIcons-macOS.release.xcconfig"; path = "../FluentIcons-macOS/FluentIcons-macOS.release.xcconfig"; sourceTree = "<group>"; };
 		1143AA18851F7C985DD0410CCCE58619 /* Pods-FluentIcons_ExampleMacOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FluentIcons_ExampleMacOS-acknowledgements.plist"; sourceTree = "<group>"; };
-		115636E59953AB303718AE0133CF835F /* FluentIcons-macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; name = "FluentIcons-macOS.modulemap"; path = "../FluentIcons-macOS/FluentIcons-macOS.modulemap"; sourceTree = "<group>"; };
 		14AC10C79A3E4FACA943DDADE0C9E421 /* Pods-FluentIcons_ExampleMacOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FluentIcons_ExampleMacOS-dummy.m"; sourceTree = "<group>"; };
 		1D5CBCA1568284CF16F2C41F00183E02 /* Pods-FluentIcons_ExampleMacOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FluentIcons_ExampleMacOS.modulemap"; sourceTree = "<group>"; };
 		1DDBCB4C5C1E9A2EBB8966C761608AB0 /* Pods-FluentIcons_ExampleMacOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FluentIcons_ExampleMacOS-umbrella.h"; sourceTree = "<group>"; };
+		215070D9F97B346AA8A28F4504112EB2 /* FluentIcons-iOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FluentIcons-iOS-Info.plist"; sourceTree = "<group>"; };
 		23D2D3ACC29E935C52671198DBA93E50 /* Pods-FluentIcons_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FluentIcons_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		2B3DD8B00BD0CBF3A68533200F5DA4DC /* FluentIcons-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FluentIcons-iOS-dummy.m"; sourceTree = "<group>"; };
+		2D28AAC5FE949A624BEAF228285211FA /* FluentIcons-macOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FluentIcons-macOS-umbrella.h"; path = "../FluentIcons-macOS/FluentIcons-macOS-umbrella.h"; sourceTree = "<group>"; };
 		2E8BA834CF5B30DDE0A749038330F152 /* Pods-FluentIcons_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FluentIcons_Example-frameworks.sh"; sourceTree = "<group>"; };
 		30E0833F774141EB04DC79D0F4664C87 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		344B624471095BB88BD38BB77F8C92DB /* FluentIcons.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FluentIcons.framework; path = "FluentIcons-macOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		372E871A5169B12D7849034F39B48803 /* FluentIcons-macOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FluentIcons-macOS-dummy.m"; path = "../FluentIcons-macOS/FluentIcons-macOS-dummy.m"; sourceTree = "<group>"; };
 		3B3499DFB17C5849A069A12BEA7E5299 /* Pods-FluentIcons_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FluentIcons_Example-umbrella.h"; sourceTree = "<group>"; };
-		433266BBCB1B363CD8ED5EB6801A13CD /* Image+FluentIcon.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Image+FluentIcon.swift"; sourceTree = "<group>"; };
-		4AA388ACEDC5A3A59F88872DFF839C9A /* Image+FluentIcon.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Image+FluentIcon.swift"; sourceTree = "<group>"; };
-		4E06EB0A642072A5047C7F8505B7FF04 /* IconAssets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = IconAssets.xcassets; path = ios/FluentIcons/Assets/IconAssets.xcassets; sourceTree = "<group>"; };
-		538FC5F3A8C8B8AC4E9C4734984A5597 /* FluentIcons-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FluentIcons-iOS-prefix.pch"; sourceTree = "<group>"; };
-		55D64EEC8E494AB49405F7D1FBE4343B /* FluentIcons-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "FluentIcons-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		40D1FBCD7F109F8FBD61E904D24DD926 /* Image+FluentIcon.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Image+FluentIcon.swift"; sourceTree = "<group>"; };
+		4F1A47FCC62306B82614989799D96DE8 /* FluentIcons-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FluentIcons-iOS-prefix.pch"; sourceTree = "<group>"; };
+		65B3E7A74434EDB6E489D5FE49390F29 /* FluentIcons-macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; name = "FluentIcons-macOS.modulemap"; path = "../FluentIcons-macOS/FluentIcons-macOS.modulemap"; sourceTree = "<group>"; };
 		684B9AFB28924DC84B36DFC6857E84C1 /* Pods_FluentIcons_ExampleMacOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FluentIcons_ExampleMacOS.framework; path = "Pods-FluentIcons_ExampleMacOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		69A96D3457F3F65B316D9996B0DF461F /* FluentIcons-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "FluentIcons-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		6A8D55EFB63A8350184EF2F1E4D7D10A /* Pods-FluentIcons_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FluentIcons_Example-dummy.m"; sourceTree = "<group>"; };
+		7248C4B7322886D2C733221D841EC61F /* Image+FluentIcon.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Image+FluentIcon.swift"; sourceTree = "<group>"; };
 		810F9657818B8D9426203E738F778207 /* Pods-FluentIcons_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FluentIcons_Example.modulemap"; sourceTree = "<group>"; };
+		8959182F9F585063D3DECF5DA6E87F64 /* FluentIcons.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = FluentIcons.podspec; path = ios/FluentIcons.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9835497E33188EA7560F6679467DF249 /* FluentIcons-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FluentIcons-iOS-umbrella.h"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A89EA8C229DA05E31DBB9999947D44E9 /* Pods-FluentIcons_ExampleMacOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FluentIcons_ExampleMacOS.debug.xcconfig"; sourceTree = "<group>"; };
-		A999C949046B8939DBB37E329EB0347B /* FluentIcon.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FluentIcon.swift; path = ios/FluentIcons/Classes/FluentIcon.swift; sourceTree = "<group>"; };
+		AD50FA1B2F597747EF185BC1B70C4DD8 /* FluentIcons-macOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FluentIcons-macOS-prefix.pch"; path = "../FluentIcons-macOS/FluentIcons-macOS-prefix.pch"; sourceTree = "<group>"; };
 		AD5AE491BA13029D2081A0D90EA818DA /* Pods-FluentIcons_ExampleMacOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FluentIcons_ExampleMacOS-Info.plist"; sourceTree = "<group>"; };
-		AEAEE8E7184EC00B87A46F176294BB33 /* FluentIcons-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "FluentIcons-iOS.modulemap"; sourceTree = "<group>"; };
-		BCABA05C2148749E2AA6147840EF0C00 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		BF881AAAD578FD995C25C471BE617F4F /* FluentIcons-iOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FluentIcons-iOS-Info.plist"; sourceTree = "<group>"; };
+		B35231F41D737E7CE854C7ED7B5908BB /* IconAssets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = IconAssets.xcassets; path = ios/FluentIcons/Assets/IconAssets.xcassets; sourceTree = "<group>"; };
+		BD8BBE6AAF715D0815ACE782B57D42CC /* FluentIcons-macOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "FluentIcons-macOS-Info.plist"; path = "../FluentIcons-macOS/FluentIcons-macOS-Info.plist"; sourceTree = "<group>"; };
+		BF57AB99E65CC425E619473C69F28B8D /* FluentIcons-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "FluentIcons-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		C195843D4141B98E48E147D0E299A835 /* Pods_FluentIcons_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FluentIcons_Example.framework; path = "Pods-FluentIcons_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C3470159C0B444895EE785C18455E4DD /* FluentIcons-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "FluentIcons-iOS.release.xcconfig"; sourceTree = "<group>"; };
-		C6456E5F023FCDD6112279E808C0150A /* FluentIcons-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FluentIcons-iOS-dummy.m"; sourceTree = "<group>"; };
-		CA0F0561EC148171AF1769A25C216020 /* FluentIcons-macOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FluentIcons-macOS-dummy.m"; path = "../FluentIcons-macOS/FluentIcons-macOS-dummy.m"; sourceTree = "<group>"; };
+		C93F37B6C81573398F81AE061BDD1064 /* FluentIcon.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FluentIcon.swift; path = ios/FluentIcons/Classes/FluentIcon.swift; sourceTree = "<group>"; };
 		CAF078200D3CDAD0F3FB03ED9391A7F0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		CB9B58E99F6EE39E25F050D5B62CA9F1 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		D2C52EFB2EEBC60D1502DF7417FDBC08 /* FluentIcons-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "FluentIcons-macOS.debug.xcconfig"; path = "../FluentIcons-macOS/FluentIcons-macOS.debug.xcconfig"; sourceTree = "<group>"; };
 		D648F7A06D0ABA2B49C382FB8A85A538 /* Pods-FluentIcons_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FluentIcons_Example-Info.plist"; sourceTree = "<group>"; };
-		D79A51BE1BE583464E9F979864296261 /* FluentIcons-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "FluentIcons-macOS.release.xcconfig"; path = "../FluentIcons-macOS/FluentIcons-macOS.release.xcconfig"; sourceTree = "<group>"; };
-		D8C7E7BFE4DE384385D84F947CF5E1B7 /* FluentIcons-macOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FluentIcons-macOS-prefix.pch"; path = "../FluentIcons-macOS/FluentIcons-macOS-prefix.pch"; sourceTree = "<group>"; };
+		D9B7964E7C66870401185D8C3A4EB093 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		DAB3E38C357FDD74F9A7B227F1827F54 /* FluentIcons-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "FluentIcons-macOS.debug.xcconfig"; path = "../FluentIcons-macOS/FluentIcons-macOS.debug.xcconfig"; sourceTree = "<group>"; };
 		DBEDC0E9493B2F9D0A31246B9C546B24 /* Pods-FluentIcons_ExampleMacOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FluentIcons_ExampleMacOS-acknowledgements.markdown"; sourceTree = "<group>"; };
 		E8575C7C55C27418A4F27963D633B389 /* Pods-FluentIcons_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FluentIcons_Example.release.xcconfig"; sourceTree = "<group>"; };
-		EBC8248A80BCFE99C8E36DDC8D5E6C3E /* FluentIcons-macOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "FluentIcons-macOS-Info.plist"; path = "../FluentIcons-macOS/FluentIcons-macOS-Info.plist"; sourceTree = "<group>"; };
 		EF64BBB7A3B8EB681EE920613A2FB7B1 /* Pods-FluentIcons_ExampleMacOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FluentIcons_ExampleMacOS-frameworks.sh"; sourceTree = "<group>"; };
-		F3FE507784F736A0AAD3318DDA01399B /* FluentIcons.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = FluentIcons.podspec; path = ios/FluentIcons.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		FAA7868DCFE61AD6B60CAB5EF213A7A7 /* FluentIcons-macOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FluentIcons-macOS-umbrella.h"; path = "../FluentIcons-macOS/FluentIcons-macOS-umbrella.h"; sourceTree = "<group>"; };
 		FF67A3A563702B69745413BBA6E78875 /* Pods-FluentIcons_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FluentIcons_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +129,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10CA63FD5EBE5F37AA7148381F5699C2 /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				7248C4B7322886D2C733221D841EC61F /* Image+FluentIcon.swift */,
+			);
+			name = ios;
+			path = ios/FluentIcons/Classes/ios;
+			sourceTree = "<group>";
+		};
 		2C9CE3D331F4E1E24892762DD64E4912 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +155,28 @@
 			name = "OS X";
 			sourceTree = "<group>";
 		};
+		46850191FF5EF0EE69DD3D55FE84CC63 /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				C93F37B6C81573398F81AE061BDD1064 /* FluentIcon.swift */,
+				10CA63FD5EBE5F37AA7148381F5699C2 /* ios */,
+				84053476414DFA54D5B37B5188A2DDF1 /* mac */,
+			);
+			name = Code;
+			sourceTree = "<group>";
+		};
+		49FC3FC66B36310BEA69531F5EAF6661 /* FluentIcons */ = {
+			isa = PBXGroup;
+			children = (
+				508434EFA3663EA106CAF0035FC819DE /* Assets */,
+				46850191FF5EF0EE69DD3D55FE84CC63 /* Code */,
+				AA636B73FBAE0BC96DD41CC0E784096E /* Pod */,
+				A43C37AEB0D74F72142C5CEABEDF5F09 /* Support Files */,
+			);
+			name = FluentIcons;
+			path = ../..;
+			sourceTree = "<group>";
+		};
 		4EDC20B56A0B9A8564E1FCEA191C83C4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,23 +186,29 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		80AACA5445F38F724169049D80C09714 /* mac */ = {
+		508434EFA3663EA106CAF0035FC819DE /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				4AA388ACEDC5A3A59F88872DFF839C9A /* Image+FluentIcon.swift */,
+				DF7024CFE773C48964C354E13D43E22B /* Resources */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		84053476414DFA54D5B37B5188A2DDF1 /* mac */ = {
+			isa = PBXGroup;
+			children = (
+				40D1FBCD7F109F8FBD61E904D24DD926 /* Image+FluentIcon.swift */,
 			);
 			name = mac;
 			path = ios/FluentIcons/Classes/mac;
 			sourceTree = "<group>";
 		};
-		83C3065D0F2E959265BF8DC43C6DD997 /* Pod */ = {
+		9C37EC9C8B5E670FB40144CD375CB6D6 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F3FE507784F736A0AAD3318DDA01399B /* FluentIcons.podspec */,
-				CB9B58E99F6EE39E25F050D5B62CA9F1 /* LICENSE */,
-				BCABA05C2148749E2AA6147840EF0C00 /* README.md */,
+				49FC3FC66B36310BEA69531F5EAF6661 /* FluentIcons */,
 			);
-			name = Pod;
+			name = "Development Pods";
 			sourceTree = "<group>";
 		};
 		A04419A5AE537C90597A7C474BBB87C9 /* iOS */ = {
@@ -180,6 +217,38 @@
 				CAF078200D3CDAD0F3FB03ED9391A7F0 /* Foundation.framework */,
 			);
 			name = iOS;
+			sourceTree = "<group>";
+		};
+		A43C37AEB0D74F72142C5CEABEDF5F09 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				08554870F9B73FA745DF4755EB19328E /* FluentIcons-iOS.modulemap */,
+				2B3DD8B00BD0CBF3A68533200F5DA4DC /* FluentIcons-iOS-dummy.m */,
+				215070D9F97B346AA8A28F4504112EB2 /* FluentIcons-iOS-Info.plist */,
+				4F1A47FCC62306B82614989799D96DE8 /* FluentIcons-iOS-prefix.pch */,
+				9835497E33188EA7560F6679467DF249 /* FluentIcons-iOS-umbrella.h */,
+				BF57AB99E65CC425E619473C69F28B8D /* FluentIcons-iOS.debug.xcconfig */,
+				69A96D3457F3F65B316D9996B0DF461F /* FluentIcons-iOS.release.xcconfig */,
+				65B3E7A74434EDB6E489D5FE49390F29 /* FluentIcons-macOS.modulemap */,
+				372E871A5169B12D7849034F39B48803 /* FluentIcons-macOS-dummy.m */,
+				BD8BBE6AAF715D0815ACE782B57D42CC /* FluentIcons-macOS-Info.plist */,
+				AD50FA1B2F597747EF185BC1B70C4DD8 /* FluentIcons-macOS-prefix.pch */,
+				2D28AAC5FE949A624BEAF228285211FA /* FluentIcons-macOS-umbrella.h */,
+				DAB3E38C357FDD74F9A7B227F1827F54 /* FluentIcons-macOS.debug.xcconfig */,
+				10C98A7D60BD58CC62A573BE4D41B317 /* FluentIcons-macOS.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "ios/Pods/Target Support Files/FluentIcons-iOS";
+			sourceTree = "<group>";
+		};
+		AA636B73FBAE0BC96DD41CC0E784096E /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				8959182F9F585063D3DECF5DA6E87F64 /* FluentIcons.podspec */,
+				00E2FF8DF51B1B49463F76C48FCC8E0C /* LICENSE */,
+				D9B7964E7C66870401185D8C3A4EB093 /* README.md */,
+			);
+			name = Pod;
 			sourceTree = "<group>";
 		};
 		AAC5402BA2DE10FE78888575954DE992 /* Pods-FluentIcons_Example */ = {
@@ -231,72 +300,19 @@
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				D92551CA2856574F712204F13A32D69B /* Development Pods */,
+				9C37EC9C8B5E670FB40144CD375CB6D6 /* Development Pods */,
 				4EDC20B56A0B9A8564E1FCEA191C83C4 /* Frameworks */,
 				B36B04E5DFEDA6D13A6DB14FB3BA43F2 /* Products */,
 				2C9CE3D331F4E1E24892762DD64E4912 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		CFEB1CBB303832AF4BF8DE3D5EF51B7F /* FluentIcons */ = {
+		DF7024CFE773C48964C354E13D43E22B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A999C949046B8939DBB37E329EB0347B /* FluentIcon.swift */,
-				E54C5B5EFF80CA4A2DFEB339D6074DDF /* ios */,
-				80AACA5445F38F724169049D80C09714 /* mac */,
-				83C3065D0F2E959265BF8DC43C6DD997 /* Pod */,
-				DD3E6F87C7C0574F0C59C15B54E49BF2 /* Resources */,
-				FAF7098B2DDB66F21047A4CC0C02DB79 /* Support Files */,
-			);
-			name = FluentIcons;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		D92551CA2856574F712204F13A32D69B /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				CFEB1CBB303832AF4BF8DE3D5EF51B7F /* FluentIcons */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		DD3E6F87C7C0574F0C59C15B54E49BF2 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				4E06EB0A642072A5047C7F8505B7FF04 /* IconAssets.xcassets */,
+				B35231F41D737E7CE854C7ED7B5908BB /* IconAssets.xcassets */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		E54C5B5EFF80CA4A2DFEB339D6074DDF /* ios */ = {
-			isa = PBXGroup;
-			children = (
-				433266BBCB1B363CD8ED5EB6801A13CD /* Image+FluentIcon.swift */,
-			);
-			name = ios;
-			path = ios/FluentIcons/Classes/ios;
-			sourceTree = "<group>";
-		};
-		FAF7098B2DDB66F21047A4CC0C02DB79 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				AEAEE8E7184EC00B87A46F176294BB33 /* FluentIcons-iOS.modulemap */,
-				C6456E5F023FCDD6112279E808C0150A /* FluentIcons-iOS-dummy.m */,
-				BF881AAAD578FD995C25C471BE617F4F /* FluentIcons-iOS-Info.plist */,
-				538FC5F3A8C8B8AC4E9C4734984A5597 /* FluentIcons-iOS-prefix.pch */,
-				0DE55DC163ECCAFED69342B6E315B9C3 /* FluentIcons-iOS-umbrella.h */,
-				55D64EEC8E494AB49405F7D1FBE4343B /* FluentIcons-iOS.debug.xcconfig */,
-				C3470159C0B444895EE785C18455E4DD /* FluentIcons-iOS.release.xcconfig */,
-				115636E59953AB303718AE0133CF835F /* FluentIcons-macOS.modulemap */,
-				CA0F0561EC148171AF1769A25C216020 /* FluentIcons-macOS-dummy.m */,
-				EBC8248A80BCFE99C8E36DDC8D5E6C3E /* FluentIcons-macOS-Info.plist */,
-				D8C7E7BFE4DE384385D84F947CF5E1B7 /* FluentIcons-macOS-prefix.pch */,
-				FAA7868DCFE61AD6B60CAB5EF213A7A7 /* FluentIcons-macOS-umbrella.h */,
-				D2C52EFB2EEBC60D1502DF7417FDBC08 /* FluentIcons-macOS.debug.xcconfig */,
-				D79A51BE1BE583464E9F979864296261 /* FluentIcons-macOS.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "ios/Pods/Target Support Files/FluentIcons-iOS";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -531,7 +547,7 @@
 /* Begin XCBuildConfiguration section */
 		0920BEEE4F15E086756D5A774F35AF01 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D79A51BE1BE583464E9F979864296261 /* FluentIcons-macOS.release.xcconfig */;
+			baseConfigurationReference = 10C98A7D60BD58CC62A573BE4D41B317 /* FluentIcons-macOS.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -726,7 +742,7 @@
 		};
 		8FDA0B81CE971C44F85961656E656A79 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 55D64EEC8E494AB49405F7D1FBE4343B /* FluentIcons-iOS.debug.xcconfig */;
+			baseConfigurationReference = BF57AB99E65CC425E619473C69F28B8D /* FluentIcons-iOS.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_IDENTITY = "";
@@ -830,7 +846,7 @@
 		};
 		D40D03A2972E596D4256FD15BDAA881A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C3470159C0B444895EE785C18455E4DD /* FluentIcons-iOS.release.xcconfig */;
+			baseConfigurationReference = 69A96D3457F3F65B316D9996B0DF461F /* FluentIcons-iOS.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_IDENTITY = "";
@@ -899,7 +915,7 @@
 		};
 		E2750888FB5E15D7E361543B64B5D513 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D2C52EFB2EEBC60D1502DF7417FDBC08 /* FluentIcons-macOS.debug.xcconfig */;
+			baseConfigurationReference = DAB3E38C357FDD74F9A7B227F1827F54 /* FluentIcons-macOS.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;

@@ -102,6 +102,18 @@ jobs:
         sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" flutter/pubspec.yaml
         rm flutter/pubspec.yaml.bk
 
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in _manifest.json
+      run: |
+        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" _manifest.json
+        rm _manifest.json.bk
+
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace timestamp in _manifest.json
+      run: |
+        sed -i.bk -r "s/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]Z/$(date -u +%Y-%m-%dT%RZ)/" _manifest.json
+        rm _manifest.json.bk
+
     - name: Update icon sheet
       run: python3 generate_icons_md.py
     

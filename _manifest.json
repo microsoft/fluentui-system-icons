@@ -63,12 +63,12 @@
   ],
   "dataPaths": [],
   "iconType": "Svg",
-  "lastUpdated": "2020-09-22T00:00Z",
+  "lastUpdated": "2020-09-29T16:48Z",
   "libraryInfoKey": "3821b375b",
   "libraryName": "Fluent System Library",
   "libraryProperties": {
     "libraryIconSizes": "12px, 16px, 20px, 24px, 28px, 48px",
     "requestIconUrl": "https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR18J4l1dADVOphobsZW8ExlUNVZTMFpJNVk4SURPWVNDSlZDNFFSWks5VS4u"
   },
-  "libraryVersion": "1.1.55"
+  "libraryVersion": "1.1.65"
 }
