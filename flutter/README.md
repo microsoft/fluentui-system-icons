@@ -21,7 +21,7 @@ class MyFlutterWidget extends StatelessWidget {
 ```
 ## Example
 
-View the Flutter app in the [example](example) directory to see all the available `FluentUISystemIcons`.
+View the Flutter app in the [example](https://github.com/microsoft/fluentui-system-icons/tree/master/flutter/example) directory to see all the available `FluentUISystemIcons`.
 
 ## FAQs
 
