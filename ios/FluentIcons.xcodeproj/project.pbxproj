@@ -28,7 +28,6 @@
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9360ADB40CE30DDFCC4653DD /* Pods-FluentIcons_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FluentIcons_Example.release.xcconfig"; path = "Target Support Files/Pods-FluentIcons_Example/Pods-FluentIcons_Example.release.xcconfig"; sourceTree = "<group>"; };
 		997639ECDC792108C808E4F6 /* Pods-FluentIcons_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FluentIcons_Tests.debug.xcconfig"; path = "Target Support Files/Pods-FluentIcons_Tests/Pods-FluentIcons_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		AC3DF5D7D14D674DCFAE2E03 /* FluentIcons.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = FluentIcons.podspec; path = ../FluentIcons.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -85,7 +84,6 @@
 				C38B6B752384A86100819765 /* FluentIcons_Example.entitlements */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for FluentIcons */,
-				607FACE81AFB9204008FA782 /* Tests */,
 				C3A0809F247DD6AF0009D6E0 /* FluentIcons_ExampleMacOS */,
 				607FACD11AFB9204008FA782 /* Products */,
 				D0E589EB785006D3BBB69010 /* Pods */,
@@ -119,22 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				607FACD41AFB9204008FA782 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		607FACE81AFB9204008FA782 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				607FACE91AFB9204008FA782 /* Supporting Files */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		607FACE91AFB9204008FA782 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				607FACEA1AFB9204008FA782 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

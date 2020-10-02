@@ -1,5 +1,11 @@
 PODS:
-  - FluentIcons (1.1.4)
+  - FluentIcons (1.1.60):
+    - FluentIcons/Assets (= 1.1.60)
+    - FluentIcons/Code (= 1.1.60)
+    - FluentIcons/RemovalScript (= 1.1.60)
+  - FluentIcons/Assets (1.1.60)
+  - FluentIcons/Code (1.1.60)
+  - FluentIcons/RemovalScript (1.1.60)
 
 DEPENDENCIES:
   - FluentIcons (from `../`)
@@ -9,8 +15,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  FluentIcons: 26443873f55935ba12e05978715ac223ae579399
+  FluentIcons: b0726222203a8289700256abadf425bf9caa6a16
 
 PODFILE CHECKSUM: 73d333b05344abafcb0b3687585d836673c863f9
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3
