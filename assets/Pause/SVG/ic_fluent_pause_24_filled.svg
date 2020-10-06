@@ -1,11 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
-    <title>ic_fluent_pause_24_filled</title>
-    <desc>Created with Sketch.</desc>
-    <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="ic_fluent_pause_24_filled" fill="#212121" fill-rule="nonzero">
-            <path d="M8.25,2 C9.21649831,2 10,2.78350169 10,3.75 L10,20.25 C10,21.2164983 9.21649831,22 8.25,22 L4.75,22 C3.78350169,22 3,21.2164983 3,20.25 L3,3.75 C3,2.78350169 3.78350169,2 4.75,2 L8.25,2 Z M19.25,2 C20.2164983,2 21,2.78350169 21,3.75 L21,20.25 C21,21.2164983 20.2164983,22 19.25,22 L15.75,22 C14.7835017,22 14,21.2164983 14,20.25 L14,3.75 C14,2.78350169 14.7835017,2 15.75,2 L19.25,2 Z" id="🎨-Color"></path>
-        </g>
-    </g>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.74512 3C4.77862 3 3.99512 3.7835 3.99512 4.75V19.25C3.99512 20.2165 4.77862 21 5.74512 21H9.24512C10.2116 21 10.9951 20.2165 10.9951 19.25V4.75C10.9951 3.7835 10.2116 3 9.24512 3H5.74512Z" fill="#212121"/>
+<path d="M14.7451 3C13.7786 3 12.9951 3.7835 12.9951 4.75V19.25C12.9951 20.2165 13.7786 21 14.7451 21H18.2451C19.2116 21 19.9951 20.2165 19.9951 19.25V4.75C19.9951 3.7835 19.2116 3 18.2451 3H14.7451Z" fill="#212121"/>
 </svg>
