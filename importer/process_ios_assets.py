@@ -216,15 +216,6 @@ def process_assets():
                     )
                 )
 
-        all_cases = []
-        for name, list_of_icons in sorted(all_icons_by_name.items()):
-            title_name, weight = name.split(',')
-            all_cases.append("(name: \"{title_name}\", weight: \"{weight}\", icons: [{icons}])".format(
-                title_name=title_name,
-                weight=weight,
-                icons=', '.join(list_of_icons)
-            ))
-
         swift_enum_file.write('\n'.join(cases_output))
 
         swift_enum_file.write("\n\n")
@@ -249,16 +240,6 @@ def process_assets():
         swift_enum_file.write("    // into smaller buckets.\n")
         swift_enum_file.write("    // https://bugs.swift.org/browse/SR-11533\n")
         swift_enum_file.write("    fatalError(\"Unreachable\")\n")
-        swift_enum_file.write("  }\n")
-
-        swift_enum_file.write("\n  public static let allIconWeights = [{}]\n".format(', '.join(sorted_weights)))
-
-        swift_enum_file.write("\n")
-        swift_enum_file.write("  /// Since this enum has options we can't use CaseIterable :(\n")
-        swift_enum_file.write("  public static var allCases: [(name: String, weight: String, icons: [{}])]".format(LIBRARY_NAME) + " {\n")
-        swift_enum_file.write("    [\n")
-        swift_enum_file.write("      {all_cases}".format(all_cases=',\n      '.join(all_cases)))
-        swift_enum_file.write(",\n    ]\n")
         swift_enum_file.write("  }\n")
 
         swift_enum_file.write("}\n")
