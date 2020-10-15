@@ -51,7 +51,10 @@ function processFolder(srcPath, destPath) {
         }
   
         if (stat.isDirectory()) {
-          processFolder(srcFile, destPath);
+          // The only directories with '-' are localized ones, which we skip for platform processing atm.
+          if (srcFile.indexOf('-') < 0) {
+            processFolder(srcFile, destPath);
+          }
           return;
         } else if (file.startsWith('.')) {
           // Skip invisible files
