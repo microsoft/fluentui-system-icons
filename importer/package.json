@@ -24,12 +24,12 @@
   "author": "Microsoft Inc.",
   "license": "Microsoft",
   "devDependencies": {
-    "yargs": "^14.0.0"
+    "yargs": "^14.2.3"
   },
   "dependencies": {
     "avocado": "1.0.0",
     "icon-font-generator": "^2.1.10",
-    "replace": "1.1.4",
+    "replace": "^1.2.0",
     "svgo": "1.3.2"
   }
 }
