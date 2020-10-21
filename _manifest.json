@@ -122,11 +122,12 @@
     "copyTypes" : "Svg",
     "downloadTypes" : "Svg,Png",
     "libraryIconSizes": "12px, 16px, 20px, 24px, 28px, 48px",
-    "metadata-2-label" : "Keywords",
-    "metadata-2-datatype" : "Keywords",
-    "metadata-2-datastyle" : "ClickablePill",
-    "metadata-2-sorting" : "ByWeight",
-  "requestIconUrl": "https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR18J4l1dADVOphobsZW8ExlUNVZTMFpJNVk4SURPWVNDSlZDNFFSWks5VS4u"
+    "metadata-1-label" : "Keywords",
+    "metadata-1-dataType" : "Keywords",
+    "metadata-1-dataStyle" : "ClickablePill",
+    "metadata-1-dataMapping" : "Icon:iconKeywords",
+    "metadata-1-sorting" : "ByWeight",
+    "requestIconUrl": "https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR18J4l1dADVOphobsZW8ExlUNVZTMFpJNVk4SURPWVNDSlZDNFFSWks5VS4u"
   },
   "libraryVersion": "1.1.65"
 }
