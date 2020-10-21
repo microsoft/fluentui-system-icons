@@ -1,0 +1,16 @@
+{
+  "images": [
+    {
+      "filename": "ic_fluent_movies_and_tv_20_regular.pdf",
+      "idiom": "universal"
+    }
+  ],
+  "info": {
+    "author": "xcode",
+    "version": 1
+  },
+  "properties": {
+    "preserves-vector-representation": true,
+    "template-rendering-intent": "template"
+  }
+}
