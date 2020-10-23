@@ -103,12 +103,12 @@
   ],
   "dataPaths": [
     {
-      "dataPath": "~/_keywords.csv",
+      "dataPath": "~/_iconCloud/keywords.csv",
       "transformPaths": [
-        "~/_keywords.transforms.json"
+        "~/_iconCloud/keywords.transforms.json"
       ],
       "variablePaths": [
-        "~/_keywords.variables.json"
+        "~/_iconCloud/keywords.variables.json"
       ]
     }
   ],
