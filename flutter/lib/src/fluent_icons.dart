@@ -220,7 +220,7 @@ class FluentIcons {
   static const IconData arrow_curve_right_20_regular = IconData(0xf143, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "arrow_curve_right" in size 24 and regular style.
-  static const IconData arrow_curve_right_24_regular = IconData(0xf144, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg, matchTextDirection: true);
+  static const IconData arrow_curve_right_24_regular = IconData(0xf144, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "arrow_curve_up_left" in size 20 and regular style.
   static const IconData arrow_curve_up_left_20_regular = IconData(0xf145, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -6201,7 +6201,7 @@ class FluentIcons {
   static const IconData arrow_curve_right_20_filled = IconData(0xf143, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "arrow_curve_right" in size 24 and filled style.
-  static const IconData arrow_curve_right_24_filled = IconData(0xf144, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg, matchTextDirection: true);
+  static const IconData arrow_curve_right_24_filled = IconData(0xf144, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "arrow_curve_up_left" in size 20 and filled style.
   static const IconData arrow_curve_up_left_20_filled = IconData(0xf145, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
