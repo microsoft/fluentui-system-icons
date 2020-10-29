@@ -1,0 +1,133 @@
+{
+  "_type": "library",
+  "_version": "HRKDSL",
+  "collectionPaths": [
+    {
+      "basePath": "/",
+      "pathSpecifiers": [
+        {
+          "segment": "Extension",
+          "specifier": "svg",
+          "type": "Full"
+        }
+      ],
+      "recursive": true,
+      "transform": {
+        "keyFormat": "${fileName}",
+        "nameFormat": "${iconName}",
+        "match": "(?<iconName>[^\\/]+)\\/(?<iconType>[^\\/]+)\\/(?<fileName>[^\\/]+_(?<iconSize>[\\d]+)_(?<iconStyle>[\\S]+))\\.svg$",
+        "transforms": [
+          {
+            "identifier": "iconName",
+            "operations": [ "Capitalize" ]
+          }
+        ],
+        "dataTransforms": [
+          {
+            "method": "Copy",
+            "params": {
+              "from": "iconPath"
+            },
+            "variable": "pdf-file"
+          },
+          {
+            "method": "Replace",
+            "params": {
+              "from": "svgFileExtension",
+              "to": "pdfFileExtension"
+            },
+            "variable": "pdf-file"
+          },
+          {
+            "method": "Replace",
+            "params": {
+              "from": "svgSubFolder",
+              "to": "pdfSubFolder"
+            },
+            "variable": "pdf-file"
+          }
+        ],
+        "dataVariables": [
+          {
+            "type": "Value",
+            "valueType": "Text",
+            "name": "pdf-file"
+          },
+          {
+            "type": "Value",
+            "valueType": "Text",
+            "value": ".svg",
+            "name": "svgFileExtension"
+          },
+          {
+            "type": "Value",
+            "valueType": "Text",
+            "value": ".pdf",
+            "name": "pdfFileExtension"
+          },
+          {
+            "type": "Value",
+            "valueType": "Text",
+            "value": "/SVG/",
+            "name": "svgSubFolder"
+          },
+          {
+            "type": "Value",
+            "valueType": "Text",
+            "value": "/PDF/",
+            "name": "pdfSubFolder"
+          }
+        ]
+      }
+    },
+    {
+      "collectionName": "Fluent Regular",
+      "pathSpecifiers": [
+        {
+          "segment": "FileNameWithoutExtension",
+          "specifier": "*_regular",
+          "type": "WildCard"
+        }
+      ]
+    },
+    {
+      "collectionName": "Fluent Filled",
+      "pathSpecifiers": [
+        {
+          "segment": "FileNameWithoutExtension",
+          "specifier": "*_filled",
+          "type": "WildCard"
+        }
+      ]
+    }
+  ],
+  "dataPaths": [
+    {
+      "dataPath": "~/_iconCloud/keywords.csv",
+      "transformPaths": [
+        "~/_iconCloud/keywords.transforms.json"
+      ],
+      "variablePaths": [
+        "~/_iconCloud/keywords.variables.json"
+      ]
+    }
+  ],
+  "iconType": "Svg",
+  "lastUpdated": "2020-10-23T22:32Z",
+  "libraryInfoKey": "3821b375b",
+  "libraryName": "Fluent System Library",
+  "libraryProperties": {
+    "copyPreviewTypes" : "Svg",
+    "copySize" : "24",
+    "copyTypes" : "Svg",
+    "downloadTypes" : "Svg,Png",
+    "libraryIconSizes": "12px, 16px, 20px, 24px, 28px, 48px",
+    "metadata-1-label" : "Keywords",
+    "metadata-1-dataType" : "Keywords",
+    "metadata-1-dataStyle" : "ClickablePill",
+    "metadata-1-dataMapping" : "Icon:iconKeywords",
+    "metadata-1-sorting" : "ByWeight",
+    "requestIconUrl": "https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR18J4l1dADVOphobsZW8ExlUNVZTMFpJNVk4SURPWVNDSlZDNFFSWks5VS4u"
+  },
+  "libraryVersion": "1.1.72"
+}
