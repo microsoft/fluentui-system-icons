@@ -120,7 +120,7 @@
     "copyPreviewTypes" : "Svg",
     "copySize" : "24",
     "copyTypes" : "Svg",
-    "downloadTypes" : "Svg,Png",
+    "downloadTypes" : "Svg,Pdf",
     "libraryIconSizes": "12px, 16px, 20px, 24px, 28px, 48px",
     "metadata-1-label" : "Keywords",
     "metadata-1-dataType" : "Keywords",
