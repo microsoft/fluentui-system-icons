@@ -33243,6 +33243,20 @@ imageset("ic_fluent_video_28_regular") {
   ]
 }
 
+imageset("ic_fluent_video_background_effect_20_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_video_background_effect_20_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_video_background_effect_20_filled.imageset/ic_fluent_video_background_effect_20_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_video_background_effect_20_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_video_background_effect_20_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_video_background_effect_20_regular.imageset/ic_fluent_video_background_effect_20_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_video_background_effect_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_video_background_effect_24_filled.imageset/Contents.json",

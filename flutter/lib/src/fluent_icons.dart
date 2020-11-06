@@ -7344,6 +7344,9 @@ class FluentIcons {
   /// fluent icon named "video" in size 28 and regular style.
   static const IconData video_28_regular = IconData(0xf84e, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "video_background_effect" in size 20 and regular style.
+  static const IconData video_background_effect_20_regular = IconData(0xfb20, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "video_background_effect" in size 24 and regular style.
   static const IconData video_background_effect_24_regular = IconData(0xf84f, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -15142,6 +15145,9 @@ class FluentIcons {
 
   /// fluent icon named "video" in size 28 and filled style.
   static const IconData video_28_filled = IconData(0xf866, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "video_background_effect" in size 20 and filled style.
+  static const IconData video_background_effect_20_filled = IconData(0xfb28, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "video_background_effect" in size 24 and filled style.
   static const IconData video_background_effect_24_filled = IconData(0xf867, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
