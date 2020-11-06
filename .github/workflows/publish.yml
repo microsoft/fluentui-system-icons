@@ -97,7 +97,7 @@ jobs:
         rm flutter/CHANGELOG.md.bk
 
     # Needs to be "-E" instead of "-r" on macOS
-    # If changed, caution to not replace dart sdk version constraints  
+    # If changed, caution not to replace dart sdk version constraints  
     - name: Replace version number in flutter/pubspec.yaml
       run: |
         sed -i.bk -r "s/version: [0-9]+\.[0-9]+\.[0-9]+/version: $NEW_VERSION/g" flutter/pubspec.yaml
