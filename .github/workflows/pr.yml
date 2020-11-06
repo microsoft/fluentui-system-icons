@@ -100,6 +100,11 @@ jobs:
       run: npm run deploy:flutter
       working-directory: importer
 
+    - name: Replace version number in flutter/pubspec.yaml
+      run: |
+        sed -i.bk -r "version: s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" flutter/pubspec.yaml
+        rm flutter/pubspec.yaml.bk
+
     # TODO: https://github.com/microsoft/fluentui-system-icons/issues/34
     # - name: Build Flutter library
     #   uses: ?
