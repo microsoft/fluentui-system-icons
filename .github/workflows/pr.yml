@@ -101,18 +101,5 @@ jobs:
       working-directory: importer
 
     # TODO: https://github.com/microsoft/fluentui-system-icons/issues/34
-    - name: Build Flutter library
-      on: push
-
-      jobs:
-        publishing:
-          runs-on: ubuntu-latest
-          steps:
-            - name: 'Checkout'
-              uses: actions/checkout@v2
-
-            - name: 'fluentui_system_icons'
-              uses: k-paxian/dart-package-publisher@master
-              with:
-                accessToken: ${{ secrets.OAUTH_ACCESS_TOKEN }}
-                refreshToken: ${{ secrets.OAUTH_REFRESH_TOKEN }}
+    - name: Publish Package
+      run: pub publish -f
