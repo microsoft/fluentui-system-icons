@@ -4762,6 +4762,8 @@ import Foundation
   case video24Regular
   case video28Filled
   case video28Regular
+  case videoBackgroundEffect20Filled
+  case videoBackgroundEffect20Regular
   case videoBackgroundEffect24Filled
   case videoBackgroundEffect24Regular
   case videoClip20Filled
@@ -9901,6 +9903,8 @@ import Foundation
     case .video24Regular: return "ic_fluent_video_24_regular"
     case .video28Filled: return "ic_fluent_video_28_filled"
     case .video28Regular: return "ic_fluent_video_28_regular"
+    case .videoBackgroundEffect20Filled: return "ic_fluent_video_background_effect_20_filled"
+    case .videoBackgroundEffect20Regular: return "ic_fluent_video_background_effect_20_regular"
     case .videoBackgroundEffect24Filled: return "ic_fluent_video_background_effect_24_filled"
     case .videoBackgroundEffect24Regular: return "ic_fluent_video_background_effect_24_regular"
     case .videoClip20Filled: return "ic_fluent_video_clip_20_filled"
@@ -9951,10 +9955,10 @@ import Foundation
     case .vote20Regular: return "ic_fluent_vote_20_regular"
     case .vote24Filled: return "ic_fluent_vote_24_filled"
     case .vote24Regular: return "ic_fluent_vote_24_regular"
-    case .walkieTalkie24Filled: return "ic_fluent_walkie_talkie_24_filled"
-    case .walkieTalkie24Regular: return "ic_fluent_walkie_talkie_24_regular"
     default: break }
     switch self {
+    case .walkieTalkie24Filled: return "ic_fluent_walkie_talkie_24_filled"
+    case .walkieTalkie24Regular: return "ic_fluent_walkie_talkie_24_regular"
     case .walkieTalkie28Filled: return "ic_fluent_walkie_talkie_28_filled"
     case .walkieTalkie28Regular: return "ic_fluent_walkie_talkie_28_regular"
     case .wallpaper24Filled: return "ic_fluent_wallpaper_24_filled"
@@ -10053,10 +10057,10 @@ import Foundation
     case .weatherRain48Regular: return "ic_fluent_weather_rain_48_regular"
     case .weatherRainShowersDay20Filled: return "ic_fluent_weather_rain_showers_day_20_filled"
     case .weatherRainShowersDay20Regular: return "ic_fluent_weather_rain_showers_day_20_regular"
-    case .weatherRainShowersDay24Filled: return "ic_fluent_weather_rain_showers_day_24_filled"
-    case .weatherRainShowersDay24Regular: return "ic_fluent_weather_rain_showers_day_24_regular"
     default: break }
     switch self {
+    case .weatherRainShowersDay24Filled: return "ic_fluent_weather_rain_showers_day_24_filled"
+    case .weatherRainShowersDay24Regular: return "ic_fluent_weather_rain_showers_day_24_regular"
     case .weatherRainShowersDay48Filled: return "ic_fluent_weather_rain_showers_day_48_filled"
     case .weatherRainShowersDay48Regular: return "ic_fluent_weather_rain_showers_day_48_regular"
     case .weatherRainShowersNight20Filled: return "ic_fluent_weather_rain_showers_night_20_filled"
@@ -10155,10 +10159,10 @@ import Foundation
     case .windowAd20Regular: return "ic_fluent_window_ad_20_regular"
     case .windowDevTools16Filled: return "ic_fluent_window_dev_tools_16_filled"
     case .windowDevTools16Regular: return "ic_fluent_window_dev_tools_16_regular"
-    case .windowDevTools20Filled: return "ic_fluent_window_dev_tools_20_filled"
-    case .windowDevTools20Regular: return "ic_fluent_window_dev_tools_20_regular"
     default: break }
     switch self {
+    case .windowDevTools20Filled: return "ic_fluent_window_dev_tools_20_filled"
+    case .windowDevTools20Regular: return "ic_fluent_window_dev_tools_20_regular"
     case .windowDevTools24Filled: return "ic_fluent_window_dev_tools_24_filled"
     case .windowDevTools24Regular: return "ic_fluent_window_dev_tools_24_regular"
     case .windowHorizontal20Filled: return "ic_fluent_window_horizontal_20_filled"
@@ -15052,6 +15056,8 @@ import Foundation
     case .video24Regular: return ".video24Regular"
     case .video28Filled: return ".video28Filled"
     case .video28Regular: return ".video28Regular"
+    case .videoBackgroundEffect20Filled: return ".videoBackgroundEffect20Filled"
+    case .videoBackgroundEffect20Regular: return ".videoBackgroundEffect20Regular"
     case .videoBackgroundEffect24Filled: return ".videoBackgroundEffect24Filled"
     case .videoBackgroundEffect24Regular: return ".videoBackgroundEffect24Regular"
     case .videoClip20Filled: return ".videoClip20Filled"
@@ -15102,10 +15108,10 @@ import Foundation
     case .vote20Regular: return ".vote20Regular"
     case .vote24Filled: return ".vote24Filled"
     case .vote24Regular: return ".vote24Regular"
-    case .walkieTalkie24Filled: return ".walkieTalkie24Filled"
-    case .walkieTalkie24Regular: return ".walkieTalkie24Regular"
     default: break }
     switch self {
+    case .walkieTalkie24Filled: return ".walkieTalkie24Filled"
+    case .walkieTalkie24Regular: return ".walkieTalkie24Regular"
     case .walkieTalkie28Filled: return ".walkieTalkie28Filled"
     case .walkieTalkie28Regular: return ".walkieTalkie28Regular"
     case .wallpaper24Filled: return ".wallpaper24Filled"
@@ -15204,10 +15210,10 @@ import Foundation
     case .weatherRain48Regular: return ".weatherRain48Regular"
     case .weatherRainShowersDay20Filled: return ".weatherRainShowersDay20Filled"
     case .weatherRainShowersDay20Regular: return ".weatherRainShowersDay20Regular"
-    case .weatherRainShowersDay24Filled: return ".weatherRainShowersDay24Filled"
-    case .weatherRainShowersDay24Regular: return ".weatherRainShowersDay24Regular"
     default: break }
     switch self {
+    case .weatherRainShowersDay24Filled: return ".weatherRainShowersDay24Filled"
+    case .weatherRainShowersDay24Regular: return ".weatherRainShowersDay24Regular"
     case .weatherRainShowersDay48Filled: return ".weatherRainShowersDay48Filled"
     case .weatherRainShowersDay48Regular: return ".weatherRainShowersDay48Regular"
     case .weatherRainShowersNight20Filled: return ".weatherRainShowersNight20Filled"
@@ -15306,10 +15312,10 @@ import Foundation
     case .windowAd20Regular: return ".windowAd20Regular"
     case .windowDevTools16Filled: return ".windowDevTools16Filled"
     case .windowDevTools16Regular: return ".windowDevTools16Regular"
-    case .windowDevTools20Filled: return ".windowDevTools20Filled"
-    case .windowDevTools20Regular: return ".windowDevTools20Regular"
     default: break }
     switch self {
+    case .windowDevTools20Filled: return ".windowDevTools20Filled"
+    case .windowDevTools20Regular: return ".windowDevTools20Regular"
     case .windowDevTools24Filled: return ".windowDevTools24Filled"
     case .windowDevTools24Regular: return ".windowDevTools24Regular"
     case .windowHorizontal20Filled: return ".windowHorizontal20Filled"
