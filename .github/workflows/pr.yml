@@ -103,3 +103,27 @@ jobs:
     # TODO: https://github.com/microsoft/fluentui-system-icons/issues/34
     # - name: Build Flutter library
     #   uses: ?
+
+  name: Publish package to pub.dev
+
+  on: push
+  jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+        - name: 'Checkout'
+          uses: actions/checkout@v2
+        - name: Setup credentials
+            run: |
+              mkdir -p ~/.pub-cache
+              cat <<EOF > ~/.pub-cache/credentials.json
+              {
+              "accessToken":"${{ secrets.OAUTH_ACCESS_TOKEN }}",
+              "refreshToken":"${{ secrets.OAUTH_REFRESH_TOKEN }}",
+              "tokenEndpoint":"https://accounts.google.com/o/oauth2/token",
+              "scopes": [ "openid", "https://www.googleapis.com/auth/userinfo.email" ],
+              "expiration": 1604699493226
+              }
+              EOF
+        - name: Publish package
+            run: pub publish -f
