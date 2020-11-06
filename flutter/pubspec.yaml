@@ -1,10 +1,10 @@
 name: fluentui_system_icons
 description: Fluent UI System Icons are a collection of familiar, friendly and modern icons from Microsoft.
-version: 1.1.76
+version: 1.1.77
 homepage: https://github.com/microsoft/fluentui-system-icons/tree/master
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=1.1.77 <1.1.77"
 
 dependencies:
   flutter:
