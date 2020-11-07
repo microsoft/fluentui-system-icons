@@ -105,5 +105,6 @@ jobs:
       uses: k-paxian/dart-package-publisher@master
       with:
         relativePath: '././flutter'
+        skipTests: true
         accessToken: ${{ secrets.FLUTTER_OAUTH_ACCESS_TOKEN }}
         refreshToken: ${{ secrets.FLUTTER_OAUTH_REFRESH_TOKEN }}
