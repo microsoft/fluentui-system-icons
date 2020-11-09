@@ -108,3 +108,5 @@ jobs:
         relativePath: 'flutter'
         skipTests: true
         dryRunOnly: true
+        accessToken: ${{ secrets.FLUTTER_OAUTH_ACCESS_TOKEN }}
+        refreshToken: ${{ secrets.FLUTTER_OAUTH_REFRESH_TOKEN }}
