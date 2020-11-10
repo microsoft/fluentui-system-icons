@@ -67,9 +67,14 @@ jobs:
       run: npm run deploy:flutter
       working-directory: importer
 
-    # TODO: https://github.com/microsoft/fluentui-system-icons/issues/34
-    # - name: Build and publish Flutter library
-    #   uses: ?
+    # The name should be same as the package name on pub.dev
+    - name: 'fluentui_system_icons'
+      uses: k-paxian/dart-package-publisher@master
+      with:
+        relativePath: 'flutter'
+        skipTests: true
+        accessToken: ${{ secrets.FLUTTER_OAUTH_ACCESS_TOKEN }}
+        refreshToken: ${{ secrets.FLUTTER_OAUTH_REFRESH_TOKEN }}
 
     ## Publish
     # Needs to be "-E" instead of "-r" on macOS
