@@ -79,10 +79,8 @@ function processFolder(srcPath, destPath) {
         if (file.indexOf("_fluent_") < 0) {
           file = file.replace("ic_", "ic_fluent_");
         }
-
         var destFile = path.join(destPath, file);
         fs.copyFileSync(srcFile, destFile);
-        var iconContent = fs.readFileSync(srcFile, { encoding: "utf8"})
         // Generate selector if both filled/regular styles are available
         if (file.endsWith(SVG_EXTENSION)) {
           var index = file.lastIndexOf(ICON_OUTLINE_STYLE);
@@ -97,7 +95,7 @@ function processFolder(srcPath, destPath) {
               generateSelector(destPath, name)
             }
             if(TARGET) {
-              generateReact(destPath, name, iconContent)
+              generateReact(destPath, file.substring(0, file.length - 4), srcFile)
             }
           }
         }
@@ -127,17 +125,18 @@ function generateSelector(destPath, iconName) {
   });
 }
 
-function generateReact(destPath, iconName, iconContent) {
+function generateReact(destPath, iconName, srcFile) {
   iconName = iconName.replace("ic_fluent_", "")
   iconName = _.camelCase(iconName)
   iconName = iconName.replace(iconName.substring(0, 1), iconName.substring(0, 1).toUpperCase())
+  var iconContent = fs.readFileSync(srcFile, { encoding: "utf8"})
   var selectorFile = path.join(destPath, iconName + REACT_SUFFIX + TSX_EXTENSION);
   var code = 
 `import * as React from 'react';
-const ${iconName} = () => {
-  ${iconContent}
-};
-export default ${iconName};
+  const ${iconName + REACT_SUFFIX} = () => {
+    ${iconContent}
+  };
+export default ${iconName + REACT_SUFFIX};
 `;
   fs.writeFile(selectorFile, code, (err) => {
     if (err) throw err; 
