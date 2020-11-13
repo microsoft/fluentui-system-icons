@@ -7,10 +7,13 @@
     "jshint": "jshint --reporter=node_modules/jshint-stylish src || true",
     "clean": "find dist -type f ! -name '.keep' -delete && rm -rf dist/*",
     "generate:svg": "node generate.js --source=../assets --dest=./dist --extension=svg",
+    "generate:react": "node generate.js --source=../assets --dest=./dist --extension=svg --target=react",
     "generate:pdf": "node generate.js --source=../assets --dest=./dist --extension=pdf",
     "build:android": "npm run generate:svg && sh tools/vd-tool/bin/vd-tool -c -in ./dist -out ./dist && find ./dist/ -type f -name '*.svg' -delete && find ./dist/ -type f ! -name '*_selector.xml' -exec avocado {} + -exec replace '#212121' '@color/fluent_default_icon_tint' {} + && replace '\"http://schemas.android.com/apk/res/android\"' '\"http://schemas.android.com/apk/res/android\" android:autoMirrored=\"true\"' $(awk '$0=\"./dist/\"$0\".xml\"' rtl.txt)",
     "build:ios": "npm run generate:pdf",
+    "build:react": "npm run generate:react",
     "deploy:android": "npm run build:android && rm -rf ../android/library/src/main/res/drawable && mkdir ../android/library/src/main/res/drawable && find ./dist/ -type f -name \"*.xml\" -exec cp {} ../android/library/src/main/res/drawable \\; && npm run clean",
+    "deploy:react": "npm run build:react && rm -rf ../react/src/components && mkdir ../react/src/components && find ./dist/ -type f -name \"*.tsx\" -exec cp {} ../react/src/components \\; && npm run clean",
     "deploy:ios": "npm run build:ios && python3 process_ios_assets.py && npm run clean",
     "generate:font-regular": "icon-font-generator dist/*_regular.svg -o dist/fonts --name FluentSystemIcons-Regular --types ttf --codepoints ../fonts/FluentSystemIcons-Regular.json --height 500",
     "generate:font-filled": "icon-font-generator dist/*_filled.svg -o dist/fonts --name FluentSystemIcons-Filled --types ttf --codepoints ../fonts/FluentSystemIcons-Filled.json --height 500",
@@ -29,6 +32,8 @@
   "dependencies": {
     "avocado": "1.0.0",
     "icon-font-generator": "^2.1.10",
+    "lodash": "4.17.20",
+    "react": "~17.0.1",
     "replace": "^1.2.0",
     "svgo": "1.3.2"
   }

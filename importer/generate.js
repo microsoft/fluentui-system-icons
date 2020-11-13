@@ -5,19 +5,23 @@ const fs = require("fs");
 const path = require("path");
 const process = require("process");
 const argv = require("yargs").argv;
+const _ = require("lodash");
 
 const SRC_PATH = argv.source;
 const DEST_PATH = argv.dest;
 const EXTENSION = argv.extension;
+const TARGET = argv.target;
 const ICON_OUTLINE_STYLE = '_regular'
 const ICON_FILLED_STYLE = '_filled'
 const ICON_LIGHT_STYLE = '_light'
 const BRAND_MONO_STYLE = '_mono'
 const BRAND_COLOR_STYLE = '_color'
 const SELECTOR_SUFFIX = '_selector'
+const REACT_SUFFIX = 'Icon'
 
 const SVG_EXTENSION = '.svg'
 const XML_EXTENSION = '.xml'
+const TSX_EXTENSION = '.tsx'
 
 const iconNames = new Set();
 const date = new Date();
@@ -78,7 +82,7 @@ function processFolder(srcPath, destPath) {
 
         var destFile = path.join(destPath, file);
         fs.copyFileSync(srcFile, destFile);
-
+        var iconContent = fs.readFileSync(srcFile, { encoding: "utf8"})
         // Generate selector if both filled/regular styles are available
         if (file.endsWith(SVG_EXTENSION)) {
           var index = file.lastIndexOf(ICON_OUTLINE_STYLE);
@@ -91,6 +95,9 @@ function processFolder(srcPath, destPath) {
               iconNames.add(name);
             } else {
               generateSelector(destPath, name)
+            }
+            if(TARGET) {
+              generateReact(destPath, name, iconContent)
             }
           }
         }
@@ -114,6 +121,23 @@ function generateSelector(destPath, iconName) {
     <item android:drawable="@drawable/${iconName}${ICON_FILLED_STYLE}" android:state_selected="true"/>
     <item android:drawable="@drawable/${iconName}${ICON_OUTLINE_STYLE}"/>
 </selector>
+`;
+  fs.writeFile(selectorFile, code, (err) => {
+    if (err) throw err; 
+  });
+}
+
+function generateReact(destPath, iconName, iconContent) {
+  iconName = iconName.replace("ic_fluent_", "")
+  iconName = _.camelCase(iconName)
+  iconName = iconName.replace(iconName.substring(0, 1), iconName.substring(0, 1).toUpperCase())
+  var selectorFile = path.join(destPath, iconName + REACT_SUFFIX + TSX_EXTENSION);
+  var code = 
+`import * as React from 'react';
+const ${iconName} = () => {
+  ${iconContent}
+};
+export default ${iconName};
 `;
   fs.writeFile(selectorFile, code, (err) => {
     if (err) throw err; 
