@@ -100,13 +100,14 @@ jobs:
       run: npm run deploy:flutter
       working-directory: importer
 
-      # Build Flutter library
-      # The name should be same as the package name on pub.dev
+    # Build Flutter library
+    # The name should be same as the package name on pub.dev
+    # Tokens are placeholder strings in order for the action to run on forked repos.
     - name: 'fluentui_system_icons'
       uses: k-paxian/dart-package-publisher@master
       with:
         relativePath: 'flutter'
         skipTests: true
         dryRunOnly: true
-        accessToken: ${{ secrets.FLUTTER_OAUTH_ACCESS_TOKEN }}
-        refreshToken: ${{ secrets.FLUTTER_OAUTH_REFRESH_TOKEN }}
+        accessToken: "placeholder"
+        refreshToken: "placeholder"
