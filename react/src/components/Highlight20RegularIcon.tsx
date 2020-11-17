@@ -1,0 +1,15 @@
+import * as React from 'react';
+  const Highlight20RegularIcon = () => {
+    <?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>ic_fluent_highlight_20_regular</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_fluent_highlight_20_regular" fill="#212121" fill-rule="nonzero">
+            <path d="M3.5,2 C3.77614,2 4,2.22386 4,2.5 L4,6.5 C4,6.77614 4.22386,7 4.5,7 L15.5,7 C15.7761,7 16,6.77614 16,6.5 L16,2.5 C16,2.22386 16.2239,2 16.5,2 C16.7761,2 17,2.22386 17,2.5 L17,6.5 C17,7.15311 16.5826,7.70873 16,7.91465 L16,9 C16,10.1046 15.1046,11 14,11 L14,13.0729 C14,13.8305 13.572,14.523 12.8944,14.8618 L6.72361,17.9472 C6.56861,18.0247 6.38454,18.0164 6.23713,17.9253 C6.08973,17.8342 6,17.6733 6,17.5 L6,11 C4.89543,11 4,10.1046 4,9 L4,7.91465 C3.4174,7.70873 3,7.15311 3,6.5 L3,2.5 C3,2.22386 3.22386,2 3.5,2 Z M5,8 L5,9 C5,9.55228 5.44772,10 6,10 L14,10 C14.5523,10 15,9.55228 15,9 L15,8 L5,8 Z M7,11 L7,16.691 L12.4472,13.9674 C12.786,13.798 13,13.4517 13,13.0729 L13,11 L7,11 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>
+  };
+export default Highlight20RegularIcon;

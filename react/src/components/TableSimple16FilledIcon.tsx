@@ -1,0 +1,11 @@
+import * as React from 'react';
+  const TableSimple16FilledIcon = () => {
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.5 2C3.11929 2 2 3.11929 2 4.5V7.5H7.5V2H4.5Z" fill="#212121"/>
+<path d="M7.5 8.5H2V11.5C2 12.8807 3.11929 14 4.5 14H7.5V8.5Z" fill="#212121"/>
+<path d="M8.5 8.5H14V11.5C14 12.8807 12.8807 14 11.5 14H8.5V8.5Z" fill="#212121"/>
+<path d="M14 7.5V4.5C14 3.11929 12.8807 2 11.5 2H8.5V7.5H14Z" fill="#212121"/>
+</svg>
+
+  };
+export default TableSimple16FilledIcon;
