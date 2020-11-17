@@ -94,7 +94,7 @@ function processFolder(srcPath, destPath) {
             } else {
               generateSelector(destPath, name)
             }
-            if (TARGET) {
+            if (TARGET === 'react') {
               generateReact(destPath, file.substring(0, file.length - 4), srcFile)
             }
           }
