@@ -95,7 +95,7 @@ function processFolder(srcPath, destPath) {
               generateSelector(destPath, name)
             }
             if (TARGET === 'react') {
-              generateReact(destPath, file.substring(0, file.length - 4), srcFile)
+              generateReact(destPath, file.substring(0, file.lastIndexOf(SVG_EXTENSION)), srcFile)
             }
           }
         }
