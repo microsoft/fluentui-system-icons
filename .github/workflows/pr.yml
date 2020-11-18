@@ -41,11 +41,16 @@ jobs:
         major, minor, patch = current_version.split('.')
         print(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> $GITHUB_ENV')
         """
+        echo "TEST_VERSION=HELLO" >> $GITHUB_ENV
+        echo "environment=development" >> $GITHUB_ENV
+        echo "NEW_TEST_VERSION=1.1.85" >> /home/runner/work/_temp/_runner_file_commands/set_env_ee549562-0ef6-4215-a454-01b56d6608a3
 
     - name: Echo the variable
       run: |
         echo "${Env:NEW_VERSION}"
         echo "$GITHUB_ACTOR"
+        echo "$environment"
+        echo "${Env:environment}"
 
     - name: Replace version number in Podspec
       run: |
