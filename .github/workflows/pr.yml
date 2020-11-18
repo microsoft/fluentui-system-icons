@@ -26,8 +26,8 @@ jobs:
           exit(1)
         """
 
-  update-env-file:
-    name: Update environment file
+  test-env-file:
+    name: Test environment file
     runs-on: ubuntu-latest
 
     steps:
@@ -42,15 +42,16 @@ jobs:
         print(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> $GITHUB_ENV')
         """
 
-  echo-env-value:
-    name: Test environment file
-    runs-on: ubuntu-latest
-
-    steps:
     - name: Echo the variable
       run: |
-        echo "$NEW_VERSION"
+        echo "${Env:NEW_VERSION}"
         echo "$GITHUB_ACTOR"
+
+    - name: Replace version number in Podspec
+      run: |
+        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" ios/FluentIcons.podspec
+        rm ios/FluentIcons.podspec.bk
+        cat ios/FluentIcons.podspec
 
   build-ios:
     name: Build iOS library
