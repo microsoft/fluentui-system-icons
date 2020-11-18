@@ -134,8 +134,9 @@ function generateReact(destPath, iconName, srcFile) {
   var code = 
 `import * as React from 'react';
   const ${iconName + REACT_SUFFIX} = () => {
+    return(
     ${iconContent}
-  };
+  )};
 export default ${iconName + REACT_SUFFIX};
 `;
   fs.writeFile(selectorFile, code, (err) => {
