@@ -45,6 +45,7 @@ jobs:
     - name: Echo the variable
       run: |
         echo $NEW_VERSION
+        echo $GITHUB_ACTOR
 
   build-ios:
     name: Build iOS library
