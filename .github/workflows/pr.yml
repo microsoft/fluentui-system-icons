@@ -40,8 +40,11 @@ jobs:
         import os
         current_version = sys.stdin.read().strip().split(\"'\")[1]
         major, minor, patch = current_version.split('.')
-        os.system('echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
+        new_version = f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV'
+        print(new_version)
+        os.system(new_version)
         """
+
         echo "TEST_VERSION=HELLO" >> $GITHUB_ENV
         echo "environment=development" >> $GITHUB_ENV
 
