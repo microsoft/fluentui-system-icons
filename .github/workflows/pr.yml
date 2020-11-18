@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    name: Update/Set the version variable
+    - name: Update/Set the version variable
     - run: |
       grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec |
           python3 -c """
@@ -40,7 +40,7 @@ jobs:
       print(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> $GITHUB_ENV')
       """
 
-    name: Echo the variable
+    - name: Echo the variable
     - run: |
       echo $NEW_VERSION
 
