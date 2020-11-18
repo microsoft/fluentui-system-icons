@@ -20,12 +20,12 @@ jobs:
 
     - name: Bump version patch
       run: |
-        grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec |
-            python3 -c """
+        grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec | python3 -c """
         import sys
+        import os
         current_version = sys.stdin.read().strip().split(\"'\")[1]
         major, minor, patch = current_version.split('.')
-        print(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> $GITHUB_ENV')
+        os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
         """
 
     - name: Use Node 11
@@ -148,12 +148,12 @@ jobs:
 
     - name: Bump version patch
       run: |
-        grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec |
-            python3 -c """
+        grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec | python3 -c """
         import sys
+        import os
         current_version = sys.stdin.read().strip().split(\"'\")[1]
         major, minor, patch = current_version.split('.')
-        print(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> $GITHUB_ENV')
+        os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
         """
 
     - name: Use Node 11

@@ -26,40 +26,6 @@ jobs:
           exit(1)
         """
 
-  test-env-file:
-    name: Test environment file
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Update/Set the version variable
-      run: |
-        grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec | python3 -c """
-        import sys
-        import os
-        current_version = sys.stdin.read().strip().split(\"'\")[1]
-        major, minor, patch = current_version.split('.')
-        os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
-        """
-
-        echo "TEST_VERSION=HELLO" >> $GITHUB_ENV
-        echo "environment=development" >> $GITHUB_ENV
-
-    - name: Echo the variable
-      run: |
-        echo $NEW_VERSION
-        echo "${Env:NEW_VERSION}"
-        echo "$GITHUB_ACTOR"
-        echo "$environment"
-        echo "${Env:environment}"
-
-    - name: Replace version number in Podspec
-      run: |
-        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" ios/FluentIcons.podspec
-        rm ios/FluentIcons.podspec.bk
-        cat ios/FluentIcons.podspec
-
   build-ios:
     name: Build iOS library
     runs-on: ubuntu-latest
