@@ -25,6 +25,7 @@ jobs:
           print(invalid_asset_dirs)
           exit(1)
         """
+
   test-env-file:
     name: Test environment file
     runs-on: ubuntu-latest
@@ -32,8 +33,7 @@ jobs:
     steps:
     - name: Update/Set the version variable
     - run: |
-      grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec |
-          python3 -c """
+      grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec | python3 -c """
       import sys
       current_version = sys.stdin.read().strip().split(\"'\")[1]
       major, minor, patch = current_version.split('.')
