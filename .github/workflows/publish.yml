@@ -25,7 +25,7 @@ jobs:
         import sys
         current_version = sys.stdin.read().strip().split(\"'\")[1]
         major, minor, patch = current_version.split('.')
-        print(f'::set-env name=NEW_VERSION::{major}.{minor}.{int(patch) + 1}')
+        print(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> $GITHUB_ENV')
         """
 
     - name: Use Node 11
@@ -153,7 +153,7 @@ jobs:
         import sys
         current_version = sys.stdin.read().strip().split(\"'\")[1]
         major, minor, patch = current_version.split('.')
-        print(f'::set-env name=NEW_VERSION::{major}.{minor}.{int(patch) + 1}')
+        print(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> $GITHUB_ENV')
         """
 
     - name: Use Node 11
