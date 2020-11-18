@@ -1,9 +1,10 @@
 import * as React from 'react';
   const Accessibility28FilledIcon = () => {
+    return(
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M14 9C15.933 9 17.5 7.433 17.5 5.5C17.5 3.567 15.933 2 14 2C12.067 2 10.5 3.567 10.5 5.5C10.5 7.433 12.067 9 14 9Z" fill="#212121"/>
 <path d="M5 10C4.44772 10 4 10.4477 4 11C4 11.5523 4.44772 12 5 12H10V25C10 25.5523 10.4477 26 11 26C11.5523 26 12 25.5523 12 25V20H16V25C16 25.5523 16.4477 26 17 26C17.5523 26 18 25.5523 18 25V12H23C23.5523 12 24 11.5523 24 11C24 10.4477 23.5523 10 23 10H5Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default Accessibility28FilledIcon;

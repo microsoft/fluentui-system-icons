@@ -1,5 +1,6 @@
 import * as React from 'react';
   const Blur28RegularIcon = () => {
+    return(
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M3 14C3 7.92487 7.92487 3 14 3C16.0238 3 17.9199 3.54651 19.5488 4.5H14C8.75329 4.5 4.5 8.75329 4.5 14C4.5 19.2467 8.75329 23.5 14 23.5V23H20.3262C18.5368 24.2601 16.3548 25 14 25C7.92487 25 3 20.0751 3 14Z" fill="#212121"/>
 <path d="M20.9826 5.5C21.5305 5.95058 22.034 6.45309 22.4857 7H14V5.5H20.9826Z" fill="#212121"/>
@@ -11,5 +12,5 @@ import * as React from 'react';
 <path d="M22.875 20.5C22.4792 21.0395 22.0354 21.5416 21.5499 22H14V20.5H22.875Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default Blur28RegularIcon;

@@ -1,5 +1,6 @@
 import * as React from 'react';
   const QrCode20FilledIcon = () => {
+    return(
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M13 11H11V13H13V15H11V17H13V15H15V17H17V15H15V13H17V11H15V13H13V11Z" fill="#212121"/>
 <path d="M5 5H7V7H5V5Z" fill="#212121"/>
@@ -10,5 +11,5 @@ import * as React from 'react';
 <path d="M13 3C11.8954 3 11 3.89543 11 5V7C11 8.10457 11.8954 9 13 9H15C16.1046 9 17 8.10457 17 7V5C17 3.89543 16.1046 3 15 3H13ZM12.25 4.75C12.25 4.47386 12.4739 4.25 12.75 4.25H15.25C15.5261 4.25 15.75 4.47386 15.75 4.75V7.25C15.75 7.52614 15.5261 7.75 15.25 7.75H12.75C12.4739 7.75 12.25 7.52614 12.25 7.25V4.75Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default QrCode20FilledIcon;

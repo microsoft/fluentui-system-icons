@@ -1,5 +1,6 @@
 import * as React from 'react';
   const TextColumnThree20FilledIcon = () => {
+    return(
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M12 5.75C12 5.33579 11.6642 5 11.25 5H8.75C8.33579 5 8 5.33579 8 5.75C8 6.16421 8.33579 6.5 8.75 6.5H11.25C11.6642 6.5 12 6.16421 12 5.75Z" fill="#212121"/>
 <path d="M17 5.75C17 5.33579 16.6642 5 16.25 5H13.75C13.3358 5 13 5.33579 13 5.75C13 6.16421 13.3358 6.5 13.75 6.5H16.25C16.6642 6.5 17 6.16421 17 5.75Z" fill="#212121"/>
@@ -15,5 +16,5 @@ import * as React from 'react';
 <path d="M7 14.75C7 14.3358 6.66421 14 6.25 14H3.75C3.33579 14 3 14.3358 3 14.75C3 15.1642 3.33579 15.5 3.75 15.5H6.25C6.66421 15.5 7 15.1642 7 14.75Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default TextColumnThree20FilledIcon;

@@ -1,5 +1,6 @@
 import * as React from 'react';
   const DocumentEndnote20FilledIcon = () => {
+    return(
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M10 2V6.5C10 7.32843 10.6716 8 11.5 8H16V16.5C16 17.3284 15.3284 18 14.5 18H11V12C11 10.8954 10.1046 10 9 10H4V3.5C4 2.67157 4.67157 2 5.5 2H10Z" fill="#212121"/>
 <path d="M11 2.25V6.5C11 6.77614 11.2239 7 11.5 7H15.75L11 2.25Z" fill="#212121"/>
@@ -9,5 +10,5 @@ import * as React from 'react';
 <path d="M6 12.5C6 12.7761 5.77614 13 5.5 13C5.22386 13 5 12.7761 5 12.5C5 12.2239 5.22386 12 5.5 12C5.77614 12 6 12.2239 6 12.5Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default DocumentEndnote20FilledIcon;

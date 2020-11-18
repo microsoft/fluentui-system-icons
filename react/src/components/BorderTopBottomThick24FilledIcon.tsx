@@ -1,5 +1,6 @@
 import * as React from 'react';
   const BorderTopBottomThick24FilledIcon = () => {
+    return(
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M3 6C3 6.55228 3.44772 7 4 7C4.55228 7 5 6.55228 5 6C5 5.44772 5.44772 5 6 5H18C18.5523 5 19 5.44772 19 6C19 6.55228 19.4477 7 20 7C20.5523 7 21 6.55228 21 6C21 4.34315 19.6569 3 18 3H6C4.34315 3 3 4.34315 3 6Z" fill="#212121"/>
 <path d="M5 11C5 10.4477 4.55228 10 4 10C3.44772 10 3 10.4477 3 11V13C3 13.5523 3.44772 14 4 14C4.55228 14 5 13.5523 5 13V11Z" fill="#212121"/>
@@ -7,5 +8,5 @@ import * as React from 'react';
 <path d="M20 10C19.4477 10 19 10.4477 19 11V13C19 13.5523 19.4477 14 20 14C20.5523 14 21 13.5523 21 13V11C21 10.4477 20.5523 10 20 10Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default BorderTopBottomThick24FilledIcon;

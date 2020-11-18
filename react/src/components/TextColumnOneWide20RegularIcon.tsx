@@ -1,5 +1,6 @@
 import * as React from 'react';
   const TextColumnOneWide20RegularIcon = () => {
+    return(
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M3.5 5C3.22386 5 3 5.22386 3 5.5C3 5.77614 3.22386 6 3.5 6H16.5C16.7761 6 17 5.77614 17 5.5C17 5.22386 16.7761 5 16.5 5H3.5Z" fill="#212121"/>
 <path d="M3.5 8C3.22386 8 3 8.22386 3 8.5C3 8.77614 3.22386 9 3.5 9H16.5C16.7761 9 17 8.77614 17 8.5C17 8.22386 16.7761 8 16.5 8H3.5Z" fill="#212121"/>
@@ -7,5 +8,5 @@ import * as React from 'react';
 <path d="M3.5 14C3.22386 14 3 14.2239 3 14.5C3 14.7761 3.22386 15 3.5 15H16.5C16.7761 15 17 14.7761 17 14.5C17 14.2239 16.7761 14 16.5 14H3.5Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default TextColumnOneWide20RegularIcon;

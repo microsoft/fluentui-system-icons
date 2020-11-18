@@ -1,5 +1,6 @@
 import * as React from 'react';
   const SelectObject24RegularIcon = () => {
+    return(
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M7 5C7 6.10457 6.10457 7 5 7C3.89543 7 3 6.10457 3 5C3 3.89543 3.89543 3 5 3C6.10457 3 7 3.89543 7 5Z" fill="#212121"/>
 <path d="M8 4.75C8 5.16421 8.33579 5.5 8.75 5.5L15.25 5.5C15.6642 5.5 16 5.16421 16 4.75C16 4.33579 15.6642 4 15.25 4L8.75 4C8.33579 4 8 4.33579 8 4.75Z" fill="#212121"/>
@@ -11,5 +12,5 @@ import * as React from 'react';
 <path d="M19 21C20.1046 21 21 20.1046 21 19C21 17.8954 20.1046 17 19 17C17.8954 17 17 17.8954 17 19C17 20.1046 17.8954 21 19 21Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default SelectObject24RegularIcon;

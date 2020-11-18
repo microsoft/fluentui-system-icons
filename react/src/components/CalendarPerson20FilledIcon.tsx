@@ -1,5 +1,6 @@
 import * as React from 'react';
   const CalendarPerson20FilledIcon = () => {
+    return(
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M17 7V8.76389C16.4692 8.28885 15.7684 8 15 8C13.3431 8 12 9.34315 12 11C12 11.7684 12.2889 12.4692 12.7639 13H12.5C11.1193 13 10 14.1193 10 15.5C10 16.0362 10.0852 16.5389 10.245 17H5.5C4.11929 17 3 15.8807 3 14.5V7H17Z" fill="#212121"/>
 <path d="M15 9C16.1046 9 17 9.89543 17 11C17 12.1046 16.1046 13 15 13C13.8954 13 13 12.1046 13 11C13 9.89543 13.8954 9 15 9Z" fill="#212121"/>
@@ -7,5 +8,5 @@ import * as React from 'react';
 <path d="M14.5 3C15.8807 3 17 4.11929 17 5.5V6H3V5.5C3 4.11929 4.11929 3 5.5 3H14.5Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default CalendarPerson20FilledIcon;

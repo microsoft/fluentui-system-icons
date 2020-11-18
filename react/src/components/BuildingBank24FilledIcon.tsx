@@ -1,5 +1,6 @@
 import * as React from 'react';
   const BuildingBank24FilledIcon = () => {
+    return(
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M10.9684 2.32431C11.583 1.87582 12.417 1.87582 13.0316 2.32431L20.4534 7.74026C21.4299 8.45282 20.9268 9.99802 19.7189 10H4.28108C3.07318 9.99802 2.57011 8.45281 3.54657 7.74026L10.9684 2.32431ZM13 6.25C13 5.69772 12.5523 5.25 12 5.25C11.4477 5.25 11 5.69772 11 6.25C11 6.80228 11.4477 7.25 12 7.25C12.5523 7.25 13 6.80228 13 6.25Z" fill="#212121"/>
 <path d="M11.25 16H9.25V11H11.25V16Z" fill="#212121"/>
@@ -9,5 +10,5 @@ import * as React from 'react';
 <path d="M7.75 16H5.5V11H7.75V16Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default BuildingBank24FilledIcon;

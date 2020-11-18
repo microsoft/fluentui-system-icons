@@ -1,5 +1,6 @@
 import * as React from 'react';
   const ContactCardGroup20RegularIcon = () => {
+    return(
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="20" height="20" fill="#EFEFEF"/>
 <path d="M12 8.5C12 8.22386 12.2239 8 12.5 8H15.5C15.7761 8 16 8.22386 16 8.5C16 8.77614 15.7761 9 15.5 9H12.5C12.2239 9 12 8.77614 12 8.5Z" fill="#212121"/>
@@ -11,5 +12,5 @@ import * as React from 'react';
 <path d="M4.5 4C3.11929 4 2 5.11929 2 6.5V13.5C2 14.8807 3.11929 16 4.5 16H15.5C16.8807 16 18 14.8807 18 13.5V6.5C18 5.11929 16.8807 4 15.5 4H4.5ZM3 6.5C3 5.67157 3.67157 5 4.5 5H15.5C16.3284 5 17 5.67157 17 6.5V13.5C17 14.3284 16.3284 15 15.5 15H4.5C3.67157 15 3 14.3284 3 13.5V6.5Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default ContactCardGroup20RegularIcon;

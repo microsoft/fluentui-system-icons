@@ -1,5 +1,6 @@
 import * as React from 'react';
   const PeopleAudience20FilledIcon = () => {
+    return(
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M7 7C8.10457 7 9 6.10457 9 5C9 3.89543 8.10457 3 7 3C5.89543 3 5 3.89543 5 5C5 6.10457 5.89543 7 7 7Z" fill="#212121"/>
 <path d="M7 10C7 11.1046 6.10457 12 5 12C3.89543 12 3 11.1046 3 10C3 8.89543 3.89543 8 5 8C6.10457 8 7 8.89543 7 10Z" fill="#212121"/>
@@ -11,5 +12,5 @@ import * as React from 'react';
 <path d="M7.5 13C7.22386 13 7 13.2239 7 13.5V14.5C7 16.1569 8.34315 17.5 10 17.5C11.6569 17.5 13 16.1569 13 14.5V13.5C13 13.2239 12.7761 13 12.5 13H7.5Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default PeopleAudience20FilledIcon;

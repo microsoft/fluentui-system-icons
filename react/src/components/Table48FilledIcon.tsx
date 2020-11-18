@@ -1,5 +1,6 @@
 import * as React from 'react';
   const Table48FilledIcon = () => {
+    return(
     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M12.25 6C8.79822 6 6 8.79822 6 12.25V16.5H16.5V6H12.25Z" fill="#212121"/>
 <path d="M19 6V16.5H29V6H19Z" fill="#212121"/>
@@ -12,5 +13,5 @@ import * as React from 'react';
 <path d="M42 16.5V12.25C42 8.79822 39.2018 6 35.75 6H31.5V16.5L42 16.5Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default Table48FilledIcon;

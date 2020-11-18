@@ -1,5 +1,6 @@
 import * as React from 'react';
   const TextBulletListTree16RegularIcon = () => {
+    return(
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M2 5.5C2.55228 5.5 3 5.05228 3 4.5C3 3.94772 2.55228 3.5 2 3.5C1.44772 3.5 1 3.94772 1 4.5C1 5.05228 1.44772 5.5 2 5.5Z" fill="#212121"/>
 <path d="M2 9C2.55228 9 3 8.55228 3 8C3 7.44772 2.55228 7 2 7C1.44772 7 1 7.44772 1 8C1 8.55228 1.44772 9 2 9Z" fill="#212121"/>
@@ -9,5 +10,5 @@ import * as React from 'react';
 <path d="M9.5 11C9.22386 11 9 11.2239 9 11.5C9 11.7761 9.22386 12 9.5 12H14.5C14.7761 12 15 11.7761 15 11.5C15 11.2239 14.7761 11 14.5 11H9.5Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default TextBulletListTree16RegularIcon;

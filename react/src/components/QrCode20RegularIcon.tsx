@@ -1,5 +1,6 @@
 import * as React from 'react';
   const QrCode20RegularIcon = () => {
+    return(
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M11 15H13V17H11V15Z" fill="#212121"/>
 <path d="M15 15H17V17H15V15Z" fill="#212121"/>
@@ -14,5 +15,5 @@ import * as React from 'react';
 <path d="M13 5H15V7H13V5Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default QrCode20RegularIcon;

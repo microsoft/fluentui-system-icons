@@ -1,5 +1,6 @@
 import * as React from 'react';
   const TableInsertDown24FilledIcon = () => {
+    return(
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M9.5 9.5L9.5 14.5H14.5L14.5 9.5L9.5 9.5Z" fill="#212121"/>
 <path d="M8 9.5L8 14.5H3.75C3.55109 14.5 3.36032 14.421 3.21967 14.2803C3.07902 14.1397 3 13.9489 3 13.75V9.5L8 9.5Z" fill="#212121"/>
@@ -10,5 +11,5 @@ import * as React from 'react';
 <path d="M3.75 19.5C3.33579 19.5 3 19.8358 3 20.25C3 20.6642 3.33579 21 3.75 21H20.25C20.6642 21 21 20.6642 21 20.25C21 19.8358 20.6642 19.5 20.25 19.5H3.75Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default TableInsertDown24FilledIcon;

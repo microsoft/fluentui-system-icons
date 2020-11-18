@@ -1,5 +1,6 @@
 import * as React from 'react';
   const TextCollapse24FilledIcon = () => {
+    return(
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M6 4C6 4.55228 6.44772 5 7 5H21C21.5523 5 22 4.55228 22 4C22 3.44772 21.5523 3 21 3H7C6.44772 3 6 3.44772 6 4Z" fill="#212121"/>
 <path d="M13 9C13 9.55228 13.4477 10 14 10H21C21.5523 10 22 9.55228 22 9C22 8.44771 21.5523 8 21 8H14C13.4477 8 13 8.44771 13 9Z" fill="#212121"/>
@@ -8,5 +9,5 @@ import * as React from 'react';
 <path d="M11 11.5C11 9.01472 8.98528 7 6.5 7C4.01472 7 2 9.01472 2 11.5C2 13.9853 4.01472 16 6.5 16C8.98528 16 11 13.9853 11 11.5ZM9 11.5C9 11.7761 8.77614 12 8.5 12H4.5C4.22386 12 4 11.7761 4 11.5C4 11.2239 4.22386 11 4.5 11H8.5C8.77614 11 9 11.2239 9 11.5Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default TextCollapse24FilledIcon;

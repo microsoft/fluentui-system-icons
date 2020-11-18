@@ -1,5 +1,6 @@
 import * as React from 'react';
   const TextWrapTight20FilledIcon = () => {
+    return(
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M3.5 2.75C3.08579 2.75 2.75 3.08579 2.75 3.5C2.75 3.91421 3.08579 4.25 3.5 4.25H16.5C16.9142 4.25 17.25 3.91421 17.25 3.5C17.25 3.08579 16.9142 2.75 16.5 2.75H3.5Z" fill="#212121"/>
 <path d="M3.5 14.75C3.08579 14.75 2.75 15.0858 2.75 15.5C2.75 15.9142 3.08579 16.25 3.5 16.25H16.5C16.9142 16.25 17.25 15.9142 17.25 15.5C17.25 15.0858 16.9142 14.75 16.5 14.75H3.5Z" fill="#212121"/>
@@ -12,5 +13,5 @@ import * as React from 'react';
 <path d="M5.25 8.75V10.25H3.5C3.08579 10.25 2.75 9.91421 2.75 9.5C2.75 9.08579 3.08579 8.75 3.5 8.75H5.25Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default TextWrapTight20FilledIcon;

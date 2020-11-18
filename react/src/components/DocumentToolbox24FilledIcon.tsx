@@ -1,5 +1,6 @@
 import * as React from 'react';
   const DocumentToolbox24FilledIcon = () => {
+    return(
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M12 2V8C12 9.10457 12.8954 10 14 10H20V20.5C20 21.3284 19.3284 22 18.5 22H13V16.9985C13 15.8939 12.1046 15 11 15H10V14.0001C10 12.8955 9.10455 12 7.99996 12L5.00002 12C4.63572 12 4.29418 12.0974 4 12.2676V3.5C4 2.67157 4.67157 2 5.5 2H12Z" fill="#212121"/>
 <path d="M13.5 2.5V8C13.5 8.27614 13.7239 8.5 14 8.5H19.5L13.5 2.5Z" fill="#212121"/>
@@ -7,5 +8,5 @@ import * as React from 'react';
 <path d="M9 20H12L12 21.5C12 22.3284 11.3284 23 10.5 23H2.5C1.67157 23 1 22.3284 1 21.5V20H4V20.5C4 20.7761 4.22386 21 4.5 21C4.77614 21 5 20.7761 5 20.5V20H8V20.5C8 20.7761 8.22386 21 8.5 21C8.77614 21 9 20.7761 9 20.5V20Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default DocumentToolbox24FilledIcon;

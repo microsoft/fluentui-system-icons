@@ -1,5 +1,6 @@
 import * as React from 'react';
   const TextWrapBehind24RegularIcon = () => {
+    return(
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M3 4.75C3 4.33579 3.33579 4 3.75 4H20.25C20.6642 4 21 4.33579 21 4.75C21 5.16421 20.6642 5.5 20.25 5.5H3.75C3.33579 5.5 3 5.16421 3 4.75Z" fill="#212121"/>
 <path d="M9.5 11C9.5 9.61929 10.6193 8.5 12 8.5C13.3807 8.5 14.5 9.61929 14.5 11V15.75C14.5 16.1642 14.8358 16.5 15.25 16.5C15.6642 16.5 16 16.1642 16 15.75V11C16 8.79086 14.2091 7 12 7C9.79086 7 8 8.79086 8 11V15.75C8 16.1642 8.33579 16.5 8.75 16.5C9.16421 16.5 9.5 16.1642 9.5 15.75V11Z" fill="#212121"/>
@@ -9,5 +10,5 @@ import * as React from 'react';
 <path d="M10.5 11H13.5V12.5H10.5V11Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default TextWrapBehind24RegularIcon;

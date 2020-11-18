@@ -1,5 +1,6 @@
 import * as React from 'react';
   const GridKanban20RegularIcon = () => {
+    return(
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M2 3C2 2.44772 2.44772 2 3 2H8C8.55229 2 9 2.44772 9 3V5C9 5.55228 8.55228 6 8 6H3C2.44771 6 2 5.55228 2 5V3ZM8 3H3V5H8V3Z" fill="#212121"/>
 <path d="M2 9C2 8.44772 2.44772 8 3 8H8C8.55229 8 9 8.44772 9 9V11C9 11.5523 8.55228 12 8 12H3C2.44771 12 2 11.5523 2 11V9ZM8 9H3V11H8V9Z" fill="#212121"/>
@@ -8,5 +9,5 @@ import * as React from 'react';
 <path d="M12 8C11.4477 8 11 8.44772 11 9V11C11 11.5523 11.4477 12 12 12H17C17.5523 12 18 11.5523 18 11V9C18 8.44772 17.5523 8 17 8H12ZM12 9H17V11H12V9Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default GridKanban20RegularIcon;

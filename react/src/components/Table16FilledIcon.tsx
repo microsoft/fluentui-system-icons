@@ -1,5 +1,6 @@
 import * as React from 'react';
   const Table16FilledIcon = () => {
+    return(
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M4.5 2C3.11929 2 2 3.11929 2 4.5V5H5V2H4.5Z" fill="#212121"/>
 <path d="M6 2V5L10 5V2H6Z" fill="#212121"/>
@@ -12,5 +13,5 @@ import * as React from 'react';
 <path d="M14 5V4.5C14 3.11929 12.8807 2 11.5 2H11V5H14Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default Table16FilledIcon;

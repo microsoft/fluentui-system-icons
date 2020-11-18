@@ -1,5 +1,6 @@
 import * as React from 'react';
   const VideoBackgroundEffect20FilledIcon = () => {
+    return(
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M6.20712 4L2 8.20712V6.79291L4.79291 4H6.20712Z" fill="#212121"/>
 <path d="M13.2071 4L11.743 5.46417C11.429 5.28356 11.0845 5.15023 10.719 5.07392L11.7929 4H13.2071Z" fill="#212121"/>
@@ -14,5 +15,5 @@ import * as React from 'react';
 <path d="M9.70712 4L2 11.7071V10.2929L8.29291 4H9.70712Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default VideoBackgroundEffect20FilledIcon;

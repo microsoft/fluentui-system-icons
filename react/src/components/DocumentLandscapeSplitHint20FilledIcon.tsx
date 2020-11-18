@@ -1,5 +1,6 @@
 import * as React from 'react';
   const DocumentLandscapeSplitHint20FilledIcon = () => {
+    return(
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M3 6C3 5.44772 3.44772 5 4 5H4.5C4.77614 5 5 4.77614 5 4.5C5 4.22386 4.77614 4 4.5 4H4C2.89543 4 2 4.89543 2 6V6.5C2 6.77614 2.22386 7 2.5 7C2.77614 7 3 6.77614 3 6.5V6Z" fill="#212121"/>
 <path d="M4 15C3.44772 15 3 14.5523 3 14V13.5C3 13.2239 2.77614 13 2.5 13C2.22386 13 2 13.2239 2 13.5V14C2 15.1046 2.89543 16 4 16H4.5C4.77614 16 5 15.7761 5 15.5C5 15.2239 4.77614 15 4.5 15H4Z" fill="#212121"/>
@@ -10,5 +11,5 @@ import * as React from 'react';
 <path d="M13 8.5V4.05844C13.2421 4.12802 13.4651 4.25813 13.6464 4.43946L17.5607 8.35368C17.742 8.53498 17.8721 8.75791 17.9416 9H13.5C13.2239 9 13 8.77614 13 8.5Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default DocumentLandscapeSplitHint20FilledIcon;

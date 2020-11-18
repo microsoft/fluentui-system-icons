@@ -1,5 +1,6 @@
 import * as React from 'react';
   const BorderNone24FilledIcon = () => {
+    return(
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M14 4C14 4.55228 13.5523 5 13 5L11 5C10.4477 5 10 4.55228 10 4C10 3.44772 10.4477 3 11 3H13C13.5523 3 14 3.44772 14 4Z" fill="#212121"/>
 <path d="M5 11C5 10.4477 4.55228 10 4 10C3.44772 10 3 10.4477 3 11V13C3 13.5523 3.44772 14 4 14C4.55228 14 5 13.5523 5 13V11Z" fill="#212121"/>
@@ -11,5 +12,5 @@ import * as React from 'react';
 <path d="M18 21C17.4477 21 17 20.5523 17 20C17 19.4477 17.4477 19 18 19C18.5523 19 19 18.5523 19 18C19 17.4477 19.4477 17 20 17C20.5523 17 21 17.4477 21 18C21 19.6569 19.6569 21 18 21Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default BorderNone24FilledIcon;

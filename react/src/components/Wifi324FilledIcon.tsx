@@ -1,5 +1,6 @@
 import * as React from 'react';
   const Wifi324FilledIcon = () => {
+    return(
     <?xml version="1.0" encoding="UTF-8"?>
 <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
@@ -11,5 +12,5 @@ import * as React from 'react';
         </g>
     </g>
 </svg>
-  };
+  )};
 export default Wifi324FilledIcon;

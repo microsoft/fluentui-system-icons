@@ -1,5 +1,6 @@
 import * as React from 'react';
   const AppFolder20RegularIcon = () => {
+    return(
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M2 4.5C2 3.11929 3.11929 2 4.5 2H15.5C16.8807 2 18 3.11929 18 4.5V15.5C18 16.8807 16.8807 18 15.5 18H4.5C3.11929 18 2 16.8807 2 15.5V4.5ZM4.5 3C3.67157 3 3 3.67157 3 4.5V15.5C3 16.3284 3.67157 17 4.5 17H15.5C16.3284 17 17 16.3284 17 15.5V4.5C17 3.67157 16.3284 3 15.5 3H4.5Z" fill="#212121"/>
 <path d="M5 6C5 5.44772 5.44772 5 6 5H8C8.55228 5 9 5.44772 9 6V8C9 8.55228 8.55228 9 8 9H6C5.44772 9 5 8.55228 5 8V6ZM8 6H6V8H8V6Z" fill="#212121"/>
@@ -8,5 +9,5 @@ import * as React from 'react';
 <path d="M11 12C11 11.4477 11.4477 11 12 11H14C14.5523 11 15 11.4477 15 12V14C15 14.5523 14.5523 15 14 15H12C11.4477 15 11 14.5523 11 14V12ZM14 12H12V14H14V12Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default AppFolder20RegularIcon;

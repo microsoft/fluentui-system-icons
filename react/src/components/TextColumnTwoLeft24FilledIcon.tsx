@@ -1,5 +1,6 @@
 import * as React from 'react';
   const TextColumnTwoLeft24FilledIcon = () => {
+    return(
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M21 6C21 5.44772 20.5523 5 20 5H11C10.4477 5 10 5.44772 10 6C10 6.55228 10.4477 7 11 7H20C20.5523 7 21 6.55228 21 6Z" fill="#212121"/>
 <path d="M8 6C8 5.44772 7.55228 5 7 5H4C3.44772 5 3 5.44772 3 6C3 6.55228 3.44772 7 4 7H7C7.55228 7 8 6.55228 8 6Z" fill="#212121"/>
@@ -11,5 +12,5 @@ import * as React from 'react';
 <path d="M8 18C8 17.4477 7.55228 17 7 17H4C3.44772 17 3 17.4477 3 18C3 18.5523 3.44772 19 4 19H7C7.55228 19 8 18.5523 8 18Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default TextColumnTwoLeft24FilledIcon;

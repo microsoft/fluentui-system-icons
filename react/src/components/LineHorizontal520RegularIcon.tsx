@@ -1,5 +1,6 @@
 import * as React from 'react';
   const LineHorizontal520RegularIcon = () => {
+    return(
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M2 3.5C2 3.22386 2.22386 3 2.5 3H17.5C17.7761 3 18 3.22386 18 3.5C18 3.77614 17.7761 4 17.5 4H2.5C2.22386 4 2 3.77614 2 3.5Z" fill="#212121"/>
 <path d="M2 9.5C2 9.22386 2.22386 9 2.5 9H17.5C17.7761 9 18 9.22386 18 9.5C18 9.77614 17.7761 10 17.5 10H2.5C2.22386 10 2 9.77614 2 9.5Z" fill="#212121"/>
@@ -8,5 +9,5 @@ import * as React from 'react';
 <path d="M2.5 15C2.22386 15 2 15.2239 2 15.5C2 15.7761 2.22386 16 2.5 16H17.5C17.7761 16 18 15.7761 18 15.5C18 15.2239 17.7761 15 17.5 15H2.5Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default LineHorizontal520RegularIcon;

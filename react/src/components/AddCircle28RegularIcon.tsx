@@ -1,5 +1,6 @@
 import * as React from 'react';
   const AddCircle28RegularIcon = () => {
+    return(
     <?xml version="1.0" encoding="UTF-8"?>
 <svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
@@ -11,5 +12,5 @@ import * as React from 'react';
         </g>
     </g>
 </svg>
-  };
+  )};
 export default AddCircle28RegularIcon;

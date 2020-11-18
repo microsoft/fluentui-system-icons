@@ -1,5 +1,6 @@
 import * as React from 'react';
   const GridKanban20FilledIcon = () => {
+    return(
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M3 2C2.44772 2 2 2.44772 2 3V5C2 5.55228 2.44771 6 3 6H8C8.55228 6 9 5.55228 9 5V3C9 2.44772 8.55229 2 8 2H3Z" fill="#212121"/>
 <path d="M3 8C2.44772 8 2 8.44772 2 9V11C2 11.5523 2.44771 12 3 12H8C8.55228 12 9 11.5523 9 11V9C9 8.44772 8.55229 8 8 8H3Z" fill="#212121"/>
@@ -8,5 +9,5 @@ import * as React from 'react';
 <path d="M12 8C11.4477 8 11 8.44772 11 9V11C11 11.5523 11.4477 12 12 12H17C17.5523 12 18 11.5523 18 11V9C18 8.44772 17.5523 8 17 8H12Z" fill="#212121"/>
 </svg>
 
-  };
+  )};
 export default GridKanban20FilledIcon;
