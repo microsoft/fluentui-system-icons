@@ -26,8 +26,8 @@ jobs:
           exit(1)
         """
 
-  test-env-file:
-    name: Test environment file
+  update-env-file:
+    name: Update environment file
     runs-on: ubuntu-latest
 
     steps:
@@ -42,6 +42,11 @@ jobs:
         print(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> $GITHUB_ENV')
         """
 
+  echo-env-value:
+    name: Test environment file
+    runs-on: ubuntu-latest
+
+    steps:
     - name: Echo the variable
       run: |
         echo "$NEW_VERSION"
