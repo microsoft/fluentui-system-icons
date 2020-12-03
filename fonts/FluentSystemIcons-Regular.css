@@ -1,6 +1,6 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.ttf?65f0e8fb9e7613bf4d184b7dfb5983db") format("truetype");
+    src: url("./FluentSystemIcons-Regular.ttf?534fc4416c903ecd430e674bd2bd3356") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -8206,4 +8206,19 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_video_sync_20_regular:before {
     content: "\fbab";
+}
+.icon-ic_fluent_breakout_room_20_regular:before {
+    content: "\fbac";
+}
+.icon-ic_fluent_content_view_gallery_20_regular:before {
+    content: "\fbad";
+}
+.icon-ic_fluent_door_tag_24_regular:before {
+    content: "\fbae";
+}
+.icon-ic_fluent_luggage_24_regular:before {
+    content: "\fbaf";
+}
+.icon-ic_fluent_people_edit_20_regular:before {
+    content: "\fbb0";
 }
