@@ -1755,6 +1755,24 @@ class FluentIcons {
   /// fluent icon named "channel_notifications" in size 24 and regular style.
   static const IconData channel_notifications_24_regular = IconData(0xf284, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "channel_share" in size 12 and regular style.
+  static const IconData channel_share_12_regular = IconData(0xfbb1, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "channel_share" in size 16 and regular style.
+  static const IconData channel_share_16_regular = IconData(0xfbb2, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "channel_share" in size 20 and regular style.
+  static const IconData channel_share_20_regular = IconData(0xfbb3, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "channel_share" in size 24 and regular style.
+  static const IconData channel_share_24_regular = IconData(0xfbb4, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "channel_share" in size 28 and regular style.
+  static const IconData channel_share_28_regular = IconData(0xfbb5, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "channel_share" in size 48 and regular style.
+  static const IconData channel_share_48_regular = IconData(0xfbb6, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "channel_unfollow" in size 24 and regular style.
   static const IconData channel_unfollow_24_regular = IconData(0xf285, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -5148,6 +5166,15 @@ class FluentIcons {
   /// fluent icon named "people_edit" in size 20 and regular style.
   static const IconData people_edit_20_regular = IconData(0xfbb0, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "people_error" in size 16 and regular style.
+  static const IconData people_error_16_regular = IconData(0xfbb7, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "people_error" in size 20 and regular style.
+  static const IconData people_error_20_regular = IconData(0xfbb8, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "people_error" in size 24 and regular style.
+  static const IconData people_error_24_regular = IconData(0xfbb9, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "people_prohibited" in size 16 and regular style.
   static const IconData people_prohibited_16_regular = IconData(0xfa66, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -5642,6 +5669,21 @@ class FluentIcons {
 
   /// fluent icon named "pulse_square" in size 24 and regular style.
   static const IconData pulse_square_24_regular = IconData(0xfba0, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "puzzle_cube" in size 16 and regular style.
+  static const IconData puzzle_cube_16_regular = IconData(0xfbba, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "puzzle_cube" in size 20 and regular style.
+  static const IconData puzzle_cube_20_regular = IconData(0xfbbb, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "puzzle_cube" in size 24 and regular style.
+  static const IconData puzzle_cube_24_regular = IconData(0xfbbc, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "puzzle_cube" in size 28 and regular style.
+  static const IconData puzzle_cube_28_regular = IconData(0xfbbd, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "puzzle_cube" in size 48 and regular style.
+  static const IconData puzzle_cube_48_regular = IconData(0xfbbe, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "qr_code" in size 20 and regular style.
   static const IconData qr_code_20_regular = IconData(0xfa82, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -9965,6 +10007,24 @@ class FluentIcons {
   /// fluent icon named "channel_notifications" in size 24 and filled style.
   static const IconData channel_notifications_24_filled = IconData(0xf284, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
+  /// fluent icon named "channel_share" in size 12 and filled style.
+  static const IconData channel_share_12_filled = IconData(0xfbb9, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "channel_share" in size 16 and filled style.
+  static const IconData channel_share_16_filled = IconData(0xfbba, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "channel_share" in size 20 and filled style.
+  static const IconData channel_share_20_filled = IconData(0xfbbb, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "channel_share" in size 24 and filled style.
+  static const IconData channel_share_24_filled = IconData(0xfbbc, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "channel_share" in size 28 and filled style.
+  static const IconData channel_share_28_filled = IconData(0xfbbd, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "channel_share" in size 48 and filled style.
+  static const IconData channel_share_48_filled = IconData(0xfbbe, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
   /// fluent icon named "channel_unfollow" in size 24 and filled style.
   static const IconData channel_unfollow_24_filled = IconData(0xf285, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
@@ -13367,6 +13427,15 @@ class FluentIcons {
   /// fluent icon named "people_edit" in size 20 and filled style.
   static const IconData people_edit_20_filled = IconData(0xfbb8, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
+  /// fluent icon named "people_error" in size 16 and filled style.
+  static const IconData people_error_16_filled = IconData(0xfbbf, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "people_error" in size 20 and filled style.
+  static const IconData people_error_20_filled = IconData(0xfbc0, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "people_error" in size 24 and filled style.
+  static const IconData people_error_24_filled = IconData(0xfbc1, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
   /// fluent icon named "people_prohibited" in size 16 and filled style.
   static const IconData people_prohibited_16_filled = IconData(0xfa77, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
@@ -13843,6 +13912,21 @@ class FluentIcons {
 
   /// fluent icon named "pulse_square" in size 24 and filled style.
   static const IconData pulse_square_24_filled = IconData(0xfba8, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "puzzle_cube" in size 16 and filled style.
+  static const IconData puzzle_cube_16_filled = IconData(0xfbc2, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "puzzle_cube" in size 20 and filled style.
+  static const IconData puzzle_cube_20_filled = IconData(0xfbc3, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "puzzle_cube" in size 24 and filled style.
+  static const IconData puzzle_cube_24_filled = IconData(0xfbc4, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "puzzle_cube" in size 28 and filled style.
+  static const IconData puzzle_cube_28_filled = IconData(0xfbc5, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "puzzle_cube" in size 48 and filled style.
+  static const IconData puzzle_cube_48_filled = IconData(0xfbc6, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "qr_code" in size 20 and filled style.
   static const IconData qr_code_20_filled = IconData(0xfa8d, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);

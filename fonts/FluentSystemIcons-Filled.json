@@ -2742,5 +2742,19 @@
     "ic_fluent_content_view_gallery_20_filled": "0xfbb5",
     "ic_fluent_door_tag_24_filled": "0xfbb6",
     "ic_fluent_luggage_24_filled": "0xfbb7",
-    "ic_fluent_people_edit_20_filled": "0xfbb8"
+    "ic_fluent_people_edit_20_filled": "0xfbb8",
+    "ic_fluent_channel_share_12_filled": "0xfbb9",
+    "ic_fluent_channel_share_16_filled": "0xfbba",
+    "ic_fluent_channel_share_20_filled": "0xfbbb",
+    "ic_fluent_channel_share_24_filled": "0xfbbc",
+    "ic_fluent_channel_share_28_filled": "0xfbbd",
+    "ic_fluent_channel_share_48_filled": "0xfbbe",
+    "ic_fluent_people_error_16_filled": "0xfbbf",
+    "ic_fluent_people_error_20_filled": "0xfbc0",
+    "ic_fluent_people_error_24_filled": "0xfbc1",
+    "ic_fluent_puzzle_cube_16_filled": "0xfbc2",
+    "ic_fluent_puzzle_cube_20_filled": "0xfbc3",
+    "ic_fluent_puzzle_cube_24_filled": "0xfbc4",
+    "ic_fluent_puzzle_cube_28_filled": "0xfbc5",
+    "ic_fluent_puzzle_cube_48_filled": "0xfbc6"
 }

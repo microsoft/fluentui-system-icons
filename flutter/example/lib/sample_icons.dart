@@ -1168,6 +1168,18 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.channel_notifications_24_regular, 'channel_notifications_24_regular', 24),
 
+  FluentUISampleIcon(FluentIcons.channel_share_12_regular, 'channel_share_12_regular', 12),
+
+  FluentUISampleIcon(FluentIcons.channel_share_16_regular, 'channel_share_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.channel_share_20_regular, 'channel_share_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.channel_share_24_regular, 'channel_share_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.channel_share_28_regular, 'channel_share_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.channel_share_48_regular, 'channel_share_48_regular', 48),
+
   FluentUISampleIcon(FluentIcons.channel_unfollow_24_regular, 'channel_unfollow_24_regular', 24),
 
   FluentUISampleIcon(FluentIcons.chat_16_regular, 'chat_16_regular', 16),
@@ -3430,6 +3442,12 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.people_edit_20_regular, 'people_edit_20_regular', 20),
 
+  FluentUISampleIcon(FluentIcons.people_error_16_regular, 'people_error_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.people_error_20_regular, 'people_error_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.people_error_24_regular, 'people_error_24_regular', 24),
+
   FluentUISampleIcon(FluentIcons.people_prohibited_16_regular, 'people_prohibited_16_regular', 16),
 
   FluentUISampleIcon(FluentIcons.people_prohibited_20_regular, 'people_prohibited_20_regular', 20),
@@ -3759,6 +3777,16 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.pulse_24_regular, 'pulse_24_regular', 24),
 
   FluentUISampleIcon(FluentIcons.pulse_square_24_regular, 'pulse_square_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.puzzle_cube_16_regular, 'puzzle_cube_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.puzzle_cube_20_regular, 'puzzle_cube_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.puzzle_cube_24_regular, 'puzzle_cube_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.puzzle_cube_28_regular, 'puzzle_cube_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.puzzle_cube_48_regular, 'puzzle_cube_48_regular', 48),
 
   FluentUISampleIcon(FluentIcons.qr_code_20_regular, 'qr_code_20_regular', 20),
 
@@ -6640,6 +6668,18 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.channel_notifications_24_filled, 'channel_notifications_24_filled', 24),
 
+  FluentUISampleIcon(FluentIcons.channel_share_12_filled, 'channel_share_12_filled', 12),
+
+  FluentUISampleIcon(FluentIcons.channel_share_16_filled, 'channel_share_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.channel_share_20_filled, 'channel_share_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.channel_share_24_filled, 'channel_share_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.channel_share_28_filled, 'channel_share_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.channel_share_48_filled, 'channel_share_48_filled', 48),
+
   FluentUISampleIcon(FluentIcons.channel_unfollow_24_filled, 'channel_unfollow_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.chat_16_filled, 'chat_16_filled', 16),
@@ -8908,6 +8948,12 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.people_edit_20_filled, 'people_edit_20_filled', 20),
 
+  FluentUISampleIcon(FluentIcons.people_error_16_filled, 'people_error_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.people_error_20_filled, 'people_error_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.people_error_24_filled, 'people_error_24_filled', 24),
+
   FluentUISampleIcon(FluentIcons.people_prohibited_16_filled, 'people_prohibited_16_filled', 16),
 
   FluentUISampleIcon(FluentIcons.people_prohibited_20_filled, 'people_prohibited_20_filled', 20),
@@ -9225,6 +9271,16 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.pulse_24_filled, 'pulse_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.pulse_square_24_filled, 'pulse_square_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.puzzle_cube_16_filled, 'puzzle_cube_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.puzzle_cube_20_filled, 'puzzle_cube_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.puzzle_cube_24_filled, 'puzzle_cube_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.puzzle_cube_28_filled, 'puzzle_cube_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.puzzle_cube_48_filled, 'puzzle_cube_48_filled', 48),
 
   FluentUISampleIcon(FluentIcons.qr_code_20_filled, 'qr_code_20_filled', 20),
 
