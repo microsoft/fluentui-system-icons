@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <clipPath id="clip-ic_fluent_cellular_5g_24_regular">
+      <rect width="24" height="24"/>
+    </clipPath>
+  </defs>
+  <g id="ic_fluent_cellular_5g_24_regular" clip-path="url(#clip-ic_fluent_cellular_5g_24_regular)">
+    <rect width="24" height="24" fill="#fff"/>
+    <rect id="Rectangle_1" data-name="Rectangle 1" width="2" height="4" rx="1" transform="translate(3 18)"/>
+    <rect id="Rectangle_2" data-name="Rectangle 2" width="2" height="7" rx="1" transform="translate(7 15)"/>
+    <rect id="Rectangle_3" data-name="Rectangle 3" width="2" height="16" rx="1" transform="translate(19 6)"/>
+    <rect id="Rectangle_4" data-name="Rectangle 4" width="2" height="10" rx="1" transform="translate(11 12)"/>
+    <rect id="Rectangle_5" data-name="Rectangle 5" width="2" height="13" rx="1" transform="translate(15 9)"/>
+    <text id="_5G" data-name="5G" transform="translate(2 2)" font-size="8" font-family="Arial-BoldMT, Arial" font-weight="700"><tspan x="0" y="7">5G</tspan></text>
+  </g>
+</svg>
