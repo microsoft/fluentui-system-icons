@@ -79,7 +79,7 @@ jobs:
     ## SVG
     - name: Run svg build
       run: npm run publish
-      working-directory: packages/svg-icons
+      working-directory: packages/system-icons-svg
       with:
         registry-url: https://registry.npmjs.org
 

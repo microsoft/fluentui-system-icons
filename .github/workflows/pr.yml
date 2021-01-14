@@ -125,8 +125,11 @@ jobs:
         node-version: 11.x
 
     - run: npm install
-      working-directory: packages/svg-icons
+      working-directory: importer
+
+    - run: npm install
+      working-directory: packages/system-icons-svg
 
     - name: Run build
       run: npm run build
-      working-directory: packages/svg-icons
+      working-directory: packages/system-icons-svg

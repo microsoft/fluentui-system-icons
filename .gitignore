@@ -3,8 +3,8 @@ npm-debug.log
 *.sublime-workspace
 tmp
 dev_tests/automatic/screenshots
-importer/dist/*
-!importer/dist/.keep
+dist/
+!dist/.keep
 *.DS_Store
 
 .project
