@@ -1,7 +1,7 @@
 {
   "name": "fluent-icons-library",
   "version": "1.0.0",
-  "description": "Fluent System Icons are a collection of familiar, friendly and modern icons from Microsoft.",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "jshint": "jshint --reporter=node_modules/jshint-stylish src || true",
