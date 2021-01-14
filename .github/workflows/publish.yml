@@ -76,13 +76,6 @@ jobs:
         accessToken: ${{ secrets.FLUTTER_OAUTH_ACCESS_TOKEN }}
         refreshToken: ${{ secrets.FLUTTER_OAUTH_REFRESH_TOKEN }}
 
-    ## SVG
-    - name: Run svg build
-      run: npm run publish
-      working-directory: packages/system-icons-svg
-      with:
-        registry-url: https://registry.npmjs.org
-
     ## Publish
     # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version numbers in README.md
@@ -115,6 +108,12 @@ jobs:
         rm flutter/pubspec.yaml.bk
 
     # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in system-icons-svg/package.json
+      run: |
+        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/system-icons-svg/package.json
+        rm packages/system-icons-svg/package.json.bk
+
+    # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version number in _manifest.json
       run: |
         sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" _iconCloud/manifest.json
@@ -125,6 +124,15 @@ jobs:
       run: |
         sed -i.bk -r "s/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]Z/$(date -u +%Y-%m-%dT%RZ)/" _iconCloud/manifest.json
         rm _iconCloud/manifest.json.bk
+
+    ## Publish svg icons
+    - name: Run svg publish
+      run: npm publish
+      working-directory: packages/system-icons-svg
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      with:
+        registry-url: https://registry.npmjs.org
 
     - name: Update icon sheet
       run: python3 generate_icons_md.py

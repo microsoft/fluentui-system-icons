@@ -5,7 +5,7 @@
 const r = require("replace");
 
 r({
-    regex: /( fill=\"none\"| fill=\"#212121\")/,
+    regex: /( fill=\"none\"| fill=\"#212121\")/g,
     replacement: '',
     paths: ['./dist/'],
     recursive: true,
