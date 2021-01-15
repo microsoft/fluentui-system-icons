@@ -37,6 +37,10 @@ if (!EXTENSION) {
   throw new Error("Desired icon extension not specified by --extension");
 }
 
+if (!fs.existsSync(DEST_PATH)) {
+  fs.mkdirSync(DEST_PATH);
+}
+
 processFolder(SRC_PATH, DEST_PATH)
 
 function processFolder(srcPath, destPath) {
