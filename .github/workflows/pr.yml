@@ -128,8 +128,8 @@ jobs:
       working-directory: importer
 
     - run: npm install
-      working-directory: packages/system-icons-svg
+      working-directory: packages/svg-icons
 
     - name: Run build
       run: npm run build
-      working-directory: packages/system-icons-svg
+      working-directory: packages/svg-icons

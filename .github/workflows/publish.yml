@@ -108,10 +108,10 @@ jobs:
         rm flutter/pubspec.yaml.bk
 
     # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in system-icons-svg/package.json
+    - name: Replace version number in svg-icons/package.json
       run: |
-        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/system-icons-svg/package.json
-        rm packages/system-icons-svg/package.json.bk
+        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/svg-icons/package.json
+        rm packages/svg-icons/package.json.bk
 
     # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version number in _manifest.json
@@ -128,7 +128,7 @@ jobs:
     ## Publish svg icons
     - name: Run svg publish
       run: npm publish
-      working-directory: packages/system-icons-svg
+      working-directory: packages/svg-icons
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       with:
