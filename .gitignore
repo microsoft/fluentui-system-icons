@@ -17,3 +17,5 @@ dist/
 
 xcuserdata
 /ios/FluentIcons/Tests
+
+/packages/svg-icons/icons

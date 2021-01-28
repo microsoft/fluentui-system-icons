@@ -55,6 +55,10 @@ dependencies:
 
 For library docs, see [flutter/README.md](flutter/README.md)
 
+### Plain svg
+
+Inline svg directly. See [packages\svg-icons\README.md](packages\svg-icons\README.md).
+
 ## Contributing
 
 ### Importer
