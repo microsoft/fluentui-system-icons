@@ -111,3 +111,25 @@ jobs:
         dryRunOnly: true
         accessToken: "placeholder"
         refreshToken: "placeholder"
+
+  build-svg:
+    name: Build svg library
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node 11
+      uses: actions/setup-node@v1
+      with:
+        node-version: 11.x
+
+    - run: npm install
+      working-directory: importer
+
+    - run: npm install
+      working-directory: packages/svg-icons
+
+    - name: Run build
+      run: npm run build
+      working-directory: packages/svg-icons

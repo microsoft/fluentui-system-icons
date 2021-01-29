@@ -1,0 +1,28 @@
+{
+  "name": "@fluentui/svg-icons",
+  "version": "1.1.50",
+  "description": "Fluent System Icons are a collection of familiar, friendly, and modern icons from Microsoft.",
+  "author": "Microsoft Inc.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/microsoft/fluentui-system-icons.git"
+  },
+  "scripts": {
+    "clean": "shx rm -rf ./icons",
+    "copy": "node ../../importer/generate.js --source=../../assets --dest=./icons --extension=svg",
+    "rename": "renamer --find ic_fluent_ ./icons/*",
+    "optimize": "svgo --folder=./icons --precision=2 --disable=removeViewBox,mergePaths",
+    "unfill": "node unfill.js --path=./icons/",
+    "build": "npm run copy && npm run rename && npm run optimize && npm run unfill",
+    "prepublishOnly": "npm run build",
+    "postpublish": "npm run clean"
+  },
+  "devDependencies": {
+    "renamer": "^2.0.1",
+    "replace": "^1.2.0",
+    "shx": "^0.3.2",
+    "svgo": "^1.3.2",
+    "yargs": "^14.0.0"
+  }
+}

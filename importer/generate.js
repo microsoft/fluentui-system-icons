@@ -4,13 +4,14 @@
 const fs = require("fs");
 const path = require("path");
 const process = require("process");
-const argv = require("yargs").argv;
+const argv = require("yargs").boolean("selector").default("selector", false).argv;
 const _ = require("lodash");
 
 const SRC_PATH = argv.source;
 const DEST_PATH = argv.dest;
 const EXTENSION = argv.extension;
 const TARGET = argv.target;
+const SELECTOR = argv.selector;
 const ICON_OUTLINE_STYLE = '_regular'
 const ICON_FILLED_STYLE = '_filled'
 const ICON_LIGHT_STYLE = '_light'
@@ -34,6 +35,10 @@ if (!DEST_PATH) {
 }
 if (!EXTENSION) {
   throw new Error("Desired icon extension not specified by --extension");
+}
+
+if (!fs.existsSync(DEST_PATH)) {
+  fs.mkdirSync(DEST_PATH);
 }
 
 processFolder(SRC_PATH, DEST_PATH)
@@ -82,7 +87,7 @@ function processFolder(srcPath, destPath) {
         var destFile = path.join(destPath, file);
         fs.copyFileSync(srcFile, destFile);
         // Generate selector if both filled/regular styles are available
-        if (file.endsWith(SVG_EXTENSION)) {
+        if (SELECTOR && file.endsWith(SVG_EXTENSION)) {
           var index = file.lastIndexOf(ICON_OUTLINE_STYLE);
           if (index == -1) {
             index = file.lastIndexOf(ICON_FILLED_STYLE);

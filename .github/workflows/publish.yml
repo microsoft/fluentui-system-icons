@@ -10,7 +10,7 @@ env:
 jobs:
   publish-library:
     if: "!contains(github.event.head_commit.author.email, 'flubuild@microsoft.com')"
-    name: Publish mobile libraries
+    name: Publish icon libraries
     runs-on: ubuntu-latest
 
     steps:
@@ -108,6 +108,12 @@ jobs:
         rm flutter/pubspec.yaml.bk
 
     # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in svg-icons/package.json
+      run: |
+        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/svg-icons/package.json
+        rm packages/svg-icons/package.json.bk
+
+    # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version number in _manifest.json
       run: |
         sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" _iconCloud/manifest.json
@@ -118,6 +124,15 @@ jobs:
       run: |
         sed -i.bk -r "s/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]Z/$(date -u +%Y-%m-%dT%RZ)/" _iconCloud/manifest.json
         rm _iconCloud/manifest.json.bk
+
+    ## Publish svg icons
+    - name: Run svg publish
+      run: npm publish
+      working-directory: packages/svg-icons
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      with:
+        registry-url: https://registry.npmjs.org
 
     - name: Update icon sheet
       run: python3 generate_icons_md.py
