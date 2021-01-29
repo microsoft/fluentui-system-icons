@@ -126,11 +126,9 @@ jobs:
         rm _iconCloud/manifest.json.bk
 
     ## Publish svg icons
-    - name: Run svg publish
-    - run: npm install
-      working-directory: packages/svg-icons
-
+    - name: Build and publish SVGs to npm
     - run: |
+        npm install
         npm config set //registry.npmjs.org:_authToken ${NODE_AUTH_TOKEN}
         npm run build
         npm publish --ignore-scripts
