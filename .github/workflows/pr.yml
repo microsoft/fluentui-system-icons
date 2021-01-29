@@ -22,6 +22,7 @@ jobs:
 
     - run: |
         npm config set //registry.npmjs.org:_authToken ${NODE_AUTH_TOKEN}
+        npm run build
         npm publish --ignore-scripts --dry-run
       working-directory: packages/svg-icons
       env:
