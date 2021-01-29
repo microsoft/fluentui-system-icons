@@ -14,9 +14,7 @@
     "rename": "renamer --find ic_fluent_ ./icons/*",
     "optimize": "svgo --folder=./icons --precision=2 --disable=removeViewBox,mergePaths",
     "unfill": "node unfill.js --path=./icons/",
-    "build": "npm run copy && npm run rename && npm run optimize && npm run unfill",
-    "prepublishOnly": "npm run build",
-    "postpublish": "npm run clean"
+    "build": "npm run copy && npm run rename && npm run optimize && npm run unfill"
   },
   "devDependencies": {
     "renamer": "^2.0.1",
