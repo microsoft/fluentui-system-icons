@@ -127,12 +127,12 @@ jobs:
 
     ## Publish svg icons
     - name: Run svg publish
-      run: npm publish
+      run: |
+        npm config set //registry.npmjs.org:_authToken ${NODE_AUTH_TOKEN}
+        npm publish --ignore-scripts --dry-run
       working-directory: packages/svg-icons
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      with:
-        registry-url: https://registry.npmjs.org
 
     - name: Update icon sheet
       run: python3 generate_icons_md.py
