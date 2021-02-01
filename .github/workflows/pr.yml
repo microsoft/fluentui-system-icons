@@ -32,8 +32,4 @@ jobs:
       with:
         token: ${{ secrets.NPM_TOKEN }}
         access: public
-        dry-run: true
         package: packages/svg-icons/package.json
-
-    - run: npm run clean
-      working-directory: packages/svg-icons
