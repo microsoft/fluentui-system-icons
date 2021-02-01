@@ -21,16 +21,10 @@ jobs:
     - run: npm install
       working-directory: importer
 
-    ## Publish svg icons
-    - name: Build and publish SVGs to npm
-      with:
+    - name: Run svg publish
+     with:
         registry-url: https://registry.npmjs.org
-
-      run: |
-        npm install
-        npm run build
-        npm publish --ignore-scripts --access public
-        npm run clean
-      working-directory: packages/svg-icons
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+     run: npm publish
+        working-directory: packages/svg-icons
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
