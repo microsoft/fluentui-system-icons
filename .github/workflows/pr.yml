@@ -23,9 +23,11 @@ jobs:
 
     ## Publish svg icons
     - name: Build and publish SVGs to npm
+      with:
+        registry-url: https://registry.npmjs.org
+
       run: |
         npm install
-        npm config set //registry.npmjs.org:_authToken ${NODE_AUTH_TOKEN}
         npm run build
         npm publish --ignore-scripts --access public
         npm run clean
