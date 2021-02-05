@@ -804,6 +804,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.bot_24_regular, 'bot_24_regular', 24),
 
+  FluentUISampleIcon(FluentIcons.bot_add_20_regular, 'bot_add_20_regular', 20),
+
   FluentUISampleIcon(FluentIcons.bot_add_24_regular, 'bot_add_24_regular', 24),
 
   FluentUISampleIcon(FluentIcons.branch_24_regular, 'branch_24_regular', 24),
@@ -1340,6 +1342,14 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.channel_unfollow_24_regular, 'channel_unfollow_24_regular', 24),
 
+  FluentUISampleIcon(FluentIcons.chart_person_20_regular, 'chart_person_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.chart_person_24_regular, 'chart_person_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.chart_person_28_regular, 'chart_person_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.chart_person_48_regular, 'chart_person_48_regular', 48),
+
   FluentUISampleIcon(FluentIcons.chat_16_regular, 'chat_16_regular', 16),
 
   FluentUISampleIcon(FluentIcons.chat_20_regular, 'chat_20_regular', 20),
@@ -1853,6 +1863,8 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.convert_to_type_20_regular, 'convert_to_type_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.convert_to_type_24_regular, 'convert_to_type_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.convert_to_type_off_20_regular, 'convert_to_type_off_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.cookies_20_regular, 'cookies_20_regular', 20),
 
@@ -3580,9 +3592,15 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.mic_on_48_regular, 'mic_on_48_regular', 48),
 
+  FluentUISampleIcon(FluentIcons.mic_prohibited_16_regular, 'mic_prohibited_16_regular', 16),
+
   FluentUISampleIcon(FluentIcons.mic_prohibited_20_regular, 'mic_prohibited_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.mic_prohibited_24_regular, 'mic_prohibited_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.mic_prohibited_28_regular, 'mic_prohibited_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.mic_prohibited_48_regular, 'mic_prohibited_48_regular', 48),
 
   FluentUISampleIcon(FluentIcons.mic_settings_24_regular, 'mic_settings_24_regular', 24),
 
@@ -5992,6 +6010,16 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.tv_arrow_right_20_regular, 'tv_arrow_right_20_regular', 20),
 
+  FluentUISampleIcon(FluentIcons.tv_usb_16_regular, 'tv_usb_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.tv_usb_20_regular, 'tv_usb_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.tv_usb_24_regular, 'tv_usb_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.tv_usb_28_regular, 'tv_usb_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.tv_usb_48_regular, 'tv_usb_48_regular', 48),
+
   FluentUISampleIcon(FluentIcons.uninstall_app_24_regular, 'uninstall_app_24_regular', 24),
 
   FluentUISampleIcon(FluentIcons.unlock_20_regular, 'unlock_20_regular', 20),
@@ -6078,6 +6106,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.video_360_24_regular, 'video_360_24_regular', 24),
 
+  FluentUISampleIcon(FluentIcons.video_360_off_20_regular, 'video_360_off_20_regular', 20),
+
   FluentUISampleIcon(FluentIcons.video_background_effect_20_regular, 'video_background_effect_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.video_background_effect_24_regular, 'video_background_effect_24_regular', 24),
@@ -6120,7 +6150,13 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.video_play_pause_24_regular, 'video_play_pause_24_regular', 24),
 
+  FluentUISampleIcon(FluentIcons.video_prohibited_16_regular, 'video_prohibited_16_regular', 16),
+
   FluentUISampleIcon(FluentIcons.video_prohibited_20_regular, 'video_prohibited_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.video_prohibited_24_regular, 'video_prohibited_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.video_prohibited_28_regular, 'video_prohibited_28_regular', 28),
 
   FluentUISampleIcon(FluentIcons.video_recording_20_regular, 'video_recording_20_regular', 20),
 
@@ -7224,6 +7260,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.bot_24_filled, 'bot_24_filled', 24),
 
+  FluentUISampleIcon(FluentIcons.bot_add_20_filled, 'bot_add_20_filled', 20),
+
   FluentUISampleIcon(FluentIcons.bot_add_24_filled, 'bot_add_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.branch_24_filled, 'branch_24_filled', 24),
@@ -7760,6 +7798,14 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.channel_unfollow_24_filled, 'channel_unfollow_24_filled', 24),
 
+  FluentUISampleIcon(FluentIcons.chart_person_20_filled, 'chart_person_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.chart_person_24_filled, 'chart_person_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.chart_person_28_filled, 'chart_person_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.chart_person_48_filled, 'chart_person_48_filled', 48),
+
   FluentUISampleIcon(FluentIcons.chat_16_filled, 'chat_16_filled', 16),
 
   FluentUISampleIcon(FluentIcons.chat_20_filled, 'chat_20_filled', 20),
@@ -8259,6 +8305,8 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.convert_to_type_20_filled, 'convert_to_type_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.convert_to_type_24_filled, 'convert_to_type_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.convert_to_type_off_20_filled, 'convert_to_type_off_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.cookies_20_filled, 'cookies_20_filled', 20),
 
@@ -10008,9 +10056,15 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.mic_on_48_filled, 'mic_on_48_filled', 48),
 
+  FluentUISampleIcon(FluentIcons.mic_prohibited_16_filled, 'mic_prohibited_16_filled', 16),
+
   FluentUISampleIcon(FluentIcons.mic_prohibited_20_filled, 'mic_prohibited_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.mic_prohibited_24_filled, 'mic_prohibited_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.mic_prohibited_28_filled, 'mic_prohibited_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.mic_prohibited_48_filled, 'mic_prohibited_48_filled', 48),
 
   FluentUISampleIcon(FluentIcons.mic_settings_24_filled, 'mic_settings_24_filled', 24),
 
@@ -12430,6 +12484,16 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.tv_arrow_right_20_filled, 'tv_arrow_right_20_filled', 20),
 
+  FluentUISampleIcon(FluentIcons.tv_usb_16_filled, 'tv_usb_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.tv_usb_20_filled, 'tv_usb_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.tv_usb_24_filled, 'tv_usb_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.tv_usb_28_filled, 'tv_usb_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.tv_usb_48_filled, 'tv_usb_48_filled', 48),
+
   FluentUISampleIcon(FluentIcons.uninstall_app_24_filled, 'uninstall_app_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.unlock_20_filled, 'unlock_20_filled', 20),
@@ -12516,6 +12580,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.video_360_24_filled, 'video_360_24_filled', 24),
 
+  FluentUISampleIcon(FluentIcons.video_360_off_20_filled, 'video_360_off_20_filled', 20),
+
   FluentUISampleIcon(FluentIcons.video_background_effect_20_filled, 'video_background_effect_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.video_background_effect_24_filled, 'video_background_effect_24_filled', 24),
@@ -12558,7 +12624,13 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.video_play_pause_24_filled, 'video_play_pause_24_filled', 24),
 
+  FluentUISampleIcon(FluentIcons.video_prohibited_16_filled, 'video_prohibited_16_filled', 16),
+
   FluentUISampleIcon(FluentIcons.video_prohibited_20_filled, 'video_prohibited_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.video_prohibited_24_filled, 'video_prohibited_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.video_prohibited_28_filled, 'video_prohibited_28_filled', 28),
 
   FluentUISampleIcon(FluentIcons.video_recording_20_filled, 'video_recording_20_filled', 20),
 

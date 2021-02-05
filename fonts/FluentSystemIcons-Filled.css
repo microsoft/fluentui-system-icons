@@ -1,6 +1,6 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.ttf?115c65660d1ce44771cbbda1226fc267") format("truetype");
+    src: url("./FluentSystemIcons-Filled.ttf?6e842245fe5120018c146c4329f6a09a") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -9670,4 +9670,58 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_vehicle_truck_profile_24_filled:before {
     content: "\fd93";
+}
+.icon-ic_fluent_bot_add_20_filled:before {
+    content: "\fd94";
+}
+.icon-ic_fluent_chart_person_20_filled:before {
+    content: "\fd95";
+}
+.icon-ic_fluent_chart_person_24_filled:before {
+    content: "\fd96";
+}
+.icon-ic_fluent_chart_person_28_filled:before {
+    content: "\fd97";
+}
+.icon-ic_fluent_chart_person_48_filled:before {
+    content: "\fd98";
+}
+.icon-ic_fluent_convert_to_type_off_20_filled:before {
+    content: "\fd99";
+}
+.icon-ic_fluent_mic_prohibited_16_filled:before {
+    content: "\fd9a";
+}
+.icon-ic_fluent_mic_prohibited_28_filled:before {
+    content: "\fd9b";
+}
+.icon-ic_fluent_mic_prohibited_48_filled:before {
+    content: "\fd9c";
+}
+.icon-ic_fluent_tv_usb_16_filled:before {
+    content: "\fd9d";
+}
+.icon-ic_fluent_tv_usb_20_filled:before {
+    content: "\fd9e";
+}
+.icon-ic_fluent_tv_usb_24_filled:before {
+    content: "\fd9f";
+}
+.icon-ic_fluent_tv_usb_28_filled:before {
+    content: "\fda0";
+}
+.icon-ic_fluent_tv_usb_48_filled:before {
+    content: "\fda1";
+}
+.icon-ic_fluent_video_360_off_20_filled:before {
+    content: "\fda2";
+}
+.icon-ic_fluent_video_prohibited_16_filled:before {
+    content: "\fda3";
+}
+.icon-ic_fluent_video_prohibited_24_filled:before {
+    content: "\fda4";
+}
+.icon-ic_fluent_video_prohibited_28_filled:before {
+    content: "\fda5";
 }

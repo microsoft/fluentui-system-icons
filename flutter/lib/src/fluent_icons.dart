@@ -1209,6 +1209,9 @@ class FluentIcons {
   /// fluent icon named "bot" in size 24 and regular style.
   static const IconData bot_24_regular = IconData(0xf1f9, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "bot_add" in size 20 and regular style.
+  static const IconData bot_add_20_regular = IconData(0xfd8b, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "bot_add" in size 24 and regular style.
   static const IconData bot_add_24_regular = IconData(0xf1fa, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -2013,6 +2016,18 @@ class FluentIcons {
   /// fluent icon named "channel_unfollow" in size 24 and regular style.
   static const IconData channel_unfollow_24_regular = IconData(0xf285, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "chart_person" in size 20 and regular style.
+  static const IconData chart_person_20_regular = IconData(0xfd8c, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "chart_person" in size 24 and regular style.
+  static const IconData chart_person_24_regular = IconData(0xfd8d, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "chart_person" in size 28 and regular style.
+  static const IconData chart_person_28_regular = IconData(0xfd8e, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "chart_person" in size 48 and regular style.
+  static const IconData chart_person_48_regular = IconData(0xfd8f, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "chat" in size 16 and regular style.
   static const IconData chat_16_regular = IconData(0xf96b, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -2783,6 +2798,9 @@ class FluentIcons {
 
   /// fluent icon named "convert_to_type" in size 24 and regular style.
   static const IconData convert_to_type_24_regular = IconData(0xfd2d, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "convert_to_type_off" in size 20 and regular style.
+  static const IconData convert_to_type_off_20_regular = IconData(0xfd90, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "cookies" in size 20 and regular style.
   static const IconData cookies_20_regular = IconData(0xf328, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -5373,11 +5391,20 @@ class FluentIcons {
   /// fluent icon named "mic_on" in size 48 and regular style.
   static const IconData mic_on_48_regular = IconData(0xf547, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "mic_prohibited" in size 16 and regular style.
+  static const IconData mic_prohibited_16_regular = IconData(0xfd91, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "mic_prohibited" in size 20 and regular style.
   static const IconData mic_prohibited_20_regular = IconData(0xfb40, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "mic_prohibited" in size 24 and regular style.
   static const IconData mic_prohibited_24_regular = IconData(0xfa46, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "mic_prohibited" in size 28 and regular style.
+  static const IconData mic_prohibited_28_regular = IconData(0xfd92, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "mic_prohibited" in size 48 and regular style.
+  static const IconData mic_prohibited_48_regular = IconData(0xfd93, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "mic_settings" in size 24 and regular style.
   static const IconData mic_settings_24_regular = IconData(0xf548, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -8991,6 +9018,21 @@ class FluentIcons {
   /// fluent icon named "tv_arrow_right" in size 20 and regular style.
   static const IconData tv_arrow_right_20_regular = IconData(0xfba8, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "tv_usb" in size 16 and regular style.
+  static const IconData tv_usb_16_regular = IconData(0xfd94, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "tv_usb" in size 20 and regular style.
+  static const IconData tv_usb_20_regular = IconData(0xfd95, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "tv_usb" in size 24 and regular style.
+  static const IconData tv_usb_24_regular = IconData(0xfd96, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "tv_usb" in size 28 and regular style.
+  static const IconData tv_usb_28_regular = IconData(0xfd97, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "tv_usb" in size 48 and regular style.
+  static const IconData tv_usb_48_regular = IconData(0xfd98, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "uninstall_app" in size 24 and regular style.
   static const IconData uninstall_app_24_regular = IconData(0xf838, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -9120,6 +9162,9 @@ class FluentIcons {
   /// fluent icon named "video_360" in size 24 and regular style.
   static const IconData video_360_24_regular = IconData(0xfb5d, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "video_360_off" in size 20 and regular style.
+  static const IconData video_360_off_20_regular = IconData(0xfd99, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "video_background_effect" in size 20 and regular style.
   static const IconData video_background_effect_20_regular = IconData(0xfb20, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -9183,8 +9228,17 @@ class FluentIcons {
   /// fluent icon named "video_play_pause" in size 24 and regular style.
   static const IconData video_play_pause_24_regular = IconData(0xf857, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "video_prohibited" in size 16 and regular style.
+  static const IconData video_prohibited_16_regular = IconData(0xfd9a, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "video_prohibited" in size 20 and regular style.
   static const IconData video_prohibited_20_regular = IconData(0xfb67, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "video_prohibited" in size 24 and regular style.
+  static const IconData video_prohibited_24_regular = IconData(0xfd9b, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "video_prohibited" in size 28 and regular style.
+  static const IconData video_prohibited_28_regular = IconData(0xfd9c, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "video_recording" in size 20 and regular style.
   static const IconData video_recording_20_regular = IconData(0xfbaa, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -10841,6 +10895,9 @@ class FluentIcons {
   /// fluent icon named "bot" in size 24 and filled style.
   static const IconData bot_24_filled = IconData(0xf1f9, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
+  /// fluent icon named "bot_add" in size 20 and filled style.
+  static const IconData bot_add_20_filled = IconData(0xfd94, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
   /// fluent icon named "bot_add" in size 24 and filled style.
   static const IconData bot_add_24_filled = IconData(0xf1fa, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
@@ -11645,6 +11702,18 @@ class FluentIcons {
   /// fluent icon named "channel_unfollow" in size 24 and filled style.
   static const IconData channel_unfollow_24_filled = IconData(0xf285, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
+  /// fluent icon named "chart_person" in size 20 and filled style.
+  static const IconData chart_person_20_filled = IconData(0xfd95, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "chart_person" in size 24 and filled style.
+  static const IconData chart_person_24_filled = IconData(0xfd96, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "chart_person" in size 28 and filled style.
+  static const IconData chart_person_28_filled = IconData(0xfd97, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "chart_person" in size 48 and filled style.
+  static const IconData chart_person_48_filled = IconData(0xfd98, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
   /// fluent icon named "chat" in size 16 and filled style.
   static const IconData chat_16_filled = IconData(0xf983, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
@@ -12394,6 +12463,9 @@ class FluentIcons {
 
   /// fluent icon named "convert_to_type" in size 24 and filled style.
   static const IconData convert_to_type_24_filled = IconData(0xfd36, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "convert_to_type_off" in size 20 and filled style.
+  static const IconData convert_to_type_off_20_filled = IconData(0xfd99, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "cookies" in size 20 and filled style.
   static const IconData cookies_20_filled = IconData(0xf328, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
@@ -15017,11 +15089,20 @@ class FluentIcons {
   /// fluent icon named "mic_on" in size 48 and filled style.
   static const IconData mic_on_48_filled = IconData(0xf551, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
+  /// fluent icon named "mic_prohibited" in size 16 and filled style.
+  static const IconData mic_prohibited_16_filled = IconData(0xfd9a, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
   /// fluent icon named "mic_prohibited" in size 20 and filled style.
   static const IconData mic_prohibited_20_filled = IconData(0xfb48, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "mic_prohibited" in size 24 and filled style.
   static const IconData mic_prohibited_24_filled = IconData(0xfa57, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "mic_prohibited" in size 28 and filled style.
+  static const IconData mic_prohibited_28_filled = IconData(0xfd9b, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "mic_prohibited" in size 48 and filled style.
+  static const IconData mic_prohibited_48_filled = IconData(0xfd9c, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "mic_settings" in size 24 and filled style.
   static const IconData mic_settings_24_filled = IconData(0xf552, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
@@ -18650,6 +18731,21 @@ class FluentIcons {
   /// fluent icon named "tv_arrow_right" in size 20 and filled style.
   static const IconData tv_arrow_right_20_filled = IconData(0xfbb0, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
+  /// fluent icon named "tv_usb" in size 16 and filled style.
+  static const IconData tv_usb_16_filled = IconData(0xfd9d, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "tv_usb" in size 20 and filled style.
+  static const IconData tv_usb_20_filled = IconData(0xfd9e, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "tv_usb" in size 24 and filled style.
+  static const IconData tv_usb_24_filled = IconData(0xfd9f, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "tv_usb" in size 28 and filled style.
+  static const IconData tv_usb_28_filled = IconData(0xfda0, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "tv_usb" in size 48 and filled style.
+  static const IconData tv_usb_48_filled = IconData(0xfda1, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
   /// fluent icon named "uninstall_app" in size 24 and filled style.
   static const IconData uninstall_app_24_filled = IconData(0xf850, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
@@ -18779,6 +18875,9 @@ class FluentIcons {
   /// fluent icon named "video_360" in size 24 and filled style.
   static const IconData video_360_24_filled = IconData(0xfb65, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
+  /// fluent icon named "video_360_off" in size 20 and filled style.
+  static const IconData video_360_off_20_filled = IconData(0xfda2, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
   /// fluent icon named "video_background_effect" in size 20 and filled style.
   static const IconData video_background_effect_20_filled = IconData(0xfb28, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
@@ -18842,8 +18941,17 @@ class FluentIcons {
   /// fluent icon named "video_play_pause" in size 24 and filled style.
   static const IconData video_play_pause_24_filled = IconData(0xf86f, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
+  /// fluent icon named "video_prohibited" in size 16 and filled style.
+  static const IconData video_prohibited_16_filled = IconData(0xfda3, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
   /// fluent icon named "video_prohibited" in size 20 and filled style.
   static const IconData video_prohibited_20_filled = IconData(0xfb6f, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "video_prohibited" in size 24 and filled style.
+  static const IconData video_prohibited_24_filled = IconData(0xfda4, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "video_prohibited" in size 28 and filled style.
+  static const IconData video_prohibited_28_filled = IconData(0xfda5, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "video_recording" in size 20 and filled style.
   static const IconData video_recording_20_filled = IconData(0xfbb2, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
