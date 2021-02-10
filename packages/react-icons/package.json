@@ -15,10 +15,10 @@
     "convert": "npx @svgr/cli --no-prettier --template template.js -d ./components ./intermediate/",
     "optimize": "svgo --folder=./intermediate --precision=2 --disable=removeViewBox,mergePaths",
     "unfill": "node unfill.js",
-    "build": "npm run copy && npm run rename && npm run optimize && npm run convert && npm run unfill",
+    "build": "npm run copy && npm run rename && npm run optimize && npm run convert && npm run unfill && npm run cleanSvg",
     "prepublishOnly": "npm run clean && npm run cleanSvg && npm run build && npm run cleanSvg",
     "postpublish": "npm run clean",
-    "rename": "renamer --find ic_fluent_ ./intermediate/*"
+    "rename": "for file in ./intermediate/ic*.svg; do mv \"$file\" \"${file/ic_fluent_/}\"; done"
   },
   "devDependencies": {
     "@svgr/cli": "^5.5.0",
