@@ -14,11 +14,12 @@
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
     "convert": "npx @svgr/cli --no-prettier --template template.js --expand-props none --typescript --replace-attr-values \"#212121={props.primary}\" -d ./components ./intermediate/",
     "optimize": "svgo --folder=./intermediate --precision=2 --disable=removeViewBox,mergePaths",
-    "build": "npm run copy && npm run rename && npm run optimize && npm run convert && npm run unfill && npm run cleanSvg",
     "unfill": "for file in ./components/*.tsx; do sed -i '.bak' 's/ fill=\"none\"//' $file; rm $file.bak; done",
+    "build": "npm run copy && npm run updatePrefix && npm run optimize && npm run convert && npm run unfill && npm run updateExport && npm run cleanSvg",
     "prepublishOnly": "npm run clean && npm run cleanSvg && npm run build && npm run cleanSvg",
     "postpublish": "npm run clean",
     "updatePrefix": "for file in ./intermediate/ic*.svg; do mv \"$file\" \"${file/ic_fluent_/}\"; done",
+    "updateExport": "for file in ./components/*.tsx; do sed -i '.bak' 's/export const/export/' $file; rm $file.bak; done"
   },
   "devDependencies": {
     "@svgr/cli": "^5.5.0",
