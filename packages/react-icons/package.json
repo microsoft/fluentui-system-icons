@@ -2,7 +2,6 @@
   "name": "@fluentui/react-icons",
   "version": "1.1.50",
   "description": "Fluent System Icons are a collection of familiar, friendly, and modern icons from Microsoft.",
-  "author": "Microsoft Inc.",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -12,7 +11,7 @@
     "clean": "shx rm -rf ./components",
     "cleanSvg": "shx rm -rf ./intermediate",
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
-    "convert": "npx @svgr/cli --no-prettier --template template.js --expand-props none --typescript --replace-attr-values \"#212121={props.primary}\" -d ./components ./intermediate/",
+    "convert": "npx @svgr/cli --template template.js --expand-props none --typescript --replace-attr-values \"#212121={primary}\" -d ./components ./intermediate/",
     "optimize": "svgo --folder=./intermediate --precision=2 --disable=removeViewBox,mergePaths",
     "unfill": "for file in ./components/*.tsx; do sed -i '.bak' 's/ fill=\"none\"//' $file; rm $file.bak; done",
     "build": "npm run copy && npm run updatePrefix && npm run optimize && npm run convert && npm run unfill && npm run updateExport && npm run cleanSvg",
