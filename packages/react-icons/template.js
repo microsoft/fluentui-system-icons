@@ -5,24 +5,22 @@ function template(
 ) {
 	const plugins = ['jsx', 'typescript']
 	const tpl = template.smart({ plugins })
-	
+
 	componentName.name = componentName.name.substring(3)
-	interfaceName = 'I' + componentName.name
-	combinedExport = '{ ' + interfaceName + ', ' + componentName.name + ' }'
 	exports.declaration.name = componentName.name
 
 	return tpl.ast`
-		${imports}
+		import * as React from "react"
+		import { JSX } from "react-jsx"
 
-		interface ${interfaceName} {
-			primary?: string
-}
+		import { IFluentIconsProps } from './IFluentIconsProps.types'
 
-		const ${componentName} = (props: ${interfaceName}) => {
+		const ${componentName} = (iconProps: IFluentIconsProps, props: React.HTMLAttributes<HTMLElement>) : JSX.Element=> {
+		const { primaryFill = "#212121", className } = iconProps;
 		return ${jsx};
 		}
 		
-		export const ${combinedExport}
+		${exports}
 	`
 }
 

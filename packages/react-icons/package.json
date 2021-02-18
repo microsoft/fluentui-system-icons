@@ -11,7 +11,7 @@
     "clean": "shx rm -rf ./components",
     "cleanSvg": "shx rm -rf ./intermediate",
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
-    "convert": "npx @svgr/cli --template template.js --expand-props none --typescript --replace-attr-values \"#212121={primary}\" -d ./components ./intermediate/",
+    "convert": "npx @svgr/cli --template template.js --expand-props start --svg-props className={className} --typescript --replace-attr-values \"#212121={primaryFill}\" -d ./components ./intermediate/",
     "optimize": "svgo --folder=./intermediate --precision=2 --disable=removeViewBox,mergePaths",
     "unfill": "for file in ./components/*.tsx; do sed -i '.bak' 's/ fill=\"none\"//' $file; rm $file.bak; done",
     "build": "npm run copy && npm run updatePrefix && npm run optimize && npm run convert && npm run unfill && npm run updateExport && npm run cleanSvg",
