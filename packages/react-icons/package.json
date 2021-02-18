@@ -8,20 +8,22 @@
     "url": "https://github.com/microsoft/fluentui-system-icons.git"
   },
   "scripts": {
-    "clean": "shx rm -rf ./components",
+    "clean": "for file in ./components/*.tsx; do shx rm $file; done",
     "cleanSvg": "shx rm -rf ./intermediate",
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
     "convert": "npx @svgr/cli --template template.js --expand-props start --svg-props className={className} --typescript --replace-attr-values \"#212121={primaryFill}\" -d ./components ./intermediate/",
     "optimize": "svgo --folder=./intermediate --precision=2 --disable=removeViewBox,mergePaths",
-    "unfill": "for file in ./components/*.tsx; do sed -i '.bak' 's/ fill=\"none\"//' $file; rm $file.bak; done",
-    "build": "npm run copy && npm run updatePrefix && npm run optimize && npm run convert && npm run unfill && npm run updateExport && npm run cleanSvg",
+    "unfill": "for file in ./components/*.tsx; do shx sed -i 's/fill=\"none\"//' $file; done",
+    "build": "npm run copy && npm run updatePrefix && npm run optimize && npm run convert && npm run unfill && npm run cleanSvg",
     "prepublishOnly": "npm run clean && npm run cleanSvg && npm run build && npm run cleanSvg",
     "postpublish": "npm run clean",
-    "updatePrefix": "for file in ./intermediate/ic*.svg; do mv \"$file\" \"${file/ic_fluent_/}\"; done",
-    "updateExport": "for file in ./components/*.tsx; do sed -i '.bak' 's/export const/export/' $file; rm $file.bak; done"
+    "updatePrefix": "for file in ./intermediate/ic*.svg; do shx mv \"$file\" \"${file/ic_fluent_/}\"; done",
+    "updateExport": "for file in ./components/*.tsx; do shx sed -i '.bak' 's/export const/export/' $file; shx rm $file.bak; done"
   },
   "devDependencies": {
     "@svgr/cli": "^5.5.0",
+    "react": "^17.0.1",
+    "react-jsx": "^1.0.0",
     "shx": "^0.3.2",
     "svgo": "^1.3.2",
     "yargs": "^14.0.0"
