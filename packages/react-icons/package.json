@@ -8,7 +8,7 @@
     "url": "https://github.com/microsoft/fluentui-system-icons.git"
   },
   "scripts": {
-    "clean": "find ./src/components -type f -name \"*.tsx\" -delete",
+    "clean": "find ./src -type f -name \"*.tsx\" -delete",
     "cleanSvg": "rm -rf ./intermediate",
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
     "convert": "npx @svgr/cli --template template.js --index-template indexTemplate.js --expand-props start --svg-props className={className} --typescript --replace-attr-values \"#212121={primaryFill}\" -d ./src/components ./intermediate/ && mv ./src/components/index.tsx ./src/ && echo \"\nexport { IFluentIconsProps } from './IFluentIconsProps.types'\" >> src/index.tsx",
