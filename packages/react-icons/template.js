@@ -16,7 +16,7 @@ function template(
 		import { IFluentIconsProps } from '../IFluentIconsProps.types'
 
 		const ${componentName} = (iconProps: IFluentIconsProps, props: React.HTMLAttributes<HTMLElement>) : JSX.Element=> {
-		const { primaryFill = "#212121", className } = iconProps;
+		const { primaryFill, className } = iconProps;
 		return ${jsx};
 		}
 		
