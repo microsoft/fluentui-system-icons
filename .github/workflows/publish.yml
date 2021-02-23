@@ -114,6 +114,12 @@ jobs:
         rm packages/svg-icons/package.json.bk
 
     # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in react-icons/package.json
+      run: |
+        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/react-icons/package.json
+        rm packages/react-icons/package.json.bk
+
+    # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version number in _manifest.json
       run: |
         sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" _iconCloud/manifest.json
@@ -136,6 +142,18 @@ jobs:
         token: ${{ secrets.NPM_TOKEN }}
         access: public
         package: packages/svg-icons/package.json
+
+    - name: Build React library
+      run: |
+        npm install
+        npm run build
+      working-directory: packages/react-icons
+
+    - uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+        access: public
+        package: packages/react-icons/package.json
 
     - name: Update icon sheet
       run: python3 generate_icons_md.py
