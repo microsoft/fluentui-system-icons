@@ -159,7 +159,7 @@ jobs:
     - name: convert
       uses: mikeal/npx@master
       with:
-        args: "@svgr/cli --index-template indexTemplate.js --template template.js --expand-props start --svg-props className={className} --typescript --replace-attr-values \"#212121={primaryFill}\" -d ./src/components ./intermediate/ && mv ./src/components/index.tsx ./src/"
+        args: "@svgr/cli --index-template indexTemplate.js --template template.js --expand-props start --svg-props className={className} --typescript --replace-attr-values \\\"#212121={primaryFill}\\\" -d ./src/components ./intermediate/ && mv ./src/components/index.tsx ./src/"
 
     - name: Run postconvert
       run: npm run postconvert
