@@ -15,8 +15,6 @@
     "optimize": "svgo --folder=./intermediate --precision=2 --disable=removeViewBox,mergePaths",
     "unfill": "find ./src/components -type f -name \"*.tsx\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./src/components -type f -name \"*.bak\" -delete",
     "build": "npm run copy && npm run updatePrefix && npm run optimize && npm run convert && npm run unfill && npm run cleanSvg",
-    "prepublishOnly": "npm run clean && npm run cleanSvg && npm run build && npm run cleanSvg",
-    "postpublish": "npm run clean",
     "updatePrefix": "find ./intermediate -type f -name \"ic_fluent*\" | renamer --find \"ic_fluent_\" --replace \"\" "
   },
   "devDependencies": {
