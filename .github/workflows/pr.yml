@@ -152,8 +152,17 @@ jobs:
     - run: npm install
       working-directory: packages/react-icons
 
-    - name: Run build
-      run: npm run build
+    - name: Run preconvert
+      run: npm run preconvert
+      working-directory: packages/react-icons
+    
+    - name: convert
+      uses: mikeal/npx@master
+      with:
+        args: "@svgr/cli --index-template indexTemplate.js --template template.js --expand-props start --svg-props className={className} --typescript --replace-attr-values \"#212121={primaryFill}\" -d ./src/components ./intermediate/ && mv ./src/components/index.tsx ./src/"
+
+    - name: Run postconvert
+      run: npm run postconvert
       working-directory: packages/react-icons
 
     - name: Build SVG library
