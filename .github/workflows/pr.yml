@@ -149,31 +149,7 @@ jobs:
     - run: npm install
       working-directory: importer
 
-    - run: npm install
-      working-directory: packages/react-icons
-
-    - name: Run build
-      run: npm run build
-      working-directory: packages/react-icons
-
-    - name: Build SVG library
-      run: |
+    - run: |
         npm install
         npm run build
-      working-directory: packages/svg-icons
-
-    - uses: JS-DevTools/npm-publish@v1
-      with:
-        token: ${{ secrets.NPM_TOKEN }}
-        access: public
-        package: packages/svg-icons/package.json
-        dry-run: true
-
-    - uses: JS-DevTools/npm-publish@v1
-      with:
-        token: ${{ secrets.NPM_TOKEN }}
-        access: public
-        package: packages/react-icons/package.json
-        dry-run: true
-
-
+      working-directory: packages/react-icons
