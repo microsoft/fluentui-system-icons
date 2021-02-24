@@ -11,16 +11,16 @@
     "clean": "find ./src -type f -name \"*.tsx\" -delete",
     "cleanSvg": "rm -rf ./intermediate",
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
-    "convert": "npx @svgr/cli --index-template indexTemplate.js --template template.js --expand-props start --svg-props className={className} --typescript --replace-attr-values \"#212121={primaryFill}\" -d ./src/components ./intermediate/ && mv ./src/components/index.tsx ./src/",
+    "convertCli": "npx @svgr/cli --index-template indexTemplate.js --template template.js --expand-props start --svg-props className={className} --typescript --replace-attr-values \"#212121={primaryFill}\" -d ./src/components ./intermediate/ && mv ./src/components/index.tsx ./src/",
+    "convert": "node convert.js --source=./intermediate --dest=./src",
     "optimize": "svgo --folder=./intermediate --precision=2 --disable=removeViewBox,mergePaths",
-    "unfill": "find ./src/components -type f -name \"*.tsx\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./src/components -type f -name \"*.bak\" -delete",
-    "preconvert": "npm run copy && npm run updatePrefix && npm run optimize",
-    "postconvert": "npm run unfill && npm run cleanSvg",
-    "build": "npm run copy && npm run updatePrefix && npm run optimize && npm run convert && npm run unfill && npm run cleanSvg",
-    "updatePrefix": "find ./intermediate -type f -name \"ic_fluent*\" | renamer --find \"ic_fluent_\" --replace \"\" "
+    "unfill": "find ./intermediate -type f -name \"*.svg\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./intermediate -type f -name \"*.bak\" -delete",
+    "build": "npm run copy && npm run optimize && npm run unfill && npm run convert && npm run cleanSvg"
   },
   "devDependencies": {
-    "@svgr/cli": "^5.5.0",
+    "@svgr/core": "^5.5.0",
+    "@types/react": "^17.0.2",
+    "lodash": "^4.17.21",
     "react": "^17.0.1",
     "react-jsx": "^1.0.0",
     "renamer": "^2.0.1",
