@@ -137,17 +137,17 @@ jobs:
         npm run build
       working-directory: packages/svg-icons
 
-    - uses: JS-DevTools/npm-publish@v1
-      with:
-        token: ${{ secrets.NPM_TOKEN }}
-        access: public
-        package: packages/svg-icons/package.json
-
     - name: Build React library
       run: |
         npm install
         npm run build
       working-directory: packages/react-icons
+
+    - uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+        access: public
+        package: packages/svg-icons/package.json
 
     - uses: JS-DevTools/npm-publish@v1
       with:
