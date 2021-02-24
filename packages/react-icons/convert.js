@@ -33,6 +33,10 @@ if (!fs.existsSync(DEST_PATH)) {
   fs.mkdirSync(DEST_PATH);
 }
 
+if (!fs.existsSync(DEST_PATH + '/components')) {
+  fs.mkdirSync(DEST_PATH + '/components');
+}
+
 processFolder(SRC_PATH, DEST_PATH)
 
 function processFolder(srcPath, destPath) {
@@ -45,7 +49,7 @@ function processFolder(srcPath, destPath) {
     var svgrOpts = {
       indexTemplate: indexTemplate,
       template: fileTemplate,
-      expandProps: "start",
+      expandProps: 'start',
       svgProps: { className: '{className}' },
       replaceAttrValues: { '#212121': '{primaryFill}' },
       typescript: true,
