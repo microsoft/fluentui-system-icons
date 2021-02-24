@@ -11,16 +11,8 @@ const template = require("./template");
 
 const SRC_PATH = argv.source;
 const DEST_PATH = argv.dest;
-const EXTENSION = argv.extension;
-const TARGET = argv.target;
-const SELECTOR = argv.selector;
 
-const SVG_EXTENSION = '.svg'
-const XML_EXTENSION = '.xml'
 const TSX_EXTENSION = '.tsx'
-
-const iconNames = new Set();
-const date = new Date();
 
 if (!SRC_PATH) {
   throw new Error("Icon source folder not specified by --source");
@@ -39,6 +31,9 @@ if (!fs.existsSync(DEST_PATH + '/components')) {
 
 processFolder(SRC_PATH, DEST_PATH)
 
+/*
+  Process a folder of svg files and convert them to React components, following naming patterns for the FluentUI System Icons
+*/
 function processFolder(srcPath, destPath) {
   fs.readdir(srcPath, function (err, files) {
     if (err) {
@@ -46,45 +41,43 @@ function processFolder(srcPath, destPath) {
       process.exit(1);
     }
 
+    // These options will be passed to svgr/core
+    // See https://react-svgr.com/docs/options/ for more info
     var svgrOpts = {
-      indexTemplate: indexTemplate,
       template: fileTemplate,
-      expandProps: 'start',
-      svgProps: { className: '{className}' },
-      replaceAttrValues: { '#212121': '{primaryFill}' },
+      expandProps: 'start', // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
+      svgProps: { className: '{className}' }, // In order to provide styling, className will be used
+      replaceAttrValues: { '#212121': '{primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
       typescript: true,
     }
 
+    // Build out the index for the components as we process the files
     var indexContents = ''
 
     files.forEach(function (file, index) {
       var componentPath = destPath + '/components'
-      var iconName = file.substr(0, file.length - 4)
-      iconName = iconName.replace("ic_fluent_", "")
+      var iconName = file.substr(0, file.length - 4) // strip '.svg'
+      iconName = iconName.replace("ic_fluent_", "") // strip ic_fluent_
       var srcFile = path.join(srcPath, file)
-      var destFilename = _.camelCase(iconName)
-      destFilename = destFilename.replace(destFilename.substring(0, 1), destFilename.substring(0, 1).toUpperCase())
-      var destFile = path.join(componentPath, destFilename + TSX_EXTENSION)
+      var destFilename = _.camelCase(iconName) // We want them to be camelCase, so access_time would become accessTime here
+      destFilename = destFilename.replace(destFilename.substring(0, 1), destFilename.substring(0, 1).toUpperCase()) // capitalize the first letter
+      var destFile = path.join(componentPath, destFilename + TSX_EXTENSION) // get the qualified path
+
       var iconContent = fs.readFileSync(srcFile, { encoding: "utf8" })
       jsCode = svgr.default.sync(iconContent, svgrOpts, { filePath: file })
-      // console.log(jsCode)
       indexContents += '\nexport { default as ' + destFilename + ' } from \'./components/' + destFilename + '\''
       fs.writeFileSync(destFile, jsCode, (err) => {
         if (err) throw err;
       });
     });
 
+    // Finally add the interface definition and then write out the index.
     indexContents += '\nexport { IFluentIconsProps } from \'./IFluentIconsProps.types\''
     fs.writeFileSync(destPath + '/index.tsx', indexContents, (err) => {
       if (err) throw err;
     });
   });
 }
-
-/*
-    "convert": "npx @svgr/cli --index-template indexTemplate.js --template template.js --expand-props start --svg-props className={className} --typescript --replace-attr-values \"#212121={primaryFill}\" -d ./src/components ./intermediate/ && mv ./src/components/index.tsx ./src/",
-
-*/
 
 function fileTemplate(
   { template },
@@ -111,14 +104,4 @@ function fileTemplate(
 		
 		${exports}
 	`
-}
-
-function indexTemplate(filePaths) {
-  console.log('wtf')
-  const exportEntries = filePaths.map(filePath => {
-    const basename = path.basename(filePath, path.extname(filePath))
-    const exportName = /^\d/.test(basename) ? `${basename}` : basename
-    return `export { default as ${exportName} } from './components/${basename}'`
-  })
-  return exportEntries.join('\n')
 }
