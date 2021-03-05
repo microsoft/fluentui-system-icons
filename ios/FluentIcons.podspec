@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'FluentIcons'
-  s.version          = '1.1.103'
+  s.version          = '1.1.104'
   s.summary          = 'FluentIcons'
 
   s.description      = <<-DESC

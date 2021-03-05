@@ -6458,6 +6458,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.video_person_star_off_20_regular, 'video_person_star_off_20_regular', 20),
 
+  FluentUISampleIcon(FluentIcons.video_person_star_off_24_regular, 'video_person_star_off_24_regular', 24),
+
   FluentUISampleIcon(FluentIcons.video_play_pause_24_regular, 'video_play_pause_24_regular', 24),
 
   FluentUISampleIcon(FluentIcons.video_prohibited_16_regular, 'video_prohibited_16_regular', 16),
@@ -13233,6 +13235,8 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.video_person_star_24_filled, 'video_person_star_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.video_person_star_off_20_filled, 'video_person_star_off_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.video_person_star_off_24_filled, 'video_person_star_off_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.video_play_pause_24_filled, 'video_play_pause_24_filled', 24),
 
