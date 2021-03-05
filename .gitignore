@@ -20,4 +20,5 @@ xcuserdata
 
 /packages/svg-icons/icons
 packages/react-icons/intermediate
+packages/react-icons/src/components
 packages/react-icons/src/index.tsx
