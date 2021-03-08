@@ -9690,6 +9690,9 @@ class FluentIcons {
   /// fluent icon named "video_person_star_off" in size 20 and regular style.
   static const IconData video_person_star_off_20_regular = IconData(0xfba9, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "video_person_star_off" in size 24 and regular style.
+  static const IconData video_person_star_off_24_regular = IconData(0xfe39, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "video_play_pause" in size 24 and regular style.
   static const IconData video_play_pause_24_regular = IconData(0xf857, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -19855,6 +19858,9 @@ class FluentIcons {
 
   /// fluent icon named "video_person_star_off" in size 20 and filled style.
   static const IconData video_person_star_off_20_filled = IconData(0xfbb1, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "video_person_star_off" in size 24 and filled style.
+  static const IconData video_person_star_off_24_filled = IconData(0xfe3d, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "video_play_pause" in size 24 and filled style.
   static const IconData video_play_pause_24_filled = IconData(0xf86f, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);

@@ -5746,6 +5746,8 @@ import Foundation
   case videoPersonStar24Regular
   case videoPersonStarOff20Filled
   case videoPersonStarOff20Regular
+  case videoPersonStarOff24Filled
+  case videoPersonStarOff24Regular
   case videoPlayPause24Filled
   case videoPlayPause24Regular
   case videoProhibited16Filled
@@ -11901,6 +11903,8 @@ import Foundation
     case .videoPersonStar24Regular: return "ic_fluent_video_person_star_24_regular"
     case .videoPersonStarOff20Filled: return "ic_fluent_video_person_star_off_20_filled"
     case .videoPersonStarOff20Regular: return "ic_fluent_video_person_star_off_20_regular"
+    case .videoPersonStarOff24Filled: return "ic_fluent_video_person_star_off_24_filled"
+    case .videoPersonStarOff24Regular: return "ic_fluent_video_person_star_off_24_regular"
     case .videoPlayPause24Filled: return "ic_fluent_video_play_pause_24_filled"
     case .videoPlayPause24Regular: return "ic_fluent_video_play_pause_24_regular"
     case .videoProhibited16Filled: return "ic_fluent_video_prohibited_16_filled"
@@ -11967,10 +11971,10 @@ import Foundation
     case .warning20Regular: return "ic_fluent_warning_20_regular"
     case .warning24Filled: return "ic_fluent_warning_24_filled"
     case .warning24Regular: return "ic_fluent_warning_24_regular"
-    case .warningShield20Filled: return "ic_fluent_warning_shield_20_filled"
-    case .warningShield20Regular: return "ic_fluent_warning_shield_20_regular"
     default: break }
     switch self {
+    case .warningShield20Filled: return "ic_fluent_warning_shield_20_filled"
+    case .warningShield20Regular: return "ic_fluent_warning_shield_20_regular"
     case .weatherBlowingSnow20Filled: return "ic_fluent_weather_blowing_snow_20_filled"
     case .weatherBlowingSnow20Regular: return "ic_fluent_weather_blowing_snow_20_regular"
     case .weatherBlowingSnow24Filled: return "ic_fluent_weather_blowing_snow_24_filled"
@@ -12069,10 +12073,10 @@ import Foundation
     case .weatherRainShowersNight24Regular: return "ic_fluent_weather_rain_showers_night_24_regular"
     case .weatherRainShowersNight48Filled: return "ic_fluent_weather_rain_showers_night_48_filled"
     case .weatherRainShowersNight48Regular: return "ic_fluent_weather_rain_showers_night_48_regular"
-    case .weatherRainSnow20Filled: return "ic_fluent_weather_rain_snow_20_filled"
-    case .weatherRainSnow20Regular: return "ic_fluent_weather_rain_snow_20_regular"
     default: break }
     switch self {
+    case .weatherRainSnow20Filled: return "ic_fluent_weather_rain_snow_20_filled"
+    case .weatherRainSnow20Regular: return "ic_fluent_weather_rain_snow_20_regular"
     case .weatherRainSnow24Filled: return "ic_fluent_weather_rain_snow_24_filled"
     case .weatherRainSnow24Regular: return "ic_fluent_weather_rain_snow_24_regular"
     case .weatherRainSnow48Filled: return "ic_fluent_weather_rain_snow_48_filled"
@@ -12171,10 +12175,10 @@ import Foundation
     case .windowDevTools20Regular: return "ic_fluent_window_dev_tools_20_regular"
     case .windowDevTools24Filled: return "ic_fluent_window_dev_tools_24_filled"
     case .windowDevTools24Regular: return "ic_fluent_window_dev_tools_24_regular"
-    case .windowHeaderHorizontal20Filled: return "ic_fluent_window_header_horizontal_20_filled"
-    case .windowHeaderHorizontal20Regular: return "ic_fluent_window_header_horizontal_20_regular"
     default: break }
     switch self {
+    case .windowHeaderHorizontal20Filled: return "ic_fluent_window_header_horizontal_20_filled"
+    case .windowHeaderHorizontal20Regular: return "ic_fluent_window_header_horizontal_20_regular"
     case .windowHeaderVertical20Filled: return "ic_fluent_window_header_vertical_20_filled"
     case .windowHeaderVertical20Regular: return "ic_fluent_window_header_vertical_20_regular"
     case .windowInprivate20Filled: return "ic_fluent_window_inprivate_20_filled"
@@ -18068,6 +18072,8 @@ import Foundation
     case .videoPersonStar24Regular: return ".videoPersonStar24Regular"
     case .videoPersonStarOff20Filled: return ".videoPersonStarOff20Filled"
     case .videoPersonStarOff20Regular: return ".videoPersonStarOff20Regular"
+    case .videoPersonStarOff24Filled: return ".videoPersonStarOff24Filled"
+    case .videoPersonStarOff24Regular: return ".videoPersonStarOff24Regular"
     case .videoPlayPause24Filled: return ".videoPlayPause24Filled"
     case .videoPlayPause24Regular: return ".videoPlayPause24Regular"
     case .videoProhibited16Filled: return ".videoProhibited16Filled"
@@ -18134,10 +18140,10 @@ import Foundation
     case .warning20Regular: return ".warning20Regular"
     case .warning24Filled: return ".warning24Filled"
     case .warning24Regular: return ".warning24Regular"
-    case .warningShield20Filled: return ".warningShield20Filled"
-    case .warningShield20Regular: return ".warningShield20Regular"
     default: break }
     switch self {
+    case .warningShield20Filled: return ".warningShield20Filled"
+    case .warningShield20Regular: return ".warningShield20Regular"
     case .weatherBlowingSnow20Filled: return ".weatherBlowingSnow20Filled"
     case .weatherBlowingSnow20Regular: return ".weatherBlowingSnow20Regular"
     case .weatherBlowingSnow24Filled: return ".weatherBlowingSnow24Filled"
@@ -18236,10 +18242,10 @@ import Foundation
     case .weatherRainShowersNight24Regular: return ".weatherRainShowersNight24Regular"
     case .weatherRainShowersNight48Filled: return ".weatherRainShowersNight48Filled"
     case .weatherRainShowersNight48Regular: return ".weatherRainShowersNight48Regular"
-    case .weatherRainSnow20Filled: return ".weatherRainSnow20Filled"
-    case .weatherRainSnow20Regular: return ".weatherRainSnow20Regular"
     default: break }
     switch self {
+    case .weatherRainSnow20Filled: return ".weatherRainSnow20Filled"
+    case .weatherRainSnow20Regular: return ".weatherRainSnow20Regular"
     case .weatherRainSnow24Filled: return ".weatherRainSnow24Filled"
     case .weatherRainSnow24Regular: return ".weatherRainSnow24Regular"
     case .weatherRainSnow48Filled: return ".weatherRainSnow48Filled"
@@ -18338,10 +18344,10 @@ import Foundation
     case .windowDevTools20Regular: return ".windowDevTools20Regular"
     case .windowDevTools24Filled: return ".windowDevTools24Filled"
     case .windowDevTools24Regular: return ".windowDevTools24Regular"
-    case .windowHeaderHorizontal20Filled: return ".windowHeaderHorizontal20Filled"
-    case .windowHeaderHorizontal20Regular: return ".windowHeaderHorizontal20Regular"
     default: break }
     switch self {
+    case .windowHeaderHorizontal20Filled: return ".windowHeaderHorizontal20Filled"
+    case .windowHeaderHorizontal20Regular: return ".windowHeaderHorizontal20Regular"
     case .windowHeaderVertical20Filled: return ".windowHeaderVertical20Filled"
     case .windowHeaderVertical20Regular: return ".windowHeaderVertical20Regular"
     case .windowInprivate20Filled: return ".windowInprivate20Filled"

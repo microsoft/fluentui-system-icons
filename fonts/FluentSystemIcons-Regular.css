@@ -1,6 +1,6 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.ttf?158135f9d56387196105e8c294244daa") format("truetype");
+    src: url("./FluentSystemIcons-Regular.ttf?e44688dce886cfcd390cbf277ab30760") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -10165,4 +10165,7 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_teddy_20_regular:before {
     content: "\fe38";
+}
+.icon-ic_fluent_video_person_star_off_24_regular:before {
+    content: "\fe39";
 }
