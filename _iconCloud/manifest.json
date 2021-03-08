@@ -110,6 +110,15 @@
       "variablePaths": [
         "~/_iconCloud/keywords.variables.json"
       ]
+    },
+    {
+      "dataPath": "~/_iconCloud/metaphors.csv",
+      "transformPaths": [
+        "~/_iconCloud/metaphors.transforms.json"
+      ],
+      "variablePaths": [
+        "~/_iconCloud/metaphors.variables.json"
+      ]
     }
   ],
   "iconType": "Svg",
@@ -127,6 +136,11 @@
     "metadata-1-dataStyle" : "ClickablePill",
     "metadata-1-dataMapping" : "Icon:iconKeywords",
     "metadata-1-sorting" : "ByWeight",
+    "metadata-2-label" : "Metaphors",
+    "metadata-2-dataType" : "Keywords",
+    "metadata-2-dataStyle" : "ClickablePill",
+    "metadata-2-dataMapping" : "Icon:iconMetaphors",
+    "metadata-2-sorting" : "None",
     "requestIconUrl": "https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR18J4l1dADVOphobsZW8ExlUNVZTMFpJNVk4SURPWVNDSlZDNFFSWks5VS4u"
   },
   "libraryVersion": "1.1.105"
