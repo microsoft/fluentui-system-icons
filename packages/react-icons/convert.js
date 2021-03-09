@@ -45,8 +45,8 @@ function processFolder(srcPath, destPath) {
     // See https://react-svgr.com/docs/options/ for more info
     var svgrOpts = {
       template: fileTemplate,
-      expandProps: 'start', // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
-      svgProps: { className: '{className}' }, // In order to provide styling, className will be used
+      expandProps: false, // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
+      svgProps: { className: '{className}', ariaPrefixlabel:'{props["aria-label"]}', ariaPrefixhidden:'{props["aria-hidden"]}'}, // In order to provide styling, className will be used
       replaceAttrValues: { '#212121': '{primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
       typescript: true,
     }
@@ -73,6 +73,8 @@ function processFolder(srcPath, destPath) {
 
     // Finally add the interface definition and then write out the index.
     indexContents += '\nexport { IFluentIconsProps } from \'./IFluentIconsProps.types\''
+    indexContents += '\nexport { ILabelIconProps } from \'./ILabelIconProps.types\''
+    indexContents += '\nexport { IPresentationIconProps } from \'./IPresentationIconProps.types\''
     fs.writeFileSync(destPath + '/index.tsx', indexContents, (err) => {
       if (err) throw err;
     });
@@ -92,12 +94,13 @@ function fileTemplate(
   exports.declaration.name = componentName.name
 
   return tpl.ast`
-		import * as React from "react"
-		import { JSX } from "react-jsx"
+		import * as React from "react";
 
-		import { IFluentIconsProps } from '../IFluentIconsProps.types'
+		import { IFluentIconsProps } from '../IFluentIconsProps.types';
+    import { ILabelIconProps } from '../ILabelIconProps.types';
+    import { IPresentationIconProps } from '../IPresentationIconProps.types';
 
-		const ${componentName} = (iconProps: IFluentIconsProps, props: React.HTMLAttributes<HTMLElement>) : JSX.Element=> {
+		const ${componentName} = (iconProps: IFluentIconsProps, props: (ILabelIconProps | IPresentationIconProps)) : JSX.Element=> {
 		const { primaryFill, className } = iconProps;
 		return ${jsx};
 		}
