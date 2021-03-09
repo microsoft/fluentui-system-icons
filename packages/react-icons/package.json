@@ -1,9 +1,9 @@
 {
   "name": "@fluentui/react-icons",
   "version": "1.1.105",
-  "main": "lib/cjs/index.js",
-  "module": "lib/cjs/index.js",
-  "typings": "lib/cjs/index.d.ts",
+  "main": "lib/esm/index.js",
+  "module": "lib/esm/index.js",
+  "typings": "lib/esm/index.d.ts",
   "description": "Fluent System Icons are a collection of familiar, friendly, and modern icons from Microsoft.",
   "license": "MIT",
   "repository": {

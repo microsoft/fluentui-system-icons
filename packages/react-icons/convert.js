@@ -100,7 +100,7 @@ function fileTemplate(
     import { ILabelIconProps } from '../ILabelIconProps.types';
     import { IPresentationIconProps } from '../IPresentationIconProps.types';
 
-		const ${componentName} = (iconProps: IFluentIconsProps, props: (ILabelIconProps | IPresentationIconProps)) : JSX.Element=> {
+		const ${componentName} = (iconProps: IFluentIconsProps, props: (ILabelIconProps | IPresentationIconProps)): JSX.Element=> {
 		const { primaryFill, className } = iconProps;
 		return ${jsx};
 		}
