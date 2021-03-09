@@ -89,8 +89,7 @@ def process_assets():
                     "author": "xcode"
                 },
                 "properties": {
-                    "template-rendering-intent": rendering_intent,
-                    "preserves-vector-representation": True
+                    "template-rendering-intent": rendering_intent
                 }
             }
 
