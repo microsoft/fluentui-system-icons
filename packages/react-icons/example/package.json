@@ -1,0 +1,36 @@
+{
+	"name": "fabric-starter-sandbox",
+	"version": "1.0.0",
+    "private": true,
+	"description": "",
+	"keywords": [],
+	"main": "src/example.tsx",
+	"dependencies": {
+		"react": "16.8.4",
+		"react-dom": "16.8.6",
+		"react-scripts": "4.0.3"
+	},
+	"devDependencies": {
+		"@types/react": "16.8.8",
+		"@types/react-dom": "16.8.2",
+		"typescript": "3.3.3"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test --env=jsdom",
+		"eject": "react-scripts eject",
+		"create16": "touch ./src/index.tsx && rm ./src/index.tsx && touch ./src/index.tsx && cat exampleStart.tsx >> src/index.tsx && ls -1 ../src/components/*16* | sed -e 's/\\.\\.\\/src\\/components\\///' | sed -e 's/\\..*$//' | sed -e 's/\\(.*\\)/\\1,/' >> src/index.tsx && cat exampleMiddle.tsx >> src/index.tsx  && ls -1 ../src/components/*16* | sed -e 's/\\.\\.\\/src\\/components\\///' | sed -e 's/\\..*$//' | sed -e 's/\\(.*\\)/\\<\\1\\/\\>/' >> src/index.tsx && cat exampleEnd.tsx >> src/index.tsx",
+		"create20": "touch ./src/index.tsx && rm ./src/index.tsx && touch ./src/index.tsx && cat exampleStart.tsx >> src/index.tsx && ls -1 ../src/components/*20* | sed -e 's/\\.\\.\\/src\\/components\\///' | sed -e 's/\\..*$//' | sed -e 's/\\(.*\\)/\\1,/' >> src/index.tsx && cat exampleMiddle.tsx >> src/index.tsx  && ls -1 ../src/components/*20* | sed -e 's/\\.\\.\\/src\\/components\\///' | sed -e 's/\\..*$//' | sed -e 's/\\(.*\\)/\\<\\1\\/\\>/' >> src/index.tsx && cat exampleEnd.tsx >> src/index.tsx",
+		"create24": "touch ./src/index.tsx && rm ./src/index.tsx && touch ./src/index.tsx && cat exampleStart.tsx >> src/index.tsx && ls -1 ../src/components/*24* | sed -e 's/\\.\\.\\/src\\/components\\///' | sed -e 's/\\..*$//' | sed -e 's/\\(.*\\)/\\1,/' >> src/index.tsx && cat exampleMiddle.tsx >> src/index.tsx  && ls -1 ../src/components/*24* | sed -e 's/\\.\\.\\/src\\/components\\///' | sed -e 's/\\..*$//' | sed -e 's/\\(.*\\)/\\<\\1\\/\\>/' >> src/index.tsx && cat exampleEnd.tsx >> src/index.tsx",
+		"create28": "touch ./src/index.tsx && rm ./src/index.tsx && touch ./src/index.tsx && cat exampleStart.tsx >> src/index.tsx && ls -1 ../src/components/*28* | sed -e 's/\\.\\.\\/src\\/components\\///' | sed -e 's/\\..*$//' | sed -e 's/\\(.*\\)/\\1,/' >> src/index.tsx && cat exampleMiddle.tsx >> src/index.tsx  && ls -1 ../src/components/*28* | sed -e 's/\\.\\.\\/src\\/components\\///' | sed -e 's/\\..*$//' | sed -e 's/\\(.*\\)/\\<\\1\\/\\>/' >> src/index.tsx && cat exampleEnd.tsx >> src/index.tsx",
+		"create48": "touch ./src/index.tsx && rm ./src/index.tsx && touch ./src/index.tsx && cat exampleStart.tsx >> src/index.tsx && ls -1 ../src/components/*48* | sed -e 's/\\.\\.\\/src\\/components\\///' | sed -e 's/\\..*$//' | sed -e 's/\\(.*\\)/\\1,/' >> src/index.tsx && cat exampleMiddle.tsx >> src/index.tsx  && ls -1 ../src/components/*48* | sed -e 's/\\.\\.\\/src\\/components\\///' | sed -e 's/\\..*$//' | sed -e 's/\\(.*\\)/\\<\\1\\/\\>/' >> src/index.tsx && cat exampleEnd.tsx >> src/index.tsx",
+		"createAll": "touch ./src/index.tsx && rm ./src/index.tsx && touch ./src/index.tsx && cat exampleStart.tsx >> src/index.tsx && ls -1 ../src/components/* | sed -e 's/\\.\\.\\/src\\/components\\///' | sed -e 's/\\..*$//' | sed -e 's/\\(.*\\)/\\1,/' >> src/index.tsx && cat exampleMiddle.tsx >> src/index.tsx  && ls -1 ../src/components/* | sed -e 's/\\.\\.\\/src\\/components\\///' | sed -e 's/\\..*$//' | sed -e 's/\\(.*\\)/\\<\\1\\/\\>/' >> src/index.tsx && cat exampleEnd.tsx >> src/index.tsx"
+	},
+	"browserslist": [
+		">0.2%",
+		"not dead",
+		"not ie <= 11",
+		"not op_mini all"
+	]
+}
