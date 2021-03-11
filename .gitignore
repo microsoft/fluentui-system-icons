@@ -22,3 +22,5 @@ xcuserdata
 packages/react-icons/intermediate
 packages/react-icons/src/components
 packages/react-icons/src/index.tsx
+packages/react-icons/lib/
+packages/react-icons/yarn.lock
