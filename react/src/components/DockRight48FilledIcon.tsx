@@ -1,9 +1,0 @@
-import * as React from 'react';
-  const DockRight48FilledIcon = () => {
-    return(
-    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12.75C4 10.1266 6.12665 8 8.75 8H39.25C41.8734 8 44 10.1266 44 12.75V35.25C44 37.8734 41.8734 40 39.25 40H8.75C6.12665 40 4 37.8734 4 35.25V12.75ZM8.75 10.5C7.50736 10.5 6.5 11.5074 6.5 12.75V35.25C6.5 36.4926 7.50736 37.5 8.75 37.5H29V10.5H8.75Z" fill="#212121"/>
-</svg>
-
-  )};
-export default DockRight48FilledIcon;
