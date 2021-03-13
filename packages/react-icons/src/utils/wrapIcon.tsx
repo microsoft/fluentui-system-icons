@@ -5,7 +5,6 @@ const wrapIcon = (icon: JSX.Element) => {
     const Component: React.FC<React.HTMLAttributes<HTMLSpanElement> & IFluentIconsProps> = (props) => {
         const containerProps = props['aria-label'] || props['aria-labelledby'] || props.title
         ? {
-            'aria-label': props['aria-label'],
             role: 'img',
           }
         : {
@@ -13,7 +12,7 @@ const wrapIcon = (icon: JSX.Element) => {
           };
             
         return (
-            <span {...containerProps}>
+            <span {...props} {...containerProps}>
                 {React.cloneElement(
                     icon,
                     {

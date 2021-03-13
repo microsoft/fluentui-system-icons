@@ -72,7 +72,8 @@ function processFolder(srcPath, destPath) {
     });
 
     // Finally add the interface definition and then write out the index.
-    indexContents += '\nexport { IFluentIconsProps } from \'./IFluentIconsProps.types\''
+    indexContents += '\nexport { IFluentIconsProps } from \'./utils/IFluentIconsProps.types\''
+    indexContents += '\nexport { default as wrapIcon } from \'./utils/wrapIcon\''
     fs.writeFileSync(destPath + '/index.tsx', indexContents, (err) => {
       if (err) throw err;
     });
@@ -93,7 +94,7 @@ function fileTemplate(
 
   return tpl.ast`
 		import * as React from "react";
-		import { IFluentIconsProps } from '../IFluentIconsProps.types';
+		import { IFluentIconsProps } from '../utils/IFluentIconsProps.types';
 
 		const ${componentName}: JSX.Element = (iconProps: IFluentIconsProps) => {
 		const { primaryFill, className } = iconProps;

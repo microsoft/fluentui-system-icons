@@ -1,8 +1,6 @@
 import * as React from "react";
 import { render } from "react-dom";
-import  AccessTime24Filled  from "./AccessTime24Filled";
-import { IFluentIconsProps } from "./IFluentIconsProps.types";
-import  wrapIcon  from "./wrapIcon";
+import { AccessTime24Filled, IFluentIconsProps, wrapIcon } from "@fluentui/react-icons";
 
 function App() {
     const cProps: IFluentIconsProps = {
