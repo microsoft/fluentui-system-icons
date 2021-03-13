@@ -1,9 +1,0 @@
-import * as React from 'react';
-  const Sim20FilledIcon = () => {
-    return(
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 5C4 3.34315 5.34315 2 7 2H10.4645C11.2601 2 12.0232 2.31607 12.5858 2.87868L15.1213 5.41421C15.6839 5.97682 16 6.73988 16 7.53553V15C16 16.6569 14.6569 18 13 18H7C5.34315 18 4 16.6569 4 15V5ZM7 10.5V11H10V9H8.5C7.67157 9 7 9.67157 7 10.5ZM7 12V13.5C7 14.3284 7.67157 15 8.5 15H10V12H7ZM11.5 15C12.3284 15 13 14.3284 13 13.5V10.5C13 9.67157 12.3284 9 11.5 9H11V15H11.5Z" fill="#212121"/>
-</svg>
-
-  )};
-export default Sim20FilledIcon;

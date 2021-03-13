@@ -7,7 +7,6 @@ const path = require("path");
 const process = require("process");
 const argv = require("yargs").boolean("selector").default("selector", false).argv;
 const _ = require("lodash");
-const template = require("./template");
 
 const SRC_PATH = argv.source;
 const DEST_PATH = argv.dest;
