@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-icons-preview",
+  "name": "@fluentui/react-icons",
   "version": "1.1.107",
   "main": "lib/esm/index.js",
   "module": "lib/esm/index.js",
