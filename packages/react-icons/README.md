@@ -47,12 +47,12 @@ Viewing the icons in a webpage
 ---
 If you would like to view the icons in a webpage, navigate to the example folder in your terminal, and run any one of the following commands, followed by `npm run start`:
 
-- `npm run create16`: lists all of the size 16 icons in the package
-- `npm run create20`: lists all of the size 20 icons in the package
-- `npm run create24`: lists all of the size 24 icons in the package
-- `npm run create28`: lists all of the size 28 icons in the package
-- `npm run create48`: lists all of the size 48 icons in the package
-- `npm run createAll`: lists all of the icons in the package
+- `npm run show16`: lists all of the size 16 icons in the package
+- `npm run show20`: lists all of the size 20 icons in the package
+- `npm run show24`: lists all of the size 24 icons in the package
+- `npm run show28`: lists all of the size 28 icons in the package
+- `npm run show48`: lists all of the size 48 icons in the package
+- `npm run showAll`: lists all of the icons in the package
 
 ## Appendix and FAQ
 
