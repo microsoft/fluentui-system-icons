@@ -1,5 +1,5 @@
 apply plugin: 'maven-publish'
-apply plugin: 'com.jfrog.bintray'
+//apply plugin: 'com.jfrog.bintray'
 
 task sourceJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
@@ -8,6 +8,16 @@ task sourceJar(type: Jar) {
 
 project.afterEvaluate {
     publishing {
+        repositories {
+            maven {
+                name = "GithubPackages"
+                url = uri("https://maven.pkg.github.com/microsoft/fluentui-system-icons")
+                credentials {
+                    username = System.getenv('GITHUB_USER') ?: project.properties['GITHUB_USER']
+                    password = System.getenv('GITHUB_PERSONAL_ACCESS_TOKEN') ?: project.properties['GITHUB_PERSONAL_ACCESS_TOKEN']
+                }
+            }
+        }
         publications {
             fluenticons(MavenPublication) {
                 groupId project.POM_GROUP_ID
@@ -18,19 +28,33 @@ project.afterEvaluate {
             }
         }
     }
-
-    bintray {
-        user = System.getProperty('bintrayUser')
-        key = System.getProperty('bintrayKey')
-        publications = ['fluenticons']
-        publish = true
-        pkg {
-            repo = 'fluent-design'
-            name = 'fluent-system-icons'
-            version {
-                name = System.getProperty("versionName", project.VERSION_NAME + "-SNAPSHOT")
-                vcsTag = System.getProperty("versionName", project.VERSION_NAME + "-SNAPSHOT")
-            }
-        }
-    }
 }
+
+// project.afterEvaluate {
+//     publishing {
+//         publications {
+//             fluenticons(MavenPublication) {
+//                 groupId project.POM_GROUP_ID
+//                 artifactId project.POM_ARTIFACT_ID
+//                 version System.getProperty("versionName", project.VERSION_NAME + "-SNAPSHOT")
+//                 artifact bundleReleaseAar
+//                 artifact sourceJar
+//             }
+//         }
+//     }
+
+//     bintray {
+//         user = System.getProperty('bintrayUser')
+//         key = System.getProperty('bintrayKey')
+//         publications = ['fluenticons']
+//         publish = true
+//         pkg {
+//             repo = 'fluent-design'
+//             name = 'fluent-system-icons'
+//             version {
+//                 name = System.getProperty("versionName", project.VERSION_NAME + "-SNAPSHOT")
+//                 vcsTag = System.getProperty("versionName", project.VERSION_NAME + "-SNAPSHOT")
+//             }
+//         }
+//     }
+// }
