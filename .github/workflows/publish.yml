@@ -1,8 +1,9 @@
 name: Publish library
 
-on:
-  push:
-    branches: [ master ]
+on: pull_request
+# on:
+#   push:
+#     branches: [ master ]
 
 env:
   LIBRARY_VERSION: 1.1.${{ github.run_number }}
@@ -36,10 +37,10 @@ jobs:
     - run: npm install
       working-directory: importer
 
-    ## iOS
-    - name: Run iOS generate script
-      run: npm run deploy:ios
-      working-directory: importer
+    # ## iOS
+    # - name: Run iOS generate script
+    #   run: npm run deploy:ios
+    #   working-directory: importer
 
     ## Android
     - name: Run Android generate script
@@ -65,191 +66,191 @@ jobs:
     #     build-root-directory: android
     #     wrapper-directory: android
 
-    - name: Generate BUILD.gn file for Android
-      run: python3 generate_build_gn_android.py
-      working-directory: importer
+    # - name: Generate BUILD.gn file for Android
+    #   run: python3 generate_build_gn_android.py
+    #   working-directory: importer
 
-    ## Flutter
-    - name: Run Flutter generate script
-      run: npm run deploy:flutter
-      working-directory: importer
+    # ## Flutter
+    # - name: Run Flutter generate script
+    #   run: npm run deploy:flutter
+    #   working-directory: importer
 
-    # The name should be same as the package name on pub.dev
-    - name: 'fluentui_system_icons'
-      uses: k-paxian/dart-package-publisher@master
-      with:
-        relativePath: 'flutter'
-        skipTests: true
-        accessToken: ${{ secrets.FLUTTER_OAUTH_ACCESS_TOKEN }}
-        refreshToken: ${{ secrets.FLUTTER_OAUTH_REFRESH_TOKEN }}
+    # # The name should be same as the package name on pub.dev
+    # - name: 'fluentui_system_icons'
+    #   uses: k-paxian/dart-package-publisher@master
+    #   with:
+    #     relativePath: 'flutter'
+    #     skipTests: true
+    #     accessToken: ${{ secrets.FLUTTER_OAUTH_ACCESS_TOKEN }}
+    #     refreshToken: ${{ secrets.FLUTTER_OAUTH_REFRESH_TOKEN }}
 
-    ## Publish
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version numbers in README.md
-      run: |
-        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" README.md
-        rm README.md.bk
+    # ## Publish
+    # # Needs to be "-E" instead of "-r" on macOS
+    # - name: Replace version numbers in README.md
+    #   run: |
+    #     sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" README.md
+    #     rm README.md.bk
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version numbers in ios/README.md
-      run: |
-        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" ios/README.md
-        rm ios/README.md.bk
+    # # Needs to be "-E" instead of "-r" on macOS
+    # - name: Replace version numbers in ios/README.md
+    #   run: |
+    #     sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" ios/README.md
+    #     rm ios/README.md.bk
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in Podspec
-      run: |
-        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" ios/FluentIcons.podspec
-        rm ios/FluentIcons.podspec.bk
+    # # Needs to be "-E" instead of "-r" on macOS
+    # - name: Replace version number in Podspec
+    #   run: |
+    #     sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" ios/FluentIcons.podspec
+    #     rm ios/FluentIcons.podspec.bk
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in flutter/CHANGELOG.md
-      run: |
-        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" flutter/CHANGELOG.md
-        rm flutter/CHANGELOG.md.bk
+    # # Needs to be "-E" instead of "-r" on macOS
+    # - name: Replace version number in flutter/CHANGELOG.md
+    #   run: |
+    #     sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" flutter/CHANGELOG.md
+    #     rm flutter/CHANGELOG.md.bk
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in flutter/pubspec.yaml
-      run: |
-        sed -i.bk -r "s/version: [0-9]+\.[0-9]+\.[0-9]+/version: $NEW_VERSION/g" flutter/pubspec.yaml
-        rm flutter/pubspec.yaml.bk
+    # # Needs to be "-E" instead of "-r" on macOS
+    # - name: Replace version number in flutter/pubspec.yaml
+    #   run: |
+    #     sed -i.bk -r "s/version: [0-9]+\.[0-9]+\.[0-9]+/version: $NEW_VERSION/g" flutter/pubspec.yaml
+    #     rm flutter/pubspec.yaml.bk
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in svg-icons/package.json
-      run: |
-        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/svg-icons/package.json
-        rm packages/svg-icons/package.json.bk
+    # # Needs to be "-E" instead of "-r" on macOS
+    # - name: Replace version number in svg-icons/package.json
+    #   run: |
+    #     sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/svg-icons/package.json
+    #     rm packages/svg-icons/package.json.bk
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in react-icons/package.json
-      run: |
-        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/react-icons/package.json
-        rm packages/react-icons/package.json.bk
+    # # Needs to be "-E" instead of "-r" on macOS
+    # - name: Replace version number in react-icons/package.json
+    #   run: |
+    #     sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/react-icons/package.json
+    #     rm packages/react-icons/package.json.bk
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in _manifest.json
-      run: |
-        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" _iconCloud/manifest.json
-        rm _iconCloud/manifest.json.bk
+    # # Needs to be "-E" instead of "-r" on macOS
+    # - name: Replace version number in _manifest.json
+    #   run: |
+    #     sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" _iconCloud/manifest.json
+    #     rm _iconCloud/manifest.json.bk
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace timestamp in _manifest.json
-      run: |
-        sed -i.bk -r "s/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]Z/$(date -u +%Y-%m-%dT%RZ)/" _iconCloud/manifest.json
-        rm _iconCloud/manifest.json.bk
+    # # Needs to be "-E" instead of "-r" on macOS
+    # - name: Replace timestamp in _manifest.json
+    #   run: |
+    #     sed -i.bk -r "s/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]Z/$(date -u +%Y-%m-%dT%RZ)/" _iconCloud/manifest.json
+    #     rm _iconCloud/manifest.json.bk
 
-    - name: Build SVG library
-      run: |
-        npm install
-        npm run build
-      working-directory: packages/svg-icons
+    # - name: Build SVG library
+    #   run: |
+    #     npm install
+    #     npm run build
+    #   working-directory: packages/svg-icons
 
-    - name: Build React library
-      run: |
-        npm install
-        npm run build
-      working-directory: packages/react-icons
+    # - name: Build React library
+    #   run: |
+    #     npm install
+    #     npm run build
+    #   working-directory: packages/react-icons
 
-    - uses: JS-DevTools/npm-publish@v1
-      with:
-        token: ${{ secrets.NPM_TOKEN }}
-        access: public
-        package: packages/svg-icons/package.json
+    # - uses: JS-DevTools/npm-publish@v1
+    #   with:
+    #     token: ${{ secrets.NPM_TOKEN }}
+    #     access: public
+    #     package: packages/svg-icons/package.json
 
-    - uses: JS-DevTools/npm-publish@v1
-      with:
-        token: ${{ secrets.NPM_TOKEN }}
-        access: public
-        package: packages/react-icons/package.json
+    # - uses: JS-DevTools/npm-publish@v1
+    #   with:
+    #     token: ${{ secrets.NPM_TOKEN }}
+    #     access: public
+    #     package: packages/react-icons/package.json
 
-    - name: Update icon sheet
-      run: python3 generate_icons_md.py
+    # - name: Update icon sheet
+    #   run: python3 generate_icons_md.py
     
-    - name: Config git credentials
-      run: git config user.email "flubuild@microsoft.com" && git config user.name "Fluent Build System"
+    # - name: Config git credentials
+    #   run: git config user.email "flubuild@microsoft.com" && git config user.name "Fluent Build System"
 
-    - name: Commit version number change
-      run: |
-        git add -A
-        git commit -m "Release $NEW_VERSION"
+    # - name: Commit version number change
+    #   run: |
+    #     git add -A
+    #     git commit -m "Release $NEW_VERSION"
         
-    - name: Tag release
-      run: git tag "$NEW_VERSION"
+    # - name: Tag release
+    #   run: git tag "$NEW_VERSION"
 
-    - name: Push release
-      run: |
-        REMOTE_REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-        git push $REMOTE_REPO HEAD:master --follow-tags --tags
+    # - name: Push release
+    #   run: |
+    #     REMOTE_REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+    #     git push $REMOTE_REPO HEAD:master --follow-tags --tags
 
-  publish-android-demo:
-    name: Publish Android demo app
-    runs-on: ubuntu-latest
-    needs: publish-library
+  # publish-android-demo:
+  #   name: Publish Android demo app
+  #   runs-on: ubuntu-latest
+  #   needs: publish-library
 
-    steps:
-    - uses: actions/checkout@v2
+  #   steps:
+  #   - uses: actions/checkout@v2
 
-    - name: Bump version patch
-      run: |
-        grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec | python3 -c """
-        import sys
-        import os
-        current_version = sys.stdin.read().strip().split(\"'\")[1]
-        major, minor, patch = current_version.split('.')
-        os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
-        """
+  #   - name: Bump version patch
+  #     run: |
+  #       grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec | python3 -c """
+  #       import sys
+  #       import os
+  #       current_version = sys.stdin.read().strip().split(\"'\")[1]
+  #       major, minor, patch = current_version.split('.')
+  #       os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
+  #       """
 
-    - name: Use Node 11
-      uses: actions/setup-node@v1
-      with:
-        node-version: 11.x
+  #   - name: Use Node 11
+  #     uses: actions/setup-node@v1
+  #     with:
+  #       node-version: 11.x
 
-    - run: npm install
-      working-directory: importer
+  #   - run: npm install
+  #     working-directory: importer
 
-    - name: Run generate script
-      run: npm run deploy:android
-      working-directory: importer
+  #   - name: Run generate script
+  #     run: npm run deploy:android
+  #     working-directory: importer
 
-    - name: Setup Java
-      uses: actions/setup-java@v1
-      with:
-        java-version: 8
+  #   - name: Setup Java
+  #     uses: actions/setup-java@v1
+  #     with:
+  #       java-version: 8
 
-    - name: Restore release keystore
-      run: |
-        echo "${{ secrets.ANDROID_KEYSTORE }}" > release.keystore.asc
-        gpg -d --passphrase "${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" --batch release.keystore.asc > release.keystore
+  #   - name: Restore release keystore
+  #     run: |
+  #       echo "${{ secrets.ANDROID_KEYSTORE }}" > release.keystore.asc
+  #       gpg -d --passphrase "${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" --batch release.keystore.asc > release.keystore
 
-    - name: Build Android demo app
-      uses: eskatos/gradle-command-action@v1
-      with:
-        arguments: ':sample-showcase:assembleRelease -DversionName=${{ env.NEW_VERSION }} -DversionCode=${{ github.run_number }} -Pandroid.injected.signing.store.file=/home/runner/work/fluentui-system-icons/fluentui-system-icons/release.keystore -Pandroid.injected.signing.store.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }} -Pandroid.injected.signing.key.alias=${{ secrets.ANDROID_KEYSTORE_ALIAS }} -Pandroid.injected.signing.key.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}'
-        build-root-directory: android
-        wrapper-directory: android
+  #   - name: Build Android demo app
+  #     uses: eskatos/gradle-command-action@v1
+  #     with:
+  #       arguments: ':sample-showcase:assembleRelease -DversionName=${{ env.NEW_VERSION }} -DversionCode=${{ github.run_number }} -Pandroid.injected.signing.store.file=/home/runner/work/fluentui-system-icons/fluentui-system-icons/release.keystore -Pandroid.injected.signing.store.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }} -Pandroid.injected.signing.key.alias=${{ secrets.ANDROID_KEYSTORE_ALIAS }} -Pandroid.injected.signing.key.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}'
+  #       build-root-directory: android
+  #       wrapper-directory: android
 
-    - name: Publish apk to App Center
-      uses: wzieba/AppCenter-Github-Action@v1.0.0
-      with:
-        appName: ${{ secrets.APP_CENTER_DEMO_APP_NAME }}
-        token: ${{ secrets.APP_CENTER_TOKEN }}
-        group: Public
-        file: android/sample-showcase/build/outputs/apk/release/sample-showcase-release.apk
-        releaseNotes: Please enjoy this latest version(${{ env.NEW_VERSION }}) of Fluent System Icons Demo.
+  #   - name: Publish apk to App Center
+  #     uses: wzieba/AppCenter-Github-Action@v1.0.0
+  #     with:
+  #       appName: ${{ secrets.APP_CENTER_DEMO_APP_NAME }}
+  #       token: ${{ secrets.APP_CENTER_TOKEN }}
+  #       group: Public
+  #       file: android/sample-showcase/build/outputs/apk/release/sample-showcase-release.apk
+  #       releaseNotes: Please enjoy this latest version(${{ env.NEW_VERSION }}) of Fluent System Icons Demo.
 
-  # Only runs on the version update commit
-  # We need the new podspec available to publish to CocoaPods
-  publish-to-cocoapods:
-    if: "contains(github.event.head_commit.author.email, 'flubuild@microsoft.com')"
-    name: Publish to CocoaPods
-    runs-on: macos-latest
+  # # Only runs on the version update commit
+  # # We need the new podspec available to publish to CocoaPods
+  # publish-to-cocoapods:
+  #   if: "contains(github.event.head_commit.author.email, 'flubuild@microsoft.com')"
+  #   name: Publish to CocoaPods
+  #   runs-on: macos-latest
 
-    steps:
-    - uses: actions/checkout@v2
+  #   steps:
+  #   - uses: actions/checkout@v2
 
-    - name: Deploy to CocoaPods
-      run: |
-        pod spec lint --allow-warnings
-        pod trunk push --allow-warnings
-      env:
-        COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+  #   - name: Deploy to CocoaPods
+  #     run: |
+  #       pod spec lint --allow-warnings
+  #       pod trunk push --allow-warnings
+  #     env:
+  #       COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
