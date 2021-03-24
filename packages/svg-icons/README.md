@@ -5,7 +5,7 @@ This package provides the Fluent UI System Icons as optimized plain svg assets.
 ## Installation
 
 ```bash
-npm install @fluentui\svg-icons
+npm install @fluentui/svg-icons
 ```
 
 ## Usage
