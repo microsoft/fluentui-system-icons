@@ -1,6 +1,6 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.ttf?48b6fa67cdbd3c115bdd09b9d3f50bca") format("truetype");
+    src: url("./FluentSystemIcons-Filled.ttf?cae5aa4953b5f93c65e772acecde1e9f") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -10489,4 +10489,7 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_top_speed_20_filled:before {
     content: "\fea4";
+}
+.icon-ic_fluent_checkmark_circle_12_filled:before {
+    content: "\fea5";
 }

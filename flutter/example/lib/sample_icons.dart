@@ -1570,6 +1570,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.checkmark_48_regular, 'checkmark_48_regular', 48),
 
+  FluentUISampleIcon(FluentIcons.checkmark_circle_12_regular, 'checkmark_circle_12_regular', 12),
+
   FluentUISampleIcon(FluentIcons.checkmark_circle_16_regular, 'checkmark_circle_16_regular', 16),
 
   FluentUISampleIcon(FluentIcons.checkmark_circle_20_regular, 'checkmark_circle_20_regular', 20),
@@ -8545,6 +8547,8 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.checkmark_28_filled, 'checkmark_28_filled', 28),
 
   FluentUISampleIcon(FluentIcons.checkmark_48_filled, 'checkmark_48_filled', 48),
+
+  FluentUISampleIcon(FluentIcons.checkmark_circle_12_filled, 'checkmark_circle_12_filled', 12),
 
   FluentUISampleIcon(FluentIcons.checkmark_circle_16_filled, 'checkmark_circle_16_filled', 16),
 
