@@ -58,13 +58,6 @@ jobs:
         build-root-directory: android
         wrapper-directory: android
 
-    # - name: Build and publish Android library
-    #   uses: eskatos/gradle-command-action@v1
-    #   with:
-    #     arguments: bintrayUpload -DversionName=${{ env.NEW_VERSION }} -DbintrayUser=${{ secrets.BINTRAY_USER }} -DbintrayKey=${{ secrets.BINTRAY_KEY }}
-    #     build-root-directory: android
-    #     wrapper-directory: android
-
     - name: Generate BUILD.gn file for Android
       run: python3 generate_build_gn_android.py
       working-directory: importer
