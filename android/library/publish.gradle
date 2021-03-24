@@ -13,8 +13,8 @@ project.afterEvaluate {
                 name = "GithubPackages"
                 url = uri("https://maven.pkg.github.com/microsoft/fluentui-system-icons")
                 credentials {
-                    username = System.getenv('GITHUB_USER') ?: project.properties['GITHUB_USER']
-                    password = System.getenv('GITHUB_PERSONAL_ACCESS_TOKEN') ?: project.properties['GITHUB_PERSONAL_ACCESS_TOKEN']
+                    username = System.getProperty('githubUser')
+                    password = System.getProperty('githubToken')
                 }
             }
         }
