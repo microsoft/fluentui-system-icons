@@ -55,7 +55,7 @@ jobs:
     - name: Build and publish Android library
       uses: eskatos/gradle-command-action@v1
       with:
-        arguments: publishFluenticonsPublicationToGithubPackagesRepository -DversionName=${{ env.NEW_VERSION }} -DgithubUser=${{ env.GITHUB_ACTOR }} -DgithubToken=${{ env.GITHUB_TOKEN }}
+        arguments: publishFluenticonsPublicationToGithubPackagesRepository -DversionName=${{ env.NEW_VERSION }} -DgithubUser=${{ env.GITHUB_ACTOR }} -DgithubToken=${{ secrets.GITHUB_TOKEN }}
         build-root-directory: android
         wrapper-directory: android
 
