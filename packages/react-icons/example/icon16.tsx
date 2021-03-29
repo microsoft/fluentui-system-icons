@@ -1,6 +1,7 @@
 import * as React from "react";
 import { render } from "react-dom";
-import {Accessibility16Filled,
+import {
+    Accessibility16Filled,
 Accessibility16Regular,
 Add16Filled,
 Add16Regular,
@@ -36,6 +37,8 @@ ApprovalsApp16Filled,
 ApprovalsApp16Regular,
 Apps16Filled,
 Apps16Regular,
+AppsAddIn16Filled,
+AppsAddIn16Regular,
 Archive16Filled,
 Archive16Regular,
 ArrowBounce16Filled,
@@ -44,6 +47,8 @@ ArrowCircleDownRight16Filled,
 ArrowCircleDownRight16Regular,
 ArrowCircleUp16Filled,
 ArrowCircleUp16Regular,
+ArrowCurveDownLeft16Filled,
+ArrowCurveDownLeft16Regular,
 ArrowDown16Filled,
 ArrowDown16Regular,
 ArrowDownLeft16Filled,
@@ -94,6 +99,8 @@ ArrowUpLeft16Filled,
 ArrowUpLeft16Regular,
 ArrowUpRight16Filled,
 ArrowUpRight16Regular,
+ArrowUpload16Filled,
+ArrowUpload16Regular,
 Attach16Filled,
 Attach16Regular,
 Backpack16Filled,
@@ -110,6 +117,10 @@ Block16Filled,
 Block16Regular,
 Blur16Filled,
 Blur16Regular,
+Board16Filled,
+Board16Regular,
+BoardSplit16Filled,
+BoardSplit16Regular,
 BookNumber16Filled,
 BookNumber16Regular,
 Bookmark16Filled,
@@ -234,8 +245,12 @@ Clock16Filled,
 Clock16Regular,
 ClosedCaption16Filled,
 ClosedCaption16Regular,
+ClosedCaptionOff16Filled,
+ClosedCaptionOff16Regular,
 Cloud16Filled,
 Cloud16Regular,
+CloudDownload16Filled,
+CloudDownload16Regular,
 ColorLine16Filled,
 ColorLine16Regular,
 ColorLineAccent16Regular,
@@ -295,6 +310,8 @@ DesktopArrowRight16Filled,
 DesktopArrowRight16Regular,
 DesktopMac16Filled,
 DesktopMac16Regular,
+DesktopPulse16Filled,
+DesktopPulse16Regular,
 Dismiss16Filled,
 Dismiss16Regular,
 DismissCircle16Filled,
@@ -359,11 +376,17 @@ EyeTrackingOn16Filled,
 EyeTrackingOn16Regular,
 FStop16Filled,
 FStop16Regular,
+Filter16Filled,
+Filter16Regular,
 Flag16Filled,
 Flag16Regular,
 FlagOff16Filled,
 FlagOff16Regular,
 FlagPride16Filled,
+Flash16Filled,
+Flash16Regular,
+FlashCheckmark16Filled,
+FlashCheckmark16Regular,
 Folder16Filled,
 Folder16Regular,
 FolderArrowRight16Filled,
@@ -372,6 +395,8 @@ FolderArrowUp16Filled,
 FolderArrowUp16Regular,
 FolderOpen16Filled,
 FolderOpen16Regular,
+FolderProhibited16Filled,
+FolderProhibited16Regular,
 FolderSwap16Filled,
 FolderSwap16Regular,
 FolderZip16Filled,
@@ -394,6 +419,8 @@ GlassesOff16Filled,
 GlassesOff16Regular,
 Globe16Filled,
 Globe16Regular,
+Grid16Filled,
+Grid16Regular,
 Guest16Filled,
 Guest16Regular,
 Guitar16Filled,
@@ -417,6 +444,8 @@ Highlight16Regular,
 HighlightAccent16Filled,
 Home16Filled,
 Home16Regular,
+HomeCheckmark16Filled,
+HomeCheckmark16Regular,
 Image16Filled,
 Image16Regular,
 ImageEdit16Filled,
@@ -446,6 +475,8 @@ LeafThree16Filled,
 LeafThree16Regular,
 LeafTwo16Filled,
 LeafTwo16Regular,
+Library16Filled,
+Library16Regular,
 Lightbulb16Filled,
 Lightbulb16Regular,
 LightbulbFilament16Filled,
@@ -458,6 +489,8 @@ LinkEdit16Filled,
 LinkEdit16Regular,
 LinkSquare16Filled,
 LinkSquare16Regular,
+List16Filled,
+List16Regular,
 LocalLanguage16Filled,
 LocalLanguage16Regular,
 Location16Filled,
@@ -560,6 +593,8 @@ PeopleTeam16Filled,
 PeopleTeam16Regular,
 Person16Filled,
 Person16Regular,
+PersonAdd16Filled,
+PersonAdd16Regular,
 PersonArrowRight16Filled,
 PersonArrowRight16Regular,
 PersonAvailable16Filled,
@@ -574,6 +609,8 @@ PersonDelete16Filled,
 PersonDelete16Regular,
 PersonMail16Filled,
 PersonMail16Regular,
+PersonProhibited16Filled,
+PersonProhibited16Regular,
 PersonQuestionMark16Filled,
 PersonQuestionMark16Regular,
 PersonSupport16Filled,
@@ -610,6 +647,8 @@ PreviewLink16Filled,
 PreviewLink16Regular,
 Previous16Filled,
 Previous16Regular,
+ProhibitedMultiple16Filled,
+ProhibitedMultiple16Regular,
 ProtocolHandler16Filled,
 ProtocolHandler16Regular,
 PuzzleCube16Filled,
@@ -626,6 +665,8 @@ ReOrderDotsHorizontal16Filled,
 ReOrderDotsHorizontal16Regular,
 ReOrderDotsVertical16Filled,
 ReOrderDotsVertical16Regular,
+ReadAloud16Filled,
+ReadAloud16Regular,
 ReadingList16Filled,
 ReadingList16Regular,
 ReadingListAdd16Filled,
@@ -680,6 +721,10 @@ Shapes16Filled,
 Shapes16Regular,
 ShareScreenStop16Filled,
 ShareScreenStop16Regular,
+Shield16Filled,
+Shield16Regular,
+ShieldCheckmark16Filled,
+ShieldCheckmark16Regular,
 ShieldDismiss16Filled,
 ShieldDismiss16Regular,
 ShieldKeyhole16Filled,
@@ -856,7 +901,8 @@ Wrench16Regular,
 
 function App() {
 	return (
-		<div><Accessibility16Filled/>
+		<div>
+			<Accessibility16Filled/>
 <Accessibility16Regular/>
 <Add16Filled/>
 <Add16Regular/>
@@ -892,6 +938,8 @@ function App() {
 <ApprovalsApp16Regular/>
 <Apps16Filled/>
 <Apps16Regular/>
+<AppsAddIn16Filled/>
+<AppsAddIn16Regular/>
 <Archive16Filled/>
 <Archive16Regular/>
 <ArrowBounce16Filled/>
@@ -900,6 +948,8 @@ function App() {
 <ArrowCircleDownRight16Regular/>
 <ArrowCircleUp16Filled/>
 <ArrowCircleUp16Regular/>
+<ArrowCurveDownLeft16Filled/>
+<ArrowCurveDownLeft16Regular/>
 <ArrowDown16Filled/>
 <ArrowDown16Regular/>
 <ArrowDownLeft16Filled/>
@@ -950,6 +1000,8 @@ function App() {
 <ArrowUpLeft16Regular/>
 <ArrowUpRight16Filled/>
 <ArrowUpRight16Regular/>
+<ArrowUpload16Filled/>
+<ArrowUpload16Regular/>
 <Attach16Filled/>
 <Attach16Regular/>
 <Backpack16Filled/>
@@ -966,6 +1018,10 @@ function App() {
 <Block16Regular/>
 <Blur16Filled/>
 <Blur16Regular/>
+<Board16Filled/>
+<Board16Regular/>
+<BoardSplit16Filled/>
+<BoardSplit16Regular/>
 <BookNumber16Filled/>
 <BookNumber16Regular/>
 <Bookmark16Filled/>
@@ -1090,8 +1146,12 @@ function App() {
 <Clock16Regular/>
 <ClosedCaption16Filled/>
 <ClosedCaption16Regular/>
+<ClosedCaptionOff16Filled/>
+<ClosedCaptionOff16Regular/>
 <Cloud16Filled/>
 <Cloud16Regular/>
+<CloudDownload16Filled/>
+<CloudDownload16Regular/>
 <ColorLine16Filled/>
 <ColorLine16Regular/>
 <ColorLineAccent16Regular/>
@@ -1151,6 +1211,8 @@ function App() {
 <DesktopArrowRight16Regular/>
 <DesktopMac16Filled/>
 <DesktopMac16Regular/>
+<DesktopPulse16Filled/>
+<DesktopPulse16Regular/>
 <Dismiss16Filled/>
 <Dismiss16Regular/>
 <DismissCircle16Filled/>
@@ -1215,11 +1277,17 @@ function App() {
 <EyeTrackingOn16Regular/>
 <FStop16Filled/>
 <FStop16Regular/>
+<Filter16Filled/>
+<Filter16Regular/>
 <Flag16Filled/>
 <Flag16Regular/>
 <FlagOff16Filled/>
 <FlagOff16Regular/>
 <FlagPride16Filled/>
+<Flash16Filled/>
+<Flash16Regular/>
+<FlashCheckmark16Filled/>
+<FlashCheckmark16Regular/>
 <Folder16Filled/>
 <Folder16Regular/>
 <FolderArrowRight16Filled/>
@@ -1228,6 +1296,8 @@ function App() {
 <FolderArrowUp16Regular/>
 <FolderOpen16Filled/>
 <FolderOpen16Regular/>
+<FolderProhibited16Filled/>
+<FolderProhibited16Regular/>
 <FolderSwap16Filled/>
 <FolderSwap16Regular/>
 <FolderZip16Filled/>
@@ -1250,6 +1320,8 @@ function App() {
 <GlassesOff16Regular/>
 <Globe16Filled/>
 <Globe16Regular/>
+<Grid16Filled/>
+<Grid16Regular/>
 <Guest16Filled/>
 <Guest16Regular/>
 <Guitar16Filled/>
@@ -1273,6 +1345,8 @@ function App() {
 <HighlightAccent16Filled/>
 <Home16Filled/>
 <Home16Regular/>
+<HomeCheckmark16Filled/>
+<HomeCheckmark16Regular/>
 <Image16Filled/>
 <Image16Regular/>
 <ImageEdit16Filled/>
@@ -1302,6 +1376,8 @@ function App() {
 <LeafThree16Regular/>
 <LeafTwo16Filled/>
 <LeafTwo16Regular/>
+<Library16Filled/>
+<Library16Regular/>
 <Lightbulb16Filled/>
 <Lightbulb16Regular/>
 <LightbulbFilament16Filled/>
@@ -1314,6 +1390,8 @@ function App() {
 <LinkEdit16Regular/>
 <LinkSquare16Filled/>
 <LinkSquare16Regular/>
+<List16Filled/>
+<List16Regular/>
 <LocalLanguage16Filled/>
 <LocalLanguage16Regular/>
 <Location16Filled/>
@@ -1416,6 +1494,8 @@ function App() {
 <PeopleTeam16Regular/>
 <Person16Filled/>
 <Person16Regular/>
+<PersonAdd16Filled/>
+<PersonAdd16Regular/>
 <PersonArrowRight16Filled/>
 <PersonArrowRight16Regular/>
 <PersonAvailable16Filled/>
@@ -1430,6 +1510,8 @@ function App() {
 <PersonDelete16Regular/>
 <PersonMail16Filled/>
 <PersonMail16Regular/>
+<PersonProhibited16Filled/>
+<PersonProhibited16Regular/>
 <PersonQuestionMark16Filled/>
 <PersonQuestionMark16Regular/>
 <PersonSupport16Filled/>
@@ -1466,6 +1548,8 @@ function App() {
 <PreviewLink16Regular/>
 <Previous16Filled/>
 <Previous16Regular/>
+<ProhibitedMultiple16Filled/>
+<ProhibitedMultiple16Regular/>
 <ProtocolHandler16Filled/>
 <ProtocolHandler16Regular/>
 <PuzzleCube16Filled/>
@@ -1482,6 +1566,8 @@ function App() {
 <ReOrderDotsHorizontal16Regular/>
 <ReOrderDotsVertical16Filled/>
 <ReOrderDotsVertical16Regular/>
+<ReadAloud16Filled/>
+<ReadAloud16Regular/>
 <ReadingList16Filled/>
 <ReadingList16Regular/>
 <ReadingListAdd16Filled/>
@@ -1536,6 +1622,10 @@ function App() {
 <Shapes16Regular/>
 <ShareScreenStop16Filled/>
 <ShareScreenStop16Regular/>
+<Shield16Filled/>
+<Shield16Regular/>
+<ShieldCheckmark16Filled/>
+<ShieldCheckmark16Regular/>
 <ShieldDismiss16Filled/>
 <ShieldDismiss16Regular/>
 <ShieldKeyhole16Filled/>

@@ -45,7 +45,7 @@ ReactDOM.render(
 
 Viewing the icons in a webpage
 ---
-If you would like to view the icons in a webpage, navigate to the example folder in your terminal, and run any one of the following commands, followed by `npm run start`:
+If you would like to view the icons in a webpage, navigate to the example folder in your terminal, and run any one of the following commands, followed by `npm run start` (note: if on a windows machine, run these commands in windows powershell):
 
 - `npm run show16`: lists all of the size 16 icons in the package
 - `npm run show20`: lists all of the size 20 icons in the package

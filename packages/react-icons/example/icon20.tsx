@@ -1,6 +1,7 @@
 import * as React from "react";
 import { render } from "react-dom";
-import {Accessibility20Filled,
+import {
+    Accessibility20Filled,
 Accessibility20Regular,
 Add20Filled,
 Add20Regular,
@@ -194,6 +195,10 @@ Bluetooth20Filled,
 Bluetooth20Regular,
 Blur20Filled,
 Blur20Regular,
+Board20Filled,
+Board20Regular,
+BoardSplit20Filled,
+BoardSplit20Regular,
 Book20Filled,
 Book20Regular,
 BookAdd20Filled,
@@ -392,6 +397,8 @@ ChevronRight20Filled,
 ChevronRight20Regular,
 ChevronUp20Filled,
 ChevronUp20Regular,
+ChevronUpDown20Filled,
+ChevronUpDown20Regular,
 Circle20Filled,
 Circle20Regular,
 CircleHalfFill20Filled,
@@ -426,8 +433,12 @@ ClockAlarm20Filled,
 ClockAlarm20Regular,
 ClosedCaption20Filled,
 ClosedCaption20Regular,
+ClosedCaptionOff20Filled,
+ClosedCaptionOff20Regular,
 Cloud20Filled,
 Cloud20Regular,
+CloudDownload20Filled,
+CloudDownload20Regular,
 CloudSync20Filled,
 CloudSync20Regular,
 Code20Filled,
@@ -533,10 +544,14 @@ Desktop20Filled,
 Desktop20Regular,
 DesktopArrowRight20Filled,
 DesktopArrowRight20Regular,
+DesktopPulse20Filled,
+DesktopPulse20Regular,
 DesktopSpeaker20Filled,
 DesktopSpeaker20Regular,
 DesktopSpeakerOff20Filled,
 DesktopSpeakerOff20Regular,
+DeveloperBoard20Filled,
+DeveloperBoard20Regular,
 DeviceMeetingRoom20Filled,
 DeviceMeetingRoom20Regular,
 DeviceMeetingRoomRemote20Filled,
@@ -643,6 +658,8 @@ EmojiAdd20Filled,
 EmojiAdd20Regular,
 EmojiAngry20Filled,
 EmojiAngry20Regular,
+EmojiHand20Filled,
+EmojiHand20Regular,
 EmojiLaugh20Filled,
 EmojiLaugh20Regular,
 EmojiMeh20Filled,
@@ -678,6 +695,8 @@ Flag20Regular,
 FlagOff20Filled,
 FlagOff20Regular,
 FlagPride20Filled,
+FlashCheckmark20Filled,
+FlashCheckmark20Regular,
 FlashOn20Filled,
 FlashOn20Regular,
 Fluid20Filled,
@@ -764,6 +783,10 @@ HatGraduation20Filled,
 HatGraduation20Regular,
 Hd20Filled,
 Hd20Regular,
+Headphones20Filled,
+Headphones20Regular,
+HeadphonesSoundWave20Filled,
+HeadphonesSoundWave20Regular,
 Headset20Filled,
 Headset20Regular,
 HeadsetVr20Filled,
@@ -779,6 +802,8 @@ History20Filled,
 History20Regular,
 Home20Filled,
 Home20Regular,
+HomeCheckmark20Filled,
+HomeCheckmark20Regular,
 HomePerson20Filled,
 HomePerson20Regular,
 Icons20Filled,
@@ -805,6 +830,8 @@ Info20Filled,
 Info20Regular,
 InfoShield20Filled,
 InfoShield20Regular,
+InkStroke20Filled,
+InkStroke20Regular,
 InkingTool20Filled,
 InkingTool20Regular,
 InkingToolAccent20Filled,
@@ -838,6 +865,8 @@ LeafTwo20Filled,
 LeafTwo20Regular,
 LearningApp20Filled,
 LearningApp20Regular,
+Library20Filled,
+Library20Regular,
 Lightbulb20Filled,
 Lightbulb20Regular,
 LightbulbFilament20Filled,
@@ -906,6 +935,8 @@ MailRead20Filled,
 MailRead20Regular,
 MailUnread20Filled,
 MailUnread20Regular,
+Map20Filled,
+Map20Regular,
 MapDrive20Filled,
 MapDrive20Regular,
 Maximize20Filled,
@@ -946,12 +977,16 @@ Multiplier1X20Filled,
 Multiplier1X20Regular,
 Multiplier2X20Filled,
 Multiplier2X20Regular,
+Multiplier5X20Filled,
+Multiplier5X20Regular,
 Multiselect20Filled,
 Multiselect20Regular,
 MusicNote120Filled,
 MusicNote120Regular,
 MusicNote220Filled,
 MusicNote220Regular,
+MusicNote2Play20Filled,
+MusicNote2Play20Regular,
 MyLocation20Filled,
 MyLocation20Regular,
 Navigation20Filled,
@@ -1016,6 +1051,8 @@ PeopleCheckmark20Filled,
 PeopleCheckmark20Regular,
 PeopleCommunity20Filled,
 PeopleCommunity20Regular,
+PeopleCommunityAdd20Filled,
+PeopleCommunityAdd20Regular,
 PeopleEdit20Filled,
 PeopleEdit20Regular,
 PeopleError20Filled,
@@ -1107,6 +1144,8 @@ Power20Filled,
 Power20Regular,
 Premium20Filled,
 Premium20Regular,
+PremiumPerson20Filled,
+PremiumPerson20Regular,
 Presenter20Filled,
 Presenter20Regular,
 PresenterOff20Filled,
@@ -1119,6 +1158,8 @@ Print20Filled,
 Print20Regular,
 Prohibited20Filled,
 Prohibited20Regular,
+ProhibitedMultiple20Filled,
+ProhibitedMultiple20Regular,
 ProtocolHandler20Filled,
 ProtocolHandler20Regular,
 Pulse20Filled,
@@ -1239,6 +1280,8 @@ ShareScreenStop20Filled,
 ShareScreenStop20Regular,
 Shield20Filled,
 Shield20Regular,
+ShieldCheckmark20Filled,
+ShieldCheckmark20Regular,
 ShieldDismiss20Filled,
 ShieldDismiss20Regular,
 ShieldDismissShield20Filled,
@@ -1601,6 +1644,8 @@ ToggleRight20Filled,
 ToggleRight20Regular,
 Toolbox20Filled,
 Toolbox20Regular,
+TopSpeed20Filled,
+TopSpeed20Regular,
 Translate20Filled,
 Translate20Regular,
 Trophy20Filled,
@@ -1772,7 +1817,8 @@ ZoomOut20Regular,
 
 function App() {
 	return (
-		<div><Accessibility20Filled/>
+		<div>
+			<Accessibility20Filled/>
 <Accessibility20Regular/>
 <Add20Filled/>
 <Add20Regular/>
@@ -1966,6 +2012,10 @@ function App() {
 <Bluetooth20Regular/>
 <Blur20Filled/>
 <Blur20Regular/>
+<Board20Filled/>
+<Board20Regular/>
+<BoardSplit20Filled/>
+<BoardSplit20Regular/>
 <Book20Filled/>
 <Book20Regular/>
 <BookAdd20Filled/>
@@ -2164,6 +2214,8 @@ function App() {
 <ChevronRight20Regular/>
 <ChevronUp20Filled/>
 <ChevronUp20Regular/>
+<ChevronUpDown20Filled/>
+<ChevronUpDown20Regular/>
 <Circle20Filled/>
 <Circle20Regular/>
 <CircleHalfFill20Filled/>
@@ -2198,8 +2250,12 @@ function App() {
 <ClockAlarm20Regular/>
 <ClosedCaption20Filled/>
 <ClosedCaption20Regular/>
+<ClosedCaptionOff20Filled/>
+<ClosedCaptionOff20Regular/>
 <Cloud20Filled/>
 <Cloud20Regular/>
+<CloudDownload20Filled/>
+<CloudDownload20Regular/>
 <CloudSync20Filled/>
 <CloudSync20Regular/>
 <Code20Filled/>
@@ -2305,10 +2361,14 @@ function App() {
 <Desktop20Regular/>
 <DesktopArrowRight20Filled/>
 <DesktopArrowRight20Regular/>
+<DesktopPulse20Filled/>
+<DesktopPulse20Regular/>
 <DesktopSpeaker20Filled/>
 <DesktopSpeaker20Regular/>
 <DesktopSpeakerOff20Filled/>
 <DesktopSpeakerOff20Regular/>
+<DeveloperBoard20Filled/>
+<DeveloperBoard20Regular/>
 <DeviceMeetingRoom20Filled/>
 <DeviceMeetingRoom20Regular/>
 <DeviceMeetingRoomRemote20Filled/>
@@ -2415,6 +2475,8 @@ function App() {
 <EmojiAdd20Regular/>
 <EmojiAngry20Filled/>
 <EmojiAngry20Regular/>
+<EmojiHand20Filled/>
+<EmojiHand20Regular/>
 <EmojiLaugh20Filled/>
 <EmojiLaugh20Regular/>
 <EmojiMeh20Filled/>
@@ -2450,6 +2512,8 @@ function App() {
 <FlagOff20Filled/>
 <FlagOff20Regular/>
 <FlagPride20Filled/>
+<FlashCheckmark20Filled/>
+<FlashCheckmark20Regular/>
 <FlashOn20Filled/>
 <FlashOn20Regular/>
 <Fluid20Filled/>
@@ -2536,6 +2600,10 @@ function App() {
 <HatGraduation20Regular/>
 <Hd20Filled/>
 <Hd20Regular/>
+<Headphones20Filled/>
+<Headphones20Regular/>
+<HeadphonesSoundWave20Filled/>
+<HeadphonesSoundWave20Regular/>
 <Headset20Filled/>
 <Headset20Regular/>
 <HeadsetVr20Filled/>
@@ -2551,6 +2619,8 @@ function App() {
 <History20Regular/>
 <Home20Filled/>
 <Home20Regular/>
+<HomeCheckmark20Filled/>
+<HomeCheckmark20Regular/>
 <HomePerson20Filled/>
 <HomePerson20Regular/>
 <Icons20Filled/>
@@ -2577,6 +2647,8 @@ function App() {
 <Info20Regular/>
 <InfoShield20Filled/>
 <InfoShield20Regular/>
+<InkStroke20Filled/>
+<InkStroke20Regular/>
 <InkingTool20Filled/>
 <InkingTool20Regular/>
 <InkingToolAccent20Filled/>
@@ -2610,6 +2682,8 @@ function App() {
 <LeafTwo20Regular/>
 <LearningApp20Filled/>
 <LearningApp20Regular/>
+<Library20Filled/>
+<Library20Regular/>
 <Lightbulb20Filled/>
 <Lightbulb20Regular/>
 <LightbulbFilament20Filled/>
@@ -2678,6 +2752,8 @@ function App() {
 <MailRead20Regular/>
 <MailUnread20Filled/>
 <MailUnread20Regular/>
+<Map20Filled/>
+<Map20Regular/>
 <MapDrive20Filled/>
 <MapDrive20Regular/>
 <Maximize20Filled/>
@@ -2718,12 +2794,16 @@ function App() {
 <Multiplier1X20Regular/>
 <Multiplier2X20Filled/>
 <Multiplier2X20Regular/>
+<Multiplier5X20Filled/>
+<Multiplier5X20Regular/>
 <Multiselect20Filled/>
 <Multiselect20Regular/>
 <MusicNote120Filled/>
 <MusicNote120Regular/>
 <MusicNote220Filled/>
 <MusicNote220Regular/>
+<MusicNote2Play20Filled/>
+<MusicNote2Play20Regular/>
 <MyLocation20Filled/>
 <MyLocation20Regular/>
 <Navigation20Filled/>
@@ -2788,6 +2868,8 @@ function App() {
 <PeopleCheckmark20Regular/>
 <PeopleCommunity20Filled/>
 <PeopleCommunity20Regular/>
+<PeopleCommunityAdd20Filled/>
+<PeopleCommunityAdd20Regular/>
 <PeopleEdit20Filled/>
 <PeopleEdit20Regular/>
 <PeopleError20Filled/>
@@ -2879,6 +2961,8 @@ function App() {
 <Power20Regular/>
 <Premium20Filled/>
 <Premium20Regular/>
+<PremiumPerson20Filled/>
+<PremiumPerson20Regular/>
 <Presenter20Filled/>
 <Presenter20Regular/>
 <PresenterOff20Filled/>
@@ -2891,6 +2975,8 @@ function App() {
 <Print20Regular/>
 <Prohibited20Filled/>
 <Prohibited20Regular/>
+<ProhibitedMultiple20Filled/>
+<ProhibitedMultiple20Regular/>
 <ProtocolHandler20Filled/>
 <ProtocolHandler20Regular/>
 <Pulse20Filled/>
@@ -3011,6 +3097,8 @@ function App() {
 <ShareScreenStop20Regular/>
 <Shield20Filled/>
 <Shield20Regular/>
+<ShieldCheckmark20Filled/>
+<ShieldCheckmark20Regular/>
 <ShieldDismiss20Filled/>
 <ShieldDismiss20Regular/>
 <ShieldDismissShield20Filled/>
@@ -3373,6 +3461,8 @@ function App() {
 <ToggleRight20Regular/>
 <Toolbox20Filled/>
 <Toolbox20Regular/>
+<TopSpeed20Filled/>
+<TopSpeed20Regular/>
 <Translate20Filled/>
 <Translate20Regular/>
 <Trophy20Filled/>

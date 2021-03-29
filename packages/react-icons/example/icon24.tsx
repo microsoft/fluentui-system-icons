@@ -1,6 +1,7 @@
 import * as React from "react";
 import { render } from "react-dom";
-import {AccessTime24Filled,
+import {
+    AccessTime24Filled,
 AccessTime24Regular,
 Accessibility24Filled,
 Accessibility24Regular,
@@ -88,6 +89,8 @@ ArrowClockwise24Filled,
 ArrowClockwise24Regular,
 ArrowCounterclockwise24Filled,
 ArrowCounterclockwise24Regular,
+ArrowCurveDownLeft24Filled,
+ArrowCurveDownLeft24Regular,
 ArrowDown24Filled,
 ArrowDown24Regular,
 ArrowDownLeft24Filled,
@@ -246,6 +249,8 @@ Blur24Filled,
 Blur24Regular,
 Board24Filled,
 Board24Regular,
+BoardSplit24Filled,
+BoardSplit24Regular,
 Book24Filled,
 Book24Regular,
 BookAdd24Filled,
@@ -532,6 +537,8 @@ ChevronRight24Filled,
 ChevronRight24Regular,
 ChevronUp24Filled,
 ChevronUp24Regular,
+ChevronUpDown24Filled,
+ChevronUpDown24Regular,
 Circle24Filled,
 Circle24Regular,
 CircleEdit24Filled,
@@ -580,6 +587,8 @@ ClockDismiss24Filled,
 ClockDismiss24Regular,
 ClosedCaption24Filled,
 ClosedCaption24Regular,
+ClosedCaptionOff24Filled,
+ClosedCaptionOff24Regular,
 Cloud24Filled,
 Cloud24Regular,
 CloudBackup24Filled,
@@ -741,6 +750,8 @@ Desktop24Filled,
 Desktop24Regular,
 DesktopArrowRight24Filled,
 DesktopArrowRight24Regular,
+DesktopPulse24Filled,
+DesktopPulse24Regular,
 DesktopSpeaker24Filled,
 DesktopSpeaker24Regular,
 DesktopSpeakerOff24Filled,
@@ -759,6 +770,8 @@ Dismiss24Filled,
 Dismiss24Regular,
 DismissCircle24Filled,
 DismissCircle24Regular,
+DismissSquare24Filled,
+DismissSquare24Regular,
 DividerShort24Filled,
 DividerShort24Regular,
 DividerTall24Filled,
@@ -845,6 +858,8 @@ DocumentToolbox24Filled,
 DocumentToolbox24Regular,
 DocumentWidth24Filled,
 DocumentWidth24Regular,
+DoorArrowLeft24Filled,
+DoorArrowLeft24Regular,
 DoorTag24Filled,
 DoorTag24Regular,
 DoubleSwipeDown24Filled,
@@ -984,6 +999,8 @@ FlagOff24Regular,
 FlagPride24Filled,
 FlashAuto24Filled,
 FlashAuto24Regular,
+FlashCheckmark24Filled,
+FlashCheckmark24Regular,
 FlashOff24Filled,
 FlashOff24Regular,
 FlashOn24Filled,
@@ -1116,6 +1133,8 @@ Hdr24Filled,
 Hdr24Regular,
 Headphones24Filled,
 Headphones24Regular,
+HeadphonesSoundWave24Filled,
+HeadphonesSoundWave24Regular,
 Headset24Filled,
 Headset24Regular,
 HeadsetVr24Filled,
@@ -1167,6 +1186,8 @@ Incognito24Filled,
 Incognito24Regular,
 Info24Filled,
 Info24Regular,
+InkStroke24Filled,
+InkStroke24Regular,
 InkingTool24Filled,
 InkingTool24Regular,
 InkingToolAccent24Filled,
@@ -1340,6 +1361,8 @@ Multiplier1X24Filled,
 Multiplier1X24Regular,
 Multiplier2X24Filled,
 Multiplier2X24Regular,
+Multiplier5X24Filled,
+Multiplier5X24Regular,
 Multiselect24Filled,
 Multiselect24Regular,
 MusicNote124Filled,
@@ -1563,6 +1586,8 @@ Predictions24Filled,
 Predictions24Regular,
 Premium24Filled,
 Premium24Regular,
+PremiumPerson24Filled,
+PremiumPerson24Regular,
 Presenter24Filled,
 Presenter24Regular,
 PresenterOff24Filled,
@@ -1575,6 +1600,8 @@ Print24Filled,
 Print24Regular,
 Prohibited24Filled,
 Prohibited24Regular,
+ProhibitedMultiple24Filled,
+ProhibitedMultiple24Regular,
 ProtocolHandler24Filled,
 ProtocolHandler24Regular,
 Pulse24Filled,
@@ -1721,6 +1748,8 @@ ShareScreenStop24Filled,
 ShareScreenStop24Regular,
 Shield24Filled,
 Shield24Regular,
+ShieldCheckmark24Filled,
+ShieldCheckmark24Regular,
 ShieldDismiss24Filled,
 ShieldDismiss24Regular,
 ShieldError24Filled,
@@ -2358,7 +2387,8 @@ ZoomOut24Regular,
 
 function App() {
 	return (
-		<div><AccessTime24Filled/>
+		<div>
+			<AccessTime24Filled/>
 <AccessTime24Regular/>
 <Accessibility24Filled/>
 <Accessibility24Regular/>
@@ -2446,6 +2476,8 @@ function App() {
 <ArrowClockwise24Regular/>
 <ArrowCounterclockwise24Filled/>
 <ArrowCounterclockwise24Regular/>
+<ArrowCurveDownLeft24Filled/>
+<ArrowCurveDownLeft24Regular/>
 <ArrowDown24Filled/>
 <ArrowDown24Regular/>
 <ArrowDownLeft24Filled/>
@@ -2604,6 +2636,8 @@ function App() {
 <Blur24Regular/>
 <Board24Filled/>
 <Board24Regular/>
+<BoardSplit24Filled/>
+<BoardSplit24Regular/>
 <Book24Filled/>
 <Book24Regular/>
 <BookAdd24Filled/>
@@ -2890,6 +2924,8 @@ function App() {
 <ChevronRight24Regular/>
 <ChevronUp24Filled/>
 <ChevronUp24Regular/>
+<ChevronUpDown24Filled/>
+<ChevronUpDown24Regular/>
 <Circle24Filled/>
 <Circle24Regular/>
 <CircleEdit24Filled/>
@@ -2938,6 +2974,8 @@ function App() {
 <ClockDismiss24Regular/>
 <ClosedCaption24Filled/>
 <ClosedCaption24Regular/>
+<ClosedCaptionOff24Filled/>
+<ClosedCaptionOff24Regular/>
 <Cloud24Filled/>
 <Cloud24Regular/>
 <CloudBackup24Filled/>
@@ -3099,6 +3137,8 @@ function App() {
 <Desktop24Regular/>
 <DesktopArrowRight24Filled/>
 <DesktopArrowRight24Regular/>
+<DesktopPulse24Filled/>
+<DesktopPulse24Regular/>
 <DesktopSpeaker24Filled/>
 <DesktopSpeaker24Regular/>
 <DesktopSpeakerOff24Filled/>
@@ -3117,6 +3157,8 @@ function App() {
 <Dismiss24Regular/>
 <DismissCircle24Filled/>
 <DismissCircle24Regular/>
+<DismissSquare24Filled/>
+<DismissSquare24Regular/>
 <DividerShort24Filled/>
 <DividerShort24Regular/>
 <DividerTall24Filled/>
@@ -3203,6 +3245,8 @@ function App() {
 <DocumentToolbox24Regular/>
 <DocumentWidth24Filled/>
 <DocumentWidth24Regular/>
+<DoorArrowLeft24Filled/>
+<DoorArrowLeft24Regular/>
 <DoorTag24Filled/>
 <DoorTag24Regular/>
 <DoubleSwipeDown24Filled/>
@@ -3342,6 +3386,8 @@ function App() {
 <FlagPride24Filled/>
 <FlashAuto24Filled/>
 <FlashAuto24Regular/>
+<FlashCheckmark24Filled/>
+<FlashCheckmark24Regular/>
 <FlashOff24Filled/>
 <FlashOff24Regular/>
 <FlashOn24Filled/>
@@ -3474,6 +3520,8 @@ function App() {
 <Hdr24Regular/>
 <Headphones24Filled/>
 <Headphones24Regular/>
+<HeadphonesSoundWave24Filled/>
+<HeadphonesSoundWave24Regular/>
 <Headset24Filled/>
 <Headset24Regular/>
 <HeadsetVr24Filled/>
@@ -3525,6 +3573,8 @@ function App() {
 <Incognito24Regular/>
 <Info24Filled/>
 <Info24Regular/>
+<InkStroke24Filled/>
+<InkStroke24Regular/>
 <InkingTool24Filled/>
 <InkingTool24Regular/>
 <InkingToolAccent24Filled/>
@@ -3698,6 +3748,8 @@ function App() {
 <Multiplier1X24Regular/>
 <Multiplier2X24Filled/>
 <Multiplier2X24Regular/>
+<Multiplier5X24Filled/>
+<Multiplier5X24Regular/>
 <Multiselect24Filled/>
 <Multiselect24Regular/>
 <MusicNote124Filled/>
@@ -3921,6 +3973,8 @@ function App() {
 <Predictions24Regular/>
 <Premium24Filled/>
 <Premium24Regular/>
+<PremiumPerson24Filled/>
+<PremiumPerson24Regular/>
 <Presenter24Filled/>
 <Presenter24Regular/>
 <PresenterOff24Filled/>
@@ -3933,6 +3987,8 @@ function App() {
 <Print24Regular/>
 <Prohibited24Filled/>
 <Prohibited24Regular/>
+<ProhibitedMultiple24Filled/>
+<ProhibitedMultiple24Regular/>
 <ProtocolHandler24Filled/>
 <ProtocolHandler24Regular/>
 <Pulse24Filled/>
@@ -4079,6 +4135,8 @@ function App() {
 <ShareScreenStop24Regular/>
 <Shield24Filled/>
 <Shield24Regular/>
+<ShieldCheckmark24Filled/>
+<ShieldCheckmark24Regular/>
 <ShieldDismiss24Filled/>
 <ShieldDismiss24Regular/>
 <ShieldError24Filled/>

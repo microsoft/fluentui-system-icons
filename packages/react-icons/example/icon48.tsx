@@ -1,6 +1,7 @@
 import * as React from "react";
 import { render } from "react-dom";
-import {AddSubtractCircle48Filled,
+import {
+    AddSubtractCircle48Filled,
 AddSubtractCircle48Regular,
 AlignBottom48Filled,
 AlignBottom48Regular,
@@ -30,6 +31,8 @@ Backpack48Filled,
 Backpack48Regular,
 BackpackAdd48Filled,
 BackpackAdd48Regular,
+BoardSplit48Filled,
+BoardSplit48Regular,
 Briefcase48Filled,
 Briefcase48Regular,
 CallForward48Filled,
@@ -78,6 +81,8 @@ Clock48Filled,
 Clock48Regular,
 ClosedCaption48Filled,
 ClosedCaption48Regular,
+ClosedCaptionOff48Filled,
+ClosedCaptionOff48Regular,
 Cloud48Filled,
 Cloud48Regular,
 CloudBackup48Filled,
@@ -112,6 +117,8 @@ Delete48Filled,
 Delete48Regular,
 Dentist48Filled,
 Dentist48Regular,
+DesktopPulse48Filled,
+DesktopPulse48Regular,
 DismissCircle48Filled,
 DismissCircle48Regular,
 DockPanelLeft48Filled,
@@ -161,6 +168,10 @@ Glasses48Filled,
 Glasses48Regular,
 GlassesOff48Filled,
 GlassesOff48Regular,
+Headphones48Filled,
+Headphones48Regular,
+HeadphonesSoundWave48Filled,
+HeadphonesSoundWave48Regular,
 Headset48Filled,
 Headset48Regular,
 Home48Filled,
@@ -171,6 +182,12 @@ Link48Filled,
 Link48Regular,
 Location48Filled,
 Location48Regular,
+LocationArrowLeft48Filled,
+LocationArrowLeft48Regular,
+LocationArrowRight48Filled,
+LocationArrowRight48Regular,
+LocationArrowUp48Filled,
+LocationArrowUp48Regular,
 LocationOff48Filled,
 LocationOff48Regular,
 LockShield48Filled,
@@ -203,6 +220,8 @@ Multiplier1X48Filled,
 Multiplier1X48Regular,
 Multiplier2X48Filled,
 Multiplier2X48Regular,
+Multiplier5X48Filled,
+Multiplier5X48Regular,
 Open48Filled,
 Open48Regular,
 OpenFolder48Filled,
@@ -216,6 +235,8 @@ Person48Regular,
 PersonMail48Filled,
 PersonMail48Regular,
 PersonTag48Regular,
+Pin48Filled,
+Pin48Regular,
 Play48Filled,
 Play48Regular,
 Print48Filled,
@@ -234,6 +255,10 @@ ShareIos48Filled,
 ShareIos48Regular,
 ShareScreenStop48Filled,
 ShareScreenStop48Regular,
+Shield48Filled,
+Shield48Regular,
+ShieldCheckmark48Filled,
+ShieldCheckmark48Regular,
 SkipBackward1048Filled,
 SkipBackward1048Regular,
 SkipForward1048Filled,
@@ -335,7 +360,8 @@ WeatherThunderstorm48Regular,
 
 function App() {
 	return (
-		<div><AddSubtractCircle48Filled/>
+		<div>
+			<AddSubtractCircle48Filled/>
 <AddSubtractCircle48Regular/>
 <AlignBottom48Filled/>
 <AlignBottom48Regular/>
@@ -365,6 +391,8 @@ function App() {
 <Backpack48Regular/>
 <BackpackAdd48Filled/>
 <BackpackAdd48Regular/>
+<BoardSplit48Filled/>
+<BoardSplit48Regular/>
 <Briefcase48Filled/>
 <Briefcase48Regular/>
 <CallForward48Filled/>
@@ -413,6 +441,8 @@ function App() {
 <Clock48Regular/>
 <ClosedCaption48Filled/>
 <ClosedCaption48Regular/>
+<ClosedCaptionOff48Filled/>
+<ClosedCaptionOff48Regular/>
 <Cloud48Filled/>
 <Cloud48Regular/>
 <CloudBackup48Filled/>
@@ -447,6 +477,8 @@ function App() {
 <Delete48Regular/>
 <Dentist48Filled/>
 <Dentist48Regular/>
+<DesktopPulse48Filled/>
+<DesktopPulse48Regular/>
 <DismissCircle48Filled/>
 <DismissCircle48Regular/>
 <DockPanelLeft48Filled/>
@@ -496,6 +528,10 @@ function App() {
 <Glasses48Regular/>
 <GlassesOff48Filled/>
 <GlassesOff48Regular/>
+<Headphones48Filled/>
+<Headphones48Regular/>
+<HeadphonesSoundWave48Filled/>
+<HeadphonesSoundWave48Regular/>
 <Headset48Filled/>
 <Headset48Regular/>
 <Home48Filled/>
@@ -506,6 +542,12 @@ function App() {
 <Link48Regular/>
 <Location48Filled/>
 <Location48Regular/>
+<LocationArrowLeft48Filled/>
+<LocationArrowLeft48Regular/>
+<LocationArrowRight48Filled/>
+<LocationArrowRight48Regular/>
+<LocationArrowUp48Filled/>
+<LocationArrowUp48Regular/>
 <LocationOff48Filled/>
 <LocationOff48Regular/>
 <LockShield48Filled/>
@@ -538,6 +580,8 @@ function App() {
 <Multiplier1X48Regular/>
 <Multiplier2X48Filled/>
 <Multiplier2X48Regular/>
+<Multiplier5X48Filled/>
+<Multiplier5X48Regular/>
 <Open48Filled/>
 <Open48Regular/>
 <OpenFolder48Filled/>
@@ -551,6 +595,8 @@ function App() {
 <PersonMail48Filled/>
 <PersonMail48Regular/>
 <PersonTag48Regular/>
+<Pin48Filled/>
+<Pin48Regular/>
 <Play48Filled/>
 <Play48Regular/>
 <Print48Filled/>
@@ -569,6 +615,10 @@ function App() {
 <ShareIos48Regular/>
 <ShareScreenStop48Filled/>
 <ShareScreenStop48Regular/>
+<Shield48Filled/>
+<Shield48Regular/>
+<ShieldCheckmark48Filled/>
+<ShieldCheckmark48Regular/>
 <SkipBackward1048Filled/>
 <SkipBackward1048Regular/>
 <SkipForward1048Filled/>

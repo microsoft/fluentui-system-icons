@@ -1,6 +1,7 @@
 import * as React from "react";
 import { render } from "react-dom";
-import {Accessibility28Filled,
+import {
+    Accessibility28Filled,
 Accessibility28Regular,
 Add28Filled,
 Add28Regular,
@@ -32,10 +33,14 @@ ApprovalsApp28Filled,
 ApprovalsApp28Regular,
 Apps28Filled,
 Apps28Regular,
+AppsAddIn28Filled,
+AppsAddIn28Regular,
 Archive28Filled,
 Archive28Regular,
 ArrowCounterclockwise28Filled,
 ArrowCounterclockwise28Regular,
+ArrowCurveDownLeft28Filled,
+ArrowCurveDownLeft28Regular,
 ArrowDown28Filled,
 ArrowDown28Regular,
 ArrowHookDownLeft28Filled,
@@ -68,6 +73,10 @@ Bluetooth28Filled,
 Bluetooth28Regular,
 Blur28Filled,
 Blur28Regular,
+Board28Filled,
+Board28Regular,
+BoardSplit28Filled,
+BoardSplit28Regular,
 BookContacts28Filled,
 BookContacts28Regular,
 Bookmark28Filled,
@@ -144,6 +153,8 @@ Clock28Filled,
 Clock28Regular,
 ClosedCaption28Filled,
 ClosedCaption28Regular,
+ClosedCaptionOff28Filled,
+ClosedCaptionOff28Regular,
 Comment28Filled,
 Comment28Regular,
 CommentAdd28Filled,
@@ -176,6 +187,8 @@ Dentist28Filled,
 Dentist28Regular,
 Desktop28Filled,
 Desktop28Regular,
+DesktopPulse28Filled,
+DesktopPulse28Regular,
 Dismiss28Filled,
 Dismiss28Regular,
 DismissCircle28Filled,
@@ -207,6 +220,10 @@ Flag28Regular,
 FlagOff28Filled,
 FlagOff28Regular,
 FlagPride28Filled,
+Flash28Filled,
+Flash28Regular,
+FlashCheckmark28Filled,
+FlashCheckmark28Regular,
 Folder28Filled,
 Folder28Regular,
 FolderAdd28Filled,
@@ -245,6 +262,8 @@ HandRight28Filled,
 HandRight28Regular,
 Headphones28Filled,
 Headphones28Regular,
+HeadphonesSoundWave28Filled,
+HeadphonesSoundWave28Regular,
 Headset28Filled,
 Headset28Regular,
 Home28Filled,
@@ -281,6 +300,8 @@ MailInbox28Filled,
 MailInbox28Regular,
 MailInboxAdd28Filled,
 MailInboxAdd28Regular,
+MailInboxCheckmark28Filled,
+MailInboxCheckmark28Regular,
 MailInboxDismiss28Filled,
 MailInboxDismiss28Regular,
 MailRead28Filled,
@@ -311,6 +332,8 @@ Multiplier1X28Filled,
 Multiplier1X28Regular,
 Multiplier2X28Filled,
 Multiplier2X28Regular,
+Multiplier5X28Filled,
+Multiplier5X28Regular,
 News28Filled,
 News28Regular,
 Notepad28Filled,
@@ -331,14 +354,20 @@ People28Filled,
 People28Regular,
 PeopleCommunity28Filled,
 PeopleCommunity28Regular,
+PeopleCommunityAdd28Filled,
+PeopleCommunityAdd28Regular,
 PeopleSwap28Filled,
 PeopleSwap28Regular,
 PeopleTeam28Filled,
 PeopleTeam28Regular,
 Person28Filled,
 Person28Regular,
+PersonAdd28Filled,
+PersonAdd28Regular,
 PersonMail28Filled,
 PersonMail28Regular,
+PersonProhibited28Filled,
+PersonProhibited28Regular,
 PersonTag28Regular,
 PhoneDesktop28Filled,
 PhoneDesktop28Regular,
@@ -346,6 +375,8 @@ PhoneSpanIn28Filled,
 PhoneSpanIn28Regular,
 PhoneSpanOut28Filled,
 PhoneSpanOut28Regular,
+Pin28Filled,
+Pin28Regular,
 PlayCircle28Filled,
 PlayCircle28Regular,
 PlugDisconnected28Filled,
@@ -366,6 +397,8 @@ QuestionCircle28Filled,
 QuestionCircle28Regular,
 QuizNew28Filled,
 QuizNew28Regular,
+ReadAloud28Filled,
+ReadAloud28Regular,
 ReadingList28Filled,
 ReadingList28Regular,
 ReadingListAdd28Filled,
@@ -384,6 +417,10 @@ ShareScreenStart28Filled,
 ShareScreenStart28Regular,
 ShareScreenStop28Filled,
 ShareScreenStop28Regular,
+Shield28Filled,
+Shield28Regular,
+ShieldCheckmark28Filled,
+ShieldCheckmark28Regular,
 Shifts28Filled,
 Shifts28Regular,
 Signature28Filled,
@@ -480,7 +517,8 @@ WeatherMoonOff28Regular,
 
 function App() {
 	return (
-		<div><Accessibility28Filled/>
+		<div>
+			<Accessibility28Filled/>
 <Accessibility28Regular/>
 <Add28Filled/>
 <Add28Regular/>
@@ -512,10 +550,14 @@ function App() {
 <ApprovalsApp28Regular/>
 <Apps28Filled/>
 <Apps28Regular/>
+<AppsAddIn28Filled/>
+<AppsAddIn28Regular/>
 <Archive28Filled/>
 <Archive28Regular/>
 <ArrowCounterclockwise28Filled/>
 <ArrowCounterclockwise28Regular/>
+<ArrowCurveDownLeft28Filled/>
+<ArrowCurveDownLeft28Regular/>
 <ArrowDown28Filled/>
 <ArrowDown28Regular/>
 <ArrowHookDownLeft28Filled/>
@@ -548,6 +590,10 @@ function App() {
 <Bluetooth28Regular/>
 <Blur28Filled/>
 <Blur28Regular/>
+<Board28Filled/>
+<Board28Regular/>
+<BoardSplit28Filled/>
+<BoardSplit28Regular/>
 <BookContacts28Filled/>
 <BookContacts28Regular/>
 <Bookmark28Filled/>
@@ -624,6 +670,8 @@ function App() {
 <Clock28Regular/>
 <ClosedCaption28Filled/>
 <ClosedCaption28Regular/>
+<ClosedCaptionOff28Filled/>
+<ClosedCaptionOff28Regular/>
 <Comment28Filled/>
 <Comment28Regular/>
 <CommentAdd28Filled/>
@@ -656,6 +704,8 @@ function App() {
 <Dentist28Regular/>
 <Desktop28Filled/>
 <Desktop28Regular/>
+<DesktopPulse28Filled/>
+<DesktopPulse28Regular/>
 <Dismiss28Filled/>
 <Dismiss28Regular/>
 <DismissCircle28Filled/>
@@ -687,6 +737,10 @@ function App() {
 <FlagOff28Filled/>
 <FlagOff28Regular/>
 <FlagPride28Filled/>
+<Flash28Filled/>
+<Flash28Regular/>
+<FlashCheckmark28Filled/>
+<FlashCheckmark28Regular/>
 <Folder28Filled/>
 <Folder28Regular/>
 <FolderAdd28Filled/>
@@ -725,6 +779,8 @@ function App() {
 <HandRight28Regular/>
 <Headphones28Filled/>
 <Headphones28Regular/>
+<HeadphonesSoundWave28Filled/>
+<HeadphonesSoundWave28Regular/>
 <Headset28Filled/>
 <Headset28Regular/>
 <Home28Filled/>
@@ -761,6 +817,8 @@ function App() {
 <MailInbox28Regular/>
 <MailInboxAdd28Filled/>
 <MailInboxAdd28Regular/>
+<MailInboxCheckmark28Filled/>
+<MailInboxCheckmark28Regular/>
 <MailInboxDismiss28Filled/>
 <MailInboxDismiss28Regular/>
 <MailRead28Filled/>
@@ -791,6 +849,8 @@ function App() {
 <Multiplier1X28Regular/>
 <Multiplier2X28Filled/>
 <Multiplier2X28Regular/>
+<Multiplier5X28Filled/>
+<Multiplier5X28Regular/>
 <News28Filled/>
 <News28Regular/>
 <Notepad28Filled/>
@@ -811,14 +871,20 @@ function App() {
 <People28Regular/>
 <PeopleCommunity28Filled/>
 <PeopleCommunity28Regular/>
+<PeopleCommunityAdd28Filled/>
+<PeopleCommunityAdd28Regular/>
 <PeopleSwap28Filled/>
 <PeopleSwap28Regular/>
 <PeopleTeam28Filled/>
 <PeopleTeam28Regular/>
 <Person28Filled/>
 <Person28Regular/>
+<PersonAdd28Filled/>
+<PersonAdd28Regular/>
 <PersonMail28Filled/>
 <PersonMail28Regular/>
+<PersonProhibited28Filled/>
+<PersonProhibited28Regular/>
 <PersonTag28Regular/>
 <PhoneDesktop28Filled/>
 <PhoneDesktop28Regular/>
@@ -826,6 +892,8 @@ function App() {
 <PhoneSpanIn28Regular/>
 <PhoneSpanOut28Filled/>
 <PhoneSpanOut28Regular/>
+<Pin28Filled/>
+<Pin28Regular/>
 <PlayCircle28Filled/>
 <PlayCircle28Regular/>
 <PlugDisconnected28Filled/>
@@ -846,6 +914,8 @@ function App() {
 <QuestionCircle28Regular/>
 <QuizNew28Filled/>
 <QuizNew28Regular/>
+<ReadAloud28Filled/>
+<ReadAloud28Regular/>
 <ReadingList28Filled/>
 <ReadingList28Regular/>
 <ReadingListAdd28Filled/>
@@ -864,6 +934,10 @@ function App() {
 <ShareScreenStart28Regular/>
 <ShareScreenStop28Filled/>
 <ShareScreenStop28Regular/>
+<Shield28Filled/>
+<Shield28Regular/>
+<ShieldCheckmark28Filled/>
+<ShieldCheckmark28Regular/>
 <Shifts28Filled/>
 <Shifts28Regular/>
 <Signature28Filled/>
