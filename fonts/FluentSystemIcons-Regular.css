@@ -1,6 +1,6 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.ttf?0d62a5a5adf39d4fbeb37e9c67cdf7a9") format("truetype");
+    src: url("./FluentSystemIcons-Regular.ttf?d491dd6d5dd58215722fda1283fa6a62") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -10477,4 +10477,7 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_top_speed_20_regular:before {
     content: "\fea0";
+}
+.icon-ic_fluent_checkmark_circle_12_regular:before {
+    content: "\fea1";
 }

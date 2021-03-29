@@ -2358,6 +2358,9 @@ class FluentIcons {
   /// fluent icon named "checkmark" in size 48 and regular style.
   static const IconData checkmark_48_regular = IconData(0xfb7d, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "checkmark_circle" in size 12 and regular style.
+  static const IconData checkmark_circle_12_regular = IconData(0xfea1, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "checkmark_circle" in size 16 and regular style.
   static const IconData checkmark_circle_16_regular = IconData(0xf297, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -12823,6 +12826,9 @@ class FluentIcons {
 
   /// fluent icon named "checkmark" in size 48 and filled style.
   static const IconData checkmark_48_filled = IconData(0xfb85, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "checkmark_circle" in size 12 and filled style.
+  static const IconData checkmark_circle_12_filled = IconData(0xfea5, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "checkmark_circle" in size 16 and filled style.
   static const IconData checkmark_circle_16_filled = IconData(0xf297, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
