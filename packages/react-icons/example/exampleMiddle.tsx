@@ -1,6 +1,7 @@
 
-} from "@fluentui/react-icons-preview";
+} from "@fluentui/react-icons";
 
 function App() {
 	return (
 		<div>
+			
