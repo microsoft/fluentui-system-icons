@@ -1,0 +1,48 @@
+[
+  {
+    "name": "iconMetaphorsInputTable",
+    "tableSpecifier":
+    {
+      "dataColumnIndex": 0,
+      "dataRowIndex": 1,
+      "headerRowIndex": 0
+    },
+    "type": "Table",
+    "valueType": "None"
+  },
+  {
+    "name": "iconColumnIconKeyValueName",
+    "referenceOnly": true,
+    "type": "Value",
+    "value": "IconKeyValue",
+    "valueType": "Text"
+  },
+  {
+    "name": "iconColumnMetaphorsName",
+    "referenceOnly": true,
+    "type": "Value",
+    "value": "Metaphors",
+    "valueType": "Text"
+  },
+  {
+    "TargetName": "iconMetaphorsInputTable",
+    "name": "iconMetaphorsTableIterator",
+    "type": "TableIterator"
+  },
+  {
+    "name": "iconKeyValue",
+    "type": "Value",
+    "valueType": "Text"
+  },
+  {
+    "name": "iconMetaphors",
+    "type": "Value",
+    "valueType": "Text"
+  },
+  {
+    "name": "iconArtifacts",
+    "type": "VariableBag",
+    "valueType": "None",
+    "values": []
+  }
+]

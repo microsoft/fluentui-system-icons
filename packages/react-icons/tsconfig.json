@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "outDir": "lib/esm",
+    "target": "ES6",
+    "module": "esnext",
+    "lib": ["es6", "dom"],
+    "declaration": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "forceConsistentCasingInFileNames": true,
+    "strictNullChecks": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "jsx": "react"
+  },
+  "include": ["src"],
+  "exclude": ["lib"]
+}
