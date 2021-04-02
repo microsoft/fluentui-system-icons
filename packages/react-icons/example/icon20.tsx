@@ -7,6 +7,8 @@ Add20Filled,
 Add20Regular,
 AddCircle20Filled,
 AddCircle20Regular,
+AddSquareMultiple20Filled,
+AddSquareMultiple20Regular,
 AddSubtractCircle20Filled,
 AddSubtractCircle20Regular,
 Airplane20Filled,
@@ -211,6 +213,8 @@ BookOpen20Filled,
 BookOpen20Regular,
 BookOpenGlobe20Filled,
 BookOpenGlobe20Regular,
+BookOpenMicrophone20Filled,
+BookOpenMicrophone20Regular,
 Bookmark20Filled,
 Bookmark20Regular,
 BookmarkMultiple20Filled,
@@ -227,6 +231,8 @@ BreakoutRoom20Filled,
 BreakoutRoom20Regular,
 Briefcase20Filled,
 Briefcase20Regular,
+BriefcaseOff20Filled,
+BriefcaseOff20Regular,
 Broom20Filled,
 Broom20Regular,
 Bug20Filled,
@@ -235,6 +241,8 @@ Building20Filled,
 Building20Regular,
 BuildingBank20Filled,
 BuildingBank20Regular,
+BuildingBankLink20Filled,
+BuildingBankLink20Regular,
 BuildingShop20Filled,
 BuildingShop20Regular,
 BuildingSkyscraper20Filled,
@@ -389,6 +397,8 @@ CheckmarkLock20Filled,
 CheckmarkLock20Regular,
 CheckmarkUnderlineCircle20Filled,
 CheckmarkUnderlineCircle20Regular,
+ChevronDoubleUp20Filled,
+ChevronDoubleUp20Regular,
 ChevronDown20Filled,
 ChevronDown20Regular,
 ChevronLeft20Filled,
@@ -437,10 +447,16 @@ ClosedCaptionOff20Filled,
 ClosedCaptionOff20Regular,
 Cloud20Filled,
 Cloud20Regular,
+CloudBackup20Filled,
+CloudBackup20Regular,
 CloudDownload20Filled,
 CloudDownload20Regular,
+CloudOff20Filled,
+CloudOff20Regular,
 CloudSync20Filled,
 CloudSync20Regular,
+CloudSyncComplete20Filled,
+CloudSyncComplete20Regular,
 Code20Filled,
 Code20Regular,
 Collections20Filled,
@@ -564,6 +580,8 @@ Dismiss20Filled,
 Dismiss20Regular,
 DismissCircle20Filled,
 DismissCircle20Regular,
+DismissSquare20Filled,
+DismissSquare20Regular,
 DockPanelLeft20Filled,
 DockPanelLeft20Regular,
 DockPanelRight20Filled,
@@ -624,6 +642,8 @@ DocumentProhibited20Filled,
 DocumentProhibited20Regular,
 DocumentQuestionMark20Filled,
 DocumentQuestionMark20Regular,
+DocumentRibbon20Filled,
+DocumentRibbon20Regular,
 DocumentSearch20Filled,
 DocumentSearch20Regular,
 DocumentToolbox20Filled,
@@ -953,6 +973,8 @@ MicOn20Filled,
 MicOn20Regular,
 MicProhibited20Filled,
 MicProhibited20Regular,
+MicSparkle20Filled,
+MicSparkle20Regular,
 MicSync20Filled,
 MicSync20Regular,
 Midi20Filled,
@@ -1005,6 +1027,8 @@ NotebookSubsection20Filled,
 NotebookSubsection20Regular,
 Notepad20Filled,
 Notepad20Regular,
+NotepadPerson20Filled,
+NotepadPerson20Regular,
 NumberRow20Filled,
 NumberRow20Regular,
 NumberSymbol20Filled,
@@ -1346,6 +1370,8 @@ Sport20Filled,
 Sport20Regular,
 SportSoccer20Filled,
 SportSoccer20Regular,
+SquareArrowForward20Filled,
+SquareArrowForward20Regular,
 SquareMultiple20Filled,
 SquareMultiple20Regular,
 Star20Filled,
@@ -1377,6 +1403,8 @@ StrikethroughGaNa20Filled,
 StrikethroughGaNa20Regular,
 Subtract20Filled,
 Subtract20Regular,
+SubtractSquareMultiple20Filled,
+SubtractSquareMultiple20Regular,
 SurfaceEarbuds20Filled,
 SurfaceEarbuds20Regular,
 SurfaceHub20Filled,
@@ -1782,6 +1810,8 @@ Wifi320Filled,
 Wifi320Regular,
 Wifi420Filled,
 Wifi420Regular,
+WifiOff20Filled,
+WifiOff20Regular,
 WifiWarning20Filled,
 WifiWarning20Regular,
 Window20Filled,
@@ -1824,6 +1854,8 @@ function App() {
 <Add20Regular/>
 <AddCircle20Filled/>
 <AddCircle20Regular/>
+<AddSquareMultiple20Filled/>
+<AddSquareMultiple20Regular/>
 <AddSubtractCircle20Filled/>
 <AddSubtractCircle20Regular/>
 <Airplane20Filled/>
@@ -2028,6 +2060,8 @@ function App() {
 <BookOpen20Regular/>
 <BookOpenGlobe20Filled/>
 <BookOpenGlobe20Regular/>
+<BookOpenMicrophone20Filled/>
+<BookOpenMicrophone20Regular/>
 <Bookmark20Filled/>
 <Bookmark20Regular/>
 <BookmarkMultiple20Filled/>
@@ -2044,6 +2078,8 @@ function App() {
 <BreakoutRoom20Regular/>
 <Briefcase20Filled/>
 <Briefcase20Regular/>
+<BriefcaseOff20Filled/>
+<BriefcaseOff20Regular/>
 <Broom20Filled/>
 <Broom20Regular/>
 <Bug20Filled/>
@@ -2052,6 +2088,8 @@ function App() {
 <Building20Regular/>
 <BuildingBank20Filled/>
 <BuildingBank20Regular/>
+<BuildingBankLink20Filled/>
+<BuildingBankLink20Regular/>
 <BuildingShop20Filled/>
 <BuildingShop20Regular/>
 <BuildingSkyscraper20Filled/>
@@ -2206,6 +2244,8 @@ function App() {
 <CheckmarkLock20Regular/>
 <CheckmarkUnderlineCircle20Filled/>
 <CheckmarkUnderlineCircle20Regular/>
+<ChevronDoubleUp20Filled/>
+<ChevronDoubleUp20Regular/>
 <ChevronDown20Filled/>
 <ChevronDown20Regular/>
 <ChevronLeft20Filled/>
@@ -2254,10 +2294,16 @@ function App() {
 <ClosedCaptionOff20Regular/>
 <Cloud20Filled/>
 <Cloud20Regular/>
+<CloudBackup20Filled/>
+<CloudBackup20Regular/>
 <CloudDownload20Filled/>
 <CloudDownload20Regular/>
+<CloudOff20Filled/>
+<CloudOff20Regular/>
 <CloudSync20Filled/>
 <CloudSync20Regular/>
+<CloudSyncComplete20Filled/>
+<CloudSyncComplete20Regular/>
 <Code20Filled/>
 <Code20Regular/>
 <Collections20Filled/>
@@ -2381,6 +2427,8 @@ function App() {
 <Dismiss20Regular/>
 <DismissCircle20Filled/>
 <DismissCircle20Regular/>
+<DismissSquare20Filled/>
+<DismissSquare20Regular/>
 <DockPanelLeft20Filled/>
 <DockPanelLeft20Regular/>
 <DockPanelRight20Filled/>
@@ -2441,6 +2489,8 @@ function App() {
 <DocumentProhibited20Regular/>
 <DocumentQuestionMark20Filled/>
 <DocumentQuestionMark20Regular/>
+<DocumentRibbon20Filled/>
+<DocumentRibbon20Regular/>
 <DocumentSearch20Filled/>
 <DocumentSearch20Regular/>
 <DocumentToolbox20Filled/>
@@ -2770,6 +2820,8 @@ function App() {
 <MicOn20Regular/>
 <MicProhibited20Filled/>
 <MicProhibited20Regular/>
+<MicSparkle20Filled/>
+<MicSparkle20Regular/>
 <MicSync20Filled/>
 <MicSync20Regular/>
 <Midi20Filled/>
@@ -2822,6 +2874,8 @@ function App() {
 <NotebookSubsection20Regular/>
 <Notepad20Filled/>
 <Notepad20Regular/>
+<NotepadPerson20Filled/>
+<NotepadPerson20Regular/>
 <NumberRow20Filled/>
 <NumberRow20Regular/>
 <NumberSymbol20Filled/>
@@ -3163,6 +3217,8 @@ function App() {
 <Sport20Regular/>
 <SportSoccer20Filled/>
 <SportSoccer20Regular/>
+<SquareArrowForward20Filled/>
+<SquareArrowForward20Regular/>
 <SquareMultiple20Filled/>
 <SquareMultiple20Regular/>
 <Star20Filled/>
@@ -3194,6 +3250,8 @@ function App() {
 <StrikethroughGaNa20Regular/>
 <Subtract20Filled/>
 <Subtract20Regular/>
+<SubtractSquareMultiple20Filled/>
+<SubtractSquareMultiple20Regular/>
 <SurfaceEarbuds20Filled/>
 <SurfaceEarbuds20Regular/>
 <SurfaceHub20Filled/>
@@ -3599,6 +3657,8 @@ function App() {
 <Wifi320Regular/>
 <Wifi420Filled/>
 <Wifi420Regular/>
+<WifiOff20Filled/>
+<WifiOff20Regular/>
 <WifiWarning20Filled/>
 <WifiWarning20Regular/>
 <Window20Filled/>

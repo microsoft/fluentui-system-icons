@@ -19,6 +19,8 @@ Archive48Filled,
 Archive48Regular,
 ArrowDownload48Filled,
 ArrowDownload48Regular,
+ArrowForward48Filled,
+ArrowForward48Regular,
 ArrowRedo48Filled,
 ArrowRedo48Regular,
 ArrowReply48Filled,
@@ -33,8 +35,18 @@ BackpackAdd48Filled,
 BackpackAdd48Regular,
 BoardSplit48Filled,
 BoardSplit48Regular,
+BookOpen48Filled,
+BookOpen48Regular,
+BookOpenMicrophone48Filled,
+BookOpenMicrophone48Regular,
 Briefcase48Filled,
 Briefcase48Regular,
+BriefcaseOff48Filled,
+BriefcaseOff48Regular,
+BuildingBank48Filled,
+BuildingBank48Regular,
+BuildingBankLink48Filled,
+BuildingBankLink48Regular,
 CallForward48Filled,
 CallForward48Regular,
 CallInbound48Filled,
@@ -91,6 +103,8 @@ CloudDownload48Filled,
 CloudDownload48Regular,
 CloudOff48Filled,
 CloudOff48Regular,
+CloudSync48Filled,
+CloudSync48Regular,
 CloudSyncComplete48Filled,
 CloudSyncComplete48Regular,
 Comment48Filled,
@@ -135,6 +149,8 @@ DocumentArrowLeft48Filled,
 DocumentArrowLeft48Regular,
 DocumentCopy48Filled,
 DocumentCopy48Regular,
+DocumentRibbon48Filled,
+DocumentRibbon48Regular,
 Drop48Filled,
 Drop48Regular,
 Fingerprint48Filled,
@@ -237,6 +253,8 @@ PersonMail48Regular,
 PersonTag48Regular,
 Pin48Filled,
 Pin48Regular,
+PinOff48Filled,
+PinOff48Regular,
 Play48Filled,
 Play48Regular,
 Print48Filled,
@@ -281,6 +299,8 @@ SplitHorizontal48Filled,
 SplitHorizontal48Regular,
 SplitVertical48Filled,
 SplitVertical48Regular,
+SquareArrowForward48Filled,
+SquareArrowForward48Regular,
 Subtract48Filled,
 Subtract48Regular,
 Table48Filled,
@@ -379,6 +399,8 @@ function App() {
 <Archive48Regular/>
 <ArrowDownload48Filled/>
 <ArrowDownload48Regular/>
+<ArrowForward48Filled/>
+<ArrowForward48Regular/>
 <ArrowRedo48Filled/>
 <ArrowRedo48Regular/>
 <ArrowReply48Filled/>
@@ -393,8 +415,18 @@ function App() {
 <BackpackAdd48Regular/>
 <BoardSplit48Filled/>
 <BoardSplit48Regular/>
+<BookOpen48Filled/>
+<BookOpen48Regular/>
+<BookOpenMicrophone48Filled/>
+<BookOpenMicrophone48Regular/>
 <Briefcase48Filled/>
 <Briefcase48Regular/>
+<BriefcaseOff48Filled/>
+<BriefcaseOff48Regular/>
+<BuildingBank48Filled/>
+<BuildingBank48Regular/>
+<BuildingBankLink48Filled/>
+<BuildingBankLink48Regular/>
 <CallForward48Filled/>
 <CallForward48Regular/>
 <CallInbound48Filled/>
@@ -451,6 +483,8 @@ function App() {
 <CloudDownload48Regular/>
 <CloudOff48Filled/>
 <CloudOff48Regular/>
+<CloudSync48Filled/>
+<CloudSync48Regular/>
 <CloudSyncComplete48Filled/>
 <CloudSyncComplete48Regular/>
 <Comment48Filled/>
@@ -495,6 +529,8 @@ function App() {
 <DocumentArrowLeft48Regular/>
 <DocumentCopy48Filled/>
 <DocumentCopy48Regular/>
+<DocumentRibbon48Filled/>
+<DocumentRibbon48Regular/>
 <Drop48Filled/>
 <Drop48Regular/>
 <Fingerprint48Filled/>
@@ -597,6 +633,8 @@ function App() {
 <PersonTag48Regular/>
 <Pin48Filled/>
 <Pin48Regular/>
+<PinOff48Filled/>
+<PinOff48Regular/>
 <Play48Filled/>
 <Play48Regular/>
 <Print48Filled/>
@@ -641,6 +679,8 @@ function App() {
 <SplitHorizontal48Regular/>
 <SplitVertical48Filled/>
 <SplitVertical48Regular/>
+<SquareArrowForward48Filled/>
+<SquareArrowForward48Regular/>
 <Subtract48Filled/>
 <Subtract48Regular/>
 <Table48Filled/>

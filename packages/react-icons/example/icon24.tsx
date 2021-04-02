@@ -279,6 +279,8 @@ BookOpen24Filled,
 BookOpen24Regular,
 BookOpenGlobe24Filled,
 BookOpenGlobe24Regular,
+BookOpenMicrophone24Filled,
+BookOpenMicrophone24Regular,
 BookPulse24Filled,
 BookPulse24Regular,
 BookQuestionMark24Filled,
@@ -335,6 +337,8 @@ Briefcase24Filled,
 Briefcase24Regular,
 BriefcaseMedical24Filled,
 BriefcaseMedical24Regular,
+BriefcaseOff24Filled,
+BriefcaseOff24Regular,
 BroadActivityFeed24Filled,
 BroadActivityFeed24Regular,
 Broom24Filled,
@@ -345,6 +349,8 @@ Building24Filled,
 Building24Regular,
 BuildingBank24Filled,
 BuildingBank24Regular,
+BuildingBankLink24Filled,
+BuildingBankLink24Regular,
 BuildingFactory24Filled,
 BuildingFactory24Regular,
 BuildingGovernment24Filled,
@@ -599,6 +605,8 @@ CloudOff24Filled,
 CloudOff24Regular,
 CloudOffline24Filled,
 CloudOffline24Regular,
+CloudSync24Filled,
+CloudSync24Regular,
 CloudSyncComplete24Filled,
 CloudSyncComplete24Regular,
 Code24Filled,
@@ -812,10 +820,14 @@ DocumentError24Filled,
 DocumentError24Regular,
 DocumentFooter24Filled,
 DocumentFooter24Regular,
+DocumentFooterDismiss24Filled,
+DocumentFooterDismiss24Regular,
 DocumentFooterRemove24Filled,
 DocumentFooterRemove24Regular,
 DocumentHeader24Filled,
 DocumentHeader24Regular,
+DocumentHeaderDismiss24Filled,
+DocumentHeaderDismiss24Regular,
 DocumentHeaderFooter24Filled,
 DocumentHeaderFooter24Regular,
 DocumentHeaderRemove24Filled,
@@ -850,6 +862,8 @@ DocumentProhibited24Filled,
 DocumentProhibited24Regular,
 DocumentQuestionMark24Filled,
 DocumentQuestionMark24Regular,
+DocumentRibbon24Filled,
+DocumentRibbon24Regular,
 DocumentSearch24Filled,
 DocumentSearch24Regular,
 DocumentSync24Filled,
@@ -884,6 +898,8 @@ DrinkToGo24Filled,
 DrinkToGo24Regular,
 DrinkWine24Filled,
 DrinkWine24Regular,
+DriveTrain24Filled,
+DriveTrain24Regular,
 Drop24Filled,
 Drop24Regular,
 DualScreen24Filled,
@@ -950,6 +966,8 @@ EmojiSad24Filled,
 EmojiSad24Regular,
 EmojiSurprise24Filled,
 EmojiSurprise24Regular,
+Engine24Filled,
+Engine24Regular,
 Eraser24Filled,
 Eraser24Regular,
 EraserMedium24Filled,
@@ -1073,6 +1091,10 @@ FullScreenMinimize24Filled,
 FullScreenMinimize24Regular,
 Games24Filled,
 Games24Regular,
+Gas24Filled,
+Gas24Regular,
+GasPump24Filled,
+GasPump24Regular,
 Gavel24Filled,
 Gavel24Regular,
 Gesture24Filled,
@@ -1339,6 +1361,8 @@ MicProhibited24Filled,
 MicProhibited24Regular,
 MicSettings24Filled,
 MicSettings24Regular,
+MicSparkle24Filled,
+MicSparkle24Regular,
 Midi24Filled,
 Midi24Regular,
 MobileOptimized24Filled,
@@ -1407,6 +1431,8 @@ NotebookSync24Filled,
 NotebookSync24Regular,
 Notepad24Filled,
 Notepad24Regular,
+NotepadPerson24Filled,
+NotepadPerson24Regular,
 NumberRow24Filled,
 NumberRow24Regular,
 NumberSymbol24Filled,
@@ -1794,6 +1820,8 @@ SkipForward1024Filled,
 SkipForward1024Regular,
 SkipForward3024Filled,
 SkipForward3024Regular,
+SkipForwardTab24Filled,
+SkipForwardTab24Regular,
 Sleep24Filled,
 Sleep24Regular,
 SlideAdd24Filled,
@@ -1864,6 +1892,8 @@ SportHockey24Filled,
 SportHockey24Regular,
 SportSoccer24Filled,
 SportSoccer24Regular,
+SquareArrowForward24Filled,
+SquareArrowForward24Regular,
 Star24Filled,
 Star24Regular,
 StarAdd24Filled,
@@ -2228,6 +2258,8 @@ TopSpeed24Filled,
 TopSpeed24Regular,
 Translate24Filled,
 Translate24Regular,
+Transmission24Filled,
+Transmission24Regular,
 Trophy24Filled,
 Trophy24Regular,
 Tv24Filled,
@@ -2364,6 +2396,8 @@ Wifi324Filled,
 Wifi324Regular,
 Wifi424Filled,
 Wifi424Regular,
+WifiOff24Filled,
+WifiOff24Regular,
 WifiProtected24Filled,
 WifiProtected24Regular,
 WindowArrowUp24Filled,
@@ -2666,6 +2700,8 @@ function App() {
 <BookOpen24Regular/>
 <BookOpenGlobe24Filled/>
 <BookOpenGlobe24Regular/>
+<BookOpenMicrophone24Filled/>
+<BookOpenMicrophone24Regular/>
 <BookPulse24Filled/>
 <BookPulse24Regular/>
 <BookQuestionMark24Filled/>
@@ -2722,6 +2758,8 @@ function App() {
 <Briefcase24Regular/>
 <BriefcaseMedical24Filled/>
 <BriefcaseMedical24Regular/>
+<BriefcaseOff24Filled/>
+<BriefcaseOff24Regular/>
 <BroadActivityFeed24Filled/>
 <BroadActivityFeed24Regular/>
 <Broom24Filled/>
@@ -2732,6 +2770,8 @@ function App() {
 <Building24Regular/>
 <BuildingBank24Filled/>
 <BuildingBank24Regular/>
+<BuildingBankLink24Filled/>
+<BuildingBankLink24Regular/>
 <BuildingFactory24Filled/>
 <BuildingFactory24Regular/>
 <BuildingGovernment24Filled/>
@@ -2986,6 +3026,8 @@ function App() {
 <CloudOff24Regular/>
 <CloudOffline24Filled/>
 <CloudOffline24Regular/>
+<CloudSync24Filled/>
+<CloudSync24Regular/>
 <CloudSyncComplete24Filled/>
 <CloudSyncComplete24Regular/>
 <Code24Filled/>
@@ -3199,10 +3241,14 @@ function App() {
 <DocumentError24Regular/>
 <DocumentFooter24Filled/>
 <DocumentFooter24Regular/>
+<DocumentFooterDismiss24Filled/>
+<DocumentFooterDismiss24Regular/>
 <DocumentFooterRemove24Filled/>
 <DocumentFooterRemove24Regular/>
 <DocumentHeader24Filled/>
 <DocumentHeader24Regular/>
+<DocumentHeaderDismiss24Filled/>
+<DocumentHeaderDismiss24Regular/>
 <DocumentHeaderFooter24Filled/>
 <DocumentHeaderFooter24Regular/>
 <DocumentHeaderRemove24Filled/>
@@ -3237,6 +3283,8 @@ function App() {
 <DocumentProhibited24Regular/>
 <DocumentQuestionMark24Filled/>
 <DocumentQuestionMark24Regular/>
+<DocumentRibbon24Filled/>
+<DocumentRibbon24Regular/>
 <DocumentSearch24Filled/>
 <DocumentSearch24Regular/>
 <DocumentSync24Filled/>
@@ -3271,6 +3319,8 @@ function App() {
 <DrinkToGo24Regular/>
 <DrinkWine24Filled/>
 <DrinkWine24Regular/>
+<DriveTrain24Filled/>
+<DriveTrain24Regular/>
 <Drop24Filled/>
 <Drop24Regular/>
 <DualScreen24Filled/>
@@ -3337,6 +3387,8 @@ function App() {
 <EmojiSad24Regular/>
 <EmojiSurprise24Filled/>
 <EmojiSurprise24Regular/>
+<Engine24Filled/>
+<Engine24Regular/>
 <Eraser24Filled/>
 <Eraser24Regular/>
 <EraserMedium24Filled/>
@@ -3460,6 +3512,10 @@ function App() {
 <FullScreenMinimize24Regular/>
 <Games24Filled/>
 <Games24Regular/>
+<Gas24Filled/>
+<Gas24Regular/>
+<GasPump24Filled/>
+<GasPump24Regular/>
 <Gavel24Filled/>
 <Gavel24Regular/>
 <Gesture24Filled/>
@@ -3726,6 +3782,8 @@ function App() {
 <MicProhibited24Regular/>
 <MicSettings24Filled/>
 <MicSettings24Regular/>
+<MicSparkle24Filled/>
+<MicSparkle24Regular/>
 <Midi24Filled/>
 <Midi24Regular/>
 <MobileOptimized24Filled/>
@@ -3794,6 +3852,8 @@ function App() {
 <NotebookSync24Regular/>
 <Notepad24Filled/>
 <Notepad24Regular/>
+<NotepadPerson24Filled/>
+<NotepadPerson24Regular/>
 <NumberRow24Filled/>
 <NumberRow24Regular/>
 <NumberSymbol24Filled/>
@@ -4181,6 +4241,8 @@ function App() {
 <SkipForward1024Regular/>
 <SkipForward3024Filled/>
 <SkipForward3024Regular/>
+<SkipForwardTab24Filled/>
+<SkipForwardTab24Regular/>
 <Sleep24Filled/>
 <Sleep24Regular/>
 <SlideAdd24Filled/>
@@ -4251,6 +4313,8 @@ function App() {
 <SportHockey24Regular/>
 <SportSoccer24Filled/>
 <SportSoccer24Regular/>
+<SquareArrowForward24Filled/>
+<SquareArrowForward24Regular/>
 <Star24Filled/>
 <Star24Regular/>
 <StarAdd24Filled/>
@@ -4615,6 +4679,8 @@ function App() {
 <TopSpeed24Regular/>
 <Translate24Filled/>
 <Translate24Regular/>
+<Transmission24Filled/>
+<Transmission24Regular/>
 <Trophy24Filled/>
 <Trophy24Regular/>
 <Tv24Filled/>
@@ -4751,6 +4817,8 @@ function App() {
 <Wifi324Regular/>
 <Wifi424Filled/>
 <Wifi424Regular/>
+<WifiOff24Filled/>
+<WifiOff24Regular/>
 <WifiProtected24Filled/>
 <WifiProtected24Regular/>
 <WindowArrowUp24Filled/>
