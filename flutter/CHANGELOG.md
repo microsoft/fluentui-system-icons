@@ -1,1 +1,1 @@
-## [1.1.116] - Complete change log present here https://github.com/microsoft/fluentui-system-icons/tags
+## [1.1.117] - Complete change log present here https://github.com/microsoft/fluentui-system-icons/tags
