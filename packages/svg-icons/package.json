@@ -1,8 +1,7 @@
 {
   "name": "@fluentui/svg-icons",
-  "version": "1.1.108",
+  "version": "1.1.117",
   "description": "Fluent System Icons are a collection of familiar, friendly, and modern icons from Microsoft.",
-  "author": "Microsoft Inc.",
   "license": "MIT",
   "repository": {
     "type": "git",

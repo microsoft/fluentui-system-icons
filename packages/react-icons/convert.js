@@ -7,7 +7,6 @@ const path = require("path");
 const process = require("process");
 const argv = require("yargs").boolean("selector").default("selector", false).argv;
 const _ = require("lodash");
-const template = require("./template");
 
 const SRC_PATH = argv.source;
 const DEST_PATH = argv.dest;
@@ -46,7 +45,7 @@ function processFolder(srcPath, destPath) {
     var svgrOpts = {
       template: fileTemplate,
       expandProps: false, // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
-      svgProps: { className: '{className}', ariaPrefixlabel:'{props["aria-label"]}', ariaPrefixhidden:'{props["aria-hidden"]}'}, // In order to provide styling, className will be used
+      svgProps: { className: '{className}'}, // In order to provide styling, className will be used
       replaceAttrValues: { '#212121': '{primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
       typescript: true,
     }
@@ -72,9 +71,8 @@ function processFolder(srcPath, destPath) {
     });
 
     // Finally add the interface definition and then write out the index.
-    indexContents += '\nexport { IFluentIconsProps } from \'./IFluentIconsProps.types\''
-    indexContents += '\nexport { ILabelIconProps } from \'./ILabelIconProps.types\''
-    indexContents += '\nexport { IPresentationIconProps } from \'./IPresentationIconProps.types\''
+    indexContents += '\nexport { IFluentIconsProps } from \'./utils/IFluentIconsProps.types\''
+    indexContents += '\nexport { default as wrapIcon } from \'./utils/wrapIcon\''
     fs.writeFileSync(destPath + '/index.tsx', indexContents, (err) => {
       if (err) throw err;
     });
@@ -95,12 +93,9 @@ function fileTemplate(
 
   return tpl.ast`
 		import * as React from "react";
+		import { IFluentIconsProps } from '../utils/IFluentIconsProps.types';
 
-		import { IFluentIconsProps } from '../IFluentIconsProps.types';
-    import { ILabelIconProps } from '../ILabelIconProps.types';
-    import { IPresentationIconProps } from '../IPresentationIconProps.types';
-
-		const ${componentName} = (iconProps: IFluentIconsProps, props: (ILabelIconProps | IPresentationIconProps)): JSX.Element=> {
+		const ${componentName}: JSX.Element = (iconProps: IFluentIconsProps) => {
 		const { primaryFill, className } = iconProps;
 		return ${jsx};
 		}
