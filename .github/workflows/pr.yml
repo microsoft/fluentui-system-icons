@@ -52,6 +52,16 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Bump version patch
+      run: |
+        grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec | python3 -c """
+        import sys
+        import os
+        current_version = sys.stdin.read().strip().split(\"'\")[1]
+        major, minor, patch = current_version.split('.')
+        os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
+        """
+
     - name: Use Node 11
       uses: actions/setup-node@v1
       with:
@@ -80,7 +90,7 @@ jobs:
     - name: Build Android library
       uses: eskatos/gradle-command-action@v1
       with:
-        arguments: assembleRelease -DversionName=${{ env.NEW_VERSION }}
+        arguments: assembleRelease -DversionName='${{ env.NEW_VERSION }}'
         build-root-directory: android
         wrapper-directory: android
 
