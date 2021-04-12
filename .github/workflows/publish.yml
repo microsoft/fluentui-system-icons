@@ -78,8 +78,9 @@ jobs:
         GPG_SIGNING_PASSWORD: ${{ secrets.GPG_SIGNING_PASSWORD }}
         SIGNING_SECRET_KEY_RING_FILE: ${{ secrets.SIGNING_SECRET_KEY_RING_FILE }}
         SONATYPE_STAGING_PROFILE_ID: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
+        VERSION_NAME: ${{ env.NEW_VERSION }}
       with:
-        arguments: publishReleasePublicationToSonatypeRepository -DversionName='${{ env.NEW_VERSION }}' --max-workers 1 closeAndReleaseRepository
+        arguments: publishReleasePublicationToSonatypeRepository --max-workers 1 closeAndReleaseRepository
         build-root-directory: android
         wrapper-directory: android
 
