@@ -14,12 +14,12 @@ Fluent UI System Icons are a collection of familiar, friendly and modern icons f
 
 ### Android
 
-The library is published via JCenter, please ensure that the `jcenter()` repository has been added to the root `build.gradle` file:
+The library is published via Maven Central, please ensure that the `mavenCentral()` repository has been added to the root `build.gradle` file:
 
 ```groovy
 repositories {
     ...
-    jcenter()
+    mavenCentral()
 }
 ```
 
