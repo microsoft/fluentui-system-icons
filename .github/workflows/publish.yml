@@ -56,7 +56,7 @@ jobs:
 
     - name: Base64 decodes and pipes the GPG key content into the secret file
       env:
-        GPG_KEY_CONTENTS: ${{ secrets.GPG_KEY_CONTENT }}
+        GPG_KEY_CONTENT: ${{ secrets.GPG_KEY_CONTENT }}
         SIGNING_SECRET_KEY_RING_FILE: ${{ secrets.SIGNING_SECRET_KEY_RING_FILE }}
       run: |
         git fetch --unshallow
@@ -69,8 +69,8 @@ jobs:
         build-root-directory: android
         wrapper-directory: android
 
-    - name: Publish to MavenCentral
-      run: ./gradlew publishReleasePublicationToSonatypeRepository --max-workers 1 closeAndReleaseRepository
+    - name: Publish to Maven Central
+      uses: eskatos/gradle-command-action@v1
       env:
         OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
         OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
@@ -78,6 +78,10 @@ jobs:
         GPG_SIGNING_PASSWORD: ${{ secrets.GPG_SIGNING_PASSWORD }}
         SIGNING_SECRET_KEY_RING_FILE: ${{ secrets.SIGNING_SECRET_KEY_RING_FILE }}
         SONATYPE_STAGING_PROFILE_ID: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
+      with:
+        arguments: publishReleasePublicationToSonatypeRepository --max-workers 1 closeAndReleaseRepository
+        build-root-directory: android
+        wrapper-directory: android
 
     - name: Generate BUILD.gn file for Android
       run: python3 generate_build_gn_android.py

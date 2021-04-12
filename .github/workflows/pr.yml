@@ -71,7 +71,7 @@ jobs:
 
     - name: Base64 decodes and pipes the GPG key content into the secret file
       env:
-        GPG_KEY_CONTENTS: ${{ secrets.GPG_KEY_CONTENT }}
+        GPG_KEY_CONTENT: ${{ secrets.GPG_KEY_CONTENT }}
         SIGNING_SECRET_KEY_RING_FILE: ${{ secrets.SIGNING_SECRET_KEY_RING_FILE }}
       run: |
         git fetch --unshallow
