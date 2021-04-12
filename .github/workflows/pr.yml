@@ -19,11 +19,13 @@ jobs:
         for dir in assets_dir:
           if dir.endswith(' '):
             invalid_asset_dirs.append(dir)
+
         if invalid_asset_dirs:
           print('Invalid asset directories, remove the trailing space')
           print(invalid_asset_dirs)
           exit(1)
         """
+
   build-ios:
     name: Build iOS library
     runs-on: ubuntu-latest
