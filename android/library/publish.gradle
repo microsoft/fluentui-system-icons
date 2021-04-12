@@ -16,7 +16,7 @@ artifacts {
 
 
 group = project.POM_GROUP_ID
-version = System.getProperty("versionName", project.VERSION_NAME + "-SNAPSHOT")
+version = getReleaseVersion()
 
 ext["signing.keyId"] = ''
 ext["signing.password"] = ''
@@ -46,7 +46,7 @@ publishing {
         release(MavenPublication) {
             groupId project.POM_GROUP_ID
             artifactId project.POM_ARTIFACT_ID
-            version System.getProperty("versionName", project.VERSION_NAME + "-SNAPSHOT")
+            version getReleaseVersion()
 
             if (project.plugins.findPlugin("com.android.library")) {
                 artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
@@ -113,4 +113,12 @@ nexusStaging {
 
 signing {
     sign publishing.publications
+}
+
+String getReleaseVersion() {
+    String version = System.getenv('VERSION_NAME')
+    if (version == null || version == "") {
+        return project.VERSION_NAME + "-SNAPSHOT"
+    }
+    return version
 }
