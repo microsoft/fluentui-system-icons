@@ -26,24 +26,24 @@ jobs:
           exit(1)
         """
 
-  build-ios:
-    name: Build iOS library
-    runs-on: ubuntu-latest
+  # build-ios:
+  #   name: Build iOS library
+  #   runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v2
+  #   steps:
+  #   - uses: actions/checkout@v2
 
-    - name: Use Node 11
-      uses: actions/setup-node@v1
-      with:
-        node-version: 11.x
+  #   - name: Use Node 11
+  #     uses: actions/setup-node@v1
+  #     with:
+  #       node-version: 11.x
 
-    - run: npm install
-      working-directory: importer
+  #   - run: npm install
+  #     working-directory: importer
 
-    - name: Run generate script
-      run: npm run deploy:ios
-      working-directory: importer
+  #   - name: Run generate script
+  #     run: npm run deploy:ios
+  #     working-directory: importer
 
   build-android:
     name: Build Android library
@@ -67,89 +67,102 @@ jobs:
     - name: Setup Java
       uses: actions/setup-java@v1
       with:
-        java-version: 11
+        java-version: 8
 
-    # https://github.com/marketplace/actions/gradle-command
+    - name: Base64 decodes and pipes the GPG key content into the secret file
+        env:
+          GPG_KEY_CONTENTS: ${{ secrets.GPG_KEY_CONTENT }}
+          SIGNING_SECRET_KEY_RING_FILE: ${{ secrets.SIGNING_SECRET_KEY_RING_FILE }}
+        run: |
+          git fetch --unshallow
+          sudo bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
+
     - name: Build Android library
       uses: eskatos/gradle-command-action@v1
       with:
-        arguments: assembleRelease
+        arguments: assembleRelease -DversionName=${{ env.NEW_VERSION }}
         build-root-directory: android
         wrapper-directory: android
 
-    - name: Generate BUILD.gn file for Android
-      run: python3 generate_build_gn_android.py
-      working-directory: importer
+    - name: Publish to MavenCentral
+        run: ./gradlew publishReleasePublicationToSonatypeRepository --max-workers 1 
+        env:
+          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+          GPG_SIGNING_KEY_ID: ${{ secrets.GPG_SIGNING_KEY_ID }}
+          GPG_SIGNING_PASSWORD: ${{ secrets.GPG_SIGNING_PASSWORD }}
+          SIGNING_SECRET_KEY_RING_FILE: ${{ secrets.SIGNING_SECRET_KEY_RING_FILE }}
+          SONATYPE_STAGING_PROFILE_ID: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
 
-  build-flutter:
-    name: Build Flutter library
-    runs-on: ubuntu-latest
+  # build-flutter:
+  #   name: Build Flutter library
+  #   runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v2
+  #   steps:
+  #   - uses: actions/checkout@v2
 
-    - name: Use Node 11
-      uses: actions/setup-node@v1
-      with:
-        node-version: 11.x
+  #   - name: Use Node 11
+  #     uses: actions/setup-node@v1
+  #     with:
+  #       node-version: 11.x
 
-    - run: npm install
-      working-directory: importer
+  #   - run: npm install
+  #     working-directory: importer
 
-    - name: Run generate script
-      run: npm run deploy:flutter
-      working-directory: importer
+  #   - name: Run generate script
+  #     run: npm run deploy:flutter
+  #     working-directory: importer
 
-    # Build Flutter library
-    # The name should be same as the package name on pub.dev
-    # Tokens are placeholder strings in order for the action to run on forked repos.
-    - name: 'fluentui_system_icons'
-      uses: k-paxian/dart-package-publisher@master
-      with:
-        relativePath: 'flutter'
-        skipTests: true
-        dryRunOnly: true
-        accessToken: "placeholder"
-        refreshToken: "placeholder"
+  #   # Build Flutter library
+  #   # The name should be same as the package name on pub.dev
+  #   # Tokens are placeholder strings in order for the action to run on forked repos.
+  #   - name: 'fluentui_system_icons'
+  #     uses: k-paxian/dart-package-publisher@master
+  #     with:
+  #       relativePath: 'flutter'
+  #       skipTests: true
+  #       dryRunOnly: true
+  #       accessToken: "placeholder"
+  #       refreshToken: "placeholder"
 
-  build-svg:
-    name: Build svg library
-    runs-on: ubuntu-latest
+  # build-svg:
+  #   name: Build svg library
+  #   runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v2
+  #   steps:
+  #   - uses: actions/checkout@v2
 
-    - name: Use Node 11
-      uses: actions/setup-node@v1
-      with:
-        node-version: 11.x
+  #   - name: Use Node 11
+  #     uses: actions/setup-node@v1
+  #     with:
+  #       node-version: 11.x
 
-    - run: npm install
-      working-directory: importer
+  #   - run: npm install
+  #     working-directory: importer
 
-    - run: npm install
-      working-directory: packages/svg-icons
+  #   - run: npm install
+  #     working-directory: packages/svg-icons
 
-    - name: Run build
-      run: npm run build
-      working-directory: packages/svg-icons
+  #   - name: Run build
+  #     run: npm run build
+  #     working-directory: packages/svg-icons
 
-  build-react:
-    name: Build react library
-    runs-on: ubuntu-latest
+  # build-react:
+  #   name: Build react library
+  #   runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v2
+  #   steps:
+  #   - uses: actions/checkout@v2
 
-    - name: Use Node 11
-      uses: actions/setup-node@v1
-      with:
-        node-version: 11.x
+  #   - name: Use Node 11
+  #     uses: actions/setup-node@v1
+  #     with:
+  #       node-version: 11.x
 
-    - run: npm install
-      working-directory: importer
+  #   - run: npm install
+  #     working-directory: importer
 
-    - run: |
-        npm install
-        npm run build
-      working-directory: packages/react-icons
+  #   - run: |
+  #       npm install
+  #       npm run build
+  #     working-directory: packages/react-icons
