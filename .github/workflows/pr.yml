@@ -19,31 +19,29 @@ jobs:
         for dir in assets_dir:
           if dir.endswith(' '):
             invalid_asset_dirs.append(dir)
-
         if invalid_asset_dirs:
           print('Invalid asset directories, remove the trailing space')
           print(invalid_asset_dirs)
           exit(1)
         """
+  build-ios:
+    name: Build iOS library
+    runs-on: ubuntu-latest
 
-  # build-ios:
-  #   name: Build iOS library
-  #   runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
 
-  #   steps:
-  #   - uses: actions/checkout@v2
+    - name: Use Node 11
+      uses: actions/setup-node@v1
+      with:
+        node-version: 11.x
 
-  #   - name: Use Node 11
-  #     uses: actions/setup-node@v1
-  #     with:
-  #       node-version: 11.x
+    - run: npm install
+      working-directory: importer
 
-  #   - run: npm install
-  #     working-directory: importer
-
-  #   - name: Run generate script
-  #     run: npm run deploy:ios
-  #     working-directory: importer
+    - name: Run generate script
+      run: npm run deploy:ios
+      working-directory: importer
 
   build-android:
     name: Build Android library
@@ -51,16 +49,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
-    - name: Bump version patch
-      run: |
-        grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec | python3 -c """
-        import sys
-        import os
-        current_version = sys.stdin.read().strip().split(\"'\")[1]
-        major, minor, patch = current_version.split('.')
-        os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
-        """
 
     - name: Use Node 11
       uses: actions/setup-node@v1
@@ -77,106 +65,89 @@ jobs:
     - name: Setup Java
       uses: actions/setup-java@v1
       with:
-        java-version: 8
+        java-version: 11
 
-    - name: Base64 decodes and pipes the GPG key content into the secret file
-      env:
-        GPG_KEY_CONTENT: ${{ secrets.GPG_KEY_CONTENT }}
-        SIGNING_SECRET_KEY_RING_FILE: ${{ secrets.SIGNING_SECRET_KEY_RING_FILE }}
-      run: |
-        git fetch --unshallow
-        sudo bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
-
+    # https://github.com/marketplace/actions/gradle-command
     - name: Build Android library
       uses: eskatos/gradle-command-action@v1
       with:
-        arguments: assembleRelease -DversionName='${{ env.NEW_VERSION }}'
+        arguments: assembleRelease
         build-root-directory: android
         wrapper-directory: android
 
-    - name: Publish to Maven Central
-      uses: eskatos/gradle-command-action@v1
-      env:
-        OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-        OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
-        GPG_SIGNING_KEY_ID: ${{ secrets.GPG_SIGNING_KEY_ID }}
-        GPG_SIGNING_PASSWORD: ${{ secrets.GPG_SIGNING_PASSWORD }}
-        SIGNING_SECRET_KEY_RING_FILE: ${{ secrets.SIGNING_SECRET_KEY_RING_FILE }}
-        SONATYPE_STAGING_PROFILE_ID: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
+    - name: Generate BUILD.gn file for Android
+      run: python3 generate_build_gn_android.py
+      working-directory: importer
+
+  build-flutter:
+    name: Build Flutter library
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node 11
+      uses: actions/setup-node@v1
       with:
-        arguments: publishReleasePublicationToSonatypeRepository -DversionName='${{ env.NEW_VERSION }}' --max-workers 1
-        build-root-directory: android
-        wrapper-directory: android
+        node-version: 11.x
 
-  # build-flutter:
-  #   name: Build Flutter library
-  #   runs-on: ubuntu-latest
+    - run: npm install
+      working-directory: importer
 
-  #   steps:
-  #   - uses: actions/checkout@v2
+    - name: Run generate script
+      run: npm run deploy:flutter
+      working-directory: importer
 
-  #   - name: Use Node 11
-  #     uses: actions/setup-node@v1
-  #     with:
-  #       node-version: 11.x
+    # Build Flutter library
+    # The name should be same as the package name on pub.dev
+    # Tokens are placeholder strings in order for the action to run on forked repos.
+    - name: 'fluentui_system_icons'
+      uses: k-paxian/dart-package-publisher@master
+      with:
+        relativePath: 'flutter'
+        skipTests: true
+        dryRunOnly: true
+        accessToken: "placeholder"
+        refreshToken: "placeholder"
 
-  #   - run: npm install
-  #     working-directory: importer
+  build-svg:
+    name: Build svg library
+    runs-on: ubuntu-latest
 
-  #   - name: Run generate script
-  #     run: npm run deploy:flutter
-  #     working-directory: importer
+    steps:
+    - uses: actions/checkout@v2
 
-  #   # Build Flutter library
-  #   # The name should be same as the package name on pub.dev
-  #   # Tokens are placeholder strings in order for the action to run on forked repos.
-  #   - name: 'fluentui_system_icons'
-  #     uses: k-paxian/dart-package-publisher@master
-  #     with:
-  #       relativePath: 'flutter'
-  #       skipTests: true
-  #       dryRunOnly: true
-  #       accessToken: "placeholder"
-  #       refreshToken: "placeholder"
+    - name: Use Node 11
+      uses: actions/setup-node@v1
+      with:
+        node-version: 11.x
 
-  # build-svg:
-  #   name: Build svg library
-  #   runs-on: ubuntu-latest
+    - run: npm install
+      working-directory: importer
 
-  #   steps:
-  #   - uses: actions/checkout@v2
+    - run: npm install
+      working-directory: packages/svg-icons
 
-  #   - name: Use Node 11
-  #     uses: actions/setup-node@v1
-  #     with:
-  #       node-version: 11.x
+    - name: Run build
+      run: npm run build
+      working-directory: packages/svg-icons
 
-  #   - run: npm install
-  #     working-directory: importer
+  build-react:
+    name: Build react library
+    runs-on: ubuntu-latest
 
-  #   - run: npm install
-  #     working-directory: packages/svg-icons
+    steps:
+    - uses: actions/checkout@v2
 
-  #   - name: Run build
-  #     run: npm run build
-  #     working-directory: packages/svg-icons
+    - name: Use Node 11
+      uses: actions/setup-node@v1
+      with:
+        node-version: 11.x
 
-  # build-react:
-  #   name: Build react library
-  #   runs-on: ubuntu-latest
+    - run: npm install
+      working-directory: importer
 
-  #   steps:
-  #   - uses: actions/checkout@v2
-
-  #   - name: Use Node 11
-  #     uses: actions/setup-node@v1
-  #     with:
-  #       node-version: 11.x
-
-  #   - run: npm install
-  #     working-directory: importer
-
-  #   - run: |
-  #       npm install
-  #       npm run build
-  #     working-directory: packages/react-icons
+    - run: |
+        npm install
+        npm run build
+      working-directory: packages/react-icons
