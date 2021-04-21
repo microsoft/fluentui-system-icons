@@ -1,3 +1,5 @@
+import java.time.Duration
+
 // Create variables with empty default values
 ext["ossrhUsername"] = ''
 ext["ossrhPassword"] = ''
@@ -30,5 +32,10 @@ nexusPublishing {
             username = ossrhUsername
             password = ossrhPassword
         }
+    }
+
+    transitionCheckOptions {
+        maxRetries.set(10)
+        delayBetween.set(Duration.ofMillis(3000))
     }
 }
