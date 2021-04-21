@@ -24,4 +24,4 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
 
-apply from: './publish.gradle'
+apply from: "${rootDir}/scripts/publish-module.gradle"
