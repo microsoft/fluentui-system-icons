@@ -80,7 +80,7 @@ jobs:
         SONATYPE_STAGING_PROFILE_ID: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
         VERSION_NAME: ${{ env.NEW_VERSION }}
       with:
-        arguments: publishReleasePublicationToSonatypeRepository --max-workers 1 closeAndReleaseRepository
+        arguments: publishReleasePublicationToSonatypeRepository --max-workers 1 closeAndReleaseSonatypeStagingRepository
         build-root-directory: android
         wrapper-directory: android
 
