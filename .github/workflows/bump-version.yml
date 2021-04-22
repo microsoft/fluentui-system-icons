@@ -83,7 +83,7 @@ jobs:
     - name: Commit version number change
       run: |
         git add -A
-        git commit -m "Release $NEW_VERSION"
+        git commit -m "Update version number to $NEW_VERSION"
 
     - name: Push release
       run: |
