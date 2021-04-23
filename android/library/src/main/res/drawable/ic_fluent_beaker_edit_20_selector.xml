@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2021.
+  ~ Microsoft Corporation. All rights reserved.
+  -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/ic_fluent_beaker_edit_20_filled" android:state_activated="true"/>
+    <item android:drawable="@drawable/ic_fluent_beaker_edit_20_filled" android:state_checked="true"/>
+    <item android:drawable="@drawable/ic_fluent_beaker_edit_20_filled" android:state_selected="true"/>
+    <item android:drawable="@drawable/ic_fluent_beaker_edit_20_regular"/>
+</selector>

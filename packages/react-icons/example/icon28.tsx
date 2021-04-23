@@ -25,6 +25,8 @@ AlignRight28Filled,
 AlignRight28Regular,
 AlignTop28Filled,
 AlignTop28Regular,
+AnimalCat28Filled,
+AnimalCat28Regular,
 AnimalRabbit28Filled,
 AnimalRabbit28Regular,
 AnimalTurtle28Filled,
@@ -85,6 +87,8 @@ BookOpenMicrophone28Filled,
 BookOpenMicrophone28Regular,
 Bookmark28Filled,
 Bookmark28Regular,
+BowlChopsticks28Filled,
+BowlChopsticks28Regular,
 Briefcase28Filled,
 Briefcase28Regular,
 BriefcaseOff28Filled,
@@ -159,6 +163,8 @@ ChevronRight28Filled,
 ChevronRight28Regular,
 ChevronUp28Filled,
 ChevronUp28Regular,
+Chopsticks28Filled,
+Chopsticks28Regular,
 Clock28Filled,
 Clock28Regular,
 ClosedCaption28Filled,
@@ -197,6 +203,8 @@ ConferenceRoom28Filled,
 ConferenceRoom28Regular,
 ContactCardGroup28Filled,
 ContactCardGroup28Regular,
+ContractDownLeft28Filled,
+ContractDownLeft28Regular,
 CursorHover28Filled,
 CursorHover28Regular,
 CursorHoverOff28Filled,
@@ -211,6 +219,10 @@ Desktop28Filled,
 Desktop28Regular,
 DesktopPulse28Filled,
 DesktopPulse28Regular,
+DeviceMeetingRoom28Filled,
+DeviceMeetingRoom28Regular,
+DeviceMeetingRoomRemote28Filled,
+DeviceMeetingRoomRemote28Regular,
 Dismiss28Filled,
 Dismiss28Regular,
 DismissCircle28Filled,
@@ -235,6 +247,10 @@ Dumbbell28Filled,
 Dumbbell28Regular,
 EmojiHand28Filled,
 EmojiHand28Regular,
+ExpandUpLeft28Filled,
+ExpandUpLeft28Regular,
+ExpandUpRight28Filled,
+ExpandUpRight28Regular,
 FStop28Filled,
 FStop28Regular,
 Filter28Filled,
@@ -290,6 +306,8 @@ HeadphonesSoundWave28Filled,
 HeadphonesSoundWave28Regular,
 Headset28Filled,
 Headset28Regular,
+Heart28Filled,
+Heart28Regular,
 Home28Filled,
 Home28Regular,
 Image28Filled,
@@ -334,6 +352,8 @@ MailUnread28Filled,
 MailUnread28Regular,
 Maximize28Filled,
 Maximize28Regular,
+MeetNow28Filled,
+MeetNow28Regular,
 Megaphone28Filled,
 Megaphone28Regular,
 MicOff28Filled,
@@ -342,6 +362,8 @@ MicOn28Filled,
 MicOn28Regular,
 MicProhibited28Filled,
 MicProhibited28Regular,
+Molecule28Filled,
+Molecule28Regular,
 MoreHorizontal28Filled,
 MoreHorizontal28Regular,
 MoreVertical28Filled,
@@ -399,6 +421,8 @@ PhoneSpanIn28Filled,
 PhoneSpanIn28Regular,
 PhoneSpanOut28Filled,
 PhoneSpanOut28Regular,
+Pill28Filled,
+Pill28Regular,
 Pin28Filled,
 Pin28Regular,
 PlayCircle28Filled,
@@ -427,6 +451,10 @@ ReadingList28Filled,
 ReadingList28Regular,
 ReadingListAdd28Filled,
 ReadingListAdd28Regular,
+Record28Filled,
+Record28Regular,
+RecordStop28Filled,
+RecordStop28Regular,
 Rename28Filled,
 Rename28Regular,
 Search28Filled,
@@ -490,6 +518,8 @@ StarOneQuarter28Filled,
 StarThreeQuarter28Filled,
 Subtract28Filled,
 Subtract28Regular,
+SubtractCircle28Filled,
+SubtractCircle28Regular,
 Tab28Filled,
 Tab28Regular,
 TabInPrivate28Filled,
@@ -568,6 +598,8 @@ function App() {
 <AlignRight28Regular/>
 <AlignTop28Filled/>
 <AlignTop28Regular/>
+<AnimalCat28Filled/>
+<AnimalCat28Regular/>
 <AnimalRabbit28Filled/>
 <AnimalRabbit28Regular/>
 <AnimalTurtle28Filled/>
@@ -628,6 +660,8 @@ function App() {
 <BookOpenMicrophone28Regular/>
 <Bookmark28Filled/>
 <Bookmark28Regular/>
+<BowlChopsticks28Filled/>
+<BowlChopsticks28Regular/>
 <Briefcase28Filled/>
 <Briefcase28Regular/>
 <BriefcaseOff28Filled/>
@@ -702,6 +736,8 @@ function App() {
 <ChevronRight28Regular/>
 <ChevronUp28Filled/>
 <ChevronUp28Regular/>
+<Chopsticks28Filled/>
+<Chopsticks28Regular/>
 <Clock28Filled/>
 <Clock28Regular/>
 <ClosedCaption28Filled/>
@@ -740,6 +776,8 @@ function App() {
 <ConferenceRoom28Regular/>
 <ContactCardGroup28Filled/>
 <ContactCardGroup28Regular/>
+<ContractDownLeft28Filled/>
+<ContractDownLeft28Regular/>
 <CursorHover28Filled/>
 <CursorHover28Regular/>
 <CursorHoverOff28Filled/>
@@ -754,6 +792,10 @@ function App() {
 <Desktop28Regular/>
 <DesktopPulse28Filled/>
 <DesktopPulse28Regular/>
+<DeviceMeetingRoom28Filled/>
+<DeviceMeetingRoom28Regular/>
+<DeviceMeetingRoomRemote28Filled/>
+<DeviceMeetingRoomRemote28Regular/>
 <Dismiss28Filled/>
 <Dismiss28Regular/>
 <DismissCircle28Filled/>
@@ -778,6 +820,10 @@ function App() {
 <Dumbbell28Regular/>
 <EmojiHand28Filled/>
 <EmojiHand28Regular/>
+<ExpandUpLeft28Filled/>
+<ExpandUpLeft28Regular/>
+<ExpandUpRight28Filled/>
+<ExpandUpRight28Regular/>
 <FStop28Filled/>
 <FStop28Regular/>
 <Filter28Filled/>
@@ -833,6 +879,8 @@ function App() {
 <HeadphonesSoundWave28Regular/>
 <Headset28Filled/>
 <Headset28Regular/>
+<Heart28Filled/>
+<Heart28Regular/>
 <Home28Filled/>
 <Home28Regular/>
 <Image28Filled/>
@@ -877,6 +925,8 @@ function App() {
 <MailUnread28Regular/>
 <Maximize28Filled/>
 <Maximize28Regular/>
+<MeetNow28Filled/>
+<MeetNow28Regular/>
 <Megaphone28Filled/>
 <Megaphone28Regular/>
 <MicOff28Filled/>
@@ -885,6 +935,8 @@ function App() {
 <MicOn28Regular/>
 <MicProhibited28Filled/>
 <MicProhibited28Regular/>
+<Molecule28Filled/>
+<Molecule28Regular/>
 <MoreHorizontal28Filled/>
 <MoreHorizontal28Regular/>
 <MoreVertical28Filled/>
@@ -942,6 +994,8 @@ function App() {
 <PhoneSpanIn28Regular/>
 <PhoneSpanOut28Filled/>
 <PhoneSpanOut28Regular/>
+<Pill28Filled/>
+<Pill28Regular/>
 <Pin28Filled/>
 <Pin28Regular/>
 <PlayCircle28Filled/>
@@ -970,6 +1024,10 @@ function App() {
 <ReadingList28Regular/>
 <ReadingListAdd28Filled/>
 <ReadingListAdd28Regular/>
+<Record28Filled/>
+<Record28Regular/>
+<RecordStop28Filled/>
+<RecordStop28Regular/>
 <Rename28Filled/>
 <Rename28Regular/>
 <Search28Filled/>
@@ -1033,6 +1091,8 @@ function App() {
 <StarThreeQuarter28Filled/>
 <Subtract28Filled/>
 <Subtract28Regular/>
+<SubtractCircle28Filled/>
+<SubtractCircle28Regular/>
 <Tab28Filled/>
 <Tab28Regular/>
 <TabInPrivate28Filled/>
