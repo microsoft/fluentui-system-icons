@@ -1,0 +1,6 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="20dp" android:height="20dp" android:viewportWidth="20" android:viewportHeight="20">
+    <path android:pathData="M11 15h2v2h-2v-2zm4 0h2v2h-2v-2zm-4-4h2v2h-2v-2zm2 2h2v2h-2v-2zm2-2h2v2h-2v-2zM3 5c0-1.105 0.895-2 2-2h2c1.105 0 2 0.895 2 2v2c0 1.105-0.895 2-2 2H5C3.895 9 3 8.105 3 7V5zm2-1C4.448 4 4 4.448 4 5v2c0 0.552 0.448 1 1 1h2c0.552 0 1-0.448 1-1V5c0-0.552-0.448-1-1-1H5z" android:fillColor="@color/fluent_default_icon_tint"/>
+    <path android:pathData="M5 5h2v2H5V5zm-2 8c0-1.105 0.895-2 2-2h2c1.105 0 2 0.895 2 2v2c0 1.105-0.895 2-2 2H5c-1.105 0-2-0.895-2-2v-2zm2-1c-0.552 0-1 0.448-1 1v2c0 0.552 0.448 1 1 1h2c0.552 0 1-0.448 1-1v-2c0-0.552-0.448-1-1-1H5z" android:fillColor="@color/fluent_default_icon_tint"/>
+    <path android:pathData="M5 13h2v2H5v-2zm6-8c0-1.105 0.895-2 2-2h2c1.105 0 2 0.895 2 2v2c0 1.105-0.895 2-2 2h-2c-1.105 0-2-0.895-2-2V5zm2-1c-0.552 0-1 0.448-1 1v2c0 0.552 0.448 1 1 1h2c0.552 0 1-0.448 1-1V5c0-0.552-0.448-1-1-1h-2z" android:fillColor="@color/fluent_default_icon_tint"/>
+    <path android:pathData="M13 5h2v2h-2V5z" android:fillColor="@color/fluent_default_icon_tint"/>
+</vector>

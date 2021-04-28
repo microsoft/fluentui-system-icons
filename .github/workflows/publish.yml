@@ -1,8 +1,11 @@
 name: Publish library
 
 on:
+  workflow_dispatch:
   push:
     branches: [ master ]
+    paths:
+      - 'assets/**'
 
 env:
   LIBRARY_VERSION: 1.1.${{ github.run_number }}
@@ -10,7 +13,7 @@ env:
 jobs:
   publish-library:
     if: "!contains(github.event.head_commit.author.email, 'flubuild@microsoft.com')"
-    name: Publish mobile libraries
+    name: Publish icon libraries
     runs-on: ubuntu-latest
 
     steps:
@@ -20,12 +23,12 @@ jobs:
 
     - name: Bump version patch
       run: |
-        grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec |
-            python3 -c """
+        grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec | python3 -c """
         import sys
+        import os
         current_version = sys.stdin.read().strip().split(\"'\")[1]
         major, minor, patch = current_version.split('.')
-        print(f'::set-env name=NEW_VERSION::{major}.{minor}.{int(patch) + 1}')
+        os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
         """
 
     - name: Use Node 11
@@ -51,10 +54,33 @@ jobs:
       with:
         java-version: 8
 
-    - name: Build and publish Android library
+    - name: Base64 decodes and pipes the GPG key content into the secret file
+      env:
+        GPG_KEY_CONTENT: ${{ secrets.GPG_KEY_CONTENT }}
+        SIGNING_SECRET_KEY_RING_FILE: ${{ secrets.SIGNING_SECRET_KEY_RING_FILE }}
+      run: |
+        git fetch --unshallow
+        sudo bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
+
+    - name: Build Android library
       uses: eskatos/gradle-command-action@v1
       with:
-        arguments: bintrayUpload -DversionName=${{ env.NEW_VERSION }} -DbintrayUser=${{ secrets.BINTRAY_USER }} -DbintrayKey=${{ secrets.BINTRAY_KEY }}
+        arguments: assembleRelease -DversionName='${{ env.NEW_VERSION }}'
+        build-root-directory: android
+        wrapper-directory: android
+
+    - name: Publish to Maven Central
+      uses: eskatos/gradle-command-action@v1
+      env:
+        OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+        OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+        GPG_SIGNING_KEY_ID: ${{ secrets.GPG_SIGNING_KEY_ID }}
+        GPG_SIGNING_PASSWORD: ${{ secrets.GPG_SIGNING_PASSWORD }}
+        SIGNING_SECRET_KEY_RING_FILE: ${{ secrets.SIGNING_SECRET_KEY_RING_FILE }}
+        SONATYPE_STAGING_PROFILE_ID: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
+        VERSION_NAME: ${{ env.NEW_VERSION }}
+      with:
+        arguments: publishReleasePublicationToSonatypeRepository --max-workers 1 closeAndReleaseSonatypeStagingRepository
         build-root-directory: android
         wrapper-directory: android
 
@@ -67,9 +93,14 @@ jobs:
       run: npm run deploy:flutter
       working-directory: importer
 
-    # TODO: https://github.com/microsoft/fluentui-system-icons/issues/34
-    # - name: Build and publish Flutter library
-    #   uses: ?
+    # The name should be same as the package name on pub.dev
+    - name: 'fluentui_system_icons'
+      uses: k-paxian/dart-package-publisher@master
+      with:
+        relativePath: 'flutter'
+        skipTests: true
+        accessToken: ${{ secrets.FLUTTER_OAUTH_ACCESS_TOKEN }}
+        refreshToken: ${{ secrets.FLUTTER_OAUTH_REFRESH_TOKEN }}
 
     ## Publish
     # Needs to be "-E" instead of "-r" on macOS
@@ -99,20 +130,56 @@ jobs:
     # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version number in flutter/pubspec.yaml
       run: |
-        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" flutter/pubspec.yaml
+        sed -i.bk -r "s/version: [0-9]+\.[0-9]+\.[0-9]+/version: $NEW_VERSION/g" flutter/pubspec.yaml
         rm flutter/pubspec.yaml.bk
+
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in svg-icons/package.json
+      run: |
+        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/svg-icons/package.json
+        rm packages/svg-icons/package.json.bk
+
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in react-icons/package.json
+      run: |
+        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/react-icons/package.json
+        rm packages/react-icons/package.json.bk
 
     # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version number in _manifest.json
       run: |
-        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" _manifest.json
-        rm _manifest.json.bk
+        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" _iconCloud/manifest.json
+        rm _iconCloud/manifest.json.bk
 
     # Needs to be "-E" instead of "-r" on macOS
     - name: Replace timestamp in _manifest.json
       run: |
-        sed -i.bk -r "s/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]Z/$(date -u +%Y-%m-%dT%RZ)/" _manifest.json
-        rm _manifest.json.bk
+        sed -i.bk -r "s/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]Z/$(date -u +%Y-%m-%dT%RZ)/" _iconCloud/manifest.json
+        rm _iconCloud/manifest.json.bk
+
+    - name: Build SVG library
+      run: |
+        npm install
+        npm run build
+      working-directory: packages/svg-icons
+
+    - name: Build React library
+      run: |
+        npm install
+        npm run build
+      working-directory: packages/react-icons
+
+    - uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+        access: public
+        package: packages/svg-icons/package.json
+
+    - uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+        access: public
+        package: packages/react-icons/package.json
 
     - name: Update icon sheet
       run: python3 generate_icons_md.py
@@ -143,12 +210,12 @@ jobs:
 
     - name: Bump version patch
       run: |
-        grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec |
-            python3 -c """
+        grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec | python3 -c """
         import sys
+        import os
         current_version = sys.stdin.read().strip().split(\"'\")[1]
         major, minor, patch = current_version.split('.')
-        print(f'::set-env name=NEW_VERSION::{major}.{minor}.{int(patch) + 1}')
+        os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
         """
 
     - name: Use Node 11

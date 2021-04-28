@@ -7,7 +7,7 @@ Fluent UI System Icons are a collection of familiar, friendly and modern icons f
 ## Usage
 
 ```dart
-import 'package:fluentui_system_icons/fluent_icons.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 
 class MyFlutterWidget extends StatelessWidget {
   Widget build(BuildContext context) {

@@ -100,6 +100,56 @@ jobs:
       run: npm run deploy:flutter
       working-directory: importer
 
-    # TODO: https://github.com/microsoft/fluentui-system-icons/issues/34
-    # - name: Build Flutter library
-    #   uses: ?
+    # Build Flutter library
+    # The name should be same as the package name on pub.dev
+    # Tokens are placeholder strings in order for the action to run on forked repos.
+    - name: 'fluentui_system_icons'
+      uses: k-paxian/dart-package-publisher@master
+      with:
+        relativePath: 'flutter'
+        skipTests: true
+        dryRunOnly: true
+        accessToken: "placeholder"
+        refreshToken: "placeholder"
+
+  build-svg:
+    name: Build svg library
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node 11
+      uses: actions/setup-node@v1
+      with:
+        node-version: 11.x
+
+    - run: npm install
+      working-directory: importer
+
+    - run: npm install
+      working-directory: packages/svg-icons
+
+    - name: Run build
+      run: npm run build
+      working-directory: packages/svg-icons
+
+  build-react:
+    name: Build react library
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node 11
+      uses: actions/setup-node@v1
+      with:
+        node-version: 11.x
+
+    - run: npm install
+      working-directory: importer
+
+    - run: |
+        npm install
+        npm run build
+      working-directory: packages/react-icons
