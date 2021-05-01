@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-icons",
   "version": "1.1.122",
-  "main": "lib/esm/index.js",
+  "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "typings": "lib/esm/index.d.ts",
   "description": "Fluent System Icons are a collection of familiar, friendly, and modern icons from Microsoft.",
@@ -23,7 +23,8 @@
     "create28": "touch ./example/icon28.tsx && rm ./example/icon28.tsx && touch ./example/icon28.tsx && cat ./example/exampleStart.tsx >> ./example/icon28.tsx && ls -1 ./src/components/*28* | sed -e 's/\\.\\/src\\/components\\///' | sed -e 's/\\..*$//' | sed -e 's/\\(.*\\)/\\1,/' >> ./example/icon28.tsx && cat ./example/exampleMiddle.tsx >> ./example/icon28.tsx && ls -1 ./src/components/*28* | sed -e 's/\\.\\/src\\/components\\///' | sed -e 's/\\..*$//' | sed -e 's/\\(.*\\)/\\<\\1\\/\\>/' >> ./example/icon28.tsx && cat ./example/exampleEnd.tsx >> ./example/icon28.tsx",
     "create48": "touch ./example/icon48.tsx && rm ./example/icon48.tsx && touch ./example/icon48.tsx && cat ./example/exampleStart.tsx >> ./example/icon48.tsx && ls -1 ./src/components/*48* | sed -e 's/\\.\\/src\\/components\\///' | sed -e 's/\\..*$//' | sed -e 's/\\(.*\\)/\\1,/' >> ./example/icon48.tsx && cat ./example/exampleMiddle.tsx >> ./example/icon48.tsx && ls -1 ./src/components/*48* | sed -e 's/\\.\\/src\\/components\\///' | sed -e 's/\\..*$//' | sed -e 's/\\(.*\\)/\\<\\1\\/\\>/' >> ./example/icon48.tsx && cat ./example/exampleEnd.tsx >> ./example/icon48.tsx",
     "createAll": "touch ./example/iconAll.tsx && rm ./example/iconAll.tsx && touch ./example/iconAll.tsx && cat ./example/exampleStart.tsx >> ./example/iconAll.tsx && ls -1 ./src/components/* | sed -e 's/\\.\\/src\\/components\\///' | sed -e 's/\\..*$//' | sed -e 's/\\(.*\\)/\\1,/' >> ./example/iconAll.tsx && cat ./example/exampleMiddle.tsx >> ./example/iconAll.tsx && ls -1 ./src/components/* | sed -e 's/\\.\\/src\\/components\\///' | sed -e 's/\\..*$//' | sed -e 's/\\(.*\\)/\\<\\1\\/\\>/' >> ./example/iconAll.tsx && cat ./example/exampleEnd.tsx >> ./example/iconAll.tsx",
-    "build": "npm run copy && npm run optimize && npm run unfill && npm run convert && npm run cleanSvg && npm run build:esm && npm run create16 && npm run create20 && npm run create24 && npm run create28 && npm run create48 && npm run createAll",
+    "build": "npm run copy && npm run optimize && npm run unfill && npm run convert && npm run cleanSvg && npm run build:esm && npm run build:cjs && npm run create16 && npm run create20 && npm run create24 && npm run create28 && npm run create48 && npm run createAll",
+    "build:cjs": "tsc --module commonjs --outDir lib/cjs",
     "build:esm": "tsc"
   },
   "devDependencies": {
