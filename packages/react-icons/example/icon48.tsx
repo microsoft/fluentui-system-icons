@@ -129,6 +129,8 @@ CommentOff48Filled,
 CommentOff48Regular,
 ConferenceRoom48Filled,
 ConferenceRoom48Regular,
+ContactCard48Filled,
+ContactCard48Regular,
 ContactCardGroup48Filled,
 ContactCardGroup48Regular,
 ContractDownLeft48Filled,
@@ -268,6 +270,8 @@ OpenFolder48Filled,
 OpenFolder48Regular,
 OpenOff48Filled,
 OpenOff48Regular,
+Organization48Filled,
+Organization48Regular,
 Pause48Filled,
 Pause48Regular,
 Person48Filled,
@@ -297,6 +301,8 @@ Record48Filled,
 Record48Regular,
 RecordStop48Filled,
 RecordStop48Regular,
+Search48Filled,
+Search48Regular,
 ShareIos48Filled,
 ShareIos48Regular,
 ShareScreenStop48Filled,
@@ -349,6 +355,8 @@ TvUsb48Filled,
 TvUsb48Regular,
 VehicleCar48Filled,
 VehicleCar48Regular,
+Video48Filled,
+Video48Regular,
 VideoPerson48Filled,
 VideoPerson48Regular,
 Wand48Filled,
@@ -537,6 +545,8 @@ function App() {
 <CommentOff48Regular/>
 <ConferenceRoom48Filled/>
 <ConferenceRoom48Regular/>
+<ContactCard48Filled/>
+<ContactCard48Regular/>
 <ContactCardGroup48Filled/>
 <ContactCardGroup48Regular/>
 <ContractDownLeft48Filled/>
@@ -676,6 +686,8 @@ function App() {
 <OpenFolder48Regular/>
 <OpenOff48Filled/>
 <OpenOff48Regular/>
+<Organization48Filled/>
+<Organization48Regular/>
 <Pause48Filled/>
 <Pause48Regular/>
 <Person48Filled/>
@@ -705,6 +717,8 @@ function App() {
 <Record48Regular/>
 <RecordStop48Filled/>
 <RecordStop48Regular/>
+<Search48Filled/>
+<Search48Regular/>
 <ShareIos48Filled/>
 <ShareIos48Regular/>
 <ShareScreenStop48Filled/>
@@ -757,6 +771,8 @@ function App() {
 <TvUsb48Regular/>
 <VehicleCar48Filled/>
 <VehicleCar48Regular/>
+<Video48Filled/>
+<Video48Regular/>
 <VideoPerson48Filled/>
 <VideoPerson48Regular/>
 <Wand48Filled/>

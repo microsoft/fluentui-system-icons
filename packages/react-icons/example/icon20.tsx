@@ -139,6 +139,10 @@ ArrowRotateCounterclockwise20Filled,
 ArrowRotateCounterclockwise20Regular,
 ArrowSort20Filled,
 ArrowSort20Regular,
+ArrowSortDown20Filled,
+ArrowSortDown20Regular,
+ArrowSortUp20Filled,
+ArrowSortUp20Regular,
 ArrowSwap20Filled,
 ArrowSwap20Regular,
 ArrowSync20Filled,
@@ -419,6 +423,8 @@ ChatHelp20Filled,
 ChatHelp20Regular,
 ChatMail20Filled,
 ChatMail20Regular,
+ChatMultiple20Filled,
+ChatMultiple20Regular,
 ChatOff20Filled,
 ChatOff20Regular,
 ChatSettings20Filled,
@@ -449,8 +455,6 @@ ChevronUp20Filled,
 ChevronUp20Regular,
 ChevronUpDown20Filled,
 ChevronUpDown20Regular,
-Chopsticks20Filled,
-Chopsticks20Regular,
 Circle20Filled,
 Circle20Regular,
 CircleHalfFill20Filled,
@@ -526,6 +530,8 @@ ColorFillAccent20Regular,
 ColorLine20Filled,
 ColorLine20Regular,
 ColorLineAccent20Regular,
+ColumnEdit20Filled,
+ColumnEdit20Regular,
 Comment20Filled,
 Comment20Regular,
 CommentAdd20Filled,
@@ -660,6 +666,8 @@ DocumentBriefcase20Filled,
 DocumentBriefcase20Regular,
 DocumentBulletList20Filled,
 DocumentBulletList20Regular,
+DocumentBulletListClock20Filled,
+DocumentBulletListClock20Regular,
 DocumentCatchUp20Filled,
 DocumentCatchUp20Regular,
 DocumentCopy20Filled,
@@ -704,12 +712,16 @@ DocumentPageTopRight20Filled,
 DocumentPageTopRight20Regular,
 DocumentPdf20Filled,
 DocumentPdf20Regular,
+DocumentPill20Filled,
+DocumentPill20Regular,
 DocumentProhibited20Filled,
 DocumentProhibited20Regular,
 DocumentQuestionMark20Filled,
 DocumentQuestionMark20Regular,
 DocumentRibbon20Filled,
 DocumentRibbon20Regular,
+DocumentSave20Filled,
+DocumentSave20Regular,
 DocumentSearch20Filled,
 DocumentSearch20Regular,
 DocumentToolbox20Filled,
@@ -750,6 +762,8 @@ EmojiLaugh20Filled,
 EmojiLaugh20Regular,
 EmojiMeh20Filled,
 EmojiMeh20Regular,
+EmojiMultiple20Filled,
+EmojiMultiple20Regular,
 EmojiSad20Filled,
 EmojiSad20Regular,
 EmojiSurprise20Filled,
@@ -843,6 +857,8 @@ Fps3020Filled,
 Fps3020Regular,
 Fps6020Filled,
 Fps6020Regular,
+GanttChart20Filled,
+GanttChart20Regular,
 Gauge20Filled,
 Gauge20Regular,
 Gif20Filled,
@@ -1199,6 +1215,8 @@ PeopleEdit20Filled,
 PeopleEdit20Regular,
 PeopleError20Filled,
 PeopleError20Regular,
+PeopleMoney20Filled,
+PeopleMoney20Regular,
 PeopleProhibited20Filled,
 PeopleProhibited20Regular,
 PeopleSettings20Filled,
@@ -1237,6 +1255,8 @@ PersonLock20Filled,
 PersonLock20Regular,
 PersonMail20Filled,
 PersonMail20Regular,
+PersonPill20Filled,
+PersonPill20Regular,
 PersonProhibited20Filled,
 PersonProhibited20Regular,
 PersonQuestionMark20Filled,
@@ -1272,6 +1292,8 @@ Pin20Filled,
 Pin20Regular,
 PinOff20Filled,
 PinOff20Regular,
+Pivot20Filled,
+Pivot20Regular,
 Play20Filled,
 Play20Regular,
 PlayCircle20Filled,
@@ -1398,6 +1420,8 @@ ScaleFill20Filled,
 ScaleFill20Regular,
 ScaleFit20Filled,
 ScaleFit20Regular,
+ScanObject20Filled,
+ScanObject20Regular,
 ScreenCut20Filled,
 ScreenCut20Regular,
 ScreenPerson20Filled,
@@ -1494,6 +1518,8 @@ SkipForward1020Filled,
 SkipForward1020Regular,
 SkipForward3020Filled,
 SkipForward3020Regular,
+SlideEraser20Filled,
+SlideEraser20Regular,
 SlideLayout20Filled,
 SlideLayout20Regular,
 SlideMultipleSearch20Filled,
@@ -1549,6 +1575,8 @@ StarProhibited20Regular,
 StarThreeQuarter20Filled,
 Status20Filled,
 Status20Regular,
+Steps20Filled,
+Steps20Regular,
 Stethoscope20Filled,
 Stethoscope20Regular,
 Sticker20Filled,
@@ -1643,6 +1671,12 @@ TaskListLtr20Filled,
 TaskListLtr20Regular,
 TaskListRtl20Filled,
 TaskListRtl20Regular,
+TaskListSquareAdd20Filled,
+TaskListSquareAdd20Regular,
+TaskListSquareLtr20Filled,
+TaskListSquareLtr20Regular,
+TaskListSquareRtl20Filled,
+TaskListSquareRtl20Regular,
 TasksApp20Filled,
 TasksApp20Regular,
 Teddy20Filled,
@@ -1673,6 +1707,8 @@ TextAsterisk20Filled,
 TextAsterisk20Regular,
 TextBold20Filled,
 TextBold20Regular,
+TextBulletList20Filled,
+TextBulletList20Regular,
 TextBulletListAdd20Filled,
 TextBulletListAdd20Regular,
 TextBulletListLtr20Filled,
@@ -1712,6 +1748,8 @@ TextDescription20Filled,
 TextDescription20Regular,
 TextDirectionHorizontalLtr20Filled,
 TextDirectionHorizontalLtr20Regular,
+TextDirectionLtrAc20Filled,
+TextDirectionLtrAc20Regular,
 TextDirectionRotate27020Filled,
 TextDirectionRotate27020Regular,
 TextDirectionRotate270Ac20Filled,
@@ -1984,6 +2022,8 @@ Window20Filled,
 Window20Regular,
 WindowAd20Filled,
 WindowAd20Regular,
+WindowAdPerson20Filled,
+WindowAdPerson20Regular,
 WindowDevTools20Filled,
 WindowDevTools20Regular,
 WindowHeaderHorizontal20Filled,
@@ -2152,6 +2192,10 @@ function App() {
 <ArrowRotateCounterclockwise20Regular/>
 <ArrowSort20Filled/>
 <ArrowSort20Regular/>
+<ArrowSortDown20Filled/>
+<ArrowSortDown20Regular/>
+<ArrowSortUp20Filled/>
+<ArrowSortUp20Regular/>
 <ArrowSwap20Filled/>
 <ArrowSwap20Regular/>
 <ArrowSync20Filled/>
@@ -2432,6 +2476,8 @@ function App() {
 <ChatHelp20Regular/>
 <ChatMail20Filled/>
 <ChatMail20Regular/>
+<ChatMultiple20Filled/>
+<ChatMultiple20Regular/>
 <ChatOff20Filled/>
 <ChatOff20Regular/>
 <ChatSettings20Filled/>
@@ -2462,8 +2508,6 @@ function App() {
 <ChevronUp20Regular/>
 <ChevronUpDown20Filled/>
 <ChevronUpDown20Regular/>
-<Chopsticks20Filled/>
-<Chopsticks20Regular/>
 <Circle20Filled/>
 <Circle20Regular/>
 <CircleHalfFill20Filled/>
@@ -2539,6 +2583,8 @@ function App() {
 <ColorLine20Filled/>
 <ColorLine20Regular/>
 <ColorLineAccent20Regular/>
+<ColumnEdit20Filled/>
+<ColumnEdit20Regular/>
 <Comment20Filled/>
 <Comment20Regular/>
 <CommentAdd20Filled/>
@@ -2673,6 +2719,8 @@ function App() {
 <DocumentBriefcase20Regular/>
 <DocumentBulletList20Filled/>
 <DocumentBulletList20Regular/>
+<DocumentBulletListClock20Filled/>
+<DocumentBulletListClock20Regular/>
 <DocumentCatchUp20Filled/>
 <DocumentCatchUp20Regular/>
 <DocumentCopy20Filled/>
@@ -2717,12 +2765,16 @@ function App() {
 <DocumentPageTopRight20Regular/>
 <DocumentPdf20Filled/>
 <DocumentPdf20Regular/>
+<DocumentPill20Filled/>
+<DocumentPill20Regular/>
 <DocumentProhibited20Filled/>
 <DocumentProhibited20Regular/>
 <DocumentQuestionMark20Filled/>
 <DocumentQuestionMark20Regular/>
 <DocumentRibbon20Filled/>
 <DocumentRibbon20Regular/>
+<DocumentSave20Filled/>
+<DocumentSave20Regular/>
 <DocumentSearch20Filled/>
 <DocumentSearch20Regular/>
 <DocumentToolbox20Filled/>
@@ -2763,6 +2815,8 @@ function App() {
 <EmojiLaugh20Regular/>
 <EmojiMeh20Filled/>
 <EmojiMeh20Regular/>
+<EmojiMultiple20Filled/>
+<EmojiMultiple20Regular/>
 <EmojiSad20Filled/>
 <EmojiSad20Regular/>
 <EmojiSurprise20Filled/>
@@ -2856,6 +2910,8 @@ function App() {
 <Fps3020Regular/>
 <Fps6020Filled/>
 <Fps6020Regular/>
+<GanttChart20Filled/>
+<GanttChart20Regular/>
 <Gauge20Filled/>
 <Gauge20Regular/>
 <Gif20Filled/>
@@ -3212,6 +3268,8 @@ function App() {
 <PeopleEdit20Regular/>
 <PeopleError20Filled/>
 <PeopleError20Regular/>
+<PeopleMoney20Filled/>
+<PeopleMoney20Regular/>
 <PeopleProhibited20Filled/>
 <PeopleProhibited20Regular/>
 <PeopleSettings20Filled/>
@@ -3250,6 +3308,8 @@ function App() {
 <PersonLock20Regular/>
 <PersonMail20Filled/>
 <PersonMail20Regular/>
+<PersonPill20Filled/>
+<PersonPill20Regular/>
 <PersonProhibited20Filled/>
 <PersonProhibited20Regular/>
 <PersonQuestionMark20Filled/>
@@ -3285,6 +3345,8 @@ function App() {
 <Pin20Regular/>
 <PinOff20Filled/>
 <PinOff20Regular/>
+<Pivot20Filled/>
+<Pivot20Regular/>
 <Play20Filled/>
 <Play20Regular/>
 <PlayCircle20Filled/>
@@ -3411,6 +3473,8 @@ function App() {
 <ScaleFill20Regular/>
 <ScaleFit20Filled/>
 <ScaleFit20Regular/>
+<ScanObject20Filled/>
+<ScanObject20Regular/>
 <ScreenCut20Filled/>
 <ScreenCut20Regular/>
 <ScreenPerson20Filled/>
@@ -3507,6 +3571,8 @@ function App() {
 <SkipForward1020Regular/>
 <SkipForward3020Filled/>
 <SkipForward3020Regular/>
+<SlideEraser20Filled/>
+<SlideEraser20Regular/>
 <SlideLayout20Filled/>
 <SlideLayout20Regular/>
 <SlideMultipleSearch20Filled/>
@@ -3562,6 +3628,8 @@ function App() {
 <StarThreeQuarter20Filled/>
 <Status20Filled/>
 <Status20Regular/>
+<Steps20Filled/>
+<Steps20Regular/>
 <Stethoscope20Filled/>
 <Stethoscope20Regular/>
 <Sticker20Filled/>
@@ -3656,6 +3724,12 @@ function App() {
 <TaskListLtr20Regular/>
 <TaskListRtl20Filled/>
 <TaskListRtl20Regular/>
+<TaskListSquareAdd20Filled/>
+<TaskListSquareAdd20Regular/>
+<TaskListSquareLtr20Filled/>
+<TaskListSquareLtr20Regular/>
+<TaskListSquareRtl20Filled/>
+<TaskListSquareRtl20Regular/>
 <TasksApp20Filled/>
 <TasksApp20Regular/>
 <Teddy20Filled/>
@@ -3686,6 +3760,8 @@ function App() {
 <TextAsterisk20Regular/>
 <TextBold20Filled/>
 <TextBold20Regular/>
+<TextBulletList20Filled/>
+<TextBulletList20Regular/>
 <TextBulletListAdd20Filled/>
 <TextBulletListAdd20Regular/>
 <TextBulletListLtr20Filled/>
@@ -3725,6 +3801,8 @@ function App() {
 <TextDescription20Regular/>
 <TextDirectionHorizontalLtr20Filled/>
 <TextDirectionHorizontalLtr20Regular/>
+<TextDirectionLtrAc20Filled/>
+<TextDirectionLtrAc20Regular/>
 <TextDirectionRotate27020Filled/>
 <TextDirectionRotate27020Regular/>
 <TextDirectionRotate270Ac20Filled/>
@@ -3997,6 +4075,8 @@ function App() {
 <Window20Regular/>
 <WindowAd20Filled/>
 <WindowAd20Regular/>
+<WindowAdPerson20Filled/>
+<WindowAdPerson20Regular/>
 <WindowDevTools20Filled/>
 <WindowDevTools20Regular/>
 <WindowHeaderHorizontal20Filled/>
