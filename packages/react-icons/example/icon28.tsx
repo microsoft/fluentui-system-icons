@@ -101,6 +101,8 @@ Calendar3Day28Filled,
 Calendar3Day28Regular,
 CalendarAgenda28Filled,
 CalendarAgenda28Regular,
+CalendarCheckmark28Filled,
+CalendarCheckmark28Regular,
 CalendarDay28Filled,
 CalendarDay28Regular,
 CalendarEmpty28Filled,
@@ -163,8 +165,6 @@ ChevronRight28Filled,
 ChevronRight28Regular,
 ChevronUp28Filled,
 ChevronUp28Regular,
-Chopsticks28Filled,
-Chopsticks28Regular,
 Clock28Filled,
 Clock28Regular,
 ClosedCaption28Filled,
@@ -201,6 +201,8 @@ Compose28Filled,
 Compose28Regular,
 ConferenceRoom28Filled,
 ConferenceRoom28Regular,
+ContactCard28Filled,
+ContactCard28Regular,
 ContactCardGroup28Filled,
 ContactCardGroup28Regular,
 ContractDownLeft28Filled,
@@ -435,6 +437,8 @@ Premium28Filled,
 Premium28Regular,
 Prohibited28Filled,
 Prohibited28Regular,
+Pulse28Filled,
+Pulse28Regular,
 PuzzleCube28Filled,
 PuzzleCube28Regular,
 QrCode28Filled,
@@ -674,6 +678,8 @@ function App() {
 <Calendar3Day28Regular/>
 <CalendarAgenda28Filled/>
 <CalendarAgenda28Regular/>
+<CalendarCheckmark28Filled/>
+<CalendarCheckmark28Regular/>
 <CalendarDay28Filled/>
 <CalendarDay28Regular/>
 <CalendarEmpty28Filled/>
@@ -736,8 +742,6 @@ function App() {
 <ChevronRight28Regular/>
 <ChevronUp28Filled/>
 <ChevronUp28Regular/>
-<Chopsticks28Filled/>
-<Chopsticks28Regular/>
 <Clock28Filled/>
 <Clock28Regular/>
 <ClosedCaption28Filled/>
@@ -774,6 +778,8 @@ function App() {
 <Compose28Regular/>
 <ConferenceRoom28Filled/>
 <ConferenceRoom28Regular/>
+<ContactCard28Filled/>
+<ContactCard28Regular/>
 <ContactCardGroup28Filled/>
 <ContactCardGroup28Regular/>
 <ContractDownLeft28Filled/>
@@ -1008,6 +1014,8 @@ function App() {
 <Premium28Regular/>
 <Prohibited28Filled/>
 <Prohibited28Regular/>
+<Pulse28Filled/>
+<Pulse28Regular/>
 <PuzzleCube28Filled/>
 <PuzzleCube28Regular/>
 <QrCode28Filled/>
