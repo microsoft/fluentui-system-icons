@@ -30,7 +30,7 @@
   "devDependencies": {
     "avocado": "1.0.0",
     "icon-font-generator": "^2.1.10",
-    "lodash": "4.17.20",
+    "lodash": "4.17.21",
     "react": "~17.0.1",
     "replace": "^1.2.0",
     "shx": "^0.3.2",
