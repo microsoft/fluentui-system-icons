@@ -53,22 +53,56 @@ function processFolder(srcPath, destPath) {
     // Build out the index for the components as we process the files
     var indexContents = ''
 
-    files.forEach(function (file, index) {
+    // We have first filled and then regular
+    // 1. Change loop to iterate over positions instead of all files
+    // 2. You have position pairs, first is filled, second is regular
+    // 3. Your loop move over 2 (i += 2)
+    // 4. Inside the loop, you do the same logic for stripping .svg at the end and ic_fluent_ at the beginning
+    // 5. Run svgr.default.sync on both regular and filled on same iteration and return the jsx from each (jsxFilled, jsxRegular)
+    // 6. Not in the template, but in the loop, you construct the file
+    //           import * as React from "react";
+		//           import { IFluentIconsProps } from '../utils/IFluentIconsProps.types'
+    //        	 const ${componentName}: JSX.Element = (iconProps: IFluentIconsProps) => {
+		//             const { primaryFill='currentColor', className, filled } = iconProps;
+		//             return filled ? ${jsxFilled} : ${jsxRegular};
+		//           }
+    // 7. This is what you pass into writeFileSync
+    
+    for(let i = 0; i < files.length; i+=2) {
+      var filledFile = files[i];
+      var regFile = files[i+1]
+
       var componentPath = destPath + '/components'
-      var iconName = file.substr(0, file.length - 4) // strip '.svg'
+      var iconName = filledFile.substr(0, filledFile.length - 10) // strip 'Filled.svg'
       iconName = iconName.replace("ic_fluent_", "") // strip ic_fluent_
-      var srcFile = path.join(srcPath, file)
+      var srcFilledFile = path.join(srcPath, filledFile)
+      var srcRegFile = path.join(srcPath, regFile)
       var destFilename = _.camelCase(iconName) // We want them to be camelCase, so access_time would become accessTime here
       destFilename = destFilename.replace(destFilename.substring(0, 1), destFilename.substring(0, 1).toUpperCase()) // capitalize the first letter
       var destFile = path.join(componentPath, destFilename + TSX_EXTENSION) // get the qualified path
 
-      var iconContent = fs.readFileSync(srcFile, { encoding: "utf8" })
-      jsCode = svgr.default.sync(iconContent, svgrOpts, { filePath: file })
+      var filledIconContent = fs.readFileSync(srcFilledFile, { encoding: "utf8" })
+      var regIconContent = fs.readFileSync(srcRegFile, { encoding: "utf8" })
+      var jsxFilled = svgr.default.sync(filledIconContent, svgrOpts, { filePath: filledFile })
+      var jsxRegular = svgr.default.sync(regIconContent, svgrOpts, { filePath: regFile })
+
+      var jsCode = `
+        import * as React from "react";
+        import { IFluentIconsProps } from '../utils/IFluentIconsProps.types'
+
+        const ${destFilename} = (iconProps: IFluentIconsProps): JSX.Element => {
+          const { primaryFill='currentColor', className, filled=false } = iconProps;
+          return filled ? ${jsxFilled} : ${jsxRegular};
+        }
+
+        export default ${destFilename};
+      `
+      
       indexContents += '\nexport { default as ' + destFilename + ' } from \'./components/' + destFilename + '\''
       fs.writeFileSync(destFile, jsCode, (err) => {
         if (err) throw err;
       });
-    });
+    }
 
     // Finally add the interface definition and then write out the index.
     indexContents += '\nexport { IFluentIconsProps } from \'./utils/IFluentIconsProps.types\''
@@ -89,17 +123,6 @@ function fileTemplate(
 
   componentName.name = componentName.name.substring(3)
   componentName.name = componentName.name.replace('IcFluent', '')
-  exports.declaration.name = componentName.name
 
-  return tpl.ast`
-		import * as React from "react";
-		import { IFluentIconsProps } from '../utils/IFluentIconsProps.types';
-
-		const ${componentName}: JSX.Element = (iconProps: IFluentIconsProps) => {
-		const { primaryFill, className } = iconProps;
-		return ${jsx};
-		}
-		
-		${exports}
-	`
+  return jsx
 }

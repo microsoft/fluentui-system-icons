@@ -10,29 +10,30 @@ User story
 
 `@fluentui/react-icons` are SVG based icons wrapped in a React element. Because each icon is its own element, you only need to import what you need for your application. 
 
-There are different sizes of each icon, as well as `Filled` and `Regular` versions of each icon, so you can choose what works best for your application.
+There are different sizes of each icon, so you can choose what works best for your application.
 
-There are also helpful interfaces that will allow you to add styling to fit the icons to your specific application, as well as add aria properties to increase the accessibility of the icons.
+There are also helpful interfaces that will allow you to add styling to fit the icons to your specific application, as well as add aria properties to increase the accessibility of the icons. 
 
 User flows
 ---
-In order to use these icons, simply import them as `import { [Componentname][size][state] } from @fluentui/react-icons` as follows:
+In order to use these icons, simply import them as `import { [Componentname][size] } from @fluentui/react-icons` as follows:
 
 ```tsx
-import { AccessTime24Filled } from "@fluentui/react-icons";
+import { AccessTime24 } from "@fluentui/react-icons";   
 ```
 You can also style the icons using the `IFluentIconsProps`interface and wrap the icon in a container using the `wrapIcon` method. You can then pass containter props like `aria-label` along with the regular `IFluentIconsProps`
 
 ```tsx
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { AccessTime24Filled, wrapIcon } from "@fluentui/react-icons";
+import { AccessTime24, wrapIcon } from "@fluentui/react-icons";
 
 const iconStyleProps: IFluentIconsProps = {
     primaryFill: "purple",
-    className: "iconClass"
+    className: "iconClass",
+    filled: true
 };
-const WrappedAccessTime24Filled = wrapIcon(<AccessTime24Filled />);
+const WrappedAccessTime24Filled = wrapIcon(<AccessTime24 filled/>);
 const rootElement = document.getElementById("root");
 ReactDOM.render(
     <div>
