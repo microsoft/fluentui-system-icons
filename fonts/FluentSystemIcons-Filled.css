@@ -1,6 +1,6 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.ttf?5d29d5c8278b0a411ae8491fd8c588d3") format("truetype");
+    src: url("./FluentSystemIcons-Filled.ttf?d7bc6ec9872f421582f59c8ddfac3067") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -10861,4 +10861,25 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_window_dev_edit_16_filled:before {
     content: "\ff20";
+}
+.icon-ic_fluent_arrow_autofit_height_dotted_24_filled:before {
+    content: "\ff21";
+}
+.icon-ic_fluent_arrow_autofit_width_dotted_24_filled:before {
+    content: "\ff22";
+}
+.icon-ic_fluent_multiselect_rtl_16_filled:before {
+    content: "\ff23";
+}
+.icon-ic_fluent_text_direction_horizontal_rtl_20_filled:before {
+    content: "\ff24";
+}
+.icon-ic_fluent_text_direction_horizontal_rtl_24_filled:before {
+    content: "\ff25";
+}
+.icon-ic_fluent_text_direction_rotate_90_rtl_20_filled:before {
+    content: "\ff26";
+}
+.icon-ic_fluent_text_direction_rotate_90_rtl_24_filled:before {
+    content: "\ff27";
 }

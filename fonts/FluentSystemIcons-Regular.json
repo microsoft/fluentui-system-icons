@@ -3610,5 +3610,12 @@
     "ic_fluent_video_48_regular": "0xff19",
     "ic_fluent_video_clip_16_regular": "0xff1a",
     "ic_fluent_window_ad_person_20_regular": "0xff1b",
-    "ic_fluent_window_dev_edit_16_regular": "0xff1c"
+    "ic_fluent_window_dev_edit_16_regular": "0xff1c",
+    "ic_fluent_arrow_autofit_height_dotted_24_regular": "0xff1d",
+    "ic_fluent_arrow_autofit_width_dotted_24_regular": "0xff1e",
+    "ic_fluent_multiselect_rtl_16_regular": "0xff1f",
+    "ic_fluent_text_direction_horizontal_rtl_20_regular": "0xff20",
+    "ic_fluent_text_direction_horizontal_rtl_24_regular": "0xff21",
+    "ic_fluent_text_direction_rotate_90_rtl_20_regular": "0xff22",
+    "ic_fluent_text_direction_rotate_90_rtl_24_regular": "0xff23"
 }

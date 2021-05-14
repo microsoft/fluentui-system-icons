@@ -75,8 +75,12 @@ Archive24Filled,
 Archive24Regular,
 ArrowAutofitHeight24Filled,
 ArrowAutofitHeight24Regular,
+ArrowAutofitHeightDotted24Filled,
+ArrowAutofitHeightDotted24Regular,
 ArrowAutofitWidth24Filled,
 ArrowAutofitWidth24Regular,
+ArrowAutofitWidthDotted24Filled,
+ArrowAutofitWidthDotted24Regular,
 ArrowBounce24Filled,
 ArrowBounce24Regular,
 ArrowCircleDown24Filled,
@@ -2330,6 +2334,8 @@ TextDescription24Filled,
 TextDescription24Regular,
 TextDirectionHorizontalLtr24Filled,
 TextDirectionHorizontalLtr24Regular,
+TextDirectionHorizontalRtl24Filled,
+TextDirectionHorizontalRtl24Regular,
 TextDirectionLtrAc24Filled,
 TextDirectionLtrAc24Regular,
 TextDirectionRotate27024Filled,
@@ -2340,6 +2346,8 @@ TextDirectionRotate9024Filled,
 TextDirectionRotate9024Regular,
 TextDirectionRotate90Ac24Filled,
 TextDirectionRotate90Ac24Regular,
+TextDirectionRotate90Rtl24Filled,
+TextDirectionRotate90Rtl24Regular,
 TextDirectionVertical24Filled,
 TextDirectionVertical24Regular,
 TextDirectionVerticalAc24Filled,
@@ -2728,8 +2736,12 @@ function App() {
 <Archive24Regular/>
 <ArrowAutofitHeight24Filled/>
 <ArrowAutofitHeight24Regular/>
+<ArrowAutofitHeightDotted24Filled/>
+<ArrowAutofitHeightDotted24Regular/>
 <ArrowAutofitWidth24Filled/>
 <ArrowAutofitWidth24Regular/>
+<ArrowAutofitWidthDotted24Filled/>
+<ArrowAutofitWidthDotted24Regular/>
 <ArrowBounce24Filled/>
 <ArrowBounce24Regular/>
 <ArrowCircleDown24Filled/>
@@ -4983,6 +4995,8 @@ function App() {
 <TextDescription24Regular/>
 <TextDirectionHorizontalLtr24Filled/>
 <TextDirectionHorizontalLtr24Regular/>
+<TextDirectionHorizontalRtl24Filled/>
+<TextDirectionHorizontalRtl24Regular/>
 <TextDirectionLtrAc24Filled/>
 <TextDirectionLtrAc24Regular/>
 <TextDirectionRotate27024Filled/>
@@ -4993,6 +5007,8 @@ function App() {
 <TextDirectionRotate9024Regular/>
 <TextDirectionRotate90Ac24Filled/>
 <TextDirectionRotate90Ac24Regular/>
+<TextDirectionRotate90Rtl24Filled/>
+<TextDirectionRotate90Rtl24Regular/>
 <TextDirectionVertical24Filled/>
 <TextDirectionVertical24Regular/>
 <TextDirectionVerticalAc24Filled/>

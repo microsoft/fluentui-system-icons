@@ -731,6 +731,8 @@ MoviesAndTv16Filled,
 MoviesAndTv16Regular,
 Multiselect16Filled,
 Multiselect16Regular,
+MultiselectRtl16Filled,
+MultiselectRtl16Regular,
 MusicNote216Filled,
 MusicNote216Regular,
 MyLocation16Filled,
@@ -1906,6 +1908,8 @@ function App() {
 <MoviesAndTv16Regular/>
 <Multiselect16Filled/>
 <Multiselect16Regular/>
+<MultiselectRtl16Filled/>
+<MultiselectRtl16Regular/>
 <MusicNote216Filled/>
 <MusicNote216Regular/>
 <MyLocation16Filled/>

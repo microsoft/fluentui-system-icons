@@ -1748,6 +1748,8 @@ TextDescription20Filled,
 TextDescription20Regular,
 TextDirectionHorizontalLtr20Filled,
 TextDirectionHorizontalLtr20Regular,
+TextDirectionHorizontalRtl20Filled,
+TextDirectionHorizontalRtl20Regular,
 TextDirectionLtrAc20Filled,
 TextDirectionLtrAc20Regular,
 TextDirectionRotate27020Filled,
@@ -1756,6 +1758,8 @@ TextDirectionRotate270Ac20Filled,
 TextDirectionRotate270Ac20Regular,
 TextDirectionRotate9020Filled,
 TextDirectionRotate9020Regular,
+TextDirectionRotate90Rtl20Filled,
+TextDirectionRotate90Rtl20Regular,
 TextDirectionVertical20Filled,
 TextDirectionVertical20Regular,
 TextEditStyle20Filled,
@@ -3801,6 +3805,8 @@ function App() {
 <TextDescription20Regular/>
 <TextDirectionHorizontalLtr20Filled/>
 <TextDirectionHorizontalLtr20Regular/>
+<TextDirectionHorizontalRtl20Filled/>
+<TextDirectionHorizontalRtl20Regular/>
 <TextDirectionLtrAc20Filled/>
 <TextDirectionLtrAc20Regular/>
 <TextDirectionRotate27020Filled/>
@@ -3809,6 +3815,8 @@ function App() {
 <TextDirectionRotate270Ac20Regular/>
 <TextDirectionRotate9020Filled/>
 <TextDirectionRotate9020Regular/>
+<TextDirectionRotate90Rtl20Filled/>
+<TextDirectionRotate90Rtl20Regular/>
 <TextDirectionVertical20Filled/>
 <TextDirectionVertical20Regular/>
 <TextEditStyle20Filled/>

@@ -251,8 +251,12 @@ ArchiveSettings16Filled,
 ArchiveSettings16Regular,
 ArrowAutofitHeight24Filled,
 ArrowAutofitHeight24Regular,
+ArrowAutofitHeightDotted24Filled,
+ArrowAutofitHeightDotted24Regular,
 ArrowAutofitWidth24Filled,
 ArrowAutofitWidth24Regular,
+ArrowAutofitWidthDotted24Filled,
+ArrowAutofitWidthDotted24Regular,
 ArrowBounce16Filled,
 ArrowBounce16Regular,
 ArrowBounce24Filled,
@@ -4263,6 +4267,8 @@ Multiselect20Filled,
 Multiselect20Regular,
 Multiselect24Filled,
 Multiselect24Regular,
+MultiselectRtl16Filled,
+MultiselectRtl16Regular,
 MusicNote120Filled,
 MusicNote120Regular,
 MusicNote124Filled,
@@ -6400,6 +6406,10 @@ TextDirectionHorizontalLtr20Filled,
 TextDirectionHorizontalLtr20Regular,
 TextDirectionHorizontalLtr24Filled,
 TextDirectionHorizontalLtr24Regular,
+TextDirectionHorizontalRtl20Filled,
+TextDirectionHorizontalRtl20Regular,
+TextDirectionHorizontalRtl24Filled,
+TextDirectionHorizontalRtl24Regular,
 TextDirectionLtrAc20Filled,
 TextDirectionLtrAc20Regular,
 TextDirectionLtrAc24Filled,
@@ -6418,6 +6428,10 @@ TextDirectionRotate9024Filled,
 TextDirectionRotate9024Regular,
 TextDirectionRotate90Ac24Filled,
 TextDirectionRotate90Ac24Regular,
+TextDirectionRotate90Rtl20Filled,
+TextDirectionRotate90Rtl20Regular,
+TextDirectionRotate90Rtl24Filled,
+TextDirectionRotate90Rtl24Regular,
 TextDirectionVertical20Filled,
 TextDirectionVertical20Regular,
 TextDirectionVertical24Filled,
@@ -7477,8 +7491,12 @@ function App() {
 <ArchiveSettings16Regular/>
 <ArrowAutofitHeight24Filled/>
 <ArrowAutofitHeight24Regular/>
+<ArrowAutofitHeightDotted24Filled/>
+<ArrowAutofitHeightDotted24Regular/>
 <ArrowAutofitWidth24Filled/>
 <ArrowAutofitWidth24Regular/>
+<ArrowAutofitWidthDotted24Filled/>
+<ArrowAutofitWidthDotted24Regular/>
 <ArrowBounce16Filled/>
 <ArrowBounce16Regular/>
 <ArrowBounce24Filled/>
@@ -11489,6 +11507,8 @@ function App() {
 <Multiselect20Regular/>
 <Multiselect24Filled/>
 <Multiselect24Regular/>
+<MultiselectRtl16Filled/>
+<MultiselectRtl16Regular/>
 <MusicNote120Filled/>
 <MusicNote120Regular/>
 <MusicNote124Filled/>
@@ -13626,6 +13646,10 @@ function App() {
 <TextDirectionHorizontalLtr20Regular/>
 <TextDirectionHorizontalLtr24Filled/>
 <TextDirectionHorizontalLtr24Regular/>
+<TextDirectionHorizontalRtl20Filled/>
+<TextDirectionHorizontalRtl20Regular/>
+<TextDirectionHorizontalRtl24Filled/>
+<TextDirectionHorizontalRtl24Regular/>
 <TextDirectionLtrAc20Filled/>
 <TextDirectionLtrAc20Regular/>
 <TextDirectionLtrAc24Filled/>
@@ -13644,6 +13668,10 @@ function App() {
 <TextDirectionRotate9024Regular/>
 <TextDirectionRotate90Ac24Filled/>
 <TextDirectionRotate90Ac24Regular/>
+<TextDirectionRotate90Rtl20Filled/>
+<TextDirectionRotate90Rtl20Regular/>
+<TextDirectionRotate90Rtl24Filled/>
+<TextDirectionRotate90Rtl24Regular/>
 <TextDirectionVertical20Filled/>
 <TextDirectionVertical20Regular/>
 <TextDirectionVertical24Filled/>
