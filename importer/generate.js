@@ -41,9 +41,9 @@ if (!fs.existsSync(DEST_PATH)) {
   fs.mkdirSync(DEST_PATH);
 }
 
-processFolder(SRC_PATH, DEST_PATH)
+processFolder(SRC_PATH, DEST_PATH, 0)
 
-function processFolder(srcPath, destPath) {
+function processFolder(srcPath, destPath, folderDepth) {
   fs.readdir(srcPath, function (err, files) {
     if (err) {
       console.error("Could not list the directory.", err);
@@ -60,10 +60,12 @@ function processFolder(srcPath, destPath) {
         }
   
         if (stat.isDirectory()) {
-          // The only directories with '-' are localized ones, which we skip for platform processing atm.
-          if (srcFile.indexOf('-') < 0) {
-            processFolder(srcFile, destPath);
+          const folderName = srcFile.substring(srcFile.lastIndexOf('/') + 1)
+          let locPath = destPath
+          if (folderDepth == 1 && folderName !== EXTENSION.toUpperCase()) {
+            locPath = path.join(locPath, folderName)
           }
+          processFolder(srcFile, locPath, folderDepth + 1)
           return;
         } else if (file.startsWith('.')) {
           // Skip invisible files
@@ -85,6 +87,9 @@ function processFolder(srcPath, destPath) {
           file = file.replace("ic_", "ic_fluent_");
         }
         var destFile = path.join(destPath, file);
+        if (!fs.existsSync(destPath)) {
+          fs.mkdirSync(destPath)
+        }
         fs.copyFileSync(srcFile, destFile);
         // Generate selector if both filled/regular styles are available
         if (SELECTOR && file.endsWith(SVG_EXTENSION)) {
