@@ -69,6 +69,8 @@ CallProhibited48Filled,
 CallProhibited48Regular,
 CameraAdd48Filled,
 CameraAdd48Regular,
+CameraDome48Filled,
+CameraDome48Regular,
 Channel48Filled,
 Channel48Regular,
 ChannelAdd48Filled,
@@ -485,6 +487,8 @@ function App() {
 <CallProhibited48Regular/>
 <CameraAdd48Filled/>
 <CameraAdd48Regular/>
+<CameraDome48Filled/>
+<CameraDome48Regular/>
 <Channel48Filled/>
 <Channel48Regular/>
 <ChannelAdd48Filled/>
