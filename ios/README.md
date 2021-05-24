@@ -87,8 +87,8 @@ All non-color icons are rendered as template images so you can easily apply a `t
 
 #### 1. Will this increase my apps build size
 
-No, but please remember to set setup the script using the instructions above ^ to strip out all unused assets.
+It will only increase for the icons you use in your app but you'll need to set up the script using the instructions above ^ to strip out all unused assets.
 
-#### 2. Why are their assets of different sizes? Can't all PDFs be scaled?
+#### 2. Why are there assets of different sizes? Can't all PDFs be scaled?
 
-Technically they can!  But design has tailored each icon to each specific size.  For example, smaller icons generally have less detail in the image.
+Technically they can! But the design team has tailored each icon to each specific size. For example, smaller icons generally have less detail in the image.
