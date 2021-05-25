@@ -20,7 +20,7 @@ ICON_PREFIX = "ic_fluent_"
 
 
 def get_icon_name(file_name):
-    return file_name.replace('.pdf', '').replace('__', '_')
+    return file_name.replace('.pdf', '').replace('__', '_').replace('_ltr_', '_').replace('_rtl_', '_')
 
 
 def bucket_array(array, bucket_size):
@@ -35,6 +35,20 @@ def bucket_array(array, bucket_size):
 
     if len(current) != 0:
         output.append(current)
+
+    return output
+
+
+def xc_image_data_for_file_name(file_name):
+    output = {
+        "idiom": "universal",
+        "filename": file_name
+    }
+
+    if "_ltr_" in file_name:
+        output["language-direction"] = "left-to-right"
+    elif "_rtl_" in file_name:
+        output["language-direction"] = "right-to-left"
 
     return output
 
@@ -67,9 +81,22 @@ def process_assets():
 
         original_icon_names.add(icon_name)
 
+        sibling_file_name = None
+        if "_ltr_" in file_name:
+            sibling_file_name = file_name.replace("_ltr_", "_rtl_")
+        elif "_rtl_" in file_name:
+            sibling_file_name = file_name.replace("_rtl_", "_ltr_")
+
+        if sibling_file_name is not None:
+            if not os.path.exists(os.path.join("dist", sibling_file_name)):
+                print(f"WARNING: No corresponding localized icon {sibling_file_name}")
+                sibling_file_name = None
+
         imageset_path = os.path.join(icon_assets_path, "{icon_name}.imageset".format(icon_name=icon_name))
         os.mkdir(imageset_path)
         shutil.copyfile(os.path.join("dist", file_name), os.path.join(imageset_path, file_name))
+        if sibling_file_name is not None:
+            shutil.copyfile(os.path.join("dist", sibling_file_name), os.path.join(imageset_path, sibling_file_name))
 
         imageset_contents_path = os.path.join(imageset_path, "Contents.json")
 
@@ -77,13 +104,15 @@ def process_assets():
             rendering_intent = "template"
             if icon_name.endswith("_color"):
                 rendering_intent = "original"
+
+            images = [
+                xc_image_data_for_file_name(file_name)
+            ]
+            if sibling_file_name is not None:
+                images.append(xc_image_data_for_file_name(sibling_file_name))
+
             contents = {
-                "images": [
-                    {
-                        "idiom": "universal",
-                        "filename": file_name
-                    }
-                ],
+                "images": images,
                 "info": {
                     "version": 1,
                     "author": "xcode"
@@ -126,6 +155,7 @@ def process_assets():
 
     icons = defaultdict(list)
     all_sizes = set()
+    original_icon_names = set()
 
     for file_name in file_names:
         """
@@ -135,6 +165,11 @@ def process_assets():
         After:  flash_off_24
         """
         icon_name = get_icon_name(file_name).replace(ICON_PREFIX, '')
+
+        if icon_name in original_icon_names:
+            continue
+
+        original_icon_names.add(icon_name)
 
         icon_name_components = icon_name.split('_')
 
