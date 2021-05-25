@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "ic_fluent_clipboard_bullet_list_ltr_16_filled.pdf",
+      "idiom" : "universal",
+      "language-direction" : "left-to-right"
+    },
+    {
+      "filename" : "ic_fluent_clipboard_bullet_list_rtl_16_filled.pdf",
+      "idiom" : "universal",
+      "language-direction" : "right-to-left"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
+  }
+}
