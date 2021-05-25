@@ -137,6 +137,8 @@ CallProhibited28Filled,
 CallProhibited28Regular,
 Camera28Filled,
 Camera28Regular,
+CameraDome28Filled,
+CameraDome28Regular,
 Cast28Filled,
 Cast28Regular,
 Channel28Filled,
@@ -714,6 +716,8 @@ function App() {
 <CallProhibited28Regular/>
 <Camera28Filled/>
 <Camera28Regular/>
+<CameraDome28Filled/>
+<CameraDome28Regular/>
 <Cast28Filled/>
 <Cast28Regular/>
 <Channel28Filled/>
