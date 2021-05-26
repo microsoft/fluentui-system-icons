@@ -9,7 +9,7 @@
     "generate:svg": "node generate.js --source=../assets --dest=./dist --extension=svg",
     "generate:svg-android": "node generate.js --source=../assets --dest=./dist --extension=svg --selector",
     "generate:react": "node generate.js --source=../assets --dest=./dist --extension=svg --target=react",
-    "generate:pdf": "node generate.js --source=../test --dest=./dist --extension=pdf",
+    "generate:pdf": "node generate.js --source=../assets --dest=./dist --extension=pdf",
     "build:android": "npm run create:android && npm run optimize:android && npm run finalize:android",
     "finalize:android": "find ./dist/ -type f ! -name '*_selector.xml' -exec replace '#212121' '@color/fluent_default_icon_tint' {} \\; && replace '\"http://schemas.android.com/apk/res/android\"' '\"http://schemas.android.com/apk/res/android\" android:autoMirrored=\"true\"' $(awk '$0=\"./dist/\"$0\".xml\"' rtl.txt)",
     "create:android": "npm run generate:svg-android && find ./dist/ -type d -exec sh -c 'tools/vd-tool/bin/vd-tool -c -in {} -out {}' \\;",
