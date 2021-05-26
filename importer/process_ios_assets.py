@@ -52,6 +52,8 @@ def xc_image_data_for_file_name(file_name):
 
     return output
 
+# from an array of lang/loc directory names, insert the localization information for a particular icon
+#   Copies an image to the directory for that asset and then inserts the locale information in Contents.json
 def add_localized_set(lang_locs, original_icon_names, icon_assets_path):
     for lang_loc in lang_locs:
         file_names = os.listdir(os.path.join("dist", lang_loc))
@@ -65,7 +67,6 @@ def add_localized_set(lang_locs, original_icon_names, icon_assets_path):
             shutil.copyfile(os.path.join("dist", lang_loc, file_name), os.path.join(imageset_path, lang_loc + "_" + file_name))
             imageset_contents_path = os.path.join(imageset_path, "Contents.json")
             contents_json = json.load(open(imageset_contents_path))
-            # print(contents_json)
 
             loc_image_data = {
                 "filename" : lang_loc + "_" + file_name,
