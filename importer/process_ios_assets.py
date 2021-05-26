@@ -68,10 +68,23 @@ def add_localized_set(lang_locs, original_icon_names, icon_assets_path):
             imageset_contents_path = os.path.join(imageset_path, "Contents.json")
             contents_json = json.load(open(imageset_contents_path))
 
+            # Xcode is specific about the capitalization used for locales.
+            # "bg" -> "bg"
+            # "bg-bg" -> "bg-BG"
+            # "sr-latn" -> "sr-Latn"
+            locale_components = lang_loc.split("-")
+            if len(locale_components) > 1:
+                if len(locale_components[1]) == 2:
+                    asset_locale = locale_components[0] + "-" + locale_components[1].upper()
+                else:
+                    asset_locale = locale_components[0] + "-" + locale_components[1].title()
+            else:
+                asset_locale = lang_loc
+
             loc_image_data = {
                 "filename" : lang_loc + "_" + file_name,
                 "idiom" : "universal",
-                "locale" : lang_loc
+                "locale" : asset_locale
             }
 
             contents_json["properties"]["localizable"] = True
