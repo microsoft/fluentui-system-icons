@@ -535,6 +535,8 @@ ClipboardTaskAdd20Filled,
 ClipboardTaskAdd20Regular,
 ClipboardTaskListLtr20Filled,
 ClipboardTaskListLtr20Regular,
+ClipboardTaskListRtl20Filled,
+ClipboardTaskListRtl20Regular,
 ClipboardTextLtr20Filled,
 ClipboardTextLtr20Regular,
 ClipboardTextRtl20Filled,
@@ -1904,6 +1906,8 @@ TextDirectionRotate9020Filled,
 TextDirectionRotate9020Regular,
 TextDirectionRotate90Rtl20Filled,
 TextDirectionRotate90Rtl20Regular,
+TextDirectionRtlAc20Filled,
+TextDirectionRtlAc20Regular,
 TextDirectionVertical20Filled,
 TextDirectionVertical20Regular,
 TextEditStyle20Filled,
@@ -1982,6 +1986,8 @@ TextSortAscending20Filled,
 TextSortAscending20Regular,
 TextSortDescending20Filled,
 TextSortDescending20Regular,
+TextStrikethrough20Filled,
+TextStrikethrough20Regular,
 TextStrikethroughS20Filled,
 TextStrikethroughS20Regular,
 TextSubscript20Filled,
@@ -2746,6 +2752,8 @@ function App() {
 <ClipboardTaskAdd20Regular/>
 <ClipboardTaskListLtr20Filled/>
 <ClipboardTaskListLtr20Regular/>
+<ClipboardTaskListRtl20Filled/>
+<ClipboardTaskListRtl20Regular/>
 <ClipboardTextLtr20Filled/>
 <ClipboardTextLtr20Regular/>
 <ClipboardTextRtl20Filled/>
@@ -4115,6 +4123,8 @@ function App() {
 <TextDirectionRotate9020Regular/>
 <TextDirectionRotate90Rtl20Filled/>
 <TextDirectionRotate90Rtl20Regular/>
+<TextDirectionRtlAc20Filled/>
+<TextDirectionRtlAc20Regular/>
 <TextDirectionVertical20Filled/>
 <TextDirectionVertical20Regular/>
 <TextEditStyle20Filled/>
@@ -4193,6 +4203,8 @@ function App() {
 <TextSortAscending20Regular/>
 <TextSortDescending20Filled/>
 <TextSortDescending20Regular/>
+<TextStrikethrough20Filled/>
+<TextStrikethrough20Regular/>
 <TextStrikethroughS20Filled/>
 <TextStrikethroughS20Regular/>
 <TextSubscript20Filled/>

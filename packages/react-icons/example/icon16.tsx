@@ -1167,6 +1167,8 @@ TextSortAscending16Filled,
 TextSortAscending16Regular,
 TextSortDescending16Filled,
 TextSortDescending16Regular,
+TextStrikethrough16Filled,
+TextStrikethrough16Regular,
 TextStrikethroughS16Filled,
 TextStrikethroughS16Regular,
 TextUnderline16Filled,
@@ -2424,6 +2426,8 @@ function App() {
 <TextSortAscending16Regular/>
 <TextSortDescending16Filled/>
 <TextSortDescending16Regular/>
+<TextStrikethrough16Filled/>
+<TextStrikethrough16Regular/>
 <TextStrikethroughS16Filled/>
 <TextStrikethroughS16Regular/>
 <TextUnderline16Filled/>

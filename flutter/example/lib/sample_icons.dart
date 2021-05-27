@@ -262,9 +262,13 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.archive_settings_20_regular, 'archive_settings_20_regular', 20),
 
+  FluentUISampleIcon(FluentIcons.arrow_autofit_down_24_regular, 'arrow_autofit_down_24_regular', 24),
+
   FluentUISampleIcon(FluentIcons.arrow_autofit_height_24_regular, 'arrow_autofit_height_24_regular', 24),
 
   FluentUISampleIcon(FluentIcons.arrow_autofit_height_dotted_24_regular, 'arrow_autofit_height_dotted_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.arrow_autofit_up_24_regular, 'arrow_autofit_up_24_regular', 24),
 
   FluentUISampleIcon(FluentIcons.arrow_autofit_width_24_regular, 'arrow_autofit_width_24_regular', 24),
 
@@ -1942,6 +1946,10 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.clipboard_task_list_ltr_24_regular, 'clipboard_task_list_ltr_24_regular', 24),
 
+  FluentUISampleIcon(FluentIcons.clipboard_task_list_rtl_20_regular, 'clipboard_task_list_rtl_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.clipboard_task_list_rtl_24_regular, 'clipboard_task_list_rtl_24_regular', 24),
+
   FluentUISampleIcon(FluentIcons.clipboard_text_ltr_20_regular, 'clipboard_text_ltr_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.clipboard_text_ltr_24_regular, 'clipboard_text_ltr_24_regular', 24),
@@ -2143,6 +2151,8 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.column_triple_edit_20_regular, 'column_triple_edit_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.column_triple_edit_24_regular, 'column_triple_edit_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.comma_24_regular, 'comma_24_regular', 24),
 
   FluentUISampleIcon(FluentIcons.comment_12_regular, 'comment_12_regular', 12),
 
@@ -6614,6 +6624,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.text_align_center_24_regular, 'text_align_center_24_regular', 24),
 
+  FluentUISampleIcon(FluentIcons.text_align_center_rotate_270_24_regular, 'text_align_center_rotate_270_24_regular', 24),
+
   FluentUISampleIcon(FluentIcons.text_align_distributed_20_regular, 'text_align_distributed_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.text_align_distributed_24_regular, 'text_align_distributed_24_regular', 24),
@@ -6628,13 +6640,21 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.text_align_justify_low_24_regular, 'text_align_justify_low_24_regular', 24),
 
+  FluentUISampleIcon(FluentIcons.text_align_justify_low_rotate_90_24_regular, 'text_align_justify_low_rotate_90_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.text_align_justify_rotate_90_24_regular, 'text_align_justify_rotate_90_24_regular', 24),
+
   FluentUISampleIcon(FluentIcons.text_align_left_20_regular, 'text_align_left_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.text_align_left_24_regular, 'text_align_left_24_regular', 24),
 
+  FluentUISampleIcon(FluentIcons.text_align_left_rotate_270_24_regular, 'text_align_left_rotate_270_24_regular', 24),
+
   FluentUISampleIcon(FluentIcons.text_align_right_20_regular, 'text_align_right_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.text_align_right_24_regular, 'text_align_right_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.text_align_right_rotate_270_24_regular, 'text_align_right_rotate_270_24_regular', 24),
 
   FluentUISampleIcon(FluentIcons.text_asterisk_20_regular, 'text_asterisk_20_regular', 20),
 
@@ -6769,6 +6789,10 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.text_direction_rotate_90_rtl_20_regular, 'text_direction_rotate_90_rtl_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.text_direction_rotate_90_rtl_24_regular, 'text_direction_rotate_90_rtl_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.text_direction_rtl_ac_20_regular, 'text_direction_rtl_ac_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.text_direction_rtl_ac_24_regular, 'text_direction_rtl_ac_24_regular', 24),
 
   FluentUISampleIcon(FluentIcons.text_direction_vertical_20_regular, 'text_direction_vertical_20_regular', 20),
 
@@ -6946,6 +6970,12 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.text_sort_descending_24_regular, 'text_sort_descending_24_regular', 24),
 
+  FluentUISampleIcon(FluentIcons.text_strikethrough_16_regular, 'text_strikethrough_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.text_strikethrough_20_regular, 'text_strikethrough_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.text_strikethrough_24_regular, 'text_strikethrough_24_regular', 24),
+
   FluentUISampleIcon(FluentIcons.text_strikethrough_s_16_regular, 'text_strikethrough_s_16_regular', 16),
 
   FluentUISampleIcon(FluentIcons.text_strikethrough_s_20_regular, 'text_strikethrough_s_20_regular', 20),
@@ -6980,6 +7010,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.textbox_align_bottom_24_regular, 'textbox_align_bottom_24_regular', 24),
 
+  FluentUISampleIcon(FluentIcons.textbox_align_bottom_rotate_90_24_regular, 'textbox_align_bottom_rotate_90_24_regular', 24),
+
   FluentUISampleIcon(FluentIcons.textbox_align_center_20_regular, 'textbox_align_center_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.textbox_align_center_24_regular, 'textbox_align_center_24_regular', 24),
@@ -6988,9 +7020,13 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.textbox_align_middle_24_regular, 'textbox_align_middle_24_regular', 24),
 
+  FluentUISampleIcon(FluentIcons.textbox_align_middle_rotate_90_24_regular, 'textbox_align_middle_rotate_90_24_regular', 24),
+
   FluentUISampleIcon(FluentIcons.textbox_align_top_20_regular, 'textbox_align_top_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.textbox_align_top_24_regular, 'textbox_align_top_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.textbox_align_top_rotate_90_24_regular, 'textbox_align_top_rotate_90_24_regular', 24),
 
   FluentUISampleIcon(FluentIcons.textbox_more_24_regular, 'textbox_more_24_regular', 24),
 
@@ -7848,9 +7884,13 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.archive_settings_20_filled, 'archive_settings_20_filled', 20),
 
+  FluentUISampleIcon(FluentIcons.arrow_autofit_down_24_filled, 'arrow_autofit_down_24_filled', 24),
+
   FluentUISampleIcon(FluentIcons.arrow_autofit_height_24_filled, 'arrow_autofit_height_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.arrow_autofit_height_dotted_24_filled, 'arrow_autofit_height_dotted_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.arrow_autofit_up_24_filled, 'arrow_autofit_up_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.arrow_autofit_width_24_filled, 'arrow_autofit_width_24_filled', 24),
 
@@ -9528,6 +9568,10 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.clipboard_task_list_ltr_24_filled, 'clipboard_task_list_ltr_24_filled', 24),
 
+  FluentUISampleIcon(FluentIcons.clipboard_task_list_rtl_20_filled, 'clipboard_task_list_rtl_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.clipboard_task_list_rtl_24_filled, 'clipboard_task_list_rtl_24_filled', 24),
+
   FluentUISampleIcon(FluentIcons.clipboard_text_ltr_20_filled, 'clipboard_text_ltr_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.clipboard_text_ltr_24_filled, 'clipboard_text_ltr_24_filled', 24),
@@ -9715,6 +9759,8 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.column_triple_edit_20_filled, 'column_triple_edit_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.column_triple_edit_24_filled, 'column_triple_edit_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.comma_24_filled, 'comma_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.comment_12_filled, 'comment_12_filled', 12),
 
@@ -14216,6 +14262,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.text_align_center_24_filled, 'text_align_center_24_filled', 24),
 
+  FluentUISampleIcon(FluentIcons.text_align_center_rotate_270_24_filled, 'text_align_center_rotate_270_24_filled', 24),
+
   FluentUISampleIcon(FluentIcons.text_align_distributed_20_filled, 'text_align_distributed_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.text_align_distributed_24_filled, 'text_align_distributed_24_filled', 24),
@@ -14230,13 +14278,21 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.text_align_justify_low_24_filled, 'text_align_justify_low_24_filled', 24),
 
+  FluentUISampleIcon(FluentIcons.text_align_justify_low_rotate_90_24_filled, 'text_align_justify_low_rotate_90_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.text_align_justify_rotate_90_24_filled, 'text_align_justify_rotate_90_24_filled', 24),
+
   FluentUISampleIcon(FluentIcons.text_align_left_20_filled, 'text_align_left_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.text_align_left_24_filled, 'text_align_left_24_filled', 24),
 
+  FluentUISampleIcon(FluentIcons.text_align_left_rotate_270_24_filled, 'text_align_left_rotate_270_24_filled', 24),
+
   FluentUISampleIcon(FluentIcons.text_align_right_20_filled, 'text_align_right_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.text_align_right_24_filled, 'text_align_right_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.text_align_right_rotate_270_24_filled, 'text_align_right_rotate_270_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.text_asterisk_20_filled, 'text_asterisk_20_filled', 20),
 
@@ -14365,6 +14421,10 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.text_direction_rotate_90_rtl_20_filled, 'text_direction_rotate_90_rtl_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.text_direction_rotate_90_rtl_24_filled, 'text_direction_rotate_90_rtl_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.text_direction_rtl_ac_20_filled, 'text_direction_rtl_ac_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.text_direction_rtl_ac_24_filled, 'text_direction_rtl_ac_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.text_direction_vertical_20_filled, 'text_direction_vertical_20_filled', 20),
 
@@ -14542,6 +14602,12 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.text_sort_descending_24_filled, 'text_sort_descending_24_filled', 24),
 
+  FluentUISampleIcon(FluentIcons.text_strikethrough_16_filled, 'text_strikethrough_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.text_strikethrough_20_filled, 'text_strikethrough_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.text_strikethrough_24_filled, 'text_strikethrough_24_filled', 24),
+
   FluentUISampleIcon(FluentIcons.text_strikethrough_s_16_filled, 'text_strikethrough_s_16_filled', 16),
 
   FluentUISampleIcon(FluentIcons.text_strikethrough_s_20_filled, 'text_strikethrough_s_20_filled', 20),
@@ -14576,6 +14642,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.textbox_align_bottom_24_filled, 'textbox_align_bottom_24_filled', 24),
 
+  FluentUISampleIcon(FluentIcons.textbox_align_bottom_rotate_90_24_filled, 'textbox_align_bottom_rotate_90_24_filled', 24),
+
   FluentUISampleIcon(FluentIcons.textbox_align_center_20_filled, 'textbox_align_center_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.textbox_align_center_24_filled, 'textbox_align_center_24_filled', 24),
@@ -14584,9 +14652,13 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.textbox_align_middle_24_filled, 'textbox_align_middle_24_filled', 24),
 
+  FluentUISampleIcon(FluentIcons.textbox_align_middle_rotate_90_24_filled, 'textbox_align_middle_rotate_90_24_filled', 24),
+
   FluentUISampleIcon(FluentIcons.textbox_align_top_20_filled, 'textbox_align_top_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.textbox_align_top_24_filled, 'textbox_align_top_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.textbox_align_top_rotate_90_24_filled, 'textbox_align_top_rotate_90_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.textbox_more_24_filled, 'textbox_more_24_filled', 24),
 

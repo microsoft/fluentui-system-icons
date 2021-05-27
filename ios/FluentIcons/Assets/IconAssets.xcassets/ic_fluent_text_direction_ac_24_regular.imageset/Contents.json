@@ -4,6 +4,11 @@
       "filename": "ic_fluent_text_direction_ltr_ac_24_regular.pdf",
       "idiom": "universal",
       "language-direction": "left-to-right"
+    },
+    {
+      "filename": "ic_fluent_text_direction_rtl_ac_24_regular.pdf",
+      "idiom": "universal",
+      "language-direction": "right-to-left"
     }
   ],
   "info": {

@@ -1,6 +1,6 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.ttf?11c19b0415a9436b5fc24cc83a5cec60") format("truetype");
+    src: url("./FluentSystemIcons-Filled.ttf?79fcc3177962071c684404c9f0cfbc0f") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -11404,4 +11404,58 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_xray_24_filled:before {
     content: "\ffd5";
+}
+.icon-ic_fluent_arrow_autofit_down_24_filled:before {
+    content: "\ffd6";
+}
+.icon-ic_fluent_arrow_autofit_up_24_filled:before {
+    content: "\ffd7";
+}
+.icon-ic_fluent_clipboard_task_list_rtl_20_filled:before {
+    content: "\ffd8";
+}
+.icon-ic_fluent_clipboard_task_list_rtl_24_filled:before {
+    content: "\ffd9";
+}
+.icon-ic_fluent_comma_24_filled:before {
+    content: "\ffda";
+}
+.icon-ic_fluent_text_align_center_rotate_270_24_filled:before {
+    content: "\ffdb";
+}
+.icon-ic_fluent_text_align_justify_low_rotate_90_24_filled:before {
+    content: "\ffdc";
+}
+.icon-ic_fluent_text_align_justify_rotate_90_24_filled:before {
+    content: "\ffdd";
+}
+.icon-ic_fluent_text_align_left_rotate_270_24_filled:before {
+    content: "\ffde";
+}
+.icon-ic_fluent_text_align_right_rotate_270_24_filled:before {
+    content: "\ffdf";
+}
+.icon-ic_fluent_text_direction_rtl_ac_20_filled:before {
+    content: "\ffe0";
+}
+.icon-ic_fluent_text_direction_rtl_ac_24_filled:before {
+    content: "\ffe1";
+}
+.icon-ic_fluent_text_strikethrough_16_filled:before {
+    content: "\ffe2";
+}
+.icon-ic_fluent_text_strikethrough_20_filled:before {
+    content: "\ffe3";
+}
+.icon-ic_fluent_text_strikethrough_24_filled:before {
+    content: "\ffe4";
+}
+.icon-ic_fluent_textbox_align_bottom_rotate_90_24_filled:before {
+    content: "\ffe5";
+}
+.icon-ic_fluent_textbox_align_middle_rotate_90_24_filled:before {
+    content: "\ffe6";
+}
+.icon-ic_fluent_textbox_align_top_rotate_90_24_filled:before {
+    content: "\ffe7";
 }
