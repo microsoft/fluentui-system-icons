@@ -11,7 +11,7 @@
     "url": "https://github.com/microsoft/fluentui-system-icons.git"
   },
   "scripts": {
-    "clean": "find ./src -type f -name \"*.tsx\" -delete",
+    "clean": "find ./src -type f ! -name \"wrapIcon.tsx\" -name \"*.tsx\" -delete",
     "cleanSvg": "rm -rf ./intermediate",
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
     "convert": "node convert.js --source=./intermediate --dest=./src",
