@@ -24,59 +24,79 @@ if (!fs.existsSync(DEST_PATH)) {
   fs.mkdirSync(DEST_PATH);
 }
 
-if (!fs.existsSync(DEST_PATH + '/components')) {
-  fs.mkdirSync(DEST_PATH + '/components');
-}
+processFiles(SRC_PATH, DEST_PATH)
 
-processFolder(SRC_PATH, DEST_PATH)
+function processFiles(src, dest) {
+  var componentsPath = path.join(dest, 'components')
+  if (!fs.existsSync(componentsPath)) {
+    fs.mkdirSync(componentsPath)
+  }
+
+  var indexPath = path.join(dest, 'index.tsx')
+  var indexContents = processFolder(src, componentsPath)
+
+  // Finally add the interface definition and then write out the index.
+  indexContents += '\nexport { IFluentIconsProps } from \'./utils/IFluentIconsProps.types\''
+  indexContents += '\nexport { default as wrapIcon } from \'./utils/wrapIcon\''
+  fs.writeFileSync(indexPath, indexContents, (err) => {
+    if (err) throw err;
+  });
+
+}
 
 /*
   Process a folder of svg files and convert them to React components, following naming patterns for the FluentUI System Icons
 */
 function processFolder(srcPath, destPath) {
-  fs.readdir(srcPath, function (err, files) {
-    if (err) {
-      console.error("Could not list the directory.", err);
-      process.exit(1);
-    }
+  var files = fs.readdirSync(srcPath)
 
-    // These options will be passed to svgr/core
-    // See https://react-svgr.com/docs/options/ for more info
-    var svgrOpts = {
-      template: fileTemplate,
-      expandProps: false, // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
-      svgProps: { className: '{className}'}, // In order to provide styling, className will be used
-      replaceAttrValues: { '#212121': '{primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
-      typescript: true,
-    }
+  // These options will be passed to svgr/core
+  // See https://react-svgr.com/docs/options/ for more info
+  var svgrOpts = {
+    template: fileTemplate,
+    expandProps: false, // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
+    svgProps: { className: '{className}'}, // In order to provide styling, className will be used
+    replaceAttrValues: { '#212121': '{primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
+    typescript: true,
+  }
 
-    // Build out the index for the components as we process the files
-    var indexContents = ''
+  // Build out the index for the components as we process the files
+  var indexContents = ''
 
-    files.forEach(function (file, index) {
-      var componentPath = destPath + '/components'
+  files.forEach(function (file, index) {
+    var srcFile = path.join(srcPath, file)
+    if (fs.lstatSync(srcFile).isDirectory()) {
+      // for now, ignore subdirectories/localization, until we have a plan for handling it
+      // Will likely involve appending the lang/locale to the end of the friendly name for the unique component name
+      // var joinedDestPath = path.join(destPath, file)
+      // if (!fs.existsSync(joinedDestPath)) {
+      //   fs.mkdirSync(joinedDestPath);
+      // }
+      // indexContents += processFolder(srcFile, joinedDestPath)
+    } else {
       var iconName = file.substr(0, file.length - 4) // strip '.svg'
       iconName = iconName.replace("ic_fluent_", "") // strip ic_fluent_
-      var srcFile = path.join(srcPath, file)
       var destFilename = _.camelCase(iconName) // We want them to be camelCase, so access_time would become accessTime here
       destFilename = destFilename.replace(destFilename.substring(0, 1), destFilename.substring(0, 1).toUpperCase()) // capitalize the first letter
-      var destFile = path.join(componentPath, destFilename + TSX_EXTENSION) // get the qualified path
+      var destFile = path.join(destPath, destFilename + TSX_EXTENSION) // get the qualified path
 
+      var locale = destPath.substring(destPath.indexOf('components') + 11)
+      var indexLocation = path.join('.', 'components')
+      if (locale.length > 0) {
+        indexLocation = path.join(indexLocation, locale)
+      }
+      indexLocation = path.join(indexLocation, destFilename)
       var iconContent = fs.readFileSync(srcFile, { encoding: "utf8" })
       jsCode = svgr.default.sync(iconContent, svgrOpts, { filePath: file })
-      indexContents += '\nexport { default as ' + destFilename + ' } from \'./components/' + destFilename + '\''
+      indexContents += '\nexport { default as ' + destFilename + ' } from \'./' + indexLocation + '\''
       fs.writeFileSync(destFile, jsCode, (err) => {
         if (err) throw err;
       });
-    });
-
-    // Finally add the interface definition and then write out the index.
-    indexContents += '\nexport { IFluentIconsProps } from \'./utils/IFluentIconsProps.types\''
-    indexContents += '\nexport { default as wrapIcon } from \'./utils/wrapIcon\''
-    fs.writeFileSync(destPath + '/index.tsx', indexContents, (err) => {
-      if (err) throw err;
-    });
+    }
   });
+
+  // console.log(indexContents)
+  return indexContents
 }
 
 function fileTemplate(

@@ -52,27 +52,48 @@ def xc_image_data_for_file_name(file_name):
 
     return output
 
+# from an array of lang/loc directory names, insert the localization information for a particular icon
+#   Copies an image to the directory for that asset and then inserts the locale information in Contents.json
+def add_localized_set(lang_locs, original_icon_names, icon_assets_path):
+    for lang_loc in lang_locs:
+        file_names = os.listdir(os.path.join("dist", lang_loc))
+        for file_name in file_names:
+            icon_name = get_icon_name(file_name)
+            imageset_path = os.path.join(icon_assets_path, "{icon_name}.imageset".format(icon_name=icon_name))
+            if not os.path.exists(imageset_path):
+                print(f"WARNING: No base localized icon {icon_name}")
+                os.mkdir(imageset_path)
+            
+            shutil.copyfile(os.path.join("dist", lang_loc, file_name), os.path.join(imageset_path, lang_loc + "_" + file_name))
+            imageset_contents_path = os.path.join(imageset_path, "Contents.json")
+            contents_json = json.load(open(imageset_contents_path))
 
-def process_assets():
-    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            # Xcode is specific about the capitalization used for locales.
+            # "bg" -> "bg"
+            # "bg-bg" -> "bg-BG"
+            # "sr-latn" -> "sr-Latn"
+            locale_components = lang_loc.split("-")
+            if len(locale_components) > 1:
+                if len(locale_components[1]) == 2:
+                    asset_locale = locale_components[0] + "-" + locale_components[1].upper()
+                else:
+                    asset_locale = locale_components[0] + "-" + locale_components[1].title()
+            else:
+                asset_locale = lang_loc
 
-    file_names = []
-    for file_name in os.listdir("dist"):
-        if not file_name.endswith('.pdf'):
-            continue
-        file_names.append(file_name)
+            loc_image_data = {
+                "filename" : lang_loc + "_" + file_name,
+                "idiom" : "universal",
+                "locale" : asset_locale
+            }
 
-    file_names.sort()
+            contents_json["properties"]["localizable"] = True
+            contents_json["images"].append(loc_image_data)
 
-    ios_directory = os.path.join(project_root, "ios")
+            with open(imageset_contents_path, 'w') as imageset:
+                imageset.write(json.dumps(contents_json, indent=2, sort_keys=True))
 
-    icon_assets_path = os.path.join(ios_directory, LIBRARY_NAME + "s", "Assets", "IconAssets.xcassets")
-    if os.path.exists(icon_assets_path):
-        shutil.rmtree(icon_assets_path)
-    os.mkdir(icon_assets_path)
-
-    original_icon_names = set()
-
+def create_icon_set(file_names, original_icon_names, icon_assets_path):
     for file_name in file_names:
         icon_name = get_icon_name(file_name)
 
@@ -123,6 +144,31 @@ def process_assets():
             }
 
             imageset.write(json.dumps(contents, indent=2, sort_keys=True))
+
+def process_assets():
+    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    # print(os.listdir("dist"))
+    file_names = []
+    loc_names = []
+    for file_name in os.listdir("dist"):
+        if file_name.endswith('.pdf'):
+            file_names.append(file_name)
+        elif os.path.isdir(os.path.join("dist", file_name)):
+            loc_names.append(file_name)
+
+    file_names.sort()
+
+    ios_directory = os.path.join(project_root, "ios")
+
+    icon_assets_path = os.path.join(ios_directory, LIBRARY_NAME + "s", "Assets", "IconAssets.xcassets")
+    if os.path.exists(icon_assets_path):
+        shutil.rmtree(icon_assets_path)
+    os.mkdir(icon_assets_path)
+
+    original_icon_names = set()
+    create_icon_set(file_names, original_icon_names, icon_assets_path)
+    add_localized_set(loc_names, original_icon_names, icon_assets_path)
 
     # Generate BUILD.gn for GN build system
     gn_path = os.path.join(ios_directory, "BUILD.gn")
