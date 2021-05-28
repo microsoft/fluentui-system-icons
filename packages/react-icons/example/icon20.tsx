@@ -1853,8 +1853,6 @@ TextAsterisk20Filled,
 TextAsterisk20Regular,
 TextBold20Filled,
 TextBold20Regular,
-TextBulletList20Filled,
-TextBulletList20Regular,
 TextBulletListAdd20Filled,
 TextBulletListAdd20Regular,
 TextBulletListLtr20Filled,
@@ -1902,8 +1900,8 @@ TextDirectionRotate27020Filled,
 TextDirectionRotate27020Regular,
 TextDirectionRotate270Ac20Filled,
 TextDirectionRotate270Ac20Regular,
-TextDirectionRotate9020Filled,
-TextDirectionRotate9020Regular,
+TextDirectionRotate90Ltr20Filled,
+TextDirectionRotate90Ltr20Regular,
 TextDirectionRotate90Rtl20Filled,
 TextDirectionRotate90Rtl20Regular,
 TextDirectionRtlAc20Filled,
@@ -4070,8 +4068,6 @@ function App() {
 <TextAsterisk20Regular/>
 <TextBold20Filled/>
 <TextBold20Regular/>
-<TextBulletList20Filled/>
-<TextBulletList20Regular/>
 <TextBulletListAdd20Filled/>
 <TextBulletListAdd20Regular/>
 <TextBulletListLtr20Filled/>
@@ -4119,8 +4115,8 @@ function App() {
 <TextDirectionRotate27020Regular/>
 <TextDirectionRotate270Ac20Filled/>
 <TextDirectionRotate270Ac20Regular/>
-<TextDirectionRotate9020Filled/>
-<TextDirectionRotate9020Regular/>
+<TextDirectionRotate90Ltr20Filled/>
+<TextDirectionRotate90Ltr20Regular/>
 <TextDirectionRotate90Rtl20Filled/>
 <TextDirectionRotate90Rtl20Regular/>
 <TextDirectionRtlAc20Filled/>

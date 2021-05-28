@@ -6786,6 +6786,10 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.text_direction_rotate_90_ac_24_regular, 'text_direction_rotate_90_ac_24_regular', 24),
 
+  FluentUISampleIcon(FluentIcons.text_direction_rotate_90_ltr_20_regular, 'text_direction_rotate_90_ltr_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.text_direction_rotate_90_ltr_24_regular, 'text_direction_rotate_90_ltr_24_regular', 24),
+
   FluentUISampleIcon(FluentIcons.text_direction_rotate_90_rtl_20_regular, 'text_direction_rotate_90_rtl_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.text_direction_rotate_90_rtl_24_regular, 'text_direction_rotate_90_rtl_24_regular', 24),
@@ -14417,6 +14421,10 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.text_direction_rotate_90_24_filled, 'text_direction_rotate_90_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.text_direction_rotate_90_ac_24_filled, 'text_direction_rotate_90_ac_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.text_direction_rotate_90_ltr_20_filled, 'text_direction_rotate_90_ltr_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.text_direction_rotate_90_ltr_24_filled, 'text_direction_rotate_90_ltr_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.text_direction_rotate_90_rtl_20_filled, 'text_direction_rotate_90_rtl_20_filled', 20),
 

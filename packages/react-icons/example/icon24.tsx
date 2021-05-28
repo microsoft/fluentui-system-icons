@@ -2395,8 +2395,6 @@ TextAlignRightRotate27024Filled,
 TextAlignRightRotate27024Regular,
 TextBold24Filled,
 TextBold24Regular,
-TextBulletList24Filled,
-TextBulletList24Regular,
 TextBulletListAdd24Filled,
 TextBulletListAdd24Regular,
 TextBulletListLtr24Filled,
@@ -2452,10 +2450,10 @@ TextDirectionRotate27024Filled,
 TextDirectionRotate27024Regular,
 TextDirectionRotate270Ac24Filled,
 TextDirectionRotate270Ac24Regular,
-TextDirectionRotate9024Filled,
-TextDirectionRotate9024Regular,
 TextDirectionRotate90Ac24Filled,
 TextDirectionRotate90Ac24Regular,
+TextDirectionRotate90Ltr24Filled,
+TextDirectionRotate90Ltr24Regular,
 TextDirectionRotate90Rtl24Filled,
 TextDirectionRotate90Rtl24Regular,
 TextDirectionRtlAc24Filled,
@@ -5184,8 +5182,6 @@ function App() {
 <TextAlignRightRotate27024Regular/>
 <TextBold24Filled/>
 <TextBold24Regular/>
-<TextBulletList24Filled/>
-<TextBulletList24Regular/>
 <TextBulletListAdd24Filled/>
 <TextBulletListAdd24Regular/>
 <TextBulletListLtr24Filled/>
@@ -5241,10 +5237,10 @@ function App() {
 <TextDirectionRotate27024Regular/>
 <TextDirectionRotate270Ac24Filled/>
 <TextDirectionRotate270Ac24Regular/>
-<TextDirectionRotate9024Filled/>
-<TextDirectionRotate9024Regular/>
 <TextDirectionRotate90Ac24Filled/>
 <TextDirectionRotate90Ac24Regular/>
+<TextDirectionRotate90Ltr24Filled/>
+<TextDirectionRotate90Ltr24Regular/>
 <TextDirectionRotate90Rtl24Filled/>
 <TextDirectionRotate90Rtl24Regular/>
 <TextDirectionRtlAc24Filled/>

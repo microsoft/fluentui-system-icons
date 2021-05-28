@@ -1,6 +1,6 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.ttf?2a88ea4a9943d2913663bd9a387dc548") format("truetype");
+    src: url("./FluentSystemIcons-Regular.ttf?32ba0653abdd689930429fbeb355cd2b") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -11446,4 +11446,10 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_textbox_align_top_rotate_90_24_regular:before {
     content: "\ffe3";
+}
+.icon-ic_fluent_text_direction_rotate_90_ltr_20_regular:before {
+    content: "\ffe4";
+}
+.icon-ic_fluent_text_direction_rotate_90_ltr_24_regular:before {
+    content: "\ffe5";
 }

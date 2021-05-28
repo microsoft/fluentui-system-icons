@@ -3813,5 +3813,7 @@
     "ic_fluent_text_strikethrough_24_filled": "0xffe4",
     "ic_fluent_textbox_align_bottom_rotate_90_24_filled": "0xffe5",
     "ic_fluent_textbox_align_middle_rotate_90_24_filled": "0xffe6",
-    "ic_fluent_textbox_align_top_rotate_90_24_filled": "0xffe7"
+    "ic_fluent_textbox_align_top_rotate_90_24_filled": "0xffe7",
+    "ic_fluent_text_direction_rotate_90_ltr_20_filled": "0xffe8",
+    "ic_fluent_text_direction_rotate_90_ltr_24_filled": "0xffe9"
 }
