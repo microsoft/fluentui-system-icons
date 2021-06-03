@@ -63,23 +63,28 @@ def add_localized_set(lang_locs, original_icon_names, icon_assets_path):
             if not os.path.exists(imageset_path):
                 print(f"WARNING: No base localized icon {icon_name}")
                 os.mkdir(imageset_path)
-            
-            shutil.copyfile(os.path.join("dist", lang_loc, file_name), os.path.join(imageset_path, lang_loc + "_" + file_name))
-            imageset_contents_path = os.path.join(imageset_path, "Contents.json")
-            contents_json = json.load(open(imageset_contents_path))
 
             # Xcode is specific about the capitalization used for locales.
             # "bg" -> "bg"
             # "bg-bg" -> "bg-BG"
             # "sr-latn" -> "sr-Latn"
+            # If it is too specific it won't be supported by iOS or Mac so we can ignore it.
+            # "sr-latn-rs"
             locale_components = lang_loc.split("-")
-            if len(locale_components) > 1:
+            if len(locale_components) == 3:
+                print(f"DEBUG: Unused localization {icon_name} {lang_loc}")
+                continue
+            elif len(locale_components) == 2:
                 if len(locale_components[1]) == 2:
                     asset_locale = locale_components[0] + "-" + locale_components[1].upper()
                 else:
                     asset_locale = locale_components[0] + "-" + locale_components[1].title()
             else:
                 asset_locale = lang_loc
+
+            shutil.copyfile(os.path.join("dist", lang_loc, file_name), os.path.join(imageset_path, lang_loc + "_" + file_name))
+            imageset_contents_path = os.path.join(imageset_path, "Contents.json")
+            contents_json = json.load(open(imageset_contents_path))
 
             loc_image_data = {
                 "filename" : lang_loc + "_" + file_name,

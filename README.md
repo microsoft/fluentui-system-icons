@@ -26,7 +26,7 @@ repositories {
 Include the following dependency in your project's `build.gradle`
 
 ```groovy
-implementation 'com.microsoft.design:fluent-system-icons:1.1.127'
+implementation 'com.microsoft.design:fluent-system-icons:1.1.127@aar'
 ```
 
 For library docs, see [android/README.md](android/README.md).
