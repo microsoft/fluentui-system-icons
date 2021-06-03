@@ -69,7 +69,7 @@ def add_localized_set(lang_locs, original_icon_names, icon_assets_path):
             # "bg-bg" -> "bg-BG"
             # "sr-latn" -> "sr-Latn"
             # If it is too specific it won't be supported by iOS or Mac so we can ignore it.
-            # "sr-ls-latn"
+            # "sr-latn-rs"
             locale_components = lang_loc.split("-")
             if len(locale_components) == 3:
                 print(f"DEBUG: Unused localization {icon_name} {lang_loc}")
