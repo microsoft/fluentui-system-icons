@@ -87,7 +87,21 @@ function processFolder(srcPath, destPath) {
       }
       indexLocation = path.join(indexLocation, destFilename)
       var iconContent = fs.readFileSync(srcFile, { encoding: "utf8" })
-      jsCode = svgr.default.sync(iconContent, svgrOpts, { filePath: file })
+      
+      var jsxCode = svgr.default.sync(iconContent, svgrOpts, { filePath: file })
+      var jsCode = 
+`import * as React from 'react';
+import  wrapIcon from '../utils/wrapIcon';
+import { IFluentIconsProps } from '../utils/IFluentIconsProps.types';
+
+const rawSvg = (iconProps: IFluentIconsProps) => {
+  const { className, primaryFill } = iconProps;
+  return ${jsxCode};
+}
+
+const ${destFilename} = wrapIcon(rawSvg({}), '${destFilename}');
+export default ${destFilename};
+      `
       indexContents += '\nexport { default as ' + destFilename + ' } from \'./' + indexLocation + '\''
       fs.writeFileSync(destFile, jsCode, (err) => {
         if (err) throw err;
@@ -109,17 +123,6 @@ function fileTemplate(
 
   componentName.name = componentName.name.substring(3)
   componentName.name = componentName.name.replace('IcFluent', '')
-  exports.declaration.name = componentName.name
-
-  return tpl.ast`
-		import * as React from "react";
-		import { IFluentIconsProps } from '../utils/IFluentIconsProps.types';
-
-		const ${componentName}: JSX.Element = (iconProps: IFluentIconsProps) => {
-		const { primaryFill, className } = iconProps;
-		return ${jsx};
-		}
-		
-		${exports}
-	`
+  
+	return jsx;
 }
