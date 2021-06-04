@@ -55,11 +55,6 @@
       "locale": "tr-TR"
     },
     {
-      "filename": "sr-latn-rs_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "sr-Latn"
-    },
-    {
       "filename": "fr_ic_fluent_text_underline_24_regular.pdf",
       "idiom": "universal",
       "locale": "fr"
@@ -85,11 +80,6 @@
       "locale": "en-US"
     },
     {
-      "filename": "sr-ccyrl-rs_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "sr-Ccyrl"
-    },
-    {
       "filename": "es_ic_fluent_text_underline_24_regular.pdf",
       "idiom": "universal",
       "locale": "es"
@@ -103,11 +93,6 @@
       "filename": "hu_ic_fluent_text_underline_24_regular.pdf",
       "idiom": "universal",
       "locale": "hu"
-    },
-    {
-      "filename": "sr-cyrl-cs_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "sr-Cyrl"
     },
     {
       "filename": "sl-si_ic_fluent_text_underline_24_regular.pdf",
@@ -173,11 +158,6 @@
       "filename": "eu-es_ic_fluent_text_underline_24_regular.pdf",
       "idiom": "universal",
       "locale": "eu-ES"
-    },
-    {
-      "filename": "sr-latn-cs_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "sr-Latn"
     },
     {
       "filename": "fr-fr_ic_fluent_text_underline_24_regular.pdf",

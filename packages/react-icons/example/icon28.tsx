@@ -39,6 +39,8 @@ AppsAddIn28Filled,
 AppsAddIn28Regular,
 Archive28Filled,
 Archive28Regular,
+ArrowClockwise28Filled,
+ArrowClockwise28Regular,
 ArrowCounterclockwise28Filled,
 ArrowCounterclockwise28Regular,
 ArrowCurveDownLeft28Filled,
@@ -429,6 +431,8 @@ Pill28Filled,
 Pill28Regular,
 Pin28Filled,
 Pin28Regular,
+Play28Filled,
+Play28Regular,
 PlayCircle28Filled,
 PlayCircle28Regular,
 PlugDisconnected28Filled,
@@ -618,6 +622,8 @@ function App() {
 <AppsAddIn28Regular/>
 <Archive28Filled/>
 <Archive28Regular/>
+<ArrowClockwise28Filled/>
+<ArrowClockwise28Regular/>
 <ArrowCounterclockwise28Filled/>
 <ArrowCounterclockwise28Regular/>
 <ArrowCurveDownLeft28Filled/>
@@ -1008,6 +1014,8 @@ function App() {
 <Pill28Regular/>
 <Pin28Filled/>
 <Pin28Regular/>
+<Play28Filled/>
+<Play28Regular/>
 <PlayCircle28Filled/>
 <PlayCircle28Regular/>
 <PlugDisconnected28Filled/>

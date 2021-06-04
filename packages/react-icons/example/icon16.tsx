@@ -57,6 +57,8 @@ ArrowCircleUp16Filled,
 ArrowCircleUp16Regular,
 ArrowClockwise16Filled,
 ArrowClockwise16Regular,
+ArrowCounterclockwise16Filled,
+ArrowCounterclockwise16Regular,
 ArrowCurveDownLeft16Filled,
 ArrowCurveDownLeft16Regular,
 ArrowDown16Filled,
@@ -97,6 +99,8 @@ ArrowReplyDown16Filled,
 ArrowReplyDown16Regular,
 ArrowRight16Filled,
 ArrowRight16Regular,
+ArrowRotateClockwise16Filled,
+ArrowRotateClockwise16Regular,
 ArrowSort16Filled,
 ArrowSort16Regular,
 ArrowSortDown16Filled,
@@ -151,6 +155,8 @@ BoardSplit16Filled,
 BoardSplit16Regular,
 BookNumber16Filled,
 BookNumber16Regular,
+BookOpen16Filled,
+BookOpen16Regular,
 Bookmark16Filled,
 Bookmark16Regular,
 BowlChopsticks16Filled,
@@ -167,6 +173,8 @@ BriefcaseMedical16Filled,
 BriefcaseMedical16Regular,
 BriefcaseOff16Filled,
 BriefcaseOff16Regular,
+BroadActivityFeed16Filled,
+BroadActivityFeed16Regular,
 Broom16Filled,
 Broom16Regular,
 Bug16Filled,
@@ -207,6 +215,10 @@ CalendarMultiple16Filled,
 CalendarMultiple16Regular,
 CalendarPatterns16Filled,
 CalendarPatterns16Regular,
+CalendarPerson16Filled,
+CalendarPerson16Regular,
+CalendarPhone16Filled,
+CalendarPhone16Regular,
 CalendarQuestionMark16Filled,
 CalendarQuestionMark16Regular,
 CalendarReply16Filled,
@@ -217,6 +229,8 @@ CalendarSearch16Filled,
 CalendarSearch16Regular,
 CalendarSettings16Filled,
 CalendarSettings16Regular,
+CalendarStar16Filled,
+CalendarStar16Regular,
 CalendarSync16Filled,
 CalendarSync16Regular,
 CalendarToday16Filled,
@@ -271,6 +285,10 @@ ChannelShare16Filled,
 ChannelShare16Regular,
 Chat16Filled,
 Chat16Regular,
+ChatArrowBack16Filled,
+ChatArrowBack16Regular,
+ChatArrowDoubleBack16Filled,
+ChatArrowDoubleBack16Regular,
 ChatBubblesQuestion16Filled,
 ChatBubblesQuestion16Regular,
 ChatMultiple16Filled,
@@ -307,6 +325,8 @@ ChevronRight16Filled,
 ChevronRight16Regular,
 ChevronUp16Filled,
 ChevronUp16Regular,
+ChevronUpDown16Filled,
+ChevronUpDown16Regular,
 Circle16Filled,
 Circle16Regular,
 CircleHalfFill16Filled,
@@ -446,6 +466,8 @@ DeviceMeetingRoom16Filled,
 DeviceMeetingRoom16Regular,
 DeviceMeetingRoomRemote16Filled,
 DeviceMeetingRoomRemote16Regular,
+Directions16Filled,
+Directions16Regular,
 Dismiss16Filled,
 Dismiss16Regular,
 DismissCircle16Filled,
@@ -474,6 +496,8 @@ DocumentCatchUp16Filled,
 DocumentCatchUp16Regular,
 DocumentCopy16Filled,
 DocumentCopy16Regular,
+DocumentDismiss16Filled,
+DocumentDismiss16Regular,
 DocumentEdit16Filled,
 DocumentEdit16Regular,
 DocumentError16Filled,
@@ -486,6 +510,8 @@ DocumentHeaderArrowDown16Filled,
 DocumentHeaderArrowDown16Regular,
 DocumentHeaderFooter16Filled,
 DocumentHeaderFooter16Regular,
+DocumentLink16Filled,
+DocumentLink16Regular,
 DocumentMultiple16Filled,
 DocumentMultiple16Regular,
 DocumentPdf16Filled,
@@ -532,6 +558,8 @@ EmojiAdd16Filled,
 EmojiAdd16Regular,
 EmojiLaugh16Filled,
 EmojiLaugh16Regular,
+EmojiSad16Filled,
+EmojiSad16Regular,
 ErrorCircle16Filled,
 ErrorCircle16Regular,
 ErrorCircleSettings16Filled,
@@ -540,6 +568,8 @@ ExpandUpLeft16Filled,
 ExpandUpLeft16Regular,
 ExpandUpRight16Filled,
 ExpandUpRight16Regular,
+Extension16Filled,
+Extension16Regular,
 EyeOff16Filled,
 EyeOff16Regular,
 EyeShow16Filled,
@@ -625,6 +655,8 @@ GlassesOff16Filled,
 GlassesOff16Regular,
 Globe16Filled,
 Globe16Regular,
+GlobeClock16Filled,
+GlobeClock16Regular,
 GlobeStar16Filled,
 GlobeStar16Regular,
 Grid16Filled,
@@ -664,6 +696,8 @@ ImageEdit16Filled,
 ImageEdit16Regular,
 ImageMultiple16Filled,
 ImageMultiple16Regular,
+ImmersiveReader16Filled,
+ImmersiveReader16Regular,
 Important16Filled,
 Important16Regular,
 Info16Filled,
@@ -701,6 +735,8 @@ Likert16Filled,
 Likert16Regular,
 Link16Filled,
 Link16Regular,
+LinkDismiss16Filled,
+LinkDismiss16Regular,
 LinkEdit16Filled,
 LinkEdit16Regular,
 LinkSquare16Filled,
@@ -715,6 +751,10 @@ LocationOff16Filled,
 LocationOff16Regular,
 LockClosed16Filled,
 LockClosed16Regular,
+LockOpen16Filled,
+LockOpen16Regular,
+Luggage16Filled,
+Luggage16Regular,
 Mail16Filled,
 Mail16Regular,
 MailAdd16Filled,
@@ -737,6 +777,8 @@ MailClock16Filled,
 MailClock16Regular,
 MailDismiss16Filled,
 MailDismiss16Regular,
+MailError16Filled,
+MailError16Regular,
 MailInbox16Filled,
 MailInbox16Regular,
 MailInboxAdd16Filled,
@@ -855,6 +897,8 @@ PeopleAdd16Filled,
 PeopleAdd16Regular,
 PeopleCall16Filled,
 PeopleCall16Regular,
+PeopleCheckmark16Filled,
+PeopleCheckmark16Regular,
 PeopleCommunity16Filled,
 PeopleCommunity16Regular,
 PeopleError16Filled,
@@ -931,6 +975,8 @@ Pin16Filled,
 Pin16Regular,
 PinOff16Filled,
 PinOff16Regular,
+Play16Filled,
+Play16Regular,
 PlayCircle16Filled,
 PlayCircle16Regular,
 Premium16Filled,
@@ -1001,6 +1047,8 @@ Ruler16Filled,
 Ruler16Regular,
 Run16Filled,
 Run16Regular,
+Save16Filled,
+Save16Regular,
 Savings16Filled,
 Savings16Regular,
 ScaleFit16Filled,
@@ -1037,6 +1085,8 @@ ShieldCheckmark16Filled,
 ShieldCheckmark16Regular,
 ShieldDismiss16Filled,
 ShieldDismiss16Regular,
+ShieldError16Filled,
+ShieldError16Regular,
 ShieldKeyhole16Filled,
 ShieldKeyhole16Regular,
 ShieldLock16Filled,
@@ -1075,6 +1125,8 @@ SplitVertical16Filled,
 SplitVertical16Regular,
 Sport16Filled,
 Sport16Regular,
+SportSoccer16Filled,
+SportSoccer16Regular,
 Square16Filled,
 Square16Regular,
 SquareAdd16Filled,
@@ -1148,6 +1200,8 @@ TetrisApp16Filled,
 TetrisApp16Regular,
 TextBold16Filled,
 TextBold16Regular,
+TextBox16Filled,
+TextBox16Regular,
 TextBulletListSquareWarning16Filled,
 TextBulletListSquareWarning16Regular,
 TextBulletListTree16Filled,
@@ -1163,6 +1217,8 @@ TextGrammarWand16Filled,
 TextGrammarWand16Regular,
 TextItalic16Filled,
 TextItalic16Regular,
+TextQuote16Filled,
+TextQuote16Regular,
 TextSortAscending16Filled,
 TextSortAscending16Regular,
 TextSortDescending16Filled,
@@ -1242,6 +1298,10 @@ WeatherMoon16Filled,
 WeatherMoon16Regular,
 WeatherMoonOff16Filled,
 WeatherMoonOff16Regular,
+WeatherPartlyCloudyDay16Filled,
+WeatherPartlyCloudyDay16Regular,
+WeatherSunny16Filled,
+WeatherSunny16Regular,
 WindowDevEdit16Filled,
 WindowDevEdit16Regular,
 WindowDevTools16Filled,
@@ -1316,6 +1376,8 @@ function App() {
 <ArrowCircleUp16Regular/>
 <ArrowClockwise16Filled/>
 <ArrowClockwise16Regular/>
+<ArrowCounterclockwise16Filled/>
+<ArrowCounterclockwise16Regular/>
 <ArrowCurveDownLeft16Filled/>
 <ArrowCurveDownLeft16Regular/>
 <ArrowDown16Filled/>
@@ -1356,6 +1418,8 @@ function App() {
 <ArrowReplyDown16Regular/>
 <ArrowRight16Filled/>
 <ArrowRight16Regular/>
+<ArrowRotateClockwise16Filled/>
+<ArrowRotateClockwise16Regular/>
 <ArrowSort16Filled/>
 <ArrowSort16Regular/>
 <ArrowSortDown16Filled/>
@@ -1410,6 +1474,8 @@ function App() {
 <BoardSplit16Regular/>
 <BookNumber16Filled/>
 <BookNumber16Regular/>
+<BookOpen16Filled/>
+<BookOpen16Regular/>
 <Bookmark16Filled/>
 <Bookmark16Regular/>
 <BowlChopsticks16Filled/>
@@ -1426,6 +1492,8 @@ function App() {
 <BriefcaseMedical16Regular/>
 <BriefcaseOff16Filled/>
 <BriefcaseOff16Regular/>
+<BroadActivityFeed16Filled/>
+<BroadActivityFeed16Regular/>
 <Broom16Filled/>
 <Broom16Regular/>
 <Bug16Filled/>
@@ -1466,6 +1534,10 @@ function App() {
 <CalendarMultiple16Regular/>
 <CalendarPatterns16Filled/>
 <CalendarPatterns16Regular/>
+<CalendarPerson16Filled/>
+<CalendarPerson16Regular/>
+<CalendarPhone16Filled/>
+<CalendarPhone16Regular/>
 <CalendarQuestionMark16Filled/>
 <CalendarQuestionMark16Regular/>
 <CalendarReply16Filled/>
@@ -1476,6 +1548,8 @@ function App() {
 <CalendarSearch16Regular/>
 <CalendarSettings16Filled/>
 <CalendarSettings16Regular/>
+<CalendarStar16Filled/>
+<CalendarStar16Regular/>
 <CalendarSync16Filled/>
 <CalendarSync16Regular/>
 <CalendarToday16Filled/>
@@ -1530,6 +1604,10 @@ function App() {
 <ChannelShare16Regular/>
 <Chat16Filled/>
 <Chat16Regular/>
+<ChatArrowBack16Filled/>
+<ChatArrowBack16Regular/>
+<ChatArrowDoubleBack16Filled/>
+<ChatArrowDoubleBack16Regular/>
 <ChatBubblesQuestion16Filled/>
 <ChatBubblesQuestion16Regular/>
 <ChatMultiple16Filled/>
@@ -1566,6 +1644,8 @@ function App() {
 <ChevronRight16Regular/>
 <ChevronUp16Filled/>
 <ChevronUp16Regular/>
+<ChevronUpDown16Filled/>
+<ChevronUpDown16Regular/>
 <Circle16Filled/>
 <Circle16Regular/>
 <CircleHalfFill16Filled/>
@@ -1705,6 +1785,8 @@ function App() {
 <DeviceMeetingRoom16Regular/>
 <DeviceMeetingRoomRemote16Filled/>
 <DeviceMeetingRoomRemote16Regular/>
+<Directions16Filled/>
+<Directions16Regular/>
 <Dismiss16Filled/>
 <Dismiss16Regular/>
 <DismissCircle16Filled/>
@@ -1733,6 +1815,8 @@ function App() {
 <DocumentCatchUp16Regular/>
 <DocumentCopy16Filled/>
 <DocumentCopy16Regular/>
+<DocumentDismiss16Filled/>
+<DocumentDismiss16Regular/>
 <DocumentEdit16Filled/>
 <DocumentEdit16Regular/>
 <DocumentError16Filled/>
@@ -1745,6 +1829,8 @@ function App() {
 <DocumentHeaderArrowDown16Regular/>
 <DocumentHeaderFooter16Filled/>
 <DocumentHeaderFooter16Regular/>
+<DocumentLink16Filled/>
+<DocumentLink16Regular/>
 <DocumentMultiple16Filled/>
 <DocumentMultiple16Regular/>
 <DocumentPdf16Filled/>
@@ -1791,6 +1877,8 @@ function App() {
 <EmojiAdd16Regular/>
 <EmojiLaugh16Filled/>
 <EmojiLaugh16Regular/>
+<EmojiSad16Filled/>
+<EmojiSad16Regular/>
 <ErrorCircle16Filled/>
 <ErrorCircle16Regular/>
 <ErrorCircleSettings16Filled/>
@@ -1799,6 +1887,8 @@ function App() {
 <ExpandUpLeft16Regular/>
 <ExpandUpRight16Filled/>
 <ExpandUpRight16Regular/>
+<Extension16Filled/>
+<Extension16Regular/>
 <EyeOff16Filled/>
 <EyeOff16Regular/>
 <EyeShow16Filled/>
@@ -1884,6 +1974,8 @@ function App() {
 <GlassesOff16Regular/>
 <Globe16Filled/>
 <Globe16Regular/>
+<GlobeClock16Filled/>
+<GlobeClock16Regular/>
 <GlobeStar16Filled/>
 <GlobeStar16Regular/>
 <Grid16Filled/>
@@ -1923,6 +2015,8 @@ function App() {
 <ImageEdit16Regular/>
 <ImageMultiple16Filled/>
 <ImageMultiple16Regular/>
+<ImmersiveReader16Filled/>
+<ImmersiveReader16Regular/>
 <Important16Filled/>
 <Important16Regular/>
 <Info16Filled/>
@@ -1960,6 +2054,8 @@ function App() {
 <Likert16Regular/>
 <Link16Filled/>
 <Link16Regular/>
+<LinkDismiss16Filled/>
+<LinkDismiss16Regular/>
 <LinkEdit16Filled/>
 <LinkEdit16Regular/>
 <LinkSquare16Filled/>
@@ -1974,6 +2070,10 @@ function App() {
 <LocationOff16Regular/>
 <LockClosed16Filled/>
 <LockClosed16Regular/>
+<LockOpen16Filled/>
+<LockOpen16Regular/>
+<Luggage16Filled/>
+<Luggage16Regular/>
 <Mail16Filled/>
 <Mail16Regular/>
 <MailAdd16Filled/>
@@ -1996,6 +2096,8 @@ function App() {
 <MailClock16Regular/>
 <MailDismiss16Filled/>
 <MailDismiss16Regular/>
+<MailError16Filled/>
+<MailError16Regular/>
 <MailInbox16Filled/>
 <MailInbox16Regular/>
 <MailInboxAdd16Filled/>
@@ -2114,6 +2216,8 @@ function App() {
 <PeopleAdd16Regular/>
 <PeopleCall16Filled/>
 <PeopleCall16Regular/>
+<PeopleCheckmark16Filled/>
+<PeopleCheckmark16Regular/>
 <PeopleCommunity16Filled/>
 <PeopleCommunity16Regular/>
 <PeopleError16Filled/>
@@ -2190,6 +2294,8 @@ function App() {
 <Pin16Regular/>
 <PinOff16Filled/>
 <PinOff16Regular/>
+<Play16Filled/>
+<Play16Regular/>
 <PlayCircle16Filled/>
 <PlayCircle16Regular/>
 <Premium16Filled/>
@@ -2260,6 +2366,8 @@ function App() {
 <Ruler16Regular/>
 <Run16Filled/>
 <Run16Regular/>
+<Save16Filled/>
+<Save16Regular/>
 <Savings16Filled/>
 <Savings16Regular/>
 <ScaleFit16Filled/>
@@ -2296,6 +2404,8 @@ function App() {
 <ShieldCheckmark16Regular/>
 <ShieldDismiss16Filled/>
 <ShieldDismiss16Regular/>
+<ShieldError16Filled/>
+<ShieldError16Regular/>
 <ShieldKeyhole16Filled/>
 <ShieldKeyhole16Regular/>
 <ShieldLock16Filled/>
@@ -2334,6 +2444,8 @@ function App() {
 <SplitVertical16Regular/>
 <Sport16Filled/>
 <Sport16Regular/>
+<SportSoccer16Filled/>
+<SportSoccer16Regular/>
 <Square16Filled/>
 <Square16Regular/>
 <SquareAdd16Filled/>
@@ -2407,6 +2519,8 @@ function App() {
 <TetrisApp16Regular/>
 <TextBold16Filled/>
 <TextBold16Regular/>
+<TextBox16Filled/>
+<TextBox16Regular/>
 <TextBulletListSquareWarning16Filled/>
 <TextBulletListSquareWarning16Regular/>
 <TextBulletListTree16Filled/>
@@ -2422,6 +2536,8 @@ function App() {
 <TextGrammarWand16Regular/>
 <TextItalic16Filled/>
 <TextItalic16Regular/>
+<TextQuote16Filled/>
+<TextQuote16Regular/>
 <TextSortAscending16Filled/>
 <TextSortAscending16Regular/>
 <TextSortDescending16Filled/>
@@ -2501,6 +2617,10 @@ function App() {
 <WeatherMoon16Regular/>
 <WeatherMoonOff16Filled/>
 <WeatherMoonOff16Regular/>
+<WeatherPartlyCloudyDay16Filled/>
+<WeatherPartlyCloudyDay16Regular/>
+<WeatherSunny16Filled/>
+<WeatherSunny16Regular/>
 <WindowDevEdit16Filled/>
 <WindowDevEdit16Regular/>
 <WindowDevTools16Filled/>

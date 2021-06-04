@@ -17,6 +17,10 @@ AlignTop48Filled,
 AlignTop48Regular,
 Archive48Filled,
 Archive48Regular,
+ArrowClockwise48Filled,
+ArrowClockwise48Regular,
+ArrowCounterclockwise48Filled,
+ArrowCounterclockwise48Regular,
 ArrowDown48Filled,
 ArrowDown48Regular,
 ArrowDownload48Filled,
@@ -435,6 +439,10 @@ function App() {
 <AlignTop48Regular/>
 <Archive48Filled/>
 <Archive48Regular/>
+<ArrowClockwise48Filled/>
+<ArrowClockwise48Regular/>
+<ArrowCounterclockwise48Filled/>
+<ArrowCounterclockwise48Regular/>
 <ArrowDown48Filled/>
 <ArrowDown48Regular/>
 <ArrowDownload48Filled/>
