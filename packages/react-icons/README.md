@@ -12,7 +12,7 @@ User story
 
 There are different sizes of each icon, as well as `Filled` and `Regular` versions of each icon, so you can choose what works best for your application.
 
-There are also helpful interfaces that will allow you to add styling to fit the icons to your specific application, as well as add aria properties to increase the accessibility of the icons.
+There are also helpful interfaces that will allow you to add styling to fit the icons to your specific application
 
 User flows
 ---
@@ -21,23 +21,21 @@ In order to use these icons, simply import them as `import { [Componentname][siz
 ```tsx
 import { AccessTime24Filled } from "@fluentui/react-icons";
 ```
-You can also style the icons using the `IFluentIconsProps`interface and wrap the icon in a container using the `wrapIcon` method. You can then pass containter props like `aria-label` along with the regular `IFluentIconsProps`
+You can also style the icons using the `IFluentIconsProps`interface, with the `className` prop or the `primaryFill` prop
 
 ```tsx
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { AccessTime24Filled, wrapIcon } from "@fluentui/react-icons";
+import { AccessTime24Filled } from "@fluentui/react-icons";
 
 const iconStyleProps: IFluentIconsProps = {
     primaryFill: "purple",
     className: "iconClass"
 };
-const WrappedAccessTime24Filled = wrapIcon(<AccessTime24Filled />);
 const rootElement = document.getElementById("root");
 ReactDOM.render(
     <div>
-        <AccessTime24Filled iconProps={...iconStyleProps}  />
-        <WrappedAccessTime24Filled iconProps={...iconStyleProps} aria-label="AccessTime24"/>
+        <AccessTime24Filled aria-label="AccessTime24Filled" {...iconStyleProps}  />
     </div>, 
     rootElement
     )

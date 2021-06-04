@@ -1,8 +1,9 @@
 import * as React from "react";
 import { IFluentIconsProps } from "./IFluentIconsProps.types";
 
-const wrapIcon = (icon: JSX.Element) => {
+const wrapIcon = (icon: JSX.Element, displayName?: string) => {
     const Component: React.FC<React.HTMLAttributes<HTMLSpanElement> & IFluentIconsProps> = (props) => {
+        const { className, primaryFill = 'currentColor' } = props;
         const containerProps = props['aria-label'] || props['aria-labelledby'] || props.title
         ? {
             role: 'img',
@@ -12,17 +13,18 @@ const wrapIcon = (icon: JSX.Element) => {
           };
             
         return (
-            <span {...props} {...containerProps}>
+            <span  {...props} {...containerProps}>
                 {React.cloneElement(
                     icon,
                     {
-                        className:  props.className,
-                        primaryFill: props.primaryFill
+                        className: className,
+                        fill: primaryFill
                     }
                 )}
             </span>
         )
     }
+    Component.displayName = displayName;
     return Component;
 }
 
