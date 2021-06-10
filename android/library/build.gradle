@@ -20,8 +20,4 @@ android {
 
 }
 
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-}
-
 apply from: "${rootDir}/scripts/publish-module.gradle"
