@@ -3,6 +3,11 @@
     {
       "filename": "ic_fluent_book_question_mark_24_regular.pdf",
       "idiom": "universal"
+    },
+    {
+      "filename": "ar_ic_fluent_book_question_mark_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "ar"
     }
   ],
   "info": {
@@ -10,6 +15,7 @@
     "version": 1
   },
   "properties": {
+    "localizable": true,
     "template-rendering-intent": "template"
   }
 }

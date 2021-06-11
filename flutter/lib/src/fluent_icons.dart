@@ -10374,11 +10374,23 @@ class FluentIcons {
   /// fluent icon named "text_description" in size 24 and regular style.
   static const IconData text_description_24_regular = IconData(0xf7cc, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "text_direction_horizontal_left" in size 20 and regular style.
+  static const IconData text_direction_horizontal_left_20_regular = IconData(0x1003a, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "text_direction_horizontal_left" in size 24 and regular style.
+  static const IconData text_direction_horizontal_left_24_regular = IconData(0x1003b, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "text_direction_horizontal_ltr" in size 20 and regular style.
   static const IconData text_direction_horizontal_ltr_20_regular = IconData(0xf7cf, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "text_direction_horizontal_ltr" in size 24 and regular style.
   static const IconData text_direction_horizontal_ltr_24_regular = IconData(0xf7d0, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "text_direction_horizontal_right" in size 20 and regular style.
+  static const IconData text_direction_horizontal_right_20_regular = IconData(0x1003c, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "text_direction_horizontal_right" in size 24 and regular style.
+  static const IconData text_direction_horizontal_right_24_regular = IconData(0x1003d, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "text_direction_horizontal_rtl" in size 20 and regular style.
   static const IconData text_direction_horizontal_rtl_20_regular = IconData(0xff20, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -10410,6 +10422,12 @@ class FluentIcons {
   /// fluent icon named "text_direction_rotate_270_ltr" in size 24 and regular style.
   static const IconData text_direction_rotate_270_ltr_24_regular = IconData(0x10034, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "text_direction_rotate_270_right" in size 20 and regular style.
+  static const IconData text_direction_rotate_270_right_20_regular = IconData(0x1003e, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "text_direction_rotate_270_right" in size 24 and regular style.
+  static const IconData text_direction_rotate_270_right_24_regular = IconData(0x1003f, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "text_direction_rotate_90" in size 20 and regular style.
   static const IconData text_direction_rotate_90_20_regular = IconData(0xf7d5, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -10419,11 +10437,23 @@ class FluentIcons {
   /// fluent icon named "text_direction_rotate_90_ac" in size 24 and regular style.
   static const IconData text_direction_rotate_90_ac_24_regular = IconData(0xff0f, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "text_direction_rotate_90_left" in size 20 and regular style.
+  static const IconData text_direction_rotate_90_left_20_regular = IconData(0x10040, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "text_direction_rotate_90_left" in size 24 and regular style.
+  static const IconData text_direction_rotate_90_left_24_regular = IconData(0x10041, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "text_direction_rotate_90_ltr" in size 20 and regular style.
   static const IconData text_direction_rotate_90_ltr_20_regular = IconData(0xffe4, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "text_direction_rotate_90_ltr" in size 24 and regular style.
   static const IconData text_direction_rotate_90_ltr_24_regular = IconData(0xffe5, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "text_direction_rotate_90_right" in size 20 and regular style.
+  static const IconData text_direction_rotate_90_right_20_regular = IconData(0x10042, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "text_direction_rotate_90_right" in size 24 and regular style.
+  static const IconData text_direction_rotate_90_right_24_regular = IconData(0x10043, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "text_direction_rotate_90_rtl" in size 20 and regular style.
   static const IconData text_direction_rotate_90_rtl_20_regular = IconData(0xff22, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -22082,11 +22112,23 @@ class FluentIcons {
   /// fluent icon named "text_description" in size 24 and filled style.
   static const IconData text_description_24_filled = IconData(0xf7e4, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
+  /// fluent icon named "text_direction_horizontal_left" in size 20 and filled style.
+  static const IconData text_direction_horizontal_left_20_filled = IconData(0x1003e, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "text_direction_horizontal_left" in size 24 and filled style.
+  static const IconData text_direction_horizontal_left_24_filled = IconData(0x1003f, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
   /// fluent icon named "text_direction_horizontal_ltr" in size 20 and filled style.
   static const IconData text_direction_horizontal_ltr_20_filled = IconData(0xf7e7, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "text_direction_horizontal_ltr" in size 24 and filled style.
   static const IconData text_direction_horizontal_ltr_24_filled = IconData(0xf7e8, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "text_direction_horizontal_right" in size 20 and filled style.
+  static const IconData text_direction_horizontal_right_20_filled = IconData(0x10040, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "text_direction_horizontal_right" in size 24 and filled style.
+  static const IconData text_direction_horizontal_right_24_filled = IconData(0x10041, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "text_direction_horizontal_rtl" in size 20 and filled style.
   static const IconData text_direction_horizontal_rtl_20_filled = IconData(0xff24, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
@@ -22118,6 +22160,12 @@ class FluentIcons {
   /// fluent icon named "text_direction_rotate_270_ltr" in size 24 and filled style.
   static const IconData text_direction_rotate_270_ltr_24_filled = IconData(0x10038, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
+  /// fluent icon named "text_direction_rotate_270_right" in size 20 and filled style.
+  static const IconData text_direction_rotate_270_right_20_filled = IconData(0x10042, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "text_direction_rotate_270_right" in size 24 and filled style.
+  static const IconData text_direction_rotate_270_right_24_filled = IconData(0x10043, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
   /// fluent icon named "text_direction_rotate_90" in size 20 and filled style.
   static const IconData text_direction_rotate_90_20_filled = IconData(0xf7ed, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
@@ -22127,11 +22175,23 @@ class FluentIcons {
   /// fluent icon named "text_direction_rotate_90_ac" in size 24 and filled style.
   static const IconData text_direction_rotate_90_ac_24_filled = IconData(0xff13, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
+  /// fluent icon named "text_direction_rotate_90_left" in size 20 and filled style.
+  static const IconData text_direction_rotate_90_left_20_filled = IconData(0x10044, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "text_direction_rotate_90_left" in size 24 and filled style.
+  static const IconData text_direction_rotate_90_left_24_filled = IconData(0x10045, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
   /// fluent icon named "text_direction_rotate_90_ltr" in size 20 and filled style.
   static const IconData text_direction_rotate_90_ltr_20_filled = IconData(0xffe8, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "text_direction_rotate_90_ltr" in size 24 and filled style.
   static const IconData text_direction_rotate_90_ltr_24_filled = IconData(0xffe9, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "text_direction_rotate_90_right" in size 20 and filled style.
+  static const IconData text_direction_rotate_90_right_20_filled = IconData(0x10046, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "text_direction_rotate_90_right" in size 24 and filled style.
+  static const IconData text_direction_rotate_90_right_24_filled = IconData(0x10047, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "text_direction_rotate_90_rtl" in size 20 and filled style.
   static const IconData text_direction_rotate_90_rtl_20_filled = IconData(0xff26, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);

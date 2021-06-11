@@ -3,6 +3,11 @@
     {
       "filename": "ic_fluent_text_edit_style_20_filled.pdf",
       "idiom": "universal"
+    },
+    {
+      "filename": "en_ic_fluent_text_edit_style_20_filled.pdf",
+      "idiom": "universal",
+      "locale": "en"
     }
   ],
   "info": {
@@ -10,6 +15,7 @@
     "version": 1
   },
   "properties": {
+    "localizable": true,
     "template-rendering-intent": "template"
   }
 }

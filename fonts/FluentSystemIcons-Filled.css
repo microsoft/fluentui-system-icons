@@ -1,6 +1,6 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.ttf?675580e92f156bba8d47cd467fbf8a2d") format("truetype");
+    src: url("./FluentSystemIcons-Filled.ttf?1fa8528944f3e5ce750a6805071680bf") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -11716,4 +11716,34 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_weather_sunny_16_filled:before {
     content: "\1003d";
+}
+.icon-ic_fluent_text_direction_horizontal_left_20_filled:before {
+    content: "\1003e";
+}
+.icon-ic_fluent_text_direction_horizontal_left_24_filled:before {
+    content: "\1003f";
+}
+.icon-ic_fluent_text_direction_horizontal_right_20_filled:before {
+    content: "\10040";
+}
+.icon-ic_fluent_text_direction_horizontal_right_24_filled:before {
+    content: "\10041";
+}
+.icon-ic_fluent_text_direction_rotate_270_right_20_filled:before {
+    content: "\10042";
+}
+.icon-ic_fluent_text_direction_rotate_270_right_24_filled:before {
+    content: "\10043";
+}
+.icon-ic_fluent_text_direction_rotate_90_left_20_filled:before {
+    content: "\10044";
+}
+.icon-ic_fluent_text_direction_rotate_90_left_24_filled:before {
+    content: "\10045";
+}
+.icon-ic_fluent_text_direction_rotate_90_right_20_filled:before {
+    content: "\10046";
+}
+.icon-ic_fluent_text_direction_rotate_90_right_24_filled:before {
+    content: "\10047";
 }

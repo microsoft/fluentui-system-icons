@@ -3895,5 +3895,15 @@
     "ic_fluent_vehicle_car_profile_ltr_20_regular": "0x10036",
     "ic_fluent_vehicle_car_profile_rtl_20_regular": "0x10037",
     "ic_fluent_weather_partly_cloudy_day_16_regular": "0x10038",
-    "ic_fluent_weather_sunny_16_regular": "0x10039"
+    "ic_fluent_weather_sunny_16_regular": "0x10039",
+    "ic_fluent_text_direction_horizontal_left_20_regular": "0x1003a",
+    "ic_fluent_text_direction_horizontal_left_24_regular": "0x1003b",
+    "ic_fluent_text_direction_horizontal_right_20_regular": "0x1003c",
+    "ic_fluent_text_direction_horizontal_right_24_regular": "0x1003d",
+    "ic_fluent_text_direction_rotate_270_right_20_regular": "0x1003e",
+    "ic_fluent_text_direction_rotate_270_right_24_regular": "0x1003f",
+    "ic_fluent_text_direction_rotate_90_left_20_regular": "0x10040",
+    "ic_fluent_text_direction_rotate_90_left_24_regular": "0x10041",
+    "ic_fluent_text_direction_rotate_90_right_20_regular": "0x10042",
+    "ic_fluent_text_direction_rotate_90_right_24_regular": "0x10043"
 }

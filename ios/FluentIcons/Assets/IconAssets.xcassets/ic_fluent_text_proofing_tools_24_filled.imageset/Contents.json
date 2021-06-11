@@ -3,6 +3,16 @@
     {
       "filename": "ic_fluent_text_proofing_tools_24_filled.pdf",
       "idiom": "universal"
+    },
+    {
+      "filename": "en_ic_fluent_text_proofing_tools_24_filled.pdf",
+      "idiom": "universal",
+      "locale": "en"
+    },
+    {
+      "filename": "ko_ic_fluent_text_proofing_tools_24_filled.pdf",
+      "idiom": "universal",
+      "locale": "ko"
     }
   ],
   "info": {
@@ -10,6 +20,7 @@
     "version": 1
   },
   "properties": {
+    "localizable": true,
     "template-rendering-intent": "template"
   }
 }
