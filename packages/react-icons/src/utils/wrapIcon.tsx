@@ -1,4 +1,6 @@
 import * as React from "react";
+import { css } from "./css";
+import "./WrappedIcon.scss";
 import { IFluentIconsProps } from "./IFluentIconsProps.types";
 
 const wrapIcon = (icon: JSX.Element, displayName?: string) => {
@@ -13,11 +15,11 @@ const wrapIcon = (icon: JSX.Element, displayName?: string) => {
           };
             
         return (
-            <span  {...props} {...containerProps}>
+            <span  {...props} {...containerProps} className={css("root-span", className)}>
                 {React.cloneElement(
                     icon,
-                    {
-                        className: className,
+                    {   
+                        className: "svg",
                         fill: primaryFill
                     }
                 )}
