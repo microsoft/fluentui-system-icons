@@ -11,7 +11,7 @@ const getIconName = (Icon: React.FC<React.HTMLAttributes<HTMLSpanElement> & IFlu
 const bundleIcon = (Icon1: React.FC<React.HTMLAttributes<HTMLSpanElement> & IFluentIconsProps>, Icon2: React.FC<React.HTMLAttributes<HTMLSpanElement> & IFluentIconsProps>) => {
     const displayName = getIconName(Icon1);
     const Component: React.FC<React.HTMLAttributes<HTMLSpanElement> & IFluentIconsProps> = (props) => {
-        const { className, primaryFill = 'currentColor' } = props;
+        const { className, primaryFill = 'currentColor', filled } = props;
         /** Checks to see what order the icons were passed in */
         const isReg = Icon1.displayName ? Icon1.displayName.endsWith("Regular") ? true : false : false;
         const containerProps = props['aria-label'] || props['aria-labelledby'] || props.title
@@ -23,20 +23,38 @@ const bundleIcon = (Icon1: React.FC<React.HTMLAttributes<HTMLSpanElement> & IFlu
           };  
         
         return (
-            isReg ? 
-            <>
-                <span {...props} {...containerProps} className={css("bundled-icon-span", className)}>
-                    <Icon1 className="regular" primaryFill={primaryFill} />
-                    <Icon2 className="filled" primaryFill={primaryFill} />
-                </span>
-            </>
-                :
-            <>
-                <span {...props} {...containerProps} className={css("bundled-icon-span", className)}>
-                    <Icon1 className="filled" primaryFill={primaryFill} />
-                    <Icon2 className="regular" primaryFill={primaryFill} />
-                </span>
-            </>
+            filled ? 
+                isReg ? 
+                <>
+                    <span {...props} {...containerProps} className={css("bundled-icon-span-filled", className)}>
+                        <Icon1 className="regular" primaryFill={primaryFill} />
+                        <Icon2 className="filled" primaryFill={primaryFill} />
+                    </span>
+                </>
+                    :
+                <>
+                    <span {...props} {...containerProps} className={css("bundled-icon-span-filled", className)}>
+                        <Icon1 className="filled" primaryFill={primaryFill} />
+                        <Icon2 className="regular" primaryFill={primaryFill} />
+                    </span>
+                </>
+
+            :
+
+                isReg ? 
+                <>
+                    <span {...props} {...containerProps} className={css("bundled-icon-span", className)}>
+                        <Icon1 className="regular" primaryFill={primaryFill} />
+                        <Icon2 className="filled" primaryFill={primaryFill} />
+                    </span>
+                </>
+                    :
+                <>
+                    <span {...props} {...containerProps} className={css("bundled-icon-span", className)}>
+                        <Icon1 className="filled" primaryFill={primaryFill} />
+                        <Icon2 className="regular" primaryFill={primaryFill} />
+                    </span>
+                </>
         )
     }
     Component.displayName = displayName;
