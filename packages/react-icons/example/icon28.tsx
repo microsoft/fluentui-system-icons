@@ -205,6 +205,10 @@ CommentArrowRight28Filled,
 CommentArrowRight28Regular,
 CommentCheckmark28Filled,
 CommentCheckmark28Regular,
+CommentMultiple28Filled,
+CommentMultiple28Regular,
+CommentMultipleCheckmark28Filled,
+CommentMultipleCheckmark28Regular,
 CommentOff28Filled,
 CommentOff28Regular,
 CompassNorthwest28Filled,
@@ -804,6 +808,10 @@ function App() {
 <CommentArrowRight28Regular/>
 <CommentCheckmark28Filled/>
 <CommentCheckmark28Regular/>
+<CommentMultiple28Filled/>
+<CommentMultiple28Regular/>
+<CommentMultipleCheckmark28Filled/>
+<CommentMultipleCheckmark28Regular/>
 <CommentOff28Filled/>
 <CommentOff28Regular/>
 <CompassNorthwest28Filled/>

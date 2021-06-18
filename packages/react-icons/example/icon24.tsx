@@ -87,6 +87,8 @@ ArrowAutofitWidth24Filled,
 ArrowAutofitWidth24Regular,
 ArrowAutofitWidthDotted24Filled,
 ArrowAutofitWidthDotted24Regular,
+ArrowBidirectionalUpDown24Filled,
+ArrowBidirectionalUpDown24Regular,
 ArrowBounce24Filled,
 ArrowBounce24Regular,
 ArrowCircleDown24Filled,
@@ -609,6 +611,8 @@ CheckboxArrowRight24Filled,
 CheckboxArrowRight24Regular,
 CheckboxChecked24Filled,
 CheckboxChecked24Regular,
+CheckboxIndeterminate24Filled,
+CheckboxIndeterminate24Regular,
 CheckboxPerson24Filled,
 CheckboxPerson24Regular,
 CheckboxUnchecked24Filled,
@@ -677,6 +681,8 @@ ClipboardMore24Filled,
 ClipboardMore24Regular,
 ClipboardPaste24Filled,
 ClipboardPaste24Regular,
+ClipboardPulse24Filled,
+ClipboardPulse24Regular,
 ClipboardSearch24Filled,
 ClipboardSearch24Regular,
 ClipboardTask24Filled,
@@ -695,6 +701,8 @@ Clock24Filled,
 Clock24Regular,
 ClockAlarm24Filled,
 ClockAlarm24Regular,
+ClockArrowDownload24Filled,
+ClockArrowDownload24Regular,
 ClockDismiss24Filled,
 ClockDismiss24Regular,
 ClosedCaption24Filled,
@@ -715,10 +723,14 @@ CloudDismiss24Filled,
 CloudDismiss24Regular,
 CloudDownload24Filled,
 CloudDownload24Regular,
+CloudFlow24Filled,
+CloudFlow24Regular,
 CloudOff24Filled,
 CloudOff24Regular,
 CloudOffline24Filled,
 CloudOffline24Regular,
+CloudSwap24Filled,
+CloudSwap24Regular,
 CloudSync24Filled,
 CloudSync24Regular,
 CloudSyncComplete24Filled,
@@ -768,6 +780,8 @@ CommentMention24Filled,
 CommentMention24Regular,
 CommentMultiple24Filled,
 CommentMultiple24Regular,
+CommentMultipleCheckmark24Filled,
+CommentMultipleCheckmark24Regular,
 CommentNote24Filled,
 CommentNote24Regular,
 CommentOff24Filled,
@@ -956,8 +970,12 @@ DocumentCatchUp24Filled,
 DocumentCatchUp24Regular,
 DocumentCheckmark24Filled,
 DocumentCheckmark24Regular,
+DocumentChevronDouble24Filled,
+DocumentChevronDouble24Regular,
 DocumentCopy24Filled,
 DocumentCopy24Regular,
+DocumentCss24Filled,
+DocumentCss24Regular,
 DocumentDismiss24Filled,
 DocumentDismiss24Regular,
 DocumentEdit24Filled,
@@ -984,6 +1002,8 @@ DocumentHeart24Filled,
 DocumentHeart24Regular,
 DocumentHeartPulse24Filled,
 DocumentHeartPulse24Regular,
+DocumentJavascript24Filled,
+DocumentJavascript24Regular,
 DocumentLandscape24Filled,
 DocumentLandscape24Regular,
 DocumentLandscapeData24Filled,
@@ -1014,6 +1034,8 @@ DocumentPageTopRight24Filled,
 DocumentPageTopRight24Regular,
 DocumentPdf24Filled,
 DocumentPdf24Regular,
+DocumentPercent24Filled,
+DocumentPercent24Regular,
 DocumentPill24Filled,
 DocumentPill24Regular,
 DocumentProhibited24Filled,
@@ -1429,6 +1451,8 @@ Javascript24Filled,
 Javascript24Regular,
 Key24Filled,
 Key24Regular,
+Keyboard12324Filled,
+Keyboard12324Regular,
 Keyboard24Filled,
 Keyboard24Regular,
 KeyboardDock24Filled,
@@ -1477,6 +1501,8 @@ LineStyle24Filled,
 LineStyle24Regular,
 Link24Filled,
 Link24Regular,
+LinkDismiss24Filled,
+LinkDismiss24Regular,
 LinkEdit24Filled,
 LinkEdit24Regular,
 LinkSquare24Filled,
@@ -2556,6 +2582,12 @@ TextGrammarWand24Filled,
 TextGrammarWand24Regular,
 TextHanging24Filled,
 TextHanging24Regular,
+TextHeader124Filled,
+TextHeader124Regular,
+TextHeader224Filled,
+TextHeader224Regular,
+TextHeader324Filled,
+TextHeader324Regular,
 TextIndentDecrease24Filled,
 TextIndentDecrease24Regular,
 TextIndentIncrease24Filled,
@@ -2830,6 +2862,8 @@ WifiProtected24Filled,
 WifiProtected24Regular,
 WifiWarning24Filled,
 WifiWarning24Regular,
+Window24Filled,
+Window24Regular,
 WindowArrowUp24Filled,
 WindowArrowUp24Regular,
 WindowDevTools24Filled,
@@ -2940,6 +2974,8 @@ function App() {
 <ArrowAutofitWidth24Regular/>
 <ArrowAutofitWidthDotted24Filled/>
 <ArrowAutofitWidthDotted24Regular/>
+<ArrowBidirectionalUpDown24Filled/>
+<ArrowBidirectionalUpDown24Regular/>
 <ArrowBounce24Filled/>
 <ArrowBounce24Regular/>
 <ArrowCircleDown24Filled/>
@@ -3462,6 +3498,8 @@ function App() {
 <CheckboxArrowRight24Regular/>
 <CheckboxChecked24Filled/>
 <CheckboxChecked24Regular/>
+<CheckboxIndeterminate24Filled/>
+<CheckboxIndeterminate24Regular/>
 <CheckboxPerson24Filled/>
 <CheckboxPerson24Regular/>
 <CheckboxUnchecked24Filled/>
@@ -3530,6 +3568,8 @@ function App() {
 <ClipboardMore24Regular/>
 <ClipboardPaste24Filled/>
 <ClipboardPaste24Regular/>
+<ClipboardPulse24Filled/>
+<ClipboardPulse24Regular/>
 <ClipboardSearch24Filled/>
 <ClipboardSearch24Regular/>
 <ClipboardTask24Filled/>
@@ -3548,6 +3588,8 @@ function App() {
 <Clock24Regular/>
 <ClockAlarm24Filled/>
 <ClockAlarm24Regular/>
+<ClockArrowDownload24Filled/>
+<ClockArrowDownload24Regular/>
 <ClockDismiss24Filled/>
 <ClockDismiss24Regular/>
 <ClosedCaption24Filled/>
@@ -3568,10 +3610,14 @@ function App() {
 <CloudDismiss24Regular/>
 <CloudDownload24Filled/>
 <CloudDownload24Regular/>
+<CloudFlow24Filled/>
+<CloudFlow24Regular/>
 <CloudOff24Filled/>
 <CloudOff24Regular/>
 <CloudOffline24Filled/>
 <CloudOffline24Regular/>
+<CloudSwap24Filled/>
+<CloudSwap24Regular/>
 <CloudSync24Filled/>
 <CloudSync24Regular/>
 <CloudSyncComplete24Filled/>
@@ -3621,6 +3667,8 @@ function App() {
 <CommentMention24Regular/>
 <CommentMultiple24Filled/>
 <CommentMultiple24Regular/>
+<CommentMultipleCheckmark24Filled/>
+<CommentMultipleCheckmark24Regular/>
 <CommentNote24Filled/>
 <CommentNote24Regular/>
 <CommentOff24Filled/>
@@ -3809,8 +3857,12 @@ function App() {
 <DocumentCatchUp24Regular/>
 <DocumentCheckmark24Filled/>
 <DocumentCheckmark24Regular/>
+<DocumentChevronDouble24Filled/>
+<DocumentChevronDouble24Regular/>
 <DocumentCopy24Filled/>
 <DocumentCopy24Regular/>
+<DocumentCss24Filled/>
+<DocumentCss24Regular/>
 <DocumentDismiss24Filled/>
 <DocumentDismiss24Regular/>
 <DocumentEdit24Filled/>
@@ -3837,6 +3889,8 @@ function App() {
 <DocumentHeart24Regular/>
 <DocumentHeartPulse24Filled/>
 <DocumentHeartPulse24Regular/>
+<DocumentJavascript24Filled/>
+<DocumentJavascript24Regular/>
 <DocumentLandscape24Filled/>
 <DocumentLandscape24Regular/>
 <DocumentLandscapeData24Filled/>
@@ -3867,6 +3921,8 @@ function App() {
 <DocumentPageTopRight24Regular/>
 <DocumentPdf24Filled/>
 <DocumentPdf24Regular/>
+<DocumentPercent24Filled/>
+<DocumentPercent24Regular/>
 <DocumentPill24Filled/>
 <DocumentPill24Regular/>
 <DocumentProhibited24Filled/>
@@ -4282,6 +4338,8 @@ function App() {
 <Javascript24Regular/>
 <Key24Filled/>
 <Key24Regular/>
+<Keyboard12324Filled/>
+<Keyboard12324Regular/>
 <Keyboard24Filled/>
 <Keyboard24Regular/>
 <KeyboardDock24Filled/>
@@ -4330,6 +4388,8 @@ function App() {
 <LineStyle24Regular/>
 <Link24Filled/>
 <Link24Regular/>
+<LinkDismiss24Filled/>
+<LinkDismiss24Regular/>
 <LinkEdit24Filled/>
 <LinkEdit24Regular/>
 <LinkSquare24Filled/>
@@ -5409,6 +5469,12 @@ function App() {
 <TextGrammarWand24Regular/>
 <TextHanging24Filled/>
 <TextHanging24Regular/>
+<TextHeader124Filled/>
+<TextHeader124Regular/>
+<TextHeader224Filled/>
+<TextHeader224Regular/>
+<TextHeader324Filled/>
+<TextHeader324Regular/>
 <TextIndentDecrease24Filled/>
 <TextIndentDecrease24Regular/>
 <TextIndentIncrease24Filled/>
@@ -5683,6 +5749,8 @@ function App() {
 <WifiProtected24Regular/>
 <WifiWarning24Filled/>
 <WifiWarning24Regular/>
+<Window24Filled/>
+<Window24Regular/>
 <WindowArrowUp24Filled/>
 <WindowArrowUp24Regular/>
 <WindowDevTools24Filled/>
