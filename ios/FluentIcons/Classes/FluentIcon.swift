@@ -266,6 +266,8 @@ import Foundation
   case archiveSettings16Regular
   case archiveSettings20Filled
   case archiveSettings20Regular
+  case arrowAutofitContent24Filled
+  case arrowAutofitContent24Regular
   case arrowAutofitDown24Filled
   case arrowAutofitDown24Regular
   case arrowAutofitHeight24Filled
@@ -278,6 +280,14 @@ import Foundation
   case arrowAutofitWidth24Regular
   case arrowAutofitWidthDotted24Filled
   case arrowAutofitWidthDotted24Regular
+  case arrowBidirectionalUpDown12Filled
+  case arrowBidirectionalUpDown12Regular
+  case arrowBidirectionalUpDown16Filled
+  case arrowBidirectionalUpDown16Regular
+  case arrowBidirectionalUpDown20Filled
+  case arrowBidirectionalUpDown20Regular
+  case arrowBidirectionalUpDown24Filled
+  case arrowBidirectionalUpDown24Regular
   case arrowBounce16Filled
   case arrowBounce16Regular
   case arrowBounce24Filled
@@ -298,6 +308,16 @@ import Foundation
   case arrowCircleDownSplit20Regular
   case arrowCircleDownSplit24Filled
   case arrowCircleDownSplit24Regular
+  case arrowCircleDownUp20Filled
+  case arrowCircleDownUp20Regular
+  case arrowCircleLeft12Filled
+  case arrowCircleLeft12Regular
+  case arrowCircleLeft16Filled
+  case arrowCircleLeft16Regular
+  case arrowCircleRight12Filled
+  case arrowCircleRight12Regular
+  case arrowCircleRight16Filled
+  case arrowCircleRight16Regular
   case arrowCircleRight24Filled
   case arrowCircleRight24Regular
   case arrowCircleUp16Filled
@@ -386,6 +406,8 @@ import Foundation
   case arrowDownload24Regular
   case arrowDownload48Filled
   case arrowDownload48Regular
+  case arrowEject20Filled
+  case arrowEject20Regular
   case arrowEnterLeft20Filled
   case arrowEnterLeft20Regular
   case arrowEnterLeft24Filled
@@ -456,6 +478,8 @@ import Foundation
   case arrowImport20Regular
   case arrowImport24Filled
   case arrowImport24Regular
+  case arrowLeft12Filled
+  case arrowLeft12Regular
   case arrowLeft16Filled
   case arrowLeft16Regular
   case arrowLeft20Filled
@@ -494,6 +518,8 @@ import Foundation
   case arrowMove20Regular
   case arrowMove24Filled
   case arrowMove24Regular
+  case arrowMoveInward20Filled
+  case arrowMoveInward20Regular
   case arrowNext20Filled
   case arrowNext20Regular
   case arrowNext24Filled
@@ -502,6 +528,8 @@ import Foundation
   case arrowPrevious20Regular
   case arrowPrevious24Filled
   case arrowPrevious24Regular
+  case arrowRedo16Filled
+  case arrowRedo16Regular
   case arrowRedo20Filled
   case arrowRedo20Regular
   case arrowRedo24Filled
@@ -548,6 +576,8 @@ import Foundation
   case arrowReset20Regular
   case arrowReset24Filled
   case arrowReset24Regular
+  case arrowRight12Filled
+  case arrowRight12Regular
   case arrowRight16Filled
   case arrowRight16Regular
   case arrowRight20Filled
@@ -608,8 +638,20 @@ import Foundation
   case arrowSquareDown24Regular
   case arrowStepBack16Filled
   case arrowStepBack16Regular
+  case arrowStepIn12Filled
+  case arrowStepIn12Regular
   case arrowStepIn16Filled
   case arrowStepIn16Regular
+  case arrowStepInLeft12Filled
+  case arrowStepInLeft12Regular
+  case arrowStepInLeft16Filled
+  case arrowStepInLeft16Regular
+  case arrowStepInRight12Filled
+  case arrowStepInRight12Regular
+  case arrowStepInRight16Filled
+  case arrowStepInRight16Regular
+  case arrowStepOut12Filled
+  case arrowStepOut12Regular
   case arrowStepOut16Filled
   case arrowStepOut16Regular
   case arrowStepOver16Filled
@@ -634,12 +676,20 @@ import Foundation
   case arrowSyncCircle24Regular
   case arrowSyncOff12Filled
   case arrowSyncOff12Regular
+  case arrowSyncOff16Filled
+  case arrowSyncOff16Regular
+  case arrowSyncOff20Filled
+  case arrowSyncOff20Regular
   case arrowTrending16Filled
   case arrowTrending16Regular
   case arrowTrending20Filled
   case arrowTrending20Regular
   case arrowTrending24Filled
   case arrowTrending24Regular
+  case arrowTrendingLines20Filled
+  case arrowTrendingLines20Regular
+  case arrowTrendingLines24Filled
+  case arrowTrendingLines24Regular
   case arrowTurnBidirectionalDownRight24Filled
   case arrowTurnBidirectionalDownRight24Regular
   case arrowTurnRight24Filled
@@ -654,6 +704,8 @@ import Foundation
   case arrowUndo32Regular
   case arrowUndo48Filled
   case arrowUndo48Regular
+  case arrowUp12Filled
+  case arrowUp12Regular
   case arrowUp16Filled
   case arrowUp16Regular
   case arrowUp20Filled
@@ -830,6 +882,8 @@ import Foundation
   case bed20Regular
   case bed24Filled
   case bed24Regular
+  case bezierCurveSquare12Filled
+  case bezierCurveSquare12Regular
   case binFull20Filled
   case binFull20Regular
   case binFull24Filled
@@ -978,6 +1032,10 @@ import Foundation
   case bookmarkOff24Regular
   case border24Filled
   case border24Regular
+  case borderAll16Filled
+  case borderAll16Regular
+  case borderAll20Filled
+  case borderAll20Regular
   case borderAll24Filled
   case borderAll24Regular
   case borderBottom24Filled
@@ -1020,6 +1078,8 @@ import Foundation
   case bowlChopsticks28Regular
   case box16Filled
   case box16Regular
+  case braces20Filled
+  case braces20Regular
   case bracesVariable20Filled
   case bracesVariable20Regular
   case bracesVariable24Filled
@@ -1132,6 +1192,8 @@ import Foundation
   case buildingGovernment24Regular
   case buildingGovernment32Filled
   case buildingGovernment32Regular
+  case buildingLighthouse20Filled
+  case buildingLighthouse20Regular
   case buildingMultiple24Filled
   case buildingMultiple24Regular
   case buildingRetail20Filled
@@ -1206,6 +1268,8 @@ import Foundation
   case calendarArrowRight16Regular
   case calendarArrowRight20Filled
   case calendarArrowRight20Regular
+  case calendarAssistant16Filled
+  case calendarAssistant16Regular
   case calendarAssistant20Filled
   case calendarAssistant20Regular
   case calendarAssistant24Filled
@@ -1254,6 +1318,8 @@ import Foundation
   case calendarEmpty28Regular
   case calendarEmpty32Filled
   case calendarEmpty32Regular
+  case calendarError24Filled
+  case calendarError24Regular
   case calendarInfo16Filled
   case calendarInfo16Regular
   case calendarInfo20Filled
@@ -1580,8 +1646,12 @@ import Foundation
   case cellularDataCellularUnavailable24Regular
   case cellularDataUnavailable24Filled
   case cellularDataUnavailable24Regular
+  case cellularWarning24Filled
+  case cellularWarning24Regular
   case centerHorizontal24Filled
   case centerHorizontal24Regular
+  case centerVertical20Filled
+  case centerVertical20Regular
   case centerVertical24Filled
   case centerVertical24Regular
   case certificate20Filled
@@ -1686,6 +1756,8 @@ import Foundation
   case chatBubblesQuestion20Regular
   case chatBubblesQuestion24Filled
   case chatBubblesQuestion24Regular
+  case chatDismiss16Filled
+  case chatDismiss16Regular
   case chatHelp20Filled
   case chatHelp20Regular
   case chatHelp24Filled
@@ -1706,6 +1778,8 @@ import Foundation
   case chatSettings20Regular
   case chatSettings24Filled
   case chatSettings24Regular
+  case chatWarning16Filled
+  case chatWarning16Regular
   case chatWarning24Filled
   case chatWarning24Regular
   case check20Filled
@@ -1728,6 +1802,12 @@ import Foundation
   case checkboxCheckedSync16Regular
   case checkboxCheckedSync20Filled
   case checkboxCheckedSync20Regular
+  case checkboxIndeterminate16Filled
+  case checkboxIndeterminate16Regular
+  case checkboxIndeterminate20Filled
+  case checkboxIndeterminate20Regular
+  case checkboxIndeterminate24Filled
+  case checkboxIndeterminate24Regular
   case checkboxPerson24Filled
   case checkboxPerson24Regular
   case checkboxUnchecked12Filled
@@ -1782,6 +1862,8 @@ import Foundation
   case checkmarkUnderlineCircle20Regular
   case chevronCircleDown24Filled
   case chevronCircleDown24Regular
+  case chevronCircleRight12Filled
+  case chevronCircleRight12Regular
   case chevronCircleRight24Filled
   case chevronCircleRight24Regular
   case chevronDoubleDown16Filled
@@ -1876,6 +1958,8 @@ import Foundation
   case circleLine12Regular
   case circleLine24Filled
   case circleLine24Regular
+  case circleOff16Filled
+  case circleOff16Regular
   case circleSmall20Filled
   case circleSmall20Regular
   case circleSmall24Filled
@@ -1964,6 +2048,8 @@ import Foundation
   case clipboardPaste24Regular
   case clipboardPulse20Filled
   case clipboardPulse20Regular
+  case clipboardPulse24Filled
+  case clipboardPulse24Regular
   case clipboardSearch20Filled
   case clipboardSearch20Regular
   case clipboardSearch24Filled
@@ -2010,6 +2096,8 @@ import Foundation
   case clockAlarm32Regular
   case clockArrowDownload20Filled
   case clockArrowDownload20Regular
+  case clockArrowDownload24Filled
+  case clockArrowDownload24Regular
   case clockDismiss24Filled
   case clockDismiss24Regular
   case closedCaption16Filled
@@ -2048,6 +2136,30 @@ import Foundation
   case cloudAdd16Regular
   case cloudAdd20Filled
   case cloudAdd20Regular
+  case cloudArrowDown16Filled
+  case cloudArrowDown16Regular
+  case cloudArrowDown20Filled
+  case cloudArrowDown20Regular
+  case cloudArrowDown24Filled
+  case cloudArrowDown24Regular
+  case cloudArrowDown28Filled
+  case cloudArrowDown28Regular
+  case cloudArrowDown32Filled
+  case cloudArrowDown32Regular
+  case cloudArrowDown48Filled
+  case cloudArrowDown48Regular
+  case cloudArrowUp16Filled
+  case cloudArrowUp16Regular
+  case cloudArrowUp20Filled
+  case cloudArrowUp20Regular
+  case cloudArrowUp24Filled
+  case cloudArrowUp24Regular
+  case cloudArrowUp28Filled
+  case cloudArrowUp28Regular
+  case cloudArrowUp32Filled
+  case cloudArrowUp32Regular
+  case cloudArrowUp48Filled
+  case cloudArrowUp48Regular
   case cloudBackup16Filled
   case cloudBackup16Regular
   case cloudBackup20Filled
@@ -2060,6 +2172,30 @@ import Foundation
   case cloudBackup32Regular
   case cloudBackup48Filled
   case cloudBackup48Regular
+  case cloudCheckmark16Filled
+  case cloudCheckmark16Regular
+  case cloudCheckmark20Filled
+  case cloudCheckmark20Regular
+  case cloudCheckmark24Filled
+  case cloudCheckmark24Regular
+  case cloudCheckmark28Filled
+  case cloudCheckmark28Regular
+  case cloudCheckmark32Filled
+  case cloudCheckmark32Regular
+  case cloudCheckmark48Filled
+  case cloudCheckmark48Regular
+  case cloudDismiss16Filled
+  case cloudDismiss16Regular
+  case cloudDismiss20Filled
+  case cloudDismiss20Regular
+  case cloudDismiss24Filled
+  case cloudDismiss24Regular
+  case cloudDismiss28Filled
+  case cloudDismiss28Regular
+  case cloudDismiss32Filled
+  case cloudDismiss32Regular
+  case cloudDismiss48Filled
+  case cloudDismiss48Regular
   case cloudDownload16Filled
   case cloudDownload16Regular
   case cloudDownload20Filled
@@ -2078,6 +2214,8 @@ import Foundation
   case cloudEdit20Regular
   case cloudFlow20Filled
   case cloudFlow20Regular
+  case cloudFlow24Filled
+  case cloudFlow24Regular
   case cloudLink16Filled
   case cloudLink16Regular
   case cloudLink20Filled
@@ -2096,6 +2234,10 @@ import Foundation
   case cloudOff48Regular
   case cloudOffline24Filled
   case cloudOffline24Regular
+  case cloudSwap20Filled
+  case cloudSwap20Regular
+  case cloudSwap24Filled
+  case cloudSwap24Regular
   case cloudSync16Filled
   case cloudSync16Regular
   case cloudSync20Filled
@@ -2126,6 +2268,8 @@ import Foundation
   case code20Regular
   case code24Filled
   case code24Regular
+  case codeCircle20Filled
+  case codeCircle20Regular
   case collections20Filled
   case collections20Regular
   case collections24Filled
@@ -2261,6 +2405,16 @@ import Foundation
   case commentMultiple20Regular
   case commentMultiple24Filled
   case commentMultiple24Regular
+  case commentMultiple28Filled
+  case commentMultiple28Regular
+  case commentMultipleCheckmark16Filled
+  case commentMultipleCheckmark16Regular
+  case commentMultipleCheckmark20Filled
+  case commentMultipleCheckmark20Regular
+  case commentMultipleCheckmark24Filled
+  case commentMultipleCheckmark24Regular
+  case commentMultipleCheckmark28Filled
+  case commentMultipleCheckmark28Regular
   case commentNote24Filled
   case commentNote24Regular
   case commentOff16Filled
@@ -2415,6 +2569,8 @@ import Foundation
   case cropInterim24Regular
   case cropInterimOff24Filled
   case cropInterimOff24Regular
+  case cube12Filled
+  case cube12Regular
   case cube16Filled
   case cube16Regular
   case cube20Filled
@@ -2619,6 +2775,8 @@ import Foundation
   case developerBoard20Regular
   case developerBoard24Filled
   case developerBoard24Regular
+  case developerBoardSearch20Filled
+  case developerBoardSearch20Regular
   case deviceEq24Filled
   case deviceEq24Regular
   case deviceMeetingRoom16Filled
@@ -2775,6 +2933,8 @@ import Foundation
   case documentArrowLeft28Regular
   case documentArrowLeft48Filled
   case documentArrowLeft48Regular
+  case documentArrowRight20Filled
+  case documentArrowRight20Regular
   case documentArrowRight24Filled
   case documentArrowRight24Regular
   case documentArrowUp16Filled
@@ -2803,6 +2963,8 @@ import Foundation
   case documentCatchUp24Regular
   case documentCheckmark24Filled
   case documentCheckmark24Regular
+  case documentChevronDouble24Filled
+  case documentChevronDouble24Regular
   case documentCopy16Filled
   case documentCopy16Regular
   case documentCopy20Filled
@@ -2811,6 +2973,8 @@ import Foundation
   case documentCopy24Regular
   case documentCopy48Filled
   case documentCopy48Regular
+  case documentCss24Filled
+  case documentCss24Regular
   case documentDismiss16Filled
   case documentDismiss16Regular
   case documentDismiss20Filled
@@ -2865,6 +3029,8 @@ import Foundation
   case documentHeartPulse20Regular
   case documentHeartPulse24Filled
   case documentHeartPulse24Regular
+  case documentJavascript24Filled
+  case documentJavascript24Regular
   case documentLandscape20Filled
   case documentLandscape20Regular
   case documentLandscape24Filled
@@ -2889,6 +3055,8 @@ import Foundation
   case documentMultiple16Regular
   case documentMultiple20Filled
   case documentMultiple20Regular
+  case documentMultiplePercent20Filled
+  case documentMultiplePercent20Regular
   case documentMultipleProhibited20Filled
   case documentMultipleProhibited20Regular
   case documentMultipleProhibited24Filled
@@ -2937,6 +3105,10 @@ import Foundation
   case documentPdf24Regular
   case documentPdf32Filled
   case documentPdf32Regular
+  case documentPercent20Filled
+  case documentPercent20Regular
+  case documentPercent24Filled
+  case documentPercent24Regular
   case documentPerson16Filled
   case documentPerson16Regular
   case documentPerson20Filled
@@ -2979,10 +3151,20 @@ import Foundation
   case documentSearch24Regular
   case documentSettings16Filled
   case documentSettings16Regular
+  case documentSettings20Filled
+  case documentSettings20Regular
+  case documentSplitHint16Filled
+  case documentSplitHint16Regular
+  case documentSplitHint20Filled
+  case documentSplitHint20Regular
   case documentSplitHint24Filled
   case documentSplitHint24Regular
   case documentSplitHintOff24Filled
   case documentSplitHintOff24Regular
+  case documentSync16Filled
+  case documentSync16Regular
+  case documentSync20Filled
+  case documentSync20Regular
   case documentSync24Filled
   case documentSync24Regular
   case documentToolbox20Filled
@@ -3003,6 +3185,10 @@ import Foundation
   case doorArrowLeft20Regular
   case doorArrowLeft24Filled
   case doorArrowLeft24Regular
+  case doorArrowRight16Filled
+  case doorArrowRight16Regular
+  case doorArrowRight20Filled
+  case doorArrowRight20Regular
   case doorTag24Filled
   case doorTag24Regular
   case doubleSwipeDown24Filled
@@ -3061,6 +3247,8 @@ import Foundation
   case drop28Regular
   case drop48Filled
   case drop48Regular
+  case dualScreen20Filled
+  case dualScreen20Regular
   case dualScreen24Filled
   case dualScreen24Regular
   case dualScreenAdd24Filled
@@ -3622,8 +3810,12 @@ import Foundation
   case giftCardAdd20Regular
   case giftCardAdd24Filled
   case giftCardAdd24Regular
+  case glance20Filled
+  case glance20Regular
   case glance24Filled
   case glance24Regular
+  case glanceHorizontal20Filled
+  case glanceHorizontal20Regular
   case glasses16Filled
   case glasses16Regular
   case glasses20Filled
@@ -3690,6 +3882,12 @@ import Foundation
   case grid24Regular
   case grid28Filled
   case grid28Regular
+  case gridDots20Filled
+  case gridDots20Regular
+  case gridDots24Filled
+  case gridDots24Regular
+  case gridDots28Filled
+  case gridDots28Regular
   case gridKanban20Filled
   case gridKanban20Regular
   case group20Filled
@@ -3827,6 +4025,8 @@ import Foundation
   case highlightAccent16Filled
   case highlightAccent20Filled
   case highlightAccent24Filled
+  case highlightLink20Filled
+  case highlightLink20Regular
   case history16Filled
   case history16Regular
   case history20Filled
@@ -3976,6 +4176,8 @@ import Foundation
   case inprivateAccount28Regular
   case insert20Filled
   case insert20Regular
+  case iosArrow24Filled
+  case iosArrow24Regular
   case iosArrowLeft24Filled
   case iosArrowLeft24Regular
   case iosArrowRight24Filled
@@ -4004,6 +4206,8 @@ import Foundation
   case keyCommand16Regular
   case keyMultiple20Filled
   case keyMultiple20Regular
+  case keyboard12324Filled
+  case keyboard12324Regular
   case keyboard20Filled
   case keyboard20Regular
   case keyboard24Filled
@@ -4038,6 +4242,8 @@ import Foundation
   case laptop28Regular
   case laptopDismiss16Filled
   case laptopDismiss16Regular
+  case laptopDismiss20Filled
+  case laptopDismiss20Regular
   case lasso20Filled
   case lasso20Regular
   case lasso24Filled
@@ -4122,6 +4328,8 @@ import Foundation
   case linkDismiss16Regular
   case linkDismiss20Filled
   case linkDismiss20Regular
+  case linkDismiss24Filled
+  case linkDismiss24Regular
   case linkEdit16Filled
   case linkEdit16Regular
   case linkEdit20Filled
@@ -4354,6 +4562,12 @@ import Foundation
   case mailLink20Regular
   case mailLink24Filled
   case mailLink24Regular
+  case mailMultiple16Filled
+  case mailMultiple16Regular
+  case mailMultiple20Filled
+  case mailMultiple20Regular
+  case mailMultiple24Filled
+  case mailMultiple24Regular
   case mailOff24Filled
   case mailOff24Regular
   case mailOpenPerson16Filled
@@ -4884,6 +5098,52 @@ import Foundation
   case paneOpen20Regular
   case paneOpen24Filled
   case paneOpen24Regular
+  case panelBottom20Filled
+  case panelBottom20Regular
+  case panelBottomContract20Filled
+  case panelBottomContract20Regular
+  case panelBottomExpand20Filled
+  case panelBottomExpand20Regular
+  case panelLeft16Filled
+  case panelLeft16Regular
+  case panelLeft20Filled
+  case panelLeft20Regular
+  case panelLeft24Filled
+  case panelLeft24Regular
+  case panelLeft28Filled
+  case panelLeft28Regular
+  case panelLeft48Filled
+  case panelLeft48Regular
+  case panelLeftExpand20Filled
+  case panelLeftExpand20Regular
+  case panelRight16Filled
+  case panelRight16Regular
+  case panelRight20Filled
+  case panelRight20Regular
+  case panelRight24Filled
+  case panelRight24Regular
+  case panelRight28Filled
+  case panelRight28Regular
+  case panelRight48Filled
+  case panelRight48Regular
+  case panelRightContract16Filled
+  case panelRightContract16Regular
+  case panelRightContract20Filled
+  case panelRightContract20Regular
+  case panelRightContract24Filled
+  case panelRightContract24Regular
+  case panelRightExpand16Filled
+  case panelRightExpand16Regular
+  case panelRightExpand20Filled
+  case panelRightExpand20Regular
+  case panelRightExpand24Filled
+  case panelRightExpand24Regular
+  case panelSeparateWindow20Filled
+  case panelSeparateWindow20Regular
+  case panelTopContract20Filled
+  case panelTopContract20Regular
+  case panelTopExpand20Filled
+  case panelTopExpand20Regular
   case password24Filled
   case password24Regular
   case patch20Filled
@@ -4908,6 +5168,8 @@ import Foundation
   case pauseCircle20Regular
   case pauseCircle24Filled
   case pauseCircle24Regular
+  case pauseOff16Filled
+  case pauseOff16Regular
   case payment16Filled
   case payment16Regular
   case payment20Filled
@@ -5084,6 +5346,8 @@ import Foundation
   case personChat20Regular
   case personChat24Filled
   case personChat24Regular
+  case personCircle12Filled
+  case personCircle12Regular
   case personCircle20Filled
   case personCircle20Regular
   case personClock16Filled
@@ -5106,6 +5370,8 @@ import Foundation
   case personFeedback24Regular
   case personInfo16Filled
   case personInfo16Regular
+  case personInfo20Filled
+  case personInfo20Regular
   case personLock16Filled
   case personLock16Regular
   case personLock20Filled
@@ -5171,6 +5437,8 @@ import Foundation
   case personVoice20Regular
   case personVoice24Filled
   case personVoice24Regular
+  case phone12Filled
+  case phone12Regular
   case phone16Filled
   case phone16Regular
   case phone20Filled
@@ -5489,6 +5757,12 @@ import Foundation
   case puzzleCube28Regular
   case puzzleCube48Filled
   case puzzleCube48Regular
+  case puzzlePiece16Filled
+  case puzzlePiece16Regular
+  case puzzlePiece20Filled
+  case puzzlePiece20Regular
+  case puzzlePiece24Filled
+  case puzzlePiece24Regular
   case qrCode20Filled
   case qrCode20Regular
   case qrCode24Filled
@@ -5645,6 +5919,8 @@ import Foundation
   case rename24Regular
   case rename28Filled
   case rename28Regular
+  case replay20Filled
+  case replay20Regular
   case resize20Filled
   case resize20Regular
   case resizeImage24Filled
@@ -5765,6 +6041,16 @@ import Foundation
   case scanObject20Regular
   case scanObject24Filled
   case scanObject24Regular
+  case scanTable24Filled
+  case scanTable24Regular
+  case scanText24Filled
+  case scanText24Regular
+  case scanType20Filled
+  case scanType20Regular
+  case scanType24Filled
+  case scanType24Regular
+  case scanTypeOff20Filled
+  case scanTypeOff20Regular
   case scratchpad24Filled
   case scratchpad24Regular
   case screenCut20Filled
@@ -5971,6 +6257,16 @@ import Foundation
   case shieldProhibited20Regular
   case shieldProhibited24Filled
   case shieldProhibited24Regular
+  case shieldTask16Filled
+  case shieldTask16Regular
+  case shieldTask20Filled
+  case shieldTask20Regular
+  case shieldTask24Filled
+  case shieldTask24Regular
+  case shieldTask28Filled
+  case shieldTask28Regular
+  case shieldTask48Filled
+  case shieldTask48Regular
   case shifts16Filled
   case shifts16Regular
   case shifts20Filled
@@ -6257,6 +6553,8 @@ import Foundation
   case sportSoccer20Regular
   case sportSoccer24Filled
   case sportSoccer24Regular
+  case square12Filled
+  case square12Regular
   case square16Filled
   case square16Regular
   case square20Filled
@@ -6277,8 +6575,14 @@ import Foundation
   case squareArrowForward32Regular
   case squareArrowForward48Filled
   case squareArrowForward48Regular
+  case squareDismiss16Filled
+  case squareDismiss16Regular
+  case squareDismiss20Filled
+  case squareDismiss20Regular
   case squareHintArrowBack16Filled
   case squareHintArrowBack16Regular
+  case squareMultiple16Filled
+  case squareMultiple16Regular
   case squareMultiple20Filled
   case squareMultiple20Regular
   case squareMultiple24Filled
@@ -6289,6 +6593,12 @@ import Foundation
   case stack20Regular
   case stack24Filled
   case stack24Regular
+  case stackStar16Filled
+  case stackStar16Regular
+  case stackStar20Filled
+  case stackStar20Regular
+  case stackStar24Filled
+  case stackStar24Regular
   case star12Filled
   case star12Regular
   case star16Filled
@@ -6416,6 +6726,8 @@ import Foundation
   case subtract28Regular
   case subtract48Filled
   case subtract48Regular
+  case subtractCircle12Filled
+  case subtractCircle12Regular
   case subtractCircle16Filled
   case subtractCircle16Regular
   case subtractCircle20Filled
@@ -6426,6 +6738,14 @@ import Foundation
   case subtractCircle28Regular
   case subtractCircle32Filled
   case subtractCircle32Regular
+  case subtractCircleArrowBack16Filled
+  case subtractCircleArrowBack16Regular
+  case subtractCircleArrowBack20Filled
+  case subtractCircleArrowBack20Regular
+  case subtractCircleArrowForward16Filled
+  case subtractCircleArrowForward16Regular
+  case subtractCircleArrowForward20Filled
+  case subtractCircleArrowForward20Regular
   case subtractSquareMultiple16Filled
   case subtractSquareMultiple16Regular
   case subtractSquareMultiple20Filled
@@ -6626,6 +6946,8 @@ import Foundation
   case tag20Regular
   case tag24Filled
   case tag24Regular
+  case tagCircle20Filled
+  case tagCircle20Regular
   case tagDismiss20Filled
   case tagDismiss20Regular
   case tagDismiss24Filled
@@ -6736,6 +7058,8 @@ import Foundation
   case textAddSpaceBefore20Regular
   case textAddSpaceBefore24Filled
   case textAddSpaceBefore24Regular
+  case textAddT24Filled
+  case textAddT24Regular
   case textAlignCenter20Filled
   case textAlignCenter20Regular
   case textAlignCenter24Filled
@@ -6782,6 +7106,8 @@ import Foundation
   case textBold24Regular
   case textBox16Filled
   case textBox16Regular
+  case textBulletList16Filled
+  case textBulletList16Regular
   case textBulletList20Filled
   case textBulletList20Regular
   case textBulletList24Filled
@@ -6977,10 +7303,16 @@ import Foundation
   case textHanging24Regular
   case textHeader120Filled
   case textHeader120Regular
+  case textHeader124Filled
+  case textHeader124Regular
   case textHeader220Filled
   case textHeader220Regular
+  case textHeader224Filled
+  case textHeader224Regular
   case textHeader320Filled
   case textHeader320Regular
+  case textHeader324Filled
+  case textHeader324Regular
   case textIndentDecrease20Filled
   case textIndentDecrease20Regular
   case textIndentDecrease24Filled
@@ -6999,6 +7331,8 @@ import Foundation
   case textLineSpacing20Regular
   case textLineSpacing24Filled
   case textLineSpacing24Regular
+  case textMore24Filled
+  case textMore24Regular
   case textNumberFormat20Filled
   case textNumberFormat20Regular
   case textNumberFormat24Filled
@@ -7017,6 +7351,8 @@ import Foundation
   case textParagraphDirection20Regular
   case textParagraphDirection24Filled
   case textParagraphDirection24Regular
+  case textPeriodAsterisk20Filled
+  case textPeriodAsterisk20Regular
   case textPositionBehind20Filled
   case textPositionBehind20Regular
   case textPositionBehind24Filled
@@ -7091,6 +7427,10 @@ import Foundation
   case textSuperscript20Regular
   case textSuperscript24Filled
   case textSuperscript24Regular
+  case textT20Filled
+  case textT20Regular
+  case textT24Filled
+  case textT24Regular
   case textUnderline16Filled
   case textUnderline16Regular
   case textUnderline20Filled
@@ -7167,6 +7507,8 @@ import Foundation
   case timeAndWeather24Regular
   case timePicker24Filled
   case timePicker24Regular
+  case timeline20Filled
+  case timeline20Regular
   case timeline24Filled
   case timeline24Regular
   case timer1024Filled
@@ -7226,6 +7568,8 @@ import Foundation
   case translate24Regular
   case transmission24Filled
   case transmission24Regular
+  case triangle12Filled
+  case triangle12Regular
   case trophy16Filled
   case trophy16Regular
   case trophy20Filled
@@ -7260,6 +7604,10 @@ import Foundation
   case umbrella24Regular
   case uninstallApp24Filled
   case uninstallApp24Regular
+  case usbPlug20Filled
+  case usbPlug20Regular
+  case usbPlug24Filled
+  case usbPlug24Regular
   case usbPort20Filled
   case usbPort20Regular
   case usbPort24Filled
@@ -7662,24 +8010,40 @@ import Foundation
   case wifi420Regular
   case wifi424Filled
   case wifi424Regular
+  case wifiLock24Filled
+  case wifiLock24Regular
   case wifiOff20Filled
   case wifiOff20Regular
   case wifiOff24Filled
   case wifiOff24Regular
   case wifiProtected24Filled
   case wifiProtected24Regular
+  case wifiSettings20Filled
+  case wifiSettings20Regular
   case wifiWarning20Filled
   case wifiWarning20Regular
   case wifiWarning24Filled
   case wifiWarning24Regular
+  case window16Filled
+  case window16Regular
   case window20Filled
   case window20Regular
+  case window24Filled
+  case window24Regular
   case windowAd20Filled
   case windowAd20Regular
+  case windowAdOff20Filled
+  case windowAdOff20Regular
   case windowAdPerson20Filled
   case windowAdPerson20Regular
+  case windowArrowUp16Filled
+  case windowArrowUp16Regular
+  case windowArrowUp20Filled
+  case windowArrowUp20Regular
   case windowArrowUp24Filled
   case windowArrowUp24Regular
+  case windowConsole20Filled
+  case windowConsole20Regular
   case windowDevEdit16Filled
   case windowDevEdit16Regular
   case windowDevEdit20Filled
@@ -7694,12 +8058,16 @@ import Foundation
   case windowEdit16Regular
   case windowHeaderHorizontal20Filled
   case windowHeaderHorizontal20Regular
+  case windowHeaderHorizontalOff20Filled
+  case windowHeaderHorizontalOff20Regular
   case windowHeaderVertical20Filled
   case windowHeaderVertical20Regular
   case windowInprivate20Filled
   case windowInprivate20Regular
   case windowInprivateAccount20Filled
   case windowInprivateAccount20Regular
+  case windowMultiple16Filled
+  case windowMultiple16Regular
   case windowMultiple20Filled
   case windowMultiple20Regular
   case windowNew16Filled
@@ -7728,10 +8096,14 @@ import Foundation
   case xray20Regular
   case xray24Filled
   case xray24Regular
+  case zoomIn16Filled
+  case zoomIn16Regular
   case zoomIn20Filled
   case zoomIn20Regular
   case zoomIn24Filled
   case zoomIn24Regular
+  case zoomOut16Filled
+  case zoomOut16Regular
   case zoomOut20Filled
   case zoomOut20Regular
   case zoomOut24Filled
@@ -7995,6 +8367,8 @@ import Foundation
     case .archiveSettings16Regular: return "ic_fluent_archive_settings_16_regular"
     case .archiveSettings20Filled: return "ic_fluent_archive_settings_20_filled"
     case .archiveSettings20Regular: return "ic_fluent_archive_settings_20_regular"
+    case .arrowAutofitContent24Filled: return "ic_fluent_arrow_autofit_content_24_filled"
+    case .arrowAutofitContent24Regular: return "ic_fluent_arrow_autofit_content_24_regular"
     case .arrowAutofitDown24Filled: return "ic_fluent_arrow_autofit_down_24_filled"
     case .arrowAutofitDown24Regular: return "ic_fluent_arrow_autofit_down_24_regular"
     case .arrowAutofitHeight24Filled: return "ic_fluent_arrow_autofit_height_24_filled"
@@ -8007,6 +8381,14 @@ import Foundation
     case .arrowAutofitWidth24Regular: return "ic_fluent_arrow_autofit_width_24_regular"
     case .arrowAutofitWidthDotted24Filled: return "ic_fluent_arrow_autofit_width_dotted_24_filled"
     case .arrowAutofitWidthDotted24Regular: return "ic_fluent_arrow_autofit_width_dotted_24_regular"
+    case .arrowBidirectionalUpDown12Filled: return "ic_fluent_arrow_bidirectional_up_down_12_filled"
+    case .arrowBidirectionalUpDown12Regular: return "ic_fluent_arrow_bidirectional_up_down_12_regular"
+    case .arrowBidirectionalUpDown16Filled: return "ic_fluent_arrow_bidirectional_up_down_16_filled"
+    case .arrowBidirectionalUpDown16Regular: return "ic_fluent_arrow_bidirectional_up_down_16_regular"
+    case .arrowBidirectionalUpDown20Filled: return "ic_fluent_arrow_bidirectional_up_down_20_filled"
+    case .arrowBidirectionalUpDown20Regular: return "ic_fluent_arrow_bidirectional_up_down_20_regular"
+    case .arrowBidirectionalUpDown24Filled: return "ic_fluent_arrow_bidirectional_up_down_24_filled"
+    case .arrowBidirectionalUpDown24Regular: return "ic_fluent_arrow_bidirectional_up_down_24_regular"
     case .arrowBounce16Filled: return "ic_fluent_arrow_bounce_16_filled"
     case .arrowBounce16Regular: return "ic_fluent_arrow_bounce_16_regular"
     case .arrowBounce24Filled: return "ic_fluent_arrow_bounce_24_filled"
@@ -8027,6 +8409,18 @@ import Foundation
     case .arrowCircleDownSplit20Regular: return "ic_fluent_arrow_circle_down_split_20_regular"
     case .arrowCircleDownSplit24Filled: return "ic_fluent_arrow_circle_down_split_24_filled"
     case .arrowCircleDownSplit24Regular: return "ic_fluent_arrow_circle_down_split_24_regular"
+    case .arrowCircleDownUp20Filled: return "ic_fluent_arrow_circle_down_up_20_filled"
+    case .arrowCircleDownUp20Regular: return "ic_fluent_arrow_circle_down_up_20_regular"
+    case .arrowCircleLeft12Filled: return "ic_fluent_arrow_circle_left_12_filled"
+    case .arrowCircleLeft12Regular: return "ic_fluent_arrow_circle_left_12_regular"
+    case .arrowCircleLeft16Filled: return "ic_fluent_arrow_circle_left_16_filled"
+    case .arrowCircleLeft16Regular: return "ic_fluent_arrow_circle_left_16_regular"
+    default: break }
+    switch self {
+    case .arrowCircleRight12Filled: return "ic_fluent_arrow_circle_right_12_filled"
+    case .arrowCircleRight12Regular: return "ic_fluent_arrow_circle_right_12_regular"
+    case .arrowCircleRight16Filled: return "ic_fluent_arrow_circle_right_16_filled"
+    case .arrowCircleRight16Regular: return "ic_fluent_arrow_circle_right_16_regular"
     case .arrowCircleRight24Filled: return "ic_fluent_arrow_circle_right_24_filled"
     case .arrowCircleRight24Regular: return "ic_fluent_arrow_circle_right_24_regular"
     case .arrowCircleUp16Filled: return "ic_fluent_arrow_circle_up_16_filled"
@@ -8043,8 +8437,6 @@ import Foundation
     case .arrowClockwise16Regular: return "ic_fluent_arrow_clockwise_16_regular"
     case .arrowClockwise20Filled: return "ic_fluent_arrow_clockwise_20_filled"
     case .arrowClockwise20Regular: return "ic_fluent_arrow_clockwise_20_regular"
-    default: break }
-    switch self {
     case .arrowClockwise24Filled: return "ic_fluent_arrow_clockwise_24_filled"
     case .arrowClockwise24Regular: return "ic_fluent_arrow_clockwise_24_regular"
     case .arrowClockwise28Filled: return "ic_fluent_arrow_clockwise_28_filled"
@@ -8117,12 +8509,16 @@ import Foundation
     case .arrowDownload24Regular: return "ic_fluent_arrow_download_24_regular"
     case .arrowDownload48Filled: return "ic_fluent_arrow_download_48_filled"
     case .arrowDownload48Regular: return "ic_fluent_arrow_download_48_regular"
+    case .arrowEject20Filled: return "ic_fluent_arrow_eject_20_filled"
+    case .arrowEject20Regular: return "ic_fluent_arrow_eject_20_regular"
     case .arrowEnterLeft20Filled: return "ic_fluent_arrow_enter_left_20_filled"
     case .arrowEnterLeft20Regular: return "ic_fluent_arrow_enter_left_20_regular"
     case .arrowEnterLeft24Filled: return "ic_fluent_arrow_enter_left_24_filled"
     case .arrowEnterLeft24Regular: return "ic_fluent_arrow_enter_left_24_regular"
     case .arrowEnterUp20Filled: return "ic_fluent_arrow_enter_up_20_filled"
     case .arrowEnterUp20Regular: return "ic_fluent_arrow_enter_up_20_regular"
+    default: break }
+    switch self {
     case .arrowEnterUp24Filled: return "ic_fluent_arrow_enter_up_24_filled"
     case .arrowEnterUp24Regular: return "ic_fluent_arrow_enter_up_24_regular"
     case .arrowExpand24Filled: return "ic_fluent_arrow_expand_24_filled"
@@ -8145,8 +8541,6 @@ import Foundation
     case .arrowForward20Regular: return "ic_fluent_arrow_forward_20_regular"
     case .arrowForward24Filled: return "ic_fluent_arrow_forward_24_filled"
     case .arrowForward24Regular: return "ic_fluent_arrow_forward_24_regular"
-    default: break }
-    switch self {
     case .arrowForward48Filled: return "ic_fluent_arrow_forward_48_filled"
     case .arrowForward48Regular: return "ic_fluent_arrow_forward_48_regular"
     case .arrowGrowth20Filled: return "ic_fluent_arrow_growth_20_filled"
@@ -8189,6 +8583,8 @@ import Foundation
     case .arrowImport20Regular: return "ic_fluent_arrow_import_20_regular"
     case .arrowImport24Filled: return "ic_fluent_arrow_import_24_filled"
     case .arrowImport24Regular: return "ic_fluent_arrow_import_24_regular"
+    case .arrowLeft12Filled: return "ic_fluent_arrow_left_12_filled"
+    case .arrowLeft12Regular: return "ic_fluent_arrow_left_12_regular"
     case .arrowLeft16Filled: return "ic_fluent_arrow_left_16_filled"
     case .arrowLeft16Regular: return "ic_fluent_arrow_left_16_regular"
     case .arrowLeft20Filled: return "ic_fluent_arrow_left_20_filled"
@@ -8223,10 +8619,14 @@ import Foundation
     case .arrowMinimize28Regular: return "ic_fluent_arrow_minimize_28_regular"
     case .arrowMinimizeVertical24Filled: return "ic_fluent_arrow_minimize_vertical_24_filled"
     case .arrowMinimizeVertical24Regular: return "ic_fluent_arrow_minimize_vertical_24_regular"
+    default: break }
+    switch self {
     case .arrowMove20Filled: return "ic_fluent_arrow_move_20_filled"
     case .arrowMove20Regular: return "ic_fluent_arrow_move_20_regular"
     case .arrowMove24Filled: return "ic_fluent_arrow_move_24_filled"
     case .arrowMove24Regular: return "ic_fluent_arrow_move_24_regular"
+    case .arrowMoveInward20Filled: return "ic_fluent_arrow_move_inward_20_filled"
+    case .arrowMoveInward20Regular: return "ic_fluent_arrow_move_inward_20_regular"
     case .arrowNext20Filled: return "ic_fluent_arrow_next_20_filled"
     case .arrowNext20Regular: return "ic_fluent_arrow_next_20_regular"
     case .arrowNext24Filled: return "ic_fluent_arrow_next_24_filled"
@@ -8235,6 +8635,8 @@ import Foundation
     case .arrowPrevious20Regular: return "ic_fluent_arrow_previous_20_regular"
     case .arrowPrevious24Filled: return "ic_fluent_arrow_previous_24_filled"
     case .arrowPrevious24Regular: return "ic_fluent_arrow_previous_24_regular"
+    case .arrowRedo16Filled: return "ic_fluent_arrow_redo_16_filled"
+    case .arrowRedo16Regular: return "ic_fluent_arrow_redo_16_regular"
     case .arrowRedo20Filled: return "ic_fluent_arrow_redo_20_filled"
     case .arrowRedo20Regular: return "ic_fluent_arrow_redo_20_regular"
     case .arrowRedo24Filled: return "ic_fluent_arrow_redo_24_filled"
@@ -8247,8 +8649,6 @@ import Foundation
     case .arrowRepeatAll16Regular: return "ic_fluent_arrow_repeat_all_16_regular"
     case .arrowRepeatAll20Filled: return "ic_fluent_arrow_repeat_all_20_filled"
     case .arrowRepeatAll20Regular: return "ic_fluent_arrow_repeat_all_20_regular"
-    default: break }
-    switch self {
     case .arrowRepeatAll24Filled: return "ic_fluent_arrow_repeat_all_24_filled"
     case .arrowRepeatAll24Regular: return "ic_fluent_arrow_repeat_all_24_regular"
     case .arrowRepeatAllOff16Filled: return "ic_fluent_arrow_repeat_all_off_16_filled"
@@ -8283,6 +8683,8 @@ import Foundation
     case .arrowReset20Regular: return "ic_fluent_arrow_reset_20_regular"
     case .arrowReset24Filled: return "ic_fluent_arrow_reset_24_filled"
     case .arrowReset24Regular: return "ic_fluent_arrow_reset_24_regular"
+    case .arrowRight12Filled: return "ic_fluent_arrow_right_12_filled"
+    case .arrowRight12Regular: return "ic_fluent_arrow_right_12_regular"
     case .arrowRight16Filled: return "ic_fluent_arrow_right_16_filled"
     case .arrowRight16Regular: return "ic_fluent_arrow_right_16_regular"
     case .arrowRight20Filled: return "ic_fluent_arrow_right_20_filled"
@@ -8319,6 +8721,8 @@ import Foundation
     case .arrowSort20Regular: return "ic_fluent_arrow_sort_20_regular"
     case .arrowSort24Filled: return "ic_fluent_arrow_sort_24_filled"
     case .arrowSort24Regular: return "ic_fluent_arrow_sort_24_regular"
+    default: break }
+    switch self {
     case .arrowSort28Filled: return "ic_fluent_arrow_sort_28_filled"
     case .arrowSort28Regular: return "ic_fluent_arrow_sort_28_regular"
     case .arrowSortDown16Filled: return "ic_fluent_arrow_sort_down_16_filled"
@@ -8343,14 +8747,24 @@ import Foundation
     case .arrowSquareDown24Regular: return "ic_fluent_arrow_square_down_24_regular"
     case .arrowStepBack16Filled: return "ic_fluent_arrow_step_back_16_filled"
     case .arrowStepBack16Regular: return "ic_fluent_arrow_step_back_16_regular"
+    case .arrowStepIn12Filled: return "ic_fluent_arrow_step_in_12_filled"
+    case .arrowStepIn12Regular: return "ic_fluent_arrow_step_in_12_regular"
     case .arrowStepIn16Filled: return "ic_fluent_arrow_step_in_16_filled"
     case .arrowStepIn16Regular: return "ic_fluent_arrow_step_in_16_regular"
+    case .arrowStepInLeft12Filled: return "ic_fluent_arrow_step_in_left_12_filled"
+    case .arrowStepInLeft12Regular: return "ic_fluent_arrow_step_in_left_12_regular"
+    case .arrowStepInLeft16Filled: return "ic_fluent_arrow_step_in_left_16_filled"
+    case .arrowStepInLeft16Regular: return "ic_fluent_arrow_step_in_left_16_regular"
+    case .arrowStepInRight12Filled: return "ic_fluent_arrow_step_in_right_12_filled"
+    case .arrowStepInRight12Regular: return "ic_fluent_arrow_step_in_right_12_regular"
+    case .arrowStepInRight16Filled: return "ic_fluent_arrow_step_in_right_16_filled"
+    case .arrowStepInRight16Regular: return "ic_fluent_arrow_step_in_right_16_regular"
+    case .arrowStepOut12Filled: return "ic_fluent_arrow_step_out_12_filled"
+    case .arrowStepOut12Regular: return "ic_fluent_arrow_step_out_12_regular"
     case .arrowStepOut16Filled: return "ic_fluent_arrow_step_out_16_filled"
     case .arrowStepOut16Regular: return "ic_fluent_arrow_step_out_16_regular"
     case .arrowStepOver16Filled: return "ic_fluent_arrow_step_over_16_filled"
     case .arrowStepOver16Regular: return "ic_fluent_arrow_step_over_16_regular"
-    default: break }
-    switch self {
     case .arrowSwap20Filled: return "ic_fluent_arrow_swap_20_filled"
     case .arrowSwap20Regular: return "ic_fluent_arrow_swap_20_regular"
     case .arrowSwap24Filled: return "ic_fluent_arrow_swap_24_filled"
@@ -8371,12 +8785,20 @@ import Foundation
     case .arrowSyncCircle24Regular: return "ic_fluent_arrow_sync_circle_24_regular"
     case .arrowSyncOff12Filled: return "ic_fluent_arrow_sync_off_12_filled"
     case .arrowSyncOff12Regular: return "ic_fluent_arrow_sync_off_12_regular"
+    case .arrowSyncOff16Filled: return "ic_fluent_arrow_sync_off_16_filled"
+    case .arrowSyncOff16Regular: return "ic_fluent_arrow_sync_off_16_regular"
+    case .arrowSyncOff20Filled: return "ic_fluent_arrow_sync_off_20_filled"
+    case .arrowSyncOff20Regular: return "ic_fluent_arrow_sync_off_20_regular"
     case .arrowTrending16Filled: return "ic_fluent_arrow_trending_16_filled"
     case .arrowTrending16Regular: return "ic_fluent_arrow_trending_16_regular"
     case .arrowTrending20Filled: return "ic_fluent_arrow_trending_20_filled"
     case .arrowTrending20Regular: return "ic_fluent_arrow_trending_20_regular"
     case .arrowTrending24Filled: return "ic_fluent_arrow_trending_24_filled"
     case .arrowTrending24Regular: return "ic_fluent_arrow_trending_24_regular"
+    case .arrowTrendingLines20Filled: return "ic_fluent_arrow_trending_lines_20_filled"
+    case .arrowTrendingLines20Regular: return "ic_fluent_arrow_trending_lines_20_regular"
+    case .arrowTrendingLines24Filled: return "ic_fluent_arrow_trending_lines_24_filled"
+    case .arrowTrendingLines24Regular: return "ic_fluent_arrow_trending_lines_24_regular"
     case .arrowTurnBidirectionalDownRight24Filled: return "ic_fluent_arrow_turn_bidirectional_down_right_24_filled"
     case .arrowTurnBidirectionalDownRight24Regular: return "ic_fluent_arrow_turn_bidirectional_down_right_24_regular"
     case .arrowTurnRight24Filled: return "ic_fluent_arrow_turn_right_24_filled"
@@ -8391,6 +8813,8 @@ import Foundation
     case .arrowUndo32Regular: return "ic_fluent_arrow_undo_32_regular"
     case .arrowUndo48Filled: return "ic_fluent_arrow_undo_48_filled"
     case .arrowUndo48Regular: return "ic_fluent_arrow_undo_48_regular"
+    case .arrowUp12Filled: return "ic_fluent_arrow_up_12_filled"
+    case .arrowUp12Regular: return "ic_fluent_arrow_up_12_regular"
     case .arrowUp16Filled: return "ic_fluent_arrow_up_16_filled"
     case .arrowUp16Regular: return "ic_fluent_arrow_up_16_regular"
     case .arrowUp20Filled: return "ic_fluent_arrow_up_20_filled"
@@ -8399,6 +8823,8 @@ import Foundation
     case .arrowUp24Regular: return "ic_fluent_arrow_up_24_regular"
     case .arrowUp28Filled: return "ic_fluent_arrow_up_28_filled"
     case .arrowUp28Regular: return "ic_fluent_arrow_up_28_regular"
+    default: break }
+    switch self {
     case .arrowUp32Filled: return "ic_fluent_arrow_up_32_filled"
     case .arrowUp32Regular: return "ic_fluent_arrow_up_32_regular"
     case .arrowUp48Filled: return "ic_fluent_arrow_up_48_filled"
@@ -8451,8 +8877,6 @@ import Foundation
     case .autosum24Regular: return "ic_fluent_autosum_24_regular"
     case .backpack12Filled: return "ic_fluent_backpack_12_filled"
     case .backpack12Regular: return "ic_fluent_backpack_12_regular"
-    default: break }
-    switch self {
     case .backpack16Filled: return "ic_fluent_backpack_16_filled"
     case .backpack16Regular: return "ic_fluent_backpack_16_regular"
     case .backpack20Filled: return "ic_fluent_backpack_20_filled"
@@ -8501,6 +8925,8 @@ import Foundation
     case .battery220Regular: return "ic_fluent_battery_2_20_regular"
     case .battery224Filled: return "ic_fluent_battery_2_24_filled"
     case .battery224Regular: return "ic_fluent_battery_2_24_regular"
+    default: break }
+    switch self {
     case .battery320Filled: return "ic_fluent_battery_3_20_filled"
     case .battery320Regular: return "ic_fluent_battery_3_20_regular"
     case .battery324Filled: return "ic_fluent_battery_3_24_filled"
@@ -8553,8 +8979,6 @@ import Foundation
     case .beach24Regular: return "ic_fluent_beach_24_regular"
     case .beach28Filled: return "ic_fluent_beach_28_filled"
     case .beach28Regular: return "ic_fluent_beach_28_regular"
-    default: break }
-    switch self {
     case .beaker16Filled: return "ic_fluent_beaker_16_filled"
     case .beaker16Regular: return "ic_fluent_beaker_16_regular"
     case .beaker20Filled: return "ic_fluent_beaker_20_filled"
@@ -8571,6 +8995,8 @@ import Foundation
     case .bed20Regular: return "ic_fluent_bed_20_regular"
     case .bed24Filled: return "ic_fluent_bed_24_filled"
     case .bed24Regular: return "ic_fluent_bed_24_regular"
+    case .bezierCurveSquare12Filled: return "ic_fluent_bezier_curve_square_12_filled"
+    case .bezierCurveSquare12Regular: return "ic_fluent_bezier_curve_square_12_regular"
     case .binFull20Filled: return "ic_fluent_bin_full_20_filled"
     case .binFull20Regular: return "ic_fluent_bin_full_20_regular"
     case .binFull24Filled: return "ic_fluent_bin_full_24_filled"
@@ -8601,6 +9027,8 @@ import Foundation
     case .blur24Regular: return "ic_fluent_blur_24_regular"
     case .blur28Filled: return "ic_fluent_blur_28_filled"
     case .blur28Regular: return "ic_fluent_blur_28_regular"
+    default: break }
+    switch self {
     case .board16Filled: return "ic_fluent_board_16_filled"
     case .board16Regular: return "ic_fluent_board_16_regular"
     case .board20Filled: return "ic_fluent_board_20_filled"
@@ -8655,8 +9083,6 @@ import Foundation
     case .bookNumber16Regular: return "ic_fluent_book_number_16_regular"
     case .bookNumber20Filled: return "ic_fluent_book_number_20_filled"
     case .bookNumber20Regular: return "ic_fluent_book_number_20_regular"
-    default: break }
-    switch self {
     case .bookNumber24Filled: return "ic_fluent_book_number_24_filled"
     case .bookNumber24Regular: return "ic_fluent_book_number_24_regular"
     case .bookOpen16Filled: return "ic_fluent_book_open_16_filled"
@@ -8703,6 +9129,8 @@ import Foundation
     case .bookmark16Regular: return "ic_fluent_bookmark_16_regular"
     case .bookmark20Filled: return "ic_fluent_bookmark_20_filled"
     case .bookmark20Regular: return "ic_fluent_bookmark_20_regular"
+    default: break }
+    switch self {
     case .bookmark24Filled: return "ic_fluent_bookmark_24_filled"
     case .bookmark24Regular: return "ic_fluent_bookmark_24_regular"
     case .bookmark28Filled: return "ic_fluent_bookmark_28_filled"
@@ -8721,6 +9149,10 @@ import Foundation
     case .bookmarkOff24Regular: return "ic_fluent_bookmark_off_24_regular"
     case .border24Filled: return "ic_fluent_border_24_filled"
     case .border24Regular: return "ic_fluent_border_24_regular"
+    case .borderAll16Filled: return "ic_fluent_border_all_16_filled"
+    case .borderAll16Regular: return "ic_fluent_border_all_16_regular"
+    case .borderAll20Filled: return "ic_fluent_border_all_20_filled"
+    case .borderAll20Regular: return "ic_fluent_border_all_20_regular"
     case .borderAll24Filled: return "ic_fluent_border_all_24_filled"
     case .borderAll24Regular: return "ic_fluent_border_all_24_regular"
     case .borderBottom24Filled: return "ic_fluent_border_bottom_24_filled"
@@ -8757,14 +9189,14 @@ import Foundation
     case .bowlChopsticks16Regular: return "ic_fluent_bowl_chopsticks_16_regular"
     case .bowlChopsticks20Filled: return "ic_fluent_bowl_chopsticks_20_filled"
     case .bowlChopsticks20Regular: return "ic_fluent_bowl_chopsticks_20_regular"
-    default: break }
-    switch self {
     case .bowlChopsticks24Filled: return "ic_fluent_bowl_chopsticks_24_filled"
     case .bowlChopsticks24Regular: return "ic_fluent_bowl_chopsticks_24_regular"
     case .bowlChopsticks28Filled: return "ic_fluent_bowl_chopsticks_28_filled"
     case .bowlChopsticks28Regular: return "ic_fluent_bowl_chopsticks_28_regular"
     case .box16Filled: return "ic_fluent_box_16_filled"
     case .box16Regular: return "ic_fluent_box_16_regular"
+    case .braces20Filled: return "ic_fluent_braces_20_filled"
+    case .braces20Regular: return "ic_fluent_braces_20_regular"
     case .bracesVariable20Filled: return "ic_fluent_braces_variable_20_filled"
     case .bracesVariable20Regular: return "ic_fluent_braces_variable_20_regular"
     case .bracesVariable24Filled: return "ic_fluent_braces_variable_24_filled"
@@ -8799,6 +9231,8 @@ import Foundation
     case .briefcase24Regular: return "ic_fluent_briefcase_24_regular"
     case .briefcase28Filled: return "ic_fluent_briefcase_28_filled"
     case .briefcase28Regular: return "ic_fluent_briefcase_28_regular"
+    default: break }
+    switch self {
     case .briefcase32Filled: return "ic_fluent_briefcase_32_filled"
     case .briefcase32Regular: return "ic_fluent_briefcase_32_regular"
     case .briefcase48Filled: return "ic_fluent_briefcase_48_filled"
@@ -8859,8 +9293,6 @@ import Foundation
     case .buildingBank48Regular: return "ic_fluent_building_bank_48_regular"
     case .buildingBankLink16Filled: return "ic_fluent_building_bank_link_16_filled"
     case .buildingBankLink16Regular: return "ic_fluent_building_bank_link_16_regular"
-    default: break }
-    switch self {
     case .buildingBankLink20Filled: return "ic_fluent_building_bank_link_20_filled"
     case .buildingBankLink20Regular: return "ic_fluent_building_bank_link_20_regular"
     case .buildingBankLink24Filled: return "ic_fluent_building_bank_link_24_filled"
@@ -8879,6 +9311,8 @@ import Foundation
     case .buildingGovernment24Regular: return "ic_fluent_building_government_24_regular"
     case .buildingGovernment32Filled: return "ic_fluent_building_government_32_filled"
     case .buildingGovernment32Regular: return "ic_fluent_building_government_32_regular"
+    case .buildingLighthouse20Filled: return "ic_fluent_building_lighthouse_20_filled"
+    case .buildingLighthouse20Regular: return "ic_fluent_building_lighthouse_20_regular"
     case .buildingMultiple24Filled: return "ic_fluent_building_multiple_24_filled"
     case .buildingMultiple24Regular: return "ic_fluent_building_multiple_24_regular"
     case .buildingRetail20Filled: return "ic_fluent_building_retail_20_filled"
@@ -8899,6 +9333,8 @@ import Foundation
     case .buildingRetailToolbox24Regular: return "ic_fluent_building_retail_toolbox_24_regular"
     case .buildingShop16Filled: return "ic_fluent_building_shop_16_filled"
     case .buildingShop16Regular: return "ic_fluent_building_shop_16_regular"
+    default: break }
+    switch self {
     case .buildingShop20Filled: return "ic_fluent_building_shop_20_filled"
     case .buildingShop20Regular: return "ic_fluent_building_shop_20_regular"
     case .buildingShop24Filled: return "ic_fluent_building_shop_24_filled"
@@ -8953,6 +9389,8 @@ import Foundation
     case .calendarArrowRight16Regular: return "ic_fluent_calendar_arrow_right_16_regular"
     case .calendarArrowRight20Filled: return "ic_fluent_calendar_arrow_right_20_filled"
     case .calendarArrowRight20Regular: return "ic_fluent_calendar_arrow_right_20_regular"
+    case .calendarAssistant16Filled: return "ic_fluent_calendar_assistant_16_filled"
+    case .calendarAssistant16Regular: return "ic_fluent_calendar_assistant_16_regular"
     case .calendarAssistant20Filled: return "ic_fluent_calendar_assistant_20_filled"
     case .calendarAssistant20Regular: return "ic_fluent_calendar_assistant_20_regular"
     case .calendarAssistant24Filled: return "ic_fluent_calendar_assistant_24_filled"
@@ -8961,8 +9399,6 @@ import Foundation
     case .calendarCancel16Regular: return "ic_fluent_calendar_cancel_16_regular"
     case .calendarCancel20Filled: return "ic_fluent_calendar_cancel_20_filled"
     case .calendarCancel20Regular: return "ic_fluent_calendar_cancel_20_regular"
-    default: break }
-    switch self {
     case .calendarCancel24Filled: return "ic_fluent_calendar_cancel_24_filled"
     case .calendarCancel24Regular: return "ic_fluent_calendar_cancel_24_regular"
     case .calendarCheckmark16Filled: return "ic_fluent_calendar_checkmark_16_filled"
@@ -8999,10 +9435,14 @@ import Foundation
     case .calendarEmpty20Regular: return "ic_fluent_calendar_empty_20_regular"
     case .calendarEmpty24Filled: return "ic_fluent_calendar_empty_24_filled"
     case .calendarEmpty24Regular: return "ic_fluent_calendar_empty_24_regular"
+    default: break }
+    switch self {
     case .calendarEmpty28Filled: return "ic_fluent_calendar_empty_28_filled"
     case .calendarEmpty28Regular: return "ic_fluent_calendar_empty_28_regular"
     case .calendarEmpty32Filled: return "ic_fluent_calendar_empty_32_filled"
     case .calendarEmpty32Regular: return "ic_fluent_calendar_empty_32_regular"
+    case .calendarError24Filled: return "ic_fluent_calendar_error_24_filled"
+    case .calendarError24Regular: return "ic_fluent_calendar_error_24_regular"
     case .calendarInfo16Filled: return "ic_fluent_calendar_info_16_filled"
     case .calendarInfo16Regular: return "ic_fluent_calendar_info_16_regular"
     case .calendarInfo20Filled: return "ic_fluent_calendar_info_20_filled"
@@ -9063,8 +9503,6 @@ import Foundation
     case .calendarSettings16Regular: return "ic_fluent_calendar_settings_16_regular"
     case .calendarSettings20Filled: return "ic_fluent_calendar_settings_20_filled"
     case .calendarSettings20Regular: return "ic_fluent_calendar_settings_20_regular"
-    default: break }
-    switch self {
     case .calendarStar16Filled: return "ic_fluent_calendar_star_16_filled"
     case .calendarStar16Regular: return "ic_fluent_calendar_star_16_regular"
     case .calendarStar20Filled: return "ic_fluent_calendar_star_20_filled"
@@ -9099,6 +9537,8 @@ import Foundation
     case .calendarWorkWeek20Regular: return "ic_fluent_calendar_work_week_20_regular"
     case .calendarWorkWeek24Filled: return "ic_fluent_calendar_work_week_24_filled"
     case .calendarWorkWeek24Regular: return "ic_fluent_calendar_work_week_24_regular"
+    default: break }
+    switch self {
     case .call16Filled: return "ic_fluent_call_16_filled"
     case .call16Regular: return "ic_fluent_call_16_regular"
     case .call20Filled: return "ic_fluent_call_20_filled"
@@ -9165,8 +9605,6 @@ import Foundation
     case .callOutbound16Regular: return "ic_fluent_call_outbound_16_regular"
     case .callOutbound20Filled: return "ic_fluent_call_outbound_20_filled"
     case .callOutbound20Regular: return "ic_fluent_call_outbound_20_regular"
-    default: break }
-    switch self {
     case .callOutbound24Filled: return "ic_fluent_call_outbound_24_filled"
     case .callOutbound24Regular: return "ic_fluent_call_outbound_24_regular"
     case .callOutbound28Filled: return "ic_fluent_call_outbound_28_filled"
@@ -9201,6 +9639,8 @@ import Foundation
     case .callProhibited48Regular: return "ic_fluent_call_prohibited_48_regular"
     case .callTransfer20Filled: return "ic_fluent_call_transfer_20_filled"
     case .callTransfer20Regular: return "ic_fluent_call_transfer_20_regular"
+    default: break }
+    switch self {
     case .calligraphyPen20Filled: return "ic_fluent_calligraphy_pen_20_filled"
     case .calligraphyPen20Regular: return "ic_fluent_calligraphy_pen_20_regular"
     case .calligraphyPen24Filled: return "ic_fluent_calligraphy_pen_24_filled"
@@ -9267,8 +9707,6 @@ import Foundation
     case .caretDownLeft24Regular: return "ic_fluent_caret_down_left_24_regular"
     case .caretLeft12Filled: return "ic_fluent_caret_left_12_filled"
     case .caretLeft12Regular: return "ic_fluent_caret_left_12_regular"
-    default: break }
-    switch self {
     case .caretLeft16Filled: return "ic_fluent_caret_left_16_filled"
     case .caretLeft16Regular: return "ic_fluent_caret_left_16_regular"
     case .caretLeft20Filled: return "ic_fluent_caret_left_20_filled"
@@ -9303,6 +9741,8 @@ import Foundation
     case .cast24Regular: return "ic_fluent_cast_24_regular"
     case .cast28Filled: return "ic_fluent_cast_28_filled"
     case .cast28Regular: return "ic_fluent_cast_28_regular"
+    default: break }
+    switch self {
     case .cellular3G24Filled: return "ic_fluent_cellular_3g_24_filled"
     case .cellular3G24Regular: return "ic_fluent_cellular_3g_24_regular"
     case .cellular4G24Filled: return "ic_fluent_cellular_4g_24_filled"
@@ -9335,8 +9775,12 @@ import Foundation
     case .cellularDataCellularUnavailable24Regular: return "ic_fluent_cellular_data_cellular_unavailable_24_regular"
     case .cellularDataUnavailable24Filled: return "ic_fluent_cellular_data_unavailable_24_filled"
     case .cellularDataUnavailable24Regular: return "ic_fluent_cellular_data_unavailable_24_regular"
+    case .cellularWarning24Filled: return "ic_fluent_cellular_warning_24_filled"
+    case .cellularWarning24Regular: return "ic_fluent_cellular_warning_24_regular"
     case .centerHorizontal24Filled: return "ic_fluent_center_horizontal_24_filled"
     case .centerHorizontal24Regular: return "ic_fluent_center_horizontal_24_regular"
+    case .centerVertical20Filled: return "ic_fluent_center_vertical_20_filled"
+    case .centerVertical20Regular: return "ic_fluent_center_vertical_20_regular"
     case .centerVertical24Filled: return "ic_fluent_center_vertical_24_filled"
     case .centerVertical24Regular: return "ic_fluent_center_vertical_24_regular"
     case .certificate20Filled: return "ic_fluent_certificate_20_filled"
@@ -9369,8 +9813,6 @@ import Foundation
     case .channelAlert20Regular: return "ic_fluent_channel_alert_20_regular"
     case .channelAlert24Filled: return "ic_fluent_channel_alert_24_filled"
     case .channelAlert24Regular: return "ic_fluent_channel_alert_24_regular"
-    default: break }
-    switch self {
     case .channelAlert28Filled: return "ic_fluent_channel_alert_28_filled"
     case .channelAlert28Regular: return "ic_fluent_channel_alert_28_regular"
     case .channelAlert48Filled: return "ic_fluent_channel_alert_48_filled"
@@ -9401,6 +9843,8 @@ import Foundation
     case .channelShare16Regular: return "ic_fluent_channel_share_16_regular"
     case .channelShare20Filled: return "ic_fluent_channel_share_20_filled"
     case .channelShare20Regular: return "ic_fluent_channel_share_20_regular"
+    default: break }
+    switch self {
     case .channelShare24Filled: return "ic_fluent_channel_share_24_filled"
     case .channelShare24Regular: return "ic_fluent_channel_share_24_regular"
     case .channelShare28Filled: return "ic_fluent_channel_share_28_filled"
@@ -9443,6 +9887,8 @@ import Foundation
     case .chatBubblesQuestion20Regular: return "ic_fluent_chat_bubbles_question_20_regular"
     case .chatBubblesQuestion24Filled: return "ic_fluent_chat_bubbles_question_24_filled"
     case .chatBubblesQuestion24Regular: return "ic_fluent_chat_bubbles_question_24_regular"
+    case .chatDismiss16Filled: return "ic_fluent_chat_dismiss_16_filled"
+    case .chatDismiss16Regular: return "ic_fluent_chat_dismiss_16_regular"
     case .chatHelp20Filled: return "ic_fluent_chat_help_20_filled"
     case .chatHelp20Regular: return "ic_fluent_chat_help_20_regular"
     case .chatHelp24Filled: return "ic_fluent_chat_help_24_filled"
@@ -9463,6 +9909,8 @@ import Foundation
     case .chatSettings20Regular: return "ic_fluent_chat_settings_20_regular"
     case .chatSettings24Filled: return "ic_fluent_chat_settings_24_filled"
     case .chatSettings24Regular: return "ic_fluent_chat_settings_24_regular"
+    case .chatWarning16Filled: return "ic_fluent_chat_warning_16_filled"
+    case .chatWarning16Regular: return "ic_fluent_chat_warning_16_regular"
     case .chatWarning24Filled: return "ic_fluent_chat_warning_24_filled"
     case .chatWarning24Regular: return "ic_fluent_chat_warning_24_regular"
     case .check20Filled: return "ic_fluent_check_20_filled"
@@ -9471,8 +9919,6 @@ import Foundation
     case .check24Regular: return "ic_fluent_check_24_regular"
     case .checkbox124Filled: return "ic_fluent_checkbox_1_24_filled"
     case .checkbox124Regular: return "ic_fluent_checkbox_1_24_regular"
-    default: break }
-    switch self {
     case .checkbox224Filled: return "ic_fluent_checkbox_2_24_filled"
     case .checkbox224Regular: return "ic_fluent_checkbox_2_24_regular"
     case .checkboxArrowRight24Filled: return "ic_fluent_checkbox_arrow_right_24_filled"
@@ -9487,12 +9933,20 @@ import Foundation
     case .checkboxCheckedSync16Regular: return "ic_fluent_checkbox_checked_sync_16_regular"
     case .checkboxCheckedSync20Filled: return "ic_fluent_checkbox_checked_sync_20_filled"
     case .checkboxCheckedSync20Regular: return "ic_fluent_checkbox_checked_sync_20_regular"
+    case .checkboxIndeterminate16Filled: return "ic_fluent_checkbox_indeterminate_16_filled"
+    case .checkboxIndeterminate16Regular: return "ic_fluent_checkbox_indeterminate_16_regular"
+    case .checkboxIndeterminate20Filled: return "ic_fluent_checkbox_indeterminate_20_filled"
+    case .checkboxIndeterminate20Regular: return "ic_fluent_checkbox_indeterminate_20_regular"
+    case .checkboxIndeterminate24Filled: return "ic_fluent_checkbox_indeterminate_24_filled"
+    case .checkboxIndeterminate24Regular: return "ic_fluent_checkbox_indeterminate_24_regular"
     case .checkboxPerson24Filled: return "ic_fluent_checkbox_person_24_filled"
     case .checkboxPerson24Regular: return "ic_fluent_checkbox_person_24_regular"
     case .checkboxUnchecked12Filled: return "ic_fluent_checkbox_unchecked_12_filled"
     case .checkboxUnchecked12Regular: return "ic_fluent_checkbox_unchecked_12_regular"
     case .checkboxUnchecked16Filled: return "ic_fluent_checkbox_unchecked_16_filled"
     case .checkboxUnchecked16Regular: return "ic_fluent_checkbox_unchecked_16_regular"
+    default: break }
+    switch self {
     case .checkboxUnchecked20Filled: return "ic_fluent_checkbox_unchecked_20_filled"
     case .checkboxUnchecked20Regular: return "ic_fluent_checkbox_unchecked_20_regular"
     case .checkboxUnchecked24Filled: return "ic_fluent_checkbox_unchecked_24_filled"
@@ -9541,6 +9995,8 @@ import Foundation
     case .checkmarkUnderlineCircle20Regular: return "ic_fluent_checkmark_underline_circle_20_regular"
     case .chevronCircleDown24Filled: return "ic_fluent_chevron_circle_down_24_filled"
     case .chevronCircleDown24Regular: return "ic_fluent_chevron_circle_down_24_regular"
+    case .chevronCircleRight12Filled: return "ic_fluent_chevron_circle_right_12_filled"
+    case .chevronCircleRight12Regular: return "ic_fluent_chevron_circle_right_12_regular"
     case .chevronCircleRight24Filled: return "ic_fluent_chevron_circle_right_24_filled"
     case .chevronCircleRight24Regular: return "ic_fluent_chevron_circle_right_24_regular"
     case .chevronDoubleDown16Filled: return "ic_fluent_chevron_double_down_16_filled"
@@ -9573,8 +10029,6 @@ import Foundation
     case .chevronDown48Regular: return "ic_fluent_chevron_down_48_regular"
     case .chevronLeft12Filled: return "ic_fluent_chevron_left_12_filled"
     case .chevronLeft12Regular: return "ic_fluent_chevron_left_12_regular"
-    default: break }
-    switch self {
     case .chevronLeft16Filled: return "ic_fluent_chevron_left_16_filled"
     case .chevronLeft16Regular: return "ic_fluent_chevron_left_16_regular"
     case .chevronLeft20Filled: return "ic_fluent_chevron_left_20_filled"
@@ -9593,6 +10047,8 @@ import Foundation
     case .chevronRight20Regular: return "ic_fluent_chevron_right_20_regular"
     case .chevronRight24Filled: return "ic_fluent_chevron_right_24_filled"
     case .chevronRight24Regular: return "ic_fluent_chevron_right_24_regular"
+    default: break }
+    switch self {
     case .chevronRight28Filled: return "ic_fluent_chevron_right_28_filled"
     case .chevronRight28Regular: return "ic_fluent_chevron_right_28_regular"
     case .chevronRight48Filled: return "ic_fluent_chevron_right_48_filled"
@@ -9637,6 +10093,8 @@ import Foundation
     case .circleLine12Regular: return "ic_fluent_circle_line_12_regular"
     case .circleLine24Filled: return "ic_fluent_circle_line_24_filled"
     case .circleLine24Regular: return "ic_fluent_circle_line_24_regular"
+    case .circleOff16Filled: return "ic_fluent_circle_off_16_filled"
+    case .circleOff16Regular: return "ic_fluent_circle_off_16_regular"
     case .circleSmall20Filled: return "ic_fluent_circle_small_20_filled"
     case .circleSmall20Regular: return "ic_fluent_circle_small_20_regular"
     case .circleSmall24Filled: return "ic_fluent_circle_small_24_filled"
@@ -9675,8 +10133,6 @@ import Foundation
     case .clipboardArrowRight16Regular: return "ic_fluent_clipboard_arrow_right_16_regular"
     case .clipboardArrowRight20Filled: return "ic_fluent_clipboard_arrow_right_20_filled"
     case .clipboardArrowRight20Regular: return "ic_fluent_clipboard_arrow_right_20_regular"
-    default: break }
-    switch self {
     case .clipboardArrowRight24Filled: return "ic_fluent_clipboard_arrow_right_24_filled"
     case .clipboardArrowRight24Regular: return "ic_fluent_clipboard_arrow_right_24_regular"
     case .clipboardBulletList16Filled: return "ic_fluent_clipboard_bullet_list_16_filled"
@@ -9693,6 +10149,8 @@ import Foundation
     case .clipboardCode20Regular: return "ic_fluent_clipboard_code_20_regular"
     case .clipboardCode24Filled: return "ic_fluent_clipboard_code_24_filled"
     case .clipboardCode24Regular: return "ic_fluent_clipboard_code_24_regular"
+    default: break }
+    switch self {
     case .clipboardDataBar32Filled: return "ic_fluent_clipboard_data_bar_32_filled"
     case .clipboardDataBar32Regular: return "ic_fluent_clipboard_data_bar_32_regular"
     case .clipboardError20Filled: return "ic_fluent_clipboard_error_20_filled"
@@ -9727,6 +10185,8 @@ import Foundation
     case .clipboardPaste24Regular: return "ic_fluent_clipboard_paste_24_regular"
     case .clipboardPulse20Filled: return "ic_fluent_clipboard_pulse_20_filled"
     case .clipboardPulse20Regular: return "ic_fluent_clipboard_pulse_20_regular"
+    case .clipboardPulse24Filled: return "ic_fluent_clipboard_pulse_24_filled"
+    case .clipboardPulse24Regular: return "ic_fluent_clipboard_pulse_24_regular"
     case .clipboardSearch20Filled: return "ic_fluent_clipboard_search_20_filled"
     case .clipboardSearch20Regular: return "ic_fluent_clipboard_search_20_regular"
     case .clipboardSearch24Filled: return "ic_fluent_clipboard_search_24_filled"
@@ -9773,12 +10233,12 @@ import Foundation
     case .clockAlarm32Regular: return "ic_fluent_clock_alarm_32_regular"
     case .clockArrowDownload20Filled: return "ic_fluent_clock_arrow_download_20_filled"
     case .clockArrowDownload20Regular: return "ic_fluent_clock_arrow_download_20_regular"
+    case .clockArrowDownload24Filled: return "ic_fluent_clock_arrow_download_24_filled"
+    case .clockArrowDownload24Regular: return "ic_fluent_clock_arrow_download_24_regular"
     case .clockDismiss24Filled: return "ic_fluent_clock_dismiss_24_filled"
     case .clockDismiss24Regular: return "ic_fluent_clock_dismiss_24_regular"
     case .closedCaption16Filled: return "ic_fluent_closed_caption_16_filled"
     case .closedCaption16Regular: return "ic_fluent_closed_caption_16_regular"
-    default: break }
-    switch self {
     case .closedCaption20Filled: return "ic_fluent_closed_caption_20_filled"
     case .closedCaption20Regular: return "ic_fluent_closed_caption_20_regular"
     case .closedCaption24Filled: return "ic_fluent_closed_caption_24_filled"
@@ -9791,6 +10251,8 @@ import Foundation
     case .closedCaptionOff16Regular: return "ic_fluent_closed_caption_off_16_regular"
     case .closedCaptionOff20Filled: return "ic_fluent_closed_caption_off_20_filled"
     case .closedCaptionOff20Regular: return "ic_fluent_closed_caption_off_20_regular"
+    default: break }
+    switch self {
     case .closedCaptionOff24Filled: return "ic_fluent_closed_caption_off_24_filled"
     case .closedCaptionOff24Regular: return "ic_fluent_closed_caption_off_24_regular"
     case .closedCaptionOff28Filled: return "ic_fluent_closed_caption_off_28_filled"
@@ -9813,6 +10275,30 @@ import Foundation
     case .cloudAdd16Regular: return "ic_fluent_cloud_add_16_regular"
     case .cloudAdd20Filled: return "ic_fluent_cloud_add_20_filled"
     case .cloudAdd20Regular: return "ic_fluent_cloud_add_20_regular"
+    case .cloudArrowDown16Filled: return "ic_fluent_cloud_arrow_down_16_filled"
+    case .cloudArrowDown16Regular: return "ic_fluent_cloud_arrow_down_16_regular"
+    case .cloudArrowDown20Filled: return "ic_fluent_cloud_arrow_down_20_filled"
+    case .cloudArrowDown20Regular: return "ic_fluent_cloud_arrow_down_20_regular"
+    case .cloudArrowDown24Filled: return "ic_fluent_cloud_arrow_down_24_filled"
+    case .cloudArrowDown24Regular: return "ic_fluent_cloud_arrow_down_24_regular"
+    case .cloudArrowDown28Filled: return "ic_fluent_cloud_arrow_down_28_filled"
+    case .cloudArrowDown28Regular: return "ic_fluent_cloud_arrow_down_28_regular"
+    case .cloudArrowDown32Filled: return "ic_fluent_cloud_arrow_down_32_filled"
+    case .cloudArrowDown32Regular: return "ic_fluent_cloud_arrow_down_32_regular"
+    case .cloudArrowDown48Filled: return "ic_fluent_cloud_arrow_down_48_filled"
+    case .cloudArrowDown48Regular: return "ic_fluent_cloud_arrow_down_48_regular"
+    case .cloudArrowUp16Filled: return "ic_fluent_cloud_arrow_up_16_filled"
+    case .cloudArrowUp16Regular: return "ic_fluent_cloud_arrow_up_16_regular"
+    case .cloudArrowUp20Filled: return "ic_fluent_cloud_arrow_up_20_filled"
+    case .cloudArrowUp20Regular: return "ic_fluent_cloud_arrow_up_20_regular"
+    case .cloudArrowUp24Filled: return "ic_fluent_cloud_arrow_up_24_filled"
+    case .cloudArrowUp24Regular: return "ic_fluent_cloud_arrow_up_24_regular"
+    case .cloudArrowUp28Filled: return "ic_fluent_cloud_arrow_up_28_filled"
+    case .cloudArrowUp28Regular: return "ic_fluent_cloud_arrow_up_28_regular"
+    case .cloudArrowUp32Filled: return "ic_fluent_cloud_arrow_up_32_filled"
+    case .cloudArrowUp32Regular: return "ic_fluent_cloud_arrow_up_32_regular"
+    case .cloudArrowUp48Filled: return "ic_fluent_cloud_arrow_up_48_filled"
+    case .cloudArrowUp48Regular: return "ic_fluent_cloud_arrow_up_48_regular"
     case .cloudBackup16Filled: return "ic_fluent_cloud_backup_16_filled"
     case .cloudBackup16Regular: return "ic_fluent_cloud_backup_16_regular"
     case .cloudBackup20Filled: return "ic_fluent_cloud_backup_20_filled"
@@ -9825,6 +10311,30 @@ import Foundation
     case .cloudBackup32Regular: return "ic_fluent_cloud_backup_32_regular"
     case .cloudBackup48Filled: return "ic_fluent_cloud_backup_48_filled"
     case .cloudBackup48Regular: return "ic_fluent_cloud_backup_48_regular"
+    case .cloudCheckmark16Filled: return "ic_fluent_cloud_checkmark_16_filled"
+    case .cloudCheckmark16Regular: return "ic_fluent_cloud_checkmark_16_regular"
+    case .cloudCheckmark20Filled: return "ic_fluent_cloud_checkmark_20_filled"
+    case .cloudCheckmark20Regular: return "ic_fluent_cloud_checkmark_20_regular"
+    case .cloudCheckmark24Filled: return "ic_fluent_cloud_checkmark_24_filled"
+    case .cloudCheckmark24Regular: return "ic_fluent_cloud_checkmark_24_regular"
+    case .cloudCheckmark28Filled: return "ic_fluent_cloud_checkmark_28_filled"
+    case .cloudCheckmark28Regular: return "ic_fluent_cloud_checkmark_28_regular"
+    case .cloudCheckmark32Filled: return "ic_fluent_cloud_checkmark_32_filled"
+    case .cloudCheckmark32Regular: return "ic_fluent_cloud_checkmark_32_regular"
+    case .cloudCheckmark48Filled: return "ic_fluent_cloud_checkmark_48_filled"
+    case .cloudCheckmark48Regular: return "ic_fluent_cloud_checkmark_48_regular"
+    case .cloudDismiss16Filled: return "ic_fluent_cloud_dismiss_16_filled"
+    case .cloudDismiss16Regular: return "ic_fluent_cloud_dismiss_16_regular"
+    case .cloudDismiss20Filled: return "ic_fluent_cloud_dismiss_20_filled"
+    case .cloudDismiss20Regular: return "ic_fluent_cloud_dismiss_20_regular"
+    case .cloudDismiss24Filled: return "ic_fluent_cloud_dismiss_24_filled"
+    case .cloudDismiss24Regular: return "ic_fluent_cloud_dismiss_24_regular"
+    case .cloudDismiss28Filled: return "ic_fluent_cloud_dismiss_28_filled"
+    case .cloudDismiss28Regular: return "ic_fluent_cloud_dismiss_28_regular"
+    case .cloudDismiss32Filled: return "ic_fluent_cloud_dismiss_32_filled"
+    case .cloudDismiss32Regular: return "ic_fluent_cloud_dismiss_32_regular"
+    case .cloudDismiss48Filled: return "ic_fluent_cloud_dismiss_48_filled"
+    case .cloudDismiss48Regular: return "ic_fluent_cloud_dismiss_48_regular"
     case .cloudDownload16Filled: return "ic_fluent_cloud_download_16_filled"
     case .cloudDownload16Regular: return "ic_fluent_cloud_download_16_regular"
     case .cloudDownload20Filled: return "ic_fluent_cloud_download_20_filled"
@@ -9843,6 +10353,10 @@ import Foundation
     case .cloudEdit20Regular: return "ic_fluent_cloud_edit_20_regular"
     case .cloudFlow20Filled: return "ic_fluent_cloud_flow_20_filled"
     case .cloudFlow20Regular: return "ic_fluent_cloud_flow_20_regular"
+    default: break }
+    switch self {
+    case .cloudFlow24Filled: return "ic_fluent_cloud_flow_24_filled"
+    case .cloudFlow24Regular: return "ic_fluent_cloud_flow_24_regular"
     case .cloudLink16Filled: return "ic_fluent_cloud_link_16_filled"
     case .cloudLink16Regular: return "ic_fluent_cloud_link_16_regular"
     case .cloudLink20Filled: return "ic_fluent_cloud_link_20_filled"
@@ -9861,6 +10375,10 @@ import Foundation
     case .cloudOff48Regular: return "ic_fluent_cloud_off_48_regular"
     case .cloudOffline24Filled: return "ic_fluent_cloud_offline_24_filled"
     case .cloudOffline24Regular: return "ic_fluent_cloud_offline_24_regular"
+    case .cloudSwap20Filled: return "ic_fluent_cloud_swap_20_filled"
+    case .cloudSwap20Regular: return "ic_fluent_cloud_swap_20_regular"
+    case .cloudSwap24Filled: return "ic_fluent_cloud_swap_24_filled"
+    case .cloudSwap24Regular: return "ic_fluent_cloud_swap_24_regular"
     case .cloudSync16Filled: return "ic_fluent_cloud_sync_16_filled"
     case .cloudSync16Regular: return "ic_fluent_cloud_sync_16_regular"
     case .cloudSync20Filled: return "ic_fluent_cloud_sync_20_filled"
@@ -9879,8 +10397,6 @@ import Foundation
     case .cloudSyncComplete20Regular: return "ic_fluent_cloud_sync_complete_20_regular"
     case .cloudSyncComplete24Filled: return "ic_fluent_cloud_sync_complete_24_filled"
     case .cloudSyncComplete24Regular: return "ic_fluent_cloud_sync_complete_24_regular"
-    default: break }
-    switch self {
     case .cloudSyncComplete28Filled: return "ic_fluent_cloud_sync_complete_28_filled"
     case .cloudSyncComplete28Regular: return "ic_fluent_cloud_sync_complete_28_regular"
     case .cloudSyncComplete32Filled: return "ic_fluent_cloud_sync_complete_32_filled"
@@ -9893,6 +10409,8 @@ import Foundation
     case .code20Regular: return "ic_fluent_code_20_regular"
     case .code24Filled: return "ic_fluent_code_24_filled"
     case .code24Regular: return "ic_fluent_code_24_regular"
+    case .codeCircle20Filled: return "ic_fluent_code_circle_20_filled"
+    case .codeCircle20Regular: return "ic_fluent_code_circle_20_regular"
     case .collections20Filled: return "ic_fluent_collections_20_filled"
     case .collections20Regular: return "ic_fluent_collections_20_regular"
     case .collections24Filled: return "ic_fluent_collections_24_filled"
@@ -9937,6 +10455,8 @@ import Foundation
     case .columnTriple24Filled: return "ic_fluent_column_triple_24_filled"
     case .columnTriple24Regular: return "ic_fluent_column_triple_24_regular"
     case .columnTripleEdit20Filled: return "ic_fluent_column_triple_edit_20_filled"
+    default: break }
+    switch self {
     case .columnTripleEdit20Regular: return "ic_fluent_column_triple_edit_20_regular"
     case .columnTripleEdit24Filled: return "ic_fluent_column_triple_edit_24_filled"
     case .columnTripleEdit24Regular: return "ic_fluent_column_triple_edit_24_regular"
@@ -9981,8 +10501,6 @@ import Foundation
     case .commentArrowRight12Filled: return "ic_fluent_comment_arrow_right_12_filled"
     case .commentArrowRight12Regular: return "ic_fluent_comment_arrow_right_12_regular"
     case .commentArrowRight16Filled: return "ic_fluent_comment_arrow_right_16_filled"
-    default: break }
-    switch self {
     case .commentArrowRight16Regular: return "ic_fluent_comment_arrow_right_16_regular"
     case .commentArrowRight20Filled: return "ic_fluent_comment_arrow_right_20_filled"
     case .commentArrowRight20Regular: return "ic_fluent_comment_arrow_right_20_regular"
@@ -10030,6 +10548,18 @@ import Foundation
     case .commentMultiple20Regular: return "ic_fluent_comment_multiple_20_regular"
     case .commentMultiple24Filled: return "ic_fluent_comment_multiple_24_filled"
     case .commentMultiple24Regular: return "ic_fluent_comment_multiple_24_regular"
+    case .commentMultiple28Filled: return "ic_fluent_comment_multiple_28_filled"
+    case .commentMultiple28Regular: return "ic_fluent_comment_multiple_28_regular"
+    case .commentMultipleCheckmark16Filled: return "ic_fluent_comment_multiple_checkmark_16_filled"
+    case .commentMultipleCheckmark16Regular: return "ic_fluent_comment_multiple_checkmark_16_regular"
+    case .commentMultipleCheckmark20Filled: return "ic_fluent_comment_multiple_checkmark_20_filled"
+    case .commentMultipleCheckmark20Regular: return "ic_fluent_comment_multiple_checkmark_20_regular"
+    case .commentMultipleCheckmark24Filled: return "ic_fluent_comment_multiple_checkmark_24_filled"
+    case .commentMultipleCheckmark24Regular: return "ic_fluent_comment_multiple_checkmark_24_regular"
+    case .commentMultipleCheckmark28Filled: return "ic_fluent_comment_multiple_checkmark_28_filled"
+    default: break }
+    switch self {
+    case .commentMultipleCheckmark28Regular: return "ic_fluent_comment_multiple_checkmark_28_regular"
     case .commentNote24Filled: return "ic_fluent_comment_note_24_filled"
     case .commentNote24Regular: return "ic_fluent_comment_note_24_regular"
     case .commentOff16Filled: return "ic_fluent_comment_off_16_filled"
@@ -10083,8 +10613,6 @@ import Foundation
     case .conferenceRoom48Filled: return "ic_fluent_conference_room_48_filled"
     case .conferenceRoom48Regular: return "ic_fluent_conference_room_48_regular"
     case .connector16Filled: return "ic_fluent_connector_16_filled"
-    default: break }
-    switch self {
     case .connector16Regular: return "ic_fluent_connector_16_regular"
     case .connector20Filled: return "ic_fluent_connector_20_filled"
     case .connector20Regular: return "ic_fluent_connector_20_regular"
@@ -10131,6 +10659,8 @@ import Foundation
     case .contentViewGallery20Filled: return "ic_fluent_content_view_gallery_20_filled"
     case .contentViewGallery20Regular: return "ic_fluent_content_view_gallery_20_regular"
     case .contractDownLeft16Filled: return "ic_fluent_contract_down_left_16_filled"
+    default: break }
+    switch self {
     case .contractDownLeft16Regular: return "ic_fluent_contract_down_left_16_regular"
     case .contractDownLeft20Filled: return "ic_fluent_contract_down_left_20_filled"
     case .contractDownLeft20Regular: return "ic_fluent_contract_down_left_20_regular"
@@ -10185,9 +10715,9 @@ import Foundation
     case .cropInterim24Filled: return "ic_fluent_crop_interim_24_filled"
     case .cropInterim24Regular: return "ic_fluent_crop_interim_24_regular"
     case .cropInterimOff24Filled: return "ic_fluent_crop_interim_off_24_filled"
-    default: break }
-    switch self {
     case .cropInterimOff24Regular: return "ic_fluent_crop_interim_off_24_regular"
+    case .cube12Filled: return "ic_fluent_cube_12_filled"
+    case .cube12Regular: return "ic_fluent_cube_12_regular"
     case .cube16Filled: return "ic_fluent_cube_16_filled"
     case .cube16Regular: return "ic_fluent_cube_16_regular"
     case .cube20Filled: return "ic_fluent_cube_20_filled"
@@ -10231,6 +10761,8 @@ import Foundation
     case .cursorHover48Filled: return "ic_fluent_cursor_hover_48_filled"
     case .cursorHover48Regular: return "ic_fluent_cursor_hover_48_regular"
     case .cursorHoverOff16Filled: return "ic_fluent_cursor_hover_off_16_filled"
+    default: break }
+    switch self {
     case .cursorHoverOff16Regular: return "ic_fluent_cursor_hover_off_16_regular"
     case .cursorHoverOff20Filled: return "ic_fluent_cursor_hover_off_20_filled"
     case .cursorHoverOff20Regular: return "ic_fluent_cursor_hover_off_20_regular"
@@ -10287,8 +10819,6 @@ import Foundation
     case .dataUsage24Filled: return "ic_fluent_data_usage_24_filled"
     case .dataUsage24Regular: return "ic_fluent_data_usage_24_regular"
     case .dataUsageEdit20Filled: return "ic_fluent_data_usage_edit_20_filled"
-    default: break }
-    switch self {
     case .dataUsageEdit20Regular: return "ic_fluent_data_usage_edit_20_regular"
     case .dataUsageEdit24Filled: return "ic_fluent_data_usage_edit_24_filled"
     case .dataUsageEdit24Regular: return "ic_fluent_data_usage_edit_24_regular"
@@ -10333,6 +10863,8 @@ import Foundation
     case .dentist16Filled: return "ic_fluent_dentist_16_filled"
     case .dentist16Regular: return "ic_fluent_dentist_16_regular"
     case .dentist20Filled: return "ic_fluent_dentist_20_filled"
+    default: break }
+    switch self {
     case .dentist20Regular: return "ic_fluent_dentist_20_regular"
     case .dentist24Filled: return "ic_fluent_dentist_24_filled"
     case .dentist24Regular: return "ic_fluent_dentist_24_regular"
@@ -10389,13 +10921,13 @@ import Foundation
     case .desktopSpeakerOff24Filled: return "ic_fluent_desktop_speaker_off_24_filled"
     case .desktopSpeakerOff24Regular: return "ic_fluent_desktop_speaker_off_24_regular"
     case .desktopSync16Filled: return "ic_fluent_desktop_sync_16_filled"
-    default: break }
-    switch self {
     case .desktopSync16Regular: return "ic_fluent_desktop_sync_16_regular"
     case .developerBoard20Filled: return "ic_fluent_developer_board_20_filled"
     case .developerBoard20Regular: return "ic_fluent_developer_board_20_regular"
     case .developerBoard24Filled: return "ic_fluent_developer_board_24_filled"
     case .developerBoard24Regular: return "ic_fluent_developer_board_24_regular"
+    case .developerBoardSearch20Filled: return "ic_fluent_developer_board_search_20_filled"
+    case .developerBoardSearch20Regular: return "ic_fluent_developer_board_search_20_regular"
     case .deviceEq24Filled: return "ic_fluent_device_eq_24_filled"
     case .deviceEq24Regular: return "ic_fluent_device_eq_24_regular"
     case .deviceMeetingRoom16Filled: return "ic_fluent_device_meeting_room_16_filled"
@@ -10433,6 +10965,8 @@ import Foundation
     case .directions16Filled: return "ic_fluent_directions_16_filled"
     case .directions16Regular: return "ic_fluent_directions_16_regular"
     case .directions20Filled: return "ic_fluent_directions_20_filled"
+    default: break }
+    switch self {
     case .directions20Regular: return "ic_fluent_directions_20_regular"
     case .directions24Filled: return "ic_fluent_directions_24_filled"
     case .directions24Regular: return "ic_fluent_directions_24_regular"
@@ -10491,8 +11025,6 @@ import Foundation
     case .dockPanelLeft28Filled: return "ic_fluent_dock_panel_left_28_filled"
     case .dockPanelLeft28Regular: return "ic_fluent_dock_panel_left_28_regular"
     case .dockPanelLeft48Filled: return "ic_fluent_dock_panel_left_48_filled"
-    default: break }
-    switch self {
     case .dockPanelLeft48Regular: return "ic_fluent_dock_panel_left_48_regular"
     case .dockPanelRight16Filled: return "ic_fluent_dock_panel_right_16_filled"
     case .dockPanelRight16Regular: return "ic_fluent_dock_panel_right_16_regular"
@@ -10535,6 +11067,8 @@ import Foundation
     case .documentAdd20Filled: return "ic_fluent_document_add_20_filled"
     case .documentAdd20Regular: return "ic_fluent_document_add_20_regular"
     case .documentAdd24Filled: return "ic_fluent_document_add_24_filled"
+    default: break }
+    switch self {
     case .documentAdd24Regular: return "ic_fluent_document_add_24_regular"
     case .documentAdd28Filled: return "ic_fluent_document_add_28_filled"
     case .documentAdd28Regular: return "ic_fluent_document_add_28_regular"
@@ -10554,6 +11088,8 @@ import Foundation
     case .documentArrowLeft28Regular: return "ic_fluent_document_arrow_left_28_regular"
     case .documentArrowLeft48Filled: return "ic_fluent_document_arrow_left_48_filled"
     case .documentArrowLeft48Regular: return "ic_fluent_document_arrow_left_48_regular"
+    case .documentArrowRight20Filled: return "ic_fluent_document_arrow_right_20_filled"
+    case .documentArrowRight20Regular: return "ic_fluent_document_arrow_right_20_regular"
     case .documentArrowRight24Filled: return "ic_fluent_document_arrow_right_24_filled"
     case .documentArrowRight24Regular: return "ic_fluent_document_arrow_right_24_regular"
     case .documentArrowUp16Filled: return "ic_fluent_document_arrow_up_16_filled"
@@ -10582,6 +11118,8 @@ import Foundation
     case .documentCatchUp24Regular: return "ic_fluent_document_catch_up_24_regular"
     case .documentCheckmark24Filled: return "ic_fluent_document_checkmark_24_filled"
     case .documentCheckmark24Regular: return "ic_fluent_document_checkmark_24_regular"
+    case .documentChevronDouble24Filled: return "ic_fluent_document_chevron_double_24_filled"
+    case .documentChevronDouble24Regular: return "ic_fluent_document_chevron_double_24_regular"
     case .documentCopy16Filled: return "ic_fluent_document_copy_16_filled"
     case .documentCopy16Regular: return "ic_fluent_document_copy_16_regular"
     case .documentCopy20Filled: return "ic_fluent_document_copy_20_filled"
@@ -10590,11 +11128,11 @@ import Foundation
     case .documentCopy24Regular: return "ic_fluent_document_copy_24_regular"
     case .documentCopy48Filled: return "ic_fluent_document_copy_48_filled"
     case .documentCopy48Regular: return "ic_fluent_document_copy_48_regular"
+    case .documentCss24Filled: return "ic_fluent_document_css_24_filled"
+    case .documentCss24Regular: return "ic_fluent_document_css_24_regular"
     case .documentDismiss16Filled: return "ic_fluent_document_dismiss_16_filled"
     case .documentDismiss16Regular: return "ic_fluent_document_dismiss_16_regular"
     case .documentDismiss20Filled: return "ic_fluent_document_dismiss_20_filled"
-    default: break }
-    switch self {
     case .documentDismiss20Regular: return "ic_fluent_document_dismiss_20_regular"
     case .documentDismiss24Filled: return "ic_fluent_document_dismiss_24_filled"
     case .documentDismiss24Regular: return "ic_fluent_document_dismiss_24_regular"
@@ -10631,6 +11169,8 @@ import Foundation
     case .documentHeaderDismiss24Filled: return "ic_fluent_document_header_dismiss_24_filled"
     case .documentHeaderDismiss24Regular: return "ic_fluent_document_header_dismiss_24_regular"
     case .documentHeaderFooter16Filled: return "ic_fluent_document_header_footer_16_filled"
+    default: break }
+    switch self {
     case .documentHeaderFooter16Regular: return "ic_fluent_document_header_footer_16_regular"
     case .documentHeaderFooter20Filled: return "ic_fluent_document_header_footer_20_filled"
     case .documentHeaderFooter20Regular: return "ic_fluent_document_header_footer_20_regular"
@@ -10646,6 +11186,8 @@ import Foundation
     case .documentHeartPulse20Regular: return "ic_fluent_document_heart_pulse_20_regular"
     case .documentHeartPulse24Filled: return "ic_fluent_document_heart_pulse_24_filled"
     case .documentHeartPulse24Regular: return "ic_fluent_document_heart_pulse_24_regular"
+    case .documentJavascript24Filled: return "ic_fluent_document_javascript_24_filled"
+    case .documentJavascript24Regular: return "ic_fluent_document_javascript_24_regular"
     case .documentLandscape20Filled: return "ic_fluent_document_landscape_20_filled"
     case .documentLandscape20Regular: return "ic_fluent_document_landscape_20_regular"
     case .documentLandscape24Filled: return "ic_fluent_document_landscape_24_filled"
@@ -10670,6 +11212,8 @@ import Foundation
     case .documentMultiple16Regular: return "ic_fluent_document_multiple_16_regular"
     case .documentMultiple20Filled: return "ic_fluent_document_multiple_20_filled"
     case .documentMultiple20Regular: return "ic_fluent_document_multiple_20_regular"
+    case .documentMultiplePercent20Filled: return "ic_fluent_document_multiple_percent_20_filled"
+    case .documentMultiplePercent20Regular: return "ic_fluent_document_multiple_percent_20_regular"
     case .documentMultipleProhibited20Filled: return "ic_fluent_document_multiple_prohibited_20_filled"
     case .documentMultipleProhibited20Regular: return "ic_fluent_document_multiple_prohibited_20_regular"
     case .documentMultipleProhibited24Filled: return "ic_fluent_document_multiple_prohibited_24_filled"
@@ -10695,8 +11239,6 @@ import Foundation
     case .documentPageBreak24Filled: return "ic_fluent_document_page_break_24_filled"
     case .documentPageBreak24Regular: return "ic_fluent_document_page_break_24_regular"
     case .documentPageNumber20Filled: return "ic_fluent_document_page_number_20_filled"
-    default: break }
-    switch self {
     case .documentPageNumber20Regular: return "ic_fluent_document_page_number_20_regular"
     case .documentPageNumber24Filled: return "ic_fluent_document_page_number_24_filled"
     case .documentPageNumber24Regular: return "ic_fluent_document_page_number_24_regular"
@@ -10720,11 +11262,17 @@ import Foundation
     case .documentPdf24Regular: return "ic_fluent_document_pdf_24_regular"
     case .documentPdf32Filled: return "ic_fluent_document_pdf_32_filled"
     case .documentPdf32Regular: return "ic_fluent_document_pdf_32_regular"
+    case .documentPercent20Filled: return "ic_fluent_document_percent_20_filled"
+    case .documentPercent20Regular: return "ic_fluent_document_percent_20_regular"
+    case .documentPercent24Filled: return "ic_fluent_document_percent_24_filled"
+    case .documentPercent24Regular: return "ic_fluent_document_percent_24_regular"
     case .documentPerson16Filled: return "ic_fluent_document_person_16_filled"
     case .documentPerson16Regular: return "ic_fluent_document_person_16_regular"
     case .documentPerson20Filled: return "ic_fluent_document_person_20_filled"
     case .documentPerson20Regular: return "ic_fluent_document_person_20_regular"
     case .documentPill20Filled: return "ic_fluent_document_pill_20_filled"
+    default: break }
+    switch self {
     case .documentPill20Regular: return "ic_fluent_document_pill_20_regular"
     case .documentPill24Filled: return "ic_fluent_document_pill_24_filled"
     case .documentPill24Regular: return "ic_fluent_document_pill_24_regular"
@@ -10762,10 +11310,20 @@ import Foundation
     case .documentSearch24Regular: return "ic_fluent_document_search_24_regular"
     case .documentSettings16Filled: return "ic_fluent_document_settings_16_filled"
     case .documentSettings16Regular: return "ic_fluent_document_settings_16_regular"
+    case .documentSettings20Filled: return "ic_fluent_document_settings_20_filled"
+    case .documentSettings20Regular: return "ic_fluent_document_settings_20_regular"
+    case .documentSplitHint16Filled: return "ic_fluent_document_split_hint_16_filled"
+    case .documentSplitHint16Regular: return "ic_fluent_document_split_hint_16_regular"
+    case .documentSplitHint20Filled: return "ic_fluent_document_split_hint_20_filled"
+    case .documentSplitHint20Regular: return "ic_fluent_document_split_hint_20_regular"
     case .documentSplitHint24Filled: return "ic_fluent_document_split_hint_24_filled"
     case .documentSplitHint24Regular: return "ic_fluent_document_split_hint_24_regular"
     case .documentSplitHintOff24Filled: return "ic_fluent_document_split_hint_off_24_filled"
     case .documentSplitHintOff24Regular: return "ic_fluent_document_split_hint_off_24_regular"
+    case .documentSync16Filled: return "ic_fluent_document_sync_16_filled"
+    case .documentSync16Regular: return "ic_fluent_document_sync_16_regular"
+    case .documentSync20Filled: return "ic_fluent_document_sync_20_filled"
+    case .documentSync20Regular: return "ic_fluent_document_sync_20_regular"
     case .documentSync24Filled: return "ic_fluent_document_sync_24_filled"
     case .documentSync24Regular: return "ic_fluent_document_sync_24_regular"
     case .documentToolbox20Filled: return "ic_fluent_document_toolbox_20_filled"
@@ -10786,6 +11344,10 @@ import Foundation
     case .doorArrowLeft20Regular: return "ic_fluent_door_arrow_left_20_regular"
     case .doorArrowLeft24Filled: return "ic_fluent_door_arrow_left_24_filled"
     case .doorArrowLeft24Regular: return "ic_fluent_door_arrow_left_24_regular"
+    case .doorArrowRight16Filled: return "ic_fluent_door_arrow_right_16_filled"
+    case .doorArrowRight16Regular: return "ic_fluent_door_arrow_right_16_regular"
+    case .doorArrowRight20Filled: return "ic_fluent_door_arrow_right_20_filled"
+    case .doorArrowRight20Regular: return "ic_fluent_door_arrow_right_20_regular"
     case .doorTag24Filled: return "ic_fluent_door_tag_24_filled"
     case .doorTag24Regular: return "ic_fluent_door_tag_24_regular"
     case .doubleSwipeDown24Filled: return "ic_fluent_double_swipe_down_24_filled"
@@ -10797,8 +11359,6 @@ import Foundation
     case .drafts20Filled: return "ic_fluent_drafts_20_filled"
     case .drafts20Regular: return "ic_fluent_drafts_20_regular"
     case .drafts24Filled: return "ic_fluent_drafts_24_filled"
-    default: break }
-    switch self {
     case .drafts24Regular: return "ic_fluent_drafts_24_regular"
     case .drag24Filled: return "ic_fluent_drag_24_filled"
     case .drag24Regular: return "ic_fluent_drag_24_regular"
@@ -10813,6 +11373,8 @@ import Foundation
     case .drinkBeer24Filled: return "ic_fluent_drink_beer_24_filled"
     case .drinkBeer24Regular: return "ic_fluent_drink_beer_24_regular"
     case .drinkCoffee16Filled: return "ic_fluent_drink_coffee_16_filled"
+    default: break }
+    switch self {
     case .drinkCoffee16Regular: return "ic_fluent_drink_coffee_16_regular"
     case .drinkCoffee20Filled: return "ic_fluent_drink_coffee_20_filled"
     case .drinkCoffee20Regular: return "ic_fluent_drink_coffee_20_regular"
@@ -10846,6 +11408,8 @@ import Foundation
     case .drop28Regular: return "ic_fluent_drop_28_regular"
     case .drop48Filled: return "ic_fluent_drop_48_filled"
     case .drop48Regular: return "ic_fluent_drop_48_regular"
+    case .dualScreen20Filled: return "ic_fluent_dual_screen_20_filled"
+    case .dualScreen20Regular: return "ic_fluent_dual_screen_20_regular"
     case .dualScreen24Filled: return "ic_fluent_dual_screen_24_filled"
     case .dualScreen24Regular: return "ic_fluent_dual_screen_24_regular"
     case .dualScreenAdd24Filled: return "ic_fluent_dual_screen_add_24_filled"
@@ -10899,8 +11463,6 @@ import Foundation
     case .earth16Filled: return "ic_fluent_earth_16_filled"
     case .earth16Regular: return "ic_fluent_earth_16_regular"
     case .earth20Filled: return "ic_fluent_earth_20_filled"
-    default: break }
-    switch self {
     case .earth20Regular: return "ic_fluent_earth_20_regular"
     case .earth24Filled: return "ic_fluent_earth_24_filled"
     case .earth24Regular: return "ic_fluent_earth_24_regular"
@@ -10913,6 +11475,8 @@ import Foundation
     case .edit32Filled: return "ic_fluent_edit_32_filled"
     case .edit32Regular: return "ic_fluent_edit_32_regular"
     case .editArrowBack16Filled: return "ic_fluent_edit_arrow_back_16_filled"
+    default: break }
+    switch self {
     case .editArrowBack16Regular: return "ic_fluent_edit_arrow_back_16_regular"
     case .editArrowBack20Filled: return "ic_fluent_edit_arrow_back_20_filled"
     case .editArrowBack20Regular: return "ic_fluent_edit_arrow_back_20_regular"
@@ -11001,8 +11565,6 @@ import Foundation
     case .errorCircleSettings20Filled: return "ic_fluent_error_circle_settings_20_filled"
     case .errorCircleSettings20Regular: return "ic_fluent_error_circle_settings_20_regular"
     case .expandUpLeft16Filled: return "ic_fluent_expand_up_left_16_filled"
-    default: break }
-    switch self {
     case .expandUpLeft16Regular: return "ic_fluent_expand_up_left_16_regular"
     case .expandUpLeft20Filled: return "ic_fluent_expand_up_left_20_filled"
     case .expandUpLeft20Regular: return "ic_fluent_expand_up_left_20_regular"
@@ -11015,6 +11577,8 @@ import Foundation
     case .expandUpLeft48Filled: return "ic_fluent_expand_up_left_48_filled"
     case .expandUpLeft48Regular: return "ic_fluent_expand_up_left_48_regular"
     case .expandUpRight16Filled: return "ic_fluent_expand_up_right_16_filled"
+    default: break }
+    switch self {
     case .expandUpRight16Regular: return "ic_fluent_expand_up_right_16_regular"
     case .expandUpRight20Filled: return "ic_fluent_expand_up_right_20_filled"
     case .expandUpRight20Regular: return "ic_fluent_expand_up_right_20_regular"
@@ -11103,8 +11667,6 @@ import Foundation
     case .fingerprint48Filled: return "ic_fluent_fingerprint_48_filled"
     case .fingerprint48Regular: return "ic_fluent_fingerprint_48_regular"
     case .fixedWidth24Filled: return "ic_fluent_fixed_width_24_filled"
-    default: break }
-    switch self {
     case .fixedWidth24Regular: return "ic_fluent_fixed_width_24_regular"
     case .flag16Filled: return "ic_fluent_flag_16_filled"
     case .flag16Regular: return "ic_fluent_flag_16_regular"
@@ -11117,6 +11679,8 @@ import Foundation
     case .flag48Filled: return "ic_fluent_flag_48_filled"
     case .flag48Regular: return "ic_fluent_flag_48_regular"
     case .flagOff16Filled: return "ic_fluent_flag_off_16_filled"
+    default: break }
+    switch self {
     case .flagOff16Regular: return "ic_fluent_flag_off_16_regular"
     case .flagOff20Filled: return "ic_fluent_flag_off_20_filled"
     case .flagOff20Regular: return "ic_fluent_flag_off_20_regular"
@@ -11205,8 +11769,6 @@ import Foundation
     case .folderArrowRight16Regular: return "ic_fluent_folder_arrow_right_16_regular"
     case .folderArrowRight20Filled: return "ic_fluent_folder_arrow_right_20_filled"
     case .folderArrowRight20Regular: return "ic_fluent_folder_arrow_right_20_regular"
-    default: break }
-    switch self {
     case .folderArrowRight24Filled: return "ic_fluent_folder_arrow_right_24_filled"
     case .folderArrowRight24Regular: return "ic_fluent_folder_arrow_right_24_regular"
     case .folderArrowRight28Filled: return "ic_fluent_folder_arrow_right_28_filled"
@@ -11219,6 +11781,8 @@ import Foundation
     case .folderArrowUp20Regular: return "ic_fluent_folder_arrow_up_20_regular"
     case .folderArrowUp24Filled: return "ic_fluent_folder_arrow_up_24_filled"
     case .folderArrowUp24Regular: return "ic_fluent_folder_arrow_up_24_regular"
+    default: break }
+    switch self {
     case .folderArrowUp28Filled: return "ic_fluent_folder_arrow_up_28_filled"
     case .folderArrowUp28Regular: return "ic_fluent_folder_arrow_up_28_regular"
     case .folderArrowUp48Filled: return "ic_fluent_folder_arrow_up_48_filled"
@@ -11307,8 +11871,6 @@ import Foundation
     case .food16Regular: return "ic_fluent_food_16_regular"
     case .food20Filled: return "ic_fluent_food_20_filled"
     case .food20Regular: return "ic_fluent_food_20_regular"
-    default: break }
-    switch self {
     case .food24Filled: return "ic_fluent_food_24_filled"
     case .food24Regular: return "ic_fluent_food_24_regular"
     case .foodCake16Filled: return "ic_fluent_food_cake_16_filled"
@@ -11321,6 +11883,8 @@ import Foundation
     case .foodEgg16Regular: return "ic_fluent_food_egg_16_regular"
     case .foodEgg20Filled: return "ic_fluent_food_egg_20_filled"
     case .foodEgg20Regular: return "ic_fluent_food_egg_20_regular"
+    default: break }
+    switch self {
     case .foodEgg24Filled: return "ic_fluent_food_egg_24_filled"
     case .foodEgg24Regular: return "ic_fluent_food_egg_24_regular"
     case .foodPizza20Filled: return "ic_fluent_food_pizza_20_filled"
@@ -11409,8 +11973,6 @@ import Foundation
     case .gift20Regular: return "ic_fluent_gift_20_regular"
     case .gift24Filled: return "ic_fluent_gift_24_filled"
     case .gift24Regular: return "ic_fluent_gift_24_regular"
-    default: break }
-    switch self {
     case .giftCard16Filled: return "ic_fluent_gift_card_16_filled"
     case .giftCard16Regular: return "ic_fluent_gift_card_16_regular"
     case .giftCard20Filled: return "ic_fluent_gift_card_20_filled"
@@ -11419,8 +11981,14 @@ import Foundation
     case .giftCardAdd20Regular: return "ic_fluent_gift_card_add_20_regular"
     case .giftCardAdd24Filled: return "ic_fluent_gift_card_add_24_filled"
     case .giftCardAdd24Regular: return "ic_fluent_gift_card_add_24_regular"
+    case .glance20Filled: return "ic_fluent_glance_20_filled"
+    case .glance20Regular: return "ic_fluent_glance_20_regular"
     case .glance24Filled: return "ic_fluent_glance_24_filled"
     case .glance24Regular: return "ic_fluent_glance_24_regular"
+    default: break }
+    switch self {
+    case .glanceHorizontal20Filled: return "ic_fluent_glance_horizontal_20_filled"
+    case .glanceHorizontal20Regular: return "ic_fluent_glance_horizontal_20_regular"
     case .glasses16Filled: return "ic_fluent_glasses_16_filled"
     case .glasses16Regular: return "ic_fluent_glasses_16_regular"
     case .glasses20Filled: return "ic_fluent_glasses_20_filled"
@@ -11487,6 +12055,12 @@ import Foundation
     case .grid24Regular: return "ic_fluent_grid_24_regular"
     case .grid28Filled: return "ic_fluent_grid_28_filled"
     case .grid28Regular: return "ic_fluent_grid_28_regular"
+    case .gridDots20Filled: return "ic_fluent_grid_dots_20_filled"
+    case .gridDots20Regular: return "ic_fluent_grid_dots_20_regular"
+    case .gridDots24Filled: return "ic_fluent_grid_dots_24_filled"
+    case .gridDots24Regular: return "ic_fluent_grid_dots_24_regular"
+    case .gridDots28Filled: return "ic_fluent_grid_dots_28_filled"
+    case .gridDots28Regular: return "ic_fluent_grid_dots_28_regular"
     case .gridKanban20Filled: return "ic_fluent_grid_kanban_20_filled"
     case .gridKanban20Regular: return "ic_fluent_grid_kanban_20_regular"
     case .group20Filled: return "ic_fluent_group_20_filled"
@@ -11511,10 +12085,10 @@ import Foundation
     case .guestAdd24Regular: return "ic_fluent_guest_add_24_regular"
     case .guitar16Filled: return "ic_fluent_guitar_16_filled"
     case .guitar16Regular: return "ic_fluent_guitar_16_regular"
-    default: break }
-    switch self {
     case .guitar20Filled: return "ic_fluent_guitar_20_filled"
     case .guitar20Regular: return "ic_fluent_guitar_20_regular"
+    default: break }
+    switch self {
     case .guitar24Filled: return "ic_fluent_guitar_24_filled"
     case .guitar24Regular: return "ic_fluent_guitar_24_regular"
     case .guitar28Filled: return "ic_fluent_guitar_28_filled"
@@ -11613,10 +12187,10 @@ import Foundation
     case .heartBroken20Regular: return "ic_fluent_heart_broken_20_regular"
     case .heartPulse20Filled: return "ic_fluent_heart_pulse_20_filled"
     case .heartPulse20Regular: return "ic_fluent_heart_pulse_20_regular"
-    default: break }
-    switch self {
     case .heartPulse24Filled: return "ic_fluent_heart_pulse_24_filled"
     case .heartPulse24Regular: return "ic_fluent_heart_pulse_24_regular"
+    default: break }
+    switch self {
     case .heartPulse32Filled: return "ic_fluent_heart_pulse_32_filled"
     case .heartPulse32Regular: return "ic_fluent_heart_pulse_32_regular"
     case .highlight16Filled: return "ic_fluent_highlight_16_filled"
@@ -11628,6 +12202,8 @@ import Foundation
     case .highlightAccent16Filled: return "ic_fluent_highlight_accent_16_filled"
     case .highlightAccent20Filled: return "ic_fluent_highlight_accent_20_filled"
     case .highlightAccent24Filled: return "ic_fluent_highlight_accent_24_filled"
+    case .highlightLink20Filled: return "ic_fluent_highlight_link_20_filled"
+    case .highlightLink20Regular: return "ic_fluent_highlight_link_20_regular"
     case .history16Filled: return "ic_fluent_history_16_filled"
     case .history16Regular: return "ic_fluent_history_16_regular"
     case .history20Filled: return "ic_fluent_history_20_filled"
@@ -11779,6 +12355,8 @@ import Foundation
     case .inprivateAccount28Regular: return "ic_fluent_inprivate_account_28_regular"
     case .insert20Filled: return "ic_fluent_insert_20_filled"
     case .insert20Regular: return "ic_fluent_insert_20_regular"
+    case .iosArrow24Filled: return "ic_fluent_ios_arrow_24_filled"
+    case .iosArrow24Regular: return "ic_fluent_ios_arrow_24_regular"
     case .iosArrowLeft24Filled: return "ic_fluent_ios_arrow_left_24_filled"
     case .iosArrowLeft24Regular: return "ic_fluent_ios_arrow_left_24_regular"
     case .iosArrowRight24Filled: return "ic_fluent_ios_arrow_right_24_filled"
@@ -11807,18 +12385,20 @@ import Foundation
     case .keyCommand16Regular: return "ic_fluent_key_command_16_regular"
     case .keyMultiple20Filled: return "ic_fluent_key_multiple_20_filled"
     case .keyMultiple20Regular: return "ic_fluent_key_multiple_20_regular"
+    case .keyboard12324Filled: return "ic_fluent_keyboard_123_24_filled"
+    case .keyboard12324Regular: return "ic_fluent_keyboard_123_24_regular"
     case .keyboard20Filled: return "ic_fluent_keyboard_20_filled"
     case .keyboard20Regular: return "ic_fluent_keyboard_20_regular"
     case .keyboard24Filled: return "ic_fluent_keyboard_24_filled"
     case .keyboard24Regular: return "ic_fluent_keyboard_24_regular"
     case .keyboardDock24Filled: return "ic_fluent_keyboard_dock_24_filled"
     case .keyboardDock24Regular: return "ic_fluent_keyboard_dock_24_regular"
+    default: break }
+    switch self {
     case .keyboardLayoutFloat24Filled: return "ic_fluent_keyboard_layout_float_24_filled"
     case .keyboardLayoutFloat24Regular: return "ic_fluent_keyboard_layout_float_24_regular"
     case .keyboardLayoutOneHandedLeft24Filled: return "ic_fluent_keyboard_layout_one_handed_left_24_filled"
     case .keyboardLayoutOneHandedLeft24Regular: return "ic_fluent_keyboard_layout_one_handed_left_24_regular"
-    default: break }
-    switch self {
     case .keyboardLayoutResize24Filled: return "ic_fluent_keyboard_layout_resize_24_filled"
     case .keyboardLayoutResize24Regular: return "ic_fluent_keyboard_layout_resize_24_regular"
     case .keyboardLayoutSplit24Filled: return "ic_fluent_keyboard_layout_split_24_filled"
@@ -11843,6 +12423,8 @@ import Foundation
     case .laptop28Regular: return "ic_fluent_laptop_28_regular"
     case .laptopDismiss16Filled: return "ic_fluent_laptop_dismiss_16_filled"
     case .laptopDismiss16Regular: return "ic_fluent_laptop_dismiss_16_regular"
+    case .laptopDismiss20Filled: return "ic_fluent_laptop_dismiss_20_filled"
+    case .laptopDismiss20Regular: return "ic_fluent_laptop_dismiss_20_regular"
     case .lasso20Filled: return "ic_fluent_lasso_20_filled"
     case .lasso20Regular: return "ic_fluent_lasso_20_regular"
     case .lasso24Filled: return "ic_fluent_lasso_24_filled"
@@ -11913,14 +12495,14 @@ import Foundation
     case .lineHorizontal5Error20Regular: return "ic_fluent_line_horizontal_5_error_20_regular"
     case .lineStyle24Filled: return "ic_fluent_line_style_24_filled"
     case .lineStyle24Regular: return "ic_fluent_line_style_24_regular"
+    default: break }
+    switch self {
     case .link16Filled: return "ic_fluent_link_16_filled"
     case .link16Regular: return "ic_fluent_link_16_regular"
     case .link20Filled: return "ic_fluent_link_20_filled"
     case .link20Regular: return "ic_fluent_link_20_regular"
     case .link24Filled: return "ic_fluent_link_24_filled"
     case .link24Regular: return "ic_fluent_link_24_regular"
-    default: break }
-    switch self {
     case .link28Filled: return "ic_fluent_link_28_filled"
     case .link28Regular: return "ic_fluent_link_28_regular"
     case .link48Filled: return "ic_fluent_link_48_filled"
@@ -11929,6 +12511,8 @@ import Foundation
     case .linkDismiss16Regular: return "ic_fluent_link_dismiss_16_regular"
     case .linkDismiss20Filled: return "ic_fluent_link_dismiss_20_filled"
     case .linkDismiss20Regular: return "ic_fluent_link_dismiss_20_regular"
+    case .linkDismiss24Filled: return "ic_fluent_link_dismiss_24_filled"
+    case .linkDismiss24Regular: return "ic_fluent_link_dismiss_24_regular"
     case .linkEdit16Filled: return "ic_fluent_link_edit_16_filled"
     case .linkEdit16Regular: return "ic_fluent_link_edit_16_regular"
     case .linkEdit20Filled: return "ic_fluent_link_edit_20_filled"
@@ -12013,6 +12597,8 @@ import Foundation
     case .lockClosed24Regular: return "ic_fluent_lock_closed_24_regular"
     case .lockMultiple24Filled: return "ic_fluent_lock_multiple_24_filled"
     case .lockMultiple24Regular: return "ic_fluent_lock_multiple_24_regular"
+    default: break }
+    switch self {
     case .lockOpen16Filled: return "ic_fluent_lock_open_16_filled"
     case .lockOpen16Regular: return "ic_fluent_lock_open_16_regular"
     case .lockOpen20Filled: return "ic_fluent_lock_open_20_filled"
@@ -12021,8 +12607,6 @@ import Foundation
     case .lockOpen24Regular: return "ic_fluent_lock_open_24_regular"
     case .lockOpen28Filled: return "ic_fluent_lock_open_28_filled"
     case .lockOpen28Regular: return "ic_fluent_lock_open_28_regular"
-    default: break }
-    switch self {
     case .lockShield20Filled: return "ic_fluent_lock_shield_20_filled"
     case .lockShield20Regular: return "ic_fluent_lock_shield_20_regular"
     case .lockShield24Filled: return "ic_fluent_lock_shield_24_filled"
@@ -12115,6 +12699,8 @@ import Foundation
     case .mailError20Regular: return "ic_fluent_mail_error_20_regular"
     case .mailError24Filled: return "ic_fluent_mail_error_24_filled"
     case .mailError24Regular: return "ic_fluent_mail_error_24_regular"
+    default: break }
+    switch self {
     case .mailInbox16Filled: return "ic_fluent_mail_inbox_16_filled"
     case .mailInbox16Regular: return "ic_fluent_mail_inbox_16_regular"
     case .mailInbox20Filled: return "ic_fluent_mail_inbox_20_filled"
@@ -12123,8 +12709,6 @@ import Foundation
     case .mailInbox24Regular: return "ic_fluent_mail_inbox_24_regular"
     case .mailInbox28Filled: return "ic_fluent_mail_inbox_28_filled"
     case .mailInbox28Regular: return "ic_fluent_mail_inbox_28_regular"
-    default: break }
-    switch self {
     case .mailInboxAdd16Filled: return "ic_fluent_mail_inbox_add_16_filled"
     case .mailInboxAdd16Regular: return "ic_fluent_mail_inbox_add_16_regular"
     case .mailInboxAdd20Filled: return "ic_fluent_mail_inbox_add_20_filled"
@@ -12165,6 +12749,12 @@ import Foundation
     case .mailLink20Regular: return "ic_fluent_mail_link_20_regular"
     case .mailLink24Filled: return "ic_fluent_mail_link_24_filled"
     case .mailLink24Regular: return "ic_fluent_mail_link_24_regular"
+    case .mailMultiple16Filled: return "ic_fluent_mail_multiple_16_filled"
+    case .mailMultiple16Regular: return "ic_fluent_mail_multiple_16_regular"
+    case .mailMultiple20Filled: return "ic_fluent_mail_multiple_20_filled"
+    case .mailMultiple20Regular: return "ic_fluent_mail_multiple_20_regular"
+    case .mailMultiple24Filled: return "ic_fluent_mail_multiple_24_filled"
+    case .mailMultiple24Regular: return "ic_fluent_mail_multiple_24_regular"
     case .mailOff24Filled: return "ic_fluent_mail_off_24_filled"
     case .mailOff24Regular: return "ic_fluent_mail_off_24_regular"
     case .mailOpenPerson16Filled: return "ic_fluent_mail_open_person_16_filled"
@@ -12211,6 +12801,8 @@ import Foundation
     case .mailUnread24Regular: return "ic_fluent_mail_unread_24_regular"
     case .mailUnread28Filled: return "ic_fluent_mail_unread_28_filled"
     case .mailUnread28Regular: return "ic_fluent_mail_unread_28_regular"
+    default: break }
+    switch self {
     case .mailUnread48Filled: return "ic_fluent_mail_unread_48_filled"
     case .mailUnread48Regular: return "ic_fluent_mail_unread_48_regular"
     case .mailWarning16Filled: return "ic_fluent_mail_warning_16_filled"
@@ -12225,8 +12817,6 @@ import Foundation
     case .mapDrive20Regular: return "ic_fluent_map_drive_20_regular"
     case .mapDrive24Filled: return "ic_fluent_map_drive_24_filled"
     case .mapDrive24Regular: return "ic_fluent_map_drive_24_regular"
-    default: break }
-    switch self {
     case .matchAppLayout24Filled: return "ic_fluent_match_app_layout_24_filled"
     case .matchAppLayout24Regular: return "ic_fluent_match_app_layout_24_regular"
     case .mathFormatLinear24Filled: return "ic_fluent_math_format_linear_24_filled"
@@ -12313,6 +12903,8 @@ import Foundation
     case .micProhibited24Regular: return "ic_fluent_mic_prohibited_24_regular"
     case .micProhibited28Filled: return "ic_fluent_mic_prohibited_28_filled"
     case .micProhibited28Regular: return "ic_fluent_mic_prohibited_28_regular"
+    default: break }
+    switch self {
     case .micProhibited48Filled: return "ic_fluent_mic_prohibited_48_filled"
     case .micProhibited48Regular: return "ic_fluent_mic_prohibited_48_regular"
     case .micSettings24Filled: return "ic_fluent_mic_settings_24_filled"
@@ -12327,8 +12919,6 @@ import Foundation
     case .micSync20Regular: return "ic_fluent_mic_sync_20_regular"
     case .microscope20Filled: return "ic_fluent_microscope_20_filled"
     case .microscope20Regular: return "ic_fluent_microscope_20_regular"
-    default: break }
-    switch self {
     case .microscope24Filled: return "ic_fluent_microscope_24_filled"
     case .microscope24Regular: return "ic_fluent_microscope_24_regular"
     case .midi20Filled: return "ic_fluent_midi_20_filled"
@@ -12415,6 +13005,8 @@ import Foundation
     case .multiplier18X28Regular: return "ic_fluent_multiplier_1_8x_28_regular"
     case .multiplier18X32Filled: return "ic_fluent_multiplier_1_8x_32_filled"
     case .multiplier18X32Regular: return "ic_fluent_multiplier_1_8x_32_regular"
+    default: break }
+    switch self {
     case .multiplier18X48Filled: return "ic_fluent_multiplier_1_8x_48_filled"
     case .multiplier18X48Regular: return "ic_fluent_multiplier_1_8x_48_regular"
     case .multiplier1X20Filled: return "ic_fluent_multiplier_1x_20_filled"
@@ -12429,8 +13021,6 @@ import Foundation
     case .multiplier1X48Regular: return "ic_fluent_multiplier_1x_48_regular"
     case .multiplier2X20Filled: return "ic_fluent_multiplier_2x_20_filled"
     case .multiplier2X20Regular: return "ic_fluent_multiplier_2x_20_regular"
-    default: break }
-    switch self {
     case .multiplier2X24Filled: return "ic_fluent_multiplier_2x_24_filled"
     case .multiplier2X24Regular: return "ic_fluent_multiplier_2x_24_regular"
     case .multiplier2X28Filled: return "ic_fluent_multiplier_2x_28_filled"
@@ -12517,6 +13107,8 @@ import Foundation
     case .noteAdd20Regular: return "ic_fluent_note_add_20_regular"
     case .noteAdd24Filled: return "ic_fluent_note_add_24_filled"
     case .noteAdd24Regular: return "ic_fluent_note_add_24_regular"
+    default: break }
+    switch self {
     case .noteEdit20Filled: return "ic_fluent_note_edit_20_filled"
     case .noteEdit20Regular: return "ic_fluent_note_edit_20_regular"
     case .noteEdit24Filled: return "ic_fluent_note_edit_24_filled"
@@ -12531,8 +13123,6 @@ import Foundation
     case .notebookAdd24Regular: return "ic_fluent_notebook_add_24_regular"
     case .notebookError24Filled: return "ic_fluent_notebook_error_24_filled"
     case .notebookError24Regular: return "ic_fluent_notebook_error_24_regular"
-    default: break }
-    switch self {
     case .notebookLightning24Filled: return "ic_fluent_notebook_lightning_24_filled"
     case .notebookLightning24Regular: return "ic_fluent_notebook_lightning_24_regular"
     case .notebookQuestionMark24Filled: return "ic_fluent_notebook_question_mark_24_filled"
@@ -12619,6 +13209,8 @@ import Foundation
     case .openOff16Regular: return "ic_fluent_open_off_16_regular"
     case .openOff20Filled: return "ic_fluent_open_off_20_filled"
     case .openOff20Regular: return "ic_fluent_open_off_20_regular"
+    default: break }
+    switch self {
     case .openOff24Filled: return "ic_fluent_open_off_24_filled"
     case .openOff24Regular: return "ic_fluent_open_off_24_regular"
     case .openOff28Filled: return "ic_fluent_open_off_28_filled"
@@ -12633,8 +13225,6 @@ import Foundation
     case .options24Regular: return "ic_fluent_options_24_regular"
     case .organization12Filled: return "ic_fluent_organization_12_filled"
     case .organization12Regular: return "ic_fluent_organization_12_regular"
-    default: break }
-    switch self {
     case .organization16Filled: return "ic_fluent_organization_16_filled"
     case .organization16Regular: return "ic_fluent_organization_16_regular"
     case .organization20Filled: return "ic_fluent_organization_20_filled"
@@ -12705,6 +13295,54 @@ import Foundation
     case .paneOpen20Regular: return "ic_fluent_pane_open_20_regular"
     case .paneOpen24Filled: return "ic_fluent_pane_open_24_filled"
     case .paneOpen24Regular: return "ic_fluent_pane_open_24_regular"
+    case .panelBottom20Filled: return "ic_fluent_panel_bottom_20_filled"
+    case .panelBottom20Regular: return "ic_fluent_panel_bottom_20_regular"
+    case .panelBottomContract20Filled: return "ic_fluent_panel_bottom_contract_20_filled"
+    case .panelBottomContract20Regular: return "ic_fluent_panel_bottom_contract_20_regular"
+    case .panelBottomExpand20Filled: return "ic_fluent_panel_bottom_expand_20_filled"
+    case .panelBottomExpand20Regular: return "ic_fluent_panel_bottom_expand_20_regular"
+    case .panelLeft16Filled: return "ic_fluent_panel_left_16_filled"
+    case .panelLeft16Regular: return "ic_fluent_panel_left_16_regular"
+    case .panelLeft20Filled: return "ic_fluent_panel_left_20_filled"
+    case .panelLeft20Regular: return "ic_fluent_panel_left_20_regular"
+    case .panelLeft24Filled: return "ic_fluent_panel_left_24_filled"
+    case .panelLeft24Regular: return "ic_fluent_panel_left_24_regular"
+    case .panelLeft28Filled: return "ic_fluent_panel_left_28_filled"
+    case .panelLeft28Regular: return "ic_fluent_panel_left_28_regular"
+    case .panelLeft48Filled: return "ic_fluent_panel_left_48_filled"
+    case .panelLeft48Regular: return "ic_fluent_panel_left_48_regular"
+    default: break }
+    switch self {
+    case .panelLeftExpand20Filled: return "ic_fluent_panel_left_expand_20_filled"
+    case .panelLeftExpand20Regular: return "ic_fluent_panel_left_expand_20_regular"
+    case .panelRight16Filled: return "ic_fluent_panel_right_16_filled"
+    case .panelRight16Regular: return "ic_fluent_panel_right_16_regular"
+    case .panelRight20Filled: return "ic_fluent_panel_right_20_filled"
+    case .panelRight20Regular: return "ic_fluent_panel_right_20_regular"
+    case .panelRight24Filled: return "ic_fluent_panel_right_24_filled"
+    case .panelRight24Regular: return "ic_fluent_panel_right_24_regular"
+    case .panelRight28Filled: return "ic_fluent_panel_right_28_filled"
+    case .panelRight28Regular: return "ic_fluent_panel_right_28_regular"
+    case .panelRight48Filled: return "ic_fluent_panel_right_48_filled"
+    case .panelRight48Regular: return "ic_fluent_panel_right_48_regular"
+    case .panelRightContract16Filled: return "ic_fluent_panel_right_contract_16_filled"
+    case .panelRightContract16Regular: return "ic_fluent_panel_right_contract_16_regular"
+    case .panelRightContract20Filled: return "ic_fluent_panel_right_contract_20_filled"
+    case .panelRightContract20Regular: return "ic_fluent_panel_right_contract_20_regular"
+    case .panelRightContract24Filled: return "ic_fluent_panel_right_contract_24_filled"
+    case .panelRightContract24Regular: return "ic_fluent_panel_right_contract_24_regular"
+    case .panelRightExpand16Filled: return "ic_fluent_panel_right_expand_16_filled"
+    case .panelRightExpand16Regular: return "ic_fluent_panel_right_expand_16_regular"
+    case .panelRightExpand20Filled: return "ic_fluent_panel_right_expand_20_filled"
+    case .panelRightExpand20Regular: return "ic_fluent_panel_right_expand_20_regular"
+    case .panelRightExpand24Filled: return "ic_fluent_panel_right_expand_24_filled"
+    case .panelRightExpand24Regular: return "ic_fluent_panel_right_expand_24_regular"
+    case .panelSeparateWindow20Filled: return "ic_fluent_panel_separate_window_20_filled"
+    case .panelSeparateWindow20Regular: return "ic_fluent_panel_separate_window_20_regular"
+    case .panelTopContract20Filled: return "ic_fluent_panel_top_contract_20_filled"
+    case .panelTopContract20Regular: return "ic_fluent_panel_top_contract_20_regular"
+    case .panelTopExpand20Filled: return "ic_fluent_panel_top_expand_20_filled"
+    case .panelTopExpand20Regular: return "ic_fluent_panel_top_expand_20_regular"
     case .password24Filled: return "ic_fluent_password_24_filled"
     case .password24Regular: return "ic_fluent_password_24_regular"
     case .patch20Filled: return "ic_fluent_patch_20_filled"
@@ -12729,14 +13367,14 @@ import Foundation
     case .pauseCircle20Regular: return "ic_fluent_pause_circle_20_regular"
     case .pauseCircle24Filled: return "ic_fluent_pause_circle_24_filled"
     case .pauseCircle24Regular: return "ic_fluent_pause_circle_24_regular"
+    case .pauseOff16Filled: return "ic_fluent_pause_off_16_filled"
+    case .pauseOff16Regular: return "ic_fluent_pause_off_16_regular"
     case .payment16Filled: return "ic_fluent_payment_16_filled"
     case .payment16Regular: return "ic_fluent_payment_16_regular"
     case .payment20Filled: return "ic_fluent_payment_20_filled"
     case .payment20Regular: return "ic_fluent_payment_20_regular"
     case .payment24Filled: return "ic_fluent_payment_24_filled"
     case .payment24Regular: return "ic_fluent_payment_24_regular"
-    default: break }
-    switch self {
     case .payment28Filled: return "ic_fluent_payment_28_filled"
     case .payment28Regular: return "ic_fluent_payment_28_regular"
     case .people16Filled: return "ic_fluent_people_16_filled"
@@ -12775,6 +13413,8 @@ import Foundation
     case .peopleCommunity20Regular: return "ic_fluent_people_community_20_regular"
     case .peopleCommunity24Filled: return "ic_fluent_people_community_24_filled"
     case .peopleCommunity24Regular: return "ic_fluent_people_community_24_regular"
+    default: break }
+    switch self {
     case .peopleCommunity28Filled: return "ic_fluent_people_community_28_filled"
     case .peopleCommunity28Regular: return "ic_fluent_people_community_28_regular"
     case .peopleCommunityAdd20Filled: return "ic_fluent_people_community_add_20_filled"
@@ -12837,8 +13477,6 @@ import Foundation
     case .peopleTeamAdd24Regular: return "ic_fluent_people_team_add_24_regular"
     case .peopleTeamDelete24Filled: return "ic_fluent_people_team_delete_24_filled"
     case .peopleTeamDelete24Regular: return "ic_fluent_people_team_delete_24_regular"
-    default: break }
-    switch self {
     case .peopleTeamToolbox20Filled: return "ic_fluent_people_team_toolbox_20_filled"
     case .peopleTeamToolbox20Regular: return "ic_fluent_people_team_toolbox_20_regular"
     case .peopleTeamToolbox24Filled: return "ic_fluent_people_team_toolbox_24_filled"
@@ -12877,6 +13515,8 @@ import Foundation
     case .personAdd28Regular: return "ic_fluent_person_add_28_regular"
     case .personArrowLeft20Filled: return "ic_fluent_person_arrow_left_20_filled"
     case .personArrowLeft20Regular: return "ic_fluent_person_arrow_left_20_regular"
+    default: break }
+    switch self {
     case .personArrowLeft24Filled: return "ic_fluent_person_arrow_left_24_filled"
     case .personArrowLeft24Regular: return "ic_fluent_person_arrow_left_24_regular"
     case .personArrowRight16Filled: return "ic_fluent_person_arrow_right_16_filled"
@@ -12909,6 +13549,8 @@ import Foundation
     case .personChat20Regular: return "ic_fluent_person_chat_20_regular"
     case .personChat24Filled: return "ic_fluent_person_chat_24_filled"
     case .personChat24Regular: return "ic_fluent_person_chat_24_regular"
+    case .personCircle12Filled: return "ic_fluent_person_circle_12_filled"
+    case .personCircle12Regular: return "ic_fluent_person_circle_12_regular"
     case .personCircle20Filled: return "ic_fluent_person_circle_20_filled"
     case .personCircle20Regular: return "ic_fluent_person_circle_20_regular"
     case .personClock16Filled: return "ic_fluent_person_clock_16_filled"
@@ -12931,6 +13573,8 @@ import Foundation
     case .personFeedback24Regular: return "ic_fluent_person_feedback_24_regular"
     case .personInfo16Filled: return "ic_fluent_person_info_16_filled"
     case .personInfo16Regular: return "ic_fluent_person_info_16_regular"
+    case .personInfo20Filled: return "ic_fluent_person_info_20_filled"
+    case .personInfo20Regular: return "ic_fluent_person_info_20_regular"
     case .personLock16Filled: return "ic_fluent_person_lock_16_filled"
     case .personLock16Regular: return "ic_fluent_person_lock_16_regular"
     case .personLock20Filled: return "ic_fluent_person_lock_20_filled"
@@ -12939,8 +13583,6 @@ import Foundation
     case .personMail16Regular: return "ic_fluent_person_mail_16_regular"
     case .personMail20Filled: return "ic_fluent_person_mail_20_filled"
     case .personMail20Regular: return "ic_fluent_person_mail_20_regular"
-    default: break }
-    switch self {
     case .personMail24Filled: return "ic_fluent_person_mail_24_filled"
     case .personMail24Regular: return "ic_fluent_person_mail_24_regular"
     case .personMail28Filled: return "ic_fluent_person_mail_28_filled"
@@ -12975,6 +13617,8 @@ import Foundation
     case .personSettings16Regular: return "ic_fluent_person_settings_16_regular"
     case .personSettings20Filled: return "ic_fluent_person_settings_20_filled"
     case .personSettings20Regular: return "ic_fluent_person_settings_20_regular"
+    default: break }
+    switch self {
     case .personSubtract16Filled: return "ic_fluent_person_subtract_16_filled"
     case .personSubtract16Regular: return "ic_fluent_person_subtract_16_regular"
     case .personSupport16Filled: return "ic_fluent_person_support_16_filled"
@@ -12998,6 +13642,8 @@ import Foundation
     case .personVoice20Regular: return "ic_fluent_person_voice_20_regular"
     case .personVoice24Filled: return "ic_fluent_person_voice_24_filled"
     case .personVoice24Regular: return "ic_fluent_person_voice_24_regular"
+    case .phone12Filled: return "ic_fluent_phone_12_filled"
+    case .phone12Regular: return "ic_fluent_phone_12_regular"
     case .phone16Filled: return "ic_fluent_phone_16_filled"
     case .phone16Regular: return "ic_fluent_phone_16_regular"
     case .phone20Filled: return "ic_fluent_phone_20_filled"
@@ -13041,8 +13687,6 @@ import Foundation
     case .phoneLock24Filled: return "ic_fluent_phone_lock_24_filled"
     case .phoneLock24Regular: return "ic_fluent_phone_lock_24_regular"
     case .phonePageHeader24Filled: return "ic_fluent_phone_page_header_24_filled"
-    default: break }
-    switch self {
     case .phonePageHeader24Regular: return "ic_fluent_phone_page_header_24_regular"
     case .phonePagination24Filled: return "ic_fluent_phone_pagination_24_filled"
     case .phonePagination24Regular: return "ic_fluent_phone_pagination_24_regular"
@@ -13075,6 +13719,8 @@ import Foundation
     case .phoneTablet24Filled: return "ic_fluent_phone_tablet_24_filled"
     case .phoneTablet24Regular: return "ic_fluent_phone_tablet_24_regular"
     case .phoneUpdate24Filled: return "ic_fluent_phone_update_24_filled"
+    default: break }
+    switch self {
     case .phoneUpdate24Regular: return "ic_fluent_phone_update_24_regular"
     case .phoneVerticalScroll24Filled: return "ic_fluent_phone_vertical_scroll_24_filled"
     case .phoneVerticalScroll24Regular: return "ic_fluent_phone_vertical_scroll_24_regular"
@@ -13143,8 +13789,6 @@ import Foundation
     case .playCircle20Filled: return "ic_fluent_play_circle_20_filled"
     case .playCircle20Regular: return "ic_fluent_play_circle_20_regular"
     case .playCircle24Filled: return "ic_fluent_play_circle_24_filled"
-    default: break }
-    switch self {
     case .playCircle24Regular: return "ic_fluent_play_circle_24_regular"
     case .playCircle28Filled: return "ic_fluent_play_circle_28_filled"
     case .playCircle28Regular: return "ic_fluent_play_circle_28_regular"
@@ -13177,6 +13821,8 @@ import Foundation
     case .positionForward24Filled: return "ic_fluent_position_forward_24_filled"
     case .positionForward24Regular: return "ic_fluent_position_forward_24_regular"
     case .positionToBack20Filled: return "ic_fluent_position_to_back_20_filled"
+    default: break }
+    switch self {
     case .positionToBack20Regular: return "ic_fluent_position_to_back_20_regular"
     case .positionToBack24Filled: return "ic_fluent_position_to_back_24_filled"
     case .positionToBack24Regular: return "ic_fluent_position_to_back_24_regular"
@@ -13245,8 +13891,6 @@ import Foundation
     case .presenterOff24Filled: return "ic_fluent_presenter_off_24_filled"
     case .presenterOff24Regular: return "ic_fluent_presenter_off_24_regular"
     case .previewLink16Filled: return "ic_fluent_preview_link_16_filled"
-    default: break }
-    switch self {
     case .previewLink16Regular: return "ic_fluent_preview_link_16_regular"
     case .previewLink20Filled: return "ic_fluent_preview_link_20_filled"
     case .previewLink20Regular: return "ic_fluent_preview_link_20_regular"
@@ -13279,6 +13923,8 @@ import Foundation
     case .productionCheckmark24Filled: return "ic_fluent_production_checkmark_24_filled"
     case .productionCheckmark24Regular: return "ic_fluent_production_checkmark_24_regular"
     case .prohibited12Filled: return "ic_fluent_prohibited_12_filled"
+    default: break }
+    switch self {
     case .prohibited12Regular: return "ic_fluent_prohibited_12_regular"
     case .prohibited16Filled: return "ic_fluent_prohibited_16_filled"
     case .prohibited16Regular: return "ic_fluent_prohibited_16_regular"
@@ -13322,6 +13968,12 @@ import Foundation
     case .puzzleCube28Regular: return "ic_fluent_puzzle_cube_28_regular"
     case .puzzleCube48Filled: return "ic_fluent_puzzle_cube_48_filled"
     case .puzzleCube48Regular: return "ic_fluent_puzzle_cube_48_regular"
+    case .puzzlePiece16Filled: return "ic_fluent_puzzle_piece_16_filled"
+    case .puzzlePiece16Regular: return "ic_fluent_puzzle_piece_16_regular"
+    case .puzzlePiece20Filled: return "ic_fluent_puzzle_piece_20_filled"
+    case .puzzlePiece20Regular: return "ic_fluent_puzzle_piece_20_regular"
+    case .puzzlePiece24Filled: return "ic_fluent_puzzle_piece_24_filled"
+    case .puzzlePiece24Regular: return "ic_fluent_puzzle_piece_24_regular"
     case .qrCode20Filled: return "ic_fluent_qr_code_20_filled"
     case .qrCode20Regular: return "ic_fluent_qr_code_20_regular"
     case .qrCode24Filled: return "ic_fluent_qr_code_24_filled"
@@ -13347,8 +13999,6 @@ import Foundation
     case .questionCircle28Filled: return "ic_fluent_question_circle_28_filled"
     case .questionCircle28Regular: return "ic_fluent_question_circle_28_regular"
     case .questionCircle48Filled: return "ic_fluent_question_circle_48_filled"
-    default: break }
-    switch self {
     case .questionCircle48Regular: return "ic_fluent_question_circle_48_regular"
     case .quizNew24Filled: return "ic_fluent_quiz_new_24_filled"
     case .quizNew24Regular: return "ic_fluent_quiz_new_24_regular"
@@ -13375,6 +14025,8 @@ import Foundation
     case .reOrder24Filled: return "ic_fluent_re_order_24_filled"
     case .reOrder24Regular: return "ic_fluent_re_order_24_regular"
     case .reOrderDotsHorizontal16Filled: return "ic_fluent_re_order_dots_horizontal_16_filled"
+    default: break }
+    switch self {
     case .reOrderDotsHorizontal16Regular: return "ic_fluent_re_order_dots_horizontal_16_regular"
     case .reOrderDotsHorizontal20Filled: return "ic_fluent_re_order_dots_horizontal_20_filled"
     case .reOrderDotsHorizontal20Regular: return "ic_fluent_re_order_dots_horizontal_20_regular"
@@ -13449,8 +14101,6 @@ import Foundation
     case .record24Filled: return "ic_fluent_record_24_filled"
     case .record24Regular: return "ic_fluent_record_24_regular"
     case .record28Filled: return "ic_fluent_record_28_filled"
-    default: break }
-    switch self {
     case .record28Regular: return "ic_fluent_record_28_regular"
     case .record32Filled: return "ic_fluent_record_32_filled"
     case .record32Regular: return "ic_fluent_record_32_regular"
@@ -13477,11 +14127,15 @@ import Foundation
     case .rename16Filled: return "ic_fluent_rename_16_filled"
     case .rename16Regular: return "ic_fluent_rename_16_regular"
     case .rename20Filled: return "ic_fluent_rename_20_filled"
+    default: break }
+    switch self {
     case .rename20Regular: return "ic_fluent_rename_20_regular"
     case .rename24Filled: return "ic_fluent_rename_24_filled"
     case .rename24Regular: return "ic_fluent_rename_24_regular"
     case .rename28Filled: return "ic_fluent_rename_28_filled"
     case .rename28Regular: return "ic_fluent_rename_28_regular"
+    case .replay20Filled: return "ic_fluent_replay_20_filled"
+    case .replay20Regular: return "ic_fluent_replay_20_regular"
     case .resize20Filled: return "ic_fluent_resize_20_filled"
     case .resize20Regular: return "ic_fluent_resize_20_regular"
     case .resizeImage24Filled: return "ic_fluent_resize_image_24_filled"
@@ -13551,8 +14205,6 @@ import Foundation
     case .ruler16Filled: return "ic_fluent_ruler_16_filled"
     case .ruler16Regular: return "ic_fluent_ruler_16_regular"
     case .ruler20Filled: return "ic_fluent_ruler_20_filled"
-    default: break }
-    switch self {
     case .ruler20Regular: return "ic_fluent_ruler_20_regular"
     case .ruler24Filled: return "ic_fluent_ruler_24_filled"
     case .ruler24Regular: return "ic_fluent_ruler_24_regular"
@@ -13577,6 +14229,8 @@ import Foundation
     case .saveSearch20Filled: return "ic_fluent_save_search_20_filled"
     case .saveSearch20Regular: return "ic_fluent_save_search_20_regular"
     case .saveSync20Filled: return "ic_fluent_save_sync_20_filled"
+    default: break }
+    switch self {
     case .saveSync20Regular: return "ic_fluent_save_sync_20_regular"
     case .savings16Filled: return "ic_fluent_savings_16_filled"
     case .savings16Regular: return "ic_fluent_savings_16_regular"
@@ -13604,6 +14258,16 @@ import Foundation
     case .scanObject20Regular: return "ic_fluent_scan_object_20_regular"
     case .scanObject24Filled: return "ic_fluent_scan_object_24_filled"
     case .scanObject24Regular: return "ic_fluent_scan_object_24_regular"
+    case .scanTable24Filled: return "ic_fluent_scan_table_24_filled"
+    case .scanTable24Regular: return "ic_fluent_scan_table_24_regular"
+    case .scanText24Filled: return "ic_fluent_scan_text_24_filled"
+    case .scanText24Regular: return "ic_fluent_scan_text_24_regular"
+    case .scanType20Filled: return "ic_fluent_scan_type_20_filled"
+    case .scanType20Regular: return "ic_fluent_scan_type_20_regular"
+    case .scanType24Filled: return "ic_fluent_scan_type_24_filled"
+    case .scanType24Regular: return "ic_fluent_scan_type_24_regular"
+    case .scanTypeOff20Filled: return "ic_fluent_scan_type_off_20_filled"
+    case .scanTypeOff20Regular: return "ic_fluent_scan_type_off_20_regular"
     case .scratchpad24Filled: return "ic_fluent_scratchpad_24_filled"
     case .scratchpad24Regular: return "ic_fluent_scratchpad_24_regular"
     case .screenCut20Filled: return "ic_fluent_screen_cut_20_filled"
@@ -13653,8 +14317,6 @@ import Foundation
     case .selectObject24Filled: return "ic_fluent_select_object_24_filled"
     case .selectObject24Regular: return "ic_fluent_select_object_24_regular"
     case .send16Filled: return "ic_fluent_send_16_filled"
-    default: break }
-    switch self {
     case .send16Regular: return "ic_fluent_send_16_regular"
     case .send20Filled: return "ic_fluent_send_20_filled"
     case .send20Regular: return "ic_fluent_send_20_regular"
@@ -13669,6 +14331,8 @@ import Foundation
     case .serialPort16Filled: return "ic_fluent_serial_port_16_filled"
     case .serialPort16Regular: return "ic_fluent_serial_port_16_regular"
     case .serialPort20Filled: return "ic_fluent_serial_port_20_filled"
+    default: break }
+    switch self {
     case .serialPort20Regular: return "ic_fluent_serial_port_20_regular"
     case .serialPort24Filled: return "ic_fluent_serial_port_24_filled"
     case .serialPort24Regular: return "ic_fluent_serial_port_24_regular"
@@ -13755,8 +14419,6 @@ import Foundation
     case .shareScreenStop20Filled: return "ic_fluent_share_screen_stop_20_filled"
     case .shareScreenStop20Regular: return "ic_fluent_share_screen_stop_20_regular"
     case .shareScreenStop24Filled: return "ic_fluent_share_screen_stop_24_filled"
-    default: break }
-    switch self {
     case .shareScreenStop24Regular: return "ic_fluent_share_screen_stop_24_regular"
     case .shareScreenStop28Filled: return "ic_fluent_share_screen_stop_28_filled"
     case .shareScreenStop28Regular: return "ic_fluent_share_screen_stop_28_regular"
@@ -13771,6 +14433,8 @@ import Foundation
     case .shield28Filled: return "ic_fluent_shield_28_filled"
     case .shield28Regular: return "ic_fluent_shield_28_regular"
     case .shield48Filled: return "ic_fluent_shield_48_filled"
+    default: break }
+    switch self {
     case .shield48Regular: return "ic_fluent_shield_48_regular"
     case .shieldBadge20Filled: return "ic_fluent_shield_badge_20_filled"
     case .shieldBadge20Regular: return "ic_fluent_shield_badge_20_regular"
@@ -13814,6 +14478,16 @@ import Foundation
     case .shieldProhibited20Regular: return "ic_fluent_shield_prohibited_20_regular"
     case .shieldProhibited24Filled: return "ic_fluent_shield_prohibited_24_filled"
     case .shieldProhibited24Regular: return "ic_fluent_shield_prohibited_24_regular"
+    case .shieldTask16Filled: return "ic_fluent_shield_task_16_filled"
+    case .shieldTask16Regular: return "ic_fluent_shield_task_16_regular"
+    case .shieldTask20Filled: return "ic_fluent_shield_task_20_filled"
+    case .shieldTask20Regular: return "ic_fluent_shield_task_20_regular"
+    case .shieldTask24Filled: return "ic_fluent_shield_task_24_filled"
+    case .shieldTask24Regular: return "ic_fluent_shield_task_24_regular"
+    case .shieldTask28Filled: return "ic_fluent_shield_task_28_filled"
+    case .shieldTask28Regular: return "ic_fluent_shield_task_28_regular"
+    case .shieldTask48Filled: return "ic_fluent_shield_task_48_filled"
+    case .shieldTask48Regular: return "ic_fluent_shield_task_48_regular"
     case .shifts16Filled: return "ic_fluent_shifts_16_filled"
     case .shifts16Regular: return "ic_fluent_shifts_16_regular"
     case .shifts20Filled: return "ic_fluent_shifts_20_filled"
@@ -13857,12 +14531,12 @@ import Foundation
     case .shoppingBag20Filled: return "ic_fluent_shopping_bag_20_filled"
     case .shoppingBag20Regular: return "ic_fluent_shopping_bag_20_regular"
     case .shoppingBag24Filled: return "ic_fluent_shopping_bag_24_filled"
-    default: break }
-    switch self {
     case .shoppingBag24Regular: return "ic_fluent_shopping_bag_24_regular"
     case .sidebarSearch20Filled: return "ic_fluent_sidebar_search_20_filled"
     case .sidebarSearch20Regular: return "ic_fluent_sidebar_search_20_regular"
     case .signOut20Filled: return "ic_fluent_sign_out_20_filled"
+    default: break }
+    switch self {
     case .signOut20Regular: return "ic_fluent_sign_out_20_regular"
     case .signOut24Filled: return "ic_fluent_sign_out_24_filled"
     case .signOut24Regular: return "ic_fluent_sign_out_24_regular"
@@ -13959,12 +14633,12 @@ import Foundation
     case .slideText16Filled: return "ic_fluent_slide_text_16_filled"
     case .slideText16Regular: return "ic_fluent_slide_text_16_regular"
     case .slideText20Filled: return "ic_fluent_slide_text_20_filled"
-    default: break }
-    switch self {
     case .slideText20Regular: return "ic_fluent_slide_text_20_regular"
     case .slideText24Filled: return "ic_fluent_slide_text_24_filled"
     case .slideText24Regular: return "ic_fluent_slide_text_24_regular"
     case .slideText28Filled: return "ic_fluent_slide_text_28_filled"
+    default: break }
+    switch self {
     case .slideText28Regular: return "ic_fluent_slide_text_28_regular"
     case .slideText48Filled: return "ic_fluent_slide_text_48_filled"
     case .slideText48Regular: return "ic_fluent_slide_text_48_regular"
@@ -14061,12 +14735,12 @@ import Foundation
     case .splitHorizontal16Filled: return "ic_fluent_split_horizontal_16_filled"
     case .splitHorizontal16Regular: return "ic_fluent_split_horizontal_16_regular"
     case .splitHorizontal20Filled: return "ic_fluent_split_horizontal_20_filled"
-    default: break }
-    switch self {
     case .splitHorizontal20Regular: return "ic_fluent_split_horizontal_20_regular"
     case .splitHorizontal24Filled: return "ic_fluent_split_horizontal_24_filled"
     case .splitHorizontal24Regular: return "ic_fluent_split_horizontal_24_regular"
     case .splitHorizontal28Filled: return "ic_fluent_split_horizontal_28_filled"
+    default: break }
+    switch self {
     case .splitHorizontal28Regular: return "ic_fluent_split_horizontal_28_regular"
     case .splitHorizontal32Filled: return "ic_fluent_split_horizontal_32_filled"
     case .splitHorizontal32Regular: return "ic_fluent_split_horizontal_32_regular"
@@ -14106,6 +14780,8 @@ import Foundation
     case .sportSoccer20Regular: return "ic_fluent_sport_soccer_20_regular"
     case .sportSoccer24Filled: return "ic_fluent_sport_soccer_24_filled"
     case .sportSoccer24Regular: return "ic_fluent_sport_soccer_24_regular"
+    case .square12Filled: return "ic_fluent_square_12_filled"
+    case .square12Regular: return "ic_fluent_square_12_regular"
     case .square16Filled: return "ic_fluent_square_16_filled"
     case .square16Regular: return "ic_fluent_square_16_regular"
     case .square20Filled: return "ic_fluent_square_20_filled"
@@ -14126,8 +14802,14 @@ import Foundation
     case .squareArrowForward32Regular: return "ic_fluent_square_arrow_forward_32_regular"
     case .squareArrowForward48Filled: return "ic_fluent_square_arrow_forward_48_filled"
     case .squareArrowForward48Regular: return "ic_fluent_square_arrow_forward_48_regular"
+    case .squareDismiss16Filled: return "ic_fluent_square_dismiss_16_filled"
+    case .squareDismiss16Regular: return "ic_fluent_square_dismiss_16_regular"
+    case .squareDismiss20Filled: return "ic_fluent_square_dismiss_20_filled"
+    case .squareDismiss20Regular: return "ic_fluent_square_dismiss_20_regular"
     case .squareHintArrowBack16Filled: return "ic_fluent_square_hint_arrow_back_16_filled"
     case .squareHintArrowBack16Regular: return "ic_fluent_square_hint_arrow_back_16_regular"
+    case .squareMultiple16Filled: return "ic_fluent_square_multiple_16_filled"
+    case .squareMultiple16Regular: return "ic_fluent_square_multiple_16_regular"
     case .squareMultiple20Filled: return "ic_fluent_square_multiple_20_filled"
     case .squareMultiple20Regular: return "ic_fluent_square_multiple_20_regular"
     case .squareMultiple24Filled: return "ic_fluent_square_multiple_24_filled"
@@ -14138,6 +14820,12 @@ import Foundation
     case .stack20Regular: return "ic_fluent_stack_20_regular"
     case .stack24Filled: return "ic_fluent_stack_24_filled"
     case .stack24Regular: return "ic_fluent_stack_24_regular"
+    case .stackStar16Filled: return "ic_fluent_stack_star_16_filled"
+    case .stackStar16Regular: return "ic_fluent_stack_star_16_regular"
+    case .stackStar20Filled: return "ic_fluent_stack_star_20_filled"
+    case .stackStar20Regular: return "ic_fluent_stack_star_20_regular"
+    case .stackStar24Filled: return "ic_fluent_stack_star_24_filled"
+    case .stackStar24Regular: return "ic_fluent_stack_star_24_regular"
     case .star12Filled: return "ic_fluent_star_12_filled"
     case .star12Regular: return "ic_fluent_star_12_regular"
     case .star16Filled: return "ic_fluent_star_16_filled"
@@ -14153,6 +14841,8 @@ import Foundation
     case .starAdd20Filled: return "ic_fluent_star_add_20_filled"
     case .starAdd20Regular: return "ic_fluent_star_add_20_regular"
     case .starAdd24Filled: return "ic_fluent_star_add_24_filled"
+    default: break }
+    switch self {
     case .starAdd24Regular: return "ic_fluent_star_add_24_regular"
     case .starArrowRightEnd24Filled: return "ic_fluent_star_arrow_right_end_24_filled"
     case .starArrowRightEnd24Regular: return "ic_fluent_star_arrow_right_end_24_regular"
@@ -14163,8 +14853,6 @@ import Foundation
     case .starEmphasis20Filled: return "ic_fluent_star_emphasis_20_filled"
     case .starEmphasis20Regular: return "ic_fluent_star_emphasis_20_regular"
     case .starEmphasis24Filled: return "ic_fluent_star_emphasis_24_filled"
-    default: break }
-    switch self {
     case .starEmphasis24Regular: return "ic_fluent_star_emphasis_24_regular"
     case .starEmphasis32Filled: return "ic_fluent_star_emphasis_32_filled"
     case .starEmphasis32Regular: return "ic_fluent_star_emphasis_32_regular"
@@ -14255,6 +14943,8 @@ import Foundation
     case .styleGuide24Regular: return "ic_fluent_style_guide_24_regular"
     case .subGrid24Filled: return "ic_fluent_sub_grid_24_filled"
     case .subGrid24Regular: return "ic_fluent_sub_grid_24_regular"
+    default: break }
+    switch self {
     case .subtract12Filled: return "ic_fluent_subtract_12_filled"
     case .subtract12Regular: return "ic_fluent_subtract_12_regular"
     case .subtract16Filled: return "ic_fluent_subtract_16_filled"
@@ -14265,10 +14955,10 @@ import Foundation
     case .subtract24Regular: return "ic_fluent_subtract_24_regular"
     case .subtract28Filled: return "ic_fluent_subtract_28_filled"
     case .subtract28Regular: return "ic_fluent_subtract_28_regular"
-    default: break }
-    switch self {
     case .subtract48Filled: return "ic_fluent_subtract_48_filled"
     case .subtract48Regular: return "ic_fluent_subtract_48_regular"
+    case .subtractCircle12Filled: return "ic_fluent_subtract_circle_12_filled"
+    case .subtractCircle12Regular: return "ic_fluent_subtract_circle_12_regular"
     case .subtractCircle16Filled: return "ic_fluent_subtract_circle_16_filled"
     case .subtractCircle16Regular: return "ic_fluent_subtract_circle_16_regular"
     case .subtractCircle20Filled: return "ic_fluent_subtract_circle_20_filled"
@@ -14279,6 +14969,14 @@ import Foundation
     case .subtractCircle28Regular: return "ic_fluent_subtract_circle_28_regular"
     case .subtractCircle32Filled: return "ic_fluent_subtract_circle_32_filled"
     case .subtractCircle32Regular: return "ic_fluent_subtract_circle_32_regular"
+    case .subtractCircleArrowBack16Filled: return "ic_fluent_subtract_circle_arrow_back_16_filled"
+    case .subtractCircleArrowBack16Regular: return "ic_fluent_subtract_circle_arrow_back_16_regular"
+    case .subtractCircleArrowBack20Filled: return "ic_fluent_subtract_circle_arrow_back_20_filled"
+    case .subtractCircleArrowBack20Regular: return "ic_fluent_subtract_circle_arrow_back_20_regular"
+    case .subtractCircleArrowForward16Filled: return "ic_fluent_subtract_circle_arrow_forward_16_filled"
+    case .subtractCircleArrowForward16Regular: return "ic_fluent_subtract_circle_arrow_forward_16_regular"
+    case .subtractCircleArrowForward20Filled: return "ic_fluent_subtract_circle_arrow_forward_20_filled"
+    case .subtractCircleArrowForward20Regular: return "ic_fluent_subtract_circle_arrow_forward_20_regular"
     case .subtractSquareMultiple16Filled: return "ic_fluent_subtract_square_multiple_16_filled"
     case .subtractSquareMultiple16Regular: return "ic_fluent_subtract_square_multiple_16_regular"
     case .subtractSquareMultiple20Filled: return "ic_fluent_subtract_square_multiple_20_filled"
@@ -14347,6 +15045,8 @@ import Foundation
     case .tabDesktopImage16Regular: return "ic_fluent_tab_desktop_image_16_regular"
     case .tabDesktopImage20Filled: return "ic_fluent_tab_desktop_image_20_filled"
     case .tabDesktopImage20Regular: return "ic_fluent_tab_desktop_image_20_regular"
+    default: break }
+    switch self {
     case .tabDesktopImage24Filled: return "ic_fluent_tab_desktop_image_24_filled"
     case .tabDesktopImage24Regular: return "ic_fluent_tab_desktop_image_24_regular"
     case .tabDesktopMultiple20Filled: return "ic_fluent_tab_desktop_multiple_20_filled"
@@ -14367,8 +15067,6 @@ import Foundation
     case .tabInprivateAccount20Regular: return "ic_fluent_tab_inprivate_account_20_regular"
     case .tabInprivateAccount24Filled: return "ic_fluent_tab_inprivate_account_24_filled"
     case .tabInprivateAccount24Regular: return "ic_fluent_tab_inprivate_account_24_regular"
-    default: break }
-    switch self {
     case .tabProhibited24Filled: return "ic_fluent_tab_prohibited_24_filled"
     case .tabProhibited24Regular: return "ic_fluent_tab_prohibited_24_regular"
     case .tabShieldDismiss20Filled: return "ic_fluent_tab_shield_dismiss_20_filled"
@@ -14449,6 +15147,8 @@ import Foundation
     case .tableSimple28Regular: return "ic_fluent_table_simple_28_regular"
     case .tableSimple48Filled: return "ic_fluent_table_simple_48_filled"
     case .tableSimple48Regular: return "ic_fluent_table_simple_48_regular"
+    default: break }
+    switch self {
     case .tableStackAbove20Filled: return "ic_fluent_table_stack_above_20_filled"
     case .tableStackAbove20Regular: return "ic_fluent_table_stack_above_20_regular"
     case .tableStackAbove24Filled: return "ic_fluent_table_stack_above_24_filled"
@@ -14469,8 +15169,6 @@ import Foundation
     case .tableSwitch24Regular: return "ic_fluent_table_switch_24_regular"
     case .tablet20Filled: return "ic_fluent_tablet_20_filled"
     case .tablet20Regular: return "ic_fluent_tablet_20_regular"
-    default: break }
-    switch self {
     case .tablet24Filled: return "ic_fluent_tablet_24_filled"
     case .tablet24Regular: return "ic_fluent_tablet_24_regular"
     case .tabletSpeaker24Filled: return "ic_fluent_tablet_speaker_24_filled"
@@ -14483,6 +15181,8 @@ import Foundation
     case .tag20Regular: return "ic_fluent_tag_20_regular"
     case .tag24Filled: return "ic_fluent_tag_24_filled"
     case .tag24Regular: return "ic_fluent_tag_24_regular"
+    case .tagCircle20Filled: return "ic_fluent_tag_circle_20_filled"
+    case .tagCircle20Regular: return "ic_fluent_tag_circle_20_regular"
     case .tagDismiss20Filled: return "ic_fluent_tag_dismiss_20_filled"
     case .tagDismiss20Regular: return "ic_fluent_tag_dismiss_20_regular"
     case .tagDismiss24Filled: return "ic_fluent_tag_dismiss_24_filled"
@@ -14549,6 +15249,8 @@ import Foundation
     case .teddy20Regular: return "ic_fluent_teddy_20_regular"
     case .teddy24Filled: return "ic_fluent_teddy_24_filled"
     case .teddy24Regular: return "ic_fluent_teddy_24_regular"
+    default: break }
+    switch self {
     case .temperature16Filled: return "ic_fluent_temperature_16_filled"
     case .temperature16Regular: return "ic_fluent_temperature_16_regular"
     case .temperature20Filled: return "ic_fluent_temperature_20_filled"
@@ -14571,8 +15273,6 @@ import Foundation
     case .tetrisApp16Regular: return "ic_fluent_tetris_app_16_regular"
     case .tetrisApp20Filled: return "ic_fluent_tetris_app_20_filled"
     case .tetrisApp20Regular: return "ic_fluent_tetris_app_20_regular"
-    default: break }
-    switch self {
     case .tetrisApp24Filled: return "ic_fluent_tetris_app_24_filled"
     case .tetrisApp24Regular: return "ic_fluent_tetris_app_24_regular"
     case .tetrisApp28Filled: return "ic_fluent_tetris_app_28_filled"
@@ -14595,6 +15295,8 @@ import Foundation
     case .textAddSpaceBefore20Regular: return "ic_fluent_text_add_space_before_20_regular"
     case .textAddSpaceBefore24Filled: return "ic_fluent_text_add_space_before_24_filled"
     case .textAddSpaceBefore24Regular: return "ic_fluent_text_add_space_before_24_regular"
+    case .textAddT24Filled: return "ic_fluent_text_add_t_24_filled"
+    case .textAddT24Regular: return "ic_fluent_text_add_t_24_regular"
     case .textAlignCenter20Filled: return "ic_fluent_text_align_center_20_filled"
     case .textAlignCenter20Regular: return "ic_fluent_text_align_center_20_regular"
     case .textAlignCenter24Filled: return "ic_fluent_text_align_center_24_filled"
@@ -14641,12 +15343,16 @@ import Foundation
     case .textBold24Regular: return "ic_fluent_text_bold_24_regular"
     case .textBox16Filled: return "ic_fluent_text_box_16_filled"
     case .textBox16Regular: return "ic_fluent_text_box_16_regular"
+    case .textBulletList16Filled: return "ic_fluent_text_bullet_list_16_filled"
+    case .textBulletList16Regular: return "ic_fluent_text_bullet_list_16_regular"
     case .textBulletList20Filled: return "ic_fluent_text_bullet_list_20_filled"
     case .textBulletList20Regular: return "ic_fluent_text_bullet_list_20_regular"
     case .textBulletList24Filled: return "ic_fluent_text_bullet_list_24_filled"
     case .textBulletList24Regular: return "ic_fluent_text_bullet_list_24_regular"
     case .textBulletListAdd20Filled: return "ic_fluent_text_bullet_list_add_20_filled"
     case .textBulletListAdd20Regular: return "ic_fluent_text_bullet_list_add_20_regular"
+    default: break }
+    switch self {
     case .textBulletListAdd24Filled: return "ic_fluent_text_bullet_list_add_24_filled"
     case .textBulletListAdd24Regular: return "ic_fluent_text_bullet_list_add_24_regular"
     case .textBulletListSquare20Filled: return "ic_fluent_text_bullet_list_square_20_filled"
@@ -14673,8 +15379,6 @@ import Foundation
     case .textChangeCase20Regular: return "ic_fluent_text_change_case_20_regular"
     case .textChangeCase24Filled: return "ic_fluent_text_change_case_24_filled"
     case .textChangeCase24Regular: return "ic_fluent_text_change_case_24_regular"
-    default: break }
-    switch self {
     case .textClearFormatting20Filled: return "ic_fluent_text_clear_formatting_20_filled"
     case .textClearFormatting20Regular: return "ic_fluent_text_clear_formatting_20_regular"
     case .textClearFormatting24Filled: return "ic_fluent_text_clear_formatting_24_filled"
@@ -14749,6 +15453,8 @@ import Foundation
     case .textDirectionRotate270Right24Filled: return "ic_fluent_text_direction_rotate_270_right_24_filled"
     case .textDirectionRotate270Right24Regular: return "ic_fluent_text_direction_rotate_270_right_24_regular"
     case .textDirectionRotate9020Filled: return "ic_fluent_text_direction_rotate_90_20_filled"
+    default: break }
+    switch self {
     case .textDirectionRotate9020Regular: return "ic_fluent_text_direction_rotate_90_20_regular"
     case .textDirectionRotate9024Filled: return "ic_fluent_text_direction_rotate_90_24_filled"
     case .textDirectionRotate9024Regular: return "ic_fluent_text_direction_rotate_90_24_regular"
@@ -14775,8 +15481,6 @@ import Foundation
     case .textEffects24Filled: return "ic_fluent_text_effects_24_filled"
     case .textEffects24Regular: return "ic_fluent_text_effects_24_regular"
     case .textEffectsGa24Filled: return "ic_fluent_text_effects_ga_24_filled"
-    default: break }
-    switch self {
     case .textEffectsGa24Regular: return "ic_fluent_text_effects_ga_24_regular"
     case .textExpand24Filled: return "ic_fluent_text_expand_24_filled"
     case .textExpand24Regular: return "ic_fluent_text_expand_24_regular"
@@ -14840,11 +15544,19 @@ import Foundation
     case .textHanging24Regular: return "ic_fluent_text_hanging_24_regular"
     case .textHeader120Filled: return "ic_fluent_text_header_1_20_filled"
     case .textHeader120Regular: return "ic_fluent_text_header_1_20_regular"
+    case .textHeader124Filled: return "ic_fluent_text_header_1_24_filled"
+    case .textHeader124Regular: return "ic_fluent_text_header_1_24_regular"
     case .textHeader220Filled: return "ic_fluent_text_header_2_20_filled"
     case .textHeader220Regular: return "ic_fluent_text_header_2_20_regular"
+    case .textHeader224Filled: return "ic_fluent_text_header_2_24_filled"
+    case .textHeader224Regular: return "ic_fluent_text_header_2_24_regular"
     case .textHeader320Filled: return "ic_fluent_text_header_3_20_filled"
     case .textHeader320Regular: return "ic_fluent_text_header_3_20_regular"
+    case .textHeader324Filled: return "ic_fluent_text_header_3_24_filled"
+    case .textHeader324Regular: return "ic_fluent_text_header_3_24_regular"
     case .textIndentDecrease20Filled: return "ic_fluent_text_indent_decrease_20_filled"
+    default: break }
+    switch self {
     case .textIndentDecrease20Regular: return "ic_fluent_text_indent_decrease_20_regular"
     case .textIndentDecrease24Filled: return "ic_fluent_text_indent_decrease_24_filled"
     case .textIndentDecrease24Regular: return "ic_fluent_text_indent_decrease_24_regular"
@@ -14862,6 +15574,8 @@ import Foundation
     case .textLineSpacing20Regular: return "ic_fluent_text_line_spacing_20_regular"
     case .textLineSpacing24Filled: return "ic_fluent_text_line_spacing_24_filled"
     case .textLineSpacing24Regular: return "ic_fluent_text_line_spacing_24_regular"
+    case .textMore24Filled: return "ic_fluent_text_more_24_filled"
+    case .textMore24Regular: return "ic_fluent_text_more_24_regular"
     case .textNumberFormat20Filled: return "ic_fluent_text_number_format_20_filled"
     case .textNumberFormat20Regular: return "ic_fluent_text_number_format_20_regular"
     case .textNumberFormat24Filled: return "ic_fluent_text_number_format_24_filled"
@@ -14877,11 +15591,11 @@ import Foundation
     case .textParagraph24Filled: return "ic_fluent_text_paragraph_24_filled"
     case .textParagraph24Regular: return "ic_fluent_text_paragraph_24_regular"
     case .textParagraphDirection20Filled: return "ic_fluent_text_paragraph_direction_20_filled"
-    default: break }
-    switch self {
     case .textParagraphDirection20Regular: return "ic_fluent_text_paragraph_direction_20_regular"
     case .textParagraphDirection24Filled: return "ic_fluent_text_paragraph_direction_24_filled"
     case .textParagraphDirection24Regular: return "ic_fluent_text_paragraph_direction_24_regular"
+    case .textPeriodAsterisk20Filled: return "ic_fluent_text_period_asterisk_20_filled"
+    case .textPeriodAsterisk20Regular: return "ic_fluent_text_period_asterisk_20_regular"
     case .textPositionBehind20Filled: return "ic_fluent_text_position_behind_20_filled"
     case .textPositionBehind20Regular: return "ic_fluent_text_position_behind_20_regular"
     case .textPositionBehind24Filled: return "ic_fluent_text_position_behind_24_filled"
@@ -14943,6 +15657,8 @@ import Foundation
     case .textStrikethrough24Filled: return "ic_fluent_text_strikethrough_24_filled"
     case .textStrikethrough24Regular: return "ic_fluent_text_strikethrough_24_regular"
     case .textStrikethroughS16Filled: return "ic_fluent_text_strikethrough_s_16_filled"
+    default: break }
+    switch self {
     case .textStrikethroughS16Regular: return "ic_fluent_text_strikethrough_s_16_regular"
     case .textStrikethroughS20Filled: return "ic_fluent_text_strikethrough_s_20_filled"
     case .textStrikethroughS20Regular: return "ic_fluent_text_strikethrough_s_20_regular"
@@ -14956,6 +15672,10 @@ import Foundation
     case .textSuperscript20Regular: return "ic_fluent_text_superscript_20_regular"
     case .textSuperscript24Filled: return "ic_fluent_text_superscript_24_filled"
     case .textSuperscript24Regular: return "ic_fluent_text_superscript_24_regular"
+    case .textT20Filled: return "ic_fluent_text_t_20_filled"
+    case .textT20Regular: return "ic_fluent_text_t_20_regular"
+    case .textT24Filled: return "ic_fluent_text_t_24_filled"
+    case .textT24Regular: return "ic_fluent_text_t_24_regular"
     case .textUnderline16Filled: return "ic_fluent_text_underline_16_filled"
     case .textUnderline16Regular: return "ic_fluent_text_underline_16_regular"
     case .textUnderline20Filled: return "ic_fluent_text_underline_20_filled"
@@ -14979,8 +15699,6 @@ import Foundation
     case .textboxAlignBottomRotate9024Filled: return "ic_fluent_textbox_align_bottom_rotate_90_24_filled"
     case .textboxAlignBottomRotate9024Regular: return "ic_fluent_textbox_align_bottom_rotate_90_24_regular"
     case .textboxAlignCenter20Filled: return "ic_fluent_textbox_align_center_20_filled"
-    default: break }
-    switch self {
     case .textboxAlignCenter20Regular: return "ic_fluent_textbox_align_center_20_regular"
     case .textboxAlignCenter24Filled: return "ic_fluent_textbox_align_center_24_filled"
     case .textboxAlignCenter24Regular: return "ic_fluent_textbox_align_center_24_regular"
@@ -15034,11 +15752,15 @@ import Foundation
     case .timeAndWeather24Regular: return "ic_fluent_time_and_weather_24_regular"
     case .timePicker24Filled: return "ic_fluent_time_picker_24_filled"
     case .timePicker24Regular: return "ic_fluent_time_picker_24_regular"
+    case .timeline20Filled: return "ic_fluent_timeline_20_filled"
+    case .timeline20Regular: return "ic_fluent_timeline_20_regular"
     case .timeline24Filled: return "ic_fluent_timeline_24_filled"
     case .timeline24Regular: return "ic_fluent_timeline_24_regular"
     case .timer1024Filled: return "ic_fluent_timer_10_24_filled"
     case .timer1024Regular: return "ic_fluent_timer_10_24_regular"
     case .timer16Filled: return "ic_fluent_timer_16_filled"
+    default: break }
+    switch self {
     case .timer16Regular: return "ic_fluent_timer_16_regular"
     case .timer20Filled: return "ic_fluent_timer_20_filled"
     case .timer20Regular: return "ic_fluent_timer_20_regular"
@@ -15081,8 +15803,6 @@ import Foundation
     case .tooltipQuote20Filled: return "ic_fluent_tooltip_quote_20_filled"
     case .tooltipQuote20Regular: return "ic_fluent_tooltip_quote_20_regular"
     case .tooltipQuote24Filled: return "ic_fluent_tooltip_quote_24_filled"
-    default: break }
-    switch self {
     case .tooltipQuote24Regular: return "ic_fluent_tooltip_quote_24_regular"
     case .topSpeed20Filled: return "ic_fluent_top_speed_20_filled"
     case .topSpeed20Regular: return "ic_fluent_top_speed_20_regular"
@@ -15095,6 +15815,8 @@ import Foundation
     case .translate24Regular: return "ic_fluent_translate_24_regular"
     case .transmission24Filled: return "ic_fluent_transmission_24_filled"
     case .transmission24Regular: return "ic_fluent_transmission_24_regular"
+    case .triangle12Filled: return "ic_fluent_triangle_12_filled"
+    case .triangle12Regular: return "ic_fluent_triangle_12_regular"
     case .trophy16Filled: return "ic_fluent_trophy_16_filled"
     case .trophy16Regular: return "ic_fluent_trophy_16_regular"
     case .trophy20Filled: return "ic_fluent_trophy_20_filled"
@@ -15129,12 +15851,18 @@ import Foundation
     case .umbrella24Regular: return "ic_fluent_umbrella_24_regular"
     case .uninstallApp24Filled: return "ic_fluent_uninstall_app_24_filled"
     case .uninstallApp24Regular: return "ic_fluent_uninstall_app_24_regular"
+    case .usbPlug20Filled: return "ic_fluent_usb_plug_20_filled"
+    case .usbPlug20Regular: return "ic_fluent_usb_plug_20_regular"
+    case .usbPlug24Filled: return "ic_fluent_usb_plug_24_filled"
+    case .usbPlug24Regular: return "ic_fluent_usb_plug_24_regular"
     case .usbPort20Filled: return "ic_fluent_usb_port_20_filled"
     case .usbPort20Regular: return "ic_fluent_usb_port_20_regular"
     case .usbPort24Filled: return "ic_fluent_usb_port_24_filled"
     case .usbPort24Regular: return "ic_fluent_usb_port_24_regular"
     case .usbStick20Filled: return "ic_fluent_usb_stick_20_filled"
     case .usbStick20Regular: return "ic_fluent_usb_stick_20_regular"
+    default: break }
+    switch self {
     case .usbStick24Filled: return "ic_fluent_usb_stick_24_filled"
     case .usbStick24Regular: return "ic_fluent_usb_stick_24_regular"
     case .vault16Filled: return "ic_fluent_vault_16_filled"
@@ -15183,8 +15911,6 @@ import Foundation
     case .vehicleShip20Regular: return "ic_fluent_vehicle_ship_20_regular"
     case .vehicleShip24Filled: return "ic_fluent_vehicle_ship_24_filled"
     case .vehicleShip24Regular: return "ic_fluent_vehicle_ship_24_regular"
-    default: break }
-    switch self {
     case .vehicleSubway16Filled: return "ic_fluent_vehicle_subway_16_filled"
     case .vehicleSubway16Regular: return "ic_fluent_vehicle_subway_16_regular"
     case .vehicleSubway20Filled: return "ic_fluent_vehicle_subway_20_filled"
@@ -15237,6 +15963,8 @@ import Foundation
     case .videoClip24Regular: return "ic_fluent_video_clip_24_regular"
     case .videoOff20Filled: return "ic_fluent_video_off_20_filled"
     case .videoOff20Regular: return "ic_fluent_video_off_20_regular"
+    default: break }
+    switch self {
     case .videoOff24Filled: return "ic_fluent_video_off_24_filled"
     case .videoOff24Regular: return "ic_fluent_video_off_24_regular"
     case .videoOff28Filled: return "ic_fluent_video_off_28_filled"
@@ -15285,8 +16013,6 @@ import Foundation
     case .videoRecording20Regular: return "ic_fluent_video_recording_20_regular"
     case .videoSecurity20Filled: return "ic_fluent_video_security_20_filled"
     case .videoSecurity20Regular: return "ic_fluent_video_security_20_regular"
-    default: break }
-    switch self {
     case .videoSecurity24Filled: return "ic_fluent_video_security_24_filled"
     case .videoSecurity24Regular: return "ic_fluent_video_security_24_regular"
     case .videoSwitch20Filled: return "ic_fluent_video_switch_20_filled"
@@ -15339,6 +16065,8 @@ import Foundation
     case .wand28Regular: return "ic_fluent_wand_28_regular"
     case .wand48Filled: return "ic_fluent_wand_48_filled"
     case .wand48Regular: return "ic_fluent_wand_48_regular"
+    default: break }
+    switch self {
     case .warning12Filled: return "ic_fluent_warning_12_filled"
     case .warning12Regular: return "ic_fluent_warning_12_regular"
     case .warning16Filled: return "ic_fluent_warning_16_filled"
@@ -15387,8 +16115,6 @@ import Foundation
     case .weatherHailDay48Regular: return "ic_fluent_weather_hail_day_48_regular"
     case .weatherHailNight20Filled: return "ic_fluent_weather_hail_night_20_filled"
     case .weatherHailNight20Regular: return "ic_fluent_weather_hail_night_20_regular"
-    default: break }
-    switch self {
     case .weatherHailNight24Filled: return "ic_fluent_weather_hail_night_24_filled"
     case .weatherHailNight24Regular: return "ic_fluent_weather_hail_night_24_regular"
     case .weatherHailNight48Filled: return "ic_fluent_weather_hail_night_48_filled"
@@ -15441,6 +16167,8 @@ import Foundation
     case .weatherRain48Regular: return "ic_fluent_weather_rain_48_regular"
     case .weatherRainShowersDay20Filled: return "ic_fluent_weather_rain_showers_day_20_filled"
     case .weatherRainShowersDay20Regular: return "ic_fluent_weather_rain_showers_day_20_regular"
+    default: break }
+    switch self {
     case .weatherRainShowersDay24Filled: return "ic_fluent_weather_rain_showers_day_24_filled"
     case .weatherRainShowersDay24Regular: return "ic_fluent_weather_rain_showers_day_24_regular"
     case .weatherRainShowersDay48Filled: return "ic_fluent_weather_rain_showers_day_48_filled"
@@ -15489,8 +16217,6 @@ import Foundation
     case .weatherSqualls48Regular: return "ic_fluent_weather_squalls_48_regular"
     case .weatherSunny16Filled: return "ic_fluent_weather_sunny_16_filled"
     case .weatherSunny16Regular: return "ic_fluent_weather_sunny_16_regular"
-    default: break }
-    switch self {
     case .weatherSunny20Filled: return "ic_fluent_weather_sunny_20_filled"
     case .weatherSunny20Regular: return "ic_fluent_weather_sunny_20_regular"
     case .weatherSunny24Filled: return "ic_fluent_weather_sunny_24_filled"
@@ -15539,24 +16265,42 @@ import Foundation
     case .wifi420Regular: return "ic_fluent_wifi_4_20_regular"
     case .wifi424Filled: return "ic_fluent_wifi_4_24_filled"
     case .wifi424Regular: return "ic_fluent_wifi_4_24_regular"
+    case .wifiLock24Filled: return "ic_fluent_wifi_lock_24_filled"
+    case .wifiLock24Regular: return "ic_fluent_wifi_lock_24_regular"
     case .wifiOff20Filled: return "ic_fluent_wifi_off_20_filled"
     case .wifiOff20Regular: return "ic_fluent_wifi_off_20_regular"
+    default: break }
+    switch self {
     case .wifiOff24Filled: return "ic_fluent_wifi_off_24_filled"
     case .wifiOff24Regular: return "ic_fluent_wifi_off_24_regular"
     case .wifiProtected24Filled: return "ic_fluent_wifi_protected_24_filled"
     case .wifiProtected24Regular: return "ic_fluent_wifi_protected_24_regular"
+    case .wifiSettings20Filled: return "ic_fluent_wifi_settings_20_filled"
+    case .wifiSettings20Regular: return "ic_fluent_wifi_settings_20_regular"
     case .wifiWarning20Filled: return "ic_fluent_wifi_warning_20_filled"
     case .wifiWarning20Regular: return "ic_fluent_wifi_warning_20_regular"
     case .wifiWarning24Filled: return "ic_fluent_wifi_warning_24_filled"
     case .wifiWarning24Regular: return "ic_fluent_wifi_warning_24_regular"
+    case .window16Filled: return "ic_fluent_window_16_filled"
+    case .window16Regular: return "ic_fluent_window_16_regular"
     case .window20Filled: return "ic_fluent_window_20_filled"
     case .window20Regular: return "ic_fluent_window_20_regular"
+    case .window24Filled: return "ic_fluent_window_24_filled"
+    case .window24Regular: return "ic_fluent_window_24_regular"
     case .windowAd20Filled: return "ic_fluent_window_ad_20_filled"
     case .windowAd20Regular: return "ic_fluent_window_ad_20_regular"
+    case .windowAdOff20Filled: return "ic_fluent_window_ad_off_20_filled"
+    case .windowAdOff20Regular: return "ic_fluent_window_ad_off_20_regular"
     case .windowAdPerson20Filled: return "ic_fluent_window_ad_person_20_filled"
     case .windowAdPerson20Regular: return "ic_fluent_window_ad_person_20_regular"
+    case .windowArrowUp16Filled: return "ic_fluent_window_arrow_up_16_filled"
+    case .windowArrowUp16Regular: return "ic_fluent_window_arrow_up_16_regular"
+    case .windowArrowUp20Filled: return "ic_fluent_window_arrow_up_20_filled"
+    case .windowArrowUp20Regular: return "ic_fluent_window_arrow_up_20_regular"
     case .windowArrowUp24Filled: return "ic_fluent_window_arrow_up_24_filled"
     case .windowArrowUp24Regular: return "ic_fluent_window_arrow_up_24_regular"
+    case .windowConsole20Filled: return "ic_fluent_window_console_20_filled"
+    case .windowConsole20Regular: return "ic_fluent_window_console_20_regular"
     case .windowDevEdit16Filled: return "ic_fluent_window_dev_edit_16_filled"
     case .windowDevEdit16Regular: return "ic_fluent_window_dev_edit_16_regular"
     case .windowDevEdit20Filled: return "ic_fluent_window_dev_edit_20_filled"
@@ -15571,12 +16315,16 @@ import Foundation
     case .windowEdit16Regular: return "ic_fluent_window_edit_16_regular"
     case .windowHeaderHorizontal20Filled: return "ic_fluent_window_header_horizontal_20_filled"
     case .windowHeaderHorizontal20Regular: return "ic_fluent_window_header_horizontal_20_regular"
+    case .windowHeaderHorizontalOff20Filled: return "ic_fluent_window_header_horizontal_off_20_filled"
+    case .windowHeaderHorizontalOff20Regular: return "ic_fluent_window_header_horizontal_off_20_regular"
     case .windowHeaderVertical20Filled: return "ic_fluent_window_header_vertical_20_filled"
     case .windowHeaderVertical20Regular: return "ic_fluent_window_header_vertical_20_regular"
     case .windowInprivate20Filled: return "ic_fluent_window_inprivate_20_filled"
     case .windowInprivate20Regular: return "ic_fluent_window_inprivate_20_regular"
     case .windowInprivateAccount20Filled: return "ic_fluent_window_inprivate_account_20_filled"
     case .windowInprivateAccount20Regular: return "ic_fluent_window_inprivate_account_20_regular"
+    case .windowMultiple16Filled: return "ic_fluent_window_multiple_16_filled"
+    case .windowMultiple16Regular: return "ic_fluent_window_multiple_16_regular"
     case .windowMultiple20Filled: return "ic_fluent_window_multiple_20_filled"
     case .windowMultiple20Regular: return "ic_fluent_window_multiple_20_regular"
     case .windowNew16Filled: return "ic_fluent_window_new_16_filled"
@@ -15591,8 +16339,6 @@ import Foundation
     case .windowShield20Regular: return "ic_fluent_window_shield_20_regular"
     case .windowShield24Filled: return "ic_fluent_window_shield_24_filled"
     case .windowShield24Regular: return "ic_fluent_window_shield_24_regular"
-    default: break }
-    switch self {
     case .wrench16Filled: return "ic_fluent_wrench_16_filled"
     case .wrench16Regular: return "ic_fluent_wrench_16_regular"
     case .wrench20Filled: return "ic_fluent_wrench_20_filled"
@@ -15607,10 +16353,14 @@ import Foundation
     case .xray20Regular: return "ic_fluent_xray_20_regular"
     case .xray24Filled: return "ic_fluent_xray_24_filled"
     case .xray24Regular: return "ic_fluent_xray_24_regular"
+    case .zoomIn16Filled: return "ic_fluent_zoom_in_16_filled"
+    case .zoomIn16Regular: return "ic_fluent_zoom_in_16_regular"
     case .zoomIn20Filled: return "ic_fluent_zoom_in_20_filled"
     case .zoomIn20Regular: return "ic_fluent_zoom_in_20_regular"
     case .zoomIn24Filled: return "ic_fluent_zoom_in_24_filled"
     case .zoomIn24Regular: return "ic_fluent_zoom_in_24_regular"
+    case .zoomOut16Filled: return "ic_fluent_zoom_out_16_filled"
+    case .zoomOut16Regular: return "ic_fluent_zoom_out_16_regular"
     case .zoomOut20Filled: return "ic_fluent_zoom_out_20_filled"
     case .zoomOut20Regular: return "ic_fluent_zoom_out_20_regular"
     case .zoomOut24Filled: return "ic_fluent_zoom_out_24_filled"
@@ -15880,6 +16630,8 @@ import Foundation
     case .archiveSettings16Regular: return ".archiveSettings16Regular"
     case .archiveSettings20Filled: return ".archiveSettings20Filled"
     case .archiveSettings20Regular: return ".archiveSettings20Regular"
+    case .arrowAutofitContent24Filled: return ".arrowAutofitContent24Filled"
+    case .arrowAutofitContent24Regular: return ".arrowAutofitContent24Regular"
     case .arrowAutofitDown24Filled: return ".arrowAutofitDown24Filled"
     case .arrowAutofitDown24Regular: return ".arrowAutofitDown24Regular"
     case .arrowAutofitHeight24Filled: return ".arrowAutofitHeight24Filled"
@@ -15892,6 +16644,14 @@ import Foundation
     case .arrowAutofitWidth24Regular: return ".arrowAutofitWidth24Regular"
     case .arrowAutofitWidthDotted24Filled: return ".arrowAutofitWidthDotted24Filled"
     case .arrowAutofitWidthDotted24Regular: return ".arrowAutofitWidthDotted24Regular"
+    case .arrowBidirectionalUpDown12Filled: return ".arrowBidirectionalUpDown12Filled"
+    case .arrowBidirectionalUpDown12Regular: return ".arrowBidirectionalUpDown12Regular"
+    case .arrowBidirectionalUpDown16Filled: return ".arrowBidirectionalUpDown16Filled"
+    case .arrowBidirectionalUpDown16Regular: return ".arrowBidirectionalUpDown16Regular"
+    case .arrowBidirectionalUpDown20Filled: return ".arrowBidirectionalUpDown20Filled"
+    case .arrowBidirectionalUpDown20Regular: return ".arrowBidirectionalUpDown20Regular"
+    case .arrowBidirectionalUpDown24Filled: return ".arrowBidirectionalUpDown24Filled"
+    case .arrowBidirectionalUpDown24Regular: return ".arrowBidirectionalUpDown24Regular"
     case .arrowBounce16Filled: return ".arrowBounce16Filled"
     case .arrowBounce16Regular: return ".arrowBounce16Regular"
     case .arrowBounce24Filled: return ".arrowBounce24Filled"
@@ -15912,6 +16672,18 @@ import Foundation
     case .arrowCircleDownSplit20Regular: return ".arrowCircleDownSplit20Regular"
     case .arrowCircleDownSplit24Filled: return ".arrowCircleDownSplit24Filled"
     case .arrowCircleDownSplit24Regular: return ".arrowCircleDownSplit24Regular"
+    case .arrowCircleDownUp20Filled: return ".arrowCircleDownUp20Filled"
+    case .arrowCircleDownUp20Regular: return ".arrowCircleDownUp20Regular"
+    case .arrowCircleLeft12Filled: return ".arrowCircleLeft12Filled"
+    case .arrowCircleLeft12Regular: return ".arrowCircleLeft12Regular"
+    case .arrowCircleLeft16Filled: return ".arrowCircleLeft16Filled"
+    case .arrowCircleLeft16Regular: return ".arrowCircleLeft16Regular"
+    default: break }
+    switch self {
+    case .arrowCircleRight12Filled: return ".arrowCircleRight12Filled"
+    case .arrowCircleRight12Regular: return ".arrowCircleRight12Regular"
+    case .arrowCircleRight16Filled: return ".arrowCircleRight16Filled"
+    case .arrowCircleRight16Regular: return ".arrowCircleRight16Regular"
     case .arrowCircleRight24Filled: return ".arrowCircleRight24Filled"
     case .arrowCircleRight24Regular: return ".arrowCircleRight24Regular"
     case .arrowCircleUp16Filled: return ".arrowCircleUp16Filled"
@@ -15928,8 +16700,6 @@ import Foundation
     case .arrowClockwise16Regular: return ".arrowClockwise16Regular"
     case .arrowClockwise20Filled: return ".arrowClockwise20Filled"
     case .arrowClockwise20Regular: return ".arrowClockwise20Regular"
-    default: break }
-    switch self {
     case .arrowClockwise24Filled: return ".arrowClockwise24Filled"
     case .arrowClockwise24Regular: return ".arrowClockwise24Regular"
     case .arrowClockwise28Filled: return ".arrowClockwise28Filled"
@@ -16002,12 +16772,16 @@ import Foundation
     case .arrowDownload24Regular: return ".arrowDownload24Regular"
     case .arrowDownload48Filled: return ".arrowDownload48Filled"
     case .arrowDownload48Regular: return ".arrowDownload48Regular"
+    case .arrowEject20Filled: return ".arrowEject20Filled"
+    case .arrowEject20Regular: return ".arrowEject20Regular"
     case .arrowEnterLeft20Filled: return ".arrowEnterLeft20Filled"
     case .arrowEnterLeft20Regular: return ".arrowEnterLeft20Regular"
     case .arrowEnterLeft24Filled: return ".arrowEnterLeft24Filled"
     case .arrowEnterLeft24Regular: return ".arrowEnterLeft24Regular"
     case .arrowEnterUp20Filled: return ".arrowEnterUp20Filled"
     case .arrowEnterUp20Regular: return ".arrowEnterUp20Regular"
+    default: break }
+    switch self {
     case .arrowEnterUp24Filled: return ".arrowEnterUp24Filled"
     case .arrowEnterUp24Regular: return ".arrowEnterUp24Regular"
     case .arrowExpand24Filled: return ".arrowExpand24Filled"
@@ -16030,8 +16804,6 @@ import Foundation
     case .arrowForward20Regular: return ".arrowForward20Regular"
     case .arrowForward24Filled: return ".arrowForward24Filled"
     case .arrowForward24Regular: return ".arrowForward24Regular"
-    default: break }
-    switch self {
     case .arrowForward48Filled: return ".arrowForward48Filled"
     case .arrowForward48Regular: return ".arrowForward48Regular"
     case .arrowGrowth20Filled: return ".arrowGrowth20Filled"
@@ -16074,6 +16846,8 @@ import Foundation
     case .arrowImport20Regular: return ".arrowImport20Regular"
     case .arrowImport24Filled: return ".arrowImport24Filled"
     case .arrowImport24Regular: return ".arrowImport24Regular"
+    case .arrowLeft12Filled: return ".arrowLeft12Filled"
+    case .arrowLeft12Regular: return ".arrowLeft12Regular"
     case .arrowLeft16Filled: return ".arrowLeft16Filled"
     case .arrowLeft16Regular: return ".arrowLeft16Regular"
     case .arrowLeft20Filled: return ".arrowLeft20Filled"
@@ -16108,10 +16882,14 @@ import Foundation
     case .arrowMinimize28Regular: return ".arrowMinimize28Regular"
     case .arrowMinimizeVertical24Filled: return ".arrowMinimizeVertical24Filled"
     case .arrowMinimizeVertical24Regular: return ".arrowMinimizeVertical24Regular"
+    default: break }
+    switch self {
     case .arrowMove20Filled: return ".arrowMove20Filled"
     case .arrowMove20Regular: return ".arrowMove20Regular"
     case .arrowMove24Filled: return ".arrowMove24Filled"
     case .arrowMove24Regular: return ".arrowMove24Regular"
+    case .arrowMoveInward20Filled: return ".arrowMoveInward20Filled"
+    case .arrowMoveInward20Regular: return ".arrowMoveInward20Regular"
     case .arrowNext20Filled: return ".arrowNext20Filled"
     case .arrowNext20Regular: return ".arrowNext20Regular"
     case .arrowNext24Filled: return ".arrowNext24Filled"
@@ -16120,6 +16898,8 @@ import Foundation
     case .arrowPrevious20Regular: return ".arrowPrevious20Regular"
     case .arrowPrevious24Filled: return ".arrowPrevious24Filled"
     case .arrowPrevious24Regular: return ".arrowPrevious24Regular"
+    case .arrowRedo16Filled: return ".arrowRedo16Filled"
+    case .arrowRedo16Regular: return ".arrowRedo16Regular"
     case .arrowRedo20Filled: return ".arrowRedo20Filled"
     case .arrowRedo20Regular: return ".arrowRedo20Regular"
     case .arrowRedo24Filled: return ".arrowRedo24Filled"
@@ -16132,8 +16912,6 @@ import Foundation
     case .arrowRepeatAll16Regular: return ".arrowRepeatAll16Regular"
     case .arrowRepeatAll20Filled: return ".arrowRepeatAll20Filled"
     case .arrowRepeatAll20Regular: return ".arrowRepeatAll20Regular"
-    default: break }
-    switch self {
     case .arrowRepeatAll24Filled: return ".arrowRepeatAll24Filled"
     case .arrowRepeatAll24Regular: return ".arrowRepeatAll24Regular"
     case .arrowRepeatAllOff16Filled: return ".arrowRepeatAllOff16Filled"
@@ -16168,6 +16946,8 @@ import Foundation
     case .arrowReset20Regular: return ".arrowReset20Regular"
     case .arrowReset24Filled: return ".arrowReset24Filled"
     case .arrowReset24Regular: return ".arrowReset24Regular"
+    case .arrowRight12Filled: return ".arrowRight12Filled"
+    case .arrowRight12Regular: return ".arrowRight12Regular"
     case .arrowRight16Filled: return ".arrowRight16Filled"
     case .arrowRight16Regular: return ".arrowRight16Regular"
     case .arrowRight20Filled: return ".arrowRight20Filled"
@@ -16204,6 +16984,8 @@ import Foundation
     case .arrowSort20Regular: return ".arrowSort20Regular"
     case .arrowSort24Filled: return ".arrowSort24Filled"
     case .arrowSort24Regular: return ".arrowSort24Regular"
+    default: break }
+    switch self {
     case .arrowSort28Filled: return ".arrowSort28Filled"
     case .arrowSort28Regular: return ".arrowSort28Regular"
     case .arrowSortDown16Filled: return ".arrowSortDown16Filled"
@@ -16228,14 +17010,24 @@ import Foundation
     case .arrowSquareDown24Regular: return ".arrowSquareDown24Regular"
     case .arrowStepBack16Filled: return ".arrowStepBack16Filled"
     case .arrowStepBack16Regular: return ".arrowStepBack16Regular"
+    case .arrowStepIn12Filled: return ".arrowStepIn12Filled"
+    case .arrowStepIn12Regular: return ".arrowStepIn12Regular"
     case .arrowStepIn16Filled: return ".arrowStepIn16Filled"
     case .arrowStepIn16Regular: return ".arrowStepIn16Regular"
+    case .arrowStepInLeft12Filled: return ".arrowStepInLeft12Filled"
+    case .arrowStepInLeft12Regular: return ".arrowStepInLeft12Regular"
+    case .arrowStepInLeft16Filled: return ".arrowStepInLeft16Filled"
+    case .arrowStepInLeft16Regular: return ".arrowStepInLeft16Regular"
+    case .arrowStepInRight12Filled: return ".arrowStepInRight12Filled"
+    case .arrowStepInRight12Regular: return ".arrowStepInRight12Regular"
+    case .arrowStepInRight16Filled: return ".arrowStepInRight16Filled"
+    case .arrowStepInRight16Regular: return ".arrowStepInRight16Regular"
+    case .arrowStepOut12Filled: return ".arrowStepOut12Filled"
+    case .arrowStepOut12Regular: return ".arrowStepOut12Regular"
     case .arrowStepOut16Filled: return ".arrowStepOut16Filled"
     case .arrowStepOut16Regular: return ".arrowStepOut16Regular"
     case .arrowStepOver16Filled: return ".arrowStepOver16Filled"
     case .arrowStepOver16Regular: return ".arrowStepOver16Regular"
-    default: break }
-    switch self {
     case .arrowSwap20Filled: return ".arrowSwap20Filled"
     case .arrowSwap20Regular: return ".arrowSwap20Regular"
     case .arrowSwap24Filled: return ".arrowSwap24Filled"
@@ -16256,12 +17048,20 @@ import Foundation
     case .arrowSyncCircle24Regular: return ".arrowSyncCircle24Regular"
     case .arrowSyncOff12Filled: return ".arrowSyncOff12Filled"
     case .arrowSyncOff12Regular: return ".arrowSyncOff12Regular"
+    case .arrowSyncOff16Filled: return ".arrowSyncOff16Filled"
+    case .arrowSyncOff16Regular: return ".arrowSyncOff16Regular"
+    case .arrowSyncOff20Filled: return ".arrowSyncOff20Filled"
+    case .arrowSyncOff20Regular: return ".arrowSyncOff20Regular"
     case .arrowTrending16Filled: return ".arrowTrending16Filled"
     case .arrowTrending16Regular: return ".arrowTrending16Regular"
     case .arrowTrending20Filled: return ".arrowTrending20Filled"
     case .arrowTrending20Regular: return ".arrowTrending20Regular"
     case .arrowTrending24Filled: return ".arrowTrending24Filled"
     case .arrowTrending24Regular: return ".arrowTrending24Regular"
+    case .arrowTrendingLines20Filled: return ".arrowTrendingLines20Filled"
+    case .arrowTrendingLines20Regular: return ".arrowTrendingLines20Regular"
+    case .arrowTrendingLines24Filled: return ".arrowTrendingLines24Filled"
+    case .arrowTrendingLines24Regular: return ".arrowTrendingLines24Regular"
     case .arrowTurnBidirectionalDownRight24Filled: return ".arrowTurnBidirectionalDownRight24Filled"
     case .arrowTurnBidirectionalDownRight24Regular: return ".arrowTurnBidirectionalDownRight24Regular"
     case .arrowTurnRight24Filled: return ".arrowTurnRight24Filled"
@@ -16276,6 +17076,8 @@ import Foundation
     case .arrowUndo32Regular: return ".arrowUndo32Regular"
     case .arrowUndo48Filled: return ".arrowUndo48Filled"
     case .arrowUndo48Regular: return ".arrowUndo48Regular"
+    case .arrowUp12Filled: return ".arrowUp12Filled"
+    case .arrowUp12Regular: return ".arrowUp12Regular"
     case .arrowUp16Filled: return ".arrowUp16Filled"
     case .arrowUp16Regular: return ".arrowUp16Regular"
     case .arrowUp20Filled: return ".arrowUp20Filled"
@@ -16284,6 +17086,8 @@ import Foundation
     case .arrowUp24Regular: return ".arrowUp24Regular"
     case .arrowUp28Filled: return ".arrowUp28Filled"
     case .arrowUp28Regular: return ".arrowUp28Regular"
+    default: break }
+    switch self {
     case .arrowUp32Filled: return ".arrowUp32Filled"
     case .arrowUp32Regular: return ".arrowUp32Regular"
     case .arrowUp48Filled: return ".arrowUp48Filled"
@@ -16336,8 +17140,6 @@ import Foundation
     case .autosum24Regular: return ".autosum24Regular"
     case .backpack12Filled: return ".backpack12Filled"
     case .backpack12Regular: return ".backpack12Regular"
-    default: break }
-    switch self {
     case .backpack16Filled: return ".backpack16Filled"
     case .backpack16Regular: return ".backpack16Regular"
     case .backpack20Filled: return ".backpack20Filled"
@@ -16386,6 +17188,8 @@ import Foundation
     case .battery220Regular: return ".battery220Regular"
     case .battery224Filled: return ".battery224Filled"
     case .battery224Regular: return ".battery224Regular"
+    default: break }
+    switch self {
     case .battery320Filled: return ".battery320Filled"
     case .battery320Regular: return ".battery320Regular"
     case .battery324Filled: return ".battery324Filled"
@@ -16438,8 +17242,6 @@ import Foundation
     case .beach24Regular: return ".beach24Regular"
     case .beach28Filled: return ".beach28Filled"
     case .beach28Regular: return ".beach28Regular"
-    default: break }
-    switch self {
     case .beaker16Filled: return ".beaker16Filled"
     case .beaker16Regular: return ".beaker16Regular"
     case .beaker20Filled: return ".beaker20Filled"
@@ -16456,6 +17258,8 @@ import Foundation
     case .bed20Regular: return ".bed20Regular"
     case .bed24Filled: return ".bed24Filled"
     case .bed24Regular: return ".bed24Regular"
+    case .bezierCurveSquare12Filled: return ".bezierCurveSquare12Filled"
+    case .bezierCurveSquare12Regular: return ".bezierCurveSquare12Regular"
     case .binFull20Filled: return ".binFull20Filled"
     case .binFull20Regular: return ".binFull20Regular"
     case .binFull24Filled: return ".binFull24Filled"
@@ -16486,6 +17290,8 @@ import Foundation
     case .blur24Regular: return ".blur24Regular"
     case .blur28Filled: return ".blur28Filled"
     case .blur28Regular: return ".blur28Regular"
+    default: break }
+    switch self {
     case .board16Filled: return ".board16Filled"
     case .board16Regular: return ".board16Regular"
     case .board20Filled: return ".board20Filled"
@@ -16540,8 +17346,6 @@ import Foundation
     case .bookNumber16Regular: return ".bookNumber16Regular"
     case .bookNumber20Filled: return ".bookNumber20Filled"
     case .bookNumber20Regular: return ".bookNumber20Regular"
-    default: break }
-    switch self {
     case .bookNumber24Filled: return ".bookNumber24Filled"
     case .bookNumber24Regular: return ".bookNumber24Regular"
     case .bookOpen16Filled: return ".bookOpen16Filled"
@@ -16588,6 +17392,8 @@ import Foundation
     case .bookmark16Regular: return ".bookmark16Regular"
     case .bookmark20Filled: return ".bookmark20Filled"
     case .bookmark20Regular: return ".bookmark20Regular"
+    default: break }
+    switch self {
     case .bookmark24Filled: return ".bookmark24Filled"
     case .bookmark24Regular: return ".bookmark24Regular"
     case .bookmark28Filled: return ".bookmark28Filled"
@@ -16606,6 +17412,10 @@ import Foundation
     case .bookmarkOff24Regular: return ".bookmarkOff24Regular"
     case .border24Filled: return ".border24Filled"
     case .border24Regular: return ".border24Regular"
+    case .borderAll16Filled: return ".borderAll16Filled"
+    case .borderAll16Regular: return ".borderAll16Regular"
+    case .borderAll20Filled: return ".borderAll20Filled"
+    case .borderAll20Regular: return ".borderAll20Regular"
     case .borderAll24Filled: return ".borderAll24Filled"
     case .borderAll24Regular: return ".borderAll24Regular"
     case .borderBottom24Filled: return ".borderBottom24Filled"
@@ -16642,14 +17452,14 @@ import Foundation
     case .bowlChopsticks16Regular: return ".bowlChopsticks16Regular"
     case .bowlChopsticks20Filled: return ".bowlChopsticks20Filled"
     case .bowlChopsticks20Regular: return ".bowlChopsticks20Regular"
-    default: break }
-    switch self {
     case .bowlChopsticks24Filled: return ".bowlChopsticks24Filled"
     case .bowlChopsticks24Regular: return ".bowlChopsticks24Regular"
     case .bowlChopsticks28Filled: return ".bowlChopsticks28Filled"
     case .bowlChopsticks28Regular: return ".bowlChopsticks28Regular"
     case .box16Filled: return ".box16Filled"
     case .box16Regular: return ".box16Regular"
+    case .braces20Filled: return ".braces20Filled"
+    case .braces20Regular: return ".braces20Regular"
     case .bracesVariable20Filled: return ".bracesVariable20Filled"
     case .bracesVariable20Regular: return ".bracesVariable20Regular"
     case .bracesVariable24Filled: return ".bracesVariable24Filled"
@@ -16684,6 +17494,8 @@ import Foundation
     case .briefcase24Regular: return ".briefcase24Regular"
     case .briefcase28Filled: return ".briefcase28Filled"
     case .briefcase28Regular: return ".briefcase28Regular"
+    default: break }
+    switch self {
     case .briefcase32Filled: return ".briefcase32Filled"
     case .briefcase32Regular: return ".briefcase32Regular"
     case .briefcase48Filled: return ".briefcase48Filled"
@@ -16744,8 +17556,6 @@ import Foundation
     case .buildingBank48Regular: return ".buildingBank48Regular"
     case .buildingBankLink16Filled: return ".buildingBankLink16Filled"
     case .buildingBankLink16Regular: return ".buildingBankLink16Regular"
-    default: break }
-    switch self {
     case .buildingBankLink20Filled: return ".buildingBankLink20Filled"
     case .buildingBankLink20Regular: return ".buildingBankLink20Regular"
     case .buildingBankLink24Filled: return ".buildingBankLink24Filled"
@@ -16764,6 +17574,8 @@ import Foundation
     case .buildingGovernment24Regular: return ".buildingGovernment24Regular"
     case .buildingGovernment32Filled: return ".buildingGovernment32Filled"
     case .buildingGovernment32Regular: return ".buildingGovernment32Regular"
+    case .buildingLighthouse20Filled: return ".buildingLighthouse20Filled"
+    case .buildingLighthouse20Regular: return ".buildingLighthouse20Regular"
     case .buildingMultiple24Filled: return ".buildingMultiple24Filled"
     case .buildingMultiple24Regular: return ".buildingMultiple24Regular"
     case .buildingRetail20Filled: return ".buildingRetail20Filled"
@@ -16784,6 +17596,8 @@ import Foundation
     case .buildingRetailToolbox24Regular: return ".buildingRetailToolbox24Regular"
     case .buildingShop16Filled: return ".buildingShop16Filled"
     case .buildingShop16Regular: return ".buildingShop16Regular"
+    default: break }
+    switch self {
     case .buildingShop20Filled: return ".buildingShop20Filled"
     case .buildingShop20Regular: return ".buildingShop20Regular"
     case .buildingShop24Filled: return ".buildingShop24Filled"
@@ -16838,6 +17652,8 @@ import Foundation
     case .calendarArrowRight16Regular: return ".calendarArrowRight16Regular"
     case .calendarArrowRight20Filled: return ".calendarArrowRight20Filled"
     case .calendarArrowRight20Regular: return ".calendarArrowRight20Regular"
+    case .calendarAssistant16Filled: return ".calendarAssistant16Filled"
+    case .calendarAssistant16Regular: return ".calendarAssistant16Regular"
     case .calendarAssistant20Filled: return ".calendarAssistant20Filled"
     case .calendarAssistant20Regular: return ".calendarAssistant20Regular"
     case .calendarAssistant24Filled: return ".calendarAssistant24Filled"
@@ -16846,8 +17662,6 @@ import Foundation
     case .calendarCancel16Regular: return ".calendarCancel16Regular"
     case .calendarCancel20Filled: return ".calendarCancel20Filled"
     case .calendarCancel20Regular: return ".calendarCancel20Regular"
-    default: break }
-    switch self {
     case .calendarCancel24Filled: return ".calendarCancel24Filled"
     case .calendarCancel24Regular: return ".calendarCancel24Regular"
     case .calendarCheckmark16Filled: return ".calendarCheckmark16Filled"
@@ -16884,10 +17698,14 @@ import Foundation
     case .calendarEmpty20Regular: return ".calendarEmpty20Regular"
     case .calendarEmpty24Filled: return ".calendarEmpty24Filled"
     case .calendarEmpty24Regular: return ".calendarEmpty24Regular"
+    default: break }
+    switch self {
     case .calendarEmpty28Filled: return ".calendarEmpty28Filled"
     case .calendarEmpty28Regular: return ".calendarEmpty28Regular"
     case .calendarEmpty32Filled: return ".calendarEmpty32Filled"
     case .calendarEmpty32Regular: return ".calendarEmpty32Regular"
+    case .calendarError24Filled: return ".calendarError24Filled"
+    case .calendarError24Regular: return ".calendarError24Regular"
     case .calendarInfo16Filled: return ".calendarInfo16Filled"
     case .calendarInfo16Regular: return ".calendarInfo16Regular"
     case .calendarInfo20Filled: return ".calendarInfo20Filled"
@@ -16948,8 +17766,6 @@ import Foundation
     case .calendarSettings16Regular: return ".calendarSettings16Regular"
     case .calendarSettings20Filled: return ".calendarSettings20Filled"
     case .calendarSettings20Regular: return ".calendarSettings20Regular"
-    default: break }
-    switch self {
     case .calendarStar16Filled: return ".calendarStar16Filled"
     case .calendarStar16Regular: return ".calendarStar16Regular"
     case .calendarStar20Filled: return ".calendarStar20Filled"
@@ -16984,6 +17800,8 @@ import Foundation
     case .calendarWorkWeek20Regular: return ".calendarWorkWeek20Regular"
     case .calendarWorkWeek24Filled: return ".calendarWorkWeek24Filled"
     case .calendarWorkWeek24Regular: return ".calendarWorkWeek24Regular"
+    default: break }
+    switch self {
     case .call16Filled: return ".call16Filled"
     case .call16Regular: return ".call16Regular"
     case .call20Filled: return ".call20Filled"
@@ -17050,8 +17868,6 @@ import Foundation
     case .callOutbound16Regular: return ".callOutbound16Regular"
     case .callOutbound20Filled: return ".callOutbound20Filled"
     case .callOutbound20Regular: return ".callOutbound20Regular"
-    default: break }
-    switch self {
     case .callOutbound24Filled: return ".callOutbound24Filled"
     case .callOutbound24Regular: return ".callOutbound24Regular"
     case .callOutbound28Filled: return ".callOutbound28Filled"
@@ -17086,6 +17902,8 @@ import Foundation
     case .callProhibited48Regular: return ".callProhibited48Regular"
     case .callTransfer20Filled: return ".callTransfer20Filled"
     case .callTransfer20Regular: return ".callTransfer20Regular"
+    default: break }
+    switch self {
     case .calligraphyPen20Filled: return ".calligraphyPen20Filled"
     case .calligraphyPen20Regular: return ".calligraphyPen20Regular"
     case .calligraphyPen24Filled: return ".calligraphyPen24Filled"
@@ -17152,8 +17970,6 @@ import Foundation
     case .caretDownLeft24Regular: return ".caretDownLeft24Regular"
     case .caretLeft12Filled: return ".caretLeft12Filled"
     case .caretLeft12Regular: return ".caretLeft12Regular"
-    default: break }
-    switch self {
     case .caretLeft16Filled: return ".caretLeft16Filled"
     case .caretLeft16Regular: return ".caretLeft16Regular"
     case .caretLeft20Filled: return ".caretLeft20Filled"
@@ -17188,6 +18004,8 @@ import Foundation
     case .cast24Regular: return ".cast24Regular"
     case .cast28Filled: return ".cast28Filled"
     case .cast28Regular: return ".cast28Regular"
+    default: break }
+    switch self {
     case .cellular3G24Filled: return ".cellular3G24Filled"
     case .cellular3G24Regular: return ".cellular3G24Regular"
     case .cellular4G24Filled: return ".cellular4G24Filled"
@@ -17220,8 +18038,12 @@ import Foundation
     case .cellularDataCellularUnavailable24Regular: return ".cellularDataCellularUnavailable24Regular"
     case .cellularDataUnavailable24Filled: return ".cellularDataUnavailable24Filled"
     case .cellularDataUnavailable24Regular: return ".cellularDataUnavailable24Regular"
+    case .cellularWarning24Filled: return ".cellularWarning24Filled"
+    case .cellularWarning24Regular: return ".cellularWarning24Regular"
     case .centerHorizontal24Filled: return ".centerHorizontal24Filled"
     case .centerHorizontal24Regular: return ".centerHorizontal24Regular"
+    case .centerVertical20Filled: return ".centerVertical20Filled"
+    case .centerVertical20Regular: return ".centerVertical20Regular"
     case .centerVertical24Filled: return ".centerVertical24Filled"
     case .centerVertical24Regular: return ".centerVertical24Regular"
     case .certificate20Filled: return ".certificate20Filled"
@@ -17254,8 +18076,6 @@ import Foundation
     case .channelAlert20Regular: return ".channelAlert20Regular"
     case .channelAlert24Filled: return ".channelAlert24Filled"
     case .channelAlert24Regular: return ".channelAlert24Regular"
-    default: break }
-    switch self {
     case .channelAlert28Filled: return ".channelAlert28Filled"
     case .channelAlert28Regular: return ".channelAlert28Regular"
     case .channelAlert48Filled: return ".channelAlert48Filled"
@@ -17286,6 +18106,8 @@ import Foundation
     case .channelShare16Regular: return ".channelShare16Regular"
     case .channelShare20Filled: return ".channelShare20Filled"
     case .channelShare20Regular: return ".channelShare20Regular"
+    default: break }
+    switch self {
     case .channelShare24Filled: return ".channelShare24Filled"
     case .channelShare24Regular: return ".channelShare24Regular"
     case .channelShare28Filled: return ".channelShare28Filled"
@@ -17328,6 +18150,8 @@ import Foundation
     case .chatBubblesQuestion20Regular: return ".chatBubblesQuestion20Regular"
     case .chatBubblesQuestion24Filled: return ".chatBubblesQuestion24Filled"
     case .chatBubblesQuestion24Regular: return ".chatBubblesQuestion24Regular"
+    case .chatDismiss16Filled: return ".chatDismiss16Filled"
+    case .chatDismiss16Regular: return ".chatDismiss16Regular"
     case .chatHelp20Filled: return ".chatHelp20Filled"
     case .chatHelp20Regular: return ".chatHelp20Regular"
     case .chatHelp24Filled: return ".chatHelp24Filled"
@@ -17348,6 +18172,8 @@ import Foundation
     case .chatSettings20Regular: return ".chatSettings20Regular"
     case .chatSettings24Filled: return ".chatSettings24Filled"
     case .chatSettings24Regular: return ".chatSettings24Regular"
+    case .chatWarning16Filled: return ".chatWarning16Filled"
+    case .chatWarning16Regular: return ".chatWarning16Regular"
     case .chatWarning24Filled: return ".chatWarning24Filled"
     case .chatWarning24Regular: return ".chatWarning24Regular"
     case .check20Filled: return ".check20Filled"
@@ -17356,8 +18182,6 @@ import Foundation
     case .check24Regular: return ".check24Regular"
     case .checkbox124Filled: return ".checkbox124Filled"
     case .checkbox124Regular: return ".checkbox124Regular"
-    default: break }
-    switch self {
     case .checkbox224Filled: return ".checkbox224Filled"
     case .checkbox224Regular: return ".checkbox224Regular"
     case .checkboxArrowRight24Filled: return ".checkboxArrowRight24Filled"
@@ -17372,12 +18196,20 @@ import Foundation
     case .checkboxCheckedSync16Regular: return ".checkboxCheckedSync16Regular"
     case .checkboxCheckedSync20Filled: return ".checkboxCheckedSync20Filled"
     case .checkboxCheckedSync20Regular: return ".checkboxCheckedSync20Regular"
+    case .checkboxIndeterminate16Filled: return ".checkboxIndeterminate16Filled"
+    case .checkboxIndeterminate16Regular: return ".checkboxIndeterminate16Regular"
+    case .checkboxIndeterminate20Filled: return ".checkboxIndeterminate20Filled"
+    case .checkboxIndeterminate20Regular: return ".checkboxIndeterminate20Regular"
+    case .checkboxIndeterminate24Filled: return ".checkboxIndeterminate24Filled"
+    case .checkboxIndeterminate24Regular: return ".checkboxIndeterminate24Regular"
     case .checkboxPerson24Filled: return ".checkboxPerson24Filled"
     case .checkboxPerson24Regular: return ".checkboxPerson24Regular"
     case .checkboxUnchecked12Filled: return ".checkboxUnchecked12Filled"
     case .checkboxUnchecked12Regular: return ".checkboxUnchecked12Regular"
     case .checkboxUnchecked16Filled: return ".checkboxUnchecked16Filled"
     case .checkboxUnchecked16Regular: return ".checkboxUnchecked16Regular"
+    default: break }
+    switch self {
     case .checkboxUnchecked20Filled: return ".checkboxUnchecked20Filled"
     case .checkboxUnchecked20Regular: return ".checkboxUnchecked20Regular"
     case .checkboxUnchecked24Filled: return ".checkboxUnchecked24Filled"
@@ -17426,6 +18258,8 @@ import Foundation
     case .checkmarkUnderlineCircle20Regular: return ".checkmarkUnderlineCircle20Regular"
     case .chevronCircleDown24Filled: return ".chevronCircleDown24Filled"
     case .chevronCircleDown24Regular: return ".chevronCircleDown24Regular"
+    case .chevronCircleRight12Filled: return ".chevronCircleRight12Filled"
+    case .chevronCircleRight12Regular: return ".chevronCircleRight12Regular"
     case .chevronCircleRight24Filled: return ".chevronCircleRight24Filled"
     case .chevronCircleRight24Regular: return ".chevronCircleRight24Regular"
     case .chevronDoubleDown16Filled: return ".chevronDoubleDown16Filled"
@@ -17458,8 +18292,6 @@ import Foundation
     case .chevronDown48Regular: return ".chevronDown48Regular"
     case .chevronLeft12Filled: return ".chevronLeft12Filled"
     case .chevronLeft12Regular: return ".chevronLeft12Regular"
-    default: break }
-    switch self {
     case .chevronLeft16Filled: return ".chevronLeft16Filled"
     case .chevronLeft16Regular: return ".chevronLeft16Regular"
     case .chevronLeft20Filled: return ".chevronLeft20Filled"
@@ -17478,6 +18310,8 @@ import Foundation
     case .chevronRight20Regular: return ".chevronRight20Regular"
     case .chevronRight24Filled: return ".chevronRight24Filled"
     case .chevronRight24Regular: return ".chevronRight24Regular"
+    default: break }
+    switch self {
     case .chevronRight28Filled: return ".chevronRight28Filled"
     case .chevronRight28Regular: return ".chevronRight28Regular"
     case .chevronRight48Filled: return ".chevronRight48Filled"
@@ -17522,6 +18356,8 @@ import Foundation
     case .circleLine12Regular: return ".circleLine12Regular"
     case .circleLine24Filled: return ".circleLine24Filled"
     case .circleLine24Regular: return ".circleLine24Regular"
+    case .circleOff16Filled: return ".circleOff16Filled"
+    case .circleOff16Regular: return ".circleOff16Regular"
     case .circleSmall20Filled: return ".circleSmall20Filled"
     case .circleSmall20Regular: return ".circleSmall20Regular"
     case .circleSmall24Filled: return ".circleSmall24Filled"
@@ -17560,8 +18396,6 @@ import Foundation
     case .clipboardArrowRight16Regular: return ".clipboardArrowRight16Regular"
     case .clipboardArrowRight20Filled: return ".clipboardArrowRight20Filled"
     case .clipboardArrowRight20Regular: return ".clipboardArrowRight20Regular"
-    default: break }
-    switch self {
     case .clipboardArrowRight24Filled: return ".clipboardArrowRight24Filled"
     case .clipboardArrowRight24Regular: return ".clipboardArrowRight24Regular"
     case .clipboardBulletList16Filled: return ".clipboardBulletList16Filled"
@@ -17578,6 +18412,8 @@ import Foundation
     case .clipboardCode20Regular: return ".clipboardCode20Regular"
     case .clipboardCode24Filled: return ".clipboardCode24Filled"
     case .clipboardCode24Regular: return ".clipboardCode24Regular"
+    default: break }
+    switch self {
     case .clipboardDataBar32Filled: return ".clipboardDataBar32Filled"
     case .clipboardDataBar32Regular: return ".clipboardDataBar32Regular"
     case .clipboardError20Filled: return ".clipboardError20Filled"
@@ -17612,6 +18448,8 @@ import Foundation
     case .clipboardPaste24Regular: return ".clipboardPaste24Regular"
     case .clipboardPulse20Filled: return ".clipboardPulse20Filled"
     case .clipboardPulse20Regular: return ".clipboardPulse20Regular"
+    case .clipboardPulse24Filled: return ".clipboardPulse24Filled"
+    case .clipboardPulse24Regular: return ".clipboardPulse24Regular"
     case .clipboardSearch20Filled: return ".clipboardSearch20Filled"
     case .clipboardSearch20Regular: return ".clipboardSearch20Regular"
     case .clipboardSearch24Filled: return ".clipboardSearch24Filled"
@@ -17658,12 +18496,12 @@ import Foundation
     case .clockAlarm32Regular: return ".clockAlarm32Regular"
     case .clockArrowDownload20Filled: return ".clockArrowDownload20Filled"
     case .clockArrowDownload20Regular: return ".clockArrowDownload20Regular"
+    case .clockArrowDownload24Filled: return ".clockArrowDownload24Filled"
+    case .clockArrowDownload24Regular: return ".clockArrowDownload24Regular"
     case .clockDismiss24Filled: return ".clockDismiss24Filled"
     case .clockDismiss24Regular: return ".clockDismiss24Regular"
     case .closedCaption16Filled: return ".closedCaption16Filled"
     case .closedCaption16Regular: return ".closedCaption16Regular"
-    default: break }
-    switch self {
     case .closedCaption20Filled: return ".closedCaption20Filled"
     case .closedCaption20Regular: return ".closedCaption20Regular"
     case .closedCaption24Filled: return ".closedCaption24Filled"
@@ -17676,6 +18514,8 @@ import Foundation
     case .closedCaptionOff16Regular: return ".closedCaptionOff16Regular"
     case .closedCaptionOff20Filled: return ".closedCaptionOff20Filled"
     case .closedCaptionOff20Regular: return ".closedCaptionOff20Regular"
+    default: break }
+    switch self {
     case .closedCaptionOff24Filled: return ".closedCaptionOff24Filled"
     case .closedCaptionOff24Regular: return ".closedCaptionOff24Regular"
     case .closedCaptionOff28Filled: return ".closedCaptionOff28Filled"
@@ -17698,6 +18538,30 @@ import Foundation
     case .cloudAdd16Regular: return ".cloudAdd16Regular"
     case .cloudAdd20Filled: return ".cloudAdd20Filled"
     case .cloudAdd20Regular: return ".cloudAdd20Regular"
+    case .cloudArrowDown16Filled: return ".cloudArrowDown16Filled"
+    case .cloudArrowDown16Regular: return ".cloudArrowDown16Regular"
+    case .cloudArrowDown20Filled: return ".cloudArrowDown20Filled"
+    case .cloudArrowDown20Regular: return ".cloudArrowDown20Regular"
+    case .cloudArrowDown24Filled: return ".cloudArrowDown24Filled"
+    case .cloudArrowDown24Regular: return ".cloudArrowDown24Regular"
+    case .cloudArrowDown28Filled: return ".cloudArrowDown28Filled"
+    case .cloudArrowDown28Regular: return ".cloudArrowDown28Regular"
+    case .cloudArrowDown32Filled: return ".cloudArrowDown32Filled"
+    case .cloudArrowDown32Regular: return ".cloudArrowDown32Regular"
+    case .cloudArrowDown48Filled: return ".cloudArrowDown48Filled"
+    case .cloudArrowDown48Regular: return ".cloudArrowDown48Regular"
+    case .cloudArrowUp16Filled: return ".cloudArrowUp16Filled"
+    case .cloudArrowUp16Regular: return ".cloudArrowUp16Regular"
+    case .cloudArrowUp20Filled: return ".cloudArrowUp20Filled"
+    case .cloudArrowUp20Regular: return ".cloudArrowUp20Regular"
+    case .cloudArrowUp24Filled: return ".cloudArrowUp24Filled"
+    case .cloudArrowUp24Regular: return ".cloudArrowUp24Regular"
+    case .cloudArrowUp28Filled: return ".cloudArrowUp28Filled"
+    case .cloudArrowUp28Regular: return ".cloudArrowUp28Regular"
+    case .cloudArrowUp32Filled: return ".cloudArrowUp32Filled"
+    case .cloudArrowUp32Regular: return ".cloudArrowUp32Regular"
+    case .cloudArrowUp48Filled: return ".cloudArrowUp48Filled"
+    case .cloudArrowUp48Regular: return ".cloudArrowUp48Regular"
     case .cloudBackup16Filled: return ".cloudBackup16Filled"
     case .cloudBackup16Regular: return ".cloudBackup16Regular"
     case .cloudBackup20Filled: return ".cloudBackup20Filled"
@@ -17710,6 +18574,30 @@ import Foundation
     case .cloudBackup32Regular: return ".cloudBackup32Regular"
     case .cloudBackup48Filled: return ".cloudBackup48Filled"
     case .cloudBackup48Regular: return ".cloudBackup48Regular"
+    case .cloudCheckmark16Filled: return ".cloudCheckmark16Filled"
+    case .cloudCheckmark16Regular: return ".cloudCheckmark16Regular"
+    case .cloudCheckmark20Filled: return ".cloudCheckmark20Filled"
+    case .cloudCheckmark20Regular: return ".cloudCheckmark20Regular"
+    case .cloudCheckmark24Filled: return ".cloudCheckmark24Filled"
+    case .cloudCheckmark24Regular: return ".cloudCheckmark24Regular"
+    case .cloudCheckmark28Filled: return ".cloudCheckmark28Filled"
+    case .cloudCheckmark28Regular: return ".cloudCheckmark28Regular"
+    case .cloudCheckmark32Filled: return ".cloudCheckmark32Filled"
+    case .cloudCheckmark32Regular: return ".cloudCheckmark32Regular"
+    case .cloudCheckmark48Filled: return ".cloudCheckmark48Filled"
+    case .cloudCheckmark48Regular: return ".cloudCheckmark48Regular"
+    case .cloudDismiss16Filled: return ".cloudDismiss16Filled"
+    case .cloudDismiss16Regular: return ".cloudDismiss16Regular"
+    case .cloudDismiss20Filled: return ".cloudDismiss20Filled"
+    case .cloudDismiss20Regular: return ".cloudDismiss20Regular"
+    case .cloudDismiss24Filled: return ".cloudDismiss24Filled"
+    case .cloudDismiss24Regular: return ".cloudDismiss24Regular"
+    case .cloudDismiss28Filled: return ".cloudDismiss28Filled"
+    case .cloudDismiss28Regular: return ".cloudDismiss28Regular"
+    case .cloudDismiss32Filled: return ".cloudDismiss32Filled"
+    case .cloudDismiss32Regular: return ".cloudDismiss32Regular"
+    case .cloudDismiss48Filled: return ".cloudDismiss48Filled"
+    case .cloudDismiss48Regular: return ".cloudDismiss48Regular"
     case .cloudDownload16Filled: return ".cloudDownload16Filled"
     case .cloudDownload16Regular: return ".cloudDownload16Regular"
     case .cloudDownload20Filled: return ".cloudDownload20Filled"
@@ -17728,6 +18616,10 @@ import Foundation
     case .cloudEdit20Regular: return ".cloudEdit20Regular"
     case .cloudFlow20Filled: return ".cloudFlow20Filled"
     case .cloudFlow20Regular: return ".cloudFlow20Regular"
+    default: break }
+    switch self {
+    case .cloudFlow24Filled: return ".cloudFlow24Filled"
+    case .cloudFlow24Regular: return ".cloudFlow24Regular"
     case .cloudLink16Filled: return ".cloudLink16Filled"
     case .cloudLink16Regular: return ".cloudLink16Regular"
     case .cloudLink20Filled: return ".cloudLink20Filled"
@@ -17746,6 +18638,10 @@ import Foundation
     case .cloudOff48Regular: return ".cloudOff48Regular"
     case .cloudOffline24Filled: return ".cloudOffline24Filled"
     case .cloudOffline24Regular: return ".cloudOffline24Regular"
+    case .cloudSwap20Filled: return ".cloudSwap20Filled"
+    case .cloudSwap20Regular: return ".cloudSwap20Regular"
+    case .cloudSwap24Filled: return ".cloudSwap24Filled"
+    case .cloudSwap24Regular: return ".cloudSwap24Regular"
     case .cloudSync16Filled: return ".cloudSync16Filled"
     case .cloudSync16Regular: return ".cloudSync16Regular"
     case .cloudSync20Filled: return ".cloudSync20Filled"
@@ -17764,8 +18660,6 @@ import Foundation
     case .cloudSyncComplete20Regular: return ".cloudSyncComplete20Regular"
     case .cloudSyncComplete24Filled: return ".cloudSyncComplete24Filled"
     case .cloudSyncComplete24Regular: return ".cloudSyncComplete24Regular"
-    default: break }
-    switch self {
     case .cloudSyncComplete28Filled: return ".cloudSyncComplete28Filled"
     case .cloudSyncComplete28Regular: return ".cloudSyncComplete28Regular"
     case .cloudSyncComplete32Filled: return ".cloudSyncComplete32Filled"
@@ -17778,6 +18672,8 @@ import Foundation
     case .code20Regular: return ".code20Regular"
     case .code24Filled: return ".code24Filled"
     case .code24Regular: return ".code24Regular"
+    case .codeCircle20Filled: return ".codeCircle20Filled"
+    case .codeCircle20Regular: return ".codeCircle20Regular"
     case .collections20Filled: return ".collections20Filled"
     case .collections20Regular: return ".collections20Regular"
     case .collections24Filled: return ".collections24Filled"
@@ -17822,6 +18718,8 @@ import Foundation
     case .columnTriple24Filled: return ".columnTriple24Filled"
     case .columnTriple24Regular: return ".columnTriple24Regular"
     case .columnTripleEdit20Filled: return ".columnTripleEdit20Filled"
+    default: break }
+    switch self {
     case .columnTripleEdit20Regular: return ".columnTripleEdit20Regular"
     case .columnTripleEdit24Filled: return ".columnTripleEdit24Filled"
     case .columnTripleEdit24Regular: return ".columnTripleEdit24Regular"
@@ -17866,8 +18764,6 @@ import Foundation
     case .commentArrowRight12Filled: return ".commentArrowRight12Filled"
     case .commentArrowRight12Regular: return ".commentArrowRight12Regular"
     case .commentArrowRight16Filled: return ".commentArrowRight16Filled"
-    default: break }
-    switch self {
     case .commentArrowRight16Regular: return ".commentArrowRight16Regular"
     case .commentArrowRight20Filled: return ".commentArrowRight20Filled"
     case .commentArrowRight20Regular: return ".commentArrowRight20Regular"
@@ -17915,6 +18811,18 @@ import Foundation
     case .commentMultiple20Regular: return ".commentMultiple20Regular"
     case .commentMultiple24Filled: return ".commentMultiple24Filled"
     case .commentMultiple24Regular: return ".commentMultiple24Regular"
+    case .commentMultiple28Filled: return ".commentMultiple28Filled"
+    case .commentMultiple28Regular: return ".commentMultiple28Regular"
+    case .commentMultipleCheckmark16Filled: return ".commentMultipleCheckmark16Filled"
+    case .commentMultipleCheckmark16Regular: return ".commentMultipleCheckmark16Regular"
+    case .commentMultipleCheckmark20Filled: return ".commentMultipleCheckmark20Filled"
+    case .commentMultipleCheckmark20Regular: return ".commentMultipleCheckmark20Regular"
+    case .commentMultipleCheckmark24Filled: return ".commentMultipleCheckmark24Filled"
+    case .commentMultipleCheckmark24Regular: return ".commentMultipleCheckmark24Regular"
+    case .commentMultipleCheckmark28Filled: return ".commentMultipleCheckmark28Filled"
+    default: break }
+    switch self {
+    case .commentMultipleCheckmark28Regular: return ".commentMultipleCheckmark28Regular"
     case .commentNote24Filled: return ".commentNote24Filled"
     case .commentNote24Regular: return ".commentNote24Regular"
     case .commentOff16Filled: return ".commentOff16Filled"
@@ -17968,8 +18876,6 @@ import Foundation
     case .conferenceRoom48Filled: return ".conferenceRoom48Filled"
     case .conferenceRoom48Regular: return ".conferenceRoom48Regular"
     case .connector16Filled: return ".connector16Filled"
-    default: break }
-    switch self {
     case .connector16Regular: return ".connector16Regular"
     case .connector20Filled: return ".connector20Filled"
     case .connector20Regular: return ".connector20Regular"
@@ -18016,6 +18922,8 @@ import Foundation
     case .contentViewGallery20Filled: return ".contentViewGallery20Filled"
     case .contentViewGallery20Regular: return ".contentViewGallery20Regular"
     case .contractDownLeft16Filled: return ".contractDownLeft16Filled"
+    default: break }
+    switch self {
     case .contractDownLeft16Regular: return ".contractDownLeft16Regular"
     case .contractDownLeft20Filled: return ".contractDownLeft20Filled"
     case .contractDownLeft20Regular: return ".contractDownLeft20Regular"
@@ -18070,9 +18978,9 @@ import Foundation
     case .cropInterim24Filled: return ".cropInterim24Filled"
     case .cropInterim24Regular: return ".cropInterim24Regular"
     case .cropInterimOff24Filled: return ".cropInterimOff24Filled"
-    default: break }
-    switch self {
     case .cropInterimOff24Regular: return ".cropInterimOff24Regular"
+    case .cube12Filled: return ".cube12Filled"
+    case .cube12Regular: return ".cube12Regular"
     case .cube16Filled: return ".cube16Filled"
     case .cube16Regular: return ".cube16Regular"
     case .cube20Filled: return ".cube20Filled"
@@ -18116,6 +19024,8 @@ import Foundation
     case .cursorHover48Filled: return ".cursorHover48Filled"
     case .cursorHover48Regular: return ".cursorHover48Regular"
     case .cursorHoverOff16Filled: return ".cursorHoverOff16Filled"
+    default: break }
+    switch self {
     case .cursorHoverOff16Regular: return ".cursorHoverOff16Regular"
     case .cursorHoverOff20Filled: return ".cursorHoverOff20Filled"
     case .cursorHoverOff20Regular: return ".cursorHoverOff20Regular"
@@ -18172,8 +19082,6 @@ import Foundation
     case .dataUsage24Filled: return ".dataUsage24Filled"
     case .dataUsage24Regular: return ".dataUsage24Regular"
     case .dataUsageEdit20Filled: return ".dataUsageEdit20Filled"
-    default: break }
-    switch self {
     case .dataUsageEdit20Regular: return ".dataUsageEdit20Regular"
     case .dataUsageEdit24Filled: return ".dataUsageEdit24Filled"
     case .dataUsageEdit24Regular: return ".dataUsageEdit24Regular"
@@ -18218,6 +19126,8 @@ import Foundation
     case .dentist16Filled: return ".dentist16Filled"
     case .dentist16Regular: return ".dentist16Regular"
     case .dentist20Filled: return ".dentist20Filled"
+    default: break }
+    switch self {
     case .dentist20Regular: return ".dentist20Regular"
     case .dentist24Filled: return ".dentist24Filled"
     case .dentist24Regular: return ".dentist24Regular"
@@ -18274,13 +19184,13 @@ import Foundation
     case .desktopSpeakerOff24Filled: return ".desktopSpeakerOff24Filled"
     case .desktopSpeakerOff24Regular: return ".desktopSpeakerOff24Regular"
     case .desktopSync16Filled: return ".desktopSync16Filled"
-    default: break }
-    switch self {
     case .desktopSync16Regular: return ".desktopSync16Regular"
     case .developerBoard20Filled: return ".developerBoard20Filled"
     case .developerBoard20Regular: return ".developerBoard20Regular"
     case .developerBoard24Filled: return ".developerBoard24Filled"
     case .developerBoard24Regular: return ".developerBoard24Regular"
+    case .developerBoardSearch20Filled: return ".developerBoardSearch20Filled"
+    case .developerBoardSearch20Regular: return ".developerBoardSearch20Regular"
     case .deviceEq24Filled: return ".deviceEq24Filled"
     case .deviceEq24Regular: return ".deviceEq24Regular"
     case .deviceMeetingRoom16Filled: return ".deviceMeetingRoom16Filled"
@@ -18318,6 +19228,8 @@ import Foundation
     case .directions16Filled: return ".directions16Filled"
     case .directions16Regular: return ".directions16Regular"
     case .directions20Filled: return ".directions20Filled"
+    default: break }
+    switch self {
     case .directions20Regular: return ".directions20Regular"
     case .directions24Filled: return ".directions24Filled"
     case .directions24Regular: return ".directions24Regular"
@@ -18376,8 +19288,6 @@ import Foundation
     case .dockPanelLeft28Filled: return ".dockPanelLeft28Filled"
     case .dockPanelLeft28Regular: return ".dockPanelLeft28Regular"
     case .dockPanelLeft48Filled: return ".dockPanelLeft48Filled"
-    default: break }
-    switch self {
     case .dockPanelLeft48Regular: return ".dockPanelLeft48Regular"
     case .dockPanelRight16Filled: return ".dockPanelRight16Filled"
     case .dockPanelRight16Regular: return ".dockPanelRight16Regular"
@@ -18420,6 +19330,8 @@ import Foundation
     case .documentAdd20Filled: return ".documentAdd20Filled"
     case .documentAdd20Regular: return ".documentAdd20Regular"
     case .documentAdd24Filled: return ".documentAdd24Filled"
+    default: break }
+    switch self {
     case .documentAdd24Regular: return ".documentAdd24Regular"
     case .documentAdd28Filled: return ".documentAdd28Filled"
     case .documentAdd28Regular: return ".documentAdd28Regular"
@@ -18439,6 +19351,8 @@ import Foundation
     case .documentArrowLeft28Regular: return ".documentArrowLeft28Regular"
     case .documentArrowLeft48Filled: return ".documentArrowLeft48Filled"
     case .documentArrowLeft48Regular: return ".documentArrowLeft48Regular"
+    case .documentArrowRight20Filled: return ".documentArrowRight20Filled"
+    case .documentArrowRight20Regular: return ".documentArrowRight20Regular"
     case .documentArrowRight24Filled: return ".documentArrowRight24Filled"
     case .documentArrowRight24Regular: return ".documentArrowRight24Regular"
     case .documentArrowUp16Filled: return ".documentArrowUp16Filled"
@@ -18467,6 +19381,8 @@ import Foundation
     case .documentCatchUp24Regular: return ".documentCatchUp24Regular"
     case .documentCheckmark24Filled: return ".documentCheckmark24Filled"
     case .documentCheckmark24Regular: return ".documentCheckmark24Regular"
+    case .documentChevronDouble24Filled: return ".documentChevronDouble24Filled"
+    case .documentChevronDouble24Regular: return ".documentChevronDouble24Regular"
     case .documentCopy16Filled: return ".documentCopy16Filled"
     case .documentCopy16Regular: return ".documentCopy16Regular"
     case .documentCopy20Filled: return ".documentCopy20Filled"
@@ -18475,11 +19391,11 @@ import Foundation
     case .documentCopy24Regular: return ".documentCopy24Regular"
     case .documentCopy48Filled: return ".documentCopy48Filled"
     case .documentCopy48Regular: return ".documentCopy48Regular"
+    case .documentCss24Filled: return ".documentCss24Filled"
+    case .documentCss24Regular: return ".documentCss24Regular"
     case .documentDismiss16Filled: return ".documentDismiss16Filled"
     case .documentDismiss16Regular: return ".documentDismiss16Regular"
     case .documentDismiss20Filled: return ".documentDismiss20Filled"
-    default: break }
-    switch self {
     case .documentDismiss20Regular: return ".documentDismiss20Regular"
     case .documentDismiss24Filled: return ".documentDismiss24Filled"
     case .documentDismiss24Regular: return ".documentDismiss24Regular"
@@ -18516,6 +19432,8 @@ import Foundation
     case .documentHeaderDismiss24Filled: return ".documentHeaderDismiss24Filled"
     case .documentHeaderDismiss24Regular: return ".documentHeaderDismiss24Regular"
     case .documentHeaderFooter16Filled: return ".documentHeaderFooter16Filled"
+    default: break }
+    switch self {
     case .documentHeaderFooter16Regular: return ".documentHeaderFooter16Regular"
     case .documentHeaderFooter20Filled: return ".documentHeaderFooter20Filled"
     case .documentHeaderFooter20Regular: return ".documentHeaderFooter20Regular"
@@ -18531,6 +19449,8 @@ import Foundation
     case .documentHeartPulse20Regular: return ".documentHeartPulse20Regular"
     case .documentHeartPulse24Filled: return ".documentHeartPulse24Filled"
     case .documentHeartPulse24Regular: return ".documentHeartPulse24Regular"
+    case .documentJavascript24Filled: return ".documentJavascript24Filled"
+    case .documentJavascript24Regular: return ".documentJavascript24Regular"
     case .documentLandscape20Filled: return ".documentLandscape20Filled"
     case .documentLandscape20Regular: return ".documentLandscape20Regular"
     case .documentLandscape24Filled: return ".documentLandscape24Filled"
@@ -18555,6 +19475,8 @@ import Foundation
     case .documentMultiple16Regular: return ".documentMultiple16Regular"
     case .documentMultiple20Filled: return ".documentMultiple20Filled"
     case .documentMultiple20Regular: return ".documentMultiple20Regular"
+    case .documentMultiplePercent20Filled: return ".documentMultiplePercent20Filled"
+    case .documentMultiplePercent20Regular: return ".documentMultiplePercent20Regular"
     case .documentMultipleProhibited20Filled: return ".documentMultipleProhibited20Filled"
     case .documentMultipleProhibited20Regular: return ".documentMultipleProhibited20Regular"
     case .documentMultipleProhibited24Filled: return ".documentMultipleProhibited24Filled"
@@ -18580,8 +19502,6 @@ import Foundation
     case .documentPageBreak24Filled: return ".documentPageBreak24Filled"
     case .documentPageBreak24Regular: return ".documentPageBreak24Regular"
     case .documentPageNumber20Filled: return ".documentPageNumber20Filled"
-    default: break }
-    switch self {
     case .documentPageNumber20Regular: return ".documentPageNumber20Regular"
     case .documentPageNumber24Filled: return ".documentPageNumber24Filled"
     case .documentPageNumber24Regular: return ".documentPageNumber24Regular"
@@ -18605,11 +19525,17 @@ import Foundation
     case .documentPdf24Regular: return ".documentPdf24Regular"
     case .documentPdf32Filled: return ".documentPdf32Filled"
     case .documentPdf32Regular: return ".documentPdf32Regular"
+    case .documentPercent20Filled: return ".documentPercent20Filled"
+    case .documentPercent20Regular: return ".documentPercent20Regular"
+    case .documentPercent24Filled: return ".documentPercent24Filled"
+    case .documentPercent24Regular: return ".documentPercent24Regular"
     case .documentPerson16Filled: return ".documentPerson16Filled"
     case .documentPerson16Regular: return ".documentPerson16Regular"
     case .documentPerson20Filled: return ".documentPerson20Filled"
     case .documentPerson20Regular: return ".documentPerson20Regular"
     case .documentPill20Filled: return ".documentPill20Filled"
+    default: break }
+    switch self {
     case .documentPill20Regular: return ".documentPill20Regular"
     case .documentPill24Filled: return ".documentPill24Filled"
     case .documentPill24Regular: return ".documentPill24Regular"
@@ -18647,10 +19573,20 @@ import Foundation
     case .documentSearch24Regular: return ".documentSearch24Regular"
     case .documentSettings16Filled: return ".documentSettings16Filled"
     case .documentSettings16Regular: return ".documentSettings16Regular"
+    case .documentSettings20Filled: return ".documentSettings20Filled"
+    case .documentSettings20Regular: return ".documentSettings20Regular"
+    case .documentSplitHint16Filled: return ".documentSplitHint16Filled"
+    case .documentSplitHint16Regular: return ".documentSplitHint16Regular"
+    case .documentSplitHint20Filled: return ".documentSplitHint20Filled"
+    case .documentSplitHint20Regular: return ".documentSplitHint20Regular"
     case .documentSplitHint24Filled: return ".documentSplitHint24Filled"
     case .documentSplitHint24Regular: return ".documentSplitHint24Regular"
     case .documentSplitHintOff24Filled: return ".documentSplitHintOff24Filled"
     case .documentSplitHintOff24Regular: return ".documentSplitHintOff24Regular"
+    case .documentSync16Filled: return ".documentSync16Filled"
+    case .documentSync16Regular: return ".documentSync16Regular"
+    case .documentSync20Filled: return ".documentSync20Filled"
+    case .documentSync20Regular: return ".documentSync20Regular"
     case .documentSync24Filled: return ".documentSync24Filled"
     case .documentSync24Regular: return ".documentSync24Regular"
     case .documentToolbox20Filled: return ".documentToolbox20Filled"
@@ -18671,6 +19607,10 @@ import Foundation
     case .doorArrowLeft20Regular: return ".doorArrowLeft20Regular"
     case .doorArrowLeft24Filled: return ".doorArrowLeft24Filled"
     case .doorArrowLeft24Regular: return ".doorArrowLeft24Regular"
+    case .doorArrowRight16Filled: return ".doorArrowRight16Filled"
+    case .doorArrowRight16Regular: return ".doorArrowRight16Regular"
+    case .doorArrowRight20Filled: return ".doorArrowRight20Filled"
+    case .doorArrowRight20Regular: return ".doorArrowRight20Regular"
     case .doorTag24Filled: return ".doorTag24Filled"
     case .doorTag24Regular: return ".doorTag24Regular"
     case .doubleSwipeDown24Filled: return ".doubleSwipeDown24Filled"
@@ -18682,8 +19622,6 @@ import Foundation
     case .drafts20Filled: return ".drafts20Filled"
     case .drafts20Regular: return ".drafts20Regular"
     case .drafts24Filled: return ".drafts24Filled"
-    default: break }
-    switch self {
     case .drafts24Regular: return ".drafts24Regular"
     case .drag24Filled: return ".drag24Filled"
     case .drag24Regular: return ".drag24Regular"
@@ -18698,6 +19636,8 @@ import Foundation
     case .drinkBeer24Filled: return ".drinkBeer24Filled"
     case .drinkBeer24Regular: return ".drinkBeer24Regular"
     case .drinkCoffee16Filled: return ".drinkCoffee16Filled"
+    default: break }
+    switch self {
     case .drinkCoffee16Regular: return ".drinkCoffee16Regular"
     case .drinkCoffee20Filled: return ".drinkCoffee20Filled"
     case .drinkCoffee20Regular: return ".drinkCoffee20Regular"
@@ -18731,6 +19671,8 @@ import Foundation
     case .drop28Regular: return ".drop28Regular"
     case .drop48Filled: return ".drop48Filled"
     case .drop48Regular: return ".drop48Regular"
+    case .dualScreen20Filled: return ".dualScreen20Filled"
+    case .dualScreen20Regular: return ".dualScreen20Regular"
     case .dualScreen24Filled: return ".dualScreen24Filled"
     case .dualScreen24Regular: return ".dualScreen24Regular"
     case .dualScreenAdd24Filled: return ".dualScreenAdd24Filled"
@@ -18784,8 +19726,6 @@ import Foundation
     case .earth16Filled: return ".earth16Filled"
     case .earth16Regular: return ".earth16Regular"
     case .earth20Filled: return ".earth20Filled"
-    default: break }
-    switch self {
     case .earth20Regular: return ".earth20Regular"
     case .earth24Filled: return ".earth24Filled"
     case .earth24Regular: return ".earth24Regular"
@@ -18798,6 +19738,8 @@ import Foundation
     case .edit32Filled: return ".edit32Filled"
     case .edit32Regular: return ".edit32Regular"
     case .editArrowBack16Filled: return ".editArrowBack16Filled"
+    default: break }
+    switch self {
     case .editArrowBack16Regular: return ".editArrowBack16Regular"
     case .editArrowBack20Filled: return ".editArrowBack20Filled"
     case .editArrowBack20Regular: return ".editArrowBack20Regular"
@@ -18886,8 +19828,6 @@ import Foundation
     case .errorCircleSettings20Filled: return ".errorCircleSettings20Filled"
     case .errorCircleSettings20Regular: return ".errorCircleSettings20Regular"
     case .expandUpLeft16Filled: return ".expandUpLeft16Filled"
-    default: break }
-    switch self {
     case .expandUpLeft16Regular: return ".expandUpLeft16Regular"
     case .expandUpLeft20Filled: return ".expandUpLeft20Filled"
     case .expandUpLeft20Regular: return ".expandUpLeft20Regular"
@@ -18900,6 +19840,8 @@ import Foundation
     case .expandUpLeft48Filled: return ".expandUpLeft48Filled"
     case .expandUpLeft48Regular: return ".expandUpLeft48Regular"
     case .expandUpRight16Filled: return ".expandUpRight16Filled"
+    default: break }
+    switch self {
     case .expandUpRight16Regular: return ".expandUpRight16Regular"
     case .expandUpRight20Filled: return ".expandUpRight20Filled"
     case .expandUpRight20Regular: return ".expandUpRight20Regular"
@@ -18988,8 +19930,6 @@ import Foundation
     case .fingerprint48Filled: return ".fingerprint48Filled"
     case .fingerprint48Regular: return ".fingerprint48Regular"
     case .fixedWidth24Filled: return ".fixedWidth24Filled"
-    default: break }
-    switch self {
     case .fixedWidth24Regular: return ".fixedWidth24Regular"
     case .flag16Filled: return ".flag16Filled"
     case .flag16Regular: return ".flag16Regular"
@@ -19002,6 +19942,8 @@ import Foundation
     case .flag48Filled: return ".flag48Filled"
     case .flag48Regular: return ".flag48Regular"
     case .flagOff16Filled: return ".flagOff16Filled"
+    default: break }
+    switch self {
     case .flagOff16Regular: return ".flagOff16Regular"
     case .flagOff20Filled: return ".flagOff20Filled"
     case .flagOff20Regular: return ".flagOff20Regular"
@@ -19090,8 +20032,6 @@ import Foundation
     case .folderArrowRight16Regular: return ".folderArrowRight16Regular"
     case .folderArrowRight20Filled: return ".folderArrowRight20Filled"
     case .folderArrowRight20Regular: return ".folderArrowRight20Regular"
-    default: break }
-    switch self {
     case .folderArrowRight24Filled: return ".folderArrowRight24Filled"
     case .folderArrowRight24Regular: return ".folderArrowRight24Regular"
     case .folderArrowRight28Filled: return ".folderArrowRight28Filled"
@@ -19104,6 +20044,8 @@ import Foundation
     case .folderArrowUp20Regular: return ".folderArrowUp20Regular"
     case .folderArrowUp24Filled: return ".folderArrowUp24Filled"
     case .folderArrowUp24Regular: return ".folderArrowUp24Regular"
+    default: break }
+    switch self {
     case .folderArrowUp28Filled: return ".folderArrowUp28Filled"
     case .folderArrowUp28Regular: return ".folderArrowUp28Regular"
     case .folderArrowUp48Filled: return ".folderArrowUp48Filled"
@@ -19192,8 +20134,6 @@ import Foundation
     case .food16Regular: return ".food16Regular"
     case .food20Filled: return ".food20Filled"
     case .food20Regular: return ".food20Regular"
-    default: break }
-    switch self {
     case .food24Filled: return ".food24Filled"
     case .food24Regular: return ".food24Regular"
     case .foodCake16Filled: return ".foodCake16Filled"
@@ -19206,6 +20146,8 @@ import Foundation
     case .foodEgg16Regular: return ".foodEgg16Regular"
     case .foodEgg20Filled: return ".foodEgg20Filled"
     case .foodEgg20Regular: return ".foodEgg20Regular"
+    default: break }
+    switch self {
     case .foodEgg24Filled: return ".foodEgg24Filled"
     case .foodEgg24Regular: return ".foodEgg24Regular"
     case .foodPizza20Filled: return ".foodPizza20Filled"
@@ -19294,8 +20236,6 @@ import Foundation
     case .gift20Regular: return ".gift20Regular"
     case .gift24Filled: return ".gift24Filled"
     case .gift24Regular: return ".gift24Regular"
-    default: break }
-    switch self {
     case .giftCard16Filled: return ".giftCard16Filled"
     case .giftCard16Regular: return ".giftCard16Regular"
     case .giftCard20Filled: return ".giftCard20Filled"
@@ -19304,8 +20244,14 @@ import Foundation
     case .giftCardAdd20Regular: return ".giftCardAdd20Regular"
     case .giftCardAdd24Filled: return ".giftCardAdd24Filled"
     case .giftCardAdd24Regular: return ".giftCardAdd24Regular"
+    case .glance20Filled: return ".glance20Filled"
+    case .glance20Regular: return ".glance20Regular"
     case .glance24Filled: return ".glance24Filled"
     case .glance24Regular: return ".glance24Regular"
+    default: break }
+    switch self {
+    case .glanceHorizontal20Filled: return ".glanceHorizontal20Filled"
+    case .glanceHorizontal20Regular: return ".glanceHorizontal20Regular"
     case .glasses16Filled: return ".glasses16Filled"
     case .glasses16Regular: return ".glasses16Regular"
     case .glasses20Filled: return ".glasses20Filled"
@@ -19372,6 +20318,12 @@ import Foundation
     case .grid24Regular: return ".grid24Regular"
     case .grid28Filled: return ".grid28Filled"
     case .grid28Regular: return ".grid28Regular"
+    case .gridDots20Filled: return ".gridDots20Filled"
+    case .gridDots20Regular: return ".gridDots20Regular"
+    case .gridDots24Filled: return ".gridDots24Filled"
+    case .gridDots24Regular: return ".gridDots24Regular"
+    case .gridDots28Filled: return ".gridDots28Filled"
+    case .gridDots28Regular: return ".gridDots28Regular"
     case .gridKanban20Filled: return ".gridKanban20Filled"
     case .gridKanban20Regular: return ".gridKanban20Regular"
     case .group20Filled: return ".group20Filled"
@@ -19396,10 +20348,10 @@ import Foundation
     case .guestAdd24Regular: return ".guestAdd24Regular"
     case .guitar16Filled: return ".guitar16Filled"
     case .guitar16Regular: return ".guitar16Regular"
-    default: break }
-    switch self {
     case .guitar20Filled: return ".guitar20Filled"
     case .guitar20Regular: return ".guitar20Regular"
+    default: break }
+    switch self {
     case .guitar24Filled: return ".guitar24Filled"
     case .guitar24Regular: return ".guitar24Regular"
     case .guitar28Filled: return ".guitar28Filled"
@@ -19498,10 +20450,10 @@ import Foundation
     case .heartBroken20Regular: return ".heartBroken20Regular"
     case .heartPulse20Filled: return ".heartPulse20Filled"
     case .heartPulse20Regular: return ".heartPulse20Regular"
-    default: break }
-    switch self {
     case .heartPulse24Filled: return ".heartPulse24Filled"
     case .heartPulse24Regular: return ".heartPulse24Regular"
+    default: break }
+    switch self {
     case .heartPulse32Filled: return ".heartPulse32Filled"
     case .heartPulse32Regular: return ".heartPulse32Regular"
     case .highlight16Filled: return ".highlight16Filled"
@@ -19513,6 +20465,8 @@ import Foundation
     case .highlightAccent16Filled: return ".highlightAccent16Filled"
     case .highlightAccent20Filled: return ".highlightAccent20Filled"
     case .highlightAccent24Filled: return ".highlightAccent24Filled"
+    case .highlightLink20Filled: return ".highlightLink20Filled"
+    case .highlightLink20Regular: return ".highlightLink20Regular"
     case .history16Filled: return ".history16Filled"
     case .history16Regular: return ".history16Regular"
     case .history20Filled: return ".history20Filled"
@@ -19664,6 +20618,8 @@ import Foundation
     case .inprivateAccount28Regular: return ".inprivateAccount28Regular"
     case .insert20Filled: return ".insert20Filled"
     case .insert20Regular: return ".insert20Regular"
+    case .iosArrow24Filled: return ".iosArrow24Filled"
+    case .iosArrow24Regular: return ".iosArrow24Regular"
     case .iosArrowLeft24Filled: return ".iosArrowLeft24Filled"
     case .iosArrowLeft24Regular: return ".iosArrowLeft24Regular"
     case .iosArrowRight24Filled: return ".iosArrowRight24Filled"
@@ -19692,18 +20648,20 @@ import Foundation
     case .keyCommand16Regular: return ".keyCommand16Regular"
     case .keyMultiple20Filled: return ".keyMultiple20Filled"
     case .keyMultiple20Regular: return ".keyMultiple20Regular"
+    case .keyboard12324Filled: return ".keyboard12324Filled"
+    case .keyboard12324Regular: return ".keyboard12324Regular"
     case .keyboard20Filled: return ".keyboard20Filled"
     case .keyboard20Regular: return ".keyboard20Regular"
     case .keyboard24Filled: return ".keyboard24Filled"
     case .keyboard24Regular: return ".keyboard24Regular"
     case .keyboardDock24Filled: return ".keyboardDock24Filled"
     case .keyboardDock24Regular: return ".keyboardDock24Regular"
+    default: break }
+    switch self {
     case .keyboardLayoutFloat24Filled: return ".keyboardLayoutFloat24Filled"
     case .keyboardLayoutFloat24Regular: return ".keyboardLayoutFloat24Regular"
     case .keyboardLayoutOneHandedLeft24Filled: return ".keyboardLayoutOneHandedLeft24Filled"
     case .keyboardLayoutOneHandedLeft24Regular: return ".keyboardLayoutOneHandedLeft24Regular"
-    default: break }
-    switch self {
     case .keyboardLayoutResize24Filled: return ".keyboardLayoutResize24Filled"
     case .keyboardLayoutResize24Regular: return ".keyboardLayoutResize24Regular"
     case .keyboardLayoutSplit24Filled: return ".keyboardLayoutSplit24Filled"
@@ -19728,6 +20686,8 @@ import Foundation
     case .laptop28Regular: return ".laptop28Regular"
     case .laptopDismiss16Filled: return ".laptopDismiss16Filled"
     case .laptopDismiss16Regular: return ".laptopDismiss16Regular"
+    case .laptopDismiss20Filled: return ".laptopDismiss20Filled"
+    case .laptopDismiss20Regular: return ".laptopDismiss20Regular"
     case .lasso20Filled: return ".lasso20Filled"
     case .lasso20Regular: return ".lasso20Regular"
     case .lasso24Filled: return ".lasso24Filled"
@@ -19798,14 +20758,14 @@ import Foundation
     case .lineHorizontal5Error20Regular: return ".lineHorizontal5Error20Regular"
     case .lineStyle24Filled: return ".lineStyle24Filled"
     case .lineStyle24Regular: return ".lineStyle24Regular"
+    default: break }
+    switch self {
     case .link16Filled: return ".link16Filled"
     case .link16Regular: return ".link16Regular"
     case .link20Filled: return ".link20Filled"
     case .link20Regular: return ".link20Regular"
     case .link24Filled: return ".link24Filled"
     case .link24Regular: return ".link24Regular"
-    default: break }
-    switch self {
     case .link28Filled: return ".link28Filled"
     case .link28Regular: return ".link28Regular"
     case .link48Filled: return ".link48Filled"
@@ -19814,6 +20774,8 @@ import Foundation
     case .linkDismiss16Regular: return ".linkDismiss16Regular"
     case .linkDismiss20Filled: return ".linkDismiss20Filled"
     case .linkDismiss20Regular: return ".linkDismiss20Regular"
+    case .linkDismiss24Filled: return ".linkDismiss24Filled"
+    case .linkDismiss24Regular: return ".linkDismiss24Regular"
     case .linkEdit16Filled: return ".linkEdit16Filled"
     case .linkEdit16Regular: return ".linkEdit16Regular"
     case .linkEdit20Filled: return ".linkEdit20Filled"
@@ -19898,6 +20860,8 @@ import Foundation
     case .lockClosed24Regular: return ".lockClosed24Regular"
     case .lockMultiple24Filled: return ".lockMultiple24Filled"
     case .lockMultiple24Regular: return ".lockMultiple24Regular"
+    default: break }
+    switch self {
     case .lockOpen16Filled: return ".lockOpen16Filled"
     case .lockOpen16Regular: return ".lockOpen16Regular"
     case .lockOpen20Filled: return ".lockOpen20Filled"
@@ -19906,8 +20870,6 @@ import Foundation
     case .lockOpen24Regular: return ".lockOpen24Regular"
     case .lockOpen28Filled: return ".lockOpen28Filled"
     case .lockOpen28Regular: return ".lockOpen28Regular"
-    default: break }
-    switch self {
     case .lockShield20Filled: return ".lockShield20Filled"
     case .lockShield20Regular: return ".lockShield20Regular"
     case .lockShield24Filled: return ".lockShield24Filled"
@@ -20000,6 +20962,8 @@ import Foundation
     case .mailError20Regular: return ".mailError20Regular"
     case .mailError24Filled: return ".mailError24Filled"
     case .mailError24Regular: return ".mailError24Regular"
+    default: break }
+    switch self {
     case .mailInbox16Filled: return ".mailInbox16Filled"
     case .mailInbox16Regular: return ".mailInbox16Regular"
     case .mailInbox20Filled: return ".mailInbox20Filled"
@@ -20008,8 +20972,6 @@ import Foundation
     case .mailInbox24Regular: return ".mailInbox24Regular"
     case .mailInbox28Filled: return ".mailInbox28Filled"
     case .mailInbox28Regular: return ".mailInbox28Regular"
-    default: break }
-    switch self {
     case .mailInboxAdd16Filled: return ".mailInboxAdd16Filled"
     case .mailInboxAdd16Regular: return ".mailInboxAdd16Regular"
     case .mailInboxAdd20Filled: return ".mailInboxAdd20Filled"
@@ -20050,6 +21012,12 @@ import Foundation
     case .mailLink20Regular: return ".mailLink20Regular"
     case .mailLink24Filled: return ".mailLink24Filled"
     case .mailLink24Regular: return ".mailLink24Regular"
+    case .mailMultiple16Filled: return ".mailMultiple16Filled"
+    case .mailMultiple16Regular: return ".mailMultiple16Regular"
+    case .mailMultiple20Filled: return ".mailMultiple20Filled"
+    case .mailMultiple20Regular: return ".mailMultiple20Regular"
+    case .mailMultiple24Filled: return ".mailMultiple24Filled"
+    case .mailMultiple24Regular: return ".mailMultiple24Regular"
     case .mailOff24Filled: return ".mailOff24Filled"
     case .mailOff24Regular: return ".mailOff24Regular"
     case .mailOpenPerson16Filled: return ".mailOpenPerson16Filled"
@@ -20096,6 +21064,8 @@ import Foundation
     case .mailUnread24Regular: return ".mailUnread24Regular"
     case .mailUnread28Filled: return ".mailUnread28Filled"
     case .mailUnread28Regular: return ".mailUnread28Regular"
+    default: break }
+    switch self {
     case .mailUnread48Filled: return ".mailUnread48Filled"
     case .mailUnread48Regular: return ".mailUnread48Regular"
     case .mailWarning16Filled: return ".mailWarning16Filled"
@@ -20110,8 +21080,6 @@ import Foundation
     case .mapDrive20Regular: return ".mapDrive20Regular"
     case .mapDrive24Filled: return ".mapDrive24Filled"
     case .mapDrive24Regular: return ".mapDrive24Regular"
-    default: break }
-    switch self {
     case .matchAppLayout24Filled: return ".matchAppLayout24Filled"
     case .matchAppLayout24Regular: return ".matchAppLayout24Regular"
     case .mathFormatLinear24Filled: return ".mathFormatLinear24Filled"
@@ -20198,6 +21166,8 @@ import Foundation
     case .micProhibited24Regular: return ".micProhibited24Regular"
     case .micProhibited28Filled: return ".micProhibited28Filled"
     case .micProhibited28Regular: return ".micProhibited28Regular"
+    default: break }
+    switch self {
     case .micProhibited48Filled: return ".micProhibited48Filled"
     case .micProhibited48Regular: return ".micProhibited48Regular"
     case .micSettings24Filled: return ".micSettings24Filled"
@@ -20212,8 +21182,6 @@ import Foundation
     case .micSync20Regular: return ".micSync20Regular"
     case .microscope20Filled: return ".microscope20Filled"
     case .microscope20Regular: return ".microscope20Regular"
-    default: break }
-    switch self {
     case .microscope24Filled: return ".microscope24Filled"
     case .microscope24Regular: return ".microscope24Regular"
     case .midi20Filled: return ".midi20Filled"
@@ -20300,6 +21268,8 @@ import Foundation
     case .multiplier18X28Regular: return ".multiplier18X28Regular"
     case .multiplier18X32Filled: return ".multiplier18X32Filled"
     case .multiplier18X32Regular: return ".multiplier18X32Regular"
+    default: break }
+    switch self {
     case .multiplier18X48Filled: return ".multiplier18X48Filled"
     case .multiplier18X48Regular: return ".multiplier18X48Regular"
     case .multiplier1X20Filled: return ".multiplier1X20Filled"
@@ -20314,8 +21284,6 @@ import Foundation
     case .multiplier1X48Regular: return ".multiplier1X48Regular"
     case .multiplier2X20Filled: return ".multiplier2X20Filled"
     case .multiplier2X20Regular: return ".multiplier2X20Regular"
-    default: break }
-    switch self {
     case .multiplier2X24Filled: return ".multiplier2X24Filled"
     case .multiplier2X24Regular: return ".multiplier2X24Regular"
     case .multiplier2X28Filled: return ".multiplier2X28Filled"
@@ -20402,6 +21370,8 @@ import Foundation
     case .noteAdd20Regular: return ".noteAdd20Regular"
     case .noteAdd24Filled: return ".noteAdd24Filled"
     case .noteAdd24Regular: return ".noteAdd24Regular"
+    default: break }
+    switch self {
     case .noteEdit20Filled: return ".noteEdit20Filled"
     case .noteEdit20Regular: return ".noteEdit20Regular"
     case .noteEdit24Filled: return ".noteEdit24Filled"
@@ -20416,8 +21386,6 @@ import Foundation
     case .notebookAdd24Regular: return ".notebookAdd24Regular"
     case .notebookError24Filled: return ".notebookError24Filled"
     case .notebookError24Regular: return ".notebookError24Regular"
-    default: break }
-    switch self {
     case .notebookLightning24Filled: return ".notebookLightning24Filled"
     case .notebookLightning24Regular: return ".notebookLightning24Regular"
     case .notebookQuestionMark24Filled: return ".notebookQuestionMark24Filled"
@@ -20504,6 +21472,8 @@ import Foundation
     case .openOff16Regular: return ".openOff16Regular"
     case .openOff20Filled: return ".openOff20Filled"
     case .openOff20Regular: return ".openOff20Regular"
+    default: break }
+    switch self {
     case .openOff24Filled: return ".openOff24Filled"
     case .openOff24Regular: return ".openOff24Regular"
     case .openOff28Filled: return ".openOff28Filled"
@@ -20518,8 +21488,6 @@ import Foundation
     case .options24Regular: return ".options24Regular"
     case .organization12Filled: return ".organization12Filled"
     case .organization12Regular: return ".organization12Regular"
-    default: break }
-    switch self {
     case .organization16Filled: return ".organization16Filled"
     case .organization16Regular: return ".organization16Regular"
     case .organization20Filled: return ".organization20Filled"
@@ -20590,6 +21558,54 @@ import Foundation
     case .paneOpen20Regular: return ".paneOpen20Regular"
     case .paneOpen24Filled: return ".paneOpen24Filled"
     case .paneOpen24Regular: return ".paneOpen24Regular"
+    case .panelBottom20Filled: return ".panelBottom20Filled"
+    case .panelBottom20Regular: return ".panelBottom20Regular"
+    case .panelBottomContract20Filled: return ".panelBottomContract20Filled"
+    case .panelBottomContract20Regular: return ".panelBottomContract20Regular"
+    case .panelBottomExpand20Filled: return ".panelBottomExpand20Filled"
+    case .panelBottomExpand20Regular: return ".panelBottomExpand20Regular"
+    case .panelLeft16Filled: return ".panelLeft16Filled"
+    case .panelLeft16Regular: return ".panelLeft16Regular"
+    case .panelLeft20Filled: return ".panelLeft20Filled"
+    case .panelLeft20Regular: return ".panelLeft20Regular"
+    case .panelLeft24Filled: return ".panelLeft24Filled"
+    case .panelLeft24Regular: return ".panelLeft24Regular"
+    case .panelLeft28Filled: return ".panelLeft28Filled"
+    case .panelLeft28Regular: return ".panelLeft28Regular"
+    case .panelLeft48Filled: return ".panelLeft48Filled"
+    case .panelLeft48Regular: return ".panelLeft48Regular"
+    default: break }
+    switch self {
+    case .panelLeftExpand20Filled: return ".panelLeftExpand20Filled"
+    case .panelLeftExpand20Regular: return ".panelLeftExpand20Regular"
+    case .panelRight16Filled: return ".panelRight16Filled"
+    case .panelRight16Regular: return ".panelRight16Regular"
+    case .panelRight20Filled: return ".panelRight20Filled"
+    case .panelRight20Regular: return ".panelRight20Regular"
+    case .panelRight24Filled: return ".panelRight24Filled"
+    case .panelRight24Regular: return ".panelRight24Regular"
+    case .panelRight28Filled: return ".panelRight28Filled"
+    case .panelRight28Regular: return ".panelRight28Regular"
+    case .panelRight48Filled: return ".panelRight48Filled"
+    case .panelRight48Regular: return ".panelRight48Regular"
+    case .panelRightContract16Filled: return ".panelRightContract16Filled"
+    case .panelRightContract16Regular: return ".panelRightContract16Regular"
+    case .panelRightContract20Filled: return ".panelRightContract20Filled"
+    case .panelRightContract20Regular: return ".panelRightContract20Regular"
+    case .panelRightContract24Filled: return ".panelRightContract24Filled"
+    case .panelRightContract24Regular: return ".panelRightContract24Regular"
+    case .panelRightExpand16Filled: return ".panelRightExpand16Filled"
+    case .panelRightExpand16Regular: return ".panelRightExpand16Regular"
+    case .panelRightExpand20Filled: return ".panelRightExpand20Filled"
+    case .panelRightExpand20Regular: return ".panelRightExpand20Regular"
+    case .panelRightExpand24Filled: return ".panelRightExpand24Filled"
+    case .panelRightExpand24Regular: return ".panelRightExpand24Regular"
+    case .panelSeparateWindow20Filled: return ".panelSeparateWindow20Filled"
+    case .panelSeparateWindow20Regular: return ".panelSeparateWindow20Regular"
+    case .panelTopContract20Filled: return ".panelTopContract20Filled"
+    case .panelTopContract20Regular: return ".panelTopContract20Regular"
+    case .panelTopExpand20Filled: return ".panelTopExpand20Filled"
+    case .panelTopExpand20Regular: return ".panelTopExpand20Regular"
     case .password24Filled: return ".password24Filled"
     case .password24Regular: return ".password24Regular"
     case .patch20Filled: return ".patch20Filled"
@@ -20614,14 +21630,14 @@ import Foundation
     case .pauseCircle20Regular: return ".pauseCircle20Regular"
     case .pauseCircle24Filled: return ".pauseCircle24Filled"
     case .pauseCircle24Regular: return ".pauseCircle24Regular"
+    case .pauseOff16Filled: return ".pauseOff16Filled"
+    case .pauseOff16Regular: return ".pauseOff16Regular"
     case .payment16Filled: return ".payment16Filled"
     case .payment16Regular: return ".payment16Regular"
     case .payment20Filled: return ".payment20Filled"
     case .payment20Regular: return ".payment20Regular"
     case .payment24Filled: return ".payment24Filled"
     case .payment24Regular: return ".payment24Regular"
-    default: break }
-    switch self {
     case .payment28Filled: return ".payment28Filled"
     case .payment28Regular: return ".payment28Regular"
     case .people16Filled: return ".people16Filled"
@@ -20660,6 +21676,8 @@ import Foundation
     case .peopleCommunity20Regular: return ".peopleCommunity20Regular"
     case .peopleCommunity24Filled: return ".peopleCommunity24Filled"
     case .peopleCommunity24Regular: return ".peopleCommunity24Regular"
+    default: break }
+    switch self {
     case .peopleCommunity28Filled: return ".peopleCommunity28Filled"
     case .peopleCommunity28Regular: return ".peopleCommunity28Regular"
     case .peopleCommunityAdd20Filled: return ".peopleCommunityAdd20Filled"
@@ -20722,8 +21740,6 @@ import Foundation
     case .peopleTeamAdd24Regular: return ".peopleTeamAdd24Regular"
     case .peopleTeamDelete24Filled: return ".peopleTeamDelete24Filled"
     case .peopleTeamDelete24Regular: return ".peopleTeamDelete24Regular"
-    default: break }
-    switch self {
     case .peopleTeamToolbox20Filled: return ".peopleTeamToolbox20Filled"
     case .peopleTeamToolbox20Regular: return ".peopleTeamToolbox20Regular"
     case .peopleTeamToolbox24Filled: return ".peopleTeamToolbox24Filled"
@@ -20762,6 +21778,8 @@ import Foundation
     case .personAdd28Regular: return ".personAdd28Regular"
     case .personArrowLeft20Filled: return ".personArrowLeft20Filled"
     case .personArrowLeft20Regular: return ".personArrowLeft20Regular"
+    default: break }
+    switch self {
     case .personArrowLeft24Filled: return ".personArrowLeft24Filled"
     case .personArrowLeft24Regular: return ".personArrowLeft24Regular"
     case .personArrowRight16Filled: return ".personArrowRight16Filled"
@@ -20794,6 +21812,8 @@ import Foundation
     case .personChat20Regular: return ".personChat20Regular"
     case .personChat24Filled: return ".personChat24Filled"
     case .personChat24Regular: return ".personChat24Regular"
+    case .personCircle12Filled: return ".personCircle12Filled"
+    case .personCircle12Regular: return ".personCircle12Regular"
     case .personCircle20Filled: return ".personCircle20Filled"
     case .personCircle20Regular: return ".personCircle20Regular"
     case .personClock16Filled: return ".personClock16Filled"
@@ -20816,6 +21836,8 @@ import Foundation
     case .personFeedback24Regular: return ".personFeedback24Regular"
     case .personInfo16Filled: return ".personInfo16Filled"
     case .personInfo16Regular: return ".personInfo16Regular"
+    case .personInfo20Filled: return ".personInfo20Filled"
+    case .personInfo20Regular: return ".personInfo20Regular"
     case .personLock16Filled: return ".personLock16Filled"
     case .personLock16Regular: return ".personLock16Regular"
     case .personLock20Filled: return ".personLock20Filled"
@@ -20824,8 +21846,6 @@ import Foundation
     case .personMail16Regular: return ".personMail16Regular"
     case .personMail20Filled: return ".personMail20Filled"
     case .personMail20Regular: return ".personMail20Regular"
-    default: break }
-    switch self {
     case .personMail24Filled: return ".personMail24Filled"
     case .personMail24Regular: return ".personMail24Regular"
     case .personMail28Filled: return ".personMail28Filled"
@@ -20860,6 +21880,8 @@ import Foundation
     case .personSettings16Regular: return ".personSettings16Regular"
     case .personSettings20Filled: return ".personSettings20Filled"
     case .personSettings20Regular: return ".personSettings20Regular"
+    default: break }
+    switch self {
     case .personSubtract16Filled: return ".personSubtract16Filled"
     case .personSubtract16Regular: return ".personSubtract16Regular"
     case .personSupport16Filled: return ".personSupport16Filled"
@@ -20883,6 +21905,8 @@ import Foundation
     case .personVoice20Regular: return ".personVoice20Regular"
     case .personVoice24Filled: return ".personVoice24Filled"
     case .personVoice24Regular: return ".personVoice24Regular"
+    case .phone12Filled: return ".phone12Filled"
+    case .phone12Regular: return ".phone12Regular"
     case .phone16Filled: return ".phone16Filled"
     case .phone16Regular: return ".phone16Regular"
     case .phone20Filled: return ".phone20Filled"
@@ -20926,8 +21950,6 @@ import Foundation
     case .phoneLock24Filled: return ".phoneLock24Filled"
     case .phoneLock24Regular: return ".phoneLock24Regular"
     case .phonePageHeader24Filled: return ".phonePageHeader24Filled"
-    default: break }
-    switch self {
     case .phonePageHeader24Regular: return ".phonePageHeader24Regular"
     case .phonePagination24Filled: return ".phonePagination24Filled"
     case .phonePagination24Regular: return ".phonePagination24Regular"
@@ -20960,6 +21982,8 @@ import Foundation
     case .phoneTablet24Filled: return ".phoneTablet24Filled"
     case .phoneTablet24Regular: return ".phoneTablet24Regular"
     case .phoneUpdate24Filled: return ".phoneUpdate24Filled"
+    default: break }
+    switch self {
     case .phoneUpdate24Regular: return ".phoneUpdate24Regular"
     case .phoneVerticalScroll24Filled: return ".phoneVerticalScroll24Filled"
     case .phoneVerticalScroll24Regular: return ".phoneVerticalScroll24Regular"
@@ -21028,8 +22052,6 @@ import Foundation
     case .playCircle20Filled: return ".playCircle20Filled"
     case .playCircle20Regular: return ".playCircle20Regular"
     case .playCircle24Filled: return ".playCircle24Filled"
-    default: break }
-    switch self {
     case .playCircle24Regular: return ".playCircle24Regular"
     case .playCircle28Filled: return ".playCircle28Filled"
     case .playCircle28Regular: return ".playCircle28Regular"
@@ -21062,6 +22084,8 @@ import Foundation
     case .positionForward24Filled: return ".positionForward24Filled"
     case .positionForward24Regular: return ".positionForward24Regular"
     case .positionToBack20Filled: return ".positionToBack20Filled"
+    default: break }
+    switch self {
     case .positionToBack20Regular: return ".positionToBack20Regular"
     case .positionToBack24Filled: return ".positionToBack24Filled"
     case .positionToBack24Regular: return ".positionToBack24Regular"
@@ -21130,8 +22154,6 @@ import Foundation
     case .presenterOff24Filled: return ".presenterOff24Filled"
     case .presenterOff24Regular: return ".presenterOff24Regular"
     case .previewLink16Filled: return ".previewLink16Filled"
-    default: break }
-    switch self {
     case .previewLink16Regular: return ".previewLink16Regular"
     case .previewLink20Filled: return ".previewLink20Filled"
     case .previewLink20Regular: return ".previewLink20Regular"
@@ -21164,6 +22186,8 @@ import Foundation
     case .productionCheckmark24Filled: return ".productionCheckmark24Filled"
     case .productionCheckmark24Regular: return ".productionCheckmark24Regular"
     case .prohibited12Filled: return ".prohibited12Filled"
+    default: break }
+    switch self {
     case .prohibited12Regular: return ".prohibited12Regular"
     case .prohibited16Filled: return ".prohibited16Filled"
     case .prohibited16Regular: return ".prohibited16Regular"
@@ -21207,6 +22231,12 @@ import Foundation
     case .puzzleCube28Regular: return ".puzzleCube28Regular"
     case .puzzleCube48Filled: return ".puzzleCube48Filled"
     case .puzzleCube48Regular: return ".puzzleCube48Regular"
+    case .puzzlePiece16Filled: return ".puzzlePiece16Filled"
+    case .puzzlePiece16Regular: return ".puzzlePiece16Regular"
+    case .puzzlePiece20Filled: return ".puzzlePiece20Filled"
+    case .puzzlePiece20Regular: return ".puzzlePiece20Regular"
+    case .puzzlePiece24Filled: return ".puzzlePiece24Filled"
+    case .puzzlePiece24Regular: return ".puzzlePiece24Regular"
     case .qrCode20Filled: return ".qrCode20Filled"
     case .qrCode20Regular: return ".qrCode20Regular"
     case .qrCode24Filled: return ".qrCode24Filled"
@@ -21232,8 +22262,6 @@ import Foundation
     case .questionCircle28Filled: return ".questionCircle28Filled"
     case .questionCircle28Regular: return ".questionCircle28Regular"
     case .questionCircle48Filled: return ".questionCircle48Filled"
-    default: break }
-    switch self {
     case .questionCircle48Regular: return ".questionCircle48Regular"
     case .quizNew24Filled: return ".quizNew24Filled"
     case .quizNew24Regular: return ".quizNew24Regular"
@@ -21260,6 +22288,8 @@ import Foundation
     case .reOrder24Filled: return ".reOrder24Filled"
     case .reOrder24Regular: return ".reOrder24Regular"
     case .reOrderDotsHorizontal16Filled: return ".reOrderDotsHorizontal16Filled"
+    default: break }
+    switch self {
     case .reOrderDotsHorizontal16Regular: return ".reOrderDotsHorizontal16Regular"
     case .reOrderDotsHorizontal20Filled: return ".reOrderDotsHorizontal20Filled"
     case .reOrderDotsHorizontal20Regular: return ".reOrderDotsHorizontal20Regular"
@@ -21334,8 +22364,6 @@ import Foundation
     case .record24Filled: return ".record24Filled"
     case .record24Regular: return ".record24Regular"
     case .record28Filled: return ".record28Filled"
-    default: break }
-    switch self {
     case .record28Regular: return ".record28Regular"
     case .record32Filled: return ".record32Filled"
     case .record32Regular: return ".record32Regular"
@@ -21362,11 +22390,15 @@ import Foundation
     case .rename16Filled: return ".rename16Filled"
     case .rename16Regular: return ".rename16Regular"
     case .rename20Filled: return ".rename20Filled"
+    default: break }
+    switch self {
     case .rename20Regular: return ".rename20Regular"
     case .rename24Filled: return ".rename24Filled"
     case .rename24Regular: return ".rename24Regular"
     case .rename28Filled: return ".rename28Filled"
     case .rename28Regular: return ".rename28Regular"
+    case .replay20Filled: return ".replay20Filled"
+    case .replay20Regular: return ".replay20Regular"
     case .resize20Filled: return ".resize20Filled"
     case .resize20Regular: return ".resize20Regular"
     case .resizeImage24Filled: return ".resizeImage24Filled"
@@ -21436,8 +22468,6 @@ import Foundation
     case .ruler16Filled: return ".ruler16Filled"
     case .ruler16Regular: return ".ruler16Regular"
     case .ruler20Filled: return ".ruler20Filled"
-    default: break }
-    switch self {
     case .ruler20Regular: return ".ruler20Regular"
     case .ruler24Filled: return ".ruler24Filled"
     case .ruler24Regular: return ".ruler24Regular"
@@ -21462,6 +22492,8 @@ import Foundation
     case .saveSearch20Filled: return ".saveSearch20Filled"
     case .saveSearch20Regular: return ".saveSearch20Regular"
     case .saveSync20Filled: return ".saveSync20Filled"
+    default: break }
+    switch self {
     case .saveSync20Regular: return ".saveSync20Regular"
     case .savings16Filled: return ".savings16Filled"
     case .savings16Regular: return ".savings16Regular"
@@ -21489,6 +22521,16 @@ import Foundation
     case .scanObject20Regular: return ".scanObject20Regular"
     case .scanObject24Filled: return ".scanObject24Filled"
     case .scanObject24Regular: return ".scanObject24Regular"
+    case .scanTable24Filled: return ".scanTable24Filled"
+    case .scanTable24Regular: return ".scanTable24Regular"
+    case .scanText24Filled: return ".scanText24Filled"
+    case .scanText24Regular: return ".scanText24Regular"
+    case .scanType20Filled: return ".scanType20Filled"
+    case .scanType20Regular: return ".scanType20Regular"
+    case .scanType24Filled: return ".scanType24Filled"
+    case .scanType24Regular: return ".scanType24Regular"
+    case .scanTypeOff20Filled: return ".scanTypeOff20Filled"
+    case .scanTypeOff20Regular: return ".scanTypeOff20Regular"
     case .scratchpad24Filled: return ".scratchpad24Filled"
     case .scratchpad24Regular: return ".scratchpad24Regular"
     case .screenCut20Filled: return ".screenCut20Filled"
@@ -21538,8 +22580,6 @@ import Foundation
     case .selectObject24Filled: return ".selectObject24Filled"
     case .selectObject24Regular: return ".selectObject24Regular"
     case .send16Filled: return ".send16Filled"
-    default: break }
-    switch self {
     case .send16Regular: return ".send16Regular"
     case .send20Filled: return ".send20Filled"
     case .send20Regular: return ".send20Regular"
@@ -21554,6 +22594,8 @@ import Foundation
     case .serialPort16Filled: return ".serialPort16Filled"
     case .serialPort16Regular: return ".serialPort16Regular"
     case .serialPort20Filled: return ".serialPort20Filled"
+    default: break }
+    switch self {
     case .serialPort20Regular: return ".serialPort20Regular"
     case .serialPort24Filled: return ".serialPort24Filled"
     case .serialPort24Regular: return ".serialPort24Regular"
@@ -21640,8 +22682,6 @@ import Foundation
     case .shareScreenStop20Filled: return ".shareScreenStop20Filled"
     case .shareScreenStop20Regular: return ".shareScreenStop20Regular"
     case .shareScreenStop24Filled: return ".shareScreenStop24Filled"
-    default: break }
-    switch self {
     case .shareScreenStop24Regular: return ".shareScreenStop24Regular"
     case .shareScreenStop28Filled: return ".shareScreenStop28Filled"
     case .shareScreenStop28Regular: return ".shareScreenStop28Regular"
@@ -21656,6 +22696,8 @@ import Foundation
     case .shield28Filled: return ".shield28Filled"
     case .shield28Regular: return ".shield28Regular"
     case .shield48Filled: return ".shield48Filled"
+    default: break }
+    switch self {
     case .shield48Regular: return ".shield48Regular"
     case .shieldBadge20Filled: return ".shieldBadge20Filled"
     case .shieldBadge20Regular: return ".shieldBadge20Regular"
@@ -21699,6 +22741,16 @@ import Foundation
     case .shieldProhibited20Regular: return ".shieldProhibited20Regular"
     case .shieldProhibited24Filled: return ".shieldProhibited24Filled"
     case .shieldProhibited24Regular: return ".shieldProhibited24Regular"
+    case .shieldTask16Filled: return ".shieldTask16Filled"
+    case .shieldTask16Regular: return ".shieldTask16Regular"
+    case .shieldTask20Filled: return ".shieldTask20Filled"
+    case .shieldTask20Regular: return ".shieldTask20Regular"
+    case .shieldTask24Filled: return ".shieldTask24Filled"
+    case .shieldTask24Regular: return ".shieldTask24Regular"
+    case .shieldTask28Filled: return ".shieldTask28Filled"
+    case .shieldTask28Regular: return ".shieldTask28Regular"
+    case .shieldTask48Filled: return ".shieldTask48Filled"
+    case .shieldTask48Regular: return ".shieldTask48Regular"
     case .shifts16Filled: return ".shifts16Filled"
     case .shifts16Regular: return ".shifts16Regular"
     case .shifts20Filled: return ".shifts20Filled"
@@ -21742,12 +22794,12 @@ import Foundation
     case .shoppingBag20Filled: return ".shoppingBag20Filled"
     case .shoppingBag20Regular: return ".shoppingBag20Regular"
     case .shoppingBag24Filled: return ".shoppingBag24Filled"
-    default: break }
-    switch self {
     case .shoppingBag24Regular: return ".shoppingBag24Regular"
     case .sidebarSearch20Filled: return ".sidebarSearch20Filled"
     case .sidebarSearch20Regular: return ".sidebarSearch20Regular"
     case .signOut20Filled: return ".signOut20Filled"
+    default: break }
+    switch self {
     case .signOut20Regular: return ".signOut20Regular"
     case .signOut24Filled: return ".signOut24Filled"
     case .signOut24Regular: return ".signOut24Regular"
@@ -21844,12 +22896,12 @@ import Foundation
     case .slideText16Filled: return ".slideText16Filled"
     case .slideText16Regular: return ".slideText16Regular"
     case .slideText20Filled: return ".slideText20Filled"
-    default: break }
-    switch self {
     case .slideText20Regular: return ".slideText20Regular"
     case .slideText24Filled: return ".slideText24Filled"
     case .slideText24Regular: return ".slideText24Regular"
     case .slideText28Filled: return ".slideText28Filled"
+    default: break }
+    switch self {
     case .slideText28Regular: return ".slideText28Regular"
     case .slideText48Filled: return ".slideText48Filled"
     case .slideText48Regular: return ".slideText48Regular"
@@ -21946,12 +22998,12 @@ import Foundation
     case .splitHorizontal16Filled: return ".splitHorizontal16Filled"
     case .splitHorizontal16Regular: return ".splitHorizontal16Regular"
     case .splitHorizontal20Filled: return ".splitHorizontal20Filled"
-    default: break }
-    switch self {
     case .splitHorizontal20Regular: return ".splitHorizontal20Regular"
     case .splitHorizontal24Filled: return ".splitHorizontal24Filled"
     case .splitHorizontal24Regular: return ".splitHorizontal24Regular"
     case .splitHorizontal28Filled: return ".splitHorizontal28Filled"
+    default: break }
+    switch self {
     case .splitHorizontal28Regular: return ".splitHorizontal28Regular"
     case .splitHorizontal32Filled: return ".splitHorizontal32Filled"
     case .splitHorizontal32Regular: return ".splitHorizontal32Regular"
@@ -21991,6 +23043,8 @@ import Foundation
     case .sportSoccer20Regular: return ".sportSoccer20Regular"
     case .sportSoccer24Filled: return ".sportSoccer24Filled"
     case .sportSoccer24Regular: return ".sportSoccer24Regular"
+    case .square12Filled: return ".square12Filled"
+    case .square12Regular: return ".square12Regular"
     case .square16Filled: return ".square16Filled"
     case .square16Regular: return ".square16Regular"
     case .square20Filled: return ".square20Filled"
@@ -22011,8 +23065,14 @@ import Foundation
     case .squareArrowForward32Regular: return ".squareArrowForward32Regular"
     case .squareArrowForward48Filled: return ".squareArrowForward48Filled"
     case .squareArrowForward48Regular: return ".squareArrowForward48Regular"
+    case .squareDismiss16Filled: return ".squareDismiss16Filled"
+    case .squareDismiss16Regular: return ".squareDismiss16Regular"
+    case .squareDismiss20Filled: return ".squareDismiss20Filled"
+    case .squareDismiss20Regular: return ".squareDismiss20Regular"
     case .squareHintArrowBack16Filled: return ".squareHintArrowBack16Filled"
     case .squareHintArrowBack16Regular: return ".squareHintArrowBack16Regular"
+    case .squareMultiple16Filled: return ".squareMultiple16Filled"
+    case .squareMultiple16Regular: return ".squareMultiple16Regular"
     case .squareMultiple20Filled: return ".squareMultiple20Filled"
     case .squareMultiple20Regular: return ".squareMultiple20Regular"
     case .squareMultiple24Filled: return ".squareMultiple24Filled"
@@ -22023,6 +23083,12 @@ import Foundation
     case .stack20Regular: return ".stack20Regular"
     case .stack24Filled: return ".stack24Filled"
     case .stack24Regular: return ".stack24Regular"
+    case .stackStar16Filled: return ".stackStar16Filled"
+    case .stackStar16Regular: return ".stackStar16Regular"
+    case .stackStar20Filled: return ".stackStar20Filled"
+    case .stackStar20Regular: return ".stackStar20Regular"
+    case .stackStar24Filled: return ".stackStar24Filled"
+    case .stackStar24Regular: return ".stackStar24Regular"
     case .star12Filled: return ".star12Filled"
     case .star12Regular: return ".star12Regular"
     case .star16Filled: return ".star16Filled"
@@ -22038,6 +23104,8 @@ import Foundation
     case .starAdd20Filled: return ".starAdd20Filled"
     case .starAdd20Regular: return ".starAdd20Regular"
     case .starAdd24Filled: return ".starAdd24Filled"
+    default: break }
+    switch self {
     case .starAdd24Regular: return ".starAdd24Regular"
     case .starArrowRightEnd24Filled: return ".starArrowRightEnd24Filled"
     case .starArrowRightEnd24Regular: return ".starArrowRightEnd24Regular"
@@ -22048,8 +23116,6 @@ import Foundation
     case .starEmphasis20Filled: return ".starEmphasis20Filled"
     case .starEmphasis20Regular: return ".starEmphasis20Regular"
     case .starEmphasis24Filled: return ".starEmphasis24Filled"
-    default: break }
-    switch self {
     case .starEmphasis24Regular: return ".starEmphasis24Regular"
     case .starEmphasis32Filled: return ".starEmphasis32Filled"
     case .starEmphasis32Regular: return ".starEmphasis32Regular"
@@ -22140,6 +23206,8 @@ import Foundation
     case .styleGuide24Regular: return ".styleGuide24Regular"
     case .subGrid24Filled: return ".subGrid24Filled"
     case .subGrid24Regular: return ".subGrid24Regular"
+    default: break }
+    switch self {
     case .subtract12Filled: return ".subtract12Filled"
     case .subtract12Regular: return ".subtract12Regular"
     case .subtract16Filled: return ".subtract16Filled"
@@ -22150,10 +23218,10 @@ import Foundation
     case .subtract24Regular: return ".subtract24Regular"
     case .subtract28Filled: return ".subtract28Filled"
     case .subtract28Regular: return ".subtract28Regular"
-    default: break }
-    switch self {
     case .subtract48Filled: return ".subtract48Filled"
     case .subtract48Regular: return ".subtract48Regular"
+    case .subtractCircle12Filled: return ".subtractCircle12Filled"
+    case .subtractCircle12Regular: return ".subtractCircle12Regular"
     case .subtractCircle16Filled: return ".subtractCircle16Filled"
     case .subtractCircle16Regular: return ".subtractCircle16Regular"
     case .subtractCircle20Filled: return ".subtractCircle20Filled"
@@ -22164,6 +23232,14 @@ import Foundation
     case .subtractCircle28Regular: return ".subtractCircle28Regular"
     case .subtractCircle32Filled: return ".subtractCircle32Filled"
     case .subtractCircle32Regular: return ".subtractCircle32Regular"
+    case .subtractCircleArrowBack16Filled: return ".subtractCircleArrowBack16Filled"
+    case .subtractCircleArrowBack16Regular: return ".subtractCircleArrowBack16Regular"
+    case .subtractCircleArrowBack20Filled: return ".subtractCircleArrowBack20Filled"
+    case .subtractCircleArrowBack20Regular: return ".subtractCircleArrowBack20Regular"
+    case .subtractCircleArrowForward16Filled: return ".subtractCircleArrowForward16Filled"
+    case .subtractCircleArrowForward16Regular: return ".subtractCircleArrowForward16Regular"
+    case .subtractCircleArrowForward20Filled: return ".subtractCircleArrowForward20Filled"
+    case .subtractCircleArrowForward20Regular: return ".subtractCircleArrowForward20Regular"
     case .subtractSquareMultiple16Filled: return ".subtractSquareMultiple16Filled"
     case .subtractSquareMultiple16Regular: return ".subtractSquareMultiple16Regular"
     case .subtractSquareMultiple20Filled: return ".subtractSquareMultiple20Filled"
@@ -22232,6 +23308,8 @@ import Foundation
     case .tabDesktopImage16Regular: return ".tabDesktopImage16Regular"
     case .tabDesktopImage20Filled: return ".tabDesktopImage20Filled"
     case .tabDesktopImage20Regular: return ".tabDesktopImage20Regular"
+    default: break }
+    switch self {
     case .tabDesktopImage24Filled: return ".tabDesktopImage24Filled"
     case .tabDesktopImage24Regular: return ".tabDesktopImage24Regular"
     case .tabDesktopMultiple20Filled: return ".tabDesktopMultiple20Filled"
@@ -22252,8 +23330,6 @@ import Foundation
     case .tabInprivateAccount20Regular: return ".tabInprivateAccount20Regular"
     case .tabInprivateAccount24Filled: return ".tabInprivateAccount24Filled"
     case .tabInprivateAccount24Regular: return ".tabInprivateAccount24Regular"
-    default: break }
-    switch self {
     case .tabProhibited24Filled: return ".tabProhibited24Filled"
     case .tabProhibited24Regular: return ".tabProhibited24Regular"
     case .tabShieldDismiss20Filled: return ".tabShieldDismiss20Filled"
@@ -22334,6 +23410,8 @@ import Foundation
     case .tableSimple28Regular: return ".tableSimple28Regular"
     case .tableSimple48Filled: return ".tableSimple48Filled"
     case .tableSimple48Regular: return ".tableSimple48Regular"
+    default: break }
+    switch self {
     case .tableStackAbove20Filled: return ".tableStackAbove20Filled"
     case .tableStackAbove20Regular: return ".tableStackAbove20Regular"
     case .tableStackAbove24Filled: return ".tableStackAbove24Filled"
@@ -22354,8 +23432,6 @@ import Foundation
     case .tableSwitch24Regular: return ".tableSwitch24Regular"
     case .tablet20Filled: return ".tablet20Filled"
     case .tablet20Regular: return ".tablet20Regular"
-    default: break }
-    switch self {
     case .tablet24Filled: return ".tablet24Filled"
     case .tablet24Regular: return ".tablet24Regular"
     case .tabletSpeaker24Filled: return ".tabletSpeaker24Filled"
@@ -22368,6 +23444,8 @@ import Foundation
     case .tag20Regular: return ".tag20Regular"
     case .tag24Filled: return ".tag24Filled"
     case .tag24Regular: return ".tag24Regular"
+    case .tagCircle20Filled: return ".tagCircle20Filled"
+    case .tagCircle20Regular: return ".tagCircle20Regular"
     case .tagDismiss20Filled: return ".tagDismiss20Filled"
     case .tagDismiss20Regular: return ".tagDismiss20Regular"
     case .tagDismiss24Filled: return ".tagDismiss24Filled"
@@ -22434,6 +23512,8 @@ import Foundation
     case .teddy20Regular: return ".teddy20Regular"
     case .teddy24Filled: return ".teddy24Filled"
     case .teddy24Regular: return ".teddy24Regular"
+    default: break }
+    switch self {
     case .temperature16Filled: return ".temperature16Filled"
     case .temperature16Regular: return ".temperature16Regular"
     case .temperature20Filled: return ".temperature20Filled"
@@ -22456,8 +23536,6 @@ import Foundation
     case .tetrisApp16Regular: return ".tetrisApp16Regular"
     case .tetrisApp20Filled: return ".tetrisApp20Filled"
     case .tetrisApp20Regular: return ".tetrisApp20Regular"
-    default: break }
-    switch self {
     case .tetrisApp24Filled: return ".tetrisApp24Filled"
     case .tetrisApp24Regular: return ".tetrisApp24Regular"
     case .tetrisApp28Filled: return ".tetrisApp28Filled"
@@ -22480,6 +23558,8 @@ import Foundation
     case .textAddSpaceBefore20Regular: return ".textAddSpaceBefore20Regular"
     case .textAddSpaceBefore24Filled: return ".textAddSpaceBefore24Filled"
     case .textAddSpaceBefore24Regular: return ".textAddSpaceBefore24Regular"
+    case .textAddT24Filled: return ".textAddT24Filled"
+    case .textAddT24Regular: return ".textAddT24Regular"
     case .textAlignCenter20Filled: return ".textAlignCenter20Filled"
     case .textAlignCenter20Regular: return ".textAlignCenter20Regular"
     case .textAlignCenter24Filled: return ".textAlignCenter24Filled"
@@ -22526,12 +23606,16 @@ import Foundation
     case .textBold24Regular: return ".textBold24Regular"
     case .textBox16Filled: return ".textBox16Filled"
     case .textBox16Regular: return ".textBox16Regular"
+    case .textBulletList16Filled: return ".textBulletList16Filled"
+    case .textBulletList16Regular: return ".textBulletList16Regular"
     case .textBulletList20Filled: return ".textBulletList20Filled"
     case .textBulletList20Regular: return ".textBulletList20Regular"
     case .textBulletList24Filled: return ".textBulletList24Filled"
     case .textBulletList24Regular: return ".textBulletList24Regular"
     case .textBulletListAdd20Filled: return ".textBulletListAdd20Filled"
     case .textBulletListAdd20Regular: return ".textBulletListAdd20Regular"
+    default: break }
+    switch self {
     case .textBulletListAdd24Filled: return ".textBulletListAdd24Filled"
     case .textBulletListAdd24Regular: return ".textBulletListAdd24Regular"
     case .textBulletListSquare20Filled: return ".textBulletListSquare20Filled"
@@ -22558,8 +23642,6 @@ import Foundation
     case .textChangeCase20Regular: return ".textChangeCase20Regular"
     case .textChangeCase24Filled: return ".textChangeCase24Filled"
     case .textChangeCase24Regular: return ".textChangeCase24Regular"
-    default: break }
-    switch self {
     case .textClearFormatting20Filled: return ".textClearFormatting20Filled"
     case .textClearFormatting20Regular: return ".textClearFormatting20Regular"
     case .textClearFormatting24Filled: return ".textClearFormatting24Filled"
@@ -22634,6 +23716,8 @@ import Foundation
     case .textDirectionRotate270Right24Filled: return ".textDirectionRotate270Right24Filled"
     case .textDirectionRotate270Right24Regular: return ".textDirectionRotate270Right24Regular"
     case .textDirectionRotate9020Filled: return ".textDirectionRotate9020Filled"
+    default: break }
+    switch self {
     case .textDirectionRotate9020Regular: return ".textDirectionRotate9020Regular"
     case .textDirectionRotate9024Filled: return ".textDirectionRotate9024Filled"
     case .textDirectionRotate9024Regular: return ".textDirectionRotate9024Regular"
@@ -22660,8 +23744,6 @@ import Foundation
     case .textEffects24Filled: return ".textEffects24Filled"
     case .textEffects24Regular: return ".textEffects24Regular"
     case .textEffectsGa24Filled: return ".textEffectsGa24Filled"
-    default: break }
-    switch self {
     case .textEffectsGa24Regular: return ".textEffectsGa24Regular"
     case .textExpand24Filled: return ".textExpand24Filled"
     case .textExpand24Regular: return ".textExpand24Regular"
@@ -22725,11 +23807,19 @@ import Foundation
     case .textHanging24Regular: return ".textHanging24Regular"
     case .textHeader120Filled: return ".textHeader120Filled"
     case .textHeader120Regular: return ".textHeader120Regular"
+    case .textHeader124Filled: return ".textHeader124Filled"
+    case .textHeader124Regular: return ".textHeader124Regular"
     case .textHeader220Filled: return ".textHeader220Filled"
     case .textHeader220Regular: return ".textHeader220Regular"
+    case .textHeader224Filled: return ".textHeader224Filled"
+    case .textHeader224Regular: return ".textHeader224Regular"
     case .textHeader320Filled: return ".textHeader320Filled"
     case .textHeader320Regular: return ".textHeader320Regular"
+    case .textHeader324Filled: return ".textHeader324Filled"
+    case .textHeader324Regular: return ".textHeader324Regular"
     case .textIndentDecrease20Filled: return ".textIndentDecrease20Filled"
+    default: break }
+    switch self {
     case .textIndentDecrease20Regular: return ".textIndentDecrease20Regular"
     case .textIndentDecrease24Filled: return ".textIndentDecrease24Filled"
     case .textIndentDecrease24Regular: return ".textIndentDecrease24Regular"
@@ -22747,6 +23837,8 @@ import Foundation
     case .textLineSpacing20Regular: return ".textLineSpacing20Regular"
     case .textLineSpacing24Filled: return ".textLineSpacing24Filled"
     case .textLineSpacing24Regular: return ".textLineSpacing24Regular"
+    case .textMore24Filled: return ".textMore24Filled"
+    case .textMore24Regular: return ".textMore24Regular"
     case .textNumberFormat20Filled: return ".textNumberFormat20Filled"
     case .textNumberFormat20Regular: return ".textNumberFormat20Regular"
     case .textNumberFormat24Filled: return ".textNumberFormat24Filled"
@@ -22762,11 +23854,11 @@ import Foundation
     case .textParagraph24Filled: return ".textParagraph24Filled"
     case .textParagraph24Regular: return ".textParagraph24Regular"
     case .textParagraphDirection20Filled: return ".textParagraphDirection20Filled"
-    default: break }
-    switch self {
     case .textParagraphDirection20Regular: return ".textParagraphDirection20Regular"
     case .textParagraphDirection24Filled: return ".textParagraphDirection24Filled"
     case .textParagraphDirection24Regular: return ".textParagraphDirection24Regular"
+    case .textPeriodAsterisk20Filled: return ".textPeriodAsterisk20Filled"
+    case .textPeriodAsterisk20Regular: return ".textPeriodAsterisk20Regular"
     case .textPositionBehind20Filled: return ".textPositionBehind20Filled"
     case .textPositionBehind20Regular: return ".textPositionBehind20Regular"
     case .textPositionBehind24Filled: return ".textPositionBehind24Filled"
@@ -22828,6 +23920,8 @@ import Foundation
     case .textStrikethrough24Filled: return ".textStrikethrough24Filled"
     case .textStrikethrough24Regular: return ".textStrikethrough24Regular"
     case .textStrikethroughS16Filled: return ".textStrikethroughS16Filled"
+    default: break }
+    switch self {
     case .textStrikethroughS16Regular: return ".textStrikethroughS16Regular"
     case .textStrikethroughS20Filled: return ".textStrikethroughS20Filled"
     case .textStrikethroughS20Regular: return ".textStrikethroughS20Regular"
@@ -22841,6 +23935,10 @@ import Foundation
     case .textSuperscript20Regular: return ".textSuperscript20Regular"
     case .textSuperscript24Filled: return ".textSuperscript24Filled"
     case .textSuperscript24Regular: return ".textSuperscript24Regular"
+    case .textT20Filled: return ".textT20Filled"
+    case .textT20Regular: return ".textT20Regular"
+    case .textT24Filled: return ".textT24Filled"
+    case .textT24Regular: return ".textT24Regular"
     case .textUnderline16Filled: return ".textUnderline16Filled"
     case .textUnderline16Regular: return ".textUnderline16Regular"
     case .textUnderline20Filled: return ".textUnderline20Filled"
@@ -22864,8 +23962,6 @@ import Foundation
     case .textboxAlignBottomRotate9024Filled: return ".textboxAlignBottomRotate9024Filled"
     case .textboxAlignBottomRotate9024Regular: return ".textboxAlignBottomRotate9024Regular"
     case .textboxAlignCenter20Filled: return ".textboxAlignCenter20Filled"
-    default: break }
-    switch self {
     case .textboxAlignCenter20Regular: return ".textboxAlignCenter20Regular"
     case .textboxAlignCenter24Filled: return ".textboxAlignCenter24Filled"
     case .textboxAlignCenter24Regular: return ".textboxAlignCenter24Regular"
@@ -22919,11 +24015,15 @@ import Foundation
     case .timeAndWeather24Regular: return ".timeAndWeather24Regular"
     case .timePicker24Filled: return ".timePicker24Filled"
     case .timePicker24Regular: return ".timePicker24Regular"
+    case .timeline20Filled: return ".timeline20Filled"
+    case .timeline20Regular: return ".timeline20Regular"
     case .timeline24Filled: return ".timeline24Filled"
     case .timeline24Regular: return ".timeline24Regular"
     case .timer1024Filled: return ".timer1024Filled"
     case .timer1024Regular: return ".timer1024Regular"
     case .timer16Filled: return ".timer16Filled"
+    default: break }
+    switch self {
     case .timer16Regular: return ".timer16Regular"
     case .timer20Filled: return ".timer20Filled"
     case .timer20Regular: return ".timer20Regular"
@@ -22966,8 +24066,6 @@ import Foundation
     case .tooltipQuote20Filled: return ".tooltipQuote20Filled"
     case .tooltipQuote20Regular: return ".tooltipQuote20Regular"
     case .tooltipQuote24Filled: return ".tooltipQuote24Filled"
-    default: break }
-    switch self {
     case .tooltipQuote24Regular: return ".tooltipQuote24Regular"
     case .topSpeed20Filled: return ".topSpeed20Filled"
     case .topSpeed20Regular: return ".topSpeed20Regular"
@@ -22980,6 +24078,8 @@ import Foundation
     case .translate24Regular: return ".translate24Regular"
     case .transmission24Filled: return ".transmission24Filled"
     case .transmission24Regular: return ".transmission24Regular"
+    case .triangle12Filled: return ".triangle12Filled"
+    case .triangle12Regular: return ".triangle12Regular"
     case .trophy16Filled: return ".trophy16Filled"
     case .trophy16Regular: return ".trophy16Regular"
     case .trophy20Filled: return ".trophy20Filled"
@@ -23014,12 +24114,18 @@ import Foundation
     case .umbrella24Regular: return ".umbrella24Regular"
     case .uninstallApp24Filled: return ".uninstallApp24Filled"
     case .uninstallApp24Regular: return ".uninstallApp24Regular"
+    case .usbPlug20Filled: return ".usbPlug20Filled"
+    case .usbPlug20Regular: return ".usbPlug20Regular"
+    case .usbPlug24Filled: return ".usbPlug24Filled"
+    case .usbPlug24Regular: return ".usbPlug24Regular"
     case .usbPort20Filled: return ".usbPort20Filled"
     case .usbPort20Regular: return ".usbPort20Regular"
     case .usbPort24Filled: return ".usbPort24Filled"
     case .usbPort24Regular: return ".usbPort24Regular"
     case .usbStick20Filled: return ".usbStick20Filled"
     case .usbStick20Regular: return ".usbStick20Regular"
+    default: break }
+    switch self {
     case .usbStick24Filled: return ".usbStick24Filled"
     case .usbStick24Regular: return ".usbStick24Regular"
     case .vault16Filled: return ".vault16Filled"
@@ -23068,8 +24174,6 @@ import Foundation
     case .vehicleShip20Regular: return ".vehicleShip20Regular"
     case .vehicleShip24Filled: return ".vehicleShip24Filled"
     case .vehicleShip24Regular: return ".vehicleShip24Regular"
-    default: break }
-    switch self {
     case .vehicleSubway16Filled: return ".vehicleSubway16Filled"
     case .vehicleSubway16Regular: return ".vehicleSubway16Regular"
     case .vehicleSubway20Filled: return ".vehicleSubway20Filled"
@@ -23122,6 +24226,8 @@ import Foundation
     case .videoClip24Regular: return ".videoClip24Regular"
     case .videoOff20Filled: return ".videoOff20Filled"
     case .videoOff20Regular: return ".videoOff20Regular"
+    default: break }
+    switch self {
     case .videoOff24Filled: return ".videoOff24Filled"
     case .videoOff24Regular: return ".videoOff24Regular"
     case .videoOff28Filled: return ".videoOff28Filled"
@@ -23170,8 +24276,6 @@ import Foundation
     case .videoRecording20Regular: return ".videoRecording20Regular"
     case .videoSecurity20Filled: return ".videoSecurity20Filled"
     case .videoSecurity20Regular: return ".videoSecurity20Regular"
-    default: break }
-    switch self {
     case .videoSecurity24Filled: return ".videoSecurity24Filled"
     case .videoSecurity24Regular: return ".videoSecurity24Regular"
     case .videoSwitch20Filled: return ".videoSwitch20Filled"
@@ -23224,6 +24328,8 @@ import Foundation
     case .wand28Regular: return ".wand28Regular"
     case .wand48Filled: return ".wand48Filled"
     case .wand48Regular: return ".wand48Regular"
+    default: break }
+    switch self {
     case .warning12Filled: return ".warning12Filled"
     case .warning12Regular: return ".warning12Regular"
     case .warning16Filled: return ".warning16Filled"
@@ -23272,8 +24378,6 @@ import Foundation
     case .weatherHailDay48Regular: return ".weatherHailDay48Regular"
     case .weatherHailNight20Filled: return ".weatherHailNight20Filled"
     case .weatherHailNight20Regular: return ".weatherHailNight20Regular"
-    default: break }
-    switch self {
     case .weatherHailNight24Filled: return ".weatherHailNight24Filled"
     case .weatherHailNight24Regular: return ".weatherHailNight24Regular"
     case .weatherHailNight48Filled: return ".weatherHailNight48Filled"
@@ -23326,6 +24430,8 @@ import Foundation
     case .weatherRain48Regular: return ".weatherRain48Regular"
     case .weatherRainShowersDay20Filled: return ".weatherRainShowersDay20Filled"
     case .weatherRainShowersDay20Regular: return ".weatherRainShowersDay20Regular"
+    default: break }
+    switch self {
     case .weatherRainShowersDay24Filled: return ".weatherRainShowersDay24Filled"
     case .weatherRainShowersDay24Regular: return ".weatherRainShowersDay24Regular"
     case .weatherRainShowersDay48Filled: return ".weatherRainShowersDay48Filled"
@@ -23374,8 +24480,6 @@ import Foundation
     case .weatherSqualls48Regular: return ".weatherSqualls48Regular"
     case .weatherSunny16Filled: return ".weatherSunny16Filled"
     case .weatherSunny16Regular: return ".weatherSunny16Regular"
-    default: break }
-    switch self {
     case .weatherSunny20Filled: return ".weatherSunny20Filled"
     case .weatherSunny20Regular: return ".weatherSunny20Regular"
     case .weatherSunny24Filled: return ".weatherSunny24Filled"
@@ -23424,24 +24528,42 @@ import Foundation
     case .wifi420Regular: return ".wifi420Regular"
     case .wifi424Filled: return ".wifi424Filled"
     case .wifi424Regular: return ".wifi424Regular"
+    case .wifiLock24Filled: return ".wifiLock24Filled"
+    case .wifiLock24Regular: return ".wifiLock24Regular"
     case .wifiOff20Filled: return ".wifiOff20Filled"
     case .wifiOff20Regular: return ".wifiOff20Regular"
+    default: break }
+    switch self {
     case .wifiOff24Filled: return ".wifiOff24Filled"
     case .wifiOff24Regular: return ".wifiOff24Regular"
     case .wifiProtected24Filled: return ".wifiProtected24Filled"
     case .wifiProtected24Regular: return ".wifiProtected24Regular"
+    case .wifiSettings20Filled: return ".wifiSettings20Filled"
+    case .wifiSettings20Regular: return ".wifiSettings20Regular"
     case .wifiWarning20Filled: return ".wifiWarning20Filled"
     case .wifiWarning20Regular: return ".wifiWarning20Regular"
     case .wifiWarning24Filled: return ".wifiWarning24Filled"
     case .wifiWarning24Regular: return ".wifiWarning24Regular"
+    case .window16Filled: return ".window16Filled"
+    case .window16Regular: return ".window16Regular"
     case .window20Filled: return ".window20Filled"
     case .window20Regular: return ".window20Regular"
+    case .window24Filled: return ".window24Filled"
+    case .window24Regular: return ".window24Regular"
     case .windowAd20Filled: return ".windowAd20Filled"
     case .windowAd20Regular: return ".windowAd20Regular"
+    case .windowAdOff20Filled: return ".windowAdOff20Filled"
+    case .windowAdOff20Regular: return ".windowAdOff20Regular"
     case .windowAdPerson20Filled: return ".windowAdPerson20Filled"
     case .windowAdPerson20Regular: return ".windowAdPerson20Regular"
+    case .windowArrowUp16Filled: return ".windowArrowUp16Filled"
+    case .windowArrowUp16Regular: return ".windowArrowUp16Regular"
+    case .windowArrowUp20Filled: return ".windowArrowUp20Filled"
+    case .windowArrowUp20Regular: return ".windowArrowUp20Regular"
     case .windowArrowUp24Filled: return ".windowArrowUp24Filled"
     case .windowArrowUp24Regular: return ".windowArrowUp24Regular"
+    case .windowConsole20Filled: return ".windowConsole20Filled"
+    case .windowConsole20Regular: return ".windowConsole20Regular"
     case .windowDevEdit16Filled: return ".windowDevEdit16Filled"
     case .windowDevEdit16Regular: return ".windowDevEdit16Regular"
     case .windowDevEdit20Filled: return ".windowDevEdit20Filled"
@@ -23456,12 +24578,16 @@ import Foundation
     case .windowEdit16Regular: return ".windowEdit16Regular"
     case .windowHeaderHorizontal20Filled: return ".windowHeaderHorizontal20Filled"
     case .windowHeaderHorizontal20Regular: return ".windowHeaderHorizontal20Regular"
+    case .windowHeaderHorizontalOff20Filled: return ".windowHeaderHorizontalOff20Filled"
+    case .windowHeaderHorizontalOff20Regular: return ".windowHeaderHorizontalOff20Regular"
     case .windowHeaderVertical20Filled: return ".windowHeaderVertical20Filled"
     case .windowHeaderVertical20Regular: return ".windowHeaderVertical20Regular"
     case .windowInprivate20Filled: return ".windowInprivate20Filled"
     case .windowInprivate20Regular: return ".windowInprivate20Regular"
     case .windowInprivateAccount20Filled: return ".windowInprivateAccount20Filled"
     case .windowInprivateAccount20Regular: return ".windowInprivateAccount20Regular"
+    case .windowMultiple16Filled: return ".windowMultiple16Filled"
+    case .windowMultiple16Regular: return ".windowMultiple16Regular"
     case .windowMultiple20Filled: return ".windowMultiple20Filled"
     case .windowMultiple20Regular: return ".windowMultiple20Regular"
     case .windowNew16Filled: return ".windowNew16Filled"
@@ -23476,8 +24602,6 @@ import Foundation
     case .windowShield20Regular: return ".windowShield20Regular"
     case .windowShield24Filled: return ".windowShield24Filled"
     case .windowShield24Regular: return ".windowShield24Regular"
-    default: break }
-    switch self {
     case .wrench16Filled: return ".wrench16Filled"
     case .wrench16Regular: return ".wrench16Regular"
     case .wrench20Filled: return ".wrench20Filled"
@@ -23492,10 +24616,14 @@ import Foundation
     case .xray20Regular: return ".xray20Regular"
     case .xray24Filled: return ".xray24Filled"
     case .xray24Regular: return ".xray24Regular"
+    case .zoomIn16Filled: return ".zoomIn16Filled"
+    case .zoomIn16Regular: return ".zoomIn16Regular"
     case .zoomIn20Filled: return ".zoomIn20Filled"
     case .zoomIn20Regular: return ".zoomIn20Regular"
     case .zoomIn24Filled: return ".zoomIn24Filled"
     case .zoomIn24Regular: return ".zoomIn24Regular"
+    case .zoomOut16Filled: return ".zoomOut16Filled"
+    case .zoomOut16Regular: return ".zoomOut16Regular"
     case .zoomOut20Filled: return ".zoomOut20Filled"
     case .zoomOut20Regular: return ".zoomOut20Regular"
     case .zoomOut24Filled: return ".zoomOut24Filled"

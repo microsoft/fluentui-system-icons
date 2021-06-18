@@ -5,94 +5,9 @@
       "idiom": "universal"
     },
     {
-      "filename": "sl_ic_fluent_text_italic_16_regular.pdf",
+      "filename": "ko_ic_fluent_text_italic_16_regular.pdf",
       "idiom": "universal",
-      "locale": "sl"
-    },
-    {
-      "filename": "eu_ic_fluent_text_italic_16_regular.pdf",
-      "idiom": "universal",
-      "locale": "eu"
-    },
-    {
-      "filename": "ca_ic_fluent_text_italic_16_regular.pdf",
-      "idiom": "universal",
-      "locale": "ca"
-    },
-    {
-      "filename": "gl_ic_fluent_text_italic_16_regular.pdf",
-      "idiom": "universal",
-      "locale": "gl"
-    },
-    {
-      "filename": "nb_ic_fluent_text_italic_16_regular.pdf",
-      "idiom": "universal",
-      "locale": "nb"
-    },
-    {
-      "filename": "da_ic_fluent_text_italic_16_regular.pdf",
-      "idiom": "universal",
-      "locale": "da"
-    },
-    {
-      "filename": "uk_ic_fluent_text_italic_16_regular.pdf",
-      "idiom": "universal",
-      "locale": "uk"
-    },
-    {
-      "filename": "it_ic_fluent_text_italic_16_regular.pdf",
-      "idiom": "universal",
-      "locale": "it"
-    },
-    {
-      "filename": "nn_ic_fluent_text_italic_16_regular.pdf",
-      "idiom": "universal",
-      "locale": "nn"
-    },
-    {
-      "filename": "bg_ic_fluent_text_italic_16_regular.pdf",
-      "idiom": "universal",
-      "locale": "bg"
-    },
-    {
-      "filename": "es_ic_fluent_text_italic_16_regular.pdf",
-      "idiom": "universal",
-      "locale": "es"
-    },
-    {
-      "filename": "de_ic_fluent_text_italic_16_regular.pdf",
-      "idiom": "universal",
-      "locale": "de"
-    },
-    {
-      "filename": "kk_ic_fluent_text_italic_16_regular.pdf",
-      "idiom": "universal",
-      "locale": "kk"
-    },
-    {
-      "filename": "hu_ic_fluent_text_italic_16_regular.pdf",
-      "idiom": "universal",
-      "locale": "hu"
-    },
-    {
-      "filename": "sv_ic_fluent_text_italic_16_regular.pdf",
-      "idiom": "universal",
-      "locale": "sv"
-    },
-    {
-      "filename": "lv_ic_fluent_text_italic_16_regular.pdf",
-      "idiom": "universal",
-      "locale": "lv"
-    },
-    {
-      "filename": "tr_ic_fluent_text_italic_16_regular.pdf",
-      "idiom": "universal",
-      "locale": "tr"
-    },
-    {
-      "filename": "sr_ic_fluent_text_italic_16_regular.pdf",
-      "idiom": "universal",
-      "locale": "sr"
+      "locale": "ko"
     },
     {
       "filename": "ru_ic_fluent_text_italic_16_regular.pdf",
@@ -100,19 +15,19 @@
       "locale": "ru"
     },
     {
-      "filename": "en_ic_fluent_text_italic_16_regular.pdf",
+      "filename": "ca_ic_fluent_text_italic_16_regular.pdf",
       "idiom": "universal",
-      "locale": "en"
+      "locale": "ca"
     },
     {
-      "filename": "et_ic_fluent_text_italic_16_regular.pdf",
+      "filename": "bg_ic_fluent_text_italic_16_regular.pdf",
       "idiom": "universal",
-      "locale": "et"
+      "locale": "bg"
     },
     {
-      "filename": "no_ic_fluent_text_italic_16_regular.pdf",
+      "filename": "sl_ic_fluent_text_italic_16_regular.pdf",
       "idiom": "universal",
-      "locale": "no"
+      "locale": "sl"
     },
     {
       "filename": "lt_ic_fluent_text_italic_16_regular.pdf",
@@ -120,9 +35,94 @@
       "locale": "lt"
     },
     {
-      "filename": "ko_ic_fluent_text_italic_16_regular.pdf",
+      "filename": "sr_ic_fluent_text_italic_16_regular.pdf",
       "idiom": "universal",
-      "locale": "ko"
+      "locale": "sr"
+    },
+    {
+      "filename": "et_ic_fluent_text_italic_16_regular.pdf",
+      "idiom": "universal",
+      "locale": "et"
+    },
+    {
+      "filename": "en_ic_fluent_text_italic_16_regular.pdf",
+      "idiom": "universal",
+      "locale": "en"
+    },
+    {
+      "filename": "tr_ic_fluent_text_italic_16_regular.pdf",
+      "idiom": "universal",
+      "locale": "tr"
+    },
+    {
+      "filename": "sv_ic_fluent_text_italic_16_regular.pdf",
+      "idiom": "universal",
+      "locale": "sv"
+    },
+    {
+      "filename": "gl_ic_fluent_text_italic_16_regular.pdf",
+      "idiom": "universal",
+      "locale": "gl"
+    },
+    {
+      "filename": "de_ic_fluent_text_italic_16_regular.pdf",
+      "idiom": "universal",
+      "locale": "de"
+    },
+    {
+      "filename": "it_ic_fluent_text_italic_16_regular.pdf",
+      "idiom": "universal",
+      "locale": "it"
+    },
+    {
+      "filename": "eu_ic_fluent_text_italic_16_regular.pdf",
+      "idiom": "universal",
+      "locale": "eu"
+    },
+    {
+      "filename": "hu_ic_fluent_text_italic_16_regular.pdf",
+      "idiom": "universal",
+      "locale": "hu"
+    },
+    {
+      "filename": "lv_ic_fluent_text_italic_16_regular.pdf",
+      "idiom": "universal",
+      "locale": "lv"
+    },
+    {
+      "filename": "kk_ic_fluent_text_italic_16_regular.pdf",
+      "idiom": "universal",
+      "locale": "kk"
+    },
+    {
+      "filename": "nb_ic_fluent_text_italic_16_regular.pdf",
+      "idiom": "universal",
+      "locale": "nb"
+    },
+    {
+      "filename": "es_ic_fluent_text_italic_16_regular.pdf",
+      "idiom": "universal",
+      "locale": "es"
+    },
+    {
+      "filename": "uk_ic_fluent_text_italic_16_regular.pdf",
+      "idiom": "universal",
+      "locale": "uk"
+    },
+    {
+      "filename": "nn_ic_fluent_text_italic_16_regular.pdf",
+      "idiom": "universal",
+      "locale": "nn"
+    },
+    {
+      "filename": "no_ic_fluent_text_italic_16_regular.pdf",
+      "idiom": "universal",
+      "locale": "no"
+    },
+    {
+      "filename": "da_ic_fluent_text_italic_16_regular.pdf",
+      "idiom": "universal",
+      "locale": "da"
     }
   ],
   "info": {

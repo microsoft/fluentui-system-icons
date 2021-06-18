@@ -5,9 +5,9 @@
       "idiom": "universal"
     },
     {
-      "filename": "zh_tw_ic_fluent_text_proofing_tools_24_regular.pdf",
+      "filename": "ko_ic_fluent_text_proofing_tools_24_regular.pdf",
       "idiom": "universal",
-      "locale": "zh_tw"
+      "locale": "ko"
     },
     {
       "filename": "zh_cn_ic_fluent_text_proofing_tools_24_regular.pdf",
@@ -20,9 +20,9 @@
       "locale": "en"
     },
     {
-      "filename": "ko_ic_fluent_text_proofing_tools_24_regular.pdf",
+      "filename": "zh_tw_ic_fluent_text_proofing_tools_24_regular.pdf",
       "idiom": "universal",
-      "locale": "ko"
+      "locale": "zh_tw"
     }
   ],
   "info": {

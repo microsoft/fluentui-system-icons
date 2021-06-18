@@ -1,0 +1,21 @@
+{
+  "images": [
+    {
+      "filename": "ic_fluent_text_more_24_filled.pdf",
+      "idiom": "universal"
+    },
+    {
+      "filename": "ko_ic_fluent_text_more_24_filled.pdf",
+      "idiom": "universal",
+      "locale": "ko"
+    }
+  ],
+  "info": {
+    "author": "xcode",
+    "version": 1
+  },
+  "properties": {
+    "localizable": true,
+    "template-rendering-intent": "template"
+  }
+}
