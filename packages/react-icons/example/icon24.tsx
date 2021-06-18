@@ -73,6 +73,8 @@ AppsList24Filled,
 AppsList24Regular,
 Archive24Filled,
 Archive24Regular,
+ArrowAutofitContent24Filled,
+ArrowAutofitContent24Regular,
 ArrowAutofitDown24Filled,
 ArrowAutofitDown24Regular,
 ArrowAutofitHeight24Filled,
@@ -197,6 +199,8 @@ ArrowSyncCircle24Filled,
 ArrowSyncCircle24Regular,
 ArrowTrending24Filled,
 ArrowTrending24Regular,
+ArrowTrendingLines24Filled,
+ArrowTrendingLines24Regular,
 ArrowTurnBidirectionalDownRight24Filled,
 ArrowTurnBidirectionalDownRight24Regular,
 ArrowTurnRight24Filled,
@@ -455,6 +459,8 @@ CalendarEdit24Filled,
 CalendarEdit24Regular,
 CalendarEmpty24Filled,
 CalendarEmpty24Regular,
+CalendarError24Filled,
+CalendarError24Regular,
 CalendarLtr24Filled,
 CalendarLtr24Regular,
 CalendarMonth24Filled,
@@ -557,6 +563,8 @@ CellularDataCellularUnavailable24Filled,
 CellularDataCellularUnavailable24Regular,
 CellularDataUnavailable24Filled,
 CellularDataUnavailable24Regular,
+CellularWarning24Filled,
+CellularWarning24Regular,
 CenterHorizontal24Filled,
 CenterHorizontal24Regular,
 CenterVertical24Filled,
@@ -695,8 +703,16 @@ ClosedCaptionOff24Filled,
 ClosedCaptionOff24Regular,
 Cloud24Filled,
 Cloud24Regular,
+CloudArrowDown24Filled,
+CloudArrowDown24Regular,
+CloudArrowUp24Filled,
+CloudArrowUp24Regular,
 CloudBackup24Filled,
 CloudBackup24Regular,
+CloudCheckmark24Filled,
+CloudCheckmark24Regular,
+CloudDismiss24Filled,
+CloudDismiss24Regular,
 CloudDownload24Filled,
 CloudDownload24Regular,
 CloudOff24Filled,
@@ -1295,6 +1311,8 @@ GlobeVideo24Filled,
 GlobeVideo24Regular,
 Grid24Filled,
 Grid24Regular,
+GridDots24Filled,
+GridDots24Regular,
 Group24Filled,
 Group24Regular,
 GroupDismiss24Filled,
@@ -1399,8 +1417,12 @@ InprivateAccount24Filled,
 InprivateAccount24Regular,
 IosArrowLeft24Filled,
 IosArrowLeft24Regular,
+IosArrowLtr24Filled,
+IosArrowLtr24Regular,
 IosArrowRight24Filled,
 IosArrowRight24Regular,
+IosArrowRtl24Filled,
+IosArrowRtl24Regular,
 Iot24Filled,
 Iot24Regular,
 Javascript24Filled,
@@ -1523,6 +1545,8 @@ MailInboxDismiss24Filled,
 MailInboxDismiss24Regular,
 MailLink24Filled,
 MailLink24Regular,
+MailMultiple24Filled,
+MailMultiple24Regular,
 MailOff24Filled,
 MailOff24Regular,
 MailProhibited24Filled,
@@ -1689,6 +1713,14 @@ PaneClose24Filled,
 PaneClose24Regular,
 PaneOpen24Filled,
 PaneOpen24Regular,
+PanelLeft24Filled,
+PanelLeft24Regular,
+PanelRight24Filled,
+PanelRight24Regular,
+PanelRightContract24Filled,
+PanelRightContract24Regular,
+PanelRightExpand24Filled,
+PanelRightExpand24Regular,
 Password24Filled,
 Password24Regular,
 Patch24Filled,
@@ -1890,6 +1922,8 @@ PulseSquare24Filled,
 PulseSquare24Regular,
 PuzzleCube24Filled,
 PuzzleCube24Regular,
+PuzzlePiece24Filled,
+PuzzlePiece24Regular,
 QrCode24Filled,
 QrCode24Regular,
 Question24Filled,
@@ -1992,6 +2026,12 @@ Scan24Filled,
 Scan24Regular,
 ScanObject24Filled,
 ScanObject24Regular,
+ScanTable24Filled,
+ScanTable24Regular,
+ScanText24Filled,
+ScanText24Regular,
+ScanType24Filled,
+ScanType24Regular,
 Scratchpad24Filled,
 Scratchpad24Regular,
 Screenshot24Filled,
@@ -2060,6 +2100,8 @@ ShieldKeyhole24Filled,
 ShieldKeyhole24Regular,
 ShieldProhibited24Filled,
 ShieldProhibited24Regular,
+ShieldTask24Filled,
+ShieldTask24Regular,
 Shifts24Filled,
 Shifts24Regular,
 Shifts30Minutes24Filled,
@@ -2184,6 +2226,8 @@ SquareMultiple24Filled,
 SquareMultiple24Regular,
 Stack24Filled,
 Stack24Regular,
+StackStar24Filled,
+StackStar24Regular,
 Star24Filled,
 Star24Regular,
 StarAdd24Filled,
@@ -2379,6 +2423,8 @@ TextAddSpaceAfter24Filled,
 TextAddSpaceAfter24Regular,
 TextAddSpaceBefore24Filled,
 TextAddSpaceBefore24Regular,
+TextAddT24Filled,
+TextAddT24Regular,
 TextAlignCenter24Filled,
 TextAlignCenter24Regular,
 TextAlignCenterRotate27024Filled,
@@ -2518,6 +2564,8 @@ TextItalic24Filled,
 TextItalic24Regular,
 TextLineSpacing24Filled,
 TextLineSpacing24Regular,
+TextMore24Filled,
+TextMore24Regular,
 TextNumberFormat24Filled,
 TextNumberFormat24Regular,
 TextNumberFormatGaNaDa24Filled,
@@ -2564,6 +2612,8 @@ TextSubscript24Filled,
 TextSubscript24Regular,
 TextSuperscript24Filled,
 TextSuperscript24Regular,
+TextT24Filled,
+TextT24Regular,
 TextUnderline24Filled,
 TextUnderline24Regular,
 TextWordCount24Filled,
@@ -2640,6 +2690,8 @@ Umbrella24Filled,
 Umbrella24Regular,
 UninstallApp24Filled,
 UninstallApp24Regular,
+UsbPlug24Filled,
+UsbPlug24Regular,
 UsbPort24Filled,
 UsbPort24Regular,
 UsbStick24Filled,
@@ -2770,6 +2822,8 @@ Wifi324Filled,
 Wifi324Regular,
 Wifi424Filled,
 Wifi424Regular,
+WifiLock24Filled,
+WifiLock24Regular,
 WifiOff24Filled,
 WifiOff24Regular,
 WifiProtected24Filled,
@@ -2872,6 +2926,8 @@ function App() {
 <AppsList24Regular/>
 <Archive24Filled/>
 <Archive24Regular/>
+<ArrowAutofitContent24Filled/>
+<ArrowAutofitContent24Regular/>
 <ArrowAutofitDown24Filled/>
 <ArrowAutofitDown24Regular/>
 <ArrowAutofitHeight24Filled/>
@@ -2996,6 +3052,8 @@ function App() {
 <ArrowSyncCircle24Regular/>
 <ArrowTrending24Filled/>
 <ArrowTrending24Regular/>
+<ArrowTrendingLines24Filled/>
+<ArrowTrendingLines24Regular/>
 <ArrowTurnBidirectionalDownRight24Filled/>
 <ArrowTurnBidirectionalDownRight24Regular/>
 <ArrowTurnRight24Filled/>
@@ -3254,6 +3312,8 @@ function App() {
 <CalendarEdit24Regular/>
 <CalendarEmpty24Filled/>
 <CalendarEmpty24Regular/>
+<CalendarError24Filled/>
+<CalendarError24Regular/>
 <CalendarLtr24Filled/>
 <CalendarLtr24Regular/>
 <CalendarMonth24Filled/>
@@ -3356,6 +3416,8 @@ function App() {
 <CellularDataCellularUnavailable24Regular/>
 <CellularDataUnavailable24Filled/>
 <CellularDataUnavailable24Regular/>
+<CellularWarning24Filled/>
+<CellularWarning24Regular/>
 <CenterHorizontal24Filled/>
 <CenterHorizontal24Regular/>
 <CenterVertical24Filled/>
@@ -3494,8 +3556,16 @@ function App() {
 <ClosedCaptionOff24Regular/>
 <Cloud24Filled/>
 <Cloud24Regular/>
+<CloudArrowDown24Filled/>
+<CloudArrowDown24Regular/>
+<CloudArrowUp24Filled/>
+<CloudArrowUp24Regular/>
 <CloudBackup24Filled/>
 <CloudBackup24Regular/>
+<CloudCheckmark24Filled/>
+<CloudCheckmark24Regular/>
+<CloudDismiss24Filled/>
+<CloudDismiss24Regular/>
 <CloudDownload24Filled/>
 <CloudDownload24Regular/>
 <CloudOff24Filled/>
@@ -4094,6 +4164,8 @@ function App() {
 <GlobeVideo24Regular/>
 <Grid24Filled/>
 <Grid24Regular/>
+<GridDots24Filled/>
+<GridDots24Regular/>
 <Group24Filled/>
 <Group24Regular/>
 <GroupDismiss24Filled/>
@@ -4198,8 +4270,12 @@ function App() {
 <InprivateAccount24Regular/>
 <IosArrowLeft24Filled/>
 <IosArrowLeft24Regular/>
+<IosArrowLtr24Filled/>
+<IosArrowLtr24Regular/>
 <IosArrowRight24Filled/>
 <IosArrowRight24Regular/>
+<IosArrowRtl24Filled/>
+<IosArrowRtl24Regular/>
 <Iot24Filled/>
 <Iot24Regular/>
 <Javascript24Filled/>
@@ -4322,6 +4398,8 @@ function App() {
 <MailInboxDismiss24Regular/>
 <MailLink24Filled/>
 <MailLink24Regular/>
+<MailMultiple24Filled/>
+<MailMultiple24Regular/>
 <MailOff24Filled/>
 <MailOff24Regular/>
 <MailProhibited24Filled/>
@@ -4488,6 +4566,14 @@ function App() {
 <PaneClose24Regular/>
 <PaneOpen24Filled/>
 <PaneOpen24Regular/>
+<PanelLeft24Filled/>
+<PanelLeft24Regular/>
+<PanelRight24Filled/>
+<PanelRight24Regular/>
+<PanelRightContract24Filled/>
+<PanelRightContract24Regular/>
+<PanelRightExpand24Filled/>
+<PanelRightExpand24Regular/>
 <Password24Filled/>
 <Password24Regular/>
 <Patch24Filled/>
@@ -4689,6 +4775,8 @@ function App() {
 <PulseSquare24Regular/>
 <PuzzleCube24Filled/>
 <PuzzleCube24Regular/>
+<PuzzlePiece24Filled/>
+<PuzzlePiece24Regular/>
 <QrCode24Filled/>
 <QrCode24Regular/>
 <Question24Filled/>
@@ -4791,6 +4879,12 @@ function App() {
 <Scan24Regular/>
 <ScanObject24Filled/>
 <ScanObject24Regular/>
+<ScanTable24Filled/>
+<ScanTable24Regular/>
+<ScanText24Filled/>
+<ScanText24Regular/>
+<ScanType24Filled/>
+<ScanType24Regular/>
 <Scratchpad24Filled/>
 <Scratchpad24Regular/>
 <Screenshot24Filled/>
@@ -4859,6 +4953,8 @@ function App() {
 <ShieldKeyhole24Regular/>
 <ShieldProhibited24Filled/>
 <ShieldProhibited24Regular/>
+<ShieldTask24Filled/>
+<ShieldTask24Regular/>
 <Shifts24Filled/>
 <Shifts24Regular/>
 <Shifts30Minutes24Filled/>
@@ -4983,6 +5079,8 @@ function App() {
 <SquareMultiple24Regular/>
 <Stack24Filled/>
 <Stack24Regular/>
+<StackStar24Filled/>
+<StackStar24Regular/>
 <Star24Filled/>
 <Star24Regular/>
 <StarAdd24Filled/>
@@ -5178,6 +5276,8 @@ function App() {
 <TextAddSpaceAfter24Regular/>
 <TextAddSpaceBefore24Filled/>
 <TextAddSpaceBefore24Regular/>
+<TextAddT24Filled/>
+<TextAddT24Regular/>
 <TextAlignCenter24Filled/>
 <TextAlignCenter24Regular/>
 <TextAlignCenterRotate27024Filled/>
@@ -5317,6 +5417,8 @@ function App() {
 <TextItalic24Regular/>
 <TextLineSpacing24Filled/>
 <TextLineSpacing24Regular/>
+<TextMore24Filled/>
+<TextMore24Regular/>
 <TextNumberFormat24Filled/>
 <TextNumberFormat24Regular/>
 <TextNumberFormatGaNaDa24Filled/>
@@ -5363,6 +5465,8 @@ function App() {
 <TextSubscript24Regular/>
 <TextSuperscript24Filled/>
 <TextSuperscript24Regular/>
+<TextT24Filled/>
+<TextT24Regular/>
 <TextUnderline24Filled/>
 <TextUnderline24Regular/>
 <TextWordCount24Filled/>
@@ -5439,6 +5543,8 @@ function App() {
 <Umbrella24Regular/>
 <UninstallApp24Filled/>
 <UninstallApp24Regular/>
+<UsbPlug24Filled/>
+<UsbPlug24Regular/>
 <UsbPort24Filled/>
 <UsbPort24Regular/>
 <UsbStick24Filled/>
@@ -5569,6 +5675,8 @@ function App() {
 <Wifi324Regular/>
 <Wifi424Filled/>
 <Wifi424Regular/>
+<WifiLock24Filled/>
+<WifiLock24Regular/>
 <WifiOff24Filled/>
 <WifiOff24Regular/>
 <WifiProtected24Filled/>
