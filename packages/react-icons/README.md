@@ -49,13 +49,13 @@ const iconStyleProps: IFluentIconsProps = {
     primaryFill: "purple",
     className: "iconClass"
 };
-const BundledIcon = bundleIcon(AccessTime24Filled, AccessTime24Regular)
+const AccessTime24 = bundleIcon(AccessTime24Filled, AccessTime24Regular)
 const rootElement = document.getElementById("root");
 ReactDOM.render(
     <div>
         <AccessTime24Filled aria-label="AccessTime24Filled" {...iconStyleProps}  />
-        <BundledIcon aria-label="AccessTime24" {...iconStyleProps} />
-        <BundledIcon filled aria-label="AccessTime24" {...iconStyleProps} className="test-span"/>
+        <AccessTime24 aria-label="AccessTime24" {...iconStyleProps} />
+        <AccessTime24 filled aria-label="AccessTime24" {...iconStyleProps} className="test-span"/>
     </div>, 
     rootElement
     )
