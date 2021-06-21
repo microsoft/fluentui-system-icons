@@ -39,11 +39,13 @@ def bucket_array(array, bucket_size):
     return output
 
 
-def xc_image_data_for_file_name(file_name):
+def xc_image_data_for_file_name(file_name, locale):
     output = {
         "idiom": "universal",
         "filename": file_name
     }
+    if locale is not None:
+        output["locale"] = locale
 
     if "_ltr_" in file_name:
         output["language-direction"] = "left-to-right"
@@ -86,11 +88,7 @@ def add_localized_set(lang_locs, original_icon_names, icon_assets_path):
             imageset_contents_path = os.path.join(imageset_path, "Contents.json")
             contents_json = json.load(open(imageset_contents_path))
 
-            loc_image_data = {
-                "filename" : lang_loc + "_" + file_name,
-                "idiom" : "universal",
-                "locale" : asset_locale
-            }
+            loc_image_data = xc_image_data_for_file_name(lang_loc + "_" + file_name, locale=lang_loc)
 
             contents_json["properties"]["localizable"] = True
             contents_json["images"].append(loc_image_data)
@@ -132,10 +130,10 @@ def create_icon_set(file_names, original_icon_names, icon_assets_path):
                 rendering_intent = "original"
 
             images = [
-                xc_image_data_for_file_name(file_name)
+                xc_image_data_for_file_name(file_name, locale=None)
             ]
             if sibling_file_name is not None:
-                images.append(xc_image_data_for_file_name(sibling_file_name))
+                images.append(xc_image_data_for_file_name(sibling_file_name, locale=None))
 
             contents = {
                 "images": images,
