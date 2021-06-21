@@ -38,6 +38,8 @@ function processFiles(src, dest) {
   // Finally add the interface definition and then write out the index.
   indexContents += '\nexport { IFluentIconsProps } from \'./utils/IFluentIconsProps.types\''
   indexContents += '\nexport { default as wrapIcon } from \'./utils/wrapIcon\''
+  indexContents += '\nexport { default as bundleIcon } from \'./utils/bundleIcon\''
+  indexContents += '\nexport * from \'./utils/css\''
   fs.writeFileSync(indexPath, indexContents, (err) => {
     if (err) throw err;
   });
