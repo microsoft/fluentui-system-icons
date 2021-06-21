@@ -1,0 +1,12 @@
+.root-span {
+    display: inline;
+    line-height: 0;
+    vertical-align: middle;
+}
+
+.svg {
+    vertical-align: middle;
+    @media screen and (-ms-high-contrast: black-on-white) {
+        fill: 'windowtext';
+    }
+}

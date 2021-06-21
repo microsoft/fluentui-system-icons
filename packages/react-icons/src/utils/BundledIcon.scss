@@ -1,0 +1,16 @@
+.bundled-icon-span-filled .root-span.regular {
+    display: none;
+}
+.bundled-icon-span-filled .root-span.filled {
+    display: inline-block;
+}
+.bundled-icon-span .root-span.filled {
+    display: none;
+}
+.bundled-icon-span:hover .root-span.regular, .bundled-icon-span:active .root-span.regular .bundled-icon-span:focus .root-span.regular{
+    display: none;
+}
+
+.bundled-icon-span:hover .root-span.filled, .bundled-icon-span:active .root-span.filled .bundled-icon-span:focus .root-span.filled {
+    display: inline-block;
+}
