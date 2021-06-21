@@ -17,7 +17,7 @@
     {
       "filename": "sr-latn_ic_fluent_text_bold_24_filled.pdf",
       "idiom": "universal",
-      "locale": "sr-Latn"
+      "locale": "sr-latn"
     },
     {
       "filename": "ca_ic_fluent_text_bold_24_filled.pdf",
@@ -82,7 +82,7 @@
     {
       "filename": "sr-cyrl_ic_fluent_text_bold_24_filled.pdf",
       "idiom": "universal",
-      "locale": "sr-Cyrl"
+      "locale": "sr-cyrl"
     },
     {
       "filename": "it_ic_fluent_text_bold_24_filled.pdf",
