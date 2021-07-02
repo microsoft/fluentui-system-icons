@@ -5,19 +5,19 @@
       "idiom": "universal"
     },
     {
-      "filename": "ko_ic_fluent_text_italic_24_regular.pdf",
+      "filename": "eu_ic_fluent_text_italic_24_regular.pdf",
       "idiom": "universal",
-      "locale": "ko"
+      "locale": "eu"
     },
     {
-      "filename": "ru_ic_fluent_text_italic_24_regular.pdf",
+      "filename": "da_ic_fluent_text_italic_24_regular.pdf",
       "idiom": "universal",
-      "locale": "ru"
+      "locale": "da"
     },
     {
-      "filename": "ca_ic_fluent_text_italic_24_regular.pdf",
+      "filename": "no_ic_fluent_text_italic_24_regular.pdf",
       "idiom": "universal",
-      "locale": "ca"
+      "locale": "no"
     },
     {
       "filename": "bg_ic_fluent_text_italic_24_regular.pdf",
@@ -30,6 +30,41 @@
       "locale": "sl"
     },
     {
+      "filename": "ca_ic_fluent_text_italic_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "ca"
+    },
+    {
+      "filename": "gl_ic_fluent_text_italic_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "gl"
+    },
+    {
+      "filename": "sv_ic_fluent_text_italic_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "sv"
+    },
+    {
+      "filename": "tr_ic_fluent_text_italic_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "tr"
+    },
+    {
+      "filename": "it_ic_fluent_text_italic_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "it"
+    },
+    {
+      "filename": "de_ic_fluent_text_italic_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "de"
+    },
+    {
+      "filename": "ko_ic_fluent_text_italic_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "ko"
+    },
+    {
       "filename": "lt_ic_fluent_text_italic_24_regular.pdf",
       "idiom": "universal",
       "locale": "lt"
@@ -40,54 +75,9 @@
       "locale": "sr"
     },
     {
-      "filename": "et_ic_fluent_text_italic_24_regular.pdf",
+      "filename": "uk_ic_fluent_text_italic_24_regular.pdf",
       "idiom": "universal",
-      "locale": "et"
-    },
-    {
-      "filename": "en_ic_fluent_text_italic_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "en"
-    },
-    {
-      "filename": "tr_ic_fluent_text_italic_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "tr"
-    },
-    {
-      "filename": "sv_ic_fluent_text_italic_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "sv"
-    },
-    {
-      "filename": "gl_ic_fluent_text_italic_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "gl"
-    },
-    {
-      "filename": "de_ic_fluent_text_italic_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "de"
-    },
-    {
-      "filename": "it_ic_fluent_text_italic_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "it"
-    },
-    {
-      "filename": "eu_ic_fluent_text_italic_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "eu"
-    },
-    {
-      "filename": "hu_ic_fluent_text_italic_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "hu"
-    },
-    {
-      "filename": "lv_ic_fluent_text_italic_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "lv"
+      "locale": "uk"
     },
     {
       "filename": "kk_ic_fluent_text_italic_24_regular.pdf",
@@ -95,9 +85,19 @@
       "locale": "kk"
     },
     {
+      "filename": "hu_ic_fluent_text_italic_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "hu"
+    },
+    {
       "filename": "nb_ic_fluent_text_italic_24_regular.pdf",
       "idiom": "universal",
       "locale": "nb"
+    },
+    {
+      "filename": "ru_ic_fluent_text_italic_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "ru"
     },
     {
       "filename": "es_ic_fluent_text_italic_24_regular.pdf",
@@ -105,9 +105,9 @@
       "locale": "es"
     },
     {
-      "filename": "uk_ic_fluent_text_italic_24_regular.pdf",
+      "filename": "et_ic_fluent_text_italic_24_regular.pdf",
       "idiom": "universal",
-      "locale": "uk"
+      "locale": "et"
     },
     {
       "filename": "nn_ic_fluent_text_italic_24_regular.pdf",
@@ -115,14 +115,14 @@
       "locale": "nn"
     },
     {
-      "filename": "no_ic_fluent_text_italic_24_regular.pdf",
+      "filename": "lv_ic_fluent_text_italic_24_regular.pdf",
       "idiom": "universal",
-      "locale": "no"
+      "locale": "lv"
     },
     {
-      "filename": "da_ic_fluent_text_italic_24_regular.pdf",
+      "filename": "en_ic_fluent_text_italic_24_regular.pdf",
       "idiom": "universal",
-      "locale": "da"
+      "locale": "en"
     }
   ],
   "info": {

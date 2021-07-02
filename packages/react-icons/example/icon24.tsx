@@ -109,6 +109,8 @@ ArrowClockwise24Filled,
 ArrowClockwise24Regular,
 ArrowClockwiseDashes24Filled,
 ArrowClockwiseDashes24Regular,
+ArrowCollapseAll24Filled,
+ArrowCollapseAll24Regular,
 ArrowCounterclockwise24Filled,
 ArrowCounterclockwise24Regular,
 ArrowCounterclockwiseDashes24Filled,
@@ -1012,6 +1014,10 @@ DocumentLink24Filled,
 DocumentLink24Regular,
 DocumentMargins24Filled,
 DocumentMargins24Regular,
+DocumentMultiple24Filled,
+DocumentMultiple24Regular,
+DocumentMultiplePercent24Filled,
+DocumentMultiplePercent24Regular,
 DocumentMultipleProhibited24Filled,
 DocumentMultipleProhibited24Regular,
 DocumentOnePage24Filled,
@@ -1054,6 +1060,8 @@ DocumentSplitHintOff24Filled,
 DocumentSplitHintOff24Regular,
 DocumentSync24Filled,
 DocumentSync24Regular,
+DocumentTable24Filled,
+DocumentTable24Regular,
 DocumentToolbox24Filled,
 DocumentToolbox24Regular,
 DocumentWidth24Filled,
@@ -2996,6 +3004,8 @@ function App() {
 <ArrowClockwise24Regular/>
 <ArrowClockwiseDashes24Filled/>
 <ArrowClockwiseDashes24Regular/>
+<ArrowCollapseAll24Filled/>
+<ArrowCollapseAll24Regular/>
 <ArrowCounterclockwise24Filled/>
 <ArrowCounterclockwise24Regular/>
 <ArrowCounterclockwiseDashes24Filled/>
@@ -3899,6 +3909,10 @@ function App() {
 <DocumentLink24Regular/>
 <DocumentMargins24Filled/>
 <DocumentMargins24Regular/>
+<DocumentMultiple24Filled/>
+<DocumentMultiple24Regular/>
+<DocumentMultiplePercent24Filled/>
+<DocumentMultiplePercent24Regular/>
 <DocumentMultipleProhibited24Filled/>
 <DocumentMultipleProhibited24Regular/>
 <DocumentOnePage24Filled/>
@@ -3941,6 +3955,8 @@ function App() {
 <DocumentSplitHintOff24Regular/>
 <DocumentSync24Filled/>
 <DocumentSync24Regular/>
+<DocumentTable24Filled/>
+<DocumentTable24Regular/>
 <DocumentToolbox24Filled/>
 <DocumentToolbox24Regular/>
 <DocumentWidth24Filled/>

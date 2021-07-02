@@ -213,6 +213,12 @@ class FluentIcons {
   /// fluent icon named "align_center_vertical" in size 48 and regular style.
   static const IconData align_center_vertical_48_regular = IconData(0xfe08, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "align_end_horizontal" in size 20 and regular style.
+  static const IconData align_end_horizontal_20_regular = IconData(0x10101, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "align_end_vertical" in size 20 and regular style.
+  static const IconData align_end_vertical_20_regular = IconData(0x10102, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "align_left" in size 16 and regular style.
   static const IconData align_left_16_regular = IconData(0xfe09, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -248,6 +254,39 @@ class FluentIcons {
 
   /// fluent icon named "align_right" in size 48 and regular style.
   static const IconData align_right_48_regular = IconData(0xfe14, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "align_space_around_horizontal" in size 20 and regular style.
+  static const IconData align_space_around_horizontal_20_regular = IconData(0x10103, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "align_space_around_vertical" in size 20 and regular style.
+  static const IconData align_space_around_vertical_20_regular = IconData(0x10104, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "align_space_between_horizontal" in size 20 and regular style.
+  static const IconData align_space_between_horizontal_20_regular = IconData(0x10105, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "align_space_between_vertical" in size 20 and regular style.
+  static const IconData align_space_between_vertical_20_regular = IconData(0x10106, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "align_space_evenly_horizontal" in size 20 and regular style.
+  static const IconData align_space_evenly_horizontal_20_regular = IconData(0x10107, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "align_space_evenly_vertical" in size 20 and regular style.
+  static const IconData align_space_evenly_vertical_20_regular = IconData(0x10108, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "align_space_fit_vertical" in size 20 and regular style.
+  static const IconData align_space_fit_vertical_20_regular = IconData(0x10109, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "align_start_horizontal" in size 20 and regular style.
+  static const IconData align_start_horizontal_20_regular = IconData(0x1010a, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "align_start_vertical" in size 20 and regular style.
+  static const IconData align_start_vertical_20_regular = IconData(0x1010b, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "align_stretch_horizontal" in size 20 and regular style.
+  static const IconData align_stretch_horizontal_20_regular = IconData(0x1010c, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "align_stretch_vertical" in size 20 and regular style.
+  static const IconData align_stretch_vertical_20_regular = IconData(0x1010d, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "align_top" in size 16 and regular style.
   static const IconData align_top_16_regular = IconData(0xfe15, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -515,6 +554,12 @@ class FluentIcons {
 
   /// fluent icon named "arrow_clockwise_dashes" in size 24 and regular style.
   static const IconData arrow_clockwise_dashes_24_regular = IconData(0xff28, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "arrow_collapse_all" in size 20 and regular style.
+  static const IconData arrow_collapse_all_20_regular = IconData(0x1010e, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "arrow_collapse_all" in size 24 and regular style.
+  static const IconData arrow_collapse_all_24_regular = IconData(0x1010f, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "arrow_counterclockwise" in size 12 and regular style.
   static const IconData arrow_counterclockwise_12_regular = IconData(0xffea, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -1106,6 +1151,12 @@ class FluentIcons {
 
   /// fluent icon named "arrow_upload" in size 24 and regular style.
   static const IconData arrow_upload_24_regular = IconData(0xf1a5, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "arrow_wrap" in size 20 and regular style.
+  static const IconData arrow_wrap_20_regular = IconData(0x10110, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "arrow_wrap_off" in size 20 and regular style.
+  static const IconData arrow_wrap_off_20_regular = IconData(0x10111, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "arrows_bidirectional" in size 24 and regular style.
   static const IconData arrows_bidirectional_24_regular = IconData(0xf1a6, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -2495,6 +2546,9 @@ class FluentIcons {
 
   /// fluent icon named "cellular_warning" in size 24 and regular style.
   static const IconData cellular_warning_24_regular = IconData(0x10048, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "center_horizontal" in size 20 and regular style.
+  static const IconData center_horizontal_20_regular = IconData(0x10112, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "center_horizontal" in size 24 and regular style.
   static const IconData center_horizontal_24_regular = IconData(0xfbe6, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -4647,8 +4701,14 @@ class FluentIcons {
   /// fluent icon named "document_multiple" in size 20 and regular style.
   static const IconData document_multiple_20_regular = IconData(0xff7e, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "document_multiple" in size 24 and regular style.
+  static const IconData document_multiple_24_regular = IconData(0x10113, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "document_multiple_percent" in size 20 and regular style.
   static const IconData document_multiple_percent_20_regular = IconData(0x100cd, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "document_multiple_percent" in size 24 and regular style.
+  static const IconData document_multiple_percent_24_regular = IconData(0x10114, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "document_multiple_prohibited" in size 20 and regular style.
   static const IconData document_multiple_prohibited_20_regular = IconData(0xff7f, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -4814,6 +4874,15 @@ class FluentIcons {
 
   /// fluent icon named "document_sync" in size 24 and regular style.
   static const IconData document_sync_24_regular = IconData(0xfc03, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "document_table" in size 16 and regular style.
+  static const IconData document_table_16_regular = IconData(0x10115, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "document_table" in size 20 and regular style.
+  static const IconData document_table_20_regular = IconData(0x10116, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "document_table" in size 24 and regular style.
+  static const IconData document_table_24_regular = IconData(0x10117, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "document_toolbox" in size 20 and regular style.
   static const IconData document_toolbox_20_regular = IconData(0xf3b0, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -5777,6 +5846,9 @@ class FluentIcons {
 
   /// fluent icon named "glance" in size 24 and regular style.
   static const IconData glance_24_regular = IconData(0xf457, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "glance_horizontal" in size 12 and regular style.
+  static const IconData glance_horizontal_12_regular = IconData(0x10118, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "glance_horizontal" in size 20 and regular style.
   static const IconData glance_horizontal_20_regular = IconData(0x100d9, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -7724,6 +7796,9 @@ class FluentIcons {
 
   /// fluent icon named "panel_left" in size 48 and regular style.
   static const IconData panel_left_48_regular = IconData(0x1006e, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "panel_left_expand" in size 16 and regular style.
+  static const IconData panel_left_expand_16_regular = IconData(0x10119, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "panel_left_expand" in size 20 and regular style.
   static const IconData panel_left_expand_20_regular = IconData(0x100e0, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -9954,6 +10029,9 @@ class FluentIcons {
   /// fluent icon named "square_multiple" in size 24 and regular style.
   static const IconData square_multiple_24_regular = IconData(0xf78c, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "square_shadow" in size 12 and regular style.
+  static const IconData square_shadow_12_regular = IconData(0x1011a, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "stack" in size 16 and regular style.
   static const IconData stack_16_regular = IconData(0xf78d, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -10709,6 +10787,9 @@ class FluentIcons {
 
   /// fluent icon named "text_asterisk" in size 20 and regular style.
   static const IconData text_asterisk_20_regular = IconData(0xf7a3, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "text_baseline" in size 20 and regular style.
+  static const IconData text_baseline_20_regular = IconData(0x1011b, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "text_bold" in size 16 and regular style.
   static const IconData text_bold_16_regular = IconData(0xfac7, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -12503,6 +12584,12 @@ class FluentIcons {
   /// fluent icon named "align_center_vertical" in size 48 and filled style.
   static const IconData align_center_vertical_48_filled = IconData(0xfe11, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
+  /// fluent icon named "align_end_horizontal" in size 20 and filled style.
+  static const IconData align_end_horizontal_20_filled = IconData(0x10105, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "align_end_vertical" in size 20 and filled style.
+  static const IconData align_end_vertical_20_filled = IconData(0x10106, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
   /// fluent icon named "align_left" in size 16 and filled style.
   static const IconData align_left_16_filled = IconData(0xfe12, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
@@ -12538,6 +12625,39 @@ class FluentIcons {
 
   /// fluent icon named "align_right" in size 48 and filled style.
   static const IconData align_right_48_filled = IconData(0xfe1d, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "align_space_around_horizontal" in size 20 and filled style.
+  static const IconData align_space_around_horizontal_20_filled = IconData(0x10107, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "align_space_around_vertical" in size 20 and filled style.
+  static const IconData align_space_around_vertical_20_filled = IconData(0x10108, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "align_space_between_horizontal" in size 20 and filled style.
+  static const IconData align_space_between_horizontal_20_filled = IconData(0x10109, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "align_space_between_vertical" in size 20 and filled style.
+  static const IconData align_space_between_vertical_20_filled = IconData(0x1010a, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "align_space_evenly_horizontal" in size 20 and filled style.
+  static const IconData align_space_evenly_horizontal_20_filled = IconData(0x1010b, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "align_space_evenly_vertical" in size 20 and filled style.
+  static const IconData align_space_evenly_vertical_20_filled = IconData(0x1010c, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "align_space_fit_vertical" in size 20 and filled style.
+  static const IconData align_space_fit_vertical_20_filled = IconData(0x1010d, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "align_start_horizontal" in size 20 and filled style.
+  static const IconData align_start_horizontal_20_filled = IconData(0x1010e, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "align_start_vertical" in size 20 and filled style.
+  static const IconData align_start_vertical_20_filled = IconData(0x1010f, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "align_stretch_horizontal" in size 20 and filled style.
+  static const IconData align_stretch_horizontal_20_filled = IconData(0x10110, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "align_stretch_vertical" in size 20 and filled style.
+  static const IconData align_stretch_vertical_20_filled = IconData(0x10111, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "align_top" in size 16 and filled style.
   static const IconData align_top_16_filled = IconData(0xfe1e, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
@@ -12805,6 +12925,12 @@ class FluentIcons {
 
   /// fluent icon named "arrow_clockwise_dashes" in size 24 and filled style.
   static const IconData arrow_clockwise_dashes_24_filled = IconData(0xff2c, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "arrow_collapse_all" in size 20 and filled style.
+  static const IconData arrow_collapse_all_20_filled = IconData(0x10112, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "arrow_collapse_all" in size 24 and filled style.
+  static const IconData arrow_collapse_all_24_filled = IconData(0x10113, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "arrow_counterclockwise" in size 12 and filled style.
   static const IconData arrow_counterclockwise_12_filled = IconData(0xffee, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
@@ -13396,6 +13522,12 @@ class FluentIcons {
 
   /// fluent icon named "arrow_upload" in size 24 and filled style.
   static const IconData arrow_upload_24_filled = IconData(0xf1a5, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "arrow_wrap" in size 20 and filled style.
+  static const IconData arrow_wrap_20_filled = IconData(0x10114, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "arrow_wrap_off" in size 20 and filled style.
+  static const IconData arrow_wrap_off_20_filled = IconData(0x10115, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "arrows_bidirectional" in size 24 and filled style.
   static const IconData arrows_bidirectional_24_filled = IconData(0xf1a6, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
@@ -14785,6 +14917,9 @@ class FluentIcons {
 
   /// fluent icon named "cellular_warning" in size 24 and filled style.
   static const IconData cellular_warning_24_filled = IconData(0x1004c, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "center_horizontal" in size 20 and filled style.
+  static const IconData center_horizontal_20_filled = IconData(0x10116, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "center_horizontal" in size 24 and filled style.
   static const IconData center_horizontal_24_filled = IconData(0xfbee, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
@@ -16916,8 +17051,14 @@ class FluentIcons {
   /// fluent icon named "document_multiple" in size 20 and filled style.
   static const IconData document_multiple_20_filled = IconData(0xff82, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
+  /// fluent icon named "document_multiple" in size 24 and filled style.
+  static const IconData document_multiple_24_filled = IconData(0x10117, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
   /// fluent icon named "document_multiple_percent" in size 20 and filled style.
   static const IconData document_multiple_percent_20_filled = IconData(0x100d1, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "document_multiple_percent" in size 24 and filled style.
+  static const IconData document_multiple_percent_24_filled = IconData(0x10118, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "document_multiple_prohibited" in size 20 and filled style.
   static const IconData document_multiple_prohibited_20_filled = IconData(0xff83, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
@@ -17083,6 +17224,15 @@ class FluentIcons {
 
   /// fluent icon named "document_sync" in size 24 and filled style.
   static const IconData document_sync_24_filled = IconData(0xfc0b, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "document_table" in size 16 and filled style.
+  static const IconData document_table_16_filled = IconData(0x10119, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "document_table" in size 20 and filled style.
+  static const IconData document_table_20_filled = IconData(0x1011a, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "document_table" in size 24 and filled style.
+  static const IconData document_table_24_filled = IconData(0x1011b, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "document_toolbox" in size 20 and filled style.
   static const IconData document_toolbox_20_filled = IconData(0xf3b0, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
@@ -18061,6 +18211,9 @@ class FluentIcons {
 
   /// fluent icon named "glance" in size 24 and filled style.
   static const IconData glance_24_filled = IconData(0xf45b, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "glance_horizontal" in size 12 and filled style.
+  static const IconData glance_horizontal_12_filled = IconData(0x1011c, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "glance_horizontal" in size 20 and filled style.
   static const IconData glance_horizontal_20_filled = IconData(0x100dd, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
@@ -20026,6 +20179,9 @@ class FluentIcons {
 
   /// fluent icon named "panel_left" in size 48 and filled style.
   static const IconData panel_left_48_filled = IconData(0x10072, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "panel_left_expand" in size 16 and filled style.
+  static const IconData panel_left_expand_16_filled = IconData(0x1011d, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "panel_left_expand" in size 20 and filled style.
   static const IconData panel_left_expand_20_filled = IconData(0x100e4, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
@@ -22223,6 +22379,9 @@ class FluentIcons {
   /// fluent icon named "square_multiple" in size 24 and filled style.
   static const IconData square_multiple_24_filled = IconData(0xf7a4, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
+  /// fluent icon named "square_shadow" in size 12 and filled style.
+  static const IconData square_shadow_12_filled = IconData(0x1011e, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
   /// fluent icon named "stack" in size 16 and filled style.
   static const IconData stack_16_filled = IconData(0xf7a5, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
@@ -23023,6 +23182,9 @@ class FluentIcons {
 
   /// fluent icon named "text_asterisk" in size 20 and filled style.
   static const IconData text_asterisk_20_filled = IconData(0xf7bb, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "text_baseline" in size 20 and filled style.
+  static const IconData text_baseline_20_filled = IconData(0x1011f, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "text_bold" in size 16 and filled style.
   static const IconData text_bold_16_filled = IconData(0xfad2, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);

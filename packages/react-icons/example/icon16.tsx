@@ -568,6 +568,8 @@ DocumentSplitHint16Filled,
 DocumentSplitHint16Regular,
 DocumentSync16Filled,
 DocumentSync16Regular,
+DocumentTable16Filled,
+DocumentTable16Regular,
 Door16Filled,
 Door16Regular,
 DoorArrowLeft16Filled,
@@ -935,6 +937,8 @@ PaneOpen16Filled,
 PaneOpen16Regular,
 PanelLeft16Filled,
 PanelLeft16Regular,
+PanelLeftExpand16Filled,
+PanelLeftExpand16Regular,
 PanelRight16Filled,
 PanelRight16Regular,
 PanelRightContract16Filled,
@@ -1971,6 +1975,8 @@ function App() {
 <DocumentSplitHint16Regular/>
 <DocumentSync16Filled/>
 <DocumentSync16Regular/>
+<DocumentTable16Filled/>
+<DocumentTable16Regular/>
 <Door16Filled/>
 <Door16Regular/>
 <DoorArrowLeft16Filled/>
@@ -2338,6 +2344,8 @@ function App() {
 <PaneOpen16Regular/>
 <PanelLeft16Filled/>
 <PanelLeft16Regular/>
+<PanelLeftExpand16Filled/>
+<PanelLeftExpand16Regular/>
 <PanelRight16Filled/>
 <PanelRight16Regular/>
 <PanelRightContract16Filled/>
