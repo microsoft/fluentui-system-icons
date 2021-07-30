@@ -99,6 +99,8 @@ ArrowCircleDownRight24Filled,
 ArrowCircleDownRight24Regular,
 ArrowCircleDownSplit24Filled,
 ArrowCircleDownSplit24Regular,
+ArrowCircleLeft24Filled,
+ArrowCircleLeft24Regular,
 ArrowCircleRight24Filled,
 ArrowCircleRight24Regular,
 ArrowCircleUp24Filled,
@@ -203,8 +205,12 @@ ArrowSyncCircle24Filled,
 ArrowSyncCircle24Regular,
 ArrowTrending24Filled,
 ArrowTrending24Regular,
+ArrowTrendingCheckmark24Filled,
+ArrowTrendingCheckmark24Regular,
 ArrowTrendingLines24Filled,
 ArrowTrendingLines24Regular,
+ArrowTrendingSettings24Filled,
+ArrowTrendingSettings24Regular,
 ArrowTurnBidirectionalDownRight24Filled,
 ArrowTurnBidirectionalDownRight24Regular,
 ArrowTurnRight24Filled,
@@ -587,6 +593,8 @@ ChannelDismiss24Filled,
 ChannelDismiss24Regular,
 ChannelShare24Filled,
 ChannelShare24Regular,
+ChannelSubtract24Filled,
+ChannelSubtract24Regular,
 ChartPerson24Filled,
 ChartPerson24Regular,
 Chat24Filled,
@@ -687,6 +695,8 @@ ClipboardPulse24Filled,
 ClipboardPulse24Regular,
 ClipboardSearch24Filled,
 ClipboardSearch24Regular,
+ClipboardSettings24Filled,
+ClipboardSettings24Regular,
 ClipboardTask24Filled,
 ClipboardTask24Regular,
 ClipboardTaskAdd24Filled,
@@ -737,6 +747,8 @@ CloudSync24Filled,
 CloudSync24Regular,
 CloudSyncComplete24Filled,
 CloudSyncComplete24Regular,
+CloudWords24Filled,
+CloudWords24Regular,
 Code24Filled,
 Code24Regular,
 Collections24Filled,
@@ -812,6 +824,8 @@ ContentSettings24Filled,
 ContentSettings24Regular,
 ContractDownLeft24Filled,
 ContractDownLeft24Regular,
+ControlButton24Filled,
+ControlButton24Regular,
 ConvertRange24Filled,
 ConvertRange24Regular,
 ConvertToTable24Filled,
@@ -830,6 +844,10 @@ CopyArrowRight24Filled,
 CopyArrowRight24Regular,
 Couch24Filled,
 Couch24Regular,
+CreditCardPerson24Filled,
+CreditCardPerson24Regular,
+CreditCardToolbox24Filled,
+CreditCardToolbox24Regular,
 Crop24Filled,
 Crop24Regular,
 CropInterim24Filled,
@@ -938,6 +956,8 @@ DismissCircle24Filled,
 DismissCircle24Regular,
 DismissSquare24Filled,
 DismissSquare24Regular,
+Diversity24Filled,
+Diversity24Regular,
 DividerShort24Filled,
 DividerShort24Regular,
 DividerTall24Filled,
@@ -1351,6 +1371,8 @@ GroupList24Filled,
 GroupList24Regular,
 GroupReturn24Filled,
 GroupReturn24Regular,
+Guardian24Filled,
+Guardian24Regular,
 Guest24Filled,
 Guest24Regular,
 GuestAdd24Filled,
@@ -1635,6 +1657,8 @@ Molecule24Filled,
 Molecule24Regular,
 Money24Filled,
 Money24Regular,
+MoneyCalculator24Filled,
+MoneyCalculator24Regular,
 MoreHorizontal24Filled,
 MoreHorizontal24Regular,
 MoreVertical24Filled,
@@ -1821,6 +1845,8 @@ PersonDelete24Filled,
 PersonDelete24Regular,
 PersonFeedback24Filled,
 PersonFeedback24Regular,
+PersonLock24Filled,
+PersonLock24Regular,
 PersonMail24Filled,
 PersonMail24Regular,
 PersonMoney24Filled,
@@ -2026,6 +2052,8 @@ RibbonAdd24Filled,
 RibbonAdd24Regular,
 RibbonStar24Filled,
 RibbonStar24Regular,
+RoadCone24Filled,
+RoadCone24Regular,
 Rocket24Filled,
 Rocket24Regular,
 RotateLeft24Filled,
@@ -2064,6 +2092,8 @@ ScanTable24Filled,
 ScanTable24Regular,
 ScanText24Filled,
 ScanText24Regular,
+ScanThumbUp24Filled,
+ScanThumbUp24Regular,
 ScanType24Filled,
 ScanType24Regular,
 Scratchpad24Filled,
@@ -2136,6 +2166,8 @@ ShieldProhibited24Filled,
 ShieldProhibited24Regular,
 ShieldTask24Filled,
 ShieldTask24Regular,
+ShieldVideo24Filled,
+ShieldVideo24Regular,
 Shifts24Filled,
 Shifts24Regular,
 Shifts30Minutes24Filled,
@@ -2746,6 +2778,8 @@ VehicleCab24Filled,
 VehicleCab24Regular,
 VehicleCar24Filled,
 VehicleCar24Regular,
+VehicleCarCollision24Filled,
+VehicleCarCollision24Regular,
 VehicleShip24Filled,
 VehicleShip24Regular,
 VehicleSubway24Filled,
@@ -2794,6 +2828,8 @@ Vote24Filled,
 Vote24Regular,
 WalkieTalkie24Filled,
 WalkieTalkie24Regular,
+Wallet24Filled,
+Wallet24Regular,
 Wallpaper24Filled,
 Wallpaper24Regular,
 Wand24Filled,
@@ -2994,6 +3030,8 @@ function App() {
 <ArrowCircleDownRight24Regular/>
 <ArrowCircleDownSplit24Filled/>
 <ArrowCircleDownSplit24Regular/>
+<ArrowCircleLeft24Filled/>
+<ArrowCircleLeft24Regular/>
 <ArrowCircleRight24Filled/>
 <ArrowCircleRight24Regular/>
 <ArrowCircleUp24Filled/>
@@ -3098,8 +3136,12 @@ function App() {
 <ArrowSyncCircle24Regular/>
 <ArrowTrending24Filled/>
 <ArrowTrending24Regular/>
+<ArrowTrendingCheckmark24Filled/>
+<ArrowTrendingCheckmark24Regular/>
 <ArrowTrendingLines24Filled/>
 <ArrowTrendingLines24Regular/>
+<ArrowTrendingSettings24Filled/>
+<ArrowTrendingSettings24Regular/>
 <ArrowTurnBidirectionalDownRight24Filled/>
 <ArrowTurnBidirectionalDownRight24Regular/>
 <ArrowTurnRight24Filled/>
@@ -3482,6 +3524,8 @@ function App() {
 <ChannelDismiss24Regular/>
 <ChannelShare24Filled/>
 <ChannelShare24Regular/>
+<ChannelSubtract24Filled/>
+<ChannelSubtract24Regular/>
 <ChartPerson24Filled/>
 <ChartPerson24Regular/>
 <Chat24Filled/>
@@ -3582,6 +3626,8 @@ function App() {
 <ClipboardPulse24Regular/>
 <ClipboardSearch24Filled/>
 <ClipboardSearch24Regular/>
+<ClipboardSettings24Filled/>
+<ClipboardSettings24Regular/>
 <ClipboardTask24Filled/>
 <ClipboardTask24Regular/>
 <ClipboardTaskAdd24Filled/>
@@ -3632,6 +3678,8 @@ function App() {
 <CloudSync24Regular/>
 <CloudSyncComplete24Filled/>
 <CloudSyncComplete24Regular/>
+<CloudWords24Filled/>
+<CloudWords24Regular/>
 <Code24Filled/>
 <Code24Regular/>
 <Collections24Filled/>
@@ -3707,6 +3755,8 @@ function App() {
 <ContentSettings24Regular/>
 <ContractDownLeft24Filled/>
 <ContractDownLeft24Regular/>
+<ControlButton24Filled/>
+<ControlButton24Regular/>
 <ConvertRange24Filled/>
 <ConvertRange24Regular/>
 <ConvertToTable24Filled/>
@@ -3725,6 +3775,10 @@ function App() {
 <CopyArrowRight24Regular/>
 <Couch24Filled/>
 <Couch24Regular/>
+<CreditCardPerson24Filled/>
+<CreditCardPerson24Regular/>
+<CreditCardToolbox24Filled/>
+<CreditCardToolbox24Regular/>
 <Crop24Filled/>
 <Crop24Regular/>
 <CropInterim24Filled/>
@@ -3833,6 +3887,8 @@ function App() {
 <DismissCircle24Regular/>
 <DismissSquare24Filled/>
 <DismissSquare24Regular/>
+<Diversity24Filled/>
+<Diversity24Regular/>
 <DividerShort24Filled/>
 <DividerShort24Regular/>
 <DividerTall24Filled/>
@@ -4246,6 +4302,8 @@ function App() {
 <GroupList24Regular/>
 <GroupReturn24Filled/>
 <GroupReturn24Regular/>
+<Guardian24Filled/>
+<Guardian24Regular/>
 <Guest24Filled/>
 <Guest24Regular/>
 <GuestAdd24Filled/>
@@ -4530,6 +4588,8 @@ function App() {
 <Molecule24Regular/>
 <Money24Filled/>
 <Money24Regular/>
+<MoneyCalculator24Filled/>
+<MoneyCalculator24Regular/>
 <MoreHorizontal24Filled/>
 <MoreHorizontal24Regular/>
 <MoreVertical24Filled/>
@@ -4716,6 +4776,8 @@ function App() {
 <PersonDelete24Regular/>
 <PersonFeedback24Filled/>
 <PersonFeedback24Regular/>
+<PersonLock24Filled/>
+<PersonLock24Regular/>
 <PersonMail24Filled/>
 <PersonMail24Regular/>
 <PersonMoney24Filled/>
@@ -4921,6 +4983,8 @@ function App() {
 <RibbonAdd24Regular/>
 <RibbonStar24Filled/>
 <RibbonStar24Regular/>
+<RoadCone24Filled/>
+<RoadCone24Regular/>
 <Rocket24Filled/>
 <Rocket24Regular/>
 <RotateLeft24Filled/>
@@ -4959,6 +5023,8 @@ function App() {
 <ScanTable24Regular/>
 <ScanText24Filled/>
 <ScanText24Regular/>
+<ScanThumbUp24Filled/>
+<ScanThumbUp24Regular/>
 <ScanType24Filled/>
 <ScanType24Regular/>
 <Scratchpad24Filled/>
@@ -5031,6 +5097,8 @@ function App() {
 <ShieldProhibited24Regular/>
 <ShieldTask24Filled/>
 <ShieldTask24Regular/>
+<ShieldVideo24Filled/>
+<ShieldVideo24Regular/>
 <Shifts24Filled/>
 <Shifts24Regular/>
 <Shifts30Minutes24Filled/>
@@ -5641,6 +5709,8 @@ function App() {
 <VehicleCab24Regular/>
 <VehicleCar24Filled/>
 <VehicleCar24Regular/>
+<VehicleCarCollision24Filled/>
+<VehicleCarCollision24Regular/>
 <VehicleShip24Filled/>
 <VehicleShip24Regular/>
 <VehicleSubway24Filled/>
@@ -5689,6 +5759,8 @@ function App() {
 <Vote24Regular/>
 <WalkieTalkie24Filled/>
 <WalkieTalkie24Regular/>
+<Wallet24Filled/>
+<Wallet24Regular/>
 <Wallpaper24Filled/>
 <Wallpaper24Regular/>
 <Wand24Filled/>

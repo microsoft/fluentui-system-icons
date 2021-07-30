@@ -53,6 +53,8 @@ ArrowBidirectionalUpDown16Filled,
 ArrowBidirectionalUpDown16Regular,
 ArrowBounce16Filled,
 ArrowBounce16Regular,
+ArrowCircleDown16Filled,
+ArrowCircleDown16Regular,
 ArrowCircleDownRight16Filled,
 ArrowCircleDownRight16Regular,
 ArrowCircleLeft16Filled,
@@ -303,6 +305,8 @@ ChannelDismiss16Filled,
 ChannelDismiss16Regular,
 ChannelShare16Filled,
 ChannelShare16Regular,
+ChannelSubtract16Filled,
+ChannelSubtract16Regular,
 Chat16Filled,
 Chat16Regular,
 ChatArrowBack16Filled,
@@ -395,6 +399,8 @@ Cloud16Filled,
 Cloud16Regular,
 CloudAdd16Filled,
 CloudAdd16Regular,
+CloudArchive16Filled,
+CloudArchive16Regular,
 CloudArrowDown16Filled,
 CloudArrowDown16Regular,
 CloudArrowUp16Filled,
@@ -417,6 +423,8 @@ CloudSync16Filled,
 CloudSync16Regular,
 CloudSyncComplete16Filled,
 CloudSyncComplete16Regular,
+CloudWords16Filled,
+CloudWords16Regular,
 Code16Filled,
 Code16Regular,
 Color16Filled,
@@ -1103,6 +1111,8 @@ Reward16Filled,
 Reward16Regular,
 Ribbon16Filled,
 Ribbon16Regular,
+RoadCone16Filled,
+RoadCone16Regular,
 Rocket16Filled,
 Rocket16Regular,
 Ruler16Filled,
@@ -1115,6 +1125,8 @@ Savings16Filled,
 Savings16Regular,
 ScaleFit16Filled,
 ScaleFit16Regular,
+ScanThumbUp16Filled,
+ScanThumbUp16Regular,
 Search16Filled,
 Search16Regular,
 SearchVisual16Filled,
@@ -1338,6 +1350,8 @@ VehicleCab16Filled,
 VehicleCab16Regular,
 VehicleCar16Filled,
 VehicleCar16Regular,
+VehicleCarCollision16Filled,
+VehicleCarCollision16Regular,
 VehicleCarProfileLtr16Filled,
 VehicleCarProfileLtr16Regular,
 VehicleCarProfileRtl16Filled,
@@ -1460,6 +1474,8 @@ function App() {
 <ArrowBidirectionalUpDown16Regular/>
 <ArrowBounce16Filled/>
 <ArrowBounce16Regular/>
+<ArrowCircleDown16Filled/>
+<ArrowCircleDown16Regular/>
 <ArrowCircleDownRight16Filled/>
 <ArrowCircleDownRight16Regular/>
 <ArrowCircleLeft16Filled/>
@@ -1710,6 +1726,8 @@ function App() {
 <ChannelDismiss16Regular/>
 <ChannelShare16Filled/>
 <ChannelShare16Regular/>
+<ChannelSubtract16Filled/>
+<ChannelSubtract16Regular/>
 <Chat16Filled/>
 <Chat16Regular/>
 <ChatArrowBack16Filled/>
@@ -1802,6 +1820,8 @@ function App() {
 <Cloud16Regular/>
 <CloudAdd16Filled/>
 <CloudAdd16Regular/>
+<CloudArchive16Filled/>
+<CloudArchive16Regular/>
 <CloudArrowDown16Filled/>
 <CloudArrowDown16Regular/>
 <CloudArrowUp16Filled/>
@@ -1824,6 +1844,8 @@ function App() {
 <CloudSync16Regular/>
 <CloudSyncComplete16Filled/>
 <CloudSyncComplete16Regular/>
+<CloudWords16Filled/>
+<CloudWords16Regular/>
 <Code16Filled/>
 <Code16Regular/>
 <Color16Filled/>
@@ -2510,6 +2532,8 @@ function App() {
 <Reward16Regular/>
 <Ribbon16Filled/>
 <Ribbon16Regular/>
+<RoadCone16Filled/>
+<RoadCone16Regular/>
 <Rocket16Filled/>
 <Rocket16Regular/>
 <Ruler16Filled/>
@@ -2522,6 +2546,8 @@ function App() {
 <Savings16Regular/>
 <ScaleFit16Filled/>
 <ScaleFit16Regular/>
+<ScanThumbUp16Filled/>
+<ScanThumbUp16Regular/>
 <Search16Filled/>
 <Search16Regular/>
 <SearchVisual16Filled/>
@@ -2745,6 +2771,8 @@ function App() {
 <VehicleCab16Regular/>
 <VehicleCar16Filled/>
 <VehicleCar16Regular/>
+<VehicleCarCollision16Filled/>
+<VehicleCarCollision16Regular/>
 <VehicleCarProfileLtr16Filled/>
 <VehicleCarProfileLtr16Regular/>
 <VehicleCarProfileRtl16Filled/>

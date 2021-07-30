@@ -93,6 +93,10 @@ ArrowCircleDownSplit20Filled,
 ArrowCircleDownSplit20Regular,
 ArrowCircleDownUp20Filled,
 ArrowCircleDownUp20Regular,
+ArrowCircleLeft20Filled,
+ArrowCircleLeft20Regular,
+ArrowCircleRight20Filled,
+ArrowCircleRight20Regular,
 ArrowCircleUp20Filled,
 ArrowCircleUp20Regular,
 ArrowClockwise20Filled,
@@ -205,8 +209,12 @@ ArrowSyncOff20Filled,
 ArrowSyncOff20Regular,
 ArrowTrending20Filled,
 ArrowTrending20Regular,
+ArrowTrendingCheckmark20Filled,
+ArrowTrendingCheckmark20Regular,
 ArrowTrendingLines20Filled,
 ArrowTrendingLines20Regular,
+ArrowTrendingSettings20Filled,
+ArrowTrendingSettings20Regular,
 ArrowUndo20Filled,
 ArrowUndo20Regular,
 ArrowUp20Filled,
@@ -509,6 +517,8 @@ ChannelDismiss20Filled,
 ChannelDismiss20Regular,
 ChannelShare20Filled,
 ChannelShare20Regular,
+ChannelSubtract20Filled,
+ChannelSubtract20Regular,
 ChartPerson20Filled,
 ChartPerson20Regular,
 Chat20Filled,
@@ -633,6 +643,8 @@ Cloud20Filled,
 Cloud20Regular,
 CloudAdd20Filled,
 CloudAdd20Regular,
+CloudArchive20Filled,
+CloudArchive20Regular,
 CloudArrowDown20Filled,
 CloudArrowDown20Regular,
 CloudArrowUp20Filled,
@@ -659,6 +671,8 @@ CloudSync20Filled,
 CloudSync20Regular,
 CloudSyncComplete20Filled,
 CloudSyncComplete20Regular,
+CloudWords20Filled,
+CloudWords20Regular,
 Code20Filled,
 Code20Regular,
 CodeCircle20Filled,
@@ -678,6 +692,8 @@ ColorFillAccent20Regular,
 ColorLine20Filled,
 ColorLine20Regular,
 ColorLineAccent20Regular,
+ColumnArrowRight20Filled,
+ColumnArrowRight20Regular,
 ColumnEdit20Filled,
 ColumnEdit20Regular,
 ColumnTriple20Filled,
@@ -734,6 +750,8 @@ ContentViewGallery20Filled,
 ContentViewGallery20Regular,
 ContractDownLeft20Filled,
 ContractDownLeft20Regular,
+ControlButton20Filled,
+ControlButton20Regular,
 ConvertToType20Filled,
 ConvertToType20Regular,
 ConvertToTypeOff20Filled,
@@ -744,12 +762,16 @@ Copy20Filled,
 Copy20Regular,
 CopySelect20Filled,
 CopySelect20Regular,
+CreditCardPerson20Filled,
+CreditCardPerson20Regular,
 CreditCardToolbox20Filled,
 CreditCardToolbox20Regular,
 Crop20Filled,
 Crop20Regular,
 Cube20Filled,
 Cube20Regular,
+CubeLink20Filled,
+CubeLink20Regular,
 CubeRotate20Filled,
 CubeRotate20Regular,
 CurrencyDollarEuro20Filled,
@@ -786,6 +808,8 @@ DatabaseSearch20Filled,
 DatabaseSearch20Regular,
 Delete20Filled,
 Delete20Regular,
+DeleteLines20Filled,
+DeleteLines20Regular,
 DeleteOff20Filled,
 DeleteOff20Regular,
 Dentist20Filled,
@@ -820,6 +844,8 @@ DismissCircle20Filled,
 DismissCircle20Regular,
 DismissSquare20Filled,
 DismissSquare20Regular,
+Diversity20Filled,
+Diversity20Regular,
 DividerTall20Filled,
 DividerTall20Regular,
 DockPanelBottom20Filled,
@@ -1113,6 +1139,10 @@ GlobeClock20Filled,
 GlobeClock20Regular,
 GlobeLocation20Filled,
 GlobeLocation20Regular,
+GlobeProhibited20Filled,
+GlobeProhibited20Regular,
+GlobeSearch20Filled,
+GlobeSearch20Regular,
 GlobeStar20Filled,
 GlobeStar20Regular,
 GlobeSurface20Filled,
@@ -1127,6 +1157,8 @@ GridKanban20Filled,
 GridKanban20Regular,
 Group20Filled,
 Group20Regular,
+Guardian20Filled,
+Guardian20Regular,
 Guest20Filled,
 Guest20Regular,
 Guitar20Filled,
@@ -1377,6 +1409,10 @@ Molecule20Filled,
 Molecule20Regular,
 Money20Filled,
 Money20Regular,
+MoneyCalculator20Filled,
+MoneyCalculator20Regular,
+MoneySettings20Filled,
+MoneySettings20Regular,
 MoreCircle20Filled,
 MoreCircle20Regular,
 MoreHorizontal20Filled,
@@ -1501,6 +1537,8 @@ Pause20Filled,
 Pause20Regular,
 PauseCircle20Filled,
 PauseCircle20Regular,
+PauseSettings20Filled,
+PauseSettings20Regular,
 Payment20Filled,
 Payment20Regular,
 People20Filled,
@@ -1573,6 +1611,8 @@ PersonMail20Filled,
 PersonMail20Regular,
 PersonMoney20Filled,
 PersonMoney20Regular,
+PersonNote20Filled,
+PersonNote20Regular,
 PersonPill20Filled,
 PersonPill20Regular,
 PersonProhibited20Filled,
@@ -1728,6 +1768,8 @@ RibbonAdd20Filled,
 RibbonAdd20Regular,
 RibbonStar20Filled,
 RibbonStar20Regular,
+RoadCone20Filled,
+RoadCone20Regular,
 Rocket20Filled,
 Rocket20Regular,
 RotateRight20Filled,
@@ -1752,6 +1794,8 @@ ScaleFit20Filled,
 ScaleFit20Regular,
 ScanObject20Filled,
 ScanObject20Regular,
+ScanThumbUp20Filled,
+ScanThumbUp20Regular,
 ScanType20Filled,
 ScanType20Regular,
 ScanTypeOff20Filled,
@@ -2286,6 +2330,8 @@ VehicleCab20Filled,
 VehicleCab20Regular,
 VehicleCar20Filled,
 VehicleCar20Regular,
+VehicleCarCollision20Filled,
+VehicleCarCollision20Regular,
 VehicleCarProfileLtr20Filled,
 VehicleCarProfileLtr20Regular,
 VehicleCarProfileRtl20Filled,
@@ -2340,6 +2386,8 @@ Vote20Filled,
 Vote20Regular,
 WalkieTalkie20Filled,
 WalkieTalkie20Regular,
+Wallet20Filled,
+Wallet20Regular,
 Wand20Filled,
 Wand20Regular,
 Warning20Filled,
@@ -2552,6 +2600,10 @@ function App() {
 <ArrowCircleDownSplit20Regular/>
 <ArrowCircleDownUp20Filled/>
 <ArrowCircleDownUp20Regular/>
+<ArrowCircleLeft20Filled/>
+<ArrowCircleLeft20Regular/>
+<ArrowCircleRight20Filled/>
+<ArrowCircleRight20Regular/>
 <ArrowCircleUp20Filled/>
 <ArrowCircleUp20Regular/>
 <ArrowClockwise20Filled/>
@@ -2664,8 +2716,12 @@ function App() {
 <ArrowSyncOff20Regular/>
 <ArrowTrending20Filled/>
 <ArrowTrending20Regular/>
+<ArrowTrendingCheckmark20Filled/>
+<ArrowTrendingCheckmark20Regular/>
 <ArrowTrendingLines20Filled/>
 <ArrowTrendingLines20Regular/>
+<ArrowTrendingSettings20Filled/>
+<ArrowTrendingSettings20Regular/>
 <ArrowUndo20Filled/>
 <ArrowUndo20Regular/>
 <ArrowUp20Filled/>
@@ -2968,6 +3024,8 @@ function App() {
 <ChannelDismiss20Regular/>
 <ChannelShare20Filled/>
 <ChannelShare20Regular/>
+<ChannelSubtract20Filled/>
+<ChannelSubtract20Regular/>
 <ChartPerson20Filled/>
 <ChartPerson20Regular/>
 <Chat20Filled/>
@@ -3092,6 +3150,8 @@ function App() {
 <Cloud20Regular/>
 <CloudAdd20Filled/>
 <CloudAdd20Regular/>
+<CloudArchive20Filled/>
+<CloudArchive20Regular/>
 <CloudArrowDown20Filled/>
 <CloudArrowDown20Regular/>
 <CloudArrowUp20Filled/>
@@ -3118,6 +3178,8 @@ function App() {
 <CloudSync20Regular/>
 <CloudSyncComplete20Filled/>
 <CloudSyncComplete20Regular/>
+<CloudWords20Filled/>
+<CloudWords20Regular/>
 <Code20Filled/>
 <Code20Regular/>
 <CodeCircle20Filled/>
@@ -3137,6 +3199,8 @@ function App() {
 <ColorLine20Filled/>
 <ColorLine20Regular/>
 <ColorLineAccent20Regular/>
+<ColumnArrowRight20Filled/>
+<ColumnArrowRight20Regular/>
 <ColumnEdit20Filled/>
 <ColumnEdit20Regular/>
 <ColumnTriple20Filled/>
@@ -3193,6 +3257,8 @@ function App() {
 <ContentViewGallery20Regular/>
 <ContractDownLeft20Filled/>
 <ContractDownLeft20Regular/>
+<ControlButton20Filled/>
+<ControlButton20Regular/>
 <ConvertToType20Filled/>
 <ConvertToType20Regular/>
 <ConvertToTypeOff20Filled/>
@@ -3203,12 +3269,16 @@ function App() {
 <Copy20Regular/>
 <CopySelect20Filled/>
 <CopySelect20Regular/>
+<CreditCardPerson20Filled/>
+<CreditCardPerson20Regular/>
 <CreditCardToolbox20Filled/>
 <CreditCardToolbox20Regular/>
 <Crop20Filled/>
 <Crop20Regular/>
 <Cube20Filled/>
 <Cube20Regular/>
+<CubeLink20Filled/>
+<CubeLink20Regular/>
 <CubeRotate20Filled/>
 <CubeRotate20Regular/>
 <CurrencyDollarEuro20Filled/>
@@ -3245,6 +3315,8 @@ function App() {
 <DatabaseSearch20Regular/>
 <Delete20Filled/>
 <Delete20Regular/>
+<DeleteLines20Filled/>
+<DeleteLines20Regular/>
 <DeleteOff20Filled/>
 <DeleteOff20Regular/>
 <Dentist20Filled/>
@@ -3279,6 +3351,8 @@ function App() {
 <DismissCircle20Regular/>
 <DismissSquare20Filled/>
 <DismissSquare20Regular/>
+<Diversity20Filled/>
+<Diversity20Regular/>
 <DividerTall20Filled/>
 <DividerTall20Regular/>
 <DockPanelBottom20Filled/>
@@ -3572,6 +3646,10 @@ function App() {
 <GlobeClock20Regular/>
 <GlobeLocation20Filled/>
 <GlobeLocation20Regular/>
+<GlobeProhibited20Filled/>
+<GlobeProhibited20Regular/>
+<GlobeSearch20Filled/>
+<GlobeSearch20Regular/>
 <GlobeStar20Filled/>
 <GlobeStar20Regular/>
 <GlobeSurface20Filled/>
@@ -3586,6 +3664,8 @@ function App() {
 <GridKanban20Regular/>
 <Group20Filled/>
 <Group20Regular/>
+<Guardian20Filled/>
+<Guardian20Regular/>
 <Guest20Filled/>
 <Guest20Regular/>
 <Guitar20Filled/>
@@ -3836,6 +3916,10 @@ function App() {
 <Molecule20Regular/>
 <Money20Filled/>
 <Money20Regular/>
+<MoneyCalculator20Filled/>
+<MoneyCalculator20Regular/>
+<MoneySettings20Filled/>
+<MoneySettings20Regular/>
 <MoreCircle20Filled/>
 <MoreCircle20Regular/>
 <MoreHorizontal20Filled/>
@@ -3960,6 +4044,8 @@ function App() {
 <Pause20Regular/>
 <PauseCircle20Filled/>
 <PauseCircle20Regular/>
+<PauseSettings20Filled/>
+<PauseSettings20Regular/>
 <Payment20Filled/>
 <Payment20Regular/>
 <People20Filled/>
@@ -4032,6 +4118,8 @@ function App() {
 <PersonMail20Regular/>
 <PersonMoney20Filled/>
 <PersonMoney20Regular/>
+<PersonNote20Filled/>
+<PersonNote20Regular/>
 <PersonPill20Filled/>
 <PersonPill20Regular/>
 <PersonProhibited20Filled/>
@@ -4187,6 +4275,8 @@ function App() {
 <RibbonAdd20Regular/>
 <RibbonStar20Filled/>
 <RibbonStar20Regular/>
+<RoadCone20Filled/>
+<RoadCone20Regular/>
 <Rocket20Filled/>
 <Rocket20Regular/>
 <RotateRight20Filled/>
@@ -4211,6 +4301,8 @@ function App() {
 <ScaleFit20Regular/>
 <ScanObject20Filled/>
 <ScanObject20Regular/>
+<ScanThumbUp20Filled/>
+<ScanThumbUp20Regular/>
 <ScanType20Filled/>
 <ScanType20Regular/>
 <ScanTypeOff20Filled/>
@@ -4745,6 +4837,8 @@ function App() {
 <VehicleCab20Regular/>
 <VehicleCar20Filled/>
 <VehicleCar20Regular/>
+<VehicleCarCollision20Filled/>
+<VehicleCarCollision20Regular/>
 <VehicleCarProfileLtr20Filled/>
 <VehicleCarProfileLtr20Regular/>
 <VehicleCarProfileRtl20Filled/>
@@ -4799,6 +4893,8 @@ function App() {
 <Vote20Regular/>
 <WalkieTalkie20Filled/>
 <WalkieTalkie20Regular/>
+<Wallet20Filled/>
+<Wallet20Regular/>
 <Wand20Filled/>
 <Wand20Regular/>
 <Warning20Filled/>
