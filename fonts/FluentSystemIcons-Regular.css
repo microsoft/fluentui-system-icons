@@ -1,6 +1,6 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.ttf?776a7b1dbcd1ee97dc72ebfe37a1b93a") format("truetype");
+    src: url("./FluentSystemIcons-Regular.ttf?6114b28a3b0a4dde5465280ef44f7409") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -12382,4 +12382,304 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_text_baseline_20_regular:before {
     content: "\1011b";
+}
+.icon-ic_fluent_arrow_circle_down_12_regular:before {
+    content: "\1011c";
+}
+.icon-ic_fluent_arrow_circle_down_16_regular:before {
+    content: "\1011d";
+}
+.icon-ic_fluent_arrow_circle_down_28_regular:before {
+    content: "\1011e";
+}
+.icon-ic_fluent_arrow_circle_down_32_regular:before {
+    content: "\1011f";
+}
+.icon-ic_fluent_arrow_circle_down_48_regular:before {
+    content: "\10120";
+}
+.icon-ic_fluent_arrow_circle_left_20_regular:before {
+    content: "\10121";
+}
+.icon-ic_fluent_arrow_circle_left_24_regular:before {
+    content: "\10122";
+}
+.icon-ic_fluent_arrow_circle_left_28_regular:before {
+    content: "\10123";
+}
+.icon-ic_fluent_arrow_circle_left_32_regular:before {
+    content: "\10124";
+}
+.icon-ic_fluent_arrow_circle_left_48_regular:before {
+    content: "\10125";
+}
+.icon-ic_fluent_arrow_circle_right_20_regular:before {
+    content: "\10126";
+}
+.icon-ic_fluent_arrow_circle_right_28_regular:before {
+    content: "\10127";
+}
+.icon-ic_fluent_arrow_circle_right_32_regular:before {
+    content: "\10128";
+}
+.icon-ic_fluent_arrow_circle_right_48_regular:before {
+    content: "\10129";
+}
+.icon-ic_fluent_arrow_circle_up_12_regular:before {
+    content: "\1012a";
+}
+.icon-ic_fluent_arrow_circle_up_28_regular:before {
+    content: "\1012b";
+}
+.icon-ic_fluent_arrow_circle_up_32_regular:before {
+    content: "\1012c";
+}
+.icon-ic_fluent_arrow_circle_up_48_regular:before {
+    content: "\1012d";
+}
+.icon-ic_fluent_arrow_trending_checkmark_20_regular:before {
+    content: "\1012e";
+}
+.icon-ic_fluent_arrow_trending_checkmark_24_regular:before {
+    content: "\1012f";
+}
+.icon-ic_fluent_arrow_trending_settings_20_regular:before {
+    content: "\10130";
+}
+.icon-ic_fluent_arrow_trending_settings_24_regular:before {
+    content: "\10131";
+}
+.icon-ic_fluent_balloon_12_regular:before {
+    content: "\10132";
+}
+.icon-ic_fluent_calendar_work_week_28_regular:before {
+    content: "\10133";
+}
+.icon-ic_fluent_channel_subtract_16_regular:before {
+    content: "\10134";
+}
+.icon-ic_fluent_channel_subtract_20_regular:before {
+    content: "\10135";
+}
+.icon-ic_fluent_channel_subtract_24_regular:before {
+    content: "\10136";
+}
+.icon-ic_fluent_channel_subtract_28_regular:before {
+    content: "\10137";
+}
+.icon-ic_fluent_channel_subtract_48_regular:before {
+    content: "\10138";
+}
+.icon-ic_fluent_clipboard_settings_24_regular:before {
+    content: "\10139";
+}
+.icon-ic_fluent_cloud_archive_16_regular:before {
+    content: "\1013a";
+}
+.icon-ic_fluent_cloud_archive_20_regular:before {
+    content: "\1013b";
+}
+.icon-ic_fluent_cloud_words_16_regular:before {
+    content: "\1013c";
+}
+.icon-ic_fluent_cloud_words_20_regular:before {
+    content: "\1013d";
+}
+.icon-ic_fluent_cloud_words_24_regular:before {
+    content: "\1013e";
+}
+.icon-ic_fluent_cloud_words_28_regular:before {
+    content: "\1013f";
+}
+.icon-ic_fluent_cloud_words_32_regular:before {
+    content: "\10140";
+}
+.icon-ic_fluent_cloud_words_48_regular:before {
+    content: "\10141";
+}
+.icon-ic_fluent_column_arrow_right_20_regular:before {
+    content: "\10142";
+}
+.icon-ic_fluent_control_button_20_regular:before {
+    content: "\10143";
+}
+.icon-ic_fluent_control_button_24_regular:before {
+    content: "\10144";
+}
+.icon-ic_fluent_credit_card_person_20_regular:before {
+    content: "\10145";
+}
+.icon-ic_fluent_credit_card_person_24_regular:before {
+    content: "\10146";
+}
+.icon-ic_fluent_credit_card_toolbox_24_regular:before {
+    content: "\10147";
+}
+.icon-ic_fluent_cube_link_20_regular:before {
+    content: "\10148";
+}
+.icon-ic_fluent_delete_lines_20_regular:before {
+    content: "\10149";
+}
+.icon-ic_fluent_dialpad_28_regular:before {
+    content: "\1014a";
+}
+.icon-ic_fluent_dialpad_32_regular:before {
+    content: "\1014b";
+}
+.icon-ic_fluent_dialpad_48_regular:before {
+    content: "\1014c";
+}
+.icon-ic_fluent_diversity_20_regular:before {
+    content: "\1014d";
+}
+.icon-ic_fluent_diversity_24_regular:before {
+    content: "\1014e";
+}
+.icon-ic_fluent_diversity_28_regular:before {
+    content: "\1014f";
+}
+.icon-ic_fluent_diversity_48_regular:before {
+    content: "\10150";
+}
+.icon-ic_fluent_food_cake_12_regular:before {
+    content: "\10151";
+}
+.icon-ic_fluent_globe_prohibited_20_regular:before {
+    content: "\10152";
+}
+.icon-ic_fluent_globe_search_20_regular:before {
+    content: "\10153";
+}
+.icon-ic_fluent_globe_video_28_regular:before {
+    content: "\10154";
+}
+.icon-ic_fluent_globe_video_32_regular:before {
+    content: "\10155";
+}
+.icon-ic_fluent_globe_video_48_regular:before {
+    content: "\10156";
+}
+.icon-ic_fluent_guardian_20_regular:before {
+    content: "\10157";
+}
+.icon-ic_fluent_guardian_24_regular:before {
+    content: "\10158";
+}
+.icon-ic_fluent_guardian_28_regular:before {
+    content: "\10159";
+}
+.icon-ic_fluent_guardian_48_regular:before {
+    content: "\1015a";
+}
+.icon-ic_fluent_hat_graduation_12_regular:before {
+    content: "\1015b";
+}
+.icon-ic_fluent_lock_closed_32_regular:before {
+    content: "\1015c";
+}
+.icon-ic_fluent_money_calculator_20_regular:before {
+    content: "\1015d";
+}
+.icon-ic_fluent_money_calculator_24_regular:before {
+    content: "\1015e";
+}
+.icon-ic_fluent_money_settings_20_regular:before {
+    content: "\1015f";
+}
+.icon-ic_fluent_options_48_regular:before {
+    content: "\10160";
+}
+.icon-ic_fluent_pause_settings_20_regular:before {
+    content: "\10161";
+}
+.icon-ic_fluent_person_lock_24_regular:before {
+    content: "\10162";
+}
+.icon-ic_fluent_person_note_20_regular:before {
+    content: "\10163";
+}
+.icon-ic_fluent_road_cone_16_regular:before {
+    content: "\10164";
+}
+.icon-ic_fluent_road_cone_20_regular:before {
+    content: "\10165";
+}
+.icon-ic_fluent_road_cone_24_regular:before {
+    content: "\10166";
+}
+.icon-ic_fluent_road_cone_28_regular:before {
+    content: "\10167";
+}
+.icon-ic_fluent_road_cone_32_regular:before {
+    content: "\10168";
+}
+.icon-ic_fluent_road_cone_48_regular:before {
+    content: "\10169";
+}
+.icon-ic_fluent_scan_thumb_up_16_regular:before {
+    content: "\1016a";
+}
+.icon-ic_fluent_scan_thumb_up_20_regular:before {
+    content: "\1016b";
+}
+.icon-ic_fluent_scan_thumb_up_24_regular:before {
+    content: "\1016c";
+}
+.icon-ic_fluent_scan_thumb_up_28_regular:before {
+    content: "\1016d";
+}
+.icon-ic_fluent_scan_thumb_up_48_regular:before {
+    content: "\1016e";
+}
+.icon-ic_fluent_screen_share_start_48_regular:before {
+    content: "\1016f";
+}
+.icon-ic_fluent_share_48_regular:before {
+    content: "\10170";
+}
+.icon-ic_fluent_shield_video_24_regular:before {
+    content: "\10171";
+}
+.icon-ic_fluent_shield_video_28_regular:before {
+    content: "\10172";
+}
+.icon-ic_fluent_shield_video_48_regular:before {
+    content: "\10173";
+}
+.icon-ic_fluent_speaker_0_32_regular:before {
+    content: "\10174";
+}
+.icon-ic_fluent_speaker_1_32_regular:before {
+    content: "\10175";
+}
+.icon-ic_fluent_speaker_2_32_regular:before {
+    content: "\10176";
+}
+.icon-ic_fluent_sticker_12_regular:before {
+    content: "\10177";
+}
+.icon-ic_fluent_toolbox_12_regular:before {
+    content: "\10178";
+}
+.icon-ic_fluent_vehicle_car_collision_16_regular:before {
+    content: "\10179";
+}
+.icon-ic_fluent_vehicle_car_collision_20_regular:before {
+    content: "\1017a";
+}
+.icon-ic_fluent_vehicle_car_collision_24_regular:before {
+    content: "\1017b";
+}
+.icon-ic_fluent_vehicle_car_collision_48_regular:before {
+    content: "\1017c";
+}
+.icon-ic_fluent_wallet_20_regular:before {
+    content: "\1017d";
+}
+.icon-ic_fluent_wallet_24_regular:before {
+    content: "\1017e";
+}
+.icon-ic_fluent_whiteboard_48_regular:before {
+    content: "\1017f";
 }
