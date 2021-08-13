@@ -67,6 +67,8 @@ BuildingBank48Filled,
 BuildingBank48Regular,
 BuildingBankLink48Filled,
 BuildingBankLink48Regular,
+Call48Filled,
+Call48Regular,
 CallForward48Filled,
 CallForward48Regular,
 CallInbound48Filled,
@@ -341,10 +343,14 @@ Record48Filled,
 Record48Regular,
 RecordStop48Filled,
 RecordStop48Regular,
+RectangleLandscape48Filled,
+RectangleLandscape48Regular,
 RoadCone48Filled,
 RoadCone48Regular,
 ScanThumbUp48Filled,
 ScanThumbUp48Regular,
+ScanThumbUpOff48Filled,
+ScanThumbUpOff48Regular,
 ScreenShareStart48Filled,
 ScreenShareStart48Regular,
 Search48Filled,
@@ -539,6 +545,8 @@ function App() {
 <BuildingBank48Regular/>
 <BuildingBankLink48Filled/>
 <BuildingBankLink48Regular/>
+<Call48Filled/>
+<Call48Regular/>
 <CallForward48Filled/>
 <CallForward48Regular/>
 <CallInbound48Filled/>
@@ -813,10 +821,14 @@ function App() {
 <Record48Regular/>
 <RecordStop48Filled/>
 <RecordStop48Regular/>
+<RectangleLandscape48Filled/>
+<RectangleLandscape48Regular/>
 <RoadCone48Filled/>
 <RoadCone48Regular/>
 <ScanThumbUp48Filled/>
 <ScanThumbUp48Regular/>
+<ScanThumbUpOff48Filled/>
+<ScanThumbUpOff48Regular/>
 <ScreenShareStart48Filled/>
 <ScreenShareStart48Regular/>
 <Search48Filled/>

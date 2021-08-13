@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--~ Copyright (c) 2021. ~ Microsoft Corporation. All rights reserved.-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/ic_fluent_share_screen_person_overlay_16_filled" android:state_activated="true"/>
+    <item android:drawable="@drawable/ic_fluent_share_screen_person_overlay_16_filled" android:state_checked="true"/>
+    <item android:drawable="@drawable/ic_fluent_share_screen_person_overlay_16_filled" android:state_selected="true"/>
+    <item android:drawable="@drawable/ic_fluent_share_screen_person_overlay_16_regular"/>
+</selector>
