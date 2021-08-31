@@ -74,10 +74,13 @@ public func removeUnusedAssets(libraryName: String, assetCatalogName: String, pa
     exit(1)
   }
 
+  let allPossibleIconReferencesLower = allPossibleIconReferences.map { $0.lowercased() }
+  let allIconNamesLower = Set(allIconNames.map { $0.lowercased() })
+
   var iconsUsed = Set<String>()
-  for line in allPossibleIconReferences {
-    for iconName in allIconNames {
-      if line.lowercased().contains(iconName.lowercased()) {
+  for line in allPossibleIconReferencesLower {
+    for iconName in allIconNamesLower {
+      if line.contains(iconName) {
         iconsUsed.insert(iconName)
       }
     }
@@ -94,10 +97,13 @@ public func removeUnusedAssets(libraryName: String, assetCatalogName: String, pa
   }
 
   print("Removing unused assets")
+  var count = 0
   for directory in directories {
-    let iconName = getIconName(from: directory)
+    let iconName = getIconName(from: directory).lowercased()
     if !iconsUsed.contains(iconName) {
       try FileManager.default.removeItem(at: directory)
+      count += 1
     }
   }
+  print("Removed \(count) unused assets.")
 }
