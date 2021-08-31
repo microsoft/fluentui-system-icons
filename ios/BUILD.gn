@@ -49574,6 +49574,20 @@ imageset("ic_fluent_subtract_circle_arrow_forward_20_regular") {
   ]
 }
 
+imageset("ic_fluent_subtract_square_24_filled") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_subtract_square_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_subtract_square_24_filled.imageset/ic_fluent_subtract_square_24_filled.pdf",
+  ]
+}
+
+imageset("ic_fluent_subtract_square_24_regular") {
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_subtract_square_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_subtract_square_24_regular.imageset/ic_fluent_subtract_square_24_regular.pdf",
+  ]
+}
+
 imageset("ic_fluent_subtract_square_multiple_16_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_subtract_square_multiple_16_filled.imageset/Contents.json",

@@ -1,6 +1,6 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.ttf?062c80627bb21f0f150b555b1591f67a") format("truetype");
+    src: url("./FluentSystemIcons-Filled.ttf?8297ffa60e0cc0ec0f26ea8340834f00") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -12934,4 +12934,7 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_text_superscript_16_filled:before {
     content: "\101d3";
+}
+.icon-ic_fluent_subtract_square_24_filled:before {
+    content: "\101d4";
 }

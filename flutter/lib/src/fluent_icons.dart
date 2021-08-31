@@ -10638,6 +10638,9 @@ class FluentIcons {
   /// fluent icon named "subtract_circle_arrow_forward" in size 20 and regular style.
   static const IconData subtract_circle_arrow_forward_20_regular = IconData(0x1008e, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "subtract_square" in size 24 and regular style.
+  static const IconData subtract_square_24_regular = IconData(0x101c8, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "subtract_square_multiple" in size 16 and regular style.
   static const IconData subtract_square_multiple_16_regular = IconData(0xfdef, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -23551,6 +23554,9 @@ class FluentIcons {
 
   /// fluent icon named "subtract_circle_arrow_forward" in size 20 and filled style.
   static const IconData subtract_circle_arrow_forward_20_filled = IconData(0x10092, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "subtract_square" in size 24 and filled style.
+  static const IconData subtract_square_24_filled = IconData(0x101d4, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "subtract_square_multiple" in size 16 and filled style.
   static const IconData subtract_square_multiple_16_filled = IconData(0xfdf8, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
