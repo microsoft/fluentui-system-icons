@@ -10,7 +10,7 @@
     "forceConsistentCasingInFileNames": true,
     "strictNullChecks": true,
     "moduleResolution": "node",
-    "sourceMap": true,
+    "sourceMap": false,
     "jsx": "react"
   },
   "include": ["src"],
