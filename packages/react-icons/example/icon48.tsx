@@ -17,6 +17,14 @@ AlignTop48Filled,
 AlignTop48Regular,
 Archive48Filled,
 Archive48Regular,
+ArrowCircleDown48Filled,
+ArrowCircleDown48Regular,
+ArrowCircleLeft48Filled,
+ArrowCircleLeft48Regular,
+ArrowCircleRight48Filled,
+ArrowCircleRight48Regular,
+ArrowCircleUp48Filled,
+ArrowCircleUp48Regular,
 ArrowClockwise48Filled,
 ArrowClockwise48Regular,
 ArrowCounterclockwise48Filled,
@@ -59,6 +67,8 @@ BuildingBank48Filled,
 BuildingBank48Regular,
 BuildingBankLink48Filled,
 BuildingBankLink48Regular,
+Call48Filled,
+Call48Regular,
 CallForward48Filled,
 CallForward48Regular,
 CallInbound48Filled,
@@ -87,6 +97,8 @@ ChannelDismiss48Filled,
 ChannelDismiss48Regular,
 ChannelShare48Filled,
 ChannelShare48Regular,
+ChannelSubtract48Filled,
+ChannelSubtract48Regular,
 ChartPerson48Filled,
 ChartPerson48Regular,
 Chat48Filled,
@@ -129,6 +141,8 @@ CloudSync48Filled,
 CloudSync48Regular,
 CloudSyncComplete48Filled,
 CloudSyncComplete48Regular,
+CloudWords48Filled,
+CloudWords48Regular,
 Comment48Filled,
 Comment48Regular,
 CommentAdd48Filled,
@@ -163,10 +177,14 @@ DeviceMeetingRoom48Filled,
 DeviceMeetingRoom48Regular,
 DeviceMeetingRoomRemote48Filled,
 DeviceMeetingRoomRemote48Regular,
+Dialpad48Filled,
+Dialpad48Regular,
 Dismiss48Filled,
 Dismiss48Regular,
 DismissCircle48Filled,
 DismissCircle48Regular,
+Diversity48Filled,
+Diversity48Regular,
 DockPanelLeft48Filled,
 DockPanelLeft48Regular,
 DockPanelRight48Filled,
@@ -220,6 +238,10 @@ Glasses48Filled,
 Glasses48Regular,
 GlassesOff48Filled,
 GlassesOff48Regular,
+GlobeVideo48Filled,
+GlobeVideo48Regular,
+Guardian48Filled,
+Guardian48Regular,
 Headphones48Filled,
 Headphones48Regular,
 HeadphonesSoundWave48Filled,
@@ -284,6 +306,8 @@ OpenFolder48Filled,
 OpenFolder48Regular,
 OpenOff48Filled,
 OpenOff48Regular,
+Options48Filled,
+Options48Regular,
 Organization48Filled,
 Organization48Regular,
 PanelLeft48Filled,
@@ -319,8 +343,20 @@ Record48Filled,
 Record48Regular,
 RecordStop48Filled,
 RecordStop48Regular,
+RectangleLandscape48Filled,
+RectangleLandscape48Regular,
+RoadCone48Filled,
+RoadCone48Regular,
+ScanThumbUp48Filled,
+ScanThumbUp48Regular,
+ScanThumbUpOff48Filled,
+ScanThumbUpOff48Regular,
+ScreenShareStart48Filled,
+ScreenShareStart48Regular,
 Search48Filled,
 Search48Regular,
+Share48Filled,
+Share48Regular,
 ShareIos48Filled,
 ShareIos48Regular,
 ShareScreenStop48Filled,
@@ -331,6 +367,8 @@ ShieldCheckmark48Filled,
 ShieldCheckmark48Regular,
 ShieldTask48Filled,
 ShieldTask48Regular,
+ShieldVideo48Filled,
+ShieldVideo48Regular,
 SkipBackward1048Filled,
 SkipBackward1048Regular,
 SkipForward1048Filled,
@@ -375,6 +413,8 @@ TvUsb48Filled,
 TvUsb48Regular,
 VehicleCar48Filled,
 VehicleCar48Regular,
+VehicleCarCollision48Filled,
+VehicleCarCollision48Regular,
 Video48Filled,
 Video48Regular,
 VideoPerson48Filled,
@@ -431,6 +471,8 @@ WeatherSunnyLow48Filled,
 WeatherSunnyLow48Regular,
 WeatherThunderstorm48Filled,
 WeatherThunderstorm48Regular,
+Whiteboard48Filled,
+Whiteboard48Regular,
 
 } from "@fluentui/react-icons";
 
@@ -453,6 +495,14 @@ function App() {
 <AlignTop48Regular/>
 <Archive48Filled/>
 <Archive48Regular/>
+<ArrowCircleDown48Filled/>
+<ArrowCircleDown48Regular/>
+<ArrowCircleLeft48Filled/>
+<ArrowCircleLeft48Regular/>
+<ArrowCircleRight48Filled/>
+<ArrowCircleRight48Regular/>
+<ArrowCircleUp48Filled/>
+<ArrowCircleUp48Regular/>
 <ArrowClockwise48Filled/>
 <ArrowClockwise48Regular/>
 <ArrowCounterclockwise48Filled/>
@@ -495,6 +545,8 @@ function App() {
 <BuildingBank48Regular/>
 <BuildingBankLink48Filled/>
 <BuildingBankLink48Regular/>
+<Call48Filled/>
+<Call48Regular/>
 <CallForward48Filled/>
 <CallForward48Regular/>
 <CallInbound48Filled/>
@@ -523,6 +575,8 @@ function App() {
 <ChannelDismiss48Regular/>
 <ChannelShare48Filled/>
 <ChannelShare48Regular/>
+<ChannelSubtract48Filled/>
+<ChannelSubtract48Regular/>
 <ChartPerson48Filled/>
 <ChartPerson48Regular/>
 <Chat48Filled/>
@@ -565,6 +619,8 @@ function App() {
 <CloudSync48Regular/>
 <CloudSyncComplete48Filled/>
 <CloudSyncComplete48Regular/>
+<CloudWords48Filled/>
+<CloudWords48Regular/>
 <Comment48Filled/>
 <Comment48Regular/>
 <CommentAdd48Filled/>
@@ -599,10 +655,14 @@ function App() {
 <DeviceMeetingRoom48Regular/>
 <DeviceMeetingRoomRemote48Filled/>
 <DeviceMeetingRoomRemote48Regular/>
+<Dialpad48Filled/>
+<Dialpad48Regular/>
 <Dismiss48Filled/>
 <Dismiss48Regular/>
 <DismissCircle48Filled/>
 <DismissCircle48Regular/>
+<Diversity48Filled/>
+<Diversity48Regular/>
 <DockPanelLeft48Filled/>
 <DockPanelLeft48Regular/>
 <DockPanelRight48Filled/>
@@ -656,6 +716,10 @@ function App() {
 <Glasses48Regular/>
 <GlassesOff48Filled/>
 <GlassesOff48Regular/>
+<GlobeVideo48Filled/>
+<GlobeVideo48Regular/>
+<Guardian48Filled/>
+<Guardian48Regular/>
 <Headphones48Filled/>
 <Headphones48Regular/>
 <HeadphonesSoundWave48Filled/>
@@ -720,6 +784,8 @@ function App() {
 <OpenFolder48Regular/>
 <OpenOff48Filled/>
 <OpenOff48Regular/>
+<Options48Filled/>
+<Options48Regular/>
 <Organization48Filled/>
 <Organization48Regular/>
 <PanelLeft48Filled/>
@@ -755,8 +821,20 @@ function App() {
 <Record48Regular/>
 <RecordStop48Filled/>
 <RecordStop48Regular/>
+<RectangleLandscape48Filled/>
+<RectangleLandscape48Regular/>
+<RoadCone48Filled/>
+<RoadCone48Regular/>
+<ScanThumbUp48Filled/>
+<ScanThumbUp48Regular/>
+<ScanThumbUpOff48Filled/>
+<ScanThumbUpOff48Regular/>
+<ScreenShareStart48Filled/>
+<ScreenShareStart48Regular/>
 <Search48Filled/>
 <Search48Regular/>
+<Share48Filled/>
+<Share48Regular/>
 <ShareIos48Filled/>
 <ShareIos48Regular/>
 <ShareScreenStop48Filled/>
@@ -767,6 +845,8 @@ function App() {
 <ShieldCheckmark48Regular/>
 <ShieldTask48Filled/>
 <ShieldTask48Regular/>
+<ShieldVideo48Filled/>
+<ShieldVideo48Regular/>
 <SkipBackward1048Filled/>
 <SkipBackward1048Regular/>
 <SkipForward1048Filled/>
@@ -811,6 +891,8 @@ function App() {
 <TvUsb48Regular/>
 <VehicleCar48Filled/>
 <VehicleCar48Regular/>
+<VehicleCarCollision48Filled/>
+<VehicleCarCollision48Regular/>
 <Video48Filled/>
 <Video48Regular/>
 <VideoPerson48Filled/>
@@ -867,6 +949,8 @@ function App() {
 <WeatherSunnyLow48Regular/>
 <WeatherThunderstorm48Filled/>
 <WeatherThunderstorm48Regular/>
+<Whiteboard48Filled/>
+<Whiteboard48Regular/>
         </div >
     );
 }
