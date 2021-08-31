@@ -928,6 +928,8 @@ Desktop24Filled,
 Desktop24Regular,
 DesktopArrowRight24Filled,
 DesktopArrowRight24Regular,
+DesktopKeyboard24Filled,
+DesktopKeyboard24Regular,
 DesktopPulse24Filled,
 DesktopPulse24Regular,
 DesktopSpeaker24Filled,
@@ -2030,6 +2032,8 @@ Record24Filled,
 Record24Regular,
 RecordStop24Filled,
 RecordStop24Regular,
+RectangleLandscape24Filled,
+RectangleLandscape24Regular,
 Rename24Filled,
 Rename24Regular,
 ResizeImage24Filled,
@@ -2094,6 +2098,8 @@ ScanText24Filled,
 ScanText24Regular,
 ScanThumbUp24Filled,
 ScanThumbUp24Regular,
+ScanThumbUpOff24Filled,
+ScanThumbUpOff24Regular,
 ScanType24Filled,
 ScanType24Regular,
 Scratchpad24Filled,
@@ -2116,6 +2122,8 @@ SelectObject24Filled,
 SelectObject24Regular,
 Send24Filled,
 Send24Regular,
+SendClock24Filled,
+SendClock24Regular,
 SendCopy24Filled,
 SendCopy24Regular,
 SerialPort24Filled,
@@ -2146,6 +2154,12 @@ ShareCloseTray24Filled,
 ShareCloseTray24Regular,
 ShareIos24Filled,
 ShareIos24Regular,
+ShareScreenPerson24Filled,
+ShareScreenPerson24Regular,
+ShareScreenPersonOverlay24Filled,
+ShareScreenPersonOverlay24Regular,
+ShareScreenPersonOverlayInside24Filled,
+ShareScreenPersonOverlayInside24Regular,
 ShareScreenStart24Filled,
 ShareScreenStart24Regular,
 ShareScreenStop24Filled,
@@ -2447,6 +2461,9 @@ Tag24Filled,
 Tag24Regular,
 TagDismiss24Filled,
 TagDismiss24Regular,
+TagLock24Filled,
+TagLock24Regular,
+TagLockAccent24Filled,
 TagQuestionMark24Filled,
 TagQuestionMark24Regular,
 TapDouble24Filled,
@@ -2543,6 +2560,7 @@ TextCollapse24Filled,
 TextCollapse24Regular,
 TextColor24Filled,
 TextColor24Regular,
+TextColorAccent24Filled,
 TextColorAccent24Regular,
 TextColorGa24Filled,
 TextColorGa24Regular,
@@ -2630,8 +2648,16 @@ TextHeader324Filled,
 TextHeader324Regular,
 TextIndentDecrease24Filled,
 TextIndentDecrease24Regular,
+TextIndentDecreaseLtr24Filled,
+TextIndentDecreaseLtr24Regular,
+TextIndentDecreaseRtl24Filled,
+TextIndentDecreaseRtl24Regular,
 TextIndentIncrease24Filled,
 TextIndentIncrease24Regular,
+TextIndentIncreaseLtr24Filled,
+TextIndentIncreaseLtr24Regular,
+TextIndentIncreaseRtl24Filled,
+TextIndentIncreaseRtl24Regular,
 TextItalic24Filled,
 TextItalic24Regular,
 TextLineSpacing24Filled,
@@ -3859,6 +3885,8 @@ function App() {
 <Desktop24Regular/>
 <DesktopArrowRight24Filled/>
 <DesktopArrowRight24Regular/>
+<DesktopKeyboard24Filled/>
+<DesktopKeyboard24Regular/>
 <DesktopPulse24Filled/>
 <DesktopPulse24Regular/>
 <DesktopSpeaker24Filled/>
@@ -4961,6 +4989,8 @@ function App() {
 <Record24Regular/>
 <RecordStop24Filled/>
 <RecordStop24Regular/>
+<RectangleLandscape24Filled/>
+<RectangleLandscape24Regular/>
 <Rename24Filled/>
 <Rename24Regular/>
 <ResizeImage24Filled/>
@@ -5025,6 +5055,8 @@ function App() {
 <ScanText24Regular/>
 <ScanThumbUp24Filled/>
 <ScanThumbUp24Regular/>
+<ScanThumbUpOff24Filled/>
+<ScanThumbUpOff24Regular/>
 <ScanType24Filled/>
 <ScanType24Regular/>
 <Scratchpad24Filled/>
@@ -5047,6 +5079,8 @@ function App() {
 <SelectObject24Regular/>
 <Send24Filled/>
 <Send24Regular/>
+<SendClock24Filled/>
+<SendClock24Regular/>
 <SendCopy24Filled/>
 <SendCopy24Regular/>
 <SerialPort24Filled/>
@@ -5077,6 +5111,12 @@ function App() {
 <ShareCloseTray24Regular/>
 <ShareIos24Filled/>
 <ShareIos24Regular/>
+<ShareScreenPerson24Filled/>
+<ShareScreenPerson24Regular/>
+<ShareScreenPersonOverlay24Filled/>
+<ShareScreenPersonOverlay24Regular/>
+<ShareScreenPersonOverlayInside24Filled/>
+<ShareScreenPersonOverlayInside24Regular/>
 <ShareScreenStart24Filled/>
 <ShareScreenStart24Regular/>
 <ShareScreenStop24Filled/>
@@ -5378,6 +5418,9 @@ function App() {
 <Tag24Regular/>
 <TagDismiss24Filled/>
 <TagDismiss24Regular/>
+<TagLock24Filled/>
+<TagLock24Regular/>
+<TagLockAccent24Filled/>
 <TagQuestionMark24Filled/>
 <TagQuestionMark24Regular/>
 <TapDouble24Filled/>
@@ -5474,6 +5517,7 @@ function App() {
 <TextCollapse24Regular/>
 <TextColor24Filled/>
 <TextColor24Regular/>
+<TextColorAccent24Filled/>
 <TextColorAccent24Regular/>
 <TextColorGa24Filled/>
 <TextColorGa24Regular/>
@@ -5561,8 +5605,16 @@ function App() {
 <TextHeader324Regular/>
 <TextIndentDecrease24Filled/>
 <TextIndentDecrease24Regular/>
+<TextIndentDecreaseLtr24Filled/>
+<TextIndentDecreaseLtr24Regular/>
+<TextIndentDecreaseRtl24Filled/>
+<TextIndentDecreaseRtl24Regular/>
 <TextIndentIncrease24Filled/>
 <TextIndentIncrease24Regular/>
+<TextIndentIncreaseLtr24Filled/>
+<TextIndentIncreaseLtr24Regular/>
+<TextIndentIncreaseRtl24Filled/>
+<TextIndentIncreaseRtl24Regular/>
 <TextItalic24Filled/>
 <TextItalic24Regular/>
 <TextLineSpacing24Filled/>
