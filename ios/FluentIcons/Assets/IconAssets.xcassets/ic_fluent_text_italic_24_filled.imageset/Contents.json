@@ -5,9 +5,9 @@
       "idiom": "universal"
     },
     {
-      "filename": "ca_ic_fluent_text_italic_24_filled.pdf",
+      "filename": "hu_ic_fluent_text_italic_24_filled.pdf",
       "idiom": "universal",
-      "locale": "ca"
+      "locale": "hu"
     },
     {
       "filename": "da_ic_fluent_text_italic_24_filled.pdf",
@@ -15,29 +15,9 @@
       "locale": "da"
     },
     {
-      "filename": "es_ic_fluent_text_italic_24_filled.pdf",
+      "filename": "bg_ic_fluent_text_italic_24_filled.pdf",
       "idiom": "universal",
-      "locale": "es"
-    },
-    {
-      "filename": "uk_ic_fluent_text_italic_24_filled.pdf",
-      "idiom": "universal",
-      "locale": "uk"
-    },
-    {
-      "filename": "et_ic_fluent_text_italic_24_filled.pdf",
-      "idiom": "universal",
-      "locale": "et"
-    },
-    {
-      "filename": "sl_ic_fluent_text_italic_24_filled.pdf",
-      "idiom": "universal",
-      "locale": "sl"
-    },
-    {
-      "filename": "ru_ic_fluent_text_italic_24_filled.pdf",
-      "idiom": "universal",
-      "locale": "ru"
+      "locale": "bg"
     },
     {
       "filename": "sr_ic_fluent_text_italic_24_filled.pdf",
@@ -45,39 +25,24 @@
       "locale": "sr"
     },
     {
-      "filename": "ko_ic_fluent_text_italic_24_filled.pdf",
-      "idiom": "universal",
-      "locale": "ko"
-    },
-    {
-      "filename": "no_ic_fluent_text_italic_24_filled.pdf",
-      "idiom": "universal",
-      "locale": "no"
-    },
-    {
-      "filename": "sv_ic_fluent_text_italic_24_filled.pdf",
-      "idiom": "universal",
-      "locale": "sv"
-    },
-    {
       "filename": "en_ic_fluent_text_italic_24_filled.pdf",
       "idiom": "universal",
       "locale": "en"
     },
     {
-      "filename": "lv_ic_fluent_text_italic_24_filled.pdf",
+      "filename": "ru_ic_fluent_text_italic_24_filled.pdf",
       "idiom": "universal",
-      "locale": "lv"
+      "locale": "ru"
     },
     {
-      "filename": "hu_ic_fluent_text_italic_24_filled.pdf",
+      "filename": "sl_ic_fluent_text_italic_24_filled.pdf",
       "idiom": "universal",
-      "locale": "hu"
+      "locale": "sl"
     },
     {
-      "filename": "lt_ic_fluent_text_italic_24_filled.pdf",
+      "filename": "uk_ic_fluent_text_italic_24_filled.pdf",
       "idiom": "universal",
-      "locale": "lt"
+      "locale": "uk"
     },
     {
       "filename": "gl_ic_fluent_text_italic_24_filled.pdf",
@@ -85,14 +50,9 @@
       "locale": "gl"
     },
     {
-      "filename": "de_ic_fluent_text_italic_24_filled.pdf",
+      "filename": "tr_ic_fluent_text_italic_24_filled.pdf",
       "idiom": "universal",
-      "locale": "de"
-    },
-    {
-      "filename": "nn_ic_fluent_text_italic_24_filled.pdf",
-      "idiom": "universal",
-      "locale": "nn"
+      "locale": "tr"
     },
     {
       "filename": "nb_ic_fluent_text_italic_24_filled.pdf",
@@ -100,19 +60,19 @@
       "locale": "nb"
     },
     {
-      "filename": "kk_ic_fluent_text_italic_24_filled.pdf",
+      "filename": "ca_ic_fluent_text_italic_24_filled.pdf",
       "idiom": "universal",
-      "locale": "kk"
+      "locale": "ca"
     },
     {
-      "filename": "tr_ic_fluent_text_italic_24_filled.pdf",
+      "filename": "lv_ic_fluent_text_italic_24_filled.pdf",
       "idiom": "universal",
-      "locale": "tr"
+      "locale": "lv"
     },
     {
-      "filename": "bg_ic_fluent_text_italic_24_filled.pdf",
+      "filename": "sv_ic_fluent_text_italic_24_filled.pdf",
       "idiom": "universal",
-      "locale": "bg"
+      "locale": "sv"
     },
     {
       "filename": "it_ic_fluent_text_italic_24_filled.pdf",
@@ -120,9 +80,49 @@
       "locale": "it"
     },
     {
+      "filename": "nn_ic_fluent_text_italic_24_filled.pdf",
+      "idiom": "universal",
+      "locale": "nn"
+    },
+    {
       "filename": "eu_ic_fluent_text_italic_24_filled.pdf",
       "idiom": "universal",
       "locale": "eu"
+    },
+    {
+      "filename": "no_ic_fluent_text_italic_24_filled.pdf",
+      "idiom": "universal",
+      "locale": "no"
+    },
+    {
+      "filename": "de_ic_fluent_text_italic_24_filled.pdf",
+      "idiom": "universal",
+      "locale": "de"
+    },
+    {
+      "filename": "lt_ic_fluent_text_italic_24_filled.pdf",
+      "idiom": "universal",
+      "locale": "lt"
+    },
+    {
+      "filename": "et_ic_fluent_text_italic_24_filled.pdf",
+      "idiom": "universal",
+      "locale": "et"
+    },
+    {
+      "filename": "ko_ic_fluent_text_italic_24_filled.pdf",
+      "idiom": "universal",
+      "locale": "ko"
+    },
+    {
+      "filename": "es_ic_fluent_text_italic_24_filled.pdf",
+      "idiom": "universal",
+      "locale": "es"
+    },
+    {
+      "filename": "kk_ic_fluent_text_italic_24_filled.pdf",
+      "idiom": "universal",
+      "locale": "kk"
     }
   ],
   "info": {

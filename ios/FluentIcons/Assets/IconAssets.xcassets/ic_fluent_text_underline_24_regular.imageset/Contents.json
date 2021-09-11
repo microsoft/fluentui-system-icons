@@ -5,49 +5,9 @@
       "idiom": "universal"
     },
     {
-      "filename": "ca_ic_fluent_text_underline_24_regular.pdf",
+      "filename": "fr-fr_ic_fluent_text_underline_24_regular.pdf",
       "idiom": "universal",
-      "locale": "ca"
-    },
-    {
-      "filename": "pt-br_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "pt-br"
-    },
-    {
-      "filename": "es_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "es"
-    },
-    {
-      "filename": "fr-ca_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "fr-ca"
-    },
-    {
-      "filename": "uk_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "uk"
-    },
-    {
-      "filename": "lv-lv_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "lv-lv"
-    },
-    {
-      "filename": "et_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "et"
-    },
-    {
-      "filename": "es-es_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "es-es"
-    },
-    {
-      "filename": "uk-ua_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "uk-ua"
+      "locale": "fr-fr"
     },
     {
       "filename": "ca-es_ic_fluent_text_underline_24_regular.pdf",
@@ -55,64 +15,9 @@
       "locale": "ca-es"
     },
     {
-      "filename": "sl-si_ic_fluent_text_underline_24_regular.pdf",
+      "filename": "ru-ru_ic_fluent_text_underline_24_regular.pdf",
       "idiom": "universal",
-      "locale": "sl-si"
-    },
-    {
-      "filename": "sl_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "sl"
-    },
-    {
-      "filename": "ru_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "ru"
-    },
-    {
-      "filename": "fr_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "fr"
-    },
-    {
-      "filename": "sr_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "sr"
-    },
-    {
-      "filename": "bg-bg_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "bg-bg"
-    },
-    {
-      "filename": "ko_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "ko"
-    },
-    {
-      "filename": "ko-kr_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "ko-kr"
-    },
-    {
-      "filename": "hu-hu_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "hu-hu"
-    },
-    {
-      "filename": "en-us_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "en-us"
-    },
-    {
-      "filename": "en_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "en"
-    },
-    {
-      "filename": "lv_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "lv"
+      "locale": "ru-ru"
     },
     {
       "filename": "hu_ic_fluent_text_underline_24_regular.pdf",
@@ -120,34 +25,9 @@
       "locale": "hu"
     },
     {
-      "filename": "fr-fr_ic_fluent_text_underline_24_regular.pdf",
+      "filename": "bg-bg_ic_fluent_text_underline_24_regular.pdf",
       "idiom": "universal",
-      "locale": "fr-fr"
-    },
-    {
-      "filename": "pt_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "pt"
-    },
-    {
-      "filename": "lt_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "lt"
-    },
-    {
-      "filename": "gl-es_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "gl-es"
-    },
-    {
-      "filename": "ru-ru_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "ru-ru"
-    },
-    {
-      "filename": "gl_ic_fluent_text_underline_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "gl"
+      "locale": "bg-bg"
     },
     {
       "filename": "et-ee_ic_fluent_text_underline_24_regular.pdf",
@@ -155,19 +35,54 @@
       "locale": "et-ee"
     },
     {
-      "filename": "lt-lt_ic_fluent_text_underline_24_regular.pdf",
+      "filename": "bg_ic_fluent_text_underline_24_regular.pdf",
       "idiom": "universal",
-      "locale": "lt-lt"
+      "locale": "bg"
     },
     {
-      "filename": "kk-kz_ic_fluent_text_underline_24_regular.pdf",
+      "filename": "sr_ic_fluent_text_underline_24_regular.pdf",
       "idiom": "universal",
-      "locale": "kk-kz"
+      "locale": "sr"
     },
     {
-      "filename": "kk_ic_fluent_text_underline_24_regular.pdf",
+      "filename": "en_ic_fluent_text_underline_24_regular.pdf",
       "idiom": "universal",
-      "locale": "kk"
+      "locale": "en"
+    },
+    {
+      "filename": "ko-kr_ic_fluent_text_underline_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "ko-kr"
+    },
+    {
+      "filename": "ru_ic_fluent_text_underline_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "ru"
+    },
+    {
+      "filename": "hu-hu_ic_fluent_text_underline_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "hu-hu"
+    },
+    {
+      "filename": "sl_ic_fluent_text_underline_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "sl"
+    },
+    {
+      "filename": "uk_ic_fluent_text_underline_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "uk"
+    },
+    {
+      "filename": "gl_ic_fluent_text_underline_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "gl"
+    },
+    {
+      "filename": "en-us_ic_fluent_text_underline_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "en-us"
     },
     {
       "filename": "tr_ic_fluent_text_underline_24_regular.pdf",
@@ -175,19 +90,74 @@
       "locale": "tr"
     },
     {
-      "filename": "pt-pt_ic_fluent_text_underline_24_regular.pdf",
+      "filename": "ca_ic_fluent_text_underline_24_regular.pdf",
       "idiom": "universal",
-      "locale": "pt-pt"
+      "locale": "ca"
     },
     {
-      "filename": "bg_ic_fluent_text_underline_24_regular.pdf",
+      "filename": "sl-si_ic_fluent_text_underline_24_regular.pdf",
       "idiom": "universal",
-      "locale": "bg"
+      "locale": "sl-si"
     },
     {
-      "filename": "eu-es_ic_fluent_text_underline_24_regular.pdf",
+      "filename": "lv_ic_fluent_text_underline_24_regular.pdf",
       "idiom": "universal",
-      "locale": "eu-es"
+      "locale": "lv"
+    },
+    {
+      "filename": "fr-ca_ic_fluent_text_underline_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "fr-ca"
+    },
+    {
+      "filename": "lv-lv_ic_fluent_text_underline_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "lv-lv"
+    },
+    {
+      "filename": "gl-es_ic_fluent_text_underline_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "gl-es"
+    },
+    {
+      "filename": "uk-ua_ic_fluent_text_underline_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "uk-ua"
+    },
+    {
+      "filename": "eu_ic_fluent_text_underline_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "eu"
+    },
+    {
+      "filename": "pt-br_ic_fluent_text_underline_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "pt-br"
+    },
+    {
+      "filename": "pt_ic_fluent_text_underline_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "pt"
+    },
+    {
+      "filename": "lt-lt_ic_fluent_text_underline_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "lt-lt"
+    },
+    {
+      "filename": "lt_ic_fluent_text_underline_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "lt"
+    },
+    {
+      "filename": "kk-kz_ic_fluent_text_underline_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "kk-kz"
+    },
+    {
+      "filename": "et_ic_fluent_text_underline_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "et"
     },
     {
       "filename": "tr-tr_ic_fluent_text_underline_24_regular.pdf",
@@ -195,9 +165,39 @@
       "locale": "tr-tr"
     },
     {
-      "filename": "eu_ic_fluent_text_underline_24_regular.pdf",
+      "filename": "ko_ic_fluent_text_underline_24_regular.pdf",
       "idiom": "universal",
-      "locale": "eu"
+      "locale": "ko"
+    },
+    {
+      "filename": "es_ic_fluent_text_underline_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "es"
+    },
+    {
+      "filename": "kk_ic_fluent_text_underline_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "kk"
+    },
+    {
+      "filename": "pt-pt_ic_fluent_text_underline_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "pt-pt"
+    },
+    {
+      "filename": "fr_ic_fluent_text_underline_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "fr"
+    },
+    {
+      "filename": "eu-es_ic_fluent_text_underline_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "eu-es"
+    },
+    {
+      "filename": "es-es_ic_fluent_text_underline_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "es-es"
     }
   ],
   "info": {
