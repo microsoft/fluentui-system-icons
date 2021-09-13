@@ -4,7 +4,7 @@
   "sideEffects": false,
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
-  "typings": "lib/esm/index.d.ts",
+  "typings": "lib/index.d.ts",
   "description": "Fluent System Icons are a collection of familiar, friendly, and modern icons from Microsoft.",
   "license": "MIT",
   "repository": {
@@ -16,9 +16,10 @@
     "cleanSvg": "rm -rf ./intermediate",
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
     "convert": "node convert.js --source=./intermediate --dest=./src",
+    "rollup": "node ./generateRollup.js",
     "optimize": "svgo --folder=./intermediate --precision=2 --disable=removeViewBox,mergePaths",
     "unfill": "find ./intermediate -type f -name \"*.svg\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./intermediate -type f -name \"*.bak\" -delete",
-    "build": "npm run copy && npm run optimize && npm run unfill && npm run convert && npm run cleanSvg && npm run build:esm && npm run build:cjs",
+    "build": "npm run copy && npm run optimize && npm run unfill && npm run convert && npm run cleanSvg && npm run build:esm && npm run build:cjs && npm run rollup",
     "build:cjs": "tsc --module commonjs --outDir lib/cjs",
     "build:esm": "tsc"
   },
@@ -30,6 +31,8 @@
     "renamer": "^2.0.1",
     "svgo": "^1.3.2",
     "tslib": "^2.1.0",
+    "glob": "^7.1.7",
+    "typescript": "~4.1.0",
     "yargs": "^14.0.0"
   },
   "files": [
