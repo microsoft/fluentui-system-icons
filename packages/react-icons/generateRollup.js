@@ -21,7 +21,6 @@ const modules = [
 for (const outType of outTypes) {
   // This gives a list of relative paths like 'esm/components/Accessibility16Filled.d.ts'
   const files = glob.sync(`${outType}/**/*.d.ts`, { cwd: outDir });
-  console.log(files);
 
   files.forEach((dtsPath) => {
     const fullPath = path.join(outDir, dtsPath);
