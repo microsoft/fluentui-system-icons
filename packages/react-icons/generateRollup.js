@@ -1,23 +1,13 @@
 // @ts-check
 const path = require('path');
 // https://github.com/jprichardson/node-fs-extra/blob/master/docs
-const fs = require('fs-extra');
+const fs = require('fs');
 // https://www.npmjs.com/package/glob
 const glob = require('glob');
 
 const outDir = path.join(__dirname, '/lib');
 // NOTE: esm comes first to increase chances of it being suggested first in auto-imports
 const outTypes = ['esm', 'cjs'];
-
-// // copy test output to fake react-icons package
-// // (skip this step in real version since output will already be present)
-// fs.rmdirSync(outDir, { recursive: true });
-// for (const outType of outTypes) {
-//   fs.copySync(
-//     path.join(__dirname, `tests/lib/${outType}/3-components-default-named-current`),
-//     path.join(outDir, outType)
-//   );
-// }
 
 const rootInPackage = '@fluentui/react-icons/lib';
 // make a top-level module declaration
@@ -36,7 +26,11 @@ for (const outType of outTypes) {
   files.forEach((dtsPath) => {
     const fullPath = path.join(outDir, dtsPath);
     let dtsContents = fs.readFileSync(fullPath, 'utf8').replace(/\r\n/g, '\n');
-    fs.removeSync(fullPath); // delete original
+    fs.unlink(fullPath, (err => {
+        if (err) { 
+            console.log(err);
+        }
+    })); // delete original
 
     // 'esm/components/Accessibility16Filled' or 'esm/lib/index'
     const modulePath = path.posix.normalize(dtsPath).replace('.d.ts', '');
