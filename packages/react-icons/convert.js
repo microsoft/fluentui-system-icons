@@ -27,19 +27,19 @@ if (!fs.existsSync(DEST_PATH)) {
 processFiles(SRC_PATH, DEST_PATH)
 
 function processFiles(src, dest) {
-  var componentsPath = path.join(dest, 'components')
-  if (!fs.existsSync(componentsPath)) {
-    fs.mkdirSync(componentsPath)
-  }
+  // var componentsPath = path.join(dest, 'components')
+  // if (!fs.existsSync(componentsPath)) {
+  //   fs.mkdirSync(componentsPath)
+  // }
 
   var indexPath = path.join(dest, 'index.tsx')
-  var indexContents = processFolder(src, componentsPath)
+  var indexContents = processFolder(src, dest)
 
   // Finally add the interface definition and then write out the index.
   indexContents += '\nexport { IFluentIconsProps } from \'./utils/IFluentIconsProps.types\''
   indexContents += '\nexport { default as wrapIcon } from \'./utils/wrapIcon\''
   indexContents += '\nexport { default as bundleIcon } from \'./utils/bundleIcon\''
-  indexContents += '\nexport * from \'./utils/css\''
+  indexContents += '\nexport * from \'./utils/useIconState\''
   fs.writeFileSync(indexPath, indexContents, (err) => {
     if (err) throw err;
   });
@@ -60,6 +60,7 @@ function processFolder(srcPath, destPath) {
     svgProps: { className: '{className}'}, // In order to provide styling, className will be used
     replaceAttrValues: { '#212121': '{primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
     typescript: true,
+    icon: true
   }
 
   // Build out the index for the components as we process the files
@@ -76,25 +77,28 @@ function processFolder(srcPath, destPath) {
       // }
       // indexContents += processFolder(srcFile, joinedDestPath)
     } else {
+      if(!file.includes("20")) {
+        return
+      }
       var iconName = file.substr(0, file.length - 4) // strip '.svg'
       iconName = iconName.replace("ic_fluent_", "") // strip ic_fluent_
+      iconName = iconName.replace("20", "")
       var destFilename = _.camelCase(iconName) // We want them to be camelCase, so access_time would become accessTime here
       destFilename = destFilename.replace(destFilename.substring(0, 1), destFilename.substring(0, 1).toUpperCase()) // capitalize the first letter
       var destFile = path.join(destPath, destFilename + TSX_EXTENSION) // get the qualified path
 
-      var locale = destPath.substring(destPath.indexOf('components') + 11)
-      var indexLocation = path.join('.', 'components')
-      if (locale.length > 0) {
-        indexLocation = path.join(indexLocation, locale)
-      }
-      indexLocation = path.join(indexLocation, destFilename)
+      // var locale = destPath.substring(destPath.indexOf('components') + 11)
+      // var indexLocation = path.join('.', 'components')
+      // if (locale.length > 0) {
+      //   indexLocation = path.join(indexLocation, locale)
+      // }
       var iconContent = fs.readFileSync(srcFile, { encoding: "utf8" })
       
       var jsxCode = svgr.default.sync(iconContent, svgrOpts, { filePath: file })
       var jsCode = 
 `import * as React from 'react';
-import  wrapIcon from '../utils/wrapIcon';
-import { IFluentIconsProps } from '../utils/IFluentIconsProps.types';
+import  wrapIcon from './utils/wrapIcon';
+import { IFluentIconsProps } from './utils/IFluentIconsProps.types';
 
 const rawSvg = (iconProps: IFluentIconsProps) => {
   const { className, primaryFill } = iconProps;
@@ -104,7 +108,7 @@ const rawSvg = (iconProps: IFluentIconsProps) => {
 const ${destFilename} = wrapIcon(rawSvg({}), '${destFilename}');
 export default ${destFilename};
       `
-      indexContents += '\nexport { default as ' + destFilename + ' } from \'./' + indexLocation + '\''
+      indexContents += '\nexport { default as ' + destFilename + ' } from \'./' + destFilename + '\''
       fs.writeFileSync(destFile, jsCode, (err) => {
         if (err) throw err;
       });
