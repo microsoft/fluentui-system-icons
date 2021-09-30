@@ -8,13 +8,14 @@
     "url": "https://github.com/microsoft/fluentui-system-icons.git"
   },
   "scripts": {
-    "clean": "shx rm -rf ./icons",
+    "clean": "shx rm -rf ./icons ./sprites",
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./icons --extension=svg",
     "rename": "renamer --find ic_fluent_ ./icons/*",
     "optimize": "svgo --config svgo.config.yaml --folder=./icons --precision=2",
     "unfill": "node unfill.js --path=./icons/",
-    "sprite": "svgstore -o ./sprite.svg ./icons/*.svg",
-    "build": "npm run copy && npm run rename && npm run unfill && npm run optimize && npm run sprite"
+    "sprites": "mkdir ./sprites && for i in ./icons/*.svg; do svgstore -o \"./sprites/$(basename $i .svg).sprite.svg\" \"$i\"; done",
+    "postsprites": "rm -rf ./icons",
+    "build": "npm run copy && npm run rename && npm run unfill && npm run optimize && npm run sprites"
   },
   "devDependencies": {
     "renamer": "^2.0.1",
