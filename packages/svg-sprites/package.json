@@ -1,12 +1,13 @@
 {
-  "name": "@fluentui/svg-icon-sprites",
-  "version": "1.1.141",
+  "name": "fluentui-svg-icon-sprites",
+  "version": "1.1.142",
   "description": "Fluent System Icons are a collection of familiar, friendly, and modern icons from Microsoft.",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui-system-icons.git"
   },
+  "files": ["sprites"],
   "scripts": {
     "clean": "shx rm -rf ./icons ./sprites",
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./icons --extension=svg",
