@@ -1,0 +1,5 @@
+plugins:
+  - removeViewBox: false
+  - mergePaths: false
+  - convertColors:
+      currentColor: true
