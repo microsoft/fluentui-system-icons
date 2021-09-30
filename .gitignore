@@ -25,10 +25,7 @@ packages/react-icons/src/
 packages/react-icons/lib/
 packages/react-icons/lib-cjs/
 packages/react-icons/yarn.lock
-packages/react-icons/example/yarn.lock
-packages/react-icons/example/yarn-error.log
 packages/react-icons/package-lock.json
-packages/react-icons/example/package-lock.json
 packages/react-icons-sized/intermediate
 packages/react-icons-sized/src/index.tsx
 packages/react-icons-sized/lib/
@@ -36,8 +33,5 @@ packages/react-icons-sized/src/
 !packages/react-icons-sized/src/utils
 packages/react-icons-sized/lib-cjs/
 packages/react-icons-sized/yarn.lock
-packages/react-icons-sized/example/yarn.lock
-packages/react-icons-sized/example/yarn-error.log
 packages/react-icons-sized/package-lock.json
-packages/react-icons-sized/example/package-lock.json
 
