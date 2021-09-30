@@ -27,10 +27,6 @@ if (!fs.existsSync(DEST_PATH)) {
 processFiles(SRC_PATH, DEST_PATH)
 
 function processFiles(src, dest) {
-  // var componentsPath = path.join(dest, 'components')
-  // if (!fs.existsSync(componentsPath)) {
-  //   fs.mkdirSync(componentsPath)
-  // }
 
   var indexPath = path.join(dest, 'index.tsx')
   var indexContents = processFolder(src, dest)
@@ -82,11 +78,6 @@ function processFolder(srcPath, destPath) {
       destFilename = destFilename.replace(destFilename.substring(0, 1), destFilename.substring(0, 1).toUpperCase()) // capitalize the first letter
       var destFile = path.join(destPath, destFilename + TSX_EXTENSION) // get the qualified path
 
-      // var locale = destPath.substring(destPath.indexOf('components') + 11)
-      // var indexLocation = path.join('.', 'components')
-      // if (locale.length > 0) {
-      //   indexLocation = path.join(indexLocation, locale)
-      // }
       var iconContent = fs.readFileSync(srcFile, { encoding: "utf8" })
       
       var jsxCode = svgr.default.sync(iconContent, svgrOpts, { filePath: file })
@@ -110,7 +101,6 @@ export default ${destFilename};
     }
   });
 
-  // console.log(indexContents)
   return indexContents
 }
 

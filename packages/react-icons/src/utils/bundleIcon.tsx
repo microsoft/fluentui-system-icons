@@ -11,18 +11,15 @@ const useBundledIconStyles = makeStyles({
     regular: theme => ({
         display: 'inline',
         position: 'absolute',
-        //opacity: 1,
         ':hover': { display: 'none' },
     }),
     fill: theme => ({
         position: 'absolute',
-        //opacity: 0,
         display: 'none',
         ':hover': { display: 'inline' },
     }),
     filled_regular: theme => ({
         position: 'absolute',
-        //opacity: 0,
         display: 'none',
         ':active': { display: 'inline', opacity: 1 },
         ':hover': { display: 'inline', opacity: 1 },
@@ -31,7 +28,6 @@ const useBundledIconStyles = makeStyles({
     filled_fill: theme => ({
         display: 'inline',
         position: 'absolute',
-        //opacity: 1,
         ':active': { display: 'none', opacity: 0 },
         ':hover': { display: 'none', opacity: 0 },
         ':focus': { display: 'none', opacity: 0 }

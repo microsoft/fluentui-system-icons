@@ -1,7 +1,6 @@
 @fluentui/react-icons-sized
 ===
 
-(Note: For those who were consuming `@fluentui/react-icons` v 0.x, we are releasing a new set of icons under `@fluentui/react-icons` v 1.x. You can still use 0.x version for the old icons, but if you major bump to 1.x, you will be using the new icons. The Fabric MDL2 SVG Icon set that is released with v 0.x has been rereleased in `@fluentui/react-icons-mdl2`.)
 
 Fluent System Icons are a collection of familiar, friendly, and modern icons from Microsoft.
 
@@ -16,10 +15,10 @@ There are also helpful interfaces that will allow you to add styling to fit the 
 
 User flows
 ---
-In order to use these icons, simply import them as `import { [Componentname][size][state] } from @fluentui/react-icons` as follows:
+In order to use these icons, simply import them as `import { [Componentname][size][state] } from @fluentui/react-icons-sized` as follows:
 
 ```tsx
-import { AccessTime24Filled } from "@fluentui/react-icons";
+import { AccessTime24Filled } from "@fluentui/react-icons-sized";
 ```
 You can also style the icons using the `IFluentIconsProps`interface, with the `className` prop or the `primaryFill` prop.
 

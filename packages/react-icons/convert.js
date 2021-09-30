@@ -87,11 +87,6 @@ function processFolder(srcPath, destPath) {
       destFilename = destFilename.replace(destFilename.substring(0, 1), destFilename.substring(0, 1).toUpperCase()) // capitalize the first letter
       var destFile = path.join(destPath, destFilename + TSX_EXTENSION) // get the qualified path
 
-      // var locale = destPath.substring(destPath.indexOf('components') + 11)
-      // var indexLocation = path.join('.', 'components')
-      // if (locale.length > 0) {
-      //   indexLocation = path.join(indexLocation, locale)
-      // }
       var iconContent = fs.readFileSync(srcFile, { encoding: "utf8" })
       
       var jsxCode = svgr.default.sync(iconContent, svgrOpts, { filePath: file })
@@ -115,7 +110,6 @@ export default ${destFilename};
     }
   });
 
-  // console.log(indexContents)
   return indexContents
 }
 

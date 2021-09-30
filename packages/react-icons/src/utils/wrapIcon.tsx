@@ -6,12 +6,12 @@ const wrapIcon = (icon: JSX.Element, displayName?: string) => {
     const Component: React.FC<IFluentIconsProps> = (props) => { 
         const state = useIconState(props);
         return (
-                React.cloneElement(
-                    icon,
-                    {   
-                        ...state
-                    }
-                )
+            React.cloneElement(
+                icon,
+                {   
+                    ...state
+                }
+            )
         )
     }
     Component.displayName = displayName;

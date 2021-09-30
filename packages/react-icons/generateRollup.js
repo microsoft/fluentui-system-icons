@@ -59,7 +59,7 @@ filesCjs.forEach((dtsPath) => {
       }
   })); // delete original
 
-  // 'esm/components/Accessibility16Filled' or 'esm/lib/index'
+  // Accessibility16Filled' or 'lib/index'
   const modulePath = path.posix.normalize(dtsPath).replace('.d.ts', '');
   const pathParts = modulePath.split('/');
   // no relative paths are allowed within module declarations in .d.ts, so make them absolute
