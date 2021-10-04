@@ -21,6 +21,7 @@ xcuserdata
 /packages/svg-icons/icons
 packages/react-icons/intermediate
 packages/react-icons/src/
+packages/react-icons/example/
 !packages/react-icons/src/utils
 packages/react-icons/lib/
 packages/react-icons/lib-cjs/
