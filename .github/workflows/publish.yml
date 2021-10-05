@@ -121,7 +121,7 @@ jobs:
     # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version numbers in ios/README.md
       run: |
-        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$IOS_VERSION/g" ios/README.md
+        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" ios/README.md
         rm ios/README.md.bk
 
     # Needs to be "-E" instead of "-r" on macOS
