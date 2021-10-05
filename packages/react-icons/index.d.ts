@@ -1831,6 +1831,18 @@ import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsP
 const BookmarkRegular: React.FC<IFluentIconsProps>;
 export default BookmarkRegular;
 }
+declare module '@fluentui/react-icons/lib/BookmarkSearchFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const BookmarkSearchFilled: React.FC<IFluentIconsProps>;
+export default BookmarkSearchFilled;
+}
+declare module '@fluentui/react-icons/lib/BookmarkSearchRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const BookmarkSearchRegular: React.FC<IFluentIconsProps>;
+export default BookmarkSearchRegular;
+}
 declare module '@fluentui/react-icons/lib/BookNumberFilled' {
 import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
@@ -2173,6 +2185,18 @@ import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsP
 const BuildingBankToolboxRegular: React.FC<IFluentIconsProps>;
 export default BuildingBankToolboxRegular;
 }
+declare module '@fluentui/react-icons/lib/BuildingFactoryFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const BuildingFactoryFilled: React.FC<IFluentIconsProps>;
+export default BuildingFactoryFilled;
+}
+declare module '@fluentui/react-icons/lib/BuildingFactoryRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const BuildingFactoryRegular: React.FC<IFluentIconsProps>;
+export default BuildingFactoryRegular;
+}
 declare module '@fluentui/react-icons/lib/BuildingFilled' {
 import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
@@ -2364,6 +2388,18 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
 const CalendarCancelRegular: React.FC<IFluentIconsProps>;
 export default CalendarCancelRegular;
+}
+declare module '@fluentui/react-icons/lib/CalendarChatFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const CalendarChatFilled: React.FC<IFluentIconsProps>;
+export default CalendarChatFilled;
+}
+declare module '@fluentui/react-icons/lib/CalendarChatRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const CalendarChatRegular: React.FC<IFluentIconsProps>;
+export default CalendarChatRegular;
 }
 declare module '@fluentui/react-icons/lib/CalendarCheckmarkFilled' {
 import * as React from 'react';
@@ -2616,6 +2652,18 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
 const CalendarTodayRegular: React.FC<IFluentIconsProps>;
 export default CalendarTodayRegular;
+}
+declare module '@fluentui/react-icons/lib/CalendarToolboxFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const CalendarToolboxFilled: React.FC<IFluentIconsProps>;
+export default CalendarToolboxFilled;
+}
+declare module '@fluentui/react-icons/lib/CalendarToolboxRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const CalendarToolboxRegular: React.FC<IFluentIconsProps>;
+export default CalendarToolboxRegular;
 }
 declare module '@fluentui/react-icons/lib/CalendarWeekStartFilled' {
 import * as React from 'react';
@@ -2904,6 +2952,18 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
 const CameraRegular: React.FC<IFluentIconsProps>;
 export default CameraRegular;
+}
+declare module '@fluentui/react-icons/lib/CameraSwitchFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const CameraSwitchFilled: React.FC<IFluentIconsProps>;
+export default CameraSwitchFilled;
+}
+declare module '@fluentui/react-icons/lib/CameraSwitchRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const CameraSwitchRegular: React.FC<IFluentIconsProps>;
+export default CameraSwitchRegular;
 }
 declare module '@fluentui/react-icons/lib/CaretDownFilled' {
 import * as React from 'react';
@@ -4423,6 +4483,18 @@ import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsP
 const CommentMultipleFilled: React.FC<IFluentIconsProps>;
 export default CommentMultipleFilled;
 }
+declare module '@fluentui/react-icons/lib/CommentMultipleLinkFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const CommentMultipleLinkFilled: React.FC<IFluentIconsProps>;
+export default CommentMultipleLinkFilled;
+}
+declare module '@fluentui/react-icons/lib/CommentMultipleLinkRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const CommentMultipleLinkRegular: React.FC<IFluentIconsProps>;
+export default CommentMultipleLinkRegular;
+}
 declare module '@fluentui/react-icons/lib/CommentMultipleRegular' {
 import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
@@ -4554,6 +4626,18 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
 const ContactCardRegular: React.FC<IFluentIconsProps>;
 export default ContactCardRegular;
+}
+declare module '@fluentui/react-icons/lib/ContactCardRibbonFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const ContactCardRibbonFilled: React.FC<IFluentIconsProps>;
+export default ContactCardRibbonFilled;
+}
+declare module '@fluentui/react-icons/lib/ContactCardRibbonRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const ContactCardRibbonRegular: React.FC<IFluentIconsProps>;
+export default ContactCardRibbonRegular;
 }
 declare module '@fluentui/react-icons/lib/ContentSettingsFilled' {
 import * as React from 'react';
@@ -4872,6 +4956,18 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
 const DatabaseLinkRegular: React.FC<IFluentIconsProps>;
 export default DatabaseLinkRegular;
+}
+declare module '@fluentui/react-icons/lib/DatabasePersonFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const DatabasePersonFilled: React.FC<IFluentIconsProps>;
+export default DatabasePersonFilled;
+}
+declare module '@fluentui/react-icons/lib/DatabasePersonRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const DatabasePersonRegular: React.FC<IFluentIconsProps>;
+export default DatabasePersonRegular;
 }
 declare module '@fluentui/react-icons/lib/DatabaseRegular' {
 import * as React from 'react';
@@ -5437,6 +5533,18 @@ import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsP
 const DocumentFilled: React.FC<IFluentIconsProps>;
 export default DocumentFilled;
 }
+declare module '@fluentui/react-icons/lib/DocumentFlowchartFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const DocumentFlowchartFilled: React.FC<IFluentIconsProps>;
+export default DocumentFlowchartFilled;
+}
+declare module '@fluentui/react-icons/lib/DocumentFlowchartRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const DocumentFlowchartRegular: React.FC<IFluentIconsProps>;
+export default DocumentFlowchartRegular;
+}
 declare module '@fluentui/react-icons/lib/DocumentHeaderFooterFilled' {
 import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
@@ -5863,6 +5971,18 @@ import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsP
 const DocumentTableRegular: React.FC<IFluentIconsProps>;
 export default DocumentTableRegular;
 }
+declare module '@fluentui/react-icons/lib/DocumentTableSearchFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const DocumentTableSearchFilled: React.FC<IFluentIconsProps>;
+export default DocumentTableSearchFilled;
+}
+declare module '@fluentui/react-icons/lib/DocumentTableSearchRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const DocumentTableSearchRegular: React.FC<IFluentIconsProps>;
+export default DocumentTableSearchRegular;
+}
 declare module '@fluentui/react-icons/lib/DocumentTextClockFilled' {
 import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
@@ -5874,6 +5994,18 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
 const DocumentTextClockRegular: React.FC<IFluentIconsProps>;
 export default DocumentTextClockRegular;
+}
+declare module '@fluentui/react-icons/lib/DocumentTextExtractFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const DocumentTextExtractFilled: React.FC<IFluentIconsProps>;
+export default DocumentTextExtractFilled;
+}
+declare module '@fluentui/react-icons/lib/DocumentTextExtractRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const DocumentTextExtractRegular: React.FC<IFluentIconsProps>;
+export default DocumentTextExtractRegular;
 }
 declare module '@fluentui/react-icons/lib/DocumentTextFilled' {
 import * as React from 'react';
@@ -6480,6 +6612,30 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
 const FlashSettingsRegular: React.FC<IFluentIconsProps>;
 export default FlashSettingsRegular;
+}
+declare module '@fluentui/react-icons/lib/FlowchartCircleFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const FlowchartCircleFilled: React.FC<IFluentIconsProps>;
+export default FlowchartCircleFilled;
+}
+declare module '@fluentui/react-icons/lib/FlowchartCircleRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const FlowchartCircleRegular: React.FC<IFluentIconsProps>;
+export default FlowchartCircleRegular;
+}
+declare module '@fluentui/react-icons/lib/FlowchartFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const FlowchartFilled: React.FC<IFluentIconsProps>;
+export default FlowchartFilled;
+}
+declare module '@fluentui/react-icons/lib/FlowchartRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const FlowchartRegular: React.FC<IFluentIconsProps>;
+export default FlowchartRegular;
 }
 declare module '@fluentui/react-icons/lib/FlowFilled' {
 import * as React from 'react';
@@ -7345,6 +7501,18 @@ import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsP
 const HeartBrokenRegular: React.FC<IFluentIconsProps>;
 export default HeartBrokenRegular;
 }
+declare module '@fluentui/react-icons/lib/HeartCircleFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const HeartCircleFilled: React.FC<IFluentIconsProps>;
+export default HeartCircleFilled;
+}
+declare module '@fluentui/react-icons/lib/HeartCircleRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const HeartCircleRegular: React.FC<IFluentIconsProps>;
+export default HeartCircleRegular;
+}
 declare module '@fluentui/react-icons/lib/HeartFilled' {
 import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
@@ -7896,6 +8064,8 @@ export { default as BookmarkAddFilled } from '@fluentui/react-icons/lib/Bookmark
 export { default as BookmarkAddRegular } from '@fluentui/react-icons/lib/BookmarkAddRegular';
 export { default as BookmarkMultipleFilled } from '@fluentui/react-icons/lib/BookmarkMultipleFilled';
 export { default as BookmarkMultipleRegular } from '@fluentui/react-icons/lib/BookmarkMultipleRegular';
+export { default as BookmarkSearchFilled } from '@fluentui/react-icons/lib/BookmarkSearchFilled';
+export { default as BookmarkSearchRegular } from '@fluentui/react-icons/lib/BookmarkSearchRegular';
 export { default as BorderAllFilled } from '@fluentui/react-icons/lib/BorderAllFilled';
 export { default as BorderAllRegular } from '@fluentui/react-icons/lib/BorderAllRegular';
 export { default as BotFilled } from '@fluentui/react-icons/lib/BotFilled';
@@ -7944,6 +8114,8 @@ export { default as BuildingBankLinkFilled } from '@fluentui/react-icons/lib/Bui
 export { default as BuildingBankLinkRegular } from '@fluentui/react-icons/lib/BuildingBankLinkRegular';
 export { default as BuildingBankToolboxFilled } from '@fluentui/react-icons/lib/BuildingBankToolboxFilled';
 export { default as BuildingBankToolboxRegular } from '@fluentui/react-icons/lib/BuildingBankToolboxRegular';
+export { default as BuildingFactoryFilled } from '@fluentui/react-icons/lib/BuildingFactoryFilled';
+export { default as BuildingFactoryRegular } from '@fluentui/react-icons/lib/BuildingFactoryRegular';
 export { default as BuildingLighthouseFilled } from '@fluentui/react-icons/lib/BuildingLighthouseFilled';
 export { default as BuildingLighthouseRegular } from '@fluentui/react-icons/lib/BuildingLighthouseRegular';
 export { default as BuildingRetailFilled } from '@fluentui/react-icons/lib/BuildingRetailFilled';
@@ -7974,6 +8146,8 @@ export { default as CalendarAssistantFilled } from '@fluentui/react-icons/lib/Ca
 export { default as CalendarAssistantRegular } from '@fluentui/react-icons/lib/CalendarAssistantRegular';
 export { default as CalendarCancelFilled } from '@fluentui/react-icons/lib/CalendarCancelFilled';
 export { default as CalendarCancelRegular } from '@fluentui/react-icons/lib/CalendarCancelRegular';
+export { default as CalendarChatFilled } from '@fluentui/react-icons/lib/CalendarChatFilled';
+export { default as CalendarChatRegular } from '@fluentui/react-icons/lib/CalendarChatRegular';
 export { default as CalendarCheckmarkFilled } from '@fluentui/react-icons/lib/CalendarCheckmarkFilled';
 export { default as CalendarCheckmarkRegular } from '@fluentui/react-icons/lib/CalendarCheckmarkRegular';
 export { default as CalendarClockFilled } from '@fluentui/react-icons/lib/CalendarClockFilled';
@@ -8016,6 +8190,8 @@ export { default as CalendarSyncFilled } from '@fluentui/react-icons/lib/Calenda
 export { default as CalendarSyncRegular } from '@fluentui/react-icons/lib/CalendarSyncRegular';
 export { default as CalendarTodayFilled } from '@fluentui/react-icons/lib/CalendarTodayFilled';
 export { default as CalendarTodayRegular } from '@fluentui/react-icons/lib/CalendarTodayRegular';
+export { default as CalendarToolboxFilled } from '@fluentui/react-icons/lib/CalendarToolboxFilled';
+export { default as CalendarToolboxRegular } from '@fluentui/react-icons/lib/CalendarToolboxRegular';
 export { default as CalendarWeekStartFilled } from '@fluentui/react-icons/lib/CalendarWeekStartFilled';
 export { default as CalendarWeekStartRegular } from '@fluentui/react-icons/lib/CalendarWeekStartRegular';
 export { default as CalendarWorkWeekFilled } from '@fluentui/react-icons/lib/CalendarWorkWeekFilled';
@@ -8064,6 +8240,8 @@ export { default as CameraDomeFilled } from '@fluentui/react-icons/lib/CameraDom
 export { default as CameraDomeRegular } from '@fluentui/react-icons/lib/CameraDomeRegular';
 export { default as CameraEditFilled } from '@fluentui/react-icons/lib/CameraEditFilled';
 export { default as CameraEditRegular } from '@fluentui/react-icons/lib/CameraEditRegular';
+export { default as CameraSwitchFilled } from '@fluentui/react-icons/lib/CameraSwitchFilled';
+export { default as CameraSwitchRegular } from '@fluentui/react-icons/lib/CameraSwitchRegular';
 export { default as CaretFilled } from '@fluentui/react-icons/lib/CaretFilled';
 export { default as CaretRegular } from '@fluentui/react-icons/lib/CaretRegular';
 export { default as CaretDownFilled } from '@fluentui/react-icons/lib/CaretDownFilled';
@@ -8319,6 +8497,8 @@ export { default as CommentMultipleFilled } from '@fluentui/react-icons/lib/Comm
 export { default as CommentMultipleRegular } from '@fluentui/react-icons/lib/CommentMultipleRegular';
 export { default as CommentMultipleCheckmarkFilled } from '@fluentui/react-icons/lib/CommentMultipleCheckmarkFilled';
 export { default as CommentMultipleCheckmarkRegular } from '@fluentui/react-icons/lib/CommentMultipleCheckmarkRegular';
+export { default as CommentMultipleLinkFilled } from '@fluentui/react-icons/lib/CommentMultipleLinkFilled';
+export { default as CommentMultipleLinkRegular } from '@fluentui/react-icons/lib/CommentMultipleLinkRegular';
 export { default as CommentOffFilled } from '@fluentui/react-icons/lib/CommentOffFilled';
 export { default as CommentOffRegular } from '@fluentui/react-icons/lib/CommentOffRegular';
 export { default as CommunicationFilled } from '@fluentui/react-icons/lib/CommunicationFilled';
@@ -8339,6 +8519,8 @@ export { default as ContactCardGroupFilled } from '@fluentui/react-icons/lib/Con
 export { default as ContactCardGroupRegular } from '@fluentui/react-icons/lib/ContactCardGroupRegular';
 export { default as ContactCardLinkFilled } from '@fluentui/react-icons/lib/ContactCardLinkFilled';
 export { default as ContactCardLinkRegular } from '@fluentui/react-icons/lib/ContactCardLinkRegular';
+export { default as ContactCardRibbonFilled } from '@fluentui/react-icons/lib/ContactCardRibbonFilled';
+export { default as ContactCardRibbonRegular } from '@fluentui/react-icons/lib/ContactCardRibbonRegular';
 export { default as ContentSettingsFilled } from '@fluentui/react-icons/lib/ContentSettingsFilled';
 export { default as ContentSettingsRegular } from '@fluentui/react-icons/lib/ContentSettingsRegular';
 export { default as ContentViewFilled } from '@fluentui/react-icons/lib/ContentViewFilled';
@@ -8403,6 +8585,8 @@ export { default as DatabaseFilled } from '@fluentui/react-icons/lib/DatabaseFil
 export { default as DatabaseRegular } from '@fluentui/react-icons/lib/DatabaseRegular';
 export { default as DatabaseLinkFilled } from '@fluentui/react-icons/lib/DatabaseLinkFilled';
 export { default as DatabaseLinkRegular } from '@fluentui/react-icons/lib/DatabaseLinkRegular';
+export { default as DatabasePersonFilled } from '@fluentui/react-icons/lib/DatabasePersonFilled';
+export { default as DatabasePersonRegular } from '@fluentui/react-icons/lib/DatabasePersonRegular';
 export { default as DatabaseSearchFilled } from '@fluentui/react-icons/lib/DatabaseSearchFilled';
 export { default as DatabaseSearchRegular } from '@fluentui/react-icons/lib/DatabaseSearchRegular';
 export { default as DeleteFilled } from '@fluentui/react-icons/lib/DeleteFilled';
@@ -8487,6 +8671,8 @@ export { default as DocumentEndnoteFilled } from '@fluentui/react-icons/lib/Docu
 export { default as DocumentEndnoteRegular } from '@fluentui/react-icons/lib/DocumentEndnoteRegular';
 export { default as DocumentErrorFilled } from '@fluentui/react-icons/lib/DocumentErrorFilled';
 export { default as DocumentErrorRegular } from '@fluentui/react-icons/lib/DocumentErrorRegular';
+export { default as DocumentFlowchartFilled } from '@fluentui/react-icons/lib/DocumentFlowchartFilled';
+export { default as DocumentFlowchartRegular } from '@fluentui/react-icons/lib/DocumentFlowchartRegular';
 export { default as DocumentHeaderFooterFilled } from '@fluentui/react-icons/lib/DocumentHeaderFooterFilled';
 export { default as DocumentHeaderFooterRegular } from '@fluentui/react-icons/lib/DocumentHeaderFooterRegular';
 export { default as DocumentHeartFilled } from '@fluentui/react-icons/lib/DocumentHeartFilled';
@@ -8557,10 +8743,14 @@ export { default as DocumentTableArrowRightFilled } from '@fluentui/react-icons/
 export { default as DocumentTableArrowRightRegular } from '@fluentui/react-icons/lib/DocumentTableArrowRightRegular';
 export { default as DocumentTableCheckmarkFilled } from '@fluentui/react-icons/lib/DocumentTableCheckmarkFilled';
 export { default as DocumentTableCheckmarkRegular } from '@fluentui/react-icons/lib/DocumentTableCheckmarkRegular';
+export { default as DocumentTableSearchFilled } from '@fluentui/react-icons/lib/DocumentTableSearchFilled';
+export { default as DocumentTableSearchRegular } from '@fluentui/react-icons/lib/DocumentTableSearchRegular';
 export { default as DocumentTextFilled } from '@fluentui/react-icons/lib/DocumentTextFilled';
 export { default as DocumentTextRegular } from '@fluentui/react-icons/lib/DocumentTextRegular';
 export { default as DocumentTextClockFilled } from '@fluentui/react-icons/lib/DocumentTextClockFilled';
 export { default as DocumentTextClockRegular } from '@fluentui/react-icons/lib/DocumentTextClockRegular';
+export { default as DocumentTextExtractFilled } from '@fluentui/react-icons/lib/DocumentTextExtractFilled';
+export { default as DocumentTextExtractRegular } from '@fluentui/react-icons/lib/DocumentTextExtractRegular';
 export { default as DocumentTextLinkFilled } from '@fluentui/react-icons/lib/DocumentTextLinkFilled';
 export { default as DocumentTextLinkRegular } from '@fluentui/react-icons/lib/DocumentTextLinkRegular';
 export { default as DocumentToolboxFilled } from '@fluentui/react-icons/lib/DocumentToolboxFilled';
@@ -8664,6 +8854,10 @@ export { default as FlashlightFilled } from '@fluentui/react-icons/lib/Flashligh
 export { default as FlashlightRegular } from '@fluentui/react-icons/lib/FlashlightRegular';
 export { default as FlowFilled } from '@fluentui/react-icons/lib/FlowFilled';
 export { default as FlowRegular } from '@fluentui/react-icons/lib/FlowRegular';
+export { default as FlowchartFilled } from '@fluentui/react-icons/lib/FlowchartFilled';
+export { default as FlowchartRegular } from '@fluentui/react-icons/lib/FlowchartRegular';
+export { default as FlowchartCircleFilled } from '@fluentui/react-icons/lib/FlowchartCircleFilled';
+export { default as FlowchartCircleRegular } from '@fluentui/react-icons/lib/FlowchartCircleRegular';
 export { default as FluidFilled } from '@fluentui/react-icons/lib/FluidFilled';
 export { default as FluidRegular } from '@fluentui/react-icons/lib/FluidRegular';
 export { default as FolderFilled } from '@fluentui/react-icons/lib/FolderFilled';
@@ -8806,6 +9000,8 @@ export { default as HeartFilled } from '@fluentui/react-icons/lib/HeartFilled';
 export { default as HeartRegular } from '@fluentui/react-icons/lib/HeartRegular';
 export { default as HeartBrokenFilled } from '@fluentui/react-icons/lib/HeartBrokenFilled';
 export { default as HeartBrokenRegular } from '@fluentui/react-icons/lib/HeartBrokenRegular';
+export { default as HeartCircleFilled } from '@fluentui/react-icons/lib/HeartCircleFilled';
+export { default as HeartCircleRegular } from '@fluentui/react-icons/lib/HeartCircleRegular';
 export { default as HeartPulseFilled } from '@fluentui/react-icons/lib/HeartPulseFilled';
 export { default as HeartPulseRegular } from '@fluentui/react-icons/lib/HeartPulseRegular';
 export { default as HighlightFilled } from '@fluentui/react-icons/lib/HighlightFilled';
@@ -9182,6 +9378,8 @@ export { default as PeopleErrorFilled } from '@fluentui/react-icons/lib/PeopleEr
 export { default as PeopleErrorRegular } from '@fluentui/react-icons/lib/PeopleErrorRegular';
 export { default as PeopleListFilled } from '@fluentui/react-icons/lib/PeopleListFilled';
 export { default as PeopleListRegular } from '@fluentui/react-icons/lib/PeopleListRegular';
+export { default as PeopleLockFilled } from '@fluentui/react-icons/lib/PeopleLockFilled';
+export { default as PeopleLockRegular } from '@fluentui/react-icons/lib/PeopleLockRegular';
 export { default as PeopleMoneyFilled } from '@fluentui/react-icons/lib/PeopleMoneyFilled';
 export { default as PeopleMoneyRegular } from '@fluentui/react-icons/lib/PeopleMoneyRegular';
 export { default as PeopleProhibitedFilled } from '@fluentui/react-icons/lib/PeopleProhibitedFilled';
@@ -9269,6 +9467,8 @@ export { default as PhoneSpanOutFilled } from '@fluentui/react-icons/lib/PhoneSp
 export { default as PhoneSpanOutRegular } from '@fluentui/react-icons/lib/PhoneSpanOutRegular';
 export { default as PhoneTabletFilled } from '@fluentui/react-icons/lib/PhoneTabletFilled';
 export { default as PhoneTabletRegular } from '@fluentui/react-icons/lib/PhoneTabletRegular';
+export { default as PhoneUpdateCheckmarkFilled } from '@fluentui/react-icons/lib/PhoneUpdateCheckmarkFilled';
+export { default as PhoneUpdateCheckmarkRegular } from '@fluentui/react-icons/lib/PhoneUpdateCheckmarkRegular';
 export { default as PictureInPictureFilled } from '@fluentui/react-icons/lib/PictureInPictureFilled';
 export { default as PictureInPictureRegular } from '@fluentui/react-icons/lib/PictureInPictureRegular';
 export { default as PictureInPictureEnterFilled } from '@fluentui/react-icons/lib/PictureInPictureEnterFilled';
@@ -9419,6 +9619,8 @@ export { default as SaveArrowRightFilled } from '@fluentui/react-icons/lib/SaveA
 export { default as SaveArrowRightRegular } from '@fluentui/react-icons/lib/SaveArrowRightRegular';
 export { default as SaveEditFilled } from '@fluentui/react-icons/lib/SaveEditFilled';
 export { default as SaveEditRegular } from '@fluentui/react-icons/lib/SaveEditRegular';
+export { default as SaveMultipleFilled } from '@fluentui/react-icons/lib/SaveMultipleFilled';
+export { default as SaveMultipleRegular } from '@fluentui/react-icons/lib/SaveMultipleRegular';
 export { default as SaveSearchFilled } from '@fluentui/react-icons/lib/SaveSearchFilled';
 export { default as SaveSearchRegular } from '@fluentui/react-icons/lib/SaveSearchRegular';
 export { default as SaveSyncFilled } from '@fluentui/react-icons/lib/SaveSyncFilled';
@@ -9437,6 +9639,8 @@ export { default as ScanThumbUpOffFilled } from '@fluentui/react-icons/lib/ScanT
 export { default as ScanThumbUpOffRegular } from '@fluentui/react-icons/lib/ScanThumbUpOffRegular';
 export { default as ScanTypeFilled } from '@fluentui/react-icons/lib/ScanTypeFilled';
 export { default as ScanTypeRegular } from '@fluentui/react-icons/lib/ScanTypeRegular';
+export { default as ScanTypeCheckmarkFilled } from '@fluentui/react-icons/lib/ScanTypeCheckmarkFilled';
+export { default as ScanTypeCheckmarkRegular } from '@fluentui/react-icons/lib/ScanTypeCheckmarkRegular';
 export { default as ScanTypeOffFilled } from '@fluentui/react-icons/lib/ScanTypeOffFilled';
 export { default as ScanTypeOffRegular } from '@fluentui/react-icons/lib/ScanTypeOffRegular';
 export { default as ScreenCutFilled } from '@fluentui/react-icons/lib/ScreenCutFilled';
@@ -9457,6 +9661,12 @@ export { default as SearchVisualFilled } from '@fluentui/react-icons/lib/SearchV
 export { default as SearchVisualRegular } from '@fluentui/react-icons/lib/SearchVisualRegular';
 export { default as SelectObjectFilled } from '@fluentui/react-icons/lib/SelectObjectFilled';
 export { default as SelectObjectRegular } from '@fluentui/react-icons/lib/SelectObjectRegular';
+export { default as SelectObjectSkewFilled } from '@fluentui/react-icons/lib/SelectObjectSkewFilled';
+export { default as SelectObjectSkewRegular } from '@fluentui/react-icons/lib/SelectObjectSkewRegular';
+export { default as SelectObjectSkewDismissFilled } from '@fluentui/react-icons/lib/SelectObjectSkewDismissFilled';
+export { default as SelectObjectSkewDismissRegular } from '@fluentui/react-icons/lib/SelectObjectSkewDismissRegular';
+export { default as SelectObjectSkewEditFilled } from '@fluentui/react-icons/lib/SelectObjectSkewEditFilled';
+export { default as SelectObjectSkewEditRegular } from '@fluentui/react-icons/lib/SelectObjectSkewEditRegular';
 export { default as SendFilled } from '@fluentui/react-icons/lib/SendFilled';
 export { default as SendRegular } from '@fluentui/react-icons/lib/SendRegular';
 export { default as SendClockFilled } from '@fluentui/react-icons/lib/SendClockFilled';
@@ -9529,6 +9739,10 @@ export { default as ShiftsOpenFilled } from '@fluentui/react-icons/lib/ShiftsOpe
 export { default as ShiftsOpenRegular } from '@fluentui/react-icons/lib/ShiftsOpenRegular';
 export { default as ShoppingBagFilled } from '@fluentui/react-icons/lib/ShoppingBagFilled';
 export { default as ShoppingBagRegular } from '@fluentui/react-icons/lib/ShoppingBagRegular';
+export { default as ShoppingBagDismissFilled } from '@fluentui/react-icons/lib/ShoppingBagDismissFilled';
+export { default as ShoppingBagDismissRegular } from '@fluentui/react-icons/lib/ShoppingBagDismissRegular';
+export { default as ShoppingBagPauseFilled } from '@fluentui/react-icons/lib/ShoppingBagPauseFilled';
+export { default as ShoppingBagPauseRegular } from '@fluentui/react-icons/lib/ShoppingBagPauseRegular';
 export { default as ShoppingBagPercentFilled } from '@fluentui/react-icons/lib/ShoppingBagPercentFilled';
 export { default as ShoppingBagPercentRegular } from '@fluentui/react-icons/lib/ShoppingBagPercentRegular';
 export { default as ShoppingBagTagFilled } from '@fluentui/react-icons/lib/ShoppingBagTagFilled';
@@ -9720,11 +9934,15 @@ export { default as TagCircleFilled } from '@fluentui/react-icons/lib/TagCircleF
 export { default as TagCircleRegular } from '@fluentui/react-icons/lib/TagCircleRegular';
 export { default as TagDismissFilled } from '@fluentui/react-icons/lib/TagDismissFilled';
 export { default as TagDismissRegular } from '@fluentui/react-icons/lib/TagDismissRegular';
+export { default as TagErrorFilled } from '@fluentui/react-icons/lib/TagErrorFilled';
+export { default as TagErrorRegular } from '@fluentui/react-icons/lib/TagErrorRegular';
 export { default as TagLockFilled } from '@fluentui/react-icons/lib/TagLockFilled';
 export { default as TagLockRegular } from '@fluentui/react-icons/lib/TagLockRegular';
 export { default as TagLockAccentFilled } from '@fluentui/react-icons/lib/TagLockAccentFilled';
 export { default as TagMultipleFilled } from '@fluentui/react-icons/lib/TagMultipleFilled';
 export { default as TagMultipleRegular } from '@fluentui/react-icons/lib/TagMultipleRegular';
+export { default as TagQuestionMarkFilled } from '@fluentui/react-icons/lib/TagQuestionMarkFilled';
+export { default as TagQuestionMarkRegular } from '@fluentui/react-icons/lib/TagQuestionMarkRegular';
 export { default as TapDoubleFilled } from '@fluentui/react-icons/lib/TapDoubleFilled';
 export { default as TapDoubleRegular } from '@fluentui/react-icons/lib/TapDoubleRegular';
 export { default as TapSingleFilled } from '@fluentui/react-icons/lib/TapSingleFilled';
@@ -9813,6 +10031,8 @@ export { default as TextColumnOneNarrowFilled } from '@fluentui/react-icons/lib/
 export { default as TextColumnOneNarrowRegular } from '@fluentui/react-icons/lib/TextColumnOneNarrowRegular';
 export { default as TextColumnOneWideFilled } from '@fluentui/react-icons/lib/TextColumnOneWideFilled';
 export { default as TextColumnOneWideRegular } from '@fluentui/react-icons/lib/TextColumnOneWideRegular';
+export { default as TextColumnOneWideLightningFilled } from '@fluentui/react-icons/lib/TextColumnOneWideLightningFilled';
+export { default as TextColumnOneWideLightningRegular } from '@fluentui/react-icons/lib/TextColumnOneWideLightningRegular';
 export { default as TextColumnThreeFilled } from '@fluentui/react-icons/lib/TextColumnThreeFilled';
 export { default as TextColumnThreeRegular } from '@fluentui/react-icons/lib/TextColumnThreeRegular';
 export { default as TextColumnTwoFilled } from '@fluentui/react-icons/lib/TextColumnTwoFilled';
@@ -9855,6 +10075,8 @@ export { default as TextFirstLineFilled } from '@fluentui/react-icons/lib/TextFi
 export { default as TextFirstLineRegular } from '@fluentui/react-icons/lib/TextFirstLineRegular';
 export { default as TextFontFilled } from '@fluentui/react-icons/lib/TextFontFilled';
 export { default as TextFontRegular } from '@fluentui/react-icons/lib/TextFontRegular';
+export { default as TextFontInfoFilled } from '@fluentui/react-icons/lib/TextFontInfoFilled';
+export { default as TextFontInfoRegular } from '@fluentui/react-icons/lib/TextFontInfoRegular';
 export { default as TextFontSizeFilled } from '@fluentui/react-icons/lib/TextFontSizeFilled';
 export { default as TextFontSizeRegular } from '@fluentui/react-icons/lib/TextFontSizeRegular';
 export { default as TextFootnoteFilled } from '@fluentui/react-icons/lib/TextFootnoteFilled';
@@ -9987,6 +10209,10 @@ export { default as TopSpeedFilled } from '@fluentui/react-icons/lib/TopSpeedFil
 export { default as TopSpeedRegular } from '@fluentui/react-icons/lib/TopSpeedRegular';
 export { default as TranslateFilled } from '@fluentui/react-icons/lib/TranslateFilled';
 export { default as TranslateRegular } from '@fluentui/react-icons/lib/TranslateRegular';
+export { default as TrayItemAddFilled } from '@fluentui/react-icons/lib/TrayItemAddFilled';
+export { default as TrayItemAddRegular } from '@fluentui/react-icons/lib/TrayItemAddRegular';
+export { default as TrayItemRemoveFilled } from '@fluentui/react-icons/lib/TrayItemRemoveFilled';
+export { default as TrayItemRemoveRegular } from '@fluentui/react-icons/lib/TrayItemRemoveRegular';
 export { default as TrophyFilled } from '@fluentui/react-icons/lib/TrophyFilled';
 export { default as TrophyRegular } from '@fluentui/react-icons/lib/TrophyRegular';
 export { default as TvFilled } from '@fluentui/react-icons/lib/TvFilled';
@@ -10025,6 +10251,8 @@ export { default as VehicleSubwayFilled } from '@fluentui/react-icons/lib/Vehicl
 export { default as VehicleSubwayRegular } from '@fluentui/react-icons/lib/VehicleSubwayRegular';
 export { default as VehicleTruckFilled } from '@fluentui/react-icons/lib/VehicleTruckFilled';
 export { default as VehicleTruckRegular } from '@fluentui/react-icons/lib/VehicleTruckRegular';
+export { default as VehicleTruckBagFilled } from '@fluentui/react-icons/lib/VehicleTruckBagFilled';
+export { default as VehicleTruckBagRegular } from '@fluentui/react-icons/lib/VehicleTruckBagRegular';
 export { default as VehicleTruckProfileFilled } from '@fluentui/react-icons/lib/VehicleTruckProfileFilled';
 export { default as VehicleTruckProfileRegular } from '@fluentui/react-icons/lib/VehicleTruckProfileRegular';
 export { default as VideoFilled } from '@fluentui/react-icons/lib/VideoFilled';
@@ -12220,6 +12448,18 @@ import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsP
 const PeopleListRegular: React.FC<IFluentIconsProps>;
 export default PeopleListRegular;
 }
+declare module '@fluentui/react-icons/lib/PeopleLockFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const PeopleLockFilled: React.FC<IFluentIconsProps>;
+export default PeopleLockFilled;
+}
+declare module '@fluentui/react-icons/lib/PeopleLockRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const PeopleLockRegular: React.FC<IFluentIconsProps>;
+export default PeopleLockRegular;
+}
 declare module '@fluentui/react-icons/lib/PeopleMoneyFilled' {
 import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
@@ -12747,6 +12987,18 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
 const PhoneTabletRegular: React.FC<IFluentIconsProps>;
 export default PhoneTabletRegular;
+}
+declare module '@fluentui/react-icons/lib/PhoneUpdateCheckmarkFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const PhoneUpdateCheckmarkFilled: React.FC<IFluentIconsProps>;
+export default PhoneUpdateCheckmarkFilled;
+}
+declare module '@fluentui/react-icons/lib/PhoneUpdateCheckmarkRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const PhoneUpdateCheckmarkRegular: React.FC<IFluentIconsProps>;
+export default PhoneUpdateCheckmarkRegular;
 }
 declare module '@fluentui/react-icons/lib/PictureInPictureEnterFilled' {
 import * as React from 'react';
@@ -13642,6 +13894,18 @@ import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsP
 const SaveFilled: React.FC<IFluentIconsProps>;
 export default SaveFilled;
 }
+declare module '@fluentui/react-icons/lib/SaveMultipleFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const SaveMultipleFilled: React.FC<IFluentIconsProps>;
+export default SaveMultipleFilled;
+}
+declare module '@fluentui/react-icons/lib/SaveMultipleRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const SaveMultipleRegular: React.FC<IFluentIconsProps>;
+export default SaveMultipleRegular;
+}
 declare module '@fluentui/react-icons/lib/SaveRegular' {
 import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
@@ -13743,6 +14007,18 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
 const ScanThumbUpRegular: React.FC<IFluentIconsProps>;
 export default ScanThumbUpRegular;
+}
+declare module '@fluentui/react-icons/lib/ScanTypeCheckmarkFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const ScanTypeCheckmarkFilled: React.FC<IFluentIconsProps>;
+export default ScanTypeCheckmarkFilled;
+}
+declare module '@fluentui/react-icons/lib/ScanTypeCheckmarkRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const ScanTypeCheckmarkRegular: React.FC<IFluentIconsProps>;
+export default ScanTypeCheckmarkRegular;
 }
 declare module '@fluentui/react-icons/lib/ScanTypeFilled' {
 import * as React from 'react';
@@ -13875,6 +14151,42 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
 const SelectObjectRegular: React.FC<IFluentIconsProps>;
 export default SelectObjectRegular;
+}
+declare module '@fluentui/react-icons/lib/SelectObjectSkewDismissFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const SelectObjectSkewDismissFilled: React.FC<IFluentIconsProps>;
+export default SelectObjectSkewDismissFilled;
+}
+declare module '@fluentui/react-icons/lib/SelectObjectSkewDismissRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const SelectObjectSkewDismissRegular: React.FC<IFluentIconsProps>;
+export default SelectObjectSkewDismissRegular;
+}
+declare module '@fluentui/react-icons/lib/SelectObjectSkewEditFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const SelectObjectSkewEditFilled: React.FC<IFluentIconsProps>;
+export default SelectObjectSkewEditFilled;
+}
+declare module '@fluentui/react-icons/lib/SelectObjectSkewEditRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const SelectObjectSkewEditRegular: React.FC<IFluentIconsProps>;
+export default SelectObjectSkewEditRegular;
+}
+declare module '@fluentui/react-icons/lib/SelectObjectSkewFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const SelectObjectSkewFilled: React.FC<IFluentIconsProps>;
+export default SelectObjectSkewFilled;
+}
+declare module '@fluentui/react-icons/lib/SelectObjectSkewRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const SelectObjectSkewRegular: React.FC<IFluentIconsProps>;
+export default SelectObjectSkewRegular;
 }
 declare module '@fluentui/react-icons/lib/SendClockFilled' {
 import * as React from 'react';
@@ -14296,11 +14608,35 @@ import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsP
 const ShiftsRegular: React.FC<IFluentIconsProps>;
 export default ShiftsRegular;
 }
+declare module '@fluentui/react-icons/lib/ShoppingBagDismissFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const ShoppingBagDismissFilled: React.FC<IFluentIconsProps>;
+export default ShoppingBagDismissFilled;
+}
+declare module '@fluentui/react-icons/lib/ShoppingBagDismissRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const ShoppingBagDismissRegular: React.FC<IFluentIconsProps>;
+export default ShoppingBagDismissRegular;
+}
 declare module '@fluentui/react-icons/lib/ShoppingBagFilled' {
 import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
 const ShoppingBagFilled: React.FC<IFluentIconsProps>;
 export default ShoppingBagFilled;
+}
+declare module '@fluentui/react-icons/lib/ShoppingBagPauseFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const ShoppingBagPauseFilled: React.FC<IFluentIconsProps>;
+export default ShoppingBagPauseFilled;
+}
+declare module '@fluentui/react-icons/lib/ShoppingBagPauseRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const ShoppingBagPauseRegular: React.FC<IFluentIconsProps>;
+export default ShoppingBagPauseRegular;
 }
 declare module '@fluentui/react-icons/lib/ShoppingBagPercentFilled' {
 import * as React from 'react';
@@ -15442,6 +15778,18 @@ import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsP
 const TagDismissRegular: React.FC<IFluentIconsProps>;
 export default TagDismissRegular;
 }
+declare module '@fluentui/react-icons/lib/TagErrorFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const TagErrorFilled: React.FC<IFluentIconsProps>;
+export default TagErrorFilled;
+}
+declare module '@fluentui/react-icons/lib/TagErrorRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const TagErrorRegular: React.FC<IFluentIconsProps>;
+export default TagErrorRegular;
+}
 declare module '@fluentui/react-icons/lib/TagFilled' {
 import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
@@ -15477,6 +15825,18 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
 const TagMultipleRegular: React.FC<IFluentIconsProps>;
 export default TagMultipleRegular;
+}
+declare module '@fluentui/react-icons/lib/TagQuestionMarkFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const TagQuestionMarkFilled: React.FC<IFluentIconsProps>;
+export default TagQuestionMarkFilled;
+}
+declare module '@fluentui/react-icons/lib/TagQuestionMarkRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const TagQuestionMarkRegular: React.FC<IFluentIconsProps>;
+export default TagQuestionMarkRegular;
 }
 declare module '@fluentui/react-icons/lib/TagRegular' {
 import * as React from 'react';
@@ -16066,6 +16426,18 @@ import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsP
 const TextColumnOneWideFilled: React.FC<IFluentIconsProps>;
 export default TextColumnOneWideFilled;
 }
+declare module '@fluentui/react-icons/lib/TextColumnOneWideLightningFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const TextColumnOneWideLightningFilled: React.FC<IFluentIconsProps>;
+export default TextColumnOneWideLightningFilled;
+}
+declare module '@fluentui/react-icons/lib/TextColumnOneWideLightningRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const TextColumnOneWideLightningRegular: React.FC<IFluentIconsProps>;
+export default TextColumnOneWideLightningRegular;
+}
 declare module '@fluentui/react-icons/lib/TextColumnOneWideRegular' {
 import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
@@ -16323,6 +16695,18 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
 const TextFontFilled: React.FC<IFluentIconsProps>;
 export default TextFontFilled;
+}
+declare module '@fluentui/react-icons/lib/TextFontInfoFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const TextFontInfoFilled: React.FC<IFluentIconsProps>;
+export default TextFontInfoFilled;
+}
+declare module '@fluentui/react-icons/lib/TextFontInfoRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const TextFontInfoRegular: React.FC<IFluentIconsProps>;
+export default TextFontInfoRegular;
 }
 declare module '@fluentui/react-icons/lib/TextFontRegular' {
 import * as React from 'react';
@@ -17056,6 +17440,30 @@ import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsP
 const TranslateRegular: React.FC<IFluentIconsProps>;
 export default TranslateRegular;
 }
+declare module '@fluentui/react-icons/lib/TrayItemAddFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const TrayItemAddFilled: React.FC<IFluentIconsProps>;
+export default TrayItemAddFilled;
+}
+declare module '@fluentui/react-icons/lib/TrayItemAddRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const TrayItemAddRegular: React.FC<IFluentIconsProps>;
+export default TrayItemAddRegular;
+}
+declare module '@fluentui/react-icons/lib/TrayItemRemoveFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const TrayItemRemoveFilled: React.FC<IFluentIconsProps>;
+export default TrayItemRemoveFilled;
+}
+declare module '@fluentui/react-icons/lib/TrayItemRemoveRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const TrayItemRemoveRegular: React.FC<IFluentIconsProps>;
+export default TrayItemRemoveRegular;
+}
 declare module '@fluentui/react-icons/lib/TrophyFilled' {
 import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
@@ -17771,6 +18179,18 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
 const VehicleSubwayRegular: React.FC<IFluentIconsProps>;
 export default VehicleSubwayRegular;
+}
+declare module '@fluentui/react-icons/lib/VehicleTruckBagFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const VehicleTruckBagFilled: React.FC<IFluentIconsProps>;
+export default VehicleTruckBagFilled;
+}
+declare module '@fluentui/react-icons/lib/VehicleTruckBagRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib/utils/IFluentIconsProps.types';
+const VehicleTruckBagRegular: React.FC<IFluentIconsProps>;
+export default VehicleTruckBagRegular;
 }
 declare module '@fluentui/react-icons/lib/VehicleTruckFilled' {
 import * as React from 'react';
@@ -20586,6 +21006,18 @@ import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIc
 const BookmarkRegular: React.FC<IFluentIconsProps>;
 export default BookmarkRegular;
 }
+declare module '@fluentui/react-icons/lib-cjs/BookmarkSearchFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const BookmarkSearchFilled: React.FC<IFluentIconsProps>;
+export default BookmarkSearchFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/BookmarkSearchRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const BookmarkSearchRegular: React.FC<IFluentIconsProps>;
+export default BookmarkSearchRegular;
+}
 declare module '@fluentui/react-icons/lib-cjs/BookNumberFilled' {
 import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
@@ -20928,6 +21360,18 @@ import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIc
 const BuildingBankToolboxRegular: React.FC<IFluentIconsProps>;
 export default BuildingBankToolboxRegular;
 }
+declare module '@fluentui/react-icons/lib-cjs/BuildingFactoryFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const BuildingFactoryFilled: React.FC<IFluentIconsProps>;
+export default BuildingFactoryFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/BuildingFactoryRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const BuildingFactoryRegular: React.FC<IFluentIconsProps>;
+export default BuildingFactoryRegular;
+}
 declare module '@fluentui/react-icons/lib-cjs/BuildingFilled' {
 import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
@@ -21119,6 +21563,18 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
 const CalendarCancelRegular: React.FC<IFluentIconsProps>;
 export default CalendarCancelRegular;
+}
+declare module '@fluentui/react-icons/lib-cjs/CalendarChatFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const CalendarChatFilled: React.FC<IFluentIconsProps>;
+export default CalendarChatFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/CalendarChatRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const CalendarChatRegular: React.FC<IFluentIconsProps>;
+export default CalendarChatRegular;
 }
 declare module '@fluentui/react-icons/lib-cjs/CalendarCheckmarkFilled' {
 import * as React from 'react';
@@ -21371,6 +21827,18 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
 const CalendarTodayRegular: React.FC<IFluentIconsProps>;
 export default CalendarTodayRegular;
+}
+declare module '@fluentui/react-icons/lib-cjs/CalendarToolboxFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const CalendarToolboxFilled: React.FC<IFluentIconsProps>;
+export default CalendarToolboxFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/CalendarToolboxRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const CalendarToolboxRegular: React.FC<IFluentIconsProps>;
+export default CalendarToolboxRegular;
 }
 declare module '@fluentui/react-icons/lib-cjs/CalendarWeekStartFilled' {
 import * as React from 'react';
@@ -21659,6 +22127,18 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
 const CameraRegular: React.FC<IFluentIconsProps>;
 export default CameraRegular;
+}
+declare module '@fluentui/react-icons/lib-cjs/CameraSwitchFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const CameraSwitchFilled: React.FC<IFluentIconsProps>;
+export default CameraSwitchFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/CameraSwitchRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const CameraSwitchRegular: React.FC<IFluentIconsProps>;
+export default CameraSwitchRegular;
 }
 declare module '@fluentui/react-icons/lib-cjs/CaretDownFilled' {
 import * as React from 'react';
@@ -23178,6 +23658,18 @@ import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIc
 const CommentMultipleFilled: React.FC<IFluentIconsProps>;
 export default CommentMultipleFilled;
 }
+declare module '@fluentui/react-icons/lib-cjs/CommentMultipleLinkFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const CommentMultipleLinkFilled: React.FC<IFluentIconsProps>;
+export default CommentMultipleLinkFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/CommentMultipleLinkRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const CommentMultipleLinkRegular: React.FC<IFluentIconsProps>;
+export default CommentMultipleLinkRegular;
+}
 declare module '@fluentui/react-icons/lib-cjs/CommentMultipleRegular' {
 import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
@@ -23309,6 +23801,18 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
 const ContactCardRegular: React.FC<IFluentIconsProps>;
 export default ContactCardRegular;
+}
+declare module '@fluentui/react-icons/lib-cjs/ContactCardRibbonFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const ContactCardRibbonFilled: React.FC<IFluentIconsProps>;
+export default ContactCardRibbonFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/ContactCardRibbonRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const ContactCardRibbonRegular: React.FC<IFluentIconsProps>;
+export default ContactCardRibbonRegular;
 }
 declare module '@fluentui/react-icons/lib-cjs/ContentSettingsFilled' {
 import * as React from 'react';
@@ -23627,6 +24131,18 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
 const DatabaseLinkRegular: React.FC<IFluentIconsProps>;
 export default DatabaseLinkRegular;
+}
+declare module '@fluentui/react-icons/lib-cjs/DatabasePersonFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const DatabasePersonFilled: React.FC<IFluentIconsProps>;
+export default DatabasePersonFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/DatabasePersonRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const DatabasePersonRegular: React.FC<IFluentIconsProps>;
+export default DatabasePersonRegular;
 }
 declare module '@fluentui/react-icons/lib-cjs/DatabaseRegular' {
 import * as React from 'react';
@@ -24192,6 +24708,18 @@ import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIc
 const DocumentFilled: React.FC<IFluentIconsProps>;
 export default DocumentFilled;
 }
+declare module '@fluentui/react-icons/lib-cjs/DocumentFlowchartFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const DocumentFlowchartFilled: React.FC<IFluentIconsProps>;
+export default DocumentFlowchartFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/DocumentFlowchartRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const DocumentFlowchartRegular: React.FC<IFluentIconsProps>;
+export default DocumentFlowchartRegular;
+}
 declare module '@fluentui/react-icons/lib-cjs/DocumentHeaderFooterFilled' {
 import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
@@ -24618,6 +25146,18 @@ import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIc
 const DocumentTableRegular: React.FC<IFluentIconsProps>;
 export default DocumentTableRegular;
 }
+declare module '@fluentui/react-icons/lib-cjs/DocumentTableSearchFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const DocumentTableSearchFilled: React.FC<IFluentIconsProps>;
+export default DocumentTableSearchFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/DocumentTableSearchRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const DocumentTableSearchRegular: React.FC<IFluentIconsProps>;
+export default DocumentTableSearchRegular;
+}
 declare module '@fluentui/react-icons/lib-cjs/DocumentTextClockFilled' {
 import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
@@ -24629,6 +25169,18 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
 const DocumentTextClockRegular: React.FC<IFluentIconsProps>;
 export default DocumentTextClockRegular;
+}
+declare module '@fluentui/react-icons/lib-cjs/DocumentTextExtractFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const DocumentTextExtractFilled: React.FC<IFluentIconsProps>;
+export default DocumentTextExtractFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/DocumentTextExtractRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const DocumentTextExtractRegular: React.FC<IFluentIconsProps>;
+export default DocumentTextExtractRegular;
 }
 declare module '@fluentui/react-icons/lib-cjs/DocumentTextFilled' {
 import * as React from 'react';
@@ -25235,6 +25787,30 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
 const FlashSettingsRegular: React.FC<IFluentIconsProps>;
 export default FlashSettingsRegular;
+}
+declare module '@fluentui/react-icons/lib-cjs/FlowchartCircleFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const FlowchartCircleFilled: React.FC<IFluentIconsProps>;
+export default FlowchartCircleFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/FlowchartCircleRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const FlowchartCircleRegular: React.FC<IFluentIconsProps>;
+export default FlowchartCircleRegular;
+}
+declare module '@fluentui/react-icons/lib-cjs/FlowchartFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const FlowchartFilled: React.FC<IFluentIconsProps>;
+export default FlowchartFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/FlowchartRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const FlowchartRegular: React.FC<IFluentIconsProps>;
+export default FlowchartRegular;
 }
 declare module '@fluentui/react-icons/lib-cjs/FlowFilled' {
 import * as React from 'react';
@@ -26099,6 +26675,18 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
 const HeartBrokenRegular: React.FC<IFluentIconsProps>;
 export default HeartBrokenRegular;
+}
+declare module '@fluentui/react-icons/lib-cjs/HeartCircleFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const HeartCircleFilled: React.FC<IFluentIconsProps>;
+export default HeartCircleFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/HeartCircleRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const HeartCircleRegular: React.FC<IFluentIconsProps>;
+export default HeartCircleRegular;
 }
 declare module '@fluentui/react-icons/lib-cjs/HeartFilled' {
 import * as React from 'react';
@@ -28362,6 +28950,18 @@ import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIc
 const PeopleListRegular: React.FC<IFluentIconsProps>;
 export default PeopleListRegular;
 }
+declare module '@fluentui/react-icons/lib-cjs/PeopleLockFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const PeopleLockFilled: React.FC<IFluentIconsProps>;
+export default PeopleLockFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/PeopleLockRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const PeopleLockRegular: React.FC<IFluentIconsProps>;
+export default PeopleLockRegular;
+}
 declare module '@fluentui/react-icons/lib-cjs/PeopleMoneyFilled' {
 import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
@@ -28889,6 +29489,18 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
 const PhoneTabletRegular: React.FC<IFluentIconsProps>;
 export default PhoneTabletRegular;
+}
+declare module '@fluentui/react-icons/lib-cjs/PhoneUpdateCheckmarkFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const PhoneUpdateCheckmarkFilled: React.FC<IFluentIconsProps>;
+export default PhoneUpdateCheckmarkFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/PhoneUpdateCheckmarkRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const PhoneUpdateCheckmarkRegular: React.FC<IFluentIconsProps>;
+export default PhoneUpdateCheckmarkRegular;
 }
 declare module '@fluentui/react-icons/lib-cjs/PictureInPictureEnterFilled' {
 import * as React from 'react';
@@ -29784,6 +30396,18 @@ import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIc
 const SaveFilled: React.FC<IFluentIconsProps>;
 export default SaveFilled;
 }
+declare module '@fluentui/react-icons/lib-cjs/SaveMultipleFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const SaveMultipleFilled: React.FC<IFluentIconsProps>;
+export default SaveMultipleFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/SaveMultipleRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const SaveMultipleRegular: React.FC<IFluentIconsProps>;
+export default SaveMultipleRegular;
+}
 declare module '@fluentui/react-icons/lib-cjs/SaveRegular' {
 import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
@@ -29885,6 +30509,18 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
 const ScanThumbUpRegular: React.FC<IFluentIconsProps>;
 export default ScanThumbUpRegular;
+}
+declare module '@fluentui/react-icons/lib-cjs/ScanTypeCheckmarkFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const ScanTypeCheckmarkFilled: React.FC<IFluentIconsProps>;
+export default ScanTypeCheckmarkFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/ScanTypeCheckmarkRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const ScanTypeCheckmarkRegular: React.FC<IFluentIconsProps>;
+export default ScanTypeCheckmarkRegular;
 }
 declare module '@fluentui/react-icons/lib-cjs/ScanTypeFilled' {
 import * as React from 'react';
@@ -30017,6 +30653,42 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
 const SelectObjectRegular: React.FC<IFluentIconsProps>;
 export default SelectObjectRegular;
+}
+declare module '@fluentui/react-icons/lib-cjs/SelectObjectSkewDismissFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const SelectObjectSkewDismissFilled: React.FC<IFluentIconsProps>;
+export default SelectObjectSkewDismissFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/SelectObjectSkewDismissRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const SelectObjectSkewDismissRegular: React.FC<IFluentIconsProps>;
+export default SelectObjectSkewDismissRegular;
+}
+declare module '@fluentui/react-icons/lib-cjs/SelectObjectSkewEditFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const SelectObjectSkewEditFilled: React.FC<IFluentIconsProps>;
+export default SelectObjectSkewEditFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/SelectObjectSkewEditRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const SelectObjectSkewEditRegular: React.FC<IFluentIconsProps>;
+export default SelectObjectSkewEditRegular;
+}
+declare module '@fluentui/react-icons/lib-cjs/SelectObjectSkewFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const SelectObjectSkewFilled: React.FC<IFluentIconsProps>;
+export default SelectObjectSkewFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/SelectObjectSkewRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const SelectObjectSkewRegular: React.FC<IFluentIconsProps>;
+export default SelectObjectSkewRegular;
 }
 declare module '@fluentui/react-icons/lib-cjs/SendClockFilled' {
 import * as React from 'react';
@@ -30438,11 +31110,35 @@ import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIc
 const ShiftsRegular: React.FC<IFluentIconsProps>;
 export default ShiftsRegular;
 }
+declare module '@fluentui/react-icons/lib-cjs/ShoppingBagDismissFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const ShoppingBagDismissFilled: React.FC<IFluentIconsProps>;
+export default ShoppingBagDismissFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/ShoppingBagDismissRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const ShoppingBagDismissRegular: React.FC<IFluentIconsProps>;
+export default ShoppingBagDismissRegular;
+}
 declare module '@fluentui/react-icons/lib-cjs/ShoppingBagFilled' {
 import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
 const ShoppingBagFilled: React.FC<IFluentIconsProps>;
 export default ShoppingBagFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/ShoppingBagPauseFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const ShoppingBagPauseFilled: React.FC<IFluentIconsProps>;
+export default ShoppingBagPauseFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/ShoppingBagPauseRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const ShoppingBagPauseRegular: React.FC<IFluentIconsProps>;
+export default ShoppingBagPauseRegular;
 }
 declare module '@fluentui/react-icons/lib-cjs/ShoppingBagPercentFilled' {
 import * as React from 'react';
@@ -31584,6 +32280,18 @@ import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIc
 const TagDismissRegular: React.FC<IFluentIconsProps>;
 export default TagDismissRegular;
 }
+declare module '@fluentui/react-icons/lib-cjs/TagErrorFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const TagErrorFilled: React.FC<IFluentIconsProps>;
+export default TagErrorFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/TagErrorRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const TagErrorRegular: React.FC<IFluentIconsProps>;
+export default TagErrorRegular;
+}
 declare module '@fluentui/react-icons/lib-cjs/TagFilled' {
 import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
@@ -31619,6 +32327,18 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
 const TagMultipleRegular: React.FC<IFluentIconsProps>;
 export default TagMultipleRegular;
+}
+declare module '@fluentui/react-icons/lib-cjs/TagQuestionMarkFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const TagQuestionMarkFilled: React.FC<IFluentIconsProps>;
+export default TagQuestionMarkFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/TagQuestionMarkRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const TagQuestionMarkRegular: React.FC<IFluentIconsProps>;
+export default TagQuestionMarkRegular;
 }
 declare module '@fluentui/react-icons/lib-cjs/TagRegular' {
 import * as React from 'react';
@@ -32208,6 +32928,18 @@ import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIc
 const TextColumnOneWideFilled: React.FC<IFluentIconsProps>;
 export default TextColumnOneWideFilled;
 }
+declare module '@fluentui/react-icons/lib-cjs/TextColumnOneWideLightningFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const TextColumnOneWideLightningFilled: React.FC<IFluentIconsProps>;
+export default TextColumnOneWideLightningFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/TextColumnOneWideLightningRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const TextColumnOneWideLightningRegular: React.FC<IFluentIconsProps>;
+export default TextColumnOneWideLightningRegular;
+}
 declare module '@fluentui/react-icons/lib-cjs/TextColumnOneWideRegular' {
 import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
@@ -32465,6 +33197,18 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
 const TextFontFilled: React.FC<IFluentIconsProps>;
 export default TextFontFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/TextFontInfoFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const TextFontInfoFilled: React.FC<IFluentIconsProps>;
+export default TextFontInfoFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/TextFontInfoRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const TextFontInfoRegular: React.FC<IFluentIconsProps>;
+export default TextFontInfoRegular;
 }
 declare module '@fluentui/react-icons/lib-cjs/TextFontRegular' {
 import * as React from 'react';
@@ -33198,6 +33942,30 @@ import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIc
 const TranslateRegular: React.FC<IFluentIconsProps>;
 export default TranslateRegular;
 }
+declare module '@fluentui/react-icons/lib-cjs/TrayItemAddFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const TrayItemAddFilled: React.FC<IFluentIconsProps>;
+export default TrayItemAddFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/TrayItemAddRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const TrayItemAddRegular: React.FC<IFluentIconsProps>;
+export default TrayItemAddRegular;
+}
+declare module '@fluentui/react-icons/lib-cjs/TrayItemRemoveFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const TrayItemRemoveFilled: React.FC<IFluentIconsProps>;
+export default TrayItemRemoveFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/TrayItemRemoveRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const TrayItemRemoveRegular: React.FC<IFluentIconsProps>;
+export default TrayItemRemoveRegular;
+}
 declare module '@fluentui/react-icons/lib-cjs/TrophyFilled' {
 import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
@@ -33913,6 +34681,18 @@ import * as React from 'react';
 import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
 const VehicleSubwayRegular: React.FC<IFluentIconsProps>;
 export default VehicleSubwayRegular;
+}
+declare module '@fluentui/react-icons/lib-cjs/VehicleTruckBagFilled' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const VehicleTruckBagFilled: React.FC<IFluentIconsProps>;
+export default VehicleTruckBagFilled;
+}
+declare module '@fluentui/react-icons/lib-cjs/VehicleTruckBagRegular' {
+import * as React from 'react';
+import { IFluentIconsProps } from '@fluentui/react-icons/lib-cjs/utils/IFluentIconsProps.types';
+const VehicleTruckBagRegular: React.FC<IFluentIconsProps>;
+export default VehicleTruckBagRegular;
 }
 declare module '@fluentui/react-icons/lib-cjs/VehicleTruckFilled' {
 import * as React from 'react';
