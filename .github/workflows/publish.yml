@@ -28,6 +28,15 @@ jobs:
         import os
         current_version = sys.stdin.read().strip().split(\"'\")[1]
         major, minor, patch = current_version.split('.')
+        react_major = {int(major) + 1}
+        react_minor = {minor}
+        ios_major = {major}
+        ios_minor = {minor}
+        android_major = {major}
+        android_minor = {minor}
+        os.system(f'echo \"REACT_VERSION={react_major}.{react_minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
+        os.system(f'echo \"IOS_VERSION={ios_major}.{ios_minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
+        os.system(f'echo \"ANDROID_VERSION={android_major}.{android_minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
         os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
         """
 
@@ -112,7 +121,7 @@ jobs:
     # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version numbers in ios/README.md
       run: |
-        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" ios/README.md
+        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$IOS_VERSION/g" ios/README.md
         rm ios/README.md.bk
 
     # Needs to be "-E" instead of "-r" on macOS
@@ -142,7 +151,7 @@ jobs:
     # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version number in react-icons/package.json
       run: |
-        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/react-icons/package.json
+        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$REACT_VERSION\"/g" packages/react-icons/package.json
         rm packages/react-icons/package.json.bk
 
     # Needs to be "-E" instead of "-r" on macOS
