@@ -6886,7 +6886,7 @@ class FluentIcons {
   static const IconData insert_20_regular = IconData(0xf4ad, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "ios_arrow_left" in size 24 and regular style.
-  static const IconData ios_arrow_left_24_regular = IconData(0xf4b0, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg, matchTextDirection: true);
+  static const IconData ios_arrow_left_24_regular = IconData(0xf4b0, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "ios_arrow_ltr" in size 24 and regular style.
   static const IconData ios_arrow_ltr_24_regular = IconData(0x10064, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -20433,7 +20433,7 @@ class FluentIcons {
   static const IconData insert_20_filled = IconData(0xf4b7, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "ios_arrow_left" in size 24 and filled style.
-  static const IconData ios_arrow_left_24_filled = IconData(0xf4ba, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg, matchTextDirection: true);
+  static const IconData ios_arrow_left_24_filled = IconData(0xf4ba, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "ios_arrow_ltr" in size 24 and filled style.
   static const IconData ios_arrow_ltr_24_filled = IconData(0x10068, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);

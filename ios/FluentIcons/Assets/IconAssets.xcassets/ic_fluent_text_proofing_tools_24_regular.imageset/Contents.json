@@ -10,11 +10,6 @@
       "locale": "zh_tw"
     },
     {
-      "filename": "ko_ic_fluent_text_proofing_tools_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "ko"
-    },
-    {
       "filename": "en_ic_fluent_text_proofing_tools_24_regular.pdf",
       "idiom": "universal",
       "locale": "en"
@@ -23,6 +18,11 @@
       "filename": "zh_cn_ic_fluent_text_proofing_tools_24_regular.pdf",
       "idiom": "universal",
       "locale": "zh_cn"
+    },
+    {
+      "filename": "ko_ic_fluent_text_proofing_tools_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "ko"
     }
   ],
   "info": {

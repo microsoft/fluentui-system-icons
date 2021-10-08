@@ -5,14 +5,14 @@
       "idiom": "universal"
     },
     {
-      "filename": "he_ic_fluent_image_arrow_back_24_regular.pdf",
-      "idiom": "universal",
-      "locale": "he"
-    },
-    {
       "filename": "ar_ic_fluent_image_arrow_back_24_regular.pdf",
       "idiom": "universal",
       "locale": "ar"
+    },
+    {
+      "filename": "he_ic_fluent_image_arrow_back_24_regular.pdf",
+      "idiom": "universal",
+      "locale": "he"
     }
   ],
   "info": {
