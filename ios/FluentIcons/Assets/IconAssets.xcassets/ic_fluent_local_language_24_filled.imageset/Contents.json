@@ -1,21 +1,21 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_local_language_24_filled.pdf",
+      "filename": "ic_fluent_local_language_24_filled.svg",
       "idiom": "universal"
     },
     {
-      "filename": "zh_ic_fluent_local_language_24_filled.pdf",
+      "filename": "zh_ic_fluent_local_language_24_filled.svg",
       "idiom": "universal",
       "locale": "zh"
     },
     {
-      "filename": "en_ic_fluent_local_language_24_filled.pdf",
+      "filename": "en_ic_fluent_local_language_24_filled.svg",
       "idiom": "universal",
       "locale": "en"
     },
     {
-      "filename": "ko_ic_fluent_local_language_24_filled.pdf",
+      "filename": "ko_ic_fluent_local_language_24_filled.svg",
       "idiom": "universal",
       "locale": "ko"
     }

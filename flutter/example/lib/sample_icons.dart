@@ -2032,6 +2032,10 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.checkmark_starburst_16_regular, 'checkmark_starburst_16_regular', 16),
 
+  FluentUISampleIcon(FluentIcons.checkmark_starburst_20_regular, 'checkmark_starburst_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.checkmark_starburst_24_regular, 'checkmark_starburst_24_regular', 24),
+
   FluentUISampleIcon(FluentIcons.checkmark_underline_circle_16_regular, 'checkmark_underline_circle_16_regular', 16),
 
   FluentUISampleIcon(FluentIcons.checkmark_underline_circle_20_regular, 'checkmark_underline_circle_20_regular', 20),
@@ -11051,6 +11055,10 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.checkmark_square_24_filled, 'checkmark_square_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.checkmark_starburst_16_filled, 'checkmark_starburst_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.checkmark_starburst_20_filled, 'checkmark_starburst_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.checkmark_starburst_24_filled, 'checkmark_starburst_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.checkmark_underline_circle_16_filled, 'checkmark_underline_circle_16_filled', 16),
 

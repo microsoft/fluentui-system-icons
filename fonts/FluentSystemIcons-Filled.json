@@ -4520,5 +4520,7 @@
     "ic_fluent_tray_item_remove_20_filled": "0x102a7",
     "ic_fluent_tray_item_remove_24_filled": "0x102a8",
     "ic_fluent_vehicle_truck_bag_20_filled": "0x102a9",
-    "ic_fluent_vehicle_truck_bag_24_filled": "0x102aa"
+    "ic_fluent_vehicle_truck_bag_24_filled": "0x102aa",
+    "ic_fluent_checkmark_starburst_20_filled": "0x102ab",
+    "ic_fluent_checkmark_starburst_24_filled": "0x102ac"
 }

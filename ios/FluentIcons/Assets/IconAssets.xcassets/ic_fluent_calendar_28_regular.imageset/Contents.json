@@ -1,12 +1,12 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_calendar_ltr_28_regular.pdf",
+      "filename": "ic_fluent_calendar_ltr_28_regular.svg",
       "idiom": "universal",
       "language-direction": "left-to-right"
     },
     {
-      "filename": "ic_fluent_calendar_rtl_28_regular.pdf",
+      "filename": "ic_fluent_calendar_rtl_28_regular.svg",
       "idiom": "universal",
       "language-direction": "right-to-left"
     }

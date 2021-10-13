@@ -3051,6 +3051,12 @@ class FluentIcons {
   /// fluent icon named "checkmark_starburst" in size 16 and regular style.
   static const IconData checkmark_starburst_16_regular = IconData(0xf283, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "checkmark_starburst" in size 20 and regular style.
+  static const IconData checkmark_starburst_20_regular = IconData(0x1029f, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "checkmark_starburst" in size 24 and regular style.
+  static const IconData checkmark_starburst_24_regular = IconData(0x102a0, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "checkmark_underline_circle" in size 16 and regular style.
   static const IconData checkmark_underline_circle_16_regular = IconData(0xf29f, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -16582,6 +16588,12 @@ class FluentIcons {
 
   /// fluent icon named "checkmark_starburst" in size 16 and filled style.
   static const IconData checkmark_starburst_16_filled = IconData(0xf283, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "checkmark_starburst" in size 20 and filled style.
+  static const IconData checkmark_starburst_20_filled = IconData(0x102ab, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "checkmark_starburst" in size 24 and filled style.
+  static const IconData checkmark_starburst_24_filled = IconData(0x102ac, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "checkmark_underline_circle" in size 16 and filled style.
   static const IconData checkmark_underline_circle_16_filled = IconData(0xf29f, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);

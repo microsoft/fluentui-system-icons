@@ -1,16 +1,16 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_comment_note_24_filled.pdf",
+      "filename": "ic_fluent_comment_note_24_filled.svg",
       "idiom": "universal"
     },
     {
-      "filename": "ar_ic_fluent_comment_note_24_filled.pdf",
+      "filename": "ar_ic_fluent_comment_note_24_filled.svg",
       "idiom": "universal",
       "locale": "ar"
     },
     {
-      "filename": "he_ic_fluent_comment_note_24_filled.pdf",
+      "filename": "he_ic_fluent_comment_note_24_filled.svg",
       "idiom": "universal",
       "locale": "he"
     }
