@@ -27,17 +27,17 @@ jobs:
         import sys
         import os
         current_version = sys.stdin.read().strip().split(\"'\")[1]
-        major, minor, patch = current_version.split('.')
+        major, minor, asset = current_version.split('.')
         react_major = {int(major) + 1}
         react_minor = {minor}
+        react_sized_major = {major}
+        react_sized_minor = {minor}
         ios_major = {major}
         ios_minor = {minor}
-        android_major = {major}
-        android_minor = {minor}
-        os.system(f'echo \"REACT_VERSION={react_major}.{react_minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
-        os.system(f'echo \"IOS_VERSION={ios_major}.{ios_minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
-        os.system(f'echo \"ANDROID_VERSION={android_major}.{android_minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
-        os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
+        os.system(f'echo \"REACT_VERSION={react_major}.{react_minor}.{int(asset) + 1}\" >> \$GITHUB_ENV')
+        os.system(f'echo \"REACT_SIZED_VERSION={react_sized_major}.{react_sized_minor}.{int(asset) + 1}\" >> \$GITHUB_ENV')
+        os.system(f'echo \"IOS_VERSION={ios_major}.{ios_minor}.{int(asset) + 1}\" >> \$GITHUB_ENV')
+        os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(asset) + 1}\" >> \$GITHUB_ENV')
         """
 
     - name: Use Node 11
@@ -151,8 +151,14 @@ jobs:
     # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version number in react-icons/package.json
       run: |
-        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$REACT_VERSION\"/g" packages/react-icons/package.json
+        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-icons/package.json
         rm packages/react-icons/package.json.bk
+
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in react-icons-sized/package.json
+      run: |
+        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?\"/\"version\": \"$REACT_SIZED_VERSION\"/g" packages/react-icons-sized/package.json
+        rm packages/react-icons-sized/package.json.bk
 
     # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version number in _manifest.json
@@ -178,6 +184,12 @@ jobs:
         npm run build
       working-directory: packages/react-icons
 
+    - name: Build React Sized library
+      run: |
+        npm install
+        npm run build
+      working-directory: packages/react-icons-sized  
+
     - uses: JS-DevTools/npm-publish@v1
       with:
         token: ${{ secrets.NPM_TOKEN }}
@@ -189,6 +201,14 @@ jobs:
         token: ${{ secrets.NPM_TOKEN }}
         access: public
         package: packages/react-icons/package.json
+        tag: beta
+
+    - uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+        access: public
+        package: packages/react-icons-sized/package.json
+        tag: beta    
 
     - name: Update icon sheet
       run: python3 generate_icons_md.py
