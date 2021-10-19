@@ -64,7 +64,7 @@ function processFolder(srcPath, destPath) {
   }
 
   // Build out the index for the components as we process the files
-  var indexContents = ''
+  var indexContents = 'import * as React from "react";\nimport wrapIcon from "./utils/wrapIcon";\nimport { IFluentIconsProps } from "./utils/IFluentIconsProps.types";'
 
   files.forEach(function (file, index) {
     var srcFile = path.join(srcPath, file)
@@ -91,22 +91,15 @@ function processFolder(srcPath, destPath) {
       
       var jsxCode = svgr.default.sync(iconContent, svgrOpts, { filePath: file })
       var jsCode = 
-`import * as React from 'react';
-import  wrapIcon from './utils/wrapIcon';
-import { IFluentIconsProps } from './utils/IFluentIconsProps.types';
-
-const rawSvg = (iconProps: IFluentIconsProps) => {
+`
+const ${destFilename}Icon = (iconProps: IFluentIconsProps) => {
   const { className, primaryFill } = iconProps;
   return ${jsxCode};
 }
 
-const ${destFilename} = wrapIcon(rawSvg({}), '${destFilename}');
-export default ${destFilename};
+export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename}Icon({}), '${destFilename}');
       `
-      indexContents += '\nexport { default as ' + destFilename + ' } from \'./' + destFilename + '\''
-      fs.writeFileSync(destFile, jsCode, (err) => {
-        if (err) throw err;
-      });
+      indexContents += '\n' + jsCode
     }
   });
 

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-icons",
-  "version": "2.1.144",
+  "version": "2.1.144-beta.0",
   "sideEffects": false,
   "main": "lib-cjs/index.js",
   "module": "lib/index.js",
@@ -19,7 +19,7 @@
     "rollup": "node ./generateRollup.js",
     "optimize": "svgo --folder=./intermediate --precision=2 --disable=removeViewBox,mergePaths",
     "unfill": "find ./intermediate -type f -name \"*.svg\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./intermediate -type f -name \"*.bak\" -delete",
-    "build": "npm run copy && npm run optimize && npm run unfill && npm run convert && npm run cleanSvg && npm run build:esm && npm run build:cjs && npm run rollup",
+    "build": "npm run copy && npm run optimize && npm run unfill && npm run convert && npm run cleanSvg && npm run build:esm && npm run build:cjs",
     "build:cjs": "tsc --module commonjs --outDir lib-cjs",
     "build:esm": "tsc"
   },

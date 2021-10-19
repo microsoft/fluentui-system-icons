@@ -27,9 +27,13 @@ if (!fs.existsSync(DEST_PATH)) {
 processFiles(SRC_PATH, DEST_PATH)
 
 function processFiles(src, dest) {
+  var componentsPath = path.join(dest, 'components')
+  if (!fs.existsSync(componentsPath)) {
+    fs.mkdirSync(componentsPath)
+  }
 
   var indexPath = path.join(dest, 'index.tsx')
-  var indexContents = processFolder(src, dest)
+  var indexContents = processFolder(src, componentsPath)
 
   // Finally add the interface definition and then write out the index.
   indexContents += '\nexport { IFluentIconsProps } from \'./utils/IFluentIconsProps.types\''
@@ -59,7 +63,7 @@ function processFolder(srcPath, destPath) {
   }
 
   // Build out the index for the components as we process the files
-  var indexContents = ''
+  var indexContents = 'import * as React from "react";\nimport  wrapIcon from "./utils/wrapIcon";\nimport { IFluentIconsProps } from "./utils/IFluentIconsProps.types";'
 
   files.forEach(function (file, index) {
     var srcFile = path.join(srcPath, file)
@@ -76,28 +80,20 @@ function processFolder(srcPath, destPath) {
       iconName = iconName.replace("ic_fluent_", "") // strip ic_fluent_
       var destFilename = _.camelCase(iconName) // We want them to be camelCase, so access_time would become accessTime here
       destFilename = destFilename.replace(destFilename.substring(0, 1), destFilename.substring(0, 1).toUpperCase()) // capitalize the first letter
-      var destFile = path.join(destPath, destFilename + TSX_EXTENSION) // get the qualified path
 
       var iconContent = fs.readFileSync(srcFile, { encoding: "utf8" })
       
       var jsxCode = svgr.default.sync(iconContent, svgrOpts, { filePath: file })
       var jsCode = 
-`import * as React from 'react';
-import  wrapIcon from './utils/wrapIcon';
-import { IFluentIconsProps } from './utils/IFluentIconsProps.types';
-
-const rawSvg = (iconProps: IFluentIconsProps) => {
+`
+const ${destFilename}Icon = (iconProps: IFluentIconsProps) => {
   const { className, primaryFill } = iconProps;
   return ${jsxCode};
 }
 
-const ${destFilename} = wrapIcon(rawSvg({}), '${destFilename}');
-export default ${destFilename};
+export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename}Icon({}), '${destFilename}');
       `
-      indexContents += '\nexport { default as ' + destFilename + ' } from \'./' + destFilename + '\''
-      fs.writeFileSync(destFile, jsCode, (err) => {
-        if (err) throw err;
-      });
+      indexContents += '\n' + jsCode
     }
   });
 
