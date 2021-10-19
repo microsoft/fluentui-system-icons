@@ -1,12 +1,12 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_text_number_list_ltr_16_regular.pdf",
+      "filename": "ic_fluent_text_number_list_ltr_16_regular.svg",
       "idiom": "universal",
       "language-direction": "left-to-right"
     },
     {
-      "filename": "ic_fluent_text_number_list_rtl_16_regular.pdf",
+      "filename": "ic_fluent_text_number_list_rtl_16_regular.svg",
       "idiom": "universal",
       "language-direction": "right-to-left"
     }

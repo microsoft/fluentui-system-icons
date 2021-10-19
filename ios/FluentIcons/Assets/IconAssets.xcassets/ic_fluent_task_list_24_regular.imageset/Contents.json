@@ -1,12 +1,12 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_task_list_ltr_24_regular.pdf",
+      "filename": "ic_fluent_task_list_ltr_24_regular.svg",
       "idiom": "universal",
       "language-direction": "left-to-right"
     },
     {
-      "filename": "ic_fluent_task_list_rtl_24_regular.pdf",
+      "filename": "ic_fluent_task_list_rtl_24_regular.svg",
       "idiom": "universal",
       "language-direction": "right-to-left"
     }
