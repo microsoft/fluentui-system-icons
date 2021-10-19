@@ -4508,5 +4508,7 @@
     "ic_fluent_tray_item_remove_20_regular": "0x1029b",
     "ic_fluent_tray_item_remove_24_regular": "0x1029c",
     "ic_fluent_vehicle_truck_bag_20_regular": "0x1029d",
-    "ic_fluent_vehicle_truck_bag_24_regular": "0x1029e"
+    "ic_fluent_vehicle_truck_bag_24_regular": "0x1029e",
+    "ic_fluent_checkmark_starburst_20_regular": "0x1029f",
+    "ic_fluent_checkmark_starburst_24_regular": "0x102a0"
 }
