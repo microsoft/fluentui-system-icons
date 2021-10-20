@@ -23,6 +23,16 @@ jobs:
 
     - name: Bump version patch
       run: |
+        grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec | python3 -c """
+        import sys
+        import os
+        current_version = sys.stdin.read().strip().split(\"'\")[1]
+        major, minor, patch = current_version.split('.')
+        os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV') 
+        """
+
+    - name: Bump react version patch
+      run: |
         grep -E "[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?" react-icons-sized/package.json | python3 -c """
         import sys
         import os
@@ -33,12 +43,8 @@ jobs:
         react_minor = {minor}
         react_sized_major = {major}
         react_sized_minor = {minor}
-        ios_major = {major}
-        ios_minor = {minor}
         os.system(f'echo \"REACT_VERSION={react_major}.{react_minor}.{int(asset) + 1}-beta.{int(beta) + 1}\" >> \$GITHUB_ENV')
         os.system(f'echo \"REACT_SIZED_VERSION={react_sized_major}.{react_sized_minor}.{int(asset) + 1}-beta.{int(beta) + 1}\" >> \$GITHUB_ENV')
-        os.system(f'echo \"IOS_VERSION={ios_major}.{ios_minor}.{int(asset) + 1}\" >> \$GITHUB_ENV')
-        os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(asset) + 1}\" >> \$GITHUB_ENV')
         """
 
     - name: Use Node 11
