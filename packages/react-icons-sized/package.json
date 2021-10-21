@@ -4,7 +4,7 @@
   "sideEffects": false,
   "main": "lib-cjs/index.js",
   "module": "lib/index.js",
-  "typings": "index.d.ts",
+  "typings": "lib/index.d.ts",
   "description": "Fluent System Icons are a collection of familiar, friendly, and modern icons from Microsoft.",
   "license": "MIT",
   "repository": {
@@ -43,7 +43,6 @@
     "lib/**/*.js",
     "lib/**/*.ts",
     "lib-cjs/**/*.js",
-    "lib-cjs/**/*.ts",
-    "index.d.ts"
+    "lib-cjs/**/*.ts"
   ]
 }
