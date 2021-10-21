@@ -27,14 +27,15 @@ if (!fs.existsSync(DEST_PATH)) {
 processFiles(SRC_PATH, DEST_PATH)
 
 function processFiles(src, dest) {
-  var componentsPath = path.join(dest, 'components')
-  if (!fs.existsSync(componentsPath)) {
-    fs.mkdirSync(componentsPath)
-  }
+
+  var iconPath = path.join(dest, 'icons.tsx')
+  iconContents = processFolder(src, dest)
+  fs.writeFileSync(iconPath, iconContents, (err) => {
+    if (err) throw err;
+  });
 
   var indexPath = path.join(dest, 'index.tsx')
-  var indexContents = processFolder(src, componentsPath)
-
+  var indexContents = 'export * from \'./icons\''
   // Finally add the interface definition and then write out the index.
   indexContents += '\nexport { IFluentIconsProps } from \'./utils/IFluentIconsProps.types\''
   indexContents += '\nexport { default as wrapIcon } from \'./utils/wrapIcon\''

@@ -27,15 +27,17 @@ if (!fs.existsSync(DEST_PATH)) {
 processFiles(SRC_PATH, DEST_PATH)
 
 function processFiles(src, dest) {
-  // var componentsPath = path.join(dest, 'components')
-  // if (!fs.existsSync(componentsPath)) {
-  //   fs.mkdirSync(componentsPath)
-  // }
+
+  var iconPath = path.join(dest, 'icons.tsx')
+  var iconContents = processFolder(src, dest)
+
+  fs.writeFileSync(iconPath, iconContents, (err) => {
+    if (err) throw err;
+  });
 
   var indexPath = path.join(dest, 'index.tsx')
-  var indexContents = processFolder(src, dest)
-
   // Finally add the interface definition and then write out the index.
+  var indexContents = 'export * from \'./icons\''
   indexContents += '\nexport { IFluentIconsProps } from \'./utils/IFluentIconsProps.types\''
   indexContents += '\nexport { default as wrapIcon } from \'./utils/wrapIcon\''
   indexContents += '\nexport { default as bundleIcon } from \'./utils/bundleIcon\''
@@ -64,7 +66,7 @@ function processFolder(srcPath, destPath) {
   }
 
   // Build out the index for the components as we process the files
-  var indexContents = 'import * as React from "react";\nimport wrapIcon from "./utils/wrapIcon";\nimport { IFluentIconsProps } from "./utils/IFluentIconsProps.types";'
+  var iconContents = 'import * as React from "react";\nimport wrapIcon from "./utils/wrapIcon";\nimport { IFluentIconsProps } from "./utils/IFluentIconsProps.types";'
 
   files.forEach(function (file, index) {
     var srcFile = path.join(srcPath, file)
@@ -85,7 +87,6 @@ function processFolder(srcPath, destPath) {
       iconName = iconName.replace("20", "")
       var destFilename = _.camelCase(iconName) // We want them to be camelCase, so access_time would become accessTime here
       destFilename = destFilename.replace(destFilename.substring(0, 1), destFilename.substring(0, 1).toUpperCase()) // capitalize the first letter
-      var destFile = path.join(destPath, destFilename + TSX_EXTENSION) // get the qualified path
 
       var iconContent = fs.readFileSync(srcFile, { encoding: "utf8" })
       
@@ -99,11 +100,11 @@ const ${destFilename}Icon = (iconProps: IFluentIconsProps) => {
 
 export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename}Icon({}), '${destFilename}');
       `
-      indexContents += '\n' + jsCode
+      iconContents += '\n' + jsCode
     }
   });
 
-  return indexContents
+  return iconContents
 }
 
 function fileTemplate(

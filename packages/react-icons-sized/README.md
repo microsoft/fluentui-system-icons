@@ -22,31 +22,42 @@ import { AccessTime24Filled } from "@fluentui/react-icons-sized";
 ```
 You can also style the icons using the `IFluentIconsProps`interface, with the `className` prop or the `primaryFill` prop.
 
-Finally, you can bundle the `Filled` and `Regular` versions of each icon using the `bundleIcon` method. The `bundleIcon` function returns a component with both states of the icon, and provides default styling for `hover`, `active`, and `focus` states. You can then use the same props as the regular unbundled icons.
+Finally, you can bundle the `Filled` and `Regular` versions of each icon into a compound icon component using the `bundleIcon` method. The `bundleIcon` function returns a component with both states of the icon, and you can then use the classnames `FILLED_CLASSNAME` and `REGULAR_CLASSNAME` to style this compound component
 
-If you would like to get the bundled icon without any of the default styling, then add the `filled` prop to the new component and the icon will not have any default styling. To style this new icon, simply add your own user defined stylesheet to the icon.
-
+If you would like to get the bundled icon without any of the default styling, then add the `filled` prop to the new component and the icon will not have any default styling. To style this new icon, add a user defined stylesheet to the icon component.
 
 
 ```tsx
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { AccessTime24Filled } from "@fluentui/react-icons-sized/lib/AccessTime24Filled";
-import { AccessTime24Regular } from "@fluentui/react-icons-sized/lib/AccessTime24Regular";
-import { bundleIcon } from "@fluentui/react-icons-sized/lib/utils/bundleIcon";
+import { AccessTime24Filled, Access24TimeRegular, bundleIcon } from "@fluentui/react-icons-sized";
+import { makeStyles } from "@fluentui/react-make-styles";
 
 
 const iconStyleProps: IFluentIconsProps = {
     primaryFill: "purple",
     className: "iconClass"
 };
-const AccessTime24 = bundleIcon(AccessTime24Filled, AccessTime24Regular)
+
+const useIconStyles = makeStyles({
+    icon: {
+        ":hover": {
+            [`& .${FILLED_CLASSNAME}`]: {
+                display: "none"
+            },
+            [`& .${REGULAR_CLASSNAME}`]: {
+                display: "inline"
+            }
+        }
+    }
+})
+
+const AccessTime24 = bundleIcon(AccessTimeFilled, AccessTimeRegular)
 const rootElement = document.getElementById("root");
+const styles = useIconStyles();
 ReactDOM.render(
-    <div>
-        <AccessTime24Filled aria-label="AccessTime24Filled" {...iconStyleProps}  />
-        <AccessTime24Regular aria-label="AccessTime24Regular" {...iconStyleProps} />
-        <AccessTime24 />
+    <div className={styles.icon}>
+        <AccessTime24 aria-label="AccessTime24" {...iconStyleProps} />
     </div>, 
     rootElement
     )
