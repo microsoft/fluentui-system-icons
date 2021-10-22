@@ -3,7 +3,7 @@
 
 ***IMPORTANT PLEASE READ***
 @fluentui/react-icons has been major bumped to 2.x. There are some key changes in the api and usages. The main ones are:
-- The icons are now resizeable using styling(i.e. scaling using the `height` and `width` props or using `fontSize` prop, etc).
+- The general icons are now resizeable using styling(i.e. scaling using the `height` and `width` props or using `fontSize` prop, etc). Ex: `<AccessTimeFilled fontSize={40}>`
 - There is now a more general icon offering included with the sized icons. Instead of importing `<AccessTime24Filled>`, you just import `<AccessTimeFilled>`.
 - The sized icons are still available, and are recommended if you know the specific size you want your icons to be. For the general case, the more general icons are available to you.
 
@@ -16,7 +16,7 @@ User story
 
 `@fluentui/react-icons` are SVG based icons wrapped in a React element. Because each icon is its own element, you only need to import what you need for your application. 
 
-There are two different states of each icon, `Filled` and `Regular`, so you can choose what works best for your application.
+There are two different states of each icon, `Filled` and `Regular`, so you can choose what works best for your application. These are by default 20px, and can be scaled up or down to suit your developer needs.
 
 There are also helpful interfaces that will allow you to add styling to fit the icons to your specific application.
 

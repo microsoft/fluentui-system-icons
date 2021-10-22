@@ -75,6 +75,14 @@ function processFolder(srcPath, destPath, oneSize) {
     icon: true
   }
 
+  var svgrOptsSizedIcons = {
+    template: fileTemplate,
+    expandProps: false, // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
+    svgProps: { className: '{className}'}, // In order to provide styling, className will be used
+    replaceAttrValues: { '#212121': '{primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
+    typescript: true
+  }
+
   // Build out the index for the components as we process the files
   var iconContents = 'import * as React from "react";\nimport wrapIcon from "./utils/wrapIcon";\nimport { IFluentIconsProps } from "./utils/IFluentIconsProps.types";'
 
@@ -100,7 +108,7 @@ function processFolder(srcPath, destPath, oneSize) {
 
       var iconContent = fs.readFileSync(srcFile, { encoding: "utf8" })
       
-      var jsxCode = svgr.default.sync(iconContent, svgrOpts, { filePath: file })
+      var jsxCode = oneSize ? svgr.default.sync(iconContent, svgrOpts, { filePath: file }) : svgr.default.sync(iconContent, svgrOptsSizedIcons, { filePath: file })
       var jsCode = 
 `
 const ${destFilename}Icon = (iconProps: IFluentIconsProps) => {
