@@ -33,18 +33,17 @@ jobs:
 
     - name: Bump react version patch
       run: |
-        grep -E "[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?" react-icons-sized/package.json | python3 -c """
+        grep -E "[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?" react-icons/package.json | python3 -c """
         import sys
         import os
         current_version = sys.stdin.read().strip().split(\"'\")[1]
         major,minor,asset,beta = current_version.split(".")
         asset = asset.replace("-beta","")
-        react_major = {int(major) + 1}
+        react_major = {major}
         react_minor = {minor}
         react_sized_major = {major}
         react_sized_minor = {minor}
         os.system(f'echo \"REACT_VERSION={react_major}.{react_minor}.{int(asset) + 1}-beta.{int(beta) + 1}\" >> \$GITHUB_ENV')
-        os.system(f'echo \"REACT_SIZED_VERSION={react_sized_major}.{react_sized_minor}.{int(asset) + 1}-beta.{int(beta) + 1}\" >> \$GITHUB_ENV')
         """
 
     - name: Use Node 11
@@ -162,12 +161,6 @@ jobs:
         rm packages/react-icons/package.json.bk
 
     # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in react-icons-sized/package.json
-      run: |
-        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?\"/\"version\": \"$REACT_SIZED_VERSION\"/g" packages/react-icons-sized/package.json
-        rm packages/react-icons-sized/package.json.bk
-
-    # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version number in _manifest.json
       run: |
         sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" _iconCloud/manifest.json
@@ -189,13 +182,7 @@ jobs:
       run: |
         npm install
         npm run build
-      working-directory: packages/react-icons
-
-    - name: Build React Sized library
-      run: |
-        npm install
-        npm run build
-      working-directory: packages/react-icons-sized  
+      working-directory: packages/react-icons 
 
     - uses: JS-DevTools/npm-publish@v1
       with:
@@ -208,14 +195,7 @@ jobs:
         token: ${{ secrets.NPM_TOKEN }}
         access: public
         package: packages/react-icons/package.json
-        tag: beta
-
-    - uses: JS-DevTools/npm-publish@v1
-      with:
-        token: ${{ secrets.NPM_TOKEN }}
-        access: public
-        package: packages/react-icons-sized/package.json
-        tag: beta    
+        tag: beta   
 
     - name: Update icon sheet
       run: python3 generate_icons_md.py
