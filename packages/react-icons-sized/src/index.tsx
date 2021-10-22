@@ -1,5 +1,0 @@
-export * from './icons'
-export { IFluentIconsProps } from './utils/IFluentIconsProps.types'
-export { default as wrapIcon } from './utils/wrapIcon'
-export { default as bundleIcon } from './utils/bundleIcon'
-export * from './utils/useIconState'
