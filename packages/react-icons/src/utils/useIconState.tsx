@@ -1,18 +1,18 @@
-import { IFluentIconsProps } from "./IFluentIconsProps.types";
+import { FluentIconsProps } from "./FluentIconsProps.types";
 import { makeStyles, mergeClasses } from "@fluentui/react-make-styles";
 
 const useRootStyles = makeStyles({
-    root: theme => ({
+    root: {
         display: 'inline',
         lineHeight: 0,
         verticalAlign: "middle",
         viewBox: "0 0 24 24",
 
         "@media screen and (-ms-high-contrast: black-on-white)": {fill: 'windowtext'}
-    })
+    }
 });
 
-export const useIconState = (props: IFluentIconsProps) => {
+export const useIconState = (props: FluentIconsProps) => {
     const { title, primaryFill="currentColor" } = props;
     const state = {
       ...props,

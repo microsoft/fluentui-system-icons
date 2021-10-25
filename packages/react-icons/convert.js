@@ -48,7 +48,7 @@ function processFiles(src, dest) {
   // Finally add the interface definition and then write out the index.
   var indexContents = 'export * from \'./icons\''
   indexContents += '\nexport * from \'./sizedIcons\''
-  indexContents += '\nexport { IFluentIconsProps } from \'./utils/IFluentIconsProps.types\''
+  indexContents += '\nexport { FluentIconsProps } from \'./utils/FluentIconsProps.types\''
   indexContents += '\nexport { default as wrapIcon } from \'./utils/wrapIcon\''
   indexContents += '\nexport { default as bundleIcon } from \'./utils/bundleIcon\''
   indexContents += '\nexport * from \'./utils/useIconState\''
@@ -84,7 +84,7 @@ function processFolder(srcPath, destPath, oneSize) {
   }
 
   // Build out the index for the components as we process the files
-  var iconContents = 'import * as React from "react";\nimport wrapIcon from "./utils/wrapIcon";\nimport { IFluentIconsProps } from "./utils/IFluentIconsProps.types";'
+  var iconContents = 'import * as React from "react";\nimport wrapIcon from "./utils/wrapIcon";\nimport { FluentIconsProps } from "./utils/FluentIconsProps.types";'
 
   files.forEach(function (file, index) {
     var srcFile = path.join(srcPath, file)
@@ -111,7 +111,7 @@ function processFolder(srcPath, destPath, oneSize) {
       var jsxCode = oneSize ? svgr.default.sync(iconContent, svgrOpts, { filePath: file }) : svgr.default.sync(iconContent, svgrOptsSizedIcons, { filePath: file })
       var jsCode = 
 `
-const ${destFilename}Icon = (iconProps: IFluentIconsProps) => {
+const ${destFilename}Icon = (iconProps: FluentIconsProps) => {
   const { className, primaryFill } = iconProps;
   return ${jsxCode};
 }

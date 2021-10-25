@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IFluentIconsProps } from "./IFluentIconsProps.types";
+import { FluentIconsProps } from "./FluentIconsProps.types";
 import { makeStyles, mergeClasses } from "@fluentui/react-make-styles";
 
 export const FILLED_CLASSNAME = "fluentui-icon-filled";
@@ -10,8 +10,8 @@ const useBundledIconStyles = makeStyles({
     visible: { display: "inline" }
 });
 
-const bundleIcon = (FilledIcon: React.FC<IFluentIconsProps>, RegularIcon: React.FC<IFluentIconsProps>) => {
-    const Component: React.FC<IFluentIconsProps> = (props) => {
+const bundleIcon = (FilledIcon: React.FC<FluentIconsProps>, RegularIcon: React.FC<FluentIconsProps>) => {
+    const Component: React.FC<FluentIconsProps> = (props) => {
         const { className, primaryFill = 'currentColor', filled } = props;
         const styles = useBundledIconStyles();
         return (
