@@ -40,9 +40,7 @@
     "@fluentui/react-make-styles": "^9.0.0-alpha.70"
   },
   "files": [
-    "lib/**/*.js",
-    "lib/**/*.ts",
-    "lib-cjs/**/*.js",
-    "lib-cjs/**/*.ts"
+    "lib/",
+    "lib-cjs/"
   ]
 }
