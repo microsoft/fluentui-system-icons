@@ -1,1 +1,0 @@
-export const root = "bundled_icon_span_52a63884"

@@ -20,12 +20,12 @@ xcuserdata
 
 /packages/svg-icons/icons
 packages/react-icons/intermediate
-packages/react-icons/src/components
-packages/react-icons/src/index.tsx
+packages/react-icons/example/
 packages/react-icons/lib/
+packages/react-icons/lib-cjs/
+packages/react-icons/src/icons.tsx
+packages/react-icons/src/sizedIcons.tsx
+packages/react-icons/src/index.tsx
 packages/react-icons/yarn.lock
-packages/react-icons/example/yarn.lock
-packages/react-icons/example/yarn-error.log
 packages/react-icons/package-lock.json
-packages/react-icons/example/package-lock.json
 
