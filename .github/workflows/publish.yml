@@ -43,7 +43,7 @@ jobs:
         react_minor = {minor}
         react_sized_major = {major}
         react_sized_minor = {minor}
-        os.system(f'echo \"REACT_VERSION={react_major}.{react_minor}.{int(asset) + 1}-beta.{int(beta) + 1}\" >> \$GITHUB_ENV')
+        os.system(f'echo \"REACT_VERSION={react_major}.{react_minor}.{int(asset) + 1}-beta.{beta}\" >> \$GITHUB_ENV')
         """
 
     - name: Use Node 11
