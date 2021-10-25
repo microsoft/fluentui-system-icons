@@ -25,6 +25,7 @@ packages/react-icons/lib/
 packages/react-icons/lib-cjs/
 packages/react-icons/src/icons.tsx
 packages/react-icons/src/sizedIcons.tsx
+packages/react-icons/src/index.tsx
 packages/react-icons/yarn.lock
 packages/react-icons/package-lock.json
 
