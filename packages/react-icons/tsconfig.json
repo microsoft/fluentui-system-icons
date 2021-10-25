@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "lib/esm",
+    "outDir": "lib",
     "target": "ES6",
     "module": "esnext",
     "lib": ["es6", "dom"],
@@ -13,5 +13,5 @@
     "jsx": "react"
   },
   "include": ["src"],
-  "exclude": ["lib"]
+  "exclude": ["lib", "lib-cjs"]
 }

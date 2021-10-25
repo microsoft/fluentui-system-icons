@@ -1,6 +1,12 @@
 @fluentui/react-icons
 ===
 
+***IMPORTANT PLEASE READ***
+@fluentui/react-icons has been major bumped to 2.x. There are some key changes in the api and usages. The main ones are:
+- The general icons are now resizeable using styling(i.e. scaling using the `height` and `width` props or using `fontSize` prop, etc). Ex: `<AccessTimeFilled fontSize={40}>`
+- There is now a more general icon offering included with the sized icons. Instead of importing `<AccessTime24Filled>`, you just import `<AccessTimeFilled>`.
+- The sized icons are still available, and are recommended if you know the specific size you want your icons to be. For the general case, the more general icons are available to you.
+
 (Note: For those who were consuming `@fluentui/react-icons` v 0.x, we are releasing a new set of icons under `@fluentui/react-icons` v 1.x. You can still use 0.x version for the old icons, but if you major bump to 1.x, you will be using the new icons. The Fabric MDL2 SVG Icon set that is released with v 0.x has been rereleased in `@fluentui/react-icons-mdl2`.)
 
 Fluent System Icons are a collection of familiar, friendly, and modern icons from Microsoft.
@@ -10,52 +16,65 @@ User story
 
 `@fluentui/react-icons` are SVG based icons wrapped in a React element. Because each icon is its own element, you only need to import what you need for your application. 
 
-There are different sizes of each icon, as well as `Filled` and `Regular` versions of each icon, so you can choose what works best for your application.
+There are two different states of each icon, `Filled` and `Regular`, so you can choose what works best for your application. These are by default sized to `1em`, and can be scaled up or down to suit your developer needs.
 
 There are also helpful interfaces that will allow you to add styling to fit the icons to your specific application.
 
+
+
 User flows
 ---
-In order to use these icons, simply import them as `import { [Componentname][size][state] } from @fluentui/react-icons` as follows:
+In order to use these icons, simply import them as `import { [Componentname][state] } from @fluentui/react-icons` as follows: 
+
+```tsx
+import { AccessTimeFilled } from "@fluentui/react-icons";
+```
+
+The previous icon offerings are scalable, but if you know what size you want to use for your icons, and you are not planning on using multiple sizes, it is recommended to use the sized icons. These are the same icons as the general case, but in multiple different sizes, built to look pixel perfect at those specific sizes.
+You can import the sized icons in a similar way:
 
 ```tsx
 import { AccessTime24Filled } from "@fluentui/react-icons";
 ```
-You can also style the icons using the `IFluentIconsProps`interface, with the `className` prop or the `primaryFill` prop.
 
-Finally, you can bundle the `Filled` and `Regular` versions of each icon using the `bundleIcon` method. The `bundleIcon` function returns a component with both states of the icon, and provides default styling for `hover`, `active`, and `focus` states. You can then use the same props as the regular unbundled icons.
+You can also style the icons using the `FluentIconsProps` interface, with the `className` prop or the `primaryFill` prop.
 
-If you would like to get the bundled icon without any of the default styling, then add the `filled` prop to the new component and the icon will not have any default styling. To style this new icon, simply add `.root-span.filled` and `.root-span.regular` to your user-defined stylesheet and you will be able to surface which icon you want.
+Finally, you can bundle the `Filled` and `Regular` versions of each icon into a compound icon component using the `bundleIcon` method. The `bundleIcon()` function returns a component with both states of the icon, and you can then use the classnames `FILLED_CLASSNAME` and `REGULAR_CLASSNAME` to style this compound component.
 
+If you would like to get the bundled icon without any of the default styling, then add the `filled` prop to the new component and the icon will not have any default styling. To style this new icon, add a user defined stylesheet to the icon component.
 
-```scss
-.test-span {
-    .root-span.filled {
-        display: none;
-    }
-    .root-span.regular {
-        display: inline-block;
-    }
-}
-```
 
 ```tsx
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { AccessTime24Filled, AccessTime24Regular, bundleIcon } from "@fluentui/react-icons";
-import './Test.scss';
+import { AccessTimeFilled, AccessTimeRegular, bundleIcon } from "@fluentui/react-icons";
+import { makeStyles } from "@fluentui/react-make-styles";
 
-const iconStyleProps: IFluentIconsProps = {
+
+const iconStyleProps: FluentIconsProps = {
     primaryFill: "purple",
     className: "iconClass"
 };
-const AccessTime24 = bundleIcon(AccessTime24Filled, AccessTime24Regular)
+
+const useIconStyles = makeStyles({
+    icon: {
+        ":hover": {
+            [`& .${FILLED_CLASSNAME}`]: {
+                display: "none"
+            },
+            [`& .${REGULAR_CLASSNAME}`]: {
+                display: "inline"
+            }
+        }
+    }
+})
+
+const AccessTime = bundleIcon(AccessTimeFilled, AccessTimeRegular)
 const rootElement = document.getElementById("root");
+const styles = useIconStyles();
 ReactDOM.render(
-    <div>
-        <AccessTime24Filled aria-label="AccessTime24Filled" {...iconStyleProps}  />
-        <AccessTime24 aria-label="AccessTime24" {...iconStyleProps} />
-        <AccessTime24 filled aria-label="AccessTime24" {...iconStyleProps} className="test-span"/>
+    <div className={styles.icon}>
+        <AccessTime aria-label="AccessTime" {...iconStyleProps} />
     </div>, 
     rootElement
     )
@@ -63,14 +82,7 @@ ReactDOM.render(
 
 Viewing the icons in a webpage
 ---
-If you would like to view the icons in a webpage, navigate to the example folder in your terminal, and run any one of the following commands, followed by `npm run start` (note: if on a windows machine, run these commands in windows powershell):
-
-- `npm run show16`: lists all of the size 16 icons in the package
-- `npm run show20`: lists all of the size 20 icons in the package
-- `npm run show24`: lists all of the size 24 icons in the package
-- `npm run show28`: lists all of the size 28 icons in the package
-- `npm run show48`: lists all of the size 48 icons in the package
-- `npm run showAll`: lists all of the icons in the package
+You can view the full list of available icons [here](https://github.com/microsoft/fluentui-system-icons/blob/master/icons.md)
 
 ## Appendix and FAQ
 
