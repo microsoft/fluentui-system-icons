@@ -37,8 +37,8 @@ jobs:
         import sys
         import os
         current_version = sys.stdin.read().strip().split(\"'\")[1]
-        major,minor,asset,beta = current_version.split(".")
-        asset = asset.replace("-beta","")
+        major,minor,asset,beta = current_version.split('.')
+        asset = asset.replace('-beta','')
         react_major = {major}
         react_minor = {minor}
         react_sized_major = {major}
