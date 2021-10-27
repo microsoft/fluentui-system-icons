@@ -33,10 +33,11 @@ jobs:
 
     - name: Bump react version patch
       run: |
-        grep -E "[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?" ./packages/react-icons/package.json | python3 -c """
+        grep -E "[0-9]+\.[0-9]+\.[0-9]+-beta\.[0-9]+" ./packages/react-icons/package.json | python3 -c """
         import sys
         import os
-        current_version = sys.stdin.read().strip().split(\"'\")[1]
+        current_version = sys.stdin.read().strip()strip().split(':')[1]
+        current_version = current_version.split('\"')[1]
         major,minor,asset,beta = current_version.split('.')
         asset = asset.replace('-beta','')
         react_major = {major}
