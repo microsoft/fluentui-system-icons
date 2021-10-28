@@ -3,7 +3,7 @@
   "_version": "HRKDSL",
   "collectionPaths": [
     {
-      "basePath": "/",
+      "basePath": "/assets/",
       "pathSpecifiers": [
         {
           "segment": "Extension",
