@@ -38,7 +38,7 @@ For library docs, see [android/README.md](android/README.md).
 ```ruby
 use_frameworks!
 
-pod "FluentIcons", "1.1.145"
+pod "FluentIcons", "1.1.146"
 ```
 
 #### Carthage
@@ -56,7 +56,7 @@ In the `pubspec.yaml` of your flutter project, add the following dependency:
 ```yaml
 dependencies:
   ...
-  fluentui_system_icons: ^1.1.145
+  fluentui_system_icons: ^1.1.146
 ```
 
 For library docs, see [flutter/README.md](flutter/README.md)
