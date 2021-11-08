@@ -11,7 +11,7 @@
     "generate:react": "node generate.js --source=../assets --dest=./dist --extension=svg --target=react",
     "generate:pdf": "node generate.js --source=../assets --dest=./dist --extension=pdf",
     "build:android": "npm run create:android && npm run optimize:android && npm run finalize:android",
-    "finalize:android": "find ./dist/ -type f ! -name '*_selector.xml' -exec replace '#212121' '@color/fluent_default_icon_tint' {} \\; && replace '\"http://schemas.android.com/apk/res/android\"' '\"http://schemas.android.com/apk/res/android\" android:autoMirrored=\"true\"' $(awk '$0=\"./dist/\"$0\".xml\"' rtl.txt)",
+    "finalize:android": "replace '#212121' '@color/fluent_default_icon_tint' ./dist --exclude=\"*.selector\" --recursive --quiet && replace '\"http://schemas.android.com/apk/res/android\"' '\"http://schemas.android.com/apk/res/android\" android:autoMirrored=\"true\"' $(awk '$0=\"./dist/\"$0\".xml\"' rtl.txt)",
     "create:android": "npm run generate:svg-android && find ./dist/ -type d -exec sh -c 'tools/vd-tool/bin/vd-tool -c -in {} -out {}' \\;",
     "optimize:android": "find ./dist/ -type f -name '*.svg' -delete && find ./dist/ -type d ! -name '*_selector.xml' -exec sh -c 'avocado -q {}' \\;",
     "build:ios": "npm run generate:svg",
