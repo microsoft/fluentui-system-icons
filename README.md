@@ -8,6 +8,8 @@ Fluent UI System Icons are a collection of familiar, friendly and modern icons f
 
 ## Icon List
 
+The icon set here is a reflection of those provided [in Figma](https://www.figma.com/community/file/836835755999342788/Microsoft-Fluent-System-Icons). For detailed guidance on icon creation, see the Figma file.
+
 [View the full list of icons](icons.md)
 
 ## Installation
