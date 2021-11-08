@@ -1,11 +1,11 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_text_direction_horizontal_left_20_filled.pdf",
+      "filename": "ic_fluent_text_direction_horizontal_left_20_filled.svg",
       "idiom": "universal"
     },
     {
-      "filename": "en_ic_fluent_text_direction_horizontal_left_20_filled.pdf",
+      "filename": "en_ic_fluent_text_direction_horizontal_left_20_filled.svg",
       "idiom": "universal",
       "locale": "en"
     }

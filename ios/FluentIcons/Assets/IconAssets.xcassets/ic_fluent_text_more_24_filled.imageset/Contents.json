@@ -1,11 +1,11 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_text_more_24_filled.pdf",
+      "filename": "ic_fluent_text_more_24_filled.svg",
       "idiom": "universal"
     },
     {
-      "filename": "ko_ic_fluent_text_more_24_filled.pdf",
+      "filename": "ko_ic_fluent_text_more_24_filled.svg",
       "idiom": "universal",
       "locale": "ko"
     }
