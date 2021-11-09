@@ -150,27 +150,11 @@ jobs:
         package: packages/react-icons/package.json
         tag: beta   
 
-    - name: Update icon sheet
-      run: python3 generate_icons_md.py
-    
-    - name: Config git credentials
-      run: git config user.email "flubuild@microsoft.com" && git config user.name "Fluent Build System"
-
-    - name: Commit version number change
-      run: |
-        git add -A
-        git commit -m "Release $NEW_VERSION"
-        
-    - name: Tag release
-      run: git tag "$NEW_VERSION"
-
-    - name: Push release
-      run: |
-        REMOTE_REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-        git push $REMOTE_REPO HEAD:master --follow-tags --tags
-
     ## Android
     - name: Run Android generate script
+      env:
+        # see https://github.com/JS-DevTools/npm-publish/issues/15
+        INPUT_TOKEN: ''
       run: npm run deploy:android
       working-directory: importer
 
@@ -212,6 +196,25 @@ jobs:
     - name: Generate BUILD.gn file for Android
       run: python3 generate_build_gn_android.py
       working-directory: importer
+
+    - name: Update icon sheet
+      run: python3 generate_icons_md.py
+    
+    - name: Config git credentials
+      run: git config user.email "flubuild@microsoft.com" && git config user.name "Fluent Build System"
+
+    - name: Commit version number change
+      run: |
+        git add -A
+        git commit -m "Release $NEW_VERSION"
+        
+    - name: Tag release
+      run: git tag "$NEW_VERSION"
+
+    - name: Push release
+      run: |
+        REMOTE_REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+        git push $REMOTE_REPO HEAD:master --follow-tags --tags
 
   publish-android-demo:
     name: Publish Android demo app
