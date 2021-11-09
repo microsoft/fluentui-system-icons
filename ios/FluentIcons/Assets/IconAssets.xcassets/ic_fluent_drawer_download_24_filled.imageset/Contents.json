@@ -1,0 +1,15 @@
+{
+  "images": [
+    {
+      "filename": "ic_fluent_drawer_download_24_filled.svg",
+      "idiom": "universal"
+    }
+  ],
+  "info": {
+    "author": "xcode",
+    "version": 1
+  },
+  "properties": {
+    "template-rendering-intent": "template"
+  }
+}
