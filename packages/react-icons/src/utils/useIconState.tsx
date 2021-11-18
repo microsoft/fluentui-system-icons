@@ -5,8 +5,6 @@ const useRootStyles = makeStyles({
     root: {
         display: 'inline',
         lineHeight: 0,
-        verticalAlign: "middle",
-        viewBox: "0 0 24 24",
 
         "@media screen and (-ms-high-contrast: black-on-white)": {fill: 'windowtext'}
     }

@@ -52,6 +52,7 @@ function processFiles(src, dest) {
   indexContents += '\nexport { default as wrapIcon } from \'./utils/wrapIcon\''
   indexContents += '\nexport { default as bundleIcon } from \'./utils/bundleIcon\''
   indexContents += '\nexport * from \'./utils/useIconState\''
+  indexContents += '\nexport * from \'./utils/constants\''
   fs.writeFileSync(indexPath, indexContents, (err) => {
     if (err) throw err;
   });
