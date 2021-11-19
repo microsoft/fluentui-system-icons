@@ -5,9 +5,9 @@
       "idiom": "universal"
     },
     {
-      "filename": "da_ic_fluent_text_sort_ascending_16_filled.svg",
+      "filename": "kk_ic_fluent_text_sort_ascending_16_filled.svg",
       "idiom": "universal",
-      "locale": "da"
+      "locale": "kk"
     },
     {
       "filename": "fi_ic_fluent_text_sort_ascending_16_filled.svg",
@@ -15,9 +15,24 @@
       "locale": "fi"
     },
     {
+      "filename": "bg_ic_fluent_text_sort_ascending_16_filled.svg",
+      "idiom": "universal",
+      "locale": "bg"
+    },
+    {
       "filename": "gr_ic_fluent_text_sort_ascending_16_filled.svg",
       "idiom": "universal",
       "locale": "gr"
+    },
+    {
+      "filename": "ko_ic_fluent_text_sort_ascending_16_filled.svg",
+      "idiom": "universal",
+      "locale": "ko"
+    },
+    {
+      "filename": "ru_ic_fluent_text_sort_ascending_16_filled.svg",
+      "idiom": "universal",
+      "locale": "ru"
     },
     {
       "filename": "sl_ic_fluent_text_sort_ascending_16_filled.svg",
@@ -30,34 +45,19 @@
       "locale": "se"
     },
     {
-      "filename": "ko_ic_fluent_text_sort_ascending_16_filled.svg",
-      "idiom": "universal",
-      "locale": "ko"
-    },
-    {
-      "filename": "en_ic_fluent_text_sort_ascending_16_filled.svg",
-      "idiom": "universal",
-      "locale": "en"
-    },
-    {
       "filename": "sr_ic_fluent_text_sort_ascending_16_filled.svg",
       "idiom": "universal",
       "locale": "sr"
     },
     {
-      "filename": "ru_ic_fluent_text_sort_ascending_16_filled.svg",
+      "filename": "da_ic_fluent_text_sort_ascending_16_filled.svg",
       "idiom": "universal",
-      "locale": "ru"
+      "locale": "da"
     },
     {
-      "filename": "kk_ic_fluent_text_sort_ascending_16_filled.svg",
+      "filename": "en_ic_fluent_text_sort_ascending_16_filled.svg",
       "idiom": "universal",
-      "locale": "kk"
-    },
-    {
-      "filename": "bg_ic_fluent_text_sort_ascending_16_filled.svg",
-      "idiom": "universal",
-      "locale": "bg"
+      "locale": "en"
     }
   ],
   "info": {

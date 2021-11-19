@@ -122,7 +122,7 @@
     }
   ],
   "iconType": "Svg",
-  "lastUpdated": "2021-11-09T20:35Z",
+  "lastUpdated": "2021-11-19T20:53Z",
   "libraryInfoKey": "3821b375b",
   "libraryName": "Fluent System Library",
   "libraryProperties": {
@@ -143,5 +143,5 @@
     "metadata-2-sorting" : "None",
     "requestIconUrl": "https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR18J4l1dADVOphobsZW8ExlUNVZTMFpJNVk4SURPWVNDSlZDNFFSWks5VS4u"
   },
-  "libraryVersion": "1.1.150"
+  "libraryVersion": "1.1.151"
 }
