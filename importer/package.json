@@ -16,7 +16,7 @@
     "optimize:android": "find ./dist/ -type f -name '*.svg' -delete && find ./dist/ -type d ! -name '*_selector.xml' -exec sh -c 'avocado -q {}' \\;",
     "build:ios": "npm run generate:svg",
     "build:react": "npm run generate:react",
-    "deploy:android": "npm run build:android && rm -rf ../android/library/src/main/res/drawable && mkdir ../android/library/src/main/res/drawable && find ./dist/ -type f -name \"*.xml\" -exec cp {} ../android/library/src/main/res/drawable \\; && npm run clean",
+    "deploy:android": "npm run build:android && rm -rf ../android/library/src/main/res/drawable && mkdir ../android/library/src/main/res/drawable && find ./dist/ -type f -name \"*.xml\" -maxdepth 1 -exec cp {} ../android/library/src/main/res/drawable \\; && npm run clean",
     "deploy:react": "npm run build:react && rm -rf ../react/src/components && mkdir ../react/src/components && find ./dist/ -type f -name \"*.tsx\" -exec cp {} ../react/src/components \\; && npm run clean",
     "deploy:ios": "npm run build:ios && python3 process_ios_assets.py && npm run clean",
     "generate:font-regular": "icon-font-generator dist/*_regular.svg -o dist/fonts --name FluentSystemIcons-Regular --types ttf --codepoints ../fonts/FluentSystemIcons-Regular.json --height 500",
