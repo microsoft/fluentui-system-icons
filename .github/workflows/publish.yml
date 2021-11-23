@@ -40,7 +40,7 @@ jobs:
         current_version = current_version.split('\"')[1]
         major,minor,asset,beta = current_version.split('.')
         asset = asset.replace('-beta','')
-        os.system(f'echo \"REACT_VERSION={major}.{minor}.{int(asset) + 1}-beta.{int(beta) + 1}\" >> \$GITHUB_ENV')
+        os.system(f'echo \"REACT_VERSION={major}.{minor}.{int(asset) + 1}-beta.{beta}\" >> \$GITHUB_ENV')
         """
 
     - name: Use Node 11
@@ -112,6 +112,18 @@ jobs:
       run: |
         sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-icons/package.json
         rm packages/react-icons/package.json.bk
+
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in _manifest.json
+      run: |
+        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" _iconCloud/manifest.json
+        rm _iconCloud/manifest.json.bk
+
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace timestamp in _manifest.json
+      run: |
+        sed -i.bk -r "s/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]Z/$(date -u +%Y-%m-%dT%RZ)/" _iconCloud/manifest.json
+        rm _iconCloud/manifest.json.bk
 
     - name: Build SVG library
       run: |
