@@ -39,7 +39,7 @@ import { AccessTime24Filled } from "@fluentui/react-icons";
 
 You can also style the icons using the `FluentIconsProps` interface, with the `className` prop or the `primaryFill` prop.
 
-Finally, you can bundle the `Filled` and `Regular` versions of each icon into a compound icon component using the `bundleIcon` method. The `bundleIcon()` function returns a component with both states of the icon, and you can then use the classnames `FILLED_CLASSNAME` and `REGULAR_CLASSNAME` to style this compound component.
+Finally, you can bundle the `Filled` and `Regular` versions of each icon into a compound icon component using the `bundleIcon` method. The `bundleIcon()` function returns a component with both states of the icon, and you can then use the classnames `iconFilledClassName` and `iconRegularClassName` to style this compound component.
 
 If you would like to get the bundled icon without any of the default styling, then add the `filled` prop to the new component and the icon will not have any default styling. To style this new icon, add a user defined stylesheet to the icon component.
 
@@ -47,7 +47,13 @@ If you would like to get the bundled icon without any of the default styling, th
 ```tsx
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { AccessTimeFilled, AccessTimeRegular, bundleIcon } from "@fluentui/react-icons";
+import { 
+    AccessTimeFilled, 
+    AccessTimeRegular,
+    bundleIcon,
+    iconFilledClassName,
+    iconRegularClassName
+} from "@fluentui/react-icons";
 import { makeStyles } from "@fluentui/react-make-styles";
 
 
@@ -59,10 +65,10 @@ const iconStyleProps: FluentIconsProps = {
 const useIconStyles = makeStyles({
     icon: {
         ":hover": {
-            [`& .${FILLED_CLASSNAME}`]: {
+            [`& .${iconFilledClassName}`]: {
                 display: "none"
             },
-            [`& .${REGULAR_CLASSNAME}`]: {
+            [`& .${iconRegularClassName}`]: {
                 display: "inline"
             }
         }
