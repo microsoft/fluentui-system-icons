@@ -1,2 +1,2 @@
-export const FILLED_CLASSNAME = "fui-Icon-filled";
-export const REGULAR_CLASSNAME = "fui-Icon-regular";
+export const iconFilledClassName = "fui-Icon-filled";
+export const iconRegularClassName = "fui-Icon-regular";

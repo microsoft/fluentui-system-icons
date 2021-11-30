@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as Constants from "./constants";
+import { iconFilledClassName, iconRegularClassName } from "./constants";
 import { FluentIconsProps } from "./FluentIconsProps.types";
 import { makeStyles, mergeClasses } from "@fluentui/react-make-styles";
 
@@ -19,7 +19,7 @@ const bundleIcon = (FilledIcon: React.FC<FluentIconsProps>, RegularIcon: React.F
                     className={mergeClasses(
                         styles.root,
                         filled && styles.visible,
-                        Constants.FILLED_CLASSNAME,
+                        iconFilledClassName,
                         className
                     )}
                     primaryFill={primaryFill}
@@ -29,7 +29,7 @@ const bundleIcon = (FilledIcon: React.FC<FluentIconsProps>, RegularIcon: React.F
                     className={mergeClasses(
                       styles.root,
                       !filled && styles.visible,
-                      Constants.REGULAR_CLASSNAME,
+                      iconRegularClassName,
                       className
                     )}
                     primaryFill={primaryFill}
