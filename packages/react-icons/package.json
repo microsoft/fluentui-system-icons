@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-icons",
-  "version": "2.0.152-beta.3",
+  "version": "2.0.154-beta.5",
   "sideEffects": false,
   "main": "lib-cjs/index.js",
   "module": "lib/index.js",
@@ -20,8 +20,8 @@
     "optimize": "svgo --folder=./intermediate --precision=2 --disable=removeViewBox,mergePaths",
     "unfill": "find ./intermediate -type f -name \"*.svg\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./intermediate -type f -name \"*.bak\" -delete",
     "build": "npm run copy && npm run optimize && npm run unfill && npm run convert && npm run cleanSvg && npm run build:esm && npm run build:cjs",
-    "build:cjs": "tsc --module commonjs --outDir lib-cjs && babel lib-cjs --out-dir lib-cjs --plugins=module:@fluentui/babel-make-styles",
-    "build:esm": "tsc && babel lib --out-dir lib --plugins=module:@fluentui/babel-make-styles"
+    "build:cjs": "tsc --module commonjs --outDir lib-cjs && babel lib-cjs --out-dir lib-cjs",
+    "build:esm": "tsc && babel lib --out-dir lib"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.0",
