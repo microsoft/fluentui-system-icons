@@ -1,0 +1,4 @@
+{
+  "plugins": ["module:@fluentui/babel-make-styles"],
+  "compact": false
+}
