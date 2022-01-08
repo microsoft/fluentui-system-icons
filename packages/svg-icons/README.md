@@ -10,6 +10,22 @@ npm install @fluentui/svg-icons
 
 ## Usage
 
+The library offers icons in SVG format; the icon names are structured as: 
+> `[name]_[size]_[style]`
+
+* `name` - Name of the icon from [assets](../assets) that is all lowercased and underscore separated.
+* `size` - Size of the icon that is one of 16/20/24/28/48. Note that some icons do not have all sizes available yet. Our designers are working to add missing ones to complete the collection.
+* `style` - Style of the icon that is one of `regular`, `filled`. See the section below for details.
+
+### Icon styles
+The library offers icons in two styles, `regular` and `filled`
+
+regular | filled
+--------|-------
+![mail_24_regular](../../art/ic_fluent_mail_regular.png)|![mail_24_filled](../../art/ic_fluent_mail_filled.png)
+
+## Implementation
+
 A common use case is to use [svg-inline-loader](https://www.npmjs.com/package/svg-inline-loader) in your Webpack config.
 
 ```bash
