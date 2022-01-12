@@ -28,44 +28,14 @@ processFiles(SRC_PATH, DEST_PATH)
 
 function processFiles(src, dest) {
   /** @type string[] */
-  const indexContents = [];
-
+  let  indexContents = [];
+  indexContents.push(`import * as React from "react";`)
+  indexContents.push(`import { FluentIconsProps } from "./utils/FluentIconsProps.types";`)
+  indexContents.push(`import wrapIcon from "./utils/wrapIcon";`)
   // make file for resizeable icons
-  const iconPath = path.join(dest, 'icons')
-  const iconContents = processFolder(src, dest, true)
+  indexContents = indexContents.concat(processFolder(src, dest, true))
+  indexContents = indexContents.concat(processFolder(src, dest, false))
 
-  if (fs.existsSync(iconPath)) {
-    fs.rmSync(iconPath, { recursive: true, force: true } );
-  }
-  fs.mkdirSync(iconPath);
-
-  iconContents.forEach((chunk, i) => {
-    const chunkFileName = `chunk-${i}`
-    const chunkPath = path.resolve(iconPath, `${chunkFileName}.tsx`);
-    indexContents.push(`export * from './icons/${chunkFileName}'`);
-    fs.writeFileSync(chunkPath, chunk, (err) => {
-      if (err) throw err;
-    });
-  });
-
-  // make file for sized icons
-  const sizedIconPath = path.join(dest, 'sizedIcons');
-  const sizedIconContents = processFolder(src, dest, false)
-  if (fs.existsSync(sizedIconPath)) {
-    fs.rmSync(sizedIconPath, { recursive: true, force: true } );
-  }
-  fs.mkdirSync(sizedIconPath);
-
-  sizedIconContents.forEach((chunk, i) => {
-    const chunkFileName = `chunk-${i}`
-    const chunkPath = path.resolve(sizedIconPath, `${chunkFileName}.tsx`);
-    indexContents.push(`export * from './sizedIcons/${chunkFileName}'`);
-    fs.writeFileSync(chunkPath, chunk, (err) => {
-      if (err) throw err;
-    });
-  });
-
-  const indexPath = path.join(dest, 'index.tsx')
   // Finally add the interface definition and then write out the index.
   indexContents.push('export { FluentIconsProps } from \'./utils/FluentIconsProps.types\'');
   indexContents.push('export { default as wrapIcon } from \'./utils/wrapIcon\'');
@@ -73,6 +43,7 @@ function processFiles(src, dest) {
   indexContents.push('export * from \'./utils/useIconState\'');
   indexContents.push('export * from \'./utils/constants\'');
 
+  const indexPath = path.join(dest, 'index.tsx')
   fs.writeFileSync(indexPath, indexContents.join('\n'), (err) => {
     if (err) throw err;
   });
@@ -134,10 +105,10 @@ function processFolder(srcPath, destPath, oneSize) {
       var jsxCode = oneSize ? svgr.default.sync(iconContent, svgrOpts, { filePath: file }) : svgr.default.sync(iconContent, svgrOptsSizedIcons, { filePath: file })
       var jsCode = 
 `
-const ${destFilename}Icon = (iconProps: FluentIconsProps) => {
-  const { className, primaryFill } = iconProps;
-  return ${jsxCode};
-}
+const ${destFilename}Icon = ((iconProps: FluentIconsProps) => {
+    const { className, primaryFill } = iconProps;
+    return ${jsxCode} as unknown as JSX.Element;
+}) as unknown as (iconProps: FluentIconsProps) => JSX.Element
 
 export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename}Icon({}), '${destFilename}');
       `
@@ -148,21 +119,8 @@ export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename
 
   // chunk all icons into separate files to keep build reasonably fast
   /** @type string[][] */
-  const iconChunks = [];
-  while(iconExports.length > 0) {
-    iconChunks.push(iconExports.splice(0, 500));
-  }
-
-  for(const chunk of iconChunks) {
-    chunk.unshift(`import wrapIcon from "../utils/wrapIcon";`)
-    chunk.unshift(`import { FluentIconsProps } from "../utils/FluentIconsProps.types";`)
-    chunk.unshift(`import * as React from "react";`)
-  }
-
-  /** @type string[] */
-  const chunkContent = iconChunks.map(chunk => chunk.join('\n'));
-
-  return chunkContent;
+  const iconFileContent = iconExports
+  return iconFileContent.join("\n");
 }
 
 function fileTemplate(
