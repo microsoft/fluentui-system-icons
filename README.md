@@ -8,7 +8,9 @@ Fluent UI System Icons are a collection of familiar, friendly and modern icons f
 
 ## Icon List
 
-[View the full list of icons](icons.md)
+[View the full list of regular icons](icons_regular.md)
+
+[View the full list of filled icons](icons_filled.md)
 
 ## Installation
 
