@@ -88,7 +88,7 @@ ReactDOM.render(
 
 Viewing the icons in a webpage
 ---
-You can view the full list of available icons [here](https://github.com/microsoft/fluentui-system-icons/blob/master/icons.md)
+You can view the full list of available icons by type: [regular](https://github.com/microsoft/fluentui-system-icons/blob/master/icons_regular.md) or [filled](https://github.com/microsoft/fluentui-system-icons/blob/master/icons_filled.md)
 
 ## Appendix and FAQ
 

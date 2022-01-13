@@ -10,9 +10,9 @@ def to_camel_case(snake_str):
     return components[0] + "".join(x.title() for x in components[1:])
 
 
-with open("icons.md", "w") as icons_md:
+def write_file(icons_md, weight_type):
     icons_md.write("<!-- This file is generated using generate_icons_md.py -->\n")
-    icons_md.write("# Icons\n")
+    icons_md.write(f"# {weight_type.title()} Icons\n")
     icons_md.write("\n")
     icons_md.write("|Name|Icon|iOS|Android|\n")
     icons_md.write("|---|---|---|---|\n")
@@ -42,9 +42,17 @@ with open("icons.md", "w") as icons_md:
             largest_svg_icon_path_by_weight[weight] = filename
 
         for weight in sorted(weights, reverse=True):
+            if weight != weight_type:
+                continue
             icons_md.write(
-                f"|{asset_dir} ({weight.title()})"
+                f"|{asset_dir}"
                 f'|<img src="{svg_dir}/{largest_svg_icon_path_by_weight[weight]}?raw=true" width="24" height="24">'
                 f'|{"<br />".join(ios_references_by_weight[weight])}'
                 f'|{"<br />".join(android_references_by_weight[weight])}|\n'
             )
+
+with open("icons_filled.md", "w") as icons_filled_md:
+    write_file(icons_filled_md, "filled")
+
+with open("icons_regular.md", "w") as icons_regular_md:
+    write_file(icons_regular_md, "regular")
