@@ -5,9 +5,9 @@
       "idiom": "universal"
     },
     {
-      "filename": "eu_ic_fluent_text_italic_24_regular.svg",
+      "filename": "da_ic_fluent_text_italic_24_regular.svg",
       "idiom": "universal",
-      "locale": "eu"
+      "locale": "da"
     },
     {
       "filename": "gl_ic_fluent_text_italic_24_regular.svg",
@@ -15,14 +15,54 @@
       "locale": "gl"
     },
     {
-      "filename": "hu_ic_fluent_text_italic_24_regular.svg",
+      "filename": "tr_ic_fluent_text_italic_24_regular.svg",
       "idiom": "universal",
-      "locale": "hu"
+      "locale": "tr"
+    },
+    {
+      "filename": "en_ic_fluent_text_italic_24_regular.svg",
+      "idiom": "universal",
+      "locale": "en"
+    },
+    {
+      "filename": "de_ic_fluent_text_italic_24_regular.svg",
+      "idiom": "universal",
+      "locale": "de"
     },
     {
       "filename": "kk_ic_fluent_text_italic_24_regular.svg",
       "idiom": "universal",
       "locale": "kk"
+    },
+    {
+      "filename": "nn_ic_fluent_text_italic_24_regular.svg",
+      "idiom": "universal",
+      "locale": "nn"
+    },
+    {
+      "filename": "it_ic_fluent_text_italic_24_regular.svg",
+      "idiom": "universal",
+      "locale": "it"
+    },
+    {
+      "filename": "hu_ic_fluent_text_italic_24_regular.svg",
+      "idiom": "universal",
+      "locale": "hu"
+    },
+    {
+      "filename": "lt_ic_fluent_text_italic_24_regular.svg",
+      "idiom": "universal",
+      "locale": "lt"
+    },
+    {
+      "filename": "nb_ic_fluent_text_italic_24_regular.svg",
+      "idiom": "universal",
+      "locale": "nb"
+    },
+    {
+      "filename": "ca_ic_fluent_text_italic_24_regular.svg",
+      "idiom": "universal",
+      "locale": "ca"
     },
     {
       "filename": "es_ic_fluent_text_italic_24_regular.svg",
@@ -35,59 +75,14 @@
       "locale": "lv"
     },
     {
-      "filename": "nb_ic_fluent_text_italic_24_regular.svg",
+      "filename": "eu_ic_fluent_text_italic_24_regular.svg",
       "idiom": "universal",
-      "locale": "nb"
+      "locale": "eu"
     },
     {
-      "filename": "ru_ic_fluent_text_italic_24_regular.svg",
+      "filename": "sl_ic_fluent_text_italic_24_regular.svg",
       "idiom": "universal",
-      "locale": "ru"
-    },
-    {
-      "filename": "uk_ic_fluent_text_italic_24_regular.svg",
-      "idiom": "universal",
-      "locale": "uk"
-    },
-    {
-      "filename": "sv_ic_fluent_text_italic_24_regular.svg",
-      "idiom": "universal",
-      "locale": "sv"
-    },
-    {
-      "filename": "en_ic_fluent_text_italic_24_regular.svg",
-      "idiom": "universal",
-      "locale": "en"
-    },
-    {
-      "filename": "lt_ic_fluent_text_italic_24_regular.svg",
-      "idiom": "universal",
-      "locale": "lt"
-    },
-    {
-      "filename": "bg_ic_fluent_text_italic_24_regular.svg",
-      "idiom": "universal",
-      "locale": "bg"
-    },
-    {
-      "filename": "de_ic_fluent_text_italic_24_regular.svg",
-      "idiom": "universal",
-      "locale": "de"
-    },
-    {
-      "filename": "sr_ic_fluent_text_italic_24_regular.svg",
-      "idiom": "universal",
-      "locale": "sr"
-    },
-    {
-      "filename": "da_ic_fluent_text_italic_24_regular.svg",
-      "idiom": "universal",
-      "locale": "da"
-    },
-    {
-      "filename": "ca_ic_fluent_text_italic_24_regular.svg",
-      "idiom": "universal",
-      "locale": "ca"
+      "locale": "sl"
     },
     {
       "filename": "no_ic_fluent_text_italic_24_regular.svg",
@@ -95,24 +90,9 @@
       "locale": "no"
     },
     {
-      "filename": "it_ic_fluent_text_italic_24_regular.svg",
+      "filename": "bg_ic_fluent_text_italic_24_regular.svg",
       "idiom": "universal",
-      "locale": "it"
-    },
-    {
-      "filename": "nn_ic_fluent_text_italic_24_regular.svg",
-      "idiom": "universal",
-      "locale": "nn"
-    },
-    {
-      "filename": "tr_ic_fluent_text_italic_24_regular.svg",
-      "idiom": "universal",
-      "locale": "tr"
-    },
-    {
-      "filename": "sl_ic_fluent_text_italic_24_regular.svg",
-      "idiom": "universal",
-      "locale": "sl"
+      "locale": "bg"
     },
     {
       "filename": "et_ic_fluent_text_italic_24_regular.svg",
@@ -123,6 +103,26 @@
       "filename": "ko_ic_fluent_text_italic_24_regular.svg",
       "idiom": "universal",
       "locale": "ko"
+    },
+    {
+      "filename": "sr_ic_fluent_text_italic_24_regular.svg",
+      "idiom": "universal",
+      "locale": "sr"
+    },
+    {
+      "filename": "sv_ic_fluent_text_italic_24_regular.svg",
+      "idiom": "universal",
+      "locale": "sv"
+    },
+    {
+      "filename": "ru_ic_fluent_text_italic_24_regular.svg",
+      "idiom": "universal",
+      "locale": "ru"
+    },
+    {
+      "filename": "uk_ic_fluent_text_italic_24_regular.svg",
+      "idiom": "universal",
+      "locale": "uk"
     }
   ],
   "info": {
