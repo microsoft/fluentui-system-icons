@@ -15,14 +15,14 @@
       "locale": "zh_cn"
     },
     {
-      "filename": "zh_tw_ic_fluent_text_proofing_tools_24_regular.svg",
-      "idiom": "universal",
-      "locale": "zh_tw"
-    },
-    {
       "filename": "ko_ic_fluent_text_proofing_tools_24_regular.svg",
       "idiom": "universal",
       "locale": "ko"
+    },
+    {
+      "filename": "zh_tw_ic_fluent_text_proofing_tools_24_regular.svg",
+      "idiom": "universal",
+      "locale": "zh_tw"
     }
   ],
   "info": {
