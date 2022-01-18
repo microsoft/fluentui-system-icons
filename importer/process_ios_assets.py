@@ -189,12 +189,15 @@ def process_assets():
         gn_file.write("import(\"//build/config/ios/asset_catalog.gni\")\n\n")
 
         for file_name in file_names:
-            icon_name = file_name.replace(IMAGE_FORMAT, '')
+            imageset_name = get_icon_name(file_name)
+            imageset_folder_path = ios_directory + '/FluentIcons/Assets/IconAssets.xcassets/' + imageset_name + '.imageset'
 
-            gn_file.write("imageset(\"{}\")".format(icon_name) + " {\n")
+            gn_file.write("imageset(\"{}\")".format(imageset_name) + " {\n")
             gn_file.write("  sources = [\n")
-            gn_file.write("    \"FluentIcons/Assets/IconAssets.xcassets/{}.imageset/Contents.json\"".format(icon_name) + ",\n")
-            gn_file.write("    \"FluentIcons/Assets/IconAssets.xcassets/{icon_name}.imageset/{icon_name}{image_format}\"".format(icon_name=icon_name, image_format=IMAGE_FORMAT) + ",\n")
+            gn_file.write("    \"FluentIcons/Assets/IconAssets.xcassets/{}.imageset/Contents.json\"".format(imageset_name) + ",\n")
+            for imageset_file in os.listdir(imageset_folder_path):
+                if os.path.splitext(imageset_file)[1] == IMAGE_FORMAT:
+                    gn_file.write("    \"FluentIcons/Assets/IconAssets.xcassets/{imageset_name}.imageset/{icon_file_name}\"".format(imageset_name=imageset_name, icon_file_name=imageset_file) + ",\n")
             gn_file.write("  ]\n")
             gn_file.write("}\n\n")
     swift_enum_path = os.path.join(ios_directory, LIBRARY_NAME + "s", "Classes", LIBRARY_NAME + ".swift")
