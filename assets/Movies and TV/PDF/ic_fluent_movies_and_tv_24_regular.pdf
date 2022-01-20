@@ -10,7 +10,7 @@ stream
 /DeviceRGB CS
 /DeviceRGB cs
 q
-1.000000 0.000000 -0.000000 1.000000 2.370850 1.703125 cm
+1.000000 0.000000 -0.000000 1.000000 2.371094 1.703125 cm
 0.129412 0.129412 0.129412 scn
 17.357853 18.379833 m
 17.408854 18.220184 l
@@ -100,8 +100,8 @@ endobj
 endobj
 
 6 0 obj
-  << /Type /Catalog
-     /Pages 5 0 R
+  << /Pages 5 0 R
+     /Type /Catalog
   >>
 endobj
 
