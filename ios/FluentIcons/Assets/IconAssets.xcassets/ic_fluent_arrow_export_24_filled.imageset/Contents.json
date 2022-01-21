@@ -4,6 +4,11 @@
       "filename": "ic_fluent_arrow_export_ltr_24_filled.svg",
       "idiom": "universal",
       "language-direction": "left-to-right"
+    },
+    {
+      "filename": "ic_fluent_arrow_export_rtl_24_filled.svg",
+      "idiom": "universal",
+      "language-direction": "right-to-left"
     }
   ],
   "info": {
