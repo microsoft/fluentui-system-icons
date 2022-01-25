@@ -26,8 +26,8 @@
   "devDependencies": {
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
-    "@fluentui/babel-make-styles": "^9.0.0-beta.3",
-    "@fluentui/react-make-styles": "^9.0.0-beta.3",
+    "@griffel/babel-preset": "^1.0.0",
+    "@griffel/react": "^1.0.0",
     "@svgr/core": "^5.5.0",
     "@types/react": "^17.0.2",
     "glob": "^7.1.7",
@@ -40,7 +40,7 @@
     "yargs": "^14.0.0"
   },
   "peerDependencies": {
-    "@fluentui/react-make-styles": "^9.0.0-beta.3"
+    "@griffel/react": "^1.0.0"
   },
   "files": [
     "lib/",
