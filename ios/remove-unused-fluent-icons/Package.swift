@@ -12,7 +12,7 @@ let package = Package(
     .executable(name: "remove-unused-fluent-icons", targets: ["remove-unused-fluent-icons"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/apple/swift-argument-parser", from: "0.0.5"),
+    .package(url: "https://github.com/apple/swift-argument-parser", from: "1.0.0"),
   ],
   targets: [
     .target(
