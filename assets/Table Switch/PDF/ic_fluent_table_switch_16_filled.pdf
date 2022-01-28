@@ -1,15 +1,11 @@
 %PDF-1.7
 
 1 0 obj
-  << /Type /XObject
-     /Length 2 0 R
-     /Group << /Type /Group
-               /S /Transparency
-            >>
-     /Subtype /Form
-     /Resources << >>
-     /BBox [ 0.000000 0.000000 16.000000 16.000000 ]
-  >>
+  << >>
+endobj
+
+2 0 obj
+  << /Length 3 0 R >>
 stream
 /DeviceRGB CS
 /DeviceRGB cs
@@ -42,12 +38,11 @@ q
 9.048816 11.390537 9.048816 11.707119 8.853554 11.902382 c
 6.853553 13.902382 l
 h
-2.000000 4.048828 m
-2.000000 4.134246 l
-2.527659 3.948154 3.138620 4.066130 3.560660 4.488169 c
+5.000000 4.048828 m
+2.500000 4.048829 l
+2.883883 4.048829 3.267767 4.195276 3.560660 4.488169 c
 5.000000 5.927508 l
 5.000000 4.048828 l
-2.000000 4.048828 l
 h
 6.000000 4.048828 m
 6.000000 8.048828 l
@@ -58,8 +53,7 @@ h
 10.000000 9.048828 m
 8.121321 9.048828 l
 9.560659 10.488169 l
-9.982698 10.910208 10.100674 11.521169 9.914582 12.048828 c
-10.000000 12.048828 l
+9.853552 10.781061 10.000000 11.164945 10.000000 11.548828 c
 10.000000 9.048828 l
 h
 5.000000 3.048828 m
@@ -102,112 +96,47 @@ Q
 endstream
 endobj
 
-2 0 obj
-  2215
-endobj
-
 3 0 obj
-  << /Type /XObject
-     /Length 4 0 R
-     /Group << /Type /Group
-               /S /Transparency
-            >>
-     /Subtype /Form
-     /Resources << >>
-     /BBox [ 0.000000 0.000000 16.000000 16.000000 ]
-  >>
-stream
-/DeviceRGB CS
-/DeviceRGB cs
-q
-1.000000 0.000000 -0.000000 1.000000 0.000000 0.000000 cm
-0.000000 0.000000 0.000000 scn
-0.000000 16.000000 m
-16.000000 16.000000 l
-16.000000 0.000000 l
-0.000000 0.000000 l
-0.000000 16.000000 l
-h
-f
-n
-Q
-
-endstream
+  2174
 endobj
 
 4 0 obj
-  232
-endobj
-
-5 0 obj
-  << /XObject << /X1 1 0 R >>
-     /ExtGState << /E1 << /SMask << /Type /Mask
-                                    /G 3 0 R
-                                    /S /Alpha
-                                 >>
-                          /Type /ExtGState
-                       >> >>
-  >>
-endobj
-
-6 0 obj
-  << /Length 7 0 R >>
-stream
-/DeviceRGB CS
-/DeviceRGB cs
-q
-/E1 gs
-/X1 Do
-Q
-
-endstream
-endobj
-
-7 0 obj
-  46
-endobj
-
-8 0 obj
   << /Annots []
      /Type /Page
      /MediaBox [ 0.000000 0.000000 16.000000 16.000000 ]
-     /Resources 5 0 R
-     /Contents 6 0 R
-     /Parent 9 0 R
+     /Resources 1 0 R
+     /Contents 2 0 R
+     /Parent 5 0 R
   >>
 endobj
 
-9 0 obj
-  << /Kids [ 8 0 R ]
+5 0 obj
+  << /Kids [ 4 0 R ]
      /Count 1
      /Type /Pages
   >>
 endobj
 
-10 0 obj
-  << /Pages 9 0 R
+6 0 obj
+  << /Pages 5 0 R
      /Type /Catalog
   >>
 endobj
 
 xref
-0 11
+0 7
 0000000000 65535 f
 0000000010 00000 n
-0000002473 00000 n
-0000002496 00000 n
-0000002976 00000 n
-0000002998 00000 n
-0000003296 00000 n
-0000003398 00000 n
-0000003419 00000 n
-0000003592 00000 n
-0000003666 00000 n
+0000000034 00000 n
+0000002264 00000 n
+0000002287 00000 n
+0000002460 00000 n
+0000002534 00000 n
 trailer
 << /ID [ (some) (id) ]
-   /Root 10 0 R
-   /Size 11
+   /Root 6 0 R
+   /Size 7
 >>
 startxref
-3726
+2593
 %%EOF
