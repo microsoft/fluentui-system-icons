@@ -64067,252 +64067,192 @@ imageset("ic_fluent_text_header_3_24_regular") {
 imageset("ic_fluent_text_indent_decrease_16_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_16_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_16_filled.imageset/ic_fluent_text_indent_decrease_16_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_16_filled.imageset/ic_fluent_text_indent_decrease_ltr_16_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_16_filled.imageset/ic_fluent_text_indent_decrease_rtl_16_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_decrease_16_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_16_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_16_regular.imageset/ic_fluent_text_indent_decrease_16_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_16_regular.imageset/ic_fluent_text_indent_decrease_rtl_16_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_16_regular.imageset/ic_fluent_text_indent_decrease_ltr_16_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_decrease_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_filled.imageset/ic_fluent_text_indent_decrease_20_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_filled.imageset/ic_fluent_text_indent_decrease_rtl_20_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_filled.imageset/ic_fluent_text_indent_decrease_ltr_20_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_decrease_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_regular.imageset/ic_fluent_text_indent_decrease_20_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_regular.imageset/ic_fluent_text_indent_decrease_ltr_20_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_regular.imageset/ic_fluent_text_indent_decrease_rtl_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_decrease_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_24_filled.imageset/ic_fluent_text_indent_decrease_24_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_24_filled.imageset/ic_fluent_text_indent_decrease_rtl_24_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_24_filled.imageset/ic_fluent_text_indent_decrease_ltr_24_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_decrease_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_24_regular.imageset/ic_fluent_text_indent_decrease_24_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_24_regular.imageset/ic_fluent_text_indent_decrease_ltr_24_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_24_regular.imageset/ic_fluent_text_indent_decrease_rtl_24_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_decrease_16_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_16_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_16_filled.imageset/ic_fluent_text_indent_decrease_16_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_16_filled.imageset/ic_fluent_text_indent_decrease_ltr_16_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_16_filled.imageset/ic_fluent_text_indent_decrease_rtl_16_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_decrease_16_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_16_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_16_regular.imageset/ic_fluent_text_indent_decrease_16_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_16_regular.imageset/ic_fluent_text_indent_decrease_rtl_16_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_16_regular.imageset/ic_fluent_text_indent_decrease_ltr_16_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_decrease_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_filled.imageset/ic_fluent_text_indent_decrease_20_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_filled.imageset/ic_fluent_text_indent_decrease_rtl_20_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_filled.imageset/ic_fluent_text_indent_decrease_ltr_20_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_decrease_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_regular.imageset/ic_fluent_text_indent_decrease_20_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_regular.imageset/ic_fluent_text_indent_decrease_ltr_20_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_regular.imageset/ic_fluent_text_indent_decrease_rtl_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_decrease_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_24_filled.imageset/ic_fluent_text_indent_decrease_24_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_24_filled.imageset/ic_fluent_text_indent_decrease_rtl_24_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_24_filled.imageset/ic_fluent_text_indent_decrease_ltr_24_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_decrease_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_24_regular.imageset/ic_fluent_text_indent_decrease_24_regular.svg",
-  ]
-}
-
-imageset("ic_fluent_text_indent_decrease_16_filled") {
-  sources = [
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_16_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_16_filled.imageset/ic_fluent_text_indent_decrease_16_filled.svg",
-  ]
-}
-
-imageset("ic_fluent_text_indent_decrease_16_regular") {
-  sources = [
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_16_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_16_regular.imageset/ic_fluent_text_indent_decrease_16_regular.svg",
-  ]
-}
-
-imageset("ic_fluent_text_indent_decrease_20_filled") {
-  sources = [
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_filled.imageset/ic_fluent_text_indent_decrease_20_filled.svg",
-  ]
-}
-
-imageset("ic_fluent_text_indent_decrease_20_regular") {
-  sources = [
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_regular.imageset/ic_fluent_text_indent_decrease_20_regular.svg",
-  ]
-}
-
-imageset("ic_fluent_text_indent_decrease_24_filled") {
-  sources = [
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_24_filled.imageset/ic_fluent_text_indent_decrease_24_filled.svg",
-  ]
-}
-
-imageset("ic_fluent_text_indent_decrease_24_regular") {
-  sources = [
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_24_regular.imageset/ic_fluent_text_indent_decrease_24_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_24_regular.imageset/ic_fluent_text_indent_decrease_ltr_24_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_24_regular.imageset/ic_fluent_text_indent_decrease_rtl_24_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_increase_16_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_16_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_16_filled.imageset/ic_fluent_text_indent_increase_16_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_16_filled.imageset/ic_fluent_text_indent_increase_ltr_16_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_16_filled.imageset/ic_fluent_text_indent_increase_rtl_16_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_increase_16_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_16_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_16_regular.imageset/ic_fluent_text_indent_increase_16_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_16_regular.imageset/ic_fluent_text_indent_increase_ltr_16_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_16_regular.imageset/ic_fluent_text_indent_increase_rtl_16_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_increase_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_20_filled.imageset/ic_fluent_text_indent_increase_20_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_20_filled.imageset/ic_fluent_text_indent_increase_rtl_20_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_20_filled.imageset/ic_fluent_text_indent_increase_ltr_20_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_increase_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_20_regular.imageset/ic_fluent_text_indent_increase_20_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_20_regular.imageset/ic_fluent_text_indent_increase_ltr_20_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_20_regular.imageset/ic_fluent_text_indent_increase_rtl_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_increase_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_24_filled.imageset/ic_fluent_text_indent_increase_24_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_24_filled.imageset/ic_fluent_text_indent_increase_ltr_24_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_24_filled.imageset/ic_fluent_text_indent_increase_rtl_24_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_increase_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_24_regular.imageset/ic_fluent_text_indent_increase_24_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_24_regular.imageset/ic_fluent_text_indent_increase_ltr_24_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_24_regular.imageset/ic_fluent_text_indent_increase_rtl_24_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_increase_16_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_16_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_16_filled.imageset/ic_fluent_text_indent_increase_16_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_16_filled.imageset/ic_fluent_text_indent_increase_ltr_16_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_16_filled.imageset/ic_fluent_text_indent_increase_rtl_16_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_increase_16_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_16_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_16_regular.imageset/ic_fluent_text_indent_increase_16_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_16_regular.imageset/ic_fluent_text_indent_increase_ltr_16_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_16_regular.imageset/ic_fluent_text_indent_increase_rtl_16_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_increase_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_20_filled.imageset/ic_fluent_text_indent_increase_20_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_20_filled.imageset/ic_fluent_text_indent_increase_rtl_20_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_20_filled.imageset/ic_fluent_text_indent_increase_ltr_20_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_increase_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_20_regular.imageset/ic_fluent_text_indent_increase_20_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_20_regular.imageset/ic_fluent_text_indent_increase_ltr_20_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_20_regular.imageset/ic_fluent_text_indent_increase_rtl_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_increase_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_24_filled.imageset/ic_fluent_text_indent_increase_24_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_24_filled.imageset/ic_fluent_text_indent_increase_ltr_24_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_24_filled.imageset/ic_fluent_text_indent_increase_rtl_24_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_increase_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_24_regular.imageset/ic_fluent_text_indent_increase_24_regular.svg",
-  ]
-}
-
-imageset("ic_fluent_text_indent_increase_16_filled") {
-  sources = [
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_16_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_16_filled.imageset/ic_fluent_text_indent_increase_16_filled.svg",
-  ]
-}
-
-imageset("ic_fluent_text_indent_increase_16_regular") {
-  sources = [
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_16_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_16_regular.imageset/ic_fluent_text_indent_increase_16_regular.svg",
-  ]
-}
-
-imageset("ic_fluent_text_indent_increase_20_filled") {
-  sources = [
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_20_filled.imageset/ic_fluent_text_indent_increase_20_filled.svg",
-  ]
-}
-
-imageset("ic_fluent_text_indent_increase_20_regular") {
-  sources = [
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_20_regular.imageset/ic_fluent_text_indent_increase_20_regular.svg",
-  ]
-}
-
-imageset("ic_fluent_text_indent_increase_24_filled") {
-  sources = [
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_24_filled.imageset/ic_fluent_text_indent_increase_24_filled.svg",
-  ]
-}
-
-imageset("ic_fluent_text_indent_increase_24_regular") {
-  sources = [
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_24_regular.imageset/ic_fluent_text_indent_increase_24_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_24_regular.imageset/ic_fluent_text_indent_increase_ltr_24_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_24_regular.imageset/ic_fluent_text_indent_increase_rtl_24_regular.svg",
   ]
 }
 
