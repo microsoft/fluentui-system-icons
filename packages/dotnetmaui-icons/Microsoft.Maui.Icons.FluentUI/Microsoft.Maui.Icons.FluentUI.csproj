@@ -56,7 +56,7 @@
 	
 	<UsingTask
 		TaskName="GenerateFontGlyphSource"
-		TaskFactory="CodeTaskFactory"
+		TaskFactory="RoslynCodeTaskFactory"
 		AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
 		<ParameterGroup>
 			<FontFiles ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
