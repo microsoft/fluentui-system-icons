@@ -10,7 +10,7 @@
 		<Title>Microsoft FluentUI System Icons for .NET MAUI</Title>
 		<Authors>Microsoft</Authors>
 		<Copyright>Copyright © Microsoft</Copyright>
-		<!--<PackageProjectUrl></PackageProjectUrl>-->
+		<PackageProjectUrl>https://github.com/microsoft/fluentui-system-icons</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<!--<RepositoryUrl></RepositoryUrl>-->
 		<AssemblyFileVersion>$(PackageVersion)</AssemblyFileVersion>
