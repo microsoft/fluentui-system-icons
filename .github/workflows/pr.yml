@@ -2,6 +2,9 @@ name: Pull request validation
 
 on: pull_request
 
+env:
+  DOTNET_VERSION: '6.0.x' # The .NET SDK version to use
+
 jobs:
   valid-asset-names:
     name: Validate Asset Names
@@ -80,6 +83,26 @@ jobs:
     - name: Generate BUILD.gn file for Android
       run: python3 generate_build_gn_android.py
       working-directory: importer
+
+  build-dotnetmaui:
+    name: Build .NET MAUI library
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+
+    - name: Restore packages
+      run: dotnet restore
+      working-directory: packages/dotnetmaui-icons
+
+    - name: Build and pack
+      run: dotnet build Microsoft.Maui.Icons.FluentUI.csproj --configuration Release
+      working-directory: packages/dotnetmaui-icons/Microsoft.Maui.Icons.FluentUI
+
 
   build-flutter:
     name: Build Flutter library
