@@ -1,0 +1,167 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<ImplicitUsings>false</ImplicitUsings>
+		<Nullable>disable</Nullable>
+		<LangVersion>9.0</LangVersion>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageId>Microsoft.Maui.Icons.FluentUI</PackageId>
+		<Title>Microsoft FluentUI System Icons for .NET MAUI</Title>
+		<Authors>Microsoft</Authors>
+		<Copyright>Copyright © Microsoft</Copyright>
+		<!--<PackageProjectUrl></PackageProjectUrl>-->
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<!--<RepositoryUrl></RepositoryUrl>-->
+		<AssemblyFileVersion>$(PackageVersion)</AssemblyFileVersion>
+		<!--<PublishRepositoryUrl>true</PublishRepositoryUrl>-->
+		<DebugType>portable</DebugType>
+		<PackageVersion>0.1.0</PackageVersion>
+	</PropertyGroup>
+
+	<!-- Fonts to include -->
+	<!-- FontNamespace: Name of C# generated namespace for the font class -->
+	<!-- FontClass: Name of C# generated class for the font  -->
+	<ItemGroup>
+		<FontsToProcess
+			Include="..\..\..\fonts\FluentSystemIcons-Filled.ttf" 
+			FontNamespace="Microsoft.Maui.Icons.FluentUI" 
+			FontClass="Filled" 
+			Pack="True" 
+			PackagePath="buildTransitive;build" 
+			CopyToOutputDirectory="PreserveNewest" />
+		<FontsToProcess 
+			Include="..\..\..\fonts\FluentSystemIcons-Regular.ttf" 
+			FontNamespace="Microsoft.Maui.Icons.FluentUI" 
+			FontClass="Regular" 
+			Pack="True" 
+			PackagePath="buildTransitive;build" 
+			CopyToOutputDirectory="PreserveNewest" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- Pack the .targets for including the ttf files automatically -->
+		<None 
+			Include="Microsoft.Maui.Icons.FluentUI.targets" 
+			Pack="True" 
+			PackagePath="buildTransitive;build" 
+			CopyToOutputDirectory="PreserveNewest" />
+		<None
+			Include="@(FontsToProcess)"
+			Pack="True"
+			PackagePath="buildTransitive;build"
+			CopyToOutputDirectory="PreserveNewest" />
+	</ItemGroup>
+
+	
+	<UsingTask
+		TaskName="GenerateFontGlyphSource"
+		TaskFactory="CodeTaskFactory"
+		AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+		<ParameterGroup>
+			<FontFiles ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+			<GeneratedFontSourceOutputPath ParameterType="System.String" Required="true" />
+		</ParameterGroup>
+		<Task>
+			<Reference Include="$(MSBuildThisFileDirectory)\..\libs\Typography.OpenFont.dll" />
+			<Reference Include="netstandard" />
+			<Using Namespace="System" />
+			<Using Namespace="System.IO" />
+			<Using Namespace="System.Text" />
+			<Code Type="Fragment" Language="cs">
+				<![CDATA[
+
+var fontSources = new Dictionary<string, string[]>();
+
+// Get the Class name to use for generating the source from the itemgroup item's ClassName attribute
+foreach (var item in FontFiles)
+{
+	fontSources[item.ItemSpec] = new string[] { 
+		item.GetMetadata("FontNamespace"),
+		item.GetMetadata("FontClass"),
+	};
+}
+
+var sb = new StringBuilder();
+
+foreach (var fontSource in fontSources)
+{
+	var fontNamespace = fontSource.Value[0];
+	var fontClass = fontSource.Value[1];
+
+	sb.AppendLine("namespace " + fontNamespace);
+	sb.AppendLine("{");
+
+	var fontFileName = System.IO.Path.GetFileName(fontSource.Key);
+	
+	var reader = new Typography.OpenFont.OpenFontReader();
+	var t = reader.Read(System.IO.File.OpenRead(fontSource.Key));
+
+	var unicodes = new List<uint>();
+	t.CollectUnicode(unicodes);
+
+	var glyphs = new Dictionary<int, string[]>();
+
+	foreach (var unicode in unicodes)
+	{
+		var str = String.Format("{0:X}", unicode);
+
+
+		var index = t.GetGlyphIndex((int)unicode);
+
+		glyphs[index] = new [] { "", str };
+	}
+
+	foreach (var gname in t.GetGlyphNameIter())
+	{
+		glyphs[gname.glyphIndex] = new string[]
+		{
+			gname.glyphName,
+			glyphs[gname.glyphIndex][1]
+		};
+	}
+
+	sb.AppendLine("\tpublic static partial class " + fontClass);
+	sb.AppendLine("\t{");
+
+	sb.AppendLine("\t\tpublic const string Filename = \"" + fontFileName + "\";");
+
+	foreach (var gvp in glyphs)
+	{
+		var name = gvp.Value[0];
+		var unicode = gvp.Value[1].PadLeft(4, '0');
+		
+		if (string.IsNullOrEmpty(name))
+			continue;
+
+		name = name.Replace("ic_fluent_", "");
+
+		sb.AppendLine("\t\tpublic const string " + name + " = \"\\u" + unicode.ToLowerInvariant() + "\";");
+	}
+
+	sb.AppendLine("\t}");
+	sb.AppendLine("}");
+}
+
+File.WriteAllText(GeneratedFontSourceOutputPath, sb.ToString());
+
+
+]]>
+			</Code>
+		</Task>
+	</UsingTask>
+
+	<Target Name="GenerateFonts" BeforeTargets="BeforeCompile">
+		<PropertyGroup>
+			<GeneratedFontSourceFile Condition=" '$(GeneratedFontSourceFile)' == ''" >$(IntermediateOutputPath)\GenerateFontGlyphSource.generated.cs</GeneratedFontSourceFile>
+		</PropertyGroup>
+		
+		<GenerateFontGlyphSource
+			FontFiles="@(FontsToProcess)"
+			GeneratedFontSourceOutputPath="$(GeneratedFontSourceFile)" />
+		
+		<ItemGroup>
+			<Compile Include="$(GeneratedFontSourceFile)" />
+		</ItemGroup>
+	</Target>
+</Project>
