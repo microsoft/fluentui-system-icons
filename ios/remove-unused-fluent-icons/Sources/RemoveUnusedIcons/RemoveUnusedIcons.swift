@@ -28,7 +28,8 @@ func getIconName(from url: URL) -> String {
 ///   - pathToSourceCode: Path to your app's source code.
 ///   - pathToFluentIconSource: Path to the fluent icon library's source code
 ///   - pathToListOfIconsToKeep: Path to a custom list of icons in use (for React Native, Optional).
-public func removeUnusedAssets(libraryName: String, assetCatalogName: String, pathToSourceCode: String, pathToFluentIconSource: String, pathToListOfIconsToKeep: String?) throws {
+///   - exitOnIncorrectlyUsedIconName: If an icon passed to pathToListOfIconsToKeep doesn't exist, exit the script.
+public func removeUnusedAssets(libraryName: String, assetCatalogName: String, pathToSourceCode: String, pathToFluentIconSource: String, pathToListOfIconsToKeep: String?, exitOnIncorrectlyUsedIconName: Bool) throws {
   var fileName = libraryName
   _ = fileName.removeLast() // Remove trailing "s"
 
@@ -71,7 +72,9 @@ public func removeUnusedAssets(libraryName: String, assetCatalogName: String, pa
   }
   if !invalidIcons.isEmpty {
     print("List of icons provided contains invalid icons \(invalidIcons)")
-    exit(1)
+    if exitOnIncorrectlyUsedIconName {
+      exit(1)
+    }
   }
 
   let allPossibleIconReferencesLower = allPossibleIconReferences.map { $0.lowercased() }
