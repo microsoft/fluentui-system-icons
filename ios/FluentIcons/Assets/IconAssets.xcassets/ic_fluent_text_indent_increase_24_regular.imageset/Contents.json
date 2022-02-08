@@ -1,8 +1,14 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_text_indent_increase_24_regular.svg",
-      "idiom": "universal"
+      "filename": "ic_fluent_text_indent_increase_ltr_24_regular.svg",
+      "idiom": "universal",
+      "language-direction": "left-to-right"
+    },
+    {
+      "filename": "ic_fluent_text_indent_increase_rtl_24_regular.svg",
+      "idiom": "universal",
+      "language-direction": "right-to-left"
     }
   ],
   "info": {

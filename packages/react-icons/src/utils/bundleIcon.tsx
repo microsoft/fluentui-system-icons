@@ -1,7 +1,7 @@
 import * as React from "react";
 import { iconFilledClassName, iconRegularClassName } from "./constants";
 import { FluentIconsProps } from "./FluentIconsProps.types";
-import { makeStyles, mergeClasses } from "@fluentui/react-make-styles";
+import { makeStyles, mergeClasses } from "@griffel/react";
 
 const useBundledIconStyles = makeStyles({
     root: { display: "none" },
