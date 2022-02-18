@@ -6,7 +6,9 @@ const useRootStyles = makeStyles({
         display: 'inline',
         lineHeight: 0,
 
-        "@media screen and (-ms-high-contrast: black-on-white)": {fill: 'windowtext'}
+        "@media (forced-colors: active)": {
+          forcedColorAdjust: 'auto',
+        }
     }
 });
 
