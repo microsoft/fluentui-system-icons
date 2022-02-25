@@ -10,6 +10,11 @@
       "locale": "en"
     },
     {
+      "filename": "zh_ic_fluent_local_language_20_regular.svg",
+      "idiom": "universal",
+      "locale": "zh"
+    },
+    {
       "filename": "ko_ic_fluent_local_language_20_regular.svg",
       "idiom": "universal",
       "locale": "ko"
