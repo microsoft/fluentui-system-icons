@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-icons",
-  "version": "2.0.160-beta.11",
+  "version": "2.0.162-beta.13",
   "sideEffects": false,
   "main": "lib-cjs/index.js",
   "module": "lib/index.js",
@@ -40,7 +40,8 @@
     "yargs": "^14.0.0"
   },
   "peerDependencies": {
-    "@griffel/react": "^1.0.0"
+    "@griffel/react": "^1.0.0",
+    "react": ">=16.8.0 <18.0.0"
   },
   "files": [
     "lib/",
