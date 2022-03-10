@@ -38,9 +38,9 @@ jobs:
         import os
         current_version = sys.stdin.read().strip().split(':')[1]
         current_version = current_version.split('\"')[1]
-        major,minor,asset,beta = current_version.split('.')
-        asset = asset.replace('-beta','')
-        os.system(f'echo \"REACT_VERSION={major}.{minor}.{int(asset) + 1}-beta.{int(beta) + 1}\" >> \$GITHUB_ENV')
+        major,minor,asset,rc = current_version.split('.')
+        asset = asset.replace('-rc','')
+        os.system(f'echo \"REACT_VERSION={major}.{minor}.{int(asset) + 1}-rc.{int(rc) + 1}\" >> \$GITHUB_ENV')
         """
 
     - name: Use Node 11
