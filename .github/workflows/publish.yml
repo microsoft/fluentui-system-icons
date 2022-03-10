@@ -33,14 +33,14 @@ jobs:
 
     - name: Bump react version patch
       run: |
-        grep -E "[0-9]+\.[0-9]+\.[0-9]+-beta\.[0-9]+" ./packages/react-icons/package.json | python3 -c """
+        grep -E "[0-9]+\.[0-9]+\.[0-9]+-rc\.[0-9]+" ./packages/react-icons/package.json | python3 -c """
         import sys
         import os
         current_version = sys.stdin.read().strip().split(':')[1]
         current_version = current_version.split('\"')[1]
-        major,minor,asset,beta = current_version.split('.')
-        asset = asset.replace('-beta','')
-        os.system(f'echo \"REACT_VERSION={major}.{minor}.{int(asset) + 1}-beta.{int(beta) + 1}\" >> \$GITHUB_ENV')
+        major,minor,asset,rc = current_version.split('.')
+        asset = asset.replace('-rc','')
+        os.system(f'echo \"REACT_VERSION={major}.{minor}.{int(asset) + 1}-rc.{int(rc) + 1}\" >> \$GITHUB_ENV')
         """
 
     - name: Use Node 11
@@ -110,7 +110,7 @@ jobs:
     # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version number in react-icons/package.json
       run: |
-        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-icons/package.json
+        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?(-rc\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-icons/package.json
         rm packages/react-icons/package.json.bk
 
     # Needs to be "-E" instead of "-r" on macOS
