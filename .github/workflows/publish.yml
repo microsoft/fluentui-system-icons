@@ -33,7 +33,7 @@ jobs:
 
     - name: Bump react version patch
       run: |
-        grep -E "[0-9]+\.[0-9]+\.[0-9]+-beta\.[0-9]+" ./packages/react-icons/package.json | python3 -c """
+        grep -E "[0-9]+\.[0-9]+\.[0-9]+-rc\.[0-9]+" ./packages/react-icons/package.json | python3 -c """
         import sys
         import os
         current_version = sys.stdin.read().strip().split(':')[1]
@@ -110,7 +110,7 @@ jobs:
     # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version number in react-icons/package.json
       run: |
-        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-icons/package.json
+        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-rc\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-icons/package.json
         rm packages/react-icons/package.json.bk
 
     # Needs to be "-E" instead of "-r" on macOS
