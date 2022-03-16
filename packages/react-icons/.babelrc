@@ -1,0 +1,4 @@
+{
+  "presets": ["@griffel"],
+  "compact": false
+}

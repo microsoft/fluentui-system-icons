@@ -169,7 +169,7 @@ endobj
 4 0 obj
   << /Annots []
      /Type /Page
-     /MediaBox [ 0.000000 0.000000 24.000977 24.000000 ]
+     /MediaBox [ 0.000000 0.000000 24.001953 24.000000 ]
      /Resources 1 0 R
      /Contents 2 0 R
      /Parent 5 0 R
@@ -184,8 +184,8 @@ endobj
 endobj
 
 6 0 obj
-  << /Type /Catalog
-     /Pages 5 0 R
+  << /Pages 5 0 R
+     /Type /Catalog
   >>
 endobj
 

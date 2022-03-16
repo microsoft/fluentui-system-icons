@@ -1,8 +1,14 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_multiselect_20_regular.pdf",
-      "idiom": "universal"
+      "filename": "ic_fluent_multiselect_ltr_20_regular.svg",
+      "idiom": "universal",
+      "language-direction": "left-to-right"
+    },
+    {
+      "filename": "ic_fluent_multiselect_rtl_20_regular.svg",
+      "idiom": "universal",
+      "language-direction": "right-to-left"
     }
   ],
   "info": {

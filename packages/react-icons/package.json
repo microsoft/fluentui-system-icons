@@ -1,9 +1,9 @@
 {
   "name": "@fluentui/react-icons",
-  "version": "1.1.142",
+  "version": "2.0.163-rc.1",
   "sideEffects": false,
-  "main": "lib/cjs/index.js",
-  "module": "lib/esm/index.js",
+  "main": "lib-cjs/index.js",
+  "module": "lib/index.js",
   "typings": "lib/index.d.ts",
   "description": "Fluent System Icons are a collection of familiar, friendly, and modern icons from Microsoft.",
   "license": "MIT",
@@ -19,24 +19,32 @@
     "rollup": "node ./generateRollup.js",
     "optimize": "svgo --folder=./intermediate --precision=2 --disable=removeViewBox,mergePaths",
     "unfill": "find ./intermediate -type f -name \"*.svg\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./intermediate -type f -name \"*.bak\" -delete",
-    "build": "npm run copy && npm run optimize && npm run unfill && npm run convert && npm run cleanSvg && npm run build:esm && npm run build:cjs && npm run rollup",
-    "build:cjs": "tsc --module commonjs --outDir lib/cjs",
-    "build:esm": "tsc"
+    "build": "npm run copy && npm run optimize && npm run unfill && npm run convert && npm run cleanSvg && npm run build:esm && npm run build:cjs",
+    "build:cjs": "tsc --module commonjs --outDir lib-cjs && babel lib-cjs --out-dir lib-cjs",
+    "build:esm": "tsc && babel lib --out-dir lib"
   },
   "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@griffel/babel-preset": "^1.0.0",
+    "@griffel/react": "^1.0.0",
     "@svgr/core": "^5.5.0",
     "@types/react": "^17.0.2",
+    "glob": "^7.1.7",
     "lodash": "^4.17.21",
     "react": "^17.0.1",
     "renamer": "^2.0.1",
     "svgo": "^1.3.2",
     "tslib": "^2.1.0",
-    "glob": "^7.1.7",
     "typescript": "~4.1.0",
     "yargs": "^14.0.0"
   },
+  "peerDependencies": {
+    "@griffel/react": "^1.0.0",
+    "react": ">=16.8.0 <18.0.0"
+  },
   "files": [
-    "lib/**/*.js",
-    "lib/**/*.ts"
+    "lib/",
+    "lib-cjs/"
   ]
 }

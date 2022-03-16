@@ -4,10 +4,10 @@ Source code for the script that removes any unused assets in a project.
 
 ## Contributing
 
-### Generate a project
+### Generate the project
 
 ```
-swift package generate-xcodeproj
+xed .
 ```
 
 ### Releasing a new version

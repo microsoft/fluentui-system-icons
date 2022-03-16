@@ -1,63 +1,43 @@
 import * as React from "react";
-import { css } from "./css";
-import { IFluentIconsProps } from "./IFluentIconsProps.types";
-import "./BundledIcon.scss";
+import { iconFilledClassName, iconRegularClassName } from "./constants";
+import { FluentIconsProps } from "./FluentIconsProps.types";
+import { makeStyles, mergeClasses } from "@griffel/react";
 
-const getIconName = (Icon: React.FC<React.HTMLAttributes<HTMLSpanElement> & IFluentIconsProps>): string => {
-    const displayName = Icon.displayName ? Icon.displayName.endsWith("Filled") ? Icon.displayName.substring(0, Icon.displayName.length - 6) : Icon.displayName.substring(0, Icon.displayName.length - 7) : '';
-    return displayName;
-}
+const useBundledIconStyles = makeStyles({
+    root: { display: "none" },
+    visible: { display: "inline" }
+});
 
-const bundleIcon = (Icon1: React.FC<React.HTMLAttributes<HTMLSpanElement> & IFluentIconsProps>, Icon2: React.FC<React.HTMLAttributes<HTMLSpanElement> & IFluentIconsProps>) => {
-    const displayName = getIconName(Icon1);
-    const Component: React.FC<React.HTMLAttributes<HTMLSpanElement> & IFluentIconsProps> = (props) => {
+const bundleIcon = (FilledIcon: React.FC<FluentIconsProps>, RegularIcon: React.FC<FluentIconsProps>) => {
+    const Component: React.FC<FluentIconsProps> = (props) => {
         const { className, primaryFill = 'currentColor', filled } = props;
-        /** Checks to see what order the icons were passed in */
-        const isReg = Icon1.displayName ? Icon1.displayName.endsWith("Regular") ? true : false : false;
-        const containerProps = props['aria-label'] || props['aria-labelledby'] || props.title
-        ? {
-            role: 'img',
-          }
-        : {
-            ['aria-hidden']: true,
-          };  
-        
+        const styles = useBundledIconStyles();
         return (
-            filled ? 
-                isReg ? 
-                <>
-                    <span {...props} {...containerProps} className={css("bundled-icon-span-filled", className)}>
-                        <Icon1 className="regular" primaryFill={primaryFill} />
-                        <Icon2 className="filled" primaryFill={primaryFill} />
-                    </span>
-                </>
-                    :
-                <>
-                    <span {...props} {...containerProps} className={css("bundled-icon-span-filled", className)}>
-                        <Icon1 className="filled" primaryFill={primaryFill} />
-                        <Icon2 className="regular" primaryFill={primaryFill} />
-                    </span>
-                </>
-
-            :
-
-                isReg ? 
-                <>
-                    <span {...props} {...containerProps} className={css("bundled-icon-span", className)}>
-                        <Icon1 className="regular" primaryFill={primaryFill} />
-                        <Icon2 className="filled" primaryFill={primaryFill} />
-                    </span>
-                </>
-                    :
-                <>
-                    <span {...props} {...containerProps} className={css("bundled-icon-span", className)}>
-                        <Icon1 className="filled" primaryFill={primaryFill} />
-                        <Icon2 className="regular" primaryFill={primaryFill} />
-                    </span>
-                </>
+            <React.Fragment>
+                <FilledIcon
+                    {...props}
+                    className={mergeClasses(
+                        styles.root,
+                        filled && styles.visible,
+                        iconFilledClassName,
+                        className
+                    )}
+                    primaryFill={primaryFill}
+                />
+                <RegularIcon
+                    {...props}
+                    className={mergeClasses(
+                      styles.root,
+                      !filled && styles.visible,
+                      iconRegularClassName,
+                      className
+                    )}
+                    primaryFill={primaryFill}
+                />
+            </React.Fragment>
         )
     }
-    Component.displayName = displayName;
+    Component.displayName = "CompoundIcon";
     return Component;
 }
 

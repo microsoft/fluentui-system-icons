@@ -17,10 +17,10 @@ def to_camel_case(snake_str):
 RESERVED_WORDS = ['repeat', 'import', 'class']
 
 ICON_PREFIX = "ic_fluent_"
-
+IMAGE_FORMAT = ".svg"
 
 def get_icon_name(file_name):
-    return file_name.replace('.pdf', '').replace('__', '_').replace('_ltr_', '_').replace('_rtl_', '_')
+    return file_name.replace(IMAGE_FORMAT, '').replace('__', '_').replace('_ltr_', '_').replace('_rtl_', '_')
 
 
 def bucket_array(array, bucket_size):
@@ -151,11 +151,10 @@ def create_icon_set(file_names, original_icon_names, icon_assets_path):
 def process_assets():
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-    # print(os.listdir("dist"))
     file_names = []
     loc_names = []
     for file_name in os.listdir("dist"):
-        if file_name.endswith('.pdf'):
+        if file_name.endswith(IMAGE_FORMAT):
             file_names.append(file_name)
         elif os.path.isdir(os.path.join("dist", file_name)):
             loc_names.append(file_name)
@@ -190,12 +189,15 @@ def process_assets():
         gn_file.write("import(\"//build/config/ios/asset_catalog.gni\")\n\n")
 
         for file_name in file_names:
-            icon_name = file_name.replace('.pdf', '')
+            imageset_name = get_icon_name(file_name)
+            imageset_folder_path = ios_directory + '/FluentIcons/Assets/IconAssets.xcassets/' + imageset_name + '.imageset'
 
-            gn_file.write("imageset(\"{}\")".format(icon_name) + " {\n")
+            gn_file.write("imageset(\"{}\")".format(imageset_name) + " {\n")
             gn_file.write("  sources = [\n")
-            gn_file.write("    \"FluentIcons/Assets/IconAssets.xcassets/{}.imageset/Contents.json\"".format(icon_name) + ",\n")
-            gn_file.write("    \"FluentIcons/Assets/IconAssets.xcassets/{icon_name}.imageset/{icon_name}.pdf\"".format(icon_name=icon_name) + ",\n")
+            gn_file.write("    \"FluentIcons/Assets/IconAssets.xcassets/{}.imageset/Contents.json\"".format(imageset_name) + ",\n")
+            for imageset_file in os.listdir(imageset_folder_path):
+                if os.path.splitext(imageset_file)[1] == IMAGE_FORMAT:
+                    gn_file.write("    \"FluentIcons/Assets/IconAssets.xcassets/{imageset_name}.imageset/{icon_file_name}\"".format(imageset_name=imageset_name, icon_file_name=imageset_file) + ",\n")
             gn_file.write("  ]\n")
             gn_file.write("}\n\n")
     swift_enum_path = os.path.join(ios_directory, LIBRARY_NAME + "s", "Classes", LIBRARY_NAME + ".swift")
@@ -210,7 +212,7 @@ def process_assets():
         """
         Remove first and last two components
 
-        Before: ic_fluent_flash_off_24_regular.pdf
+        Before: ic_fluent_flash_off_24_regular.svg
         After:  flash_off_24
         """
         icon_name = get_icon_name(file_name).replace(ICON_PREFIX, '')

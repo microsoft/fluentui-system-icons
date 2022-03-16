@@ -8,7 +8,9 @@ Fluent UI System Icons are a collection of familiar, friendly and modern icons f
 
 ## Icon List
 
-[View the full list of icons](icons.md)
+[View the full list of regular icons](icons_regular.md)
+
+[View the full list of filled icons](icons_filled.md)
 
 ## Installation
 
@@ -26,7 +28,7 @@ repositories {
 Include the following dependency in your project's `build.gradle`
 
 ```groovy
-implementation 'com.microsoft.design:fluent-system-icons:1.1.142@aar'
+implementation 'com.microsoft.design:fluent-system-icons:1.1.163@aar'
 ```
 
 For library docs, see [android/README.md](android/README.md).
@@ -38,13 +40,13 @@ For library docs, see [android/README.md](android/README.md).
 ```ruby
 use_frameworks!
 
-pod "FluentIcons", "1.1.142"
+pod "FluentIcons", "1.1.163"
 ```
 
 #### Carthage
 
 ```bash
-git "git@github.com:microsoft/fluentui-system-icons.git" "1.1.142"
+git "git@github.com:microsoft/fluentui-system-icons.git" "1.1.163"
 ```
 
 For library docs, see [ios/README.md](ios/README.md).
@@ -56,7 +58,7 @@ In the `pubspec.yaml` of your flutter project, add the following dependency:
 ```yaml
 dependencies:
   ...
-  fluentui_system_icons: ^1.1.142
+  fluentui_system_icons: ^1.1.163
 ```
 
 For library docs, see [flutter/README.md](flutter/README.md)
