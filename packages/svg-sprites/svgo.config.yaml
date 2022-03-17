@@ -1,5 +1,4 @@
 plugins:
   - removeViewBox: false
   - mergePaths: false
-  - convertColors:
-      currentColor: true
+  - precision: 2

@@ -8,17 +8,8 @@ const argv = require("yargs").argv;
 const path = argv.path;
 
 r({
-    regex: /\sfill="none"/g,
+    regex: /\sfill="(none|#212121)"/g,
     replacement: '',
-    paths: [path],
-    recursive: true,
-    include: '*.svg',
-    silent: true
-});
-
-r({
-    regex: /\sfill="#212121"/g,
-    replacement: ' fill="currentColor"',
     paths: [path],
     recursive: true,
     include: '*.svg',
