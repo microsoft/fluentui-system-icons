@@ -1,0 +1,12 @@
+{
+  "sizes": [16, 24],
+  "styles": ["regular", "filled"],
+  "include": {
+    "airplane": {
+      "styles": ["regular"]
+    },
+    "fax": {
+      "sizes": [20]
+    }
+  }
+}
