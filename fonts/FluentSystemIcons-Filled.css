@@ -1,6 +1,6 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.ttf?415ff48441894d9e27953d0ec399230b") format("truetype");
+    src: url("./FluentSystemIcons-Filled.ttf?9c2800712a0d88313258ef09d2e316f6") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -17014,4 +17014,133 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_video_play_pause_20_filled:before {
     content: "\10723";
+}
+.icon-ic_fluent_arrow_next_12_filled:before {
+    content: "\10724";
+}
+.icon-ic_fluent_arrow_previous_12_filled:before {
+    content: "\10725";
+}
+.icon-ic_fluent_data_usage_settings_20_filled:before {
+    content: "\10726";
+}
+.icon-ic_fluent_document_multiple_sync_20_filled:before {
+    content: "\10727";
+}
+.icon-ic_fluent_filter_12_filled:before {
+    content: "\10728";
+}
+.icon-ic_fluent_history_28_filled:before {
+    content: "\10729";
+}
+.icon-ic_fluent_history_32_filled:before {
+    content: "\1072a";
+}
+.icon-ic_fluent_history_48_filled:before {
+    content: "\1072b";
+}
+.icon-ic_fluent_history_dismiss_20_filled:before {
+    content: "\1072c";
+}
+.icon-ic_fluent_history_dismiss_24_filled:before {
+    content: "\1072d";
+}
+.icon-ic_fluent_history_dismiss_28_filled:before {
+    content: "\1072e";
+}
+.icon-ic_fluent_history_dismiss_32_filled:before {
+    content: "\1072f";
+}
+.icon-ic_fluent_history_dismiss_48_filled:before {
+    content: "\10730";
+}
+.icon-ic_fluent_home_more_20_filled:before {
+    content: "\10731";
+}
+.icon-ic_fluent_people_search_20_filled:before {
+    content: "\10732";
+}
+.icon-ic_fluent_people_team_delete_16_filled:before {
+    content: "\10733";
+}
+.icon-ic_fluent_people_team_delete_20_filled:before {
+    content: "\10734";
+}
+.icon-ic_fluent_people_team_delete_28_filled:before {
+    content: "\10735";
+}
+.icon-ic_fluent_people_team_delete_32_filled:before {
+    content: "\10736";
+}
+.icon-ic_fluent_person_5_20_filled:before {
+    content: "\10737";
+}
+.icon-ic_fluent_person_6_20_filled:before {
+    content: "\10738";
+}
+.icon-ic_fluent_person_sync_24_filled:before {
+    content: "\10739";
+}
+.icon-ic_fluent_phone_eraser_20_filled:before {
+    content: "\1073a";
+}
+.icon-ic_fluent_phone_shake_20_filled:before {
+    content: "\1073b";
+}
+.icon-ic_fluent_phone_speaker_20_filled:before {
+    content: "\1073c";
+}
+.icon-ic_fluent_radar_20_filled:before {
+    content: "\1073d";
+}
+.icon-ic_fluent_radar_checkmark_20_filled:before {
+    content: "\1073e";
+}
+.icon-ic_fluent_radar_rectangle_multiple_20_filled:before {
+    content: "\1073f";
+}
+.icon-ic_fluent_real_estate_20_filled:before {
+    content: "\10740";
+}
+.icon-ic_fluent_resize_table_20_filled:before {
+    content: "\10741";
+}
+.icon-ic_fluent_shifts_30_minutes_20_filled:before {
+    content: "\10742";
+}
+.icon-ic_fluent_sound_source_20_filled:before {
+    content: "\10743";
+}
+.icon-ic_fluent_subtitles_16_filled:before {
+    content: "\10744";
+}
+.icon-ic_fluent_subtitles_20_filled:before {
+    content: "\10745";
+}
+.icon-ic_fluent_subtitles_24_filled:before {
+    content: "\10746";
+}
+.icon-ic_fluent_task_list_square_person_20_filled:before {
+    content: "\10747";
+}
+.icon-ic_fluent_task_list_square_settings_20_filled:before {
+    content: "\10748";
+}
+.icon-ic_fluent_timer_10_20_filled:before {
+    content: "\10749";
+}
+.icon-ic_fluent_timer_2_20_filled:before {
+    content: "\1074a";
+}
+.icon-ic_fluent_timer_3_20_filled:before {
+    content: "\1074b";
+}
+.icon-ic_fluent_tree_deciduous_20_filled:before {
+    content: "\1074c";
+}
+.icon-ic_fluent_tree_evergreen_20_filled:before {
+    content: "\1074d";
+}
+.icon-ic_fluent_uninstall_app_20_filled:before {
+    content: "\1074e";
 }
