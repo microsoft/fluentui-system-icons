@@ -9,6 +9,7 @@ const argv = require("yargs")
     desc: 'One or more json files'
   })
   .argv;
+const childProcess = require("child_process");
 
 const FILE_NAME_REGEX = /^ic_fluent_(\w+)_(\d+)_(\w+)/gm;
 
@@ -64,6 +65,7 @@ function processJsonFiles(srcPaths, destPath) {
   })
 
   fs.appendFileSync(iconClassFile, ICON_CLASS_FOOTER, writeErrorHandler);
+  childProcess.execSync(`flutter format ${iconClassFile}`);
 }
 
 function writeCodeForJson(srcPath, iconClassFile, rtlIcons) {
@@ -95,7 +97,7 @@ function writeCodeForJson(srcPath, iconClassFile, rtlIcons) {
     code = 
 `
   /// fluent icon named "${name}" in size ${size} and ${style} style.
-  static const IconData ${identifier} = IconData(${codepoint}, fontFamily: '${fontName}', fontPackage: _kFontPkg${matchTextDirection});
+  static const IconData ${identifier} = IconData(${codepoint}, fontFamily: '${fontName}', fontPackage: _kFontPkg${matchTextDirection},);
 `;
     fs.appendFileSync(iconClassFile, code, writeErrorHandler);
   }
