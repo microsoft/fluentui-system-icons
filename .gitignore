@@ -29,3 +29,5 @@ packages/react-icons/src/index.tsx
 packages/react-icons/yarn.lock
 packages/react-icons/package-lock.json
 
+# Some Fluent tooling generates this for internal tracking assistance. Make sure it doesn't get committed.
+SvgList.txt
