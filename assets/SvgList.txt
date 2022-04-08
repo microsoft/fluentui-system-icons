@@ -1,0 +1,13 @@
+Archive Settings / 28 / Filled & Regular
+Arrow Forward / 28 / Filled & Regular
+Arrow Reply All / 28 / Filled & Regular
+Arrow Reply / 28 / Filled & Regular
+Arrow Undo / 28 / Filled & Regular
+Broom / 28 / Filled & Regular
+Calendar Multiple / 28 / Filled & Regular
+Folder Mail / 24, 28 / Filled & Regular
+Mail Attach / 24, 28 / Filled & Regular
+Mail Prohibited / 28 / Filled & Regular
+Save / 28 / Filled & Regular
+Tag / 28 / Filled & Regular
+Warning / 28 / Filled & Regular
