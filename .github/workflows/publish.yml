@@ -148,7 +148,7 @@ jobs:
         token: ${{ secrets.NPM_TOKEN }}
         access: public
         package: packages/react-icons/package.json
-        tag: latest   
+        tag: rc   
 
     ## Android
     - name: Run Android generate script
