@@ -1,0 +1,26 @@
+{
+  "images": [
+    {
+      "filename": "ic_fluent_text_number_list_rotate_270_24_filled.svg",
+      "idiom": "universal"
+    },
+    {
+      "filename": "RTL_ic_fluent_text_number_list_rotate_270_24_filled.svg",
+      "idiom": "universal",
+      "locale": "RTL"
+    },
+    {
+      "filename": "LTR_ic_fluent_text_number_list_rotate_270_24_filled.svg",
+      "idiom": "universal",
+      "locale": "LTR"
+    }
+  ],
+  "info": {
+    "author": "xcode",
+    "version": 1
+  },
+  "properties": {
+    "localizable": true,
+    "template-rendering-intent": "template"
+  }
+}
