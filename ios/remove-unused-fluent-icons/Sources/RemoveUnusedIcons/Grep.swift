@@ -41,13 +41,15 @@ func searchForCodeReferences(in path: String, language: Language, weights: Set<S
     include = "--include=\"*.m\" --include=\"*.h\""
     regex = "\(excludingFileName)[a-zA-Z0-9]+[0-9]{2}(\(weights.map { $0.uppercased() }.joined(separator: "|")))"
   }
+
+  // Newer versions of grep (on macOS 12+) appear to apply the include/exclude arguments in order, so exclude must come last
   let command = """
   grep --recursive \
     --ignore-case \
     --no-filename \
-    --exclude=\"\(excludingFileName).swift\" \
     --extended-regexp \
     \(include) \
+    --exclude=\"\(excludingFileName).swift\" \
     \"\(regex)\" \(path)
   """
   print(command)
