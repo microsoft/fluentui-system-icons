@@ -78,7 +78,7 @@ async function getCodepoints(icons) {
         const codepoints = Object.fromEntries(
             Object.entries(originalCodepoints)
                 .filter(([iconName]) => icons.has(iconName))
-                .map(([iconName, stringCodepointHex]) => [iconName, Number.parseInt(stringCodepointHex, 16)])
+                .map(([iconName, codepoint]) => [iconName, typeof codepoint === 'number' ? codepoint: Number.parseInt(codepoint)])
         );
 
         // Fix any codepoints outside the private use area
