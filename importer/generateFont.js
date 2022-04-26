@@ -23,21 +23,22 @@ if (!SRC_PATH) {
 if (!DEST_PATH) {
     throw new Error("Output destination folder not specified by --dest");
 }
-if (!(ICON_TYPE === 'Filled' || ICON_TYPE === 'Regular')) {
+if (!(ICON_TYPE === 'Filled' || ICON_TYPE === 'Regular' || ICON_TYPE === 'OneSize')) {
     throw new Error("Icon type not specified");
 }
 
 async function main() {
     await mkdirp(DEST_PATH);
-    const stagingFolder = await mkdirp(path.resolve(DEST_PATH, ICON_TYPE));
+    const stagingFolder = path.resolve(DEST_PATH, ICON_TYPE);
+    await mkdirp(stagingFolder);
 
-    const svgFiles = await glob(path.resolve(SRC_PATH, `*_${ICON_TYPE.toLowerCase()}.svg`));
+    const svgFiles = await glob(path.resolve(SRC_PATH, `*_${ICON_TYPE === 'OneSize' ? '20_{filled,regular}' : ICON_TYPE.toLowerCase()}.svg`));
     const icons = new Set(svgFiles.map(file => path.basename(file).replace(/\.svg$/, '')));
 
     if (icons.size > 6400) {
         throw new Error('Too many icons to fit into the Unicode private use area (0xE000-0xF8FF). See https://unicode-table.com/en/blocks/private-use-area/')
     }
-    
+
     // Copy all icons of the given icon type to the staging folder
     await Promise.all((svgFiles).map(
         async svgFile => fs.copyFile(svgFile, path.resolve(stagingFolder, path.basename(svgFile)))
@@ -55,7 +56,7 @@ async function main() {
         fontHeight: 500,
         normalize: true
     });
-    
+
     // Clean up staging folder
     await Promise.all(svgFiles.map(
         async svgFile => fs.unlink(path.resolve(stagingFolder, path.basename(svgFile)))
@@ -71,34 +72,36 @@ async function main() {
  * @returns {Promise<Record<string, number>>}
  */
 async function getCodepoints(icons) {
-    if (!CODEPOINTS_FILE) {
-        return {};
-    } else {
+    /** @type {Record<string, number>} */
+    let codepoints = {};
+    if (CODEPOINTS_FILE) {
         const originalCodepoints = JSON.parse(await fs.readFile(CODEPOINTS_FILE, 'utf8'));
-        const codepoints = Object.fromEntries(
+        codepoints = Object.fromEntries(
             Object.entries(originalCodepoints)
                 .filter(([iconName]) => icons.has(iconName))
-                .map(([iconName, codepoint]) => [iconName, typeof codepoint === 'number' ? codepoint: Number.parseInt(codepoint)])
+                .map(([iconName, codepoint]) => [iconName, typeof codepoint === 'number' ? codepoint : Number.parseInt(codepoint)])
         );
-
-        // Fix any codepoints outside the private use area
-        let nextCodePoint = 0xe000;
-        let usedCodePoints = new Set(Object.values(codepoints));
-
-        for (const [iconName, codepoint] of Object.entries(codepoints)) {
-            if (codepoint < 0xe000 || codepoint > 0xf8ff) {
-                // Find a new free codepoint
-                while (usedCodePoints.has(nextCodePoint)) {
-                    nextCodePoint++;
-                }
-
-                usedCodePoints.add(nextCodePoint);
-                codepoints[iconName] = nextCodePoint;
-            }
-        }
-
-        return codepoints;
     }
+
+    // Fix any codepoints outside the private use area
+    let nextCodePoint = 0xe000;
+    let usedCodePoints = new Set(Object.values(codepoints));
+
+    for (const iconName of icons) {
+        const originalCodepoint = codepoints[iconName]
+        if (!originalCodepoint || originalCodepoint < 0xe000 || originalCodepoint > 0xf8ff) {
+            // Find a new free codepoint
+            while (usedCodePoints.has(nextCodePoint)) {
+                nextCodePoint++;
+            }
+
+            usedCodePoints.add(nextCodePoint);
+            codepoints[iconName] = nextCodePoint;
+        }
+    }
+
+    return codepoints;
+
 }
 
 main();
