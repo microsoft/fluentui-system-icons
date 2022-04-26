@@ -12,7 +12,7 @@ const useRootStyles = makeStyles({
     }
 });
 
-export const useIconState = <TBaseAttributes extends (React.SVGAttributes<SVGElement> | React.HTMLAttributes<HTMLElement>) = React.SVGAttributes<SVGElement>>(props: FluentIconsProps): FluentIconsProps<TBaseAttributes> => {
+export const useIconState = <TBaseAttributes extends (React.SVGAttributes<SVGElement> | React.HTMLAttributes<HTMLElement>) = React.SVGAttributes<SVGElement>>(props: FluentIconsProps<TBaseAttributes>): FluentIconsProps<TBaseAttributes> => {
     const { title, primaryFill="currentColor" } = props;
     const state = {
       ...props,

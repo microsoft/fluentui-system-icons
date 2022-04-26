@@ -16,9 +16,9 @@ import fontOneSizeWoff from './FluentSystemIcons-OneSize.woff';
 import fontOneSizeWoff2 from './FluentSystemIcons-OneSize.woff2';
 
 export const enum FontFile {
-    Filled,
-    Regular,
-    OneSize
+    Filled = 0,
+    Regular = 1,
+    OneSize = 2
 }
 
 const FONT_FAMILY_MAP = {
@@ -68,8 +68,8 @@ const useRootStyles = makeStyles({
     },
 });
 
-export function createFluentFontIcon(displayName: string, codepoint: string, font: FontFile): React.FC<FluentIconsProps> {
-    const Component: React.FC<FluentIconsProps> = (props) => {
+export function createFluentFontIcon(displayName: string, codepoint: string, font: FontFile): React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>>> {
+    const Component: React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>>> = (props) => {
         useStaticStyles();
         const styles = useRootStyles();
         const { primaryFill, ...state } = useIconState<React.HTMLAttributes<HTMLElement>>(props);
