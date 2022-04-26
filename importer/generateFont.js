@@ -49,7 +49,7 @@ async function main() {
         inputDir: stagingFolder,
         outputDir: path.resolve(DEST_PATH),
         name: `FluentSystemIcons-${ICON_TYPE}`,
-        fontTypes: [fantasticon.ASSET_TYPES.TTF],
+        fontTypes: [fantasticon.ASSET_TYPES.WOFF2, fantasticon.ASSET_TYPES.WOFF, fantasticon.ASSET_TYPES.TTF],
         assetTypes: [fantasticon.ASSET_TYPES.CSS, fantasticon.ASSET_TYPES.HTML, fantasticon.ASSET_TYPES.JSON],
         formatOptions: { json: { indent: 2 } },
         codepoints: await getCodepoints(icons),
