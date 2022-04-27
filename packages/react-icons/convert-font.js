@@ -81,14 +81,22 @@ async function processFolder(srcPath, destPath, oneSize) {
   const iconExports = [];
   await Promise.all(files.map(async function (srcFile, index) {
     const iconEntries = JSON.parse(await fs.readFile(srcFile, 'utf8'));
-    for (let [iconName, codepoint] of Object.entries(iconEntries)) {
-      iconName = iconName.replace("ic_fluent_", "") // strip ic_fluent_
-      iconName = oneSize ? iconName.replace("20", "") : iconName
-      let destFilename = _.camelCase(iconName) // We want them to be camelCase, so access_time would become accessTime here
+    for (const [iconName, codepoint] of Object.entries(iconEntries)) {
+      let destFilename = iconName.replace("ic_fluent_", "") // strip ic_fluent_
+      destFilename = oneSize ? destFilename.replace("20", "") : destFilename
+      destFilename = _.camelCase(destFilename) // We want them to be camelCase, so access_time would become accessTime here
       destFilename = destFilename.replace(destFilename.substring(0, 1), destFilename.substring(0, 1).toUpperCase()) // capitalize the first letter
 
       var jsCode =
-        `export const ${destFilename} = /*#__PURE__*/createFluentFontIcon(${JSON.stringify(destFilename)}, ${JSON.stringify(String.fromCodePoint(codepoint))}, ${oneSize ? 2 /* OneSize */ : /filled$/i.test(iconName) ? 0 /* Filled */ : 1 /* Regular */});`
+        `export const ${destFilename} = /*#__PURE__*/createFluentFontIcon(${
+          JSON.stringify(destFilename)
+        }, ${
+          JSON.stringify(String.fromCodePoint(codepoint))
+        }, ${
+          oneSize ? 2 /* OneSize */ : /filled$/i.test(iconName) ? 0 /* Filled */ : 1 /* Regular */
+        }${
+          oneSize ? '' : `, ${/(?<=_)\d+(?=_filled|_regular)/.exec(iconName)[0]}`
+        });`
 
       iconExports.push(jsCode);
     }

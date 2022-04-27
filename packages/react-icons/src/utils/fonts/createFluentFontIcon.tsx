@@ -50,37 +50,45 @@ const useStaticStyles = makeStaticStyles(`
 
 const useRootStyles = makeStyles({
     root: {
-        display: 'inline',
-        lineHeight: 0,
+        display: 'inline-block',
+        fontStyle: 'normal',
+        lineHeight: '1em',
 
         "@media (forced-colors: active)": {
             forcedColorAdjust: 'auto',
         }
     },
     [FontFile.Filled]: {
-        fontFamily: FONT_FAMILY_MAP[FontFile.Filled],
+        fontFamily: 'FluentSystemIconsFilled',
     },
     [FontFile.Regular]: {
-        fontFamily: FONT_FAMILY_MAP[FontFile.Regular],
+        fontFamily: 'FluentSystemIconsRegular',
     },
     [FontFile.OneSize]: {
-        fontFamily: FONT_FAMILY_MAP[FontFile.OneSize],
+        fontFamily: 'FluentSystemIcons',
     },
 });
 
-export function createFluentFontIcon(displayName: string, codepoint: string, font: FontFile): React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>>> {
+export function createFluentFontIcon(displayName: string, codepoint: string, font: FontFile, fontSize?: number): React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>>> {
     const Component: React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>>> = (props) => {
         useStaticStyles();
         const styles = useRootStyles();
+        props.className = mergeClasses(styles.root, styles[font], props.className);
         const { primaryFill, ...state } = useIconState<React.HTMLAttributes<HTMLElement>>(props);
 
-        state.className = mergeClasses(styles.root, styles[font], state.className);
 
         // We want to keep the same API surface as the SVG icons, so translate `primaryFill` to `color`
         if (primaryFill) {
             state.style = {
                 ...state.style,
                 color: primaryFill
+            }
+        }
+
+        if (fontSize) {
+            state.style = {
+                ...state.style,
+                fontSize
             }
         }
 
