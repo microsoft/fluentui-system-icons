@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as fontsModule from '@fluentui/react-icons/lib/fonts/index';
-import * as svgModule from '@fluentui/react-icons/lib/index';
+import * as fontsModule from '@fluentui/react-icons/lib/fonts';
+// @ts-ignore
+import * as svgModule from '@fluentui/react-icons/lib/svg';
 import { makeStyles } from "@griffel/react";
 
 const fontComponents = filterModuleImports(fontsModule);
