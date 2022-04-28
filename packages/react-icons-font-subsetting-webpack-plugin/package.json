@@ -5,8 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "webpack -c test/webpack.config.js",
-    "build": "tsc",
-    "prepare": "npm run build && npm run test"
+    "build": "tsc"
   },
   "engines": {
     "node": ">=14.5.0"

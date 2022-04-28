@@ -43,10 +43,10 @@ jobs:
         os.system(f'echo \"REACT_VERSION={major}.{minor}.{int(asset) + 1}-rc.{int(rc) + 1}\" >> \$GITHUB_ENV')
         """
 
-    - name: Use Node 11
+    - name: Use Node 18
       uses: actions/setup-node@v1
       with:
-        node-version: 11.x
+        node-version: 18.x
 
     - run: npm install
       working-directory: importer
@@ -113,17 +113,29 @@ jobs:
         sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?(-rc\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-icons/package.json
         rm packages/react-icons/package.json.bk
 
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in react-icons/package.json
+      run: |
+        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?(-rc\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-icons-font-subsetting-webpack-plugin/package.json
+        rm packages/react-icons-font-subsetting-webpack-plugin/package.json.bk
+
+    - name: Install dependencies
+      run: npm install
+
     - name: Build SVG library
       run: |
-        npm install
         npm run build
       working-directory: packages/svg-icons
 
     - name: Build React library
       run: |
-        npm install
         npm run build
       working-directory: packages/react-icons 
+
+    - name: Build Webpack plugin library
+      run: |
+        npm run build
+      working-directory: packages/react-icons-font-subsetting-webpack-plugin 
 
     - uses: JS-DevTools/npm-publish@v1
       with:
@@ -136,6 +148,13 @@ jobs:
         token: ${{ secrets.NPM_TOKEN }}
         access: public
         package: packages/react-icons/package.json
+        tag: rc   
+
+    - uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+        access: public
+        package: packages/react-icons-font-subsetting-webpack-plugin/package.json
         tag: rc   
 
     ## Android
