@@ -10,6 +10,6 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MLoughry/fluentui-system-icons.git"
+    "url": "git+https://github.com/microsoft/fluentui-system-icons.git"
   }
 }
