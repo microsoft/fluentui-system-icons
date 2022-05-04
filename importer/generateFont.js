@@ -23,7 +23,7 @@ if (!SRC_PATH) {
 if (!DEST_PATH) {
     throw new Error("Output destination folder not specified by --dest");
 }
-if (!(ICON_TYPE === 'Filled' || ICON_TYPE === 'Regular' || ICON_TYPE === 'OneSize')) {
+if (!(ICON_TYPE === 'Filled' || ICON_TYPE === 'Regular' || ICON_TYPE === 'Resizable')) {
     throw new Error("Icon type not specified");
 }
 
@@ -32,7 +32,7 @@ async function main() {
     const stagingFolder = path.resolve(DEST_PATH, ICON_TYPE);
     await mkdirp(stagingFolder);
 
-    const svgFiles = await glob(path.resolve(SRC_PATH, `*_${ICON_TYPE === 'OneSize' ? '20_{filled,regular}' : ICON_TYPE.toLowerCase()}.svg`));
+    const svgFiles = await glob(path.resolve(SRC_PATH, `*_${ICON_TYPE === 'Resizable' ? '20_{filled,regular}' : ICON_TYPE.toLowerCase()}.svg`));
     const icons = new Set(svgFiles.map(file => path.basename(file).replace(/\.svg$/, '')));
 
     if (icons.size > 6400) {

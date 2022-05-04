@@ -75,23 +75,23 @@ async function processFiles(src, dest) {
  * Process a folder of svg files and convert them to React components, following naming patterns for the FluentUI System Icons
  * @param {string} srcPath 
  * @param {string} codepointMapDestFolder
- * @param {boolean} oneSize 
+ * @param {boolean} resizable 
  * @returns { Promise<string[]> } - chunked icon files to insert
  */
-async function processFolder(srcPath, codepointMapDestFolder, oneSize) {
-  var files = await glob(oneSize ? 'FluentSystemIcons-OneSize.json' : 'FluentSystemIcons-{Filled,Regular}.json', { cwd: srcPath, absolute: true });
+async function processFolder(srcPath, codepointMapDestFolder, resizable) {
+  var files = await glob(resizable ? 'FluentSystemIcons-Resizable.json' : 'FluentSystemIcons-{Filled,Regular}.json', { cwd: srcPath, absolute: true });
 
   /** @type string[] */
   const iconExports = [];
   await Promise.all(files.map(async (srcFile, index) => {
     /** @type {Record<string, number>} */
     const iconEntries = JSON.parse(await fs.readFile(srcFile, 'utf8'));
-    iconExports.push(...generateReactIconEntries(iconEntries, oneSize));
+    iconExports.push(...generateReactIconEntries(iconEntries, resizable));
 
     return generateCodepointMapForWebpackPlugin(
       path.resolve(codepointMapDestFolder, path.basename(srcFile)),
       iconEntries,
-      oneSize
+      resizable
     );
   }));
 
@@ -116,12 +116,12 @@ async function processFolder(srcPath, codepointMapDestFolder, oneSize) {
  * 
  * @param {string} destPath 
  * @param {Record<string,number>} iconEntries 
- * @param {boolean} oneSize 
+ * @param {boolean} resizable 
  */
-async function generateCodepointMapForWebpackPlugin(destPath, iconEntries, oneSize) {
+async function generateCodepointMapForWebpackPlugin(destPath, iconEntries, resizable) {
   const finalCodepointMap = Object.fromEntries(
     Object.entries(iconEntries)
-      .map(([name, codepoint]) => [getReactIconNameFromGlyphName(name, oneSize), codepoint])
+      .map(([name, codepoint]) => [getReactIconNameFromGlyphName(name, resizable), codepoint])
   );
 
   await fs.writeFile(destPath, JSON.stringify(finalCodepointMap, null, 2));
@@ -130,19 +130,19 @@ async function generateCodepointMapForWebpackPlugin(destPath, iconEntries, oneSi
 /**
  * 
  * @param {Record<string, number>} iconEntries 
- * @param {boolean} oneSize 
+ * @param {boolean} resizable 
  * @returns {string[]}
  */
-function generateReactIconEntries(iconEntries, oneSize) {
+function generateReactIconEntries(iconEntries, resizable) {
   /** @type {string[]} */
   const iconExports = [];
   for (const [iconName, codepoint] of Object.entries(iconEntries)) {
-    let destFilename = getReactIconNameFromGlyphName(iconName, oneSize);
+    let destFilename = getReactIconNameFromGlyphName(iconName, resizable);
 
     var jsCode = `export const ${destFilename} = /*#__PURE__*/createFluentFontIcon(${JSON.stringify(destFilename)
       }, ${JSON.stringify(String.fromCodePoint(codepoint))
-      }, ${oneSize ? 2 /* OneSize */ : /filled$/i.test(iconName) ? 0 /* Filled */ : 1 /* Regular */
-      }${oneSize ? '' : `, ${/(?<=_)\d+(?=_filled|_regular)/.exec(iconName)[0]}`
+      }, ${resizable ? 2 /* Resizable */ : /filled$/i.test(iconName) ? 0 /* Filled */ : 1 /* Regular */
+      }${resizable ? '' : `, ${/(?<=_)\d+(?=_filled|_regular)/.exec(iconName)[0]}`
       });`;
 
     iconExports.push(jsCode);
@@ -154,12 +154,12 @@ function generateReactIconEntries(iconEntries, oneSize) {
 /**
  * 
  * @param {string} iconName 
- * @param {boolean} oneSize 
+ * @param {boolean} resizable 
  * @returns {string}
  */
-function getReactIconNameFromGlyphName(iconName, oneSize) {
+function getReactIconNameFromGlyphName(iconName, resizable) {
   let destFilename = iconName.replace("ic_fluent_", ""); // strip ic_fluent_
-  destFilename = oneSize ? destFilename.replace("20", "") : destFilename;
+  destFilename = resizable ? destFilename.replace("20", "") : destFilename;
   destFilename = _.camelCase(destFilename); // We want them to be camelCase, so access_time would become accessTime here
   destFilename = destFilename.replace(destFilename.substring(0, 1), destFilename.substring(0, 1).toUpperCase()); // capitalize the first letter
   return destFilename;

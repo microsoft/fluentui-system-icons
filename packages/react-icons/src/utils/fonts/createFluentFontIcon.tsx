@@ -11,20 +11,20 @@ import fontRegularTtf from './FluentSystemIcons-Regular.ttf';
 import fontRegularWoff from './FluentSystemIcons-Regular.woff';
 import fontRegularWoff2 from './FluentSystemIcons-Regular.woff2';
 
-import fontOneSizeTtf from './FluentSystemIcons-OneSize.ttf';
-import fontOneSizeWoff from './FluentSystemIcons-OneSize.woff';
-import fontOneSizeWoff2 from './FluentSystemIcons-OneSize.woff2';
+import fontOneSizeTtf from './FluentSystemIcons-Resizable.ttf';
+import fontOneSizeWoff from './FluentSystemIcons-Resizable.woff';
+import fontOneSizeWoff2 from './FluentSystemIcons-Resizable.woff2';
 
 export const enum FontFile {
     Filled = 0,
     Regular = 1,
-    OneSize = 2
+    Resizable = 2
 }
 
 const FONT_FAMILY_MAP = {
     [FontFile.Filled]: 'FluentSystemIconsFilled',
     [FontFile.Regular]: 'FluentSystemIconsRegular',
-    [FontFile.OneSize]: 'FluentSystemIcons',
+    [FontFile.Resizable]: 'FluentSystemIcons',
 } as const;
 
 const useStaticStyles = makeStaticStyles(`
@@ -41,7 +41,7 @@ const useStaticStyles = makeStaticStyles(`
     url(${JSON.stringify(fontRegularTtf)}) format("truetype");
 }
 @font-face {
-    font-family: ${FONT_FAMILY_MAP[FontFile.OneSize]};
+    font-family: ${FONT_FAMILY_MAP[FontFile.Resizable]};
     src: url(${JSON.stringify(fontOneSizeWoff2)}) format("woff2"),
     url(${JSON.stringify(fontOneSizeWoff)}) format("woff"),
     url(${JSON.stringify(fontOneSizeTtf)}) format("truetype");
@@ -64,7 +64,7 @@ const useRootStyles = makeStyles({
     [FontFile.Regular]: {
         fontFamily: 'FluentSystemIconsRegular',
     },
-    [FontFile.OneSize]: {
+    [FontFile.Resizable]: {
         fontFamily: 'FluentSystemIcons',
     },
 });

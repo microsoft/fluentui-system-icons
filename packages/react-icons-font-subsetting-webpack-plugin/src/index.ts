@@ -7,7 +7,7 @@ const PLUGIN_NAME = "FluentUIReactIconsFontSubsettingPlugin";
 
 const FONT_FILES_BASE_NAMES = [
     "FluentSystemIcons-Filled",
-    "FluentSystemIcons-OneSize",
+    "FluentSystemIcons-Resizable",
     "FluentSystemIcons-Regular",
 ];
 
