@@ -5,9 +5,9 @@
       "idiom": "universal"
     },
     {
-      "filename": "no_ic_fluent_text_bold_24_filled.svg",
+      "filename": "hu_ic_fluent_text_bold_24_filled.svg",
       "idiom": "universal",
-      "locale": "no"
+      "locale": "hu"
     },
     {
       "filename": "en_ic_fluent_text_bold_24_filled.svg",
@@ -15,19 +15,14 @@
       "locale": "en"
     },
     {
-      "filename": "de_ic_fluent_text_bold_24_filled.svg",
+      "filename": "pt_ic_fluent_text_bold_24_filled.svg",
       "idiom": "universal",
-      "locale": "de"
+      "locale": "pt"
     },
     {
-      "filename": "tr_ic_fluent_text_bold_24_filled.svg",
+      "filename": "lt_ic_fluent_text_bold_24_filled.svg",
       "idiom": "universal",
-      "locale": "tr"
-    },
-    {
-      "filename": "ca_ic_fluent_text_bold_24_filled.svg",
-      "idiom": "universal",
-      "locale": "ca"
+      "locale": "lt"
     },
     {
       "filename": "da_ic_fluent_text_bold_24_filled.svg",
@@ -35,44 +30,9 @@
       "locale": "da"
     },
     {
-      "filename": "kk_ic_fluent_text_bold_24_filled.svg",
+      "filename": "et_ic_fluent_text_bold_24_filled.svg",
       "idiom": "universal",
-      "locale": "kk"
-    },
-    {
-      "filename": "uk_ic_fluent_text_bold_24_filled.svg",
-      "idiom": "universal",
-      "locale": "uk"
-    },
-    {
-      "filename": "fr_ic_fluent_text_bold_24_filled.svg",
-      "idiom": "universal",
-      "locale": "fr"
-    },
-    {
-      "filename": "hu_ic_fluent_text_bold_24_filled.svg",
-      "idiom": "universal",
-      "locale": "hu"
-    },
-    {
-      "filename": "es_ic_fluent_text_bold_24_filled.svg",
-      "idiom": "universal",
-      "locale": "es"
-    },
-    {
-      "filename": "sr-cyrl_ic_fluent_text_bold_24_filled.svg",
-      "idiom": "universal",
-      "locale": "sr-cyrl"
-    },
-    {
-      "filename": "pt_ic_fluent_text_bold_24_filled.svg",
-      "idiom": "universal",
-      "locale": "pt"
-    },
-    {
-      "filename": "bg_ic_fluent_text_bold_24_filled.svg",
-      "idiom": "universal",
-      "locale": "bg"
+      "locale": "et"
     },
     {
       "filename": "gl_ic_fluent_text_bold_24_filled.svg",
@@ -80,24 +40,9 @@
       "locale": "gl"
     },
     {
-      "filename": "sl_ic_fluent_text_bold_24_filled.svg",
+      "filename": "lv_ic_fluent_text_bold_24_filled.svg",
       "idiom": "universal",
-      "locale": "sl"
-    },
-    {
-      "filename": "it_ic_fluent_text_bold_24_filled.svg",
-      "idiom": "universal",
-      "locale": "it"
-    },
-    {
-      "filename": "ms_ic_fluent_text_bold_24_filled.svg",
-      "idiom": "universal",
-      "locale": "ms"
-    },
-    {
-      "filename": "ko_ic_fluent_text_bold_24_filled.svg",
-      "idiom": "universal",
-      "locale": "ko"
+      "locale": "lv"
     },
     {
       "filename": "sr-latn_ic_fluent_text_bold_24_filled.svg",
@@ -105,14 +50,44 @@
       "locale": "sr-latn"
     },
     {
-      "filename": "sv_ic_fluent_text_bold_24_filled.svg",
+      "filename": "it_ic_fluent_text_bold_24_filled.svg",
       "idiom": "universal",
-      "locale": "sv"
+      "locale": "it"
     },
     {
-      "filename": "lv_ic_fluent_text_bold_24_filled.svg",
+      "filename": "sl_ic_fluent_text_bold_24_filled.svg",
       "idiom": "universal",
-      "locale": "lv"
+      "locale": "sl"
+    },
+    {
+      "filename": "ms_ic_fluent_text_bold_24_filled.svg",
+      "idiom": "universal",
+      "locale": "ms"
+    },
+    {
+      "filename": "kk_ic_fluent_text_bold_24_filled.svg",
+      "idiom": "universal",
+      "locale": "kk"
+    },
+    {
+      "filename": "ko_ic_fluent_text_bold_24_filled.svg",
+      "idiom": "universal",
+      "locale": "ko"
+    },
+    {
+      "filename": "tr_ic_fluent_text_bold_24_filled.svg",
+      "idiom": "universal",
+      "locale": "tr"
+    },
+    {
+      "filename": "no_ic_fluent_text_bold_24_filled.svg",
+      "idiom": "universal",
+      "locale": "no"
+    },
+    {
+      "filename": "fr_ic_fluent_text_bold_24_filled.svg",
+      "idiom": "universal",
+      "locale": "fr"
     },
     {
       "filename": "ru_ic_fluent_text_bold_24_filled.svg",
@@ -120,14 +95,39 @@
       "locale": "ru"
     },
     {
-      "filename": "et_ic_fluent_text_bold_24_filled.svg",
+      "filename": "sr-cyrl_ic_fluent_text_bold_24_filled.svg",
       "idiom": "universal",
-      "locale": "et"
+      "locale": "sr-cyrl"
     },
     {
-      "filename": "lt_ic_fluent_text_bold_24_filled.svg",
+      "filename": "de_ic_fluent_text_bold_24_filled.svg",
       "idiom": "universal",
-      "locale": "lt"
+      "locale": "de"
+    },
+    {
+      "filename": "es_ic_fluent_text_bold_24_filled.svg",
+      "idiom": "universal",
+      "locale": "es"
+    },
+    {
+      "filename": "ca_ic_fluent_text_bold_24_filled.svg",
+      "idiom": "universal",
+      "locale": "ca"
+    },
+    {
+      "filename": "bg_ic_fluent_text_bold_24_filled.svg",
+      "idiom": "universal",
+      "locale": "bg"
+    },
+    {
+      "filename": "uk_ic_fluent_text_bold_24_filled.svg",
+      "idiom": "universal",
+      "locale": "uk"
+    },
+    {
+      "filename": "sv_ic_fluent_text_bold_24_filled.svg",
+      "idiom": "universal",
+      "locale": "sv"
     }
   ],
   "info": {
