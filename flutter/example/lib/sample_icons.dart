@@ -2890,6 +2890,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.clipboard_text_ltr_24_regular, 'clipboard_text_ltr_24_regular', 24),
 
+  FluentUISampleIcon(FluentIcons.clipboard_text_ltr_32_regular, 'clipboard_text_ltr_32_regular', 32),
+
   FluentUISampleIcon(FluentIcons.clipboard_text_rtl_20_regular, 'clipboard_text_rtl_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.clipboard_text_rtl_24_regular, 'clipboard_text_rtl_24_regular', 24),
@@ -14651,6 +14653,8 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.clipboard_text_ltr_20_filled, 'clipboard_text_ltr_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.clipboard_text_ltr_24_filled, 'clipboard_text_ltr_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.clipboard_text_ltr_32_filled, 'clipboard_text_ltr_32_filled', 32),
 
   FluentUISampleIcon(FluentIcons.clipboard_text_rtl_20_filled, 'clipboard_text_rtl_20_filled', 20),
 

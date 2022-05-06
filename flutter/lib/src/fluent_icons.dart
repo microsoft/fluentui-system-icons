@@ -4338,6 +4338,9 @@ class FluentIcons {
   /// fluent icon named "clipboard_text_ltr" in size 24 and regular style.
   static const IconData clipboard_text_ltr_24_regular = IconData(0xfd29, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "clipboard_text_ltr" in size 32 and regular style.
+  static const IconData clipboard_text_ltr_32_regular = IconData(0x107fa, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "clipboard_text_rtl" in size 20 and regular style.
   static const IconData clipboard_text_rtl_20_regular = IconData(0xfd2a, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -21982,6 +21985,9 @@ class FluentIcons {
 
   /// fluent icon named "clipboard_text_ltr" in size 24 and filled style.
   static const IconData clipboard_text_ltr_24_filled = IconData(0xfd32, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "clipboard_text_ltr" in size 32 and filled style.
+  static const IconData clipboard_text_ltr_32_filled = IconData(0x107fa, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "clipboard_text_rtl" in size 20 and filled style.
   static const IconData clipboard_text_rtl_20_filled = IconData(0xfd33, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);

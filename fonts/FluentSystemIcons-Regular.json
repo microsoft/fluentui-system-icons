@@ -5879,5 +5879,6 @@
     "ic_fluent_text_align_right_rotate_270_20_regular": "0x107f6",
     "ic_fluent_text_align_right_rotate_90_16_regular": "0x107f7",
     "ic_fluent_text_align_right_rotate_90_20_regular": "0x107f8",
-    "ic_fluent_text_align_right_rotate_90_24_regular": "0x107f9"
+    "ic_fluent_text_align_right_rotate_90_24_regular": "0x107f9",
+    "ic_fluent_clipboard_text_ltr_32_regular": "0x107fa"
 }
