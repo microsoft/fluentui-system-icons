@@ -5,14 +5,14 @@
       "idiom": "universal"
     },
     {
-      "filename": "he_ic_fluent_comment_note_24_regular.svg",
-      "idiom": "universal",
-      "locale": "he"
-    },
-    {
       "filename": "ar_ic_fluent_comment_note_24_regular.svg",
       "idiom": "universal",
       "locale": "ar"
+    },
+    {
+      "filename": "he_ic_fluent_comment_note_24_regular.svg",
+      "idiom": "universal",
+      "locale": "he"
     }
   ],
   "info": {
