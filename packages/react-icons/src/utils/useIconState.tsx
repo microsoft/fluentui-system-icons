@@ -13,9 +13,9 @@ const useRootStyles = makeStyles({
 });
 
 export const useIconState = (props: FluentIconsProps): FluentIconsProps => {
-    const { title, primaryFill="currentColor" } = props;
+    const { title, primaryFill = "currentColor", ...rest } = props;
     const state = {
-      ...props,
+      ...rest,
       title: undefined,
       fill: primaryFill
     };
