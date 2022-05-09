@@ -1,0 +1,15 @@
+{
+  "name": "fluent-system-icons",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "importer"
+  ],
+  "description": "![CI](https://github.com/microsoft/fluentui-system-icons/workflows/CI/badge.svg)",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/microsoft/fluentui-system-icons.git"
+  }
+}
