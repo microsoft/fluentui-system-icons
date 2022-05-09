@@ -5,9 +5,24 @@
       "idiom": "universal"
     },
     {
-      "filename": "en_ic_fluent_text_sort_ascending_24_regular.svg",
+      "filename": "sl_ic_fluent_text_sort_ascending_24_regular.svg",
       "idiom": "universal",
-      "locale": "en"
+      "locale": "sl"
+    },
+    {
+      "filename": "ru_ic_fluent_text_sort_ascending_24_regular.svg",
+      "idiom": "universal",
+      "locale": "ru"
+    },
+    {
+      "filename": "fi_ic_fluent_text_sort_ascending_24_regular.svg",
+      "idiom": "universal",
+      "locale": "fi"
+    },
+    {
+      "filename": "bg_ic_fluent_text_sort_ascending_24_regular.svg",
+      "idiom": "universal",
+      "locale": "bg"
     },
     {
       "filename": "da_ic_fluent_text_sort_ascending_24_regular.svg",
@@ -15,19 +30,14 @@
       "locale": "da"
     },
     {
+      "filename": "en_ic_fluent_text_sort_ascending_24_regular.svg",
+      "idiom": "universal",
+      "locale": "en"
+    },
+    {
       "filename": "se_ic_fluent_text_sort_ascending_24_regular.svg",
       "idiom": "universal",
       "locale": "se"
-    },
-    {
-      "filename": "sl_ic_fluent_text_sort_ascending_24_regular.svg",
-      "idiom": "universal",
-      "locale": "sl"
-    },
-    {
-      "filename": "fi_ic_fluent_text_sort_ascending_24_regular.svg",
-      "idiom": "universal",
-      "locale": "fi"
     },
     {
       "filename": "kk_ic_fluent_text_sort_ascending_24_regular.svg",
@@ -40,24 +50,14 @@
       "locale": "ko"
     },
     {
-      "filename": "ru_ic_fluent_text_sort_ascending_24_regular.svg",
+      "filename": "sr_ic_fluent_text_sort_ascending_24_regular.svg",
       "idiom": "universal",
-      "locale": "ru"
+      "locale": "sr"
     },
     {
       "filename": "gr_ic_fluent_text_sort_ascending_24_regular.svg",
       "idiom": "universal",
       "locale": "gr"
-    },
-    {
-      "filename": "bg_ic_fluent_text_sort_ascending_24_regular.svg",
-      "idiom": "universal",
-      "locale": "bg"
-    },
-    {
-      "filename": "sr_ic_fluent_text_sort_ascending_24_regular.svg",
-      "idiom": "universal",
-      "locale": "sr"
     }
   ],
   "info": {
