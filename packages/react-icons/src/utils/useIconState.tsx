@@ -13,9 +13,9 @@ const useRootStyles = makeStyles({
 });
 
 export const useIconState = <TBaseAttributes extends (React.SVGAttributes<SVGElement> | React.HTMLAttributes<HTMLElement>) = React.SVGAttributes<SVGElement>>(props: FluentIconsProps<TBaseAttributes>): FluentIconsProps<TBaseAttributes> => {
-    const { title, primaryFill="currentColor" } = props;
+    const { title, primaryFill = "currentColor", ...rest } = props;
     const state = {
-      ...props,
+      ...rest,
       title: undefined,
       fill: primaryFill
     };
