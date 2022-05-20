@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.woff2?f06df854dd7c105532d77c2a6afc92e4") format("woff2"),
-url("./FluentSystemIcons-Regular.woff?f06df854dd7c105532d77c2a6afc92e4") format("woff"),
-url("./FluentSystemIcons-Regular.ttf?f06df854dd7c105532d77c2a6afc92e4") format("truetype");
+    src: url("./FluentSystemIcons-Regular.woff2?975d9f1322022f866537f31d2b05b8fb") format("woff2"),
+url("./FluentSystemIcons-Regular.woff?975d9f1322022f866537f31d2b05b8fb") format("woff"),
+url("./FluentSystemIcons-Regular.ttf?975d9f1322022f866537f31d2b05b8fb") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -17085,4 +17085,70 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_clipboard_text_ltr_32_regular:before {
     content: "\e36b";
+}
+.icon-ic_fluent_braces_16_regular:before {
+    content: "\ee90";
+}
+.icon-ic_fluent_braces_28_regular:before {
+    content: "\ee91";
+}
+.icon-ic_fluent_braces_32_regular:before {
+    content: "\ee92";
+}
+.icon-ic_fluent_braces_48_regular:before {
+    content: "\ee93";
+}
+.icon-ic_fluent_clipboard_3_day_16_regular:before {
+    content: "\ee94";
+}
+.icon-ic_fluent_clipboard_3_day_20_regular:before {
+    content: "\ee95";
+}
+.icon-ic_fluent_clipboard_3_day_24_regular:before {
+    content: "\ee96";
+}
+.icon-ic_fluent_clipboard_day_16_regular:before {
+    content: "\ee97";
+}
+.icon-ic_fluent_clipboard_day_20_regular:before {
+    content: "\ee98";
+}
+.icon-ic_fluent_clipboard_day_24_regular:before {
+    content: "\ee99";
+}
+.icon-ic_fluent_clipboard_month_16_regular:before {
+    content: "\ee9a";
+}
+.icon-ic_fluent_clipboard_month_20_regular:before {
+    content: "\ee9b";
+}
+.icon-ic_fluent_clipboard_month_24_regular:before {
+    content: "\ee9c";
+}
+.icon-ic_fluent_form_20_regular:before {
+    content: "\ee9d";
+}
+.icon-ic_fluent_form_24_regular:before {
+    content: "\ee9e";
+}
+.icon-ic_fluent_form_28_regular:before {
+    content: "\ee9f";
+}
+.icon-ic_fluent_form_48_regular:before {
+    content: "\eea0";
+}
+.icon-ic_fluent_megaphone_loud_16_regular:before {
+    content: "\eea1";
+}
+.icon-ic_fluent_panel_right_add_20_regular:before {
+    content: "\eea2";
+}
+.icon-ic_fluent_square_multiple_28_regular:before {
+    content: "\eea3";
+}
+.icon-ic_fluent_square_multiple_32_regular:before {
+    content: "\eea4";
+}
+.icon-ic_fluent_square_multiple_48_regular:before {
+    content: "\eea5";
 }

@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?0c556a166ca9635d6c9b7236f821d900") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?0c556a166ca9635d6c9b7236f821d900") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?0c556a166ca9635d6c9b7236f821d900") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?9d00e7de958b6ef4980c47a05c84dbe2") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?9d00e7de958b6ef4980c47a05c84dbe2") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?9d00e7de958b6ef4980c47a05c84dbe2") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -17094,4 +17094,70 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_clipboard_text_ltr_32_filled:before {
     content: "\e380";
+}
+.icon-ic_fluent_braces_16_filled:before {
+    content: "\ee90";
+}
+.icon-ic_fluent_braces_28_filled:before {
+    content: "\ee91";
+}
+.icon-ic_fluent_braces_32_filled:before {
+    content: "\ee92";
+}
+.icon-ic_fluent_braces_48_filled:before {
+    content: "\ee93";
+}
+.icon-ic_fluent_clipboard_3_day_16_filled:before {
+    content: "\ee94";
+}
+.icon-ic_fluent_clipboard_3_day_20_filled:before {
+    content: "\ee95";
+}
+.icon-ic_fluent_clipboard_3_day_24_filled:before {
+    content: "\ee96";
+}
+.icon-ic_fluent_clipboard_day_16_filled:before {
+    content: "\ee97";
+}
+.icon-ic_fluent_clipboard_day_20_filled:before {
+    content: "\ee98";
+}
+.icon-ic_fluent_clipboard_day_24_filled:before {
+    content: "\ee99";
+}
+.icon-ic_fluent_clipboard_month_16_filled:before {
+    content: "\ee9a";
+}
+.icon-ic_fluent_clipboard_month_20_filled:before {
+    content: "\ee9b";
+}
+.icon-ic_fluent_clipboard_month_24_filled:before {
+    content: "\ee9c";
+}
+.icon-ic_fluent_form_20_filled:before {
+    content: "\ee9d";
+}
+.icon-ic_fluent_form_24_filled:before {
+    content: "\ee9e";
+}
+.icon-ic_fluent_form_28_filled:before {
+    content: "\ee9f";
+}
+.icon-ic_fluent_form_48_filled:before {
+    content: "\eea0";
+}
+.icon-ic_fluent_megaphone_loud_16_filled:before {
+    content: "\eea1";
+}
+.icon-ic_fluent_panel_right_add_20_filled:before {
+    content: "\eea2";
+}
+.icon-ic_fluent_square_multiple_28_filled:before {
+    content: "\eea3";
+}
+.icon-ic_fluent_square_multiple_32_filled:before {
+    content: "\eea4";
+}
+.icon-ic_fluent_square_multiple_48_filled:before {
+    content: "\eea5";
 }
