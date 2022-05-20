@@ -10,7 +10,9 @@
     "forceConsistentCasingInFileNames": true,
     "strictNullChecks": true,
     "moduleResolution": "node",
-    "jsx": "react"
+    "jsx": "react",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src"],
   "exclude": ["lib", "lib-cjs"]

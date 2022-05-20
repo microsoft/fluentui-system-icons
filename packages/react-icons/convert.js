@@ -82,10 +82,10 @@ function processFiles(src, dest) {
 /**
  * Process a folder of svg files and convert them to React components, following naming patterns for the FluentUI System Icons
  * @param {string} srcPath 
- * @param {boolean} oneSize 
+ * @param {boolean} resizable 
  * @returns { string [] } - chunked icon files to insert
  */
-function processFolder(srcPath, destPath, oneSize) {
+function processFolder(srcPath, destPath, resizable) {
   var files = fs.readdirSync(srcPath)
 
   // These options will be passed to svgr/core
@@ -120,18 +120,18 @@ function processFolder(srcPath, destPath, oneSize) {
       // }
       // indexContents += processFolder(srcFile, joinedDestPath)
     } else {
-      if(oneSize && !file.includes("20")) {
+      if(resizable && !file.includes("20")) {
         return
       }
       var iconName = file.substr(0, file.length - 4) // strip '.svg'
       iconName = iconName.replace("ic_fluent_", "") // strip ic_fluent_
-      iconName = oneSize ? iconName.replace("20", "") : iconName
+      iconName = resizable ? iconName.replace("20", "") : iconName
       var destFilename = _.camelCase(iconName) // We want them to be camelCase, so access_time would become accessTime here
       destFilename = destFilename.replace(destFilename.substring(0, 1), destFilename.substring(0, 1).toUpperCase()) // capitalize the first letter
 
       var iconContent = fs.readFileSync(srcFile, { encoding: "utf8" })
       
-      var jsxCode = oneSize ? svgr.default.sync(iconContent, svgrOpts, { filePath: file }) : svgr.default.sync(iconContent, svgrOptsSizedIcons, { filePath: file })
+      var jsxCode = resizable ? svgr.default.sync(iconContent, svgrOpts, { filePath: file }) : svgr.default.sync(iconContent, svgrOptsSizedIcons, { filePath: file })
       var jsCode = 
 `
 const ${destFilename}Icon = (iconProps: FluentIconsProps) => {
