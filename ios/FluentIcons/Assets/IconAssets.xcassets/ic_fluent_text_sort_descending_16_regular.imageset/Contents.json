@@ -10,34 +10,14 @@
       "locale": "en"
     },
     {
-      "filename": "da_ic_fluent_text_sort_descending_16_regular.svg",
-      "idiom": "universal",
-      "locale": "da"
-    },
-    {
       "filename": "se_ic_fluent_text_sort_descending_16_regular.svg",
       "idiom": "universal",
       "locale": "se"
     },
     {
-      "filename": "sl_ic_fluent_text_sort_descending_16_regular.svg",
+      "filename": "da_ic_fluent_text_sort_descending_16_regular.svg",
       "idiom": "universal",
-      "locale": "sl"
-    },
-    {
-      "filename": "fi_ic_fluent_text_sort_descending_16_regular.svg",
-      "idiom": "universal",
-      "locale": "fi"
-    },
-    {
-      "filename": "kk_ic_fluent_text_sort_descending_16_regular.svg",
-      "idiom": "universal",
-      "locale": "kk"
-    },
-    {
-      "filename": "ko_ic_fluent_text_sort_descending_16_regular.svg",
-      "idiom": "universal",
-      "locale": "ko"
+      "locale": "da"
     },
     {
       "filename": "ru_ic_fluent_text_sort_descending_16_regular.svg",
@@ -45,9 +25,29 @@
       "locale": "ru"
     },
     {
+      "filename": "sl_ic_fluent_text_sort_descending_16_regular.svg",
+      "idiom": "universal",
+      "locale": "sl"
+    },
+    {
       "filename": "gr_ic_fluent_text_sort_descending_16_regular.svg",
       "idiom": "universal",
       "locale": "gr"
+    },
+    {
+      "filename": "kk_ic_fluent_text_sort_descending_16_regular.svg",
+      "idiom": "universal",
+      "locale": "kk"
+    },
+    {
+      "filename": "fi_ic_fluent_text_sort_descending_16_regular.svg",
+      "idiom": "universal",
+      "locale": "fi"
+    },
+    {
+      "filename": "sr_ic_fluent_text_sort_descending_16_regular.svg",
+      "idiom": "universal",
+      "locale": "sr"
     },
     {
       "filename": "bg_ic_fluent_text_sort_descending_16_regular.svg",
@@ -55,9 +55,9 @@
       "locale": "bg"
     },
     {
-      "filename": "sr_ic_fluent_text_sort_descending_16_regular.svg",
+      "filename": "ko_ic_fluent_text_sort_descending_16_regular.svg",
       "idiom": "universal",
-      "locale": "sr"
+      "locale": "ko"
     }
   ],
   "info": {
