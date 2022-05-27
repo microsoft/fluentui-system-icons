@@ -108,6 +108,12 @@ jobs:
         rm packages/svg-icons/package.json.bk
 
     # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in svg-sprites/package.json
+      run: |
+        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/svg-sprites/package.json
+        rm packages/svg-sprites/package.json.bk
+
+    # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version number in react-icons/package.json
       run: |
         sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?(-rc\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-icons/package.json
@@ -127,6 +133,11 @@ jobs:
         npm run build
       working-directory: packages/svg-icons
 
+    - name: Build SVG sprite library
+      run: |
+        npm run build
+      working-directory: packages/svg-sprites
+
     - name: Build React library
       run: |
         npm run build
@@ -142,6 +153,12 @@ jobs:
         token: ${{ secrets.NPM_TOKEN }}
         access: public
         package: packages/svg-icons/package.json
+
+    - uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+        access: public
+        package: packages/svg-sprites/package.json
 
     - uses: JS-DevTools/npm-publish@v1
       with:
