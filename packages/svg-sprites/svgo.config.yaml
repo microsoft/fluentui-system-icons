@@ -1,0 +1,4 @@
+plugins:
+  - removeViewBox: false
+  - mergePaths: false
+  - precision: 2

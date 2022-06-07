@@ -33,13 +33,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Use Node 11
+    - name: Use Node 18
       uses: actions/setup-node@v1
       with:
-        node-version: 11.x
+        node-version: 18.x
 
     - run: npm install
-      working-directory: importer
 
     - name: Run generate script
       run: npm run deploy:ios
@@ -52,13 +51,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Use Node 11
+    - name: Use Node 18
       uses: actions/setup-node@v1
       with:
-        node-version: 11.x
+        node-version: 18.x
 
     - run: npm install
-      working-directory: importer
 
     - name: Run generate script
       run: npm run deploy:android
@@ -88,13 +86,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Use Node 11
+    - name: Use Node 18
       uses: actions/setup-node@v1
       with:
-        node-version: 11.x
+        node-version: 18.x
 
     - run: npm install
-      working-directory: importer
 
     - name: Run generate script
       run: npm run deploy:flutter
@@ -119,16 +116,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Use Node 11
+    - name: Use Node 18
       uses: actions/setup-node@v1
       with:
-        node-version: 11.x
+        node-version: 18.x
 
     - run: npm install
-      working-directory: importer
-
-    - run: npm install
-      working-directory: packages/svg-icons
 
     - name: Run build
       run: npm run build
@@ -141,15 +134,21 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Use Node 11
+    - name: Use Node 18
       uses: actions/setup-node@v1
       with:
-        node-version: 11.x
+        node-version: 18.x
 
     - run: npm install
-      working-directory: importer
 
     - run: |
-        npm install
         npm run build
       working-directory: packages/react-icons
+
+    - run: |
+        npm run build
+      working-directory: packages/react-icons-font-subsetting-webpack-plugin
+
+    - run: |
+        npm run test
+      working-directory: packages/react-icons-font-subsetting-webpack-plugin

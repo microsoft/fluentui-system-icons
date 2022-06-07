@@ -5,39 +5,19 @@
       "idiom": "universal"
     },
     {
-      "filename": "hu_ic_fluent_text_bold_16_regular.svg",
+      "filename": "ms_ic_fluent_text_bold_16_regular.svg",
       "idiom": "universal",
-      "locale": "hu"
+      "locale": "ms"
     },
     {
-      "filename": "en_ic_fluent_text_bold_16_regular.svg",
+      "filename": "sr-cyrl_ic_fluent_text_bold_16_regular.svg",
       "idiom": "universal",
-      "locale": "en"
-    },
-    {
-      "filename": "pt_ic_fluent_text_bold_16_regular.svg",
-      "idiom": "universal",
-      "locale": "pt"
+      "locale": "sr-cyrl"
     },
     {
       "filename": "lt_ic_fluent_text_bold_16_regular.svg",
       "idiom": "universal",
       "locale": "lt"
-    },
-    {
-      "filename": "da_ic_fluent_text_bold_16_regular.svg",
-      "idiom": "universal",
-      "locale": "da"
-    },
-    {
-      "filename": "et_ic_fluent_text_bold_16_regular.svg",
-      "idiom": "universal",
-      "locale": "et"
-    },
-    {
-      "filename": "gl_ic_fluent_text_bold_16_regular.svg",
-      "idiom": "universal",
-      "locale": "gl"
     },
     {
       "filename": "lv_ic_fluent_text_bold_16_regular.svg",
@@ -50,9 +30,9 @@
       "locale": "sr-latn"
     },
     {
-      "filename": "it_ic_fluent_text_bold_16_regular.svg",
+      "filename": "tr_ic_fluent_text_bold_16_regular.svg",
       "idiom": "universal",
-      "locale": "it"
+      "locale": "tr"
     },
     {
       "filename": "sl_ic_fluent_text_bold_16_regular.svg",
@@ -60,9 +40,24 @@
       "locale": "sl"
     },
     {
-      "filename": "ms_ic_fluent_text_bold_16_regular.svg",
+      "filename": "da_ic_fluent_text_bold_16_regular.svg",
       "idiom": "universal",
-      "locale": "ms"
+      "locale": "da"
+    },
+    {
+      "filename": "uk_ic_fluent_text_bold_16_regular.svg",
+      "idiom": "universal",
+      "locale": "uk"
+    },
+    {
+      "filename": "et_ic_fluent_text_bold_16_regular.svg",
+      "idiom": "universal",
+      "locale": "et"
+    },
+    {
+      "filename": "es_ic_fluent_text_bold_16_regular.svg",
+      "idiom": "universal",
+      "locale": "es"
     },
     {
       "filename": "kk_ic_fluent_text_bold_16_regular.svg",
@@ -70,14 +65,34 @@
       "locale": "kk"
     },
     {
-      "filename": "ko_ic_fluent_text_bold_16_regular.svg",
+      "filename": "ru_ic_fluent_text_bold_16_regular.svg",
       "idiom": "universal",
-      "locale": "ko"
+      "locale": "ru"
     },
     {
-      "filename": "tr_ic_fluent_text_bold_16_regular.svg",
+      "filename": "hu_ic_fluent_text_bold_16_regular.svg",
       "idiom": "universal",
-      "locale": "tr"
+      "locale": "hu"
+    },
+    {
+      "filename": "gl_ic_fluent_text_bold_16_regular.svg",
+      "idiom": "universal",
+      "locale": "gl"
+    },
+    {
+      "filename": "en_ic_fluent_text_bold_16_regular.svg",
+      "idiom": "universal",
+      "locale": "en"
+    },
+    {
+      "filename": "pt_ic_fluent_text_bold_16_regular.svg",
+      "idiom": "universal",
+      "locale": "pt"
+    },
+    {
+      "filename": "ca_ic_fluent_text_bold_16_regular.svg",
+      "idiom": "universal",
+      "locale": "ca"
     },
     {
       "filename": "no_ic_fluent_text_bold_16_regular.svg",
@@ -90,29 +105,14 @@
       "locale": "fr"
     },
     {
-      "filename": "ru_ic_fluent_text_bold_16_regular.svg",
+      "filename": "it_ic_fluent_text_bold_16_regular.svg",
       "idiom": "universal",
-      "locale": "ru"
+      "locale": "it"
     },
     {
-      "filename": "sr-cyrl_ic_fluent_text_bold_16_regular.svg",
+      "filename": "ko_ic_fluent_text_bold_16_regular.svg",
       "idiom": "universal",
-      "locale": "sr-cyrl"
-    },
-    {
-      "filename": "de_ic_fluent_text_bold_16_regular.svg",
-      "idiom": "universal",
-      "locale": "de"
-    },
-    {
-      "filename": "es_ic_fluent_text_bold_16_regular.svg",
-      "idiom": "universal",
-      "locale": "es"
-    },
-    {
-      "filename": "ca_ic_fluent_text_bold_16_regular.svg",
-      "idiom": "universal",
-      "locale": "ca"
+      "locale": "ko"
     },
     {
       "filename": "bg_ic_fluent_text_bold_16_regular.svg",
@@ -120,9 +120,9 @@
       "locale": "bg"
     },
     {
-      "filename": "uk_ic_fluent_text_bold_16_regular.svg",
+      "filename": "de_ic_fluent_text_bold_16_regular.svg",
       "idiom": "universal",
-      "locale": "uk"
+      "locale": "de"
     },
     {
       "filename": "sv_ic_fluent_text_bold_16_regular.svg",

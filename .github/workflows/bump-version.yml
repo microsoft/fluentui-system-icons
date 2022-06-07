@@ -65,6 +65,12 @@ jobs:
         sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/react-icons/package.json
         rm packages/react-icons/package.json.bk
 
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in react-icons-font-subsetting-webpack-plugin/package.json
+      run: |
+        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/react-icons-font-subsetting-webpack-plugin/package.json
+        rm packages/react-icons-font-subsetting-webpack-plugin/package.json.bk
+
     - name: Config git credentials
       run: git config user.email "flubuild@microsoft.com" && git config user.name "Fluent Build System"
 
