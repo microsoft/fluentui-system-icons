@@ -7,7 +7,9 @@
     "type": "git",
     "url": "https://github.com/microsoft/fluentui-system-icons.git"
   },
-  "files": ["sprites"],
+  "files": [
+    "sprites"
+  ],
   "scripts": {
     "clean": "shx rm -rf ./icons ./sprites",
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./icons --extension=svg",
