@@ -4,7 +4,7 @@
 const fs = require("fs");
 const path = require("path");
 const process = require("process");
-const argv = require("yargs").boolean("selector").default("selector", false).argv;
+const argv = require("yargs").boolean("selector").default("selector", false).boolean("keepdirs").default("keepdirs", false).argv;
 const _ = require("lodash");
 
 const SRC_PATH = argv.source;
@@ -12,6 +12,7 @@ const DEST_PATH = argv.dest;
 const EXTENSION = argv.extension;
 const TARGET = argv.target;
 const SELECTOR = argv.selector;
+const KEEP_DIRS = argv.keepdirs;
 const ICON_OUTLINE_STYLE = '_regular'
 const ICON_FILLED_STYLE = '_filled'
 const ICON_LIGHT_STYLE = '_light'
@@ -62,8 +63,14 @@ function processFolder(srcPath, destPath, folderDepth) {
         if (stat.isDirectory()) {
           const folderName = srcFile.substring(srcFile.lastIndexOf('/') + 1)
           let locPath = destPath
-          if (folderDepth == 1 && folderName !== EXTENSION.toUpperCase()) {
-            locPath = path.join(locPath, folderName)
+          if (KEEP_DIRS) {
+            if (folderName !== EXTENSION.toUpperCase()) {
+              locPath = path.join(locPath, folderName).replace(/ /g, "")
+            }
+          } else {
+            if (folderDepth == 1 && folderName !== EXTENSION.toUpperCase()) {
+              locPath = path.join(locPath, folderName)
+            }
           }
           processFolder(srcFile, locPath, folderDepth + 1)
           return;
@@ -81,11 +88,12 @@ function processFolder(srcPath, destPath, folderDepth) {
           // Only include icons in the desired configs
           return;
         }
-
+        
         // Apply 'fluent_' prefix
         if (file.indexOf("_fluent_") < 0) {
           file = file.replace("ic_", "ic_fluent_");
         }
+        
         var destFile = path.join(destPath, file);
         if (!fs.existsSync(destPath)) {
           fs.mkdirSync(destPath)
