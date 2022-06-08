@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.woff2?f06df854dd7c105532d77c2a6afc92e4") format("woff2"),
-url("./FluentSystemIcons-Regular.woff?f06df854dd7c105532d77c2a6afc92e4") format("woff"),
-url("./FluentSystemIcons-Regular.ttf?f06df854dd7c105532d77c2a6afc92e4") format("truetype");
+    src: url("./FluentSystemIcons-Regular.woff2?9745fb35d5a5a196906eea36f05e198f") format("woff2"),
+url("./FluentSystemIcons-Regular.woff?9745fb35d5a5a196906eea36f05e198f") format("woff"),
+url("./FluentSystemIcons-Regular.ttf?9745fb35d5a5a196906eea36f05e198f") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -17085,4 +17085,139 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_clipboard_text_ltr_32_regular:before {
     content: "\e36b";
+}
+.icon-ic_fluent_braces_16_regular:before {
+    content: "\ee90";
+}
+.icon-ic_fluent_braces_28_regular:before {
+    content: "\ee91";
+}
+.icon-ic_fluent_braces_32_regular:before {
+    content: "\ee92";
+}
+.icon-ic_fluent_braces_48_regular:before {
+    content: "\ee93";
+}
+.icon-ic_fluent_branch_fork_32_regular:before {
+    content: "\ee94";
+}
+.icon-ic_fluent_calendar_data_bar_16_regular:before {
+    content: "\ee95";
+}
+.icon-ic_fluent_calendar_data_bar_20_regular:before {
+    content: "\ee96";
+}
+.icon-ic_fluent_calendar_data_bar_24_regular:before {
+    content: "\ee97";
+}
+.icon-ic_fluent_calendar_data_bar_28_regular:before {
+    content: "\ee98";
+}
+.icon-ic_fluent_clipboard_3_day_16_regular:before {
+    content: "\ee99";
+}
+.icon-ic_fluent_clipboard_3_day_20_regular:before {
+    content: "\ee9a";
+}
+.icon-ic_fluent_clipboard_3_day_24_regular:before {
+    content: "\ee9b";
+}
+.icon-ic_fluent_clipboard_day_16_regular:before {
+    content: "\ee9c";
+}
+.icon-ic_fluent_clipboard_day_20_regular:before {
+    content: "\ee9d";
+}
+.icon-ic_fluent_clipboard_day_24_regular:before {
+    content: "\ee9e";
+}
+.icon-ic_fluent_clipboard_month_16_regular:before {
+    content: "\ee9f";
+}
+.icon-ic_fluent_clipboard_month_20_regular:before {
+    content: "\eea0";
+}
+.icon-ic_fluent_clipboard_month_24_regular:before {
+    content: "\eea1";
+}
+.icon-ic_fluent_content_view_gallery_24_regular:before {
+    content: "\eea2";
+}
+.icon-ic_fluent_content_view_gallery_28_regular:before {
+    content: "\eea3";
+}
+.icon-ic_fluent_data_bar_vertical_16_regular:before {
+    content: "\eea4";
+}
+.icon-ic_fluent_delete_12_regular:before {
+    content: "\eea5";
+}
+.icon-ic_fluent_delete_32_regular:before {
+    content: "\eea6";
+}
+.icon-ic_fluent_form_20_regular:before {
+    content: "\eea7";
+}
+.icon-ic_fluent_form_24_regular:before {
+    content: "\eea8";
+}
+.icon-ic_fluent_form_28_regular:before {
+    content: "\eea9";
+}
+.icon-ic_fluent_form_48_regular:before {
+    content: "\eeaa";
+}
+.icon-ic_fluent_mail_read_multiple_20_regular:before {
+    content: "\eeab";
+}
+.icon-ic_fluent_mail_read_multiple_32_regular:before {
+    content: "\eeac";
+}
+.icon-ic_fluent_megaphone_loud_16_regular:before {
+    content: "\eead";
+}
+.icon-ic_fluent_panel_right_add_20_regular:before {
+    content: "\eeae";
+}
+.icon-ic_fluent_person_note_16_regular:before {
+    content: "\eeaf";
+}
+.icon-ic_fluent_shield_globe_16_regular:before {
+    content: "\eeb0";
+}
+.icon-ic_fluent_shield_globe_20_regular:before {
+    content: "\eeb1";
+}
+.icon-ic_fluent_shield_globe_24_regular:before {
+    content: "\eeb2";
+}
+.icon-ic_fluent_square_multiple_28_regular:before {
+    content: "\eeb3";
+}
+.icon-ic_fluent_square_multiple_32_regular:before {
+    content: "\eeb4";
+}
+.icon-ic_fluent_square_multiple_48_regular:before {
+    content: "\eeb5";
+}
+.icon-ic_fluent_table_calculator_20_regular:before {
+    content: "\eeb6";
+}
+.icon-ic_fluent_xbox_controller_16_regular:before {
+    content: "\eeb7";
+}
+.icon-ic_fluent_xbox_controller_20_regular:before {
+    content: "\eeb8";
+}
+.icon-ic_fluent_xbox_controller_24_regular:before {
+    content: "\eeb9";
+}
+.icon-ic_fluent_xbox_controller_28_regular:before {
+    content: "\eeba";
+}
+.icon-ic_fluent_xbox_controller_32_regular:before {
+    content: "\eebb";
+}
+.icon-ic_fluent_xbox_controller_48_regular:before {
+    content: "\eebc";
 }
