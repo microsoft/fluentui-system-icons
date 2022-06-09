@@ -135,8 +135,10 @@ function processFolder(srcPath, destPath, resizable) {
       var jsCode = 
 `
 
-
-export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${jsxCode}, '${destFilename}');
+const ${destFilename}Icon = () => {
+  return ${jsxCode};
+}
+export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename}Icon, '${destFilename}');
       `
       iconExports.push(jsCode);
     }
