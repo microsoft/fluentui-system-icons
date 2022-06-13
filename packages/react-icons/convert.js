@@ -92,18 +92,18 @@ function processFolder(srcPath, destPath, resizable) {
   // See https://react-svgr.com/docs/options/ for more info
   var svgrOpts = {
     template: fileTemplate,
-    expandProps: false, // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
-    svgProps: { className: '{undefined}'}, // In order to provide styling, className will be used
-    replaceAttrValues: { '#212121': '{undefined}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
+    expandProps: 'start', // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
+    svgProps: { className: '{className}'}, // In order to provide styling, className will be used
+    replaceAttrValues: { '#212121': '{primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
     typescript: true,
     icon: true
   }
 
   var svgrOptsSizedIcons = {
     template: fileTemplate,
-    expandProps: false, // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
-    svgProps: { className: '{undefined}'}, // In order to provide styling, className will be used
-    replaceAttrValues: { '#212121': '{undefined}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
+    expandProps: 'start', // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
+    svgProps: { className: '{className}'}, // In order to provide styling, className will be used
+    replaceAttrValues: { '#212121': '{primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
     typescript: true
   }
 
@@ -135,8 +135,11 @@ function processFolder(srcPath, destPath, resizable) {
       var jsCode = 
 `
 
-
-export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${jsxCode}, '${destFilename}');
+const ${destFilename}Icon = (props: FluentIconsProps) => {
+  const { primaryFill = 'currentColor', className } = props;
+  return ${jsxCode};
+}
+export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename}Icon, '${destFilename}');
       `
       iconExports.push(jsCode);
     }
@@ -151,6 +154,7 @@ export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${jsxCode}, '$
 
   for(const chunk of iconChunks) {
     chunk.unshift(`import wrapIcon from "../utils/wrapIcon";`)
+    chunk.unshift(`import { FluentIconsProps } from "../utils/FluentIconsProps.types";`)
     chunk.unshift(`import * as React from "react";`)
   }
 
