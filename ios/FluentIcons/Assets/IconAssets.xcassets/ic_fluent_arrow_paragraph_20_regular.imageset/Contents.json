@@ -3,21 +3,6 @@
     {
       "filename": "ic_fluent_arrow_paragraph_20_regular.svg",
       "idiom": "universal"
-    },
-    {
-      "filename": "ja_ic_fluent_arrow_paragraph_20_regular.svg",
-      "idiom": "universal",
-      "locale": "ja"
-    },
-    {
-      "filename": "zh_ic_fluent_arrow_paragraph_20_regular.svg",
-      "idiom": "universal",
-      "locale": "zh"
-    },
-    {
-      "filename": "ko_ic_fluent_arrow_paragraph_20_regular.svg",
-      "idiom": "universal",
-      "locale": "ko"
     }
   ],
   "info": {
@@ -25,7 +10,6 @@
     "version": 1
   },
   "properties": {
-    "localizable": true,
     "template-rendering-intent": "template"
   }
 }
