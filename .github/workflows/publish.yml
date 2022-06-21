@@ -33,14 +33,13 @@ jobs:
 
     - name: Bump react version patch
       run: |
-        grep -E "[0-9]+\.[0-9]+\.[0-9]+-rc\.[0-9]+" ./packages/react-icons/package.json | python3 -c """
+        grep -E "[0-9]+\.[0-9]+\.[0-9]+" ./packages/react-icons/package.json | python3 -c """
         import sys
         import os
         current_version = sys.stdin.read().strip().split(':')[1]
         current_version = current_version.split('\"')[1]
-        major,minor,asset,rc = current_version.split('.')
-        asset = asset.replace('-rc','')
-        os.system(f'echo \"REACT_VERSION={major}.{minor}.{int(asset) + 1}-rc.{int(rc) + 1}\" >> \$GITHUB_ENV')
+        major,minor,asset = current_version.split('.')
+        os.system(f'echo \"REACT_VERSION={major}.{minor}.{int(asset) + 1}\" >> \$GITHUB_ENV')
         """
 
     - name: Use Node 18
@@ -164,15 +163,13 @@ jobs:
       with:
         token: ${{ secrets.NPM_TOKEN }}
         access: public
-        package: packages/react-icons/package.json
-        tag: rc   
+        package: packages/react-icons/package.json 
 
     - uses: JS-DevTools/npm-publish@v1
       with:
         token: ${{ secrets.NPM_TOKEN }}
         access: public
-        package: packages/react-icons-font-subsetting-webpack-plugin/package.json
-        tag: rc   
+        package: packages/react-icons-font-subsetting-webpack-plugin/package.json 
 
     ## Android
     - name: Run Android generate script
