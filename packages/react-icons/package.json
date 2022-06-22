@@ -58,7 +58,7 @@
   ],
   "exports": {
     ".": {
-      "fluentIcontFont": {
+      "fluentIconFont": {
         "types": "./lib/fonts/index.d.ts",
         "import": "./lib/fonts/index.js",
         "require": "./lib-cjs/fonts/index.js"
