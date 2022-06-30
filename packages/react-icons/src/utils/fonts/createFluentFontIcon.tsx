@@ -73,15 +73,15 @@ export function createFluentFontIcon(displayName: string, codepoint: string, fon
     const Component: React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>>> = (props) => {
         useStaticStyles();
         const styles = useRootStyles();
-        props.className = mergeClasses(styles.root, styles[font], props.className);
-        const { primaryFill, ...state } = useIconState<React.HTMLAttributes<HTMLElement>>(props);
+        const className = mergeClasses(styles.root, styles[font], props.className);
+        const state = useIconState<React.HTMLAttributes<HTMLElement>>({...props, className});
 
 
         // We want to keep the same API surface as the SVG icons, so translate `primaryFill` to `color`
-        if (primaryFill) {
+        if (props.primaryFill) {
             state.style = {
                 ...state.style,
-                color: primaryFill
+                color: props.primaryFill
             }
         }
 

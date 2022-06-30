@@ -22,7 +22,7 @@ module.exports = {
         path: resolve(__dirname, 'dist'),
     },
     resolve: {
-        conditionNames: ['fluentIcontFont', 'import']
+        conditionNames: ['fluentIconFont', 'import']
     },
     plugins: [
         new FluentUIReactIconsFontSubsettingPlugin(),
