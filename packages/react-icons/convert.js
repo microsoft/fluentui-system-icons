@@ -136,7 +136,7 @@ function processFolder(srcPath, destPath, resizable) {
 `
 
 const ${destFilename}Icon = (props: FluentIconsProps) => {
-  const { primaryFill = 'currentColor', className } = props;
+  const { fill: primaryFill = 'currentColor', className } = props;
   return ${jsxCode};
 }
 export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename}Icon, '${destFilename}');

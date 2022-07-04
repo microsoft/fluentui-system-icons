@@ -88,14 +88,14 @@ ReactDOM.render(
 
 Using the icon font
 ---
-If, for performance or other reasons, you wish to use the font implementation of these icons rather than the SVG implementation, you can specify `"fluentIcontFont"` as a condition for the import, either via [Node >= 12.19.0](https://nodejs.org/dist/latest-v16.x/docs/api/packages.html#resolving-user-conditions) or [webpack >= 5.0.0](https://webpack.js.org/configuration/resolve/#resolveconditionnames).
+If, for performance or other reasons, you wish to use the font implementation of these icons rather than the SVG implementation, you can specify `"fluentIconFont"` as a condition for the import, either via [Node >= 12.19.0](https://nodejs.org/dist/latest-v16.x/docs/api/packages.html#resolving-user-conditions) or [webpack >= 5.0.0](https://webpack.js.org/configuration/resolve/#resolveconditionnames).
 
 ```js
 // webpack.config.js
 module.exports = {
   //...
   resolve: {
-    conditionNames: ['fluentIcontFont', 'require', 'node'],
+    conditionNames: ['fluentIconFont', 'require', 'node'],
   },
 };
 ```

@@ -5,6 +5,11 @@
       "idiom": "universal"
     },
     {
+      "filename": "en_ic_fluent_text_paragraph_20_filled.svg",
+      "idiom": "universal",
+      "locale": "en"
+    },
+    {
       "filename": "zh_ic_fluent_text_paragraph_20_filled.svg",
       "idiom": "universal",
       "locale": "zh"
@@ -13,11 +18,6 @@
       "filename": "ja_ic_fluent_text_paragraph_20_filled.svg",
       "idiom": "universal",
       "locale": "ja"
-    },
-    {
-      "filename": "en_ic_fluent_text_paragraph_20_filled.svg",
-      "idiom": "universal",
-      "locale": "en"
     },
     {
       "filename": "ko_ic_fluent_text_paragraph_20_filled.svg",
