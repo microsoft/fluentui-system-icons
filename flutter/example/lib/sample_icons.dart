@@ -5192,6 +5192,14 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.food_carrot_24_regular, 'food_carrot_24_regular', 24),
 
+  FluentUISampleIcon(FluentIcons.food_chicken_leg_16_regular, 'food_chicken_leg_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.food_chicken_leg_20_regular, 'food_chicken_leg_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.food_chicken_leg_24_regular, 'food_chicken_leg_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.food_chicken_leg_32_regular, 'food_chicken_leg_32_regular', 32),
+
   FluentUISampleIcon(FluentIcons.food_egg_16_regular, 'food_egg_16_regular', 16),
 
   FluentUISampleIcon(FluentIcons.food_egg_20_regular, 'food_egg_20_regular', 20),
@@ -5223,6 +5231,14 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.form_28_regular, 'form_28_regular', 28),
 
   FluentUISampleIcon(FluentIcons.form_48_regular, 'form_48_regular', 48),
+
+  FluentUISampleIcon(FluentIcons.form_multiple_20_regular, 'form_multiple_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.form_multiple_24_regular, 'form_multiple_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.form_multiple_28_regular, 'form_multiple_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.form_multiple_48_regular, 'form_multiple_48_regular', 48),
 
   FluentUISampleIcon(FluentIcons.form_new_20_regular, 'form_new_20_regular', 20),
 
@@ -5959,6 +5975,8 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.laptop_dismiss_16_regular, 'laptop_dismiss_16_regular', 16),
 
   FluentUISampleIcon(FluentIcons.laptop_dismiss_20_regular, 'laptop_dismiss_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.laser_tool_20_regular, 'laser_tool_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.lasso_20_regular, 'lasso_20_regular', 20),
 
@@ -8792,6 +8810,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.shield_28_regular, 'shield_28_regular', 28),
 
+  FluentUISampleIcon(FluentIcons.shield_32_regular, 'shield_32_regular', 32),
+
   FluentUISampleIcon(FluentIcons.shield_48_regular, 'shield_48_regular', 48),
 
   FluentUISampleIcon(FluentIcons.shield_badge_20_regular, 'shield_badge_20_regular', 20),
@@ -8851,6 +8871,14 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.shield_prohibited_20_regular, 'shield_prohibited_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.shield_prohibited_24_regular, 'shield_prohibited_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.shield_question_16_regular, 'shield_question_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.shield_question_20_regular, 'shield_question_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.shield_question_24_regular, 'shield_question_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.shield_question_32_regular, 'shield_question_32_regular', 32),
 
   FluentUISampleIcon(FluentIcons.shield_task_16_regular, 'shield_task_16_regular', 16),
 
@@ -16834,6 +16862,14 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.food_carrot_24_filled, 'food_carrot_24_filled', 24),
 
+  FluentUISampleIcon(FluentIcons.food_chicken_leg_16_filled, 'food_chicken_leg_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.food_chicken_leg_20_filled, 'food_chicken_leg_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.food_chicken_leg_24_filled, 'food_chicken_leg_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.food_chicken_leg_32_filled, 'food_chicken_leg_32_filled', 32),
+
   FluentUISampleIcon(FluentIcons.food_egg_16_filled, 'food_egg_16_filled', 16),
 
   FluentUISampleIcon(FluentIcons.food_egg_20_filled, 'food_egg_20_filled', 20),
@@ -16865,6 +16901,14 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.form_28_filled, 'form_28_filled', 28),
 
   FluentUISampleIcon(FluentIcons.form_48_filled, 'form_48_filled', 48),
+
+  FluentUISampleIcon(FluentIcons.form_multiple_20_filled, 'form_multiple_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.form_multiple_24_filled, 'form_multiple_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.form_multiple_28_filled, 'form_multiple_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.form_multiple_48_filled, 'form_multiple_48_filled', 48),
 
   FluentUISampleIcon(FluentIcons.form_new_20_filled, 'form_new_20_filled', 20),
 
@@ -17615,6 +17659,8 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.laptop_dismiss_16_filled, 'laptop_dismiss_16_filled', 16),
 
   FluentUISampleIcon(FluentIcons.laptop_dismiss_20_filled, 'laptop_dismiss_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.laser_tool_20_filled, 'laser_tool_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.lasso_20_filled, 'lasso_20_filled', 20),
 
@@ -20436,6 +20482,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.shield_28_filled, 'shield_28_filled', 28),
 
+  FluentUISampleIcon(FluentIcons.shield_32_filled, 'shield_32_filled', 32),
+
   FluentUISampleIcon(FluentIcons.shield_48_filled, 'shield_48_filled', 48),
 
   FluentUISampleIcon(FluentIcons.shield_badge_20_filled, 'shield_badge_20_filled', 20),
@@ -20495,6 +20543,14 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.shield_prohibited_20_filled, 'shield_prohibited_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.shield_prohibited_24_filled, 'shield_prohibited_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.shield_question_16_filled, 'shield_question_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.shield_question_20_filled, 'shield_question_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.shield_question_24_filled, 'shield_question_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.shield_question_32_filled, 'shield_question_32_filled', 32),
 
   FluentUISampleIcon(FluentIcons.shield_task_16_filled, 'shield_task_16_filled', 16),
 
