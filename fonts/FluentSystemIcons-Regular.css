@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.woff2?f91039acefdb15035f98608c1b1b5541") format("woff2"),
-url("./FluentSystemIcons-Regular.woff?f91039acefdb15035f98608c1b1b5541") format("woff"),
-url("./FluentSystemIcons-Regular.ttf?f91039acefdb15035f98608c1b1b5541") format("truetype");
+    src: url("./FluentSystemIcons-Regular.woff2?e9f6c7f3067f514833e62cb0c60d52f6") format("woff2"),
+url("./FluentSystemIcons-Regular.woff?e9f6c7f3067f514833e62cb0c60d52f6") format("woff"),
+url("./FluentSystemIcons-Regular.ttf?e9f6c7f3067f514833e62cb0c60d52f6") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -17490,4 +17490,46 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_slide_link_24_regular:before {
     content: "\ef16";
+}
+.icon-ic_fluent_food_chicken_leg_16_regular:before {
+    content: "\ef17";
+}
+.icon-ic_fluent_food_chicken_leg_20_regular:before {
+    content: "\ef18";
+}
+.icon-ic_fluent_food_chicken_leg_24_regular:before {
+    content: "\ef19";
+}
+.icon-ic_fluent_food_chicken_leg_32_regular:before {
+    content: "\ef1a";
+}
+.icon-ic_fluent_form_multiple_20_regular:before {
+    content: "\ef1b";
+}
+.icon-ic_fluent_form_multiple_24_regular:before {
+    content: "\ef1c";
+}
+.icon-ic_fluent_form_multiple_28_regular:before {
+    content: "\ef1d";
+}
+.icon-ic_fluent_form_multiple_48_regular:before {
+    content: "\ef1e";
+}
+.icon-ic_fluent_laser_tool_20_regular:before {
+    content: "\ef1f";
+}
+.icon-ic_fluent_shield_32_regular:before {
+    content: "\ef20";
+}
+.icon-ic_fluent_shield_question_16_regular:before {
+    content: "\ef21";
+}
+.icon-ic_fluent_shield_question_20_regular:before {
+    content: "\ef22";
+}
+.icon-ic_fluent_shield_question_24_regular:before {
+    content: "\ef23";
+}
+.icon-ic_fluent_shield_question_32_regular:before {
+    content: "\ef24";
 }

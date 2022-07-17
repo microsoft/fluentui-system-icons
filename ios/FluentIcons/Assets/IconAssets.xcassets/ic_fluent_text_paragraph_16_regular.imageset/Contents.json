@@ -15,14 +15,14 @@
       "locale": "zh"
     },
     {
-      "filename": "ja_ic_fluent_text_paragraph_16_regular.svg",
-      "idiom": "universal",
-      "locale": "ja"
-    },
-    {
       "filename": "ko_ic_fluent_text_paragraph_16_regular.svg",
       "idiom": "universal",
       "locale": "ko"
+    },
+    {
+      "filename": "ja_ic_fluent_text_paragraph_16_regular.svg",
+      "idiom": "universal",
+      "locale": "ja"
     }
   ],
   "info": {
