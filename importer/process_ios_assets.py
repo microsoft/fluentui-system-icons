@@ -87,11 +87,20 @@ def add_localized_set(lang_locs, original_icon_names, icon_assets_path):
             shutil.copyfile(os.path.join("dist", lang_loc, file_name), os.path.join(imageset_path, lang_loc + "_" + file_name))
             imageset_contents_path = os.path.join(imageset_path, "Contents.json")
             contents_json = json.load(open(imageset_contents_path))
-
-            loc_image_data = xc_image_data_for_file_name(lang_loc + "_" + file_name, locale=lang_loc)
+            
+            loc_image_data = []
+            if lang_loc == "zh":
+            # For the Chinese locale, explicitly differentiate between Simplified Chinese (zh_CN) and Traditional Chinese (zh_TW)
+            # While Apple's Automatic Localization in its Asset Catalogs support a superset Chinese locale id `zh`, the Office Mac Platform
+            # doesn't yet support ingesting this locale id. But this doesn't mean that we need two separate .svg assets. Instead add the
+            # same zh_ic_fluent_ file under the two available Chinese Locale sets by adjusting the Contents.json metadata file.
+                loc_image_data.append(xc_image_data_for_file_name(lang_loc + "_" + file_name, locale="zh_CN"))
+                loc_image_data.append(xc_image_data_for_file_name(lang_loc + "_" + file_name, locale="zh_TW"))
+            else:
+                loc_image_data.append(xc_image_data_for_file_name(lang_loc + "_" + file_name, locale=lang_loc))
 
             contents_json["properties"]["localizable"] = True
-            contents_json["images"].append(loc_image_data)
+            contents_json["images"].extend(loc_image_data)
 
             with open(imageset_contents_path, 'w') as imageset:
                 imageset.write(json.dumps(contents_json, indent=2, sort_keys=True))
