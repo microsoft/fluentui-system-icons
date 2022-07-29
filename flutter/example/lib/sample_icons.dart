@@ -5654,6 +5654,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.heart_broken_20_regular, 'heart_broken_20_regular', 20),
 
+  FluentUISampleIcon(FluentIcons.heart_broken_24_regular, 'heart_broken_24_regular', 24),
+
   FluentUISampleIcon(FluentIcons.heart_circle_16_regular, 'heart_circle_16_regular', 16),
 
   FluentUISampleIcon(FluentIcons.heart_circle_20_regular, 'heart_circle_20_regular', 20),
@@ -5991,6 +5993,10 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.layer_20_regular, 'layer_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.layer_24_regular, 'layer_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.layer_diagonal_20_regular, 'layer_diagonal_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.layer_diagonal_person_20_regular, 'layer_diagonal_person_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.leaf_one_16_regular, 'leaf_one_16_regular', 16),
 
@@ -10732,9 +10738,17 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.text_word_count_24_regular, 'text_word_count_24_regular', 24),
 
+  FluentUISampleIcon(FluentIcons.text_wrap_16_regular, 'text_wrap_16_regular', 16),
+
   FluentUISampleIcon(FluentIcons.text_wrap_20_regular, 'text_wrap_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.text_wrap_24_regular, 'text_wrap_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.text_wrap_off_16_regular, 'text_wrap_off_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.text_wrap_off_20_regular, 'text_wrap_off_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.text_wrap_off_24_regular, 'text_wrap_off_24_regular', 24),
 
   FluentUISampleIcon(FluentIcons.textbox_16_regular, 'textbox_16_regular', 16),
 
@@ -10969,6 +10983,18 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.trophy_32_regular, 'trophy_32_regular', 32),
 
   FluentUISampleIcon(FluentIcons.trophy_48_regular, 'trophy_48_regular', 48),
+
+  FluentUISampleIcon(FluentIcons.trophy_lock_16_regular, 'trophy_lock_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.trophy_lock_20_regular, 'trophy_lock_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.trophy_lock_24_regular, 'trophy_lock_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.trophy_lock_28_regular, 'trophy_lock_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.trophy_lock_32_regular, 'trophy_lock_32_regular', 32),
+
+  FluentUISampleIcon(FluentIcons.trophy_lock_48_regular, 'trophy_lock_48_regular', 48),
 
   FluentUISampleIcon(FluentIcons.trophy_off_16_regular, 'trophy_off_16_regular', 16),
 
@@ -17324,6 +17350,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.heart_broken_20_filled, 'heart_broken_20_filled', 20),
 
+  FluentUISampleIcon(FluentIcons.heart_broken_24_filled, 'heart_broken_24_filled', 24),
+
   FluentUISampleIcon(FluentIcons.heart_circle_16_filled, 'heart_circle_16_filled', 16),
 
   FluentUISampleIcon(FluentIcons.heart_circle_20_filled, 'heart_circle_20_filled', 20),
@@ -17675,6 +17703,10 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.layer_20_filled, 'layer_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.layer_24_filled, 'layer_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.layer_diagonal_20_filled, 'layer_diagonal_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.layer_diagonal_person_20_filled, 'layer_diagonal_person_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.leaf_one_16_filled, 'leaf_one_16_filled', 16),
 
@@ -22418,9 +22450,17 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.text_word_count_24_filled, 'text_word_count_24_filled', 24),
 
+  FluentUISampleIcon(FluentIcons.text_wrap_16_filled, 'text_wrap_16_filled', 16),
+
   FluentUISampleIcon(FluentIcons.text_wrap_20_filled, 'text_wrap_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.text_wrap_24_filled, 'text_wrap_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.text_wrap_off_16_filled, 'text_wrap_off_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.text_wrap_off_20_filled, 'text_wrap_off_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.text_wrap_off_24_filled, 'text_wrap_off_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.textbox_16_filled, 'textbox_16_filled', 16),
 
@@ -22653,6 +22693,18 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.trophy_32_filled, 'trophy_32_filled', 32),
 
   FluentUISampleIcon(FluentIcons.trophy_48_filled, 'trophy_48_filled', 48),
+
+  FluentUISampleIcon(FluentIcons.trophy_lock_16_filled, 'trophy_lock_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.trophy_lock_20_filled, 'trophy_lock_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.trophy_lock_24_filled, 'trophy_lock_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.trophy_lock_28_filled, 'trophy_lock_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.trophy_lock_32_filled, 'trophy_lock_32_filled', 32),
+
+  FluentUISampleIcon(FluentIcons.trophy_lock_48_filled, 'trophy_lock_48_filled', 48),
 
   FluentUISampleIcon(FluentIcons.trophy_off_16_filled, 'trophy_off_16_filled', 16),
 

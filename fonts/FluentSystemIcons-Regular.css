@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.woff2?e9f6c7f3067f514833e62cb0c60d52f6") format("woff2"),
-url("./FluentSystemIcons-Regular.woff?e9f6c7f3067f514833e62cb0c60d52f6") format("woff"),
-url("./FluentSystemIcons-Regular.ttf?e9f6c7f3067f514833e62cb0c60d52f6") format("truetype");
+    src: url("./FluentSystemIcons-Regular.woff2?9fa1ad4b9c3837107da30242c7307254") format("woff2"),
+url("./FluentSystemIcons-Regular.woff?9fa1ad4b9c3837107da30242c7307254") format("woff"),
+url("./FluentSystemIcons-Regular.ttf?9fa1ad4b9c3837107da30242c7307254") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -17532,4 +17532,43 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_shield_question_32_regular:before {
     content: "\ef24";
+}
+.icon-ic_fluent_heart_broken_24_regular:before {
+    content: "\ef25";
+}
+.icon-ic_fluent_layer_diagonal_20_regular:before {
+    content: "\ef26";
+}
+.icon-ic_fluent_layer_diagonal_person_20_regular:before {
+    content: "\ef27";
+}
+.icon-ic_fluent_text_wrap_16_regular:before {
+    content: "\ef28";
+}
+.icon-ic_fluent_text_wrap_off_16_regular:before {
+    content: "\ef29";
+}
+.icon-ic_fluent_text_wrap_off_20_regular:before {
+    content: "\ef2a";
+}
+.icon-ic_fluent_text_wrap_off_24_regular:before {
+    content: "\ef2b";
+}
+.icon-ic_fluent_trophy_lock_16_regular:before {
+    content: "\ef2c";
+}
+.icon-ic_fluent_trophy_lock_20_regular:before {
+    content: "\ef2d";
+}
+.icon-ic_fluent_trophy_lock_24_regular:before {
+    content: "\ef2e";
+}
+.icon-ic_fluent_trophy_lock_28_regular:before {
+    content: "\ef2f";
+}
+.icon-ic_fluent_trophy_lock_32_regular:before {
+    content: "\ef30";
+}
+.icon-ic_fluent_trophy_lock_48_regular:before {
+    content: "\ef31";
 }

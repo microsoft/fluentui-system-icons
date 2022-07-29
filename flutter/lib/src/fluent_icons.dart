@@ -8484,6 +8484,9 @@ class FluentIcons {
   /// fluent icon named "heart_broken" in size 20 and regular style.
   static const IconData heart_broken_20_regular = IconData(59133, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "heart_broken" in size 24 and regular style.
+  static const IconData heart_broken_24_regular = IconData(61221, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "heart_circle" in size 16 and regular style.
   static const IconData heart_circle_16_regular = IconData(59134, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -8990,6 +8993,12 @@ class FluentIcons {
 
   /// fluent icon named "layer" in size 24 and regular style.
   static const IconData layer_24_regular = IconData(62668, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "layer_diagonal" in size 20 and regular style.
+  static const IconData layer_diagonal_20_regular = IconData(61222, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "layer_diagonal_person" in size 20 and regular style.
+  static const IconData layer_diagonal_person_20_regular = IconData(61223, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "leaf_one" in size 16 and regular style.
   static const IconData leaf_one_16_regular = IconData(59225, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -16101,11 +16110,23 @@ class FluentIcons {
   /// fluent icon named "text_word_count" in size 24 and regular style.
   static const IconData text_word_count_24_regular = IconData(63501, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "text_wrap" in size 16 and regular style.
+  static const IconData text_wrap_16_regular = IconData(61224, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "text_wrap" in size 20 and regular style.
   static const IconData text_wrap_20_regular = IconData(60777, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "text_wrap" in size 24 and regular style.
   static const IconData text_wrap_24_regular = IconData(63502, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "text_wrap_off" in size 16 and regular style.
+  static const IconData text_wrap_off_16_regular = IconData(61225, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "text_wrap_off" in size 20 and regular style.
+  static const IconData text_wrap_off_20_regular = IconData(61226, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "text_wrap_off" in size 24 and regular style.
+  static const IconData text_wrap_off_24_regular = IconData(61227, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "textbox" in size 16 and regular style.
   static const IconData textbox_16_regular = IconData(60778, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -16457,6 +16478,24 @@ class FluentIcons {
 
   /// fluent icon named "trophy" in size 48 and regular style.
   static const IconData trophy_48_regular = IconData(60858, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "trophy_lock" in size 16 and regular style.
+  static const IconData trophy_lock_16_regular = IconData(61228, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "trophy_lock" in size 20 and regular style.
+  static const IconData trophy_lock_20_regular = IconData(61229, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "trophy_lock" in size 24 and regular style.
+  static const IconData trophy_lock_24_regular = IconData(61230, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "trophy_lock" in size 28 and regular style.
+  static const IconData trophy_lock_28_regular = IconData(61231, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "trophy_lock" in size 32 and regular style.
+  static const IconData trophy_lock_32_regular = IconData(61232, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "trophy_lock" in size 48 and regular style.
+  static const IconData trophy_lock_48_regular = IconData(61233, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "trophy_off" in size 16 and regular style.
   static const IconData trophy_off_16_regular = IconData(60859, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -25991,6 +26030,9 @@ class FluentIcons {
   /// fluent icon named "heart_broken" in size 20 and filled style.
   static const IconData heart_broken_20_filled = IconData(59146, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
+  /// fluent icon named "heart_broken" in size 24 and filled style.
+  static const IconData heart_broken_24_filled = IconData(61221, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
   /// fluent icon named "heart_circle" in size 16 and filled style.
   static const IconData heart_circle_16_filled = IconData(59147, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
@@ -26518,6 +26560,12 @@ class FluentIcons {
 
   /// fluent icon named "layer" in size 24 and filled style.
   static const IconData layer_24_filled = IconData(62678, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "layer_diagonal" in size 20 and filled style.
+  static const IconData layer_diagonal_20_filled = IconData(61222, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "layer_diagonal_person" in size 20 and filled style.
+  static const IconData layer_diagonal_person_20_filled = IconData(61223, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "leaf_one" in size 16 and filled style.
   static const IconData leaf_one_16_filled = IconData(59239, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
@@ -33632,11 +33680,23 @@ class FluentIcons {
   /// fluent icon named "text_word_count" in size 24 and filled style.
   static const IconData text_word_count_24_filled = IconData(63526, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
+  /// fluent icon named "text_wrap" in size 16 and filled style.
+  static const IconData text_wrap_16_filled = IconData(61224, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
   /// fluent icon named "text_wrap" in size 20 and filled style.
   static const IconData text_wrap_20_filled = IconData(60777, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "text_wrap" in size 24 and filled style.
   static const IconData text_wrap_24_filled = IconData(63527, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "text_wrap_off" in size 16 and filled style.
+  static const IconData text_wrap_off_16_filled = IconData(61225, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "text_wrap_off" in size 20 and filled style.
+  static const IconData text_wrap_off_20_filled = IconData(61226, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "text_wrap_off" in size 24 and filled style.
+  static const IconData text_wrap_off_24_filled = IconData(61227, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "textbox" in size 16 and filled style.
   static const IconData textbox_16_filled = IconData(60778, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
@@ -33985,6 +34045,24 @@ class FluentIcons {
 
   /// fluent icon named "trophy" in size 48 and filled style.
   static const IconData trophy_48_filled = IconData(60858, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "trophy_lock" in size 16 and filled style.
+  static const IconData trophy_lock_16_filled = IconData(61228, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "trophy_lock" in size 20 and filled style.
+  static const IconData trophy_lock_20_filled = IconData(61229, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "trophy_lock" in size 24 and filled style.
+  static const IconData trophy_lock_24_filled = IconData(61230, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "trophy_lock" in size 28 and filled style.
+  static const IconData trophy_lock_28_filled = IconData(61231, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "trophy_lock" in size 32 and filled style.
+  static const IconData trophy_lock_32_filled = IconData(61232, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "trophy_lock" in size 48 and filled style.
+  static const IconData trophy_lock_48_filled = IconData(61233, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "trophy_off" in size 16 and filled style.
   static const IconData trophy_off_16_filled = IconData(60859, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
