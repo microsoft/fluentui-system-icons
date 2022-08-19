@@ -3,7 +3,7 @@ name: Publish library
 on:
   workflow_dispatch:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths:
       - 'assets/**'
 
