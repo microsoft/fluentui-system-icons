@@ -95,5 +95,6 @@ export function createFluentFontIcon(displayName: string, codepoint: string, fon
         return <i {...state}>{codepoint}</i>
     }
     Component.displayName = displayName;
+    Component.codepoint = codepoint;
     return Component;
 }
