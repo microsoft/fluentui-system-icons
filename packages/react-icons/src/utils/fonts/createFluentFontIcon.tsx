@@ -69,8 +69,8 @@ const useRootStyles = makeStyles({
     },
 });
 
-export function createFluentFontIcon(displayName: string, codepoint: string, font: FontFile, fontSize?: number): React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>>> {
-    const Component: React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>>> = (props) => {
+export function createFluentFontIcon(displayName: string, codepoint: string, font: FontFile, fontSize?: number): React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>>> & { codepoint: string} {
+    const Component: React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>>> & { codepoint: string} = (props) => {
         useStaticStyles();
         const styles = useRootStyles();
         const className = mergeClasses(styles.root, styles[font], props.className);
