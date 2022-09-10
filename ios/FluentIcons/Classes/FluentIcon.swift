@@ -11,7 +11,7 @@ import Foundation
 /// Fluent Icons
 ///
 /// View the full list of icons here:
-/// https://github.com/microsoft/fluentui-system-icons/blob/master/icons.md
+/// https://github.com/microsoft/fluentui-system-icons/blob/main/icons.md
 ///
 @objc public enum FluentIcon: Int, Equatable, CaseIterable {
   case accessTime20Filled = 0

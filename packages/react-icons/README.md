@@ -104,7 +104,7 @@ If you do choose this route, you may wish to use `@fluentui/react-icons-font-sub
 
 Viewing the icons in a webpage
 ---
-You can view the full list of available icons by type: [regular](https://github.com/microsoft/fluentui-system-icons/blob/master/icons_regular.md) or [filled](https://github.com/microsoft/fluentui-system-icons/blob/master/icons_filled.md)
+You can view the full list of available icons by type: [regular](https://github.com/microsoft/fluentui-system-icons/blob/main/icons_regular.md) or [filled](https://github.com/microsoft/fluentui-system-icons/blob/main/icons_filled.md)
 
 ## Appendix and FAQ
 

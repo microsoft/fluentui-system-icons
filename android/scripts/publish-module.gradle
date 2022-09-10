@@ -40,7 +40,7 @@ afterEvaluate {
                     licenses {
                         license {
                             name = 'MIT License'
-                            url = 'https://github.com/microsoft/fluentui-system-icons/blob/master/LICENSE'
+                            url = 'https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE'
                         }
                     }
                     developers {

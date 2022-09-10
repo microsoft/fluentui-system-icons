@@ -269,7 +269,7 @@ def process_assets():
         swift_enum_file.write("/// Fluent Icons\n")
         swift_enum_file.write("///\n")
         swift_enum_file.write("/// View the full list of icons here:\n")
-        swift_enum_file.write("/// https://github.com/microsoft/fluentui-system-icons/blob/master/icons.md\n")
+        swift_enum_file.write("/// https://github.com/microsoft/fluentui-system-icons/blob/main/icons.md\n")
         swift_enum_file.write("///\n")
         swift_enum_file.write("@objc public enum {}: Int, Equatable, CaseIterable".format(LIBRARY_NAME) + " {\n")
 
