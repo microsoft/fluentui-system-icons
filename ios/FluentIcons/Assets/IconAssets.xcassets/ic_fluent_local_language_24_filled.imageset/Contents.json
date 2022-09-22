@@ -5,19 +5,24 @@
       "idiom": "universal"
     },
     {
-      "filename": "en_ic_fluent_local_language_24_filled.svg",
+      "filename": "ko_ic_fluent_local_language_24_filled.svg",
       "idiom": "universal",
-      "locale": "en"
+      "locale": "ko"
     },
     {
       "filename": "zh_ic_fluent_local_language_24_filled.svg",
       "idiom": "universal",
-      "locale": "zh"
+      "locale": "zh_CN"
     },
     {
-      "filename": "ko_ic_fluent_local_language_24_filled.svg",
+      "filename": "zh_ic_fluent_local_language_24_filled.svg",
       "idiom": "universal",
-      "locale": "ko"
+      "locale": "zh_TW"
+    },
+    {
+      "filename": "en_ic_fluent_local_language_24_filled.svg",
+      "idiom": "universal",
+      "locale": "en"
     }
   ],
   "info": {

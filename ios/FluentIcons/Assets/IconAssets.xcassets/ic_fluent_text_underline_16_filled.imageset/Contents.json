@@ -5,54 +5,9 @@
       "idiom": "universal"
     },
     {
-      "filename": "uk_ic_fluent_text_underline_16_filled.svg",
-      "idiom": "universal",
-      "locale": "uk"
-    },
-    {
-      "filename": "en_ic_fluent_text_underline_16_filled.svg",
-      "idiom": "universal",
-      "locale": "en"
-    },
-    {
-      "filename": "tr_ic_fluent_text_underline_16_filled.svg",
-      "idiom": "universal",
-      "locale": "tr"
-    },
-    {
-      "filename": "bg_ic_fluent_text_underline_16_filled.svg",
-      "idiom": "universal",
-      "locale": "bg"
-    },
-    {
-      "filename": "sr_ic_fluent_text_underline_16_filled.svg",
-      "idiom": "universal",
-      "locale": "sr"
-    },
-    {
-      "filename": "sl_ic_fluent_text_underline_16_filled.svg",
-      "idiom": "universal",
-      "locale": "sl"
-    },
-    {
       "filename": "pt_ic_fluent_text_underline_16_filled.svg",
       "idiom": "universal",
       "locale": "pt"
-    },
-    {
-      "filename": "ru_ic_fluent_text_underline_16_filled.svg",
-      "idiom": "universal",
-      "locale": "ru"
-    },
-    {
-      "filename": "et_ic_fluent_text_underline_16_filled.svg",
-      "idiom": "universal",
-      "locale": "et"
-    },
-    {
-      "filename": "gl_ic_fluent_text_underline_16_filled.svg",
-      "idiom": "universal",
-      "locale": "gl"
     },
     {
       "filename": "kk_ic_fluent_text_underline_16_filled.svg",
@@ -60,14 +15,14 @@
       "locale": "kk"
     },
     {
-      "filename": "ca_ic_fluent_text_underline_16_filled.svg",
+      "filename": "eu_ic_fluent_text_underline_16_filled.svg",
       "idiom": "universal",
-      "locale": "ca"
+      "locale": "eu"
     },
     {
-      "filename": "lt_ic_fluent_text_underline_16_filled.svg",
+      "filename": "uk_ic_fluent_text_underline_16_filled.svg",
       "idiom": "universal",
-      "locale": "lt"
+      "locale": "uk"
     },
     {
       "filename": "hu_ic_fluent_text_underline_16_filled.svg",
@@ -80,19 +35,14 @@
       "locale": "es"
     },
     {
-      "filename": "eu_ic_fluent_text_underline_16_filled.svg",
+      "filename": "gl_ic_fluent_text_underline_16_filled.svg",
       "idiom": "universal",
-      "locale": "eu"
+      "locale": "gl"
     },
     {
-      "filename": "ko_ic_fluent_text_underline_16_filled.svg",
+      "filename": "ca_ic_fluent_text_underline_16_filled.svg",
       "idiom": "universal",
-      "locale": "ko"
-    },
-    {
-      "filename": "fr_ic_fluent_text_underline_16_filled.svg",
-      "idiom": "universal",
-      "locale": "fr"
+      "locale": "ca"
     },
     {
       "filename": "it_ic_fluent_text_underline_16_filled.svg",
@@ -100,9 +50,59 @@
       "locale": "it"
     },
     {
+      "filename": "ru_ic_fluent_text_underline_16_filled.svg",
+      "idiom": "universal",
+      "locale": "ru"
+    },
+    {
+      "filename": "ko_ic_fluent_text_underline_16_filled.svg",
+      "idiom": "universal",
+      "locale": "ko"
+    },
+    {
+      "filename": "bg_ic_fluent_text_underline_16_filled.svg",
+      "idiom": "universal",
+      "locale": "bg"
+    },
+    {
+      "filename": "lt_ic_fluent_text_underline_16_filled.svg",
+      "idiom": "universal",
+      "locale": "lt"
+    },
+    {
+      "filename": "et_ic_fluent_text_underline_16_filled.svg",
+      "idiom": "universal",
+      "locale": "et"
+    },
+    {
+      "filename": "sl_ic_fluent_text_underline_16_filled.svg",
+      "idiom": "universal",
+      "locale": "sl"
+    },
+    {
+      "filename": "fr_ic_fluent_text_underline_16_filled.svg",
+      "idiom": "universal",
+      "locale": "fr"
+    },
+    {
+      "filename": "en_ic_fluent_text_underline_16_filled.svg",
+      "idiom": "universal",
+      "locale": "en"
+    },
+    {
+      "filename": "sr_ic_fluent_text_underline_16_filled.svg",
+      "idiom": "universal",
+      "locale": "sr"
+    },
+    {
       "filename": "lv_ic_fluent_text_underline_16_filled.svg",
       "idiom": "universal",
       "locale": "lv"
+    },
+    {
+      "filename": "tr_ic_fluent_text_underline_16_filled.svg",
+      "idiom": "universal",
+      "locale": "tr"
     }
   ],
   "info": {
