@@ -2,11 +2,11 @@ import * as React from "react";
 import { FluentIconsProps } from "./FluentIconsProps.types";
 import { useIconState } from "./useIconState";
 
-const wrapIcon = (Icon: (iconProps: FluentIconsProps) => JSX.Element, displayName?: string) => {
-    const WrappedIcon = (props: FluentIconsProps) => { 
+const wrapIcon = (Icon: React.ForwardRefExoticComponent<React.SVGAttributes<SVGElement> & FluentIconsProps & React.RefAttributes<SVGElement>>, displayName?: string) => {
+    const WrappedIcon = React.forwardRef((props: FluentIconsProps, ref: React.Ref<SVGElement>) => { 
         const state = useIconState(props);
-        return <Icon {...state} />
-    }
+        return <Icon ref={ref} {...state} />
+    })
     WrappedIcon.displayName = displayName;
     return WrappedIcon;
 }
