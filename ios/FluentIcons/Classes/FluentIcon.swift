@@ -11839,6 +11839,8 @@ import Foundation
   case windowConsole20Regular
   case windowDatabase20Filled
   case windowDatabase20Regular
+  case windowDatabase24Filled
+  case windowDatabase24Regular
   case windowDevEdit16Filled
   case windowDevEdit16Regular
   case windowDevEdit20Filled
@@ -24013,6 +24015,8 @@ import Foundation
     case .windowConsole20Regular: return "ic_fluent_window_console_20_regular"
     case .windowDatabase20Filled: return "ic_fluent_window_database_20_filled"
     case .windowDatabase20Regular: return "ic_fluent_window_database_20_regular"
+    case .windowDatabase24Filled: return "ic_fluent_window_database_24_filled"
+    case .windowDatabase24Regular: return "ic_fluent_window_database_24_regular"
     case .windowDevEdit16Filled: return "ic_fluent_window_dev_edit_16_filled"
     case .windowDevEdit16Regular: return "ic_fluent_window_dev_edit_16_regular"
     case .windowDevEdit20Filled: return "ic_fluent_window_dev_edit_20_filled"
@@ -24086,10 +24090,10 @@ import Foundation
     case .wrenchScrewdriver24Filled: return "ic_fluent_wrench_screwdriver_24_filled"
     case .wrenchScrewdriver24Regular: return "ic_fluent_wrench_screwdriver_24_regular"
     case .xboxConsole20Filled: return "ic_fluent_xbox_console_20_filled"
-    case .xboxConsole20Regular: return "ic_fluent_xbox_console_20_regular"
-    case .xboxConsole24Filled: return "ic_fluent_xbox_console_24_filled"
     default: break }
     switch self {
+    case .xboxConsole20Regular: return "ic_fluent_xbox_console_20_regular"
+    case .xboxConsole24Filled: return "ic_fluent_xbox_console_24_filled"
     case .xboxConsole24Regular: return "ic_fluent_xbox_console_24_regular"
     case .xboxController16Filled: return "ic_fluent_xbox_controller_16_filled"
     case .xboxController16Regular: return "ic_fluent_xbox_controller_16_regular"
@@ -36195,6 +36199,8 @@ import Foundation
     case .windowConsole20Regular: return ".windowConsole20Regular"
     case .windowDatabase20Filled: return ".windowDatabase20Filled"
     case .windowDatabase20Regular: return ".windowDatabase20Regular"
+    case .windowDatabase24Filled: return ".windowDatabase24Filled"
+    case .windowDatabase24Regular: return ".windowDatabase24Regular"
     case .windowDevEdit16Filled: return ".windowDevEdit16Filled"
     case .windowDevEdit16Regular: return ".windowDevEdit16Regular"
     case .windowDevEdit20Filled: return ".windowDevEdit20Filled"
@@ -36268,10 +36274,10 @@ import Foundation
     case .wrenchScrewdriver24Filled: return ".wrenchScrewdriver24Filled"
     case .wrenchScrewdriver24Regular: return ".wrenchScrewdriver24Regular"
     case .xboxConsole20Filled: return ".xboxConsole20Filled"
-    case .xboxConsole20Regular: return ".xboxConsole20Regular"
-    case .xboxConsole24Filled: return ".xboxConsole24Filled"
     default: break }
     switch self {
+    case .xboxConsole20Regular: return ".xboxConsole20Regular"
+    case .xboxConsole24Filled: return ".xboxConsole24Filled"
     case .xboxConsole24Regular: return ".xboxConsole24Regular"
     case .xboxController16Filled: return ".xboxController16Filled"
     case .xboxController16Regular: return ".xboxController16Regular"

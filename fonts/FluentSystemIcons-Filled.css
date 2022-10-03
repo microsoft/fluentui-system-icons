@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?d5bca2e000ab06a69a40534e7d8b6062") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?d5bca2e000ab06a69a40534e7d8b6062") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?d5bca2e000ab06a69a40534e7d8b6062") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?8b86266cf74a7f8ea2e7731697e45fe2") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?8b86266cf74a7f8ea2e7731697e45fe2") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?8b86266cf74a7f8ea2e7731697e45fe2") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -18069,4 +18069,7 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_weather_snowflake_32_filled:before {
     content: "\efd4";
+}
+.icon-ic_fluent_window_database_24_filled:before {
+    content: "\efd5";
 }

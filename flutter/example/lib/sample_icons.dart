@@ -11930,6 +11930,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.window_database_20_regular, 'window_database_20_regular', 20),
 
+  FluentUISampleIcon(FluentIcons.window_database_24_regular, 'window_database_24_regular', 24),
+
   FluentUISampleIcon(FluentIcons.window_dev_edit_16_regular, 'window_dev_edit_16_regular', 16),
 
   FluentUISampleIcon(FluentIcons.window_dev_edit_20_regular, 'window_dev_edit_20_regular', 20),
@@ -23965,6 +23967,8 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.window_console_20_filled, 'window_console_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.window_database_20_filled, 'window_database_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.window_database_24_filled, 'window_database_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.window_dev_edit_16_filled, 'window_dev_edit_16_filled', 16),
 

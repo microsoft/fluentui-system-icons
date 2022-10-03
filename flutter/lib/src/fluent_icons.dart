@@ -17898,6 +17898,9 @@ class FluentIcons {
   /// fluent icon named "window_database" in size 20 and regular style.
   static const IconData window_database_20_regular = IconData(61040, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "window_database" in size 24 and regular style.
+  static const IconData window_database_24_regular = IconData(61397, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "window_dev_edit" in size 16 and regular style.
   static const IconData window_dev_edit_16_regular = IconData(61041, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -35953,6 +35956,9 @@ class FluentIcons {
 
   /// fluent icon named "window_database" in size 20 and filled style.
   static const IconData window_database_20_filled = IconData(61040, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "window_database" in size 24 and filled style.
+  static const IconData window_database_24_filled = IconData(61397, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "window_dev_edit" in size 16 and filled style.
   static const IconData window_dev_edit_16_filled = IconData(61041, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
