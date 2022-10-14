@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-icons",
-  "version": "2.0.184",
+  "version": "2.0.185",
   "sideEffects": false,
   "main": "lib-cjs/index.js",
   "module": "lib/index.js",

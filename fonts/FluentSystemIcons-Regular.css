@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.woff2?0d351396c5610a62528c04ff01807592") format("woff2"),
-url("./FluentSystemIcons-Regular.woff?0d351396c5610a62528c04ff01807592") format("woff"),
-url("./FluentSystemIcons-Regular.ttf?0d351396c5610a62528c04ff01807592") format("truetype");
+    src: url("./FluentSystemIcons-Regular.woff2?64d29d8704f96d433a0fe829aa80b93a") format("woff2"),
+url("./FluentSystemIcons-Regular.woff?64d29d8704f96d433a0fe829aa80b93a") format("woff"),
+url("./FluentSystemIcons-Regular.ttf?64d29d8704f96d433a0fe829aa80b93a") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -18063,4 +18063,160 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_window_database_24_regular:before {
     content: "\efd5";
+}
+.icon-ic_fluent_arrow_trending_12_regular:before {
+    content: "\efd6";
+}
+.icon-ic_fluent_building_people_16_regular:before {
+    content: "\efd7";
+}
+.icon-ic_fluent_building_people_20_regular:before {
+    content: "\efd8";
+}
+.icon-ic_fluent_building_people_24_regular:before {
+    content: "\efd9";
+}
+.icon-ic_fluent_cloud_error_16_regular:before {
+    content: "\efda";
+}
+.icon-ic_fluent_cloud_error_20_regular:before {
+    content: "\efdb";
+}
+.icon-ic_fluent_cloud_error_24_regular:before {
+    content: "\efdc";
+}
+.icon-ic_fluent_cloud_error_28_regular:before {
+    content: "\efdd";
+}
+.icon-ic_fluent_cloud_error_32_regular:before {
+    content: "\efde";
+}
+.icon-ic_fluent_cloud_error_48_regular:before {
+    content: "\efdf";
+}
+.icon-ic_fluent_couch_32_regular:before {
+    content: "\efe0";
+}
+.icon-ic_fluent_couch_48_regular:before {
+    content: "\efe1";
+}
+.icon-ic_fluent_database_arrow_right_24_regular:before {
+    content: "\efe2";
+}
+.icon-ic_fluent_dishwasher_20_regular:before {
+    content: "\efe3";
+}
+.icon-ic_fluent_dishwasher_24_regular:before {
+    content: "\efe4";
+}
+.icon-ic_fluent_dishwasher_32_regular:before {
+    content: "\efe5";
+}
+.icon-ic_fluent_dishwasher_48_regular:before {
+    content: "\efe6";
+}
+.icon-ic_fluent_elevator_20_regular:before {
+    content: "\efe7";
+}
+.icon-ic_fluent_elevator_24_regular:before {
+    content: "\efe8";
+}
+.icon-ic_fluent_elevator_32_regular:before {
+    content: "\efe9";
+}
+.icon-ic_fluent_feed_32_regular:before {
+    content: "\efea";
+}
+.icon-ic_fluent_feed_48_regular:before {
+    content: "\efeb";
+}
+.icon-ic_fluent_fireplace_20_regular:before {
+    content: "\efec";
+}
+.icon-ic_fluent_fireplace_24_regular:before {
+    content: "\efed";
+}
+.icon-ic_fluent_fireplace_32_regular:before {
+    content: "\efee";
+}
+.icon-ic_fluent_fireplace_48_regular:before {
+    content: "\efef";
+}
+.icon-ic_fluent_mention_12_regular:before {
+    content: "\eff0";
+}
+.icon-ic_fluent_oven_20_regular:before {
+    content: "\eff1";
+}
+.icon-ic_fluent_oven_24_regular:before {
+    content: "\eff2";
+}
+.icon-ic_fluent_oven_32_regular:before {
+    content: "\eff3";
+}
+.icon-ic_fluent_oven_48_regular:before {
+    content: "\eff4";
+}
+.icon-ic_fluent_panel_down_20_regular:before {
+    content: "\eff5";
+}
+.icon-ic_fluent_panel_left_32_regular:before {
+    content: "\eff6";
+}
+.icon-ic_fluent_panel_left_add_16_regular:before {
+    content: "\eff7";
+}
+.icon-ic_fluent_panel_left_add_20_regular:before {
+    content: "\eff8";
+}
+.icon-ic_fluent_panel_left_add_24_regular:before {
+    content: "\eff9";
+}
+.icon-ic_fluent_panel_left_add_28_regular:before {
+    content: "\effa";
+}
+.icon-ic_fluent_panel_left_add_32_regular:before {
+    content: "\effb";
+}
+.icon-ic_fluent_panel_left_add_48_regular:before {
+    content: "\effc";
+}
+.icon-ic_fluent_panel_left_key_16_regular:before {
+    content: "\effd";
+}
+.icon-ic_fluent_panel_left_key_20_regular:before {
+    content: "\effe";
+}
+.icon-ic_fluent_panel_left_key_24_regular:before {
+    content: "\efff";
+}
+.icon-ic_fluent_panel_right_32_regular:before {
+    content: "\f000";
+}
+.icon-ic_fluent_status_12_regular:before {
+    content: "\f001";
+}
+.icon-ic_fluent_vehicle_car_parking_20_regular:before {
+    content: "\f002";
+}
+.icon-ic_fluent_vehicle_car_parking_24_regular:before {
+    content: "\f003";
+}
+.icon-ic_fluent_vehicle_car_profile_ltr_24_regular:before {
+    content: "\f004";
+}
+.icon-ic_fluent_vehicle_car_profile_rtl_24_regular:before {
+    content: "\f005";
+}
+.icon-ic_fluent_washer_20_regular:before {
+    content: "\f006";
+}
+.icon-ic_fluent_washer_24_regular:before {
+    content: "\f007";
+}
+.icon-ic_fluent_washer_32_regular:before {
+    content: "\f008";
+}
+.icon-ic_fluent_washer_48_regular:before {
+    content: "\f009";
 }
