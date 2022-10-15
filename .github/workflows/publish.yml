@@ -3,7 +3,7 @@ name: Publish library
 on:
   workflow_dispatch:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths:
       - 'assets/**'
 
@@ -33,20 +33,19 @@ jobs:
 
     - name: Bump react version patch
       run: |
-        grep -E "[0-9]+\.[0-9]+\.[0-9]+-rc\.[0-9]+" ./packages/react-icons/package.json | python3 -c """
+        grep -E "[0-9]+\.[0-9]+\.[0-9]+" ./packages/react-icons/package.json | python3 -c """
         import sys
         import os
         current_version = sys.stdin.read().strip().split(':')[1]
         current_version = current_version.split('\"')[1]
-        major,minor,asset,rc = current_version.split('.')
-        asset = asset.replace('-rc','')
-        os.system(f'echo \"REACT_VERSION={major}.{minor}.{int(asset) + 1}-rc.{int(rc) + 1}\" >> \$GITHUB_ENV')
+        major,minor,asset = current_version.split('.')
+        os.system(f'echo \"REACT_VERSION={major}.{minor}.{int(asset) + 1}\" >> \$GITHUB_ENV')
         """
 
-    - name: Use Node 11
+    - name: Use Node 18
       uses: actions/setup-node@v1
       with:
-        node-version: 11.x
+        node-version: 18.x
 
     - run: npm install
       working-directory: importer
@@ -108,22 +107,45 @@ jobs:
         rm packages/svg-icons/package.json.bk
 
     # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in svg-sprites/package.json
+      run: |
+        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/svg-sprites/package.json
+        rm packages/svg-sprites/package.json.bk
+
+    # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version number in react-icons/package.json
       run: |
         sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?(-rc\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-icons/package.json
         rm packages/react-icons/package.json.bk
 
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in react-icons-font-subsetting-webpack-plugin/package.json
+      run: |
+        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?(-rc\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-icons-font-subsetting-webpack-plugin/package.json
+        rm packages/react-icons-font-subsetting-webpack-plugin/package.json.bk
+
+    - name: Install dependencies
+      run: npm install
+
     - name: Build SVG library
       run: |
-        npm install
         npm run build
       working-directory: packages/svg-icons
 
+    - name: Build SVG sprite library
+      run: |
+        npm run build
+      working-directory: packages/svg-sprites
+
     - name: Build React library
       run: |
-        npm install
         npm run build
       working-directory: packages/react-icons 
+
+    - name: Build Webpack plugin library
+      run: |
+        npm run build
+      working-directory: packages/react-icons-font-subsetting-webpack-plugin 
 
     - uses: JS-DevTools/npm-publish@v1
       with:
@@ -135,8 +157,19 @@ jobs:
       with:
         token: ${{ secrets.NPM_TOKEN }}
         access: public
-        package: packages/react-icons/package.json
-        tag: beta   
+        package: packages/svg-sprites/package.json
+
+    - uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+        access: public
+        package: packages/react-icons/package.json 
+
+    - uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+        access: public
+        package: packages/react-icons-font-subsetting-webpack-plugin/package.json 
 
     ## Android
     - name: Run Android generate script
@@ -202,7 +235,7 @@ jobs:
     - name: Push release
       run: |
         REMOTE_REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-        git push $REMOTE_REPO HEAD:master --follow-tags --tags
+        git push $REMOTE_REPO HEAD:main --follow-tags --tags
 
   publish-android-demo:
     name: Publish Android demo app

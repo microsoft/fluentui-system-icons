@@ -2,13 +2,13 @@ import * as React from "react";
 import { FluentIconsProps } from "./FluentIconsProps.types";
 import { useIconState } from "./useIconState";
 
-const wrapIcon = (icon: JSX.Element, displayName?: string) => {
-    const Component: React.FC<FluentIconsProps> = (props) => { 
+const wrapIcon = (Icon: (iconProps: FluentIconsProps) => JSX.Element, displayName?: string) => {
+    const WrappedIcon = (props: FluentIconsProps) => { 
         const state = useIconState(props);
-        return (React.cloneElement(icon,state))
+        return <Icon {...state} />
     }
-    Component.displayName = displayName;
-    return Component;
+    WrappedIcon.displayName = displayName;
+    return WrappedIcon;
 }
 
 export default wrapIcon;
