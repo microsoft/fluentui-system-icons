@@ -40,9 +40,9 @@
       "locale": "de"
     },
     {
-      "filename": "ca_ic_fluent_text_italic_20_filled.svg",
+      "filename": "lv_ic_fluent_text_italic_20_filled.svg",
       "idiom": "universal",
-      "locale": "ca"
+      "locale": "lv"
     },
     {
       "filename": "en_ic_fluent_text_italic_20_filled.svg",
@@ -75,9 +75,9 @@
       "locale": "lt"
     },
     {
-      "filename": "sv_ic_fluent_text_italic_20_filled.svg",
+      "filename": "no_ic_fluent_text_italic_20_filled.svg",
       "idiom": "universal",
-      "locale": "sv"
+      "locale": "no"
     },
     {
       "filename": "et_ic_fluent_text_italic_20_filled.svg",
