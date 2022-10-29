@@ -5,21 +5,6 @@
       "idiom": "universal"
     },
     {
-      "filename": "ja_ic_fluent_text_paragraph_16_filled.svg",
-      "idiom": "universal",
-      "locale": "ja"
-    },
-    {
-      "filename": "ko_ic_fluent_text_paragraph_16_filled.svg",
-      "idiom": "universal",
-      "locale": "ko"
-    },
-    {
-      "filename": "en_ic_fluent_text_paragraph_16_filled.svg",
-      "idiom": "universal",
-      "locale": "en"
-    },
-    {
       "filename": "zh_ic_fluent_text_paragraph_16_filled.svg",
       "idiom": "universal",
       "locale": "zh_CN"
@@ -28,6 +13,21 @@
       "filename": "zh_ic_fluent_text_paragraph_16_filled.svg",
       "idiom": "universal",
       "locale": "zh_TW"
+    },
+    {
+      "filename": "ja_ic_fluent_text_paragraph_16_filled.svg",
+      "idiom": "universal",
+      "locale": "ja"
+    },
+    {
+      "filename": "en_ic_fluent_text_paragraph_16_filled.svg",
+      "idiom": "universal",
+      "locale": "en"
+    },
+    {
+      "filename": "ko_ic_fluent_text_paragraph_16_filled.svg",
+      "idiom": "universal",
+      "locale": "ko"
     }
   ],
   "info": {
