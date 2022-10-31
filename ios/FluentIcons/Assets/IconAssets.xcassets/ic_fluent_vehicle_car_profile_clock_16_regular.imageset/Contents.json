@@ -1,0 +1,16 @@
+{
+  "images": [
+    {
+      "filename": "ic_fluent_vehicle_car_profile_ltr_clock_16_regular.svg",
+      "idiom": "universal",
+      "language-direction": "left-to-right"
+    }
+  ],
+  "info": {
+    "author": "xcode",
+    "version": 1
+  },
+  "properties": {
+    "template-rendering-intent": "template"
+  }
+}
