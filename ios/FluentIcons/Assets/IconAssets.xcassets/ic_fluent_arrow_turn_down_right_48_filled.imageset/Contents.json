@@ -1,0 +1,15 @@
+{
+  "images": [
+    {
+      "filename": "ic_fluent_arrow_turn_down_right_48_filled.svg",
+      "idiom": "universal"
+    }
+  ],
+  "info": {
+    "author": "xcode",
+    "version": 1
+  },
+  "properties": {
+    "template-rendering-intent": "template"
+  }
+}
