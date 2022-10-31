@@ -23,7 +23,7 @@
     "generate:font-resizable": "node ../../importer/generateFont.js --source=intermediate --dest=src/utils/fonts --iconType=Resizable",
     "generate:font": "npm run generate:font-regular && npm run generate:font-filled && npm run generate:font-resizable",
     "rollup": "node ./generateRollup.js",
-    "optimize": "svgo --folder=./intermediate --precision=2 --disable=removeViewBox,mergePaths",
+    "optimize": "svgo --config svgo.config.js --folder=./intermediate --precision=2",
     "unfill": "find ./intermediate -type f -name \"*.svg\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./intermediate -type f -name \"*.bak\" -delete",
     "build": "npm run copy && npm run generate:font && npm run optimize && npm run unfill && npm run convert:svg && npm run convert:fonts && npm run cleanSvg && npm run build:esm && npm run build:cjs && npm run copy:font-files",
     "build:cjs": "tsc --module commonjs --outDir lib-cjs && babel lib-cjs --out-dir lib-cjs",
