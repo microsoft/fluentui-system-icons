@@ -1,0 +1,15 @@
+{
+  "images": [
+    {
+      "filename": "ic_fluent_glance_horizontal_sparkles_16_filled.svg",
+      "idiom": "universal"
+    }
+  ],
+  "info": {
+    "author": "xcode",
+    "version": 1
+  },
+  "properties": {
+    "template-rendering-intent": "template"
+  }
+}
