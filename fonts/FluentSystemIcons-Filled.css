@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?7fe5bf8d101f2645fb3b9b0f53eb9c11") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?7fe5bf8d101f2645fb3b9b0f53eb9c11") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?7fe5bf8d101f2645fb3b9b0f53eb9c11") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?5669b81c53061fb0eac7445cccb62a74") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?5669b81c53061fb0eac7445cccb62a74") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?5669b81c53061fb0eac7445cccb62a74") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -18507,4 +18507,163 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_water_48_filled:before {
     content: "\f066";
+}
+.icon-ic_fluent_arrow_turn_down_left_20_filled:before {
+    content: "\f067";
+}
+.icon-ic_fluent_arrow_turn_down_left_48_filled:before {
+    content: "\f068";
+}
+.icon-ic_fluent_autosum_16_filled:before {
+    content: "\f069";
+}
+.icon-ic_fluent_bubble_multiple_20_filled:before {
+    content: "\f06a";
+}
+.icon-ic_fluent_calculator_16_filled:before {
+    content: "\f06b";
+}
+.icon-ic_fluent_calculator_multiple_16_filled:before {
+    content: "\f06c";
+}
+.icon-ic_fluent_camera_sparkles_16_filled:before {
+    content: "\f06d";
+}
+.icon-ic_fluent_crown_16_filled:before {
+    content: "\f06e";
+}
+.icon-ic_fluent_crown_20_filled:before {
+    content: "\f06f";
+}
+.icon-ic_fluent_flag_checkered_20_filled:before {
+    content: "\f070";
+}
+.icon-ic_fluent_glance_horizontal_16_filled:before {
+    content: "\f071";
+}
+.icon-ic_fluent_glance_horizontal_sparkles_16_filled:before {
+    content: "\f072";
+}
+.icon-ic_fluent_glance_horizontal_sparkles_24_filled:before {
+    content: "\f073";
+}
+.icon-ic_fluent_grid_circles_24_filled:before {
+    content: "\f074";
+}
+.icon-ic_fluent_grid_circles_28_filled:before {
+    content: "\f075";
+}
+.icon-ic_fluent_heart_circle_hint_16_filled:before {
+    content: "\f076";
+}
+.icon-ic_fluent_heart_circle_hint_20_filled:before {
+    content: "\f077";
+}
+.icon-ic_fluent_heart_circle_hint_24_filled:before {
+    content: "\f078";
+}
+.icon-ic_fluent_heart_circle_hint_28_filled:before {
+    content: "\f079";
+}
+.icon-ic_fluent_heart_circle_hint_32_filled:before {
+    content: "\f07a";
+}
+.icon-ic_fluent_heart_circle_hint_48_filled:before {
+    content: "\f07b";
+}
+.icon-ic_fluent_lightbulb_28_filled:before {
+    content: "\f07c";
+}
+.icon-ic_fluent_lightbulb_32_filled:before {
+    content: "\f07d";
+}
+.icon-ic_fluent_lightbulb_48_filled:before {
+    content: "\f07e";
+}
+.icon-ic_fluent_lightbulb_person_16_filled:before {
+    content: "\f07f";
+}
+.icon-ic_fluent_lightbulb_person_20_filled:before {
+    content: "\f080";
+}
+.icon-ic_fluent_lightbulb_person_24_filled:before {
+    content: "\f081";
+}
+.icon-ic_fluent_lightbulb_person_28_filled:before {
+    content: "\f082";
+}
+.icon-ic_fluent_lightbulb_person_32_filled:before {
+    content: "\f083";
+}
+.icon-ic_fluent_lightbulb_person_48_filled:before {
+    content: "\f084";
+}
+.icon-ic_fluent_megaphone_loud_28_filled:before {
+    content: "\f085";
+}
+.icon-ic_fluent_megaphone_loud_32_filled:before {
+    content: "\f086";
+}
+.icon-ic_fluent_person_walking_20_filled:before {
+    content: "\f087";
+}
+.icon-ic_fluent_person_walking_24_filled:before {
+    content: "\f088";
+}
+.icon-ic_fluent_receipt_16_filled:before {
+    content: "\f089";
+}
+.icon-ic_fluent_receipt_28_filled:before {
+    content: "\f08a";
+}
+.icon-ic_fluent_receipt_sparkles_16_filled:before {
+    content: "\f08b";
+}
+.icon-ic_fluent_scan_text_16_filled:before {
+    content: "\f08c";
+}
+.icon-ic_fluent_scan_text_28_filled:before {
+    content: "\f08d";
+}
+.icon-ic_fluent_table_calculator_16_filled:before {
+    content: "\f08e";
+}
+.icon-ic_fluent_table_simple_checkmark_16_filled:before {
+    content: "\f08f";
+}
+.icon-ic_fluent_table_simple_checkmark_20_filled:before {
+    content: "\f090";
+}
+.icon-ic_fluent_table_simple_checkmark_24_filled:before {
+    content: "\f091";
+}
+.icon-ic_fluent_table_simple_checkmark_28_filled:before {
+    content: "\f092";
+}
+.icon-ic_fluent_table_simple_checkmark_32_filled:before {
+    content: "\f093";
+}
+.icon-ic_fluent_table_simple_checkmark_48_filled:before {
+    content: "\f094";
+}
+.icon-ic_fluent_tabs_16_filled:before {
+    content: "\f095";
+}
+.icon-ic_fluent_text_underline_double_20_filled:before {
+    content: "\f096";
+}
+.icon-ic_fluent_text_underline_double_24_filled:before {
+    content: "\f097";
+}
+.icon-ic_fluent_xbox_controller_error_20_filled:before {
+    content: "\f098";
+}
+.icon-ic_fluent_xbox_controller_error_24_filled:before {
+    content: "\f099";
+}
+.icon-ic_fluent_xbox_controller_error_32_filled:before {
+    content: "\f09a";
+}
+.icon-ic_fluent_xbox_controller_error_48_filled:before {
+    content: "\f09b";
 }
