@@ -197,8 +197,13 @@ def process_assets():
 
         gn_file.write("import(\"//build/config/ios/asset_catalog.gni\")\n\n")
 
+        imageset_names = set()
         for file_name in file_names:
             imageset_name = get_icon_name(file_name)
+            # GN targets do not allow duplicate names
+            if imageset_name in imageset_names:
+                continue
+            imageset_names.add(imageset_name)
             imageset_folder_path = ios_directory + '/FluentIcons/Assets/IconAssets.xcassets/' + imageset_name + '.imageset'
 
             gn_file.write("imageset(\"{}\")".format(imageset_name) + " {\n")
