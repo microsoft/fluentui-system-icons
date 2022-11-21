@@ -12,7 +12,7 @@
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./icons --extension=svg",
     "copywithdirs": "node ../../importer/generate.js --source=../../assets --dest=./icons --extension=svg --keepdirs=true",
     "rename": "renamer --find 'ic_fluent_' '**'",
-    "optimize": "svgo --folder=./icons --recursive --precision=2 --disable=removeViewBox,mergePaths",
+    "optimize": "svgo --config svgo.config.js --folder=./icons --recursive --precision=2",
     "unfill": "node unfill.js --path=./icons/",
     "build": "npm run copy && npm run rename && npm run optimize && npm run unfill",
     "buildforblazor": "npm run copywithdirs && npm run rename && npm run optimize && npm run unfill"
@@ -21,7 +21,7 @@
     "renamer": "^2.0.1",
     "replace": "^1.2.0",
     "shx": "^0.3.2",
-    "svgo": "^1.3.2",
+    "svgo": "^2.8.0",
     "yargs": "^14.0.0"
   }
 }
