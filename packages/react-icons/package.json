@@ -51,8 +51,7 @@
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@griffel/react": "^1.0.0",
-    "react": ">=16.8.0 <=18.0.0"
+    "react": ">=16.8.0 <19.0.0"
   },
   "files": [
     "lib/",
@@ -83,3 +82,4 @@
     }
   }
 }
+
