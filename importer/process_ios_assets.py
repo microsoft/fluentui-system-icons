@@ -135,7 +135,7 @@ def create_icon_set(file_names, original_icon_names, icon_assets_path):
 
         with open(imageset_contents_path, 'w') as imageset:
             rendering_intent = "template"
-            if icon_name.endswith("_color") or icon_name.beginswith("ic_fluent_flag_pride"):
+            if icon_name.endswith("_color") or icon_name.startswith("ic_fluent_flag_pride"):
                 rendering_intent = "original"
 
             images = [
