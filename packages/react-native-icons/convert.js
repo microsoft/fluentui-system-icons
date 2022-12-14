@@ -67,7 +67,7 @@ function processFiles(src, dest) {
 
   const indexPath = path.join(dest, 'index.tsx')
   // Finally add the interface definition and then write out the index.
-  indexContents.push('export { FluentIconsProps } from \'./utils/FluentIconsProps.types\'');
+  indexContents.push('export { FluentReactNativeIconsProps } from \'./utils/FluentReactNativeIconsProps.types\'');
   indexContents.push('export { default as wrapIcon } from \'./utils/wrapIcon\'');
   indexContents.push('export { default as bundleIcon } from \'./utils/bundleIcon\'');
   indexContents.push('export * from \'./utils/useIconState\'');
@@ -93,7 +93,7 @@ function processFolder(srcPath, destPath, resizable) {
   var svgrOpts = {
     template: fileTemplate,
     expandProps: 'start', // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
-    svgProps: { className: '{className}'}, // In order to provide styling, className will be used
+    svgProps: { style: '{style}'}, // In RN style attribute is used for styling
     replaceAttrValues: { '#212121': '{primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
     typescript: true,
     icon: true
@@ -102,7 +102,7 @@ function processFolder(srcPath, destPath, resizable) {
   var svgrOptsSizedIcons = {
     template: fileTemplate,
     expandProps: 'start', // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
-    svgProps: { className: '{className}'}, // In order to provide styling, className will be used
+    svgProps: { style: '{style}'}, // In RN style attribute is used for styling
     replaceAttrValues: { '#212121': '{primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
     typescript: true
   }
@@ -132,12 +132,16 @@ function processFolder(srcPath, destPath, resizable) {
       var iconContent = fs.readFileSync(srcFile, { encoding: "utf8" })
       
       var jsxCode = resizable ? svgr.default.sync(iconContent, svgrOpts, { filePath: file }) : svgr.default.sync(iconContent, svgrOptsSizedIcons, { filePath: file })
+      var rnRegex = new RegExp('(<(|\/))(svg|path|rect|g)', 'g')
+      var rnCode = jsxCode.replace(rnRegex, function(result) {
+        var charRegex = new RegExp('[a-zA-Z]');
+        return result.replace(charRegex, firstSymbol => firstSymbol.toUpperCase()) });
       var jsCode = 
 `
 
-const ${destFilename}Icon = (props: FluentIconsProps) => {
-  const { fill: primaryFill = 'currentColor', className } = props;
-  return ${jsxCode};
+const ${destFilename}Icon = (props: FluentReactNativeIconsProps) => {
+  const { fill: primaryFill = 'currentColor', style } = props;
+  return ${rnCode};
 }
 export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename}Icon, '${destFilename}');
       `
@@ -153,8 +157,9 @@ export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename
   }
 
   for(const chunk of iconChunks) {
+    chunk.unshift(`import { Path, Svg, Rect, G } from 'react-native-svg';`)
     chunk.unshift(`import wrapIcon from "../utils/wrapIcon";`)
-    chunk.unshift(`import { FluentIconsProps } from "../utils/FluentIconsProps.types";`)
+    chunk.unshift(`import { FluentReactNativeIconsProps } from "../utils/FluentReactNativeIconsProps.types";`)
     chunk.unshift(`import * as React from "react";`)
   }
 
