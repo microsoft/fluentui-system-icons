@@ -1,7 +1,7 @@
-import * as React from "react";
 import { ImageStyle, StyleProp, TextStyle } from 'react-native';
+import { SvgProps } from 'react-native-svg';
 
-export type FluentReactNativeIconsProps<TBaseAttributes extends (React.SVGAttributes<SVGElement> | React.HTMLAttributes<HTMLElement>) = React.SVGAttributes<SVGElement>> = (TBaseAttributes) & {
+export type FluentReactNativeIconsProps = SvgProps & {
 	primaryFill?: string
 	style?: StyleProp<ImageStyle | TextStyle>;
 	filled?: boolean;
