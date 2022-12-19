@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "skipLibCheck": true,
     "outDir": "lib",
     "target": "ES6",
     "module": "esnext",
@@ -14,6 +15,6 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src"],
+  "include": ["src", "custom.d.ts"],
   "exclude": ["lib", "lib-cjs"]
 }

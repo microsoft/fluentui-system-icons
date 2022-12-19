@@ -46,7 +46,8 @@
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "react": ">=16.8.0 <19.0.0"
+    "react": ">=16.8.0 <19.0.0",
+    "react-native": "^0.68.0"
   },
   "files": [
     "lib/",

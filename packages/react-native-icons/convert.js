@@ -69,9 +69,9 @@ function processFiles(src, dest) {
   // Finally add the interface definition and then write out the index.
   indexContents.push('export { FluentReactNativeIconsProps } from \'./utils/FluentReactNativeIconsProps.types\'');
   indexContents.push('export { default as wrapIcon } from \'./utils/wrapIcon\'');
-  indexContents.push('export { default as bundleIcon } from \'./utils/bundleIcon\'');
+  //indexContents.push('export { default as bundleIcon } from \'./utils/bundleIcon\'');
   indexContents.push('export * from \'./utils/useIconState\'');
-  indexContents.push('export * from \'./utils/constants\'');
+  //indexContents.push('export * from \'./utils/constants\'');
 
   fs.writeFileSync(indexPath, indexContents.join('\n'), (err) => {
     if (err) throw err;
