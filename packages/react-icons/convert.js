@@ -96,7 +96,8 @@ function processFolder(srcPath, destPath, resizable) {
     svgProps: { className: '{className}'}, // In order to provide styling, className will be used
     replaceAttrValues: { '#212121': '{primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
     typescript: true,
-    icon: true
+    icon: true,
+    native: true
   }
 
   var svgrOptsSizedIcons = {
@@ -104,7 +105,8 @@ function processFolder(srcPath, destPath, resizable) {
     expandProps: 'start', // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
     svgProps: { className: '{className}'}, // In order to provide styling, className will be used
     replaceAttrValues: { '#212121': '{primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
-    typescript: true
+    typescript: true,
+    native: true
   }
 
   /** @type string[] */
