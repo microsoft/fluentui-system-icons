@@ -72,6 +72,8 @@ function processFolder(srcPath, destPath, folderDepth) {
               locPath = path.join(locPath, folderName)
             }
           }
+
+
           processFolder(srcFile, locPath, folderDepth + 1)
           return;
         } else if (file.startsWith('.')) {
@@ -95,8 +97,9 @@ function processFolder(srcPath, destPath, folderDepth) {
         }
         
         var destFile = path.join(destPath, file);
-        if (!fs.existsSync(destPath)) {
-          fs.mkdirSync(destPath)
+        var destPathAbs = path.join(process.cwd(), destPath);
+        if (!fs.existsSync(destPathAbs)) {
+          fs.mkdirSync(destPathAbs, { recursive: true })
         }
         fs.copyFileSync(srcFile, destFile);
         // Generate selector if both filled/regular styles are available
