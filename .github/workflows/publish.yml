@@ -2,10 +2,10 @@ name: Publish library
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ main ]
-    paths:
-      - 'assets/**'
+  # push:
+    # branches: [ main ]
+    # paths:
+    #  - 'assets/**'
 
 env:
   LIBRARY_VERSION: 1.1.${{ github.run_number }}
