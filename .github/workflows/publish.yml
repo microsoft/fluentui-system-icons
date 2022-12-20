@@ -44,7 +44,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 18.x
-        registry-utl: 'https://npm.pkb.github.com'
+        registry-url: 'https://npm.pkg.github.com'
 
     - run: npm install
       working-directory: importer
@@ -65,7 +65,7 @@ jobs:
     - run: npm publish --tag alpha
       working-directory: packages/react-native-icons 
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ github.token }}
 
     - name: Update icon sheet
       run: python3 generate_icons_md.py
