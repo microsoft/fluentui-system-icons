@@ -1,5 +1,5 @@
 {
-  "name": "react-native-icons",
+  "name": "@warren-ms/react-native-icons",
   "version": "0.0.1",
   "sideEffects": false,
   "main": "lib-cjs/index.js",
