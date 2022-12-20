@@ -18,8 +18,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-      with:
-        token: ${{ secrets.CI_GITHUB_TOKEN }}
 
     - name: Bump version patch
       run: |
