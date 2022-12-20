@@ -66,6 +66,7 @@ jobs:
         access: public
         package: packages/react-native-icons/package.json
         tag: alpha
+        token: ${{ github.token }}
 
     - name: Update icon sheet
       run: python3 generate_icons_md.py
