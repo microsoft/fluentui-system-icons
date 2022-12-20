@@ -56,26 +56,11 @@ jobs:
         npm run build
       working-directory: packages/svg-icons
 
-    - name: Build SVG sprite library
-      run: |
-        npm run build
-      working-directory: packages/svg-sprites
-
-    - name: Build React library
-      run: |
-        npm run build
-      working-directory: packages/react-icons 
-
     - name: Build React-Native library
       run: |
         npm run build
       working-directory: packages/react-native-icons 
       
-    - name: Build Webpack plugin library
-      run: |
-        npm run build
-      working-directory: packages/react-icons-font-subsetting-webpack-plugin 
-
     - uses: JS-DevTools/npm-publish@v1
       with:
         token: ${{ secrets.NPM_TOKEN }}
