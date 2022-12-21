@@ -1324,7 +1324,7 @@
 
 "@warren-ms/react-native-icons@file:/home/runner/work/fluentui-system-icons/fluentui-system-icons/packages/react-native-icons":
   "resolved" "file:packages/react-native-icons"
-  "version" "0.0.4"
+  "version" "0.0.5"
   dependencies:
     "@griffel/react" "^1.0.0"
     "tslib" "^2.1.0"
