@@ -28,7 +28,7 @@ jobs:
         current_version = current_version.split('\"')[1]
         major,minor,asset = current_version.split('.')
         os.system(f'echo \"REACT_VERSION={major}.{minor}.{int(asset) + 1}\" >> \$GITHUB_ENV')
-        os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV') 
+        os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(asset) + 1}\" >> \$GITHUB_ENV') 
         """
 
     # Needs to be "-E" instead of "-r" on macOS
