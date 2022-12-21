@@ -10,7 +10,7 @@ const _ = require("lodash");
 
 const SRC_PATH = argv.source;
 const DEST_PATH = argv.dest;
-
+const REACT_NATIVE = argv.native;
 const TSX_EXTENSION = '.tsx'
 
 if (!SRC_PATH) {
@@ -97,7 +97,7 @@ function processFolder(srcPath, destPath, resizable) {
     replaceAttrValues: { '#212121': '{primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
     typescript: true,
     icon: true,
-    native: true
+    native: REACT_NATIVE
   }
 
   var svgrOptsSizedIcons = {
@@ -106,7 +106,7 @@ function processFolder(srcPath, destPath, resizable) {
     svgProps: { className: '{className}'}, // In order to provide styling, className will be used
     replaceAttrValues: { '#212121': '{primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
     typescript: true,
-    native: true
+    native: REACT_NATIVE
   }
 
   /** @type string[] */
