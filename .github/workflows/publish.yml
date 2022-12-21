@@ -40,6 +40,12 @@ jobs:
         os.system(f'echo \"REACT_VERSION={major}.{minor}.{int(asset) + 1}\" >> \$GITHUB_ENV')
         """
 
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in react-native-icons/package.json
+      run: |
+        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?(-rc\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-native-icons/package.json
+        rm packages/react-native-icons/package.json.bk
+
     - name: Setup node
       uses: actions/setup-node@v3
       with:
