@@ -2141,7 +2141,7 @@ export const TextFieldRegular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextFieldRegu
 
 const TextFirstLineFilledIcon = (props: FluentIconsProps) => {
   const { fill: primaryFill = 'currentColor', className } = props;
-  return <svg {...props} width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M15.72 2.22a.75.75 0 1 1 1.06 1.06l-.97.97.97.97a.75.75 0 0 1-1.06 1.06l-1.5-1.5a.75.75 0 0 1 0-1.06l1.5-1.5ZM3.75 3.5h7.5a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1 0-1.5Zm12.5 10a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1 0-1.5h12.5ZM3.75 10h12.5a.75.75 0 0 0 0-1.5H3.75a.75.75 0 0 0 0 1.5Z" fill={primaryFill} /></svg>;
+  return <svg {...props} width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M4.28 2.22a.75.75 0 0 0-1.06 1.06l.97.97-.97.97a.75.75 0 0 0 1.06 1.06l1.5-1.5c.3-.3.3-.77 0-1.06l-1.5-1.5ZM16.25 3.5h-7.5a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5Zm-12.5 10a.75.75 0 0 0 0 1.5h12.5a.75.75 0 0 0 0-1.5H3.75Zm12.5-3.5H3.75a.75.75 0 0 1 0-1.5h12.5a.75.75 0 0 1 0 1.5Z" fill={primaryFill} /></svg>;
 }
 export const TextFirstLineFilled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextFirstLineFilledIcon, 'TextFirstLineFilled');
       
@@ -2149,7 +2149,7 @@ export const TextFirstLineFilled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextFirstL
 
 const TextFirstLineRegularIcon = (props: FluentIconsProps) => {
   const { fill: primaryFill = 'currentColor', className } = props;
-  return <svg {...props} width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M16.65 3.15a.5.5 0 0 1 .7.7L16.21 5l1.14 1.15a.5.5 0 0 1-.7.7l-1.5-1.5a.5.5 0 0 1 0-.7l1.5-1.5ZM12.5 4a.5.5 0 0 1 0 1h-10a.5.5 0 0 1 0-1h10Zm5 10a.5.5 0 0 1 0 1h-15a.5.5 0 0 1 0-1h15Zm.5-4.5a.5.5 0 0 0-.5-.5h-15a.5.5 0 0 0 0 1h15a.5.5 0 0 0 .5-.5Z" fill={primaryFill} /></svg>;
+  return <svg {...props} width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M3.35 3.15a.5.5 0 1 0-.7.7L3.79 5 2.65 6.15a.5.5 0 1 0 .7.7l1.5-1.5a.5.5 0 0 0 0-.7l-1.5-1.5ZM7.5 4a.5.5 0 0 0 0 1h10a.5.5 0 0 0 0-1h-10Zm-5 10a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1h-15ZM2 9.5c0-.28.22-.5.5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5Z" fill={primaryFill} /></svg>;
 }
 export const TextFirstLineRegular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextFirstLineRegularIcon, 'TextFirstLineRegular');
       
@@ -2333,7 +2333,7 @@ export const TextGrammarWandRegular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextGra
 
 const TextHangingFilledIcon = (props: FluentIconsProps) => {
   const { fill: primaryFill = 'currentColor', className } = props;
-  return <svg {...props} width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M3.75 3.5a.75.75 0 0 0 0 1.5h12.5a.75.75 0 0 0 0-1.5H3.75Zm5 10a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5ZM8 9.25c0-.41.34-.75.75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 8 9.25Zm-3.72 1.47a.75.75 0 0 0-1.06 1.06l.97.97-.97.97a.75.75 0 1 0 1.06 1.06l1.5-1.5c.3-.3.3-.77 0-1.06l-1.5-1.5Z" fill={primaryFill} /></svg>;
+  return <svg {...props} width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M16.25 3.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1 0-1.5h12.5Zm-5 10a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1 0-1.5h7.5ZM12 9.25a.75.75 0 0 0-.75-.75h-7.5a.75.75 0 0 0 0 1.5h7.5c.41 0 .75-.34.75-.75Zm3.72 1.47a.75.75 0 1 1 1.06 1.06l-.97.97.97.97a.75.75 0 1 1-1.06 1.06l-1.5-1.5a.75.75 0 0 1 0-1.06l1.5-1.5Z" fill={primaryFill} /></svg>;
 }
 export const TextHangingFilled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextHangingFilledIcon, 'TextHangingFilled');
       
@@ -2341,7 +2341,7 @@ export const TextHangingFilled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextHangingF
 
 const TextHangingRegularIcon = (props: FluentIconsProps) => {
   const { fill: primaryFill = 'currentColor', className } = props;
-  return <svg {...props} width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M3.5 4a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1h-13Zm4 10a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9ZM7 9.5c0-.28.22-.5.5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5Zm-2.15 2.15-1.5-1.5a.5.5 0 0 0-.7.7L3.79 12l-1.14 1.15a.5.5 0 0 0 .7.7l1.5-1.5a.5.5 0 0 0 0-.7Z" fill={primaryFill} /></svg>;
+  return <svg {...props} width="1em" height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M16.5 4a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1h13Zm-4 10a.5.5 0 0 1 0 1h-9a.5.5 0 0 1 0-1h9Zm.5-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0 0 1h9a.5.5 0 0 0 .5-.5Zm2.15 2.15 1.5-1.5a.5.5 0 0 1 .7.7L16.21 12l1.14 1.15a.5.5 0 0 1-.7.7l-1.5-1.5a.5.5 0 0 1 0-.7Z" fill={primaryFill} /></svg>;
 }
 export const TextHangingRegular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextHangingRegularIcon, 'TextHangingRegular');
       
