@@ -10,7 +10,7 @@
     "forceConsistentCasingInFileNames": true,
     "strictNullChecks": true,
     "moduleResolution": "node",
-    "jsx": "react",
+    "jsx": "react-native",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true
   },

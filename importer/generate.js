@@ -67,11 +67,12 @@ function processFolder(srcPath, destPath, folderDepth) {
             if (folderName !== EXTENSION.toUpperCase()) {
               locPath = path.join(locPath, folderName).replace(/ /g, "")
             }
-          } else {
-            if (folderDepth == 1 && folderName !== EXTENSION.toUpperCase()) {
-              locPath = path.join(locPath, folderName)
-            }
-          }
+          } 
+          //else {
+          //  if (folderDepth == 1 && folderName !== EXTENSION.toUpperCase()) {
+          //    locPath = path.join(locPath, path.relative(SRC_PATH, folderName));
+          //  }
+          //}
 
 
           processFolder(srcFile, locPath, folderDepth + 1)
