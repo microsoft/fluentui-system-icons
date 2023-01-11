@@ -164,9 +164,9 @@ export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename
     var hasRect = false;
     chunk.forEach(text => 
       {
-        if (text.includes("Rect"))
+        if (text.includes("<Rect"))
           hasRect = true;
-        if (text.includes("Path"))
+        if (text.includes("<Path"))
           hasPath = true;
       });
 
