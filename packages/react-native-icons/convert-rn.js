@@ -160,7 +160,7 @@ export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename
     chunk.unshift(`import wrapIcon from "../utils/wrapIcon";`)
    //chunk.unshift(`import { FluentIconsProps } from "../utils/FluentIconsProps.types";`)
     chunk.unshift(`import * as React from "react-native";`)
-    chunk.unshift(`import Svg, { Path } from "react-native-svg";`)
+    chunk.unshift(`import Svg, { Path, Rect } from "react-native-svg";`)
   }
 
   /** @type string[] */
