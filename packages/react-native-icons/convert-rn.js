@@ -93,11 +93,12 @@ function processFolder(srcPath, destPath, resizable) {
   var svgrOpts = {
     template: fileTemplate,
     expandProps: 'start', // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
-    svgProps: { className: '{className}'}, // In order to provide styling, className will be used
+    //svgProps: { className: '{className}'}, // In order to provide styling, className will be used
     replaceAttrValues: { '#212121': '{primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
     typescript: true,
     icon: true,
-    native: REACT_NATIVE
+    prettier:true,
+    native: REACT_NATIVE,
   }
 
   var svgrOptsSizedIcons = {
@@ -106,7 +107,8 @@ function processFolder(srcPath, destPath, resizable) {
     svgProps: { className: '{className}'}, // In order to provide styling, className will be used
     replaceAttrValues: { '#212121': '{primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
     typescript: true,
-    native: REACT_NATIVE
+    prettier:true,
+    native: REACT_NATIVE,
   }
 
   /** @type string[] */
@@ -137,8 +139,8 @@ function processFolder(srcPath, destPath, resizable) {
       var jsCode = 
 `
 
-const ${destFilename}Icon = (props: FluentIconsProps) => {
-  const { fill: primaryFill = 'currentColor', className } = props;
+const ${destFilename}Icon = (props) => {
+  const { fill: primaryFill = 'currentColor' } = props;
   return ${jsxCode};
 }
 export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename}Icon, '${destFilename}');
@@ -156,8 +158,9 @@ export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename
 
   for(const chunk of iconChunks) {
     chunk.unshift(`import wrapIcon from "../utils/wrapIcon";`)
-    chunk.unshift(`import { FluentIconsProps } from "../utils/FluentIconsProps.types";`)
+   //chunk.unshift(`import { FluentIconsProps } from "../utils/FluentIconsProps.types";`)
     chunk.unshift(`import * as React from "react-native";`)
+    chunk.unshift(`import Svg, { Path } from "react-native-svg";`)
   }
 
   /** @type string[] */

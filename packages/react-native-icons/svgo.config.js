@@ -1,11 +1,13 @@
 module.exports = {
-    plugins: [
+    plugins: 
+    [
+      'removeXMLNS',
       {
         name: 'preset-default',
         params: {
           overrides: {
             removeViewBox: false,
-            mergePaths: false        
+            mergePaths: false  
           },
         },
       },

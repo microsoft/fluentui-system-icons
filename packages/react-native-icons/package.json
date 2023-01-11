@@ -27,7 +27,6 @@
     "optimize": "svgo --config svgo.config.js --folder=./intermediate --precision=2",
     "unfill": "find ./intermediate -type f -name \"*.svg\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./intermediate -type f -name \"*.bak\" -delete",
     "build": "npm run copy && npm run optimize && npm run unfill && npm run convert:rnsvg && npm run cleanSvg && npm run build:esm && npm run build:cjs",
-
     "build:cjs": "tsc --module commonjs --outDir lib-cjs && babel lib-cjs --out-dir lib-cjs",
     "build:esm": "tsc && babel lib --out-dir lib"
   },
@@ -43,6 +42,7 @@
     "lodash": "^4.17.21",
     "mkdirp": "^1.0.4",
     "react": "^17.0.1",
+    "react-native": "^0.68.0",
     "renamer": "^2.0.1",
     "svgo": "^2.8.0",
     "typescript": "~4.1.0",
@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "@griffel/react": "^1.0.0",
+    "@types/react-native": "^0.70.8",
     "react-native-svg": "^13.6.0",
     "tslib": "^2.1.0"
   },
