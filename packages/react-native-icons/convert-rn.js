@@ -160,7 +160,17 @@ export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename
     chunk.unshift(`import wrapIcon from "../utils/wrapIcon";`)
    //chunk.unshift(`import { FluentIconsProps } from "../utils/FluentIconsProps.types";`)
     chunk.unshift(`import * as React from "react-native";`)
-    chunk.unshift(`import Svg, { Path, Rect } from "react-native-svg";`)
+    var hasPath = false;
+    var hasRect = false;
+    chunk.forEach(text => 
+      {
+        if (text.includes("Rect"))
+          hasRect = true;
+        if (text.includes("Path"))
+          hasPath = true;
+      });
+
+    chunk.unshift(`import Svg, {${hasPath ? ' Path' : ''}, ${hasRect ? ' Rect' : ''} } from "react-native-svg";`)
   }
 
   /** @type string[] */
