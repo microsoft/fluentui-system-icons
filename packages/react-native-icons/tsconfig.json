@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "skipLibCheck": true,
     "outDir": "lib",
     "target": "ES6",
     "module": "esnext",
