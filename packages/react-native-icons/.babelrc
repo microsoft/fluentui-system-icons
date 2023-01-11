@@ -1,4 +1,4 @@
 {
-  "presets": ["@griffel"],
+  "presets": ["@babel/preset-react"],
   "compact": false
 }
