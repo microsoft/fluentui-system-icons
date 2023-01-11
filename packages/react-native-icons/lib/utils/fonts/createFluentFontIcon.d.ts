@@ -8,3 +8,4 @@ export declare const enum FontFile {
 export declare function createFluentFontIcon(displayName: string, codepoint: string, font: FontFile, fontSize?: number): React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>>> & {
     codepoint: string;
 };
+//# sourceMappingURL=createFluentFontIcon.d.ts.map

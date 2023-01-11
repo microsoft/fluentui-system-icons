@@ -5,3 +5,4 @@ export declare type FluentIconsProps<TBaseAttributes extends (React.SVGAttribute
     filled?: boolean;
     title?: string;
 };
+//# sourceMappingURL=FluentIconsProps.types.d.ts.map
