@@ -5,7 +5,12 @@ const svgr = require("@svgr/core");
 const fs = require("fs");
 const path = require("path");
 const process = require("process");
-const argv = require("yargs").boolean("selector").default("selector", false).argv;
+const argv = require("yargs")
+  .boolean("selector")
+  .default("selector", false)
+  .option("native", {
+    type: "boolean",
+  }).argv;
 const _ = require("lodash");
 
 const SRC_PATH = argv.source;
@@ -105,7 +110,7 @@ function processFolder(srcPath, destPath, resizable) {
     template: fileTemplate,
     expandProps: 'start', // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
     //svgProps: { className: '{className}'}, // In order to provide styling, className will be used
-    replaceAttrValues: { '#212121': '{primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
+    replaceAttrValues: { '#212121': ' {primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
     typescript: true,
     prettier:true,
     native: REACT_NATIVE,
@@ -135,7 +140,7 @@ function processFolder(srcPath, destPath, resizable) {
 
       var iconContent = fs.readFileSync(srcFile, { encoding: "utf8" })
       
-      var jsxCode = resizable ? svgr.default.sync(iconContent, svgrOpts, { filePath: file }) : svgr.default.sync(iconContent, svgrOptsSizedIcons, { filePath: file })
+      var jsxCode = resizable ? svgr.transform.sync(iconContent, svgrOpts, { filePath: file }) : svgr.transform.sync(iconContent, svgrOptsSizedIcons, { filePath: file })
       var jsCode = 
 `
 
@@ -179,16 +184,14 @@ export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename
   return chunkContent;
 }
 
-function fileTemplate(
-  { template },
-  opts,
-  { imports, interfaces, componentName, props, jsx, exports }
-) {
-  const plugins = ['jsx', 'typescript']
-  const tpl = template.smart({ plugins })
+function fileTemplate (variables, { tpl })
+{
+  variables.componentName = variables.componentName.substring(3);
+  variables.componentName = variables.componentName.replace('IcFluent', '');
 
-  componentName.name = componentName.name.substring(3)
-  componentName.name = componentName.name.replace('IcFluent', '')
+  return tpl`
+  ${variables.jsx}
+ 
+`;
+};
   
-	return jsx;
-}
