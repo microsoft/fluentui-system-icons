@@ -159,7 +159,7 @@ export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename
   for(const chunk of iconChunks) {
     chunk.unshift(`import wrapIcon from "../utils/wrapIcon";`)
    //chunk.unshift(`import { FluentIconsProps } from "../utils/FluentIconsProps.types";`)
-    chunk.unshift(`import * as React from "react-native";`)
+    chunk.unshift(`import * as React from "react";`)
     var hasPath = false;
     var hasRect = false;
     chunk.forEach(text => 
