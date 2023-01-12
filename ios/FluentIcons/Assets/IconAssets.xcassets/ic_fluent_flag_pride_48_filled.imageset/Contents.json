@@ -10,6 +10,6 @@
     "version": 1
   },
   "properties": {
-    "template-rendering-intent": "template"
+    "template-rendering-intent": "original"
   }
 }

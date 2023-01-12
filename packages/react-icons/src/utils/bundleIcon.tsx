@@ -10,12 +10,12 @@ const useBundledIconStyles = makeStyles({
 
 const bundleIcon = (FilledIcon: React.FC<FluentIconsProps>, RegularIcon: React.FC<FluentIconsProps>) => {
     const Component: React.FC<FluentIconsProps> = (props) => {
-        const { className, primaryFill = 'currentColor', filled } = props;
+        const { className, primaryFill = 'currentColor', filled, ...rest } = props;
         const styles = useBundledIconStyles();
         return (
             <React.Fragment>
                 <FilledIcon
-                    {...props}
+                    {...rest}
                     className={mergeClasses(
                         styles.root,
                         filled && styles.visible,
@@ -25,7 +25,7 @@ const bundleIcon = (FilledIcon: React.FC<FluentIconsProps>, RegularIcon: React.F
                     fill={primaryFill}
                 />
                 <RegularIcon
-                    {...props}
+                    {...rest}
                     className={mergeClasses(
                       styles.root,
                       !filled && styles.visible,
