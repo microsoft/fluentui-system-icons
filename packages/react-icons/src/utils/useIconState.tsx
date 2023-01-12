@@ -16,7 +16,7 @@ export const useIconState = <TBaseAttributes extends (React.SVGAttributes<SVGEle
     const { title, primaryFill = "currentColor", ...rest } = props;
     const state = {
       ...rest,
-      title: undefined,
+      title: title,
       fill: primaryFill
     } as Omit<FluentIconsProps<TBaseAttributes>, 'primaryFill'>;
   
