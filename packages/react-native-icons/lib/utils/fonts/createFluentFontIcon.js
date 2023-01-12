@@ -11,37 +11,25 @@ import fontOneSizeTtf from './FluentSystemIcons-Resizable.ttf';
 import fontOneSizeWoff from './FluentSystemIcons-Resizable.woff';
 import fontOneSizeWoff2 from './FluentSystemIcons-Resizable.woff2';
 const FONT_FAMILY_MAP = {
-  [0
-  /* Filled */
-  ]: 'FluentSystemIconsFilled',
-  [1
-  /* Regular */
-  ]: 'FluentSystemIconsRegular',
-  [2
-  /* Resizable */
-  ]: 'FluentSystemIcons'
+  [0 /* Filled */]: 'FluentSystemIconsFilled',
+  [1 /* Regular */]: 'FluentSystemIconsRegular',
+  [2 /* Resizable */]: 'FluentSystemIcons'
 };
 const useStaticStyles = makeStaticStyles(`
 @font-face {
-    font-family: ${FONT_FAMILY_MAP[0
-/* Filled */
-]};
+    font-family: ${FONT_FAMILY_MAP[0 /* Filled */]};
     src: url(${JSON.stringify(fontFilledWoff2)}) format("woff2"),
     url(${JSON.stringify(fontFilledWoff)}) format("woff"),
     url(${JSON.stringify(fontFilledTtf)}) format("truetype");
 }
 @font-face {
-    font-family: ${FONT_FAMILY_MAP[1
-/* Regular */
-]};
+    font-family: ${FONT_FAMILY_MAP[1 /* Regular */]};
     src: url(${JSON.stringify(fontRegularWoff2)}) format("woff2"),
     url(${JSON.stringify(fontRegularWoff)}) format("woff"),
     url(${JSON.stringify(fontRegularTtf)}) format("truetype");
 }
 @font-face {
-    font-family: ${FONT_FAMILY_MAP[2
-/* Resizable */
-]};
+    font-family: ${FONT_FAMILY_MAP[2 /* Resizable */]};
     src: url(${JSON.stringify(fontOneSizeWoff2)}) format("woff2"),
     url(${JSON.stringify(fontOneSizeWoff)}) format("woff"),
     url(${JSON.stringify(fontOneSizeTtf)}) format("truetype");
@@ -56,19 +44,13 @@ const useRootStyles = makeStyles({
       forcedColorAdjust: 'auto'
     }
   },
-  [0
-  /* Filled */
-  ]: {
+  [0 /* Filled */]: {
     fontFamily: 'FluentSystemIconsFilled'
   },
-  [1
-  /* Regular */
-  ]: {
+  [1 /* Regular */]: {
     fontFamily: 'FluentSystemIconsRegular'
   },
-  [2
-  /* Resizable */
-  ]: {
+  [2 /* Resizable */]: {
     fontFamily: 'FluentSystemIcons'
   }
 });
@@ -79,23 +61,20 @@ export function createFluentFontIcon(displayName, codepoint, font, fontSize) {
     const className = mergeClasses(styles.root, styles[font], props.className);
     const state = useIconState(Object.assign(Object.assign({}, props), {
       className
-    })); // We want to keep the same API surface as the SVG icons, so translate `primaryFill` to `color`
-
+    }));
+    // We want to keep the same API surface as the SVG icons, so translate `primaryFill` to `color`
     if (props.primaryFill) {
       state.style = Object.assign(Object.assign({}, state.style), {
         color: props.primaryFill
       });
     }
-
     if (fontSize) {
       state.style = Object.assign(Object.assign({}, state.style), {
         fontSize
       });
     }
-
     return /*#__PURE__*/React.createElement("i", state, codepoint);
   };
-
   Component.displayName = displayName;
   Component.codepoint = codepoint;
   return Component;
