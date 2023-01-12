@@ -52,7 +52,7 @@
   "dependencies": {
     "@griffel/react": "^1.0.0",
     "@types/react-native": "^0.70.8",
-    "react-native-svg": "^13.6.0",
+    "react-native-svg": "^12.3.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
