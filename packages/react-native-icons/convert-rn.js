@@ -110,7 +110,7 @@ function processFolder(srcPath, destPath, resizable) {
     template: fileTemplate,
     expandProps: 'start', // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
     //svgProps: { className: '{className}'}, // In order to provide styling, className will be used
-    replaceAttrValues: { '#212121': ' {primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
+    replaceAttrValues: { '#212121': '{primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
     typescript: true,
     prettier:true,
     native: REACT_NATIVE,
@@ -192,6 +192,6 @@ function fileTemplate (variables, { tpl })
   return tpl`
   ${variables.jsx}
  
-`;
+`
 };
   
