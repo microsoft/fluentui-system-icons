@@ -1,6 +1,2 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.iconRegularClassName = exports.iconFilledClassName = void 0;
-exports.iconFilledClassName = "fui-Icon-filled";
-exports.iconRegularClassName = "fui-Icon-regular";
-//# sourceMappingURL=constants.js.map
+export const iconFilledClassName = "fui-Icon-filled";
+export const iconRegularClassName = "fui-Icon-regular";
