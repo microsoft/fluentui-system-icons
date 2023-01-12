@@ -1,5 +1,5 @@
 import Svg, { Path,  Rect } from "react-native-svg";
-import * as React from "react-native";
+import * as React from "react";
 import wrapIcon from "../utils/wrapIcon";
 
 

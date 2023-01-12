@@ -1,6 +1,6 @@
-/// <reference types="react" />
+import * as React from "react";
 export declare const AccessTimeFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -9,7 +9,7 @@ export declare const AccessTimeFilled: {
     displayName: string;
 };
 export declare const AccessTimeRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -18,7 +18,7 @@ export declare const AccessTimeRegular: {
     displayName: string;
 };
 export declare const AccessibilityFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -27,7 +27,7 @@ export declare const AccessibilityFilled: {
     displayName: string;
 };
 export declare const AccessibilityRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -36,7 +36,7 @@ export declare const AccessibilityRegular: {
     displayName: string;
 };
 export declare const AccessibilityCheckmarkFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -45,7 +45,7 @@ export declare const AccessibilityCheckmarkFilled: {
     displayName: string;
 };
 export declare const AccessibilityCheckmarkRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -54,7 +54,7 @@ export declare const AccessibilityCheckmarkRegular: {
     displayName: string;
 };
 export declare const AddFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -63,7 +63,7 @@ export declare const AddFilled: {
     displayName: string;
 };
 export declare const AddRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -72,7 +72,7 @@ export declare const AddRegular: {
     displayName: string;
 };
 export declare const AddCircleFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -81,7 +81,7 @@ export declare const AddCircleFilled: {
     displayName: string;
 };
 export declare const AddCircleRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -90,7 +90,7 @@ export declare const AddCircleRegular: {
     displayName: string;
 };
 export declare const AddSquareFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -99,7 +99,7 @@ export declare const AddSquareFilled: {
     displayName: string;
 };
 export declare const AddSquareRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -108,7 +108,7 @@ export declare const AddSquareRegular: {
     displayName: string;
 };
 export declare const AddSquareMultipleFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -117,7 +117,7 @@ export declare const AddSquareMultipleFilled: {
     displayName: string;
 };
 export declare const AddSquareMultipleRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -126,7 +126,7 @@ export declare const AddSquareMultipleRegular: {
     displayName: string;
 };
 export declare const AddSubtractCircleFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -135,7 +135,7 @@ export declare const AddSubtractCircleFilled: {
     displayName: string;
 };
 export declare const AddSubtractCircleRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -144,7 +144,7 @@ export declare const AddSubtractCircleRegular: {
     displayName: string;
 };
 export declare const AirplaneFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -153,7 +153,7 @@ export declare const AirplaneFilled: {
     displayName: string;
 };
 export declare const AirplaneRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -162,7 +162,7 @@ export declare const AirplaneRegular: {
     displayName: string;
 };
 export declare const AirplaneTakeOffFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -171,7 +171,7 @@ export declare const AirplaneTakeOffFilled: {
     displayName: string;
 };
 export declare const AirplaneTakeOffRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -180,7 +180,7 @@ export declare const AirplaneTakeOffRegular: {
     displayName: string;
 };
 export declare const AlbumFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -189,7 +189,7 @@ export declare const AlbumFilled: {
     displayName: string;
 };
 export declare const AlbumRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -198,7 +198,7 @@ export declare const AlbumRegular: {
     displayName: string;
 };
 export declare const AlbumAddFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -207,7 +207,7 @@ export declare const AlbumAddFilled: {
     displayName: string;
 };
 export declare const AlbumAddRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -216,7 +216,7 @@ export declare const AlbumAddRegular: {
     displayName: string;
 };
 export declare const AlertFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -225,7 +225,7 @@ export declare const AlertFilled: {
     displayName: string;
 };
 export declare const AlertRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -234,7 +234,7 @@ export declare const AlertRegular: {
     displayName: string;
 };
 export declare const AlertBadgeFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -243,7 +243,7 @@ export declare const AlertBadgeFilled: {
     displayName: string;
 };
 export declare const AlertBadgeRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -252,7 +252,7 @@ export declare const AlertBadgeRegular: {
     displayName: string;
 };
 export declare const AlertOffFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -261,7 +261,7 @@ export declare const AlertOffFilled: {
     displayName: string;
 };
 export declare const AlertOffRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -270,7 +270,7 @@ export declare const AlertOffRegular: {
     displayName: string;
 };
 export declare const AlertOnFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -279,7 +279,7 @@ export declare const AlertOnFilled: {
     displayName: string;
 };
 export declare const AlertOnRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -288,7 +288,7 @@ export declare const AlertOnRegular: {
     displayName: string;
 };
 export declare const AlertSnoozeFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -297,7 +297,7 @@ export declare const AlertSnoozeFilled: {
     displayName: string;
 };
 export declare const AlertSnoozeRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -306,7 +306,7 @@ export declare const AlertSnoozeRegular: {
     displayName: string;
 };
 export declare const AlertUrgentFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -315,7 +315,7 @@ export declare const AlertUrgentFilled: {
     displayName: string;
 };
 export declare const AlertUrgentRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -324,7 +324,7 @@ export declare const AlertUrgentRegular: {
     displayName: string;
 };
 export declare const AlignBottomFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -333,7 +333,7 @@ export declare const AlignBottomFilled: {
     displayName: string;
 };
 export declare const AlignBottomRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -342,7 +342,7 @@ export declare const AlignBottomRegular: {
     displayName: string;
 };
 export declare const AlignCenterHorizontalFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -351,7 +351,7 @@ export declare const AlignCenterHorizontalFilled: {
     displayName: string;
 };
 export declare const AlignCenterHorizontalRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -360,7 +360,7 @@ export declare const AlignCenterHorizontalRegular: {
     displayName: string;
 };
 export declare const AlignCenterVerticalFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -369,7 +369,7 @@ export declare const AlignCenterVerticalFilled: {
     displayName: string;
 };
 export declare const AlignCenterVerticalRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -378,7 +378,7 @@ export declare const AlignCenterVerticalRegular: {
     displayName: string;
 };
 export declare const AlignEndHorizontalFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -387,7 +387,7 @@ export declare const AlignEndHorizontalFilled: {
     displayName: string;
 };
 export declare const AlignEndHorizontalRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -396,7 +396,7 @@ export declare const AlignEndHorizontalRegular: {
     displayName: string;
 };
 export declare const AlignEndVerticalFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -405,7 +405,7 @@ export declare const AlignEndVerticalFilled: {
     displayName: string;
 };
 export declare const AlignEndVerticalRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -414,7 +414,7 @@ export declare const AlignEndVerticalRegular: {
     displayName: string;
 };
 export declare const AlignLeftFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -423,7 +423,7 @@ export declare const AlignLeftFilled: {
     displayName: string;
 };
 export declare const AlignLeftRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -432,7 +432,7 @@ export declare const AlignLeftRegular: {
     displayName: string;
 };
 export declare const AlignRightFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -441,7 +441,7 @@ export declare const AlignRightFilled: {
     displayName: string;
 };
 export declare const AlignRightRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -450,7 +450,7 @@ export declare const AlignRightRegular: {
     displayName: string;
 };
 export declare const AlignSpaceAroundHorizontalFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -459,7 +459,7 @@ export declare const AlignSpaceAroundHorizontalFilled: {
     displayName: string;
 };
 export declare const AlignSpaceAroundHorizontalRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -468,7 +468,7 @@ export declare const AlignSpaceAroundHorizontalRegular: {
     displayName: string;
 };
 export declare const AlignSpaceAroundVerticalFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -477,7 +477,7 @@ export declare const AlignSpaceAroundVerticalFilled: {
     displayName: string;
 };
 export declare const AlignSpaceAroundVerticalRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -486,7 +486,7 @@ export declare const AlignSpaceAroundVerticalRegular: {
     displayName: string;
 };
 export declare const AlignSpaceBetweenHorizontalFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -495,7 +495,7 @@ export declare const AlignSpaceBetweenHorizontalFilled: {
     displayName: string;
 };
 export declare const AlignSpaceBetweenHorizontalRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -504,7 +504,7 @@ export declare const AlignSpaceBetweenHorizontalRegular: {
     displayName: string;
 };
 export declare const AlignSpaceBetweenVerticalFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -513,7 +513,7 @@ export declare const AlignSpaceBetweenVerticalFilled: {
     displayName: string;
 };
 export declare const AlignSpaceBetweenVerticalRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -522,7 +522,7 @@ export declare const AlignSpaceBetweenVerticalRegular: {
     displayName: string;
 };
 export declare const AlignSpaceEvenlyHorizontalFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -531,7 +531,7 @@ export declare const AlignSpaceEvenlyHorizontalFilled: {
     displayName: string;
 };
 export declare const AlignSpaceEvenlyHorizontalRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -540,7 +540,7 @@ export declare const AlignSpaceEvenlyHorizontalRegular: {
     displayName: string;
 };
 export declare const AlignSpaceEvenlyVerticalFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -549,7 +549,7 @@ export declare const AlignSpaceEvenlyVerticalFilled: {
     displayName: string;
 };
 export declare const AlignSpaceEvenlyVerticalRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -558,7 +558,7 @@ export declare const AlignSpaceEvenlyVerticalRegular: {
     displayName: string;
 };
 export declare const AlignSpaceFitVerticalFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -567,7 +567,7 @@ export declare const AlignSpaceFitVerticalFilled: {
     displayName: string;
 };
 export declare const AlignSpaceFitVerticalRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -576,7 +576,7 @@ export declare const AlignSpaceFitVerticalRegular: {
     displayName: string;
 };
 export declare const AlignStartHorizontalFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -585,7 +585,7 @@ export declare const AlignStartHorizontalFilled: {
     displayName: string;
 };
 export declare const AlignStartHorizontalRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -594,7 +594,7 @@ export declare const AlignStartHorizontalRegular: {
     displayName: string;
 };
 export declare const AlignStartVerticalFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -603,7 +603,7 @@ export declare const AlignStartVerticalFilled: {
     displayName: string;
 };
 export declare const AlignStartVerticalRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -612,7 +612,7 @@ export declare const AlignStartVerticalRegular: {
     displayName: string;
 };
 export declare const AlignStretchHorizontalFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -621,7 +621,7 @@ export declare const AlignStretchHorizontalFilled: {
     displayName: string;
 };
 export declare const AlignStretchHorizontalRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -630,7 +630,7 @@ export declare const AlignStretchHorizontalRegular: {
     displayName: string;
 };
 export declare const AlignStretchVerticalFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -639,7 +639,7 @@ export declare const AlignStretchVerticalFilled: {
     displayName: string;
 };
 export declare const AlignStretchVerticalRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -648,7 +648,7 @@ export declare const AlignStretchVerticalRegular: {
     displayName: string;
 };
 export declare const AlignTopFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -657,7 +657,7 @@ export declare const AlignTopFilled: {
     displayName: string;
 };
 export declare const AlignTopRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -666,7 +666,7 @@ export declare const AlignTopRegular: {
     displayName: string;
 };
 export declare const AnimalCatFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -675,7 +675,7 @@ export declare const AnimalCatFilled: {
     displayName: string;
 };
 export declare const AnimalCatRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -684,7 +684,7 @@ export declare const AnimalCatRegular: {
     displayName: string;
 };
 export declare const AnimalDogFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -693,7 +693,7 @@ export declare const AnimalDogFilled: {
     displayName: string;
 };
 export declare const AnimalDogRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -702,7 +702,7 @@ export declare const AnimalDogRegular: {
     displayName: string;
 };
 export declare const AnimalRabbitFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -711,7 +711,7 @@ export declare const AnimalRabbitFilled: {
     displayName: string;
 };
 export declare const AnimalRabbitRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -720,7 +720,7 @@ export declare const AnimalRabbitRegular: {
     displayName: string;
 };
 export declare const AnimalRabbitOffFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -729,7 +729,7 @@ export declare const AnimalRabbitOffFilled: {
     displayName: string;
 };
 export declare const AnimalRabbitOffRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -738,7 +738,7 @@ export declare const AnimalRabbitOffRegular: {
     displayName: string;
 };
 export declare const AnimalTurtleFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -747,7 +747,7 @@ export declare const AnimalTurtleFilled: {
     displayName: string;
 };
 export declare const AnimalTurtleRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -756,7 +756,7 @@ export declare const AnimalTurtleRegular: {
     displayName: string;
 };
 export declare const AppFolderFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -765,7 +765,7 @@ export declare const AppFolderFilled: {
     displayName: string;
 };
 export declare const AppFolderRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -774,7 +774,7 @@ export declare const AppFolderRegular: {
     displayName: string;
 };
 export declare const AppGenericFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -783,7 +783,7 @@ export declare const AppGenericFilled: {
     displayName: string;
 };
 export declare const AppGenericRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -792,7 +792,7 @@ export declare const AppGenericRegular: {
     displayName: string;
 };
 export declare const AppRecentFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -801,7 +801,7 @@ export declare const AppRecentFilled: {
     displayName: string;
 };
 export declare const AppRecentRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -810,7 +810,7 @@ export declare const AppRecentRegular: {
     displayName: string;
 };
 export declare const AppTitleFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -819,7 +819,7 @@ export declare const AppTitleFilled: {
     displayName: string;
 };
 export declare const AppTitleRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -828,7 +828,7 @@ export declare const AppTitleRegular: {
     displayName: string;
 };
 export declare const ApprovalsAppFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -837,7 +837,7 @@ export declare const ApprovalsAppFilled: {
     displayName: string;
 };
 export declare const ApprovalsAppRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -846,7 +846,7 @@ export declare const ApprovalsAppRegular: {
     displayName: string;
 };
 export declare const AppsFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -855,7 +855,7 @@ export declare const AppsFilled: {
     displayName: string;
 };
 export declare const AppsRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -864,7 +864,7 @@ export declare const AppsRegular: {
     displayName: string;
 };
 export declare const AppsAddInFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -873,7 +873,7 @@ export declare const AppsAddInFilled: {
     displayName: string;
 };
 export declare const AppsAddInRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -882,7 +882,7 @@ export declare const AppsAddInRegular: {
     displayName: string;
 };
 export declare const AppsListFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -891,7 +891,7 @@ export declare const AppsListFilled: {
     displayName: string;
 };
 export declare const AppsListRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -900,7 +900,7 @@ export declare const AppsListRegular: {
     displayName: string;
 };
 export declare const AppsListDetailFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -909,7 +909,7 @@ export declare const AppsListDetailFilled: {
     displayName: string;
 };
 export declare const AppsListDetailRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -918,7 +918,7 @@ export declare const AppsListDetailRegular: {
     displayName: string;
 };
 export declare const ArchiveFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -927,7 +927,7 @@ export declare const ArchiveFilled: {
     displayName: string;
 };
 export declare const ArchiveRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -936,7 +936,7 @@ export declare const ArchiveRegular: {
     displayName: string;
 };
 export declare const ArchiveArrowBackFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -945,7 +945,7 @@ export declare const ArchiveArrowBackFilled: {
     displayName: string;
 };
 export declare const ArchiveArrowBackRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -954,7 +954,7 @@ export declare const ArchiveArrowBackRegular: {
     displayName: string;
 };
 export declare const ArchiveMultipleFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -963,7 +963,7 @@ export declare const ArchiveMultipleFilled: {
     displayName: string;
 };
 export declare const ArchiveMultipleRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -972,7 +972,7 @@ export declare const ArchiveMultipleRegular: {
     displayName: string;
 };
 export declare const ArchiveSettingsFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -981,7 +981,7 @@ export declare const ArchiveSettingsFilled: {
     displayName: string;
 };
 export declare const ArchiveSettingsRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -990,7 +990,7 @@ export declare const ArchiveSettingsRegular: {
     displayName: string;
 };
 export declare const ArrowAutofitContentFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -999,7 +999,7 @@ export declare const ArrowAutofitContentFilled: {
     displayName: string;
 };
 export declare const ArrowAutofitContentRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1008,7 +1008,7 @@ export declare const ArrowAutofitContentRegular: {
     displayName: string;
 };
 export declare const ArrowAutofitDownFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1017,7 +1017,7 @@ export declare const ArrowAutofitDownFilled: {
     displayName: string;
 };
 export declare const ArrowAutofitDownRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1026,7 +1026,7 @@ export declare const ArrowAutofitDownRegular: {
     displayName: string;
 };
 export declare const ArrowAutofitHeightFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1035,7 +1035,7 @@ export declare const ArrowAutofitHeightFilled: {
     displayName: string;
 };
 export declare const ArrowAutofitHeightRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1044,7 +1044,7 @@ export declare const ArrowAutofitHeightRegular: {
     displayName: string;
 };
 export declare const ArrowAutofitHeightDottedFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1053,7 +1053,7 @@ export declare const ArrowAutofitHeightDottedFilled: {
     displayName: string;
 };
 export declare const ArrowAutofitHeightDottedRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1062,7 +1062,7 @@ export declare const ArrowAutofitHeightDottedRegular: {
     displayName: string;
 };
 export declare const ArrowAutofitUpFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1071,7 +1071,7 @@ export declare const ArrowAutofitUpFilled: {
     displayName: string;
 };
 export declare const ArrowAutofitUpRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1080,7 +1080,7 @@ export declare const ArrowAutofitUpRegular: {
     displayName: string;
 };
 export declare const ArrowAutofitWidthFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1089,7 +1089,7 @@ export declare const ArrowAutofitWidthFilled: {
     displayName: string;
 };
 export declare const ArrowAutofitWidthRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1098,7 +1098,7 @@ export declare const ArrowAutofitWidthRegular: {
     displayName: string;
 };
 export declare const ArrowAutofitWidthDottedFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1107,7 +1107,7 @@ export declare const ArrowAutofitWidthDottedFilled: {
     displayName: string;
 };
 export declare const ArrowAutofitWidthDottedRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1116,7 +1116,7 @@ export declare const ArrowAutofitWidthDottedRegular: {
     displayName: string;
 };
 export declare const ArrowBetweenDownFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1125,7 +1125,7 @@ export declare const ArrowBetweenDownFilled: {
     displayName: string;
 };
 export declare const ArrowBetweenDownRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1134,7 +1134,7 @@ export declare const ArrowBetweenDownRegular: {
     displayName: string;
 };
 export declare const ArrowBetweenUpFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1143,7 +1143,7 @@ export declare const ArrowBetweenUpFilled: {
     displayName: string;
 };
 export declare const ArrowBetweenUpRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1152,7 +1152,7 @@ export declare const ArrowBetweenUpRegular: {
     displayName: string;
 };
 export declare const ArrowBidirectionalUpDownFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1161,7 +1161,7 @@ export declare const ArrowBidirectionalUpDownFilled: {
     displayName: string;
 };
 export declare const ArrowBidirectionalUpDownRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1170,7 +1170,7 @@ export declare const ArrowBidirectionalUpDownRegular: {
     displayName: string;
 };
 export declare const ArrowBounceFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1179,7 +1179,7 @@ export declare const ArrowBounceFilled: {
     displayName: string;
 };
 export declare const ArrowBounceRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1188,7 +1188,7 @@ export declare const ArrowBounceRegular: {
     displayName: string;
 };
 export declare const ArrowCircleDownFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1197,7 +1197,7 @@ export declare const ArrowCircleDownFilled: {
     displayName: string;
 };
 export declare const ArrowCircleDownRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1206,7 +1206,7 @@ export declare const ArrowCircleDownRegular: {
     displayName: string;
 };
 export declare const ArrowCircleDownDoubleFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1215,7 +1215,7 @@ export declare const ArrowCircleDownDoubleFilled: {
     displayName: string;
 };
 export declare const ArrowCircleDownDoubleRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1224,7 +1224,7 @@ export declare const ArrowCircleDownDoubleRegular: {
     displayName: string;
 };
 export declare const ArrowCircleDownRightFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1233,7 +1233,7 @@ export declare const ArrowCircleDownRightFilled: {
     displayName: string;
 };
 export declare const ArrowCircleDownRightRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1242,7 +1242,7 @@ export declare const ArrowCircleDownRightRegular: {
     displayName: string;
 };
 export declare const ArrowCircleDownSplitFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1251,7 +1251,7 @@ export declare const ArrowCircleDownSplitFilled: {
     displayName: string;
 };
 export declare const ArrowCircleDownSplitRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1260,7 +1260,7 @@ export declare const ArrowCircleDownSplitRegular: {
     displayName: string;
 };
 export declare const ArrowCircleDownUpFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1269,7 +1269,7 @@ export declare const ArrowCircleDownUpFilled: {
     displayName: string;
 };
 export declare const ArrowCircleDownUpRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1278,7 +1278,7 @@ export declare const ArrowCircleDownUpRegular: {
     displayName: string;
 };
 export declare const ArrowCircleLeftFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1287,7 +1287,7 @@ export declare const ArrowCircleLeftFilled: {
     displayName: string;
 };
 export declare const ArrowCircleLeftRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1296,7 +1296,7 @@ export declare const ArrowCircleLeftRegular: {
     displayName: string;
 };
 export declare const ArrowCircleRightFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1305,7 +1305,7 @@ export declare const ArrowCircleRightFilled: {
     displayName: string;
 };
 export declare const ArrowCircleRightRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1314,7 +1314,7 @@ export declare const ArrowCircleRightRegular: {
     displayName: string;
 };
 export declare const ArrowCircleUpFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1323,7 +1323,7 @@ export declare const ArrowCircleUpFilled: {
     displayName: string;
 };
 export declare const ArrowCircleUpRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1332,7 +1332,7 @@ export declare const ArrowCircleUpRegular: {
     displayName: string;
 };
 export declare const ArrowCircleUpLeftFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1341,7 +1341,7 @@ export declare const ArrowCircleUpLeftFilled: {
     displayName: string;
 };
 export declare const ArrowCircleUpLeftRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1350,7 +1350,7 @@ export declare const ArrowCircleUpLeftRegular: {
     displayName: string;
 };
 export declare const ArrowClockwiseFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1359,7 +1359,7 @@ export declare const ArrowClockwiseFilled: {
     displayName: string;
 };
 export declare const ArrowClockwiseRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1368,7 +1368,7 @@ export declare const ArrowClockwiseRegular: {
     displayName: string;
 };
 export declare const ArrowClockwiseDashesFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1377,7 +1377,7 @@ export declare const ArrowClockwiseDashesFilled: {
     displayName: string;
 };
 export declare const ArrowClockwiseDashesRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1386,7 +1386,7 @@ export declare const ArrowClockwiseDashesRegular: {
     displayName: string;
 };
 export declare const ArrowCollapseAllFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1395,7 +1395,7 @@ export declare const ArrowCollapseAllFilled: {
     displayName: string;
 };
 export declare const ArrowCollapseAllRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1404,7 +1404,7 @@ export declare const ArrowCollapseAllRegular: {
     displayName: string;
 };
 export declare const ArrowCounterclockwiseFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1413,7 +1413,7 @@ export declare const ArrowCounterclockwiseFilled: {
     displayName: string;
 };
 export declare const ArrowCounterclockwiseRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1422,7 +1422,7 @@ export declare const ArrowCounterclockwiseRegular: {
     displayName: string;
 };
 export declare const ArrowCounterclockwiseDashesFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1431,7 +1431,7 @@ export declare const ArrowCounterclockwiseDashesFilled: {
     displayName: string;
 };
 export declare const ArrowCounterclockwiseDashesRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1440,7 +1440,7 @@ export declare const ArrowCounterclockwiseDashesRegular: {
     displayName: string;
 };
 export declare const ArrowCurveDownLeftFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1449,7 +1449,7 @@ export declare const ArrowCurveDownLeftFilled: {
     displayName: string;
 };
 export declare const ArrowCurveDownLeftRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1458,7 +1458,7 @@ export declare const ArrowCurveDownLeftRegular: {
     displayName: string;
 };
 export declare const ArrowCurveDownRightFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1467,7 +1467,7 @@ export declare const ArrowCurveDownRightFilled: {
     displayName: string;
 };
 export declare const ArrowCurveDownRightRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1476,7 +1476,7 @@ export declare const ArrowCurveDownRightRegular: {
     displayName: string;
 };
 export declare const ArrowCurveUpLeftFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1485,7 +1485,7 @@ export declare const ArrowCurveUpLeftFilled: {
     displayName: string;
 };
 export declare const ArrowCurveUpLeftRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1494,7 +1494,7 @@ export declare const ArrowCurveUpLeftRegular: {
     displayName: string;
 };
 export declare const ArrowCurveUpRightFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1503,7 +1503,7 @@ export declare const ArrowCurveUpRightFilled: {
     displayName: string;
 };
 export declare const ArrowCurveUpRightRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1512,7 +1512,7 @@ export declare const ArrowCurveUpRightRegular: {
     displayName: string;
 };
 export declare const ArrowDownFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1521,7 +1521,7 @@ export declare const ArrowDownFilled: {
     displayName: string;
 };
 export declare const ArrowDownRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1530,7 +1530,7 @@ export declare const ArrowDownRegular: {
     displayName: string;
 };
 export declare const ArrowDownLeftFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1539,7 +1539,7 @@ export declare const ArrowDownLeftFilled: {
     displayName: string;
 };
 export declare const ArrowDownLeftRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1548,7 +1548,7 @@ export declare const ArrowDownLeftRegular: {
     displayName: string;
 };
 export declare const ArrowDownloadFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1557,7 +1557,7 @@ export declare const ArrowDownloadFilled: {
     displayName: string;
 };
 export declare const ArrowDownloadRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1566,7 +1566,7 @@ export declare const ArrowDownloadRegular: {
     displayName: string;
 };
 export declare const ArrowEjectFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1575,7 +1575,7 @@ export declare const ArrowEjectFilled: {
     displayName: string;
 };
 export declare const ArrowEjectRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1584,7 +1584,7 @@ export declare const ArrowEjectRegular: {
     displayName: string;
 };
 export declare const ArrowEnterFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1593,7 +1593,7 @@ export declare const ArrowEnterFilled: {
     displayName: string;
 };
 export declare const ArrowEnterRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1602,7 +1602,7 @@ export declare const ArrowEnterRegular: {
     displayName: string;
 };
 export declare const ArrowEnterLeftFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1611,7 +1611,7 @@ export declare const ArrowEnterLeftFilled: {
     displayName: string;
 };
 export declare const ArrowEnterLeftRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1620,7 +1620,7 @@ export declare const ArrowEnterLeftRegular: {
     displayName: string;
 };
 export declare const ArrowEnterUpFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1629,7 +1629,7 @@ export declare const ArrowEnterUpFilled: {
     displayName: string;
 };
 export declare const ArrowEnterUpRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1638,7 +1638,7 @@ export declare const ArrowEnterUpRegular: {
     displayName: string;
 };
 export declare const ArrowExitFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1647,7 +1647,7 @@ export declare const ArrowExitFilled: {
     displayName: string;
 };
 export declare const ArrowExitRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1656,7 +1656,7 @@ export declare const ArrowExitRegular: {
     displayName: string;
 };
 export declare const ArrowExpandFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1665,7 +1665,7 @@ export declare const ArrowExpandFilled: {
     displayName: string;
 };
 export declare const ArrowExpandRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1674,7 +1674,7 @@ export declare const ArrowExpandRegular: {
     displayName: string;
 };
 export declare const ArrowExportLtrFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1683,7 +1683,7 @@ export declare const ArrowExportLtrFilled: {
     displayName: string;
 };
 export declare const ArrowExportLtrRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1692,7 +1692,7 @@ export declare const ArrowExportLtrRegular: {
     displayName: string;
 };
 export declare const ArrowExportRtlFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1701,7 +1701,7 @@ export declare const ArrowExportRtlFilled: {
     displayName: string;
 };
 export declare const ArrowExportRtlRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1710,7 +1710,7 @@ export declare const ArrowExportRtlRegular: {
     displayName: string;
 };
 export declare const ArrowExportUpFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1719,7 +1719,7 @@ export declare const ArrowExportUpFilled: {
     displayName: string;
 };
 export declare const ArrowExportUpRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1728,7 +1728,7 @@ export declare const ArrowExportUpRegular: {
     displayName: string;
 };
 export declare const ArrowFitFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1737,7 +1737,7 @@ export declare const ArrowFitFilled: {
     displayName: string;
 };
 export declare const ArrowFitRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1746,7 +1746,7 @@ export declare const ArrowFitRegular: {
     displayName: string;
 };
 export declare const ArrowFitInFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1755,7 +1755,7 @@ export declare const ArrowFitInFilled: {
     displayName: string;
 };
 export declare const ArrowFitInRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1764,7 +1764,7 @@ export declare const ArrowFitInRegular: {
     displayName: string;
 };
 export declare const ArrowForwardFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1773,7 +1773,7 @@ export declare const ArrowForwardFilled: {
     displayName: string;
 };
 export declare const ArrowForwardRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1782,7 +1782,7 @@ export declare const ArrowForwardRegular: {
     displayName: string;
 };
 export declare const ArrowForwardDownLightningFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1791,7 +1791,7 @@ export declare const ArrowForwardDownLightningFilled: {
     displayName: string;
 };
 export declare const ArrowForwardDownLightningRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1800,7 +1800,7 @@ export declare const ArrowForwardDownLightningRegular: {
     displayName: string;
 };
 export declare const ArrowForwardDownPersonFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1809,7 +1809,7 @@ export declare const ArrowForwardDownPersonFilled: {
     displayName: string;
 };
 export declare const ArrowForwardDownPersonRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1818,7 +1818,7 @@ export declare const ArrowForwardDownPersonRegular: {
     displayName: string;
 };
 export declare const ArrowHookDownLeftFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1827,7 +1827,7 @@ export declare const ArrowHookDownLeftFilled: {
     displayName: string;
 };
 export declare const ArrowHookDownLeftRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1836,7 +1836,7 @@ export declare const ArrowHookDownLeftRegular: {
     displayName: string;
 };
 export declare const ArrowHookDownRightFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1845,7 +1845,7 @@ export declare const ArrowHookDownRightFilled: {
     displayName: string;
 };
 export declare const ArrowHookDownRightRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1854,7 +1854,7 @@ export declare const ArrowHookDownRightRegular: {
     displayName: string;
 };
 export declare const ArrowHookUpLeftFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1863,7 +1863,7 @@ export declare const ArrowHookUpLeftFilled: {
     displayName: string;
 };
 export declare const ArrowHookUpLeftRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1872,7 +1872,7 @@ export declare const ArrowHookUpLeftRegular: {
     displayName: string;
 };
 export declare const ArrowHookUpRightFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1881,7 +1881,7 @@ export declare const ArrowHookUpRightFilled: {
     displayName: string;
 };
 export declare const ArrowHookUpRightRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1890,7 +1890,7 @@ export declare const ArrowHookUpRightRegular: {
     displayName: string;
 };
 export declare const ArrowImportFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1899,7 +1899,7 @@ export declare const ArrowImportFilled: {
     displayName: string;
 };
 export declare const ArrowImportRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1908,7 +1908,7 @@ export declare const ArrowImportRegular: {
     displayName: string;
 };
 export declare const ArrowJoinFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1917,7 +1917,7 @@ export declare const ArrowJoinFilled: {
     displayName: string;
 };
 export declare const ArrowJoinRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1926,7 +1926,7 @@ export declare const ArrowJoinRegular: {
     displayName: string;
 };
 export declare const ArrowLeftFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1935,7 +1935,7 @@ export declare const ArrowLeftFilled: {
     displayName: string;
 };
 export declare const ArrowLeftRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1944,7 +1944,7 @@ export declare const ArrowLeftRegular: {
     displayName: string;
 };
 export declare const ArrowMaximizeFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1953,7 +1953,7 @@ export declare const ArrowMaximizeFilled: {
     displayName: string;
 };
 export declare const ArrowMaximizeRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1962,7 +1962,7 @@ export declare const ArrowMaximizeRegular: {
     displayName: string;
 };
 export declare const ArrowMaximizeVerticalFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1971,7 +1971,7 @@ export declare const ArrowMaximizeVerticalFilled: {
     displayName: string;
 };
 export declare const ArrowMaximizeVerticalRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1980,7 +1980,7 @@ export declare const ArrowMaximizeVerticalRegular: {
     displayName: string;
 };
 export declare const ArrowMinimizeFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1989,7 +1989,7 @@ export declare const ArrowMinimizeFilled: {
     displayName: string;
 };
 export declare const ArrowMinimizeRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -1998,7 +1998,7 @@ export declare const ArrowMinimizeRegular: {
     displayName: string;
 };
 export declare const ArrowMinimizeVerticalFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2007,7 +2007,7 @@ export declare const ArrowMinimizeVerticalFilled: {
     displayName: string;
 };
 export declare const ArrowMinimizeVerticalRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2016,7 +2016,7 @@ export declare const ArrowMinimizeVerticalRegular: {
     displayName: string;
 };
 export declare const ArrowMoveFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2025,7 +2025,7 @@ export declare const ArrowMoveFilled: {
     displayName: string;
 };
 export declare const ArrowMoveRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2034,7 +2034,7 @@ export declare const ArrowMoveRegular: {
     displayName: string;
 };
 export declare const ArrowMoveInwardFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2043,7 +2043,7 @@ export declare const ArrowMoveInwardFilled: {
     displayName: string;
 };
 export declare const ArrowMoveInwardRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2052,7 +2052,7 @@ export declare const ArrowMoveInwardRegular: {
     displayName: string;
 };
 export declare const ArrowNextFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2061,7 +2061,7 @@ export declare const ArrowNextFilled: {
     displayName: string;
 };
 export declare const ArrowNextRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2070,7 +2070,7 @@ export declare const ArrowNextRegular: {
     displayName: string;
 };
 export declare const ArrowOutlineUpRightFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2079,7 +2079,7 @@ export declare const ArrowOutlineUpRightFilled: {
     displayName: string;
 };
 export declare const ArrowOutlineUpRightRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2088,7 +2088,7 @@ export declare const ArrowOutlineUpRightRegular: {
     displayName: string;
 };
 export declare const ArrowParagraphFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2097,7 +2097,7 @@ export declare const ArrowParagraphFilled: {
     displayName: string;
 };
 export declare const ArrowParagraphRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2106,7 +2106,7 @@ export declare const ArrowParagraphRegular: {
     displayName: string;
 };
 export declare const ArrowPreviousFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2115,7 +2115,7 @@ export declare const ArrowPreviousFilled: {
     displayName: string;
 };
 export declare const ArrowPreviousRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2124,7 +2124,7 @@ export declare const ArrowPreviousRegular: {
     displayName: string;
 };
 export declare const ArrowRedoFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2133,7 +2133,7 @@ export declare const ArrowRedoFilled: {
     displayName: string;
 };
 export declare const ArrowRedoRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2142,7 +2142,7 @@ export declare const ArrowRedoRegular: {
     displayName: string;
 };
 export declare const ArrowRepeat1Filled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2151,7 +2151,7 @@ export declare const ArrowRepeat1Filled: {
     displayName: string;
 };
 export declare const ArrowRepeat1Regular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2160,7 +2160,7 @@ export declare const ArrowRepeat1Regular: {
     displayName: string;
 };
 export declare const ArrowRepeatAllFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2169,7 +2169,7 @@ export declare const ArrowRepeatAllFilled: {
     displayName: string;
 };
 export declare const ArrowRepeatAllRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2178,7 +2178,7 @@ export declare const ArrowRepeatAllRegular: {
     displayName: string;
 };
 export declare const ArrowRepeatAllOffFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2187,7 +2187,7 @@ export declare const ArrowRepeatAllOffFilled: {
     displayName: string;
 };
 export declare const ArrowRepeatAllOffRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2196,7 +2196,7 @@ export declare const ArrowRepeatAllOffRegular: {
     displayName: string;
 };
 export declare const ArrowReplyFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2205,7 +2205,7 @@ export declare const ArrowReplyFilled: {
     displayName: string;
 };
 export declare const ArrowReplyRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2214,7 +2214,7 @@ export declare const ArrowReplyRegular: {
     displayName: string;
 };
 export declare const ArrowReplyAllFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2223,7 +2223,7 @@ export declare const ArrowReplyAllFilled: {
     displayName: string;
 };
 export declare const ArrowReplyAllRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2232,7 +2232,7 @@ export declare const ArrowReplyAllRegular: {
     displayName: string;
 };
 export declare const ArrowReplyDownFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2241,7 +2241,7 @@ export declare const ArrowReplyDownFilled: {
     displayName: string;
 };
 export declare const ArrowReplyDownRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2250,7 +2250,7 @@ export declare const ArrowReplyDownRegular: {
     displayName: string;
 };
 export declare const ArrowResetFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2259,7 +2259,7 @@ export declare const ArrowResetFilled: {
     displayName: string;
 };
 export declare const ArrowResetRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2268,7 +2268,7 @@ export declare const ArrowResetRegular: {
     displayName: string;
 };
 export declare const ArrowRightFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2277,7 +2277,7 @@ export declare const ArrowRightFilled: {
     displayName: string;
 };
 export declare const ArrowRightRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2286,7 +2286,7 @@ export declare const ArrowRightRegular: {
     displayName: string;
 };
 export declare const ArrowRotateClockwiseFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2295,7 +2295,7 @@ export declare const ArrowRotateClockwiseFilled: {
     displayName: string;
 };
 export declare const ArrowRotateClockwiseRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2304,7 +2304,7 @@ export declare const ArrowRotateClockwiseRegular: {
     displayName: string;
 };
 export declare const ArrowRotateCounterclockwiseFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2313,7 +2313,7 @@ export declare const ArrowRotateCounterclockwiseFilled: {
     displayName: string;
 };
 export declare const ArrowRotateCounterclockwiseRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2322,7 +2322,7 @@ export declare const ArrowRotateCounterclockwiseRegular: {
     displayName: string;
 };
 export declare const ArrowRoutingFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2331,7 +2331,7 @@ export declare const ArrowRoutingFilled: {
     displayName: string;
 };
 export declare const ArrowRoutingRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2340,7 +2340,7 @@ export declare const ArrowRoutingRegular: {
     displayName: string;
 };
 export declare const ArrowRoutingRectangleMultipleFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2349,7 +2349,7 @@ export declare const ArrowRoutingRectangleMultipleFilled: {
     displayName: string;
 };
 export declare const ArrowRoutingRectangleMultipleRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2358,7 +2358,7 @@ export declare const ArrowRoutingRectangleMultipleRegular: {
     displayName: string;
 };
 export declare const ArrowShuffleFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2367,7 +2367,7 @@ export declare const ArrowShuffleFilled: {
     displayName: string;
 };
 export declare const ArrowShuffleRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2376,7 +2376,7 @@ export declare const ArrowShuffleRegular: {
     displayName: string;
 };
 export declare const ArrowShuffleOffFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2385,7 +2385,7 @@ export declare const ArrowShuffleOffFilled: {
     displayName: string;
 };
 export declare const ArrowShuffleOffRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2394,7 +2394,7 @@ export declare const ArrowShuffleOffRegular: {
     displayName: string;
 };
 export declare const ArrowSortFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2403,7 +2403,7 @@ export declare const ArrowSortFilled: {
     displayName: string;
 };
 export declare const ArrowSortRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2412,7 +2412,7 @@ export declare const ArrowSortRegular: {
     displayName: string;
 };
 export declare const ArrowSortDownFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2421,7 +2421,7 @@ export declare const ArrowSortDownFilled: {
     displayName: string;
 };
 export declare const ArrowSortDownRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2430,7 +2430,7 @@ export declare const ArrowSortDownRegular: {
     displayName: string;
 };
 export declare const ArrowSortDownLinesFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2439,7 +2439,7 @@ export declare const ArrowSortDownLinesFilled: {
     displayName: string;
 };
 export declare const ArrowSortDownLinesRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2448,7 +2448,7 @@ export declare const ArrowSortDownLinesRegular: {
     displayName: string;
 };
 export declare const ArrowSortUpFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2457,7 +2457,7 @@ export declare const ArrowSortUpFilled: {
     displayName: string;
 };
 export declare const ArrowSortUpRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2466,7 +2466,7 @@ export declare const ArrowSortUpRegular: {
     displayName: string;
 };
 export declare const ArrowSplitFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2475,7 +2475,7 @@ export declare const ArrowSplitFilled: {
     displayName: string;
 };
 export declare const ArrowSplitRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2484,7 +2484,7 @@ export declare const ArrowSplitRegular: {
     displayName: string;
 };
 export declare const ArrowSquareDownFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2493,7 +2493,7 @@ export declare const ArrowSquareDownFilled: {
     displayName: string;
 };
 export declare const ArrowSquareDownRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2502,7 +2502,7 @@ export declare const ArrowSquareDownRegular: {
     displayName: string;
 };
 export declare const ArrowStepBackFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2511,7 +2511,7 @@ export declare const ArrowStepBackFilled: {
     displayName: string;
 };
 export declare const ArrowStepBackRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2520,7 +2520,7 @@ export declare const ArrowStepBackRegular: {
     displayName: string;
 };
 export declare const ArrowStepInFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2529,7 +2529,7 @@ export declare const ArrowStepInFilled: {
     displayName: string;
 };
 export declare const ArrowStepInRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2538,7 +2538,7 @@ export declare const ArrowStepInRegular: {
     displayName: string;
 };
 export declare const ArrowStepInLeftFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2547,7 +2547,7 @@ export declare const ArrowStepInLeftFilled: {
     displayName: string;
 };
 export declare const ArrowStepInLeftRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2556,7 +2556,7 @@ export declare const ArrowStepInLeftRegular: {
     displayName: string;
 };
 export declare const ArrowStepInRightFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2565,7 +2565,7 @@ export declare const ArrowStepInRightFilled: {
     displayName: string;
 };
 export declare const ArrowStepInRightRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2574,7 +2574,7 @@ export declare const ArrowStepInRightRegular: {
     displayName: string;
 };
 export declare const ArrowStepOutFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2583,7 +2583,7 @@ export declare const ArrowStepOutFilled: {
     displayName: string;
 };
 export declare const ArrowStepOutRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2592,7 +2592,7 @@ export declare const ArrowStepOutRegular: {
     displayName: string;
 };
 export declare const ArrowStepOverFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2601,7 +2601,7 @@ export declare const ArrowStepOverFilled: {
     displayName: string;
 };
 export declare const ArrowStepOverRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2610,7 +2610,7 @@ export declare const ArrowStepOverRegular: {
     displayName: string;
 };
 export declare const ArrowSwapFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2619,7 +2619,7 @@ export declare const ArrowSwapFilled: {
     displayName: string;
 };
 export declare const ArrowSwapRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2628,7 +2628,7 @@ export declare const ArrowSwapRegular: {
     displayName: string;
 };
 export declare const ArrowSyncFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2637,7 +2637,7 @@ export declare const ArrowSyncFilled: {
     displayName: string;
 };
 export declare const ArrowSyncRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2646,7 +2646,7 @@ export declare const ArrowSyncRegular: {
     displayName: string;
 };
 export declare const ArrowSyncCheckmarkFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2655,7 +2655,7 @@ export declare const ArrowSyncCheckmarkFilled: {
     displayName: string;
 };
 export declare const ArrowSyncCheckmarkRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2664,7 +2664,7 @@ export declare const ArrowSyncCheckmarkRegular: {
     displayName: string;
 };
 export declare const ArrowSyncCircleFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2673,7 +2673,7 @@ export declare const ArrowSyncCircleFilled: {
     displayName: string;
 };
 export declare const ArrowSyncCircleRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2682,7 +2682,7 @@ export declare const ArrowSyncCircleRegular: {
     displayName: string;
 };
 export declare const ArrowSyncDismissFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2691,7 +2691,7 @@ export declare const ArrowSyncDismissFilled: {
     displayName: string;
 };
 export declare const ArrowSyncDismissRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2700,7 +2700,7 @@ export declare const ArrowSyncDismissRegular: {
     displayName: string;
 };
 export declare const ArrowSyncOffFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2709,7 +2709,7 @@ export declare const ArrowSyncOffFilled: {
     displayName: string;
 };
 export declare const ArrowSyncOffRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2718,7 +2718,7 @@ export declare const ArrowSyncOffRegular: {
     displayName: string;
 };
 export declare const ArrowTrendingFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2727,7 +2727,7 @@ export declare const ArrowTrendingFilled: {
     displayName: string;
 };
 export declare const ArrowTrendingRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2736,7 +2736,7 @@ export declare const ArrowTrendingRegular: {
     displayName: string;
 };
 export declare const ArrowTrendingCheckmarkFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2745,7 +2745,7 @@ export declare const ArrowTrendingCheckmarkFilled: {
     displayName: string;
 };
 export declare const ArrowTrendingCheckmarkRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2754,7 +2754,7 @@ export declare const ArrowTrendingCheckmarkRegular: {
     displayName: string;
 };
 export declare const ArrowTrendingDownFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2763,7 +2763,7 @@ export declare const ArrowTrendingDownFilled: {
     displayName: string;
 };
 export declare const ArrowTrendingDownRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2772,7 +2772,7 @@ export declare const ArrowTrendingDownRegular: {
     displayName: string;
 };
 export declare const ArrowTrendingLinesFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2781,7 +2781,7 @@ export declare const ArrowTrendingLinesFilled: {
     displayName: string;
 };
 export declare const ArrowTrendingLinesRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2790,7 +2790,7 @@ export declare const ArrowTrendingLinesRegular: {
     displayName: string;
 };
 export declare const ArrowTrendingSettingsFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2799,7 +2799,7 @@ export declare const ArrowTrendingSettingsFilled: {
     displayName: string;
 };
 export declare const ArrowTrendingSettingsRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2808,7 +2808,7 @@ export declare const ArrowTrendingSettingsRegular: {
     displayName: string;
 };
 export declare const ArrowTrendingTextFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2817,7 +2817,7 @@ export declare const ArrowTrendingTextFilled: {
     displayName: string;
 };
 export declare const ArrowTrendingTextRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2826,7 +2826,7 @@ export declare const ArrowTrendingTextRegular: {
     displayName: string;
 };
 export declare const ArrowTrendingWrenchFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2835,7 +2835,7 @@ export declare const ArrowTrendingWrenchFilled: {
     displayName: string;
 };
 export declare const ArrowTrendingWrenchRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2844,7 +2844,7 @@ export declare const ArrowTrendingWrenchRegular: {
     displayName: string;
 };
 export declare const ArrowTurnBidirectionalDownRightFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2853,7 +2853,7 @@ export declare const ArrowTurnBidirectionalDownRightFilled: {
     displayName: string;
 };
 export declare const ArrowTurnBidirectionalDownRightRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2862,7 +2862,7 @@ export declare const ArrowTurnBidirectionalDownRightRegular: {
     displayName: string;
 };
 export declare const ArrowTurnDownLeftFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2871,7 +2871,7 @@ export declare const ArrowTurnDownLeftFilled: {
     displayName: string;
 };
 export declare const ArrowTurnDownLeftRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2880,7 +2880,7 @@ export declare const ArrowTurnDownLeftRegular: {
     displayName: string;
 };
 export declare const ArrowTurnDownRightFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2889,7 +2889,7 @@ export declare const ArrowTurnDownRightFilled: {
     displayName: string;
 };
 export declare const ArrowTurnDownRightRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2898,7 +2898,7 @@ export declare const ArrowTurnDownRightRegular: {
     displayName: string;
 };
 export declare const ArrowTurnDownUpFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2907,7 +2907,7 @@ export declare const ArrowTurnDownUpFilled: {
     displayName: string;
 };
 export declare const ArrowTurnDownUpRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2916,7 +2916,7 @@ export declare const ArrowTurnDownUpRegular: {
     displayName: string;
 };
 export declare const ArrowTurnLeftDownFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2925,7 +2925,7 @@ export declare const ArrowTurnLeftDownFilled: {
     displayName: string;
 };
 export declare const ArrowTurnLeftDownRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2934,7 +2934,7 @@ export declare const ArrowTurnLeftDownRegular: {
     displayName: string;
 };
 export declare const ArrowTurnLeftRightFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2943,7 +2943,7 @@ export declare const ArrowTurnLeftRightFilled: {
     displayName: string;
 };
 export declare const ArrowTurnLeftRightRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2952,7 +2952,7 @@ export declare const ArrowTurnLeftRightRegular: {
     displayName: string;
 };
 export declare const ArrowTurnLeftUpFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2961,7 +2961,7 @@ export declare const ArrowTurnLeftUpFilled: {
     displayName: string;
 };
 export declare const ArrowTurnLeftUpRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2970,7 +2970,7 @@ export declare const ArrowTurnLeftUpRegular: {
     displayName: string;
 };
 export declare const ArrowTurnRightFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2979,7 +2979,7 @@ export declare const ArrowTurnRightFilled: {
     displayName: string;
 };
 export declare const ArrowTurnRightRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2988,7 +2988,7 @@ export declare const ArrowTurnRightRegular: {
     displayName: string;
 };
 export declare const ArrowTurnRightDownFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -2997,7 +2997,7 @@ export declare const ArrowTurnRightDownFilled: {
     displayName: string;
 };
 export declare const ArrowTurnRightDownRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3006,7 +3006,7 @@ export declare const ArrowTurnRightDownRegular: {
     displayName: string;
 };
 export declare const ArrowTurnRightLeftFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3015,7 +3015,7 @@ export declare const ArrowTurnRightLeftFilled: {
     displayName: string;
 };
 export declare const ArrowTurnRightLeftRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3024,7 +3024,7 @@ export declare const ArrowTurnRightLeftRegular: {
     displayName: string;
 };
 export declare const ArrowTurnRightUpFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3033,7 +3033,7 @@ export declare const ArrowTurnRightUpFilled: {
     displayName: string;
 };
 export declare const ArrowTurnRightUpRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3042,7 +3042,7 @@ export declare const ArrowTurnRightUpRegular: {
     displayName: string;
 };
 export declare const ArrowTurnUpDownFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3051,7 +3051,7 @@ export declare const ArrowTurnUpDownFilled: {
     displayName: string;
 };
 export declare const ArrowTurnUpDownRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3060,7 +3060,7 @@ export declare const ArrowTurnUpDownRegular: {
     displayName: string;
 };
 export declare const ArrowTurnUpLeftFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3069,7 +3069,7 @@ export declare const ArrowTurnUpLeftFilled: {
     displayName: string;
 };
 export declare const ArrowTurnUpLeftRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3078,7 +3078,7 @@ export declare const ArrowTurnUpLeftRegular: {
     displayName: string;
 };
 export declare const ArrowUndoFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3087,7 +3087,7 @@ export declare const ArrowUndoFilled: {
     displayName: string;
 };
 export declare const ArrowUndoRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3096,7 +3096,7 @@ export declare const ArrowUndoRegular: {
     displayName: string;
 };
 export declare const ArrowUpFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3105,7 +3105,7 @@ export declare const ArrowUpFilled: {
     displayName: string;
 };
 export declare const ArrowUpRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3114,7 +3114,7 @@ export declare const ArrowUpRegular: {
     displayName: string;
 };
 export declare const ArrowUpLeftFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3123,7 +3123,7 @@ export declare const ArrowUpLeftFilled: {
     displayName: string;
 };
 export declare const ArrowUpLeftRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3132,7 +3132,7 @@ export declare const ArrowUpLeftRegular: {
     displayName: string;
 };
 export declare const ArrowUpRightFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3141,7 +3141,7 @@ export declare const ArrowUpRightFilled: {
     displayName: string;
 };
 export declare const ArrowUpRightRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3150,7 +3150,7 @@ export declare const ArrowUpRightRegular: {
     displayName: string;
 };
 export declare const ArrowUploadFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3159,7 +3159,7 @@ export declare const ArrowUploadFilled: {
     displayName: string;
 };
 export declare const ArrowUploadRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3168,7 +3168,7 @@ export declare const ArrowUploadRegular: {
     displayName: string;
 };
 export declare const ArrowWrapFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3177,7 +3177,7 @@ export declare const ArrowWrapFilled: {
     displayName: string;
 };
 export declare const ArrowWrapRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3186,7 +3186,7 @@ export declare const ArrowWrapRegular: {
     displayName: string;
 };
 export declare const ArrowWrapOffFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3195,7 +3195,7 @@ export declare const ArrowWrapOffFilled: {
     displayName: string;
 };
 export declare const ArrowWrapOffRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3204,7 +3204,7 @@ export declare const ArrowWrapOffRegular: {
     displayName: string;
 };
 export declare const ArrowsBidirectionalFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3213,7 +3213,7 @@ export declare const ArrowsBidirectionalFilled: {
     displayName: string;
 };
 export declare const ArrowsBidirectionalRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3222,7 +3222,7 @@ export declare const ArrowsBidirectionalRegular: {
     displayName: string;
 };
 export declare const AttachFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3231,7 +3231,7 @@ export declare const AttachFilled: {
     displayName: string;
 };
 export declare const AttachRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3240,7 +3240,7 @@ export declare const AttachRegular: {
     displayName: string;
 };
 export declare const AttachArrowRightFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3249,7 +3249,7 @@ export declare const AttachArrowRightFilled: {
     displayName: string;
 };
 export declare const AttachArrowRightRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3258,7 +3258,7 @@ export declare const AttachArrowRightRegular: {
     displayName: string;
 };
 export declare const AttachTextFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3267,7 +3267,7 @@ export declare const AttachTextFilled: {
     displayName: string;
 };
 export declare const AttachTextRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3276,7 +3276,7 @@ export declare const AttachTextRegular: {
     displayName: string;
 };
 export declare const AutoFitHeightFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3285,7 +3285,7 @@ export declare const AutoFitHeightFilled: {
     displayName: string;
 };
 export declare const AutoFitHeightRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3294,7 +3294,7 @@ export declare const AutoFitHeightRegular: {
     displayName: string;
 };
 export declare const AutoFitWidthFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3303,7 +3303,7 @@ export declare const AutoFitWidthFilled: {
     displayName: string;
 };
 export declare const AutoFitWidthRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3312,7 +3312,7 @@ export declare const AutoFitWidthRegular: {
     displayName: string;
 };
 export declare const AutocorrectFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3321,7 +3321,7 @@ export declare const AutocorrectFilled: {
     displayName: string;
 };
 export declare const AutocorrectRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3330,7 +3330,7 @@ export declare const AutocorrectRegular: {
     displayName: string;
 };
 export declare const AutosumFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3339,7 +3339,7 @@ export declare const AutosumFilled: {
     displayName: string;
 };
 export declare const AutosumRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3348,7 +3348,7 @@ export declare const AutosumRegular: {
     displayName: string;
 };
 export declare const BackpackFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3357,7 +3357,7 @@ export declare const BackpackFilled: {
     displayName: string;
 };
 export declare const BackpackRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3366,7 +3366,7 @@ export declare const BackpackRegular: {
     displayName: string;
 };
 export declare const BackpackAddFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3375,7 +3375,7 @@ export declare const BackpackAddFilled: {
     displayName: string;
 };
 export declare const BackpackAddRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3384,7 +3384,7 @@ export declare const BackpackAddRegular: {
     displayName: string;
 };
 export declare const BackspaceFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3393,7 +3393,7 @@ export declare const BackspaceFilled: {
     displayName: string;
 };
 export declare const BackspaceRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3402,7 +3402,7 @@ export declare const BackspaceRegular: {
     displayName: string;
 };
 export declare const BadgeFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3411,7 +3411,7 @@ export declare const BadgeFilled: {
     displayName: string;
 };
 export declare const BadgeRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3420,7 +3420,7 @@ export declare const BadgeRegular: {
     displayName: string;
 };
 export declare const BalloonFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3429,7 +3429,7 @@ export declare const BalloonFilled: {
     displayName: string;
 };
 export declare const BalloonRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3438,7 +3438,7 @@ export declare const BalloonRegular: {
     displayName: string;
 };
 export declare const BarcodeScannerFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3447,7 +3447,7 @@ export declare const BarcodeScannerFilled: {
     displayName: string;
 };
 export declare const BarcodeScannerRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3456,7 +3456,7 @@ export declare const BarcodeScannerRegular: {
     displayName: string;
 };
 export declare const Battery0Filled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3465,7 +3465,7 @@ export declare const Battery0Filled: {
     displayName: string;
 };
 export declare const Battery0Regular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3474,7 +3474,7 @@ export declare const Battery0Regular: {
     displayName: string;
 };
 export declare const Battery10Filled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3483,7 +3483,7 @@ export declare const Battery10Filled: {
     displayName: string;
 };
 export declare const Battery10Regular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3492,7 +3492,7 @@ export declare const Battery10Regular: {
     displayName: string;
 };
 export declare const Battery1Filled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3501,7 +3501,7 @@ export declare const Battery1Filled: {
     displayName: string;
 };
 export declare const Battery1Regular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3510,7 +3510,7 @@ export declare const Battery1Regular: {
     displayName: string;
 };
 export declare const Battery2Filled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3519,7 +3519,7 @@ export declare const Battery2Filled: {
     displayName: string;
 };
 export declare const Battery2Regular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3528,7 +3528,7 @@ export declare const Battery2Regular: {
     displayName: string;
 };
 export declare const Battery3Filled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3537,7 +3537,7 @@ export declare const Battery3Filled: {
     displayName: string;
 };
 export declare const Battery3Regular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3546,7 +3546,7 @@ export declare const Battery3Regular: {
     displayName: string;
 };
 export declare const Battery4Filled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3555,7 +3555,7 @@ export declare const Battery4Filled: {
     displayName: string;
 };
 export declare const Battery4Regular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3564,7 +3564,7 @@ export declare const Battery4Regular: {
     displayName: string;
 };
 export declare const Battery5Filled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3573,7 +3573,7 @@ export declare const Battery5Filled: {
     displayName: string;
 };
 export declare const Battery5Regular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3582,7 +3582,7 @@ export declare const Battery5Regular: {
     displayName: string;
 };
 export declare const Battery6Filled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3591,7 +3591,7 @@ export declare const Battery6Filled: {
     displayName: string;
 };
 export declare const Battery6Regular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3600,7 +3600,7 @@ export declare const Battery6Regular: {
     displayName: string;
 };
 export declare const Battery7Filled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3609,7 +3609,7 @@ export declare const Battery7Filled: {
     displayName: string;
 };
 export declare const Battery7Regular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3618,7 +3618,7 @@ export declare const Battery7Regular: {
     displayName: string;
 };
 export declare const Battery8Filled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3627,7 +3627,7 @@ export declare const Battery8Filled: {
     displayName: string;
 };
 export declare const Battery8Regular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3636,7 +3636,7 @@ export declare const Battery8Regular: {
     displayName: string;
 };
 export declare const Battery9Filled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3645,7 +3645,7 @@ export declare const Battery9Filled: {
     displayName: string;
 };
 export declare const Battery9Regular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3654,7 +3654,7 @@ export declare const Battery9Regular: {
     displayName: string;
 };
 export declare const BatteryChargeFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3663,7 +3663,7 @@ export declare const BatteryChargeFilled: {
     displayName: string;
 };
 export declare const BatteryChargeRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3672,7 +3672,7 @@ export declare const BatteryChargeRegular: {
     displayName: string;
 };
 export declare const BatteryCheckmarkFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3681,7 +3681,7 @@ export declare const BatteryCheckmarkFilled: {
     displayName: string;
 };
 export declare const BatteryCheckmarkRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3690,7 +3690,7 @@ export declare const BatteryCheckmarkRegular: {
     displayName: string;
 };
 export declare const BatterySaverFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3699,7 +3699,7 @@ export declare const BatterySaverFilled: {
     displayName: string;
 };
 export declare const BatterySaverRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3708,7 +3708,7 @@ export declare const BatterySaverRegular: {
     displayName: string;
 };
 export declare const BatteryWarningFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3717,7 +3717,7 @@ export declare const BatteryWarningFilled: {
     displayName: string;
 };
 export declare const BatteryWarningRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3726,7 +3726,7 @@ export declare const BatteryWarningRegular: {
     displayName: string;
 };
 export declare const BeachFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3735,7 +3735,7 @@ export declare const BeachFilled: {
     displayName: string;
 };
 export declare const BeachRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3744,7 +3744,7 @@ export declare const BeachRegular: {
     displayName: string;
 };
 export declare const BeakerFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3753,7 +3753,7 @@ export declare const BeakerFilled: {
     displayName: string;
 };
 export declare const BeakerRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3762,7 +3762,7 @@ export declare const BeakerRegular: {
     displayName: string;
 };
 export declare const BeakerEditFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3771,7 +3771,7 @@ export declare const BeakerEditFilled: {
     displayName: string;
 };
 export declare const BeakerEditRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3780,7 +3780,7 @@ export declare const BeakerEditRegular: {
     displayName: string;
 };
 export declare const BeakerOffFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3789,7 +3789,7 @@ export declare const BeakerOffFilled: {
     displayName: string;
 };
 export declare const BeakerOffRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3798,7 +3798,7 @@ export declare const BeakerOffRegular: {
     displayName: string;
 };
 export declare const BedFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3807,7 +3807,7 @@ export declare const BedFilled: {
     displayName: string;
 };
 export declare const BedRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3816,7 +3816,7 @@ export declare const BedRegular: {
     displayName: string;
 };
 export declare const BezierCurveSquareFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3825,7 +3825,7 @@ export declare const BezierCurveSquareFilled: {
     displayName: string;
 };
 export declare const BezierCurveSquareRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3834,7 +3834,7 @@ export declare const BezierCurveSquareRegular: {
     displayName: string;
 };
 export declare const BinFullFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3843,7 +3843,7 @@ export declare const BinFullFilled: {
     displayName: string;
 };
 export declare const BinFullRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3852,7 +3852,7 @@ export declare const BinFullRegular: {
     displayName: string;
 };
 export declare const BluetoothFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3861,7 +3861,7 @@ export declare const BluetoothFilled: {
     displayName: string;
 };
 export declare const BluetoothRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3870,7 +3870,7 @@ export declare const BluetoothRegular: {
     displayName: string;
 };
 export declare const BluetoothConnectedFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3879,7 +3879,7 @@ export declare const BluetoothConnectedFilled: {
     displayName: string;
 };
 export declare const BluetoothConnectedRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3888,7 +3888,7 @@ export declare const BluetoothConnectedRegular: {
     displayName: string;
 };
 export declare const BluetoothDisabledFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3897,7 +3897,7 @@ export declare const BluetoothDisabledFilled: {
     displayName: string;
 };
 export declare const BluetoothDisabledRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3906,7 +3906,7 @@ export declare const BluetoothDisabledRegular: {
     displayName: string;
 };
 export declare const BluetoothSearchingFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3915,7 +3915,7 @@ export declare const BluetoothSearchingFilled: {
     displayName: string;
 };
 export declare const BluetoothSearchingRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3924,7 +3924,7 @@ export declare const BluetoothSearchingRegular: {
     displayName: string;
 };
 export declare const BlurFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3933,7 +3933,7 @@ export declare const BlurFilled: {
     displayName: string;
 };
 export declare const BlurRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3942,7 +3942,7 @@ export declare const BlurRegular: {
     displayName: string;
 };
 export declare const BoardFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3951,7 +3951,7 @@ export declare const BoardFilled: {
     displayName: string;
 };
 export declare const BoardRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3960,7 +3960,7 @@ export declare const BoardRegular: {
     displayName: string;
 };
 export declare const BoardGamesFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3969,7 +3969,7 @@ export declare const BoardGamesFilled: {
     displayName: string;
 };
 export declare const BoardGamesRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3978,7 +3978,7 @@ export declare const BoardGamesRegular: {
     displayName: string;
 };
 export declare const BoardHeartFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3987,7 +3987,7 @@ export declare const BoardHeartFilled: {
     displayName: string;
 };
 export declare const BoardHeartRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -3996,7 +3996,7 @@ export declare const BoardHeartRegular: {
     displayName: string;
 };
 export declare const BoardSplitFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4005,7 +4005,7 @@ export declare const BoardSplitFilled: {
     displayName: string;
 };
 export declare const BoardSplitRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4014,7 +4014,7 @@ export declare const BoardSplitRegular: {
     displayName: string;
 };
 export declare const BookFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4023,7 +4023,7 @@ export declare const BookFilled: {
     displayName: string;
 };
 export declare const BookRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4032,7 +4032,7 @@ export declare const BookRegular: {
     displayName: string;
 };
 export declare const BookAddFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4041,7 +4041,7 @@ export declare const BookAddFilled: {
     displayName: string;
 };
 export declare const BookAddRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4050,7 +4050,7 @@ export declare const BookAddRegular: {
     displayName: string;
 };
 export declare const BookArrowClockwiseFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4059,7 +4059,7 @@ export declare const BookArrowClockwiseFilled: {
     displayName: string;
 };
 export declare const BookArrowClockwiseRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4068,7 +4068,7 @@ export declare const BookArrowClockwiseRegular: {
     displayName: string;
 };
 export declare const BookClockFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4077,7 +4077,7 @@ export declare const BookClockFilled: {
     displayName: string;
 };
 export declare const BookClockRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4086,7 +4086,7 @@ export declare const BookClockRegular: {
     displayName: string;
 };
 export declare const BookCoinsFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4095,7 +4095,7 @@ export declare const BookCoinsFilled: {
     displayName: string;
 };
 export declare const BookCoinsRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4104,7 +4104,7 @@ export declare const BookCoinsRegular: {
     displayName: string;
 };
 export declare const BookCompassFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4113,7 +4113,7 @@ export declare const BookCompassFilled: {
     displayName: string;
 };
 export declare const BookCompassRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4122,7 +4122,7 @@ export declare const BookCompassRegular: {
     displayName: string;
 };
 export declare const BookContactsFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4131,7 +4131,7 @@ export declare const BookContactsFilled: {
     displayName: string;
 };
 export declare const BookContactsRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4140,7 +4140,7 @@ export declare const BookContactsRegular: {
     displayName: string;
 };
 export declare const BookDatabaseFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4149,7 +4149,7 @@ export declare const BookDatabaseFilled: {
     displayName: string;
 };
 export declare const BookDatabaseRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4158,7 +4158,7 @@ export declare const BookDatabaseRegular: {
     displayName: string;
 };
 export declare const BookExclamationMarkFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4167,7 +4167,7 @@ export declare const BookExclamationMarkFilled: {
     displayName: string;
 };
 export declare const BookExclamationMarkRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4176,7 +4176,7 @@ export declare const BookExclamationMarkRegular: {
     displayName: string;
 };
 export declare const BookGlobeFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4185,7 +4185,7 @@ export declare const BookGlobeFilled: {
     displayName: string;
 };
 export declare const BookGlobeRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4194,7 +4194,7 @@ export declare const BookGlobeRegular: {
     displayName: string;
 };
 export declare const BookInformationFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4203,7 +4203,7 @@ export declare const BookInformationFilled: {
     displayName: string;
 };
 export declare const BookInformationRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4212,7 +4212,7 @@ export declare const BookInformationRegular: {
     displayName: string;
 };
 export declare const BookLetterFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4221,7 +4221,7 @@ export declare const BookLetterFilled: {
     displayName: string;
 };
 export declare const BookLetterRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4230,7 +4230,7 @@ export declare const BookLetterRegular: {
     displayName: string;
 };
 export declare const BookNumberFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4239,7 +4239,7 @@ export declare const BookNumberFilled: {
     displayName: string;
 };
 export declare const BookNumberRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4248,7 +4248,7 @@ export declare const BookNumberRegular: {
     displayName: string;
 };
 export declare const BookOpenFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4257,7 +4257,7 @@ export declare const BookOpenFilled: {
     displayName: string;
 };
 export declare const BookOpenRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4266,7 +4266,7 @@ export declare const BookOpenRegular: {
     displayName: string;
 };
 export declare const BookOpenGlobeFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4275,7 +4275,7 @@ export declare const BookOpenGlobeFilled: {
     displayName: string;
 };
 export declare const BookOpenGlobeRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4284,7 +4284,7 @@ export declare const BookOpenGlobeRegular: {
     displayName: string;
 };
 export declare const BookOpenMicrophoneFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4293,7 +4293,7 @@ export declare const BookOpenMicrophoneFilled: {
     displayName: string;
 };
 export declare const BookOpenMicrophoneRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4302,7 +4302,7 @@ export declare const BookOpenMicrophoneRegular: {
     displayName: string;
 };
 export declare const BookPulseFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4311,7 +4311,7 @@ export declare const BookPulseFilled: {
     displayName: string;
 };
 export declare const BookPulseRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4320,7 +4320,7 @@ export declare const BookPulseRegular: {
     displayName: string;
 };
 export declare const BookQuestionMarkFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4329,7 +4329,7 @@ export declare const BookQuestionMarkFilled: {
     displayName: string;
 };
 export declare const BookQuestionMarkRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4338,7 +4338,7 @@ export declare const BookQuestionMarkRegular: {
     displayName: string;
 };
 export declare const BookQuestionMarkRtlFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4347,7 +4347,7 @@ export declare const BookQuestionMarkRtlFilled: {
     displayName: string;
 };
 export declare const BookQuestionMarkRtlRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4356,7 +4356,7 @@ export declare const BookQuestionMarkRtlRegular: {
     displayName: string;
 };
 export declare const BookSearchFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4365,7 +4365,7 @@ export declare const BookSearchFilled: {
     displayName: string;
 };
 export declare const BookSearchRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4374,7 +4374,7 @@ export declare const BookSearchRegular: {
     displayName: string;
 };
 export declare const BookStarFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4383,7 +4383,7 @@ export declare const BookStarFilled: {
     displayName: string;
 };
 export declare const BookStarRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4392,7 +4392,7 @@ export declare const BookStarRegular: {
     displayName: string;
 };
 export declare const BookTemplateFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4401,7 +4401,7 @@ export declare const BookTemplateFilled: {
     displayName: string;
 };
 export declare const BookTemplateRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4410,7 +4410,7 @@ export declare const BookTemplateRegular: {
     displayName: string;
 };
 export declare const BookThetaFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4419,7 +4419,7 @@ export declare const BookThetaFilled: {
     displayName: string;
 };
 export declare const BookThetaRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4428,7 +4428,7 @@ export declare const BookThetaRegular: {
     displayName: string;
 };
 export declare const BookToolboxFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4437,7 +4437,7 @@ export declare const BookToolboxFilled: {
     displayName: string;
 };
 export declare const BookToolboxRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4446,7 +4446,7 @@ export declare const BookToolboxRegular: {
     displayName: string;
 };
 export declare const BookmarkFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4455,7 +4455,7 @@ export declare const BookmarkFilled: {
     displayName: string;
 };
 export declare const BookmarkRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4464,7 +4464,7 @@ export declare const BookmarkRegular: {
     displayName: string;
 };
 export declare const BookmarkAddFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4473,7 +4473,7 @@ export declare const BookmarkAddFilled: {
     displayName: string;
 };
 export declare const BookmarkAddRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4482,7 +4482,7 @@ export declare const BookmarkAddRegular: {
     displayName: string;
 };
 export declare const BookmarkMultipleFilled: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;
@@ -4491,7 +4491,7 @@ export declare const BookmarkMultipleFilled: {
     displayName: string;
 };
 export declare const BookmarkMultipleRegular: {
-    (props: import("react").SVGAttributes<SVGElement> & {
+    (props: React.SVGAttributes<SVGElement> & {
         primaryFill?: string;
         className?: string;
         filled?: boolean;

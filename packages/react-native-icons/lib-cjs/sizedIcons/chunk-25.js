@@ -15,7 +15,7 @@ const tslib_1 = require("tslib");
 
 const react_native_svg_1 = tslib_1.__importStar(require("react-native-svg"));
 
-const React = tslib_1.__importStar(require("react-native"));
+const React = tslib_1.__importStar(require("react"));
 
 const wrapIcon_1 = tslib_1.__importDefault(require("../utils/wrapIcon"));
 

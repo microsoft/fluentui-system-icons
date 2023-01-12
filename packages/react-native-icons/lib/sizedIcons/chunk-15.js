@@ -1,7 +1,7 @@
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 import Svg, { Path } from "react-native-svg";
-import * as React from "react-native";
+import * as React from "react";
 import wrapIcon from "../utils/wrapIcon";
 
 const NotebookError24RegularIcon = props => {
