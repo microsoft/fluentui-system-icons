@@ -11,27 +11,23 @@ const useRootStyles = makeStyles({
 });
 export const useIconState = props => {
   const {
-    title,
-    primaryFill = "currentColor"
-  } = props,
-        rest = __rest(props, ["title", "primaryFill"]);
-
+      title,
+      primaryFill = "currentColor"
+    } = props,
+    rest = __rest(props, ["title", "primaryFill"]);
   const state = Object.assign(Object.assign({}, rest), {
     title: undefined,
     fill: primaryFill
   });
   const styles = useRootStyles();
   state.className = mergeClasses(styles.root, state.className);
-
   if (title) {
     state['aria-label'] = title;
   }
-
   if (!state['aria-label'] && !state['aria-labelledby']) {
     state['aria-hidden'] = true;
   } else {
     state['role'] = 'img';
   }
-
   return state;
 };
