@@ -61,7 +61,7 @@ export const CommentArrowLeft48Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/Comm
 
 const CommentArrowRight12FilledIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg {...props} width={12} height={12} viewBox="0 0 12 12"><Path d="M12 3.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0ZM6.5 3a.5.5 0 0 0 0 1h2.8l-.65.65a.5.5 0 1 0 .7.7l1.5-1.5A.5.5 0 0 0 11 3.5a.5.5 0 0 0-.15-.35l-1.5-1.5a.5.5 0 1 0-.7.7l.64.65H6.5Zm2 5c.92 0 1.77-.28 2.48-.75A2 2 0 0 1 9 9H6.65l-2.87 1.92A.5.5 0 0 1 3 10.5V9a2 2 0 0 1-2-2V3c0-1.1.9-2 2-2h1.76A4.5 4.5 0 0 0 8.5 8Z" fill={primaryFill} /></Svg>;
+  return <Svg {...props} width={12} height={12} viewBox="0 0 12 12"><Path d="M12 3.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-1.5.5a.5.5 0 0 0 0-1H7.7l.65-.65a.5.5 0 1 0-.7-.7l-1.5 1.5A.5.5 0 0 0 6 3.5a.5.5 0 0 0 .15.35l1.5 1.5a.5.5 0 1 0 .7-.7L7.71 4h2.79Zm-2 4c.92 0 1.77-.28 2.48-.75A2 2 0 0 1 9 9H6.65l-2.87 1.92A.5.5 0 0 1 3 10.5V9a2 2 0 0 1-2-2V3c0-1.1.9-2 2-2h1.76A4.5 4.5 0 0 0 8.5 8Z" fill={primaryFill} /></Svg>;
 }
 export const CommentArrowRight12Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/CommentArrowRight12FilledIcon, 'CommentArrowRight12Filled');
       
@@ -69,7 +69,7 @@ export const CommentArrowRight12Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/Comm
 
 const CommentArrowRight12RegularIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg {...props} width={12} height={12} viewBox="0 0 12 12"><Path d="M12 3.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0ZM6.5 3a.5.5 0 0 0 0 1h2.8l-.65.65a.5.5 0 1 0 .7.7l1.5-1.5A.5.5 0 0 0 11 3.5a.5.5 0 0 0-.15-.35l-1.5-1.5a.5.5 0 1 0-.7.7l.64.65H6.5ZM3 2h1.26c.12-.36.3-.7.5-1H3a2 2 0 0 0-2 2v4c0 1.1.9 2 2 2v1.5a.5.5 0 0 0 .78.42L6.65 9H9a2 2 0 0 0 1.98-1.75c-.46.31-.99.54-1.55.65A1 1 0 0 1 9 8H6.5a.5.5 0 0 0-.28.08L4 9.57V8.5a.5.5 0 0 0-.5-.5H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z" fill={primaryFill} /></Svg>;
+  return <Svg {...props} width={12} height={12} viewBox="0 0 12 12"><Path d="M12 3.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-1.5.5a.5.5 0 0 0 0-1H7.7l.65-.65a.5.5 0 1 0-.7-.7l-1.5 1.5A.5.5 0 0 0 6 3.5a.5.5 0 0 0 .15.35l1.5 1.5a.5.5 0 1 0 .7-.7L7.71 4h2.79ZM3 2h1.26c.12-.36.3-.7.5-1H3a2 2 0 0 0-2 2v4c0 1.1.9 2 2 2v1.5a.5.5 0 0 0 .78.42L6.65 9H9a2 2 0 0 0 1.98-1.75c-.46.31-.99.54-1.55.65A1 1 0 0 1 9 8H6.5a.5.5 0 0 0-.28.08L4 9.57V8.5a.5.5 0 0 0-.5-.5H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z" fill={primaryFill} /></Svg>;
 }
 export const CommentArrowRight12Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/CommentArrowRight12RegularIcon, 'CommentArrowRight12Regular');
       
@@ -77,7 +77,7 @@ export const CommentArrowRight12Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/Com
 
 const CommentArrowRight16FilledIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg {...props} width={16} height={16} viewBox="0 0 16 16"><Path d="M15 5.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-2.15.35A.5.5 0 0 0 13 5.5a.5.5 0 0 0-.15-.35l-2-2a.5.5 0 0 0-.7.7L11.29 5H8.5a.5.5 0 0 0 0 1h2.8l-1.15 1.15a.5.5 0 0 0 .7.7l2-2ZM10.5 11A5.5 5.5 0 0 0 15 8.66v.84a2.5 2.5 0 0 1-2.5 2.5H8.69l-3.06 2.68A.98.98 0 0 1 4 13.94V12h-.5A2.5 2.5 0 0 1 1 9.5v-5A2.5 2.5 0 0 1 3.5 2h2.76a5.5 5.5 0 0 0 4.24 9Z" fill={primaryFill} /></Svg>;
+  return <Svg {...props} width={16} height={16} viewBox="0 0 16 16"><Path d="M15 5.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-6.85-.35A.5.5 0 0 0 8 5.5a.5.5 0 0 0 .15.35l2 2a.5.5 0 0 0 .7-.7L9.71 6h2.79a.5.5 0 0 0 0-1H9.7l1.15-1.15a.5.5 0 0 0-.7-.7l-2 2ZM10.5 11A5.5 5.5 0 0 0 15 8.66v.84a2.5 2.5 0 0 1-2.5 2.5H8.69l-3.06 2.68A.98.98 0 0 1 4 13.94V12h-.5A2.5 2.5 0 0 1 1 9.5v-5A2.5 2.5 0 0 1 3.5 2h2.76a5.5 5.5 0 0 0 4.24 9Z" fill={primaryFill} /></Svg>;
 }
 export const CommentArrowRight16Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/CommentArrowRight16FilledIcon, 'CommentArrowRight16Filled');
       
@@ -85,7 +85,7 @@ export const CommentArrowRight16Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/Comm
 
 const CommentArrowRight16RegularIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg {...props} width={16} height={16} viewBox="0 0 16 16"><Path d="M15 5.5a4.5 4.5 0 1 0-9 0 4.5 4.5 0 0 0 9 0Zm-2.15.35-2 2a.5.5 0 0 1-.7-.7L11.29 6H8.5a.5.5 0 0 1 0-1h2.8l-1.15-1.15a.5.5 0 0 1 .7-.7l2 2a.5.5 0 0 1 .15.35.5.5 0 0 1-.14.35ZM3.5 3h2.1c.18-.36.4-.7.66-1H3.5A2.5 2.5 0 0 0 1 4.5v5A2.5 2.5 0 0 0 3.5 12H4v1.94c0 .84 1 1.3 1.63.74L8.69 12h3.81A2.5 2.5 0 0 0 15 9.5v-.84c-.29.41-.63.78-1.02 1.1A1.5 1.5 0 0 1 12.5 11H8.31L5 13.9V11H3.5A1.5 1.5 0 0 1 2 9.5v-5C2 3.67 2.67 3 3.5 3Z" fill={primaryFill} /></Svg>;
+  return <Svg {...props} width={16} height={16} viewBox="0 0 16 16"><Path d="M15 5.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-6.85-.35A.5.5 0 0 0 8 5.5a.5.5 0 0 0 .15.35l2 2a.5.5 0 0 0 .7-.7L9.71 6h2.79a.5.5 0 0 0 0-1H9.7l1.15-1.15a.5.5 0 0 0-.7-.7l-2 2ZM3.5 3h2.1c.18-.36.4-.7.66-1H3.5A2.5 2.5 0 0 0 1 4.5v5A2.5 2.5 0 0 0 3.5 12H4v1.94c0 .84 1 1.3 1.63.74L8.69 12h3.81A2.5 2.5 0 0 0 15 9.5v-.84c-.29.41-.63.78-1.02 1.1A1.5 1.5 0 0 1 12.5 11H8.31L5 13.9V11H3.5A1.5 1.5 0 0 1 2 9.5v-5C2 3.67 2.67 3 3.5 3Z" fill={primaryFill} /></Svg>;
 }
 export const CommentArrowRight16Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/CommentArrowRight16RegularIcon, 'CommentArrowRight16Regular');
       
@@ -93,7 +93,7 @@ export const CommentArrowRight16Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/Com
 
 const CommentArrowRight20FilledIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg {...props} width={20} height={20} viewBox="0 0 20 20"><Path d="M19 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0ZM10.5 6a.5.5 0 0 0 0 1h4.8l-1.65 1.65a.5.5 0 0 0 .7.7l2.5-2.5a.5.5 0 0 0 0-.7l-2.5-2.5a.5.5 0 0 0-.7.7L15.29 6H10.5Zm3 7c1.75 0 3.33-.69 4.5-1.81v1.09a2.58 2.58 0 0 1-2.6 2.56h-4.59L6.8 17.8a1 1 0 0 1-1.4-.2.98.98 0 0 1-.2-.59v-2.17h-.6A2.58 2.58 0 0 1 2 12.28V5.57A2.58 2.58 0 0 1 4.6 3h3.42a6.5 6.5 0 0 0 5.48 10Z" fill={primaryFill} /></Svg>;
+  return <Svg {...props} width={20} height={20} viewBox="0 0 20 20"><Path d="M19 5.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-6.85-.35a.5.5 0 0 0-.15.35.5.5 0 0 0 .15.35l2 2a.5.5 0 0 0 .7-.7L13.71 6h2.79a.5.5 0 0 0 0-1h-2.8l1.15-1.15a.5.5 0 0 0-.7-.7l-2 2ZM14.5 11c1.33 0 2.55-.47 3.5-1.26v2.54a2.58 2.58 0 0 1-2.6 2.56h-4.59L6.8 17.8a1 1 0 0 1-1.4-.2.98.98 0 0 1-.2-.59v-2.17h-.6A2.58 2.58 0 0 1 2 12.28V5.57A2.58 2.58 0 0 1 4.6 3h5a5.5 5.5 0 0 0 4.9 8Z" fill={primaryFill} /></Svg>;
 }
 export const CommentArrowRight20Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/CommentArrowRight20FilledIcon, 'CommentArrowRight20Filled');
       
@@ -101,7 +101,7 @@ export const CommentArrowRight20Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/Comm
 
 const CommentArrowRight20RegularIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg {...props} width={20} height={20} viewBox="0 0 20 20"><Path d="M19 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0ZM10.5 6a.5.5 0 0 0 0 1h4.8l-1.65 1.65a.5.5 0 0 0 .7.7l2.5-2.5a.5.5 0 0 0 0-.7l-2.5-2.5a.5.5 0 0 0-.7.7L15.29 6H10.5Zm6.5 6.28v-.3c.36-.23.7-.5 1-.79v1.09a2.58 2.58 0 0 1-2.6 2.56h-4.59L6.8 17.8a1 1 0 0 1-1.4-.2.98.98 0 0 1-.2-.59v-2.17h-.6A2.58 2.58 0 0 1 2 12.28V5.57A2.58 2.58 0 0 1 4.6 3h3.42c-.2.32-.38.65-.52 1H4.6C3.7 4 3 4.71 3 5.57v6.7c0 .86.7 1.57 1.6 1.57h1.6V17l4.28-3.16h4.92c.9 0 1.6-.71 1.6-1.56Z" fill={primaryFill} /></Svg>;
+  return <Svg {...props} width={20} height={20} viewBox="0 0 20 20"><Path d="M19 5.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-6.85-.35a.5.5 0 0 0-.15.35.5.5 0 0 0 .15.35l2 2a.5.5 0 0 0 .7-.7L13.71 6h2.79a.5.5 0 0 0 0-1h-2.8l1.15-1.15a.5.5 0 0 0-.7-.7l-2 2ZM17 12.28V10.4c.36-.18.7-.4 1-.66v2.54a2.58 2.58 0 0 1-2.6 2.56h-4.59L6.8 17.8a1 1 0 0 1-1.4-.2.98.98 0 0 1-.2-.59v-2.17h-.6A2.58 2.58 0 0 1 2 12.28V5.57A2.58 2.58 0 0 1 4.6 3h5c-.16.32-.3.65-.4 1H4.6C3.7 4 3 4.71 3 5.57v6.7c0 .86.7 1.57 1.6 1.57h1.6V17l4.28-3.16h4.92c.9 0 1.6-.71 1.6-1.56Z" fill={primaryFill} /></Svg>;
 }
 export const CommentArrowRight20Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/CommentArrowRight20RegularIcon, 'CommentArrowRight20Regular');
       
@@ -109,7 +109,7 @@ export const CommentArrowRight20Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/Com
 
 const CommentArrowRight24FilledIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg {...props} width={24} height={24} viewBox="0 0 24 24"><Path d="M12.02 3A6.5 6.5 0 0 0 22 11.2v3.55c0 1.8-1.46 3.25-3.25 3.25h-5.79l-5.38 3.82A1 1 0 0 1 6 21v-3h-.75A3.25 3.25 0 0 1 2 14.75v-8.5C2 4.45 3.46 3 5.25 3h6.77Zm5.48-2a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Zm.22 2.59-.07.06-.06.07a.5.5 0 0 0 0 .56l.06.07L19.29 6h-5.38a.5.5 0 0 0-.4.41l-.01.09v.09c.05.2.2.36.41.4L14 7h5.3l-1.65 1.65-.06.07a.5.5 0 0 0 .7.7l.06-.07 2.54-2.54.04-.05.03-.07.02-.06.02-.08v-.1l-.02-.08-.03-.08-.04-.07-.04-.06-2.52-2.51-.07-.06a.5.5 0 0 0-.56 0Z" fill={primaryFill} /></Svg>;
+  return <Svg {...props} width={24} height={24} viewBox="0 0 24 24"><Path d="M12.02 3A6.5 6.5 0 0 0 22 11.2v3.55c0 1.8-1.46 3.25-3.25 3.25h-5.79l-5.38 3.82A1 1 0 0 1 6 21v-3h-.75A3.25 3.25 0 0 1 2 14.75v-8.5C2 4.45 3.46 3 5.25 3h6.77Zm5.48-2a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Zm-1.28 2.59-.07.06-2.53 2.53-.03.04-.04.07-.03.08-.02.08v.14l.02.06.03.06.03.06.04.05 2.53 2.53a.5.5 0 0 0 .76-.63l-.06-.07L15.21 7h5.29a.5.5 0 0 0 .5-.41V6.5a.5.5 0 0 0-.41-.5H15.2l1.65-1.65a.5.5 0 0 0 .06-.63l-.06-.07a.5.5 0 0 0-.63-.06Z" fill={primaryFill} /></Svg>;
 }
 export const CommentArrowRight24Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/CommentArrowRight24FilledIcon, 'CommentArrowRight24Filled');
       
@@ -117,7 +117,7 @@ export const CommentArrowRight24Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/Comm
 
 const CommentArrowRight24RegularIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg {...props} width={24} height={24} viewBox="0 0 24 24"><Path d="M12.02 3c-.3.46-.53.97-.7 1.5H5.24c-.97 0-1.75.78-1.75 1.75v8.5c0 .97.78 1.75 1.75 1.75H7.5v3.75l5.01-3.75h6.24c.97 0 1.75-.78 1.75-1.75v-2.48a6.52 6.52 0 0 0 1.5-1.08v3.56c0 1.8-1.46 3.25-3.25 3.25h-5.74L8 21.75a1.25 1.25 0 0 1-2-1V18h-.75A3.25 3.25 0 0 1 2 14.75v-8.5C2 4.45 3.46 3 5.25 3h6.77Zm5.48-2a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Zm.22 2.59-.07.06-.06.07a.5.5 0 0 0 0 .56l.06.07L19.29 6h-5.38a.5.5 0 0 0-.4.41l-.01.09v.09c.05.2.2.36.41.4L14 7h5.3l-1.65 1.65-.06.07a.5.5 0 0 0 .7.7l.06-.07 2.54-2.54.04-.05.03-.07.02-.06.02-.08v-.1l-.02-.08-.03-.08-.04-.07-.04-.06-2.52-2.51-.07-.06a.5.5 0 0 0-.56 0Z" fill={primaryFill} /></Svg>;
+  return <Svg {...props} width={24} height={24} viewBox="0 0 24 24"><Path d="M12.02 3c-.3.46-.53.97-.7 1.5H5.24c-.97 0-1.75.78-1.75 1.75v8.5c0 .97.78 1.75 1.75 1.75H7.5v3.75l5.01-3.75h6.24c.97 0 1.75-.78 1.75-1.75v-2.48a6.52 6.52 0 0 0 1.5-1.08v3.56c0 1.8-1.46 3.25-3.25 3.25h-5.74L8 21.75a1.25 1.25 0 0 1-2-1V18h-.75A3.25 3.25 0 0 1 2 14.75v-8.5C2 4.45 3.46 3 5.25 3h6.77Zm5.48-2a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Zm-1.28 2.59-.07.06-2.53 2.53-.03.04-.04.07-.03.08-.02.08v.14l.02.06.03.06.03.06.04.05 2.53 2.53a.5.5 0 0 0 .76-.63l-.06-.07L15.21 7h5.29a.5.5 0 0 0 .5-.41V6.5a.5.5 0 0 0-.41-.5H15.2l1.65-1.65a.5.5 0 0 0 .06-.63l-.06-.07a.5.5 0 0 0-.63-.06Z" fill={primaryFill} /></Svg>;
 }
 export const CommentArrowRight24Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/CommentArrowRight24RegularIcon, 'CommentArrowRight24Regular');
       
@@ -125,7 +125,7 @@ export const CommentArrowRight24Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/Com
 
 const CommentArrowRight28FilledIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg {...props} width={28} height={28} viewBox="0 0 28 28"><Path d="M27 7.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0ZM16.5 7a.5.5 0 0 0 0 1h6.8l-2.15 2.15a.5.5 0 0 0 .7.7l3-3A.5.5 0 0 0 25 7.5a.5.5 0 0 0-.15-.35l-3-3a.5.5 0 0 0-.7.7L23.29 7H16.5Zm4 8c2.17 0 4.13-.92 5.5-2.4v4.65A3.75 3.75 0 0 1 22.25 21h-5.94l-6.54 4.71C8.62 26.55 7 25.72 7 24.3V21H5.75A3.75 3.75 0 0 1 2 17.25V6.75A3.75 3.75 0 0 1 5.75 3h8.75a7.5 7.5 0 0 0 6 12Z" fill={primaryFill} /></Svg>;
+  return <Svg {...props} width={28} height={28} viewBox="0 0 28 28"><Path d="M27 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0Zm-2.5.5a.5.5 0 0 0 0-1h-4.8l1.65-1.65a.5.5 0 0 0-.7-.7l-2.5 2.5a.5.5 0 0 0 0 .7l2.5 2.5a.5.5 0 0 0 .7-.7L19.71 7h4.79Zm-3 6c1.75 0 3.33-.69 4.5-1.81v6.06A3.75 3.75 0 0 1 22.25 21h-5.94l-6.54 4.71C8.62 26.55 7 25.72 7 24.3V21H5.75A3.75 3.75 0 0 1 2 17.25V6.75A3.75 3.75 0 0 1 5.75 3h10.27a6.5 6.5 0 0 0 5.48 10Z" fill={primaryFill} /></Svg>;
 }
 export const CommentArrowRight28Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/CommentArrowRight28FilledIcon, 'CommentArrowRight28Filled');
       
@@ -133,7 +133,7 @@ export const CommentArrowRight28Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/Comm
 
 const CommentArrowRight28RegularIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg {...props} width={28} height={28} viewBox="0 0 28 28"><Path d="M27 7.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0ZM16.5 7a.5.5 0 0 0 0 1h6.8l-2.15 2.15a.5.5 0 0 0 .7.7l3-3A.5.5 0 0 0 25 7.5a.5.5 0 0 0-.15-.35l-3-3a.5.5 0 0 0-.7.7L23.29 7H16.5Zm8 10.25v-3.4A7.54 7.54 0 0 0 26 12.6v4.65A3.75 3.75 0 0 1 22.25 21h-5.94l-6.54 4.71C8.62 26.55 7 25.72 7 24.3V21H5.75A3.75 3.75 0 0 1 2 17.25V6.75A3.75 3.75 0 0 1 5.75 3h8.75c-.35.46-.64.96-.88 1.5H5.75c-1.24 0-2.25 1-2.25 2.25v10.5c0 1.24 1 2.25 2.25 2.25H8.5v4.8c0 .2.23.32.4.2l6.92-5h6.43c1.24 0 2.25-1 2.25-2.25Z" fill={primaryFill} /></Svg>;
+  return <Svg {...props} width={28} height={28} viewBox="0 0 28 28"><Path d="M27 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0Zm-2.5.5a.5.5 0 0 0 0-1h-4.8l1.65-1.65a.5.5 0 0 0-.7-.7l-2.5 2.5a.5.5 0 0 0 0 .7l2.5 2.5a.5.5 0 0 0 .7-.7L19.71 7h4.79Zm0 10.25v-4.98a6.52 6.52 0 0 0 1.5-1.08v6.06A3.75 3.75 0 0 1 22.25 21h-5.94l-6.54 4.71C8.62 26.55 7 25.72 7 24.3V21H5.75A3.75 3.75 0 0 1 2 17.25V6.75A3.75 3.75 0 0 1 5.75 3h10.27c-.3.46-.53.97-.7 1.5H5.74c-1.24 0-2.25 1-2.25 2.25v10.5c0 1.24 1 2.25 2.25 2.25H8.5v4.8c0 .2.23.32.4.2l6.92-5h6.43c1.24 0 2.25-1 2.25-2.25Z" fill={primaryFill} /></Svg>;
 }
 export const CommentArrowRight28Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/CommentArrowRight28RegularIcon, 'CommentArrowRight28Regular');
       
@@ -141,7 +141,7 @@ export const CommentArrowRight28Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/Com
 
 const CommentArrowRight48FilledIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg {...props} width={48} height={48} viewBox="0 0 48 48"><Path d="M46 13a11 11 0 1 1-22 0 11 11 0 0 1 22 0Zm-9.7-5.7a1 1 0 0 0 0 1.4l3.29 3.3H28a1 1 0 1 0 0 2h11.59l-3.3 3.3a1 1 0 0 0 1.42 1.4l5-5a1 1 0 0 0 0-1.4l-5-5a1 1 0 0 0-1.42 0ZM35 26c3.5 0 6.66-1.38 9-3.62v6.37c0 4-3.25 7.25-7.25 7.25H26.4l-10.85 7.66A2.25 2.25 0 0 1 12 41.82V36h-.75C7.25 36 4 32.75 4 28.75v-15.5C4 9.25 7.25 6 11.25 6h12.8A13 13 0 0 0 35 26Z" fill={primaryFill} /></Svg>;
+  return <Svg {...props} width={48} height={48} viewBox="0 0 48 48"><Path d="M46 13a11 11 0 1 1-22 0 11 11 0 0 1 22 0ZM33.7 7.3a1 1 0 0 0-1.4 0l-5 5a1 1 0 0 0 0 1.4l5 5a1 1 0 0 0 1.4-1.4L30.42 14H42a1 1 0 1 0 0-2H30.41l3.3-3.3a1 1 0 0 0 0-1.4ZM35 26c3.5 0 6.66-1.38 9-3.62v6.37c0 4-3.25 7.25-7.25 7.25H26.4l-10.85 7.66A2.25 2.25 0 0 1 12 41.82V36h-.75C7.25 36 4 32.75 4 28.75v-15.5C4 9.25 7.25 6 11.25 6h12.8A13 13 0 0 0 35 26Z" fill={primaryFill} /></Svg>;
 }
 export const CommentArrowRight48Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/CommentArrowRight48FilledIcon, 'CommentArrowRight48Filled');
       
@@ -149,7 +149,7 @@ export const CommentArrowRight48Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/Comm
 
 const CommentArrowRight48RegularIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg {...props} width={48} height={48} viewBox="0 0 48 48"><Path d="M46 13a11 11 0 1 1-22 0 11 11 0 0 1 22 0Zm-9.7-5.7a1 1 0 0 0 0 1.4l3.29 3.3H28a1 1 0 1 0 0 2h11.59l-3.3 3.3a1 1 0 0 0 1.42 1.4l5-5a1 1 0 0 0 0-1.4l-5-5a1 1 0 0 0-1.42 0Zm5.2 21.45v-4.49c.9-.52 1.75-1.16 2.5-1.88v6.37c0 4-3.25 7.25-7.25 7.25H26.4l-10.85 7.66A2.25 2.25 0 0 1 12 41.82V36h-.75C7.25 36 4 32.75 4 28.75v-15.5C4 9.25 7.25 6 11.25 6h12.8c-.5.78-.92 1.62-1.25 2.5H11.25a4.75 4.75 0 0 0-4.75 4.75v15.5a4.75 4.75 0 0 0 4.75 4.75h3.25v7.84l11.1-7.84h11.15a4.75 4.75 0 0 0 4.75-4.75Z" fill={primaryFill} /></Svg>;
+  return <Svg {...props} width={48} height={48} viewBox="0 0 48 48"><Path d="M46 13a11 11 0 1 1-22 0 11 11 0 0 1 22 0ZM33.7 7.3a1 1 0 0 0-1.4 0l-5 5a1 1 0 0 0 0 1.4l5 5a1 1 0 0 0 1.4-1.4L30.42 14H42a1 1 0 1 0 0-2H30.41l3.3-3.3a1 1 0 0 0 0-1.4Zm7.8 21.45v-4.49c.9-.52 1.75-1.16 2.5-1.88v6.37c0 4-3.25 7.25-7.25 7.25H26.4l-10.85 7.66A2.25 2.25 0 0 1 12 41.82V36h-.75C7.25 36 4 32.75 4 28.75v-15.5C4 9.25 7.25 6 11.25 6h12.8c-.5.78-.92 1.62-1.25 2.5H11.25a4.75 4.75 0 0 0-4.75 4.75v15.5a4.75 4.75 0 0 0 4.75 4.75h3.25v7.84l11.1-7.84h11.15a4.75 4.75 0 0 0 4.75-4.75Z" fill={primaryFill} /></Svg>;
 }
 export const CommentArrowRight48Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/CommentArrowRight48RegularIcon, 'CommentArrowRight48Regular');
       

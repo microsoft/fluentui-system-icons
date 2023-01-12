@@ -1747,11 +1747,11 @@
 
 "@warren-ms/react-native-icons@file:/home/runner/work/fluentui-system-icons/fluentui-system-icons/packages/react-native-icons":
   "resolved" "file:packages/react-native-icons"
-  "version" "0.0.6"
+  "version" "0.0.7"
   dependencies:
     "@griffel/react" "^1.0.0"
     "@types/react-native" "^0.70.8"
-    "react-native-svg" "^13.6.0"
+    "react-native-svg" "^12.3.0"
     "tslib" "^2.1.0"
 
 "@webassemblyjs/ast@1.11.1":
@@ -6288,15 +6288,15 @@
   "resolved" "https://registry.npmjs.org/react-native-gradle-plugin/-/react-native-gradle-plugin-0.0.6.tgz"
   "version" "0.0.6"
 
-"react-native-svg@^13.6.0":
-  "integrity" "sha512-WR5CIURvee5cAfvMhmdoeOjh1SC8KdLq5u5eFsz4pbYzCtIFClGSkLnNgkMSDMVV5LV0qQa4jeIk75ieIBzaDA=="
-  "resolved" "https://registry.npmjs.org/react-native-svg/-/react-native-svg-13.7.0.tgz"
-  "version" "13.7.0"
+"react-native-svg@^12.3.0":
+  "integrity" "sha512-xVMA6QjwU2E30DHLzjmewjHSmby4mMMlUaiKnFCYPWpsezsaB3zHS7eURwKNJLmcRYOPi3f6aBhxvFTNj/5j/A=="
+  "resolved" "https://registry.npmjs.org/react-native-svg/-/react-native-svg-12.5.0.tgz"
+  "version" "12.5.0"
   dependencies:
     "css-select" "^5.1.0"
     "css-tree" "^1.1.3"
 
-"react-native@*", "react-native@^0.68.0":
+"react-native@*", "react-native@^0.68.0", "react-native@>=0.50.0":
   "integrity" "sha512-t3kiQ/gumFV+0r/NRSIGtYxanjY4da0utFqHgkMcRPJVwXFWC0Fr8YiOeRGYO1dp8EfrSsOjtfWic/inqVYlbQ=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.68.5.tgz"
   "version" "0.68.5"
