@@ -56,18 +56,18 @@ jobs:
       working-directory: importer
 
     ## Flutter
-    - name: Run Flutter generate script
-      run: npm run deploy:flutter
-      working-directory: importer
+    # - name: Run Flutter generate script
+    #   run: npm run deploy:flutter
+    #   working-directory: importer
 
-    # The name should be same as the package name on pub.dev
-    - name: 'fluentui_system_icons'
-      uses: k-paxian/dart-package-publisher@master
-      with:
-        relativePath: 'flutter'
-        skipTests: true
-        accessToken: ${{ secrets.FLUTTER_OAUTH_ACCESS_TOKEN }}
-        refreshToken: ${{ secrets.FLUTTER_OAUTH_REFRESH_TOKEN }}
+    # # The name should be same as the package name on pub.dev
+    # - name: 'fluentui_system_icons'
+    #   uses: k-paxian/dart-package-publisher@master
+    #   with:
+    #     relativePath: 'flutter'
+    #     skipTests: true
+    #     accessToken: ${{ secrets.FLUTTER_OAUTH_ACCESS_TOKEN }}
+    #     refreshToken: ${{ secrets.FLUTTER_OAUTH_REFRESH_TOKEN }}
 
     ## Publish
     # Needs to be "-E" instead of "-r" on macOS
@@ -88,17 +88,17 @@ jobs:
         sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" ios/FluentIcons.podspec
         rm ios/FluentIcons.podspec.bk
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in flutter/CHANGELOG.md
-      run: |
-        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" flutter/CHANGELOG.md
-        rm flutter/CHANGELOG.md.bk
+    # # Needs to be "-E" instead of "-r" on macOS
+    # - name: Replace version number in flutter/CHANGELOG.md
+    #   run: |
+    #     sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" flutter/CHANGELOG.md
+    #     rm flutter/CHANGELOG.md.bk
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in flutter/pubspec.yaml
-      run: |
-        sed -i.bk -r "s/version: [0-9]+\.[0-9]+\.[0-9]+/version: $NEW_VERSION/g" flutter/pubspec.yaml
-        rm flutter/pubspec.yaml.bk
+    # # Needs to be "-E" instead of "-r" on macOS
+    # - name: Replace version number in flutter/pubspec.yaml
+    #   run: |
+    #     sed -i.bk -r "s/version: [0-9]+\.[0-9]+\.[0-9]+/version: $NEW_VERSION/g" flutter/pubspec.yaml
+    #     rm flutter/pubspec.yaml.bk
 
     # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version number in svg-icons/package.json
