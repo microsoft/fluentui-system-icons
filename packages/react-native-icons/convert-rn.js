@@ -140,7 +140,7 @@ function processFolder(srcPath, destPath, resizable) {
 
       var iconContent = fs.readFileSync(srcFile, { encoding: "utf8" })
       
-      var jsxCode = resizable ? svgr.default.sync(iconContent, svgrOpts, { filePath: file }) : svgr.default.sync(iconContent, svgrOptsSizedIcons, { filePath: file })
+      var jsxCode = resizable ? svgr.transform.sync(iconContent, svgrOpts, { filePath: file }) : svgr.transform.sync(iconContent, svgrOptsSizedIcons, { filePath: file })
       var jsCode = 
 `
 
