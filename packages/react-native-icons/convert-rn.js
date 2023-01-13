@@ -140,7 +140,7 @@ function processFolder(srcPath, destPath, resizable) {
 
       var iconContent = fs.readFileSync(srcFile, { encoding: "utf8" })
       
-      var jsxCode = resizable ? svgr.transform.sync(iconContent, svgrOpts, { filePath: file }) : svgr.transform.sync(iconContent, svgrOptsSizedIcons, { filePath: file })
+      var jsxCode = resizable ? svgr.default.sync(iconContent, svgrOpts, { filePath: file }) : svgr.default.sync(iconContent, svgrOptsSizedIcons, { filePath: file })
       var jsCode = 
 `
 
@@ -184,14 +184,16 @@ export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename
   return chunkContent;
 }
 
-function fileTemplate (variables, { tpl })
-{
-  variables.componentName = variables.componentName.substring(3);
-  variables.componentName = variables.componentName.replace('IcFluent', '');
-
-  return tpl`
-  ${variables.jsx}
+function fileTemplate(
+  { template },
+  opts,
+  { imports, interfaces, componentName, props, jsx, exports }
+) {
+  const plugins = ['jsx', 'typescript']
+  const tpl = template.smart({ plugins })
  
-`
-};
+  componentName.name = componentName.name.substring(3)
+  componentName.name = componentName.name.replace('IcFluent', '')
   
+	return jsx;
+}
