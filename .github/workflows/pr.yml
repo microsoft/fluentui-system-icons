@@ -3,152 +3,152 @@ name: Pull request validation
 on: pull_request
 
 jobs:
-    valid-asset-names:
-        name: Validate Asset Names
-        runs-on: ubuntu-latest
+  valid-asset-names:
+    name: Validate Asset Names
+    runs-on: ubuntu-latest
 
-        steps:
-            - uses: actions/checkout@v2
+    steps:
+    - uses: actions/checkout@v2
 
-            - name: Check asset directories are valid for Windows
-              run: |
-                  ls assets | python3 -c """
-                  import sys
-                  assets_dir = sys.stdin.read().strip().split('\n')
-                  invalid_asset_dirs = []
-                  for dir in assets_dir:
-                    if dir.endswith(' '):
-                      invalid_asset_dirs.append(dir)
+    - name: Check asset directories are valid for Windows
+      run: |
+        ls assets | python3 -c """
+        import sys
+        assets_dir = sys.stdin.read().strip().split('\n')
+        invalid_asset_dirs = []
+        for dir in assets_dir:
+          if dir.endswith(' '):
+            invalid_asset_dirs.append(dir)
 
-                  if invalid_asset_dirs:
-                    print('Invalid asset directories, remove the trailing space')
-                    print(invalid_asset_dirs)
-                    exit(1)
-                  """
+        if invalid_asset_dirs:
+          print('Invalid asset directories, remove the trailing space')
+          print(invalid_asset_dirs)
+          exit(1)
+        """
 
-    build-ios:
-        name: Build iOS library
-        runs-on: ubuntu-latest
+  build-ios:
+    name: Build iOS library
+    runs-on: ubuntu-latest
 
-        steps:
-            - uses: actions/checkout@v2
+    steps:
+    - uses: actions/checkout@v2
 
-            - name: Use Node 18
-              uses: actions/setup-node@v1
-              with:
-                  node-version: 18.x
+    - name: Use Node 18
+      uses: actions/setup-node@v1
+      with:
+        node-version: 18.x
 
-            - run: npm install
+    - run: npm install
 
-            - name: Run generate script
-              run: npm run deploy:ios
-              working-directory: importer
+    - name: Run generate script
+      run: npm run deploy:ios
+      working-directory: importer
 
-    build-android:
-        name: Build Android library
-        runs-on: ubuntu-latest
+  build-android:
+    name: Build Android library
+    runs-on: ubuntu-latest
 
-        steps:
-            - uses: actions/checkout@v2
+    steps:
+    - uses: actions/checkout@v2
 
-            - name: Use Node 18
-              uses: actions/setup-node@v1
-              with:
-                  node-version: 18.x
+    - name: Use Node 18
+      uses: actions/setup-node@v1
+      with:
+        node-version: 18.x
 
-            - run: npm install
+    - run: npm install
 
-            - name: Run generate script
-              run: npm run deploy:android
-              working-directory: importer
+    - name: Run generate script
+      run: npm run deploy:android
+      working-directory: importer
 
-            - name: Setup Java
-              uses: actions/setup-java@v1
-              with:
-                  java-version: 11
+    - name: Setup Java
+      uses: actions/setup-java@v1
+      with:
+        java-version: 11
 
-            # https://github.com/marketplace/actions/gradle-command
-            - name: Build Android library
-              uses: eskatos/gradle-command-action@v1
-              with:
-                  arguments: assembleRelease
-                  build-root-directory: android
-                  wrapper-directory: android
+    # https://github.com/marketplace/actions/gradle-command
+    - name: Build Android library
+      uses: eskatos/gradle-command-action@v1
+      with:
+        arguments: assembleRelease
+        build-root-directory: android
+        wrapper-directory: android
 
-            - name: Generate BUILD.gn file for Android
-              run: python3 generate_build_gn_android.py
-              working-directory: importer
+    - name: Generate BUILD.gn file for Android
+      run: python3 generate_build_gn_android.py
+      working-directory: importer
 
-    # build-flutter:
-    #   name: Build Flutter library
-    #   runs-on: ubuntu-latest
+  # build-flutter:
+  #   name: Build Flutter library
+  #   runs-on: ubuntu-latest
 
-    #   steps:
-    #   - uses: actions/checkout@v2
+  #   steps:
+  #   - uses: actions/checkout@v2
 
-    #   - name: Use Node 18
-    #     uses: actions/setup-node@v1
-    #     with:
-    #       node-version: 18.x
+  #   - name: Use Node 18
+  #     uses: actions/setup-node@v1
+  #     with:
+  #       node-version: 18.x
 
-    #   - run: npm install
+  #   - run: npm install
 
-    #   - name: Run generate script
-    #     run: npm run deploy:flutter
-    #     working-directory: importer
+  #   - name: Run generate script
+  #     run: npm run deploy:flutter
+  #     working-directory: importer
 
-    #   # Build Flutter library
-    #   # The name should be same as the package name on pub.dev
-    #   # Tokens are placeholder strings in order for the action to run on forked repos.
-    #   - name: 'fluentui_system_icons'
-    #     uses: k-paxian/dart-package-publisher@master
-    #     with:
-    #       relativePath: 'flutter'
-    #       skipTests: true
-    #       dryRunOnly: true
-    #       accessToken: "placeholder"
-    #       refreshToken: "placeholder"
+  #   # Build Flutter library
+  #   # The name should be same as the package name on pub.dev
+  #   # Tokens are placeholder strings in order for the action to run on forked repos.
+  #   - name: 'fluentui_system_icons'
+  #     uses: k-paxian/dart-package-publisher@master
+  #     with:
+  #       relativePath: 'flutter'
+  #       skipTests: true
+  #       dryRunOnly: true
+  #       accessToken: "placeholder"
+  #       refreshToken: "placeholder"
 
-    build-svg:
-        name: Build svg library
-        runs-on: ubuntu-latest
+  build-svg:
+    name: Build svg library
+    runs-on: ubuntu-latest
 
-        steps:
-            - uses: actions/checkout@v2
+    steps:
+    - uses: actions/checkout@v2
 
-            - name: Use Node 18
-              uses: actions/setup-node@v1
-              with:
-                  node-version: 18.x
+    - name: Use Node 18
+      uses: actions/setup-node@v1
+      with:
+        node-version: 18.x
 
-            - run: npm install
+    - run: npm install
 
-            - name: Run build
-              run: npm run build
-              working-directory: packages/svg-icons
+    - name: Run build
+      run: npm run build
+      working-directory: packages/svg-icons
 
-    build-react:
-        name: Build react library
-        runs-on: ubuntu-latest
+  build-react:
+    name: Build react library
+    runs-on: ubuntu-latest
 
-        steps:
-            - uses: actions/checkout@v2
+    steps:
+    - uses: actions/checkout@v2
 
-            - name: Use Node 18
-              uses: actions/setup-node@v1
-              with:
-                  node-version: 18.x
+    - name: Use Node 18
+      uses: actions/setup-node@v1
+      with:
+        node-version: 18.x
 
-            - run: npm install
+    - run: npm install
 
-            - run: |
-                  npm run build
-              working-directory: packages/react-icons
+    - run: |
+        npm run build
+      working-directory: packages/react-icons
 
-        # - run: |
-        #     npm run build
-        #   working-directory: packages/react-icons-font-subsetting-webpack-plugin
+    # - run: |
+    #     npm run build
+    #   working-directory: packages/react-icons-font-subsetting-webpack-plugin
 
-        # - run: |
-        #     npm run test
-        #   working-directory: packages/react-icons-font-subsetting-webpack-plugin
+    # - run: |
+    #     npm run test
+    #   working-directory: packages/react-icons-font-subsetting-webpack-plugin
