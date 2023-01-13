@@ -184,16 +184,14 @@ export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename
   return chunkContent;
 }
 
-function fileTemplate(
-  { template },
-  opts,
-  { imports, interfaces, componentName, props, jsx, exports }
-) {
-  const plugins = ['jsx', 'typescript']
-  const tpl = template.smart({ plugins })
+function fileTemplate (variables, { tpl })
+{
+  variables.componentName = variables.componentName.substring(3);
+  variables.componentName = variables.componentName.replace('IcFluent', '');
+
+  return tpl`
+  ${variables.jsx}
  
-  componentName.name = componentName.name.substring(3)
-  componentName.name = componentName.name.replace('IcFluent', '')
+`;
+};
   
-	return jsx;
-}
