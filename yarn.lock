@@ -1819,7 +1819,7 @@
 
 "@warren-ms/react-native-icons@file:/home/runner/work/fluentui-system-icons/fluentui-system-icons/packages/react-native-icons":
   "resolved" "file:packages/react-native-icons"
-  "version" "0.0.10"
+  "version" "0.0.11"
   dependencies:
     "@griffel/react" "^1.0.0"
     "@types/react-native" "^0.68.0"
