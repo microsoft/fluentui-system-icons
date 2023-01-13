@@ -79,35 +79,35 @@ jobs:
       run: python3 generate_build_gn_android.py
       working-directory: importer
 
-  build-flutter:
-    name: Build Flutter library
-    runs-on: ubuntu-latest
+  # build-flutter:
+  #   name: Build Flutter library
+  #   runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v2
+  #   steps:
+  #   - uses: actions/checkout@v2
 
-    - name: Use Node 18
-      uses: actions/setup-node@v1
-      with:
-        node-version: 18.x
+  #   - name: Use Node 18
+  #     uses: actions/setup-node@v1
+  #     with:
+  #       node-version: 18.x
 
-    - run: npm install
+  #   - run: npm install
 
-    - name: Run generate script
-      run: npm run deploy:flutter
-      working-directory: importer
+  #   - name: Run generate script
+  #     run: npm run deploy:flutter
+  #     working-directory: importer
 
-    # Build Flutter library
-    # The name should be same as the package name on pub.dev
-    # Tokens are placeholder strings in order for the action to run on forked repos.
-    - name: 'fluentui_system_icons'
-      uses: k-paxian/dart-package-publisher@master
-      with:
-        relativePath: 'flutter'
-        skipTests: true
-        dryRunOnly: true
-        accessToken: "placeholder"
-        refreshToken: "placeholder"
+  #   # Build Flutter library
+  #   # The name should be same as the package name on pub.dev
+  #   # Tokens are placeholder strings in order for the action to run on forked repos.
+  #   - name: 'fluentui_system_icons'
+  #     uses: k-paxian/dart-package-publisher@master
+  #     with:
+  #       relativePath: 'flutter'
+  #       skipTests: true
+  #       dryRunOnly: true
+  #       accessToken: "placeholder"
+  #       refreshToken: "placeholder"
 
   build-svg:
     name: Build svg library
@@ -145,10 +145,10 @@ jobs:
         npm run build
       working-directory: packages/react-icons
 
-    - run: |
-        npm run build
-      working-directory: packages/react-icons-font-subsetting-webpack-plugin
+    # - run: |
+    #     npm run build
+    #   working-directory: packages/react-icons-font-subsetting-webpack-plugin
 
-    - run: |
-        npm run test
-      working-directory: packages/react-icons-font-subsetting-webpack-plugin
+    # - run: |
+    #     npm run test
+    #   working-directory: packages/react-icons-font-subsetting-webpack-plugin
