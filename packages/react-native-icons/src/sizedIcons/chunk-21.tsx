@@ -1373,7 +1373,7 @@ export const TableFreezeColumn28Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/Tab
 
 const TableFreezeColumnAndRow16FilledIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={16} height={16} viewBox="0 0 16 16" {...props}><Path d="M14 4.5A2.5 2.5 0 0 0 11.5 2h-7A2.5 2.5 0 0 0 2 4.5V10h3V6H3V4.5C3 3.67 3.67 3 4.5 3h7c.83 0 1.5.67 1.5 1.5v7c0 .83-.67 1.5-1.5 1.5H10v-2H6v3h5.5a2.5 2.5 0 0 0 2.5-2.5v-7ZM10 6H6v4h4V6Zm-5 5H2v.5A2.5 2.5 0 0 0 4.5 14H5v-3Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={16} height={16} viewBox="0 0 16 16" {...props}><Path d="M4.5 2A2.5 2.5 0 0 0 2 4.5v7A2.5 2.5 0 0 0 4.5 14H10v-3H6v2H4.5A1.5 1.5 0 0 1 3 11.5v-7C3 3.67 3.67 3 4.5 3h7c.83 0 1.5.67 1.5 1.5V6h-2v4h3V4.5A2.5 2.5 0 0 0 11.5 2h-7ZM6 6v4h4V6H6Zm5 5v3h.5a2.5 2.5 0 0 0 2.5-2.5V11h-3Z" fill={primaryFill} /></Svg>;;
 }
 export const TableFreezeColumnAndRow16Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TableFreezeColumnAndRow16FilledIcon, 'TableFreezeColumnAndRow16Filled');
       
@@ -1381,7 +1381,7 @@ export const TableFreezeColumnAndRow16Filled = /*#__PURE__*/wrapIcon(/*#__PURE__
 
 const TableFreezeColumnAndRow16RegularIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={16} height={16} viewBox="0 0 16 16" {...props}><Path d="M11.5 2A2.5 2.5 0 0 1 14 4.5v7a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 11.5v-7A2.5 2.5 0 0 1 4.5 2h7ZM3 6v4h2V6H3Zm3 0v4h4V6H6Zm4 7v-2H6v2h4Zm-5 0v-2H3v.5c0 .83.67 1.5 1.5 1.5H5ZM3 4.5V5h8v8h.5c.83 0 1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5h-7C3.67 3 3 3.67 3 4.5Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={16} height={16} viewBox="0 0 16 16" {...props}><Path d="M2 4.5A2.5 2.5 0 0 1 4.5 2h7A2.5 2.5 0 0 1 14 4.5v7a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 11.5v-7ZM6 13h4v-2H6v2Zm0-3h4V6H6v4Zm7-4h-2v4h2V6Zm0 5h-2v2h.5c.83 0 1.5-.67 1.5-1.5V11Zm-8.5 2H5V5h8v-.5c0-.83-.67-1.5-1.5-1.5h-7C3.67 3 3 3.67 3 4.5v7c0 .83.67 1.5 1.5 1.5Z" fill={primaryFill} /></Svg>;;
 }
 export const TableFreezeColumnAndRow16Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TableFreezeColumnAndRow16RegularIcon, 'TableFreezeColumnAndRow16Regular');
       
@@ -1389,7 +1389,7 @@ export const TableFreezeColumnAndRow16Regular = /*#__PURE__*/wrapIcon(/*#__PURE_
 
 const TableFreezeColumnAndRow20FilledIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={20} height={20} viewBox="0 0 20 20" {...props}><Path d="M17 5.5A2.5 2.5 0 0 0 14.5 3h-9A2.5 2.5 0 0 0 3 5.5V12h4V8H4V5.5C4 4.67 4.67 4 5.5 4h9c.83 0 1.5.67 1.5 1.5v9c0 .83-.67 1.5-1.5 1.5H12v-3H8v4h6.5a2.5 2.5 0 0 0 2.5-2.5v-9Zm-14 9V13h4v4H5.5A2.5 2.5 0 0 1 3 14.5ZM8 8v4h4V8H8Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={20} height={20} viewBox="0 0 20 20" {...props}><Path d="M5.5 3A2.5 2.5 0 0 0 3 5.5v9A2.5 2.5 0 0 0 5.5 17H12v-4H8v3H5.5A1.5 1.5 0 0 1 4 14.5v-9C4 4.67 4.67 4 5.5 4h9c.83 0 1.5.67 1.5 1.5V8h-3v4h4V5.5A2.5 2.5 0 0 0 14.5 3h-9Zm9 14H13v-4h4v1.5a2.5 2.5 0 0 1-2.5 2.5ZM8 12h4V8H8v4Z" fill={primaryFill} /></Svg>;;
 }
 export const TableFreezeColumnAndRow20Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TableFreezeColumnAndRow20FilledIcon, 'TableFreezeColumnAndRow20Filled');
       
@@ -1397,7 +1397,7 @@ export const TableFreezeColumnAndRow20Filled = /*#__PURE__*/wrapIcon(/*#__PURE__
 
 const TableFreezeColumnAndRow20RegularIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={20} height={20} viewBox="0 0 20 20" {...props}><Path d="M17 14.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9A2.5 2.5 0 0 1 17 5.5v9ZM4 8v4h3V8H4Zm0 5v1.5c0 .78.6 1.42 1.36 1.5H7v-3H4Zm4-1h4V8H8v4Zm4 4v-3H8v3h4ZM4 5.5V7h9v9h1.5c.78 0 1.42-.6 1.5-1.36V5.5c0-.78-.6-1.42-1.36-1.5H5.5c-.78 0-1.42.6-1.5 1.36v.14Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={20} height={20} viewBox="0 0 20 20" {...props}><Path d="M14.5 3A2.5 2.5 0 0 1 17 5.5v9a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9ZM8 16h4v-3H8v3Zm5 0h1.5c.78 0 1.42-.6 1.5-1.36V13h-3v3Zm-1-4V8H8v4h4Zm4-4h-3v4h3V8ZM5.5 16H7V7h9V5.5c0-.78-.6-1.42-1.36-1.5H5.5c-.78 0-1.42.6-1.5 1.36v9.14c0 .78.6 1.42 1.36 1.5h.14Z" fill={primaryFill} /></Svg>;;
 }
 export const TableFreezeColumnAndRow20Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TableFreezeColumnAndRow20RegularIcon, 'TableFreezeColumnAndRow20Regular');
       
@@ -1405,7 +1405,7 @@ export const TableFreezeColumnAndRow20Regular = /*#__PURE__*/wrapIcon(/*#__PURE_
 
 const TableFreezeColumnAndRow24FilledIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={24} height={24} viewBox="0 0 24 24" {...props}><Path d="M21 6.25C21 4.45 19.54 3 17.75 3H6.25A3.25 3.25 0 0 0 3 6.25v8.25h5v-5H4.5V6.25c0-.97.78-1.75 1.75-1.75h11.5c.97 0 1.75.78 1.75 1.75v11.5c0 .97-.78 1.75-1.75 1.75H14.5V16h-5v5h8.25c1.8 0 3.25-1.46 3.25-3.25V6.25ZM8 16H3v1.75C3 19.55 4.46 21 6.25 21H8v-5Zm1.5-1.5h5v-5h-5v5Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={24} height={24} viewBox="0 0 24 24" {...props}><Path d="M6.25 3A3.25 3.25 0 0 0 3 6.25v11.5C3 19.55 4.46 21 6.25 21h8.25v-5h-5v3.5H6.25c-.97 0-1.75-.78-1.75-1.75V6.25c0-.97.78-1.75 1.75-1.75h11.5c.97 0 1.75.78 1.75 1.75V9.5H16v5h5V6.25C21 4.45 19.54 3 17.75 3H6.25ZM16 16v5h1.75c1.8 0 3.25-1.46 3.25-3.25V16h-5Zm-1.5-1.5v-5h-5v5h5Z" fill={primaryFill} /></Svg>;;
 }
 export const TableFreezeColumnAndRow24Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TableFreezeColumnAndRow24FilledIcon, 'TableFreezeColumnAndRow24Filled');
       
@@ -1413,7 +1413,7 @@ export const TableFreezeColumnAndRow24Filled = /*#__PURE__*/wrapIcon(/*#__PURE__
 
 const TableFreezeColumnAndRow24RegularIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={24} height={24} viewBox="0 0 24 24" {...props}><Path d="M21 6.25C21 4.45 19.54 3 17.75 3H6.25A3.25 3.25 0 0 0 3 6.25v11.5C3 19.55 4.46 21 6.25 21h11.5c1.8 0 3.25-1.46 3.25-3.25V6.25ZM15.5 19.5V9.25a.75.75 0 0 0-.75-.75H4.5V6.25c0-.97.78-1.75 1.75-1.75h11.5c.97 0 1.75.78 1.75 1.75v11.5c0 .97-.78 1.75-1.75 1.75H15.5ZM14 14h-4v-4h4v4Zm-4 1.5h4v4h-4v-4ZM8.5 14h-4v-4h4v4Zm-4 1.5h4v4H6.25c-.97 0-1.75-.78-1.75-1.75V15.5Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={24} height={24} viewBox="0 0 24 24" {...props}><Path d="M6.25 3A3.25 3.25 0 0 0 3 6.25v11.5C3 19.55 4.46 21 6.25 21h11.5c1.8 0 3.25-1.46 3.25-3.25V6.25C21 4.45 19.54 3 17.75 3H6.25ZM19.5 8.5H9.25a.75.75 0 0 0-.75.75V19.5H6.25c-.97 0-1.75-.78-1.75-1.75V6.25c0-.97.78-1.75 1.75-1.75h11.5c.97 0 1.75.78 1.75 1.75V8.5ZM14 10v4h-4v-4h4Zm1.5 4v-4h4v4h-4ZM14 15.5v4h-4v-4h4Zm1.5 4v-4h4v2.25c0 .97-.78 1.75-1.75 1.75H15.5Z" fill={primaryFill} /></Svg>;;
 }
 export const TableFreezeColumnAndRow24Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TableFreezeColumnAndRow24RegularIcon, 'TableFreezeColumnAndRow24Regular');
       
@@ -1421,7 +1421,7 @@ export const TableFreezeColumnAndRow24Regular = /*#__PURE__*/wrapIcon(/*#__PURE_
 
 const TableFreezeColumnAndRow28FilledIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={28} height={28} viewBox="0 0 28 28" {...props}><Path d="M25 6.75A3.75 3.75 0 0 0 21.25 3H6.75A3.75 3.75 0 0 0 3 6.75V17h6.5v-6h-5V6.75c0-1.24 1-2.25 2.25-2.25h14.5c1.24 0 2.25 1 2.25 2.25v14.5c0 1.24-1 2.25-2.25 2.25H17v-5h-6V25h10.25A3.75 3.75 0 0 0 25 21.25V6.75ZM3 21.25V18.5h6.5V25H6.75A3.75 3.75 0 0 1 3 21.25ZM11 17h6v-6h-6v6Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={28} height={28} viewBox="0 0 28 28" {...props}><Path d="M6.75 3A3.75 3.75 0 0 0 3 6.75v14.5A3.75 3.75 0 0 0 6.75 25H17v-6.5h-6v5H6.75c-1.24 0-2.25-1-2.25-2.25V6.75c0-1.24 1-2.25 2.25-2.25h14.5c1.24 0 2.25 1 2.25 2.25V11h-5v6H25V6.75A3.75 3.75 0 0 0 21.25 3H6.75Zm14.5 22H18.5v-6.5H25v2.75A3.75 3.75 0 0 1 21.25 25ZM17 17v-6h-6v6h6Z" fill={primaryFill} /></Svg>;;
 }
 export const TableFreezeColumnAndRow28Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TableFreezeColumnAndRow28FilledIcon, 'TableFreezeColumnAndRow28Filled');
       
@@ -1429,7 +1429,7 @@ export const TableFreezeColumnAndRow28Filled = /*#__PURE__*/wrapIcon(/*#__PURE__
 
 const TableFreezeColumnAndRow28RegularIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={28} height={28} viewBox="0 0 28 28" {...props}><Path d="M21.25 3A3.75 3.75 0 0 1 25 6.75v14.5A3.75 3.75 0 0 1 21.25 25H6.75A3.75 3.75 0 0 1 3 21.25V6.75A3.75 3.75 0 0 1 6.75 3h14.5ZM4.5 6.75V9.5h14v14h2.75c1.24 0 2.25-1 2.25-2.25V6.75c0-1.24-1-2.25-2.25-2.25H6.75c-1.24 0-2.25 1-2.25 2.25ZM11 17h6v-6h-6v6Zm6 6.5v-5h-6v5h6ZM9.5 11h-5v6h5v-6Zm-5 7.5v2.75c0 1.24 1 2.25 2.25 2.25H9.5v-5h-5Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={28} height={28} viewBox="0 0 28 28" {...props}><Path d="M3 6.75A3.75 3.75 0 0 1 6.75 3h14.5A3.75 3.75 0 0 1 25 6.75v14.5A3.75 3.75 0 0 1 21.25 25H6.75A3.75 3.75 0 0 1 3 21.25V6.75ZM6.75 23.5H9.5v-14h14V6.75c0-1.24-1-2.25-2.25-2.25H6.75c-1.24 0-2.25 1-2.25 2.25v14.5c0 1.24 1 2.25 2.25 2.25ZM17 17v-6h-6v6h6Zm6.5-6h-5v6h5v-6ZM11 18.5v5h6v-5h-6Zm7.5 5h2.75c1.24 0 2.25-1 2.25-2.25V18.5h-5v5Z" fill={primaryFill} /></Svg>;;
 }
 export const TableFreezeColumnAndRow28Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TableFreezeColumnAndRow28RegularIcon, 'TableFreezeColumnAndRow28Regular');
       

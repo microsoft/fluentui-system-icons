@@ -7561,7 +7561,7 @@ const TableFreezeColumnAndRowFilledIcon = props => {
     height: 24,
     viewBox: "0 0 20 20"
   }, props), /*#__PURE__*/React.createElement(Path, {
-    d: "M17 5.5A2.5 2.5 0 0 0 14.5 3h-9A2.5 2.5 0 0 0 3 5.5V12h4V8H4V5.5C4 4.67 4.67 4 5.5 4h9c.83 0 1.5.67 1.5 1.5v9c0 .83-.67 1.5-1.5 1.5H12v-3H8v4h6.5a2.5 2.5 0 0 0 2.5-2.5v-9Zm-14 9V13h4v4H5.5A2.5 2.5 0 0 1 3 14.5ZM8 8v4h4V8H8Z",
+    d: "M5.5 3A2.5 2.5 0 0 0 3 5.5v9A2.5 2.5 0 0 0 5.5 17H12v-4H8v3H5.5A1.5 1.5 0 0 1 4 14.5v-9C4 4.67 4.67 4 5.5 4h9c.83 0 1.5.67 1.5 1.5V8h-3v4h4V5.5A2.5 2.5 0 0 0 14.5 3h-9Zm9 14H13v-4h4v1.5a2.5 2.5 0 0 1-2.5 2.5ZM8 12h4V8H8v4Z",
     fill: primaryFill
   }));
   ;

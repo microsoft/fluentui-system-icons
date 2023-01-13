@@ -3141,7 +3141,7 @@ export const TextField24Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextField24
 
 const TextFirstLine20FilledIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={20} height={20} viewBox="0 0 20 20" {...props}><Path d="M15.72 2.22a.75.75 0 1 1 1.06 1.06l-.97.97.97.97a.75.75 0 0 1-1.06 1.06l-1.5-1.5a.75.75 0 0 1 0-1.06l1.5-1.5ZM3.75 3.5h7.5a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1 0-1.5Zm12.5 10a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1 0-1.5h12.5ZM3.75 10h12.5a.75.75 0 0 0 0-1.5H3.75a.75.75 0 0 0 0 1.5Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={20} height={20} viewBox="0 0 20 20" {...props}><Path d="M4.28 2.22a.75.75 0 0 0-1.06 1.06l.97.97-.97.97a.75.75 0 0 0 1.06 1.06l1.5-1.5c.3-.3.3-.77 0-1.06l-1.5-1.5ZM16.25 3.5h-7.5a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5Zm-12.5 10a.75.75 0 0 0 0 1.5h12.5a.75.75 0 0 0 0-1.5H3.75Zm12.5-3.5H3.75a.75.75 0 0 1 0-1.5h12.5a.75.75 0 0 1 0 1.5Z" fill={primaryFill} /></Svg>;;
 }
 export const TextFirstLine20Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextFirstLine20FilledIcon, 'TextFirstLine20Filled');
       
@@ -3149,7 +3149,7 @@ export const TextFirstLine20Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextFirs
 
 const TextFirstLine20RegularIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={20} height={20} viewBox="0 0 20 20" {...props}><Path d="M16.65 3.15a.5.5 0 0 1 .7.7L16.21 5l1.14 1.15a.5.5 0 0 1-.7.7l-1.5-1.5a.5.5 0 0 1 0-.7l1.5-1.5ZM12.5 4a.5.5 0 0 1 0 1h-10a.5.5 0 0 1 0-1h10Zm5 10a.5.5 0 0 1 0 1h-15a.5.5 0 0 1 0-1h15Zm.5-4.5a.5.5 0 0 0-.5-.5h-15a.5.5 0 0 0 0 1h15a.5.5 0 0 0 .5-.5Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={20} height={20} viewBox="0 0 20 20" {...props}><Path d="M3.35 3.15a.5.5 0 1 0-.7.7L3.79 5 2.65 6.15a.5.5 0 1 0 .7.7l1.5-1.5a.5.5 0 0 0 0-.7l-1.5-1.5ZM7.5 4a.5.5 0 0 0 0 1h10a.5.5 0 0 0 0-1h-10Zm-5 10a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1h-15ZM2 9.5c0-.28.22-.5.5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5Z" fill={primaryFill} /></Svg>;;
 }
 export const TextFirstLine20Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextFirstLine20RegularIcon, 'TextFirstLine20Regular');
       
@@ -3157,7 +3157,7 @@ export const TextFirstLine20Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextFir
 
 const TextFirstLine24FilledIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={24} height={24} viewBox="0 0 24 24" {...props}><Path d="M20.3 3.3a1 1 0 1 1 1.4 1.4L20.42 6l1.3 1.3a1 1 0 0 1-1.42 1.4l-2-2a1 1 0 0 1 0-1.4l2-2ZM14 5a1 1 0 1 1 0 2H3a1 1 0 0 1 0-2h11ZM3 17h18a1 1 0 1 1 0 2H3a1 1 0 1 1 0-2Zm19-5a1 1 0 0 0-1-1H3a1 1 0 1 0 0 2h18a1 1 0 0 0 1-1Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={24} height={24} viewBox="0 0 24 24" {...props}><Path d="M3.7 3.3a1 1 0 0 0-1.4 1.4L3.58 6l-1.3 1.3a1 1 0 0 0 1.42 1.4l2-2a1 1 0 0 0 0-1.4l-2-2ZM10 5a1 1 0 0 0 0 2h11a1 1 0 1 0 0-2H10Zm11 12H3a1 1 0 1 0 0 2h18a1 1 0 1 0 0-2ZM2 12a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1Z" fill={primaryFill} /></Svg>;;
 }
 export const TextFirstLine24Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextFirstLine24FilledIcon, 'TextFirstLine24Filled');
       
@@ -3165,7 +3165,7 @@ export const TextFirstLine24Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextFirs
 
 const TextFirstLine24RegularIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={24} height={24} viewBox="0 0 24 24" {...props}><Path d="M20.22 3.22a.75.75 0 1 1 1.06 1.06l-1.47 1.47 1.47 1.47a.75.75 0 0 1-1.06 1.06l-2-2a.75.75 0 0 1 0-1.06l2-2ZM14.25 5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1 0-1.5h11.5Zm7 13a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1 0-1.5h18.5Zm.75-5.75a.75.75 0 0 0-.75-.75H2.75a.75.75 0 0 0 0 1.5h18.5c.41 0 .75-.34.75-.75Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={24} height={24} viewBox="0 0 24 24" {...props}><Path d="M3.78 3.22a.75.75 0 0 0-1.06 1.06l1.47 1.47-1.47 1.47a.75.75 0 0 0 1.06 1.06l2-2c.3-.3.3-.77 0-1.06l-2-2ZM9.75 5a.75.75 0 0 0 0 1.5h11.5a.75.75 0 0 0 0-1.5H9.75Zm-7 13a.75.75 0 0 0 0 1.5h18.5a.75.75 0 0 0 0-1.5H2.75ZM2 12.25c0-.41.34-.75.75-.75h18.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75Z" fill={primaryFill} /></Svg>;;
 }
 export const TextFirstLine24Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextFirstLine24RegularIcon, 'TextFirstLine24Regular');
       
@@ -3573,7 +3573,7 @@ export const TextGrammarWand24Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextG
 
 const TextHanging20FilledIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={20} height={20} viewBox="0 0 20 20" {...props}><Path d="M16.25 3.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1 0-1.5h12.5Zm-5 10a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1 0-1.5h7.5ZM12 9.25a.75.75 0 0 0-.75-.75h-7.5a.75.75 0 0 0 0 1.5h7.5c.41 0 .75-.34.75-.75Zm3.72 1.47a.75.75 0 1 1 1.06 1.06l-.97.97.97.97a.75.75 0 1 1-1.06 1.06l-1.5-1.5a.75.75 0 0 1 0-1.06l1.5-1.5Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={20} height={20} viewBox="0 0 20 20" {...props}><Path d="M3.75 3.5a.75.75 0 0 0 0 1.5h12.5a.75.75 0 0 0 0-1.5H3.75Zm5 10a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5ZM8 9.25c0-.41.34-.75.75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 8 9.25Zm-3.72 1.47a.75.75 0 0 0-1.06 1.06l.97.97-.97.97a.75.75 0 1 0 1.06 1.06l1.5-1.5c.3-.3.3-.77 0-1.06l-1.5-1.5Z" fill={primaryFill} /></Svg>;;
 }
 export const TextHanging20Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextHanging20FilledIcon, 'TextHanging20Filled');
       
@@ -3581,7 +3581,7 @@ export const TextHanging20Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextHangin
 
 const TextHanging20RegularIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={20} height={20} viewBox="0 0 20 20" {...props}><Path d="M16.5 4a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1h13Zm-4 10a.5.5 0 0 1 0 1h-9a.5.5 0 0 1 0-1h9Zm.5-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0 0 1h9a.5.5 0 0 0 .5-.5Zm2.15 2.15 1.5-1.5a.5.5 0 0 1 .7.7L16.21 12l1.14 1.15a.5.5 0 0 1-.7.7l-1.5-1.5a.5.5 0 0 1 0-.7Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={20} height={20} viewBox="0 0 20 20" {...props}><Path d="M3.5 4a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1h-13Zm4 10a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9ZM7 9.5c0-.28.22-.5.5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5Zm-2.15 2.15-1.5-1.5a.5.5 0 0 0-.7.7L3.79 12l-1.14 1.15a.5.5 0 0 0 .7.7l1.5-1.5a.5.5 0 0 0 0-.7Z" fill={primaryFill} /></Svg>;;
 }
 export const TextHanging20Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextHanging20RegularIcon, 'TextHanging20Regular');
       
@@ -3589,7 +3589,7 @@ export const TextHanging20Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextHangi
 
 const TextHanging24FilledIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={24} height={24} viewBox="0 0 24 24" {...props}><Path d="M21 5a1 1 0 1 1 0 2H3a1 1 0 0 1 0-2h18Zm-7 12a1 1 0 1 1 0 2H3a1 1 0 1 1 0-2h11Zm1-5a1 1 0 0 0-1-1H3a1 1 0 1 0 0 2h11a1 1 0 0 0 1-1Zm4.3 1.3a1 1 0 0 1 1.4 1.4L19.42 16l1.3 1.3a1 1 0 0 1-1.42 1.4l-2-2a1 1 0 0 1 0-1.4l2-2Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={24} height={24} viewBox="0 0 24 24" {...props}><Path d="M3 5a1 1 0 0 0 0 2h18a1 1 0 1 0 0-2H3Zm7 12a1 1 0 1 0 0 2h11a1 1 0 1 0 0-2H10Zm-1-5a1 1 0 0 1 1-1h11a1 1 0 1 1 0 2H10a1 1 0 0 1-1-1Zm-4.3 1.3a1 1 0 0 0-1.4 1.4L4.58 16l-1.3 1.3a1 1 0 1 0 1.42 1.4l2-2a1 1 0 0 0 0-1.4l-2-2Z" fill={primaryFill} /></Svg>;;
 }
 export const TextHanging24Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextHanging24FilledIcon, 'TextHanging24Filled');
       
@@ -3597,7 +3597,7 @@ export const TextHanging24Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextHangin
 
 const TextHanging24RegularIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={24} height={24} viewBox="0 0 24 24" {...props}><Path d="M21.25 5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1 0-1.5h18.5Zm-7 13a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1 0-1.5h11.5Zm.75-5.75a.75.75 0 0 0-.75-.75H2.75a.75.75 0 0 0 0 1.5h11.5c.41 0 .75-.34.75-.75Zm5.22.72a.75.75 0 1 1 1.06 1.06l-1.47 1.47 1.47 1.47a.75.75 0 1 1-1.06 1.06l-2-2a.75.75 0 0 1 0-1.06l2-2Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={24} height={24} viewBox="0 0 24 24" {...props}><Path d="M2.75 5a.75.75 0 0 0 0 1.5h18.5a.75.75 0 0 0 0-1.5H2.75Zm7 13a.75.75 0 0 0 0 1.5h11.5a.75.75 0 0 0 0-1.5H9.75ZM9 12.25c0-.41.34-.75.75-.75h11.5a.75.75 0 0 1 0 1.5H9.75a.75.75 0 0 1-.75-.75Zm-5.22.72a.75.75 0 0 0-1.06 1.06l1.47 1.47-1.47 1.47a.75.75 0 1 0 1.06 1.06l2-2c.3-.3.3-.77 0-1.06l-2-2Z" fill={primaryFill} /></Svg>;;
 }
 export const TextHanging24Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextHanging24RegularIcon, 'TextHanging24Regular');
       
