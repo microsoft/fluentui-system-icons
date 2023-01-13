@@ -59,21 +59,11 @@
   ],
   "exports": {
     ".": {
-      "fluentIconFont": {
-        "types": "./lib/fonts/index.d.ts",
-        "import": "./lib/fonts/index.js",
-        "require": "./lib-cjs/fonts/index.js"
-      },
       "default": {
         "types": "./lib/index.d.ts",
         "import": "./lib/index.js",
         "require": "./lib-cjs/index.js"
       }
-    },
-    "./lib/fonts": {
-      "types": "./lib/fonts/index.d.ts",
-      "import": "./lib/fonts/index.js",
-      "require": "./lib-cjs/fonts/index.js"
     },
     "./lib/svg": {
       "types": "./lib/index.d.ts",
