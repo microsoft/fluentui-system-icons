@@ -5,7 +5,7 @@ import wrapIcon from "../utils/wrapIcon";
 
 const TableFreezeColumnAndRowRegularIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M14.5 3A2.5 2.5 0 0 1 17 5.5v9a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9ZM8 16h4v-3H8v3Zm5 0h1.5c.78 0 1.42-.6 1.5-1.36V13h-3v3Zm-1-4V8H8v4h4Zm4-4h-3v4h3V8ZM5.5 16H7V7h9V5.5c0-.78-.6-1.42-1.36-1.5H5.5c-.78 0-1.42.6-1.5 1.36v9.14c0 .78.6 1.42 1.36 1.5h.14Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M17 14.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9A2.5 2.5 0 0 1 17 5.5v9ZM4 8v4h3V8H4Zm0 5v1.5c0 .78.6 1.42 1.36 1.5H7v-3H4Zm4-1h4V8H8v4Zm4 4v-3H8v3h4ZM4 5.5V7h9v9h1.5c.78 0 1.42-.6 1.5-1.36V5.5c0-.78-.6-1.42-1.36-1.5H5.5c-.78 0-1.42.6-1.5 1.36v.14Z" fill={primaryFill} /></Svg>;;
 }
 export const TableFreezeColumnAndRowRegular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TableFreezeColumnAndRowRegularIcon, 'TableFreezeColumnAndRowRegular');
       
@@ -1917,7 +1917,7 @@ export const TextDescriptionRegular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextDes
 
 const TextDirectionHorizontalLeftFilledIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M15.75 2.75a.75.75 0 0 0-1.5 0v8a.75.75 0 0 0 1.5 0V7.5H17A.75.75 0 0 0 17 6h-1.25V2.75Zm-7 .25a.75.75 0 0 0 0 1.5H12V5c0 .92-.19 1.95-.68 2.72C10.85 8.45 10.09 9 8.75 9a.75.75 0 0 0 0 1.5 4.3 4.3 0 0 0 3.83-1.97c.7-1.1.92-2.45.92-3.53V3.75a.75.75 0 0 0-.75-.75h-4ZM6.28 4.22a.75.75 0 0 0-1.06 0l-2 2c-.3.3-.3.77 0 1.06l2 2a.75.75 0 0 0 1.06-1.06l-.72-.72h.69a.75.75 0 0 0 0-1.5h-.69l.72-.72c.3-.3.3-.77 0-1.06Zm0 7.5a.75.75 0 0 0-1.06 0l-2 2c-.3.3-.3.77 0 1.06l2 2a.75.75 0 0 0 1.06-1.06L5.56 15h10.69a.75.75 0 0 0 0-1.5H5.56l.72-.72c.3-.3.3-.77 0-1.06Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M13.5 3c-.3 0-.58.19-.7.47l-3 7.5a.75.75 0 0 0 1.4.56L12 9.5h3l.8 2.03a.75.75 0 0 0 1.4-.56l-3-7.5a.75.75 0 0 0-.7-.47Zm0 2.77L14.4 8h-1.8l.9-2.23ZM5.22 4.22a.75.75 0 0 1 1.06 1.06L5.56 6h3.69a.75.75 0 0 1 0 1.5H5.56l.72.72a.75.75 0 0 1-1.06 1.06l-2-2a.75.75 0 0 1 0-1.06l2-2Zm0 7.5a.75.75 0 0 1 1.06 1.06l-.72.72h10.69a.75.75 0 0 1 0 1.5H5.56l.72.72a.75.75 0 1 1-1.06 1.06l-2-2a.75.75 0 0 1 0-1.06l2-2Z" fill={primaryFill} /></Svg>;;
 }
 export const TextDirectionHorizontalLeftFilled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextDirectionHorizontalLeftFilledIcon, 'TextDirectionHorizontalLeftFilled');
       
@@ -1925,7 +1925,7 @@ export const TextDirectionHorizontalLeftFilled = /*#__PURE__*/wrapIcon(/*#__PURE
 
 const TextDirectionHorizontalLeftRegularIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M15 2.5a.5.5 0 0 0-1 0v8a.5.5 0 0 0 1 0V7h1.5a.5.5 0 0 0 0-1H15V2.5ZM8.5 3a.5.5 0 0 0 0 1H12v.75c0 .95-.2 2.03-.72 2.86C10.77 8.4 9.93 9 8.5 9a.5.5 0 0 0 0 1c1.77 0 2.93-.78 3.62-1.86.67-1.04.88-2.34.88-3.39V3.5a.5.5 0 0 0-.5-.5h-4ZM5.85 4.15a.5.5 0 0 0-.7 0l-2 2a.5.5 0 0 0 0 .7l2 2a.5.5 0 1 0 .7-.7L4.71 7H6.5a.5.5 0 0 0 0-1H4.7l1.15-1.15a.5.5 0 0 0 0-.7Zm0 8a.5.5 0 0 0-.7 0l-2 2a.5.5 0 0 0 0 .7l2 2a.5.5 0 0 0 .7-.7L4.71 15H16.5a.5.5 0 0 0 0-1H4.7l1.15-1.15a.5.5 0 0 0 0-.7Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M13.5 3a.5.5 0 0 0-.47.32l-3 8a.5.5 0 0 0 .94.36l1-2.68h3.06l1 2.68a.5.5 0 0 0 .94-.36l-3-8A.5.5 0 0 0 13.5 3Zm0 1.92L14.65 8h-2.3l1.15-3.08Zm-8.35-.77a.5.5 0 1 1 .7.7L4.71 6H9.5a.5.5 0 0 1 0 1H4.7l1.15 1.15a.5.5 0 1 1-.7.7l-2-2a.5.5 0 0 1 0-.7l2-2Zm0 8a.5.5 0 0 1 .7.7L4.71 14H16.5a.5.5 0 0 1 0 1H4.7l1.15 1.15a.5.5 0 0 1-.7.7l-2-2a.5.5 0 0 1 0-.7l2-2Z" fill={primaryFill} /></Svg>;;
 }
 export const TextDirectionHorizontalLeftRegular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextDirectionHorizontalLeftRegularIcon, 'TextDirectionHorizontalLeftRegular');
       
@@ -2141,7 +2141,7 @@ export const TextFieldRegular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextFieldRegu
 
 const TextFirstLineFilledIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M4.28 2.22a.75.75 0 0 0-1.06 1.06l.97.97-.97.97a.75.75 0 0 0 1.06 1.06l1.5-1.5c.3-.3.3-.77 0-1.06l-1.5-1.5ZM16.25 3.5h-7.5a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5Zm-12.5 10a.75.75 0 0 0 0 1.5h12.5a.75.75 0 0 0 0-1.5H3.75Zm12.5-3.5H3.75a.75.75 0 0 1 0-1.5h12.5a.75.75 0 0 1 0 1.5Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M15.72 2.22a.75.75 0 1 1 1.06 1.06l-.97.97.97.97a.75.75 0 0 1-1.06 1.06l-1.5-1.5a.75.75 0 0 1 0-1.06l1.5-1.5ZM3.75 3.5h7.5a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1 0-1.5Zm12.5 10a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1 0-1.5h12.5ZM3.75 10h12.5a.75.75 0 0 0 0-1.5H3.75a.75.75 0 0 0 0 1.5Z" fill={primaryFill} /></Svg>;;
 }
 export const TextFirstLineFilled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextFirstLineFilledIcon, 'TextFirstLineFilled');
       
@@ -2149,7 +2149,7 @@ export const TextFirstLineFilled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextFirstL
 
 const TextFirstLineRegularIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M3.35 3.15a.5.5 0 1 0-.7.7L3.79 5 2.65 6.15a.5.5 0 1 0 .7.7l1.5-1.5a.5.5 0 0 0 0-.7l-1.5-1.5ZM7.5 4a.5.5 0 0 0 0 1h10a.5.5 0 0 0 0-1h-10Zm-5 10a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1h-15ZM2 9.5c0-.28.22-.5.5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M16.65 3.15a.5.5 0 0 1 .7.7L16.21 5l1.14 1.15a.5.5 0 0 1-.7.7l-1.5-1.5a.5.5 0 0 1 0-.7l1.5-1.5ZM12.5 4a.5.5 0 0 1 0 1h-10a.5.5 0 0 1 0-1h10Zm5 10a.5.5 0 0 1 0 1h-15a.5.5 0 0 1 0-1h15Zm.5-4.5a.5.5 0 0 0-.5-.5h-15a.5.5 0 0 0 0 1h15a.5.5 0 0 0 .5-.5Z" fill={primaryFill} /></Svg>;;
 }
 export const TextFirstLineRegular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextFirstLineRegularIcon, 'TextFirstLineRegular');
       
@@ -2333,7 +2333,7 @@ export const TextGrammarWandRegular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextGra
 
 const TextHangingFilledIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M3.75 3.5a.75.75 0 0 0 0 1.5h12.5a.75.75 0 0 0 0-1.5H3.75Zm5 10a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5ZM8 9.25c0-.41.34-.75.75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 8 9.25Zm-3.72 1.47a.75.75 0 0 0-1.06 1.06l.97.97-.97.97a.75.75 0 1 0 1.06 1.06l1.5-1.5c.3-.3.3-.77 0-1.06l-1.5-1.5Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M16.25 3.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1 0-1.5h12.5Zm-5 10a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1 0-1.5h7.5ZM12 9.25a.75.75 0 0 0-.75-.75h-7.5a.75.75 0 0 0 0 1.5h7.5c.41 0 .75-.34.75-.75Zm3.72 1.47a.75.75 0 1 1 1.06 1.06l-.97.97.97.97a.75.75 0 1 1-1.06 1.06l-1.5-1.5a.75.75 0 0 1 0-1.06l1.5-1.5Z" fill={primaryFill} /></Svg>;;
 }
 export const TextHangingFilled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextHangingFilledIcon, 'TextHangingFilled');
       
@@ -2341,7 +2341,7 @@ export const TextHangingFilled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextHangingF
 
 const TextHangingRegularIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M3.5 4a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1h-13Zm4 10a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9ZM7 9.5c0-.28.22-.5.5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5Zm-2.15 2.15-1.5-1.5a.5.5 0 0 0-.7.7L3.79 12l-1.14 1.15a.5.5 0 0 0 .7.7l1.5-1.5a.5.5 0 0 0 0-.7Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M16.5 4a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1h13Zm-4 10a.5.5 0 0 1 0 1h-9a.5.5 0 0 1 0-1h9Zm.5-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0 0 1h9a.5.5 0 0 0 .5-.5Zm2.15 2.15 1.5-1.5a.5.5 0 0 1 .7.7L16.21 12l1.14 1.15a.5.5 0 0 1-.7.7l-1.5-1.5a.5.5 0 0 1 0-.7Z" fill={primaryFill} /></Svg>;;
 }
 export const TextHangingRegular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextHangingRegularIcon, 'TextHangingRegular');
       
@@ -2845,7 +2845,7 @@ export const TextPositionTopBottomRegular = /*#__PURE__*/wrapIcon(/*#__PURE__*/T
 
 const TextProofingToolsFilledIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M5.75 1c.41 0 .75.34.75.75v.75h3.25c.41 0 .75.34.75.75v1a.75.75 0 0 1-1.5 0V4H2.5v.25a.75.75 0 0 1-1.5 0v-1c0-.41.34-.75.75-.75H5v-.75c0-.41.34-.75.75-.75Zm8.34 12.72a.75.75 0 0 0-1.18-.94l-3.47 4.35-1.66-1.66a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.12-.06l4-5ZM3 5.75c0-.41.34-.75.75-.75h4a.75.75 0 0 1 .53 1.28L6.56 8h3.19a.75.75 0 0 1 0 1.5H6.5v1.83a1.67 1.67 0 0 1-2.74 1.28l-.04-.03a.75.75 0 0 1 .96-1.16l.04.04a.17.17 0 0 0 .28-.13V9.5H1.75a.75.75 0 0 1 0-1.5H5v-.25c0-.2.08-.39.22-.53l.72-.72H3.75A.75.75 0 0 1 3 5.75Zm12.7-2.78a.75.75 0 0 0-1.4 0l-3.24 8a.75.75 0 0 0 1.38.56l.83-2.03h3.46l.83 2.03a.75.75 0 0 0 1.38-.56l-3.25-8ZM15 5.24 16.12 8h-2.24L15 5.24Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M5.25 3c.41 0 .75.34.75.75V5h.25a.75.75 0 0 1 0 1.5H6v3.75a.75.75 0 0 1-1.5 0v-6.5c0-.41.34-.75.75-.75ZM0 4.75C0 4.34.34 4 .75 4h2.5c.41 0 .75.34.75.75 0 .74-.14 1.65-.6 2.46A3.61 3.61 0 0 1 .9 8.98a.75.75 0 0 1-.3-1.46 2.12 2.12 0 0 0 1.5-1.05c.16-.3.27-.63.33-.97H.75A.75.75 0 0 1 0 4.75Zm12.5-1a.75.75 0 1 0-1.5 0v6.5a.75.75 0 0 0 1.5 0V6.5h.25a.75.75 0 1 0 0-1.5h-.25V3.75ZM18.25 3c.41 0 .75.34.75.75V5h.25a.75.75 0 0 1 0 1.5H19v3.75a.75.75 0 0 1-1.5 0v-6.5c0-.41.34-.75.75-.75ZM9.47 4.96a.75.75 0 1 0-1.44-.42l-1 3.5a.75.75 0 0 0 .9.94l2-.5a.75.75 0 1 0-.36-1.46l-.74.19.64-2.25ZM14 4.75c0-.41.34-.75.75-.75h1a.75.75 0 1 1 0 1.5h-.25v1.7l.51-.16a.75.75 0 0 1 .48 1.42l-1.5.5a.75.75 0 0 1-.99-.71v-3.5Zm.09 7.97a.75.75 0 1 0-1.18-.94l-3.47 4.35-1.66-1.66a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.12-.06l4-5Z" fill={primaryFill} /></Svg>;;
 }
 export const TextProofingToolsFilled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextProofingToolsFilledIcon, 'TextProofingToolsFilled');
       
@@ -2853,7 +2853,7 @@ export const TextProofingToolsFilled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextPr
 
 const TextProofingToolsRegularIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M6.5 2c.28 0 .5.22.5.5V3h3.5c.28 0 .5.22.5.5v1a.5.5 0 0 1-1 0V4H3v.5a.5.5 0 0 1-1 0v-1c0-.28.22-.5.5-.5H6v-.5c0-.28.22-.5.5-.5Zm7.39 11.81a.5.5 0 1 0-.78-.62l-3.65 4.56L7.6 15.9a.5.5 0 0 0-.7.7l2.25 2.25a.5.5 0 0 0 .74-.04l4-5ZM4.5 5a.5.5 0 0 0 0 1h2.96L6.11 7.69A.5.5 0 0 0 6 8H2.5a.5.5 0 0 0 0 1H6v2.62a.38.38 0 0 1-.62.3l-.06-.05a.5.5 0 0 0-.64.76l.05.05A1.38 1.38 0 0 0 7 11.62V9h3.5a.5.5 0 0 0 0-1H7.14l1.75-2.19A.5.5 0 0 0 8.5 5h-4Zm10.47-1.68a.5.5 0 0 0-.94 0l-3 8a.5.5 0 0 0 .94.36l1-2.68H16.03l1 2.68a.5.5 0 0 0 .94-.36l-3-8Zm-.47 1.6L15.65 8h-2.3l1.15-3.08Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M6 3.5a.5.5 0 1 0-1 0v7a.5.5 0 0 0 1 0V6h.25a.5.5 0 1 0 0-1H6V3.5ZM1.5 4a.5.5 0 0 0 0 1h1.98a4.62 4.62 0 0 1-.43 1.66 2.42 2.42 0 0 1-1.67 1.35.5.5 0 0 0 .24.98A3.42 3.42 0 0 0 3.94 7.1c.43-.85.56-1.81.56-2.61A.5.5 0 0 0 4 4H1.5Zm10-1c.28 0 .5.22.5.5V5h.25a.5.5 0 1 1 0 1H12v4.5a.5.5 0 1 1-1 0v-7c0-.28.22-.5.5-.5Zm6.5.5a.5.5 0 1 0-1 0v7a.5.5 0 0 0 1 0V6h.25a.5.5 0 1 0 0-1H18V3.5ZM9.23 4.65a.5.5 0 0 0-.96-.3l-1.25 4A.5.5 0 0 0 7.6 9l2.5-.5a.5.5 0 1 0-.2-.98l-1.67.33 1-3.2Zm4.27-.15c0-.28.22-.5.5-.5h1.5a.5.5 0 1 1 0 1h-1v2.86l1.38-.35a.5.5 0 0 1 .24.98l-2 .5a.5.5 0 0 1-.62-.49v-4Zm.39 8.31a.5.5 0 1 0-.78-.62l-3.65 4.56L7.6 14.9a.5.5 0 0 0-.7.7l2.25 2.25a.5.5 0 0 0 .74-.04l4-5Z" fill={primaryFill} /></Svg>;;
 }
 export const TextProofingToolsRegular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextProofingToolsRegularIcon, 'TextProofingToolsRegular');
       
@@ -2877,7 +2877,7 @@ export const TextQuoteRegular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextQuoteRegu
 
 const TextSortAscendingFilledIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M6 1c.3 0 .58.18.7.46l2.5 6a.75.75 0 1 1-1.4.58L7.39 7H4.63l-.44 1.04a.75.75 0 1 1-1.38-.58l2.5-6A.75.75 0 0 1 6 1Zm0 2.7-.75 1.8h1.5L6 3.7Zm9-.95a.75.75 0 0 0-1.5 0v12.57l-1.45-1.58a.75.75 0 0 0-1.1 1.02l2.75 3a.75.75 0 0 0 1.1 0l2.75-3a.75.75 0 0 0-1.1-1.02L15 15.32V2.75Zm-12 9a.75.75 0 0 0-1.5 0v5.5c0 .41.34.75.75.75h7c.41 0 .75-.34.75-.75v-5.5a.75.75 0 0 0-1.5 0v4.75h-2v-2.75a.75.75 0 0 0-1.5 0v2.75H3v-4.75Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M6.7 2.46a.75.75 0 0 0-1.4 0l-2.5 6a.75.75 0 0 0 1.4.58L4.62 8h2.75l.43 1.04a.75.75 0 0 0 1.38-.58l-2.5-6Zm.05 4.04h-1.5L6 4.7l.75 1.8ZM15 2.75a.75.75 0 0 0-1.5 0v12.57l-1.45-1.58a.75.75 0 0 0-1.1 1.02l2.75 3a.75.75 0 0 0 1.1 0l2.75-3a.75.75 0 0 0-1.1-1.02L15 15.32V2.75ZM3.25 13.88A2.81 2.81 0 0 1 6 11c1.5 0 2.75 1.26 2.75 2.88 0 1.01-.5 1.89-1.24 2.4-.29.2-.51.5-.51.85 0 .48.39.87.87.87H9.5a.75.75 0 0 0 0-1.5h-.1c.53-.73.85-1.65.85-2.63 0-2.39-1.88-4.37-4.25-4.37a4.31 4.31 0 0 0-4.25 4.38c0 .97.32 1.89.85 2.62h-.1a.75.75 0 0 0 0 1.5h1.63c.48 0 .87-.39.87-.87 0-.35-.22-.65-.51-.85a2.9 2.9 0 0 1-1.24-2.4Z" fill={primaryFill} /></Svg>;;
 }
 export const TextSortAscendingFilled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextSortAscendingFilledIcon, 'TextSortAscendingFilled');
       
@@ -2885,7 +2885,7 @@ export const TextSortAscendingFilled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextSo
 
 const TextSortAscendingRegularIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M6 2c.2 0 .39.13.47.32l2.75 7a.5.5 0 0 1-.94.36L7.62 8H4.38l-.66 1.68a.5.5 0 0 1-.94-.36l2.75-7A.5.5 0 0 1 6 2Zm1.23 5L6 3.87 4.77 7h2.46ZM15 2.5a.5.5 0 0 0-1 0v13.8l-2.15-2.15a.5.5 0 0 0-.7.7l3 3c.2.2.5.2.7 0l3-3a.5.5 0 0 0-.7-.7L15 16.29V2.5ZM2.5 11c.28 0 .5.22.5.5V17h2.5v-3.5a.5.5 0 0 1 1 0V17H9v-5.5a.5.5 0 0 1 1 0v6a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-6c0-.28.22-.5.5-.5Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M6.46 2.3a.5.5 0 0 0-.92 0l-2.5 6a.5.5 0 0 0 .92.4l.5-1.2a.5.5 0 0 0 .04 0h3a.5.5 0 0 0 .04 0l.5 1.2a.5.5 0 0 0 .92-.4l-2.5-6Zm.67 4.2H4.88L6 3.8l1.13 2.7Zm7.87-4a.5.5 0 0 0-1 0v13.8l-2.15-2.15a.5.5 0 0 0-.7.7l3 3c.2.2.5.2.7 0l3-3a.5.5 0 0 0-.7-.7L15 16.29V2.5ZM3 14.13A3.06 3.06 0 0 1 6 11c1.64 0 3 1.38 3 3.13 0 1.22-.68 2.27-1.65 2.79-.2.1-.35.3-.35.53 0 .3.24.55.55.55H9.5a.5.5 0 0 0 0-1h-.63A4.19 4.19 0 0 0 10 14.12 4.06 4.06 0 0 0 6 10c-2.23 0-4 1.86-4 4.13 0 1.1.43 2.12 1.13 2.87H2.5a.5.5 0 0 0 0 1h1.95c.3 0 .55-.24.55-.55a.62.62 0 0 0-.35-.53A3.14 3.14 0 0 1 3 14.12Z" fill={primaryFill} /></Svg>;;
 }
 export const TextSortAscendingRegular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextSortAscendingRegularIcon, 'TextSortAscendingRegular');
       
@@ -2973,7 +2973,7 @@ export const TextTRegular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextTRegularIcon,
 
 const TextUnderlineFilledIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M14 3.75a.75.75 0 0 0-.75-.75h-6.5a.75.75 0 0 0-.75.75v9.5a.75.75 0 0 0 1.5 0V4.5h5v8.75a.75.75 0 0 0 1.5 0v-9.5Zm-8.2 11.8a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5H5.8Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M10 3c.3 0 .59.19.7.47l3.75 9.5a.75.75 0 1 1-1.4.56l-1.2-3.03h-3.7l-1.2 3.03a.75.75 0 1 1-1.4-.56l3.75-9.5A.75.75 0 0 1 10 3ZM8.73 9h2.54L10 5.8 8.73 9Zm-3.68 7.3c0-.41.34-.75.75-.75h8.5a.75.75 0 0 1 0 1.5H5.8a.75.75 0 0 1-.75-.75Z" fill={primaryFill} /></Svg>;;
 }
 export const TextUnderlineFilled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextUnderlineFilledIcon, 'TextUnderlineFilled');
       
@@ -2981,7 +2981,7 @@ export const TextUnderlineFilled = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextUnderl
 
 const TextUnderlineRegularIcon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
-  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M14 3.5a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 1 0V4h6v9.5a.5.5 0 0 0 1 0v-10ZM5.5 16a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9Z" fill={primaryFill} /></Svg>;;
+  return <Svg width={24} height={24} viewBox="0 0 20 20" {...props}><Path d="M10 3.5c.2 0 .38.12.46.3l4 9.5a.5.5 0 1 1-.92.4L11.98 10H8.02l-1.56 3.7a.5.5 0 1 1-.92-.4l4-9.5a.5.5 0 0 1 .46-.3ZM8.44 9h3.12L10 5.29 8.44 9ZM5 16.5c0-.28.22-.5.5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5Z" fill={primaryFill} /></Svg>;;
 }
 export const TextUnderlineRegular = /*#__PURE__*/wrapIcon(/*#__PURE__*/TextUnderlineRegularIcon, 'TextUnderlineRegular');
       
