@@ -41,7 +41,6 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 18.x
-        registry-url: 'https://npm.pkg.github.com'
 
     - run: npm install
       working-directory: importer
@@ -61,7 +60,7 @@ jobs:
       
     - uses: JS-DevTools/npm-publish@v1
       with:
-        token: ${{ secrets.NPM_TOKEN }}
+        token: ${{ secrets.NPM_TOKEN }} 
         access: public
         package: packages/react-native-icons/package.json 
 
