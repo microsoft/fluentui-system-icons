@@ -59,10 +59,11 @@ jobs:
         npm run build
       working-directory: packages/react-native-icons 
       
-    - run: npm publish --tag alpha
-      working-directory: packages/react-native-icons 
-      env:
-        NODE_AUTH_TOKEN: ${{ github.token }}
+    - uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+        access: public
+        package: packages/react-native-icons/package.json 
 
     - name: Update icon sheet
       run: python3 generate_icons_md.py
