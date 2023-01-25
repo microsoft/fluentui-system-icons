@@ -1,8 +1,14 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_text_indent_decrease_rotate_270_20_regular.svg",
-      "idiom": "universal"
+      "filename": "ic_fluent_text_indent_decrease_ltr_rotate_270_20_regular.svg",
+      "idiom": "universal",
+      "language-direction": "left-to-right"
+    },
+    {
+      "filename": "ic_fluent_text_indent_decrease_rtl_rotate_270_20_regular.svg",
+      "idiom": "universal",
+      "language-direction": "right-to-left"
     }
   ],
   "info": {

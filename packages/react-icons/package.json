@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-icons",
-  "version": "2.0.190",
+  "version": "2.0.192",
   "sideEffects": false,
   "main": "lib-cjs/index.js",
   "module": "lib/index.js",
@@ -25,7 +25,7 @@
     "rollup": "node ./generateRollup.js",
     "optimize": "svgo --config svgo.config.js --folder=./intermediate --precision=2",
     "unfill": "find ./intermediate -type f -name \"*.svg\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./intermediate -type f -name \"*.bak\" -delete",
-    "build": "npm run copy && npm run generate:font && npm run optimize && npm run unfill && npm run convert:svg && npm run convert:fonts && npm run cleanSvg && npm run build:esm && npm run build:cjs && npm run copy:font-files",
+    "build": "npm run copy && npm run optimize && npm run unfill && npm run convert:svg && npm run cleanSvg && npm run build:esm && npm run build:cjs",
     "build:cjs": "tsc --module commonjs --outDir lib-cjs && babel lib-cjs --out-dir lib-cjs",
     "build:esm": "tsc && babel lib --out-dir lib"
   },
@@ -59,21 +59,11 @@
   ],
   "exports": {
     ".": {
-      "fluentIconFont": {
-        "types": "./lib/fonts/index.d.ts",
-        "import": "./lib/fonts/index.js",
-        "require": "./lib-cjs/fonts/index.js"
-      },
       "default": {
         "types": "./lib/index.d.ts",
         "import": "./lib/index.js",
         "require": "./lib-cjs/index.js"
       }
-    },
-    "./lib/fonts": {
-      "types": "./lib/fonts/index.d.ts",
-      "import": "./lib/fonts/index.js",
-      "require": "./lib-cjs/fonts/index.js"
     },
     "./lib/svg": {
       "types": "./lib/index.d.ts",

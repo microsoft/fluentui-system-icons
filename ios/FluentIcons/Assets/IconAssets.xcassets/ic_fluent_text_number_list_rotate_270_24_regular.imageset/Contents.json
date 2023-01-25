@@ -1,18 +1,24 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_text_number_list_rotate_270_24_regular.svg",
-      "idiom": "universal"
+      "filename": "ic_fluent_text_number_list_ltr_rotate_270_24_regular.svg",
+      "idiom": "universal",
+      "language-direction": "left-to-right"
     },
     {
-      "filename": "LTR_ic_fluent_text_number_list_rotate_270_24_regular.svg",
+      "filename": "ic_fluent_text_number_list_rtl_rotate_270_24_regular.svg",
       "idiom": "universal",
-      "locale": "LTR"
+      "language-direction": "right-to-left"
     },
     {
       "filename": "RTL_ic_fluent_text_number_list_rotate_270_24_regular.svg",
       "idiom": "universal",
       "locale": "RTL"
+    },
+    {
+      "filename": "LTR_ic_fluent_text_number_list_rotate_270_24_regular.svg",
+      "idiom": "universal",
+      "locale": "LTR"
     }
   ],
   "info": {
