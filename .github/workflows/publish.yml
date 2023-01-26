@@ -138,7 +138,7 @@ jobs:
         npm run build
       working-directory: packages/svg-icons
 
-       - name: Build SVG sprite library
+    - name: Build SVG sprite library
       run: |
         npm run build
       working-directory: packages/svg-sprites
