@@ -18,6 +18,8 @@ const DEST_PATH = argv.dest;
 const REACT_NATIVE = argv.native;
 const TSX_EXTENSION = '.tsx'
 
+const rnSvgElements = ['Path', 'Circle', 'Ellipse', 'G', 'Line', 'Polygon', 'Polyline', 'Rect', 'Symbol', 'Text', 'Use', 'Defs', 'LinearGradient', 'RadialGradient', 'Stop', 'ClipPath', 'Pattern', 'Mask'];
+
 if (!SRC_PATH) {
   throw new Error("Icon source folder not specified by --source");
 }
@@ -148,6 +150,7 @@ const ${destFilename}Icon = (props) => {
   const { fill: primaryFill = 'currentColor' } = props;
   return ${jsxCode};
 }
+
 export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename}Icon, '${destFilename}');
       `
       iconExports.push(jsCode);
@@ -163,19 +166,24 @@ export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename
 
   for(const chunk of iconChunks) {
     chunk.unshift(`import wrapIcon from "../utils/wrapIcon";`)
-   //chunk.unshift(`import { FluentIconsProps } from "../utils/FluentIconsProps.types";`)
     chunk.unshift(`import * as React from "react";`)
-    var hasPath = false;
-    var hasRect = false;
+
+    var foundElements = {};
+    
     chunk.forEach(text => 
       {
-        if (text.includes("<Rect"))
-          hasRect = true;
-        if (text.includes("<Path"))
-          hasPath = true;
+        rnSvgElements.forEach(element => {
+          if (!foundElements[element] && text.match(`<${element}[\\S\\s]+\\/>`) || text.match(`<${element}[\s\S]+>[\s\S]+<\/${element}>`))
+            foundElements[element] = true;
+        });
       });
 
-    chunk.unshift(`import Svg, {${hasPath ? ' Path' : ''}, ${hasRect ? ' Rect' : ''} } from "react-native-svg";`)
+    var extraImports = '';
+    Object.entries(foundElements).forEach(([element, _]) => {
+      extraImports += ', ' + element;
+    });
+
+    chunk.unshift(`import {Svg${extraImports}} from "react-native-svg";`)
   }
 
   /** @type string[] */
