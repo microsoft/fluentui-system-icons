@@ -2,10 +2,10 @@ name: Publish library
 
 on:
   workflow_dispatch:
-  # push:
-    # branches: [ main ]
-    # paths:
-    #  - 'assets/**'
+  push:
+    branches: [ main ]
+    paths:
+      - 'assets/**'
 
 env:
   LIBRARY_VERSION: 1.1.${{ github.run_number }}
@@ -18,17 +18,28 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.CI_GITHUB_TOKEN }}
+
+    - name: Bump version patch
+      run: |
+        grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec | python3 -c """
+        import sys
+        import os
+        current_version = sys.stdin.read().strip().split(\"'\")[1]
+        major, minor, patch = current_version.split('.')
+        os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV') 
+        """
 
     - name: Bump react version patch
       run: |
-        grep -E "[0-9]+\.[0-9]+\.[0-9]+" ./packages/react-native-icons/package.json | python3 -c """
+        grep -E "[0-9]+\.[0-9]+\.[0-9]+" ./packages/react-icons/package.json | python3 -c """
         import sys
         import os
         current_version = sys.stdin.read().strip().split(':')[1]
         current_version = current_version.split('\"')[1]
         major,minor,asset = current_version.split('.')
         os.system(f'echo \"REACT_VERSION={major}.{minor}.{int(asset) + 1}\" >> \$GITHUB_ENV')
-        os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(asset) + 1}\" >> \$GITHUB_ENV') 
         """
 
     # Needs to be "-E" instead of "-r" on macOS
@@ -37,13 +48,87 @@ jobs:
         sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?(-rc\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-native-icons/package.json
         rm packages/react-native-icons/package.json.bk
 
-    - name: Setup node
-      uses: actions/setup-node@v3
+    - name: Use Node 18
+      uses: actions/setup-node@v1
       with:
         node-version: 18.x
 
     - run: npm install
       working-directory: importer
+
+    ## iOS
+    - name: Run iOS generate script
+      run: npm run deploy:ios
+      working-directory: importer
+
+    ## Flutter
+    - name: Run Flutter generate script
+      run: npm run deploy:flutter
+      working-directory: importer
+
+    # The name should be same as the package name on pub.dev
+    - name: 'fluentui_system_icons'
+      uses: k-paxian/dart-package-publisher@master
+      with:
+        relativePath: 'flutter'
+        skipTests: true
+        accessToken: ${{ secrets.FLUTTER_OAUTH_ACCESS_TOKEN }}
+        refreshToken: ${{ secrets.FLUTTER_OAUTH_REFRESH_TOKEN }}
+
+    ## Publish
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version numbers in README.md
+      run: |
+        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" README.md
+        rm README.md.bk
+
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version numbers in ios/README.md
+      run: |
+        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" ios/README.md
+        rm ios/README.md.bk
+
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in Podspec
+      run: |
+        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" ios/FluentIcons.podspec
+        rm ios/FluentIcons.podspec.bk
+
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in flutter/CHANGELOG.md
+      run: |
+        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" flutter/CHANGELOG.md
+        rm flutter/CHANGELOG.md.bk
+
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in flutter/pubspec.yaml
+      run: |
+        sed -i.bk -r "s/version: [0-9]+\.[0-9]+\.[0-9]+/version: $NEW_VERSION/g" flutter/pubspec.yaml
+        rm flutter/pubspec.yaml.bk
+
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in svg-icons/package.json
+      run: |
+        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/svg-icons/package.json
+        rm packages/svg-icons/package.json.bk
+
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in svg-sprites/package.json
+      run: |
+        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/svg-sprites/package.json
+        rm packages/svg-sprites/package.json.bk
+
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in react-icons/package.json
+      run: |
+        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?(-rc\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-icons/package.json
+        rm packages/react-icons/package.json.bk
+
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in react-icons-font-subsetting-webpack-plugin/package.json
+      run: |
+        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?(-rc\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-icons-font-subsetting-webpack-plugin/package.json
+        rm packages/react-icons-font-subsetting-webpack-plugin/package.json.bk
 
     - name: Install dependencies
       run: npm install
@@ -53,6 +138,21 @@ jobs:
         npm run build
       working-directory: packages/svg-icons
 
+       - name: Build SVG sprite library
+      run: |
+        npm run build
+      working-directory: packages/svg-sprites
+
+    - name: Build React library
+      run: |
+        npm run build
+      working-directory: packages/react-icons 
+
+    - name: Build Webpack plugin library
+      run: |
+        npm run build
+      working-directory: packages/react-icons-font-subsetting-webpack-plugin 
+      
     - name: Build React-Native library
       run: |
         npm run build
