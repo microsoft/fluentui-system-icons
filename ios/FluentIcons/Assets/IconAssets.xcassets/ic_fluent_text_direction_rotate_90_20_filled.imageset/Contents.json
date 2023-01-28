@@ -9,24 +9,6 @@
       "filename": "ic_fluent_text_direction_rotate_90_rtl_20_filled.svg",
       "idiom": "universal",
       "language-direction": "right-to-left"
-    },
-    {
-      "filename": "ko_ic_fluent_text_direction_rotate_90_ltr_20_filled.svg",
-      "idiom": "universal",
-      "language-direction": "left-to-right",
-      "locale": "ko"
-    },
-    {
-      "filename": "en_ic_fluent_text_direction_rotate_90_ltr_20_filled.svg",
-      "idiom": "universal",
-      "language-direction": "left-to-right",
-      "locale": "en"
-    },
-    {
-      "filename": "en_ic_fluent_text_direction_rotate_90_rtl_20_filled.svg",
-      "idiom": "universal",
-      "language-direction": "right-to-left",
-      "locale": "en"
     }
   ],
   "info": {
@@ -34,7 +16,6 @@
     "version": 1
   },
   "properties": {
-    "localizable": true,
     "template-rendering-intent": "template"
   }
 }

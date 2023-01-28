@@ -4252,16 +4252,16 @@ imageset("ic_fluent_arrow_expand_24_regular") {
 imageset("ic_fluent_arrow_export_16_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_export_16_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_export_16_filled.imageset/ic_fluent_arrow_export_rtl_16_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_export_16_filled.imageset/ic_fluent_arrow_export_ltr_16_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_export_16_filled.imageset/ic_fluent_arrow_export_rtl_16_filled.svg",
   ]
 }
 
 imageset("ic_fluent_arrow_export_16_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_export_16_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_export_16_regular.imageset/ic_fluent_arrow_export_rtl_16_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_export_16_regular.imageset/ic_fluent_arrow_export_ltr_16_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_export_16_regular.imageset/ic_fluent_arrow_export_rtl_16_regular.svg",
   ]
 }
 
@@ -4276,16 +4276,16 @@ imageset("ic_fluent_arrow_export_20_filled") {
 imageset("ic_fluent_arrow_export_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_export_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_export_20_regular.imageset/ic_fluent_arrow_export_rtl_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_export_20_regular.imageset/ic_fluent_arrow_export_ltr_20_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_export_20_regular.imageset/ic_fluent_arrow_export_rtl_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_arrow_export_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_export_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_export_24_filled.imageset/ic_fluent_arrow_export_ltr_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_export_24_filled.imageset/ic_fluent_arrow_export_rtl_24_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_arrow_export_24_filled.imageset/ic_fluent_arrow_export_ltr_24_filled.svg",
   ]
 }
 
@@ -10250,7 +10250,6 @@ imageset("ic_fluent_book_question_mark_20_regular") {
 imageset("ic_fluent_book_question_mark_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_book_question_mark_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_book_question_mark_24_filled.imageset/ar_ic_fluent_book_question_mark_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_book_question_mark_24_filled.imageset/ic_fluent_book_question_mark_24_filled.svg",
   ]
 }
@@ -10258,7 +10257,6 @@ imageset("ic_fluent_book_question_mark_24_filled") {
 imageset("ic_fluent_book_question_mark_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_book_question_mark_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_book_question_mark_24_regular.imageset/ar_ic_fluent_book_question_mark_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_book_question_mark_24_regular.imageset/ic_fluent_book_question_mark_24_regular.svg",
   ]
 }
@@ -14406,24 +14404,24 @@ imageset("ic_fluent_calendar_16_filled") {
 imageset("ic_fluent_calendar_16_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_calendar_16_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_calendar_16_regular.imageset/ic_fluent_calendar_ltr_16_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_calendar_16_regular.imageset/ic_fluent_calendar_rtl_16_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_calendar_16_regular.imageset/ic_fluent_calendar_ltr_16_regular.svg",
   ]
 }
 
 imageset("ic_fluent_calendar_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_calendar_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_calendar_20_filled.imageset/ic_fluent_calendar_ltr_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_calendar_20_filled.imageset/ic_fluent_calendar_rtl_20_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_calendar_20_filled.imageset/ic_fluent_calendar_ltr_20_filled.svg",
   ]
 }
 
 imageset("ic_fluent_calendar_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_calendar_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_calendar_20_regular.imageset/ic_fluent_calendar_ltr_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_calendar_20_regular.imageset/ic_fluent_calendar_rtl_20_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_calendar_20_regular.imageset/ic_fluent_calendar_ltr_20_regular.svg",
   ]
 }
 
@@ -14478,8 +14476,8 @@ imageset("ic_fluent_calendar_32_regular") {
 imageset("ic_fluent_calendar_48_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_calendar_48_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_calendar_48_filled.imageset/ic_fluent_calendar_rtl_48_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_calendar_48_filled.imageset/ic_fluent_calendar_ltr_48_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_calendar_48_filled.imageset/ic_fluent_calendar_rtl_48_filled.svg",
   ]
 }
 
@@ -21048,8 +21046,8 @@ imageset("ic_fluent_clipboard_bullet_list_16_regular") {
 imageset("ic_fluent_clipboard_bullet_list_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_bullet_list_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_bullet_list_20_filled.imageset/ic_fluent_clipboard_bullet_list_ltr_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_bullet_list_20_filled.imageset/ic_fluent_clipboard_bullet_list_rtl_20_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_bullet_list_20_filled.imageset/ic_fluent_clipboard_bullet_list_ltr_20_filled.svg",
   ]
 }
 
@@ -21764,16 +21762,16 @@ imageset("ic_fluent_clipboard_task_add_24_regular") {
 imageset("ic_fluent_clipboard_task_list_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_task_list_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_task_list_20_filled.imageset/ic_fluent_clipboard_task_list_rtl_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_task_list_20_filled.imageset/ic_fluent_clipboard_task_list_ltr_20_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_task_list_20_filled.imageset/ic_fluent_clipboard_task_list_rtl_20_filled.svg",
   ]
 }
 
 imageset("ic_fluent_clipboard_task_list_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_task_list_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_task_list_20_regular.imageset/ic_fluent_clipboard_task_list_ltr_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_task_list_20_regular.imageset/ic_fluent_clipboard_task_list_rtl_20_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_task_list_20_regular.imageset/ic_fluent_clipboard_task_list_ltr_20_regular.svg",
   ]
 }
 
@@ -21788,8 +21786,8 @@ imageset("ic_fluent_clipboard_task_list_24_filled") {
 imageset("ic_fluent_clipboard_task_list_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_task_list_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_task_list_24_regular.imageset/ic_fluent_clipboard_task_list_ltr_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_task_list_24_regular.imageset/ic_fluent_clipboard_task_list_rtl_24_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_task_list_24_regular.imageset/ic_fluent_clipboard_task_list_ltr_24_regular.svg",
   ]
 }
 
@@ -21852,24 +21850,24 @@ imageset("ic_fluent_clipboard_text_edit_32_regular") {
 imageset("ic_fluent_clipboard_text_16_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_text_16_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_text_16_filled.imageset/ic_fluent_clipboard_text_rtl_16_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_text_16_filled.imageset/ic_fluent_clipboard_text_ltr_16_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_text_16_filled.imageset/ic_fluent_clipboard_text_rtl_16_filled.svg",
   ]
 }
 
 imageset("ic_fluent_clipboard_text_16_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_text_16_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_text_16_regular.imageset/ic_fluent_clipboard_text_ltr_16_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_text_16_regular.imageset/ic_fluent_clipboard_text_rtl_16_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_text_16_regular.imageset/ic_fluent_clipboard_text_ltr_16_regular.svg",
   ]
 }
 
 imageset("ic_fluent_clipboard_text_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_text_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_text_20_filled.imageset/ic_fluent_clipboard_text_rtl_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_text_20_filled.imageset/ic_fluent_clipboard_text_ltr_20_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_text_20_filled.imageset/ic_fluent_clipboard_text_rtl_20_filled.svg",
   ]
 }
 
@@ -21884,16 +21882,16 @@ imageset("ic_fluent_clipboard_text_20_regular") {
 imageset("ic_fluent_clipboard_text_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_text_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_text_24_filled.imageset/ic_fluent_clipboard_text_rtl_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_text_24_filled.imageset/ic_fluent_clipboard_text_ltr_24_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_text_24_filled.imageset/ic_fluent_clipboard_text_rtl_24_filled.svg",
   ]
 }
 
 imageset("ic_fluent_clipboard_text_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_text_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_text_24_regular.imageset/ic_fluent_clipboard_text_rtl_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_text_24_regular.imageset/ic_fluent_clipboard_text_ltr_24_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_clipboard_text_24_regular.imageset/ic_fluent_clipboard_text_rtl_24_regular.svg",
   ]
 }
 
@@ -25016,17 +25014,13 @@ imageset("ic_fluent_comment_note_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_comment_note_24_filled.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_comment_note_24_filled.imageset/ic_fluent_comment_note_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_comment_note_24_filled.imageset/ar_ic_fluent_comment_note_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_comment_note_24_filled.imageset/he_ic_fluent_comment_note_24_filled.svg",
   ]
 }
 
 imageset("ic_fluent_comment_note_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_comment_note_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_comment_note_24_regular.imageset/ar_ic_fluent_comment_note_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_comment_note_24_regular.imageset/ic_fluent_comment_note_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_comment_note_24_regular.imageset/he_ic_fluent_comment_note_24_regular.svg",
   ]
 }
 
@@ -44158,16 +44152,12 @@ imageset("ic_fluent_image_arrow_back_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_image_arrow_back_24_filled.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_image_arrow_back_24_filled.imageset/ic_fluent_image_arrow_back_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_image_arrow_back_24_filled.imageset/he_ic_fluent_image_arrow_back_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_image_arrow_back_24_filled.imageset/ar_ic_fluent_image_arrow_back_24_filled.svg",
   ]
 }
 
 imageset("ic_fluent_image_arrow_back_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_image_arrow_back_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_image_arrow_back_24_regular.imageset/he_ic_fluent_image_arrow_back_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_image_arrow_back_24_regular.imageset/ar_ic_fluent_image_arrow_back_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_image_arrow_back_24_regular.imageset/ic_fluent_image_arrow_back_24_regular.svg",
   ]
 }
@@ -44218,16 +44208,12 @@ imageset("ic_fluent_image_arrow_forward_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_image_arrow_forward_24_filled.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_image_arrow_forward_24_filled.imageset/ic_fluent_image_arrow_forward_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_image_arrow_forward_24_filled.imageset/ar_ic_fluent_image_arrow_forward_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_image_arrow_forward_24_filled.imageset/he_ic_fluent_image_arrow_forward_24_filled.svg",
   ]
 }
 
 imageset("ic_fluent_image_arrow_forward_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_image_arrow_forward_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_image_arrow_forward_24_regular.imageset/he_ic_fluent_image_arrow_forward_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_image_arrow_forward_24_regular.imageset/ar_ic_fluent_image_arrow_forward_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_image_arrow_forward_24_regular.imageset/ic_fluent_image_arrow_forward_24_regular.svg",
   ]
 }
@@ -45083,8 +45069,8 @@ imageset("ic_fluent_ios_arrow_24_filled") {
 imageset("ic_fluent_ios_arrow_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_ios_arrow_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_ios_arrow_24_regular.imageset/ic_fluent_ios_arrow_ltr_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_ios_arrow_24_regular.imageset/ic_fluent_ios_arrow_rtl_24_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_ios_arrow_24_regular.imageset/ic_fluent_ios_arrow_ltr_24_regular.svg",
   ]
 }
 
@@ -47051,17 +47037,13 @@ imageset("ic_fluent_live_off_24_regular") {
 imageset("ic_fluent_local_language_16_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_16_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_16_filled.imageset/ko_ic_fluent_local_language_16_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_16_filled.imageset/ic_fluent_local_language_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_16_filled.imageset/en_ic_fluent_local_language_16_filled.svg",
   ]
 }
 
 imageset("ic_fluent_local_language_16_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_16_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_16_regular.imageset/en_ic_fluent_local_language_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_16_regular.imageset/ko_ic_fluent_local_language_16_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_16_regular.imageset/ic_fluent_local_language_16_regular.svg",
   ]
 }
@@ -47069,10 +47051,7 @@ imageset("ic_fluent_local_language_16_regular") {
 imageset("ic_fluent_local_language_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_20_filled.imageset/ko_ic_fluent_local_language_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_20_filled.imageset/ic_fluent_local_language_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_20_filled.imageset/zh_ic_fluent_local_language_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_20_filled.imageset/en_ic_fluent_local_language_20_filled.svg",
   ]
 }
 
@@ -47080,18 +47059,12 @@ imageset("ic_fluent_local_language_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_20_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_20_regular.imageset/ic_fluent_local_language_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_20_regular.imageset/zh_ic_fluent_local_language_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_20_regular.imageset/ko_ic_fluent_local_language_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_20_regular.imageset/en_ic_fluent_local_language_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_local_language_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_24_filled.imageset/ko_ic_fluent_local_language_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_24_filled.imageset/zh_ic_fluent_local_language_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_24_filled.imageset/en_ic_fluent_local_language_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_24_filled.imageset/ic_fluent_local_language_24_filled.svg",
   ]
 }
@@ -47100,18 +47073,13 @@ imageset("ic_fluent_local_language_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_24_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_24_regular.imageset/ic_fluent_local_language_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_24_regular.imageset/zh_ic_fluent_local_language_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_24_regular.imageset/ko_ic_fluent_local_language_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_24_regular.imageset/en_ic_fluent_local_language_24_regular.svg",
   ]
 }
 
 imageset("ic_fluent_local_language_28_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_28_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_28_filled.imageset/ko_ic_fluent_local_language_28_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_28_filled.imageset/ic_fluent_local_language_28_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_28_filled.imageset/en_ic_fluent_local_language_28_filled.svg",
   ]
 }
 
@@ -47119,8 +47087,6 @@ imageset("ic_fluent_local_language_28_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_28_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_28_regular.imageset/ic_fluent_local_language_28_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_28_regular.imageset/ko_ic_fluent_local_language_28_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_local_language_28_regular.imageset/en_ic_fluent_local_language_28_regular.svg",
   ]
 }
 
@@ -51861,24 +51827,24 @@ imageset("ic_fluent_multiselect_16_regular") {
 imageset("ic_fluent_multiselect_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_multiselect_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_multiselect_20_filled.imageset/ic_fluent_multiselect_ltr_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_multiselect_20_filled.imageset/ic_fluent_multiselect_rtl_20_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_multiselect_20_filled.imageset/ic_fluent_multiselect_ltr_20_filled.svg",
   ]
 }
 
 imageset("ic_fluent_multiselect_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_multiselect_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_multiselect_20_regular.imageset/ic_fluent_multiselect_rtl_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_multiselect_20_regular.imageset/ic_fluent_multiselect_ltr_20_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_multiselect_20_regular.imageset/ic_fluent_multiselect_rtl_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_multiselect_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_multiselect_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_multiselect_24_filled.imageset/ic_fluent_multiselect_ltr_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_multiselect_24_filled.imageset/ic_fluent_multiselect_rtl_24_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_multiselect_24_filled.imageset/ic_fluent_multiselect_ltr_24_filled.svg",
   ]
 }
 
@@ -68511,8 +68477,8 @@ imageset("ic_fluent_showerhead_32_regular") {
 imageset("ic_fluent_sidebar_search_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_sidebar_search_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_sidebar_search_20_filled.imageset/ic_fluent_sidebar_search_ltr_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_sidebar_search_20_filled.imageset/ic_fluent_sidebar_search_rtl_20_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_sidebar_search_20_filled.imageset/ic_fluent_sidebar_search_ltr_20_filled.svg",
   ]
 }
 
@@ -76979,8 +76945,8 @@ imageset("ic_fluent_task_list_24_filled") {
 imageset("ic_fluent_task_list_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_task_list_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_task_list_24_regular.imageset/ic_fluent_task_list_ltr_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_task_list_24_regular.imageset/ic_fluent_task_list_rtl_24_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_task_list_24_regular.imageset/ic_fluent_task_list_ltr_24_regular.svg",
   ]
 }
 
@@ -77045,8 +77011,8 @@ imageset("ic_fluent_task_list_square_16_regular") {
 imageset("ic_fluent_task_list_square_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_task_list_square_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_task_list_square_20_filled.imageset/ic_fluent_task_list_square_ltr_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_task_list_square_20_filled.imageset/ic_fluent_task_list_square_rtl_20_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_task_list_square_20_filled.imageset/ic_fluent_task_list_square_ltr_20_filled.svg",
   ]
 }
 
@@ -77069,8 +77035,8 @@ imageset("ic_fluent_task_list_square_24_filled") {
 imageset("ic_fluent_task_list_square_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_task_list_square_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_task_list_square_24_regular.imageset/ic_fluent_task_list_square_rtl_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_task_list_square_24_regular.imageset/ic_fluent_task_list_square_ltr_24_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_task_list_square_24_regular.imageset/ic_fluent_task_list_square_rtl_24_regular.svg",
   ]
 }
 
@@ -78253,192 +78219,42 @@ imageset("ic_fluent_text_baseline_20_regular") {
 imageset("ic_fluent_text_bold_16_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/kk_ic_fluent_text_bold_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/sl_ic_fluent_text_bold_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/et_ic_fluent_text_bold_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/sr-cyrl_ic_fluent_text_bold_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/hu_ic_fluent_text_bold_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/it_ic_fluent_text_bold_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/uk_ic_fluent_text_bold_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/sv_ic_fluent_text_bold_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/sr-latn_ic_fluent_text_bold_16_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/ic_fluent_text_bold_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/fr_ic_fluent_text_bold_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/ko_ic_fluent_text_bold_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/en_ic_fluent_text_bold_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/gl_ic_fluent_text_bold_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/ca_ic_fluent_text_bold_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/de_ic_fluent_text_bold_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/lv_ic_fluent_text_bold_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/pt_ic_fluent_text_bold_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/bg_ic_fluent_text_bold_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/ms_ic_fluent_text_bold_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/ru_ic_fluent_text_bold_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/es_ic_fluent_text_bold_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/da_ic_fluent_text_bold_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/no_ic_fluent_text_bold_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/tr_ic_fluent_text_bold_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_filled.imageset/lt_ic_fluent_text_bold_16_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_bold_16_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/lv_ic_fluent_text_bold_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/ru_ic_fluent_text_bold_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/en_ic_fluent_text_bold_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/kk_ic_fluent_text_bold_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/ca_ic_fluent_text_bold_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/gl_ic_fluent_text_bold_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/no_ic_fluent_text_bold_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/de_ic_fluent_text_bold_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/sr-cyrl_ic_fluent_text_bold_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/es_ic_fluent_text_bold_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/it_ic_fluent_text_bold_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/sv_ic_fluent_text_bold_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/bg_ic_fluent_text_bold_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/ko_ic_fluent_text_bold_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/pt_ic_fluent_text_bold_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/sr-latn_ic_fluent_text_bold_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/lt_ic_fluent_text_bold_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/fr_ic_fluent_text_bold_16_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/ic_fluent_text_bold_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/et_ic_fluent_text_bold_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/da_ic_fluent_text_bold_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/hu_ic_fluent_text_bold_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/ms_ic_fluent_text_bold_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/tr_ic_fluent_text_bold_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/uk_ic_fluent_text_bold_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_16_regular.imageset/sl_ic_fluent_text_bold_16_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_bold_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/tr_ic_fluent_text_bold_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/it_ic_fluent_text_bold_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/ic_fluent_text_bold_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/es_ic_fluent_text_bold_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/kk_ic_fluent_text_bold_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/pt_ic_fluent_text_bold_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/no_ic_fluent_text_bold_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/sr-cyrl_ic_fluent_text_bold_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/et_ic_fluent_text_bold_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/bg_ic_fluent_text_bold_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/hu_ic_fluent_text_bold_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/ca_ic_fluent_text_bold_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/fr_ic_fluent_text_bold_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/ms_ic_fluent_text_bold_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/lv_ic_fluent_text_bold_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/sv_ic_fluent_text_bold_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/ru_ic_fluent_text_bold_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/gl_ic_fluent_text_bold_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/de_ic_fluent_text_bold_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/en_ic_fluent_text_bold_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/da_ic_fluent_text_bold_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/ko_ic_fluent_text_bold_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/sl_ic_fluent_text_bold_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/lt_ic_fluent_text_bold_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/sr-latn_ic_fluent_text_bold_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_filled.imageset/uk_ic_fluent_text_bold_20_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_bold_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/sr-latn_ic_fluent_text_bold_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/ko_ic_fluent_text_bold_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/lt_ic_fluent_text_bold_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/kk_ic_fluent_text_bold_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/hu_ic_fluent_text_bold_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/it_ic_fluent_text_bold_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/ca_ic_fluent_text_bold_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/ms_ic_fluent_text_bold_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/en_ic_fluent_text_bold_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/sv_ic_fluent_text_bold_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/fr_ic_fluent_text_bold_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/bg_ic_fluent_text_bold_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/et_ic_fluent_text_bold_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/lv_ic_fluent_text_bold_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/ic_fluent_text_bold_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/no_ic_fluent_text_bold_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/gl_ic_fluent_text_bold_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/pt_ic_fluent_text_bold_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/uk_ic_fluent_text_bold_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/ru_ic_fluent_text_bold_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/da_ic_fluent_text_bold_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/sr-cyrl_ic_fluent_text_bold_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/tr_ic_fluent_text_bold_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/sl_ic_fluent_text_bold_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/es_ic_fluent_text_bold_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_20_regular.imageset/de_ic_fluent_text_bold_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_bold_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/gl_ic_fluent_text_bold_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/lv_ic_fluent_text_bold_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/da_ic_fluent_text_bold_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/sr-cyrl_ic_fluent_text_bold_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/sl_ic_fluent_text_bold_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/sr-latn_ic_fluent_text_bold_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/es_ic_fluent_text_bold_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/no_ic_fluent_text_bold_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/lt_ic_fluent_text_bold_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/ko_ic_fluent_text_bold_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/ru_ic_fluent_text_bold_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/et_ic_fluent_text_bold_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/bg_ic_fluent_text_bold_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/ca_ic_fluent_text_bold_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/kk_ic_fluent_text_bold_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/uk_ic_fluent_text_bold_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/sv_ic_fluent_text_bold_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/ms_ic_fluent_text_bold_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/fr_ic_fluent_text_bold_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/ic_fluent_text_bold_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/pt_ic_fluent_text_bold_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/hu_ic_fluent_text_bold_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/en_ic_fluent_text_bold_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/tr_ic_fluent_text_bold_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/de_ic_fluent_text_bold_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_filled.imageset/it_ic_fluent_text_bold_24_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_bold_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/kk_ic_fluent_text_bold_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/ko_ic_fluent_text_bold_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/bg_ic_fluent_text_bold_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/es_ic_fluent_text_bold_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/fr_ic_fluent_text_bold_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/sv_ic_fluent_text_bold_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/lv_ic_fluent_text_bold_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/gl_ic_fluent_text_bold_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/ic_fluent_text_bold_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/tr_ic_fluent_text_bold_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/pt_ic_fluent_text_bold_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/hu_ic_fluent_text_bold_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/ca_ic_fluent_text_bold_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/da_ic_fluent_text_bold_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/de_ic_fluent_text_bold_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/en_ic_fluent_text_bold_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/uk_ic_fluent_text_bold_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/sr-latn_ic_fluent_text_bold_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/et_ic_fluent_text_bold_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/it_ic_fluent_text_bold_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/ru_ic_fluent_text_bold_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/sr-cyrl_ic_fluent_text_bold_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/lt_ic_fluent_text_bold_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/no_ic_fluent_text_bold_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/ms_ic_fluent_text_bold_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bold_24_regular.imageset/sl_ic_fluent_text_bold_24_regular.svg",
   ]
 }
 
@@ -78529,16 +78345,16 @@ imageset("ic_fluent_text_bullet_list_dismiss_20_regular") {
 imageset("ic_fluent_text_bullet_list_16_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bullet_list_16_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bullet_list_16_filled.imageset/ic_fluent_text_bullet_list_rtl_16_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bullet_list_16_filled.imageset/ic_fluent_text_bullet_list_ltr_16_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bullet_list_16_filled.imageset/ic_fluent_text_bullet_list_rtl_16_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_bullet_list_16_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bullet_list_16_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bullet_list_16_regular.imageset/ic_fluent_text_bullet_list_ltr_16_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bullet_list_16_regular.imageset/ic_fluent_text_bullet_list_rtl_16_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bullet_list_16_regular.imageset/ic_fluent_text_bullet_list_ltr_16_regular.svg",
   ]
 }
 
@@ -78585,8 +78401,8 @@ imageset("ic_fluent_text_bullet_list_90_20_filled") {
 imageset("ic_fluent_text_bullet_list_90_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bullet_list_90_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bullet_list_90_20_regular.imageset/ic_fluent_text_bullet_list_ltr_90_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bullet_list_90_20_regular.imageset/ic_fluent_text_bullet_list_rtl_90_20_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_bullet_list_90_20_regular.imageset/ic_fluent_text_bullet_list_ltr_90_20_regular.svg",
   ]
 }
 
@@ -79028,14 +78844,12 @@ imageset("ic_fluent_text_clear_formatting_16_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_clear_formatting_16_filled.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_clear_formatting_16_filled.imageset/ic_fluent_text_clear_formatting_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_clear_formatting_16_filled.imageset/en_ic_fluent_text_clear_formatting_16_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_clear_formatting_16_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_clear_formatting_16_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_clear_formatting_16_regular.imageset/en_ic_fluent_text_clear_formatting_16_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_clear_formatting_16_regular.imageset/ic_fluent_text_clear_formatting_16_regular.svg",
   ]
 }
@@ -79043,7 +78857,6 @@ imageset("ic_fluent_text_clear_formatting_16_regular") {
 imageset("ic_fluent_text_clear_formatting_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_clear_formatting_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_clear_formatting_20_filled.imageset/en_ic_fluent_text_clear_formatting_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_clear_formatting_20_filled.imageset/ic_fluent_text_clear_formatting_20_filled.svg",
   ]
 }
@@ -79051,7 +78864,6 @@ imageset("ic_fluent_text_clear_formatting_20_filled") {
 imageset("ic_fluent_text_clear_formatting_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_clear_formatting_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_clear_formatting_20_regular.imageset/en_ic_fluent_text_clear_formatting_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_clear_formatting_20_regular.imageset/ic_fluent_text_clear_formatting_20_regular.svg",
   ]
 }
@@ -79059,18 +78871,14 @@ imageset("ic_fluent_text_clear_formatting_20_regular") {
 imageset("ic_fluent_text_clear_formatting_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_clear_formatting_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_clear_formatting_24_filled.imageset/en_ic_fluent_text_clear_formatting_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_clear_formatting_24_filled.imageset/ic_fluent_text_clear_formatting_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_clear_formatting_24_filled.imageset/ko_ic_fluent_text_clear_formatting_24_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_clear_formatting_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_clear_formatting_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_clear_formatting_24_regular.imageset/ko_ic_fluent_text_clear_formatting_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_clear_formatting_24_regular.imageset/ic_fluent_text_clear_formatting_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_clear_formatting_24_regular.imageset/en_ic_fluent_text_clear_formatting_24_regular.svg",
   ]
 }
 
@@ -79105,7 +78913,6 @@ imageset("ic_fluent_text_collapse_24_regular") {
 imageset("ic_fluent_text_color_16_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_16_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_16_filled.imageset/en_ic_fluent_text_color_16_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_16_filled.imageset/ic_fluent_text_color_16_filled.svg",
   ]
 }
@@ -79113,7 +78920,6 @@ imageset("ic_fluent_text_color_16_filled") {
 imageset("ic_fluent_text_color_16_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_16_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_16_regular.imageset/en_ic_fluent_text_color_16_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_16_regular.imageset/ic_fluent_text_color_16_regular.svg",
   ]
 }
@@ -79121,8 +78927,6 @@ imageset("ic_fluent_text_color_16_regular") {
 imageset("ic_fluent_text_color_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_20_filled.imageset/en_ic_fluent_text_color_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_20_filled.imageset/ko_ic_fluent_text_color_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_20_filled.imageset/ic_fluent_text_color_20_filled.svg",
   ]
 }
@@ -79131,17 +78935,13 @@ imageset("ic_fluent_text_color_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_20_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_20_regular.imageset/ic_fluent_text_color_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_20_regular.imageset/ko_ic_fluent_text_color_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_20_regular.imageset/en_ic_fluent_text_color_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_color_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_24_filled.imageset/ko_ic_fluent_text_color_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_24_filled.imageset/ic_fluent_text_color_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_24_filled.imageset/en_ic_fluent_text_color_24_filled.svg",
   ]
 }
 
@@ -79149,8 +78949,6 @@ imageset("ic_fluent_text_color_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_24_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_24_regular.imageset/ic_fluent_text_color_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_24_regular.imageset/ko_ic_fluent_text_color_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_color_24_regular.imageset/en_ic_fluent_text_color_24_regular.svg",
   ]
 }
 
@@ -79515,8 +79313,6 @@ imageset("ic_fluent_text_direction_horizontal_left_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_left_20_filled.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_left_20_filled.imageset/ic_fluent_text_direction_horizontal_left_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_left_20_filled.imageset/ko_ic_fluent_text_direction_horizontal_left_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_left_20_filled.imageset/en_ic_fluent_text_direction_horizontal_left_20_filled.svg",
   ]
 }
 
@@ -79524,16 +79320,12 @@ imageset("ic_fluent_text_direction_horizontal_left_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_left_20_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_left_20_regular.imageset/ic_fluent_text_direction_horizontal_left_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_left_20_regular.imageset/en_ic_fluent_text_direction_horizontal_left_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_left_20_regular.imageset/ko_ic_fluent_text_direction_horizontal_left_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_direction_horizontal_left_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_left_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_left_24_filled.imageset/en_ic_fluent_text_direction_horizontal_left_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_left_24_filled.imageset/ko_ic_fluent_text_direction_horizontal_left_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_left_24_filled.imageset/ic_fluent_text_direction_horizontal_left_24_filled.svg",
   ]
 }
@@ -79541,33 +79333,23 @@ imageset("ic_fluent_text_direction_horizontal_left_24_filled") {
 imageset("ic_fluent_text_direction_horizontal_left_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_left_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_left_24_regular.imageset/ko_ic_fluent_text_direction_horizontal_left_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_left_24_regular.imageset/ic_fluent_text_direction_horizontal_left_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_left_24_regular.imageset/en_ic_fluent_text_direction_horizontal_left_24_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_direction_horizontal_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_20_filled.imageset/en_ic_fluent_text_direction_horizontal_rtl_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_20_filled.imageset/en_ic_fluent_text_direction_horizontal_ltr_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_20_filled.imageset/ic_fluent_text_direction_horizontal_rtl_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_20_filled.imageset/ko_ic_fluent_text_direction_horizontal_ltr_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_20_filled.imageset/ic_fluent_text_direction_horizontal_ltr_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_20_filled.imageset/ko_ic_fluent_text_direction_horizontal_rtl_20_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_20_filled.imageset/ic_fluent_text_direction_horizontal_rtl_20_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_direction_horizontal_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_20_regular.imageset/ic_fluent_text_direction_horizontal_rtl_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_20_regular.imageset/ic_fluent_text_direction_horizontal_ltr_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_20_regular.imageset/en_ic_fluent_text_direction_horizontal_rtl_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_20_regular.imageset/ko_ic_fluent_text_direction_horizontal_ltr_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_20_regular.imageset/en_ic_fluent_text_direction_horizontal_ltr_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_20_regular.imageset/ko_ic_fluent_text_direction_horizontal_rtl_20_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_20_regular.imageset/ic_fluent_text_direction_horizontal_rtl_20_regular.svg",
   ]
 }
 
@@ -79575,10 +79357,6 @@ imageset("ic_fluent_text_direction_horizontal_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_24_filled.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_24_filled.imageset/ic_fluent_text_direction_horizontal_rtl_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_24_filled.imageset/ko_ic_fluent_text_direction_horizontal_ltr_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_24_filled.imageset/en_ic_fluent_text_direction_horizontal_rtl_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_24_filled.imageset/ko_ic_fluent_text_direction_horizontal_rtl_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_24_filled.imageset/en_ic_fluent_text_direction_horizontal_ltr_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_24_filled.imageset/ic_fluent_text_direction_horizontal_ltr_24_filled.svg",
   ]
 }
@@ -79586,38 +79364,28 @@ imageset("ic_fluent_text_direction_horizontal_24_filled") {
 imageset("ic_fluent_text_direction_horizontal_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_24_regular.imageset/en_ic_fluent_text_direction_horizontal_ltr_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_24_regular.imageset/ko_ic_fluent_text_direction_horizontal_ltr_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_24_regular.imageset/en_ic_fluent_text_direction_horizontal_rtl_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_24_regular.imageset/ic_fluent_text_direction_horizontal_rtl_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_24_regular.imageset/ic_fluent_text_direction_horizontal_ltr_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_24_regular.imageset/ko_ic_fluent_text_direction_horizontal_rtl_24_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_direction_horizontal_right_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_right_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_right_20_filled.imageset/ko_ic_fluent_text_direction_horizontal_right_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_right_20_filled.imageset/ic_fluent_text_direction_horizontal_right_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_right_20_filled.imageset/en_ic_fluent_text_direction_horizontal_right_20_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_direction_horizontal_right_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_right_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_right_20_regular.imageset/ko_ic_fluent_text_direction_horizontal_right_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_right_20_regular.imageset/ic_fluent_text_direction_horizontal_right_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_right_20_regular.imageset/en_ic_fluent_text_direction_horizontal_right_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_direction_horizontal_right_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_right_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_right_24_filled.imageset/ko_ic_fluent_text_direction_horizontal_right_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_right_24_filled.imageset/en_ic_fluent_text_direction_horizontal_right_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_right_24_filled.imageset/ic_fluent_text_direction_horizontal_right_24_filled.svg",
   ]
 }
@@ -79625,9 +79393,7 @@ imageset("ic_fluent_text_direction_horizontal_right_24_filled") {
 imageset("ic_fluent_text_direction_horizontal_right_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_right_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_right_24_regular.imageset/en_ic_fluent_text_direction_horizontal_right_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_right_24_regular.imageset/ic_fluent_text_direction_horizontal_right_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_horizontal_right_24_regular.imageset/ko_ic_fluent_text_direction_horizontal_right_24_regular.svg",
   ]
 }
 
@@ -79635,25 +79401,19 @@ imageset("ic_fluent_text_direction_rotate_270_right_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_270_right_20_filled.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_270_right_20_filled.imageset/ic_fluent_text_direction_rotate_270_right_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_270_right_20_filled.imageset/en_ic_fluent_text_direction_rotate_270_right_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_270_right_20_filled.imageset/ko_ic_fluent_text_direction_rotate_270_right_20_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_direction_rotate_270_right_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_270_right_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_270_right_20_regular.imageset/ko_ic_fluent_text_direction_rotate_270_right_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_270_right_20_regular.imageset/ic_fluent_text_direction_rotate_270_right_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_270_right_20_regular.imageset/en_ic_fluent_text_direction_rotate_270_right_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_direction_rotate_270_right_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_270_right_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_270_right_24_filled.imageset/en_ic_fluent_text_direction_rotate_270_right_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_270_right_24_filled.imageset/ko_ic_fluent_text_direction_rotate_270_right_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_270_right_24_filled.imageset/ic_fluent_text_direction_rotate_270_right_24_filled.svg",
   ]
 }
@@ -79661,9 +79421,7 @@ imageset("ic_fluent_text_direction_rotate_270_right_24_filled") {
 imageset("ic_fluent_text_direction_rotate_270_right_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_270_right_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_270_right_24_regular.imageset/ko_ic_fluent_text_direction_rotate_270_right_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_270_right_24_regular.imageset/ic_fluent_text_direction_rotate_270_right_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_270_right_24_regular.imageset/en_ic_fluent_text_direction_rotate_270_right_24_regular.svg",
   ]
 }
 
@@ -79671,14 +79429,12 @@ imageset("ic_fluent_text_direction_rotate_90_left_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_left_20_filled.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_left_20_filled.imageset/ic_fluent_text_direction_rotate_90_left_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_left_20_filled.imageset/en_ic_fluent_text_direction_rotate_90_left_20_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_direction_rotate_90_left_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_left_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_left_20_regular.imageset/en_ic_fluent_text_direction_rotate_90_left_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_left_20_regular.imageset/ic_fluent_text_direction_rotate_90_left_20_regular.svg",
   ]
 }
@@ -79686,7 +79442,6 @@ imageset("ic_fluent_text_direction_rotate_90_left_20_regular") {
 imageset("ic_fluent_text_direction_rotate_90_left_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_left_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_left_24_filled.imageset/en_ic_fluent_text_direction_rotate_90_left_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_left_24_filled.imageset/ic_fluent_text_direction_rotate_90_left_24_filled.svg",
   ]
 }
@@ -79695,16 +79450,12 @@ imageset("ic_fluent_text_direction_rotate_90_left_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_left_24_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_left_24_regular.imageset/ic_fluent_text_direction_rotate_90_left_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_left_24_regular.imageset/en_ic_fluent_text_direction_rotate_90_left_24_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_direction_rotate_90_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_20_filled.imageset/en_ic_fluent_text_direction_rotate_90_rtl_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_20_filled.imageset/en_ic_fluent_text_direction_rotate_90_ltr_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_20_filled.imageset/ko_ic_fluent_text_direction_rotate_90_ltr_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_20_filled.imageset/ic_fluent_text_direction_rotate_90_ltr_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_20_filled.imageset/ic_fluent_text_direction_rotate_90_rtl_20_filled.svg",
   ]
@@ -79713,11 +79464,8 @@ imageset("ic_fluent_text_direction_rotate_90_20_filled") {
 imageset("ic_fluent_text_direction_rotate_90_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_20_regular.imageset/en_ic_fluent_text_direction_rotate_90_ltr_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_20_regular.imageset/ko_ic_fluent_text_direction_rotate_90_ltr_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_20_regular.imageset/ic_fluent_text_direction_rotate_90_rtl_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_20_regular.imageset/ic_fluent_text_direction_rotate_90_ltr_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_20_regular.imageset/en_ic_fluent_text_direction_rotate_90_rtl_20_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_20_regular.imageset/ic_fluent_text_direction_rotate_90_rtl_20_regular.svg",
   ]
 }
 
@@ -79725,21 +79473,15 @@ imageset("ic_fluent_text_direction_rotate_90_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_24_filled.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_24_filled.imageset/ic_fluent_text_direction_rotate_90_rtl_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_24_filled.imageset/en_ic_fluent_text_direction_rotate_90_ltr_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_24_filled.imageset/ko_ic_fluent_text_direction_rotate_90_ltr_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_24_filled.imageset/ic_fluent_text_direction_rotate_90_ltr_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_24_filled.imageset/en_ic_fluent_text_direction_rotate_90_rtl_24_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_direction_rotate_90_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_24_regular.imageset/ko_ic_fluent_text_direction_rotate_90_ltr_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_24_regular.imageset/en_ic_fluent_text_direction_rotate_90_ltr_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_24_regular.imageset/ic_fluent_text_direction_rotate_90_ltr_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_24_regular.imageset/en_ic_fluent_text_direction_rotate_90_rtl_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_24_regular.imageset/ic_fluent_text_direction_rotate_90_rtl_24_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_24_regular.imageset/ic_fluent_text_direction_rotate_90_ltr_24_regular.svg",
   ]
 }
 
@@ -79747,25 +79489,19 @@ imageset("ic_fluent_text_direction_rotate_90_right_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_right_20_filled.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_right_20_filled.imageset/ic_fluent_text_direction_rotate_90_right_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_right_20_filled.imageset/ko_ic_fluent_text_direction_rotate_90_right_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_right_20_filled.imageset/en_ic_fluent_text_direction_rotate_90_right_20_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_direction_rotate_90_right_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_right_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_right_20_regular.imageset/ko_ic_fluent_text_direction_rotate_90_right_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_right_20_regular.imageset/ic_fluent_text_direction_rotate_90_right_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_right_20_regular.imageset/en_ic_fluent_text_direction_rotate_90_right_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_direction_rotate_90_right_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_right_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_right_24_filled.imageset/en_ic_fluent_text_direction_rotate_90_right_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_right_24_filled.imageset/ko_ic_fluent_text_direction_rotate_90_right_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_right_24_filled.imageset/ic_fluent_text_direction_rotate_90_right_24_filled.svg",
   ]
 }
@@ -79773,8 +79509,6 @@ imageset("ic_fluent_text_direction_rotate_90_right_24_filled") {
 imageset("ic_fluent_text_direction_rotate_90_right_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_right_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_right_24_regular.imageset/ko_ic_fluent_text_direction_rotate_90_right_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_right_24_regular.imageset/en_ic_fluent_text_direction_rotate_90_right_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_rotate_90_right_24_regular.imageset/ic_fluent_text_direction_rotate_90_right_24_regular.svg",
   ]
 }
@@ -79782,17 +79516,13 @@ imageset("ic_fluent_text_direction_rotate_90_right_24_regular") {
 imageset("ic_fluent_text_direction_vertical_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_vertical_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_vertical_20_filled.imageset/en_ic_fluent_text_direction_vertical_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_vertical_20_filled.imageset/ic_fluent_text_direction_vertical_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_vertical_20_filled.imageset/ko_ic_fluent_text_direction_vertical_20_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_direction_vertical_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_vertical_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_vertical_20_regular.imageset/en_ic_fluent_text_direction_vertical_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_vertical_20_regular.imageset/ko_ic_fluent_text_direction_vertical_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_vertical_20_regular.imageset/ic_fluent_text_direction_vertical_20_regular.svg",
   ]
 }
@@ -79800,9 +79530,7 @@ imageset("ic_fluent_text_direction_vertical_20_regular") {
 imageset("ic_fluent_text_direction_vertical_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_vertical_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_vertical_24_filled.imageset/en_ic_fluent_text_direction_vertical_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_vertical_24_filled.imageset/ic_fluent_text_direction_vertical_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_vertical_24_filled.imageset/ko_ic_fluent_text_direction_vertical_24_filled.svg",
   ]
 }
 
@@ -79810,16 +79538,12 @@ imageset("ic_fluent_text_direction_vertical_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_vertical_24_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_vertical_24_regular.imageset/ic_fluent_text_direction_vertical_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_vertical_24_regular.imageset/en_ic_fluent_text_direction_vertical_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_direction_vertical_24_regular.imageset/ko_ic_fluent_text_direction_vertical_24_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_edit_style_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_edit_style_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_edit_style_20_filled.imageset/ko_ic_fluent_text_edit_style_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_edit_style_20_filled.imageset/en_ic_fluent_text_edit_style_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_edit_style_20_filled.imageset/ic_fluent_text_edit_style_20_filled.svg",
   ]
 }
@@ -79827,26 +79551,20 @@ imageset("ic_fluent_text_edit_style_20_filled") {
 imageset("ic_fluent_text_edit_style_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_edit_style_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_edit_style_20_regular.imageset/ko_ic_fluent_text_edit_style_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_edit_style_20_regular.imageset/ic_fluent_text_edit_style_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_edit_style_20_regular.imageset/en_ic_fluent_text_edit_style_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_edit_style_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_edit_style_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_edit_style_24_filled.imageset/ko_ic_fluent_text_edit_style_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_edit_style_24_filled.imageset/ic_fluent_text_edit_style_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_edit_style_24_filled.imageset/en_ic_fluent_text_edit_style_24_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_edit_style_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_edit_style_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_edit_style_24_regular.imageset/en_ic_fluent_text_edit_style_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_edit_style_24_regular.imageset/ko_ic_fluent_text_edit_style_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_edit_style_24_regular.imageset/ic_fluent_text_edit_style_24_regular.svg",
   ]
 }
@@ -79854,8 +79572,6 @@ imageset("ic_fluent_text_edit_style_24_regular") {
 imageset("ic_fluent_text_effects_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_effects_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_effects_20_filled.imageset/en_ic_fluent_text_effects_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_effects_20_filled.imageset/ko_ic_fluent_text_effects_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_effects_20_filled.imageset/ic_fluent_text_effects_20_filled.svg",
   ]
 }
@@ -79863,8 +79579,6 @@ imageset("ic_fluent_text_effects_20_filled") {
 imageset("ic_fluent_text_effects_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_effects_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_effects_20_regular.imageset/en_ic_fluent_text_effects_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_effects_20_regular.imageset/ko_ic_fluent_text_effects_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_effects_20_regular.imageset/ic_fluent_text_effects_20_regular.svg",
   ]
 }
@@ -79872,8 +79586,6 @@ imageset("ic_fluent_text_effects_20_regular") {
 imageset("ic_fluent_text_effects_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_effects_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_effects_24_filled.imageset/ko_ic_fluent_text_effects_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_effects_24_filled.imageset/en_ic_fluent_text_effects_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_effects_24_filled.imageset/ic_fluent_text_effects_24_filled.svg",
   ]
 }
@@ -79881,8 +79593,6 @@ imageset("ic_fluent_text_effects_24_filled") {
 imageset("ic_fluent_text_effects_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_effects_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_effects_24_regular.imageset/en_ic_fluent_text_effects_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_effects_24_regular.imageset/ko_ic_fluent_text_effects_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_effects_24_regular.imageset/ic_fluent_text_effects_24_regular.svg",
   ]
 }
@@ -80114,8 +79824,6 @@ imageset("ic_fluent_text_font_size_24_regular") {
 imageset("ic_fluent_text_footnote_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_footnote_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_footnote_20_filled.imageset/en_ic_fluent_text_footnote_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_footnote_20_filled.imageset/ko_ic_fluent_text_footnote_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_footnote_20_filled.imageset/ic_fluent_text_footnote_20_filled.svg",
   ]
 }
@@ -80124,16 +79832,12 @@ imageset("ic_fluent_text_footnote_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_footnote_20_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_footnote_20_regular.imageset/ic_fluent_text_footnote_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_footnote_20_regular.imageset/ko_ic_fluent_text_footnote_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_footnote_20_regular.imageset/en_ic_fluent_text_footnote_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_footnote_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_footnote_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_footnote_24_filled.imageset/ko_ic_fluent_text_footnote_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_footnote_24_filled.imageset/en_ic_fluent_text_footnote_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_footnote_24_filled.imageset/ic_fluent_text_footnote_24_filled.svg",
   ]
 }
@@ -80142,8 +79846,6 @@ imageset("ic_fluent_text_footnote_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_footnote_24_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_footnote_24_regular.imageset/ic_fluent_text_footnote_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_footnote_24_regular.imageset/en_ic_fluent_text_footnote_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_footnote_24_regular.imageset/ko_ic_fluent_text_footnote_24_regular.svg",
   ]
 }
 
@@ -80466,8 +80168,8 @@ imageset("ic_fluent_text_indent_decrease_16_filled") {
 imageset("ic_fluent_text_indent_decrease_16_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_16_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_16_regular.imageset/ic_fluent_text_indent_decrease_rtl_16_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_16_regular.imageset/ic_fluent_text_indent_decrease_ltr_16_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_16_regular.imageset/ic_fluent_text_indent_decrease_rtl_16_regular.svg",
   ]
 }
 
@@ -80482,16 +80184,16 @@ imageset("ic_fluent_text_indent_decrease_20_filled") {
 imageset("ic_fluent_text_indent_decrease_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_regular.imageset/ic_fluent_text_indent_decrease_rtl_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_regular.imageset/ic_fluent_text_indent_decrease_ltr_20_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_20_regular.imageset/ic_fluent_text_indent_decrease_rtl_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_decrease_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_24_filled.imageset/ic_fluent_text_indent_decrease_ltr_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_24_filled.imageset/ic_fluent_text_indent_decrease_rtl_24_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_24_filled.imageset/ic_fluent_text_indent_decrease_ltr_24_filled.svg",
   ]
 }
 
@@ -80522,8 +80224,8 @@ imageset("ic_fluent_text_indent_decrease_90_20_regular") {
 imageset("ic_fluent_text_indent_decrease_90_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_90_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_90_24_filled.imageset/ic_fluent_text_indent_decrease_rtl_90_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_90_24_filled.imageset/ic_fluent_text_indent_decrease_ltr_90_24_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_90_24_filled.imageset/ic_fluent_text_indent_decrease_rtl_90_24_filled.svg",
   ]
 }
 
@@ -80538,32 +80240,32 @@ imageset("ic_fluent_text_indent_decrease_90_24_regular") {
 imageset("ic_fluent_text_indent_decrease_rotate_270_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_rotate_270_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_rotate_270_20_filled.imageset/ic_fluent_text_indent_decrease_rtl_rotate_270_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_rotate_270_20_filled.imageset/ic_fluent_text_indent_decrease_ltr_rotate_270_20_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_rotate_270_20_filled.imageset/ic_fluent_text_indent_decrease_rtl_rotate_270_20_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_decrease_rotate_270_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_rotate_270_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_rotate_270_20_regular.imageset/ic_fluent_text_indent_decrease_rtl_rotate_270_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_rotate_270_20_regular.imageset/ic_fluent_text_indent_decrease_ltr_rotate_270_20_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_rotate_270_20_regular.imageset/ic_fluent_text_indent_decrease_rtl_rotate_270_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_decrease_rotate_270_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_rotate_270_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_rotate_270_24_filled.imageset/ic_fluent_text_indent_decrease_rtl_rotate_270_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_rotate_270_24_filled.imageset/ic_fluent_text_indent_decrease_ltr_rotate_270_24_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_rotate_270_24_filled.imageset/ic_fluent_text_indent_decrease_rtl_rotate_270_24_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_decrease_rotate_270_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_rotate_270_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_rotate_270_24_regular.imageset/ic_fluent_text_indent_decrease_ltr_rotate_270_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_rotate_270_24_regular.imageset/ic_fluent_text_indent_decrease_rtl_rotate_270_24_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_decrease_rotate_270_24_regular.imageset/ic_fluent_text_indent_decrease_ltr_rotate_270_24_regular.svg",
   ]
 }
 
@@ -80598,8 +80300,8 @@ imageset("ic_fluent_text_indent_decrease_rotate_90_24_regular") {
 imageset("ic_fluent_text_indent_increase_16_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_16_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_16_filled.imageset/ic_fluent_text_indent_increase_ltr_16_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_16_filled.imageset/ic_fluent_text_indent_increase_rtl_16_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_16_filled.imageset/ic_fluent_text_indent_increase_ltr_16_filled.svg",
   ]
 }
 
@@ -80646,8 +80348,8 @@ imageset("ic_fluent_text_indent_increase_24_regular") {
 imageset("ic_fluent_text_indent_increase_90_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_90_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_90_20_filled.imageset/ic_fluent_text_indent_increase_rtl_90_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_90_20_filled.imageset/ic_fluent_text_indent_increase_ltr_90_20_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_90_20_filled.imageset/ic_fluent_text_indent_increase_rtl_90_20_filled.svg",
   ]
 }
 
@@ -80662,8 +80364,8 @@ imageset("ic_fluent_text_indent_increase_90_20_regular") {
 imageset("ic_fluent_text_indent_increase_90_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_90_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_90_24_filled.imageset/ic_fluent_text_indent_increase_rtl_90_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_90_24_filled.imageset/ic_fluent_text_indent_increase_ltr_90_24_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_90_24_filled.imageset/ic_fluent_text_indent_increase_rtl_90_24_filled.svg",
   ]
 }
 
@@ -80678,16 +80380,16 @@ imageset("ic_fluent_text_indent_increase_90_24_regular") {
 imageset("ic_fluent_text_indent_increase_rotate_270_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_rotate_270_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_rotate_270_20_filled.imageset/ic_fluent_text_indent_increase_ltr_rotate_270_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_rotate_270_20_filled.imageset/ic_fluent_text_indent_increase_rtl_rotate_270_20_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_rotate_270_20_filled.imageset/ic_fluent_text_indent_increase_ltr_rotate_270_20_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_indent_increase_rotate_270_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_rotate_270_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_rotate_270_20_regular.imageset/ic_fluent_text_indent_increase_ltr_rotate_270_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_rotate_270_20_regular.imageset/ic_fluent_text_indent_increase_rtl_rotate_270_20_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_rotate_270_20_regular.imageset/ic_fluent_text_indent_increase_ltr_rotate_270_20_regular.svg",
   ]
 }
 
@@ -80702,8 +80404,8 @@ imageset("ic_fluent_text_indent_increase_rotate_270_24_filled") {
 imageset("ic_fluent_text_indent_increase_rotate_270_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_rotate_270_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_rotate_270_24_regular.imageset/ic_fluent_text_indent_increase_ltr_rotate_270_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_rotate_270_24_regular.imageset/ic_fluent_text_indent_increase_rtl_rotate_270_24_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_indent_increase_rotate_270_24_regular.imageset/ic_fluent_text_indent_increase_ltr_rotate_270_24_regular.svg",
   ]
 }
 
@@ -80738,173 +80440,41 @@ imageset("ic_fluent_text_indent_increase_rotate_90_24_regular") {
 imageset("ic_fluent_text_italic_16_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/it_ic_fluent_text_italic_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/de_ic_fluent_text_italic_16_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/ic_fluent_text_italic_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/ru_ic_fluent_text_italic_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/da_ic_fluent_text_italic_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/es_ic_fluent_text_italic_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/bg_ic_fluent_text_italic_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/kk_ic_fluent_text_italic_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/sv_ic_fluent_text_italic_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/hu_ic_fluent_text_italic_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/sl_ic_fluent_text_italic_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/lt_ic_fluent_text_italic_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/lv_ic_fluent_text_italic_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/tr_ic_fluent_text_italic_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/uk_ic_fluent_text_italic_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/ca_ic_fluent_text_italic_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/sr_ic_fluent_text_italic_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/en_ic_fluent_text_italic_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/eu_ic_fluent_text_italic_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/gl_ic_fluent_text_italic_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/ko_ic_fluent_text_italic_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/no_ic_fluent_text_italic_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_filled.imageset/et_ic_fluent_text_italic_16_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_italic_16_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/bg_ic_fluent_text_italic_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/gl_ic_fluent_text_italic_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/sr_ic_fluent_text_italic_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/eu_ic_fluent_text_italic_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/lt_ic_fluent_text_italic_16_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/ic_fluent_text_italic_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/tr_ic_fluent_text_italic_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/no_ic_fluent_text_italic_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/ko_ic_fluent_text_italic_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/es_ic_fluent_text_italic_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/hu_ic_fluent_text_italic_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/ru_ic_fluent_text_italic_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/sv_ic_fluent_text_italic_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/ca_ic_fluent_text_italic_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/it_ic_fluent_text_italic_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/de_ic_fluent_text_italic_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/sl_ic_fluent_text_italic_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/kk_ic_fluent_text_italic_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/uk_ic_fluent_text_italic_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/lv_ic_fluent_text_italic_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/et_ic_fluent_text_italic_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/en_ic_fluent_text_italic_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_16_regular.imageset/da_ic_fluent_text_italic_16_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_italic_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_filled.imageset/es_ic_fluent_text_italic_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_filled.imageset/it_ic_fluent_text_italic_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_filled.imageset/lt_ic_fluent_text_italic_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_filled.imageset/uk_ic_fluent_text_italic_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_filled.imageset/en_ic_fluent_text_italic_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_filled.imageset/ca_ic_fluent_text_italic_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_filled.imageset/sr_ic_fluent_text_italic_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_filled.imageset/no_ic_fluent_text_italic_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_filled.imageset/sl_ic_fluent_text_italic_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_filled.imageset/hu_ic_fluent_text_italic_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_filled.imageset/ru_ic_fluent_text_italic_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_filled.imageset/tr_ic_fluent_text_italic_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_filled.imageset/bg_ic_fluent_text_italic_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_filled.imageset/lv_ic_fluent_text_italic_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_filled.imageset/ko_ic_fluent_text_italic_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_filled.imageset/sv_ic_fluent_text_italic_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_filled.imageset/kk_ic_fluent_text_italic_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_filled.imageset/de_ic_fluent_text_italic_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_filled.imageset/ic_fluent_text_italic_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_filled.imageset/gl_ic_fluent_text_italic_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_filled.imageset/et_ic_fluent_text_italic_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_filled.imageset/eu_ic_fluent_text_italic_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_filled.imageset/da_ic_fluent_text_italic_20_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_italic_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_regular.imageset/es_ic_fluent_text_italic_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_regular.imageset/sl_ic_fluent_text_italic_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_regular.imageset/de_ic_fluent_text_italic_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_regular.imageset/no_ic_fluent_text_italic_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_regular.imageset/ic_fluent_text_italic_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_regular.imageset/lv_ic_fluent_text_italic_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_regular.imageset/kk_ic_fluent_text_italic_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_regular.imageset/lt_ic_fluent_text_italic_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_regular.imageset/ca_ic_fluent_text_italic_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_regular.imageset/hu_ic_fluent_text_italic_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_regular.imageset/uk_ic_fluent_text_italic_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_regular.imageset/en_ic_fluent_text_italic_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_regular.imageset/ko_ic_fluent_text_italic_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_regular.imageset/ru_ic_fluent_text_italic_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_regular.imageset/sv_ic_fluent_text_italic_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_regular.imageset/it_ic_fluent_text_italic_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_regular.imageset/sr_ic_fluent_text_italic_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_regular.imageset/eu_ic_fluent_text_italic_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_regular.imageset/et_ic_fluent_text_italic_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_regular.imageset/da_ic_fluent_text_italic_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_regular.imageset/bg_ic_fluent_text_italic_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_regular.imageset/tr_ic_fluent_text_italic_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_20_regular.imageset/gl_ic_fluent_text_italic_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_italic_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_filled.imageset/ko_ic_fluent_text_italic_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_filled.imageset/es_ic_fluent_text_italic_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_filled.imageset/eu_ic_fluent_text_italic_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_filled.imageset/en_ic_fluent_text_italic_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_filled.imageset/sl_ic_fluent_text_italic_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_filled.imageset/bg_ic_fluent_text_italic_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_filled.imageset/et_ic_fluent_text_italic_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_filled.imageset/lv_ic_fluent_text_italic_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_filled.imageset/ca_ic_fluent_text_italic_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_filled.imageset/ic_fluent_text_italic_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_filled.imageset/sr_ic_fluent_text_italic_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_filled.imageset/tr_ic_fluent_text_italic_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_filled.imageset/gl_ic_fluent_text_italic_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_filled.imageset/it_ic_fluent_text_italic_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_filled.imageset/no_ic_fluent_text_italic_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_filled.imageset/kk_ic_fluent_text_italic_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_filled.imageset/da_ic_fluent_text_italic_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_filled.imageset/hu_ic_fluent_text_italic_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_filled.imageset/uk_ic_fluent_text_italic_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_filled.imageset/de_ic_fluent_text_italic_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_filled.imageset/sv_ic_fluent_text_italic_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_filled.imageset/lt_ic_fluent_text_italic_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_filled.imageset/ru_ic_fluent_text_italic_24_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_italic_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_regular.imageset/lt_ic_fluent_text_italic_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_regular.imageset/ko_ic_fluent_text_italic_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_regular.imageset/tr_ic_fluent_text_italic_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_regular.imageset/hu_ic_fluent_text_italic_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_regular.imageset/da_ic_fluent_text_italic_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_regular.imageset/sl_ic_fluent_text_italic_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_regular.imageset/eu_ic_fluent_text_italic_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_regular.imageset/sv_ic_fluent_text_italic_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_regular.imageset/ca_ic_fluent_text_italic_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_regular.imageset/gl_ic_fluent_text_italic_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_regular.imageset/es_ic_fluent_text_italic_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_regular.imageset/lv_ic_fluent_text_italic_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_regular.imageset/it_ic_fluent_text_italic_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_regular.imageset/et_ic_fluent_text_italic_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_regular.imageset/de_ic_fluent_text_italic_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_regular.imageset/no_ic_fluent_text_italic_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_regular.imageset/kk_ic_fluent_text_italic_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_regular.imageset/en_ic_fluent_text_italic_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_regular.imageset/sr_ic_fluent_text_italic_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_regular.imageset/ru_ic_fluent_text_italic_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_regular.imageset/bg_ic_fluent_text_italic_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_regular.imageset/uk_ic_fluent_text_italic_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_italic_24_regular.imageset/ic_fluent_text_italic_24_regular.svg",
   ]
 }
@@ -80940,26 +80510,20 @@ imageset("ic_fluent_text_line_spacing_24_regular") {
 imageset("ic_fluent_text_more_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_more_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_more_20_filled.imageset/en_ic_fluent_text_more_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_more_20_filled.imageset/ic_fluent_text_more_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_more_20_filled.imageset/ko_ic_fluent_text_more_20_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_more_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_more_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_more_20_regular.imageset/en_ic_fluent_text_more_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_more_20_regular.imageset/ic_fluent_text_more_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_more_20_regular.imageset/ko_ic_fluent_text_more_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_more_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_more_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_more_24_filled.imageset/ko_ic_fluent_text_more_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_more_24_filled.imageset/en_ic_fluent_text_more_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_more_24_filled.imageset/ic_fluent_text_more_24_filled.svg",
   ]
 }
@@ -80967,9 +80531,7 @@ imageset("ic_fluent_text_more_24_filled") {
 imageset("ic_fluent_text_more_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_more_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_more_24_regular.imageset/en_ic_fluent_text_more_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_more_24_regular.imageset/ic_fluent_text_more_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_more_24_regular.imageset/ko_ic_fluent_text_more_24_regular.svg",
   ]
 }
 
@@ -80977,8 +80539,6 @@ imageset("ic_fluent_text_number_format_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_format_20_filled.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_format_20_filled.imageset/ic_fluent_text_number_format_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_format_20_filled.imageset/ko_ic_fluent_text_number_format_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_format_20_filled.imageset/en_ic_fluent_text_number_format_20_filled.svg",
   ]
 }
 
@@ -80986,16 +80546,12 @@ imageset("ic_fluent_text_number_format_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_format_20_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_format_20_regular.imageset/ic_fluent_text_number_format_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_format_20_regular.imageset/en_ic_fluent_text_number_format_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_format_20_regular.imageset/ko_ic_fluent_text_number_format_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_number_format_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_format_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_format_24_filled.imageset/ko_ic_fluent_text_number_format_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_format_24_filled.imageset/en_ic_fluent_text_number_format_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_format_24_filled.imageset/ic_fluent_text_number_format_24_filled.svg",
   ]
 }
@@ -81004,8 +80560,6 @@ imageset("ic_fluent_text_number_format_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_format_24_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_format_24_regular.imageset/ic_fluent_text_number_format_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_format_24_regular.imageset/en_ic_fluent_text_number_format_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_format_24_regular.imageset/ko_ic_fluent_text_number_format_24_regular.svg",
   ]
 }
 
@@ -81044,8 +80598,8 @@ imageset("ic_fluent_text_number_list_20_regular") {
 imageset("ic_fluent_text_number_list_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_24_filled.imageset/ic_fluent_text_number_list_ltr_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_24_filled.imageset/ic_fluent_text_number_list_rtl_24_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_24_filled.imageset/ic_fluent_text_number_list_ltr_24_filled.svg",
   ]
 }
 
@@ -81068,16 +80622,16 @@ imageset("ic_fluent_text_number_list_90_20_filled") {
 imageset("ic_fluent_text_number_list_90_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_90_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_90_20_regular.imageset/ic_fluent_text_number_list_ltr_90_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_90_20_regular.imageset/ic_fluent_text_number_list_rtl_90_20_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_90_20_regular.imageset/ic_fluent_text_number_list_ltr_90_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_number_list_90_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_90_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_90_24_filled.imageset/ic_fluent_text_number_list_rtl_90_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_90_24_filled.imageset/ic_fluent_text_number_list_ltr_90_24_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_90_24_filled.imageset/ic_fluent_text_number_list_rtl_90_24_filled.svg",
   ]
 }
 
@@ -81092,30 +80646,24 @@ imageset("ic_fluent_text_number_list_90_24_regular") {
 imageset("ic_fluent_text_number_list_rotate_270_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_270_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_270_20_filled.imageset/LTR_ic_fluent_text_number_list_rotate_270_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_270_20_filled.imageset/RTL_ic_fluent_text_number_list_rotate_270_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_270_20_filled.imageset/ic_fluent_text_number_list_rtl_rotate_270_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_270_20_filled.imageset/ic_fluent_text_number_list_ltr_rotate_270_20_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_270_20_filled.imageset/ic_fluent_text_number_list_rtl_rotate_270_20_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_number_list_rotate_270_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_270_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_270_20_regular.imageset/LTR_ic_fluent_text_number_list_rotate_270_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_270_20_regular.imageset/ic_fluent_text_number_list_rtl_rotate_270_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_270_20_regular.imageset/RTL_ic_fluent_text_number_list_rotate_270_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_270_20_regular.imageset/ic_fluent_text_number_list_ltr_rotate_270_20_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_270_20_regular.imageset/ic_fluent_text_number_list_rtl_rotate_270_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_number_list_rotate_270_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_270_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_270_24_filled.imageset/RTL_ic_fluent_text_number_list_rotate_270_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_270_24_filled.imageset/LTR_ic_fluent_text_number_list_rotate_270_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_270_24_filled.imageset/ic_fluent_text_number_list_rtl_rotate_270_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_270_24_filled.imageset/ic_fluent_text_number_list_ltr_rotate_270_24_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_270_24_filled.imageset/ic_fluent_text_number_list_rtl_rotate_270_24_filled.svg",
   ]
 }
 
@@ -81123,8 +80671,6 @@ imageset("ic_fluent_text_number_list_rotate_270_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_270_24_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_270_24_regular.imageset/ic_fluent_text_number_list_rtl_rotate_270_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_270_24_regular.imageset/RTL_ic_fluent_text_number_list_rotate_270_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_270_24_regular.imageset/LTR_ic_fluent_text_number_list_rotate_270_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_270_24_regular.imageset/ic_fluent_text_number_list_ltr_rotate_270_24_regular.svg",
   ]
 }
@@ -81132,8 +80678,6 @@ imageset("ic_fluent_text_number_list_rotate_270_24_regular") {
 imageset("ic_fluent_text_number_list_rotate_90_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_90_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_90_20_filled.imageset/RTL_ic_fluent_text_number_list_rotate_90_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_90_20_filled.imageset/LTR_ic_fluent_text_number_list_rotate_90_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_90_20_filled.imageset/ic_fluent_text_number_list_rotate_90_20_filled.svg",
   ]
 }
@@ -81141,26 +80685,20 @@ imageset("ic_fluent_text_number_list_rotate_90_20_filled") {
 imageset("ic_fluent_text_number_list_rotate_90_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_90_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_90_20_regular.imageset/RTL_ic_fluent_text_number_list_rotate_90_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_90_20_regular.imageset/ic_fluent_text_number_list_rotate_90_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_90_20_regular.imageset/LTR_ic_fluent_text_number_list_rotate_90_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_number_list_rotate_90_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_90_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_90_24_filled.imageset/RTL_ic_fluent_text_number_list_rotate_90_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_90_24_filled.imageset/ic_fluent_text_number_list_rotate_90_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_90_24_filled.imageset/LTR_ic_fluent_text_number_list_rotate_90_24_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_number_list_rotate_90_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_90_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_90_24_regular.imageset/LTR_ic_fluent_text_number_list_rotate_90_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_90_24_regular.imageset/RTL_ic_fluent_text_number_list_rotate_90_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_number_list_rotate_90_24_regular.imageset/ic_fluent_text_number_list_rotate_90_24_regular.svg",
   ]
 }
@@ -81168,21 +80706,13 @@ imageset("ic_fluent_text_number_list_rotate_90_24_regular") {
 imageset("ic_fluent_text_paragraph_16_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_16_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_16_filled.imageset/ko_ic_fluent_text_paragraph_16_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_16_filled.imageset/ic_fluent_text_paragraph_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_16_filled.imageset/ja_ic_fluent_text_paragraph_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_16_filled.imageset/zh_ic_fluent_text_paragraph_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_16_filled.imageset/en_ic_fluent_text_paragraph_16_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_paragraph_16_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_16_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_16_regular.imageset/ja_ic_fluent_text_paragraph_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_16_regular.imageset/zh_ic_fluent_text_paragraph_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_16_regular.imageset/en_ic_fluent_text_paragraph_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_16_regular.imageset/ko_ic_fluent_text_paragraph_16_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_16_regular.imageset/ic_fluent_text_paragraph_16_regular.svg",
   ]
 }
@@ -81191,21 +80721,13 @@ imageset("ic_fluent_text_paragraph_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_20_filled.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_20_filled.imageset/ic_fluent_text_paragraph_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_20_filled.imageset/ja_ic_fluent_text_paragraph_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_20_filled.imageset/zh_ic_fluent_text_paragraph_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_20_filled.imageset/ko_ic_fluent_text_paragraph_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_20_filled.imageset/en_ic_fluent_text_paragraph_20_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_paragraph_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_20_regular.imageset/en_ic_fluent_text_paragraph_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_20_regular.imageset/zh_ic_fluent_text_paragraph_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_20_regular.imageset/ic_fluent_text_paragraph_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_20_regular.imageset/ko_ic_fluent_text_paragraph_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_20_regular.imageset/ja_ic_fluent_text_paragraph_20_regular.svg",
   ]
 }
 
@@ -81213,20 +80735,12 @@ imageset("ic_fluent_text_paragraph_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_24_filled.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_24_filled.imageset/ic_fluent_text_paragraph_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_24_filled.imageset/ko_ic_fluent_text_paragraph_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_24_filled.imageset/zh_ic_fluent_text_paragraph_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_24_filled.imageset/en_ic_fluent_text_paragraph_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_24_filled.imageset/ja_ic_fluent_text_paragraph_24_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_paragraph_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_24_regular.imageset/ja_ic_fluent_text_paragraph_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_24_regular.imageset/ko_ic_fluent_text_paragraph_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_24_regular.imageset/zh_ic_fluent_text_paragraph_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_24_regular.imageset/en_ic_fluent_text_paragraph_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_paragraph_24_regular.imageset/ic_fluent_text_paragraph_24_regular.svg",
   ]
 }
@@ -81529,18 +81043,12 @@ imageset("ic_fluent_text_proofing_tools_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_proofing_tools_20_filled.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_proofing_tools_20_filled.imageset/ic_fluent_text_proofing_tools_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_proofing_tools_20_filled.imageset/zh_ic_fluent_text_proofing_tools_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_proofing_tools_20_filled.imageset/ko_ic_fluent_text_proofing_tools_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_proofing_tools_20_filled.imageset/en_ic_fluent_text_proofing_tools_20_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_proofing_tools_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_proofing_tools_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_proofing_tools_20_regular.imageset/zh_ic_fluent_text_proofing_tools_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_proofing_tools_20_regular.imageset/ko_ic_fluent_text_proofing_tools_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_proofing_tools_20_regular.imageset/en_ic_fluent_text_proofing_tools_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_proofing_tools_20_regular.imageset/ic_fluent_text_proofing_tools_20_regular.svg",
   ]
 }
@@ -81548,9 +81056,6 @@ imageset("ic_fluent_text_proofing_tools_20_regular") {
 imageset("ic_fluent_text_proofing_tools_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_proofing_tools_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_proofing_tools_24_filled.imageset/en_ic_fluent_text_proofing_tools_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_proofing_tools_24_filled.imageset/ko_ic_fluent_text_proofing_tools_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_proofing_tools_24_filled.imageset/zh_ic_fluent_text_proofing_tools_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_proofing_tools_24_filled.imageset/ic_fluent_text_proofing_tools_24_filled.svg",
   ]
 }
@@ -81558,10 +81063,7 @@ imageset("ic_fluent_text_proofing_tools_24_filled") {
 imageset("ic_fluent_text_proofing_tools_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_proofing_tools_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_proofing_tools_24_regular.imageset/en_ic_fluent_text_proofing_tools_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_proofing_tools_24_regular.imageset/zh_ic_fluent_text_proofing_tools_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_proofing_tools_24_regular.imageset/ic_fluent_text_proofing_tools_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_proofing_tools_24_regular.imageset/ko_ic_fluent_text_proofing_tools_24_regular.svg",
   ]
 }
 
@@ -81611,107 +81113,41 @@ imageset("ic_fluent_text_sort_ascending_16_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_filled.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_filled.imageset/ic_fluent_text_sort_ascending_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_filled.imageset/sl_ic_fluent_text_sort_ascending_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_filled.imageset/da_ic_fluent_text_sort_ascending_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_filled.imageset/kk_ic_fluent_text_sort_ascending_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_filled.imageset/fi_ic_fluent_text_sort_ascending_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_filled.imageset/en_ic_fluent_text_sort_ascending_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_filled.imageset/sr_ic_fluent_text_sort_ascending_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_filled.imageset/se_ic_fluent_text_sort_ascending_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_filled.imageset/bg_ic_fluent_text_sort_ascending_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_filled.imageset/ru_ic_fluent_text_sort_ascending_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_filled.imageset/gr_ic_fluent_text_sort_ascending_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_filled.imageset/ko_ic_fluent_text_sort_ascending_16_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_sort_ascending_16_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_regular.imageset/se_ic_fluent_text_sort_ascending_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_regular.imageset/bg_ic_fluent_text_sort_ascending_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_regular.imageset/ru_ic_fluent_text_sort_ascending_16_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_regular.imageset/ic_fluent_text_sort_ascending_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_regular.imageset/sl_ic_fluent_text_sort_ascending_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_regular.imageset/da_ic_fluent_text_sort_ascending_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_regular.imageset/en_ic_fluent_text_sort_ascending_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_regular.imageset/gr_ic_fluent_text_sort_ascending_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_regular.imageset/fi_ic_fluent_text_sort_ascending_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_regular.imageset/kk_ic_fluent_text_sort_ascending_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_regular.imageset/sr_ic_fluent_text_sort_ascending_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_16_regular.imageset/ko_ic_fluent_text_sort_ascending_16_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_sort_ascending_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_filled.imageset/ru_ic_fluent_text_sort_ascending_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_filled.imageset/da_ic_fluent_text_sort_ascending_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_filled.imageset/kk_ic_fluent_text_sort_ascending_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_filled.imageset/sr_ic_fluent_text_sort_ascending_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_filled.imageset/sl_ic_fluent_text_sort_ascending_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_filled.imageset/gr_ic_fluent_text_sort_ascending_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_filled.imageset/bg_ic_fluent_text_sort_ascending_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_filled.imageset/se_ic_fluent_text_sort_ascending_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_filled.imageset/ic_fluent_text_sort_ascending_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_filled.imageset/ko_ic_fluent_text_sort_ascending_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_filled.imageset/en_ic_fluent_text_sort_ascending_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_filled.imageset/fi_ic_fluent_text_sort_ascending_20_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_sort_ascending_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_regular.imageset/fi_ic_fluent_text_sort_ascending_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_regular.imageset/ic_fluent_text_sort_ascending_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_regular.imageset/da_ic_fluent_text_sort_ascending_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_regular.imageset/bg_ic_fluent_text_sort_ascending_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_regular.imageset/gr_ic_fluent_text_sort_ascending_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_regular.imageset/ko_ic_fluent_text_sort_ascending_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_regular.imageset/sl_ic_fluent_text_sort_ascending_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_regular.imageset/ru_ic_fluent_text_sort_ascending_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_regular.imageset/se_ic_fluent_text_sort_ascending_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_regular.imageset/kk_ic_fluent_text_sort_ascending_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_regular.imageset/en_ic_fluent_text_sort_ascending_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_20_regular.imageset/sr_ic_fluent_text_sort_ascending_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_sort_ascending_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_filled.imageset/en_ic_fluent_text_sort_ascending_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_filled.imageset/sl_ic_fluent_text_sort_ascending_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_filled.imageset/da_ic_fluent_text_sort_ascending_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_filled.imageset/kk_ic_fluent_text_sort_ascending_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_filled.imageset/sr_ic_fluent_text_sort_ascending_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_filled.imageset/fi_ic_fluent_text_sort_ascending_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_filled.imageset/gr_ic_fluent_text_sort_ascending_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_filled.imageset/ru_ic_fluent_text_sort_ascending_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_filled.imageset/bg_ic_fluent_text_sort_ascending_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_filled.imageset/ic_fluent_text_sort_ascending_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_filled.imageset/ko_ic_fluent_text_sort_ascending_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_filled.imageset/se_ic_fluent_text_sort_ascending_24_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_sort_ascending_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_regular.imageset/ko_ic_fluent_text_sort_ascending_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_regular.imageset/da_ic_fluent_text_sort_ascending_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_regular.imageset/se_ic_fluent_text_sort_ascending_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_regular.imageset/gr_ic_fluent_text_sort_ascending_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_regular.imageset/bg_ic_fluent_text_sort_ascending_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_regular.imageset/ic_fluent_text_sort_ascending_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_regular.imageset/fi_ic_fluent_text_sort_ascending_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_regular.imageset/en_ic_fluent_text_sort_ascending_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_regular.imageset/kk_ic_fluent_text_sort_ascending_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_regular.imageset/ru_ic_fluent_text_sort_ascending_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_regular.imageset/sr_ic_fluent_text_sort_ascending_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_ascending_24_regular.imageset/sl_ic_fluent_text_sort_ascending_24_regular.svg",
   ]
 }
 
@@ -81719,106 +81155,40 @@ imageset("ic_fluent_text_sort_descending_16_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_filled.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_filled.imageset/ic_fluent_text_sort_descending_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_filled.imageset/kk_ic_fluent_text_sort_descending_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_filled.imageset/da_ic_fluent_text_sort_descending_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_filled.imageset/sr_ic_fluent_text_sort_descending_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_filled.imageset/ru_ic_fluent_text_sort_descending_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_filled.imageset/fi_ic_fluent_text_sort_descending_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_filled.imageset/sl_ic_fluent_text_sort_descending_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_filled.imageset/ko_ic_fluent_text_sort_descending_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_filled.imageset/gr_ic_fluent_text_sort_descending_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_filled.imageset/se_ic_fluent_text_sort_descending_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_filled.imageset/en_ic_fluent_text_sort_descending_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_filled.imageset/bg_ic_fluent_text_sort_descending_16_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_sort_descending_16_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_regular.imageset/ru_ic_fluent_text_sort_descending_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_regular.imageset/bg_ic_fluent_text_sort_descending_16_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_regular.imageset/ic_fluent_text_sort_descending_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_regular.imageset/kk_ic_fluent_text_sort_descending_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_regular.imageset/gr_ic_fluent_text_sort_descending_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_regular.imageset/ko_ic_fluent_text_sort_descending_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_regular.imageset/fi_ic_fluent_text_sort_descending_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_regular.imageset/en_ic_fluent_text_sort_descending_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_regular.imageset/sl_ic_fluent_text_sort_descending_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_regular.imageset/da_ic_fluent_text_sort_descending_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_regular.imageset/se_ic_fluent_text_sort_descending_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_16_regular.imageset/sr_ic_fluent_text_sort_descending_16_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_sort_descending_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_filled.imageset/ko_ic_fluent_text_sort_descending_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_filled.imageset/sr_ic_fluent_text_sort_descending_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_filled.imageset/ru_ic_fluent_text_sort_descending_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_filled.imageset/kk_ic_fluent_text_sort_descending_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_filled.imageset/sl_ic_fluent_text_sort_descending_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_filled.imageset/da_ic_fluent_text_sort_descending_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_filled.imageset/fi_ic_fluent_text_sort_descending_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_filled.imageset/ic_fluent_text_sort_descending_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_filled.imageset/en_ic_fluent_text_sort_descending_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_filled.imageset/se_ic_fluent_text_sort_descending_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_filled.imageset/gr_ic_fluent_text_sort_descending_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_filled.imageset/bg_ic_fluent_text_sort_descending_20_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_sort_descending_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_regular.imageset/sl_ic_fluent_text_sort_descending_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_regular.imageset/en_ic_fluent_text_sort_descending_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_regular.imageset/gr_ic_fluent_text_sort_descending_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_regular.imageset/sr_ic_fluent_text_sort_descending_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_regular.imageset/se_ic_fluent_text_sort_descending_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_regular.imageset/fi_ic_fluent_text_sort_descending_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_regular.imageset/kk_ic_fluent_text_sort_descending_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_regular.imageset/ic_fluent_text_sort_descending_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_regular.imageset/da_ic_fluent_text_sort_descending_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_regular.imageset/bg_ic_fluent_text_sort_descending_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_regular.imageset/ru_ic_fluent_text_sort_descending_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_20_regular.imageset/ko_ic_fluent_text_sort_descending_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_sort_descending_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_filled.imageset/kk_ic_fluent_text_sort_descending_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_filled.imageset/ic_fluent_text_sort_descending_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_filled.imageset/fi_ic_fluent_text_sort_descending_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_filled.imageset/se_ic_fluent_text_sort_descending_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_filled.imageset/sl_ic_fluent_text_sort_descending_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_filled.imageset/gr_ic_fluent_text_sort_descending_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_filled.imageset/da_ic_fluent_text_sort_descending_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_filled.imageset/bg_ic_fluent_text_sort_descending_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_filled.imageset/ru_ic_fluent_text_sort_descending_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_filled.imageset/sr_ic_fluent_text_sort_descending_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_filled.imageset/en_ic_fluent_text_sort_descending_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_filled.imageset/ko_ic_fluent_text_sort_descending_24_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_sort_descending_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_regular.imageset/fi_ic_fluent_text_sort_descending_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_regular.imageset/se_ic_fluent_text_sort_descending_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_regular.imageset/gr_ic_fluent_text_sort_descending_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_regular.imageset/kk_ic_fluent_text_sort_descending_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_regular.imageset/da_ic_fluent_text_sort_descending_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_regular.imageset/en_ic_fluent_text_sort_descending_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_regular.imageset/ru_ic_fluent_text_sort_descending_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_regular.imageset/sl_ic_fluent_text_sort_descending_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_regular.imageset/sr_ic_fluent_text_sort_descending_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_regular.imageset/bg_ic_fluent_text_sort_descending_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_regular.imageset/ko_ic_fluent_text_sort_descending_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_sort_descending_24_regular.imageset/ic_fluent_text_sort_descending_24_regular.svg",
   ]
 }
@@ -81826,17 +81196,13 @@ imageset("ic_fluent_text_sort_descending_24_regular") {
 imageset("ic_fluent_text_strikethrough_16_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_16_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_16_filled.imageset/en_ic_fluent_text_strikethrough_16_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_16_filled.imageset/ic_fluent_text_strikethrough_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_16_filled.imageset/ko_ic_fluent_text_strikethrough_16_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_strikethrough_16_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_16_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_16_regular.imageset/ko_ic_fluent_text_strikethrough_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_16_regular.imageset/en_ic_fluent_text_strikethrough_16_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_16_regular.imageset/ic_fluent_text_strikethrough_16_regular.svg",
   ]
 }
@@ -81844,8 +81210,6 @@ imageset("ic_fluent_text_strikethrough_16_regular") {
 imageset("ic_fluent_text_strikethrough_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_20_filled.imageset/ko_ic_fluent_text_strikethrough_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_20_filled.imageset/en_ic_fluent_text_strikethrough_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_20_filled.imageset/ic_fluent_text_strikethrough_20_filled.svg",
   ]
 }
@@ -81854,8 +81218,6 @@ imageset("ic_fluent_text_strikethrough_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_20_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_20_regular.imageset/ic_fluent_text_strikethrough_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_20_regular.imageset/en_ic_fluent_text_strikethrough_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_20_regular.imageset/ko_ic_fluent_text_strikethrough_20_regular.svg",
   ]
 }
 
@@ -81863,16 +81225,12 @@ imageset("ic_fluent_text_strikethrough_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_24_filled.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_24_filled.imageset/ic_fluent_text_strikethrough_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_24_filled.imageset/en_ic_fluent_text_strikethrough_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_24_filled.imageset/ko_ic_fluent_text_strikethrough_24_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_strikethrough_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_24_regular.imageset/en_ic_fluent_text_strikethrough_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_24_regular.imageset/ko_ic_fluent_text_strikethrough_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_strikethrough_24_regular.imageset/ic_fluent_text_strikethrough_24_regular.svg",
   ]
 }
@@ -82076,27 +81434,7 @@ imageset("ic_fluent_text_t_tag_16_regular") {
 imageset("ic_fluent_text_underline_16_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_filled.imageset/kk_ic_fluent_text_underline_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_filled.imageset/ko_ic_fluent_text_underline_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_filled.imageset/ca_ic_fluent_text_underline_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_filled.imageset/lt_ic_fluent_text_underline_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_filled.imageset/lv_ic_fluent_text_underline_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_filled.imageset/tr_ic_fluent_text_underline_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_filled.imageset/sl_ic_fluent_text_underline_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_filled.imageset/eu_ic_fluent_text_underline_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_filled.imageset/sr_ic_fluent_text_underline_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_filled.imageset/pt_ic_fluent_text_underline_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_filled.imageset/fr_ic_fluent_text_underline_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_filled.imageset/bg_ic_fluent_text_underline_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_filled.imageset/es_ic_fluent_text_underline_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_filled.imageset/it_ic_fluent_text_underline_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_filled.imageset/gl_ic_fluent_text_underline_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_filled.imageset/uk_ic_fluent_text_underline_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_filled.imageset/hu_ic_fluent_text_underline_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_filled.imageset/ru_ic_fluent_text_underline_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_filled.imageset/et_ic_fluent_text_underline_16_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_filled.imageset/ic_fluent_text_underline_16_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_filled.imageset/en_ic_fluent_text_underline_16_filled.svg",
   ]
 }
 
@@ -82104,134 +81442,34 @@ imageset("ic_fluent_text_underline_16_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_regular.imageset/ic_fluent_text_underline_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_regular.imageset/ru_ic_fluent_text_underline_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_regular.imageset/lv_ic_fluent_text_underline_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_regular.imageset/gl_ic_fluent_text_underline_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_regular.imageset/bg_ic_fluent_text_underline_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_regular.imageset/es_ic_fluent_text_underline_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_regular.imageset/tr_ic_fluent_text_underline_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_regular.imageset/sl_ic_fluent_text_underline_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_regular.imageset/fr_ic_fluent_text_underline_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_regular.imageset/pt_ic_fluent_text_underline_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_regular.imageset/hu_ic_fluent_text_underline_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_regular.imageset/ko_ic_fluent_text_underline_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_regular.imageset/en_ic_fluent_text_underline_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_regular.imageset/ca_ic_fluent_text_underline_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_regular.imageset/uk_ic_fluent_text_underline_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_regular.imageset/kk_ic_fluent_text_underline_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_regular.imageset/eu_ic_fluent_text_underline_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_regular.imageset/it_ic_fluent_text_underline_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_regular.imageset/et_ic_fluent_text_underline_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_regular.imageset/sr_ic_fluent_text_underline_16_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_16_regular.imageset/lt_ic_fluent_text_underline_16_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_underline_20_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_filled.imageset/sr_ic_fluent_text_underline_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_filled.imageset/kk_ic_fluent_text_underline_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_filled.imageset/ru_ic_fluent_text_underline_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_filled.imageset/ca_ic_fluent_text_underline_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_filled.imageset/eu_ic_fluent_text_underline_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_filled.imageset/sl_ic_fluent_text_underline_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_filled.imageset/ko_ic_fluent_text_underline_20_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_filled.imageset/ic_fluent_text_underline_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_filled.imageset/es_ic_fluent_text_underline_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_filled.imageset/lv_ic_fluent_text_underline_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_filled.imageset/hu_ic_fluent_text_underline_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_filled.imageset/it_ic_fluent_text_underline_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_filled.imageset/fr_ic_fluent_text_underline_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_filled.imageset/tr_ic_fluent_text_underline_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_filled.imageset/uk_ic_fluent_text_underline_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_filled.imageset/lt_ic_fluent_text_underline_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_filled.imageset/pt_ic_fluent_text_underline_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_filled.imageset/et_ic_fluent_text_underline_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_filled.imageset/gl_ic_fluent_text_underline_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_filled.imageset/en_ic_fluent_text_underline_20_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_filled.imageset/bg_ic_fluent_text_underline_20_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_underline_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_regular.imageset/ru_ic_fluent_text_underline_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_regular.imageset/hu_ic_fluent_text_underline_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_regular.imageset/uk_ic_fluent_text_underline_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_regular.imageset/lt_ic_fluent_text_underline_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_regular.imageset/eu_ic_fluent_text_underline_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_regular.imageset/ko_ic_fluent_text_underline_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_regular.imageset/sr_ic_fluent_text_underline_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_regular.imageset/bg_ic_fluent_text_underline_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_regular.imageset/pt_ic_fluent_text_underline_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_regular.imageset/gl_ic_fluent_text_underline_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_regular.imageset/fr_ic_fluent_text_underline_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_regular.imageset/et_ic_fluent_text_underline_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_regular.imageset/tr_ic_fluent_text_underline_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_regular.imageset/sl_ic_fluent_text_underline_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_regular.imageset/kk_ic_fluent_text_underline_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_regular.imageset/ic_fluent_text_underline_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_regular.imageset/en_ic_fluent_text_underline_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_regular.imageset/es_ic_fluent_text_underline_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_regular.imageset/lv_ic_fluent_text_underline_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_regular.imageset/it_ic_fluent_text_underline_20_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_20_regular.imageset/ca_ic_fluent_text_underline_20_regular.svg",
   ]
 }
 
 imageset("ic_fluent_text_underline_24_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_filled.imageset/fr_ic_fluent_text_underline_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_filled.imageset/ca_ic_fluent_text_underline_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_filled.imageset/gl_ic_fluent_text_underline_24_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_filled.imageset/ic_fluent_text_underline_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_filled.imageset/lv_ic_fluent_text_underline_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_filled.imageset/lt_ic_fluent_text_underline_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_filled.imageset/bg_ic_fluent_text_underline_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_filled.imageset/uk_ic_fluent_text_underline_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_filled.imageset/hu_ic_fluent_text_underline_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_filled.imageset/et_ic_fluent_text_underline_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_filled.imageset/sr_ic_fluent_text_underline_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_filled.imageset/ru_ic_fluent_text_underline_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_filled.imageset/en_ic_fluent_text_underline_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_filled.imageset/it_ic_fluent_text_underline_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_filled.imageset/es_ic_fluent_text_underline_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_filled.imageset/sl_ic_fluent_text_underline_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_filled.imageset/kk_ic_fluent_text_underline_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_filled.imageset/pt_ic_fluent_text_underline_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_filled.imageset/ko_ic_fluent_text_underline_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_filled.imageset/eu_ic_fluent_text_underline_24_filled.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_filled.imageset/tr_ic_fluent_text_underline_24_filled.svg",
   ]
 }
 
 imageset("ic_fluent_text_underline_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_regular.imageset/it_ic_fluent_text_underline_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_regular.imageset/lt_ic_fluent_text_underline_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_regular.imageset/gl_ic_fluent_text_underline_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_regular.imageset/fr_ic_fluent_text_underline_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_regular.imageset/eu_ic_fluent_text_underline_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_regular.imageset/et_ic_fluent_text_underline_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_regular.imageset/ic_fluent_text_underline_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_regular.imageset/tr_ic_fluent_text_underline_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_regular.imageset/uk_ic_fluent_text_underline_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_regular.imageset/ko_ic_fluent_text_underline_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_regular.imageset/bg_ic_fluent_text_underline_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_regular.imageset/sl_ic_fluent_text_underline_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_regular.imageset/ru_ic_fluent_text_underline_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_regular.imageset/kk_ic_fluent_text_underline_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_regular.imageset/ca_ic_fluent_text_underline_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_regular.imageset/pt_ic_fluent_text_underline_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_regular.imageset/sr_ic_fluent_text_underline_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_regular.imageset/hu_ic_fluent_text_underline_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_regular.imageset/es_ic_fluent_text_underline_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_regular.imageset/lv_ic_fluent_text_underline_24_regular.svg",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_text_underline_24_regular.imageset/en_ic_fluent_text_underline_24_regular.svg",
   ]
 }
 
@@ -84954,16 +84192,16 @@ imageset("ic_fluent_vehicle_car_parking_48_regular") {
 imageset("ic_fluent_vehicle_car_profile_16_filled") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_vehicle_car_profile_16_filled.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_vehicle_car_profile_16_filled.imageset/ic_fluent_vehicle_car_profile_ltr_16_filled.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_vehicle_car_profile_16_filled.imageset/ic_fluent_vehicle_car_profile_rtl_16_filled.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_vehicle_car_profile_16_filled.imageset/ic_fluent_vehicle_car_profile_ltr_16_filled.svg",
   ]
 }
 
 imageset("ic_fluent_vehicle_car_profile_16_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_vehicle_car_profile_16_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_vehicle_car_profile_16_regular.imageset/ic_fluent_vehicle_car_profile_rtl_16_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_vehicle_car_profile_16_regular.imageset/ic_fluent_vehicle_car_profile_ltr_16_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_vehicle_car_profile_16_regular.imageset/ic_fluent_vehicle_car_profile_rtl_16_regular.svg",
   ]
 }
 
@@ -84978,8 +84216,8 @@ imageset("ic_fluent_vehicle_car_profile_20_filled") {
 imageset("ic_fluent_vehicle_car_profile_20_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_vehicle_car_profile_20_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_vehicle_car_profile_20_regular.imageset/ic_fluent_vehicle_car_profile_ltr_20_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_vehicle_car_profile_20_regular.imageset/ic_fluent_vehicle_car_profile_rtl_20_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_vehicle_car_profile_20_regular.imageset/ic_fluent_vehicle_car_profile_ltr_20_regular.svg",
   ]
 }
 
@@ -84994,8 +84232,8 @@ imageset("ic_fluent_vehicle_car_profile_24_filled") {
 imageset("ic_fluent_vehicle_car_profile_24_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_vehicle_car_profile_24_regular.imageset/Contents.json",
-    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_vehicle_car_profile_24_regular.imageset/ic_fluent_vehicle_car_profile_ltr_24_regular.svg",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_vehicle_car_profile_24_regular.imageset/ic_fluent_vehicle_car_profile_rtl_24_regular.svg",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_vehicle_car_profile_24_regular.imageset/ic_fluent_vehicle_car_profile_ltr_24_regular.svg",
   ]
 }
 

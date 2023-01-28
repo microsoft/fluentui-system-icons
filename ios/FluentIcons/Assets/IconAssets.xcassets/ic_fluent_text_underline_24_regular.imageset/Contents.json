@@ -3,106 +3,6 @@
     {
       "filename": "ic_fluent_text_underline_24_regular.svg",
       "idiom": "universal"
-    },
-    {
-      "filename": "uk_ic_fluent_text_underline_24_regular.svg",
-      "idiom": "universal",
-      "locale": "uk"
-    },
-    {
-      "filename": "kk_ic_fluent_text_underline_24_regular.svg",
-      "idiom": "universal",
-      "locale": "kk"
-    },
-    {
-      "filename": "ko_ic_fluent_text_underline_24_regular.svg",
-      "idiom": "universal",
-      "locale": "ko"
-    },
-    {
-      "filename": "lv_ic_fluent_text_underline_24_regular.svg",
-      "idiom": "universal",
-      "locale": "lv"
-    },
-    {
-      "filename": "et_ic_fluent_text_underline_24_regular.svg",
-      "idiom": "universal",
-      "locale": "et"
-    },
-    {
-      "filename": "it_ic_fluent_text_underline_24_regular.svg",
-      "idiom": "universal",
-      "locale": "it"
-    },
-    {
-      "filename": "lt_ic_fluent_text_underline_24_regular.svg",
-      "idiom": "universal",
-      "locale": "lt"
-    },
-    {
-      "filename": "gl_ic_fluent_text_underline_24_regular.svg",
-      "idiom": "universal",
-      "locale": "gl"
-    },
-    {
-      "filename": "hu_ic_fluent_text_underline_24_regular.svg",
-      "idiom": "universal",
-      "locale": "hu"
-    },
-    {
-      "filename": "ca_ic_fluent_text_underline_24_regular.svg",
-      "idiom": "universal",
-      "locale": "ca"
-    },
-    {
-      "filename": "ru_ic_fluent_text_underline_24_regular.svg",
-      "idiom": "universal",
-      "locale": "ru"
-    },
-    {
-      "filename": "sr_ic_fluent_text_underline_24_regular.svg",
-      "idiom": "universal",
-      "locale": "sr"
-    },
-    {
-      "filename": "en_ic_fluent_text_underline_24_regular.svg",
-      "idiom": "universal",
-      "locale": "en"
-    },
-    {
-      "filename": "tr_ic_fluent_text_underline_24_regular.svg",
-      "idiom": "universal",
-      "locale": "tr"
-    },
-    {
-      "filename": "sl_ic_fluent_text_underline_24_regular.svg",
-      "idiom": "universal",
-      "locale": "sl"
-    },
-    {
-      "filename": "pt_ic_fluent_text_underline_24_regular.svg",
-      "idiom": "universal",
-      "locale": "pt"
-    },
-    {
-      "filename": "fr_ic_fluent_text_underline_24_regular.svg",
-      "idiom": "universal",
-      "locale": "fr"
-    },
-    {
-      "filename": "bg_ic_fluent_text_underline_24_regular.svg",
-      "idiom": "universal",
-      "locale": "bg"
-    },
-    {
-      "filename": "es_ic_fluent_text_underline_24_regular.svg",
-      "idiom": "universal",
-      "locale": "es"
-    },
-    {
-      "filename": "eu_ic_fluent_text_underline_24_regular.svg",
-      "idiom": "universal",
-      "locale": "eu"
     }
   ],
   "info": {
@@ -110,7 +10,6 @@
     "version": 1
   },
   "properties": {
-    "localizable": true,
     "template-rendering-intent": "template"
   }
 }
