@@ -11,12 +11,6 @@
       "language-direction": "right-to-left"
     },
     {
-      "filename": "ko_ic_fluent_text_direction_rotate_90_ltr_24_filled.svg",
-      "idiom": "universal",
-      "language-direction": "left-to-right",
-      "locale": "ko"
-    },
-    {
       "filename": "en_ic_fluent_text_direction_rotate_90_rtl_24_filled.svg",
       "idiom": "universal",
       "language-direction": "right-to-left",
@@ -27,6 +21,12 @@
       "idiom": "universal",
       "language-direction": "left-to-right",
       "locale": "en"
+    },
+    {
+      "filename": "ko_ic_fluent_text_direction_rotate_90_ltr_24_filled.svg",
+      "idiom": "universal",
+      "language-direction": "left-to-right",
+      "locale": "ko"
     }
   ],
   "info": {
