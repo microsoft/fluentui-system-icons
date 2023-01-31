@@ -3,6 +3,16 @@
     {
       "filename": "ic_fluent_text_direction_horizontal_right_20_regular.svg",
       "idiom": "universal"
+    },
+    {
+      "filename": "en_ic_fluent_text_direction_horizontal_right_20_regular.svg",
+      "idiom": "universal",
+      "locale": "en"
+    },
+    {
+      "filename": "ko_ic_fluent_text_direction_horizontal_right_20_regular.svg",
+      "idiom": "universal",
+      "locale": "ko"
     }
   ],
   "info": {
