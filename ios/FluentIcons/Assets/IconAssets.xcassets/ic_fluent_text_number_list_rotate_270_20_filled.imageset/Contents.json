@@ -9,16 +9,6 @@
       "filename": "ic_fluent_text_number_list_rtl_rotate_270_20_filled.svg",
       "idiom": "universal",
       "language-direction": "right-to-left"
-    },
-    {
-      "filename": "RTL_ic_fluent_text_number_list_rotate_270_20_filled.svg",
-      "idiom": "universal",
-      "locale": "RTL"
-    },
-    {
-      "filename": "LTR_ic_fluent_text_number_list_rotate_270_20_filled.svg",
-      "idiom": "universal",
-      "locale": "LTR"
     }
   ],
   "info": {
@@ -26,7 +16,6 @@
     "version": 1
   },
   "properties": {
-    "localizable": true,
     "template-rendering-intent": "template"
   }
 }
