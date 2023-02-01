@@ -74,7 +74,13 @@ function processFolder(srcPath, destPath, folderDepth) {
           } 
           else {
             if (folderDepth == 1 && folderName !== EXTENSION.toUpperCase()) {
-              locPath = path.join(locPath, path.relative(SRC_PATH, folderName));
+              console.log("Computing path");
+              console.log("locPath:" + locPath);
+              console.log("SRC_PATH:" + SRC_PATH);
+              console.log("folderName:" + folderName);
+              console.log("path.relative(SRC_PATH, folderName):" + path.relative(SRC_PATH, folderName));
+              locPath = path.join(locPath, path.relative(SRC_PATH, folderName));  
+              console.log("path.join(locPath, path.relative(SRC_PATH, folderName)):" + locPath);
             }
           }
 
