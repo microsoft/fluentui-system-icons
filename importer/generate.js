@@ -28,6 +28,8 @@ const TSX_EXTENSION = '.tsx'
 const iconNames = new Set();
 const date = new Date();
 
+console.log(argv);
+
 if (!SRC_PATH) {
   throw new Error("Icon source folder not specified by --source");
 }
