@@ -1,6 +1,6 @@
 {
   "name": "@warren-ms/react-native-icons",
-  "version": "2.0.194",
+  "version": "2.0.195",
   "sideEffects": false,
   "main": "lib-cjs/index.js",
   "module": "lib/index.js",
