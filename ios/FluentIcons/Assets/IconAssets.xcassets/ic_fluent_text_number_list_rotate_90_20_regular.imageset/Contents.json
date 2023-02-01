@@ -3,6 +3,16 @@
     {
       "filename": "ic_fluent_text_number_list_rotate_90_20_regular.svg",
       "idiom": "universal"
+    },
+    {
+      "filename": "RTL_ic_fluent_text_number_list_rotate_90_20_regular.svg",
+      "idiom": "universal",
+      "locale": "RTL"
+    },
+    {
+      "filename": "LTR_ic_fluent_text_number_list_rotate_90_20_regular.svg",
+      "idiom": "universal",
+      "locale": "LTR"
     }
   ],
   "info": {
@@ -10,6 +20,7 @@
     "version": 1
   },
   "properties": {
+    "localizable": true,
     "template-rendering-intent": "template"
   }
 }

@@ -1081,24 +1081,24 @@
 
 "@fluentui/react-icons-font-subsetting-webpack-plugin@file:/home/runner/work/fluentui-system-icons/fluentui-system-icons/packages/react-icons-font-subsetting-webpack-plugin":
   "resolved" "file:packages/react-icons-font-subsetting-webpack-plugin"
-  "version" "2.0.196"
+  "version" "2.0.197"
   dependencies:
     "subset-font" "^1.4.0"
 
 "@fluentui/react-icons@*", "@fluentui/react-icons@file:/home/runner/work/fluentui-system-icons/fluentui-system-icons/packages/react-icons":
   "resolved" "file:packages/react-icons"
-  "version" "2.0.196"
+  "version" "2.0.197"
   dependencies:
     "@griffel/react" "^1.0.0"
     "tslib" "^2.1.0"
 
 "@fluentui/svg-icons@file:/home/runner/work/fluentui-system-icons/fluentui-system-icons/packages/svg-icons":
   "resolved" "file:packages/svg-icons"
-  "version" "1.1.196"
+  "version" "1.1.197"
 
 "@fluentui/svg-sprites@file:/home/runner/work/fluentui-system-icons/fluentui-system-icons/packages/svg-sprites":
   "resolved" "file:packages/svg-sprites"
-  "version" "1.1.196"
+  "version" "1.1.197"
 
 "@gar/promisify@^1.1.3":
   "integrity" "sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw=="
@@ -1819,7 +1819,7 @@
 
 "@warren-ms/react-native-icons@file:/home/runner/work/fluentui-system-icons/fluentui-system-icons/packages/react-native-icons":
   "resolved" "file:packages/react-native-icons"
-  "version" "2.0.196"
+  "version" "2.0.197"
   dependencies:
     "@griffel/react" "^1.0.0"
     "@types/react-native" "^0.68.0"

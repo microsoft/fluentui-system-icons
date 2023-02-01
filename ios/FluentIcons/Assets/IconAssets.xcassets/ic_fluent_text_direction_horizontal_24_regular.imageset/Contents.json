@@ -9,6 +9,30 @@
       "filename": "ic_fluent_text_direction_horizontal_rtl_24_regular.svg",
       "idiom": "universal",
       "language-direction": "right-to-left"
+    },
+    {
+      "filename": "en_ic_fluent_text_direction_horizontal_rtl_24_regular.svg",
+      "idiom": "universal",
+      "language-direction": "right-to-left",
+      "locale": "en"
+    },
+    {
+      "filename": "en_ic_fluent_text_direction_horizontal_ltr_24_regular.svg",
+      "idiom": "universal",
+      "language-direction": "left-to-right",
+      "locale": "en"
+    },
+    {
+      "filename": "ko_ic_fluent_text_direction_horizontal_rtl_24_regular.svg",
+      "idiom": "universal",
+      "language-direction": "right-to-left",
+      "locale": "ko"
+    },
+    {
+      "filename": "ko_ic_fluent_text_direction_horizontal_ltr_24_regular.svg",
+      "idiom": "universal",
+      "language-direction": "left-to-right",
+      "locale": "ko"
     }
   ],
   "info": {
@@ -16,6 +40,7 @@
     "version": 1
   },
   "properties": {
+    "localizable": true,
     "template-rendering-intent": "template"
   }
 }
