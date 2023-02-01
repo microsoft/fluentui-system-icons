@@ -66,7 +66,7 @@ function processFolder(srcPath, destPath, folderDepth) {
         }
   
         if (stat.isDirectory()) {
-          const folderName = srcFile.substring(srcFile.lastIndexOf('/') + 1)
+          const folderName = path.basename(srcFile);
           let locPath = destPath
           if (KEEP_DIRS) {
             if (folderName !== EXTENSION.toUpperCase()) {
@@ -77,11 +77,12 @@ function processFolder(srcPath, destPath, folderDepth) {
             if (folderDepth == 1 && folderName !== EXTENSION.toUpperCase()) {
               console.log("Computing path");
               console.log("locPath:" + locPath);
+              console.log("srcFile:" + srcFile);
               console.log("srcPath:" + srcPath);
               console.log("SRC_PATH:" + SRC_PATH);
               console.log("folderName:" + folderName);
               console.log("path.relative(SRC_PATH, folderName):" + path.relative(SRC_PATH, folderName));
-              locPath = path.join(locPath, path.relative(SRC_PATH, folderName));  
+              locPath = path.join(locPath, folderName); 
               console.log("path.join(locPath, path.relative(SRC_PATH, folderName)):" + locPath);
             }
           }
