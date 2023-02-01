@@ -47,6 +47,8 @@ if (!fs.existsSync(DEST_PATH)) {
 processFolder(SRC_PATH, DEST_PATH, 0)
 
 function processFolder(srcPath, destPath, folderDepth) {
+  console.log("processFolder called with srcPath: " + srcPath + " and destPath: " + destPath + " and folderDepth: " + folderDepth + "");
+
   fs.readdir(srcPath, function (err, files) {
     if (err) {
       console.error("Could not list the directory.", err);
@@ -76,7 +78,7 @@ function processFolder(srcPath, destPath, folderDepth) {
             }
           }
 
-
+          console.log("Calling processFolder with srcPath: " + srcFile + " and destPath: " + locPath + " and folderDepth: " + folderDepth + "");
           processFolder(srcFile, locPath, folderDepth + 1)
           return;
         } else if (file.startsWith('.')) {
