@@ -102,6 +102,7 @@ function processFolder(srcPath, destPath, folderDepth) {
         if (!fs.existsSync(destPathAbs)) {
           fs.mkdirSync(destPathAbs, { recursive: true })
         }
+        console.log("Copying " + srcFile + " to " + destFile);
         fs.copyFileSync(srcFile, destFile);
         // Generate selector if both filled/regular styles are available
         if (SELECTOR && file.endsWith(SVG_EXTENSION)) {
