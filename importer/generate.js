@@ -28,6 +28,7 @@ const TSX_EXTENSION = '.tsx'
 const iconNames = new Set();
 const date = new Date();
 
+console.log(process.versions);
 console.log(argv);
 
 if (!SRC_PATH) {
@@ -76,6 +77,7 @@ function processFolder(srcPath, destPath, folderDepth) {
             if (folderDepth == 1 && folderName !== EXTENSION.toUpperCase()) {
               console.log("Computing path");
               console.log("locPath:" + locPath);
+              console.log("srcPath:" + srcPath);
               console.log("SRC_PATH:" + SRC_PATH);
               console.log("folderName:" + folderName);
               console.log("path.relative(SRC_PATH, folderName):" + path.relative(SRC_PATH, folderName));
