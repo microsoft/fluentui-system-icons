@@ -178,7 +178,7 @@ jobs:
     - name: Tag release
       run: git tag "$NEW_VERSION"
 
-    - name: Push release
-      run: |
-        REMOTE_REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-        git push $REMOTE_REPO HEAD:main --follow-tags --tags
+    #- name: Push release
+    #  run: |
+    #    REMOTE_REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+    #    git push $REMOTE_REPO HEAD:main --follow-tags --tags
