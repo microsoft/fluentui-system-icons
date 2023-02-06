@@ -67,10 +67,9 @@ function processFolder(srcPath, destPath, folderDepth) {
             if (folderName !== EXTENSION.toUpperCase()) {
               locPath = path.join(locPath, folderName).replace(/ /g, "")
             }
-          } 
-          else {
+          } else {
             if (folderDepth == 1 && folderName !== EXTENSION.toUpperCase()) {
-              locPath = path.join(locPath, folderName); 
+              locPath = path.join(locPath, folderName)
             }
           }
           processFolder(srcFile, locPath, folderDepth + 1)
