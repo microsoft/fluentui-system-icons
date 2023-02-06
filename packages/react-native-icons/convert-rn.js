@@ -76,7 +76,6 @@ function processFiles(src, dest) {
   // Finally add the interface definition and then write out the index.
   indexContents.push('export { FluentIconsProps } from \'./utils/FluentIconsProps.types\'');
   indexContents.push('export { default as wrapIcon } from \'./utils/wrapIcon\'');
-  indexContents.push('export { default as bundleIcon } from \'./utils/bundleIcon\'');
   indexContents.push('export * from \'./utils/useIconState\'');
   indexContents.push('export * from \'./utils/constants\'');
 
