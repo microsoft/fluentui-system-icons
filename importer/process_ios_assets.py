@@ -84,10 +84,7 @@ def add_localized_set(lang_locs, original_icon_names, icon_assets_path):
             else:
                 asset_locale = lang_loc
 
-            src = os.path.join(os.getcwd(), "dist", lang_loc, file_name)
-            dest = os.path.join(imageset_path, lang_loc + "_" + file_name)
-            print(f"Copying {src} to {dest}")
-            shutil.copyfile(src, dest)
+            shutil.copyfile(os.path.join("dist", lang_loc, file_name), os.path.join(imageset_path, lang_loc + "_" + file_name))
             imageset_contents_path = os.path.join(imageset_path, "Contents.json")
             contents_json = json.load(open(imageset_contents_path))
             

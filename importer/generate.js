@@ -28,9 +28,6 @@ const TSX_EXTENSION = '.tsx'
 const iconNames = new Set();
 const date = new Date();
 
-console.log(process.versions);
-console.log(argv);
-
 if (!SRC_PATH) {
   throw new Error("Icon source folder not specified by --source");
 }
@@ -48,8 +45,6 @@ if (!fs.existsSync(DEST_PATH)) {
 processFolder(SRC_PATH, DEST_PATH, 0)
 
 function processFolder(srcPath, destPath, folderDepth) {
-  console.log("processFolder called with srcPath: " + srcPath + " and destPath: " + destPath + " and folderDepth: " + folderDepth + "");
-
   fs.readdir(srcPath, function (err, files) {
     if (err) {
       console.error("Could not list the directory.", err);
@@ -75,19 +70,9 @@ function processFolder(srcPath, destPath, folderDepth) {
           } 
           else {
             if (folderDepth == 1 && folderName !== EXTENSION.toUpperCase()) {
-              console.log("Computing path");
-              console.log("locPath:" + locPath);
-              console.log("srcFile:" + srcFile);
-              console.log("srcPath:" + srcPath);
-              console.log("SRC_PATH:" + SRC_PATH);
-              console.log("folderName:" + folderName);
-              console.log("path.relative(SRC_PATH, folderName):" + path.relative(SRC_PATH, folderName));
               locPath = path.join(locPath, folderName); 
-              console.log("path.join(locPath, path.relative(SRC_PATH, folderName)):" + locPath);
             }
           }
-
-          console.log("Calling processFolder with srcPath: " + srcFile + " and destPath: " + locPath + " and folderDepth: " + folderDepth + "");
           processFolder(srcFile, locPath, folderDepth + 1)
           return;
         } else if (file.startsWith('.')) {
@@ -112,10 +97,9 @@ function processFolder(srcPath, destPath, folderDepth) {
         
         var destFile = path.join(destPath, file);
         var destPathAbs = path.join(process.cwd(), destPath);
-        if (!fs.existsSync(destPathAbs)) {
-          fs.mkdirSync(destPathAbs, { recursive: true })
+        if (!fs.existsSync(destPath)) {
+          fs.mkdirSync(destPath)
         }
-        console.log("Copying " + srcFile + " to " + destFile);
         fs.copyFileSync(srcFile, destFile);
         // Generate selector if both filled/regular styles are available
         if (SELECTOR && file.endsWith(SVG_EXTENSION)) {
