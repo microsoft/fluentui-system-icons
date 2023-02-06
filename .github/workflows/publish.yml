@@ -42,6 +42,12 @@ jobs:
         os.system(f'echo \"REACT_VERSION={major}.{minor}.{int(asset) + 1}\" >> \$GITHUB_ENV')
         """
 
+    # Needs to be "-E" instead of "-r" on macOS
+    - name: Replace version number in react-native-icons/package.json
+      run: |
+        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?(-rc\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-native-icons/package.json
+        rm packages/react-native-icons/package.json.bk
+
     - name: Use Node 18
       uses: actions/setup-node@v1
       with:
@@ -164,6 +170,17 @@ jobs:
         token: ${{ secrets.NPM_TOKEN }}
         access: public
         package: packages/react-icons/package.json 
+
+    - name: Build React-Native library
+      run: |
+        npm run build
+      working-directory: packages/react-native-icons 
+      
+    - uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }} 
+        access: public
+        package: packages/react-native-icons/package.json 
 
     # - uses: JS-DevTools/npm-publish@v1
     #   with:

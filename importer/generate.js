@@ -61,7 +61,7 @@ function processFolder(srcPath, destPath, folderDepth) {
         }
   
         if (stat.isDirectory()) {
-          const folderName = srcFile.substring(srcFile.lastIndexOf('/') + 1)
+          const folderName = path.basename(srcFile)
           let locPath = destPath
           if (KEEP_DIRS) {
             if (folderName !== EXTENSION.toUpperCase()) {
