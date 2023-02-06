@@ -61,7 +61,7 @@ function processFolder(srcPath, destPath, folderDepth) {
         }
   
         if (stat.isDirectory()) {
-          const folderName = path.basename(srcFile);
+          const folderName = path.basename(srcFile)
           let locPath = destPath
           if (KEEP_DIRS) {
             if (folderName !== EXTENSION.toUpperCase()) {
@@ -95,7 +95,6 @@ function processFolder(srcPath, destPath, folderDepth) {
         }
         
         var destFile = path.join(destPath, file);
-        var destPathAbs = path.join(process.cwd(), destPath);
         if (!fs.existsSync(destPath)) {
           fs.mkdirSync(destPath)
         }
