@@ -10,6 +10,16 @@
       "locale": "en"
     },
     {
+      "filename": "ko_ic_fluent_local_language_24_filled.svg",
+      "idiom": "universal",
+      "locale": "ko"
+    },
+    {
+      "filename": "ja_ic_fluent_local_language_24_filled.svg",
+      "idiom": "universal",
+      "locale": "ja"
+    },
+    {
       "filename": "zh_ic_fluent_local_language_24_filled.svg",
       "idiom": "universal",
       "locale": "zh_CN"
@@ -18,11 +28,6 @@
       "filename": "zh_ic_fluent_local_language_24_filled.svg",
       "idiom": "universal",
       "locale": "zh_TW"
-    },
-    {
-      "filename": "ko_ic_fluent_local_language_24_filled.svg",
-      "idiom": "universal",
-      "locale": "ko"
     }
   ],
   "info": {
