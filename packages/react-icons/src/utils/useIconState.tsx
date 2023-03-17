@@ -1,6 +1,5 @@
 import { FluentIconsProps } from "./FluentIconsProps.types";
 import { makeStyles, mergeClasses } from "@griffel/react";
-import { useIconContext } from "../contexts";
 
 const useRootStyles = makeStyles({
     root: {
@@ -10,15 +9,12 @@ const useRootStyles = makeStyles({
         "@media (forced-colors: active)": {
           forcedColorAdjust: 'auto',
         }
-    },
-    flipped: {
-      transform: 'scaleX(-1)'
     }
 });
 
 export const useIconState = <TBaseAttributes extends (React.SVGAttributes<SVGElement> | React.HTMLAttributes<HTMLElement>) = React.SVGAttributes<SVGElement>>(props: FluentIconsProps<TBaseAttributes>): Omit<FluentIconsProps<TBaseAttributes>, 'primaryFill'> => {
     const { title, primaryFill = "currentColor", ...rest } = props;
-    const iconContext = useIconContext();
+    
     const state = {
       ...rest,
       title: undefined,
@@ -27,7 +23,7 @@ export const useIconState = <TBaseAttributes extends (React.SVGAttributes<SVGEle
   
     const styles = useRootStyles();
   
-    state.className = mergeClasses(styles.root, iconContext.textDirection === 'rtl' && styles.flipped, state.className);
+    state.className = mergeClasses(styles.root, state.className);
   
     if (title) {
       state['aria-label'] = title;

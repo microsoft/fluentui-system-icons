@@ -131,17 +131,24 @@ function processFolder(srcPath, destPath, resizable) {
       var destFilename = _.camelCase(iconName) // We want them to be camelCase, so access_time would become accessTime here
       destFilename = destFilename.replace(destFilename.substring(0, 1), destFilename.substring(0, 1).toUpperCase()) // capitalize the first letter
 
+      /**
+       * This is a placeholder to add the check to see if the icon should be autoflipped
+       * 
+       * var shouldAutoFlip = shouldFlip(rtlFile);
+       */
+
       var iconContent = fs.readFileSync(srcFile, { encoding: "utf8" })
       
       var jsxCode = resizable ? svgr.default.sync(iconContent, svgrOpts, { filePath: file }) : svgr.default.sync(iconContent, svgrOptsSizedIcons, { filePath: file })
       var jsCode = 
 `
-
-const ${destFilename}Icon = (props: FluentIconsProps) => {
+export const ${destFilename} = (props: FluentIconsProps) => {
   const { fill: primaryFill = 'currentColor', className } = props;
+  const state = useIconState(props);
+  ${shouldAutoFlip ? 'useAutoFlippingIconStyles(state);' : ''}
   return ${jsxCode};
 }
-export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename}Icon, '${destFilename}');
+${destFilename}.displayName = '${destFilename}';
       `
       iconExports.push(jsCode);
     }
@@ -155,7 +162,6 @@ export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename
   }
 
   for(const chunk of iconChunks) {
-    chunk.unshift(`import wrapIcon from "../utils/wrapIcon";`)
     chunk.unshift(`import { FluentIconsProps } from "../utils/FluentIconsProps.types";`)
     chunk.unshift(`import * as React from "react";`)
   }
