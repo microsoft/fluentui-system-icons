@@ -67,11 +67,13 @@ function processFiles(src, dest) {
 
   const indexPath = path.join(dest, 'index.tsx')
   // Finally add the interface definition and then write out the index.
-  indexContents.push('export { FluentIconsProps } from \'./utils/FluentIconsProps.types\'');
+  indexContents.push('export type { FluentIconsProps } from \'./utils/FluentIconsProps.types\'');
   indexContents.push('export { default as wrapIcon } from \'./utils/wrapIcon\'');
   indexContents.push('export { default as bundleIcon } from \'./utils/bundleIcon\'');
   indexContents.push('export * from \'./utils/useIconState\'');
   indexContents.push('export * from \'./utils/constants\'');
+  indexContents.push('export { IconContextProvider, useIconContext } from \'./contexts/index\'');
+  indexContents.push('export type { IconContextValue } from \'./contexts/index\'');
 
   fs.writeFileSync(indexPath, indexContents.join('\n'), (err) => {
     if (err) throw err;
