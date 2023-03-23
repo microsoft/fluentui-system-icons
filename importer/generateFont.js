@@ -10,6 +10,14 @@ const glob = promisify(require('glob'));
 const process = require("process");
 const argv = require("yargs").boolean("selector").default("selector", false).argv;
 const _ = require("lodash");
+
+// Temporary patch until https://github.com/tancredi/fantasticon/pull/507 is merged and published
+(function patchFantasticon() {
+    const filePath = require.resolve('fantasticon/lib/generators/asset-types/svg');
+    const { readFileSync, writeFileSync } = require('fs');
+    const fileContent = readFileSync(filePath, 'utf-8');
+    writeFileSync(filePath, fileContent.replace(/String\.fromCharCode/g, "String.fromCodePoint"));
+})()
 const fantasticon = require('fantasticon');
 
 const SRC_PATH = argv.source;
@@ -27,6 +35,7 @@ if (!(ICON_TYPE === 'Filled' || ICON_TYPE === 'Regular' || ICON_TYPE === 'Resiza
     throw new Error("Icon type not specified");
 }
 
+const MAX_PRIVATE_USE_CODEPOINTS = 137468;
 async function main() {
     await mkdirp(DEST_PATH);
     const stagingFolder = path.resolve(DEST_PATH, ICON_TYPE);
@@ -35,8 +44,8 @@ async function main() {
     const svgFiles = await glob(path.resolve(SRC_PATH, `*_${ICON_TYPE === 'Resizable' ? '20_{filled,regular}' : ICON_TYPE.toLowerCase()}.svg`));
     const icons = new Set(svgFiles.map(file => path.basename(file).replace(/\.svg$/, '')));
 
-    if (icons.size > 6400) {
-        throw new Error('Too many icons to fit into the Unicode private use area (0xE000-0xF8FF). See https://unicode-table.com/en/blocks/private-use-area/')
+    if (icons.size > MAX_PRIVATE_USE_CODEPOINTS) {
+        throw new Error('Too many icons to fit into the Unicode private use area(s). See https://www.unicode.org/faq/private_use.html')
     }
 
     // Copy all icons of the given icon type to the staging folder
@@ -89,10 +98,15 @@ async function getCodepoints(icons) {
 
     for (const iconName of icons) {
         const originalCodepoint = codepoints[iconName]
-        if (!originalCodepoint || originalCodepoint < 0xe000 || originalCodepoint > 0xf8ff) {
+        if (!originalCodepoint || !isPrivateUseAreaCodepoint(originalCodepoint)) {
             // Find a new free codepoint
             while (usedCodePoints.has(nextCodePoint)) {
                 nextCodePoint++;
+                if (nextCodePoint === 0xf900) {
+                    nextCodePoint = 0xF0000;
+                } else if (nextCodePoint === 0xFFFFE) {
+                    nextCodePoint = 0x100000;
+                }
             }
 
             usedCodePoints.add(nextCodePoint);
@@ -102,6 +116,14 @@ async function getCodepoints(icons) {
 
     return codepoints;
 
+}
+
+/**
+ * @param {number} codepoint 
+ * @returns {boolean} Whether the codepoint falls within one of the Unicode Private Use Areas
+ */
+function isPrivateUseAreaCodepoint(codepoint) {
+    return (codepoint >= 0xe000 && codepoint <= 0xf8ff) || (codepoint >= 0xF0000 && codepoint <= 0xFFFFD) || (codepoint >= 0x100000 && codepoint <= 0x10FFFD);
 }
 
 main();
