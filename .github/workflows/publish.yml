@@ -66,7 +66,7 @@ jobs:
       run: npm run deploy:flutter
       working-directory: importer
 
-    # # The name should be same as the package name on pub.dev
+    # The name should be same as the package name on pub.dev
     - name: 'fluentui_system_icons'
       uses: k-paxian/dart-package-publisher@master
       with:
@@ -94,13 +94,13 @@ jobs:
         sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" ios/FluentIcons.podspec
         rm ios/FluentIcons.podspec.bk
 
-    # # Needs to be "-E" instead of "-r" on macOS
+    # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version number in flutter/CHANGELOG.md
       run: |
         sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" flutter/CHANGELOG.md
         rm flutter/CHANGELOG.md.bk
 
-    # # Needs to be "-E" instead of "-r" on macOS
+    # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version number in flutter/pubspec.yaml
       run: |
         sed -i.bk -r "s/version: [0-9]+\.[0-9]+\.[0-9]+/version: $NEW_VERSION/g" flutter/pubspec.yaml
@@ -124,7 +124,7 @@ jobs:
         sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?(-rc\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-icons/package.json
         rm packages/react-icons/package.json.bk
 
-    # # Needs to be "-E" instead of "-r" on macOS
+    # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version number in react-icons-font-subsetting-webpack-plugin/package.json
       run: |
         sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?(-rc\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-icons-font-subsetting-webpack-plugin/package.json
@@ -150,7 +150,7 @@ jobs:
 
     - name: Build Webpack plugin library
       run: |
-       npm run build
+        npm run build
       working-directory: packages/react-icons-font-subsetting-webpack-plugin 
 
     - uses: JS-DevTools/npm-publish@v1
