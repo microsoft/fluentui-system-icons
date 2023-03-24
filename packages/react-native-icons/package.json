@@ -1,0 +1,70 @@
+{
+  "name": "@fluentui/react-native-icons",
+  "version": "0.0.1",
+  "sideEffects": false,
+  "main": "lib-cjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "description": "Fluent System Icons are a collection of familiar, friendly, and modern icons from Microsoft.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui-system-icons.git"
+  },
+  "scripts": {
+    "clean": "find ./src -type f ! -name \"wrapIcon.tsx\" -name \"*.tsx\" -delete",
+    "cleanSvg": "rm -rf ./intermediate",
+    "copy": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
+    "convert:svg": "node convert.js --source=./intermediate --dest=./src",
+    "rollup": "node ./generateRollup.js",
+    "optimize": "svgo --config svgo.config.js --folder=./intermediate --precision=2",
+    "unfill": "find ./intermediate -type f -name \"*.svg\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./intermediate -type f -name \"*.bak\" -delete",
+    "build": "npm run copy && npm run convert:svg && npm run cleanSvg && npm run build:esm && npm run build:cjs",
+    "build:cjs": "tsc --module commonjs --outDir lib-cjs && babel lib-cjs --out-dir lib-cjs",
+    "build:esm": "tsc && babel lib --out-dir lib"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-typescript": "^7.16.7",
+    "@svgr/core": "^5.5.0",
+    "@types/react": "^17.0.2",
+    "@types/react-native": "^0.68.0",
+    "cpy-cli": "^4.1.0",
+    "glob": "^7.2.0",
+    "lodash": "^4.17.21",
+    "mkdirp": "^1.0.4",
+    "react": "^17.0.1",
+    "react-native": "^0.68.0",
+    "react-native-svg": "12.5.0",
+    "renamer": "^2.0.1",
+    "svgo": "^2.8.0",
+    "typescript": "~4.1.0",
+    "yargs": "^14.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.1.0"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0 <19.0.0",
+    "react-native": "^0.68.0"
+  },
+  "files": [
+    "lib/",
+    "lib-cjs/"
+  ],
+  "exports": {
+    ".": {
+      "default": {
+        "types": "./lib/index.d.ts",
+        "import": "./lib/index.js",
+        "require": "./lib-cjs/index.js"
+      }
+    },
+    "./lib/svg": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-cjs/index.js"
+    }
+  }
+}
