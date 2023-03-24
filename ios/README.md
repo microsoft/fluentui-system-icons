@@ -55,7 +55,7 @@ At build/release time you can run the following script to ensure all unused asse
 CocoaPods
 
 ```
-ICON_SOURCE_PATH="./Pods/FluentIcons"
+ICON_SOURCE_PATH="${PODS_ROOT}/FluentIcons"
 
 $ICON_SOURCE_PATH/ios/remove-unused-fluent-icons/run \
 	--path-to-source-code "." \
