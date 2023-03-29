@@ -2,8 +2,8 @@ name: Cocoapods publish
 
 on:
   workflow_dispatch:
-  # push:
-  #   branches: [ main ]
+  push:
+     branches: [ main ]
 
 jobs:
   # Only runs on the version update commit
