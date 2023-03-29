@@ -44,3 +44,5 @@ const FluentIconsTest: React.FunctionComponent = () => {
   );
 };
 ```
+
+###### tags: `Templates` `Documentation`

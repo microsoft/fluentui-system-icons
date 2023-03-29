@@ -5,6 +5,11 @@
       "idiom": "universal"
     },
     {
+      "filename": "ja_ic_fluent_local_language_24_filled.svg",
+      "idiom": "universal",
+      "locale": "ja"
+    },
+    {
       "filename": "zh_ic_fluent_local_language_24_filled.svg",
       "idiom": "universal",
       "locale": "zh_CN"

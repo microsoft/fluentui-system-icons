@@ -1,6 +1,6 @@
 {
-  "name": "@warren-ms/react-native-icons",
-  "version": "2.0.197",
+  "name": "@fluentui/react-native-icons",
+  "version": "0.0.1",
   "sideEffects": false,
   "main": "lib-cjs/index.js",
   "module": "lib/index.js",
@@ -9,20 +9,13 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/warren-ms/fluentui-system-icons.git"
+    "url": "https://github.com/microsoft/fluentui-system-icons.git"
   },
   "scripts": {
     "clean": "find ./src -type f ! -name \"wrapIcon.tsx\" -name \"*.tsx\" -delete",
     "cleanSvg": "rm -rf ./intermediate",
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
-    "copy:font-files": "cpy './src/utils/fonts/*.{ttf,woff,woff2,json}' ./lib/utils/fonts/. && cpy './src/utils/fonts/*.{ttf,woff,woff2,json}' ./lib-cjs/utils/fonts/.",
-    "convert:svg": "node convert.js --source=./intermediate --dest=./src",
     "convert:rnsvg": "node ../react-native-icons/convert-rn.js --source=./intermediate --dest=./src --native=true",
-    "convert:fonts": "node convert-font.js --source=./src/utils/fonts --dest=./src/fonts --codepointDest=./src/utils/fonts",
-    "generate:font-regular": "node ../../importer/generateFont.js --source=intermediate --dest=src/utils/fonts --iconType=Regular --codepoints=../../fonts/FluentSystemIcons-Regular.json",
-    "generate:font-filled": "node ../../importer/generateFont.js --source=intermediate --dest=src/utils/fonts --iconType=Filled --codepoints=../../fonts/FluentSystemIcons-Filled.json",
-    "generate:font-resizable": "node ../../importer/generateFont.js --source=intermediate --dest=src/utils/fonts --iconType=Resizable",
-    "generate:font": "npm run generate:font-regular && npm run generate:font-filled && npm run generate:font-resizable",
     "rollup": "node ./generateRollup.js",
     "optimize": "svgo --config svgo.config.js --folder=./intermediate --precision=2",
     "unfill": "find ./intermediate -type f -name \"*.svg\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./intermediate -type f -name \"*.bak\" -delete",
@@ -64,26 +57,11 @@
   ],
   "exports": {
     ".": {
-      "fluentIconFont": {
-        "types": "./lib/fonts/index.d.ts",
-        "import": "./lib/fonts/index.js",
-        "require": "./lib-cjs/fonts/index.js"
-      },
       "default": {
         "types": "./lib/index.d.ts",
         "import": "./lib/index.js",
         "require": "./lib-cjs/index.js"
       }
-    },
-    "./lib/fonts": {
-      "types": "./lib/fonts/index.d.ts",
-      "import": "./lib/fonts/index.js",
-      "require": "./lib-cjs/fonts/index.js"
-    },
-    "./lib/svg": {
-      "types": "./lib/index.d.ts",
-      "import": "./lib/index.js",
-      "require": "./lib-cjs/index.js"
     }
   }
 }
