@@ -107,8 +107,7 @@ jobs:
         rm flutter/pubspec.yaml.bk
 
     # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in 
-    /package.json
+    - name: Replace version number in package.json
       run: |
         sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/svg-icons/package.json
         rm packages/svg-icons/package.json.bk
@@ -260,7 +259,7 @@ jobs:
         REMOTE_REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
         git push $REMOTE_REPO HEAD:main --follow-tags --tags
 
-   publish-android-demo:
+    publish-android-demo:
     name: Publish Android demo app
     runs-on: ubuntu-latest
     needs: publish-library
@@ -277,6 +276,7 @@ jobs:
         major, minor, patch = current_version.split('.')
         os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
         """
+        
     - name: Use Node 11
       uses: actions/setup-node@v1
       with:
@@ -298,6 +298,7 @@ jobs:
       run: |
         echo "${{ secrets.ANDROID_KEYSTORE }}" > release.keystore.asc
         gpg -d --passphrase "${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" --batch release.keystore.asc > release.keystore
+    
     - name: Build Android demo app
       uses: eskatos/gradle-command-action@v1
       with:
