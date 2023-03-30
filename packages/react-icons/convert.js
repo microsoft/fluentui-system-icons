@@ -1,10 +1,8 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
-const svgr = require("@svgr/core");
 const fs = require("fs");
 const path = require("path");
-const process = require("process");
 const argv = require("yargs").boolean("selector").default("selector", false).argv;
 const _ = require("lodash");
 
@@ -86,26 +84,6 @@ function processFiles(src, dest) {
  */
 function processFolder(srcPath, destPath, resizable) {
   var files = fs.readdirSync(srcPath)
-
-  // These options will be passed to svgr/core
-  // See https://react-svgr.com/docs/options/ for more info
-  var svgrOpts = {
-    template: fileTemplate,
-    expandProps: 'start', // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
-    svgProps: { className: '{className}'}, // In order to provide styling, className will be used
-    replaceAttrValues: { '#212121': '{primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
-    typescript: true,
-    icon: true,
-  }
-
-  var svgrOptsSizedIcons = {
-    template: fileTemplate,
-    expandProps: 'start', // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
-    svgProps: { className: '{className}'}, // In order to provide styling, className will be used
-    replaceAttrValues: { '#212121': '{primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
-    typescript: true,
-  }
-
   /** @type string[] */
   const iconExports = [];
   files.forEach(function (file, index) {
@@ -129,17 +107,10 @@ function processFolder(srcPath, destPath, resizable) {
       destFilename = destFilename.replace(destFilename.substring(0, 1), destFilename.substring(0, 1).toUpperCase()) // capitalize the first letter
 
       var iconContent = fs.readFileSync(srcFile, { encoding: "utf8" })
-      
-      var jsxCode = resizable ? svgr.default.sync(iconContent, svgrOpts, { filePath: file }) : svgr.default.sync(iconContent, svgrOptsSizedIcons, { filePath: file })
-      var jsCode = 
-`
-
-const ${destFilename}Icon = (props: FluentIconsProps) => {
-  const { fill: primaryFill = 'currentColor', className } = props;
-  return ${jsxCode};
-}
-export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename}Icon, '${destFilename}');
-      `
+      const getAttr = (key) => [...iconContent.matchAll(`(?<= ${key}=)".+?"`)].map((v) => v[0]);
+      const width = resizable ? '"1em"' : getAttr("width")[0];
+      const paths = getAttr("d").join(',');
+      var jsCode = `export const ${destFilename} = /*#__PURE__*/createFluentIcon('${destFilename}', ${width}, [${paths}]);`
       iconExports.push(jsCode);
     }
   });
@@ -148,13 +119,12 @@ export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename
   /** @type string[][] */
   const iconChunks = [];
   while(iconExports.length > 0) {
-    iconChunks.push(iconExports.splice(0, 500));
+    iconChunks.push(iconExports.splice(0, 1000));
   }
 
   for(const chunk of iconChunks) {
-    chunk.unshift(`import wrapIcon from "../utils/wrapIcon";`)
-    chunk.unshift(`import { FluentIconsProps } from "../utils/FluentIconsProps.types";`)
-    chunk.unshift(`import * as React from "react";`)
+    chunk.unshift(`import { createFluentIcon } from "../utils/createFluentIcon";`);
+    chunk.unshift(`import type { FluentIcon } from "../utils/createFluentIcon";`);
   }
 
   /** @type string[] */
