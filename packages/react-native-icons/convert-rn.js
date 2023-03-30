@@ -5,12 +5,20 @@ const svgr = require("@svgr/core");
 const fs = require("fs");
 const path = require("path");
 const process = require("process");
-const argv = require("yargs").boolean("selector").default("selector", false).argv;
+const argv = require("yargs")
+  .boolean("selector")
+  .default("selector", false)
+  .option("native", {
+    type: "boolean",
+  }).argv;
 const _ = require("lodash");
 
 const SRC_PATH = argv.source;
 const DEST_PATH = argv.dest;
+const REACT_NATIVE = argv.native;
 const TSX_EXTENSION = '.tsx'
+
+const rnSvgElements = ['Path', 'Circle', 'Ellipse', 'G', 'Line', 'Polygon', 'Polyline', 'Rect', 'Symbol', 'Text', 'Use', 'Defs', 'LinearGradient', 'RadialGradient', 'Stop', 'ClipPath', 'Pattern', 'Mask'];
 
 if (!SRC_PATH) {
   throw new Error("Icon source folder not specified by --source");
@@ -68,7 +76,6 @@ function processFiles(src, dest) {
   // Finally add the interface definition and then write out the index.
   indexContents.push('export { FluentIconsProps } from \'./utils/FluentIconsProps.types\'');
   indexContents.push('export { default as wrapIcon } from \'./utils/wrapIcon\'');
-  indexContents.push('export { default as bundleIcon } from \'./utils/bundleIcon\'');
   indexContents.push('export * from \'./utils/useIconState\'');
   indexContents.push('export * from \'./utils/constants\'');
 
@@ -91,19 +98,23 @@ function processFolder(srcPath, destPath, resizable) {
   // See https://react-svgr.com/docs/options/ for more info
   var svgrOpts = {
     template: fileTemplate,
-    expandProps: 'start', // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
-    svgProps: { className: '{className}'}, // In order to provide styling, className will be used
+    expandProps: 'end', // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
+    //svgProps: { className: '{className}'}, // In order to provide styling, className will be used
     replaceAttrValues: { '#212121': '{primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
     typescript: true,
     icon: true,
+    prettier:true,
+    native: REACT_NATIVE,
   }
 
   var svgrOptsSizedIcons = {
     template: fileTemplate,
-    expandProps: 'start', // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
-    svgProps: { className: '{className}'}, // In order to provide styling, className will be used
+    expandProps: 'end', // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
+    //svgProps: { className: '{className}'}, // In order to provide styling, className will be used
     replaceAttrValues: { '#212121': '{primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
     typescript: true,
+    prettier:true,
+    native: REACT_NATIVE,
   }
 
   /** @type string[] */
@@ -130,14 +141,15 @@ function processFolder(srcPath, destPath, resizable) {
 
       var iconContent = fs.readFileSync(srcFile, { encoding: "utf8" })
       
-      var jsxCode = resizable ? svgr.default.sync(iconContent, svgrOpts, { filePath: file }) : svgr.default.sync(iconContent, svgrOptsSizedIcons, { filePath: file })
+      var jsxCode = resizable ? svgr.transform.sync(iconContent, svgrOpts, { filePath: file }) : svgr.transform.sync(iconContent, svgrOptsSizedIcons, { filePath: file })
       var jsCode = 
 `
 
-const ${destFilename}Icon = (props: FluentIconsProps) => {
-  const { fill: primaryFill = 'currentColor', className } = props;
+const ${destFilename}Icon = (props) => {
+  const { fill: primaryFill = 'currentColor' } = props;
   return ${jsxCode};
 }
+
 export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename}Icon, '${destFilename}');
       `
       iconExports.push(jsCode);
@@ -153,8 +165,24 @@ export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename
 
   for(const chunk of iconChunks) {
     chunk.unshift(`import wrapIcon from "../utils/wrapIcon";`)
-    chunk.unshift(`import { FluentIconsProps } from "../utils/FluentIconsProps.types";`)
     chunk.unshift(`import * as React from "react";`)
+
+    var foundElements = {};
+    
+    chunk.forEach(text => 
+      {
+        rnSvgElements.forEach(element => {
+          if (!foundElements[element] && text.match(`<${element}[\\S\\s]+\\/>`) || text.match(`<${element}[\s\S]+>[\s\S]+<\/${element}>`))
+            foundElements[element] = true;
+        });
+      });
+
+    var extraImports = '';
+    Object.entries(foundElements).forEach(([element, _]) => {
+      extraImports += ', ' + element;
+    });
+
+    chunk.unshift(`import {Svg${extraImports}} from "react-native-svg";`)
   }
 
   /** @type string[] */
@@ -163,16 +191,14 @@ export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename
   return chunkContent;
 }
 
-function fileTemplate(
-  { template },
-  opts,
-  { imports, interfaces, componentName, props, jsx, exports }
-) {
-  const plugins = ['jsx', 'typescript']
-  const tpl = template.smart({ plugins })
+function fileTemplate (variables, { tpl })
+{
+  variables.componentName = variables.componentName.substring(3);
+  variables.componentName = variables.componentName.replace('IcFluent', '');
 
-  componentName.name = componentName.name.substring(3)
-  componentName.name = componentName.name.replace('IcFluent', '')
+  return tpl`
+  ${variables.jsx}
+ 
+`;
+};
   
-	return jsx;
-}
