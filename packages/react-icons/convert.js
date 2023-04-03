@@ -110,7 +110,7 @@ function processFolder(srcPath, destPath, resizable) {
       const getAttr = (key) => [...iconContent.matchAll(`(?<= ${key}=)".+?"`)].map((v) => v[0]);
       const width = resizable ? '"1em"' : getAttr("width")[0];
       const paths = getAttr("d").join(',');
-      var jsCode = `export const ${destFilename} = /*#__PURE__*/createFluentIcon('${destFilename}', ${width}, [${paths}]);`
+      var jsCode = `export const ${destFilename} = (/*#__PURE__*/createFluentIcon('${destFilename}', ${width}, [${paths}]));`
       iconExports.push(jsCode);
     }
   });
