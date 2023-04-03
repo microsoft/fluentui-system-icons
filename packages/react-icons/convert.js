@@ -10,6 +10,7 @@ const _ = require("lodash");
 
 const SRC_PATH = argv.source;
 const DEST_PATH = argv.dest;
+const RTL_FILTER_PATH =argv.filter;
 const TSX_EXTENSION = '.tsx'
 
 if (!SRC_PATH) {
@@ -18,12 +19,17 @@ if (!SRC_PATH) {
 if (!DEST_PATH) {
   throw new Error("Output destination folder not specified by --dest");
 }
+if (!RTL_FILTER_PATH) {
+  throw new Error("Filter folder not specified by --filter");
+}
 
 if (!fs.existsSync(DEST_PATH)) {
   fs.mkdirSync(DEST_PATH);
 }
 
 processFiles(SRC_PATH, DEST_PATH)
+const filterFile = fs.readFileSync(RTL_FILTER_PATH, { encoding: 'utf8' })
+var rtlArray = filterFile.split(/\r?\n/);
 
 function processFiles(src, dest) {
   /** @type string[] */
@@ -124,17 +130,13 @@ function processFolder(srcPath, destPath, resizable) {
       if(resizable && !file.includes("20")) {
         return
       }
+      // Check to see if the svg should be autoflipped
+      var shouldAutoFlip = rtlArray.includes(file);
       var iconName = file.substr(0, file.length - 4) // strip '.svg'
       iconName = iconName.replace("ic_fluent_", "") // strip ic_fluent_
       iconName = resizable ? iconName.replace("20", "") : iconName
       var destFilename = _.camelCase(iconName) // We want them to be camelCase, so access_time would become accessTime here
       destFilename = destFilename.replace(destFilename.substring(0, 1), destFilename.substring(0, 1).toUpperCase()) // capitalize the first letter
-
-      /**
-       * This is a placeholder to add the check to see if the icon should be autoflipped
-       * 
-       * var shouldAutoFlip = shouldFlip(rtlFile);
-       */
 
       var iconContent = fs.readFileSync(srcFile, { encoding: "utf8" })
       

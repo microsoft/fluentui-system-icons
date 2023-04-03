@@ -16,7 +16,7 @@
     "cleanSvg": "rm -rf ./intermediate",
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
     "copy:font-files": "cpy './src/utils/fonts/*.{ttf,woff,woff2,json}' ./lib/utils/fonts/. && cpy './src/utils/fonts/*.{ttf,woff,woff2,json}' ./lib-cjs/utils/fonts/.",
-    "convert:svg": "node convert.js --source=./intermediate --dest=./src",
+    "convert:svg": "node convert.js --source=./intermediate --dest=./src --filter=../../importer/rtl.txt",
     "convert:fonts": "node convert-font.js --source=./src/utils/fonts --dest=./src/fonts --codepointDest=./src/utils/fonts",
     "generate:font-regular": "node ../../importer/generateFont.js --source=intermediate --dest=src/utils/fonts --iconType=Regular --codepoints=../../fonts/FluentSystemIcons-Regular.json",
     "generate:font-filled": "node ../../importer/generateFont.js --source=intermediate --dest=src/utils/fonts --iconType=Filled --codepoints=../../fonts/FluentSystemIcons-Filled.json",
