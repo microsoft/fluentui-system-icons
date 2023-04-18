@@ -21,10 +21,7 @@ let package = Package(
         .target(
             name: "FluentIcons",
             dependencies: [],
-            path: "ios/FluentIcons",
-            exclude: [
-                "android", "art", "assets", "flutter", "fonts", "importer", "packages", "generate_icons_md.py", "icon_filled.md", "icon_regular.md", "LICENSE", "NOTICE", "package-lock.json", "package.json", "SECURITY.md", "yarn.lock"
-            ]
+            path: "ios/FluentIcons"
         )
     ]
 )
