@@ -16,7 +16,7 @@ public extension NSImage {
     // are generated so we can be confident that the image
     // exits at runtime.
     #if SWIFT_PACKAGE
-    return NSImage.fluentIconBundle.image(forResource: NSImage.Name(fluent.resourceString))!
+    return Bundle.module.image(forResource: NSImage.Name(fluent.resourceString))!
     #else
     return NSImage.fluentIconBundle.image(forResource: NSImage.Name(fluent.resourceString))!
     #endif
