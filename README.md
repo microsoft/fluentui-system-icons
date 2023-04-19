@@ -51,6 +51,11 @@ git "git@github.com:microsoft/fluentui-system-icons.git" "1.1.200"
 
 For library docs, see [ios/README.md](ios/README.md).
 
+#### Swift Package Manager
+```
+.package(url: "https://github.com/microsoft/fluentui-system-icons", .upToNextMajor(from: "1.1.200"))
+```
+
 ### Flutter
 
 In the `pubspec.yaml` of your flutter project, add the following dependency:
