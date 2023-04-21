@@ -16,8 +16,8 @@
     "cleanSvg": "rm -rf ./intermediate",
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
     "copy:font-files": "cpy './src/utils/fonts/*.{ttf,woff,woff2,json}' ./lib/utils/fonts/. && cpy './src/utils/fonts/*.{ttf,woff,woff2,json}' ./lib-cjs/utils/fonts/.",
-    "convert:svg": "node convert.js --source=./intermediate --dest=./src",
-    "convert:fonts": "node convert-font.js --source=./src/utils/fonts --dest=./src/fonts --codepointDest=./src/utils/fonts",
+    "convert:svg": "node convert.js --source=./intermediate --dest=./src --filter=../../importer/rtl.txt",
+    "convert:fonts": "node convert-font.js --source=./src/utils/fonts --dest=./src/fonts --codepointDest=./src/utils/fonts --filter=../../importer/rtl.txt",
     "generate:font-regular": "node ../../importer/generateFont.js --source=intermediate --dest=src/utils/fonts --iconType=Regular --codepoints=../../fonts/FluentSystemIcons-Regular.json",
     "generate:font-filled": "node ../../importer/generateFont.js --source=intermediate --dest=src/utils/fonts --iconType=Filled --codepoints=../../fonts/FluentSystemIcons-Filled.json",
     "generate:font-resizable": "node ../../importer/generateFont.js --source=intermediate --dest=src/utils/fonts --iconType=Resizable",
@@ -27,7 +27,8 @@
     "unfill": "find ./intermediate -type f -name \"*.svg\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./intermediate -type f -name \"*.bak\" -delete",
     "build": "npm run copy && npm run generate:font && npm run optimize && npm run unfill && npm run convert:svg && npm run convert:fonts && npm run cleanSvg && npm run build:esm && npm run build:cjs && npm run copy:font-files",
     "build:cjs": "tsc --module commonjs --outDir lib-cjs && babel lib-cjs --out-dir lib-cjs",
-    "build:esm": "tsc && babel lib --out-dir lib"
+    "build:esm": "tsc && babel lib --out-dir lib",
+    "filter": "node filter.js --filter=../../importer/rtl.txt"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.0",
@@ -81,4 +82,3 @@
     }
   }
 }
-

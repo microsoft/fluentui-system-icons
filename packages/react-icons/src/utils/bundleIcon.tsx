@@ -1,5 +1,6 @@
 import * as React from "react";
 import { iconFilledClassName, iconRegularClassName } from "./constants";
+import type { FluentIcon } from "../utils/createFluentIcon";
 import { FluentIconsProps } from "./FluentIconsProps.types";
 import { makeStyles, mergeClasses } from "@griffel/react";
 
@@ -8,8 +9,8 @@ const useBundledIconStyles = makeStyles({
     visible: { display: "inline" }
 });
 
-const bundleIcon = (FilledIcon: React.FC<FluentIconsProps>, RegularIcon: React.FC<FluentIconsProps>) => {
-    const Component: React.FC<FluentIconsProps> = (props) => {
+const bundleIcon = (FilledIcon: FluentIcon, RegularIcon: FluentIcon) => {
+    const Component: FluentIcon = (props: FluentIconsProps) => {
         const { className, primaryFill = 'currentColor', filled, ...rest } = props;
         const styles = useBundledIconStyles();
         return (
