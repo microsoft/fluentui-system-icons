@@ -11,16 +11,10 @@
       "language-direction": "right-to-left"
     },
     {
-      "filename": "ko_ic_fluent_text_direction_horizontal_rtl_24_filled.svg",
-      "idiom": "universal",
-      "language-direction": "right-to-left",
-      "locale": "ko"
-    },
-    {
-      "filename": "ko_ic_fluent_text_direction_horizontal_ltr_24_filled.svg",
+      "filename": "en_ic_fluent_text_direction_horizontal_ltr_24_filled.svg",
       "idiom": "universal",
       "language-direction": "left-to-right",
-      "locale": "ko"
+      "locale": "en"
     },
     {
       "filename": "en_ic_fluent_text_direction_horizontal_rtl_24_filled.svg",
@@ -29,10 +23,16 @@
       "locale": "en"
     },
     {
-      "filename": "en_ic_fluent_text_direction_horizontal_ltr_24_filled.svg",
+      "filename": "ko_ic_fluent_text_direction_horizontal_ltr_24_filled.svg",
       "idiom": "universal",
       "language-direction": "left-to-right",
-      "locale": "en"
+      "locale": "ko"
+    },
+    {
+      "filename": "ko_ic_fluent_text_direction_horizontal_rtl_24_filled.svg",
+      "idiom": "universal",
+      "language-direction": "right-to-left",
+      "locale": "ko"
     }
   ],
   "info": {
