@@ -84,6 +84,12 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.airplane_24_regular, 'airplane_24_regular', 24),
 
+  FluentUISampleIcon(FluentIcons.airplane_landing_16_regular, 'airplane_landing_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.airplane_landing_20_regular, 'airplane_landing_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.airplane_landing_24_regular, 'airplane_landing_24_regular', 24),
+
   FluentUISampleIcon(FluentIcons.airplane_take_off_16_regular, 'airplane_take_off_16_regular', 16),
 
   FluentUISampleIcon(FluentIcons.airplane_take_off_20_regular, 'airplane_take_off_20_regular', 20),
@@ -226,13 +232,21 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.align_space_evenly_horizontal_20_regular, 'align_space_evenly_horizontal_20_regular', 20),
 
+  FluentUISampleIcon(FluentIcons.align_space_evenly_horizontal_24_regular, 'align_space_evenly_horizontal_24_regular', 24),
+
   FluentUISampleIcon(FluentIcons.align_space_evenly_vertical_20_regular, 'align_space_evenly_vertical_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.align_space_evenly_vertical_24_regular, 'align_space_evenly_vertical_24_regular', 24),
 
   FluentUISampleIcon(FluentIcons.align_space_fit_vertical_20_regular, 'align_space_fit_vertical_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.align_start_horizontal_20_regular, 'align_start_horizontal_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.align_start_vertical_20_regular, 'align_start_vertical_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.align_straighten_20_regular, 'align_straighten_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.align_straighten_24_regular, 'align_straighten_24_regular', 24),
 
   FluentUISampleIcon(FluentIcons.align_stretch_horizontal_16_regular, 'align_stretch_horizontal_16_regular', 16),
 
@@ -658,6 +672,26 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.arrow_fit_in_20_regular, 'arrow_fit_in_20_regular', 20),
 
+  FluentUISampleIcon(FluentIcons.arrow_flow_diagonal_up_right_16_regular, 'arrow_flow_diagonal_up_right_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.arrow_flow_diagonal_up_right_20_regular, 'arrow_flow_diagonal_up_right_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_flow_diagonal_up_right_24_regular, 'arrow_flow_diagonal_up_right_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.arrow_flow_diagonal_up_right_32_regular, 'arrow_flow_diagonal_up_right_32_regular', 32),
+
+  FluentUISampleIcon(FluentIcons.arrow_flow_up_right_16_regular, 'arrow_flow_up_right_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.arrow_flow_up_right_20_regular, 'arrow_flow_up_right_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_flow_up_right_24_regular, 'arrow_flow_up_right_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.arrow_flow_up_right_32_regular, 'arrow_flow_up_right_32_regular', 32),
+
+  FluentUISampleIcon(FluentIcons.arrow_flow_up_right_rectangle_multiple_20_regular, 'arrow_flow_up_right_rectangle_multiple_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_flow_up_right_rectangle_multiple_24_regular, 'arrow_flow_up_right_rectangle_multiple_24_regular', 24),
+
   FluentUISampleIcon(FluentIcons.arrow_forward_16_regular, 'arrow_forward_16_regular', 16),
 
   FluentUISampleIcon(FluentIcons.arrow_forward_20_regular, 'arrow_forward_20_regular', 20),
@@ -882,14 +916,6 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.arrow_rotate_counterclockwise_24_regular, 'arrow_rotate_counterclockwise_24_regular', 24),
 
-  FluentUISampleIcon(FluentIcons.arrow_routing_20_regular, 'arrow_routing_20_regular', 20),
-
-  FluentUISampleIcon(FluentIcons.arrow_routing_24_regular, 'arrow_routing_24_regular', 24),
-
-  FluentUISampleIcon(FluentIcons.arrow_routing_rectangle_multiple_20_regular, 'arrow_routing_rectangle_multiple_20_regular', 20),
-
-  FluentUISampleIcon(FluentIcons.arrow_routing_rectangle_multiple_24_regular, 'arrow_routing_rectangle_multiple_24_regular', 24),
-
   FluentUISampleIcon(FluentIcons.arrow_shuffle_16_regular, 'arrow_shuffle_16_regular', 16),
 
   FluentUISampleIcon(FluentIcons.arrow_shuffle_20_regular, 'arrow_shuffle_20_regular', 20),
@@ -953,6 +979,10 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.arrow_square_down_20_regular, 'arrow_square_down_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.arrow_square_down_24_regular, 'arrow_square_down_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.arrow_square_up_right_20_regular, 'arrow_square_up_right_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_square_up_right_24_regular, 'arrow_square_up_right_24_regular', 24),
 
   FluentUISampleIcon(FluentIcons.arrow_step_back_16_regular, 'arrow_step_back_16_regular', 16),
 
@@ -1367,6 +1397,14 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.bin_full_20_regular, 'bin_full_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.bin_full_24_regular, 'bin_full_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.bin_recycle_20_regular, 'bin_recycle_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.bin_recycle_24_regular, 'bin_recycle_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.bin_recycle_full_20_regular, 'bin_recycle_full_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.bin_recycle_full_24_regular, 'bin_recycle_full_24_regular', 24),
 
   FluentUISampleIcon(FluentIcons.binder_triangle_16_regular, 'binder_triangle_16_regular', 16),
 
@@ -1821,6 +1859,10 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.briefcase_off_32_regular, 'briefcase_off_32_regular', 32),
 
   FluentUISampleIcon(FluentIcons.briefcase_off_48_regular, 'briefcase_off_48_regular', 48),
+
+  FluentUISampleIcon(FluentIcons.briefcase_search_20_regular, 'briefcase_search_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.briefcase_search_24_regular, 'briefcase_search_24_regular', 24),
 
   FluentUISampleIcon(FluentIcons.brightness_high_16_regular, 'brightness_high_16_regular', 16),
 
@@ -3074,6 +3116,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.circle_line_12_regular, 'circle_line_12_regular', 12),
 
+  FluentUISampleIcon(FluentIcons.circle_line_16_regular, 'circle_line_16_regular', 16),
+
   FluentUISampleIcon(FluentIcons.circle_line_20_regular, 'circle_line_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.circle_line_24_regular, 'circle_line_24_regular', 24),
@@ -4273,6 +4317,10 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.design_ideas_20_regular, 'design_ideas_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.design_ideas_24_regular, 'design_ideas_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.desk_20_regular, 'desk_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.desk_24_regular, 'desk_24_regular', 24),
 
   FluentUISampleIcon(FluentIcons.desktop_16_regular, 'desktop_16_regular', 16),
 
@@ -5670,6 +5718,10 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.filmstrip_32_regular, 'filmstrip_32_regular', 32),
 
+  FluentUISampleIcon(FluentIcons.filmstrip_48_regular, 'filmstrip_48_regular', 48),
+
+  FluentUISampleIcon(FluentIcons.filmstrip_off_48_regular, 'filmstrip_off_48_regular', 48),
+
   FluentUISampleIcon(FluentIcons.filmstrip_play_16_regular, 'filmstrip_play_16_regular', 16),
 
   FluentUISampleIcon(FluentIcons.filmstrip_play_20_regular, 'filmstrip_play_20_regular', 20),
@@ -5776,6 +5828,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.flash_28_regular, 'flash_28_regular', 28),
 
+  FluentUISampleIcon(FluentIcons.flash_32_regular, 'flash_32_regular', 32),
+
   FluentUISampleIcon(FluentIcons.flash_add_20_regular, 'flash_add_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.flash_auto_20_regular, 'flash_auto_20_regular', 20),
@@ -5843,6 +5897,10 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.flow_16_regular, 'flow_16_regular', 16),
 
   FluentUISampleIcon(FluentIcons.flow_20_regular, 'flow_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.flow_24_regular, 'flow_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.flow_32_regular, 'flow_32_regular', 32),
 
   FluentUISampleIcon(FluentIcons.flowchart_20_regular, 'flowchart_20_regular', 20),
 
@@ -6570,6 +6628,12 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.heart_pulse_32_regular, 'heart_pulse_32_regular', 32),
 
+  FluentUISampleIcon(FluentIcons.heart_pulse_checkmark_20_regular, 'heart_pulse_checkmark_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.heart_pulse_error_20_regular, 'heart_pulse_error_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.heart_pulse_warning_20_regular, 'heart_pulse_warning_20_regular', 20),
+
   FluentUISampleIcon(FluentIcons.highlight_16_regular, 'highlight_16_regular', 16),
 
   FluentUISampleIcon(FluentIcons.highlight_20_regular, 'highlight_20_regular', 20),
@@ -6629,6 +6693,14 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.home_database_24_regular, 'home_database_24_regular', 24),
 
   FluentUISampleIcon(FluentIcons.home_database_32_regular, 'home_database_32_regular', 32),
+
+  FluentUISampleIcon(FluentIcons.home_heart_16_regular, 'home_heart_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.home_heart_20_regular, 'home_heart_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.home_heart_24_regular, 'home_heart_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.home_heart_32_regular, 'home_heart_32_regular', 32),
 
   FluentUISampleIcon(FluentIcons.home_more_20_regular, 'home_more_20_regular', 20),
 
@@ -6771,6 +6843,12 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.image_off_20_regular, 'image_off_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.image_off_24_regular, 'image_off_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.image_off_28_regular, 'image_off_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.image_off_32_regular, 'image_off_32_regular', 32),
+
+  FluentUISampleIcon(FluentIcons.image_off_48_regular, 'image_off_48_regular', 48),
 
   FluentUISampleIcon(FluentIcons.image_prohibited_20_regular, 'image_prohibited_20_regular', 20),
 
@@ -7800,6 +7878,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.money_dismiss_24_regular, 'money_dismiss_24_regular', 24),
 
+  FluentUISampleIcon(FluentIcons.money_hand_16_regular, 'money_hand_16_regular', 16),
+
   FluentUISampleIcon(FluentIcons.money_hand_20_regular, 'money_hand_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.money_hand_24_regular, 'money_hand_24_regular', 24),
@@ -7808,7 +7888,11 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.money_off_24_regular, 'money_off_24_regular', 24),
 
+  FluentUISampleIcon(FluentIcons.money_settings_16_regular, 'money_settings_16_regular', 16),
+
   FluentUISampleIcon(FluentIcons.money_settings_20_regular, 'money_settings_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.money_settings_24_regular, 'money_settings_24_regular', 24),
 
   FluentUISampleIcon(FluentIcons.more_circle_16_regular, 'more_circle_16_regular', 16),
 
@@ -8584,7 +8668,11 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.people_community_add_28_regular, 'people_community_add_28_regular', 28),
 
+  FluentUISampleIcon(FluentIcons.people_edit_16_regular, 'people_edit_16_regular', 16),
+
   FluentUISampleIcon(FluentIcons.people_edit_20_regular, 'people_edit_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.people_edit_24_regular, 'people_edit_24_regular', 24),
 
   FluentUISampleIcon(FluentIcons.people_error_16_regular, 'people_error_16_regular', 16),
 
@@ -12834,6 +12922,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.triangle_right_48_regular, 'triangle_right_48_regular', 48),
 
+  FluentUISampleIcon(FluentIcons.triangle_up_20_regular, 'triangle_up_20_regular', 20),
+
   FluentUISampleIcon(FluentIcons.trophy_16_regular, 'trophy_16_regular', 16),
 
   FluentUISampleIcon(FluentIcons.trophy_20_regular, 'trophy_20_regular', 20),
@@ -13758,6 +13848,12 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.airplane_24_filled, 'airplane_24_filled', 24),
 
+  FluentUISampleIcon(FluentIcons.airplane_landing_16_filled, 'airplane_landing_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.airplane_landing_20_filled, 'airplane_landing_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.airplane_landing_24_filled, 'airplane_landing_24_filled', 24),
+
   FluentUISampleIcon(FluentIcons.airplane_take_off_16_filled, 'airplane_take_off_16_filled', 16),
 
   FluentUISampleIcon(FluentIcons.airplane_take_off_20_filled, 'airplane_take_off_20_filled', 20),
@@ -13900,13 +13996,21 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.align_space_evenly_horizontal_20_filled, 'align_space_evenly_horizontal_20_filled', 20),
 
+  FluentUISampleIcon(FluentIcons.align_space_evenly_horizontal_24_filled, 'align_space_evenly_horizontal_24_filled', 24),
+
   FluentUISampleIcon(FluentIcons.align_space_evenly_vertical_20_filled, 'align_space_evenly_vertical_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.align_space_evenly_vertical_24_filled, 'align_space_evenly_vertical_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.align_space_fit_vertical_20_filled, 'align_space_fit_vertical_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.align_start_horizontal_20_filled, 'align_start_horizontal_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.align_start_vertical_20_filled, 'align_start_vertical_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.align_straighten_20_filled, 'align_straighten_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.align_straighten_24_filled, 'align_straighten_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.align_stretch_horizontal_16_filled, 'align_stretch_horizontal_16_filled', 16),
 
@@ -14332,6 +14436,26 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.arrow_fit_in_20_filled, 'arrow_fit_in_20_filled', 20),
 
+  FluentUISampleIcon(FluentIcons.arrow_flow_diagonal_up_right_16_filled, 'arrow_flow_diagonal_up_right_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.arrow_flow_diagonal_up_right_20_filled, 'arrow_flow_diagonal_up_right_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_flow_diagonal_up_right_24_filled, 'arrow_flow_diagonal_up_right_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.arrow_flow_diagonal_up_right_32_filled, 'arrow_flow_diagonal_up_right_32_filled', 32),
+
+  FluentUISampleIcon(FluentIcons.arrow_flow_up_right_16_filled, 'arrow_flow_up_right_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.arrow_flow_up_right_20_filled, 'arrow_flow_up_right_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_flow_up_right_24_filled, 'arrow_flow_up_right_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.arrow_flow_up_right_32_filled, 'arrow_flow_up_right_32_filled', 32),
+
+  FluentUISampleIcon(FluentIcons.arrow_flow_up_right_rectangle_multiple_20_filled, 'arrow_flow_up_right_rectangle_multiple_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_flow_up_right_rectangle_multiple_24_filled, 'arrow_flow_up_right_rectangle_multiple_24_filled', 24),
+
   FluentUISampleIcon(FluentIcons.arrow_forward_16_filled, 'arrow_forward_16_filled', 16),
 
   FluentUISampleIcon(FluentIcons.arrow_forward_20_filled, 'arrow_forward_20_filled', 20),
@@ -14556,14 +14680,6 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.arrow_rotate_counterclockwise_24_filled, 'arrow_rotate_counterclockwise_24_filled', 24),
 
-  FluentUISampleIcon(FluentIcons.arrow_routing_20_filled, 'arrow_routing_20_filled', 20),
-
-  FluentUISampleIcon(FluentIcons.arrow_routing_24_filled, 'arrow_routing_24_filled', 24),
-
-  FluentUISampleIcon(FluentIcons.arrow_routing_rectangle_multiple_20_filled, 'arrow_routing_rectangle_multiple_20_filled', 20),
-
-  FluentUISampleIcon(FluentIcons.arrow_routing_rectangle_multiple_24_filled, 'arrow_routing_rectangle_multiple_24_filled', 24),
-
   FluentUISampleIcon(FluentIcons.arrow_shuffle_16_filled, 'arrow_shuffle_16_filled', 16),
 
   FluentUISampleIcon(FluentIcons.arrow_shuffle_20_filled, 'arrow_shuffle_20_filled', 20),
@@ -14627,6 +14743,10 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.arrow_square_down_20_filled, 'arrow_square_down_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.arrow_square_down_24_filled, 'arrow_square_down_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.arrow_square_up_right_20_filled, 'arrow_square_up_right_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.arrow_square_up_right_24_filled, 'arrow_square_up_right_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.arrow_step_back_16_filled, 'arrow_step_back_16_filled', 16),
 
@@ -15041,6 +15161,14 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.bin_full_20_filled, 'bin_full_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.bin_full_24_filled, 'bin_full_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.bin_recycle_20_filled, 'bin_recycle_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.bin_recycle_24_filled, 'bin_recycle_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.bin_recycle_full_20_filled, 'bin_recycle_full_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.bin_recycle_full_24_filled, 'bin_recycle_full_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.binder_triangle_16_filled, 'binder_triangle_16_filled', 16),
 
@@ -15497,6 +15625,10 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.briefcase_off_32_filled, 'briefcase_off_32_filled', 32),
 
   FluentUISampleIcon(FluentIcons.briefcase_off_48_filled, 'briefcase_off_48_filled', 48),
+
+  FluentUISampleIcon(FluentIcons.briefcase_search_20_filled, 'briefcase_search_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.briefcase_search_24_filled, 'briefcase_search_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.brightness_high_16_filled, 'brightness_high_16_filled', 16),
 
@@ -16750,6 +16882,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.circle_line_12_filled, 'circle_line_12_filled', 12),
 
+  FluentUISampleIcon(FluentIcons.circle_line_16_filled, 'circle_line_16_filled', 16),
+
   FluentUISampleIcon(FluentIcons.circle_line_20_filled, 'circle_line_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.circle_line_24_filled, 'circle_line_24_filled', 24),
@@ -17931,6 +18065,10 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.design_ideas_20_filled, 'design_ideas_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.design_ideas_24_filled, 'design_ideas_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.desk_20_filled, 'desk_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.desk_24_filled, 'desk_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.desktop_16_filled, 'desktop_16_filled', 16),
 
@@ -19328,6 +19466,10 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.filmstrip_32_filled, 'filmstrip_32_filled', 32),
 
+  FluentUISampleIcon(FluentIcons.filmstrip_48_filled, 'filmstrip_48_filled', 48),
+
+  FluentUISampleIcon(FluentIcons.filmstrip_off_48_filled, 'filmstrip_off_48_filled', 48),
+
   FluentUISampleIcon(FluentIcons.filmstrip_play_16_filled, 'filmstrip_play_16_filled', 16),
 
   FluentUISampleIcon(FluentIcons.filmstrip_play_20_filled, 'filmstrip_play_20_filled', 20),
@@ -19444,6 +19586,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.flash_28_filled, 'flash_28_filled', 28),
 
+  FluentUISampleIcon(FluentIcons.flash_32_filled, 'flash_32_filled', 32),
+
   FluentUISampleIcon(FluentIcons.flash_add_20_filled, 'flash_add_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.flash_auto_20_filled, 'flash_auto_20_filled', 20),
@@ -19511,6 +19655,10 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.flow_16_filled, 'flow_16_filled', 16),
 
   FluentUISampleIcon(FluentIcons.flow_20_filled, 'flow_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.flow_24_filled, 'flow_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.flow_32_filled, 'flow_32_filled', 32),
 
   FluentUISampleIcon(FluentIcons.flowchart_20_filled, 'flowchart_20_filled', 20),
 
@@ -20238,6 +20386,12 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.heart_pulse_32_filled, 'heart_pulse_32_filled', 32),
 
+  FluentUISampleIcon(FluentIcons.heart_pulse_checkmark_20_filled, 'heart_pulse_checkmark_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.heart_pulse_error_20_filled, 'heart_pulse_error_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.heart_pulse_warning_20_filled, 'heart_pulse_warning_20_filled', 20),
+
   FluentUISampleIcon(FluentIcons.highlight_16_filled, 'highlight_16_filled', 16),
 
   FluentUISampleIcon(FluentIcons.highlight_20_filled, 'highlight_20_filled', 20),
@@ -20303,6 +20457,14 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.home_database_24_filled, 'home_database_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.home_database_32_filled, 'home_database_32_filled', 32),
+
+  FluentUISampleIcon(FluentIcons.home_heart_16_filled, 'home_heart_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.home_heart_20_filled, 'home_heart_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.home_heart_24_filled, 'home_heart_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.home_heart_32_filled, 'home_heart_32_filled', 32),
 
   FluentUISampleIcon(FluentIcons.home_more_20_filled, 'home_more_20_filled', 20),
 
@@ -20445,6 +20607,12 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.image_off_20_filled, 'image_off_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.image_off_24_filled, 'image_off_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.image_off_28_filled, 'image_off_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.image_off_32_filled, 'image_off_32_filled', 32),
+
+  FluentUISampleIcon(FluentIcons.image_off_48_filled, 'image_off_48_filled', 48),
 
   FluentUISampleIcon(FluentIcons.image_prohibited_20_filled, 'image_prohibited_20_filled', 20),
 
@@ -21482,6 +21650,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.money_dismiss_24_filled, 'money_dismiss_24_filled', 24),
 
+  FluentUISampleIcon(FluentIcons.money_hand_16_filled, 'money_hand_16_filled', 16),
+
   FluentUISampleIcon(FluentIcons.money_hand_20_filled, 'money_hand_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.money_hand_24_filled, 'money_hand_24_filled', 24),
@@ -21490,7 +21660,11 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.money_off_24_filled, 'money_off_24_filled', 24),
 
+  FluentUISampleIcon(FluentIcons.money_settings_16_filled, 'money_settings_16_filled', 16),
+
   FluentUISampleIcon(FluentIcons.money_settings_20_filled, 'money_settings_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.money_settings_24_filled, 'money_settings_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.more_circle_16_filled, 'more_circle_16_filled', 16),
 
@@ -22274,7 +22448,11 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.people_community_add_28_filled, 'people_community_add_28_filled', 28),
 
+  FluentUISampleIcon(FluentIcons.people_edit_16_filled, 'people_edit_16_filled', 16),
+
   FluentUISampleIcon(FluentIcons.people_edit_20_filled, 'people_edit_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.people_edit_24_filled, 'people_edit_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.people_error_16_filled, 'people_error_16_filled', 16),
 
@@ -26507,6 +26685,8 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.triangle_right_32_filled, 'triangle_right_32_filled', 32),
 
   FluentUISampleIcon(FluentIcons.triangle_right_48_filled, 'triangle_right_48_filled', 48),
+
+  FluentUISampleIcon(FluentIcons.triangle_up_20_filled, 'triangle_up_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.trophy_16_filled, 'trophy_16_filled', 16),
 
