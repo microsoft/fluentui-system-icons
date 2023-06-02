@@ -8,6 +8,7 @@ const _ = require("lodash");
 
 const SRC_PATH = argv.source;
 const DEST_PATH = argv.dest;
+const RTL_FILTER_PATH =argv.filter;
 const TSX_EXTENSION = '.tsx'
 
 if (!SRC_PATH) {
@@ -16,11 +17,17 @@ if (!SRC_PATH) {
 if (!DEST_PATH) {
   throw new Error("Output destination folder not specified by --dest");
 }
+if (!RTL_FILTER_PATH) {
+  throw new Error("Filter folder not specified by --filter");
+}
 
 if (!fs.existsSync(DEST_PATH)) {
   fs.mkdirSync(DEST_PATH);
 }
 
+const filterFile = fs.readFileSync(RTL_FILTER_PATH, { encoding: 'utf8' })
+var rtlArray = filterFile.split(/\r?\n/);
+//console.log(rtlArray)
 processFiles(SRC_PATH, DEST_PATH)
 
 function processFiles(src, dest) {
@@ -64,11 +71,12 @@ function processFiles(src, dest) {
 
   const indexPath = path.join(dest, 'index.tsx')
   // Finally add the interface definition and then write out the index.
-  indexContents.push('export { FluentIconsProps } from \'./utils/FluentIconsProps.types\'');
-  indexContents.push('export { default as wrapIcon } from \'./utils/wrapIcon\'');
+  indexContents.push('export type { FluentIconsProps } from \'./utils/FluentIconsProps.types\'');
   indexContents.push('export { default as bundleIcon } from \'./utils/bundleIcon\'');
   indexContents.push('export * from \'./utils/useIconState\'');
   indexContents.push('export * from \'./utils/constants\'');
+  indexContents.push('export { IconDirectionContextProvider, useIconContext } from \'./contexts/index\'');
+  indexContents.push('export type { IconDirectionContextValue } from \'./contexts/index\'');
 
   fs.writeFileSync(indexPath, indexContents.join('\n'), (err) => {
     if (err) throw err;
@@ -100,7 +108,9 @@ function processFolder(srcPath, destPath, resizable) {
       if(resizable && !file.includes("20")) {
         return
       }
-      var iconName = file.substr(0, file.length - 4) // strip '.svg'
+      // Check to see if the svg should be autoflipped
+      var shouldAutoFlip = rtlArray.includes(file);
+      var iconName = file.substring(0, file.length - 4) // strip '.svg'
       iconName = iconName.replace("ic_fluent_", "") // strip ic_fluent_
       iconName = resizable ? iconName.replace("20", "") : iconName
       var destFilename = _.camelCase(iconName) // We want them to be camelCase, so access_time would become accessTime here
@@ -110,7 +120,7 @@ function processFolder(srcPath, destPath, resizable) {
       const getAttr = (key) => [...iconContent.matchAll(`(?<= ${key}=)".+?"`)].map((v) => v[0]);
       const width = resizable ? '"1em"' : getAttr("width")[0];
       const paths = getAttr("d").join(',');
-      var jsCode = `export const ${destFilename} = (/*#__PURE__*/createFluentIcon('${destFilename}', ${width}, [${paths}]));`
+      var jsCode = `export const ${destFilename} = (/*#__PURE__*/createFluentIcon('${destFilename}', ${width}, [${paths}], ${shouldAutoFlip}));`
       iconExports.push(jsCode);
     }
   });

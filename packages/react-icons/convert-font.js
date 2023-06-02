@@ -17,6 +17,8 @@ const SRC_PATH = argv.source;
 const DEST_PATH = argv.dest;
 // @ts-ignore
 const CODEPOINT_DEST_PATH = argv.codepointDest;
+// @ts-ignore
+const RTL_FILTER_PATH =argv.filter;
 
 if (!SRC_PATH) {
   throw new Error("Icon source folder not specified by --source");
@@ -26,6 +28,9 @@ if (!DEST_PATH) {
 }
 if (!CODEPOINT_DEST_PATH) {
   throw new Error("Output destination folder for codepoint map not specified by --dest");
+}
+if (!RTL_FILTER_PATH) {
+  throw new Error("Filter folder not specified by --filter");
 }
 
 processFiles(SRC_PATH, DEST_PATH)
@@ -62,7 +67,6 @@ async function processFiles(src, dest) {
   const indexPath = path.join(dest, 'index.tsx')
   // Finally add the interface definition and then write out the index.
   indexContents.push('export { FluentIconsProps } from \'../utils/FluentIconsProps.types\'');
-  indexContents.push('export { default as wrapIcon } from \'../utils/wrapIcon\'');
   indexContents.push('export { default as bundleIcon } from \'../utils/bundleIcon\'');
   indexContents.push('export * from \'../utils/useIconState\'');
   indexContents.push('export * from \'../utils/constants\'');
@@ -79,6 +83,8 @@ async function processFiles(src, dest) {
  * @returns { Promise<string[]> } - chunked icon files to insert
  */
 async function processFolder(srcPath, codepointMapDestFolder, resizable) {
+  const filterFile = fs.readFile(RTL_FILTER_PATH, { encoding: 'utf8' })
+  var rtlArray = (await filterFile).split(/\r?\n/);
   var files = await glob(resizable ? 'FluentSystemIcons-Resizable.json' : 'FluentSystemIcons-{Filled,Regular}.json', { cwd: srcPath, absolute: true });
 
   /** @type string[] */
@@ -86,7 +92,7 @@ async function processFolder(srcPath, codepointMapDestFolder, resizable) {
   await Promise.all(files.map(async (srcFile, index) => {
     /** @type {Record<string, number>} */
     const iconEntries = JSON.parse(await fs.readFile(srcFile, 'utf8'));
-    iconExports.push(...generateReactIconEntries(iconEntries, resizable));
+    iconExports.push(...generateReactIconEntries(iconEntries, resizable, rtlArray));
 
     return generateCodepointMapForWebpackPlugin(
       path.resolve(codepointMapDestFolder, path.basename(srcFile)),
@@ -133,16 +139,17 @@ async function generateCodepointMapForWebpackPlugin(destPath, iconEntries, resiz
  * @param {boolean} resizable 
  * @returns {string[]}
  */
-function generateReactIconEntries(iconEntries, resizable) {
+function generateReactIconEntries(iconEntries, resizable, rtlArray) {
   /** @type {string[]} */
   const iconExports = [];
+  var shouldAutoFlip;
   for (const [iconName, codepoint] of Object.entries(iconEntries)) {
+    shouldAutoFlip = rtlArray.includes(iconName);
     let destFilename = getReactIconNameFromGlyphName(iconName, resizable);
-
     var jsCode = `export const ${destFilename} = /*#__PURE__*/createFluentFontIcon(${JSON.stringify(destFilename)
       }, ${JSON.stringify(String.fromCodePoint(codepoint))
       }, ${resizable ? 2 /* Resizable */ : /filled$/i.test(iconName) ? 0 /* Filled */ : 1 /* Regular */
-      }${resizable ? '' : `, ${/(?<=_)\d+(?=_filled|_regular)/.exec(iconName)[0]}`
+      }, ${shouldAutoFlip} ${resizable ? '' : `, ${/(?<=_)\d+(?=_filled|_regular)/.exec(iconName)[0]}`
       });`;
 
     iconExports.push(jsCode);
