@@ -9,9 +9,10 @@ export type FluentIcon = {
 
 export const createFluentIcon = (displayName: string, width: string, paths: string[]): FluentIcon => {
     const viewBoxWidth = width === "1em" ? "20" : width;
-    const Icon = (props: FluentIconsProps) => {
+    const Icon = React.forwardRef((props: FluentIconsProps, ref: React.Ref<HTMLElement>) => {
         const state = {
             ...useIconState(props), // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
+            ref,
             width, height: width, viewBox: `0 0 ${viewBoxWidth} ${viewBoxWidth}`, xmlns: "http://www.w3.org/2000/svg"
         };
         return React.createElement(
@@ -25,7 +26,7 @@ export const createFluentIcon = (displayName: string, width: string, paths: stri
                 })
             )
         );
-    }
+    }) as FluentIcon
     Icon.displayName = displayName;
     return Icon;
 }
