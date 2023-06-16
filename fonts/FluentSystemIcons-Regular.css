@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.woff2?becce793502652c770851a392b202e9c") format("woff2"),
-url("./FluentSystemIcons-Regular.woff?becce793502652c770851a392b202e9c") format("woff"),
-url("./FluentSystemIcons-Regular.ttf?becce793502652c770851a392b202e9c") format("truetype");
+    src: url("./FluentSystemIcons-Regular.woff2?18fb9beb32729c9b28ab182be34a7db5") format("woff2"),
+url("./FluentSystemIcons-Regular.woff?18fb9beb32729c9b28ab182be34a7db5") format("woff"),
+url("./FluentSystemIcons-Regular.ttf?18fb9beb32729c9b28ab182be34a7db5") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -20742,4 +20742,55 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_text_direction_rotate_45_right_24_regular:before {
     content: "\f01fc";
+}
+.icon-ic_fluent_clipboard_paste_32_regular:before {
+    content: "\f01fd";
+}
+.icon-ic_fluent_cloud_bidirectional_20_regular:before {
+    content: "\f01fe";
+}
+.icon-ic_fluent_cloud_bidirectional_24_regular:before {
+    content: "\f01ff";
+}
+.icon-ic_fluent_comment_edit_16_regular:before {
+    content: "\f0200";
+}
+.icon-ic_fluent_crown_24_regular:before {
+    content: "\f0201";
+}
+.icon-ic_fluent_crown_subtract_24_regular:before {
+    content: "\f0202";
+}
+.icon-ic_fluent_paint_brush_32_regular:before {
+    content: "\f0203";
+}
+.icon-ic_fluent_pause_circle_32_regular:before {
+    content: "\f0204";
+}
+.icon-ic_fluent_pause_circle_48_regular:before {
+    content: "\f0205";
+}
+.icon-ic_fluent_person_subtract_24_regular:before {
+    content: "\f0206";
+}
+.icon-ic_fluent_plug_connected_settings_20_regular:before {
+    content: "\f0207";
+}
+.icon-ic_fluent_plug_connected_settings_24_regular:before {
+    content: "\f0208";
+}
+.icon-ic_fluent_signature_32_regular:before {
+    content: "\f0209";
+}
+.icon-ic_fluent_speaker_mute_32_regular:before {
+    content: "\f020a";
+}
+.icon-ic_fluent_thumb_like_dislike_16_regular:before {
+    content: "\f020b";
+}
+.icon-ic_fluent_thumb_like_dislike_20_regular:before {
+    content: "\f020c";
+}
+.icon-ic_fluent_thumb_like_dislike_24_regular:before {
+    content: "\f020d";
 }

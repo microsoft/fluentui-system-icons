@@ -5,14 +5,14 @@
       "idiom": "universal"
     },
     {
-      "filename": "RTL_ic_fluent_text_number_list_rotate_90_24_filled.svg",
-      "idiom": "universal",
-      "locale": "RTL"
-    },
-    {
       "filename": "LTR_ic_fluent_text_number_list_rotate_90_24_filled.svg",
       "idiom": "universal",
       "locale": "LTR"
+    },
+    {
+      "filename": "RTL_ic_fluent_text_number_list_rotate_90_24_filled.svg",
+      "idiom": "universal",
+      "locale": "RTL"
     }
   ],
   "info": {
