@@ -31,7 +31,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Check asset directories are valid for Windows
+    - name: Check that all SVGs have the right fill
       run: |
         error_found=false
         
