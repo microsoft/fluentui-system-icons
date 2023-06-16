@@ -25,6 +25,24 @@ jobs:
           print(invalid_asset_dirs)
           exit(1)
         """
+  valid-asset-fills:
+    name: Validate Asset Fills
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Check that all SVGs have the right fill
+      run: |
+        error_found=false
+        
+        for file in $(find ./assets -type f -name "*.svg" -exec grep -L 'fill="#212121"' {} \;); do
+          echo "Error: $file does not have 'fill=\"#212121\"' or has a different fill."
+          error_found=true
+        done
+        
+        if [[ $error_found == true ]]; then
+          exit 1
+        fi
 
   build-ios:
     name: Build iOS library
