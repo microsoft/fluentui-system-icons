@@ -5,5 +5,5 @@
 <rect x="9" y="19" width="30" height="4.5" fill="#61BC51"/>
 <rect x="9" y="23" width="30" height="4.5" fill="#1793E8"/>
 <rect x="9" y="27" width="30" height="4" fill="#B73FBB"/>
-<path d="M8.25 40.75V7.25H39.75V31.75H8.25" stroke="#242424" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M8.25 40.75V7.25H39.75V31.75H8.25" stroke="#212121" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
