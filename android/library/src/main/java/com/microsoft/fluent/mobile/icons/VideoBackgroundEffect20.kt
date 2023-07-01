@@ -1,0 +1,106 @@
+package com.microsoft.fluent.mobile.icons
+
+import androidx.compose.material.icons.materialPath
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.microsoft.fluent.mobile.FluentIcons
+import com.microsoft.fluent.mobile.fluentIcon
+
+public val FluentIcons.Filled.VideoBackgroundEffect20: ImageVector
+  get() {
+    if (_videoBackgroundEffect20 != null) {
+      return _videoBackgroundEffect20!!
+    }
+    _videoBackgroundEffect20 = fluentIcon(name = "Filled.VideoBackgroundEffect20", 20f) {
+      materialPath {
+          moveTo(6.207F, 4.0F)
+          lineTo(2.0F, 8.207F)
+          verticalLineTo(6.793F)
+          lineTo(4.793F, 4.0F)
+          horizontalLineToRelative(1.414F)
+          close()
+          moveToRelative(7.0F, 0.0F)
+          lineToRelative(-1.464F, 1.464F)
+          curveToRelative(-0.314F, -0.18F, -0.659F, -0.314F, -1.024F, -0.39F)
+          lineTo(11.793F, 4.0F)
+          horizontalLineToRelative(1.414F)
+          close()
+          moveTo(12.12F, 7.173F)
+          curveTo(11.853F, 6.75F, 11.463F, 6.41F, 11.0F, 6.208F)
+          curveTo(10.693F, 6.074F, 10.355F, 6.0F, 10.0F, 6.0F)
+          curveTo(9.927F, 6.0F, 9.855F, 6.003F, 9.784F, 6.01F)
+          curveTo(8.575F, 6.112F, 7.613F, 7.075F, 7.509F, 8.283F)
+          curveTo(7.503F, 8.355F, 7.5F, 8.427F, 7.5F, 8.5F)
+          curveToRelative(0.0F, 0.355F, 0.074F, 0.693F, 0.208F, 1.0F)
+          curveToRelative(0.202F, 0.463F, 0.541F, 0.853F, 0.966F, 1.12F)
+          curveToRelative(0.31F, 0.194F, 0.666F, 0.323F, 1.048F, 0.365F)
+          curveTo(9.813F, 10.995F, 9.906F, 11.0F, 10.0F, 11.0F)
+          curveToRelative(1.38F, 0.0F, 2.5F, -1.12F, 2.5F, -2.5F)
+          curveToRelative(0.0F, -0.094F, -0.005F, -0.187F, -0.015F, -0.278F)
+          curveToRelative(-0.042F, -0.382F, -0.17F, -0.738F, -0.366F, -1.048F)
+          close()
+          moveToRelative(0.72F, -0.72F)
+          curveToRelative(0.205F, 0.283F, 0.368F, 0.597F, 0.48F, 0.935F)
+          lineToRelative(3.376F, -3.375F)
+          curveTo(16.63F, 4.003F, 16.566F, 4.0F, 16.5F, 4.0F)
+          horizontalLineToRelative(-1.207F)
+          lineTo(12.84F, 6.453F)
+          close()
+          moveTo(7.5F, 12.0F)
+          curveToRelative(-0.076F, 0.0F, -0.15F, 0.006F, -0.224F, 0.017F)
+          curveToRelative(-0.649F, 0.097F, -1.162F, 0.61F, -1.26F, 1.26F)
+          curveTo(6.007F, 13.348F, 6.0F, 13.423F, 6.0F, 13.5F)
+          verticalLineTo(16.0F)
+          horizontalLineToRelative(8.0F)
+          verticalLineToRelative(-2.5F)
+          curveToRelative(0.0F, -0.34F, -0.113F, -0.653F, -0.303F, -0.904F)
+          curveTo(13.423F, 12.234F, 12.989F, 12.0F, 12.5F, 12.0F)
+          horizontalLineToRelative(-5.0F)
+          close()
+          moveToRelative(5.0F, -1.0F)
+          curveToRelative(0.217F, 0.0F, 0.427F, 0.028F, 0.628F, 0.08F)
+          lineTo(18.0F, 6.206F)
+          verticalLineTo(5.5F)
+          curveToRelative(0.0F, -0.209F, -0.043F, -0.407F, -0.12F, -0.588F)
+          lineToRelative(-4.5F, 4.501F)
+          curveToRelative(-0.165F, 0.612F, -0.491F, 1.157F, -0.93F, 1.587F)
+          horizontalLineToRelative(0.05F)
+          close()
+          moveToRelative(1.908F, 0.885F)
+          curveToRelative(0.225F, 0.265F, 0.395F, 0.577F, 0.494F, 0.92F)
+          lineTo(18.0F, 9.707F)
+          verticalLineTo(8.293F)
+          lineToRelative(-3.592F, 3.592F)
+          close()
+          moveTo(15.0F, 16.0F)
+          verticalLineToRelative(-1.207F)
+          lineToRelative(3.0F, -3.0F)
+          verticalLineToRelative(1.414F)
+          lineTo(15.207F, 16.0F)
+          horizontalLineTo(15.0F)
+          close()
+          moveTo(5.0F, 15.707F)
+          verticalLineToRelative(-1.414F)
+          lineToRelative(-1.695F, 1.695F)
+          curveTo(3.37F, 15.995F, 3.435F, 16.0F, 3.5F, 16.0F)
+          horizontalLineToRelative(1.207F)
+          lineTo(5.0F, 15.707F)
+          close()
+          moveTo(6.574F, 9.22F)
+          curveToRelative(0.076F, 0.366F, 0.21F, 0.71F, 0.39F, 1.024F)
+          lineTo(2.12F, 15.088F)
+          curveTo(2.044F, 14.908F, 2.0F, 14.708F, 2.0F, 14.5F)
+          verticalLineToRelative(-0.707F)
+          lineToRelative(4.574F, -4.574F)
+          close()
+          moveTo(9.707F, 4.0F)
+          lineTo(2.0F, 11.707F)
+          verticalLineToRelative(-1.414F)
+          lineTo(8.293F, 4.0F)
+          horizontalLineToRelative(1.414F)
+          close()        
+      }
+    }
+    return _videoBackgroundEffect20!!
+  }
+
+private var _videoBackgroundEffect20: ImageVector? = null

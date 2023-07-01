@@ -1,0 +1,105 @@
+package com.microsoft.fluent.mobile.icons
+
+import androidx.compose.material.icons.materialPath
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.microsoft.fluent.mobile.FluentIcons
+import com.microsoft.fluent.mobile.fluentIcon
+
+public val FluentIcons.Regular.HdrOff20: ImageVector
+  get() {
+    if (_hdrOff20 != null) {
+      return _hdrOff20!!
+    }
+    _hdrOff20 = fluentIcon(name = "Regular.HdrOff20", 20f) {
+      materialPath {
+          moveTo(2.853F, 2.147F)
+          curveToRelative(-0.195F, -0.196F, -0.511F, -0.196F, -0.707F, 0.0F)
+          curveToRelative(-0.195F, 0.195F, -0.195F, 0.511F, 0.0F, 0.707F)
+          lineToRelative(1.416F, 1.415F)
+          curveTo(2.638F, 4.712F, 2.0F, 5.657F, 2.0F, 6.75F)
+          verticalLineToRelative(6.5F)
+          curveTo(2.0F, 14.769F, 3.231F, 16.0F, 4.75F, 16.0F)
+          horizontalLineToRelative(10.543F)
+          lineToRelative(1.853F, 1.854F)
+          curveToRelative(0.196F, 0.195F, 0.512F, 0.195F, 0.708F, 0.0F)
+          curveToRelative(0.195F, -0.196F, 0.195F, -0.512F, 0.0F, -0.708F)
+          lineToRelative(-15.0F, -15.0F)
+          close()
+          moveTo(14.293F, 15.0F)
+          horizontalLineTo(4.75F)
+          curveTo(3.784F, 15.0F, 3.0F, 14.216F, 3.0F, 13.25F)
+          verticalLineToRelative(-6.5F)
+          curveToRelative(0.0F, -0.826F, 0.572F, -1.518F, 1.341F, -1.702F)
+          lineToRelative(2.717F, 2.717F)
+          curveTo(7.021F, 7.835F, 7.0F, 7.915F, 7.0F, 8.0F)
+          verticalLineToRelative(1.5F)
+          horizontalLineTo(5.0F)
+          verticalLineTo(8.0F)
+          curveToRelative(0.0F, -0.276F, -0.224F, -0.5F, -0.5F, -0.5F)
+          reflectiveCurveTo(4.0F, 7.724F, 4.0F, 8.0F)
+          verticalLineToRelative(4.0F)
+          curveToRelative(0.0F, 0.276F, 0.224F, 0.5F, 0.5F, 0.5F)
+          reflectiveCurveTo(5.0F, 12.276F, 5.0F, 12.0F)
+          verticalLineToRelative(-1.5F)
+          horizontalLineToRelative(2.0F)
+          verticalLineTo(12.0F)
+          curveToRelative(0.0F, 0.276F, 0.224F, 0.5F, 0.5F, 0.5F)
+          reflectiveCurveTo(8.0F, 12.276F, 8.0F, 12.0F)
+          verticalLineTo(8.707F)
+          lineToRelative(1.0F, 1.0F)
+          verticalLineTo(12.0F)
+          curveToRelative(0.0F, 0.276F, 0.224F, 0.5F, 0.5F, 0.5F)
+          horizontalLineToRelative(0.25F)
+          curveToRelative(0.569F, 0.0F, 1.088F, -0.21F, 1.484F, -0.559F)
+          lineTo(14.293F, 15.0F)
+          close()
+          moveTo(10.0F, 10.707F)
+          lineToRelative(0.524F, 0.524F)
+          curveToRelative(-0.15F, 0.12F, -0.329F, 0.204F, -0.524F, 0.244F)
+          verticalLineToRelative(-0.768F)
+          close()
+          moveTo(9.621F, 7.5F)
+          lineTo(12.0F, 9.879F)
+          verticalLineTo(9.75F)
+          curveToRelative(0.0F, -1.243F, -1.007F, -2.25F, -2.25F, -2.25F)
+          horizontalLineTo(9.621F)
+          close()
+          moveTo(13.0F, 10.879F)
+          lineToRelative(1.0F, 1.0F)
+          verticalLineTo(10.5F)
+          horizontalLineToRelative(0.403F)
+          lineToRelative(0.629F, 1.676F)
+          curveToRelative(0.097F, 0.258F, 0.385F, 0.39F, 0.644F, 0.292F)
+          curveToRelative(0.258F, -0.097F, 0.39F, -0.385F, 0.292F, -0.644F)
+          lineToRelative(-0.6F, -1.6F)
+          curveTo(15.75F, 9.952F, 16.0F, 9.505F, 16.0F, 9.0F)
+          curveToRelative(0.0F, -0.828F, -0.672F, -1.5F, -1.5F, -1.5F)
+          horizontalLineToRelative(-1.0F)
+          curveTo(13.224F, 7.5F, 13.0F, 7.724F, 13.0F, 8.0F)
+          verticalLineToRelative(2.879F)
+          close()
+          moveToRelative(4.0F, 2.371F)
+          curveToRelative(0.0F, 0.452F, -0.172F, 0.865F, -0.453F, 1.175F)
+          lineToRelative(0.707F, 0.708F)
+          curveTo(17.717F, 14.64F, 18.0F, 13.979F, 18.0F, 13.25F)
+          verticalLineToRelative(-6.5F)
+          curveTo(18.0F, 5.231F, 16.769F, 4.0F, 15.25F, 4.0F)
+          horizontalLineTo(6.121F)
+          lineToRelative(1.0F, 1.0F)
+          horizontalLineToRelative(8.129F)
+          curveTo(16.216F, 5.0F, 17.0F, 5.784F, 17.0F, 6.75F)
+          verticalLineToRelative(6.5F)
+          close()
+          moveTo(14.0F, 9.5F)
+          verticalLineToRelative(-1.0F)
+          horizontalLineToRelative(0.5F)
+          curveTo(14.776F, 8.5F, 15.0F, 8.724F, 15.0F, 9.0F)
+          reflectiveCurveToRelative(-0.224F, 0.5F, -0.5F, 0.5F)
+          horizontalLineTo(14.0F)
+          close()        
+      }
+    }
+    return _hdrOff20!!
+  }
+
+private var _hdrOff20: ImageVector? = null

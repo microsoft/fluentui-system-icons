@@ -1,0 +1,93 @@
+package com.microsoft.fluent.mobile.icons
+
+import androidx.compose.material.icons.materialPath
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.microsoft.fluent.mobile.FluentIcons
+import com.microsoft.fluent.mobile.fluentIcon
+
+public val FluentIcons.Regular.ChannelAlert28: ImageVector
+  get() {
+    if (_channelAlert28 != null) {
+      return _channelAlert28!!
+    }
+    _channelAlert28 = fluentIcon(name = "Regular.ChannelAlert28", 28f) {
+      materialPath {
+          moveTo(3.0F, 11.396F)
+          verticalLineToRelative(9.354F)
+          curveTo(3.0F, 23.097F, 4.903F, 25.0F, 7.25F, 25.0F)
+          horizontalLineToRelative(7.25F)
+          curveToRelative(-0.347F, -0.462F, -0.642F, -0.965F, -0.876F, -1.5F)
+          horizontalLineTo(7.25F)
+          curveToRelative(-1.519F, 0.0F, -2.75F, -1.231F, -2.75F, -2.75F)
+          verticalLineToRelative(-9.354F)
+          curveTo(4.262F, 11.464F, 4.01F, 11.5F, 3.75F, 11.5F)
+          reflectiveCurveTo(3.238F, 11.464F, 3.0F, 11.396F)
+          close()
+          moveTo(25.0F, 7.25F)
+          verticalLineToRelative(7.25F)
+          curveToRelative(-0.462F, -0.347F, -0.965F, -0.642F, -1.5F, -0.876F)
+          verticalLineTo(7.25F)
+          curveToRelative(0.0F, -1.519F, -1.231F, -2.75F, -2.75F, -2.75F)
+          horizontalLineTo(7.25F)
+          curveToRelative(-1.137F, 0.0F, -2.114F, 0.69F, -2.532F, 1.675F)
+          curveTo(4.417F, 6.062F, 4.091F, 6.0F, 3.75F, 6.0F)
+          curveToRelative(-0.2F, 0.0F, -0.394F, 0.021F, -0.582F, 0.062F)
+          curveTo(3.682F, 4.292F, 5.315F, 3.0F, 7.25F, 3.0F)
+          horizontalLineToRelative(13.5F)
+          curveTo(23.097F, 3.0F, 25.0F, 4.903F, 25.0F, 7.25F)
+          close()
+          moveTo(9.75F, 15.0F)
+          horizontalLineToRelative(5.65F)
+          curveToRelative(-0.476F, 0.443F, -0.896F, 0.947F, -1.245F, 1.5F)
+          horizontalLineTo(9.75F)
+          curveTo(9.336F, 16.5F, 9.0F, 16.164F, 9.0F, 15.75F)
+          reflectiveCurveTo(9.336F, 15.0F, 9.75F, 15.0F)
+          close()
+          moveTo(2.0F, 8.75F)
+          curveToRelative(0.0F, 0.698F, 0.409F, 1.3F, 1.0F, 1.582F)
+          curveTo(3.227F, 10.44F, 3.482F, 10.5F, 3.75F, 10.5F)
+          reflectiveCurveToRelative(0.523F, -0.06F, 0.75F, -0.168F)
+          curveToRelative(0.591F, -0.281F, 1.0F, -0.884F, 1.0F, -1.582F)
+          curveToRelative(0.0F, -0.698F, -0.408F, -1.3F, -0.999F, -1.581F)
+          curveTo(4.274F, 7.061F, 4.02F, 7.0F, 3.75F, 7.0F)
+          curveTo(3.482F, 7.0F, 3.228F, 7.06F, 3.0F, 7.168F)
+          curveTo(2.41F, 7.448F, 2.0F, 8.052F, 2.0F, 8.75F)
+          close()
+          moveTo(9.75F, 11.0F)
+          curveTo(9.336F, 11.0F, 9.0F, 11.336F, 9.0F, 11.75F)
+          reflectiveCurveToRelative(0.336F, 0.75F, 0.75F, 0.75F)
+          horizontalLineToRelative(8.5F)
+          curveToRelative(0.414F, 0.0F, 0.75F, -0.336F, 0.75F, -0.75F)
+          reflectiveCurveTo(18.664F, 11.0F, 18.25F, 11.0F)
+          horizontalLineToRelative(-8.5F)
+          close()
+          moveTo(27.0F, 20.5F)
+          curveToRelative(0.0F, 3.59F, -2.91F, 6.5F, -6.5F, 6.5F)
+          reflectiveCurveTo(14.0F, 24.09F, 14.0F, 20.5F)
+          reflectiveCurveToRelative(2.91F, -6.5F, 6.5F, -6.5F)
+          reflectiveCurveToRelative(6.5F, 2.91F, 6.5F, 6.5F)
+          close()
+          moveTo(20.5F, 16.0F)
+          curveToRelative(-1.38F, 0.0F, -2.5F, 1.12F, -2.5F, 2.5F)
+          verticalLineToRelative(2.793F)
+          lineToRelative(-0.854F, 0.853F)
+          curveToRelative(-0.143F, 0.143F, -0.185F, 0.358F, -0.108F, 0.545F)
+          curveTo(17.116F, 22.878F, 17.298F, 23.0F, 17.5F, 23.0F)
+          horizontalLineToRelative(6.0F)
+          curveToRelative(0.202F, 0.0F, 0.385F, -0.122F, 0.462F, -0.309F)
+          curveToRelative(0.077F, -0.186F, 0.035F, -0.402F, -0.108F, -0.545F)
+          lineTo(23.0F, 21.293F)
+          verticalLineTo(18.5F)
+          curveToRelative(0.0F, -1.38F, -1.12F, -2.5F, -2.5F, -2.5F)
+          close()
+          moveToRelative(-1.415F, 8.0F)
+          curveToRelative(0.206F, 0.583F, 0.762F, 1.0F, 1.415F, 1.0F)
+          reflectiveCurveToRelative(1.209F, -0.417F, 1.415F, -1.0F)
+          horizontalLineToRelative(-2.83F)
+          close()        
+      }
+    }
+    return _channelAlert28!!
+  }
+
+private var _channelAlert28: ImageVector? = null

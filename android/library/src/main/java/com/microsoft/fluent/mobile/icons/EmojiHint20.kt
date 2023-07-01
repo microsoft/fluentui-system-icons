@@ -1,0 +1,106 @@
+package com.microsoft.fluent.mobile.icons
+
+import androidx.compose.material.icons.materialPath
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.microsoft.fluent.mobile.FluentIcons
+import com.microsoft.fluent.mobile.fluentIcon
+
+public val FluentIcons.Regular.EmojiHint20: ImageVector
+  get() {
+    if (_emojiHint20 != null) {
+      return _emojiHint20!!
+    }
+    _emojiHint20 = fluentIcon(name = "Regular.EmojiHint20", 20f) {
+      materialPath {
+          moveTo(8.439F, 2.152F)
+          curveTo(8.168F, 2.206F, 7.992F, 2.47F, 8.045F, 2.74F)
+          curveTo(8.1F, 3.01F, 8.362F, 3.187F, 8.633F, 3.133F)
+          curveToRelative(0.883F, -0.175F, 1.85F, -0.175F, 2.733F, 0.0F)
+          curveToRelative(0.271F, 0.054F, 0.534F, -0.122F, 0.588F, -0.393F)
+          curveToRelative(0.053F, -0.271F, -0.123F, -0.534F, -0.394F, -0.588F)
+          curveToRelative(-1.01F, -0.2F, -2.11F, -0.2F, -3.121F, 0.0F)
+          close()
+          moveToRelative(6.006F, 1.196F)
+          curveToRelative(-0.23F, -0.154F, -0.54F, -0.092F, -0.694F, 0.137F)
+          curveToRelative(-0.153F, 0.23F, -0.092F, 0.54F, 0.138F, 0.694F)
+          curveToRelative(0.763F, 0.51F, 1.42F, 1.168F, 1.932F, 1.932F)
+          curveToRelative(0.154F, 0.23F, 0.464F, 0.291F, 0.694F, 0.137F)
+          curveToRelative(0.229F, -0.153F, 0.29F, -0.464F, 0.137F, -0.693F)
+          curveToRelative(-0.584F, -0.872F, -1.335F, -1.623F, -2.207F, -2.207F)
+          close()
+          moveTo(6.11F, 4.178F)
+          curveTo(6.34F, 4.026F, 6.4F, 3.716F, 6.248F, 3.486F)
+          curveToRelative(-0.154F, -0.23F, -0.464F, -0.29F, -0.694F, -0.137F)
+          curveToRelative(-0.872F, 0.584F, -1.623F, 1.335F, -2.207F, 2.207F)
+          curveToRelative(-0.153F, 0.23F, -0.092F, 0.54F, 0.138F, 0.693F)
+          curveToRelative(0.23F, 0.154F, 0.54F, 0.092F, 0.693F, -0.137F)
+          curveToRelative(0.511F, -0.764F, 1.17F, -1.421F, 1.933F, -1.932F)
+          close()
+          moveTo(3.133F, 8.634F)
+          curveTo(3.186F, 8.363F, 3.01F, 8.1F, 2.739F, 8.046F)
+          curveTo(2.47F, 7.992F, 2.205F, 8.168F, 2.152F, 8.439F)
+          curveToRelative(-0.2F, 1.01F, -0.2F, 2.111F, 0.0F, 3.122F)
+          curveToRelative(0.053F, 0.27F, 0.317F, 0.447F, 0.587F, 0.393F)
+          curveToRelative(0.271F, -0.053F, 0.447F, -0.317F, 0.394F, -0.587F)
+          curveToRelative(-0.175F, -0.884F, -0.175F, -1.85F, 0.0F, -2.734F)
+          close()
+          moveTo(17.847F, 8.44F)
+          curveToRelative(-0.053F, -0.27F, -0.316F, -0.447F, -0.587F, -0.393F)
+          curveToRelative(-0.271F, 0.053F, -0.447F, 0.316F, -0.394F, 0.587F)
+          curveToRelative(0.175F, 0.884F, 0.175F, 1.85F, 0.0F, 2.734F)
+          curveToRelative(-0.053F, 0.27F, 0.123F, 0.534F, 0.394F, 0.587F)
+          curveToRelative(0.27F, 0.054F, 0.534F, -0.122F, 0.587F, -0.393F)
+          curveToRelative(0.2F, -1.01F, 0.2F, -2.111F, 0.0F, -3.122F)
+          close()
+          moveTo(4.178F, 13.89F)
+          curveToRelative(-0.153F, -0.23F, -0.464F, -0.291F, -0.693F, -0.137F)
+          curveToRelative(-0.23F, 0.153F, -0.291F, 0.464F, -0.138F, 0.693F)
+          curveToRelative(0.584F, 0.872F, 1.335F, 1.623F, 2.207F, 2.207F)
+          curveToRelative(0.23F, 0.154F, 0.54F, 0.092F, 0.694F, -0.137F)
+          curveToRelative(0.154F, -0.23F, 0.092F, -0.54F, -0.137F, -0.694F)
+          curveToRelative(-0.764F, -0.511F, -1.421F, -1.168F, -1.933F, -1.932F)
+          close()
+          moveToRelative(12.474F, 0.556F)
+          curveToRelative(0.153F, -0.23F, 0.092F, -0.54F, -0.137F, -0.693F)
+          curveToRelative(-0.23F, -0.154F, -0.54F, -0.093F, -0.694F, 0.137F)
+          curveToRelative(-0.511F, 0.764F, -1.169F, 1.421F, -1.932F, 1.932F)
+          curveToRelative(-0.23F, 0.154F, -0.291F, 0.464F, -0.138F, 0.694F)
+          curveToRelative(0.154F, 0.23F, 0.464F, 0.29F, 0.694F, 0.137F)
+          curveToRelative(0.872F, -0.584F, 1.623F, -1.335F, 2.207F, -2.207F)
+          close()
+          moveToRelative(-8.02F, 2.422F)
+          curveToRelative(-0.27F, -0.054F, -0.533F, 0.122F, -0.587F, 0.393F)
+          curveToRelative(-0.053F, 0.271F, 0.123F, 0.534F, 0.394F, 0.588F)
+          curveToRelative(1.01F, 0.2F, 2.111F, 0.2F, 3.121F, 0.0F)
+          curveToRelative(0.271F, -0.054F, 0.447F, -0.317F, 0.394F, -0.588F)
+          curveToRelative(-0.054F, -0.27F, -0.317F, -0.447F, -0.588F, -0.393F)
+          curveToRelative(-0.883F, 0.174F, -1.85F, 0.174F, -2.733F, 0.0F)
+          close()
+          moveTo(7.75F, 9.0F)
+          curveTo(8.163F, 9.0F, 8.5F, 8.664F, 8.5F, 8.25F)
+          reflectiveCurveTo(8.163F, 7.5F, 7.75F, 7.5F)
+          reflectiveCurveTo(7.0F, 7.836F, 7.0F, 8.25F)
+          reflectiveCurveTo(7.335F, 9.0F, 7.75F, 9.0F)
+          close()
+          moveToRelative(4.5F, 0.0F)
+          curveTo(12.663F, 9.0F, 13.0F, 8.664F, 13.0F, 8.25F)
+          reflectiveCurveTo(12.663F, 7.5F, 12.25F, 7.5F)
+          reflectiveCurveTo(11.5F, 7.836F, 11.5F, 8.25F)
+          reflectiveCurveTo(11.835F, 9.0F, 12.25F, 9.0F)
+          close()
+          moveToRelative(-5.685F, 3.11F)
+          curveToRelative(0.215F, -0.173F, 0.53F, -0.138F, 0.703F, 0.077F)
+          curveTo(7.91F, 12.988F, 8.895F, 13.5F, 10.0F, 13.5F)
+          curveToRelative(1.105F, 0.0F, 2.09F, -0.512F, 2.733F, -1.313F)
+          curveToRelative(0.173F, -0.215F, 0.487F, -0.25F, 0.703F, -0.077F)
+          curveToRelative(0.215F, 0.173F, 0.25F, 0.487F, 0.077F, 0.703F)
+          curveTo(12.688F, 13.84F, 11.421F, 14.5F, 10.0F, 14.5F)
+          curveToRelative(-1.421F, 0.0F, -2.689F, -0.66F, -3.513F, -1.687F)
+          curveToRelative(-0.172F, -0.216F, -0.138F, -0.53F, 0.078F, -0.703F)
+          close()        
+      }
+    }
+    return _emojiHint20!!
+  }
+
+private var _emojiHint20: ImageVector? = null

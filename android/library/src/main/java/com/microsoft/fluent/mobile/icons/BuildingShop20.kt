@@ -1,0 +1,105 @@
+package com.microsoft.fluent.mobile.icons
+
+import androidx.compose.material.icons.materialPath
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.microsoft.fluent.mobile.FluentIcons
+import com.microsoft.fluent.mobile.fluentIcon
+
+public val FluentIcons.Filled.BuildingShop20: ImageVector
+  get() {
+    if (_buildingShop20 != null) {
+      return _buildingShop20!!
+    }
+    _buildingShop20 = fluentIcon(name = "Filled.BuildingShop20", 20f) {
+      materialPath {
+          moveTo(12.0F, 12.0F)
+          horizontalLineToRelative(2.0F)
+          verticalLineToRelative(2.0F)
+          horizontalLineToRelative(-2.0F)
+          verticalLineToRelative(-2.0F)
+          close()
+          moveTo(5.0F, 2.0F)
+          horizontalLineToRelative(10.0F)
+          curveToRelative(0.148F, 0.0F, 0.29F, 0.066F, 0.384F, 0.18F)
+          lineToRelative(2.5F, 3.0F)
+          curveTo(18.001F, 5.32F, 18.0F, 5.39F, 18.0F, 5.482F)
+          verticalLineTo(7.0F)
+          curveToRelative(0.0F, 0.888F, -0.386F, 1.687F, -1.0F, 2.236F)
+          verticalLineTo(17.5F)
+          curveToRelative(0.0F, 0.276F, -0.224F, 0.5F, -0.5F, 0.5F)
+          horizontalLineTo(10.0F)
+          verticalLineToRelative(-6.5F)
+          curveToRelative(0.0F, -0.276F, -0.224F, -0.5F, -0.5F, -0.5F)
+          horizontalLineToRelative(-4.0F)
+          curveTo(5.224F, 11.0F, 5.0F, 11.224F, 5.0F, 11.5F)
+          verticalLineTo(18.0F)
+          horizontalLineTo(3.5F)
+          curveTo(3.224F, 18.0F, 3.0F, 17.776F, 3.0F, 17.5F)
+          verticalLineTo(9.236F)
+          curveTo(2.386F, 8.686F, 2.0F, 7.888F, 2.0F, 7.0F)
+          verticalLineTo(5.5F)
+          curveToRelative(0.0F, -0.115F, 0.04F, -0.229F, 0.116F, -0.32F)
+          lineToRelative(2.5F, -3.0F)
+          curveTo(4.71F, 2.066F, 4.852F, 2.0F, 5.0F, 2.0F)
+          close()
+          moveTo(3.0F, 6.0F)
+          verticalLineToRelative(1.0F)
+          curveToRelative(0.0F, 1.105F, 0.895F, 2.0F, 2.0F, 2.0F)
+          reflectiveCurveToRelative(2.0F, -0.895F, 2.0F, -2.0F)
+          verticalLineTo(6.0F)
+          horizontalLineTo(3.0F)
+          close()
+          moveToRelative(5.0F, 0.0F)
+          verticalLineToRelative(1.0F)
+          curveToRelative(0.0F, 1.105F, 0.895F, 2.0F, 2.0F, 2.0F)
+          reflectiveCurveToRelative(2.0F, -0.895F, 2.0F, -2.0F)
+          verticalLineTo(6.0F)
+          horizontalLineTo(8.0F)
+          close()
+          moveToRelative(5.0F, 0.0F)
+          verticalLineToRelative(1.0F)
+          curveToRelative(0.0F, 1.105F, 0.895F, 2.0F, 2.0F, 2.0F)
+          reflectiveCurveToRelative(2.0F, -0.895F, 2.0F, -2.0F)
+          verticalLineTo(6.0F)
+          horizontalLineToRelative(-4.0F)
+          close()
+          moveTo(5.234F, 3.0F)
+          lineTo(3.567F, 5.0F)
+          horizontalLineTo(7.14F)
+          lineToRelative(0.666F, -2.0F)
+          horizontalLineTo(5.234F)
+          close()
+          moveToRelative(6.572F, 2.0F)
+          lineTo(11.14F, 3.0F)
+          horizontalLineTo(8.86F)
+          lineTo(8.194F, 5.0F)
+          horizontalLineToRelative(3.612F)
+          close()
+          moveToRelative(1.054F, 0.0F)
+          horizontalLineToRelative(3.573F)
+          lineToRelative(-1.667F, -2.0F)
+          horizontalLineToRelative(-2.572F)
+          lineToRelative(0.666F, 2.0F)
+          close()
+          moveTo(11.0F, 11.5F)
+          verticalLineToRelative(3.0F)
+          curveToRelative(0.0F, 0.276F, 0.224F, 0.5F, 0.5F, 0.5F)
+          horizontalLineToRelative(3.0F)
+          curveToRelative(0.276F, 0.0F, 0.5F, -0.224F, 0.5F, -0.5F)
+          verticalLineToRelative(-3.0F)
+          curveToRelative(0.0F, -0.276F, -0.224F, -0.5F, -0.5F, -0.5F)
+          horizontalLineToRelative(-3.0F)
+          curveToRelative(-0.276F, 0.0F, -0.5F, 0.224F, -0.5F, 0.5F)
+          close()
+          moveTo(9.0F, 18.0F)
+          verticalLineToRelative(-6.0F)
+          horizontalLineTo(6.0F)
+          verticalLineToRelative(6.0F)
+          horizontalLineToRelative(3.0F)
+          close()        
+      }
+    }
+    return _buildingShop20!!
+  }
+
+private var _buildingShop20: ImageVector? = null

@@ -1,0 +1,107 @@
+package com.microsoft.fluent.mobile.icons
+
+import androidx.compose.material.icons.materialPath
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.microsoft.fluent.mobile.FluentIcons
+import com.microsoft.fluent.mobile.fluentIcon
+
+public val FluentIcons.Filled.BuildingBankLink24: ImageVector
+  get() {
+    if (_buildingBankLink24 != null) {
+      return _buildingBankLink24!!
+    }
+    _buildingBankLink24 = fluentIcon(name = "Filled.BuildingBankLink24", 24f) {
+      materialPath {
+          moveTo(10.968F, 2.325F)
+          curveToRelative(0.615F, -0.449F, 1.449F, -0.449F, 2.064F, 0.0F)
+          lineToRelative(7.421F, 5.416F)
+          curveTo(21.43F, 8.453F, 20.927F, 9.998F, 19.72F, 10.0F)
+          horizontalLineTo(4.28F)
+          curveTo(3.072F, 9.997F, 2.57F, 8.452F, 3.546F, 7.74F)
+          lineToRelative(7.421F, -5.416F)
+          close()
+          moveTo(13.0F, 6.25F)
+          curveToRelative(0.0F, -0.552F, -0.448F, -1.0F, -1.0F, -1.0F)
+          reflectiveCurveToRelative(-1.0F, 0.448F, -1.0F, 1.0F)
+          curveToRelative(0.0F, 0.553F, 0.448F, 1.0F, 1.0F, 1.0F)
+          reflectiveCurveToRelative(1.0F, -0.447F, 1.0F, -1.0F)
+          close()
+          moveTo(11.25F, 16.0F)
+          horizontalLineToRelative(-2.0F)
+          verticalLineToRelative(-5.0F)
+          horizontalLineToRelative(2.0F)
+          verticalLineToRelative(5.0F)
+          close()
+          moveToRelative(1.5F, -0.433F)
+          curveToRelative(0.571F, -0.466F, 1.253F, -0.801F, 2.0F, -0.961F)
+          verticalLineTo(11.0F)
+          horizontalLineToRelative(-2.0F)
+          verticalLineToRelative(4.567F)
+          close()
+          moveToRelative(3.5F, -1.067F)
+          horizontalLineToRelative(2.25F)
+          verticalLineTo(11.0F)
+          horizontalLineToRelative(-2.25F)
+          verticalLineToRelative(3.5F)
+          close()
+          moveTo(11.0F, 19.25F)
+          curveToRelative(0.0F, -0.814F, 0.205F, -1.58F, 0.566F, -2.25F)
+          horizontalLineTo(5.25F)
+          curveTo(4.007F, 17.0F, 3.0F, 18.008F, 3.0F, 19.25F)
+          verticalLineToRelative(0.5F)
+          curveToRelative(0.0F, 0.415F, 0.336F, 0.75F, 0.75F, 0.75F)
+          horizontalLineToRelative(7.416F)
+          curveTo(11.058F, 20.102F, 11.0F, 19.683F, 11.0F, 19.25F)
+          close()
+          moveTo(7.75F, 16.0F)
+          horizontalLineTo(5.5F)
+          verticalLineToRelative(-5.0F)
+          horizontalLineToRelative(2.25F)
+          verticalLineToRelative(5.0F)
+          close()
+          moveTo(23.0F, 19.25F)
+          curveToRelative(0.0F, -2.07F, -1.679F, -3.75F, -3.75F, -3.75F)
+          lineToRelative(-0.102F, 0.007F)
+          curveToRelative(-0.366F, 0.05F, -0.648F, 0.364F, -0.648F, 0.743F)
+          curveToRelative(0.0F, 0.415F, 0.336F, 0.75F, 0.75F, 0.75F)
+          lineToRelative(0.154F, 0.006F)
+          curveToRelative(1.17F, 0.079F, 2.096F, 1.053F, 2.096F, 2.244F)
+          curveToRelative(0.0F, 1.243F, -1.007F, 2.25F, -2.25F, 2.25F)
+          lineToRelative(-0.003F, 0.005F)
+          lineToRelative(-0.102F, 0.007F)
+          curveToRelative(-0.366F, 0.052F, -0.647F, 0.367F, -0.645F, 0.746F)
+          curveToRelative(0.002F, 0.415F, 0.34F, 0.749F, 0.753F, 0.747F)
+          verticalLineTo(23.0F)
+          lineToRelative(0.2F, -0.005F)
+          curveTo(21.427F, 22.892F, 23.0F, 21.255F, 23.0F, 19.25F)
+          close()
+          moveToRelative(-6.5F, -3.0F)
+          curveToRelative(0.0F, -0.414F, -0.336F, -0.75F, -0.75F, -0.75F)
+          lineToRelative(-0.2F, 0.005F)
+          curveTo(13.573F, 15.61F, 12.0F, 17.247F, 12.0F, 19.25F)
+          curveToRelative(0.0F, 2.071F, 1.679F, 3.75F, 3.75F, 3.75F)
+          lineToRelative(0.102F, -0.006F)
+          curveToRelative(0.366F, -0.05F, 0.648F, -0.364F, 0.648F, -0.744F)
+          curveToRelative(0.0F, -0.414F, -0.336F, -0.75F, -0.75F, -0.75F)
+          lineToRelative(-0.154F, -0.005F)
+          curveToRelative(-1.17F, -0.079F, -2.096F, -1.054F, -2.096F, -2.245F)
+          curveToRelative(0.0F, -1.242F, 1.007F, -2.25F, 2.25F, -2.25F)
+          lineToRelative(0.102F, -0.006F)
+          curveToRelative(0.366F, -0.05F, 0.648F, -0.364F, 0.648F, -0.744F)
+          close()
+          moveToRelative(3.5F, 3.0F)
+          curveToRelative(0.0F, -0.414F, -0.336F, -0.75F, -0.75F, -0.75F)
+          horizontalLineToRelative(-3.5F)
+          lineToRelative(-0.102F, 0.007F)
+          curveTo(15.282F, 18.557F, 15.0F, 18.871F, 15.0F, 19.25F)
+          curveToRelative(0.0F, 0.415F, 0.336F, 0.75F, 0.75F, 0.75F)
+          horizontalLineToRelative(3.5F)
+          lineToRelative(0.102F, -0.006F)
+          curveTo(19.718F, 19.944F, 20.0F, 19.63F, 20.0F, 19.25F)
+          close()        
+      }
+    }
+    return _buildingBankLink24!!
+  }
+
+private var _buildingBankLink24: ImageVector? = null
