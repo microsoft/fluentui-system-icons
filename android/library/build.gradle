@@ -2,13 +2,10 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
 
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
     }
 
     buildTypes {
@@ -17,7 +14,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.3"
+    }
+}
 
+dependencies {
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation "androidx.compose.material:material:1.4.3"
+    implementation "androidx.compose.ui:ui:1.6.0-alpha01"
+    implementation "androidx.compose.ui:ui-tooling-preview:1.6.0-alpha01"
+    implementation "androidx.compose.material3:material3:1.2.0-alpha03"
 }
 
 apply from: "${rootDir}/scripts/publish-module.gradle"
+apply plugin: 'org.jetbrains.kotlin.android'
