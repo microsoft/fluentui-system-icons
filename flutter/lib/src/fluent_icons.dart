@@ -12477,6 +12477,87 @@ class FluentIcons {
   /// fluent icon named "number_circle_1" in size 24 and regular style.
   static const IconData number_circle_1_24_regular = IconData(59526, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "number_circle_1" in size 28 and regular style.
+  static const IconData number_circle_1_28_regular = IconData(983627, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_1" in size 32 and regular style.
+  static const IconData number_circle_1_32_regular = IconData(983628, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_1" in size 48 and regular style.
+  static const IconData number_circle_1_48_regular = IconData(983629, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_2" in size 16 and regular style.
+  static const IconData number_circle_2_16_regular = IconData(983630, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_2" in size 20 and regular style.
+  static const IconData number_circle_2_20_regular = IconData(983631, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_2" in size 24 and regular style.
+  static const IconData number_circle_2_24_regular = IconData(983632, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_2" in size 28 and regular style.
+  static const IconData number_circle_2_28_regular = IconData(983633, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_2" in size 32 and regular style.
+  static const IconData number_circle_2_32_regular = IconData(983634, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_2" in size 48 and regular style.
+  static const IconData number_circle_2_48_regular = IconData(983635, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_3" in size 16 and regular style.
+  static const IconData number_circle_3_16_regular = IconData(983636, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_3" in size 20 and regular style.
+  static const IconData number_circle_3_20_regular = IconData(983637, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_3" in size 24 and regular style.
+  static const IconData number_circle_3_24_regular = IconData(983638, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_3" in size 28 and regular style.
+  static const IconData number_circle_3_28_regular = IconData(983639, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_3" in size 32 and regular style.
+  static const IconData number_circle_3_32_regular = IconData(983640, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_3" in size 48 and regular style.
+  static const IconData number_circle_3_48_regular = IconData(983641, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_4" in size 16 and regular style.
+  static const IconData number_circle_4_16_regular = IconData(983642, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_4" in size 20 and regular style.
+  static const IconData number_circle_4_20_regular = IconData(983643, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_4" in size 24 and regular style.
+  static const IconData number_circle_4_24_regular = IconData(983644, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_4" in size 28 and regular style.
+  static const IconData number_circle_4_28_regular = IconData(983645, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_4" in size 32 and regular style.
+  static const IconData number_circle_4_32_regular = IconData(983646, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_4" in size 48 and regular style.
+  static const IconData number_circle_4_48_regular = IconData(983647, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_5" in size 16 and regular style.
+  static const IconData number_circle_5_16_regular = IconData(983648, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_5" in size 20 and regular style.
+  static const IconData number_circle_5_20_regular = IconData(983649, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_5" in size 24 and regular style.
+  static const IconData number_circle_5_24_regular = IconData(983650, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_5" in size 28 and regular style.
+  static const IconData number_circle_5_28_regular = IconData(983651, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_5" in size 32 and regular style.
+  static const IconData number_circle_5_32_regular = IconData(983652, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_5" in size 48 and regular style.
+  static const IconData number_circle_5_48_regular = IconData(983653, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "number_row" in size 16 and regular style.
   static const IconData number_row_16_regular = IconData(62841, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -33508,6 +33589,87 @@ class FluentIcons {
 
   /// fluent icon named "number_circle_1" in size 24 and filled style.
   static const IconData number_circle_1_24_filled = IconData(59540, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_1" in size 28 and filled style.
+  static const IconData number_circle_1_28_filled = IconData(983646, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_1" in size 32 and filled style.
+  static const IconData number_circle_1_32_filled = IconData(983647, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_1" in size 48 and filled style.
+  static const IconData number_circle_1_48_filled = IconData(983648, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_2" in size 16 and filled style.
+  static const IconData number_circle_2_16_filled = IconData(983649, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_2" in size 20 and filled style.
+  static const IconData number_circle_2_20_filled = IconData(983650, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_2" in size 24 and filled style.
+  static const IconData number_circle_2_24_filled = IconData(983651, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_2" in size 28 and filled style.
+  static const IconData number_circle_2_28_filled = IconData(983652, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_2" in size 32 and filled style.
+  static const IconData number_circle_2_32_filled = IconData(983653, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_2" in size 48 and filled style.
+  static const IconData number_circle_2_48_filled = IconData(983654, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_3" in size 16 and filled style.
+  static const IconData number_circle_3_16_filled = IconData(983655, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_3" in size 20 and filled style.
+  static const IconData number_circle_3_20_filled = IconData(983656, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_3" in size 24 and filled style.
+  static const IconData number_circle_3_24_filled = IconData(983657, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_3" in size 28 and filled style.
+  static const IconData number_circle_3_28_filled = IconData(983658, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_3" in size 32 and filled style.
+  static const IconData number_circle_3_32_filled = IconData(983659, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_3" in size 48 and filled style.
+  static const IconData number_circle_3_48_filled = IconData(983660, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_4" in size 16 and filled style.
+  static const IconData number_circle_4_16_filled = IconData(983661, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_4" in size 20 and filled style.
+  static const IconData number_circle_4_20_filled = IconData(983662, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_4" in size 24 and filled style.
+  static const IconData number_circle_4_24_filled = IconData(983663, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_4" in size 28 and filled style.
+  static const IconData number_circle_4_28_filled = IconData(983664, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_4" in size 32 and filled style.
+  static const IconData number_circle_4_32_filled = IconData(983665, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_4" in size 48 and filled style.
+  static const IconData number_circle_4_48_filled = IconData(983666, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_5" in size 16 and filled style.
+  static const IconData number_circle_5_16_filled = IconData(983667, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_5" in size 20 and filled style.
+  static const IconData number_circle_5_20_filled = IconData(983668, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_5" in size 24 and filled style.
+  static const IconData number_circle_5_24_filled = IconData(983669, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_5" in size 28 and filled style.
+  static const IconData number_circle_5_28_filled = IconData(983670, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_5" in size 32 and filled style.
+  static const IconData number_circle_5_32_filled = IconData(983671, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "number_circle_5" in size 48 and filled style.
+  static const IconData number_circle_5_48_filled = IconData(983672, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "number_row" in size 16 and filled style.
   static const IconData number_row_16_filled = IconData(62851, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
