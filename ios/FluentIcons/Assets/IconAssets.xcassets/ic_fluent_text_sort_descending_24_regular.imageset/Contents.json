@@ -10,24 +10,14 @@
       "locale": "kk"
     },
     {
-      "filename": "sl_ic_fluent_text_sort_descending_24_regular.svg",
-      "idiom": "universal",
-      "locale": "sl"
-    },
-    {
-      "filename": "sr_ic_fluent_text_sort_descending_24_regular.svg",
-      "idiom": "universal",
-      "locale": "sr"
-    },
-    {
-      "filename": "gr_ic_fluent_text_sort_descending_24_regular.svg",
-      "idiom": "universal",
-      "locale": "gr"
-    },
-    {
       "filename": "da_ic_fluent_text_sort_descending_24_regular.svg",
       "idiom": "universal",
       "locale": "da"
+    },
+    {
+      "filename": "ru_ic_fluent_text_sort_descending_24_regular.svg",
+      "idiom": "universal",
+      "locale": "ru"
     },
     {
       "filename": "fi_ic_fluent_text_sort_descending_24_regular.svg",
@@ -35,9 +25,24 @@
       "locale": "fi"
     },
     {
-      "filename": "ru_ic_fluent_text_sort_descending_24_regular.svg",
+      "filename": "gr_ic_fluent_text_sort_descending_24_regular.svg",
       "idiom": "universal",
-      "locale": "ru"
+      "locale": "gr"
+    },
+    {
+      "filename": "sr_ic_fluent_text_sort_descending_24_regular.svg",
+      "idiom": "universal",
+      "locale": "sr"
+    },
+    {
+      "filename": "sl_ic_fluent_text_sort_descending_24_regular.svg",
+      "idiom": "universal",
+      "locale": "sl"
+    },
+    {
+      "filename": "en_ic_fluent_text_sort_descending_24_regular.svg",
+      "idiom": "universal",
+      "locale": "en"
     },
     {
       "filename": "se_ic_fluent_text_sort_descending_24_regular.svg",
@@ -48,11 +53,6 @@
       "filename": "bg_ic_fluent_text_sort_descending_24_regular.svg",
       "idiom": "universal",
       "locale": "bg"
-    },
-    {
-      "filename": "en_ic_fluent_text_sort_descending_24_regular.svg",
-      "idiom": "universal",
-      "locale": "en"
     },
     {
       "filename": "ko_ic_fluent_text_sort_descending_24_regular.svg",
