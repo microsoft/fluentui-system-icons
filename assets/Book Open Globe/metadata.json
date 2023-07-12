@@ -1,0 +1,17 @@
+{
+  "name": "Book Open Globe",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "",
+  "metaphor": [
+    "read",
+    "world"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Bubble Multiple",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent bubble match games or cleaning scenarios.",
+  "metaphor": [
+    "bubble",
+    "match",
+    "game",
+    "pop",
+    "soap",
+    "float"
+  ]
+}

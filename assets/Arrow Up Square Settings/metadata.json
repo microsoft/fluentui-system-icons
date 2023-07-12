@@ -1,0 +1,21 @@
+{
+  "name": "Arrow Up Square Settings",
+  "size": [
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, excel",
+  "description": "Used in scenarios of uploading/updating settings.",
+  "metaphor": [
+    "arrow",
+    "point",
+    "up",
+    "upload",
+    "gear",
+    "options",
+    "update"
+  ]
+}

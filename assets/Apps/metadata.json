@@ -1,0 +1,22 @@
+{
+  "name": "Apps",
+  "size": [
+    28,
+    24,
+    20,
+    16,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for plugins, apps, tools.",
+  "metaphor": [
+    "plugin",
+    "square",
+    "stack"
+  ]
+}

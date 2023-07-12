@@ -1,0 +1,14 @@
+{
+  "name": "Bow Tie",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": null,
+  "description": null,
+  "metaphor": null
+}

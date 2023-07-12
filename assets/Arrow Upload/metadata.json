@@ -1,0 +1,20 @@
+{
+  "name": "Arrow Upload",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for pushing content into cloud.",
+  "metaphor": [
+    "point",
+    "direction",
+    "up",
+    "vertical"
+  ]
+}

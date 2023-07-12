@@ -1,0 +1,21 @@
+{
+  "name": "Arrow Hook Up Left",
+  "size": [
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used for undo/redo scenarios. Contains directional variants.",
+  "metaphor": [
+    "arrow",
+    "point",
+    "direction"
+  ],
+  "directionType": "mirror"
+}

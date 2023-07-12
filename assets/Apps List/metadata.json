@@ -1,0 +1,19 @@
+{
+  "name": "Apps List",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for content representing app ui.",
+  "metaphor": [
+    "collection",
+    "ui",
+    "list",
+    "cell"
+  ]
+}

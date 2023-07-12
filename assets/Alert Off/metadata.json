@@ -1,0 +1,22 @@
+{
+  "name": "Alert Off",
+  "size": [
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for alerts or notifications.",
+  "metaphor": [
+    "bell",
+    "alarm",
+    "chime",
+    "off",
+    "silence"
+  ]
+}

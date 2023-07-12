@@ -1,0 +1,24 @@
+{
+  "name": "Arrow Maximize",
+  "size": [
+    28,
+    24,
+    20,
+    16,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for expanding content.",
+  "metaphor": [
+    "point",
+    "direction",
+    "diagonal",
+    "fit",
+    "scale"
+  ]
+}

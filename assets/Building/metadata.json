@@ -1,0 +1,22 @@
+{
+  "name": "Building",
+  "size": [
+    24,
+    20,
+    16,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for location scenarios.",
+  "metaphor": [
+    "structure",
+    "construction",
+    "architecture",
+    "skyscraper"
+  ]
+}

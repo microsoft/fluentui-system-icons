@@ -1,0 +1,21 @@
+{
+  "name": "Braces",
+  "size": [
+    20,
+    24,
+    48,
+    16,
+    28,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in coding scenarios.",
+  "metaphor": [
+    "code",
+    "brackets"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Arrow Left",
+  "size": [
+    28,
+    24,
+    20,
+    32,
+    48,
+    16,
+    12
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": null,
+  "description": null,
+  "metaphor": null
+}

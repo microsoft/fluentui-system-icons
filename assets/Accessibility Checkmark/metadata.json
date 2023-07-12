@@ -1,0 +1,21 @@
+{
+  "name": "Accessibility Checkmark",
+  "size": [
+    24,
+    20,
+    28,
+    32,
+    48
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for accessibility checker pass state.",
+  "metaphor": [
+    "person",
+    "inclusive",
+    "plus"
+  ]
+}

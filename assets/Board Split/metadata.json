@@ -1,0 +1,20 @@
+{
+  "name": "Board Split",
+  "size": [
+    20,
+    24,
+    28,
+    48,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used for board views, collecting columns in a horizontal view.",
+  "metaphor": [
+    "read",
+    "calendar"
+  ]
+}

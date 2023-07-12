@@ -1,0 +1,20 @@
+{
+  "name": "Arrow Fit In",
+  "size": [
+    16,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to scale content to fit. Shared with Arrow Fit & similar to Auto Fit.",
+  "metaphor": [
+    "point",
+    "direction",
+    "horizontal",
+    "scale",
+    "fit"
+  ]
+}

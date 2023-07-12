@@ -1,0 +1,20 @@
+{
+  "name": "AutoSum",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to insert math formula into content.",
+  "metaphor": [
+    "math",
+    "formula",
+    "sigma",
+    "autosum"
+  ]
+}

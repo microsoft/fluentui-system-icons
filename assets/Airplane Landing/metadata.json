@@ -1,0 +1,20 @@
+{
+  "name": "Airplane Landing",
+  "size": [
+    16,
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for lift off time and general travel.",
+  "metaphor": [
+    "flight",
+    "vehicle",
+    "travel",
+    "take off"
+  ]
+}

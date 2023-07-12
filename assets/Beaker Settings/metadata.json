@@ -1,0 +1,19 @@
+{
+  "name": "Beaker Settings",
+  "size": [
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent testing scenarios.",
+  "metaphor": [
+    "science",
+    "lab",
+    "test",
+    "experiments"
+  ]
+}

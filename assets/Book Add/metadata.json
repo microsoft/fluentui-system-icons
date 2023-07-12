@@ -1,0 +1,18 @@
+{
+  "name": "Book Add",
+  "size": [
+    24,
+    20,
+    28
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general book scenarios.",
+  "metaphor": [
+    "read",
+    "add"
+  ]
+}

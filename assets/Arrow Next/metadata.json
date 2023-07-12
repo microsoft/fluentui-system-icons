@@ -1,0 +1,23 @@
+{
+  "name": "Arrow Next",
+  "size": [
+    24,
+    20,
+    12,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for skipping forward a known block of content.",
+  "metaphor": [
+    "point",
+    "direction",
+    "position",
+    "skip",
+    "next"
+  ],
+  "directionType": "mirror"
+}

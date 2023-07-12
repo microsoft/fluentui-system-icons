@@ -1,0 +1,20 @@
+{
+  "name": "Arrow Circle Down Double",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for directional indicators, links. Contains directional variants.",
+  "metaphor": [
+    "point",
+    "direction",
+    "horizontal",
+    "diagonal",
+    "circle"
+  ]
+}

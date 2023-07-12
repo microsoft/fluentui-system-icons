@@ -1,0 +1,22 @@
+{
+  "name": "Arrow Reset",
+  "size": [
+    20,
+    24,
+    32,
+    48
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used for reset actions.",
+  "metaphor": [
+    "arrow",
+    "direction",
+    "back",
+    "return"
+  ],
+  "directionType": "mirror"
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Arrow Step Back",
+  "size": [
+    16,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for debugging scenarios.",
+  "metaphor": [
+    "arrow",
+    "direction",
+    "debugging",
+    "code",
+    "steps"
+  ]
+}

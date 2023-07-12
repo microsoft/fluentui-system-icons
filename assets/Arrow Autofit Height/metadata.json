@@ -1,0 +1,19 @@
+{
+  "name": "Arrow Autofit Height",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for adjusting content size. Dotted versions are used for autofit. Contains height & width variants.",
+  "metaphor": [
+    "width",
+    "height",
+    "resize",
+    "fill"
+  ]
+}

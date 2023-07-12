@@ -1,0 +1,20 @@
+{
+  "name": "Arrow Exit",
+  "size": [
+    20
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in UI to map experiences together in a flow chart.",
+  "metaphor": [
+    "arrow",
+    "in",
+    "out",
+    "run",
+    "start",
+    "stop"
+  ]
+}

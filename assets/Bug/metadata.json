@@ -1,0 +1,17 @@
+{
+  "name": "Bug",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent bugs in code or malicious bugs in the system.",
+  "metaphor": [
+    "code"
+  ]
+}

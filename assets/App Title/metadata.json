@@ -1,0 +1,17 @@
+{
+  "name": "App Title",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for content around app ui.",
+  "metaphor": [
+    "collection",
+    "ui"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Align Top",
+  "size": [
+    20,
+    16,
+    24,
+    28,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to align content. Contains orientation variants.",
+  "metaphor": [
+    "alignment",
+    "editing",
+    "design"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Align Distribute Bottom",
+  "size": [
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, visual studio code",
+  "description": "Used to represent aligning distributing bottom.",
+  "metaphor": [
+    "align",
+    "distribute",
+    "bottom"
+  ]
+}

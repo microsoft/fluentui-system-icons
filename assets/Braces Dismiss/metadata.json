@@ -1,0 +1,19 @@
+{
+  "name": "Braces Dismiss",
+  "size": [
+    16
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, visual studio code",
+  "description": "Used to represent curly braces around an x.",
+  "metaphor": [
+    "xaml",
+    "binding",
+    "error",
+    "braces",
+    "dismiss"
+  ]
+}

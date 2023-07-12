@@ -1,0 +1,21 @@
+{
+  "name": "Arrow Trending Lines",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to indicate growth.",
+  "metaphor": [
+    "arrow",
+    "direction",
+    "growth",
+    "ascending",
+    "data"
+  ],
+  "directionType": "mirror"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Battery 9",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for power indication on devices. Contains power variants.",
+  "metaphor": [
+    "charge",
+    "power"
+  ]
+}

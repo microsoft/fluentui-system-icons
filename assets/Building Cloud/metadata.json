@@ -1,0 +1,20 @@
+{
+  "name": "Building Cloud",
+  "size": [
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, intune",
+  "description": "Used to represent cloud connections with work/organizations.",
+  "metaphor": [
+    "org",
+    "organization",
+    "settings",
+    "devices",
+    "connections",
+    "sync"
+  ]
+}

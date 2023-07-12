@@ -1,0 +1,22 @@
+{
+  "name": "Arrow Curve Down Left",
+  "size": [
+    20,
+    28,
+    16,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for directional indicators, links. Contains directional variants.",
+  "metaphor": [
+    "point",
+    "direction",
+    "up",
+    "down",
+    "horizontal"
+  ]
+}

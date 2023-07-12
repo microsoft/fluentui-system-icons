@@ -1,0 +1,19 @@
+{
+  "name": "Arrow Enter Left",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for enter actions on keyboard.",
+  "metaphor": [
+    "arrow",
+    "point",
+    "direction",
+    "keyboard"
+  ]
+}

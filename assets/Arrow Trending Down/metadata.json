@@ -1,0 +1,21 @@
+{
+  "name": "Arrow Trending Down",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to indicate downward movement.",
+  "metaphor": [
+    "arrow",
+    "direction",
+    "growth",
+    "ascending"
+  ],
+  "directionType": "mirror"
+}

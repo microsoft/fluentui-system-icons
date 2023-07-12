@@ -1,0 +1,21 @@
+{
+  "name": "Animal Rabbit Off",
+  "size": [
+    20,
+    32
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent cruelty free practices and events.",
+  "metaphor": [
+    "pet",
+    "creature",
+    "fast",
+    "quick",
+    "hop",
+    "cruelty free"
+  ]
+}

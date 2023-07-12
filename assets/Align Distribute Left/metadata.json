@@ -1,0 +1,17 @@
+{
+  "name": "Align Distribute Left",
+  "size": [
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, visual studio code",
+  "description": "Used to represent aligning distributing left.",
+  "metaphor": [
+    "align",
+    "distribute",
+    "top"
+  ]
+}

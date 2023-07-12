@@ -1,0 +1,23 @@
+{
+  "name": "Arrow Step In Left",
+  "size": [
+    16,
+    12,
+    20,
+    24,
+    28
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for debugging scenarios. Contains direction variants.",
+  "metaphor": [
+    "arrow",
+    "direction",
+    "debugging",
+    "code",
+    "steps"
+  ]
+}
