@@ -1,0 +1,24 @@
+{
+  "name": "Document Border Print",
+  "size": [
+    20,
+    24,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent general file types and actions.",
+  "metaphor": [
+    "paper",
+    "work",
+    "file",
+    "analog",
+    "horizontal",
+    "print",
+    "printer",
+    "decoration"
+  ]
+}

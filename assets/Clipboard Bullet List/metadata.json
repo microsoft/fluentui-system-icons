@@ -1,0 +1,19 @@
+{
+  "name": "Clipboard Bullet List",
+  "size": [
+    16,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in copy & task scenarios. Contains directional variants.",
+  "metaphor": [
+    "copy",
+    "memory",
+    "analog"
+  ],
+  "directionType": "mirror"
+}

@@ -1,0 +1,18 @@
+{
+  "name": "Code RB",
+  "size": [
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, visual studio code",
+  "description": "Used to represent Ruby language.",
+  "metaphor": [
+    "project node",
+    "language",
+    "ruby",
+    "coding"
+  ]
+}

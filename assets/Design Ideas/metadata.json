@@ -1,0 +1,19 @@
+{
+  "name": "Design Ideas",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in scenarios where ai makes design suggestions.",
+  "metaphor": [
+    "ai",
+    "edit",
+    "compose"
+  ]
+}

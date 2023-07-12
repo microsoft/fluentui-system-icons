@@ -1,0 +1,19 @@
+{
+  "name": "Color Background",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, edge",
+  "description": "Used in edit mode for color changes.",
+  "metaphor": [
+    "color",
+    "edit",
+    "paint",
+    "palette"
+  ]
+}

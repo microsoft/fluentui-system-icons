@@ -1,0 +1,20 @@
+{
+  "name": "Contact Card Link",
+  "size": [
+    16,
+    20
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for directional indicators, links. Contains directional variants.",
+  "metaphor": [
+    "person",
+    "profile",
+    "details",
+    "organization",
+    "people card"
+  ]
+}

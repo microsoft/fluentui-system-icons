@@ -1,0 +1,17 @@
+{
+  "name": "Camera Dome",
+  "size": [
+    16,
+    20,
+    24,
+    28,
+    48
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": null,
+  "description": null,
+  "metaphor": null
+}

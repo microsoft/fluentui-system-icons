@@ -1,0 +1,19 @@
+{
+  "name": "Column Arrow Right",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, edge",
+  "description": "Used to represent content columns.",
+  "metaphor": [
+    "content",
+    "grid",
+    "alignment",
+    "move",
+    "edit"
+  ]
+}

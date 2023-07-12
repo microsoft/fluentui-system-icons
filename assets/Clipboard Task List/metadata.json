@@ -1,0 +1,20 @@
+{
+  "name": "Clipboard Task List",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in copy & task scenarios. Contains directional variants.",
+  "metaphor": [
+    "copy",
+    "memory",
+    "analog"
+  ],
+  "directionType": "unique",
+  "singleton": "LTR"
+}

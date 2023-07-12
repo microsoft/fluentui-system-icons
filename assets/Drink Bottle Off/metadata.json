@@ -1,0 +1,22 @@
+{
+  "name": "Drink Bottle Off",
+  "size": [
+    32,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent plastic free practices.",
+  "metaphor": [
+    "plastic",
+    "recycle",
+    "drink",
+    "liquid",
+    "sustainable",
+    "sustainability",
+    "environment"
+  ]
+}

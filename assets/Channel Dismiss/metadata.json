@@ -1,0 +1,21 @@
+{
+  "name": "Channel Dismiss",
+  "size": [
+    48,
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used for chat channel scenarios.",
+  "metaphor": [
+    "rectangle",
+    "chat",
+    "announcement"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Document CSS",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent CSS file types and actions.",
+  "metaphor": [
+    "paper",
+    "work",
+    "file",
+    "analog",
+    "cascading style sheets",
+    "code",
+    "vertical"
+  ]
+}

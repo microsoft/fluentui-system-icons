@@ -1,0 +1,20 @@
+{
+  "name": "Compass Northwest",
+  "size": [
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for directional indicator & location scenarios.",
+  "metaphor": [
+    "location",
+    "direction",
+    "camping"
+  ]
+}

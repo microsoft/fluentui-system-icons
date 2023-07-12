@@ -1,0 +1,20 @@
+{
+  "name": "Checkbox Unchecked",
+  "size": [
+    24,
+    20,
+    16,
+    12
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for toggle selection states. Contains state variants.",
+  "metaphor": [
+    "selection",
+    "check",
+    "checkmark"
+  ]
+}

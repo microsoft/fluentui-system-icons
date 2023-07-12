@@ -1,0 +1,22 @@
+{
+  "name": "Catch Up",
+  "size": [
+    16,
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, word, powerpoint, excel",
+  "description": "Used to summarize changes in a document that are specifically for you - replies, tasks, mentions, etc.",
+  "metaphor": [
+    "pulse",
+    "rate",
+    "monitor",
+    "document",
+    "mention",
+    "collaboration"
+  ]
+}

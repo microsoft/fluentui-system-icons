@@ -1,0 +1,23 @@
+{
+  "name": "Document Width",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to set file width in UI.",
+  "metaphor": [
+    "paper",
+    "work",
+    "file",
+    "analog",
+    "horizontal",
+    "edit",
+    "scale",
+    "fit"
+  ]
+}

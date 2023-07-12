@@ -1,0 +1,21 @@
+{
+  "name": "Edit Arrow Back",
+  "size": [
+    16,
+    20,
+    24
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used in editing/update scenarios.",
+  "metaphor": [
+    "pencil",
+    "update",
+    "create",
+    "draw",
+    "undo"
+  ]
+}

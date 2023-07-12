@@ -1,0 +1,16 @@
+{
+  "name": "Circle Edit",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for general circle needs.",
+  "metaphor": [
+    "round"
+  ]
+}

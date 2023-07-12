@@ -1,0 +1,17 @@
+{
+  "name": "Comma",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, edge",
+  "description": "Used to add comma to UI.",
+  "metaphor": [
+    "comma",
+    "oxford"
+  ]
+}

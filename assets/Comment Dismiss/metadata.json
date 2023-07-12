@@ -1,0 +1,19 @@
+{
+  "name": "Comment Dismiss",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, edge",
+  "description": "Used in commenting scenarios.",
+  "metaphor": [
+    "chat",
+    "mention",
+    "discussion"
+  ],
+  "directionType": "mirror"
+}

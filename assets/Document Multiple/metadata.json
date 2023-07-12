@@ -1,0 +1,23 @@
+{
+  "name": "Document Multiple",
+  "size": [
+    16,
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a file collection and actions.",
+  "metaphor": [
+    "paper",
+    "work",
+    "file",
+    "analog",
+    "vertical",
+    "library",
+    "stack"
+  ]
+}

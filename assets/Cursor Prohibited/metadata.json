@@ -1,0 +1,18 @@
+{
+  "name": "Cursor Prohibited",
+  "size": [
+    20,
+    16
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": null,
+  "metaphor": [
+    "arrow",
+    "interact",
+    "click.\n\nUsed in user cursor scenarios."
+  ]
+}

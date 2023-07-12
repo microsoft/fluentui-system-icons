@@ -1,0 +1,20 @@
+{
+  "name": "Edit Settings",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used in editing/update scenarios.",
+  "metaphor": [
+    "pencil",
+    "update",
+    "create",
+    "draw",
+    "gear"
+  ]
+}

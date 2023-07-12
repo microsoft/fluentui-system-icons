@@ -1,0 +1,20 @@
+{
+  "name": "Document Contract",
+  "size": [
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, visual studio code",
+  "description": "Used to represent a contract.",
+  "metaphor": [
+    "document",
+    "file",
+    "sign",
+    "signature",
+    "contract",
+    "x"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Code JS Rectangle",
+  "size": [
+    16
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, visual studio code",
+  "description": "Used to represent Javascript project node.",
+  "metaphor": [
+    "project node",
+    "language",
+    "js",
+    "javascript",
+    "script",
+    "coding"
+  ]
+}

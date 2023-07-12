@@ -1,0 +1,23 @@
+{
+  "name": "Document Queue Multiple",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for printing and multiple document list scenarios.",
+  "metaphor": [
+    "paper",
+    "work",
+    "file",
+    "analog",
+    "horizontal",
+    "collection",
+    "stack",
+    "backlog"
+  ]
+}

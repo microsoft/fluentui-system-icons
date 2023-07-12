@@ -1,0 +1,18 @@
+{
+  "name": "Code VB",
+  "size": [
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, visual studio code",
+  "description": "Used to represent Visual Basic language.",
+  "metaphor": [
+    "file node",
+    "language",
+    "vb",
+    "visual basic"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Circle Eraser",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, visual studio",
+  "description": "Used for clearing breakpoints.",
+  "metaphor": [
+    "clear breakpoints",
+    "circle",
+    "eraser",
+    "breakpoint",
+    "debugging",
+    "delete"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Delete Dismiss",
+  "size": [
+    28,
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in the deletion of content.",
+  "metaphor": [
+    "trash",
+    "can",
+    "remove",
+    "edit",
+    "byee"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Chart Person",
+  "size": [
+    20,
+    24,
+    28,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used to represent presentations & sharing data.",
+  "metaphor": [
+    "data",
+    "person",
+    "presenter"
+  ]
+}

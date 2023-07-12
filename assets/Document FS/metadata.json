@@ -1,0 +1,21 @@
+{
+  "name": "Document FS",
+  "size": [
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, visual studio code",
+  "description": "Used to represent a F# document.",
+  "metaphor": [
+    "project node",
+    "language",
+    "fs",
+    "f#",
+    "sharp",
+    "f sharp",
+    "coding"
+  ]
+}

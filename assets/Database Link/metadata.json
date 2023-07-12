@@ -1,0 +1,17 @@
+{
+  "name": "Database Link",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in database scenarios.",
+  "metaphor": [
+    "data",
+    "information"
+  ]
+}

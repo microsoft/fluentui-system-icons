@@ -1,0 +1,20 @@
+{
+  "name": "Delete Off",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in scenarios where a user is not allowed to delete content (set by admin).",
+  "metaphor": [
+    "trash",
+    "can",
+    "remove",
+    "edit",
+    "byee"
+  ]
+}

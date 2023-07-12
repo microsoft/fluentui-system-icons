@@ -1,0 +1,17 @@
+{
+  "name": "Database Multiple",
+  "size": [
+    20,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent copying over a database, or it's contents.",
+  "metaphor": [
+    "data",
+    "information"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Document PY",
+  "size": [
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, visual studio code",
+  "description": "Used to represent a Python document.",
+  "metaphor": [
+    "project node",
+    "language",
+    "py",
+    "python",
+    "coding"
+  ]
+}

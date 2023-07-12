@@ -1,0 +1,17 @@
+{
+  "name": "Database Stack",
+  "size": [
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, visual studio code",
+  "description": "Used to represent multiple database.",
+  "metaphor": [
+    "datasource",
+    "database",
+    "data"
+  ]
+}

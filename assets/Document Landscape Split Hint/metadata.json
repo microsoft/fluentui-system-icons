@@ -1,0 +1,20 @@
+{
+  "name": "Document Landscape Split Hint",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent partial downloaded landscape file types and actions.",
+  "metaphor": [
+    "paper",
+    "work",
+    "file",
+    "analog",
+    "horizontal"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Emoji Angry",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in emoji picker & some simple voting scenarios.â ï¸ Should not be used as emoji.",
+  "metaphor": [
+    "face",
+    "emote",
+    "feeling",
+    "plus"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Door",
+  "size": [
+    16,
+    20,
+    28
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used to represent a virtual or physical meeting.",
+  "metaphor": [
+    "meeting",
+    "conference room",
+    "leave",
+    "enter",
+    "join",
+    "analog"
+  ]
+}

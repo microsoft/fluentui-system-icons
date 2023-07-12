@@ -1,0 +1,19 @@
+{
+  "name": "Draw Text",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in pen to shape scenarios.",
+  "metaphor": [
+    "edit",
+    "create",
+    "translate",
+    "pencil"
+  ]
+}

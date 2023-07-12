@@ -1,0 +1,18 @@
+{
+  "name": "Chevron Down Up",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "",
+  "metaphor": [
+    "arrow",
+    "chevron"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Desktop Speaker Off",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent stationary work stations, large screen devices, office, and actions in general computer scenarios.",
+  "metaphor": [
+    "monitor",
+    "office",
+    "tower",
+    "pc",
+    "large screen"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Drawer Play",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "",
+  "metaphor": [
+    "collection",
+    "analog"
+  ]
+}

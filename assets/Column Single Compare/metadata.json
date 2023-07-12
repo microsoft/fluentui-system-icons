@@ -1,0 +1,20 @@
+{
+  "name": "Column Single Compare",
+  "size": [
+    16,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a single column review.",
+  "metaphor": [
+    "column",
+    "compare",
+    "code",
+    "visual difference",
+    "review"
+  ]
+}

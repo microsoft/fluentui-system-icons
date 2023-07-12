@@ -1,0 +1,25 @@
+{
+  "name": "Document 100",
+  "size": [
+    16,
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in print scenarios - keeping content to 100 (no scaling).",
+  "metaphor": [
+    "paper",
+    "work",
+    "file",
+    "analog",
+    "vertical",
+    "no scaling",
+    "100%",
+    "type",
+    "numbers"
+  ]
+}

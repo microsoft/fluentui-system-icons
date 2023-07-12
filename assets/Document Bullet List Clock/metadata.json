@@ -1,0 +1,22 @@
+{
+  "name": "Document Bullet List Clock",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent list file types and actions.",
+  "metaphor": [
+    "paper",
+    "work",
+    "file",
+    "analog",
+    "task",
+    "checklist",
+    "vertical"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Document Number 1",
+  "size": [
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, visual studio code",
+  "description": "Used to represent general file types and actions.",
+  "metaphor": [
+    "number",
+    "binary",
+    "file",
+    "document",
+    "01",
+    "1",
+    "one"
+  ]
+}

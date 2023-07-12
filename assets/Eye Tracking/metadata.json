@@ -1,0 +1,20 @@
+{
+  "name": "Eye Tracking",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in eye tracking & scanning scenarios.",
+  "metaphor": [
+    "blink",
+    "pupil",
+    "show",
+    "hide"
+  ]
+}

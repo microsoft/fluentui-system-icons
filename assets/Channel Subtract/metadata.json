@@ -1,0 +1,21 @@
+{
+  "name": "Channel Subtract",
+  "size": [
+    20,
+    24,
+    28,
+    48,
+    16
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used for chat channel scenarios.",
+  "metaphor": [
+    "rectangle",
+    "chat",
+    "announcement"
+  ]
+}
