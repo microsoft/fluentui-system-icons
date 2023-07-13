@@ -1,0 +1,20 @@
+{
+  "name": "Mail Template",
+  "size": [
+    20,
+    24,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used to represent mail templates.",
+  "metaphor": [
+    "envelope",
+    "email",
+    "delivery",
+    "message"
+  ]
+}

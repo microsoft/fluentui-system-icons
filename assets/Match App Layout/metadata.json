@@ -1,0 +1,18 @@
+{
+  "name": "Match App Layout",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used as an action to match layout.",
+  "metaphor": [
+    "match",
+    "align",
+    "emulate"
+  ]
+}

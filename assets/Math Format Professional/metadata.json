@@ -1,0 +1,19 @@
+{
+  "name": "Math Format Professional",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, word, excel, powerpoint",
+  "description": "Used in formula formats in math formula scenarios.",
+  "metaphor": [
+    "mathematics",
+    "formula",
+    "equation"
+  ]
+}

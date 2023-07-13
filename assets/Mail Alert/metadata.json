@@ -1,0 +1,23 @@
+{
+  "name": "Mail Alert",
+  "size": [
+    16,
+    20,
+    24,
+    28
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used in general mail scenarios.",
+  "metaphor": [
+    "envelope",
+    "email",
+    "delivery",
+    "message",
+    "bell",
+    "notification"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Math Formula",
+  "size": [
+    24,
+    32,
+    16,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, word, excel, powerpoint",
+  "description": "Means function of x (variable). Used in general math formulas and module scripting scenarios.",
+  "metaphor": [
+    "mathematics",
+    "formula",
+    "equation"
+  ]
+}

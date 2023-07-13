@@ -1,0 +1,26 @@
+{
+  "name": "Mic Prohibited",
+  "size": [
+    24,
+    20,
+    16,
+    28,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used to represent no access to microphone audio, whether through technical difficulties or not allowed.",
+  "metaphor": [
+    "microphone",
+    "audio",
+    "sound",
+    "sound wave",
+    "meeting",
+    "slash",
+    "warning",
+    "access"
+  ]
+}

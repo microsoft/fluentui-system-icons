@@ -1,0 +1,17 @@
+{
+  "name": "Mail Read Multiple",
+  "size": [
+    16,
+    24,
+    28,
+    20,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": null,
+  "description": null,
+  "metaphor": null
+}

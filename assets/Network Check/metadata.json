@@ -1,0 +1,20 @@
+{
+  "name": "Network Check",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in test speed scenarios. Also check out Top Speed.",
+  "metaphor": [
+    "badge",
+    "meter",
+    "measurement",
+    "needle",
+    "scale"
+  ]
+}

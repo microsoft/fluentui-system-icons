@@ -1,0 +1,20 @@
+{
+  "name": "Mail Arrow Up",
+  "size": [
+    20,
+    24,
+    16
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used in general mail scenarios.",
+  "metaphor": [
+    "envelope",
+    "email",
+    "delivery",
+    "message"
+  ]
+}

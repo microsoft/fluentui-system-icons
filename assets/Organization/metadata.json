@@ -1,0 +1,25 @@
+{
+  "name": "Organization",
+  "size": [
+    28,
+    24,
+    20,
+    12,
+    16,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent general organization hierarchy.",
+  "metaphor": [
+    "group",
+    "company",
+    "team",
+    "org",
+    "branch"
+  ]
+}

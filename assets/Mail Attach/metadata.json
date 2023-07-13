@@ -1,0 +1,23 @@
+{
+  "name": "Mail Attach",
+  "size": [
+    16,
+    20,
+    28,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used in general mail scenarios.",
+  "metaphor": [
+    "envelope",
+    "email",
+    "delivery",
+    "message",
+    "attachment",
+    "file"
+  ]
+}

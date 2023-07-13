@@ -1,0 +1,19 @@
+{
+  "name": "Note Edit",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general note taking scenarios.",
+  "metaphor": [
+    "sticky note",
+    "sketch",
+    "reminder",
+    "pencil"
+  ]
+}

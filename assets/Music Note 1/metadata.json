@@ -1,0 +1,19 @@
+{
+  "name": "Music Note 1",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent general music, audio, concert event and volume scenarios. Contains two variants.",
+  "metaphor": [
+    "concert",
+    "musician",
+    "art",
+    "event"
+  ]
+}

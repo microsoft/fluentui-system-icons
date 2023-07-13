@@ -1,0 +1,17 @@
+{
+  "name": "New",
+  "size": [
+    24,
+    16,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "â ï¸Old metaphor - represented new files in list. Now use Sparkle instead.",
+  "metaphor": [
+    "spark"
+  ]
+}

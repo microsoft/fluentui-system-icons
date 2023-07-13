@@ -1,0 +1,22 @@
+{
+  "name": "More Circle",
+  "size": [
+    20,
+    32,
+    28,
+    24,
+    16,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in overflow menus.The question I have for you is, do you need this? Can you design a cleaner solution that doesn't require 5 billion choices?",
+  "metaphor": [
+    "overflow",
+    "menu",
+    "navigation"
+  ]
+}

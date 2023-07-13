@@ -1,0 +1,19 @@
+{
+  "name": "Mail Inbox Arrow Down",
+  "size": [
+    16,
+    20
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used to represent mail inbox.",
+  "metaphor": [
+    "envelope",
+    "email",
+    "delivery",
+    "message"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Molecule",
+  "size": [
+    16,
+    20,
+    24,
+    28,
+    48,
+    32
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent connection and scientific scenarios involving chemicals.",
+  "metaphor": [
+    "atom",
+    "chemical compound",
+    "science",
+    "chemistry"
+  ]
+}

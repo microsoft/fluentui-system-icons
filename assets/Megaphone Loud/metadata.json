@@ -1,0 +1,20 @@
+{
+  "name": "Megaphone Loud",
+  "size": [
+    20,
+    24,
+    16,
+    32,
+    28
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent general announcements and news.",
+  "metaphor": [
+    "announcement",
+    "shout"
+  ]
+}
