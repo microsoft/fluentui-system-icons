@@ -1,0 +1,20 @@
+{
+  "name": "Keyboard Layout Float",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent digital keyboard scenarios.",
+  "metaphor": [
+    "keyboard",
+    "type",
+    "key",
+    "device",
+    "digital"
+  ]
+}

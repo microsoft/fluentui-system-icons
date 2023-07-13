@@ -1,0 +1,26 @@
+{
+  "name": "Heart Circle Hint",
+  "size": [
+    28,
+    32,
+    48,
+    16,
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used to represent the Reflect app in Teams.",
+  "metaphor": [
+    "school",
+    "travel",
+    "education",
+    "heart",
+    "dash",
+    "reflect",
+    "heart"
+  ]
+}

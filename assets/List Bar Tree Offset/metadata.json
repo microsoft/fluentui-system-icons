@@ -1,0 +1,21 @@
+{
+  "name": "List Bar Tree Offset",
+  "size": [
+    16,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent stacked list view.",
+  "metaphor": [
+    "list",
+    "stack",
+    "details",
+    "bar",
+    "information",
+    "view list"
+  ]
+}

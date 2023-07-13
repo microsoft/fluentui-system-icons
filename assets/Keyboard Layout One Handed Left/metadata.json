@@ -1,0 +1,20 @@
+{
+  "name": "Keyboard Layout One Handed Left",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent one handed  keyboard scenarios.",
+  "metaphor": [
+    "keyboard",
+    "type",
+    "key",
+    "device",
+    "analog"
+  ]
+}

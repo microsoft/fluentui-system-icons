@@ -1,0 +1,22 @@
+{
+  "name": "Headset Add",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent call center support & headsets with distinct mics.",
+  "metaphor": [
+    "audio",
+    "sound",
+    "volume",
+    "device",
+    "analog",
+    "support",
+    "help"
+  ]
+}

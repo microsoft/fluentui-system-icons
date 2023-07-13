@@ -1,0 +1,27 @@
+{
+  "name": "Gavel",
+  "size": [
+    32,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": null,
+  "metaphor": [
+    "judge",
+    "law",
+    "process",
+    "rules",
+    "decide",
+    "doink doink",
+    "court.\n\nUsed to represent court",
+    "law",
+    "warnings",
+    "or rules."
+  ]
+}

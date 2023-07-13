@@ -1,0 +1,20 @@
+{
+  "name": "Keyboard Layout Split",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent split keyboard scenarios.",
+  "metaphor": [
+    "keyboard",
+    "type",
+    "key",
+    "device",
+    "analog"
+  ]
+}

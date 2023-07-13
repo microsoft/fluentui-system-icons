@@ -1,0 +1,19 @@
+{
+  "name": "IoT",
+  "size": [
+    20,
+    24,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent devices with sensors, software, and other technology that shares data with other devices.",
+  "metaphor": [
+    "internet of things",
+    "physical",
+    "device"
+  ]
+}

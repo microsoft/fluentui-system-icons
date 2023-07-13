@@ -1,0 +1,22 @@
+{
+  "name": "Globe",
+  "size": [
+    24,
+    20,
+    16,
+    32,
+    12
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in scenarios representing the internet & global representation scenarios.",
+  "metaphor": [
+    "web",
+    "world",
+    "earth",
+    "global"
+  ]
+}

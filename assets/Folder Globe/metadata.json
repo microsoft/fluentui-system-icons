@@ -1,0 +1,20 @@
+{
+  "name": "Folder Globe",
+  "size": [
+    16,
+    20
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent collections of files.",
+  "metaphor": [
+    "analog",
+    "collection",
+    "earth",
+    "planet",
+    "web"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "Keyboard Mouse",
+  "size": [
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, visual studio code",
+  "description": "Used to represent a mouse and keyboard combo.",
+  "metaphor": [
+    "mouse",
+    "device",
+    "hardware",
+    "keyboard"
+  ]
+}

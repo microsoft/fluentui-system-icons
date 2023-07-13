@@ -1,0 +1,22 @@
+{
+  "name": "Home Heart",
+  "size": [
+    32,
+    20,
+    16,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent home in UI or physical home space in travel scenarios.",
+  "metaphor": [
+    "house",
+    "safety",
+    "location",
+    "space",
+    "wfh"
+  ]
+}

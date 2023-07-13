@@ -1,0 +1,21 @@
+{
+  "name": "Hourglass Three Quarter",
+  "size": [
+    20,
+    24,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for time keeping scenarios. Filled states are made to lay on top of Hourglass Regular icon.",
+  "metaphor": [
+    "time",
+    "clock",
+    "sand",
+    "timer",
+    "wait"
+  ]
+}

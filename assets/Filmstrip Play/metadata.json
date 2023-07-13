@@ -1,0 +1,22 @@
+{
+  "name": "Filmstrip Play",
+  "size": [
+    20,
+    24,
+    16,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent video playlist in editing & general media scenarios.",
+  "metaphor": [
+    "movie",
+    "video",
+    "play",
+    "clip",
+    "edit"
+  ]
+}

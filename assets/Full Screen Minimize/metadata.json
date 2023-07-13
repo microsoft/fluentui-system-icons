@@ -1,0 +1,23 @@
+{
+  "name": "Full Screen Minimize",
+  "size": [
+    24,
+    16,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in specific fullscreen scaling moments. Contains state variants (maximize & minimize.",
+  "metaphor": [
+    "width",
+    "height",
+    "resize",
+    "fill",
+    "fit",
+    "maximize",
+    "minimize"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Keyboard Tab",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent various keys on keyboard scenarios.",
+  "metaphor": [
+    "keyboard",
+    "type",
+    "key",
+    "device",
+    "analog",
+    "arrow"
+  ]
+}

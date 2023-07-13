@@ -1,0 +1,19 @@
+{
+  "name": "Live Off",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, stream",
+  "description": "Used to represent live content.",
+  "metaphor": [
+    "stream",
+    "view",
+    "video",
+    "audio"
+  ]
+}

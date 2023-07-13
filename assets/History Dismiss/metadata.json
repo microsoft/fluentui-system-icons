@@ -1,0 +1,25 @@
+{
+  "name": "History Dismiss",
+  "size": [
+    24,
+    20,
+    28,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in scenarios needing to see history of changes.",
+  "metaphor": [
+    "back",
+    "undo",
+    "time",
+    "clock",
+    "x",
+    "close",
+    "remove"
+  ]
+}

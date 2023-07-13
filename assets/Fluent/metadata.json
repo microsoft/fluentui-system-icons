@@ -1,0 +1,20 @@
+{
+  "name": "Fluent",
+  "size": [
+    48,
+    32,
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Fluent mark.",
+  "metaphor": [
+    "f",
+    "open source",
+    "design system"
+  ]
+}

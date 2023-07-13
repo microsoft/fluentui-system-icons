@@ -1,0 +1,20 @@
+{
+  "name": "Line Dashes",
+  "size": [
+    32,
+    48,
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, whiteboard",
+  "description": "Used in drawing line scenarios.",
+  "metaphor": [
+    "draw",
+    "create",
+    "edit"
+  ]
+}

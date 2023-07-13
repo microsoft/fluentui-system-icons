@@ -1,0 +1,19 @@
+{
+  "name": "Layer Diagonal",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, edge",
+  "description": "Used to represent a workspace of tabs within browser.",
+  "metaphor": [
+    "workspace",
+    "collection",
+    "tabs",
+    "desktop",
+    "collaboration"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Folder Multiple",
+  "size": [
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, visual studio code",
+  "description": "Used to represent a group of folders.",
+  "metaphor": [
+    "folder",
+    "multiple",
+    "folders"
+  ]
+}

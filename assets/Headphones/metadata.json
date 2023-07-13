@@ -1,0 +1,23 @@
+{
+  "name": "Headphones",
+  "size": [
+    28,
+    24,
+    20,
+    48,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent headphone device audio.",
+  "metaphor": [
+    "audio",
+    "sound",
+    "volume",
+    "device",
+    "analog"
+  ]
+}

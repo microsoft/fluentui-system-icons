@@ -1,0 +1,22 @@
+{
+  "name": "Keyboard Layout Resize",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent resizing digital keyboard scenarios.",
+  "metaphor": [
+    "keyboard",
+    "type",
+    "key",
+    "device",
+    "digital",
+    "resize",
+    "scale"
+  ]
+}

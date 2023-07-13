@@ -1,0 +1,22 @@
+{
+  "name": "Gift Card",
+  "size": [
+    20,
+    16,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in gift cards scenarios.",
+  "metaphor": [
+    "present",
+    "birthday",
+    "celebration",
+    "appreciation",
+    "wallet",
+    "balance"
+  ]
+}

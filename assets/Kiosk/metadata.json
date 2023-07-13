@@ -1,0 +1,18 @@
+{
+  "name": "Kiosk",
+  "size": [
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, intune",
+  "description": "Used to represent a large screen device.",
+  "metaphor": [
+    "touch screen",
+    "navigation",
+    "device",
+    "interaction"
+  ]
+}
