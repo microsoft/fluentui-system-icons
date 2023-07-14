@@ -1,0 +1,19 @@
+{
+  "name": "Recycle",
+  "size": [
+    20,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent sustainable recycling practices and events.",
+  "metaphor": [
+    "earth",
+    "globe",
+    "sustainable",
+    "sustainability"
+  ]
+}

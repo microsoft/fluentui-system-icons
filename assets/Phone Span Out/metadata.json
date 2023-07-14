@@ -1,0 +1,26 @@
+{
+  "name": "Phone Span Out",
+  "size": [
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent digital changes in content on screen. Contains in and out variants.",
+  "metaphor": [
+    "device",
+    "mobile",
+    "small screen",
+    "cellular telephone",
+    "apple",
+    "android",
+    "resize",
+    "scale",
+    "fit"
+  ]
+}

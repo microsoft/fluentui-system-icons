@@ -1,0 +1,22 @@
+{
+  "name": "Rocket",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent getting started, successful progress, or space scenarios.",
+  "metaphor": [
+    "idea",
+    "new",
+    "getting started",
+    "space",
+    "uplift",
+    "success"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Radio Button",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in selected state scenarios in UI.",
+  "metaphor": [
+    "button",
+    "ui",
+    "select",
+    "toggle"
+  ]
+}

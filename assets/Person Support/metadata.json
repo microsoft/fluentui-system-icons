@@ -1,0 +1,23 @@
+{
+  "name": "Person Support",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in a wide range of support scenarios.",
+  "metaphor": [
+    "human",
+    "patient",
+    "contact",
+    "guest",
+    "headset",
+    "help",
+    "it"
+  ]
+}

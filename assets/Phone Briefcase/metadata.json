@@ -1,0 +1,19 @@
+{
+  "name": "Phone Briefcase",
+  "size": [
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, intune",
+  "description": "Used to represent work / organization devices. Specifically a phone.",
+  "metaphor": [
+    "phone",
+    "device",
+    "work device",
+    "work profile",
+    "org"
+  ]
+}

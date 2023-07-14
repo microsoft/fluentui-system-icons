@@ -1,0 +1,24 @@
+{
+  "name": "Play Circle Hint",
+  "size": [
+    24,
+    16,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent an animation/movie preview.",
+  "metaphor": [
+    "movie",
+    "video",
+    "play",
+    "clip",
+    "edit",
+    "preview",
+    "hover",
+    "circle"
+  ]
+}

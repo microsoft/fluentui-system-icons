@@ -1,0 +1,20 @@
+{
+  "name": "Pulse Square",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent physical or digital health.",
+  "metaphor": [
+    "health",
+    "medicine",
+    "medical",
+    "hospital",
+    "doctor"
+  ]
+}

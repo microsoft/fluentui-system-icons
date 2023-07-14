@@ -1,0 +1,27 @@
+{
+  "name": "Person Voice",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": null,
+  "metaphor": [
+    "human",
+    "patient",
+    "contact",
+    "guest",
+    "audio",
+    "talk",
+    "meeting",
+    "sound.\n\nUsed in a wide range of scenarios - representing a general person",
+    "a contact",
+    "contact lists",
+    "sharing",
+    "and managing access."
+  ]
+}

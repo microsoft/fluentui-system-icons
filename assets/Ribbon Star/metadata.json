@@ -1,0 +1,21 @@
+{
+  "name": "Ribbon Star",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a reward or a certificate (physical or digital).",
+  "metaphor": [
+    "medal",
+    "earn",
+    "accolade",
+    "award",
+    "benefit",
+    "bonus"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Phone Update",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent an update for the phone.",
+  "metaphor": [
+    "device",
+    "mobile",
+    "small screen",
+    "cellular telephone",
+    "apple",
+    "android"
+  ]
+}

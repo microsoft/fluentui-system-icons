@@ -1,0 +1,20 @@
+{
+  "name": "Paint Brush Arrow Down",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in formatting content scenarios.",
+  "metaphor": [
+    "color",
+    "paint",
+    "design",
+    "format",
+    "analog"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "Panel Right Expand",
+  "size": [
+    20
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent the plethora of secondary, elevated panels in UI. Contains direction and action variants.",
+  "metaphor": [
+    "pane",
+    "sidebar",
+    "modal",
+    "elevate"
+  ]
+}

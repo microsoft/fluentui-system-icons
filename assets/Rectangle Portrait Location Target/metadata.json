@@ -1,0 +1,20 @@
+{
+  "name": "Rectangle Portrait Location Target",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent general location tracking apps and experiences.",
+  "metaphor": [
+    "location",
+    "marker",
+    "pin",
+    "detail",
+    "travel",
+    "track"
+  ]
+}

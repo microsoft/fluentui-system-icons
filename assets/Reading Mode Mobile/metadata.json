@@ -1,0 +1,22 @@
+{
+  "name": "Reading Mode Mobile",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a collection of content for phone.",
+  "metaphor": [
+    "read",
+    "list",
+    "content",
+    "collection",
+    "news",
+    "device",
+    "phone"
+  ]
+}

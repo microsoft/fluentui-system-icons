@@ -1,0 +1,23 @@
+{
+  "name": "Projection Screen",
+  "size": [
+    28,
+    24,
+    16,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, powerpoint",
+  "description": "Used to represent slide view or general presentation.",
+  "metaphor": [
+    "present",
+    "presentation",
+    "view",
+    "slide",
+    "lecture",
+    "analog"
+  ]
+}

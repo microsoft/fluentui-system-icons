@@ -1,0 +1,21 @@
+{
+  "name": "Presenter",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent presenter in digital and physical meeting & lecture scenarios.",
+  "metaphor": [
+    "person",
+    "podium",
+    "speaker",
+    "lecture",
+    "talk",
+    "pulpit"
+  ]
+}

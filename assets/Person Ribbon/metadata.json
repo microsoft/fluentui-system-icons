@@ -1,0 +1,25 @@
+{
+  "name": "Person Ribbon",
+  "size": [
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a person, ribbon, reward, award, bonus.",
+  "metaphor": [
+    "human",
+    "patient",
+    "contact",
+    "guest",
+    "medal",
+    "earn",
+    "accolade",
+    "award",
+    "benefit",
+    "bonus"
+  ]
+}

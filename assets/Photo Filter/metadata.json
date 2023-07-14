@@ -1,0 +1,21 @@
+{
+  "name": "Photo Filter",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent filters in photo editing scenarios.",
+  "metaphor": [
+    "create",
+    "edit",
+    "photo",
+    "image",
+    "picture",
+    "lighting"
+  ]
+}

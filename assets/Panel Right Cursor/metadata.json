@@ -1,0 +1,21 @@
+{
+  "name": "Panel Right Cursor",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent secondary, elevated panels in UI. Contains direction and action variants.",
+  "metaphor": [
+    "pane",
+    "sidebar",
+    "modal",
+    "elevate",
+    "cursor",
+    "open"
+  ]
+}

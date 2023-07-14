@@ -1,0 +1,22 @@
+{
+  "name": "Road Cone",
+  "size": [
+    16,
+    20,
+    24,
+    28,
+    32,
+    48
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent roadwork or construction scenarios.",
+  "metaphor": [
+    "construction",
+    "under construction",
+    "working"
+  ]
+}

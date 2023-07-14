@@ -1,0 +1,24 @@
+{
+  "name": "Panel Left Header Add",
+  "size": [
+    16,
+    20,
+    24,
+    28,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, loop",
+  "description": "Represents workspace in Loop, amongst other general UI layouts.",
+  "metaphor": [
+    "ui",
+    "workspace",
+    "navigation",
+    "panel"
+  ],
+  "directionType": "mirror"
+}

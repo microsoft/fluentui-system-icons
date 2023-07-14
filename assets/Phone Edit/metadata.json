@@ -1,0 +1,23 @@
+{
+  "name": "Phone Edit",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent editing a physical or digital mobile phone scenarios.",
+  "metaphor": [
+    "device",
+    "mobile",
+    "small screen",
+    "cellular telephone",
+    "apple",
+    "android",
+    "edit",
+    "pencil"
+  ]
+}

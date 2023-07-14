@@ -1,0 +1,25 @@
+{
+  "name": "Record",
+  "size": [
+    24,
+    20,
+    16,
+    12,
+    28,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in playback controls. Collection includes Fastforward, Rewind, Previous, Next, Stop, Play.",
+  "metaphor": [
+    "control",
+    "playback",
+    "wait",
+    "stop",
+    "transcribe"
+  ]
+}

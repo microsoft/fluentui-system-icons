@@ -1,0 +1,23 @@
+{
+  "name": "Read Aloud",
+  "size": [
+    24,
+    20,
+    28,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to activate reading content out loud.",
+  "metaphor": [
+    "read",
+    "volume",
+    "sound",
+    "content",
+    "voice",
+    "ai"
+  ]
+}
