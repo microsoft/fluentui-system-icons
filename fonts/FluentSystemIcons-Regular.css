@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.woff2?ade238dad9a283aac5361c72fb36c18b") format("woff2"),
-url("./FluentSystemIcons-Regular.woff?ade238dad9a283aac5361c72fb36c18b") format("woff"),
-url("./FluentSystemIcons-Regular.ttf?ade238dad9a283aac5361c72fb36c18b") format("truetype");
+    src: url("./FluentSystemIcons-Regular.woff2?b7411810ce6625a101131684ca66e0fd") format("woff2"),
+url("./FluentSystemIcons-Regular.woff?b7411810ce6625a101131684ca66e0fd") format("woff"),
+url("./FluentSystemIcons-Regular.ttf?b7411810ce6625a101131684ca66e0fd") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -21057,4 +21057,79 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_number_circle_5_48_regular:before {
     content: "\f0265";
+}
+.icon-ic_fluent_add_square_multiple_24_regular:before {
+    content: "\f0266";
+}
+.icon-ic_fluent_braces_variable_48_regular:before {
+    content: "\f0267";
+}
+.icon-ic_fluent_cube_48_regular:before {
+    content: "\f0268";
+}
+.icon-ic_fluent_desk_16_regular:before {
+    content: "\f0269";
+}
+.icon-ic_fluent_desk_28_regular:before {
+    content: "\f026a";
+}
+.icon-ic_fluent_desk_32_regular:before {
+    content: "\f026b";
+}
+.icon-ic_fluent_desk_48_regular:before {
+    content: "\f026c";
+}
+.icon-ic_fluent_folder_open_vertical_24_regular:before {
+    content: "\f026d";
+}
+.icon-ic_fluent_globe_48_regular:before {
+    content: "\f026e";
+}
+.icon-ic_fluent_globe_shield_48_regular:before {
+    content: "\f026f";
+}
+.icon-ic_fluent_hand_right_off_16_regular:before {
+    content: "\f0270";
+}
+.icon-ic_fluent_hand_right_off_24_regular:before {
+    content: "\f0271";
+}
+.icon-ic_fluent_hand_right_off_28_regular:before {
+    content: "\f0272";
+}
+.icon-ic_fluent_hat_graduation_sparkle_16_regular:before {
+    content: "\f0273";
+}
+.icon-ic_fluent_key_multiple_16_regular:before {
+    content: "\f0274";
+}
+.icon-ic_fluent_key_multiple_24_regular:before {
+    content: "\f0275";
+}
+.icon-ic_fluent_link_multiple_16_regular:before {
+    content: "\f0276";
+}
+.icon-ic_fluent_link_multiple_20_regular:before {
+    content: "\f0277";
+}
+.icon-ic_fluent_link_multiple_24_regular:before {
+    content: "\f0278";
+}
+.icon-ic_fluent_mail_off_16_regular:before {
+    content: "\f0279";
+}
+.icon-ic_fluent_person_edit_48_regular:before {
+    content: "\f027a";
+}
+.icon-ic_fluent_plug_disconnected_48_regular:before {
+    content: "\f027b";
+}
+.icon-ic_fluent_stream_48_regular:before {
+    content: "\f027c";
+}
+.icon-ic_fluent_text_bullet_list_square_48_regular:before {
+    content: "\f027d";
+}
+.icon-ic_fluent_text_bullet_list_square_shield_48_regular:before {
+    content: "\f027e";
 }
