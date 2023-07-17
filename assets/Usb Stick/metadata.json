@@ -1,0 +1,21 @@
+{
+  "name": "Usb Stick",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent physical usb connections in stick form. Minor difference with USB Plug.",
+  "metaphor": [
+    "analog",
+    "device",
+    "universal series bus",
+    "storage",
+    "drive",
+    "thumb drive"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Zoom Fit",
+  "size": [
+    16,
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to scale content to fit while zooming content.",
+  "metaphor": [
+    "point",
+    "direction",
+    "horizontal",
+    "scale",
+    "fit"
+  ]
+}

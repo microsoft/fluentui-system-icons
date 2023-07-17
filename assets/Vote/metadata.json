@@ -1,0 +1,20 @@
+{
+  "name": "Vote",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in ballot box voting scenarios.",
+  "metaphor": [
+    "ballot",
+    "box",
+    "election",
+    "event",
+    "card"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "Washer",
+  "size": [
+    48,
+    20,
+    24,
+    32
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a washer & dryer.",
+  "metaphor": [
+    "appliance",
+    "home",
+    "house",
+    "utility",
+    "washer",
+    "dryer",
+    "clean",
+    "water"
+  ]
+}

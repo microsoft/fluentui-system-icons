@@ -1,0 +1,27 @@
+{
+  "name": "Weather Snowflake",
+  "size": [
+    48,
+    24,
+    20,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent current weather.",
+  "metaphor": [
+    "daily",
+    "sky",
+    "snow",
+    "wind",
+    "cloud",
+    "sun",
+    "rain",
+    "moon",
+    "lightning",
+    "haze"
+  ]
+}

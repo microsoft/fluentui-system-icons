@@ -1,0 +1,29 @@
+{
+  "name": "Vehicle Car Profile LTR Clock",
+  "size": [
+    16,
+    20,
+    24
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent commute time in driving scenarios.",
+  "metaphor": [
+    "travel",
+    "ride",
+    "map",
+    "commute",
+    "distance",
+    "event",
+    "vehicle",
+    "car",
+    "truck",
+    "automobile",
+    "clock",
+    "time",
+    "commute"
+  ]
+}

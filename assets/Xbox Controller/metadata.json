@@ -1,0 +1,25 @@
+{
+  "name": "Xbox Controller",
+  "size": [
+    16,
+    48,
+    20,
+    24,
+    32,
+    28
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, xbox",
+  "description": "Used to represent an Xbox console controller.",
+  "metaphor": [
+    "videogame",
+    "game",
+    "play",
+    "fun",
+    "controller",
+    "console"
+  ]
+}

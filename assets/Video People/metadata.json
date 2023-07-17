@@ -1,0 +1,25 @@
+{
+  "name": "Video People",
+  "size": [
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used to represent video appointments.",
+  "metaphor": [
+    "video",
+    "meeting",
+    "selfie",
+    "camera",
+    "clip",
+    "media",
+    "front facing",
+    "effects",
+    "call",
+    "chat",
+    "appointment"
+  ]
+}

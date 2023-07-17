@@ -1,0 +1,26 @@
+{
+  "name": "Weather Sunny High",
+  "size": [
+    48,
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent current weather.",
+  "metaphor": [
+    "daily",
+    "sky",
+    "snow",
+    "wind",
+    "cloud",
+    "sun",
+    "rain",
+    "moon",
+    "lightning",
+    "haze"
+  ]
+}

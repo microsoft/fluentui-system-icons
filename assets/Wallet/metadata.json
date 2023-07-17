@@ -1,0 +1,26 @@
+{
+  "name": "Wallet",
+  "size": [
+    20,
+    24,
+    28,
+    32,
+    48,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, xbox",
+  "description": "Used to represent a physical collection of payment options, money balance, or other purchase  scenarios.",
+  "metaphor": [
+    "physical",
+    "analog",
+    "money",
+    "cash",
+    "purchase",
+    "balance",
+    "payment"
+  ]
+}

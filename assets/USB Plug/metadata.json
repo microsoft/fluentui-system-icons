@@ -1,0 +1,20 @@
+{
+  "name": "USB Plug",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent physical usb connections in plug form. Minor difference with USB Stick.",
+  "metaphor": [
+    "analog",
+    "device",
+    "universal series bus",
+    "storage",
+    "drive"
+  ]
+}

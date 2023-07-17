@@ -1,0 +1,22 @@
+{
+  "name": "Wallpaper",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent images made for device backgrounds.",
+  "metaphor": [
+    "image",
+    "background",
+    "picture",
+    "desktop",
+    "laptop",
+    "art",
+    "device"
+  ]
+}

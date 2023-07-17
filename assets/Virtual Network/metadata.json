@@ -1,0 +1,17 @@
+{
+  "name": "Virtual Network",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent virtual network connections.",
+  "metaphor": [
+    "connect",
+    "arrow",
+    "network"
+  ]
+}
