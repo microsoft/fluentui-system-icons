@@ -1,0 +1,22 @@
+{
+  "name": "Table Calculator",
+  "size": [
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, excel",
+  "description": "Used to represent a data table. Contains simple variant.",
+  "metaphor": [
+    "cell",
+    "row",
+    "column",
+    "information",
+    "chart",
+    "math",
+    "calculator"
+  ]
+}

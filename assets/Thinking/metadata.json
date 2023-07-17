@@ -1,0 +1,19 @@
+{
+  "name": "Thinking",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general type column creation scenarios. Contains column breakup variants.",
+  "metaphor": [
+    "cloud",
+    "thought",
+    "brainstorm",
+    "ideation"
+  ]
+}

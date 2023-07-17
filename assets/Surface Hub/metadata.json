@@ -1,0 +1,21 @@
+{
+  "name": "Surface Hub",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent specific Microsoft devices.",
+  "metaphor": [
+    "device",
+    "physical",
+    "product",
+    "screen",
+    "touch screen",
+    "presentation"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Tab InPrivate Account",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, edge",
+  "description": "Used in browser tab scenarios. Contains option variants.",
+  "metaphor": [
+    "tab",
+    "mobile",
+    "rectangle",
+    "browser"
+  ]
+}

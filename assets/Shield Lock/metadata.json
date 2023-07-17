@@ -1,0 +1,21 @@
+{
+  "name": "Shield Lock",
+  "size": [
+    16,
+    20,
+    24,
+    28,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent security, safety & protection.",
+  "metaphor": [
+    "security",
+    "protection",
+    "safety"
+  ]
+}

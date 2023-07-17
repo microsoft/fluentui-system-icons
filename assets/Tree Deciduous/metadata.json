@@ -1,0 +1,20 @@
+{
+  "name": "Tree Deciduous",
+  "size": [
+    20,
+    24,
+    28
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent nature themed events and topics.",
+  "metaphor": [
+    "nature",
+    "park",
+    "event",
+    "emoji"
+  ]
+}

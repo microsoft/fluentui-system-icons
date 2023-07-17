@@ -1,0 +1,22 @@
+{
+  "name": "Share iOS",
+  "size": [
+    48,
+    28,
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in sharing information scenarios, specifically for iOS.",
+  "metaphor": [
+    "arrow",
+    "square",
+    "up",
+    "send",
+    "iOS"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Table Multiple",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, excel",
+  "description": "Used to represent a data table collection.",
+  "metaphor": [
+    "cell",
+    "row",
+    "column",
+    "information",
+    "chart",
+    "collection",
+    "library"
+  ]
+}

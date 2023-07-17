@@ -1,0 +1,19 @@
+{
+  "name": "Text Bullet List 270",
+  "size": [
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general type creation and editing scenarios. Contains directional and rotate variants",
+  "metaphor": [
+    "type",
+    "text",
+    "typography",
+    "edit",
+    "create"
+  ]
+}

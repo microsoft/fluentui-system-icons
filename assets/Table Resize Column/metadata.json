@@ -1,0 +1,25 @@
+{
+  "name": "Table Resize Column",
+  "size": [
+    24,
+    20,
+    28,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, excel",
+  "description": "Used in resizing table scenarios. Contains directional variants.",
+  "metaphor": [
+    "cell",
+    "row",
+    "column",
+    "information",
+    "chart",
+    "arrow",
+    "fit",
+    "scale"
+  ]
+}

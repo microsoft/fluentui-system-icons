@@ -1,0 +1,19 @@
+{
+  "name": "Send Clock",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in message & sending scenarios.",
+  "metaphor": [
+    "paper plane",
+    "mail",
+    "message"
+  ],
+  "directionType": "mirror"
+}

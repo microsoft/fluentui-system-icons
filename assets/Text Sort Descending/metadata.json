@@ -1,0 +1,75 @@
+{
+  "name": "Text Sort Descending",
+  "size": [
+    20,
+    16,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general type creation and editing scenarios. Contains locale specific variants.",
+  "metaphor": [
+    "type",
+    "text",
+    "typography",
+    "edit",
+    "create",
+    "letter"
+  ],
+  "language": [
+    {
+      "character": "A Z",
+      "locale": [
+        "en"
+      ]
+    },
+    {
+      "character": "A Ya",
+      "locale": [
+        "bg",
+        "kk",
+        "ru"
+      ]
+    },
+    {
+      "character": "A Ze",
+      "locale": [
+        "sl"
+      ]
+    },
+    {
+      "character": "A Umlaut",
+      "locale": [
+        "fi",
+        "se"
+      ]
+    },
+    {
+      "character": "A Sha",
+      "locale": [
+        "sr"
+      ]
+    },
+    {
+      "character": "Giyeok Jamo",
+      "locale": [
+        "ko"
+      ]
+    },
+    {
+      "character": "A Omega",
+      "locale": [
+        "gr"
+      ]
+    },
+    {
+      "character": "A ARing",
+      "locale": [
+        "da"
+      ]
+    }
+  ]
+}

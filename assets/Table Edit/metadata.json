@@ -1,0 +1,23 @@
+{
+  "name": "Table Edit",
+  "size": [
+    24,
+    28,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, excel",
+  "description": "Used to represent a data table.",
+  "metaphor": [
+    "cell",
+    "row",
+    "column",
+    "information",
+    "chart",
+    "pencil"
+  ]
+}

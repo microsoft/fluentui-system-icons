@@ -1,0 +1,36 @@
+{
+  "name": "Text Footnote",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general type creation and editing scenarios. Contains locale specific scenarios.",
+  "metaphor": [
+    "type",
+    "text",
+    "typography",
+    "edit",
+    "create",
+    "number",
+    "letter"
+  ],
+  "language": [
+    {
+      "character": "Ab",
+      "locale": [
+        "en"
+      ]
+    },
+    {
+      "character": "Ga Na",
+      "locale": [
+        "ko"
+      ]
+    }
+  ]
+}

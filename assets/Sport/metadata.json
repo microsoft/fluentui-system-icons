@@ -1,0 +1,20 @@
+{
+  "name": "Sport",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in exercise & sport events. Contains ball variants.",
+  "metaphor": [
+    "ball",
+    "event",
+    "activity",
+    "exercise"
+  ]
+}

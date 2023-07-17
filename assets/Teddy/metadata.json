@@ -1,0 +1,20 @@
+{
+  "name": "Teddy",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "",
+  "metaphor": [
+    "animal",
+    "stuffy",
+    "comfort",
+    "event",
+    "snuggle"
+  ]
+}

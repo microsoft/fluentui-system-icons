@@ -1,0 +1,20 @@
+{
+  "name": "Shortpick",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in shipping inventory scenarios.",
+  "metaphor": [
+    "manufacturing",
+    "shipping",
+    "collection",
+    "stack",
+    "inventory"
+  ]
+}

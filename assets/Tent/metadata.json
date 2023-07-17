@@ -1,0 +1,25 @@
+{
+  "name": "Tent",
+  "size": [
+    48,
+    28,
+    24,
+    20,
+    16,
+    12
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a tent & general outdoor event scenarios.",
+  "metaphor": [
+    "outdoor",
+    "camping",
+    "event",
+    "hike",
+    "health",
+    "nature"
+  ]
+}

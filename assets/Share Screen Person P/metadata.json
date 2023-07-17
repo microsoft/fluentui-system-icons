@@ -1,0 +1,25 @@
+{
+  "name": "Share Screen Person P",
+  "size": [
+    20,
+    24,
+    28,
+    16
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used in views when sharing screen. Collection includes Share Screen Person, Share Screen Person Overlay, Share Screen Person Overlay Inside, Share Screen Person P.",
+  "metaphor": [
+    "screen",
+    "share",
+    "arrow",
+    "close",
+    "view",
+    "display",
+    "camera",
+    "meeting"
+  ]
+}

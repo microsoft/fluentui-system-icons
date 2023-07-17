@@ -1,0 +1,19 @@
+{
+  "name": "Save Copy",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent saving content.â ï¸ Needs rename - Add Square Multiple (has 16 & 20 if needed).",
+  "metaphor": [
+    "plus",
+    "add",
+    "multiple",
+    "save"
+  ]
+}

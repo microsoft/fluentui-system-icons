@@ -1,0 +1,21 @@
+{
+  "name": "Subtitles",
+  "size": [
+    16,
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for turning on/off subtitles in video playback & meeting scenarios.",
+  "metaphor": [
+    "screen",
+    "type",
+    "UI",
+    "subtitle",
+    "read"
+  ]
+}

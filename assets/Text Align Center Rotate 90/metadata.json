@@ -1,0 +1,28 @@
+{
+  "name": "Text Align Center Rotate 90",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in aligning blocks of text scenarios. Contains variants for Left, Center, Right, Justify, Justify Low, Distributed, and Rotate 90 & 270 scenarios.",
+  "metaphor": [
+    "type",
+    "text",
+    "typography",
+    "edit",
+    "create",
+    "alignment",
+    "left",
+    "right",
+    "justify",
+    "low",
+    "distribute",
+    "rotate"
+  ]
+}

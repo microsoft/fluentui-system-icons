@@ -1,0 +1,28 @@
+{
+  "name": "Text Grammar Wand",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in text grammar check scenarios. Contains modifier variants.",
+  "metaphor": [
+    "type",
+    "text",
+    "typography",
+    "edit",
+    "create",
+    "wand",
+    "dismiss",
+    "checkmark",
+    "arrow left",
+    "arrow right",
+    "gear",
+    "settings"
+  ]
+}

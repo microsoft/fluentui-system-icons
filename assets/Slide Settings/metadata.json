@@ -1,0 +1,21 @@
+{
+  "name": "Slide Settings",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, powerpoint",
+  "description": "Used in slide ui scenarios.",
+  "metaphor": [
+    "slide",
+    "landscape",
+    "document",
+    "presentation",
+    "gear",
+    "input"
+  ]
+}

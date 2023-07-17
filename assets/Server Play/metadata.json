@@ -1,0 +1,17 @@
+{
+  "name": "Server Play",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent physical & digital server machines.",
+  "metaphor": [
+    "device",
+    "data",
+    "connection"
+  ]
+}

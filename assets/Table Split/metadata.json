@@ -1,0 +1,19 @@
+{
+  "name": "Table Split",
+  "size": [
+    20
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, excel",
+  "description": "Used in splitting table scenarios.",
+  "metaphor": [
+    "cell",
+    "row",
+    "column",
+    "information",
+    "chart"
+  ]
+}

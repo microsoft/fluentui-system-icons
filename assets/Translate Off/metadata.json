@@ -1,0 +1,20 @@
+{
+  "name": "Translate Off",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent turning off translation needs.",
+  "metaphor": [
+    "text",
+    "type",
+    "letter",
+    "slash"
+  ]
+}

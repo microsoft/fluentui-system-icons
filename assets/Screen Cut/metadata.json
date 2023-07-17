@@ -1,0 +1,19 @@
+{
+  "name": "Screen Cut",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in screen capture scenarios.",
+  "metaphor": [
+    "camera",
+    "screenshot",
+    "image",
+    "picture",
+    "copy"
+  ]
+}

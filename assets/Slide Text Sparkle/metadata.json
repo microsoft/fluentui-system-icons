@@ -1,0 +1,24 @@
+{
+  "name": "Slide Text Sparkle",
+  "size": [
+    48,
+    28,
+    24,
+    20,
+    16,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, powerpoint",
+  "description": "Used to represent a AI generated slides.",
+  "metaphor": [
+    "rectangle",
+    "ai",
+    "presentation",
+    "layout",
+    "landscape"
+  ]
+}

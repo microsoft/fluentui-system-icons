@@ -1,0 +1,19 @@
+{
+  "name": "Smartwatch",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, powerpoint",
+  "description": "Used to represent a digital watch.",
+  "metaphor": [
+    "device",
+    "smart",
+    "time",
+    "clock"
+  ]
+}

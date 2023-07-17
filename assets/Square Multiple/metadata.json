@@ -1,0 +1,25 @@
+{
+  "name": "Square Multiple",
+  "size": [
+    20,
+    24,
+    16,
+    28,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent general UI, app tile, content or other general layouts.",
+  "metaphor": [
+    "content",
+    "ui",
+    "image",
+    "shape",
+    "app",
+    "stack"
+  ]
+}

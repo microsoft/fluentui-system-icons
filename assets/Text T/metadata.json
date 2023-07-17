@@ -1,0 +1,26 @@
+{
+  "name": "Text T",
+  "size": [
+    24,
+    20,
+    28,
+    48,
+    16,
+    32,
+    12
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent general type & text creation scenarios.",
+  "metaphor": [
+    "type",
+    "text",
+    "t",
+    "typography",
+    "edit",
+    "create"
+  ]
+}

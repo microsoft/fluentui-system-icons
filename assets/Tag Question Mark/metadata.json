@@ -1,0 +1,23 @@
+{
+  "name": "Tag Question Mark",
+  "size": [
+    24,
+    16,
+    20,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent information tied to specific data.",
+  "metaphor": [
+    "price",
+    "information",
+    "detail",
+    "metadata",
+    "purchase",
+    "sort"
+  ]
+}

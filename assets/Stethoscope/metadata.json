@@ -1,0 +1,19 @@
+{
+  "name": "Stethoscope",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent health, doctor & event scenarios.",
+  "metaphor": [
+    "doctor",
+    "hospital",
+    "tool",
+    "health"
+  ]
+}

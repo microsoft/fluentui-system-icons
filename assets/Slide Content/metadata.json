@@ -1,0 +1,20 @@
+{
+  "name": "Slide Content",
+  "size": [
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, powerpoint",
+  "description": "Used to represent presenter view in Powerpoint & general slide content.",
+  "metaphor": [
+    "slide",
+    "rectangle",
+    "landscape",
+    "image",
+    "picture",
+    "presenter view"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Store Microsoft",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent the Microsoft Store.",
+  "metaphor": [
+    "bag",
+    "retail",
+    "purchase"
+  ]
+}

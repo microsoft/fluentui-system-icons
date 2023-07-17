@@ -1,0 +1,23 @@
+{
+  "name": "Slide Microphone",
+  "size": [
+    24,
+    32,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, powerpoint",
+  "description": "Used in slide ui scenarios.",
+  "metaphor": [
+    "slide",
+    "landscape",
+    "document",
+    "presentation",
+    "audio",
+    "meeting",
+    "record"
+  ]
+}

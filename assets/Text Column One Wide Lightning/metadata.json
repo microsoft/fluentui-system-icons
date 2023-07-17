@@ -1,0 +1,22 @@
+{
+  "name": "Text Column One Wide Lightning",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in smart column setup scenarios.",
+  "metaphor": [
+    "type",
+    "text",
+    "typography",
+    "edit",
+    "create",
+    "lightning",
+    "column"
+  ]
+}

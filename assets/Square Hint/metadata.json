@@ -1,0 +1,25 @@
+{
+  "name": "Square Hint",
+  "size": [
+    24,
+    20,
+    32,
+    48,
+    16,
+    28
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent general UI, app tile, content or other general layouts",
+  "metaphor": [
+    "content",
+    "ui",
+    "image",
+    "shape",
+    "app",
+    "hidden"
+  ]
+}

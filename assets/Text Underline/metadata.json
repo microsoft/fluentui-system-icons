@@ -1,0 +1,80 @@
+{
+  "name": "Text Underline",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general type creation and editing scenarios. Contains locale specific variants.",
+  "metaphor": [
+    "type",
+    "text",
+    "typography",
+    "edit",
+    "create",
+    "letter"
+  ],
+  "language": [
+    {
+      "character": "U",
+      "locale": [
+        "en"
+      ]
+    },
+    {
+      "character": "S",
+      "locale": [
+        "it",
+        "ca",
+        "es",
+        "eu",
+        "fr",
+        "gl",
+        "pt"
+      ]
+    },
+    {
+      "character": "Pe",
+      "locale": [
+        "bg",
+        "sr",
+        "uk"
+      ]
+    },
+    {
+      "character": "P",
+      "locale": [
+        "lt",
+        "lv",
+        "sl",
+        "sr"
+      ]
+    },
+    {
+      "character": "Ga",
+      "locale": [
+        "ko"
+      ]
+    },
+    {
+      "character": "Che",
+      "locale": [
+        "ru"
+      ]
+    },
+    {
+      "character": "A",
+      "locale": [
+        "et",
+        "hu",
+        "kk",
+        "tr"
+      ]
+    }
+  ]
+}

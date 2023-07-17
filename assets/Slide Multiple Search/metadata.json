@@ -1,0 +1,20 @@
+{
+  "name": "Slide Multiple Search",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, powerpoint",
+  "description": "Used in slide ui scenarios.",
+  "metaphor": [
+    "slide",
+    "landscape",
+    "document",
+    "presentation",
+    "stack"
+  ]
+}

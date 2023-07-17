@@ -1,0 +1,17 @@
+{
+  "name": "Stream Output",
+  "size": [
+    20
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent process flows in work streams.",
+  "metaphor": [
+    "flow",
+    "process",
+    "work stream"
+  ]
+}
