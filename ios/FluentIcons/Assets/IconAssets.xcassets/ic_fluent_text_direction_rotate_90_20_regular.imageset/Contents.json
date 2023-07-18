@@ -11,15 +11,15 @@
       "language-direction": "right-to-left"
     },
     {
-      "filename": "en_ic_fluent_text_direction_rotate_90_rtl_20_regular.svg",
-      "idiom": "universal",
-      "language-direction": "right-to-left",
-      "locale": "en"
-    },
-    {
       "filename": "en_ic_fluent_text_direction_rotate_90_ltr_20_regular.svg",
       "idiom": "universal",
       "language-direction": "left-to-right",
+      "locale": "en"
+    },
+    {
+      "filename": "en_ic_fluent_text_direction_rotate_90_rtl_20_regular.svg",
+      "idiom": "universal",
+      "language-direction": "right-to-left",
       "locale": "en"
     },
     {

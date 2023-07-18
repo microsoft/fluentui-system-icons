@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "outDir": "lib",
-    "target": "esnext",
+    "target": "ES2019",
     "module": "esnext",
-    "lib": ["es6", "dom"],
+    "lib": ["ES2019", "dom"],
     "declaration": true,
     "experimentalDecorators": true,
     "importHelpers": true,
