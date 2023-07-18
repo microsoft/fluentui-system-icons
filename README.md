@@ -14,6 +14,9 @@ Fluent UI System Icons are a collection of familiar, friendly and modern icons f
 
 ## Installation
 
+### Requirements
+This library requires react-native-svg at version 12.5.0 or higher.
+
 ### Android
 
 The library is published via Maven Central, please ensure that the `mavenCentral()` repository has been added to the root `build.gradle` file:
