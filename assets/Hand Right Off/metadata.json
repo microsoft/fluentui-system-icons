@@ -1,0 +1,17 @@
+{
+  "name": "Hand Right Off",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to wait in line to talk in video meetings.",
+  "metaphor": [
+    "drag",
+    "raise",
+    "body"
+  ]
+}

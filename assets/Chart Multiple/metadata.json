@@ -1,0 +1,19 @@
+{
+  "name": "Chart Multiple",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used to represent multiple data points.",
+  "metaphor": [
+    "pie chart",
+    "data",
+    "bar",
+    "graph"
+  ]
+}

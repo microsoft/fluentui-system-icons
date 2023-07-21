@@ -1,0 +1,22 @@
+{
+  "name": "Document One Page Sparkle",
+  "size": [
+    16,
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, loop",
+  "description": "Used to represent AI generated notes.",
+  "metaphor": [
+    "paper",
+    "work",
+    "file",
+    "analog",
+    "horizontal",
+    "AI"
+  ]
+}

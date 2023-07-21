@@ -1,0 +1,19 @@
+{
+  "name": "Laptop Multiple",
+  "size": [
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, intune",
+  "description": "Used to represent bulk laptops or devices in general.",
+  "metaphor": [
+    "device",
+    "devices",
+    "multiple",
+    "laptop",
+    "profile"
+  ]
+}

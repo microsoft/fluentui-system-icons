@@ -1,0 +1,21 @@
+{
+  "name": "Shield Question",
+  "size": [
+    16,
+    24,
+    32,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent security, safety & protection.",
+  "metaphor": [
+    "security",
+    "protection",
+    "safety",
+    "question mark"
+  ]
+}

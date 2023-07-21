@@ -1,0 +1,22 @@
+{
+  "name": "Bin Recycle Full",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a more eco-friendly trash can.",
+  "metaphor": [
+    "home",
+    "house",
+    "clean",
+    "trash",
+    "delete",
+    "recycle",
+    "eco-friendly"
+  ]
+}

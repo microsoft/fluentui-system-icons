@@ -1,0 +1,21 @@
+{
+  "name": "Person Question Mark",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in a wide range of scenarios - representing a general person, a contact, contact lists, sharing, and managing access.",
+  "metaphor": [
+    "human",
+    "patient",
+    "contact",
+    "guest",
+    "unknown"
+  ]
+}

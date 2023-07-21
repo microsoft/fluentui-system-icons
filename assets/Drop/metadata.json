@@ -1,0 +1,22 @@
+{
+  "name": "Drop",
+  "size": [
+    12,
+    16,
+    20,
+    24,
+    28,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for various liquid scenarios (water usage, blood donation, etc).",
+  "metaphor": [
+    "water",
+    "liquid",
+    "blood"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Re Order Dots Vertical",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used as handles for content.",
+  "metaphor": [
+    "handle",
+    "drag",
+    "grab",
+    "reorder",
+    "dots"
+  ]
+}

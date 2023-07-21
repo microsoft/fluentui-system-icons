@@ -1,0 +1,22 @@
+{
+  "name": "Document Table Checkmark",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent table file types and actions.",
+  "metaphor": [
+    "paper",
+    "work",
+    "file",
+    "analog",
+    "horizontal",
+    "data",
+    "spreadsheet"
+  ]
+}

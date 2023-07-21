@@ -1,0 +1,25 @@
+{
+  "name": "Table Simple Include",
+  "size": [
+    28,
+    24,
+    20,
+    16,
+    48,
+    32
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used to represent placement of user video in meeting.",
+  "metaphor": [
+    "grid",
+    "meeting",
+    "layout",
+    "video",
+    "settings",
+    "me"
+  ]
+}

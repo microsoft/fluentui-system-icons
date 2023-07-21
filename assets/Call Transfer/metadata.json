@@ -1,0 +1,19 @@
+{
+  "name": "Call Transfer",
+  "size": [
+    20,
+    16,
+    24,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used in call scenarios.",
+  "metaphor": [
+    "handset",
+    "audio"
+  ]
+}

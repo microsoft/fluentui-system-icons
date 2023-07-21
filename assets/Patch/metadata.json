@@ -1,0 +1,19 @@
+{
+  "name": "Patch",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent fixes in software.",
+  "metaphor": [
+    "adhesive strip",
+    "fix",
+    "update temporary",
+    "medical care"
+  ]
+}

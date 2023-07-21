@@ -1,0 +1,20 @@
+{
+  "name": "Arrow Join",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent the action of merging (code, design, or general). Also connected with Merge.",
+  "metaphor": [
+    "text",
+    "list",
+    "to do",
+    "checklist",
+    "type",
+    "information"
+  ]
+}

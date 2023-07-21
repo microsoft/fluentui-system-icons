@@ -1,0 +1,25 @@
+{
+  "name": "Split Horizontal",
+  "size": [
+    48,
+    32,
+    28,
+    24,
+    20,
+    16,
+    12
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in splitting cells, tables & other content.",
+  "metaphor": [
+    "cell",
+    "content",
+    "edit",
+    "canvas",
+    "half"
+  ]
+}

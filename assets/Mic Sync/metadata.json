@@ -1,0 +1,19 @@
+{
+  "name": "Mic Sync",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used to general microphone audio scenarios.",
+  "metaphor": [
+    "microphone",
+    "audio",
+    "sound",
+    "sound wave",
+    "meeting"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Notepad Edit",
+  "size": [
+    16,
+    20
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general scratch pad scenarios.",
+  "metaphor": [
+    "reminder",
+    "sketch",
+    "journal",
+    "diary",
+    "pencil",
+    "text"
+  ]
+}

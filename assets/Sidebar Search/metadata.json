@@ -1,0 +1,18 @@
+{
+  "name": "Sidebar Search",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, edge",
+  "description": "Used in ui search specifically for sidebar navigation.",
+  "metaphor": [
+    "search",
+    "magnifying glass",
+    "ui",
+    "square"
+  ]
+}

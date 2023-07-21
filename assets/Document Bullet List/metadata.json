@@ -1,0 +1,23 @@
+{
+  "name": "Document Bullet List",
+  "size": [
+    20,
+    24,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent list file types and actions.",
+  "metaphor": [
+    "paper",
+    "work",
+    "file",
+    "analog",
+    "task",
+    "checklist",
+    "vertical"
+  ]
+}

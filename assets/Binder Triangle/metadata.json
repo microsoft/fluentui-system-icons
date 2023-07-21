@@ -1,0 +1,28 @@
+{
+  "name": "Binder Triangle",
+  "size": [
+    24,
+    20,
+    32,
+    16
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used for the Classwork app in Teams.",
+  "metaphor": [
+    "classwork",
+    "class",
+    "work",
+    "edu",
+    "teacher",
+    "student",
+    "math",
+    "journal",
+    "note",
+    "notepad",
+    "notebook"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Document One Page Add",
+  "size": [
+    20,
+    24,
+    16
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, loop",
+  "description": "Used to represent general file types and actions.",
+  "metaphor": [
+    "paper",
+    "work",
+    "file",
+    "analog",
+    "horizontal"
+  ]
+}

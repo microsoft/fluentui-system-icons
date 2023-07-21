@@ -1,0 +1,23 @@
+{
+  "name": "Add",
+  "size": [
+    28,
+    24,
+    20,
+    16,
+    12,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for adding actions.â ï¸ Note - because of the way strokes blur in between 2 pixels, we have made Add work for low density screens for 16, 20px sizes.",
+  "metaphor": [
+    "plus",
+    "addition",
+    "new"
+  ]
+}

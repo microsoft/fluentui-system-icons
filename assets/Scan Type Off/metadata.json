@@ -1,0 +1,20 @@
+{
+  "name": "Scan Type Off",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent scanning scenarios with different content.",
+  "metaphor": [
+    "camera",
+    "aperture",
+    "image",
+    "picture",
+    "scan",
+    "ai"
+  ]
+}

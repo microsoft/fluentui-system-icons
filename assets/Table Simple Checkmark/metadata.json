@@ -1,0 +1,25 @@
+{
+  "name": "Table Simple Checkmark",
+  "size": [
+    24,
+    16,
+    20,
+    28,
+    32,
+    48
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used to represent the Educational Grades app in Teams.â ï¸ Should not be used for other scenarios.",
+  "metaphor": [
+    "school",
+    "travel",
+    "education",
+    "grades",
+    "square",
+    "checkmark"
+  ]
+}

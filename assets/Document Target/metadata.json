@@ -1,0 +1,19 @@
+{
+  "name": "Document Target",
+  "size": [
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, visual studio code",
+  "description": "Used to represent general file types and actions.",
+  "metaphor": [
+    "document",
+    "file",
+    "target",
+    "live",
+    "location"
+  ]
+}

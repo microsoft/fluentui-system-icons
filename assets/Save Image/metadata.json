@@ -1,0 +1,20 @@
+{
+  "name": "Save Image",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent saving image data.â ï¸ Before using review if necessary. Floppy disc is old concept. Try a more dynamic save experience with motion and a checkmark or other UI.",
+  "metaphor": [
+    "floppy disc",
+    "save",
+    "image",
+    "picture",
+    "media",
+    "cloud"
+  ]
+}

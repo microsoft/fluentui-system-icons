@@ -1,0 +1,22 @@
+{
+  "name": "Fireplace",
+  "size": [
+    20,
+    24,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a fireplace.",
+  "metaphor": [
+    "fire",
+    "home",
+    "house",
+    "heat",
+    "warmth"
+  ]
+}

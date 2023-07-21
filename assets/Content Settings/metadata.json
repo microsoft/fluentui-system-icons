@@ -1,0 +1,19 @@
+{
+  "name": "Content Settings",
+  "size": [
+    24,
+    20,
+    16,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for Window Ad scenarios that need settings.",
+  "metaphor": [
+    "window",
+    "ad"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Navigation Unread",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general menu expand scenarios.",
+  "metaphor": [
+    "menu",
+    "hamburger",
+    "line",
+    "three",
+    "badge",
+    "notification"
+  ]
+}

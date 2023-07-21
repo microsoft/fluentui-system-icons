@@ -1,0 +1,24 @@
+{
+  "name": "Text Field",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent input fields.",
+  "metaphor": [
+    "type",
+    "text",
+    "typography",
+    "edit",
+    "create",
+    "input field",
+    "form",
+    "letter"
+  ]
+}

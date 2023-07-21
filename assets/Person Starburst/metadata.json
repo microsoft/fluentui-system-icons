@@ -1,0 +1,19 @@
+{
+  "name": "Person Starburst",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in custom shaped placeholder avatars in UI.",
+  "metaphor": [
+    "human",
+    "patient",
+    "contact",
+    "guest"
+  ]
+}

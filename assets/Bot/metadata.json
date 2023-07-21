@@ -1,0 +1,19 @@
+{
+  "name": "Bot",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent chatbot scenarios.",
+  "metaphor": [
+    "AI",
+    "robot",
+    "automated",
+    "enhance"
+  ]
+}

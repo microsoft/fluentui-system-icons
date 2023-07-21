@@ -1,0 +1,17 @@
+{
+  "name": "Code Text Off",
+  "size": [
+    16
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, visual studio code",
+  "description": "Used to represent code text off.",
+  "metaphor": [
+    "code",
+    "disable",
+    "slash"
+  ]
+}

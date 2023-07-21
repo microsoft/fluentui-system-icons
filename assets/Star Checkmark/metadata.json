@@ -1,0 +1,19 @@
+{
+  "name": "Star Checkmark",
+  "size": [
+    16,
+    20,
+    24,
+    28
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent items a user is following.",
+  "metaphor": [
+    "favorite",
+    "following"
+  ]
+}

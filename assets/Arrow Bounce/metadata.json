@@ -1,0 +1,19 @@
+{
+  "name": "Arrow Bounce",
+  "size": [
+    24,
+    16,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for returned content.",
+  "metaphor": [
+    "arrow",
+    "left",
+    "deflect"
+  ]
+}

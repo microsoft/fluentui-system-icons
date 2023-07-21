@@ -1,0 +1,25 @@
+{
+  "name": "Chat Sparkle",
+  "size": [
+    48,
+    32,
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in AI powered chat scenarios.",
+  "metaphor": [
+    "discussion",
+    "message",
+    "post",
+    "AI",
+    "sparkle",
+    ""
+  ]
+}

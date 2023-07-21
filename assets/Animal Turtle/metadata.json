@@ -1,0 +1,21 @@
+{
+  "name": "Animal Turtle",
+  "size": [
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for content about pets & speed indicator (slow).",
+  "metaphor": [
+    "pet",
+    "creature",
+    "crawl",
+    "slow"
+  ]
+}

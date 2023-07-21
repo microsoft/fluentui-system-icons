@@ -1,0 +1,23 @@
+{
+  "name": "Picture In Picture Exit",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in layered video scenarios for dual videos, or for minimizing video on top of other ui.",
+  "metaphor": [
+    "video",
+    "screen",
+    "device",
+    "ui",
+    "multiple",
+    "maximize",
+    "scale"
+  ]
+}

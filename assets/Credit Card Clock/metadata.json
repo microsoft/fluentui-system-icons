@@ -1,0 +1,22 @@
+{
+  "name": "Credit Card Clock",
+  "size": [
+    28,
+    24,
+    20,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in scenarios involving payments.",
+  "metaphor": [
+    "payment",
+    "transaction",
+    "purchase",
+    "time",
+    "clock"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Mobile Optimized",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, word",
+  "description": "Used to represent UI refactoring for mobile screens.",
+  "metaphor": [
+    "mobile",
+    "scale",
+    "fit",
+    "resize",
+    "page",
+    "responsive"
+  ]
+}

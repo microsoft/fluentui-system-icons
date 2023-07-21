@@ -1,0 +1,16 @@
+{
+  "name": "App Store",
+  "size": [
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for content around app ui.",
+  "metaphor": [
+    "collection",
+    "ui"
+  ]
+}

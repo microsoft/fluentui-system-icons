@@ -1,0 +1,17 @@
+{
+  "name": "Board Games",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in board game collections.",
+  "metaphor": [
+    "chess",
+    "cards",
+    "club"
+  ]
+}

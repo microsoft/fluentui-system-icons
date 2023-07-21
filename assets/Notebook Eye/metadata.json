@@ -1,0 +1,21 @@
+{
+  "name": "Notebook Eye",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, visual studio",
+  "description": "Used in general organized note scenarios.",
+  "metaphor": [
+    "reminder",
+    "sketch",
+    "journal",
+    "diary",
+    "pad",
+    "eye",
+    "view"
+  ]
+}

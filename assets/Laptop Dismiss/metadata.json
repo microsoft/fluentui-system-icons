@@ -1,0 +1,21 @@
+{
+  "name": "Laptop Dismiss",
+  "size": [
+    16,
+    20
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in not connected, disconnect, or can't find device scenarios.",
+  "metaphor": [
+    "device",
+    "computer",
+    "device",
+    "mobile",
+    "travel",
+    "wfh"
+  ]
+}

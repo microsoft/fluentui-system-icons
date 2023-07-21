@@ -1,0 +1,28 @@
+{
+  "name": "Square Hint Sparkles",
+  "size": [
+    16,
+    20,
+    24,
+    28,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent general UI, app tile, content or other general layouts",
+  "metaphor": [
+    "content",
+    "ui",
+    "image",
+    "shape",
+    "app",
+    "hidden",
+    "ai",
+    "new",
+    "sparkle"
+  ]
+}

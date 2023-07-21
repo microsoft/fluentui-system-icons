@@ -1,0 +1,26 @@
+{
+  "name": "Document Header Dismiss",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent file type content styles and scenarios.",
+  "metaphor": [
+    "paper",
+    "work",
+    "file",
+    "analog",
+    "edit",
+    "image",
+    "content",
+    "x",
+    "close",
+    "remove",
+    "vertical"
+  ]
+}

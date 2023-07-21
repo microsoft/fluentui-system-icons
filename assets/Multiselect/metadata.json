@@ -1,0 +1,22 @@
+{
+  "name": "Multiselect",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent multi-select list in UI. Contains LTR / RTL variants.",
+  "metaphor": [
+    "checkmark",
+    "task",
+    "list",
+    "type"
+  ],
+  "directionType": "unique",
+  "singleton": "LTR"
+}

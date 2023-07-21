@@ -1,0 +1,20 @@
+{
+  "name": "Desktop Tower",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent stationary work stations with a tower.",
+  "metaphor": [
+    "monitor",
+    "office",
+    "tower",
+    "pc",
+    "large screen"
+  ]
+}

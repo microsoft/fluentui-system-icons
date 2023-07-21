@@ -1,0 +1,24 @@
+{
+  "name": "Document Arrow Left",
+  "size": [
+    48,
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent general file types and actions.",
+  "metaphor": [
+    "paper",
+    "work",
+    "file",
+    "analog",
+    "back",
+    "vertical"
+  ]
+}

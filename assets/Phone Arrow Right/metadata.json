@@ -1,0 +1,21 @@
+{
+  "name": "Phone Arrow Right",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a physical or digital mobile phone scenarios.",
+  "metaphor": [
+    "device",
+    "mobile",
+    "small screen",
+    "cellular telephone",
+    "apple",
+    "android"
+  ]
+}

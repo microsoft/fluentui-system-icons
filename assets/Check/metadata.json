@@ -1,0 +1,20 @@
+{
+  "name": "Check",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a paper form of payment.",
+  "metaphor": [
+    "book",
+    "pen",
+    "edit",
+    "money",
+    "payment"
+  ]
+}

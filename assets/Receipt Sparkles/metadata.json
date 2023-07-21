@@ -1,0 +1,23 @@
+{
+  "name": "Receipt Sparkles",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent smarts in receipt, purchase order, line items or an invoice.",
+  "metaphor": [
+    "purchase",
+    "retail",
+    "invoice",
+    "line item",
+    "po",
+    "money",
+    "currency"
+  ]
+}

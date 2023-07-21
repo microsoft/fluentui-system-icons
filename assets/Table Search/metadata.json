@@ -1,0 +1,20 @@
+{
+  "name": "Table Search",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, excel",
+  "description": "Used to represent a data table.",
+  "metaphor": [
+    "cell",
+    "row",
+    "column",
+    "information",
+    "chart",
+    "magnifying glass"
+  ]
+}

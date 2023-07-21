@@ -1,0 +1,22 @@
+{
+  "name": "Document Fit",
+  "size": [
+    16,
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to scale content to fit a portrait page. Similar to Arrow Fit, Auto Fit, Scale Fit, Full Screen.",
+  "metaphor": [
+    "point",
+    "direction",
+    "horizontal",
+    "scale",
+    "fit",
+    "document"
+  ]
+}

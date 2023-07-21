@@ -1,0 +1,17 @@
+{
+  "name": "Calligraphy Pen Error",
+  "size": [
+    20
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used in drawing modes.",
+  "metaphor": [
+    "edit",
+    "ink",
+    "draw"
+  ]
+}

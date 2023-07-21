@@ -1,0 +1,20 @@
+{
+  "name": "Image Arrow Forward",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent images in content and photo editing scenarios.",
+  "metaphor": [
+    "photo",
+    "picture",
+    "snapshot",
+    "content",
+    "redo"
+  ]
+}

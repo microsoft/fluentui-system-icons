@@ -1,0 +1,20 @@
+{
+  "name": "Lightbulb Checkmark",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in tooltip, sharing knowledge, or AI suggested scenarios.",
+  "metaphor": [
+    "light",
+    "illuminate",
+    "knowledge",
+    "smart",
+    "idea",
+    "tip"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "Calligraphy Pen",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used in drawing modes.",
+  "metaphor": [
+    "edit",
+    "ink",
+    "draw"
+  ]
+}

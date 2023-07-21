@@ -1,0 +1,17 @@
+{
+  "name": "Calendar Mention",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook, teams",
+  "description": "Used in calendar scenarios.",
+  "metaphor": [
+    "time",
+    "date",
+    "planning"
+  ]
+}

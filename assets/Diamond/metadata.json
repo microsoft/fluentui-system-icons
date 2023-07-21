@@ -1,0 +1,22 @@
+{
+  "name": "Diamond",
+  "size": [
+    32,
+    48,
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general shape creation scenarios.",
+  "metaphor": [
+    "edit",
+    "shape",
+    "create"
+  ]
+}

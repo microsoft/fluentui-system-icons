@@ -1,0 +1,21 @@
+{
+  "name": "Speaker Bluetooth",
+  "size": [
+    28,
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in volume & various audio setting scenarios.",
+  "metaphor": [
+    "audio",
+    "sound",
+    "volume",
+    "connect",
+    "sync"
+  ]
+}

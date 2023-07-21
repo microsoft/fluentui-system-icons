@@ -1,0 +1,22 @@
+{
+  "name": "Phone Eraser",
+  "size": [
+    16,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a physical or digital mobile phone scenarios.",
+  "metaphor": [
+    "device",
+    "mobile",
+    "small screen",
+    "cellular telephone",
+    "apple",
+    "android",
+    "settings"
+  ]
+}

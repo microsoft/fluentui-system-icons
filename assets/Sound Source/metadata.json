@@ -1,0 +1,21 @@
+{
+  "name": "Sound Source",
+  "size": [
+    28,
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, powerpoint",
+  "description": "Used in sound & audio file & device selection scenarios.",
+  "metaphor": [
+    "sound",
+    "audio",
+    "wave",
+    "device",
+    "settings"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Color Fill Accent",
+  "size": [
+    24,
+    20,
+    16,
+    28
+  ],
+  "style": [
+    "Regular"
+  ],
+  "keyword": "fluent-icon, edge",
+  "description": "Used in edit mode for color changes - specifically the background for color reflection in UI.",
+  "metaphor": [
+    "color",
+    "edit",
+    "paint",
+    "palette"
+  ]
+}

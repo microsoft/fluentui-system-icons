@@ -1,0 +1,22 @@
+{
+  "name": "Doctor",
+  "size": [
+    48,
+    28,
+    24,
+    20,
+    16,
+    12
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent doctors, hospitals, and general medical scenarios.",
+  "metaphor": [
+    "medical",
+    "medicine",
+    "hospital"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Mail Inbox All",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used to represent mail inbox.",
+  "metaphor": [
+    "envelope",
+    "email",
+    "delivery",
+    "message",
+    "collection",
+    "multiple"
+  ]
+}

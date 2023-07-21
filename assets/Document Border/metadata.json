@@ -1,0 +1,21 @@
+{
+  "name": "Document Border",
+  "size": [
+    32,
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, word",
+  "description": "Used to represent decoration options for documents.",
+  "metaphor": [
+    "document",
+    "border",
+    "outline",
+    "decoration",
+    "details"
+  ]
+}

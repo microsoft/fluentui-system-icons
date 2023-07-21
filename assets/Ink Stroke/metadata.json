@@ -1,0 +1,20 @@
+{
+  "name": "Ink Stroke",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent pen details in drawing scenarios.",
+  "metaphor": [
+    "edit",
+    "create",
+    "draw",
+    "pen",
+    "scribble"
+  ]
+}

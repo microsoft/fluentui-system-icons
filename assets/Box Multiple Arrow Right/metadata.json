@@ -1,0 +1,19 @@
+{
+  "name": "Box Multiple Arrow Right",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for shipping, production scenarios.",
+  "metaphor": [
+    "package",
+    "shipping",
+    "cargo",
+    "production"
+  ]
+}

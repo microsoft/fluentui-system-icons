@@ -1,0 +1,26 @@
+{
+  "name": "Chevron Circle Up",
+  "size": [
+    32,
+    24,
+    28,
+    20,
+    12,
+    16,
+    48
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in dropdown & expanding contracting scenarios. Contains directional variants.",
+  "metaphor": [
+    "arrow",
+    "dropdown",
+    "direction",
+    "expand",
+    "contract",
+    "circle"
+  ]
+}

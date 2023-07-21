@@ -1,0 +1,17 @@
+{
+  "name": "Laser Tool",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a pointer in presentation scenarios.",
+  "metaphor": [
+    "pointer",
+    "dot",
+    "canvas"
+  ]
+}

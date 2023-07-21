@@ -1,0 +1,19 @@
+{
+  "name": "Gesture",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in scenarios that need generic gesture representation.",
+  "metaphor": [
+    "swipe",
+    "tap",
+    "flick",
+    "touch"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Scale Fill",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to scale content to fit UI space. Similar to Arrow Fit, Auto Fit, Scale Fit, Full Screen, Arrow Minimize, Arrow Maximize, Page Fit.",
+  "metaphor": [
+    "point",
+    "direction",
+    "horizontal",
+    "scale",
+    "fit",
+    "document"
+  ]
+}

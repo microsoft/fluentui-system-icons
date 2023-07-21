@@ -1,0 +1,23 @@
+{
+  "name": "Shape Intersect",
+  "size": [
+    20,
+    24,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in canvas shape editing scenarios.",
+  "metaphor": [
+    "canvas",
+    "edit",
+    "create",
+    "union",
+    "subtract",
+    "multiple",
+    "square"
+  ]
+}

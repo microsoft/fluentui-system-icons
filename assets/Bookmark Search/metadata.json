@@ -1,0 +1,17 @@
+{
+  "name": "Bookmark Search",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in saving scenarios.",
+  "metaphor": [
+    "read",
+    "placeholder"
+  ]
+}

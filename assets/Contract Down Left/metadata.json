@@ -1,0 +1,23 @@
+{
+  "name": "Contract Down Left",
+  "size": [
+    20,
+    24,
+    16,
+    28,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in window scaling scenarios.",
+  "metaphor": [
+    "window",
+    "scale",
+    "fit",
+    "snap"
+  ]
+}

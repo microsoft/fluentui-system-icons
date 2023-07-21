@@ -1,0 +1,20 @@
+{
+  "name": "Database",
+  "size": [
+    20,
+    24,
+    32,
+    16,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in database scenarios.",
+  "metaphor": [
+    "data",
+    "information"
+  ]
+}

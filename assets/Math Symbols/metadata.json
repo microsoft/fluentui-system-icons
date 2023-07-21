@@ -1,0 +1,22 @@
+{
+  "name": "Math Symbols",
+  "size": [
+    16,
+    20,
+    24,
+    28,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent general mathematic calculations.",
+  "metaphor": [
+    "mathematics",
+    "formula",
+    "equation"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Alert On",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for alerts or notifications.",
+  "metaphor": [
+    "bell",
+    "alarm",
+    "chime",
+    "on",
+    "loud"
+  ]
+}

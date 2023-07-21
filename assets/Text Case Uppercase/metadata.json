@@ -1,0 +1,23 @@
+{
+  "name": "Text Case Uppercase",
+  "size": [
+    20,
+    24,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general type creation and editing scenarios. Collection includes Text Case Lowercase, Text Case Title, Text Case Uppercase, Text Change Case.",
+  "metaphor": [
+    "type",
+    "text",
+    "typography",
+    "edit",
+    "create",
+    "case",
+    "letter"
+  ]
+}

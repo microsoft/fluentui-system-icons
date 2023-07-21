@@ -1,0 +1,21 @@
+{
+  "name": "Arrow Collapse All",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for content collapsing.",
+  "metaphor": [
+    "arrow",
+    "point",
+    "direction",
+    "keyboard",
+    "text"
+  ],
+  "directionType": "mirror"
+}

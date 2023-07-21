@@ -1,0 +1,27 @@
+{
+  "name": "Dishwasher",
+  "size": [
+    20,
+    24,
+    32,
+    48
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a dishwasher.",
+  "metaphor": [
+    "appliance",
+    "home",
+    "house",
+    "utility",
+    "dishwasher",
+    "dishes",
+    "utensils",
+    "clean",
+    "sanitize",
+    "water"
+  ]
+}

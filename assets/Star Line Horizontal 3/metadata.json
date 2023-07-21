@@ -1,0 +1,20 @@
+{
+  "name": "Star Line Horizontal 3",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general rating scenarios.",
+  "metaphor": [
+    "favorite",
+    "rating",
+    "vote",
+    "navigation"
+  ]
+}

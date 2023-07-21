@@ -1,0 +1,19 @@
+{
+  "name": "Key Multiple",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for approved access or password.",
+  "metaphor": [
+    "security",
+    "lock",
+    "password",
+    "access",
+    "keychain"
+  ]
+}

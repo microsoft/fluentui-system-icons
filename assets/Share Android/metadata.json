@@ -1,0 +1,19 @@
+{
+  "name": "Share Android",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in sharing information scenarios, specifically for Android.",
+  "metaphor": [
+    "dot",
+    "forward",
+    "right",
+    "send"
+  ]
+}

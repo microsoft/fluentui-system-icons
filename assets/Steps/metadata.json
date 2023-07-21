@@ -1,0 +1,19 @@
+{
+  "name": "Steps",
+  "size": [
+    20,
+    24,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent steps in the manufacturing process.",
+  "metaphor": [
+    "stack",
+    "scale",
+    "manufacture"
+  ]
+}

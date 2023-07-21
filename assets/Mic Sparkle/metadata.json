@@ -1,0 +1,21 @@
+{
+  "name": "Mic Sparkle",
+  "size": [
+    20,
+    24,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used to represent AI effects on microphone.",
+  "metaphor": [
+    "microphone",
+    "audio",
+    "sound",
+    "sound wave",
+    "meeting"
+  ]
+}

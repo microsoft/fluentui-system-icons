@@ -1,0 +1,17 @@
+{
+  "name": "System",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent generic system shapes.",
+  "metaphor": [
+    "rectangle",
+    "shape"
+  ]
+}

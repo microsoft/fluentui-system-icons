@@ -1,0 +1,97 @@
+{
+  "name": "Text Italic",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general type creation and editing scenarios. Contains locale specific variants.",
+  "metaphor": [
+    "type",
+    "text",
+    "typography",
+    "edit",
+    "create",
+    "letter"
+  ],
+  "language": [
+    {
+      "character": "I",
+      "locale": [
+        "en"
+      ]
+    },
+    {
+      "character": "T",
+      "locale": [
+        "tr"
+      ]
+    },
+    {
+      "character": "S",
+      "locale": [
+        "lv"
+      ]
+    },
+    {
+      "character": "P",
+      "locale": [
+        "lt"
+      ]
+    },
+    {
+      "character": "L",
+      "locale": [
+        "sl"
+      ]
+    },
+    {
+      "character": "Ka",
+      "locale": [
+        "kk"
+      ]
+    },
+    {
+      "character": "K",
+      "locale": [
+        "bg",
+        "ca",
+        "da",
+        "de",
+        "es",
+        "et",
+        "eu",
+        "gl",
+        "no",
+        "ru",
+        "sr",
+        "sr",
+        "sv",
+        "uk"
+      ]
+    },
+    {
+      "character": "Ga",
+      "locale": [
+        "ko"
+      ]
+    },
+    {
+      "character": "D",
+      "locale": [
+        "hu"
+      ]
+    },
+    {
+      "character": "C",
+      "locale": [
+        "it"
+      ]
+    }
+  ]
+}

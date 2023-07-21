@@ -1,0 +1,20 @@
+{
+  "name": "Stack",
+  "size": [
+    20,
+    24,
+    16,
+    32
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent stacked content & collections.",
+  "metaphor": [
+    "content",
+    "landscape",
+    "collection"
+  ]
+}

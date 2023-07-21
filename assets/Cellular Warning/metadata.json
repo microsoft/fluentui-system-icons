@@ -1,0 +1,17 @@
+{
+  "name": "Cellular Warning",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for device connection status.",
+  "metaphor": [
+    "data",
+    "connection"
+  ]
+}

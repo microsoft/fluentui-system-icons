@@ -1,0 +1,19 @@
+{
+  "name": "Power",
+  "size": [
+    28,
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent physical power to devices, or turning on and off digital processes.",
+  "metaphor": [
+    "device",
+    "electricity",
+    "analog"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Door Arrow Left",
+  "size": [
+    20,
+    24,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used in leaving meeting scenarios.",
+  "metaphor": [
+    "meeting",
+    "conference room",
+    "leave",
+    "analog"
+  ]
+}

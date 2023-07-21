@@ -1,0 +1,33 @@
+{
+  "name": "Video Person Clock",
+  "size": [
+    28,
+    24,
+    20,
+    16,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used to represent general video meetings, views & settings in video meetings, meeting time, meeting timer.",
+  "metaphor": [
+    "video",
+    "meeting",
+    "selfie",
+    "camera",
+    "clip",
+    "media",
+    "front facing",
+    "effects",
+    "call",
+    "chat",
+    "time",
+    "meeting",
+    "clock",
+    "timer"
+  ]
+}

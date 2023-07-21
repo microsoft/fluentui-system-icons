@@ -1,0 +1,20 @@
+{
+  "name": "Arrow Rotate Counterclockwise",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used for rotating scenarios. Contains directional variants.",
+  "metaphor": [
+    "arrow",
+    "direction",
+    "back",
+    "circle"
+  ],
+  "directionType": "mirror"
+}

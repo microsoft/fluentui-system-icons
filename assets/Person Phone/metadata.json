@@ -1,0 +1,21 @@
+{
+  "name": "Person Phone",
+  "size": [
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, intune",
+  "description": "Used to represent a device tied to a person, through enrollment.",
+  "metaphor": [
+    "person",
+    "people",
+    "worker",
+    "work",
+    "organization",
+    "device",
+    "phone"
+  ]
+}

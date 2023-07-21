@@ -1,0 +1,19 @@
+{
+  "name": "Star Edit",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general rating scenarios.",
+  "metaphor": [
+    "favorite",
+    "rating",
+    "vote",
+    "pencil"
+  ]
+}

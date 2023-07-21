@@ -1,0 +1,24 @@
+{
+  "name": "Cloud Dismiss",
+  "size": [
+    48,
+    24,
+    16,
+    32,
+    20,
+    28
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, onedrive, outlook, teams",
+  "description": "Used in all stored data scenarios.",
+  "metaphor": [
+    "storage",
+    "upload",
+    "download",
+    "save",
+    "sync"
+  ]
+}

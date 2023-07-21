@@ -1,0 +1,21 @@
+{
+  "name": "Dialpad",
+  "size": [
+    24,
+    20,
+    28,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used to represent the interface to make a number call.",
+  "metaphor": [
+    "call",
+    "dial",
+    "number"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Location Dismiss",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in map and travel scenarios.",
+  "metaphor": [
+    "pin",
+    "marker",
+    "map",
+    "location",
+    "travel",
+    "x"
+  ]
+}

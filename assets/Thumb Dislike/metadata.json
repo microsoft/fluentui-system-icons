@@ -1,0 +1,22 @@
+{
+  "name": "Thumb Dislike",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general approval/disapproval scenarios.",
+  "metaphor": [
+    "approve",
+    "disapprove",
+    "like",
+    "dislike",
+    "hand",
+    "gesture"
+  ]
+}

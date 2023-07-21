@@ -1,0 +1,19 @@
+{
+  "name": "Xbox Console",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, xbox",
+  "description": "Used to represent the Xbox Series X, but okay to use for general xbox console.",
+  "metaphor": [
+    "console",
+    "device",
+    "videogame",
+    "game"
+  ]
+}

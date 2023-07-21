@@ -1,0 +1,23 @@
+{
+  "name": "Earth Leaf",
+  "size": [
+    16,
+    20,
+    24,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent sustainable practices like carbon neutral, etc.",
+  "metaphor": [
+    "earth",
+    "globe",
+    "sustainable",
+    "sustainability",
+    "environment"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Keyboard Shift Uppercase",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent various keys on keyboard scenarios.",
+  "metaphor": [
+    "keyboard",
+    "type",
+    "key",
+    "device",
+    "analog",
+    "arrow"
+  ]
+}

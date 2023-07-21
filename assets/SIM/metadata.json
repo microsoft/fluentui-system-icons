@@ -1,0 +1,21 @@
+{
+  "name": "SIM",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent physical memory cards used by devices like cameras, phones, etc.",
+  "metaphor": [
+    "physical",
+    "device",
+    "memory",
+    "subscriber identity module",
+    "storage"
+  ]
+}

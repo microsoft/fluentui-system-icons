@@ -1,0 +1,24 @@
+{
+  "name": "Folder Arrow Left",
+  "size": [
+    32,
+    16,
+    20,
+    24,
+    28,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent collections of files.",
+  "metaphor": [
+    "analog",
+    "collection",
+    "back",
+    "history",
+    "undo"
+  ]
+}

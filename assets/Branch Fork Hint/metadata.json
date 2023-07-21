@@ -1,0 +1,16 @@
+{
+  "name": "Branch Fork Hint",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in coding scenarios.",
+  "metaphor": [
+    "code"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "Text Add Space Before",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in adding spacing before or after blocks of text.",
+  "metaphor": [
+    "type",
+    "text",
+    "typography",
+    "edit",
+    "create",
+    "top",
+    "bottom",
+    "after",
+    "before"
+  ]
+}

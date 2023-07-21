@@ -1,0 +1,21 @@
+{
+  "name": "Auto Fit Height",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to scale content to fit. Similar to Arrow Fit. Contains directional variants.",
+  "metaphor": [
+    "point",
+    "direction",
+    "horizontal",
+    "vertical",
+    "scale",
+    "fit"
+  ]
+}

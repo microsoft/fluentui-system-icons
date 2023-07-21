@@ -1,0 +1,19 @@
+{
+  "name": "Task List Square Settings",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a checklist, goals in task oriented scenarios.",
+  "metaphor": [
+    "checklist",
+    "checkmark",
+    "check",
+    "goals",
+    "to do"
+  ]
+}

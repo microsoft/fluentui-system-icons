@@ -1,0 +1,25 @@
+{
+  "name": "Slide Text Person",
+  "size": [
+    28,
+    24,
+    20,
+    16,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, powerpoint",
+  "description": "Used in slide ui scenarios.",
+  "metaphor": [
+    "slide",
+    "landscape",
+    "document",
+    "presentation",
+    "person",
+    "people"
+  ]
+}

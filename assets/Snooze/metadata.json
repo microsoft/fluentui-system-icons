@@ -1,0 +1,23 @@
+{
+  "name": "Snooze",
+  "size": [
+    24,
+    16,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, powerpoint",
+  "description": "Used in alarm snooze scenarios.",
+  "metaphor": [
+    "sleep",
+    "zzz",
+    "type",
+    "letter",
+    "time",
+    "alarm",
+    "alert"
+  ]
+}

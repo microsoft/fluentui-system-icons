@@ -1,0 +1,19 @@
+{
+  "name": "Person Walking",
+  "size": [
+    20,
+    24,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent traveling by foot scenarios.",
+  "metaphor": [
+    "walk",
+    "move",
+    "person"
+  ]
+}

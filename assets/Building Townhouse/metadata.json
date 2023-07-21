@@ -1,0 +1,25 @@
+{
+  "name": "Building Townhouse",
+  "size": [
+    24,
+    32,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a townhouse or shared living space in UI.",
+  "metaphor": [
+    "house",
+    "safety",
+    "location",
+    "space",
+    "wfh",
+    "duplex",
+    "shared",
+    "apartment",
+    "townhouse"
+  ]
+}

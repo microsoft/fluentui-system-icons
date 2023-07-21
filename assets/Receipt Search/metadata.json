@@ -1,0 +1,21 @@
+{
+  "name": "Receipt Search",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a receipt, purchase order, line items or an invoice.",
+  "metaphor": [
+    "purchase",
+    "retail",
+    "invoice",
+    "line item",
+    "po",
+    "money",
+    "currency"
+  ]
+}

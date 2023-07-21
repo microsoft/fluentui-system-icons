@@ -1,0 +1,20 @@
+{
+  "name": "Window Bullet List",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent general windowed app scenarios.",
+  "metaphor": [
+    "rectangle",
+    "shape",
+    "web",
+    "app",
+    "window",
+    "UI"
+  ]
+}

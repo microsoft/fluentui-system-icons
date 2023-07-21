@@ -1,0 +1,19 @@
+{
+  "name": "Style Guide",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a swatch palette or system collection.",
+  "metaphor": [
+    "swatch",
+    "color",
+    "system",
+    "stack"
+  ]
+}

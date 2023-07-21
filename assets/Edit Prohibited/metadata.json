@@ -1,0 +1,23 @@
+{
+  "name": "Edit Prohibited",
+  "size": [
+    32,
+    16,
+    28,
+    48,
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used in editing/update or drawing scenarios.",
+  "metaphor": [
+    "pencil",
+    "update",
+    "create",
+    "draw"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Connector",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in generic, physical connection scenarios.",
+  "metaphor": [
+    "point",
+    "direction",
+    "horizontal",
+    "diagonal"
+  ]
+}

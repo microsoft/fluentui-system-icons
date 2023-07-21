@@ -1,0 +1,17 @@
+{
+  "name": "Drawer Subtract",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "",
+  "metaphor": [
+    "collection",
+    "analog"
+  ]
+}

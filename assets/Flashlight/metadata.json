@@ -1,0 +1,21 @@
+{
+  "name": "Flashlight",
+  "size": [
+    24,
+    16,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used in physical scenarios, where a light is turned on.",
+  "metaphor": [
+    "light",
+    "shine",
+    "bright",
+    "focus",
+    "analog"
+  ]
+}

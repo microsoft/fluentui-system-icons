@@ -1,0 +1,19 @@
+{
+  "name": "Currency Dollar Euro",
+  "size": [
+    16,
+    20,
+    24
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": null,
+  "metaphor": [
+    "money",
+    "transaction",
+    "bank.\n\nUsed to represent currency values. Contains currency variants."
+  ]
+}

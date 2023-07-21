@@ -1,0 +1,21 @@
+{
+  "name": "Top Speed",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in speed measuring scenarios.",
+  "metaphor": [
+    "measure",
+    "odometer",
+    "speedometer",
+    "health",
+    "tracking",
+    "internet"
+  ]
+}

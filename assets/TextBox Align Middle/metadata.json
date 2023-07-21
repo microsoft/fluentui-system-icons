@@ -1,0 +1,21 @@
+{
+  "name": "TextBox Align Middle",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent type within container specifically. Contains alignment and rotational variants.",
+  "metaphor": [
+    "type",
+    "text",
+    "typography",
+    "edit",
+    "create"
+  ]
+}

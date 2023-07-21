@@ -1,0 +1,23 @@
+{
+  "name": "Panel Right",
+  "size": [
+    48,
+    28,
+    24,
+    20,
+    16,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent the plethora of secondary, elevated panels in UI. Contains direction and action variants.",
+  "metaphor": [
+    "pane",
+    "sidebar",
+    "modal",
+    "elevate"
+  ]
+}

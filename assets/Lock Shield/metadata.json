@@ -1,0 +1,23 @@
+{
+  "name": "Lock Shield",
+  "size": [
+    48,
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in generic access, security, or safety scenarios.",
+  "metaphor": [
+    "security",
+    "access",
+    "protected",
+    "safety",
+    "permission",
+    "access",
+    "protection"
+  ]
+}

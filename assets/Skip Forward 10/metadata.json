@@ -1,0 +1,26 @@
+{
+  "name": "Skip Forward 10",
+  "size": [
+    20,
+    24,
+    28,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in playback controls. Contains time modifiers. Collection includes Fastforward, Rewind, Previous, Next, Stop, Pause.",
+  "metaphor": [
+    "arrow",
+    "skip",
+    "control",
+    "rewind",
+    "fast forward",
+    "playback",
+    "type",
+    "number"
+  ]
+}

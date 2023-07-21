@@ -1,0 +1,22 @@
+{
+  "name": "Arrow Undo",
+  "size": [
+    48,
+    32,
+    24,
+    20,
+    16,
+    28
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for undoing scenarios. â ï¸ Old metaphor & really unbalanced icon - use Arrow Hook instead if you can.",
+  "metaphor": [
+    "arrow",
+    "forward"
+  ],
+  "directionType": "mirror"
+}

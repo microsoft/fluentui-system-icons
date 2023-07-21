@@ -1,0 +1,26 @@
+{
+  "name": "Video Person Off",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used to represent general video meetings, views & settings in video meetings.",
+  "metaphor": [
+    "video",
+    "meeting",
+    "selfie",
+    "camera",
+    "clip",
+    "media",
+    "front facing",
+    "effects",
+    "call",
+    "chat",
+    "slash"
+  ]
+}

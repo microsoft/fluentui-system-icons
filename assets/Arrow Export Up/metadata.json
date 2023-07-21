@@ -1,0 +1,20 @@
+{
+  "name": "Arrow Export Up",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for pulling content from source. Contains directional variants.",
+  "metaphor": [
+    "arrow",
+    "point",
+    "direction",
+    ""
+  ],
+  "directionType": "mirror"
+}

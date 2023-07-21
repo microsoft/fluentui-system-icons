@@ -1,0 +1,20 @@
+{
+  "name": "Status",
+  "size": [
+    24,
+    20,
+    16,
+    12
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in message post scenarios.",
+  "metaphor": [
+    "edit",
+    "pencil",
+    "status"
+  ]
+}

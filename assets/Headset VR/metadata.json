@@ -1,0 +1,20 @@
+{
+  "name": "Headset VR",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to virtual reality headsets.",
+  "metaphor": [
+    "virtual reality",
+    "meta",
+    "3d",
+    "device",
+    "physical"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Key Command",
+  "size": [
+    16,
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent command key.",
+  "metaphor": [
+    "mac",
+    "keyboard",
+    "type"
+  ]
+}

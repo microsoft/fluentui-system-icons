@@ -1,0 +1,19 @@
+{
+  "name": "View Desktop Mobile",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in UI connecting mobile and desktop devices.",
+  "metaphor": [
+    "device",
+    "ui",
+    "view",
+    "focus"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Tabs",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, edge",
+  "description": "Used in browser tab scenarios. Contains option variants.",
+  "metaphor": [
+    "tab",
+    "mobile",
+    "rectangle",
+    "browser"
+  ]
+}

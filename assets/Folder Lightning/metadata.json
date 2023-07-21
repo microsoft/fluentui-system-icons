@@ -1,0 +1,21 @@
+{
+  "name": "Folder Lightning",
+  "size": [
+    16,
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent collections of files.",
+  "metaphor": [
+    "analog",
+    "collection",
+    "smart folder",
+    "automate",
+    "auto sort"
+  ]
+}

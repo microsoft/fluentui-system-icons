@@ -1,0 +1,20 @@
+{
+  "name": "Hand Left",
+  "size": [
+    20,
+    16,
+    24,
+    28
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to wait in line to talk in video meetings. Contains directional variants.",
+  "metaphor": [
+    "drag",
+    "raise",
+    "body"
+  ]
+}

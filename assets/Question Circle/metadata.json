@@ -1,0 +1,25 @@
+{
+  "name": "Question Circle",
+  "size": [
+    48,
+    28,
+    24,
+    20,
+    16,
+    32,
+    12
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent help scenarios.",
+  "metaphor": [
+    "help",
+    "unknown",
+    "text",
+    "type",
+    "did you know"
+  ]
+}

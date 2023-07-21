@@ -1,0 +1,19 @@
+{
+  "name": "Split Hint",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in splitting cells, tables & other content.",
+  "metaphor": [
+    "cell",
+    "content",
+    "edit",
+    "canvas",
+    "half"
+  ]
+}

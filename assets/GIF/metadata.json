@@ -1,0 +1,20 @@
+{
+  "name": "GIF",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used in gif picker moments.",
+  "metaphor": [
+    "meme",
+    "animation",
+    "picker",
+    "funny"
+  ]
+}

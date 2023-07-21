@@ -1,0 +1,21 @@
+{
+  "name": "Data Line",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": null,
+  "metaphor": [
+    "data viz",
+    "visualization",
+    "chart",
+    "map",
+    "trending",
+    "graph.\n\nUsed in data viz scenarios."
+  ]
+}

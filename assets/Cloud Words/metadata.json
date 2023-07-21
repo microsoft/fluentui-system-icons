@@ -1,0 +1,21 @@
+{
+  "name": "Cloud Words",
+  "size": [
+    48,
+    24,
+    20,
+    16,
+    32,
+    28
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, onedrive, outlook, teams",
+  "description": "Used to represent word cloud.",
+  "metaphor": [
+    "edit",
+    "word cloud"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "Tablet Speaker",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent touch tablet devices.",
+  "metaphor": [
+    "device",
+    "screen",
+    "physical",
+    "analog",
+    "watch",
+    "view",
+    "video",
+    "computer",
+    "pc"
+  ]
+}

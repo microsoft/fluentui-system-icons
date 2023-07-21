@@ -1,0 +1,16 @@
+{
+  "name": "Slide Link",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, powerpoint",
+  "description": "Used to represent a link to share for slide deck.",
+  "metaphor": [
+    "rectangle"
+  ]
+}

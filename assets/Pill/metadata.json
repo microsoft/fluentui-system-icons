@@ -1,0 +1,22 @@
+{
+  "name": "Pill",
+  "size": [
+    20,
+    24,
+    16,
+    28
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent medicine and health events.",
+  "metaphor": [
+    "medicine",
+    "medical",
+    "hospital",
+    "health",
+    "doctor"
+  ]
+}

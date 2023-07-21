@@ -1,0 +1,22 @@
+{
+  "name": "Shopping Bag Pause",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in retail shopping scenarios.",
+  "metaphor": [
+    "collection",
+    "purchase",
+    "retail",
+    "cart",
+    "online",
+    "currency",
+    "product"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Animal Cat",
+  "size": [
+    20,
+    16,
+    24,
+    28
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for content about pets.",
+  "metaphor": [
+    "pet",
+    "creature"
+  ]
+}

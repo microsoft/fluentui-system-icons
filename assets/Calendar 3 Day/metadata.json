@@ -1,0 +1,20 @@
+{
+  "name": "Calendar 3 Day",
+  "size": [
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook, teams",
+  "description": "Used to change view to three day view in calendar.",
+  "metaphor": [
+    "time",
+    "date",
+    "planning"
+  ]
+}

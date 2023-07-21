@@ -1,0 +1,20 @@
+{
+  "name": "Info Shield",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent generic information in content.",
+  "metaphor": [
+    "information",
+    "details",
+    "content",
+    "safety",
+    "protect",
+    "security"
+  ]
+}

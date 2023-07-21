@@ -1,0 +1,21 @@
+{
+  "name": "Desktop Sync",
+  "size": [
+    16,
+    20,
+    24
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent stationary work stations, large screen devices, office, and actions in general computer scenarios.",
+  "metaphor": [
+    "monitor",
+    "office",
+    "tower",
+    "pc",
+    "large screen"
+  ]
+}

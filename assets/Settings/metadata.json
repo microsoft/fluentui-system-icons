@@ -1,0 +1,22 @@
+{
+  "name": "Settings",
+  "size": [
+    28,
+    24,
+    20,
+    16,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in all settings scenarios.",
+  "metaphor": [
+    "gear",
+    "options",
+    "cog"
+  ]
+}

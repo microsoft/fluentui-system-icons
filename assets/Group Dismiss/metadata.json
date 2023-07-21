@@ -1,0 +1,19 @@
+{
+  "name": "Group Dismiss",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in grouping list item scenarios.",
+  "metaphor": [
+    "edit",
+    "create",
+    "collect",
+    "view"
+  ]
+}

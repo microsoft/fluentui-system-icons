@@ -1,0 +1,21 @@
+{
+  "name": "Ribbon Add",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a reward or a certificate (physical or digital).",
+  "metaphor": [
+    "medal",
+    "earn",
+    "accolade",
+    "award",
+    "benefit",
+    "bonus"
+  ]
+}

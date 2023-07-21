@@ -1,0 +1,21 @@
+{
+  "name": "Crown",
+  "size": [
+    20,
+    16,
+    24
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "",
+  "metaphor": [
+    "win",
+    "king",
+    "queen",
+    "ruler",
+    "top"
+  ]
+}

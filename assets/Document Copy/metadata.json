@@ -1,0 +1,25 @@
+{
+  "name": "Document Copy",
+  "size": [
+    48,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent copying file types.",
+  "metaphor": [
+    "paper",
+    "work",
+    "file",
+    "analog",
+    "share",
+    "paste",
+    "forward",
+    "vertical"
+  ]
+}

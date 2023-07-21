@@ -1,0 +1,26 @@
+{
+  "name": "Rectangle Landscape",
+  "size": [
+    20,
+    24,
+    28,
+    16,
+    32,
+    48,
+    12
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general scenarios around shapes for canvas editing, generic page, landscape content, or screens.",
+  "metaphor": [
+    "slide",
+    "screen",
+    "landscape",
+    "page",
+    "document",
+    "shape"
+  ]
+}

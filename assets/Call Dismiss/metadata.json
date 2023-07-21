@@ -1,0 +1,18 @@
+{
+  "name": "Call Dismiss",
+  "size": [
+    20,
+    24,
+    16
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used in call scenarios.",
+  "metaphor": [
+    "handset",
+    "audio"
+  ]
+}

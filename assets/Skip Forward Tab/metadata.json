@@ -1,0 +1,21 @@
+{
+  "name": "Skip Forward Tab",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in playback controls. Collection includes Fastforward, Rewind, Previous, Next, Stop, Pause.",
+  "metaphor": [
+    "arrow",
+    "skip",
+    "control",
+    "rewind",
+    "fast forward",
+    "playback"
+  ]
+}

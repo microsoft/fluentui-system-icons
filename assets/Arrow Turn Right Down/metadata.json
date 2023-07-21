@@ -1,0 +1,20 @@
+{
+  "name": "Arrow Turn Right Down",
+  "size": [
+    48,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for directions or gesture directions.",
+  "metaphor": [
+    "point",
+    "direction",
+    "vertical",
+    "horizontal",
+    "corner"
+  ]
+}

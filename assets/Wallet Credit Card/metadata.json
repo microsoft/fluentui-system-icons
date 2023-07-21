@@ -1,0 +1,24 @@
+{
+  "name": "Wallet Credit Card",
+  "size": [
+    16,
+    20,
+    32,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a physical collection of payment options, money balance, or other purchase  scenarios.",
+  "metaphor": [
+    "physical",
+    "analog",
+    "money",
+    "cash",
+    "purchase",
+    "balance",
+    "payment"
+  ]
+}

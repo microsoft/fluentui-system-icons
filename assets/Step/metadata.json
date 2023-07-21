@@ -1,0 +1,17 @@
+{
+  "name": "Step",
+  "size": [
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, visual studio code",
+  "description": "Used to represent steps.",
+  "metaphor": [
+    "step",
+    "stair",
+    "stairs"
+  ]
+}

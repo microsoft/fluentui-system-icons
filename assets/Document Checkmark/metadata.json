@@ -1,0 +1,21 @@
+{
+  "name": "Document Checkmark",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent approved, downloaded, or synced file types and actions.",
+  "metaphor": [
+    "paper",
+    "work",
+    "file",
+    "analog",
+    "vertical"
+  ]
+}

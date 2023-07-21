@@ -1,0 +1,23 @@
+{
+  "name": "Headphones Sound Wave",
+  "size": [
+    20,
+    24,
+    28,
+    48,
+    32
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent headphone device audio.",
+  "metaphor": [
+    "audio",
+    "sound",
+    "volume",
+    "device",
+    "analog"
+  ]
+}

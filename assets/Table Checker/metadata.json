@@ -1,0 +1,19 @@
+{
+  "name": "Table Checker",
+  "size": [
+    20
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, excel",
+  "description": "Used to represent a data table.",
+  "metaphor": [
+    "cell",
+    "row",
+    "column",
+    "information",
+    "chart"
+  ]
+}

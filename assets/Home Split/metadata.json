@@ -1,0 +1,25 @@
+{
+  "name": "Home Split",
+  "size": [
+    20,
+    24,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a duplex or shared living space in UI.",
+  "metaphor": [
+    "house",
+    "safety",
+    "location",
+    "space",
+    "wfh",
+    "duplex",
+    "shared",
+    "apartment"
+  ]
+}

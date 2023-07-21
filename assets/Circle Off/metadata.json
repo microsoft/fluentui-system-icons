@@ -1,0 +1,17 @@
+{
+  "name": "Circle Off",
+  "size": [
+    16,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for general circle needs.",
+  "metaphor": [
+    "round",
+    "slash"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Copy",
+  "size": [
+    24,
+    20,
+    16,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": null,
+  "metaphor": [
+    "share",
+    "paste",
+    "clipboard.\n\nUsed for all copy + paste scenarios."
+  ]
+}

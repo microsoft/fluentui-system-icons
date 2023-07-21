@@ -1,0 +1,38 @@
+{
+  "name": "Text Color",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general type creation and editing scenarios. Contains locale variants.Collection includes Text Color Accent, which can be colored in Regular variants.",
+  "metaphor": [
+    "type",
+    "text",
+    "typography",
+    "edit",
+    "create",
+    "color",
+    "splash",
+    "letter"
+  ],
+  "language": [
+    {
+      "character": "A",
+      "locale": [
+        "en"
+      ]
+    },
+    {
+      "character": "Ga",
+      "locale": [
+        "ko"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Puzzle Piece Shield",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent apps and actions building together to a common goal.",
+  "metaphor": [
+    "app",
+    "connect",
+    "together",
+    "goal",
+    "security",
+    "safety",
+    "protection"
+  ]
+}

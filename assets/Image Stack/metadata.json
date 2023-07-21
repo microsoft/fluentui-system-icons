@@ -1,0 +1,19 @@
+{
+  "name": "Image Stack",
+  "size": [
+    16,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in image review scenarios.",
+  "metaphor": [
+    "compare",
+    "stack",
+    "review",
+    "multiple"
+  ]
+}

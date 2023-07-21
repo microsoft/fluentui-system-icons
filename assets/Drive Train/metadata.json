@@ -1,0 +1,17 @@
+{
+  "name": "Drive Train",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for a more technical view of a car underside.",
+  "metaphor": [
+    "vehicle",
+    "wheel"
+  ]
+}

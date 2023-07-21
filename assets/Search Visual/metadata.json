@@ -1,0 +1,22 @@
+{
+  "name": "Search Visual",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general visual search scenarios.",
+  "metaphor": [
+    "magnifying glass",
+    "zoom",
+    "inspect",
+    "image",
+    "camera",
+    "lens"
+  ]
+}

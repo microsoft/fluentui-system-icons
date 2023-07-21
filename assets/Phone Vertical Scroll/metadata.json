@@ -1,0 +1,22 @@
+{
+  "name": "Phone Vertical Scroll",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent scrolling scenarios on phone.",
+  "metaphor": [
+    "device",
+    "mobile",
+    "small screen",
+    "cellular telephone",
+    "apple",
+    "android",
+    "ui"
+  ]
+}

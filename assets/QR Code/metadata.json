@@ -1,0 +1,21 @@
+{
+  "name": "QR Code",
+  "size": [
+    28,
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in QR code scanning scenarios.",
+  "metaphor": [
+    "scan",
+    "link",
+    "share",
+    "quick response",
+    "barcode"
+  ]
+}

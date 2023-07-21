@@ -1,0 +1,21 @@
+{
+  "name": "Handshake",
+  "size": [
+    24,
+    20,
+    16,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent an agreement.",
+  "metaphor": [
+    "emoji",
+    "deal",
+    "agreement",
+    "body"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Vault",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a safe to protect valuables.",
+  "metaphor": [
+    "physical",
+    "safe",
+    "safety",
+    "protection",
+    "storage"
+  ]
+}

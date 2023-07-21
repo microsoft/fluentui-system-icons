@@ -1,0 +1,22 @@
+{
+  "name": "Desktop Mac",
+  "size": [
+    16,
+    32,
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a specific subset of computers.",
+  "metaphor": [
+    "monitor",
+    "office",
+    "tower",
+    "pc",
+    "large screen"
+  ]
+}

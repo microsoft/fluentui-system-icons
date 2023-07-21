@@ -1,0 +1,20 @@
+{
+  "name": "Fast Forward",
+  "size": [
+    24,
+    20,
+    28,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in video scenarios.",
+  "metaphor": [
+    "video",
+    "speed",
+    "arrow"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Time And Weather",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in scenarios where time and weather are rolled up.",
+  "metaphor": [
+    "clock",
+    "sun",
+    "weather",
+    "picker"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Highlight Accent",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to highlight content in edit scenarios.",
+  "metaphor": [
+    "create",
+    "edit",
+    "draw",
+    "focus",
+    "save"
+  ]
+}

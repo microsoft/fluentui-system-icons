@@ -1,0 +1,20 @@
+{
+  "name": "Data Bar Horizontal Descending",
+  "size": [
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, visual studio code",
+  "description": "Used to represent bar graph.",
+  "metaphor": [
+    "data",
+    "bar",
+    "horizontal",
+    "descending",
+    "kpi",
+    "graph"
+  ]
+}

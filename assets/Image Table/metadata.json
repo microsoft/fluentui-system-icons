@@ -1,0 +1,26 @@
+{
+  "name": "Image Table",
+  "size": [
+    48,
+    32,
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, excel",
+  "description": "Used to represent placing an image into a cell or table structure.",
+  "metaphor": [
+    "image",
+    "picture",
+    "pic",
+    "photo",
+    "table",
+    "cell",
+    "place in"
+  ]
+}

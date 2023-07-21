@@ -1,0 +1,20 @@
+{
+  "name": "Guitar",
+  "size": [
+    24,
+    16,
+    20,
+    28
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent musical instruments or band event.",
+  "metaphor": [
+    "music",
+    "create",
+    "instrument"
+  ]
+}

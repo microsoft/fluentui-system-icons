@@ -1,0 +1,18 @@
+{
+  "name": "Screen Person",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent presentation scenarios.",
+  "metaphor": [
+    "device",
+    "presentation",
+    "person",
+    "share"
+  ]
+}

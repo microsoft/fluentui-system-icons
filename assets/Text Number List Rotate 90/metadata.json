@@ -1,0 +1,23 @@
+{
+  "name": "Text Number List Rotate 90",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general type creation and editing scenarios. Contains directional and rotational variants. Collection includes Task List & Bullet List.",
+  "metaphor": [
+    "type",
+    "text",
+    "typography",
+    "edit",
+    "create",
+    "number"
+  ],
+  "directionType": "unique",
+  "singleton": "LTR"
+}

@@ -1,0 +1,20 @@
+{
+  "name": "People Team Toolbox",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent work teams.",
+  "metaphor": [
+    "group",
+    "team",
+    "organization",
+    "contact",
+    "guest"
+  ]
+}

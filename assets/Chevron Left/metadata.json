@@ -1,0 +1,24 @@
+{
+  "name": "Chevron Left",
+  "size": [
+    48,
+    28,
+    24,
+    20,
+    16,
+    12
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in dropdown & expanding contracting scenarios. Contains directional variants.",
+  "metaphor": [
+    "arrow",
+    "dropdown",
+    "direction",
+    "expand",
+    "contract"
+  ]
+}
