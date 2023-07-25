@@ -15,7 +15,7 @@ Fluent UI System Icons are a collection of familiar, friendly and modern icons f
 ## Installation
 
 ### Requirements
-This library requires react-native-svg at version 12.5.0 or higher.
+This library requires react-native-svg at version 1.1.208 or higher.
 
 ### Android
 
@@ -31,7 +31,7 @@ repositories {
 Include the following dependency in your project's `build.gradle`:
 
 ```groovy
-implementation 'com.microsoft.design:fluent-system-icons:1.1.207@aar'
+implementation 'com.microsoft.design:fluent-system-icons:1.1.208@aar'
 ```
 
 For library docs, see [android/README.md](android/README.md).
@@ -43,13 +43,13 @@ For library docs, see [android/README.md](android/README.md).
 ```ruby
 use_frameworks!
 
-pod "FluentIcons", "1.1.207"
+pod "FluentIcons", "1.1.208"
 ```
 
 #### Carthage
 
 ```bash
-git "git@github.com:microsoft/fluentui-system-icons.git" "1.1.207"
+git "git@github.com:microsoft/fluentui-system-icons.git" "1.1.208"
 ```
 
 For library docs, see [ios/README.md](ios/README.md).
@@ -61,7 +61,7 @@ In the `pubspec.yaml` of your flutter project, add the following dependency:
 ```yaml
 dependencies:
   ...
-  fluentui_system_icons: ^1.1.207
+  fluentui_system_icons: ^1.1.208
 ```
 
 For library docs, see [flutter/README.md](flutter/README.md).

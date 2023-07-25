@@ -1,14 +1,8 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_arrow_export_ltr_20_filled.svg",
-      "idiom": "universal",
-      "language-direction": "left-to-right"
-    },
-    {
-      "filename": "ic_fluent_arrow_export_rtl_20_filled.svg",
-      "idiom": "universal",
-      "language-direction": "right-to-left"
+      "filename": "ic_fluent_arrow_export_20_filled.svg",
+      "idiom": "universal"
     }
   ],
   "info": {

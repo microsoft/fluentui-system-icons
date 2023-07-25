@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?e7f513a6c5be3460c4bbbcec23b8fc57") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?e7f513a6c5be3460c4bbbcec23b8fc57") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?e7f513a6c5be3460c4bbbcec23b8fc57") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?1e1d67b21d31d401feeb2f79655fe31d") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?1e1d67b21d31d401feeb2f79655fe31d") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?1e1d67b21d31d401feeb2f79655fe31d") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -21189,4 +21189,103 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_text_bullet_list_square_shield_48_filled:before {
     content: "\f0291";
+}
+.icon-ic_fluent_arrow_export_16_filled:before {
+    content: "\f0292";
+}
+.icon-ic_fluent_arrow_export_20_filled:before {
+    content: "\f0293";
+}
+.icon-ic_fluent_arrow_export_24_filled:before {
+    content: "\f0294";
+}
+.icon-ic_fluent_calendar_12_filled:before {
+    content: "\f0295";
+}
+.icon-ic_fluent_calendar_16_filled:before {
+    content: "\f0296";
+}
+.icon-ic_fluent_calendar_20_filled:before {
+    content: "\f0297";
+}
+.icon-ic_fluent_calendar_24_filled:before {
+    content: "\f0298";
+}
+.icon-ic_fluent_calendar_28_filled:before {
+    content: "\f0299";
+}
+.icon-ic_fluent_calendar_32_filled:before {
+    content: "\f029a";
+}
+.icon-ic_fluent_calendar_48_filled:before {
+    content: "\f029b";
+}
+.icon-ic_fluent_calendar_date_20_filled:before {
+    content: "\f029c";
+}
+.icon-ic_fluent_calendar_date_24_filled:before {
+    content: "\f029d";
+}
+.icon-ic_fluent_calendar_date_28_filled:before {
+    content: "\f029e";
+}
+.icon-ic_fluent_clipboard_bullet_list_16_filled:before {
+    content: "\f029f";
+}
+.icon-ic_fluent_clipboard_bullet_list_20_filled:before {
+    content: "\f02a0";
+}
+.icon-ic_fluent_ios_arrow_24_filled:before {
+    content: "\f02a1";
+}
+.icon-ic_fluent_text_bullet_list_16_filled:before {
+    content: "\f02a2";
+}
+.icon-ic_fluent_text_bullet_list_20_filled:before {
+    content: "\f02a3";
+}
+.icon-ic_fluent_text_bullet_list_24_filled:before {
+    content: "\f02a4";
+}
+.icon-ic_fluent_text_bullet_list_270_24_filled:before {
+    content: "\f02a5";
+}
+.icon-ic_fluent_text_bullet_list_90_20_filled:before {
+    content: "\f02a6";
+}
+.icon-ic_fluent_text_bullet_list_90_24_filled:before {
+    content: "\f02a7";
+}
+.icon-ic_fluent_text_column_wide_20_filled:before {
+    content: "\f02a8";
+}
+.icon-ic_fluent_text_column_wide_24_filled:before {
+    content: "\f02a9";
+}
+.icon-ic_fluent_text_indent_decrease_16_filled:before {
+    content: "\f02aa";
+}
+.icon-ic_fluent_text_indent_decrease_20_filled:before {
+    content: "\f02ab";
+}
+.icon-ic_fluent_text_indent_decrease_24_filled:before {
+    content: "\f02ac";
+}
+.icon-ic_fluent_text_indent_increase_16_filled:before {
+    content: "\f02ad";
+}
+.icon-ic_fluent_text_indent_increase_20_filled:before {
+    content: "\f02ae";
+}
+.icon-ic_fluent_text_indent_increase_24_filled:before {
+    content: "\f02af";
+}
+.icon-ic_fluent_vehicle_car_profile_16_filled:before {
+    content: "\f02b0";
+}
+.icon-ic_fluent_vehicle_car_profile_20_filled:before {
+    content: "\f02b1";
+}
+.icon-ic_fluent_vehicle_car_profile_24_filled:before {
+    content: "\f02b2";
 }

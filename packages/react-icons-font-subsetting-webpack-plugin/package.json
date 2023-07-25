@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-icons-font-subsetting-webpack-plugin",
-  "version": "2.0.207",
+  "version": "2.0.208",
   "description": "Webpack plugin to subset the icon fonts used by @fluentui/react-icons based on which icons are used.",
   "main": "lib/index.js",
   "scripts": {
