@@ -1,0 +1,21 @@
+{
+  "name": "Book Open Microphone",
+  "size": [
+    28,
+    24,
+    32,
+    48,
+    20
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in read aloud scenarios.",
+  "metaphor": [
+    "read",
+    "knowledge",
+    "record"
+  ]
+}

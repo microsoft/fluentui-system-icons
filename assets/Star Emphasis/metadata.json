@@ -1,0 +1,23 @@
+{
+  "name": "Star Emphasis",
+  "size": [
+    24,
+    20,
+    32,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general rating scenarios.",
+  "metaphor": [
+    "favorite",
+    "rating",
+    "vote",
+    "motion",
+    "transition",
+    "alert"
+  ]
+}

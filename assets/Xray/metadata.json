@@ -1,0 +1,22 @@
+{
+  "name": "Xray",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, xbox",
+  "description": "Used to represent x-rays and general medical equipment.",
+  "metaphor": [
+    "doctor",
+    "hospital",
+    "medical",
+    "medicine",
+    "x-radiation",
+    "scan",
+    "chart"
+  ]
+}

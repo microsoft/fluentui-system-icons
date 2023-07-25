@@ -1,0 +1,22 @@
+{
+  "name": "Person Circle",
+  "size": [
+    20,
+    12,
+    24,
+    28,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in generic placeholder avatars in UI.",
+  "metaphor": [
+    "human",
+    "patient",
+    "contact",
+    "guest"
+  ]
+}

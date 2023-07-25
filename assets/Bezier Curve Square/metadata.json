@@ -1,0 +1,18 @@
+{
+  "name": "Bezier Curve Square",
+  "size": [
+    12,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to jump into curve editor.",
+  "metaphor": [
+    "ease",
+    "square",
+    "data"
+  ]
+}

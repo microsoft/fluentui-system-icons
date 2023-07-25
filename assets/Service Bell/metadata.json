@@ -1,0 +1,22 @@
+{
+  "name": "Service Bell",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent services, food and hotel events.",
+  "metaphor": [
+    "device",
+    "physical",
+    "bell",
+    "ring",
+    "alert",
+    "ding"
+  ]
+}

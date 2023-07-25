@@ -1,0 +1,22 @@
+{
+  "name": "Text T Tag",
+  "size": [
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, visual studio code",
+  "description": "",
+  "metaphor": [
+    "template",
+    "public",
+    "letter",
+    "brackets",
+    "intellisense",
+    "text",
+    "tag",
+    "t"
+  ]
+}

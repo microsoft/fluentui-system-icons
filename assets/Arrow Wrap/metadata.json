@@ -1,0 +1,16 @@
+{
+  "name": "Arrow Wrap",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for text/shape wrapping scenarios.",
+  "metaphor": [
+    "arrow",
+    "direction"
+  ]
+}

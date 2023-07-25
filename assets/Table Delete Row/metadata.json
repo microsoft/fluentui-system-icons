@@ -1,0 +1,22 @@
+{
+  "name": "Table Delete Row",
+  "size": [
+    24,
+    20,
+    28,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, excel",
+  "description": "Used deleting column scenarios. Contains column & row variants.",
+  "metaphor": [
+    "cell",
+    "row",
+    "column",
+    "information",
+    "chart"
+  ]
+}

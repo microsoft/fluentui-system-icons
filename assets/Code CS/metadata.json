@@ -1,0 +1,21 @@
+{
+  "name": "Code CS",
+  "size": [
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, visual studio code",
+  "description": "Used to represent C# language.",
+  "metaphor": [
+    "project node",
+    "language",
+    "cs",
+    "c#",
+    "c sharp",
+    "sharp",
+    "coding"
+  ]
+}

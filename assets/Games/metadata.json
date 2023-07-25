@@ -1,0 +1,22 @@
+{
+  "name": "Games",
+  "size": [
+    24,
+    16,
+    20,
+    32,
+    48,
+    28
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in generic video game moments.",
+  "metaphor": [
+    "videogame",
+    "video game",
+    "controller"
+  ]
+}

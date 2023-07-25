@@ -1,0 +1,22 @@
+{
+  "name": "Closed Caption Off",
+  "size": [
+    20,
+    24,
+    28,
+    48,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for video options.",
+  "metaphor": [
+    "text",
+    "accessibility",
+    "video",
+    "slash"
+  ]
+}

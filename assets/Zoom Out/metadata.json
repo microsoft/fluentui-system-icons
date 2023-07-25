@@ -1,0 +1,20 @@
+{
+  "name": "Zoom Out",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent zooming in and out in UI.",
+  "metaphor": [
+    "zoom in",
+    "zoom out",
+    "magnifying glass",
+    "search"
+  ]
+}

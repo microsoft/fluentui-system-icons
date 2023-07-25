@@ -1,0 +1,22 @@
+{
+  "name": "Keyboard 123",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent number keyboard scenarios.",
+  "metaphor": [
+    "keyboard",
+    "type",
+    "key",
+    "device",
+    "analog",
+    "numpad",
+    "number"
+  ]
+}

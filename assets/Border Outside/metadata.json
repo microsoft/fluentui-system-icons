@@ -1,0 +1,17 @@
+{
+  "name": "Border Outside",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in styling content scenarios. Contains option variants.",
+  "metaphor": [
+    "edit",
+    "style"
+  ]
+}

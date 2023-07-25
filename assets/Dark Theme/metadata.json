@@ -1,0 +1,19 @@
+{
+  "name": "Dark Theme",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": null,
+  "metaphor": [
+    "dark mode",
+    "light",
+    "dark",
+    "ui.\n\nUsed to represent dark mode UI."
+  ]
+}

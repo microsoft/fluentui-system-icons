@@ -1,0 +1,28 @@
+{
+  "name": "Location Arrow",
+  "size": [
+    24,
+    12,
+    20,
+    16,
+    28,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in map and travel scenarios.â ï¸ Do not use as mouse cursor. Use Cursor for those scenarios.",
+  "metaphor": [
+    "pin",
+    "marker",
+    "map",
+    "location",
+    "travel",
+    "arrow",
+    "compass",
+    "directions"
+  ]
+}

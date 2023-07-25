@@ -1,0 +1,20 @@
+{
+  "name": "Leaf Three",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in scenarios representing travel (parks, etc), eco-friendly pledges, and also as an abstract example of zoom in photo modes.",
+  "metaphor": [
+    "eco-friendly",
+    "nature",
+    "tree",
+    "zoom"
+  ]
+}

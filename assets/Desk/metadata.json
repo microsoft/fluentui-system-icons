@@ -1,0 +1,23 @@
+{
+  "name": "Desk",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a desk workspace.",
+  "metaphor": [
+    "appliance",
+    "home",
+    "house",
+    "office",
+    "work",
+    "utility",
+    "physical",
+    "workspace"
+  ]
+}

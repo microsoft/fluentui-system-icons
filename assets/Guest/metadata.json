@@ -1,0 +1,21 @@
+{
+  "name": "Guest",
+  "size": [
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent employee badge & information & guest account in products.",
+  "metaphor": [
+    "person",
+    "badge",
+    "visitor",
+    "employee"
+  ]
+}

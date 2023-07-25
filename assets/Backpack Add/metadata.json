@@ -1,0 +1,20 @@
+{
+  "name": "Backpack Add",
+  "size": [
+    48,
+    28,
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Action: additive",
+  "metaphor": [
+    "school",
+    "travel",
+    "add"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Person Settings",
+  "size": [
+    16,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in a wide range of setting scenarios.",
+  "metaphor": [
+    "human",
+    "patient",
+    "contact",
+    "guest",
+    "gear"
+  ]
+}

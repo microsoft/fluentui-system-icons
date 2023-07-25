@@ -1,0 +1,25 @@
+{
+  "name": "Document Mention",
+  "size": [
+    16,
+    20,
+    24,
+    28,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used to represent files that include callouts.",
+  "metaphor": [
+    "paper",
+    "work",
+    "file",
+    "analog",
+    "vertical",
+    "portrait",
+    "mention"
+  ]
+}

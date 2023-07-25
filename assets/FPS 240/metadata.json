@@ -1,0 +1,17 @@
+{
+  "name": "FPS 240",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in scenarios where frames per second can be edited, or represented.",
+  "metaphor": [
+    "camera",
+    "frames per second"
+  ]
+}

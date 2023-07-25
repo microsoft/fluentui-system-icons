@@ -1,0 +1,20 @@
+{
+  "name": "Gantt Chart",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a Gnatt chart, which helps teams to plan work around deadlines and properly allocate resources",
+  "metaphor": [
+    "plan",
+    "timing",
+    "chart",
+    "data"
+  ]
+}

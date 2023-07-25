@@ -1,0 +1,21 @@
+{
+  "name": "Folder",
+  "size": [
+    48,
+    16,
+    32,
+    28,
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent collections of files.",
+  "metaphor": [
+    "analog",
+    "collection"
+  ]
+}

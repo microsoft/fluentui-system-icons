@@ -1,0 +1,21 @@
+{
+  "name": "Arrow Trending Checkmark",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to indicate growth.",
+  "metaphor": [
+    "arrow",
+    "direction",
+    "growth",
+    "ascending",
+    "checkmark"
+  ],
+  "directionType": "mirror"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Shield Person",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent security, safety & protection.",
+  "metaphor": [
+    "security",
+    "protection",
+    "safety"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Building Bank Link",
+  "size": [
+    16,
+    20,
+    24,
+    28,
+    48
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for location scenarios.",
+  "metaphor": [
+    "structure",
+    "construction",
+    "architecture",
+    "columns"
+  ]
+}

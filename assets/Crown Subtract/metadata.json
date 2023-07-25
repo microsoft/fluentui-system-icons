@@ -1,0 +1,19 @@
+{
+  "name": "Crown Subtract",
+  "size": [
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "",
+  "metaphor": [
+    "win",
+    "king",
+    "queen",
+    "ruler",
+    "top"
+  ]
+}

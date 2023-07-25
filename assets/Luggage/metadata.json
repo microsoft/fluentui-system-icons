@@ -1,0 +1,22 @@
+{
+  "name": "Luggage",
+  "size": [
+    24,
+    20,
+    16,
+    32,
+    48,
+    28
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used in generic travel & hotel scenarios.",
+  "metaphor": [
+    "suitcase",
+    "overnight bag",
+    "travel"
+  ]
+}

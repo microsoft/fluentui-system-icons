@@ -1,0 +1,22 @@
+{
+  "name": "Radio Button Off",
+  "size": [
+    16
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, visual studio code",
+  "description": "Used in selected state scenarios in UI.",
+  "metaphor": [
+    "button",
+    "ui",
+    "select",
+    "toggle",
+    "radio",
+    "button",
+    "disabled",
+    "slash"
+  ]
+}

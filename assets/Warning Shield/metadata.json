@@ -1,0 +1,18 @@
+{
+  "name": "Warning Shield",
+  "size": [
+    20
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used as a general warning for tons of scenarios.",
+  "metaphor": [
+    "alert",
+    "exclamation",
+    "triangle",
+    "issue"
+  ]
+}

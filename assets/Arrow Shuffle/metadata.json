@@ -1,0 +1,24 @@
+{
+  "name": "Arrow Shuffle",
+  "size": [
+    16,
+    20,
+    24,
+    28,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in playback controls. Collection includes Fastforward, Rewind, Previous, Next, Stop, Pause, Video Play Pause, Arrow Shuffle, Arrow Repeat All, Arrow Repeat 1.",
+  "metaphor": [
+    "control",
+    "shuffle",
+    "playback",
+    "start",
+    "begin"
+  ]
+}

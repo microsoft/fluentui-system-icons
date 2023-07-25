@@ -1,0 +1,21 @@
+{
+  "name": "Fire",
+  "size": [
+    16,
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent fire and heat scenarios.",
+  "metaphor": [
+    "flame",
+    "calories",
+    "heat",
+    "hot",
+    "burn"
+  ]
+}

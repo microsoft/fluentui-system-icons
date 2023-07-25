@@ -1,0 +1,20 @@
+{
+  "name": "Broom",
+  "size": [
+    24,
+    20,
+    16,
+    28
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used to represent sweep action.",
+  "metaphor": [
+    "sweep",
+    "clean",
+    "brush"
+  ]
+}

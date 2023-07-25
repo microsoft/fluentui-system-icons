@@ -1,0 +1,21 @@
+{
+  "name": "Cube",
+  "size": [
+    24,
+    20,
+    16,
+    12,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in 3D experience scenarios.",
+  "metaphor": [
+    "3D",
+    "depth",
+    "z-axis"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "Flag Clock",
+  "size": [
+    48,
+    28,
+    24,
+    20,
+    16,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used in mail to mark as important.",
+  "metaphor": [
+    "urgent",
+    "important",
+    "look",
+    "time",
+    "schedule",
+    "clock"
+  ]
+}

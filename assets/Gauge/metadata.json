@@ -1,0 +1,21 @@
+{
+  "name": "Gauge",
+  "size": [
+    20,
+    24,
+    32
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent moments that need measurement.",
+  "metaphor": [
+    "top speed",
+    "measure",
+    "limit",
+    "scale",
+    "analog"
+  ]
+}

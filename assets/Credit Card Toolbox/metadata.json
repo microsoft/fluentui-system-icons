@@ -1,0 +1,18 @@
+{
+  "name": "Credit Card Toolbox",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": null,
+  "metaphor": [
+    "payment",
+    "transaction",
+    "purchase.\n\nUsed in scenarios involving payments."
+  ]
+}

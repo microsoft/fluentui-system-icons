@@ -1,0 +1,19 @@
+{
+  "name": "Time Picker",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent time picker in mobile scenarios.",
+  "metaphor": [
+    "number",
+    "time",
+    "date",
+    "selector"
+  ]
+}

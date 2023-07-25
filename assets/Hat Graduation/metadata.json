@@ -1,0 +1,22 @@
+{
+  "name": "Hat Graduation",
+  "size": [
+    24,
+    20,
+    16,
+    12,
+    28
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent graduating school.",
+  "metaphor": [
+    "celebration",
+    "event",
+    "school",
+    "knowledge"
+  ]
+}

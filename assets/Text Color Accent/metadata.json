@@ -1,0 +1,22 @@
+{
+  "name": "Text Color Accent",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for color selection in Text Color.",
+  "metaphor": [
+    "type",
+    "text",
+    "typography",
+    "edit",
+    "create",
+    "color",
+    "splash"
+  ]
+}

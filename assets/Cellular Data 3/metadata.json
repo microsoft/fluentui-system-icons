@@ -1,0 +1,17 @@
+{
+  "name": "Cellular Data 3",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for device connection status. Contains level variants.",
+  "metaphor": [
+    "data",
+    "connection"
+  ]
+}

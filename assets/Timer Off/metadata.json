@@ -1,0 +1,20 @@
+{
+  "name": "Timer Off",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general time tracking scenarios.",
+  "metaphor": [
+    "clock",
+    "time",
+    "alarm",
+    "alert",
+    "stopwatch"
+  ]
+}

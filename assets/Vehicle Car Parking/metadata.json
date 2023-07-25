@@ -1,0 +1,25 @@
+{
+  "name": "Vehicle Car Parking",
+  "size": [
+    20,
+    24,
+    48,
+    32,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a vehicle parking lot.",
+  "metaphor": [
+    "automobile",
+    "parking",
+    "park",
+    "stop",
+    "car",
+    "vehicle",
+    "location"
+  ]
+}

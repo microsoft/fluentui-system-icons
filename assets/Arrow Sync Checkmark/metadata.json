@@ -1,0 +1,20 @@
+{
+  "name": "Arrow Sync Checkmark",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for synchronizing & loading scenarios.",
+  "metaphor": [
+    "arrow",
+    "direction",
+    "synchronize",
+    "checkmark"
+  ],
+  "directionType": "mirror"
+}

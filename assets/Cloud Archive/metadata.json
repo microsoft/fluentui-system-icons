@@ -1,0 +1,25 @@
+{
+  "name": "Cloud Archive",
+  "size": [
+    16,
+    20,
+    24,
+    28,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, onedrive, outlook, teams",
+  "description": "Used in all stored data scenarios.",
+  "metaphor": [
+    "storage",
+    "upload",
+    "download",
+    "save",
+    "sync",
+    "box"
+  ]
+}

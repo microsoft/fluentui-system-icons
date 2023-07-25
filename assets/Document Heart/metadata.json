@@ -1,0 +1,22 @@
+{
+  "name": "Document Heart",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent favorited files and actions.",
+  "metaphor": [
+    "paper",
+    "work",
+    "file",
+    "analog",
+    "love",
+    "favorite",
+    "vertical"
+  ]
+}

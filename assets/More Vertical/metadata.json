@@ -1,0 +1,22 @@
+{
+  "name": "More Vertical",
+  "size": [
+    48,
+    28,
+    24,
+    20,
+    16,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "â ï¸ Used only for Android overflow menus.",
+  "metaphor": [
+    "overflow",
+    "menu",
+    "navigation"
+  ]
+}

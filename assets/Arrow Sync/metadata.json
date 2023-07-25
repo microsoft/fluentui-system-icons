@@ -1,0 +1,21 @@
+{
+  "name": "Arrow Sync",
+  "size": [
+    24,
+    20,
+    12,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for synchronizing & loading scenarios.",
+  "metaphor": [
+    "arrow",
+    "direction",
+    "synchronize"
+  ],
+  "directionType": "mirror"
+}

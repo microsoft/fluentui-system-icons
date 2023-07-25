@@ -1,0 +1,20 @@
+{
+  "name": "Album",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used as a collection of photos and memories.",
+  "metaphor": [
+    "photo",
+    "book",
+    "pictures",
+    "image"
+  ],
+  "directionType": "mirror"
+}

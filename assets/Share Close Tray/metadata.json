@@ -1,0 +1,19 @@
+{
+  "name": "Share Close Tray",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used to close the sharing tray. Collection includes Share Screen Start & Share Screen Stop.",
+  "metaphor": [
+    "screen",
+    "share",
+    "arrow",
+    "close"
+  ]
+}

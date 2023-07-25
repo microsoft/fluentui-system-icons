@@ -1,0 +1,19 @@
+{
+  "name": "Camera Add",
+  "size": [
+    48,
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used in camera scenarios.",
+  "metaphor": [
+    "image",
+    "photography",
+    "picture"
+  ]
+}

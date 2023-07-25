@@ -1,0 +1,22 @@
+{
+  "name": "Text Underline Double",
+  "size": [
+    20,
+    24,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in scenarios for spell and grammar checking.",
+  "metaphor": [
+    "spell check",
+    "error",
+    "abc",
+    "type",
+    "edit",
+    "grammar check"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Shifts Question Mark",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used in frontline scheduling scenarios.",
+  "metaphor": [
+    "work",
+    "frontline",
+    "time",
+    "clock",
+    "schedule"
+  ]
+}

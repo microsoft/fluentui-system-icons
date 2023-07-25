@@ -1,0 +1,21 @@
+{
+  "name": "Arrow Outline Up Right",
+  "size": [
+    32,
+    48,
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, whiteboard",
+  "description": "Used for shapes on canvas.",
+  "metaphor": [
+    "point",
+    "direction",
+    "diagonal",
+    "shape"
+  ]
+}

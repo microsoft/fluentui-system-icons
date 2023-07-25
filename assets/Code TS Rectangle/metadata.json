@@ -1,0 +1,20 @@
+{
+  "name": "Code TS Rectangle",
+  "size": [
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, visual studio code",
+  "description": "Used to represent TypeScript project node.",
+  "metaphor": [
+    "project node",
+    "language",
+    "VB",
+    "typescript",
+    "type",
+    "script"
+  ]
+}

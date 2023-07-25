@@ -1,0 +1,26 @@
+{
+  "name": "Send Beaker",
+  "size": [
+    24,
+    16,
+    28,
+    20,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent test message & sending scenarios.",
+  "metaphor": [
+    "paper plane",
+    "mail",
+    "message",
+    "test",
+    "science",
+    "modifier"
+  ],
+  "directionType": "mirror"
+}

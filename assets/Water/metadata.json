@@ -1,0 +1,21 @@
+{
+  "name": "Water",
+  "size": [
+    20,
+    24,
+    32,
+    48,
+    16
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent water.",
+  "metaphor": [
+    "ocean",
+    "waterfront",
+    "swim"
+  ]
+}

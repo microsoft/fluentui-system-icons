@@ -1,0 +1,19 @@
+{
+  "name": "Dual Screen Vibrate",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, android",
+  "description": "Used in foldable screen scenarios.",
+  "metaphor": [
+    "duo",
+    "open",
+    "double screen",
+    "foldable"
+  ]
+}

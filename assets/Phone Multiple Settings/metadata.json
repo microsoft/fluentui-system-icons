@@ -1,0 +1,22 @@
+{
+  "name": "Phone Multiple Settings",
+  "size": [
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, intune",
+  "description": "Used to represent bulk device setting actions.",
+  "metaphor": [
+    "device",
+    "devices",
+    "multiple",
+    "phone",
+    "phones",
+    "profile",
+    "settings",
+    "gear"
+  ]
+}

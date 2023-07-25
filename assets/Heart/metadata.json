@@ -1,0 +1,24 @@
+{
+  "name": "Heart",
+  "size": [
+    24,
+    20,
+    16,
+    28,
+    12,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent really liking an idea in chat, following in comments, or content to save for later.",
+  "metaphor": [
+    "love",
+    "like",
+    "follow",
+    "save"
+  ]
+}

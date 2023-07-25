@@ -1,0 +1,19 @@
+{
+  "name": "Globe Desktop",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in scenarios representing the internet & global representation scenarios.",
+  "metaphor": [
+    "web",
+    "world",
+    "earth",
+    "global"
+  ]
+}

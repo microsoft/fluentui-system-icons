@@ -1,0 +1,21 @@
+{
+  "name": "Document Text Extract",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent pulling data from files.",
+  "metaphor": [
+    "paper",
+    "work",
+    "file",
+    "analog",
+    "horizontal",
+    "extraction"
+  ]
+}

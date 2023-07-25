@@ -1,0 +1,20 @@
+{
+  "name": "Conference Room",
+  "size": [
+    48,
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used for meeting room icons. Old style, there's also Door to use that fits in the set better.",
+  "metaphor": [
+    "door",
+    "meeting"
+  ]
+}

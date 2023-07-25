@@ -1,0 +1,26 @@
+{
+  "name": "Elevator",
+  "size": [
+    24,
+    32,
+    20,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent an elevator.",
+  "metaphor": [
+    "appliance",
+    "home",
+    "house",
+    "apartment",
+    "floor",
+    "going up",
+    "up",
+    "down",
+    "arrow"
+  ]
+}

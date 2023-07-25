@@ -1,0 +1,18 @@
+{
+  "name": "Book Number",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, word, excel, powerpoint",
+  "description": "Used in general book scenarios and in formulas. Contains cover variants.",
+  "metaphor": [
+    "Read",
+    "formulas"
+  ]
+}

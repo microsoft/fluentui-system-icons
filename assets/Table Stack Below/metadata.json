@@ -1,0 +1,22 @@
+{
+  "name": "Table Stack Below",
+  "size": [
+    24,
+    20,
+    28,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, excel",
+  "description": "Used in adding to table scenarios. Contains directional variants.",
+  "metaphor": [
+    "cell",
+    "row",
+    "column",
+    "information",
+    "chart"
+  ]
+}

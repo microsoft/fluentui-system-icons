@@ -1,0 +1,28 @@
+{
+  "name": "Tablet",
+  "size": [
+    24,
+    20,
+    32,
+    48,
+    12,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent touch tablet devices.",
+  "metaphor": [
+    "device",
+    "screen",
+    "physical",
+    "analog",
+    "watch",
+    "view",
+    "video",
+    "computer",
+    "pc"
+  ]
+}

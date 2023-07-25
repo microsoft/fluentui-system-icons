@@ -1,0 +1,19 @@
+{
+  "name": "Select All On",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for toggle selection states. Contains state variants.",
+  "metaphor": [
+    "selection",
+    "check",
+    "checkmark",
+    "check multiple"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Book Dismiss",
+  "size": [
+    16,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in book scenarios.",
+  "metaphor": [
+    "book",
+    "read",
+    "details",
+    "x",
+    "close",
+    "cancel"
+  ]
+}

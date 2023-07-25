@@ -1,0 +1,26 @@
+{
+  "name": "TV",
+  "size": [
+    48,
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a television.",
+  "metaphor": [
+    "device",
+    "screen",
+    "physical",
+    "analog",
+    "watch",
+    "view",
+    "video",
+    "television"
+  ]
+}

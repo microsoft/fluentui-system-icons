@@ -1,0 +1,22 @@
+{
+  "name": "People Sync",
+  "size": [
+    16,
+    20,
+    28
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in a wide range of scenarios - representing a general group, contacts, contact lists, sharing, and managing access.",
+  "metaphor": [
+    "group",
+    "team",
+    "organization",
+    "contact",
+    "guest",
+    "arrow"
+  ]
+}

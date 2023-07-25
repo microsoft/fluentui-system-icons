@@ -1,0 +1,18 @@
+{
+  "name": "Chat Settings",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used in real time chat scenarios (versus comment - different icon).",
+  "metaphor": [
+    "discussion",
+    "message",
+    "post"
+  ]
+}

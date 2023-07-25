@@ -1,0 +1,22 @@
+{
+  "name": "Glasses Off",
+  "size": [
+    48,
+    28,
+    24,
+    20,
+    16,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in eye doctor & view mode scenarios.",
+  "metaphor": [
+    "view",
+    "vision",
+    "medical"
+  ]
+}

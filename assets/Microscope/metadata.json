@@ -1,0 +1,19 @@
+{
+  "name": "Microscope",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent general science scenarios.",
+  "metaphor": [
+    "science",
+    "culture",
+    "scientist",
+    "slide"
+  ]
+}

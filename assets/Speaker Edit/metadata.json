@@ -1,0 +1,20 @@
+{
+  "name": "Speaker Edit",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in volume & various audio setting scenarios.",
+  "metaphor": [
+    "audio",
+    "sound",
+    "volume",
+    "settings"
+  ]
+}

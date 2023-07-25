@@ -1,0 +1,20 @@
+{
+  "name": "Delete Arrow Back",
+  "size": [
+    16,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to undo the deletion of content.",
+  "metaphor": [
+    "trash",
+    "can",
+    "remove",
+    "edit",
+    "byee"
+  ]
+}

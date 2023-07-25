@@ -1,0 +1,18 @@
+{
+  "name": "Umbrella",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent physical umbrella, great protector from the rain. We don't use them in Seattle.",
+  "metaphor": [
+    "bumbershoot",
+    "rain",
+    "analog"
+  ]
+}

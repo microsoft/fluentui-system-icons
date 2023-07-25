@@ -1,0 +1,108 @@
+{
+  "name": "Text Bold",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general type creation and editing scenarios. Contains locale variants.",
+  "metaphor": [
+    "type",
+    "text",
+    "typography",
+    "edit",
+    "create"
+  ],
+  "language": [
+    {
+      "character": "Zh",
+      "locale": [
+        "ru",
+        "uk"
+      ]
+    },
+    {
+      "character": "T",
+      "locale": [
+        "lv",
+        "ms"
+      ]
+    },
+    {
+      "character": "Pe",
+      "locale": [
+        "sr-cyrl"
+      ]
+    },
+    {
+      "character": "P",
+      "locale": [
+        "et",
+        "lt",
+        "sr-latn"
+      ]
+    },
+    {
+      "character": "N",
+      "locale": [
+        "ca",
+        "es",
+        "gl",
+        "pt"
+      ]
+    },
+    {
+      "character": "Ka",
+      "locale": [
+        "kk"
+      ]
+    },
+    {
+      "character": "K",
+      "locale": [
+        "sl",
+        "tr"
+      ]
+    },
+    {
+      "character": "Ga",
+      "locale": [
+        "ko"
+      ]
+    },
+    {
+      "character": "G",
+      "locale": [
+        "fr",
+        "it"
+      ]
+    },
+    {
+      "character": "F",
+      "locale": [
+        "no",
+        "da",
+        "de",
+        "hu",
+        "sv"
+      ]
+    },
+    {
+      "character": "Che",
+      "locale": [
+        "bg"
+      ]
+    },
+    {
+      "character": "B",
+      "locale": [
+        "en"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Code PY Rectangle",
+  "size": [
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, visual studio code",
+  "description": "Used to represent Python project node.",
+  "metaphor": [
+    "project node",
+    "language",
+    "py",
+    "python",
+    "script",
+    "coding"
+  ]
+}

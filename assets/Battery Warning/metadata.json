@@ -1,0 +1,17 @@
+{
+  "name": "Battery Warning",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for power indication on devices.",
+  "metaphor": [
+    "charge",
+    "power"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "Presence Offline",
+  "size": [
+    16,
+    12,
+    10,
+    24,
+    20
+  ],
+  "style": [
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "â ï¸ These do not represent the guidelines and quality of the Fluent System iconography. They are included as a way to make it easier for products to pull in without needed a second process.",
+  "metaphor": [
+    "avatar",
+    "status",
+    "detail",
+    "available",
+    "away",
+    "blocked",
+    "busy",
+    "dnd",
+    "off",
+    "unknown"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "name": "Text Proofing Tools",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general type creation and editing scenarios. Contains locale specific variants.",
+  "metaphor": [
+    "type",
+    "text",
+    "typography",
+    "edit",
+    "create",
+    "letter"
+  ],
+  "language": [
+    {
+      "character": "Abc",
+      "locale": [
+        "en"
+      ]
+    },
+    {
+      "character": "Ga Na Da",
+      "locale": [
+        "ko"
+      ]
+    },
+    {
+      "character": "Zi",
+      "locale": [
+        "zh"
+      ]
+    }
+  ]
+}

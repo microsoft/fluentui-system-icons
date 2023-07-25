@@ -1,0 +1,20 @@
+{
+  "name": "Calendar Assistant",
+  "size": [
+    24,
+    16,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook, teams",
+  "description": "Used in calendar assistant.",
+  "metaphor": [
+    "time",
+    "date",
+    "planning",
+    "ai"
+  ]
+}

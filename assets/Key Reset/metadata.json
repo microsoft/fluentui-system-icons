@@ -1,0 +1,20 @@
+{
+  "name": "Key Reset",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent the resetting passwords or access.",
+  "metaphor": [
+    "security",
+    "lock",
+    "password",
+    "access",
+    "keychain"
+  ]
+}

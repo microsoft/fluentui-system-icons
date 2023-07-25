@@ -1,0 +1,20 @@
+{
+  "name": "Likert",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, forms",
+  "description": "Used to represent a Likert item (scale of agreement/disagreement).",
+  "metaphor": [
+    "questionnaire",
+    "form",
+    "agree",
+    "disagree"
+  ]
+}

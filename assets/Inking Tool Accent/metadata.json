@@ -1,0 +1,20 @@
+{
+  "name": "Inking Tool Accent",
+  "size": [
+    24,
+    20,
+    16,
+    32
+  ],
+  "style": [
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent pen details in drawing scenarios.",
+  "metaphor": [
+    "edit",
+    "create",
+    "draw",
+    "pen"
+  ]
+}

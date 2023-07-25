@@ -1,0 +1,20 @@
+{
+  "name": "Building Government",
+  "size": [
+    32,
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for location scenarios.",
+  "metaphor": [
+    "structure",
+    "construction",
+    "architecture",
+    "flag"
+  ]
+}

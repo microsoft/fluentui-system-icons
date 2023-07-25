@@ -1,0 +1,23 @@
+{
+  "name": "Meet Now",
+  "size": [
+    24,
+    20,
+    16,
+    28,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used specifically for video calls.",
+  "metaphor": [
+    "video",
+    "camera",
+    "call",
+    "meeting"
+  ]
+}

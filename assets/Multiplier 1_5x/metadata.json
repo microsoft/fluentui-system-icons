@@ -1,0 +1,21 @@
+{
+  "name": "Multiplier 1_5x",
+  "size": [
+    20,
+    24,
+    28,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, stream",
+  "description": "Used to represent video speed. Contains number variants.",
+  "metaphor": [
+    "speed",
+    "number",
+    "type"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Broad Activity Feed",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent UI.",
+  "metaphor": [
+    "ui",
+    "content",
+    "timeline"
+  ]
+}

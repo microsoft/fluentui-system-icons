@@ -1,0 +1,25 @@
+{
+  "name": "Document Heart Pulse",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent good health of a document or medical file types and actions.",
+  "metaphor": [
+    "paper",
+    "work",
+    "file",
+    "analog",
+    "medical",
+    "favorite",
+    "love",
+    "medical",
+    "hospital",
+    "vertical"
+  ]
+}

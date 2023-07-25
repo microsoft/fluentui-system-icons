@@ -1,0 +1,20 @@
+{
+  "name": "Syringe",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in medical, health & doctor events.",
+  "metaphor": [
+    "health",
+    "hospital",
+    "doctor",
+    "medicine",
+    "vaccination"
+  ]
+}

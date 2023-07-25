@@ -1,0 +1,21 @@
+{
+  "name": "Document Dismiss",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent not downloaded, not synced or removing file types and actions.",
+  "metaphor": [
+    "paper",
+    "work",
+    "file",
+    "analog",
+    "vertical"
+  ]
+}

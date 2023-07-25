@@ -1,0 +1,26 @@
+{
+  "name": "Text Font Size",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general type creation and editing scenarios.",
+  "metaphor": [
+    "type",
+    "text",
+    "typography",
+    "edit",
+    "create",
+    "size",
+    "scale",
+    "header",
+    "body",
+    "letter"
+  ]
+}

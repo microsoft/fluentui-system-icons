@@ -1,0 +1,23 @@
+{
+  "name": "Open Off",
+  "size": [
+    48,
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general opening app actions.",
+  "metaphor": [
+    "new",
+    "window",
+    "expand",
+    "arrow",
+    "start"
+  ]
+}

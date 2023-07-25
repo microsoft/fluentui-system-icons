@@ -1,0 +1,22 @@
+{
+  "name": "Triangle Right",
+  "size": [
+    48,
+    32,
+    16,
+    12,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": null,
+  "metaphor": [
+    "triangle",
+    "shape",
+    "arrow",
+    "Used for general pointing. Contains directional variants."
+  ]
+}

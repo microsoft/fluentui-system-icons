@@ -1,0 +1,19 @@
+{
+  "name": "Transmission",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a gear shift in vehicles.",
+  "metaphor": [
+    "gear shift",
+    "vehicle",
+    "travel",
+    "speed"
+  ]
+}

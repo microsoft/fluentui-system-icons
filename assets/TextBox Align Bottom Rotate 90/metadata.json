@@ -1,0 +1,20 @@
+{
+  "name": "TextBox Align Bottom Rotate 90",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent type within container specifically. Contains alignment and rotational variants.",
+  "metaphor": [
+    "type",
+    "text",
+    "typography",
+    "edit",
+    "create"
+  ]
+}

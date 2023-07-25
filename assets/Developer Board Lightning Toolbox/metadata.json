@@ -1,0 +1,21 @@
+{
+  "name": "Developer Board Lightning Toolbox",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent general computer guts and processing power.",
+  "metaphor": [
+    "circuit",
+    "chip",
+    "device",
+    "memory",
+    "process",
+    "power",
+    "cpu"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Search Info",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general search scenarios.â ï¸ Please note, Fluent updates have pushed for unified direction. So no more right leaning magnifying glasses, mmmkay?",
+  "metaphor": [
+    "magnifying glass",
+    "zoom",
+    "inspect",
+    "review"
+  ]
+}

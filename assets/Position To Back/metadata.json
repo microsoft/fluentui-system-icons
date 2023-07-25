@@ -1,0 +1,22 @@
+{
+  "name": "Position To Back",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in canvas edit scenarios when layering.",
+  "metaphor": [
+    "edit",
+    "create",
+    "layer",
+    "forward",
+    "backward",
+    "send to back",
+    "bring to front"
+  ]
+}

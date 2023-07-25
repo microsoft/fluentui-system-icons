@@ -1,0 +1,19 @@
+{
+  "name": "Clear Formatting",
+  "size": [
+    24,
+    16,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook, teams",
+  "description": "Used to clear text formatting.",
+  "metaphor": [
+    "text",
+    "t",
+    "edit"
+  ]
+}

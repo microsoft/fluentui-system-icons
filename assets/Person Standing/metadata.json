@@ -1,0 +1,17 @@
+{
+  "name": "Person Standing",
+  "size": [
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, visual studio code",
+  "description": "Used to represent a person standing.",
+  "metaphor": [
+    "human",
+    "position",
+    "actor stand"
+  ]
+}

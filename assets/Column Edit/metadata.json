@@ -1,0 +1,20 @@
+{
+  "name": "Column Edit",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, edge",
+  "description": "Used to represent content columns.",
+  "metaphor": [
+    "content",
+    "grid",
+    "alignment",
+    "edit",
+    "pencil"
+  ]
+}

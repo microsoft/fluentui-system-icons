@@ -1,0 +1,22 @@
+{
+  "name": "Link Add",
+  "size": [
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, intune",
+  "description": "Used in generic linking to other content scenarios.",
+  "metaphor": [
+    "edit",
+    "add",
+    "link",
+    "url",
+    "change",
+    "share",
+    "web",
+    "internet"
+  ]
+}

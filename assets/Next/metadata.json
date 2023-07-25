@@ -1,0 +1,24 @@
+{
+  "name": "Next",
+  "size": [
+    24,
+    20,
+    16,
+    28,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to jump to next item. Paired with Previous.",
+  "metaphor": [
+    "video",
+    "skip",
+    "jump",
+    "fast forward",
+    "play"
+  ]
+}

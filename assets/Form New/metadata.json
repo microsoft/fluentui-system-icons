@@ -1,0 +1,20 @@
+{
+  "name": "Form New",
+  "size": [
+    48,
+    28,
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, forms",
+  "description": "Used to represent form elements.",
+  "metaphor": [
+    "survey",
+    "suggestion",
+    "feedback"
+  ]
+}

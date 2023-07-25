@@ -1,0 +1,20 @@
+{
+  "name": "Pentagon",
+  "size": [
+    32,
+    48,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in canvas creation scenarios.",
+  "metaphor": [
+    "shape",
+    "create",
+    "edit",
+    "canvas"
+  ]
+}

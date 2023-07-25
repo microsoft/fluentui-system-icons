@@ -1,0 +1,21 @@
+{
+  "name": "Chess",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used to represent chess.",
+  "metaphor": [
+    "pawn",
+    "rook",
+    "pieces",
+    "players",
+    "board game",
+    "game",
+    "strategy"
+  ]
+}

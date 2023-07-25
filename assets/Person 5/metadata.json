@@ -1,0 +1,23 @@
+{
+  "name": "Person 5",
+  "size": [
+    32,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in a very specific moment to share amount of access keys for software.",
+  "metaphor": [
+    "human",
+    "patient",
+    "contact",
+    "guest",
+    "number",
+    "five",
+    "six",
+    "type"
+  ]
+}

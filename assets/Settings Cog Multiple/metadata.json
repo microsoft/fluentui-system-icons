@@ -1,0 +1,20 @@
+{
+  "name": "Settings Cog Multiple",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in all settings scenarios.",
+  "metaphor": [
+    "gear",
+    "options",
+    "cogs",
+    "two",
+    "multiple"
+  ]
+}

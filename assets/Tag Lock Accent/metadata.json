@@ -1,0 +1,22 @@
+{
+  "name": "Tag Lock Accent",
+  "size": [
+    24,
+    20,
+    16,
+    32
+  ],
+  "style": [
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent information tied to specific data.",
+  "metaphor": [
+    "price",
+    "information",
+    "detail",
+    "metadata",
+    "purchase",
+    "sort"
+  ]
+}

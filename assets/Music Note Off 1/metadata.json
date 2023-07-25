@@ -1,0 +1,19 @@
+{
+  "name": "Music Note Off 1",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent toggling off music. Contains two variants.",
+  "metaphor": [
+    "concert",
+    "musician",
+    "art",
+    "event"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "Vehicle Cab",
+  "size": [
+    20,
+    16,
+    28,
+    24
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent vehicle travel scenarios.",
+  "metaphor": [
+    "travel",
+    "ride",
+    "map",
+    "commute",
+    "distance",
+    "event",
+    "vehicle",
+    "car",
+    "truck",
+    "automobile"
+  ]
+}

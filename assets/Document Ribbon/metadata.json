@@ -1,0 +1,24 @@
+{
+  "name": "Document Ribbon",
+  "size": [
+    48,
+    32,
+    20,
+    16,
+    28,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent general file types and actions.",
+  "metaphor": [
+    "paper",
+    "work",
+    "file",
+    "analog",
+    "horizontal"
+  ]
+}

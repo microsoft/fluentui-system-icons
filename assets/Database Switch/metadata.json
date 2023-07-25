@@ -1,0 +1,17 @@
+{
+  "name": "Database Switch",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, visual studio",
+  "description": "Used in database scenarios.",
+  "metaphor": [
+    "consume data",
+    "arrow",
+    "consume"
+  ]
+}

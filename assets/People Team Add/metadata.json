@@ -1,0 +1,22 @@
+{
+  "name": "People Team Add",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used to represent work teams.",
+  "metaphor": [
+    "group",
+    "team",
+    "organization",
+    "contact",
+    "guest",
+    "plus",
+    "new"
+  ]
+}

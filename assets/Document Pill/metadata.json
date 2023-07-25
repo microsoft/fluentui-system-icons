@@ -1,0 +1,22 @@
+{
+  "name": "Document Pill",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent prescription and other medical file types and actions.",
+  "metaphor": [
+    "paper",
+    "work",
+    "file",
+    "analog",
+    "horizontal",
+    "medical",
+    "hospital"
+  ]
+}

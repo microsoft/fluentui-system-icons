@@ -1,0 +1,23 @@
+{
+  "name": "Oval",
+  "size": [
+    32,
+    28,
+    24,
+    20,
+    16,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in creation spaces as a shape.",
+  "metaphor": [
+    "create",
+    "shape",
+    "edit",
+    "rounded"
+  ]
+}

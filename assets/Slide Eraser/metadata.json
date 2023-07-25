@@ -1,0 +1,23 @@
+{
+  "name": "Slide Eraser",
+  "size": [
+    24,
+    16,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, powerpoint",
+  "description": "Used in slide ui scenarios.",
+  "metaphor": [
+    "slide",
+    "landscape",
+    "document",
+    "presentation",
+    "edit",
+    "delete",
+    "clear"
+  ]
+}

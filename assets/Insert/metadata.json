@@ -1,0 +1,17 @@
+{
+  "name": "Insert",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent inserting content into editing scenarios.",
+  "metaphor": [
+    "edit",
+    "create",
+    "separate"
+  ]
+}

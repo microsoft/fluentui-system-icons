@@ -1,0 +1,20 @@
+{
+  "name": "Book Contacts",
+  "size": [
+    24,
+    20,
+    28,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used as a contact collection.",
+  "metaphor": [
+    "Read",
+    "contacts",
+    "rolodex"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Divider Short",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used in places where horizontal dividers are needed.",
+  "metaphor": [
+    "spacer",
+    "line",
+    "text"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Folder Zip",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent collections of files.",
+  "metaphor": [
+    "analog",
+    "collection",
+    "organization",
+    "work"
+  ]
+}

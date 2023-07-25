@@ -1,0 +1,20 @@
+{
+  "name": "Voicemail Subtract",
+  "size": [
+    16,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used to represent a voice message recording and audio playback scenarios.",
+  "metaphor": [
+    "tape",
+    "playback",
+    "audio",
+    "recording",
+    "message"
+  ]
+}

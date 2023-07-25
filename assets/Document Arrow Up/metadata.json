@@ -1,0 +1,21 @@
+{
+  "name": "Document Arrow Up",
+  "size": [
+    16,
+    20
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent general file types and actions.",
+  "metaphor": [
+    "paper",
+    "work",
+    "file",
+    "analog",
+    "upload",
+    "vertical"
+  ]
+}

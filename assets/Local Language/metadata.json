@@ -1,0 +1,37 @@
+{
+  "name": "Local Language",
+  "size": [
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Contains Japanese (default) & Chinese variant.",
+  "metaphor": [
+    "locale",
+    "text",
+    "type",
+    "translate"
+  ],
+  "language": [
+    {
+      "character": "Default",
+      "locale": [
+        "en",
+        "ko"
+      ]
+    },
+    {
+      "character": "Zi",
+      "locale": [
+        "zh",
+        "ja"
+      ]
+    }
+  ]
+}

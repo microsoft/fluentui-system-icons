@@ -1,0 +1,20 @@
+{
+  "name": "Pipeline",
+  "size": [
+    20,
+    24,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent pipeline process in coding experiences.",
+  "metaphor": [
+    "process",
+    "code",
+    "experience",
+    "runtime"
+  ]
+}

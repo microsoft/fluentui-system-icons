@@ -1,0 +1,23 @@
+{
+  "name": "Eye Lines",
+  "size": [
+    20,
+    28,
+    32,
+    48,
+    24
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent low vision modes and settings.",
+  "metaphor": [
+    "visual deficiency",
+    "impairment",
+    "low vision",
+    "accessibility",
+    "high contrast"
+  ]
+}

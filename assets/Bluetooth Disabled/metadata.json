@@ -1,0 +1,17 @@
+{
+  "name": "Bluetooth Disabled",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for device bluetooth scenarios.",
+  "metaphor": [
+    "device",
+    "connection"
+  ]
+}

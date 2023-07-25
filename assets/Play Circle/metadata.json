@@ -1,0 +1,22 @@
+{
+  "name": "Play Circle",
+  "size": [
+    24,
+    28,
+    16,
+    20,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in playback controls. Collection includes Fastforward, Rewind, Previous, Next, Stop, Pause.",
+  "metaphor": [
+    "control",
+    "playback",
+    "start",
+    "begin"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "name": "Text Direction Horizontal Right",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to choose text direction in editor scenarios. Contains directional, rotation and locale specific variants.",
+  "metaphor": [
+    "type",
+    "text",
+    "typography",
+    "edit",
+    "create",
+    "letter"
+  ],
+  "language": [
+    {
+      "character": "A",
+      "locale": [
+        "en"
+      ]
+    },
+    {
+      "character": "Ga",
+      "locale": [
+        "ko"
+      ]
+    }
+  ]
+}

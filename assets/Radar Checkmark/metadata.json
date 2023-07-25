@@ -1,0 +1,17 @@
+{
+  "name": "Radar Checkmark",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent tracking, alert, and watching scenarios.",
+  "metaphor": [
+    "track",
+    "watch",
+    "ping"
+  ]
+}

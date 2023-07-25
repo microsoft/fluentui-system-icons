@@ -1,0 +1,20 @@
+{
+  "name": "Prohibited Note",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent blocked or unauthorized access for files, accounts, etc.",
+  "metaphor": [
+    "block",
+    "slash",
+    "no access",
+    "unauthorized",
+    "missing",
+    "permission"
+  ]
+}

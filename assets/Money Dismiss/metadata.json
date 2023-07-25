@@ -1,0 +1,19 @@
+{
+  "name": "Money Dismiss",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in retail, purchase and invoicing scenarios.",
+  "metaphor": [
+    "currency",
+    "retail",
+    "cash",
+    "purchase"
+  ]
+}

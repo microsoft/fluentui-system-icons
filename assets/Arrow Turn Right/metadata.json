@@ -1,0 +1,21 @@
+{
+  "name": "Arrow Turn Right",
+  "size": [
+    24,
+    20,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for directions or gesture directions.",
+  "metaphor": [
+    "point",
+    "direction",
+    "vertical",
+    "horizontal",
+    "corner"
+  ]
+}

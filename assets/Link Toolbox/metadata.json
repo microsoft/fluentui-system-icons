@@ -1,0 +1,19 @@
+{
+  "name": "Link Toolbox",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in generic linking to other content scenarios.",
+  "metaphor": [
+    "link",
+    "share",
+    "web",
+    "internet",
+    "settings"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Puzzle Cube",
+  "size": [
+    48,
+    16,
+    28,
+    20,
+    24
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent complex problems that need layered actions to solve.",
+  "metaphor": [
+    "riddle",
+    "enigma",
+    "brain teaser",
+    "logic",
+    "head scratcher"
+  ]
+}

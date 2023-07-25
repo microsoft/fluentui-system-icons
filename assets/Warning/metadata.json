@@ -1,0 +1,23 @@
+{
+  "name": "Warning",
+  "size": [
+    24,
+    20,
+    16,
+    12,
+    28,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used as a general warning for tons of scenarios.",
+  "metaphor": [
+    "alert",
+    "exclamation",
+    "triangle",
+    "issue"
+  ]
+}

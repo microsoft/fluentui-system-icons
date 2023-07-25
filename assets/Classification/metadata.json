@@ -1,0 +1,19 @@
+{
+  "name": "Classification",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used in classification scenarios (normal, private, confidential, etc) in mail.",
+  "metaphor": [
+    "stamp",
+    "classification",
+    "sensitive"
+  ]
+}

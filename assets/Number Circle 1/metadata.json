@@ -1,0 +1,23 @@
+{
+  "name": "Number Circle 1",
+  "size": [
+    16,
+    20,
+    24,
+    28,
+    32,
+    48
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, edge",
+  "description": "Used in generic scenarios that need number usage, points made, etc.",
+  "metaphor": [
+    "number",
+    "text",
+    "type",
+    "count"
+  ]
+}

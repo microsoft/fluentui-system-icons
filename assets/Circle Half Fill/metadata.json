@@ -1,0 +1,21 @@
+{
+  "name": "Circle Half Fill",
+  "size": [
+    24,
+    20,
+    12,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for tracking indicator (halfway there), and photo edit modes.",
+  "metaphor": [
+    "round",
+    "edit",
+    "image",
+    "photo"
+  ]
+}

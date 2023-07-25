@@ -1,0 +1,22 @@
+{
+  "name": "Vehicle Cable Car",
+  "size": [
+    20,
+    24,
+    28
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent cable car running on a cableway.",
+  "metaphor": [
+    "vehicle",
+    "ski lift",
+    "cableway",
+    "mountain",
+    "travel",
+    "vacation"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Drink Bottle",
+  "size": [
+    32,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent plastic usage and drinks in plastic containers.",
+  "metaphor": [
+    "plastic",
+    "recycle",
+    "drink",
+    "liquid",
+    "cheers"
+  ]
+}

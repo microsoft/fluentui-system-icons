@@ -1,0 +1,22 @@
+{
+  "name": "Premium",
+  "size": [
+    28,
+    32,
+    24,
+    20,
+    16,
+    12
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used specifically for premium upsell of M365, and more generally premium experiences and quality.",
+  "metaphor": [
+    "prediction",
+    "future",
+    "third eye"
+  ]
+}

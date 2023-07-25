@@ -1,0 +1,22 @@
+{
+  "name": "Developer Board Search",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent general computer guts and processing power.",
+  "metaphor": [
+    "circuit",
+    "chip",
+    "device",
+    "memory",
+    "process",
+    "power",
+    "cpu"
+  ]
+}

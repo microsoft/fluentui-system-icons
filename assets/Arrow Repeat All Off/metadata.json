@@ -1,0 +1,20 @@
+{
+  "name": "Arrow Repeat All Off",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to turn off repeat actions.",
+  "metaphor": [
+    "arrow",
+    "repeat",
+    "loop"
+  ],
+  "directionType": "mirror"
+}

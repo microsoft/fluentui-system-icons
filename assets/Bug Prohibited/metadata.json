@@ -1,0 +1,18 @@
+{
+  "name": "Bug Prohibited",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent bugs in code or malicious bugs in the system.",
+  "metaphor": [
+    "code",
+    "block",
+    "debug",
+    "end"
+  ]
+}

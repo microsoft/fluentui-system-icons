@@ -1,0 +1,21 @@
+{
+  "name": "Target",
+  "size": [
+    24,
+    20,
+    16,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in targeting & hitting goal scenarios.",
+  "metaphor": [
+    "physical",
+    "goal",
+    "measurement",
+    "aim"
+  ]
+}

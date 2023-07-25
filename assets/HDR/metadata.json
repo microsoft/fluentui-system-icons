@@ -1,0 +1,20 @@
+{
+  "name": "HDR",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent HDR settings in video and game content.",
+  "metaphor": [
+    "video",
+    "video games",
+    "tv",
+    "setting",
+    "high dynamic range"
+  ]
+}

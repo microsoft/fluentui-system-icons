@@ -1,0 +1,23 @@
+{
+  "name": "Arrow Reply All",
+  "size": [
+    48,
+    24,
+    20,
+    16,
+    28
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used to reply back in mail.",
+  "metaphor": [
+    "arrow",
+    "direction",
+    "back",
+    "reply"
+  ],
+  "directionType": "mirror"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Layer Diagonal Person",
+  "size": [
+    20
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, edge",
+  "description": "Used to represent a workspace of tabs within browser.",
+  "metaphor": [
+    "workspace",
+    "collection",
+    "tabs",
+    "desktop",
+    "collaboration"
+  ]
+}

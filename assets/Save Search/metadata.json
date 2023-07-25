@@ -1,0 +1,18 @@
+{
+  "name": "Save Search",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent saving content.â ï¸ Before using review if necessary. Floppy disc is old concept. Try a more dynamic save experience with motion and a checkmark or other UI.",
+  "metaphor": [
+    "floppy disk",
+    "device",
+    "old",
+    "magnifying glass"
+  ]
+}

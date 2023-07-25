@@ -1,0 +1,20 @@
+{
+  "name": "Bowl Salad",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent healthy food options.",
+  "metaphor": [
+    "diet",
+    "healthy",
+    "health",
+    "food",
+    "event"
+  ]
+}

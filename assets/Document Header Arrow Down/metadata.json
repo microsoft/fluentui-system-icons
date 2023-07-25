@@ -1,0 +1,25 @@
+{
+  "name": "Document Header Arrow Down",
+  "size": [
+    16,
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent file type content styles and scenarios.",
+  "metaphor": [
+    "paper",
+    "work",
+    "file",
+    "analog",
+    "edit",
+    "image",
+    "content",
+    "download",
+    "vertical"
+  ]
+}

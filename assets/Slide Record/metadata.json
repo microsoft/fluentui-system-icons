@@ -1,0 +1,23 @@
+{
+  "name": "Slide Record",
+  "size": [
+    28,
+    48,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, powerpoint",
+  "description": "Used in slide recording scenarios.",
+  "metaphor": [
+    "slide",
+    "rectangle",
+    "landscape",
+    "record",
+    "video"
+  ]
+}

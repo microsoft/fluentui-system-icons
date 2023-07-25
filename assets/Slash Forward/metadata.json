@@ -1,0 +1,22 @@
+{
+  "name": "Slash Forward",
+  "size": [
+    20,
+    24,
+    16,
+    12
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in contextual insert scenarios.",
+  "metaphor": [
+    "type",
+    "context switch",
+    "insert",
+    "keyboard",
+    "text"
+  ]
+}

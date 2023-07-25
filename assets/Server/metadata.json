@@ -1,0 +1,19 @@
+{
+  "name": "Server",
+  "size": [
+    20,
+    24,
+    16
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent physical & digital server machines.",
+  "metaphor": [
+    "device",
+    "data",
+    "connection"
+  ]
+}

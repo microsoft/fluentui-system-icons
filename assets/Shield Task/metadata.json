@@ -1,0 +1,21 @@
+{
+  "name": "Shield Task",
+  "size": [
+    20,
+    24,
+    28,
+    48,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent security, safety & protection.",
+  "metaphor": [
+    "security",
+    "protection",
+    "safety"
+  ]
+}

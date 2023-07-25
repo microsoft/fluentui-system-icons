@@ -1,0 +1,20 @@
+{
+  "name": "Real Estate",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent real estate properties and events.",
+  "metaphor": [
+    "for sale",
+    "sign",
+    "property",
+    "house",
+    "home"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Phone Multiple",
+  "size": [
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, intune",
+  "description": "Used to represent bulk devices.",
+  "metaphor": [
+    "device",
+    "devices",
+    "multiple",
+    "phone",
+    "phones",
+    "profile"
+  ]
+}

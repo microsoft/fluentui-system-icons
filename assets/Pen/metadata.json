@@ -1,0 +1,23 @@
+{
+  "name": "Pen",
+  "size": [
+    32,
+    24,
+    16,
+    28,
+    48,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used to represent a signature, a device drawing input. Use edit in common editing scenarios.",
+  "metaphor": [
+    "edit",
+    "update",
+    "create",
+    "draw"
+  ]
+}

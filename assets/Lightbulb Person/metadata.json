@@ -1,0 +1,26 @@
+{
+  "name": "Lightbulb Person",
+  "size": [
+    28,
+    24,
+    20,
+    16,
+    32,
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used to represent the Educational Insights app in Teams.â ï¸ Should not be used for other scenarios.",
+  "metaphor": [
+    "school",
+    "travel",
+    "education",
+    "insights",
+    "bright",
+    "illuminating",
+    "shine"
+  ]
+}

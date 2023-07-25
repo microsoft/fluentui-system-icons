@@ -1,0 +1,22 @@
+{
+  "name": "Briefcase",
+  "size": [
+    48,
+    32,
+    28,
+    24,
+    20,
+    12,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent organization or business.",
+  "metaphor": [
+    "organization",
+    "business"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Crop Sparkle",
+  "size": [
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent AI auto cropping actions in UI.",
+  "metaphor": [
+    "edit",
+    "canvas",
+    "ai",
+    "cut",
+    "create",
+    "save"
+  ]
+}

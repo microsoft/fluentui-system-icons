@@ -1,0 +1,22 @@
+{
+  "name": "Table Freeze Column",
+  "size": [
+    24,
+    28,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, excel",
+  "description": "Used in freezing cells in table scenarios. Contains column & row, column, row variants.",
+  "metaphor": [
+    "cell",
+    "row",
+    "column",
+    "information",
+    "chart"
+  ]
+}

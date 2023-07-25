@@ -1,0 +1,19 @@
+{
+  "name": "Pause Settings",
+  "size": [
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in playback controls. Collection includes Fastforward, Rewind, Previous, Next, Stop, Play.",
+  "metaphor": [
+    "control",
+    "playback",
+    "freeze",
+    "gear"
+  ]
+}
