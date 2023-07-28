@@ -690,6 +690,18 @@ class FluentIcons {
   /// fluent icon named "arrow_between_up" in size 20 and regular style.
   static const IconData arrow_between_up_20_regular = IconData(57473, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "arrow_bidirectional_left_right" in size 16 and regular style.
+  static const IconData arrow_bidirectional_left_right_16_regular = IconData(983712, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "arrow_bidirectional_left_right" in size 20 and regular style.
+  static const IconData arrow_bidirectional_left_right_20_regular = IconData(983713, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "arrow_bidirectional_left_right" in size 24 and regular style.
+  static const IconData arrow_bidirectional_left_right_24_regular = IconData(983714, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "arrow_bidirectional_left_right" in size 28 and regular style.
+  static const IconData arrow_bidirectional_left_right_28_regular = IconData(983715, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "arrow_bidirectional_up_down" in size 12 and regular style.
   static const IconData arrow_bidirectional_up_down_12_regular = IconData(57474, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -1617,11 +1629,17 @@ class FluentIcons {
   /// fluent icon named "arrow_step_over" in size 20 and regular style.
   static const IconData arrow_step_over_20_regular = IconData(57615, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "arrow_swap" in size 16 and regular style.
+  static const IconData arrow_swap_16_regular = IconData(983716, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "arrow_swap" in size 20 and regular style.
   static const IconData arrow_swap_20_regular = IconData(61837, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "arrow_swap" in size 24 and regular style.
   static const IconData arrow_swap_24_regular = IconData(61838, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "arrow_swap" in size 28 and regular style.
+  static const IconData arrow_swap_28_regular = IconData(983717, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "arrow_sync" in size 12 and regular style.
   static const IconData arrow_sync_12_regular = IconData(61839, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -3056,6 +3074,27 @@ class FluentIcons {
 
   /// fluent icon named "building_lighthouse" in size 20 and regular style.
   static const IconData building_lighthouse_20_regular = IconData(57890, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "building_mosque" in size 12 and regular style.
+  static const IconData building_mosque_12_regular = IconData(983718, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "building_mosque" in size 16 and regular style.
+  static const IconData building_mosque_16_regular = IconData(983719, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "building_mosque" in size 20 and regular style.
+  static const IconData building_mosque_20_regular = IconData(983720, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "building_mosque" in size 24 and regular style.
+  static const IconData building_mosque_24_regular = IconData(983721, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "building_mosque" in size 28 and regular style.
+  static const IconData building_mosque_28_regular = IconData(983722, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "building_mosque" in size 32 and regular style.
+  static const IconData building_mosque_32_regular = IconData(983723, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "building_mosque" in size 48 and regular style.
+  static const IconData building_mosque_48_regular = IconData(983724, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "building_multiple" in size 20 and regular style.
   static const IconData building_multiple_20_regular = IconData(57891, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -4496,6 +4535,15 @@ class FluentIcons {
 
   /// fluent icon named "checkmark_circle" in size 48 and regular style.
   static const IconData checkmark_circle_48_regular = IconData(62106, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "checkmark_circle_square" in size 16 and regular style.
+  static const IconData checkmark_circle_square_16_regular = IconData(983725, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "checkmark_circle_square" in size 20 and regular style.
+  static const IconData checkmark_circle_square_20_regular = IconData(983726, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "checkmark_circle_square" in size 24 and regular style.
+  static const IconData checkmark_circle_square_24_regular = IconData(983727, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "checkmark_lock" in size 16 and regular style.
   static const IconData checkmark_lock_16_regular = IconData(62107, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -10155,6 +10203,15 @@ class FluentIcons {
   /// fluent icon named "heart_circle_hint" in size 48 and regular style.
   static const IconData heart_circle_hint_48_regular = IconData(61563, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "heart_off" in size 16 and regular style.
+  static const IconData heart_off_16_regular = IconData(983728, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "heart_off" in size 20 and regular style.
+  static const IconData heart_off_20_regular = IconData(983729, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "heart_off" in size 24 and regular style.
+  static const IconData heart_off_24_regular = IconData(983730, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "heart_pulse" in size 20 and regular style.
   static const IconData heart_pulse_20_regular = IconData(59137, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -10172,6 +10229,18 @@ class FluentIcons {
 
   /// fluent icon named "heart_pulse_warning" in size 20 and regular style.
   static const IconData heart_pulse_warning_20_regular = IconData(983508, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "hexagon" in size 16 and regular style.
+  static const IconData hexagon_16_regular = IconData(983731, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "hexagon" in size 20 and regular style.
+  static const IconData hexagon_20_regular = IconData(983732, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "hexagon_three" in size 16 and regular style.
+  static const IconData hexagon_three_16_regular = IconData(983733, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "hexagon_three" in size 20 and regular style.
+  static const IconData hexagon_three_20_regular = IconData(983734, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "highlight" in size 16 and regular style.
   static const IconData highlight_16_regular = IconData(62587, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -11007,8 +11076,41 @@ class FluentIcons {
   /// fluent icon named "line_dashes" in size 48 and regular style.
   static const IconData line_dashes_48_regular = IconData(59244, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "line_horizontal_1" in size 16 and regular style.
+  static const IconData line_horizontal_1_16_regular = IconData(983735, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "line_horizontal_1" in size 20 and regular style.
   static const IconData line_horizontal_1_20_regular = IconData(62688, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "line_horizontal_1" in size 24 and regular style.
+  static const IconData line_horizontal_1_24_regular = IconData(983736, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "line_horizontal_1" in size 28 and regular style.
+  static const IconData line_horizontal_1_28_regular = IconData(983737, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "line_horizontal_1_dashes" in size 16 and regular style.
+  static const IconData line_horizontal_1_dashes_16_regular = IconData(983738, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "line_horizontal_1_dashes" in size 20 and regular style.
+  static const IconData line_horizontal_1_dashes_20_regular = IconData(983739, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "line_horizontal_1_dashes" in size 24 and regular style.
+  static const IconData line_horizontal_1_dashes_24_regular = IconData(983740, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "line_horizontal_1_dashes" in size 28 and regular style.
+  static const IconData line_horizontal_1_dashes_28_regular = IconData(983741, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "line_horizontal_2_dashes_solid" in size 16 and regular style.
+  static const IconData line_horizontal_2_dashes_solid_16_regular = IconData(983742, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "line_horizontal_2_dashes_solid" in size 20 and regular style.
+  static const IconData line_horizontal_2_dashes_solid_20_regular = IconData(983743, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "line_horizontal_2_dashes_solid" in size 24 and regular style.
+  static const IconData line_horizontal_2_dashes_solid_24_regular = IconData(983744, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "line_horizontal_2_dashes_solid" in size 28 and regular style.
+  static const IconData line_horizontal_2_dashes_solid_28_regular = IconData(983745, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "line_horizontal_3" in size 20 and regular style.
   static const IconData line_horizontal_3_20_regular = IconData(62689, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -12015,6 +12117,15 @@ class FluentIcons {
   /// fluent icon named "mic_pulse_off" in size 48 and regular style.
   static const IconData mic_pulse_off_48_regular = IconData(59409, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "mic_record" in size 20 and regular style.
+  static const IconData mic_record_20_regular = IconData(983746, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "mic_record" in size 24 and regular style.
+  static const IconData mic_record_24_regular = IconData(983747, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "mic_record" in size 28 and regular style.
+  static const IconData mic_record_28_regular = IconData(983748, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "mic_settings" in size 20 and regular style.
   static const IconData mic_settings_20_regular = IconData(59410, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -12704,6 +12815,9 @@ class FluentIcons {
 
   /// fluent icon named "number_symbol_square" in size 24 and regular style.
   static const IconData number_symbol_square_24_regular = IconData(59533, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "open" in size 12 and regular style.
+  static const IconData open_12_regular = IconData(983749, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "open" in size 16 and regular style.
   static const IconData open_16_regular = IconData(62849, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -15182,6 +15296,18 @@ class FluentIcons {
 
   /// fluent icon named "recycle" in size 32 and regular style.
   static const IconData recycle_32_regular = IconData(61203, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "remix_add" in size 16 and regular style.
+  static const IconData remix_add_16_regular = IconData(983750, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "remix_add" in size 20 and regular style.
+  static const IconData remix_add_20_regular = IconData(983751, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "remix_add" in size 24 and regular style.
+  static const IconData remix_add_24_regular = IconData(983752, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "remix_add" in size 32 and regular style.
+  static const IconData remix_add_32_regular = IconData(983753, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "remote" in size 16 and regular style.
   static const IconData remote_16_regular = IconData(59919, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -20454,6 +20580,12 @@ class FluentIcons {
   /// fluent icon named "video_person_sparkle" in size 48 and regular style.
   static const IconData video_person_sparkle_48_regular = IconData(60950, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "video_person_sparkle_off" in size 20 and regular style.
+  static const IconData video_person_sparkle_off_20_regular = IconData(983754, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "video_person_sparkle_off" in size 24 and regular style.
+  static const IconData video_person_sparkle_off_24_regular = IconData(983755, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "video_person_star" in size 20 and regular style.
   static const IconData video_person_star_20_regular = IconData(60951, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -20552,6 +20684,15 @@ class FluentIcons {
 
   /// fluent icon named "voicemail_arrow_subtract" in size 20 and regular style.
   static const IconData voicemail_arrow_subtract_20_regular = IconData(60967, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "voicemail_shield" in size 20 and regular style.
+  static const IconData voicemail_shield_20_regular = IconData(983756, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "voicemail_shield" in size 24 and regular style.
+  static const IconData voicemail_shield_24_regular = IconData(983757, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "voicemail_shield" in size 32 and regular style.
+  static const IconData voicemail_shield_32_regular = IconData(983758, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "voicemail_subtract" in size 16 and regular style.
   static const IconData voicemail_subtract_16_regular = IconData(63484, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -21056,6 +21197,9 @@ class FluentIcons {
 
   /// fluent icon named "window_database" in size 24 and regular style.
   static const IconData window_database_24_regular = IconData(61397, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "window_database" in size 32 and regular style.
+  static const IconData window_database_32_regular = IconData(983759, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "window_dev_edit" in size 16 and regular style.
   static const IconData window_dev_edit_16_regular = IconData(61041, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -21907,6 +22051,18 @@ class FluentIcons {
 
   /// fluent icon named "arrow_between_up" in size 20 and filled style.
   static const IconData arrow_between_up_20_filled = IconData(57473, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "arrow_bidirectional_left_right" in size 16 and filled style.
+  static const IconData arrow_bidirectional_left_right_16_filled = IconData(983731, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "arrow_bidirectional_left_right" in size 20 and filled style.
+  static const IconData arrow_bidirectional_left_right_20_filled = IconData(983732, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "arrow_bidirectional_left_right" in size 24 and filled style.
+  static const IconData arrow_bidirectional_left_right_24_filled = IconData(983733, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "arrow_bidirectional_left_right" in size 28 and filled style.
+  static const IconData arrow_bidirectional_left_right_28_filled = IconData(983734, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "arrow_bidirectional_up_down" in size 12 and filled style.
   static const IconData arrow_bidirectional_up_down_12_filled = IconData(57474, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
@@ -22835,11 +22991,17 @@ class FluentIcons {
   /// fluent icon named "arrow_step_over" in size 20 and filled style.
   static const IconData arrow_step_over_20_filled = IconData(57615, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
+  /// fluent icon named "arrow_swap" in size 16 and filled style.
+  static const IconData arrow_swap_16_filled = IconData(983735, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
   /// fluent icon named "arrow_swap" in size 20 and filled style.
   static const IconData arrow_swap_20_filled = IconData(61837, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "arrow_swap" in size 24 and filled style.
   static const IconData arrow_swap_24_filled = IconData(61838, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "arrow_swap" in size 28 and filled style.
+  static const IconData arrow_swap_28_filled = IconData(983736, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "arrow_sync" in size 12 and filled style.
   static const IconData arrow_sync_12_filled = IconData(61839, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
@@ -24277,6 +24439,27 @@ class FluentIcons {
 
   /// fluent icon named "building_lighthouse" in size 20 and filled style.
   static const IconData building_lighthouse_20_filled = IconData(57910, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "building_mosque" in size 12 and filled style.
+  static const IconData building_mosque_12_filled = IconData(983737, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "building_mosque" in size 16 and filled style.
+  static const IconData building_mosque_16_filled = IconData(983738, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "building_mosque" in size 20 and filled style.
+  static const IconData building_mosque_20_filled = IconData(983739, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "building_mosque" in size 24 and filled style.
+  static const IconData building_mosque_24_filled = IconData(983740, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "building_mosque" in size 28 and filled style.
+  static const IconData building_mosque_28_filled = IconData(983741, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "building_mosque" in size 32 and filled style.
+  static const IconData building_mosque_32_filled = IconData(983742, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "building_mosque" in size 48 and filled style.
+  static const IconData building_mosque_48_filled = IconData(983743, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "building_multiple" in size 20 and filled style.
   static const IconData building_multiple_20_filled = IconData(57911, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
@@ -25717,6 +25900,15 @@ class FluentIcons {
 
   /// fluent icon named "checkmark_circle" in size 48 and filled style.
   static const IconData checkmark_circle_48_filled = IconData(62106, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "checkmark_circle_square" in size 16 and filled style.
+  static const IconData checkmark_circle_square_16_filled = IconData(983744, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "checkmark_circle_square" in size 20 and filled style.
+  static const IconData checkmark_circle_square_20_filled = IconData(983745, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "checkmark_circle_square" in size 24 and filled style.
+  static const IconData checkmark_circle_square_24_filled = IconData(983746, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "checkmark_lock" in size 16 and filled style.
   static const IconData checkmark_lock_16_filled = IconData(62107, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
@@ -31421,6 +31613,15 @@ class FluentIcons {
   /// fluent icon named "heart_circle_hint" in size 48 and filled style.
   static const IconData heart_circle_hint_48_filled = IconData(61563, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
+  /// fluent icon named "heart_off" in size 16 and filled style.
+  static const IconData heart_off_16_filled = IconData(983747, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "heart_off" in size 20 and filled style.
+  static const IconData heart_off_20_filled = IconData(983748, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "heart_off" in size 24 and filled style.
+  static const IconData heart_off_24_filled = IconData(983749, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
   /// fluent icon named "heart_pulse" in size 20 and filled style.
   static const IconData heart_pulse_20_filled = IconData(59150, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
@@ -31438,6 +31639,18 @@ class FluentIcons {
 
   /// fluent icon named "heart_pulse_warning" in size 20 and filled style.
   static const IconData heart_pulse_warning_20_filled = IconData(983508, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "hexagon" in size 16 and filled style.
+  static const IconData hexagon_16_filled = IconData(983750, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "hexagon" in size 20 and filled style.
+  static const IconData hexagon_20_filled = IconData(983751, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "hexagon_three" in size 16 and filled style.
+  static const IconData hexagon_three_16_filled = IconData(983752, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "hexagon_three" in size 20 and filled style.
+  static const IconData hexagon_three_20_filled = IconData(983753, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "highlight" in size 16 and filled style.
   static const IconData highlight_16_filled = IconData(62591, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
@@ -32294,8 +32507,41 @@ class FluentIcons {
   /// fluent icon named "line_dashes" in size 48 and filled style.
   static const IconData line_dashes_48_filled = IconData(59258, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
+  /// fluent icon named "line_horizontal_1" in size 16 and filled style.
+  static const IconData line_horizontal_1_16_filled = IconData(983754, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
   /// fluent icon named "line_horizontal_1" in size 20 and filled style.
   static const IconData line_horizontal_1_20_filled = IconData(62698, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "line_horizontal_1" in size 24 and filled style.
+  static const IconData line_horizontal_1_24_filled = IconData(983755, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "line_horizontal_1" in size 28 and filled style.
+  static const IconData line_horizontal_1_28_filled = IconData(983756, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "line_horizontal_1_dashes" in size 16 and filled style.
+  static const IconData line_horizontal_1_dashes_16_filled = IconData(983757, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "line_horizontal_1_dashes" in size 20 and filled style.
+  static const IconData line_horizontal_1_dashes_20_filled = IconData(983758, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "line_horizontal_1_dashes" in size 24 and filled style.
+  static const IconData line_horizontal_1_dashes_24_filled = IconData(983759, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "line_horizontal_1_dashes" in size 28 and filled style.
+  static const IconData line_horizontal_1_dashes_28_filled = IconData(983760, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "line_horizontal_2_dashes_solid" in size 16 and filled style.
+  static const IconData line_horizontal_2_dashes_solid_16_filled = IconData(983761, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "line_horizontal_2_dashes_solid" in size 20 and filled style.
+  static const IconData line_horizontal_2_dashes_solid_20_filled = IconData(983762, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "line_horizontal_2_dashes_solid" in size 24 and filled style.
+  static const IconData line_horizontal_2_dashes_solid_24_filled = IconData(983763, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "line_horizontal_2_dashes_solid" in size 28 and filled style.
+  static const IconData line_horizontal_2_dashes_solid_28_filled = IconData(983764, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "line_horizontal_3" in size 20 and filled style.
   static const IconData line_horizontal_3_20_filled = IconData(62699, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
@@ -33302,6 +33548,15 @@ class FluentIcons {
   /// fluent icon named "mic_pulse_off" in size 48 and filled style.
   static const IconData mic_pulse_off_48_filled = IconData(59423, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
+  /// fluent icon named "mic_record" in size 20 and filled style.
+  static const IconData mic_record_20_filled = IconData(983765, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "mic_record" in size 24 and filled style.
+  static const IconData mic_record_24_filled = IconData(983766, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "mic_record" in size 28 and filled style.
+  static const IconData mic_record_28_filled = IconData(983767, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
   /// fluent icon named "mic_settings" in size 20 and filled style.
   static const IconData mic_settings_20_filled = IconData(59424, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
@@ -33991,6 +34246,9 @@ class FluentIcons {
 
   /// fluent icon named "number_symbol_square" in size 24 and filled style.
   static const IconData number_symbol_square_24_filled = IconData(59547, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "open" in size 12 and filled style.
+  static const IconData open_12_filled = IconData(983768, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "open" in size 16 and filled style.
   static const IconData open_16_filled = IconData(62859, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
@@ -36436,6 +36694,18 @@ class FluentIcons {
 
   /// fluent icon named "recycle" in size 32 and filled style.
   static const IconData recycle_32_filled = IconData(61203, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "remix_add" in size 16 and filled style.
+  static const IconData remix_add_16_filled = IconData(983769, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "remix_add" in size 20 and filled style.
+  static const IconData remix_add_20_filled = IconData(983770, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "remix_add" in size 24 and filled style.
+  static const IconData remix_add_24_filled = IconData(983771, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "remix_add" in size 32 and filled style.
+  static const IconData remix_add_32_filled = IconData(983772, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "remote" in size 16 and filled style.
   static const IconData remote_16_filled = IconData(59927, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
@@ -41729,6 +41999,12 @@ class FluentIcons {
   /// fluent icon named "video_person_sparkle" in size 48 and filled style.
   static const IconData video_person_sparkle_48_filled = IconData(60950, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
+  /// fluent icon named "video_person_sparkle_off" in size 20 and filled style.
+  static const IconData video_person_sparkle_off_20_filled = IconData(983773, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "video_person_sparkle_off" in size 24 and filled style.
+  static const IconData video_person_sparkle_off_24_filled = IconData(983774, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
   /// fluent icon named "video_person_star" in size 20 and filled style.
   static const IconData video_person_star_20_filled = IconData(60951, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
@@ -41827,6 +42103,15 @@ class FluentIcons {
 
   /// fluent icon named "voicemail_arrow_subtract" in size 20 and filled style.
   static const IconData voicemail_arrow_subtract_20_filled = IconData(60967, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "voicemail_shield" in size 20 and filled style.
+  static const IconData voicemail_shield_20_filled = IconData(983775, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "voicemail_shield" in size 24 and filled style.
+  static const IconData voicemail_shield_24_filled = IconData(983776, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "voicemail_shield" in size 32 and filled style.
+  static const IconData voicemail_shield_32_filled = IconData(983777, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "voicemail_subtract" in size 16 and filled style.
   static const IconData voicemail_subtract_16_filled = IconData(63509, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
@@ -42331,6 +42616,9 @@ class FluentIcons {
 
   /// fluent icon named "window_database" in size 24 and filled style.
   static const IconData window_database_24_filled = IconData(61397, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "window_database" in size 32 and filled style.
+  static const IconData window_database_32_filled = IconData(983778, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "window_dev_edit" in size 16 and filled style.
   static const IconData window_dev_edit_16_filled = IconData(61041, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
