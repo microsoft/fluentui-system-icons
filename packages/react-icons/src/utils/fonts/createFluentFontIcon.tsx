@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { FluentIconsProps } from '../FluentIconsProps.types';
+import { CreateFluentIconOptions } from '../createFluentIcon';
 import { makeStyles, makeStaticStyles, mergeClasses } from "@griffel/react";
 import { useIconState } from '../useIconState';
 
@@ -69,12 +70,13 @@ const useRootStyles = makeStyles({
     },
 });
 
-export function createFluentFontIcon(displayName: string, codepoint: string, font: FontFile, fontSize?: number): React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>>> & { codepoint: string} {
+
+export function createFluentFontIcon(displayName: string, codepoint: string, font: FontFile, fontSize?: number, options?: CreateFluentIconOptions): React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>>> & { codepoint: string} {
     const Component: React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>>> & { codepoint: string} = (props) => {
         useStaticStyles();
         const styles = useRootStyles();
         const className = mergeClasses(styles.root, styles[font], props.className);
-        const state = useIconState<React.HTMLAttributes<HTMLElement>>({...props, className});
+        const state = useIconState<React.HTMLAttributes<HTMLElement>>({...props, className}, { flipInRtl: options?.flipInRtl });
 
 
         // We want to keep the same API surface as the SVG icons, so translate `primaryFill` to `color`
