@@ -1,14 +1,8 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_calendar_ltr_32_filled.svg",
-      "idiom": "universal",
-      "language-direction": "left-to-right"
-    },
-    {
-      "filename": "ic_fluent_calendar_rtl_32_filled.svg",
-      "idiom": "universal",
-      "language-direction": "right-to-left"
+      "filename": "ic_fluent_calendar_32_filled.svg",
+      "idiom": "universal"
     }
   ],
   "info": {

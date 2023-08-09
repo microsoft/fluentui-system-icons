@@ -1,14 +1,8 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_ios_arrow_ltr_24_regular.svg",
-      "idiom": "universal",
-      "language-direction": "left-to-right"
-    },
-    {
-      "filename": "ic_fluent_ios_arrow_rtl_24_regular.svg",
-      "idiom": "universal",
-      "language-direction": "right-to-left"
+      "filename": "ic_fluent_ios_arrow_24_regular.svg",
+      "idiom": "universal"
     }
   ],
   "info": {
