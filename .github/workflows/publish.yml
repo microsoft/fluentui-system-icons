@@ -107,7 +107,7 @@ jobs:
         rm flutter/pubspec.yaml.bk
 
     # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in package.json
+    - name: Replace version number in svg-icons/package.json
       run: |
         sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/svg-icons/package.json
         rm packages/svg-icons/package.json.bk
@@ -157,6 +157,12 @@ jobs:
       run: |
         npm run build
       working-directory: packages/react-native-icons 
+
+    - uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+        access: public
+        package: packages/svg-icons/package.json
 
     - uses: JS-DevTools/npm-publish@v1
       with:
