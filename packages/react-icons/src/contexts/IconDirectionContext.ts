@@ -10,4 +10,4 @@ const IconDirectionContextDefaultValue: IconDirectionContextValue = {};
 
 export const IconDirectionContextProvider = IconDirectionContext.Provider;
 
-export const useIconContext = () => React.useContext(IconDirectionContext) ? IconDirectionContextDefaultValue : undefined;
+export const useIconContext = () => React.useContext(IconDirectionContext) ? React.useContext(IconDirectionContext) : IconDirectionContextDefaultValue
