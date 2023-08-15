@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?f346d2a150690b566e6b5ef47aa28468") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?f346d2a150690b566e6b5ef47aa28468") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?f346d2a150690b566e6b5ef47aa28468") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?c189e0f78e946b20c5b81542116b92d0") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?c189e0f78e946b20c5b81542116b92d0") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?c189e0f78e946b20c5b81542116b92d0") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -21432,4 +21432,130 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_window_database_32_filled:before {
     content: "\f02e2";
+}
+.icon-ic_fluent_cast_multiple_20_filled:before {
+    content: "\f02e3";
+}
+.icon-ic_fluent_cast_multiple_24_filled:before {
+    content: "\f02e4";
+}
+.icon-ic_fluent_cast_multiple_28_filled:before {
+    content: "\f02e5";
+}
+.icon-ic_fluent_circle_hint_half_vertical_16_filled:before {
+    content: "\f02e6";
+}
+.icon-ic_fluent_circle_hint_half_vertical_20_filled:before {
+    content: "\f02e7";
+}
+.icon-ic_fluent_circle_hint_half_vertical_24_filled:before {
+    content: "\f02e8";
+}
+.icon-ic_fluent_flash_sparkle_20_filled:before {
+    content: "\f02e9";
+}
+.icon-ic_fluent_flash_sparkle_24_filled:before {
+    content: "\f02ea";
+}
+.icon-ic_fluent_hexagon_12_filled:before {
+    content: "\f02eb";
+}
+.icon-ic_fluent_hexagon_24_filled:before {
+    content: "\f02ec";
+}
+.icon-ic_fluent_hexagon_three_12_filled:before {
+    content: "\f02ed";
+}
+.icon-ic_fluent_hexagon_three_24_filled:before {
+    content: "\f02ee";
+}
+.icon-ic_fluent_next_frame_20_filled:before {
+    content: "\f02ef";
+}
+.icon-ic_fluent_next_frame_24_filled:before {
+    content: "\f02f0";
+}
+.icon-ic_fluent_previous_frame_20_filled:before {
+    content: "\f02f1";
+}
+.icon-ic_fluent_previous_frame_24_filled:before {
+    content: "\f02f2";
+}
+.icon-ic_fluent_textbox_align_bottom_center_16_filled:before {
+    content: "\f02f3";
+}
+.icon-ic_fluent_textbox_align_bottom_center_20_filled:before {
+    content: "\f02f4";
+}
+.icon-ic_fluent_textbox_align_bottom_center_24_filled:before {
+    content: "\f02f5";
+}
+.icon-ic_fluent_textbox_align_bottom_left_16_filled:before {
+    content: "\f02f6";
+}
+.icon-ic_fluent_textbox_align_bottom_left_20_filled:before {
+    content: "\f02f7";
+}
+.icon-ic_fluent_textbox_align_bottom_left_24_filled:before {
+    content: "\f02f8";
+}
+.icon-ic_fluent_textbox_align_bottom_right_16_filled:before {
+    content: "\f02f9";
+}
+.icon-ic_fluent_textbox_align_bottom_right_20_filled:before {
+    content: "\f02fa";
+}
+.icon-ic_fluent_textbox_align_bottom_right_24_filled:before {
+    content: "\f02fb";
+}
+.icon-ic_fluent_textbox_align_center_16_filled:before {
+    content: "\f02fc";
+}
+.icon-ic_fluent_textbox_align_middle_left_16_filled:before {
+    content: "\f02fd";
+}
+.icon-ic_fluent_textbox_align_middle_left_20_filled:before {
+    content: "\f02fe";
+}
+.icon-ic_fluent_textbox_align_middle_left_24_filled:before {
+    content: "\f02ff";
+}
+.icon-ic_fluent_textbox_align_middle_right_16_filled:before {
+    content: "\f0300";
+}
+.icon-ic_fluent_textbox_align_middle_right_20_filled:before {
+    content: "\f0301";
+}
+.icon-ic_fluent_textbox_align_middle_right_24_filled:before {
+    content: "\f0302";
+}
+.icon-ic_fluent_textbox_align_top_center_16_filled:before {
+    content: "\f0303";
+}
+.icon-ic_fluent_textbox_align_top_center_20_filled:before {
+    content: "\f0304";
+}
+.icon-ic_fluent_textbox_align_top_center_24_filled:before {
+    content: "\f0305";
+}
+.icon-ic_fluent_textbox_align_top_left_16_filled:before {
+    content: "\f0306";
+}
+.icon-ic_fluent_textbox_align_top_left_20_filled:before {
+    content: "\f0307";
+}
+.icon-ic_fluent_textbox_align_top_left_24_filled:before {
+    content: "\f0308";
+}
+.icon-ic_fluent_textbox_align_top_right_16_filled:before {
+    content: "\f0309";
+}
+.icon-ic_fluent_textbox_align_top_right_20_filled:before {
+    content: "\f030a";
+}
+.icon-ic_fluent_textbox_align_top_right_24_filled:before {
+    content: "\f030b";
+}
+.icon-ic_fluent_triangle_down_24_filled:before {
+    content: "\f030c";
 }
