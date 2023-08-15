@@ -172,12 +172,6 @@ jobs:
 
     - uses: JS-DevTools/npm-publish@v1
       with:
-        token: ${{ secrets.NPM_TOKEN }} 
-        access: public
-        package: packages/react-native-icons/package.json 
-
-    - uses: JS-DevTools/npm-publish@v1
-      with:
         token: ${{ secrets.NPM_TOKEN }}
         access: public
         package: packages/react-icons/package.json 
