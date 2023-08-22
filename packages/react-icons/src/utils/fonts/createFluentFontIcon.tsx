@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { FluentIconsProps } from '../FluentIconsProps.types';
-import { CreateFluentIconOptions } from '../createFluentIcon';
 import { makeStyles, makeStaticStyles, mergeClasses } from "@griffel/react";
 import { useIconState } from '../useIconState';
 
@@ -70,8 +69,11 @@ const useRootStyles = makeStyles({
     },
 });
 
+export type CreateFluentFontIconOptions = {
+    flipInRtl?: boolean;
+}
 
-export function createFluentFontIcon(displayName: string, codepoint: string, font: FontFile, fontSize?: number, options?: CreateFluentIconOptions): React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>>> & { codepoint: string} {
+export function createFluentFontIcon(displayName: string, codepoint: string, font: FontFile, fontSize?: number, options?: CreateFluentFontIconOptions): React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>>> & { codepoint: string} {
     const Component: React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>>> & { codepoint: string} = (props) => {
         useStaticStyles();
         const styles = useRootStyles();

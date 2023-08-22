@@ -9,7 +9,6 @@ export type FluentIcon = {
 
 export type CreateFluentIconOptions = {
     flipInRtl?: boolean;
-    // rtlPaths?: string[];
 }
 
 export const createFluentIcon = (displayName: string, width: string, paths: string[], options?: CreateFluentIconOptions): FluentIcon => {

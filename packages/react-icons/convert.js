@@ -8,7 +8,7 @@ const _ = require("lodash");
 
 const SRC_PATH = argv.source;
 const DEST_PATH = argv.dest;
-const RTL_PATH = argv.rtl;
+const RTL_FILE = argv.rtl;
 
 if (!SRC_PATH) {
   throw new Error("Icon source folder not specified by --source");
@@ -16,8 +16,9 @@ if (!SRC_PATH) {
 if (!DEST_PATH) {
   throw new Error("Output destination folder not specified by --dest");
 }
-if (!RTL_PATH) {
-  throw new Error("RTL folder not specified by --rtl");
+
+if (!RTL_FILE) {
+  throw new Error("RTL file not specified by --rtl");
 }
 
 if (!fs.existsSync(DEST_PATH)) {
@@ -91,8 +92,7 @@ function processFolder(srcPath, destPath, resizable) {
   var files = fs.readdirSync(srcPath)
   /** @type string[] */
   const iconExports = [];
-  let rtlPath = path.join(RTL_PATH, 'rtl.json')
-  var metadata = JSON.parse(fs.readFileSync(rtlPath));
+  var metadata = JSON.parse(fs.readFileSync(RTL_FILE, 'utf-8'));
   //console.log(metadata);
   files.forEach(function (file, index) {
     var srcFile = path.join(srcPath, file)

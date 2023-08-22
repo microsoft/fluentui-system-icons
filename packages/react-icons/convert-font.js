@@ -20,7 +20,7 @@ const DEST_PATH = argv.dest;
 // @ts-ignore
 const CODEPOINT_DEST_PATH = argv.codepointDest;
 // @ts-ignore
-const RTL_PATH = argv.rtl;
+const RTL_FILE = argv.rtl;
 
 
 if (!SRC_PATH) {
@@ -32,8 +32,8 @@ if (!DEST_PATH) {
 if (!CODEPOINT_DEST_PATH) {
   throw new Error("Output destination folder for codepoint map not specified by --dest");
 }
-if (!RTL_PATH) {
-  throw new Error("RTL folder not specified by --rtl");
+if (!RTL_FILE) {
+  throw new Error("RTL file not specified by --rtl");
 }
 
 processFiles(SRC_PATH, DEST_PATH)
@@ -144,17 +144,15 @@ async function generateCodepointMapForWebpackPlugin(destPath, iconEntries, resiz
 function generateReactIconEntries(iconEntries, resizable) {
   /** @type {string[]} */
   const iconExports = [];
-  let rtlPath = path.join(RTL_PATH, 'rtl.json')
-  const metadata = JSON.parse(fsS.readFileSync(rtlPath));
+  const metadata = JSON.parse(fsS.readFileSync(RTL_FILE, 'utf-8'));
   for (const [iconName, codepoint] of Object.entries(iconEntries)) {
     let destFilename = getReactIconNameFromGlyphName(iconName, resizable);
-    var flipInRtl = metadata[destFilename] === 'mirror'  //checks rtl.json to see if icon is autoflippable
-    const options = flipInRtl ? ` { flipInRtl: true }` : undefined;
+    var flipInRtl = metadata[destFilename] === 'mirror';  
     var jsCode = `export const ${destFilename} = /*#__PURE__*/createFluentFontIcon(${JSON.stringify(destFilename)
       }, ${JSON.stringify(String.fromCodePoint(codepoint))
       }, ${resizable ? 2 /* Resizable */ : /filled$/i.test(iconName) ? 0 /* Filled */ : 1 /* Regular */
-      }, ${resizable ? undefined : ` ${/(?<=_)\d+(?=_filled|_regular)/.exec(iconName)[0]}`
-      }, ${options});`;
+      }, ${resizable ? undefined : ` ${/(?<=_)\d+(?=_filled|_regular)/.exec(iconName)?.[0]}`
+      }${flipInRtl ? `, { flipInRtl: true }` : ''});`;
 
     iconExports.push(jsCode);
   }
