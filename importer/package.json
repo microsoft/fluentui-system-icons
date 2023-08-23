@@ -1,5 +1,6 @@
 {
-  "name": "fluent-icons-library",
+  "name": "@fluentui/system-icons-processing",
+  "private": true,
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
