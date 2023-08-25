@@ -5,14 +5,24 @@
       "idiom": "universal"
     },
     {
-      "filename": "se_ic_fluent_text_sort_ascending_16_regular.svg",
+      "filename": "kk_ic_fluent_text_sort_ascending_16_regular.svg",
       "idiom": "universal",
-      "locale": "se"
+      "locale": "kk"
     },
     {
-      "filename": "fi_ic_fluent_text_sort_ascending_16_regular.svg",
+      "filename": "ru_ic_fluent_text_sort_ascending_16_regular.svg",
       "idiom": "universal",
-      "locale": "fi"
+      "locale": "ru"
+    },
+    {
+      "filename": "sl_ic_fluent_text_sort_ascending_16_regular.svg",
+      "idiom": "universal",
+      "locale": "sl"
+    },
+    {
+      "filename": "da_ic_fluent_text_sort_ascending_16_regular.svg",
+      "idiom": "universal",
+      "locale": "da"
     },
     {
       "filename": "en_ic_fluent_text_sort_ascending_16_regular.svg",
@@ -25,14 +35,9 @@
       "locale": "ko"
     },
     {
-      "filename": "kk_ic_fluent_text_sort_ascending_16_regular.svg",
+      "filename": "fi_ic_fluent_text_sort_ascending_16_regular.svg",
       "idiom": "universal",
-      "locale": "kk"
-    },
-    {
-      "filename": "sl_ic_fluent_text_sort_ascending_16_regular.svg",
-      "idiom": "universal",
-      "locale": "sl"
+      "locale": "fi"
     },
     {
       "filename": "gr_ic_fluent_text_sort_ascending_16_regular.svg",
@@ -40,24 +45,19 @@
       "locale": "gr"
     },
     {
+      "filename": "se_ic_fluent_text_sort_ascending_16_regular.svg",
+      "idiom": "universal",
+      "locale": "se"
+    },
+    {
       "filename": "sr_ic_fluent_text_sort_ascending_16_regular.svg",
       "idiom": "universal",
       "locale": "sr"
     },
     {
-      "filename": "da_ic_fluent_text_sort_ascending_16_regular.svg",
-      "idiom": "universal",
-      "locale": "da"
-    },
-    {
       "filename": "bg_ic_fluent_text_sort_ascending_16_regular.svg",
       "idiom": "universal",
       "locale": "bg"
-    },
-    {
-      "filename": "ru_ic_fluent_text_sort_ascending_16_regular.svg",
-      "idiom": "universal",
-      "locale": "ru"
     }
   ],
   "info": {
