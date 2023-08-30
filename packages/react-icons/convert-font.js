@@ -3,12 +3,14 @@
 // @ts-check
 
 const fs = require("fs/promises");
+const fsS = require("fs");
 const path = require("path");
 const process = require("process");
 const argv = require("yargs").boolean("selector").default("selector", false).argv;
 const _ = require("lodash");
 const mkdirp = require('mkdirp');
 const { promisify } = require('util');
+const { option } = require("yargs");
 const glob = promisify(require('glob'));
 
 // @ts-ignore
@@ -17,6 +19,9 @@ const SRC_PATH = argv.source;
 const DEST_PATH = argv.dest;
 // @ts-ignore
 const CODEPOINT_DEST_PATH = argv.codepointDest;
+// @ts-ignore
+const RTL_FILE = argv.rtl;
+
 
 if (!SRC_PATH) {
   throw new Error("Icon source folder not specified by --source");
@@ -26,6 +31,9 @@ if (!DEST_PATH) {
 }
 if (!CODEPOINT_DEST_PATH) {
   throw new Error("Output destination folder for codepoint map not specified by --dest");
+}
+if (!RTL_FILE) {
+  throw new Error("RTL file not specified by --rtl");
 }
 
 processFiles(SRC_PATH, DEST_PATH)
@@ -49,7 +57,7 @@ async function processFiles(src, dest) {
 
   // make file for sized icons
   const sizedIconPath = path.join(dest, 'sizedIcons');
-  const sizedIconContents = await processFolder(src, CODEPOINT_DEST_PATH, false)
+  const sizedIconContents = await processFolder(src, CODEPOINT_DEST_PATH, false);
   await cleanFolder(sizedIconPath);
 
   await Promise.all(sizedIconContents.map(async (chunk, i) => {
@@ -136,14 +144,15 @@ async function generateCodepointMapForWebpackPlugin(destPath, iconEntries, resiz
 function generateReactIconEntries(iconEntries, resizable) {
   /** @type {string[]} */
   const iconExports = [];
+  const metadata = JSON.parse(fsS.readFileSync(RTL_FILE, 'utf-8'));
   for (const [iconName, codepoint] of Object.entries(iconEntries)) {
     let destFilename = getReactIconNameFromGlyphName(iconName, resizable);
-
+    var flipInRtl = metadata[destFilename] === 'mirror';  
     var jsCode = `export const ${destFilename} = /*#__PURE__*/createFluentFontIcon(${JSON.stringify(destFilename)
       }, ${JSON.stringify(String.fromCodePoint(codepoint))
       }, ${resizable ? 2 /* Resizable */ : /filled$/i.test(iconName) ? 0 /* Filled */ : 1 /* Regular */
-      }${resizable ? '' : `, ${/(?<=_)\d+(?=_filled|_regular)/.exec(iconName)[0]}`
-      });`;
+      }, ${resizable ? undefined : ` ${/(?<=_)\d+(?=_filled|_regular)/.exec(iconName)?.[0]}`
+      }${flipInRtl ? `, { flipInRtl: true }` : ''});`;
 
     iconExports.push(jsCode);
   }

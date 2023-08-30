@@ -8,13 +8,17 @@ const _ = require("lodash");
 
 const SRC_PATH = argv.source;
 const DEST_PATH = argv.dest;
-const TSX_EXTENSION = '.tsx'
+const RTL_FILE = argv.rtl;
 
 if (!SRC_PATH) {
   throw new Error("Icon source folder not specified by --source");
 }
 if (!DEST_PATH) {
   throw new Error("Output destination folder not specified by --dest");
+}
+
+if (!RTL_FILE) {
+  throw new Error("RTL file not specified by --rtl");
 }
 
 if (!fs.existsSync(DEST_PATH)) {
@@ -88,9 +92,11 @@ function processFolder(srcPath, destPath, resizable) {
   var files = fs.readdirSync(srcPath)
   /** @type string[] */
   const iconExports = [];
+  var metadata = JSON.parse(fs.readFileSync(RTL_FILE, 'utf-8'));
+  //console.log(metadata);
   files.forEach(function (file, index) {
     var srcFile = path.join(srcPath, file)
-    if (fs.lstatSync(srcFile).isDirectory()) {
+    if (fs.lstatSync(srcFile).isDirectory() || !file.endsWith('.svg')) {
       // for now, ignore subdirectories/localization, until we have a plan for handling it
       // Will likely involve appending the lang/locale to the end of the friendly name for the unique component name
       // var joinedDestPath = path.join(destPath, file)
@@ -102,17 +108,19 @@ function processFolder(srcPath, destPath, resizable) {
       if(resizable && !file.includes("20")) {
         return
       }
-      var iconName = file.substr(0, file.length - 4) // strip '.svg'
+      var iconName = file.substring(0, file.length - 4) // strip '.svg'
       iconName = iconName.replace("ic_fluent_", "") // strip ic_fluent_
       iconName = resizable ? iconName.replace("20", "") : iconName
       var destFilename = _.camelCase(iconName) // We want them to be camelCase, so access_time would become accessTime here
       destFilename = destFilename.replace(destFilename.substring(0, 1), destFilename.substring(0, 1).toUpperCase()) // capitalize the first letter
+      var flipInRtl = metadata[destFilename] === 'mirror';  //checks rtl.json to see if icon is autoflippable
 
       var iconContent = fs.readFileSync(srcFile, { encoding: "utf8" })
       const getAttr = (key) => [...iconContent.matchAll(`(?<= ${key}=)".+?"`)].map((v) => v[0]);
       const width = resizable ? '"1em"' : getAttr("width")[0];
       const paths = getAttr("d").join(',');
-      var jsCode = `export const ${destFilename} = (/*#__PURE__*/createFluentIcon('${destFilename}', ${width}, [${paths}]));`
+      const options = flipInRtl ? `, { flipInRtl: true }` : '';
+      var jsCode = `export const ${destFilename} = (/*#__PURE__*/createFluentIcon('${destFilename}', ${width}, [${paths}]${options}));`
       iconExports.push(jsCode);
     }
   });
