@@ -69,12 +69,16 @@ const useRootStyles = makeStyles({
     },
 });
 
-export function createFluentFontIcon(displayName: string, codepoint: string, font: FontFile, fontSize?: number): React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>>> & { codepoint: string} {
+export type CreateFluentFontIconOptions = {
+    flipInRtl?: boolean;
+}
+
+export function createFluentFontIcon(displayName: string, codepoint: string, font: FontFile, fontSize?: number, options?: CreateFluentFontIconOptions): React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>>> & { codepoint: string} {
     const Component: React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>>> & { codepoint: string} = (props) => {
         useStaticStyles();
         const styles = useRootStyles();
         const className = mergeClasses(styles.root, styles[font], props.className);
-        const state = useIconState<React.HTMLAttributes<HTMLElement>>({...props, className});
+        const state = useIconState<React.HTMLAttributes<HTMLElement>>({...props, className}, { flipInRtl: options?.flipInRtl });
 
 
         // We want to keep the same API surface as the SVG icons, so translate `primaryFill` to `color`

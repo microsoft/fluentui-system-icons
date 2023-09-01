@@ -1,0 +1,15 @@
+{
+  "images": [
+    {
+      "filename": "ic_fluent_rectangle_landscape_sparkle_28_regular.svg",
+      "idiom": "universal"
+    }
+  ],
+  "info": {
+    "author": "xcode",
+    "version": 1
+  },
+  "properties": {
+    "template-rendering-intent": "template"
+  }
+}
