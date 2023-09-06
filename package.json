@@ -1,5 +1,5 @@
 {
-  "name": "fluent-system-icons",
+  "name": "@fluentui/system-icons-repo",
   "private": true,
   "workspaces": [
     "packages/*",
