@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-native-icons",
-  "version": "2.0.213",
+  "version": "2.0.214",
   "sideEffects": false,
   "main": "lib-cjs/index.js",
   "module": "lib/index.js",

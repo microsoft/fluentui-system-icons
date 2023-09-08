@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.woff2?21de6c7f053e7e593b574a024ef8b0ca") format("woff2"),
-url("./FluentSystemIcons-Regular.woff?21de6c7f053e7e593b574a024ef8b0ca") format("woff"),
-url("./FluentSystemIcons-Regular.ttf?21de6c7f053e7e593b574a024ef8b0ca") format("truetype");
+    src: url("./FluentSystemIcons-Regular.woff2?c75abe120cc016b1e63a7f5cca7ecf7e") format("woff2"),
+url("./FluentSystemIcons-Regular.woff?c75abe120cc016b1e63a7f5cca7ecf7e") format("woff"),
+url("./FluentSystemIcons-Regular.ttf?c75abe120cc016b1e63a7f5cca7ecf7e") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -21615,4 +21615,76 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_voicemail_shield_16_regular:before {
     content: "\f031f";
+}
+.icon-ic_fluent_chevron_down_32_regular:before {
+    content: "\f0320";
+}
+.icon-ic_fluent_chevron_left_32_regular:before {
+    content: "\f0321";
+}
+.icon-ic_fluent_chevron_right_32_regular:before {
+    content: "\f0322";
+}
+.icon-ic_fluent_chevron_up_32_regular:before {
+    content: "\f0323";
+}
+.icon-ic_fluent_document_lightning_16_regular:before {
+    content: "\f0324";
+}
+.icon-ic_fluent_document_lightning_20_regular:before {
+    content: "\f0325";
+}
+.icon-ic_fluent_document_lightning_24_regular:before {
+    content: "\f0326";
+}
+.icon-ic_fluent_document_lightning_28_regular:before {
+    content: "\f0327";
+}
+.icon-ic_fluent_document_lightning_32_regular:before {
+    content: "\f0328";
+}
+.icon-ic_fluent_document_lightning_48_regular:before {
+    content: "\f0329";
+}
+.icon-ic_fluent_edit_12_regular:before {
+    content: "\f032a";
+}
+.icon-ic_fluent_server_link_16_regular:before {
+    content: "\f032b";
+}
+.icon-ic_fluent_server_link_20_regular:before {
+    content: "\f032c";
+}
+.icon-ic_fluent_step_20_regular:before {
+    content: "\f032d";
+}
+.icon-ic_fluent_step_24_regular:before {
+    content: "\f032e";
+}
+.icon-ic_fluent_tab_desktop_multiple_add_20_regular:before {
+    content: "\f032f";
+}
+.icon-ic_fluent_text_description_16_regular:before {
+    content: "\f0330";
+}
+.icon-ic_fluent_text_description_28_regular:before {
+    content: "\f0331";
+}
+.icon-ic_fluent_text_description_32_regular:before {
+    content: "\f0332";
+}
+.icon-ic_fluent_text_grammar_lightning_16_regular:before {
+    content: "\f0333";
+}
+.icon-ic_fluent_text_grammar_lightning_20_regular:before {
+    content: "\f0334";
+}
+.icon-ic_fluent_text_grammar_lightning_24_regular:before {
+    content: "\f0335";
+}
+.icon-ic_fluent_text_grammar_lightning_28_regular:before {
+    content: "\f0336";
+}
+.icon-ic_fluent_text_grammar_lightning_32_regular:before {
+    content: "\f0337";
 }
