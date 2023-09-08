@@ -43,13 +43,13 @@ For library docs, see [android/README.md](android/README.md).
 ```ruby
 use_frameworks!
 
-pod "FluentIcons", "1.1.212"
+pod "FluentIcons", "1.1.213"
 ```
 
 #### Carthage
 
 ```bash
-git "git@github.com:microsoft/fluentui-system-icons.git" "1.1.212"
+git "git@github.com:microsoft/fluentui-system-icons.git" "1.1.213"
 ```
 
 For library docs, see [ios/README.md](ios/README.md).
