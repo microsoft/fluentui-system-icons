@@ -18,5 +18,6 @@
     "landscape",
     "document",
     "presentation"
-  ]
+  ],
+  "directionType": "mirror"
 }
