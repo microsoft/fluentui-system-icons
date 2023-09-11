@@ -82,7 +82,7 @@ def create_icon_set(fluent_icon_assets, original_icon_names, icon_assets_path):
         if languages == ["en"]:
             languages = []
 
-        for file_name in os.listdir(os.path.join(fluent_icon_asset.path, IMAGE_FORMAT)):
+        for file_name in os.listdir(os.path.join(fluent_icon_asset.path, IMAGE_FORMAT.upper())):
             icon_name = get_icon_name(file_name)
 
             if icon_name in original_icon_names:
@@ -92,7 +92,7 @@ def create_icon_set(fluent_icon_assets, original_icon_names, icon_assets_path):
 
             imageset_path = os.path.join(icon_assets_path, "{icon_name}.imageset".format(icon_name=icon_name))
             os.mkdir(imageset_path)
-            shutil.copyfile(os.path.join(fluent_icon_asset.path, IMAGE_FORMAT, file_name), os.path.join(imageset_path, file_name))
+            shutil.copyfile(os.path.join(fluent_icon_asset.path, IMAGE_FORMAT.upper(), file_name), os.path.join(imageset_path, file_name))
 
             supported_languages = []
             for language in languages:
@@ -118,7 +118,7 @@ def create_icon_set(fluent_icon_assets, original_icon_names, icon_assets_path):
                 else:
                     asset_locale = language
 
-                localized_icon_path = os.path.join(fluent_icon_asset.path, language, IMAGE_FORMAT, file_name)
+                localized_icon_path = os.path.join(fluent_icon_asset.path, language, IMAGE_FORMAT.upper(), file_name)
                 if os.path.exists(localized_icon_path):
                     shutil.copyfile(localized_icon_path, os.path.join(imageset_path, language + "_" + file_name))
                     supported_languages.append(language)
