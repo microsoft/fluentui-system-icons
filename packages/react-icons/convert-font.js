@@ -74,6 +74,9 @@ async function processFiles(src, dest) {
   indexContents.push('export { default as bundleIcon } from \'../utils/bundleIcon\'');
   indexContents.push('export * from \'../utils/useIconState\'');
   indexContents.push('export * from \'../utils/constants\'');
+  indexContents.push('export { IconDirectionContextProvider, useIconContext } from \'../contexts/index\'');
+  indexContents.push('export type { IconDirectionContextValue } from \'../contexts/index\'');
+
 
   await fs.writeFile(indexPath, indexContents.join('\n'));
 
