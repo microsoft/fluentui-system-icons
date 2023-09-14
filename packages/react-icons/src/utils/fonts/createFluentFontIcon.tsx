@@ -30,18 +30,21 @@ const FONT_FAMILY_MAP = {
 const useStaticStyles = makeStaticStyles(`
 @font-face {
     font-family: ${FONT_FAMILY_MAP[FontFile.Filled]};
+    font-display: "block";
     src: url(${JSON.stringify(fontFilledWoff2)}) format("woff2"),
     url(${JSON.stringify(fontFilledWoff)}) format("woff"),
     url(${JSON.stringify(fontFilledTtf)}) format("truetype");
 }
 @font-face {
     font-family: ${FONT_FAMILY_MAP[FontFile.Regular]};
+    font-display: "block";
     src: url(${JSON.stringify(fontRegularWoff2)}) format("woff2"),
     url(${JSON.stringify(fontRegularWoff)}) format("woff"),
     url(${JSON.stringify(fontRegularTtf)}) format("truetype");
 }
 @font-face {
     font-family: ${FONT_FAMILY_MAP[FontFile.Resizable]};
+    font-display: "block";
     src: url(${JSON.stringify(fontOneSizeWoff2)}) format("woff2"),
     url(${JSON.stringify(fontOneSizeWoff)}) format("woff"),
     url(${JSON.stringify(fontOneSizeTtf)}) format("truetype");
