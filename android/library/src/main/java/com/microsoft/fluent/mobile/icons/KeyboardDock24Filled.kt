@@ -1,0 +1,108 @@
+package com.microsoft.fluent.mobile.icons
+
+import androidx.compose.material.icons.materialPath
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.microsoft.fluent.mobile.FluentIcons
+import com.microsoft.fluent.mobile.fluentIcon
+
+public val FluentIcons.Filled.KeyboardDock24: ImageVector
+  get() {
+    if (_keyboardDock24 != null) {
+      return _keyboardDock24!!
+    }
+    _keyboardDock24 = fluentIcon(name = "Filled.KeyboardDock24", 24f) {
+      materialPath {
+          moveTo(21.995F, 4.75F)
+          curveToRelative(0.0F, -1.243F, -1.007F, -2.25F, -2.25F, -2.25F)
+          horizontalLineTo(4.25F)
+          curveTo(3.007F, 2.5F, 2.0F, 3.507F, 2.0F, 4.75F)
+          verticalLineToRelative(9.505F)
+          curveToRelative(0.0F, 1.242F, 1.007F, 2.25F, 2.25F, 2.25F)
+          horizontalLineToRelative(7.0F)
+          verticalLineToRelative(2.934F)
+          lineToRelative(-0.84F, -0.84F)
+          curveToRelative(-0.294F, -0.293F, -0.768F, -0.293F, -1.061F, 0.0F)
+          curveToRelative(-0.293F, 0.293F, -0.293F, 0.767F, 0.0F, 1.06F)
+          lineToRelative(2.12F, 2.121F)
+          curveToRelative(0.294F, 0.293F, 0.768F, 0.293F, 1.061F, 0.0F)
+          lineToRelative(2.121F, -2.12F)
+          curveToRelative(0.293F, -0.294F, 0.293F, -0.768F, 0.0F, -1.061F)
+          curveToRelative(-0.293F, -0.293F, -0.767F, -0.293F, -1.06F, 0.0F)
+          lineToRelative(-0.841F, 0.84F)
+          verticalLineToRelative(-2.934F)
+          horizontalLineToRelative(6.995F)
+          curveToRelative(1.243F, 0.0F, 2.25F, -1.008F, 2.25F, -2.25F)
+          verticalLineTo(4.75F)
+          close()
+          moveTo(6.75F, 12.0F)
+          horizontalLineToRelative(10.5F)
+          lineToRelative(0.102F, 0.007F)
+          curveTo(17.718F, 12.057F, 18.0F, 12.37F, 18.0F, 12.75F)
+          reflectiveCurveToRelative(-0.282F, 0.694F, -0.648F, 0.743F)
+          lineTo(17.25F, 13.5F)
+          horizontalLineTo(6.75F)
+          lineToRelative(-0.102F, -0.007F)
+          curveTo(6.282F, 13.443F, 6.0F, 13.13F, 6.0F, 12.75F)
+          reflectiveCurveToRelative(0.282F, -0.694F, 0.648F, -0.743F)
+          lineTo(6.75F, 12.0F)
+          close()
+          moveToRelative(8.75F, -2.5F)
+          curveToRelative(0.0F, -0.552F, 0.448F, -1.0F, 1.0F, -1.0F)
+          reflectiveCurveToRelative(1.0F, 0.448F, 1.0F, 1.0F)
+          reflectiveCurveToRelative(-0.448F, 1.0F, -1.0F, 1.0F)
+          reflectiveCurveToRelative(-1.0F, -0.448F, -1.0F, -1.0F)
+          close()
+          moveToRelative(-2.995F, 0.0F)
+          curveToRelative(0.0F, -0.552F, 0.448F, -1.0F, 1.0F, -1.0F)
+          reflectiveCurveToRelative(1.0F, 0.448F, 1.0F, 1.0F)
+          reflectiveCurveToRelative(-0.448F, 1.0F, -1.0F, 1.0F)
+          reflectiveCurveToRelative(-1.0F, -0.448F, -1.0F, -1.0F)
+          close()
+          moveToRelative(-3.0F, 0.0F)
+          curveToRelative(0.0F, -0.552F, 0.448F, -1.0F, 1.0F, -1.0F)
+          reflectiveCurveToRelative(1.0F, 0.448F, 1.0F, 1.0F)
+          reflectiveCurveToRelative(-0.448F, 1.0F, -1.0F, 1.0F)
+          reflectiveCurveToRelative(-1.0F, -0.448F, -1.0F, -1.0F)
+          close()
+          moveToRelative(-3.0F, 0.0F)
+          curveToRelative(0.0F, -0.552F, 0.448F, -1.0F, 1.0F, -1.0F)
+          reflectiveCurveToRelative(1.0F, 0.448F, 1.0F, 1.0F)
+          reflectiveCurveToRelative(-0.448F, 1.0F, -1.0F, 1.0F)
+          reflectiveCurveToRelative(-1.0F, -0.448F, -1.0F, -1.0F)
+          close()
+          moveTo(5.0F, 6.5F)
+          curveToRelative(0.0F, -0.552F, 0.448F, -1.0F, 1.0F, -1.0F)
+          reflectiveCurveToRelative(1.0F, 0.448F, 1.0F, 1.0F)
+          reflectiveCurveToRelative(-0.448F, 1.0F, -1.0F, 1.0F)
+          reflectiveCurveToRelative(-1.0F, -0.448F, -1.0F, -1.0F)
+          close()
+          moveToRelative(2.995F, 0.0F)
+          curveToRelative(0.0F, -0.552F, 0.448F, -1.0F, 1.0F, -1.0F)
+          reflectiveCurveToRelative(1.0F, 0.448F, 1.0F, 1.0F)
+          reflectiveCurveToRelative(-0.448F, 1.0F, -1.0F, 1.0F)
+          reflectiveCurveToRelative(-1.0F, -0.448F, -1.0F, -1.0F)
+          close()
+          moveToRelative(3.0F, 0.0F)
+          curveToRelative(0.0F, -0.552F, 0.448F, -1.0F, 1.0F, -1.0F)
+          reflectiveCurveToRelative(1.0F, 0.448F, 1.0F, 1.0F)
+          reflectiveCurveToRelative(-0.448F, 1.0F, -1.0F, 1.0F)
+          reflectiveCurveToRelative(-1.0F, -0.448F, -1.0F, -1.0F)
+          close()
+          moveToRelative(3.0F, 0.0F)
+          curveToRelative(0.0F, -0.552F, 0.448F, -1.0F, 1.0F, -1.0F)
+          reflectiveCurveToRelative(1.0F, 0.448F, 1.0F, 1.0F)
+          reflectiveCurveToRelative(-0.448F, 1.0F, -1.0F, 1.0F)
+          reflectiveCurveToRelative(-1.0F, -0.448F, -1.0F, -1.0F)
+          close()
+          moveToRelative(3.0F, 0.0F)
+          curveToRelative(0.0F, -0.552F, 0.448F, -1.0F, 1.0F, -1.0F)
+          reflectiveCurveToRelative(1.0F, 0.448F, 1.0F, 1.0F)
+          reflectiveCurveToRelative(-0.448F, 1.0F, -1.0F, 1.0F)
+          reflectiveCurveToRelative(-1.0F, -0.448F, -1.0F, -1.0F)
+          close()        
+      }
+    }
+    return _keyboardDock24!!
+  }
+
+private var _keyboardDock24: ImageVector? = null

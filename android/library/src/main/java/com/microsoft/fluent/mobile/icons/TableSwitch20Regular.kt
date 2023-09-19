@@ -1,0 +1,107 @@
+package com.microsoft.fluent.mobile.icons
+
+import androidx.compose.material.icons.materialPath
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.microsoft.fluent.mobile.FluentIcons
+import com.microsoft.fluent.mobile.fluentIcon
+
+public val FluentIcons.Regular.TableSwitch20: ImageVector
+  get() {
+    if (_tableSwitch20 != null) {
+      return _tableSwitch20!!
+    }
+    _tableSwitch20 = fluentIcon(name = "Regular.TableSwitch20", 20f) {
+      materialPath {
+          moveTo(7.854F, 1.147F)
+          curveToRelative(-0.196F, -0.196F, -0.512F, -0.196F, -0.708F, 0.0F)
+          curveToRelative(-0.195F, 0.195F, -0.195F, 0.511F, 0.0F, 0.706F)
+          lineTo(8.293F, 3.0F)
+          horizontalLineTo(6.0F)
+          curveTo(4.343F, 3.0F, 3.0F, 4.343F, 3.0F, 6.0F)
+          verticalLineToRelative(2.293F)
+          lineTo(1.853F, 7.147F)
+          curveToRelative(-0.195F, -0.196F, -0.511F, -0.196F, -0.706F, 0.0F)
+          curveToRelative(-0.196F, 0.195F, -0.196F, 0.511F, 0.0F, 0.707F)
+          lineToRelative(2.0F, 2.0F)
+          curveToRelative(0.195F, 0.195F, 0.511F, 0.195F, 0.707F, 0.0F)
+          lineToRelative(2.0F, -2.0F)
+          curveTo(5.95F, 7.756F, 6.0F, 7.628F, 6.0F, 7.5F)
+          curveToRelative(0.0F, -0.128F, -0.049F, -0.256F, -0.146F, -0.354F)
+          curveToRelative(-0.196F, -0.195F, -0.512F, -0.195F, -0.708F, 0.0F)
+          lineTo(4.0F, 8.293F)
+          verticalLineTo(6.0F)
+          curveToRelative(0.0F, -1.105F, 0.895F, -2.0F, 2.0F, -2.0F)
+          horizontalLineToRelative(2.293F)
+          lineTo(7.147F, 5.146F)
+          curveToRelative(-0.196F, 0.196F, -0.196F, 0.512F, 0.0F, 0.708F)
+          curveTo(7.244F, 5.95F, 7.371F, 6.0F, 7.5F, 6.0F)
+          curveToRelative(0.128F, 0.0F, 0.256F, -0.049F, 0.354F, -0.146F)
+          lineToRelative(2.0F, -2.0F)
+          curveToRelative(0.195F, -0.196F, 0.195F, -0.512F, 0.0F, -0.708F)
+          lineToRelative(-2.0F, -2.0F)
+          close()
+          moveTo(7.0F, 12.0F)
+          verticalLineTo(7.0F)
+          horizontalLineToRelative(5.0F)
+          verticalLineTo(4.0F)
+          horizontalLineToRelative(-1.085F)
+          curveToRelative(0.114F, -0.323F, 0.114F, -0.677F, 0.0F, -1.0F)
+          horizontalLineTo(14.5F)
+          curveTo(15.88F, 3.0F, 17.0F, 4.12F, 17.0F, 5.5F)
+          verticalLineToRelative(9.0F)
+          curveToRelative(0.0F, 1.38F, -1.12F, 2.5F, -2.5F, 2.5F)
+          horizontalLineToRelative(-9.0F)
+          curveTo(4.12F, 17.0F, 3.0F, 15.88F, 3.0F, 14.5F)
+          verticalLineToRelative(-3.585F)
+          curveToRelative(0.323F, 0.114F, 0.677F, 0.114F, 1.0F, 0.0F)
+          verticalLineTo(12.0F)
+          horizontalLineToRelative(3.0F)
+          close()
+          moveToRelative(-3.0F, 2.5F)
+          curveToRelative(0.0F, 0.78F, 0.595F, 1.42F, 1.356F, 1.493F)
+          lineTo(5.5F, 16.0F)
+          horizontalLineTo(7.0F)
+          verticalLineToRelative(-3.0F)
+          horizontalLineTo(4.0F)
+          verticalLineToRelative(1.5F)
+          close()
+          moveToRelative(8.0F, -1.5F)
+          horizontalLineTo(8.0F)
+          verticalLineToRelative(3.0F)
+          horizontalLineToRelative(4.0F)
+          verticalLineToRelative(-3.0F)
+          close()
+          moveToRelative(2.5F, 3.0F)
+          curveToRelative(0.78F, 0.0F, 1.42F, -0.595F, 1.493F, -1.355F)
+          lineTo(16.0F, 14.5F)
+          verticalLineTo(13.0F)
+          horizontalLineToRelative(-3.0F)
+          verticalLineToRelative(3.0F)
+          horizontalLineToRelative(1.5F)
+          close()
+          moveTo(12.0F, 8.0F)
+          horizontalLineTo(8.0F)
+          verticalLineToRelative(4.0F)
+          horizontalLineToRelative(4.0F)
+          verticalLineTo(8.0F)
+          close()
+          moveToRelative(1.0F, 0.0F)
+          verticalLineToRelative(4.0F)
+          horizontalLineToRelative(3.0F)
+          verticalLineTo(8.0F)
+          horizontalLineToRelative(-3.0F)
+          close()
+          moveToRelative(0.0F, -4.0F)
+          verticalLineToRelative(3.0F)
+          horizontalLineToRelative(3.0F)
+          verticalLineTo(5.5F)
+          curveToRelative(0.0F, -0.78F, -0.595F, -1.42F, -1.355F, -1.493F)
+          lineTo(14.5F, 4.0F)
+          horizontalLineTo(13.0F)
+          close()        
+      }
+    }
+    return _tableSwitch20!!
+  }
+
+private var _tableSwitch20: ImageVector? = null

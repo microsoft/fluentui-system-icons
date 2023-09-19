@@ -1,0 +1,106 @@
+package com.microsoft.fluent.mobile.icons
+
+import androidx.compose.material.icons.materialPath
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.microsoft.fluent.mobile.FluentIcons
+import com.microsoft.fluent.mobile.fluentIcon
+
+public val FluentIcons.Filled.MathFormatProfessional16: ImageVector
+  get() {
+    if (_mathFormatProfessional16 != null) {
+      return _mathFormatProfessional16!!
+    }
+    _mathFormatProfessional16 = fluentIcon(name = "Filled.MathFormatProfessional16", 16f) {
+      materialPath {
+          moveTo(9.489F, 3.521F)
+          curveToRelative(-0.018F, 0.01F, -0.03F, 0.02F, -0.044F, 0.03F)
+          curveTo(9.412F, 3.58F, 9.374F, 3.618F, 9.28F, 3.712F)
+          curveToRelative(-0.293F, 0.292F, -0.767F, 0.292F, -1.06F, 0.0F)
+          curveToRelative(-0.293F, -0.293F, -0.293F, -0.768F, 0.0F, -1.061F)
+          lineToRelative(0.02F, -0.02F)
+          curveToRelative(0.161F, -0.162F, 0.323F, -0.324F, 0.605F, -0.465F)
+          curveToRelative(0.019F, -0.01F, 0.038F, -0.018F, 0.057F, -0.026F)
+          curveToRelative(0.693F, -0.277F, 1.39F, -0.132F, 1.919F, 0.257F)
+          curveToRelative(0.238F, 0.164F, 0.386F, 0.36F, 0.49F, 0.521F)
+          curveToRelative(0.042F, 0.068F, 0.083F, 0.139F, 0.114F, 0.193F)
+          lineToRelative(0.012F, 0.02F)
+          curveToRelative(0.025F, 0.045F, 0.046F, 0.08F, 0.066F, 0.113F)
+          lineToRelative(1.028F, -1.027F)
+          curveToRelative(0.293F, -0.293F, 0.768F, -0.293F, 1.06F, 0.0F)
+          curveToRelative(0.293F, 0.292F, 0.293F, 0.767F, 0.0F, 1.06F)
+          lineToRelative(-1.354F, 1.355F)
+          curveToRelative(0.032F, 0.054F, 0.062F, 0.103F, 0.092F, 0.147F)
+          curveToRelative(0.065F, 0.099F, 0.139F, 0.221F, 0.2F, 0.322F)
+          lineToRelative(0.065F, 0.109F)
+          curveToRelative(0.038F, 0.062F, 0.07F, 0.11F, 0.098F, 0.15F)
+          curveToRelative(0.013F, 0.019F, 0.024F, 0.033F, 0.033F, 0.043F)
+          lineToRelative(0.011F, 0.014F)
+          curveToRelative(0.042F, 0.041F, 0.075F, 0.06F, 0.096F, 0.07F)
+          curveToRelative(0.022F, 0.01F, 0.041F, 0.013F, 0.059F, 0.014F)
+          curveToRelative(0.019F, 0.001F, 0.037F, -0.001F, 0.053F, -0.006F)
+          lineToRelative(0.018F, -0.006F)
+          curveToRelative(0.025F, -0.017F, 0.051F, -0.032F, 0.078F, -0.046F)
+          curveToRelative(0.032F, -0.015F, 0.046F, -0.026F, 0.064F, -0.04F)
+          curveToRelative(0.032F, -0.027F, 0.068F, -0.062F, 0.16F, -0.153F)
+          curveToRelative(0.292F, -0.293F, 0.767F, -0.293F, 1.06F, 0.0F)
+          curveToRelative(0.293F, 0.293F, 0.293F, 0.768F, 0.0F, 1.06F)
+          lineToRelative(-0.02F, 0.02F)
+          curveToRelative(-0.15F, 0.15F, -0.301F, 0.302F, -0.555F, 0.436F)
+          curveToRelative(-0.502F, 0.308F, -1.38F, 0.405F, -2.073F, -0.288F)
+          curveToRelative(-0.153F, -0.154F, -0.278F, -0.35F, -0.36F, -0.482F)
+          lineToRelative(-0.1F, -0.167F)
+          lineToRelative(-0.067F, -0.11F)
+          lineToRelative(-1.062F, 1.063F)
+          curveToRelative(-0.293F, 0.293F, -0.768F, 0.293F, -1.06F, 0.0F)
+          curveToRelative(-0.294F, -0.293F, -0.294F, -0.768F, 0.0F, -1.061F)
+          lineTo(10.4F, 4.347F)
+          curveToRelative(-0.048F, -0.086F, -0.098F, -0.177F, -0.147F, -0.275F)
+          curveToRelative(-0.047F, -0.072F, -0.086F, -0.14F, -0.117F, -0.194F)
+          lineToRelative(-0.013F, -0.022F)
+          curveToRelative(-0.033F, -0.058F, -0.055F, -0.097F, -0.078F, -0.133F)
+          curveTo(9.999F, 3.65F, 9.98F, 3.638F, 9.97F, 3.632F)
+          lineTo(9.937F, 3.608F)
+          curveTo(9.787F, 3.496F, 9.64F, 3.47F, 9.489F, 3.52F)
+          close()
+          moveTo(6.284F, 4.943F)
+          curveToRelative(0.489F, 0.004F, 0.918F, 0.244F, 1.212F, 0.554F)
+          curveToRelative(0.294F, 0.31F, 0.506F, 0.746F, 0.515F, 1.238F)
+          curveToRelative(0.05F, 0.733F, -0.212F, 1.337F, -0.66F, 1.79F)
+          curveToRelative(-0.427F, 0.433F, -0.997F, 0.703F, -1.547F, 0.877F)
+          curveTo(4.911F, 9.684F, 3.901F, 9.763F, 3.15F, 9.758F)
+          curveToRelative(-0.101F, 0.403F, -0.112F, 0.7F, -0.078F, 0.915F)
+          curveToRelative(0.04F, 0.246F, 0.142F, 0.415F, 0.296F, 0.551F)
+          curveToRelative(0.015F, 0.013F, 0.029F, 0.026F, 0.042F, 0.04F)
+          curveToRelative(0.139F, 0.143F, 0.31F, 0.198F, 0.721F, 0.284F)
+          curveToRelative(0.938F, 0.108F, 1.902F, -0.44F, 2.52F, -1.289F)
+          curveToRelative(0.245F, -0.335F, 0.714F, -0.408F, 1.049F, -0.164F)
+          curveToRelative(0.334F, 0.244F, 0.408F, 0.713F, 0.164F, 1.048F)
+          curveToRelative(-0.837F, 1.148F, -2.298F, 2.102F, -3.95F, 1.89F)
+          lineToRelative(-0.056F, -0.01F)
+          lineToRelative(-0.046F, -0.01F)
+          curveToRelative(-0.377F, -0.077F, -0.973F, -0.198F, -1.457F, -0.682F)
+          curveToRelative(-0.402F, -0.363F, -0.67F, -0.839F, -0.764F, -1.421F)
+          curveTo(1.5F, 10.34F, 1.582F, 9.705F, 1.805F, 9.013F)
+          curveToRelative(0.008F, -0.033F, 0.018F, -0.067F, 0.03F, -0.1F)
+          lineTo(1.93F, 8.662F)
+          curveToRelative(0.065F, -0.19F, 0.385F, -1.078F, 1.026F, -1.933F)
+          curveToRelative(0.654F, -0.872F, 1.743F, -1.835F, 3.329F, -1.786F)
+          close()
+          moveTo(3.76F, 8.242F)
+          curveToRelative(0.52F, -0.032F, 1.092F, -0.113F, 1.592F, -0.27F)
+          curveToRelative(0.431F, -0.137F, 0.744F, -0.31F, 0.933F, -0.502F)
+          curveToRelative(0.164F, -0.167F, 0.251F, -0.358F, 0.228F, -0.644F)
+          lineToRelative(-0.002F, -0.06F)
+          curveToRelative(0.0F, -0.074F, -0.034F, -0.163F, -0.104F, -0.238F)
+          curveTo(6.373F, 6.493F, 6.338F, 6.47F, 6.31F, 6.456F)
+          curveTo(6.285F, 6.443F, 6.27F, 6.443F, 6.27F, 6.442F)
+          horizontalLineTo(6.245F)
+          curveToRelative(-0.886F, -0.03F, -1.569F, 0.492F, -2.09F, 1.187F)
+          curveTo(4.0F, 7.835F, 3.869F, 8.046F, 3.759F, 8.242F)
+          close()        
+      }
+    }
+    return _mathFormatProfessional16!!
+  }
+
+private var _mathFormatProfessional16: ImageVector? = null

@@ -1,0 +1,108 @@
+package com.microsoft.fluent.mobile.icons
+
+import androidx.compose.material.icons.materialPath
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.microsoft.fluent.mobile.FluentIcons
+import com.microsoft.fluent.mobile.fluentIcon
+
+public val FluentIcons.Regular.BowTie20: ImageVector
+  get() {
+    if (_bowTie20 != null) {
+      return _bowTie20!!
+    }
+    _bowTie20 = fluentIcon(name = "Regular.BowTie20", 20f) {
+      materialPath {
+          moveTo(11.0F, 10.0F)
+          horizontalLineTo(9.0F)
+          verticalLineToRelative(5.5F)
+          curveTo(9.0F, 16.328F, 8.328F, 17.0F, 7.5F, 17.0F)
+          horizontalLineTo(5.887F)
+          curveToRelative(-1.023F, 0.0F, -1.746F, -1.003F, -1.423F, -1.974F)
+          lineToRelative(1.234F, -3.7F)
+          lineToRelative(-0.74F, 0.403F)
+          curveTo(3.625F, 12.456F, 2.0F, 11.491F, 2.0F, 9.973F)
+          verticalLineTo(5.027F)
+          curveTo(2.0F, 3.509F, 3.625F, 2.544F, 4.958F, 3.27F)
+          lineToRelative(2.5F, 1.364F)
+          curveToRelative(0.283F, 0.154F, 0.518F, 0.37F, 0.694F, 0.628F)
+          curveTo(8.393F, 5.097F, 8.685F, 5.0F, 9.0F, 5.0F)
+          horizontalLineToRelative(2.0F)
+          curveToRelative(0.315F, 0.0F, 0.607F, 0.097F, 0.848F, 0.263F)
+          curveToRelative(0.176F, -0.257F, 0.411F, -0.474F, 0.694F, -0.628F)
+          lineToRelative(2.5F, -1.364F)
+          curveTo(16.375F, 2.544F, 18.0F, 3.509F, 18.0F, 5.027F)
+          verticalLineToRelative(4.946F)
+          curveToRelative(0.0F, 1.518F, -1.625F, 2.483F, -2.958F, 1.756F)
+          lineToRelative(-0.74F, -0.404F)
+          lineToRelative(1.234F, 3.7F)
+          curveToRelative(0.323F, 0.972F, -0.4F, 1.975F, -1.423F, 1.975F)
+          horizontalLineTo(12.5F)
+          curveToRelative(-0.828F, 0.0F, -1.5F, -0.672F, -1.5F, -1.5F)
+          verticalLineTo(10.0F)
+          close()
+          moveToRelative(6.0F, -4.973F)
+          curveToRelative(0.0F, -0.76F, -0.813F, -1.242F, -1.479F, -0.878F)
+          lineToRelative(-2.5F, 1.364F)
+          curveTo(12.7F, 5.688F, 12.5F, 6.024F, 12.5F, 6.39F)
+          verticalLineTo(7.0F)
+          horizontalLineToRelative(2.0F)
+          curveTo(14.776F, 7.0F, 15.0F, 7.224F, 15.0F, 7.5F)
+          reflectiveCurveTo(14.776F, 8.0F, 14.5F, 8.0F)
+          horizontalLineToRelative(-2.0F)
+          verticalLineToRelative(0.61F)
+          curveToRelative(0.0F, 0.366F, 0.2F, 0.702F, 0.521F, 0.877F)
+          lineToRelative(2.5F, 1.364F)
+          curveTo(16.187F, 11.215F, 17.0F, 10.732F, 17.0F, 9.973F)
+          verticalLineTo(5.027F)
+          close()
+          moveToRelative(-5.0F, 4.905F)
+          verticalLineTo(15.5F)
+          curveToRelative(0.0F, 0.276F, 0.224F, 0.5F, 0.5F, 0.5F)
+          horizontalLineToRelative(1.613F)
+          curveToRelative(0.34F, 0.0F, 0.582F, -0.334F, 0.474F, -0.658F)
+          lineToRelative(-1.561F, -4.684F)
+          curveToRelative(-0.004F, -0.011F, -0.008F, -0.023F, -0.01F, -0.035F)
+          lineToRelative(-0.474F, -0.258F)
+          curveToRelative(-0.208F, -0.113F, -0.39F, -0.26F, -0.542F, -0.433F)
+          close()
+          moveToRelative(-5.026F, 0.726F)
+          lineToRelative(-1.56F, 4.684F)
+          curveTo(5.304F, 15.666F, 5.545F, 16.0F, 5.886F, 16.0F)
+          horizontalLineTo(7.5F)
+          curveTo(7.776F, 16.0F, 8.0F, 15.776F, 8.0F, 15.5F)
+          verticalLineTo(9.932F)
+          curveToRelative(-0.152F, 0.173F, -0.334F, 0.32F, -0.542F, 0.433F)
+          lineToRelative(-0.474F, 0.258F)
+          curveToRelative(-0.002F, 0.012F, -0.006F, 0.024F, -0.01F, 0.035F)
+          close()
+          moveTo(11.5F, 6.5F)
+          curveTo(11.5F, 6.224F, 11.276F, 6.0F, 11.0F, 6.0F)
+          horizontalLineTo(9.0F)
+          curveTo(8.724F, 6.0F, 8.5F, 6.224F, 8.5F, 6.5F)
+          verticalLineToRelative(2.0F)
+          curveTo(8.5F, 8.776F, 8.724F, 9.0F, 9.0F, 9.0F)
+          horizontalLineToRelative(2.0F)
+          curveToRelative(0.276F, 0.0F, 0.5F, -0.224F, 0.5F, -0.5F)
+          verticalLineToRelative(-2.0F)
+          close()
+          moveTo(7.5F, 8.0F)
+          horizontalLineToRelative(-2.0F)
+          curveTo(5.224F, 8.0F, 5.0F, 7.776F, 5.0F, 7.5F)
+          reflectiveCurveTo(5.224F, 7.0F, 5.5F, 7.0F)
+          horizontalLineToRelative(2.0F)
+          verticalLineTo(6.39F)
+          curveToRelative(0.0F, -0.365F, -0.2F, -0.702F, -0.521F, -0.877F)
+          lineToRelative(-2.5F, -1.364F)
+          curveTo(3.812F, 3.785F, 3.0F, 4.268F, 3.0F, 5.027F)
+          verticalLineToRelative(4.946F)
+          curveToRelative(0.0F, 0.76F, 0.813F, 1.242F, 1.479F, 0.878F)
+          lineToRelative(2.5F, -1.364F)
+          curveTo(7.3F, 9.312F, 7.5F, 8.976F, 7.5F, 8.61F)
+          verticalLineTo(8.0F)
+          close()        
+      }
+    }
+    return _bowTie20!!
+  }
+
+private var _bowTie20: ImageVector? = null

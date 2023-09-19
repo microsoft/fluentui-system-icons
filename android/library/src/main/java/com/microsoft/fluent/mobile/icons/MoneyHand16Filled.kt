@@ -1,0 +1,108 @@
+package com.microsoft.fluent.mobile.icons
+
+import androidx.compose.material.icons.materialPath
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.microsoft.fluent.mobile.FluentIcons
+import com.microsoft.fluent.mobile.fluentIcon
+
+public val FluentIcons.Filled.MoneyHand16: ImageVector
+  get() {
+    if (_moneyHand16 != null) {
+      return _moneyHand16!!
+    }
+    _moneyHand16 = fluentIcon(name = "Filled.MoneyHand16", 16f) {
+      materialPath {
+          moveTo(2.0F, 2.75F)
+          curveTo(2.0F, 1.784F, 2.784F, 1.0F, 3.75F, 1.0F)
+          horizontalLineToRelative(4.5F)
+          curveTo(9.216F, 1.0F, 10.0F, 1.784F, 10.0F, 2.75F)
+          verticalLineToRelative(0.543F)
+          lineToRelative(2.975F, 2.975F)
+          curveTo(13.63F, 6.924F, 14.0F, 7.814F, 14.0F, 8.743F)
+          verticalLineTo(14.5F)
+          curveToRelative(0.0F, 0.276F, -0.224F, 0.5F, -0.5F, 0.5F)
+          reflectiveCurveTo(13.0F, 14.776F, 13.0F, 14.5F)
+          verticalLineTo(8.743F)
+          curveToRelative(0.0F, -0.663F, -0.263F, -1.3F, -0.732F, -1.768F)
+          lineTo(10.0F, 4.707F)
+          verticalLineToRelative(2.585F)
+          lineToRelative(0.854F, 0.854F)
+          curveToRelative(0.196F, 0.196F, 0.196F, 0.512F, 0.0F, 0.707F)
+          curveToRelative(-0.195F, 0.196F, -0.511F, 0.196F, -0.707F, 0.0F)
+          lineTo(8.118F, 6.825F)
+          lineTo(7.722F, 6.478F)
+          curveToRelative(-0.245F, -0.126F, -0.549F, -0.107F, -0.78F, 0.066F)
+          curveToRelative(-0.36F, 0.27F, -0.397F, 0.794F, -0.079F, 1.112F)
+          lineToRelative(1.491F, 1.49F)
+          curveTo(8.448F, 9.24F, 8.501F, 9.367F, 8.501F, 9.5F)
+          verticalLineToRelative(1.0F)
+          curveToRelative(0.0F, 0.552F, 0.447F, 1.0F, 1.0F, 1.0F)
+          curveTo(9.777F, 11.5F, 10.0F, 11.724F, 10.0F, 12.0F)
+          verticalLineToRelative(1.25F)
+          curveTo(10.0F, 14.216F, 9.216F, 15.0F, 8.25F, 15.0F)
+          horizontalLineToRelative(-4.5F)
+          curveTo(2.784F, 15.0F, 2.0F, 14.216F, 2.0F, 13.25F)
+          verticalLineTo(2.75F)
+          close()
+          moveToRelative(7.0F, 10.0F)
+          verticalLineToRelative(-0.313F)
+          curveToRelative(-0.295F, -0.076F, -0.564F, -0.218F, -0.79F, -0.409F)
+          curveTo(7.52F, 12.163F, 7.0F, 12.771F, 7.0F, 13.5F)
+          verticalLineTo(14.0F)
+          horizontalLineToRelative(0.75F)
+          curveToRelative(0.086F, 0.0F, 0.17F, -0.009F, 0.25F, -0.025F)
+          verticalLineTo(13.5F)
+          curveTo(8.0F, 13.224F, 8.224F, 13.0F, 8.5F, 13.0F)
+          horizontalLineToRelative(0.475F)
+          curveTo(8.991F, 12.92F, 9.0F, 12.836F, 9.0F, 12.75F)
+          close()
+          moveTo(7.307F, 9.514F)
+          lineToRelative(-1.15F, -1.151F)
+          curveTo(5.498F, 7.706F, 5.486F, 6.673F, 6.066F, 6.0F)
+          horizontalLineTo(6.0F)
+          curveTo(4.895F, 6.0F, 4.0F, 6.895F, 4.0F, 8.0F)
+          reflectiveCurveToRelative(0.895F, 2.0F, 2.0F, 2.0F)
+          curveToRelative(0.5F, 0.0F, 0.957F, -0.183F, 1.307F, -0.486F)
+          close()
+          moveTo(5.0F, 2.5F)
+          verticalLineTo(2.0F)
+          horizontalLineTo(4.25F)
+          curveTo(4.164F, 2.0F, 4.08F, 2.009F, 4.0F, 2.025F)
+          verticalLineTo(2.5F)
+          curveTo(4.0F, 2.776F, 3.776F, 3.0F, 3.5F, 3.0F)
+          horizontalLineTo(3.025F)
+          curveTo(3.009F, 3.08F, 3.0F, 3.164F, 3.0F, 3.25F)
+          verticalLineTo(4.0F)
+          horizontalLineToRelative(0.5F)
+          curveTo(4.328F, 4.0F, 5.0F, 3.328F, 5.0F, 2.5F)
+          close()
+          moveTo(3.5F, 12.0F)
+          horizontalLineTo(3.0F)
+          verticalLineToRelative(0.75F)
+          curveToRelative(0.0F, 0.086F, 0.009F, 0.17F, 0.025F, 0.25F)
+          horizontalLineTo(3.5F)
+          curveTo(3.776F, 13.0F, 4.0F, 13.224F, 4.0F, 13.5F)
+          verticalLineToRelative(0.475F)
+          curveTo(4.08F, 13.991F, 4.164F, 14.0F, 4.25F, 14.0F)
+          horizontalLineTo(5.0F)
+          verticalLineToRelative(-0.5F)
+          curveTo(5.0F, 12.672F, 4.328F, 12.0F, 3.5F, 12.0F)
+          close()
+          moveTo(8.0F, 2.5F)
+          verticalLineTo(2.025F)
+          curveTo(7.92F, 2.009F, 7.836F, 2.0F, 7.75F, 2.0F)
+          horizontalLineTo(7.0F)
+          verticalLineToRelative(0.5F)
+          curveTo(7.0F, 3.328F, 7.672F, 4.0F, 8.5F, 4.0F)
+          horizontalLineTo(9.0F)
+          verticalLineTo(3.25F)
+          curveTo(9.0F, 3.164F, 8.991F, 3.08F, 8.975F, 3.0F)
+          horizontalLineTo(8.5F)
+          curveTo(8.224F, 3.0F, 8.0F, 2.776F, 8.0F, 2.5F)
+          close()        
+      }
+    }
+    return _moneyHand16!!
+  }
+
+private var _moneyHand16: ImageVector? = null
