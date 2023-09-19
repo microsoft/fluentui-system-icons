@@ -1,0 +1,50 @@
+pr: none
+jobs:
+  - job: Build
+    pool:
+      vmImage: ubuntu-latest
+    variables:
+      - name: BUILDSECMON_OPT_IN
+        value: true
+    steps:
+      - task: Bash@3
+        displayName: "Base64 decodes and pipes the GPG key content into the secret file"
+        env:
+          GPG_KEY_CONTENT: $(gpgContent)
+          SIGNING_SECRET_KEY_RING_FILE: $(gpgSecretFilePath)
+        inputs:
+          targetType: "inline"
+          script: |
+            # Write your commands here
+            sudo bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
+            ls
+      - task: Gradle@3
+        inputs:
+          gradleWrapperFile: "android/gradlew"
+          workingDirectory: 'android'
+          tasks: "assembleRelease"
+          options: "-PversionName=$(NEW_VERSION)"
+          publishJUnitResults: false
+          javaHomeOption: "JDKVersion"
+          jdkVersionOption: "$(jdkVersion)"
+          sonarQubeRunAnalysis: false
+          spotBugsAnalysis: false      
+      - task: Gradle@2
+        displayName: Gradle publish
+        inputs:
+          gradleWrapperFile: 'android/gradlew'
+          workingDirectory: 'android'
+          tasks: 'publish'
+          publishJUnitResults: false
+          javaHomeOption: 'JDKVersion'
+          jdkVersionOption: "$(jdkVersion)"
+          sonarQubeRunAnalysis: false
+          options: "-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath)"
+
+      - task: PublishPipelineArtifact@1
+        displayName: Publish library artifact to pipeline
+        inputs:
+          targetPath: 'android/library/build/artifacts/com/microsoft/design'
+          artifact: 'aar'
+          publishLocation: 'pipeline'
+
