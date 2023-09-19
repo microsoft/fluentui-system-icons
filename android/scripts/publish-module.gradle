@@ -3,11 +3,12 @@ apply plugin: 'signing'
 
 task androidSourcesJar(type: Jar) {
     archiveClassifier.set('sources')
-    if (project.plugins.findPlugin("com.android.library")) {
-        from android.sourceSets.main.java.srcDirs
-    } else {
-        from sourceSets.main.java.srcDirs
-    }
+//    if (project.plugins.findPlugin("com.android.library")) {
+//        from android.sourceSets.main.java.srcDirs
+//    } else {
+//        from sourceSets.main.java.srcDirs
+//    }
+    from android.sourceSets.main.java.srcDirs
 }
 
 artifacts {
@@ -19,17 +20,25 @@ version = getReleaseVersion()
 
 afterEvaluate {
     publishing {
+        /*----- Adding local maven repo to generate artifact -----*/
+        repositories {
+            maven {
+                name = "local"
+                url "$buildDir/artifacts"
+            }
+        }
         publications {
             release(MavenPublication) {
                 groupId project.POM_GROUP_ID
                 artifactId project.POM_ARTIFACT_ID
                 version getReleaseVersion()
 
-                if (project.plugins.findPlugin("com.android.library")) {
-                    artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
-                } else {
-                    artifact("$buildDir/libs/${project.getName()}-${version}.jar")
-                }
+//                if (project.plugins.findPlugin("com.android.library")) {
+//                    artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
+//                } else {
+//                    artifact("$buildDir/libs/${project.getName()}-${version}.jar")
+//                }
+                artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
 
                 artifact androidSourcesJar
 
