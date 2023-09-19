@@ -1,0 +1,84 @@
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+ext["signing.keyId"] = ''
+ext["signing.password"] = ''
+ext["signing.secretKeyRingFile"] = ''
+
+File secretPropsFile = project.rootProject.file('local.properties')
+if (secretPropsFile.exists()) {
+    Properties p = new Properties()
+    p.load(new FileInputStream(secretPropsFile))
+    p.each { name, value ->
+        ext[name] = value
+    }
+} else {
+    ext["signing.keyId"] = project.hasProperty('GPGSigningKeyID') ? "$GPGSigningKeyID" : ''
+    ext["signing.password"] = project.hasProperty('GPGSigningPassword') ? "$GPGSigningPassword" : ''
+    ext["signing.secretKeyRingFile"] = project.hasProperty('SigningSecretKeyRingFile') ? "$SigningSecretKeyRingFile" : ''
+}
+
+
+group = project.POM_GROUP_ID
+version = getReleaseVersion()
+
+project.ext.publishingFunc = { artifactIdName ->
+    publishing {
+        publications {
+            release(MavenPublication) {
+                groupId project.POM_GROUP_ID
+                artifactId project.POM_ARTIFACT_ID
+                version getReleaseVersion()
+                artifact(sourceJar)
+                artifact(bundleReleaseAar)
+
+
+                pom {
+                    name = project.POM_ARTIFACT_ID
+                    description = 'Fluent System Icons are a collection of familiar, friendly and modern icons from Microsoft.'
+                    url = 'https://github.com/microsoft/fluentui-system-icons'
+                    licenses {
+                        license {
+                            name = 'MIT License'
+                            url = 'https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = 'fluent-ui-android'
+                            name = 'Microsoft Inc.'
+                            email = 'fluentuinativeowners@microsoft.com'
+                        }
+                    }
+                    scm {
+                        connection = 'scm:git:github.com/microsoft/fluentui-system-icons.git'
+                        developerConnection = 'scm:git:ssh://github.com/microsoft/fluentui-system-icons.git'
+                        url = 'https://github.com/microsoft/fluentui-system-icons/tree/main'
+                    }
+                    withXml {
+                        def dependenciesNode = asNode().appendNode('dependencies')
+
+                        project.configurations.implementation.allDependencies.each {
+                            def dependencyNode = dependenciesNode.appendNode('dependency')
+                            dependencyNode.appendNode('groupId', it.group)
+                            dependencyNode.appendNode('artifactId', it.name)
+                            dependencyNode.appendNode('version', it.version)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+signing {
+    sign publishing.publications
+}
+
+String getReleaseVersion() {
+    String version = System.getenv('VERSION_NAME')
+    if (version == null || version == "") {
+        return project.VERSION_NAME + "-SNAPSHOT"
+    }
+    return version
+}
