@@ -4,7 +4,7 @@ import { useIconState } from "./useIconState";
 import { CreateFluentIconOptions, FluentIcon } from "./createFluentIcon";
 
 const wrapIcon = (Icon: (iconProps: FluentIconsProps) => JSX.Element, displayName?: string, options?: CreateFluentIconOptions) => {
-    const WrappedIcon = React.forwardRef((props: FluentIconsProps, ref: React.Ref<HTMLElement>) => { 
+    const WrappedIcon = React.forwardRef((props: FluentIconsProps, ref: FluentIconsProps["ref"]) => { 
         const state = {
             ...useIconState(props, { flipInRtl: options?.flipInRtl }),
             ref
@@ -14,5 +14,6 @@ const wrapIcon = (Icon: (iconProps: FluentIconsProps) => JSX.Element, displayNam
     WrappedIcon.displayName = displayName;
     return WrappedIcon;
 }
+ 
 
 export default wrapIcon;
