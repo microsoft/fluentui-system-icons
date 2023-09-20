@@ -14,5 +14,6 @@ const wrapIcon = (Icon: (iconProps: FluentIconsProps) => JSX.Element, displayNam
     WrappedIcon.displayName = displayName;
     return WrappedIcon;
 }
+ 
 
 export default wrapIcon;

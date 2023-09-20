@@ -20,13 +20,21 @@ export type UseIconStateOptions = {
   flipInRtl?: boolean;
 }
 
-export const useIconState = <TBaseAttributes extends (React.SVGAttributes<SVGElement> | React.HTMLAttributes<HTMLElement>) = React.SVGAttributes<SVGElement>>(props: FluentIconsProps<TBaseAttributes>, options?: UseIconStateOptions): Omit<FluentIconsProps<TBaseAttributes>, 'primaryFill'> => {
+export const useIconState = <
+  TBaseAttributes extends
+    | React.SVGAttributes<SVGElement>
+    | React.HTMLAttributes<HTMLElement> = React.SVGAttributes<SVGElement>,
+  TRefType extends HTMLElement | SVGSVGElement = SVGSVGElement,
+>(
+  props: FluentIconsProps<TBaseAttributes, TRefType>,
+  options?: UseIconStateOptions,
+): Omit<FluentIconsProps<TBaseAttributes, TRefType>, 'primaryFill'> => {
     const { title, primaryFill = "currentColor", ...rest } = props;
     const state = {
       ...rest,
       title: undefined,
       fill: primaryFill
-    } as Omit<FluentIconsProps<TBaseAttributes>, 'primaryFill'>;
+    } as Omit<FluentIconsProps<TBaseAttributes, TRefType>, 'primaryFill'>;
   
     const styles = useRootStyles();
     const iconContext = useIconContext();
