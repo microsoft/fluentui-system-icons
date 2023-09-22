@@ -1,8 +1,9 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_text_indent_increase_20_regular.svg",
-      "idiom": "universal"
+      "filename": "ic_fluent_text_indent_increase_rtl_20_regular.svg",
+      "idiom": "universal",
+      "language-direction": "right-to-left"
     }
   ],
   "info": {

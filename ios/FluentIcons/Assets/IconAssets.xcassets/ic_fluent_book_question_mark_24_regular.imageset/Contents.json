@@ -1,13 +1,9 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_book_question_mark_24_regular.svg",
-      "idiom": "universal"
-    },
-    {
-      "filename": "ar_ic_fluent_book_question_mark_24_regular.svg",
+      "filename": "ic_fluent_book_question_mark_rtl_24_regular.svg",
       "idiom": "universal",
-      "locale": "ar"
+      "language-direction": "left-to-right"
     }
   ],
   "info": {
@@ -15,7 +11,6 @@
     "version": 1
   },
   "properties": {
-    "localizable": true,
     "template-rendering-intent": "template"
   }
 }

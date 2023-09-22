@@ -1,8 +1,9 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_arrow_export_24_regular.svg",
-      "idiom": "universal"
+      "filename": "ic_fluent_arrow_export_ltr_24_regular.svg",
+      "idiom": "universal",
+      "language-direction": "left-to-right"
     }
   ],
   "info": {

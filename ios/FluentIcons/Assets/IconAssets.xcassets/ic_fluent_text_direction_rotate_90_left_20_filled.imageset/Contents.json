@@ -3,11 +3,6 @@
     {
       "filename": "ic_fluent_text_direction_rotate_90_left_20_filled.svg",
       "idiom": "universal"
-    },
-    {
-      "filename": "en_ic_fluent_text_direction_rotate_90_left_20_filled.svg",
-      "idiom": "universal",
-      "locale": "en"
     }
   ],
   "info": {
@@ -15,7 +10,6 @@
     "version": 1
   },
   "properties": {
-    "localizable": true,
     "template-rendering-intent": "template"
   }
 }

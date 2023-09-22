@@ -4,21 +4,6 @@
       "filename": "ic_fluent_text_number_list_ltr_rotate_270_20_filled.svg",
       "idiom": "universal",
       "language-direction": "left-to-right"
-    },
-    {
-      "filename": "ic_fluent_text_number_list_rtl_rotate_270_20_filled.svg",
-      "idiom": "universal",
-      "language-direction": "right-to-left"
-    },
-    {
-      "filename": "LTR_ic_fluent_text_number_list_rotate_270_20_filled.svg",
-      "idiom": "universal",
-      "locale": "LTR"
-    },
-    {
-      "filename": "RTL_ic_fluent_text_number_list_rotate_270_20_filled.svg",
-      "idiom": "universal",
-      "locale": "RTL"
     }
   ],
   "info": {
@@ -26,7 +11,6 @@
     "version": 1
   },
   "properties": {
-    "localizable": true,
     "template-rendering-intent": "template"
   }
 }

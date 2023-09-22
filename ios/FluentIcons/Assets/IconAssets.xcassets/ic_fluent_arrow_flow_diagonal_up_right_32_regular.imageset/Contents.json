@@ -2,7 +2,8 @@
   "images": [
     {
       "filename": "ic_fluent_arrow_flow_diagonal_up_right_32_regular.svg",
-      "idiom": "universal"
+      "idiom": "universal",
+      "language-direction": "left-to-right"
     }
   ],
   "info": {

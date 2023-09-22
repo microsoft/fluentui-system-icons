@@ -5,9 +5,24 @@
       "idiom": "universal"
     },
     {
-      "filename": "sl_ic_fluent_text_sort_descending_24_regular.svg",
+      "filename": "bg_ic_fluent_text_sort_descending_24_regular.svg",
       "idiom": "universal",
-      "locale": "sl"
+      "locale": "bg"
+    },
+    {
+      "filename": "da_ic_fluent_text_sort_descending_24_regular.svg",
+      "idiom": "universal",
+      "locale": "da"
+    },
+    {
+      "filename": "en_ic_fluent_text_sort_descending_24_regular.svg",
+      "idiom": "universal",
+      "locale": "en"
+    },
+    {
+      "filename": "fi_ic_fluent_text_sort_descending_24_regular.svg",
+      "idiom": "universal",
+      "locale": "fi"
     },
     {
       "filename": "gr_ic_fluent_text_sort_descending_24_regular.svg",
@@ -20,9 +35,9 @@
       "locale": "kk"
     },
     {
-      "filename": "fi_ic_fluent_text_sort_descending_24_regular.svg",
+      "filename": "ko_ic_fluent_text_sort_descending_24_regular.svg",
       "idiom": "universal",
-      "locale": "fi"
+      "locale": "ko"
     },
     {
       "filename": "ru_ic_fluent_text_sort_descending_24_regular.svg",
@@ -30,34 +45,19 @@
       "locale": "ru"
     },
     {
-      "filename": "sr_ic_fluent_text_sort_descending_24_regular.svg",
-      "idiom": "universal",
-      "locale": "sr"
-    },
-    {
       "filename": "se_ic_fluent_text_sort_descending_24_regular.svg",
       "idiom": "universal",
       "locale": "se"
     },
     {
-      "filename": "da_ic_fluent_text_sort_descending_24_regular.svg",
+      "filename": "sl_ic_fluent_text_sort_descending_24_regular.svg",
       "idiom": "universal",
-      "locale": "da"
+      "locale": "sl"
     },
     {
-      "filename": "ko_ic_fluent_text_sort_descending_24_regular.svg",
+      "filename": "sr_ic_fluent_text_sort_descending_24_regular.svg",
       "idiom": "universal",
-      "locale": "ko"
-    },
-    {
-      "filename": "en_ic_fluent_text_sort_descending_24_regular.svg",
-      "idiom": "universal",
-      "locale": "en"
-    },
-    {
-      "filename": "bg_ic_fluent_text_sort_descending_24_regular.svg",
-      "idiom": "universal",
-      "locale": "bg"
+      "locale": "sr"
     }
   ],
   "info": {

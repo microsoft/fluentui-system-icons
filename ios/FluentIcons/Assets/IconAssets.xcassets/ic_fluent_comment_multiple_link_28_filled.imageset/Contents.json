@@ -2,7 +2,8 @@
   "images": [
     {
       "filename": "ic_fluent_comment_multiple_link_28_filled.svg",
-      "idiom": "universal"
+      "idiom": "universal",
+      "language-direction": "left-to-right"
     }
   ],
   "info": {

@@ -1,8 +1,9 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_clipboard_bullet_list_16_filled.svg",
-      "idiom": "universal"
+      "filename": "ic_fluent_clipboard_bullet_list_rtl_16_filled.svg",
+      "idiom": "universal",
+      "language-direction": "right-to-left"
     }
   ],
   "info": {

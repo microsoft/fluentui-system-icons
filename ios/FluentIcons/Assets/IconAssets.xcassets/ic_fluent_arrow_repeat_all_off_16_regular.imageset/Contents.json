@@ -2,7 +2,8 @@
   "images": [
     {
       "filename": "ic_fluent_arrow_repeat_all_off_16_regular.svg",
-      "idiom": "universal"
+      "idiom": "universal",
+      "language-direction": "left-to-right"
     }
   ],
   "info": {

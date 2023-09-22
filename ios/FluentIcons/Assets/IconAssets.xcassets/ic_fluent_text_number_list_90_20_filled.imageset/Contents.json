@@ -1,11 +1,6 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_text_number_list_ltr_90_20_filled.svg",
-      "idiom": "universal",
-      "language-direction": "left-to-right"
-    },
-    {
       "filename": "ic_fluent_text_number_list_rtl_90_20_filled.svg",
       "idiom": "universal",
       "language-direction": "right-to-left"

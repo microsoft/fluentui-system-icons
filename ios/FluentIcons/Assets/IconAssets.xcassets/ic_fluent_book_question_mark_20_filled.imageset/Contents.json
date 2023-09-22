@@ -1,8 +1,9 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_book_question_mark_20_filled.svg",
-      "idiom": "universal"
+      "filename": "ic_fluent_book_question_mark_rtl_20_filled.svg",
+      "idiom": "universal",
+      "language-direction": "left-to-right"
     }
   ],
   "info": {
