@@ -23,7 +23,7 @@ jobs:
           gradleWrapperFile: "android/gradlew"
           workingDirectory: 'android'
           tasks: "assembleRelease"
-          options: "-PversionName=$(NEW_VERSION)"
+          options: "-PversionName=$(VERSION_NAME)"
           publishJUnitResults: false
           javaHomeOption: "JDKVersion"
           jdkVersionOption: "$(jdkVersion)"
