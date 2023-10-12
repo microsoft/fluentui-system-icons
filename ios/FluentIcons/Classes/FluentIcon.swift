@@ -12742,8 +12742,8 @@ import Foundation
   case textAlignRightRotate9020Regular
   case textAlignRightRotate9024Filled
   case textAlignRightRotate9024Regular
-  case textAsterisk16Filled.Pdf
-  case textAsterisk16Regular.Pdf
+  case textAsterisk16Filled
+  case textAsterisk16Regular
   case textAsterisk20Filled
   case textAsterisk20Regular
   case textBaseline20Filled
@@ -27488,8 +27488,8 @@ import Foundation
     case .textAlignRightRotate9020Regular: return "ic_fluent_text_align_right_rotate_90_20_regular"
     case .textAlignRightRotate9024Filled: return "ic_fluent_text_align_right_rotate_90_24_filled"
     case .textAlignRightRotate9024Regular: return "ic_fluent_text_align_right_rotate_90_24_regular"
-    case .textAsterisk16Filled.Pdf: return "ic_fluent_text_asterisk_16_filled.pdf"
-    case .textAsterisk16Regular.Pdf: return "ic_fluent_text_asterisk_16_regular.pdf"
+    case .textAsterisk16Filled: return "ic_fluent_text_asterisk_16_filled"
+    case .textAsterisk16Regular: return "ic_fluent_text_asterisk_16_regular"
     case .textAsterisk20Filled: return "ic_fluent_text_asterisk_20_filled"
     case .textAsterisk20Regular: return "ic_fluent_text_asterisk_20_regular"
     case .textBaseline20Filled: return "ic_fluent_text_baseline_20_filled"
@@ -42274,8 +42274,8 @@ import Foundation
     case .textAlignRightRotate9020Regular: return ".textAlignRightRotate9020Regular"
     case .textAlignRightRotate9024Filled: return ".textAlignRightRotate9024Filled"
     case .textAlignRightRotate9024Regular: return ".textAlignRightRotate9024Regular"
-    case .textAsterisk16Filled.Pdf: return ".textAsterisk16Filled.Pdf"
-    case .textAsterisk16Regular.Pdf: return ".textAsterisk16Regular.Pdf"
+    case .textAsterisk16Filled: return ".textAsterisk16Filled"
+    case .textAsterisk16Regular: return ".textAsterisk16Regular"
     case .textAsterisk20Filled: return ".textAsterisk20Filled"
     case .textAsterisk20Regular: return ".textAsterisk20Regular"
     case .textBaseline20Filled: return ".textBaseline20Filled"

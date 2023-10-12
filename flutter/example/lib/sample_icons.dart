@@ -12812,6 +12812,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.text_align_right_rotate_90_24_regular, 'text_align_right_rotate_90_24_regular', 24),
 
+  FluentUISampleIcon(FluentIcons.text_asterisk_16_regular, 'text_asterisk_16_regular', 16),
+
   FluentUISampleIcon(FluentIcons.text_asterisk_20_regular, 'text_asterisk_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.text_baseline_20_regular, 'text_baseline_20_regular', 20),
@@ -27513,6 +27515,8 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.text_align_right_rotate_90_20_filled, 'text_align_right_rotate_90_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.text_align_right_rotate_90_24_filled, 'text_align_right_rotate_90_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.text_asterisk_16_filled, 'text_asterisk_16_filled', 16),
 
   FluentUISampleIcon(FluentIcons.text_asterisk_20_filled, 'text_asterisk_20_filled', 20),
 

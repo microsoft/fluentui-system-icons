@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?c487c71364576a1124b115823b8d1b34") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?c487c71364576a1124b115823b8d1b34") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?c487c71364576a1124b115823b8d1b34") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?9a52d2db6a05d4491f70898d31f0648d") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?9a52d2db6a05d4491f70898d31f0648d") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?9a52d2db6a05d4491f70898d31f0648d") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -22077,4 +22077,7 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_triangle_28_filled:before {
     content: "\f03b9";
+}
+.icon-ic_fluent_text_asterisk_16_filled:before {
+    content: "\f03ba";
 }

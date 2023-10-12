@@ -19221,6 +19221,9 @@ class FluentIcons {
   /// fluent icon named "text_align_right_rotate_90" in size 24 and regular style.
   static const IconData text_align_right_rotate_90_24_regular = IconData(60624, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "text_asterisk" in size 16 and regular style.
+  static const IconData text_asterisk_16_regular = IconData(983975, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "text_asterisk" in size 20 and regular style.
   static const IconData text_asterisk_20_regular = IconData(63395, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -41275,6 +41278,9 @@ class FluentIcons {
 
   /// fluent icon named "text_align_right_rotate_90" in size 24 and filled style.
   static const IconData text_align_right_rotate_90_24_filled = IconData(60622, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "text_asterisk" in size 16 and filled style.
+  static const IconData text_asterisk_16_filled = IconData(983994, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "text_asterisk" in size 20 and filled style.
   static const IconData text_asterisk_20_filled = IconData(63419, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
