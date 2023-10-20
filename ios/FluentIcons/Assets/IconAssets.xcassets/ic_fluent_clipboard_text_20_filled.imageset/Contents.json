@@ -1,9 +1,9 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_clipboard_text_ltr_20_filled.svg",
+      "filename": "ic_fluent_clipboard_text_rtl_20_filled.svg",
       "idiom": "universal",
-      "language-direction": "left-to-right"
+      "language-direction": "right-to-left"
     }
   ],
   "info": {

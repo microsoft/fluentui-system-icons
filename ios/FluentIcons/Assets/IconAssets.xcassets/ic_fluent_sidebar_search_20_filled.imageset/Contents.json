@@ -1,8 +1,9 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_sidebar_search_20_filled_ltr.svg",
-      "idiom": "universal"
+      "filename": "ic_fluent_sidebar_search_rtl_20_filled.svg",
+      "idiom": "universal",
+      "language-direction": "right-to-left"
     }
   ],
   "info": {

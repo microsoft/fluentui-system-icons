@@ -1,9 +1,8 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_vehicle_car_profile_rtl_24_filled.svg",
-      "idiom": "universal",
-      "language-direction": "right-to-left"
+      "filename": "ic_fluent_vehicle_car_profile_24_filled.svg",
+      "idiom": "universal"
     }
   ],
   "info": {

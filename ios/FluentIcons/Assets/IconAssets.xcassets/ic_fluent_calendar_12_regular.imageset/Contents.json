@@ -1,9 +1,9 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_calendar_rtl_12_regular.svg",
+      "filename": "ic_fluent_calendar_12_regular.svg",
       "idiom": "universal",
-      "language-direction": "right-to-left"
+      "language-direction": "left-to-right"
     }
   ],
   "info": {
