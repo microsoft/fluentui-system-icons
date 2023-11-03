@@ -1,9 +1,9 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_text_indent_decrease_rtl_90_20_filled.svg",
+      "filename": "ic_fluent_text_indent_decrease_ltr_90_20_filled.svg",
       "idiom": "universal",
-      "language-direction": "right-to-left"
+      "language-direction": "left-to-right"
     }
   ],
   "info": {

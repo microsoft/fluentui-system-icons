@@ -1,9 +1,9 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_text_bullet_list_ltr_20_regular.svg",
+      "filename": "ic_fluent_text_bullet_list_rtl_20_regular.svg",
       "idiom": "universal",
-      "language-direction": "left-to-right"
+      "language-direction": "right-to-left"
     }
   ],
   "info": {
