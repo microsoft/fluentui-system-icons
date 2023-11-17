@@ -1,9 +1,9 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_multiselect_16_regular_ltr.svg",
+      "filename": "ic_fluent_multiselect_rtl_16_regular.svg",
       "idiom": "universal",
-      "language-direction": "left-to-right"
+      "language-direction": "right-to-left"
     }
   ],
   "info": {
