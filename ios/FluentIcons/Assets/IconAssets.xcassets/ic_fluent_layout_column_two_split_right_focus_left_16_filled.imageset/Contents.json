@@ -1,0 +1,15 @@
+{
+  "images": [
+    {
+      "filename": "ic_fluent_layout_column_two_split_right_focus_left_16_filled.svg",
+      "idiom": "universal"
+    }
+  ],
+  "info": {
+    "author": "xcode",
+    "version": 1
+  },
+  "properties": {
+    "template-rendering-intent": "template"
+  }
+}

@@ -1,9 +1,9 @@
 {
   "images": [
     {
-      "filename": "ic_fluent_task_list_square_rtl_16_regular.svg",
+      "filename": "ic_fluent_task_list_square_16_regular_rtl.svg",
       "idiom": "universal",
-      "language-direction": "right-to-left"
+      "language-direction": "left-to-right"
     }
   ],
   "info": {
