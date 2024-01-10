@@ -23,7 +23,7 @@ const bundleIcon = (FilledIcon: FluentIcon, RegularIcon: FluentIcon) => {
                         iconFilledClassName,
                         className
                     )}
-                    fill={primaryFill}
+                    primaryFill={primaryFill}
                 />
                 <RegularIcon
                     {...rest}
@@ -33,7 +33,7 @@ const bundleIcon = (FilledIcon: FluentIcon, RegularIcon: FluentIcon) => {
                       iconRegularClassName,
                       className
                     )}
-                    fill={primaryFill}
+                    primaryFill={primaryFill}
                 />
             </React.Fragment>
         )
