@@ -184,10 +184,14 @@ def process_assets():
             continue
         icon_assets_path = os.path.join(assets_dir, file_name)
         metadata_path = os.path.join(icon_assets_path, "metadata.json")
-        if not os.path.exists(metadata_path):
+        metadata = {}
+        if os.path.exists(metadata_path):
+            with open(metadata_path) as metadata_json:
+                metadata = json.loads(metadata_json.read())
+
+        if " LTR" in file_name or " RTL" in file_name:
+            # Old file format for ltr/rtl
             continue
-        with open(metadata_path) as metadata_json:
-            metadata = json.loads(metadata_json.read())
 
         icon_assets.append(FluentIconAsset(
             name=file_name, 
