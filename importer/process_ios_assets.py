@@ -59,17 +59,16 @@ def xc_image_data_for_file_name(file_name, locale, metadata):
         elif metadata["singleton"] == "RTL":
             output["language-direction"] = "right-to-left"
 
-    # These icons are being replaced by new icons with metadata
-    # for backward compatibility we add the language-direction
-    if "_ltr_" in file_name and not metadata:
+    if "_ltr" in file_name:
         output["language-direction"] = "left-to-right"
-    if "_rtl_" in file_name and not metadata:
+    elif "_rtl" in file_name:
         output["language-direction"] = "right-to-left"
 
     return output
 
 
 def create_icon_set(fluent_icon_assets, original_icon_names, icon_assets_path):
+    print("create_icon_set")
     for fluent_icon_asset in fluent_icon_assets:
         language_metadata = fluent_icon_asset.metadata.get("language")
         languages = []
@@ -82,17 +81,26 @@ def create_icon_set(fluent_icon_assets, original_icon_names, icon_assets_path):
         if languages == ["en"]:
             languages = []
 
-        for file_name in os.listdir(os.path.join(fluent_icon_asset.path, IMAGE_FORMAT.upper())):
-            icon_name = get_icon_name(file_name)
+        files = os.listdir(os.path.join(fluent_icon_asset.path, IMAGE_FORMAT.upper()))
+        icon_names = set()
+        for file in files:
+            icon_names.add(file.replace("_ltr", "").replace("_rtl", "").replace(f".{IMAGE_FORMAT}", ""))
 
+        for icon_name in icon_names:
             if icon_name in original_icon_names:
                 continue
 
             original_icon_names.add(icon_name)
 
+            files_for_size_and_style = []
+            for file in files:
+                if icon_name in file:
+                    files_for_size_and_style.append(file)
+
             imageset_path = os.path.join(icon_assets_path, "{icon_name}.imageset".format(icon_name=icon_name))
             os.mkdir(imageset_path)
-            shutil.copyfile(os.path.join(fluent_icon_asset.path, IMAGE_FORMAT.upper(), file_name), os.path.join(imageset_path, file_name))
+            for file_name in files_for_size_and_style:
+                shutil.copyfile(os.path.join(fluent_icon_asset.path, IMAGE_FORMAT.upper(), file_name), os.path.join(imageset_path, file_name))
 
             supported_languages = []
             for language in languages:
@@ -130,9 +138,9 @@ def create_icon_set(fluent_icon_assets, original_icon_names, icon_assets_path):
                 if icon_name.endswith("_color") or icon_name.startswith("ic_fluent_flag_pride"):
                     rendering_intent = "original"
 
-                images = [
-                    xc_image_data_for_file_name(file_name, locale=None, metadata=fluent_icon_asset.metadata)
-                ]
+                images = []
+                for file_name in files_for_size_and_style:
+                    images.append(xc_image_data_for_file_name(file_name, locale=None, metadata=fluent_icon_asset.metadata))
 
                 contents = {
                     "images": images,
@@ -165,6 +173,8 @@ def create_icon_set(fluent_icon_assets, original_icon_names, icon_assets_path):
 
 
 def process_assets():
+    print("Generating iOS xcassets directories and code")
+
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     assets_dir = os.path.join(project_root, "assets")
 
@@ -178,6 +188,10 @@ def process_assets():
         if os.path.exists(metadata_path):
             with open(metadata_path) as metadata_json:
                 metadata = json.loads(metadata_json.read())
+
+        if " LTR" in file_name or " RTL" in file_name:
+            # Old file format for ltr/rtl
+            continue
 
         icon_assets.append(FluentIconAsset(
             name=file_name, 
