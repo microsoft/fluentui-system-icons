@@ -2,7 +2,13 @@
   "images": [
     {
       "filename": "ic_fluent_sidebar_search_20_regular_ltr.svg",
-      "idiom": "universal"
+      "idiom": "universal",
+      "language-direction": "left-to-right"
+    },
+    {
+      "filename": "ic_fluent_sidebar_search_20_regular_rtl.svg",
+      "idiom": "universal",
+      "language-direction": "right-to-left"
     }
   ],
   "info": {

@@ -3,6 +3,11 @@
     {
       "filename": "ic_fluent_multiselect_20_filled_rtl.svg",
       "idiom": "universal",
+      "language-direction": "right-to-left"
+    },
+    {
+      "filename": "ic_fluent_multiselect_20_filled_ltr.svg",
+      "idiom": "universal",
       "language-direction": "left-to-right"
     }
   ],
