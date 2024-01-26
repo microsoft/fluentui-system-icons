@@ -11,7 +11,7 @@ const useBundledIconStyles = makeStyles({
 
 const bundleIcon = (FilledIcon: FluentIcon, RegularIcon: FluentIcon) => {
     const Component: FluentIcon = (props) => {
-        const { className, primaryFill = 'currentColor', filled, ...rest } = props;
+        const { className, filled, ...rest } = props;
         const styles = useBundledIconStyles();
         return (
             <React.Fragment>
@@ -23,7 +23,6 @@ const bundleIcon = (FilledIcon: FluentIcon, RegularIcon: FluentIcon) => {
                         iconFilledClassName,
                         className
                     )}
-                    primaryFill={primaryFill}
                 />
                 <RegularIcon
                     {...rest}
@@ -33,7 +32,6 @@ const bundleIcon = (FilledIcon: FluentIcon, RegularIcon: FluentIcon) => {
                       iconRegularClassName,
                       className
                     )}
-                    primaryFill={primaryFill}
                 />
             </React.Fragment>
         )
