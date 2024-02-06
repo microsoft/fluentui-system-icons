@@ -85,7 +85,7 @@ export function createFluentFontIcon(displayName: string, codepoint: string, fon
 
 
         // We want to keep the same API surface as the SVG icons, so translate `primaryFill` to `color`
-        if (props.primaryFill) {
+        if (props.primaryFill && props.primaryFill.toLowerCase() !== 'currentcolor') {
             state.style = {
                 ...state.style,
                 color: props.primaryFill
