@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?521e841149937855baaf231260bebdf6") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?521e841149937855baaf231260bebdf6") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?521e841149937855baaf231260bebdf6") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?fb38bae410dbef20e05d004edba28d9c") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?fb38bae410dbef20e05d004edba28d9c") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?fb38bae410dbef20e05d004edba28d9c") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -23412,4 +23412,109 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_video_link_28_filled:before {
     content: "\f0576";
+}
+.icon-ic_fluent_building_lighthouse_16_filled:before {
+    content: "\f0577";
+}
+.icon-ic_fluent_calendar_sparkle_16_filled:before {
+    content: "\f0578";
+}
+.icon-ic_fluent_calendar_sparkle_20_filled:before {
+    content: "\f0579";
+}
+.icon-ic_fluent_calendar_sparkle_24_filled:before {
+    content: "\f057a";
+}
+.icon-ic_fluent_calendar_sparkle_28_filled:before {
+    content: "\f057b";
+}
+.icon-ic_fluent_calendar_sparkle_32_filled:before {
+    content: "\f057c";
+}
+.icon-ic_fluent_calendar_sparkle_48_filled:before {
+    content: "\f057d";
+}
+.icon-ic_fluent_calendar_template_20_filled:before {
+    content: "\f057e";
+}
+.icon-ic_fluent_calendar_template_24_filled:before {
+    content: "\f057f";
+}
+.icon-ic_fluent_calendar_template_32_filled:before {
+    content: "\f0580";
+}
+.icon-ic_fluent_clipboard_12_filled:before {
+    content: "\f0581";
+}
+.icon-ic_fluent_clipboard_48_filled:before {
+    content: "\f0582";
+}
+.icon-ic_fluent_compose_12_filled:before {
+    content: "\f0583";
+}
+.icon-ic_fluent_compose_32_filled:before {
+    content: "\f0584";
+}
+.icon-ic_fluent_compose_48_filled:before {
+    content: "\f0585";
+}
+.icon-ic_fluent_globe_28_filled:before {
+    content: "\f0586";
+}
+.icon-ic_fluent_guest_12_filled:before {
+    content: "\f0587";
+}
+.icon-ic_fluent_guest_32_filled:before {
+    content: "\f0588";
+}
+.icon-ic_fluent_guest_48_filled:before {
+    content: "\f0589";
+}
+.icon-ic_fluent_laptop_briefcase_20_filled:before {
+    content: "\f058a";
+}
+.icon-ic_fluent_laptop_briefcase_24_filled:before {
+    content: "\f058b";
+}
+.icon-ic_fluent_laptop_briefcase_32_filled:before {
+    content: "\f058c";
+}
+.icon-ic_fluent_layer_diagonal_sparkle_16_filled:before {
+    content: "\f058d";
+}
+.icon-ic_fluent_layer_diagonal_sparkle_20_filled:before {
+    content: "\f058e";
+}
+.icon-ic_fluent_layer_diagonal_sparkle_24_filled:before {
+    content: "\f058f";
+}
+.icon-ic_fluent_payment_wireless_16_filled:before {
+    content: "\f0590";
+}
+.icon-ic_fluent_payment_wireless_20_filled:before {
+    content: "\f0591";
+}
+.icon-ic_fluent_payment_wireless_24_filled:before {
+    content: "\f0592";
+}
+.icon-ic_fluent_payment_wireless_28_filled:before {
+    content: "\f0593";
+}
+.icon-ic_fluent_payment_wireless_32_filled:before {
+    content: "\f0594";
+}
+.icon-ic_fluent_payment_wireless_48_filled:before {
+    content: "\f0595";
+}
+.icon-ic_fluent_status_28_filled:before {
+    content: "\f0596";
+}
+.icon-ic_fluent_status_32_filled:before {
+    content: "\f0597";
+}
+.icon-ic_fluent_status_48_filled:before {
+    content: "\f0598";
+}
+.icon-ic_fluent_video_off_16_filled:before {
+    content: "\f0599";
 }
