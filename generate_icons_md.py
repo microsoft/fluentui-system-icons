@@ -2,7 +2,6 @@
 # Licensed under the MIT license.
 
 import os
-
 from collections import defaultdict
 
 # Define the icon sizes and styles
@@ -74,7 +73,8 @@ def check_missing_icons():
     return missing_icons
 
 # Function to generate Markdown file listing missing icons
-def write_missing_icons_file(md_file, missing_icons):
+def write_missing_icons_file(md_file):
+    missing_icons = check_missing_icons()
     # Sort the missing icons alphabetically by icon name
     missing_icons.sort(key=lambda x: x[0])
 
@@ -86,13 +86,11 @@ def write_missing_icons_file(md_file, missing_icons):
         if len(item) == 3:
             md_file.write(f"| {item[0]} | {item[1].title()} | {item[2]} |\n")
 
-
 with open("icons_filled.md", "w") as icons_filled_md:
     write_icon_file(icons_filled_md, "filled")
 
 with open("icons_regular.md", "w") as icons_regular_md:
     write_icon_file(icons_regular_md, "regular")
 
-missing_icons = check_missing_icons()
 with open("missing_icons.md", "w") as missing_icons_md:
-    write_missing_icons_file(missing_icons_md, missing_icons)
+    write_missing_icons_file(missing_icons_md)
