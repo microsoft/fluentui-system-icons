@@ -70,7 +70,7 @@ async function processFiles(src, dest) {
 
   const indexPath = path.join(dest, 'index.tsx')
   // Finally add the interface definition and then write out the index.
-  addRexportsToIndex(indexContents);
+  addRexportsToIndex(indexContents, '..');
 
 
   await fs.writeFile(indexPath, indexContents.join('\n'));
