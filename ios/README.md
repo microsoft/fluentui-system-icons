@@ -6,13 +6,13 @@
 
 ```ruby
 use_frameworks!
-pod "FluentIcons", "1.1.228"
+pod "FluentIcons", "1.1.229"
 ```
 
 ### Carthage
 
 ```bash
-git "git@github.com:microsoft/fluentui-system-icons.git" "1.1.228"
+git "git@github.com:microsoft/fluentui-system-icons.git" "1.1.229"
 ```
 
 ## Usage
