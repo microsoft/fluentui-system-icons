@@ -72,6 +72,7 @@ async function processFiles(src, dest) {
   indexContents.push('export { FluentIconsProps } from \'../utils/FluentIconsProps.types\'');
   indexContents.push('export { default as wrapIcon } from \'../utils/wrapIcon\'');
   indexContents.push('export { default as bundleIcon } from \'../utils/bundleIcon\'');
+  indexContents.push('export { createFluentIcon } from \'../utils/createFluentIcon\'');
   indexContents.push('export { createFluentFontIcon } from \'../utils/fonts/createFluentFontIcon\'');
   indexContents.push('export type { FluentIcon } from \'../utils/createFluentIcon\'');
   indexContents.push('export * from \'../utils/useIconState\'');
