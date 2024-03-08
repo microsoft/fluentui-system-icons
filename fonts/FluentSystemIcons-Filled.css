@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?1a53c868f5733859b38029c0d4293c3d") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?1a53c868f5733859b38029c0d4293c3d") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?1a53c868f5733859b38029c0d4293c3d") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?662ed55956b9065bf3c6bae3d8c374fc") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?662ed55956b9065bf3c6bae3d8c374fc") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?662ed55956b9065bf3c6bae3d8c374fc") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -23661,4 +23661,145 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_window_fingerprint_48_filled:before {
     content: "\f05c9";
+}
+.icon-ic_fluent_accessibility_error_20_filled:before {
+    content: "\f05ca";
+}
+.icon-ic_fluent_accessibility_error_24_filled:before {
+    content: "\f05cb";
+}
+.icon-ic_fluent_accessibility_question_mark_20_filled:before {
+    content: "\f05cc";
+}
+.icon-ic_fluent_accessibility_question_mark_24_filled:before {
+    content: "\f05cd";
+}
+.icon-ic_fluent_arrow_down_exclamation_24_filled:before {
+    content: "\f05ce";
+}
+.icon-ic_fluent_arrow_sort_up_lines_16_filled:before {
+    content: "\f05cf";
+}
+.icon-ic_fluent_arrow_sort_up_lines_20_filled:before {
+    content: "\f05d0";
+}
+.icon-ic_fluent_arrow_sort_up_lines_24_filled:before {
+    content: "\f05d1";
+}
+.icon-ic_fluent_arrow_up_exclamation_16_filled:before {
+    content: "\f05d2";
+}
+.icon-ic_fluent_arrow_up_exclamation_20_filled:before {
+    content: "\f05d3";
+}
+.icon-ic_fluent_arrow_up_exclamation_24_filled:before {
+    content: "\f05d4";
+}
+.icon-ic_fluent_bench_20_filled:before {
+    content: "\f05d5";
+}
+.icon-ic_fluent_bench_24_filled:before {
+    content: "\f05d6";
+}
+.icon-ic_fluent_building_lighthouse_28_filled:before {
+    content: "\f05d7";
+}
+.icon-ic_fluent_calendar_video_20_filled:before {
+    content: "\f05d8";
+}
+.icon-ic_fluent_clock_bill_16_filled:before {
+    content: "\f05d9";
+}
+.icon-ic_fluent_clock_bill_20_filled:before {
+    content: "\f05da";
+}
+.icon-ic_fluent_clock_bill_24_filled:before {
+    content: "\f05db";
+}
+.icon-ic_fluent_clock_bill_32_filled:before {
+    content: "\f05dc";
+}
+.icon-ic_fluent_data_usage_16_filled:before {
+    content: "\f05dd";
+}
+.icon-ic_fluent_data_usage_settings_16_filled:before {
+    content: "\f05de";
+}
+.icon-ic_fluent_data_usage_settings_24_filled:before {
+    content: "\f05df";
+}
+.icon-ic_fluent_edit_person_20_filled:before {
+    content: "\f05e0";
+}
+.icon-ic_fluent_edit_person_24_filled:before {
+    content: "\f05e1";
+}
+.icon-ic_fluent_highway_20_filled:before {
+    content: "\f05e2";
+}
+.icon-ic_fluent_highway_24_filled:before {
+    content: "\f05e3";
+}
+.icon-ic_fluent_laptop_person_20_filled:before {
+    content: "\f05e4";
+}
+.icon-ic_fluent_laptop_person_24_filled:before {
+    content: "\f05e5";
+}
+.icon-ic_fluent_laptop_person_48_filled:before {
+    content: "\f05e6";
+}
+.icon-ic_fluent_location_ripple_16_filled:before {
+    content: "\f05e7";
+}
+.icon-ic_fluent_location_ripple_20_filled:before {
+    content: "\f05e8";
+}
+.icon-ic_fluent_location_ripple_24_filled:before {
+    content: "\f05e9";
+}
+.icon-ic_fluent_mail_arrow_double_back_32_filled:before {
+    content: "\f05ea";
+}
+.icon-ic_fluent_mail_briefcase_48_filled:before {
+    content: "\f05eb";
+}
+.icon-ic_fluent_options_28_filled:before {
+    content: "\f05ec";
+}
+.icon-ic_fluent_options_32_filled:before {
+    content: "\f05ed";
+}
+.icon-ic_fluent_people_add_32_filled:before {
+    content: "\f05ee";
+}
+.icon-ic_fluent_person_alert_32_filled:before {
+    content: "\f05ef";
+}
+.icon-ic_fluent_road_20_filled:before {
+    content: "\f05f0";
+}
+.icon-ic_fluent_road_24_filled:before {
+    content: "\f05f1";
+}
+.icon-ic_fluent_save_32_filled:before {
+    content: "\f05f2";
+}
+.icon-ic_fluent_tab_desktop_multiple_24_filled:before {
+    content: "\f05f3";
+}
+.icon-ic_fluent_tab_desktop_multiple_sparkle_16_filled:before {
+    content: "\f05f4";
+}
+.icon-ic_fluent_tab_desktop_multiple_sparkle_20_filled:before {
+    content: "\f05f5";
+}
+.icon-ic_fluent_tab_desktop_multiple_sparkle_24_filled:before {
+    content: "\f05f6";
+}
+.icon-ic_fluent_vehicle_tractor_20_filled:before {
+    content: "\f05f7";
+}
+.icon-ic_fluent_vehicle_tractor_24_filled:before {
+    content: "\f05f8";
 }
