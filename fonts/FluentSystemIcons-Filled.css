@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?662ed55956b9065bf3c6bae3d8c374fc") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?662ed55956b9065bf3c6bae3d8c374fc") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?662ed55956b9065bf3c6bae3d8c374fc") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?e4d39ab78aaaf690f882c3f67449ad24") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?e4d39ab78aaaf690f882c3f67449ad24") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?e4d39ab78aaaf690f882c3f67449ad24") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -23802,4 +23802,88 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_vehicle_tractor_24_filled:before {
     content: "\f05f8";
+}
+.icon-ic_fluent_classification_32_filled:before {
+    content: "\f05f9";
+}
+.icon-ic_fluent_document_target_20_filled:before {
+    content: "\f05fa";
+}
+.icon-ic_fluent_document_target_24_filled:before {
+    content: "\f05fb";
+}
+.icon-ic_fluent_document_target_32_filled:before {
+    content: "\f05fc";
+}
+.icon-ic_fluent_emoji_meme_16_filled:before {
+    content: "\f05fd";
+}
+.icon-ic_fluent_emoji_meme_20_filled:before {
+    content: "\f05fe";
+}
+.icon-ic_fluent_emoji_meme_24_filled:before {
+    content: "\f05ff";
+}
+.icon-ic_fluent_hand_point_16_filled:before {
+    content: "\f0600";
+}
+.icon-ic_fluent_hand_point_20_filled:before {
+    content: "\f0601";
+}
+.icon-ic_fluent_hand_point_24_filled:before {
+    content: "\f0602";
+}
+.icon-ic_fluent_hand_point_28_filled:before {
+    content: "\f0603";
+}
+.icon-ic_fluent_hand_point_32_filled:before {
+    content: "\f0604";
+}
+.icon-ic_fluent_hand_point_48_filled:before {
+    content: "\f0605";
+}
+.icon-ic_fluent_mail_read_briefcase_48_filled:before {
+    content: "\f0606";
+}
+.icon-ic_fluent_people_subtract_20_filled:before {
+    content: "\f0607";
+}
+.icon-ic_fluent_people_subtract_24_filled:before {
+    content: "\f0608";
+}
+.icon-ic_fluent_people_subtract_32_filled:before {
+    content: "\f0609";
+}
+.icon-ic_fluent_person_alert_off_16_filled:before {
+    content: "\f060a";
+}
+.icon-ic_fluent_person_alert_off_20_filled:before {
+    content: "\f060b";
+}
+.icon-ic_fluent_person_alert_off_24_filled:before {
+    content: "\f060c";
+}
+.icon-ic_fluent_person_alert_off_32_filled:before {
+    content: "\f060d";
+}
+.icon-ic_fluent_shopping_bag_add_16_filled:before {
+    content: "\f060e";
+}
+.icon-ic_fluent_spatula_spoon_16_filled:before {
+    content: "\f060f";
+}
+.icon-ic_fluent_spatula_spoon_20_filled:before {
+    content: "\f0610";
+}
+.icon-ic_fluent_spatula_spoon_24_filled:before {
+    content: "\f0611";
+}
+.icon-ic_fluent_spatula_spoon_28_filled:before {
+    content: "\f0612";
+}
+.icon-ic_fluent_spatula_spoon_32_filled:before {
+    content: "\f0613";
+}
+.icon-ic_fluent_spatula_spoon_48_filled:before {
+    content: "\f0614";
 }
