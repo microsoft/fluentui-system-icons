@@ -80,6 +80,11 @@
       "types": "./lib/index.d.ts",
       "import": "./lib/index.js",
       "require": "./lib-cjs/index.js"
+    },
+    "./providers": {
+      "types": "./lib/providers.d.ts",
+      "import": "./lib/providers.js",
+      "require": "./lib-commonjs/providers.js"
     }
   }
 }
