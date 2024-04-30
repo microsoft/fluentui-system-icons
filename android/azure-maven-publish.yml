@@ -18,33 +18,3 @@ jobs:
             # Write your commands here
             sudo bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
             ls
-      - task: Gradle@3
-        inputs:
-          gradleWrapperFile: "android/gradlew"
-          workingDirectory: 'android'
-          tasks: "assembleRelease"
-          options: "-PversionName=$(VERSION_NAME)"
-          publishJUnitResults: false
-          javaHomeOption: "JDKVersion"
-          jdkVersionOption: "$(jdkVersion)"
-          sonarQubeRunAnalysis: false
-          spotBugsAnalysis: false      
-      - task: Gradle@2
-        displayName: Gradle publish
-        inputs:
-          gradleWrapperFile: 'android/gradlew'
-          workingDirectory: 'android'
-          tasks: 'publish'
-          publishJUnitResults: false
-          javaHomeOption: 'JDKVersion'
-          jdkVersionOption: "$(jdkVersion)"
-          sonarQubeRunAnalysis: false
-          options: "-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath)"
-
-      - task: PublishPipelineArtifact@1
-        displayName: Publish library artifact to pipeline
-        inputs:
-          targetPath: 'android/library/build/artifacts/com/microsoft/design'
-          artifact: 'aar'
-          publishLocation: 'pipeline'
-
