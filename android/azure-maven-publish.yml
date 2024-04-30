@@ -1,64 +1,49 @@
 pr: none
-resources:
-  repositories:
-  - repository: 1ESPipelineTemplates
-    type: git
-    name: 1ESPipelineTemplates/1ESPipelineTemplates
-    ref: refs/tags/release
-extends:
-  template: v1/1ES.Official.PipelineTemplate.yml@1ESPipelineTemplates
-  parameters:
+jobs:
+  - job: Build
     pool:
-      name: Azure-Pipelines-1ESPT-ExDShared
-      image: windows-2022
-      os: windows
-    customBuildTags:
-    - ES365AIMigrationTooling
-    stages:
-    - stage: stage
-      jobs:
-      - job: Build
-        variables:
-        - name: BUILDSECMON_OPT_IN
-          value: true
-        templateContext:
-          outputs:
-          - output: pipelineArtifact
-            displayName: 'Publish library artifact to pipeline'
-            targetPath: 'android/library/build/artifacts/com/microsoft/design'
-            artifactName: 'aar'
-            publishLocation: 'pipeline'
-        steps:
-        - task: Bash@3
-          displayName: "Base64 decodes and pipes the GPG key content into the secret file"
-          env:
-            GPG_KEY_CONTENT: $(gpgContent)
-            SIGNING_SECRET_KEY_RING_FILE: $(gpgSecretFilePath)
-          inputs:
-            targetType: "inline"
-            script: |
-              # Write your commands here
-              bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
-              ls
-        - task: Gradle@3
-          inputs:
-            gradleWrapperFile: "android/gradlew"
-            workingDirectory: 'android'
-            tasks: "assembleRelease"
-            options: "-PversionName=$(VERSION_NAME)"
-            publishJUnitResults: false
-            javaHomeOption: "JDKVersion"
-            jdkVersionOption: "$(jdkVersion)"
-            sonarQubeRunAnalysis: false
-            spotBugsAnalysis: false
-        - task: Gradle@2
-          displayName: Gradle publish
-          inputs:
-            gradleWrapperFile: 'android/gradlew'
-            workingDirectory: 'android'
-            tasks: 'publish'
-            publishJUnitResults: false
-            javaHomeOption: 'JDKVersion'
-            jdkVersionOption: "$(jdkVersion)"
-            sonarQubeRunAnalysis: false
-            options: "-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath)"
+      vmImage: ubuntu-latest
+    variables:
+      - name: BUILDSECMON_OPT_IN
+        value: true
+    steps:
+      - task: Bash@3
+        displayName: "Base64 decodes and pipes the GPG key content into the secret file"
+        env:
+          GPG_KEY_CONTENT: $(gpgContent)
+          SIGNING_SECRET_KEY_RING_FILE: $(gpgSecretFilePath)
+        inputs:
+          targetType: "inline"
+          script: |
+            # Write your commands here
+            sudo bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
+            ls
+      - task: Gradle@3
+        inputs:
+          gradleWrapperFile: "android/gradlew"
+          workingDirectory: 'android'
+          tasks: "assembleRelease"
+          options: "-PversionName=$(VERSION_NAME)"
+          publishJUnitResults: false
+          javaHomeOption: "JDKVersion"
+          jdkVersionOption: "$(jdkVersion)"
+          sonarQubeRunAnalysis: false
+          spotBugsAnalysis: false      
+      - task: Gradle@2
+        displayName: Gradle publish
+        inputs:
+          gradleWrapperFile: 'android/gradlew'
+          workingDirectory: 'android'
+          tasks: 'publish'
+          publishJUnitResults: false
+          javaHomeOption: 'JDKVersion'
+          jdkVersionOption: "$(jdkVersion)"
+          sonarQubeRunAnalysis: false
+          options: "-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath)"
+
+      - task: PublishPipelineArtifact@1
+        displayName: Publish library artifact to pipeline
+        inputs:
+          targetPath: 'android/library/build/artifacts/com/microsoft/design'
+          artifact: 'aar'
+          publishLocation: 'pipeline'
