@@ -94,12 +94,12 @@
     "./providers": {
       "types": "./lib/providers.d.ts",
       "import": "./lib/providers.js",
-      "require": "./lib-commonjs/providers.js"
+      "require": "./lib-cjs/providers.js"
     },
     "./lib/providers": {
       "types": "./lib/providers.d.ts",
       "import": "./lib/providers.js",
-      "require": "./lib-commonjs/providers.js"
+      "require": "./lib-cjs/providers.js"
     }
   }
 }
