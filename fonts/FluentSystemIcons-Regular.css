@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.woff2?484a59ad85dcee741529a7a96b5a61fd") format("woff2"),
-url("./FluentSystemIcons-Regular.woff?484a59ad85dcee741529a7a96b5a61fd") format("woff"),
-url("./FluentSystemIcons-Regular.ttf?484a59ad85dcee741529a7a96b5a61fd") format("truetype");
+    src: url("./FluentSystemIcons-Regular.woff2?23ff0cbec185745fdb92c03ec739ed03") format("woff2"),
+url("./FluentSystemIcons-Regular.woff?23ff0cbec185745fdb92c03ec739ed03") format("woff"),
+url("./FluentSystemIcons-Regular.ttf?23ff0cbec185745fdb92c03ec739ed03") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -23688,4 +23688,61 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_slide_play_24_regular:before {
     content: "\f05d2";
+}
+.icon-ic_fluent_arrow_turn_right_16_regular:before {
+    content: "\f05d3";
+}
+.icon-ic_fluent_chart_multiple_16_regular:before {
+    content: "\f05d4";
+}
+.icon-ic_fluent_column_24_regular:before {
+    content: "\f05d5";
+}
+.icon-ic_fluent_data_pie_16_regular:before {
+    content: "\f05d6";
+}
+.icon-ic_fluent_layout_column_two_32_regular:before {
+    content: "\f05d7";
+}
+.icon-ic_fluent_layout_row_two_32_regular:before {
+    content: "\f05d8";
+}
+.icon-ic_fluent_mail_copy_32_regular:before {
+    content: "\f05d9";
+}
+.icon-ic_fluent_paint_brush_sparkle_20_regular:before {
+    content: "\f05da";
+}
+.icon-ic_fluent_paint_brush_sparkle_24_regular:before {
+    content: "\f05db";
+}
+.icon-ic_fluent_people_community_12_regular:before {
+    content: "\f05dc";
+}
+.icon-ic_fluent_person_board_12_regular:before {
+    content: "\f05dd";
+}
+.icon-ic_fluent_person_tentative_16_regular:before {
+    content: "\f05de";
+}
+.icon-ic_fluent_person_tentative_20_regular:before {
+    content: "\f05df";
+}
+.icon-ic_fluent_person_tentative_24_regular:before {
+    content: "\f05e0";
+}
+.icon-ic_fluent_tab_desktop_search_16_regular:before {
+    content: "\f05e1";
+}
+.icon-ic_fluent_tab_desktop_search_20_regular:before {
+    content: "\f05e2";
+}
+.icon-ic_fluent_tab_desktop_search_24_regular:before {
+    content: "\f05e3";
+}
+.icon-ic_fluent_table_sparkle_20_regular:before {
+    content: "\f05e4";
+}
+.icon-ic_fluent_table_sparkle_24_regular:before {
+    content: "\f05e5";
 }
