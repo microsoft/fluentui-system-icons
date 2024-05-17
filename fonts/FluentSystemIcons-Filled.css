@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?864abb195eca857ec877cdd35a92e8e0") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?864abb195eca857ec877cdd35a92e8e0") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?864abb195eca857ec877cdd35a92e8e0") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?0b8b4fb2f1a2c324605f4ca523d3922c") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?0b8b4fb2f1a2c324605f4ca523d3922c") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?0b8b4fb2f1a2c324605f4ca523d3922c") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -24117,4 +24117,58 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_table_sparkle_24_filled:before {
     content: "\f0661";
+}
+.icon-ic_fluent_comment_32_filled:before {
+    content: "\f0662";
+}
+.icon-ic_fluent_comment_add_32_filled:before {
+    content: "\f0663";
+}
+.icon-ic_fluent_crop_arrow_rotate_16_filled:before {
+    content: "\f0664";
+}
+.icon-ic_fluent_crop_arrow_rotate_20_filled:before {
+    content: "\f0665";
+}
+.icon-ic_fluent_crop_arrow_rotate_24_filled:before {
+    content: "\f0666";
+}
+.icon-ic_fluent_desktop_off_20_filled:before {
+    content: "\f0667";
+}
+.icon-ic_fluent_desktop_off_24_filled:before {
+    content: "\f0668";
+}
+.icon-ic_fluent_food_28_filled:before {
+    content: "\f0669";
+}
+.icon-ic_fluent_food_32_filled:before {
+    content: "\f066a";
+}
+.icon-ic_fluent_food_48_filled:before {
+    content: "\f066b";
+}
+.icon-ic_fluent_layer_diagonal_add_24_filled:before {
+    content: "\f066c";
+}
+.icon-ic_fluent_mail_alert_32_filled:before {
+    content: "\f066d";
+}
+.icon-ic_fluent_mail_arrow_clockwise_32_filled:before {
+    content: "\f066e";
+}
+.icon-ic_fluent_person_support_32_filled:before {
+    content: "\f066f";
+}
+.icon-ic_fluent_tag_off_16_filled:before {
+    content: "\f0670";
+}
+.icon-ic_fluent_text_column_one_wide_lightning_16_filled:before {
+    content: "\f0671";
+}
+.icon-ic_fluent_wallet_credit_card_28_filled:before {
+    content: "\f0672";
+}
+.icon-ic_fluent_wallet_credit_card_48_filled:before {
+    content: "\f0673";
 }

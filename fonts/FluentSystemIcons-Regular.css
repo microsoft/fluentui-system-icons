@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.woff2?fd9b4f3c57ad425f0ac96fa7d57c4e4e") format("woff2"),
-url("./FluentSystemIcons-Regular.woff?fd9b4f3c57ad425f0ac96fa7d57c4e4e") format("woff"),
-url("./FluentSystemIcons-Regular.ttf?fd9b4f3c57ad425f0ac96fa7d57c4e4e") format("truetype");
+    src: url("./FluentSystemIcons-Regular.woff2?58f33cdef0d5de901b6c09160a089057") format("woff2"),
+url("./FluentSystemIcons-Regular.woff?58f33cdef0d5de901b6c09160a089057") format("woff"),
+url("./FluentSystemIcons-Regular.ttf?58f33cdef0d5de901b6c09160a089057") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -23745,4 +23745,58 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_table_sparkle_24_regular:before {
     content: "\f05e5";
+}
+.icon-ic_fluent_comment_32_regular:before {
+    content: "\f05e6";
+}
+.icon-ic_fluent_comment_add_32_regular:before {
+    content: "\f05e7";
+}
+.icon-ic_fluent_crop_arrow_rotate_16_regular:before {
+    content: "\f05e8";
+}
+.icon-ic_fluent_crop_arrow_rotate_20_regular:before {
+    content: "\f05e9";
+}
+.icon-ic_fluent_crop_arrow_rotate_24_regular:before {
+    content: "\f05ea";
+}
+.icon-ic_fluent_desktop_off_20_regular:before {
+    content: "\f05eb";
+}
+.icon-ic_fluent_desktop_off_24_regular:before {
+    content: "\f05ec";
+}
+.icon-ic_fluent_food_28_regular:before {
+    content: "\f05ed";
+}
+.icon-ic_fluent_food_32_regular:before {
+    content: "\f05ee";
+}
+.icon-ic_fluent_food_48_regular:before {
+    content: "\f05ef";
+}
+.icon-ic_fluent_layer_diagonal_add_24_regular:before {
+    content: "\f05f0";
+}
+.icon-ic_fluent_mail_alert_32_regular:before {
+    content: "\f05f1";
+}
+.icon-ic_fluent_mail_arrow_clockwise_32_regular:before {
+    content: "\f05f2";
+}
+.icon-ic_fluent_person_support_32_regular:before {
+    content: "\f05f3";
+}
+.icon-ic_fluent_tag_off_16_regular:before {
+    content: "\f05f4";
+}
+.icon-ic_fluent_text_column_one_wide_lightning_16_regular:before {
+    content: "\f05f5";
+}
+.icon-ic_fluent_wallet_credit_card_28_regular:before {
+    content: "\f05f6";
+}
+.icon-ic_fluent_wallet_credit_card_48_regular:before {
+    content: "\f05f7";
 }
