@@ -58,7 +58,7 @@ const useRootStyles = makeStyles({
         lineHeight: '1em',
 
         "@media (forced-colors: active)": {
-            forcedColorAdjust: 'auto',
+            forcedColorAdjust: 'none',
         }
     },
     [FontFile.Filled]: {
