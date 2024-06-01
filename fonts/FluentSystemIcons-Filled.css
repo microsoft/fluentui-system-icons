@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?047888df5e7ed5a294ca760943345cce") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?047888df5e7ed5a294ca760943345cce") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?047888df5e7ed5a294ca760943345cce") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?e9f88a74e73d0e356e657b6dfc29f0e4") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?e9f88a74e73d0e356e657b6dfc29f0e4") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?e9f88a74e73d0e356e657b6dfc29f0e4") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -24171,4 +24171,127 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_wallet_credit_card_48_filled:before {
     content: "\f0673";
+}
+.icon-ic_fluent_breakout_room_32_filled:before {
+    content: "\f0674";
+}
+.icon-ic_fluent_card_ui_portrait_flip_16_filled:before {
+    content: "\f0675";
+}
+.icon-ic_fluent_card_ui_portrait_flip_20_filled:before {
+    content: "\f0676";
+}
+.icon-ic_fluent_card_ui_portrait_flip_24_filled:before {
+    content: "\f0677";
+}
+.icon-ic_fluent_cursor_28_filled:before {
+    content: "\f0678";
+}
+.icon-ic_fluent_cursor_32_filled:before {
+    content: "\f0679";
+}
+.icon-ic_fluent_layout_row_two_28_filled:before {
+    content: "\f067a";
+}
+.icon-ic_fluent_layout_row_two_48_filled:before {
+    content: "\f067b";
+}
+.icon-ic_fluent_notepad_sparkle_16_filled:before {
+    content: "\f067c";
+}
+.icon-ic_fluent_notepad_sparkle_20_filled:before {
+    content: "\f067d";
+}
+.icon-ic_fluent_notepad_sparkle_24_filled:before {
+    content: "\f067e";
+}
+.icon-ic_fluent_notepad_sparkle_28_filled:before {
+    content: "\f067f";
+}
+.icon-ic_fluent_notepad_sparkle_32_filled:before {
+    content: "\f0680";
+}
+.icon-ic_fluent_paint_brush_28_filled:before {
+    content: "\f0681";
+}
+.icon-ic_fluent_paint_brush_subtract_16_filled:before {
+    content: "\f0682";
+}
+.icon-ic_fluent_paint_brush_subtract_20_filled:before {
+    content: "\f0683";
+}
+.icon-ic_fluent_paint_brush_subtract_24_filled:before {
+    content: "\f0684";
+}
+.icon-ic_fluent_paint_brush_subtract_28_filled:before {
+    content: "\f0685";
+}
+.icon-ic_fluent_paint_brush_subtract_32_filled:before {
+    content: "\f0686";
+}
+.icon-ic_fluent_play_circle_sparkle_16_filled:before {
+    content: "\f0687";
+}
+.icon-ic_fluent_play_circle_sparkle_20_filled:before {
+    content: "\f0688";
+}
+.icon-ic_fluent_play_circle_sparkle_24_filled:before {
+    content: "\f0689";
+}
+.icon-ic_fluent_replay_16_filled:before {
+    content: "\f068a";
+}
+.icon-ic_fluent_replay_24_filled:before {
+    content: "\f068b";
+}
+.icon-ic_fluent_replay_28_filled:before {
+    content: "\f068c";
+}
+.icon-ic_fluent_replay_32_filled:before {
+    content: "\f068d";
+}
+.icon-ic_fluent_send_person_16_filled:before {
+    content: "\f068e";
+}
+.icon-ic_fluent_send_person_20_filled:before {
+    content: "\f068f";
+}
+.icon-ic_fluent_send_person_24_filled:before {
+    content: "\f0690";
+}
+.icon-ic_fluent_square_dovetail_joint_12_filled:before {
+    content: "\f0691";
+}
+.icon-ic_fluent_square_dovetail_joint_16_filled:before {
+    content: "\f0692";
+}
+.icon-ic_fluent_square_dovetail_joint_20_filled:before {
+    content: "\f0693";
+}
+.icon-ic_fluent_square_dovetail_joint_24_filled:before {
+    content: "\f0694";
+}
+.icon-ic_fluent_square_dovetail_joint_28_filled:before {
+    content: "\f0695";
+}
+.icon-ic_fluent_square_dovetail_joint_32_filled:before {
+    content: "\f0696";
+}
+.icon-ic_fluent_square_dovetail_joint_48_filled:before {
+    content: "\f0697";
+}
+.icon-ic_fluent_table_cursor_16_filled:before {
+    content: "\f0698";
+}
+.icon-ic_fluent_table_cursor_20_filled:before {
+    content: "\f0699";
+}
+.icon-ic_fluent_table_cursor_24_filled:before {
+    content: "\f069a";
+}
+.icon-ic_fluent_transparency_square_20_filled:before {
+    content: "\f069b";
+}
+.icon-ic_fluent_transparency_square_24_filled:before {
+    content: "\f069c";
 }
