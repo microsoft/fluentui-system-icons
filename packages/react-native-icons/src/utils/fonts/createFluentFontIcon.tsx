@@ -11,6 +11,10 @@ import fontRegularTtf from './FluentSystemIcons-Regular.ttf';
 import fontRegularWoff from './FluentSystemIcons-Regular.woff';
 import fontRegularWoff2 from './FluentSystemIcons-Regular.woff2';
 
+import fontLightTtf from './FluentSystemIcons-Light.ttf';
+import fontLightWoff from './FluentSystemIcons-Light.woff';
+import fontLightWoff2 from './FluentSystemIcons-Light.woff2';
+
 import fontOneSizeTtf from './FluentSystemIcons-Resizable.ttf';
 import fontOneSizeWoff from './FluentSystemIcons-Resizable.woff';
 import fontOneSizeWoff2 from './FluentSystemIcons-Resizable.woff2';
@@ -18,7 +22,8 @@ import fontOneSizeWoff2 from './FluentSystemIcons-Resizable.woff2';
 export const enum FontFile {
     Filled = 0,
     Regular = 1,
-    Resizable = 2
+    Resizable = 2,
+		Light = 3
 }
 
 const FONT_FAMILY_MAP = {
@@ -40,6 +45,14 @@ const useStaticStyles = makeStaticStyles(`
     url(${JSON.stringify(fontRegularWoff)}) format("woff"),
     url(${JSON.stringify(fontRegularTtf)}) format("truetype");
 }
+
+@font-face {
+		font-family: ${FONT_FAMILY_MAP[FontFile.Light]};
+    src: url(${JSON.stringify(fontLightWoff2)}) format("woff2"),
+    url(${JSON.stringify(fontLightWoff)}) format("woff"),
+    url(${JSON.stringify(fontLightTtf)}) format("truetype");
+}
+
 @font-face {
     font-family: ${FONT_FAMILY_MAP[FontFile.Resizable]};
     src: url(${JSON.stringify(fontOneSizeWoff2)}) format("woff2"),
@@ -67,6 +80,9 @@ const useRootStyles = makeStyles({
     [FontFile.Resizable]: {
         fontFamily: 'FluentSystemIcons',
     },
+		[FontFile.Light]: {
+			fontFamily: 'FluentSystemIconsLight',
+		}
 });
 
 export function createFluentFontIcon(displayName: string, codepoint: string, font: FontFile, fontSize?: number): React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>>> & { codepoint: string} {
