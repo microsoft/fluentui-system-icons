@@ -33,15 +33,15 @@ const bundleIcon = (FilledIcon: FluentIcon, RegularIcon: FluentIcon, LightIcon: 
                       className
                     )}
                 />
-								<LightIcon 
-										{...rest}
-										className={mergeClasses(
-											styles.root,
-											!filled && styles.visible,
-											iconLightClassName,
-											className
-										)}
-								/>
+                <LightIcon 
+                    {...rest}
+                    className={mergeClasses(
+                      styles.root,
+                      !filled && styles.visible,
+                      iconLightClassName,
+                      className
+                    )}
+                />
             </React.Fragment>
         )
     }

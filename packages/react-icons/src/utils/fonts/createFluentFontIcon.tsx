@@ -49,10 +49,10 @@ const useStaticStyles = makeStaticStyles(`
 }
 
 @font-face {
-font-family: ${FONT_FAMILY_MAP[FontFile.Light]};
-src: url(${JSON.stringify(fontLightWoff2)}) format("woff2"),
-url(${JSON.stringify(fontLightWoff)}) format("woff"),
-url(${JSON.stringify(fontLightTtf)}) format("truetype");
+    font-family: ${FONT_FAMILY_MAP[FontFile.Light]};
+    src: url(${JSON.stringify(fontLightWoff2)}) format("woff2"),
+    url(${JSON.stringify(fontLightWoff)}) format("woff"),
+    url(${JSON.stringify(fontLightTtf)}) format("truetype");
 }
 
 @font-face {
@@ -83,9 +83,9 @@ const useRootStyles = makeStyles({
     [FontFile.Resizable]: {
         fontFamily: 'FluentSystemIcons',
     },
-		[FontFile.Light]: {
-			fontFamily: 'FluentSystemIconsLight',
-		}
+    [FontFile.Light]: {
+        fontFamily: 'FluentSystemIconsLight',
+    }
 });
 
 export type CreateFluentFontIconOptions = {

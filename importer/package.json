@@ -21,7 +21,7 @@
     "deploy:ios": "python3 process_ios_assets.py",
     "generate:font-regular": "node generateFont.js --source=dist --dest=dist/fonts --iconType=Regular --codepoints=../fonts/FluentSystemIcons-Regular.json",
     "generate:font-filled": "node generateFont.js --source=dist --dest=dist/fonts --iconType=Filled --codepoints=../fonts/FluentSystemIcons-Filled.json",
-		"generate:font-light": "node generateFont.js --source=dist --dest=dist/fonts --iconType=Light",
+    "generate:font-light": "node generateFont.js --source=dist --dest=dist/fonts --iconType=Light",
     "generate:font-resizable": "node generateFont.js --source=dist --dest=dist/fonts --iconType=Resizable",
     "build:fonts": "npm run generate:svg && find ./dist -type f -name '*.svg' -exec svgo --config svgo_config.yml {} + && mkdir dist/fonts && npm run generate:font-regular && npm run generate:font-filled && npm run generate:font-light && npm run generate:font-resizable && replace '\\\\\\\\' '0x' dist/fonts/*.json",
     "deploy:fonts": "npm run build:fonts && cp -a dist/fonts/* ../fonts && npm run clean",

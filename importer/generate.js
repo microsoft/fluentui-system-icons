@@ -82,7 +82,7 @@ function processFolder(srcPath, destPath, folderDepth) {
           return;
         } else if (!file.endsWith(ICON_OUTLINE_STYLE + "." + EXTENSION)
           && !file.endsWith(ICON_FILLED_STYLE + "." + EXTENSION)
-					&& !file.endsWith(ICON_LIGHT_STYLE + "." + EXTENSION)
+          && !file.endsWith(ICON_LIGHT_STYLE + "." + EXTENSION)
           && !(EXTENSION === "pdf" && file.endsWith(ICON_LIGHT_STYLE + "." + EXTENSION))
           && !file.endsWith(BRAND_MONO_STYLE + "." + EXTENSION)
           && !file.endsWith(BRAND_COLOR_STYLE + "." + EXTENSION)) {

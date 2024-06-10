@@ -23,7 +23,7 @@ export const enum FontFile {
     Filled = 0,
     Regular = 1,
     Resizable = 2,
-		Light = 3
+    Light = 3
 }
 
 const FONT_FAMILY_MAP = {
@@ -47,7 +47,7 @@ const useStaticStyles = makeStaticStyles(`
 }
 
 @font-face {
-		font-family: ${FONT_FAMILY_MAP[FontFile.Light]};
+    font-family: ${FONT_FAMILY_MAP[FontFile.Light]};
     src: url(${JSON.stringify(fontLightWoff2)}) format("woff2"),
     url(${JSON.stringify(fontLightWoff)}) format("woff"),
     url(${JSON.stringify(fontLightTtf)}) format("truetype");
@@ -80,9 +80,9 @@ const useRootStyles = makeStyles({
     [FontFile.Resizable]: {
         fontFamily: 'FluentSystemIcons',
     },
-		[FontFile.Light]: {
-			fontFamily: 'FluentSystemIconsLight',
-		}
+    [FontFile.Light]: {
+        fontFamily: 'FluentSystemIconsLight',
+    }
 });
 
 export function createFluentFontIcon(displayName: string, codepoint: string, font: FontFile, fontSize?: number): React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>>> & { codepoint: string} {
