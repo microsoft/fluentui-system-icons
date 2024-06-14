@@ -188,11 +188,6 @@ jobs:
         access: public
         package: packages/react-icons-font-subsetting-webpack-plugin/package.json 
 
-    - name: Build React-Native library
-      run: |
-        npm run build
-      working-directory: packages/react-native-icons 
-      
     - uses: JS-DevTools/npm-publish@v1
       with:
         token: ${{ secrets.NPM_TOKEN }}
