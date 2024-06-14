@@ -93,7 +93,7 @@ function IconCell({ FontIcon, SvgIcon, name }: { FontIcon: React.ComponentType, 
 }
 
 function filterModuleImports(mod: Record<string, unknown>): Record<string, React.ComponentType> {
-    const importsToFilter = new Set(['wrapIcon', 'bundleIcon', 'useIconState', 'iconFilledClassName', 'iconRegularClassName', '_esModule']);
+    const importsToFilter = new Set(['wrapIcon', 'bundleIcon', 'useIconState', 'iconFilledClassName', 'iconRegularClassName', 'iconLightClassName', '_esModule']);
     const components: Record<string, React.ComponentType> = {};
 
     for (const [name, possibleComponent] of Object.entries(mod)) {
