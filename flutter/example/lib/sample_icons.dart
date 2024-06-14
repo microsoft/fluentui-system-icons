@@ -32290,5 +32290,311 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.zoom_out_24_filled, 'zoom_out_24_filled', 24),
 
+  FluentUISampleIcon(FluentIcons.accessibility_checkmark_32_light, 'accessibility_checkmark_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.add_32_light, 'add_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.app_folder_32_light, 'app_folder_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.app_generic_32_light, 'app_generic_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.archive_32_light, 'archive_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.archive_settings_32_light, 'archive_settings_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.arrow_clockwise_32_light, 'arrow_clockwise_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.arrow_down_32_light, 'arrow_down_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.arrow_forward_32_light, 'arrow_forward_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.arrow_hook_up_left_32_light, 'arrow_hook_up_left_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.arrow_redo_32_light, 'arrow_redo_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.arrow_reply_32_light, 'arrow_reply_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.arrow_reply_all_32_light, 'arrow_reply_all_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.arrow_undo_32_light, 'arrow_undo_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.attach_32_light, 'attach_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.auto_fit_32_light, 'auto_fit_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.autocorrect_32_light, 'autocorrect_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.breakout_room_32_light, 'breakout_room_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.broom_32_light, 'broom_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.calendar_3_day_32_light, 'calendar_3_day_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.calendar_clock_32_light, 'calendar_clock_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.calendar_data_bar_32_light, 'calendar_data_bar_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.calendar_day_32_light, 'calendar_day_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.calendar_edit_32_light, 'calendar_edit_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.calendar_empty_32_light, 'calendar_empty_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.calendar_ltr_32_light, 'calendar_ltr_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.calendar_month_32_light, 'calendar_month_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.calendar_multiple_32_light, 'calendar_multiple_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.calendar_pattern_32_light, 'calendar_pattern_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.calendar_reply_32_light, 'calendar_reply_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.calendar_todo_32_light, 'calendar_todo_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.calendar_work_week_32_light, 'calendar_work_week_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.checkmark_32_light, 'checkmark_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.checkmark_circle_32_light, 'checkmark_circle_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.classification_32_light, 'classification_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.clipboard_paste_32_light, 'clipboard_paste_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.clock_32_light, 'clock_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.clock_alarm_32_light, 'clock_alarm_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.color_32_light, 'color_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.color_fill_32_light, 'color_fill_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.comment_32_light, 'comment_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.comment_add_32_light, 'comment_add_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.compose_32_light, 'compose_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.copy_32_light, 'copy_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.crop_32_light, 'crop_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.cursor_32_light, 'cursor_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.delete_32_light, 'delete_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.dismiss_32_light, 'dismiss_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.dismiss_circle_32_light, 'dismiss_circle_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.document_lightning_32_light, 'document_lightning_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.document_signature_32_light, 'document_signature_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.door_arrow_right_32_light, 'door_arrow_right_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.edit_32_light, 'edit_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.emoji_32_light, 'emoji_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.filter_32_light, 'filter_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.flag_32_light, 'flag_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.flag_off_32_light, 'flag_off_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.flash_32_light, 'flash_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.folder_arrow_right_32_light, 'folder_arrow_right_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.folder_mail_32_light, 'folder_mail_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.hand_draw_32_light, 'hand_draw_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.image_add_32_light, 'image_add_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.image_alt_text_32_light, 'image_alt_text_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.image_copy_32_light, 'image_copy_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.image_reflection_32_light, 'image_reflection_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.image_shadow_32_light, 'image_shadow_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.immersive_reader_32_light, 'immersive_reader_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.important_32_light, 'important_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.lasso_32_light, 'lasso_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.layout_column_two_32_light, 'layout_column_two_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.layout_column_two_focus_left_32_light, 'layout_column_two_focus_left_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.layout_column_two_focus_right_32_light, 'layout_column_two_focus_right_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.layout_row_two_32_light, 'layout_row_two_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.layout_row_two_focus_top_32_light, 'layout_row_two_focus_top_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.link_32_light, 'link_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.lock_closed_32_light, 'lock_closed_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.lock_open_32_light, 'lock_open_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.mail_32_light, 'mail_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.mail_alert_32_light, 'mail_alert_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.mail_arrow_clockwise_32_light, 'mail_arrow_clockwise_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.mail_arrow_double_back_32_light, 'mail_arrow_double_back_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.mail_copy_32_light, 'mail_copy_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.mail_edit_32_light, 'mail_edit_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.mail_list_32_light, 'mail_list_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.mail_multiple_32_light, 'mail_multiple_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.mail_read_32_light, 'mail_read_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.mail_rewind_32_light, 'mail_rewind_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.mail_settings_32_light, 'mail_settings_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.mail_unread_32_light, 'mail_unread_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.mic_32_light, 'mic_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.note_32_light, 'note_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.options_32_light, 'options_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.paint_brush_32_light, 'paint_brush_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.panel_left_default_32_light, 'panel_left_default_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.panel_left_focus_right_32_light, 'panel_left_focus_right_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.pen_sparkle_32_light, 'pen_sparkle_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.people_32_light, 'people_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.people_add_32_light, 'people_add_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.people_community_32_light, 'people_community_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.people_list_32_light, 'people_list_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.people_settings_32_light, 'people_settings_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.people_sync_32_light, 'people_sync_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.person_32_light, 'person_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.person_add_32_light, 'person_add_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.person_available_32_light, 'person_available_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.person_feedback_32_light, 'person_feedback_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.person_prohibited_32_light, 'person_prohibited_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.person_suport_32_light, 'person_suport_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.phone_32_light, 'phone_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.picture_in_picture_32_light, 'picture_in_picture_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.pin_32_light, 'pin_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.pin_off_32_light, 'pin_off_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.poll_32_light, 'poll_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.print_32_light, 'print_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.question_32_light, 'question_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.read_aloud_32_light, 'read_aloud_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.rectangle_landscape_32_light, 'rectangle_landscape_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.rotate_left_32_light, 'rotate_left_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.save_32_light, 'save_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.send_clock_32_light, 'send_clock_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.settings_32_light, 'settings_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.share_32_light, 'share_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.shield_error_32_light, 'shield_error_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.signature_32_light, 'signature_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.square_arrow_forward_32_light, 'square_arrow_forward_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.stamp_32_light, 'stamp_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.star_add_32_light, 'star_add_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.star_arrow_right_32_light, 'star_arrow_right_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.table_32_light, 'table_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.table_cells_merge_32_light, 'table_cells_merge_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.table_cells_split_32_light, 'table_cells_split_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.table_dismiss_32_light, 'table_dismiss_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.table_move_above_32_light, 'table_move_above_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.table_move_below_32_light, 'table_move_below_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.table_move_left_32_light, 'table_move_left_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.table_move_right_32_light, 'table_move_right_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.table_settings_32_light, 'table_settings_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.table_simple_32_light, 'table_simple_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.tag_32_light, 'tag_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.text_32_light, 'text_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.text_clear_formatting_32_light, 'text_clear_formatting_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.text_collapse_32_light, 'text_collapse_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.text_density_32_light, 'text_density_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.text_edit_style_32_light, 'text_edit_style_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.text_expand_32_light, 'text_expand_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.textbox_align_top_left_32_light, 'textbox_align_top_left_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.translate_32_light, 'translate_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.video_32_light, 'video_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.video_clip_32_light, 'video_clip_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.window_32_light, 'window_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.wrench_screwdriver_32_light, 'wrench_screwdriver_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.zoom_in_32_light, 'zoom_in_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.zoom_out_32_light, 'zoom_out_32_light', 32),
+
   // END GENERATED
 ];
