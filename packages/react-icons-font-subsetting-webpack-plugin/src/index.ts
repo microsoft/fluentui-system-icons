@@ -9,6 +9,7 @@ const FONT_FILES_BASE_NAMES = [
     "FluentSystemIcons-Filled",
     "FluentSystemIcons-Resizable",
     "FluentSystemIcons-Regular",
+    "FluentSystemIcons-Light"
 ];
 
 const FONT_EXTENSIONS = [
