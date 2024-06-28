@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?11cda870664c1ae979ccda29934fcc92") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?11cda870664c1ae979ccda29934fcc92") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?11cda870664c1ae979ccda29934fcc92") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?b569bc15231ec31f1e0571dbba722b8e") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?b569bc15231ec31f1e0571dbba722b8e") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?b569bc15231ec31f1e0571dbba722b8e") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -24531,4 +24531,28 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_puzzle_piece_12_filled:before {
     content: "\f06eb";
+}
+.icon-ic_fluent_game_chat_20_filled:before {
+    content: "\f06ec";
+}
+.icon-ic_fluent_person_home_16_filled:before {
+    content: "\f06ed";
+}
+.icon-ic_fluent_person_home_20_filled:before {
+    content: "\f06ee";
+}
+.icon-ic_fluent_person_home_24_filled:before {
+    content: "\f06ef";
+}
+.icon-ic_fluent_person_home_28_filled:before {
+    content: "\f06f0";
+}
+.icon-ic_fluent_person_home_32_filled:before {
+    content: "\f06f1";
+}
+.icon-ic_fluent_person_home_48_filled:before {
+    content: "\f06f2";
+}
+.icon-ic_fluent_teaching_20_filled:before {
+    content: "\f06f3";
 }

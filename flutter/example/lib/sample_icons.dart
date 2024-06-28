@@ -7020,6 +7020,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.full_screen_minimize_32_regular, 'full_screen_minimize_32_regular', 32),
 
+  FluentUISampleIcon(FluentIcons.game_chat_20_regular, 'game_chat_20_regular', 20),
+
   FluentUISampleIcon(FluentIcons.games_16_regular, 'games_16_regular', 16),
 
   FluentUISampleIcon(FluentIcons.games_20_regular, 'games_20_regular', 20),
@@ -10427,6 +10429,18 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.person_heart_20_regular, 'person_heart_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.person_heart_24_regular, 'person_heart_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.person_home_16_regular, 'person_home_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.person_home_20_regular, 'person_home_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.person_home_24_regular, 'person_home_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.person_home_28_regular, 'person_home_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.person_home_32_regular, 'person_home_32_regular', 32),
+
+  FluentUISampleIcon(FluentIcons.person_home_48_regular, 'person_home_48_regular', 48),
 
   FluentUISampleIcon(FluentIcons.person_info_16_regular, 'person_info_16_regular', 16),
 
@@ -13949,6 +13963,8 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.tasks_app_24_regular, 'tasks_app_24_regular', 24),
 
   FluentUISampleIcon(FluentIcons.tasks_app_28_regular, 'tasks_app_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.teaching_20_regular, 'teaching_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.teardrop_bottom_right_16_regular, 'teardrop_bottom_right_16_regular', 16),
 
@@ -23140,6 +23156,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.full_screen_minimize_32_filled, 'full_screen_minimize_32_filled', 32),
 
+  FluentUISampleIcon(FluentIcons.game_chat_20_filled, 'game_chat_20_filled', 20),
+
   FluentUISampleIcon(FluentIcons.games_16_filled, 'games_16_filled', 16),
 
   FluentUISampleIcon(FluentIcons.games_20_filled, 'games_20_filled', 20),
@@ -26788,6 +26806,18 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.person_heart_24_filled, 'person_heart_24_filled', 24),
 
+  FluentUISampleIcon(FluentIcons.person_home_16_filled, 'person_home_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.person_home_20_filled, 'person_home_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.person_home_24_filled, 'person_home_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.person_home_28_filled, 'person_home_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.person_home_32_filled, 'person_home_32_filled', 32),
+
+  FluentUISampleIcon(FluentIcons.person_home_48_filled, 'person_home_48_filled', 48),
+
   FluentUISampleIcon(FluentIcons.person_info_16_filled, 'person_info_16_filled', 16),
 
   FluentUISampleIcon(FluentIcons.person_info_20_filled, 'person_info_20_filled', 20),
@@ -30287,6 +30317,8 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.tasks_app_24_filled, 'tasks_app_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.tasks_app_28_filled, 'tasks_app_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.teaching_20_filled, 'teaching_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.teardrop_bottom_right_16_filled, 'teardrop_bottom_right_16_filled', 16),
 
