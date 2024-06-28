@@ -33,8 +33,10 @@
 |Calendar Multiple|<img src="assets/Calendar Multiple/SVG/ic_fluent_calendar_multiple_32_light.svg?raw=true" width="24" height="24">|`calendarMultiple32Light`|`ic_fluent_calendar_multiple_32_light`|
 |Calendar Pattern|<img src="assets/Calendar Pattern/SVG/ic_fluent_calendar_pattern_32_light.svg?raw=true" width="24" height="24">|`calendarPattern32Light`|`ic_fluent_calendar_pattern_32_light`|
 |Calendar Reply|<img src="assets/Calendar Reply/SVG/ic_fluent_calendar_reply_32_light.svg?raw=true" width="24" height="24">|`calendarReply32Light`|`ic_fluent_calendar_reply_32_light`|
+|Calendar Sparkle|<img src="assets/Calendar Sparkle/SVG/ic_fluent_calendar_sparkle_32_light.svg?raw=true" width="24" height="24">|`calendarSparkle32Light`|`ic_fluent_calendar_sparkle_32_light`|
 |Calendar ToDo|<img src="assets/Calendar ToDo/SVG/ic_fluent_calendar_todo_32_light.svg?raw=true" width="24" height="24">|`calendarTodo32Light`|`ic_fluent_calendar_todo_32_light`|
 |Calendar Work Week|<img src="assets/Calendar Work Week/SVG/ic_fluent_calendar_work_week_32_light.svg?raw=true" width="24" height="24">|`calendarWorkWeek32Light`|`ic_fluent_calendar_work_week_32_light`|
+|Chat|<img src="assets/Chat/SVG/ic_fluent_chat_32_light.svg?raw=true" width="24" height="24">|`chat32Light`|`ic_fluent_chat_32_light`|
 |Checkmark|<img src="assets/Checkmark/SVG/ic_fluent_checkmark_32_light.svg?raw=true" width="24" height="24">|`checkmark32Light`|`ic_fluent_checkmark_32_light`|
 |Checkmark Circle|<img src="assets/Checkmark Circle/SVG/ic_fluent_checkmark_circle_32_light.svg?raw=true" width="24" height="24">|`checkmarkCircle32Light`|`ic_fluent_checkmark_circle_32_light`|
 |Classification|<img src="assets/Classification/SVG/ic_fluent_classification_32_light.svg?raw=true" width="24" height="24">|`classification32Light`|`ic_fluent_classification_32_light`|
@@ -77,6 +79,7 @@
 |Layout Column Two Focus Right|<img src="assets/Layout Column Two Focus Right/SVG/ic_fluent_layout_column_two_focus_right_32_light.svg?raw=true" width="24" height="24">|`layoutColumnTwoFocusRight32Light`|`ic_fluent_layout_column_two_focus_right_32_light`|
 |Layout Row Two|<img src="assets/Layout Row Two/SVG/ic_fluent_layout_row_two_32_light.svg?raw=true" width="24" height="24">|`layoutRowTwo32Light`|`ic_fluent_layout_row_two_32_light`|
 |Layout Row Two Focus Top|<img src="assets/Layout Row Two Focus Top/SVG/ic_fluent_layout_row_two_focus_top_32_light.svg?raw=true" width="24" height="24">|`layoutRowTwoFocusTop32Light`|`ic_fluent_layout_row_two_focus_top_32_light`|
+|Layout Row Two Focus Top Settings|<img src="assets/Layout Row Two Focus Top Settings/SVG/ic_fluent_layout_row_two_focus_top_settings_32_light.svg?raw=true" width="24" height="24">|`layoutRowTwoFocusTopSettings32Light`|`ic_fluent_layout_row_two_focus_top_settings_32_light`|
 |Link|<img src="assets/Link/SVG/ic_fluent_link_32_light.svg?raw=true" width="24" height="24">|`link32Light`|`ic_fluent_link_32_light`|
 |Lock Closed|<img src="assets/Lock Closed/SVG/ic_fluent_lock_closed_32_light.svg?raw=true" width="24" height="24">|`lockClosed32Light`|`ic_fluent_lock_closed_32_light`|
 |Lock Open|<img src="assets/Lock Open/SVG/ic_fluent_lock_open_32_light.svg?raw=true" width="24" height="24">|`lockOpen32Light`|`ic_fluent_lock_open_32_light`|
@@ -102,6 +105,7 @@
 |People|<img src="assets/People/SVG/ic_fluent_people_32_light.svg?raw=true" width="24" height="24">|`people32Light`|`ic_fluent_people_32_light`|
 |People Add|<img src="assets/People Add/SVG/ic_fluent_people_add_32_light.svg?raw=true" width="24" height="24">|`peopleAdd32Light`|`ic_fluent_people_add_32_light`|
 |People Community|<img src="assets/People Community/SVG/ic_fluent_people_community_32_light.svg?raw=true" width="24" height="24">|`peopleCommunity32Light`|`ic_fluent_people_community_32_light`|
+|People Edit|<img src="assets/People Edit/SVG/ic_fluent_people_edit_32_light.svg?raw=true" width="24" height="24">|`peopleEdit32Light`|`ic_fluent_people_edit_32_light`|
 |People List|<img src="assets/People List/SVG/ic_fluent_people_list_32_light.svg?raw=true" width="24" height="24">|`peopleList32Light`|`ic_fluent_people_list_32_light`|
 |People Settings|<img src="assets/People Settings/SVG/ic_fluent_people_settings_32_light.svg?raw=true" width="24" height="24">|`peopleSettings32Light`|`ic_fluent_people_settings_32_light`|
 |People Sync|<img src="assets/People Sync/SVG/ic_fluent_people_sync_32_light.svg?raw=true" width="24" height="24">|`peopleSync32Light`|`ic_fluent_people_sync_32_light`|
@@ -109,6 +113,7 @@
 |Person Add|<img src="assets/Person Add/SVG/ic_fluent_person_add_32_light.svg?raw=true" width="24" height="24">|`personAdd32Light`|`ic_fluent_person_add_32_light`|
 |Person Available|<img src="assets/Person Available/SVG/ic_fluent_person_available_32_light.svg?raw=true" width="24" height="24">|`personAvailable32Light`|`ic_fluent_person_available_32_light`|
 |Person Feedback|<img src="assets/Person Feedback/SVG/ic_fluent_person_feedback_32_light.svg?raw=true" width="24" height="24">|`personFeedback32Light`|`ic_fluent_person_feedback_32_light`|
+|Person Mail|<img src="assets/Person Mail/SVG/ic_fluent_person_mail_32_light.svg?raw=true" width="24" height="24">|`personMail32Light`|`ic_fluent_person_mail_32_light`|
 |Person Prohibited|<img src="assets/Person Prohibited/SVG/ic_fluent_person_prohibited_32_light.svg?raw=true" width="24" height="24">|`personProhibited32Light`|`ic_fluent_person_prohibited_32_light`|
 |Person Support|<img src="assets/Person Support/SVG/ic_fluent_person_suport_32_light.svg?raw=true" width="24" height="24">|`personSuport32Light`|`ic_fluent_person_suport_32_light`|
 |Phone|<img src="assets/Phone/SVG/ic_fluent_phone_32_light.svg?raw=true" width="24" height="24">|`phone32Light`|`ic_fluent_phone_32_light`|
