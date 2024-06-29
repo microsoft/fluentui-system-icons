@@ -118,6 +118,7 @@ async function processFolder(srcPath, codepointMapDestFolder, resizable) {
 
   for (const chunk of iconChunks) {
     chunk.unshift(`import {createFluentFontIcon} from "../../utils/fonts/createFluentFontIcon";`)
+    chunk.unshift(`"use client";`);
   }
 
   /** @type string[] */
