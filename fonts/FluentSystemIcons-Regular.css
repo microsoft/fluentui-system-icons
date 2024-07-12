@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.woff2?58d41710ecaaea5609ebcb13901a9662") format("woff2"),
-url("./FluentSystemIcons-Regular.woff?58d41710ecaaea5609ebcb13901a9662") format("woff"),
-url("./FluentSystemIcons-Regular.ttf?58d41710ecaaea5609ebcb13901a9662") format("truetype");
+    src: url("./FluentSystemIcons-Regular.woff2?651dbe4db48c0134105fe9ec06005b90") format("woff2"),
+url("./FluentSystemIcons-Regular.woff?651dbe4db48c0134105fe9ec06005b90") format("woff"),
+url("./FluentSystemIcons-Regular.ttf?651dbe4db48c0134105fe9ec06005b90") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -24234,4 +24234,16 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_warning_lock_open_24_regular:before {
     content: "\f0688";
+}
+.icon-ic_fluent_person_board_add_20_regular:before {
+    content: "\f0689";
+}
+.icon-ic_fluent_person_square_add_16_regular:before {
+    content: "\f068a";
+}
+.icon-ic_fluent_person_square_add_20_regular:before {
+    content: "\f068b";
+}
+.icon-ic_fluent_person_square_add_24_regular:before {
+    content: "\f068c";
 }

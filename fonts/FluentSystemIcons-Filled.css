@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?4dda3d1087445ecd850561a3ac02b565") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?4dda3d1087445ecd850561a3ac02b565") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?4dda3d1087445ecd850561a3ac02b565") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?93bca43bfc2ffd6acb436fc776109216") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?93bca43bfc2ffd6acb436fc776109216") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?93bca43bfc2ffd6acb436fc776109216") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -24603,4 +24603,16 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_warning_lock_open_24_filled:before {
     content: "\f0703";
+}
+.icon-ic_fluent_person_board_add_20_filled:before {
+    content: "\f0704";
+}
+.icon-ic_fluent_person_square_add_16_filled:before {
+    content: "\f0705";
+}
+.icon-ic_fluent_person_square_add_20_filled:before {
+    content: "\f0706";
+}
+.icon-ic_fluent_person_square_add_24_filled:before {
+    content: "\f0707";
 }

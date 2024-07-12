@@ -15582,6 +15582,9 @@ class FluentIcons {
   /// fluent icon named "person_board" in size 32 and regular style.
   static const IconData person_board_32_regular = IconData(61504, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "person_board_add" in size 20 and regular style.
+  static const IconData person_board_add_20_regular = IconData(984713, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "person_call" in size 16 and regular style.
   static const IconData person_call_16_regular = IconData(59685, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -15863,6 +15866,15 @@ class FluentIcons {
 
   /// fluent icon named "person_square" in size 32 and regular style.
   static const IconData person_square_32_regular = IconData(984145, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "person_square_add" in size 16 and regular style.
+  static const IconData person_square_add_16_regular = IconData(984714, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "person_square_add" in size 20 and regular style.
+  static const IconData person_square_add_20_regular = IconData(984715, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "person_square_add" in size 24 and regular style.
+  static const IconData person_square_add_24_regular = IconData(984716, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
   /// fluent icon named "person_square_checkmark" in size 16 and regular style.
   static const IconData person_square_checkmark_16_regular = IconData(984146, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
@@ -40211,6 +40223,9 @@ class FluentIcons {
   /// fluent icon named "person_board" in size 32 and filled style.
   static const IconData person_board_32_filled = IconData(61504, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
+  /// fluent icon named "person_board_add" in size 20 and filled style.
+  static const IconData person_board_add_20_filled = IconData(984836, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
   /// fluent icon named "person_call" in size 16 and filled style.
   static const IconData person_call_16_filled = IconData(59703, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
@@ -40492,6 +40507,15 @@ class FluentIcons {
 
   /// fluent icon named "person_square" in size 32 and filled style.
   static const IconData person_square_32_filled = IconData(984164, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "person_square_add" in size 16 and filled style.
+  static const IconData person_square_add_16_filled = IconData(984837, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "person_square_add" in size 20 and filled style.
+  static const IconData person_square_add_20_filled = IconData(984838, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "person_square_add" in size 24 and filled style.
+  static const IconData person_square_add_24_filled = IconData(984839, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "person_square_checkmark" in size 16 and filled style.
   static const IconData person_square_checkmark_16_filled = IconData(984165, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);

@@ -10386,6 +10386,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.person_board_32_regular, 'person_board_32_regular', 32),
 
+  FluentUISampleIcon(FluentIcons.person_board_add_20_regular, 'person_board_add_20_regular', 20),
+
   FluentUISampleIcon(FluentIcons.person_call_16_regular, 'person_call_16_regular', 16),
 
   FluentUISampleIcon(FluentIcons.person_call_20_regular, 'person_call_20_regular', 20),
@@ -10573,6 +10575,12 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.person_square_24_regular, 'person_square_24_regular', 24),
 
   FluentUISampleIcon(FluentIcons.person_square_32_regular, 'person_square_32_regular', 32),
+
+  FluentUISampleIcon(FluentIcons.person_square_add_16_regular, 'person_square_add_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.person_square_add_20_regular, 'person_square_add_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.person_square_add_24_regular, 'person_square_add_24_regular', 24),
 
   FluentUISampleIcon(FluentIcons.person_square_checkmark_16_regular, 'person_square_checkmark_16_regular', 16),
 
@@ -26804,6 +26812,8 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.person_board_32_filled, 'person_board_32_filled', 32),
 
+  FluentUISampleIcon(FluentIcons.person_board_add_20_filled, 'person_board_add_20_filled', 20),
+
   FluentUISampleIcon(FluentIcons.person_call_16_filled, 'person_call_16_filled', 16),
 
   FluentUISampleIcon(FluentIcons.person_call_20_filled, 'person_call_20_filled', 20),
@@ -26991,6 +27001,12 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.person_square_24_filled, 'person_square_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.person_square_32_filled, 'person_square_32_filled', 32),
+
+  FluentUISampleIcon(FluentIcons.person_square_add_16_filled, 'person_square_add_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.person_square_add_20_filled, 'person_square_add_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.person_square_add_24_filled, 'person_square_add_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.person_square_checkmark_16_filled, 'person_square_checkmark_16_filled', 16),
 
