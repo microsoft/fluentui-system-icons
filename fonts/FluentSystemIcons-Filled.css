@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?b569bc15231ec31f1e0571dbba722b8e") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?b569bc15231ec31f1e0571dbba722b8e") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?b569bc15231ec31f1e0571dbba722b8e") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?4dda3d1087445ecd850561a3ac02b565") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?4dda3d1087445ecd850561a3ac02b565") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?4dda3d1087445ecd850561a3ac02b565") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -24555,4 +24555,52 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_teaching_20_filled:before {
     content: "\f06f3";
+}
+.icon-ic_fluent_edit_lock_16_filled:before {
+    content: "\f06f4";
+}
+.icon-ic_fluent_edit_lock_20_filled:before {
+    content: "\f06f5";
+}
+.icon-ic_fluent_edit_lock_24_filled:before {
+    content: "\f06f6";
+}
+.icon-ic_fluent_layout_row_two_settings_20_filled:before {
+    content: "\f06f7";
+}
+.icon-ic_fluent_layout_row_two_settings_24_filled:before {
+    content: "\f06f8";
+}
+.icon-ic_fluent_layout_row_two_settings_28_filled:before {
+    content: "\f06f9";
+}
+.icon-ic_fluent_layout_row_two_settings_32_filled:before {
+    content: "\f06fa";
+}
+.icon-ic_fluent_shield_add_28_filled:before {
+    content: "\f06fb";
+}
+.icon-ic_fluent_shield_add_32_filled:before {
+    content: "\f06fc";
+}
+.icon-ic_fluent_shield_add_48_filled:before {
+    content: "\f06fd";
+}
+.icon-ic_fluent_shield_checkmark_32_filled:before {
+    content: "\f06fe";
+}
+.icon-ic_fluent_shield_task_32_filled:before {
+    content: "\f06ff";
+}
+.icon-ic_fluent_toolbox_32_filled:before {
+    content: "\f0700";
+}
+.icon-ic_fluent_warning_lock_open_16_filled:before {
+    content: "\f0701";
+}
+.icon-ic_fluent_warning_lock_open_20_filled:before {
+    content: "\f0702";
+}
+.icon-ic_fluent_warning_lock_open_24_filled:before {
+    content: "\f0703";
 }

@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.woff2?faf2fcd8682dc3004eafcd685ca77c84") format("woff2"),
-url("./FluentSystemIcons-Regular.woff?faf2fcd8682dc3004eafcd685ca77c84") format("woff"),
-url("./FluentSystemIcons-Regular.ttf?faf2fcd8682dc3004eafcd685ca77c84") format("truetype");
+    src: url("./FluentSystemIcons-Regular.woff2?58d41710ecaaea5609ebcb13901a9662") format("woff2"),
+url("./FluentSystemIcons-Regular.woff?58d41710ecaaea5609ebcb13901a9662") format("woff"),
+url("./FluentSystemIcons-Regular.ttf?58d41710ecaaea5609ebcb13901a9662") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -24171,4 +24171,67 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_teaching_20_regular:before {
     content: "\f0673";
+}
+.icon-ic_fluent_edit_lock_16_regular:before {
+    content: "\f0674";
+}
+.icon-ic_fluent_edit_lock_20_regular:before {
+    content: "\f0675";
+}
+.icon-ic_fluent_edit_lock_24_regular:before {
+    content: "\f0676";
+}
+.icon-ic_fluent_layout_row_two_settings_20_regular:before {
+    content: "\f0677";
+}
+.icon-ic_fluent_layout_row_two_settings_24_regular:before {
+    content: "\f0678";
+}
+.icon-ic_fluent_layout_row_two_settings_28_regular:before {
+    content: "\f0679";
+}
+.icon-ic_fluent_layout_row_two_settings_32_regular:before {
+    content: "\f067a";
+}
+.icon-ic_fluent_presence_tentative_10_regular:before {
+    content: "\f067b";
+}
+.icon-ic_fluent_presence_tentative_12_regular:before {
+    content: "\f067c";
+}
+.icon-ic_fluent_presence_tentative_16_regular:before {
+    content: "\f067d";
+}
+.icon-ic_fluent_presence_tentative_20_regular:before {
+    content: "\f067e";
+}
+.icon-ic_fluent_presence_tentative_24_regular:before {
+    content: "\f067f";
+}
+.icon-ic_fluent_shield_add_28_regular:before {
+    content: "\f0680";
+}
+.icon-ic_fluent_shield_add_32_regular:before {
+    content: "\f0681";
+}
+.icon-ic_fluent_shield_add_48_regular:before {
+    content: "\f0682";
+}
+.icon-ic_fluent_shield_checkmark_32_regular:before {
+    content: "\f0683";
+}
+.icon-ic_fluent_shield_task_32_regular:before {
+    content: "\f0684";
+}
+.icon-ic_fluent_toolbox_32_regular:before {
+    content: "\f0685";
+}
+.icon-ic_fluent_warning_lock_open_16_regular:before {
+    content: "\f0686";
+}
+.icon-ic_fluent_warning_lock_open_20_regular:before {
+    content: "\f0687";
+}
+.icon-ic_fluent_warning_lock_open_24_regular:before {
+    content: "\f0688";
 }

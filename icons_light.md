@@ -11,6 +11,7 @@
 |Archive Settings|<img src="assets/Archive Settings/SVG/ic_fluent_archive_settings_32_light.svg?raw=true" width="24" height="24">|`archiveSettings32Light`|`ic_fluent_archive_settings_32_light`|
 |Arrow Clockwise|<img src="assets/Arrow Clockwise/SVG/ic_fluent_arrow_clockwise_32_light.svg?raw=true" width="24" height="24">|`arrowClockwise32Light`|`ic_fluent_arrow_clockwise_32_light`|
 |Arrow Down|<img src="assets/Arrow Down/SVG/ic_fluent_arrow_down_32_light.svg?raw=true" width="24" height="24">|`arrowDown32Light`|`ic_fluent_arrow_down_32_light`|
+|Arrow Download|<img src="assets/Arrow Download/SVG/ic_fluent_arrow_download_32_light.svg?raw=true" width="24" height="24">|`arrowDownload32Light`|`ic_fluent_arrow_download_32_light`|
 |Arrow Forward|<img src="assets/Arrow Forward/SVG/ic_fluent_arrow_forward_32_light.svg?raw=true" width="24" height="24">|`arrowForward32Light`|`ic_fluent_arrow_forward_32_light`|
 |Arrow Hook Up Left|<img src="assets/Arrow Hook Up Left/SVG/ic_fluent_arrow_hook_up_left_32_light.svg?raw=true" width="24" height="24">|`arrowHookUpLeft32Light`|`ic_fluent_arrow_hook_up_left_32_light`|
 |Arrow Redo|<img src="assets/Arrow Redo/SVG/ic_fluent_arrow_redo_32_light.svg?raw=true" width="24" height="24">|`arrowRedo32Light`|`ic_fluent_arrow_redo_32_light`|
@@ -45,6 +46,7 @@
 |Clock Alarm|<img src="assets/Clock Alarm/SVG/ic_fluent_clock_alarm_32_light.svg?raw=true" width="24" height="24">|`clockAlarm32Light`|`ic_fluent_clock_alarm_32_light`|
 |Color|<img src="assets/Color/SVG/ic_fluent_color_32_light.svg?raw=true" width="24" height="24">|`color32Light`|`ic_fluent_color_32_light`|
 |Color Fill|<img src="assets/Color Fill/SVG/ic_fluent_color_fill_32_light.svg?raw=true" width="24" height="24">|`colorFill32Light`|`ic_fluent_color_fill_32_light`|
+|Color Fill Accent|<img src="assets/Color Fill Accent/SVG/ic_fluent_color_fill_accent_32_light.svg?raw=true" width="24" height="24">|`colorFillAccent32Light`|`ic_fluent_color_fill_accent_32_light`|
 |Comment|<img src="assets/Comment/SVG/ic_fluent_comment_32_light.svg?raw=true" width="24" height="24">|`comment32Light`|`ic_fluent_comment_32_light`|
 |Comment Add|<img src="assets/Comment Add/SVG/ic_fluent_comment_add_32_light.svg?raw=true" width="24" height="24">|`commentAdd32Light`|`ic_fluent_comment_add_32_light`|
 |Compose|<img src="assets/Compose/SVG/ic_fluent_compose_32_light.svg?raw=true" width="24" height="24">|`compose32Light`|`ic_fluent_compose_32_light`|
@@ -80,6 +82,7 @@
 |Layout Row Two|<img src="assets/Layout Row Two/SVG/ic_fluent_layout_row_two_32_light.svg?raw=true" width="24" height="24">|`layoutRowTwo32Light`|`ic_fluent_layout_row_two_32_light`|
 |Layout Row Two Focus Top|<img src="assets/Layout Row Two Focus Top/SVG/ic_fluent_layout_row_two_focus_top_32_light.svg?raw=true" width="24" height="24">|`layoutRowTwoFocusTop32Light`|`ic_fluent_layout_row_two_focus_top_32_light`|
 |Layout Row Two Focus Top Settings|<img src="assets/Layout Row Two Focus Top Settings/SVG/ic_fluent_layout_row_two_focus_top_settings_32_light.svg?raw=true" width="24" height="24">|`layoutRowTwoFocusTopSettings32Light`|`ic_fluent_layout_row_two_focus_top_settings_32_light`|
+|Layout Row Two Settings|<img src="assets/Layout Row Two Settings/SVG/ic_fluent_layout_row_two_settings_32_light.svg?raw=true" width="24" height="24">|`layoutRowTwoSettings32Light`|`ic_fluent_layout_row_two_settings_32_light`|
 |Link|<img src="assets/Link/SVG/ic_fluent_link_32_light.svg?raw=true" width="24" height="24">|`link32Light`|`ic_fluent_link_32_light`|
 |Lock Closed|<img src="assets/Lock Closed/SVG/ic_fluent_lock_closed_32_light.svg?raw=true" width="24" height="24">|`lockClosed32Light`|`ic_fluent_lock_closed_32_light`|
 |Lock Open|<img src="assets/Lock Open/SVG/ic_fluent_lock_open_32_light.svg?raw=true" width="24" height="24">|`lockOpen32Light`|`ic_fluent_lock_open_32_light`|
@@ -96,6 +99,7 @@
 |Mail Settings|<img src="assets/Mail Settings/SVG/ic_fluent_mail_settings_32_light.svg?raw=true" width="24" height="24">|`mailSettings32Light`|`ic_fluent_mail_settings_32_light`|
 |Mail Unread|<img src="assets/Mail Unread/SVG/ic_fluent_mail_unread_32_light.svg?raw=true" width="24" height="24">|`mailUnread32Light`|`ic_fluent_mail_unread_32_light`|
 |Mic|<img src="assets/Mic/SVG/ic_fluent_mic_32_light.svg?raw=true" width="24" height="24">|`mic32Light`|`ic_fluent_mic_32_light`|
+|Molecule|<img src="assets/Molecule/SVG/ic_fluent_molecule_32_light.svg?raw=true" width="24" height="24">|`molecule32Light`|`ic_fluent_molecule_32_light`|
 |Note|<img src="assets/Note/SVG/ic_fluent_note_32_light.svg?raw=true" width="24" height="24">|`note32Light`|`ic_fluent_note_32_light`|
 |Options|<img src="assets/Options/SVG/ic_fluent_options_32_light.svg?raw=true" width="24" height="24">|`options32Light`|`ic_fluent_options_32_light`|
 |Paint Brush|<img src="assets/Paint Brush/SVG/ic_fluent_paint_brush_32_light.svg?raw=true" width="24" height="24">|`paintBrush32Light`|`ic_fluent_paint_brush_32_light`|
@@ -154,6 +158,7 @@
 |Text Edit Style|<img src="assets/Text Edit Style/SVG/ic_fluent_text_edit_style_32_light.svg?raw=true" width="24" height="24">|`textEditStyle32Light`|`ic_fluent_text_edit_style_32_light`|
 |Text Expand|<img src="assets/Text Expand/SVG/ic_fluent_text_expand_32_light.svg?raw=true" width="24" height="24">|`textExpand32Light`|`ic_fluent_text_expand_32_light`|
 |TextBox Align Top Left|<img src="assets/TextBox Align Top Left/SVG/ic_fluent_textbox_align_top_left_32_light.svg?raw=true" width="24" height="24">|`textboxAlignTopLeft32Light`|`ic_fluent_textbox_align_top_left_32_light`|
+|Toolbox|<img src="assets/Toolbox/SVG/ic_fluent_toolbox_32_light.svg?raw=true" width="24" height="24">|`toolbox32Light`|`ic_fluent_toolbox_32_light`|
 |Translate|<img src="assets/Translate/SVG/ic_fluent_translate_32_light.svg?raw=true" width="24" height="24">|`translate32Light`|`ic_fluent_translate_32_light`|
 |Video|<img src="assets/Video/SVG/ic_fluent_video_32_light.svg?raw=true" width="24" height="24">|`video32Light`|`ic_fluent_video_32_light`|
 |Video Clip|<img src="assets/Video Clip/SVG/ic_fluent_video_clip_32_light.svg?raw=true" width="24" height="24">|`videoClip32Light`|`ic_fluent_video_clip_32_light`|
