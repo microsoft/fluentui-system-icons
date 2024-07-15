@@ -14,6 +14,7 @@ dist/
 .idea
 
 .vscode/
+.vs/
 
 xcuserdata
 /ios/FluentIcons/Tests
