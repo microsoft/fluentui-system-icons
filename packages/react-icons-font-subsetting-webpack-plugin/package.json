@@ -23,7 +23,7 @@
   "homepage": "https://github.com/microsoft/fluentui-system-icons/packages/react-icons-font-subsetting-webpack-plugin#readme",
   "devDependencies": {
     "typescript": "^4.6.3",
-    "webpack": "^5.72.0",
+    "webpack": "^5.76.0",
     "@fluentui/react-icons": "*"
   },
   "dependencies": {
