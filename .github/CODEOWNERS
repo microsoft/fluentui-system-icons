@@ -10,3 +10,6 @@ packages/react-native-icons @praveen970
 ## Build Systems
 android/ @praveen970
 flutter/ @nickromano
+
+## Assets
+assets/ @spencer-nelson @willchavez
