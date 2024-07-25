@@ -137,6 +137,7 @@ function processFolder(srcPath, destPath, resizable) {
   for(const chunk of iconChunks) {
     chunk.unshift(`import { createFluentIcon } from "../utils/createFluentIcon";`);
     chunk.unshift(`import type { FluentIcon } from "../utils/createFluentIcon";`);
+    chunk.unshift(`"use client";`);
   }
 
   /** @type string[] */
