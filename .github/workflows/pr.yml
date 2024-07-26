@@ -63,39 +63,39 @@ jobs:
       working-directory: importer
 
   # build-android:
-    name: Build Android library
-    runs-on: ubuntu-latest
+    # name: Build Android library
+    # runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v2
+    # steps:
+    # - uses: actions/checkout@v2
 
-    - name: Use Node 18
-      uses: actions/setup-node@v1
-      with:
-        node-version: 18.x
+    # - name: Use Node 18
+    #   uses: actions/setup-node@v1
+    #   with:
+    #     node-version: 18.x
 
-    - run: npm install
+    # - run: npm install
 
-    - name: Run generate script
-      run: npm run deploy:android
-      working-directory: importer
+    # - name: Run generate script
+    #   run: npm run deploy:android
+    #   working-directory: importer
 
-    - name: Setup Java
-      uses: actions/setup-java@v1
-      with:
-        java-version: 11
+    # - name: Setup Java
+    #   uses: actions/setup-java@v1
+    #   with:
+    #     java-version: 11
 
-    # https://github.com/marketplace/actions/gradle-command
-    - name: Build Android library
-      uses: eskatos/gradle-command-action@v1
-      with:
-        arguments: assembleRelease
-        build-root-directory: android
-        wrapper-directory: android
+    # # https://github.com/marketplace/actions/gradle-command
+    # - name: Build Android library
+    #   uses: eskatos/gradle-command-action@v1
+    #   with:
+    #     arguments: assembleRelease
+    #     build-root-directory: android
+    #     wrapper-directory: android
 
-    - name: Generate BUILD.gn file for Android
-      run: python3 generate_build_gn_android.py
-      working-directory: importer
+    # - name: Generate BUILD.gn file for Android
+    #   run: python3 generate_build_gn_android.py
+    #   working-directory: importer
 
   build-flutter:
     name: Build Flutter library
