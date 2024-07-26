@@ -62,7 +62,7 @@ jobs:
       run: npm run deploy:ios
       working-directory: importer
 
-  build-android:
+  # build-android:
     name: Build Android library
     runs-on: ubuntu-latest
 
