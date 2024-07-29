@@ -2,6 +2,7 @@ import * as React from 'react';
 import { FluentIconsProps } from '../FluentIconsProps.types';
 import { makeStyles, makeStaticStyles, mergeClasses } from "@griffel/react";
 import { useIconState } from '../useIconState';
+import { fontIconClassName } from '../constants';
 
 import fontFilledTtf from './FluentSystemIcons-Filled.ttf';
 import fontFilledWoff from './FluentSystemIcons-Filled.woff';
@@ -96,7 +97,7 @@ export function createFluentFontIcon(displayName: string, codepoint: string, fon
     const Component: React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>, HTMLElement>> & { codepoint: string} = (props) => {
         useStaticStyles();
         const styles = useRootStyles();
-        const className = mergeClasses(styles.root, styles[font], props.className);
+        const className = mergeClasses(styles.root, styles[font], fontIconClassName, props.className);
         const state = useIconState<React.HTMLAttributes<HTMLElement>, HTMLElement>({...props, className}, { flipInRtl: options?.flipInRtl });
 
 
