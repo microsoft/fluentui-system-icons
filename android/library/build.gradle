@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply from: '../publish.gradle'
 
 android {
     compileSdkVersion 29
@@ -20,11 +19,5 @@ android {
     }
 
 }
-task sourceJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier "sources"
-}
-project.afterEvaluate {
-    project.ext.publishingFunc('system_icons')
-}
-//apply from: "${rootDir}/scripts/publish-module.gradle"
+
+apply from: "${rootDir}/scripts/publish-module.gradle"
