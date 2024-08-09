@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?0027ea9fdc5abc121b4069e76342e913") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?0027ea9fdc5abc121b4069e76342e913") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?0027ea9fdc5abc121b4069e76342e913") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?32af1f164e3677380417ad104c091ccc") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?32af1f164e3677380417ad104c091ccc") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?32af1f164e3677380417ad104c091ccc") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -24717,4 +24717,40 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_window_column_one_fourth_left_focus_top_20_filled:before {
     content: "\f0729";
+}
+.icon-ic_fluent_arrow_sync_circle_28_filled:before {
+    content: "\f072a";
+}
+.icon-ic_fluent_arrow_sync_circle_32_filled:before {
+    content: "\f072b";
+}
+.icon-ic_fluent_arrow_sync_circle_48_filled:before {
+    content: "\f072c";
+}
+.icon-ic_fluent_calendar_arrow_repeat_all_16_filled:before {
+    content: "\f072d";
+}
+.icon-ic_fluent_calendar_arrow_repeat_all_20_filled:before {
+    content: "\f072e";
+}
+.icon-ic_fluent_calendar_arrow_repeat_all_24_filled:before {
+    content: "\f072f";
+}
+.icon-ic_fluent_calendar_arrow_repeat_all_28_filled:before {
+    content: "\f0730";
+}
+.icon-ic_fluent_calendar_arrow_repeat_all_32_filled:before {
+    content: "\f0731";
+}
+.icon-ic_fluent_calendar_arrow_repeat_all_48_filled:before {
+    content: "\f0732";
+}
+.icon-ic_fluent_coin_multiple_28_filled:before {
+    content: "\f0733";
+}
+.icon-ic_fluent_coin_multiple_32_filled:before {
+    content: "\f0734";
+}
+.icon-ic_fluent_coin_multiple_48_filled:before {
+    content: "\f0735";
 }

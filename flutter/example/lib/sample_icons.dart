@@ -1200,6 +1200,12 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.arrow_sync_circle_24_regular, 'arrow_sync_circle_24_regular', 24),
 
+  FluentUISampleIcon(FluentIcons.arrow_sync_circle_28_regular, 'arrow_sync_circle_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.arrow_sync_circle_32_regular, 'arrow_sync_circle_32_regular', 32),
+
+  FluentUISampleIcon(FluentIcons.arrow_sync_circle_48_regular, 'arrow_sync_circle_48_regular', 48),
+
   FluentUISampleIcon(FluentIcons.arrow_sync_dismiss_20_regular, 'arrow_sync_dismiss_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.arrow_sync_dismiss_24_regular, 'arrow_sync_dismiss_24_regular', 24),
@@ -2413,6 +2419,18 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.calendar_arrow_down_20_regular, 'calendar_arrow_down_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.calendar_arrow_down_24_regular, 'calendar_arrow_down_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.calendar_arrow_repeat_all_16_regular, 'calendar_arrow_repeat_all_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.calendar_arrow_repeat_all_20_regular, 'calendar_arrow_repeat_all_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.calendar_arrow_repeat_all_24_regular, 'calendar_arrow_repeat_all_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.calendar_arrow_repeat_all_28_regular, 'calendar_arrow_repeat_all_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.calendar_arrow_repeat_all_32_regular, 'calendar_arrow_repeat_all_32_regular', 32),
+
+  FluentUISampleIcon(FluentIcons.calendar_arrow_repeat_all_48_regular, 'calendar_arrow_repeat_all_48_regular', 48),
 
   FluentUISampleIcon(FluentIcons.calendar_arrow_right_16_regular, 'calendar_arrow_right_16_regular', 16),
 
@@ -4159,6 +4177,12 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.code_vb_16_regular, 'code_vb_16_regular', 16),
 
   FluentUISampleIcon(FluentIcons.code_vb_rectangle_16_regular, 'code_vb_rectangle_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.coin_multiple_28_regular, 'coin_multiple_28_regular', 28),
+
+  FluentUISampleIcon(FluentIcons.coin_multiple_32_regular, 'coin_multiple_32_regular', 32),
+
+  FluentUISampleIcon(FluentIcons.coin_multiple_48_regular, 'coin_multiple_48_regular', 48),
 
   FluentUISampleIcon(FluentIcons.coin_stack_16_regular, 'coin_stack_16_regular', 16),
 
@@ -17418,6 +17442,12 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.arrow_sync_circle_24_filled, 'arrow_sync_circle_24_filled', 24),
 
+  FluentUISampleIcon(FluentIcons.arrow_sync_circle_28_filled, 'arrow_sync_circle_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.arrow_sync_circle_32_filled, 'arrow_sync_circle_32_filled', 32),
+
+  FluentUISampleIcon(FluentIcons.arrow_sync_circle_48_filled, 'arrow_sync_circle_48_filled', 48),
+
   FluentUISampleIcon(FluentIcons.arrow_sync_dismiss_20_filled, 'arrow_sync_dismiss_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.arrow_sync_dismiss_24_filled, 'arrow_sync_dismiss_24_filled', 24),
@@ -18633,6 +18663,18 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.calendar_arrow_down_20_filled, 'calendar_arrow_down_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.calendar_arrow_down_24_filled, 'calendar_arrow_down_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.calendar_arrow_repeat_all_16_filled, 'calendar_arrow_repeat_all_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.calendar_arrow_repeat_all_20_filled, 'calendar_arrow_repeat_all_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.calendar_arrow_repeat_all_24_filled, 'calendar_arrow_repeat_all_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.calendar_arrow_repeat_all_28_filled, 'calendar_arrow_repeat_all_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.calendar_arrow_repeat_all_32_filled, 'calendar_arrow_repeat_all_32_filled', 32),
+
+  FluentUISampleIcon(FluentIcons.calendar_arrow_repeat_all_48_filled, 'calendar_arrow_repeat_all_48_filled', 48),
 
   FluentUISampleIcon(FluentIcons.calendar_arrow_right_16_filled, 'calendar_arrow_right_16_filled', 16),
 
@@ -20379,6 +20421,12 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.code_vb_16_filled, 'code_vb_16_filled', 16),
 
   FluentUISampleIcon(FluentIcons.code_vb_rectangle_16_filled, 'code_vb_rectangle_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.coin_multiple_28_filled, 'coin_multiple_28_filled', 28),
+
+  FluentUISampleIcon(FluentIcons.coin_multiple_32_filled, 'coin_multiple_32_filled', 32),
+
+  FluentUISampleIcon(FluentIcons.coin_multiple_48_filled, 'coin_multiple_48_filled', 48),
 
   FluentUISampleIcon(FluentIcons.coin_stack_16_filled, 'coin_stack_16_filled', 16),
 
@@ -32825,6 +32873,8 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.folder_mail_32_light, 'folder_mail_32_light', 32),
 
   FluentUISampleIcon(FluentIcons.hand_draw_32_light, 'hand_draw_32_light', 32),
+
+  FluentUISampleIcon(FluentIcons.history_32_light, 'history_32_light', 32),
 
   FluentUISampleIcon(FluentIcons.image_add_32_light, 'image_add_32_light', 32),
 

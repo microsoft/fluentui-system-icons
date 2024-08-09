@@ -68,6 +68,7 @@
 |Folder Arrow Right|<img src="assets/Folder Arrow Right/SVG/ic_fluent_folder_arrow_right_32_light.svg?raw=true" width="24" height="24">|`folderArrowRight32Light`|`ic_fluent_folder_arrow_right_32_light`|
 |Folder Mail|<img src="assets/Folder Mail/SVG/ic_fluent_folder_mail_32_light.svg?raw=true" width="24" height="24">|`folderMail32Light`|`ic_fluent_folder_mail_32_light`|
 |Hand Draw|<img src="assets/Hand Draw/SVG/ic_fluent_hand_draw_32_light.svg?raw=true" width="24" height="24">|`handDraw32Light`|`ic_fluent_hand_draw_32_light`|
+|History|<img src="assets/History/SVG/ic_fluent_history_32_light.svg?raw=true" width="24" height="24">|`history32Light`|`ic_fluent_history_32_light`|
 |Image Add|<img src="assets/Image Add/SVG/ic_fluent_image_add_32_light.svg?raw=true" width="24" height="24">|`imageAdd32Light`|`ic_fluent_image_add_32_light`|
 |Image Alt Text|<img src="assets/Image Alt Text/SVG/ic_fluent_image_alt_text_32_light.svg?raw=true" width="24" height="24">|`imageAltText32Light`|`ic_fluent_image_alt_text_32_light`|
 |Image Copy|<img src="assets/Image Copy/SVG/ic_fluent_image_copy_32_light.svg?raw=true" width="24" height="24">|`imageCopy32Light`|`ic_fluent_image_copy_32_light`|
