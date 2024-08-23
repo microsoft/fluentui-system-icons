@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?c8ea1a0606df810c0eab7f23d9385ea9") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?c8ea1a0606df810c0eab7f23d9385ea9") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?c8ea1a0606df810c0eab7f23d9385ea9") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?34e61dd87d6bf2472fde4be71ab83b62") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?34e61dd87d6bf2472fde4be71ab83b62") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?34e61dd87d6bf2472fde4be71ab83b62") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -24753,4 +24753,55 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_coin_multiple_48_filled:before {
     content: "\f0735";
+}
+.icon-ic_fluent_bin_full_48_filled:before {
+    content: "\f0736";
+}
+.icon-ic_fluent_clock_toolbox_32_filled:before {
+    content: "\f0737";
+}
+.icon-ic_fluent_database_search_32_filled:before {
+    content: "\f0738";
+}
+.icon-ic_fluent_document_globe_20_filled:before {
+    content: "\f0739";
+}
+.icon-ic_fluent_document_globe_24_filled:before {
+    content: "\f073a";
+}
+.icon-ic_fluent_form_sparkle_20_filled:before {
+    content: "\f073b";
+}
+.icon-ic_fluent_line_style_sketch_16_filled:before {
+    content: "\f073c";
+}
+.icon-ic_fluent_line_style_sketch_20_filled:before {
+    content: "\f073d";
+}
+.icon-ic_fluent_line_style_sketch_24_filled:before {
+    content: "\f073e";
+}
+.icon-ic_fluent_line_style_sketch_28_filled:before {
+    content: "\f073f";
+}
+.icon-ic_fluent_line_style_sketch_32_filled:before {
+    content: "\f0740";
+}
+.icon-ic_fluent_microscope_32_filled:before {
+    content: "\f0741";
+}
+.icon-ic_fluent_puzzle_piece_28_filled:before {
+    content: "\f0742";
+}
+.icon-ic_fluent_puzzle_piece_32_filled:before {
+    content: "\f0743";
+}
+.icon-ic_fluent_puzzle_piece_48_filled:before {
+    content: "\f0744";
+}
+.icon-ic_fluent_reward_32_filled:before {
+    content: "\f0745";
+}
+.icon-ic_fluent_tab_add_32_filled:before {
+    content: "\f0746";
 }

@@ -141,6 +141,7 @@
 |Stamp|<img src="assets/Stamp/SVG/ic_fluent_stamp_32_light.svg?raw=true" width="24" height="24">|`stamp32Light`|`ic_fluent_stamp_32_light`|
 |Star Add|<img src="assets/Star Add/SVG/ic_fluent_star_add_32_light.svg?raw=true" width="24" height="24">|`starAdd32Light`|`ic_fluent_star_add_32_light`|
 |Star Arrow Right|<img src="assets/Star Arrow Right/SVG/ic_fluent_star_arrow_right_32_light.svg?raw=true" width="24" height="24">|`starArrowRight32Light`|`ic_fluent_star_arrow_right_32_light`|
+|Tab Add|<img src="assets/Tab Add/SVG/ic_fluent_tab_add_32_light.svg?raw=true" width="24" height="24">|`tabAdd32Light`|`ic_fluent_tab_add_32_light`|
 |Table|<img src="assets/Table/SVG/ic_fluent_table_32_light.svg?raw=true" width="24" height="24">|`table32Light`|`ic_fluent_table_32_light`|
 |Table Cells Merge|<img src="assets/Table Cells Merge/SVG/ic_fluent_table_cells_merge_32_light.svg?raw=true" width="24" height="24">|`tableCellsMerge32Light`|`ic_fluent_table_cells_merge_32_light`|
 |Table Cells Split|<img src="assets/Table Cells Split/SVG/ic_fluent_table_cells_split_32_light.svg?raw=true" width="24" height="24">|`tableCellsSplit32Light`|`ic_fluent_table_cells_split_32_light`|
