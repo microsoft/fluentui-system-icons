@@ -29,6 +29,8 @@ def write_file(icons_md, weight_type):
 
         pdf_dir = os.path.join("assets", asset_dir, "PDF")
         for filename in sorted(os.listdir(pdf_dir)):
+            if filename == ".DS_Store":
+                continue
             components = filename.replace(".pdf", "").split("_")[2:]
             weight = components[-1]
             weights.add(weight)
@@ -56,3 +58,6 @@ with open("icons_filled.md", "w") as icons_filled_md:
 
 with open("icons_regular.md", "w") as icons_regular_md:
     write_file(icons_regular_md, "regular")
+
+with open("icons_light.md", "w") as icons_light_md:
+    write_file(icons_light_md, "light")

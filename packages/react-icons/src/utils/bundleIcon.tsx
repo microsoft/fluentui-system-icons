@@ -1,6 +1,5 @@
 import * as React from "react";
 import { iconFilledClassName, iconRegularClassName } from "./constants";
-import { FluentIconsProps } from "./FluentIconsProps.types";
 import { makeStyles, mergeClasses } from "@griffel/react";
 import { FluentIcon } from "./createFluentIcon";
 
