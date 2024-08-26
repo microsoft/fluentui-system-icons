@@ -35,8 +35,14 @@ Note:
 import os
 import re
 
+# Determine the script's directory
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Set a default path
+default_svg_folder = os.path.join(script_dir, '..', '..', 'all_files_svg')
+
 # Prompt the user for the path to the SVGs folder
-svg_folder = input("Please enter the path to the SVGs folder: ")
+svg_folder = input(f"Please enter the path to the SVGs folder (default is {default_svg_folder}): ") or default_svg_folder
 svg_folder = os.path.abspath(svg_folder)  # Convert to absolute path
 previous_folder = os.path.join(svg_folder, 'previous')
 
