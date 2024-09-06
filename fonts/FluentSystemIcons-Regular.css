@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.woff2?7c4900f9205088763014e184eacd4c88") format("woff2"),
-url("./FluentSystemIcons-Regular.woff?7c4900f9205088763014e184eacd4c88") format("woff"),
-url("./FluentSystemIcons-Regular.ttf?7c4900f9205088763014e184eacd4c88") format("truetype");
+    src: url("./FluentSystemIcons-Regular.woff2?b40b5a7c18d63043f1077027e07ba4c1") format("woff2"),
+url("./FluentSystemIcons-Regular.woff?b40b5a7c18d63043f1077027e07ba4c1") format("woff"),
+url("./FluentSystemIcons-Regular.ttf?b40b5a7c18d63043f1077027e07ba4c1") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -24429,4 +24429,76 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_tab_add_32_regular:before {
     content: "\f06c9";
+}
+.icon-ic_fluent_add_circle_48_regular:before {
+    content: "\f06ca";
+}
+.icon-ic_fluent_approvals_app_48_regular:before {
+    content: "\f06cb";
+}
+.icon-ic_fluent_clipboard_text_edit_48_regular:before {
+    content: "\f06cc";
+}
+.icon-ic_fluent_design_ideas_28_regular:before {
+    content: "\f06cd";
+}
+.icon-ic_fluent_design_ideas_32_regular:before {
+    content: "\f06ce";
+}
+.icon-ic_fluent_design_ideas_48_regular:before {
+    content: "\f06cf";
+}
+.icon-ic_fluent_document_folder_28_regular:before {
+    content: "\f06d0";
+}
+.icon-ic_fluent_document_folder_32_regular:before {
+    content: "\f06d1";
+}
+.icon-ic_fluent_document_folder_48_regular:before {
+    content: "\f06d2";
+}
+.icon-ic_fluent_eye_off_32_regular:before {
+    content: "\f06d3";
+}
+.icon-ic_fluent_learning_app_16_regular:before {
+    content: "\f06d4";
+}
+.icon-ic_fluent_receipt_48_regular:before {
+    content: "\f06d5";
+}
+.icon-ic_fluent_video_bluetooth_16_regular:before {
+    content: "\f06d6";
+}
+.icon-ic_fluent_video_bluetooth_20_regular:before {
+    content: "\f06d7";
+}
+.icon-ic_fluent_video_bluetooth_24_regular:before {
+    content: "\f06d8";
+}
+.icon-ic_fluent_video_bluetooth_28_regular:before {
+    content: "\f06d9";
+}
+.icon-ic_fluent_video_bluetooth_32_regular:before {
+    content: "\f06da";
+}
+.icon-ic_fluent_video_bluetooth_48_regular:before {
+    content: "\f06db";
+}
+.icon-ic_fluent_video_usb_16_regular:before {
+    content: "\f06dc";
+}
+.icon-ic_fluent_video_usb_20_regular:before {
+    content: "\f06dd";
+}
+.icon-ic_fluent_video_usb_24_regular:before {
+    content: "\f06de";
+}
+.icon-ic_fluent_video_usb_28_regular:before {
+    content: "\f06df";
+}
+.icon-ic_fluent_video_usb_32_regular:before {
+    content: "\f06e0";
+}
+.icon-ic_fluent_video_usb_48_regular:before {
+    content: "\f06e1";
 }

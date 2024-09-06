@@ -5,6 +5,7 @@
 |---|---|---|---|
 |Accessibility Checkmark|<img src="assets/Accessibility Checkmark/SVG/ic_fluent_accessibility_checkmark_32_light.svg?raw=true" width="24" height="24">|`accessibilityCheckmark32Light`|`ic_fluent_accessibility_checkmark_32_light`|
 |Add|<img src="assets/Add/SVG/ic_fluent_add_32_light.svg?raw=true" width="24" height="24">|`add32Light`|`ic_fluent_add_32_light`|
+|Alert|<img src="assets/Alert/SVG/ic_fluent_alert_32_light.svg?raw=true" width="24" height="24">|`alert32Light`|`ic_fluent_alert_32_light`|
 |App Folder|<img src="assets/App Folder/SVG/ic_fluent_app_folder_32_light.svg?raw=true" width="24" height="24">|`appFolder32Light`|`ic_fluent_app_folder_32_light`|
 |App Generic|<img src="assets/App Generic/SVG/ic_fluent_app_generic_32_light.svg?raw=true" width="24" height="24">|`appGeneric32Light`|`ic_fluent_app_generic_32_light`|
 |Archive|<img src="assets/Archive/SVG/ic_fluent_archive_32_light.svg?raw=true" width="24" height="24">|`archive32Light`|`ic_fluent_archive_32_light`|
@@ -61,6 +62,8 @@
 |Door Arrow Right|<img src="assets/Door Arrow Right/SVG/ic_fluent_door_arrow_right_32_light.svg?raw=true" width="24" height="24">|`doorArrowRight32Light`|`ic_fluent_door_arrow_right_32_light`|
 |Edit|<img src="assets/Edit/SVG/ic_fluent_edit_32_light.svg?raw=true" width="24" height="24">|`edit32Light`|`ic_fluent_edit_32_light`|
 |Emoji|<img src="assets/Emoji/SVG/ic_fluent_emoji_32_light.svg?raw=true" width="24" height="24">|`emoji32Light`|`ic_fluent_emoji_32_light`|
+|Eye|<img src="assets/Eye/SVG/ic_fluent_eye_32_light.svg?raw=true" width="24" height="24">|`eye32Light`|`ic_fluent_eye_32_light`|
+|Eye Off|<img src="assets/Eye Off/SVG/ic_fluent_eye_off_32_light.svg?raw=true" width="24" height="24">|`eyeOff32Light`|`ic_fluent_eye_off_32_light`|
 |Filter|<img src="assets/Filter/SVG/ic_fluent_filter_32_light.svg?raw=true" width="24" height="24">|`filter32Light`|`ic_fluent_filter_32_light`|
 |Flag|<img src="assets/Flag/SVG/ic_fluent_flag_32_light.svg?raw=true" width="24" height="24">|`flag32Light`|`ic_fluent_flag_32_light`|
 |Flag Off|<img src="assets/Flag Off/SVG/ic_fluent_flag_off_32_light.svg?raw=true" width="24" height="24">|`flagOff32Light`|`ic_fluent_flag_off_32_light`|
@@ -101,6 +104,7 @@
 |Mail Unread|<img src="assets/Mail Unread/SVG/ic_fluent_mail_unread_32_light.svg?raw=true" width="24" height="24">|`mailUnread32Light`|`ic_fluent_mail_unread_32_light`|
 |Mic|<img src="assets/Mic/SVG/ic_fluent_mic_32_light.svg?raw=true" width="24" height="24">|`mic32Light`|`ic_fluent_mic_32_light`|
 |Molecule|<img src="assets/Molecule/SVG/ic_fluent_molecule_32_light.svg?raw=true" width="24" height="24">|`molecule32Light`|`ic_fluent_molecule_32_light`|
+|Newsletter|<img src="assets/Newsletter/SVG/ic_fluent_newsletter_32_light.svg?raw=true" width="24" height="24">|`newsletter32Light`|`ic_fluent_newsletter_32_light`|
 |Note|<img src="assets/Note/SVG/ic_fluent_note_32_light.svg?raw=true" width="24" height="24">|`note32Light`|`ic_fluent_note_32_light`|
 |Options|<img src="assets/Options/SVG/ic_fluent_options_32_light.svg?raw=true" width="24" height="24">|`options32Light`|`ic_fluent_options_32_light`|
 |Paint Brush|<img src="assets/Paint Brush/SVG/ic_fluent_paint_brush_32_light.svg?raw=true" width="24" height="24">|`paintBrush32Light`|`ic_fluent_paint_brush_32_light`|
