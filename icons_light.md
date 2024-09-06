@@ -104,7 +104,6 @@
 |Mail Unread|<img src="assets/Mail Unread/SVG/ic_fluent_mail_unread_32_light.svg?raw=true" width="24" height="24">|`mailUnread32Light`|`ic_fluent_mail_unread_32_light`|
 |Mic|<img src="assets/Mic/SVG/ic_fluent_mic_32_light.svg?raw=true" width="24" height="24">|`mic32Light`|`ic_fluent_mic_32_light`|
 |Molecule|<img src="assets/Molecule/SVG/ic_fluent_molecule_32_light.svg?raw=true" width="24" height="24">|`molecule32Light`|`ic_fluent_molecule_32_light`|
-|Newsletter|<img src="assets/Newsletter/SVG/ic_fluent_newsletter_32_light.svg?raw=true" width="24" height="24">|`newsletter32Light`|`ic_fluent_newsletter_32_light`|
 |Note|<img src="assets/Note/SVG/ic_fluent_note_32_light.svg?raw=true" width="24" height="24">|`note32Light`|`ic_fluent_note_32_light`|
 |Options|<img src="assets/Options/SVG/ic_fluent_options_32_light.svg?raw=true" width="24" height="24">|`options32Light`|`ic_fluent_options_32_light`|
 |Paint Brush|<img src="assets/Paint Brush/SVG/ic_fluent_paint_brush_32_light.svg?raw=true" width="24" height="24">|`paintBrush32Light`|`ic_fluent_paint_brush_32_light`|

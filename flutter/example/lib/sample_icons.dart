@@ -33110,8 +33110,6 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.molecule_32_light, 'molecule_32_light', 32),
 
-  FluentUISampleIcon(FluentIcons.newsletter_32_light, 'newsletter_32_light', 32),
-
   FluentUISampleIcon(FluentIcons.note_32_light, 'note_32_light', 32),
 
   FluentUISampleIcon(FluentIcons.options_32_light, 'options_32_light', 32),
