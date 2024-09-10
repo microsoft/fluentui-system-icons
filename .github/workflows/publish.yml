@@ -9,6 +9,7 @@ on:
 
 env:
   LIBRARY_VERSION: 1.1.${{ github.run_number }}
+  DOTNET_VERSION: '6.0.x' # The .NET SDK version to use
 
 jobs:
   publish-library:
@@ -193,6 +194,26 @@ jobs:
         token: ${{ secrets.NPM_TOKEN }}
         access: public
         package: packages/react-native-icons/package.json 
+
+    ## .NET MAUI
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+
+    - name: Restore packages
+      run: dotnet restore
+      working-directory: packages/dotnetmaui-icons
+
+    - name: Build and pack
+      run: dotnet pack --output --configuration Release ./artifacts -p:PackageVersion=$NEW_VERSION Microsoft.Maui.Icons.FluentUI.csproj 
+      working-directory: packages/dotnetmaui-icons/Microsoft.Maui.Icons.FluentUI
+
+    - name: Push NuGet
+      run: |
+        dotnet nuget push NuGet\*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_ORG_API_KEY }}
+
+    ## Need to still push to nuget the package
 
     ## Android
     # - name: Run Android generate script
