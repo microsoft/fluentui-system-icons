@@ -72,6 +72,7 @@ async function processFiles(src, dest) {
   indexContents.push('export { FluentIconsProps } from \'../utils/FluentIconsProps.types\'');
   indexContents.push('export { default as wrapIcon } from \'../utils/wrapIcon\'');
   indexContents.push('export { default as bundleIcon } from \'../utils/bundleIcon\'');
+  indexContents.push('export { createFluentIcon } from \'../utils/createFluentIcon\'');
   indexContents.push('export { createFluentFontIcon } from \'../utils/fonts/createFluentFontIcon\'');
   indexContents.push('export type { FluentIcon } from \'../utils/createFluentIcon\'');
   indexContents.push('export * from \'../utils/useIconState\'');
@@ -92,7 +93,7 @@ async function processFiles(src, dest) {
  * @returns { Promise<string[]> } - chunked icon files to insert
  */
 async function processFolder(srcPath, codepointMapDestFolder, resizable) {
-  var files = await glob(resizable ? 'FluentSystemIcons-Resizable.json' : 'FluentSystemIcons-{Filled,Regular}.json', { cwd: srcPath, absolute: true });
+  var files = await glob(resizable ? 'FluentSystemIcons-Resizable.json' : 'FluentSystemIcons-{Filled,Regular,Light}.json', { cwd: srcPath, absolute: true });
 
   /** @type string[] */
   const iconExports = [];
@@ -117,6 +118,7 @@ async function processFolder(srcPath, codepointMapDestFolder, resizable) {
 
   for (const chunk of iconChunks) {
     chunk.unshift(`import {createFluentFontIcon} from "../../utils/fonts/createFluentFontIcon";`)
+    chunk.unshift(`"use client";`);
   }
 
   /** @type string[] */
@@ -153,10 +155,11 @@ function generateReactIconEntries(iconEntries, resizable) {
   for (const [iconName, codepoint] of Object.entries(iconEntries)) {
     let destFilename = getReactIconNameFromGlyphName(iconName, resizable);
     var flipInRtl = metadata[destFilename] === 'mirror';  
+    let iconStyle = /filled$/i.test(iconName) ? 0 /* Filled */ : /regular$/i.test(iconName) ? 1 /* Regular */ : 3 /* Light */
     var jsCode = `export const ${destFilename} = /*#__PURE__*/createFluentFontIcon(${JSON.stringify(destFilename)
       }, ${JSON.stringify(String.fromCodePoint(codepoint))
-      }, ${resizable ? 2 /* Resizable */ : /filled$/i.test(iconName) ? 0 /* Filled */ : 1 /* Regular */
-      }, ${resizable ? undefined : ` ${/(?<=_)\d+(?=_filled|_regular)/.exec(iconName)?.[0]}`
+      }, ${resizable ? 2 /* Resizable */ : iconStyle
+      }, ${resizable ? undefined : ` ${/(?<=_)\d+(?=_filled|_regular|_light)/.exec(iconName)?.[0]}`
       }${flipInRtl ? `, { flipInRtl: true }` : ''});`;
 
     iconExports.push(jsCode);

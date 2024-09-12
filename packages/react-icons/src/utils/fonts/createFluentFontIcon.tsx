@@ -2,6 +2,7 @@ import * as React from 'react';
 import { FluentIconsProps } from '../FluentIconsProps.types';
 import { makeStyles, makeStaticStyles, mergeClasses } from "@griffel/react";
 import { useIconState } from '../useIconState';
+import { fontIconClassName } from '../constants';
 
 import fontFilledTtf from './FluentSystemIcons-Filled.ttf';
 import fontFilledWoff from './FluentSystemIcons-Filled.woff';
@@ -11,6 +12,10 @@ import fontRegularTtf from './FluentSystemIcons-Regular.ttf';
 import fontRegularWoff from './FluentSystemIcons-Regular.woff';
 import fontRegularWoff2 from './FluentSystemIcons-Regular.woff2';
 
+import fontLightTtf from './FluentSystemIcons-Light.ttf';
+import fontLightWoff from './FluentSystemIcons-Light.woff';
+import fontLightWoff2 from './FluentSystemIcons-Light.woff2';
+
 import fontOneSizeTtf from './FluentSystemIcons-Resizable.ttf';
 import fontOneSizeWoff from './FluentSystemIcons-Resizable.woff';
 import fontOneSizeWoff2 from './FluentSystemIcons-Resizable.woff2';
@@ -18,7 +23,8 @@ import fontOneSizeWoff2 from './FluentSystemIcons-Resizable.woff2';
 export const enum FontFile {
     Filled = 0,
     Regular = 1,
-    Resizable = 2
+    Resizable = 2,
+		Light = 3
 }
 
 const FONT_FAMILY_MAP = {
@@ -42,6 +48,14 @@ const useStaticStyles = makeStaticStyles(`
     url(${JSON.stringify(fontRegularWoff)}) format("woff"),
     url(${JSON.stringify(fontRegularTtf)}) format("truetype");
 }
+
+@font-face {
+    font-family: ${FONT_FAMILY_MAP[FontFile.Light]};
+    src: url(${JSON.stringify(fontLightWoff2)}) format("woff2"),
+    url(${JSON.stringify(fontLightWoff)}) format("woff"),
+    url(${JSON.stringify(fontLightTtf)}) format("truetype");
+}
+
 @font-face {
     font-family: ${FONT_FAMILY_MAP[FontFile.Resizable]};
     font-display: "block";
@@ -58,7 +72,7 @@ const useRootStyles = makeStyles({
         lineHeight: '1em',
 
         "@media (forced-colors: active)": {
-            forcedColorAdjust: 'auto',
+            forcedColorAdjust: 'none',
         }
     },
     [FontFile.Filled]: {
@@ -70,6 +84,9 @@ const useRootStyles = makeStyles({
     [FontFile.Resizable]: {
         fontFamily: 'FluentSystemIcons',
     },
+    [FontFile.Light]: {
+        fontFamily: 'FluentSystemIconsLight',
+    }
 });
 
 export type CreateFluentFontIconOptions = {
@@ -80,7 +97,7 @@ export function createFluentFontIcon(displayName: string, codepoint: string, fon
     const Component: React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>, HTMLElement>> & { codepoint: string} = (props) => {
         useStaticStyles();
         const styles = useRootStyles();
-        const className = mergeClasses(styles.root, styles[font], props.className);
+        const className = mergeClasses(styles.root, styles[font], fontIconClassName, props.className);
         const state = useIconState<React.HTMLAttributes<HTMLElement>, HTMLElement>({...props, className}, { flipInRtl: options?.flipInRtl });
 
 

@@ -225,13 +225,14 @@ def process_assets():
         gn_file.write("#  Do not make edits or they will be removed later\n")
         gn_file.write("#\n\n")
 
-        gn_file.write("import(\"//build/config/ios/asset_catalog.gni\")\n\n")
+        gn_file.write("import(\"//build/config/ios/rules.gni\")\n\n")
 
         for imageset in imagesets:
             if imageset == ".DS_Store":
                 continue
             imageset_folder_path = os.path.join(icon_assets_path, imageset)
-            gn_file.write("imageset(\"{}\")".format(imageset.replace(".imageset", "")) + " {\n")
+            gn_file.write("bundle_data_xcassets(\"{}\")".format(imageset.replace(".imageset", "")) + " {\n")
+            gn_file.write("  catalog = \"FluentIcons/Assets/IconAssets.xcassets\"\n")
             gn_file.write("  sources = [\n")
             for imageset_file in sorted(os.listdir(imageset_folder_path)):
                 gn_file.write(f"    \"FluentIcons/Assets/IconAssets.xcassets/{imageset}/{imageset_file}\",\n")
