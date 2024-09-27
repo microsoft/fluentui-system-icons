@@ -35,7 +35,7 @@ jobs:
       run: |
         error_found=false
         
-        for file in $(find ./assets -type f -name "*.svg" -exec grep -L 'fill="#212121"' {} \;); do
+        for file in $(find ./assets -type f -name "*.svg" -print0 | grep -zv '_color.svg' | xargs -0 grep -L 'fill="#212121"'); do
           echo "Error: $file does not have 'fill=\"#212121\"' or has a different fill."
           error_found=true
         done
