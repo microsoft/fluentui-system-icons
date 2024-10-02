@@ -61,3 +61,6 @@ with open("icons_regular.md", "w") as icons_regular_md:
 
 with open("icons_light.md", "w") as icons_light_md:
     write_file(icons_light_md, "light")
+
+with open("icons_color.md", "w") as icons_light_md:
+    write_file(icons_light_md, "color")
