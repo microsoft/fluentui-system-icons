@@ -32,19 +32,23 @@ extends:
           isProduction: true
           inputs:
           - input: pipelineArtifact
-            pipeline: 'fluentui-system-icons-android-maven-publish'
+            buildType: 'specific'
+            project: '$(projectName)'
+            definition: '$(pipelineDefinition)'
+            buildVersionToDownload: 'specific'
+            pipelineId: '$(buildId)'
             artifactName: 'aar'
-            targetPath: '$(Pipeline.Workspace)/aar'
+            targetPath: '$(Pipeline.Workspace)/fluentui-system-icons-android-maven-publish\aar'
         steps:
         - task: SFP.release-tasks.custom-build-release-task.EsrpRelease@7
           displayName: fluentui-system-icons ESRP Release
           inputs:
-            connectedservicename: ''
-            keyvaultname: ''
-            authcertname: ''
-            signcertname: ''
-            clientid: ''
-            folderlocation: $(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar
-            owners: ''
-            approvers: ''
+            connectedservicename: '$(connectedServiceName)'
+            keyvaultname: $(keyVaultName)
+            authcertname: $(authCertName)
+            signcertname: '$(signCertName) '
+            clientid: '$(clientId)'
+            folderlocation: $(Pipeline.Workspace)/fluentui-system-icons-android-maven-publish/aar
+            owners: '$(owners)'
+            approvers: '$(approvers)'
             mainpublisher: fluentuiandroidrelease
