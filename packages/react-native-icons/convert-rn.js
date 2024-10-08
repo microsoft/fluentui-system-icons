@@ -96,25 +96,24 @@ function processFolder(srcPath, destPath, resizable) {
 
   // These options will be passed to svgr/core
   // See https://react-svgr.com/docs/options/ for more info
-  var svgrOpts = {
-    template: fileTemplate,
-    expandProps: 'end', // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
-    //svgProps: { className: '{className}'}, // In order to provide styling, className will be used
-    replaceAttrValues: { '#212121': '{primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
-    typescript: true,
-    icon: true,
-    prettier:true,
-    native: REACT_NATIVE,
-  }
-
-  var svgrOptsSizedIcons = {
-    template: fileTemplate,
-    expandProps: 'end', // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
-    //svgProps: { className: '{className}'}, // In order to provide styling, className will be used
-    replaceAttrValues: { '#212121': '{primaryFill}' }, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null.
-    typescript: true,
-    prettier:true,
-    native: REACT_NATIVE,
+  function getSvgrOptions(file, isResizable) {
+    const isColorIcon = file.includes('_color.svg');
+    
+    const options = {
+      template: fileTemplate,
+      expandProps: 'end',
+      replaceAttrValues: isColorIcon ? {} : { '#212121': '{primaryFill}' },
+      typescript: true,
+      prettier: true,
+      native: REACT_NATIVE,
+    };
+    
+    // Add icon: true only if it's not a sized icon
+    if (isResizable) {
+      options.icon = true;
+    }
+    
+    return options;
   }
 
   /** @type string[] */
@@ -141,8 +140,17 @@ function processFolder(srcPath, destPath, resizable) {
 
       var iconContent = fs.readFileSync(srcFile, { encoding: "utf8" })
       
-      var jsxCode = resizable ? svgr.transform.sync(iconContent, svgrOpts, { filePath: file }) : svgr.transform.sync(iconContent, svgrOptsSizedIcons, { filePath: file })
-      var jsCode = 
+      var jsxCode = resizable ? 
+        svgr.transform.sync(iconContent, getSvgrOptions(file, true), { filePath: file }) 
+        : svgr.transform.sync(iconContent, getSvgrOptions(file, false), { filePath: file })
+
+var jsCode = destFilename.endsWith('Color') ? `
+const ${destFilename}Icon = (props) => {
+  return ${jsxCode};
+}
+
+export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename}Icon, '${destFilename}');
+      ` :
 `
 
 const ${destFilename}Icon = (props) => {
@@ -172,7 +180,9 @@ export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename
     chunk.forEach(text => 
       {
         rnSvgElements.forEach(element => {
-          if (!foundElements[element] && text.match(`<${element}[\\S\\s]+\\/>`) || text.match(`<${element}[\s\S]+>[\s\S]+<\/${element}>`))
+          if (!foundElements[element] && 
+            (text.match(new RegExp(`<${element}\\b[\\S\\s]+\\/>`)) || 
+             text.match(new RegExp(`<${element}\\b[\\s\\S]*>[\\s\\S]*<\\/${element}>`))))
             foundElements[element] = true;
         });
       });
