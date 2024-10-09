@@ -48,7 +48,7 @@ extends:
             authcertname: $(authCertName)
             signcertname: '$(signCertName) '
             clientid: '$(clientId)'
-            folderlocation: $(Pipeline.Workspace)/fluentui-system-icons-android-maven-publish/aar
+            folderlocation: '$(Pipeline.Workspace)/fluentui-system-icons-android-maven-publish/aar'
             owners: '$(owners)'
             approvers: '$(approvers)'
             mainpublisher: fluentuiandroidrelease
