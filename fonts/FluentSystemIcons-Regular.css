@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.woff2?ba55823d088ea974c64c83c485f12e9e") format("woff2"),
-url("./FluentSystemIcons-Regular.woff?ba55823d088ea974c64c83c485f12e9e") format("woff"),
-url("./FluentSystemIcons-Regular.ttf?ba55823d088ea974c64c83c485f12e9e") format("truetype");
+    src: url("./FluentSystemIcons-Regular.woff2?a16bef4dfb0e0a463fe76f42a6e59638") format("woff2"),
+url("./FluentSystemIcons-Regular.woff?a16bef4dfb0e0a463fe76f42a6e59638") format("woff"),
+url("./FluentSystemIcons-Regular.ttf?a16bef4dfb0e0a463fe76f42a6e59638") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -24699,4 +24699,88 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_sound_wave_circle_sparkle_48_regular:before {
     content: "\f0723";
+}
+.icon-ic_fluent_arrow_down_right_16_regular:before {
+    content: "\f0724";
+}
+.icon-ic_fluent_arrow_down_right_20_regular:before {
+    content: "\f0725";
+}
+.icon-ic_fluent_arrow_down_right_24_regular:before {
+    content: "\f0726";
+}
+.icon-ic_fluent_arrow_down_right_32_regular:before {
+    content: "\f0727";
+}
+.icon-ic_fluent_arrow_down_right_48_regular:before {
+    content: "\f0728";
+}
+.icon-ic_fluent_arrow_repeat_all_28_regular:before {
+    content: "\f0729";
+}
+.icon-ic_fluent_arrow_repeat_all_48_regular:before {
+    content: "\f072a";
+}
+.icon-ic_fluent_attach_28_regular:before {
+    content: "\f072b";
+}
+.icon-ic_fluent_attach_48_regular:before {
+    content: "\f072c";
+}
+.icon-ic_fluent_calendar_mention_16_regular:before {
+    content: "\f072d";
+}
+.icon-ic_fluent_calendar_person_32_regular:before {
+    content: "\f072e";
+}
+.icon-ic_fluent_comment_multiple_mention_16_regular:before {
+    content: "\f072f";
+}
+.icon-ic_fluent_comment_multiple_mention_20_regular:before {
+    content: "\f0730";
+}
+.icon-ic_fluent_document_text_28_regular:before {
+    content: "\f0731";
+}
+.icon-ic_fluent_document_text_32_regular:before {
+    content: "\f0732";
+}
+.icon-ic_fluent_document_text_48_regular:before {
+    content: "\f0733";
+}
+.icon-ic_fluent_equal_circle_16_regular:before {
+    content: "\f0734";
+}
+.icon-ic_fluent_folder_document_16_regular:before {
+    content: "\f0735";
+}
+.icon-ic_fluent_folder_document_20_regular:before {
+    content: "\f0736";
+}
+.icon-ic_fluent_folder_document_24_regular:before {
+    content: "\f0737";
+}
+.icon-ic_fluent_folder_document_28_regular:before {
+    content: "\f0738";
+}
+.icon-ic_fluent_mail_inbox_32_regular:before {
+    content: "\f0739";
+}
+.icon-ic_fluent_mail_inbox_person_16_regular:before {
+    content: "\f073a";
+}
+.icon-ic_fluent_mail_inbox_person_20_regular:before {
+    content: "\f073b";
+}
+.icon-ic_fluent_mail_inbox_person_32_regular:before {
+    content: "\f073c";
+}
+.icon-ic_fluent_plug_connected_28_regular:before {
+    content: "\f073d";
+}
+.icon-ic_fluent_plug_connected_32_regular:before {
+    content: "\f073e";
+}
+.icon-ic_fluent_plug_connected_48_regular:before {
+    content: "\f073f";
 }

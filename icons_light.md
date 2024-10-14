@@ -99,6 +99,7 @@
 |Mail List|<img src="assets/Mail List/SVG/ic_fluent_mail_list_32_light.svg?raw=true" width="24" height="24">|`mailList32Light`|`ic_fluent_mail_list_32_light`|
 |Mail Multiple|<img src="assets/Mail Multiple/SVG/ic_fluent_mail_multiple_32_light.svg?raw=true" width="24" height="24">|`mailMultiple32Light`|`ic_fluent_mail_multiple_32_light`|
 |Mail Read|<img src="assets/Mail Read/SVG/ic_fluent_mail_read_32_light.svg?raw=true" width="24" height="24">|`mailRead32Light`|`ic_fluent_mail_read_32_light`|
+|Mail Read Multiple|<img src="assets/Mail Read Multiple/SVG/ic_fluent_mail_read_multiple_32_light.svg?raw=true" width="24" height="24">|`mailReadMultiple32Light`|`ic_fluent_mail_read_multiple_32_light`|
 |Mail Rewind|<img src="assets/Mail Rewind/SVG/ic_fluent_mail_rewind_32_light.svg?raw=true" width="24" height="24">|`mailRewind32Light`|`ic_fluent_mail_rewind_32_light`|
 |Mail Settings|<img src="assets/Mail Settings/SVG/ic_fluent_mail_settings_32_light.svg?raw=true" width="24" height="24">|`mailSettings32Light`|`ic_fluent_mail_settings_32_light`|
 |Mail Unread|<img src="assets/Mail Unread/SVG/ic_fluent_mail_unread_32_light.svg?raw=true" width="24" height="24">|`mailUnread32Light`|`ic_fluent_mail_unread_32_light`|
