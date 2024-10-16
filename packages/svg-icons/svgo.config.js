@@ -5,7 +5,8 @@ module.exports = {
       params: {
         overrides: {
           removeViewBox: false,
-          mergePaths: false        
+          mergePaths: false,
+          cleanupIDs: false
         },
       },
     },
