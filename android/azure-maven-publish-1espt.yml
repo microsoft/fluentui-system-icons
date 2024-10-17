@@ -25,7 +25,7 @@ extends:
           outputs:
           - output: pipelineArtifact
             displayName: 'Publish library artifact to pipeline'
-            targetPath: '$(build.sourcesdirectory)/build/artifacts/com/microsoft/design'
+            targetPath: 'android/build/artifacts/com/microsoft/design'
             artifactName: 'aar'
             publishLocation: 'pipeline'
         steps:
@@ -42,7 +42,8 @@ extends:
               ls
         - task: Gradle@3
           inputs:
-            gradleWrapperFile: 'gradlew'
+            gradleWrapperFile: 'android/gradlew'
+            workingDirectory: 'android'
             tasks: "assembleRelease"
             options: "-PversionName=$(VERSION_NAME)"
             publishJUnitResults: false
@@ -53,7 +54,8 @@ extends:
         - task: Gradle@2
           displayName: Gradle publish
           inputs:
-            gradleWrapperFile: 'gradlew'
+            gradleWrapperFile: 'android/gradlew'
+            workingDirectory: 'android'
             tasks: 'publish'
             publishJUnitResults: false
             javaHomeOption: 'JDKVersion'
