@@ -4,7 +4,7 @@ resources:
   pipelines:
   - pipeline: 'fluentui-system-icons-android-maven-publish'
     project: 'fluentui-native'
-    source: 'fluentui-system-icons-android-maven-publish'
+    source: 'fluentui-system-icons-android-maven-publish [1es-pt]'
   repositories:
   - repository: 1ESPipelineTemplates
     type: git
