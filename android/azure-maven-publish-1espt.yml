@@ -25,7 +25,7 @@ extends:
           outputs:
           - output: pipelineArtifact
             displayName: 'Publish library artifact to pipeline'
-            targetPath: 'android/library/build/artifacts/com/microsoft/design'
+            targetPath: '$(Build.ArtifactStagingDirectory)'
             artifactName: 'aar'
             publishLocation: 'pipeline'
         steps:
@@ -38,11 +38,11 @@ extends:
             targetType: "inline"
             script: |
               # Write your commands here
-              sudo bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
+              bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
               ls
         - task: Gradle@3
           inputs:
-            gradleWrapperFile: "android/gradlew"
+            gradleWrapperFile: 'android/gradlew'
             workingDirectory: 'android'
             tasks: "assembleRelease"
             options: "-PversionName=$(VERSION_NAME)"
