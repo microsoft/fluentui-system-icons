@@ -25,7 +25,7 @@ extends:
           outputs:
           - output: pipelineArtifact
             displayName: 'Publish library artifact to pipeline'
-            targetPath: 'android/library/build/artifacts/com/microsoft/design'
+            targetPath: '$(Build.ArtifactStagingDirectory)'
             artifactName: 'aar'
             publishLocation: 'pipeline'
         steps:
