@@ -25,7 +25,7 @@ extends:
           outputs:
           - output: pipelineArtifact
             displayName: 'Publish library artifact to pipeline'
-            targetPath: '$(Build.ArtifactStagingDirectory)'
+            targetPath: 'android'
             artifactName: 'aar'
             publishLocation: 'pipeline'
         steps:
