@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?2ad74e6b348ed99f796d2872a82fe1bb") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?2ad74e6b348ed99f796d2872a82fe1bb") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?2ad74e6b348ed99f796d2872a82fe1bb") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?3d1f399b415136d38a2eb0b86c43584e") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?3d1f399b415136d38a2eb0b86c43584e") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?3d1f399b415136d38a2eb0b86c43584e") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -25347,4 +25347,13 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_textbox_checkmark_48_filled:before {
     content: "\f07fb";
+}
+.icon-ic_fluent_document_one_page_multiple_sparkle_16_filled:before {
+    content: "\f07fc";
+}
+.icon-ic_fluent_document_one_page_multiple_sparkle_20_filled:before {
+    content: "\f07fd";
+}
+.icon-ic_fluent_document_one_page_multiple_sparkle_24_filled:before {
+    content: "\f07fe";
 }

@@ -5820,6 +5820,12 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.document_one_page_multiple_24_regular, 'document_one_page_multiple_24_regular', 24),
 
+  FluentUISampleIcon(FluentIcons.document_one_page_multiple_sparkle_16_regular, 'document_one_page_multiple_sparkle_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.document_one_page_multiple_sparkle_20_regular, 'document_one_page_multiple_sparkle_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.document_one_page_multiple_sparkle_24_regular, 'document_one_page_multiple_sparkle_24_regular', 24),
+
   FluentUISampleIcon(FluentIcons.document_one_page_sparkle_16_regular, 'document_one_page_sparkle_16_regular', 16),
 
   FluentUISampleIcon(FluentIcons.document_one_page_sparkle_20_regular, 'document_one_page_sparkle_20_regular', 20),
@@ -22441,6 +22447,12 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.document_one_page_multiple_20_filled, 'document_one_page_multiple_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.document_one_page_multiple_24_filled, 'document_one_page_multiple_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.document_one_page_multiple_sparkle_16_filled, 'document_one_page_multiple_sparkle_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.document_one_page_multiple_sparkle_20_filled, 'document_one_page_multiple_sparkle_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.document_one_page_multiple_sparkle_24_filled, 'document_one_page_multiple_sparkle_24_filled', 24),
 
   FluentUISampleIcon(FluentIcons.document_one_page_sparkle_16_filled, 'document_one_page_sparkle_16_filled', 16),
 

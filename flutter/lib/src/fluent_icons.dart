@@ -8733,6 +8733,15 @@ class FluentIcons {
   /// fluent icon named "document_one_page_multiple" in size 24 and regular style.
   static const IconData document_one_page_multiple_24_regular = IconData(983420, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "document_one_page_multiple_sparkle" in size 16 and regular style.
+  static const IconData document_one_page_multiple_sparkle_16_regular = IconData(984959, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "document_one_page_multiple_sparkle" in size 20 and regular style.
+  static const IconData document_one_page_multiple_sparkle_20_regular = IconData(984960, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "document_one_page_multiple_sparkle" in size 24 and regular style.
+  static const IconData document_one_page_multiple_sparkle_24_regular = IconData(984961, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "document_one_page_sparkle" in size 16 and regular style.
   static const IconData document_one_page_sparkle_16_regular = IconData(983255, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -33667,6 +33676,15 @@ class FluentIcons {
 
   /// fluent icon named "document_one_page_multiple" in size 24 and filled style.
   static const IconData document_one_page_multiple_24_filled = IconData(983420, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "document_one_page_multiple_sparkle" in size 16 and filled style.
+  static const IconData document_one_page_multiple_sparkle_16_filled = IconData(985084, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "document_one_page_multiple_sparkle" in size 20 and filled style.
+  static const IconData document_one_page_multiple_sparkle_20_filled = IconData(985085, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "document_one_page_multiple_sparkle" in size 24 and filled style.
+  static const IconData document_one_page_multiple_sparkle_24_filled = IconData(985086, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "document_one_page_sparkle" in size 16 and filled style.
   static const IconData document_one_page_sparkle_16_filled = IconData(983254, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
