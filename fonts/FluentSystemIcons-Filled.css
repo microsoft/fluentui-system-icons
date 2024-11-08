@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?e7b5bff3d45f01f2584ab322b6ae60dc") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?e7b5bff3d45f01f2584ab322b6ae60dc") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?e7b5bff3d45f01f2584ab322b6ae60dc") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?6dbbd4878eb2db1125480e5da79c0e63") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?6dbbd4878eb2db1125480e5da79c0e63") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?6dbbd4878eb2db1125480e5da79c0e63") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -25356,4 +25356,67 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_document_one_page_multiple_sparkle_24_filled:before {
     content: "\f07fe";
+}
+.icon-ic_fluent_animal_paw_print_16_filled:before {
+    content: "\f07ff";
+}
+.icon-ic_fluent_animal_paw_print_20_filled:before {
+    content: "\f0800";
+}
+.icon-ic_fluent_animal_paw_print_24_filled:before {
+    content: "\f0801";
+}
+.icon-ic_fluent_animal_paw_print_28_filled:before {
+    content: "\f0802";
+}
+.icon-ic_fluent_animal_paw_print_32_filled:before {
+    content: "\f0803";
+}
+.icon-ic_fluent_animal_paw_print_48_filled:before {
+    content: "\f0804";
+}
+.icon-ic_fluent_arrow_clockwise_dashes_28_filled:before {
+    content: "\f0805";
+}
+.icon-ic_fluent_arrow_clockwise_dashes_48_filled:before {
+    content: "\f0806";
+}
+.icon-ic_fluent_arrow_clockwise_dashes_settings_16_filled:before {
+    content: "\f0807";
+}
+.icon-ic_fluent_arrow_clockwise_dashes_settings_20_filled:before {
+    content: "\f0808";
+}
+.icon-ic_fluent_arrow_clockwise_dashes_settings_24_filled:before {
+    content: "\f0809";
+}
+.icon-ic_fluent_arrow_clockwise_dashes_settings_28_filled:before {
+    content: "\f080a";
+}
+.icon-ic_fluent_arrow_clockwise_dashes_settings_32_filled:before {
+    content: "\f080b";
+}
+.icon-ic_fluent_arrow_clockwise_dashes_settings_48_filled:before {
+    content: "\f080c";
+}
+.icon-ic_fluent_chat_off_16_filled:before {
+    content: "\f080d";
+}
+.icon-ic_fluent_connected_24_filled:before {
+    content: "\f080e";
+}
+.icon-ic_fluent_connected_32_filled:before {
+    content: "\f080f";
+}
+.icon-ic_fluent_square_text_arrow_repeat_all_16_filled:before {
+    content: "\f0810";
+}
+.icon-ic_fluent_square_text_arrow_repeat_all_20_filled:before {
+    content: "\f0811";
+}
+.icon-ic_fluent_square_text_arrow_repeat_all_24_filled:before {
+    content: "\f0812";
+}
+.icon-ic_fluent_translate_32_filled:before {
+    content: "\f0813";
 }
