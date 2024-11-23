@@ -1,7 +1,11 @@
 {
   "name": "Replay",
   "size": [
-    20
+    20,
+    32,
+    28,
+    24,
+    16
   ],
   "style": [
     "Regular",

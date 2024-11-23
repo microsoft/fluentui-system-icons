@@ -1,0 +1,28 @@
+{
+  "name": "Video Bluetooth",
+  "size": [
+    48,
+    32,
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent general video content scenarios.",
+  "metaphor": [
+    "video",
+    "film",
+    "clip",
+    "media",
+    "content",
+    "camera",
+    "recording",
+    "capture",
+    "bluetooth"
+  ]
+}

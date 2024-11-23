@@ -1,12 +1,16 @@
 {
   "name": "Sound Wave Circle",
   "size": [
+    48,
+    32,
+    28,
     24,
-    20
+    20,
+    16
   ],
   "style": [
-    "Filled",
-    "Regular"
+    "Regular",
+    "Filled"
   ],
   "keyword": "fluent-icon, powerpoint",
   "description": "Used in sound & audio file scenarios.",

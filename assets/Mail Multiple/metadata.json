@@ -4,11 +4,13 @@
     24,
     20,
     16,
-    28
+    28,
+    32
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon, outlook",
   "description": "Used in general mail scenarios.",

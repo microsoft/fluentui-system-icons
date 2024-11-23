@@ -2,7 +2,8 @@
   "name": "Chat Settings",
   "size": [
     20,
-    24
+    24,
+    16
   ],
   "style": [
     "Filled",

@@ -1,0 +1,25 @@
+{
+  "name": "Whiteboard Off",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent brainstorming scenarios.",
+  "metaphor": [
+    "draw",
+    "pencil",
+    "sketch",
+    "create",
+    "brainstorm",
+    "curve",
+    "slash",
+    "off",
+    "disabled"
+  ]
+}

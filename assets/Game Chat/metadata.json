@@ -1,0 +1,20 @@
+{
+  "name": "Game Chat",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, xbox",
+  "description": "Used to represent game chat, or in game communication generally.",
+  "metaphor": [
+    "controller",
+    "chat",
+    "talk",
+    "interact",
+    "video game",
+    "controller"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Filmstrip Image",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent general media assets.",
+  "metaphor": [
+    "media",
+    "movie",
+    "content",
+    "assets",
+    "video",
+    "image",
+    "picture"
+  ]
+}

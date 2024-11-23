@@ -1,0 +1,18 @@
+{
+  "name": "Password Reset",
+  "size": [
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent general password scenarios.",
+  "metaphor": [
+    "input",
+    "security",
+    "type",
+    "reset"
+  ]
+}

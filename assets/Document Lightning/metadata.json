@@ -1,0 +1,24 @@
+{
+  "name": "Document Lightning",
+  "size": [
+    48,
+    32,
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled",
+    "Light"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used to represent general file types and actions.",
+  "metaphor": [
+    "template",
+    "paper",
+    "bolt",
+    "file"
+  ]
+}

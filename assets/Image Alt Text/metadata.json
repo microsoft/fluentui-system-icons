@@ -3,11 +3,13 @@
   "size": [
     24,
     20,
-    16
+    16,
+    32
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon",
   "description": "Used to represent images in content and photo editing scenarios.",
