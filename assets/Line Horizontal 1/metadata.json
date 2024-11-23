@@ -1,7 +1,10 @@
 {
   "name": "Line Horizontal 1",
   "size": [
-    20
+    20,
+    16,
+    24,
+    28
   ],
   "style": [
     "Regular",

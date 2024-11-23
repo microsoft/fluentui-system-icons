@@ -1,0 +1,25 @@
+{
+  "name": "Teaching",
+  "size": [
+    20,
+    48,
+    32,
+    28,
+    24,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent teaching and other general school usage.",
+  "metaphor": [
+    "teacher",
+    "notebook",
+    "notepage",
+    "apple",
+    "learning",
+    "skill"
+  ]
+}

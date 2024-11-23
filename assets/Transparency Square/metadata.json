@@ -1,0 +1,23 @@
+{
+  "name": "Transparency Square",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in photo and design editing modes.",
+  "metaphor": [
+    "image",
+    "photo",
+    "design",
+    "transparent",
+    "opacity",
+    "opaque",
+    "checker",
+    "layer"
+  ]
+}

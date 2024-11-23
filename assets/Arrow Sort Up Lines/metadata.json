@@ -1,0 +1,19 @@
+{
+  "name": "Arrow Sort Up Lines",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used for sorting text list specifically.",
+  "metaphor": [
+    "arrow",
+    "direction",
+    "text"
+  ]
+}

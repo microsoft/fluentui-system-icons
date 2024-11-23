@@ -1,7 +1,8 @@
 {
   "name": "Projection Screen Text",
   "size": [
-    24
+    24,
+    20
   ],
   "style": [
     "Regular",

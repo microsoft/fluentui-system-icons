@@ -1,0 +1,19 @@
+{
+  "name": "Drawer",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a physical or digital drawer.",
+  "metaphor": [
+    "money",
+    "collection",
+    "analog",
+    "container"
+  ]
+}

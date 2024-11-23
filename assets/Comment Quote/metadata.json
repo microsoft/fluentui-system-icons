@@ -1,0 +1,24 @@
+{
+  "name": "Comment Quote",
+  "size": [
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in comment scenarios.",
+  "metaphor": [
+    "chat",
+    "mention",
+    "quote",
+    "quotation",
+    "discussion",
+    "caption",
+    "text"
+  ]
+}

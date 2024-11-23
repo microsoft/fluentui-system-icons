@@ -1,0 +1,33 @@
+{
+  "name": "Rectangle Landscape Sparkle",
+  "size": [
+    16,
+    20,
+    24,
+    28,
+    32,
+    48
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used to represent general video meetings, views & settings in video meetings.",
+  "metaphor": [
+    "video",
+    "meeting",
+    "selfie",
+    "camera",
+    "clip",
+    "media",
+    "front facing",
+    "effects",
+    "call",
+    "chat",
+    "ai",
+    "settings",
+    "transform",
+    "background"
+  ]
+}

@@ -4,11 +4,14 @@
     48,
     24,
     20,
-    16
+    16,
+    28,
+    32
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon",
   "description": "Used for downloading content.",

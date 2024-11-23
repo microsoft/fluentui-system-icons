@@ -1,0 +1,23 @@
+{
+  "name": "Edit Line Horizontal 3",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in composing text scenarios.",
+  "metaphor": [
+    "pencil",
+    "update",
+    "create",
+    "write",
+    "text",
+    "lines",
+    "compose",
+    "edit"
+  ]
+}

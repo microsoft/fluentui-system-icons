@@ -1,0 +1,22 @@
+{
+  "name": "Mail Briefcase",
+  "size": [
+    48
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent corporate email account.",
+  "metaphor": [
+    "envelope",
+    "email",
+    "delivery",
+    "message",
+    "briefcase",
+    "managed",
+    "work",
+    "corporate"
+  ]
+}

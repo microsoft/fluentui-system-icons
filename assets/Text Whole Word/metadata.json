@@ -1,7 +1,8 @@
 {
   "name": "Text Whole Word",
   "size": [
-    20
+    20,
+    16
   ],
   "style": [
     "Regular",

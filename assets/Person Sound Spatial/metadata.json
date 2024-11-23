@@ -1,0 +1,29 @@
+{
+  "name": "Person Sound Spatial",
+  "size": [
+    48,
+    32,
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent spatial audio speaker setup.",
+  "metaphor": [
+    "audio",
+    "sound",
+    "volume",
+    "device",
+    "speaker",
+    "surround",
+    "spatial",
+    "3d",
+    "human",
+    "user"
+  ]
+}

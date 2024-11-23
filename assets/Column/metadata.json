@@ -1,7 +1,8 @@
 {
   "name": "Column",
   "size": [
-    20
+    20,
+    24
   ],
   "style": [
     "Regular",

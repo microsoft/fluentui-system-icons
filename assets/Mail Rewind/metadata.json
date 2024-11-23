@@ -1,0 +1,25 @@
+{
+  "name": "Mail Rewind",
+  "size": [
+    24,
+    20,
+    16,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled",
+    "Light"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used in general mail scenarios.",
+  "metaphor": [
+    "envelope",
+    "email",
+    "delivery",
+    "message",
+    "undo",
+    "back",
+    "rewind"
+  ]
+}

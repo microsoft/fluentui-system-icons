@@ -1,0 +1,26 @@
+{
+  "name": "Person Head Hint",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent noise cancelling and noise transparency audio device settings.",
+  "metaphor": [
+    "sound",
+    "audio",
+    "noise cancel",
+    "noise transparent",
+    "noise cancelling",
+    "noise transparency",
+    "speaker",
+    "device",
+    "human",
+    "user"
+  ]
+}

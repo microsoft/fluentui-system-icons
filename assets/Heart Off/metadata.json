@@ -1,0 +1,20 @@
+{
+  "name": "Heart Off",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent really liking an idea in chat, following in comments, or content to save for later.",
+  "metaphor": [
+    "love",
+    "like",
+    "follow",
+    "save"
+  ]
+}

@@ -2,11 +2,13 @@
   "name": "Text Collapse",
   "size": [
     24,
-    20
+    20,
+    32
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon",
   "description": "Used in general type creation and editing scenarios. Collection includes Text Expand.",

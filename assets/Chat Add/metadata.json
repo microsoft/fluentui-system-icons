@@ -12,7 +12,11 @@
     "Regular",
     "Filled"
   ],
-  "keyword": null,
-  "description": null,
-  "metaphor": null
+  "keyword": "fluent-icon, teams",
+  "description": "Used in real time chat scenarios (versus comment - different icon).",
+  "metaphor": [
+    "discussion",
+    "message",
+    "post"
+  ]
 }

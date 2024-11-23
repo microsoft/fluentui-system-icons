@@ -2,11 +2,13 @@
   "name": "Send Clock",
   "size": [
     20,
-    24
+    24,
+    32
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon",
   "description": "Used in message & sending scenarios.",

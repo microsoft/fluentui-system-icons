@@ -1,0 +1,25 @@
+{
+  "name": "Person Board Add",
+  "size": [
+    20,
+    32,
+    28,
+    24,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a people card, a collection of information about them.",
+  "metaphor": [
+    "human",
+    "patient",
+    "contact",
+    "guest",
+    "card",
+    "people card",
+    "information"
+  ]
+}

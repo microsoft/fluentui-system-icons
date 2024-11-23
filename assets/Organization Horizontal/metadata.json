@@ -1,7 +1,9 @@
 {
   "name": "Organization Horizontal",
   "size": [
-    20
+    20,
+    24,
+    16
   ],
   "style": [
     "Regular",

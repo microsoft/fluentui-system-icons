@@ -2,7 +2,11 @@
   "name": "Data Usage",
   "size": [
     24,
-    20
+    20,
+    16,
+    48,
+    32,
+    28
   ],
   "style": [
     "Regular",

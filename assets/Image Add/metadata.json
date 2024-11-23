@@ -2,11 +2,13 @@
   "name": "Image Add",
   "size": [
     24,
-    20
+    20,
+    32
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon",
   "description": "Used to represent images in content and photo editing scenarios.",

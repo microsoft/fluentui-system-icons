@@ -2,11 +2,13 @@
   "name": "Auto Fit Height",
   "size": [
     24,
-    20
+    20,
+    32
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon",
   "description": "Used to scale content to fit. Similar to Arrow Fit. Contains directional variants.",

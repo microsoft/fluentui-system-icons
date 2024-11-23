@@ -1,0 +1,21 @@
+{
+  "name": "Circle Hint Half Vertical",
+  "size": [
+    20,
+    24,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a missing shape, hint of round object, unfilled content, etc.",
+  "metaphor": [
+    "circle",
+    "round",
+    "shape",
+    "dash",
+    "dashes"
+  ]
+}

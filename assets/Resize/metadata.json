@@ -2,7 +2,11 @@
   "name": "Resize",
   "size": [
     20,
-    24
+    24,
+    16,
+    28,
+    32,
+    48
   ],
   "style": [
     "Regular",

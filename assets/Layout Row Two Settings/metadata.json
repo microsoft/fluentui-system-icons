@@ -1,0 +1,23 @@
+{
+  "name": "Layout Row Two Settings",
+  "size": [
+    32,
+    28,
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled",
+    "Light"
+  ],
+  "keyword": "fluent-icon, vscode",
+  "description": "Used to represent UI layouts, ribbon, settings.",
+  "metaphor": [
+    "ui",
+    "layout",
+    "structure",
+    "customize",
+    "ribbon"
+  ]
+}

@@ -1,11 +1,11 @@
 {
   "name": "Presence Busy",
   "size": [
+    24,
+    20,
     16,
     12,
-    10,
-    24,
-    20
+    10
   ],
   "style": [
     "Filled"

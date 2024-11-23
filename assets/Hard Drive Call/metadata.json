@@ -1,0 +1,27 @@
+{
+  "name": "Hard Drive Call",
+  "size": [
+    24,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a voice gateway.",
+  "metaphor": [
+    "memory",
+    "storage",
+    "hardware",
+    "physical",
+    "device",
+    "save",
+    "voice",
+    "gateway",
+    "VoIP",
+    "phone",
+    "telephone",
+    "call"
+  ]
+}

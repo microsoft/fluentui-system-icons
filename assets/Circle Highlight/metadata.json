@@ -1,0 +1,23 @@
+{
+  "name": "Circle Highlight",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent image editing.",
+  "metaphor": [
+    "edit",
+    "image",
+    "photo",
+    "camera",
+    "slider",
+    "light",
+    "dark",
+    "levels"
+  ]
+}

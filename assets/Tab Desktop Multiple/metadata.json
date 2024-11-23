@@ -1,7 +1,9 @@
 {
   "name": "Tab Desktop Multiple",
   "size": [
-    20
+    20,
+    16,
+    24
   ],
   "style": [
     "Regular",
@@ -12,6 +14,7 @@
   "metaphor": [
     "tab",
     "mobile",
+    "desktop",
     "rectangle",
     "browser"
   ]

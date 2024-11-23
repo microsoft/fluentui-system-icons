@@ -2,7 +2,8 @@
   "name": "Microscope",
   "size": [
     20,
-    24
+    24,
+    32
   ],
   "style": [
     "Regular",

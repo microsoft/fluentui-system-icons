@@ -1,0 +1,24 @@
+{
+  "name": "Tab Desktop Multiple Sparkle",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, edge",
+  "description": "Used to represent tab auto-grouping.",
+  "metaphor": [
+    "tab",
+    "mobile",
+    "desktop",
+    "rectangle",
+    "browser",
+    "group",
+    "sparkle",
+    "automatic"
+  ]
+}

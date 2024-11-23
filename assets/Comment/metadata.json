@@ -6,11 +6,13 @@
     24,
     20,
     16,
-    12
+    12,
+    32
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon, edge",
   "description": "Used in commenting scenarios.",

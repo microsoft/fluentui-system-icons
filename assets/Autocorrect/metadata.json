@@ -2,11 +2,13 @@
   "name": "Autocorrect",
   "size": [
     24,
-    20
+    20,
+    32
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": null,
   "description": "#fluent-icon",

@@ -1,0 +1,25 @@
+{
+  "name": "Building Mosque",
+  "size": [
+    48,
+    32,
+    28,
+    24,
+    20,
+    16,
+    12
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for location scenarios.",
+  "metaphor": [
+    "structure",
+    "construction",
+    "architecture",
+    "pray",
+    "prayer"
+  ]
+}

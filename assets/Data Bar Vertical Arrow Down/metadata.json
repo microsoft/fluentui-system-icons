@@ -1,0 +1,24 @@
+{
+  "name": "Data Bar Vertical Arrow Down",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent data bar graph download.",
+  "metaphor": [
+    "data",
+    "bar",
+    "vertical",
+    "ascending",
+    "measure",
+    "graph",
+    "download",
+    "arrow"
+  ]
+}

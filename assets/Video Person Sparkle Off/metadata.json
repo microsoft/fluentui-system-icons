@@ -1,0 +1,27 @@
+{
+  "name": "Video Person Sparkle Off",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used to represent general video meetings, views & settings in video meetings.",
+  "metaphor": [
+    "video",
+    "meeting",
+    "selfie",
+    "camera",
+    "clip",
+    "media",
+    "front facing",
+    "effects",
+    "call",
+    "chat",
+    "ai",
+    "settings"
+  ]
+}

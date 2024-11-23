@@ -1,0 +1,19 @@
+{
+  "name": "Accessibility Question Mark",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for accessibility unknown scenarios.",
+  "metaphor": [
+    "person",
+    "inclusive",
+    "question",
+    "unknown"
+  ]
+}

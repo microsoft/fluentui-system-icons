@@ -14,5 +14,7 @@
     "magnifying glass",
     "ui",
     "square"
-  ]
+  ],
+  "directionType": "unique",
+  "singleton": "LTR"
 }

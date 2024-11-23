@@ -2,7 +2,11 @@
   "name": "Arrow Clockwise Dashes",
   "size": [
     20,
-    24
+    24,
+    16,
+    32,
+    48,
+    28
   ],
   "style": [
     "Regular",

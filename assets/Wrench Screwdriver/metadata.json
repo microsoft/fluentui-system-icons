@@ -2,11 +2,13 @@
   "name": "Wrench Screwdriver",
   "size": [
     20,
-    24
+    24,
+    32
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon",
   "description": "Used to represent general maintenance & tooling scenarios.",

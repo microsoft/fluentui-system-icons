@@ -1,7 +1,8 @@
 {
   "name": "Scan Type Off",
   "size": [
-    20
+    20,
+    24
   ],
   "style": [
     "Regular",

@@ -3,7 +3,8 @@
   "size": [
     20,
     24,
-    16
+    16,
+    32
   ],
   "style": [
     "Regular",
@@ -15,6 +16,7 @@
     "structure",
     "construction",
     "architecture",
-    "skyscraper"
+    "skyscraper",
+    "data management center"
   ]
 }

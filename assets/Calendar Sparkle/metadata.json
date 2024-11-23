@@ -1,0 +1,24 @@
+{
+  "name": "Calendar Sparkle",
+  "size": [
+    48,
+    32,
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled",
+    "Light"
+  ],
+  "keyword": "fluent-icon, outlook, teams",
+  "description": "Used in calendar scenarios. Contains direction variants.",
+  "metaphor": [
+    "time",
+    "date",
+    "planning"
+  ],
+  "directionType": "mirror"
+}

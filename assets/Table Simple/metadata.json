@@ -10,7 +10,8 @@
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon, excel",
   "description": "Used to represent a meeting grid. Use sparingly as it is a little too close to Microsoft's mark.",

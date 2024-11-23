@@ -1,0 +1,19 @@
+{
+  "name": "Square Hint Hexagon",
+  "size": [
+    24,
+    20,
+    32,
+    48,
+    16,
+    28,
+    12
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": null,
+  "description": null,
+  "metaphor": null
+}

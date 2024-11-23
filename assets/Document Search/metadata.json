@@ -3,7 +3,8 @@
   "size": [
     24,
     20,
-    16
+    16,
+    32
   ],
   "style": [
     "Regular",
@@ -16,6 +17,7 @@
     "work",
     "file",
     "analog",
-    "horizontal"
+    "horizontal",
+    "audit"
   ]
 }

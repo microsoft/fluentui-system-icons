@@ -1,0 +1,23 @@
+{
+  "name": "Coin Multiple",
+  "size": [
+    24,
+    20,
+    16,
+    48,
+    32,
+    28
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent 'credit balance' around work tokens plus generic coin usage.",
+  "metaphor": [
+    "money",
+    "stack",
+    "credit",
+    "balance"
+  ]
+}

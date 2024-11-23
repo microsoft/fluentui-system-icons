@@ -2,7 +2,9 @@
   "name": "Document Briefcase",
   "size": [
     24,
-    20
+    20,
+    32,
+    16
   ],
   "style": [
     "Regular",
@@ -17,6 +19,7 @@
     "analog",
     "organization",
     "business",
-    "vertical"
+    "vertical",
+    "information barriers"
   ]
 }

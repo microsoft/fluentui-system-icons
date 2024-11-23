@@ -1,0 +1,19 @@
+{
+  "name": "Beaker Dismiss",
+  "size": [
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent testing scenarios.",
+  "metaphor": [
+    "science",
+    "lab",
+    "test",
+    "experiments"
+  ]
+}

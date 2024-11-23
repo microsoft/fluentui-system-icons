@@ -2,7 +2,9 @@
   "name": "Person Square",
   "size": [
     20,
-    24
+    24,
+    16,
+    32
   ],
   "style": [
     "Regular",

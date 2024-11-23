@@ -1,0 +1,25 @@
+{
+  "name": "Warning Lock Open",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used as a warning for private content/data potentially being public.",
+  "metaphor": [
+    "alert",
+    "exclamation",
+    "triangle",
+    "issue",
+    "privacy",
+    "public",
+    "content",
+    "info",
+    "data"
+  ]
+}

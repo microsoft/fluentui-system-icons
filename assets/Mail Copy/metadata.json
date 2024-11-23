@@ -2,11 +2,13 @@
   "name": "Mail Copy",
   "size": [
     24,
-    20
+    20,
+    32
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon, outlook",
   "description": "Used in general mail scenarios.",

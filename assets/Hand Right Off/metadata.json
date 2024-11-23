@@ -1,7 +1,10 @@
 {
   "name": "Hand Right Off",
   "size": [
-    20
+    20,
+    28,
+    24,
+    16
   ],
   "style": [
     "Regular",

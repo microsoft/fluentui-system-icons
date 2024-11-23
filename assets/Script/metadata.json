@@ -1,19 +1,20 @@
 {
   "name": "Script",
   "size": [
+    16,
     20,
     24,
     32
   ],
   "style": [
-    "Regular",
-    "Filled"
+    "Filled",
+    "Regular"
   ],
-  "keyword": "fluent-icon, whiteboard",
-  "description": "Used to represent automated scripts in development scenarios.",
+  "keyword": "fluent-icon, visual studio code",
+  "description": "Used to represent script in file type scenarios.",
   "metaphor": [
-    "develop",
-    "automate",
-    "document"
+    "script",
+    "scroll",
+    "template"
   ]
 }

@@ -2,7 +2,9 @@
   "name": "Flowchart",
   "size": [
     24,
-    20
+    20,
+    32,
+    16
   ],
   "style": [
     "Regular",

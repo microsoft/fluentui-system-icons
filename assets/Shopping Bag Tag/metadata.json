@@ -2,7 +2,11 @@
   "name": "Shopping Bag Tag",
   "size": [
     20,
-    24
+    24,
+    48,
+    32,
+    28,
+    16
   ],
   "style": [
     "Regular",

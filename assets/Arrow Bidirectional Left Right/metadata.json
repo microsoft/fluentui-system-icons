@@ -1,0 +1,21 @@
+{
+  "name": "Arrow Bidirectional Left Right",
+  "size": [
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for measuring width.",
+  "metaphor": [
+    "left",
+    "right",
+    "arrows",
+    "width"
+  ]
+}

@@ -3,7 +3,10 @@
   "size": [
     48,
     24,
-    20
+    20,
+    16,
+    32,
+    28
   ],
   "style": [
     "Regular",
@@ -18,6 +21,7 @@
     "safety",
     "permission",
     "access",
-    "protection"
+    "protection",
+    "information protection"
   ]
 }

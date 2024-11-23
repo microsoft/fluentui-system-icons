@@ -13,7 +13,13 @@
     "Regular",
     "Filled"
   ],
-  "keyword": null,
-  "description": null,
-  "metaphor": null
+  "keyword": "fluent-icon",
+  "description": "Used for general arrow scenarios.",
+  "metaphor": [
+    "arrow",
+    "up",
+    "direction",
+    "point"
+  ],
+  "directionType": "mirror"
 }

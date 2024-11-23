@@ -9,9 +9,17 @@
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
-  "keyword": null,
-  "description": null,
-  "metaphor": null
+  "keyword": "fluent-icon, outlook",
+  "description": "Used in general mail scenarios.",
+  "metaphor": [
+    "envelope",
+    "email",
+    "delivery",
+    "message",
+    "open",
+    "read"
+  ]
 }

@@ -1,0 +1,27 @@
+{
+  "name": "Vehicle Tractor",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent vehicle travel scenarios.",
+  "metaphor": [
+    "travel",
+    "ride",
+    "map",
+    "commute",
+    "distance",
+    "event",
+    "vehicle",
+    "car",
+    "truck",
+    "automobile",
+    "tractor",
+    "dirt road"
+  ]
+}

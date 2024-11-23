@@ -1,7 +1,8 @@
 {
   "name": "Text Asterisk",
   "size": [
-    20
+    20,
+    16
   ],
   "style": [
     "Regular",

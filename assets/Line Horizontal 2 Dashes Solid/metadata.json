@@ -1,0 +1,22 @@
+{
+  "name": "Line Horizontal 2 Dashes Solid",
+  "size": [
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent line drawing styles.",
+  "metaphor": [
+    "style",
+    "create",
+    "edit",
+    "draw",
+    "dash"
+  ]
+}

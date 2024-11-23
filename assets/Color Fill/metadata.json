@@ -4,11 +4,13 @@
     24,
     20,
     28,
-    16
+    16,
+    32
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon, edge",
   "description": "Used in edit mode for color changes.",

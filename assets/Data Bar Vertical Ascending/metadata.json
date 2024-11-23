@@ -1,7 +1,9 @@
 {
   "name": "Data Bar Vertical Ascending",
   "size": [
-    16
+    16,
+    24,
+    20
   ],
   "style": [
     "Regular",

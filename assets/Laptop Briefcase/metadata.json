@@ -1,0 +1,26 @@
+{
+  "name": "Laptop Briefcase",
+  "size": [
+    32,
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in general laptop scenarios.",
+  "metaphor": [
+    "device",
+    "computer",
+    "device",
+    "mobile",
+    "travel",
+    "wfh",
+    "work",
+    "business",
+    "enterprise",
+    "organization"
+  ]
+}
