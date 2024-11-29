@@ -47,7 +47,6 @@ extends:
             script: |
               # Write your commands here
               cd ..
-              cd ..
               ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
         - task: Gradle@3
           inputs:
@@ -66,7 +65,6 @@ extends:
             targetType: "inline"
             script: |
               # Write your commands here
-              cd ..
               cd ..
               ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
         - task: Gradle@2
