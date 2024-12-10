@@ -24,7 +24,7 @@ export const enum FontFile {
     Filled = 0,
     Regular = 1,
     Resizable = 2,
-		Light = 3
+	Light = 3
 }
 
 const FONT_FAMILY_MAP = {
@@ -70,9 +70,10 @@ const useRootStyles = makeStyles({
         display: 'inline-block',
         fontStyle: 'normal',
         lineHeight: '1em',
+        color: 'currentColor',
 
         "@media (forced-colors: active)": {
-            forcedColorAdjust: 'none',
+            forcedColorAdjust: 'auto',
         }
     },
     [FontFile.Filled]: {
