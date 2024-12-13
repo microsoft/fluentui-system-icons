@@ -8423,5 +8423,10 @@
   "ic_fluent_re_order_vertical_24_regular": 985061,
   "ic_fluent_savings_32_regular": 985062,
   "ic_fluent_share_screen_start_16_regular": 985063,
-  "ic_fluent_weather_moon_32_regular": 985064
+  "ic_fluent_weather_moon_32_regular": 985064,
+  "ic_fluent_location_checkmark_12_regular": 985065,
+  "ic_fluent_location_checkmark_16_regular": 985066,
+  "ic_fluent_location_checkmark_20_regular": 985067,
+  "ic_fluent_location_checkmark_24_regular": 985068,
+  "ic_fluent_location_checkmark_48_regular": 985069
 }
