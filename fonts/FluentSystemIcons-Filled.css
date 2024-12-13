@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?92606a1f2a383d95505e0088aa6d9e9f") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?92606a1f2a383d95505e0088aa6d9e9f") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?92606a1f2a383d95505e0088aa6d9e9f") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?e5437ba62bee2045897b97eeae713e7f") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?e5437ba62bee2045897b97eeae713e7f") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?e5437ba62bee2045897b97eeae713e7f") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -25665,4 +25665,19 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_weather_moon_32_filled:before {
     content: "\f0865";
+}
+.icon-ic_fluent_location_checkmark_12_filled:before {
+    content: "\f0866";
+}
+.icon-ic_fluent_location_checkmark_16_filled:before {
+    content: "\f0867";
+}
+.icon-ic_fluent_location_checkmark_20_filled:before {
+    content: "\f0868";
+}
+.icon-ic_fluent_location_checkmark_24_filled:before {
+    content: "\f0869";
+}
+.icon-ic_fluent_location_checkmark_48_filled:before {
+    content: "\f086a";
 }

@@ -8964,6 +8964,16 @@ final icons = <FluentUISampleIcon>[
 
   FluentUISampleIcon(FluentIcons.location_arrow_up_48_regular, 'location_arrow_up_48_regular', 48),
 
+  FluentUISampleIcon(FluentIcons.location_checkmark_12_regular, 'location_checkmark_12_regular', 12),
+
+  FluentUISampleIcon(FluentIcons.location_checkmark_16_regular, 'location_checkmark_16_regular', 16),
+
+  FluentUISampleIcon(FluentIcons.location_checkmark_20_regular, 'location_checkmark_20_regular', 20),
+
+  FluentUISampleIcon(FluentIcons.location_checkmark_24_regular, 'location_checkmark_24_regular', 24),
+
+  FluentUISampleIcon(FluentIcons.location_checkmark_48_regular, 'location_checkmark_48_regular', 48),
+
   FluentUISampleIcon(FluentIcons.location_dismiss_20_regular, 'location_dismiss_20_regular', 20),
 
   FluentUISampleIcon(FluentIcons.location_dismiss_24_regular, 'location_dismiss_24_regular', 24),
@@ -26077,6 +26087,16 @@ final icons = <FluentUISampleIcon>[
   FluentUISampleIcon(FluentIcons.location_arrow_up_20_filled, 'location_arrow_up_20_filled', 20),
 
   FluentUISampleIcon(FluentIcons.location_arrow_up_48_filled, 'location_arrow_up_48_filled', 48),
+
+  FluentUISampleIcon(FluentIcons.location_checkmark_12_filled, 'location_checkmark_12_filled', 12),
+
+  FluentUISampleIcon(FluentIcons.location_checkmark_16_filled, 'location_checkmark_16_filled', 16),
+
+  FluentUISampleIcon(FluentIcons.location_checkmark_20_filled, 'location_checkmark_20_filled', 20),
+
+  FluentUISampleIcon(FluentIcons.location_checkmark_24_filled, 'location_checkmark_24_filled', 24),
+
+  FluentUISampleIcon(FluentIcons.location_checkmark_48_filled, 'location_checkmark_48_filled', 48),
 
   FluentUISampleIcon(FluentIcons.location_dismiss_20_filled, 'location_dismiss_20_filled', 20),
 

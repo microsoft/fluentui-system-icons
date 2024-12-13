@@ -13449,6 +13449,21 @@ class FluentIcons {
   /// fluent icon named "location_arrow_up" in size 48 and regular style.
   static const IconData location_arrow_up_48_regular = IconData(59269, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
+  /// fluent icon named "location_checkmark" in size 12 and regular style.
+  static const IconData location_checkmark_12_regular = IconData(985065, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "location_checkmark" in size 16 and regular style.
+  static const IconData location_checkmark_16_regular = IconData(985066, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "location_checkmark" in size 20 and regular style.
+  static const IconData location_checkmark_20_regular = IconData(985067, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "location_checkmark" in size 24 and regular style.
+  static const IconData location_checkmark_24_regular = IconData(985068, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
+  /// fluent icon named "location_checkmark" in size 48 and regular style.
+  static const IconData location_checkmark_48_regular = IconData(985069, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
+
   /// fluent icon named "location_dismiss" in size 20 and regular style.
   static const IconData location_dismiss_20_regular = IconData(59270, fontFamily: 'FluentSystemIcons-Regular', fontPackage: _kFontPkg);
 
@@ -39121,6 +39136,21 @@ class FluentIcons {
 
   /// fluent icon named "location_arrow_up" in size 48 and filled style.
   static const IconData location_arrow_up_48_filled = IconData(59283, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "location_checkmark" in size 12 and filled style.
+  static const IconData location_checkmark_12_filled = IconData(985190, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "location_checkmark" in size 16 and filled style.
+  static const IconData location_checkmark_16_filled = IconData(985191, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "location_checkmark" in size 20 and filled style.
+  static const IconData location_checkmark_20_filled = IconData(985192, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "location_checkmark" in size 24 and filled style.
+  static const IconData location_checkmark_24_filled = IconData(985193, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
+
+  /// fluent icon named "location_checkmark" in size 48 and filled style.
+  static const IconData location_checkmark_48_filled = IconData(985194, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
 
   /// fluent icon named "location_dismiss" in size 20 and filled style.
   static const IconData location_dismiss_20_filled = IconData(59284, fontFamily: 'FluentSystemIcons-Filled', fontPackage: _kFontPkg);
