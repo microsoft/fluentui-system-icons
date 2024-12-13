@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?75f592356980e8d93c4ca44025cd71b2") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?75f592356980e8d93c4ca44025cd71b2") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?75f592356980e8d93c4ca44025cd71b2") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?92606a1f2a383d95505e0088aa6d9e9f") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?92606a1f2a383d95505e0088aa6d9e9f") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?92606a1f2a383d95505e0088aa6d9e9f") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -25533,4 +25533,136 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_row_child_32_filled:before {
     content: "\f0839";
+}
+.icon-ic_fluent_bot_16_filled:before {
+    content: "\f083a";
+}
+.icon-ic_fluent_bot_28_filled:before {
+    content: "\f083b";
+}
+.icon-ic_fluent_bot_32_filled:before {
+    content: "\f083c";
+}
+.icon-ic_fluent_bot_48_filled:before {
+    content: "\f083d";
+}
+.icon-ic_fluent_bot_add_16_filled:before {
+    content: "\f083e";
+}
+.icon-ic_fluent_bot_add_28_filled:before {
+    content: "\f083f";
+}
+.icon-ic_fluent_bot_add_32_filled:before {
+    content: "\f0840";
+}
+.icon-ic_fluent_bot_add_48_filled:before {
+    content: "\f0841";
+}
+.icon-ic_fluent_bot_sparkle_16_filled:before {
+    content: "\f0842";
+}
+.icon-ic_fluent_bot_sparkle_28_filled:before {
+    content: "\f0843";
+}
+.icon-ic_fluent_bot_sparkle_32_filled:before {
+    content: "\f0844";
+}
+.icon-ic_fluent_bot_sparkle_48_filled:before {
+    content: "\f0845";
+}
+.icon-ic_fluent_chat_history_20_filled:before {
+    content: "\f0846";
+}
+.icon-ic_fluent_chat_history_24_filled:before {
+    content: "\f0847";
+}
+.icon-ic_fluent_chat_history_28_filled:before {
+    content: "\f0848";
+}
+.icon-ic_fluent_circle_multiple_hint_checkmark_20_filled:before {
+    content: "\f0849";
+}
+.icon-ic_fluent_circle_multiple_hint_checkmark_24_filled:before {
+    content: "\f084a";
+}
+.icon-ic_fluent_circle_multiple_hint_checkmark_28_filled:before {
+    content: "\f084b";
+}
+.icon-ic_fluent_circle_sparkle_16_filled:before {
+    content: "\f084c";
+}
+.icon-ic_fluent_circle_sparkle_20_filled:before {
+    content: "\f084d";
+}
+.icon-ic_fluent_circle_sparkle_24_filled:before {
+    content: "\f084e";
+}
+.icon-ic_fluent_circle_sparkle_28_filled:before {
+    content: "\f084f";
+}
+.icon-ic_fluent_circle_sparkle_32_filled:before {
+    content: "\f0850";
+}
+.icon-ic_fluent_circle_sparkle_48_filled:before {
+    content: "\f0851";
+}
+.icon-ic_fluent_copy_28_filled:before {
+    content: "\f0852";
+}
+.icon-ic_fluent_document_sparkle_16_filled:before {
+    content: "\f0853";
+}
+.icon-ic_fluent_document_sparkle_20_filled:before {
+    content: "\f0854";
+}
+.icon-ic_fluent_document_sparkle_24_filled:before {
+    content: "\f0855";
+}
+.icon-ic_fluent_document_sparkle_28_filled:before {
+    content: "\f0856";
+}
+.icon-ic_fluent_document_sparkle_32_filled:before {
+    content: "\f0857";
+}
+.icon-ic_fluent_document_sparkle_48_filled:before {
+    content: "\f0858";
+}
+.icon-ic_fluent_home_empty_20_filled:before {
+    content: "\f0859";
+}
+.icon-ic_fluent_home_empty_24_filled:before {
+    content: "\f085a";
+}
+.icon-ic_fluent_home_empty_28_filled:before {
+    content: "\f085b";
+}
+.icon-ic_fluent_paint_bucket_brush_16_filled:before {
+    content: "\f085c";
+}
+.icon-ic_fluent_paint_bucket_brush_20_filled:before {
+    content: "\f085d";
+}
+.icon-ic_fluent_paint_bucket_brush_24_filled:before {
+    content: "\f085e";
+}
+.icon-ic_fluent_paint_bucket_brush_28_filled:before {
+    content: "\f085f";
+}
+.icon-ic_fluent_re_order_vertical_16_filled:before {
+    content: "\f0860";
+}
+.icon-ic_fluent_re_order_vertical_20_filled:before {
+    content: "\f0861";
+}
+.icon-ic_fluent_re_order_vertical_24_filled:before {
+    content: "\f0862";
+}
+.icon-ic_fluent_savings_32_filled:before {
+    content: "\f0863";
+}
+.icon-ic_fluent_share_screen_start_16_filled:before {
+    content: "\f0864";
+}
+.icon-ic_fluent_weather_moon_32_filled:before {
+    content: "\f0865";
 }
