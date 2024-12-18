@@ -1,0 +1,22 @@
+{
+  "name": "Line Style Sketch",
+  "size": [
+    32,
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent line styles on shapes.",
+  "metaphor": [
+    "style",
+    "create",
+    "edit",
+    "draw"
+  ]
+}

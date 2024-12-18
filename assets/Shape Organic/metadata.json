@@ -1,0 +1,24 @@
+{
+  "name": "Shape Organic",
+  "size": [
+    20,
+    24,
+    48,
+    28,
+    32,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, sharepoint",
+  "description": "Used to represent organic shapes on canvas.",
+  "metaphor": [
+    "shape",
+    "custom",
+    "organic",
+    "curve",
+    "bean"
+  ]
+}

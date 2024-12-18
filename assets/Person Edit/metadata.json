@@ -2,7 +2,8 @@
   "name": "Person Edit",
   "size": [
     20,
-    24
+    24,
+    48
   ],
   "style": [
     "Regular",
@@ -17,6 +18,7 @@
     "guest",
     "pencil",
     "edit",
-    "create"
+    "create",
+    "avatar"
   ]
 }

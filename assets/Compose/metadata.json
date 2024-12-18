@@ -4,11 +4,15 @@
     28,
     24,
     20,
-    16
+    16,
+    48,
+    32,
+    12
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon",
   "description": "Used for directional indicators, links. Contains directional variants.",

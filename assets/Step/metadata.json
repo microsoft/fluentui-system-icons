@@ -1,7 +1,9 @@
 {
   "name": "Step",
   "size": [
-    16
+    16,
+    20,
+    24
   ],
   "style": [
     "Regular",

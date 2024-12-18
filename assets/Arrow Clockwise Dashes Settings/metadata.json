@@ -1,0 +1,27 @@
+{
+  "name": "Arrow Clockwise Dashes Settings",
+  "size": [
+    48,
+    32,
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for loading, retry, & skip actions.",
+  "metaphor": [
+    "arrow",
+    "point",
+    "direction",
+    "circle",
+    "hint",
+    "workflow",
+    "solutions",
+    "settings"
+  ]
+}

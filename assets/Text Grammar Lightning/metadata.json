@@ -1,0 +1,30 @@
+{
+  "name": "Text Grammar Lightning",
+  "size": [
+    16,
+    28,
+    32,
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in text grammar check scenarios.",
+  "metaphor": [
+    "type",
+    "text",
+    "typography",
+    "edit",
+    "create",
+    "wand",
+    "dismiss",
+    "checkmark",
+    "arrow left",
+    "arrow right",
+    "gear",
+    "settings"
+  ]
+}

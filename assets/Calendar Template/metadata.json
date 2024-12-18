@@ -1,0 +1,23 @@
+{
+  "name": "Calendar Template",
+  "size": [
+    32,
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used to represent calendar templates.",
+  "metaphor": [
+    "template",
+    "building blocks",
+    "guidance",
+    "calendar",
+    "event",
+    "date",
+    "time"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Play Circle Sparkle",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in playback controls. Collection includes Fast forward, Rewind, Previous, Next, Stop, Pause.",
+  "metaphor": [
+    "control",
+    "playback",
+    "start",
+    "begin",
+    "AI"
+  ]
+}

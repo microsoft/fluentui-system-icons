@@ -2,7 +2,11 @@
   "name": "Folder Person",
   "size": [
     16,
-    20
+    20,
+    48,
+    32,
+    28,
+    24
   ],
   "style": [
     "Filled",
@@ -12,6 +16,7 @@
   "description": "Used to represent collections of files.",
   "metaphor": [
     "analog",
-    "collection"
+    "collection",
+    "subject rights requests"
   ]
 }

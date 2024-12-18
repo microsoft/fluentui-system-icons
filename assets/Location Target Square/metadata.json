@@ -1,0 +1,25 @@
+{
+  "name": "Location Target Square",
+  "size": [
+    16,
+    20,
+    24,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in map, location & tracking task scenarios.",
+  "metaphor": [
+    "pin",
+    "marker",
+    "map",
+    "location",
+    "travel",
+    "directions",
+    "rectangle",
+    "tracker compliance"
+  ]
+}

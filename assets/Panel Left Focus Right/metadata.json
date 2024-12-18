@@ -4,10 +4,12 @@
     28,
     24,
     20,
-    16
+    16,
+    32
   ],
   "style": [
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": null,
   "description": null,

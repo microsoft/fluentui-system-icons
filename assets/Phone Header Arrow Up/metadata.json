@@ -1,0 +1,21 @@
+{
+  "name": "Phone Header Arrow Up",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in scenarios around location of mobile UI.",
+  "metaphor": [
+    "browser",
+    "search",
+    "location",
+    "adjustment",
+    "move",
+    "top"
+  ]
+}

@@ -11,7 +11,8 @@
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon",
   "description": "Used to represent saving content for easy finding, whether it be channels, chats, mail, files, etc.",

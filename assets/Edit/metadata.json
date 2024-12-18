@@ -6,11 +6,13 @@
     20,
     16,
     28,
-    48
+    48,
+    12
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon, outlook",
   "description": "Used in editing/update or drawing scenarios.",
