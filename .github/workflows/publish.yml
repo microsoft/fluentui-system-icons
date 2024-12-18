@@ -194,18 +194,18 @@ jobs:
         access: public
         package: packages/react-native-icons/package.json 
 
-    ## Android
-    # - name: Run Android generate script
-    #   env:
-    #     # see https://github.com/JS-DevTools/npm-publish/issues/15
-    #     INPUT_TOKEN: ''
-    #   run: npm run deploy:android
-    #   working-directory: importer
+    # Android
+    - name: Run Android generate script
+      env:
+        # see https://github.com/JS-DevTools/npm-publish/issues/15
+        INPUT_TOKEN: ''
+      run: npm run deploy:android
+      working-directory: importer
 
-    # - name: Setup Java
-    #   uses: actions/setup-java@v1
-    #   with:
-    #     java-version: 8
+    - name: Setup Java
+      uses: actions/setup-java@v1
+      with:
+        java-version: 11
 
     # - name: Base64 decodes and pipes the GPG key content into the secret file
     #   env:
@@ -215,12 +215,12 @@ jobs:
     #     git fetch --unshallow
     #     sudo bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
 
-    # - name: Build Android library
-    #   uses: eskatos/gradle-command-action@v1
-    #   with:
-    #     arguments: assembleRelease -DversionName='${{ env.NEW_VERSION }}'
-    #     build-root-directory: android
-    #     wrapper-directory: android
+    - name: Build Android library
+      uses: eskatos/gradle-command-action@v1
+      with:
+        arguments: assembleRelease -DversionName='${{ env.NEW_VERSION }}'
+        build-root-directory: android
+        wrapper-directory: android
 
     # Temporarily commenting out the publishing to Maven Central, as it is blocking the release for other platforms
     # - name: Publish to Maven Central
@@ -238,9 +238,9 @@ jobs:
     #     build-root-directory: android
     #     wrapper-directory: android
 
-    # - name: Generate BUILD.gn file for Android
-    #   run: python3 generate_build_gn_android.py
-    #   working-directory: importer
+    - name: Generate BUILD.gn file for Android
+      run: python3 generate_build_gn_android.py
+      working-directory: importer
 
     - name: Update icon sheet
       run: python3 generate_icons_md.py

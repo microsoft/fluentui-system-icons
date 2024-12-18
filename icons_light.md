@@ -57,8 +57,10 @@
 |Delete|<img src="assets/Delete/SVG/ic_fluent_delete_32_light.svg?raw=true" width="24" height="24">|`delete32Light`|`ic_fluent_delete_32_light`|
 |Dismiss|<img src="assets/Dismiss/SVG/ic_fluent_dismiss_32_light.svg?raw=true" width="24" height="24">|`dismiss32Light`|`ic_fluent_dismiss_32_light`|
 |Dismiss Circle|<img src="assets/Dismiss Circle/SVG/ic_fluent_dismiss_circle_32_light.svg?raw=true" width="24" height="24">|`dismissCircle32Light`|`ic_fluent_dismiss_circle_32_light`|
+|Document|<img src="assets/Document/SVG/ic_fluent_document_48_light.svg?raw=true" width="24" height="24">|`document24Light`<br />`document28Light`<br />`document32Light`<br />`document48Light`|`ic_fluent_document_24_light`<br />`ic_fluent_document_28_light`<br />`ic_fluent_document_32_light`<br />`ic_fluent_document_48_light`|
 |Document Lightning|<img src="assets/Document Lightning/SVG/ic_fluent_document_lightning_32_light.svg?raw=true" width="24" height="24">|`documentLightning32Light`|`ic_fluent_document_lightning_32_light`|
 |Document Signature|<img src="assets/Document Signature/SVG/ic_fluent_document_signature_32_light.svg?raw=true" width="24" height="24">|`documentSignature32Light`|`ic_fluent_document_signature_32_light`|
+|Document Sparkle|<img src="assets/Document Sparkle/SVG/ic_fluent_document_sparkle_48_light.svg?raw=true" width="24" height="24">|`documentSparkle24Light`<br />`documentSparkle28Light`<br />`documentSparkle32Light`<br />`documentSparkle48Light`|`ic_fluent_document_sparkle_24_light`<br />`ic_fluent_document_sparkle_28_light`<br />`ic_fluent_document_sparkle_32_light`<br />`ic_fluent_document_sparkle_48_light`|
 |Door Arrow Right|<img src="assets/Door Arrow Right/SVG/ic_fluent_door_arrow_right_32_light.svg?raw=true" width="24" height="24">|`doorArrowRight32Light`|`ic_fluent_door_arrow_right_32_light`|
 |Edit|<img src="assets/Edit/SVG/ic_fluent_edit_32_light.svg?raw=true" width="24" height="24">|`edit32Light`|`ic_fluent_edit_32_light`|
 |Emoji|<img src="assets/Emoji/SVG/ic_fluent_emoji_32_light.svg?raw=true" width="24" height="24">|`emoji32Light`|`ic_fluent_emoji_32_light`|
@@ -87,6 +89,7 @@
 |Layout Row Two Focus Top|<img src="assets/Layout Row Two Focus Top/SVG/ic_fluent_layout_row_two_focus_top_32_light.svg?raw=true" width="24" height="24">|`layoutRowTwoFocusTop32Light`|`ic_fluent_layout_row_two_focus_top_32_light`|
 |Layout Row Two Focus Top Settings|<img src="assets/Layout Row Two Focus Top Settings/SVG/ic_fluent_layout_row_two_focus_top_settings_32_light.svg?raw=true" width="24" height="24">|`layoutRowTwoFocusTopSettings32Light`|`ic_fluent_layout_row_two_focus_top_settings_32_light`|
 |Layout Row Two Settings|<img src="assets/Layout Row Two Settings/SVG/ic_fluent_layout_row_two_settings_32_light.svg?raw=true" width="24" height="24">|`layoutRowTwoSettings32Light`|`ic_fluent_layout_row_two_settings_32_light`|
+|Lightbulb|<img src="assets/Lightbulb/SVG/ic_fluent_lightbulb_32_light.svg?raw=true" width="24" height="24">|`lightbulb32Light`|`ic_fluent_lightbulb_32_light`|
 |Link|<img src="assets/Link/SVG/ic_fluent_link_32_light.svg?raw=true" width="24" height="24">|`link32Light`|`ic_fluent_link_32_light`|
 |Lock Closed|<img src="assets/Lock Closed/SVG/ic_fluent_lock_closed_32_light.svg?raw=true" width="24" height="24">|`lockClosed32Light`|`ic_fluent_lock_closed_32_light`|
 |Lock Open|<img src="assets/Lock Open/SVG/ic_fluent_lock_open_32_light.svg?raw=true" width="24" height="24">|`lockOpen32Light`|`ic_fluent_lock_open_32_light`|
@@ -168,6 +171,8 @@
 |Translate|<img src="assets/Translate/SVG/ic_fluent_translate_32_light.svg?raw=true" width="24" height="24">|`translate32Light`|`ic_fluent_translate_32_light`|
 |Video|<img src="assets/Video/SVG/ic_fluent_video_32_light.svg?raw=true" width="24" height="24">|`video32Light`|`ic_fluent_video_32_light`|
 |Video Clip|<img src="assets/Video Clip/SVG/ic_fluent_video_clip_32_light.svg?raw=true" width="24" height="24">|`videoClip32Light`|`ic_fluent_video_clip_32_light`|
+|Weather Moon|<img src="assets/Weather Moon/SVG/ic_fluent_weather_moon_32_light.svg?raw=true" width="24" height="24">|`weatherMoon32Light`|`ic_fluent_weather_moon_32_light`|
+|Weather Sunny|<img src="assets/Weather Sunny/SVG/ic_fluent_weather_sunny_32_light.svg?raw=true" width="24" height="24">|`weatherSunny32Light`|`ic_fluent_weather_sunny_32_light`|
 |Window|<img src="assets/Window/SVG/ic_fluent_window_32_light.svg?raw=true" width="24" height="24">|`window32Light`|`ic_fluent_window_32_light`|
 |Wrench Screwdriver|<img src="assets/Wrench Screwdriver/SVG/ic_fluent_wrench_screwdriver_32_light.svg?raw=true" width="24" height="24">|`wrenchScrewdriver32Light`|`ic_fluent_wrench_screwdriver_32_light`|
 |Zoom In|<img src="assets/Zoom In/SVG/ic_fluent_zoom_in_32_light.svg?raw=true" width="24" height="24">|`zoomIn32Light`|`ic_fluent_zoom_in_32_light`|

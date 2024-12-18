@@ -1,0 +1,10 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt" android:width="20dp" android:height="20dp" android:viewportWidth="20" android:viewportHeight="20">
+    <path android:pathData="M8 4c0-1.105 0.895-2 2-2s2 0.895 2 2v12c0 1.105-0.895 2-2 2s-2-0.895-2-2V4zm6 4c0-1.105 0.895-2 2-2s2 0.895 2 2v8c0 1.105-0.895 2-2 2s-2-0.895-2-2V8zM2 12c0-1.105 0.895-2 2-2s2 0.895 2 2v4c0 1.105-0.895 2-2 2s-2-0.895-2-2v-4z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:startY="15.0667" android:startX="11.6667" android:endY="1.96568" android:endX="8.90281" android:type="linear">
+                <item android:offset="0" android:color="#FF6D37CD"/>
+                <item android:offset="1" android:color="#FFEA71EF"/>
+            </gradient>
+        </aapt:attr>
+    </path>
+</vector>

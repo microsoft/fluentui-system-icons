@@ -2,7 +2,8 @@
   "images": [
     {
       "filename": "ic_fluent_table_freeze_row_20_regular.svg",
-      "idiom": "universal"
+      "idiom": "universal",
+      "language-direction": "left-to-right"
     }
   ],
   "info": {
