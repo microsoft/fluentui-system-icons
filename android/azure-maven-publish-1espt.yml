@@ -40,14 +40,6 @@ extends:
               # Write your commands here
               bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
               ls
-        - task: Bash@3
-          displayName: "Checking the directory structure before build"
-          inputs:
-            targetType: "inline"
-            script: |
-              # Write your commands here
-              cd ..
-              ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
         - task: Gradle@3
           inputs:
             gradleWrapperFile: 'android/gradlew'
@@ -59,14 +51,6 @@ extends:
             jdkVersionOption: "$(jdkVersion)"
             sonarQubeRunAnalysis: false
             spotBugsAnalysis: false
-        - task: Bash@3
-          displayName: "Checking the directory structure after build"
-          inputs:
-            targetType: "inline"
-            script: |
-              # Write your commands here
-              cd ..
-              ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
         - task: Gradle@2
           displayName: Gradle publish
           inputs:
