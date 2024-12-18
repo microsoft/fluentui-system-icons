@@ -28,7 +28,7 @@ jobs:
           javaHomeOption: "JDKVersion"
           jdkVersionOption: "$(jdkVersion)"
           sonarQubeRunAnalysis: false
-          spotBugsAnalysis: false  
+          spotBugsAnalysis: false
       - task: Gradle@2
         displayName: Gradle publish
         inputs:
