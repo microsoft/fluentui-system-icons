@@ -36,6 +36,7 @@ extends:
         - task: Gradle@3
           inputs:
             gradleWrapperFile: "android/gradlew"
+            workingDirectory: 'android'
             tasks: "build"
             publishJUnitResults: false
             javaHomeOption: "JDKVersion"
@@ -45,6 +46,7 @@ extends:
         - task: Gradle@2
           inputs:
             gradleWrapperFile: 'android/gradlew'
+            workingDirectory: 'android'
             tasks: "assembleRelease"
             options: "-PversionName=$(VERSION_NAME)"
             publishJUnitResults: false
@@ -55,7 +57,8 @@ extends:
         - task: Gradle@2
           displayName: "generate artifacts and publish to feed"
           inputs:
-            gradleWrapperFile: "gradlew"
+            gradleWrapperFile: "android/gradlew"
+            workingDirectory: 'android'
             tasks: 'publish'
             publishJUnitResults: false
             javaHomeOption: 'JDKVersion'
