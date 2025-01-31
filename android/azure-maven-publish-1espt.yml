@@ -65,19 +65,10 @@ extends:
             jdkVersionOption: "$(jdkVersion)"
             sonarQubeRunAnalysis: false
             options: "-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath)"
-
-        - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
-          displayName: 📒 Generate Manifest
-          inputs:
-            BuildDropPath: '$(build.sourcesdirectory)/build'
         templateContext:
           outputs:
           - output: pipelineArtifact
-            displayName: "\U0001F4D2 Publish Manifest"
-            artifactName: SBom-$(System.JobAttempt)
-            targetPath: $(build.sourcesdirectory)/build/_manifest
-          - output: pipelineArtifact
             displayName: 'Publish library artifact to pipeline'
-            targetPath: '$(build.sourcesdirectory)/build/artifacts/com/microsoft/design'
+            targetPath: 'android/library/build/artifacts/com/microsoft/design'
             artifactName: 'aar'
             publishLocation: 'pipeline'
