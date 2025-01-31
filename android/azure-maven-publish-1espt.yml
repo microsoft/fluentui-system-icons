@@ -37,7 +37,6 @@ extends:
           inputs:
             gradleWrapperFile: "gradlew"
             tasks: "build"
-            options: "-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)"
             publishJUnitResults: false
             javaHomeOption: "JDKVersion"
             jdkVersionOption: "$(jdkVersion)"
