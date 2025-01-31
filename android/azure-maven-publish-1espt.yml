@@ -35,7 +35,7 @@ extends:
               ls
         - task: Gradle@3
           inputs:
-            gradleWrapperFile: "gradlew"
+            gradleWrapperFile: "android/gradlew"
             tasks: "build"
             publishJUnitResults: false
             javaHomeOption: "JDKVersion"
@@ -44,7 +44,7 @@ extends:
             spotBugsAnalysis: false
         - task: Gradle@2
           inputs:
-            gradleWrapperFile: 'gradlew'
+            gradleWrapperFile: 'android/gradlew'
             tasks: "assembleRelease"
             options: "-PversionName=$(VERSION_NAME)"
             publishJUnitResults: false
