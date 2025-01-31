@@ -21,13 +21,6 @@ extends:
         variables:
         - name: BUILDSECMON_OPT_IN
           value: true
-        templateContext:
-          outputs:
-          - output: pipelineArtifact
-            displayName: 'Publish library artifact to pipeline'
-            targetPath: 'android/library/build/artifacts/com/microsoft/design'
-            artifactName: 'aar'
-            publishLocation: 'pipeline'
         steps:
         - task: Bash@3
           displayName: "Base64 decodes and pipes the GPG key content into the secret file"
@@ -42,8 +35,17 @@ extends:
               ls
         - task: Gradle@3
           inputs:
-            gradleWrapperFile: 'android/gradlew'
-            workingDirectory: 'android'
+            gradleWrapperFile: "gradlew"
+            tasks: "build"
+            options: "-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)"
+            publishJUnitResults: false
+            javaHomeOption: "JDKVersion"
+            jdkVersionOption: "$(jdkVersion)"
+            sonarQubeRunAnalysis: false
+            spotBugsAnalysis: false
+        - task: Gradle@2
+          inputs:
+            gradleWrapperFile: 'gradlew'
             tasks: "assembleRelease"
             options: "-PversionName=$(VERSION_NAME)"
             publishJUnitResults: false
@@ -52,13 +54,28 @@ extends:
             sonarQubeRunAnalysis: false
             spotBugsAnalysis: false
         - task: Gradle@2
-          displayName: Gradle publish
+          displayName: "generate artifacts and publish to feed"
           inputs:
-            gradleWrapperFile: 'android/gradlew'
-            workingDirectory: 'android'
+            gradleWrapperFile: "gradlew"
             tasks: 'publish'
             publishJUnitResults: false
             javaHomeOption: 'JDKVersion'
             jdkVersionOption: "$(jdkVersion)"
             sonarQubeRunAnalysis: false
             options: "-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath)"
+
+        - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+          displayName: 📒 Generate Manifest
+          inputs:
+            BuildDropPath: '$(build.sourcesdirectory)/build'
+        templateContext:
+          outputs:
+          - output: pipelineArtifact
+            displayName: "\U0001F4D2 Publish Manifest"
+            artifactName: SBom-$(System.JobAttempt)
+            targetPath: $(build.sourcesdirectory)/build/_manifest
+          - output: pipelineArtifact
+            displayName: 'Publish library artifact to pipeline'
+            targetPath: '$(build.sourcesdirectory)/build/artifacts/com/microsoft/design'
+            artifactName: 'aar'
+            publishLocation: 'pipeline'
