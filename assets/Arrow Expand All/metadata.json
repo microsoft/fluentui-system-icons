@@ -1,0 +1,22 @@
+{
+  "name": "Arrow Expand All",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for content expanding.",
+  "metaphor": [
+    "arrow",
+    "point",
+    "direction",
+    "keyboard",
+    "text"
+  ],
+  "directionType": "mirror"
+}

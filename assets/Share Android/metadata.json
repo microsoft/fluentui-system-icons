@@ -2,7 +2,9 @@
   "name": "Share Android",
   "size": [
     24,
-    20
+    20,
+    16,
+    32
   ],
   "style": [
     "Regular",

@@ -1,7 +1,9 @@
 {
   "name": "Server Link",
   "size": [
-    24
+    24,
+    20,
+    16
   ],
   "style": [
     "Regular",

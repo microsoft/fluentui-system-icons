@@ -9,7 +9,8 @@
   ],
   "style": [
     "Filled",
-    "Regular"
+    "Regular",
+    "Light"
   ],
   "keyword": "fluent-icon",
   "description": "Used for accessibility checker pass state.",

@@ -1,0 +1,23 @@
+{
+  "name": "Video Clip Optimize",
+  "size": [
+    16,
+    28,
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used to represent optimization processes for videos.",
+  "metaphor": [
+    "video clip",
+    "play",
+    "media",
+    "video",
+    "compress",
+    "optimize"
+  ]
+}

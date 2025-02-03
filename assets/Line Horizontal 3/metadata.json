@@ -1,7 +1,12 @@
 {
   "name": "Line Horizontal 3",
   "size": [
-    20
+    20,
+    48,
+    32,
+    28,
+    24,
+    16
   ],
   "style": [
     "Regular",

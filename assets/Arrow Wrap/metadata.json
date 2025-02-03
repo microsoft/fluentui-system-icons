@@ -1,7 +1,8 @@
 {
   "name": "Arrow Wrap",
   "size": [
-    20
+    20,
+    32
   ],
   "style": [
     "Regular",
@@ -11,6 +12,7 @@
   "description": "Used for text/shape wrapping scenarios.",
   "metaphor": [
     "arrow",
-    "direction"
+    "direction",
+    "left to right"
   ]
 }

@@ -1,7 +1,10 @@
 {
   "name": "Document Target",
   "size": [
-    16
+    16,
+    32,
+    24,
+    20
   ],
   "style": [
     "Regular",

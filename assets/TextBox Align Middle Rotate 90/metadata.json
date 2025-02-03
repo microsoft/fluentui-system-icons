@@ -9,12 +9,14 @@
     "Regular"
   ],
   "keyword": "fluent-icon",
-  "description": "Used to represent type within container specifically. Contains alignment and rotational variants.",
+  "description": "Used to represent type layout within a container.",
   "metaphor": [
     "type",
     "text",
     "typography",
     "edit",
-    "create"
+    "create",
+    "alignment",
+    "layout"
   ]
 }

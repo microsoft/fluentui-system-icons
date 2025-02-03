@@ -8,7 +8,11 @@
     "Regular",
     "Filled"
   ],
-  "keyword": null,
-  "description": null,
-  "metaphor": null
+  "keyword": "fluent-icon",
+  "description": "Used in copy & task scenarios.",
+  "metaphor": [
+    "copy",
+    "memory",
+    "analog"
+  ]
 }

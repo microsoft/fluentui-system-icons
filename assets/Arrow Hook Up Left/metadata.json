@@ -4,11 +4,13 @@
     28,
     24,
     20,
-    16
+    16,
+    32
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon, outlook",
   "description": "Used for undo/redo scenarios. Contains directional variants.",

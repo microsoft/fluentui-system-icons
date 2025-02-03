@@ -1,0 +1,23 @@
+{
+  "name": "TextBox Align Bottom Center",
+  "size": [
+    16,
+    20,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent type layout within a container.",
+  "metaphor": [
+    "type",
+    "text",
+    "typography",
+    "edit",
+    "create",
+    "alignment",
+    "layout"
+  ]
+}

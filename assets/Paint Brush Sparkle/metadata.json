@@ -1,0 +1,22 @@
+{
+  "name": "Paint Brush Sparkle",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in formatting content scenarios.",
+  "metaphor": [
+    "color",
+    "paint",
+    "design",
+    "format",
+    "analog",
+    "AI",
+    "sparkles"
+  ]
+}

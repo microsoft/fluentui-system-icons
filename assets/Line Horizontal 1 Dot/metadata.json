@@ -1,0 +1,19 @@
+{
+  "name": "Line Horizontal 1 Dot",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent line drawing styles.",
+  "metaphor": [
+    "style",
+    "create",
+    "edit",
+    "draw",
+    "dot"
+  ]
+}

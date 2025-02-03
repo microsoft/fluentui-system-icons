@@ -1,0 +1,19 @@
+{
+  "name": "Arrow Wrap Up To Down",
+  "size": [
+    32,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for text/shape wrapping scenarios.",
+  "metaphor": [
+    "arrow",
+    "direction",
+    "up to down",
+    "left to right"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Flash Sparkle",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in flash scenarios for cameras & in general intelligence for processes (AI).",
+  "metaphor": [
+    "lightning",
+    "flash",
+    "bolt",
+    "power",
+    "ai",
+    "thunder"
+  ]
+}

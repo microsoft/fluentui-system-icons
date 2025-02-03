@@ -1,0 +1,19 @@
+{
+  "name": "Tab Desktop Multiple Add",
+  "size": [
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, edge",
+  "description": "Used in large screen browser tab scenarios. Contains option variants.",
+  "metaphor": [
+    "tab",
+    "mobile",
+    "rectangle",
+    "browser"
+  ]
+}

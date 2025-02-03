@@ -10,7 +10,8 @@
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon",
   "description": "Used for undoing scenarios. â ï¸ Old metaphor & really unbalanced icon - use Arrow Hook instead if you can.",
