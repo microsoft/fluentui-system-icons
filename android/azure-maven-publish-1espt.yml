@@ -38,16 +38,6 @@ extends:
               ls
         - task: Gradle@3
           inputs:
-            gradleWrapperFile: "android/gradlew"
-            workingDirectory: 'android'
-            tasks: "build"
-            publishJUnitResults: false
-            javaHomeOption: "JDKVersion"
-            jdkVersionOption: "$(jdkVersion)"
-            sonarQubeRunAnalysis: false
-            spotBugsAnalysis: false
-        - task: Gradle@2
-          inputs:
             gradleWrapperFile: 'android/gradlew'
             workingDirectory: 'android'
             tasks: "assembleRelease"
@@ -57,7 +47,7 @@ extends:
             jdkVersionOption: "$(jdkVersion)"
             sonarQubeRunAnalysis: false
             spotBugsAnalysis: false
-        - task: Gradle@2
+        - task: Gradle@3
           displayName: "generate artifacts and publish to feed"
           inputs:
             gradleWrapperFile: "android/gradlew"
