@@ -15,6 +15,8 @@ jobs:
     if: "!contains(github.event.head_commit.author.email, 'flubuild@microsoft.com')"
     name: Publish icon libraries
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
     - uses: actions/checkout@v2
