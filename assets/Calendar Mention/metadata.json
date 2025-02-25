@@ -1,7 +1,8 @@
 {
   "name": "Calendar Mention",
   "size": [
-    20
+    20,
+    16
   ],
   "style": [
     "Regular",

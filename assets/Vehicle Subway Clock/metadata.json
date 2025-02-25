@@ -1,0 +1,29 @@
+{
+  "name": "Vehicle Subway Clock",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent vehicle travel scenarios.",
+  "metaphor": [
+    "travel",
+    "ride",
+    "map",
+    "commute",
+    "distance",
+    "event",
+    "vehicle",
+    "car",
+    "truck",
+    "automobile",
+    "clock",
+    "time",
+    "commute"
+  ]
+}

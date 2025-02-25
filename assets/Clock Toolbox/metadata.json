@@ -2,7 +2,8 @@
   "name": "Clock Toolbox",
   "size": [
     20,
-    24
+    24,
+    32
   ],
   "style": [
     "Regular",

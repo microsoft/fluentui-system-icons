@@ -1,0 +1,19 @@
+{
+  "name": "Hexagon Sparkle",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "",
+  "metaphor": [
+    "shape",
+    "web app builder module",
+    "6 sided",
+    "sparkle"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Panel Right Gallery",
+  "size": [
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent the plethora of secondary, elevated panels in UI.",
+  "metaphor": [
+    "pane",
+    "sidebar",
+    "modal",
+    "elevate",
+    "gallery"
+  ],
+  "directionType": "mirror"
+}

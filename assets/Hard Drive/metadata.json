@@ -2,7 +2,11 @@
   "name": "Hard Drive",
   "size": [
     20,
-    16
+    16,
+    24,
+    32,
+    48,
+    28
   ],
   "style": [
     "Regular",

@@ -10,7 +10,8 @@
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon",
   "description": "Used to represent general video content scenarios.",

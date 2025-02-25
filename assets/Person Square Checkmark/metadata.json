@@ -1,0 +1,21 @@
+{
+  "name": "Person Square Checkmark",
+  "size": [
+    20,
+    24,
+    16,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used in square shaped placeholder avatars in UI.",
+  "metaphor": [
+    "human",
+    "patient",
+    "contact",
+    "guest"
+  ]
+}

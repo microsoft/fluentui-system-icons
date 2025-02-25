@@ -1,0 +1,25 @@
+{
+  "name": "Voicemail Shield",
+  "size": [
+    32,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon, teams",
+  "description": "Used to represent a voice message recording and audio playback scenarios.",
+  "metaphor": [
+    "tape",
+    "playback",
+    "audio",
+    "recording",
+    "message",
+    "protect",
+    "security",
+    "safety"
+  ]
+}

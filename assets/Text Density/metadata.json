@@ -4,11 +4,13 @@
     20,
     16,
     28,
-    24
+    24,
+    32
   ],
   "style": [
     "Filled",
-    "Regular"
+    "Regular",
+    "Light"
   ],
   "keyword": "fluent-icon",
   "description": "Used to select text density in UI scenarios.",

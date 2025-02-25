@@ -1,0 +1,25 @@
+{
+  "name": "TextBox Align Top Left",
+  "size": [
+    16,
+    20,
+    24,
+    32
+  ],
+  "style": [
+    "Regular",
+    "Filled",
+    "Light"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent type layout within a container.",
+  "metaphor": [
+    "type",
+    "text",
+    "typography",
+    "edit",
+    "create",
+    "alignment",
+    "layout"
+  ]
+}

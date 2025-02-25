@@ -3,11 +3,13 @@
   "size": [
     20,
     24,
-    16
+    16,
+    32
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon",
   "description": "Used in a wide range of scenarios - representing a general group, contacts, contact lists, sharing, and managing access.",

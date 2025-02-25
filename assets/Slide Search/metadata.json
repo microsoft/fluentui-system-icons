@@ -3,7 +3,9 @@
   "size": [
     28,
     24,
-    20
+    20,
+    16,
+    32
   ],
   "style": [
     "Regular",
@@ -16,6 +18,7 @@
     "landscape",
     "document",
     "presentation",
-    "magnifying glass"
+    "magnifying glass",
+    "data quality"
   ]
 }

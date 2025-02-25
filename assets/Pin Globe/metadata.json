@@ -1,0 +1,19 @@
+{
+  "name": "Pin Globe",
+  "size": [
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent saving content for easy finding, whether it be channels, chats, mail, files, etc.",
+  "metaphor": [
+    "save",
+    "share",
+    "post",
+    "favorite"
+  ]
+}
