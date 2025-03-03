@@ -9,8 +9,8 @@
             </gradient>
         </aapt:attr>
     </path>
-    <path android:pathData="M7.986 10L8 3.998l1.5 0.004L9.486 10H22v1.5H9.482l-0.017 7.502-1.5-0.004 0.017-7.498H2V10h5.986z" android:fillColor="#000000" android:fillType="evenOdd"/>
-    <path android:pathData="M7.986 10L8 3.998l1.5 0.004L9.486 10H22v1.5H9.482l-0.017 7.502-1.5-0.004 0.017-7.498H2V10h5.986z" android:fillType="evenOdd">
+    <path android:pathData="M7.986 10L8 3.998l1.5 0.004L9.486 10H22v1.5H9.482l-0.017 7.502-1.5-0.004 0.017-7.498H2V10h5.986z" android:fillColor="#000000"/>
+    <path android:pathData="M7.986 10L8 3.998l1.5 0.004L9.486 10H22v1.5H9.482l-0.017 7.502-1.5-0.004 0.017-7.498H2V10h5.986z">
         <aapt:attr name="android:fillColor">
             <gradient android:gradientRadius="25.625" android:centerX="9.5" android:centerY="11.5" android:type="radial">
                 <item android:offset="0" android:color="#FFFB5937"/>

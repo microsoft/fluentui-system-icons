@@ -17,9 +17,19 @@
             </gradient>
         </aapt:attr>
     </path>
-    <path android:pathData="M9.25 18v-8h1.5v8h-1.5zm1.5-12.25V10h-1.5V5.75h1.5z" android:fillType="evenOdd">
+    <path android:pathData="M9.25 18v-8h1.5v8h-1.5z" android:fillColor="#000000"/>
+    <path android:pathData="M9.25 18v-8h1.5v8h-1.5z">
         <aapt:attr name="android:fillColor">
-            <gradient android:startY="5.5" android:startX="10" android:endY="16.6087" android:endX="10" android:type="linear">
+            <gradient android:startY="5.5" android:startX="9.25" android:endY="16.6087" android:endX="9.25" android:type="linear">
+                <item android:offset="0" android:color="#FFFB5937"/>
+                <item android:offset="1" android:color="#FFFFCD0F"/>
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path android:pathData="M10.75 5.75V10h-1.5V5.75h1.5z" android:fillColor="#000000"/>
+    <path android:pathData="M10.75 5.75V10h-1.5V5.75h1.5z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:startY="-12.4643" android:startX="9.25" android:endY="17.2857" android:endX="9.25" android:type="linear">
                 <item android:offset="0" android:color="#FFFB5937"/>
                 <item android:offset="1" android:color="#FFFFCD0F"/>
             </gradient>

@@ -17,22 +17,23 @@
             </gradient>
         </aapt:attr>
     </path>
-    <path android:pathData="M11.25 22V12h1.5v10h-1.5z" android:fillType="evenOdd">
+    <path android:pathData="M11.25 22V12h1.5v10h-1.5z">
         <aapt:attr name="android:fillColor">
-            <gradient android:startY="6.375" android:startX="12" android:endY="20.2609" android:endX="12" android:type="linear">
+            <gradient android:startY="6.375" android:startX="11.25" android:endY="20.2609" android:endX="11.25" android:type="linear">
                 <item android:offset="0" android:color="#FFFB5937"/>
                 <item android:offset="1" android:color="#FFFFCD0F"/>
             </gradient>
         </aapt:attr>
     </path>
-    <path android:pathData="M11.25 13V8h1.5v5h-1.5z" android:fillType="evenOdd">
+    <path android:pathData="M11.25 13V8h1.5v5h-1.5z">
         <aapt:attr name="android:fillColor">
-            <gradient android:startY="-13.4286" android:startX="12" android:endY="21.5714" android:endX="12" android:type="linear">
+            <gradient android:startY="-13.4286" android:startX="11.25" android:endY="21.5714" android:endX="11.25" android:type="linear">
                 <item android:offset="0" android:color="#FFFB5937"/>
                 <item android:offset="1" android:color="#FFFFCD0F"/>
             </gradient>
         </aapt:attr>
     </path>
+    <path android:pathData="M9.5 8.5c-1.795 0-3.25-1.455-3.25-3.25S7.705 2 9.5 2c1.005 0 1.904 0.456 2.5 1.173C12.596 2.456 13.495 2 14.5 2c1.795 0 3.25 1.455 3.25 3.25S16.295 8.5 14.5 8.5h-5zM7.75 5.25c0-0.966 0.784-1.75 1.75-1.75s1.75 0.784 1.75 1.75V7H9.5C8.534 7 7.75 6.216 7.75 5.25zm5 1.75h1.75c0.966 0 1.75-0.784 1.75-1.75S15.466 3.5 14.5 3.5s-1.75 0.784-1.75 1.75V7z" android:fillColor="#000000" android:fillType="evenOdd"/>
     <path android:pathData="M9.5 8.5c-1.795 0-3.25-1.455-3.25-3.25S7.705 2 9.5 2c1.005 0 1.904 0.456 2.5 1.173C12.596 2.456 13.495 2 14.5 2c1.795 0 3.25 1.455 3.25 3.25S16.295 8.5 14.5 8.5h-5zM7.75 5.25c0-0.966 0.784-1.75 1.75-1.75s1.75 0.784 1.75 1.75V7H9.5C8.534 7 7.75 6.216 7.75 5.25zm5 1.75h1.75c0.966 0 1.75-0.784 1.75-1.75S15.466 3.5 14.5 3.5s-1.75 0.784-1.75 1.75V7z" android:fillType="evenOdd">
         <aapt:attr name="android:fillColor">
             <gradient android:startY="8.49838" android:startX="15.1944" android:endY="-4.9006" android:endX="11.9054" android:type="linear">
