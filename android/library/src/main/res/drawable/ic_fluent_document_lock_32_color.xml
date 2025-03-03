@@ -1,0 +1,27 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt" android:width="32dp" android:height="32dp" android:viewportWidth="32" android:viewportHeight="32">
+    <path android:pathData="M17 2H8C6.343 2 5 3.343 5 5v22c0 1.657 1.343 3 3 3h16c1.657 0 3-1.343 3-3V12l-7-3-3-7z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:startY="2" android:startX="20.4" android:endY="25.6099" android:endX="22.7106" android:type="linear">
+                <item android:offset="0" android:color="#FF6CE0FF"/>
+                <item android:offset="1" android:color="#FF4894FE"/>
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path android:pathData="M17 2H8C6.343 2 5 3.343 5 5v22c0 1.657 1.343 3 3 3h16c1.657 0 3-1.343 3-3V12l-7-3-3-7z" android:fillAlpha="0.5">
+        <aapt:attr name="android:fillColor">
+            <gradient android:gradientRadius="17.438" android:centerX="27.9167" android:centerY="2.875" android:type="radial">
+                <item android:offset="0.362364" android:color="#FF4A43CB"/>
+                <item android:offset="1" android:color="#004A43CB"/>
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path android:pathData="M17 10V2l10 10h-8c-1.105 0-2-0.895-2-2zM5.5 19.5H5c-1.38 0-2.5 1.12-2.5 2.5v6c0 1.38 1.12 2.5 2.5 2.5h8c1.38 0 2.5-1.12 2.5-2.5v-6c0-1.38-1.12-2.5-2.5-2.5h-0.5V19c0-1.933-1.567-3.5-3.5-3.5S5.5 17.067 5.5 19v0.5zm2-0.5c0-0.828 0.672-1.5 1.5-1.5s1.5 0.672 1.5 1.5v0.5h-3V19z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:startY="6.16667" android:startX="21.9833" android:endY="10.3333" android:endX="19.4833" android:type="linear">
+                <item android:offset="0" android:color="#FF9FF0F9"/>
+                <item android:offset="1" android:color="#FFB3E0FF"/>
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path android:pathData="M11 25c0 1.105-0.895 2-2 2s-2-0.895-2-2 0.895-2 2-2 2 0.895 2 2z" android:fillColor="#944600"/>
+</vector>

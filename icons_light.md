@@ -150,6 +150,7 @@
 |Star Arrow Right|<img src="assets/Star Arrow Right/SVG/ic_fluent_star_arrow_right_32_light.svg?raw=true" width="24" height="24">|`starArrowRight32Light`|`ic_fluent_star_arrow_right_32_light`|
 |Tab Add|<img src="assets/Tab Add/SVG/ic_fluent_tab_add_32_light.svg?raw=true" width="24" height="24">|`tabAdd32Light`|`ic_fluent_tab_add_32_light`|
 |Table|<img src="assets/Table/SVG/ic_fluent_table_32_light.svg?raw=true" width="24" height="24">|`table32Light`|`ic_fluent_table_32_light`|
+|Table Alt Text|<img src="assets/Table Alt Text/SVG/ic_fluent_table_alt_text_32_light.svg?raw=true" width="24" height="24">|`tableAltText32Light`|`ic_fluent_table_alt_text_32_light`|
 |Table Cells Merge|<img src="assets/Table Cells Merge/SVG/ic_fluent_table_cells_merge_32_light.svg?raw=true" width="24" height="24">|`tableCellsMerge32Light`|`ic_fluent_table_cells_merge_32_light`|
 |Table Cells Split|<img src="assets/Table Cells Split/SVG/ic_fluent_table_cells_split_32_light.svg?raw=true" width="24" height="24">|`tableCellsSplit32Light`|`ic_fluent_table_cells_split_32_light`|
 |Table Dismiss|<img src="assets/Table Dismiss/SVG/ic_fluent_table_dismiss_32_light.svg?raw=true" width="24" height="24">|`tableDismiss32Light`|`ic_fluent_table_dismiss_32_light`|
