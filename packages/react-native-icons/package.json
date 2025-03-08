@@ -17,7 +17,7 @@
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
     "convert:rnsvg": "node ../react-native-icons/convert-rn.js --source=./intermediate --dest=./src --native=true",
     "rollup": "node ./generateRollup.js",
-    "optimize": "svgo --config svgo.config.js --folder=./intermediate --precision=2",
+    "optimize": "svgo --config svgo.config.js --folder=./intermediate --precision=2 --quiet",
     "unfill": "find ./intermediate -type f -name \"*.svg\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./intermediate -type f -name \"*.bak\" -delete",
     "build": "npm run copy && npm run optimize && npm run unfill && npm run convert:rnsvg && npm run cleanSvg && npm run build:esm && npm run build:cjs",
     "build:cjs": "tsc --module commonjs --outDir lib-cjs && babel lib-cjs --out-dir lib-cjs",
@@ -28,7 +28,6 @@
     "@babel/core": "^7.16.0",
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.16.7",
-    "@griffel/babel-preset": "^1.0.0",
     "@svgr/core": "^6.5.1",
     "@types/react": "^17.0.2",
     "cpy-cli": "^4.1.0",
@@ -43,7 +42,6 @@
     "yargs": "^14.0.0"
   },
   "dependencies": {
-    "@griffel/react": "^1.0.0",
     "@types/react-native": "^0.68.0",
     "tslib": "^2.1.0"
   },
