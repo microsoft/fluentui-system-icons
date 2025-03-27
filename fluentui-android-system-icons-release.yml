@@ -3,15 +3,15 @@ name: $(Date:yyyyMMdd).$(Rev:r)
 resources:
   pipelines:
   - pipeline: 'fluentui-system-icons-android-maven-publish'
-    project: 'fluentui-native'
+    project: 'ISS'
     source: 'fluentui-system-icons-android-maven-publish'
   repositories:
-  - repository: 1ESPipelineTemplates
+  - repository: OfficePipelineTemplates
     type: git
-    name: 1ESPipelineTemplates/1ESPipelineTemplates
+    name: 1ESPipelineTemplates/OfficePipelineTemplates
     ref: refs/tags/release
 extends:
-  template: v1/1ES.Official.PipelineTemplate.yml@1ESPipelineTemplates
+  template: v1/Office.Official.PipelineTemplate.yml@OfficePipelineTemplates
   parameters:
     pool:
       name: Azure-Pipelines-1ESPT-ExDShared
@@ -36,15 +36,17 @@ extends:
             artifactName: 'aar'
             targetPath: '$(Pipeline.Workspace)/aar'
         steps:
-        - task: SFP.release-tasks.custom-build-release-task.EsrpRelease@7
+        - task: SFP.release-tasks.custom-build-release-task.EsrpRelease@9
           displayName: fluentui-system-icons ESRP Release
           inputs:
-            connectedservicename: ''
-            keyvaultname: ''
-            authcertname: ''
-            signcertname: ''
-            clientid: ''
+            connectedservicename: 'ESRP-JSHost3'
+            usemanagedidentity: false
+            keyvaultname: 'OGX-JSHost-KV'
+            authcertname: 'OGX-JSHost-Auth4'
+            signcertname: 'OGX-JSHost-Sign3'
+            clientid: '0a35e01f-eadf-420a-a2bf-def002ba898d'
+            domaintenantid: 'cdc5aeea-15c5-4db6-b079-fcadd2505dc2'
             folderlocation: $(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar
-            owners: ''
-            approvers: ''
+            owners: 'ronakdhoot@microsoft.com'
+            approvers: 'dhruvmishra@microsoft.com'
             mainpublisher: fluentuiandroidrelease
