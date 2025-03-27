@@ -1,0 +1,25 @@
+{
+  "name": "Highway",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a highway/freeway.",
+  "metaphor": [
+    "highway",
+    "freeway",
+    "road",
+    "traffic",
+    "drive",
+    "car",
+    "truck",
+    "van",
+    "vehicle",
+    "lane"
+  ]
+}

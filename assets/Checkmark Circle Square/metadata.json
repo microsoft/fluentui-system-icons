@@ -1,0 +1,19 @@
+{
+  "name": "Checkmark Circle Square",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Filled",
+    "Regular"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used for toggle selection states or approvals.",
+  "metaphor": [
+    "approval",
+    "selected",
+    "multiple"
+  ]
+}

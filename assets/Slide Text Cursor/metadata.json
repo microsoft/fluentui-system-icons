@@ -1,0 +1,21 @@
+{
+  "name": "Slide Text Cursor",
+  "size": [
+    24,
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, powerpoint",
+  "description": "Used in slide UI scenarios.",
+  "metaphor": [
+    "slide",
+    "landscape",
+    "document",
+    "presentation",
+    "cursor",
+    "click"
+  ]
+}

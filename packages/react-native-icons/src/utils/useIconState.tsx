@@ -1,28 +1,14 @@
-import { FluentIconsProps } from "./FluentIconsProps.types";
-import { makeStyles, mergeClasses } from "@griffel/react";
+import type { SvgProps } from "react-native-svg";
+import type { FluentIconsProps } from "./FluentIconsProps.types";
+import type { TextProps } from "react-native";
 
-const useRootStyles = makeStyles({
-    root: {
-        display: 'inline',
-        lineHeight: 0,
-
-        "@media (forced-colors: active)": {
-          forcedColorAdjust: 'auto',
-        }
-    }
-});
-
-export const useIconState = <TBaseAttributes extends (React.SVGAttributes<SVGElement> | React.HTMLAttributes<HTMLElement>) = React.SVGAttributes<SVGElement>>(props: FluentIconsProps<TBaseAttributes>): Omit<FluentIconsProps<TBaseAttributes>, 'primaryFill'> => {
+export const useIconState = <TBaseAttributes extends (SvgProps | TextProps) = SvgProps>(props: FluentIconsProps<TBaseAttributes>): Omit<FluentIconsProps<TBaseAttributes>, 'primaryFill'> => {
     const { title, primaryFill = "currentColor", ...rest } = props;
     const state = {
       ...rest,
       title: undefined,
       fill: primaryFill
     } as Omit<FluentIconsProps<TBaseAttributes>, 'primaryFill'>;
-  
-    const styles = useRootStyles();
-  
-    state.className = mergeClasses(styles.root, state.className);
   
     if (title) {
       state['aria-label'] = title;

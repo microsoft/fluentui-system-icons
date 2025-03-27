@@ -1,7 +1,9 @@
 {
   "name": "Layer Diagonal Person",
   "size": [
-    20
+    20,
+    16,
+    24
   ],
   "style": [
     "Filled",

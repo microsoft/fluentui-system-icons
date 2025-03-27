@@ -2,11 +2,13 @@
   "name": "Calendar Pattern",
   "size": [
     16,
-    20
+    20,
+    32
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon, outlook, teams",
   "description": "Used in calendar scenarios.",

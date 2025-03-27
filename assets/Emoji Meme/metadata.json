@@ -1,0 +1,22 @@
+{
+  "name": "Emoji Meme",
+  "size": [
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent funny / humorous internet topics.â ï¸ Should not be used as emoji.",
+  "metaphor": [
+    "face",
+    "emote",
+    "feeling",
+    "glasses",
+    "funny",
+    "humor"
+  ]
+}

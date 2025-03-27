@@ -1,0 +1,19 @@
+{
+  "name": "Calendar Link",
+  "size": [
+    28,
+    24
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook, teams",
+  "description": "Used in calendar scenarios. Contains direction variants.",
+  "metaphor": [
+    "time",
+    "date",
+    "planning"
+  ],
+  "directionType": "mirror"
+}

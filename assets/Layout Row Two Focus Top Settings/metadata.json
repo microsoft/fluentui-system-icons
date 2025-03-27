@@ -1,0 +1,20 @@
+{
+  "name": "Layout Row Two Focus Top Settings",
+  "size": [
+    32,
+    28,
+    20
+  ],
+  "style": [
+    "Filled",
+    "Light"
+  ],
+  "keyword": "fluent-icon, vscode",
+  "description": "Used to represent UI layouts.",
+  "metaphor": [
+    "ui",
+    "layout",
+    "structure",
+    "customize"
+  ]
+}

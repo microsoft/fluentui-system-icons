@@ -2,7 +2,9 @@
   "name": "Battery 9",
   "size": [
     24,
-    20
+    20,
+    32,
+    28
   ],
   "style": [
     "Regular",

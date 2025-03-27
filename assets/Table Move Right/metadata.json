@@ -4,11 +4,13 @@
     24,
     28,
     16,
-    20
+    20,
+    32
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon, excel",
   "description": "Used in moving column and row scenarios. Contains directional variants.",

@@ -2,7 +2,10 @@
   "name": "People Queue",
   "size": [
     20,
-    24
+    24,
+    48,
+    32,
+    28
   ],
   "style": [
     "Regular",

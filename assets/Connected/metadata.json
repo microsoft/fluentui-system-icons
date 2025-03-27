@@ -2,7 +2,9 @@
   "name": "Connected",
   "size": [
     16,
-    20
+    20,
+    32,
+    24
   ],
   "style": [
     "Regular",

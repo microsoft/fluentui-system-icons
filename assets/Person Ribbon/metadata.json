@@ -2,7 +2,8 @@
   "name": "Person Ribbon",
   "size": [
     20,
-    16
+    16,
+    24
   ],
   "style": [
     "Regular",

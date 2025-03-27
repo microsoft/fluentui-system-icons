@@ -3,11 +3,13 @@
   "size": [
     24,
     20,
-    16
+    16,
+    32
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon, outlook",
   "description": "Used in classification scenarios (normal, private, confidential, etc) in mail.",

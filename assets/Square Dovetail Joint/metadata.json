@@ -1,0 +1,23 @@
+{
+  "name": "Square Dovetail Joint",
+  "size": [
+    48,
+    32,
+    28,
+    24,
+    20,
+    16,
+    12
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent toolkit in general, and specifically as toolkits for products.",
+  "metaphor": [
+    "toolkit",
+    "tools",
+    "tooling"
+  ]
+}

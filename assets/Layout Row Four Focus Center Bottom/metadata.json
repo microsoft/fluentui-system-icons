@@ -1,0 +1,19 @@
+{
+  "name": "Layout Row Four Focus Center Bottom",
+  "size": [
+    16,
+    20,
+    24
+  ],
+  "style": [
+    "Filled"
+  ],
+  "keyword": "fluent-icon, vscode",
+  "description": "Used to represent UI layouts.",
+  "metaphor": [
+    "ui",
+    "layout",
+    "structure",
+    "customize"
+  ]
+}

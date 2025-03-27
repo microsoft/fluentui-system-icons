@@ -2,7 +2,10 @@
   "name": "Text Description",
   "size": [
     24,
-    20
+    20,
+    16,
+    28,
+    32
   ],
   "style": [
     "Regular",
@@ -17,5 +20,6 @@
     "edit",
     "create",
     "paragraph"
-  ]
+  ],
+  "directionType": "mirror"
 }

@@ -1,0 +1,26 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt" android:width="20dp" android:height="20dp" android:viewportWidth="20" android:viewportHeight="20">
+    <path android:pathData="M8.03 11.97c0.293 0.293 0.293 0.767 0 1.06l-3.75 3.75c-0.293 0.293-0.767 0.293-1.06 0-0.293-0.293-0.293-0.767 0-1.06l3.75-3.75c0.293-0.293 0.767-0.293 1.06 0z" android:fillType="evenOdd">
+        <aapt:attr name="android:fillColor">
+            <gradient android:startY="15.687" android:startX="4.3125" android:endY="10.2794" android:endX="11.096" android:type="linear">
+                <item android:offset="0.113865" android:color="#FF7B7BFF"/>
+                <item android:offset="0.559383" android:color="#FF102784"/>
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path android:pathData="M13.325 2.618c-0.965-0.965-2.592-0.701-3.203 0.52L8.393 6.596C8.23 6.925 7.95 7.182 7.608 7.318l-3.59 1.436C3.353 9.021 3.176 9.882 3.684 10.39l5.928 5.927c0.507 0.508 1.368 0.331 1.635-0.335l1.436-3.59c0.136-0.342 0.393-0.62 0.722-0.785l3.458-1.73c1.221-0.61 1.486-2.237 0.52-3.202l-4.057-4.057z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:startY="4.76524" android:startX="3.91031" android:endY="15.2183" android:endX="13.9713" android:type="linear">
+                <item android:offset="0" android:color="#FF43E5CA"/>
+                <item android:offset="1" android:color="#FF1384B1"/>
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path android:pathData="M13.325 2.618c-0.965-0.965-2.592-0.701-3.203 0.52L8.393 6.596C8.23 6.925 7.95 7.182 7.608 7.318l-3.59 1.436C3.353 9.021 3.176 9.882 3.684 10.39l5.928 5.927c0.507 0.508 1.368 0.331 1.635-0.335l1.436-3.59c0.136-0.342 0.393-0.62 0.722-0.785l3.458-1.73c1.221-0.61 1.486-2.237 0.52-3.202l-4.057-4.057z" android:fillAlpha="0.8">
+        <aapt:attr name="android:fillColor">
+            <gradient android:gradientRadius="6.48046" android:centerX="14.6477" android:centerY="13.7314" android:type="radial">
+                <item android:offset="0" android:color="#FFE362F8"/>
+                <item android:offset="1" android:color="#009966FF"/>
+            </gradient>
+        </aapt:attr>
+    </path>
+</vector>

@@ -1,0 +1,19 @@
+{
+  "name": "Document Signature",
+  "size": [
+    48,
+    32,
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled",
+    "Light"
+  ],
+  "keyword": null,
+  "description": null,
+  "metaphor": null
+}
