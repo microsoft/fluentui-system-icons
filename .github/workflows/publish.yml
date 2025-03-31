@@ -66,6 +66,10 @@ jobs:
       run: npm run deploy:ios
       working-directory: importer
 
+    - name: Build Fonts
+      run: npm run deploy:fonts
+      working-directory: importer
+
     ## Flutter
     # Disabling for now until the pipeline job is fixed
     # - name: Run Flutter generate script

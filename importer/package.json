@@ -27,7 +27,7 @@
     "deploy:fonts": "npm run build:fonts && cp -a dist/fonts/* ../fonts && npm run clean",
     "generate:flutter-icon-lib-class": "node generate_flutter_lib_class.js --source=../fonts/FluentSystemIcons-Regular.json ../fonts/FluentSystemIcons-Filled.json ../fonts/FluentSystemIcons-Light.json --dest=dist/flutter",
     "generate:flutter-icon-demo-class": "node generate_flutter_demo_class.js --source=../fonts/FluentSystemIcons-Regular.json ../fonts/FluentSystemIcons-Filled.json ../fonts/FluentSystemIcons-Light.json --dest=dist/flutter",
-    "build:flutter": "npm run deploy:fonts && mkdir dist/flutter && npm run generate:flutter-icon-lib-class && npm run generate:flutter-icon-demo-class",
+    "build:flutter": "mkdir dist/flutter && npm run generate:flutter-icon-lib-class && npm run generate:flutter-icon-demo-class",
     "deploy:flutter": "npm run build:flutter && cp ../fonts/*.ttf ../flutter/lib/fonts && cp dist/flutter/fluent_icons.dart ../flutter/lib/src/fluent_icons.dart && cp dist/flutter/sample_icons.dart ../flutter/example/lib/sample_icons.dart && npm run clean"
   },
   "author": "Microsoft Inc.",
