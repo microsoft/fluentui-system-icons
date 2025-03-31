@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Light";
-    src: url("./FluentSystemIcons-Light.woff2?abb8dc1c7f6e86d32db9e0e86f47b699") format("woff2"),
-url("./FluentSystemIcons-Light.woff?abb8dc1c7f6e86d32db9e0e86f47b699") format("woff"),
-url("./FluentSystemIcons-Light.ttf?abb8dc1c7f6e86d32db9e0e86f47b699") format("truetype");
+    src: url("./FluentSystemIcons-Light.woff2?46b654096848b0f429d7ab242ebf4094") format("woff2"),
+url("./FluentSystemIcons-Light.woff?46b654096848b0f429d7ab242ebf4094") format("woff"),
+url("./FluentSystemIcons-Light.ttf?46b654096848b0f429d7ab242ebf4094") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -475,84 +475,87 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 .icon-ic_fluent_table_32_light:before {
     content: "\e098";
 }
-.icon-ic_fluent_table_cells_merge_32_light:before {
+.icon-ic_fluent_table_alt_text_32_light:before {
     content: "\e099";
 }
-.icon-ic_fluent_table_cells_split_32_light:before {
+.icon-ic_fluent_table_cells_merge_32_light:before {
     content: "\e09a";
 }
-.icon-ic_fluent_table_dismiss_32_light:before {
+.icon-ic_fluent_table_cells_split_32_light:before {
     content: "\e09b";
 }
-.icon-ic_fluent_table_move_above_32_light:before {
+.icon-ic_fluent_table_dismiss_32_light:before {
     content: "\e09c";
 }
-.icon-ic_fluent_table_move_below_32_light:before {
+.icon-ic_fluent_table_move_above_32_light:before {
     content: "\e09d";
 }
-.icon-ic_fluent_table_move_left_32_light:before {
+.icon-ic_fluent_table_move_below_32_light:before {
     content: "\e09e";
 }
-.icon-ic_fluent_table_move_right_32_light:before {
+.icon-ic_fluent_table_move_left_32_light:before {
     content: "\e09f";
 }
-.icon-ic_fluent_table_settings_32_light:before {
+.icon-ic_fluent_table_move_right_32_light:before {
     content: "\e0a0";
 }
-.icon-ic_fluent_table_simple_32_light:before {
+.icon-ic_fluent_table_settings_32_light:before {
     content: "\e0a1";
 }
-.icon-ic_fluent_tag_32_light:before {
+.icon-ic_fluent_table_simple_32_light:before {
     content: "\e0a2";
 }
-.icon-ic_fluent_text_32_light:before {
+.icon-ic_fluent_tag_32_light:before {
     content: "\e0a3";
 }
-.icon-ic_fluent_text_clear_formatting_32_light:before {
+.icon-ic_fluent_text_32_light:before {
     content: "\e0a4";
 }
-.icon-ic_fluent_text_collapse_32_light:before {
+.icon-ic_fluent_text_clear_formatting_32_light:before {
     content: "\e0a5";
 }
-.icon-ic_fluent_text_density_32_light:before {
+.icon-ic_fluent_text_collapse_32_light:before {
     content: "\e0a6";
 }
-.icon-ic_fluent_text_edit_style_32_light:before {
+.icon-ic_fluent_text_density_32_light:before {
     content: "\e0a7";
 }
-.icon-ic_fluent_text_expand_32_light:before {
+.icon-ic_fluent_text_edit_style_32_light:before {
     content: "\e0a8";
 }
-.icon-ic_fluent_textbox_align_top_left_32_light:before {
+.icon-ic_fluent_text_expand_32_light:before {
     content: "\e0a9";
 }
-.icon-ic_fluent_toolbox_32_light:before {
+.icon-ic_fluent_textbox_align_top_left_32_light:before {
     content: "\e0aa";
 }
-.icon-ic_fluent_translate_32_light:before {
+.icon-ic_fluent_toolbox_32_light:before {
     content: "\e0ab";
 }
-.icon-ic_fluent_video_32_light:before {
+.icon-ic_fluent_translate_32_light:before {
     content: "\e0ac";
 }
-.icon-ic_fluent_video_clip_32_light:before {
+.icon-ic_fluent_video_32_light:before {
     content: "\e0ad";
 }
-.icon-ic_fluent_weather_moon_32_light:before {
+.icon-ic_fluent_video_clip_32_light:before {
     content: "\e0ae";
 }
-.icon-ic_fluent_weather_sunny_32_light:before {
+.icon-ic_fluent_weather_moon_32_light:before {
     content: "\e0af";
 }
-.icon-ic_fluent_window_32_light:before {
+.icon-ic_fluent_weather_sunny_32_light:before {
     content: "\e0b0";
 }
-.icon-ic_fluent_wrench_screwdriver_32_light:before {
+.icon-ic_fluent_window_32_light:before {
     content: "\e0b1";
 }
-.icon-ic_fluent_zoom_in_32_light:before {
+.icon-ic_fluent_wrench_screwdriver_32_light:before {
     content: "\e0b2";
 }
-.icon-ic_fluent_zoom_out_32_light:before {
+.icon-ic_fluent_zoom_in_32_light:before {
     content: "\e0b3";
+}
+.icon-ic_fluent_zoom_out_32_light:before {
+    content: "\e0b4";
 }
