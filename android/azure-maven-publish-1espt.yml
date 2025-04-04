@@ -36,6 +36,23 @@ extends:
               # Write your commands here
               bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
               ls
+        - task: Bash@3
+          displayName: "Print full directory structure"
+          inputs:
+            targetType: "inline"
+            script: |
+              echo "==== Source Directory Structure ===="
+              find $(Build.SourcesDirectory) -type f -o -type d | sort
+              
+              echo "==== Root Directory Structure ===="
+              find / -maxdepth 3 -type d 2>/dev/null | sort
+              
+              echo "==== Working Directory ===="
+              pwd
+              ls -la
+              
+              echo "==== Environment Variables ===="
+              env | sort
         - task: Gradle@3
           inputs:
             gradleWrapperFile: 'android/gradlew'
