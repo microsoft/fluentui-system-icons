@@ -36,42 +36,6 @@ extends:
             artifactName: 'aar'
             targetPath: '$(Pipeline.Workspace)/aar'
         steps:
-        - task: Bash@3
-          displayName: "Print directory structure"
-          inputs:
-            targetType: "inline"
-            script: |
-              echo "==== Working Directory Structure ===="
-              pwd
-              ls -la
-              
-              echo "==== Pipeline Workspace Structure ===="
-              # Fix the variable reference syntax for bash
-              PIPELINE_WORKSPACE="$PIPELINE_WORKSPACE"
-              echo "Pipeline workspace path: $PIPELINE_WORKSPACE"
-              find "$PIPELINE_WORKSPACE" -type f -o -type d 2>/dev/null | sort || echo "Failed to find files in Pipeline Workspace"
-              
-              echo "==== System Default Working Directory Structure ===="
-              # Fix the variable reference syntax for bash
-              SYSTEM_DEFAULTWORKINGDIRECTORY="$SYSTEM_DEFAULTWORKINGDIRECTORY"
-              echo "Default working directory: $SYSTEM_DEFAULTWORKINGDIRECTORY"
-              find "$SYSTEM_DEFAULTWORKINGDIRECTORY" -type f -o -type d 2>/dev/null | sort || echo "Failed to find files in System.DefaultWorkingDirectory"
-              
-              echo "==== Build.SourcesDirectory Structure ===="
-              # Add the Build.SourcesDirectory as an alternative
-              BUILD_SOURCESDIRECTORY="$BUILD_SOURCESDIRECTORY"
-              echo "Sources directory: $BUILD_SOURCESDIRECTORY"
-              find "$BUILD_SOURCESDIRECTORY" -type f -o -type d 2>/dev/null | sort || echo "Failed to find files in Build.SourcesDirectory"
-              
-              echo "==== Current Directory and Parent Structure ===="
-              # Add a more reliable approach using current directory
-              find . -type f -o -type d 2>/dev/null | sort
-              find .. -maxdepth 2 -type f -o -type d 2>/dev/null | sort
-              
-              echo "==== Environment Variables ===="
-              env | sort
-        
-        # Add a task to copy artifacts to the expected location
         - task: CopyFiles@2
           displayName: 'Copy files to expected location'
           inputs:
@@ -79,8 +43,6 @@ extends:
             TargetFolder: '$(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar'
             CleanTargetFolder: true
             OverWrite: true
-        
-        # Add a task to verify the files were copied correctly
         - task: Bash@3
           displayName: "Verify artifact location"
           inputs:
@@ -98,7 +60,6 @@ extends:
                 echo "Creating directory..."
                 mkdir -p "$(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar"
               fi
-        
         - task: SFP.release-tasks.custom-build-release-task.EsrpRelease@9
           displayName: fluentui-system-icons ESRP Release
           inputs:
