@@ -37,19 +37,36 @@ extends:
               bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
               ls
         - task: Bash@3
-          displayName: "Print full directory structure"
+          displayName: "Print directory structure"
           inputs:
             targetType: "inline"
             script: |
-              echo "==== Source Directory Structure ===="
-              find $(Build.SourcesDirectory) -type f -o -type d | sort
-              
-              echo "==== Root Directory Structure ===="
-              find / -maxdepth 3 -type d 2>/dev/null | sort
-              
-              echo "==== Working Directory ===="
+              echo "==== Working Directory Structure ===="
               pwd
               ls -la
+              
+              echo "==== Pipeline Workspace Structure ===="
+              # Fix the variable reference syntax for bash
+              PIPELINE_WORKSPACE="$PIPELINE_WORKSPACE"
+              echo "Pipeline workspace path: $PIPELINE_WORKSPACE"
+              find "$PIPELINE_WORKSPACE" -type f -o -type d 2>/dev/null | sort || echo "Failed to find files in Pipeline Workspace"
+              
+              echo "==== System Default Working Directory Structure ===="
+              # Fix the variable reference syntax for bash
+              SYSTEM_DEFAULTWORKINGDIRECTORY="$SYSTEM_DEFAULTWORKINGDIRECTORY"
+              echo "Default working directory: $SYSTEM_DEFAULTWORKINGDIRECTORY"
+              find "$SYSTEM_DEFAULTWORKINGDIRECTORY" -type f -o -type d 2>/dev/null | sort || echo "Failed to find files in System.DefaultWorkingDirectory"
+              
+              echo "==== Build.SourcesDirectory Structure ===="
+              # Add the Build.SourcesDirectory as an alternative
+              BUILD_SOURCESDIRECTORY="$BUILD_SOURCESDIRECTORY"
+              echo "Sources directory: $BUILD_SOURCESDIRECTORY"
+              find "$BUILD_SOURCESDIRECTORY" -type f -o -type d 2>/dev/null | sort || echo "Failed to find files in Build.SourcesDirectory"
+              
+              echo "==== Current Directory and Parent Structure ===="
+              # Add a more reliable approach using current directory
+              find . -type f -o -type d 2>/dev/null | sort
+              find .. -maxdepth 2 -type f -o -type d 2>/dev/null | sort
               
               echo "==== Environment Variables ===="
               env | sort

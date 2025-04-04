@@ -46,13 +46,27 @@ extends:
               ls -la
               
               echo "==== Pipeline Workspace Structure ===="
-              find $(Pipeline.Workspace) -type f -o -type d | sort
+              # Fix the variable reference syntax for bash
+              PIPELINE_WORKSPACE="$PIPELINE_WORKSPACE"
+              echo "Pipeline workspace path: $PIPELINE_WORKSPACE"
+              find "$PIPELINE_WORKSPACE" -type f -o -type d 2>/dev/null | sort || echo "Failed to find files in Pipeline Workspace"
               
               echo "==== System Default Working Directory Structure ===="
-              find $(System.DefaultWorkingDirectory) -type f -o -type d | sort
+              # Fix the variable reference syntax for bash
+              SYSTEM_DEFAULTWORKINGDIRECTORY="$SYSTEM_DEFAULTWORKINGDIRECTORY"
+              echo "Default working directory: $SYSTEM_DEFAULTWORKINGDIRECTORY"
+              find "$SYSTEM_DEFAULTWORKINGDIRECTORY" -type f -o -type d 2>/dev/null | sort || echo "Failed to find files in System.DefaultWorkingDirectory"
               
-              echo "==== AAR Directory Structure ===="
-              find $(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar -type f -o -type d | sort
+              echo "==== Build.SourcesDirectory Structure ===="
+              # Add the Build.SourcesDirectory as an alternative
+              BUILD_SOURCESDIRECTORY="$BUILD_SOURCESDIRECTORY"
+              echo "Sources directory: $BUILD_SOURCESDIRECTORY"
+              find "$BUILD_SOURCESDIRECTORY" -type f -o -type d 2>/dev/null | sort || echo "Failed to find files in Build.SourcesDirectory"
+              
+              echo "==== Current Directory and Parent Structure ===="
+              # Add a more reliable approach using current directory
+              find . -type f -o -type d 2>/dev/null | sort
+              find .. -maxdepth 2 -type f -o -type d 2>/dev/null | sort
               
               echo "==== Environment Variables ===="
               env | sort
