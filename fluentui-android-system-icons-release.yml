@@ -36,30 +36,6 @@ extends:
             artifactName: 'aar'
             targetPath: '$(Pipeline.Workspace)/aar'
         steps:
-        - task: CopyFiles@2
-          displayName: 'Copy files to expected location'
-          inputs:
-            SourceFolder: '$(Pipeline.Workspace)/aar'
-            TargetFolder: '$(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar'
-            CleanTargetFolder: true
-            OverWrite: true
-        - task: Bash@3
-          displayName: "Verify artifact location"
-          inputs:
-            targetType: "inline"
-            script: |
-              echo "==== Verifying expected ESRP input path ===="
-              echo "Expected path: $(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar"
-              
-              if [ -d "$(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar" ]; then
-                echo "Directory exists!"
-                echo "Contents:"
-                find "$(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar" -type f -o -type d | sort
-              else
-                echo "Directory does not exist!"
-                echo "Creating directory..."
-                mkdir -p "$(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar"
-              fi
         - task: SFP.release-tasks.custom-build-release-task.EsrpRelease@9
           displayName: fluentui-system-icons ESRP Release
           inputs:
@@ -73,3 +49,4 @@ extends:
             folderlocation: $(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar
             owners: 'ronakdhoot@microsoft.com'
             approvers: 'dhruvmishra@microsoft.com'
+            mainpublisher: fluentuiandroidrelease
