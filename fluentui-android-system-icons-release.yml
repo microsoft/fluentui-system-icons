@@ -49,4 +49,3 @@ extends:
             folderlocation: $(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar
             owners: 'ronakdhoot@microsoft.com'
             approvers: 'dhruvmishra@microsoft.com'
-            mainpublisher: fluentuiandroidrelease
