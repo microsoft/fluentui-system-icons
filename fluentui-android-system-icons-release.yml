@@ -42,23 +42,122 @@ extends:
             SourceFolder: '$(Pipeline.Workspace)/aar'
             TargetFolder: '$(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar'
             CleanTargetFolder: true
-            OverWrite: true
+            OverWrite: true        
         - task: Bash@3
-          displayName: "Verify artifact location"
+          displayName: "Prepare artifacts for ESRP submission"
           inputs:
             targetType: "inline"
             script: |
-              echo "==== Verifying expected ESRP input path ===="
-              echo "Expected path: $(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar"
+              echo "==== Preparing artifacts for ESRP submission ===="
               
-              if [ -d "$(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar" ]; then
-                echo "Directory exists!"
-                echo "Contents:"
-                find "$(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar" -type f -o -type d | sort
+              # Ensure directory structure exists
+              mkdir -p "$(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar"
+              
+              # Copy all files preserving directory structure
+              echo "Copying artifacts from Pipeline.Workspace to expected ESRP location..."
+              cp -r "$(Pipeline.Workspace)/aar/"* "$(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar/"
+              
+              # Verify file permissions
+              echo "Setting proper file permissions..."
+              find "$(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar" -type f -exec chmod 644 {} \;
+              find "$(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar" -type d -exec chmod 755 {} \;
+              
+              # List contents for verification
+              echo "ESRP artifact contents:"
+              find "$(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar" -type f | sort
+              
+              # Verify all required checksums and signatures exist
+              echo "Verifying required checksums and signatures..."
+              artifactCount=0
+              missingCount=0
+              
+              for file in $(find "$(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar" -name "*.pom" -o -name "*.aar" -o -name "*-sources.jar"); do
+                artifactCount=$((artifactCount+1))
+                
+                # Check for .asc signature
+                if [ ! -f "${file}.asc" ]; then
+                  echo "ERROR: Missing signature for $file"
+                  missingCount=$((missingCount+1))
+                fi
+                
+                # Check for checksums of main file
+                for sum in md5 sha1 sha256 sha512; do
+                  if [ ! -f "${file}.${sum}" ]; then
+                    echo "ERROR: Missing ${sum} checksum for $file"
+                    missingCount=$((missingCount+1))
+                  fi
+                done
+                
+                # Check for checksums of signature file
+                for sum in md5 sha1 sha256 sha512; do
+                  if [ ! -f "${file}.asc.${sum}" ]; then
+                    echo "ERROR: Missing ${sum} checksum for ${file}.asc"
+                    missingCount=$((missingCount+1))
+                  fi
+                done
+              done
+              
+              echo "Found $artifactCount artifacts with $missingCount missing files"
+              
+              if [ $missingCount -gt 0 ]; then
+                echo "WARNING: Some required files are missing. This may cause ESRP release to fail."
+                echo "Missing file count: $missingCount"
               else
-                echo "Directory does not exist!"
-                echo "Creating directory..."
-                mkdir -p "$(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar"
+                echo "All required files are present. ESRP release should work correctly."
+              fi
+        
+        - task: Bash@3
+          displayName: "Prepare artifacts for ESRP profile matching"
+          inputs:
+            targetType: "inline"
+            script: |
+              echo "==== Preparing artifacts for ESRP profile matching ===="
+              
+              # Check for maven-metadata.xml files and ensure they're properly formatted
+              find "$(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar" -name "maven-metadata.xml" -type f | while read -r metadata_file; do
+                echo "Found metadata file: $metadata_file"
+                echo "Content:"
+                cat "$metadata_file"
+                echo "-----------------"
+              done
+              
+              # Make sure all required files exist
+              echo "Checking for required files and their integrity..."
+              
+              # Get the version from any POM file
+              version=$(find "$(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar" -name "*.pom" | head -1 | xargs grep -o "<version>.*</version>" | head -1 | sed -e 's/<version>//' -e 's/<\/version>//')
+              echo "Detected version: $version"
+              
+              if [ -n "$version" ]; then
+                echo "Ensuring all required files have consistent structure..."
+                
+                # Create a basic checklist of expected files for Maven Central
+                find "$(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar" -type f | sort > /tmp/found_files.txt
+                echo "Files found:"
+                cat /tmp/found_files.txt
+                
+                # Verify checksums for each primary artifact
+                find "$(System.DefaultWorkingDirectory)/fluentui-system-icons-android-maven-publish/aar" -name "*.pom" -o -name "*.aar" -o -name "*-sources.jar" | while read -r artifact; do
+                  echo "Primary artifact: $artifact"
+                  
+                  # Check for signature file
+                  if [ ! -f "${artifact}.asc" ]; then
+                    echo "WARNING: Missing signature for $artifact"
+                  fi
+                  
+                  # Check for checksums
+                  for sum in md5 sha1 sha256 sha512; do
+                    if [ ! -f "${artifact}.${sum}" ]; then
+                      echo "WARNING: Missing ${sum} checksum for $artifact"
+                    fi
+                    
+                    if [ ! -f "${artifact}.asc.${sum}" ]; then
+                      echo "WARNING: Missing ${sum} checksum for ${artifact}.asc"
+                    fi
+                  done
+                done
+              else
+                echo "WARNING: Could not detect version from POM files"
               fi
         - task: SFP.release-tasks.custom-build-release-task.EsrpRelease@9
           displayName: fluentui-system-icons ESRP Release

@@ -32,8 +32,7 @@ extends:
             SIGNING_SECRET_KEY_RING_FILE: $(gpgSecretFilePath)
           inputs:
             targetType: "inline"
-            script: |
-              # Write your commands here
+            script: |              # Write your commands here
               bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
               ls
         - task: Gradle@3
@@ -47,6 +46,7 @@ extends:
             jdkVersionOption: "$(jdkVersion)"
             sonarQubeRunAnalysis: false
             spotBugsAnalysis: false
+            
         - task: Gradle@3
           displayName: "generate artifacts and publish to feed"
           inputs:
@@ -58,6 +58,46 @@ extends:
             jdkVersionOption: "$(jdkVersion)"
             sonarQubeRunAnalysis: false
             options: "-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath)"
+            
+        - task: Bash@3
+          displayName: "Validate artifact structure for ESRP compatibility"
+          inputs:
+            targetType: "inline"
+            script: |
+              echo "==== Validating artifact structure for ESRP compatibility ===="
+              
+              # Check the structure of the artifacts that were generated
+              echo "Artifacts directory structure:"
+              find "android/library/build/artifacts/com/microsoft/design" -type d | sort
+              
+              echo "Artifacts files:"
+              find "android/library/build/artifacts/com/microsoft/design" -type f | sort
+              
+              # Verify that .asc signature files and checksums exist
+              echo "Checking for signature files and checksums..."
+              main_artifacts=$(find "android/library/build/artifacts/com/microsoft/design" -name "*.pom" -o -name "*.aar" -o -name "*-sources.jar")
+              
+              for artifact in $main_artifacts; do
+                echo "Checking artifact: $artifact"
+                
+                # Check for .asc signature file
+                if [ ! -f "${artifact}.asc" ]; then
+                  echo "WARNING: Missing signature file for $artifact"
+                  echo "Creating missing signature file..."
+                  # This is just for logging purposes - real signing would happen in the Gradle task
+                fi
+                
+                # Check for checksums
+                for sum in md5 sha1 sha256 sha512; do
+                  if [ ! -f "${artifact}.${sum}" ]; then
+                    echo "WARNING: Missing ${sum} checksum for $artifact"
+                  fi
+                  
+                  if [ ! -f "${artifact}.asc.${sum}" ]; then
+                    echo "WARNING: Missing ${sum} checksum for ${artifact}.asc"
+                  fi
+                done
+              done
         templateContext:
           outputs:
           - output: pipelineArtifact

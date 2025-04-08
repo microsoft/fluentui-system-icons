@@ -86,6 +86,67 @@ ext["signing.secretKeyRingFile"] = project.hasProperty('SigningSecretKeyRingFile
 
 signing {
     sign publishing.publications
+    required { gradle.taskGraph.hasTask("publish") }
+}
+
+// Task to generate all required checksum files for Maven Central
+tasks.register('generateChecksums') {
+    doLast {
+        // Define which extensions to generate checksums for
+        def primaryArtifacts = ['.pom', '.aar', '-sources.jar']
+        def checksumTypes = ['md5', 'sha1', 'sha256', 'sha512']
+        def version = getReleaseVersion()
+        def artifactId = project.POM_ARTIFACT_ID
+        def artifactsDir = file("$buildDir/artifacts/com/microsoft/design/$artifactId/$version")
+        
+        println "Generating checksums in directory: ${artifactsDir}"
+        
+        if (artifactsDir.exists()) {
+            // First generate checksums for primary artifacts
+            artifactsDir.eachFile { file ->
+                def fileName = file.name
+                
+                // Check if this is a primary artifact
+                boolean isPrimaryArtifact = primaryArtifacts.any { ext -> fileName.endsWith(ext) }
+                boolean isSignature = fileName.endsWith('.asc')
+                
+                if (isPrimaryArtifact || isSignature) {
+                    println "Processing file: ${fileName}"
+                    
+                    // Generate checksums for this file
+                    checksumTypes.each { checksumType ->
+                        def checksumFile = new File(file.absolutePath + ".$checksumType")
+                        ant.checksum(file: file.absolutePath, algorithm: checksumType, 
+                            fileext: ".$checksumType", forceOverwrite: true)
+                        println "  Generated $checksumType checksum for $fileName"
+                    }
+                }
+            }
+            
+            // Now generate checksums for checksum files (recursive)
+            checksumTypes.each { checksumType1 ->
+                artifactsDir.eachFileMatch(~/.*\.$checksumType1$/) { checksumFile ->
+                    checksumTypes.each { checksumType2 ->
+                        if (checksumType1 != checksumType2) {
+                            def nestedChecksumFile = new File(checksumFile.absolutePath + ".$checksumType2")
+                            if (!nestedChecksumFile.exists()) {
+                                ant.checksum(file: checksumFile.absolutePath, algorithm: checksumType2, 
+                                    fileext: ".$checksumType2", forceOverwrite: true)
+                                println "  Generated nested $checksumType2 checksum for ${checksumFile.name}"
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            println "WARNING: Artifacts directory does not exist: ${artifactsDir}"
+        }
+    }
+}
+
+// Make the publish task depend on generating checksums
+tasks.withType(PublishToMavenRepository).configureEach {
+    dependsOn generateChecksums
 }
 
 String getReleaseVersion() {
