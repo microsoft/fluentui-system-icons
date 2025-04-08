@@ -22,9 +22,16 @@ jobs:
       actions: write
 
     steps:
+    - name: Generate a token
+      id: generate-token
+      uses: actions/create-github-app-token@v1
+      with:
+        app-id: ${{ secrets.GH_FLUENT_CI_APP_ID }}
+        private-key: ${{ secrets.GH_FLUENT_CI_PRIVATE_KEY }}
+
     - uses: actions/checkout@v2
       with:
-        token: ${{ secrets.CI_GITHUB_TOKEN }}
+        token: ${{ steps.generate-token.outputs.token }}
 
     - name: Bump version patch
       run: |
@@ -269,8 +276,7 @@ jobs:
 
     - name: Push release
       run: |
-        REMOTE_REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-        git push $REMOTE_REPO HEAD:main --follow-tags --tags
+        git push origin HEAD:main --follow-tags --tags
 
   # publish-android-demo:
   #   name: Publish Android demo app
