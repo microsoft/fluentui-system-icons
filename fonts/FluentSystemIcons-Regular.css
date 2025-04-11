@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.woff2?1f2c9fb1612621012c00be6b0ed5602d") format("woff2"),
-url("./FluentSystemIcons-Regular.woff?1f2c9fb1612621012c00be6b0ed5602d") format("woff"),
-url("./FluentSystemIcons-Regular.ttf?1f2c9fb1612621012c00be6b0ed5602d") format("truetype");
+    src: url("./FluentSystemIcons-Regular.woff2?e3dec071cfd729718a71d5a251f51d95") format("woff2"),
+url("./FluentSystemIcons-Regular.woff?e3dec071cfd729718a71d5a251f51d95") format("woff"),
+url("./FluentSystemIcons-Regular.ttf?e3dec071cfd729718a71d5a251f51d95") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -26088,9 +26088,6 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_flash_play_32_regular:before {
     content: "\f08f2";
-}
-.icon-ic_fluent_pages_48_regular:before {
-    content: "\f08f3";
 }
 .icon-ic_fluent_planet_16_regular:before {
     content: "\f08f4";
