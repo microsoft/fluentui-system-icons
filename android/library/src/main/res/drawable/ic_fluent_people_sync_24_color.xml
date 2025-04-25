@@ -7,7 +7,7 @@
             </gradient>
         </aapt:attr>
     </path>
-    <path android:pathData="M4.25 13C3.007 13 2 14.007 2 15.25v0.25S2 20 8 20s6-4.5 6-4.5v-0.25c0-1.243-1.007-2.25-2.25-2.25h-7.5zM17 11c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm-9 0c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z">
+    <path android:pathData="M4.25 13C3.007 13 2 14.007 2 15.25v0.25S2 20 8 20s6-4.5 6-4.5v-0.25c0-1.243-1.007-2.25-2.25-2.25h-7.5z">
         <aapt:attr name="android:fillColor">
             <gradient android:startY="12.1667" android:startX="8" android:endY="23.7212" android:endX="11.6074" android:type="linear">
                 <item android:offset="0" android:color="#00885EDB"/>
@@ -15,7 +15,23 @@
             </gradient>
         </aapt:attr>
     </path>
-    <path android:pathData="M17.5 23c-3.038 0-5.5-2.462-5.5-5.5s2.462-5.5 5.5-5.5 5.5 2.462 5.5 5.5-2.462 5.5-5.5 5.5z" android:fillColor="@color/fluent_default_icon_tint" android:fillType="evenOdd"/>
+    <path android:pathData="M4.25 13C3.007 13 2 14.007 2 15.25v0.25S2 20 8 20s6-4.5 6-4.5v-0.25c0-1.243-1.007-2.25-2.25-2.25h-7.5z" android:fillAlpha="0.5">
+        <aapt:attr name="android:fillColor">
+            <gradient android:gradientRadius="5.58857" android:centerX="15.2" android:centerY="17.375" android:type="radial">
+                <item android:offset="0" android:color="#FF30116E"/>
+                <item android:offset="0.268231" android:color="#CE30116E"/>
+                <item android:offset="1" android:color="#0030116E"/>
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path android:pathData="M17 11c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm-9 0c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:startY="5.79761" android:startX="15.4268" android:endY="10.6803" android:endX="18.4846" android:type="linear">
+                <item android:offset="0.125321" android:color="#FF9C6CFE"/>
+                <item android:offset="1" android:color="#FF7A41DC"/>
+            </gradient>
+        </aapt:attr>
+    </path>
     <path android:pathData="M17.5 23c-3.038 0-5.5-2.462-5.5-5.5s2.462-5.5 5.5-5.5 5.5 2.462 5.5 5.5-2.462 5.5-5.5 5.5z" android:fillType="evenOdd">
         <aapt:attr name="android:fillColor">
             <gradient android:startY="14.0625" android:startX="12.3929" android:endY="21.9496" android:endX="19.9842" android:type="linear">
@@ -24,7 +40,6 @@
             </gradient>
         </aapt:attr>
     </path>
-    <path android:pathData="M20 14.5c0-0.276 0.224-0.5 0.5-0.5s0.5 0.224 0.5 0.5v2c0 0.276-0.224 0.5-0.5 0.5h-2c-0.276 0-0.5-0.224-0.5-0.5s0.224-0.5 0.5-0.5h1c-0.456-0.608-1.183-1-2-1-0.833 0-1.572 0.407-2.027 1.036-0.162 0.224-0.474 0.274-0.698 0.112-0.224-0.162-0.274-0.475-0.112-0.698 0.635-0.878 1.67-1.45 2.837-1.45 0.98 0 1.865 0.403 2.5 1.05V14.5zm-5 6v-0.55c0.635 0.647 1.52 1.05 2.5 1.05 1.073 0 2.034-0.484 2.675-1.243 0.178-0.211 0.152-0.527-0.06-0.705-0.21-0.178-0.526-0.151-0.704 0.06C18.951 19.656 18.266 20 17.5 20c-0.817 0-1.544-0.392-2-1h1c0.276 0 0.5-0.224 0.5-0.5S16.776 18 16.5 18h-2c-0.276 0-0.5 0.224-0.5 0.5v2c0 0.276 0.224 0.5 0.5 0.5s0.5-0.224 0.5-0.5z" android:fillColor="#242424" android:fillType="evenOdd"/>
     <path android:pathData="M20 14.5c0-0.276 0.224-0.5 0.5-0.5s0.5 0.224 0.5 0.5v2c0 0.276-0.224 0.5-0.5 0.5h-2c-0.276 0-0.5-0.224-0.5-0.5s0.224-0.5 0.5-0.5h1c-0.456-0.608-1.183-1-2-1-0.833 0-1.572 0.407-2.027 1.036-0.162 0.224-0.474 0.274-0.698 0.112-0.224-0.162-0.274-0.475-0.112-0.698 0.635-0.878 1.67-1.45 2.837-1.45 0.98 0 1.865 0.403 2.5 1.05V14.5zm-5 6v-0.55c0.635 0.647 1.52 1.05 2.5 1.05 1.073 0 2.034-0.484 2.675-1.243 0.178-0.211 0.152-0.527-0.06-0.705-0.21-0.178-0.526-0.151-0.704 0.06C18.951 19.656 18.266 20 17.5 20c-0.817 0-1.544-0.392-2-1h1c0.276 0 0.5-0.224 0.5-0.5S16.776 18 16.5 18h-2c-0.276 0-0.5 0.224-0.5 0.5v2c0 0.276 0.224 0.5 0.5 0.5s0.5-0.224 0.5-0.5z" android:fillType="evenOdd">
         <aapt:attr name="android:fillColor">
             <gradient android:startY="13.4167" android:startX="14" android:endY="21.4445" android:endX="18.4429" android:type="linear">

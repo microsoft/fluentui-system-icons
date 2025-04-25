@@ -105,6 +105,7 @@
 |Mail Read Multiple|<img src="assets/Mail Read Multiple/SVG/ic_fluent_mail_read_multiple_32_light.svg?raw=true" width="24" height="24">|`mailReadMultiple32Light`|`ic_fluent_mail_read_multiple_32_light`|
 |Mail Rewind|<img src="assets/Mail Rewind/SVG/ic_fluent_mail_rewind_32_light.svg?raw=true" width="24" height="24">|`mailRewind32Light`|`ic_fluent_mail_rewind_32_light`|
 |Mail Settings|<img src="assets/Mail Settings/SVG/ic_fluent_mail_settings_32_light.svg?raw=true" width="24" height="24">|`mailSettings32Light`|`ic_fluent_mail_settings_32_light`|
+|Mail Template|<img src="assets/Mail Template/SVG/ic_fluent_mail_template_32_light.svg?raw=true" width="24" height="24">|`mailTemplate32Light`|`ic_fluent_mail_template_32_light`|
 |Mail Unread|<img src="assets/Mail Unread/SVG/ic_fluent_mail_unread_32_light.svg?raw=true" width="24" height="24">|`mailUnread32Light`|`ic_fluent_mail_unread_32_light`|
 |Mic|<img src="assets/Mic/SVG/ic_fluent_mic_32_light.svg?raw=true" width="24" height="24">|`mic32Light`|`ic_fluent_mic_32_light`|
 |Molecule|<img src="assets/Molecule/SVG/ic_fluent_molecule_32_light.svg?raw=true" width="24" height="24">|`molecule32Light`|`ic_fluent_molecule_32_light`|
