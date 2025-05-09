@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Resizable";
-    src: url("./FluentSystemIcons-Resizable.woff2?12e2c72e6d3b7b0de9d034a18c92e2fe") format("woff2"),
-url("./FluentSystemIcons-Resizable.woff?12e2c72e6d3b7b0de9d034a18c92e2fe") format("woff"),
-url("./FluentSystemIcons-Resizable.ttf?12e2c72e6d3b7b0de9d034a18c92e2fe") format("truetype");
+    src: url("./FluentSystemIcons-Resizable.woff2?78e09e4249c15f9e650f0ca0dd9fa365") format("woff2"),
+url("./FluentSystemIcons-Resizable.woff?78e09e4249c15f9e650f0ca0dd9fa365") format("woff"),
+url("./FluentSystemIcons-Resizable.ttf?78e09e4249c15f9e650f0ca0dd9fa365") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
