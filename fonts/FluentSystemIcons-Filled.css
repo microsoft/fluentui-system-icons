@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?e657cffceab212dd3a1d71c1cb45f03b") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?e657cffceab212dd3a1d71c1cb45f03b") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?e657cffceab212dd3a1d71c1cb45f03b") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?23e3e455302342f317de8d2b2d269f94") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?23e3e455302342f317de8d2b2d269f94") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?23e3e455302342f317de8d2b2d269f94") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -26778,4 +26778,139 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_text_header_6_24_filled:before {
     content: "\f09d8";
+}
+.icon-ic_fluent_barcode_scanner_16_filled:before {
+    content: "\f09d9";
+}
+.icon-ic_fluent_barcode_scanner_28_filled:before {
+    content: "\f09da";
+}
+.icon-ic_fluent_barcode_scanner_32_filled:before {
+    content: "\f09db";
+}
+.icon-ic_fluent_barcode_scanner_48_filled:before {
+    content: "\f09dc";
+}
+.icon-ic_fluent_barcode_scanner_add_16_filled:before {
+    content: "\f09dd";
+}
+.icon-ic_fluent_barcode_scanner_add_20_filled:before {
+    content: "\f09de";
+}
+.icon-ic_fluent_barcode_scanner_add_24_filled:before {
+    content: "\f09df";
+}
+.icon-ic_fluent_barcode_scanner_add_28_filled:before {
+    content: "\f09e0";
+}
+.icon-ic_fluent_barcode_scanner_add_32_filled:before {
+    content: "\f09e1";
+}
+.icon-ic_fluent_barcode_scanner_add_48_filled:before {
+    content: "\f09e2";
+}
+.icon-ic_fluent_barcode_scanner_dismiss_16_filled:before {
+    content: "\f09e3";
+}
+.icon-ic_fluent_barcode_scanner_dismiss_20_filled:before {
+    content: "\f09e4";
+}
+.icon-ic_fluent_barcode_scanner_dismiss_24_filled:before {
+    content: "\f09e5";
+}
+.icon-ic_fluent_barcode_scanner_dismiss_28_filled:before {
+    content: "\f09e6";
+}
+.icon-ic_fluent_barcode_scanner_dismiss_32_filled:before {
+    content: "\f09e7";
+}
+.icon-ic_fluent_barcode_scanner_dismiss_48_filled:before {
+    content: "\f09e8";
+}
+.icon-ic_fluent_data_bar_vertical_edit_16_filled:before {
+    content: "\f09e9";
+}
+.icon-ic_fluent_data_bar_vertical_edit_20_filled:before {
+    content: "\f09ea";
+}
+.icon-ic_fluent_data_bar_vertical_edit_24_filled:before {
+    content: "\f09eb";
+}
+.icon-ic_fluent_notepad_48_filled:before {
+    content: "\f09ec";
+}
+.icon-ic_fluent_notepad_person_28_filled:before {
+    content: "\f09ed";
+}
+.icon-ic_fluent_notepad_person_32_filled:before {
+    content: "\f09ee";
+}
+.icon-ic_fluent_notepad_person_48_filled:before {
+    content: "\f09ef";
+}
+.icon-ic_fluent_notepad_person_off_16_filled:before {
+    content: "\f09f0";
+}
+.icon-ic_fluent_notepad_person_off_20_filled:before {
+    content: "\f09f1";
+}
+.icon-ic_fluent_notepad_person_off_24_filled:before {
+    content: "\f09f2";
+}
+.icon-ic_fluent_notepad_person_off_28_filled:before {
+    content: "\f09f3";
+}
+.icon-ic_fluent_notepad_person_off_32_filled:before {
+    content: "\f09f4";
+}
+.icon-ic_fluent_notepad_person_off_48_filled:before {
+    content: "\f09f5";
+}
+.icon-ic_fluent_task_list_square_sparkle_16_filled:before {
+    content: "\f09f6";
+}
+.icon-ic_fluent_task_list_square_sparkle_20_filled:before {
+    content: "\f09f7";
+}
+.icon-ic_fluent_task_list_square_sparkle_24_filled:before {
+    content: "\f09f8";
+}
+.icon-ic_fluent_text_proofing_tools_abc_16_filled:before {
+    content: "\f09f9";
+}
+.icon-ic_fluent_text_proofing_tools_ga_na_da_16_filled:before {
+    content: "\f09fa";
+}
+.icon-ic_fluent_text_proofing_tools_zi_16_filled:before {
+    content: "\f09fb";
+}
+.icon-ic_fluent_tooltip_quote_16_filled:before {
+    content: "\f09fc";
+}
+.icon-ic_fluent_tooltip_quote_28_filled:before {
+    content: "\f09fd";
+}
+.icon-ic_fluent_tooltip_quote_32_filled:before {
+    content: "\f09fe";
+}
+.icon-ic_fluent_tooltip_quote_48_filled:before {
+    content: "\f09ff";
+}
+.icon-ic_fluent_tooltip_quote_off_16_filled:before {
+    content: "\f0a00";
+}
+.icon-ic_fluent_tooltip_quote_off_20_filled:before {
+    content: "\f0a01";
+}
+.icon-ic_fluent_tooltip_quote_off_24_filled:before {
+    content: "\f0a02";
+}
+.icon-ic_fluent_tooltip_quote_off_28_filled:before {
+    content: "\f0a03";
+}
+.icon-ic_fluent_tooltip_quote_off_32_filled:before {
+    content: "\f0a04";
+}
+.icon-ic_fluent_tooltip_quote_off_48_filled:before {
+    content: "\f0a05";
 }
