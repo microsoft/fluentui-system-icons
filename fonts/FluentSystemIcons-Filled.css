@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?6a4ac841f351bd8746fcca9ff35f5122") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?6a4ac841f351bd8746fcca9ff35f5122") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?6a4ac841f351bd8746fcca9ff35f5122") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?2f2b59ad7e2bbd7e109d3317a1d63cd6") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?2f2b59ad7e2bbd7e109d3317a1d63cd6") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?2f2b59ad7e2bbd7e109d3317a1d63cd6") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -26913,4 +26913,16 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_tooltip_quote_off_48_filled:before {
     content: "\f0a05";
+}
+.icon-ic_fluent_broom_sparkle_20_filled:before {
+    content: "\f0a06";
+}
+.icon-ic_fluent_math_formula_sparkle_20_filled:before {
+    content: "\f0a07";
+}
+.icon-ic_fluent_projection_screen_text_sparkle_20_filled:before {
+    content: "\f0a08";
+}
+.icon-ic_fluent_sparkle_action_20_filled:before {
+    content: "\f0a09";
 }
