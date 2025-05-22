@@ -1,5 +1,5 @@
 import * as React from "react";
-import { iconFilledClassName, iconRegularClassName } from "./constants";
+import { iconColorClassName, iconFilledClassName, iconRegularClassName } from "./constants";
 import { makeStyles, mergeClasses } from "@griffel/react";
 import { FluentIcon } from "./createFluentIcon";
 
@@ -8,7 +8,7 @@ const useBundledIconStyles = makeStyles({
     visible: { display: "inline" }
 });
 
-const bundleIcon = (FilledIcon: FluentIcon, RegularIcon: FluentIcon) => {
+const bundleIcon = (FilledIcon: FluentIcon, RegularIcon: FluentIcon, ColorIcon: FluentIcon) => {
     const Component: FluentIcon = (props) => {
         const { className, filled, ...rest } = props;
         const styles = useBundledIconStyles();
@@ -30,6 +30,15 @@ const bundleIcon = (FilledIcon: FluentIcon, RegularIcon: FluentIcon) => {
                       !filled && styles.visible,
                       iconRegularClassName,
                       className
+                    )}
+                />
+                <ColorIcon
+                    {...rest}
+                    className={mergeClasses(
+                        styles.root,
+                        !filled && styles.visible,
+                        iconColorClassName,
+                        className
                     )}
                 />
             </React.Fragment>
