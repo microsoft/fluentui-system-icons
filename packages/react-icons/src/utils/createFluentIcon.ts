@@ -32,7 +32,7 @@ export const createFluentIcon = (displayName: string, width: string, pathsOrSvg:
               "svg",
               state,
               ...pathsOrSvg.map((d) =>
-                React.createElement("path", options?.color ? { d } : { d, fill: state.fill })
+                React.createElement("path",  { d, fill: state.fill })
               )
             );
         }
