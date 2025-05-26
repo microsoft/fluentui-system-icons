@@ -28,7 +28,8 @@ extends:
             repository: self
             clean: true
             fetchDepth: 10
-      - job: ''
+      - job: BuildAndPublish
+        displayName: 'Build and Publish to Office Feed'
         dependsOn:
         - Compliance
         variables:
@@ -39,9 +40,9 @@ extends:
           displayName: 'Build Release AAR'
           inputs:
             gradleWrapperFile: 'android/gradlew'
-            workingDirectory: 'android'
             tasks: 'assembleRelease makeSystemIconsUniversalPkg'
-            publishJUnitResults: false
+            publishJUnitResults: true
+            testResultsFiles: '**/TEST-*.xml'
             javaHomeOption: 'JDKVersion'
             jdkVersionOption: '1.11'
             sonarQubeRunAnalysis: false
@@ -49,7 +50,7 @@ extends:
         - task: CopyFiles@2
           displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
           inputs:
-            SourceFolder: '$(system.defaultworkingdirectory)/android/build/universal'
+            SourceFolder: '$(system.defaultworkingdirectory)/universal'
             Contents: '**'
             TargetFolder: '$(build.artifactstagingdirectory)/outputs'
             CleanTargetFolder: true
