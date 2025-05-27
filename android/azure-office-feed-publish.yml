@@ -50,7 +50,7 @@ extends:
         - task: CopyFiles@2
           displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
           inputs:
-            SourceFolder: '$(system.defaultworkingdirectory)/universal'
+            SourceFolder: '$(system.defaultworkingdirectory)/android/universal'
             Contents: '**'
             TargetFolder: '$(build.artifactstagingdirectory)/outputs'
             CleanTargetFolder: true
