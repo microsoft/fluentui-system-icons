@@ -1,5 +1,4 @@
 variables:
-- group: InfoSec-SecurityResults
 - name: tags
   value: production,externalfacing
 resources:
