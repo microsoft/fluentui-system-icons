@@ -39,6 +39,7 @@ extends:
           displayName: 'Build Release AAR'
           inputs:
             gradleWrapperFile: 'android/gradlew'
+            workingDirectory: 'android'
             tasks: 'assembleRelease makeSystemIconsUniversalPkg'
             publishJUnitResults: true
             testResultsFiles: '**/TEST-*.xml'
