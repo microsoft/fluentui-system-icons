@@ -27,7 +27,7 @@
     "generate:rtl": "node ../../importer/rtlMetadata.js --source=../../assets --dest=./intermediate/rtl.json",
     "rollup": "node ./generateRollup.js",
     "optimize": "svgo --config svgo.config.js --folder=./intermediate --precision=2 --quiet",
-    "unfill": "find ./intermediate -type f -name \"*.svg\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./intermediate -type f -name \"*.bak\" -delete",
+    "unfill": "find ./intermediate -type f -name \"*.svg\" ! -name \"*_color*\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./intermediate -type f -name \"*.bak\" -delete",
     "build": "npm run copy && npm run generate:font && npm run generate:rtl && npm run optimize && npm run unfill && npm run convert:svg && npm run convert:fonts && npm run clean:svg && npm run build:esm && npm run build:cjs && npm run copy:font-files",
     "build:svg": "npm run copy && npm run generate:rtl && npm run optimize && npm run unfill && npm run convert:svg && npm run clean:svg && npm run build:esm && npm run build:cjs",
     "build:cjs": "tsc --module commonjs --outDir lib-cjs && babel lib-cjs --out-dir lib-cjs",
