@@ -34,8 +34,10 @@ extends:
         variables:
         - name: BUILDSECMON_OPT_IN
           value: true
+        - name: jdkVersion
+          value: '1.11'
         steps:
-        - task: Gradle@2
+        - task: Gradle@3
           displayName: 'Build Release AAR'
           inputs:
             gradleWrapperFile: 'android/gradlew'
@@ -44,8 +46,9 @@ extends:
             publishJUnitResults: true
             testResultsFiles: '**/TEST-*.xml'
             javaHomeOption: 'JDKVersion'
-            jdkVersionOption: '1.11'
+            jdkVersionOption: '$(jdkVersion)'
             sonarQubeRunAnalysis: false
+            spotBugsAnalysis: false
             options: '-PversionName=$(VERSION_NAME)'
         - task: CopyFiles@2
           displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
