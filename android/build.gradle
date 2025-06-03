@@ -35,7 +35,7 @@ project.ext {
 }
 
 task makeSystemIconsUniversalPkg(type: Copy) {
-    description = "Prepares the fluentui-system-icons AAR from the library module for universal packaging."
+    description = "Prepares the fluentsystemicons AAR from the library module for universal packaging."
     duplicatesStrategy = DuplicatesStrategy.WARN
     from("library/build/outputs/aar/") {
         include "library-release.aar"
@@ -43,7 +43,7 @@ task makeSystemIconsUniversalPkg(type: Copy) {
     into("$rootDir/${project.ext.universalPkgDir}/libs")
 
     includeEmptyDirs = false
-    rename '(.+)-release', '$1'
+    rename 'library-release.aar', 'fluentsystemicons.aar'
 }
 
 apply from: "${rootDir}/scripts/publish-root.gradle"
