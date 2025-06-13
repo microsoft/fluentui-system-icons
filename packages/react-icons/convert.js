@@ -116,13 +116,22 @@ function processFolder(srcPath, destPath, resizable) {
       var destFilename = _.camelCase(iconName) // We want them to be camelCase, so access_time would become accessTime here
       destFilename = destFilename.replace(destFilename.substring(0, 1), destFilename.substring(0, 1).toUpperCase()) // capitalize the first letter
       var flipInRtl = metadata[destFilename] === 'mirror';  //checks rtl.json to see if icon is autoflippable
-
+      let color = iconName.includes("_color") // checks if '_color' is in the path, which means the icon has a color variant
       var iconContent = fs.readFileSync(srcFile, { encoding: "utf8" })
+      let jsCode = '';
       const getAttr = (key) => [...iconContent.matchAll(`(?<= ${key}=)".+?"`)].map((v) => v[0]);
       const width = resizable ? '"1em"' : getAttr("width")[0];
-      const paths = getAttr("d").join(',');
-      const options = flipInRtl ? `, { flipInRtl: true }` : '';
-      var jsCode = `export const ${destFilename} = (/*#__PURE__*/createFluentIcon('${destFilename}', ${width}, [${paths}]${options}));`
+      const options = flipInRtl && color ? `, { flipInRtl: true, color: true }` : flipInRtl ? `, { flipInRtl: true }` : color ? `, { color: true }` : '';
+
+      if (color) {
+        // For color icons, extract the entire SVG inner content
+        const innerSvg = iconContent.replace(/^[\s\S]*?<svg[^>]*>/, '').replace(/<\/svg>[\s\S]*$/, '').trim();
+        jsCode = `export const ${destFilename} = (/*#__PURE__*/createFluentIcon('${destFilename}', ${width}, \`${innerSvg}\`${options}));`
+      } else {
+        // For non-color icons, keep the old path-based approach
+        const paths = getAttr("d").join(',');
+        jsCode = `export const ${destFilename} = (/*#__PURE__*/createFluentIcon('${destFilename}', ${width}, [${paths}]${options}));`
+      }
       iconExports.push(jsCode);
     }
   });
