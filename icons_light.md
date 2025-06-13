@@ -14,13 +14,17 @@
 |Arrow Down|<img src="assets/Arrow Down/SVG/ic_fluent_arrow_down_32_light.svg?raw=true" width="24" height="24">|`arrowDown32Light`|`ic_fluent_arrow_down_32_light`|
 |Arrow Download|<img src="assets/Arrow Download/SVG/ic_fluent_arrow_download_32_light.svg?raw=true" width="24" height="24">|`arrowDownload32Light`|`ic_fluent_arrow_download_32_light`|
 |Arrow Forward|<img src="assets/Arrow Forward/SVG/ic_fluent_arrow_forward_32_light.svg?raw=true" width="24" height="24">|`arrowForward32Light`|`ic_fluent_arrow_forward_32_light`|
+|Arrow Hook Down Left|<img src="assets/Arrow Hook Down Left/SVG/ic_fluent_arrow_hook_down_left_32_light.svg?raw=true" width="24" height="24">|`arrowHookDownLeft32Light`|`ic_fluent_arrow_hook_down_left_32_light`|
+|Arrow Hook Down Right|<img src="assets/Arrow Hook Down Right/SVG/ic_fluent_arrow_hook_down_right_32_light.svg?raw=true" width="24" height="24">|`arrowHookDownRight32Light`|`ic_fluent_arrow_hook_down_right_32_light`|
 |Arrow Hook Up Left|<img src="assets/Arrow Hook Up Left/SVG/ic_fluent_arrow_hook_up_left_32_light.svg?raw=true" width="24" height="24">|`arrowHookUpLeft32Light`|`ic_fluent_arrow_hook_up_left_32_light`|
+|Arrow Hook Up Right|<img src="assets/Arrow Hook Up Right/SVG/ic_fluent_arrow_hook_up_right_32_light.svg?raw=true" width="24" height="24">|`arrowHookUpRight32Light`|`ic_fluent_arrow_hook_up_right_32_light`|
 |Arrow Redo|<img src="assets/Arrow Redo/SVG/ic_fluent_arrow_redo_32_light.svg?raw=true" width="24" height="24">|`arrowRedo32Light`|`ic_fluent_arrow_redo_32_light`|
 |Arrow Reply|<img src="assets/Arrow Reply/SVG/ic_fluent_arrow_reply_32_light.svg?raw=true" width="24" height="24">|`arrowReply32Light`|`ic_fluent_arrow_reply_32_light`|
 |Arrow Reply All|<img src="assets/Arrow Reply All/SVG/ic_fluent_arrow_reply_all_32_light.svg?raw=true" width="24" height="24">|`arrowReplyAll32Light`|`ic_fluent_arrow_reply_all_32_light`|
 |Arrow Undo|<img src="assets/Arrow Undo/SVG/ic_fluent_arrow_undo_32_light.svg?raw=true" width="24" height="24">|`arrowUndo32Light`|`ic_fluent_arrow_undo_32_light`|
 |Attach|<img src="assets/Attach/SVG/ic_fluent_attach_32_light.svg?raw=true" width="24" height="24">|`attach32Light`|`ic_fluent_attach_32_light`|
 |Auto Fit|<img src="assets/Auto Fit/SVG/ic_fluent_auto_fit_32_light.svg?raw=true" width="24" height="24">|`autoFit32Light`|`ic_fluent_auto_fit_32_light`|
+|Auto Fit Width|<img src="assets/Auto Fit Width/SVG/ic_fluent_auto_fit_width_32_light.svg?raw=true" width="24" height="24">|`autoFitWidth32Light`|`ic_fluent_auto_fit_width_32_light`|
 |Autocorrect|<img src="assets/Autocorrect/SVG/ic_fluent_autocorrect_32_light.svg?raw=true" width="24" height="24">|`autocorrect32Light`|`ic_fluent_autocorrect_32_light`|
 |Breakout Room|<img src="assets/Breakout Room/SVG/ic_fluent_breakout_room_32_light.svg?raw=true" width="24" height="24">|`breakoutRoom32Light`|`ic_fluent_breakout_room_32_light`|
 |Broom|<img src="assets/Broom/SVG/ic_fluent_broom_32_light.svg?raw=true" width="24" height="24">|`broom32Light`|`ic_fluent_broom_32_light`|
@@ -54,6 +58,7 @@
 |Copy|<img src="assets/Copy/SVG/ic_fluent_copy_32_light.svg?raw=true" width="24" height="24">|`copy32Light`|`ic_fluent_copy_32_light`|
 |Crop|<img src="assets/Crop/SVG/ic_fluent_crop_32_light.svg?raw=true" width="24" height="24">|`crop32Light`|`ic_fluent_crop_32_light`|
 |Cursor|<img src="assets/Cursor/SVG/ic_fluent_cursor_32_light.svg?raw=true" width="24" height="24">|`cursor32Light`|`ic_fluent_cursor_32_light`|
+|Cut|<img src="assets/Cut/SVG/ic_fluent_cut_32_light.svg?raw=true" width="24" height="24">|`cut32Light`|`ic_fluent_cut_32_light`|
 |Delete|<img src="assets/Delete/SVG/ic_fluent_delete_32_light.svg?raw=true" width="24" height="24">|`delete32Light`|`ic_fluent_delete_32_light`|
 |Dismiss|<img src="assets/Dismiss/SVG/ic_fluent_dismiss_32_light.svg?raw=true" width="24" height="24">|`dismiss32Light`|`ic_fluent_dismiss_32_light`|
 |Dismiss Circle|<img src="assets/Dismiss Circle/SVG/ic_fluent_dismiss_circle_32_light.svg?raw=true" width="24" height="24">|`dismissCircle32Light`|`ic_fluent_dismiss_circle_32_light`|
