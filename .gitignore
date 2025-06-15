@@ -43,3 +43,5 @@ packages/react-native-icons/package-lock.json
 SvgList.txt
 
 .venv
+
+.build
