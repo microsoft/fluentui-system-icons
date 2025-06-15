@@ -9,9 +9,10 @@ export type FluentIcon = {
 
 export type CreateFluentIconOptions = {
     flipInRtl?: boolean;
+    color?: boolean;
 }
 
-export const createFluentIcon = (displayName: string, width: string, paths: string[], options?: CreateFluentIconOptions): FluentIcon => {
+export const createFluentIcon = (displayName: string, width: string, pathsOrSvg: string[] | string, options?: CreateFluentIconOptions): FluentIcon => {
     const viewBoxWidth = width === "1em" ? "20" : width;
     const Icon = React.forwardRef((props: FluentIconsProps, ref: React.Ref<HTMLElement>) => {
         const state = {
@@ -19,17 +20,22 @@ export const createFluentIcon = (displayName: string, width: string, paths: stri
             ref,
             width, height: width, viewBox: `0 0 ${viewBoxWidth} ${viewBoxWidth}`, xmlns: "http://www.w3.org/2000/svg"
         };
-        return React.createElement(
-            "svg",
-            state,
-            ...paths.map((d) =>
-                React.createElement("path", {
-                    d,
-                    fill: state.fill, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null
-                    // key: i // The key for static children is needless 
-                })
-            )
-        );
+        if (typeof pathsOrSvg === "string") {
+            // Color icon: render raw SVG children
+            return React.createElement(
+              "svg",
+              { ...state, dangerouslySetInnerHTML: { __html: pathsOrSvg } }
+            );
+        } else {
+            // Non-color icon: render paths as before
+            return React.createElement(
+              "svg",
+              state,
+              ...pathsOrSvg.map((d) =>
+                React.createElement("path",  { d, fill: state.fill })
+              )
+            );
+        }
     }) as FluentIcon
     Icon.displayName = displayName;
     return Icon;
