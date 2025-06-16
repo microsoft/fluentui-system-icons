@@ -1,5 +1,11 @@
 # Fluent UI System Icons for Compose Multiplatform
 
+### Run the demo app
+
+Desktop `./gradlew :demo:run`  
+Web `./gradlew :demo:wasmJsBrowserDevelopmentRun`  
+Android `./gradlew :demo:assembleDebug`  
+
 ### Publish to MavenLocal
 
 1) Run `./gradlew :library:publishToMavenLocal`
