@@ -4,9 +4,11 @@ kotlin = "2.1.21"
 agp = "8.9.3"
 maven-publish = "0.32.0"
 compose = "1.8.1"
+androidx-activityCompose = "1.10.1"
 
 [libraries]
 
+androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 
 [plugins]
 
@@ -15,3 +17,4 @@ android-library = { id = "com.android.library", version.ref = "agp" }
 maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+android-application = { id = "com.android.application", version.ref = "agp" }
