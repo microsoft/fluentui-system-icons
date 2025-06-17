@@ -26,6 +26,8 @@ regular | filled
 
 ## Implementation
 
+### Webpack
+
 A common use case is to use [svg-inline-loader](https://www.npmjs.com/package/svg-inline-loader) in your Webpack config.
 
 ```bash
@@ -69,3 +71,16 @@ Or `require`:
 ```ts
 var icon = require('@fluentui/svg-icons/icons/add_20_filled.svg');
 ```
+
+### Vite
+
+If your project uses [Vite](https://vite.dev/), you can use an icon either as an SVG or inlined (note the URL query params):
+```ts
+import AddIconInline from "@fluentui/svg-icons/icons/add_20_filled.svg?inline";
+import AddIconRaw from "@fluentui/svg-icons/icons/add_20_filled.svg?raw";
+
+`<img src="${AddIconInline}">`
+`<div>${AddIconRaw}</div>`
+```
+
+See <https://vite.dev/guide/assets.html> for more information on asset handling with Vite.
