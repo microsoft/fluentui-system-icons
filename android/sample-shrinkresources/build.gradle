@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
 
+android {
+    namespace 'com.microsoft.fluent.mobile.sample_shrinkresources'
+    compileSdk 35
+    buildToolsVersion "34.0.0"
 
     defaultConfig {
         applicationId "com.microsoft.fluent.mobile.sample_shrinkresources"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 35
         versionCode 1
         versionName "1.0"
     }
@@ -27,11 +27,19 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = '11'
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.12.0'
     implementation project(':library')
 }

@@ -21,30 +21,29 @@ jobs:
       - task: Gradle@3
         inputs:
           gradleWrapperFile: "android/gradlew"
-          workingDirectory: 'android'
+          workingDirectory: "android"
           tasks: "assembleRelease"
           options: "-PversionName=$(VERSION_NAME)"
           publishJUnitResults: false
           javaHomeOption: "JDKVersion"
-          jdkVersionOption: "$(jdkVersion)"
+          jdkVersionOption: "1.11"
           sonarQubeRunAnalysis: false
           spotBugsAnalysis: false
       - task: Gradle@2
         displayName: Gradle publish
         inputs:
-          gradleWrapperFile: 'android/gradlew'
-          workingDirectory: 'android'
-          tasks: 'publish'
+          gradleWrapperFile: "android/gradlew"
+          workingDirectory: "android"
+          tasks: "publish"
           publishJUnitResults: false
-          javaHomeOption: 'JDKVersion'
-          jdkVersionOption: "$(jdkVersion)"
+          javaHomeOption: "JDKVersion"
+          jdkVersionOption: "1.11"
           sonarQubeRunAnalysis: false
           options: "-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath)"
 
       - task: PublishPipelineArtifact@1
         displayName: Publish library artifact to pipeline
         inputs:
-          targetPath: 'android/library/build/artifacts/com/microsoft/design'
-          artifact: 'aar'
-          publishLocation: 'pipeline'
-
+          targetPath: "android/library/build/artifacts/com/microsoft/design"
+          artifact: "aar"
+          publishLocation: "pipeline"

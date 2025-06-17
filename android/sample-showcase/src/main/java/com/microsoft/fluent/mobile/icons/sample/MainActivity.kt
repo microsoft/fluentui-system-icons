@@ -7,6 +7,8 @@ package com.microsoft.fluent.mobile.icons.sample
 
 import android.annotation.SuppressLint
 import android.app.Application
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.os.AsyncTask
 import android.os.Bundle
@@ -20,9 +22,12 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.*
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.distribute.Distribute
 
@@ -39,7 +44,19 @@ class MainActivity : AppCompatActivity(), TextWatcher, Observer<List<IconInfo>>,
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
+        // Enable edge-to-edge display
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        
         setContentView(R.layout.activity_main)
+        
+        // Handle system bar insets
+        val rootView = findViewById<View>(android.R.id.content)
+        ViewCompat.setOnApplyWindowInsetsListener(rootView) { view, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.setPadding(insets.left, insets.top, insets.right, insets.bottom)
+            WindowInsetsCompat.CONSUMED
+        }
 
         AppCenter.start(
             application,
@@ -55,6 +72,14 @@ class MainActivity : AppCompatActivity(), TextWatcher, Observer<List<IconInfo>>,
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
         recyclerView.layoutManager = mGridLayoutManager
         recyclerView.adapter = mAdapter
+        
+        // Handle insets for RecyclerView to avoid content being hidden behind system bars
+        ViewCompat.setOnApplyWindowInsetsListener(recyclerView) { view, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.setPadding(view.paddingLeft, 0, view.paddingRight, insets.bottom)
+            windowInsets
+        }
+        
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
@@ -76,6 +101,16 @@ class MainActivity : AppCompatActivity(), TextWatcher, Observer<List<IconInfo>>,
             mIsListMode = mSearchModeButton?.isActivated!!
             mSearchModeButton?.isActivated = !mIsListMode
             ensureUi()
+        }
+        
+        // Handle insets for search bar area to avoid overlapping with status bar
+        val mainContainer = findViewById<View>(R.id.mainContainer) // Assuming there's a search container
+        mainContainer?.let { container ->
+            ViewCompat.setOnApplyWindowInsetsListener(container) { view, windowInsets ->
+                val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+                view.setPadding(view.paddingLeft, insets.top, view.paddingRight, view.paddingBottom)
+                windowInsets
+            }
         }
     }
 
@@ -99,7 +134,28 @@ class MainActivity : AppCompatActivity(), TextWatcher, Observer<List<IconInfo>>,
         mAdapter?.setIcons(iconInfos)
     }
 
-    override fun onClick(p0: View?) {
+    override fun onClick(view: View?) {
+        view?.let { clickedView ->
+            val position = findViewById<RecyclerView>(R.id.recycler_view).getChildAdapterPosition(clickedView)
+            if (position != RecyclerView.NO_POSITION) {
+                val iconInfo = mAdapter?.getIconAt(position)
+                iconInfo?.let { icon ->
+                    copyToClipboard(icon.iconName)
+                    showCopyConfirmation(icon.iconName)
+                }
+            }
+        }
+    }
+
+    private fun copyToClipboard(iconName: String) {
+        val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText("Icon Name", iconName)
+        clipboard.setPrimaryClip(clip)
+    }
+
+    private fun showCopyConfirmation(iconName: String) {
+        val rootView = findViewById<View>(android.R.id.content)
+        Snackbar.make(rootView, "Copied: $iconName", Snackbar.LENGTH_SHORT).show()
     }
 
     private fun ensureUi() {
@@ -209,6 +265,14 @@ class MainActivity : AppCompatActivity(), TextWatcher, Observer<List<IconInfo>>,
             mOriginalIcons = iconInfos
             mDisplayIcons = mOriginalIcons
             notifyDataSetChanged()
+        }
+
+        fun getIconAt(position: Int): IconInfo? {
+            return if (position >= 0 && position < (mDisplayIcons?.size ?: 0)) {
+                mDisplayIcons?.get(position)
+            } else {
+                null
+            }
         }
     }
 

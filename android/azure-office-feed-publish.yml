@@ -1,13 +1,13 @@
 variables:
-- group: InfoSec-SecurityResults
-- name: tags
-  value: production,externalfacing
+  - group: InfoSec-SecurityResults
+  - name: tags
+    value: production,externalfacing
 resources:
   repositories:
-  - repository: OfficePipelineTemplates
-    type: git
-    name: 1ESPipelineTemplates/OfficePipelineTemplates
-    ref: refs/tags/release
+    - repository: OfficePipelineTemplates
+      type: git
+      name: 1ESPipelineTemplates/OfficePipelineTemplates
+      ref: refs/tags/release
 extends:
   template: v1/Office.Unofficial.PipelineTemplate.yml@OfficePipelineTemplates
   parameters:
@@ -16,55 +16,55 @@ extends:
       image: windows-2022
       os: windows
     customBuildTags:
-    - ES365AIMigrationTooling
+      - ES365AIMigrationTooling
     stages:
-    - stage: __default
-      jobs:
-      - job: Compliance
-        displayName: Compliance checks
-        steps:
-        - task: 6d15af64-176c-496d-b583-fd2ae21d4df4@1
-          inputs:
-            repository: self
-            clean: true
-            fetchDepth: 10
-      - job: BuildAndPublish
-        displayName: 'Build and Publish to Office Feed'
-        dependsOn:
-        - Compliance
-        variables:
-        - name: BUILDSECMON_OPT_IN
-          value: true
-        steps:
-        - task: Gradle@2
-          displayName: 'Build Release AAR'
-          inputs:
-            gradleWrapperFile: 'android/gradlew'
-            tasks: 'assembleRelease makeSystemIconsUniversalPkg'
-            publishJUnitResults: true
-            testResultsFiles: '**/TEST-*.xml'
-            javaHomeOption: 'JDKVersion'
-            jdkVersionOption: '1.11'
-            sonarQubeRunAnalysis: false
-            options: '-PversionName=$(VERSION_NAME)'
-        - task: CopyFiles@2
-          displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
-          inputs:
-            SourceFolder: '$(system.defaultworkingdirectory)/universal'
-            Contents: '**'
-            TargetFolder: '$(build.artifactstagingdirectory)/outputs'
-            CleanTargetFolder: true
-            OverWrite: true
-            preserveTimestamp: true
-        - task: UniversalPackages@0
-          displayName: 'Publish to Office Feed'
-          inputs:
-            command: 'publish'
-            publishDirectory: '$(Build.ArtifactStagingDirectory)/outputs/'
-            feedsToUsePublish: 'internal'
-            vstsFeedPublish: 'Office'
-            vstsFeedPackagePublish: 'fluentui-system-icons'
-            versionOption: 'custom'
-            versionPublish: '$(VERSION_NAME)'
-            packagePublishDescription: 'Fluent System Icons Universal Package'
-            publishedPackageVar: 'fluent-system-icons-package'
+      - stage: __default
+        jobs:
+          - job: Compliance
+            displayName: Compliance checks
+            steps:
+              - task: 6d15af64-176c-496d-b583-fd2ae21d4df4@1
+                inputs:
+                  repository: self
+                  clean: true
+                  fetchDepth: 10
+          - job: BuildAndPublish
+            displayName: "Build and Publish to Office Feed"
+            dependsOn:
+              - Compliance
+            variables:
+              - name: BUILDSECMON_OPT_IN
+                value: true
+            steps:
+              - task: Gradle@2
+                displayName: "Build Release AAR"
+                inputs:
+                  gradleWrapperFile: "android/gradlew"
+                  tasks: "assembleRelease makeSystemIconsUniversalPkg"
+                  publishJUnitResults: true
+                  testResultsFiles: "**/TEST-*.xml"
+                  javaHomeOption: "JDKVersion"
+                  jdkVersionOption: "1.11"
+                  sonarQubeRunAnalysis: false
+                  options: "-PversionName=$(VERSION_NAME)"
+              - task: CopyFiles@2
+                displayName: "Copy Files to: $(build.artifactstagingdirectory)"
+                inputs:
+                  SourceFolder: "$(system.defaultworkingdirectory)/universal"
+                  Contents: "**"
+                  TargetFolder: "$(build.artifactstagingdirectory)/outputs"
+                  CleanTargetFolder: true
+                  OverWrite: true
+                  preserveTimestamp: true
+              - task: UniversalPackages@0
+                displayName: "Publish to Office Feed"
+                inputs:
+                  command: "publish"
+                  publishDirectory: "$(Build.ArtifactStagingDirectory)/outputs/"
+                  feedsToUsePublish: "internal"
+                  vstsFeedPublish: "Office"
+                  vstsFeedPackagePublish: "fluentui-system-icons"
+                  versionOption: "custom"
+                  versionPublish: "$(VERSION_NAME)"
+                  packagePublishDescription: "Fluent System Icons Universal Package"
+                  publishedPackageVar: "fluent-system-icons-package"
