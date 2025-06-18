@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?d8252385335a6a9d7c69a84cf86e5d4f") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?d8252385335a6a9d7c69a84cf86e5d4f") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?d8252385335a6a9d7c69a84cf86e5d4f") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?8ebefc1b3b35fd6c2ea2953d3420e9d0") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?8ebefc1b3b35fd6c2ea2953d3420e9d0") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?8ebefc1b3b35fd6c2ea2953d3420e9d0") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -27102,4 +27102,34 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_star_add_32_filled:before {
     content: "\f0a44";
+}
+.icon-ic_fluent_hexagon_sparkle_16_filled:before {
+    content: "\f0a45";
+}
+.icon-ic_fluent_hexagon_sparkle_28_filled:before {
+    content: "\f0a46";
+}
+.icon-ic_fluent_hexagon_sparkle_32_filled:before {
+    content: "\f0a47";
+}
+.icon-ic_fluent_hexagon_sparkle_48_filled:before {
+    content: "\f0a48";
+}
+.icon-ic_fluent_people_interwoven_16_filled:before {
+    content: "\f0a49";
+}
+.icon-ic_fluent_people_interwoven_20_filled:before {
+    content: "\f0a4a";
+}
+.icon-ic_fluent_people_interwoven_24_filled:before {
+    content: "\f0a4b";
+}
+.icon-ic_fluent_people_interwoven_28_filled:before {
+    content: "\f0a4c";
+}
+.icon-ic_fluent_people_interwoven_32_filled:before {
+    content: "\f0a4d";
+}
+.icon-ic_fluent_people_interwoven_48_filled:before {
+    content: "\f0a4e";
 }
