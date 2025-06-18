@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.woff2?41f1dae0bee3592997a748bfd176221a") format("woff2"),
-url("./FluentSystemIcons-Regular.woff?41f1dae0bee3592997a748bfd176221a") format("woff"),
-url("./FluentSystemIcons-Regular.ttf?41f1dae0bee3592997a748bfd176221a") format("truetype");
+    src: url("./FluentSystemIcons-Regular.woff2?cb53aa9f80eb87ef560c037bb7fbad97") format("woff2"),
+url("./FluentSystemIcons-Regular.woff?cb53aa9f80eb87ef560c037bb7fbad97") format("woff"),
+url("./FluentSystemIcons-Regular.ttf?cb53aa9f80eb87ef560c037bb7fbad97") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -26727,4 +26727,34 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_star_add_32_regular:before {
     content: "\f09c7";
+}
+.icon-ic_fluent_hexagon_sparkle_16_regular:before {
+    content: "\f09c8";
+}
+.icon-ic_fluent_hexagon_sparkle_28_regular:before {
+    content: "\f09c9";
+}
+.icon-ic_fluent_hexagon_sparkle_32_regular:before {
+    content: "\f09ca";
+}
+.icon-ic_fluent_hexagon_sparkle_48_regular:before {
+    content: "\f09cb";
+}
+.icon-ic_fluent_people_interwoven_16_regular:before {
+    content: "\f09cc";
+}
+.icon-ic_fluent_people_interwoven_20_regular:before {
+    content: "\f09cd";
+}
+.icon-ic_fluent_people_interwoven_24_regular:before {
+    content: "\f09ce";
+}
+.icon-ic_fluent_people_interwoven_28_regular:before {
+    content: "\f09cf";
+}
+.icon-ic_fluent_people_interwoven_32_regular:before {
+    content: "\f09d0";
+}
+.icon-ic_fluent_people_interwoven_48_regular:before {
+    content: "\f09d1";
 }
