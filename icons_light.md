@@ -150,10 +150,12 @@
 |Share|<img src="assets/Share/SVG/ic_fluent_share_32_light.svg?raw=true" width="24" height="24">|`share32Light`|`ic_fluent_share_32_light`|
 |Shield Error|<img src="assets/Shield Error/SVG/ic_fluent_shield_error_32_light.svg?raw=true" width="24" height="24">|`shieldError32Light`|`ic_fluent_shield_error_32_light`|
 |Signature|<img src="assets/Signature/SVG/ic_fluent_signature_32_light.svg?raw=true" width="24" height="24">|`signature32Light`|`ic_fluent_signature_32_light`|
+|Speaker Mute|<img src="assets/Speaker Mute/SVG/ic_fluent_speaker_mute_32_light.svg?raw=true" width="24" height="24">|`speakerMute32Light`|`ic_fluent_speaker_mute_32_light`|
 |Square Arrow Forward|<img src="assets/Square Arrow Forward/SVG/ic_fluent_square_arrow_forward_32_light.svg?raw=true" width="24" height="24">|`squareArrowForward32Light`|`ic_fluent_square_arrow_forward_32_light`|
 |Stamp|<img src="assets/Stamp/SVG/ic_fluent_stamp_32_light.svg?raw=true" width="24" height="24">|`stamp32Light`|`ic_fluent_stamp_32_light`|
 |Star Add|<img src="assets/Star Add/SVG/ic_fluent_star_add_32_light.svg?raw=true" width="24" height="24">|`starAdd32Light`|`ic_fluent_star_add_32_light`|
 |Star Arrow Right|<img src="assets/Star Arrow Right/SVG/ic_fluent_star_arrow_right_32_light.svg?raw=true" width="24" height="24">|`starArrowRight32Light`|`ic_fluent_star_arrow_right_32_light`|
+|Sticker|<img src="assets/Sticker/SVG/ic_fluent_sticker_32_light.svg?raw=true" width="24" height="24">|`sticker32Light`|`ic_fluent_sticker_32_light`|
 |Tab Add|<img src="assets/Tab Add/SVG/ic_fluent_tab_add_32_light.svg?raw=true" width="24" height="24">|`tabAdd32Light`|`ic_fluent_tab_add_32_light`|
 |Table|<img src="assets/Table/SVG/ic_fluent_table_32_light.svg?raw=true" width="24" height="24">|`table32Light`|`ic_fluent_table_32_light`|
 |Table Alt Text|<img src="assets/Table Alt Text/SVG/ic_fluent_table_alt_text_32_light.svg?raw=true" width="24" height="24">|`tableAltText32Light`|`ic_fluent_table_alt_text_32_light`|
