@@ -72,9 +72,15 @@ const useRootStyles = makeStyles({
         lineHeight: '1em',
         color: 'currentColor',
 
-        "@media (forced-colors: active)": {
-            forcedColorAdjust: 'auto',
-        }
+        // Sometimes you need the font icon to have forced-color-adjust: none to not have a
+        // backplate, which should generally follow the needs of the parent control.
+
+        // But sometimes you need forced-color-adjust: auto, especially when teams have added
+        // a non-high-contrast color style to the icon's styles that should be automatically
+        // overridden in WHCM.
+
+        // Rather than setting forced-color-adjust to 'none' or 'auto', we leave this value
+        // default, inherited from the parent control.
     },
     [FontFile.Filled]: {
         fontFamily: 'FluentSystemIconsFilled',
