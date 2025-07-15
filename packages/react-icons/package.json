@@ -14,7 +14,6 @@
   "scripts": {
     "clean": "git clean -fXd lib/ lib-cjs/ intermediate/ src/",
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
-    "copy:font-files": "cpy './src/utils/fonts/*.{ttf,woff,woff2,json}' ./lib/utils/fonts/. && cpy './src/utils/fonts/*.{ttf,woff,woff2,json}' ./lib-cjs/utils/fonts/.",
     "convert:svg": "node convert.js --source=./intermediate --dest=./src --rtl=./intermediate/rtl.json",
     "convert:fonts": "node convert-font.js --source=./src/utils/fonts --dest=./src/fonts --codepointDest=./src/utils/fonts --rtl=./intermediate/rtl.json",
     "generate:font-regular": "node ../../importer/generateFont.js --source=intermediate --dest=src/utils/fonts --iconType=Regular --codepoints=../../fonts/FluentSystemIcons-Regular.json",
@@ -30,18 +29,16 @@
     "build:fonts-and-svg": "npm run copy && npm run generate:font && npm run generate:rtl && npm run optimize && npm run unfill",
     "build:generate-js-chunks": "npm run convert:svg && npm run convert:fonts",
     "build:js": "npm run build:cjs && npm run build:esm",
+    "build:js-new": "node build.js",
     "prebuild": "npm run clean",
     "build": "npm run build:fonts-and-svg && npm run build:generate-js-chunks && npm run build:js && npm run copy:font-files",
     "build:verify": "vitest run build-verify.test.js",
     "test": "vitest --exclude build-verify.test.js"
   },
   "devDependencies": {
-    "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
-    "@babel/preset-typescript": "^7.16.7",
     "@griffel/babel-preset": "^1.0.0",
     "@types/react": "^17.0.2",
-    "cpy-cli": "^4.1.0",
     "glob": "^7.2.0",
     "lodash": "^4.17.21",
     "mkdirp": "^1.0.4",
