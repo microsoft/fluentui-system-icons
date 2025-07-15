@@ -12,11 +12,10 @@
     "url": "https://github.com/microsoft/fluentui-system-icons.git"
   },
   "scripts": {
-    "clean": "find ./src -type f ! -name \"wrapIcon.tsx\" -name \"*.tsx\" -delete",
+    "clean": "git clean -fXd lib/ lib-cjs/ src/icons/ src/sizedIcons/ src/index.tsx src/fonts/ src/utils/fonts/",
     "clean:svg": "rm -rf ./intermediate",
     "clean:gitignore": "git clean -fdX",
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
-    "copy:font-files": "cpy './src/utils/fonts/*.{ttf,woff,woff2,json}' ./lib/utils/fonts/. && cpy './src/utils/fonts/*.{ttf,woff,woff2,json}' ./lib-cjs/utils/fonts/.",
     "convert:svg": "node convert.js --source=./intermediate --dest=./src --rtl=./intermediate/rtl.json",
     "convert:fonts": "node convert-font.js --source=./src/utils/fonts --dest=./src/fonts --codepointDest=./src/utils/fonts --rtl=./intermediate/rtl.json",
     "generate:font-regular": "node ../../importer/generateFont.js --source=intermediate --dest=src/utils/fonts --iconType=Regular --codepoints=../../fonts/FluentSystemIcons-Regular.json",
@@ -28,18 +27,14 @@
     "rollup": "node ./generateRollup.js",
     "optimize": "svgo --config svgo.config.js --folder=./intermediate --precision=2 --quiet",
     "unfill": "find ./intermediate -type f -name \"*.svg\" ! -name \"*_color*\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./intermediate -type f -name \"*.bak\" -delete",
-    "build": "npm run copy && npm run generate:font && npm run generate:rtl && npm run optimize && npm run unfill && npm run convert:svg && npm run convert:fonts && npm run clean:svg && npm run build:esm && npm run build:cjs && npm run copy:font-files",
-    "build:svg": "npm run copy && npm run generate:rtl && npm run optimize && npm run unfill && npm run convert:svg && npm run clean:svg && npm run build:esm && npm run build:cjs",
-    "build:cjs": "tsc --module commonjs --outDir lib-cjs && babel lib-cjs --out-dir lib-cjs",
-    "build:esm": "tsc && babel lib --out-dir lib"
+    "build:fonts-and-svg": "npm run copy && npm run generate:font && npm run generate:rtl && npm run optimize && npm run unfill && npm run convert:svg && npm run convert:fonts && npm run clean:svg",
+    "build:js": "node build.js",
+    "build": "npm run build:fonts-and-svg && npm run build:js"
   },
   "devDependencies": {
-    "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
-    "@babel/preset-typescript": "^7.16.7",
     "@griffel/babel-preset": "^1.0.0",
     "@types/react": "^17.0.2",
-    "cpy-cli": "^4.1.0",
     "glob": "^7.2.0",
     "lodash": "^4.17.21",
     "mkdirp": "^1.0.4",
