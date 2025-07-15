@@ -1,6 +1,6 @@
 ## packages
 packages/icon-app @tomi-msft
-packages/react-icons @tomi-msft @behowell
+packages/react-icons @microsoft/cxe-prg @microsoft/cxe-red
 packages/react-icons-font-subsetting-plugin @tomi-msft @MLoughry
 packages/svg-icons @tomi-msft
 packages/svg-sprites @tomi-msft
