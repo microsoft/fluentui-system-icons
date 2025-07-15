@@ -3,7 +3,7 @@
 // Licensed under the MIT license.
 
 const { execSync } = require('node:child_process');
-const { copyFileSync, readFileSync, writeFileSync } = require('node:fs');
+const { copyFileSync, readFileSync, writeFileSync,cpSync } = require('node:fs');
 const { join, basename } = require('node:path');
 
 const glob = require('glob');
@@ -45,6 +45,10 @@ function main(){
   const assets = glob.sync('src/utils/fonts/*.{ttf,woff,woff2,json}', { cwd: projectRoot });
   copyAssets(assets, './lib/utils/fonts', projectRoot);
   copyAssets(assets, './lib-cjs/utils/fonts', projectRoot);
+
+  // Copy pre-generated icon chunks
+  copyPreGeneratedIcons(projectRoot);
+  transpileGeneratedEsmToCjs(projectRoot);
 
 }
 
@@ -120,8 +124,6 @@ function applyGriffelTransform(styleFiles, baseDir) {
  * @param {string} baseDir
  */
 function copyAssets(assetsFiles, dest, baseDir){
-
-
   console.log(`Copying assets to ${dest}:`);
   assetsFiles.forEach(file => {
     const sourcePath = join(baseDir, file);
@@ -134,5 +136,53 @@ function copyAssets(assetsFiles, dest, baseDir){
       console.error(`  ✗ Failed to copy ${file}:`, error.message);
     }
   });
+}
+
+/**
+ * Copy pre-generated icon chunks to output directories
+ * @param {string} projectRoot
+ */
+function copyPreGeneratedIcons(projectRoot) {
+  console.log('Copying pre-generated icon chunks:');
+
+  /**
+   * Copy chunks from a glob pattern
+   * @param {string} pattern - Glob pattern to match files
+   */
+  function copyChunks(pattern) {
+    const chunks = glob.sync(pattern, { cwd: projectRoot });
+    chunks.forEach(file => {
+      const sourcePath = join(projectRoot, file);
+      const esmTargetPath = join(projectRoot, 'lib', file.replace('src/', ''));
+      const cjsTargetPath = join(projectRoot, 'lib-cjs', file.replace('src/', ''));
+
+      try {
+        cpSync(sourcePath, esmTargetPath, { recursive: true });
+        // avoid copying ESM files to CJS
+        if (!cjsTargetPath.endsWith('.js')) {
+          cpSync(sourcePath, cjsTargetPath, { recursive: true });
+        }
+        console.log(`  ✓ ${file}`);
+      } catch (error) {
+        console.error(`  ✗ Failed to copy ${file}:`, error.message);
+      }
+    });
+  }
+
+  // Copy all icon types
+  copyChunks('src/icons/chunk-*.{js,d.ts}');
+  copyChunks('src/sizedIcons/chunk-*.{js,d.ts}');
+  copyChunks('src/fonts/**/chunk-*.{js,d.ts}');
+  copyChunks('src/fonts/index.{js,d.ts}');
+  copyChunks('src/index.{js,d.ts}');
+}
+
+/**
+ *
+ * @param {string} projectRoot
+ */
+function transpileGeneratedEsmToCjs(projectRoot){
+  console.log(`Transpiling generated ESM to CJS to 'lib-cjs/':`);
+  execSync(`npx --yes -p typescript@5.6 -c 'tsc -p tsconfig.generated-cjs.json'`, {stdio: 'inherit', cwd: projectRoot});
 }
 

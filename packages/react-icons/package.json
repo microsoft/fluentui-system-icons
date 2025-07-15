@@ -12,7 +12,7 @@
     "url": "https://github.com/microsoft/fluentui-system-icons.git"
   },
   "scripts": {
-    "clean": "git clean -fXd lib/ lib-cjs/ src/icons/ src/sizedIcons/ src/index.tsx src/fonts/ src/utils/fonts/",
+    "clean": "git clean -fXd intermediate/ lib/ lib-cjs/ src/",
     "clean:svg": "rm -rf ./intermediate",
     "clean:gitignore": "git clean -fdX",
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
@@ -26,17 +26,17 @@
     "generate:rtl": "node ../../importer/rtlMetadata.js --source=../../assets --dest=./intermediate/rtl.json",
     "rollup": "node ./generateRollup.js",
     "optimize": "svgo --config svgo.config.js --folder=./intermediate --precision=2 --quiet",
-    "unfill": "find ./intermediate -type f -name \"*.svg\" ! -name \"*_color*\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./intermediate -type f -name \"*.bak\" -delete",
-    "build:fonts-and-svg": "npm run copy && npm run generate:font && npm run generate:rtl && npm run optimize && npm run unfill && npm run convert:svg && npm run convert:fonts && npm run clean:svg",
+    "unfill": "node unfill-svg.js",
+    "build:fonts-and-svg": "npm run copy && npm run generate:font && npm run generate:rtl && npm run optimize && npm run unfill",
+    "build:generate-js-chunks": "npm run convert:svg && npm run convert:fonts && npm run clean:svg",
     "build:js": "node build.js",
-    "build": "npm run build:fonts-and-svg && npm run build:js"
+    "build": "npm run build:fonts-and-svg && npm run build:generate-js-chunks && npm run build:js"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@griffel/babel-preset": "^1.0.0",
     "@types/react": "^17.0.2",
     "glob": "^7.2.0",
-    "lodash": "^4.17.21",
     "mkdirp": "^1.0.4",
     "react": "^17.0.1",
     "renamer": "^2.0.1",

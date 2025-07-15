@@ -16,5 +16,5 @@
     "allowSyntheticDefaultImports": true
   },
   "include": ["src"],
-  "exclude": ["lib", "lib-cjs"]
+  "exclude": ["lib", "lib-cjs","src/fonts/","src/icons/","src/sizedIcons/"]
 }

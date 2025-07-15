@@ -27,8 +27,9 @@ packages/react-icons/lib/
 packages/react-icons/lib-cjs/
 packages/react-icons/src/icons
 packages/react-icons/src/sizedIcons
-packages/react-icons/src/index.tsx
 packages/react-icons/src/fonts/
+packages/react-icons/src/index.js
+packages/react-icons/src/index.d.ts
 packages/react-icons/src/utils/fonts/*.ttf
 packages/react-icons/src/utils/fonts/*.woff
 packages/react-icons/src/utils/fonts/*.woff2

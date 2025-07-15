@@ -12,8 +12,10 @@ export type CreateFluentFontIconOptions = {
     flipInRtl?: boolean;
 }
 
-export function createFluentFontIcon(displayName: string, codepoint: string, font: FontFile, fontSize?: number, options?: CreateFluentFontIconOptions): React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>, HTMLElement>> & { codepoint: string} {
-    const Component: React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>, HTMLElement>> & { codepoint: string} = (props) => {
+export type FluentFontIcon = React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>, HTMLElement>> & { codepoint: string}
+
+export function createFluentFontIcon(displayName: string, codepoint: string, font: FontFile, fontSize?: number, options?: CreateFluentFontIconOptions): FluentFontIcon {
+    const Component: FluentFontIcon = (props) => {
         useStaticStyles();
         const styles = useRootStyles();
         const className = mergeClasses(styles.root, styles[font], fontIconClassName, props.className);
