@@ -12,6 +12,7 @@ async function unfillSvgs(dir = './intermediate') {
   async function processDirectory(dirPath) {
     const entries = await fs.readdir(dirPath, { withFileTypes: true });
 
+
     const promises = entries.map(async (entry) => {
       const fullPath = path.join(dirPath, entry.name);
 
@@ -29,6 +30,8 @@ async function unfillSvgs(dir = './intermediate') {
         if (content !== updated) {
           await fs.writeFile(fullPath, updated);
           console.log(`Processed: ${fullPath}`);
+        } else {
+          console.log(`Skipped (no changes): ${fullPath}`);
         }
       }
     });
@@ -36,6 +39,6 @@ async function unfillSvgs(dir = './intermediate') {
     await Promise.all(promises);
   }
 
-  await processDirectory(dir);
+  await processDirectory(path.join(__dirname, dir));
 }
 
