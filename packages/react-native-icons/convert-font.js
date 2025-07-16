@@ -4,7 +4,6 @@
 
 const fs = require("fs/promises");
 const path = require("path");
-const process = require("process");
 const argv = require("yargs").boolean("selector").default("selector", false).argv;
 const _ = require("lodash");
 const mkdirp = require('mkdirp');
@@ -73,9 +72,9 @@ async function processFiles(src, dest) {
 
 /**
  * Process a folder of svg files and convert them to React components, following naming patterns for the FluentUI System Icons
- * @param {string} srcPath 
+ * @param {string} srcPath
  * @param {string} codepointMapDestFolder
- * @param {boolean} resizable 
+ * @param {boolean} resizable
  * @returns { Promise<string[]> } - chunked icon files to insert
  */
 async function processFolder(srcPath, codepointMapDestFolder, resizable) {
@@ -113,10 +112,10 @@ async function processFolder(srcPath, codepointMapDestFolder, resizable) {
 }
 
 /**
- * 
- * @param {string} destPath 
- * @param {Record<string,number>} iconEntries 
- * @param {boolean} resizable 
+ *
+ * @param {string} destPath
+ * @param {Record<string,number>} iconEntries
+ * @param {boolean} resizable
  */
 async function generateCodepointMapForWebpackPlugin(destPath, iconEntries, resizable) {
   const finalCodepointMap = Object.fromEntries(
@@ -128,9 +127,9 @@ async function generateCodepointMapForWebpackPlugin(destPath, iconEntries, resiz
 }
 
 /**
- * 
- * @param {Record<string, number>} iconEntries 
- * @param {boolean} resizable 
+ *
+ * @param {Record<string, number>} iconEntries
+ * @param {boolean} resizable
  * @returns {string[]}
  */
 function generateReactIconEntries(iconEntries, resizable) {
@@ -154,9 +153,9 @@ function generateReactIconEntries(iconEntries, resizable) {
 }
 
 /**
- * 
- * @param {string} iconName 
- * @param {boolean} resizable 
+ *
+ * @param {string} iconName
+ * @param {boolean} resizable
  * @returns {string}
  */
 function getReactIconNameFromGlyphName(iconName, resizable) {

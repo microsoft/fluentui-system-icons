@@ -39,6 +39,7 @@ packages/react-icons/src/utils/fonts/*.json
 packages/react-icons/yarn.lock
 packages/react-icons/package-lock.json
 
+# react-native-icons
 packages/react-native-icons/intermediate
 packages/react-native-icons/react-icons-test/
 packages/react-native-icons/lib/
@@ -46,6 +47,12 @@ packages/react-native-icons/lib-cjs/
 packages/react-native-icons/src/icons
 packages/react-native-icons/src/sizedIcons
 packages/react-native-icons/src/index.tsx
+packages/react-native-icons/src/utils/fonts/*.ttf
+packages/react-native-icons/src/utils/fonts/*.woff
+packages/react-native-icons/src/utils/fonts/*.woff2
+packages/react-native-icons/src/utils/fonts/*.css
+packages/react-native-icons/src/utils/fonts/*.html
+packages/react-native-icons/src/utils/fonts/*.json
 packages/react-native-icons/yarn.lock
 packages/react-native-icons/package-lock.json
 

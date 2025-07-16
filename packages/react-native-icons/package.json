@@ -12,16 +12,17 @@
     "url": "https://github.com/microsoft/fluentui-system-icons.git"
   },
   "scripts": {
-    "clean": "find ./src -type f ! -name \"wrapIcon.tsx\" -name \"*.tsx\" -delete",
-    "cleanSvg": "rm -rf ./intermediate",
+    "clean": "git clean -fXd intermediate/ lib/ lib-cjs/ src/",
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
-    "convert:rnsvg": "node ../react-native-icons/convert-rn.js --source=./intermediate --dest=./src --native=true",
-    "rollup": "node ./generateRollup.js",
+    "convert:svg": "node ./convert-rn.js --source=./intermediate --dest=./src --native=true",
     "optimize": "svgo --config svgo.config.js --folder=./intermediate --precision=2 --quiet",
-    "unfill": "find ./intermediate -type f -name \"*.svg\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./intermediate -type f -name \"*.bak\" -delete",
-    "build": "npm run copy && npm run optimize && npm run unfill && npm run convert:rnsvg && npm run cleanSvg && npm run build:esm && npm run build:cjs",
-    "build:cjs": "tsc --module commonjs --outDir lib-cjs && babel lib-cjs --out-dir lib-cjs",
-    "build:esm": "tsc && babel lib --out-dir lib"
+    "unfill": "node ./unfill-svg.js",
+    "build:fonts-and-svg": "npm run copy && npm run optimize && npm run unfill",
+    "build:generate-js-chunks": "npm run convert:svg",
+    "build:js": "concurrently 'npm run build:cjs' 'npm run build:esm'",
+    "build:cjs": "tsc --jsx react --module commonjs --outDir lib-cjs",
+    "build:esm": "tsc --jsx react",
+    "build": "npm run build:fonts-and-svg && npm run build:generate-js-chunks && npm run build:js"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.0",

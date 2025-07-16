@@ -1,10 +1,10 @@
+// @ts-check
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
 const svgr = require("@svgr/core");
-const fs = require("fs");
-const path = require("path");
-const process = require("process");
+const fs = require("node:fs");
+const path = require("node:path");
 const argv = require("yargs")
   .boolean("selector")
   .default("selector", false)
@@ -13,8 +13,10 @@ const argv = require("yargs")
   }).argv;
 const _ = require("lodash");
 
-const SRC_PATH = argv.source;
-const DEST_PATH = argv.dest;
+/** @type {string} */
+const SRC_PATH = /** @type {string} */ (argv.source);
+/** @type {string} */
+const DEST_PATH = /** @type {string} */ (argv.dest);
 const REACT_NATIVE = argv.native;
 const exportNameRegex = /export const (\S*)/gm;
 
@@ -33,6 +35,11 @@ if (!fs.existsSync(DEST_PATH)) {
 
 processFiles(SRC_PATH, DEST_PATH)
 
+/**
+ *
+ * @param {string} src
+ * @param {string} dest
+ */
 function processFiles(src, dest) {
   /** @type string[] */
   const indexContents = [];
@@ -51,9 +58,7 @@ function processFiles(src, dest) {
     const chunkPath = path.resolve(iconPath, `${chunkFileName}.tsx`);
     const exportNames = Array.from(chunk.matchAll(exportNameRegex), m => m[1]);
     indexContents.push(`export { ${exportNames.join(', ')} } from './icons/${chunkFileName}'`);
-    fs.writeFileSync(chunkPath, chunk, (err) => {
-      if (err) throw err;
-    });
+    fs.writeFileSync(chunkPath, chunk);
   });
 
   // make file for sized icons
@@ -69,9 +74,7 @@ function processFiles(src, dest) {
     const chunkPath = path.resolve(sizedIconPath, `${chunkFileName}.tsx`);
     const exportNames = Array.from(chunk.matchAll(exportNameRegex), m => m[1]);
     indexContents.push(`export { ${exportNames.join(', ')} } from './sizedIcons/${chunkFileName}'`);
-    fs.writeFileSync(chunkPath, chunk, (err) => {
-      if (err) throw err;
-    });
+    fs.writeFileSync(chunkPath, chunk);
   });
 
   const indexPath = path.join(dest, 'index.tsx')
@@ -80,40 +83,44 @@ function processFiles(src, dest) {
   indexContents.push('export { default as wrapIcon } from \'./utils/wrapIcon\'');
   indexContents.push('export { useIconState } from \'./utils/useIconState\'');
 
-  fs.writeFileSync(indexPath, indexContents.join('\n'), (err) => {
-    if (err) throw err;
-  });
+  fs.writeFileSync(indexPath, indexContents.join('\n'));
 
 }
 
 /**
  * Process a folder of svg files and convert them to React components, following naming patterns for the FluentUI System Icons
- * @param {string} srcPath 
- * @param {boolean} resizable 
+ * @param {string} srcPath
+ * @param {boolean} resizable
  * @returns { string [] } - chunked icon files to insert
  */
 function processFolder(srcPath, destPath, resizable) {
   var files = fs.readdirSync(srcPath)
 
-  // These options will be passed to svgr/core
-  // See https://react-svgr.com/docs/options/ for more info
+  /**
+   *
+   * These options will be passed to svgr/core
+   * See https://react-svgr.com/docs/options/ for more info
+   * @param {string} file
+   * @param {boolean} isResizable
+   * @returns  SVGR options for the given file
+   */
   function getSvgrOptions(file, isResizable) {
     const isColorIcon = file.includes('_color.svg');
-    
+
     const options = {
       template: fileTemplate,
-      expandProps: 'end',
-      replaceAttrValues: isColorIcon ? {} : { '#212121': '{primaryFill}' },
+      expandProps: /** @type {"end"} */ ("end"),
+      replaceAttrValues: isColorIcon ? undefined : { '#212121': '{primaryFill}' },
       typescript: true,
       prettier: true,
       native: REACT_NATIVE,
     };
-    
+
     // Add icon: true only if it's not a sized icon
     if (isResizable) {
       options.icon = true;
     }
-    
+
     return options;
   }
 
@@ -140,9 +147,9 @@ function processFolder(srcPath, destPath, resizable) {
       destFilename = destFilename.replace(destFilename.substring(0, 1), destFilename.substring(0, 1).toUpperCase()) // capitalize the first letter
 
       var iconContent = fs.readFileSync(srcFile, { encoding: "utf8" })
-      
-      var jsxCode = resizable ? 
-        svgr.transform.sync(iconContent, getSvgrOptions(file, true), { filePath: file }) 
+
+      var jsxCode = resizable ?
+        svgr.transform.sync(iconContent, getSvgrOptions(file, true), { filePath: file })
         : svgr.transform.sync(iconContent, getSvgrOptions(file, false), { filePath: file })
 
 var jsCode = destFilename.endsWith('Color') ? `
@@ -177,12 +184,12 @@ export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename
     chunk.unshift(`import * as React from "react";`)
 
     var foundElements = {};
-    
-    chunk.forEach(text => 
+
+    chunk.forEach(text =>
       {
         rnSvgElements.forEach(element => {
-          if (!foundElements[element] && 
-            (text.match(new RegExp(`<${element}\\b[\\S\\s]+\\/>`)) || 
+          if (!foundElements[element] &&
+            (text.match(new RegExp(`<${element}\\b[\\S\\s]+\\/>`)) ||
              text.match(new RegExp(`<${element}\\b[\\s\\S]*>[\\s\\S]*<\\/${element}>`))))
             foundElements[element] = true;
         });
@@ -209,7 +216,6 @@ function fileTemplate (variables, { tpl })
 
   return tpl`
   ${variables.jsx}
- 
+
 `;
 };
-  

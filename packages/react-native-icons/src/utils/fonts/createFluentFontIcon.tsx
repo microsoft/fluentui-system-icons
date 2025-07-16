@@ -14,9 +14,10 @@ export const enum FontFile {
     Light = 3
 }
 
+type FluentFontIcon = React.FC<FluentIconsProps<TextProps>> & { codepoint: string}
 
-export function createFluentFontIcon(displayName: string, codepoint: string, _font: FontFile, fontSize?: number): React.FC<FluentIconsProps<TextProps>> & { codepoint: string} {
-    const Component: React.FC<FluentIconsProps<TextProps>> & { codepoint: string} = (props) => {
+export function createFluentFontIcon(displayName: string, codepoint: string, _font: FontFile, fontSize?: number): FluentFontIcon {
+    const Component: FluentFontIcon = (props) => {
         const state = useIconState<TextProps>(props);
 
         if (state.style == undefined && (props.primaryFill || fontSize)) {
