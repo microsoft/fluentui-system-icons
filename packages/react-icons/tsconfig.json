@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "pretty": true,
     "outDir": "lib",
     "target": "ES2019",
     "module": "esnext",
@@ -15,5 +16,5 @@
     "allowSyntheticDefaultImports": true
   },
   "include": ["src"],
-  "exclude": ["lib", "lib-cjs"]
+  "exclude": ["lib", "lib-cjs","src/fonts/","src/icons/","src/sizedIcons/"]
 }

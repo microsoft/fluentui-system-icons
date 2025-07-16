@@ -1,0 +1,17 @@
+{
+ "compilerOptions": {
+  "moduleResolution": "node",
+  "pretty": true,
+  "outDir": "lib-cjs",
+  "target": "ES2019",
+  "module": "commonjs",
+  "jsx": "react",
+  "esModuleInterop": true,
+  "allowSyntheticDefaultImports": true,
+  "forceConsistentCasingInFileNames": true,
+  "allowJs": true,
+  "importHelpers": true,
+  "noCheck": true
+ },
+ "include": ["src/fonts/**/*.js","src/icons/**/*.js","src/sizedIcons/**/*.js","src/index.js"]
+}
