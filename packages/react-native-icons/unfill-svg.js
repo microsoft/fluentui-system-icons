@@ -21,8 +21,7 @@ async function unfillSvgs(dir = './intermediate') {
       }
 
       if (entry.isFile() &&
-          entry.name.endsWith('.svg') &&
-          !entry.name.includes('_color')) {
+          entry.name.endsWith('.svg')) {
 
         const content = await fs.readFile(fullPath, 'utf8');
         const updated = content.replace(/fill="none"/g, '');
