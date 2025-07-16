@@ -29,7 +29,7 @@ jobs:
         app-id: ${{ secrets.GH_FLUENT_CI_APP_ID }}
         private-key: ${{ secrets.GH_FLUENT_CI_PRIVATE_KEY }}
 
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         token: ${{ steps.generate-token.outputs.token }}
 
@@ -40,7 +40,7 @@ jobs:
         import os
         current_version = sys.stdin.read().strip().split(\"'\")[1]
         major, minor, patch = current_version.split('.')
-        os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV') 
+        os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
         """
 
     - name: Bump react version patch
@@ -60,10 +60,9 @@ jobs:
         sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?(-rc\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-native-icons/package.json
         rm packages/react-native-icons/package.json.bk
 
-    - name: Use Node 18
-      uses: actions/setup-node@v1
+    - uses: actions/setup-node@v4
       with:
-        node-version: 18.x
+        node-version: '20'
 
     - run: npm install
       working-directory: importer
@@ -141,7 +140,7 @@ jobs:
       run: |
         sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?(-rc\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-icons/package.json
         rm packages/react-icons/package.json.bk
-    
+
     # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version number in react-native-icons/package.json
       run: |
@@ -170,17 +169,17 @@ jobs:
     - name: Build React library
       run: |
         npm run build
-      working-directory: packages/react-icons 
+      working-directory: packages/react-icons
 
     - name: Build Webpack plugin library
       run: |
         npm run build
-      working-directory: packages/react-icons-font-subsetting-webpack-plugin 
+      working-directory: packages/react-icons-font-subsetting-webpack-plugin
 
     - name: Build React-Native library
       run: |
         npm run build
-      working-directory: packages/react-native-icons 
+      working-directory: packages/react-native-icons
 
     - uses: JS-DevTools/npm-publish@v1
       with:
@@ -198,19 +197,19 @@ jobs:
       with:
         token: ${{ secrets.NPM_TOKEN }}
         access: public
-        package: packages/react-icons/package.json 
+        package: packages/react-icons/package.json
 
     - uses: JS-DevTools/npm-publish@v1
       with:
         token: ${{ secrets.NPM_TOKEN }}
         access: public
-        package: packages/react-icons-font-subsetting-webpack-plugin/package.json 
+        package: packages/react-icons-font-subsetting-webpack-plugin/package.json
 
     - uses: JS-DevTools/npm-publish@v1
       with:
         token: ${{ secrets.NPM_TOKEN }}
         access: public
-        package: packages/react-native-icons/package.json 
+        package: packages/react-native-icons/package.json
 
     # Android
     - name: Run Android generate script
@@ -262,7 +261,7 @@ jobs:
 
     - name: Update icon sheet
       run: python3 generate_icons_md.py
-    
+
     - name: Config git credentials
       run: git config user.email "flubuild@microsoft.com" && git config user.name "Fluent Build System"
 
@@ -270,7 +269,7 @@ jobs:
       run: |
         git add -A
         git commit -m "Release $NEW_VERSION"
-        
+
     - name: Tag release
       run: git tag "$NEW_VERSION"
 
@@ -284,7 +283,7 @@ jobs:
   #   needs: publish-library
 
   #   steps:
-  #   - uses: actions/checkout@v2
+  #   - uses: actions/checkout@v4
 
   #   - name: Bump version patch
   #     run: |
@@ -297,7 +296,7 @@ jobs:
   #       """
 
   #   - name: Use Node 11
-  #     uses: actions/setup-node@v1
+  #     uses: actions/setup-node@v4
   #     with:
   #       node-version: 11.x
 
