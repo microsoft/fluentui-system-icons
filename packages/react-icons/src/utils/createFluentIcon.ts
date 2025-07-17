@@ -49,8 +49,6 @@ export const createFluentIcon = (displayName: string, width: string, pathsOrSvg:
             );
         }
     }) as FluentIcon
-
-    
     Icon.displayName = displayName;
     return Icon;
 }
