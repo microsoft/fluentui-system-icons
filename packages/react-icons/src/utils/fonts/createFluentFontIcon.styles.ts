@@ -1,5 +1,4 @@
-
-import { makeStyles, makeStaticStyles, mergeClasses } from "@griffel/react";
+import { makeStyles, makeStaticStyles } from "@griffel/react";
 
 import fontFilledTtf from './FluentSystemIcons-Filled.ttf';
 import fontFilledWoff from './FluentSystemIcons-Filled.woff';
