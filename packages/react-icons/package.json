@@ -31,7 +31,7 @@
     "build:js": "npm run build:cjs && npm run build:esm",
     "build:js-new": "node build.js",
     "prebuild": "npm run clean",
-    "build": "npm run build:fonts-and-svg && npm run build:generate-js-chunks && npm run build:js && npm run copy:font-files",
+    "build": "npm run build:fonts-and-svg && npm run build:generate-js-chunks && npm run build:js-new",
     "build:verify": "vitest run build-verify.test.js",
     "test": "vitest --exclude build-verify.test.js"
   },
