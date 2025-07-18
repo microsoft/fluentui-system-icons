@@ -1,12 +1,10 @@
 import * as React from "react";
-import { iconFilledClassName, iconRegularClassName } from "./constants";
-import { makeStyles, mergeClasses } from "@griffel/react";
-import { FluentIcon } from "./createFluentIcon";
+import {  mergeClasses } from "@griffel/react";
 
-const useBundledIconStyles = makeStyles({
-    root: { display: "none" },
-    visible: { display: "inline" }
-});
+import { iconFilledClassName, iconRegularClassName } from "./constants";
+import { FluentIcon } from "./createFluentIcon";
+import { useBundledIconStyles } from "./bundleIcon.styles";
+
 
 const bundleIcon = (FilledIcon: FluentIcon, RegularIcon: FluentIcon) => {
     const Component: FluentIcon = (props) => {
