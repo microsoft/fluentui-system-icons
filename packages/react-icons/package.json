@@ -27,7 +27,8 @@
     "build:fonts-and-svg": "npm run copy && npm run generate:font && npm run generate:rtl && npm run optimize && npm run unfill",
     "build:generate-js-chunks": "npm run convert:svg && npm run convert:fonts",
     "build:js": "node build.js",
-    "build": "npm run build:fonts-and-svg && npm run build:generate-js-chunks && npm run build:js"
+    "build": "npm run build:fonts-and-svg && npm run build:generate-js-chunks && npm run build:js",
+    "build:verify": "node build-verify.js"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
