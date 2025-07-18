@@ -31,7 +31,9 @@
     "build": "npm run copy && npm run generate:font && npm run generate:rtl && npm run optimize && npm run unfill && npm run convert:svg && npm run convert:fonts && npm run clean:svg && npm run build:esm && npm run build:cjs && npm run copy:font-files",
     "build:svg": "npm run copy && npm run generate:rtl && npm run optimize && npm run unfill && npm run convert:svg && npm run clean:svg && npm run build:esm && npm run build:cjs",
     "build:cjs": "tsc --module commonjs --outDir lib-cjs && babel lib-cjs --out-dir lib-cjs",
-    "build:esm": "tsc && babel lib --out-dir lib"
+    "build:esm": "tsc && babel lib --out-dir lib",
+    "build:verify": "vitest run build-verify.test.js",
+    "test": "vitest --exclude build-verify.test.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.0",
@@ -47,6 +49,7 @@
     "renamer": "^2.0.1",
     "svgo": "^2.8.0",
     "typescript": "~4.1.0",
+    "vitest": "^3.2.4",
     "yargs": "^14.0.0"
   },
   "dependencies": {
