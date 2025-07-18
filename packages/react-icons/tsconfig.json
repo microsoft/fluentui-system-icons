@@ -5,6 +5,7 @@
     "target": "ES2019",
     "module": "esnext",
     "lib": ["ES2019", "dom"],
+    "types": [],
     "declaration": true,
     "experimentalDecorators": true,
     "importHelpers": true,
