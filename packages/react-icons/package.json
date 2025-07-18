@@ -28,7 +28,8 @@
     "build:generate-js-chunks": "npm run convert:svg && npm run convert:fonts",
     "build:js": "node build.js",
     "build": "npm run build:fonts-and-svg && npm run build:generate-js-chunks && npm run build:js",
-    "build:verify": "node build-verify.js"
+    "build:verify": "vitest run build-verify.test.js",
+    "test": "vitest --exclude build-verify.test.js"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -41,6 +42,7 @@
     "renamer": "^2.0.1",
     "svgo": "^2.8.0",
     "typescript": "~4.1.0",
+    "vitest": "^3.2.4",
     "yargs": "^14.0.0"
   },
   "dependencies": {
