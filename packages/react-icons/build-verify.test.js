@@ -696,8 +696,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "/// <reference types="react" />
-          export declare const AccessTimeFilled: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
+          "export declare const AccessTimeFilled: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
               codepoint: string;
           };
           export declare const AccessTimeRegular: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
@@ -726,6 +725,7 @@ describe('Build Verification', () => {
           };
           export declare const AccessibilityMoreRegular: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
               codepoint: string;
+          };
           ... (content truncated for snapshot)"
         `);
       }
@@ -787,8 +787,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "/// <reference types="react" />
-          export declare const AccessTimeFilled: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
+          "export declare const AccessTimeFilled: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
               codepoint: string;
           };
           export declare const AccessTimeRegular: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
@@ -817,6 +816,7 @@ describe('Build Verification', () => {
           };
           export declare const AccessibilityMoreRegular: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
               codepoint: string;
+          };
           ... (content truncated for snapshot)"
         `);
       }
@@ -878,8 +878,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "/// <reference types="react" />
-          export declare const AccessibilityCheckmark32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
+          "export declare const AccessibilityCheckmark32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
               codepoint: string;
           };
           export declare const Add32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
@@ -908,6 +907,7 @@ describe('Build Verification', () => {
           };
           export declare const ArrowDownload32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
               codepoint: string;
+          };
           ... (content truncated for snapshot)"
         `);
       }
@@ -969,8 +969,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "/// <reference types="react" />
-          export declare const AccessibilityCheckmark32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
+          "export declare const AccessibilityCheckmark32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
               codepoint: string;
           };
           export declare const Add32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
@@ -999,6 +998,7 @@ describe('Build Verification', () => {
           };
           export declare const ArrowDownload32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
               codepoint: string;
+          };
           ... (content truncated for snapshot)"
         `);
       }
