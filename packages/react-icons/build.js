@@ -115,15 +115,15 @@ function applyGriffelTransform(styleFiles, baseDir) {
 
 /**
  *
- * @param {string[]} assetsFiles
+ * @param {string[]} src
  * @param {string} dest
  * @param {string} baseDir
  */
-function copyAssets(assetsFiles, dest, baseDir){
+function copyAssets(src, dest, baseDir){
 
 
   console.log(`Copying assets to ${dest}:`);
-  assetsFiles.forEach(file => {
+  src.forEach(file => {
     const sourcePath = join(baseDir, file);
     const targetPath = join(baseDir,dest, basename(file));
 
