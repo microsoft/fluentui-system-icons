@@ -14,8 +14,8 @@ main();
 function main(){
   const projectRoot = join(__dirname);
   const cmd = {
-    esm: './node_modules/.bin/tsc --outDir lib',
-    cjs: './node_modules/.bin/tsc --module commonjs --outDir lib-cjs',
+    esm: 'npx tsc --outDir lib',
+    cjs: 'npx tsc --module commonjs --outDir lib-cjs',
   }
 
   console.log('Transpiling ESM to -> lib/');
