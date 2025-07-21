@@ -10,6 +10,7 @@ dist/
 .project
 .classpath
 .settings
+yarn.lock
 
 .idea
 
