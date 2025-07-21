@@ -30,8 +30,8 @@
     "unfill": "find ./intermediate -type f -name \"*.svg\" ! -name \"*_color*\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./intermediate -type f -name \"*.bak\" -delete",
     "build": "npm run copy && npm run generate:font && npm run generate:rtl && npm run optimize && npm run unfill && npm run convert:svg && npm run convert:fonts && npm run clean:svg && npm run build:esm && npm run build:cjs && npm run copy:font-files",
     "build:svg": "npm run copy && npm run generate:rtl && npm run optimize && npm run unfill && npm run convert:svg && npm run clean:svg && npm run build:esm && npm run build:cjs",
-    "build:cjs": "tsc --module commonjs --outDir lib-cjs && babel lib-cjs --out-dir lib-cjs",
-    "build:esm": "tsc && babel lib --out-dir lib",
+    "build:cjs": "tsc -p . --module commonjs --outDir lib-cjs && babel lib-cjs --out-dir lib-cjs",
+    "build:esm": "tsc -p . && babel lib --out-dir lib",
     "build:verify": "vitest run build-verify.test.js",
     "test": "vitest --exclude build-verify.test.js"
   },
