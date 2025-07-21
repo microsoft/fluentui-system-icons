@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Check asset directories are valid for Windows
       run: |
@@ -29,7 +29,7 @@ jobs:
     name: Validate Asset Fills
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Check that all SVGs have the right fill
       run: |
@@ -49,14 +49,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
-    - name: Use Node 18
-      uses: actions/setup-node@v1
+    - uses: actions/setup-node@v4
       with:
-        node-version: 18.x
+        node-version: 20.x
 
-    - run: npm install
+    - run: npm ci
 
     - name: Run generate script
       run: npm run deploy:ios
@@ -67,14 +66,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
-    - name: Use Node 18
-      uses: actions/setup-node@v1
+    - uses: actions/setup-node@v4
       with:
-        node-version: 18.x
+        node-version: 20.x
 
-    - run: npm install
+    - run: npm ci
 
     - name: Run generate script
       run: npm run deploy:android
@@ -105,12 +103,11 @@ jobs:
   #   steps:
   #   - uses: actions/checkout@v2
 
-  #   - name: Use Node 18
-  #     uses: actions/setup-node@v1
+  #   - uses: actions/setup-node@v1
   #     with:
-  #       node-version: 18.x
+  #       node-version: 20.x
 
-  #   - run: npm install
+  #   - run: npm ci
 
   #   - name: Run generate script
   #     run: npm run deploy:flutter
@@ -133,14 +130,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
-    - name: Use Node 18
-      uses: actions/setup-node@v1
+    - uses: actions/setup-node@v4
       with:
-        node-version: 18.x
+        node-version: 20.x
 
-    - run: npm install
+    - run: npm ci
 
     - name: Run build
       run: npm run build
@@ -151,14 +147,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
-    - name: Use Node 18
-      uses: actions/setup-node@v1
+    - uses: actions/setup-node@v4
       with:
-        node-version: 18.x
+        node-version: 20.x
 
-    - run: npm install
+    - run: npm ci
 
     - name: Build @fluentui/react-icons
       run: |
