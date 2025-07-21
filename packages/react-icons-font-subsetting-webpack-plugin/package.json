@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "webpack -c test/webpack.config.js",
-    "build": "tsc"
+    "build": "tsc -p ."
   },
   "engines": {
     "node": ">=14.5.0"
@@ -24,7 +24,8 @@
   "devDependencies": {
     "typescript": "^4.6.3",
     "webpack": "^5.72.0",
-    "@fluentui/react-icons": "*"
+    "@fluentui/react-icons": "*",
+    "@types/node": "14"
   },
   "dependencies": {
     "subset-font": "^1.4.0"
