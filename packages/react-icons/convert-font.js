@@ -162,11 +162,11 @@ function generateReactIconEntries(iconEntries, resizable) {
     let destFilename = getReactIconNameFromGlyphName(iconName, resizable);
     var flipInRtl = metadata[destFilename] === 'mirror';
     let iconStyle = /filled$/i.test(iconName) ? 0 /* Filled */ : /regular$/i.test(iconName) ? 1 /* Regular */ : 3 /* Light */
-    var jsCode = `export const ${destFilename} = /*#__PURE__*/createFluentFontIcon(${JSON.stringify(destFilename)
+    var jsCode = `export const ${destFilename} = (/*#__PURE__*/createFluentFontIcon(${JSON.stringify(destFilename)
       }, ${JSON.stringify(String.fromCodePoint(codepoint))
       }, ${resizable ? 2 /* Resizable */ : iconStyle
       }, ${resizable ? undefined : ` ${/(?<=_)\d+(?=_filled|_regular|_light)/.exec(iconName)?.[0]}`
-      }${flipInRtl ? `, { flipInRtl: true }` : ''});`;
+      }${flipInRtl ? `, { flipInRtl: true }` : ''}));`;
 
     iconExports.push(jsCode);
   }
