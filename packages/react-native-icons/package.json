@@ -20,8 +20,8 @@
     "optimize": "svgo --config svgo.config.js --folder=./intermediate --precision=2 --quiet",
     "unfill": "find ./intermediate -type f -name \"*.svg\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./intermediate -type f -name \"*.bak\" -delete",
     "build": "npm run copy && npm run optimize && npm run unfill && npm run convert:rnsvg && npm run cleanSvg && npm run build:esm && npm run build:cjs",
-    "build:cjs": "tsc --module commonjs --outDir lib-cjs && babel lib-cjs --out-dir lib-cjs",
-    "build:esm": "tsc && babel lib --out-dir lib"
+    "build:cjs": "tsc -p . --module commonjs --outDir lib-cjs && babel lib-cjs --out-dir lib-cjs",
+    "build:esm": "tsc -p . && babel lib --out-dir lib"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.0",

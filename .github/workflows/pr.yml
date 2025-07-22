@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Check asset directories are valid for Windows
       run: |
@@ -29,17 +29,17 @@ jobs:
     name: Validate Asset Fills
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Check that all SVGs have the right fill
       run: |
         error_found=false
-        
+
         for file in $(find ./assets -type f -name "*.svg" -print0 | grep -zv '_color.svg' | xargs -0 grep -L 'fill="#212121"'); do
           echo "Error: $file does not have 'fill=\"#212121\"' or has a different fill."
           error_found=true
         done
-        
+
         if [[ $error_found == true ]]; then
           exit 1
         fi
@@ -49,14 +49,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
-    - name: Use Node 18
-      uses: actions/setup-node@v1
+    - uses: actions/setup-node@v4
       with:
-        node-version: 18.x
+        node-version: 20.x
 
-    - run: npm install
+    - run: npm ci
 
     - name: Run generate script
       run: npm run deploy:ios
@@ -67,14 +66,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
-    - name: Use Node 18
-      uses: actions/setup-node@v1
+    - uses: actions/setup-node@v4
       with:
-        node-version: 18.x
+        node-version: 20.x
 
-    - run: npm install
+    - run: npm ci
 
     - name: Run generate script
       run: npm run deploy:android
@@ -105,12 +103,11 @@ jobs:
   #   steps:
   #   - uses: actions/checkout@v2
 
-  #   - name: Use Node 18
-  #     uses: actions/setup-node@v1
+  #   - uses: actions/setup-node@v1
   #     with:
-  #       node-version: 18.x
+  #       node-version: 20.x
 
-  #   - run: npm install
+  #   - run: npm ci
 
   #   - name: Run generate script
   #     run: npm run deploy:flutter
@@ -133,14 +130,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
-    - name: Use Node 18
-      uses: actions/setup-node@v1
+    - uses: actions/setup-node@v4
       with:
-        node-version: 18.x
+        node-version: 20.x
 
-    - run: npm install
+    - run: npm ci
 
     - name: Run build
       run: npm run build
@@ -151,25 +147,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
-    - name: Use Node 18
-      uses: actions/setup-node@v1
+    - uses: actions/setup-node@v4
       with:
-        node-version: 18.x
+        node-version: 20.x
 
-    - run: npm install
+    - run: npm ci
 
-    - run: |
+    - name: Build @fluentui/react-icons
+      run: |
         npm run build
+        npm run build:verify
       working-directory: packages/react-icons
-    - run: |
+
+    - name: Build @fluentui/react-native-icons
+      run: |
         npm run build
       working-directory: packages/react-native-icons
-    - run: |
+
+    - name: Build @fluentui/react-icons-font-subsetting-webpack-plugin
+      run: |
         npm run build
       working-directory: packages/react-icons-font-subsetting-webpack-plugin
 
-    - run: |
+    - name: Test @fluentui/react-icons-font-subsetting-webpack-plugin
+      run: |
         npm run test
       working-directory: packages/react-icons-font-subsetting-webpack-plugin

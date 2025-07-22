@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
+    "pretty": true,
     "outDir": "lib",
     "target": "ES2019",
     "module": "esnext",
     "lib": ["ES2019", "dom"],
+    "types": [],
     "declaration": true,
     "experimentalDecorators": true,
     "importHelpers": true,
@@ -15,5 +17,5 @@
     "allowSyntheticDefaultImports": true
   },
   "include": ["src"],
-  "exclude": ["lib", "lib-cjs"]
+  "exclude": ["lib", "lib-cjs", "node_modules"]
 }

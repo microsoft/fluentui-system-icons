@@ -4,6 +4,7 @@
     "target": "ES6",
     "module": "esnext",
     "lib": ["es6", "dom"],
+    "types": [],
     "moduleResolution": "node",
     "declaration": true,
     "declarationMap": true,
@@ -26,5 +27,5 @@
     "allowSyntheticDefaultImports": true
   },
   "include": ["src"],
-  "exclude": ["lib", "lib-cjs"]
+  "exclude": ["lib", "lib-cjs", "node_modules"]
 }
