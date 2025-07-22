@@ -13,34 +13,12 @@ main();
 
 function main(){
   const projectRoot = join(__dirname);
-  const cmd = {
-    esm: 'npx tsc --outDir lib',
-    cjs: 'npx tsc --module commonjs --outDir lib-cjs',
-  }
 
-  console.log('Transpiling ESM to -> lib/');
-  execSync(cmd.esm, {stdio: 'inherit', cwd: projectRoot});
-  console.log('Transpiling CJS to -> lib-cjs/');
-  execSync(cmd.cjs, {stdio: 'inherit', cwd: projectRoot});
+  transpileTsc(projectRoot, { moduleFormat: 'esnext', outDir: 'lib' });
+  transpileTsc(projectRoot, { moduleFormat: 'commonjs', outDir: 'lib-cjs' });
 
-  const styles = {
-    esm: glob.sync('lib/**/*.styles.js',{cwd: join(projectRoot)}),
-    cjs: glob.sync('lib-cjs/**/*.styles.js',{cwd: join(projectRoot)}),
-  };
-
-  console.log('Found styles files:', styles);
-
-  // Create raw copies of styles files
-  if (styles.esm.length > 0) {
-    createRawStylesCopies(styles.esm, projectRoot);
-    applyGriffelTransform(styles.esm, projectRoot);
-  }
-
-
-  if (styles.cjs.length > 0) {
-    createRawStylesCopies(styles.cjs, projectRoot);
-    applyGriffelTransform(styles.cjs, projectRoot);
-  }
+  applyBabelTransform('lib', projectRoot);
+  applyBabelTransform('lib-cjs', projectRoot);
 
   const assets = glob.sync('src/utils/fonts/*.{ttf,woff,woff2,json}', { cwd: projectRoot });
   copyAssets(assets, './lib/utils/fonts', projectRoot);
@@ -52,40 +30,59 @@ function main(){
 
 /**
  *
- * @param {string[]} styleFiles
- * @param {string} baseDir
+ * @param {string} styleFile
  */
 
-function createRawStylesCopies(styleFiles, baseDir) {
-  console.log(`Creating .styles.raw.js copies in ${baseDir}:`);
+function createRawStylesCopy(styleFile) {
 
-  styleFiles.forEach(file => {
-    const sourcePath = join(baseDir, file);
-    const targetPath = sourcePath.replace('.styles.js', '.styles.raw.js');
+  const sourcePath = join(styleFile);
+  const targetPath = styleFile.replace('.styles.js', '.styles.raw.js');
 
-    try {
-      copyFileSync(sourcePath, targetPath);
-      console.log(`  ✓ ${file} -> ${basename(targetPath)}`);
-    } catch (error) {
-      console.error(`  ✗ Failed to copy ${file}:`, error.message);
-    }
-  });
+  try {
+    copyFileSync(sourcePath, targetPath);
+    console.log(`  ✓ [raw style] ${styleFile} -> ${basename(targetPath)}`);
+  } catch (error) {
+    console.error(`  ✗ Failed to copy ${styleFile}:`, error.message);
+  }
+
 }
 
 /**
  *
- * @param {string[]} styleFiles
+ * @param {string} baseDir
+ * @param {{moduleFormat:'esnext'|'commonjs'; outDir:string}} options
+ */
+function transpileTsc(baseDir,options) {
+ const {moduleFormat,outDir} = options;
+  console.log(`Transpiling module format [${moduleFormat}] to -> ${outDir}/`);
+  const cmd = `npx tsc -p . --module ${moduleFormat} --outDir ${outDir}`;
+  return execSync(cmd, {stdio: 'inherit', cwd: baseDir});
+}
+
+/**
+ *
+ * @param {string} root
  * @param {string} baseDir
  */
-function applyGriffelTransform(styleFiles, baseDir) {
-  console.log(`Preprocessing .styles.js with @griffel in ${baseDir}:`);
+function applyBabelTransform(root, baseDir) {
   const EOL_REGEX = /\r?\n/g;
   const griffelPreset = [
     ['@griffel']
   ];
 
-  for (const filename of styleFiles) {
-    const filePath = join(baseDir, filename);
+  const jsRoot = join(baseDir,root)
+
+  console.log(`Processing .js files with babel in ${jsRoot}:`);
+  const jsFiles = glob.sync('**/*.js', { cwd: jsRoot });
+
+
+  for (const filename of jsFiles) {
+    const isStylesFile = filename.endsWith('.styles.js');
+    const filePath = join(jsRoot, filename);
+
+    if (isStylesFile) {
+      createRawStylesCopy(filePath)
+    };
 
     const codeBuffer = readFileSync(filePath);
     const sourceCode = codeBuffer.toString().replace(EOL_REGEX, '\n');
@@ -93,12 +90,12 @@ function applyGriffelTransform(styleFiles, baseDir) {
     const result = transformSync(sourceCode, {
       ast: false,
       sourceMaps: true,
-
-      babelrc: false,
+      babelrc: true,
       // to avoid leaking of global configs
       babelrcRoots: [baseDir],
       filename: filePath,
-      presets: griffelPreset,
+      // Only apply @griffel preset to .styles.js files
+      presets: isStylesFile ? griffelPreset : [],
     });
 
     const resultCode = result?.code;
@@ -108,7 +105,8 @@ function applyGriffelTransform(styleFiles, baseDir) {
       continue;
     }
 
-    console.log(`  ✓ ${filename}`);
+    const prefix = isStylesFile ? '  ✓ [griffel]' : '  ✓ [babel]';
+    console.log(`${prefix} ${filename}`);
     writeFileSync(filePath, resultCode);
   }
 }
