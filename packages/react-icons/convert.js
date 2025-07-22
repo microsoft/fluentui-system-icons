@@ -86,8 +86,8 @@ function processFiles(src, dest) {
 
 /**
  * Process a folder of svg files and convert them to React components, following naming patterns for the FluentUI System Icons
- * @param {string} srcPath 
- * @param {boolean} resizable 
+ * @param {string} srcPath
+ * @param {boolean} resizable
  * @returns { string [] } - chunked icon files to insert
  */
 function processFolder(srcPath, destPath, resizable) {
@@ -165,6 +165,6 @@ function fileTemplate(
 
   componentName.name = componentName.name.substring(3)
   componentName.name = componentName.name.replace('IcFluent', '')
-  
+
 	return jsx;
 }
