@@ -87,27 +87,33 @@ async function processFiles(src, dest) {
 
 /**
  * Process a folder of svg files and convert them to React components, following naming patterns for the FluentUI System Icons
- * @param {string} srcPath 
+ * @param {string} srcPath
  * @param {string} codepointMapDestFolder
- * @param {boolean} resizable 
+ * @param {boolean} resizable
  * @returns { Promise<string[]> } - chunked icon files to insert
  */
 async function processFolder(srcPath, codepointMapDestFolder, resizable) {
-  var files = await glob(resizable ? 'FluentSystemIcons-Resizable.json' : 'FluentSystemIcons-{Filled,Regular,Light}.json', { cwd: srcPath, absolute: true });
+
+  // Explicitly specify the order to make chunk generation deterministic: Light first, then Regular, then Filled
+  const fileNames = resizable ? ['FluentSystemIcons-Resizable.json'] : ['FluentSystemIcons-Light.json', 'FluentSystemIcons-Filled.json', 'FluentSystemIcons-Regular.json'];
+  const files = fileNames.map(name => path.resolve(srcPath, name)).filter(filePath => fsS.existsSync(filePath));
 
   /** @type string[] */
   const iconExports = [];
-  await Promise.all(files.map(async (srcFile, index) => {
+
+  // Process files sequentially to maintain consistent order
+  for (const srcFile of files) {
     /** @type {Record<string, number>} */
     const iconEntries = JSON.parse(await fs.readFile(srcFile, 'utf8'));
-    iconExports.push(...generateReactIconEntries(iconEntries, resizable));
+    const entries = generateReactIconEntries(iconEntries, resizable);
+    iconExports.push(...entries);
 
-    return generateCodepointMapForWebpackPlugin(
+    await generateCodepointMapForWebpackPlugin(
       path.resolve(codepointMapDestFolder, path.basename(srcFile)),
       iconEntries,
       resizable
     );
-  }));
+  }
 
   // chunk all icons into separate files to keep build reasonably fast
   /** @type string[][] */
@@ -128,10 +134,10 @@ async function processFolder(srcPath, codepointMapDestFolder, resizable) {
 }
 
 /**
- * 
- * @param {string} destPath 
- * @param {Record<string,number>} iconEntries 
- * @param {boolean} resizable 
+ *
+ * @param {string} destPath
+ * @param {Record<string,number>} iconEntries
+ * @param {boolean} resizable
  */
 async function generateCodepointMapForWebpackPlugin(destPath, iconEntries, resizable) {
   const finalCodepointMap = Object.fromEntries(
@@ -143,9 +149,9 @@ async function generateCodepointMapForWebpackPlugin(destPath, iconEntries, resiz
 }
 
 /**
- * 
- * @param {Record<string, number>} iconEntries 
- * @param {boolean} resizable 
+ *
+ * @param {Record<string, number>} iconEntries
+ * @param {boolean} resizable
  * @returns {string[]}
  */
 function generateReactIconEntries(iconEntries, resizable) {
@@ -154,7 +160,7 @@ function generateReactIconEntries(iconEntries, resizable) {
   const metadata = JSON.parse(fsS.readFileSync(RTL_FILE, 'utf-8'));
   for (const [iconName, codepoint] of Object.entries(iconEntries)) {
     let destFilename = getReactIconNameFromGlyphName(iconName, resizable);
-    var flipInRtl = metadata[destFilename] === 'mirror';  
+    var flipInRtl = metadata[destFilename] === 'mirror';
     let iconStyle = /filled$/i.test(iconName) ? 0 /* Filled */ : /regular$/i.test(iconName) ? 1 /* Regular */ : 3 /* Light */
     var jsCode = `export const ${destFilename} = /*#__PURE__*/createFluentFontIcon(${JSON.stringify(destFilename)
       }, ${JSON.stringify(String.fromCodePoint(codepoint))
@@ -169,9 +175,9 @@ function generateReactIconEntries(iconEntries, resizable) {
 }
 
 /**
- * 
- * @param {string} iconName 
- * @param {boolean} resizable 
+ *
+ * @param {string} iconName
+ * @param {boolean} resizable
  * @returns {string}
  */
 function getReactIconNameFromGlyphName(iconName, resizable) {
