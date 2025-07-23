@@ -423,14 +423,14 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-17';
         export * from './sizedIcons/chunk-18';
         export * from './sizedIcons/chunk-19';
-        export { FluentIconsProps } from './utils/FluentIconsProps.types';
         export { default as wrapIcon } from './utils/wrapIcon';
         export { default as bundleIcon } from './utils/bundleIcon';
         export { createFluentIcon } from './utils/createFluentIcon';
-        export type { FluentIcon } from './utils/createFluentIcon';
         export * from './utils/useIconState';
         export * from './utils/constants';
         export { IconDirectionContextProvider, useIconContext } from './contexts/index';
+        export type { FluentIconsProps } from './utils/FluentIconsProps.types';
+        export type { FluentIcon } from './utils/createFluentIcon';
         export type { IconDirectionContextValue } from './contexts/index';
         "
       `);
@@ -539,14 +539,14 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-17';
         export * from './sizedIcons/chunk-18';
         export * from './sizedIcons/chunk-19';
-        export { FluentIconsProps } from './utils/FluentIconsProps.types';
         export { default as wrapIcon } from './utils/wrapIcon';
         export { default as bundleIcon } from './utils/bundleIcon';
         export { createFluentIcon } from './utils/createFluentIcon';
-        export type { FluentIcon } from './utils/createFluentIcon';
         export * from './utils/useIconState';
         export * from './utils/constants';
         export { IconDirectionContextProvider, useIconContext } from './contexts/index';
+        export type { FluentIconsProps } from './utils/FluentIconsProps.types';
+        export type { FluentIcon } from './utils/createFluentIcon';
         export type { IconDirectionContextValue } from './contexts/index';
         "
       `)
@@ -664,15 +664,16 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-34';
         export * from './sizedIcons/chunk-35';
         export * from './sizedIcons/chunk-36';
-        export { FluentIconsProps } from '../utils/FluentIconsProps.types';
         export { default as wrapIcon } from '../utils/wrapIcon';
         export { default as bundleIcon } from '../utils/bundleIcon';
         export { createFluentIcon } from '../utils/createFluentIcon';
         export { createFluentFontIcon } from '../utils/fonts/createFluentFontIcon';
-        export type { FluentIcon } from '../utils/createFluentIcon';
         export * from '../utils/useIconState';
         export * from '../utils/constants';
         export { IconDirectionContextProvider, useIconContext } from '../contexts/index';
+        export type { FluentIconsProps } from '../utils/FluentIconsProps.types';
+        export type { FluentIcon } from '../utils/createFluentIcon';
+        export type { FluentFontIcon } from '../utils/fonts/createFluentFontIcon';
         export type { IconDirectionContextValue } from '../contexts/index';
         "
       `);
@@ -833,15 +834,16 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-34';
         export * from './sizedIcons/chunk-35';
         export * from './sizedIcons/chunk-36';
-        export { FluentIconsProps } from '../utils/FluentIconsProps.types';
         export { default as wrapIcon } from '../utils/wrapIcon';
         export { default as bundleIcon } from '../utils/bundleIcon';
         export { createFluentIcon } from '../utils/createFluentIcon';
         export { createFluentFontIcon } from '../utils/fonts/createFluentFontIcon';
-        export type { FluentIcon } from '../utils/createFluentIcon';
         export * from '../utils/useIconState';
         export * from '../utils/constants';
         export { IconDirectionContextProvider, useIconContext } from '../contexts/index';
+        export type { FluentIconsProps } from '../utils/FluentIconsProps.types';
+        export type { FluentIcon } from '../utils/createFluentIcon';
+        export type { FluentFontIcon } from '../utils/fonts/createFluentFontIcon';
         export type { IconDirectionContextValue } from '../contexts/index';
         "
       `)
@@ -1267,36 +1269,36 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "export declare const AccessTimeFilled: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const AccessTimeRegular: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const AccessibilityFilled: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const AccessibilityRegular: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const AccessibilityCheckmarkFilled: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const AccessibilityCheckmarkRegular: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const AccessibilityErrorFilled: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const AccessibilityErrorRegular: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const AccessibilityMoreFilled: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const AccessibilityMoreRegular: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
+          "import type { FluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
+          export declare const AccessTimeFilled: FluentFontIcon;
+          export declare const AccessTimeRegular: FluentFontIcon;
+          export declare const AccessibilityFilled: FluentFontIcon;
+          export declare const AccessibilityRegular: FluentFontIcon;
+          export declare const AccessibilityCheckmarkFilled: FluentFontIcon;
+          export declare const AccessibilityCheckmarkRegular: FluentFontIcon;
+          export declare const AccessibilityErrorFilled: FluentFontIcon;
+          export declare const AccessibilityErrorRegular: FluentFontIcon;
+          export declare const AccessibilityMoreFilled: FluentFontIcon;
+          export declare const AccessibilityMoreRegular: FluentFontIcon;
+          export declare const AccessibilityQuestionMarkFilled: FluentFontIcon;
+          export declare const AccessibilityQuestionMarkRegular: FluentFontIcon;
+          export declare const AddFilled: FluentFontIcon;
+          export declare const AddRegular: FluentFontIcon;
+          export declare const AddCircleFilled: FluentFontIcon;
+          export declare const AddCircleRegular: FluentFontIcon;
+          export declare const AddSquareFilled: FluentFontIcon;
+          export declare const AddSquareRegular: FluentFontIcon;
+          export declare const AddSquareMultipleFilled: FluentFontIcon;
+          export declare const AddSquareMultipleRegular: FluentFontIcon;
+          export declare const AddStarburstFilled: FluentFontIcon;
+          export declare const AddStarburstRegular: FluentFontIcon;
+          export declare const AddSubtractCircleFilled: FluentFontIcon;
+          export declare const AddSubtractCircleRegular: FluentFontIcon;
+          export declare const AgentsFilled: FluentFontIcon;
+          export declare const AgentsRegular: FluentFontIcon;
+          export declare const AgentsAddFilled: FluentFontIcon;
+          export declare const AgentsAddRegular: FluentFontIcon;
+          export declare const AirplaneFilled: FluentFontIcon;
           ... (content truncated for snapshot)"
         `);
       }
@@ -1358,36 +1360,36 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "export declare const AccessTimeFilled: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const AccessTimeRegular: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const AccessibilityFilled: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const AccessibilityRegular: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const AccessibilityCheckmarkFilled: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const AccessibilityCheckmarkRegular: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const AccessibilityErrorFilled: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const AccessibilityErrorRegular: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const AccessibilityMoreFilled: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const AccessibilityMoreRegular: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
+          "import type { FluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
+          export declare const AccessTimeFilled: FluentFontIcon;
+          export declare const AccessTimeRegular: FluentFontIcon;
+          export declare const AccessibilityFilled: FluentFontIcon;
+          export declare const AccessibilityRegular: FluentFontIcon;
+          export declare const AccessibilityCheckmarkFilled: FluentFontIcon;
+          export declare const AccessibilityCheckmarkRegular: FluentFontIcon;
+          export declare const AccessibilityErrorFilled: FluentFontIcon;
+          export declare const AccessibilityErrorRegular: FluentFontIcon;
+          export declare const AccessibilityMoreFilled: FluentFontIcon;
+          export declare const AccessibilityMoreRegular: FluentFontIcon;
+          export declare const AccessibilityQuestionMarkFilled: FluentFontIcon;
+          export declare const AccessibilityQuestionMarkRegular: FluentFontIcon;
+          export declare const AddFilled: FluentFontIcon;
+          export declare const AddRegular: FluentFontIcon;
+          export declare const AddCircleFilled: FluentFontIcon;
+          export declare const AddCircleRegular: FluentFontIcon;
+          export declare const AddSquareFilled: FluentFontIcon;
+          export declare const AddSquareRegular: FluentFontIcon;
+          export declare const AddSquareMultipleFilled: FluentFontIcon;
+          export declare const AddSquareMultipleRegular: FluentFontIcon;
+          export declare const AddStarburstFilled: FluentFontIcon;
+          export declare const AddStarburstRegular: FluentFontIcon;
+          export declare const AddSubtractCircleFilled: FluentFontIcon;
+          export declare const AddSubtractCircleRegular: FluentFontIcon;
+          export declare const AgentsFilled: FluentFontIcon;
+          export declare const AgentsRegular: FluentFontIcon;
+          export declare const AgentsAddFilled: FluentFontIcon;
+          export declare const AgentsAddRegular: FluentFontIcon;
+          export declare const AirplaneFilled: FluentFontIcon;
           ... (content truncated for snapshot)"
         `);
       }
@@ -1449,36 +1451,36 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "export declare const AccessibilityCheckmark32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const Add32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const Alert32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const AppFolder32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const AppGeneric32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const Archive32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const ArchiveSettings32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const ArrowClockwise32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const ArrowDown32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const ArrowDownload32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
+          "import type { FluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
+          export declare const AccessibilityCheckmark32Light: FluentFontIcon;
+          export declare const Add32Light: FluentFontIcon;
+          export declare const Alert32Light: FluentFontIcon;
+          export declare const AppFolder32Light: FluentFontIcon;
+          export declare const AppGeneric32Light: FluentFontIcon;
+          export declare const Archive32Light: FluentFontIcon;
+          export declare const ArchiveSettings32Light: FluentFontIcon;
+          export declare const ArrowClockwise32Light: FluentFontIcon;
+          export declare const ArrowDown32Light: FluentFontIcon;
+          export declare const ArrowDownload32Light: FluentFontIcon;
+          export declare const ArrowForward32Light: FluentFontIcon;
+          export declare const ArrowHookDownLeft32Light: FluentFontIcon;
+          export declare const ArrowHookDownRight32Light: FluentFontIcon;
+          export declare const ArrowHookUpLeft32Light: FluentFontIcon;
+          export declare const ArrowHookUpRight32Light: FluentFontIcon;
+          export declare const ArrowRedo32Light: FluentFontIcon;
+          export declare const ArrowReply32Light: FluentFontIcon;
+          export declare const ArrowReplyAll32Light: FluentFontIcon;
+          export declare const ArrowUndo32Light: FluentFontIcon;
+          export declare const Attach32Light: FluentFontIcon;
+          export declare const AutoFit32Light: FluentFontIcon;
+          export declare const AutoFitWidth32Light: FluentFontIcon;
+          export declare const Autocorrect32Light: FluentFontIcon;
+          export declare const BreakoutRoom32Light: FluentFontIcon;
+          export declare const Broom32Light: FluentFontIcon;
+          export declare const Calendar3Day32Light: FluentFontIcon;
+          export declare const CalendarClock32Light: FluentFontIcon;
+          export declare const CalendarDataBar32Light: FluentFontIcon;
+          export declare const CalendarDay32Light: FluentFontIcon;
           ... (content truncated for snapshot)"
         `);
       }
@@ -1540,36 +1542,36 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "export declare const AccessibilityCheckmark32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const Add32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const Alert32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const AppFolder32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const AppGeneric32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const Archive32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const ArchiveSettings32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const ArrowClockwise32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const ArrowDown32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
-          export declare const ArrowDownload32Light: import("react").FC<import("..").FluentIconsProps<import("react").HTMLAttributes<HTMLElement>, HTMLElement>> & {
-              codepoint: string;
-          };
+          "import type { FluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
+          export declare const AccessibilityCheckmark32Light: FluentFontIcon;
+          export declare const Add32Light: FluentFontIcon;
+          export declare const Alert32Light: FluentFontIcon;
+          export declare const AppFolder32Light: FluentFontIcon;
+          export declare const AppGeneric32Light: FluentFontIcon;
+          export declare const Archive32Light: FluentFontIcon;
+          export declare const ArchiveSettings32Light: FluentFontIcon;
+          export declare const ArrowClockwise32Light: FluentFontIcon;
+          export declare const ArrowDown32Light: FluentFontIcon;
+          export declare const ArrowDownload32Light: FluentFontIcon;
+          export declare const ArrowForward32Light: FluentFontIcon;
+          export declare const ArrowHookDownLeft32Light: FluentFontIcon;
+          export declare const ArrowHookDownRight32Light: FluentFontIcon;
+          export declare const ArrowHookUpLeft32Light: FluentFontIcon;
+          export declare const ArrowHookUpRight32Light: FluentFontIcon;
+          export declare const ArrowRedo32Light: FluentFontIcon;
+          export declare const ArrowReply32Light: FluentFontIcon;
+          export declare const ArrowReplyAll32Light: FluentFontIcon;
+          export declare const ArrowUndo32Light: FluentFontIcon;
+          export declare const Attach32Light: FluentFontIcon;
+          export declare const AutoFit32Light: FluentFontIcon;
+          export declare const AutoFitWidth32Light: FluentFontIcon;
+          export declare const Autocorrect32Light: FluentFontIcon;
+          export declare const BreakoutRoom32Light: FluentFontIcon;
+          export declare const Broom32Light: FluentFontIcon;
+          export declare const Calendar3Day32Light: FluentFontIcon;
+          export declare const CalendarClock32Light: FluentFontIcon;
+          export declare const CalendarDataBar32Light: FluentFontIcon;
+          export declare const CalendarDay32Light: FluentFontIcon;
           ... (content truncated for snapshot)"
         `);
       }

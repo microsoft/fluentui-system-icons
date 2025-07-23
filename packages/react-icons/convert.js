@@ -68,14 +68,15 @@ function processFiles(src, dest) {
 
   const indexPath = path.join(dest, 'index.tsx')
   // Finally add the interface definition and then write out the index.
-  indexContents.push('export { FluentIconsProps } from \'./utils/FluentIconsProps.types\'');
   indexContents.push('export { default as wrapIcon } from \'./utils/wrapIcon\'');
   indexContents.push('export { default as bundleIcon } from \'./utils/bundleIcon\'');
   indexContents.push('export { createFluentIcon } from \'./utils/createFluentIcon\'');
-  indexContents.push('export type { FluentIcon } from \'./utils/createFluentIcon\'');
   indexContents.push('export * from \'./utils/useIconState\'');
   indexContents.push('export * from \'./utils/constants\'');
   indexContents.push('export { IconDirectionContextProvider, useIconContext } from \'./contexts/index\'');
+  // types
+  indexContents.push('export type { FluentIconsProps } from \'./utils/FluentIconsProps.types\'');
+  indexContents.push('export type { FluentIcon } from \'./utils/createFluentIcon\'');
   indexContents.push('export type { IconDirectionContextValue } from \'./contexts/index\'');
 
   fs.writeFileSync(indexPath, indexContents.join('\n'), (err) => {
@@ -126,11 +127,11 @@ function processFolder(srcPath, destPath, resizable) {
       if (color) {
         // For color icons, extract the entire SVG inner content
         const innerSvg = iconContent.replace(/^[\s\S]*?<svg[^>]*>/, '').replace(/<\/svg>[\s\S]*$/, '').trim();
-        jsCode = `export const ${destFilename} = (/*#__PURE__*/createFluentIcon('${destFilename}', ${width}, \`${innerSvg}\`${options}));`
+        jsCode = `export const ${destFilename}: FluentIcon = (/*#__PURE__*/createFluentIcon('${destFilename}', ${width}, \`${innerSvg}\`${options}));`
       } else {
         // For non-color icons, keep the old path-based approach
         const paths = getAttr("d").join(',');
-        jsCode = `export const ${destFilename} = (/*#__PURE__*/createFluentIcon('${destFilename}', ${width}, [${paths}]${options}));`
+        jsCode = `export const ${destFilename}: FluentIcon = (/*#__PURE__*/createFluentIcon('${destFilename}', ${width}, [${paths}]${options}));`
       }
       iconExports.push(jsCode);
     }

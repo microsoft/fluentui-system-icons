@@ -69,15 +69,16 @@ async function processFiles(src, dest) {
 
   const indexPath = path.join(dest, 'index.tsx')
   // Finally add the interface definition and then write out the index.
-  indexContents.push('export { FluentIconsProps } from \'../utils/FluentIconsProps.types\'');
   indexContents.push('export { default as wrapIcon } from \'../utils/wrapIcon\'');
   indexContents.push('export { default as bundleIcon } from \'../utils/bundleIcon\'');
   indexContents.push('export { createFluentIcon } from \'../utils/createFluentIcon\'');
   indexContents.push('export { createFluentFontIcon } from \'../utils/fonts/createFluentFontIcon\'');
-  indexContents.push('export type { FluentIcon } from \'../utils/createFluentIcon\'');
   indexContents.push('export * from \'../utils/useIconState\'');
   indexContents.push('export * from \'../utils/constants\'');
   indexContents.push('export { IconDirectionContextProvider, useIconContext } from \'../contexts/index\'');
+  indexContents.push('export type { FluentIconsProps } from \'../utils/FluentIconsProps.types\'');
+  indexContents.push('export type { FluentIcon } from \'../utils/createFluentIcon\'');
+  indexContents.push('export type { FluentFontIcon } from \'../utils/fonts/createFluentFontIcon\'');
   indexContents.push('export type { IconDirectionContextValue } from \'../contexts/index\'');
 
 
@@ -123,6 +124,7 @@ async function processFolder(srcPath, codepointMapDestFolder, resizable) {
   }
 
   for (const chunk of iconChunks) {
+    chunk.unshift(`import type {FluentFontIcon} from "../../utils/fonts/createFluentFontIcon";`)
     chunk.unshift(`import {createFluentFontIcon} from "../../utils/fonts/createFluentFontIcon";`)
     chunk.unshift(`"use client";`);
   }
@@ -162,7 +164,7 @@ function generateReactIconEntries(iconEntries, resizable) {
     let destFilename = getReactIconNameFromGlyphName(iconName, resizable);
     var flipInRtl = metadata[destFilename] === 'mirror';
     let iconStyle = /filled$/i.test(iconName) ? 0 /* Filled */ : /regular$/i.test(iconName) ? 1 /* Regular */ : 3 /* Light */
-    var jsCode = `export const ${destFilename} = (/*#__PURE__*/createFluentFontIcon(${JSON.stringify(destFilename)
+    var jsCode = `export const ${destFilename}: FluentFontIcon = (/*#__PURE__*/createFluentFontIcon(${JSON.stringify(destFilename)
       }, ${JSON.stringify(String.fromCodePoint(codepoint))
       }, ${resizable ? 2 /* Resizable */ : iconStyle
       }, ${resizable ? undefined : ` ${/(?<=_)\d+(?=_filled|_regular|_light)/.exec(iconName)?.[0]}`
