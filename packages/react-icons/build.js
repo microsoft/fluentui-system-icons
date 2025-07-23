@@ -11,18 +11,24 @@ const { transformSync } = require('@babel/core');
 
 main();
 
+/**
+ * Builds source TypeScript and copys assets to the output directories.
+ *
+ * It transpiles TypeScript files to both ESNext and CommonJS formats,
+ * applies Babel transformations, and copies font assets.
+ * It also creates raw style copies for .styles.js files.
+ */
 function main(){
-  const projectRoot = join(__dirname);
+  const projectRoot = __dirname;
 
-  transpileTsc(projectRoot, { moduleFormat: 'esnext', outDir: 'lib' });
-  transpileTsc(projectRoot, { moduleFormat: 'commonjs', outDir: 'lib-cjs' });
+  transpileTsc({ moduleFormat: 'esnext', outDir: 'lib' },projectRoot);
+  transpileTsc({ moduleFormat: 'commonjs', outDir: 'lib-cjs' },projectRoot);
 
   applyBabelTransform('lib', projectRoot);
   applyBabelTransform('lib-cjs', projectRoot);
 
-  const assets = glob.sync('src/utils/fonts/*.{ttf,woff,woff2,json}', { cwd: projectRoot });
-  copyAssets(assets, './lib/utils/fonts', projectRoot);
-  copyAssets(assets, './lib-cjs/utils/fonts', projectRoot);
+  copyAssets('src/utils/fonts/*.{ttf,woff,woff2,json}', './lib/utils/fonts', projectRoot);
+  copyAssets('src/utils/fonts/*.{ttf,woff,woff2,json}', './lib-cjs/utils/fonts', projectRoot);
 
 }
 
@@ -49,10 +55,10 @@ function createRawStylesCopy(styleFile) {
 
 /**
  *
- * @param {string} baseDir
  * @param {{moduleFormat:'esnext'|'commonjs'; outDir:string}} options
+ * @param {string} baseDir
  */
-function transpileTsc(baseDir,options) {
+function transpileTsc(options, baseDir) {
  const {moduleFormat,outDir} = options;
   console.log(`Transpiling module format [${moduleFormat}] to -> ${outDir}/`);
   const cmd = `npx tsc -p . --module ${moduleFormat} --outDir ${outDir}`;
@@ -113,15 +119,16 @@ function applyBabelTransform(root, baseDir) {
 
 /**
  *
- * @param {string[]} src
+ * @param {string} src - globs of files to copy
  * @param {string} dest
  * @param {string} baseDir
  */
 function copyAssets(src, dest, baseDir){
 
+  const assets = glob.sync(src, { cwd: baseDir });
+  console.log(`Copying ${src} assets to -> ${dest}:`);
 
-  console.log(`Copying assets to ${dest}:`);
-  src.forEach(file => {
+  assets.forEach(file => {
     const sourcePath = join(baseDir, file);
     const targetPath = join(baseDir,dest, basename(file));
 
