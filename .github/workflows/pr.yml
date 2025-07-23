@@ -155,8 +155,9 @@ jobs:
 
     - run: npm ci
 
-    - name: Build @fluentui/react-icons
+    - name: Lint/Test/Build @fluentui/react-icons
       run: |
+        npm run lint
         npm run build
         npm run build:verify
       working-directory: packages/react-icons
