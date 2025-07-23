@@ -23,7 +23,7 @@
     "generate:font": "concurrently 'npm run generate:font-regular' 'npm run generate:font-filled' 'npm run generate:font-light' 'npm run generate:font-resizable'",
     "generate:rtl": "node ../../importer/rtlMetadata.js --source=../../assets --dest=./intermediate/rtl.json",
     "optimize": "svgo --config svgo.config.js --folder=./intermediate --precision=2 --quiet",
-    "unfill": "node unfill.js --source=./intermediate --dest=./intermediate",
+    "unfill": "node unfill.js --source=./intermediate",
     "build:fonts-and-svg": "npm run generate:assets-to-svg && npm run generate:font && npm run generate:rtl && npm run optimize && npm run unfill",
     "build:generate-js-chunks": "npm run convert:svg && npm run convert:fonts",
     "build:js": "node build.js",
