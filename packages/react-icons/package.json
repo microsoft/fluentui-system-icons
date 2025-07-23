@@ -13,18 +13,18 @@
   },
   "scripts": {
     "clean": "git clean -fXd lib/ lib-cjs/ intermediate/ src/",
-    "copy": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
+    "generate:assets-to-svg": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
     "convert:svg": "node convert.js --source=./intermediate --dest=./src --rtl=./intermediate/rtl.json",
     "convert:fonts": "node convert-font.js --source=./src/utils/fonts --dest=./src/fonts --codepointDest=./src/utils/fonts --rtl=./intermediate/rtl.json",
     "generate:font-regular": "node ../../importer/generateFont.js --source=intermediate --dest=src/utils/fonts --iconType=Regular --codepoints=../../fonts/FluentSystemIcons-Regular.json",
     "generate:font-filled": "node ../../importer/generateFont.js --source=intermediate --dest=src/utils/fonts --iconType=Filled --codepoints=../../fonts/FluentSystemIcons-Filled.json",
     "generate:font-light": "node ../../importer/generateFont.js --source=intermediate --dest=src/utils/fonts --iconType=Light",
     "generate:font-resizable": "node ../../importer/generateFont.js --source=intermediate --dest=src/utils/fonts --iconType=Resizable",
-    "generate:font": "npm run generate:font-regular && npm run generate:font-filled && npm run generate:font-light && npm run generate:font-resizable",
+    "generate:font": "concurrently 'npm run generate:font-regular' 'npm run generate:font-filled' 'npm run generate:font-light' 'npm run generate:font-resizable'",
     "generate:rtl": "node ../../importer/rtlMetadata.js --source=../../assets --dest=./intermediate/rtl.json",
     "optimize": "svgo --config svgo.config.js --folder=./intermediate --precision=2 --quiet",
     "unfill": "find ./intermediate -type f -name \"*.svg\" ! -name \"*_color*\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./intermediate -type f -name \"*.bak\" -delete",
-    "build:fonts-and-svg": "npm run copy && npm run generate:font && npm run generate:rtl && npm run optimize && npm run unfill",
+    "build:fonts-and-svg": "npm run generate:assets-to-svg && npm run generate:font && npm run generate:rtl && npm run optimize && npm run unfill",
     "build:generate-js-chunks": "npm run convert:svg && npm run convert:fonts",
     "build:js": "node build.js",
     "prebuild": "npm run clean",
@@ -38,6 +38,7 @@
     "@griffel/babel-preset": "^1.0.0",
     "@griffel/eslint-plugin": "^2.0.0",
     "@types/react": "^17.0.2",
+    "concurrently": "^9.2.0",
     "eslint": "^8.57.0",
     "glob": "^7.2.0",
     "lodash": "^4.17.21",
@@ -106,4 +107,3 @@
     }
   }
 }
-
