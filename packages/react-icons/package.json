@@ -30,12 +30,15 @@
     "prebuild": "npm run clean",
     "build": "npm run build:fonts-and-svg && npm run build:generate-js-chunks && npm run build:js",
     "build:verify": "vitest run build-verify.test.js",
+    "lint": "eslint src",
     "test": "vitest --exclude build-verify.test.js"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@griffel/babel-preset": "^1.0.0",
+    "@griffel/eslint-plugin": "^2.0.0",
     "@types/react": "^17.0.2",
+    "eslint": "^8.57.0",
     "glob": "^7.2.0",
     "lodash": "^4.17.21",
     "mkdirp": "^1.0.4",
@@ -43,6 +46,7 @@
     "renamer": "^2.0.1",
     "svgo": "^2.8.0",
     "typescript": "~4.1.0",
+    "typescript-eslint": "^7.18.0",
     "vitest": "^3.2.4",
     "yargs": "^14.0.0"
   },
