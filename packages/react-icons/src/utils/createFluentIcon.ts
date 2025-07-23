@@ -1,7 +1,8 @@
 import * as React from "react";
+import { mergeClasses } from "@griffel/react";
 import { FluentIconsProps } from "./FluentIconsProps.types";
 import { useIconState } from "./useIconState";
-import { makeStyles, mergeClasses } from "@griffel/react";
+import { useRootStyles } from "./createFluentIcon.styles";
 
 export type FluentIcon = {
     (props: FluentIconsProps): JSX.Element;
@@ -13,16 +14,7 @@ export type CreateFluentIconOptions = {
     color?: boolean;
 }
 
-const useRootStyles = makeStyles({
-  root: {
-    // This style is required because browsers automatically have SVGs set to
-    // forced-color-adjust: preserve-parent-color, which will not override
-    // internally-defined colors in our SVG icons in high contrast mode.
-    "@media (forced-colors: active)": {
-      forcedColorAdjust: "auto",
-    },
-  },
-});
+
 
 export const createFluentIcon = (displayName: string, width: string, pathsOrSvg: string[] | string, options?: CreateFluentIconOptions): FluentIcon => {
     const styles = useRootStyles();

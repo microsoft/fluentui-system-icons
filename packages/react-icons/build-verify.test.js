@@ -133,10 +133,88 @@ describe('Build Verification', () => {
     });
   });
 
- // TODO: enable once griffel RAW modules are available
-  describe.skip('Styles Files', () => {
-    it('should have required styles files in utils', async () => {
-      const utilsPath = path.join(__dirname, 'lib', 'utils');
+  describe('Styles Files', () => {
+   it(`should produce griffel processed .styles.js and unprocessed .styles.raw.js [lib]`, () => {
+
+     const root = path.join(__dirname, 'lib');
+     const processed = 'utils/useIconStyles.styles.js'
+     const unprocessed = 'utils/useIconStyles.styles.raw.js'
+     expect(fs.readFileSync(path.join(root, processed), 'utf8')).toMatchInlineSnapshot(`
+       "import { __styles } from "@griffel/react";
+       export const useStyles = __styles({
+         "root": {
+           "mc9l5x": "f1w7gpdv",
+           "Bg96gwp": "fez10in"
+         },
+         "rtl": {
+           "Bz10aip": "f13rod7r"
+         }
+       }, {
+         "d": [".f1w7gpdv{display:inline;}", ".fez10in{line-height:0;}", ".f13rod7r{-webkit-transform:scaleX(-1);-moz-transform:scaleX(-1);-ms-transform:scaleX(-1);transform:scaleX(-1);}"]
+       });"
+     `);
+     expect(fs.readFileSync(path.join(root, unprocessed), 'utf8')).toMatchInlineSnapshot(`
+       "import { makeStyles } from "@griffel/react";
+       export const useStyles = makeStyles({
+           root: {
+               display: 'inline',
+               lineHeight: 0
+           },
+           rtl: {
+               transform: 'scaleX(-1)'
+           }
+       });
+       "
+     `);
+
+   });
+
+   it(`should produce griffel processed .styles.js and unprocessed .styles.raw.js [lib-cjs]`, () => {
+
+     const root = path.join(__dirname, 'lib-cjs');
+     const processed = 'utils/useIconStyles.styles.js'
+     const unprocessed = 'utils/useIconStyles.styles.raw.js'
+     expect(fs.readFileSync(path.join(root, processed), 'utf8')).toMatchInlineSnapshot(`
+       ""use strict";
+
+       Object.defineProperty(exports, "__esModule", {
+         value: true
+       });
+       exports.useStyles = void 0;
+       const react_1 = require("@griffel/react");
+       exports.useStyles = react_1.__styles({
+         "root": {
+           "mc9l5x": "f1w7gpdv",
+           "Bg96gwp": "fez10in"
+         },
+         "rtl": {
+           "Bz10aip": "f13rod7r"
+         }
+       }, {
+         "d": [".f1w7gpdv{display:inline;}", ".fez10in{line-height:0;}", ".f13rod7r{-webkit-transform:scaleX(-1);-moz-transform:scaleX(-1);-ms-transform:scaleX(-1);transform:scaleX(-1);}"]
+       });"
+     `);
+     expect(fs.readFileSync(path.join(root, unprocessed), 'utf8')).toMatchInlineSnapshot(`
+       ""use strict";
+       Object.defineProperty(exports, "__esModule", { value: true });
+       exports.useStyles = void 0;
+       const react_1 = require("@griffel/react");
+       exports.useStyles = react_1.makeStyles({
+           root: {
+               display: 'inline',
+               lineHeight: 0
+           },
+           rtl: {
+               transform: 'scaleX(-1)'
+           }
+       });
+       "
+     `);
+
+   });
+
+    it.each(['lib', 'lib-cjs'])('should have required styles files in utils (%s)', async (libDir) => {
+      const utilsPath = path.join(__dirname, libDir, 'utils');
       const files = await readdir(utilsPath);
 
       // Check for .styles.raw.js files
@@ -163,8 +241,8 @@ describe('Build Verification', () => {
       }
     });
 
-    it('should have required font styles files in utils/fonts', async () => {
-      const fontsUtilsPath = path.join(__dirname, 'lib', 'utils', 'fonts');
+    it.each(['lib', 'lib-cjs'])('should have required font styles files in utils/fonts (%s)', async (libDir) => {
+      const fontsUtilsPath = path.join(__dirname, libDir, 'utils', 'fonts');
       const expectedFontsStylesFiles = [
         'createFluentFontIcon.styles.raw.js',
         'createFluentFontIcon.styles.js'
@@ -1526,9 +1604,8 @@ describe('Build Verification', () => {
       const fontCreationFiles = [
         'createFluentFontIcon.js',
         'createFluentFontIcon.d.ts',
-        // TODO: enable once griffel RAW modules are available
-        // 'createFluentFontIcon.shared.js',
-        // 'createFluentFontIcon.shared.d.ts'
+        'createFluentFontIcon.shared.js',
+        'createFluentFontIcon.shared.d.ts'
       ];
 
       for (const file of fontCreationFiles) {
