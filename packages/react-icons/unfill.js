@@ -1,6 +1,6 @@
 // @ts-check
 
-const {readFile, writeFile, readdir, stat, mkdir} = require('node:fs/promises');
+const {readFile, writeFile, readdir, stat} = require('node:fs/promises');
 const path = require('node:path');
 
 const yargs = require('yargs');
@@ -33,12 +33,7 @@ async function main() {
       alias: 's',
       description: 'Source directory containing SVG files',
       type: 'string',
-      default: './intermediate'
-    })
-    .option('dest', {
-      alias: 'd',
-      description: 'Destination directory for processed files',
-      type: 'string'
+      demandOption: true
     })
     .option('dry-run', {
       description: 'Show what would be modified without writing changes to disk',
@@ -47,25 +42,17 @@ async function main() {
     })
     .help()
     .alias('help', 'h')
-    .example('$0 --source ./intermediate --dest ./output', 'Process SVG files from intermediate to output directory')
     .example('$0 --source ./intermediate', 'Process SVG files in place')
     .example('$0 --source ./intermediate --dry-run', 'Preview what would be modified without making changes')
     .argv;
 
   const startTime = Date.now();
   const sourceDir = path.resolve(argv.source);
-  const destDir = argv.dest ? path.resolve(argv.dest) : sourceDir;
   const dryRun = argv['dry-run'];
-
-  const inPlace = sourceDir === destDir;
 
   console.log(`🚀 Starting ${dryRun ? 'dry-run ' : ''}unfill process...`);
   console.log(`📁 Source directory: ${sourceDir}`);
-  if (!inPlace) {
-    console.log(`📁 Destination directory: ${destDir}`);
-  } else {
-    console.log('📁 Processing files in place');
-  }
+  console.log('📁 Processing files in place');
 
   if (dryRun) {
     console.log('🔍 DRY RUN MODE: No files will be modified');
@@ -93,7 +80,7 @@ async function main() {
 
     console.log('⚡ Processing files...');
 
-    await processFilesInBatches(svgResults.processableSvgFiles, sourceDir, destDir, dryRun);
+    await processFilesInBatches(svgResults.processableSvgFiles, dryRun);
 
     const endTime = Date.now();
     const duration = ((endTime - startTime) / 1000).toFixed(2);
@@ -168,13 +155,11 @@ function removeFillNone(content) {
 /**
  * Process multiple files in parallel batches for optimal performance
  * @param {string[]} files - Array of file paths to process
- * @param {string} sourceDir - Source directory path
- * @param {string} destDir - Destination directory path
  * @param {boolean} dryRun - Whether to perform a dry run (no file writes)
  * @param {number} batchSize - Number of files to process in parallel
  * @returns {Promise<void>}
  */
-async function processFilesInBatches(files, sourceDir, destDir, dryRun = false, batchSize = 50) {
+async function processFilesInBatches(files, dryRun = false, batchSize = 50) {
   let processedCount = 0;
   let modifiedCount = 0;
 
@@ -186,20 +171,12 @@ async function processFilesInBatches(files, sourceDir, destDir, dryRun = false, 
         const originalContent = await readFile(filePath, 'utf8');
         const modifiedContent = removeFillNone(originalContent);
 
-        // Calculate output path
-        const relativePath = path.relative(sourceDir, filePath);
-        const outputPath = path.join(destDir, relativePath);
-
-        // Check if content would change or if writing to different directory
-        const wouldModify = originalContent !== modifiedContent || sourceDir !== destDir;
+        // Check if content would change
+        const wouldModify = originalContent !== modifiedContent;
 
         if (wouldModify) {
           if (!dryRun) {
-            // Ensure output directory exists
-            const outputDir = path.dirname(outputPath);
-            await mkdir(outputDir, { recursive: true });
-
-            await writeFile(outputPath, modifiedContent, 'utf8');
+            await writeFile(filePath, modifiedContent, 'utf8');
           }
           modifiedCount++;
         }
