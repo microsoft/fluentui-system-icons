@@ -79,16 +79,14 @@ function applyBabelTransform(root, baseDir) {
   const jsRoot = join(baseDir,root)
 
   console.log(`Processing .js files with babel in ${jsRoot}:`);
-  const jsFiles = glob.sync('**/*.js', { cwd: jsRoot });
+  const jsFiles = glob.sync('**/*.styles.js', { cwd: jsRoot });
 
 
   for (const filename of jsFiles) {
-    const isStylesFile = filename.endsWith('.styles.js');
+
     const filePath = join(jsRoot, filename);
 
-    if (isStylesFile) {
-      createRawStylesCopy(filePath)
-    };
+    createRawStylesCopy(filePath)
 
     const codeBuffer = readFileSync(filePath);
     const sourceCode = codeBuffer.toString().replace(EOL_REGEX, '\n');
@@ -100,8 +98,7 @@ function applyBabelTransform(root, baseDir) {
       // to avoid leaking of global configs
       babelrcRoots: [baseDir],
       filename: filePath,
-      // Only apply @griffel preset to .styles.js files
-      presets: isStylesFile ? griffelPreset : [],
+      presets: griffelPreset,
     });
 
     const resultCode = result?.code;
@@ -111,7 +108,7 @@ function applyBabelTransform(root, baseDir) {
       continue;
     }
 
-    const prefix = isStylesFile ? '  ✓ [griffel]' : '  ✓ [babel]';
+    const prefix = '  ✓ [griffel]';
     console.log(`${prefix} ${filename}`);
     writeFileSync(filePath, resultCode);
   }
