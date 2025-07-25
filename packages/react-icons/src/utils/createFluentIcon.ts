@@ -17,9 +17,9 @@ export type CreateFluentIconOptions = {
 
 
 export const createFluentIcon = (displayName: string, width: string, pathsOrSvg: string[] | string, options?: CreateFluentIconOptions): FluentIcon => {
-    const styles = useRootStyles();
     const viewBoxWidth = width === "1em" ? "20" : width;
     const Icon = React.forwardRef((props: FluentIconsProps, ref: React.Ref<HTMLElement>) => {
+        const styles = useRootStyles();
         const iconState = useIconState(props, { flipInRtl: options?.flipInRtl }); // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
         const state = {
             ...iconState,
