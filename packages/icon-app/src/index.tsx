@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as fontsModule from '@fluentui/react-icons/lib/fonts';
-// @ts-ignore
 import * as svgModule from '@fluentui/react-icons/lib/svg';
 import { makeStyles } from "@griffel/react";
 
@@ -13,7 +12,6 @@ function main() {
     document.body.append(rootDiv);
 
     ReactDOM.render(<MainComponent />, rootDiv);
-
 
 }
 
@@ -28,8 +26,24 @@ const useRootStyles = makeStyles({
 
 function MainComponent() {
     const styles = useRootStyles();
+
+    // Get all unique icon names from both font and svg components
+    const allIconNames = Array.from(new Set([
+        ...Object.keys(fontComponents),
+        ...Object.keys(svgComponents)
+    ])).sort();
+
+    console.log('Total unique icons', allIconNames.length);
+
     return (<div className={styles.root}>
-        {Object.keys(fontComponents).map(name => <IconCell FontIcon={fontComponents[name]} SvgIcon={svgComponents[name]} name={name} key={name} />)}
+        {allIconNames.map(name =>
+            <IconCell
+                FontIcon={fontComponents[name]}
+                SvgIcon={svgComponents[name]}
+                name={name}
+                key={name}
+            />
+        )}
     </div>)
 }
 
@@ -81,28 +95,67 @@ const useCellStyles = makeStyles({
     }
 });
 
-function IconCell({ FontIcon, SvgIcon, name }: { FontIcon: React.ComponentType, SvgIcon: React.ComponentType, name: string }) {
-    const styles = useCellStyles()
+function IconCell({ FontIcon, SvgIcon, name }: { FontIcon?: React.ComponentType, SvgIcon?: React.ComponentType, name: string }) {
+    const styles = useCellStyles();
+
     return <div className={styles.root}>
         <div className={styles.iconZone}>
-            <div className={styles.iconCell}><FontIcon /><span className={styles.sublabel}>font</span></div>
-            <div className={styles.iconCell}><SvgIcon /><span className={styles.sublabel}>svg</span></div>
+            <div className={styles.iconCell}>
+                {FontIcon ? <FontIcon /> : <span>N/A</span>}
+                <span className={styles.sublabel}>font</span>
+            </div>
+            <div className={styles.iconCell}>
+                {SvgIcon ? <SvgIcon /> : <span>N/A</span>}
+                <span className={styles.sublabel}>svg</span>
+            </div>
         </div>
         <span className={styles.mainLabel} title={name}>{name}</span>
     </div>
 }
 
 function filterModuleImports(mod: Record<string, unknown>): Record<string, React.ComponentType> {
-    const importsToFilter = new Set(['wrapIcon', 'bundleIcon', 'useIconState', 'iconFilledClassName', 'iconRegularClassName', 'iconLightClassName', '_esModule']);
     const components: Record<string, React.ComponentType> = {};
 
     for (const [name, possibleComponent] of Object.entries(mod)) {
-        if (!importsToFilter.has(name)) {
+
+
+        // Check if name is in PascalCase (starts with uppercase letter)
+        if (name.charAt(0) !== name.charAt(0).toUpperCase()) {
+            continue;
+        }
+
+        // Check if it's a React component (function component or forwardRef)
+        if (isReactComponent(possibleComponent)) {
             components[name] = possibleComponent as React.ComponentType;
         }
     }
 
     return components;
+}
+
+function isReactComponent(value: unknown): value is React.ComponentType {
+
+    // Check if it's a function (functional component)
+    if (typeof value === 'function') {
+        return true;
+    }
+
+    // Check if it's a React.forwardRef component
+    if (value && typeof value === 'object') {
+        const obj = value as any;
+
+        // React.forwardRef components have a specific $$typeof symbol
+        if (obj.$$typeof === Symbol.for('react.forward_ref')) {
+            return true;
+        }
+
+        // React.memo wrapped components
+        if (obj.$$typeof === Symbol.for('react.memo')) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 main();
