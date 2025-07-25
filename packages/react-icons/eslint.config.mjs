@@ -1,6 +1,7 @@
 // @ts-check
 import tseslint from 'typescript-eslint';
 import griffelPlugin from '@griffel/eslint-plugin';
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
 
 export default tseslint.config(
   {
@@ -26,10 +27,13 @@ export default tseslint.config(
     files: ['**/*.{ts,tsx}'],
     plugins: {
       '@griffel': griffelPlugin,
+      'react-hooks': reactHooksPlugin,
     },
     rules: {
       '@griffel/no-shorthands': 'error',
       '@griffel/styles-file': 'error',
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'warn',
     },
   },
 );
