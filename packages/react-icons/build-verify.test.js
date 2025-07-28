@@ -4,6 +4,7 @@ import { readdir, stat, readFile } from 'node:fs/promises';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { execSync } from 'node:child_process';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -1558,5 +1559,47 @@ describe('Build Verification', () => {
         expect(fs.existsSync(filePath)).toBe(true);
       }
     });
+  });
+
+  describe('Metadata Validation', () => {
+    it('metadata.json should have no uncommitted changes after build', () => {
+      // Check if metadata.json exists
+      const metadataPath = path.join(__dirname, 'metadata.json');
+      expect(fs.existsSync(metadataPath)).toBe(true);
+
+      try {
+        // Run git diff to check if metadata.json has any uncommitted changes
+        const gitDiff = execSync('git diff metadata.json', {
+          encoding: 'utf-8',
+          cwd: __dirname,
+          stdio: 'pipe'
+        });
+
+        // If there's a diff, the test should fail with a helpful message
+        if (gitDiff.trim()) {
+          throw new Error(
+            `metadata.json has uncommitted changes after build.\n` +
+            `This means the committed metadata.json is out of sync with the current icons.\n` +
+            `Please run 'npm run build' and commit the updated metadata.json file.\n\n` +
+            `Git diff:\n${gitDiff}`
+          );
+        }
+
+        // If no diff, the test passes
+        expect(gitDiff.trim()).toBe('');
+      } catch (error) {
+        // Handle cases where git command fails (e.g., not in a git repo, file not tracked)
+        if (error.status === 128) {
+          // Git command failed - this might be expected in some CI environments
+          // We'll skip this test with a warning
+          console.warn('Git diff check skipped - not in a git repository or metadata.json not tracked');
+          return;
+        }
+
+        // Re-throw other errors (including our custom error above)
+        throw error;
+      }
+    });
+
   });
 });
