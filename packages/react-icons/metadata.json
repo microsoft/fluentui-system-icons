@@ -4179,6 +4179,16 @@
     "font": true,
     "type": "resizable"
   },
+  "CalendarCheckmarkSparkleFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "CalendarCheckmarkSparkleRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "CalendarClockColor": {
     "svg": true,
     "font": false,
@@ -9714,6 +9724,16 @@
     "font": true,
     "type": "resizable"
   },
+  "DocumentSquareFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DocumentSquareRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "DocumentSyncFilled": {
     "svg": true,
     "font": true,
@@ -11689,6 +11709,16 @@
     "font": true,
     "type": "resizable"
   },
+  "FormMultipleCollectionFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "FormMultipleCollectionRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "FormNewFilled": {
     "svg": true,
     "font": true,
@@ -11711,12 +11741,12 @@
   },
   "Fps120Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "Fps120Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "Fps124Filled": {
@@ -25360,6 +25390,16 @@
     "type": "resizable"
   },
   "TextQuoteRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TextQuoteOpeningFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TextQuoteOpeningRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -42519,6 +42559,66 @@
     "font": true,
     "type": "sized"
   },
+  "CalendarCheckmarkSparkle16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarCheckmarkSparkle16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarCheckmarkSparkle20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarCheckmarkSparkle20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarCheckmarkSparkle24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarCheckmarkSparkle24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarCheckmarkSparkle28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarCheckmarkSparkle28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarCheckmarkSparkle32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarCheckmarkSparkle32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarCheckmarkSparkle48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarCheckmarkSparkle48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "CalendarClock16Color": {
     "svg": true,
     "font": false,
@@ -43110,6 +43210,16 @@
     "type": "sized"
   },
   "CalendarMention20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarMonth16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarMonth16Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -62149,6 +62259,66 @@
     "font": true,
     "type": "sized"
   },
+  "DocumentSquare16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentSquare16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentSquare20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentSquare20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentSquare24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentSquare24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentSquare28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentSquare28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentSquare32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentSquare32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentSquare48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentSquare48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "DocumentSync16Filled": {
     "svg": true,
     "font": true,
@@ -66994,6 +67164,16 @@
     "font": true,
     "type": "sized"
   },
+  "FlowDot16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FlowDot16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "FlowDot20Filled": {
     "svg": true,
     "font": true,
@@ -68640,6 +68820,36 @@
     "type": "sized"
   },
   "FormMultiple48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FormMultipleCollection20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FormMultipleCollection20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FormMultipleCollection24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FormMultipleCollection24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FormMultipleCollection32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FormMultipleCollection32Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -110864,12 +111074,42 @@
     "font": true,
     "type": "sized"
   },
+  "TaskListSquareLtr48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TaskListSquareLtr48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "TaskListSquarePerson20Filled": {
     "svg": true,
     "font": true,
     "type": "sized"
   },
   "TaskListSquarePerson20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TaskListSquarePerson24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TaskListSquarePerson24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TaskListSquarePerson48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TaskListSquarePerson48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -115574,6 +115814,76 @@
     "font": true,
     "type": "sized"
   },
+  "TextQuote28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextQuote28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextQuote32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextQuote32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextQuoteOpening16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextQuoteOpening16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextQuoteOpening20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextQuoteOpening20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextQuoteOpening24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextQuoteOpening24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextQuoteOpening28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextQuoteOpening28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextQuoteOpening32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextQuoteOpening32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "TextSortAscending16Filled": {
     "svg": true,
     "font": true,
@@ -117309,6 +117619,11 @@
     "font": true,
     "type": "sized"
   },
+  "TopSpeed16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "TopSpeed20Filled": {
     "svg": true,
     "font": true,
@@ -117450,6 +117765,16 @@
     "type": "sized"
   },
   "Transmission24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TransparencySquare16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TransparencySquare16Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -123273,15 +123598,5 @@
     "svg": true,
     "font": true,
     "type": "sized"
-  },
-  "Fps1Filled": {
-    "svg": false,
-    "font": true,
-    "type": "resizable"
-  },
-  "Fps1Regular": {
-    "svg": false,
-    "font": true,
-    "type": "resizable"
   }
 }
