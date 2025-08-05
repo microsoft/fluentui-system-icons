@@ -41,6 +41,7 @@ async function processFiles(src, dest, metadataPath) {
   const indexContents = [];
 
   // Collect all SVG metadata
+  /** @type {import('./convert.utils').IconMetadataCollection} */
   const svgMetadata = {};
 
   // make file for resizeable icons

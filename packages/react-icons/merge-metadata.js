@@ -36,7 +36,9 @@ async function mergeMetadata() {
   const fontMetadataPath = path.resolve(argv.fontMetadata);
   const outputPath = path.resolve(argv.output);
 
+  /** @type {import('./convert.utils').IconMetadataCollection} */
   let svgMetadata = {};
+  /** @type {import('./convert.utils').IconMetadataCollection} */
   let fontMetadata = {};
 
   // Read SVG metadata if it exists
@@ -62,12 +64,7 @@ async function mergeMetadata() {
   }
 
   // Merge metadata: combine SVG and font data
-  const mergedMetadata = {};
-
-  // Add all SVG icons
-  for (const [iconName, iconData] of Object.entries(svgMetadata)) {
-    mergedMetadata[iconName] = { ...iconData };
-  }
+  const mergedMetadata = structuredClone(svgMetadata);
 
   // Add font data to existing icons or create new entries
   for (const [iconName, iconData] of Object.entries(fontMetadata)) {

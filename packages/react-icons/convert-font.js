@@ -50,6 +50,7 @@ async function processFiles(src, dest, metadataPath) {
   const indexContents = [];
 
   // Collect all font metadata
+  /** @type {import('./convert.utils').IconMetadataCollection} */
   const fontMetadata = {};
 
   // make file for resizeable icons

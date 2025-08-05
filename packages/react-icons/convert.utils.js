@@ -15,18 +15,32 @@
  * }
  */
 
+/**
+ * @typedef {Object} IconMetadata
+ * @property {boolean} svg - true if icon exists in SVG format
+ * @property {boolean} font - true if icon exists in font format
+ * @property {'resizable' | 'sized'} type - icon type classification
+ */
+
+/**
+ * @typedef {Record<string, IconMetadata>} IconMetadataCollection
+ */
+
 const fs = require("node:fs/promises");
 const path = require("node:path");
+
+
+
 
 /**
  * Create metadata for specific format (SVG or font)
  * @param {string[]} iconNames - Array of icon names
  * @param {'svg' | 'font'} iconFormat - Format of the icons (svg or font)
- * @param {'resizable' | 'sized'} iconType - Type of the icons (resizable or sized)
- * @returns {Record<string, {svg: boolean, font: boolean, type: string}>}
+ * @param {IconMetadata['type']} iconType - Type of the icons (resizable or sized)
+ * @returns {IconMetadataCollection}
  */
 function createFormatMetadata(iconNames, iconFormat, iconType) {
-  const metadata = /** @type {Record<string, {svg: boolean, font: boolean, type: string}>} */ ({});
+  const metadata = /** @type {IconMetadataCollection} */ ({});
   iconNames.forEach(name => {
     metadata[name] = {
       svg: iconFormat === 'svg',
