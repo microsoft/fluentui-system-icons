@@ -36,6 +36,7 @@ packages/react-icons/src/utils/fonts/*.woff2
 packages/react-icons/src/utils/fonts/*.css
 packages/react-icons/src/utils/fonts/*.html
 packages/react-icons/src/utils/fonts/*.json
+packages/react-icons/src/utils/fonts/**/*.svg
 
 packages/react-native-icons/intermediate
 packages/react-native-icons/react-icons-test/
