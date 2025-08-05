@@ -5,10 +5,12 @@ const fs = require("fs");
 const path = require("path");
 const argv = require("yargs").boolean("selector").default("selector", false).argv;
 const _ = require("lodash");
+const { createFormatMetadata, writeMetadata } = require("./convert.utils");
 
 const SRC_PATH = argv.source;
 const DEST_PATH = argv.dest;
 const RTL_FILE = argv.rtl;
+const METADATA_PATH = argv.metadata;
 
 if (!SRC_PATH) {
   throw new Error("Icon source folder not specified by --source");
@@ -21,19 +23,30 @@ if (!RTL_FILE) {
   throw new Error("RTL file not specified by --rtl");
 }
 
+if (!METADATA_PATH) {
+  throw new Error("Metadata output file not specified by --metadata");
+}
+
 if (!fs.existsSync(DEST_PATH)) {
   fs.mkdirSync(DEST_PATH);
 }
 
-processFiles(SRC_PATH, DEST_PATH)
+processFiles(SRC_PATH, DEST_PATH, METADATA_PATH).catch(err => {
+  console.error('Error processing files:', err);
+  process.exit(1);
+});
 
-function processFiles(src, dest) {
+async function processFiles(src, dest, metadataPath) {
   /** @type string[] */
   const indexContents = [];
 
+  // Collect all SVG metadata
+  /** @type {import('./convert.utils').IconMetadataCollection} */
+  const svgMetadata = {};
+
   // make file for resizeable icons
   const iconPath = path.join(dest, 'icons')
-  const iconContents = processFolder(src, dest, true)
+  const { content: iconContents, iconNames: resizableIconNames } = processFolder(src, dest, true)
 
   if (fs.existsSync(iconPath)) {
     fs.rmSync(iconPath, { recursive: true, force: true } );
@@ -49,9 +62,12 @@ function processFiles(src, dest) {
     });
   });
 
+  // Create SVG metadata for resizable icons
+  Object.assign(svgMetadata, createFormatMetadata(resizableIconNames, 'svg', 'resizable'));
+
   // make file for sized icons
   const sizedIconPath = path.join(dest, 'sizedIcons');
-  const sizedIconContents = processFolder(src, dest, false)
+  const { content: sizedIconContents, iconNames: sizedIconNames } = processFolder(src, dest, false)
   if (fs.existsSync(sizedIconPath)) {
     fs.rmSync(sizedIconPath, { recursive: true, force: true } );
   }
@@ -65,6 +81,9 @@ function processFiles(src, dest) {
       if (err) throw err;
     });
   });
+
+  // Create SVG metadata for sized icons
+  Object.assign(svgMetadata, createFormatMetadata(sizedIconNames, 'svg', 'sized'));
 
   const indexPath = path.join(dest, 'index.tsx')
   // Finally add the interface definition and then write out the index.
@@ -83,18 +102,25 @@ function processFiles(src, dest) {
     if (err) throw err;
   });
 
+  // Write SVG metadata
+  if (metadataPath) {
+    await writeMetadata(metadataPath, svgMetadata);
+  }
+
 }
 
 /**
  * Process a folder of svg files and convert them to React components, following naming patterns for the FluentUI System Icons
  * @param {string} srcPath
  * @param {boolean} resizable
- * @returns { string [] } - chunked icon files to insert
+ * @returns { { content: string[], iconNames: string[] } } - chunked icon files to insert and list of icon names
  */
 function processFolder(srcPath, destPath, resizable) {
   var files = fs.readdirSync(srcPath)
   /** @type string[] */
   const iconExports = [];
+  /** @type string[] */
+  const iconNames = [];
   var metadata = JSON.parse(fs.readFileSync(RTL_FILE, 'utf-8'));
   //console.log(metadata);
   files.forEach(function (file, index) {
@@ -134,6 +160,7 @@ function processFolder(srcPath, destPath, resizable) {
         jsCode = `export const ${destFilename}: FluentIcon = (/*#__PURE__*/createFluentIcon('${destFilename}', ${width}, [${paths}]${options}));`
       }
       iconExports.push(jsCode);
+      iconNames.push(destFilename);
     }
   });
 
@@ -153,7 +180,7 @@ function processFolder(srcPath, destPath, resizable) {
   /** @type string[] */
   const chunkContent = iconChunks.map(chunk => chunk.join('\n'));
 
-  return chunkContent;
+  return { content: chunkContent, iconNames };
 }
 
 function fileTemplate(

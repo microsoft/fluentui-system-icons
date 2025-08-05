@@ -12,10 +12,11 @@
     "url": "https://github.com/microsoft/fluentui-system-icons.git"
   },
   "scripts": {
-    "clean": "git clean -fXd lib/ lib-cjs/ intermediate/ src/",
+    "clean": "git clean -fXd lib/ lib-cjs/ intermediate/ src/ tmp/",
     "generate:assets-to-svg": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
-    "convert:svg": "node convert.js --source=./intermediate --dest=./src --rtl=./intermediate/rtl.json",
-    "convert:fonts": "node convert-font.js --source=./src/utils/fonts --dest=./src/fonts --codepointDest=./src/utils/fonts --rtl=./intermediate/rtl.json",
+    "convert:svg": "node convert.js --source=./intermediate --dest=./src --rtl=./intermediate/rtl.json --metadata=./tmp/metadata-svg.json",
+    "convert:fonts": "node convert-font.js --source=./src/utils/fonts --dest=./src/fonts --codepointDest=./src/utils/fonts --rtl=./intermediate/rtl.json --metadata=./tmp/metadata-font.json",
+    "convert:merge-metadata": "node merge-metadata.js --svgMetadata=./tmp/metadata-svg.json --fontMetadata=./tmp/metadata-font.json --output=./metadata.json",
     "generate:font-regular": "node ../../importer/generateFont.js --source=intermediate --dest=src/utils/fonts --iconType=Regular --codepoints=../../fonts/FluentSystemIcons-Regular.json",
     "generate:font-filled": "node ../../importer/generateFont.js --source=intermediate --dest=src/utils/fonts --iconType=Filled --codepoints=../../fonts/FluentSystemIcons-Filled.json",
     "generate:font-light": "node ../../importer/generateFont.js --source=intermediate --dest=src/utils/fonts --iconType=Light",
@@ -25,7 +26,7 @@
     "optimize": "svgo --config svgo.config.js --folder=./intermediate --precision=2 --quiet",
     "unfill": "node unfill.js --source=./intermediate",
     "build:fonts-and-svg": "npm run generate:assets-to-svg && npm run generate:font && npm run generate:rtl && npm run optimize && npm run unfill",
-    "build:generate-js-chunks": "npm run convert:svg && npm run convert:fonts",
+    "build:generate-js-chunks": "npm run convert:svg && npm run convert:fonts && npm run convert:merge-metadata",
     "build:js": "node build.js",
     "prebuild": "npm run clean",
     "build": "npm run build:fonts-and-svg && npm run build:generate-js-chunks && npm run build:js",

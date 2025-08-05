@@ -12,6 +12,7 @@ const mkdirp = require('mkdirp');
 const { promisify } = require('util');
 const { option } = require("yargs");
 const glob = promisify(require('glob'));
+const { createFormatMetadata, writeMetadata } = require("./convert.utils");
 
 // @ts-ignore
 const SRC_PATH = argv.source;
@@ -21,6 +22,8 @@ const DEST_PATH = argv.dest;
 const CODEPOINT_DEST_PATH = argv.codepointDest;
 // @ts-ignore
 const RTL_FILE = argv.rtl;
+// @ts-ignore
+const METADATA_PATH = argv.metadata;
 
 
 if (!SRC_PATH) {
@@ -36,15 +39,23 @@ if (!RTL_FILE) {
   throw new Error("RTL file not specified by --rtl");
 }
 
-processFiles(SRC_PATH, DEST_PATH)
+if (!METADATA_PATH) {
+  throw new Error("Metadata output file not specified by --metadata");
+}
 
-async function processFiles(src, dest) {
+processFiles(SRC_PATH, DEST_PATH, METADATA_PATH)
+
+async function processFiles(src, dest, metadataPath) {
   /** @type string[] */
   const indexContents = [];
 
+  // Collect all font metadata
+  /** @type {import('./convert.utils').IconMetadataCollection} */
+  const fontMetadata = {};
+
   // make file for resizeable icons
   const iconPath = path.join(dest, 'icons')
-  const iconContents = await processFolder(src, CODEPOINT_DEST_PATH, true);
+  const { content: iconContents, iconNames: resizableIconNames } = await processFolder(/** @type {string} */ (src), /** @type {string} */ (CODEPOINT_DEST_PATH), true);
 
   await cleanFolder(iconPath);
 
@@ -55,9 +66,12 @@ async function processFiles(src, dest) {
     await fs.writeFile(chunkPath, chunk);
   }));
 
+  // Create font metadata for resizable icons
+  Object.assign(fontMetadata, createFormatMetadata(resizableIconNames, 'font', 'resizable'));
+
   // make file for sized icons
   const sizedIconPath = path.join(dest, 'sizedIcons');
-  const sizedIconContents = await processFolder(src, CODEPOINT_DEST_PATH, false);
+  const { content: sizedIconContents, iconNames: sizedIconNames } = await processFolder(/** @type {string} */ (src), /** @type {string} */ (CODEPOINT_DEST_PATH), false);
   await cleanFolder(sizedIconPath);
 
   await Promise.all(sizedIconContents.map(async (chunk, i) => {
@@ -66,6 +80,9 @@ async function processFiles(src, dest) {
     indexContents.push(`export * from './sizedIcons/${chunkFileName}'`);
     await fs.writeFile(chunkPath, chunk);
   }));
+
+  // Create font metadata for sized icons
+  Object.assign(fontMetadata, createFormatMetadata(sizedIconNames, 'font', 'sized'));
 
   const indexPath = path.join(dest, 'index.tsx')
   // Finally add the interface definition and then write out the index.
@@ -84,6 +101,10 @@ async function processFiles(src, dest) {
 
   await fs.writeFile(indexPath, indexContents.join('\n'));
 
+  // Write font metadata
+  if (metadataPath) {
+    await writeMetadata(metadataPath, fontMetadata);
+  }
 }
 
 /**
@@ -91,7 +112,7 @@ async function processFiles(src, dest) {
  * @param {string} srcPath
  * @param {string} codepointMapDestFolder
  * @param {boolean} resizable
- * @returns { Promise<string[]> } - chunked icon files to insert
+ * @returns { Promise<{ content: string[], iconNames: string[] }> } - chunked icon files to insert and list of icon names
  */
 async function processFolder(srcPath, codepointMapDestFolder, resizable) {
 
@@ -101,13 +122,16 @@ async function processFolder(srcPath, codepointMapDestFolder, resizable) {
 
   /** @type string[] */
   const iconExports = [];
+  /** @type string[] */
+  const iconNames = [];
 
   // Process files sequentially to maintain consistent order
   for (const srcFile of files) {
     /** @type {Record<string, number>} */
     const iconEntries = JSON.parse(await fs.readFile(srcFile, 'utf8'));
-    const entries = generateReactIconEntries(iconEntries, resizable);
+    const { entries, names } = generateReactIconEntries(iconEntries, resizable);
     iconExports.push(...entries);
+    iconNames.push(...names);
 
     await generateCodepointMapForWebpackPlugin(
       path.resolve(codepointMapDestFolder, path.basename(srcFile)),
@@ -132,7 +156,7 @@ async function processFolder(srcPath, codepointMapDestFolder, resizable) {
   /** @type string[] */
   const chunkContent = iconChunks.map(chunk => chunk.join('\n'));
 
-  return chunkContent;
+  return { content: chunkContent, iconNames };
 }
 
 /**
@@ -154,12 +178,14 @@ async function generateCodepointMapForWebpackPlugin(destPath, iconEntries, resiz
  *
  * @param {Record<string, number>} iconEntries
  * @param {boolean} resizable
- * @returns {string[]}
+ * @returns {{ entries: string[], names: string[] }}
  */
 function generateReactIconEntries(iconEntries, resizable) {
   /** @type {string[]} */
   const iconExports = [];
-  const metadata = JSON.parse(fsS.readFileSync(RTL_FILE, 'utf-8'));
+  /** @type {string[]} */
+  const iconNames = [];
+  const metadata = JSON.parse(fsS.readFileSync(/** @type {string} */ (RTL_FILE), 'utf-8'));
   for (const [iconName, codepoint] of Object.entries(iconEntries)) {
     let destFilename = getReactIconNameFromGlyphName(iconName, resizable);
     var flipInRtl = metadata[destFilename] === 'mirror';
@@ -171,9 +197,10 @@ function generateReactIconEntries(iconEntries, resizable) {
       }${flipInRtl ? `, { flipInRtl: true }` : ''}));`;
 
     iconExports.push(jsCode);
+    iconNames.push(destFilename);
   }
 
-  return iconExports;
+  return { entries: iconExports, names: iconNames };
 }
 
 /**
