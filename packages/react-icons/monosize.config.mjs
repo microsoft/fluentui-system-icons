@@ -29,10 +29,14 @@ export default config;
 
 
 /**
+  * Creates a local storage adapter for Monosize.
+  * This adapter reads and writes bundle size reports to a local JSON file.
+  * It is used to store the bundle size reports locally for the package.
+  * TODO: needs to be reworked to leverage GHA artifacts because pushing from CI to protected branch is not allowed.
  * @returns {import('monosize').StorageAdapter}
  */
 function createLocalStorage(){
-  const storedReportPath = join(import.meta.dirname, 'monosize.json');
+  const storedReportPath = join(import.meta.dirname, 'monosize-baseline.json');
 
 /**
  *
