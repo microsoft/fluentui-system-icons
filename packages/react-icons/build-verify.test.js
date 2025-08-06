@@ -16,22 +16,22 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
  */
 function trimContentForSnapshot(content, threshold = 30) {
   const lines = content.split('\n');
-
+  const voidExportRegex = /^\s*exports\.[a-zA-Z0-9_]+ = .*void 0;\s*$/;
   // Count and filter out verbose CJS export declarations to reduce churn
-  const voidExportLines = [];
-  const filteredLines = lines.filter(line => {
+  const { filteredLines, voidExportCount } = lines.reduce((acc, line) => {
     // Check for lines that are just "exports.SomeName = void 0;" declarations
-    const isVoidExport = /^\s*exports\.[a-zA-Z0-9_]+ = .*void 0;\s*$/.test(line);
+    const isVoidExport = voidExportRegex.test(line);
     if (isVoidExport) {
-      voidExportLines.push(line);
-      return false;
+      acc.voidExportCount++;
+    } else {
+      acc.filteredLines.push(line);
     }
-    return true;
-  });
+    return acc;
+  }, /** @type {{ filteredLines: string[], voidExportCount: number }} */ ({ filteredLines: [], voidExportCount: 0 }));
 
   // Add filtering message at the beginning if exports were filtered
-  if (voidExportLines.length > 0) {
-    filteredLines.splice(0, 0, `... (${voidExportLines.length} export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))`);
+  if (voidExportCount > 0) {
+    filteredLines.splice(0, 0, `... (${voidExportCount} export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))`);
   }
 
   const trimmedLines = filteredLines.slice(0, threshold);
