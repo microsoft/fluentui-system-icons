@@ -162,6 +162,12 @@ jobs:
         npm run build:verify
       working-directory: packages/react-icons
 
+    - name: Bundle-Size @fluentui/react-icons
+      run: |
+        npm run bundle-size
+        npx monosize compare-reports
+      working-directory: packages/react-icons
+
     - name: Build @fluentui/react-native-icons
       run: |
         npm run build

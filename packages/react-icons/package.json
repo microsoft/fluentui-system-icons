@@ -31,6 +31,7 @@
     "prebuild": "npm run clean",
     "build": "npm run build:fonts-and-svg && npm run build:generate-js-chunks && npm run build:js",
     "build:verify": "vitest run build-verify.test.js",
+    "bundle-size": "monosize measure",
     "lint": "eslint src",
     "test": "vitest --exclude build-verify.test.js"
   },
@@ -45,6 +46,8 @@
     "glob": "^7.2.0",
     "lodash": "^4.17.21",
     "mkdirp": "^1.0.4",
+    "monosize": "^0.7.0",
+    "monosize-bundler-webpack": "^0.2.0",
     "react": "^17.0.1",
     "renamer": "^2.0.1",
     "svgo": "^2.8.0",
