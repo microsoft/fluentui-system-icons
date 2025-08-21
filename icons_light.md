@@ -26,6 +26,7 @@
 |Auto Fit|<img src="assets/Auto Fit/SVG/ic_fluent_auto_fit_32_light.svg?raw=true" width="24" height="24">|`autoFit32Light`|`ic_fluent_auto_fit_32_light`|
 |Auto Fit Width|<img src="assets/Auto Fit Width/SVG/ic_fluent_auto_fit_width_32_light.svg?raw=true" width="24" height="24">|`autoFitWidth32Light`|`ic_fluent_auto_fit_width_32_light`|
 |Autocorrect|<img src="assets/Autocorrect/SVG/ic_fluent_autocorrect_32_light.svg?raw=true" width="24" height="24">|`autocorrect32Light`|`ic_fluent_autocorrect_32_light`|
+|Book Contacts|<img src="assets/Book Contacts/SVG/ic_fluent_book_contacts_32_light.svg?raw=true" width="24" height="24">|`bookContacts32Light`|`ic_fluent_book_contacts_32_light`|
 |Breakout Room|<img src="assets/Breakout Room/SVG/ic_fluent_breakout_room_32_light.svg?raw=true" width="24" height="24">|`breakoutRoom32Light`|`ic_fluent_breakout_room_32_light`|
 |Broom|<img src="assets/Broom/SVG/ic_fluent_broom_32_light.svg?raw=true" width="24" height="24">|`broom32Light`|`ic_fluent_broom_32_light`|
 |Calendar 3 Day|<img src="assets/Calendar 3 Day/SVG/ic_fluent_calendar_3_day_32_light.svg?raw=true" width="24" height="24">|`calendar3Day32Light`|`ic_fluent_calendar_3_day_32_light`|
@@ -122,6 +123,7 @@
 |Pen Sparkle|<img src="assets/Pen Sparkle/SVG/ic_fluent_pen_sparkle_32_light.svg?raw=true" width="24" height="24">|`penSparkle32Light`|`ic_fluent_pen_sparkle_32_light`|
 |People|<img src="assets/People/SVG/ic_fluent_people_32_light.svg?raw=true" width="24" height="24">|`people32Light`|`ic_fluent_people_32_light`|
 |People Add|<img src="assets/People Add/SVG/ic_fluent_people_add_32_light.svg?raw=true" width="24" height="24">|`peopleAdd32Light`|`ic_fluent_people_add_32_light`|
+|People Checkmark|<img src="assets/People Checkmark/SVG/ic_fluent_people_checkmark_32_light.svg?raw=true" width="24" height="24">|`peopleCheckmark32Light`|`ic_fluent_people_checkmark_32_light`|
 |People Community|<img src="assets/People Community/SVG/ic_fluent_people_community_32_light.svg?raw=true" width="24" height="24">|`peopleCommunity32Light`|`ic_fluent_people_community_32_light`|
 |People Edit|<img src="assets/People Edit/SVG/ic_fluent_people_edit_32_light.svg?raw=true" width="24" height="24">|`peopleEdit32Light`|`ic_fluent_people_edit_32_light`|
 |People List|<img src="assets/People List/SVG/ic_fluent_people_list_32_light.svg?raw=true" width="24" height="24">|`peopleList32Light`|`ic_fluent_people_list_32_light`|
