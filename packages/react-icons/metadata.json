@@ -4179,6 +4179,16 @@
     "font": true,
     "type": "resizable"
   },
+  "CalendarCheckmarkCenterFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "CalendarCheckmarkCenterRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "CalendarCheckmarkSparkleFilled": {
     "svg": true,
     "font": true,
@@ -5605,6 +5615,16 @@
     "type": "resizable"
   },
   "CheckmarkCircleRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "CheckmarkCircleHintFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "CheckmarkCircleHintRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -7275,6 +7295,16 @@
     "type": "resizable"
   },
   "CompassNorthwestRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "CompassTrueNorthFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "CompassTrueNorthRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -13874,6 +13904,16 @@
     "font": true,
     "type": "resizable"
   },
+  "LayoutDynamicFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "LayoutDynamicRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "LayoutRowFourFilled": {
     "svg": true,
     "font": true,
@@ -17544,6 +17584,16 @@
     "font": true,
     "type": "resizable"
   },
+  "PersonGuestFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "PersonGuestRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "PersonHeadHintFilled": {
     "svg": true,
     "font": true,
@@ -19440,6 +19490,16 @@
     "type": "resizable"
   },
   "RenameRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "RenameAFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "RenameARegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -27225,6 +27285,16 @@
     "type": "resizable"
   },
   "WebAssetRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "WheelchairAccessFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "WheelchairAccessRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -38184,6 +38254,11 @@
     "font": true,
     "type": "sized"
   },
+  "BookContacts32Light": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "BookContacts32Regular": {
     "svg": true,
     "font": true,
@@ -39305,6 +39380,16 @@
     "type": "sized"
   },
   "BorderTopBottomThick24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Bot12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Bot12Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -42555,6 +42640,66 @@
     "type": "sized"
   },
   "CalendarCheckmark28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarCheckmarkCenter16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarCheckmarkCenter16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarCheckmarkCenter20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarCheckmarkCenter20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarCheckmarkCenter24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarCheckmarkCenter24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarCheckmarkCenter28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarCheckmarkCenter28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarCheckmarkCenter32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarCheckmarkCenter32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarCheckmarkCenter48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarCheckmarkCenter48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -47799,6 +47944,36 @@
     "font": true,
     "type": "sized"
   },
+  "CheckmarkCircleHint16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CheckmarkCircleHint16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CheckmarkCircleHint20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CheckmarkCircleHint20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CheckmarkCircleHint24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CheckmarkCircleHint24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "CheckmarkCircleSquare16Filled": {
     "svg": true,
     "font": true,
@@ -47979,12 +48154,32 @@
     "font": true,
     "type": "sized"
   },
+  "Chess16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Chess16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Chess20Filled": {
     "svg": true,
     "font": true,
     "type": "sized"
   },
   "Chess20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Chess24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Chess24Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -54099,6 +54294,36 @@
     "font": true,
     "type": "sized"
   },
+  "CompassTrueNorth16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CompassTrueNorth16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CompassTrueNorth20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CompassTrueNorth20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CompassTrueNorth24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CompassTrueNorth24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Component2DoubleTapSwipeDown24Filled": {
     "svg": true,
     "font": true,
@@ -60009,6 +60234,16 @@
     "font": true,
     "type": "sized"
   },
+  "DocumentCode16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentCode16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "DocumentContract16Filled": {
     "svg": true,
     "font": true,
@@ -60565,6 +60800,16 @@
     "type": "sized"
   },
   "DocumentFs16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentGlobe16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentGlobe16Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -61640,6 +61885,16 @@
     "type": "sized"
   },
   "DocumentPdf24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentPdf28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentPdf28Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -76109,6 +76364,26 @@
     "font": true,
     "type": "sized"
   },
+  "LayoutDynamic20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutDynamic20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutDynamic24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutDynamic24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "LayoutRowFour16Filled": {
     "svg": true,
     "font": true,
@@ -82089,6 +82364,16 @@
     "font": true,
     "type": "sized"
   },
+  "MicRecord16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "MicRecord16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "MicRecord20Filled": {
     "svg": true,
     "font": true,
@@ -82169,12 +82454,62 @@
     "font": true,
     "type": "sized"
   },
+  "MicSync16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "MicSync16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "MicSync20Filled": {
     "svg": true,
     "font": true,
     "type": "sized"
   },
   "MicSync20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "MicSync24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "MicSync24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "MicSync28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "MicSync28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "MicSync32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "MicSync32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "MicSync48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "MicSync48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -86239,6 +86574,16 @@
     "font": true,
     "type": "sized"
   },
+  "PanelLeftDefault28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PanelLeftDefault28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "PanelLeftDefault32Light": {
     "svg": true,
     "font": true,
@@ -86779,6 +87124,16 @@
     "font": true,
     "type": "sized"
   },
+  "PanelRightContract28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PanelRightContract28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "PanelRightCursor20Filled": {
     "svg": true,
     "font": true,
@@ -86799,12 +87154,32 @@
     "font": true,
     "type": "sized"
   },
+  "PanelRightDefault28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PanelRightDefault28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "PanelRightExpand20Filled": {
     "svg": true,
     "font": true,
     "type": "sized"
   },
   "PanelRightExpand20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PanelRightExpand28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PanelRightExpand28Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -88150,6 +88525,21 @@
     "type": "sized"
   },
   "PeopleCheckmark24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PeopleCheckmark32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PeopleCheckmark32Light": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PeopleCheckmark32Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -90250,6 +90640,36 @@
     "type": "sized"
   },
   "PersonFeedback48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PersonGuest16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PersonGuest16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PersonGuest20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PersonGuest20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PersonGuest24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PersonGuest24Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -96790,6 +97210,16 @@
     "type": "sized"
   },
   "Rename28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "RenameA20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "RenameA20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -117499,6 +117929,16 @@
     "font": true,
     "type": "sized"
   },
+  "TooltipQuote12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TooltipQuote12Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "TooltipQuote16Filled": {
     "svg": true,
     "font": true,
@@ -117555,6 +117995,16 @@
     "type": "sized"
   },
   "TooltipQuote48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TooltipQuoteOff12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TooltipQuoteOff12Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -122285,6 +122735,36 @@
     "type": "sized"
   },
   "WebAsset24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WheelchairAccess16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WheelchairAccess16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WheelchairAccess20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WheelchairAccess20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WheelchairAccess24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WheelchairAccess24Regular": {
     "svg": true,
     "font": true,
     "type": "sized"

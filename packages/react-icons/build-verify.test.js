@@ -1403,11 +1403,11 @@ describe('Build Verification', () => {
           export const AutoFit32Light = ( /*#__PURE__*/createFluentFontIcon("AutoFit32Light", "", 3, 32));
           export const AutoFitWidth32Light = ( /*#__PURE__*/createFluentFontIcon("AutoFitWidth32Light", "", 3, 32));
           export const Autocorrect32Light = ( /*#__PURE__*/createFluentFontIcon("Autocorrect32Light", "", 3, 32));
-          export const BreakoutRoom32Light = ( /*#__PURE__*/createFluentFontIcon("BreakoutRoom32Light", "", 3, 32));
-          export const Broom32Light = ( /*#__PURE__*/createFluentFontIcon("Broom32Light", "", 3, 32));
-          export const Calendar3Day32Light = ( /*#__PURE__*/createFluentFontIcon("Calendar3Day32Light", "", 3, 32));
-          export const CalendarClock32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarClock32Light", "", 3, 32));
-          export const CalendarDataBar32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarDataBar32Light", "", 3, 32));
+          export const BookContacts32Light = ( /*#__PURE__*/createFluentFontIcon("BookContacts32Light", "", 3, 32));
+          export const BreakoutRoom32Light = ( /*#__PURE__*/createFluentFontIcon("BreakoutRoom32Light", "", 3, 32));
+          export const Broom32Light = ( /*#__PURE__*/createFluentFontIcon("Broom32Light", "", 3, 32));
+          export const Calendar3Day32Light = ( /*#__PURE__*/createFluentFontIcon("Calendar3Day32Light", "", 3, 32));
+          export const CalendarClock32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarClock32Light", "", 3, 32));
           ... (content truncated for snapshot)"
         `);
 
@@ -1439,12 +1439,12 @@ describe('Build Verification', () => {
           export declare const AutoFit32Light: FluentFontIcon;
           export declare const AutoFitWidth32Light: FluentFontIcon;
           export declare const Autocorrect32Light: FluentFontIcon;
+          export declare const BookContacts32Light: FluentFontIcon;
           export declare const BreakoutRoom32Light: FluentFontIcon;
           export declare const Broom32Light: FluentFontIcon;
           export declare const Calendar3Day32Light: FluentFontIcon;
           export declare const CalendarClock32Light: FluentFontIcon;
           export declare const CalendarDataBar32Light: FluentFontIcon;
-          export declare const CalendarDay32Light: FluentFontIcon;
           ... (content truncated for snapshot)"
         `);
       }
@@ -1497,8 +1497,8 @@ describe('Build Verification', () => {
           exports.AutoFit32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AutoFit32Light", "", 3, 32));
           exports.AutoFitWidth32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AutoFitWidth32Light", "", 3, 32));
           exports.Autocorrect32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Autocorrect32Light", "", 3, 32));
-          exports.BreakoutRoom32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BreakoutRoom32Light", "", 3, 32));
-          exports.Broom32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Broom32Light", "", 3, 32));
+          exports.BookContacts32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BookContacts32Light", "", 3, 32));
+          exports.BreakoutRoom32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BreakoutRoom32Light", "", 3, 32));
           ... (content truncated for snapshot)"
         `);
 
@@ -1530,12 +1530,12 @@ describe('Build Verification', () => {
           export declare const AutoFit32Light: FluentFontIcon;
           export declare const AutoFitWidth32Light: FluentFontIcon;
           export declare const Autocorrect32Light: FluentFontIcon;
+          export declare const BookContacts32Light: FluentFontIcon;
           export declare const BreakoutRoom32Light: FluentFontIcon;
           export declare const Broom32Light: FluentFontIcon;
           export declare const Calendar3Day32Light: FluentFontIcon;
           export declare const CalendarClock32Light: FluentFontIcon;
           export declare const CalendarDataBar32Light: FluentFontIcon;
-          export declare const CalendarDay32Light: FluentFontIcon;
           ... (content truncated for snapshot)"
         `);
       }
