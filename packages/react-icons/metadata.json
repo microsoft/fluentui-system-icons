@@ -17074,6 +17074,16 @@
     "font": true,
     "type": "resizable"
   },
+  "PeopleCommunicationFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "PeopleCommunicationRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "PeopleCommunityColor": {
     "svg": true,
     "font": false,
@@ -23019,12 +23029,42 @@
     "font": true,
     "type": "resizable"
   },
+  "TableFreezeColumnAndRowDismissFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TableFreezeColumnAndRowDismissRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TableFreezeColumnDismissFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TableFreezeColumnDismissRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "TableFreezeRowFilled": {
     "svg": true,
     "font": true,
     "type": "resizable"
   },
   "TableFreezeRowRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TableFreezeRowDismissFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TableFreezeRowDismissRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -63324,6 +63364,16 @@
     "font": true,
     "type": "sized"
   },
+  "Drafts28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Drafts28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Drag20Filled": {
     "svg": true,
     "font": true,
@@ -64515,6 +64565,16 @@
     "type": "sized"
   },
   "EditLineHorizontal324Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "EditLineHorizontal328Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "EditLineHorizontal328Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -88544,6 +88604,46 @@
     "font": true,
     "type": "sized"
   },
+  "PeopleCommunication16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PeopleCommunication16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PeopleCommunication20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PeopleCommunication20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PeopleCommunication24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PeopleCommunication24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PeopleCommunication32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PeopleCommunication32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "PeopleCommunity12Filled": {
     "svg": true,
     "font": true,
@@ -109289,6 +109389,46 @@
     "font": true,
     "type": "sized"
   },
+  "TableFreezeColumnAndRowDismiss20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableFreezeColumnAndRowDismiss20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableFreezeColumnAndRowDismiss24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableFreezeColumnAndRowDismiss24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableFreezeColumnDismiss20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableFreezeColumnDismiss20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableFreezeColumnDismiss24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableFreezeColumnDismiss24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "TableFreezeRow16Filled": {
     "svg": true,
     "font": true,
@@ -109325,6 +109465,26 @@
     "type": "sized"
   },
   "TableFreezeRow28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableFreezeRowDismiss20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableFreezeRowDismiss20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableFreezeRowDismiss24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableFreezeRowDismiss24Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
