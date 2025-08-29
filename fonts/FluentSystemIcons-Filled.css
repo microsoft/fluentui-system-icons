@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?7e16527806080ec55fb9a42f3b580247") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?7e16527806080ec55fb9a42f3b580247") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?7e16527806080ec55fb9a42f3b580247") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?6973a5a7d736b3fc6d8732cd2a61a65c") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?6973a5a7d736b3fc6d8732cd2a61a65c") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?6973a5a7d736b3fc6d8732cd2a61a65c") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -27456,4 +27456,40 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_wheelchair_access_24_filled:before {
     content: "\f0aba";
+}
+.icon-ic_fluent_drafts_28_filled:before {
+    content: "\f0abb";
+}
+.icon-ic_fluent_edit_line_horizontal_3_28_filled:before {
+    content: "\f0abc";
+}
+.icon-ic_fluent_people_communication_16_filled:before {
+    content: "\f0abd";
+}
+.icon-ic_fluent_people_communication_20_filled:before {
+    content: "\f0abe";
+}
+.icon-ic_fluent_people_communication_24_filled:before {
+    content: "\f0abf";
+}
+.icon-ic_fluent_people_communication_32_filled:before {
+    content: "\f0ac0";
+}
+.icon-ic_fluent_table_freeze_column_and_row_dismiss_20_filled:before {
+    content: "\f0ac1";
+}
+.icon-ic_fluent_table_freeze_column_and_row_dismiss_24_filled:before {
+    content: "\f0ac2";
+}
+.icon-ic_fluent_table_freeze_column_dismiss_20_filled:before {
+    content: "\f0ac3";
+}
+.icon-ic_fluent_table_freeze_column_dismiss_24_filled:before {
+    content: "\f0ac4";
+}
+.icon-ic_fluent_table_freeze_row_dismiss_20_filled:before {
+    content: "\f0ac5";
+}
+.icon-ic_fluent_table_freeze_row_dismiss_24_filled:before {
+    content: "\f0ac6";
 }
