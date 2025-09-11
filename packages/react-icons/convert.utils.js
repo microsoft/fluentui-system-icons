@@ -26,11 +26,8 @@
  * @typedef {Record<string, IconMetadata>} IconMetadataCollection
  */
 
-const fs = require("node:fs/promises");
-const path = require("node:path");
-
-
-
+const fs = require('node:fs/promises');
+const path = require('node:path');
 
 /**
  * Create metadata for specific format (SVG or font)
@@ -41,11 +38,11 @@ const path = require("node:path");
  */
 function createFormatMetadata(iconNames, iconFormat, iconType) {
   const metadata = /** @type {IconMetadataCollection} */ ({});
-  iconNames.forEach(name => {
+  iconNames.forEach((name) => {
     metadata[name] = {
       svg: iconFormat === 'svg',
       font: iconFormat === 'font',
-      type: iconType
+      type: iconType,
     };
   });
   return metadata;
@@ -61,10 +58,11 @@ async function writeMetadata(metadataPath, metadata) {
   const dir = path.dirname(metadataPath);
   await fs.mkdir(dir, { recursive: true });
 
+  console.log(`[metadata]: creating ${metadataPath}`);
   await fs.writeFile(metadataPath, JSON.stringify(metadata, null, 2));
 }
 
 module.exports = {
   createFormatMetadata,
-  writeMetadata
+  writeMetadata,
 };
