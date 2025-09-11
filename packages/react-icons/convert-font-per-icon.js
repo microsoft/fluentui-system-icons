@@ -48,12 +48,7 @@ async function main() {
   console.log(`[per-icon font] Wrote ${resizable.fileCount + sized.fileCount} font icon files to ${DEST_PATH}`);
 }
 
-function cleanFolder(folder) {
-  if (fs.existsSync(folder)) {
-    fs.rmSync(folder, { recursive: true, force: true });
-  }
-  fs.mkdirSync(folder, { recursive: true });
-}
+
 
 /**
  * @param {string} srcPath
@@ -84,7 +79,7 @@ async function processFontFiles(srcPath, destPath, codepointDest, resizable) {
       const size = resizable ? undefined : (/ (?<=_)\d+(?=_filled|_regular|_light)/.exec(rawName)?.[0]);
       const jsCode = `export const ${exportName}: FluentFontIcon = (/*#__PURE__*/createFluentFontIcon(${JSON.stringify(exportName)}, ${JSON.stringify(String.fromCodePoint(codepoint))}, ${resizable ? 2 : style}, ${resizable ? undefined : size}${flipInRtl ? ', { flipInRtl: true }' : ''}));`;
 
-      const fileName = toKebabCase(exportName) + '.tsx';
+      const fileName = _.kebabCase(exportName) + '.tsx';
       const filePath = path.join(destPath, fileName);
       const relImport = path.posix.join('..', '..', 'utils', 'fonts', 'createFluentFontIcon'); // from atoms/fonts/*
       const fileSource = `"use client";\nimport type { FluentFontIcon } from '${relImport}';\nimport { createFluentFontIcon } from '${relImport}';\n${jsCode}\n`;
@@ -100,22 +95,37 @@ async function processFontFiles(srcPath, destPath, codepointDest, resizable) {
   return { iconNames, fileCount: count };
 }
 
+/**
+ * @param {string} dest
+ * @param {Record<string, number>} iconEntries
+ * @param {boolean} resizable
+ * @returns {Promise<void>}
+ */
 async function writeCodepointMap(dest, iconEntries, resizable) {
   const finalMap = Object.fromEntries(Object.entries(iconEntries).map(([name, codepoint]) => [getReactIconNameFromGlyphName(name, resizable), codepoint]));
   fs.writeFileSync(dest, JSON.stringify(finalMap, null, 2));
 }
 
+/**
+ * Convert a raw glyph name (from codepoint maps) into the exported React icon name.
+ * @param {string} iconName
+ * @param {boolean} resizable
+ * @returns {string}
+ */
 function getReactIconNameFromGlyphName(iconName, resizable) {
   let name = iconName.replace('ic_fluent_', '');
   name = resizable ? name.replace('20', '') : name;
-  name = _.camelCase(name);
-  return name[0].toUpperCase() + name.slice(1);
+  name = _.upperFirst(_.camelCase(name));
+  return name;
 }
 
-function toKebabCase(name) {
-  return name
-    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
-    .replace(/([A-Za-z])([0-9])/g, '$1-$2')
-    .replace(/([0-9])([A-Za-z])/g, '$1-$2')
-    .toLowerCase();
+/**
+ *
+ * @param {string} folder
+ */
+function cleanFolder(folder) {
+  if (fs.existsSync(folder)) {
+    fs.rmSync(folder, { recursive: true, force: true });
+  }
+  fs.mkdirSync(folder, { recursive: true });
 }
