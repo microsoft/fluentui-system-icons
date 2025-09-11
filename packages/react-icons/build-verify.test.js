@@ -141,11 +141,35 @@ describe('Build Verification', () => {
         // Remove duplicates
         const uniquePaths = Array.from(new Set(exportPaths));
 
+
         for (const exportPath of uniquePaths) {
-          if (exportPath.startsWith('./')) {
+
+          // Wildcard support: we only handle simple trailing patterns like *.js or *.d.ts via a directory scan.
+          // This avoids heavy glob expansion (tens of thousands of files) and keeps logic minimal.
+          if (exportPath.includes('*')) {
+            const relative = exportPath.slice(2); // remove ./
+            const lastSlash = relative.lastIndexOf('/');
+            const dirPart = relative.slice(0, lastSlash);
+            const patternPart = relative.slice(lastSlash + 1); // e.g. *.js or *.d.ts
+            const dirAbs = path.join(__dirname, dirPart);
+            expect(fs.existsSync(dirAbs), `Directory for pattern missing: ${dirPart}`).toBe(true);
+
+            // Support only simple patterns starting with *.
+            if (!patternPart.startsWith('*.')) {
+              throw new Error(`Unsupported wildcard pattern (only leading *.<ext> supported): ${exportPath}`);
+            }
+            const ext = patternPart.slice(1); // keep the dot(s), e.g. '.js', '.d.ts'
+            const entries = await readdir(dirAbs);
+            const matchName = entries.find(e => e.endsWith(ext));
+            expect(matchName, `No file ending with '${ext}' found in ${dirPart} for export pattern ${exportPath}`).toBeTruthy();
+            if (matchName) {
+              const full = path.join(dirAbs, matchName);
+              const s = await stat(full);
+              expect(s.isFile(), `Matched path is not a file: ${full}`).toBe(true);
+            }
+          } else {
             const fullPath = path.join(__dirname, exportPath.slice(2));
             expect(fs.existsSync(fullPath)).toBe(true);
-
             const stats = await stat(fullPath);
             expect(stats.isFile()).toBe(true);
           }

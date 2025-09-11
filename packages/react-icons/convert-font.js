@@ -14,16 +14,11 @@ const { option } = require("yargs");
 const glob = promisify(require('glob'));
 const { createFormatMetadata, writeMetadata } = require("./convert.utils");
 
-// @ts-ignore
-const SRC_PATH = argv.source;
-// @ts-ignore
-const DEST_PATH = argv.dest;
-// @ts-ignore
-const CODEPOINT_DEST_PATH = argv.codepointDest;
-// @ts-ignore
-const RTL_FILE = argv.rtl;
-// @ts-ignore
-const METADATA_PATH = argv.metadata;
+const SRC_PATH = /** @type {string} */ (argv.source);          // path with codepoint json maps (src/utils/fonts)
+const DEST_PATH = /** @type {string} */ (argv.dest);           // destination folder for per-icon sources e.g. ./src/atoms/fonts
+const CODEPOINT_DEST_PATH = /** @type {string} */ (argv.codepointDest); // where to output processed codepoint maps
+const RTL_FILE = /** @type {string} */ (argv.rtl);             // rtl metadata json
+const METADATA_PATH = /** @type {string} */ (argv.metadata);   // output font metadata file
 
 
 if (!SRC_PATH) {
@@ -45,6 +40,12 @@ if (!METADATA_PATH) {
 
 processFiles(SRC_PATH, DEST_PATH, METADATA_PATH)
 
+/**
+ * Process a folder of svg files and convert them to React components, following naming patterns for the FluentUI System Icons
+ * @param {string} src
+ * @param {string} dest
+ * @param {string} metadataPath
+ */
 async function processFiles(src, dest, metadataPath) {
   /** @type string[] */
   const indexContents = [];
@@ -55,7 +56,7 @@ async function processFiles(src, dest, metadataPath) {
 
   // make file for resizeable icons
   const iconPath = path.join(dest, 'icons')
-  const { content: iconContents, iconNames: resizableIconNames } = await processFolder(/** @type {string} */ (src), /** @type {string} */ (CODEPOINT_DEST_PATH), true);
+  const { content: iconContents, iconNames: resizableIconNames } = await processFolder(src, CODEPOINT_DEST_PATH, true);
 
   await cleanFolder(iconPath);
 
@@ -71,7 +72,7 @@ async function processFiles(src, dest, metadataPath) {
 
   // make file for sized icons
   const sizedIconPath = path.join(dest, 'sizedIcons');
-  const { content: sizedIconContents, iconNames: sizedIconNames } = await processFolder(/** @type {string} */ (src), /** @type {string} */ (CODEPOINT_DEST_PATH), false);
+  const { content: sizedIconContents, iconNames: sizedIconNames } = await processFolder(src, CODEPOINT_DEST_PATH, false);
   await cleanFolder(sizedIconPath);
 
   await Promise.all(sizedIconContents.map(async (chunk, i) => {
@@ -212,11 +213,14 @@ function generateReactIconEntries(iconEntries, resizable) {
 function getReactIconNameFromGlyphName(iconName, resizable) {
   let destFilename = iconName.replace("ic_fluent_", ""); // strip ic_fluent_
   destFilename = resizable ? destFilename.replace("20", "") : destFilename;
-  destFilename = _.camelCase(destFilename); // We want them to be camelCase, so access_time would become accessTime here
-  destFilename = destFilename.replace(destFilename.substring(0, 1), destFilename.substring(0, 1).toUpperCase()); // capitalize the first letter
+  destFilename = _.upperFirst(_.camelCase(destFilename)); // We want them to be PascalCase, so access_time would become AccessTime here
   return destFilename;
 }
 
+/**
+ *
+ * @param {string} folder
+ */
 async function cleanFolder(folder) {
   try {
     await fs.access(folder);
