@@ -15,7 +15,9 @@
     "clean": "git clean -fXd lib/ lib-cjs/ intermediate/ src/ tmp/",
     "generate:assets-to-svg": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
     "convert:svg": "node convert.js --source=./intermediate --dest=./src --rtl=./intermediate/rtl.json --metadata=./tmp/metadata-svg.json",
+    "convert:svg:per-icon": "node convert-per-icon.js --source=./intermediate --dest=./src/atoms/svg --rtl=./intermediate/rtl.json --metadata=./tmp/metadata-svg.json",
     "convert:fonts": "node convert-font.js --source=./src/utils/fonts --dest=./src/fonts --codepointDest=./src/utils/fonts --rtl=./intermediate/rtl.json --metadata=./tmp/metadata-font.json",
+    "convert:fonts:per-icon": "node convert-font-per-icon.js --source=./src/utils/fonts --dest=./src/atoms/fonts --codepointDest=./src/utils/fonts --rtl=./intermediate/rtl.json --metadata=./tmp/metadata-font.json",
     "convert:merge-metadata": "node merge-metadata.js --svgMetadata=./tmp/metadata-svg.json --fontMetadata=./tmp/metadata-font.json --output=./metadata.json",
     "generate:font-regular": "node ../../importer/generateFont.js --source=intermediate --dest=src/utils/fonts --iconType=Regular --codepoints=../../fonts/FluentSystemIcons-Regular.json",
     "generate:font-filled": "node ../../importer/generateFont.js --source=intermediate --dest=src/utils/fonts --iconType=Filled --codepoints=../../fonts/FluentSystemIcons-Filled.json",
@@ -27,9 +29,10 @@
     "unfill": "node unfill.js --source=./intermediate",
     "build:fonts-and-svg": "npm run generate:assets-to-svg && npm run generate:font && npm run generate:rtl && npm run optimize && npm run unfill",
     "build:generate-js-chunks": "npm run convert:svg && npm run convert:fonts && npm run convert:merge-metadata",
+    "build:generate-js-per-icon": "npm run convert:svg:per-icon && npm run convert:fonts:per-icon && npm run convert:merge-metadata",
     "build:js": "node build.js",
     "prebuild": "npm run clean",
-    "build": "npm run build:fonts-and-svg && npm run build:generate-js-chunks && npm run build:js",
+    "build": "npm run build:fonts-and-svg && npm run build:generate-js-chunks && npm run build:generate-js-per-icon && npm run build:js",
     "build-verify": "vitest run build-verify.test.js",
     "lint": "eslint src",
     "test": "vitest --exclude build-verify.test.js"
@@ -86,6 +89,11 @@
       "import": "./lib/fonts/index.js",
       "require": "./lib-cjs/fonts/index.js"
     },
+    "./fonts/*": {
+      "types": "./lib/atoms/fonts/*.d.ts",
+      "import": "./lib/atoms/fonts/*.js",
+      "require": "./lib-cjs/atoms/fonts/*.js"
+    },
     "./lib/fonts": {
       "types": "./lib/fonts/index.d.ts",
       "import": "./lib/fonts/index.js",
@@ -95,6 +103,11 @@
       "types": "./lib/index.d.ts",
       "import": "./lib/index.js",
       "require": "./lib-cjs/index.js"
+    },
+    "./svg/*": {
+      "types": "./lib/atoms/svg/*.d.ts",
+      "import": "./lib/atoms/svg/*.js",
+      "require": "./lib-cjs/atoms/svg/*.js"
     },
     "./lib/svg": {
       "types": "./lib/index.d.ts",
