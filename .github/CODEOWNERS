@@ -1,5 +1,8 @@
 /.github/ISSUE_TEMPLATE/01-react-icons-bug-report.yml @microsoft/cxe-prg
 /.github/ISSUE_TEMPLATE/02-react-icons-feature-request.yml @microsoft/cxe-prg
+/.github/react-icons.instructions.md @microsoft/cxe-prg
+/.github/workflows/copilot-setup-steps.yml @microsoft/cxe-prg
+/.github/workflows/pr.yml @microsoft/cxe-prg @spencer-nelson
 
 ## packages
 packages/icon-app @microsoft/cxe-prg
@@ -14,6 +17,8 @@ packages/react-native-icons @praveen970
 android/ @praveen970
 flutter/ @nickromano
 ios/ @nickromano
+package-lock.json @microsoft/cxe-prg
+package.json @microsoft/cxe-prg
 
 ## Assets
 assets/ @spencer-nelson @willchavez
