@@ -4,16 +4,19 @@
 // @ts-check
 
 const fs = require('fs');
-const { writeFile, readdir } = require('fs/promises');
+const { readdir } = require('fs/promises');
 const path = require('path');
 const yargs = require('yargs');
-const { makeIconExport, getCreateFluentIconHeader, loadRtlMetadata } = require('./convert.utils');
+const { makeIconExport, getCreateFluentIconHeader, loadRtlMetadata, normalizeBaseName } = require('./convert.utils');
 const { createFormatMetadata, writeMetadata } = require('./metadata.utils');
+const { writePerIconFiles } = require('./per-icon.writer');
 
-main().catch((err) => {
-  console.error('[svg generation] failed:', err);
-  process.exit(1);
-});
+if (require.main === module) {
+  main().catch((err) => {
+    console.error('[svg generation] failed:', err);
+    process.exit(1);
+  });
+}
 
 async function main() {
   const { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH } = parseArgs(process.argv.slice(2));
@@ -155,7 +158,7 @@ function processFolder(srcFiles, rtlMetadata, resizable) {
  * @param {string} destPath
  * @param {import('./convert-font.utils').RtlMetadata} rtlMetadata
  */
-async function processPerIcon(sourceFiles, destPath, rtlMetadata) {
+async function processPerIcon(sourceFiles, destPath, rtlMetadata, options = { groupByBase: true }) {
   // local clean (synchronous) similar to chunk variant
   if (fs.existsSync(destPath)) {
     fs.rmSync(destPath, { recursive: true, force: true });
@@ -166,10 +169,10 @@ async function processPerIcon(sourceFiles, destPath, rtlMetadata) {
   const svgMetadata = {};
 
   // resizable (base 20 variant names with size removed)
-  const resizable = await generatePerIconFiles(sourceFiles, destPath, rtlMetadata, true);
+  const resizable = await generatePerIconFiles(sourceFiles, destPath, rtlMetadata, true, options.groupByBase);
   Object.assign(svgMetadata, createFormatMetadata(resizable.iconNames, 'svg', 'resizable'));
   // sized (all sizes)
-  const sized = await generatePerIconFiles(sourceFiles, destPath, rtlMetadata, false);
+  const sized = await generatePerIconFiles(sourceFiles, destPath, rtlMetadata, false, options.groupByBase);
   Object.assign(svgMetadata, createFormatMetadata(sized.iconNames, 'svg', 'sized'));
 
   console.log(`[svg per-icon] Wrote ${resizable.fileCount + sized.fileCount} icon files to ${destPath}`);
@@ -184,27 +187,35 @@ async function processPerIcon(sourceFiles, destPath, rtlMetadata) {
  * @param {boolean} resizable
  * @returns {Promise<{ iconNames: string[]; fileCount: number }>}
  */
-async function generatePerIconFiles(sourceFiles, destPath, rtlMetadata, resizable) {
+async function generatePerIconFiles(sourceFiles, destPath, rtlMetadata, resizable, groupByBase = true) {
   /** @type {string[]} */
   const iconNames = [];
-  let count = 0;
+
+  // group icons by a normalized base filename so related variants end up in one file
+  /** @type {Map<string, Array<ReturnType<typeof makeIconExport>>>} */
+  const groups = new Map();
 
   for (const entry of sourceFiles) {
     if (resizable && !entry.file.includes('20')) continue; // only base 20 size for resizable set
     const result = makeIconExport({ file: entry.file, srcFile: entry.srcFile, resizable, metadata: rtlMetadata });
     if (!result) continue;
 
-    const filePath = path.join(destPath, result.fileName);
-    const relImport = path.posix.join('..', '..', 'utils', 'createFluentIcon');
-    const fileSourceLines = getCreateFluentIconHeader(relImport).concat([result.exportCode]);
-    const fileSource = fileSourceLines.join('\n') + '\n';
+    // compute normalized base name by stripping trailing size and style tokens (or use raw fileName)
+    const base = groupByBase ? normalizeBaseName(result.fileName) : result.fileName.replace(/\.tsx$/, '');
 
-    await writeFile(filePath, fileSource, 'utf8');
+    if (!groups.has(base)) groups.set(base, []);
+    const bucket = groups.get(base);
+    if (bucket) bucket.push(result);
     iconNames.push(result.exportName);
-    count++;
   }
 
-  return { iconNames, fileCount: count };
+  const relImport = path.posix.join('..', '..', 'utils', 'createFluentIcon');
+  const headerLines = getCreateFluentIconHeader(relImport);
+  const flattened = Array.from(groups.values())
+    .flat()
+    .filter((i) => i != null);
+  const result = await writePerIconFiles(destPath, flattened, headerLines, { groupByBase });
+  return { iconNames, fileCount: result.fileCount };
 }
 
 /**
@@ -297,3 +308,5 @@ function parseArgs(argv) {
 
   return { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH };
 }
+
+module.exports = { generatePerIconFiles };

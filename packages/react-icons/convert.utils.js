@@ -77,4 +77,52 @@ function loadRtlMetadata(rtlFilePath) {
   return JSON.parse(fs.readFileSync(rtlFilePath, 'utf-8'));
 }
 
-module.exports = { makeIconExport, getCreateFluentIconHeader, loadRtlMetadata };
+/** @type {string[]} */
+const DEFAULT_STYLE_TOKENS = [
+  'regular',
+  'filled',
+  'light',
+  'color',
+  'outline',
+  'outlined',
+  'thin',
+  'bold',
+  'small',
+  'large',
+  'medium',
+];
+
+/**
+ * Normalize a generated file name to its base icon key by stripping trailing size and style tokens.
+ * Examples:
+ *  - 'zoom-in-20-filled.tsx' -> 'zoom-in'
+ *  - 'my-icon-16-regular' -> 'my-icon'
+ *
+ * @param {string} fileName
+ * @param {string[]=} styleTokens
+ */
+function normalizeBaseName(fileName, styleTokens = DEFAULT_STYLE_TOKENS) {
+  const name = fileName.replace(/\.tsx?$/, '');
+  // normalize separators (underscores -> hyphens) then split
+  const normalized = name.replace(/_/g, '-');
+  const parts = normalized.split('-');
+  const styleSet = new Set(styleTokens);
+  while (parts.length > 0) {
+    const last = parts[parts.length - 1];
+    // treat pure numbers and tokens that are in styleTokens or contain 'color' as variant markers
+    if (/^\d+$/.test(last) || styleSet.has(last) || last.includes('color')) {
+      parts.pop();
+    } else {
+      break;
+    }
+  }
+  return parts.join('-') || name;
+}
+
+module.exports = {
+  makeIconExport,
+  getCreateFluentIconHeader,
+  loadRtlMetadata,
+  normalizeBaseName,
+  DEFAULT_STYLE_TOKENS,
+};
