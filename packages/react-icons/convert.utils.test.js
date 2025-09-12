@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { describe, it, expect, afterAll } from 'vitest';
 
-import { makeIconExport, getCreateFluentIconHeader } from './convert.utils';
+import { makeIconExport, getCreateFluentIconHeader, normalizeBaseName } from './convert.utils';
 
 describe(`convert  utils`, () => {
   describe(`getCreateFluentIconHeader`, () => {
@@ -89,6 +89,17 @@ describe(`convert  utils`, () => {
       });
       expect(res).toBeTruthy();
       expect(res?.exportCode).toContain('flipInRtl');
+    });
+  });
+
+  describe('normalizeBaseName', () => {
+    it('strips size and style tokens from filenames', () => {
+      expect(normalizeBaseName('zoom-in-20-filled.tsx')).toBe('zoom-in');
+      expect(normalizeBaseName('zoom-in-16-regular')).toBe('zoom-in');
+      expect(normalizeBaseName('my-icon-32-light.tsx')).toBe('my-icon');
+      expect(normalizeBaseName('color-test-20_color.tsx')).toBe('color-test');
+      // numeric-only token
+      expect(normalizeBaseName('example-24')).toBe('example');
     });
   });
 });
