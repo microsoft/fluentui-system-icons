@@ -4,34 +4,11 @@
 // @ts-check
 
 const fs = require('fs');
+const { writeFile, readdir } = require('fs/promises');
 const path = require('path');
-const argv = require('yargs').boolean('selector').default('selector', false).argv;
-const _ = require('lodash');
-const { createFormatMetadata, writeMetadata } = require('./convert.utils');
-
-const SRC_PATH = /** @type {string} */ (argv.source); // path with codepoint json maps (src/utils/fonts)
-const DEST_PATH = /** @type {string} */ (argv.dest); // destination folder for output
-const RTL_FILE = /** @type {string} */ (argv.rtl); // rtl metadata json
-const METADATA_PATH = /** @type {string} */ (argv.metadata); // output font metadata file
-
-if (!SRC_PATH) {
-  throw new Error('Icon source folder not specified by --source');
-}
-if (!DEST_PATH) {
-  throw new Error('Output destination folder not specified by --dest');
-}
-
-if (!RTL_FILE) {
-  throw new Error('RTL file not specified by --rtl');
-}
-
-if (!METADATA_PATH) {
-  throw new Error('Metadata output file not specified by --metadata');
-}
-
-if (!fs.existsSync(DEST_PATH)) {
-  fs.mkdirSync(DEST_PATH);
-}
+const yargs = require('yargs');
+const { makeIconExport, getCreateFluentIconHeader, loadRtlMetadata } = require('./convert.utils');
+const { createFormatMetadata, writeMetadata } = require('./metadata.utils');
 
 main().catch((err) => {
   console.error('[svg generation] failed:', err);
@@ -39,13 +16,16 @@ main().catch((err) => {
 });
 
 async function main() {
+  const { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH } = parseArgs(process.argv.slice(2));
+  const srcFiles = await processSourceDir(SRC_PATH);
+  const rtlMetadata = loadRtlMetadata(RTL_FILE);
   // 1. Generate chunked (existing) output
-  const { svgMetadata: chunkMetadata } = processPerChunk(SRC_PATH, DEST_PATH, METADATA_PATH);
+  const { svgMetadata: chunkMetadata } = processPerChunk(srcFiles, DEST_PATH, rtlMetadata);
 
   // 2. Generate per-icon output (merged from former convert-per-icon.js)
   const perIconDest = derivePerIconDest(DEST_PATH);
   const perIconMetadataPath = derivePerIconMetadataPath(METADATA_PATH);
-  const { svgMetadata: perIconMetadata } = processPerIcon(SRC_PATH, perIconDest, perIconMetadataPath);
+  const { svgMetadata: perIconMetadata } = await processPerIcon(srcFiles, perIconDest, rtlMetadata);
 
   writeMetadata(METADATA_PATH, chunkMetadata);
   writeMetadata(perIconMetadataPath, perIconMetadata);
@@ -55,21 +35,21 @@ async function main() {
 }
 
 /**
- * @param {string} src
+ * @param {SourceFiles} sourceFiles
  * @param {string} dest
- * @param {string} metadataPath
+ * @param {Record<string, any>} rtlMetadata
  */
-function processPerChunk(src, dest, metadataPath) {
+function processPerChunk(sourceFiles, dest, rtlMetadata) {
   /** @type string[] */
   const indexContents = [];
 
   // Collect all SVG metadata
-  /** @type {import('./convert.utils').IconMetadataCollection} */
+  /** @type {import('./metadata.utils').IconMetadataCollection} */
   const svgMetadata = {};
 
   // make file for resizeable icons
   const iconPath = path.join(dest, 'icons');
-  const { content: iconContents, iconNames: resizableIconNames } = processFolder(src, dest, true);
+  const { content: iconContents, iconNames: resizableIconNames } = processFolder(sourceFiles, rtlMetadata, true);
 
   if (fs.existsSync(iconPath)) {
     fs.rmSync(iconPath, { recursive: true, force: true });
@@ -88,7 +68,7 @@ function processPerChunk(src, dest, metadataPath) {
 
   // make file for sized icons
   const sizedIconPath = path.join(dest, 'sizedIcons');
-  const { content: sizedIconContents, iconNames: sizedIconNames } = processFolder(src, dest, false);
+  const { content: sizedIconContents, iconNames: sizedIconNames } = processFolder(sourceFiles, rtlMetadata, false);
   if (fs.existsSync(sizedIconPath)) {
     fs.rmSync(sizedIconPath, { recursive: true, force: true });
   }
@@ -129,69 +109,25 @@ function processPerChunk(src, dest, metadataPath) {
  * @returns { { content: string[], iconNames: string[] } } - chunked icon files to insert and list of icon names
  */
 /**
- * @param {string} srcPath
- * @param {string} destPath
+ * @param {SourceFiles} srcFiles
+ * @param {import('./convert.utils').RtlMetadata} rtlMetadata
  * @param {boolean} resizable
  */
-function processFolder(srcPath, destPath, resizable) {
-  var files = fs.readdirSync(srcPath);
+function processFolder(srcFiles, rtlMetadata, resizable) {
   /** @type string[] */
   const iconExports = [];
   /** @type string[] */
   const iconNames = [];
-  var metadata = JSON.parse(fs.readFileSync(/** @type {string} */ (RTL_FILE), 'utf-8'));
 
-  files.forEach(function (file, index) {
-    var srcFile = path.join(srcPath, file);
-    if (fs.lstatSync(srcFile).isDirectory() || !file.endsWith('.svg')) {
-      // for now, ignore subdirectories/localization, until we have a plan for handling it
-      // Will likely involve appending the lang/locale to the end of the friendly name for the unique component name
-      // var joinedDestPath = path.join(destPath, file)
-      // if (!fs.existsSync(joinedDestPath)) {
-      //   fs.mkdirSync(joinedDestPath);
-      // }
-      // indexContents += processFolder(srcFile, joinedDestPath)
-    } else {
-      if (resizable && !file.includes('20')) {
-        return;
-      }
-      var iconName = file.substring(0, file.length - 4); // strip '.svg'
-      iconName = iconName.replace('ic_fluent_', ''); // strip ic_fluent_
-      iconName = resizable ? iconName.replace('20', '') : iconName;
-      var destFilename = _.camelCase(iconName); // We want them to be camelCase, so access_time would become accessTime here
-      destFilename = destFilename.replace(destFilename.substring(0, 1), destFilename.substring(0, 1).toUpperCase()); // capitalize the first letter
-      var flipInRtl = metadata[destFilename] === 'mirror'; //checks rtl.json to see if icon is autoflippable
-      let color = iconName.includes('_color'); // checks if '_color' is in the path, which means the icon has a color variant
-      var iconContent = fs.readFileSync(srcFile, { encoding: 'utf8' });
-      let jsCode = '';
-      /**
-       * @param {string} key
-       */
-      const getAttr = (key) => [...iconContent.matchAll(new RegExp(`(?<= ${key}=)".+?"`, 'g'))].map((v) => v[0]);
-      const width = resizable ? '"1em"' : getAttr('width')[0];
-      const options =
-        flipInRtl && color
-          ? `, { flipInRtl: true, color: true }`
-          : flipInRtl
-            ? `, { flipInRtl: true }`
-            : color
-              ? `, { color: true }`
-              : '';
+  srcFiles.forEach(function (entry) {
+    if (resizable && !entry.file.includes('20')) {
+      return;
+    }
 
-      if (color) {
-        // For color icons, extract the entire SVG inner content
-        const innerSvg = iconContent
-          .replace(/^[\s\S]*?<svg[^>]*>/, '')
-          .replace(/<\/svg>[\s\S]*$/, '')
-          .trim();
-        jsCode = `export const ${destFilename}: FluentIcon = (/*#__PURE__*/createFluentIcon('${destFilename}', ${width}, \`${innerSvg}\`${options}));`;
-      } else {
-        // For non-color icons, keep the old path-based approach
-        const paths = getAttr('d').join(',');
-        jsCode = `export const ${destFilename}: FluentIcon = (/*#__PURE__*/createFluentIcon('${destFilename}', ${width}, [${paths}]${options}));`;
-      }
-      iconExports.push(jsCode);
-      iconNames.push(destFilename);
+    const result = makeIconExport({ file: entry.file, srcFile: entry.srcFile, resizable, metadata: rtlMetadata });
+    if (result) {
+      iconExports.push(result.exportCode);
+      iconNames.push(result.exportName);
     }
   });
 
@@ -202,10 +138,9 @@ function processFolder(srcPath, destPath, resizable) {
     iconChunks.push(iconExports.splice(0, 1000));
   }
 
+  const chunkHeader = getCreateFluentIconHeader('../utils/createFluentIcon');
   for (const chunk of iconChunks) {
-    chunk.unshift(`import { createFluentIcon } from "../utils/createFluentIcon";`);
-    chunk.unshift(`import type { FluentIcon } from "../utils/createFluentIcon";`);
-    chunk.unshift(`"use client";`);
+    chunk.unshift(...chunkHeader);
   }
 
   /** @type string[] */
@@ -216,25 +151,25 @@ function processFolder(srcPath, destPath, resizable) {
 
 /**
  * Per-icon generation (merged from former convert-per-icon.js)
- * @param {string} srcPath
+ * @param {SourceFiles} sourceFiles
  * @param {string} destPath
- * @param {string} metadataPath
+ * @param {import('./convert-font.utils').RtlMetadata} rtlMetadata
  */
-function processPerIcon(srcPath, destPath, metadataPath) {
+async function processPerIcon(sourceFiles, destPath, rtlMetadata) {
   // local clean (synchronous) similar to chunk variant
   if (fs.existsSync(destPath)) {
     fs.rmSync(destPath, { recursive: true, force: true });
   }
   fs.mkdirSync(destPath, { recursive: true });
 
-  /** @type {import('./convert.utils').IconMetadataCollection} */
+  /** @type {import('./metadata.utils').IconMetadataCollection} */
   const svgMetadata = {};
 
   // resizable (base 20 variant names with size removed)
-  const resizable = generatePerIconFiles(srcPath, destPath, true);
+  const resizable = await generatePerIconFiles(sourceFiles, destPath, rtlMetadata, true);
   Object.assign(svgMetadata, createFormatMetadata(resizable.iconNames, 'svg', 'resizable'));
   // sized (all sizes)
-  const sized = generatePerIconFiles(srcPath, destPath, false);
+  const sized = await generatePerIconFiles(sourceFiles, destPath, rtlMetadata, false);
   Object.assign(svgMetadata, createFormatMetadata(sized.iconNames, 'svg', 'sized'));
 
   console.log(`[svg per-icon] Wrote ${resizable.fileCount + sized.fileCount} icon files to ${destPath}`);
@@ -243,83 +178,33 @@ function processPerIcon(srcPath, destPath, metadataPath) {
 
 /**
  * Generates per-icon .tsx files (adapted from convert-per-icon.js)
- * @param {string} srcPath
+ * @param {SourceFiles} sourceFiles
  * @param {string} destPath
+ * @param {import('./convert-font.utils').RtlMetadata} rtlMetadata
  * @param {boolean} resizable
- * @returns {{ iconNames: string[]; fileCount: number }}
+ * @returns {Promise<{ iconNames: string[]; fileCount: number }>}
  */
-function generatePerIconFiles(srcPath, destPath, resizable) {
-  const files = fs.readdirSync(srcPath);
-  const metadata = JSON.parse(fs.readFileSync(/** @type {string} */ (RTL_FILE), 'utf-8'));
-
+async function generatePerIconFiles(sourceFiles, destPath, rtlMetadata, resizable) {
   /** @type {string[]} */
   const iconNames = [];
   let count = 0;
 
-  for (const file of files) {
-    const srcFile = path.join(srcPath, file);
-    if (fs.lstatSync(srcFile).isDirectory() || !file.endsWith('.svg')) continue;
-    if (resizable && !file.includes('20')) continue; // only base 20 size for resizable set
+  for (const entry of sourceFiles) {
+    if (resizable && !entry.file.includes('20')) continue; // only base 20 size for resizable set
+    const result = makeIconExport({ file: entry.file, srcFile: entry.srcFile, resizable, metadata: rtlMetadata });
+    if (!result) continue;
 
-    let iconName = file.slice(0, -4); // strip .svg
-    iconName = iconName.replace('ic_fluent_', '');
-    iconName = resizable ? iconName.replace('20', '') : iconName;
-
-    let exportName = _.camelCase(iconName);
-    exportName = exportName[0].toUpperCase() + exportName.slice(1);
-    const flipInRtl = metadata[exportName] === 'mirror';
-    const isColor = iconName.includes('_color');
-
-    const svgContent = fs.readFileSync(srcFile, 'utf8');
-    /**
-     * @param {string} key
-     */
-    const getAttr = (key) => [...svgContent.matchAll(new RegExp(`(?<= ${key}=)".+?"`, 'g'))].map((v) => v[0]);
-    const width = resizable ? '"1em"' : getAttr('width')[0];
-    const options =
-      flipInRtl && isColor
-        ? ', { flipInRtl: true, color: true }'
-        : flipInRtl
-          ? ', { flipInRtl: true }'
-          : isColor
-            ? ', { color: true }'
-            : '';
-
-    let exportCode;
-    if (isColor) {
-      const innerSvg = svgContent
-        .replace(/^[\s\S]*?<svg[^>]*>/, '')
-        .replace(/<\/svg>[\s\S]*$/, '')
-        .trim();
-      exportCode = `export const ${exportName}: FluentIcon = (/*#__PURE__*/createFluentIcon('${exportName}', ${width}, \`${innerSvg}\`${options}));`;
-    } else {
-      const paths = getAttr('d').join(',');
-      exportCode = `export const ${exportName}: FluentIcon = (/*#__PURE__*/createFluentIcon('${exportName}', ${width}, [${paths}]${options}));`;
-    }
-
-    const fileName = toKebabCase(exportName) + '.tsx';
-    const filePath = path.join(destPath, fileName);
+    const filePath = path.join(destPath, result.fileName);
     const relImport = path.posix.join('..', '..', 'utils', 'createFluentIcon');
-    const fileSource = `"use client";\nimport type { FluentIcon } from '${relImport}';\nimport { createFluentIcon } from '${relImport}';\n${exportCode}\n`;
+    const fileSourceLines = getCreateFluentIconHeader(relImport).concat([result.exportCode]);
+    const fileSource = fileSourceLines.join('\n') + '\n';
 
-    fs.writeFileSync(filePath, fileSource, 'utf8');
-    iconNames.push(exportName);
+    await writeFile(filePath, fileSource, 'utf8');
+    iconNames.push(result.exportName);
     count++;
   }
 
   return { iconNames, fileCount: count };
-}
-
-/**
- * Convert PascalCase or camelCase with digits to kebab-case.
- * @param {string} name
- */
-function toKebabCase(name) {
-  return name
-    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
-    .replace(/([A-Za-z])([0-9])/g, '$1-$2')
-    .replace(/([0-9])([A-Za-z])/g, '$1-$2')
-    .toLowerCase();
 }
 
 /**
@@ -345,4 +230,70 @@ function derivePerIconMetadataPath(metadataPath) {
     return metadataPath.replace(/\.json$/, '.atom.json');
   }
   return metadataPath + '.atom.json';
+}
+
+/**
+ *
+ * @typedef {Awaited<ReturnType<typeof processSourceDir>>} SourceFiles
+ */
+
+/**
+ *
+ * @param {string} srcPath
+ */
+async function processSourceDir(srcPath) {
+  const srcFiles = await readdir(srcPath);
+  /** @type {{ srcFile: string; file: string; }[]} */
+  const filePaths = [];
+
+  for (const file of srcFiles) {
+    const srcFile = path.join(srcPath, file);
+
+    // for now, ignore subdirectories/localization, until we have a plan for handling it
+    // Will likely involve appending the lang/locale to the end of the friendly name for the unique component name
+    // var joinedDestPath = path.join(destPath, file)
+    // if (!fs.existsSync(joinedDestPath)) {
+    //   fs.mkdirSync(joinedDestPath);
+    // }
+    // indexContents += processFolder(srcFile, joinedDestPath)
+    if (fs.lstatSync(srcFile).isDirectory() || !file.endsWith('.svg')) continue;
+
+    filePaths.push({ srcFile, file });
+  }
+
+  console.info(`[process src]: processed ${filePaths.length} files`);
+
+  return filePaths;
+}
+
+/**
+ *
+ * @param {string[]} argv
+ * @returns
+ */
+function parseArgs(argv) {
+  const args = yargs.parse(argv);
+  const SRC_PATH = /** @type {string} */ (args.source); // path with codepoint json maps (src/utils/fonts)
+  const DEST_PATH = /** @type {string} */ (args.dest); // destination folder for output
+  const RTL_FILE = /** @type {string} */ (args.rtl); // rtl metadata json
+  const METADATA_PATH = /** @type {string} */ (args.metadata); // output font metadata file
+
+  if (!SRC_PATH) {
+    throw new Error('Icon source folder not specified by --source');
+  }
+  if (!DEST_PATH) {
+    throw new Error('Output destination folder not specified by --dest');
+  }
+  if (!RTL_FILE) {
+    throw new Error('RTL file not specified by --rtl');
+  }
+  if (!METADATA_PATH) {
+    throw new Error('Metadata output file not specified by --metadata');
+  }
+
+  if (!fs.existsSync(DEST_PATH)) {
+    fs.mkdirSync(DEST_PATH);
+  }
+
+  return { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH };
 }

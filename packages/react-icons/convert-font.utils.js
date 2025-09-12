@@ -11,6 +11,8 @@
 const fs = require('fs');
 const _ = require('lodash');
 
+/** @typedef {{ [key: string]: 'mirror' | 'unique' }} RtlMetadata */
+
 /**
  * Convert a raw glyph filename entry into the exported React icon name.
  * @param {string} iconName Raw name from codepoint map (e.g. ic_fluent_access_time_20_filled)
@@ -25,6 +27,7 @@ function getReactIconNameFromGlyphName(iconName, resizable) {
 /**
  * Load RTL metadata file once.
  * @param {string} rtlFilePath
+ * @returns {RtlMetadata}
  */
 function loadRtlMetadata(rtlFilePath) {
   return JSON.parse(fs.readFileSync(rtlFilePath, 'utf-8'));
@@ -45,8 +48,22 @@ function buildFontIconExport(exportName, codepoint, resizable, flipInRtl, rawGly
   return `export const ${exportName}: FluentFontIcon = (/*#__PURE__*/createFluentFontIcon(${JSON.stringify(exportName)}, ${JSON.stringify(String.fromCodePoint(codepoint))}, ${resizable ? 2 : style}, ${resizable ? undefined : size}${flipInRtl ? ', { flipInRtl: true }' : ''}));`;
 }
 
+/**
+ * Returns the standard header lines used in generated icon files.
+ * @param {string} relImport - relative import path to createFluentIcon
+ * @returns {string[]}
+ */
+function getCreateFluentIconHeader(relImport) {
+  return [
+    `"use client";`,
+    `import type { FluentFontIcon } from '${relImport}';`,
+    `import { createFluentFontIcon } from '${relImport}';`,
+  ];
+}
+
 module.exports = {
   getReactIconNameFromGlyphName,
   loadRtlMetadata,
   buildFontIconExport,
+  getCreateFluentIconHeader,
 };

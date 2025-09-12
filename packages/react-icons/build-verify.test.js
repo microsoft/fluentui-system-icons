@@ -861,7 +861,7 @@ describe('Build Verification', () => {
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
           ""use client";
-          import { createFluentIcon } from "../utils/createFluentIcon";
+          import { createFluentIcon } from '../utils/createFluentIcon';
           export const AccessTimeFilled = ( /*#__PURE__*/createFluentIcon('AccessTimeFilled', "1em", ["M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM6.99 8.6A.5.5 0 0 1 6 8.4c.02-.07.03-.14.07-.24a2 2 0 0 1 .25-.46c.26-.35.71-.7 1.42-.7A1.7 1.7 0 0 1 9.5 8.75c0 .35-.07.65-.2.9a1.8 1.8 0 0 1-.51.6c-.16.11-.33.22-.48.3l-.06.04c-.17.1-.3.19-.42.29-.4.34-.66.7-.77 1.12H9a.5.5 0 0 1 0 1H6.5a.5.5 0 0 1-.5-.5c0-1.01.47-1.77 1.17-2.38.2-.16.4-.29.57-.4l.06-.03.38-.24a.8.8 0 0 0 .23-.26c.05-.1.09-.23.09-.44a.8.8 0 0 0-.19-.53.7.7 0 0 0-.56-.22.7.7 0 0 0-.61.3 1 1 0 0 0-.15.3ZM11 7c.28 0 .5.22.5.5V10H13V7.5a.5.5 0 0 1 1 0v5a.5.5 0 0 1-1 0V11h-2a.5.5 0 0 1-.5-.5v-3c0-.28.22-.5.5-.5Z"]));
           export const AccessTimeRegular = ( /*#__PURE__*/createFluentIcon('AccessTimeRegular', "1em", ["M6.99 8.6A.5.5 0 0 1 6 8.4a1.29 1.29 0 0 1 .07-.24 2 2 0 0 1 .25-.46c.26-.35.71-.7 1.42-.7A1.7 1.7 0 0 1 9.5 8.75c0 .35-.07.65-.2.9a1.8 1.8 0 0 1-.51.6c-.16.11-.33.22-.48.3l-.06.04c-.17.1-.3.19-.42.29-.4.34-.66.7-.77 1.12H9a.5.5 0 0 1 0 1H6.5a.5.5 0 0 1-.5-.5c0-1.01.47-1.77 1.17-2.38.2-.16.4-.29.57-.4l.06-.03.38-.24a.8.8 0 0 0 .23-.26c.05-.1.09-.23.09-.44a.8.8 0 0 0-.19-.53.7.7 0 0 0-.56-.22.7.7 0 0 0-.61.3 1 1 0 0 0-.15.3ZM11 7c.28 0 .5.22.5.5V10H13V7.5a.5.5 0 0 1 1 0v5a.5.5 0 0 1-1 0V11h-2a.5.5 0 0 1-.5-.5v-3c0-.28.22-.5.5-.5Zm-1-5a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm-7 8a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z"]));
           export const AccessibilityFilled = ( /*#__PURE__*/createFluentIcon('AccessibilityFilled', "1em", ["M10 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM5.47 4.15c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L6.7 8.53c.18.08.3.26.3.46v1.86a.5.5 0 0 1-.04.19l-1.84 4.55a1.75 1.75 0 0 0 3.25 1.32l1.4-3.46c.08-.21.38-.21.46 0l1.4 3.46a1.75 1.75 0 0 0 3.24-1.32l-1.83-4.54a.5.5 0 0 1-.04-.19V9c0-.2.12-.38.3-.46l2.67-1.19c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-1.28.57c-.24.1-.42.3-.52.52a3 3 0 0 1-5.46 0c-.1-.21-.28-.41-.52-.52l-1.28-.57Z"]));
@@ -897,7 +897,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentIcon } from "../utils/createFluentIcon";
+          "import type { FluentIcon } from '../utils/createFluentIcon';
           export declare const AccessTimeFilled: FluentIcon;
           export declare const AccessTimeRegular: FluentIcon;
           export declare const AccessibilityFilled: FluentIcon;
@@ -988,7 +988,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentIcon } from "../utils/createFluentIcon";
+          "import type { FluentIcon } from '../utils/createFluentIcon';
           export declare const AccessTimeFilled: FluentIcon;
           export declare const AccessTimeRegular: FluentIcon;
           export declare const AccessibilityFilled: FluentIcon;
@@ -1043,7 +1043,7 @@ describe('Build Verification', () => {
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
           ""use client";
-          import { createFluentIcon } from "../utils/createFluentIcon";
+          import { createFluentIcon } from '../utils/createFluentIcon';
           export const AccessTime20Filled = ( /*#__PURE__*/createFluentIcon('AccessTime20Filled', "20", ["M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM6.99 8.6A.5.5 0 0 1 6 8.4c.02-.07.03-.14.07-.24a2 2 0 0 1 .25-.46c.26-.35.71-.7 1.42-.7A1.7 1.7 0 0 1 9.5 8.75c0 .35-.07.65-.2.9a1.8 1.8 0 0 1-.51.6c-.16.11-.33.22-.48.3l-.06.04c-.17.1-.3.19-.42.29-.4.34-.66.7-.77 1.12H9a.5.5 0 0 1 0 1H6.5a.5.5 0 0 1-.5-.5c0-1.01.47-1.77 1.17-2.38.2-.16.4-.29.57-.4l.06-.03.38-.24a.8.8 0 0 0 .23-.26c.05-.1.09-.23.09-.44a.8.8 0 0 0-.19-.53.7.7 0 0 0-.56-.22.7.7 0 0 0-.61.3 1 1 0 0 0-.15.3ZM11 7c.28 0 .5.22.5.5V10H13V7.5a.5.5 0 0 1 1 0v5a.5.5 0 0 1-1 0V11h-2a.5.5 0 0 1-.5-.5v-3c0-.28.22-.5.5-.5Z"]));
           export const AccessTime20Regular = ( /*#__PURE__*/createFluentIcon('AccessTime20Regular', "20", ["M6.99 8.6A.5.5 0 0 1 6 8.4a1.29 1.29 0 0 1 .07-.24 2 2 0 0 1 .25-.46c.26-.35.71-.7 1.42-.7A1.7 1.7 0 0 1 9.5 8.75c0 .35-.07.65-.2.9a1.8 1.8 0 0 1-.51.6c-.16.11-.33.22-.48.3l-.06.04c-.17.1-.3.19-.42.29-.4.34-.66.7-.77 1.12H9a.5.5 0 0 1 0 1H6.5a.5.5 0 0 1-.5-.5c0-1.01.47-1.77 1.17-2.38.2-.16.4-.29.57-.4l.06-.03.38-.24a.8.8 0 0 0 .23-.26c.05-.1.09-.23.09-.44a.8.8 0 0 0-.19-.53.7.7 0 0 0-.56-.22.7.7 0 0 0-.61.3 1 1 0 0 0-.15.3ZM11 7c.28 0 .5.22.5.5V10H13V7.5a.5.5 0 0 1 1 0v5a.5.5 0 0 1-1 0V11h-2a.5.5 0 0 1-.5-.5v-3c0-.28.22-.5.5-.5Zm-1-5a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm-7 8a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z"]));
           export const AccessTime24Filled = ( /*#__PURE__*/createFluentIcon('AccessTime24Filled', "24", ["M22 12a10 10 0 1 0-20 0 10 10 0 0 0 20 0ZM7.5 8.74A2.3 2.3 0 0 1 9.25 8c1.15 0 1.9.8 2.15 1.66.26.85.1 1.9-.62 2.62a8.1 8.1 0 0 1-.79.67l-.04.03c-.28.22-.53.41-.75.63a2.3 2.3 0 0 0-.58.89h2.13a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1-.75-.75c0-1.25.52-2.08 1.14-2.7.3-.3.62-.55.9-.76.28-.22.5-.4.68-.57.27-.27.37-.72.25-1.13-.12-.38-.37-.59-.72-.59s-.53.14-.64.25a.84.84 0 0 0-.15.23.75.75 0 0 1-1.43-.46l.04-.1.08-.17c.07-.14.18-.32.35-.5ZM13.25 8c.41 0 .75.34.75.75v2.75h1.5V8.75a.75.75 0 0 1 1.5 0v6.47a.75.75 0 0 1-1.5 0V13h-2.25a.75.75 0 0 1-.75-.75v-3.5c0-.41.34-.75.75-.75Z"]));
@@ -1079,7 +1079,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentIcon } from "../utils/createFluentIcon";
+          "import type { FluentIcon } from '../utils/createFluentIcon';
           export declare const AccessTime20Filled: FluentIcon;
           export declare const AccessTime20Regular: FluentIcon;
           export declare const AccessTime24Filled: FluentIcon;
@@ -1170,7 +1170,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentIcon } from "../utils/createFluentIcon";
+          "import type { FluentIcon } from '../utils/createFluentIcon';
           export declare const AccessTime20Filled: FluentIcon;
           export declare const AccessTime20Regular: FluentIcon;
           export declare const AccessTime24Filled: FluentIcon;
@@ -1225,7 +1225,7 @@ describe('Build Verification', () => {
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
           ""use client";
-          import { createFluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
+          import { createFluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
           export const AccessTimeFilled = ( /*#__PURE__*/createFluentFontIcon("AccessTimeFilled", "", 2, undefined));
           export const AccessTimeRegular = ( /*#__PURE__*/createFluentFontIcon("AccessTimeRegular", "", 2, undefined));
           export const AccessibilityFilled = ( /*#__PURE__*/createFluentFontIcon("AccessibilityFilled", "", 2, undefined));
@@ -1261,7 +1261,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
+          "import type { FluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
           export declare const AccessTimeFilled: FluentFontIcon;
           export declare const AccessTimeRegular: FluentFontIcon;
           export declare const AccessibilityFilled: FluentFontIcon;
@@ -1352,7 +1352,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
+          "import type { FluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
           export declare const AccessTimeFilled: FluentFontIcon;
           export declare const AccessTimeRegular: FluentFontIcon;
           export declare const AccessibilityFilled: FluentFontIcon;
@@ -1407,7 +1407,7 @@ describe('Build Verification', () => {
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
           ""use client";
-          import { createFluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
+          import { createFluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
           export const AccessibilityCheckmark32Light = ( /*#__PURE__*/createFluentFontIcon("AccessibilityCheckmark32Light", "", 3, 32));
           export const Add32Light = ( /*#__PURE__*/createFluentFontIcon("Add32Light", "", 3, 32));
           export const Alert32Light = ( /*#__PURE__*/createFluentFontIcon("Alert32Light", "", 3, 32));
@@ -1443,7 +1443,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
+          "import type { FluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
           export declare const AccessibilityCheckmark32Light: FluentFontIcon;
           export declare const Add32Light: FluentFontIcon;
           export declare const Alert32Light: FluentFontIcon;
@@ -1534,7 +1534,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
+          "import type { FluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
           export declare const AccessibilityCheckmark32Light: FluentFontIcon;
           export declare const Add32Light: FluentFontIcon;
           export declare const Alert32Light: FluentFontIcon;
