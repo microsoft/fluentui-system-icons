@@ -1,8 +1,0 @@
-{
-  "name": "Pages",
-  "size": [24, 16],
-  "style": ["Regular", "Filled"],
-  "keyword": "fluent-icon",
-  "description": "Used to represent pages of a book.",
-  "metaphor": ["book", "read", "pages"]
-}
