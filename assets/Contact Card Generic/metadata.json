@@ -1,0 +1,8 @@
+{
+  "name": "Contact Card Generic",
+  "size": [48, 32, 28, 24, 20, 16],
+  "style": ["Regular", "Filled"],
+  "keyword": "fluent-icon",
+  "description": "Used for directional indicators, links. Contains directional variants.",
+  "metaphor": ["person", "profile", "details", "organization", "people card"]
+}
