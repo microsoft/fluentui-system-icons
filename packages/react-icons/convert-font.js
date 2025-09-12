@@ -17,11 +17,14 @@ const {
   buildFontIconExport,
   getCreateFluentIconHeader,
 } = require('./convert-font.utils');
+const { writePerIconFiles } = require('./per-icon.writer');
 
-main().catch((err) => {
-  console.error('[font generation] failed', err);
-  process.exit(1);
-});
+if (require.main === module) {
+  main().catch((err) => {
+    console.error('[font generation] failed', err);
+    process.exit(1);
+  });
+}
 
 async function main() {
   const { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH, CODEPOINT_DEST_PATH } = parseArgs(process.argv.slice(2));
@@ -268,15 +271,15 @@ async function cleanFolder(folder) {
  * @param {{ resizable: IconEntry[]; sized: IconEntry[];}} iconEntries
  * @param {import('./convert-font.utils').RtlMetadata} rtlMetadata
  */
-async function processPerIcon(destPath, iconEntries, rtlMetadata) {
+async function processPerIcon(destPath, iconEntries, rtlMetadata, options = { groupByBase: true }) {
   await cleanFolder(destPath);
 
   /** @type {import('./metadata.utils').IconMetadataCollection} */
   const fontMetadata = {};
 
-  const resizable = await processPerIconSet(destPath, iconEntries.resizable, rtlMetadata, true);
+  const resizable = await processPerIconSet(destPath, iconEntries.resizable, rtlMetadata, true, options.groupByBase);
   Object.assign(fontMetadata, createFormatMetadata(resizable.iconNames, 'font', 'resizable'));
-  const sized = await processPerIconSet(destPath, iconEntries.sized, rtlMetadata, false);
+  const sized = await processPerIconSet(destPath, iconEntries.sized, rtlMetadata, false, options.groupByBase);
   Object.assign(fontMetadata, createFormatMetadata(sized.iconNames, 'font', 'sized'));
 
   console.log(`[font per-icon] Wrote ${resizable.fileCount + sized.fileCount} files to ${destPath}`);
@@ -291,25 +294,30 @@ async function processPerIcon(destPath, iconEntries, rtlMetadata) {
  * @param {import('./convert-font.utils').RtlMetadata} rtlMetadata
  * @param {boolean} resizable
  */
-async function processPerIconSet(destPath, iconEntries, rtlMetadata, resizable) {
+async function processPerIconSet(destPath, iconEntries, rtlMetadata, resizable, groupByBase = true) {
   /** @type {string[]} */
   const iconNames = [];
-  let count = 0;
+  /** @type {Array<{ exportName: string; exportCode: string; fileName: string; rawName: string }>} */
+  const items = [];
+
   for (const entry of iconEntries) {
     for (const [rawName, codepoint] of Object.entries(entry.iconEntries)) {
       const exportName = getReactIconNameFromGlyphName(rawName, resizable);
       const flipInRtl = rtlMetadata[exportName] === 'mirror';
       const jsCode = buildFontIconExport(exportName, codepoint, resizable, flipInRtl, rawName);
       const fileName = `${_.kebabCase(exportName)}.tsx`;
-      const relImport = path.posix.join('..', '..', 'utils', 'fonts', 'createFluentFontIcon');
-      const source = getCreateFluentIconHeader(relImport).concat([jsCode]).join('\n') + '\n';
-
-      await fs.writeFile(path.join(destPath, fileName), source, 'utf8');
+      items.push({ exportName, exportCode: jsCode, fileName, rawName });
       iconNames.push(exportName);
-      count++;
     }
   }
-  return { iconNames, fileCount: count };
+
+  const relImport = path.posix.join('..', '..', 'utils', 'fonts', 'createFluentFontIcon');
+  const headerLines = getCreateFluentIconHeader(relImport);
+
+  const flattened = items.filter((i) => i != null);
+  // Font per-icon generation historically always groups by normalized base name.
+  const result = await writePerIconFiles(destPath, flattened, headerLines, { groupByBase: true });
+  return { iconNames, fileCount: result.fileCount };
 }
 
 /**
@@ -371,3 +379,5 @@ function parseArgs(argv) {
 
   return { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH, CODEPOINT_DEST_PATH };
 }
+
+module.exports = { processPerIconSet, processPerIcon };
