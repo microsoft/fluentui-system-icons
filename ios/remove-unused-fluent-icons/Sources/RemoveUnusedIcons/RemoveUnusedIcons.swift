@@ -33,13 +33,13 @@ public func removeUnusedAssets(libraryName: String, assetCatalogName: String, pa
   var fileName = libraryName
   _ = fileName.removeLast() // Remove trailing "s"
 
-  let result = try getAllIconNames(pathToFluentIconSource: pathToFluentIconSource, libraryName: libraryName, fileName: fileName)
+  let (allIconNames, weights) = try getAllIconNames(pathToFluentIconSource: pathToFluentIconSource, libraryName: libraryName, fileName: fileName)
 
   print("Searching for possible swift icon references")
   let allPossibleSwiftIconReferences = searchForCodeReferences(
     in: pathToSourceCode,
     language: .swift,
-    weights: result.weights,
+    weights: weights,
     excludingFileName: fileName
   )
 
@@ -47,29 +47,22 @@ public func removeUnusedAssets(libraryName: String, assetCatalogName: String, pa
   let allPossibleObjcIconReferences = searchForCodeReferences(
     in: pathToSourceCode,
     language: .objc,
-    weights: result.weights,
+    weights: weights,
     excludingFileName: fileName
   )
 
-  var listOfIconsToKeep: [String] = []
+  var listOfIconsToKeep = Set<String>()
   if let pathToListOfIconsToKeep = pathToListOfIconsToKeep {
     for path in pathToListOfIconsToKeep.split(separator: ",") {
       let fileContents = try String(contentsOfFile: String(path), encoding: .utf8)
-      listOfIconsToKeep.append(contentsOf: fileContents.mapToLines())
+      for line in fileContents.mapToLines() {
+        listOfIconsToKeep.insert(line)
+      }
     }
   }
-
-  let allPossibleIconReferences = allPossibleSwiftIconReferences + allPossibleObjcIconReferences + listOfIconsToKeep
-
-  let allIconNames = result.names
 
   // Validate custom list provided to script has all valid icons
-  var invalidIcons: [String] = []
-  for icon in listOfIconsToKeep {
-    if !allIconNames.contains(icon) {
-      invalidIcons.append(icon)
-    }
-  }
+  let invalidIcons = listOfIconsToKeep.subtracting(allIconNames)
   if !invalidIcons.isEmpty {
     print("List of icons provided contains invalid icons \(invalidIcons)")
     if exitOnIncorrectlyUsedIconName {
@@ -77,17 +70,8 @@ public func removeUnusedAssets(libraryName: String, assetCatalogName: String, pa
     }
   }
 
-  let allPossibleIconReferencesLower = allPossibleIconReferences.map { $0.lowercased() }
-  let allIconNamesLower = Set(allIconNames.map { $0.lowercased() })
-
-  var iconsUsed = Set<String>()
-  for line in allPossibleIconReferencesLower {
-    for iconName in allIconNamesLower {
-      if line.contains(iconName) {
-        iconsUsed.insert(iconName)
-      }
-    }
-  }
+  print("Finding used icons")
+  let allUsedIcons = allPossibleSwiftIconReferences.union(allPossibleObjcIconReferences).union(listOfIconsToKeep)
 
   let pathToFluentIconAssets = "\(pathToFluentIconSource)/ios/\(libraryName)/Assets/\(assetCatalogName).xcassets"
 
@@ -100,13 +84,13 @@ public func removeUnusedAssets(libraryName: String, assetCatalogName: String, pa
   }
 
   print("Removing unused assets")
-  var count = 0
+  var removedCount = 0
   for directory in directories {
-    let iconName = getIconName(from: directory).lowercased()
-    if !iconsUsed.contains(iconName) {
+    let iconName = getIconName(from: directory)
+    if !allUsedIcons.contains(iconName) {
       try FileManager.default.removeItem(at: directory)
-      count += 1
+      removedCount += 1
     }
   }
-  print("Removed \(count) unused assets.")
+  print("Removed \(removedCount)")
 }
