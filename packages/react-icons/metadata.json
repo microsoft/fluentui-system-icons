@@ -7364,6 +7364,16 @@
     "font": true,
     "type": "resizable"
   },
+  "ContactCardGenericFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "ContactCardGenericRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "ContactCardGroupFilled": {
     "svg": true,
     "font": true,
@@ -13719,6 +13729,26 @@
     "font": true,
     "type": "resizable"
   },
+  "LayoutAddAboveFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "LayoutAddAboveRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "LayoutAddBelowFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "LayoutAddBelowRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "LayoutCellFourFilled": {
     "svg": true,
     "font": true,
@@ -13840,6 +13870,16 @@
     "type": "resizable"
   },
   "LayoutColumnTwoRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "LayoutColumnTwoEditFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "LayoutColumnTwoEditRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -21174,6 +21214,16 @@
     "font": true,
     "type": "resizable"
   },
+  "SlideContentFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "SlideContentRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "SlideEraserFilled": {
     "svg": true,
     "font": true,
@@ -21760,6 +21810,26 @@
     "type": "resizable"
   },
   "SportBasketballRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "SportCricketBallFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "SportCricketBallRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "SportCricketBatFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "SportCricketBatRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -53619,6 +53689,36 @@
     "font": true,
     "type": "sized"
   },
+  "CommentBadge28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CommentBadge28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CommentBadge32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CommentBadge32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CommentBadge48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CommentBadge48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "CommentCheckmark12Filled": {
     "svg": true,
     "font": true,
@@ -54695,6 +54795,66 @@
     "type": "sized"
   },
   "ContactCard48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ContactCardGeneric16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ContactCardGeneric16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ContactCardGeneric20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ContactCardGeneric20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ContactCardGeneric24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ContactCardGeneric24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ContactCardGeneric28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ContactCardGeneric28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ContactCardGeneric32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ContactCardGeneric32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ContactCardGeneric48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ContactCardGeneric48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -75834,6 +75994,86 @@
     "font": true,
     "type": "sized"
   },
+  "LayoutAddAbove16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutAddAbove16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutAddAbove20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutAddAbove20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutAddAbove24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutAddAbove24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutAddAbove32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutAddAbove32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutAddBelow16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutAddBelow16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutAddBelow20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutAddBelow20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutAddBelow24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutAddBelow24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutAddBelow32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutAddBelow32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "LayoutCellFour16Filled": {
     "svg": true,
     "font": true,
@@ -76220,6 +76460,46 @@
     "type": "sized"
   },
   "LayoutColumnTwo32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutColumnTwoEdit16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutColumnTwoEdit16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutColumnTwoEdit20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutColumnTwoEdit20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutColumnTwoEdit24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutColumnTwoEdit24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutColumnTwoEdit32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutColumnTwoEdit32Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -102999,6 +103279,16 @@
     "font": true,
     "type": "sized"
   },
+  "SlideContent20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SlideContent20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "SlideContent24Filled": {
     "svg": true,
     "font": true,
@@ -105135,6 +105425,66 @@
     "type": "sized"
   },
   "SportBasketball24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SportCricketBall16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SportCricketBall16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SportCricketBall20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SportCricketBall20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SportCricketBall24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SportCricketBall24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SportCricketBat16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SportCricketBat16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SportCricketBat20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SportCricketBat20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SportCricketBat24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SportCricketBat24Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -109899,12 +110249,62 @@
     "font": true,
     "type": "sized"
   },
+  "TableMultiple16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableMultiple16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "TableMultiple20Filled": {
     "svg": true,
     "font": true,
     "type": "sized"
   },
   "TableMultiple20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableMultiple24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableMultiple24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableMultiple28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableMultiple28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableMultiple32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableMultiple32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableMultiple48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableMultiple48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
