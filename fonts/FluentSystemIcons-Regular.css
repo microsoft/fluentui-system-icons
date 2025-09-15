@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.woff2?5563ee78ba0caf8c4634b681985d8764") format("woff2"),
-url("./FluentSystemIcons-Regular.woff?5563ee78ba0caf8c4634b681985d8764") format("woff"),
-url("./FluentSystemIcons-Regular.ttf?5563ee78ba0caf8c4634b681985d8764") format("truetype");
+    src: url("./FluentSystemIcons-Regular.woff2?d1b9a23efa6b0808a96e7464a784217e") format("woff2"),
+url("./FluentSystemIcons-Regular.woff?d1b9a23efa6b0808a96e7464a784217e") format("woff"),
+url("./FluentSystemIcons-Regular.ttf?d1b9a23efa6b0808a96e7464a784217e") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -27120,4 +27120,103 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_table_freeze_row_dismiss_24_regular:before {
     content: "\f0a4a";
+}
+.icon-ic_fluent_comment_badge_28_regular:before {
+    content: "\f0a4b";
+}
+.icon-ic_fluent_comment_badge_32_regular:before {
+    content: "\f0a4c";
+}
+.icon-ic_fluent_comment_badge_48_regular:before {
+    content: "\f0a4d";
+}
+.icon-ic_fluent_contact_card_generic_16_regular:before {
+    content: "\f0a4e";
+}
+.icon-ic_fluent_contact_card_generic_20_regular:before {
+    content: "\f0a4f";
+}
+.icon-ic_fluent_contact_card_generic_24_regular:before {
+    content: "\f0a50";
+}
+.icon-ic_fluent_contact_card_generic_28_regular:before {
+    content: "\f0a51";
+}
+.icon-ic_fluent_contact_card_generic_32_regular:before {
+    content: "\f0a52";
+}
+.icon-ic_fluent_contact_card_generic_48_regular:before {
+    content: "\f0a53";
+}
+.icon-ic_fluent_layout_add_above_16_regular:before {
+    content: "\f0a54";
+}
+.icon-ic_fluent_layout_add_above_20_regular:before {
+    content: "\f0a55";
+}
+.icon-ic_fluent_layout_add_above_24_regular:before {
+    content: "\f0a56";
+}
+.icon-ic_fluent_layout_add_above_32_regular:before {
+    content: "\f0a57";
+}
+.icon-ic_fluent_layout_add_below_16_regular:before {
+    content: "\f0a58";
+}
+.icon-ic_fluent_layout_add_below_20_regular:before {
+    content: "\f0a59";
+}
+.icon-ic_fluent_layout_add_below_24_regular:before {
+    content: "\f0a5a";
+}
+.icon-ic_fluent_layout_add_below_32_regular:before {
+    content: "\f0a5b";
+}
+.icon-ic_fluent_layout_column_two_edit_16_regular:before {
+    content: "\f0a5c";
+}
+.icon-ic_fluent_layout_column_two_edit_20_regular:before {
+    content: "\f0a5d";
+}
+.icon-ic_fluent_layout_column_two_edit_24_regular:before {
+    content: "\f0a5e";
+}
+.icon-ic_fluent_layout_column_two_edit_32_regular:before {
+    content: "\f0a5f";
+}
+.icon-ic_fluent_slide_content_20_regular:before {
+    content: "\f0a60";
+}
+.icon-ic_fluent_sport_cricket_ball_16_regular:before {
+    content: "\f0a61";
+}
+.icon-ic_fluent_sport_cricket_ball_20_regular:before {
+    content: "\f0a62";
+}
+.icon-ic_fluent_sport_cricket_ball_24_regular:before {
+    content: "\f0a63";
+}
+.icon-ic_fluent_sport_cricket_bat_16_regular:before {
+    content: "\f0a64";
+}
+.icon-ic_fluent_sport_cricket_bat_20_regular:before {
+    content: "\f0a65";
+}
+.icon-ic_fluent_sport_cricket_bat_24_regular:before {
+    content: "\f0a66";
+}
+.icon-ic_fluent_table_multiple_16_regular:before {
+    content: "\f0a67";
+}
+.icon-ic_fluent_table_multiple_24_regular:before {
+    content: "\f0a68";
+}
+.icon-ic_fluent_table_multiple_28_regular:before {
+    content: "\f0a69";
+}
+.icon-ic_fluent_table_multiple_32_regular:before {
+    content: "\f0a6a";
+}
+.icon-ic_fluent_table_multiple_48_regular:before {
+    content: "\f0a6b";
 }
