@@ -3,11 +3,11 @@
 const fs = require('fs');
 const path = require('path');
 const { promisify } = require('util');
+const { processAssets: convertToPng } = require('./convert_to_png.js');
 
 const readdir = promisify(fs.readdir);
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
-const copyFile = promisify(fs.copyFile);
 const mkdir = promisify(fs.mkdir);
 const stat = promisify(fs.stat);
 
@@ -44,54 +44,34 @@ async function findAssetDirectories(assetsPath) {
   return directories;
 }
 
-async function findPDFFiles(assetDir) {
-  const pdfDir = path.join(assetDir, 'PDF');
+async function findPNGFiles(pngDir) {
   const files = [];
   
   try {
-    const pdfStat = await stat(pdfDir);
-    if (pdfStat.isDirectory()) {
-      const pdfFiles = await readdir(pdfDir);
-      const candidates = [];
+    const pngStat = await stat(pngDir);
+    if (pngStat.isDirectory()) {
+      const pngFiles = await readdir(pngDir);
       
-      // Collect all PDF files with their extracted size information
-      for (const file of pdfFiles) {
-        if (file.endsWith('.pdf')) {
-          // Extract size from filename (e.g., ic_fluent_access_time_24_filled.pdf -> 24)
-          const sizeMatch = file.match(/_(\d+)_(?:filled|regular|light)\.pdf$/);
-          const size = sizeMatch ? parseInt(sizeMatch[1], 10) : 0;
+      // Collect PNG files that match our naming pattern
+      for (const file of pngFiles) {
+        if (file.endsWith('.png')) {
+          // Extract variant from filename (e.g., access_time_24_filled.png -> variant: filled)
+          // Only process filled and regular variants
+          const variantMatch = file.match(/_(filled|regular)\.png$/);
+          const variant = variantMatch ? variantMatch[1] : 'unknown';
           
-          candidates.push({
-            originalPath: path.join(pdfDir, file),
-            filename: file,
-            size: size
-          });
-        }
-      }
-      
-      if (candidates.length > 0) {
-        // Find the file with size closest to 24
-        const target = 24;
-        let bestFile = candidates[0];
-        let bestDifference = Math.abs(bestFile.size - target);
-        
-        for (const candidate of candidates) {
-          const difference = Math.abs(candidate.size - target);
-          if (difference < bestDifference || 
-              (difference === bestDifference && candidate.size > bestFile.size)) {
-            bestFile = candidate;
-            bestDifference = difference;
+          if (variantMatch && (variant === 'filled' || variant === 'regular')) {
+            files.push({
+              originalPath: path.join(pngDir, file),
+              filename: file,
+              variant: variant
+            });
           }
         }
-        
-        files.push({
-          originalPath: bestFile.originalPath,
-          filename: bestFile.filename
-        });
       }
     }
   } catch (error) {
-    // No PDF directory or not accessible
+    // No PNG directory or not accessible
   }
   
   return files;
@@ -108,133 +88,125 @@ async function readMetadata(assetDir) {
   }
 }
 
-function generateCaptions(metadata, filename) {
+function generateCaptions(metadata, filename, variant) {
   const captions = [];
   
+  // Extract base name from PNG filename
+  let baseName = filename.replace('.png', '');
+  // Remove size and variant suffixes (e.g., access_time_24_filled -> access_time)
+  baseName = baseName.replace(/_\d+_(filled|regular)$/, '');
+  baseName = baseName.replace(/_/g, ' ');
+  
+  // Determine icon type and state based on variant
+  const iconType = variant === 'filled' ? 'filled' : 'outline';
+  const state = variant === 'filled' ? 'selected' : 'unselected';
+  
   if (!metadata) {
-    // Fallback caption if no metadata - remove ic_fluent prefix
-    let baseName = filename.replace('.pdf', '');
-    if (baseName.startsWith('ic_fluent_')) {
-      baseName = baseName.substring('ic_fluent_'.length);
-    }
-    baseName = baseName.replace(/_/g, ' ');
-    captions.push(baseName);
+    // Fallback caption if no metadata
+    const caption = `FluentUISystemIcons flat 2D monochrome ${iconType} icon of ${baseName}, representing in ${state} state.`;
+    captions.push(caption);
     return captions;
   }
   
   const { name, metaphor, description } = metadata;
   
-  // Generate caption with description, name and metaphor
-  if (name) {
-    let caption = '';
-    
-    // Add description as first sentence if available
-    if (description && description.trim() !== '') {
-      caption = description.trim();
-      // Ensure description ends with a period
-      if (!caption.endsWith('.')) {
-        caption += '.';
-      }
-      caption += ' ';
-    }
-    
-    // Add name
-    caption += name;
-    
-    // Add metaphor information if available
-    if (metaphor && metaphor.length > 0) {
-      const metaphorText = metaphor.join(', ');
-      caption += ` (${metaphorText})`;
-    }
-    
-    captions.push(caption);
-  } else {
-    // Fallback to filename if no name in metadata
-    let baseName = filename.replace('.pdf', '');
-    if (baseName.startsWith('ic_fluent_')) {
-      baseName = baseName.substring('ic_fluent_'.length);
-    }
-    baseName = baseName.replace(/_/g, ' ');
-    
-    let caption = '';
-    
-    // Add description as first sentence if available
-    if (description && description.trim() !== '') {
-      caption = description.trim();
-      // Ensure description ends with a period
-      if (!caption.endsWith('.')) {
-        caption += '.';
-      }
-      caption += ' ';
-    }
-    
-    // Add base name
-    caption += baseName;
-    
-    // Add metaphor if available
-    if (metaphor && metaphor.length > 0) {
-      const metaphorText = metaphor.join(', ');
-      caption += ` (${metaphorText})`;
-    }
-    
-    captions.push(caption);
+  // Use name from metadata if available, otherwise use baseName
+  const iconName = name || baseName;
+  
+  // Extract visible geometry/object from the name (first part before any parentheses or special characters)
+  const visibleGeometry = iconName.split(' (')[0].trim();
+  
+  // Create alternative synonyms from metaphor if available
+  let altSynonym = '';
+  if (metaphor && metaphor.length > 0) {
+    const metaphorText = metaphor.join(', ');
+    altSynonym = `, representing ${metaphorText}`;
   }
+  
+  // Generate base caption
+  let caption = `FluentUISystemIcons flat 2D monochrome ${iconType} icon of ${visibleGeometry}${altSynonym} in ${state} state.`;
+  
+  // Add description as a new sentence if available
+  if (description && description.trim() !== '') {
+    let descriptionText = description.trim();
+    // Ensure description ends with a period
+    if (!descriptionText.endsWith('.')) {
+      descriptionText += '.';
+    }
+    caption += ` ${descriptionText}`;
+  }
+  
+  captions.push(caption);
   
   return captions;
 }
 
 async function processAssets() {
   const assetsPath = path.join(__dirname, 'assets');
-  const dataDir = path.join(__dirname, 'data');
+  const pngDir = path.join(__dirname, 'png_icons');
   const outputFile = path.join(__dirname, 'icon_dataset.jsonl');
   
-  console.log('Creating data directory...');
-  await ensureDir(dataDir);
+  console.log('Step 1: Converting SVG assets to PNG...');
+  await convertToPng({
+    outputSize: 256,
+    testMode: false
+  });
   
-  console.log('Scanning asset directories...');
+  console.log('\nStep 2: Scanning asset directories for metadata...');
   const assetDirectories = await findAssetDirectories(assetsPath);
   console.log(`Found ${assetDirectories.length} asset directories`);
   
+  console.log('\nStep 3: Finding converted PNG files...');
+  const pngFiles = await findPNGFiles(pngDir);
+  console.log(`Found ${pngFiles.length} PNG files`);
+  
+  // Create a map of PNG files by their base name for easy lookup
+  const pngFileMap = {};
+  for (const pngFile of pngFiles) {
+    // Extract base name from PNG filename (e.g., access_time_24_filled.png -> access_time)
+    const baseName = pngFile.filename.replace(/(_\d+_(filled|regular))\.png$/, '');
+    if (!pngFileMap[baseName]) {
+      pngFileMap[baseName] = {};
+    }
+    pngFileMap[baseName][pngFile.variant] = pngFile;
+  }
+  
+  console.log('\nStep 4: Generating dataset entries...');
   const jsonlEntries = [];
   let processedCount = 0;
   let skippedCount = 0;
   
   for (const assetDir of assetDirectories) {
     const assetName = path.basename(assetDir);
-    console.log(`Processing ${assetName}...`);
     
-    // Find PDF files in this asset directory
-    const pdfFiles = await findPDFFiles(assetDir);
+    // Convert asset name to match PNG naming convention (same logic as convert_to_png.js)
+    let pngBaseName = assetName.toLowerCase()
+      .replace(/[^a-z0-9._-]/gi, '_')
+      .replace(/_+/g, '_')
+      .replace(/^_|_$/g, ''); // Remove leading/trailing underscores
     
-    if (pdfFiles.length === 0) {
-      console.log(`  No PDF files found for ${assetName}`);
+    // Check if we have PNG files for this asset
+    const assetPngFiles = pngFileMap[pngBaseName];
+    if (!assetPngFiles) {
       skippedCount++;
       continue;
     }
     
+    console.log(`Processing ${assetName}...`);
+    
     // Read metadata
     const metadata = await readMetadata(assetDir);
     
-    // Process each PDF file
-    for (const fileInfo of pdfFiles) {
-      const { originalPath, filename } = fileInfo;
+    // Process each PNG variant for this asset
+    for (const variant in assetPngFiles) {
+      const pngFile = assetPngFiles[variant];
+      const { filename } = pngFile;
       
-      // Generate a safe filename for the data directory, removing ic_fluent prefix
-      let safeFilename = filename;
-      if (safeFilename.startsWith('ic_fluent_')) {
-        safeFilename = safeFilename.substring('ic_fluent_'.length);
-      }
-      safeFilename = safeFilename.replace(/[^a-z0-9._-]/gi, '_').toLowerCase();
-      
-      const targetPath = path.join(dataDir, safeFilename);
-      const relativePath = `data/${safeFilename}`;
+      const relativePath = `png_icons/${filename}`;
       
       try {
-        // Copy the file to data directory
-        await copyFile(originalPath, targetPath);
-        
-        // Generate captions
-        const captions = generateCaptions(metadata, filename);
+        // Generate captions with variant information
+        const captions = generateCaptions(metadata, filename, variant);
         
         // Create JSONL entries
         for (const caption of captions) {
@@ -253,7 +225,7 @@ async function processAssets() {
     }
   }
   
-  console.log(`\nWriting JSONL file with ${jsonlEntries.length} entries...`);
+  console.log(`\nStep 5: Writing JSONL file with ${jsonlEntries.length} entries...`);
   
   // Write JSONL file
   const jsonlContent = jsonlEntries
@@ -263,10 +235,10 @@ async function processAssets() {
   await writeFile(outputFile, jsonlContent, 'utf-8');
   
   console.log(`\nDataset generation complete!`);
-  console.log(`- Processed: ${processedCount} assets`);
-  console.log(`- Skipped: ${skippedCount} assets`);
+  console.log(`- Processed: ${processedCount} PNG files`);
+  console.log(`- Skipped: ${skippedCount} assets (no matching PNGs)`);
   console.log(`- Total JSONL entries: ${jsonlEntries.length}`);
-  console.log(`- Images copied to: ${dataDir}`);
+  console.log(`- PNG images directory: ${pngDir}`);
   console.log(`- JSONL file: ${outputFile}`);
 }
 
