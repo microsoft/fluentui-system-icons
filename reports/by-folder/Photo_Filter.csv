@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Photo Filter,photo_filter,20,filled,ic_fluent_photo_filter_20_filled.svg,Photo Filter/SVG/ic_fluent_photo_filter_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Photo%20Filter/SVG/ic_fluent_photo_filter_20_filled.svg
+Photo Filter,photo_filter,20,regular,ic_fluent_photo_filter_20_regular.svg,Photo Filter/SVG/ic_fluent_photo_filter_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Photo%20Filter/SVG/ic_fluent_photo_filter_20_regular.svg
+Photo Filter,photo_filter,24,filled,ic_fluent_photo_filter_24_filled.svg,Photo Filter/SVG/ic_fluent_photo_filter_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Photo%20Filter/SVG/ic_fluent_photo_filter_24_filled.svg
+Photo Filter,photo_filter,24,regular,ic_fluent_photo_filter_24_regular.svg,Photo Filter/SVG/ic_fluent_photo_filter_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Photo%20Filter/SVG/ic_fluent_photo_filter_24_regular.svg

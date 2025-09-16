@@ -1,0 +1,3 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Clipboard Text,clipboard_text,32,filled,ic_fluent_clipboard_text_32_filled.svg,Clipboard Text/SVG/ic_fluent_clipboard_text_32_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Clipboard%20Text/SVG/ic_fluent_clipboard_text_32_filled.svg
+Clipboard Text,clipboard_text,32,regular,ic_fluent_clipboard_text_32_regular.svg,Clipboard Text/SVG/ic_fluent_clipboard_text_32_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Clipboard%20Text/SVG/ic_fluent_clipboard_text_32_regular.svg

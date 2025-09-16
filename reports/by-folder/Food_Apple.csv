@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Food Apple,food_apple,20,filled,ic_fluent_food_apple_20_filled.svg,Food Apple/SVG/ic_fluent_food_apple_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Food%20Apple/SVG/ic_fluent_food_apple_20_filled.svg
+Food Apple,food_apple,20,regular,ic_fluent_food_apple_20_regular.svg,Food Apple/SVG/ic_fluent_food_apple_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Food%20Apple/SVG/ic_fluent_food_apple_20_regular.svg
+Food Apple,food_apple,24,filled,ic_fluent_food_apple_24_filled.svg,Food Apple/SVG/ic_fluent_food_apple_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Food%20Apple/SVG/ic_fluent_food_apple_24_filled.svg
+Food Apple,food_apple,24,regular,ic_fluent_food_apple_24_regular.svg,Food Apple/SVG/ic_fluent_food_apple_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Food%20Apple/SVG/ic_fluent_food_apple_24_regular.svg

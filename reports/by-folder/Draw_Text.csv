@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Draw Text,draw_text,20,filled,ic_fluent_draw_text_20_filled.svg,Draw Text/SVG/ic_fluent_draw_text_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Draw%20Text/SVG/ic_fluent_draw_text_20_filled.svg
+Draw Text,draw_text,20,regular,ic_fluent_draw_text_20_regular.svg,Draw Text/SVG/ic_fluent_draw_text_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Draw%20Text/SVG/ic_fluent_draw_text_20_regular.svg
+Draw Text,draw_text,24,filled,ic_fluent_draw_text_24_filled.svg,Draw Text/SVG/ic_fluent_draw_text_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Draw%20Text/SVG/ic_fluent_draw_text_24_filled.svg
+Draw Text,draw_text,24,regular,ic_fluent_draw_text_24_regular.svg,Draw Text/SVG/ic_fluent_draw_text_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Draw%20Text/SVG/ic_fluent_draw_text_24_regular.svg

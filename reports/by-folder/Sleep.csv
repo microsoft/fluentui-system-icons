@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Sleep,sleep,20,filled,ic_fluent_sleep_20_filled.svg,Sleep/SVG/ic_fluent_sleep_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Sleep/SVG/ic_fluent_sleep_20_filled.svg
+Sleep,sleep,20,regular,ic_fluent_sleep_20_regular.svg,Sleep/SVG/ic_fluent_sleep_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Sleep/SVG/ic_fluent_sleep_20_regular.svg
+Sleep,sleep,24,filled,ic_fluent_sleep_24_filled.svg,Sleep/SVG/ic_fluent_sleep_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Sleep/SVG/ic_fluent_sleep_24_filled.svg
+Sleep,sleep,24,regular,ic_fluent_sleep_24_regular.svg,Sleep/SVG/ic_fluent_sleep_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Sleep/SVG/ic_fluent_sleep_24_regular.svg

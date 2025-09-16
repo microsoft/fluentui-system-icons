@@ -1,0 +1,3 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Warning Shield,warning_shield,20,filled,ic_fluent_warning_shield_20_filled.svg,Warning Shield/SVG/ic_fluent_warning_shield_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Warning%20Shield/SVG/ic_fluent_warning_shield_20_filled.svg
+Warning Shield,warning_shield,20,regular,ic_fluent_warning_shield_20_regular.svg,Warning Shield/SVG/ic_fluent_warning_shield_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Warning%20Shield/SVG/ic_fluent_warning_shield_20_regular.svg

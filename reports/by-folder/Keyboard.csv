@@ -1,0 +1,7 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Keyboard,keyboard,16,filled,ic_fluent_keyboard_16_filled.svg,Keyboard/SVG/ic_fluent_keyboard_16_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Keyboard/SVG/ic_fluent_keyboard_16_filled.svg
+Keyboard,keyboard,16,regular,ic_fluent_keyboard_16_regular.svg,Keyboard/SVG/ic_fluent_keyboard_16_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Keyboard/SVG/ic_fluent_keyboard_16_regular.svg
+Keyboard,keyboard,20,filled,ic_fluent_keyboard_20_filled.svg,Keyboard/SVG/ic_fluent_keyboard_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Keyboard/SVG/ic_fluent_keyboard_20_filled.svg
+Keyboard,keyboard,20,regular,ic_fluent_keyboard_20_regular.svg,Keyboard/SVG/ic_fluent_keyboard_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Keyboard/SVG/ic_fluent_keyboard_20_regular.svg
+Keyboard,keyboard,24,filled,ic_fluent_keyboard_24_filled.svg,Keyboard/SVG/ic_fluent_keyboard_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Keyboard/SVG/ic_fluent_keyboard_24_filled.svg
+Keyboard,keyboard,24,regular,ic_fluent_keyboard_24_regular.svg,Keyboard/SVG/ic_fluent_keyboard_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Keyboard/SVG/ic_fluent_keyboard_24_regular.svg

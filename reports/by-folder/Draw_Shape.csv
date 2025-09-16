@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Draw Shape,draw_shape,20,filled,ic_fluent_draw_shape_20_filled.svg,Draw Shape/SVG/ic_fluent_draw_shape_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Draw%20Shape/SVG/ic_fluent_draw_shape_20_filled.svg
+Draw Shape,draw_shape,20,regular,ic_fluent_draw_shape_20_regular.svg,Draw Shape/SVG/ic_fluent_draw_shape_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Draw%20Shape/SVG/ic_fluent_draw_shape_20_regular.svg
+Draw Shape,draw_shape,24,filled,ic_fluent_draw_shape_24_filled.svg,Draw Shape/SVG/ic_fluent_draw_shape_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Draw%20Shape/SVG/ic_fluent_draw_shape_24_filled.svg
+Draw Shape,draw_shape,24,regular,ic_fluent_draw_shape_24_regular.svg,Draw Shape/SVG/ic_fluent_draw_shape_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Draw%20Shape/SVG/ic_fluent_draw_shape_24_regular.svg

@@ -1,0 +1,13 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Form,form,20,color,ic_fluent_form_20_color.svg,Form/SVG/ic_fluent_form_20_color.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Form/SVG/ic_fluent_form_20_color.svg
+Form,form,20,filled,ic_fluent_form_20_filled.svg,Form/SVG/ic_fluent_form_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Form/SVG/ic_fluent_form_20_filled.svg
+Form,form,20,regular,ic_fluent_form_20_regular.svg,Form/SVG/ic_fluent_form_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Form/SVG/ic_fluent_form_20_regular.svg
+Form,form,24,color,ic_fluent_form_24_color.svg,Form/SVG/ic_fluent_form_24_color.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Form/SVG/ic_fluent_form_24_color.svg
+Form,form,24,filled,ic_fluent_form_24_filled.svg,Form/SVG/ic_fluent_form_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Form/SVG/ic_fluent_form_24_filled.svg
+Form,form,24,regular,ic_fluent_form_24_regular.svg,Form/SVG/ic_fluent_form_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Form/SVG/ic_fluent_form_24_regular.svg
+Form,form,28,color,ic_fluent_form_28_color.svg,Form/SVG/ic_fluent_form_28_color.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Form/SVG/ic_fluent_form_28_color.svg
+Form,form,28,filled,ic_fluent_form_28_filled.svg,Form/SVG/ic_fluent_form_28_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Form/SVG/ic_fluent_form_28_filled.svg
+Form,form,28,regular,ic_fluent_form_28_regular.svg,Form/SVG/ic_fluent_form_28_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Form/SVG/ic_fluent_form_28_regular.svg
+Form,form,48,color,ic_fluent_form_48_color.svg,Form/SVG/ic_fluent_form_48_color.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Form/SVG/ic_fluent_form_48_color.svg
+Form,form,48,filled,ic_fluent_form_48_filled.svg,Form/SVG/ic_fluent_form_48_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Form/SVG/ic_fluent_form_48_filled.svg
+Form,form,48,regular,ic_fluent_form_48_regular.svg,Form/SVG/ic_fluent_form_48_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Form/SVG/ic_fluent_form_48_regular.svg

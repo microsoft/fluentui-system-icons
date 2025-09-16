@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Checkbox 1,checkbox_1,20,filled,ic_fluent_checkbox_1_20_filled.svg,Checkbox 1/SVG/ic_fluent_checkbox_1_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Checkbox%201/SVG/ic_fluent_checkbox_1_20_filled.svg
+Checkbox 1,checkbox_1,20,regular,ic_fluent_checkbox_1_20_regular.svg,Checkbox 1/SVG/ic_fluent_checkbox_1_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Checkbox%201/SVG/ic_fluent_checkbox_1_20_regular.svg
+Checkbox 1,checkbox_1,24,filled,ic_fluent_checkbox_1_24_filled.svg,Checkbox 1/SVG/ic_fluent_checkbox_1_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Checkbox%201/SVG/ic_fluent_checkbox_1_24_filled.svg
+Checkbox 1,checkbox_1,24,regular,ic_fluent_checkbox_1_24_regular.svg,Checkbox 1/SVG/ic_fluent_checkbox_1_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Checkbox%201/SVG/ic_fluent_checkbox_1_24_regular.svg

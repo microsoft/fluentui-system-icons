@@ -1,0 +1,3 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Kiosk,kiosk,24,filled,ic_fluent_kiosk_24_filled.svg,Kiosk/SVG/ic_fluent_kiosk_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Kiosk/SVG/ic_fluent_kiosk_24_filled.svg
+Kiosk,kiosk,24,regular,ic_fluent_kiosk_24_regular.svg,Kiosk/SVG/ic_fluent_kiosk_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Kiosk/SVG/ic_fluent_kiosk_24_regular.svg

@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Dock Row,dock_row,20,filled,ic_fluent_dock_row_20_filled.svg,Dock Row/SVG/ic_fluent_dock_row_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Dock%20Row/SVG/ic_fluent_dock_row_20_filled.svg
+Dock Row,dock_row,20,regular,ic_fluent_dock_row_20_regular.svg,Dock Row/SVG/ic_fluent_dock_row_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Dock%20Row/SVG/ic_fluent_dock_row_20_regular.svg
+Dock Row,dock_row,24,filled,ic_fluent_dock_row_24_filled.svg,Dock Row/SVG/ic_fluent_dock_row_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Dock%20Row/SVG/ic_fluent_dock_row_24_filled.svg
+Dock Row,dock_row,24,regular,ic_fluent_dock_row_24_regular.svg,Dock Row/SVG/ic_fluent_dock_row_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Dock%20Row/SVG/ic_fluent_dock_row_24_regular.svg

@@ -1,0 +1,9 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Balloon,balloon,12,filled,ic_fluent_balloon_12_filled.svg,Balloon/SVG/ic_fluent_balloon_12_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Balloon/SVG/ic_fluent_balloon_12_filled.svg
+Balloon,balloon,12,regular,ic_fluent_balloon_12_regular.svg,Balloon/SVG/ic_fluent_balloon_12_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Balloon/SVG/ic_fluent_balloon_12_regular.svg
+Balloon,balloon,16,filled,ic_fluent_balloon_16_filled.svg,Balloon/SVG/ic_fluent_balloon_16_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Balloon/SVG/ic_fluent_balloon_16_filled.svg
+Balloon,balloon,16,regular,ic_fluent_balloon_16_regular.svg,Balloon/SVG/ic_fluent_balloon_16_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Balloon/SVG/ic_fluent_balloon_16_regular.svg
+Balloon,balloon,20,filled,ic_fluent_balloon_20_filled.svg,Balloon/SVG/ic_fluent_balloon_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Balloon/SVG/ic_fluent_balloon_20_filled.svg
+Balloon,balloon,20,regular,ic_fluent_balloon_20_regular.svg,Balloon/SVG/ic_fluent_balloon_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Balloon/SVG/ic_fluent_balloon_20_regular.svg
+Balloon,balloon,24,filled,ic_fluent_balloon_24_filled.svg,Balloon/SVG/ic_fluent_balloon_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Balloon/SVG/ic_fluent_balloon_24_filled.svg
+Balloon,balloon,24,regular,ic_fluent_balloon_24_regular.svg,Balloon/SVG/ic_fluent_balloon_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Balloon/SVG/ic_fluent_balloon_24_regular.svg

@@ -1,0 +1,11 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+TV,tv,16,filled,ic_fluent_tv_16_filled.svg,TV/SVG/ic_fluent_tv_16_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/TV/SVG/ic_fluent_tv_16_filled.svg
+TV,tv,16,regular,ic_fluent_tv_16_regular.svg,TV/SVG/ic_fluent_tv_16_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/TV/SVG/ic_fluent_tv_16_regular.svg
+TV,tv,20,filled,ic_fluent_tv_20_filled.svg,TV/SVG/ic_fluent_tv_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/TV/SVG/ic_fluent_tv_20_filled.svg
+TV,tv,20,regular,ic_fluent_tv_20_regular.svg,TV/SVG/ic_fluent_tv_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/TV/SVG/ic_fluent_tv_20_regular.svg
+TV,tv,24,filled,ic_fluent_tv_24_filled.svg,TV/SVG/ic_fluent_tv_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/TV/SVG/ic_fluent_tv_24_filled.svg
+TV,tv,24,regular,ic_fluent_tv_24_regular.svg,TV/SVG/ic_fluent_tv_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/TV/SVG/ic_fluent_tv_24_regular.svg
+TV,tv,28,filled,ic_fluent_tv_28_filled.svg,TV/SVG/ic_fluent_tv_28_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/TV/SVG/ic_fluent_tv_28_filled.svg
+TV,tv,28,regular,ic_fluent_tv_28_regular.svg,TV/SVG/ic_fluent_tv_28_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/TV/SVG/ic_fluent_tv_28_regular.svg
+TV,tv,48,filled,ic_fluent_tv_48_filled.svg,TV/SVG/ic_fluent_tv_48_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/TV/SVG/ic_fluent_tv_48_filled.svg
+TV,tv,48,regular,ic_fluent_tv_48_regular.svg,TV/SVG/ic_fluent_tv_48_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/TV/SVG/ic_fluent_tv_48_regular.svg

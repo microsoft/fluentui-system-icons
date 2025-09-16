@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Fax,fax,16,filled,ic_fluent_fax_16_filled.svg,Fax/SVG/ic_fluent_fax_16_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Fax/SVG/ic_fluent_fax_16_filled.svg
+Fax,fax,16,regular,ic_fluent_fax_16_regular.svg,Fax/SVG/ic_fluent_fax_16_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Fax/SVG/ic_fluent_fax_16_regular.svg
+Fax,fax,20,filled,ic_fluent_fax_20_filled.svg,Fax/SVG/ic_fluent_fax_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Fax/SVG/ic_fluent_fax_20_filled.svg
+Fax,fax,20,regular,ic_fluent_fax_20_regular.svg,Fax/SVG/ic_fluent_fax_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Fax/SVG/ic_fluent_fax_20_regular.svg

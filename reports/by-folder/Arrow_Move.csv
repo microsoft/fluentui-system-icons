@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Arrow Move,arrow_move,20,filled,ic_fluent_arrow_move_20_filled.svg,Arrow Move/SVG/ic_fluent_arrow_move_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Arrow%20Move/SVG/ic_fluent_arrow_move_20_filled.svg
+Arrow Move,arrow_move,20,regular,ic_fluent_arrow_move_20_regular.svg,Arrow Move/SVG/ic_fluent_arrow_move_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Arrow%20Move/SVG/ic_fluent_arrow_move_20_regular.svg
+Arrow Move,arrow_move,24,filled,ic_fluent_arrow_move_24_filled.svg,Arrow Move/SVG/ic_fluent_arrow_move_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Arrow%20Move/SVG/ic_fluent_arrow_move_24_filled.svg
+Arrow Move,arrow_move,24,regular,ic_fluent_arrow_move_24_regular.svg,Arrow Move/SVG/ic_fluent_arrow_move_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Arrow%20Move/SVG/ic_fluent_arrow_move_24_regular.svg

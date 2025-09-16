@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Chat Help,chat_help,20,filled,ic_fluent_chat_help_20_filled.svg,Chat Help/SVG/ic_fluent_chat_help_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Chat%20Help/SVG/ic_fluent_chat_help_20_filled.svg
+Chat Help,chat_help,20,regular,ic_fluent_chat_help_20_regular.svg,Chat Help/SVG/ic_fluent_chat_help_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Chat%20Help/SVG/ic_fluent_chat_help_20_regular.svg
+Chat Help,chat_help,24,filled,ic_fluent_chat_help_24_filled.svg,Chat Help/SVG/ic_fluent_chat_help_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Chat%20Help/SVG/ic_fluent_chat_help_24_filled.svg
+Chat Help,chat_help,24,regular,ic_fluent_chat_help_24_regular.svg,Chat Help/SVG/ic_fluent_chat_help_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Chat%20Help/SVG/ic_fluent_chat_help_24_regular.svg

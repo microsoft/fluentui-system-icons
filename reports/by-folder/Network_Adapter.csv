@@ -1,0 +1,3 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Network Adapter,network_adapter,16,filled,ic_fluent_network_adapter_16_filled.svg,Network Adapter/SVG/ic_fluent_network_adapter_16_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Network%20Adapter/SVG/ic_fluent_network_adapter_16_filled.svg
+Network Adapter,network_adapter,16,regular,ic_fluent_network_adapter_16_regular.svg,Network Adapter/SVG/ic_fluent_network_adapter_16_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Network%20Adapter/SVG/ic_fluent_network_adapter_16_regular.svg

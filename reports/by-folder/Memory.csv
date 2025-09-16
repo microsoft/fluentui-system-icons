@@ -1,0 +1,3 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Memory,memory,16,filled,ic_fluent_memory_16_filled.svg,Memory/SVG/ic_fluent_memory_16_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Memory/SVG/ic_fluent_memory_16_filled.svg
+Memory,memory,16,regular,ic_fluent_memory_16_regular.svg,Memory/SVG/ic_fluent_memory_16_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Memory/SVG/ic_fluent_memory_16_regular.svg

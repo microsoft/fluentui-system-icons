@@ -1,0 +1,10 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Gauge,gauge,20,color,ic_fluent_gauge_20_color.svg,Gauge/SVG/ic_fluent_gauge_20_color.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Gauge/SVG/ic_fluent_gauge_20_color.svg
+Gauge,gauge,20,filled,ic_fluent_gauge_20_filled.svg,Gauge/SVG/ic_fluent_gauge_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Gauge/SVG/ic_fluent_gauge_20_filled.svg
+Gauge,gauge,20,regular,ic_fluent_gauge_20_regular.svg,Gauge/SVG/ic_fluent_gauge_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Gauge/SVG/ic_fluent_gauge_20_regular.svg
+Gauge,gauge,24,color,ic_fluent_gauge_24_color.svg,Gauge/SVG/ic_fluent_gauge_24_color.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Gauge/SVG/ic_fluent_gauge_24_color.svg
+Gauge,gauge,24,filled,ic_fluent_gauge_24_filled.svg,Gauge/SVG/ic_fluent_gauge_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Gauge/SVG/ic_fluent_gauge_24_filled.svg
+Gauge,gauge,24,regular,ic_fluent_gauge_24_regular.svg,Gauge/SVG/ic_fluent_gauge_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Gauge/SVG/ic_fluent_gauge_24_regular.svg
+Gauge,gauge,32,color,ic_fluent_gauge_32_color.svg,Gauge/SVG/ic_fluent_gauge_32_color.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Gauge/SVG/ic_fluent_gauge_32_color.svg
+Gauge,gauge,32,filled,ic_fluent_gauge_32_filled.svg,Gauge/SVG/ic_fluent_gauge_32_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Gauge/SVG/ic_fluent_gauge_32_filled.svg
+Gauge,gauge,32,regular,ic_fluent_gauge_32_regular.svg,Gauge/SVG/ic_fluent_gauge_32_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Gauge/SVG/ic_fluent_gauge_32_regular.svg

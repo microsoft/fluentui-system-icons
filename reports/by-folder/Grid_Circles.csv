@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Grid Circles,grid_circles,24,filled,ic_fluent_grid_circles_24_filled.svg,Grid Circles/SVG/ic_fluent_grid_circles_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Grid%20Circles/SVG/ic_fluent_grid_circles_24_filled.svg
+Grid Circles,grid_circles,24,regular,ic_fluent_grid_circles_24_regular.svg,Grid Circles/SVG/ic_fluent_grid_circles_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Grid%20Circles/SVG/ic_fluent_grid_circles_24_regular.svg
+Grid Circles,grid_circles,28,filled,ic_fluent_grid_circles_28_filled.svg,Grid Circles/SVG/ic_fluent_grid_circles_28_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Grid%20Circles/SVG/ic_fluent_grid_circles_28_filled.svg
+Grid Circles,grid_circles,28,regular,ic_fluent_grid_circles_28_regular.svg,Grid Circles/SVG/ic_fluent_grid_circles_28_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Grid%20Circles/SVG/ic_fluent_grid_circles_28_regular.svg

@@ -1,0 +1,14 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Emoji,emoji,16,filled,ic_fluent_emoji_16_filled.svg,Emoji/SVG/ic_fluent_emoji_16_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Emoji/SVG/ic_fluent_emoji_16_filled.svg
+Emoji,emoji,16,regular,ic_fluent_emoji_16_regular.svg,Emoji/SVG/ic_fluent_emoji_16_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Emoji/SVG/ic_fluent_emoji_16_regular.svg
+Emoji,emoji,20,filled,ic_fluent_emoji_20_filled.svg,Emoji/SVG/ic_fluent_emoji_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Emoji/SVG/ic_fluent_emoji_20_filled.svg
+Emoji,emoji,20,regular,ic_fluent_emoji_20_regular.svg,Emoji/SVG/ic_fluent_emoji_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Emoji/SVG/ic_fluent_emoji_20_regular.svg
+Emoji,emoji,24,filled,ic_fluent_emoji_24_filled.svg,Emoji/SVG/ic_fluent_emoji_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Emoji/SVG/ic_fluent_emoji_24_filled.svg
+Emoji,emoji,24,regular,ic_fluent_emoji_24_regular.svg,Emoji/SVG/ic_fluent_emoji_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Emoji/SVG/ic_fluent_emoji_24_regular.svg
+Emoji,emoji,28,filled,ic_fluent_emoji_28_filled.svg,Emoji/SVG/ic_fluent_emoji_28_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Emoji/SVG/ic_fluent_emoji_28_filled.svg
+Emoji,emoji,28,regular,ic_fluent_emoji_28_regular.svg,Emoji/SVG/ic_fluent_emoji_28_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Emoji/SVG/ic_fluent_emoji_28_regular.svg
+Emoji,emoji,32,filled,ic_fluent_emoji_32_filled.svg,Emoji/SVG/ic_fluent_emoji_32_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Emoji/SVG/ic_fluent_emoji_32_filled.svg
+Emoji,emoji,32,light,ic_fluent_emoji_32_light.svg,Emoji/SVG/ic_fluent_emoji_32_light.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Emoji/SVG/ic_fluent_emoji_32_light.svg
+Emoji,emoji,32,regular,ic_fluent_emoji_32_regular.svg,Emoji/SVG/ic_fluent_emoji_32_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Emoji/SVG/ic_fluent_emoji_32_regular.svg
+Emoji,emoji,48,filled,ic_fluent_emoji_48_filled.svg,Emoji/SVG/ic_fluent_emoji_48_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Emoji/SVG/ic_fluent_emoji_48_filled.svg
+Emoji,emoji,48,regular,ic_fluent_emoji_48_regular.svg,Emoji/SVG/ic_fluent_emoji_48_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Emoji/SVG/ic_fluent_emoji_48_regular.svg

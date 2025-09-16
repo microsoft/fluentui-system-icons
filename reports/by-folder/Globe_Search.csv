@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Globe Search,globe_search,20,filled,ic_fluent_globe_search_20_filled.svg,Globe Search/SVG/ic_fluent_globe_search_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Globe%20Search/SVG/ic_fluent_globe_search_20_filled.svg
+Globe Search,globe_search,20,regular,ic_fluent_globe_search_20_regular.svg,Globe Search/SVG/ic_fluent_globe_search_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Globe%20Search/SVG/ic_fluent_globe_search_20_regular.svg
+Globe Search,globe_search,24,filled,ic_fluent_globe_search_24_filled.svg,Globe Search/SVG/ic_fluent_globe_search_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Globe%20Search/SVG/ic_fluent_globe_search_24_filled.svg
+Globe Search,globe_search,24,regular,ic_fluent_globe_search_24_regular.svg,Globe Search/SVG/ic_fluent_globe_search_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Globe%20Search/SVG/ic_fluent_globe_search_24_regular.svg

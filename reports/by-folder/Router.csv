@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Router,router,20,filled,ic_fluent_router_20_filled.svg,Router/SVG/ic_fluent_router_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Router/SVG/ic_fluent_router_20_filled.svg
+Router,router,20,regular,ic_fluent_router_20_regular.svg,Router/SVG/ic_fluent_router_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Router/SVG/ic_fluent_router_20_regular.svg
+Router,router,24,filled,ic_fluent_router_24_filled.svg,Router/SVG/ic_fluent_router_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Router/SVG/ic_fluent_router_24_filled.svg
+Router,router,24,regular,ic_fluent_router_24_regular.svg,Router/SVG/ic_fluent_router_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Router/SVG/ic_fluent_router_24_regular.svg

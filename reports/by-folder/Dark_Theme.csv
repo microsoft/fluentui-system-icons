@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Dark Theme,dark_theme,20,filled,ic_fluent_dark_theme_20_filled.svg,Dark Theme/SVG/ic_fluent_dark_theme_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Dark%20Theme/SVG/ic_fluent_dark_theme_20_filled.svg
+Dark Theme,dark_theme,20,regular,ic_fluent_dark_theme_20_regular.svg,Dark Theme/SVG/ic_fluent_dark_theme_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Dark%20Theme/SVG/ic_fluent_dark_theme_20_regular.svg
+Dark Theme,dark_theme,24,filled,ic_fluent_dark_theme_24_filled.svg,Dark Theme/SVG/ic_fluent_dark_theme_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Dark%20Theme/SVG/ic_fluent_dark_theme_24_filled.svg
+Dark Theme,dark_theme,24,regular,ic_fluent_dark_theme_24_regular.svg,Dark Theme/SVG/ic_fluent_dark_theme_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Dark%20Theme/SVG/ic_fluent_dark_theme_24_regular.svg

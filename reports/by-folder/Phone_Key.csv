@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Phone Key,phone_key,20,filled,ic_fluent_phone_key_20_filled.svg,Phone Key/SVG/ic_fluent_phone_key_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Phone%20Key/SVG/ic_fluent_phone_key_20_filled.svg
+Phone Key,phone_key,20,regular,ic_fluent_phone_key_20_regular.svg,Phone Key/SVG/ic_fluent_phone_key_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Phone%20Key/SVG/ic_fluent_phone_key_20_regular.svg
+Phone Key,phone_key,24,filled,ic_fluent_phone_key_24_filled.svg,Phone Key/SVG/ic_fluent_phone_key_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Phone%20Key/SVG/ic_fluent_phone_key_24_filled.svg
+Phone Key,phone_key,24,regular,ic_fluent_phone_key_24_regular.svg,Phone Key/SVG/ic_fluent_phone_key_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Phone%20Key/SVG/ic_fluent_phone_key_24_regular.svg

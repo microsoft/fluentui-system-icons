@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Book Compass,book_compass,20,filled,ic_fluent_book_compass_20_filled.svg,Book Compass/SVG/ic_fluent_book_compass_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Book%20Compass/SVG/ic_fluent_book_compass_20_filled.svg
+Book Compass,book_compass,20,regular,ic_fluent_book_compass_20_regular.svg,Book Compass/SVG/ic_fluent_book_compass_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Book%20Compass/SVG/ic_fluent_book_compass_20_regular.svg
+Book Compass,book_compass,24,filled,ic_fluent_book_compass_24_filled.svg,Book Compass/SVG/ic_fluent_book_compass_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Book%20Compass/SVG/ic_fluent_book_compass_24_filled.svg
+Book Compass,book_compass,24,regular,ic_fluent_book_compass_24_regular.svg,Book Compass/SVG/ic_fluent_book_compass_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Book%20Compass/SVG/ic_fluent_book_compass_24_regular.svg

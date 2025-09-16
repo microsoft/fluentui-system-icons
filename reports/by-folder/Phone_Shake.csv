@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Phone Shake,phone_shake,20,filled,ic_fluent_phone_shake_20_filled.svg,Phone Shake/SVG/ic_fluent_phone_shake_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Phone%20Shake/SVG/ic_fluent_phone_shake_20_filled.svg
+Phone Shake,phone_shake,20,regular,ic_fluent_phone_shake_20_regular.svg,Phone Shake/SVG/ic_fluent_phone_shake_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Phone%20Shake/SVG/ic_fluent_phone_shake_20_regular.svg
+Phone Shake,phone_shake,24,filled,ic_fluent_phone_shake_24_filled.svg,Phone Shake/SVG/ic_fluent_phone_shake_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Phone%20Shake/SVG/ic_fluent_phone_shake_24_filled.svg
+Phone Shake,phone_shake,24,regular,ic_fluent_phone_shake_24_regular.svg,Phone Shake/SVG/ic_fluent_phone_shake_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Phone%20Shake/SVG/ic_fluent_phone_shake_24_regular.svg

@@ -1,0 +1,12 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Note,note,16,filled,ic_fluent_note_16_filled.svg,Note/SVG/ic_fluent_note_16_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Note/SVG/ic_fluent_note_16_filled.svg
+Note,note,16,regular,ic_fluent_note_16_regular.svg,Note/SVG/ic_fluent_note_16_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Note/SVG/ic_fluent_note_16_regular.svg
+Note,note,20,filled,ic_fluent_note_20_filled.svg,Note/SVG/ic_fluent_note_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Note/SVG/ic_fluent_note_20_filled.svg
+Note,note,20,regular,ic_fluent_note_20_regular.svg,Note/SVG/ic_fluent_note_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Note/SVG/ic_fluent_note_20_regular.svg
+Note,note,24,filled,ic_fluent_note_24_filled.svg,Note/SVG/ic_fluent_note_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Note/SVG/ic_fluent_note_24_filled.svg
+Note,note,24,regular,ic_fluent_note_24_regular.svg,Note/SVG/ic_fluent_note_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Note/SVG/ic_fluent_note_24_regular.svg
+Note,note,28,filled,ic_fluent_note_28_filled.svg,Note/SVG/ic_fluent_note_28_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Note/SVG/ic_fluent_note_28_filled.svg
+Note,note,28,regular,ic_fluent_note_28_regular.svg,Note/SVG/ic_fluent_note_28_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Note/SVG/ic_fluent_note_28_regular.svg
+Note,note,32,light,ic_fluent_note_32_light.svg,Note/SVG/ic_fluent_note_32_light.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Note/SVG/ic_fluent_note_32_light.svg
+Note,note,48,filled,ic_fluent_note_48_filled.svg,Note/SVG/ic_fluent_note_48_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Note/SVG/ic_fluent_note_48_filled.svg
+Note,note,48,regular,ic_fluent_note_48_regular.svg,Note/SVG/ic_fluent_note_48_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Note/SVG/ic_fluent_note_48_regular.svg

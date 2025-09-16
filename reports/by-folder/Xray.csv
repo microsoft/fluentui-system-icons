@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Xray,xray,20,filled,ic_fluent_xray_20_filled.svg,Xray/SVG/ic_fluent_xray_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Xray/SVG/ic_fluent_xray_20_filled.svg
+Xray,xray,20,regular,ic_fluent_xray_20_regular.svg,Xray/SVG/ic_fluent_xray_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Xray/SVG/ic_fluent_xray_20_regular.svg
+Xray,xray,24,filled,ic_fluent_xray_24_filled.svg,Xray/SVG/ic_fluent_xray_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Xray/SVG/ic_fluent_xray_24_filled.svg
+Xray,xray,24,regular,ic_fluent_xray_24_regular.svg,Xray/SVG/ic_fluent_xray_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Xray/SVG/ic_fluent_xray_24_regular.svg

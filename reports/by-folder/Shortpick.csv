@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Shortpick,shortpick,20,filled,ic_fluent_shortpick_20_filled.svg,Shortpick/SVG/ic_fluent_shortpick_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Shortpick/SVG/ic_fluent_shortpick_20_filled.svg
+Shortpick,shortpick,20,regular,ic_fluent_shortpick_20_regular.svg,Shortpick/SVG/ic_fluent_shortpick_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Shortpick/SVG/ic_fluent_shortpick_20_regular.svg
+Shortpick,shortpick,24,filled,ic_fluent_shortpick_24_filled.svg,Shortpick/SVG/ic_fluent_shortpick_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Shortpick/SVG/ic_fluent_shortpick_24_filled.svg
+Shortpick,shortpick,24,regular,ic_fluent_shortpick_24_regular.svg,Shortpick/SVG/ic_fluent_shortpick_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Shortpick/SVG/ic_fluent_shortpick_24_regular.svg

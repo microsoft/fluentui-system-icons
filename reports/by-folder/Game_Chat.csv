@@ -1,0 +1,4 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Game Chat,game_chat,20,color,ic_fluent_game_chat_20_color.svg,Game Chat/SVG/ic_fluent_game_chat_20_color.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Game%20Chat/SVG/ic_fluent_game_chat_20_color.svg
+Game Chat,game_chat,20,filled,ic_fluent_game_chat_20_filled.svg,Game Chat/SVG/ic_fluent_game_chat_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Game%20Chat/SVG/ic_fluent_game_chat_20_filled.svg
+Game Chat,game_chat,20,regular,ic_fluent_game_chat_20_regular.svg,Game Chat/SVG/ic_fluent_game_chat_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Game%20Chat/SVG/ic_fluent_game_chat_20_regular.svg

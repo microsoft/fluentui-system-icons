@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Book Search,book_search,20,filled,ic_fluent_book_search_20_filled.svg,Book Search/SVG/ic_fluent_book_search_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Book%20Search/SVG/ic_fluent_book_search_20_filled.svg
+Book Search,book_search,20,regular,ic_fluent_book_search_20_regular.svg,Book Search/SVG/ic_fluent_book_search_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Book%20Search/SVG/ic_fluent_book_search_20_regular.svg
+Book Search,book_search,24,filled,ic_fluent_book_search_24_filled.svg,Book Search/SVG/ic_fluent_book_search_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Book%20Search/SVG/ic_fluent_book_search_24_filled.svg
+Book Search,book_search,24,regular,ic_fluent_book_search_24_regular.svg,Book Search/SVG/ic_fluent_book_search_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Book%20Search/SVG/ic_fluent_book_search_24_regular.svg

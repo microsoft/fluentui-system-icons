@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Shield Badge,shield_badge,20,filled,ic_fluent_shield_badge_20_filled.svg,Shield Badge/SVG/ic_fluent_shield_badge_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Shield%20Badge/SVG/ic_fluent_shield_badge_20_filled.svg
+Shield Badge,shield_badge,20,regular,ic_fluent_shield_badge_20_regular.svg,Shield Badge/SVG/ic_fluent_shield_badge_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Shield%20Badge/SVG/ic_fluent_shield_badge_20_regular.svg
+Shield Badge,shield_badge,24,filled,ic_fluent_shield_badge_24_filled.svg,Shield Badge/SVG/ic_fluent_shield_badge_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Shield%20Badge/SVG/ic_fluent_shield_badge_24_filled.svg
+Shield Badge,shield_badge,24,regular,ic_fluent_shield_badge_24_regular.svg,Shield Badge/SVG/ic_fluent_shield_badge_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Shield%20Badge/SVG/ic_fluent_shield_badge_24_regular.svg

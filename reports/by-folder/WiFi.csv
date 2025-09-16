@@ -1,0 +1,3 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+WiFi,wifi,20,color,ic_fluent_wifi_20_color.svg,WiFi/SVG/ic_fluent_wifi_20_color.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/WiFi/SVG/ic_fluent_wifi_20_color.svg
+WiFi,wifi,24,color,ic_fluent_wifi_24_color.svg,WiFi/SVG/ic_fluent_wifi_24_color.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/WiFi/SVG/ic_fluent_wifi_24_color.svg

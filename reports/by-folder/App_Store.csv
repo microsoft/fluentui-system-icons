@@ -1,0 +1,3 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+App Store,app_store,24,filled,ic_fluent_app_store_24_filled.svg,App Store/SVG/ic_fluent_app_store_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/App%20Store/SVG/ic_fluent_app_store_24_filled.svg
+App Store,app_store,24,regular,ic_fluent_app_store_24_regular.svg,App Store/SVG/ic_fluent_app_store_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/App%20Store/SVG/ic_fluent_app_store_24_regular.svg

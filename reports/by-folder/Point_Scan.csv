@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Point Scan,point_scan,20,filled,ic_fluent_point_scan_20_filled.svg,Point Scan/SVG/ic_fluent_point_scan_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Point%20Scan/SVG/ic_fluent_point_scan_20_filled.svg
+Point Scan,point_scan,20,regular,ic_fluent_point_scan_20_regular.svg,Point Scan/SVG/ic_fluent_point_scan_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Point%20Scan/SVG/ic_fluent_point_scan_20_regular.svg
+Point Scan,point_scan,24,filled,ic_fluent_point_scan_24_filled.svg,Point Scan/SVG/ic_fluent_point_scan_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Point%20Scan/SVG/ic_fluent_point_scan_24_filled.svg
+Point Scan,point_scan,24,regular,ic_fluent_point_scan_24_regular.svg,Point Scan/SVG/ic_fluent_point_scan_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Point%20Scan/SVG/ic_fluent_point_scan_24_regular.svg

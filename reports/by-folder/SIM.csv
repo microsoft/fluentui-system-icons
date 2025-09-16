@@ -1,0 +1,7 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+SIM,sim,16,filled,ic_fluent_sim_16_filled.svg,SIM/SVG/ic_fluent_sim_16_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/SIM/SVG/ic_fluent_sim_16_filled.svg
+SIM,sim,16,regular,ic_fluent_sim_16_regular.svg,SIM/SVG/ic_fluent_sim_16_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/SIM/SVG/ic_fluent_sim_16_regular.svg
+SIM,sim,20,filled,ic_fluent_sim_20_filled.svg,SIM/SVG/ic_fluent_sim_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/SIM/SVG/ic_fluent_sim_20_filled.svg
+SIM,sim,20,regular,ic_fluent_sim_20_regular.svg,SIM/SVG/ic_fluent_sim_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/SIM/SVG/ic_fluent_sim_20_regular.svg
+SIM,sim,24,filled,ic_fluent_sim_24_filled.svg,SIM/SVG/ic_fluent_sim_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/SIM/SVG/ic_fluent_sim_24_filled.svg
+SIM,sim,24,regular,ic_fluent_sim_24_regular.svg,SIM/SVG/ic_fluent_sim_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/SIM/SVG/ic_fluent_sim_24_regular.svg

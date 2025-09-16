@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Live,live,20,filled,ic_fluent_live_20_filled.svg,Live/SVG/ic_fluent_live_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Live/SVG/ic_fluent_live_20_filled.svg
+Live,live,20,regular,ic_fluent_live_20_regular.svg,Live/SVG/ic_fluent_live_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Live/SVG/ic_fluent_live_20_regular.svg
+Live,live,24,filled,ic_fluent_live_24_filled.svg,Live/SVG/ic_fluent_live_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Live/SVG/ic_fluent_live_24_filled.svg
+Live,live,24,regular,ic_fluent_live_24_regular.svg,Live/SVG/ic_fluent_live_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Live/SVG/ic_fluent_live_24_regular.svg

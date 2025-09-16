@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Bench,bench,20,filled,ic_fluent_bench_20_filled.svg,Bench/SVG/ic_fluent_bench_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Bench/SVG/ic_fluent_bench_20_filled.svg
+Bench,bench,20,regular,ic_fluent_bench_20_regular.svg,Bench/SVG/ic_fluent_bench_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Bench/SVG/ic_fluent_bench_20_regular.svg
+Bench,bench,24,filled,ic_fluent_bench_24_filled.svg,Bench/SVG/ic_fluent_bench_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Bench/SVG/ic_fluent_bench_24_filled.svg
+Bench,bench,24,regular,ic_fluent_bench_24_regular.svg,Bench/SVG/ic_fluent_bench_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Bench/SVG/ic_fluent_bench_24_regular.svg

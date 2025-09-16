@@ -1,0 +1,3 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Cone,cone,16,filled,ic_fluent_cone_16_filled.svg,Cone/SVG/ic_fluent_cone_16_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Cone/SVG/ic_fluent_cone_16_filled.svg
+Cone,cone,16,regular,ic_fluent_cone_16_regular.svg,Cone/SVG/ic_fluent_cone_16_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Cone/SVG/ic_fluent_cone_16_regular.svg

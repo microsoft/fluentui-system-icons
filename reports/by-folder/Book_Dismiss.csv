@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Book Dismiss,book_dismiss,16,filled,ic_fluent_book_dismiss_16_filled.svg,Book Dismiss/SVG/ic_fluent_book_dismiss_16_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Book%20Dismiss/SVG/ic_fluent_book_dismiss_16_filled.svg
+Book Dismiss,book_dismiss,16,regular,ic_fluent_book_dismiss_16_regular.svg,Book Dismiss/SVG/ic_fluent_book_dismiss_16_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Book%20Dismiss/SVG/ic_fluent_book_dismiss_16_regular.svg
+Book Dismiss,book_dismiss,20,filled,ic_fluent_book_dismiss_20_filled.svg,Book Dismiss/SVG/ic_fluent_book_dismiss_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Book%20Dismiss/SVG/ic_fluent_book_dismiss_20_filled.svg
+Book Dismiss,book_dismiss,20,regular,ic_fluent_book_dismiss_20_regular.svg,Book Dismiss/SVG/ic_fluent_book_dismiss_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Book%20Dismiss/SVG/ic_fluent_book_dismiss_20_regular.svg

@@ -88,7 +88,34 @@ async function readMetadata(assetDir) {
   }
 }
 
-function generateCaptions(metadata, filename, variant) {
+async function loadGeneratedCaptionsMap() {
+  const captionsPath = path.join(__dirname, 'GeneratedCaption.jsonl');
+  const map = {};
+  try {
+    const raw = await readFile(captionsPath, 'utf-8');
+    const lines = raw.split(/\r?\n/).filter(Boolean);
+    for (const line of lines) {
+      try {
+        const obj = JSON.parse(line);
+        const customId = obj && obj.custom_id;
+        let content = '';
+        if (obj && obj.response && obj.response.body && Array.isArray(obj.response.body.choices) && obj.response.body.choices[0] && obj.response.body.choices[0].message) {
+          content = obj.response.body.choices[0].message.content || '';
+        }
+        if (customId && typeof content === 'string' && content.trim().length > 0) {
+          map[customId] = content.trim();
+        }
+      } catch (e) {
+        // Skip malformed JSONL line
+      }
+    }
+  } catch (error) {
+    console.warn('No GeneratedCaption.jsonl found or failed to read. Proceeding without overrides.');
+  }
+  return map;
+}
+
+function generateCaptions(metadata, filename, variant, overrideContent) {
   const captions = [];
   
   // Extract base name from PNG filename
@@ -101,9 +128,19 @@ function generateCaptions(metadata, filename, variant) {
   const iconType = variant === 'filled' ? 'filled' : 'outline';
   const state = variant === 'filled' ? 'selected' : 'unselected';
   
+  // If we have an override content (from GeneratedCaption.jsonl), use it as the middle text only
+  if (overrideContent && overrideContent.trim() !== '') {
+    // Trim trailing period to fit ", state" postfix more naturally
+    let middle = overrideContent.trim();
+    middle = middle.replace(/[\s.]+$/, '');
+    const caption = `FluentUISystemIcons flat 2D monochrome ${iconType} icon of ${middle}, ${state} state.`;
+    captions.push(caption);
+    return captions;
+  }
+  
   if (!metadata) {
     // Fallback caption if no metadata
-    const caption = `FluentUISystemIcons flat 2D monochrome ${iconType} icon of ${baseName}, representing in ${state} state.`;
+    const caption = `FluentUISystemIcons flat 2D monochrome ${iconType} icon of ${baseName}, ${state} state.`;
     captions.push(caption);
     return captions;
   }
@@ -123,8 +160,8 @@ function generateCaptions(metadata, filename, variant) {
     altSynonym = `, representing ${metaphorText}`;
   }
   
-  // Generate base caption
-  let caption = `FluentUISystemIcons flat 2D monochrome ${iconType} icon of ${visibleGeometry}${altSynonym} in ${state} state.`;
+  // Generate base caption with new postfix style
+  let caption = `FluentUISystemIcons flat 2D monochrome ${iconType} icon of ${visibleGeometry}${altSynonym}, ${state} state.`;
   
   // Add description as a new sentence if available
   if (description && description.trim() !== '') {
@@ -145,12 +182,30 @@ async function processAssets() {
   const assetsPath = path.join(__dirname, 'assets');
   const pngDir = path.join(__dirname, 'png_icons');
   const outputFile = path.join(__dirname, 'icon_dataset.jsonl');
+  const generatedCaptionsMap = await loadGeneratedCaptionsMap();
   
-  console.log('Step 1: Converting SVG assets to PNG...');
-  await convertToPng({
-    outputSize: 256,
-    testMode: false
-  });
+  // Step 1: Convert SVG assets to PNG only if PNGs are not already present
+  let shouldConvertPngs = true;
+  try {
+    const existingFiles = await readdir(pngDir);
+    const existingPngCount = existingFiles.filter(f => f.endsWith('.png')).length;
+    if (existingPngCount > 0) {
+      shouldConvertPngs = false;
+    }
+  } catch (e) {
+    // Directory may not exist yet; proceed to convert
+    shouldConvertPngs = true;
+  }
+
+  if (shouldConvertPngs) {
+    console.log('Step 1: Converting SVG assets to PNG...');
+    await convertToPng({
+      outputSize: 256,
+      testMode: false
+    });
+  } else {
+    console.log('Step 1: Skipping PNG conversion (existing PNGs found).');
+  }
   
   console.log('\nStep 2: Scanning asset directories for metadata...');
   const assetDirectories = await findAssetDirectories(assetsPath);
@@ -206,7 +261,8 @@ async function processAssets() {
       
       try {
         // Generate captions with variant information
-        const captions = generateCaptions(metadata, filename, variant);
+        const overrideContent = generatedCaptionsMap[filename];
+        const captions = generateCaptions(metadata, filename, variant, overrideContent);
         
         // Create JSONL entries
         for (const caption of captions) {

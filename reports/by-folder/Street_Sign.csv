@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Street Sign,street_sign,20,filled,ic_fluent_street_sign_20_filled.svg,Street Sign/SVG/ic_fluent_street_sign_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Street%20Sign/SVG/ic_fluent_street_sign_20_filled.svg
+Street Sign,street_sign,20,regular,ic_fluent_street_sign_20_regular.svg,Street Sign/SVG/ic_fluent_street_sign_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Street%20Sign/SVG/ic_fluent_street_sign_20_regular.svg
+Street Sign,street_sign,24,filled,ic_fluent_street_sign_24_filled.svg,Street Sign/SVG/ic_fluent_street_sign_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Street%20Sign/SVG/ic_fluent_street_sign_24_filled.svg
+Street Sign,street_sign,24,regular,ic_fluent_street_sign_24_regular.svg,Street Sign/SVG/ic_fluent_street_sign_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Street%20Sign/SVG/ic_fluent_street_sign_24_regular.svg
