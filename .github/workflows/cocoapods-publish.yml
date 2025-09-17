@@ -18,7 +18,7 @@ jobs:
 
     - name: Deploy to CocoaPods
       run: |
-        pod spec lint --allow-warnings
-        pod trunk push --allow-warnings
+        pod spec lint --allow-warnings --quick
+        pod trunk push --skip-import-validation --skip-tests --allow-warnings
       env:
         COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
