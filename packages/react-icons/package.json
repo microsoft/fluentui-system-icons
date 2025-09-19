@@ -26,10 +26,10 @@
     "optimize": "svgo --config svgo.config.js --folder=./intermediate --precision=2 --quiet",
     "unfill": "node unfill.js --source=./intermediate",
     "build:fonts-and-svg": "npm run generate:assets-to-svg && npm run generate:font && npm run generate:rtl && npm run optimize && npm run unfill",
-    "build:generate-js-chunks": "npm run convert:svg && npm run convert:fonts && npm run convert:merge-metadata",
+    "build:generate-chunks-and-atoms": "npm run convert:svg && npm run convert:fonts && npm run convert:merge-metadata",
     "build:js": "node build.js",
     "prebuild": "npm run clean",
-    "build": "npm run build:fonts-and-svg && npm run build:generate-js-chunks && npm run build:js",
+    "build": "npm run build:fonts-and-svg && npm run build:generate-chunks-and-atoms && npm run build:js",
     "build:verify": "vitest run build-verify.test.js",
     "lint": "eslint src",
     "test": "vitest --exclude build-verify.test.js"
@@ -45,6 +45,7 @@
     "glob": "^7.2.0",
     "lodash": "^4.17.21",
     "mkdirp": "^1.0.4",
+    "prettier": "^3.6.2",
     "react": "^17.0.1",
     "renamer": "^2.0.1",
     "svgo": "^2.8.0",
@@ -82,6 +83,11 @@
       "import": "./lib/fonts/index.js",
       "require": "./lib-cjs/fonts/index.js"
     },
+    "./fonts/*": {
+      "types": "./lib/atoms/fonts/*.d.ts",
+      "import": "./lib/atoms/fonts/*.js",
+      "require": "./lib-cjs/atoms/fonts/*.js"
+    },
     "./lib/fonts": {
       "types": "./lib/fonts/index.d.ts",
       "import": "./lib/fonts/index.js",
@@ -91,6 +97,11 @@
       "types": "./lib/index.d.ts",
       "import": "./lib/index.js",
       "require": "./lib-cjs/index.js"
+    },
+    "./svg/*": {
+      "types": "./lib/atoms/svg/*.d.ts",
+      "import": "./lib/atoms/svg/*.js",
+      "require": "./lib-cjs/atoms/svg/*.js"
     },
     "./lib/svg": {
       "types": "./lib/index.d.ts",
