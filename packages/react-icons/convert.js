@@ -6,6 +6,7 @@ const path = require("path");
 const argv = require("yargs").boolean("selector").default("selector", false).argv;
 const _ = require("lodash");
 const { createFormatMetadata, writeMetadata } = require("./convert.utils");
+const { createStableChunks } = require("./chunking-utils");
 
 const SRC_PATH = argv.source;
 const DEST_PATH = argv.dest;
@@ -165,11 +166,8 @@ function processFolder(srcPath, destPath, resizable) {
   });
 
   // chunk all icons into separate files to keep build reasonably fast
-  /** @type string[][] */
-  const iconChunks = [];
-  while(iconExports.length > 0) {
-    iconChunks.push(iconExports.splice(0, 1000));
-  }
+  // Use stable chunking to prevent bundle size regressions when new icons are added
+  const iconChunks = createStableChunks(iconExports, iconNames, 1000);
 
   for(const chunk of iconChunks) {
     chunk.unshift(`import { createFluentIcon } from "../utils/createFluentIcon";`);
