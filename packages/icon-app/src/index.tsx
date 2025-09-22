@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import {createRoot} from 'react-dom/client';
 import * as fontsModule from '@fluentui/react-icons/lib/fonts';
 import * as svgModule from '@fluentui/react-icons/lib/svg';
 import { makeStyles } from "@griffel/react";
@@ -11,7 +11,7 @@ function main() {
     const rootDiv = document.createElement('div');
     document.body.append(rootDiv);
 
-    ReactDOM.render(<MainComponent />, rootDiv);
+    createRoot(rootDiv).render(<MainComponent />);
 
 }
 

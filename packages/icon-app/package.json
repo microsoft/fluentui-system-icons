@@ -12,19 +12,19 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/react": "^17.0.2",
-    "@types/react-dom": "^17.0.0",
+    "@types/react": "19.1.13",
+    "@types/react-dom": "19.1.9",
     "html-webpack-plugin": "^5.6.3",
     "ts-loader": "^9.2.9",
-    "typescript": "^4.7.0",
+    "typescript": "4.9.5",
     "webpack": "^5.100.2",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2"
   },
   "dependencies": {
     "@fluentui/react-icons": "*",
-    "@griffel/react": "^1.0.3",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "@griffel/react": "1.5.30",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
   }
 }
