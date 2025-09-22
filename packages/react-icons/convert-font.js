@@ -13,6 +13,7 @@ const { promisify } = require('util');
 const { option } = require("yargs");
 const glob = promisify(require('glob'));
 const { createFormatMetadata, writeMetadata } = require("./convert.utils");
+const { createStableChunks } = require("./chunking-utils");
 
 // @ts-ignore
 const SRC_PATH = argv.source;
@@ -141,11 +142,8 @@ async function processFolder(srcPath, codepointMapDestFolder, resizable) {
   }
 
   // chunk all icons into separate files to keep build reasonably fast
-  /** @type string[][] */
-  const iconChunks = [];
-  while (iconExports.length > 0) {
-    iconChunks.push(iconExports.splice(0, 500));
-  }
+  // Use stable chunking to prevent bundle size regressions when new icons are added
+  const iconChunks = createStableChunks(iconExports, iconNames, 500);
 
   for (const chunk of iconChunks) {
     chunk.unshift(`import type {FluentFontIcon} from "../../utils/fonts/createFluentFontIcon";`)
