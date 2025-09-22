@@ -110,6 +110,61 @@ async function processFiles(src, dest, metadataPath) {
 }
 
 /**
+ * Creates stable chunks for icons using hash-based assignment to prevent
+ * bundle size regressions when new icons are added.
+ * @param {string[]} iconExports - Array of icon export strings
+ * @param {string[]} iconNames - Array of icon names
+ * @returns {string[][]} Array of chunks containing icon exports
+ */
+function createStableChunks(iconExports, iconNames) {
+  const CHUNK_SIZE = 1000;
+  const INITIAL_CHUNK_COUNT = Math.max(Math.ceil(iconNames.length / CHUNK_SIZE), 4); // Minimum 4 chunks for better distribution
+  const chunkMap = new Map();
+  
+  // Simple hash function to deterministically assign icons to chunks
+  function simpleHash(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      const char = str.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash; // Convert to 32-bit integer
+    }
+    return Math.abs(hash);
+  }
+  
+  // Assign each icon to a chunk based on its name hash
+  iconExports.forEach((iconExport, index) => {
+    const iconName = iconNames[index];
+    const chunkIndex = simpleHash(iconName) % INITIAL_CHUNK_COUNT;
+    
+    if (!chunkMap.has(chunkIndex)) {
+      chunkMap.set(chunkIndex, []);
+    }
+    chunkMap.get(chunkIndex).push(iconExport);
+  });
+  
+  // Convert map to array, ensuring no chunk exceeds CHUNK_SIZE
+  const chunks = [];
+  const sortedChunkIndices = Array.from(chunkMap.keys()).sort((a, b) => a - b);
+  
+  for (const chunkIndex of sortedChunkIndices) {
+    const chunkIcons = chunkMap.get(chunkIndex);
+    
+    // If a chunk is too large, split it into multiple chunks
+    while (chunkIcons.length > 0) {
+      chunks.push(chunkIcons.splice(0, CHUNK_SIZE));
+    }
+  }
+  
+  // Ensure we always return at least one chunk
+  if (chunks.length === 0) {
+    chunks.push([]);
+  }
+  
+  return chunks;
+}
+
+/**
  * Process a folder of svg files and convert them to React components, following naming patterns for the FluentUI System Icons
  * @param {string} srcPath
  * @param {boolean} resizable
@@ -165,11 +220,9 @@ function processFolder(srcPath, destPath, resizable) {
   });
 
   // chunk all icons into separate files to keep build reasonably fast
+  // Use stable chunking to prevent bundle size regressions when new icons are added
   /** @type string[][] */
-  const iconChunks = [];
-  while(iconExports.length > 0) {
-    iconChunks.push(iconExports.splice(0, 1000));
-  }
+  const iconChunks = createStableChunks(iconExports, iconNames);
 
   for(const chunk of iconChunks) {
     chunk.unshift(`import { createFluentIcon } from "../utils/createFluentIcon";`);
