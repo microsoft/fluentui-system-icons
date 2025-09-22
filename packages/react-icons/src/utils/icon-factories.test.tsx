@@ -9,8 +9,8 @@ import { createFluentIcon, FluentIcon } from './createFluentIcon';
  * @vitest-environment jsdom
  */
 
- // import jest-dom extend extension types
- import {} from '../../test-setup'
+ // enable jest-dom expect extensions
+ import '../../test-setup'
 
 describe('React component tests', () => {
   test('createIcon should create a valid icon component', () => {
