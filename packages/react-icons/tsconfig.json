@@ -17,5 +17,5 @@
     "allowSyntheticDefaultImports": true
   },
   "include": ["src"],
-  "exclude": ["lib", "lib-cjs", "node_modules"]
+  "exclude": ["lib", "lib-cjs", "node_modules", "src/test-setup", "src/**/*.test.ts", "src/**/*.test.tsx"]
 }
