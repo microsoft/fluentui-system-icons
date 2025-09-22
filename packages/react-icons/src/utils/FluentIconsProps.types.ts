@@ -11,5 +11,4 @@ export type FluentIconsProps<
     className?: string;
     filled?: boolean;
     title?: string;
-    children?: React.ReactNode;
   };

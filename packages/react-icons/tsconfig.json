@@ -16,6 +16,6 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src"],
-  "exclude": ["lib", "lib-cjs", "node_modules", "src/test-setup", "src/**/*.test.ts", "src/**/*.test.tsx"]
+  "include": ["src", "test-setup.js"],
+  "exclude": ["lib", "lib-cjs", "node_modules", "src/**/*.test.ts", "src/**/*.test.tsx"]
 }

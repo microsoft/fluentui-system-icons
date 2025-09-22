@@ -10,7 +10,7 @@ import { createFluentIcon, FluentIcon } from './createFluentIcon';
  */
 
  // import jest-dom extend extension types
- import {} from '../test-setup'
+ import {} from '../../test-setup'
 
 describe('React component tests', () => {
   test('createIcon should create a valid icon component', () => {
