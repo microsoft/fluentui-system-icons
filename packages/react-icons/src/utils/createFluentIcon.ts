@@ -5,7 +5,7 @@ import { useIconState } from "./useIconState";
 import { useRootStyles } from "./createFluentIcon.styles";
 
 export type FluentIcon = {
-    (props: FluentIconsProps): JSX.Element;
+    (props: FluentIconsProps): React.ReactElement;
     displayName?: string;
 }
 
