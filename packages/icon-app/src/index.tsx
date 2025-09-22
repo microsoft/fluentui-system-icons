@@ -1,8 +1,11 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import * as fontsModule from '@fluentui/react-icons/lib/fonts';
 import * as svgModule from '@fluentui/react-icons/lib/svg';
+import {type FluentIcon} from '@fluentui/react-icons/svg'
+import {type FluentFontIcon} from '@fluentui/react-icons/fonts'
 import { makeStyles } from "@griffel/react";
+
 
 const fontComponents = filterModuleImports(fontsModule);
 const svgComponents = filterModuleImports(svgModule);
@@ -11,7 +14,7 @@ function main() {
     const rootDiv = document.createElement('div');
     document.body.append(rootDiv);
 
-    ReactDOM.render(<MainComponent />, rootDiv);
+    createRoot(rootDiv).render(<MainComponent />);
 
 }
 
@@ -38,8 +41,8 @@ function MainComponent() {
     return (<div className={styles.root}>
         {allIconNames.map(name =>
             <IconCell
-                FontIcon={fontComponents[name]}
-                SvgIcon={svgComponents[name]}
+                FontIcon={fontComponents[name] as FluentFontIcon}
+                SvgIcon={svgComponents[name]  as FluentIcon}
                 name={name}
                 key={name}
             />
@@ -95,7 +98,7 @@ const useCellStyles = makeStyles({
     }
 });
 
-function IconCell({ FontIcon, SvgIcon, name }: { FontIcon?: React.ComponentType, SvgIcon?: React.ComponentType, name: string }) {
+function IconCell({ FontIcon, SvgIcon, name }: { FontIcon?: FluentFontIcon, SvgIcon?: FluentIcon, name: string }) {
     const styles = useCellStyles();
 
     return <div className={styles.root}>
