@@ -8,6 +8,7 @@ const { readdir } = require('fs/promises');
 const path = require('path');
 const yargs = require('yargs');
 const { makeIconExport, getCreateFluentIconHeader, loadRtlMetadata, generatePerIconFiles } = require('./convert.utils');
+const { createStableChunks } = require("./chunking-utils");
 const { createFormatMetadata, writeMetadata } = require('./metadata.utils');
 
 if (require.main === module) {
@@ -140,11 +141,8 @@ function processFolder(srcFiles, rtlMetadata, resizable) {
   });
 
   // chunk all icons into separate files to keep build reasonably fast
-  /** @type string[][] */
-  const iconChunks = [];
-  while (iconExports.length > 0) {
-    iconChunks.push(iconExports.splice(0, 1000));
-  }
+  // Use stable chunking to prevent bundle size regressions when new icons are added
+  const iconChunks = createStableChunks(iconExports, iconNames, 1000);
 
   const chunkHeader = getCreateFluentIconHeader('../utils/createFluentIcon');
   for (const chunk of iconChunks) {
