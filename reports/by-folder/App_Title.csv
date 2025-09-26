@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+App Title,app_title,20,filled,ic_fluent_app_title_20_filled.svg,App Title/SVG/ic_fluent_app_title_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/App%20Title/SVG/ic_fluent_app_title_20_filled.svg
+App Title,app_title,20,regular,ic_fluent_app_title_20_regular.svg,App Title/SVG/ic_fluent_app_title_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/App%20Title/SVG/ic_fluent_app_title_20_regular.svg
+App Title,app_title,24,filled,ic_fluent_app_title_24_filled.svg,App Title/SVG/ic_fluent_app_title_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/App%20Title/SVG/ic_fluent_app_title_24_filled.svg
+App Title,app_title,24,regular,ic_fluent_app_title_24_regular.svg,App Title/SVG/ic_fluent_app_title_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/App%20Title/SVG/ic_fluent_app_title_24_regular.svg

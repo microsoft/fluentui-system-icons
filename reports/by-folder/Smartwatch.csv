@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Smartwatch,smartwatch,20,filled,ic_fluent_smartwatch_20_filled.svg,Smartwatch/SVG/ic_fluent_smartwatch_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Smartwatch/SVG/ic_fluent_smartwatch_20_filled.svg
+Smartwatch,smartwatch,20,regular,ic_fluent_smartwatch_20_regular.svg,Smartwatch/SVG/ic_fluent_smartwatch_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Smartwatch/SVG/ic_fluent_smartwatch_20_regular.svg
+Smartwatch,smartwatch,24,filled,ic_fluent_smartwatch_24_filled.svg,Smartwatch/SVG/ic_fluent_smartwatch_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Smartwatch/SVG/ic_fluent_smartwatch_24_filled.svg
+Smartwatch,smartwatch,24,regular,ic_fluent_smartwatch_24_regular.svg,Smartwatch/SVG/ic_fluent_smartwatch_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Smartwatch/SVG/ic_fluent_smartwatch_24_regular.svg

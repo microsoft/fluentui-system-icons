@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Phone Tablet,phone_tablet,20,filled,ic_fluent_phone_tablet_20_filled.svg,Phone Tablet/SVG/ic_fluent_phone_tablet_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Phone%20Tablet/SVG/ic_fluent_phone_tablet_20_filled.svg
+Phone Tablet,phone_tablet,20,regular,ic_fluent_phone_tablet_20_regular.svg,Phone Tablet/SVG/ic_fluent_phone_tablet_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Phone%20Tablet/SVG/ic_fluent_phone_tablet_20_regular.svg
+Phone Tablet,phone_tablet,24,filled,ic_fluent_phone_tablet_24_filled.svg,Phone Tablet/SVG/ic_fluent_phone_tablet_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Phone%20Tablet/SVG/ic_fluent_phone_tablet_24_filled.svg
+Phone Tablet,phone_tablet,24,regular,ic_fluent_phone_tablet_24_regular.svg,Phone Tablet/SVG/ic_fluent_phone_tablet_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Phone%20Tablet/SVG/ic_fluent_phone_tablet_24_regular.svg

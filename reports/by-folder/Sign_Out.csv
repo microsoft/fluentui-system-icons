@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Sign Out,sign_out,20,filled,ic_fluent_sign_out_20_filled.svg,Sign Out/SVG/ic_fluent_sign_out_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Sign%20Out/SVG/ic_fluent_sign_out_20_filled.svg
+Sign Out,sign_out,20,regular,ic_fluent_sign_out_20_regular.svg,Sign Out/SVG/ic_fluent_sign_out_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Sign%20Out/SVG/ic_fluent_sign_out_20_regular.svg
+Sign Out,sign_out,24,filled,ic_fluent_sign_out_24_filled.svg,Sign Out/SVG/ic_fluent_sign_out_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Sign%20Out/SVG/ic_fluent_sign_out_24_filled.svg
+Sign Out,sign_out,24,regular,ic_fluent_sign_out_24_regular.svg,Sign Out/SVG/ic_fluent_sign_out_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Sign%20Out/SVG/ic_fluent_sign_out_24_regular.svg

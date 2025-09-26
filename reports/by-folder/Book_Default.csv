@@ -1,0 +1,4 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Book Default,book_default,20,filled,ic_fluent_book_default_20_filled.svg,Book Default/SVG/ic_fluent_book_default_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Book%20Default/SVG/ic_fluent_book_default_20_filled.svg
+Book Default,book_default,28,filled,ic_fluent_book_default_28_filled.svg,Book Default/SVG/ic_fluent_book_default_28_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Book%20Default/SVG/ic_fluent_book_default_28_filled.svg
+Book Default,book_default,28,regular,ic_fluent_book_default_28_regular.svg,Book Default/SVG/ic_fluent_book_default_28_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Book%20Default/SVG/ic_fluent_book_default_28_regular.svg

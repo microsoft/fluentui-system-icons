@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Call Pause,call_pause,20,filled,ic_fluent_call_pause_20_filled.svg,Call Pause/SVG/ic_fluent_call_pause_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Call%20Pause/SVG/ic_fluent_call_pause_20_filled.svg
+Call Pause,call_pause,20,regular,ic_fluent_call_pause_20_regular.svg,Call Pause/SVG/ic_fluent_call_pause_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Call%20Pause/SVG/ic_fluent_call_pause_20_regular.svg
+Call Pause,call_pause,24,filled,ic_fluent_call_pause_24_filled.svg,Call Pause/SVG/ic_fluent_call_pause_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Call%20Pause/SVG/ic_fluent_call_pause_24_filled.svg
+Call Pause,call_pause,24,regular,ic_fluent_call_pause_24_regular.svg,Call Pause/SVG/ic_fluent_call_pause_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Call%20Pause/SVG/ic_fluent_call_pause_24_regular.svg

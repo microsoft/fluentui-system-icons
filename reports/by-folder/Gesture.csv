@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Gesture,gesture,20,filled,ic_fluent_gesture_20_filled.svg,Gesture/SVG/ic_fluent_gesture_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Gesture/SVG/ic_fluent_gesture_20_filled.svg
+Gesture,gesture,20,regular,ic_fluent_gesture_20_regular.svg,Gesture/SVG/ic_fluent_gesture_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Gesture/SVG/ic_fluent_gesture_20_regular.svg
+Gesture,gesture,24,filled,ic_fluent_gesture_24_filled.svg,Gesture/SVG/ic_fluent_gesture_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Gesture/SVG/ic_fluent_gesture_24_filled.svg
+Gesture,gesture,24,regular,ic_fluent_gesture_24_regular.svg,Gesture/SVG/ic_fluent_gesture_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Gesture/SVG/ic_fluent_gesture_24_regular.svg

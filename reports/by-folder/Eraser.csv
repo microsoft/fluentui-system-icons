@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Eraser,eraser,20,filled,ic_fluent_eraser_20_filled.svg,Eraser/SVG/ic_fluent_eraser_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Eraser/SVG/ic_fluent_eraser_20_filled.svg
+Eraser,eraser,20,regular,ic_fluent_eraser_20_regular.svg,Eraser/SVG/ic_fluent_eraser_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Eraser/SVG/ic_fluent_eraser_20_regular.svg
+Eraser,eraser,24,filled,ic_fluent_eraser_24_filled.svg,Eraser/SVG/ic_fluent_eraser_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Eraser/SVG/ic_fluent_eraser_24_filled.svg
+Eraser,eraser,24,regular,ic_fluent_eraser_24_regular.svg,Eraser/SVG/ic_fluent_eraser_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Eraser/SVG/ic_fluent_eraser_24_regular.svg
