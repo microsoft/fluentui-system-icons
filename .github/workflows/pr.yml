@@ -173,12 +173,12 @@ jobs:
     - name: Commit metadata.json if changed @fluentui/react-icons
       working-directory: packages/react-icons
       run: |
-        git config user.name "github-actions[bot]"
-        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config user.name "Fluent Build System"
+        git config user.email "flubuild@microsoft.com"
         if [[ -n "$(git status --porcelain metadata.json)" ]]; then
           git add metadata.json
-          git commit -m "chore(react-icons): update metadata.json"
-          git push origin HEAD:${{ github.head_ref }} --force
+          git commit -m "chore(react-icons): update metadata.json [skip ci]"
+          git push origin HEAD:${{ github.head_ref }} --force-with-lease
         fi
 
     - name: Test (verify build) @fluentui/react-icons
