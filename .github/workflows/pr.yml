@@ -159,7 +159,7 @@ jobs:
       run: |
         time npm run lint
         time npm run build
-        npm run build:verify
+        npm run build:verify -- -u
       working-directory: packages/react-icons
 
     - name: Build @fluentui/react-native-icons

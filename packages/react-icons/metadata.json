@@ -6524,6 +6524,16 @@
     "font": true,
     "type": "resizable"
   },
+  "ClockWarningFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "ClockWarningRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "ClosedCaptionFilled": {
     "svg": true,
     "font": true,
@@ -10860,6 +10870,16 @@
     "type": "resizable"
   },
   "EyeRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "EyeCircleFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "EyeCircleRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -42344,7 +42364,17 @@
     "font": true,
     "type": "sized"
   },
+  "Calendar3Day32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Calendar3Day32Light": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Calendar3Day32Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -42994,7 +43024,17 @@
     "font": true,
     "type": "sized"
   },
+  "CalendarDataBar32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "CalendarDataBar32Light": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarDataBar32Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -49709,6 +49749,16 @@
     "font": true,
     "type": "sized"
   },
+  "Classification28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Classification28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Classification32Filled": {
     "svg": true,
     "font": true,
@@ -50514,6 +50564,16 @@
     "font": true,
     "type": "sized"
   },
+  "ClipboardPaste28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClipboardPaste28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "ClipboardPaste32Filled": {
     "svg": true,
     "font": true,
@@ -51134,6 +51194,16 @@
     "font": true,
     "type": "sized"
   },
+  "ClockPause16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClockPause16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "ClockPause20Filled": {
     "svg": true,
     "font": true,
@@ -51220,6 +51290,46 @@
     "type": "sized"
   },
   "ClockToolbox32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClockWarning16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClockWarning16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClockWarning20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClockWarning20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClockWarning24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClockWarning24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClockWarning28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClockWarning28Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -66029,6 +66139,36 @@
     "font": true,
     "type": "sized"
   },
+  "EyeCircle16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "EyeCircle16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "EyeCircle20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "EyeCircle20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "EyeCircle24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "EyeCircle24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "EyeLines20Filled": {
     "svg": true,
     "font": true,
@@ -71554,7 +71694,17 @@
     "font": true,
     "type": "sized"
   },
+  "HandDraw32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "HandDraw32Light": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "HandDraw32Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -72289,6 +72439,26 @@
     "font": true,
     "type": "sized"
   },
+  "Headphones12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Headphones12Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Headphones16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Headphones16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Headphones20Color": {
     "svg": true,
     "font": false,
@@ -72360,6 +72530,26 @@
     "type": "sized"
   },
   "Headphones48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "HeadphonesSoundWave12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "HeadphonesSoundWave12Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "HeadphonesSoundWave16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "HeadphonesSoundWave16Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -74679,6 +74869,16 @@
     "font": true,
     "type": "sized"
   },
+  "Important28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Important28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Important32Filled": {
     "svg": true,
     "font": true,
@@ -75824,7 +76024,17 @@
     "font": true,
     "type": "sized"
   },
+  "Lasso32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Lasso32Light": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Lasso32Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -81409,7 +81619,27 @@
     "font": true,
     "type": "sized"
   },
+  "MailSettings28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "MailSettings28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "MailSettings32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "MailSettings32Light": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "MailSettings32Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -94554,6 +94784,16 @@
     "font": true,
     "type": "sized"
   },
+  "Poll28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Poll28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Poll32Color": {
     "svg": true,
     "font": false,
@@ -95984,6 +96224,16 @@
     "font": true,
     "type": "sized"
   },
+  "PuzzleCube32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PuzzleCube32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "PuzzleCube48Filled": {
     "svg": true,
     "font": true,
@@ -95994,12 +96244,62 @@
     "font": true,
     "type": "sized"
   },
+  "PuzzleCubePiece16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PuzzleCubePiece16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "PuzzleCubePiece20Filled": {
     "svg": true,
     "font": true,
     "type": "sized"
   },
   "PuzzleCubePiece20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PuzzleCubePiece24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PuzzleCubePiece24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PuzzleCubePiece28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PuzzleCubePiece28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PuzzleCubePiece32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PuzzleCubePiece32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PuzzleCubePiece48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PuzzleCubePiece48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -106104,12 +106404,32 @@
     "font": true,
     "type": "sized"
   },
+  "SquareShadow16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SquareShadow16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "SquareShadow20Filled": {
     "svg": true,
     "font": true,
     "type": "sized"
   },
   "SquareShadow20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SquareShadow24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SquareShadow24Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -124579,6 +124899,16 @@
     "font": true,
     "type": "sized"
   },
+  "ZoomIn28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ZoomIn28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "ZoomIn32Filled": {
     "svg": true,
     "font": true,
@@ -124620,6 +124950,16 @@
     "type": "sized"
   },
   "ZoomOut24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ZoomOut28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ZoomOut28Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
