@@ -34,7 +34,7 @@
   "license": "Microsoft",
   "devDependencies": {
     "avocado": "1.0.0",
-    "fantasticon": "^1.2.3",
+    "fantasticon": "1.2.3",
     "glob": "^8.0.1",
     "lodash": "4.17.21",
     "mkdirp": "^1.0.4",
