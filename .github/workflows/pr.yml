@@ -177,7 +177,7 @@ jobs:
         if [[ -n "$(git status --porcelain metadata.json)" ]]; then
           git add metadata.json
           git commit -m "chore(react-icons): update metadata.json [skip ci]"
-          git push
+          git push origin HEAD:${{ github.head_ref }}
         fi
 
     - name: Test (verify build) @fluentui/react-icons
