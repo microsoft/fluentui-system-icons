@@ -173,12 +173,13 @@ jobs:
     - name: Commit metadata.json if changed @fluentui/react-icons
       working-directory: packages/react-icons
       run: |
-        git config user.email "flubuild@microsoft.com" && git config user.name "Fluent Build System"
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
         if [[ -n "$(git status --porcelain metadata.json)" ]]; then
-          git fetch origin ${{ github.head_ref }}
-          git rebase origin/${{ github.head_ref }}
           git add metadata.json
           git commit -m "chore(react-icons): update metadata.json"
+          git fetch origin ${{ github.head_ref }}
+          git rebase origin/${{ github.head_ref }}
           git push origin HEAD:${{ github.head_ref }}
         fi
 
