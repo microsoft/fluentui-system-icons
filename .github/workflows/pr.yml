@@ -175,8 +175,10 @@ jobs:
       run: |
         git config user.email "flubuild@microsoft.com" && git config user.name "Fluent Build System"
         if [[ -n "$(git status --porcelain metadata.json)" ]]; then
+          git fetch origin ${{ github.head_ref }}
+          git rebase origin/${{ github.head_ref }}
           git add metadata.json
-          git commit -m "chore(react-icons): update metadata.json [skip ci]"
+          git commit -m "chore(react-icons): update metadata.json"
           git push origin HEAD:${{ github.head_ref }}
         fi
 
