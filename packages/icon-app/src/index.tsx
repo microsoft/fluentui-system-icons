@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { App } from './app';
 
 
@@ -9,6 +9,7 @@ function main() {
     const rootDiv = document.createElement('div');
     document.body.append(rootDiv);
 
-    ReactDOM.render(<App />, rootDiv);
+    const root = createRoot(rootDiv);
+    root.render(<App />);
 }
 

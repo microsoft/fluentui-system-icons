@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { makeStyles } from "@griffel/react";
+import { type FluentIcon } from '@fluentui/react-icons/svg';
+import { type FluentFontIcon } from '@fluentui/react-icons/fonts';
 
 const useCellStyles = makeStyles({
     root: {
@@ -49,7 +51,7 @@ const useCellStyles = makeStyles({
     }
 });
 
-export function IconCell({ FontIcon, SvgIcon, name }: { FontIcon?: React.ComponentType, SvgIcon?: React.ComponentType, name: string }) {
+export function IconCell({ FontIcon, SvgIcon, name }: { FontIcon?: FluentFontIcon, SvgIcon?: FluentIcon, name: string }) {
     const styles = useCellStyles();
 
     return <div className={styles.root}>
