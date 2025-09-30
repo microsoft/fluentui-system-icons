@@ -39,6 +39,7 @@
     "@griffel/babel-preset": "^1.0.0",
     "@griffel/eslint-plugin": "^2.0.0",
     "@testing-library/react": "^12.1.2",
+    "@testing-library/jest-dom": "^6.8.0",
     "@types/react": "^17.0.2",
     "jsdom": "^21.1.0",
     "concurrently": "^9.2.0",
