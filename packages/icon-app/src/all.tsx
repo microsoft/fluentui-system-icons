@@ -2,6 +2,9 @@
 import * as React from 'react';
 import * as fontsModule from '@fluentui/react-icons/lib/fonts';
 import * as svgModule from '@fluentui/react-icons/lib/svg';
+import { type FluentIcon } from '@fluentui/react-icons/svg';
+import { type FluentFontIcon } from '@fluentui/react-icons/fonts';
+
 import { IconCell } from './shared';
 
 const fontComponents = filterModuleImports(fontsModule);
@@ -18,8 +21,8 @@ export function All(){
     return (<>
             {allIconNames.map(name =>
                 <IconCell
-                    FontIcon={fontComponents[name]}
-                    SvgIcon={svgComponents[name]}
+                    FontIcon={fontComponents[name] as FluentFontIcon}
+                    SvgIcon={svgComponents[name] as FluentIcon}
                     name={name}
                     key={name}
                 />
