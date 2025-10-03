@@ -162,6 +162,19 @@ jobs:
         npm run build:verify -- -u
       working-directory: packages/react-icons
 
+    - name: prepare react-icons publishable artifact
+      run: |
+        mkdir -p dist
+        npm pack --pack-destination ./dist
+      working-directory: packages/react-icons
+
+    - name: upload react-icons publishable artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: react-icons-build
+        path: packages/react-icons/dist
+        retention-days: 5
+
     - name: Build @fluentui/react-native-icons
       run: |
         npm run build
