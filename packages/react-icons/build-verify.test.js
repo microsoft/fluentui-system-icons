@@ -64,7 +64,7 @@ describe('Build Verification', () => {
       const libPath = path.join(__dirname, libDir);
 
       // Check main structure
-      const requiredDirs = ['icons', 'sizedIcons', 'fonts', 'utils'];
+      const requiredDirs = ['icons', 'sizedIcons', 'fonts', 'utils', 'atoms'];
       const requiredFiles = ['index.js', 'index.d.ts', 'providers.js', 'providers.d.ts'];
 
       for (const dir of requiredDirs) {
@@ -95,6 +95,22 @@ describe('Build Verification', () => {
 
       for (const file of fontRequiredFiles) {
         const filePath = path.join(fontsDir, file);
+        expect(fs.existsSync(filePath)).toBe(true);
+      }
+
+      // Check atoms directory structure
+      const atomsDirSvg = path.join(libPath, 'atoms/svg');
+      const atomRequiredFiles = ['access-time.js', 'access-time.d.ts'];
+
+      for (const file of atomRequiredFiles) {
+        const filePath = path.join(atomsDirSvg, file);
+        expect(fs.existsSync(filePath)).toBe(true);
+      }
+
+      const atomsDirFonts = path.join(libPath, 'atoms/fonts');
+
+      for (const file of atomRequiredFiles) {
+        const filePath = path.join(atomsDirFonts, file);
         expect(fs.existsSync(filePath)).toBe(true);
       }
     });
