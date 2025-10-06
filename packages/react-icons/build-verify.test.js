@@ -1625,6 +1625,129 @@ describe('Build Verification', () => {
     });
   });
 
+  describe(`Atoms`, () => {
+    it.each(['lib', 'lib-cjs'])('should have atoms/svg directory with icon files in %s', async (libDir) => {
+      const atomsSvgPath = path.join(__dirname, libDir, 'atoms', 'svg');
+
+      // Check atoms/svg directory exists
+      expect(fs.existsSync(atomsSvgPath)).toBe(true);
+      const stats = await stat(atomsSvgPath);
+      expect(stats.isDirectory()).toBe(true);
+
+      // Read all files in atoms/svg
+      const files = await readdir(atomsSvgPath);
+
+      // Check that we have both .js and .d.ts files
+      const jsFiles = files.filter((f) => f.endsWith('.js'));
+
+      expect(jsFiles.length).toBe(2761);
+      // Snapshot the list of .js files to catch any unexpected changes
+      expect(jsFiles).toMatchSnapshot();
+
+      // Every .js file should have a corresponding .d.ts file
+      for (const jsFile of jsFiles) {
+        const baseName = jsFile.replace('.js', '');
+        const dtsFile = `${baseName}.d.ts`;
+        expect(files).toContain(dtsFile);
+      }
+
+      // Sample check: access-time should exist
+      expect(files).toContain('access-time.js');
+      expect(files).toContain('access-time.d.ts');
+    });
+
+    it.each(['lib', 'lib-cjs'])('should have atoms/fonts directory with icon files in %s', async (libDir) => {
+      const atomsFontsPath = path.join(__dirname, libDir, 'atoms', 'fonts');
+
+      // Check atoms/fonts directory exists
+      expect(fs.existsSync(atomsFontsPath)).toBe(true);
+      const stats = await stat(atomsFontsPath);
+      expect(stats.isDirectory()).toBe(true);
+
+      // Read all files in atoms/fonts
+      const files = await readdir(atomsFontsPath);
+
+      // Check that we have both .js and .d.ts files
+      const jsFiles = files.filter((f) => f.endsWith('.js'));
+
+      expect(jsFiles.length).toBe(2754);
+      // Snapshot the list of .js files to catch any unexpected changes
+      expect(jsFiles).toMatchSnapshot();
+
+      // Every .js file should have a corresponding .d.ts file
+      for (const jsFile of jsFiles) {
+        const baseName = jsFile.replace('.js', '');
+        const dtsFile = `${baseName}.d.ts`;
+        expect(files).toContain(dtsFile);
+      }
+
+      // Sample check: access-time should exist
+      expect(files).toContain('access-time.js');
+      expect(files).toContain('access-time.d.ts');
+    });
+
+    it('atom files should export icon variants correctly [svg]', async () => {
+      const atomFilePath = path.join(__dirname, 'lib', 'atoms', 'svg', 'access-time.js');
+      expect(fs.existsSync(atomFilePath)).toBe(true);
+
+      const content = await readFile(atomFilePath, 'utf-8');
+
+      // Should contain exports for different variants
+      expect(content).toContain('export const AccessTimeFilled');
+      expect(content).toContain('export const AccessTimeRegular');
+
+      // Should contain sized variants
+      expect(content).toContain('export const AccessTime20Filled');
+      expect(content).toContain('export const AccessTime20Regular');
+      expect(content).toContain('export const AccessTime24Filled');
+      expect(content).toContain('export const AccessTime24Regular');
+
+      // Should use createFluentIcon
+      expect(content).toContain('createFluentIcon');
+    });
+
+    it('atom files should export icon variants correctly [fonts]', async () => {
+      const atomFilePath = path.join(__dirname, 'lib', 'atoms', 'fonts', 'access-time.js');
+      expect(fs.existsSync(atomFilePath)).toBe(true);
+
+      const content = await readFile(atomFilePath, 'utf-8');
+
+      // Should contain exports for different variants
+      expect(content).toContain('export const AccessTimeFilled');
+      expect(content).toContain('export const AccessTimeRegular');
+
+      // Should use createFluentFontIcon
+      expect(content).toContain('createFluentFontIcon');
+    });
+
+    it('atom TypeScript definition files should have correct exports', async () => {
+      const atomDtsPath = path.join(__dirname, 'lib', 'atoms', 'svg', 'access-time.d.ts');
+      expect(fs.existsSync(atomDtsPath)).toBe(true);
+
+      const content = await readFile(atomDtsPath, 'utf-8');
+
+      // Should export icon components (using declare const for .d.ts files)
+      expect(content).toContain('export declare const AccessTimeFilled');
+      expect(content).toContain('export declare const AccessTimeRegular');
+      expect(content).toContain('FluentIcon');
+    });
+
+    it('atoms exports should be accessible via package.json exports', () => {
+      const packageJsonPath = path.join(__dirname, 'package.json');
+      const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
+
+      // Check that ./svg/* and ./fonts/* exports are defined
+      expect(packageJson.exports['./svg/*']).toBeDefined();
+      expect(packageJson.exports['./fonts/*']).toBeDefined();
+
+      // Check that they point to atoms directories
+      expect(packageJson.exports['./svg/*'].import).toBe('./lib/atoms/svg/*.js');
+      expect(packageJson.exports['./svg/*'].require).toBe('./lib-cjs/atoms/svg/*.js');
+      expect(packageJson.exports['./fonts/*'].import).toBe('./lib/atoms/fonts/*.js');
+      expect(packageJson.exports['./fonts/*'].require).toBe('./lib-cjs/atoms/fonts/*.js');
+    });
+  });
+
   describe('Metadata Validation', () => {
     it('metadata.json should have no uncommitted changes after build', () => {
       // Check if metadata.json exists
@@ -1636,16 +1759,16 @@ describe('Build Verification', () => {
         const gitDiff = execSync('git diff metadata.json', {
           encoding: 'utf-8',
           cwd: __dirname,
-          stdio: 'pipe'
+          stdio: 'pipe',
         });
 
         // If there's a diff, the test should fail with a helpful message
         if (gitDiff.trim()) {
           throw new Error(
             `metadata.json has uncommitted changes after build.\n` +
-            `This means the committed metadata.json is out of sync with the current icons.\n` +
-            `Please run 'npm run build' and commit the updated metadata.json file.\n\n` +
-            `Git diff:\n${gitDiff}`
+              `This means the committed metadata.json is out of sync with the current icons.\n` +
+              `Please run 'npm run build' and commit the updated metadata.json file.\n\n` +
+              `Git diff:\n${gitDiff}`,
           );
         }
 
@@ -1653,7 +1776,7 @@ describe('Build Verification', () => {
         expect(gitDiff.trim()).toBe('');
       } catch (error) {
         // Handle cases where git command fails (e.g., not in a git repo, file not tracked)
-        if (error.status === 128) {
+        if (error && typeof error === 'object' && 'status' in error && error.status === 128) {
           // Git command failed - this might be expected in some CI environments
           // We'll skip this test with a warning
           console.warn('Git diff check skipped - not in a git repository or metadata.json not tracked');
@@ -1664,6 +1787,5 @@ describe('Build Verification', () => {
         throw error;
       }
     });
-
   });
 });
