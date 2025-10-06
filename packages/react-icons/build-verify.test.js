@@ -642,6 +642,7 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-34';
         export * from './sizedIcons/chunk-35';
         export * from './sizedIcons/chunk-36';
+        export * from './sizedIcons/chunk-37';
         export { default as wrapIcon } from '../utils/wrapIcon';
         export { default as bundleIcon } from '../utils/bundleIcon';
         export { createFluentIcon } from '../utils/createFluentIcon';
@@ -700,6 +701,7 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-34';
         export * from './sizedIcons/chunk-35';
         export * from './sizedIcons/chunk-36';
+        export * from './sizedIcons/chunk-37';
         export { default as wrapIcon } from '../utils/wrapIcon';
         export { default as bundleIcon } from '../utils/bundleIcon';
         export { createFluentIcon } from '../utils/createFluentIcon';
@@ -774,6 +776,7 @@ describe('Build Verification', () => {
         tslib_1.__exportStar(require("./sizedIcons/chunk-34"), exports);
         tslib_1.__exportStar(require("./sizedIcons/chunk-35"), exports);
         tslib_1.__exportStar(require("./sizedIcons/chunk-36"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-37"), exports);
         var wrapIcon_1 = require("../utils/wrapIcon");
         Object.defineProperty(exports, "wrapIcon", { enumerable: true, get: function () { return tslib_1.__importDefault(wrapIcon_1).default; } });
         var bundleIcon_1 = require("../utils/bundleIcon");
@@ -838,6 +841,7 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-34';
         export * from './sizedIcons/chunk-35';
         export * from './sizedIcons/chunk-36';
+        export * from './sizedIcons/chunk-37';
         export { default as wrapIcon } from '../utils/wrapIcon';
         export { default as bundleIcon } from '../utils/bundleIcon';
         export { createFluentIcon } from '../utils/createFluentIcon';
