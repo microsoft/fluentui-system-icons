@@ -30,6 +30,7 @@
 |Breakout Room|<img src="assets/Breakout Room/SVG/ic_fluent_breakout_room_32_light.svg?raw=true" width="24" height="24">|`breakoutRoom32Light`|`ic_fluent_breakout_room_32_light`|
 |Broom|<img src="assets/Broom/SVG/ic_fluent_broom_32_light.svg?raw=true" width="24" height="24">|`broom32Light`|`ic_fluent_broom_32_light`|
 |Calendar 3 Day|<img src="assets/Calendar 3 Day/SVG/ic_fluent_calendar_3_day_32_light.svg?raw=true" width="24" height="24">|`calendar3Day32Light`|`ic_fluent_calendar_3_day_32_light`|
+|Calendar Checkmark|<img src="assets/Calendar Checkmark/SVG/ic_fluent_calendar_checkmark_32_light.svg?raw=true" width="24" height="24">|`calendarCheckmark32Light`|`ic_fluent_calendar_checkmark_32_light`|
 |Calendar Clock|<img src="assets/Calendar Clock/SVG/ic_fluent_calendar_clock_32_light.svg?raw=true" width="24" height="24">|`calendarClock32Light`|`ic_fluent_calendar_clock_32_light`|
 |Calendar Data Bar|<img src="assets/Calendar Data Bar/SVG/ic_fluent_calendar_data_bar_32_light.svg?raw=true" width="24" height="24">|`calendarDataBar32Light`|`ic_fluent_calendar_data_bar_32_light`|
 |Calendar Day|<img src="assets/Calendar Day/SVG/ic_fluent_calendar_day_32_light.svg?raw=true" width="24" height="24">|`calendarDay32Light`|`ic_fluent_calendar_day_32_light`|
@@ -113,6 +114,7 @@
 |Mail Settings|<img src="assets/Mail Settings/SVG/ic_fluent_mail_settings_32_light.svg?raw=true" width="24" height="24">|`mailSettings32Light`|`ic_fluent_mail_settings_32_light`|
 |Mail Template|<img src="assets/Mail Template/SVG/ic_fluent_mail_template_32_light.svg?raw=true" width="24" height="24">|`mailTemplate32Light`|`ic_fluent_mail_template_32_light`|
 |Mail Unread|<img src="assets/Mail Unread/SVG/ic_fluent_mail_unread_32_light.svg?raw=true" width="24" height="24">|`mailUnread32Light`|`ic_fluent_mail_unread_32_light`|
+|Mail Warning|<img src="assets/Mail Warning/SVG/ic_fluent_mail_warning_32_light.svg?raw=true" width="24" height="24">|`mailWarning32Light`|`ic_fluent_mail_warning_32_light`|
 |Mic|<img src="assets/Mic/SVG/ic_fluent_mic_32_light.svg?raw=true" width="24" height="24">|`mic32Light`|`ic_fluent_mic_32_light`|
 |Molecule|<img src="assets/Molecule/SVG/ic_fluent_molecule_32_light.svg?raw=true" width="24" height="24">|`molecule32Light`|`ic_fluent_molecule_32_light`|
 |Note|<img src="assets/Note/SVG/ic_fluent_note_32_light.svg?raw=true" width="24" height="24">|`note32Light`|`ic_fluent_note_32_light`|
@@ -127,6 +129,7 @@
 |People Community|<img src="assets/People Community/SVG/ic_fluent_people_community_32_light.svg?raw=true" width="24" height="24">|`peopleCommunity32Light`|`ic_fluent_people_community_32_light`|
 |People Edit|<img src="assets/People Edit/SVG/ic_fluent_people_edit_32_light.svg?raw=true" width="24" height="24">|`peopleEdit32Light`|`ic_fluent_people_edit_32_light`|
 |People List|<img src="assets/People List/SVG/ic_fluent_people_list_32_light.svg?raw=true" width="24" height="24">|`peopleList32Light`|`ic_fluent_people_list_32_light`|
+|People Lock|<img src="assets/People Lock/SVG/ic_fluent_people_lock_32_light.svg?raw=true" width="24" height="24">|`peopleLock32Light`|`ic_fluent_people_lock_32_light`|
 |People Settings|<img src="assets/People Settings/SVG/ic_fluent_people_settings_32_light.svg?raw=true" width="24" height="24">|`peopleSettings32Light`|`ic_fluent_people_settings_32_light`|
 |People Sync|<img src="assets/People Sync/SVG/ic_fluent_people_sync_32_light.svg?raw=true" width="24" height="24">|`peopleSync32Light`|`ic_fluent_people_sync_32_light`|
 |Person|<img src="assets/Person/SVG/ic_fluent_person_32_light.svg?raw=true" width="24" height="24">|`person32Light`|`ic_fluent_person_32_light`|
