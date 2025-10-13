@@ -1,26 +1,69 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
-const fs = require("fs").promises;
-const path = require("path");
-const process = require("process");
-const argv = require("yargs").boolean("selector").default("selector", false).boolean("keepdirs").default("keepdirs", false).argv;
-const _ = require("lodash");
+// @ts-check
 
-const SRC_PATH = argv.source;
-const DEST_FILE = argv.dest;
+const fs = require("node:fs/promises");
+const path = require("node:path");
+const process = require("node:process");
 
-if (!SRC_PATH) {
-    throw new Error("Icon source folder not specified by --source");
-}
-if (!DEST_FILE) {
-  throw new Error("Output destination file not specified by --dest");
-}
+const yargs = require("yargs");
+
+const parseArgs = (args = process.argv.slice(2)) => {
+  const argv = yargs(args)
+    .usage('Usage: $0 --source <src> --dest <dest>')
+    .option('source', {
+      type: 'string',
+      describe: 'Icon source folder (containing metadata.json files)',
+      demandOption: true,
+    })
+    .option('dest', {
+      type: 'string',
+      describe: 'Output destination file path (e.g., rtl.json)',
+      demandOption: true,
+    })
+    .help()
+    .wrap(Math.min(120, process.stdout.columns || 120))
+    .argv;
+
+  /**
+   * @typedef {{
+   *   SRC_PATH: string,
+   *   DEST_FILE: string
+   * }} ParseResult
+   */
+
+  return /** @type {ParseResult} */ ({
+    SRC_PATH: argv.source,
+    DEST_FILE: argv.dest,
+  });
+};
+
+const { SRC_PATH, DEST_FILE } = parseArgs();
 
 const destFolder = path.dirname(DEST_FILE);
 fs.mkdir(destFolder, { recursive: true });
 
+/**
+ * @type {Record<string, string>}
+ */
 const result = {};
+
+/**
+ * @typedef {Object} Metadata
+ * @property {string} name - The name of the icon
+ * @property {number[]} size - The sizes of the icon (16,20,24,28,32,48,56,64)
+ * @property {string[]} style - The style of the icon (Filled, Regular, Light)
+ * @property {string} keyword - Keywords associated with the icon
+ * @property {string} description - Description of the icon
+ * @property {string} metaphor - Metaphor associated with the icon
+ * @property {'mirror' | 'unique'} directionType - Direction type of the icon
+ */
+
+/**
+ *
+ * @param {string} srcPath
+ */
 async function processFolder(srcPath) {
     const files = await fs.readdir(srcPath);
     for (const file of files) {
@@ -36,9 +79,9 @@ async function processFolder(srcPath) {
             // If it's a metadata file, read and parse its content
             const data = await fs.readFile(srcFile, 'utf8');
             try {
-                // Parse the json content
-                let metadata = JSON.parse(data);
-                let iconSize = metadata.size;  
+                /** @type {Metadata} */
+                const metadata = JSON.parse(data);
+                const iconSize = metadata.size;
                 let iconName = metadata.name;
                 const directionType = metadata.directionType;
                 if (!directionType) {  //ignore files with no directionType
@@ -56,7 +99,7 @@ async function processFolder(srcPath) {
                 }
                 let tempName = iconName + "Filled";
                 result[tempName] = directionType;
-                
+
                 tempName = iconName + "Regular";
                 result[tempName] = directionType;
             } catch (error) {

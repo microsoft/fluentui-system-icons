@@ -2,14 +2,13 @@
 // Licensed under the MIT license.
 // @ts-check
 
-const fs = require("fs/promises");
-const mkdirp = require('mkdirp');
-const path = require("path");
-const { promisify } = require('util');
+const fs = require("node:fs/promises");
+const path = require("node:path");
+const { promisify } = require('node:util');
+const process = require("node:process");
+
 const glob = promisify(require('glob'));
-const process = require("process");
-const argv = require("yargs").boolean("selector").default("selector", false).argv;
-const _ = require("lodash");
+const yargs = require('yargs');
 
 // Temporary patch until https://github.com/tancredi/fantasticon/pull/507 is merged and published
 (function patchFantasticon() {
@@ -20,27 +19,62 @@ const _ = require("lodash");
 })()
 const fantasticon = require('fantasticon');
 
-const SRC_PATH = argv.source;
-const DEST_PATH = argv.dest;
-const ICON_TYPE = argv.iconType;
-const CODEPOINTS_FILE = argv.codepoints;
+const parseArgs = (args = process.argv.slice(2)) => {
+  const argv = yargs(args)
+    .usage('Usage: $0 --source <src> --dest <dest> --iconType <type> [options]')
+    .option('source', {
+      type: 'string',
+      describe: 'Icon source folder',
+      demandOption: true,
+    })
+    .option('dest', {
+      type: 'string',
+      describe: 'Output destination folder',
+      demandOption: true,
+    })
+    .option('iconType', {
+      type: 'string',
+      describe: 'Icon type (Filled|Regular|Resizable|Light)',
+      demandOption: true,
+      choices: ['Filled', 'Regular', 'Resizable', 'Light'],
+    })
+    .option('codepoints', {
+      type: 'string',
+      describe: 'Path to existing codepoints JSON file',
+    })
+    .help()
+    .wrap(Math.min(120, process.stdout.columns || 120))
+    .argv;
 
-if (!SRC_PATH) {
-    throw new Error("SVG source folder not specified by --source");
-}
-if (!DEST_PATH) {
-    throw new Error("Output destination folder not specified by --dest");
-}
-if (!(ICON_TYPE === 'Filled' || ICON_TYPE === 'Regular' || ICON_TYPE === 'Resizable' || ICON_TYPE === 'Light')) {
-    throw new Error("Icon type not specified");
-}
+  /**
+   * @typedef {'Filled'|'Regular'|'Resizable'|'Light'} IconType
+   *
+   * @typedef {{
+   *   SRC_PATH: string,
+   *   DEST_PATH: string,
+   *   ICON_TYPE: IconType,
+   *   CODEPOINTS_FILE: string | undefined
+   * }} ParseResult
+   */
 
-const MAX_PRIVATE_USE_CODEPOINTS = 137468;
+  return /** @type {ParseResult} */ ({
+    SRC_PATH: argv.source,
+    DEST_PATH: argv.dest,
+    ICON_TYPE: /** @type {IconType} */ (argv.iconType),
+    CODEPOINTS_FILE: argv.codepoints,
+  });
+};
+
+const { SRC_PATH, DEST_PATH, ICON_TYPE, CODEPOINTS_FILE } = parseArgs();
+
 async function main() {
-    await mkdirp(DEST_PATH);
-    const stagingFolder = path.resolve(DEST_PATH, ICON_TYPE);
-    await mkdirp(stagingFolder);
 
+    const MAX_PRIVATE_USE_CODEPOINTS = 137468;
+    await fs.mkdir(DEST_PATH, { recursive: true });
+    const stagingFolder = path.resolve(DEST_PATH, ICON_TYPE);
+    await fs.mkdir(stagingFolder, { recursive: true });
+
+    /** @type {string[]} */
     const svgFiles = await glob(path.resolve(SRC_PATH, `*_${ICON_TYPE === 'Resizable' ? '20_{filled,regular,light}' : ICON_TYPE.toLowerCase()}.svg`));
     const icons = new Set(svgFiles.map(file => path.basename(file).replace(/\.svg$/, '')));
 
@@ -76,7 +110,7 @@ async function main() {
 }
 
 /**
- * 
+ *
  * @param {Set<string>} icons - Set of icons being consumed into the font
  * @returns {Promise<Record<string, number>>}
  */
@@ -119,7 +153,7 @@ async function getCodepoints(icons) {
 }
 
 /**
- * @param {number} codepoint 
+ * @param {number} codepoint
  * @returns {boolean} Whether the codepoint falls within one of the Unicode Private Use Areas
  */
 function isPrivateUseAreaCodepoint(codepoint) {
