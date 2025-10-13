@@ -1,24 +1,22 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
+const crypto = require('crypto');
+
 /**
  * Provides stable chunking utilities for icon distribution to prevent bundle size regressions.
  * Uses hash-based assignment to ensure existing icons stay in the same chunk when new icons are added.
  */
 
 /**
- * Simple string hash function for deterministic chunk assignment
+ * String hash function for deterministic chunk assignment using Node.js crypto
  * @param {string} str - String to hash
  * @returns {number} - Hash value
  */
 function simpleHash(str) {
-  let hash = 0;
-  for (let i = 0; i < str.length; i++) {
-    const char = str.charCodeAt(i);
-    hash = ((hash << 5) - hash) + char;
-    hash = hash & hash; // Convert to 32-bit integer
-  }
-  return Math.abs(hash);
+  const hash = crypto.createHash('sha256').update(str).digest();
+  // Use first 4 bytes as a 32-bit unsigned integer
+  return hash.readUInt32BE(0);
 }
 
 /**
