@@ -49,13 +49,13 @@ describe('chunking-utils', () => {
       const initialExports = ['export const A = ...', 'export const B = ...', 'export const C = ...'];
       const initialNames = ['A', 'B', 'C'];
       
-      const initialChunks = createStableChunks(initialExports, initialNames, 2);
+      const initialChunks = createStableChunks(initialExports, initialNames, 2, 5); // Use fixed 5 chunks
       
       // Add new icon in alphabetical order
       const expandedExports = ['export const A = ...', 'export const A1 = ...', 'export const B = ...', 'export const C = ...'];
       const expandedNames = ['A', 'A1', 'B', 'C'];
       
-      const expandedChunks = createStableChunks(expandedExports, expandedNames, 2);
+      const expandedChunks = createStableChunks(expandedExports, expandedNames, 2, 5); // Same fixed 5 chunks
       
       // Find where original icons ended up
       const getIconChunkMap = (chunks, names) => {

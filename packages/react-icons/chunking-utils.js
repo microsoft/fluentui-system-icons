@@ -44,8 +44,7 @@ function createStableChunks(iconExports, iconNames, targetChunkSize, maxChunks =
   } else {
     // For react-icons, we expect around 25,000-30,000 icons total
     // With target chunk size of 1000, we need ~30 chunks
-    // With target chunk size of 500, we need ~60 chunks  
-    const estimatedMaxIcons = targetChunkSize === 500 ? 30000 : 25000; // fonts vs svg icons
+    const estimatedMaxIcons = 30000;
     numChunks = Math.ceil(estimatedMaxIcons / targetChunkSize);
   }
   
