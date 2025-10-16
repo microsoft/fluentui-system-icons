@@ -11,5 +11,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/microsoft/fluentui-system-icons.git"
+  },
+  "devDependencies": {
+    "nx": "21.6.5"
   }
 }
