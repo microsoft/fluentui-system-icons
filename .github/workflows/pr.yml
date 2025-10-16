@@ -130,8 +130,12 @@ jobs:
   #       refreshToken: "placeholder"
 
   build-svg:
+    if: ${{ github.repository_owner == 'microsoft' }}
     name: Build svg library
     runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      actions: 'read'
 
     steps:
     - uses: actions/checkout@v4
@@ -150,8 +154,12 @@ jobs:
       run: npx nx affected -t build --projects=svg-icons
 
   build-react:
+    if: ${{ github.repository_owner == 'microsoft' }}
     name: Build react library
     runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      actions: 'read'
 
     steps:
     - uses: actions/checkout@v4
