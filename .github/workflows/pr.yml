@@ -147,8 +147,20 @@ jobs:
         node-version: 20.x
 
     - run: npm ci
+    # Use once allowed
+    # - uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
 
-    - uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
+    - name: Set NX_BASE and NX_HEAD
+      run: |
+        if [ "${{ github.event_name }}" == "pull_request" ]; then
+          echo "NX_BASE=${{ github.event.pull_request.base.sha }}" >> $GITHUB_ENV
+          echo "NX_HEAD=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
+        else
+          echo "NX_BASE=${{ github.event.before }}" >> $GITHUB_ENV
+          echo "NX_HEAD=${{ github.sha }}" >> $GITHUB_ENV
+        fi
+        echo "Base SHA: $NX_BASE"
+        echo "Head SHA: $NX_HEAD"
 
     - name: Run build
       run: npx nx affected -t build --projects=svg-icons
@@ -172,7 +184,19 @@ jobs:
 
     - run: npm ci
 
-    - uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
+    # Use once allowed
+    # - uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
+    - name: Set NX_BASE and NX_HEAD
+      run: |
+        if [ "${{ github.event_name }}" == "pull_request" ]; then
+          echo "NX_BASE=${{ github.event.pull_request.base.sha }}" >> $GITHUB_ENV
+          echo "NX_HEAD=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
+        else
+          echo "NX_BASE=${{ github.event.before }}" >> $GITHUB_ENV
+          echo "NX_HEAD=${{ github.sha }}" >> $GITHUB_ENV
+        fi
+        echo "Base SHA: $NX_BASE"
+        echo "Head SHA: $NX_HEAD"
 
     - name: Lint/Test/Build @fluentui/react-icons
       run: |
