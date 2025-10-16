@@ -15,8 +15,8 @@
     "@types/react": "19.1.13",
     "@types/react-dom": "19.1.9",
     "html-webpack-plugin": "^5.6.3",
-    "ts-loader": "^9.2.9",
-    "typescript": "4.9.5",
+    "ts-loader": "9.5.4",
+    "typescript": "5.0.4",
     "webpack": "^5.100.2",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2"

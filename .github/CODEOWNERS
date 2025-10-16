@@ -3,6 +3,7 @@
 /.github/react-icons.instructions.md @microsoft/cxe-prg
 /.github/workflows/copilot-setup-steps.yml @microsoft/cxe-prg
 /.github/workflows/pr.yml @microsoft/cxe-prg @spencer-nelson
+AGENTS.md @microsoft/cxe-prg
 
 ## packages
 packages/icon-app @microsoft/cxe-prg
@@ -19,6 +20,7 @@ flutter/ @nickromano
 ios/ @nickromano
 package-lock.json @microsoft/cxe-prg
 package.json @microsoft/cxe-prg
+nx.json @microsoft/cxe-prg
 
 ## Assets
 assets/ @spencer-nelson @willchavez

@@ -38,7 +38,7 @@
     "react-native": "^0.68.0",
     "renamer": "^2.0.1",
     "svgo": "^2.8.0",
-    "typescript": "~4.1.0",
+    "typescript": "4.1.6",
     "yargs": "^14.0.0"
   },
   "dependencies": {
