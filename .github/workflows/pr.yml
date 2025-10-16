@@ -162,8 +162,21 @@ jobs:
         echo "Base SHA: $NX_BASE"
         echo "Head SHA: $NX_HEAD"
 
-    - name: Run build
-      run: npx nx affected -t build --projects=svg-icons
+    - name: Check if svg-icons is affected
+      id: check-affected
+      run: |
+        AFFECTED=$(npx nx show projects --affected --base=$NX_BASE --head=$NX_HEAD --json | jq -r '.[]' | grep -w 'svg-icons' || echo "")
+        if [ -n "$AFFECTED" ]; then
+          echo "affected=true" >> $GITHUB_OUTPUT
+          echo "svg-icons is affected"
+        else
+          echo "affected=false" >> $GITHUB_OUTPUT
+          echo "svg-icons is not affected, skipping build"
+        fi
+
+    - name: Build svg-icons
+      if: steps.check-affected.outputs.affected == 'true'
+      run: npx nx run svg-icons:build
 
   build-react:
     if: ${{ github.repository_owner == 'microsoft' }}
@@ -198,23 +211,16 @@ jobs:
         echo "Base SHA: $NX_BASE"
         echo "Head SHA: $NX_HEAD"
 
-    - name: Lint/Test/Build @fluentui/react-icons
+    - name: Lint
+      run: npx nx affected -t lint
+
+    - name: Build
       run: |
-        npx nx affected -t lint --projects=@fluentui/react-icons
-        npx nx affected -t build --projects=@fluentui/react-icons
-        npx nx affected -t build:verify --projects=@fluentui/react-icons
+        npx nx affected -t build --exclude='svg-icons'
+        npx nx affected -t build:verify --exclude='svg-icons'
 
-    - name: Build @fluentui/react-native-icons
-      run: npx nx affected -t build --projects=@fluentui/react-native-icons
-
-    - name: Build @fluentui/react-icons-font-subsetting-webpack-plugin
-      run: npx nx affected -t build --projects=@fluentui/react-icons-font-subsetting-webpack-plugin
-
-    - name: Test @fluentui/react-icons-font-subsetting-webpack-plugin
-      run: npx nx affected -t test --projects=@fluentui/react-icons-font-subsetting-webpack-plugin
-
-    - name: React Icons App - Deploy
-      run: npx nx affected -t build --projects=icon-app
+    - name: Test
+      run: npx nx affected -t test
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
