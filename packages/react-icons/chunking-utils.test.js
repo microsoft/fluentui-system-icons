@@ -79,6 +79,11 @@ describe('chunking-utils', () => {
       expect(initialMap.get('A')).toBe(expandedMap.get('A'));
       expect(initialMap.get('B')).toBe(expandedMap.get('B'));
       expect(initialMap.get('C')).toBe(expandedMap.get('C'));
+      
+      // New icon A1 should be assigned to a chunk
+      expect(expandedMap.has('A1')).toBe(true);
+      expect(expandedMap.get('A1')).toBeGreaterThanOrEqual(0);
+      expect(expandedMap.get('A1')).toBeLessThan(5);
     });
 
     it('should handle empty input', () => {
@@ -128,7 +133,7 @@ describe('chunking-utils', () => {
       const iconNames = Array.from({ length: 100 }, (_, i) => `Icon${i}`);
       
       const chunks = createStableChunks(iconExports, iconNames, 25, 4); // Force exactly 4 chunks max
-      expect(chunks.length).toBeLessThanOrEqual(4);
+      expect(chunks.length).toBe(4);
       
       // All icons should be distributed
       const totalIcons = chunks.reduce((sum, chunk) => sum + chunk.length, 0);

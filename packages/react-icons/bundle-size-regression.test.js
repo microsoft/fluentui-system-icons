@@ -81,21 +81,40 @@ describe('bundle-size-regression-prevention', () => {
       }
     }
     
-    console.log('\\nBundle Size Impact Analysis:');
-    console.log(`Total chunks: ${expandedChunks.length}`);
-    console.log(`Chunks with content changes: ${chunksWithChanges.length} (${chunksWithChanges})`);
-    console.log(`Chunks without changes: ${chunksWithoutChanges.length} (${chunksWithoutChanges})`);
+    // Bundle size impact analysis
+    const analysisResult = {
+      totalChunks: expandedChunks.length,
+      chunksWithChanges: chunksWithChanges.length,
+      chunksWithoutChanges: chunksWithoutChanges.length,
+      stabilityPercentage: (chunksWithoutChanges.length / expandedChunks.length) * 100,
+      changedChunkIndices: chunksWithChanges,
+      unchangedChunkIndices: chunksWithoutChanges
+    };
     
-    // Calculate percentage of chunks that remained stable
-    const stabilityPercentage = (chunksWithoutChanges.length / expandedChunks.length) * 100;
-    console.log(`Chunk stability: ${stabilityPercentage.toFixed(1)}%`);
+    // Verify using inline snapshot
+    expect(analysisResult).toMatchInlineSnapshot(`
+      {
+        "changedChunkIndices": [],
+        "chunksWithChanges": 0,
+        "chunksWithoutChanges": 5,
+        "stabilityPercentage": 100,
+        "totalChunks": 5,
+        "unchangedChunkIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+        ],
+      }
+    `);
     
     // In the old sequential chunking system, adding 12 new icons (especially in alphabetical order)
     // would cause ALL chunks to shift content, resulting in 0% stability
     // With our stable chunking, we expect most chunks to remain unchanged
     
     // We should have high stability (most chunks unchanged)
-    expect(stabilityPercentage).toBeGreaterThan(50); // At least 50% stability
+    expect(analysisResult.stabilityPercentage).toBeGreaterThan(50); // At least 50% stability
     
     // Verify that all original icons are still present
     const allExpandedIcons = expandedChunks.flat().map(exportStr => {
@@ -103,15 +122,19 @@ describe('bundle-size-regression-prevention', () => {
       return match ? match[1] : null;
     }).filter(Boolean);
     
-    console.log(`\nTotal icons found: ${allExpandedIcons.length}`);
-    console.log(`Original icons: ${originalIcons.length}, Expected expanded: ${expandedIcons.length}`);
-    
-    originalIcons.forEach(icon => {
-      expect(allExpandedIcons).toContain(icon);
-    });
-    
-    console.log('\\n✅ Bundle size regression test passed!');
-    console.log('✅ Stable chunking maintains chunk stability when new icons are added');
-    console.log('✅ This prevents webpack SplitChunksPlugin from reshuffling bundles');
+    // Verify all icons using inline snapshot
+    expect({
+      totalIconsFound: allExpandedIcons.length,
+      originalIconsCount: originalIcons.length,
+      expandedIconsCount: expandedIcons.length,
+      allIconsPresent: originalIcons.every(icon => allExpandedIcons.includes(icon))
+    }).toMatchInlineSnapshot(`
+      {
+        "allIconsPresent": true,
+        "expandedIconsCount": 42,
+        "originalIconsCount": 30,
+        "totalIconsFound": 42,
+      }
+    `);
   });
 });
