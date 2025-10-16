@@ -216,8 +216,8 @@ jobs:
 
     - name: Build
       run: |
-        npx nx affected -t build --exclude='svg-icons'
-        npx nx affected -t build:verify --exclude='svg-icons'
+        npx nx affected -t build --exclude='svg-icons,svg-sprites' --parallel 1
+        npx nx affected -t build:verify --exclude='svg-icons,svg-sprites'
 
     - name: Test
       run: npx nx affected -t test

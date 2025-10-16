@@ -602,6 +602,7 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-34';
         export * from './sizedIcons/chunk-35';
         export * from './sizedIcons/chunk-36';
+        export * from './sizedIcons/chunk-37';
         export { default as wrapIcon } from '../utils/wrapIcon';
         export { default as bundleIcon } from '../utils/bundleIcon';
         export { createFluentIcon } from '../utils/createFluentIcon';
@@ -660,6 +661,7 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-34';
         export * from './sizedIcons/chunk-35';
         export * from './sizedIcons/chunk-36';
+        export * from './sizedIcons/chunk-37';
         export { default as wrapIcon } from '../utils/wrapIcon';
         export { default as bundleIcon } from '../utils/bundleIcon';
         export { createFluentIcon } from '../utils/createFluentIcon';
@@ -734,6 +736,7 @@ describe('Build Verification', () => {
         tslib_1.__exportStar(require("./sizedIcons/chunk-34"), exports);
         tslib_1.__exportStar(require("./sizedIcons/chunk-35"), exports);
         tslib_1.__exportStar(require("./sizedIcons/chunk-36"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-37"), exports);
         var wrapIcon_1 = require("../utils/wrapIcon");
         Object.defineProperty(exports, "wrapIcon", { enumerable: true, get: function () { return tslib_1.__importDefault(wrapIcon_1).default; } });
         var bundleIcon_1 = require("../utils/bundleIcon");
@@ -798,6 +801,7 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-34';
         export * from './sizedIcons/chunk-35';
         export * from './sizedIcons/chunk-36';
+        export * from './sizedIcons/chunk-37';
         export { default as wrapIcon } from '../utils/wrapIcon';
         export { default as bundleIcon } from '../utils/bundleIcon';
         export { createFluentIcon } from '../utils/createFluentIcon';
@@ -1407,7 +1411,7 @@ describe('Build Verification', () => {
           export const BreakoutRoom32Light = ( /*#__PURE__*/createFluentFontIcon("BreakoutRoom32Light", "", 3, 32));
           export const Broom32Light = ( /*#__PURE__*/createFluentFontIcon("Broom32Light", "", 3, 32));
           export const Calendar3Day32Light = ( /*#__PURE__*/createFluentFontIcon("Calendar3Day32Light", "", 3, 32));
-          export const CalendarClock32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarClock32Light", "", 3, 32));
+          export const CalendarCheckmark32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarCheckmark32Light", "", 3, 32));
           ... (content truncated for snapshot)"
         `);
 
@@ -1443,8 +1447,8 @@ describe('Build Verification', () => {
           export declare const BreakoutRoom32Light: FluentFontIcon;
           export declare const Broom32Light: FluentFontIcon;
           export declare const Calendar3Day32Light: FluentFontIcon;
+          export declare const CalendarCheckmark32Light: FluentFontIcon;
           export declare const CalendarClock32Light: FluentFontIcon;
-          export declare const CalendarDataBar32Light: FluentFontIcon;
           ... (content truncated for snapshot)"
         `);
       }
@@ -1534,8 +1538,8 @@ describe('Build Verification', () => {
           export declare const BreakoutRoom32Light: FluentFontIcon;
           export declare const Broom32Light: FluentFontIcon;
           export declare const Calendar3Day32Light: FluentFontIcon;
+          export declare const CalendarCheckmark32Light: FluentFontIcon;
           export declare const CalendarClock32Light: FluentFontIcon;
-          export declare const CalendarDataBar32Light: FluentFontIcon;
           ... (content truncated for snapshot)"
         `);
       }
