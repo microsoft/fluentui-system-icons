@@ -2,6 +2,10 @@ name: Pull request validation
 
 on: pull_request
 
+env:
+  NX_PARALLEL: 4 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
+  NX_VERBOSE_LOGGING: true
+
 jobs:
   valid-asset-names:
     name: Validate Asset Names
@@ -126,61 +130,91 @@ jobs:
   #       refreshToken: "placeholder"
 
   build-svg:
+    if: ${{ github.repository_owner == 'microsoft' }}
     name: Build svg library
     runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      actions: 'read'
 
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
     - uses: actions/setup-node@v4
       with:
         node-version: 20.x
 
     - run: npm ci
+    # Use once allowed
+    # - uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
+
+    - name: Set NX_BASE and NX_HEAD
+      run: |
+        if [ "${{ github.event_name }}" == "pull_request" ]; then
+          echo "NX_BASE=${{ github.event.pull_request.base.sha }}" >> $GITHUB_ENV
+          echo "NX_HEAD=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
+        else
+          echo "NX_BASE=${{ github.event.before }}" >> $GITHUB_ENV
+          echo "NX_HEAD=${{ github.sha }}" >> $GITHUB_ENV
+        fi
+        echo "Base SHA: $NX_BASE"
+        echo "Head SHA: $NX_HEAD"
 
     - name: Run build
-      run: npm run build
-      working-directory: packages/svg-icons
+      run: npx nx affected -t build --projects=svg-icons
 
   build-react:
+    if: ${{ github.repository_owner == 'microsoft' }}
     name: Build react library
     runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      actions: 'read'
 
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
     - uses: actions/setup-node@v4
       with:
         node-version: 20.x
 
     - run: npm ci
+
+    # Use once allowed
+    # - uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
+    - name: Set NX_BASE and NX_HEAD
+      run: |
+        if [ "${{ github.event_name }}" == "pull_request" ]; then
+          echo "NX_BASE=${{ github.event.pull_request.base.sha }}" >> $GITHUB_ENV
+          echo "NX_HEAD=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
+        else
+          echo "NX_BASE=${{ github.event.before }}" >> $GITHUB_ENV
+          echo "NX_HEAD=${{ github.sha }}" >> $GITHUB_ENV
+        fi
+        echo "Base SHA: $NX_BASE"
+        echo "Head SHA: $NX_HEAD"
 
     - name: Lint/Test/Build @fluentui/react-icons
       run: |
-        time npm run lint
-        time npm run build
-        npm run build:verify -- -u
-      working-directory: packages/react-icons
+        npx nx affected -t lint --projects=@fluentui/react-icons
+        npx nx affected -t build --projects=@fluentui/react-icons
+        npx nx affected -t build:verify --projects=@fluentui/react-icons
 
     - name: Build @fluentui/react-native-icons
-      run: |
-        npm run build
-      working-directory: packages/react-native-icons
+      run: npx nx affected -t build --projects=@fluentui/react-native-icons
 
     - name: Build @fluentui/react-icons-font-subsetting-webpack-plugin
-      run: |
-        npm run build
-      working-directory: packages/react-icons-font-subsetting-webpack-plugin
+      run: npx nx affected -t build --projects=@fluentui/react-icons-font-subsetting-webpack-plugin
 
     - name: Test @fluentui/react-icons-font-subsetting-webpack-plugin
-      run: |
-        npm run test
-      working-directory: packages/react-icons-font-subsetting-webpack-plugin
+      run: npx nx affected -t test --projects=@fluentui/react-icons-font-subsetting-webpack-plugin
 
     - name: React Icons App - Deploy
-      run: |
-        time npm run build
-      working-directory: packages/icon-app
+      run: npx nx affected -t build --projects=icon-app
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
