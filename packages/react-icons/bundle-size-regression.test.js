@@ -91,30 +91,15 @@ describe('bundle-size-regression-prevention', () => {
       unchangedChunkIndices: chunksWithoutChanges
     };
     
-    // Verify using inline snapshot
-    expect(analysisResult).toMatchInlineSnapshot(`
-      {
-        "changedChunkIndices": [],
-        "chunksWithChanges": 0,
-        "chunksWithoutChanges": 5,
-        "stabilityPercentage": 100,
-        "totalChunks": 5,
-        "unchangedChunkIndices": [
-          0,
-          1,
-          2,
-          3,
-          4,
-        ],
-      }
-    `);
-    
-    // In the old sequential chunking system, adding 12 new icons (especially in alphabetical order)
-    // would cause ALL chunks to shift content, resulting in 0% stability
-    // With our stable chunking, we expect most chunks to remain unchanged
-    
-    // We should have high stability (most chunks unchanged)
-    expect(analysisResult.stabilityPercentage).toBeGreaterThan(50); // At least 50% stability
+    // Verify 100% stability - no chunks should have changed
+    expect(analysisResult).toEqual({
+      totalChunks: 5,
+      chunksWithChanges: 0,
+      chunksWithoutChanges: 5,
+      stabilityPercentage: 100,
+      changedChunkIndices: [],
+      unchangedChunkIndices: [0, 1, 2, 3, 4]
+    });
     
     // Verify that all original icons are still present
     const allExpandedIcons = expandedChunks.flat().map(exportStr => {
@@ -122,19 +107,17 @@ describe('bundle-size-regression-prevention', () => {
       return match ? match[1] : null;
     }).filter(Boolean);
     
-    // Verify all icons using inline snapshot
+    // Verify all icons are present
     expect({
       totalIconsFound: allExpandedIcons.length,
       originalIconsCount: originalIcons.length,
       expandedIconsCount: expandedIcons.length,
       allIconsPresent: originalIcons.every(icon => allExpandedIcons.includes(icon))
-    }).toMatchInlineSnapshot(`
-      {
-        "allIconsPresent": true,
-        "expandedIconsCount": 42,
-        "originalIconsCount": 30,
-        "totalIconsFound": 42,
-      }
-    `);
+    }).toEqual({
+      totalIconsFound: 42,
+      originalIconsCount: 30,
+      expandedIconsCount: 42,
+      allIconsPresent: true
+    });
   });
 });
