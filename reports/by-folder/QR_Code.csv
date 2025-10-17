@@ -1,0 +1,7 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+QR Code,qr_code,20,filled,ic_fluent_qr_code_20_filled.svg,QR Code/SVG/ic_fluent_qr_code_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/QR%20Code/SVG/ic_fluent_qr_code_20_filled.svg
+QR Code,qr_code,20,regular,ic_fluent_qr_code_20_regular.svg,QR Code/SVG/ic_fluent_qr_code_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/QR%20Code/SVG/ic_fluent_qr_code_20_regular.svg
+QR Code,qr_code,24,filled,ic_fluent_qr_code_24_filled.svg,QR Code/SVG/ic_fluent_qr_code_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/QR%20Code/SVG/ic_fluent_qr_code_24_filled.svg
+QR Code,qr_code,24,regular,ic_fluent_qr_code_24_regular.svg,QR Code/SVG/ic_fluent_qr_code_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/QR%20Code/SVG/ic_fluent_qr_code_24_regular.svg
+QR Code,qr_code,28,filled,ic_fluent_qr_code_28_filled.svg,QR Code/SVG/ic_fluent_qr_code_28_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/QR%20Code/SVG/ic_fluent_qr_code_28_filled.svg
+QR Code,qr_code,28,regular,ic_fluent_qr_code_28_regular.svg,QR Code/SVG/ic_fluent_qr_code_28_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/QR%20Code/SVG/ic_fluent_qr_code_28_regular.svg

@@ -1,0 +1,8 @@
+# Requirements for visual description generation scripts
+
+# For simple descriptions (generate_simple_descriptions.py)
+Pillow>=10.0.0
+
+# For AI-powered descriptions (generate_visual_descriptions.py)
+openai>=1.0.0
+requests>=2.25.0

@@ -1,0 +1,10 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Vault,vault,16,color,ic_fluent_vault_16_color.svg,Vault/SVG/ic_fluent_vault_16_color.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Vault/SVG/ic_fluent_vault_16_color.svg
+Vault,vault,16,filled,ic_fluent_vault_16_filled.svg,Vault/SVG/ic_fluent_vault_16_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Vault/SVG/ic_fluent_vault_16_filled.svg
+Vault,vault,16,regular,ic_fluent_vault_16_regular.svg,Vault/SVG/ic_fluent_vault_16_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Vault/SVG/ic_fluent_vault_16_regular.svg
+Vault,vault,20,color,ic_fluent_vault_20_color.svg,Vault/SVG/ic_fluent_vault_20_color.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Vault/SVG/ic_fluent_vault_20_color.svg
+Vault,vault,20,filled,ic_fluent_vault_20_filled.svg,Vault/SVG/ic_fluent_vault_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Vault/SVG/ic_fluent_vault_20_filled.svg
+Vault,vault,20,regular,ic_fluent_vault_20_regular.svg,Vault/SVG/ic_fluent_vault_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Vault/SVG/ic_fluent_vault_20_regular.svg
+Vault,vault,24,color,ic_fluent_vault_24_color.svg,Vault/SVG/ic_fluent_vault_24_color.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Vault/SVG/ic_fluent_vault_24_color.svg
+Vault,vault,24,filled,ic_fluent_vault_24_filled.svg,Vault/SVG/ic_fluent_vault_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Vault/SVG/ic_fluent_vault_24_filled.svg
+Vault,vault,24,regular,ic_fluent_vault_24_regular.svg,Vault/SVG/ic_fluent_vault_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Vault/SVG/ic_fluent_vault_24_regular.svg

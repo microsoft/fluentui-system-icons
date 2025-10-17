@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Copy Select,copy_select,20,filled,ic_fluent_copy_select_20_filled.svg,Copy Select/SVG/ic_fluent_copy_select_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Copy%20Select/SVG/ic_fluent_copy_select_20_filled.svg
+Copy Select,copy_select,20,regular,ic_fluent_copy_select_20_regular.svg,Copy Select/SVG/ic_fluent_copy_select_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Copy%20Select/SVG/ic_fluent_copy_select_20_regular.svg
+Copy Select,copy_select,24,filled,ic_fluent_copy_select_24_filled.svg,Copy Select/SVG/ic_fluent_copy_select_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Copy%20Select/SVG/ic_fluent_copy_select_24_filled.svg
+Copy Select,copy_select,24,regular,ic_fluent_copy_select_24_regular.svg,Copy Select/SVG/ic_fluent_copy_select_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Copy%20Select/SVG/ic_fluent_copy_select_24_regular.svg
