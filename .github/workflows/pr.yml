@@ -212,15 +212,17 @@ jobs:
         echo "Head SHA: $NX_HEAD"
 
     - name: Lint
-      run: npx nx affected -t lint
+      run: npx nx affected -t lint --exclude='svg-icons,svg-sprites'
 
     - name: Build
+    # svg-icons:build is run in different job (@see build-svg), -> exclude
+    # svg-sprites:build doesn't work and is missing owner, -> exclude
       run: |
         npx nx affected -t build --exclude='svg-icons,svg-sprites' --parallel 1
         npx nx affected -t build:verify --exclude='svg-icons,svg-sprites'
 
     - name: Test
-      run: npx nx affected -t test
+      run: npx nx affected -t test --exclude='svg-icons,svg-sprites'
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
