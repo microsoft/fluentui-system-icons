@@ -15,7 +15,11 @@ const yargs = require('yargs');
     const filePath = require.resolve('fantasticon/lib/generators/asset-types/svg');
     const { readFileSync, writeFileSync } = require('fs');
     const fileContent = readFileSync(filePath, 'utf-8');
-    writeFileSync(filePath, fileContent.replace(/String\.fromCharCode/g, "String.fromCodePoint"));
+    // Only patch if not already patched (avoid race conditions when running concurrently)
+    if (fileContent.includes('String.fromCharCode')) {
+        console.info('[generateFont]: Patching fantasticon to use String.fromCodePoint instead of String.fromCharCode');
+        writeFileSync(filePath, fileContent.replace(/String\.fromCharCode/g, "String.fromCodePoint"));
+    }
 })()
 const fantasticon = require('fantasticon');
 
