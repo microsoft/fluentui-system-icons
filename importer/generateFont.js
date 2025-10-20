@@ -10,17 +10,9 @@ const process = require("node:process");
 const glob = promisify(require('glob'));
 const yargs = require('yargs');
 
-// Temporary patch until https://github.com/tancredi/fantasticon/pull/507 is merged and published
-(function patchFantasticon() {
-    const filePath = require.resolve('fantasticon/lib/generators/asset-types/svg');
-    const { readFileSync, writeFileSync } = require('fs');
-    const fileContent = readFileSync(filePath, 'utf-8');
-    // Only patch if not already patched (avoid race conditions when running concurrently)
-    if (fileContent.includes('String.fromCharCode')) {
-        console.info('[generateFont]: Patching fantasticon to use String.fromCodePoint instead of String.fromCharCode');
-        writeFileSync(filePath, fileContent.replace(/String\.fromCharCode/g, "String.fromCodePoint"));
-    }
-})()
+// Note: fantasticon is patched via patch-package to use String.fromCodePoint instead of String.fromCharCode
+// See patches/fantasticon+1.2.3.patch for details
+// Related PR: https://github.com/tancredi/fantasticon/pull/507
 const fantasticon = require('fantasticon');
 
 const parseArgs = (args = process.argv.slice(2)) => {
