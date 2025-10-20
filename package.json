@@ -12,6 +12,9 @@
     "type": "git",
     "url": "git+https://github.com/microsoft/fluentui-system-icons.git"
   },
+  "scripts": {
+    "reset-workspace": "git clean -dXf"
+  },
   "devDependencies": {
     "nx": "21.6.5",
     "typescript": "5.0.4",
