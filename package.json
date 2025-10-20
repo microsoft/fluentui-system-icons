@@ -17,6 +17,7 @@
     "postinstall": "patch-package"
   },
   "devDependencies": {
+    "@nx/js": "21.6.5",
     "eslint": "8.57.1",
     "nx": "21.6.5",
     "patch-package": "8.0.1",

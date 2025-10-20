@@ -40,6 +40,7 @@ jobs:
         import os
         current_version = sys.stdin.read().strip().split(\"'\")[1]
         major, minor, patch = current_version.split('.')
+        os.system(f'echo \"CURRENT_VERSION={current_version}\" >> \$GITHUB_ENV')
         os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
         """
 
@@ -136,12 +137,6 @@ jobs:
         rm packages/svg-sprites/package.json.bk
 
     # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in react-icons/package.json
-      run: |
-        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?(-rc\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-icons/package.json
-        rm packages/react-icons/package.json.bk
-
-    # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version number in react-native-icons/package.json
       run: |
         sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$REACT_VERSION\"/g" packages/react-native-icons/package.json
@@ -180,6 +175,12 @@ jobs:
       run: |
         npm run build
       working-directory: packages/react-native-icons
+
+    # NX Release
+    - name: react-icons prepare release
+      run: |
+        npx nx release version $REACT_VERSION
+        npx nx release changelog $REACT_VERSION --from $CURRENT_VERSION --no-git-tag --no-git-commit
 
     - uses: JS-DevTools/npm-publish@v1
       with:
