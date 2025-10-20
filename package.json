@@ -17,6 +17,8 @@
   },
   "devDependencies": {
     "nx": "21.6.5",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
     "typescript": "5.0.4",
     "typescript-eslint": "7.18.0",
     "eslint": "8.57.1"
