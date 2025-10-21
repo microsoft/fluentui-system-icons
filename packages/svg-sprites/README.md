@@ -38,3 +38,43 @@ export const Icon = (props: IconProps) => {
   )
 }
 ```
+
+## Development
+
+### Building Sprites
+
+Generate sprite files from source icons:
+
+```bash
+npm run build
+```
+
+This will:
+1. Copy icons from assets
+2. Rename files
+3. Remove fills
+4. Optimize SVGs
+5. Generate sprites (using parallel processing for fast generation)
+
+### Custom Build Options
+
+The sprite generator supports command-line options for advanced use cases:
+
+```bash
+# Use custom directories
+node generate-sprites.js --icons ./custom-icons --output ./custom-sprites
+
+# Control parallelization (useful for limited CPU environments)
+node generate-sprites.js --workers 4
+
+# Auto-detect CPU cores (default)
+node generate-sprites.js --workers 0
+
+# Show help
+node generate-sprites.js --help
+```
+
+Options:
+- `--icons, -i`: Path to icons directory (default: `./icons`)
+- `--output, -o`: Path to output sprites directory (default: `./sprites`)
+- `--workers, -w`: Number of parallel workers, 0 = auto-detect CPU cores (default: `0`)
