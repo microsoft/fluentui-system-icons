@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { describe, expect, test } from 'vitest';
 
-import { createFluentFontIcon, FluentFontIcon } from '../fonts';
+import { createFluentFontIcon, FluentFontIcon } from './fonts/createFluentFontIcon';
 import { createFluentIcon, FluentIcon } from './createFluentIcon';
 
 /**
