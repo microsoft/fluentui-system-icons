@@ -1,0 +1,13 @@
+diff --git a/node_modules/fantasticon/lib/generators/asset-types/svg.js b/node_modules/fantasticon/lib/generators/asset-types/svg.js
+index 8dcc6bc..9848176 100644
+--- a/node_modules/fantasticon/lib/generators/asset-types/svg.js
++++ b/node_modules/fantasticon/lib/generators/asset-types/svg.js
+@@ -16,7 +16,7 @@ const generator = {
+             .on('end', () => resolve(font.toString()));
+         for (const { id, absolutePath } of Object.values(assets)) {
+             const glyph = (0, fs_1.createReadStream)(absolutePath);
+-            const unicode = String.fromCharCode(codepoints[id]);
++            const unicode = String.fromCodePoint(codepoints[id]);
+             glyph.metadata = { name: id, unicode: [unicode] };
+             fontStream.write(glyph);
+         }
