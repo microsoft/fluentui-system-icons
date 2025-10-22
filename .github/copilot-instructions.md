@@ -69,3 +69,20 @@ Purpose: Enable rapid, correct contributions across multi-platform icon packages
 - All new SVGs pass fill rule.
 - React icons `build:verify` passes.
 - Metadata (`metadata.json`) updated if generation logic changed.
+
+
+## Releases
+
+Whole repository is being released together via [.github/workflows/publish.yml](./workflows/publish.yml) workflow.
+
+### react-icons
+
+react-icons project uses `nx release` for changelog generation and versioning.
+
+Changelog is generated based on commits that modified files in `packages/react-icons/` only. While [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) are enabled, every release bump is driven by repo-wide versioning approach via programmatic manual scripts.
+
+For that reason we are not able to use specific git tags for `@fluentui/react-icons` releases rather workspace wide `1.1.{actual-bump-integer} pattern. We leverage this information further to obtain the previous version during changelog generation via `nx release changelog --from {$CURRENT_VERSION}` so we can feed in the correct batch of changes. If no relevant changes are found, the default message `This release contains icon updates` is used, to reflect `/assets` changes.
+
+> **NOTE:** Why `"projectsRelationship": "independent",` is used in `nx.json` for react-icons release?
+>
+> While the repo is on `fixed` release schema, we need to use independent to ignore commits that did not modify files in `packages/react-icons/`.
