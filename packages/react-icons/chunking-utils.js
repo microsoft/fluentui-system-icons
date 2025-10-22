@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
+// @ts-check
 
 const crypto = require('crypto');
 
@@ -24,13 +25,13 @@ function simpleHash(str) {
  * @param {string[]} iconExports - Array of icon export strings
  * @param {string[]} iconNames - Array of corresponding icon names (used for hashing)
  * @param {Object} options - Options controlling chunk sizing.
- * @param {number} [options.chunkSize] - Desired approximate number of icons per chunk.
- *                                              Mutually exclusive with `chunkCount`.
  * @param {number|null} [options.chunkCount] - Fixed number of chunks to create. If provided
  *                                            (not `null`/`undefined`), this value is used
  *                                            directly. Otherwise `chunkSize` is used
  *                                            to derive a chunk count from an internal
  *                                            estimated maximum icon count (30000).
+ * @param {number} [options.chunkSize] - Desired approximate number of icons per chunk.
+ *                                              Mutually exclusive with `chunkCount`.
  * @param {number} [options.estimatedMaxIcons=30_000] - Estimated maximum number of icons (for chunking).
  * @returns {string[][]} - Array of chunks, each containing icon export strings
  */
@@ -42,8 +43,11 @@ function createStableChunks(iconExports, iconNames, options) {
     // With target chunk size of 1000, we need ~30 chunks
     estimatedMaxIcons = 30_000
   } = options;
-  if(chunkSize!==undefined && chunkCount!==undefined) {
+  if (chunkSize !== undefined && chunkCount !== undefined) {
     throw new Error('Specify either targetChunkSize or numChunks, not both.');
+  }
+  if(chunkCount == null && !(Number.isInteger(chunkSize) && Number.isInteger(estimatedMaxIcons) )) {
+    throw new Error('When chunkCount is not specified, both chunkSize and estimatedMaxIcons must be integers.');
   }
   if (iconExports.length !== iconNames.length) {
     throw new Error('iconExports and iconNames arrays must have the same length');
@@ -56,9 +60,12 @@ function createStableChunks(iconExports, iconNames, options) {
   // Determine final count of chunks
   // If `chunkCount` is explicitly provided, use it for maximum stability (fixed chunk count)
   // Otherwise, calculate based on estimated max icons to allow growth without changing chunk count
-  const finalChunkCount = chunkCount != null ? chunkCount : Math.ceil(estimatedMaxIcons / chunkSize);
+  const finalChunkCount = chunkCount != null ? chunkCount : Math.ceil(estimatedMaxIcons / /** @type{number} */(chunkSize));
 
   // Initialize empty chunks
+  /**
+   * @type {string[][]}
+   */
   const chunks = Array.from({ length: finalChunkCount }, () => []);
 
   // Distribute icons to chunks based on hash of icon name

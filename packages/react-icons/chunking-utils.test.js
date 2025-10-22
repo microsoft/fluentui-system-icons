@@ -31,14 +31,14 @@ describe('chunking-utils', () => {
   });
 
   describe('createStableChunks', () => {
-    it('should distribute icons into chunks based on default estimation', () => {
+    it('should distribute icons into chunks based on icon count', () => {
       const iconExports = ['export const A = ...', 'export const B = ...', 'export const C = ...'];
       const iconNames = ['A', 'B', 'C'];
 
-      const chunks = createStableChunks(iconExports, iconNames, {chunkSize: 2});
+      const chunks = createStableChunks(iconExports, iconNames, {chunkSize: 2,estimatedMaxIcons:6});
 
-      // With default estimation, should create many chunks (but filtered to non-empty)
-      expect(chunks.length).toBe(3); // Can't have more chunks than icons
+      // With estimatedMaxIcons/chunkSSize, should create 3 chunks (but filtered to non-empty) is 2, because we don't have more than 3 icons
+      expect(chunks.length).toBe(2); // Can't have more chunks than icons
 
       // All icons should be distributed
       const totalIcons = chunks.reduce((sum, chunk) => sum + chunk.length, 0);
@@ -144,7 +144,7 @@ describe('chunking-utils', () => {
       expect(maxSize - minSize).toBeLessThanOrEqual(15); // Allow some variance due to hash distribution
     });
 
-    it('should distribute new icons across chunks', () => {
+    it('should distribute new icons across chunks via chunkCount boundary', () => {
       const options = {chunkCount:5};
 
       // Simulate a realistic scenario with many real-ish icon names
@@ -244,6 +244,185 @@ describe('chunking-utils', () => {
               "export const DeleteFilled = createFluentIcon(...);",
               "export const EditRegular = createFluentIcon(...);",
               "export const EditFilled = createFluentIcon(...);",
+            ],
+          ]"
+      `);
+
+    });
+    it('should distribute new icons across chunks via chunkSize where chunkCount is created based on actual icons count', () => {
+      const options = {chunkSize:5};
+
+      // Simulate a realistic scenario with many real-ish icon names
+      const originalIcons = [
+        'AccessTime', 'AccessTimeRegular', 'AccessTimeFilled',
+        'Add', 'AddRegular', 'AddFilled',
+        'AddCircle', 'AddCircleRegular', 'AddCircleFilled',
+        'ArrowDown', 'ArrowDownRegular', 'ArrowDownFilled',
+        'Battery', 'BatteryRegular', 'BatteryFilled',
+        'BookOpen', 'BookOpenRegular', 'BookOpenFilled',
+        'Calendar', 'CalendarRegular', 'CalendarFilled',
+        'CheckCircle', 'CheckCircleRegular', 'CheckCircleFilled',
+        'Delete', 'DeleteRegular', 'DeleteFilled',
+        'Edit', 'EditRegular', 'EditFilled',
+        'ZoomIn', 'ZoomInRegular'
+      ];
+
+      // Create chunks with our stable algorithm
+      const originalExports = originalIcons.map(name => `export const ${name} = createFluentIcon(...);`);
+      const originalChunks = createStableChunks(originalExports, originalIcons, options);
+
+      // Simulate adding new icons in various positions alphabetically
+      const expandedIcons = [
+        'AccessTime', 'AccessTimeRegular', 'AccessTimeFilled',
+        'AddCall', 'AddCallRegular', 'AddCallFilled', // NEW icons inserted
+        'Add', 'AddRegular', 'AddFilled',
+        'AddCircle', 'AddCircleRegular', 'AddCircleFilled',
+        'ArrowDown', 'ArrowDownRegular', 'ArrowDownFilled',
+        'ArrowSync', 'ArrowSyncRegular', 'ArrowSyncFilled', // NEW icons inserted
+        'Battery', 'BatteryRegular', 'BatteryFilled',
+        'BookOpen', 'BookOpenRegular', 'BookOpenFilled',
+        'Calendar', 'CalendarRegular', 'CalendarFilled',
+        'CheckCircle', 'CheckCircleRegular', 'CheckCircleFilled',
+        'Delete', 'DeleteRegular', 'DeleteFilled',
+        'DeleteAll', 'DeleteAllRegular', 'DeleteAllFilled', // NEW icons inserted
+        'Edit', 'EditRegular', 'EditFilled',
+        'ZoomIn', 'ZoomInRegular',
+        'ZoomInFilled' // NEW icons at end
+      ];
+
+      const expandedExports = expandedIcons.map(name => `export const ${name} = createFluentIcon(...);`);
+      const expandedChunks = createStableChunks(expandedExports, expandedIcons, options);
+
+      expect(diff(originalChunks,expandedChunks)).toMatchInlineSnapshot(`
+        "- Expected
+        + Received
+
+          Array [
+            Array [
+              "export const BatteryRegular = createFluentIcon(...);",
+            ],
+            Array [
+        +     "export const DeleteAllFilled = createFluentIcon(...);",
+        +   ],
+        +   Array [
+              "export const Calendar = createFluentIcon(...);",
+            ],
+            Array [
+              "export const CheckCircleFilled = createFluentIcon(...);",
+            ],
+            Array [
+        +     "export const AddCall = createFluentIcon(...);",
+        +   ],
+        +   Array [
+              "export const CheckCircleRegular = createFluentIcon(...);",
+            ],
+            Array [
+              "export const AccessTime = createFluentIcon(...);",
+            ],
+            Array [
+              "export const DeleteFilled = createFluentIcon(...);",
+            ],
+            Array [
+              "export const AddRegular = createFluentIcon(...);",
+            ],
+            Array [
+              "export const AddCircleRegular = createFluentIcon(...);",
+            ],
+            Array [
+        +     "export const AddCallRegular = createFluentIcon(...);",
+        +   ],
+        +   Array [
+              "export const CalendarFilled = createFluentIcon(...);",
+            ],
+            Array [
+              "export const CalendarRegular = createFluentIcon(...);",
+            ],
+            Array [
+              "export const AddFilled = createFluentIcon(...);",
+            ],
+            Array [
+              "export const Add = createFluentIcon(...);",
+        +   ],
+        +   Array [
+        +     "export const ArrowSyncRegular = createFluentIcon(...);",
+        +   ],
+        +   Array [
+        +     "export const DeleteAllRegular = createFluentIcon(...);",
+            ],
+            Array [
+              "export const ZoomInRegular = createFluentIcon(...);",
+            ],
+            Array [
+              "export const EditRegular = createFluentIcon(...);",
+        +   ],
+        +   Array [
+        +     "export const ArrowSync = createFluentIcon(...);",
+            ],
+            Array [
+              "export const BookOpenFilled = createFluentIcon(...);",
+            ],
+            Array [
+              "export const ArrowDownFilled = createFluentIcon(...);",
+            ],
+            Array [
+        +     "export const DeleteAll = createFluentIcon(...);",
+        +   ],
+        +   Array [
+              "export const AccessTimeRegular = createFluentIcon(...);",
+            ],
+            Array [
+              "export const ArrowDown = createFluentIcon(...);",
+            ],
+            Array [
+              "export const Edit = createFluentIcon(...);",
+            ],
+            Array [
+              "export const AddCircleFilled = createFluentIcon(...);",
+        +   ],
+        +   Array [
+        +     "export const ArrowSyncFilled = createFluentIcon(...);",
+            ],
+            Array [
+              "export const Delete = createFluentIcon(...);",
+            ],
+            Array [
+              "export const Battery = createFluentIcon(...);",
+            ],
+            Array [
+        +     "export const ZoomInFilled = createFluentIcon(...);",
+        +   ],
+        +   Array [
+              "export const BookOpenRegular = createFluentIcon(...);",
+            ],
+            Array [
+              "export const ZoomIn = createFluentIcon(...);",
+        +   ],
+        +   Array [
+        +     "export const AddCallFilled = createFluentIcon(...);",
+            ],
+            Array [
+              "export const DeleteRegular = createFluentIcon(...);",
+            ],
+            Array [
+              "export const CheckCircle = createFluentIcon(...);",
+            ],
+            Array [
+              "export const BookOpen = createFluentIcon(...);",
+            ],
+            Array [
+              "export const AccessTimeFilled = createFluentIcon(...);",
+            ],
+            Array [
+              "export const AddCircle = createFluentIcon(...);",
+            ],
+            Array [
+              "export const BatteryFilled = createFluentIcon(...);",
+            ],
+            Array [
+              "export const EditFilled = createFluentIcon(...);",
+            ],
+            Array [
+              "export const ArrowDownRegular = createFluentIcon(...);",
             ],
           ]"
       `);
