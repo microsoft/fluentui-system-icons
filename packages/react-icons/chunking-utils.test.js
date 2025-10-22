@@ -6,7 +6,6 @@
 import { describe, it, expect } from 'vitest';
 import { diff } from 'jest-diff';
 import { createStableChunks, simpleHash } from './chunking-utils.js';
-
 describe('chunking-utils', () => {
   describe('simpleHash', () => {
     it('should produce consistent hash for same input', () => {
@@ -36,6 +35,7 @@ describe('chunking-utils', () => {
       const iconNames = ['A', 'B', 'C'];
 
       const chunks = createStableChunks(iconExports, iconNames, {chunkSize: 2,estimatedMaxIcons:6});
+
 
       // With estimatedMaxIcons/chunkSSize, should create 3 chunks (but filtered to non-empty) is 2, because we don't have more than 3 icons
       expect(chunks.length).toBe(2); // Can't have more chunks than icons
@@ -250,7 +250,8 @@ describe('chunking-utils', () => {
 
     });
     it('should distribute new icons across chunks via chunkSize where chunkCount is created based on actual icons count', () => {
-      const options = {chunkSize:5};
+      // should create 6 chunks based on actual icon count and chunk size
+      const options = {chunkSize:5,estimatedMaxIcons:30};
 
       // Simulate a realistic scenario with many real-ish icon names
       const originalIcons = [
@@ -299,130 +300,58 @@ describe('chunking-utils', () => {
 
           Array [
             Array [
-              "export const BatteryRegular = createFluentIcon(...);",
-            ],
-            Array [
-        +     "export const DeleteAllFilled = createFluentIcon(...);",
-        +   ],
-        +   Array [
-              "export const Calendar = createFluentIcon(...);",
-            ],
-            Array [
+              "export const AccessTimeFilled = createFluentIcon(...);",
+        +     "export const AddCallRegular = createFluentIcon(...);",
+              "export const Add = createFluentIcon(...);",
               "export const CheckCircleFilled = createFluentIcon(...);",
-            ],
-            Array [
-        +     "export const AddCall = createFluentIcon(...);",
-        +   ],
-        +   Array [
-              "export const CheckCircleRegular = createFluentIcon(...);",
-            ],
-            Array [
-              "export const AccessTime = createFluentIcon(...);",
-            ],
-            Array [
               "export const DeleteFilled = createFluentIcon(...);",
             ],
             Array [
-              "export const AddRegular = createFluentIcon(...);",
-            ],
-            Array [
-              "export const AddCircleRegular = createFluentIcon(...);",
-            ],
-            Array [
-        +     "export const AddCallRegular = createFluentIcon(...);",
-        +   ],
-        +   Array [
-              "export const CalendarFilled = createFluentIcon(...);",
-            ],
-            Array [
-              "export const CalendarRegular = createFluentIcon(...);",
-            ],
-            Array [
-              "export const AddFilled = createFluentIcon(...);",
-            ],
-            Array [
-              "export const Add = createFluentIcon(...);",
-        +   ],
-        +   Array [
-        +     "export const ArrowSyncRegular = createFluentIcon(...);",
-        +   ],
-        +   Array [
+        +     "export const AddCall = createFluentIcon(...);",
+              "export const ArrowDownFilled = createFluentIcon(...);",
+              "export const Calendar = createFluentIcon(...);",
         +     "export const DeleteAllRegular = createFluentIcon(...);",
-            ],
-            Array [
+              "export const Edit = createFluentIcon(...);",
+              "export const EditFilled = createFluentIcon(...);",
               "export const ZoomInRegular = createFluentIcon(...);",
             ],
             Array [
-              "export const EditRegular = createFluentIcon(...);",
-        +   ],
-        +   Array [
-        +     "export const ArrowSync = createFluentIcon(...);",
-            ],
-            Array [
-              "export const BookOpenFilled = createFluentIcon(...);",
-            ],
-            Array [
-              "export const ArrowDownFilled = createFluentIcon(...);",
-            ],
-            Array [
-        +     "export const DeleteAll = createFluentIcon(...);",
-        +   ],
-        +   Array [
               "export const AccessTimeRegular = createFluentIcon(...);",
-            ],
-            Array [
-              "export const ArrowDown = createFluentIcon(...);",
-            ],
-            Array [
-              "export const Edit = createFluentIcon(...);",
-            ],
-            Array [
-              "export const AddCircleFilled = createFluentIcon(...);",
-        +   ],
-        +   Array [
+              "export const AddFilled = createFluentIcon(...);",
         +     "export const ArrowSyncFilled = createFluentIcon(...);",
+              "export const Battery = createFluentIcon(...);",
+              "export const BookOpenRegular = createFluentIcon(...);",
+              "export const CheckCircleRegular = createFluentIcon(...);",
+              "export const EditRegular = createFluentIcon(...);",
+              "export const ZoomIn = createFluentIcon(...);",
+        +     "export const ZoomInFilled = createFluentIcon(...);",
             ],
             Array [
+              "export const AccessTime = createFluentIcon(...);",
+        +     "export const AddCallFilled = createFluentIcon(...);",
+              "export const AddCircleRegular = createFluentIcon(...);",
+        +     "export const ArrowSync = createFluentIcon(...);",
+              "export const BatteryFilled = createFluentIcon(...);",
+              "export const CalendarFilled = createFluentIcon(...);",
               "export const Delete = createFluentIcon(...);",
             ],
             Array [
-              "export const Battery = createFluentIcon(...);",
-            ],
-            Array [
-        +     "export const ZoomInFilled = createFluentIcon(...);",
-        +   ],
-        +   Array [
-              "export const BookOpenRegular = createFluentIcon(...);",
-            ],
-            Array [
-              "export const ZoomIn = createFluentIcon(...);",
-        +   ],
-        +   Array [
-        +     "export const AddCallFilled = createFluentIcon(...);",
-            ],
-            Array [
-              "export const DeleteRegular = createFluentIcon(...);",
-            ],
-            Array [
-              "export const CheckCircle = createFluentIcon(...);",
-            ],
-            Array [
-              "export const BookOpen = createFluentIcon(...);",
-            ],
-            Array [
-              "export const AccessTimeFilled = createFluentIcon(...);",
-            ],
-            Array [
+              "export const AddRegular = createFluentIcon(...);",
               "export const AddCircle = createFluentIcon(...);",
-            ],
-            Array [
-              "export const BatteryFilled = createFluentIcon(...);",
-            ],
-            Array [
-              "export const EditFilled = createFluentIcon(...);",
-            ],
-            Array [
+              "export const AddCircleFilled = createFluentIcon(...);",
+              "export const ArrowDown = createFluentIcon(...);",
               "export const ArrowDownRegular = createFluentIcon(...);",
+              "export const BatteryRegular = createFluentIcon(...);",
+            ],
+            Array [
+        +     "export const ArrowSyncRegular = createFluentIcon(...);",
+              "export const BookOpen = createFluentIcon(...);",
+              "export const BookOpenFilled = createFluentIcon(...);",
+              "export const CalendarRegular = createFluentIcon(...);",
+              "export const CheckCircle = createFluentIcon(...);",
+              "export const DeleteRegular = createFluentIcon(...);",
+        +     "export const DeleteAll = createFluentIcon(...);",
+        +     "export const DeleteAllFilled = createFluentIcon(...);",
             ],
           ]"
       `);
