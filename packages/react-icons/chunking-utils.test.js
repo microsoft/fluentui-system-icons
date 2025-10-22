@@ -6,6 +6,23 @@
 import { describe, it, expect } from 'vitest';
 import { diff } from 'jest-diff';
 import { createStableChunks, simpleHash } from './chunking-utils.js';
+
+/**
+ * Creates a diff without ANSI color codes for consistent snapshots across test runners
+ * @param {any} a - Expected value
+ * @param {any} b - Received value
+ * @returns {string | null} - Diff string without color codes
+ */
+function diffNoColor(a, b) {
+  return diff(a, b, {
+    aColor: (s) => s,
+    bColor: (s) => s,
+    changeColor: (s) => s,
+    commonColor: (s) => s,
+    patchColor: (s) => s,
+  });
+}
+
 describe('chunking-utils', () => {
   describe('simpleHash', () => {
     it('should produce consistent hash for same input', () => {
@@ -59,7 +76,7 @@ describe('chunking-utils', () => {
 
       const expandedChunks = createStableChunks(expandedExports, expandedNames, options);
 
-      expect(diff(initialChunks,expandedChunks)).toMatchInlineSnapshot(`
+      expect(diffNoColor(initialChunks,expandedChunks)).toMatchInlineSnapshot(`
         "- Expected
         + Received
 
@@ -188,7 +205,7 @@ describe('chunking-utils', () => {
       const expandedExports = expandedIcons.map(name => `export const ${name} = createFluentIcon(...);`);
       const expandedChunks = createStableChunks(expandedExports, expandedIcons, options);
 
-      expect(diff(originalChunks,expandedChunks)).toMatchInlineSnapshot(`
+      expect(diffNoColor(originalChunks,expandedChunks)).toMatchInlineSnapshot(`
         "- Expected
         + Received
 
@@ -294,7 +311,7 @@ describe('chunking-utils', () => {
       const expandedExports = expandedIcons.map(name => `export const ${name} = createFluentIcon(...);`);
       const expandedChunks = createStableChunks(expandedExports, expandedIcons, options);
 
-      expect(diff(originalChunks,expandedChunks)).toMatchInlineSnapshot(`
+      expect(diffNoColor(originalChunks,expandedChunks)).toMatchInlineSnapshot(`
         "- Expected
         + Received
 
