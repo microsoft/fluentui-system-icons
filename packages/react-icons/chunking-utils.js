@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
+// @ts-check
 
 const crypto = require('crypto');
 
@@ -23,11 +24,31 @@ function simpleHash(str) {
  * Creates stable chunks from an array of icon exports using hash-based distribution
  * @param {string[]} iconExports - Array of icon export strings
  * @param {string[]} iconNames - Array of corresponding icon names (used for hashing)
- * @param {number} targetChunkSize - Target size for each chunk (used to determine number of chunks)
- * @param {number} [maxChunks] - Maximum number of chunks to create (for stability across builds)
+ * @param {Object} options - Options controlling chunk sizing.
+ * @param {number|null} [options.chunkCount] - Fixed number of chunks to create. If provided
+ *                                            (not `null`/`undefined`), this value is used
+ *                                            directly. Otherwise `chunkSize` is used
+ *                                            to derive a chunk count from an internal
+ *                                            estimated maximum icon count (30000).
+ * @param {number} [options.chunkSize] - Desired approximate number of icons per chunk.
+ *                                              Mutually exclusive with `chunkCount`.
+ * @param {number} [options.estimatedMaxIcons=30_000] - Estimated maximum number of icons (for chunking).
  * @returns {string[][]} - Array of chunks, each containing icon export strings
  */
-function createStableChunks(iconExports, iconNames, targetChunkSize, maxChunks = null) {
+function createStableChunks(iconExports, iconNames, options) {
+  const {
+    chunkSize,
+    chunkCount,
+    // For react-icons, we expect around 25,000-30,000 icons total
+    // With target chunk size of 1000, we need ~30 chunks
+    estimatedMaxIcons = 30_000
+  } = options;
+  if (chunkSize !== undefined && chunkCount !== undefined) {
+    throw new Error('Specify either targetChunkSize or numChunks, not both.');
+  }
+  if(chunkCount == null && !(Number.isInteger(chunkSize) && Number.isInteger(estimatedMaxIcons) )) {
+    throw new Error('When chunkCount is not specified, both chunkSize and estimatedMaxIcons must be integers.');
+  }
   if (iconExports.length !== iconNames.length) {
     throw new Error('iconExports and iconNames arrays must have the same length');
   }
@@ -36,26 +57,22 @@ function createStableChunks(iconExports, iconNames, targetChunkSize, maxChunks =
     return [];
   }
 
-  // Use a fixed number of chunks to ensure stability
-  // If maxChunks is not provided, use a reasonable default based on estimated icon count
-  let numChunks;
-  if (maxChunks !== null) {
-    numChunks = maxChunks;
-  } else {
-    // For react-icons, we expect around 25,000-30,000 icons total
-    // With target chunk size of 1000, we need ~30 chunks
-    const estimatedMaxIcons = 30000;
-    numChunks = Math.ceil(estimatedMaxIcons / targetChunkSize);
-  }
-  
+  // Determine final count of chunks
+  // If `chunkCount` is explicitly provided, use it for maximum stability (fixed chunk count)
+  // Otherwise, calculate based on estimated max icons to allow growth without changing chunk count
+  const finalChunkCount = chunkCount != null ? chunkCount : Math.ceil(estimatedMaxIcons / /** @type{number} */(chunkSize));
+
   // Initialize empty chunks
-  const chunks = Array.from({ length: numChunks }, () => []);
-  
+  /**
+   * @type {string[][]}
+   */
+  const chunks = Array.from({ length: finalChunkCount }, () => []);
+
   // Distribute icons to chunks based on hash of icon name
   for (let i = 0; i < iconExports.length; i++) {
     const iconName = iconNames[i];
     const hash = simpleHash(iconName);
-    const chunkIndex = hash % numChunks;
+    const chunkIndex = hash % finalChunkCount;
     chunks[chunkIndex].push(iconExports[i]);
   }
 

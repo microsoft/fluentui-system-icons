@@ -142,7 +142,7 @@ function processFolder(srcFiles, rtlMetadata, resizable) {
 
   // chunk all icons into separate files to keep build reasonably fast
   // Use stable chunking to prevent bundle size regressions when new icons are added
-  const iconChunks = createStableChunks(iconExports, iconNames, 1000);
+  const iconChunks = createStableChunks(iconExports, iconNames, {chunkSize: 1000});
 
   const chunkHeader = getCreateFluentIconHeader('../utils/createFluentIcon');
   for (const chunk of iconChunks) {
