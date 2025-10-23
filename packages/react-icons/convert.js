@@ -167,7 +167,8 @@ function processFolder(srcPath, destPath, resizable) {
 
   // chunk all icons into separate files to keep build reasonably fast
   // Use stable chunking to prevent bundle size regressions when new icons are added
-  const iconChunks = createStableChunks(iconExports, iconNames, {chunkSize: 1000});
+  // IMPORTANT: chunkCount should NEVER change after initial release to prevent reshuffling
+  const iconChunks = createStableChunks(iconExports, iconNames, {chunkCount: 30});
 
   for(const chunk of iconChunks) {
     chunk.unshift(`import { createFluentIcon } from "../utils/createFluentIcon";`);
