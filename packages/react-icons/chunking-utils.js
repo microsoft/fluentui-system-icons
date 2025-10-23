@@ -5,22 +5,6 @@
 const crypto = require('crypto');
 
 /**
- * Provides stable chunking utilities for icon distribution to prevent bundle size regressions.
- * Uses hash-based assignment to ensure existing icons stay in the same chunk when new icons are added.
- */
-
-/**
- * String hash function for deterministic chunk assignment using Node.js crypto
- * @param {string} str - String to hash
- * @returns {number} - Hash value
- */
-function simpleHash(str) {
-  const hash = crypto.createHash('sha256').update(str).digest();
-  // Use first 4 bytes as a 32-bit unsigned integer
-  return hash.readUInt32BE(0);
-}
-
-/**
  * Creates stable chunks from an array of icon exports using prefix-based distribution
  * with alphabetical locality. This approach maintains:
  * 1. Alphabetical locality (related icons like Add/AddRegular/AddFilled stay together)
@@ -84,6 +68,17 @@ function createStableChunks(iconExports, iconNames, options) {
 
   // ===========
 
+}
+
+/**
+ * String hash function for deterministic chunk assignment using Node.js crypto
+ * @param {string} str - String to hash
+ * @returns {number} - Hash value
+ */
+function simpleHash(str) {
+  const hash = crypto.createHash('sha256').update(str).digest();
+  // Use first 4 bytes as a 32-bit unsigned integer
+  return hash.readUInt32BE(0);
 }
 
 /**
