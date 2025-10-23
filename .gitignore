@@ -11,6 +11,9 @@ dist/
 .classpath
 .settings
 yarn.lock
+# ignore all package-lock.json files except the repo root
+**/package-lock.json
+!/package-lock.json
 
 .idea
 

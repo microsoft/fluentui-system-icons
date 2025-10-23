@@ -162,21 +162,30 @@ jobs:
         echo "Base SHA: $NX_BASE"
         echo "Head SHA: $NX_HEAD"
 
-    - name: Check if svg-icons is affected
+    - name: Check if svg packages are affected
       id: check-affected
       run: |
-        AFFECTED=$(npx nx show projects --affected --base=$NX_BASE --head=$NX_HEAD --json | jq -r '.[]' | grep -w 'svg-icons' || echo "")
+        AFFECTED=$(npx nx show projects --affected --base=$NX_BASE --head=$NX_HEAD --json | jq -r '.[]' | grep -E 'svg-icons|svg-sprites' || echo "")
         if [ -n "$AFFECTED" ]; then
           echo "affected=true" >> $GITHUB_OUTPUT
-          echo "svg-icons is affected"
+          echo "SVG packages are affected: $AFFECTED"
         else
           echo "affected=false" >> $GITHUB_OUTPUT
-          echo "svg-icons is not affected, skipping build"
+          echo "svg-icons and svg-sprites are not affected, skipping build"
         fi
 
-    - name: Build svg-icons
+    - name: Build svg packages
       if: steps.check-affected.outputs.affected == 'true'
-      run: npx nx run svg-icons:build
+      run: |
+        AFFECTED=$(npx nx show projects --affected --base=$NX_BASE --head=$NX_HEAD --json | jq -r '.[]')
+        if echo "$AFFECTED" | grep -q 'svg-icons'; then
+          echo "Building svg-icons..."
+          npx nx run svg-icons:build
+        fi
+        if echo "$AFFECTED" | grep -q 'svg-sprites'; then
+          echo "Building svg-sprites..."
+          npx nx run svg-sprites:build
+        fi
 
   build-react:
     if: ${{ github.repository_owner == 'microsoft' }}
