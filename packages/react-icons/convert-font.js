@@ -27,17 +27,18 @@ if (require.main === module) {
 }
 
 async function main() {
-  const { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH, CODEPOINT_DEST_PATH } = parseArgs(process.argv.slice(2));
+  const { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH, CODEPOINT_DEST_PATH, PER_ICON_DEST } = parseArgs(
+    process.argv.slice(2),
+  );
   const rtlMetadata = loadRtlMetadata(RTL_FILE);
   const iconEntries = prepareProcessedCodepointMap(SRC_PATH, CODEPOINT_DEST_PATH);
 
   // 1. Generate chunked font icon exports (existing behavior) into DEST_PATH
   const { svgMetadata: chunkMetadata } = await processPerChunk(DEST_PATH, iconEntries, rtlMetadata);
 
-  // 2. Derive per-icon destination: if DEST_PATH ends with '/fonts', emit into sibling 'atoms/fonts'
-  const perIconDest = derivePerIconDest(DEST_PATH);
-  const perIconMetadataPath = derivePerIconMetadataPath(METADATA_PATH);
-  const { svgMetadata: perIconMetadata } = await processPerIcon(perIconDest, iconEntries, rtlMetadata);
+  // 2. Generate per-icon output
+  const perIconMetadataPath = METADATA_PATH.replace(/\.json$/, '.atom.json');
+  const { svgMetadata: perIconMetadata } = await processPerIcon(PER_ICON_DEST, iconEntries, rtlMetadata);
 
   // 3. Write processed (React-name) map once per original JSON (shared core dedupes)
   iconEntries.resizable.forEach(({ writeProcessedCM }) => writeProcessedCM());
@@ -47,7 +48,7 @@ async function main() {
   await writeMetadata(perIconMetadataPath, perIconMetadata);
 
   console.log(
-    `[font generation] Finished chunk + per-icon outputs. Chunk dest: ${DEST_PATH} | Per-icon dest: ${perIconDest}`,
+    `[font generation] Finished chunk + per-icon outputs. Chunk dest: ${DEST_PATH} | Per-icon dest: ${PER_ICON_DEST}`,
   );
 }
 
@@ -316,35 +317,8 @@ async function processPerIconSet(destPath, iconEntries, rtlMetadata, resizable, 
 
   const flattened = items.filter((i) => i != null);
   // Font per-icon generation historically always groups by normalized base name.
-  const result = await writePerIconFiles(destPath, flattened, headerLines, { groupByBase: true });
+  const result = await writePerIconFiles(destPath, flattened, headerLines, { groupByBase });
   return { iconNames, fileCount: result.fileCount };
-}
-
-/**
- * Derive per-icon destination from the chunk destination.
- * Typical: chunk dest = .../src/fonts  -> per-icon dest = .../src/atoms/fonts
- * Fallback: append 'atoms' subfolder under dest.
- * @param {string} chunkDest
- */
-function derivePerIconDest(chunkDest) {
-  const parts = chunkDest.split(path.sep);
-  const last = parts[parts.length - 1];
-  if (/^fonts?$/i.test(last)) {
-    // sibling atoms/fonts
-    return path.join(parts.slice(0, -1).join(path.sep), 'atoms', last);
-  }
-  return path.join(chunkDest, 'atoms');
-}
-
-/**
- * Given the main metadata path, produce per-icon metadata path (replace .json with .atom.json)
- * @param {string} metadataPath
- */
-function derivePerIconMetadataPath(metadataPath) {
-  if (metadataPath.endsWith('.json')) {
-    return metadataPath.replace(/\.json$/, '.atom.json');
-  }
-  return metadataPath + '.atom.json';
 }
 
 /**
@@ -355,13 +329,20 @@ function derivePerIconMetadataPath(metadataPath) {
 function parseArgs(argv) {
   const args = yargs.parse(argv);
   const SRC_PATH = /** @type {string} */ (args.source); // path with codepoint json maps (src/utils/fonts)
-  const DEST_PATH = /** @type {string} */ (args.dest); // destination folder for output
+  const DEST_PATH = /** @type {string} */ (args.dest); // destination folder for chunk output
   const RTL_FILE = /** @type {string} */ (args.rtl); // rtl metadata json
   const METADATA_PATH = /** @type {string} */ (args.metadata); // output font metadata file
   const CODEPOINT_DEST_PATH = /** @type {string} */ (args.codepointDest); // where to output processed codepoint maps
+  const PER_ICON_DEST = /** @type {string} */ (args.perIconDest); // per-icon output folder
 
+  if (!SRC_PATH) {
+    throw new Error('Icon source folder not specified by --source');
+  }
   if (!DEST_PATH) {
     throw new Error('Output destination folder not specified by --dest');
+  }
+  if (!PER_ICON_DEST) {
+    throw new Error('Atoms Output destination folder not specified by --perIconDest');
   }
   if (!RTL_FILE) {
     throw new Error('RTL file not specified by --rtl');
@@ -374,10 +355,14 @@ function parseArgs(argv) {
   }
 
   if (!fsS.existsSync(DEST_PATH)) {
-    fsS.mkdirSync(DEST_PATH);
+    fsS.mkdirSync(DEST_PATH, { recursive: true });
   }
 
-  return { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH, CODEPOINT_DEST_PATH };
+  if (!fsS.existsSync(PER_ICON_DEST)) {
+    fsS.mkdirSync(PER_ICON_DEST, { recursive: true });
+  }
+
+  return { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH, CODEPOINT_DEST_PATH, PER_ICON_DEST };
 }
 
-module.exports = { processPerIconSet, processPerIcon };
+module.exports = { processPerIconSet };
