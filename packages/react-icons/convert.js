@@ -19,23 +19,28 @@ if (require.main === module) {
 }
 
 async function main() {
-  const { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH } = parseArgs(process.argv.slice(2));
+  const { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH, PER_ICON_DEST } = parseArgs(process.argv.slice(2));
   const srcFiles = await processSourceDir(SRC_PATH);
   const rtlMetadata = loadRtlMetadata(RTL_FILE);
   // 1. Generate chunked (existing) output
   const { svgMetadata: chunkMetadata } = processPerChunk(srcFiles, DEST_PATH, rtlMetadata);
 
-  // 2. Generate per-icon output (merged from former convert-per-icon.js)
-  const perIconDest = derivePerIconDest(DEST_PATH);
-  const perIconMetadataPath = derivePerIconMetadataPath(METADATA_PATH);
-  const { svgMetadata: perIconMetadata } = await processPerIcon(srcFiles, perIconDest, rtlMetadata);
+  // 2. Generate per-icon output
+  const perIconMetadataPath = METADATA_PATH.replace(/\.json$/, '.atom.json');
+  const { svgMetadata: perIconMetadata } = await processPerIcon(srcFiles, PER_ICON_DEST, rtlMetadata);
 
   writeMetadata(METADATA_PATH, chunkMetadata);
   writeMetadata(perIconMetadataPath, perIconMetadata);
 
-  console.log('[svg generation] Finished chunk + per-icon outputs.');
-  return { chunkMetadata, perIconMetadata };
+  console.log(
+    `[svg generation] Finished chunk + per-icon outputs. Chunk dest: ${DEST_PATH} | Per-icon dest: ${PER_ICON_DEST}`,
+  );
 }
+
+/**
+ *
+ * @typedef {Awaited<ReturnType<typeof processSourceDir>>} SourceFiles
+ */
 
 /**
  * @param {SourceFiles} sourceFiles
@@ -219,36 +224,6 @@ async function generatePerIconFiles(sourceFiles, destPath, rtlMetadata, resizabl
 }
 
 /**
- * Derive per-icon destination from the chunk destination.
- * Typical: chunk dest = .../src  -> per-icon dest = .../src/atoms/svg
- * @param {string} chunkDest
- */
-function derivePerIconDest(chunkDest) {
-  const parts = chunkDest.split(path.sep);
-  const last = parts[parts.length - 1];
-  if (/^src$/i.test(last)) {
-    return path.join(chunkDest, 'atoms', 'svg');
-  }
-  return path.join(chunkDest, 'atoms');
-}
-
-/**
- * Given the main metadata path, produce per-icon metadata path (replace .json with .atom.json)
- * @param {string} metadataPath
- */
-function derivePerIconMetadataPath(metadataPath) {
-  if (metadataPath.endsWith('.json')) {
-    return metadataPath.replace(/\.json$/, '.atom.json');
-  }
-  return metadataPath + '.atom.json';
-}
-
-/**
- *
- * @typedef {Awaited<ReturnType<typeof processSourceDir>>} SourceFiles
- */
-
-/**
  *
  * @param {string} srcPath
  */
@@ -284,16 +259,20 @@ async function processSourceDir(srcPath) {
  */
 function parseArgs(argv) {
   const args = yargs.parse(argv);
-  const SRC_PATH = /** @type {string} */ (args.source); // path with codepoint json maps (src/utils/fonts)
-  const DEST_PATH = /** @type {string} */ (args.dest); // destination folder for output
+  const SRC_PATH = /** @type {string} */ (args.source); // path with source svg files
+  const DEST_PATH = /** @type {string} */ (args.dest); // destination folder for chunk output
   const RTL_FILE = /** @type {string} */ (args.rtl); // rtl metadata json
-  const METADATA_PATH = /** @type {string} */ (args.metadata); // output font metadata file
+  const METADATA_PATH = /** @type {string} */ (args.metadata); // output metadata file
+  const PER_ICON_DEST = /** @type {string} */ (args.perIconDest); // per-icon output folder
 
   if (!SRC_PATH) {
     throw new Error('Icon source folder not specified by --source');
   }
   if (!DEST_PATH) {
     throw new Error('Output destination folder not specified by --dest');
+  }
+  if (!PER_ICON_DEST) {
+    throw new Error('Atoms Output destination folder not specified by --perIconDest');
   }
   if (!RTL_FILE) {
     throw new Error('RTL file not specified by --rtl');
@@ -303,10 +282,14 @@ function parseArgs(argv) {
   }
 
   if (!fs.existsSync(DEST_PATH)) {
-    fs.mkdirSync(DEST_PATH);
+    fs.mkdirSync(DEST_PATH, { recursive: true });
   }
 
-  return { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH };
+  if (!fs.existsSync(PER_ICON_DEST)) {
+    fs.mkdirSync(PER_ICON_DEST, { recursive: true });
+  }
+
+  return { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH, PER_ICON_DEST };
 }
 
 module.exports = { generatePerIconFiles };
