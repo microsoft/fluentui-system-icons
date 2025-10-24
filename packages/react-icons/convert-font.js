@@ -266,7 +266,7 @@ async function cleanFolder(folder) {
 }
 
 /**
- * Per-icon generation (merged from former convert-font-per-icon.js)
+ * Per-icon generation
  * @param {string} destPath
  * @param {{ resizable: IconEntry[]; sized: IconEntry[];}} iconEntries
  * @param {import('./convert-font.utils').RtlMetadata} rtlMetadata

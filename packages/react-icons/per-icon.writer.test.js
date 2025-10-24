@@ -20,16 +20,21 @@ describe('writePerIconFiles', () => {
     ];
     const header = ['// header'];
     const res = await writePerIconFiles(tmpDest, items, header, { groupByBase: true });
+
     expect(res.fileCount).toBe(1);
     const files = fs.readdirSync(tmpDest);
 
     const file = /** @type {string} */ (files.find((x) => x.startsWith('test')));
     expect(file).toBeTruthy();
+
     const content = fs.readFileSync(path.join(tmpDest, file), 'utf8');
-    // asserts
-    expect(content).toContain('export const Test16Regular');
-    expect(content).toContain('export const Test20Filled');
-    expect(content.indexOf('export const Test16Regular')).toBeLessThan(content.indexOf('export const Test20Filled'));
+    // should contain header and both exports in order (16 before 20)
+    expect(content).toMatchInlineSnapshot(`
+      "// header
+      export const Test16Regular = 2;
+      export const Test20Filled = 1;
+      "
+    `);
   });
 
   it('throws on duplicate export names', async () => {

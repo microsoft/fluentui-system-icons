@@ -2,12 +2,6 @@
 // Licensed under the MIT license.
 // @ts-check
 
-/**
- * Core shared utilities for both chunked (convert-font.js) and per-icon (convert-font-per-icon.js)
- * font React icon generators. Consolidates naming, codepoint map processing, and RTL handling
- * to eliminate duplication and accidental overwrites of the original source codepoint maps.
- */
-
 const fs = require('fs');
 const path = require('path');
 const _ = require('lodash');

@@ -86,7 +86,7 @@ describe('convert font utils', () => {
       };
       writeMap('test.json', map);
 
-      const entries = [{ iconEntries: map, writeProcessedCM: () => {} }];
+      const entries = [{ iconEntries: map, writeProcessedCodepointMap: () => {} }];
 
       // grouping true -> should create one file dup.tsx containing both exports
       const res = await generatePerIconFiles(tmpDest, entries, {}, false, true);
@@ -118,7 +118,7 @@ describe('convert font utils', () => {
         ic_fluent_test_16_regular: 0xe011,
       };
       writeMap('test2.json', map);
-      const entries = [{ iconEntries: map, writeProcessedCM: () => {} }];
+      const entries = [{ iconEntries: map, writeProcessedCodepointMap: () => {} }];
 
       const res = await generatePerIconFiles(tmpDest, entries, {}, false, true);
       expect(res.fileCount).toBeGreaterThan(0);

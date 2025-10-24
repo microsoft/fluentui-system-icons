@@ -81,7 +81,7 @@ function loadRtlMetadata(rtlFilePath) {
 }
 
 /**
- * Generates per-icon .tsx files (adapted from convert-per-icon.js)
+ * Generates per-icon .tsx files
  * @param {Array<{file: string; srcFile: string}>} sourceFiles
  * @param {string} destPath
  * @param {RtlMetadata} rtlMetadata
