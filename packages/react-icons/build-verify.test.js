@@ -119,16 +119,17 @@ describe('Build Verification', () => {
   describe('Package.json Exports', () => {
     it('should have all exported files exist', async () => {
       const packageJsonPath = path.join(__dirname, 'package.json');
+      /** @type {{main:string;module:string;typings:string;exports:Record<string,string>}} */
       const packageJson = JSON.parse(await readFile(packageJsonPath, 'utf8'));
 
       // Check main, module, and typings fields
       const mainFields = {
         main: packageJson.main,
         module: packageJson.module,
-        typings: packageJson.typings
+        typings: packageJson.typings,
       };
 
-      for (const [field, filePath] of Object.entries(mainFields)) {
+      for (const filePath of Object.values(mainFields)) {
         if (filePath) {
           const fullPath = path.join(__dirname, filePath);
           expect(fs.existsSync(fullPath)).toBe(true);
@@ -139,56 +140,57 @@ describe('Build Verification', () => {
       }
 
       // Check all exports paths
-      if (packageJson.exports) {
-        const exportPaths = [];
 
-        function extractPaths(obj, currentPath = '') {
-          for (const [key, value] of Object.entries(obj)) {
-            if (typeof value === 'string') {
-              exportPaths.push(value);
-            } else if (typeof value === 'object' && value !== null) {
-              extractPaths(value, currentPath);
-            }
+      /** @type {string[]} */
+      const exportPaths = [];
+
+      function extractPaths(/**@type {Record<string,string>} */ obj, currentPath = '') {
+        for (const value of Object.values(obj)) {
+          if (typeof value === 'string') {
+            exportPaths.push(value);
+          } else if (typeof value === 'object' && value !== null) {
+            extractPaths(value, currentPath);
           }
         }
+      }
 
-        extractPaths(packageJson.exports);
+      extractPaths(packageJson.exports);
 
-        // Remove duplicates
-        const uniquePaths = Array.from(new Set(exportPaths));
+      // Remove duplicates
+      const uniquePaths = Array.from(new Set(exportPaths));
 
+      for (const exportPath of uniquePaths) {
+        // Wildcard support: we only handle simple trailing patterns like *.js or *.d.ts via a directory scan.
+        // This avoids heavy glob expansion (tens of thousands of files) and keeps logic minimal.
+        if (exportPath.includes('*')) {
+          const relative = exportPath.slice(2); // remove ./
+          const lastSlash = relative.lastIndexOf('/');
+          const dirPart = relative.slice(0, lastSlash);
+          const patternPart = relative.slice(lastSlash + 1); // e.g. *.js or *.d.ts
+          const dirAbs = path.join(__dirname, dirPart);
+          expect(fs.existsSync(dirAbs), `Directory for pattern missing: ${dirPart}`).toBe(true);
 
-        for (const exportPath of uniquePaths) {
-
-          // Wildcard support: we only handle simple trailing patterns like *.js or *.d.ts via a directory scan.
-          // This avoids heavy glob expansion (tens of thousands of files) and keeps logic minimal.
-          if (exportPath.includes('*')) {
-            const relative = exportPath.slice(2); // remove ./
-            const lastSlash = relative.lastIndexOf('/');
-            const dirPart = relative.slice(0, lastSlash);
-            const patternPart = relative.slice(lastSlash + 1); // e.g. *.js or *.d.ts
-            const dirAbs = path.join(__dirname, dirPart);
-            expect(fs.existsSync(dirAbs), `Directory for pattern missing: ${dirPart}`).toBe(true);
-
-            // Support only simple patterns starting with *.
-            if (!patternPart.startsWith('*.')) {
-              throw new Error(`Unsupported wildcard pattern (only leading *.<ext> supported): ${exportPath}`);
-            }
-            const ext = patternPart.slice(1); // keep the dot(s), e.g. '.js', '.d.ts'
-            const entries = await readdir(dirAbs);
-            const matchName = entries.find(e => e.endsWith(ext));
-            expect(matchName, `No file ending with '${ext}' found in ${dirPart} for export pattern ${exportPath}`).toBeTruthy();
-            if (matchName) {
-              const full = path.join(dirAbs, matchName);
-              const s = await stat(full);
-              expect(s.isFile(), `Matched path is not a file: ${full}`).toBe(true);
-            }
-          } else {
-            const fullPath = path.join(__dirname, exportPath.slice(2));
-            expect(fs.existsSync(fullPath)).toBe(true);
-            const stats = await stat(fullPath);
-            expect(stats.isFile()).toBe(true);
+          // Support only simple patterns starting with *.
+          if (!patternPart.startsWith('*.')) {
+            throw new Error(`Unsupported wildcard pattern (only leading *.<ext> supported): ${exportPath}`);
           }
+          const ext = patternPart.slice(1); // keep the dot(s), e.g. '.js', '.d.ts'
+          const entries = await readdir(dirAbs);
+          const matchName = entries.find((e) => e.endsWith(ext));
+          expect(
+            matchName,
+            `No file ending with '${ext}' found in ${dirPart} for export pattern ${exportPath}`,
+          ).toBeTruthy();
+          if (matchName) {
+            const full = path.join(dirAbs, matchName);
+            const s = await stat(full);
+            expect(s.isFile(), `Matched path is not a file: ${full}`).toBe(true);
+          }
+        } else {
+          const fullPath = path.join(__dirname, exportPath.slice(2));
+          expect(fs.existsSync(fullPath)).toBe(true);
+          const stats = await stat(fullPath);
+          expect(stats.isFile()).toBe(true);
         }
       }
     });
