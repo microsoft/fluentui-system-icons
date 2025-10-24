@@ -1,0 +1,8 @@
+{
+  "name": "Item Compare",
+  "size": [16, 20, 24, 28, 32, 48],
+  "style": ["Regular", "Filled"],
+  "keyword": "fluent-icon",
+  "description": null,
+  "metaphor": ["comparison", "side by side", "items"]
+}

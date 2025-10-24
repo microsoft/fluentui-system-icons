@@ -1,0 +1,8 @@
+{
+  "name": "Device Meeting Room Bar",
+  "size": [12, 16, 20, 24, 28, 32],
+  "style": ["Regular", "Filled"],
+  "keyword": "fluent-icon",
+  "description": "Used to represent meeting room devices in office.",
+  "metaphor": ["office", "remote", "touch screen", "conference room"]
+}
