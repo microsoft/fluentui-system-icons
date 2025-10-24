@@ -7,7 +7,7 @@ const fsP = require('fs/promises');
 const path = require('path');
 
 /**
- * @typedef {{ exportName: string; exportCode: string; fileName: string; rawName?: string }} PerIconItem
+ * @typedef {{ exportName: string; exportCode: string; fileName: string; rawName?: string }} IconItem
  * @typedef {{ groupByBase?: boolean }} WriteOptions
  */
 
@@ -15,14 +15,16 @@ const path = require('path');
  * Write grouped per-icon files.
  *
  * @param {string} destPath
- * @param {PerIconItem[]} items
+ * @param {IconItem[]} items
  * @param {string[]} [headerLines]
  * @param {WriteOptions} [options]
  * @returns {Promise<{ fileCount: number }>}
  */
 async function writePerIconFiles(destPath, items, headerLines = [], options = { groupByBase: true }) {
+  /** @typedef {{ exportName: string; exportCode: string; fileName: string; rawName?: string }} Grouping */
+
   // group items by normalized base filename so related variants end up in one file
-  /** @type {Map<string, Array<{ exportName: string; exportCode: string; fileName: string; rawName?: string }>>} */
+  /** @type {Map<string, Array<Grouping>>} */
   const groups = new Map();
 
   for (const item of items) {
@@ -41,73 +43,26 @@ async function writePerIconFiles(destPath, items, headerLines = [], options = { 
   for (const [base, groupItems] of groups) {
     const filePath = path.join(destPath, `${base}.tsx`);
 
-    /** @type {Array<{ exportName: string; exportCode: string; fileName: string; rawName?: string }>} */
+    /** @type {Array<Grouping>} */
     const nonNullItems = groupItems.filter((item) => item != null);
 
-    // ensure there are no duplicate exportNames within this group - duplicates indicate an error
-    /** @type {Map<string, string[]>} */
-    const occurrences = new Map();
-
-    for (const item of nonNullItems) {
-      const list = occurrences.get(item.exportName) || [];
-      list.push(item.fileName || '<unknown>');
-      occurrences.set(item.exportName, list);
-    }
-    const duplicates = [...occurrences.entries()].filter(([, list]) => list.length > 1);
-
-    if (duplicates.length > 0) {
-      const details = duplicates.map(([name, list]) => `exportName='${name}' -> files=[${list.join(', ')}]`).join('; ');
-      throw new Error(
-        `Duplicate export name(s) detected in group '${base}' while generating to '${destPath}': ${details}. This indicates multiple source inputs generated the same export name and should be fixed.`,
-      );
-    }
+    assertNoDuplicateExports(nonNullItems, base);
 
     // Sort exports deterministically: resizable first, then by size (ascending), then by style priority, then alphabetically
-    const stylePriority = new Map(DEFAULT_STYLE_TOKENS.map((s, i) => [s, i]));
-
-    nonNullItems.sort((a, b) => {
-      const variantA = parseVariant(a.exportName);
-      const variantB = parseVariant(b.exportName);
-
-      // 1. Resizable icons (no size) come before sized icons
-      const hasSize_A = variantA.size != null;
-      const hasSize_B = variantB.size != null;
-      if (!hasSize_A && hasSize_B) return -1;
-      if (hasSize_A && !hasSize_B) return 1;
-
-      // 2. If both have sizes, sort by size ascending (16 before 20 before 24, etc.)
-      if (hasSize_A && hasSize_B) {
-        const sizeA = /** @type {number} */ (variantA.size);
-        const sizeB = /** @type {number} */ (variantB.size);
-        if (sizeA !== sizeB) return sizeA - sizeB;
-      }
-
-      // 3. Sort by style priority (regular before filled before light, etc.)
-      const styleA = variantA.style || '';
-      const styleB = variantB.style || '';
-      const priorityA = stylePriority.get(styleA) ?? Number.MAX_SAFE_INTEGER;
-      const priorityB = stylePriority.get(styleB) ?? Number.MAX_SAFE_INTEGER;
-      if (priorityA !== priorityB) {
-        return priorityA - priorityB;
-      }
-
-      // 4. Finally, sort alphabetically by export name for stability
-      return a.exportName.localeCompare(b.exportName);
-    });
+    nonNullItems.sort(compareByStylePriority);
 
     if (fs.existsSync(filePath)) {
-      const existing = fs.readFileSync(filePath, 'utf8');
-      const existingNames = [...existing.matchAll(/export const\s+(\w+)\s*:/g)].map((m) => m[1]);
-      const collisions = nonNullItems.filter((d) => existingNames.includes(d.exportName));
-      if (collisions.length > 0) {
-        throw new Error(
-          `Attempting to add exports that already exist in '${filePath}': ${collisions.map((c) => c.exportName).join(', ')}. This indicates duplicate generation and should be investigated.`,
-        );
-      }
-      const toAppend = nonNullItems.map((i) => i.exportCode).join('\n') + '\n';
-      await fsP.writeFile(filePath, existing + toAppend, 'utf8');
+      // Append
+
+      const existingIconModuleContent = fs.readFileSync(filePath, 'utf8');
+
+      assertNoCollisions(existingIconModuleContent, nonNullItems, filePath);
+
+      const toAppend = nonNullItems.map((icon) => icon.exportCode).join('\n') + '\n';
+      await fsP.writeFile(filePath, existingIconModuleContent + toAppend, 'utf8');
     } else {
-      const fileSourceLines = headerLines.concat(nonNullItems.map((i) => i.exportCode));
+      // Create new file
+      const fileSourceLines = headerLines.concat(nonNullItems.map((icon) => icon.exportCode));
       const fileSource = fileSourceLines.join('\n') + '\n';
       await fsP.writeFile(filePath, fileSource, 'utf8');
     }
@@ -129,6 +84,87 @@ async function writePerIconFiles(destPath, items, headerLines = [], options = { 
     const size = parseInt(matchedResult[1], 10);
     const style = matchedResult[2] ? matchedResult[2].toLowerCase() : null;
     return { size, style };
+  }
+
+  /**
+   * Compare two icon exports for sorting.
+   * @param {Grouping} a
+   * @param {Grouping} b
+   * @returns {number}
+   */
+  function compareByStylePriority(a, b) {
+    const variantA = parseVariant(a.exportName);
+    const variantB = parseVariant(b.exportName);
+
+    // 1. Resizable icons (no size) come before sized icons
+    const hasSize_A = variantA.size != null;
+    const hasSize_B = variantB.size != null;
+    if (!hasSize_A && hasSize_B) return -1;
+    if (hasSize_A && !hasSize_B) return 1;
+
+    // 2. If both have sizes, sort by size ascending (16 before 20 before 24, etc.)
+    if (hasSize_A && hasSize_B) {
+      const sizeA = /** @type {number} */ (variantA.size);
+      const sizeB = /** @type {number} */ (variantB.size);
+      if (sizeA !== sizeB) return sizeA - sizeB;
+    }
+
+    // 3. Sort by style priority (regular before filled before light, etc.)
+    const styleA = variantA.style || '';
+    const styleB = variantB.style || '';
+    const indexA = DEFAULT_STYLE_TOKENS.indexOf(styleA);
+    const indexB = DEFAULT_STYLE_TOKENS.indexOf(styleB);
+    const priorityA = indexA === -1 ? Number.MAX_SAFE_INTEGER : indexA;
+    const priorityB = indexB === -1 ? Number.MAX_SAFE_INTEGER : indexB;
+
+    if (priorityA !== priorityB) {
+      return priorityA - priorityB;
+    }
+
+    // 4. Finally, sort alphabetically by export name for stability
+    return a.exportName.localeCompare(b.exportName);
+  }
+
+  /**
+   * Assert that there are no duplicate exports in a group.
+   * @param {Grouping[]} items
+   * @param {string} groupBase
+   */
+  function assertNoDuplicateExports(items, groupBase) {
+    // ensure there are no duplicate exportNames within this group - duplicates indicate an error
+    /** @type {Map<string, string[]>} */
+    const occurrences = new Map();
+
+    for (const item of items) {
+      const list = occurrences.get(item.exportName) || [];
+      list.push(item.fileName || '<unknown>');
+      occurrences.set(item.exportName, list);
+    }
+
+    const duplicates = [...occurrences.entries()].filter(([, list]) => list.length > 1);
+
+    if (duplicates.length > 0) {
+      const details = duplicates.map(([name, list]) => `exportName='${name}' -> files=[${list.join(', ')}]`).join('; ');
+      throw new Error(
+        `Duplicate export name(s) detected in group '${groupBase}' while generating to '${destPath}': ${details}. This indicates multiple source inputs generated the same export name and should be fixed.`,
+      );
+    }
+  }
+
+  /**
+   * Assert that there are no collisions between existing exports and new items.
+   * @param {string} moduleContent
+   * @param {Grouping[]} items
+   * @param {string} filePath
+   */
+  function assertNoCollisions(moduleContent, items, filePath) {
+    const existingNames = [...moduleContent.matchAll(/export const\s+(\w+)\s*:/g)].map((m) => m[1]);
+    const collisions = items.filter((d) => existingNames.includes(d.exportName));
+    if (collisions.length > 0) {
+      throw new Error(
+        `Attempting to add exports that already exist in '${filePath}': ${collisions.map((c) => c.exportName).join(', ')}. This indicates duplicate generation and should be investigated.`,
+      );
+    }
   }
 }
 

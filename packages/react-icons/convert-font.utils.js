@@ -67,7 +67,7 @@ function getCreateFluentIconHeader(relImport) {
 /**
  * Generate individual .tsx files for each icon variant
  * @param {string} destPath
- * @param {Array<{ iconEntries: Record<string, number>; writeProcessedCM: () => void; }>} iconEntries
+ * @param {Array<import('./convert-font').IconEntry>} iconEntries
  * @param {RtlMetadata} rtlMetadata
  * @param {boolean} resizable
  * @param {boolean} groupByBase
@@ -93,9 +93,8 @@ async function generatePerIconFiles(destPath, iconEntries, rtlMetadata, resizabl
 
   const relImport = path.posix.join('..', '..', 'utils', 'fonts', 'createFluentFontIcon');
   const headerLines = getCreateFluentIconHeader(relImport);
-  const flattened = items.filter((i) => i != null);
 
-  const result = await writePerIconFiles(destPath, flattened, headerLines, { groupByBase });
+  const result = await writePerIconFiles(destPath, items, headerLines, { groupByBase });
 
   return { iconNames, fileCount: result.fileCount };
 }

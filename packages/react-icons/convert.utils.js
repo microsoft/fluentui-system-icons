@@ -110,9 +110,8 @@ async function generatePerIconFiles(sourceFiles, destPath, rtlMetadata, resizabl
 
   const relImport = path.posix.join('..', '..', 'utils', 'createFluentIcon');
   const headerLines = getCreateFluentIconHeader(relImport);
-  const flattened = items.filter((i) => i != null);
 
-  const result = await writePerIconFiles(destPath, flattened, headerLines, { groupByBase });
+  const result = await writePerIconFiles(destPath, items, headerLines, { groupByBase });
 
   return { iconNames, fileCount: result.fileCount };
 }

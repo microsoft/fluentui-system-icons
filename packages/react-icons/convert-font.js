@@ -33,7 +33,7 @@ async function main() {
   const rtlMetadata = loadRtlMetadata(RTL_FILE);
   const iconEntries = prepareProcessedCodepointMap(SRC_PATH, CODEPOINT_DEST_PATH);
 
-  // 1. Generate chunked font icon exports (existing behavior) into DEST_PATH
+  // 1. Generate chunks
   const { svgMetadata: chunkMetadata } = await processPerChunk(DEST_PATH, iconEntries, rtlMetadata);
 
   // 2. Generate per-icon output
@@ -41,8 +41,8 @@ async function main() {
   const { svgMetadata: perIconMetadata } = await processPerIcon(PER_ICON_DEST, iconEntries, rtlMetadata);
 
   // 3. Write processed (React-name) map once per original JSON (shared core dedupes)
-  iconEntries.resizable.forEach(({ writeProcessedCM }) => writeProcessedCM());
-  iconEntries.sized.forEach(({ writeProcessedCM }) => writeProcessedCM());
+  iconEntries.resizable.forEach(({ writeProcessedCodepointMap }) => writeProcessedCodepointMap());
+  iconEntries.sized.forEach(({ writeProcessedCodepointMap }) => writeProcessedCodepointMap());
 
   await writeMetadata(METADATA_PATH, chunkMetadata);
   await writeMetadata(perIconMetadataPath, perIconMetadata);
@@ -129,7 +129,7 @@ async function processPerChunk(dest, iconEntries, rtlMetadata) {
 }
 
 /**
- * @typedef {{ iconEntries: Record<string, number>; writeProcessedCM: () => void; }} IconEntry
+ * @typedef {{ iconEntries: Record<string, number>; writeProcessedCodepointMap: () => void; }} IconEntry
  */
 
 /**
@@ -149,10 +149,15 @@ function prepareProcessedCodepointMap(srcPath, destFolder) {
   const resolveExistingFiles = (/** @type {string[]} */ names) =>
     names.map((name) => path.resolve(srcPath, name)).filter((f) => fsS.existsSync(f));
 
+  const resizable = buildEntries(fileNamesResizable, true);
+  const sized = buildEntries(fileNamesSized, false);
+
+  return { resizable, sized };
+
   /**
    * @param {string[]} names
    * @param {boolean} resizable
-   * @returns {{ iconEntries: Record<string, number>; writeProcessedCM: () => void; }[]}
+   * @returns {IconEntry[]}
    */
   function buildEntries(names, resizable) {
     const files = resolveExistingFiles(names);
@@ -165,21 +170,16 @@ function prepareProcessedCodepointMap(srcPath, destFolder) {
           codepoint,
         ]),
       );
-      const writeProcessedCM = () => {
+      const writeProcessedCodepointMap = () => {
         const outputPath = path.resolve(destFolder, path.basename(srcFile));
         console.log('- original codepoint map path', srcFile);
         console.log('- writing processed codepoint map to', outputPath);
         fsS.writeFileSync(outputPath, JSON.stringify(finalMap, null, 2));
       };
 
-      return { iconEntries, writeProcessedCM };
+      return { iconEntries, writeProcessedCodepointMap };
     });
   }
-
-  const resizable = buildEntries(fileNamesResizable, true);
-  const sized = buildEntries(fileNamesSized, false);
-
-  return { resizable, sized };
 }
 
 /**
@@ -226,7 +226,6 @@ async function processFolder(iconEntries, rtlMetadata, resizable) {
  * @param {Record<string,number>} iconEntries
  * @param {boolean} resizable
  */
-// generateCodepointMapForWebpackPlugin removed in favor of shared writeProcessedCodepointMap
 
 /**
  *

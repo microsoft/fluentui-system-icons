@@ -21,6 +21,7 @@ async function main() {
   const { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH, PER_ICON_DEST } = parseArgs(process.argv.slice(2));
   const srcFiles = await processSourceDir(SRC_PATH);
   const rtlMetadata = loadRtlMetadata(RTL_FILE);
+
   // 1. Generate chunks
   const { svgMetadata: chunkMetadata } = processPerChunk(srcFiles, DEST_PATH, rtlMetadata);
 
