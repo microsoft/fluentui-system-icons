@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { describe, it, expect, afterAll } from 'vitest';
 
-import { makeIconExport, getCreateFluentIconHeader, normalizeBaseName } from './convert.utils';
+import { makeIconExport, getCreateFluentIconHeader, generatePerIconFiles } from './convert.utils';
 
 describe(`convert  utils`, () => {
   describe(`getCreateFluentIconHeader`, () => {
@@ -92,14 +92,113 @@ describe(`convert  utils`, () => {
     });
   });
 
-  describe('normalizeBaseName', () => {
-    it('strips size and style tokens from filenames', () => {
-      expect(normalizeBaseName('zoom-in-20-filled.tsx')).toBe('zoom-in');
-      expect(normalizeBaseName('zoom-in-16-regular')).toBe('zoom-in');
-      expect(normalizeBaseName('my-icon-32-light.tsx')).toBe('my-icon');
-      expect(normalizeBaseName('color-test-20_color.tsx')).toBe('color-test');
-      // numeric-only token
-      expect(normalizeBaseName('example-24')).toBe('example');
+  describe(`generatePerIconFiles`, () => {
+    describe(`duplicate export names`, () => {
+      const tmpSrc = path.join(__dirname, 'tmp-dup-src');
+      const tmpDest = path.join(__dirname, 'tmp-dup-dest');
+
+      /**
+       * @param {string} name
+       * @param {string} content
+       */
+      function writeSvg(name, content) {
+        if (!fs.existsSync(tmpSrc)) fs.mkdirSync(tmpSrc, { recursive: true });
+        fs.writeFileSync(path.join(tmpSrc, name), content, 'utf8');
+      }
+
+      it('throws on duplicate export names', async () => {
+        try {
+          if (fs.existsSync(tmpSrc)) fs.rmSync(tmpSrc, { recursive: true, force: true });
+          if (fs.existsSync(tmpDest)) fs.rmSync(tmpDest, { recursive: true, force: true });
+
+          // Two different filenames that will produce the same export name when processed
+          writeSvg('ic_fluent_dup_20.svg', '<svg width="20" d="M0"></svg>');
+          // this variant without underscore will camelCase to the same export name (Dup20)
+          writeSvg('ic_fluent_dup20.svg', '<svg width="20" d="M1"></svg>');
+
+          const files = await import('fs/promises').then((m) => m.readdir(tmpSrc));
+          if (!fs.existsSync(tmpDest)) fs.mkdirSync(tmpDest, { recursive: true });
+          const srcFiles = files.map((f) => ({ file: f, srcFile: path.join(tmpSrc, f) }));
+
+          // grouping enabled: both map to the same base and exportName -> should throw
+          await expect(generatePerIconFiles(srcFiles, tmpDest, {}, false, true)).rejects.toThrow(
+            /Duplicate export name/,
+          );
+        } finally {
+          if (fs.existsSync(tmpSrc)) fs.rmSync(tmpSrc, { recursive: true, force: true });
+          if (fs.existsSync(tmpDest)) fs.rmSync(tmpDest, { recursive: true, force: true });
+        }
+      });
+    });
+
+    describe('generatePerIconFiles integration', () => {
+      const tmpSrc = path.join(__dirname, 'tmp-gen-src');
+      const tmpDest = path.join(__dirname, 'tmp-gen-dest');
+
+      /**
+       * @param {string} name
+       * @param {string} d
+       */
+      function writeSvg(name, d) {
+        if (!fs.existsSync(tmpSrc)) fs.mkdirSync(tmpSrc, { recursive: true });
+        fs.writeFileSync(path.join(tmpSrc, name), `<svg width="20" d="${d}"></svg>`, 'utf8');
+      }
+
+      afterAll(() => {
+        if (fs.existsSync(tmpSrc)) fs.rmSync(tmpSrc, { recursive: true, force: true });
+        if (fs.existsSync(tmpDest)) fs.rmSync(tmpDest, { recursive: true, force: true });
+      });
+
+      it('groups related icons into one file and deduplicates exports', async () => {
+        // prepare source svgs
+        writeSvg('ic_fluent_zoom_in_20.svg', 'M0 0');
+        writeSvg('ic_fluent_zoom_in_16.svg', 'M1 1');
+        writeSvg('ic_fluent_zoom_in_20_filled.svg', 'M2 2');
+
+        const files = await require('fs/promises').readdir(tmpSrc);
+        const srcFiles = files.map((f) => ({ file: f, srcFile: path.join(tmpSrc, f) }));
+
+        // ensure destination exists
+        if (!fs.existsSync(tmpDest)) fs.mkdirSync(tmpDest, { recursive: true });
+        // run generator (groupByBase true) and process all sizes (resizable = false)
+        await generatePerIconFiles(srcFiles, tmpDest, {}, false, true);
+
+        // check output
+        const outFile = path.join(tmpDest, 'zoom-in.tsx');
+        expect(fs.existsSync(outFile)).toBe(true);
+        const content = fs.readFileSync(outFile, 'utf8');
+        // should contain multiple exports
+        expect(content).toContain('export const ZoomIn20Filled');
+        // 16px variant should be present after processing sized icons
+        expect(content).toMatch(/export const\s+ZoomIn16/);
+        // no duplicate export names
+        const names = [...content.matchAll(/export const\s+(\w+)\s*:/g)].map((m) => m[1]);
+        const unique = new Set(names);
+        expect(unique.size).toBe(names.length);
+      });
+
+      it('creates separate files when grouping is disabled', async () => {
+        // prepare separate tmp dirs
+        const tmpSrc2 = path.join(__dirname, 'tmp-gen-src-2');
+        const tmpDest2 = path.join(__dirname, 'tmp-gen-dest-2');
+        if (!fs.existsSync(tmpSrc2)) fs.mkdirSync(tmpSrc2, { recursive: true });
+        if (!fs.existsSync(tmpDest2)) fs.mkdirSync(tmpDest2, { recursive: true });
+        fs.writeFileSync(path.join(tmpSrc2, 'ic_fluent_test_20.svg'), '<svg width="20" d="M0"></svg>');
+        fs.writeFileSync(path.join(tmpSrc2, 'ic_fluent_test_16_filled.svg'), '<svg width="16" d="M1"></svg>');
+
+        const files = await require('fs/promises').readdir(tmpSrc2);
+        const srcFiles = files.map((f) => ({ file: f, srcFile: path.join(tmpSrc2, f) }));
+
+        await generatePerIconFiles(srcFiles, tmpDest2, {}, false, false);
+
+        // expect separate files like test-20-regular.tsx and test-16-filled.tsx (based on kebab-casing)
+        const outFiles = fs.readdirSync(tmpDest2);
+        expect(outFiles.some((n) => n.startsWith('test-'))).toBeTruthy();
+
+        // cleanup local tmp dirs
+        fs.rmSync(tmpSrc2, { recursive: true, force: true });
+        fs.rmSync(tmpDest2, { recursive: true, force: true });
+      });
     });
   });
 });

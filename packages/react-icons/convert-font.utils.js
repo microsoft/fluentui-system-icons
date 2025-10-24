@@ -9,7 +9,10 @@
  */
 
 const fs = require('fs');
+const path = require('path');
 const _ = require('lodash');
+
+const { writePerIconFiles } = require('./per-icon.writer');
 
 /** @typedef {{ [key: string]: 'mirror' | 'unique' }} RtlMetadata */
 
@@ -61,9 +64,46 @@ function getCreateFluentIconHeader(relImport) {
   ];
 }
 
+/**
+ * Generate individual .tsx files for each icon variant
+ * @param {string} destPath
+ * @param {Array<{ iconEntries: Record<string, number>; writeProcessedCM: () => void; }>} iconEntries
+ * @param {RtlMetadata} rtlMetadata
+ * @param {boolean} resizable
+ * @param {boolean} groupByBase
+ * @returns {Promise<{ iconNames: string[]; fileCount: number }>}
+ */
+async function generatePerIconFiles(destPath, iconEntries, rtlMetadata, resizable, groupByBase = true) {
+  /** @type {string[]} */
+  const iconNames = [];
+  /** @type {Array<{ exportName: string; exportCode: string; fileName: string; rawName: string }>} */
+  const items = [];
+
+  for (const entry of iconEntries) {
+    for (const [rawName, codepoint] of Object.entries(entry.iconEntries)) {
+      const exportName = getReactIconNameFromGlyphName(rawName, resizable);
+      const flipInRtl = rtlMetadata[exportName] === 'mirror';
+      const jsCode = buildFontIconExport(exportName, codepoint, resizable, flipInRtl, rawName);
+      const fileName = `${_.kebabCase(exportName)}.tsx`;
+
+      items.push({ exportName, exportCode: jsCode, fileName, rawName });
+      iconNames.push(exportName);
+    }
+  }
+
+  const relImport = path.posix.join('..', '..', 'utils', 'fonts', 'createFluentFontIcon');
+  const headerLines = getCreateFluentIconHeader(relImport);
+  const flattened = items.filter((i) => i != null);
+
+  const result = await writePerIconFiles(destPath, flattened, headerLines, { groupByBase });
+
+  return { iconNames, fileCount: result.fileCount };
+}
+
 module.exports = {
   getReactIconNameFromGlyphName,
   loadRtlMetadata,
   buildFontIconExport,
   getCreateFluentIconHeader,
+  generatePerIconFiles,
 };
