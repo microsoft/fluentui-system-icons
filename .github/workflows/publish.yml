@@ -65,8 +65,8 @@ jobs:
       with:
         node-version: 20.x
 
-    - run: npm ci
-      working-directory: importer
+    - name: Install dependencies
+      run: npm ci
 
     ## iOS
     - name: Run iOS generate script
@@ -147,9 +147,6 @@ jobs:
       run: |
         sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?(-rc\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-icons-font-subsetting-webpack-plugin/package.json
         rm packages/react-icons-font-subsetting-webpack-plugin/package.json.bk
-
-    - name: Install dependencies
-      run: npm ci
 
     - name: Build SVG library
       run: |
