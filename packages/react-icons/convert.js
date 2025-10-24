@@ -7,9 +7,8 @@ const fs = require('fs');
 const { readdir } = require('fs/promises');
 const path = require('path');
 const yargs = require('yargs');
-const { makeIconExport, getCreateFluentIconHeader, loadRtlMetadata, normalizeBaseName } = require('./convert.utils');
+const { makeIconExport, getCreateFluentIconHeader, loadRtlMetadata, generatePerIconFiles } = require('./convert.utils');
 const { createFormatMetadata, writeMetadata } = require('./metadata.utils');
-const { writePerIconFiles } = require('./per-icon.writer');
 
 if (require.main === module) {
   main().catch((err) => {
@@ -22,7 +21,8 @@ async function main() {
   const { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH, PER_ICON_DEST } = parseArgs(process.argv.slice(2));
   const srcFiles = await processSourceDir(SRC_PATH);
   const rtlMetadata = loadRtlMetadata(RTL_FILE);
-  // 1. Generate chunked (existing) output
+
+  // 1. Generate chunks
   const { svgMetadata: chunkMetadata } = processPerChunk(srcFiles, DEST_PATH, rtlMetadata);
 
   // 2. Generate per-icon output
@@ -185,45 +185,6 @@ async function processPerIcon(sourceFiles, destPath, rtlMetadata, options = { gr
 }
 
 /**
- * Generates per-icon .tsx files (adapted from convert-per-icon.js)
- * @param {SourceFiles} sourceFiles
- * @param {string} destPath
- * @param {import('./convert-font.utils').RtlMetadata} rtlMetadata
- * @param {boolean} resizable
- * @returns {Promise<{ iconNames: string[]; fileCount: number }>}
- */
-async function generatePerIconFiles(sourceFiles, destPath, rtlMetadata, resizable, groupByBase = true) {
-  /** @type {string[]} */
-  const iconNames = [];
-
-  // group icons by a normalized base filename so related variants end up in one file
-  /** @type {Map<string, Array<ReturnType<typeof makeIconExport>>>} */
-  const groups = new Map();
-
-  for (const entry of sourceFiles) {
-    if (resizable && !entry.file.includes('20')) continue; // only base 20 size for resizable set
-    const result = makeIconExport({ file: entry.file, srcFile: entry.srcFile, resizable, metadata: rtlMetadata });
-    if (!result) continue;
-
-    // compute normalized base name by stripping trailing size and style tokens (or use raw fileName)
-    const base = groupByBase ? normalizeBaseName(result.fileName) : result.fileName.replace(/\.tsx$/, '');
-
-    if (!groups.has(base)) groups.set(base, []);
-    const bucket = groups.get(base);
-    if (bucket) bucket.push(result);
-    iconNames.push(result.exportName);
-  }
-
-  const relImport = path.posix.join('..', '..', 'utils', 'createFluentIcon');
-  const headerLines = getCreateFluentIconHeader(relImport);
-  const flattened = Array.from(groups.values())
-    .flat()
-    .filter((i) => i != null);
-  const result = await writePerIconFiles(destPath, flattened, headerLines, { groupByBase });
-  return { iconNames, fileCount: result.fileCount };
-}
-
-/**
  *
  * @param {string} srcPath
  */
@@ -292,4 +253,4 @@ function parseArgs(argv) {
   return { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH, PER_ICON_DEST };
 }
 
-module.exports = { generatePerIconFiles };
+module.exports = {};
