@@ -2514,12 +2514,122 @@
     "font": true,
     "type": "resizable"
   },
+  "BatteryCharge0Filled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "BatteryCharge0Regular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "BatteryCharge10Filled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "BatteryCharge10Regular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "BatteryCharge1Filled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "BatteryCharge1Regular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "BatteryChargeFilled": {
     "svg": true,
     "font": true,
     "type": "resizable"
   },
   "BatteryChargeRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "BatteryCharge2Filled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "BatteryCharge2Regular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "BatteryCharge3Filled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "BatteryCharge3Regular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "BatteryCharge4Filled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "BatteryCharge4Regular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "BatteryCharge5Filled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "BatteryCharge5Regular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "BatteryCharge6Filled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "BatteryCharge6Regular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "BatteryCharge7Filled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "BatteryCharge7Regular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "BatteryCharge8Filled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "BatteryCharge8Regular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "BatteryCharge9Filled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "BatteryCharge9Regular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -7589,6 +7699,16 @@
     "font": true,
     "type": "resizable"
   },
+  "CounterFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "CounterRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "CreditCardClockFilled": {
     "svg": true,
     "font": true,
@@ -8645,6 +8765,16 @@
     "type": "resizable"
   },
   "DeviceMeetingRoomRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DeviceMeetingRoomBarFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DeviceMeetingRoomBarRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -13465,6 +13595,16 @@
     "type": "resizable"
   },
   "IotAlertRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "ItemCompareFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "ItemCompareRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -28594,6 +28734,16 @@
     "font": true,
     "type": "sized"
   },
+  "Agents12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Agents12Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Agents16Color": {
     "svg": true,
     "font": false,
@@ -37474,6 +37624,36 @@
     "font": true,
     "type": "sized"
   },
+  "BatteryCharge020Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BatteryCharge020Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BatteryCharge1020Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BatteryCharge1020Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BatteryCharge120Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BatteryCharge120Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "BatteryCharge20Filled": {
     "svg": true,
     "font": true,
@@ -37504,12 +37684,92 @@
     "font": true,
     "type": "sized"
   },
+  "BatteryCharge220Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BatteryCharge220Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "BatteryCharge32Filled": {
     "svg": true,
     "font": true,
     "type": "sized"
   },
   "BatteryCharge32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BatteryCharge320Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BatteryCharge320Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BatteryCharge420Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BatteryCharge420Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BatteryCharge520Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BatteryCharge520Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BatteryCharge620Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BatteryCharge620Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BatteryCharge720Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BatteryCharge720Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BatteryCharge820Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BatteryCharge820Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BatteryCharge920Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BatteryCharge920Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -43489,12 +43749,52 @@
     "font": true,
     "type": "sized"
   },
+  "CalendarEye16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarEye16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "CalendarEye20Filled": {
     "svg": true,
     "font": true,
     "type": "sized"
   },
   "CalendarEye20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarEye24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarEye24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarEye28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarEye28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarEye32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarEye32Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -55899,6 +56199,26 @@
     "font": true,
     "type": "sized"
   },
+  "Counter20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Counter20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Counter24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Counter24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "CreditCardClock20Filled": {
     "svg": true,
     "font": true,
@@ -59220,6 +59540,66 @@
     "type": "sized"
   },
   "DeviceMeetingRoom48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomBar12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomBar12Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomBar16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomBar16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomBar20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomBar20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomBar24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomBar24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomBar28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomBar28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomBar32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomBar32Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -74774,6 +75154,16 @@
     "font": true,
     "type": "sized"
   },
+  "ImageProhibited28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ImageProhibited28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "ImageReflection20Filled": {
     "svg": true,
     "font": true,
@@ -75550,6 +75940,66 @@
     "type": "sized"
   },
   "IotAlert24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ItemCompare16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ItemCompare16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ItemCompare20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ItemCompare20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ItemCompare24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ItemCompare24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ItemCompare28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ItemCompare28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ItemCompare32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ItemCompare32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ItemCompare48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ItemCompare48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -100249,6 +100699,11 @@
     "font": true,
     "type": "sized"
   },
+  "Search32Light": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Search32Regular": {
     "svg": true,
     "font": true,
@@ -100370,6 +100825,11 @@
     "type": "sized"
   },
   "SearchSparkle32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SearchSparkle32Light": {
     "svg": true,
     "font": true,
     "type": "sized"
