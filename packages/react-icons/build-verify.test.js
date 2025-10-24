@@ -1626,6 +1626,38 @@ describe('Build Verification', () => {
   });
 
   describe(`Atoms`, () => {
+    function getAssetPaths() {
+      const svgPathEsm = path.join(__dirname, 'lib', 'atoms/svg');
+      const svgPathCjs = path.join(__dirname, 'lib-cjs', 'atoms/svg');
+      const fontsPathEsm = path.join(__dirname, 'lib', 'atoms/fonts');
+      const fontsPathCjs = path.join(__dirname, 'lib-cjs', 'atoms/fonts');
+      return { svgPathEsm, svgPathCjs, fontsPathEsm, fontsPathCjs };
+    }
+
+    /**
+     *
+     * @param {string} assetPath
+     */
+    async function getStats(assetPath) {
+      const files = await readdir(assetPath);
+      const jsFiles = files.filter((f) => f.endsWith('.js'));
+      return { files, jsFiles };
+    }
+
+    it(`should have same number of atoms/svg icon files in lib and lib-cjs`, async () => {
+      const { svgPathCjs, svgPathEsm } = getAssetPaths();
+      const esmStats = await getStats(svgPathEsm);
+      const cjsStats = await getStats(svgPathCjs);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2764`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2764`);
+    });
+    it(`should have same number of atoms/fonts icon files in lib and lib-cjs`, async () => {
+      const { fontsPathCjs, fontsPathEsm } = getAssetPaths();
+      const esmStats = await getStats(fontsPathEsm);
+      const cjsStats = await getStats(fontsPathCjs);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2757`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2757`);
+    });
     it.each(['lib', 'lib-cjs'])('should have atoms/svg directory with icon files in %s', async (libDir) => {
       const atomsSvgPath = path.join(__dirname, libDir, 'atoms', 'svg');
 
@@ -1634,13 +1666,8 @@ describe('Build Verification', () => {
       const stats = await stat(atomsSvgPath);
       expect(stats.isDirectory()).toBe(true);
 
-      // Read all files in atoms/svg
-      const files = await readdir(atomsSvgPath);
+      const { files, jsFiles } = await getStats(atomsSvgPath);
 
-      // Check that we have both .js and .d.ts files
-      const jsFiles = files.filter((f) => f.endsWith('.js'));
-
-      expect(jsFiles.length).toBe(2761);
       // Snapshot the list of .js files to catch any unexpected changes
       expect(jsFiles).toMatchSnapshot();
 
@@ -1664,13 +1691,8 @@ describe('Build Verification', () => {
       const stats = await stat(atomsFontsPath);
       expect(stats.isDirectory()).toBe(true);
 
-      // Read all files in atoms/fonts
-      const files = await readdir(atomsFontsPath);
+      const { files, jsFiles } = await getStats(atomsFontsPath);
 
-      // Check that we have both .js and .d.ts files
-      const jsFiles = files.filter((f) => f.endsWith('.js'));
-
-      expect(jsFiles.length).toBe(2754);
       // Snapshot the list of .js files to catch any unexpected changes
       expect(jsFiles).toMatchSnapshot();
 
