@@ -1,0 +1,3 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Checkmark Note,checkmark_note,20,filled,ic_fluent_checkmark_note_20_filled.svg,Checkmark Note/SVG/ic_fluent_checkmark_note_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Checkmark%20Note/SVG/ic_fluent_checkmark_note_20_filled.svg
+Checkmark Note,checkmark_note,20,regular,ic_fluent_checkmark_note_20_regular.svg,Checkmark Note/SVG/ic_fluent_checkmark_note_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Checkmark%20Note/SVG/ic_fluent_checkmark_note_20_regular.svg

@@ -1,0 +1,3 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Person Wrench,person_wrench,20,filled,ic_fluent_person_wrench_20_filled.svg,Person Wrench/SVG/ic_fluent_person_wrench_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Person%20Wrench/SVG/ic_fluent_person_wrench_20_filled.svg
+Person Wrench,person_wrench,20,regular,ic_fluent_person_wrench_20_regular.svg,Person Wrench/SVG/ic_fluent_person_wrench_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Person%20Wrench/SVG/ic_fluent_person_wrench_20_regular.svg
