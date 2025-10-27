@@ -150,6 +150,8 @@
 |Rectangle Landscape|<img src="assets/Rectangle Landscape/SVG/ic_fluent_rectangle_landscape_32_light.svg?raw=true" width="24" height="24">|`rectangleLandscape32Light`|`ic_fluent_rectangle_landscape_32_light`|
 |Rotate Left|<img src="assets/Rotate Left/SVG/ic_fluent_rotate_left_32_light.svg?raw=true" width="24" height="24">|`rotateLeft32Light`|`ic_fluent_rotate_left_32_light`|
 |Save|<img src="assets/Save/SVG/ic_fluent_save_32_light.svg?raw=true" width="24" height="24">|`save32Light`|`ic_fluent_save_32_light`|
+|Search|<img src="assets/Search/SVG/ic_fluent_search_32_light.svg?raw=true" width="24" height="24">|`search32Light`|`ic_fluent_search_32_light`|
+|Search Sparkle|<img src="assets/Search Sparkle/SVG/ic_fluent_search_sparkle_32_light.svg?raw=true" width="24" height="24">|`searchSparkle32Light`|`ic_fluent_search_sparkle_32_light`|
 |Send Clock|<img src="assets/Send Clock/SVG/ic_fluent_send_clock_32_light.svg?raw=true" width="24" height="24">|`sendClock32Light`|`ic_fluent_send_clock_32_light`|
 |Settings|<img src="assets/Settings/SVG/ic_fluent_settings_32_light.svg?raw=true" width="24" height="24">|`settings32Light`|`ic_fluent_settings_32_light`|
 |Share|<img src="assets/Share/SVG/ic_fluent_share_32_light.svg?raw=true" width="24" height="24">|`share32Light`|`ic_fluent_share_32_light`|
