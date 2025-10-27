@@ -6,18 +6,17 @@
  * Gets the next prerelease version for a package
  * by checking the latest version from npm registry with the specified preid
  *
- * Usage: node get-next-prerelease-version.js --package <package-name> --preid <preid> [--package-json <path>]
+ * Usage: node get-next-prerelease-version.js --package <package-name> --preid <preid>
  *
  * Options:
  *   --package: NPM package name (e.g., @fluentui/react-icons)
  *   --preid: Prerelease identifier (e.g., alpha, beta, rc)
- *   --package-json: Optional path to package.json (relative to script directory)
- *                   Default: ../../packages/react-icons/package.json
  */
 
 const fs = require('fs');
 const path = require('path');
 const { parseArgs } = require('node:util');
+const { execSync } = require('child_process');
 
 main().catch((error) => {
   console.error('❌ Unhandled error:', error instanceof Error ? error.message : String(error));
@@ -38,9 +37,6 @@ function processArgs(){
         },
         preid: {
           type: 'string',
-        },
-        'package-json': {
-          type: 'string'
         },
         help: {
           type: 'boolean',
@@ -63,7 +59,6 @@ function processArgs(){
 
   const packageName = options.package;
   const preid = options.preid;
-  const packageJsonPath = options['package-json'];
 
   if (!packageName || !preid) {
     printUsage();
@@ -77,17 +72,53 @@ function processArgs(){
     process.exit(1);
   }
 
-  return { packageName, preid, packageJsonPath: packageJsonPath ?? '../../packages/react-icons/package.json' };
+  const baseVersion = getBaseVersion(packageName);
+
+  return { packageName, preid, baseVersion };
+
+
+  /**
+   *
+   * @param {string} packageName
+   */
+  function getBaseVersion(packageName) {
+    // Get package.json path and validate it exists
+    let packageJsonPath;
+    try {
+      packageJsonPath = findPackageJson(packageName);
+    } catch (error) {
+      console.error(`❌ ${error instanceof Error ? error.message : String(error)}`);
+      process.exit(1);
+    }
+
+    // Read and validate version from package.json
+    try {
+      const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+      const parsed = parseVersion(packageJson.version);
+
+      if (!parsed) {
+        console.error(`❌ Invalid version in package.json: ${packageJson.version}`);
+        process.exit(1);
+      }
+
+      return {
+        major: parsed.major,
+        minor: parsed.minor,
+        patch: parsed.patch
+      };
+    } catch (error) {
+      console.error(`❌ Failed to read package.json: ${error instanceof Error ? error.message : String(error)}`);
+      process.exit(1);
+    }
+  }
 }
 
 function printUsage() {
-  console.error('Usage: node get-next-prerelease-version.js --package <package-name> --preid <preid> [--package-json <path>]');
+  console.error('Usage: node get-next-prerelease-version.js --package <package-name> --preid <preid>');
   console.error('');
   console.error('Options:');
   console.error('  --package, -p: NPM package name (e.g., @fluentui/react-icons)');
   console.error('  --preid: Prerelease identifier (e.g., alpha, beta, rc)');
-  console.error('  --package-json: Optional path to package.json (relative to script directory)');
-  console.error('                  Default: ../../packages/react-icons/package.json');
   console.error('  --help, -h: Show this help message');
 }
 
@@ -159,23 +190,28 @@ function getLatestPrereleaseVersion(packageInfo, preid) {
 }
 
 /**
- * @param {string} packageJsonRelativePath
- * @returns {{major: number, minor: number, patch: number}}
+ * Find package.json path in workspace using nx show project
+ * @param {string} packageName
+ * @returns {string}
  */
-function getBaseVersion(packageJsonRelativePath) {
-  const resolvedPath = path.join(__dirname, packageJsonRelativePath);
-  const packageJson = JSON.parse(fs.readFileSync(resolvedPath, 'utf8'));
-  const parsed = parseVersion(packageJson.version);
+function findPackageJson(packageName) {
+  try {
+    // Use nx show project to get project root
+    const result = execSync(`npx nx show project ${packageName} --json`, {
+      encoding: 'utf8',
+      stdio: ['pipe', 'pipe', 'pipe'] // Suppress stderr
+    });
 
-  if (!parsed) {
-    throw new Error(`Invalid version in package.json: ${packageJson.version}`);
+    const projectInfo = JSON.parse(result);
+
+    if (!projectInfo || !projectInfo.root) {
+      throw new Error(`Could not determine root for project: ${packageName}`);
+    }
+
+    return path.join(projectInfo.root, 'package.json');
+  } catch (error) {
+    throw new Error(`Failed to locate package ${packageName}: ${error instanceof Error ? error.message : String(error)}`);
   }
-
-  return {
-    major: parsed.major,
-    minor: parsed.minor,
-    patch: parsed.patch
-  };
 }
 
 /**
@@ -186,45 +222,37 @@ function getBaseVersion(packageJsonRelativePath) {
  */
 function incrementPrerelease(latestPrerelease, baseVersion, preid) {
   if (!latestPrerelease) {
-    // No existing prerelease, increment patch and start with .0
+    // No existing prerelease, increment patch from base version
     return `${baseVersion.major}.${baseVersion.minor}.${baseVersion.patch + 1}-${preid}.0`;
   }
 
-  // Check if base version has changed or is greater
-  if (latestPrerelease.major < baseVersion.major ||
-      latestPrerelease.minor < baseVersion.minor ||
-      latestPrerelease.patch < baseVersion.patch) {
-    // Base version is newer, increment patch and start new prerelease sequence
+  // Check if base version is newer than latest prerelease
+  if (baseVersion.major > latestPrerelease.major ||
+      (baseVersion.major === latestPrerelease.major && baseVersion.minor > latestPrerelease.minor) ||
+      (baseVersion.major === latestPrerelease.major && baseVersion.minor === latestPrerelease.minor && baseVersion.patch > latestPrerelease.patch)) {
+    // Base version is newer, increment patch from base version
     return `${baseVersion.major}.${baseVersion.minor}.${baseVersion.patch + 1}-${preid}.0`;
   }
 
-  // Check if we're on the same base version
-  if (latestPrerelease.major === baseVersion.major &&
-      latestPrerelease.minor === baseVersion.minor &&
-      latestPrerelease.patch === baseVersion.patch) {
-    // Same base version, just increment prerelease number
-    return `${baseVersion.major}.${baseVersion.minor}.${baseVersion.patch}-${preid}.${(latestPrerelease.prerelease ?? 0) + 1}`;
-  }
-
-  // Latest prerelease is ahead of base version, continue from there
+  // Continue from latest prerelease, just increment prerelease number
   return `${latestPrerelease.major}.${latestPrerelease.minor}.${latestPrerelease.patch}-${preid}.${(latestPrerelease.prerelease ?? 0) + 1}`;
 }
 
 async function main() {
-  const { packageName, preid, packageJsonPath } = processArgs();
+  const { packageName, preid, baseVersion } = processArgs();
 
   try {
     console.error(`📦 Fetching latest ${preid} prerelease version for ${packageName} from npm...`);
 
     const packageInfo = await fetchPackageInfo(packageName);
     const latestPrerelease = getLatestPrereleaseVersion(packageInfo, preid);
-    const baseVersion = getBaseVersion(packageJsonPath);
 
     if (latestPrerelease) {
       console.error(`📌 Latest ${preid} version: ${latestPrerelease.full}`);
     } else {
       console.error(`📌 No existing ${preid} versions found`);
     }
+    console.error(`📋 Base version from package.json: ${baseVersion.major}.${baseVersion.minor}.${baseVersion.patch}`);
 
     const nextVersion = incrementPrerelease(latestPrerelease, baseVersion, preid);
     console.error(`🚀 Next version: ${nextVersion}`);
