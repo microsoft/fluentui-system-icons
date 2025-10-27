@@ -14,7 +14,7 @@ Fluent System Icons are a collection of familiar, friendly, and modern icons fro
 User story
 ---
 
-`@fluentui/react-icons` are SVG based icons wrapped in a React element. Because each icon is its own element, you only need to import what you need for your application. 
+`@fluentui/react-icons` are SVG based icons wrapped in a React element. Because each icon is its own element, you only need to import what you need for your application.
 
 There are two different states of each icon, `Filled` and `Regular`, so you can choose what works best for your application. These are by default sized to `1em`, and can be scaled up or down to suit your developer needs.
 
@@ -24,7 +24,7 @@ There are also helpful interfaces that will allow you to add styling to fit the 
 
 User flows
 ---
-In order to use these icons, simply import them as `import { [Componentname][state] } from @fluentui/react-icons` as follows: 
+In order to use these icons, simply import them as `import { [Componentname][state] } from @fluentui/react-icons` as follows:
 
 ```tsx
 import { AccessTimeFilled } from "@fluentui/react-icons";
@@ -47,8 +47,8 @@ If you would like to get the bundled icon without any of the default styling, th
 ```tsx
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { 
-    AccessTimeFilled, 
+import {
+    AccessTimeFilled,
     AccessTimeRegular,
     bundleIcon,
     iconFilledClassName,
@@ -81,7 +81,7 @@ const styles = useIconStyles();
 ReactDOM.render(
     <div className={styles.icon}>
         <AccessTime aria-label="AccessTime" {...iconStyleProps} />
-    </div>, 
+    </div>,
     rootElement
     )
 ```
@@ -101,6 +101,32 @@ module.exports = {
 ```
 
 If you do choose this route, you may wish to use `@fluentui/react-icons-font-subsetting-webpack-plugin` to optimize the font assets.
+
+## API Contract
+
+> [!IMPORTANT]
+> This library does not strictly follow semantic versioning. Breaking changes may occur in patch releases.
+
+### Versioning Strategy
+
+Due to the monorepo architecture, all packages share a unified release cycle. Both minor (feature additions) and patch (bug fixes and icon updates) changes are released as **PATCH version bumps only**. This means:
+
+- `2.0.X` → `2.0.Y` may include new features, icon additions, or breaking changes
+- Major version bumps (`2.X.X` → `3.0.0`) are reserved for significant API redesigns
+
+### Breaking Changes
+
+While we strive to maintain API stability, there are two scenarios where breaking changes can occur outside of major version updates:
+
+1. **Icon Removal**: Icons may be removed from the library due to legal or licensing issues. When an icon asset is removed, any code importing that icon will break.
+
+2. **Icon Renaming**: Icons may be renamed to better reflect their purpose or to align with design system updates. This will break existing imports that reference the old icon name.
+
+These are the only two types of breaking changes that deviate from standard semantic versioning practices. All other aspects of our API contract follow semantic versioning conventions - meaning additions, bug fixes, and internal improvements will not break your existing code.
+
+> **💡 NOTE:** We could remedy these breaking change scenarios by providing empty icon placeholders, but we believe a failing build pipeline is preferable to silently shipping invalid UI with blank icons to your users.
+
+**Recommendation**: When upgrading, even for patch versions, review the release notes for any removed or renamed icons to ensure your application isn't affected.
 
 Viewing the icons in a webpage
 ---
