@@ -38,12 +38,13 @@ function processArgs(){
         },
         preid: {
           type: 'string',
-          short: 'r',
         },
         'package-json': {
-          type: 'string',
-          short: 'j',
-          default: '../../packages/react-icons/package.json',
+          type: 'string'
+        },
+        help: {
+          type: 'boolean',
+          short: 'h',
         },
       },
     });
@@ -51,14 +52,13 @@ function processArgs(){
   } catch (error) {
     console.error('Error parsing arguments:', error instanceof Error ? error.message : String(error));
     console.error('');
-    console.error('Usage: node get-next-prerelease-version.js --package <package-name> --preid <preid> [--package-json <path>]');
-    console.error('');
-    console.error('Options:');
-    console.error('  --package, -p: NPM package name (e.g., @fluentui/react-icons)');
-    console.error('  --preid, -r: Prerelease identifier (e.g., alpha, beta, rc)');
-    console.error('  --package-json, -j: Optional path to package.json (relative to script directory)');
-    console.error('                      Default: ../../packages/react-icons/package.json');
+    printUsage();
     process.exit(1);
+  }
+
+  if (options.help) {
+    printUsage();
+    process.exit(0);
   }
 
   const packageName = options.package;
@@ -66,17 +66,22 @@ function processArgs(){
   const packageJsonPath = options['package-json'];
 
   if (!packageName || !preid) {
-    console.error('Usage: node get-next-prerelease-version.js --package <package-name> --preid <preid> [--package-json <path>]');
-    console.error('');
-    console.error('Options:');
-    console.error('  --package, -p: NPM package name (e.g., @fluentui/react-icons)');
-    console.error('  --preid, -r: Prerelease identifier (e.g., alpha, beta, rc)');
-    console.error('  --package-json, -j: Optional path to package.json (relative to script directory)');
-    console.error('                      Default: ../../packages/react-icons/package.json');
+    printUsage();
     process.exit(1);
   }
 
   return { packageName, preid, packageJsonPath: packageJsonPath ?? '../../packages/react-icons/package.json' };
+}
+
+function printUsage() {
+  console.error('Usage: node get-next-prerelease-version.js --package <package-name> --preid <preid> [--package-json <path>]');
+  console.error('');
+  console.error('Options:');
+  console.error('  --package, -p: NPM package name (e.g., @fluentui/react-icons)');
+  console.error('  --preid: Prerelease identifier (e.g., alpha, beta, rc)');
+  console.error('  --package-json: Optional path to package.json (relative to script directory)');
+  console.error('                  Default: ../../packages/react-icons/package.json');
+  console.error('  --help, -h: Show this help message');
 }
 
 /**
@@ -217,8 +222,9 @@ async function main() {
     const nextVersion = incrementPrerelease(latestPrerelease, baseVersion, preid);
     console.error(`🚀 Next version: ${nextVersion}`);
 
-    // Output to stdout for use in workflow
+    // IMPORTANT: Output to stdout for use in workflow
     console.log(nextVersion);
+    // This output will be captured by the GitHub Actions workflow
 
   } catch (error) {
     console.error('❌ Error:', error instanceof Error ? error.message : String(error));
