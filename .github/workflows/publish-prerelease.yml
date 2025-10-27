@@ -20,6 +20,7 @@ on:
 
 jobs:
   publish-prerelease:
+    if: ${{ github.repository_owner == 'microsoft' }}
     name: Publish @fluentui/react-icons prerelease
     runs-on: ubuntu-latest
 
@@ -52,7 +53,7 @@ jobs:
       - name: Calculate next prerelease version
         id: next-version
         run: |
-          NEXT_VERSION=$(node .github/scripts/get-next-prerelease-version.js --package @fluentui/react-icons --preid ${{ inputs.preid }})
+          NEXT_VERSION=$(node .github/scripts/get-next-prerelease-version.js --package @fluentui/react-icons --preid "${{ inputs.preid }}")
           echo "version=$NEXT_VERSION" >> $GITHUB_OUTPUT
           echo "📦 Next version will be: $NEXT_VERSION"
 

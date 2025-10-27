@@ -70,6 +70,13 @@ function processArgs(){
     process.exit(1);
   }
 
+  // Validate preid to prevent injection attacks
+  const VALID_PREIDS = ['alpha', 'beta', 'rc'];
+  if (!VALID_PREIDS.includes(preid)) {
+    console.error(`❌ Invalid preid: "${preid}". Must be one of: ${VALID_PREIDS.join(', ')}`);
+    process.exit(1);
+  }
+
   return { packageName, preid, packageJsonPath: packageJsonPath ?? '../../packages/react-icons/package.json' };
 }
 
