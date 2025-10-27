@@ -4,6 +4,8 @@
 /.github/workflows/copilot-setup-steps.yml @microsoft/cxe-prg
 /.github/workflows/pr.yml @microsoft/cxe-prg @spencer-nelson
 /.github/workflows/publish.yml @microsoft/cxe-prg @spencer-nelson
+/.github/workflows/publish-prerelease.yml @microsoft/cxe-prg
+/.github/scripts @microsoft/cxe-prg
 AGENTS.md @microsoft/cxe-prg
 
 ## packages
