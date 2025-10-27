@@ -47,6 +47,7 @@ If you would like to get the bundled icon without any of the default styling, th
 ```tsx
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+
 import {
     AccessTimeFilled,
     AccessTimeRegular,
