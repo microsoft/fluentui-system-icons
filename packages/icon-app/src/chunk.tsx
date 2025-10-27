@@ -10,12 +10,12 @@ export function Chunk(){
         <IconCell
             FontIcon={EmojiSmileSlightRegularFont}
             SvgIcon={EmojiSmileSlightRegular}
-            name="Chunk"
+            name="Chunk/EmojiSmileSlightRegular"
         />
         <IconCell
             FontIcon={MeetNowRegularFont}
             SvgIcon={MeetNowRegular}
-            name="Chunk"
+            name="Chunk/MeetNowRegular"
         />
         </>
     );

@@ -12,12 +12,12 @@ export function Atoms(){
         <IconCell
             FontIcon={EmojiSmileSlightRegularFont}
             SvgIcon={EmojiSmileSlightRegular}
-            name="Atoms"
+            name="Atoms/EmojiSmileSlightRegular"
         />
         <IconCell
             FontIcon={MeetNowRegularFont}
             SvgIcon={MeetNowRegular}
-            name="Atoms"
+            name="Atoms/MeetNowRegular"
         />
         </>
     );
