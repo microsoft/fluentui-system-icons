@@ -5,6 +5,9 @@
     "packages/*",
     "importer"
   ],
+  "engines": {
+    "node": "^20.0.0 || ^22.0.0"
+  },
   "description": "![CI](https://github.com/microsoft/fluentui-system-icons/workflows/CI/badge.svg)",
   "version": "1.0.0",
   "main": "index.js",
