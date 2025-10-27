@@ -32,6 +32,11 @@ jobs:
     - uses: actions/checkout@v4
       with:
         token: ${{ steps.generate-token.outputs.token }}
+        fetch-tags: true
+
+    # TODO: Remove once the issue with shallow clones is fixed
+    - name: Check recent tags
+      run: git tag -l --sort=-creatordate | head -n 5
 
     - name: Bump version patch
       run: |
@@ -177,8 +182,8 @@ jobs:
     # NX Release
     - name: react-icons prepare release
       run: |
-        npx nx release version $REACT_VERSION
-        npx nx release changelog $REACT_VERSION --from $CURRENT_VERSION --no-git-tag --no-git-commit
+        npx nx release version $REACT_VERSION --verbose
+        npx nx release changelog $REACT_VERSION --from $CURRENT_VERSION --no-git-tag --no-git-commit --verbose
 
     - uses: JS-DevTools/npm-publish@v1
       with:
