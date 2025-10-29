@@ -177,7 +177,7 @@ jobs:
     - name: Build React library
       run: |
         npx nx run react-icons:build
-        npx nx run react-icons:build:verify -u
+        npx nx run react-icons:build-verify -u
 
     # NX Release
     - name: react-icons prepare release

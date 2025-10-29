@@ -228,7 +228,7 @@ jobs:
     # svg-sprites:build doesn't work and is missing owner, -> exclude
       run: |
         npx nx affected -t build --exclude='svg-icons,svg-sprites'
-        npx nx affected -t build:verify --exclude='svg-icons,svg-sprites'
+        npx nx affected -t build-verify --exclude='svg-icons,svg-sprites'
 
     - name: Test
       run: npx nx affected -t test --exclude='svg-icons,svg-sprites'
