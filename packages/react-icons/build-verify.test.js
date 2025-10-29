@@ -1331,7 +1331,7 @@ describe('Build Verification', () => {
         const jsContent = await readFile(jsFile, 'utf8');
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
-          "... (44 export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))
+          "... (45 export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))
           "use client";
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
@@ -1430,28 +1430,28 @@ describe('Build Verification', () => {
           export const BackpackAddRegular = ( /*#__PURE__*/createFluentFontIcon("BackpackAddRegular", "", 2, undefined));
           export const BackspaceFilled = ( /*#__PURE__*/createFluentFontIcon("BackspaceFilled", "", 2, undefined));
           export const BackspaceRegular = ( /*#__PURE__*/createFluentFontIcon("BackspaceRegular", "", 2, undefined));
-          export const CalculatorFilled = ( /*#__PURE__*/createFluentFontIcon("CalculatorFilled", "", 2, undefined));
-          export const CalculatorRegular = ( /*#__PURE__*/createFluentFontIcon("CalculatorRegular", "", 2, undefined));
-          export const CalculatorArrowClockwiseFilled = ( /*#__PURE__*/createFluentFontIcon("CalculatorArrowClockwiseFilled", "", 2, undefined));
-          export const CalculatorArrowClockwiseRegular = ( /*#__PURE__*/createFluentFontIcon("CalculatorArrowClockwiseRegular", "", 2, undefined));
-          export const CalculatorMultipleFilled = ( /*#__PURE__*/createFluentFontIcon("CalculatorMultipleFilled", "", 2, undefined));
-          export const CalculatorMultipleRegular = ( /*#__PURE__*/createFluentFontIcon("CalculatorMultipleRegular", "", 2, undefined));
-          export const CalendarFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarFilled", "", 2, undefined, { flipInRtl: true }));
-          export const CalendarRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarRegular", "", 2, undefined, { flipInRtl: true }));
-          export const Calendar3DayFilled = ( /*#__PURE__*/createFluentFontIcon("Calendar3DayFilled", "", 2, undefined));
-          export const Calendar3DayRegular = ( /*#__PURE__*/createFluentFontIcon("Calendar3DayRegular", "", 2, undefined));
-          export const CalendarAddFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarAddFilled", "", 2, undefined));
-          export const CalendarAddRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarAddRegular", "", 2, undefined));
-          export const CalendarAgendaFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarAgendaFilled", "", 2, undefined));
-          export const CalendarAgendaRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarAgendaRegular", "", 2, undefined));
-          export const CalendarArrowCounterclockwiseFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowCounterclockwiseFilled", "", 2, undefined));
-          export const CalendarArrowCounterclockwiseRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowCounterclockwiseRegular", "", 2, undefined));
-          export const CalendarArrowDownFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowDownFilled", "", 2, undefined));
-          export const CalendarArrowDownRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowDownRegular", "", 2, undefined));
-          export const CalendarArrowRepeatAllFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRepeatAllFilled", "", 2, undefined));
-          export const CalendarArrowRepeatAllRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRepeatAllRegular", "", 2, undefined));
-          export const CalendarArrowRightFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRightFilled", "", 2, undefined));
-          export const CalendarArrowRightRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRightRegular", "", 2, undefined));
+          export const CalculatorFilled = ( /*#__PURE__*/createFluentFontIcon("CalculatorFilled", "", 2, undefined));
+          export const CalculatorRegular = ( /*#__PURE__*/createFluentFontIcon("CalculatorRegular", "", 2, undefined));
+          export const CalculatorArrowClockwiseFilled = ( /*#__PURE__*/createFluentFontIcon("CalculatorArrowClockwiseFilled", "", 2, undefined));
+          export const CalculatorArrowClockwiseRegular = ( /*#__PURE__*/createFluentFontIcon("CalculatorArrowClockwiseRegular", "", 2, undefined));
+          export const CalculatorMultipleFilled = ( /*#__PURE__*/createFluentFontIcon("CalculatorMultipleFilled", "", 2, undefined));
+          export const CalculatorMultipleRegular = ( /*#__PURE__*/createFluentFontIcon("CalculatorMultipleRegular", "", 2, undefined));
+          export const CalendarFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarFilled", "", 2, undefined, { flipInRtl: true }));
+          export const CalendarRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarRegular", "", 2, undefined, { flipInRtl: true }));
+          export const Calendar3DayFilled = ( /*#__PURE__*/createFluentFontIcon("Calendar3DayFilled", "", 2, undefined));
+          export const Calendar3DayRegular = ( /*#__PURE__*/createFluentFontIcon("Calendar3DayRegular", "", 2, undefined));
+          export const CalendarAddFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarAddFilled", "", 2, undefined));
+          export const CalendarAddRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarAddRegular", "", 2, undefined));
+          export const CalendarAgendaFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarAgendaFilled", "", 2, undefined));
+          export const CalendarAgendaRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarAgendaRegular", "", 2, undefined));
+          export const CalendarArrowCounterclockwiseFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowCounterclockwiseFilled", "", 2, undefined));
+          export const CalendarArrowCounterclockwiseRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowCounterclockwiseRegular", "", 2, undefined));
+          export const CalendarArrowDownFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowDownFilled", "", 2, undefined));
+          export const CalendarArrowDownRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowDownRegular", "", 2, undefined));
+          export const CalendarArrowRepeatAllFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRepeatAllFilled", "", 2, undefined));
+          export const CalendarArrowRepeatAllRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRepeatAllRegular", "", 2, undefined));
+          export const CalendarArrowRightFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRightFilled", "", 2, undefined));
+          export const CalendarArrowRightRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRightRegular", "", 2, undefined));
           ... (content truncated for snapshot)"
         `);
 
@@ -1524,25 +1524,25 @@ describe('Build Verification', () => {
           exports.BackpackAddRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackpackAddRegular", "", 2, undefined));
           exports.BackspaceFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackspaceFilled", "", 2, undefined));
           exports.BackspaceRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackspaceRegular", "", 2, undefined));
-          exports.CalculatorFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorFilled", "", 2, undefined));
-          exports.CalculatorRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorRegular", "", 2, undefined));
-          exports.CalculatorArrowClockwiseFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorArrowClockwiseFilled", "", 2, undefined));
-          exports.CalculatorArrowClockwiseRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorArrowClockwiseRegular", "", 2, undefined));
-          exports.CalculatorMultipleFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorMultipleFilled", "", 2, undefined));
-          exports.CalculatorMultipleRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorMultipleRegular", "", 2, undefined));
-          exports.CalendarFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarFilled", "", 2, undefined, { flipInRtl: true }));
-          exports.CalendarRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarRegular", "", 2, undefined, { flipInRtl: true }));
-          exports.Calendar3DayFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Calendar3DayFilled", "", 2, undefined));
-          exports.Calendar3DayRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Calendar3DayRegular", "", 2, undefined));
-          exports.CalendarAddFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAddFilled", "", 2, undefined));
-          exports.CalendarAddRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAddRegular", "", 2, undefined));
-          exports.CalendarAgendaFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAgendaFilled", "", 2, undefined));
-          exports.CalendarAgendaRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAgendaRegular", "", 2, undefined));
-          exports.CalendarArrowCounterclockwiseFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowCounterclockwiseFilled", "", 2, undefined));
-          exports.CalendarArrowCounterclockwiseRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowCounterclockwiseRegular", "", 2, undefined));
-          exports.CalendarArrowDownFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowDownFilled", "", 2, undefined));
-          exports.CalendarArrowDownRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowDownRegular", "", 2, undefined));
-          exports.CalendarArrowRepeatAllFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowRepeatAllFilled", "", 2, undefined));
+          exports.CalculatorFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorFilled", "", 2, undefined));
+          exports.CalculatorRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorRegular", "", 2, undefined));
+          exports.CalculatorArrowClockwiseFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorArrowClockwiseFilled", "", 2, undefined));
+          exports.CalculatorArrowClockwiseRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorArrowClockwiseRegular", "", 2, undefined));
+          exports.CalculatorMultipleFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorMultipleFilled", "", 2, undefined));
+          exports.CalculatorMultipleRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorMultipleRegular", "", 2, undefined));
+          exports.CalendarFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarFilled", "", 2, undefined, { flipInRtl: true }));
+          exports.CalendarRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarRegular", "", 2, undefined, { flipInRtl: true }));
+          exports.Calendar3DayFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Calendar3DayFilled", "", 2, undefined));
+          exports.Calendar3DayRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Calendar3DayRegular", "", 2, undefined));
+          exports.CalendarAddFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAddFilled", "", 2, undefined));
+          exports.CalendarAddRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAddRegular", "", 2, undefined));
+          exports.CalendarAgendaFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAgendaFilled", "", 2, undefined));
+          exports.CalendarAgendaRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAgendaRegular", "", 2, undefined));
+          exports.CalendarArrowCounterclockwiseFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowCounterclockwiseFilled", "", 2, undefined));
+          exports.CalendarArrowCounterclockwiseRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowCounterclockwiseRegular", "", 2, undefined));
+          exports.CalendarArrowDownFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowDownFilled", "", 2, undefined));
+          exports.CalendarArrowDownRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowDownRegular", "", 2, undefined));
+          exports.CalendarArrowRepeatAllFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowRepeatAllFilled", "", 2, undefined));
           ... (content truncated for snapshot)"
         `);
 
