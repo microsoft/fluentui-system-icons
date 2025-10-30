@@ -1,65 +1,74 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
-const fs = require("fs");
-const path = require("path");
-const argv = require("yargs").boolean("selector").default("selector", false).argv;
-const _ = require("lodash");
-const { createFormatMetadata, writeMetadata } = require("./convert.utils");
+// @ts-check
 
-const SRC_PATH = argv.source;
-const DEST_PATH = argv.dest;
-const RTL_FILE = argv.rtl;
-const METADATA_PATH = argv.metadata;
+const fs = require('fs');
+const { readdir } = require('fs/promises');
+const path = require('path');
+const yargs = require('yargs');
+const { makeIconExport, getCreateFluentIconHeader, loadRtlMetadata, generatePerIconFiles } = require('./convert.utils');
+const { createFormatMetadata, writeMetadata } = require('./metadata.utils');
 
-if (!SRC_PATH) {
-  throw new Error("Icon source folder not specified by --source");
-}
-if (!DEST_PATH) {
-  throw new Error("Output destination folder not specified by --dest");
+if (require.main === module) {
+  main().catch((err) => {
+    console.error('[svg generation] failed:', err);
+    process.exit(1);
+  });
 }
 
-if (!RTL_FILE) {
-  throw new Error("RTL file not specified by --rtl");
+async function main() {
+  const { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH, PER_ICON_DEST } = parseArgs(process.argv.slice(2));
+  const srcFiles = await processSourceDir(SRC_PATH);
+  const rtlMetadata = loadRtlMetadata(RTL_FILE);
+
+  // 1. Generate chunks
+  const { svgMetadata: chunkMetadata } = processPerChunk(srcFiles, DEST_PATH, rtlMetadata);
+
+  // 2. Generate per-icon output
+  const perIconMetadataPath = METADATA_PATH.replace(/\.json$/, '.atom.json');
+  const { svgMetadata: perIconMetadata } = await processPerIcon(srcFiles, PER_ICON_DEST, rtlMetadata);
+
+  writeMetadata(METADATA_PATH, chunkMetadata);
+  writeMetadata(perIconMetadataPath, perIconMetadata);
+
+  console.log(
+    `[svg generation] Finished chunk + per-icon outputs. Chunk dest: ${DEST_PATH} | Per-icon dest: ${PER_ICON_DEST}`,
+  );
 }
 
-if (!METADATA_PATH) {
-  throw new Error("Metadata output file not specified by --metadata");
-}
+/**
+ *
+ * @typedef {Awaited<ReturnType<typeof processSourceDir>>} SourceFiles
+ */
 
-if (!fs.existsSync(DEST_PATH)) {
-  fs.mkdirSync(DEST_PATH);
-}
-
-processFiles(SRC_PATH, DEST_PATH, METADATA_PATH).catch(err => {
-  console.error('Error processing files:', err);
-  process.exit(1);
-});
-
-async function processFiles(src, dest, metadataPath) {
+/**
+ * @param {SourceFiles} sourceFiles
+ * @param {string} dest
+ * @param {Record<string, any>} rtlMetadata
+ */
+function processPerChunk(sourceFiles, dest, rtlMetadata) {
   /** @type string[] */
   const indexContents = [];
 
   // Collect all SVG metadata
-  /** @type {import('./convert.utils').IconMetadataCollection} */
+  /** @type {import('./metadata.utils').IconMetadataCollection} */
   const svgMetadata = {};
 
   // make file for resizeable icons
-  const iconPath = path.join(dest, 'icons')
-  const { content: iconContents, iconNames: resizableIconNames } = processFolder(src, dest, true)
+  const iconPath = path.join(dest, 'icons');
+  const { content: iconContents, iconNames: resizableIconNames } = processFolder(sourceFiles, rtlMetadata, true);
 
   if (fs.existsSync(iconPath)) {
-    fs.rmSync(iconPath, { recursive: true, force: true } );
+    fs.rmSync(iconPath, { recursive: true, force: true });
   }
   fs.mkdirSync(iconPath);
 
   iconContents.forEach((chunk, i) => {
-    const chunkFileName = `chunk-${i}`
+    const chunkFileName = `chunk-${i}`;
     const chunkPath = path.resolve(iconPath, `${chunkFileName}.tsx`);
     indexContents.push(`export * from './icons/${chunkFileName}'`);
-    fs.writeFileSync(chunkPath, chunk, (err) => {
-      if (err) throw err;
-    });
+    fs.writeFileSync(chunkPath, chunk);
   });
 
   // Create SVG metadata for resizable icons
@@ -67,46 +76,38 @@ async function processFiles(src, dest, metadataPath) {
 
   // make file for sized icons
   const sizedIconPath = path.join(dest, 'sizedIcons');
-  const { content: sizedIconContents, iconNames: sizedIconNames } = processFolder(src, dest, false)
+  const { content: sizedIconContents, iconNames: sizedIconNames } = processFolder(sourceFiles, rtlMetadata, false);
   if (fs.existsSync(sizedIconPath)) {
-    fs.rmSync(sizedIconPath, { recursive: true, force: true } );
+    fs.rmSync(sizedIconPath, { recursive: true, force: true });
   }
   fs.mkdirSync(sizedIconPath);
 
   sizedIconContents.forEach((chunk, i) => {
-    const chunkFileName = `chunk-${i}`
+    const chunkFileName = `chunk-${i}`;
     const chunkPath = path.resolve(sizedIconPath, `${chunkFileName}.tsx`);
     indexContents.push(`export * from './sizedIcons/${chunkFileName}'`);
-    fs.writeFileSync(chunkPath, chunk, (err) => {
-      if (err) throw err;
-    });
+    fs.writeFileSync(chunkPath, chunk);
   });
 
   // Create SVG metadata for sized icons
   Object.assign(svgMetadata, createFormatMetadata(sizedIconNames, 'svg', 'sized'));
 
-  const indexPath = path.join(dest, 'index.tsx')
+  const indexPath = path.join(dest, 'index.tsx');
   // Finally add the interface definition and then write out the index.
-  indexContents.push('export { default as wrapIcon } from \'./utils/wrapIcon\'');
-  indexContents.push('export { default as bundleIcon } from \'./utils/bundleIcon\'');
-  indexContents.push('export { createFluentIcon } from \'./utils/createFluentIcon\'');
-  indexContents.push('export * from \'./utils/useIconState\'');
-  indexContents.push('export * from \'./utils/constants\'');
-  indexContents.push('export { IconDirectionContextProvider, useIconContext } from \'./contexts/index\'');
+  indexContents.push("export { default as wrapIcon } from './utils/wrapIcon'");
+  indexContents.push("export { default as bundleIcon } from './utils/bundleIcon'");
+  indexContents.push("export { createFluentIcon } from './utils/createFluentIcon'");
+  indexContents.push("export * from './utils/useIconState'");
+  indexContents.push("export * from './utils/constants'");
+  indexContents.push("export { IconDirectionContextProvider, useIconContext } from './contexts/index'");
   // types
-  indexContents.push('export type { FluentIconsProps } from \'./utils/FluentIconsProps.types\'');
-  indexContents.push('export type { FluentIcon } from \'./utils/createFluentIcon\'');
-  indexContents.push('export type { IconDirectionContextValue } from \'./contexts/index\'');
+  indexContents.push("export type { FluentIconsProps } from './utils/FluentIconsProps.types'");
+  indexContents.push("export type { FluentIcon } from './utils/createFluentIcon'");
+  indexContents.push("export type { IconDirectionContextValue } from './contexts/index'");
 
-  fs.writeFileSync(indexPath, indexContents.join('\n'), (err) => {
-    if (err) throw err;
-  });
+  fs.writeFileSync(indexPath, indexContents.join('\n'));
 
-  // Write SVG metadata
-  if (metadataPath) {
-    await writeMetadata(metadataPath, svgMetadata);
-  }
-
+  return { svgMetadata };
 }
 
 /**
@@ -115,84 +116,141 @@ async function processFiles(src, dest, metadataPath) {
  * @param {boolean} resizable
  * @returns { { content: string[], iconNames: string[] } } - chunked icon files to insert and list of icon names
  */
-function processFolder(srcPath, destPath, resizable) {
-  var files = fs.readdirSync(srcPath)
+/**
+ * @param {SourceFiles} srcFiles
+ * @param {import('./convert.utils').RtlMetadata} rtlMetadata
+ * @param {boolean} resizable
+ */
+function processFolder(srcFiles, rtlMetadata, resizable) {
   /** @type string[] */
   const iconExports = [];
   /** @type string[] */
   const iconNames = [];
-  var metadata = JSON.parse(fs.readFileSync(RTL_FILE, 'utf-8'));
-  //console.log(metadata);
-  files.forEach(function (file, index) {
-    var srcFile = path.join(srcPath, file)
-    if (fs.lstatSync(srcFile).isDirectory() || !file.endsWith('.svg')) {
-      // for now, ignore subdirectories/localization, until we have a plan for handling it
-      // Will likely involve appending the lang/locale to the end of the friendly name for the unique component name
-      // var joinedDestPath = path.join(destPath, file)
-      // if (!fs.existsSync(joinedDestPath)) {
-      //   fs.mkdirSync(joinedDestPath);
-      // }
-      // indexContents += processFolder(srcFile, joinedDestPath)
-    } else {
-      if(resizable && !file.includes("20")) {
-        return
-      }
-      var iconName = file.substring(0, file.length - 4) // strip '.svg'
-      iconName = iconName.replace("ic_fluent_", "") // strip ic_fluent_
-      iconName = resizable ? iconName.replace("20", "") : iconName
-      var destFilename = _.camelCase(iconName) // We want them to be camelCase, so access_time would become accessTime here
-      destFilename = destFilename.replace(destFilename.substring(0, 1), destFilename.substring(0, 1).toUpperCase()) // capitalize the first letter
-      var flipInRtl = metadata[destFilename] === 'mirror';  //checks rtl.json to see if icon is autoflippable
-      let color = iconName.includes("_color") // checks if '_color' is in the path, which means the icon has a color variant
-      var iconContent = fs.readFileSync(srcFile, { encoding: "utf8" })
-      let jsCode = '';
-      const getAttr = (key) => [...iconContent.matchAll(`(?<= ${key}=)".+?"`)].map((v) => v[0]);
-      const width = resizable ? '"1em"' : getAttr("width")[0];
-      const options = flipInRtl && color ? `, { flipInRtl: true, color: true }` : flipInRtl ? `, { flipInRtl: true }` : color ? `, { color: true }` : '';
 
-      if (color) {
-        // For color icons, extract the entire SVG inner content
-        const innerSvg = iconContent.replace(/^[\s\S]*?<svg[^>]*>/, '').replace(/<\/svg>[\s\S]*$/, '').trim();
-        jsCode = `export const ${destFilename}: FluentIcon = (/*#__PURE__*/createFluentIcon('${destFilename}', ${width}, \`${innerSvg}\`${options}));`
-      } else {
-        // For non-color icons, keep the old path-based approach
-        const paths = getAttr("d").join(',');
-        jsCode = `export const ${destFilename}: FluentIcon = (/*#__PURE__*/createFluentIcon('${destFilename}', ${width}, [${paths}]${options}));`
-      }
-      iconExports.push(jsCode);
-      iconNames.push(destFilename);
+  srcFiles.forEach(function (entry) {
+    if (resizable && !entry.file.includes('20')) {
+      return;
+    }
+
+    const result = makeIconExport({ file: entry.file, srcFile: entry.srcFile, resizable, metadata: rtlMetadata });
+    if (result) {
+      iconExports.push(result.exportCode);
+      iconNames.push(result.exportName);
     }
   });
 
   // chunk all icons into separate files to keep build reasonably fast
   /** @type string[][] */
   const iconChunks = [];
-  while(iconExports.length > 0) {
+  while (iconExports.length > 0) {
     iconChunks.push(iconExports.splice(0, 1000));
   }
 
-  for(const chunk of iconChunks) {
-    chunk.unshift(`import { createFluentIcon } from "../utils/createFluentIcon";`);
-    chunk.unshift(`import type { FluentIcon } from "../utils/createFluentIcon";`);
-    chunk.unshift(`"use client";`);
+  const chunkHeader = getCreateFluentIconHeader('../utils/createFluentIcon');
+  for (const chunk of iconChunks) {
+    chunk.unshift(...chunkHeader);
   }
 
   /** @type string[] */
-  const chunkContent = iconChunks.map(chunk => chunk.join('\n'));
+  const chunkContent = iconChunks.map((chunk) => chunk.join('\n'));
 
   return { content: chunkContent, iconNames };
 }
 
-function fileTemplate(
-  { template },
-  opts,
-  { imports, interfaces, componentName, props, jsx, exports }
-) {
-  const plugins = ['jsx', 'typescript']
-  const tpl = template.smart({ plugins })
+/**
+ * Per-icon generation (merged from former convert-per-icon.js)
+ * @param {SourceFiles} sourceFiles
+ * @param {string} destPath
+ * @param {import('./convert-font.utils').RtlMetadata} rtlMetadata
+ */
+async function processPerIcon(sourceFiles, destPath, rtlMetadata, options = { groupByBase: true }) {
+  // local clean (synchronous) similar to chunk variant
+  if (fs.existsSync(destPath)) {
+    fs.rmSync(destPath, { recursive: true, force: true });
+  }
+  fs.mkdirSync(destPath, { recursive: true });
 
-  componentName.name = componentName.name.substring(3)
-  componentName.name = componentName.name.replace('IcFluent', '')
+  /** @type {import('./metadata.utils').IconMetadataCollection} */
+  const svgMetadata = {};
 
-	return jsx;
+  // resizable (base 20 variant names with size removed)
+  const resizable = await generatePerIconFiles(sourceFiles, destPath, rtlMetadata, true, options.groupByBase);
+  Object.assign(svgMetadata, createFormatMetadata(resizable.iconNames, 'svg', 'resizable'));
+  // sized (all sizes)
+  const sized = await generatePerIconFiles(sourceFiles, destPath, rtlMetadata, false, options.groupByBase);
+  Object.assign(svgMetadata, createFormatMetadata(sized.iconNames, 'svg', 'sized'));
+
+  console.log(`[svg per-icon] Wrote ${resizable.fileCount + sized.fileCount} icon files to ${destPath}`);
+  return { svgMetadata };
 }
+
+/**
+ *
+ * @param {string} srcPath
+ */
+async function processSourceDir(srcPath) {
+  const srcFiles = await readdir(srcPath);
+  /** @type {{ srcFile: string; file: string; }[]} */
+  const filePaths = [];
+
+  for (const file of srcFiles) {
+    const srcFile = path.join(srcPath, file);
+
+    // for now, ignore subdirectories/localization, until we have a plan for handling it
+    // Will likely involve appending the lang/locale to the end of the friendly name for the unique component name
+    // var joinedDestPath = path.join(destPath, file)
+    // if (!fs.existsSync(joinedDestPath)) {
+    //   fs.mkdirSync(joinedDestPath);
+    // }
+    // indexContents += processFolder(srcFile, joinedDestPath)
+    if (fs.lstatSync(srcFile).isDirectory() || !file.endsWith('.svg')) continue;
+
+    filePaths.push({ srcFile, file });
+  }
+
+  console.info(`[process src]: processed ${filePaths.length} files`);
+
+  return filePaths;
+}
+
+/**
+ *
+ * @param {string[]} argv
+ * @returns
+ */
+function parseArgs(argv) {
+  const args = yargs.parse(argv);
+  const SRC_PATH = /** @type {string} */ (args.source); // path with source svg files
+  const DEST_PATH = /** @type {string} */ (args.dest); // destination folder for chunk output
+  const RTL_FILE = /** @type {string} */ (args.rtl); // rtl metadata json
+  const METADATA_PATH = /** @type {string} */ (args.metadata); // output metadata file
+  const PER_ICON_DEST = /** @type {string} */ (args.perIconDest); // per-icon output folder
+
+  if (!SRC_PATH) {
+    throw new Error('Icon source folder not specified by --source');
+  }
+  if (!DEST_PATH) {
+    throw new Error('Output destination folder not specified by --dest');
+  }
+  if (!PER_ICON_DEST) {
+    throw new Error('Atoms Output destination folder not specified by --perIconDest');
+  }
+  if (!RTL_FILE) {
+    throw new Error('RTL file not specified by --rtl');
+  }
+  if (!METADATA_PATH) {
+    throw new Error('Metadata output file not specified by --metadata');
+  }
+
+  if (!fs.existsSync(DEST_PATH)) {
+    fs.mkdirSync(DEST_PATH, { recursive: true });
+  }
+
+  if (!fs.existsSync(PER_ICON_DEST)) {
+    fs.mkdirSync(PER_ICON_DEST, { recursive: true });
+  }
+
+  return { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH, PER_ICON_DEST };
+}
+
+module.exports = {};
