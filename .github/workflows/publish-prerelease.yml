@@ -34,6 +34,16 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Validate branch
+        run: |
+          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
+            echo "❌ ERROR: Prerelease workflow cannot be run against the main branch" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Please run this workflow on a feature or release branch." >> $GITHUB_STEP_SUMMARY
+            echo "For more information, see: https://github.com/microsoft/fluentui-system-icons/blob/main/packages/react-icons/docs/prerelease.md" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:

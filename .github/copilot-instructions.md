@@ -86,3 +86,7 @@ For that reason we are not able to use specific git tags for `@fluentui/react-ic
 > **NOTE:** Why `"projectsRelationship": "independent",` is used in `nx.json` for react-icons release?
 >
 > While the repo is on `fixed` release schema, we need to use independent to ignore commits that did not modify files in `packages/react-icons/`.
+
+#### react-icons Prerelease Publishing
+
+Prerelease versions of `@fluentui/react-icons` can be published via GitHub Actions workflow to allow testing and validation before official releases. See [prerelease publishing instructions](../packages//react-icons/docs/prerelease.md).
