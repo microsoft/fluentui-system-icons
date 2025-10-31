@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Check,check,20,filled,ic_fluent_check_20_filled.svg,Check/SVG/ic_fluent_check_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Check/SVG/ic_fluent_check_20_filled.svg
+Check,check,20,regular,ic_fluent_check_20_regular.svg,Check/SVG/ic_fluent_check_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Check/SVG/ic_fluent_check_20_regular.svg
+Check,check,24,filled,ic_fluent_check_24_filled.svg,Check/SVG/ic_fluent_check_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Check/SVG/ic_fluent_check_24_filled.svg
+Check,check,24,regular,ic_fluent_check_24_regular.svg,Check/SVG/ic_fluent_check_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Check/SVG/ic_fluent_check_24_regular.svg

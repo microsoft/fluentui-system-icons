@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Circle Small,circle_small,20,filled,ic_fluent_circle_small_20_filled.svg,Circle Small/SVG/ic_fluent_circle_small_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Circle%20Small/SVG/ic_fluent_circle_small_20_filled.svg
+Circle Small,circle_small,20,regular,ic_fluent_circle_small_20_regular.svg,Circle Small/SVG/ic_fluent_circle_small_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Circle%20Small/SVG/ic_fluent_circle_small_20_regular.svg
+Circle Small,circle_small,24,filled,ic_fluent_circle_small_24_filled.svg,Circle Small/SVG/ic_fluent_circle_small_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Circle%20Small/SVG/ic_fluent_circle_small_24_filled.svg
+Circle Small,circle_small,24,regular,ic_fluent_circle_small_24_regular.svg,Circle Small/SVG/ic_fluent_circle_small_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Circle%20Small/SVG/ic_fluent_circle_small_24_regular.svg

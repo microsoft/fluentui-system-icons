@@ -1,0 +1,3 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Glance Default,glance_default,12,filled,ic_fluent_glance_default_12_filled.svg,Glance Default/SVG/ic_fluent_glance_default_12_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Glance%20Default/SVG/ic_fluent_glance_default_12_filled.svg
+Glance Default,glance_default,12,regular,ic_fluent_glance_default_12_regular.svg,Glance Default/SVG/ic_fluent_glance_default_12_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Glance%20Default/SVG/ic_fluent_glance_default_12_regular.svg

@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Phone Update,phone_update,20,filled,ic_fluent_phone_update_20_filled.svg,Phone Update/SVG/ic_fluent_phone_update_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Phone%20Update/SVG/ic_fluent_phone_update_20_filled.svg
+Phone Update,phone_update,20,regular,ic_fluent_phone_update_20_regular.svg,Phone Update/SVG/ic_fluent_phone_update_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Phone%20Update/SVG/ic_fluent_phone_update_20_regular.svg
+Phone Update,phone_update,24,filled,ic_fluent_phone_update_24_filled.svg,Phone Update/SVG/ic_fluent_phone_update_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Phone%20Update/SVG/ic_fluent_phone_update_24_filled.svg
+Phone Update,phone_update,24,regular,ic_fluent_phone_update_24_regular.svg,Phone Update/SVG/ic_fluent_phone_update_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Phone%20Update/SVG/ic_fluent_phone_update_24_regular.svg

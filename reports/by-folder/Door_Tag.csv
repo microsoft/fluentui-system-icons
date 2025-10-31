@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Door Tag,door_tag,20,filled,ic_fluent_door_tag_20_filled.svg,Door Tag/SVG/ic_fluent_door_tag_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Door%20Tag/SVG/ic_fluent_door_tag_20_filled.svg
+Door Tag,door_tag,20,regular,ic_fluent_door_tag_20_regular.svg,Door Tag/SVG/ic_fluent_door_tag_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Door%20Tag/SVG/ic_fluent_door_tag_20_regular.svg
+Door Tag,door_tag,24,filled,ic_fluent_door_tag_24_filled.svg,Door Tag/SVG/ic_fluent_door_tag_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Door%20Tag/SVG/ic_fluent_door_tag_24_filled.svg
+Door Tag,door_tag,24,regular,ic_fluent_door_tag_24_regular.svg,Door Tag/SVG/ic_fluent_door_tag_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Door%20Tag/SVG/ic_fluent_door_tag_24_regular.svg

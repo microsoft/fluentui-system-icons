@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Receipt Bag,receipt_bag,20,filled,ic_fluent_receipt_bag_20_filled.svg,Receipt Bag/SVG/ic_fluent_receipt_bag_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Receipt%20Bag/SVG/ic_fluent_receipt_bag_20_filled.svg
+Receipt Bag,receipt_bag,20,regular,ic_fluent_receipt_bag_20_regular.svg,Receipt Bag/SVG/ic_fluent_receipt_bag_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Receipt%20Bag/SVG/ic_fluent_receipt_bag_20_regular.svg
+Receipt Bag,receipt_bag,24,filled,ic_fluent_receipt_bag_24_filled.svg,Receipt Bag/SVG/ic_fluent_receipt_bag_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Receipt%20Bag/SVG/ic_fluent_receipt_bag_24_filled.svg
+Receipt Bag,receipt_bag,24,regular,ic_fluent_receipt_bag_24_regular.svg,Receipt Bag/SVG/ic_fluent_receipt_bag_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Receipt%20Bag/SVG/ic_fluent_receipt_bag_24_regular.svg
