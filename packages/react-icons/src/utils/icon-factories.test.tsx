@@ -4,6 +4,7 @@ import { describe, expect, test } from 'vitest';
 
 import { createFluentFontIcon, FluentFontIcon } from './fonts/createFluentFontIcon';
 import { createFluentIcon, FluentIcon } from './createFluentIcon';
+import bundleIcon from './bundleIcon';
 
 /**
  * @vitest-environment jsdom
@@ -103,5 +104,30 @@ describe('React component tests', () => {
     expect(svg).toBeTruthy();
     expect(svg?.innerHTML).toContain('circle');
     expect(svg?.innerHTML).toContain('fill="blue"');
+  });
+
+  test('bundleIcon creates icon with fui-Icon className on both filled and regular icons', () => {
+    const d = 'M1 2 L3 4';
+    const FilledIcon = createFluentIcon('MyIconFilled', '1em', [d]);
+    const RegularIcon = createFluentIcon('MyIconRegular', '1em', [d]);
+    const BundledIcon = bundleIcon(FilledIcon, RegularIcon);
+    
+    const { container: containerFilled } = render(<BundledIcon filled />);
+    const svgs = containerFilled.querySelectorAll('svg');
+    
+    // Both icons should have the base fui-Icon class
+    svgs.forEach(svg => {
+      expect(svg).toHaveClass('fui-Icon');
+    });
+    
+    // Filled icon should be visible and have fui-Icon-filled
+    const filledSvg = containerFilled.querySelector('.fui-Icon-filled');
+    expect(filledSvg).toHaveClass('fui-Icon');
+    expect(filledSvg).toHaveClass('fui-Icon-filled');
+    
+    const { container: containerRegular } = render(<BundledIcon filled={false} />);
+    const regularSvg = containerRegular.querySelector('.fui-Icon-regular');
+    expect(regularSvg).toHaveClass('fui-Icon');
+    expect(regularSvg).toHaveClass('fui-Icon-regular');
   });
 });
