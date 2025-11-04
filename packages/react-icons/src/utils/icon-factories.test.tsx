@@ -49,7 +49,7 @@ describe('React component tests', () => {
       <div>
         <i
           aria-hidden="true"
-          class="fui-Icon-font ___qaf4230_1r6c92s f14t3ns0 fne0op0 fmd4ok8 f303qgw f1sxfq9t"
+          class="fui-Icon fui-Icon-font ___qaf4230_1r6c92s f14t3ns0 fne0op0 fmd4ok8 f303qgw f1sxfq9t"
           fill="currentColor"
         />
       </div>
@@ -118,5 +118,14 @@ describe('React component tests', () => {
     svgs.forEach((svg) => {
       expect(svg).toHaveClass('fui-Icon');
     });
+  });
+
+  test('createFluentFontIcon includes fui-Icon base className', () => {
+    const MyFontIcon = createFluentFontIcon('MyFontIcon', '', 2, undefined);
+    const { container } = render(<MyFontIcon />);
+
+    const icon = container.querySelector('i');
+    expect(icon).toHaveClass('fui-Icon');
+    expect(icon).toHaveClass('fui-Icon-font');
   });
 });
