@@ -4,6 +4,7 @@ import { describe, expect, test } from 'vitest';
 
 import { createFluentFontIcon, FluentFontIcon } from './fonts/createFluentFontIcon';
 import { createFluentIcon, FluentIcon } from './createFluentIcon';
+import bundleIcon from './bundleIcon';
 
 /**
  * @vitest-environment jsdom
@@ -22,7 +23,7 @@ describe('React component tests', () => {
       <div>
         <svg
           aria-hidden="true"
-          class="___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
+          class="fui-Icon ___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
           fill="currentColor"
           height="1em"
           viewBox="0 0 20 20"
@@ -93,5 +94,29 @@ describe('React component tests', () => {
     expect(svg).toBeTruthy();
     expect(svg?.innerHTML).toContain('circle');
     expect(svg?.innerHTML).toContain('fill="blue"');
+  });
+
+  test('createFluentIcon includes fui-Icon base className', () => {
+    const d = 'M1 2 L3 4';
+    const MyIcon = createFluentIcon('MyIcon', '1em', [d]);
+    const { container } = render(<MyIcon />);
+
+    const svg = container.querySelector('svg');
+    expect(svg).toHaveClass('fui-Icon');
+  });
+
+  test('bundleIcon includes fui-Icon base className on both icons', () => {
+    const d = 'M1 2 L3 4';
+    const FilledIcon = createFluentIcon('MyIconFilled', '1em', [d]);
+    const RegularIcon = createFluentIcon('MyIconRegular', '1em', [d]);
+    const BundledIcon = bundleIcon(FilledIcon, RegularIcon);
+    
+    const { container } = render(<BundledIcon filled={true} />);
+    const svgs = container.querySelectorAll('svg');
+    
+    expect(svgs.length).toBe(2);
+    svgs.forEach((svg) => {
+      expect(svg).toHaveClass('fui-Icon');
+    });
   });
 });

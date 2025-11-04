@@ -1,7 +1,7 @@
 import * as React from "react";
 import {  mergeClasses } from "@griffel/react";
 
-import { iconFilledClassName, iconRegularClassName } from "./constants";
+import { iconClassName, iconFilledClassName, iconRegularClassName } from "./constants";
 import type { FluentIcon } from "./createFluentIcon";
 import { useBundledIconStyles } from "./bundleIcon.styles";
 
@@ -15,6 +15,7 @@ const bundleIcon = (FilledIcon: FluentIcon, RegularIcon: FluentIcon) => {
                 <FilledIcon
                     {...rest}
                     className={mergeClasses(
+                        iconClassName,
                         styles.root,
                         filled && styles.visible,
                         iconFilledClassName,
@@ -24,6 +25,7 @@ const bundleIcon = (FilledIcon: FluentIcon, RegularIcon: FluentIcon) => {
                 <RegularIcon
                     {...rest}
                     className={mergeClasses(
+                      iconClassName,
                       styles.root,
                       !filled && styles.visible,
                       iconRegularClassName,
