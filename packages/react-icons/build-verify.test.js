@@ -1650,15 +1650,15 @@ describe('Build Verification', () => {
       const { svgPathCjs, svgPathEsm } = getAssetPaths();
       const esmStats = await getStats(svgPathEsm);
       const cjsStats = await getStats(svgPathCjs);
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2767`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2767`);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2773`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2773`);
     });
     it(`should have same number of atoms/fonts icon files in lib and lib-cjs`, async () => {
       const { fontsPathCjs, fontsPathEsm } = getAssetPaths();
       const esmStats = await getStats(fontsPathEsm);
       const cjsStats = await getStats(fontsPathCjs);
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2760`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2760`);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2766`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2766`);
     });
     it.each(['lib', 'lib-cjs'])('should have atoms/svg directory with icon files in %s', async (libDir) => {
       const atomsSvgPath = path.join(__dirname, libDir, 'atoms', 'svg');
