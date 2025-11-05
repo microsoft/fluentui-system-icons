@@ -112,8 +112,8 @@ async function writePerIconFiles(destPath, items, headerLines = [], options = { 
     // 3. Sort by style priority (regular before filled before light, etc.)
     const styleA = variantA.style || '';
     const styleB = variantB.style || '';
-    const indexA = DEFAULT_STYLE_TOKENS.indexOf(styleA);
-    const indexB = DEFAULT_STYLE_TOKENS.indexOf(styleB);
+    const indexA = ICON_STYLE_VARIANTS.indexOf(styleA);
+    const indexB = ICON_STYLE_VARIANTS.indexOf(styleB);
     const priorityA = indexA === -1 ? Number.MAX_SAFE_INTEGER : indexA;
     const priorityB = indexB === -1 ? Number.MAX_SAFE_INTEGER : indexB;
 
@@ -169,7 +169,7 @@ async function writePerIconFiles(destPath, items, headerLines = [], options = { 
 }
 
 /**
- * Style variant tokens recognized in icon filenames, ordered by priority for deterministic sorting.
+ * Icon style variants recognized in the Fluent UI System Icons, ordered by priority for deterministic sorting.
  *
  * This constant serves two purposes:
  * 1. **Sorting priority**: When multiple icon variants are grouped in a single file, exports are ordered
@@ -180,8 +180,8 @@ async function writePerIconFiles(destPath, items, headerLines = [], options = { 
  *    icon variants. For example, both 'zoom-in-20-filled.tsx' and 'zoom-in-20-regular.tsx' normalize
  *    to the same base 'zoom-in' so they can be grouped in a single 'zoom-in.tsx' file.
  *
- * The order matters for sorting but not for normalization. Add new style tokens here if the icon system
- * introduces new style variants.
+ * The order matters for sorting but not for normalization. Only includes the 4 actual style variants
+ * that exist in the icon system (verified by analyzing all generated .d.ts files).
  *
  * @example
  * // Sorting: Regular comes before Filled
@@ -194,19 +194,7 @@ async function writePerIconFiles(destPath, items, headerLines = [], options = { 
  * normalizeBaseName('zoom-in-20-regular.tsx')  // -> 'zoom-in'
  * normalizeBaseName('zoom-in-20-filled.tsx')   // -> 'zoom-in'
  */
-const DEFAULT_STYLE_TOKENS = [
-  'regular',
-  'filled',
-  'light',
-  'color',
-  'outline',
-  'outlined',
-  'thin',
-  'bold',
-  'small',
-  'large',
-  'medium',
-];
+const ICON_STYLE_VARIANTS = ['regular', 'filled', 'light', 'color'];
 
 /**
  * Normalize a generated file name to its base icon key by stripping trailing size and style tokens.
@@ -215,14 +203,14 @@ const DEFAULT_STYLE_TOKENS = [
  *  - 'my-icon-16-regular' -> 'my-icon'
  *
  * @param {string} fileName
- * @param {string[]=} styleTokens
+ * @param {string[]=} styleVariants
  */
-function normalizeBaseName(fileName, styleTokens = DEFAULT_STYLE_TOKENS) {
+function normalizeBaseName(fileName, styleVariants = ICON_STYLE_VARIANTS) {
   const name = fileName.replace(/\.tsx?$/, '');
   // normalize separators (underscores -> hyphens) then split
   const normalized = name.replace(/_/g, '-');
   const parts = normalized.split('-');
-  const styleSet = new Set(styleTokens);
+  const styleSet = new Set(styleVariants);
 
   while (parts.length > 0) {
     const last = parts[parts.length - 1];
