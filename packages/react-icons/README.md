@@ -139,7 +139,16 @@ The Atomic API provides a more granular way to import icons, with each icon vari
 - **Smaller bundles**: Each icon variant is in its own file, allowing bundlers to eliminate unused code more effectively
 - **Grouped variants**: Related icon variants (different sizes and styles) are grouped together in a single file for convenience
 
-### Usage
+
+### File Organization
+
+Icons with multiple variants are automatically grouped into a single file:
+- **Example**: `access-time.js` contains all AccessTime variants (AccessTime20Regular, AccessTime24Filled, etc.)
+- **Average**: ~9 exports per file (mix of sizes and styles)
+
+This grouping strikes a balance between granularity and convenience, making it easy to import related variants while still maintaining excellent tree-shaking characteristics.
+
+### Using API directly
 
 Icons are available via two export maps:
 - `@fluentui/react-icons/svg/*` - SVG-based icons
@@ -160,7 +169,7 @@ function MyComponent() {
 }
 ```
 
-### TypeScript Configuration
+#### TypeScript Configuration
 
 **IMPORTANT**: TypeScript users must use `moduleResolution: "bundler"` (or `"node16"`/`"nodenext"`) in their `tsconfig.json` to properly resolve these atomic exports:
 
@@ -174,14 +183,90 @@ function MyComponent() {
 
 Without this setting, TypeScript will not be able to resolve the individual icon exports from the grouped files.
 
-### File Organization
+### Using API via build transform
 
-Icons with multiple variants are automatically grouped into a single file:
-- **Example**: `access-time.js` contains all AccessTime variants (AccessTime20Regular, AccessTime24Filled, etc.)
-- **Average**: ~9 exports per file (mix of sizes and styles)
+Migrating a larger codebase to the new performant atomic imports might be a daunting task. To make this migration more straightforward, you can leverage build-time import transforms to get all the benefits without modifying your actual code.
 
-This grouping strikes a balance between granularity and convenience, making it easy to import related variants while still maintaining excellent tree-shaking characteristics.
+These transforms automatically rewrite imports from:
+```tsx
+import { AccessTime24Filled } from "@fluentui/react-icons";
+```
 
+To the optimized atomic import:
+```tsx
+import { AccessTime24Filled } from "@fluentui/react-icons/svg/access-time";
+```
+
+This transformation happens at build time, so your source code remains unchanged while your bundled output gets the full tree-shaking benefits.
+
+#### Babel
+
+If you use Babel for transpilation, add [babel-plugin-transform-imports](https://www.npmjs.com/package/babel-plugin-transform-imports) with the following setup:
+
+```js
+// @filename .babelrc.js
+module.exports = {
+  presets: [
+    // ... your preset configuration
+  ],
+  plugins: [
+    [
+      'transform-imports',
+      {
+        '@fluentui/react-icons': {
+          transform: (importName) => {
+            const withoutSuffix = importName.replace(
+              /(\d*)?(Regular|Filled|Light|Color)$/,
+              ''
+            );
+
+            const kebabCase = withoutSuffix
+              .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+              .toLowerCase();
+
+            return `@fluentui/react-icons/svg/${kebabCase}`;
+          },
+          preventFullImport: false,
+          skipDefaultConversion: true,
+        },
+      },
+    ],
+  ],
+};
+```
+
+#### SWC
+
+If you use SWC for transpilation, add [@swc/plugin-transform-imports](https://www.npmjs.com/package/@swc/plugin-transform-imports) with the following setup:
+
+```jsonc
+// @filename .swcrc
+{
+  "jsc": {
+    "experimental": {
+      "plugins": [
+        [
+          "@swc/plugin-transform-imports",
+          {
+            "@fluentui/react-icons": {
+              "transform": [
+                [
+                  "(\\D*)(\\d*)?(Regular|Filled|Light|Color)",
+                  "@fluentui/react-icons/svg/{{ kebabCase memberMatches.[1] }}"
+                ]
+              ],
+              "preventFullImport": false,
+              "skipDefaultConversion": true,
+              "handleDefaultImport": false,
+              "handleNamespaceImport": false
+            }
+          }
+        ]
+      ]
+    }
+  }
+}
+```
 
 
 ## Viewing the icons in a webpage
