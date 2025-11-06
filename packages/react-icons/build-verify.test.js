@@ -64,7 +64,7 @@ describe('Build Verification', () => {
       const libPath = path.join(__dirname, libDir);
 
       // Check main structure
-      const requiredDirs = ['icons', 'sizedIcons', 'fonts', 'utils'];
+      const requiredDirs = ['icons', 'sizedIcons', 'fonts', 'utils', 'atoms'];
       const requiredFiles = ['index.js', 'index.d.ts', 'providers.js', 'providers.d.ts'];
 
       for (const dir of requiredDirs) {
@@ -97,22 +97,39 @@ describe('Build Verification', () => {
         const filePath = path.join(fontsDir, file);
         expect(fs.existsSync(filePath)).toBe(true);
       }
+
+      // Check atoms directory structure
+      const atomsDirSvg = path.join(libPath, 'atoms/svg');
+      const atomRequiredFiles = ['access-time.js', 'access-time.d.ts'];
+
+      for (const file of atomRequiredFiles) {
+        const filePath = path.join(atomsDirSvg, file);
+        expect(fs.existsSync(filePath)).toBe(true);
+      }
+
+      const atomsDirFonts = path.join(libPath, 'atoms/fonts');
+
+      for (const file of atomRequiredFiles) {
+        const filePath = path.join(atomsDirFonts, file);
+        expect(fs.existsSync(filePath)).toBe(true);
+      }
     });
   });
 
   describe('Package.json Exports', () => {
     it('should have all exported files exist', async () => {
       const packageJsonPath = path.join(__dirname, 'package.json');
+      /** @type {{main:string;module:string;typings:string;exports:Record<string,string>}} */
       const packageJson = JSON.parse(await readFile(packageJsonPath, 'utf8'));
 
       // Check main, module, and typings fields
       const mainFields = {
         main: packageJson.main,
         module: packageJson.module,
-        typings: packageJson.typings
+        typings: packageJson.typings,
       };
 
-      for (const [field, filePath] of Object.entries(mainFields)) {
+      for (const filePath of Object.values(mainFields)) {
         if (filePath) {
           const fullPath = path.join(__dirname, filePath);
           expect(fs.existsSync(fullPath)).toBe(true);
@@ -123,32 +140,57 @@ describe('Build Verification', () => {
       }
 
       // Check all exports paths
-      if (packageJson.exports) {
-        const exportPaths = [];
 
-        function extractPaths(obj, currentPath = '') {
-          for (const [key, value] of Object.entries(obj)) {
-            if (typeof value === 'string') {
-              exportPaths.push(value);
-            } else if (typeof value === 'object' && value !== null) {
-              extractPaths(value, currentPath);
-            }
+      /** @type {string[]} */
+      const exportPaths = [];
+
+      function extractPaths(/**@type {Record<string,string>} */ obj, currentPath = '') {
+        for (const value of Object.values(obj)) {
+          if (typeof value === 'string') {
+            exportPaths.push(value);
+          } else if (typeof value === 'object' && value !== null) {
+            extractPaths(value, currentPath);
           }
         }
+      }
 
-        extractPaths(packageJson.exports);
+      extractPaths(packageJson.exports);
 
-        // Remove duplicates
-        const uniquePaths = Array.from(new Set(exportPaths));
+      // Remove duplicates
+      const uniquePaths = Array.from(new Set(exportPaths));
 
-        for (const exportPath of uniquePaths) {
-          if (exportPath.startsWith('./')) {
-            const fullPath = path.join(__dirname, exportPath.slice(2));
-            expect(fs.existsSync(fullPath)).toBe(true);
+      for (const exportPath of uniquePaths) {
+        // Wildcard support: we only handle simple trailing patterns like *.js or *.d.ts via a directory scan.
+        // This avoids heavy glob expansion (tens of thousands of files) and keeps logic minimal.
+        if (exportPath.includes('*')) {
+          const relative = exportPath.slice(2); // remove ./
+          const lastSlash = relative.lastIndexOf('/');
+          const dirPart = relative.slice(0, lastSlash);
+          const patternPart = relative.slice(lastSlash + 1); // e.g. *.js or *.d.ts
+          const dirAbs = path.join(__dirname, dirPart);
+          expect(fs.existsSync(dirAbs), `Directory for pattern missing: ${dirPart}`).toBe(true);
 
-            const stats = await stat(fullPath);
-            expect(stats.isFile()).toBe(true);
+          // Support only simple patterns starting with *.
+          if (!patternPart.startsWith('*.')) {
+            throw new Error(`Unsupported wildcard pattern (only leading *.<ext> supported): ${exportPath}`);
           }
+          const ext = patternPart.slice(1); // keep the dot(s), e.g. '.js', '.d.ts'
+          const entries = await readdir(dirAbs);
+          const matchName = entries.find((e) => e.endsWith(ext));
+          expect(
+            matchName,
+            `No file ending with '${ext}' found in ${dirPart} for export pattern ${exportPath}`,
+          ).toBeTruthy();
+          if (matchName) {
+            const full = path.join(dirAbs, matchName);
+            const s = await stat(full);
+            expect(s.isFile(), `Matched path is not a file: ${full}`).toBe(true);
+          }
+        } else {
+          const fullPath = path.join(__dirname, exportPath.slice(2));
+          expect(fs.existsSync(fullPath)).toBe(true);
+          const stats = await stat(fullPath);
+          expect(stats.isFile()).toBe(true);
         }
       }
     });
@@ -837,7 +879,7 @@ describe('Build Verification', () => {
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
           ""use client";
-          import { createFluentIcon } from "../utils/createFluentIcon";
+          import { createFluentIcon } from '../utils/createFluentIcon';
           export const AccessTimeFilled = ( /*#__PURE__*/createFluentIcon('AccessTimeFilled', "1em", ["M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM6.99 8.6A.5.5 0 0 1 6 8.4c.02-.07.03-.14.07-.24a2 2 0 0 1 .25-.46c.26-.35.71-.7 1.42-.7A1.7 1.7 0 0 1 9.5 8.75c0 .35-.07.65-.2.9a1.8 1.8 0 0 1-.51.6c-.16.11-.33.22-.48.3l-.06.04c-.17.1-.3.19-.42.29-.4.34-.66.7-.77 1.12H9a.5.5 0 0 1 0 1H6.5a.5.5 0 0 1-.5-.5c0-1.01.47-1.77 1.17-2.38.2-.16.4-.29.57-.4l.06-.03.38-.24a.8.8 0 0 0 .23-.26c.05-.1.09-.23.09-.44a.8.8 0 0 0-.19-.53.7.7 0 0 0-.56-.22.7.7 0 0 0-.61.3 1 1 0 0 0-.15.3ZM11 7c.28 0 .5.22.5.5V10H13V7.5a.5.5 0 0 1 1 0v5a.5.5 0 0 1-1 0V11h-2a.5.5 0 0 1-.5-.5v-3c0-.28.22-.5.5-.5Z"]));
           export const AccessTimeRegular = ( /*#__PURE__*/createFluentIcon('AccessTimeRegular', "1em", ["M6.99 8.6A.5.5 0 0 1 6 8.4a1.29 1.29 0 0 1 .07-.24 2 2 0 0 1 .25-.46c.26-.35.71-.7 1.42-.7A1.7 1.7 0 0 1 9.5 8.75c0 .35-.07.65-.2.9a1.8 1.8 0 0 1-.51.6c-.16.11-.33.22-.48.3l-.06.04c-.17.1-.3.19-.42.29-.4.34-.66.7-.77 1.12H9a.5.5 0 0 1 0 1H6.5a.5.5 0 0 1-.5-.5c0-1.01.47-1.77 1.17-2.38.2-.16.4-.29.57-.4l.06-.03.38-.24a.8.8 0 0 0 .23-.26c.05-.1.09-.23.09-.44a.8.8 0 0 0-.19-.53.7.7 0 0 0-.56-.22.7.7 0 0 0-.61.3 1 1 0 0 0-.15.3ZM11 7c.28 0 .5.22.5.5V10H13V7.5a.5.5 0 0 1 1 0v5a.5.5 0 0 1-1 0V11h-2a.5.5 0 0 1-.5-.5v-3c0-.28.22-.5.5-.5Zm-1-5a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm-7 8a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z"]));
           export const AccessibilityFilled = ( /*#__PURE__*/createFluentIcon('AccessibilityFilled', "1em", ["M10 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM5.47 4.15c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L6.7 8.53c.18.08.3.26.3.46v1.86a.5.5 0 0 1-.04.19l-1.84 4.55a1.75 1.75 0 0 0 3.25 1.32l1.4-3.46c.08-.21.38-.21.46 0l1.4 3.46a1.75 1.75 0 0 0 3.24-1.32l-1.83-4.54a.5.5 0 0 1-.04-.19V9c0-.2.12-.38.3-.46l2.67-1.19c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-1.28.57c-.24.1-.42.3-.52.52a3 3 0 0 1-5.46 0c-.1-.21-.28-.41-.52-.52l-1.28-.57Z"]));
@@ -873,7 +915,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentIcon } from "../utils/createFluentIcon";
+          "import type { FluentIcon } from '../utils/createFluentIcon';
           export declare const AccessTimeFilled: FluentIcon;
           export declare const AccessTimeRegular: FluentIcon;
           export declare const AccessibilityFilled: FluentIcon;
@@ -964,7 +1006,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentIcon } from "../utils/createFluentIcon";
+          "import type { FluentIcon } from '../utils/createFluentIcon';
           export declare const AccessTimeFilled: FluentIcon;
           export declare const AccessTimeRegular: FluentIcon;
           export declare const AccessibilityFilled: FluentIcon;
@@ -1019,7 +1061,7 @@ describe('Build Verification', () => {
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
           ""use client";
-          import { createFluentIcon } from "../utils/createFluentIcon";
+          import { createFluentIcon } from '../utils/createFluentIcon';
           export const AccessTime20Filled = ( /*#__PURE__*/createFluentIcon('AccessTime20Filled', "20", ["M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM6.99 8.6A.5.5 0 0 1 6 8.4c.02-.07.03-.14.07-.24a2 2 0 0 1 .25-.46c.26-.35.71-.7 1.42-.7A1.7 1.7 0 0 1 9.5 8.75c0 .35-.07.65-.2.9a1.8 1.8 0 0 1-.51.6c-.16.11-.33.22-.48.3l-.06.04c-.17.1-.3.19-.42.29-.4.34-.66.7-.77 1.12H9a.5.5 0 0 1 0 1H6.5a.5.5 0 0 1-.5-.5c0-1.01.47-1.77 1.17-2.38.2-.16.4-.29.57-.4l.06-.03.38-.24a.8.8 0 0 0 .23-.26c.05-.1.09-.23.09-.44a.8.8 0 0 0-.19-.53.7.7 0 0 0-.56-.22.7.7 0 0 0-.61.3 1 1 0 0 0-.15.3ZM11 7c.28 0 .5.22.5.5V10H13V7.5a.5.5 0 0 1 1 0v5a.5.5 0 0 1-1 0V11h-2a.5.5 0 0 1-.5-.5v-3c0-.28.22-.5.5-.5Z"]));
           export const AccessTime20Regular = ( /*#__PURE__*/createFluentIcon('AccessTime20Regular', "20", ["M6.99 8.6A.5.5 0 0 1 6 8.4a1.29 1.29 0 0 1 .07-.24 2 2 0 0 1 .25-.46c.26-.35.71-.7 1.42-.7A1.7 1.7 0 0 1 9.5 8.75c0 .35-.07.65-.2.9a1.8 1.8 0 0 1-.51.6c-.16.11-.33.22-.48.3l-.06.04c-.17.1-.3.19-.42.29-.4.34-.66.7-.77 1.12H9a.5.5 0 0 1 0 1H6.5a.5.5 0 0 1-.5-.5c0-1.01.47-1.77 1.17-2.38.2-.16.4-.29.57-.4l.06-.03.38-.24a.8.8 0 0 0 .23-.26c.05-.1.09-.23.09-.44a.8.8 0 0 0-.19-.53.7.7 0 0 0-.56-.22.7.7 0 0 0-.61.3 1 1 0 0 0-.15.3ZM11 7c.28 0 .5.22.5.5V10H13V7.5a.5.5 0 0 1 1 0v5a.5.5 0 0 1-1 0V11h-2a.5.5 0 0 1-.5-.5v-3c0-.28.22-.5.5-.5Zm-1-5a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm-7 8a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z"]));
           export const AccessTime24Filled = ( /*#__PURE__*/createFluentIcon('AccessTime24Filled', "24", ["M22 12a10 10 0 1 0-20 0 10 10 0 0 0 20 0ZM7.5 8.74A2.3 2.3 0 0 1 9.25 8c1.15 0 1.9.8 2.15 1.66.26.85.1 1.9-.62 2.62a8.1 8.1 0 0 1-.79.67l-.04.03c-.28.22-.53.41-.75.63a2.3 2.3 0 0 0-.58.89h2.13a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1-.75-.75c0-1.25.52-2.08 1.14-2.7.3-.3.62-.55.9-.76.28-.22.5-.4.68-.57.27-.27.37-.72.25-1.13-.12-.38-.37-.59-.72-.59s-.53.14-.64.25a.84.84 0 0 0-.15.23.75.75 0 0 1-1.43-.46l.04-.1.08-.17c.07-.14.18-.32.35-.5ZM13.25 8c.41 0 .75.34.75.75v2.75h1.5V8.75a.75.75 0 0 1 1.5 0v6.47a.75.75 0 0 1-1.5 0V13h-2.25a.75.75 0 0 1-.75-.75v-3.5c0-.41.34-.75.75-.75Z"]));
@@ -1055,7 +1097,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentIcon } from "../utils/createFluentIcon";
+          "import type { FluentIcon } from '../utils/createFluentIcon';
           export declare const AccessTime20Filled: FluentIcon;
           export declare const AccessTime20Regular: FluentIcon;
           export declare const AccessTime24Filled: FluentIcon;
@@ -1146,7 +1188,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentIcon } from "../utils/createFluentIcon";
+          "import type { FluentIcon } from '../utils/createFluentIcon';
           export declare const AccessTime20Filled: FluentIcon;
           export declare const AccessTime20Regular: FluentIcon;
           export declare const AccessTime24Filled: FluentIcon;
@@ -1201,7 +1243,7 @@ describe('Build Verification', () => {
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
           ""use client";
-          import { createFluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
+          import { createFluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
           export const AccessTimeFilled = ( /*#__PURE__*/createFluentFontIcon("AccessTimeFilled", "", 2, undefined));
           export const AccessTimeRegular = ( /*#__PURE__*/createFluentFontIcon("AccessTimeRegular", "", 2, undefined));
           export const AccessibilityFilled = ( /*#__PURE__*/createFluentFontIcon("AccessibilityFilled", "", 2, undefined));
@@ -1237,7 +1279,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
+          "import type { FluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
           export declare const AccessTimeFilled: FluentFontIcon;
           export declare const AccessTimeRegular: FluentFontIcon;
           export declare const AccessibilityFilled: FluentFontIcon;
@@ -1328,7 +1370,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
+          "import type { FluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
           export declare const AccessTimeFilled: FluentFontIcon;
           export declare const AccessTimeRegular: FluentFontIcon;
           export declare const AccessibilityFilled: FluentFontIcon;
@@ -1383,7 +1425,7 @@ describe('Build Verification', () => {
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
           ""use client";
-          import { createFluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
+          import { createFluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
           export const AccessibilityCheckmark32Light = ( /*#__PURE__*/createFluentFontIcon("AccessibilityCheckmark32Light", "", 3, 32));
           export const Add32Light = ( /*#__PURE__*/createFluentFontIcon("Add32Light", "", 3, 32));
           export const Alert32Light = ( /*#__PURE__*/createFluentFontIcon("Alert32Light", "", 3, 32));
@@ -1419,7 +1461,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
+          "import type { FluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
           export declare const AccessibilityCheckmark32Light: FluentFontIcon;
           export declare const Add32Light: FluentFontIcon;
           export declare const Alert32Light: FluentFontIcon;
@@ -1510,7 +1552,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
+          "import type { FluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
           export declare const AccessibilityCheckmark32Light: FluentFontIcon;
           export declare const Add32Light: FluentFontIcon;
           export declare const Alert32Light: FluentFontIcon;
@@ -1585,6 +1627,151 @@ describe('Build Verification', () => {
     });
   });
 
+  describe(`Atoms`, () => {
+    function getAssetPaths() {
+      const svgPathEsm = path.join(__dirname, 'lib', 'atoms/svg');
+      const svgPathCjs = path.join(__dirname, 'lib-cjs', 'atoms/svg');
+      const fontsPathEsm = path.join(__dirname, 'lib', 'atoms/fonts');
+      const fontsPathCjs = path.join(__dirname, 'lib-cjs', 'atoms/fonts');
+      return { svgPathEsm, svgPathCjs, fontsPathEsm, fontsPathCjs };
+    }
+
+    /**
+     *
+     * @param {string} assetPath
+     */
+    async function getStats(assetPath) {
+      const files = await readdir(assetPath);
+      const jsFiles = files.filter((f) => f.endsWith('.js'));
+      return { files, jsFiles };
+    }
+
+    it(`should have same number of atoms/svg icon files in lib and lib-cjs`, async () => {
+      const { svgPathCjs, svgPathEsm } = getAssetPaths();
+      const esmStats = await getStats(svgPathEsm);
+      const cjsStats = await getStats(svgPathCjs);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2773`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2773`);
+    });
+    it(`should have same number of atoms/fonts icon files in lib and lib-cjs`, async () => {
+      const { fontsPathCjs, fontsPathEsm } = getAssetPaths();
+      const esmStats = await getStats(fontsPathEsm);
+      const cjsStats = await getStats(fontsPathCjs);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2766`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2766`);
+    });
+    it.each(['lib', 'lib-cjs'])('should have atoms/svg directory with icon files in %s', async (libDir) => {
+      const atomsSvgPath = path.join(__dirname, libDir, 'atoms', 'svg');
+
+      // Check atoms/svg directory exists
+      expect(fs.existsSync(atomsSvgPath)).toBe(true);
+      const stats = await stat(atomsSvgPath);
+      expect(stats.isDirectory()).toBe(true);
+
+      const { files, jsFiles } = await getStats(atomsSvgPath);
+
+      // Snapshot the list of .js files to catch any unexpected changes
+      expect(jsFiles).toMatchSnapshot();
+
+      // Every .js file should have a corresponding .d.ts file
+      for (const jsFile of jsFiles) {
+        const baseName = jsFile.replace('.js', '');
+        const dtsFile = `${baseName}.d.ts`;
+        expect(files).toContain(dtsFile);
+      }
+
+      // Sample check: access-time should exist
+      expect(files).toContain('access-time.js');
+      expect(files).toContain('access-time.d.ts');
+    });
+
+    it.each(['lib', 'lib-cjs'])('should have atoms/fonts directory with icon files in %s', async (libDir) => {
+      const atomsFontsPath = path.join(__dirname, libDir, 'atoms', 'fonts');
+
+      // Check atoms/fonts directory exists
+      expect(fs.existsSync(atomsFontsPath)).toBe(true);
+      const stats = await stat(atomsFontsPath);
+      expect(stats.isDirectory()).toBe(true);
+
+      const { files, jsFiles } = await getStats(atomsFontsPath);
+
+      // Snapshot the list of .js files to catch any unexpected changes
+      expect(jsFiles).toMatchSnapshot();
+
+      // Every .js file should have a corresponding .d.ts file
+      for (const jsFile of jsFiles) {
+        const baseName = jsFile.replace('.js', '');
+        const dtsFile = `${baseName}.d.ts`;
+        expect(files).toContain(dtsFile);
+      }
+
+      // Sample check: access-time should exist
+      expect(files).toContain('access-time.js');
+      expect(files).toContain('access-time.d.ts');
+    });
+
+    it('atom files should export icon variants correctly [svg]', async () => {
+      const atomFilePath = path.join(__dirname, 'lib', 'atoms', 'svg', 'access-time.js');
+      expect(fs.existsSync(atomFilePath)).toBe(true);
+
+      const content = await readFile(atomFilePath, 'utf-8');
+
+      // Should contain exports for different variants
+      expect(content).toContain('export const AccessTimeFilled');
+      expect(content).toContain('export const AccessTimeRegular');
+
+      // Should contain sized variants
+      expect(content).toContain('export const AccessTime20Filled');
+      expect(content).toContain('export const AccessTime20Regular');
+      expect(content).toContain('export const AccessTime24Filled');
+      expect(content).toContain('export const AccessTime24Regular');
+
+      // Should use createFluentIcon
+      expect(content).toContain('createFluentIcon');
+    });
+
+    it('atom files should export icon variants correctly [fonts]', async () => {
+      const atomFilePath = path.join(__dirname, 'lib', 'atoms', 'fonts', 'access-time.js');
+      expect(fs.existsSync(atomFilePath)).toBe(true);
+
+      const content = await readFile(atomFilePath, 'utf-8');
+
+      // Should contain exports for different variants
+      expect(content).toContain('export const AccessTimeFilled');
+      expect(content).toContain('export const AccessTimeRegular');
+
+      // Should use createFluentFontIcon
+      expect(content).toContain('createFluentFontIcon');
+    });
+
+    it('atom TypeScript definition files should have correct exports', async () => {
+      const atomDtsPath = path.join(__dirname, 'lib', 'atoms', 'svg', 'access-time.d.ts');
+      expect(fs.existsSync(atomDtsPath)).toBe(true);
+
+      const content = await readFile(atomDtsPath, 'utf-8');
+
+      // Should export icon components (using declare const for .d.ts files)
+      expect(content).toContain('export declare const AccessTimeFilled');
+      expect(content).toContain('export declare const AccessTimeRegular');
+      expect(content).toContain('FluentIcon');
+    });
+
+    it('atoms exports should be accessible via package.json exports', () => {
+      const packageJsonPath = path.join(__dirname, 'package.json');
+      const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
+
+      // Check that ./svg/* and ./fonts/* exports are defined
+      expect(packageJson.exports['./svg/*']).toBeDefined();
+      expect(packageJson.exports['./fonts/*']).toBeDefined();
+
+      // Check that they point to atoms directories
+      expect(packageJson.exports['./svg/*'].import).toBe('./lib/atoms/svg/*.js');
+      expect(packageJson.exports['./svg/*'].require).toBe('./lib-cjs/atoms/svg/*.js');
+      expect(packageJson.exports['./fonts/*'].import).toBe('./lib/atoms/fonts/*.js');
+      expect(packageJson.exports['./fonts/*'].require).toBe('./lib-cjs/atoms/fonts/*.js');
+    });
+  });
+
   describe('Metadata Validation', () => {
     it('metadata.json should have no uncommitted changes after build', () => {
       // Check if metadata.json exists
@@ -1596,16 +1783,16 @@ describe('Build Verification', () => {
         const gitDiff = execSync('git diff metadata.json', {
           encoding: 'utf-8',
           cwd: __dirname,
-          stdio: 'pipe'
+          stdio: 'pipe',
         });
 
         // If there's a diff, the test should fail with a helpful message
         if (gitDiff.trim()) {
           throw new Error(
             `metadata.json has uncommitted changes after build.\n` +
-            `This means the committed metadata.json is out of sync with the current icons.\n` +
-            `Please run 'npm run build' and commit the updated metadata.json file.\n\n` +
-            `Git diff:\n${gitDiff}`
+              `This means the committed metadata.json is out of sync with the current icons.\n` +
+              `Please run 'npm run build' and commit the updated metadata.json file.\n\n` +
+              `Git diff:\n${gitDiff}`,
           );
         }
 
@@ -1613,7 +1800,7 @@ describe('Build Verification', () => {
         expect(gitDiff.trim()).toBe('');
       } catch (error) {
         // Handle cases where git command fails (e.g., not in a git repo, file not tracked)
-        if (error.status === 128) {
+        if (error && typeof error === 'object' && 'status' in error && error.status === 128) {
           // Git command failed - this might be expected in some CI environments
           // We'll skip this test with a warning
           console.warn('Git diff check skipped - not in a git repository or metadata.json not tracked');
@@ -1624,6 +1811,5 @@ describe('Build Verification', () => {
         throw error;
       }
     });
-
   });
 });
