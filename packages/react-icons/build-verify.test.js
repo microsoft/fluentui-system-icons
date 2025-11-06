@@ -1059,7 +1059,7 @@ describe('Build Verification', () => {
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
           ""use client";
-          import { createFluentIcon } from "../utils/createFluentIcon";
+          import { createFluentIcon } from '../utils/createFluentIcon';
           export const BackpackFilled = ( /*#__PURE__*/createFluentIcon('BackpackFilled', "1em", ["M8 8.7c0-.39.31-.7.7-.7h2.6c.39 0 .7.31.7.7a.3.3 0 0 1-.3.3H8.3a.3.3 0 0 1-.3-.3ZM10 2a2.5 2.5 0 0 0-2.5 2.5v.04A6 6 0 0 0 4 10v2h12v-2a6 6 0 0 0-3.5-5.46V4.5A2.5 2.5 0 0 0 10 2Zm0 2c.5 0 1 .06 1.47.18a1.5 1.5 0 0 0-2.94 0C9 4.06 9.5 4 10 4ZM8.7 7h2.6c.94 0 1.7.76 1.7 1.7 0 .72-.58 1.3-1.3 1.3H8.3A1.3 1.3 0 0 1 7 8.7C7 7.76 7.76 7 8.7 7ZM7 14.5V13H4v2a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-2H8v1.5a.5.5 0 0 1-1 0Z"]));
           export const BackpackRegular = ( /*#__PURE__*/createFluentIcon('BackpackRegular', "1em", ["M8.7 7C7.76 7 7 7.76 7 8.7c0 .72.58 1.3 1.3 1.3h3.4c.72 0 1.3-.58 1.3-1.3 0-.94-.76-1.7-1.7-1.7H8.7ZM8 8.7c0-.39.31-.7.7-.7h2.6c.39 0 .7.31.7.7a.3.3 0 0 1-.3.3H8.3a.3.3 0 0 1-.3-.3ZM10 2a2.5 2.5 0 0 0-2.5 2.5v.04A6 6 0 0 0 4 10v5a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-5a6 6 0 0 0-3.5-5.46V4.5A2.5 2.5 0 0 0 10 2Zm5 10H5v-2a5 5 0 0 1 10 0v2Zm-8 2.5a.5.5 0 0 0 1 0V13h7v2a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-2h2v1.5ZM10 4c-.5 0-1 .06-1.47.18a1.5 1.5 0 0 1 2.94 0A6.01 6.01 0 0 0 10 4Z"]));
           export const BackpackAddFilled = ( /*#__PURE__*/createFluentIcon('BackpackAddFilled', "1em", ["M7.5 4.5a2.5 2.5 0 0 1 5 0v.04a6 6 0 0 1 3.45 4.65 5.5 5.5 0 0 0-3.07.05c.08-.16.12-.35.12-.54 0-.94-.76-1.7-1.7-1.7H8.7C7.76 7 7 7.76 7 8.7c0 .72.58 1.3 1.3 1.3h3.04a5.53 5.53 0 0 0-1.74 2H4v-2a6 6 0 0 1 3.5-5.46V4.5Zm3.97-.32a1.5 1.5 0 0 0-2.94 0 6.01 6.01 0 0 1 2.94 0ZM9 14.5c0-.52.07-1.02.2-1.5H8v1.5a.5.5 0 0 1-1 0V13H4v2a3 3 0 0 0 3 3h3.26A5.48 5.48 0 0 1 9 14.5ZM8.7 8a.7.7 0 0 0-.7.7c0 .17.13.3.3.3h3.4a.3.3 0 0 0 .3-.3.7.7 0 0 0-.7-.7H8.7ZM19 14.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-4-2a.5.5 0 0 0-1 0V14h-1.5a.5.5 0 0 0 0 1H14v1.5a.5.5 0 0 0 1 0V15h1.5a.5.5 0 0 0 0-1H15v-1.5Z"]));
@@ -1095,7 +1095,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentIcon } from "../utils/createFluentIcon";
+          "import type { FluentIcon } from '../utils/createFluentIcon';
           export declare const BackpackFilled: FluentIcon;
           export declare const BackpackRegular: FluentIcon;
           export declare const BackpackAddFilled: FluentIcon;
@@ -1186,7 +1186,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentIcon } from "../utils/createFluentIcon";
+          "import type { FluentIcon } from '../utils/createFluentIcon';
           export declare const BackpackFilled: FluentIcon;
           export declare const BackpackRegular: FluentIcon;
           export declare const BackpackAddFilled: FluentIcon;
@@ -1241,7 +1241,7 @@ describe('Build Verification', () => {
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
           ""use client";
-          import { createFluentIcon } from "../utils/createFluentIcon";
+          import { createFluentIcon } from '../utils/createFluentIcon';
           export const Backpack12Filled = ( /*#__PURE__*/createFluentIcon('Backpack12Filled', "12", ["M4.06 3.5H4v-1C4 1.67 4.67 1 5.5 1h1C7.33 1 8 1.67 8 2.5v1h-.06A4 4 0 0 1 10 7v2.5c0 .83-.67 1.5-1.5 1.5h-5A1.5 1.5 0 0 1 2 9.5V7a4 4 0 0 1 2.06-3.5Zm.94-1v.63a4 4 0 0 1 2 0V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5Zm0 3c0 .28.22.5.5.5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0-.5.5ZM4.5 8a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3Z"]));
           export const Backpack12Regular = ( /*#__PURE__*/createFluentIcon('Backpack12Regular', "12", ["M5 5.5c0-.28.22-.5.5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5ZM4.5 8a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3Zm-.44-4.5H4v-1C4 1.67 4.67 1 5.5 1h1C7.33 1 8 1.67 8 2.5v1h-.06A4 4 0 0 1 10 7v2.5c0 .83-.67 1.5-1.5 1.5h-5A1.5 1.5 0 0 1 2 9.5V7a4 4 0 0 1 2.06-3.5Zm.94-1v.63a4 4 0 0 1 2 0V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5ZM3 7v2.5c0 .28.22.5.5.5h5a.5.5 0 0 0 .5-.5V7a3 3 0 0 0-6 0Z"]));
           export const Backpack16Filled = ( /*#__PURE__*/createFluentIcon('Backpack16Filled', "16", ["M6 8a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1H6Zm2-7a2 2 0 0 0-2 2v.42A5 5 0 0 0 3 8v2h10V8a5 5 0 0 0-3-4.58V3a2 2 0 0 0-2-2Zm0 2c-.34 0-.68.03-1 .1V3a1 1 0 0 1 2 0v.1c-.32-.07-.66-.1-1-.1ZM7 6h2a2 2 0 0 1 2 2 1 1 0 0 1-1 1H6a1 1 0 0 1-1-1c0-1.1.9-2 2-2Zm-1 6.5V11H3v1.5A2.5 2.5 0 0 0 5.5 15h5a2.5 2.5 0 0 0 2.5-2.5V11H7v1.5a.5.5 0 0 1-1 0Z"]));
@@ -1277,7 +1277,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentIcon } from "../utils/createFluentIcon";
+          "import type { FluentIcon } from '../utils/createFluentIcon';
           export declare const Backpack12Filled: FluentIcon;
           export declare const Backpack12Regular: FluentIcon;
           export declare const Backpack16Filled: FluentIcon;
@@ -1368,7 +1368,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentIcon } from "../utils/createFluentIcon";
+          "import type { FluentIcon } from '../utils/createFluentIcon';
           export declare const Backpack12Filled: FluentIcon;
           export declare const Backpack12Regular: FluentIcon;
           export declare const Backpack16Filled: FluentIcon;
@@ -1423,7 +1423,7 @@ describe('Build Verification', () => {
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
           ""use client";
-          import { createFluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
+          import { createFluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
           export const BackpackFilled = ( /*#__PURE__*/createFluentFontIcon("BackpackFilled", "", 2, undefined));
           export const BackpackRegular = ( /*#__PURE__*/createFluentFontIcon("BackpackRegular", "", 2, undefined));
           export const BackpackAddFilled = ( /*#__PURE__*/createFluentFontIcon("BackpackAddFilled", "", 2, undefined));
@@ -1459,7 +1459,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
+          "import type { FluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
           export declare const BackpackFilled: FluentFontIcon;
           export declare const BackpackRegular: FluentFontIcon;
           export declare const BackpackAddFilled: FluentFontIcon;
@@ -1550,7 +1550,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
+          "import type { FluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
           export declare const BackpackFilled: FluentFontIcon;
           export declare const BackpackRegular: FluentFontIcon;
           export declare const BackpackAddFilled: FluentFontIcon;
@@ -1605,7 +1605,7 @@ describe('Build Verification', () => {
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
           ""use client";
-          import { createFluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
+          import { createFluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
           export const Calendar3Day32Light = ( /*#__PURE__*/createFluentFontIcon("Calendar3Day32Light", "", 3, 32));
           export const CalendarCheckmark32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarCheckmark32Light", "", 3, 32));
           export const CalendarClock32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarClock32Light", "", 3, 32));
@@ -1641,7 +1641,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
+          "import type { FluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
           export declare const Calendar3Day32Light: FluentFontIcon;
           export declare const CalendarCheckmark32Light: FluentFontIcon;
           export declare const CalendarClock32Light: FluentFontIcon;
@@ -1732,7 +1732,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
+          "import type { FluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
           export declare const Calendar3Day32Light: FluentFontIcon;
           export declare const CalendarCheckmark32Light: FluentFontIcon;
           export declare const CalendarClock32Light: FluentFontIcon;
