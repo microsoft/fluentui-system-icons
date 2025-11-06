@@ -9,8 +9,8 @@ const mkdirp = require('mkdirp');
 
 const yargs = require('yargs');
 const _ = require('lodash');
-
 const { createFormatMetadata, writeMetadata } = require('./metadata.utils');
+const { createStableChunks } = require("./chunking-utils");
 const {
   getReactIconNameFromGlyphName,
   loadRtlMetadata,
@@ -203,11 +203,9 @@ async function processFolder(iconEntries, rtlMetadata, resizable) {
   }
 
   // chunk all icons into separate files to keep build reasonably fast
-  /** @type string[][] */
-  const iconChunks = [];
-  while (iconExports.length > 0) {
-    iconChunks.push(iconExports.splice(0, 500));
-  }
+  // Use stable chunking to prevent bundle size regressions when new icons are added
+  // IMPORTANT: chunkCount should NEVER change after initial release to prevent reshuffling
+  const iconChunks = createStableChunks(iconExports, iconNames, {chunkCount: 30});
 
   const chunkHeader = getCreateFluentIconHeader('../../utils/fonts/createFluentFontIcon');
   for (const chunk of iconChunks) {
