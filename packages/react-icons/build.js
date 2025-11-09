@@ -18,18 +18,17 @@ main();
  * applies Babel transformations, and copies font assets.
  * It also creates raw style copies for .styles.js files.
  */
-function main(){
+function main() {
   const projectRoot = __dirname;
 
-  transpileTsc({ moduleFormat: 'esnext', outDir: 'lib' },projectRoot);
-  transpileTsc({ moduleFormat: 'commonjs', outDir: 'lib-cjs' },projectRoot);
+  transpileTsc({ moduleFormat: 'esnext', outDir: 'lib' }, projectRoot);
+  transpileTsc({ moduleFormat: 'commonjs', outDir: 'lib-cjs' }, projectRoot);
 
   applyBabelTransform('lib', projectRoot);
   applyBabelTransform('lib-cjs', projectRoot);
 
   copyAssets('src/utils/fonts/*.{ttf,woff,woff2,json}', './lib/utils/fonts', projectRoot);
   copyAssets('src/utils/fonts/*.{ttf,woff,woff2,json}', './lib-cjs/utils/fonts', projectRoot);
-
 }
 
 // =================================================================================================
@@ -40,7 +39,6 @@ function main(){
  */
 
 function createRawStylesCopy(styleFile) {
-
   const sourcePath = join(styleFile);
   const targetPath = styleFile.replace('.styles.js', '.styles.raw.js');
 
@@ -48,9 +46,8 @@ function createRawStylesCopy(styleFile) {
     copyFileSync(sourcePath, targetPath);
     console.log(`  ✓ [raw style] ${styleFile} -> ${basename(targetPath)}`);
   } catch (error) {
-    console.error(`  ✗ Failed to copy ${styleFile}:`, error.message);
+    console.error(`  ✗ Failed to copy ${styleFile}:`, /** @type {Error} */ (error).message);
   }
-
 }
 
 /**
@@ -59,10 +56,10 @@ function createRawStylesCopy(styleFile) {
  * @param {string} baseDir
  */
 function transpileTsc(options, baseDir) {
- const {moduleFormat,outDir} = options;
+  const { moduleFormat, outDir } = options;
   console.log(`Transpiling module format [${moduleFormat}] to -> ${outDir}/`);
-  const cmd = `npx tsc -p . --module ${moduleFormat} --outDir ${outDir}`;
-  return execSync(cmd, {stdio: 'inherit', cwd: baseDir});
+  const cmd = `npx tsc -p ./tsconfig.lib.json --module ${moduleFormat} --outDir ${outDir}`;
+  return execSync(cmd, { stdio: 'inherit', cwd: baseDir });
 }
 
 /**
@@ -72,21 +69,18 @@ function transpileTsc(options, baseDir) {
  */
 function applyBabelTransform(root, baseDir) {
   const EOL_REGEX = /\r?\n/g;
-  const griffelPreset = [
-    ['@griffel']
-  ];
+  const griffelPreset = [['@griffel']];
 
-  const jsRoot = join(baseDir,root)
+  const jsRoot = join(baseDir, root);
 
   console.log(`Processing .js files with babel in ${jsRoot}:`);
+  /** @type {string[]} */
   const jsFiles = glob.sync('**/*.styles.js', { cwd: jsRoot });
 
-
   for (const filename of jsFiles) {
-
     const filePath = join(jsRoot, filename);
 
-    createRawStylesCopy(filePath)
+    createRawStylesCopy(filePath);
 
     const codeBuffer = readFileSync(filePath);
     const sourceCode = codeBuffer.toString().replace(EOL_REGEX, '\n');
@@ -120,21 +114,20 @@ function applyBabelTransform(root, baseDir) {
  * @param {string} dest
  * @param {string} baseDir
  */
-function copyAssets(src, dest, baseDir){
-
+function copyAssets(src, dest, baseDir) {
+  /** @type {string[]} */
   const assets = glob.sync(src, { cwd: baseDir });
   console.log(`Copying ${src} assets to -> ${dest}:`);
 
-  assets.forEach(file => {
+  assets.forEach((file) => {
     const sourcePath = join(baseDir, file);
-    const targetPath = join(baseDir,dest, basename(file));
+    const targetPath = join(baseDir, dest, basename(file));
 
     try {
       copyFileSync(sourcePath, targetPath);
       console.log(`  ✓ ${file}`);
     } catch (error) {
-      console.error(`  ✗ Failed to copy ${file}:`, error.message);
+      console.error(`  ✗ Failed to copy ${file}:`, /** @type {Error} */ (error).message);
     }
   });
 }
-

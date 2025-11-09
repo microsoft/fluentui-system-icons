@@ -64,7 +64,7 @@ describe('Build Verification', () => {
       const libPath = path.join(__dirname, libDir);
 
       // Check main structure
-      const requiredDirs = ['icons', 'sizedIcons', 'fonts', 'utils'];
+      const requiredDirs = ['icons', 'sizedIcons', 'fonts', 'utils', 'atoms'];
       const requiredFiles = ['index.js', 'index.d.ts', 'providers.js', 'providers.d.ts'];
 
       for (const dir of requiredDirs) {
@@ -97,22 +97,39 @@ describe('Build Verification', () => {
         const filePath = path.join(fontsDir, file);
         expect(fs.existsSync(filePath)).toBe(true);
       }
+
+      // Check atoms directory structure
+      const atomsDirSvg = path.join(libPath, 'atoms/svg');
+      const atomRequiredFiles = ['access-time.js', 'access-time.d.ts'];
+
+      for (const file of atomRequiredFiles) {
+        const filePath = path.join(atomsDirSvg, file);
+        expect(fs.existsSync(filePath)).toBe(true);
+      }
+
+      const atomsDirFonts = path.join(libPath, 'atoms/fonts');
+
+      for (const file of atomRequiredFiles) {
+        const filePath = path.join(atomsDirFonts, file);
+        expect(fs.existsSync(filePath)).toBe(true);
+      }
     });
   });
 
   describe('Package.json Exports', () => {
     it('should have all exported files exist', async () => {
       const packageJsonPath = path.join(__dirname, 'package.json');
+      /** @type {{main:string;module:string;typings:string;exports:Record<string,string>}} */
       const packageJson = JSON.parse(await readFile(packageJsonPath, 'utf8'));
 
       // Check main, module, and typings fields
       const mainFields = {
         main: packageJson.main,
         module: packageJson.module,
-        typings: packageJson.typings
+        typings: packageJson.typings,
       };
 
-      for (const [field, filePath] of Object.entries(mainFields)) {
+      for (const filePath of Object.values(mainFields)) {
         if (filePath) {
           const fullPath = path.join(__dirname, filePath);
           expect(fs.existsSync(fullPath)).toBe(true);
@@ -123,32 +140,57 @@ describe('Build Verification', () => {
       }
 
       // Check all exports paths
-      if (packageJson.exports) {
-        const exportPaths = [];
 
-        function extractPaths(obj, currentPath = '') {
-          for (const [key, value] of Object.entries(obj)) {
-            if (typeof value === 'string') {
-              exportPaths.push(value);
-            } else if (typeof value === 'object' && value !== null) {
-              extractPaths(value, currentPath);
-            }
+      /** @type {string[]} */
+      const exportPaths = [];
+
+      function extractPaths(/**@type {Record<string,string>} */ obj, currentPath = '') {
+        for (const value of Object.values(obj)) {
+          if (typeof value === 'string') {
+            exportPaths.push(value);
+          } else if (typeof value === 'object' && value !== null) {
+            extractPaths(value, currentPath);
           }
         }
+      }
 
-        extractPaths(packageJson.exports);
+      extractPaths(packageJson.exports);
 
-        // Remove duplicates
-        const uniquePaths = Array.from(new Set(exportPaths));
+      // Remove duplicates
+      const uniquePaths = Array.from(new Set(exportPaths));
 
-        for (const exportPath of uniquePaths) {
-          if (exportPath.startsWith('./')) {
-            const fullPath = path.join(__dirname, exportPath.slice(2));
-            expect(fs.existsSync(fullPath)).toBe(true);
+      for (const exportPath of uniquePaths) {
+        // Wildcard support: we only handle simple trailing patterns like *.js or *.d.ts via a directory scan.
+        // This avoids heavy glob expansion (tens of thousands of files) and keeps logic minimal.
+        if (exportPath.includes('*')) {
+          const relative = exportPath.slice(2); // remove ./
+          const lastSlash = relative.lastIndexOf('/');
+          const dirPart = relative.slice(0, lastSlash);
+          const patternPart = relative.slice(lastSlash + 1); // e.g. *.js or *.d.ts
+          const dirAbs = path.join(__dirname, dirPart);
+          expect(fs.existsSync(dirAbs), `Directory for pattern missing: ${dirPart}`).toBe(true);
 
-            const stats = await stat(fullPath);
-            expect(stats.isFile()).toBe(true);
+          // Support only simple patterns starting with *.
+          if (!patternPart.startsWith('*.')) {
+            throw new Error(`Unsupported wildcard pattern (only leading *.<ext> supported): ${exportPath}`);
           }
+          const ext = patternPart.slice(1); // keep the dot(s), e.g. '.js', '.d.ts'
+          const entries = await readdir(dirAbs);
+          const matchName = entries.find((e) => e.endsWith(ext));
+          expect(
+            matchName,
+            `No file ending with '${ext}' found in ${dirPart} for export pattern ${exportPath}`,
+          ).toBeTruthy();
+          if (matchName) {
+            const full = path.join(dirAbs, matchName);
+            const s = await stat(full);
+            expect(s.isFile(), `Matched path is not a file: ${full}`).toBe(true);
+          }
+        } else {
+          const fullPath = path.join(__dirname, exportPath.slice(2));
+          expect(fs.existsSync(fullPath)).toBe(true);
+          const stats = await stat(fullPath);
+          expect(stats.isFile()).toBe(true);
         }
       }
     });
@@ -390,6 +432,30 @@ describe('Build Verification', () => {
         export * from './icons/chunk-3';
         export * from './icons/chunk-4';
         export * from './icons/chunk-5';
+        export * from './icons/chunk-6';
+        export * from './icons/chunk-7';
+        export * from './icons/chunk-8';
+        export * from './icons/chunk-9';
+        export * from './icons/chunk-10';
+        export * from './icons/chunk-11';
+        export * from './icons/chunk-12';
+        export * from './icons/chunk-13';
+        export * from './icons/chunk-14';
+        export * from './icons/chunk-15';
+        export * from './icons/chunk-16';
+        export * from './icons/chunk-17';
+        export * from './icons/chunk-18';
+        export * from './icons/chunk-19';
+        export * from './icons/chunk-20';
+        export * from './icons/chunk-21';
+        export * from './icons/chunk-22';
+        export * from './icons/chunk-23';
+        export * from './icons/chunk-24';
+        export * from './icons/chunk-25';
+        export * from './icons/chunk-26';
+        export * from './icons/chunk-27';
+        export * from './icons/chunk-28';
+        export * from './icons/chunk-29';
         export * from './sizedIcons/chunk-0';
         export * from './sizedIcons/chunk-1';
         export * from './sizedIcons/chunk-2';
@@ -410,6 +476,16 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-17';
         export * from './sizedIcons/chunk-18';
         export * from './sizedIcons/chunk-19';
+        export * from './sizedIcons/chunk-20';
+        export * from './sizedIcons/chunk-21';
+        export * from './sizedIcons/chunk-22';
+        export * from './sizedIcons/chunk-23';
+        export * from './sizedIcons/chunk-24';
+        export * from './sizedIcons/chunk-25';
+        export * from './sizedIcons/chunk-26';
+        export * from './sizedIcons/chunk-27';
+        export * from './sizedIcons/chunk-28';
+        export * from './sizedIcons/chunk-29';
         export { default as wrapIcon } from './utils/wrapIcon';
         export { default as bundleIcon } from './utils/bundleIcon';
         export { createFluentIcon } from './utils/createFluentIcon';
@@ -425,6 +501,30 @@ describe('Build Verification', () => {
         export * from './icons/chunk-3';
         export * from './icons/chunk-4';
         export * from './icons/chunk-5';
+        export * from './icons/chunk-6';
+        export * from './icons/chunk-7';
+        export * from './icons/chunk-8';
+        export * from './icons/chunk-9';
+        export * from './icons/chunk-10';
+        export * from './icons/chunk-11';
+        export * from './icons/chunk-12';
+        export * from './icons/chunk-13';
+        export * from './icons/chunk-14';
+        export * from './icons/chunk-15';
+        export * from './icons/chunk-16';
+        export * from './icons/chunk-17';
+        export * from './icons/chunk-18';
+        export * from './icons/chunk-19';
+        export * from './icons/chunk-20';
+        export * from './icons/chunk-21';
+        export * from './icons/chunk-22';
+        export * from './icons/chunk-23';
+        export * from './icons/chunk-24';
+        export * from './icons/chunk-25';
+        export * from './icons/chunk-26';
+        export * from './icons/chunk-27';
+        export * from './icons/chunk-28';
+        export * from './icons/chunk-29';
         export * from './sizedIcons/chunk-0';
         export * from './sizedIcons/chunk-1';
         export * from './sizedIcons/chunk-2';
@@ -445,6 +545,16 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-17';
         export * from './sizedIcons/chunk-18';
         export * from './sizedIcons/chunk-19';
+        export * from './sizedIcons/chunk-20';
+        export * from './sizedIcons/chunk-21';
+        export * from './sizedIcons/chunk-22';
+        export * from './sizedIcons/chunk-23';
+        export * from './sizedIcons/chunk-24';
+        export * from './sizedIcons/chunk-25';
+        export * from './sizedIcons/chunk-26';
+        export * from './sizedIcons/chunk-27';
+        export * from './sizedIcons/chunk-28';
+        export * from './sizedIcons/chunk-29';
         export { default as wrapIcon } from './utils/wrapIcon';
         export { default as bundleIcon } from './utils/bundleIcon';
         export { createFluentIcon } from './utils/createFluentIcon';
@@ -474,6 +584,30 @@ describe('Build Verification', () => {
         tslib_1.__exportStar(require("./icons/chunk-3"), exports);
         tslib_1.__exportStar(require("./icons/chunk-4"), exports);
         tslib_1.__exportStar(require("./icons/chunk-5"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-6"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-7"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-8"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-9"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-10"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-11"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-12"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-13"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-14"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-15"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-16"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-17"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-18"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-19"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-20"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-21"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-22"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-23"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-24"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-25"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-26"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-27"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-28"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-29"), exports);
         tslib_1.__exportStar(require("./sizedIcons/chunk-0"), exports);
         tslib_1.__exportStar(require("./sizedIcons/chunk-1"), exports);
         tslib_1.__exportStar(require("./sizedIcons/chunk-2"), exports);
@@ -494,6 +628,16 @@ describe('Build Verification', () => {
         tslib_1.__exportStar(require("./sizedIcons/chunk-17"), exports);
         tslib_1.__exportStar(require("./sizedIcons/chunk-18"), exports);
         tslib_1.__exportStar(require("./sizedIcons/chunk-19"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-20"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-21"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-22"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-23"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-24"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-25"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-26"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-27"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-28"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-29"), exports);
         var wrapIcon_1 = require("./utils/wrapIcon");
         Object.defineProperty(exports, "wrapIcon", { enumerable: true, get: function () { return tslib_1.__importDefault(wrapIcon_1).default; } });
         var bundleIcon_1 = require("./utils/bundleIcon");
@@ -514,6 +658,30 @@ describe('Build Verification', () => {
         export * from './icons/chunk-3';
         export * from './icons/chunk-4';
         export * from './icons/chunk-5';
+        export * from './icons/chunk-6';
+        export * from './icons/chunk-7';
+        export * from './icons/chunk-8';
+        export * from './icons/chunk-9';
+        export * from './icons/chunk-10';
+        export * from './icons/chunk-11';
+        export * from './icons/chunk-12';
+        export * from './icons/chunk-13';
+        export * from './icons/chunk-14';
+        export * from './icons/chunk-15';
+        export * from './icons/chunk-16';
+        export * from './icons/chunk-17';
+        export * from './icons/chunk-18';
+        export * from './icons/chunk-19';
+        export * from './icons/chunk-20';
+        export * from './icons/chunk-21';
+        export * from './icons/chunk-22';
+        export * from './icons/chunk-23';
+        export * from './icons/chunk-24';
+        export * from './icons/chunk-25';
+        export * from './icons/chunk-26';
+        export * from './icons/chunk-27';
+        export * from './icons/chunk-28';
+        export * from './icons/chunk-29';
         export * from './sizedIcons/chunk-0';
         export * from './sizedIcons/chunk-1';
         export * from './sizedIcons/chunk-2';
@@ -534,6 +702,16 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-17';
         export * from './sizedIcons/chunk-18';
         export * from './sizedIcons/chunk-19';
+        export * from './sizedIcons/chunk-20';
+        export * from './sizedIcons/chunk-21';
+        export * from './sizedIcons/chunk-22';
+        export * from './sizedIcons/chunk-23';
+        export * from './sizedIcons/chunk-24';
+        export * from './sizedIcons/chunk-25';
+        export * from './sizedIcons/chunk-26';
+        export * from './sizedIcons/chunk-27';
+        export * from './sizedIcons/chunk-28';
+        export * from './sizedIcons/chunk-29';
         export { default as wrapIcon } from './utils/wrapIcon';
         export { default as bundleIcon } from './utils/bundleIcon';
         export { createFluentIcon } from './utils/createFluentIcon';
@@ -565,6 +743,25 @@ describe('Build Verification', () => {
         export * from './icons/chunk-8';
         export * from './icons/chunk-9';
         export * from './icons/chunk-10';
+        export * from './icons/chunk-11';
+        export * from './icons/chunk-12';
+        export * from './icons/chunk-13';
+        export * from './icons/chunk-14';
+        export * from './icons/chunk-15';
+        export * from './icons/chunk-16';
+        export * from './icons/chunk-17';
+        export * from './icons/chunk-18';
+        export * from './icons/chunk-19';
+        export * from './icons/chunk-20';
+        export * from './icons/chunk-21';
+        export * from './icons/chunk-22';
+        export * from './icons/chunk-23';
+        export * from './icons/chunk-24';
+        export * from './icons/chunk-25';
+        export * from './icons/chunk-26';
+        export * from './icons/chunk-27';
+        export * from './icons/chunk-28';
+        export * from './icons/chunk-29';
         export * from './sizedIcons/chunk-0';
         export * from './sizedIcons/chunk-1';
         export * from './sizedIcons/chunk-2';
@@ -595,14 +792,6 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-27';
         export * from './sizedIcons/chunk-28';
         export * from './sizedIcons/chunk-29';
-        export * from './sizedIcons/chunk-30';
-        export * from './sizedIcons/chunk-31';
-        export * from './sizedIcons/chunk-32';
-        export * from './sizedIcons/chunk-33';
-        export * from './sizedIcons/chunk-34';
-        export * from './sizedIcons/chunk-35';
-        export * from './sizedIcons/chunk-36';
-        export * from './sizedIcons/chunk-37';
         export { default as wrapIcon } from '../utils/wrapIcon';
         export { default as bundleIcon } from '../utils/bundleIcon';
         export { createFluentIcon } from '../utils/createFluentIcon';
@@ -624,6 +813,25 @@ describe('Build Verification', () => {
         export * from './icons/chunk-8';
         export * from './icons/chunk-9';
         export * from './icons/chunk-10';
+        export * from './icons/chunk-11';
+        export * from './icons/chunk-12';
+        export * from './icons/chunk-13';
+        export * from './icons/chunk-14';
+        export * from './icons/chunk-15';
+        export * from './icons/chunk-16';
+        export * from './icons/chunk-17';
+        export * from './icons/chunk-18';
+        export * from './icons/chunk-19';
+        export * from './icons/chunk-20';
+        export * from './icons/chunk-21';
+        export * from './icons/chunk-22';
+        export * from './icons/chunk-23';
+        export * from './icons/chunk-24';
+        export * from './icons/chunk-25';
+        export * from './icons/chunk-26';
+        export * from './icons/chunk-27';
+        export * from './icons/chunk-28';
+        export * from './icons/chunk-29';
         export * from './sizedIcons/chunk-0';
         export * from './sizedIcons/chunk-1';
         export * from './sizedIcons/chunk-2';
@@ -654,14 +862,6 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-27';
         export * from './sizedIcons/chunk-28';
         export * from './sizedIcons/chunk-29';
-        export * from './sizedIcons/chunk-30';
-        export * from './sizedIcons/chunk-31';
-        export * from './sizedIcons/chunk-32';
-        export * from './sizedIcons/chunk-33';
-        export * from './sizedIcons/chunk-34';
-        export * from './sizedIcons/chunk-35';
-        export * from './sizedIcons/chunk-36';
-        export * from './sizedIcons/chunk-37';
         export { default as wrapIcon } from '../utils/wrapIcon';
         export { default as bundleIcon } from '../utils/bundleIcon';
         export { createFluentIcon } from '../utils/createFluentIcon';
@@ -699,6 +899,25 @@ describe('Build Verification', () => {
         tslib_1.__exportStar(require("./icons/chunk-8"), exports);
         tslib_1.__exportStar(require("./icons/chunk-9"), exports);
         tslib_1.__exportStar(require("./icons/chunk-10"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-11"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-12"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-13"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-14"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-15"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-16"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-17"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-18"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-19"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-20"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-21"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-22"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-23"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-24"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-25"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-26"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-27"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-28"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-29"), exports);
         tslib_1.__exportStar(require("./sizedIcons/chunk-0"), exports);
         tslib_1.__exportStar(require("./sizedIcons/chunk-1"), exports);
         tslib_1.__exportStar(require("./sizedIcons/chunk-2"), exports);
@@ -729,14 +948,6 @@ describe('Build Verification', () => {
         tslib_1.__exportStar(require("./sizedIcons/chunk-27"), exports);
         tslib_1.__exportStar(require("./sizedIcons/chunk-28"), exports);
         tslib_1.__exportStar(require("./sizedIcons/chunk-29"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-30"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-31"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-32"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-33"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-34"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-35"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-36"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-37"), exports);
         var wrapIcon_1 = require("../utils/wrapIcon");
         Object.defineProperty(exports, "wrapIcon", { enumerable: true, get: function () { return tslib_1.__importDefault(wrapIcon_1).default; } });
         var bundleIcon_1 = require("../utils/bundleIcon");
@@ -764,6 +975,25 @@ describe('Build Verification', () => {
         export * from './icons/chunk-8';
         export * from './icons/chunk-9';
         export * from './icons/chunk-10';
+        export * from './icons/chunk-11';
+        export * from './icons/chunk-12';
+        export * from './icons/chunk-13';
+        export * from './icons/chunk-14';
+        export * from './icons/chunk-15';
+        export * from './icons/chunk-16';
+        export * from './icons/chunk-17';
+        export * from './icons/chunk-18';
+        export * from './icons/chunk-19';
+        export * from './icons/chunk-20';
+        export * from './icons/chunk-21';
+        export * from './icons/chunk-22';
+        export * from './icons/chunk-23';
+        export * from './icons/chunk-24';
+        export * from './icons/chunk-25';
+        export * from './icons/chunk-26';
+        export * from './icons/chunk-27';
+        export * from './icons/chunk-28';
+        export * from './icons/chunk-29';
         export * from './sizedIcons/chunk-0';
         export * from './sizedIcons/chunk-1';
         export * from './sizedIcons/chunk-2';
@@ -794,14 +1024,6 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-27';
         export * from './sizedIcons/chunk-28';
         export * from './sizedIcons/chunk-29';
-        export * from './sizedIcons/chunk-30';
-        export * from './sizedIcons/chunk-31';
-        export * from './sizedIcons/chunk-32';
-        export * from './sizedIcons/chunk-33';
-        export * from './sizedIcons/chunk-34';
-        export * from './sizedIcons/chunk-35';
-        export * from './sizedIcons/chunk-36';
-        export * from './sizedIcons/chunk-37';
         export { default as wrapIcon } from '../utils/wrapIcon';
         export { default as bundleIcon } from '../utils/bundleIcon';
         export { createFluentIcon } from '../utils/createFluentIcon';
@@ -837,35 +1059,35 @@ describe('Build Verification', () => {
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
           ""use client";
-          import { createFluentIcon } from "../utils/createFluentIcon";
-          export const AccessTimeFilled = ( /*#__PURE__*/createFluentIcon('AccessTimeFilled', "1em", ["M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM6.99 8.6A.5.5 0 0 1 6 8.4c.02-.07.03-.14.07-.24a2 2 0 0 1 .25-.46c.26-.35.71-.7 1.42-.7A1.7 1.7 0 0 1 9.5 8.75c0 .35-.07.65-.2.9a1.8 1.8 0 0 1-.51.6c-.16.11-.33.22-.48.3l-.06.04c-.17.1-.3.19-.42.29-.4.34-.66.7-.77 1.12H9a.5.5 0 0 1 0 1H6.5a.5.5 0 0 1-.5-.5c0-1.01.47-1.77 1.17-2.38.2-.16.4-.29.57-.4l.06-.03.38-.24a.8.8 0 0 0 .23-.26c.05-.1.09-.23.09-.44a.8.8 0 0 0-.19-.53.7.7 0 0 0-.56-.22.7.7 0 0 0-.61.3 1 1 0 0 0-.15.3ZM11 7c.28 0 .5.22.5.5V10H13V7.5a.5.5 0 0 1 1 0v5a.5.5 0 0 1-1 0V11h-2a.5.5 0 0 1-.5-.5v-3c0-.28.22-.5.5-.5Z"]));
-          export const AccessTimeRegular = ( /*#__PURE__*/createFluentIcon('AccessTimeRegular', "1em", ["M6.99 8.6A.5.5 0 0 1 6 8.4a1.29 1.29 0 0 1 .07-.24 2 2 0 0 1 .25-.46c.26-.35.71-.7 1.42-.7A1.7 1.7 0 0 1 9.5 8.75c0 .35-.07.65-.2.9a1.8 1.8 0 0 1-.51.6c-.16.11-.33.22-.48.3l-.06.04c-.17.1-.3.19-.42.29-.4.34-.66.7-.77 1.12H9a.5.5 0 0 1 0 1H6.5a.5.5 0 0 1-.5-.5c0-1.01.47-1.77 1.17-2.38.2-.16.4-.29.57-.4l.06-.03.38-.24a.8.8 0 0 0 .23-.26c.05-.1.09-.23.09-.44a.8.8 0 0 0-.19-.53.7.7 0 0 0-.56-.22.7.7 0 0 0-.61.3 1 1 0 0 0-.15.3ZM11 7c.28 0 .5.22.5.5V10H13V7.5a.5.5 0 0 1 1 0v5a.5.5 0 0 1-1 0V11h-2a.5.5 0 0 1-.5-.5v-3c0-.28.22-.5.5-.5Zm-1-5a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm-7 8a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z"]));
-          export const AccessibilityFilled = ( /*#__PURE__*/createFluentIcon('AccessibilityFilled', "1em", ["M10 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM5.47 4.15c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L6.7 8.53c.18.08.3.26.3.46v1.86a.5.5 0 0 1-.04.19l-1.84 4.55a1.75 1.75 0 0 0 3.25 1.32l1.4-3.46c.08-.21.38-.21.46 0l1.4 3.46a1.75 1.75 0 0 0 3.24-1.32l-1.83-4.54a.5.5 0 0 1-.04-.19V9c0-.2.12-.38.3-.46l2.67-1.19c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-1.28.57c-.24.1-.42.3-.52.52a3 3 0 0 1-5.46 0c-.1-.21-.28-.41-.52-.52l-1.28-.57Z"]));
-          export const AccessibilityRegular = ( /*#__PURE__*/createFluentIcon('AccessibilityRegular', "1em", ["M8.5 4.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM10 2a2.5 2.5 0 0 0-2.43 3.08l-2.1-.93c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L7 8.66v2.29l-1.88 4.64a1.75 1.75 0 0 0 3.25 1.32l1.55-3.85.03-.04L10 13h.04l.03.05 1.56 3.84a1.75 1.75 0 0 0 3.24-1.3L13 10.95v-2.3l2.97-1.32c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-2.1.93A2.51 2.51 0 0 0 10 2ZM4.07 5.44a.76.76 0 0 1 1-.38l3.91 1.75a2.5 2.5 0 0 0 2.04 0l3.91-1.75c.38-.17.83 0 1 .38.18.38 0 .82-.37.99L12.6 7.75a1 1 0 0 0-.59.91v2.3a1 1 0 0 0 .07.37l1.87 4.64a.75.75 0 0 1-1.39.56L11 12.68c-.36-.9-1.64-.9-2 0l-1.56 3.85a.75.75 0 1 1-1.39-.56l1.88-4.65a1 1 0 0 0 .07-.37V8.66a1 1 0 0 0-.6-.91L4.45 6.43a.74.74 0 0 1-.37-.99Z"]));
-          export const AccessibilityCheckmarkFilled = ( /*#__PURE__*/createFluentIcon('AccessibilityCheckmarkFilled', "1em", ["M10 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM5.47 4.15c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L6.7 8.53c.18.08.3.26.3.46v1.86a.5.5 0 0 1-.04.19l-1.84 4.55a1.75 1.75 0 0 0 3.25 1.32l.08-.22A5.48 5.48 0 0 1 13 9.02V9c0-.2.12-.38.3-.46l2.67-1.19c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-1.28.57c-.24.1-.42.3-.52.52a3 3 0 0 1-5.46 0c-.1-.21-.28-.41-.52-.52l-1.28-.57ZM18 14.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-2.15-1.85a.5.5 0 0 0-.7 0l-2.65 2.64-.65-.64a.5.5 0 0 0-.7.7l1 1c.2.2.5.2.7 0l3-3a.5.5 0 0 0 0-.7Z"]));
-          export const AccessibilityCheckmarkRegular = ( /*#__PURE__*/createFluentIcon('AccessibilityCheckmarkRegular', "1em", ["M8.5 4.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM10 2a2.5 2.5 0 0 0-2.43 3.08l-2.1-.93c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L7 8.66v2.29l-1.88 4.64a1.75 1.75 0 0 0 3.25 1.32l.08-.22a5.46 5.46 0 0 1-.42-1.62l-.59 1.46a.75.75 0 1 1-1.39-.56l1.88-4.65a1 1 0 0 0 .07-.37V8.66a1 1 0 0 0-.6-.91L4.45 6.43a.74.74 0 0 1-.37-.99.76.76 0 0 1 1-.38l3.91 1.75a2.5 2.5 0 0 0 2.04 0l3.91-1.75c.38-.17.83 0 1 .38.18.38 0 .82-.37.99L12.6 7.75a1 1 0 0 0-.59.91v.55c.32-.1.66-.16 1-.19v-.36l2.97-1.32c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-2.1.93A2.51 2.51 0 0 0 10 2Zm8 12.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-2.15-1.85a.5.5 0 0 0-.7 0l-2.65 2.64-.65-.64a.5.5 0 0 0-.7.7l1 1c.2.2.5.2.7 0l3-3a.5.5 0 0 0 0-.7Z"]));
-          export const AccessibilityErrorFilled = ( /*#__PURE__*/createFluentIcon('AccessibilityErrorFilled', "1em", ["M10 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM5.47 4.15c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L6.7 8.53c.18.08.3.26.3.46v1.86a.5.5 0 0 1-.04.19l-1.84 4.55a1.75 1.75 0 0 0 3.25 1.32l.08-.22A5.48 5.48 0 0 1 13 9.02V9c0-.2.12-.38.3-.46l2.67-1.19c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-1.28.57c-.24.1-.42.3-.52.52a3 3 0 0 1-5.46 0c-.1-.21-.28-.41-.52-.52l-1.28-.57ZM18 14.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM13.5 12a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 1 0v-2a.5.5 0 0 0-.5-.5Zm0 5.13a.62.62 0 1 0 0-1.25.62.62 0 0 0 0 1.24Z"]));
-          export const AccessibilityErrorRegular = ( /*#__PURE__*/createFluentIcon('AccessibilityErrorRegular', "1em", ["M8.5 4.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM10 2a2.5 2.5 0 0 0-2.43 3.08l-2.1-.93c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L7 8.66v2.29l-1.88 4.64a1.75 1.75 0 0 0 3.25 1.32l.08-.22a5.46 5.46 0 0 1-.42-1.62l-.59 1.46a.75.75 0 1 1-1.39-.56l1.88-4.65a1 1 0 0 0 .07-.37V8.66a1 1 0 0 0-.6-.91L4.45 6.43a.74.74 0 0 1-.37-.99.76.76 0 0 1 1-.38l3.91 1.75a2.5 2.5 0 0 0 2.04 0l3.91-1.75c.38-.17.83 0 1 .38.18.38 0 .82-.37.99L12.6 7.75a1 1 0 0 0-.59.91v.55c.32-.1.66-.16 1-.19v-.36l2.97-1.32c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-2.1.93A2.5 2.5 0 0 0 10 2Zm8 12.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM13.5 12a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 1 0v-2a.5.5 0 0 0-.5-.5Zm0 5.13a.62.62 0 1 0 0-1.25.62.62 0 0 0 0 1.24Z"]));
-          export const AccessibilityMoreFilled = ( /*#__PURE__*/createFluentIcon('AccessibilityMoreFilled', "1em", ["M14.87 15.6c.05.11.08.23.1.35a2.24 2.24 0 0 0-1.97-1.2c-.77 0-1.43.4-1.84 1l-.93-2.3a.25.25 0 0 0-.47 0l-.54 1.33c-.07 0-.14-.03-.22-.03a2.25 2.25 0 0 0-2.02 3.23 1.73 1.73 0 0 1-1.86-2.39l1.84-4.55a.5.5 0 0 0 .04-.19V9a.5.5 0 0 0-.3-.46L4.03 7.34a1.74 1.74 0 0 1-.88-2.31 1.76 1.76 0 0 1 2.32-.88l1.27.57c.25.1.43.3.52.52a3 3 0 0 0 5.47 0c.1-.21.27-.41.52-.52l1.27-.57c.89-.4 1.92 0 2.32.88.4.88 0 1.92-.88 2.31L13.3 8.53a.5.5 0 0 0-.3.46v1.87c0 .07.02.13.04.19l1.84 4.54ZM10 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm-1 9.75a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5Zm4 0a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5Zm4 0a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5Z"]));
-          export const AccessibilityMoreRegular = ( /*#__PURE__*/createFluentIcon('AccessibilityMoreRegular', "1em", ["m9 12.68-.92 2.27c.28-.13.6-.2.92-.2.08 0 .15.03.23.03l.7-1.72c0-.03.01-.04.02-.04L10 13h.04l.03.05 1.1 2.7c.2-.3.46-.55.78-.73L11 12.68c-.37-.9-1.64-.9-2 0Zm7.84-7.65a1.76 1.76 0 0 0-2.31-.88l-2.1.94A2.51 2.51 0 0 0 10 1.99a2.5 2.5 0 0 0-2.43 3.1l-2.1-.94c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L7 8.66v2.29L5.12 15.6a1.75 1.75 0 0 0 1.86 2.38c-.14-.3-.23-.63-.23-.98-.1 0-.2-.02-.29-.05a.75.75 0 0 1-.41-.98l1.88-4.64a1 1 0 0 0 .07-.38V8.66a1 1 0 0 0-.6-.91L4.45 6.43a.74.74 0 0 1-.37-.98.76.76 0 0 1 1-.38L8.98 6.8a2.5 2.5 0 0 0 2.04 0l3.92-1.74c.38-.17.82 0 1 .38.17.37 0 .81-.38.98L12.6 7.75a1 1 0 0 0-.59.91v2.3a1 1 0 0 0 .07.38l1.41 3.48c.65.15 1.19.56 1.5 1.13a1.8 1.8 0 0 0-.1-.35L13 10.96v-2.3l2.97-1.32c.88-.4 1.28-1.43.88-2.3ZM10 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm.25 11a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0ZM13 18.25a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5Zm4 0a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5Z"]));
-          export const AccessibilityQuestionMarkFilled = ( /*#__PURE__*/createFluentIcon('AccessibilityQuestionMarkFilled', "1em", ["M10 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM5.47 4.15c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L6.7 8.53c.18.08.3.26.3.46v1.86a.5.5 0 0 1-.04.19l-1.84 4.55a1.75 1.75 0 0 0 3.25 1.32l.08-.22A5.48 5.48 0 0 1 13 9.02V9c0-.2.12-.38.3-.46l2.67-1.19c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-1.28.57c-.24.1-.42.3-.52.52a3 3 0 0 1-5.46 0c-.1-.21-.28-.41-.52-.52l-1.28-.57ZM18 14.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-4.5 1.88a.62.62 0 1 0 0 1.25.62.62 0 0 0 0-1.25Zm0-4.88c-1.05 0-1.86.82-1.85 1.96a.5.5 0 1 0 1-.01c0-.58.36-.95.85-.95.47 0 .85.4.85.95 0 .2-.07.32-.36.55l-.27.21c-.51.4-.72.72-.72 1.29a.5.5 0 0 0 1 .09v-.16c.02-.14.1-.25.35-.44l.28-.22c.5-.4.72-.73.72-1.32 0-1.1-.82-1.95-1.85-1.95Z"]));
-          export const AccessibilityQuestionMarkRegular = ( /*#__PURE__*/createFluentIcon('AccessibilityQuestionMarkRegular', "1em", ["M8.5 4.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM10 2a2.5 2.5 0 0 0-2.43 3.08l-2.1-.93c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L7 8.66v2.29l-1.88 4.64a1.75 1.75 0 0 0 3.25 1.32l.08-.22a5.46 5.46 0 0 1-.42-1.62l-.59 1.46a.75.75 0 1 1-1.39-.56l1.88-4.65a1 1 0 0 0 .07-.37V8.66a1 1 0 0 0-.6-.91L4.45 6.43a.74.74 0 0 1-.37-.99.76.76 0 0 1 1-.38l3.91 1.75a2.5 2.5 0 0 0 2.04 0l3.91-1.75c.38-.17.83 0 1 .38.18.38 0 .82-.37.99L12.6 7.75a1 1 0 0 0-.59.91v.55c.32-.1.66-.16 1-.19v-.36l2.97-1.32c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-2.1.93A2.5 2.5 0 0 0 10 2Zm8 12.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-4.5 1.88a.62.62 0 1 0 0 1.25.62.62 0 0 0 0-1.25Zm0-4.88c-1.05 0-1.86.82-1.85 1.96a.5.5 0 1 0 1-.01c0-.58.36-.95.85-.95.47 0 .85.4.85.95 0 .2-.07.32-.36.55l-.27.21c-.51.4-.72.72-.72 1.29a.5.5 0 0 0 1 .09v-.16c.02-.14.1-.25.35-.44l.28-.22c.5-.4.72-.73.72-1.32 0-1.1-.82-1.95-1.85-1.95Z"]));
-          export const AddFilled = ( /*#__PURE__*/createFluentIcon('AddFilled', "1em", ["M10 2.25c.41 0 .75.34.75.75v6.25H17a.75.75 0 0 1 0 1.5h-6.25V17a.75.75 0 0 1-1.5 0v-6.25H3a.75.75 0 0 1 0-1.5h6.25V3c0-.41.34-.75.75-.75Z"]));
-          export const AddRegular = ( /*#__PURE__*/createFluentIcon('AddRegular', "1em", ["M10 2.5c.28 0 .5.22.5.5v6.5H17a.5.5 0 0 1 0 1h-6.5V17a.5.5 0 0 1-1 0v-6.5H3a.5.5 0 0 1 0-1h6.5V3c0-.28.22-.5.5-.5Z"]));
-          export const AddCircleColor = ( /*#__PURE__*/createFluentIcon('AddCircleColor', "1em", \`<path d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" fill="url(#ic_fluent_add_circle_20_color__a)"/><path d="M6 10c0-.28.22-.5.5-.5h3v-3a.5.5 0 0 1 1 0v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3A.5.5 0 0 1 6 10Z" fill="url(#ic_fluent_add_circle_20_color__b)"/><defs><linearGradient id="ic_fluent_add_circle_20_color__a" x1="2.57" y1="5" x2="13.61" y2="16.47" gradientUnits="userSpaceOnUse"><stop stop-color="#52D17C"/><stop offset="1" stop-color="#22918B"/></linearGradient><linearGradient id="ic_fluent_add_circle_20_color__b" x1="7.5" y1="6.82" x2="9.95" y2="15.48" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset="1" stop-color="#E3FFD9"/></linearGradient></defs>\`, { color: true }));
-          export const AddCircleFilled = ( /*#__PURE__*/createFluentIcon('AddCircleFilled', "1em", ["M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0ZM6 10c0 .28.22.5.5.5h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0-.5.5Z"]));
-          export const AddCircleRegular = ( /*#__PURE__*/createFluentIcon('AddCircleRegular', "1em", ["M6 10c0-.28.22-.5.5-.5h3v-3a.5.5 0 0 1 1 0v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3A.5.5 0 0 1 6 10Zm4 8a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm0-1a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"]));
-          export const AddSquareFilled = ( /*#__PURE__*/createFluentIcon('AddSquareFilled', "1em", ["M3 6a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6Zm7.5.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 1 0 1 0v-3h3a.5.5 0 1 0 0-1h-3v-3Z"]));
-          export const AddSquareRegular = ( /*#__PURE__*/createFluentIcon('AddSquareRegular', "1em", ["M6 3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3H6ZM4 6c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Zm6.5.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 1 0 1 0v-3h3a.5.5 0 1 0 0-1h-3v-3Z"]));
-          export const AddSquareMultipleFilled = ( /*#__PURE__*/createFluentIcon('AddSquareMultipleFilled', "1em", ["M16 5.27c.6.34 1 .99 1 1.73v6a4 4 0 0 1-4 4H7a2 2 0 0 1-1.73-1H13a3 3 0 0 0 3-3V5.27ZM15 5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V5Zm-3 4a.5.5 0 0 1-.5.5h-2v2a.5.5 0 0 1-1 0v-2h-2a.5.5 0 1 1 0-1h2v-2a.5.5 0 1 1 1 0v2h2c.28 0 .5.22.5.5Z"]));
-          export const AddSquareMultipleRegular = ( /*#__PURE__*/createFluentIcon('AddSquareMultipleRegular', "1em", ["M16 5.27V13a3 3 0 0 1-3 3H5.27c.34.6.99 1 1.73 1h6a4 4 0 0 0 4-4V7a2 2 0 0 0-1-1.73ZM11.5 9.5a.5.5 0 0 0 0-1h-2v-2a.5.5 0 1 0-1 0v2h-2a.5.5 0 0 0 0 1h2v2a.5.5 0 0 0 1 0v-2h2ZM13 3a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h8Zm1 2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5Z"]));
-          export const AddStarburstColor = ( /*#__PURE__*/createFluentIcon('AddStarburstColor', "1em", \`<path d="M11.1 1.3a.75.75 0 0 0-1.2 0L8.85 2.65a.5.5 0 0 1-.58.15l-1.6-.65a.75.75 0 0 0-1.03.6l-.24 1.7a.5.5 0 0 1-.42.44l-1.72.23a.75.75 0 0 0-.59 1.03l.65 1.6a.5.5 0 0 1-.15.59L1.79 9.4a.75.75 0 0 0 0 1.18l1.37 1.07a.5.5 0 0 1 .15.58l-.65 1.6c-.18.46.1.96.6 1.03l1.7.24c.23.03.4.2.43.42l.24 1.72c.07.48.57.77 1.03.59l1.6-.65a.5.5 0 0 1 .58.15l1.07 1.37c.3.39.88.39 1.18 0l1.06-1.37a.5.5 0 0 1 .59-.15l1.6.65c.45.18.96-.1 1.03-.6l.23-1.7a.5.5 0 0 1 .43-.43l1.72-.24a.75.75 0 0 0 .59-1.03l-.65-1.6a.5.5 0 0 1 .15-.58l1.37-1.07a.75.75 0 0 0 0-1.18l-1.37-1.06a.5.5 0 0 1-.15-.59l.65-1.6a.75.75 0 0 0-.6-1.03l-1.7-.23a.5.5 0 0 1-.44-.43l-.23-1.72a.75.75 0 0 0-1.03-.59l-1.6.65a.5.5 0 0 1-.59-.15L11.1 1.29Z" fill="url(#ic_fluent_add_starburst_20_color__a)"/><path d="M6.5 10c0-.28.22-.5.5-.5h3v-3a.5.5 0 0 1 1 0v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3H7a.5.5 0 0 1-.5-.5Z" fill="url(#ic_fluent_add_starburst_20_color__b)" fill-opacity=".95"/><defs><radialGradient id="ic_fluent_add_starburst_20_color__a" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-19.58616 -34.63252 33.172 -18.76018 22.15 21.62)"><stop stop-color="#FFC470"/><stop offset=".25" stop-color="#FF835C"/><stop offset=".55" stop-color="#F24A9D"/><stop offset=".81" stop-color="#B339F0"/></radialGradient><linearGradient id="ic_fluent_add_starburst_20_color__b" x1="13.94" y1="16.26" x2="5.55" y2="10.82" gradientUnits="userSpaceOnUse"><stop offset=".02" stop-color="#FFC8D7"/><stop offset=".81" stop-color="#fff"/></linearGradient></defs>\`, { color: true }));
-          export const AddStarburstFilled = ( /*#__PURE__*/createFluentIcon('AddStarburstFilled', "1em", ["M9.4 1.3a.75.75 0 0 1 1.2 0l1.05 1.36a.5.5 0 0 0 .59.15l1.6-.65c.45-.18.96.1 1.03.6l.23 1.7c.04.23.21.4.43.44l1.72.23c.48.07.77.58.59 1.03l-.65 1.6a.5.5 0 0 0 .15.59l1.37 1.06c.39.3.39.88 0 1.18l-1.37 1.07a.5.5 0 0 0-.15.58l.65 1.6c.18.46-.1.96-.6 1.03l-1.7.24a.5.5 0 0 0-.44.42l-.23 1.72a.75.75 0 0 1-1.03.59l-1.6-.65a.5.5 0 0 0-.59.15l-1.06 1.37a.75.75 0 0 1-1.18 0l-1.07-1.37a.5.5 0 0 0-.58-.15l-1.6.65a.75.75 0 0 1-1.03-.6l-.24-1.7a.5.5 0 0 0-.42-.43l-1.72-.24a.75.75 0 0 1-.59-1.03l.65-1.6a.5.5 0 0 0-.15-.58l-1.37-1.07a.75.75 0 0 1 0-1.18l1.37-1.06a.5.5 0 0 0 .15-.59l-.65-1.6a.75.75 0 0 1 .6-1.03l1.7-.23a.5.5 0 0 0 .43-.43l.24-1.72a.75.75 0 0 1 1.03-.59l1.6.65c.2.09.45.02.58-.15l1.07-1.37ZM6.5 9.5a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3a.5.5 0 0 0-1 0v3h-3Z"]));
-          export const AddStarburstRegular = ( /*#__PURE__*/createFluentIcon('AddStarburstRegular', "1em", ["M6.5 9.5a.5.5 0 1 0 0 1h3v3a.5.5 0 1 0 1 0v-3h3a.5.5 0 1 0 0-1h-3v-3a.5.5 0 1 0-1 0v3h-3Zm4.1-8.2a.75.75 0 0 0-1.2 0L8.35 2.65a.5.5 0 0 1-.58.15l-1.6-.65a.75.75 0 0 0-1.03.6l-.24 1.7a.5.5 0 0 1-.42.44l-1.72.23a.75.75 0 0 0-.6 1.03l.66 1.6a.5.5 0 0 1-.15.59L1.29 9.4a.75.75 0 0 0 0 1.18l1.37 1.07a.5.5 0 0 1 .15.58l-.65 1.6c-.18.46.1.96.6 1.03l1.7.24c.23.03.4.2.43.42l.24 1.72c.07.48.57.77 1.03.59l1.6-.65a.5.5 0 0 1 .58.15l1.07 1.37c.3.39.88.39 1.18 0l1.06-1.37a.5.5 0 0 1 .59-.15l1.6.65c.45.18.96-.1 1.03-.6l.23-1.7a.5.5 0 0 1 .43-.43l1.72-.24a.75.75 0 0 0 .59-1.03l-.65-1.6a.5.5 0 0 1 .15-.58l1.37-1.07a.75.75 0 0 0 0-1.18l-1.37-1.06a.5.5 0 0 1-.15-.59l.65-1.6a.75.75 0 0 0-.6-1.03l-1.71-.23a.5.5 0 0 1-.43-.43l-.23-1.72a.75.75 0 0 0-1.03-.59l-1.6.65a.5.5 0 0 1-.59-.15L10.6 1.29ZM9.12 3.26 10 2.16l.86 1.11a1.5 1.5 0 0 0 1.75.47l1.31-.53.2 1.4c.08.66.6 1.18 1.27 1.28l1.4.19-.53 1.3a1.5 1.5 0 0 0 .47 1.75l1.11.87-1.11.87a1.5 1.5 0 0 0-.47 1.75l.53 1.3-1.4.2a1.5 1.5 0 0 0-1.28 1.28l-.19 1.4-1.3-.54a1.5 1.5 0 0 0-1.76.47L10 17.84l-.87-1.11a1.5 1.5 0 0 0-1.75-.47l-1.3.53-.2-1.4a1.5 1.5 0 0 0-1.28-1.28l-1.4-.19.54-1.3a1.5 1.5 0 0 0-.47-1.75L2.16 10l1.1-.87a1.5 1.5 0 0 0 .48-1.74L3.2 6.08l1.4-.2a1.5 1.5 0 0 0 1.27-1.27l.2-1.4 1.3.53a1.5 1.5 0 0 0 1.75-.47Z"]));
-          export const AddSubtractCircleFilled = ( /*#__PURE__*/createFluentIcon('AddSubtractCircleFilled', "1em", ["M11.5 12a.5.5 0 1 0 0 1h3a.5.5 0 0 0 0-1h-3ZM10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm0-1a6.97 6.97 0 0 1-4.58-1.7l9.87-9.88A7 7 0 0 1 10 17ZM5.5 7c0-.28.22-.5.5-.5h1v-1a.5.5 0 0 1 1 0v1h1a.5.5 0 1 1 0 1H8v1a.5.5 0 0 1-1 0v-1H6a.5.5 0 0 1-.5-.5Z"]));
-          export const AddSubtractCircleRegular = ( /*#__PURE__*/createFluentIcon('AddSubtractCircleRegular', "1em", ["M11 12.5c0-.28.22-.5.5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5Zm-3-7a.5.5 0 0 0-1 0v1H6a.5.5 0 1 0 0 1h1v1a.5.5 0 0 0 1 0v-1h1a.5.5 0 1 0 0-1H8v-1ZM10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm0-1a6.97 6.97 0 0 1-4.58-1.7l9.87-9.88A7 7 0 0 1 10 17Zm-5.3-2.42a7 7 0 0 1 9.87-9.87l-9.86 9.87Z"]));
-          export const AgentsColor = ( /*#__PURE__*/createFluentIcon('AgentsColor', "1em", \`<path d="M13.18 2H10.5C8.77 7.02 6.82 12.62 6.82 18h6.49c.6 0 1.16-.31 1.48-.82l4-6.42c.29-.47.29-1.05 0-1.52l-3.8-6.11A2 2 0 0 0 13.17 2Z" fill="url(#ic_fluent_agents_20_color__a)"/><path d="M13.18 2H10.5C8.77 7.02 6.82 12.62 6.82 18h6.49c.6 0 1.16-.31 1.48-.82l4-6.42c.29-.47.29-1.05 0-1.52l-3.8-6.11A2 2 0 0 0 13.17 2Z" fill="url(#ic_fluent_agents_20_color__b)" fill-opacity=".5"/><path d="M13.25 2H6.68c-.6 0-1.15.3-1.47.82L1.27 9.07c-.36.57-.36 1.3 0 1.86l3.86 6.13c.35.56.96.91 1.62.94h.07a2 2 0 0 0 1.97-1.66l2.4-12.39A2 2 0 0 1 13.24 2Z" fill="url(#ic_fluent_agents_20_color__c)"/><path d="M13.25 2H6.68c-.6 0-1.15.3-1.47.82L1.27 9.07c-.36.57-.36 1.3 0 1.86l3.86 6.13c.35.56.96.91 1.62.94h.07a2 2 0 0 0 1.97-1.66l2.4-12.39A2 2 0 0 1 13.24 2Z" fill="url(#ic_fluent_agents_20_color__d)" fill-opacity=".4"/><defs><radialGradient id="ic_fluent_agents_20_color__a" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="rotate(-87.88 17.7 4.84) scale(23.3302 18.6978)"><stop stop-color="#FFC470"/><stop offset=".25" stop-color="#FF835C"/><stop offset=".58" stop-color="#F24A9D"/><stop offset=".87" stop-color="#B339F0"/><stop offset="1" stop-color="#C354FF"/></radialGradient><radialGradient id="ic_fluent_agents_20_color__b" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-9.9932 -9.83058 9.94854 -10.1131 11.78 16.15)"><stop offset=".71" stop-color="#FFB357" stop-opacity="0"/><stop offset=".94" stop-color="#FFB357"/></radialGradient><radialGradient id="ic_fluent_agents_20_color__c" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="rotate(-160.25 10.24 6.67) scale(22.9945 19.4416)"><stop offset=".22" stop-color="#4E46E2"/><stop offset=".58" stop-color="#625DF6"/><stop offset=".95" stop-color="#E37DFF"/></radialGradient><linearGradient id="ic_fluent_agents_20_color__d" x1="4.82" y1="8.63" x2="10.25" y2="9.91" gradientUnits="userSpaceOnUse"><stop stop-color="#7563F7" stop-opacity="0"/><stop offset=".99" stop-color="#4916AE"/></linearGradient></defs>\`, { color: true }));
-          export const AgentsFilled = ( /*#__PURE__*/createFluentIcon('AgentsFilled', "1em", ["M9.08 18a3 3 0 0 0 .67-1.24l3.4-12.75V4c.07-.2 0-.53-.31-.6-.36-.09-.55.09-.64.28a1 1 0 0 0-.02.07L8.78 16.5a2.02 2.02 0 0 1-3.65.56l-3.86-6.13a1.75 1.75 0 0 1 0-1.86L5.2 2.82C5.53 2.3 6.09 2 6.69 2h4.23a3 3 0 0 0-.67 1.24l-3.4 12.75V16c-.07.2 0 .53.31.6.36.09.55-.09.63-.28a1 1 0 0 0 .03-.07l3.4-12.76a2.01 2.01 0 0 1 3.64-.55l3.93 6.3c.29.47.29 1.05 0 1.52l-4 6.42c-.32.5-.88.82-1.48.82H9.08Z"]));
+          import { createFluentIcon } from '../utils/createFluentIcon';
+          export const BackpackFilled = ( /*#__PURE__*/createFluentIcon('BackpackFilled', "1em", ["M8 8.7c0-.39.31-.7.7-.7h2.6c.39 0 .7.31.7.7a.3.3 0 0 1-.3.3H8.3a.3.3 0 0 1-.3-.3ZM10 2a2.5 2.5 0 0 0-2.5 2.5v.04A6 6 0 0 0 4 10v2h12v-2a6 6 0 0 0-3.5-5.46V4.5A2.5 2.5 0 0 0 10 2Zm0 2c.5 0 1 .06 1.47.18a1.5 1.5 0 0 0-2.94 0C9 4.06 9.5 4 10 4ZM8.7 7h2.6c.94 0 1.7.76 1.7 1.7 0 .72-.58 1.3-1.3 1.3H8.3A1.3 1.3 0 0 1 7 8.7C7 7.76 7.76 7 8.7 7ZM7 14.5V13H4v2a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-2H8v1.5a.5.5 0 0 1-1 0Z"]));
+          export const BackpackRegular = ( /*#__PURE__*/createFluentIcon('BackpackRegular', "1em", ["M8.7 7C7.76 7 7 7.76 7 8.7c0 .72.58 1.3 1.3 1.3h3.4c.72 0 1.3-.58 1.3-1.3 0-.94-.76-1.7-1.7-1.7H8.7ZM8 8.7c0-.39.31-.7.7-.7h2.6c.39 0 .7.31.7.7a.3.3 0 0 1-.3.3H8.3a.3.3 0 0 1-.3-.3ZM10 2a2.5 2.5 0 0 0-2.5 2.5v.04A6 6 0 0 0 4 10v5a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-5a6 6 0 0 0-3.5-5.46V4.5A2.5 2.5 0 0 0 10 2Zm5 10H5v-2a5 5 0 0 1 10 0v2Zm-8 2.5a.5.5 0 0 0 1 0V13h7v2a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-2h2v1.5ZM10 4c-.5 0-1 .06-1.47.18a1.5 1.5 0 0 1 2.94 0A6.01 6.01 0 0 0 10 4Z"]));
+          export const BackpackAddFilled = ( /*#__PURE__*/createFluentIcon('BackpackAddFilled', "1em", ["M7.5 4.5a2.5 2.5 0 0 1 5 0v.04a6 6 0 0 1 3.45 4.65 5.5 5.5 0 0 0-3.07.05c.08-.16.12-.35.12-.54 0-.94-.76-1.7-1.7-1.7H8.7C7.76 7 7 7.76 7 8.7c0 .72.58 1.3 1.3 1.3h3.04a5.53 5.53 0 0 0-1.74 2H4v-2a6 6 0 0 1 3.5-5.46V4.5Zm3.97-.32a1.5 1.5 0 0 0-2.94 0 6.01 6.01 0 0 1 2.94 0ZM9 14.5c0-.52.07-1.02.2-1.5H8v1.5a.5.5 0 0 1-1 0V13H4v2a3 3 0 0 0 3 3h3.26A5.48 5.48 0 0 1 9 14.5ZM8.7 8a.7.7 0 0 0-.7.7c0 .17.13.3.3.3h3.4a.3.3 0 0 0 .3-.3.7.7 0 0 0-.7-.7H8.7ZM19 14.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-4-2a.5.5 0 0 0-1 0V14h-1.5a.5.5 0 0 0 0 1H14v1.5a.5.5 0 0 0 1 0V15h1.5a.5.5 0 0 0 0-1H15v-1.5Z"]));
+          export const BackpackAddRegular = ( /*#__PURE__*/createFluentIcon('BackpackAddRegular', "1em", ["M10 2a2.5 2.5 0 0 0-2.5 2.5v.04A6 6 0 0 0 4 10v5a3 3 0 0 0 3 3h3.26a5.5 5.5 0 0 1-.66-1H7a2 2 0 0 1-2-2v-2h2v1.5a.5.5 0 0 0 1 0V13h1.2c.1-.35.24-.68.4-1H5v-2a5 5 0 0 1 9.9-.99c.36.03.71.1 1.05.18a6 6 0 0 0-3.45-4.65V4.5A2.5 2.5 0 0 0 10 2Zm0 2c-.5 0-1 .06-1.47.18a1.5 1.5 0 0 1 2.94 0A6.01 6.01 0 0 0 10 4Zm1.34 6c.46-.33.98-.59 1.54-.76.08-.16.12-.35.12-.54 0-.94-.76-1.7-1.7-1.7H8.7C7.76 7 7 7.76 7 8.7c0 .72.58 1.3 1.3 1.3h3.04ZM8 8.7c0-.39.31-.7.7-.7h2.6c.39 0 .7.31.7.7a.3.3 0 0 1-.3.3H8.3a.3.3 0 0 1-.3-.3Zm11 5.8a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-4-2a.5.5 0 0 0-1 0V14h-1.5a.5.5 0 0 0 0 1H14v1.5a.5.5 0 0 0 1 0V15h1.5a.5.5 0 0 0 0-1H15v-1.5Z"]));
+          export const BackspaceFilled = ( /*#__PURE__*/createFluentIcon('BackspaceFilled', "1em", ["M8.28 4a2.5 2.5 0 0 0-1.7.66L2.8 8.16a2.5 2.5 0 0 0 0 3.68l3.79 3.5a2.5 2.5 0 0 0 1.7.66h7.21a2.5 2.5 0 0 0 2.5-2.5v-7A2.5 2.5 0 0 0 15.5 4H8.28Zm.87 3.15c.2-.2.5-.2.7 0L12 9.29l2.15-2.14a.5.5 0 0 1 .7.7L12.71 10l2.14 2.15a.5.5 0 0 1-.7.7L12 10.71l-2.15 2.14a.5.5 0 0 1-.7-.7L11.29 10 9.15 7.85a.5.5 0 0 1 0-.7Z"]));
+          export const BackspaceRegular = ( /*#__PURE__*/createFluentIcon('BackspaceRegular', "1em", ["M9.15 7.15c.2-.2.5-.2.7 0L12 9.29l2.15-2.14a.5.5 0 0 1 .7.7L12.71 10l2.14 2.15a.5.5 0 0 1-.7.7L12 10.71l-2.15 2.14a.5.5 0 0 1-.7-.7L11.29 10 9.15 7.85a.5.5 0 0 1 0-.7ZM6.59 4.66A2.5 2.5 0 0 1 8.29 4h7.21A2.5 2.5 0 0 1 18 6.5v7a2.5 2.5 0 0 1-2.5 2.5H8.28a2.5 2.5 0 0 1-1.7-.66l-3.78-3.5a2.5 2.5 0 0 1 0-3.68l3.79-3.5Zm1.7.34c-.38 0-.75.14-1.03.4L3.48 8.9a1.5 1.5 0 0 0 0 2.2l3.78 3.5c.28.26.65.4 1.02.4h7.22c.83 0 1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5H8.28Z"]));
+          export const CalculatorFilled = ( /*#__PURE__*/createFluentIcon('CalculatorFilled', "1em", ["M13.5 2h-7A2.5 2.5 0 0 0 4 4.5v11A2.5 2.5 0 0 0 6.5 18h7a2.5 2.5 0 0 0 2.5-2.5v-11A2.5 2.5 0 0 0 13.5 2Zm-6 2h5c.83 0 1.5.67 1.5 1.5v1c0 .83-.67 1.5-1.5 1.5h-5A1.5 1.5 0 0 1 6 6.5v-1C6 4.67 6.67 4 7.5 4Zm.5 7a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm0 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm5-2a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-4-2a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"]));
+          export const CalculatorRegular = ( /*#__PURE__*/createFluentIcon('CalculatorRegular', "1em", ["M8 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm0 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm5-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm1 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-4-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm1 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM7.5 4C6.67 4 6 4.67 6 5.5v1C6 7.33 6.67 8 7.5 8h5c.83 0 1.5-.67 1.5-1.5v-1c0-.83-.67-1.5-1.5-1.5h-5ZM7 5.5c0-.28.22-.5.5-.5h5c.28 0 .5.22.5.5v1a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-1Zm9 10a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 4 15.5v-11A2.5 2.5 0 0 1 6.5 2h7A2.5 2.5 0 0 1 16 4.5v11Zm-1-11c0-.83-.67-1.5-1.5-1.5h-7C5.67 3 5 3.67 5 4.5v11c0 .83.67 1.5 1.5 1.5h7c.83 0 1.5-.67 1.5-1.5v-11Z"]));
+          export const CalculatorArrowClockwiseFilled = ( /*#__PURE__*/createFluentIcon('CalculatorArrowClockwiseFilled', "1em", ["M13.5 2h-7A2.5 2.5 0 0 0 4 4.5v11A2.5 2.5 0 0 0 6.5 18h3.77a5.48 5.48 0 0 1-.64-6.07 1 1 0 1 1 1.17-1.52A5.48 5.48 0 0 1 16 9.19V4.5A2.5 2.5 0 0 0 13.5 2Zm-6 2h5c.83 0 1.5.67 1.5 1.5v1c0 .83-.67 1.5-1.5 1.5h-5A1.5 1.5 0 0 1 6 6.5v-1C6 4.67 6.67 4 7.5 4Zm.5 7a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm0 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm9.5-1.52a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-1 0v.76a4.5 4.5 0 1 0 2 3.74.5.5 0 1 0-1 0 3.5 3.5 0 1 1-1.7-3h-.8a.5.5 0 1 0 0 1h2Z"]));
+          export const CalculatorArrowClockwiseRegular = ( /*#__PURE__*/createFluentIcon('CalculatorArrowClockwiseRegular', "1em", ["M7 12a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm0 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm2.63-3.07c.3-.58.7-1.1 1.17-1.52a1 1 0 1 0-1.17 1.52ZM6.5 17h3.11c.18.36.4.7.66 1H6.5A2.5 2.5 0 0 1 4 15.5v-11A2.5 2.5 0 0 1 6.5 2h7A2.5 2.5 0 0 1 16 4.5v4.69c-.32-.1-.66-.16-1-.19V4.5c0-.83-.67-1.5-1.5-1.5h-7C5.67 3 5 3.67 5 4.5v11c0 .83.67 1.5 1.5 1.5ZM6 5.5C6 4.67 6.67 4 7.5 4h5c.83 0 1.5.67 1.5 1.5v1c0 .83-.67 1.5-1.5 1.5h-5A1.5 1.5 0 0 1 6 6.5v-1ZM7.5 5a.5.5 0 0 0-.5.5v1c0 .28.22.5.5.5h5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-5Zm10 7.48a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-1 0v.76a4.5 4.5 0 1 0 2 3.74.5.5 0 1 0-1 0 3.5 3.5 0 1 1-1.7-3h-.8a.5.5 0 1 0 0 1h2Z"]));
+          export const CalculatorMultipleFilled = ( /*#__PURE__*/createFluentIcon('CalculatorMultipleFilled', "1em", ["M5.5 2A2.5 2.5 0 0 0 3 4.5v9A2.5 2.5 0 0 0 5.5 16h7a2.5 2.5 0 0 0 2.5-2.5v-9A2.5 2.5 0 0 0 12.5 2h-7ZM5 5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5Zm0 5a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm4-1a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm0 2.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM11 10a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm1 1.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm-6 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM7.5 18a2.5 2.5 0 0 1-2-1h7a3.5 3.5 0 0 0 3.5-3.5v-9c.6.46 1 1.18 1 2v7a4.5 4.5 0 0 1-4.5 4.5h-5Z"]));
+          export const CalculatorMultipleRegular = ( /*#__PURE__*/createFluentIcon('CalculatorMultipleRegular', "1em", ["M6 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H6Zm0 1h6v2H6V5Zm2 5a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm1 1.75a1 1 0 1 0 0 2 1 1 0 0 0 0-2ZM11 10a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm1 1.75a1 1 0 1 0 0 2 1 1 0 0 0 0-2ZM5 10a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm1 1.75a1 1 0 1 0 0 2 1 1 0 0 0 0-2ZM5.5 2A2.5 2.5 0 0 0 3 4.5v9A2.5 2.5 0 0 0 5.5 16h7a2.5 2.5 0 0 0 2.5-2.5v-9A2.5 2.5 0 0 0 12.5 2h-7ZM4 4.5C4 3.67 4.67 3 5.5 3h7c.83 0 1.5.67 1.5 1.5v9c0 .83-.67 1.5-1.5 1.5h-7A1.5 1.5 0 0 1 4 13.5v-9ZM7.5 18a2.5 2.5 0 0 1-2-1h7a3.5 3.5 0 0 0 3.5-3.5v-9c.6.46 1 1.18 1 2v7a4.5 4.5 0 0 1-4.5 4.5h-5Z"]));
+          export const CalendarColor = ( /*#__PURE__*/createFluentIcon('CalendarColor', "1em", \`<path d="M17 6H3v8.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5V6Z" fill="url(#ic_fluent_calendar_20_color__a)"/><path d="M17 6H3v8.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5V6Z" fill="url(#ic_fluent_calendar_20_color__b)"/><g filter="url(#ic_fluent_calendar_20_color__c)"><path d="M8 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" fill="url(#ic_fluent_calendar_20_color__d)"/><path d="M8 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" fill="url(#ic_fluent_calendar_20_color__e)"/><path d="M11 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" fill="url(#ic_fluent_calendar_20_color__f)"/><path d="M10 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" fill="url(#ic_fluent_calendar_20_color__g)"/><path d="M14 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" fill="url(#ic_fluent_calendar_20_color__h)"/></g><path d="M17 5.5A2.5 2.5 0 0 0 14.5 3h-9A2.5 2.5 0 0 0 3 5.5V7h14V5.5Z" fill="url(#ic_fluent_calendar_20_color__i)"/><defs><linearGradient id="ic_fluent_calendar_20_color__a" x1="12.53" y1="18.35" x2="8.5" y2="6.56" gradientUnits="userSpaceOnUse"><stop stop-color="#B3E0FF"/><stop offset="1" stop-color="#B3E0FF"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__b" x1="11.5" y1="10.5" x2="13.5" y2="19.5" gradientUnits="userSpaceOnUse"><stop stop-color="#DCF8FF" stop-opacity="0"/><stop offset="1" stop-color="#FF6CE8" stop-opacity=".7"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__d" x1="9.27" y1="8.42" x2="10.91" y2="18.39" gradientUnits="userSpaceOnUse"><stop stop-color="#0078D4"/><stop offset="1" stop-color="#0067BF"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__e" x1="9.27" y1="8.42" x2="10.91" y2="18.39" gradientUnits="userSpaceOnUse"><stop stop-color="#0078D4"/><stop offset="1" stop-color="#0067BF"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__f" x1="9.27" y1="8.42" x2="10.91" y2="18.39" gradientUnits="userSpaceOnUse"><stop stop-color="#0078D4"/><stop offset="1" stop-color="#0067BF"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__g" x1="9.27" y1="8.42" x2="10.91" y2="18.39" gradientUnits="userSpaceOnUse"><stop stop-color="#0078D4"/><stop offset="1" stop-color="#0067BF"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__h" x1="9.27" y1="8.42" x2="10.91" y2="18.39" gradientUnits="userSpaceOnUse"><stop stop-color="#0078D4"/><stop offset="1" stop-color="#0067BF"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__i" x1="3" y1="3" x2="15.02" y2="-.77" gradientUnits="userSpaceOnUse"><stop stop-color="#0094F0"/><stop offset="1" stop-color="#2764E7"/></linearGradient><filter id="ic_fluent_calendar_20_color__c" x="4.67" y="8.33" width="10.67" height="7.67" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy=".67"/><feGaussianBlur stdDeviation=".67"/><feColorMatrix values="0 0 0 0 0.1242 0 0 0 0 0.323337 0 0 0 0 0.7958 0 0 0 0.32 0"/><feBlend in2="BackgroundImageFix" result="effect1_dropShadow_378174_9787"/><feBlend in="SourceGraphic" in2="effect1_dropShadow_378174_9787" result="shape"/></filter></defs>\`, { color: true }));
+          export const CalendarFilled = ( /*#__PURE__*/createFluentIcon('CalendarFilled', "1em", ["M5.5 3A2.5 2.5 0 0 0 3 5.5V6h14v-.5A2.5 2.5 0 0 0 14.5 3h-9ZM17 7H3v7.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5V7Zm-9 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-1 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm4-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-1 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm4-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"], { flipInRtl: true }));
+          export const CalendarRegular = ( /*#__PURE__*/createFluentIcon('CalendarRegular', "1em", ["M7 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm1 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm2-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm1 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm2-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm4-5.5A2.5 2.5 0 0 0 14.5 3h-9A2.5 2.5 0 0 0 3 5.5v9A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5v-9ZM4 7h12v7.5c0 .83-.67 1.5-1.5 1.5h-9A1.5 1.5 0 0 1 4 14.5V7Zm1.5-3h9c.83 0 1.5.67 1.5 1.5V6H4v-.5C4 4.67 4.67 4 5.5 4Z"], { flipInRtl: true }));
+          export const Calendar3DayFilled = ( /*#__PURE__*/createFluentIcon('Calendar3DayFilled', "1em", ["M14.5 3A2.5 2.5 0 0 1 17 5.5v9a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9Zm-8 3a.5.5 0 0 0-.5.41v7.18a.5.5 0 0 0 1 0V6.41A.5.5 0 0 0 6.5 6ZM10 6a.5.5 0 0 0-.5.41v7.18a.5.5 0 0 0 1 0V6.41A.5.5 0 0 0 10 6Zm3.5 0a.5.5 0 0 0-.5.41v7.18a.5.5 0 0 0 1 0V6.41a.5.5 0 0 0-.5-.41Z"]));
+          export const Calendar3DayRegular = ( /*#__PURE__*/createFluentIcon('Calendar3DayRegular', "1em", ["M14.5 3A2.5 2.5 0 0 1 17 5.5v9a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9Zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5Zm-8 2a.5.5 0 0 1 .5.41v7.09a.5.5 0 0 1-1 .09V6.5c0-.28.22-.5.5-.5ZM10 6a.5.5 0 0 1 .5.41v7.09a.5.5 0 0 1-1 .09V6.5c0-.28.22-.5.5-.5Zm3.5 0a.5.5 0 0 1 .5.41v7.09a.5.5 0 0 1-1 .09V6.5c0-.28.22-.5.5-.5Z"]));
+          export const CalendarAddFilled = ( /*#__PURE__*/createFluentIcon('CalendarAddFilled', "1em", ["M17 7v2.6A5.5 5.5 0 0 0 9.6 17H5.5A2.5 2.5 0 0 1 3 14.5V7h14Zm-2.5-4A2.5 2.5 0 0 1 17 5.5V6H3v-.5A2.5 2.5 0 0 1 5.5 3h9ZM19 14.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-4-2a.5.5 0 0 0-1 0V14h-1.5a.5.5 0 0 0 0 1H14v1.5a.5.5 0 0 0 1 0V15h1.5a.5.5 0 0 0 0-1H15v-1.5Z"]));
+          export const CalendarAddRegular = ( /*#__PURE__*/createFluentIcon('CalendarAddRegular', "1em", ["M14.5 3A2.5 2.5 0 0 1 17 5.5v4.1c-.32-.16-.65-.3-1-.4V7H4v7.5c0 .83.67 1.5 1.5 1.5h3.7c.1.35.24.68.4 1H5.5A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9Zm0 1h-9C4.67 4 4 4.67 4 5.5V6h12v-.5c0-.83-.67-1.5-1.5-1.5ZM19 14.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-4-2a.5.5 0 0 0-1 0V14h-1.5a.5.5 0 0 0 0 1H14v1.5a.5.5 0 0 0 1 0V15h1.5a.5.5 0 0 0 0-1H15v-1.5Z"]));
+          export const CalendarAgendaFilled = ( /*#__PURE__*/createFluentIcon('CalendarAgendaFilled', "1em", ["M17 14.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9A2.5 2.5 0 0 1 17 5.5v9Zm-3-8a.5.5 0 0 0-.41-.5H6.41a.5.5 0 0 0 0 1h7.18a.5.5 0 0 0 .41-.5Zm0 3.5a.5.5 0 0 0-.41-.5H6.41a.5.5 0 0 0 0 1h7.18A.5.5 0 0 0 14 10Zm0 3.5a.5.5 0 0 0-.41-.5H6.41a.5.5 0 0 0 0 1h7.18a.5.5 0 0 0 .41-.5Z"]));
+          export const CalendarAgendaRegular = ( /*#__PURE__*/createFluentIcon('CalendarAgendaRegular', "1em", ["M17 14.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9A2.5 2.5 0 0 1 17 5.5v9Zm-1 0v-9c0-.83-.67-1.5-1.5-1.5h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5Zm-2-8a.5.5 0 0 1-.41.5H6.5a.5.5 0 0 1-.09-1h7.09c.28 0 .5.22.5.5Zm0 3.5a.5.5 0 0 1-.41.5H6.5a.5.5 0 0 1-.09-1h7.09c.28 0 .5.22.5.5Zm0 3.5a.5.5 0 0 1-.41.5H6.5a.5.5 0 0 1-.09-1h7.09c.28 0 .5.22.5.5Z"]));
+          export const CalendarArrowCounterclockwiseFilled = ( /*#__PURE__*/createFluentIcon('CalendarArrowCounterclockwiseFilled', "1em", ["M3 5.5A2.5 2.5 0 0 1 5.5 3h9A2.5 2.5 0 0 1 17 5.5V6H6.11A1.5 1.5 0 0 0 4 5.87V7.3l.65-.64a.5.5 0 1 1 .7.7l-1.5 1.5a.5.5 0 0 1-.7 0l-1.5-1.5a.5.5 0 1 1 .7-.7l.65.64V5.5ZM17 7v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5V9.92a1.5 1.5 0 0 0 1.55-.36l1.5-1.5c.3-.3.44-.68.44-1.06H17ZM7 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm-1 2a1 1 0 1 0 2 0 1 1 0 0 0-2 0Zm4-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm-1 2a1 1 0 1 0 2 0 1 1 0 0 0-2 0Zm4-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"]));
+          export const CalendarArrowCounterclockwiseRegular = ( /*#__PURE__*/createFluentIcon('CalendarArrowCounterclockwiseRegular', "1em", ["M5.5 17A2.5 2.5 0 0 1 3 14.5v-4a.5.5 0 0 1 1 0v4c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5V7H6.5c0-.36-.14-.72-.4-1H16v-.5c0-.83-.67-1.5-1.5-1.5h-9C4.67 4 4 4.67 4 5.5v1.8l.65-.65a.5.5 0 1 1 .7.7l-1.5 1.5a.5.5 0 0 1-.7 0l-1.5-1.5a.5.5 0 1 1 .7-.7l.65.64V5.5A2.5 2.5 0 0 1 5.5 3h9A2.5 2.5 0 0 1 17 5.5v9a2.5 2.5 0 0 1-2.5 2.5h-9ZM8 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-1 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm4-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-1 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm4-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"]));
+          export const CalendarArrowDownFilled = ( /*#__PURE__*/createFluentIcon('CalendarArrowDownFilled', "1em", ["M5.5 3A2.5 2.5 0 0 0 3 5.5V6h14v-.5A2.5 2.5 0 0 0 14.5 3h-9ZM17 7H3v7.5A2.5 2.5 0 0 0 5.5 17h4.1A5.5 5.5 0 0 1 17 9.6V7Zm2 7.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-4.85 2.35a.5.5 0 0 0 .35.15.5.5 0 0 0 .35-.15l2-2a.5.5 0 0 0-.7-.7L15 15.29V12.5a.5.5 0 0 0-1 0v2.8l-1.15-1.15a.5.5 0 0 0-.7.7l2 2Z"]));
+          export const CalendarArrowDownRegular = ( /*#__PURE__*/createFluentIcon('CalendarArrowDownRegular', "1em", ["M5.5 3A2.5 2.5 0 0 0 3 5.5v9A2.5 2.5 0 0 0 5.5 17h4.1c-.16-.32-.3-.65-.4-1H5.5A1.5 1.5 0 0 1 4 14.5V7h12v2.2c.35.1.68.24 1 .4V5.5A2.5 2.5 0 0 0 14.5 3h-9ZM4 5.5C4 4.67 4.67 4 5.5 4h9c.83 0 1.5.67 1.5 1.5V6H4v-.5Zm15 9a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-4.85 2.35a.5.5 0 0 0 .35.15.5.5 0 0 0 .35-.15l2-2a.5.5 0 0 0-.7-.7L15 15.29V12.5a.5.5 0 0 0-1 0v2.8l-1.15-1.15a.5.5 0 0 0-.7.7l2 2Z"]));
+          export const CalendarArrowRepeatAllFilled = ( /*#__PURE__*/createFluentIcon('CalendarArrowRepeatAllFilled', "1em", ["M17 11V7H3v7.5A2.5 2.5 0 0 0 5.5 17h4.47a1.5 1.5 0 0 1-1.17-.6A3.99 3.99 0 0 1 12 10h.5a1.5 1.5 0 0 1 2.56-1.06l1.5 1.5c.17.16.28.36.36.56H17Zm0-5.5A2.5 2.5 0 0 0 14.5 3h-9A2.5 2.5 0 0 0 3 5.5V6h14v-.5Zm-2.65 4.15a.5.5 0 0 0-.7.7l.64.65H12a3 3 0 0 0-2.4 4.8.5.5 0 1 0 .8-.6A2 2 0 0 1 12 12h2.3l-.65.65a.5.5 0 0 0 .7.7l1.5-1.5a.5.5 0 0 0 0-.7l-1.5-1.5Zm3.05 2.55a.5.5 0 0 0-.8.6A2 2 0 0 1 15 16h-2.3l.65-.65a.5.5 0 0 0-.7-.7l-1.5 1.5a.5.5 0 0 0 0 .7l1.5 1.5a.5.5 0 0 0 .7-.7l-.64-.65H15a3 3 0 0 0 2.4-4.8Z"]));
+          export const CalendarArrowRepeatAllRegular = ( /*#__PURE__*/createFluentIcon('CalendarArrowRepeatAllRegular', "1em", ["M17 5.5A2.5 2.5 0 0 0 14.5 3h-9A2.5 2.5 0 0 0 3 5.5v9A2.5 2.5 0 0 0 5.5 17h4.47a1.5 1.5 0 0 1-1.17-.6c-.1-.13-.18-.26-.26-.4H5.5A1.5 1.5 0 0 1 4 14.5V7h12v2.88l.56.56c.17.16.28.36.36.56H17V5.5ZM5.5 4h9c.83 0 1.5.67 1.5 1.5V6H4v-.5C4 4.67 4.67 4 5.5 4Zm8.85 5.65a.5.5 0 0 0-.7.7l.64.65H12a3 3 0 0 0-2.4 4.8.5.5 0 1 0 .8-.6A2 2 0 0 1 12 12h2.3l-.65.65a.5.5 0 0 0 .7.7l1.5-1.5a.5.5 0 0 0 0-.7l-1.5-1.5Zm3.05 2.55a.5.5 0 0 0-.8.6A2 2 0 0 1 15 16h-2.3l.65-.65a.5.5 0 0 0-.7-.7l-1.5 1.5a.5.5 0 0 0 0 .7l1.5 1.5a.5.5 0 0 0 .7-.7l-.64-.65H15a3 3 0 0 0 2.4-4.8Z"]));
+          export const CalendarArrowRightFilled = ( /*#__PURE__*/createFluentIcon('CalendarArrowRightFilled', "1em", ["M17 5.5A2.5 2.5 0 0 0 14.5 3h-9A2.5 2.5 0 0 0 3 5.5V6h14v-.5Zm0 4.1V7H3v7.5A2.5 2.5 0 0 0 5.5 17h4.1A5.5 5.5 0 0 1 17 9.6Zm2 4.9a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-2.15.35a.5.5 0 0 0 .15-.35.5.5 0 0 0-.15-.35l-2-2a.5.5 0 0 0-.7.7L15.29 14H12.5a.5.5 0 0 0 0 1h2.8l-1.15 1.15a.5.5 0 0 0 .7.7l2-2Z"]));
           ... (content truncated for snapshot)"
         `);
 
@@ -873,36 +1095,36 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentIcon } from "../utils/createFluentIcon";
-          export declare const AccessTimeFilled: FluentIcon;
-          export declare const AccessTimeRegular: FluentIcon;
-          export declare const AccessibilityFilled: FluentIcon;
-          export declare const AccessibilityRegular: FluentIcon;
-          export declare const AccessibilityCheckmarkFilled: FluentIcon;
-          export declare const AccessibilityCheckmarkRegular: FluentIcon;
-          export declare const AccessibilityErrorFilled: FluentIcon;
-          export declare const AccessibilityErrorRegular: FluentIcon;
-          export declare const AccessibilityMoreFilled: FluentIcon;
-          export declare const AccessibilityMoreRegular: FluentIcon;
-          export declare const AccessibilityQuestionMarkFilled: FluentIcon;
-          export declare const AccessibilityQuestionMarkRegular: FluentIcon;
-          export declare const AddFilled: FluentIcon;
-          export declare const AddRegular: FluentIcon;
-          export declare const AddCircleColor: FluentIcon;
-          export declare const AddCircleFilled: FluentIcon;
-          export declare const AddCircleRegular: FluentIcon;
-          export declare const AddSquareFilled: FluentIcon;
-          export declare const AddSquareRegular: FluentIcon;
-          export declare const AddSquareMultipleFilled: FluentIcon;
-          export declare const AddSquareMultipleRegular: FluentIcon;
-          export declare const AddStarburstColor: FluentIcon;
-          export declare const AddStarburstFilled: FluentIcon;
-          export declare const AddStarburstRegular: FluentIcon;
-          export declare const AddSubtractCircleFilled: FluentIcon;
-          export declare const AddSubtractCircleRegular: FluentIcon;
-          export declare const AgentsColor: FluentIcon;
-          export declare const AgentsFilled: FluentIcon;
-          export declare const AgentsRegular: FluentIcon;
+          "import type { FluentIcon } from '../utils/createFluentIcon';
+          export declare const BackpackFilled: FluentIcon;
+          export declare const BackpackRegular: FluentIcon;
+          export declare const BackpackAddFilled: FluentIcon;
+          export declare const BackpackAddRegular: FluentIcon;
+          export declare const BackspaceFilled: FluentIcon;
+          export declare const BackspaceRegular: FluentIcon;
+          export declare const CalculatorFilled: FluentIcon;
+          export declare const CalculatorRegular: FluentIcon;
+          export declare const CalculatorArrowClockwiseFilled: FluentIcon;
+          export declare const CalculatorArrowClockwiseRegular: FluentIcon;
+          export declare const CalculatorMultipleFilled: FluentIcon;
+          export declare const CalculatorMultipleRegular: FluentIcon;
+          export declare const CalendarColor: FluentIcon;
+          export declare const CalendarFilled: FluentIcon;
+          export declare const CalendarRegular: FluentIcon;
+          export declare const Calendar3DayFilled: FluentIcon;
+          export declare const Calendar3DayRegular: FluentIcon;
+          export declare const CalendarAddFilled: FluentIcon;
+          export declare const CalendarAddRegular: FluentIcon;
+          export declare const CalendarAgendaFilled: FluentIcon;
+          export declare const CalendarAgendaRegular: FluentIcon;
+          export declare const CalendarArrowCounterclockwiseFilled: FluentIcon;
+          export declare const CalendarArrowCounterclockwiseRegular: FluentIcon;
+          export declare const CalendarArrowDownFilled: FluentIcon;
+          export declare const CalendarArrowDownRegular: FluentIcon;
+          export declare const CalendarArrowRepeatAllFilled: FluentIcon;
+          export declare const CalendarArrowRepeatAllRegular: FluentIcon;
+          export declare const CalendarArrowRightFilled: FluentIcon;
+          export declare const CalendarArrowRightRegular: FluentIcon;
           ... (content truncated for snapshot)"
         `);
       }
@@ -927,36 +1149,36 @@ describe('Build Verification', () => {
         const jsContent = await readFile(jsFile, 'utf8');
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
-          "... (20 export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))
+          "... (13 export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))
           "use client";
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const createFluentIcon_1 = require("../utils/createFluentIcon");
-          exports.AccessTimeFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AccessTimeFilled', "1em", ["M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM6.99 8.6A.5.5 0 0 1 6 8.4c.02-.07.03-.14.07-.24a2 2 0 0 1 .25-.46c.26-.35.71-.7 1.42-.7A1.7 1.7 0 0 1 9.5 8.75c0 .35-.07.65-.2.9a1.8 1.8 0 0 1-.51.6c-.16.11-.33.22-.48.3l-.06.04c-.17.1-.3.19-.42.29-.4.34-.66.7-.77 1.12H9a.5.5 0 0 1 0 1H6.5a.5.5 0 0 1-.5-.5c0-1.01.47-1.77 1.17-2.38.2-.16.4-.29.57-.4l.06-.03.38-.24a.8.8 0 0 0 .23-.26c.05-.1.09-.23.09-.44a.8.8 0 0 0-.19-.53.7.7 0 0 0-.56-.22.7.7 0 0 0-.61.3 1 1 0 0 0-.15.3ZM11 7c.28 0 .5.22.5.5V10H13V7.5a.5.5 0 0 1 1 0v5a.5.5 0 0 1-1 0V11h-2a.5.5 0 0 1-.5-.5v-3c0-.28.22-.5.5-.5Z"]));
-          exports.AccessTimeRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AccessTimeRegular', "1em", ["M6.99 8.6A.5.5 0 0 1 6 8.4a1.29 1.29 0 0 1 .07-.24 2 2 0 0 1 .25-.46c.26-.35.71-.7 1.42-.7A1.7 1.7 0 0 1 9.5 8.75c0 .35-.07.65-.2.9a1.8 1.8 0 0 1-.51.6c-.16.11-.33.22-.48.3l-.06.04c-.17.1-.3.19-.42.29-.4.34-.66.7-.77 1.12H9a.5.5 0 0 1 0 1H6.5a.5.5 0 0 1-.5-.5c0-1.01.47-1.77 1.17-2.38.2-.16.4-.29.57-.4l.06-.03.38-.24a.8.8 0 0 0 .23-.26c.05-.1.09-.23.09-.44a.8.8 0 0 0-.19-.53.7.7 0 0 0-.56-.22.7.7 0 0 0-.61.3 1 1 0 0 0-.15.3ZM11 7c.28 0 .5.22.5.5V10H13V7.5a.5.5 0 0 1 1 0v5a.5.5 0 0 1-1 0V11h-2a.5.5 0 0 1-.5-.5v-3c0-.28.22-.5.5-.5Zm-1-5a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm-7 8a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z"]));
-          exports.AccessibilityFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AccessibilityFilled', "1em", ["M10 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM5.47 4.15c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L6.7 8.53c.18.08.3.26.3.46v1.86a.5.5 0 0 1-.04.19l-1.84 4.55a1.75 1.75 0 0 0 3.25 1.32l1.4-3.46c.08-.21.38-.21.46 0l1.4 3.46a1.75 1.75 0 0 0 3.24-1.32l-1.83-4.54a.5.5 0 0 1-.04-.19V9c0-.2.12-.38.3-.46l2.67-1.19c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-1.28.57c-.24.1-.42.3-.52.52a3 3 0 0 1-5.46 0c-.1-.21-.28-.41-.52-.52l-1.28-.57Z"]));
-          exports.AccessibilityRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AccessibilityRegular', "1em", ["M8.5 4.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM10 2a2.5 2.5 0 0 0-2.43 3.08l-2.1-.93c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L7 8.66v2.29l-1.88 4.64a1.75 1.75 0 0 0 3.25 1.32l1.55-3.85.03-.04L10 13h.04l.03.05 1.56 3.84a1.75 1.75 0 0 0 3.24-1.3L13 10.95v-2.3l2.97-1.32c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-2.1.93A2.51 2.51 0 0 0 10 2ZM4.07 5.44a.76.76 0 0 1 1-.38l3.91 1.75a2.5 2.5 0 0 0 2.04 0l3.91-1.75c.38-.17.83 0 1 .38.18.38 0 .82-.37.99L12.6 7.75a1 1 0 0 0-.59.91v2.3a1 1 0 0 0 .07.37l1.87 4.64a.75.75 0 0 1-1.39.56L11 12.68c-.36-.9-1.64-.9-2 0l-1.56 3.85a.75.75 0 1 1-1.39-.56l1.88-4.65a1 1 0 0 0 .07-.37V8.66a1 1 0 0 0-.6-.91L4.45 6.43a.74.74 0 0 1-.37-.99Z"]));
-          exports.AccessibilityCheckmarkFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AccessibilityCheckmarkFilled', "1em", ["M10 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM5.47 4.15c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L6.7 8.53c.18.08.3.26.3.46v1.86a.5.5 0 0 1-.04.19l-1.84 4.55a1.75 1.75 0 0 0 3.25 1.32l.08-.22A5.48 5.48 0 0 1 13 9.02V9c0-.2.12-.38.3-.46l2.67-1.19c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-1.28.57c-.24.1-.42.3-.52.52a3 3 0 0 1-5.46 0c-.1-.21-.28-.41-.52-.52l-1.28-.57ZM18 14.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-2.15-1.85a.5.5 0 0 0-.7 0l-2.65 2.64-.65-.64a.5.5 0 0 0-.7.7l1 1c.2.2.5.2.7 0l3-3a.5.5 0 0 0 0-.7Z"]));
-          exports.AccessibilityCheckmarkRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AccessibilityCheckmarkRegular', "1em", ["M8.5 4.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM10 2a2.5 2.5 0 0 0-2.43 3.08l-2.1-.93c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L7 8.66v2.29l-1.88 4.64a1.75 1.75 0 0 0 3.25 1.32l.08-.22a5.46 5.46 0 0 1-.42-1.62l-.59 1.46a.75.75 0 1 1-1.39-.56l1.88-4.65a1 1 0 0 0 .07-.37V8.66a1 1 0 0 0-.6-.91L4.45 6.43a.74.74 0 0 1-.37-.99.76.76 0 0 1 1-.38l3.91 1.75a2.5 2.5 0 0 0 2.04 0l3.91-1.75c.38-.17.83 0 1 .38.18.38 0 .82-.37.99L12.6 7.75a1 1 0 0 0-.59.91v.55c.32-.1.66-.16 1-.19v-.36l2.97-1.32c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-2.1.93A2.51 2.51 0 0 0 10 2Zm8 12.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-2.15-1.85a.5.5 0 0 0-.7 0l-2.65 2.64-.65-.64a.5.5 0 0 0-.7.7l1 1c.2.2.5.2.7 0l3-3a.5.5 0 0 0 0-.7Z"]));
-          exports.AccessibilityErrorFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AccessibilityErrorFilled', "1em", ["M10 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM5.47 4.15c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L6.7 8.53c.18.08.3.26.3.46v1.86a.5.5 0 0 1-.04.19l-1.84 4.55a1.75 1.75 0 0 0 3.25 1.32l.08-.22A5.48 5.48 0 0 1 13 9.02V9c0-.2.12-.38.3-.46l2.67-1.19c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-1.28.57c-.24.1-.42.3-.52.52a3 3 0 0 1-5.46 0c-.1-.21-.28-.41-.52-.52l-1.28-.57ZM18 14.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM13.5 12a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 1 0v-2a.5.5 0 0 0-.5-.5Zm0 5.13a.62.62 0 1 0 0-1.25.62.62 0 0 0 0 1.24Z"]));
-          exports.AccessibilityErrorRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AccessibilityErrorRegular', "1em", ["M8.5 4.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM10 2a2.5 2.5 0 0 0-2.43 3.08l-2.1-.93c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L7 8.66v2.29l-1.88 4.64a1.75 1.75 0 0 0 3.25 1.32l.08-.22a5.46 5.46 0 0 1-.42-1.62l-.59 1.46a.75.75 0 1 1-1.39-.56l1.88-4.65a1 1 0 0 0 .07-.37V8.66a1 1 0 0 0-.6-.91L4.45 6.43a.74.74 0 0 1-.37-.99.76.76 0 0 1 1-.38l3.91 1.75a2.5 2.5 0 0 0 2.04 0l3.91-1.75c.38-.17.83 0 1 .38.18.38 0 .82-.37.99L12.6 7.75a1 1 0 0 0-.59.91v.55c.32-.1.66-.16 1-.19v-.36l2.97-1.32c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-2.1.93A2.5 2.5 0 0 0 10 2Zm8 12.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM13.5 12a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 1 0v-2a.5.5 0 0 0-.5-.5Zm0 5.13a.62.62 0 1 0 0-1.25.62.62 0 0 0 0 1.24Z"]));
-          exports.AccessibilityMoreFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AccessibilityMoreFilled', "1em", ["M14.87 15.6c.05.11.08.23.1.35a2.24 2.24 0 0 0-1.97-1.2c-.77 0-1.43.4-1.84 1l-.93-2.3a.25.25 0 0 0-.47 0l-.54 1.33c-.07 0-.14-.03-.22-.03a2.25 2.25 0 0 0-2.02 3.23 1.73 1.73 0 0 1-1.86-2.39l1.84-4.55a.5.5 0 0 0 .04-.19V9a.5.5 0 0 0-.3-.46L4.03 7.34a1.74 1.74 0 0 1-.88-2.31 1.76 1.76 0 0 1 2.32-.88l1.27.57c.25.1.43.3.52.52a3 3 0 0 0 5.47 0c.1-.21.27-.41.52-.52l1.27-.57c.89-.4 1.92 0 2.32.88.4.88 0 1.92-.88 2.31L13.3 8.53a.5.5 0 0 0-.3.46v1.87c0 .07.02.13.04.19l1.84 4.54ZM10 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm-1 9.75a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5Zm4 0a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5Zm4 0a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5Z"]));
-          exports.AccessibilityMoreRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AccessibilityMoreRegular', "1em", ["m9 12.68-.92 2.27c.28-.13.6-.2.92-.2.08 0 .15.03.23.03l.7-1.72c0-.03.01-.04.02-.04L10 13h.04l.03.05 1.1 2.7c.2-.3.46-.55.78-.73L11 12.68c-.37-.9-1.64-.9-2 0Zm7.84-7.65a1.76 1.76 0 0 0-2.31-.88l-2.1.94A2.51 2.51 0 0 0 10 1.99a2.5 2.5 0 0 0-2.43 3.1l-2.1-.94c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L7 8.66v2.29L5.12 15.6a1.75 1.75 0 0 0 1.86 2.38c-.14-.3-.23-.63-.23-.98-.1 0-.2-.02-.29-.05a.75.75 0 0 1-.41-.98l1.88-4.64a1 1 0 0 0 .07-.38V8.66a1 1 0 0 0-.6-.91L4.45 6.43a.74.74 0 0 1-.37-.98.76.76 0 0 1 1-.38L8.98 6.8a2.5 2.5 0 0 0 2.04 0l3.92-1.74c.38-.17.82 0 1 .38.17.37 0 .81-.38.98L12.6 7.75a1 1 0 0 0-.59.91v2.3a1 1 0 0 0 .07.38l1.41 3.48c.65.15 1.19.56 1.5 1.13a1.8 1.8 0 0 0-.1-.35L13 10.96v-2.3l2.97-1.32c.88-.4 1.28-1.43.88-2.3ZM10 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm.25 11a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0ZM13 18.25a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5Zm4 0a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5Z"]));
-          exports.AccessibilityQuestionMarkFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AccessibilityQuestionMarkFilled', "1em", ["M10 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM5.47 4.15c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L6.7 8.53c.18.08.3.26.3.46v1.86a.5.5 0 0 1-.04.19l-1.84 4.55a1.75 1.75 0 0 0 3.25 1.32l.08-.22A5.48 5.48 0 0 1 13 9.02V9c0-.2.12-.38.3-.46l2.67-1.19c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-1.28.57c-.24.1-.42.3-.52.52a3 3 0 0 1-5.46 0c-.1-.21-.28-.41-.52-.52l-1.28-.57ZM18 14.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-4.5 1.88a.62.62 0 1 0 0 1.25.62.62 0 0 0 0-1.25Zm0-4.88c-1.05 0-1.86.82-1.85 1.96a.5.5 0 1 0 1-.01c0-.58.36-.95.85-.95.47 0 .85.4.85.95 0 .2-.07.32-.36.55l-.27.21c-.51.4-.72.72-.72 1.29a.5.5 0 0 0 1 .09v-.16c.02-.14.1-.25.35-.44l.28-.22c.5-.4.72-.73.72-1.32 0-1.1-.82-1.95-1.85-1.95Z"]));
-          exports.AccessibilityQuestionMarkRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AccessibilityQuestionMarkRegular', "1em", ["M8.5 4.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM10 2a2.5 2.5 0 0 0-2.43 3.08l-2.1-.93c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L7 8.66v2.29l-1.88 4.64a1.75 1.75 0 0 0 3.25 1.32l.08-.22a5.46 5.46 0 0 1-.42-1.62l-.59 1.46a.75.75 0 1 1-1.39-.56l1.88-4.65a1 1 0 0 0 .07-.37V8.66a1 1 0 0 0-.6-.91L4.45 6.43a.74.74 0 0 1-.37-.99.76.76 0 0 1 1-.38l3.91 1.75a2.5 2.5 0 0 0 2.04 0l3.91-1.75c.38-.17.83 0 1 .38.18.38 0 .82-.37.99L12.6 7.75a1 1 0 0 0-.59.91v.55c.32-.1.66-.16 1-.19v-.36l2.97-1.32c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-2.1.93A2.5 2.5 0 0 0 10 2Zm8 12.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-4.5 1.88a.62.62 0 1 0 0 1.25.62.62 0 0 0 0-1.25Zm0-4.88c-1.05 0-1.86.82-1.85 1.96a.5.5 0 1 0 1-.01c0-.58.36-.95.85-.95.47 0 .85.4.85.95 0 .2-.07.32-.36.55l-.27.21c-.51.4-.72.72-.72 1.29a.5.5 0 0 0 1 .09v-.16c.02-.14.1-.25.35-.44l.28-.22c.5-.4.72-.73.72-1.32 0-1.1-.82-1.95-1.85-1.95Z"]));
-          exports.AddFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AddFilled', "1em", ["M10 2.25c.41 0 .75.34.75.75v6.25H17a.75.75 0 0 1 0 1.5h-6.25V17a.75.75 0 0 1-1.5 0v-6.25H3a.75.75 0 0 1 0-1.5h6.25V3c0-.41.34-.75.75-.75Z"]));
-          exports.AddRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AddRegular', "1em", ["M10 2.5c.28 0 .5.22.5.5v6.5H17a.5.5 0 0 1 0 1h-6.5V17a.5.5 0 0 1-1 0v-6.5H3a.5.5 0 0 1 0-1h6.5V3c0-.28.22-.5.5-.5Z"]));
-          exports.AddCircleColor = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AddCircleColor', "1em", \`<path d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" fill="url(#ic_fluent_add_circle_20_color__a)"/><path d="M6 10c0-.28.22-.5.5-.5h3v-3a.5.5 0 0 1 1 0v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3A.5.5 0 0 1 6 10Z" fill="url(#ic_fluent_add_circle_20_color__b)"/><defs><linearGradient id="ic_fluent_add_circle_20_color__a" x1="2.57" y1="5" x2="13.61" y2="16.47" gradientUnits="userSpaceOnUse"><stop stop-color="#52D17C"/><stop offset="1" stop-color="#22918B"/></linearGradient><linearGradient id="ic_fluent_add_circle_20_color__b" x1="7.5" y1="6.82" x2="9.95" y2="15.48" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset="1" stop-color="#E3FFD9"/></linearGradient></defs>\`, { color: true }));
-          exports.AddCircleFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AddCircleFilled', "1em", ["M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0ZM6 10c0 .28.22.5.5.5h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0-.5.5Z"]));
-          exports.AddCircleRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AddCircleRegular', "1em", ["M6 10c0-.28.22-.5.5-.5h3v-3a.5.5 0 0 1 1 0v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3A.5.5 0 0 1 6 10Zm4 8a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm0-1a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"]));
-          exports.AddSquareFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AddSquareFilled', "1em", ["M3 6a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6Zm7.5.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 1 0 1 0v-3h3a.5.5 0 1 0 0-1h-3v-3Z"]));
-          exports.AddSquareRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AddSquareRegular', "1em", ["M6 3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3H6ZM4 6c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Zm6.5.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 1 0 1 0v-3h3a.5.5 0 1 0 0-1h-3v-3Z"]));
-          exports.AddSquareMultipleFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AddSquareMultipleFilled', "1em", ["M16 5.27c.6.34 1 .99 1 1.73v6a4 4 0 0 1-4 4H7a2 2 0 0 1-1.73-1H13a3 3 0 0 0 3-3V5.27ZM15 5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V5Zm-3 4a.5.5 0 0 1-.5.5h-2v2a.5.5 0 0 1-1 0v-2h-2a.5.5 0 1 1 0-1h2v-2a.5.5 0 1 1 1 0v2h2c.28 0 .5.22.5.5Z"]));
-          exports.AddSquareMultipleRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AddSquareMultipleRegular', "1em", ["M16 5.27V13a3 3 0 0 1-3 3H5.27c.34.6.99 1 1.73 1h6a4 4 0 0 0 4-4V7a2 2 0 0 0-1-1.73ZM11.5 9.5a.5.5 0 0 0 0-1h-2v-2a.5.5 0 1 0-1 0v2h-2a.5.5 0 0 0 0 1h2v2a.5.5 0 0 0 1 0v-2h2ZM13 3a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h8Zm1 2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5Z"]));
-          exports.AddStarburstColor = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AddStarburstColor', "1em", \`<path d="M11.1 1.3a.75.75 0 0 0-1.2 0L8.85 2.65a.5.5 0 0 1-.58.15l-1.6-.65a.75.75 0 0 0-1.03.6l-.24 1.7a.5.5 0 0 1-.42.44l-1.72.23a.75.75 0 0 0-.59 1.03l.65 1.6a.5.5 0 0 1-.15.59L1.79 9.4a.75.75 0 0 0 0 1.18l1.37 1.07a.5.5 0 0 1 .15.58l-.65 1.6c-.18.46.1.96.6 1.03l1.7.24c.23.03.4.2.43.42l.24 1.72c.07.48.57.77 1.03.59l1.6-.65a.5.5 0 0 1 .58.15l1.07 1.37c.3.39.88.39 1.18 0l1.06-1.37a.5.5 0 0 1 .59-.15l1.6.65c.45.18.96-.1 1.03-.6l.23-1.7a.5.5 0 0 1 .43-.43l1.72-.24a.75.75 0 0 0 .59-1.03l-.65-1.6a.5.5 0 0 1 .15-.58l1.37-1.07a.75.75 0 0 0 0-1.18l-1.37-1.06a.5.5 0 0 1-.15-.59l.65-1.6a.75.75 0 0 0-.6-1.03l-1.7-.23a.5.5 0 0 1-.44-.43l-.23-1.72a.75.75 0 0 0-1.03-.59l-1.6.65a.5.5 0 0 1-.59-.15L11.1 1.29Z" fill="url(#ic_fluent_add_starburst_20_color__a)"/><path d="M6.5 10c0-.28.22-.5.5-.5h3v-3a.5.5 0 0 1 1 0v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3H7a.5.5 0 0 1-.5-.5Z" fill="url(#ic_fluent_add_starburst_20_color__b)" fill-opacity=".95"/><defs><radialGradient id="ic_fluent_add_starburst_20_color__a" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-19.58616 -34.63252 33.172 -18.76018 22.15 21.62)"><stop stop-color="#FFC470"/><stop offset=".25" stop-color="#FF835C"/><stop offset=".55" stop-color="#F24A9D"/><stop offset=".81" stop-color="#B339F0"/></radialGradient><linearGradient id="ic_fluent_add_starburst_20_color__b" x1="13.94" y1="16.26" x2="5.55" y2="10.82" gradientUnits="userSpaceOnUse"><stop offset=".02" stop-color="#FFC8D7"/><stop offset=".81" stop-color="#fff"/></linearGradient></defs>\`, { color: true }));
-          exports.AddStarburstFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AddStarburstFilled', "1em", ["M9.4 1.3a.75.75 0 0 1 1.2 0l1.05 1.36a.5.5 0 0 0 .59.15l1.6-.65c.45-.18.96.1 1.03.6l.23 1.7c.04.23.21.4.43.44l1.72.23c.48.07.77.58.59 1.03l-.65 1.6a.5.5 0 0 0 .15.59l1.37 1.06c.39.3.39.88 0 1.18l-1.37 1.07a.5.5 0 0 0-.15.58l.65 1.6c.18.46-.1.96-.6 1.03l-1.7.24a.5.5 0 0 0-.44.42l-.23 1.72a.75.75 0 0 1-1.03.59l-1.6-.65a.5.5 0 0 0-.59.15l-1.06 1.37a.75.75 0 0 1-1.18 0l-1.07-1.37a.5.5 0 0 0-.58-.15l-1.6.65a.75.75 0 0 1-1.03-.6l-.24-1.7a.5.5 0 0 0-.42-.43l-1.72-.24a.75.75 0 0 1-.59-1.03l.65-1.6a.5.5 0 0 0-.15-.58l-1.37-1.07a.75.75 0 0 1 0-1.18l1.37-1.06a.5.5 0 0 0 .15-.59l-.65-1.6a.75.75 0 0 1 .6-1.03l1.7-.23a.5.5 0 0 0 .43-.43l.24-1.72a.75.75 0 0 1 1.03-.59l1.6.65c.2.09.45.02.58-.15l1.07-1.37ZM6.5 9.5a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3a.5.5 0 0 0-1 0v3h-3Z"]));
-          exports.AddStarburstRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AddStarburstRegular', "1em", ["M6.5 9.5a.5.5 0 1 0 0 1h3v3a.5.5 0 1 0 1 0v-3h3a.5.5 0 1 0 0-1h-3v-3a.5.5 0 1 0-1 0v3h-3Zm4.1-8.2a.75.75 0 0 0-1.2 0L8.35 2.65a.5.5 0 0 1-.58.15l-1.6-.65a.75.75 0 0 0-1.03.6l-.24 1.7a.5.5 0 0 1-.42.44l-1.72.23a.75.75 0 0 0-.6 1.03l.66 1.6a.5.5 0 0 1-.15.59L1.29 9.4a.75.75 0 0 0 0 1.18l1.37 1.07a.5.5 0 0 1 .15.58l-.65 1.6c-.18.46.1.96.6 1.03l1.7.24c.23.03.4.2.43.42l.24 1.72c.07.48.57.77 1.03.59l1.6-.65a.5.5 0 0 1 .58.15l1.07 1.37c.3.39.88.39 1.18 0l1.06-1.37a.5.5 0 0 1 .59-.15l1.6.65c.45.18.96-.1 1.03-.6l.23-1.7a.5.5 0 0 1 .43-.43l1.72-.24a.75.75 0 0 0 .59-1.03l-.65-1.6a.5.5 0 0 1 .15-.58l1.37-1.07a.75.75 0 0 0 0-1.18l-1.37-1.06a.5.5 0 0 1-.15-.59l.65-1.6a.75.75 0 0 0-.6-1.03l-1.71-.23a.5.5 0 0 1-.43-.43l-.23-1.72a.75.75 0 0 0-1.03-.59l-1.6.65a.5.5 0 0 1-.59-.15L10.6 1.29ZM9.12 3.26 10 2.16l.86 1.11a1.5 1.5 0 0 0 1.75.47l1.31-.53.2 1.4c.08.66.6 1.18 1.27 1.28l1.4.19-.53 1.3a1.5 1.5 0 0 0 .47 1.75l1.11.87-1.11.87a1.5 1.5 0 0 0-.47 1.75l.53 1.3-1.4.2a1.5 1.5 0 0 0-1.28 1.28l-.19 1.4-1.3-.54a1.5 1.5 0 0 0-1.76.47L10 17.84l-.87-1.11a1.5 1.5 0 0 0-1.75-.47l-1.3.53-.2-1.4a1.5 1.5 0 0 0-1.28-1.28l-1.4-.19.54-1.3a1.5 1.5 0 0 0-.47-1.75L2.16 10l1.1-.87a1.5 1.5 0 0 0 .48-1.74L3.2 6.08l1.4-.2a1.5 1.5 0 0 0 1.27-1.27l.2-1.4 1.3.53a1.5 1.5 0 0 0 1.75-.47Z"]));
-          exports.AddSubtractCircleFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AddSubtractCircleFilled', "1em", ["M11.5 12a.5.5 0 1 0 0 1h3a.5.5 0 0 0 0-1h-3ZM10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm0-1a6.97 6.97 0 0 1-4.58-1.7l9.87-9.88A7 7 0 0 1 10 17ZM5.5 7c0-.28.22-.5.5-.5h1v-1a.5.5 0 0 1 1 0v1h1a.5.5 0 1 1 0 1H8v1a.5.5 0 0 1-1 0v-1H6a.5.5 0 0 1-.5-.5Z"]));
+          exports.BackpackFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('BackpackFilled', "1em", ["M8 8.7c0-.39.31-.7.7-.7h2.6c.39 0 .7.31.7.7a.3.3 0 0 1-.3.3H8.3a.3.3 0 0 1-.3-.3ZM10 2a2.5 2.5 0 0 0-2.5 2.5v.04A6 6 0 0 0 4 10v2h12v-2a6 6 0 0 0-3.5-5.46V4.5A2.5 2.5 0 0 0 10 2Zm0 2c.5 0 1 .06 1.47.18a1.5 1.5 0 0 0-2.94 0C9 4.06 9.5 4 10 4ZM8.7 7h2.6c.94 0 1.7.76 1.7 1.7 0 .72-.58 1.3-1.3 1.3H8.3A1.3 1.3 0 0 1 7 8.7C7 7.76 7.76 7 8.7 7ZM7 14.5V13H4v2a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-2H8v1.5a.5.5 0 0 1-1 0Z"]));
+          exports.BackpackRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('BackpackRegular', "1em", ["M8.7 7C7.76 7 7 7.76 7 8.7c0 .72.58 1.3 1.3 1.3h3.4c.72 0 1.3-.58 1.3-1.3 0-.94-.76-1.7-1.7-1.7H8.7ZM8 8.7c0-.39.31-.7.7-.7h2.6c.39 0 .7.31.7.7a.3.3 0 0 1-.3.3H8.3a.3.3 0 0 1-.3-.3ZM10 2a2.5 2.5 0 0 0-2.5 2.5v.04A6 6 0 0 0 4 10v5a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-5a6 6 0 0 0-3.5-5.46V4.5A2.5 2.5 0 0 0 10 2Zm5 10H5v-2a5 5 0 0 1 10 0v2Zm-8 2.5a.5.5 0 0 0 1 0V13h7v2a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-2h2v1.5ZM10 4c-.5 0-1 .06-1.47.18a1.5 1.5 0 0 1 2.94 0A6.01 6.01 0 0 0 10 4Z"]));
+          exports.BackpackAddFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('BackpackAddFilled', "1em", ["M7.5 4.5a2.5 2.5 0 0 1 5 0v.04a6 6 0 0 1 3.45 4.65 5.5 5.5 0 0 0-3.07.05c.08-.16.12-.35.12-.54 0-.94-.76-1.7-1.7-1.7H8.7C7.76 7 7 7.76 7 8.7c0 .72.58 1.3 1.3 1.3h3.04a5.53 5.53 0 0 0-1.74 2H4v-2a6 6 0 0 1 3.5-5.46V4.5Zm3.97-.32a1.5 1.5 0 0 0-2.94 0 6.01 6.01 0 0 1 2.94 0ZM9 14.5c0-.52.07-1.02.2-1.5H8v1.5a.5.5 0 0 1-1 0V13H4v2a3 3 0 0 0 3 3h3.26A5.48 5.48 0 0 1 9 14.5ZM8.7 8a.7.7 0 0 0-.7.7c0 .17.13.3.3.3h3.4a.3.3 0 0 0 .3-.3.7.7 0 0 0-.7-.7H8.7ZM19 14.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-4-2a.5.5 0 0 0-1 0V14h-1.5a.5.5 0 0 0 0 1H14v1.5a.5.5 0 0 0 1 0V15h1.5a.5.5 0 0 0 0-1H15v-1.5Z"]));
+          exports.BackpackAddRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('BackpackAddRegular', "1em", ["M10 2a2.5 2.5 0 0 0-2.5 2.5v.04A6 6 0 0 0 4 10v5a3 3 0 0 0 3 3h3.26a5.5 5.5 0 0 1-.66-1H7a2 2 0 0 1-2-2v-2h2v1.5a.5.5 0 0 0 1 0V13h1.2c.1-.35.24-.68.4-1H5v-2a5 5 0 0 1 9.9-.99c.36.03.71.1 1.05.18a6 6 0 0 0-3.45-4.65V4.5A2.5 2.5 0 0 0 10 2Zm0 2c-.5 0-1 .06-1.47.18a1.5 1.5 0 0 1 2.94 0A6.01 6.01 0 0 0 10 4Zm1.34 6c.46-.33.98-.59 1.54-.76.08-.16.12-.35.12-.54 0-.94-.76-1.7-1.7-1.7H8.7C7.76 7 7 7.76 7 8.7c0 .72.58 1.3 1.3 1.3h3.04ZM8 8.7c0-.39.31-.7.7-.7h2.6c.39 0 .7.31.7.7a.3.3 0 0 1-.3.3H8.3a.3.3 0 0 1-.3-.3Zm11 5.8a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-4-2a.5.5 0 0 0-1 0V14h-1.5a.5.5 0 0 0 0 1H14v1.5a.5.5 0 0 0 1 0V15h1.5a.5.5 0 0 0 0-1H15v-1.5Z"]));
+          exports.BackspaceFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('BackspaceFilled', "1em", ["M8.28 4a2.5 2.5 0 0 0-1.7.66L2.8 8.16a2.5 2.5 0 0 0 0 3.68l3.79 3.5a2.5 2.5 0 0 0 1.7.66h7.21a2.5 2.5 0 0 0 2.5-2.5v-7A2.5 2.5 0 0 0 15.5 4H8.28Zm.87 3.15c.2-.2.5-.2.7 0L12 9.29l2.15-2.14a.5.5 0 0 1 .7.7L12.71 10l2.14 2.15a.5.5 0 0 1-.7.7L12 10.71l-2.15 2.14a.5.5 0 0 1-.7-.7L11.29 10 9.15 7.85a.5.5 0 0 1 0-.7Z"]));
+          exports.BackspaceRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('BackspaceRegular', "1em", ["M9.15 7.15c.2-.2.5-.2.7 0L12 9.29l2.15-2.14a.5.5 0 0 1 .7.7L12.71 10l2.14 2.15a.5.5 0 0 1-.7.7L12 10.71l-2.15 2.14a.5.5 0 0 1-.7-.7L11.29 10 9.15 7.85a.5.5 0 0 1 0-.7ZM6.59 4.66A2.5 2.5 0 0 1 8.29 4h7.21A2.5 2.5 0 0 1 18 6.5v7a2.5 2.5 0 0 1-2.5 2.5H8.28a2.5 2.5 0 0 1-1.7-.66l-3.78-3.5a2.5 2.5 0 0 1 0-3.68l3.79-3.5Zm1.7.34c-.38 0-.75.14-1.03.4L3.48 8.9a1.5 1.5 0 0 0 0 2.2l3.78 3.5c.28.26.65.4 1.02.4h7.22c.83 0 1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5H8.28Z"]));
+          exports.CalculatorFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalculatorFilled', "1em", ["M13.5 2h-7A2.5 2.5 0 0 0 4 4.5v11A2.5 2.5 0 0 0 6.5 18h7a2.5 2.5 0 0 0 2.5-2.5v-11A2.5 2.5 0 0 0 13.5 2Zm-6 2h5c.83 0 1.5.67 1.5 1.5v1c0 .83-.67 1.5-1.5 1.5h-5A1.5 1.5 0 0 1 6 6.5v-1C6 4.67 6.67 4 7.5 4Zm.5 7a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm0 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm5-2a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-4-2a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"]));
+          exports.CalculatorRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalculatorRegular', "1em", ["M8 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm0 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm5-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm1 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-4-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm1 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM7.5 4C6.67 4 6 4.67 6 5.5v1C6 7.33 6.67 8 7.5 8h5c.83 0 1.5-.67 1.5-1.5v-1c0-.83-.67-1.5-1.5-1.5h-5ZM7 5.5c0-.28.22-.5.5-.5h5c.28 0 .5.22.5.5v1a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-1Zm9 10a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 4 15.5v-11A2.5 2.5 0 0 1 6.5 2h7A2.5 2.5 0 0 1 16 4.5v11Zm-1-11c0-.83-.67-1.5-1.5-1.5h-7C5.67 3 5 3.67 5 4.5v11c0 .83.67 1.5 1.5 1.5h7c.83 0 1.5-.67 1.5-1.5v-11Z"]));
+          exports.CalculatorArrowClockwiseFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalculatorArrowClockwiseFilled', "1em", ["M13.5 2h-7A2.5 2.5 0 0 0 4 4.5v11A2.5 2.5 0 0 0 6.5 18h3.77a5.48 5.48 0 0 1-.64-6.07 1 1 0 1 1 1.17-1.52A5.48 5.48 0 0 1 16 9.19V4.5A2.5 2.5 0 0 0 13.5 2Zm-6 2h5c.83 0 1.5.67 1.5 1.5v1c0 .83-.67 1.5-1.5 1.5h-5A1.5 1.5 0 0 1 6 6.5v-1C6 4.67 6.67 4 7.5 4Zm.5 7a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm0 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm9.5-1.52a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-1 0v.76a4.5 4.5 0 1 0 2 3.74.5.5 0 1 0-1 0 3.5 3.5 0 1 1-1.7-3h-.8a.5.5 0 1 0 0 1h2Z"]));
+          exports.CalculatorArrowClockwiseRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalculatorArrowClockwiseRegular', "1em", ["M7 12a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm0 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm2.63-3.07c.3-.58.7-1.1 1.17-1.52a1 1 0 1 0-1.17 1.52ZM6.5 17h3.11c.18.36.4.7.66 1H6.5A2.5 2.5 0 0 1 4 15.5v-11A2.5 2.5 0 0 1 6.5 2h7A2.5 2.5 0 0 1 16 4.5v4.69c-.32-.1-.66-.16-1-.19V4.5c0-.83-.67-1.5-1.5-1.5h-7C5.67 3 5 3.67 5 4.5v11c0 .83.67 1.5 1.5 1.5ZM6 5.5C6 4.67 6.67 4 7.5 4h5c.83 0 1.5.67 1.5 1.5v1c0 .83-.67 1.5-1.5 1.5h-5A1.5 1.5 0 0 1 6 6.5v-1ZM7.5 5a.5.5 0 0 0-.5.5v1c0 .28.22.5.5.5h5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-5Zm10 7.48a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-1 0v.76a4.5 4.5 0 1 0 2 3.74.5.5 0 1 0-1 0 3.5 3.5 0 1 1-1.7-3h-.8a.5.5 0 1 0 0 1h2Z"]));
+          exports.CalculatorMultipleFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalculatorMultipleFilled', "1em", ["M5.5 2A2.5 2.5 0 0 0 3 4.5v9A2.5 2.5 0 0 0 5.5 16h7a2.5 2.5 0 0 0 2.5-2.5v-9A2.5 2.5 0 0 0 12.5 2h-7ZM5 5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5Zm0 5a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm4-1a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm0 2.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM11 10a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm1 1.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm-6 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM7.5 18a2.5 2.5 0 0 1-2-1h7a3.5 3.5 0 0 0 3.5-3.5v-9c.6.46 1 1.18 1 2v7a4.5 4.5 0 0 1-4.5 4.5h-5Z"]));
+          exports.CalculatorMultipleRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalculatorMultipleRegular', "1em", ["M6 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H6Zm0 1h6v2H6V5Zm2 5a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm1 1.75a1 1 0 1 0 0 2 1 1 0 0 0 0-2ZM11 10a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm1 1.75a1 1 0 1 0 0 2 1 1 0 0 0 0-2ZM5 10a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm1 1.75a1 1 0 1 0 0 2 1 1 0 0 0 0-2ZM5.5 2A2.5 2.5 0 0 0 3 4.5v9A2.5 2.5 0 0 0 5.5 16h7a2.5 2.5 0 0 0 2.5-2.5v-9A2.5 2.5 0 0 0 12.5 2h-7ZM4 4.5C4 3.67 4.67 3 5.5 3h7c.83 0 1.5.67 1.5 1.5v9c0 .83-.67 1.5-1.5 1.5h-7A1.5 1.5 0 0 1 4 13.5v-9ZM7.5 18a2.5 2.5 0 0 1-2-1h7a3.5 3.5 0 0 0 3.5-3.5v-9c.6.46 1 1.18 1 2v7a4.5 4.5 0 0 1-4.5 4.5h-5Z"]));
+          exports.CalendarColor = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarColor', "1em", \`<path d="M17 6H3v8.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5V6Z" fill="url(#ic_fluent_calendar_20_color__a)"/><path d="M17 6H3v8.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5V6Z" fill="url(#ic_fluent_calendar_20_color__b)"/><g filter="url(#ic_fluent_calendar_20_color__c)"><path d="M8 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" fill="url(#ic_fluent_calendar_20_color__d)"/><path d="M8 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" fill="url(#ic_fluent_calendar_20_color__e)"/><path d="M11 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" fill="url(#ic_fluent_calendar_20_color__f)"/><path d="M10 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" fill="url(#ic_fluent_calendar_20_color__g)"/><path d="M14 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" fill="url(#ic_fluent_calendar_20_color__h)"/></g><path d="M17 5.5A2.5 2.5 0 0 0 14.5 3h-9A2.5 2.5 0 0 0 3 5.5V7h14V5.5Z" fill="url(#ic_fluent_calendar_20_color__i)"/><defs><linearGradient id="ic_fluent_calendar_20_color__a" x1="12.53" y1="18.35" x2="8.5" y2="6.56" gradientUnits="userSpaceOnUse"><stop stop-color="#B3E0FF"/><stop offset="1" stop-color="#B3E0FF"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__b" x1="11.5" y1="10.5" x2="13.5" y2="19.5" gradientUnits="userSpaceOnUse"><stop stop-color="#DCF8FF" stop-opacity="0"/><stop offset="1" stop-color="#FF6CE8" stop-opacity=".7"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__d" x1="9.27" y1="8.42" x2="10.91" y2="18.39" gradientUnits="userSpaceOnUse"><stop stop-color="#0078D4"/><stop offset="1" stop-color="#0067BF"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__e" x1="9.27" y1="8.42" x2="10.91" y2="18.39" gradientUnits="userSpaceOnUse"><stop stop-color="#0078D4"/><stop offset="1" stop-color="#0067BF"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__f" x1="9.27" y1="8.42" x2="10.91" y2="18.39" gradientUnits="userSpaceOnUse"><stop stop-color="#0078D4"/><stop offset="1" stop-color="#0067BF"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__g" x1="9.27" y1="8.42" x2="10.91" y2="18.39" gradientUnits="userSpaceOnUse"><stop stop-color="#0078D4"/><stop offset="1" stop-color="#0067BF"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__h" x1="9.27" y1="8.42" x2="10.91" y2="18.39" gradientUnits="userSpaceOnUse"><stop stop-color="#0078D4"/><stop offset="1" stop-color="#0067BF"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__i" x1="3" y1="3" x2="15.02" y2="-.77" gradientUnits="userSpaceOnUse"><stop stop-color="#0094F0"/><stop offset="1" stop-color="#2764E7"/></linearGradient><filter id="ic_fluent_calendar_20_color__c" x="4.67" y="8.33" width="10.67" height="7.67" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy=".67"/><feGaussianBlur stdDeviation=".67"/><feColorMatrix values="0 0 0 0 0.1242 0 0 0 0 0.323337 0 0 0 0 0.7958 0 0 0 0.32 0"/><feBlend in2="BackgroundImageFix" result="effect1_dropShadow_378174_9787"/><feBlend in="SourceGraphic" in2="effect1_dropShadow_378174_9787" result="shape"/></filter></defs>\`, { color: true }));
+          exports.CalendarFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarFilled', "1em", ["M5.5 3A2.5 2.5 0 0 0 3 5.5V6h14v-.5A2.5 2.5 0 0 0 14.5 3h-9ZM17 7H3v7.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5V7Zm-9 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-1 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm4-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-1 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm4-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"], { flipInRtl: true }));
+          exports.CalendarRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarRegular', "1em", ["M7 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm1 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm2-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm1 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm2-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm4-5.5A2.5 2.5 0 0 0 14.5 3h-9A2.5 2.5 0 0 0 3 5.5v9A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5v-9ZM4 7h12v7.5c0 .83-.67 1.5-1.5 1.5h-9A1.5 1.5 0 0 1 4 14.5V7Zm1.5-3h9c.83 0 1.5.67 1.5 1.5V6H4v-.5C4 4.67 4.67 4 5.5 4Z"], { flipInRtl: true }));
+          exports.Calendar3DayFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Calendar3DayFilled', "1em", ["M14.5 3A2.5 2.5 0 0 1 17 5.5v9a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9Zm-8 3a.5.5 0 0 0-.5.41v7.18a.5.5 0 0 0 1 0V6.41A.5.5 0 0 0 6.5 6ZM10 6a.5.5 0 0 0-.5.41v7.18a.5.5 0 0 0 1 0V6.41A.5.5 0 0 0 10 6Zm3.5 0a.5.5 0 0 0-.5.41v7.18a.5.5 0 0 0 1 0V6.41a.5.5 0 0 0-.5-.41Z"]));
+          exports.Calendar3DayRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Calendar3DayRegular', "1em", ["M14.5 3A2.5 2.5 0 0 1 17 5.5v9a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9Zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5Zm-8 2a.5.5 0 0 1 .5.41v7.09a.5.5 0 0 1-1 .09V6.5c0-.28.22-.5.5-.5ZM10 6a.5.5 0 0 1 .5.41v7.09a.5.5 0 0 1-1 .09V6.5c0-.28.22-.5.5-.5Zm3.5 0a.5.5 0 0 1 .5.41v7.09a.5.5 0 0 1-1 .09V6.5c0-.28.22-.5.5-.5Z"]));
+          exports.CalendarAddFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarAddFilled', "1em", ["M17 7v2.6A5.5 5.5 0 0 0 9.6 17H5.5A2.5 2.5 0 0 1 3 14.5V7h14Zm-2.5-4A2.5 2.5 0 0 1 17 5.5V6H3v-.5A2.5 2.5 0 0 1 5.5 3h9ZM19 14.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-4-2a.5.5 0 0 0-1 0V14h-1.5a.5.5 0 0 0 0 1H14v1.5a.5.5 0 0 0 1 0V15h1.5a.5.5 0 0 0 0-1H15v-1.5Z"]));
+          exports.CalendarAddRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarAddRegular', "1em", ["M14.5 3A2.5 2.5 0 0 1 17 5.5v4.1c-.32-.16-.65-.3-1-.4V7H4v7.5c0 .83.67 1.5 1.5 1.5h3.7c.1.35.24.68.4 1H5.5A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9Zm0 1h-9C4.67 4 4 4.67 4 5.5V6h12v-.5c0-.83-.67-1.5-1.5-1.5ZM19 14.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-4-2a.5.5 0 0 0-1 0V14h-1.5a.5.5 0 0 0 0 1H14v1.5a.5.5 0 0 0 1 0V15h1.5a.5.5 0 0 0 0-1H15v-1.5Z"]));
+          exports.CalendarAgendaFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarAgendaFilled', "1em", ["M17 14.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9A2.5 2.5 0 0 1 17 5.5v9Zm-3-8a.5.5 0 0 0-.41-.5H6.41a.5.5 0 0 0 0 1h7.18a.5.5 0 0 0 .41-.5Zm0 3.5a.5.5 0 0 0-.41-.5H6.41a.5.5 0 0 0 0 1h7.18A.5.5 0 0 0 14 10Zm0 3.5a.5.5 0 0 0-.41-.5H6.41a.5.5 0 0 0 0 1h7.18a.5.5 0 0 0 .41-.5Z"]));
+          exports.CalendarAgendaRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarAgendaRegular', "1em", ["M17 14.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9A2.5 2.5 0 0 1 17 5.5v9Zm-1 0v-9c0-.83-.67-1.5-1.5-1.5h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5Zm-2-8a.5.5 0 0 1-.41.5H6.5a.5.5 0 0 1-.09-1h7.09c.28 0 .5.22.5.5Zm0 3.5a.5.5 0 0 1-.41.5H6.5a.5.5 0 0 1-.09-1h7.09c.28 0 .5.22.5.5Zm0 3.5a.5.5 0 0 1-.41.5H6.5a.5.5 0 0 1-.09-1h7.09c.28 0 .5.22.5.5Z"]));
+          exports.CalendarArrowCounterclockwiseFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarArrowCounterclockwiseFilled', "1em", ["M3 5.5A2.5 2.5 0 0 1 5.5 3h9A2.5 2.5 0 0 1 17 5.5V6H6.11A1.5 1.5 0 0 0 4 5.87V7.3l.65-.64a.5.5 0 1 1 .7.7l-1.5 1.5a.5.5 0 0 1-.7 0l-1.5-1.5a.5.5 0 1 1 .7-.7l.65.64V5.5ZM17 7v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5V9.92a1.5 1.5 0 0 0 1.55-.36l1.5-1.5c.3-.3.44-.68.44-1.06H17ZM7 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm-1 2a1 1 0 1 0 2 0 1 1 0 0 0-2 0Zm4-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm-1 2a1 1 0 1 0 2 0 1 1 0 0 0-2 0Zm4-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"]));
+          exports.CalendarArrowCounterclockwiseRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarArrowCounterclockwiseRegular', "1em", ["M5.5 17A2.5 2.5 0 0 1 3 14.5v-4a.5.5 0 0 1 1 0v4c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5V7H6.5c0-.36-.14-.72-.4-1H16v-.5c0-.83-.67-1.5-1.5-1.5h-9C4.67 4 4 4.67 4 5.5v1.8l.65-.65a.5.5 0 1 1 .7.7l-1.5 1.5a.5.5 0 0 1-.7 0l-1.5-1.5a.5.5 0 1 1 .7-.7l.65.64V5.5A2.5 2.5 0 0 1 5.5 3h9A2.5 2.5 0 0 1 17 5.5v9a2.5 2.5 0 0 1-2.5 2.5h-9ZM8 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-1 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm4-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-1 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm4-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"]));
+          exports.CalendarArrowDownFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarArrowDownFilled', "1em", ["M5.5 3A2.5 2.5 0 0 0 3 5.5V6h14v-.5A2.5 2.5 0 0 0 14.5 3h-9ZM17 7H3v7.5A2.5 2.5 0 0 0 5.5 17h4.1A5.5 5.5 0 0 1 17 9.6V7Zm2 7.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-4.85 2.35a.5.5 0 0 0 .35.15.5.5 0 0 0 .35-.15l2-2a.5.5 0 0 0-.7-.7L15 15.29V12.5a.5.5 0 0 0-1 0v2.8l-1.15-1.15a.5.5 0 0 0-.7.7l2 2Z"]));
+          exports.CalendarArrowDownRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarArrowDownRegular', "1em", ["M5.5 3A2.5 2.5 0 0 0 3 5.5v9A2.5 2.5 0 0 0 5.5 17h4.1c-.16-.32-.3-.65-.4-1H5.5A1.5 1.5 0 0 1 4 14.5V7h12v2.2c.35.1.68.24 1 .4V5.5A2.5 2.5 0 0 0 14.5 3h-9ZM4 5.5C4 4.67 4.67 4 5.5 4h9c.83 0 1.5.67 1.5 1.5V6H4v-.5Zm15 9a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-4.85 2.35a.5.5 0 0 0 .35.15.5.5 0 0 0 .35-.15l2-2a.5.5 0 0 0-.7-.7L15 15.29V12.5a.5.5 0 0 0-1 0v2.8l-1.15-1.15a.5.5 0 0 0-.7.7l2 2Z"]));
           ... (content truncated for snapshot)"
         `);
 
@@ -964,36 +1186,36 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentIcon } from "../utils/createFluentIcon";
-          export declare const AccessTimeFilled: FluentIcon;
-          export declare const AccessTimeRegular: FluentIcon;
-          export declare const AccessibilityFilled: FluentIcon;
-          export declare const AccessibilityRegular: FluentIcon;
-          export declare const AccessibilityCheckmarkFilled: FluentIcon;
-          export declare const AccessibilityCheckmarkRegular: FluentIcon;
-          export declare const AccessibilityErrorFilled: FluentIcon;
-          export declare const AccessibilityErrorRegular: FluentIcon;
-          export declare const AccessibilityMoreFilled: FluentIcon;
-          export declare const AccessibilityMoreRegular: FluentIcon;
-          export declare const AccessibilityQuestionMarkFilled: FluentIcon;
-          export declare const AccessibilityQuestionMarkRegular: FluentIcon;
-          export declare const AddFilled: FluentIcon;
-          export declare const AddRegular: FluentIcon;
-          export declare const AddCircleColor: FluentIcon;
-          export declare const AddCircleFilled: FluentIcon;
-          export declare const AddCircleRegular: FluentIcon;
-          export declare const AddSquareFilled: FluentIcon;
-          export declare const AddSquareRegular: FluentIcon;
-          export declare const AddSquareMultipleFilled: FluentIcon;
-          export declare const AddSquareMultipleRegular: FluentIcon;
-          export declare const AddStarburstColor: FluentIcon;
-          export declare const AddStarburstFilled: FluentIcon;
-          export declare const AddStarburstRegular: FluentIcon;
-          export declare const AddSubtractCircleFilled: FluentIcon;
-          export declare const AddSubtractCircleRegular: FluentIcon;
-          export declare const AgentsColor: FluentIcon;
-          export declare const AgentsFilled: FluentIcon;
-          export declare const AgentsRegular: FluentIcon;
+          "import type { FluentIcon } from '../utils/createFluentIcon';
+          export declare const BackpackFilled: FluentIcon;
+          export declare const BackpackRegular: FluentIcon;
+          export declare const BackpackAddFilled: FluentIcon;
+          export declare const BackpackAddRegular: FluentIcon;
+          export declare const BackspaceFilled: FluentIcon;
+          export declare const BackspaceRegular: FluentIcon;
+          export declare const CalculatorFilled: FluentIcon;
+          export declare const CalculatorRegular: FluentIcon;
+          export declare const CalculatorArrowClockwiseFilled: FluentIcon;
+          export declare const CalculatorArrowClockwiseRegular: FluentIcon;
+          export declare const CalculatorMultipleFilled: FluentIcon;
+          export declare const CalculatorMultipleRegular: FluentIcon;
+          export declare const CalendarColor: FluentIcon;
+          export declare const CalendarFilled: FluentIcon;
+          export declare const CalendarRegular: FluentIcon;
+          export declare const Calendar3DayFilled: FluentIcon;
+          export declare const Calendar3DayRegular: FluentIcon;
+          export declare const CalendarAddFilled: FluentIcon;
+          export declare const CalendarAddRegular: FluentIcon;
+          export declare const CalendarAgendaFilled: FluentIcon;
+          export declare const CalendarAgendaRegular: FluentIcon;
+          export declare const CalendarArrowCounterclockwiseFilled: FluentIcon;
+          export declare const CalendarArrowCounterclockwiseRegular: FluentIcon;
+          export declare const CalendarArrowDownFilled: FluentIcon;
+          export declare const CalendarArrowDownRegular: FluentIcon;
+          export declare const CalendarArrowRepeatAllFilled: FluentIcon;
+          export declare const CalendarArrowRepeatAllRegular: FluentIcon;
+          export declare const CalendarArrowRightFilled: FluentIcon;
+          export declare const CalendarArrowRightRegular: FluentIcon;
           ... (content truncated for snapshot)"
         `);
       }
@@ -1019,35 +1241,35 @@ describe('Build Verification', () => {
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
           ""use client";
-          import { createFluentIcon } from "../utils/createFluentIcon";
-          export const AccessTime20Filled = ( /*#__PURE__*/createFluentIcon('AccessTime20Filled', "20", ["M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM6.99 8.6A.5.5 0 0 1 6 8.4c.02-.07.03-.14.07-.24a2 2 0 0 1 .25-.46c.26-.35.71-.7 1.42-.7A1.7 1.7 0 0 1 9.5 8.75c0 .35-.07.65-.2.9a1.8 1.8 0 0 1-.51.6c-.16.11-.33.22-.48.3l-.06.04c-.17.1-.3.19-.42.29-.4.34-.66.7-.77 1.12H9a.5.5 0 0 1 0 1H6.5a.5.5 0 0 1-.5-.5c0-1.01.47-1.77 1.17-2.38.2-.16.4-.29.57-.4l.06-.03.38-.24a.8.8 0 0 0 .23-.26c.05-.1.09-.23.09-.44a.8.8 0 0 0-.19-.53.7.7 0 0 0-.56-.22.7.7 0 0 0-.61.3 1 1 0 0 0-.15.3ZM11 7c.28 0 .5.22.5.5V10H13V7.5a.5.5 0 0 1 1 0v5a.5.5 0 0 1-1 0V11h-2a.5.5 0 0 1-.5-.5v-3c0-.28.22-.5.5-.5Z"]));
-          export const AccessTime20Regular = ( /*#__PURE__*/createFluentIcon('AccessTime20Regular', "20", ["M6.99 8.6A.5.5 0 0 1 6 8.4a1.29 1.29 0 0 1 .07-.24 2 2 0 0 1 .25-.46c.26-.35.71-.7 1.42-.7A1.7 1.7 0 0 1 9.5 8.75c0 .35-.07.65-.2.9a1.8 1.8 0 0 1-.51.6c-.16.11-.33.22-.48.3l-.06.04c-.17.1-.3.19-.42.29-.4.34-.66.7-.77 1.12H9a.5.5 0 0 1 0 1H6.5a.5.5 0 0 1-.5-.5c0-1.01.47-1.77 1.17-2.38.2-.16.4-.29.57-.4l.06-.03.38-.24a.8.8 0 0 0 .23-.26c.05-.1.09-.23.09-.44a.8.8 0 0 0-.19-.53.7.7 0 0 0-.56-.22.7.7 0 0 0-.61.3 1 1 0 0 0-.15.3ZM11 7c.28 0 .5.22.5.5V10H13V7.5a.5.5 0 0 1 1 0v5a.5.5 0 0 1-1 0V11h-2a.5.5 0 0 1-.5-.5v-3c0-.28.22-.5.5-.5Zm-1-5a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm-7 8a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z"]));
-          export const AccessTime24Filled = ( /*#__PURE__*/createFluentIcon('AccessTime24Filled', "24", ["M22 12a10 10 0 1 0-20 0 10 10 0 0 0 20 0ZM7.5 8.74A2.3 2.3 0 0 1 9.25 8c1.15 0 1.9.8 2.15 1.66.26.85.1 1.9-.62 2.62a8.1 8.1 0 0 1-.79.67l-.04.03c-.28.22-.53.41-.75.63a2.3 2.3 0 0 0-.58.89h2.13a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1-.75-.75c0-1.25.52-2.08 1.14-2.7.3-.3.62-.55.9-.76.28-.22.5-.4.68-.57.27-.27.37-.72.25-1.13-.12-.38-.37-.59-.72-.59s-.53.14-.64.25a.84.84 0 0 0-.15.23.75.75 0 0 1-1.43-.46l.04-.1.08-.17c.07-.14.18-.32.35-.5ZM13.25 8c.41 0 .75.34.75.75v2.75h1.5V8.75a.75.75 0 0 1 1.5 0v6.47a.75.75 0 0 1-1.5 0V13h-2.25a.75.75 0 0 1-.75-.75v-3.5c0-.41.34-.75.75-.75Z"]));
-          export const AccessTime24Regular = ( /*#__PURE__*/createFluentIcon('AccessTime24Regular', "24", ["M7.5 8.74A2.3 2.3 0 0 1 9.25 8c1.15 0 1.9.8 2.15 1.66.26.85.1 1.9-.62 2.62a8.1 8.1 0 0 1-.79.67l-.04.03c-.28.22-.53.41-.75.63a2.3 2.3 0 0 0-.58.89h2.13a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1-.75-.75c0-1.25.52-2.08 1.14-2.7.3-.3.62-.55.9-.76.28-.22.5-.4.68-.57.27-.27.37-.72.25-1.13-.12-.38-.37-.59-.72-.59s-.53.14-.64.25a.84.84 0 0 0-.15.23.75.75 0 0 1-1.43-.46l.04-.1.08-.17c.07-.14.18-.32.35-.5ZM13.25 8c.41 0 .75.34.75.75v2.75h1.5V8.75a.75.75 0 0 1 1.5 0v6.47a.75.75 0 0 1-1.5 0V13h-2.25a.75.75 0 0 1-.75-.75v-3.5c0-.41.34-.75.75-.75ZM22 12a10 10 0 1 0-20 0 10 10 0 0 0 20 0ZM3.5 12a8.5 8.5 0 1 1 17 0 8.5 8.5 0 0 1-17 0Z"]));
-          export const Accessibility16Filled = ( /*#__PURE__*/createFluentIcon('Accessibility16Filled', "16", ["M8 4.5A1.75 1.75 0 1 0 8 1a1.75 1.75 0 0 0 0 3.5ZM4.2 3.12a1.6 1.6 0 0 0-2.08.87c-.33.81.06 1.74.87 2.07l1.7.68a.5.5 0 0 1 .31.47v1.92a.5.5 0 0 1-.06.23l-1.75 3.3a1.6 1.6 0 1 0 2.8 1.5l1.79-3.35c.1-.18.35-.18.44 0L10 14.16a1.6 1.6 0 1 0 2.81-1.5l-1.75-3.3a.5.5 0 0 1-.06-.23V7.2c0-.2.12-.4.31-.47l1.7-.68c.81-.33 1.2-1.26.87-2.07a1.6 1.6 0 0 0-2.08-.87l-.78.31c-.26.1-.44.3-.54.52a2.75 2.75 0 0 1-4.96 0c-.1-.22-.28-.42-.54-.52l-.78-.31Z"]));
-          export const Accessibility16Regular = ( /*#__PURE__*/createFluentIcon('Accessibility16Regular', "16", ["M6.75 3.25a1.25 1.25 0 1 1 2.5 0 1.25 1.25 0 0 1-2.5 0ZM8 1a2.25 2.25 0 0 0-2.19 2.77L4.2 3.12a1.6 1.6 0 0 0-2.08.87c-.33.81.06 1.74.87 2.07l2.01.8v2.4l-1.81 3.4a1.6 1.6 0 1 0 2.8 1.5L8 10.39l2 3.77a1.6 1.6 0 0 0 2.81-1.5L11 9.26v-2.4l2-.8c.82-.33 1.21-1.26.88-2.07a1.6 1.6 0 0 0-2.08-.87l-1.61.65A2.26 2.26 0 0 0 8 1ZM3.05 4.37a.6.6 0 0 1 .77-.33l3.43 1.39a2 2 0 0 0 1.5 0l3.43-1.39a.6.6 0 0 1 .77.33c.13.3-.02.64-.32.76l-2 .81a1 1 0 0 0-.63.93v2.38a1 1 0 0 0 .12.47l1.81 3.41a.6.6 0 0 1-1.04.56l-2-3.77a1 1 0 0 0-1.77 0l-2 3.77a.6.6 0 1 1-1.05-.56l1.81-3.4A1 1 0 0 0 6 9.24V6.87a1 1 0 0 0-.63-.93l-2-.8a.58.58 0 0 1-.32-.77Z"]));
-          export const Accessibility20Filled = ( /*#__PURE__*/createFluentIcon('Accessibility20Filled', "20", ["M10 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM5.47 4.15c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L6.7 8.53c.18.08.3.26.3.46v1.86a.5.5 0 0 1-.04.19l-1.84 4.55a1.75 1.75 0 0 0 3.25 1.32l1.4-3.46c.08-.21.38-.21.46 0l1.4 3.46a1.75 1.75 0 0 0 3.24-1.32l-1.83-4.54a.5.5 0 0 1-.04-.19V9c0-.2.12-.38.3-.46l2.67-1.19c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-1.28.57c-.24.1-.42.3-.52.52a3 3 0 0 1-5.46 0c-.1-.21-.28-.41-.52-.52l-1.28-.57Z"]));
-          export const Accessibility20Regular = ( /*#__PURE__*/createFluentIcon('Accessibility20Regular', "20", ["M8.5 4.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM10 2a2.5 2.5 0 0 0-2.43 3.08l-2.1-.93c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L7 8.66v2.29l-1.88 4.64a1.75 1.75 0 0 0 3.25 1.32l1.55-3.85.03-.04L10 13h.04l.03.05 1.56 3.84a1.75 1.75 0 0 0 3.24-1.3L13 10.95v-2.3l2.97-1.32c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-2.1.93A2.51 2.51 0 0 0 10 2ZM4.07 5.44a.76.76 0 0 1 1-.38l3.91 1.75a2.5 2.5 0 0 0 2.04 0l3.91-1.75c.38-.17.83 0 1 .38.18.38 0 .82-.37.99L12.6 7.75a1 1 0 0 0-.59.91v2.3a1 1 0 0 0 .07.37l1.87 4.64a.75.75 0 0 1-1.39.56L11 12.68c-.36-.9-1.64-.9-2 0l-1.56 3.85a.75.75 0 1 1-1.39-.56l1.88-4.65a1 1 0 0 0 .07-.37V8.66a1 1 0 0 0-.6-.91L4.45 6.43a.74.74 0 0 1-.37-.99Z"]));
-          export const Accessibility24Filled = ( /*#__PURE__*/createFluentIcon('Accessibility24Filled', "24", ["M12 6.5A2.25 2.25 0 1 0 12 2a2.25 2.25 0 0 0 0 4.5ZM6.15 4.18a2.27 2.27 0 0 0-2.96 1.18 2.24 2.24 0 0 0 1.18 2.96L7.39 9.6a1 1 0 0 1 .61.92v3.04l-1.88 5.46a2.25 2.25 0 1 0 4.26 1.46l1.38-4.02c.08-.23.4-.23.48 0l1.38 4.02a2.25 2.25 0 1 0 4.26-1.46L16 13.56v-3.04a1 1 0 0 1 .61-.92l3.02-1.28a2.24 2.24 0 0 0 1.18-2.96 2.27 2.27 0 0 0-2.96-1.18l-1.6.68c-.35.14-.58.42-.7.73a3.8 3.8 0 0 1-7.1 0c-.12-.3-.35-.59-.7-.73l-1.6-.68Z"]));
-          export const Accessibility24Regular = ( /*#__PURE__*/createFluentIcon('Accessibility24Regular', "24", ["M10.5 5c0 .64.4 1.19.97 1.4.35.09.71.09 1.06 0A1.5 1.5 0 1 0 10.5 5Zm-1.47.4a3 3 0 1 1 5.95 0l2.87-1.22a2.27 2.27 0 0 1 2.96 1.18 2.24 2.24 0 0 1-1.18 2.96L16 9.86v3.71l1.88 5.45a2.25 2.25 0 1 1-4.26 1.46L12 15.78l-1.62 4.7a2.25 2.25 0 1 1-4.26-1.46L8 13.56v-3.7L4.37 8.32a2.24 2.24 0 0 1-1.18-2.96 2.27 2.27 0 0 1 2.96-1.18L9.03 5.4Zm2 2.44c-.17-.05-.34-.1-.5-.17L5.56 5.56a.77.77 0 0 0-1 .4c-.16.38.02.81.4.98l3.78 1.6c.46.2.76.65.76 1.15v3.91c0 .14-.02.28-.07.4l-1.89 5.5a.75.75 0 1 0 1.42.5l2.1-6.13a.99.99 0 0 1 1.87 0l2.11 6.12a.75.75 0 1 0 1.42-.48l-1.89-5.49a1.25 1.25 0 0 1-.07-.4V9.69c0-.5.3-.95.76-1.15l3.78-1.6c.39-.17.56-.6.4-.98a.77.77 0 0 0-1-.4l-4.97 2.1c-.16.08-.33.13-.5.18a3 3 0 0 1-1.95 0Z"]));
-          export const Accessibility28Filled = ( /*#__PURE__*/createFluentIcon('Accessibility28Filled', "28", ["M14 7.5A2.75 2.75 0 1 0 14 2a2.75 2.75 0 0 0 0 5.5ZM6.24 5.12a2.48 2.48 0 1 0-1.53 4.71l4.6 1.5a1 1 0 0 1 .69.95v3.1a1 1 0 0 1-.07.37L7.18 22.6c-.51 1.27.1 2.7 1.36 3.22 1.26.51 2.7-.1 3.21-1.36l1.77-4.41a.5.5 0 0 1 .93 0l1.78 4.4a2.48 2.48 0 1 0 4.59-1.86l-2.75-6.8a1 1 0 0 1-.07-.37v-3.14a1 1 0 0 1 .7-.95l4.59-1.5a2.48 2.48 0 0 0-1.53-4.7l-3.11 1c-.46.15-.8.47-1.01.82a4.25 4.25 0 0 1-7.28 0 1.87 1.87 0 0 0-1-.82l-3.12-1Z"]));
-          export const Accessibility28Regular = ( /*#__PURE__*/createFluentIcon('Accessibility28Regular', "28", ["M12 5.5a2 2 0 0 0 1.5 1.93c.33.06.67.06 1 0A2 2 0 1 0 12 5.5Zm-1.34 1.06a3.5 3.5 0 1 1 6.68 0l4.42-1.44a2.48 2.48 0 1 1 1.53 4.71L18 11.55v3.82c0 .16.03.32.1.47l2.72 6.75a2.48 2.48 0 0 1-4.6 1.86l-2.24-5.55-2.23 5.56a2.46 2.46 0 0 1-3.2 1.36 2.48 2.48 0 0 1-1.37-3.22l2.73-6.8c.06-.16.09-.31.09-.47v-3.78L4.71 9.83a2.48 2.48 0 0 1 1.53-4.7l4.42 1.43Zm2.52 2.34c-.22-.03-.43-.09-.65-.16l-6.75-2.2a.98.98 0 0 0-.6 1.87l5.46 1.77c.51.17.86.65.86 1.19v3.96c0 .35-.07.7-.2 1.02l-2.73 6.81c-.2.5.04 1.07.54 1.27a.96.96 0 0 0 1.25-.53l2.46-6.14a1.25 1.25 0 0 1 2.32 0l2.48 6.13a.98.98 0 1 0 1.8-.73L16.7 16.4c-.13-.32-.2-.67-.2-1.03v-4c0-.54.35-1.02.86-1.19l5.46-1.77a.98.98 0 1 0-.6-1.86l-6.75 2.2c-.22.06-.43.12-.65.15a3.5 3.5 0 0 1-1.64 0Z"]));
-          export const Accessibility32Filled = ( /*#__PURE__*/createFluentIcon('Accessibility32Filled', "32", ["M16 9a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM7.07 6.17a3.07 3.07 0 1 0-2 5.8l5.6 1.93c.2.07.33.26.33.48v3.51a.5.5 0 0 1-.05.22L7.3 25.58a3.07 3.07 0 1 0 5.52 2.7l2.72-5.58a.5.5 0 0 1 .9 0l2.71 5.57a3.07 3.07 0 1 0 5.53-2.69l-3.64-7.46a.5.5 0 0 1-.05-.22v-3.52c0-.22.14-.4.34-.48l5.59-1.92a3.07 3.07 0 0 0-2-5.81l-2.98 1.02c-.52.18-.9.55-1.14.97a5.5 5.5 0 0 1-9.62 0 2.1 2.1 0 0 0-1.14-.97L7.07 6.17Z"]));
-          export const Accessibility32Regular = ( /*#__PURE__*/createFluentIcon('Accessibility32Regular', "32", ["M13.5 6.5a2.5 2.5 0 1 1 5 0 2.5 2.5 0 0 1-5 0ZM16 2a4.5 4.5 0 0 0-4.32 5.75l-4.6-1.58a3.07 3.07 0 0 0-2 5.8L11 14.03v3.76a1 1 0 0 1-.1.44l-3.6 7.36a3.07 3.07 0 0 0 5.53 2.7l3.17-6.5 3.16 6.5a3.07 3.07 0 1 0 5.53-2.7l-3.59-7.35a1 1 0 0 1-.1-.44v-3.77l5.93-2.04a3.07 3.07 0 0 0-2-5.81l-4.6 1.58A4.5 4.5 0 0 0 16 2ZM5.06 8.72c.2-.56.8-.85 1.36-.66l7.63 2.62a6 6 0 0 0 3.9 0l7.63-2.62a1.07 1.07 0 0 1 .7 2.03L20 12.24c-.6.21-1.01.78-1.01 1.42v4.13c0 .45.1.9.3 1.31l3.6 7.36a1.07 1.07 0 1 1-1.94.94l-3.16-6.5a2 2 0 0 0-3.6 0l-3.17 6.5a1.07 1.07 0 1 1-1.93-.94l3.6-7.37a3 3 0 0 0 .3-1.31v-4.12c0-.64-.4-1.2-1.01-1.42L5.72 10.1c-.56-.2-.85-.8-.66-1.37Z"]));
-          export const Accessibility48Filled = ( /*#__PURE__*/createFluentIcon('Accessibility48Filled', "48", ["M24 14.5A5.25 5.25 0 1 0 24 4a5.25 5.25 0 0 0 0 10.5Zm-12.3-4.24a4.25 4.25 0 0 0-2.9 7.98l7.87 2.87c.2.07.33.26.33.47v4.44c0 .35-.07.7-.2 1.03l-4.49 11.11a4.25 4.25 0 1 0 7.88 3.18l3.35-8.27a.5.5 0 0 1 .92 0l3.35 8.27a4.25 4.25 0 0 0 7.88-3.18l-4.49-11.1c-.13-.33-.2-.68-.2-1.03v-4.45c0-.21.14-.4.33-.47l7.87-2.87a4.25 4.25 0 1 0-2.9-7.98l-3.81 1.38c-.82.3-1.43.9-1.81 1.55a7.75 7.75 0 0 1-13.35 0 3.52 3.52 0 0 0-1.81-1.55l-3.81-1.38Z"]));
-          export const Accessibility48Regular = ( /*#__PURE__*/createFluentIcon('Accessibility48Regular', "48", ["M20 10.5a4 4 0 0 0 2.23 3.59l.49.17c.83.3 1.74.3 2.57 0l.49-.17A4 4 0 1 0 20 10.5Zm-2.2 1.98a6.5 6.5 0 1 1 12.4 0l6.1-2.22a4.25 4.25 0 0 1 2.9 7.99L31 21.23v4.8c0 .35.07.7.2 1.03l4.5 11.1a4.25 4.25 0 1 1-7.9 3.18L24 31.92l-3.8 9.42a4.25 4.25 0 0 1-7.89-3.18l4.5-11.11c.12-.33.2-.68.2-1.03v-4.79l-8.2-2.98a4.25 4.25 0 1 1 2.9-8l6.1 2.23Zm3.45 3.91-10.4-3.78a1.75 1.75 0 0 0-1.2 3.29l8.37 3.04a2.25 2.25 0 0 1 1.48 2.11v4.97c0 .67-.13 1.34-.38 1.96L14.63 39.1a1.75 1.75 0 1 0 3.25 1.3l4.03-9.99a2.25 2.25 0 0 1 4.18 0l4.04 10a1.75 1.75 0 0 0 3.24-1.31L28.9 28a5.25 5.25 0 0 1-.39-1.97v-4.98c0-.94.6-1.79 1.48-2.11l8.37-3.04a1.75 1.75 0 1 0-1.2-3.3l-10.4 3.8a6.48 6.48 0 0 1-5.5 0Z"]));
-          export const AccessibilityCheckmark20Filled = ( /*#__PURE__*/createFluentIcon('AccessibilityCheckmark20Filled', "20", ["M10 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM5.47 4.15c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L6.7 8.53c.18.08.3.26.3.46v1.86a.5.5 0 0 1-.04.19l-1.84 4.55a1.75 1.75 0 0 0 3.25 1.32l.08-.22A5.48 5.48 0 0 1 13 9.02V9c0-.2.12-.38.3-.46l2.67-1.19c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-1.28.57c-.24.1-.42.3-.52.52a3 3 0 0 1-5.46 0c-.1-.21-.28-.41-.52-.52l-1.28-.57ZM18 14.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-2.15-1.85a.5.5 0 0 0-.7 0l-2.65 2.64-.65-.64a.5.5 0 0 0-.7.7l1 1c.2.2.5.2.7 0l3-3a.5.5 0 0 0 0-.7Z"]));
-          export const AccessibilityCheckmark20Regular = ( /*#__PURE__*/createFluentIcon('AccessibilityCheckmark20Regular', "20", ["M8.5 4.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM10 2a2.5 2.5 0 0 0-2.43 3.08l-2.1-.93c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L7 8.66v2.29l-1.88 4.64a1.75 1.75 0 0 0 3.25 1.32l.08-.22a5.46 5.46 0 0 1-.42-1.62l-.59 1.46a.75.75 0 1 1-1.39-.56l1.88-4.65a1 1 0 0 0 .07-.37V8.66a1 1 0 0 0-.6-.91L4.45 6.43a.74.74 0 0 1-.37-.99.76.76 0 0 1 1-.38l3.91 1.75a2.5 2.5 0 0 0 2.04 0l3.91-1.75c.38-.17.83 0 1 .38.18.38 0 .82-.37.99L12.6 7.75a1 1 0 0 0-.59.91v.55c.32-.1.66-.16 1-.19v-.36l2.97-1.32c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-2.1.93A2.51 2.51 0 0 0 10 2Zm8 12.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-2.15-1.85a.5.5 0 0 0-.7 0l-2.65 2.64-.65-.64a.5.5 0 0 0-.7.7l1 1c.2.2.5.2.7 0l3-3a.5.5 0 0 0 0-.7Z"]));
-          export const AccessibilityCheckmark24Filled = ( /*#__PURE__*/createFluentIcon('AccessibilityCheckmark24Filled', "24", ["M12 6.5A2.25 2.25 0 1 0 12 2a2.25 2.25 0 0 0 0 4.5ZM6.15 4.18a2.27 2.27 0 0 0-2.96 1.18 2.24 2.24 0 0 0 1.18 2.96L7.39 9.6a1 1 0 0 1 .61.92v3.04l-1.88 5.46a2.25 2.25 0 1 0 4.26 1.46l.14-.42A6.5 6.5 0 0 1 16 11.02v-.5a1 1 0 0 1 .61-.92l3.02-1.28a2.24 2.24 0 0 0 1.18-2.96 2.27 2.27 0 0 0-2.96-1.18l-1.6.68c-.35.14-.58.42-.7.73a3.8 3.8 0 0 1-7.1 0c-.12-.3-.35-.59-.7-.73l-1.6-.68ZM22 17.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0Zm-2.15-2.35a.5.5 0 0 0-.7 0l-3.65 3.64-1.65-1.64a.5.5 0 0 0-.7.7l2 2c.2.2.5.2.7 0l4-4a.5.5 0 0 0 0-.7Z"]));
-          export const AccessibilityCheckmark24Regular = ( /*#__PURE__*/createFluentIcon('AccessibilityCheckmark24Regular', "24", ["M11.47 6.4a1.5 1.5 0 1 1 1.06 0c-.35.09-.71.09-1.06 0ZM9 5c0 .14 0 .27.03.4L6.15 4.18a2.27 2.27 0 0 0-2.96 1.18 2.24 2.24 0 0 0 1.18 2.96L8 9.86v3.7l-1.88 5.46a2.25 2.25 0 1 0 4.26 1.46l.14-.42a6.48 6.48 0 0 1-.5-3.17L8.97 20a.75.75 0 0 1-1.42-.49l1.9-5.5c.04-.12.06-.26.06-.4V9.7c0-.5-.3-.96-.76-1.16l-3.78-1.6a.74.74 0 0 1-.4-.98.77.77 0 0 1 1-.4l4.98 2.1c.15.08.32.13.48.18a3 3 0 0 0 1.96 0c.16-.05.33-.1.49-.17l4.97-2.11a.77.77 0 0 1 1 .4.74.74 0 0 1-.4.98l-3.78 1.6c-.46.2-.76.65-.76 1.15v1.62c.48-.15.98-.25 1.5-.3V9.87l3.63-1.54a2.24 2.24 0 0 0 1.18-2.96 2.27 2.27 0 0 0-2.96-1.18L14.97 5.4A3.02 3.02 0 0 0 12 2a3 3 0 0 0-3 3Zm13 12.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0Zm-2.15-2.35a.5.5 0 0 0-.7 0l-3.65 3.64-1.65-1.64a.5.5 0 0 0-.7.7l2 2c.2.2.5.2.7 0l4-4a.5.5 0 0 0 0-.7Z"]));
-          export const AccessibilityCheckmark28Filled = ( /*#__PURE__*/createFluentIcon('AccessibilityCheckmark28Filled', "28", ["M14 7.5A2.75 2.75 0 1 0 14 2a2.75 2.75 0 0 0 0 5.5ZM6.24 5.12a2.48 2.48 0 1 0-1.53 4.71l4.6 1.5a1 1 0 0 1 .69.95v3.1a1 1 0 0 1-.07.37L7.18 22.6c-.51 1.27.1 2.7 1.36 3.22 1.26.51 2.7-.1 3.21-1.36l.63-1.58A7.5 7.5 0 0 1 18 13.15v-.87a1 1 0 0 1 .7-.95l4.59-1.5a2.48 2.48 0 0 0-1.53-4.7l-3.11 1c-.46.15-.8.47-1.01.82a4.25 4.25 0 0 1-7.28 0 1.87 1.87 0 0 0-1-.82l-3.12-1ZM26 20.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Zm-2.65-2.85a.5.5 0 0 0-.7 0L18 22.29l-1.65-1.64a.5.5 0 0 0-.7.7l2 2c.2.2.5.2.7 0l5-5a.5.5 0 0 0 0-.7Z"]));
-          export const AccessibilityCheckmark28Regular = ( /*#__PURE__*/createFluentIcon('AccessibilityCheckmark28Regular', "28", ["M12 5.5a2 2 0 0 0 1.5 1.93c.33.06.67.06 1 0A2 2 0 1 0 12 5.5Zm-1.34 1.06a3.5 3.5 0 1 1 6.68 0l4.42-1.44a2.48 2.48 0 1 1 1.53 4.71L18 11.55v1.6c-.52.1-1.02.27-1.5.47v-2.25c0-.54.35-1.02.86-1.19l5.46-1.77a.98.98 0 0 0-.6-1.86l-6.75 2.2c-.22.06-.43.12-.65.15a3.5 3.5 0 0 1-1.64 0c-.22-.03-.43-.09-.65-.16l-6.75-2.2a.98.98 0 0 0-.6 1.87l5.46 1.77c.51.17.86.65.86 1.19v3.96c0 .35-.07.7-.2 1.02l-2.73 6.81c-.2.5.04 1.07.54 1.27a.96.96 0 0 0 1.25-.53l1.68-4.2a7.59 7.59 0 0 0 .34 3.18l-.63 1.58a2.46 2.46 0 0 1-3.2 1.36 2.48 2.48 0 0 1-1.37-3.22l2.73-6.8c.06-.16.09-.31.09-.47v-3.78L4.71 9.83a2.48 2.48 0 0 1 1.53-4.7l4.42 1.43ZM26 20.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Zm-2.65-2.85a.5.5 0 0 0-.7 0L18 22.29l-1.65-1.64a.5.5 0 0 0-.7.7l2 2c.2.2.5.2.7 0l5-5a.5.5 0 0 0 0-.7Z"]));
-          export const AccessibilityCheckmark32Filled = ( /*#__PURE__*/createFluentIcon('AccessibilityCheckmark32Filled', "32", ["M16 9a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM7.07 6.17a3.07 3.07 0 1 0-2 5.8l5.6 1.93c.2.07.33.26.33.48v3.51a.5.5 0 0 1-.05.22L7.3 25.58a3.07 3.07 0 1 0 5.52 2.7l1.46-3a9.02 9.02 0 0 1 6.74-11.06.5.5 0 0 1 .3-.32l5.6-1.92a3.07 3.07 0 0 0-2-5.81l-2.98 1.02c-.52.18-.9.55-1.14.97a5.5 5.5 0 0 1-9.62 0 2.1 2.1 0 0 0-1.14-.97L7.07 6.17ZM23 15.5a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15Zm4.53 4.72a.75.75 0 0 0-1.06 0l-4.72 4.72-1.97-1.97a.75.75 0 1 0-1.06 1.06l2.5 2.5c.3.3.77.3 1.06 0l5.25-5.25c.3-.3.3-.77 0-1.06Z"]));
-          export const AccessibilityCheckmark32Light = ( /*#__PURE__*/createFluentIcon('AccessibilityCheckmark32Light', "32", ["m6.53 7.09 6.56 1.66A3.99 3.99 0 0 1 16 2a4 4 0 0 1 2.9 6.75l6.57-1.66a2.83 2.83 0 1 1 1.32 5.51L21 13.9v.32c-.34.08-.67.18-1 .3V13.5a.5.5 0 0 1 .4-.49l6.17-1.38a1.83 1.83 0 1 0-.85-3.57l-7.87 1.99c-1.21.3-2.49.3-3.7 0l-7.87-2a1.83 1.83 0 1 0-.85 3.57l6.18 1.4a.5.5 0 0 1 .4.48V18a.5.5 0 0 1-.06.22l-3.9 7.8a2.07 2.07 0 1 0 3.7 1.85l2.26-4.5c.02.6.1 1.18.24 1.75l-1.6 3.2a3.07 3.07 0 1 1-5.5-2.75L11 17.88V13.9l-5.79-1.3a2.83 2.83 0 1 1 1.32-5.51ZM16 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm7 6.5a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15Zm4.53 4.72a.75.75 0 0 0-1.06 0l-4.72 4.72-1.97-1.97a.75.75 0 1 0-1.06 1.06l2.5 2.5c.3.3.77.3 1.06 0l5.25-5.25c.3-.3.3-.77 0-1.06Z"]));
-          export const AccessibilityCheckmark32Regular = ( /*#__PURE__*/createFluentIcon('AccessibilityCheckmark32Regular', "32", ["M13.5 6.5a2.5 2.5 0 1 1 5 0 2.5 2.5 0 0 1-5 0ZM16 2a4.5 4.5 0 0 0-4.32 5.75l-4.6-1.58a3.07 3.07 0 0 0-2 5.8L11 14.03v3.76a1 1 0 0 1-.1.44l-3.6 7.36a3.07 3.07 0 0 0 5.53 2.7l1.46-3a9.02 9.02 0 0 1 0-4.53l-.09.15-3.17 6.5a1.07 1.07 0 1 1-1.92-.94l3.59-7.37a3 3 0 0 0 .3-1.31v-4.12c0-.64-.4-1.2-1.01-1.42L5.72 10.1a1.07 1.07 0 1 1 .7-2.03l7.63 2.62a6 6 0 0 0 3.9 0l7.63-2.62a1.07 1.07 0 1 1 .7 2.03L20 12.24c-.6.21-1.01.78-1.01 1.42v1.28c.63-.32 1.3-.56 2-.72v-.2l5.93-2.04a3.07 3.07 0 0 0-2-5.81l-4.6 1.58A4.5 4.5 0 0 0 16 2Zm7 13.5a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15Zm4.53 4.72a.75.75 0 0 0-1.06 0l-4.72 4.72-1.97-1.97a.75.75 0 1 0-1.06 1.06l2.5 2.5c.3.3.77.3 1.06 0l5.25-5.25c.3-.3.3-.77 0-1.06Z"]));
-          export const AccessibilityCheckmark48Filled = ( /*#__PURE__*/createFluentIcon('AccessibilityCheckmark48Filled', "48", ["M24 14.5A5.25 5.25 0 1 0 24 4a5.25 5.25 0 0 0 0 10.5Zm-12.29-4.24a4.25 4.25 0 0 0-2.9 7.98l7.86 2.87c.2.07.33.26.33.47v4.44c0 .35-.06.7-.2 1.03l-4.49 11.11a4.25 4.25 0 1 0 7.88 3.18l1.23-3.04A13.02 13.02 0 0 1 31 22.35v-.77c0-.21.14-.4.33-.47l7.88-2.87a4.25 4.25 0 1 0-2.91-7.98l-3.81 1.38c-.82.3-1.43.9-1.8 1.55a7.75 7.75 0 0 1-13.36 0 3.52 3.52 0 0 0-1.8-1.55l-3.82-1.38ZM45 35a11 11 0 1 1-22 0 11 11 0 0 1 22 0Zm-4.3-4.7a1 1 0 0 0-1.4 0L32 37.58l-3.3-3.3a1 1 0 0 0-1.4 1.42l4 4a1 1 0 0 0 1.4 0l8-8a1 1 0 0 0 0-1.42Z"]));
-          export const AccessibilityCheckmark48Regular = ( /*#__PURE__*/createFluentIcon('AccessibilityCheckmark48Regular', "48", ["M20 10.5a4 4 0 0 0 2.23 3.59l.5.17c.82.3 1.73.3 2.56 0l.49-.17A4 4 0 1 0 20 10.5Zm-2.2 1.98a6.5 6.5 0 1 1 12.4 0l6.1-2.22a4.25 4.25 0 0 1 2.9 7.99L31 21.23v1.12c-.87.2-1.7.5-2.5.87v-2.17c0-.94.6-1.79 1.49-2.11l8.36-3.04a1.75 1.75 0 1 0-1.2-3.3l-10.4 3.8a6.48 6.48 0 0 1-5.5 0l-10.4-3.8a1.75 1.75 0 0 0-1.2 3.3l8.37 3.04a2.25 2.25 0 0 1 1.48 2.11v4.97c0 .67-.13 1.34-.38 1.96L14.63 39.1a1.75 1.75 0 1 0 3.25 1.3l3.6-8.9a13.01 13.01 0 0 0-.06 6.8l-1.23 3.04a4.25 4.25 0 0 1-7.88-3.18l4.5-11.11c.13-.33.2-.68.2-1.03v-4.79l-8.2-2.98a4.25 4.25 0 1 1 2.9-8l6.1 2.23ZM45 35a11 11 0 1 1-22 0 11 11 0 0 1 22 0Zm-4.3-4.7a1 1 0 0 0-1.4 0L32 37.58l-3.3-3.3a1 1 0 0 0-1.4 1.42l4 4a1 1 0 0 0 1.4 0l8-8a1 1 0 0 0 0-1.42Z"]));
-          export const AccessibilityError20Filled = ( /*#__PURE__*/createFluentIcon('AccessibilityError20Filled', "20", ["M10 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM5.47 4.15c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L6.7 8.53c.18.08.3.26.3.46v1.86a.5.5 0 0 1-.04.19l-1.84 4.55a1.75 1.75 0 0 0 3.25 1.32l.08-.22A5.48 5.48 0 0 1 13 9.02V9c0-.2.12-.38.3-.46l2.67-1.19c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-1.28.57c-.24.1-.42.3-.52.52a3 3 0 0 1-5.46 0c-.1-.21-.28-.41-.52-.52l-1.28-.57ZM18 14.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM13.5 12a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 1 0v-2a.5.5 0 0 0-.5-.5Zm0 5.13a.62.62 0 1 0 0-1.25.62.62 0 0 0 0 1.24Z"]));
+          import { createFluentIcon } from '../utils/createFluentIcon';
+          export const Backpack12Filled = ( /*#__PURE__*/createFluentIcon('Backpack12Filled', "12", ["M4.06 3.5H4v-1C4 1.67 4.67 1 5.5 1h1C7.33 1 8 1.67 8 2.5v1h-.06A4 4 0 0 1 10 7v2.5c0 .83-.67 1.5-1.5 1.5h-5A1.5 1.5 0 0 1 2 9.5V7a4 4 0 0 1 2.06-3.5Zm.94-1v.63a4 4 0 0 1 2 0V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5Zm0 3c0 .28.22.5.5.5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0-.5.5ZM4.5 8a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3Z"]));
+          export const Backpack12Regular = ( /*#__PURE__*/createFluentIcon('Backpack12Regular', "12", ["M5 5.5c0-.28.22-.5.5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5ZM4.5 8a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3Zm-.44-4.5H4v-1C4 1.67 4.67 1 5.5 1h1C7.33 1 8 1.67 8 2.5v1h-.06A4 4 0 0 1 10 7v2.5c0 .83-.67 1.5-1.5 1.5h-5A1.5 1.5 0 0 1 2 9.5V7a4 4 0 0 1 2.06-3.5Zm.94-1v.63a4 4 0 0 1 2 0V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5ZM3 7v2.5c0 .28.22.5.5.5h5a.5.5 0 0 0 .5-.5V7a3 3 0 0 0-6 0Z"]));
+          export const Backpack16Filled = ( /*#__PURE__*/createFluentIcon('Backpack16Filled', "16", ["M6 8a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1H6Zm2-7a2 2 0 0 0-2 2v.42A5 5 0 0 0 3 8v2h10V8a5 5 0 0 0-3-4.58V3a2 2 0 0 0-2-2Zm0 2c-.34 0-.68.03-1 .1V3a1 1 0 0 1 2 0v.1c-.32-.07-.66-.1-1-.1ZM7 6h2a2 2 0 0 1 2 2 1 1 0 0 1-1 1H6a1 1 0 0 1-1-1c0-1.1.9-2 2-2Zm-1 6.5V11H3v1.5A2.5 2.5 0 0 0 5.5 15h5a2.5 2.5 0 0 0 2.5-2.5V11H7v1.5a.5.5 0 0 1-1 0Z"]));
+          export const Backpack16Regular = ( /*#__PURE__*/createFluentIcon('Backpack16Regular', "16", ["M7 6a2 2 0 0 0-2 2 1 1 0 0 0 1 1h4a1 1 0 0 0 1-1 2 2 0 0 0-2-2H7ZM6 8a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1H6Zm2-7a2 2 0 0 0-2 2v.42A5 5 0 0 0 3 8v4.5A2.5 2.5 0 0 0 5.5 15h5a2.5 2.5 0 0 0 2.5-2.5V8a5 5 0 0 0-3-4.58V3a2 2 0 0 0-2-2Zm4 9H4V8a4 4 0 1 1 8 0v2Zm-6 2.5a.5.5 0 0 0 1 0V11h5v1.5c0 .83-.67 1.5-1.5 1.5h-5A1.5 1.5 0 0 1 4 12.5V11h2v1.5ZM8 3c-.34 0-.68.03-1 .1V3a1 1 0 0 1 2 0v.1c-.32-.07-.66-.1-1-.1Z"]));
+          export const Backpack20Filled = ( /*#__PURE__*/createFluentIcon('Backpack20Filled', "20", ["M8 8.7c0-.39.31-.7.7-.7h2.6c.39 0 .7.31.7.7a.3.3 0 0 1-.3.3H8.3a.3.3 0 0 1-.3-.3ZM10 2a2.5 2.5 0 0 0-2.5 2.5v.04A6 6 0 0 0 4 10v2h12v-2a6 6 0 0 0-3.5-5.46V4.5A2.5 2.5 0 0 0 10 2Zm0 2c.5 0 1 .06 1.47.18a1.5 1.5 0 0 0-2.94 0C9 4.06 9.5 4 10 4ZM8.7 7h2.6c.94 0 1.7.76 1.7 1.7 0 .72-.58 1.3-1.3 1.3H8.3A1.3 1.3 0 0 1 7 8.7C7 7.76 7.76 7 8.7 7ZM7 14.5V13H4v2a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-2H8v1.5a.5.5 0 0 1-1 0Z"]));
+          export const Backpack20Regular = ( /*#__PURE__*/createFluentIcon('Backpack20Regular', "20", ["M8.7 7C7.76 7 7 7.76 7 8.7c0 .72.58 1.3 1.3 1.3h3.4c.72 0 1.3-.58 1.3-1.3 0-.94-.76-1.7-1.7-1.7H8.7ZM8 8.7c0-.39.31-.7.7-.7h2.6c.39 0 .7.31.7.7a.3.3 0 0 1-.3.3H8.3a.3.3 0 0 1-.3-.3ZM10 2a2.5 2.5 0 0 0-2.5 2.5v.04A6 6 0 0 0 4 10v5a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-5a6 6 0 0 0-3.5-5.46V4.5A2.5 2.5 0 0 0 10 2Zm5 10H5v-2a5 5 0 0 1 10 0v2Zm-8 2.5a.5.5 0 0 0 1 0V13h7v2a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-2h2v1.5ZM10 4c-.5 0-1 .06-1.47.18a1.5 1.5 0 0 1 2.94 0A6.01 6.01 0 0 0 10 4Z"]));
+          export const Backpack24Filled = ( /*#__PURE__*/createFluentIcon('Backpack24Filled', "24", ["M12 2a3.75 3.75 0 0 0-3.74 3.42A8 8 0 0 0 4 12.5V14h16v-1.5a8 8 0 0 0-4.26-7.08A3.75 3.75 0 0 0 12 2Zm8 13.71H9.5v1.54a.75.75 0 0 1-1.5 0v-1.54H4v3.04C4 20.55 5.46 22 7.25 22h9.5c1.8 0 3.25-1.46 3.25-3.25v-3.04ZM12 4.5c-.7 0-1.37.09-2.02.26a2.25 2.25 0 0 1 4.04 0A8.01 8.01 0 0 0 12 4.5Zm-4 5.92A2.42 2.42 0 0 1 10.42 8h3.16A2.42 2.42 0 0 1 16 10.42c0 .87-.7 1.58-1.58 1.58H9.58C8.71 12 8 11.3 8 10.42Zm2.42-.92c-.51 0-.92.41-.92.92 0 .04.04.08.08.08h4.84c.04 0 .08-.04.08-.08 0-.51-.41-.92-.92-.92h-3.16Z"]));
+          export const Backpack24Regular = ( /*#__PURE__*/createFluentIcon('Backpack24Regular', "24", ["M10.42 8A2.42 2.42 0 0 0 8 10.42c0 .87.7 1.58 1.58 1.58h4.84c.87 0 1.58-.7 1.58-1.58A2.42 2.42 0 0 0 13.58 8h-3.16Zm-.92 2.42c0-.51.41-.92.92-.92h3.16c.51 0 .92.41.92.92 0 .04-.04.08-.08.08H9.58a.08.08 0 0 1-.08-.08ZM12 2a3.75 3.75 0 0 0-3.74 3.42A8 8 0 0 0 4 12.5v6.25C4 20.55 5.46 22 7.25 22h9.5c1.8 0 3.25-1.46 3.25-3.25V12.5a8 8 0 0 0-4.26-7.08A3.75 3.75 0 0 0 12 2Zm6.5 12h-13v-1.5a6.5 6.5 0 0 1 13 0V14ZM8 17.25a.75.75 0 0 0 1.5 0v-1.54h9v3.04c0 .97-.78 1.75-1.75 1.75h-9.5c-.97 0-1.75-.78-1.75-1.75v-3.04H8v1.54ZM12 4.5c-.7 0-1.37.09-2.02.26a2.25 2.25 0 0 1 4.04 0A8.01 8.01 0 0 0 12 4.5Z"]));
+          export const Backpack28Filled = ( /*#__PURE__*/createFluentIcon('Backpack28Filled', "28", ["M10.5 12.25c0-.97.78-1.75 1.75-1.75h3.5c.97 0 1.75.78 1.75 1.75 0 .14-.11.25-.25.25h-6.5a.25.25 0 0 1-.25-.25ZM14 2a5.25 5.25 0 0 0-5.19 4.45A10 10 0 0 0 4 15v1h20v-1a10 10 0 0 0-4.81-8.55A5.25 5.25 0 0 0 14 2Zm0 3c-.91 0-1.8.12-2.64.35a3.25 3.25 0 0 1 5.28 0C15.8 5.12 14.9 5 14 5Zm-1.75 4h3.5c1.8 0 3.25 1.46 3.25 3.25 0 .97-.78 1.75-1.75 1.75h-6.5C9.78 14 9 13.22 9 12.25 9 10.45 10.46 9 12.25 9ZM9 19.25V17.5H4V22a4 4 0 0 0 4 4h12a4 4 0 0 0 4-4v-4.5H10.5v1.75a.75.75 0 0 1-1.5 0Z"]));
+          export const Backpack28Regular = ( /*#__PURE__*/createFluentIcon('Backpack28Regular', "28", ["M9 12.25C9 10.45 10.46 9 12.25 9h3.5c1.8 0 3.25 1.46 3.25 3.25 0 .97-.78 1.75-1.75 1.75h-6.5C9.78 14 9 13.22 9 12.25Zm3.25-1.75c-.97 0-1.75.78-1.75 1.75 0 .14.11.25.25.25h6.5c.14 0 .25-.11.25-.25 0-.97-.78-1.75-1.75-1.75h-3.5ZM14 2a5 5 0 0 0-4.94 4.2A9.75 9.75 0 0 0 4 14.75v7.5A3.75 3.75 0 0 0 7.75 26h12.5A3.75 3.75 0 0 0 24 22.25v-7.5c0-3.69-2.05-6.9-5.06-8.55A5 5 0 0 0 14 2Zm-.25 3c-1 0-1.97.15-2.88.43a3.5 3.5 0 0 1 6.26 0A9.75 9.75 0 0 0 14.25 5h-.5Zm0 1.5h.5c4.56 0 8.25 3.7 8.25 8.25V16h-17v-1.25c0-4.56 3.7-8.25 8.25-8.25ZM9 17.5v1.75a.75.75 0 0 0 1.5 0V17.5h12v4.75c0 1.24-1 2.25-2.25 2.25H7.75c-1.24 0-2.25-1-2.25-2.25V17.5H9Z"]));
+          export const Backpack32Filled = ( /*#__PURE__*/createFluentIcon('Backpack32Filled', "32", ["M12 16c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2h-8Zm4-14a4 4 0 0 0-4 4v.83A10 10 0 0 0 6 16v4h20v-4a10 10 0 0 0-6-9.17V6a4 4 0 0 0-4-4Zm0 4c-.68 0-1.35.07-2 .2V6a2 2 0 1 1 4 0v.2c-.65-.13-1.32-.2-2-.2Zm-2 6h4a4 4 0 0 1 4 4 2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2 4 4 0 0 1 4-4Zm-2 13v-3H6v3a5 5 0 0 0 5 5h10a5 5 0 0 0 5-5v-3H14v3a1 1 0 1 1-2 0Z"]));
+          export const Backpack32Regular = ( /*#__PURE__*/createFluentIcon('Backpack32Regular', "32", ["M14 12a4 4 0 0 0-4 4c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-4Zm-2 4c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2h-8Zm4-14a4 4 0 0 0-4 4v.83A10 10 0 0 0 6 16v9a5 5 0 0 0 5 5h10a5 5 0 0 0 5-5v-9a10 10 0 0 0-6-9.17V6a4 4 0 0 0-4-4Zm8 18H8v-4a8 8 0 1 1 16 0v4Zm-12 5a1 1 0 1 0 2 0v-3h10v3a3 3 0 0 1-3 3H11a3 3 0 0 1-3-3v-3h4v3Zm4-19c-.68 0-1.35.07-2 .2V6a2 2 0 1 1 4 0v.2c-.65-.13-1.32-.2-2-.2Z"]));
+          export const Backpack48Filled = ( /*#__PURE__*/createFluentIcon('Backpack48Filled', "48", ["M21.18 18.5a2.68 2.68 0 0 0-2.68 2.68c0 .18.14.32.32.32h10.36c.18 0 .32-.14.32-.32 0-1.48-1.2-2.68-2.68-2.68h-5.64ZM24 4a8 8 0 0 0-7.95 7.11A16 16 0 0 0 8 25v3h32v-3a16 16 0 0 0-8.05-13.89A8 8 0 0 0 24 4Zm0 5c-1.76 0-3.46.29-5.05.81a5.5 5.5 0 0 1 10.1 0A15.98 15.98 0 0 0 24 9Zm-8 12.18A5.18 5.18 0 0 1 21.18 16h5.64A5.18 5.18 0 0 1 32 21.18 2.82 2.82 0 0 1 29.18 24H18.82A2.82 2.82 0 0 1 16 21.18Zm0 9.32v3.25a1.25 1.25 0 1 0 2.5 0V30.5H40v8.25c0 2.9-2.35 5.25-5.25 5.25h-21.5A5.25 5.25 0 0 1 8 38.75V30.5h8Z"]));
+          export const Backpack48Regular = ( /*#__PURE__*/createFluentIcon('Backpack48Regular', "48", ["M16 21.18A2.82 2.82 0 0 0 18.82 24h10.36A2.82 2.82 0 0 0 32 21.18 5.18 5.18 0 0 0 26.82 16h-5.64A5.18 5.18 0 0 0 16 21.18Zm5.18-2.68h5.64c1.48 0 2.68 1.2 2.68 2.68 0 .18-.14.32-.32.32H18.82a.32.32 0 0 1-.32-.32c0-1.48 1.2-2.68 2.68-2.68ZM24 4a8 8 0 0 0-7.95 7.11A16 16 0 0 0 8 25v13.75c0 2.9 2.35 5.25 5.25 5.25h21.5c2.9 0 5.25-2.35 5.25-5.25V25a16 16 0 0 0-8.05-13.89A8 8 0 0 0 24 4Zm13.5 24h-27v-3a13.5 13.5 0 0 1 27 0v3ZM16 30.5v3.25a1.25 1.25 0 1 0 2.5 0V30.5h19v8.25a2.75 2.75 0 0 1-2.75 2.75h-21.5a2.75 2.75 0 0 1-2.75-2.75V30.5H16ZM24 9c-1.76 0-3.46.29-5.05.81a5.5 5.5 0 0 1 10.1 0A15.98 15.98 0 0 0 24 9Z"]));
+          export const BackpackAdd20Filled = ( /*#__PURE__*/createFluentIcon('BackpackAdd20Filled', "20", ["M7.5 4.5a2.5 2.5 0 0 1 5 0v.04a6 6 0 0 1 3.45 4.65 5.5 5.5 0 0 0-3.07.05c.08-.16.12-.35.12-.54 0-.94-.76-1.7-1.7-1.7H8.7C7.76 7 7 7.76 7 8.7c0 .72.58 1.3 1.3 1.3h3.04a5.53 5.53 0 0 0-1.74 2H4v-2a6 6 0 0 1 3.5-5.46V4.5Zm3.97-.32a1.5 1.5 0 0 0-2.94 0 6.01 6.01 0 0 1 2.94 0ZM9 14.5c0-.52.07-1.02.2-1.5H8v1.5a.5.5 0 0 1-1 0V13H4v2a3 3 0 0 0 3 3h3.26A5.48 5.48 0 0 1 9 14.5ZM8.7 8a.7.7 0 0 0-.7.7c0 .17.13.3.3.3h3.4a.3.3 0 0 0 .3-.3.7.7 0 0 0-.7-.7H8.7ZM19 14.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-4-2a.5.5 0 0 0-1 0V14h-1.5a.5.5 0 0 0 0 1H14v1.5a.5.5 0 0 0 1 0V15h1.5a.5.5 0 0 0 0-1H15v-1.5Z"]));
+          export const BackpackAdd20Regular = ( /*#__PURE__*/createFluentIcon('BackpackAdd20Regular', "20", ["M10 2a2.5 2.5 0 0 0-2.5 2.5v.04A6 6 0 0 0 4 10v5a3 3 0 0 0 3 3h3.26a5.5 5.5 0 0 1-.66-1H7a2 2 0 0 1-2-2v-2h2v1.5a.5.5 0 0 0 1 0V13h1.2c.1-.35.24-.68.4-1H5v-2a5 5 0 0 1 9.9-.99c.36.03.71.1 1.05.18a6 6 0 0 0-3.45-4.65V4.5A2.5 2.5 0 0 0 10 2Zm0 2c-.5 0-1 .06-1.47.18a1.5 1.5 0 0 1 2.94 0A6.01 6.01 0 0 0 10 4Zm1.34 6c.46-.33.98-.59 1.54-.76.08-.16.12-.35.12-.54 0-.94-.76-1.7-1.7-1.7H8.7C7.76 7 7 7.76 7 8.7c0 .72.58 1.3 1.3 1.3h3.04ZM8 8.7c0-.39.31-.7.7-.7h2.6c.39 0 .7.31.7.7a.3.3 0 0 1-.3.3H8.3a.3.3 0 0 1-.3-.3Zm11 5.8a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-4-2a.5.5 0 0 0-1 0V14h-1.5a.5.5 0 0 0 0 1H14v1.5a.5.5 0 0 0 1 0V15h1.5a.5.5 0 0 0 0-1H15v-1.5Z"]));
+          export const BackpackAdd24Filled = ( /*#__PURE__*/createFluentIcon('BackpackAdd24Filled', "24", ["M8.26 5.42a3.75 3.75 0 0 1 7.48 0 8 8 0 0 1 4.2 6.05 6.48 6.48 0 0 0-4.17-.24c.15-.24.23-.52.23-.81A2.42 2.42 0 0 0 13.58 8h-3.16A2.42 2.42 0 0 0 8 10.42c0 .87.7 1.58 1.58 1.58h4.45c-.8.51-1.5 1.2-2 2H4v-1.5a8 8 0 0 1 4.26-7.08Zm1.72-.66a8.01 8.01 0 0 1 4.04 0 2.25 2.25 0 0 0-4.04 0Zm1.27 10.95H9.5v1.54a.75.75 0 0 1-1.5 0v-1.54H4v3.04C4 20.55 5.46 22 7.25 22h5.56a6.48 6.48 0 0 1-1.56-6.29Zm-1.75-5.3c0-.5.41-.91.92-.91h3.16c.51 0 .92.41.92.92 0 .04-.04.08-.08.08H9.58a.08.08 0 0 1-.08-.08Zm8 1.59a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Zm.5 8.5V18h2.5a.5.5 0 0 0 0-1H18v-2.5a.5.5 0 1 0-1 0V17h-2.5a.5.5 0 0 0 0 1H17v2.5a.5.5 0 1 0 1 0Z"]));
+          export const BackpackAdd24Regular = ( /*#__PURE__*/createFluentIcon('BackpackAdd24Regular', "24", ["M12 2a3.75 3.75 0 0 0-3.74 3.42A8 8 0 0 0 4 12.5v6.25C4 20.55 5.46 22 7.25 22h5.56a6.52 6.52 0 0 1-1.08-1.5H7.25c-.97 0-1.75-.78-1.75-1.75v-3.04H8v1.54a.75.75 0 0 0 1.5 0v-1.54h1.75c.17-.6.44-1.19.77-1.71H5.5v-1.5a6.5 6.5 0 0 1 12.84-1.45c.56.08 1.1.22 1.6.42a8 8 0 0 0-4.2-6.05A3.75 3.75 0 0 0 12 2Zm0 2.5c-.7 0-1.37.09-2.02.26a2.25 2.25 0 0 1 4.04 0A8.01 8.01 0 0 0 12 4.5Zm2.03 7.5c.54-.34 1.12-.6 1.74-.77.15-.24.23-.52.23-.81A2.42 2.42 0 0 0 13.58 8h-3.16A2.42 2.42 0 0 0 8 10.42c0 .87.7 1.58 1.58 1.58h4.45ZM9.5 10.42c0-.51.41-.92.92-.92h3.16c.51 0 .92.41.92.92 0 .04-.04.08-.08.08H9.58a.08.08 0 0 1-.08-.08ZM23 17.5a5.5 5.5 0 1 0-11 0 5.5 5.5 0 0 0 11 0Zm-5 .5v2.5a.5.5 0 1 1-1 0V18h-2.5a.5.5 0 0 1 0-1H17v-2.5a.5.5 0 1 1 1 0V17h2.5a.5.5 0 0 1 0 1H18Z"]));
+          export const BackpackAdd28Filled = ( /*#__PURE__*/createFluentIcon('BackpackAdd28Filled', "28", ["M8.81 6.45a5.25 5.25 0 0 1 10.38 0 10 10 0 0 1 4.74 7.38 7.47 7.47 0 0 0-5.22-.62c.18-.27.29-.6.29-.96C19 10.45 17.54 9 15.75 9h-3.5A3.25 3.25 0 0 0 9 12.25c0 .97.78 1.75 1.75 1.75h6c-.87.5-1.64 1.2-2.25 2H4v-1a10 10 0 0 1 4.81-8.55Zm7.83-1.1a3.25 3.25 0 0 0-5.28 0 10.01 10.01 0 0 1 5.28 0ZM13 20.5c0-1.07.22-2.08.62-3H10.5v1.75a.75.75 0 0 1-1.5 0V17.5H4V22a4 4 0 0 0 4 4h7.4a7.48 7.48 0 0 1-2.4-5.5Zm-.75-10c-.97 0-1.75.78-1.75 1.75 0 .14.11.25.25.25h6.5c.14 0 .25-.11.25-.25 0-.97-.78-1.75-1.75-1.75h-3.5ZM27 20.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Zm-6-4a.5.5 0 0 0-1 0V20h-3.5a.5.5 0 0 0 0 1H20v3.5a.5.5 0 0 0 1 0V21h3.5a.5.5 0 0 0 0-1H21v-3.5Z"]));
+          export const BackpackAdd28Regular = ( /*#__PURE__*/createFluentIcon('BackpackAdd28Regular', "28", ["M14 2a5 5 0 0 0-4.94 4.2A9.75 9.75 0 0 0 4 14.75v7.5A3.75 3.75 0 0 0 7.75 26h7.65c-.48-.44-.9-.95-1.25-1.5h-6.4c-1.24 0-2.25-1-2.25-2.25V17.5H9v1.75a.75.75 0 0 0 1.5 0V17.5h3.12c.24-.54.53-1.04.88-1.5h-9v-1.25c0-4.56 3.7-8.25 8.25-8.25h.5c4.04 0 7.4 2.9 8.11 6.73.56.15 1.1.35 1.6.61a9.75 9.75 0 0 0-5.02-7.64A5 5 0 0 0 14 2Zm-.25 3c-1 0-1.97.15-2.88.43a3.5 3.5 0 0 1 6.26 0A9.75 9.75 0 0 0 14.25 5h-.5Zm3 9c.6-.35 1.27-.62 1.96-.79.18-.27.29-.6.29-.96C19 10.45 17.54 9 15.75 9h-3.5A3.25 3.25 0 0 0 9 12.25c0 .97.78 1.75 1.75 1.75h6Zm-4.5-3.5h3.5c.97 0 1.75.78 1.75 1.75 0 .14-.11.25-.25.25h-6.5a.25.25 0 0 1-.25-.25c0-.97.78-1.75 1.75-1.75ZM27 20.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Zm-6-4a.5.5 0 0 0-1 0V20h-3.5a.5.5 0 0 0 0 1H20v3.5a.5.5 0 0 0 1 0V21h3.5a.5.5 0 0 0 0-1H21v-3.5Z"]));
+          export const BackpackAdd48Filled = ( /*#__PURE__*/createFluentIcon('BackpackAdd48Filled', "48", ["M15.52 11.43a8.5 8.5 0 0 1 16.96 0 16 16 0 0 1 7.39 11.51 12.96 12.96 0 0 0-8.16-.52c.19-.38.29-.8.29-1.24A5.18 5.18 0 0 0 26.82 16h-5.64A5.18 5.18 0 0 0 16 21.18 2.82 2.82 0 0 0 18.82 24h9.25c-1.62 1.02-3 2.39-4.03 4H8v-3c0-5.72 3-10.74 7.52-13.57Zm13.53-1.62a5.5 5.5 0 0 0-10.1 0 15.98 15.98 0 0 1 10.1 0ZM22 35c0-1.58.28-3.1.8-4.5h-4.3v3.25a1.25 1.25 0 1 1-2.5 0V30.5H8v8.25c0 2.9 2.35 5.25 5.25 5.25h12.37A12.96 12.96 0 0 1 22 35Zm-3.5-13.82c0-1.48 1.2-2.68 2.68-2.68h5.64c1.48 0 2.68 1.2 2.68 2.68 0 .18-.14.32-.32.32H18.82a.32.32 0 0 1-.32-.32ZM46 35a11 11 0 1 1-22 0 11 11 0 0 1 22 0Zm-10-7a1 1 0 1 0-2 0v6h-6a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6v-6Z"]));
+          export const BackpackAdd48Regular = ( /*#__PURE__*/createFluentIcon('BackpackAdd48Regular', "48", ["M24 4a8 8 0 0 0-7.95 7.11A16 16 0 0 0 8 25v13.75c0 2.9 2.35 5.25 5.25 5.25h12.37c-.72-.75-1.36-1.6-1.88-2.5H13.25a2.75 2.75 0 0 1-2.75-2.75V30.5H16v3.25a1.25 1.25 0 1 0 2.5 0V30.5h4.3c.33-.88.74-1.72 1.24-2.5H10.5v-3a13.5 13.5 0 0 1 26.7-2.81c.93.15 1.82.41 2.67.75a16 16 0 0 0-7.92-11.83A8 8 0 0 0 24 4Zm0 5c-1.76 0-3.46.29-5.05.81a5.5 5.5 0 0 1 10.1 0A15.98 15.98 0 0 0 24 9Zm4.07 15c1.11-.7 2.34-1.24 3.64-1.58.19-.38.29-.8.29-1.24A5.18 5.18 0 0 0 26.82 16h-5.64A5.18 5.18 0 0 0 16 21.18 2.82 2.82 0 0 0 18.82 24h9.25Zm-6.9-5.5h5.65c1.48 0 2.68 1.2 2.68 2.68 0 .18-.14.32-.32.32H18.82a.32.32 0 0 1-.32-.32c0-1.48 1.2-2.68 2.68-2.68ZM46 35a11 11 0 1 1-22 0 11 11 0 0 1 22 0Zm-10-7a1 1 0 1 0-2 0v6h-6a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6v-6Z"]));
+          export const Backspace16Filled = ( /*#__PURE__*/createFluentIcon('Backspace16Filled', "16", ["M4.59 3.59A2 2 0 0 1 6 3h6a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H6a2 2 0 0 1-1.41-.59l-3-3a2 2 0 0 1 0-2.82l3-3Zm2.76 2.06a.5.5 0 1 0-.7.7L8.29 8 6.65 9.65a.5.5 0 0 0 .7.7L9 8.71l1.65 1.64a.5.5 0 0 0 .7-.7L9.71 8l1.64-1.65a.5.5 0 0 0-.7-.7L9 7.29 7.35 5.65Z"]));
+          export const Backspace16Regular = ( /*#__PURE__*/createFluentIcon('Backspace16Regular', "16", ["M6 3a2 2 0 0 0-1.41.59l-3 3a2 2 0 0 0 0 2.82l3 3A2 2 0 0 0 6 13h6a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H6Zm-.7 1.3A1 1 0 0 1 6 4h6a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H6a1 1 0 0 1-.7-.3l-3-3a1 1 0 0 1 0-1.4l3-3Zm2.05 1.35a.5.5 0 1 0-.7.7L8.29 8 6.65 9.65a.5.5 0 0 0 .7.7L9 8.71l1.65 1.64a.5.5 0 0 0 .7-.7L9.71 8l1.64-1.65a.5.5 0 0 0-.7-.7L9 7.29 7.35 5.65Z"]));
+          export const Backspace20Filled = ( /*#__PURE__*/createFluentIcon('Backspace20Filled', "20", ["M8.28 4a2.5 2.5 0 0 0-1.7.66L2.8 8.16a2.5 2.5 0 0 0 0 3.68l3.79 3.5a2.5 2.5 0 0 0 1.7.66h7.21a2.5 2.5 0 0 0 2.5-2.5v-7A2.5 2.5 0 0 0 15.5 4H8.28Zm.87 3.15c.2-.2.5-.2.7 0L12 9.29l2.15-2.14a.5.5 0 0 1 .7.7L12.71 10l2.14 2.15a.5.5 0 0 1-.7.7L12 10.71l-2.15 2.14a.5.5 0 0 1-.7-.7L11.29 10 9.15 7.85a.5.5 0 0 1 0-.7Z"]));
+          export const Backspace20Regular = ( /*#__PURE__*/createFluentIcon('Backspace20Regular', "20", ["M9.15 7.15c.2-.2.5-.2.7 0L12 9.29l2.15-2.14a.5.5 0 0 1 .7.7L12.71 10l2.14 2.15a.5.5 0 0 1-.7.7L12 10.71l-2.15 2.14a.5.5 0 0 1-.7-.7L11.29 10 9.15 7.85a.5.5 0 0 1 0-.7ZM6.59 4.66A2.5 2.5 0 0 1 8.29 4h7.21A2.5 2.5 0 0 1 18 6.5v7a2.5 2.5 0 0 1-2.5 2.5H8.28a2.5 2.5 0 0 1-1.7-.66l-3.78-3.5a2.5 2.5 0 0 1 0-3.68l3.79-3.5Zm1.7.34c-.38 0-.75.14-1.03.4L3.48 8.9a1.5 1.5 0 0 0 0 2.2l3.78 3.5c.28.26.65.4 1.02.4h7.22c.83 0 1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5H8.28Z"]));
+          export const Backspace24Filled = ( /*#__PURE__*/createFluentIcon('Backspace24Filled', "24", ["M18.75 4a3.25 3.25 0 0 1 3.24 3.07l.01.18v9.5a3.25 3.25 0 0 1-3.07 3.24l-.18.01h-8.5c-.77 0-1.5-.27-2.09-.76l-.15-.13-5-4.75a3.25 3.25 0 0 1-.11-4.6L3 9.64l5-4.75a3.25 3.25 0 0 1 2.03-.88l.2-.01h8.51Zm-7.3 4.4a.75.75 0 0 0-1.05 1.05l.07.08L12.94 12l-2.47 2.47-.07.08a.75.75 0 0 0 1.05 1.05l.08-.07L14 13.06l2.47 2.47.08.07a.75.75 0 0 0 1.05-1.05l-.07-.08L15.06 12l2.47-2.47.07-.08a.75.75 0 0 0-1.05-1.05l-.08.07L14 10.94l-2.47-2.47-.08-.07Z"]));
+          export const Backspace24Regular = ( /*#__PURE__*/createFluentIcon('Backspace24Regular', "24", ["M18.75 4a3.25 3.25 0 0 1 3.24 3.07l.01.18v9.5a3.25 3.25 0 0 1-3.07 3.24l-.18.01h-8.5c-.77 0-1.5-.27-2.09-.76l-.15-.13-5-4.75a3.25 3.25 0 0 1-.11-4.6L3 9.64l5-4.75a3.25 3.25 0 0 1 2.03-.88l.2-.01h8.51Zm0 1.5h-8.5c-.4 0-.77.13-1.08.37l-.13.11-5 4.75-.06.06a1.75 1.75 0 0 0-.05 2.36l.12.12 5 4.75c.28.27.64.43 1.03.47l.17.01h8.5c.92 0 1.67-.7 1.74-1.6l.01-.15v-9.5c0-.92-.7-1.67-1.6-1.74l-.15-.01Zm-7.3 2.9.08.07L14 10.94l2.47-2.47a.75.75 0 0 1 1.13.98l-.07.08L15.06 12l2.47 2.47a.75.75 0 0 1-.98 1.13l-.08-.07L14 13.06l-2.47 2.47a.75.75 0 0 1-1.13-.98l.07-.08L12.94 12l-2.47-2.47a.75.75 0 0 1 .98-1.13Z"]));
           ... (content truncated for snapshot)"
         `);
 
@@ -1055,36 +1277,36 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentIcon } from "../utils/createFluentIcon";
-          export declare const AccessTime20Filled: FluentIcon;
-          export declare const AccessTime20Regular: FluentIcon;
-          export declare const AccessTime24Filled: FluentIcon;
-          export declare const AccessTime24Regular: FluentIcon;
-          export declare const Accessibility16Filled: FluentIcon;
-          export declare const Accessibility16Regular: FluentIcon;
-          export declare const Accessibility20Filled: FluentIcon;
-          export declare const Accessibility20Regular: FluentIcon;
-          export declare const Accessibility24Filled: FluentIcon;
-          export declare const Accessibility24Regular: FluentIcon;
-          export declare const Accessibility28Filled: FluentIcon;
-          export declare const Accessibility28Regular: FluentIcon;
-          export declare const Accessibility32Filled: FluentIcon;
-          export declare const Accessibility32Regular: FluentIcon;
-          export declare const Accessibility48Filled: FluentIcon;
-          export declare const Accessibility48Regular: FluentIcon;
-          export declare const AccessibilityCheckmark20Filled: FluentIcon;
-          export declare const AccessibilityCheckmark20Regular: FluentIcon;
-          export declare const AccessibilityCheckmark24Filled: FluentIcon;
-          export declare const AccessibilityCheckmark24Regular: FluentIcon;
-          export declare const AccessibilityCheckmark28Filled: FluentIcon;
-          export declare const AccessibilityCheckmark28Regular: FluentIcon;
-          export declare const AccessibilityCheckmark32Filled: FluentIcon;
-          export declare const AccessibilityCheckmark32Light: FluentIcon;
-          export declare const AccessibilityCheckmark32Regular: FluentIcon;
-          export declare const AccessibilityCheckmark48Filled: FluentIcon;
-          export declare const AccessibilityCheckmark48Regular: FluentIcon;
-          export declare const AccessibilityError20Filled: FluentIcon;
-          export declare const AccessibilityError20Regular: FluentIcon;
+          "import type { FluentIcon } from '../utils/createFluentIcon';
+          export declare const Backpack12Filled: FluentIcon;
+          export declare const Backpack12Regular: FluentIcon;
+          export declare const Backpack16Filled: FluentIcon;
+          export declare const Backpack16Regular: FluentIcon;
+          export declare const Backpack20Filled: FluentIcon;
+          export declare const Backpack20Regular: FluentIcon;
+          export declare const Backpack24Filled: FluentIcon;
+          export declare const Backpack24Regular: FluentIcon;
+          export declare const Backpack28Filled: FluentIcon;
+          export declare const Backpack28Regular: FluentIcon;
+          export declare const Backpack32Filled: FluentIcon;
+          export declare const Backpack32Regular: FluentIcon;
+          export declare const Backpack48Filled: FluentIcon;
+          export declare const Backpack48Regular: FluentIcon;
+          export declare const BackpackAdd20Filled: FluentIcon;
+          export declare const BackpackAdd20Regular: FluentIcon;
+          export declare const BackpackAdd24Filled: FluentIcon;
+          export declare const BackpackAdd24Regular: FluentIcon;
+          export declare const BackpackAdd28Filled: FluentIcon;
+          export declare const BackpackAdd28Regular: FluentIcon;
+          export declare const BackpackAdd48Filled: FluentIcon;
+          export declare const BackpackAdd48Regular: FluentIcon;
+          export declare const Backspace16Filled: FluentIcon;
+          export declare const Backspace16Regular: FluentIcon;
+          export declare const Backspace20Filled: FluentIcon;
+          export declare const Backspace20Regular: FluentIcon;
+          export declare const Backspace24Filled: FluentIcon;
+          export declare const Backspace24Regular: FluentIcon;
+          export declare const Calculator16Filled: FluentIcon;
           ... (content truncated for snapshot)"
         `);
       }
@@ -1109,36 +1331,36 @@ describe('Build Verification', () => {
         const jsContent = await readFile(jsFile, 'utf8');
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
-          "... (20 export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))
+          "... (45 export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))
           "use client";
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const createFluentIcon_1 = require("../utils/createFluentIcon");
-          exports.AccessTime20Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AccessTime20Filled', "20", ["M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM6.99 8.6A.5.5 0 0 1 6 8.4c.02-.07.03-.14.07-.24a2 2 0 0 1 .25-.46c.26-.35.71-.7 1.42-.7A1.7 1.7 0 0 1 9.5 8.75c0 .35-.07.65-.2.9a1.8 1.8 0 0 1-.51.6c-.16.11-.33.22-.48.3l-.06.04c-.17.1-.3.19-.42.29-.4.34-.66.7-.77 1.12H9a.5.5 0 0 1 0 1H6.5a.5.5 0 0 1-.5-.5c0-1.01.47-1.77 1.17-2.38.2-.16.4-.29.57-.4l.06-.03.38-.24a.8.8 0 0 0 .23-.26c.05-.1.09-.23.09-.44a.8.8 0 0 0-.19-.53.7.7 0 0 0-.56-.22.7.7 0 0 0-.61.3 1 1 0 0 0-.15.3ZM11 7c.28 0 .5.22.5.5V10H13V7.5a.5.5 0 0 1 1 0v5a.5.5 0 0 1-1 0V11h-2a.5.5 0 0 1-.5-.5v-3c0-.28.22-.5.5-.5Z"]));
-          exports.AccessTime20Regular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AccessTime20Regular', "20", ["M6.99 8.6A.5.5 0 0 1 6 8.4a1.29 1.29 0 0 1 .07-.24 2 2 0 0 1 .25-.46c.26-.35.71-.7 1.42-.7A1.7 1.7 0 0 1 9.5 8.75c0 .35-.07.65-.2.9a1.8 1.8 0 0 1-.51.6c-.16.11-.33.22-.48.3l-.06.04c-.17.1-.3.19-.42.29-.4.34-.66.7-.77 1.12H9a.5.5 0 0 1 0 1H6.5a.5.5 0 0 1-.5-.5c0-1.01.47-1.77 1.17-2.38.2-.16.4-.29.57-.4l.06-.03.38-.24a.8.8 0 0 0 .23-.26c.05-.1.09-.23.09-.44a.8.8 0 0 0-.19-.53.7.7 0 0 0-.56-.22.7.7 0 0 0-.61.3 1 1 0 0 0-.15.3ZM11 7c.28 0 .5.22.5.5V10H13V7.5a.5.5 0 0 1 1 0v5a.5.5 0 0 1-1 0V11h-2a.5.5 0 0 1-.5-.5v-3c0-.28.22-.5.5-.5Zm-1-5a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm-7 8a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z"]));
-          exports.AccessTime24Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AccessTime24Filled', "24", ["M22 12a10 10 0 1 0-20 0 10 10 0 0 0 20 0ZM7.5 8.74A2.3 2.3 0 0 1 9.25 8c1.15 0 1.9.8 2.15 1.66.26.85.1 1.9-.62 2.62a8.1 8.1 0 0 1-.79.67l-.04.03c-.28.22-.53.41-.75.63a2.3 2.3 0 0 0-.58.89h2.13a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1-.75-.75c0-1.25.52-2.08 1.14-2.7.3-.3.62-.55.9-.76.28-.22.5-.4.68-.57.27-.27.37-.72.25-1.13-.12-.38-.37-.59-.72-.59s-.53.14-.64.25a.84.84 0 0 0-.15.23.75.75 0 0 1-1.43-.46l.04-.1.08-.17c.07-.14.18-.32.35-.5ZM13.25 8c.41 0 .75.34.75.75v2.75h1.5V8.75a.75.75 0 0 1 1.5 0v6.47a.75.75 0 0 1-1.5 0V13h-2.25a.75.75 0 0 1-.75-.75v-3.5c0-.41.34-.75.75-.75Z"]));
-          exports.AccessTime24Regular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AccessTime24Regular', "24", ["M7.5 8.74A2.3 2.3 0 0 1 9.25 8c1.15 0 1.9.8 2.15 1.66.26.85.1 1.9-.62 2.62a8.1 8.1 0 0 1-.79.67l-.04.03c-.28.22-.53.41-.75.63a2.3 2.3 0 0 0-.58.89h2.13a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1-.75-.75c0-1.25.52-2.08 1.14-2.7.3-.3.62-.55.9-.76.28-.22.5-.4.68-.57.27-.27.37-.72.25-1.13-.12-.38-.37-.59-.72-.59s-.53.14-.64.25a.84.84 0 0 0-.15.23.75.75 0 0 1-1.43-.46l.04-.1.08-.17c.07-.14.18-.32.35-.5ZM13.25 8c.41 0 .75.34.75.75v2.75h1.5V8.75a.75.75 0 0 1 1.5 0v6.47a.75.75 0 0 1-1.5 0V13h-2.25a.75.75 0 0 1-.75-.75v-3.5c0-.41.34-.75.75-.75ZM22 12a10 10 0 1 0-20 0 10 10 0 0 0 20 0ZM3.5 12a8.5 8.5 0 1 1 17 0 8.5 8.5 0 0 1-17 0Z"]));
-          exports.Accessibility16Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Accessibility16Filled', "16", ["M8 4.5A1.75 1.75 0 1 0 8 1a1.75 1.75 0 0 0 0 3.5ZM4.2 3.12a1.6 1.6 0 0 0-2.08.87c-.33.81.06 1.74.87 2.07l1.7.68a.5.5 0 0 1 .31.47v1.92a.5.5 0 0 1-.06.23l-1.75 3.3a1.6 1.6 0 1 0 2.8 1.5l1.79-3.35c.1-.18.35-.18.44 0L10 14.16a1.6 1.6 0 1 0 2.81-1.5l-1.75-3.3a.5.5 0 0 1-.06-.23V7.2c0-.2.12-.4.31-.47l1.7-.68c.81-.33 1.2-1.26.87-2.07a1.6 1.6 0 0 0-2.08-.87l-.78.31c-.26.1-.44.3-.54.52a2.75 2.75 0 0 1-4.96 0c-.1-.22-.28-.42-.54-.52l-.78-.31Z"]));
-          exports.Accessibility16Regular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Accessibility16Regular', "16", ["M6.75 3.25a1.25 1.25 0 1 1 2.5 0 1.25 1.25 0 0 1-2.5 0ZM8 1a2.25 2.25 0 0 0-2.19 2.77L4.2 3.12a1.6 1.6 0 0 0-2.08.87c-.33.81.06 1.74.87 2.07l2.01.8v2.4l-1.81 3.4a1.6 1.6 0 1 0 2.8 1.5L8 10.39l2 3.77a1.6 1.6 0 0 0 2.81-1.5L11 9.26v-2.4l2-.8c.82-.33 1.21-1.26.88-2.07a1.6 1.6 0 0 0-2.08-.87l-1.61.65A2.26 2.26 0 0 0 8 1ZM3.05 4.37a.6.6 0 0 1 .77-.33l3.43 1.39a2 2 0 0 0 1.5 0l3.43-1.39a.6.6 0 0 1 .77.33c.13.3-.02.64-.32.76l-2 .81a1 1 0 0 0-.63.93v2.38a1 1 0 0 0 .12.47l1.81 3.41a.6.6 0 0 1-1.04.56l-2-3.77a1 1 0 0 0-1.77 0l-2 3.77a.6.6 0 1 1-1.05-.56l1.81-3.4A1 1 0 0 0 6 9.24V6.87a1 1 0 0 0-.63-.93l-2-.8a.58.58 0 0 1-.32-.77Z"]));
-          exports.Accessibility20Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Accessibility20Filled', "20", ["M10 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM5.47 4.15c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L6.7 8.53c.18.08.3.26.3.46v1.86a.5.5 0 0 1-.04.19l-1.84 4.55a1.75 1.75 0 0 0 3.25 1.32l1.4-3.46c.08-.21.38-.21.46 0l1.4 3.46a1.75 1.75 0 0 0 3.24-1.32l-1.83-4.54a.5.5 0 0 1-.04-.19V9c0-.2.12-.38.3-.46l2.67-1.19c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-1.28.57c-.24.1-.42.3-.52.52a3 3 0 0 1-5.46 0c-.1-.21-.28-.41-.52-.52l-1.28-.57Z"]));
-          exports.Accessibility20Regular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Accessibility20Regular', "20", ["M8.5 4.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM10 2a2.5 2.5 0 0 0-2.43 3.08l-2.1-.93c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L7 8.66v2.29l-1.88 4.64a1.75 1.75 0 0 0 3.25 1.32l1.55-3.85.03-.04L10 13h.04l.03.05 1.56 3.84a1.75 1.75 0 0 0 3.24-1.3L13 10.95v-2.3l2.97-1.32c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-2.1.93A2.51 2.51 0 0 0 10 2ZM4.07 5.44a.76.76 0 0 1 1-.38l3.91 1.75a2.5 2.5 0 0 0 2.04 0l3.91-1.75c.38-.17.83 0 1 .38.18.38 0 .82-.37.99L12.6 7.75a1 1 0 0 0-.59.91v2.3a1 1 0 0 0 .07.37l1.87 4.64a.75.75 0 0 1-1.39.56L11 12.68c-.36-.9-1.64-.9-2 0l-1.56 3.85a.75.75 0 1 1-1.39-.56l1.88-4.65a1 1 0 0 0 .07-.37V8.66a1 1 0 0 0-.6-.91L4.45 6.43a.74.74 0 0 1-.37-.99Z"]));
-          exports.Accessibility24Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Accessibility24Filled', "24", ["M12 6.5A2.25 2.25 0 1 0 12 2a2.25 2.25 0 0 0 0 4.5ZM6.15 4.18a2.27 2.27 0 0 0-2.96 1.18 2.24 2.24 0 0 0 1.18 2.96L7.39 9.6a1 1 0 0 1 .61.92v3.04l-1.88 5.46a2.25 2.25 0 1 0 4.26 1.46l1.38-4.02c.08-.23.4-.23.48 0l1.38 4.02a2.25 2.25 0 1 0 4.26-1.46L16 13.56v-3.04a1 1 0 0 1 .61-.92l3.02-1.28a2.24 2.24 0 0 0 1.18-2.96 2.27 2.27 0 0 0-2.96-1.18l-1.6.68c-.35.14-.58.42-.7.73a3.8 3.8 0 0 1-7.1 0c-.12-.3-.35-.59-.7-.73l-1.6-.68Z"]));
-          exports.Accessibility24Regular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Accessibility24Regular', "24", ["M10.5 5c0 .64.4 1.19.97 1.4.35.09.71.09 1.06 0A1.5 1.5 0 1 0 10.5 5Zm-1.47.4a3 3 0 1 1 5.95 0l2.87-1.22a2.27 2.27 0 0 1 2.96 1.18 2.24 2.24 0 0 1-1.18 2.96L16 9.86v3.71l1.88 5.45a2.25 2.25 0 1 1-4.26 1.46L12 15.78l-1.62 4.7a2.25 2.25 0 1 1-4.26-1.46L8 13.56v-3.7L4.37 8.32a2.24 2.24 0 0 1-1.18-2.96 2.27 2.27 0 0 1 2.96-1.18L9.03 5.4Zm2 2.44c-.17-.05-.34-.1-.5-.17L5.56 5.56a.77.77 0 0 0-1 .4c-.16.38.02.81.4.98l3.78 1.6c.46.2.76.65.76 1.15v3.91c0 .14-.02.28-.07.4l-1.89 5.5a.75.75 0 1 0 1.42.5l2.1-6.13a.99.99 0 0 1 1.87 0l2.11 6.12a.75.75 0 1 0 1.42-.48l-1.89-5.49a1.25 1.25 0 0 1-.07-.4V9.69c0-.5.3-.95.76-1.15l3.78-1.6c.39-.17.56-.6.4-.98a.77.77 0 0 0-1-.4l-4.97 2.1c-.16.08-.33.13-.5.18a3 3 0 0 1-1.95 0Z"]));
-          exports.Accessibility28Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Accessibility28Filled', "28", ["M14 7.5A2.75 2.75 0 1 0 14 2a2.75 2.75 0 0 0 0 5.5ZM6.24 5.12a2.48 2.48 0 1 0-1.53 4.71l4.6 1.5a1 1 0 0 1 .69.95v3.1a1 1 0 0 1-.07.37L7.18 22.6c-.51 1.27.1 2.7 1.36 3.22 1.26.51 2.7-.1 3.21-1.36l1.77-4.41a.5.5 0 0 1 .93 0l1.78 4.4a2.48 2.48 0 1 0 4.59-1.86l-2.75-6.8a1 1 0 0 1-.07-.37v-3.14a1 1 0 0 1 .7-.95l4.59-1.5a2.48 2.48 0 0 0-1.53-4.7l-3.11 1c-.46.15-.8.47-1.01.82a4.25 4.25 0 0 1-7.28 0 1.87 1.87 0 0 0-1-.82l-3.12-1Z"]));
-          exports.Accessibility28Regular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Accessibility28Regular', "28", ["M12 5.5a2 2 0 0 0 1.5 1.93c.33.06.67.06 1 0A2 2 0 1 0 12 5.5Zm-1.34 1.06a3.5 3.5 0 1 1 6.68 0l4.42-1.44a2.48 2.48 0 1 1 1.53 4.71L18 11.55v3.82c0 .16.03.32.1.47l2.72 6.75a2.48 2.48 0 0 1-4.6 1.86l-2.24-5.55-2.23 5.56a2.46 2.46 0 0 1-3.2 1.36 2.48 2.48 0 0 1-1.37-3.22l2.73-6.8c.06-.16.09-.31.09-.47v-3.78L4.71 9.83a2.48 2.48 0 0 1 1.53-4.7l4.42 1.43Zm2.52 2.34c-.22-.03-.43-.09-.65-.16l-6.75-2.2a.98.98 0 0 0-.6 1.87l5.46 1.77c.51.17.86.65.86 1.19v3.96c0 .35-.07.7-.2 1.02l-2.73 6.81c-.2.5.04 1.07.54 1.27a.96.96 0 0 0 1.25-.53l2.46-6.14a1.25 1.25 0 0 1 2.32 0l2.48 6.13a.98.98 0 1 0 1.8-.73L16.7 16.4c-.13-.32-.2-.67-.2-1.03v-4c0-.54.35-1.02.86-1.19l5.46-1.77a.98.98 0 1 0-.6-1.86l-6.75 2.2c-.22.06-.43.12-.65.15a3.5 3.5 0 0 1-1.64 0Z"]));
-          exports.Accessibility32Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Accessibility32Filled', "32", ["M16 9a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM7.07 6.17a3.07 3.07 0 1 0-2 5.8l5.6 1.93c.2.07.33.26.33.48v3.51a.5.5 0 0 1-.05.22L7.3 25.58a3.07 3.07 0 1 0 5.52 2.7l2.72-5.58a.5.5 0 0 1 .9 0l2.71 5.57a3.07 3.07 0 1 0 5.53-2.69l-3.64-7.46a.5.5 0 0 1-.05-.22v-3.52c0-.22.14-.4.34-.48l5.59-1.92a3.07 3.07 0 0 0-2-5.81l-2.98 1.02c-.52.18-.9.55-1.14.97a5.5 5.5 0 0 1-9.62 0 2.1 2.1 0 0 0-1.14-.97L7.07 6.17Z"]));
-          exports.Accessibility32Regular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Accessibility32Regular', "32", ["M13.5 6.5a2.5 2.5 0 1 1 5 0 2.5 2.5 0 0 1-5 0ZM16 2a4.5 4.5 0 0 0-4.32 5.75l-4.6-1.58a3.07 3.07 0 0 0-2 5.8L11 14.03v3.76a1 1 0 0 1-.1.44l-3.6 7.36a3.07 3.07 0 0 0 5.53 2.7l3.17-6.5 3.16 6.5a3.07 3.07 0 1 0 5.53-2.7l-3.59-7.35a1 1 0 0 1-.1-.44v-3.77l5.93-2.04a3.07 3.07 0 0 0-2-5.81l-4.6 1.58A4.5 4.5 0 0 0 16 2ZM5.06 8.72c.2-.56.8-.85 1.36-.66l7.63 2.62a6 6 0 0 0 3.9 0l7.63-2.62a1.07 1.07 0 0 1 .7 2.03L20 12.24c-.6.21-1.01.78-1.01 1.42v4.13c0 .45.1.9.3 1.31l3.6 7.36a1.07 1.07 0 1 1-1.94.94l-3.16-6.5a2 2 0 0 0-3.6 0l-3.17 6.5a1.07 1.07 0 1 1-1.93-.94l3.6-7.37a3 3 0 0 0 .3-1.31v-4.12c0-.64-.4-1.2-1.01-1.42L5.72 10.1c-.56-.2-.85-.8-.66-1.37Z"]));
-          exports.Accessibility48Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Accessibility48Filled', "48", ["M24 14.5A5.25 5.25 0 1 0 24 4a5.25 5.25 0 0 0 0 10.5Zm-12.3-4.24a4.25 4.25 0 0 0-2.9 7.98l7.87 2.87c.2.07.33.26.33.47v4.44c0 .35-.07.7-.2 1.03l-4.49 11.11a4.25 4.25 0 1 0 7.88 3.18l3.35-8.27a.5.5 0 0 1 .92 0l3.35 8.27a4.25 4.25 0 0 0 7.88-3.18l-4.49-11.1c-.13-.33-.2-.68-.2-1.03v-4.45c0-.21.14-.4.33-.47l7.87-2.87a4.25 4.25 0 1 0-2.9-7.98l-3.81 1.38c-.82.3-1.43.9-1.81 1.55a7.75 7.75 0 0 1-13.35 0 3.52 3.52 0 0 0-1.81-1.55l-3.81-1.38Z"]));
-          exports.Accessibility48Regular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Accessibility48Regular', "48", ["M20 10.5a4 4 0 0 0 2.23 3.59l.49.17c.83.3 1.74.3 2.57 0l.49-.17A4 4 0 1 0 20 10.5Zm-2.2 1.98a6.5 6.5 0 1 1 12.4 0l6.1-2.22a4.25 4.25 0 0 1 2.9 7.99L31 21.23v4.8c0 .35.07.7.2 1.03l4.5 11.1a4.25 4.25 0 1 1-7.9 3.18L24 31.92l-3.8 9.42a4.25 4.25 0 0 1-7.89-3.18l4.5-11.11c.12-.33.2-.68.2-1.03v-4.79l-8.2-2.98a4.25 4.25 0 1 1 2.9-8l6.1 2.23Zm3.45 3.91-10.4-3.78a1.75 1.75 0 0 0-1.2 3.29l8.37 3.04a2.25 2.25 0 0 1 1.48 2.11v4.97c0 .67-.13 1.34-.38 1.96L14.63 39.1a1.75 1.75 0 1 0 3.25 1.3l4.03-9.99a2.25 2.25 0 0 1 4.18 0l4.04 10a1.75 1.75 0 0 0 3.24-1.31L28.9 28a5.25 5.25 0 0 1-.39-1.97v-4.98c0-.94.6-1.79 1.48-2.11l8.37-3.04a1.75 1.75 0 1 0-1.2-3.3l-10.4 3.8a6.48 6.48 0 0 1-5.5 0Z"]));
-          exports.AccessibilityCheckmark20Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AccessibilityCheckmark20Filled', "20", ["M10 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM5.47 4.15c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L6.7 8.53c.18.08.3.26.3.46v1.86a.5.5 0 0 1-.04.19l-1.84 4.55a1.75 1.75 0 0 0 3.25 1.32l.08-.22A5.48 5.48 0 0 1 13 9.02V9c0-.2.12-.38.3-.46l2.67-1.19c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-1.28.57c-.24.1-.42.3-.52.52a3 3 0 0 1-5.46 0c-.1-.21-.28-.41-.52-.52l-1.28-.57ZM18 14.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-2.15-1.85a.5.5 0 0 0-.7 0l-2.65 2.64-.65-.64a.5.5 0 0 0-.7.7l1 1c.2.2.5.2.7 0l3-3a.5.5 0 0 0 0-.7Z"]));
-          exports.AccessibilityCheckmark20Regular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AccessibilityCheckmark20Regular', "20", ["M8.5 4.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM10 2a2.5 2.5 0 0 0-2.43 3.08l-2.1-.93c-.88-.4-1.92 0-2.32.88-.4.88 0 1.92.88 2.31L7 8.66v2.29l-1.88 4.64a1.75 1.75 0 0 0 3.25 1.32l.08-.22a5.46 5.46 0 0 1-.42-1.62l-.59 1.46a.75.75 0 1 1-1.39-.56l1.88-4.65a1 1 0 0 0 .07-.37V8.66a1 1 0 0 0-.6-.91L4.45 6.43a.74.74 0 0 1-.37-.99.76.76 0 0 1 1-.38l3.91 1.75a2.5 2.5 0 0 0 2.04 0l3.91-1.75c.38-.17.83 0 1 .38.18.38 0 .82-.37.99L12.6 7.75a1 1 0 0 0-.59.91v.55c.32-.1.66-.16 1-.19v-.36l2.97-1.32c.88-.4 1.28-1.43.88-2.31a1.76 1.76 0 0 0-2.32-.88l-2.1.93A2.51 2.51 0 0 0 10 2Zm8 12.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-2.15-1.85a.5.5 0 0 0-.7 0l-2.65 2.64-.65-.64a.5.5 0 0 0-.7.7l1 1c.2.2.5.2.7 0l3-3a.5.5 0 0 0 0-.7Z"]));
-          exports.AccessibilityCheckmark24Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AccessibilityCheckmark24Filled', "24", ["M12 6.5A2.25 2.25 0 1 0 12 2a2.25 2.25 0 0 0 0 4.5ZM6.15 4.18a2.27 2.27 0 0 0-2.96 1.18 2.24 2.24 0 0 0 1.18 2.96L7.39 9.6a1 1 0 0 1 .61.92v3.04l-1.88 5.46a2.25 2.25 0 1 0 4.26 1.46l.14-.42A6.5 6.5 0 0 1 16 11.02v-.5a1 1 0 0 1 .61-.92l3.02-1.28a2.24 2.24 0 0 0 1.18-2.96 2.27 2.27 0 0 0-2.96-1.18l-1.6.68c-.35.14-.58.42-.7.73a3.8 3.8 0 0 1-7.1 0c-.12-.3-.35-.59-.7-.73l-1.6-.68ZM22 17.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0Zm-2.15-2.35a.5.5 0 0 0-.7 0l-3.65 3.64-1.65-1.64a.5.5 0 0 0-.7.7l2 2c.2.2.5.2.7 0l4-4a.5.5 0 0 0 0-.7Z"]));
-          exports.AccessibilityCheckmark24Regular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AccessibilityCheckmark24Regular', "24", ["M11.47 6.4a1.5 1.5 0 1 1 1.06 0c-.35.09-.71.09-1.06 0ZM9 5c0 .14 0 .27.03.4L6.15 4.18a2.27 2.27 0 0 0-2.96 1.18 2.24 2.24 0 0 0 1.18 2.96L8 9.86v3.7l-1.88 5.46a2.25 2.25 0 1 0 4.26 1.46l.14-.42a6.48 6.48 0 0 1-.5-3.17L8.97 20a.75.75 0 0 1-1.42-.49l1.9-5.5c.04-.12.06-.26.06-.4V9.7c0-.5-.3-.96-.76-1.16l-3.78-1.6a.74.74 0 0 1-.4-.98.77.77 0 0 1 1-.4l4.98 2.1c.15.08.32.13.48.18a3 3 0 0 0 1.96 0c.16-.05.33-.1.49-.17l4.97-2.11a.77.77 0 0 1 1 .4.74.74 0 0 1-.4.98l-3.78 1.6c-.46.2-.76.65-.76 1.15v1.62c.48-.15.98-.25 1.5-.3V9.87l3.63-1.54a2.24 2.24 0 0 0 1.18-2.96 2.27 2.27 0 0 0-2.96-1.18L14.97 5.4A3.02 3.02 0 0 0 12 2a3 3 0 0 0-3 3Zm13 12.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0Zm-2.15-2.35a.5.5 0 0 0-.7 0l-3.65 3.64-1.65-1.64a.5.5 0 0 0-.7.7l2 2c.2.2.5.2.7 0l4-4a.5.5 0 0 0 0-.7Z"]));
-          exports.AccessibilityCheckmark28Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AccessibilityCheckmark28Filled', "28", ["M14 7.5A2.75 2.75 0 1 0 14 2a2.75 2.75 0 0 0 0 5.5ZM6.24 5.12a2.48 2.48 0 1 0-1.53 4.71l4.6 1.5a1 1 0 0 1 .69.95v3.1a1 1 0 0 1-.07.37L7.18 22.6c-.51 1.27.1 2.7 1.36 3.22 1.26.51 2.7-.1 3.21-1.36l.63-1.58A7.5 7.5 0 0 1 18 13.15v-.87a1 1 0 0 1 .7-.95l4.59-1.5a2.48 2.48 0 0 0-1.53-4.7l-3.11 1c-.46.15-.8.47-1.01.82a4.25 4.25 0 0 1-7.28 0 1.87 1.87 0 0 0-1-.82l-3.12-1ZM26 20.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Zm-2.65-2.85a.5.5 0 0 0-.7 0L18 22.29l-1.65-1.64a.5.5 0 0 0-.7.7l2 2c.2.2.5.2.7 0l5-5a.5.5 0 0 0 0-.7Z"]));
-          exports.AccessibilityCheckmark28Regular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AccessibilityCheckmark28Regular', "28", ["M12 5.5a2 2 0 0 0 1.5 1.93c.33.06.67.06 1 0A2 2 0 1 0 12 5.5Zm-1.34 1.06a3.5 3.5 0 1 1 6.68 0l4.42-1.44a2.48 2.48 0 1 1 1.53 4.71L18 11.55v1.6c-.52.1-1.02.27-1.5.47v-2.25c0-.54.35-1.02.86-1.19l5.46-1.77a.98.98 0 0 0-.6-1.86l-6.75 2.2c-.22.06-.43.12-.65.15a3.5 3.5 0 0 1-1.64 0c-.22-.03-.43-.09-.65-.16l-6.75-2.2a.98.98 0 0 0-.6 1.87l5.46 1.77c.51.17.86.65.86 1.19v3.96c0 .35-.07.7-.2 1.02l-2.73 6.81c-.2.5.04 1.07.54 1.27a.96.96 0 0 0 1.25-.53l1.68-4.2a7.59 7.59 0 0 0 .34 3.18l-.63 1.58a2.46 2.46 0 0 1-3.2 1.36 2.48 2.48 0 0 1-1.37-3.22l2.73-6.8c.06-.16.09-.31.09-.47v-3.78L4.71 9.83a2.48 2.48 0 0 1 1.53-4.7l4.42 1.43ZM26 20.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Zm-2.65-2.85a.5.5 0 0 0-.7 0L18 22.29l-1.65-1.64a.5.5 0 0 0-.7.7l2 2c.2.2.5.2.7 0l5-5a.5.5 0 0 0 0-.7Z"]));
-          exports.AccessibilityCheckmark32Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AccessibilityCheckmark32Filled', "32", ["M16 9a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM7.07 6.17a3.07 3.07 0 1 0-2 5.8l5.6 1.93c.2.07.33.26.33.48v3.51a.5.5 0 0 1-.05.22L7.3 25.58a3.07 3.07 0 1 0 5.52 2.7l1.46-3a9.02 9.02 0 0 1 6.74-11.06.5.5 0 0 1 .3-.32l5.6-1.92a3.07 3.07 0 0 0-2-5.81l-2.98 1.02c-.52.18-.9.55-1.14.97a5.5 5.5 0 0 1-9.62 0 2.1 2.1 0 0 0-1.14-.97L7.07 6.17ZM23 15.5a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15Zm4.53 4.72a.75.75 0 0 0-1.06 0l-4.72 4.72-1.97-1.97a.75.75 0 1 0-1.06 1.06l2.5 2.5c.3.3.77.3 1.06 0l5.25-5.25c.3-.3.3-.77 0-1.06Z"]));
-          exports.AccessibilityCheckmark32Light = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AccessibilityCheckmark32Light', "32", ["m6.53 7.09 6.56 1.66A3.99 3.99 0 0 1 16 2a4 4 0 0 1 2.9 6.75l6.57-1.66a2.83 2.83 0 1 1 1.32 5.51L21 13.9v.32c-.34.08-.67.18-1 .3V13.5a.5.5 0 0 1 .4-.49l6.17-1.38a1.83 1.83 0 1 0-.85-3.57l-7.87 1.99c-1.21.3-2.49.3-3.7 0l-7.87-2a1.83 1.83 0 1 0-.85 3.57l6.18 1.4a.5.5 0 0 1 .4.48V18a.5.5 0 0 1-.06.22l-3.9 7.8a2.07 2.07 0 1 0 3.7 1.85l2.26-4.5c.02.6.1 1.18.24 1.75l-1.6 3.2a3.07 3.07 0 1 1-5.5-2.75L11 17.88V13.9l-5.79-1.3a2.83 2.83 0 1 1 1.32-5.51ZM16 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm7 6.5a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15Zm4.53 4.72a.75.75 0 0 0-1.06 0l-4.72 4.72-1.97-1.97a.75.75 0 1 0-1.06 1.06l2.5 2.5c.3.3.77.3 1.06 0l5.25-5.25c.3-.3.3-.77 0-1.06Z"]));
-          exports.AccessibilityCheckmark32Regular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('AccessibilityCheckmark32Regular', "32", ["M13.5 6.5a2.5 2.5 0 1 1 5 0 2.5 2.5 0 0 1-5 0ZM16 2a4.5 4.5 0 0 0-4.32 5.75l-4.6-1.58a3.07 3.07 0 0 0-2 5.8L11 14.03v3.76a1 1 0 0 1-.1.44l-3.6 7.36a3.07 3.07 0 0 0 5.53 2.7l1.46-3a9.02 9.02 0 0 1 0-4.53l-.09.15-3.17 6.5a1.07 1.07 0 1 1-1.92-.94l3.59-7.37a3 3 0 0 0 .3-1.31v-4.12c0-.64-.4-1.2-1.01-1.42L5.72 10.1a1.07 1.07 0 1 1 .7-2.03l7.63 2.62a6 6 0 0 0 3.9 0l7.63-2.62a1.07 1.07 0 1 1 .7 2.03L20 12.24c-.6.21-1.01.78-1.01 1.42v1.28c.63-.32 1.3-.56 2-.72v-.2l5.93-2.04a3.07 3.07 0 0 0-2-5.81l-4.6 1.58A4.5 4.5 0 0 0 16 2Zm7 13.5a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15Zm4.53 4.72a.75.75 0 0 0-1.06 0l-4.72 4.72-1.97-1.97a.75.75 0 1 0-1.06 1.06l2.5 2.5c.3.3.77.3 1.06 0l5.25-5.25c.3-.3.3-.77 0-1.06Z"]));
+          exports.Backpack12Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Backpack12Filled', "12", ["M4.06 3.5H4v-1C4 1.67 4.67 1 5.5 1h1C7.33 1 8 1.67 8 2.5v1h-.06A4 4 0 0 1 10 7v2.5c0 .83-.67 1.5-1.5 1.5h-5A1.5 1.5 0 0 1 2 9.5V7a4 4 0 0 1 2.06-3.5Zm.94-1v.63a4 4 0 0 1 2 0V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5Zm0 3c0 .28.22.5.5.5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0-.5.5ZM4.5 8a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3Z"]));
+          exports.Backpack12Regular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Backpack12Regular', "12", ["M5 5.5c0-.28.22-.5.5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5ZM4.5 8a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3Zm-.44-4.5H4v-1C4 1.67 4.67 1 5.5 1h1C7.33 1 8 1.67 8 2.5v1h-.06A4 4 0 0 1 10 7v2.5c0 .83-.67 1.5-1.5 1.5h-5A1.5 1.5 0 0 1 2 9.5V7a4 4 0 0 1 2.06-3.5Zm.94-1v.63a4 4 0 0 1 2 0V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5ZM3 7v2.5c0 .28.22.5.5.5h5a.5.5 0 0 0 .5-.5V7a3 3 0 0 0-6 0Z"]));
+          exports.Backpack16Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Backpack16Filled', "16", ["M6 8a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1H6Zm2-7a2 2 0 0 0-2 2v.42A5 5 0 0 0 3 8v2h10V8a5 5 0 0 0-3-4.58V3a2 2 0 0 0-2-2Zm0 2c-.34 0-.68.03-1 .1V3a1 1 0 0 1 2 0v.1c-.32-.07-.66-.1-1-.1ZM7 6h2a2 2 0 0 1 2 2 1 1 0 0 1-1 1H6a1 1 0 0 1-1-1c0-1.1.9-2 2-2Zm-1 6.5V11H3v1.5A2.5 2.5 0 0 0 5.5 15h5a2.5 2.5 0 0 0 2.5-2.5V11H7v1.5a.5.5 0 0 1-1 0Z"]));
+          exports.Backpack16Regular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Backpack16Regular', "16", ["M7 6a2 2 0 0 0-2 2 1 1 0 0 0 1 1h4a1 1 0 0 0 1-1 2 2 0 0 0-2-2H7ZM6 8a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1H6Zm2-7a2 2 0 0 0-2 2v.42A5 5 0 0 0 3 8v4.5A2.5 2.5 0 0 0 5.5 15h5a2.5 2.5 0 0 0 2.5-2.5V8a5 5 0 0 0-3-4.58V3a2 2 0 0 0-2-2Zm4 9H4V8a4 4 0 1 1 8 0v2Zm-6 2.5a.5.5 0 0 0 1 0V11h5v1.5c0 .83-.67 1.5-1.5 1.5h-5A1.5 1.5 0 0 1 4 12.5V11h2v1.5ZM8 3c-.34 0-.68.03-1 .1V3a1 1 0 0 1 2 0v.1c-.32-.07-.66-.1-1-.1Z"]));
+          exports.Backpack20Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Backpack20Filled', "20", ["M8 8.7c0-.39.31-.7.7-.7h2.6c.39 0 .7.31.7.7a.3.3 0 0 1-.3.3H8.3a.3.3 0 0 1-.3-.3ZM10 2a2.5 2.5 0 0 0-2.5 2.5v.04A6 6 0 0 0 4 10v2h12v-2a6 6 0 0 0-3.5-5.46V4.5A2.5 2.5 0 0 0 10 2Zm0 2c.5 0 1 .06 1.47.18a1.5 1.5 0 0 0-2.94 0C9 4.06 9.5 4 10 4ZM8.7 7h2.6c.94 0 1.7.76 1.7 1.7 0 .72-.58 1.3-1.3 1.3H8.3A1.3 1.3 0 0 1 7 8.7C7 7.76 7.76 7 8.7 7ZM7 14.5V13H4v2a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-2H8v1.5a.5.5 0 0 1-1 0Z"]));
+          exports.Backpack20Regular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Backpack20Regular', "20", ["M8.7 7C7.76 7 7 7.76 7 8.7c0 .72.58 1.3 1.3 1.3h3.4c.72 0 1.3-.58 1.3-1.3 0-.94-.76-1.7-1.7-1.7H8.7ZM8 8.7c0-.39.31-.7.7-.7h2.6c.39 0 .7.31.7.7a.3.3 0 0 1-.3.3H8.3a.3.3 0 0 1-.3-.3ZM10 2a2.5 2.5 0 0 0-2.5 2.5v.04A6 6 0 0 0 4 10v5a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-5a6 6 0 0 0-3.5-5.46V4.5A2.5 2.5 0 0 0 10 2Zm5 10H5v-2a5 5 0 0 1 10 0v2Zm-8 2.5a.5.5 0 0 0 1 0V13h7v2a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-2h2v1.5ZM10 4c-.5 0-1 .06-1.47.18a1.5 1.5 0 0 1 2.94 0A6.01 6.01 0 0 0 10 4Z"]));
+          exports.Backpack24Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Backpack24Filled', "24", ["M12 2a3.75 3.75 0 0 0-3.74 3.42A8 8 0 0 0 4 12.5V14h16v-1.5a8 8 0 0 0-4.26-7.08A3.75 3.75 0 0 0 12 2Zm8 13.71H9.5v1.54a.75.75 0 0 1-1.5 0v-1.54H4v3.04C4 20.55 5.46 22 7.25 22h9.5c1.8 0 3.25-1.46 3.25-3.25v-3.04ZM12 4.5c-.7 0-1.37.09-2.02.26a2.25 2.25 0 0 1 4.04 0A8.01 8.01 0 0 0 12 4.5Zm-4 5.92A2.42 2.42 0 0 1 10.42 8h3.16A2.42 2.42 0 0 1 16 10.42c0 .87-.7 1.58-1.58 1.58H9.58C8.71 12 8 11.3 8 10.42Zm2.42-.92c-.51 0-.92.41-.92.92 0 .04.04.08.08.08h4.84c.04 0 .08-.04.08-.08 0-.51-.41-.92-.92-.92h-3.16Z"]));
+          exports.Backpack24Regular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Backpack24Regular', "24", ["M10.42 8A2.42 2.42 0 0 0 8 10.42c0 .87.7 1.58 1.58 1.58h4.84c.87 0 1.58-.7 1.58-1.58A2.42 2.42 0 0 0 13.58 8h-3.16Zm-.92 2.42c0-.51.41-.92.92-.92h3.16c.51 0 .92.41.92.92 0 .04-.04.08-.08.08H9.58a.08.08 0 0 1-.08-.08ZM12 2a3.75 3.75 0 0 0-3.74 3.42A8 8 0 0 0 4 12.5v6.25C4 20.55 5.46 22 7.25 22h9.5c1.8 0 3.25-1.46 3.25-3.25V12.5a8 8 0 0 0-4.26-7.08A3.75 3.75 0 0 0 12 2Zm6.5 12h-13v-1.5a6.5 6.5 0 0 1 13 0V14ZM8 17.25a.75.75 0 0 0 1.5 0v-1.54h9v3.04c0 .97-.78 1.75-1.75 1.75h-9.5c-.97 0-1.75-.78-1.75-1.75v-3.04H8v1.54ZM12 4.5c-.7 0-1.37.09-2.02.26a2.25 2.25 0 0 1 4.04 0A8.01 8.01 0 0 0 12 4.5Z"]));
+          exports.Backpack28Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Backpack28Filled', "28", ["M10.5 12.25c0-.97.78-1.75 1.75-1.75h3.5c.97 0 1.75.78 1.75 1.75 0 .14-.11.25-.25.25h-6.5a.25.25 0 0 1-.25-.25ZM14 2a5.25 5.25 0 0 0-5.19 4.45A10 10 0 0 0 4 15v1h20v-1a10 10 0 0 0-4.81-8.55A5.25 5.25 0 0 0 14 2Zm0 3c-.91 0-1.8.12-2.64.35a3.25 3.25 0 0 1 5.28 0C15.8 5.12 14.9 5 14 5Zm-1.75 4h3.5c1.8 0 3.25 1.46 3.25 3.25 0 .97-.78 1.75-1.75 1.75h-6.5C9.78 14 9 13.22 9 12.25 9 10.45 10.46 9 12.25 9ZM9 19.25V17.5H4V22a4 4 0 0 0 4 4h12a4 4 0 0 0 4-4v-4.5H10.5v1.75a.75.75 0 0 1-1.5 0Z"]));
+          exports.Backpack28Regular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Backpack28Regular', "28", ["M9 12.25C9 10.45 10.46 9 12.25 9h3.5c1.8 0 3.25 1.46 3.25 3.25 0 .97-.78 1.75-1.75 1.75h-6.5C9.78 14 9 13.22 9 12.25Zm3.25-1.75c-.97 0-1.75.78-1.75 1.75 0 .14.11.25.25.25h6.5c.14 0 .25-.11.25-.25 0-.97-.78-1.75-1.75-1.75h-3.5ZM14 2a5 5 0 0 0-4.94 4.2A9.75 9.75 0 0 0 4 14.75v7.5A3.75 3.75 0 0 0 7.75 26h12.5A3.75 3.75 0 0 0 24 22.25v-7.5c0-3.69-2.05-6.9-5.06-8.55A5 5 0 0 0 14 2Zm-.25 3c-1 0-1.97.15-2.88.43a3.5 3.5 0 0 1 6.26 0A9.75 9.75 0 0 0 14.25 5h-.5Zm0 1.5h.5c4.56 0 8.25 3.7 8.25 8.25V16h-17v-1.25c0-4.56 3.7-8.25 8.25-8.25ZM9 17.5v1.75a.75.75 0 0 0 1.5 0V17.5h12v4.75c0 1.24-1 2.25-2.25 2.25H7.75c-1.24 0-2.25-1-2.25-2.25V17.5H9Z"]));
+          exports.Backpack32Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Backpack32Filled', "32", ["M12 16c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2h-8Zm4-14a4 4 0 0 0-4 4v.83A10 10 0 0 0 6 16v4h20v-4a10 10 0 0 0-6-9.17V6a4 4 0 0 0-4-4Zm0 4c-.68 0-1.35.07-2 .2V6a2 2 0 1 1 4 0v.2c-.65-.13-1.32-.2-2-.2Zm-2 6h4a4 4 0 0 1 4 4 2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2 4 4 0 0 1 4-4Zm-2 13v-3H6v3a5 5 0 0 0 5 5h10a5 5 0 0 0 5-5v-3H14v3a1 1 0 1 1-2 0Z"]));
+          exports.Backpack32Regular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Backpack32Regular', "32", ["M14 12a4 4 0 0 0-4 4c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-4Zm-2 4c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2h-8Zm4-14a4 4 0 0 0-4 4v.83A10 10 0 0 0 6 16v9a5 5 0 0 0 5 5h10a5 5 0 0 0 5-5v-9a10 10 0 0 0-6-9.17V6a4 4 0 0 0-4-4Zm8 18H8v-4a8 8 0 1 1 16 0v4Zm-12 5a1 1 0 1 0 2 0v-3h10v3a3 3 0 0 1-3 3H11a3 3 0 0 1-3-3v-3h4v3Zm4-19c-.68 0-1.35.07-2 .2V6a2 2 0 1 1 4 0v.2c-.65-.13-1.32-.2-2-.2Z"]));
+          exports.Backpack48Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Backpack48Filled', "48", ["M21.18 18.5a2.68 2.68 0 0 0-2.68 2.68c0 .18.14.32.32.32h10.36c.18 0 .32-.14.32-.32 0-1.48-1.2-2.68-2.68-2.68h-5.64ZM24 4a8 8 0 0 0-7.95 7.11A16 16 0 0 0 8 25v3h32v-3a16 16 0 0 0-8.05-13.89A8 8 0 0 0 24 4Zm0 5c-1.76 0-3.46.29-5.05.81a5.5 5.5 0 0 1 10.1 0A15.98 15.98 0 0 0 24 9Zm-8 12.18A5.18 5.18 0 0 1 21.18 16h5.64A5.18 5.18 0 0 1 32 21.18 2.82 2.82 0 0 1 29.18 24H18.82A2.82 2.82 0 0 1 16 21.18Zm0 9.32v3.25a1.25 1.25 0 1 0 2.5 0V30.5H40v8.25c0 2.9-2.35 5.25-5.25 5.25h-21.5A5.25 5.25 0 0 1 8 38.75V30.5h8Z"]));
+          exports.Backpack48Regular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Backpack48Regular', "48", ["M16 21.18A2.82 2.82 0 0 0 18.82 24h10.36A2.82 2.82 0 0 0 32 21.18 5.18 5.18 0 0 0 26.82 16h-5.64A5.18 5.18 0 0 0 16 21.18Zm5.18-2.68h5.64c1.48 0 2.68 1.2 2.68 2.68 0 .18-.14.32-.32.32H18.82a.32.32 0 0 1-.32-.32c0-1.48 1.2-2.68 2.68-2.68ZM24 4a8 8 0 0 0-7.95 7.11A16 16 0 0 0 8 25v13.75c0 2.9 2.35 5.25 5.25 5.25h21.5c2.9 0 5.25-2.35 5.25-5.25V25a16 16 0 0 0-8.05-13.89A8 8 0 0 0 24 4Zm13.5 24h-27v-3a13.5 13.5 0 0 1 27 0v3ZM16 30.5v3.25a1.25 1.25 0 1 0 2.5 0V30.5h19v8.25a2.75 2.75 0 0 1-2.75 2.75h-21.5a2.75 2.75 0 0 1-2.75-2.75V30.5H16ZM24 9c-1.76 0-3.46.29-5.05.81a5.5 5.5 0 0 1 10.1 0A15.98 15.98 0 0 0 24 9Z"]));
+          exports.BackpackAdd20Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('BackpackAdd20Filled', "20", ["M7.5 4.5a2.5 2.5 0 0 1 5 0v.04a6 6 0 0 1 3.45 4.65 5.5 5.5 0 0 0-3.07.05c.08-.16.12-.35.12-.54 0-.94-.76-1.7-1.7-1.7H8.7C7.76 7 7 7.76 7 8.7c0 .72.58 1.3 1.3 1.3h3.04a5.53 5.53 0 0 0-1.74 2H4v-2a6 6 0 0 1 3.5-5.46V4.5Zm3.97-.32a1.5 1.5 0 0 0-2.94 0 6.01 6.01 0 0 1 2.94 0ZM9 14.5c0-.52.07-1.02.2-1.5H8v1.5a.5.5 0 0 1-1 0V13H4v2a3 3 0 0 0 3 3h3.26A5.48 5.48 0 0 1 9 14.5ZM8.7 8a.7.7 0 0 0-.7.7c0 .17.13.3.3.3h3.4a.3.3 0 0 0 .3-.3.7.7 0 0 0-.7-.7H8.7ZM19 14.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-4-2a.5.5 0 0 0-1 0V14h-1.5a.5.5 0 0 0 0 1H14v1.5a.5.5 0 0 0 1 0V15h1.5a.5.5 0 0 0 0-1H15v-1.5Z"]));
+          exports.BackpackAdd20Regular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('BackpackAdd20Regular', "20", ["M10 2a2.5 2.5 0 0 0-2.5 2.5v.04A6 6 0 0 0 4 10v5a3 3 0 0 0 3 3h3.26a5.5 5.5 0 0 1-.66-1H7a2 2 0 0 1-2-2v-2h2v1.5a.5.5 0 0 0 1 0V13h1.2c.1-.35.24-.68.4-1H5v-2a5 5 0 0 1 9.9-.99c.36.03.71.1 1.05.18a6 6 0 0 0-3.45-4.65V4.5A2.5 2.5 0 0 0 10 2Zm0 2c-.5 0-1 .06-1.47.18a1.5 1.5 0 0 1 2.94 0A6.01 6.01 0 0 0 10 4Zm1.34 6c.46-.33.98-.59 1.54-.76.08-.16.12-.35.12-.54 0-.94-.76-1.7-1.7-1.7H8.7C7.76 7 7 7.76 7 8.7c0 .72.58 1.3 1.3 1.3h3.04ZM8 8.7c0-.39.31-.7.7-.7h2.6c.39 0 .7.31.7.7a.3.3 0 0 1-.3.3H8.3a.3.3 0 0 1-.3-.3Zm11 5.8a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-4-2a.5.5 0 0 0-1 0V14h-1.5a.5.5 0 0 0 0 1H14v1.5a.5.5 0 0 0 1 0V15h1.5a.5.5 0 0 0 0-1H15v-1.5Z"]));
+          exports.BackpackAdd24Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('BackpackAdd24Filled', "24", ["M8.26 5.42a3.75 3.75 0 0 1 7.48 0 8 8 0 0 1 4.2 6.05 6.48 6.48 0 0 0-4.17-.24c.15-.24.23-.52.23-.81A2.42 2.42 0 0 0 13.58 8h-3.16A2.42 2.42 0 0 0 8 10.42c0 .87.7 1.58 1.58 1.58h4.45c-.8.51-1.5 1.2-2 2H4v-1.5a8 8 0 0 1 4.26-7.08Zm1.72-.66a8.01 8.01 0 0 1 4.04 0 2.25 2.25 0 0 0-4.04 0Zm1.27 10.95H9.5v1.54a.75.75 0 0 1-1.5 0v-1.54H4v3.04C4 20.55 5.46 22 7.25 22h5.56a6.48 6.48 0 0 1-1.56-6.29Zm-1.75-5.3c0-.5.41-.91.92-.91h3.16c.51 0 .92.41.92.92 0 .04-.04.08-.08.08H9.58a.08.08 0 0 1-.08-.08Zm8 1.59a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Zm.5 8.5V18h2.5a.5.5 0 0 0 0-1H18v-2.5a.5.5 0 1 0-1 0V17h-2.5a.5.5 0 0 0 0 1H17v2.5a.5.5 0 1 0 1 0Z"]));
+          exports.BackpackAdd24Regular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('BackpackAdd24Regular', "24", ["M12 2a3.75 3.75 0 0 0-3.74 3.42A8 8 0 0 0 4 12.5v6.25C4 20.55 5.46 22 7.25 22h5.56a6.52 6.52 0 0 1-1.08-1.5H7.25c-.97 0-1.75-.78-1.75-1.75v-3.04H8v1.54a.75.75 0 0 0 1.5 0v-1.54h1.75c.17-.6.44-1.19.77-1.71H5.5v-1.5a6.5 6.5 0 0 1 12.84-1.45c.56.08 1.1.22 1.6.42a8 8 0 0 0-4.2-6.05A3.75 3.75 0 0 0 12 2Zm0 2.5c-.7 0-1.37.09-2.02.26a2.25 2.25 0 0 1 4.04 0A8.01 8.01 0 0 0 12 4.5Zm2.03 7.5c.54-.34 1.12-.6 1.74-.77.15-.24.23-.52.23-.81A2.42 2.42 0 0 0 13.58 8h-3.16A2.42 2.42 0 0 0 8 10.42c0 .87.7 1.58 1.58 1.58h4.45ZM9.5 10.42c0-.51.41-.92.92-.92h3.16c.51 0 .92.41.92.92 0 .04-.04.08-.08.08H9.58a.08.08 0 0 1-.08-.08ZM23 17.5a5.5 5.5 0 1 0-11 0 5.5 5.5 0 0 0 11 0Zm-5 .5v2.5a.5.5 0 1 1-1 0V18h-2.5a.5.5 0 0 1 0-1H17v-2.5a.5.5 0 1 1 1 0V17h2.5a.5.5 0 0 1 0 1H18Z"]));
+          exports.BackpackAdd28Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('BackpackAdd28Filled', "28", ["M8.81 6.45a5.25 5.25 0 0 1 10.38 0 10 10 0 0 1 4.74 7.38 7.47 7.47 0 0 0-5.22-.62c.18-.27.29-.6.29-.96C19 10.45 17.54 9 15.75 9h-3.5A3.25 3.25 0 0 0 9 12.25c0 .97.78 1.75 1.75 1.75h6c-.87.5-1.64 1.2-2.25 2H4v-1a10 10 0 0 1 4.81-8.55Zm7.83-1.1a3.25 3.25 0 0 0-5.28 0 10.01 10.01 0 0 1 5.28 0ZM13 20.5c0-1.07.22-2.08.62-3H10.5v1.75a.75.75 0 0 1-1.5 0V17.5H4V22a4 4 0 0 0 4 4h7.4a7.48 7.48 0 0 1-2.4-5.5Zm-.75-10c-.97 0-1.75.78-1.75 1.75 0 .14.11.25.25.25h6.5c.14 0 .25-.11.25-.25 0-.97-.78-1.75-1.75-1.75h-3.5ZM27 20.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Zm-6-4a.5.5 0 0 0-1 0V20h-3.5a.5.5 0 0 0 0 1H20v3.5a.5.5 0 0 0 1 0V21h3.5a.5.5 0 0 0 0-1H21v-3.5Z"]));
+          exports.BackpackAdd28Regular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('BackpackAdd28Regular', "28", ["M14 2a5 5 0 0 0-4.94 4.2A9.75 9.75 0 0 0 4 14.75v7.5A3.75 3.75 0 0 0 7.75 26h7.65c-.48-.44-.9-.95-1.25-1.5h-6.4c-1.24 0-2.25-1-2.25-2.25V17.5H9v1.75a.75.75 0 0 0 1.5 0V17.5h3.12c.24-.54.53-1.04.88-1.5h-9v-1.25c0-4.56 3.7-8.25 8.25-8.25h.5c4.04 0 7.4 2.9 8.11 6.73.56.15 1.1.35 1.6.61a9.75 9.75 0 0 0-5.02-7.64A5 5 0 0 0 14 2Zm-.25 3c-1 0-1.97.15-2.88.43a3.5 3.5 0 0 1 6.26 0A9.75 9.75 0 0 0 14.25 5h-.5Zm3 9c.6-.35 1.27-.62 1.96-.79.18-.27.29-.6.29-.96C19 10.45 17.54 9 15.75 9h-3.5A3.25 3.25 0 0 0 9 12.25c0 .97.78 1.75 1.75 1.75h6Zm-4.5-3.5h3.5c.97 0 1.75.78 1.75 1.75 0 .14-.11.25-.25.25h-6.5a.25.25 0 0 1-.25-.25c0-.97.78-1.75 1.75-1.75ZM27 20.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Zm-6-4a.5.5 0 0 0-1 0V20h-3.5a.5.5 0 0 0 0 1H20v3.5a.5.5 0 0 0 1 0V21h3.5a.5.5 0 0 0 0-1H21v-3.5Z"]));
+          exports.BackpackAdd48Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('BackpackAdd48Filled', "48", ["M15.52 11.43a8.5 8.5 0 0 1 16.96 0 16 16 0 0 1 7.39 11.51 12.96 12.96 0 0 0-8.16-.52c.19-.38.29-.8.29-1.24A5.18 5.18 0 0 0 26.82 16h-5.64A5.18 5.18 0 0 0 16 21.18 2.82 2.82 0 0 0 18.82 24h9.25c-1.62 1.02-3 2.39-4.03 4H8v-3c0-5.72 3-10.74 7.52-13.57Zm13.53-1.62a5.5 5.5 0 0 0-10.1 0 15.98 15.98 0 0 1 10.1 0ZM22 35c0-1.58.28-3.1.8-4.5h-4.3v3.25a1.25 1.25 0 1 1-2.5 0V30.5H8v8.25c0 2.9 2.35 5.25 5.25 5.25h12.37A12.96 12.96 0 0 1 22 35Zm-3.5-13.82c0-1.48 1.2-2.68 2.68-2.68h5.64c1.48 0 2.68 1.2 2.68 2.68 0 .18-.14.32-.32.32H18.82a.32.32 0 0 1-.32-.32ZM46 35a11 11 0 1 1-22 0 11 11 0 0 1 22 0Zm-10-7a1 1 0 1 0-2 0v6h-6a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6v-6Z"]));
+          exports.BackpackAdd48Regular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('BackpackAdd48Regular', "48", ["M24 4a8 8 0 0 0-7.95 7.11A16 16 0 0 0 8 25v13.75c0 2.9 2.35 5.25 5.25 5.25h12.37c-.72-.75-1.36-1.6-1.88-2.5H13.25a2.75 2.75 0 0 1-2.75-2.75V30.5H16v3.25a1.25 1.25 0 1 0 2.5 0V30.5h4.3c.33-.88.74-1.72 1.24-2.5H10.5v-3a13.5 13.5 0 0 1 26.7-2.81c.93.15 1.82.41 2.67.75a16 16 0 0 0-7.92-11.83A8 8 0 0 0 24 4Zm0 5c-1.76 0-3.46.29-5.05.81a5.5 5.5 0 0 1 10.1 0A15.98 15.98 0 0 0 24 9Zm4.07 15c1.11-.7 2.34-1.24 3.64-1.58.19-.38.29-.8.29-1.24A5.18 5.18 0 0 0 26.82 16h-5.64A5.18 5.18 0 0 0 16 21.18 2.82 2.82 0 0 0 18.82 24h9.25Zm-6.9-5.5h5.65c1.48 0 2.68 1.2 2.68 2.68 0 .18-.14.32-.32.32H18.82a.32.32 0 0 1-.32-.32c0-1.48 1.2-2.68 2.68-2.68ZM46 35a11 11 0 1 1-22 0 11 11 0 0 1 22 0Zm-10-7a1 1 0 1 0-2 0v6h-6a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6v-6Z"]));
+          exports.Backspace16Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Backspace16Filled', "16", ["M4.59 3.59A2 2 0 0 1 6 3h6a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H6a2 2 0 0 1-1.41-.59l-3-3a2 2 0 0 1 0-2.82l3-3Zm2.76 2.06a.5.5 0 1 0-.7.7L8.29 8 6.65 9.65a.5.5 0 0 0 .7.7L9 8.71l1.65 1.64a.5.5 0 0 0 .7-.7L9.71 8l1.64-1.65a.5.5 0 0 0-.7-.7L9 7.29 7.35 5.65Z"]));
+          exports.Backspace16Regular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Backspace16Regular', "16", ["M6 3a2 2 0 0 0-1.41.59l-3 3a2 2 0 0 0 0 2.82l3 3A2 2 0 0 0 6 13h6a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H6Zm-.7 1.3A1 1 0 0 1 6 4h6a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H6a1 1 0 0 1-.7-.3l-3-3a1 1 0 0 1 0-1.4l3-3Zm2.05 1.35a.5.5 0 1 0-.7.7L8.29 8 6.65 9.65a.5.5 0 0 0 .7.7L9 8.71l1.65 1.64a.5.5 0 0 0 .7-.7L9.71 8l1.64-1.65a.5.5 0 0 0-.7-.7L9 7.29 7.35 5.65Z"]));
+          exports.Backspace20Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Backspace20Filled', "20", ["M8.28 4a2.5 2.5 0 0 0-1.7.66L2.8 8.16a2.5 2.5 0 0 0 0 3.68l3.79 3.5a2.5 2.5 0 0 0 1.7.66h7.21a2.5 2.5 0 0 0 2.5-2.5v-7A2.5 2.5 0 0 0 15.5 4H8.28Zm.87 3.15c.2-.2.5-.2.7 0L12 9.29l2.15-2.14a.5.5 0 0 1 .7.7L12.71 10l2.14 2.15a.5.5 0 0 1-.7.7L12 10.71l-2.15 2.14a.5.5 0 0 1-.7-.7L11.29 10 9.15 7.85a.5.5 0 0 1 0-.7Z"]));
           ... (content truncated for snapshot)"
         `);
 
@@ -1146,36 +1368,36 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentIcon } from "../utils/createFluentIcon";
-          export declare const AccessTime20Filled: FluentIcon;
-          export declare const AccessTime20Regular: FluentIcon;
-          export declare const AccessTime24Filled: FluentIcon;
-          export declare const AccessTime24Regular: FluentIcon;
-          export declare const Accessibility16Filled: FluentIcon;
-          export declare const Accessibility16Regular: FluentIcon;
-          export declare const Accessibility20Filled: FluentIcon;
-          export declare const Accessibility20Regular: FluentIcon;
-          export declare const Accessibility24Filled: FluentIcon;
-          export declare const Accessibility24Regular: FluentIcon;
-          export declare const Accessibility28Filled: FluentIcon;
-          export declare const Accessibility28Regular: FluentIcon;
-          export declare const Accessibility32Filled: FluentIcon;
-          export declare const Accessibility32Regular: FluentIcon;
-          export declare const Accessibility48Filled: FluentIcon;
-          export declare const Accessibility48Regular: FluentIcon;
-          export declare const AccessibilityCheckmark20Filled: FluentIcon;
-          export declare const AccessibilityCheckmark20Regular: FluentIcon;
-          export declare const AccessibilityCheckmark24Filled: FluentIcon;
-          export declare const AccessibilityCheckmark24Regular: FluentIcon;
-          export declare const AccessibilityCheckmark28Filled: FluentIcon;
-          export declare const AccessibilityCheckmark28Regular: FluentIcon;
-          export declare const AccessibilityCheckmark32Filled: FluentIcon;
-          export declare const AccessibilityCheckmark32Light: FluentIcon;
-          export declare const AccessibilityCheckmark32Regular: FluentIcon;
-          export declare const AccessibilityCheckmark48Filled: FluentIcon;
-          export declare const AccessibilityCheckmark48Regular: FluentIcon;
-          export declare const AccessibilityError20Filled: FluentIcon;
-          export declare const AccessibilityError20Regular: FluentIcon;
+          "import type { FluentIcon } from '../utils/createFluentIcon';
+          export declare const Backpack12Filled: FluentIcon;
+          export declare const Backpack12Regular: FluentIcon;
+          export declare const Backpack16Filled: FluentIcon;
+          export declare const Backpack16Regular: FluentIcon;
+          export declare const Backpack20Filled: FluentIcon;
+          export declare const Backpack20Regular: FluentIcon;
+          export declare const Backpack24Filled: FluentIcon;
+          export declare const Backpack24Regular: FluentIcon;
+          export declare const Backpack28Filled: FluentIcon;
+          export declare const Backpack28Regular: FluentIcon;
+          export declare const Backpack32Filled: FluentIcon;
+          export declare const Backpack32Regular: FluentIcon;
+          export declare const Backpack48Filled: FluentIcon;
+          export declare const Backpack48Regular: FluentIcon;
+          export declare const BackpackAdd20Filled: FluentIcon;
+          export declare const BackpackAdd20Regular: FluentIcon;
+          export declare const BackpackAdd24Filled: FluentIcon;
+          export declare const BackpackAdd24Regular: FluentIcon;
+          export declare const BackpackAdd28Filled: FluentIcon;
+          export declare const BackpackAdd28Regular: FluentIcon;
+          export declare const BackpackAdd48Filled: FluentIcon;
+          export declare const BackpackAdd48Regular: FluentIcon;
+          export declare const Backspace16Filled: FluentIcon;
+          export declare const Backspace16Regular: FluentIcon;
+          export declare const Backspace20Filled: FluentIcon;
+          export declare const Backspace20Regular: FluentIcon;
+          export declare const Backspace24Filled: FluentIcon;
+          export declare const Backspace24Regular: FluentIcon;
+          export declare const Calculator16Filled: FluentIcon;
           ... (content truncated for snapshot)"
         `);
       }
@@ -1201,35 +1423,35 @@ describe('Build Verification', () => {
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
           ""use client";
-          import { createFluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
-          export const AccessTimeFilled = ( /*#__PURE__*/createFluentFontIcon("AccessTimeFilled", "", 2, undefined));
-          export const AccessTimeRegular = ( /*#__PURE__*/createFluentFontIcon("AccessTimeRegular", "", 2, undefined));
-          export const AccessibilityFilled = ( /*#__PURE__*/createFluentFontIcon("AccessibilityFilled", "", 2, undefined));
-          export const AccessibilityRegular = ( /*#__PURE__*/createFluentFontIcon("AccessibilityRegular", "", 2, undefined));
-          export const AccessibilityCheckmarkFilled = ( /*#__PURE__*/createFluentFontIcon("AccessibilityCheckmarkFilled", "", 2, undefined));
-          export const AccessibilityCheckmarkRegular = ( /*#__PURE__*/createFluentFontIcon("AccessibilityCheckmarkRegular", "", 2, undefined));
-          export const AccessibilityErrorFilled = ( /*#__PURE__*/createFluentFontIcon("AccessibilityErrorFilled", "", 2, undefined));
-          export const AccessibilityErrorRegular = ( /*#__PURE__*/createFluentFontIcon("AccessibilityErrorRegular", "", 2, undefined));
-          export const AccessibilityMoreFilled = ( /*#__PURE__*/createFluentFontIcon("AccessibilityMoreFilled", "", 2, undefined));
-          export const AccessibilityMoreRegular = ( /*#__PURE__*/createFluentFontIcon("AccessibilityMoreRegular", "", 2, undefined));
-          export const AccessibilityQuestionMarkFilled = ( /*#__PURE__*/createFluentFontIcon("AccessibilityQuestionMarkFilled", "", 2, undefined));
-          export const AccessibilityQuestionMarkRegular = ( /*#__PURE__*/createFluentFontIcon("AccessibilityQuestionMarkRegular", "", 2, undefined));
-          export const AddFilled = ( /*#__PURE__*/createFluentFontIcon("AddFilled", "", 2, undefined));
-          export const AddRegular = ( /*#__PURE__*/createFluentFontIcon("AddRegular", "", 2, undefined));
-          export const AddCircleFilled = ( /*#__PURE__*/createFluentFontIcon("AddCircleFilled", "", 2, undefined));
-          export const AddCircleRegular = ( /*#__PURE__*/createFluentFontIcon("AddCircleRegular", "", 2, undefined));
-          export const AddSquareFilled = ( /*#__PURE__*/createFluentFontIcon("AddSquareFilled", "", 2, undefined));
-          export const AddSquareRegular = ( /*#__PURE__*/createFluentFontIcon("AddSquareRegular", "", 2, undefined));
-          export const AddSquareMultipleFilled = ( /*#__PURE__*/createFluentFontIcon("AddSquareMultipleFilled", "", 2, undefined));
-          export const AddSquareMultipleRegular = ( /*#__PURE__*/createFluentFontIcon("AddSquareMultipleRegular", "", 2, undefined));
-          export const AddStarburstFilled = ( /*#__PURE__*/createFluentFontIcon("AddStarburstFilled", "", 2, undefined));
-          export const AddStarburstRegular = ( /*#__PURE__*/createFluentFontIcon("AddStarburstRegular", "", 2, undefined));
-          export const AddSubtractCircleFilled = ( /*#__PURE__*/createFluentFontIcon("AddSubtractCircleFilled", "", 2, undefined));
-          export const AddSubtractCircleRegular = ( /*#__PURE__*/createFluentFontIcon("AddSubtractCircleRegular", "", 2, undefined));
-          export const AgentsFilled = ( /*#__PURE__*/createFluentFontIcon("AgentsFilled", "", 2, undefined));
-          export const AgentsRegular = ( /*#__PURE__*/createFluentFontIcon("AgentsRegular", "", 2, undefined));
-          export const AgentsAddFilled = ( /*#__PURE__*/createFluentFontIcon("AgentsAddFilled", "", 2, undefined));
-          export const AgentsAddRegular = ( /*#__PURE__*/createFluentFontIcon("AgentsAddRegular", "", 2, undefined));
+          import { createFluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
+          export const BackpackFilled = ( /*#__PURE__*/createFluentFontIcon("BackpackFilled", "", 2, undefined));
+          export const BackpackRegular = ( /*#__PURE__*/createFluentFontIcon("BackpackRegular", "", 2, undefined));
+          export const BackpackAddFilled = ( /*#__PURE__*/createFluentFontIcon("BackpackAddFilled", "", 2, undefined));
+          export const BackpackAddRegular = ( /*#__PURE__*/createFluentFontIcon("BackpackAddRegular", "", 2, undefined));
+          export const BackspaceFilled = ( /*#__PURE__*/createFluentFontIcon("BackspaceFilled", "", 2, undefined));
+          export const BackspaceRegular = ( /*#__PURE__*/createFluentFontIcon("BackspaceRegular", "", 2, undefined));
+          export const CalculatorFilled = ( /*#__PURE__*/createFluentFontIcon("CalculatorFilled", "", 2, undefined));
+          export const CalculatorRegular = ( /*#__PURE__*/createFluentFontIcon("CalculatorRegular", "", 2, undefined));
+          export const CalculatorArrowClockwiseFilled = ( /*#__PURE__*/createFluentFontIcon("CalculatorArrowClockwiseFilled", "", 2, undefined));
+          export const CalculatorArrowClockwiseRegular = ( /*#__PURE__*/createFluentFontIcon("CalculatorArrowClockwiseRegular", "", 2, undefined));
+          export const CalculatorMultipleFilled = ( /*#__PURE__*/createFluentFontIcon("CalculatorMultipleFilled", "", 2, undefined));
+          export const CalculatorMultipleRegular = ( /*#__PURE__*/createFluentFontIcon("CalculatorMultipleRegular", "", 2, undefined));
+          export const CalendarFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarFilled", "", 2, undefined, { flipInRtl: true }));
+          export const CalendarRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarRegular", "", 2, undefined, { flipInRtl: true }));
+          export const Calendar3DayFilled = ( /*#__PURE__*/createFluentFontIcon("Calendar3DayFilled", "", 2, undefined));
+          export const Calendar3DayRegular = ( /*#__PURE__*/createFluentFontIcon("Calendar3DayRegular", "", 2, undefined));
+          export const CalendarAddFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarAddFilled", "", 2, undefined));
+          export const CalendarAddRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarAddRegular", "", 2, undefined));
+          export const CalendarAgendaFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarAgendaFilled", "", 2, undefined));
+          export const CalendarAgendaRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarAgendaRegular", "", 2, undefined));
+          export const CalendarArrowCounterclockwiseFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowCounterclockwiseFilled", "", 2, undefined));
+          export const CalendarArrowCounterclockwiseRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowCounterclockwiseRegular", "", 2, undefined));
+          export const CalendarArrowDownFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowDownFilled", "", 2, undefined));
+          export const CalendarArrowDownRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowDownRegular", "", 2, undefined));
+          export const CalendarArrowRepeatAllFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRepeatAllFilled", "", 2, undefined));
+          export const CalendarArrowRepeatAllRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRepeatAllRegular", "", 2, undefined));
+          export const CalendarArrowRightFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRightFilled", "", 2, undefined));
+          export const CalendarArrowRightRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRightRegular", "", 2, undefined));
           ... (content truncated for snapshot)"
         `);
 
@@ -1237,36 +1459,36 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
-          export declare const AccessTimeFilled: FluentFontIcon;
-          export declare const AccessTimeRegular: FluentFontIcon;
-          export declare const AccessibilityFilled: FluentFontIcon;
-          export declare const AccessibilityRegular: FluentFontIcon;
-          export declare const AccessibilityCheckmarkFilled: FluentFontIcon;
-          export declare const AccessibilityCheckmarkRegular: FluentFontIcon;
-          export declare const AccessibilityErrorFilled: FluentFontIcon;
-          export declare const AccessibilityErrorRegular: FluentFontIcon;
-          export declare const AccessibilityMoreFilled: FluentFontIcon;
-          export declare const AccessibilityMoreRegular: FluentFontIcon;
-          export declare const AccessibilityQuestionMarkFilled: FluentFontIcon;
-          export declare const AccessibilityQuestionMarkRegular: FluentFontIcon;
-          export declare const AddFilled: FluentFontIcon;
-          export declare const AddRegular: FluentFontIcon;
-          export declare const AddCircleFilled: FluentFontIcon;
-          export declare const AddCircleRegular: FluentFontIcon;
-          export declare const AddSquareFilled: FluentFontIcon;
-          export declare const AddSquareRegular: FluentFontIcon;
-          export declare const AddSquareMultipleFilled: FluentFontIcon;
-          export declare const AddSquareMultipleRegular: FluentFontIcon;
-          export declare const AddStarburstFilled: FluentFontIcon;
-          export declare const AddStarburstRegular: FluentFontIcon;
-          export declare const AddSubtractCircleFilled: FluentFontIcon;
-          export declare const AddSubtractCircleRegular: FluentFontIcon;
-          export declare const AgentsFilled: FluentFontIcon;
-          export declare const AgentsRegular: FluentFontIcon;
-          export declare const AgentsAddFilled: FluentFontIcon;
-          export declare const AgentsAddRegular: FluentFontIcon;
-          export declare const AirplaneFilled: FluentFontIcon;
+          "import type { FluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
+          export declare const BackpackFilled: FluentFontIcon;
+          export declare const BackpackRegular: FluentFontIcon;
+          export declare const BackpackAddFilled: FluentFontIcon;
+          export declare const BackpackAddRegular: FluentFontIcon;
+          export declare const BackspaceFilled: FluentFontIcon;
+          export declare const BackspaceRegular: FluentFontIcon;
+          export declare const CalculatorFilled: FluentFontIcon;
+          export declare const CalculatorRegular: FluentFontIcon;
+          export declare const CalculatorArrowClockwiseFilled: FluentFontIcon;
+          export declare const CalculatorArrowClockwiseRegular: FluentFontIcon;
+          export declare const CalculatorMultipleFilled: FluentFontIcon;
+          export declare const CalculatorMultipleRegular: FluentFontIcon;
+          export declare const CalendarFilled: FluentFontIcon;
+          export declare const CalendarRegular: FluentFontIcon;
+          export declare const Calendar3DayFilled: FluentFontIcon;
+          export declare const Calendar3DayRegular: FluentFontIcon;
+          export declare const CalendarAddFilled: FluentFontIcon;
+          export declare const CalendarAddRegular: FluentFontIcon;
+          export declare const CalendarAgendaFilled: FluentFontIcon;
+          export declare const CalendarAgendaRegular: FluentFontIcon;
+          export declare const CalendarArrowCounterclockwiseFilled: FluentFontIcon;
+          export declare const CalendarArrowCounterclockwiseRegular: FluentFontIcon;
+          export declare const CalendarArrowDownFilled: FluentFontIcon;
+          export declare const CalendarArrowDownRegular: FluentFontIcon;
+          export declare const CalendarArrowRepeatAllFilled: FluentFontIcon;
+          export declare const CalendarArrowRepeatAllRegular: FluentFontIcon;
+          export declare const CalendarArrowRightFilled: FluentFontIcon;
+          export declare const CalendarArrowRightRegular: FluentFontIcon;
+          export declare const CalendarAssistantFilled: FluentFontIcon;
           ... (content truncated for snapshot)"
         `);
       }
@@ -1291,36 +1513,36 @@ describe('Build Verification', () => {
         const jsContent = await readFile(jsFile, 'utf8');
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
-          "... (10 export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))
+          "... (12 export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))
           "use client";
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const createFluentFontIcon_1 = require("../../utils/fonts/createFluentFontIcon");
-          exports.AccessTimeFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AccessTimeFilled", "", 2, undefined));
-          exports.AccessTimeRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AccessTimeRegular", "", 2, undefined));
-          exports.AccessibilityFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AccessibilityFilled", "", 2, undefined));
-          exports.AccessibilityRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AccessibilityRegular", "", 2, undefined));
-          exports.AccessibilityCheckmarkFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AccessibilityCheckmarkFilled", "", 2, undefined));
-          exports.AccessibilityCheckmarkRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AccessibilityCheckmarkRegular", "", 2, undefined));
-          exports.AccessibilityErrorFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AccessibilityErrorFilled", "", 2, undefined));
-          exports.AccessibilityErrorRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AccessibilityErrorRegular", "", 2, undefined));
-          exports.AccessibilityMoreFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AccessibilityMoreFilled", "", 2, undefined));
-          exports.AccessibilityMoreRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AccessibilityMoreRegular", "", 2, undefined));
-          exports.AccessibilityQuestionMarkFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AccessibilityQuestionMarkFilled", "", 2, undefined));
-          exports.AccessibilityQuestionMarkRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AccessibilityQuestionMarkRegular", "", 2, undefined));
-          exports.AddFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AddFilled", "", 2, undefined));
-          exports.AddRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AddRegular", "", 2, undefined));
-          exports.AddCircleFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AddCircleFilled", "", 2, undefined));
-          exports.AddCircleRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AddCircleRegular", "", 2, undefined));
-          exports.AddSquareFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AddSquareFilled", "", 2, undefined));
-          exports.AddSquareRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AddSquareRegular", "", 2, undefined));
-          exports.AddSquareMultipleFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AddSquareMultipleFilled", "", 2, undefined));
-          exports.AddSquareMultipleRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AddSquareMultipleRegular", "", 2, undefined));
-          exports.AddStarburstFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AddStarburstFilled", "", 2, undefined));
-          exports.AddStarburstRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AddStarburstRegular", "", 2, undefined));
-          exports.AddSubtractCircleFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AddSubtractCircleFilled", "", 2, undefined));
-          exports.AddSubtractCircleRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AddSubtractCircleRegular", "", 2, undefined));
-          exports.AgentsFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AgentsFilled", "", 2, undefined));
+          exports.BackpackFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackpackFilled", "", 2, undefined));
+          exports.BackpackRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackpackRegular", "", 2, undefined));
+          exports.BackpackAddFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackpackAddFilled", "", 2, undefined));
+          exports.BackpackAddRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackpackAddRegular", "", 2, undefined));
+          exports.BackspaceFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackspaceFilled", "", 2, undefined));
+          exports.BackspaceRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackspaceRegular", "", 2, undefined));
+          exports.CalculatorFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorFilled", "", 2, undefined));
+          exports.CalculatorRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorRegular", "", 2, undefined));
+          exports.CalculatorArrowClockwiseFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorArrowClockwiseFilled", "", 2, undefined));
+          exports.CalculatorArrowClockwiseRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorArrowClockwiseRegular", "", 2, undefined));
+          exports.CalculatorMultipleFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorMultipleFilled", "", 2, undefined));
+          exports.CalculatorMultipleRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorMultipleRegular", "", 2, undefined));
+          exports.CalendarFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarFilled", "", 2, undefined, { flipInRtl: true }));
+          exports.CalendarRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarRegular", "", 2, undefined, { flipInRtl: true }));
+          exports.Calendar3DayFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Calendar3DayFilled", "", 2, undefined));
+          exports.Calendar3DayRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Calendar3DayRegular", "", 2, undefined));
+          exports.CalendarAddFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAddFilled", "", 2, undefined));
+          exports.CalendarAddRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAddRegular", "", 2, undefined));
+          exports.CalendarAgendaFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAgendaFilled", "", 2, undefined));
+          exports.CalendarAgendaRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAgendaRegular", "", 2, undefined));
+          exports.CalendarArrowCounterclockwiseFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowCounterclockwiseFilled", "", 2, undefined));
+          exports.CalendarArrowCounterclockwiseRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowCounterclockwiseRegular", "", 2, undefined));
+          exports.CalendarArrowDownFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowDownFilled", "", 2, undefined));
+          exports.CalendarArrowDownRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowDownRegular", "", 2, undefined));
+          exports.CalendarArrowRepeatAllFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowRepeatAllFilled", "", 2, undefined));
           ... (content truncated for snapshot)"
         `);
 
@@ -1328,36 +1550,36 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
-          export declare const AccessTimeFilled: FluentFontIcon;
-          export declare const AccessTimeRegular: FluentFontIcon;
-          export declare const AccessibilityFilled: FluentFontIcon;
-          export declare const AccessibilityRegular: FluentFontIcon;
-          export declare const AccessibilityCheckmarkFilled: FluentFontIcon;
-          export declare const AccessibilityCheckmarkRegular: FluentFontIcon;
-          export declare const AccessibilityErrorFilled: FluentFontIcon;
-          export declare const AccessibilityErrorRegular: FluentFontIcon;
-          export declare const AccessibilityMoreFilled: FluentFontIcon;
-          export declare const AccessibilityMoreRegular: FluentFontIcon;
-          export declare const AccessibilityQuestionMarkFilled: FluentFontIcon;
-          export declare const AccessibilityQuestionMarkRegular: FluentFontIcon;
-          export declare const AddFilled: FluentFontIcon;
-          export declare const AddRegular: FluentFontIcon;
-          export declare const AddCircleFilled: FluentFontIcon;
-          export declare const AddCircleRegular: FluentFontIcon;
-          export declare const AddSquareFilled: FluentFontIcon;
-          export declare const AddSquareRegular: FluentFontIcon;
-          export declare const AddSquareMultipleFilled: FluentFontIcon;
-          export declare const AddSquareMultipleRegular: FluentFontIcon;
-          export declare const AddStarburstFilled: FluentFontIcon;
-          export declare const AddStarburstRegular: FluentFontIcon;
-          export declare const AddSubtractCircleFilled: FluentFontIcon;
-          export declare const AddSubtractCircleRegular: FluentFontIcon;
-          export declare const AgentsFilled: FluentFontIcon;
-          export declare const AgentsRegular: FluentFontIcon;
-          export declare const AgentsAddFilled: FluentFontIcon;
-          export declare const AgentsAddRegular: FluentFontIcon;
-          export declare const AirplaneFilled: FluentFontIcon;
+          "import type { FluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
+          export declare const BackpackFilled: FluentFontIcon;
+          export declare const BackpackRegular: FluentFontIcon;
+          export declare const BackpackAddFilled: FluentFontIcon;
+          export declare const BackpackAddRegular: FluentFontIcon;
+          export declare const BackspaceFilled: FluentFontIcon;
+          export declare const BackspaceRegular: FluentFontIcon;
+          export declare const CalculatorFilled: FluentFontIcon;
+          export declare const CalculatorRegular: FluentFontIcon;
+          export declare const CalculatorArrowClockwiseFilled: FluentFontIcon;
+          export declare const CalculatorArrowClockwiseRegular: FluentFontIcon;
+          export declare const CalculatorMultipleFilled: FluentFontIcon;
+          export declare const CalculatorMultipleRegular: FluentFontIcon;
+          export declare const CalendarFilled: FluentFontIcon;
+          export declare const CalendarRegular: FluentFontIcon;
+          export declare const Calendar3DayFilled: FluentFontIcon;
+          export declare const Calendar3DayRegular: FluentFontIcon;
+          export declare const CalendarAddFilled: FluentFontIcon;
+          export declare const CalendarAddRegular: FluentFontIcon;
+          export declare const CalendarAgendaFilled: FluentFontIcon;
+          export declare const CalendarAgendaRegular: FluentFontIcon;
+          export declare const CalendarArrowCounterclockwiseFilled: FluentFontIcon;
+          export declare const CalendarArrowCounterclockwiseRegular: FluentFontIcon;
+          export declare const CalendarArrowDownFilled: FluentFontIcon;
+          export declare const CalendarArrowDownRegular: FluentFontIcon;
+          export declare const CalendarArrowRepeatAllFilled: FluentFontIcon;
+          export declare const CalendarArrowRepeatAllRegular: FluentFontIcon;
+          export declare const CalendarArrowRightFilled: FluentFontIcon;
+          export declare const CalendarArrowRightRegular: FluentFontIcon;
+          export declare const CalendarAssistantFilled: FluentFontIcon;
           ... (content truncated for snapshot)"
         `);
       }
@@ -1383,35 +1605,35 @@ describe('Build Verification', () => {
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
           ""use client";
-          import { createFluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
-          export const AccessibilityCheckmark32Light = ( /*#__PURE__*/createFluentFontIcon("AccessibilityCheckmark32Light", "", 3, 32));
-          export const Add32Light = ( /*#__PURE__*/createFluentFontIcon("Add32Light", "", 3, 32));
-          export const Alert32Light = ( /*#__PURE__*/createFluentFontIcon("Alert32Light", "", 3, 32));
-          export const AppFolder32Light = ( /*#__PURE__*/createFluentFontIcon("AppFolder32Light", "", 3, 32));
-          export const AppGeneric32Light = ( /*#__PURE__*/createFluentFontIcon("AppGeneric32Light", "", 3, 32));
-          export const Archive32Light = ( /*#__PURE__*/createFluentFontIcon("Archive32Light", "", 3, 32));
-          export const ArchiveSettings32Light = ( /*#__PURE__*/createFluentFontIcon("ArchiveSettings32Light", "", 3, 32));
-          export const ArrowClockwise32Light = ( /*#__PURE__*/createFluentFontIcon("ArrowClockwise32Light", "", 3, 32));
-          export const ArrowDown32Light = ( /*#__PURE__*/createFluentFontIcon("ArrowDown32Light", "", 3, 32));
-          export const ArrowDownload32Light = ( /*#__PURE__*/createFluentFontIcon("ArrowDownload32Light", "", 3, 32));
-          export const ArrowForward32Light = ( /*#__PURE__*/createFluentFontIcon("ArrowForward32Light", "", 3, 32));
-          export const ArrowHookDownLeft32Light = ( /*#__PURE__*/createFluentFontIcon("ArrowHookDownLeft32Light", "", 3, 32));
-          export const ArrowHookDownRight32Light = ( /*#__PURE__*/createFluentFontIcon("ArrowHookDownRight32Light", "", 3, 32));
-          export const ArrowHookUpLeft32Light = ( /*#__PURE__*/createFluentFontIcon("ArrowHookUpLeft32Light", "", 3, 32));
-          export const ArrowHookUpRight32Light = ( /*#__PURE__*/createFluentFontIcon("ArrowHookUpRight32Light", "", 3, 32));
-          export const ArrowRedo32Light = ( /*#__PURE__*/createFluentFontIcon("ArrowRedo32Light", "", 3, 32));
-          export const ArrowReply32Light = ( /*#__PURE__*/createFluentFontIcon("ArrowReply32Light", "", 3, 32));
-          export const ArrowReplyAll32Light = ( /*#__PURE__*/createFluentFontIcon("ArrowReplyAll32Light", "", 3, 32));
-          export const ArrowUndo32Light = ( /*#__PURE__*/createFluentFontIcon("ArrowUndo32Light", "", 3, 32));
-          export const Attach32Light = ( /*#__PURE__*/createFluentFontIcon("Attach32Light", "", 3, 32));
-          export const AutoFit32Light = ( /*#__PURE__*/createFluentFontIcon("AutoFit32Light", "", 3, 32));
-          export const AutoFitWidth32Light = ( /*#__PURE__*/createFluentFontIcon("AutoFitWidth32Light", "", 3, 32));
-          export const Autocorrect32Light = ( /*#__PURE__*/createFluentFontIcon("Autocorrect32Light", "", 3, 32));
-          export const BookContacts32Light = ( /*#__PURE__*/createFluentFontIcon("BookContacts32Light", "", 3, 32));
-          export const BreakoutRoom32Light = ( /*#__PURE__*/createFluentFontIcon("BreakoutRoom32Light", "", 3, 32));
-          export const Broom32Light = ( /*#__PURE__*/createFluentFontIcon("Broom32Light", "", 3, 32));
+          import { createFluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
           export const Calendar3Day32Light = ( /*#__PURE__*/createFluentFontIcon("Calendar3Day32Light", "", 3, 32));
           export const CalendarCheckmark32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarCheckmark32Light", "", 3, 32));
+          export const CalendarClock32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarClock32Light", "", 3, 32));
+          export const CalendarDataBar32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarDataBar32Light", "", 3, 32));
+          export const CalendarDay32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarDay32Light", "", 3, 32));
+          export const CalendarEdit32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarEdit32Light", "", 3, 32));
+          export const CalendarEmpty32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarEmpty32Light", "", 3, 32));
+          export const CalendarLtr32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarLtr32Light", "", 3, 32));
+          export const CalendarMonth32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarMonth32Light", "", 3, 32));
+          export const CalendarMultiple32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarMultiple32Light", "", 3, 32));
+          export const CalendarPattern32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarPattern32Light", "", 3, 32));
+          export const CalendarReply32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarReply32Light", "", 3, 32));
+          export const CalendarSparkle32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarSparkle32Light", "", 3, 32));
+          export const CalendarTodo32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarTodo32Light", "", 3, 32));
+          export const CalendarWorkWeek32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarWorkWeek32Light", "", 3, 32));
+          export const Comment32Light = ( /*#__PURE__*/createFluentFontIcon("Comment32Light", "", 3, 32));
+          export const CommentAdd32Light = ( /*#__PURE__*/createFluentFontIcon("CommentAdd32Light", "", 3, 32));
+          export const Compose32Light = ( /*#__PURE__*/createFluentFontIcon("Compose32Light", "", 3, 32));
+          export const Lasso32Light = ( /*#__PURE__*/createFluentFontIcon("Lasso32Light", "", 3, 32));
+          export const Mail32Light = ( /*#__PURE__*/createFluentFontIcon("Mail32Light", "", 3, 32));
+          export const MailAlert32Light = ( /*#__PURE__*/createFluentFontIcon("MailAlert32Light", "", 3, 32));
+          export const MailArrowClockwise32Light = ( /*#__PURE__*/createFluentFontIcon("MailArrowClockwise32Light", "", 3, 32));
+          export const MailArrowDoubleBack32Light = ( /*#__PURE__*/createFluentFontIcon("MailArrowDoubleBack32Light", "", 3, 32));
+          export const MailCopy32Light = ( /*#__PURE__*/createFluentFontIcon("MailCopy32Light", "", 3, 32));
+          export const MailEdit32Light = ( /*#__PURE__*/createFluentFontIcon("MailEdit32Light", "", 3, 32));
+          export const MailList32Light = ( /*#__PURE__*/createFluentFontIcon("MailList32Light", "", 3, 32));
+          export const MailMultiple32Light = ( /*#__PURE__*/createFluentFontIcon("MailMultiple32Light", "", 3, 32));
+          export const MailRead32Light = ( /*#__PURE__*/createFluentFontIcon("MailRead32Light", "", 3, 32));
           ... (content truncated for snapshot)"
         `);
 
@@ -1419,36 +1641,36 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
-          export declare const AccessibilityCheckmark32Light: FluentFontIcon;
-          export declare const Add32Light: FluentFontIcon;
-          export declare const Alert32Light: FluentFontIcon;
-          export declare const AppFolder32Light: FluentFontIcon;
-          export declare const AppGeneric32Light: FluentFontIcon;
-          export declare const Archive32Light: FluentFontIcon;
-          export declare const ArchiveSettings32Light: FluentFontIcon;
-          export declare const ArrowClockwise32Light: FluentFontIcon;
-          export declare const ArrowDown32Light: FluentFontIcon;
-          export declare const ArrowDownload32Light: FluentFontIcon;
-          export declare const ArrowForward32Light: FluentFontIcon;
-          export declare const ArrowHookDownLeft32Light: FluentFontIcon;
-          export declare const ArrowHookDownRight32Light: FluentFontIcon;
-          export declare const ArrowHookUpLeft32Light: FluentFontIcon;
-          export declare const ArrowHookUpRight32Light: FluentFontIcon;
-          export declare const ArrowRedo32Light: FluentFontIcon;
-          export declare const ArrowReply32Light: FluentFontIcon;
-          export declare const ArrowReplyAll32Light: FluentFontIcon;
-          export declare const ArrowUndo32Light: FluentFontIcon;
-          export declare const Attach32Light: FluentFontIcon;
-          export declare const AutoFit32Light: FluentFontIcon;
-          export declare const AutoFitWidth32Light: FluentFontIcon;
-          export declare const Autocorrect32Light: FluentFontIcon;
-          export declare const BookContacts32Light: FluentFontIcon;
-          export declare const BreakoutRoom32Light: FluentFontIcon;
-          export declare const Broom32Light: FluentFontIcon;
+          "import type { FluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
           export declare const Calendar3Day32Light: FluentFontIcon;
           export declare const CalendarCheckmark32Light: FluentFontIcon;
           export declare const CalendarClock32Light: FluentFontIcon;
+          export declare const CalendarDataBar32Light: FluentFontIcon;
+          export declare const CalendarDay32Light: FluentFontIcon;
+          export declare const CalendarEdit32Light: FluentFontIcon;
+          export declare const CalendarEmpty32Light: FluentFontIcon;
+          export declare const CalendarLtr32Light: FluentFontIcon;
+          export declare const CalendarMonth32Light: FluentFontIcon;
+          export declare const CalendarMultiple32Light: FluentFontIcon;
+          export declare const CalendarPattern32Light: FluentFontIcon;
+          export declare const CalendarReply32Light: FluentFontIcon;
+          export declare const CalendarSparkle32Light: FluentFontIcon;
+          export declare const CalendarTodo32Light: FluentFontIcon;
+          export declare const CalendarWorkWeek32Light: FluentFontIcon;
+          export declare const Comment32Light: FluentFontIcon;
+          export declare const CommentAdd32Light: FluentFontIcon;
+          export declare const Compose32Light: FluentFontIcon;
+          export declare const Lasso32Light: FluentFontIcon;
+          export declare const Mail32Light: FluentFontIcon;
+          export declare const MailAlert32Light: FluentFontIcon;
+          export declare const MailArrowClockwise32Light: FluentFontIcon;
+          export declare const MailArrowDoubleBack32Light: FluentFontIcon;
+          export declare const MailCopy32Light: FluentFontIcon;
+          export declare const MailEdit32Light: FluentFontIcon;
+          export declare const MailList32Light: FluentFontIcon;
+          export declare const MailMultiple32Light: FluentFontIcon;
+          export declare const MailRead32Light: FluentFontIcon;
+          export declare const MailReadMultiple32Light: FluentFontIcon;
           ... (content truncated for snapshot)"
         `);
       }
@@ -1473,36 +1695,36 @@ describe('Build Verification', () => {
         const jsContent = await readFile(jsFile, 'utf8');
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
-          "... (10 export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))
+          "... (43 export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))
           "use client";
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const createFluentFontIcon_1 = require("../../utils/fonts/createFluentFontIcon");
-          exports.AccessibilityCheckmark32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AccessibilityCheckmark32Light", "", 3, 32));
-          exports.Add32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Add32Light", "", 3, 32));
-          exports.Alert32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Alert32Light", "", 3, 32));
-          exports.AppFolder32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AppFolder32Light", "", 3, 32));
-          exports.AppGeneric32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AppGeneric32Light", "", 3, 32));
-          exports.Archive32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Archive32Light", "", 3, 32));
-          exports.ArchiveSettings32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("ArchiveSettings32Light", "", 3, 32));
-          exports.ArrowClockwise32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("ArrowClockwise32Light", "", 3, 32));
-          exports.ArrowDown32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("ArrowDown32Light", "", 3, 32));
-          exports.ArrowDownload32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("ArrowDownload32Light", "", 3, 32));
-          exports.ArrowForward32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("ArrowForward32Light", "", 3, 32));
-          exports.ArrowHookDownLeft32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("ArrowHookDownLeft32Light", "", 3, 32));
-          exports.ArrowHookDownRight32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("ArrowHookDownRight32Light", "", 3, 32));
-          exports.ArrowHookUpLeft32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("ArrowHookUpLeft32Light", "", 3, 32));
-          exports.ArrowHookUpRight32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("ArrowHookUpRight32Light", "", 3, 32));
-          exports.ArrowRedo32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("ArrowRedo32Light", "", 3, 32));
-          exports.ArrowReply32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("ArrowReply32Light", "", 3, 32));
-          exports.ArrowReplyAll32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("ArrowReplyAll32Light", "", 3, 32));
-          exports.ArrowUndo32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("ArrowUndo32Light", "", 3, 32));
-          exports.Attach32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Attach32Light", "", 3, 32));
-          exports.AutoFit32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AutoFit32Light", "", 3, 32));
-          exports.AutoFitWidth32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("AutoFitWidth32Light", "", 3, 32));
-          exports.Autocorrect32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Autocorrect32Light", "", 3, 32));
-          exports.BookContacts32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BookContacts32Light", "", 3, 32));
-          exports.BreakoutRoom32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BreakoutRoom32Light", "", 3, 32));
+          exports.Calendar3Day32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Calendar3Day32Light", "", 3, 32));
+          exports.CalendarCheckmark32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarCheckmark32Light", "", 3, 32));
+          exports.CalendarClock32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarClock32Light", "", 3, 32));
+          exports.CalendarDataBar32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarDataBar32Light", "", 3, 32));
+          exports.CalendarDay32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarDay32Light", "", 3, 32));
+          exports.CalendarEdit32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarEdit32Light", "", 3, 32));
+          exports.CalendarEmpty32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarEmpty32Light", "", 3, 32));
+          exports.CalendarLtr32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarLtr32Light", "", 3, 32));
+          exports.CalendarMonth32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarMonth32Light", "", 3, 32));
+          exports.CalendarMultiple32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarMultiple32Light", "", 3, 32));
+          exports.CalendarPattern32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarPattern32Light", "", 3, 32));
+          exports.CalendarReply32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarReply32Light", "", 3, 32));
+          exports.CalendarSparkle32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarSparkle32Light", "", 3, 32));
+          exports.CalendarTodo32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarTodo32Light", "", 3, 32));
+          exports.CalendarWorkWeek32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarWorkWeek32Light", "", 3, 32));
+          exports.Comment32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Comment32Light", "", 3, 32));
+          exports.CommentAdd32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CommentAdd32Light", "", 3, 32));
+          exports.Compose32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Compose32Light", "", 3, 32));
+          exports.Lasso32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Lasso32Light", "", 3, 32));
+          exports.Mail32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Mail32Light", "", 3, 32));
+          exports.MailAlert32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("MailAlert32Light", "", 3, 32));
+          exports.MailArrowClockwise32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("MailArrowClockwise32Light", "", 3, 32));
+          exports.MailArrowDoubleBack32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("MailArrowDoubleBack32Light", "", 3, 32));
+          exports.MailCopy32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("MailCopy32Light", "", 3, 32));
+          exports.MailEdit32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("MailEdit32Light", "", 3, 32));
           ... (content truncated for snapshot)"
         `);
 
@@ -1510,36 +1732,36 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentFontIcon } from "../../utils/fonts/createFluentFontIcon";
-          export declare const AccessibilityCheckmark32Light: FluentFontIcon;
-          export declare const Add32Light: FluentFontIcon;
-          export declare const Alert32Light: FluentFontIcon;
-          export declare const AppFolder32Light: FluentFontIcon;
-          export declare const AppGeneric32Light: FluentFontIcon;
-          export declare const Archive32Light: FluentFontIcon;
-          export declare const ArchiveSettings32Light: FluentFontIcon;
-          export declare const ArrowClockwise32Light: FluentFontIcon;
-          export declare const ArrowDown32Light: FluentFontIcon;
-          export declare const ArrowDownload32Light: FluentFontIcon;
-          export declare const ArrowForward32Light: FluentFontIcon;
-          export declare const ArrowHookDownLeft32Light: FluentFontIcon;
-          export declare const ArrowHookDownRight32Light: FluentFontIcon;
-          export declare const ArrowHookUpLeft32Light: FluentFontIcon;
-          export declare const ArrowHookUpRight32Light: FluentFontIcon;
-          export declare const ArrowRedo32Light: FluentFontIcon;
-          export declare const ArrowReply32Light: FluentFontIcon;
-          export declare const ArrowReplyAll32Light: FluentFontIcon;
-          export declare const ArrowUndo32Light: FluentFontIcon;
-          export declare const Attach32Light: FluentFontIcon;
-          export declare const AutoFit32Light: FluentFontIcon;
-          export declare const AutoFitWidth32Light: FluentFontIcon;
-          export declare const Autocorrect32Light: FluentFontIcon;
-          export declare const BookContacts32Light: FluentFontIcon;
-          export declare const BreakoutRoom32Light: FluentFontIcon;
-          export declare const Broom32Light: FluentFontIcon;
+          "import type { FluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
           export declare const Calendar3Day32Light: FluentFontIcon;
           export declare const CalendarCheckmark32Light: FluentFontIcon;
           export declare const CalendarClock32Light: FluentFontIcon;
+          export declare const CalendarDataBar32Light: FluentFontIcon;
+          export declare const CalendarDay32Light: FluentFontIcon;
+          export declare const CalendarEdit32Light: FluentFontIcon;
+          export declare const CalendarEmpty32Light: FluentFontIcon;
+          export declare const CalendarLtr32Light: FluentFontIcon;
+          export declare const CalendarMonth32Light: FluentFontIcon;
+          export declare const CalendarMultiple32Light: FluentFontIcon;
+          export declare const CalendarPattern32Light: FluentFontIcon;
+          export declare const CalendarReply32Light: FluentFontIcon;
+          export declare const CalendarSparkle32Light: FluentFontIcon;
+          export declare const CalendarTodo32Light: FluentFontIcon;
+          export declare const CalendarWorkWeek32Light: FluentFontIcon;
+          export declare const Comment32Light: FluentFontIcon;
+          export declare const CommentAdd32Light: FluentFontIcon;
+          export declare const Compose32Light: FluentFontIcon;
+          export declare const Lasso32Light: FluentFontIcon;
+          export declare const Mail32Light: FluentFontIcon;
+          export declare const MailAlert32Light: FluentFontIcon;
+          export declare const MailArrowClockwise32Light: FluentFontIcon;
+          export declare const MailArrowDoubleBack32Light: FluentFontIcon;
+          export declare const MailCopy32Light: FluentFontIcon;
+          export declare const MailEdit32Light: FluentFontIcon;
+          export declare const MailList32Light: FluentFontIcon;
+          export declare const MailMultiple32Light: FluentFontIcon;
+          export declare const MailRead32Light: FluentFontIcon;
+          export declare const MailReadMultiple32Light: FluentFontIcon;
           ... (content truncated for snapshot)"
         `);
       }
@@ -1585,6 +1807,151 @@ describe('Build Verification', () => {
     });
   });
 
+  describe(`Atoms`, () => {
+    function getAssetPaths() {
+      const svgPathEsm = path.join(__dirname, 'lib', 'atoms/svg');
+      const svgPathCjs = path.join(__dirname, 'lib-cjs', 'atoms/svg');
+      const fontsPathEsm = path.join(__dirname, 'lib', 'atoms/fonts');
+      const fontsPathCjs = path.join(__dirname, 'lib-cjs', 'atoms/fonts');
+      return { svgPathEsm, svgPathCjs, fontsPathEsm, fontsPathCjs };
+    }
+
+    /**
+     *
+     * @param {string} assetPath
+     */
+    async function getStats(assetPath) {
+      const files = await readdir(assetPath);
+      const jsFiles = files.filter((f) => f.endsWith('.js'));
+      return { files, jsFiles };
+    }
+
+    it(`should have same number of atoms/svg icon files in lib and lib-cjs`, async () => {
+      const { svgPathCjs, svgPathEsm } = getAssetPaths();
+      const esmStats = await getStats(svgPathEsm);
+      const cjsStats = await getStats(svgPathCjs);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2773`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2773`);
+    });
+    it(`should have same number of atoms/fonts icon files in lib and lib-cjs`, async () => {
+      const { fontsPathCjs, fontsPathEsm } = getAssetPaths();
+      const esmStats = await getStats(fontsPathEsm);
+      const cjsStats = await getStats(fontsPathCjs);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2766`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2766`);
+    });
+    it.each(['lib', 'lib-cjs'])('should have atoms/svg directory with icon files in %s', async (libDir) => {
+      const atomsSvgPath = path.join(__dirname, libDir, 'atoms', 'svg');
+
+      // Check atoms/svg directory exists
+      expect(fs.existsSync(atomsSvgPath)).toBe(true);
+      const stats = await stat(atomsSvgPath);
+      expect(stats.isDirectory()).toBe(true);
+
+      const { files, jsFiles } = await getStats(atomsSvgPath);
+
+      // Snapshot the list of .js files to catch any unexpected changes
+      expect(jsFiles).toMatchSnapshot();
+
+      // Every .js file should have a corresponding .d.ts file
+      for (const jsFile of jsFiles) {
+        const baseName = jsFile.replace('.js', '');
+        const dtsFile = `${baseName}.d.ts`;
+        expect(files).toContain(dtsFile);
+      }
+
+      // Sample check: access-time should exist
+      expect(files).toContain('access-time.js');
+      expect(files).toContain('access-time.d.ts');
+    });
+
+    it.each(['lib', 'lib-cjs'])('should have atoms/fonts directory with icon files in %s', async (libDir) => {
+      const atomsFontsPath = path.join(__dirname, libDir, 'atoms', 'fonts');
+
+      // Check atoms/fonts directory exists
+      expect(fs.existsSync(atomsFontsPath)).toBe(true);
+      const stats = await stat(atomsFontsPath);
+      expect(stats.isDirectory()).toBe(true);
+
+      const { files, jsFiles } = await getStats(atomsFontsPath);
+
+      // Snapshot the list of .js files to catch any unexpected changes
+      expect(jsFiles).toMatchSnapshot();
+
+      // Every .js file should have a corresponding .d.ts file
+      for (const jsFile of jsFiles) {
+        const baseName = jsFile.replace('.js', '');
+        const dtsFile = `${baseName}.d.ts`;
+        expect(files).toContain(dtsFile);
+      }
+
+      // Sample check: access-time should exist
+      expect(files).toContain('access-time.js');
+      expect(files).toContain('access-time.d.ts');
+    });
+
+    it('atom files should export icon variants correctly [svg]', async () => {
+      const atomFilePath = path.join(__dirname, 'lib', 'atoms', 'svg', 'access-time.js');
+      expect(fs.existsSync(atomFilePath)).toBe(true);
+
+      const content = await readFile(atomFilePath, 'utf-8');
+
+      // Should contain exports for different variants
+      expect(content).toContain('export const AccessTimeFilled');
+      expect(content).toContain('export const AccessTimeRegular');
+
+      // Should contain sized variants
+      expect(content).toContain('export const AccessTime20Filled');
+      expect(content).toContain('export const AccessTime20Regular');
+      expect(content).toContain('export const AccessTime24Filled');
+      expect(content).toContain('export const AccessTime24Regular');
+
+      // Should use createFluentIcon
+      expect(content).toContain('createFluentIcon');
+    });
+
+    it('atom files should export icon variants correctly [fonts]', async () => {
+      const atomFilePath = path.join(__dirname, 'lib', 'atoms', 'fonts', 'access-time.js');
+      expect(fs.existsSync(atomFilePath)).toBe(true);
+
+      const content = await readFile(atomFilePath, 'utf-8');
+
+      // Should contain exports for different variants
+      expect(content).toContain('export const AccessTimeFilled');
+      expect(content).toContain('export const AccessTimeRegular');
+
+      // Should use createFluentFontIcon
+      expect(content).toContain('createFluentFontIcon');
+    });
+
+    it('atom TypeScript definition files should have correct exports', async () => {
+      const atomDtsPath = path.join(__dirname, 'lib', 'atoms', 'svg', 'access-time.d.ts');
+      expect(fs.existsSync(atomDtsPath)).toBe(true);
+
+      const content = await readFile(atomDtsPath, 'utf-8');
+
+      // Should export icon components (using declare const for .d.ts files)
+      expect(content).toContain('export declare const AccessTimeFilled');
+      expect(content).toContain('export declare const AccessTimeRegular');
+      expect(content).toContain('FluentIcon');
+    });
+
+    it('atoms exports should be accessible via package.json exports', () => {
+      const packageJsonPath = path.join(__dirname, 'package.json');
+      const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
+
+      // Check that ./svg/* and ./fonts/* exports are defined
+      expect(packageJson.exports['./svg/*']).toBeDefined();
+      expect(packageJson.exports['./fonts/*']).toBeDefined();
+
+      // Check that they point to atoms directories
+      expect(packageJson.exports['./svg/*'].import).toBe('./lib/atoms/svg/*.js');
+      expect(packageJson.exports['./svg/*'].require).toBe('./lib-cjs/atoms/svg/*.js');
+      expect(packageJson.exports['./fonts/*'].import).toBe('./lib/atoms/fonts/*.js');
+      expect(packageJson.exports['./fonts/*'].require).toBe('./lib-cjs/atoms/fonts/*.js');
+    });
+  });
+
   describe('Metadata Validation', () => {
     it('metadata.json should have no uncommitted changes after build', () => {
       // Check if metadata.json exists
@@ -1596,16 +1963,16 @@ describe('Build Verification', () => {
         const gitDiff = execSync('git diff metadata.json', {
           encoding: 'utf-8',
           cwd: __dirname,
-          stdio: 'pipe'
+          stdio: 'pipe',
         });
 
         // If there's a diff, the test should fail with a helpful message
         if (gitDiff.trim()) {
           throw new Error(
             `metadata.json has uncommitted changes after build.\n` +
-            `This means the committed metadata.json is out of sync with the current icons.\n` +
-            `Please run 'npm run build' and commit the updated metadata.json file.\n\n` +
-            `Git diff:\n${gitDiff}`
+              `This means the committed metadata.json is out of sync with the current icons.\n` +
+              `Please run 'npm run build' and commit the updated metadata.json file.\n\n` +
+              `Git diff:\n${gitDiff}`,
           );
         }
 
@@ -1613,7 +1980,7 @@ describe('Build Verification', () => {
         expect(gitDiff.trim()).toBe('');
       } catch (error) {
         // Handle cases where git command fails (e.g., not in a git repo, file not tracked)
-        if (error.status === 128) {
+        if (error && typeof error === 'object' && 'status' in error && error.status === 128) {
           // Git command failed - this might be expected in some CI environments
           // We'll skip this test with a warning
           console.warn('Git diff check skipped - not in a git repository or metadata.json not tracked');
@@ -1624,6 +1991,5 @@ describe('Build Verification', () => {
         throw error;
       }
     });
-
   });
 });

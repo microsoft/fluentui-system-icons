@@ -22,8 +22,8 @@ There are also helpful interfaces that will allow you to add styling to fit the 
 
 
 
-User flows
----
+## Usage
+
 In order to use these icons, simply import them as `import { [Componentname][state] } from @fluentui/react-icons` as follows:
 
 ```tsx
@@ -47,6 +47,7 @@ If you would like to get the bundled icon without any of the default styling, th
 ```tsx
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+
 import {
     AccessTimeFilled,
     AccessTimeRegular,
@@ -54,7 +55,7 @@ import {
     iconFilledClassName,
     iconRegularClassName
 } from "@fluentui/react-icons";
-import { makeStyles } from "@fluentui/react-make-styles";
+import { makeStyles } from "@griffel/react";
 
 
 const iconStyleProps: FluentIconsProps = {
@@ -86,8 +87,8 @@ ReactDOM.render(
     )
 ```
 
-Using the icon font
----
+### Using the icon font
+
 If, for performance or other reasons, you wish to use the font implementation of these icons rather than the SVG implementation, you can specify `"fluentIconFont"` as a condition for the import, either via [Node >= 12.19.0](https://nodejs.org/dist/latest-v16.x/docs/api/packages.html#resolving-user-conditions) or [webpack >= 5.0.0](https://webpack.js.org/configuration/resolve/#resolveconditionnames).
 
 ```js
@@ -128,8 +129,148 @@ These are the only two types of breaking changes that deviate from standard sema
 
 **Recommendation**: When upgrading, even for patch versions, review the release notes for any removed or renamed icons to ensure your application isn't affected.
 
-Viewing the icons in a webpage
----
+
+## Atomic API
+
+The Atomic API provides a more granular way to import icons, with each icon variant exported individually from dedicated module files. This approach can significantly improve tree-shaking and reduce bundle sizes, especially when you only use a small subset of the available icons.
+
+### Benefits
+- **Better tree-shaking**: Import only the exact icon variants you need
+- **Smaller bundles**: Each icon variant is in its own file, allowing bundlers to eliminate unused code more effectively
+- **Grouped variants**: Related icon variants (different sizes and styles) are grouped together in a single file for convenience
+
+
+### File Organization
+
+Icons with multiple variants are automatically grouped into a single file:
+- **Example**: `access-time.js` contains all AccessTime variants (AccessTime20Regular, AccessTime24Filled, etc.)
+- **Average**: ~9 exports per file (mix of sizes and styles)
+
+This grouping strikes a balance between granularity and convenience, making it easy to import related variants while still maintaining excellent tree-shaking characteristics.
+
+### Using API directly
+
+Icons are available via two export maps:
+- `@fluentui/react-icons/svg/*` - SVG-based icons
+- `@fluentui/react-icons/fonts/*` - Font-based icons
+
+```tsx
+// Import individual icon variants from grouped files
+import { AccessTime20Filled, AccessTime24Filled, AccessTime20Regular } from "@fluentui/react-icons/svg/access-time";
+import { Add16Filled, Add20Filled } from "@fluentui/react-icons/fonts/add";
+
+function MyComponent() {
+  return (
+    <>
+      <AccessTime20Filled />
+      <Add16Filled />
+    </>
+  );
+}
+```
+
+#### TypeScript Configuration
+
+**IMPORTANT**: TypeScript users must use `moduleResolution: "bundler"` (or `"node16"`/`"nodenext"`) in their `tsconfig.json` to properly resolve these atomic exports:
+
+```json
+{
+  "compilerOptions": {
+    "moduleResolution": "bundler"
+  }
+}
+```
+
+Without this setting, TypeScript will not be able to resolve the individual icon exports from the grouped files.
+
+### Using API via build transform
+
+Migrating a larger codebase to the new performant atomic imports might be a daunting task. To make this migration more straightforward, you can leverage build-time import transforms to get all the benefits without modifying your actual code.
+
+These transforms automatically rewrite imports from:
+```tsx
+import { AccessTime24Filled } from "@fluentui/react-icons";
+```
+
+To the optimized atomic import:
+```tsx
+import { AccessTime24Filled } from "@fluentui/react-icons/svg/access-time";
+```
+
+This transformation happens at build time, so your source code remains unchanged while your bundled output gets the full tree-shaking benefits.
+
+#### Babel
+
+If you use Babel for transpilation, add [babel-plugin-transform-imports](https://www.npmjs.com/package/babel-plugin-transform-imports) with the following setup:
+
+```js
+// @filename .babelrc.js
+module.exports = {
+  presets: [
+    // ... your preset configuration
+  ],
+  plugins: [
+    [
+      'transform-imports',
+      {
+        '@fluentui/react-icons': {
+          transform: (importName) => {
+            const withoutSuffix = importName.replace(
+              /(\d*)?(Regular|Filled|Light|Color)$/,
+              ''
+            );
+
+            const kebabCase = withoutSuffix
+              .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+              .toLowerCase();
+
+            return `@fluentui/react-icons/svg/${kebabCase}`;
+          },
+          preventFullImport: false,
+          skipDefaultConversion: true,
+        },
+      },
+    ],
+  ],
+};
+```
+
+#### SWC
+
+If you use SWC for transpilation, add [@swc/plugin-transform-imports](https://www.npmjs.com/package/@swc/plugin-transform-imports) with the following setup:
+
+```jsonc
+// @filename .swcrc
+{
+  "jsc": {
+    "experimental": {
+      "plugins": [
+        [
+          "@swc/plugin-transform-imports",
+          {
+            "@fluentui/react-icons": {
+              "transform": [
+                [
+                  "(\\D*)(\\d*)?(Regular|Filled|Light|Color)",
+                  "@fluentui/react-icons/svg/{{ kebabCase memberMatches.[1] }}"
+                ]
+              ],
+              "preventFullImport": false,
+              "skipDefaultConversion": true,
+              "handleDefaultImport": false,
+              "handleNamespaceImport": false
+            }
+          }
+        ]
+      ]
+    }
+  }
+}
+```
+
+
+## Viewing the icons in a webpage
+
 You can view the full list of available icons by type: [regular](https://github.com/microsoft/fluentui-system-icons/blob/main/icons_regular.md) or [filled](https://github.com/microsoft/fluentui-system-icons/blob/main/icons_filled.md)
 
 ## Appendix and FAQ

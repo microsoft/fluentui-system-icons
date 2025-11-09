@@ -29,6 +29,7 @@ packages/react-icons/intermediate
 packages/react-icons/react-icons-test/
 packages/react-icons/lib/
 packages/react-icons/lib-cjs/
+packages/react-icons/src/atoms
 packages/react-icons/src/icons
 packages/react-icons/src/sizedIcons
 packages/react-icons/src/index.tsx
