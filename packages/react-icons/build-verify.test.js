@@ -1624,16 +1624,16 @@ describe('Build Verification', () => {
           export const Comment32Light = ( /*#__PURE__*/createFluentFontIcon("Comment32Light", "", 3, 32));
           export const CommentAdd32Light = ( /*#__PURE__*/createFluentFontIcon("CommentAdd32Light", "", 3, 32));
           export const Compose32Light = ( /*#__PURE__*/createFluentFontIcon("Compose32Light", "", 3, 32));
-          export const Lasso32Light = ( /*#__PURE__*/createFluentFontIcon("Lasso32Light", "", 3, 32));
-          export const Mail32Light = ( /*#__PURE__*/createFluentFontIcon("Mail32Light", "", 3, 32));
-          export const MailAlert32Light = ( /*#__PURE__*/createFluentFontIcon("MailAlert32Light", "", 3, 32));
-          export const MailArrowClockwise32Light = ( /*#__PURE__*/createFluentFontIcon("MailArrowClockwise32Light", "", 3, 32));
-          export const MailArrowDoubleBack32Light = ( /*#__PURE__*/createFluentFontIcon("MailArrowDoubleBack32Light", "", 3, 32));
-          export const MailCopy32Light = ( /*#__PURE__*/createFluentFontIcon("MailCopy32Light", "", 3, 32));
-          export const MailEdit32Light = ( /*#__PURE__*/createFluentFontIcon("MailEdit32Light", "", 3, 32));
-          export const MailList32Light = ( /*#__PURE__*/createFluentFontIcon("MailList32Light", "", 3, 32));
-          export const MailMultiple32Light = ( /*#__PURE__*/createFluentFontIcon("MailMultiple32Light", "", 3, 32));
-          export const MailRead32Light = ( /*#__PURE__*/createFluentFontIcon("MailRead32Light", "", 3, 32));
+          export const Lasso32Light = ( /*#__PURE__*/createFluentFontIcon("Lasso32Light", "", 3, 32));
+          export const Mail32Light = ( /*#__PURE__*/createFluentFontIcon("Mail32Light", "", 3, 32));
+          export const MailAlert32Light = ( /*#__PURE__*/createFluentFontIcon("MailAlert32Light", "", 3, 32));
+          export const MailArrowClockwise32Light = ( /*#__PURE__*/createFluentFontIcon("MailArrowClockwise32Light", "", 3, 32));
+          export const MailArrowDoubleBack32Light = ( /*#__PURE__*/createFluentFontIcon("MailArrowDoubleBack32Light", "", 3, 32));
+          export const MailCopy32Light = ( /*#__PURE__*/createFluentFontIcon("MailCopy32Light", "", 3, 32));
+          export const MailEdit32Light = ( /*#__PURE__*/createFluentFontIcon("MailEdit32Light", "", 3, 32));
+          export const MailList32Light = ( /*#__PURE__*/createFluentFontIcon("MailList32Light", "", 3, 32));
+          export const MailMultiple32Light = ( /*#__PURE__*/createFluentFontIcon("MailMultiple32Light", "", 3, 32));
+          export const MailRead32Light = ( /*#__PURE__*/createFluentFontIcon("MailRead32Light", "", 3, 32));
           ... (content truncated for snapshot)"
         `);
 
@@ -1718,13 +1718,13 @@ describe('Build Verification', () => {
           exports.Comment32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Comment32Light", "", 3, 32));
           exports.CommentAdd32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CommentAdd32Light", "", 3, 32));
           exports.Compose32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Compose32Light", "", 3, 32));
-          exports.Lasso32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Lasso32Light", "", 3, 32));
-          exports.Mail32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Mail32Light", "", 3, 32));
-          exports.MailAlert32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("MailAlert32Light", "", 3, 32));
-          exports.MailArrowClockwise32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("MailArrowClockwise32Light", "", 3, 32));
-          exports.MailArrowDoubleBack32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("MailArrowDoubleBack32Light", "", 3, 32));
-          exports.MailCopy32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("MailCopy32Light", "", 3, 32));
-          exports.MailEdit32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("MailEdit32Light", "", 3, 32));
+          exports.Lasso32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Lasso32Light", "", 3, 32));
+          exports.Mail32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Mail32Light", "", 3, 32));
+          exports.MailAlert32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("MailAlert32Light", "", 3, 32));
+          exports.MailArrowClockwise32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("MailArrowClockwise32Light", "", 3, 32));
+          exports.MailArrowDoubleBack32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("MailArrowDoubleBack32Light", "", 3, 32));
+          exports.MailCopy32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("MailCopy32Light", "", 3, 32));
+          exports.MailEdit32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("MailEdit32Light", "", 3, 32));
           ... (content truncated for snapshot)"
         `);
 
@@ -1830,15 +1830,15 @@ describe('Build Verification', () => {
       const { svgPathCjs, svgPathEsm } = getAssetPaths();
       const esmStats = await getStats(svgPathEsm);
       const cjsStats = await getStats(svgPathCjs);
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2773`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2773`);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2777`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2777`);
     });
     it(`should have same number of atoms/fonts icon files in lib and lib-cjs`, async () => {
       const { fontsPathCjs, fontsPathEsm } = getAssetPaths();
       const esmStats = await getStats(fontsPathEsm);
       const cjsStats = await getStats(fontsPathCjs);
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2766`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2766`);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2770`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2770`);
     });
     it.each(['lib', 'lib-cjs'])('should have atoms/svg directory with icon files in %s', async (libDir) => {
       const atomsSvgPath = path.join(__dirname, libDir, 'atoms', 'svg');
