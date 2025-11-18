@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Delete Off,delete_off,20,filled,ic_fluent_delete_off_20_filled.svg,Delete Off/SVG/ic_fluent_delete_off_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Delete%20Off/SVG/ic_fluent_delete_off_20_filled.svg
+Delete Off,delete_off,20,regular,ic_fluent_delete_off_20_regular.svg,Delete Off/SVG/ic_fluent_delete_off_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Delete%20Off/SVG/ic_fluent_delete_off_20_regular.svg
+Delete Off,delete_off,24,filled,ic_fluent_delete_off_24_filled.svg,Delete Off/SVG/ic_fluent_delete_off_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Delete%20Off/SVG/ic_fluent_delete_off_24_filled.svg
+Delete Off,delete_off,24,regular,ic_fluent_delete_off_24_regular.svg,Delete Off/SVG/ic_fluent_delete_off_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Delete%20Off/SVG/ic_fluent_delete_off_24_regular.svg

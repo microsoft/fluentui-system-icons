@@ -1,0 +1,7 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Rocket,rocket,16,filled,ic_fluent_rocket_16_filled.svg,Rocket/SVG/ic_fluent_rocket_16_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Rocket/SVG/ic_fluent_rocket_16_filled.svg
+Rocket,rocket,16,regular,ic_fluent_rocket_16_regular.svg,Rocket/SVG/ic_fluent_rocket_16_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Rocket/SVG/ic_fluent_rocket_16_regular.svg
+Rocket,rocket,20,filled,ic_fluent_rocket_20_filled.svg,Rocket/SVG/ic_fluent_rocket_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Rocket/SVG/ic_fluent_rocket_20_filled.svg
+Rocket,rocket,20,regular,ic_fluent_rocket_20_regular.svg,Rocket/SVG/ic_fluent_rocket_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Rocket/SVG/ic_fluent_rocket_20_regular.svg
+Rocket,rocket,24,filled,ic_fluent_rocket_24_filled.svg,Rocket/SVG/ic_fluent_rocket_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Rocket/SVG/ic_fluent_rocket_24_filled.svg
+Rocket,rocket,24,regular,ic_fluent_rocket_24_regular.svg,Rocket/SVG/ic_fluent_rocket_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Rocket/SVG/ic_fluent_rocket_24_regular.svg

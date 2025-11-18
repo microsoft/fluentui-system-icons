@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Note Pin,note_pin,16,filled,ic_fluent_note_pin_16_filled.svg,Note Pin/SVG/ic_fluent_note_pin_16_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Note%20Pin/SVG/ic_fluent_note_pin_16_filled.svg
+Note Pin,note_pin,16,regular,ic_fluent_note_pin_16_regular.svg,Note Pin/SVG/ic_fluent_note_pin_16_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Note%20Pin/SVG/ic_fluent_note_pin_16_regular.svg
+Note Pin,note_pin,20,filled,ic_fluent_note_pin_20_filled.svg,Note Pin/SVG/ic_fluent_note_pin_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Note%20Pin/SVG/ic_fluent_note_pin_20_filled.svg
+Note Pin,note_pin,20,regular,ic_fluent_note_pin_20_regular.svg,Note Pin/SVG/ic_fluent_note_pin_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Note%20Pin/SVG/ic_fluent_note_pin_20_regular.svg

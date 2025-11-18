@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Mail Pause,mail_pause,16,filled,ic_fluent_mail_pause_16_filled.svg,Mail Pause/SVG/ic_fluent_mail_pause_16_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Mail%20Pause/SVG/ic_fluent_mail_pause_16_filled.svg
+Mail Pause,mail_pause,16,regular,ic_fluent_mail_pause_16_regular.svg,Mail Pause/SVG/ic_fluent_mail_pause_16_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Mail%20Pause/SVG/ic_fluent_mail_pause_16_regular.svg
+Mail Pause,mail_pause,20,filled,ic_fluent_mail_pause_20_filled.svg,Mail Pause/SVG/ic_fluent_mail_pause_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Mail%20Pause/SVG/ic_fluent_mail_pause_20_filled.svg
+Mail Pause,mail_pause,20,regular,ic_fluent_mail_pause_20_regular.svg,Mail Pause/SVG/ic_fluent_mail_pause_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Mail%20Pause/SVG/ic_fluent_mail_pause_20_regular.svg

@@ -1,0 +1,11 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Door,door,16,filled,ic_fluent_door_16_filled.svg,Door/SVG/ic_fluent_door_16_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Door/SVG/ic_fluent_door_16_filled.svg
+Door,door,16,regular,ic_fluent_door_16_regular.svg,Door/SVG/ic_fluent_door_16_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Door/SVG/ic_fluent_door_16_regular.svg
+Door,door,20,filled,ic_fluent_door_20_filled.svg,Door/SVG/ic_fluent_door_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Door/SVG/ic_fluent_door_20_filled.svg
+Door,door,20,regular,ic_fluent_door_20_regular.svg,Door/SVG/ic_fluent_door_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Door/SVG/ic_fluent_door_20_regular.svg
+Door,door,24,filled,ic_fluent_door_24_filled.svg,Door/SVG/ic_fluent_door_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Door/SVG/ic_fluent_door_24_filled.svg
+Door,door,24,regular,ic_fluent_door_24_regular.svg,Door/SVG/ic_fluent_door_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Door/SVG/ic_fluent_door_24_regular.svg
+Door,door,28,filled,ic_fluent_door_28_filled.svg,Door/SVG/ic_fluent_door_28_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Door/SVG/ic_fluent_door_28_filled.svg
+Door,door,28,regular,ic_fluent_door_28_regular.svg,Door/SVG/ic_fluent_door_28_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Door/SVG/ic_fluent_door_28_regular.svg
+Door,door,32,filled,ic_fluent_door_32_filled.svg,Door/SVG/ic_fluent_door_32_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Door/SVG/ic_fluent_door_32_filled.svg
+Door,door,32,regular,ic_fluent_door_32_regular.svg,Door/SVG/ic_fluent_door_32_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Door/SVG/ic_fluent_door_32_regular.svg
