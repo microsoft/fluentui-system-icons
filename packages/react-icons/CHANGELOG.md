@@ -1,3 +1,7 @@
+## 2.0.315 (2025-11-18)
+
+This release contains icon updates
+
 ## 2.0.314 (2025-11-12)
 
 ### 🚀 Features
