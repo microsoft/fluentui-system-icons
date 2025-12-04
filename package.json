@@ -5,11 +5,28 @@
     "packages/*",
     "importer"
   ],
+  "engines": {
+    "node": "^20.0.0 || ^22.0.0"
+  },
   "description": "![CI](https://github.com/microsoft/fluentui-system-icons/workflows/CI/badge.svg)",
   "version": "1.0.0",
   "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/microsoft/fluentui-system-icons.git"
+  },
+  "scripts": {
+    "reset-workspace": "git clean -dXf",
+    "postinstall": "patch-package"
+  },
+  "devDependencies": {
+    "@nx/js": "21.6.5",
+    "eslint": "8.57.1",
+    "nx": "21.6.5",
+    "patch-package": "8.0.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "typescript": "5.0.4",
+    "typescript-eslint": "7.18.0"
   }
 }

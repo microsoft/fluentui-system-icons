@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
+    "noEmit": true,
     "pretty": true,
     "outDir": "lib",
     "target": "ES2019",
     "module": "esnext",
     "lib": ["ES2019", "dom"],
     "types": [],
-    "declaration": true,
     "experimentalDecorators": true,
-    "importHelpers": true,
     "forceConsistentCasingInFileNames": true,
     "strictNullChecks": true,
     "moduleResolution": "node",
@@ -17,5 +16,5 @@
     "allowSyntheticDefaultImports": true
   },
   "include": ["src"],
-  "exclude": ["lib", "lib-cjs", "node_modules"]
+  "exclude": ["lib", "lib-cjs", "node_modules", "src/**/*.test.ts", "src/**/*.test.tsx", "src/index.tsx", "src/fonts/", "src/icons/", "src/sizedIcons/", "src/atoms/"]
 }

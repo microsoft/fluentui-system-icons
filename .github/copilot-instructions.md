@@ -15,7 +15,7 @@ Purpose: Enable rapid, correct contributions across multi-platform icon packages
 
 ## Key Workflows (Local)
 - Install deps (root + packages): `npm ci` at repo root (Yarn/PNPM NOT configured; uses npm workspaces).
-- React icons build (full): `cd packages/react-icons && npm run build` (runs font + svg generation + JS emission). Quick validation only: `npm run build:verify` (Vitest metadata checks).
+- React icons build (full): `cd packages/react-icons && npm run build` (runs font + svg generation + JS emission). Quick validation only: `npm run build-verify` (Vitest metadata checks).
 - React Native icons build: `cd packages/react-native-icons && npm run build`.
 - SVG raw assets: `cd packages/svg-icons && npm run build`.
 - Sprites: `cd packages/svg-sprites && npm run build`.
@@ -24,7 +24,7 @@ Purpose: Enable rapid, correct contributions across multi-platform icon packages
 
 ## CI Expectations / Pitfalls
 - PR validation (`.github/workflows/pr.yml`) enforces: (1) asset folder names not ending with space; (2) all non-color SVGs include `fill="#212121"` (except `*_color.svg` which are skipped). Maintain fill when editing SVGs; use scripts (`optimize`, `unfill`) instead of hand-edits.
-- React build job runs `lint`, full `build`, and `build:verify`; keep TypeScript version constraints (TS ~4.1) when adding language features.
+- React build job runs `lint`, full `build`, and `build-verify`; keep TypeScript version constraints (TS ~4.1) when adding language features.
 - iOS/Android build jobs rely on importer output; ensure importer scripts still produce expected file layout when modifying generation logic.
 
 ## Conventions & Patterns
@@ -40,7 +40,7 @@ Purpose: Enable rapid, correct contributions across multi-platform icon packages
 1. Add raw SVG(s) to appropriate new/existing folder in `assets/` (ensure fill `#212121`).
 2. If direction-specific, set metadata / ensure RTL logic recognizes (inspect or extend `rtlMetadata.js`).
 3. Run relevant package builds (e.g., `packages/react-icons` build) to regenerate components and fonts.
-4. Run `npm run build:verify` in React icons to confirm metadata & generation integrity.
+4. Run `npm run build-verify` in React icons to confirm metadata & generation integrity.
 5. Commit generated outputs (generated code is tracked—do not manually edit `lib/` outputs; edit sources or generation scripts instead).
 6. Let CI validate fills & builds.
 
@@ -67,5 +67,26 @@ Purpose: Enable rapid, correct contributions across multi-platform icon packages
 - Builds succeed for changed packages.
 - No asset directories with trailing spaces.
 - All new SVGs pass fill rule.
-- React icons `build:verify` passes.
+- React icons `build-verify` passes.
 - Metadata (`metadata.json`) updated if generation logic changed.
+
+
+## Releases
+
+Whole repository is being released together via [.github/workflows/publish.yml](./workflows/publish.yml) workflow.
+
+### react-icons
+
+react-icons project uses `nx release` for changelog generation and versioning.
+
+Changelog is generated based on commits that modified files in `packages/react-icons/` only. While [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) are enabled, every release bump is driven by repo-wide versioning approach via programmatic manual scripts.
+
+For that reason we are not able to use specific git tags for `@fluentui/react-icons` releases rather workspace wide `1.1.{actual-bump-integer} pattern. We leverage this information further to obtain the previous version during changelog generation via `nx release changelog --from {$CURRENT_VERSION}` so we can feed in the correct batch of changes. If no relevant changes are found, the default message `This release contains icon updates` is used, to reflect `/assets` changes.
+
+> **NOTE:** Why `"projectsRelationship": "independent",` is used in `nx.json` for react-icons release?
+>
+> While the repo is on `fixed` release schema, we need to use independent to ignore commits that did not modify files in `packages/react-icons/`.
+
+#### react-icons Prerelease Publishing
+
+Prerelease versions of `@fluentui/react-icons` can be published via GitHub Actions workflow to allow testing and validation before official releases. See [prerelease publishing instructions](../packages//react-icons/docs/prerelease.md).

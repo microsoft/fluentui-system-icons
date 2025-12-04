@@ -2,7 +2,7 @@ import * as React from "react";
 import {  mergeClasses } from "@griffel/react";
 
 import { iconFilledClassName, iconRegularClassName } from "./constants";
-import { FluentIcon } from "./createFluentIcon";
+import type { FluentIcon } from "./createFluentIcon";
 import { useBundledIconStyles } from "./bundleIcon.styles";
 
 

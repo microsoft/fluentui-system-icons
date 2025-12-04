@@ -11,6 +11,9 @@ dist/
 .classpath
 .settings
 yarn.lock
+# ignore all package-lock.json files except the repo root
+**/package-lock.json
+!/package-lock.json
 
 .idea
 
@@ -26,6 +29,7 @@ packages/react-icons/intermediate
 packages/react-icons/react-icons-test/
 packages/react-icons/lib/
 packages/react-icons/lib-cjs/
+packages/react-icons/src/atoms
 packages/react-icons/src/icons
 packages/react-icons/src/sizedIcons
 packages/react-icons/src/index.tsx
@@ -54,3 +58,10 @@ SvgList.txt
 .venv
 
 .build
+
+
+
+.nx/cache
+.nx/workspace-data
+.cursor/rules/nx-rules.mdc
+.github/instructions/nx.instructions.md

@@ -1,0 +1,39 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"]
+    },
+    "lint": {},
+    "test": {}
+  },
+  "release": {
+    "projects": ["packages/react-icons"],
+    "projectsRelationship": "independent",
+    "version": {
+      "conventionalCommits": true,
+      "fallbackCurrentVersionResolver": "disk",
+      "git": {
+        "commit": false,
+        "tag": false,
+        "commitMessage": "chore(release): version {projectName} {version}"
+      }
+    },
+    "changelog": {
+      "workspaceChangelog": false,
+      "projectChangelogs": {
+        "entryWhenNoChanges": "This release contains icon updates",
+        "renderOptions": {
+          "authors": false,
+          "commitReferences": true,
+          "versionTitleDate": true
+        },
+        "git": {
+          "commit": false,
+          "commitMessage": "chore(release): update {projectName} changelog for {version}"
+        }
+      }
+    }
+  },
+  "tui": {"enabled": false}
+}

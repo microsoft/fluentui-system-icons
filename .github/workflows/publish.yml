@@ -33,6 +33,11 @@ jobs:
       with:
         token: ${{ steps.generate-token.outputs.token }}
 
+    - name: Fetch tags for changelog
+      run: |
+        git fetch --tags --force
+        git tag -l --sort=-creatordate | head -n 5
+
     - name: Bump version patch
       run: |
         grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec | python3 -c """
@@ -40,6 +45,7 @@ jobs:
         import os
         current_version = sys.stdin.read().strip().split(\"'\")[1]
         major, minor, patch = current_version.split('.')
+        os.system(f'echo \"CURRENT_VERSION={current_version}\" >> \$GITHUB_ENV')
         os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
         """
 
@@ -64,8 +70,8 @@ jobs:
       with:
         node-version: 20.x
 
-    - run: npm ci
-      working-directory: importer
+    - name: Install dependencies
+      run: npm ci
 
     ## iOS
     - name: Run iOS generate script
@@ -136,12 +142,6 @@ jobs:
         rm packages/svg-sprites/package.json.bk
 
     # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in react-icons/package.json
-      run: |
-        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?(-rc\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-icons/package.json
-        rm packages/react-icons/package.json.bk
-
-    # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version number in react-native-icons/package.json
       run: |
         sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$REACT_VERSION\"/g" packages/react-native-icons/package.json
@@ -153,9 +153,6 @@ jobs:
         sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?(-rc\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-icons-font-subsetting-webpack-plugin/package.json
         rm packages/react-icons-font-subsetting-webpack-plugin/package.json.bk
 
-    - name: Install dependencies
-      run: npm ci
-
     - name: Build SVG library
       run: |
         npm run build
@@ -166,10 +163,6 @@ jobs:
         npm run build
       working-directory: packages/svg-sprites
 
-    - name: Build React library
-      run: |
-        npm run build
-      working-directory: packages/react-icons
 
     - name: Build Webpack plugin library
       run: |
@@ -180,6 +173,17 @@ jobs:
       run: |
         npm run build
       working-directory: packages/react-native-icons
+
+    - name: Build React library
+      run: |
+        npx nx run react-icons:build
+        npx nx run react-icons:build-verify -u
+
+    # NX Release
+    - name: react-icons prepare release
+      run: |
+        npx nx release version $REACT_VERSION --verbose
+        npx nx release changelog $REACT_VERSION --from $CURRENT_VERSION --no-git-tag --no-git-commit --verbose
 
     - uses: JS-DevTools/npm-publish@v1
       with:

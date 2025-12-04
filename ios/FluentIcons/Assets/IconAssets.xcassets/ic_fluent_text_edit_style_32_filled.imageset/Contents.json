@@ -1,0 +1,26 @@
+{
+  "images": [
+    {
+      "filename": "ic_fluent_text_edit_style_32_filled.svg",
+      "idiom": "universal"
+    },
+    {
+      "filename": "en_ic_fluent_text_edit_style_32_filled.svg",
+      "idiom": "universal",
+      "locale": "en"
+    },
+    {
+      "filename": "ko_ic_fluent_text_edit_style_32_filled.svg",
+      "idiom": "universal",
+      "locale": "ko"
+    }
+  ],
+  "info": {
+    "author": "xcode",
+    "version": 1
+  },
+  "properties": {
+    "localizable": true,
+    "template-rendering-intent": "template"
+  }
+}

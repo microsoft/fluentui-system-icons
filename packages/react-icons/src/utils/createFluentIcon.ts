@@ -4,10 +4,7 @@ import { FluentIconsProps } from "./FluentIconsProps.types";
 import { useIconState } from "./useIconState";
 import { useRootStyles } from "./createFluentIcon.styles";
 
-export type FluentIcon = {
-    (props: FluentIconsProps): JSX.Element;
-    displayName?: string;
-}
+export type FluentIcon = React.FC<FluentIconsProps>
 
 export type CreateFluentIconOptions = {
     flipInRtl?: boolean;

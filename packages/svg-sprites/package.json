@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/svg-sprites",
-  "version": "1.1.310",
+  "version": "1.1.315",
   "description": "Fluent System Icons are a collection of familiar, friendly, and modern icons from Microsoft.",
   "license": "MIT",
   "repository": {
@@ -11,12 +11,12 @@
     "sprites"
   ],
   "scripts": {
-    "clean": "shx rm -rf ./icons ./sprites",
+    "clean": "git clean -fXd ./icons ./sprites",
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./icons --extension=svg",
-    "rename": "renamer --find ic_fluent_ ./icons/*",
+    "rename": "renamer --find ic_fluent_ './icons/*'",
     "optimize": "svgo --config svgo.config.js --folder=./icons --precision=2",
     "unfill": "node unfill.js --path=./icons/",
-    "sprites": "mkdir ./sprites && for i in ./icons/*.svg; do svgstore -o \"./sprites/$(basename $i .svg).sprite.svg\" \"$i\"; done",
+    "sprites": "node generate-sprites.js",
     "postsprites": "rm -rf ./icons",
     "build": "npm run copy && npm run rename && npm run unfill && npm run optimize && npm run sprites"
   },
@@ -24,8 +24,8 @@
     "renamer": "^2.0.1",
     "replace": "^1.2.0",
     "shx": "^0.3.2",
-    "svgstore-cli": "^2.0.0",
     "svgo": "^2.8.0",
+    "svgstore": "^3.0.1",
     "yargs": "^14.0.0"
   }
 }
