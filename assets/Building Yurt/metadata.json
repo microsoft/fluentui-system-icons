@@ -1,0 +1,16 @@
+{
+  "name": "Building Yurt",
+  "size": [16, 20],
+  "style": ["Regular", "Filled"],
+  "keyword": "fluent-icon",
+  "description": "Used to represent a yurt or shared living space in UI.",
+  "metaphor": [
+    "shelter",
+    "safety",
+    "location",
+    "space",
+    "camping",
+    "tent",
+    "yurt"
+  ]
+}
