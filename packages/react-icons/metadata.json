@@ -114104,6 +114104,16 @@
     "font": true,
     "type": "sized"
   },
+  "Test16Color": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "Test16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "TetrisApp16Filled": {
     "svg": true,
     "font": true,
