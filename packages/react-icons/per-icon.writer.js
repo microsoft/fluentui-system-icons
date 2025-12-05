@@ -212,7 +212,7 @@ function normalizeBaseName(fileName, styleVariants = ICON_STYLE_VARIANTS) {
   const parts = normalized.split('-');
   const styleSet = new Set(styleVariants);
 
-  while (parts.length > 0) {
+  while (parts.length > 1) {
     const last = parts[parts.length - 1];
     // treat pure numbers and tokens that are in styleTokens or contain 'color' as variant markers
     if (/^\d+$/.test(last) || styleSet.has(last) || last.includes('color')) {

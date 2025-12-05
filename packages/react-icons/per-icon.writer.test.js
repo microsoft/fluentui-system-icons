@@ -53,6 +53,7 @@ describe('normalizeBaseName', () => {
     expect(normalizeBaseName('zoom-in-16-regular')).toBe('zoom-in');
     expect(normalizeBaseName('my-icon-32-light.tsx')).toBe('my-icon');
     expect(normalizeBaseName('color-test-20_color.tsx')).toBe('color-test');
+    expect(normalizeBaseName('color-16-filled')).toBe('color');
     // numeric-only token
     expect(normalizeBaseName('example-24')).toBe('example');
   });
