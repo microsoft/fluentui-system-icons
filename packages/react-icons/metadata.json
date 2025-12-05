@@ -2364,6 +2364,16 @@
     "font": true,
     "type": "resizable"
   },
+  "BalconyFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "BalconyRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "BalloonFilled": {
     "svg": true,
     "font": true,
@@ -4140,6 +4150,16 @@
     "type": "resizable"
   },
   "BuildingTownhouseRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "BuildingYurtFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "BuildingYurtRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -6290,6 +6310,16 @@
     "type": "resizable"
   },
   "ClipboardBulletListRtlRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "ClipboardChatEmptyFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "ClipboardChatEmptyRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -8779,6 +8809,16 @@
     "font": true,
     "type": "resizable"
   },
+  "DeviceMeetingRoomAllInOneFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DeviceMeetingRoomAllInOneRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "DeviceMeetingRoomBarFilled": {
     "svg": true,
     "font": true,
@@ -9215,6 +9255,16 @@
     "type": "resizable"
   },
   "DocumentCssRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DocumentCsvFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DocumentCsvRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -12120,6 +12170,16 @@
     "type": "resizable"
   },
   "GasRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GasPropaneFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GasPropaneRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -15814,6 +15874,16 @@
     "font": true,
     "type": "resizable"
   },
+  "MicrowaveFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "MicrowaveRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "MidiFilled": {
     "svg": true,
     "font": true,
@@ -19219,6 +19289,16 @@
     "font": true,
     "type": "resizable"
   },
+  "ProhibitedSmokingFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "ProhibitedSmokingRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "ProjectionScreenFilled": {
     "svg": true,
     "font": true,
@@ -19375,6 +19455,16 @@
     "type": "resizable"
   },
   "QuestionCircleRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "QuizFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "QuizRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -19730,6 +19820,16 @@
     "type": "resizable"
   },
   "RecycleRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "RefrigeratorFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "RefrigeratorRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -20480,6 +20580,16 @@
     "type": "resizable"
   },
   "SeatAddRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "SeatMultipleStadiumFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "SeatMultipleStadiumRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -21330,6 +21440,16 @@
     "type": "resizable"
   },
   "SimRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "SineWaveDotsFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "SineWaveDotsRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -22564,6 +22684,16 @@
     "font": true,
     "type": "resizable"
   },
+  "StoveFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "StoveRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "StreamFilled": {
     "svg": true,
     "font": true,
@@ -23525,6 +23655,16 @@
     "type": "resizable"
   },
   "TableOffsetSettingsRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TablePicnicFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TablePicnicRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -26314,6 +26454,16 @@
     "font": true,
     "type": "resizable"
   },
+  "ToiletFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "ToiletRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "ToolboxColor": {
     "svg": true,
     "font": false,
@@ -26739,6 +26889,16 @@
     "font": true,
     "type": "resizable"
   },
+  "VehicleRvFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "VehicleRvRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "VehicleShipFilled": {
     "svg": true,
     "font": true,
@@ -26775,6 +26935,26 @@
     "type": "resizable"
   },
   "VehicleTractorRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "VehicleTrailerFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "VehicleTrailerRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "VehicleTrailerArrowDownFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "VehicleTrailerArrowDownRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -27120,6 +27300,26 @@
     "type": "resizable"
   },
   "VideoSettingsRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "VideoShortFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "VideoShortRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "VideoShortMultipleFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "VideoShortMultipleRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -37004,6 +37204,26 @@
     "font": true,
     "type": "sized"
   },
+  "Balcony16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Balcony16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Balcony20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Balcony20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Balloon12Filled": {
     "svg": true,
     "font": true,
@@ -42665,6 +42885,26 @@
     "type": "sized"
   },
   "BuildingTownhouse32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BuildingYurt16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BuildingYurt16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BuildingYurt20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BuildingYurt20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -50685,6 +50925,66 @@
     "type": "sized"
   },
   "ClipboardBulletListRtl20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClipboardChatEmpty16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClipboardChatEmpty16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClipboardChatEmpty20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClipboardChatEmpty20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClipboardChatEmpty24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClipboardChatEmpty24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClipboardChatEmpty28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClipboardChatEmpty28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClipboardChatEmpty32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClipboardChatEmpty32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClipboardChatEmpty48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClipboardChatEmpty48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -59714,6 +60014,66 @@
     "font": true,
     "type": "sized"
   },
+  "DeviceMeetingRoomAllInOne12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomAllInOne12Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomAllInOne16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomAllInOne16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomAllInOne20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomAllInOne20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomAllInOne24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomAllInOne24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomAllInOne28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomAllInOne28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomAllInOne32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomAllInOne32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "DeviceMeetingRoomBar12Filled": {
     "svg": true,
     "font": true,
@@ -61499,6 +61859,36 @@
     "font": true,
     "type": "sized"
   },
+  "DocumentCsv16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentCsv16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentCsv20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentCsv20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentCsv24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentCsv24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "DocumentCube20Filled": {
     "svg": true,
     "font": true,
@@ -62109,6 +62499,31 @@
     "font": true,
     "type": "sized"
   },
+  "DocumentHeaderFooter28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentHeaderFooter28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentHeaderFooter32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentHeaderFooter32Light": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentHeaderFooter32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "DocumentHeart20Filled": {
     "svg": true,
     "font": true,
@@ -62185,6 +62600,16 @@
     "type": "sized"
   },
   "DocumentJava20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentJavascript16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentJavascript16Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -70819,6 +71244,16 @@
     "font": true,
     "type": "sized"
   },
+  "Gas16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Gas16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Gas20Filled": {
     "svg": true,
     "font": true,
@@ -70835,6 +71270,26 @@
     "type": "sized"
   },
   "Gas24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GasPropane16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GasPropane16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GasPropane20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GasPropane20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -84134,6 +84589,26 @@
     "font": true,
     "type": "sized"
   },
+  "Microwave16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Microwave16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Microwave20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Microwave20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Midi20Filled": {
     "svg": true,
     "font": true,
@@ -97014,6 +97489,26 @@
     "font": true,
     "type": "sized"
   },
+  "ProhibitedSmoking16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ProhibitedSmoking16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ProhibitedSmoking20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ProhibitedSmoking20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "ProjectionScreen16Filled": {
     "svg": true,
     "font": true,
@@ -97715,6 +98210,46 @@
     "type": "sized"
   },
   "QuestionCircle48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Quiz20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Quiz20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Quiz24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Quiz24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Quiz28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Quiz28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Quiz48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Quiz48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -98900,6 +99435,26 @@
     "type": "sized"
   },
   "Recycle32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Refrigerator16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Refrigerator16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Refrigerator20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Refrigerator20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -101360,6 +101915,26 @@
     "type": "sized"
   },
   "SeatAdd24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SeatMultipleStadium16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SeatMultipleStadium16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SeatMultipleStadium20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SeatMultipleStadium20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -104315,6 +104890,66 @@
     "type": "sized"
   },
   "Sim24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SineWaveDots16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SineWaveDots16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SineWaveDots20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SineWaveDots20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SineWaveDots24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SineWaveDots24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SineWaveDots28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SineWaveDots28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SineWaveDots32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SineWaveDots32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SineWaveDots48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SineWaveDots48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -108939,6 +109574,26 @@
     "font": true,
     "type": "sized"
   },
+  "Stove16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Stove16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Stove20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Stove20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Stream20Filled": {
     "svg": true,
     "font": true,
@@ -111915,6 +112570,26 @@
     "type": "sized"
   },
   "TableOffsetSettings24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TablePicnic16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TablePicnic16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TablePicnic20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TablePicnic20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -119964,6 +120639,26 @@
     "font": true,
     "type": "sized"
   },
+  "Toilet16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Toilet16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Toilet20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Toilet20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Toolbox12Filled": {
     "svg": true,
     "font": true,
@@ -120249,6 +120944,16 @@
     "font": true,
     "type": "sized"
   },
+  "Translate28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Translate28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Translate32Filled": {
     "svg": true,
     "font": true,
@@ -120260,6 +120965,16 @@
     "type": "sized"
   },
   "Translate32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Translate48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Translate48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -121619,6 +122334,26 @@
     "font": true,
     "type": "sized"
   },
+  "VehicleRv16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VehicleRv16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VehicleRv20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VehicleRv20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "VehicleShip16Filled": {
     "svg": true,
     "font": true,
@@ -121725,6 +122460,46 @@
     "type": "sized"
   },
   "VehicleTractor24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VehicleTrailer16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VehicleTrailer16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VehicleTrailer20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VehicleTrailer20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VehicleTrailerArrowDown16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VehicleTrailerArrowDown16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VehicleTrailerArrowDown20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VehicleTrailerArrowDown20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -123135,6 +123910,126 @@
     "type": "sized"
   },
   "VideoSettings48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VideoShort16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VideoShort16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VideoShort20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VideoShort20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VideoShort24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VideoShort24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VideoShort28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VideoShort28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VideoShort32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VideoShort32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VideoShort48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VideoShort48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VideoShortMultiple16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VideoShortMultiple16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VideoShortMultiple20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VideoShortMultiple20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VideoShortMultiple24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VideoShortMultiple24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VideoShortMultiple28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VideoShortMultiple28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VideoShortMultiple32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VideoShortMultiple32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VideoShortMultiple48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "VideoShortMultiple48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"

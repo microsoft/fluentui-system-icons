@@ -1,18 +1,8 @@
 {
   "name": "Gas",
-  "size": [
-    24,
-    20
-  ],
-  "style": [
-    "Regular",
-    "Filled"
-  ],
+  "size": [24, 20, 16],
+  "style": ["Regular", "Filled"],
   "keyword": "fluent-icon",
   "description": "Used to represent travel & vehicle scenarios.",
-  "metaphor": [
-    "vehicle",
-    "gas",
-    "travel"
-  ]
+  "metaphor": ["vehicle", "gas", "travel"]
 }
