@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Food Pizza,food_pizza,20,filled,ic_fluent_food_pizza_20_filled.svg,Food Pizza/SVG/ic_fluent_food_pizza_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Food%20Pizza/SVG/ic_fluent_food_pizza_20_filled.svg
+Food Pizza,food_pizza,20,regular,ic_fluent_food_pizza_20_regular.svg,Food Pizza/SVG/ic_fluent_food_pizza_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Food%20Pizza/SVG/ic_fluent_food_pizza_20_regular.svg
+Food Pizza,food_pizza,24,filled,ic_fluent_food_pizza_24_filled.svg,Food Pizza/SVG/ic_fluent_food_pizza_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Food%20Pizza/SVG/ic_fluent_food_pizza_24_filled.svg
+Food Pizza,food_pizza,24,regular,ic_fluent_food_pizza_24_regular.svg,Food Pizza/SVG/ic_fluent_food_pizza_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Food%20Pizza/SVG/ic_fluent_food_pizza_24_regular.svg

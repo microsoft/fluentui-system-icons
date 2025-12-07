@@ -1,0 +1,8 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Color,color,16,filled,ic_fluent_color_16_filled.svg,Color/SVG/ic_fluent_color_16_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Color/SVG/ic_fluent_color_16_filled.svg
+Color,color,16,regular,ic_fluent_color_16_regular.svg,Color/SVG/ic_fluent_color_16_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Color/SVG/ic_fluent_color_16_regular.svg
+Color,color,20,filled,ic_fluent_color_20_filled.svg,Color/SVG/ic_fluent_color_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Color/SVG/ic_fluent_color_20_filled.svg
+Color,color,20,regular,ic_fluent_color_20_regular.svg,Color/SVG/ic_fluent_color_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Color/SVG/ic_fluent_color_20_regular.svg
+Color,color,24,filled,ic_fluent_color_24_filled.svg,Color/SVG/ic_fluent_color_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Color/SVG/ic_fluent_color_24_filled.svg
+Color,color,24,regular,ic_fluent_color_24_regular.svg,Color/SVG/ic_fluent_color_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Color/SVG/ic_fluent_color_24_regular.svg
+Color,color,32,light,ic_fluent_color_32_light.svg,Color/SVG/ic_fluent_color_32_light.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Color/SVG/ic_fluent_color_32_light.svg

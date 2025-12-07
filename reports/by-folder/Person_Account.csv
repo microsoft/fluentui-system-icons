@@ -1,0 +1,3 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Person Account,person_account,16,filled,ic_fluent_person_account_16_filled.svg,Person Account/SVG/ic_fluent_person_account_16_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Person%20Account/SVG/ic_fluent_person_account_16_filled.svg
+Person Account,person_account,16,regular,ic_fluent_person_account_16_regular.svg,Person Account/SVG/ic_fluent_person_account_16_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Person%20Account/SVG/ic_fluent_person_account_16_regular.svg

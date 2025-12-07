@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Clock Pause,clock_pause,20,filled,ic_fluent_clock_pause_20_filled.svg,Clock Pause/SVG/ic_fluent_clock_pause_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Clock%20Pause/SVG/ic_fluent_clock_pause_20_filled.svg
+Clock Pause,clock_pause,20,regular,ic_fluent_clock_pause_20_regular.svg,Clock Pause/SVG/ic_fluent_clock_pause_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Clock%20Pause/SVG/ic_fluent_clock_pause_20_regular.svg
+Clock Pause,clock_pause,24,filled,ic_fluent_clock_pause_24_filled.svg,Clock Pause/SVG/ic_fluent_clock_pause_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Clock%20Pause/SVG/ic_fluent_clock_pause_24_filled.svg
+Clock Pause,clock_pause,24,regular,ic_fluent_clock_pause_24_regular.svg,Clock Pause/SVG/ic_fluent_clock_pause_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Clock%20Pause/SVG/ic_fluent_clock_pause_24_regular.svg

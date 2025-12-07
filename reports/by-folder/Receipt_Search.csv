@@ -1,0 +1,3 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Receipt Search,receipt_search,20,filled,ic_fluent_receipt_search_20_filled.svg,Receipt Search/SVG/ic_fluent_receipt_search_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Receipt%20Search/SVG/ic_fluent_receipt_search_20_filled.svg
+Receipt Search,receipt_search,20,regular,ic_fluent_receipt_search_20_regular.svg,Receipt Search/SVG/ic_fluent_receipt_search_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Receipt%20Search/SVG/ic_fluent_receipt_search_20_regular.svg

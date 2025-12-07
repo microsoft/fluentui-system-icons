@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Wallpaper,wallpaper,20,filled,ic_fluent_wallpaper_20_filled.svg,Wallpaper/SVG/ic_fluent_wallpaper_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Wallpaper/SVG/ic_fluent_wallpaper_20_filled.svg
+Wallpaper,wallpaper,20,regular,ic_fluent_wallpaper_20_regular.svg,Wallpaper/SVG/ic_fluent_wallpaper_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Wallpaper/SVG/ic_fluent_wallpaper_20_regular.svg
+Wallpaper,wallpaper,24,filled,ic_fluent_wallpaper_24_filled.svg,Wallpaper/SVG/ic_fluent_wallpaper_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Wallpaper/SVG/ic_fluent_wallpaper_24_filled.svg
+Wallpaper,wallpaper,24,regular,ic_fluent_wallpaper_24_regular.svg,Wallpaper/SVG/ic_fluent_wallpaper_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Wallpaper/SVG/ic_fluent_wallpaper_24_regular.svg
