@@ -3,6 +3,7 @@ import { mergeClasses } from "@griffel/react";
 import { FluentIconsProps } from "./FluentIconsProps.types";
 import { useIconState } from "./useIconState";
 import { useRootStyles } from "./createFluentIcon.styles";
+import { iconClassName } from "./constants";
 
 export type FluentIcon = React.FC<FluentIconsProps>
 
@@ -20,7 +21,7 @@ export const createFluentIcon = (displayName: string, width: string, pathsOrSvg:
         const iconState = useIconState(props, { flipInRtl: options?.flipInRtl }); // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
         const state = {
             ...iconState,
-            className: mergeClasses(iconState.className, styles.root),
+            className: mergeClasses(iconClassName, iconState.className, styles.root),
             ref,
             width, height: width, viewBox: `0 0 ${viewBoxWidth} ${viewBoxWidth}`, xmlns: "http://www.w3.org/2000/svg"
         };
