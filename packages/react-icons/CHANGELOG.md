@@ -1,3 +1,17 @@
+## 2.0.316 (2025-12-05)
+
+This release contains icon updates
+
+## 2.0.315 (2025-11-18)
+
+This release contains icon updates
+
+## 2.0.314 (2025-11-12)
+
+### 🚀 Features
+
+- **react-icons:** implement deteministic chunking with alphabetical locality ([#911](https://github.com/microsoft/fluentui-system-icons/pull/911))
+
 ## 2.0.313 (2025-10-27)
 
 This release contains icon updates
