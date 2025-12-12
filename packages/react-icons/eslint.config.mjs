@@ -34,8 +34,7 @@ export default tseslint.config(
       '@griffel/styles-file': 'error',
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
-      // FIXME: replace with '@typescript-eslint/no-restricted-types' -> needs tseslint v8
-      '@typescript-eslint/ban-types': [
+      '@typescript-eslint/no-restricted-types': [
         'error',
         {
           types: {
