@@ -49,10 +49,19 @@ describe('writePerIconFiles', () => {
 
 describe('normalizeBaseName', () => {
   it('strips size and style tokens from filenames', () => {
+    expect(normalizeBaseName('icon-16-light.tsx')).toBe('icon');
     expect(normalizeBaseName('zoom-in-20-filled.tsx')).toBe('zoom-in');
     expect(normalizeBaseName('zoom-in-16-regular')).toBe('zoom-in');
     expect(normalizeBaseName('my-icon-32-light.tsx')).toBe('my-icon');
     expect(normalizeBaseName('color-test-20_color.tsx')).toBe('color-test');
+    expect(normalizeBaseName('color-test-20-color.tsx')).toBe('color-test');
+
+    // properly normalize names containig style tokens as first part
+    expect(normalizeBaseName('color-16-filled')).toBe('color');
+    expect(normalizeBaseName('light-16-filled')).toBe('light');
+    expect(normalizeBaseName('regular-16-filled')).toBe('regular');
+    expect(normalizeBaseName('filled-16-filled')).toBe('filled');
+
     // numeric-only token
     expect(normalizeBaseName('example-24')).toBe('example');
   });

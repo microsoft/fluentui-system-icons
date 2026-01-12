@@ -212,10 +212,23 @@ function normalizeBaseName(fileName, styleVariants = ICON_STYLE_VARIANTS) {
   const parts = normalized.split('-');
   const styleSet = new Set(styleVariants);
 
-  while (parts.length > 0) {
+  // first part of the name can be like `styleVariants`, eg: 'color-20-filled' -> 'color', 'light-16-regular' -> 'light'
+  // for that reason we don't process the first part
+  while (parts.length > 1) {
     const last = parts[parts.length - 1];
-    // treat pure numbers and tokens that are in styleTokens or contain 'color' as variant markers
-    if (/^\d+$/.test(last) || styleSet.has(last) || last.includes('color')) {
+    // Check if the trailing part is a variant marker:
+    // If ANY condition matches, the part is removed and we continue checking the next part.
+    // This allows removal of chained variants like 'icon-20-filled' -> remove 'filled' -> remove '20'.
+    if (
+      // 1. /^\d+$/.test(last) - Pure numeric suffix (icon size: 16, 20, 24, etc.)
+      //    Examples: 'zoom-in-20', 'mail-16', 'settings-24'
+      //
+      /^\d+$/.test(last) ||
+      // 2. styleSet.has(last) - Exact match against standard style variants ('regular', 'filled', 'light', 'color')
+      //    Examples: 'zoom-in-regular', 'mail-filled', 'settings-light'
+      //
+      styleSet.has(last)
+    ) {
       parts.pop();
     } else {
       break;
