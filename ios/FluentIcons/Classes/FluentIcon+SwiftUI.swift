@@ -9,10 +9,6 @@ import SwiftUI
 public extension Image {
   
   init(fluent: FluentIcon) {
-    #if os(macOS)
-    self.init(nsImage: NSImage.fluentIcon(fluent))
-    #else
-    self.init(uiImage: UIImage(fluent: fluent))
-    #endif
+      self.init(fluent.resourceString, bundle: Bundle.module)
   }
 }
