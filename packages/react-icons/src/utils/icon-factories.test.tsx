@@ -16,9 +16,6 @@ describe('React component tests', () => {
 
     expect(AccessTimeRegular).toBeDefined();
     expect(AccessTimeRegular.displayName).toBe('AccessTimeRegular');
-    const { container } = render(<AccessTimeRegular />);
-    const svg = container.querySelector('svg');
-    expect(svg).toHaveClass('fui-Icon');
     expect(render(<AccessTimeRegular />).container).toMatchInlineSnapshot(`
       <div>
         <svg
@@ -45,11 +42,7 @@ describe('React component tests', () => {
     expect(AccessTimeRegular).toBeDefined();
     expect(AccessTimeRegular.displayName).toBe('AccessTimeRegular');
 
-    const { container } = render(<AccessTimeRegular />);
-    const icon = container.querySelector('i');
-    expect(icon).toHaveClass('fui-Icon-font');
-
-    expect(container).toMatchInlineSnapshot(`
+    expect(render(<AccessTimeRegular />).container).toMatchInlineSnapshot(`
       <div>
         <i
           aria-hidden="true"
