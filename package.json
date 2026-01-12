@@ -22,9 +22,9 @@
     "format:check": "nx format:check"
   },
   "devDependencies": {
-    "@nx/js": "21.6.5",
+    "@nx/js": "21.6.10",
     "eslint": "8.57.1",
-    "nx": "21.6.5",
+    "nx": "21.6.10",
     "patch-package": "8.0.1",
     "prettier": "3.6.2",
     "react": "17.0.2",
