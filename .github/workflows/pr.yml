@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     - name: Check asset directories are valid for Windows
       run: |
@@ -33,7 +33,7 @@ jobs:
     name: Validate Asset Fills
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     - name: Check that all SVGs have the right fill
       run: |
@@ -53,11 +53,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     - uses: actions/setup-node@v4
       with:
-        node-version: 20.x
+        node-version: 22.x
 
     - run: npm ci
 
@@ -70,11 +70,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     - uses: actions/setup-node@v4
       with:
-        node-version: 20.x
+        node-version: 22.x
 
     - run: npm ci
 
@@ -105,11 +105,11 @@ jobs:
   #   runs-on: ubuntu-latest
 
   #   steps:
-  #   - uses: actions/checkout@v2
+  #   - uses: actions/checkout@v6
 
-  #   - uses: actions/setup-node@v1
+  #   - uses: actions/setup-node@v4
   #     with:
-  #       node-version: 20.x
+  #       node-version: 22.x
 
   #   - run: npm ci
 
@@ -138,13 +138,13 @@ jobs:
       actions: 'read'
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
       with:
         fetch-depth: 0
 
     - uses: actions/setup-node@v4
       with:
-        node-version: 20.x
+        node-version: 22.x
 
     - run: npm ci
     # Use once allowed
@@ -196,13 +196,13 @@ jobs:
       actions: 'read'
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
       with:
         fetch-depth: 0
 
     - uses: actions/setup-node@v4
       with:
-        node-version: 20.x
+        node-version: 22.x
 
     - run: npm ci
 
