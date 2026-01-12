@@ -15,9 +15,7 @@ public extension Image {
 
 @available(iOS 13.0, macOS 10.15, *)
 #Preview {
-    HStack {
-        Image(fluent: .accessTime24Regular)
-            .resizable()
-            .frame(width: 400, height: 400)
-    }
+    Image(fluent: .accessTime24Regular)
+        .resizable()
+        .frame(width: 400, height: 400)
 }
