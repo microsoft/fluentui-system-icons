@@ -3,7 +3,7 @@ import { mergeClasses } from "@griffel/react";
 
 import { FluentIconsProps } from '../FluentIconsProps.types';
 import { useIconState } from '../useIconState';
-import { iconClassName, fontIconClassName } from '../constants';
+import { fontIconClassName } from '../constants';
 
 import { useRootStyles, useStaticStyles } from './createFluentFontIcon.styles';
 import { FontFile } from './createFluentFontIcon.shared';
@@ -18,7 +18,7 @@ export function createFluentFontIcon(displayName: string, codepoint: string, fon
     const Component: FluentFontIcon = (props) => {
         useStaticStyles();
         const styles = useRootStyles();
-        const className = mergeClasses(iconClassName, styles.root, styles[font], fontIconClassName, props.className);
+        const className = mergeClasses(styles.root, styles[font], fontIconClassName, props.className);
         const state = useIconState<React.HTMLAttributes<HTMLElement>, HTMLElement>({...props, className}, { flipInRtl: options?.flipInRtl });
 
 

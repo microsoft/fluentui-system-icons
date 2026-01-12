@@ -47,14 +47,13 @@ describe('React component tests', () => {
 
     const { container } = render(<AccessTimeRegular />);
     const icon = container.querySelector('i');
-    expect(icon).toHaveClass('fui-Icon');
     expect(icon).toHaveClass('fui-Icon-font');
 
     expect(container).toMatchInlineSnapshot(`
       <div>
         <i
           aria-hidden="true"
-          class="fui-Icon fui-Icon-font ___qaf4230_1r6c92s f14t3ns0 fne0op0 fmd4ok8 f303qgw f1sxfq9t"
+          class="fui-Icon-font ___qaf4230_1r6c92s f14t3ns0 fne0op0 fmd4ok8 f303qgw f1sxfq9t"
           fill="currentColor"
         />
       </div>
