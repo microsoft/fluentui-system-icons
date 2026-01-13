@@ -1,5 +1,6 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "react-icons",
   "projectType": "library",
   "sourceRoot": "packages/react-icons/src",
   "tags": ["platform:web"],

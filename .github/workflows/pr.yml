@@ -236,7 +236,8 @@ jobs:
     - name: Bundle-Size
       run: |
         npx nx affected -t bundle-size --exclude='svg-icons,svg-sprites'
-        npx monosize compare-reports
+        npx monosize compare-reports --branch=${{ github.event.pull_request.base.ref }}
+
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
