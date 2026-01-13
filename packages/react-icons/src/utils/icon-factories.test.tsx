@@ -4,6 +4,7 @@ import { describe, expect, test } from 'vitest';
 
 import { createFluentFontIcon, FluentFontIcon } from './fonts/createFluentFontIcon';
 import { createFluentIcon, FluentIcon } from './createFluentIcon';
+import bundleIcon from './bundleIcon';
 
 /**
  * @vitest-environment jsdom
@@ -19,7 +20,7 @@ describe('React component tests', () => {
       <div>
         <svg
           aria-hidden="true"
-          class="___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
+          class="fui-Icon ___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
           fill="currentColor"
           height="1em"
           viewBox="0 0 20 20"
@@ -60,6 +61,7 @@ describe('React component tests', () => {
     const svg = container.querySelector('svg');
     expect(svg).toBeTruthy();
     expect(svg).toBeInTheDocument();
+    expect(svg).toHaveClass('fui-Icon');
     expect(svg).toHaveAttribute('width', '1em');
     expect(svg).toHaveAttribute('height', '1em');
     expect(svg).toHaveAttribute('viewBox', '0 0 20 20');
@@ -75,6 +77,7 @@ describe('React component tests', () => {
     const { container } = render(<MyIcon primaryFill="red" className="test-class" />);
 
     const svg = container.querySelector('svg');
+    expect(svg).toHaveClass('fui-Icon');
     expect(svg).toHaveClass('test-class');
 
     const path = svg?.querySelector('path');
@@ -90,5 +93,30 @@ describe('React component tests', () => {
     expect(svg).toBeTruthy();
     expect(svg?.innerHTML).toContain('circle');
     expect(svg?.innerHTML).toContain('fill="blue"');
+  });
+
+  test('bundleIcon creates icon with fui-Icon className on both filled and regular icons', () => {
+    const d = 'M1 2 L3 4';
+    const FilledIcon = createFluentIcon('MyIconFilled', '1em', [d]);
+    const RegularIcon = createFluentIcon('MyIconRegular', '1em', [d]);
+    const BundledIcon = bundleIcon(FilledIcon, RegularIcon);
+    
+    const { container: containerFilled } = render(<BundledIcon filled />);
+    const svgs = containerFilled.querySelectorAll('svg');
+    
+    // Both icons should have the base fui-Icon class
+    svgs.forEach(svg => {
+      expect(svg).toHaveClass('fui-Icon');
+    });
+    
+    // Filled icon should be visible and have fui-Icon-filled
+    const filledSvg = containerFilled.querySelector('.fui-Icon-filled');
+    expect(filledSvg).toHaveClass('fui-Icon');
+    expect(filledSvg).toHaveClass('fui-Icon-filled');
+    
+    const { container: containerRegular } = render(<BundledIcon filled={false} />);
+    const regularSvg = containerRegular.querySelector('.fui-Icon-regular');
+    expect(regularSvg).toHaveClass('fui-Icon');
+    expect(regularSvg).toHaveClass('fui-Icon-regular');
   });
 });
