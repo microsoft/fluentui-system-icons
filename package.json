@@ -27,6 +27,8 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "typescript": "5.0.4",
-    "typescript-eslint": "7.18.0"
+    "typescript-eslint": "7.18.0",
+    "monosize": "0.7.1",
+    "monosize-bundler-webpack": "0.2.1"
   }
 }

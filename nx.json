@@ -7,6 +7,10 @@
     "lint": {},
     "test": {}
   },
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*", "sharedGlobals", "{workspaceRoot}/.github/workflows/pr.yml"],
+    "sharedGlobals": []
+  },
   "release": {
     "projects": ["packages/react-icons"],
     "projectsRelationship": "independent",

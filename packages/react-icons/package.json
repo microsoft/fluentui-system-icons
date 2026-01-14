@@ -31,6 +31,7 @@
     "prebuild": "npm run clean",
     "build": "npm run build:fonts-and-svg && npm run build:generate-chunks-and-atoms && npm run build:js",
     "build-verify": "vitest run build-verify.test.js",
+    "bundle-size": "monosize measure",
     "lint": "eslint src",
     "test": "vitest --exclude build-verify.test.js"
   },

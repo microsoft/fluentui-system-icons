@@ -1,0 +1,24 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "react-icons",
+  "projectType": "library",
+  "sourceRoot": "packages/react-icons/src",
+  "tags": ["platform:web"],
+  "targets": {
+    "build": {
+      "cache": true,
+      "inputs": [
+        "default",
+        "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+        "!{projectRoot}/tsconfig.spec.json",
+        "!{projectRoot}/vitest.config.[jt]s",
+        "!{projectRoot}/eslint.config.{js,cjs,mjs}",
+        "!{projectRoot}/test-setup.[jt]s"
+      ],
+      "outputs": ["{projectRoot}/lib", "{projectRoot}/lib-cjs", "{projectRoot}/metadata.json"]
+    },
+    "bundle-size": {
+      "dependsOn": ["build"]
+    }
+  }
+}

@@ -5,6 +5,7 @@
 /.github/workflows/pr.yml @microsoft/cxe-prg @spencer-nelson
 /.github/workflows/publish.yml @microsoft/cxe-prg @spencer-nelson
 /.github/workflows/publish-prerelease.yml @microsoft/cxe-prg
+/.github/workflows/bundle-size.baseline.yml @microsoft/cxe-prg
 /.github/scripts @microsoft/cxe-prg
 AGENTS.md @microsoft/cxe-prg
 
@@ -24,6 +25,8 @@ ios/ @nickromano
 package-lock.json @microsoft/cxe-prg
 package.json @microsoft/cxe-prg
 nx.json @microsoft/cxe-prg
+monosize.config.mjs @microsoft/cxe-prg
+monosize.baseline.json @microsoft/cxe-prg
 
 ## Assets
 assets/ @spencer-nelson @willchavez
