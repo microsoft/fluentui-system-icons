@@ -25,6 +25,8 @@ ios/ @nickromano
 package-lock.json @microsoft/cxe-prg
 package.json @microsoft/cxe-prg
 nx.json @microsoft/cxe-prg
+monosize.config.mjs @microsoft/cxe-prg
+monosize.baseline.json @microsoft/cxe-prg
 
 ## Assets
 assets/ @spencer-nelson @willchavez
