@@ -45,10 +45,10 @@ jobs:
       - name: Check for changes
         id: check-changes
         run: |
-          if git diff --quiet monosize.baseline.json; then
-            echo "changes=false" >> $GITHUB_OUTPUT
-          else
+          if [ -n "$(git status --porcelain monosize.baseline.json)" ]; then
             echo "changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Commit and push baseline update
