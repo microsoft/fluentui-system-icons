@@ -25,13 +25,13 @@ jobs:
           app-id: ${{ secrets.GH_FLUENT_CI_APP_ID }}
           private-key: ${{ secrets.GH_FLUENT_CI_PRIVATE_KEY }}
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           token: ${{ steps.generate-token.outputs.token }}
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20.x
+          node-version: 22.x
 
       - run: npm ci
 
