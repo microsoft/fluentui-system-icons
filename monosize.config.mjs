@@ -26,14 +26,14 @@ function createLocalStorage() {
 
   return {
     getRemoteReport: async (branch) => {
-      const url = `https://raw.githubusercontent.com/microsoft/fluentui-system-icons/${branch}/packages/react-icons/${storageFileName}`;
+      const url = `https://raw.githubusercontent.com/microsoft/fluentui-system-icons/${branch}/${storageFileName}`;
 
       const emptyReport = { commitSHA: 'initial', remoteReport: [] };
 
       try {
         const response = await fetch(url);
         if (!response.ok) {
-          console.log(`Failed to fetch baseline from ${url}: ${response.statusText}`);
+          console.log(`Failed to fetch baseline from "${url}": ${response.statusText}`);
           return emptyReport;
         }
         /** @type {{branch: string; commitSHA: string; report: import('monosize').BundleSizeReport}}} */
