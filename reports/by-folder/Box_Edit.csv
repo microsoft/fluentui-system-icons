@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Box Edit,box_edit,20,filled,ic_fluent_box_edit_20_filled.svg,Box Edit/SVG/ic_fluent_box_edit_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Box%20Edit/SVG/ic_fluent_box_edit_20_filled.svg
+Box Edit,box_edit,20,regular,ic_fluent_box_edit_20_regular.svg,Box Edit/SVG/ic_fluent_box_edit_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Box%20Edit/SVG/ic_fluent_box_edit_20_regular.svg
+Box Edit,box_edit,24,filled,ic_fluent_box_edit_24_filled.svg,Box Edit/SVG/ic_fluent_box_edit_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Box%20Edit/SVG/ic_fluent_box_edit_24_filled.svg
+Box Edit,box_edit,24,regular,ic_fluent_box_edit_24_regular.svg,Box Edit/SVG/ic_fluent_box_edit_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Box%20Edit/SVG/ic_fluent_box_edit_24_regular.svg

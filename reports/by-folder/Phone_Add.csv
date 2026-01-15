@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Phone Add,phone_add,20,filled,ic_fluent_phone_add_20_filled.svg,Phone Add/SVG/ic_fluent_phone_add_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Phone%20Add/SVG/ic_fluent_phone_add_20_filled.svg
+Phone Add,phone_add,20,regular,ic_fluent_phone_add_20_regular.svg,Phone Add/SVG/ic_fluent_phone_add_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Phone%20Add/SVG/ic_fluent_phone_add_20_regular.svg
+Phone Add,phone_add,24,filled,ic_fluent_phone_add_24_filled.svg,Phone Add/SVG/ic_fluent_phone_add_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Phone%20Add/SVG/ic_fluent_phone_add_24_filled.svg
+Phone Add,phone_add,24,regular,ic_fluent_phone_add_24_regular.svg,Phone Add/SVG/ic_fluent_phone_add_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Phone%20Add/SVG/ic_fluent_phone_add_24_regular.svg

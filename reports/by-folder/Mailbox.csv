@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Mailbox,mailbox,16,filled,ic_fluent_mailbox_16_filled.svg,Mailbox/SVG/ic_fluent_mailbox_16_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Mailbox/SVG/ic_fluent_mailbox_16_filled.svg
+Mailbox,mailbox,16,regular,ic_fluent_mailbox_16_regular.svg,Mailbox/SVG/ic_fluent_mailbox_16_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Mailbox/SVG/ic_fluent_mailbox_16_regular.svg
+Mailbox,mailbox,20,filled,ic_fluent_mailbox_20_filled.svg,Mailbox/SVG/ic_fluent_mailbox_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Mailbox/SVG/ic_fluent_mailbox_20_filled.svg
+Mailbox,mailbox,20,regular,ic_fluent_mailbox_20_regular.svg,Mailbox/SVG/ic_fluent_mailbox_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Mailbox/SVG/ic_fluent_mailbox_20_regular.svg

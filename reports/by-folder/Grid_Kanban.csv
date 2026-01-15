@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Grid Kanban,grid_kanban,16,filled,ic_fluent_grid_kanban_16_filled.svg,Grid Kanban/SVG/ic_fluent_grid_kanban_16_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Grid%20Kanban/SVG/ic_fluent_grid_kanban_16_filled.svg
+Grid Kanban,grid_kanban,16,regular,ic_fluent_grid_kanban_16_regular.svg,Grid Kanban/SVG/ic_fluent_grid_kanban_16_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Grid%20Kanban/SVG/ic_fluent_grid_kanban_16_regular.svg
+Grid Kanban,grid_kanban,20,filled,ic_fluent_grid_kanban_20_filled.svg,Grid Kanban/SVG/ic_fluent_grid_kanban_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Grid%20Kanban/SVG/ic_fluent_grid_kanban_20_filled.svg
+Grid Kanban,grid_kanban,20,regular,ic_fluent_grid_kanban_20_regular.svg,Grid Kanban/SVG/ic_fluent_grid_kanban_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Grid%20Kanban/SVG/ic_fluent_grid_kanban_20_regular.svg

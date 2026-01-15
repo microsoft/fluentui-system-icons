@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+WiFi 4,wifi_4,20,filled,ic_fluent_wifi_4_20_filled.svg,WiFi 4/SVG/ic_fluent_wifi_4_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/WiFi%204/SVG/ic_fluent_wifi_4_20_filled.svg
+WiFi 4,wifi_4,20,regular,ic_fluent_wifi_4_20_regular.svg,WiFi 4/SVG/ic_fluent_wifi_4_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/WiFi%204/SVG/ic_fluent_wifi_4_20_regular.svg
+WiFi 4,wifi_4,24,filled,ic_fluent_wifi_4_24_filled.svg,WiFi 4/SVG/ic_fluent_wifi_4_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/WiFi%204/SVG/ic_fluent_wifi_4_24_filled.svg
+WiFi 4,wifi_4,24,regular,ic_fluent_wifi_4_24_regular.svg,WiFi 4/SVG/ic_fluent_wifi_4_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/WiFi%204/SVG/ic_fluent_wifi_4_24_regular.svg

@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Time Picker,time_picker,20,filled,ic_fluent_time_picker_20_filled.svg,Time Picker/SVG/ic_fluent_time_picker_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Time%20Picker/SVG/ic_fluent_time_picker_20_filled.svg
+Time Picker,time_picker,20,regular,ic_fluent_time_picker_20_regular.svg,Time Picker/SVG/ic_fluent_time_picker_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Time%20Picker/SVG/ic_fluent_time_picker_20_regular.svg
+Time Picker,time_picker,24,filled,ic_fluent_time_picker_24_filled.svg,Time Picker/SVG/ic_fluent_time_picker_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Time%20Picker/SVG/ic_fluent_time_picker_24_filled.svg
+Time Picker,time_picker,24,regular,ic_fluent_time_picker_24_regular.svg,Time Picker/SVG/ic_fluent_time_picker_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Time%20Picker/SVG/ic_fluent_time_picker_24_regular.svg
