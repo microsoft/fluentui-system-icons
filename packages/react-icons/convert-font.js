@@ -9,8 +9,9 @@ const mkdirp = require('mkdirp');
 
 const yargs = require('yargs');
 const _ = require('lodash');
+const { handleDeprecatedColorAtoms } = require('./deprecated-atoms');
 const { createFormatMetadata, writeMetadata } = require('./metadata.utils');
-const { createStableChunks } = require("./chunking-utils");
+const { createStableChunks } = require('./chunking-utils');
 const {
   getReactIconNameFromGlyphName,
   loadRtlMetadata,
@@ -205,7 +206,7 @@ async function processFolder(iconEntries, rtlMetadata, resizable) {
   // chunk all icons into separate files to keep build reasonably fast
   // Use stable chunking to prevent bundle size regressions when new icons are added
   // IMPORTANT: chunkCount should NEVER change after initial release to prevent reshuffling
-  const iconChunks = createStableChunks(iconExports, iconNames, {chunkCount: 30});
+  const iconChunks = createStableChunks(iconExports, iconNames, { chunkCount: 30 });
 
   const chunkHeader = getCreateFluentIconHeader('../../utils/fonts/createFluentFontIcon');
   for (const chunk of iconChunks) {
@@ -279,6 +280,8 @@ async function processPerIcon(destPath, iconEntries, rtlMetadata, options = { gr
   Object.assign(fontMetadata, createFormatMetadata(resizable.iconNames, 'font', 'resizable'));
   const sized = await generatePerIconFiles(destPath, iconEntries.sized, rtlMetadata, false, options.groupByBase);
   Object.assign(fontMetadata, createFormatMetadata(sized.iconNames, 'font', 'sized'));
+
+  await handleDeprecatedColorAtoms(destPath, 'font');
 
   console.log(`[font per-icon] Wrote ${resizable.fileCount + sized.fileCount} files to ${destPath}`);
 

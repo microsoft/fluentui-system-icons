@@ -8,7 +8,8 @@ const { readdir } = require('fs/promises');
 const path = require('path');
 const yargs = require('yargs');
 const { makeIconExport, getCreateFluentIconHeader, loadRtlMetadata, generatePerIconFiles } = require('./convert.utils');
-const { createStableChunks } = require("./chunking-utils");
+const { handleDeprecatedColorAtoms } = require('./deprecated-atoms');
+const { createStableChunks } = require('./chunking-utils');
 const { createFormatMetadata, writeMetadata } = require('./metadata.utils');
 
 if (require.main === module) {
@@ -143,7 +144,7 @@ function processFolder(srcFiles, rtlMetadata, resizable) {
   // chunk all icons into separate files to keep build reasonably fast
   // Use stable chunking to prevent bundle size regressions when new icons are added
   // IMPORTANT: chunkCount should NEVER change after initial release to prevent reshuffling
-  const iconChunks = createStableChunks(iconExports, iconNames, {chunkCount: 30});
+  const iconChunks = createStableChunks(iconExports, iconNames, { chunkCount: 30 });
 
   const chunkHeader = getCreateFluentIconHeader('../utils/createFluentIcon');
   for (const chunk of iconChunks) {
@@ -178,6 +179,8 @@ async function processPerIcon(sourceFiles, destPath, rtlMetadata, options = { gr
   // sized (all sizes)
   const sized = await generatePerIconFiles(sourceFiles, destPath, rtlMetadata, false, options.groupByBase);
   Object.assign(svgMetadata, createFormatMetadata(sized.iconNames, 'svg', 'sized'));
+
+  await handleDeprecatedColorAtoms(destPath, 'svg');
 
   console.log(`[svg per-icon] Wrote ${resizable.fileCount + sized.fileCount} icon files to ${destPath}`);
   return { svgMetadata };
