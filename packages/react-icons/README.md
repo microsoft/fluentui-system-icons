@@ -183,6 +183,8 @@ function MyComponent() {
 
 Without this setting, TypeScript will not be able to resolve the individual icon exports from the grouped files.
 
+**NOTE:** TypeScript users that are still using _old_ `"moduleResolution": "node"`, can use `@fluentui/react-icons/lib/atoms/svg/*` - for SVG-based atomic icon imports
+
 ### Using API via build transform
 
 Migrating a larger codebase to the new performant atomic imports might be a daunting task. To make this migration more straightforward, you can leverage build-time import transforms to get all the benefits without modifying your actual code.
