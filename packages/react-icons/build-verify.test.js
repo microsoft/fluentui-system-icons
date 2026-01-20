@@ -487,7 +487,7 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-28';
         export * from './sizedIcons/chunk-29';
         export { default as wrapIcon } from './utils/wrapIcon';
-        export { default as bundleIcon } from './utils/bundleIcon';
+        export { bundleIcon } from './utils/bundleIcon';
         export { createFluentIcon } from './utils/createFluentIcon';
         export * from './utils/useIconState';
         export * from './utils/constants';
@@ -556,7 +556,7 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-28';
         export * from './sizedIcons/chunk-29';
         export { default as wrapIcon } from './utils/wrapIcon';
-        export { default as bundleIcon } from './utils/bundleIcon';
+        export { bundleIcon } from './utils/bundleIcon';
         export { createFluentIcon } from './utils/createFluentIcon';
         export * from './utils/useIconState';
         export * from './utils/constants';
@@ -641,7 +641,7 @@ describe('Build Verification', () => {
         var wrapIcon_1 = require("./utils/wrapIcon");
         Object.defineProperty(exports, "wrapIcon", { enumerable: true, get: function () { return tslib_1.__importDefault(wrapIcon_1).default; } });
         var bundleIcon_1 = require("./utils/bundleIcon");
-        Object.defineProperty(exports, "bundleIcon", { enumerable: true, get: function () { return tslib_1.__importDefault(bundleIcon_1).default; } });
+        Object.defineProperty(exports, "bundleIcon", { enumerable: true, get: function () { return bundleIcon_1.bundleIcon; } });
         var createFluentIcon_1 = require("./utils/createFluentIcon");
         Object.defineProperty(exports, "createFluentIcon", { enumerable: true, get: function () { return createFluentIcon_1.createFluentIcon; } });
         tslib_1.__exportStar(require("./utils/useIconState"), exports);
@@ -650,7 +650,7 @@ describe('Build Verification', () => {
         Object.defineProperty(exports, "IconDirectionContextProvider", { enumerable: true, get: function () { return index_1.IconDirectionContextProvider; } });
         Object.defineProperty(exports, "useIconContext", { enumerable: true, get: function () { return index_1.useIconContext; } });
         "
-      `)
+      `);
       expect(dtsContent).toMatchInlineSnapshot(`
         "export * from './icons/chunk-0';
         export * from './icons/chunk-1';
@@ -713,7 +713,7 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-28';
         export * from './sizedIcons/chunk-29';
         export { default as wrapIcon } from './utils/wrapIcon';
-        export { default as bundleIcon } from './utils/bundleIcon';
+        export { bundleIcon } from './utils/bundleIcon';
         export { createFluentIcon } from './utils/createFluentIcon';
         export * from './utils/useIconState';
         export * from './utils/constants';
@@ -722,7 +722,7 @@ describe('Build Verification', () => {
         export type { FluentIcon } from './utils/createFluentIcon';
         export type { IconDirectionContextValue } from './contexts/index';
         "
-      `)
+      `);
      })
 
     it(`should have valid generated contents  in entry points (lib/fonts)`, async () => {
@@ -793,7 +793,7 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-28';
         export * from './sizedIcons/chunk-29';
         export { default as wrapIcon } from '../utils/wrapIcon';
-        export { default as bundleIcon } from '../utils/bundleIcon';
+        export { bundleIcon } from '../utils/bundleIcon';
         export { createFluentIcon } from '../utils/createFluentIcon';
         export { createFluentFontIcon } from '../utils/fonts/createFluentFontIcon';
         export * from '../utils/useIconState';
@@ -863,7 +863,7 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-28';
         export * from './sizedIcons/chunk-29';
         export { default as wrapIcon } from '../utils/wrapIcon';
-        export { default as bundleIcon } from '../utils/bundleIcon';
+        export { bundleIcon } from '../utils/bundleIcon';
         export { createFluentIcon } from '../utils/createFluentIcon';
         export { createFluentFontIcon } from '../utils/fonts/createFluentFontIcon';
         export * from '../utils/useIconState';
@@ -951,7 +951,7 @@ describe('Build Verification', () => {
         var wrapIcon_1 = require("../utils/wrapIcon");
         Object.defineProperty(exports, "wrapIcon", { enumerable: true, get: function () { return tslib_1.__importDefault(wrapIcon_1).default; } });
         var bundleIcon_1 = require("../utils/bundleIcon");
-        Object.defineProperty(exports, "bundleIcon", { enumerable: true, get: function () { return tslib_1.__importDefault(bundleIcon_1).default; } });
+        Object.defineProperty(exports, "bundleIcon", { enumerable: true, get: function () { return bundleIcon_1.bundleIcon; } });
         var createFluentIcon_1 = require("../utils/createFluentIcon");
         Object.defineProperty(exports, "createFluentIcon", { enumerable: true, get: function () { return createFluentIcon_1.createFluentIcon; } });
         var createFluentFontIcon_1 = require("../utils/fonts/createFluentFontIcon");
@@ -962,7 +962,7 @@ describe('Build Verification', () => {
         Object.defineProperty(exports, "IconDirectionContextProvider", { enumerable: true, get: function () { return index_1.IconDirectionContextProvider; } });
         Object.defineProperty(exports, "useIconContext", { enumerable: true, get: function () { return index_1.useIconContext; } });
         "
-      `)
+      `);
       expect(dtsContent).toMatchInlineSnapshot(`
         "export * from './icons/chunk-0';
         export * from './icons/chunk-1';
@@ -1025,7 +1025,7 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-28';
         export * from './sizedIcons/chunk-29';
         export { default as wrapIcon } from '../utils/wrapIcon';
-        export { default as bundleIcon } from '../utils/bundleIcon';
+        export { bundleIcon } from '../utils/bundleIcon';
         export { createFluentIcon } from '../utils/createFluentIcon';
         export { createFluentFontIcon } from '../utils/fonts/createFluentFontIcon';
         export * from '../utils/useIconState';
@@ -1036,7 +1036,7 @@ describe('Build Verification', () => {
         export type { FluentFontIcon } from '../utils/fonts/createFluentFontIcon';
         export type { IconDirectionContextValue } from '../contexts/index';
         "
-      `)
+      `);
     })
 
     it('should have valid chunk contents in lib icons', async () => {
