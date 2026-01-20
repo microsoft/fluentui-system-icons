@@ -4,7 +4,7 @@ import { describe, expect, test } from 'vitest';
 
 import { createFluentFontIcon, FluentFontIcon } from './fonts/createFluentFontIcon';
 import { createFluentIcon, FluentIcon } from './createFluentIcon';
-import bundleIcon from './bundleIcon';
+import { bundleIcon } from './bundleIcon';
 
 /**
  * @vitest-environment jsdom
@@ -74,11 +74,15 @@ describe('React component tests', () => {
   test('createFluentIcon with custom props', () => {
     const d = 'M1 2 L3 4';
     const MyIcon = createFluentIcon('MyIcon', '1em', [d]);
-    const { container } = render(<MyIcon primaryFill="red" className="test-class" />);
+    const { container } = render(<MyIcon primaryFill="red" className="test-class" filled={true} title="one two" />);
 
     const svg = container.querySelector('svg');
     expect(svg).toHaveClass('fui-Icon');
     expect(svg).toHaveClass('test-class');
+
+    // custom props should not be passed to the svg element
+    expect(svg).not.toHaveAttribute('filled');
+    expect(svg).not.toHaveAttribute('title');
 
     const path = svg?.querySelector('path');
     expect(path).toHaveAttribute('fill', 'red');
@@ -100,20 +104,20 @@ describe('React component tests', () => {
     const FilledIcon = createFluentIcon('MyIconFilled', '1em', [d]);
     const RegularIcon = createFluentIcon('MyIconRegular', '1em', [d]);
     const BundledIcon = bundleIcon(FilledIcon, RegularIcon);
-    
+
     const { container: containerFilled } = render(<BundledIcon filled />);
     const svgs = containerFilled.querySelectorAll('svg');
-    
+
     // Both icons should have the base fui-Icon class
     svgs.forEach(svg => {
       expect(svg).toHaveClass('fui-Icon');
     });
-    
+
     // Filled icon should be visible and have fui-Icon-filled
     const filledSvg = containerFilled.querySelector('.fui-Icon-filled');
     expect(filledSvg).toHaveClass('fui-Icon');
     expect(filledSvg).toHaveClass('fui-Icon-filled');
-    
+
     const { container: containerRegular } = render(<BundledIcon filled={false} />);
     const regularSvg = containerRegular.querySelector('.fui-Icon-regular');
     expect(regularSvg).toHaveClass('fui-Icon');

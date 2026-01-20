@@ -17,11 +17,18 @@ export const useIconState = <
   props: FluentIconsProps<TBaseAttributes, TRefType>,
   options?: UseIconStateOptions,
 ): Omit<FluentIconsProps<TBaseAttributes, TRefType>, 'primaryFill'> => {
-    const { title, primaryFill = "currentColor", ...rest } = props;
+    const {
+      // remove unwanted props to be set on the svg/html element
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      filled,
+      title,
+
+      primaryFill = 'currentColor',
+      ...rest
+    } = props;
     const state = {
       ...rest,
-      title: undefined,
-      fill: primaryFill
+      fill: primaryFill,
     } as Omit<FluentIconsProps<TBaseAttributes, TRefType>, 'primaryFill'>;
 
     const styles = useStyles();
