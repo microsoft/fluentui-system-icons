@@ -227,6 +227,21 @@ module.exports = {
       {
         '@fluentui/react-icons': {
           transform: (importName) => {
+            // Handle utility imports (bundleIcon, className constants)
+            const utilityExports = [
+              'bundleIcon',
+              'iconClassName',
+              'iconFilledClassName',
+              'iconRegularClassName',
+              'iconColorClassName',
+              'iconLightClassName'
+            ];
+
+            if (utilityExports.includes(importName)) {
+              return '@fluentui/react-icons/utils';
+            }
+
+            // Handle icon imports
             const withoutSuffix = importName.replace(
               /(\d*)?(Regular|Filled|Light|Color)$/,
               ''
@@ -262,6 +277,12 @@ If you use SWC for transpilation, add [@swc/plugin-transform-imports](https://ww
           {
             "@fluentui/react-icons": {
               "transform": [
+                // Transform utility imports to /utils
+                [
+                  "^(bundleIcon|iconClassName|iconFilledClassName|iconRegularClassName|iconColorClassName|iconLightClassName)$",
+                  "@fluentui/react-icons/utils"
+                ],
+                // Transform icon imports to /svg/{icon-name}
                 [
                   "(\\D*)(\\d*)?(Regular|Filled|Light|Color)",
                   "@fluentui/react-icons/svg/{{ kebabCase memberMatches.[1] }}"
