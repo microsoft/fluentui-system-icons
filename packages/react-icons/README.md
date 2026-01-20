@@ -55,18 +55,24 @@ import {
 } from "@fluentui/react-icons";
 import { makeStyles } from "@griffel/react";
 
-
+// Define props to customize the icon's appearance
+// primaryFill: Sets the icon's color
+// className: Applies custom CSS class for additional styling
 const iconStyleProps: FluentIconsProps = {
     primaryFill: "purple",
     className: "iconClass"
 };
 
+// Create styles using Griffel's makeStyles
+// This example toggles between Filled and Regular variants on hover
 const useIconStyles = makeStyles({
     icon: {
         ":hover": {
+            // Hide the filled variant on hover
             [`& .${iconFilledClassName}`]: {
                 display: "none"
             },
+            // Show the regular variant on hover
             [`& .${iconRegularClassName}`]: {
                 display: "inline"
             }
@@ -74,6 +80,8 @@ const useIconStyles = makeStyles({
     }
 })
 
+// Bundle both icon variants into a single component
+// By default, displays the Filled variant; use filled={false} prop to show Regular variant
 const AccessTime = bundleIcon(AccessTimeFilled, AccessTimeRegular)
 const rootElement = document.getElementById("root");
 const styles = useIconStyles();
