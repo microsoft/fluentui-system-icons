@@ -157,9 +157,11 @@ This grouping strikes a balance between granularity and convenience, making it e
 ### Using API Directly
 
 Icons are available via two export maps:
+- `@fluentui/react-icons/svg/*` - SVG-based icons
+- `@fluentui/react-icons/fonts/*` - Font-based icons
 
-- `@fluentui/react-icons/svg/*` - SVG-based icons.
-- `@fluentui/react-icons/fonts/*` - Font-based icons.
+The following utility module is also available:
+- `@fluentui/react-icons/utils` - General icon helper utilities
 
 ```tsx
 // Import individual icon variants from grouped files
