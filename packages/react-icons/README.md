@@ -15,7 +15,7 @@ Fluent System Icons are a collection of familiar, friendly, and modern icons fro
 
 `@fluentui/react-icons` are SVG based icons wrapped in a React element. Because each icon is its own element, you only need to import what you need for your application.
 
-Icons are available in multiple variants: `Regular` and `Filled` for most icons, with `Light` and `Color` variants available for select sized icons. You can choose what works best for your application. These are by default sized to `1em`, and can be scaled up or down to suit your developer needs.
+Icons are available in multiple variants: `Regular` and `Filled` for most icons, with `Light` and `Color` variants available for select icons. You can choose what works best for your application. These are by default sized to `1em`, and can be scaled up or down to suit your developer needs.
 
 There are also helpful interfaces that will allow you to add styling to fit the icons to your specific application.
 
