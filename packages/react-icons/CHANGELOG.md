@@ -1,3 +1,7 @@
+## 2.0.317 (2026-01-21)
+
+This release contains icon updates
+
 ## 2.0.316 (2025-12-05)
 
 This release contains icon updates
