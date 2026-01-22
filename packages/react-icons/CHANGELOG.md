@@ -1,6 +1,13 @@
 ## 2.0.317 (2026-01-21)
 
-This release contains icon updates
+### 🚀 Features
+
+- **react-icons:** add export map for svg atoms imports to support old TypeScript 'moduleResolution:node' setting ([#944](https://github.com/microsoft/fluentui-system-icons/pull/944))
+- **react-icons:** add base `fui-Icon` className to SVG icons ([#923](https://github.com/microsoft/fluentui-system-icons/pull/923))
+
+### 🩹 Fixes
+
+- **react-icons:** properly group icon names to which name clashes with style variant ([#943](https://github.com/microsoft/fluentui-system-icons/pull/943))
 
 ## 2.0.316 (2025-12-05)
 
@@ -14,6 +21,7 @@ This release contains icon updates
 
 ### 🚀 Features
 
+- **react-icons:** add atomic imports public api per icons kind/module ([#888](https://github.com/microsoft/fluentui-system-icons/pull/888))
 - **react-icons:** implement deteministic chunking with alphabetical locality ([#911](https://github.com/microsoft/fluentui-system-icons/pull/911))
 
 ## 2.0.313 (2025-10-27)
@@ -46,7 +54,7 @@ This release contains icon updates
 
 ### 🚀 Features
 
-- **react-icons:** use babel only to process griffel modules *.styles.js ([#869](https://github.com/microsoft/fluentui-system-icons/pull/869))
+- **react-icons:** use babel only to process griffel modules \*.styles.js ([#869](https://github.com/microsoft/fluentui-system-icons/pull/869))
 - **react-icons:** improve .d.ts performance and emit time. introduce FluentFontIcon prop as public api ([#866](https://github.com/microsoft/fluentui-system-icons/pull/866))
 - **react-icons:** enable griffel unprocessed (styles.raw.js) output for production assets ([#858](https://github.com/microsoft/fluentui-system-icons/pull/858))
 
