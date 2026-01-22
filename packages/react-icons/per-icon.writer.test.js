@@ -41,9 +41,13 @@ describe('writePerIconFiles', () => {
     fs.mkdirSync(tmpDest, { recursive: true });
     const items = [
       { exportName: 'Dup20Filled', exportCode: 'export const Dup20Filled = 1;', fileName: 'dup-20-filled.tsx' },
-      { exportName: 'Dup20Filled', exportCode: 'export const Dup20Filled = 2;', fileName: 'dup-20-filled-2.tsx' },
+      { exportName: 'Dup20Filled', exportCode: 'export const Dup20Filled = 2;', fileName: 'dup-22-filled.tsx' },
     ];
-    await expect(writePerIconFiles(tmpDest, items, [], { groupByBase: true })).rejects.toThrow();
+    await expect(
+      writePerIconFiles(tmpDest, items, [], { groupByBase: true }),
+    ).rejects.toThrowErrorMatchingInlineSnapshot(
+      `[Error: Duplicate export name(s) detected in group 'dup' while generating to '${tmpDest}': exportName='Dup20Filled' -> files=[dup-20-filled.tsx, dup-22-filled.tsx]. This indicates multiple source inputs generated the same export name and should be fixed.]`,
+    );
   });
 });
 
@@ -55,14 +59,27 @@ describe('normalizeBaseName', () => {
     expect(normalizeBaseName('my-icon-32-light.tsx')).toBe('my-icon');
     expect(normalizeBaseName('color-test-20_color.tsx')).toBe('color-test');
     expect(normalizeBaseName('color-test-20-color.tsx')).toBe('color-test');
+    expect(normalizeBaseName('text-color-accent-regular.tsx')).toBe('text-color-accent');
+    expect(normalizeBaseName('text-color-regular.tsx')).toBe('text-color');
+    expect(normalizeBaseName('text-color-20-regular.tsx')).toBe('text-color');
+    expect(normalizeBaseName('text-regular.tsx')).toBe('text');
+    expect(normalizeBaseName('text-20-regular.tsx')).toBe('text');
+    expect(normalizeBaseName('text-color-accent-20-filled.tsx')).toBe('text-color-accent');
 
-    // properly normalize names containig style tokens as first part
+    // properly normalize names containing style tokens as first part
     expect(normalizeBaseName('color-16-filled')).toBe('color');
     expect(normalizeBaseName('light-16-filled')).toBe('light');
     expect(normalizeBaseName('regular-16-filled')).toBe('regular');
     expect(normalizeBaseName('filled-16-filled')).toBe('filled');
+  });
 
-    // numeric-only token
-    expect(normalizeBaseName('example-24')).toBe('example');
+  it('throws on invalid filenames without style suffix', () => {
+    expect(() => normalizeBaseName('icon-20.tsx')).toThrow(
+      "Invalid icon filename 'icon-20.tsx' - must end with a style variant (regular, filled, light, color)",
+    );
+    expect(() => normalizeBaseName('icon.tsx')).toThrow(/must end with a style variant/);
+    expect(() => normalizeBaseName('filled.tsx')).toThrow(/must end with a style variant/);
   });
 });
+
+
