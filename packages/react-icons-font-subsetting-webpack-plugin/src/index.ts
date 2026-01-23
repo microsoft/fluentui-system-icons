@@ -33,8 +33,11 @@ export default class FluentUIReactIconsFontSubsettingPlugin
                         if (isFluentUIReactFontChunk(m)) {
                             const usedModuleExports = compilation.moduleGraph.getUsedExports(m, undefined);
 
+                            // Either all exports are used or there's no info on used exports
                             if (usedModuleExports === null || typeof usedModuleExports === 'boolean') {
-                                // Either all exports are used or there's no info on used exports
+                                // In development mode (or when optimization.usedExports is disabled),
+                                // getUsedExports() returns `true` (all exports used) or `null` (no info).
+                                // Subsetting requires knowing exactly which exports are used.
                                 continue;
                             }
 
@@ -103,7 +106,10 @@ function isNormalModule(m: webpack.Module): m is webpack.NormalModule {
 
 function isFluentUIReactFontChunk(m: webpack.Module): m is webpack.NormalModule {
     if (isNormalModule(m)) {
-        return /react-icons[\/\\]lib(-cjs)?[\/\\]fonts[\/\\](sizedIcons|icons)[\/\\]chunk-\d+\.js$/.test(m.resource)
+        // Match both chunk files and atomic font imports:
+        // - lib/fonts/sizedIcons/chunk-0.js (chunk-based)
+        // - lib/atoms/fonts/access-time.js (atomic imports)
+        return /react-icons[\/\\]lib(-cjs)?[\/\\](fonts[\/\\](sizedIcons|icons)[\/\\]chunk-\d+|atoms[\/\\]fonts[\/\\][\w-]+)\.js$/.test(m.resource)
     }
     return false;
 }
