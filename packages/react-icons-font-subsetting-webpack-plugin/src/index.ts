@@ -33,8 +33,11 @@ export default class FluentUIReactIconsFontSubsettingPlugin
                         if (isFluentUIReactFontChunk(m)) {
                             const usedModuleExports = compilation.moduleGraph.getUsedExports(m, undefined);
 
+                            // Either all exports are used or there's no info on used exports
                             if (usedModuleExports === null || typeof usedModuleExports === 'boolean') {
-                                // Either all exports are used or there's no info on used exports
+                                // In development mode (or when optimization.usedExports is disabled),
+                                // getUsedExports() returns `true` (all exports used) or `null` (no info).
+                                // Subsetting requires knowing exactly which exports are used.
                                 continue;
                             }
 
