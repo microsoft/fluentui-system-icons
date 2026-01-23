@@ -2,6 +2,12 @@ name: Publish library
 
 on:
   workflow_dispatch:
+    inputs:
+      dry-run:
+        description: 'Run in dry-run mode (no publishing, no git commits/tags)'
+        required: false
+        default: false
+        type: boolean
   push:
     branches: [ main ]
     paths:
@@ -181,34 +187,44 @@ jobs:
     # NX Release
     - name: react-icons prepare release
       run: |
-        npx nx release version $REACT_VERSION --verbose
-        npx nx release changelog $REACT_VERSION --from $CURRENT_VERSION --no-git-tag --no-git-commit --verbose
+        npx nx release version $REACT_VERSION --verbose ${{ inputs.dry-run && '--dry-run' || '' }}
+        npx nx release changelog $REACT_VERSION --from $CURRENT_VERSION --no-git-tag --no-git-commit --verbose ${{ inputs.dry-run && '--dry-run' || '' }}
 
-    - uses: JS-DevTools/npm-publish@v1
+    - name: Publish svg-icons to npm
+      if: ${{ !inputs.dry-run }}
+      uses: JS-DevTools/npm-publish@v1
       with:
         token: ${{ secrets.NPM_TOKEN }}
         access: public
         package: packages/svg-icons/package.json
 
-    - uses: JS-DevTools/npm-publish@v1
+    - name: Publish svg-sprites to npm
+      if: ${{ !inputs.dry-run }}
+      uses: JS-DevTools/npm-publish@v1
       with:
         token: ${{ secrets.NPM_TOKEN }}
         access: public
         package: packages/svg-sprites/package.json
 
-    - uses: JS-DevTools/npm-publish@v1
+    - name: Publish react-icons to npm
+      if: ${{ !inputs.dry-run }}
+      uses: JS-DevTools/npm-publish@v1
       with:
         token: ${{ secrets.NPM_TOKEN }}
         access: public
         package: packages/react-icons/package.json
 
-    - uses: JS-DevTools/npm-publish@v1
+    - name: Publish react-icons-font-subsetting-webpack-plugin to npm
+      if: ${{ !inputs.dry-run }}
+      uses: JS-DevTools/npm-publish@v1
       with:
         token: ${{ secrets.NPM_TOKEN }}
         access: public
         package: packages/react-icons-font-subsetting-webpack-plugin/package.json
 
-    - uses: JS-DevTools/npm-publish@v1
+    - name: Publish react-native-icons to npm
+      if: ${{ !inputs.dry-run }}
+      uses: JS-DevTools/npm-publish@v1
       with:
         token: ${{ secrets.NPM_TOKEN }}
         access: public
@@ -244,6 +260,7 @@ jobs:
 
     # Temporarily commenting out the publishing to Maven Central, as it is blocking the release for other platforms
     # - name: Publish to Maven Central
+    #   if: ${{ !inputs.dry-run }}
     #   uses: eskatos/gradle-command-action@v1
     #   env:
     #     OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
@@ -269,16 +286,47 @@ jobs:
       run: git config user.email "flubuild@microsoft.com" && git config user.name "Fluent Build System"
 
     - name: Commit version number change
+      if: ${{ !inputs.dry-run }}
       run: |
         git add -A
         git commit -m "Release $NEW_VERSION"
 
     - name: Tag release
+      if: ${{ !inputs.dry-run }}
       run: git tag "$NEW_VERSION"
 
     - name: Push release
+      if: ${{ !inputs.dry-run }}
       run: |
         git push origin HEAD:main --follow-tags --tags
+
+    - name: Dry-run summary
+      if: ${{ inputs.dry-run }}
+      run: |
+        echo "## 🧪 Dry-run Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "The following actions would have been performed:" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### 📦 Versions" >> $GITHUB_STEP_SUMMARY
+        echo "- **Library version:** \`$NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
+        echo "- **React icons version:** \`$REACT_VERSION\`" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### 📤 npm packages that would be published" >> $GITHUB_STEP_SUMMARY
+        echo "- \`@fluentui/svg-icons@$NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
+        echo "- \`@fluentui/svg-sprites@$NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
+        echo "- \`@fluentui/react-icons@$REACT_VERSION\`" >> $GITHUB_STEP_SUMMARY
+        echo "- \`@fluentui/react-icons-font-subsetting-webpack-plugin@$REACT_VERSION\`" >> $GITHUB_STEP_SUMMARY
+        echo "- \`@fluentui/react-native-icons@$REACT_VERSION\`" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### 🏷️ Git operations that would be performed" >> $GITHUB_STEP_SUMMARY
+        echo "- Commit: \`Release $NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
+        echo "- Tag: \`$NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
+        echo "- Push to: \`origin/main\`" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### 📝 Files modified (not committed)" >> $GITHUB_STEP_SUMMARY
+        echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+        git status --short >> $GITHUB_STEP_SUMMARY
+        echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
 
   # publish-android-demo:
   #   name: Publish Android demo app
