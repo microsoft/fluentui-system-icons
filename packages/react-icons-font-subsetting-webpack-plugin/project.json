@@ -1,0 +1,23 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "react-icons-font-subsetting-webpack-plugin",
+  "projectType": "library",
+  "sourceRoot": "packages/react-icons-font-subsetting-webpack-plugin/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "cache": true,
+      "inputs": [
+          "default",
+          "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+          "!{projectRoot}/test/**"
+      ],
+      "outputs": [
+          "{projectRoot}/lib"
+      ]
+    },
+    "test": {
+      "dependsOn": ["build"]
+    }
+  }
+}
