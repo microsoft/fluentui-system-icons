@@ -9,9 +9,9 @@ const path = require('path');
 const yargs = require('yargs');
 const { makeIconExport, getCreateFluentIconHeader, loadRtlMetadata, generatePerIconFiles } = require('./convert.utils');
 const {
+  assertCompoundStyleVariantIssues,
   handleDeprecatedColorAtoms,
   handleDeprecatedTextColorAtoms,
-  detectCompoundStyleVariantIssues,
 } = require('./deprecated-atoms');
 const { createStableChunks } = require('./chunking-utils');
 const { createFormatMetadata, writeMetadata } = require('./metadata.utils');
@@ -186,7 +186,7 @@ async function processPerIcon(sourceFiles, destPath, rtlMetadata, options = { gr
 
   handleDeprecatedColorAtoms(destPath, 'svg');
   handleDeprecatedTextColorAtoms(destPath, 'svg');
-  detectCompoundStyleVariantIssues(destPath);
+  await assertCompoundStyleVariantIssues(destPath);
 
   console.log(`[svg per-icon] Wrote ${resizable.fileCount + sized.fileCount} icon files to ${destPath}`);
   return { svgMetadata };

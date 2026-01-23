@@ -10,8 +10,8 @@ const mkdirp = require('mkdirp');
 const yargs = require('yargs');
 const _ = require('lodash');
 const {
+  assertCompoundStyleVariantIssues,
   handleDeprecatedColorAtoms,
-  detectCompoundStyleVariantIssues,
   handleDeprecatedTextColorAtoms,
 } = require('./deprecated-atoms');
 const { createFormatMetadata, writeMetadata } = require('./metadata.utils');
@@ -287,7 +287,7 @@ async function processPerIcon(destPath, iconEntries, rtlMetadata, options = { gr
 
   handleDeprecatedColorAtoms(destPath, 'font');
   handleDeprecatedTextColorAtoms(destPath, 'font');
-  detectCompoundStyleVariantIssues(destPath);
+  await assertCompoundStyleVariantIssues(destPath);
 
   console.log(`[font per-icon] Wrote ${resizable.fileCount + sized.fileCount} files to ${destPath}`);
 
