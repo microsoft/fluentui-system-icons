@@ -1,9 +1,9 @@
-@fluentui/react-icons
-===
+# @fluentui/react-icons
 
-***IMPORTANT PLEASE READ***
-@fluentui/react-icons has been major bumped to 2.x. There are some key changes in the api and usages. The main ones are:
-- The general icons are now resizeable using styling(i.e. scaling using the `height` and `width` props or using `fontSize` prop, etc). Ex: `<AccessTimeFilled fontSize={40}>`
+**IMPORTANT: PLEASE READ**
+
+@fluentui/react-icons has been major bumped to 2.x. There are some key changes in the API and usages. The main ones are:
+- The general icons are now resizeable using styling (i.e. scaling using the `height` and `width` props or using `fontSize` prop, etc). Ex: `<AccessTimeFilled fontSize={40}>`
 - There is now a more general icon offering included with the sized icons. Instead of importing `<AccessTime24Filled>`, you just import `<AccessTimeFilled>`.
 - The sized icons are still available, and are recommended if you know the specific size you want your icons to be. For the general case, the more general icons are available to you.
 
@@ -11,26 +11,24 @@
 
 Fluent System Icons are a collection of familiar, friendly, and modern icons from Microsoft.
 
-User story
----
+## User Story
 
 `@fluentui/react-icons` are SVG based icons wrapped in a React element. Because each icon is its own element, you only need to import what you need for your application.
 
-There are two different states of each icon, `Filled` and `Regular`, so you can choose what works best for your application. These are by default sized to `1em`, and can be scaled up or down to suit your developer needs.
+Icons are available in multiple variants: `Regular` and `Filled` for most icons, with `Light` and `Color` variants available for select icons. You can choose what works best for your application. These are by default sized to `1em`, and can be scaled up or down to suit your developer needs.
 
 There are also helpful interfaces that will allow you to add styling to fit the icons to your specific application.
 
-
-
 ## Usage
 
-In order to use these icons, simply import them as `import { [Componentname][state] } from @fluentui/react-icons` as follows:
+In order to use these icons, simply import them as `import { [Componentname][variant] } from @fluentui/react-icons` as follows:
 
 ```tsx
 import { AccessTimeFilled } from "@fluentui/react-icons";
 ```
 
 The previous icon offerings are scalable, but if you know what size you want to use for your icons, and you are not planning on using multiple sizes, it is recommended to use the sized icons. These are the same icons as the general case, but in multiple different sizes, built to look pixel perfect at those specific sizes.
+
 You can import the sized icons in a similar way:
 
 ```tsx
@@ -39,9 +37,9 @@ import { AccessTime24Filled } from "@fluentui/react-icons";
 
 You can also style the icons using the `FluentIconsProps` interface, with the `className` prop or the `primaryFill` prop.
 
-Finally, you can bundle the `Filled` and `Regular` versions of each icon into a compound icon component using the `bundleIcon` method. The `bundleIcon()` function returns a component with both states of the icon, and you can then use the classnames `iconFilledClassName` and `iconRegularClassName` to style this compound component.
+Finally, you can bundle the `Filled` and `Regular` versions of each icon into a compound icon component using the `bundleIcon` method. The `bundleIcon()` function returns a component with both variants of the icon, and you can then use the classnames `iconFilledClassName` and `iconRegularClassName` to style this compound component.
 
-If you would like to get the bundled icon without any of the default styling, then add the `filled` prop to the new component and the icon will not have any default styling. To style this new icon, add a user defined stylesheet to the icon component.
+The bundled icon accepts a `filled` prop (boolean) to control which variant is displayed: when `filled={true}`, the filled variant is shown; when `filled={false}` or omitted, the regular variant is shown.
 
 
 ```tsx
@@ -57,18 +55,24 @@ import {
 } from "@fluentui/react-icons";
 import { makeStyles } from "@griffel/react";
 
-
+// Define props to customize the icon's appearance
+// primaryFill: Sets the icon's color
+// className: Applies custom CSS class for additional styling
 const iconStyleProps: FluentIconsProps = {
     primaryFill: "purple",
     className: "iconClass"
 };
 
+// Create styles using Griffel's makeStyles
+// This example toggles between Filled and Regular variants on hover
 const useIconStyles = makeStyles({
     icon: {
         ":hover": {
+            // Hide the filled variant on hover
             [`& .${iconFilledClassName}`]: {
                 display: "none"
             },
+            // Show the regular variant on hover
             [`& .${iconRegularClassName}`]: {
                 display: "inline"
             }
@@ -76,6 +80,8 @@ const useIconStyles = makeStyles({
     }
 })
 
+// Bundle both icon variants into a single component
+// By default, displays the Filled variant; use filled={false} prop to show Regular variant
 const AccessTime = bundleIcon(AccessTimeFilled, AccessTimeRegular)
 const rootElement = document.getElementById("root");
 const styles = useIconStyles();
@@ -129,30 +135,31 @@ These are the only two types of breaking changes that deviate from standard sema
 
 **Recommendation**: When upgrading, even for patch versions, review the release notes for any removed or renamed icons to ensure your application isn't affected.
 
-
 ## Atomic API
 
 The Atomic API provides a more granular way to import icons, with each icon variant exported individually from dedicated module files. This approach can significantly improve tree-shaking and reduce bundle sizes, especially when you only use a small subset of the available icons.
 
 ### Benefits
+
 - **Better tree-shaking**: Import only the exact icon variants you need
 - **Smaller bundles**: Each icon variant is in its own file, allowing bundlers to eliminate unused code more effectively
 - **Grouped variants**: Related icon variants (different sizes and styles) are grouped together in a single file for convenience
 
-
 ### File Organization
 
 Icons with multiple variants are automatically grouped into a single file:
-- **Example**: `access-time.js` contains all AccessTime variants (AccessTime20Regular, AccessTime24Filled, etc.)
-- **Average**: ~9 exports per file (mix of sizes and styles)
+
+- **Example**: `access-time.js` contains all AccessTime variants (AccessTime20Regular, AccessTime24Filled, etc.).
+- **Average**: ~9 exports per file (mix of sizes and styles).
 
 This grouping strikes a balance between granularity and convenience, making it easy to import related variants while still maintaining excellent tree-shaking characteristics.
 
-### Using API directly
+### Using API Directly
 
 Icons are available via two export maps:
-- `@fluentui/react-icons/svg/*` - SVG-based icons
-- `@fluentui/react-icons/fonts/*` - Font-based icons
+
+- `@fluentui/react-icons/svg/*` - SVG-based icons.
+- `@fluentui/react-icons/fonts/*` - Font-based icons.
 
 ```tsx
 // Import individual icon variants from grouped files
@@ -183,13 +190,14 @@ function MyComponent() {
 
 Without this setting, TypeScript will not be able to resolve the individual icon exports from the grouped files.
 
-**NOTE:** TypeScript users that are still using _old_ `"moduleResolution": "node"`, can use `@fluentui/react-icons/lib/atoms/svg/*` - for SVG-based atomic icon imports
+**NOTE:** TypeScript users that are still using _old_ `"moduleResolution": "node"`, can use `@fluentui/react-icons/lib/atoms/svg/*` - for SVG-based atomic icon imports.
 
-### Using API via build transform
+### Using API via Build Transform
 
 Migrating a larger codebase to the new performant atomic imports might be a daunting task. To make this migration more straightforward, you can leverage build-time import transforms to get all the benefits without modifying your actual code.
 
 These transforms automatically rewrite imports from:
+
 ```tsx
 import { AccessTime24Filled } from "@fluentui/react-icons";
 ```
@@ -270,15 +278,10 @@ If you use SWC for transpilation, add [@swc/plugin-transform-imports](https://ww
 }
 ```
 
+## Viewing Icons
 
-## Viewing the icons in a webpage
+You can view the full list of available icons by type:
 
-You can view the full list of available icons by type: [regular](https://github.com/microsoft/fluentui-system-icons/blob/main/icons_regular.md) or [filled](https://github.com/microsoft/fluentui-system-icons/blob/main/icons_filled.md)
-
-## Appendix and FAQ
-
-:::info
-**Find this document incomplete?** Leave a comment!
-:::
-
-###### tags: `Templates` `Documentation`
+- [React Icons Catalogue](https://storybooks.fluentui.dev/react/?path=/docs/icons-catalog--docs)
+- [Regular icons](https://github.com/microsoft/fluentui-system-icons/blob/main/icons_regular.md)
+- [Filled icons](https://github.com/microsoft/fluentui-system-icons/blob/main/icons_filled.md)
