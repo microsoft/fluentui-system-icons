@@ -32,11 +32,10 @@ jobs:
     - uses: actions/checkout@v6
       with:
         token: ${{ steps.generate-token.outputs.token }}
-
-    - name: Fetch tags for changelog
-      run: |
-        git fetch --tags --force
-        git tag -l --sort=-creatordate | head -n 5
+        # Blobless clone: fetches full commit history but downloads file contents lazily
+        # This is needed for nx release changelog to detect all commits between releases
+        filter: blob:none
+        fetch-tags: true
 
     - name: Bump version patch
       run: |
