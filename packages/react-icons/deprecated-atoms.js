@@ -27,12 +27,14 @@ function getExportsFromFile(fileContent) {
   const lines = fileContent.split('\n');
   const exports = lines.filter((line) => line.startsWith('export const'));
 
-  const exportNames = exports
-    .map((exp) => {
-      const match = exp.match(/export const (\w+)/);
-      return match ? match[1] : null;
-    })
-    .filter(Boolean);
+  const exportNames = /** @type {string[]} */ (
+    exports
+      .map((exp) => {
+        const match = exp.match(/export const (\w+)/);
+        return match ? match[1] : null;
+      })
+      .filter(Boolean)
+  );
 
   return { exports, exportNames };
 }
@@ -130,30 +132,48 @@ function handleDeprecatedTextColorAtoms(destPath, type) {
  *   - Would normalize to the same base name as other icons without the variant suffix
  *
  * @param {string} destPath - The destination path where atoms are written.
+ * @returns {Promise<void>}
+ * @throws Will throw an error if potential grouping issues are detected.
  */
-function detectCompoundStyleVariantIssues(destPath) {
-  const STYLE_VARIANTS = ['regular', 'filled', 'light', 'color'];
-  const issues = [];
+async function assertCompoundStyleVariantIssues(destPath) {
+  // Files that are intentionally modified by deprecated atom handlers to maintain backward compatibility
+  // These will have mixed groupings by design and should be skipped
+  const SKIP_FILES = ['text.tsx'];
 
-  if (!fs.existsSync(destPath)) {
+  const STYLE_VARIANTS = ['regular', 'filled', 'light', 'color'];
+
+  try {
+    await fs.promises.access(destPath);
+  } catch {
     return;
   }
 
-  const files = fs.readdirSync(destPath).filter((f) => f.endsWith('.tsx'));
+  const allFiles = await fs.promises.readdir(destPath);
+  const files = allFiles.filter((file) => file.endsWith('.tsx') && !SKIP_FILES.includes(file));
 
-  for (const file of files) {
+  /**
+   * Process a single file and return any issues found
+   * @param {string} file
+   * @returns {Promise<Array<{file: string, base: string, otherBases: string[], exports: string[]}>>}
+   */
+  async function processFile(file) {
     const filePath = path.join(destPath, file);
-    const content = fs.readFileSync(filePath, 'utf8');
+    const content = await fs.promises.readFile(filePath, 'utf8');
     const { exportNames } = getExportsFromFile(content);
 
-    // Group exports by their base pattern (before size/style)
-    // e.g., TextColor16Regular -> TextColor
+    /**
+     * A registry of base prefixes for deprecated icon atoms, providing efficient
+     * key-value lookups and maintaining the order of added prefixes.
+     *
+     * Group exports by their base pattern (before size/style), e.g., TextColor16Regular -> TextColor
+     * @type {Map<string, any>}
+     */
     const basePrefixes = new Map();
 
     for (const exportName of exportNames) {
       // Extract base by removing trailing size+style pattern
       // e.g., TextColor16Regular -> TextColor, Text16Regular -> Text
-      const baseMatch = exportName.match(/^([A-Z][a-z]+(?:[A-Z][a-z]+)*)\\d+(Regular|Filled|Light|Color)?$/);
+      const baseMatch = exportName.match(/^([A-Z][a-z]+(?:[A-Z][a-z]+)*)\d+(Regular|Filled|Light|Color)?$/);
       if (baseMatch) {
         const base = baseMatch[1];
         if (!basePrefixes.has(base)) {
@@ -166,6 +186,8 @@ function detectCompoundStyleVariantIssues(destPath) {
     // Check if file contains multiple distinct base patterns that might indicate grouping issues
     // For example, if 'text.tsx' contains both 'Text*' and 'TextColor*' exports
     const bases = Array.from(basePrefixes.keys());
+    const fileIssues = [];
+
     for (const base of bases) {
       // Check if this base ends with a style variant name
       const lowerBase = base.toLowerCase();
@@ -175,7 +197,7 @@ function detectCompoundStyleVariantIssues(destPath) {
         // Found a potential issue: file contains icons with base name ending in style variant
         // AND other icons with different base names
         const otherBases = bases.filter((b) => b !== base);
-        issues.push({
+        fileIssues.push({
           file,
           base,
           otherBases,
@@ -183,9 +205,15 @@ function detectCompoundStyleVariantIssues(destPath) {
         });
       }
     }
+
+    return fileIssues;
   }
 
-  if (issues.length > 0) {
+  /**
+   *
+   * @param {Awaited<ReturnType<typeof processFile>>} issues
+   */
+  function reportGroupingIssues(issues) {
     console.warn('[compound-style-variant detection] Found potential atom grouping issues:');
     for (const issue of issues) {
       console.warn(`  - ${issue.file}: Contains '${issue.base}*' exports alongside ${issue.otherBases.join(', ')}`);
@@ -200,6 +228,21 @@ function detectCompoundStyleVariantIssues(destPath) {
       '  Please verify these are intentionally grouped or add a separation handler like handleTextColorAtomSeparation.',
     );
   }
+
+  // Process all files in parallel
+  const processedFiles = files.map((file) => processFile(file));
+  const results = await Promise.all(processedFiles);
+  const issues = results.flat();
+
+  if (issues.length > 0) {
+    reportGroupingIssues(issues);
+
+    throw new Error('Compound style variant grouping issues detected.');
+  }
 }
 
-module.exports = { handleDeprecatedColorAtoms, handleDeprecatedTextColorAtoms, detectCompoundStyleVariantIssues };
+module.exports = {
+  handleDeprecatedColorAtoms,
+  handleDeprecatedTextColorAtoms,
+  assertCompoundStyleVariantIssues,
+};
