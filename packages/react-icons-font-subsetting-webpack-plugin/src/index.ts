@@ -106,7 +106,10 @@ function isNormalModule(m: webpack.Module): m is webpack.NormalModule {
 
 function isFluentUIReactFontChunk(m: webpack.Module): m is webpack.NormalModule {
     if (isNormalModule(m)) {
-        return /react-icons[\/\\]lib(-cjs)?[\/\\]fonts[\/\\](sizedIcons|icons)[\/\\]chunk-\d+\.js$/.test(m.resource)
+        // Match both chunk files and atomic font imports:
+        // - lib/fonts/sizedIcons/chunk-0.js (chunk-based)
+        // - lib/atoms/fonts/access-time.js (atomic imports)
+        return /react-icons[\/\\]lib(-cjs)?[\/\\](fonts[\/\\](sizedIcons|icons)[\/\\]chunk-\d+|atoms[\/\\]fonts[\/\\][\w-]+)\.js$/.test(m.resource)
     }
     return false;
 }
