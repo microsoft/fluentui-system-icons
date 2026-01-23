@@ -8,16 +8,14 @@ on:
         required: false
         default: false
         type: boolean
-  push:
-    branches: [ main ]
-    paths:
-      - 'assets/**'
 
 env:
   LIBRARY_VERSION: 1.1.${{ github.run_number }}
 
 jobs:
   publish-library:
+    # Prevent infinite loops: skip if the commit was made by the build system itself
+    # (e.g., the "Release X.Y.Z" commit pushed at the end of this workflow)
     if: "!contains(github.event.head_commit.author.email, 'flubuild@microsoft.com')"
     name: Publish icon libraries
     runs-on: ubuntu-latest
@@ -289,7 +287,7 @@ jobs:
       if: ${{ !inputs.dry-run }}
       run: |
         git add -A
-        git commit -m "Release $NEW_VERSION"
+        git commit -m "Release $NEW_VERSION [skip ci]"
 
     - name: Tag release
       if: ${{ !inputs.dry-run }}
