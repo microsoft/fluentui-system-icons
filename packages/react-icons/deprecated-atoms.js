@@ -136,6 +136,10 @@ function handleDeprecatedTextColorAtoms(destPath, type) {
  * @throws Will throw an error if potential grouping issues are detected.
  */
 async function assertCompoundStyleVariantIssues(destPath) {
+  // Files that are intentionally modified by deprecated atom handlers to maintain backward compatibility
+  // These will have mixed groupings by design and should be skipped
+  const SKIP_FILES = ['text.tsx'];
+
   const STYLE_VARIANTS = ['regular', 'filled', 'light', 'color'];
 
   try {
@@ -145,7 +149,7 @@ async function assertCompoundStyleVariantIssues(destPath) {
   }
 
   const allFiles = await fs.promises.readdir(destPath);
-  const files = allFiles.filter((f) => f.endsWith('.tsx'));
+  const files = allFiles.filter((file) => file.endsWith('.tsx') && !SKIP_FILES.includes(file));
 
   /**
    * Process a single file and return any issues found
