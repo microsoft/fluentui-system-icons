@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Timer 3,timer_3,20,filled,ic_fluent_timer_3_20_filled.svg,Timer 3/SVG/ic_fluent_timer_3_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Timer%203/SVG/ic_fluent_timer_3_20_filled.svg
+Timer 3,timer_3,20,regular,ic_fluent_timer_3_20_regular.svg,Timer 3/SVG/ic_fluent_timer_3_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Timer%203/SVG/ic_fluent_timer_3_20_regular.svg
+Timer 3,timer_3,24,filled,ic_fluent_timer_3_24_filled.svg,Timer 3/SVG/ic_fluent_timer_3_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Timer%203/SVG/ic_fluent_timer_3_24_filled.svg
+Timer 3,timer_3,24,regular,ic_fluent_timer_3_24_regular.svg,Timer 3/SVG/ic_fluent_timer_3_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Timer%203/SVG/ic_fluent_timer_3_24_regular.svg

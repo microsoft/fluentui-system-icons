@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Orientation,orientation,20,filled,ic_fluent_orientation_20_filled.svg,Orientation/SVG/ic_fluent_orientation_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Orientation/SVG/ic_fluent_orientation_20_filled.svg
+Orientation,orientation,20,regular,ic_fluent_orientation_20_regular.svg,Orientation/SVG/ic_fluent_orientation_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Orientation/SVG/ic_fluent_orientation_20_regular.svg
+Orientation,orientation,24,filled,ic_fluent_orientation_24_filled.svg,Orientation/SVG/ic_fluent_orientation_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Orientation/SVG/ic_fluent_orientation_24_filled.svg
+Orientation,orientation,24,regular,ic_fluent_orientation_24_regular.svg,Orientation/SVG/ic_fluent_orientation_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Orientation/SVG/ic_fluent_orientation_24_regular.svg

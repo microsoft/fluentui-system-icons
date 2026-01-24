@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+USB Plug,usb_plug,20,filled,ic_fluent_usb_plug_20_filled.svg,USB Plug/SVG/ic_fluent_usb_plug_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/USB%20Plug/SVG/ic_fluent_usb_plug_20_filled.svg
+USB Plug,usb_plug,20,regular,ic_fluent_usb_plug_20_regular.svg,USB Plug/SVG/ic_fluent_usb_plug_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/USB%20Plug/SVG/ic_fluent_usb_plug_20_regular.svg
+USB Plug,usb_plug,24,filled,ic_fluent_usb_plug_24_filled.svg,USB Plug/SVG/ic_fluent_usb_plug_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/USB%20Plug/SVG/ic_fluent_usb_plug_24_filled.svg
+USB Plug,usb_plug,24,regular,ic_fluent_usb_plug_24_regular.svg,USB Plug/SVG/ic_fluent_usb_plug_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/USB%20Plug/SVG/ic_fluent_usb_plug_24_regular.svg

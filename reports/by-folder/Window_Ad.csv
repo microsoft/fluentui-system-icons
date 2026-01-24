@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Window Ad,window_ad,20,filled,ic_fluent_window_ad_20_filled.svg,Window Ad/SVG/ic_fluent_window_ad_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Window%20Ad/SVG/ic_fluent_window_ad_20_filled.svg
+Window Ad,window_ad,20,regular,ic_fluent_window_ad_20_regular.svg,Window Ad/SVG/ic_fluent_window_ad_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Window%20Ad/SVG/ic_fluent_window_ad_20_regular.svg
+Window Ad,window_ad,24,filled,ic_fluent_window_ad_24_filled.svg,Window Ad/SVG/ic_fluent_window_ad_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Window%20Ad/SVG/ic_fluent_window_ad_24_filled.svg
+Window Ad,window_ad,24,regular,ic_fluent_window_ad_24_regular.svg,Window Ad/SVG/ic_fluent_window_ad_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Window%20Ad/SVG/ic_fluent_window_ad_24_regular.svg

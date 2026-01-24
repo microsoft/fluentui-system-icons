@@ -1,0 +1,8 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Text,text,12,filled,ic_fluent_text_12_filled.svg,Text/SVG/ic_fluent_text_12_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Text/SVG/ic_fluent_text_12_filled.svg
+Text,text,12,regular,ic_fluent_text_12_regular.svg,Text/SVG/ic_fluent_text_12_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Text/SVG/ic_fluent_text_12_regular.svg
+Text,text,16,filled,ic_fluent_text_16_filled.svg,Text/SVG/ic_fluent_text_16_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Text/SVG/ic_fluent_text_16_filled.svg
+Text,text,16,regular,ic_fluent_text_16_regular.svg,Text/SVG/ic_fluent_text_16_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Text/SVG/ic_fluent_text_16_regular.svg
+Text,text,32,filled,ic_fluent_text_32_filled.svg,Text/SVG/ic_fluent_text_32_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Text/SVG/ic_fluent_text_32_filled.svg
+Text,text,32,light,ic_fluent_text_32_light.svg,Text/SVG/ic_fluent_text_32_light.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Text/SVG/ic_fluent_text_32_light.svg
+Text,text,32,regular,ic_fluent_text_32_regular.svg,Text/SVG/ic_fluent_text_32_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Text/SVG/ic_fluent_text_32_regular.svg

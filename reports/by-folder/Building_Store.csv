@@ -1,0 +1,4 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Building Store,building_store,16,color,ic_fluent_building_store_16_color.svg,Building Store/SVG/ic_fluent_building_store_16_color.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Building%20Store/SVG/ic_fluent_building_store_16_color.svg
+Building Store,building_store,20,color,ic_fluent_building_store_20_color.svg,Building Store/SVG/ic_fluent_building_store_20_color.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Building%20Store/SVG/ic_fluent_building_store_20_color.svg
+Building Store,building_store,24,color,ic_fluent_building_store_24_color.svg,Building Store/SVG/ic_fluent_building_store_24_color.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Building%20Store/SVG/ic_fluent_building_store_24_color.svg
