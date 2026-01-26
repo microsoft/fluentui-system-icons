@@ -90,6 +90,54 @@ describe(`convert  utils`, () => {
       expect(res).toBeTruthy();
       expect(res?.exportCode).toContain('flipInRtl');
     });
+
+    it('treats TextColor icons as non-color icons (regular/filled)', () => {
+      writeFile('ic_fluent_text_color_20_regular.svg', '<svg width="20" d="M1 2 3" ></svg>');
+      const res = makeIconExport({
+        file: 'ic_fluent_text_color_20_regular.svg',
+        srcFile: path.join(tmpDir, 'ic_fluent_text_color_20_regular.svg'),
+        resizable: true,
+        metadata: {},
+      });
+      expect(res).toBeTruthy();
+      expect(res?.exportName).toBe('TextColorRegular');
+      // Should use array format (non-color), not inner svg
+      expect(res?.exportCode).toContain('[');
+      // Should NOT contain color option
+      expect(res?.exportCode).not.toContain('color: true');
+    });
+
+    it('treats TextColorAccent icons as non-color icons (regular/filled)', () => {
+      writeFile('ic_fluent_text_color_accent_20_filled.svg', '<svg width="20" d="M5 6 7" ></svg>');
+      const res = makeIconExport({
+        file: 'ic_fluent_text_color_accent_20_filled.svg',
+        srcFile: path.join(tmpDir, 'ic_fluent_text_color_accent_20_filled.svg'),
+        resizable: true,
+        metadata: {},
+      });
+      expect(res).toBeTruthy();
+      expect(res?.exportName).toBe('TextColorAccentFilled');
+      // Should use array format (non-color), not inner svg
+      expect(res?.exportCode).toContain('[');
+      // Should NOT contain color option
+      expect(res?.exportCode).not.toContain('color: true');
+    });
+
+    it('still treats icons ending with _color as color icons', () => {
+      writeFile('ic_fluent_patient_20_color.svg', '<svg width="20"><g fill="#000"/><path d="M1 2"/></svg>');
+      const res = makeIconExport({
+        file: 'ic_fluent_patient_20_color.svg',
+        srcFile: path.join(tmpDir, 'ic_fluent_patient_20_color.svg'),
+        resizable: true,
+        metadata: {},
+      });
+      expect(res).toBeTruthy();
+      expect(res?.exportName).toBe('PatientColor');
+      // Should use inner svg format (color icons)
+      expect(res?.exportCode).not.toContain('[');
+      // Should contain color option
+      expect(res?.exportCode).toContain('color: true');
+    });
   });
 
   describe(`generatePerIconFiles`, () => {

@@ -39,7 +39,7 @@ function makeIconExport(opts) {
   let exportBasename = _.camelCase(iconName);
   const exportName = exportBasename[0].toUpperCase() + exportBasename.slice(1);
   const flipInRtl = metadata[exportName] === 'mirror';
-  const isColor = iconName.includes('_color');
+  const isColor = iconName.endsWith('_color');
 
   const svgContent = fs.readFileSync(srcFile, 'utf8');
   /**
