@@ -101,6 +101,7 @@ describe(`convert  utils`, () => {
       });
       expect(res).toBeTruthy();
       expect(res?.exportCode).not.toContain('fill=');
+      expect(res?.exportCode).not.toContain('color: true');
     });
 
     it('treats TextColorAccent icons as non-color icons (regular/filled)', () => {
@@ -113,6 +114,7 @@ describe(`convert  utils`, () => {
       });
       expect(res).toBeTruthy();
       expect(res?.exportCode).not.toContain('fill=');
+      expect(res?.exportCode).not.toContain('color: true');
     });
 
     it('still treats icons ending with _color as color icons', () => {
@@ -125,6 +127,7 @@ describe(`convert  utils`, () => {
       });
       expect(res).toBeTruthy();
       expect(res?.exportCode).toContain('fill=');
+      expect(res?.exportCode).toContain('color: true');
     });
   });
 
