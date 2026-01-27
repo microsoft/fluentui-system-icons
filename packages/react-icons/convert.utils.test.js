@@ -101,9 +101,7 @@ describe(`convert  utils`, () => {
       });
       expect(res).toBeTruthy();
       expect(res?.exportName).toBe('TextColorRegular');
-      // Should use array format (non-color), not inner svg
       expect(res?.exportCode).toContain('[');
-      // Should NOT contain color option
       expect(res?.exportCode).not.toContain('color: true');
     });
 
@@ -117,9 +115,7 @@ describe(`convert  utils`, () => {
       });
       expect(res).toBeTruthy();
       expect(res?.exportName).toBe('TextColorAccentFilled');
-      // Should use array format (non-color), not inner svg
       expect(res?.exportCode).toContain('[');
-      // Should NOT contain color option
       expect(res?.exportCode).not.toContain('color: true');
     });
 
@@ -133,9 +129,7 @@ describe(`convert  utils`, () => {
       });
       expect(res).toBeTruthy();
       expect(res?.exportName).toBe('PatientColor');
-      // Should use inner svg format (color icons)
       expect(res?.exportCode).not.toContain('[');
-      // Should contain color option
       expect(res?.exportCode).toContain('color: true');
     });
   });
