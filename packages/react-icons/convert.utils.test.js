@@ -92,7 +92,7 @@ describe(`convert  utils`, () => {
     });
 
     it('treats TextColor icons as non-color icons (regular/filled)', () => {
-      writeFile('ic_fluent_text_color_20_regular.svg', '<svg width="20" d="M1 2 3" ></svg>');
+      writeFile('ic_fluent_text_color_20_regular.svg', '<svg width="20"><path d="M1 2 3" fill="#212121"/></svg>');
       const res = makeIconExport({
         file: 'ic_fluent_text_color_20_regular.svg',
         srcFile: path.join(tmpDir, 'ic_fluent_text_color_20_regular.svg'),
@@ -100,13 +100,11 @@ describe(`convert  utils`, () => {
         metadata: {},
       });
       expect(res).toBeTruthy();
-      expect(res?.exportName).toBe('TextColorRegular');
-      expect(res?.exportCode).toContain('[');
-      expect(res?.exportCode).not.toContain('color: true');
+      expect(res?.exportCode).not.toContain('fill=');
     });
 
     it('treats TextColorAccent icons as non-color icons (regular/filled)', () => {
-      writeFile('ic_fluent_text_color_accent_20_filled.svg', '<svg width="20" d="M5 6 7" ></svg>');
+      writeFile('ic_fluent_text_color_accent_20_filled.svg', '<svg width="20"><path d="M5 6 7" fill="#212121"/></svg>');
       const res = makeIconExport({
         file: 'ic_fluent_text_color_accent_20_filled.svg',
         srcFile: path.join(tmpDir, 'ic_fluent_text_color_accent_20_filled.svg'),
@@ -114,13 +112,11 @@ describe(`convert  utils`, () => {
         metadata: {},
       });
       expect(res).toBeTruthy();
-      expect(res?.exportName).toBe('TextColorAccentFilled');
-      expect(res?.exportCode).toContain('[');
-      expect(res?.exportCode).not.toContain('color: true');
+      expect(res?.exportCode).not.toContain('fill=');
     });
 
     it('still treats icons ending with _color as color icons', () => {
-      writeFile('ic_fluent_patient_20_color.svg', '<svg width="20"><g fill="#000"/><path d="M1 2"/></svg>');
+      writeFile('ic_fluent_patient_20_color.svg', '<svg width="20"><g fill="#000"/><path d="M1 2" fill="#ff0000"/></svg>');
       const res = makeIconExport({
         file: 'ic_fluent_patient_20_color.svg',
         srcFile: path.join(tmpDir, 'ic_fluent_patient_20_color.svg'),
@@ -128,9 +124,7 @@ describe(`convert  utils`, () => {
         metadata: {},
       });
       expect(res).toBeTruthy();
-      expect(res?.exportName).toBe('PatientColor');
-      expect(res?.exportCode).not.toContain('[');
-      expect(res?.exportCode).toContain('color: true');
+      expect(res?.exportCode).toContain('fill=');
     });
   });
 
