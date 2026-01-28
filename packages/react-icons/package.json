@@ -119,6 +119,11 @@
       "import": "./lib/index.js",
       "require": "./lib-cjs/index.js"
     },
+    "./utils": {
+      "types": "./lib/utils.d.ts",
+      "import": "./lib/utils.js",
+      "require": "./lib-cjs/utils.js"
+    },
     "./providers": {
       "types": "./lib/providers.d.ts",
       "import": "./lib/providers.js",
