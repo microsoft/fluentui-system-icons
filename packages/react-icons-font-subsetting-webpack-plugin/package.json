@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "webpack -c test/webpack.config.js",
+    "dev": "webpack serve -c test/webpack.config.js --open",
     "build": "tsc -p ."
   },
   "engines": {
