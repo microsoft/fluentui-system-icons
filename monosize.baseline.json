@@ -1,20 +1,20 @@
 {
   "branch": "main",
-  "commitSHA": "1671d19d0aa2061ef9a81a754587567fff0307e9",
+  "commitSHA": "1c786a95886a6b6305e66ac7f5bc6e08cd697cea",
   "report": [
     {
       "packageName": "react-icons",
       "name": "Atomic Imports",
       "path": "bundle-size/atomic-import.fixture.js",
-      "minifiedSize": 6797,
-      "gzippedSize": 3148
+      "minifiedSize": 6793,
+      "gzippedSize": 3153
     },
     {
       "packageName": "react-icons",
       "name": "Single Icon via Import all",
       "path": "bundle-size/icons-import-all.fixture.js",
-      "minifiedSize": 6799,
-      "gzippedSize": 3150
+      "minifiedSize": 6795,
+      "gzippedSize": 3154
     },
     {
       "packageName": "react-icons",
@@ -27,15 +27,15 @@
       "packageName": "react-icons",
       "name": "Single Fonts",
       "path": "bundle-size/single-fonts.fixture.js",
-      "minifiedSize": 15503,
-      "gzippedSize": 6498
+      "minifiedSize": 15499,
+      "gzippedSize": 6503
     },
     {
       "packageName": "react-icons",
       "name": "Single Icons",
       "path": "bundle-size/single-icons.fixture.js",
-      "minifiedSize": 6799,
-      "gzippedSize": 3150
+      "minifiedSize": 6795,
+      "gzippedSize": 3154
     }
   ]
 }
