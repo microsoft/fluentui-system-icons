@@ -29,6 +29,19 @@ const REACT_ICONS_FONT_MODULE_IMPORT_PATTERN =
 export default class FluentUIReactIconsFontSubsettingPlugin
     implements webpack.WebpackPluginInstance {
 
+    /**
+     * Entry point for the Webpack plugin that registers hooks to perform font subsetting for `@fluentui/react-icons`.
+     *
+     * This method is executed **once** by Webpack when the plugin is initialized during the compiler's
+     * bootstrap phase. The internal logic hooked into `optimizeAssets` is executed **once per compilation**
+     * (whenever Webpack processes the module graph and prepares to output assets) during the
+     * asset optimization stage.
+     *
+     * It analyzes the module graph to determine which specific icons are used from Fluent UI icon packages
+     * and triggers font subsetting to remove unused glyphs from the final output assets.
+     *
+     * @param compiler - The Webpack compiler instance.
+     */
     apply(compiler: webpack.Compiler) {
         compiler.hooks.compilation.tap(
             PLUGIN_NAME,
