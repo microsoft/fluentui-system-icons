@@ -1975,9 +1975,9 @@ describe('Build Verification', () => {
         expect(textColorContent).not.toContain('export const Text16Regular');
 
         // text.js should contain Text* exports
-        expect(textContent).toMatch(/export const Text12Regular/);
-        expect(textContent).toMatch(/export const Text16Regular/);
-        expect(textContent).toMatch(/export const Text32Regular/);
+        expect(textContent).toContain('export const Text12Regular');
+        expect(textContent).toContain('export const Text16Regular');
+        expect(textContent).toContain('export const Text32Regular');
 
         // text.js should have backward-compatible re-exports for TextColor* with deprecation notice
         expect(textContent).toContain(`@deprecated use \`@fluentui/${exportKindDir}/text-color\` import`);
