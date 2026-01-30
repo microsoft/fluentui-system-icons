@@ -30,8 +30,13 @@ module.exports = {
             }
         ]
     },
+    entry: {
+        index: './src/index.js',
+        atoms: './src/atoms.js',
+    },
     output: {
         path: resolve(__dirname, 'dist'),
+        filename: '[name].js',
     },
     resolve: {
         conditionNames: ['fluentIconFont', 'import']
