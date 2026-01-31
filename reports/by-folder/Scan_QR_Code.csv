@@ -1,0 +1,3 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Scan QR Code,scan_qr_code,24,filled,ic_fluent_scan_qr_code_24_filled.svg,Scan QR Code/SVG/ic_fluent_scan_qr_code_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Scan%20QR%20Code/SVG/ic_fluent_scan_qr_code_24_filled.svg
+Scan QR Code,scan_qr_code,24,regular,ic_fluent_scan_qr_code_24_regular.svg,Scan QR Code/SVG/ic_fluent_scan_qr_code_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Scan%20QR%20Code/SVG/ic_fluent_scan_qr_code_24_regular.svg

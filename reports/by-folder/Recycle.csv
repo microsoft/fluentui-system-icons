@@ -1,0 +1,5 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Recycle,recycle,20,filled,ic_fluent_recycle_20_filled.svg,Recycle/SVG/ic_fluent_recycle_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Recycle/SVG/ic_fluent_recycle_20_filled.svg
+Recycle,recycle,20,regular,ic_fluent_recycle_20_regular.svg,Recycle/SVG/ic_fluent_recycle_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Recycle/SVG/ic_fluent_recycle_20_regular.svg
+Recycle,recycle,32,filled,ic_fluent_recycle_32_filled.svg,Recycle/SVG/ic_fluent_recycle_32_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Recycle/SVG/ic_fluent_recycle_32_filled.svg
+Recycle,recycle,32,regular,ic_fluent_recycle_32_regular.svg,Recycle/SVG/ic_fluent_recycle_32_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Recycle/SVG/ic_fluent_recycle_32_regular.svg

@@ -1,0 +1,14 @@
+category,icon_slug,size,style,file_name,relative_path,raw_url
+Poll,poll,16,color,ic_fluent_poll_16_color.svg,Poll/SVG/ic_fluent_poll_16_color.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Poll/SVG/ic_fluent_poll_16_color.svg
+Poll,poll,16,filled,ic_fluent_poll_16_filled.svg,Poll/SVG/ic_fluent_poll_16_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Poll/SVG/ic_fluent_poll_16_filled.svg
+Poll,poll,16,regular,ic_fluent_poll_16_regular.svg,Poll/SVG/ic_fluent_poll_16_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Poll/SVG/ic_fluent_poll_16_regular.svg
+Poll,poll,20,color,ic_fluent_poll_20_color.svg,Poll/SVG/ic_fluent_poll_20_color.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Poll/SVG/ic_fluent_poll_20_color.svg
+Poll,poll,20,filled,ic_fluent_poll_20_filled.svg,Poll/SVG/ic_fluent_poll_20_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Poll/SVG/ic_fluent_poll_20_filled.svg
+Poll,poll,20,regular,ic_fluent_poll_20_regular.svg,Poll/SVG/ic_fluent_poll_20_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Poll/SVG/ic_fluent_poll_20_regular.svg
+Poll,poll,24,color,ic_fluent_poll_24_color.svg,Poll/SVG/ic_fluent_poll_24_color.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Poll/SVG/ic_fluent_poll_24_color.svg
+Poll,poll,24,filled,ic_fluent_poll_24_filled.svg,Poll/SVG/ic_fluent_poll_24_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Poll/SVG/ic_fluent_poll_24_filled.svg
+Poll,poll,24,regular,ic_fluent_poll_24_regular.svg,Poll/SVG/ic_fluent_poll_24_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Poll/SVG/ic_fluent_poll_24_regular.svg
+Poll,poll,32,color,ic_fluent_poll_32_color.svg,Poll/SVG/ic_fluent_poll_32_color.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Poll/SVG/ic_fluent_poll_32_color.svg
+Poll,poll,32,filled,ic_fluent_poll_32_filled.svg,Poll/SVG/ic_fluent_poll_32_filled.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Poll/SVG/ic_fluent_poll_32_filled.svg
+Poll,poll,32,light,ic_fluent_poll_32_light.svg,Poll/SVG/ic_fluent_poll_32_light.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Poll/SVG/ic_fluent_poll_32_light.svg
+Poll,poll,32,regular,ic_fluent_poll_32_regular.svg,Poll/SVG/ic_fluent_poll_32_regular.svg,https://raw.githubusercontent.com/microsoft/fluentui-system-icons/refs/heads/main/assets/Poll/SVG/ic_fluent_poll_32_regular.svg
