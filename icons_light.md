@@ -149,6 +149,7 @@
 |Pin|<img src="assets/Pin/SVG/ic_fluent_pin_32_light.svg?raw=true" width="24" height="24">|`pin32Light`|`ic_fluent_pin_32_light`|
 |Pin Off|<img src="assets/Pin Off/SVG/ic_fluent_pin_off_32_light.svg?raw=true" width="24" height="24">|`pinOff32Light`|`ic_fluent_pin_off_32_light`|
 |Poll|<img src="assets/Poll/SVG/ic_fluent_poll_32_light.svg?raw=true" width="24" height="24">|`poll32Light`|`ic_fluent_poll_32_light`|
+|Presenter|<img src="assets/Presenter/SVG/ic_fluent_presenter_32_light.svg?raw=true" width="24" height="24">|`presenter32Light`|`ic_fluent_presenter_32_light`|
 |Print|<img src="assets/Print/SVG/ic_fluent_print_32_light.svg?raw=true" width="24" height="24">|`print32Light`|`ic_fluent_print_32_light`|
 |Question|<img src="assets/Question/SVG/ic_fluent_question_32_light.svg?raw=true" width="24" height="24">|`question32Light`|`ic_fluent_question_32_light`|
 |Read Aloud|<img src="assets/Read Aloud/SVG/ic_fluent_read_aloud_32_light.svg?raw=true" width="24" height="24">|`readAloud32Light`|`ic_fluent_read_aloud_32_light`|

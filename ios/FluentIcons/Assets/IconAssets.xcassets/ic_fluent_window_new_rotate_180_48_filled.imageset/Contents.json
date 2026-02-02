@@ -1,0 +1,16 @@
+{
+  "images": [
+    {
+      "filename": "ic_fluent_window_new_rotate_180_48_filled.svg",
+      "idiom": "universal"
+    }
+  ],
+  "info": {
+    "author": "xcode",
+    "version": 1
+  },
+  "properties": {
+    "preserves-vector-representation": true,
+    "template-rendering-intent": "template"
+  }
+}
