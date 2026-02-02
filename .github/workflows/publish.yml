@@ -316,6 +316,12 @@ jobs:
       run: |
         git push origin HEAD:main --follow-tags --tags
 
+    - name: Trigger CocoaPods publish
+      if: ${{ !inputs.dry-run }}
+      run: gh workflow run cocoapods-publish.yml
+      env:
+        GH_TOKEN: ${{ steps.generate-token.outputs.token }}
+
     - name: Dry-run summary
       if: ${{ inputs.dry-run }}
       run: |
