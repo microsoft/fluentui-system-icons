@@ -2,14 +2,10 @@ name: Cocoapods publish
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ main ]
 
 jobs:
-  # Only runs on the version update commit
-  # We need the new podspec available to publish to CocoaPods
+  # Triggered explicitly by publish.yml via `gh workflow run` (only on real releases, not dry-runs)
   publish-to-cocoapods:
-    if: "contains(github.event.head_commit.author.email, 'flubuild@microsoft.com')"
     name: Publish to CocoaPods
     runs-on: macos-latest
 
