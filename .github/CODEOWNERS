@@ -12,7 +12,7 @@ AGENTS.md @microsoft/cxe-prg
 ## packages
 packages/icon-app @microsoft/cxe-prg
 packages/react-icons @microsoft/cxe-prg @microsoft/cxe-red
-packages/react-icons-font-subsetting-plugin @MLoughry @microsoft/cxe-prg
+packages/react-icons-font-subsetting-webpack-plugin @MLoughry @microsoft/cxe-prg
 packages/svg-icons @tomi-msft
 packages/svg-sprites @tomi-msft
 packages/react-native-icons @praveen970

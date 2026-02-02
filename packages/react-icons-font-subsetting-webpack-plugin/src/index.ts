@@ -18,9 +18,30 @@ const FONT_EXTENSIONS = [
     '.woff2'
 ]
 
+/**
+ *  Match both chunk files and atomic font imports:
+ *  - lib/fonts/sizedIcons/chunk-0.js (chunk-based)
+ *  - lib/atoms/fonts/access-time.js (atomic imports)
+ */
+const REACT_ICONS_FONT_MODULE_IMPORT_PATTERN =
+    /react-icons[\/\\]lib(-cjs)?[\/\\](fonts[\/\\](sizedIcons|icons)[\/\\]chunk-\d+|atoms[\/\\]fonts[\/\\][\w-]+)\.js$/;
+
 export default class FluentUIReactIconsFontSubsettingPlugin
     implements webpack.WebpackPluginInstance {
 
+    /**
+     * Entry point for the Webpack plugin that registers hooks to perform font subsetting for `@fluentui/react-icons`.
+     *
+     * This method is executed **once** by Webpack when the plugin is initialized during the compiler's
+     * bootstrap phase. The internal logic hooked into `optimizeAssets` is executed **once per compilation**
+     * (whenever Webpack processes the module graph and prepares to output assets) during the
+     * asset optimization stage.
+     *
+     * It analyzes the module graph to determine which specific icons are used from Fluent UI icon packages
+     * and triggers font subsetting to remove unused glyphs from the final output assets.
+     *
+     * @param compiler - The Webpack compiler instance.
+     */
     apply(compiler: webpack.Compiler) {
         compiler.hooks.compilation.tap(
             PLUGIN_NAME,
@@ -58,19 +79,23 @@ export default class FluentUIReactIconsFontSubsettingPlugin
                         }
                     }
 
-                    await optimizationPromises;
+                    // IMPORTANT: actually await all subsetting work
+                    await Promise.all(optimizationPromises);
                 });
             }
         );
     }
 }
 
-async function optimizeFontAsset(codepointMap: Record<string, number>, usedExports: Set<string>, compilation: webpack.Compilation, assetName: string) {
-    const subsetText = Object.entries(codepointMap)
-        .filter(([glyphName]) => usedExports.has(glyphName))
-        .map(([, codepoint]) => String.fromCodePoint(codepoint))
-        .join('');
-
+async function optimizeFontAsset( codepointMap: Record<string, number>, usedExports: Set<string>, compilation: webpack.Compilation, assetName: string ) {
+    // Build subset text from the used exports set (usually small) instead of scanning all glyphs
+    let subsetText = '';
+    for (const glyphName of usedExports) {
+        const codepoint = codepointMap[glyphName];
+        if (codepoint !== undefined) {
+            subsetText += String.fromCodePoint(codepoint);
+        }
+    }
 
     let source = compilation.assets[assetName].source();
 
@@ -105,13 +130,21 @@ function isNormalModule(m: webpack.Module): m is webpack.NormalModule {
 }
 
 function isFluentUIReactFontChunk(m: webpack.Module): m is webpack.NormalModule {
-    if (isNormalModule(m)) {
-        // Match both chunk files and atomic font imports:
-        // - lib/fonts/sizedIcons/chunk-0.js (chunk-based)
-        // - lib/atoms/fonts/access-time.js (atomic imports)
-        return /react-icons[\/\\]lib(-cjs)?[\/\\](fonts[\/\\](sizedIcons|icons)[\/\\]chunk-\d+|atoms[\/\\]fonts[\/\\][\w-]+)\.js$/.test(m.resource)
+    if (!isNormalModule(m)) {
+        return false;
     }
-    return false;
+
+    const resource = m.resource;
+    if (!resource) {
+        return false;
+    }
+
+    // Cheap pre-filter before regex
+    if (!resource.includes('react-icons')) {
+        return false;
+    }
+
+    return REACT_ICONS_FONT_MODULE_IMPORT_PATTERN.test(resource);
 }
 
 async function getFontAssetsAndCodepoints(pkgLibPath: string, compilation: webpack.Compilation): Promise<{ assetName: string, codepoints: Record<string, number> }[]> {
