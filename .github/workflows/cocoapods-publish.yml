@@ -4,7 +4,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  # Runs after the main publish workflow completes successfully
   # Triggered explicitly by publish.yml via `gh workflow run` (only on real releases, not dry-runs)
   publish-to-cocoapods:
     name: Publish to CocoaPods
