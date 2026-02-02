@@ -36,9 +36,12 @@ jobs:
     - uses: actions/checkout@v6
       with:
         token: ${{ steps.generate-token.outputs.token }}
-        # Blobless clone: fetches full commit history but downloads file contents lazily
-        # This is needed for nx release changelog to detect all commits between releases
+        #  Git knows file names/paths for history, but blobs (file contents) are fetched on demand.
         filter: blob:none
+        # NOTE: This is needed for nx release changelog to detect all commits between releases
+        #  - temporarily increasing fetch-depth to 50 to get commit history for changelog generation
+        #  - we should consider switching to fetch-depth: 0 if we run into issues or switching to Nx Version plans instead conventional commits
+        fetch-depth: 50
         fetch-tags: true
 
     - name: Bump version patch
@@ -51,6 +54,27 @@ jobs:
         os.system(f'echo \"CURRENT_VERSION={current_version}\" >> \$GITHUB_ENV')
         os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
         """
+
+    - name: Check CURRENT_VERSION tag availability
+      run: |
+        set -euo pipefail
+        echo "CURRENT_VERSION=$CURRENT_VERSION"
+
+        echo "Checking for tag locally..."
+        if git show-ref --tags --quiet "refs/tags/$CURRENT_VERSION"; then
+          echo "✅ Tag exists locally: $CURRENT_VERSION"
+        else
+          echo "⚠️ Tag not found locally: $CURRENT_VERSION"
+          echo "Known tags (last 20):"
+          git tag --sort=-creatordate | head -n 20
+        fi
+
+        echo "Checking tag resolves to a commit..."
+        if git rev-parse "$CURRENT_VERSION^{commit}" >/dev/null 2>&1; then
+          echo "✅ Tag resolves to commit: $(git rev-parse "$CURRENT_VERSION^{commit}")"
+        else
+          echo "⚠️ Tag does not resolve to a commit: $CURRENT_VERSION"
+        fi
 
     - name: Bump react version patch
       run: |
@@ -162,15 +186,14 @@ jobs:
       working-directory: packages/svg-sprites
 
 
-    - name: Build Webpack plugin library
-      run: |
-        npm run build
-      working-directory: packages/react-icons-font-subsetting-webpack-plugin
-
     - name: Build React-Native library
       run: |
         npm run build
       working-directory: packages/react-native-icons
+
+    - name: Build Webpack plugin library
+      run: |
+        npx nx run react-icons-font-subsetting-webpack-plugin:build
 
     - name: Build React library
       run: |

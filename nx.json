@@ -16,6 +16,7 @@
     "projectsRelationship": "independent",
     "version": {
       "conventionalCommits": true,
+      "preserveMatchingDependencyRanges": ["devDependencies"],
       "fallbackCurrentVersionResolver": "disk",
       "git": {
         "commit": false,
