@@ -36,10 +36,11 @@ jobs:
     - uses: actions/checkout@v6
       with:
         token: ${{ steps.generate-token.outputs.token }}
-        # This is needed for nx release changelog to detect all commits between releases
+        #  Git knows file names/paths for history, but blobs (file contents) are fetched on demand.
         filter: blob:none
-        # NOTE: temporarily increasing fetch-depth to 50 to get commit history for changelog generation
-        # we should consider switching to fetch-depth: 0 if we run into issues or switching to Nx Version plans instead conventional commits
+        # NOTE: This is needed for nx release changelog to detect all commits between releases
+        #  - temporarily increasing fetch-depth to 50 to get commit history for changelog generation
+        #  - we should consider switching to fetch-depth: 0 if we run into issues or switching to Nx Version plans instead conventional commits
         fetch-depth: 50
         fetch-tags: true
 
@@ -85,8 +86,6 @@ jobs:
         major,minor,asset = current_version.split('.')
         os.system(f'echo \"REACT_VERSION={major}.{minor}.{int(asset) + 1}\" >> \$GITHUB_ENV')
         """
-
-
 
     # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version number in react-native-icons/package.json
