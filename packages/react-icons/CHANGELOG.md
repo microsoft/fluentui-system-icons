@@ -8,10 +8,6 @@
 
 - TextColor icon classification to support theme colors ([#963](https://github.com/microsoft/fluentui-system-icons/pull/963))
 
-### 🔥 Performance
-
-- **react-icons-font-subsetting-webpack-plugin:** improve plugin performance ([#966](https://github.com/microsoft/fluentui-system-icons/pull/966))
-
 ## 2.0.317 (2026-01-21)
 
 ### 🚀 Features
