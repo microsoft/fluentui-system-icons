@@ -197,45 +197,58 @@ async function writePerIconFiles(destPath, items, headerLines = [], options = { 
 const ICON_STYLE_VARIANTS = ['regular', 'filled', 'light', 'color'];
 
 /**
- * Normalize a generated file name to its base icon key by stripping trailing size and style tokens.
- * Examples:
+ * Parse an icon filename and determine if it has a valid style suffix.
+ * Strips file extension, normalizes underscores to hyphens, and validates the style suffix.
+ *
+ * @param {string} fileName
+ * @param {string[]} [styleVariants]
+ * @returns
+ */
+function parseIconFileName(fileName, styleVariants = ICON_STYLE_VARIANTS) {
+  const nameWithoutFileExt = fileName.replace(/\.tsx?$/, '');
+  const normalized = nameWithoutFileExt.replace(/_/g, '-');
+  const parts = normalized.split('-');
+  const styleSet = new Set(styleVariants);
+  // Require at least 2 parts: base name + style suffix (e.g., 'icon-filled', not just 'filled')
+  const isValid = parts.length > 1 && styleSet.has(parts[parts.length - 1]);
+
+  return { parts, isValid };
+}
+
+/**
+ * Normalizes an icon file name to its base name by stripping trailing style and size suffixes.
+ *
+ * The normalization follows a specific sequence based on the convention: `<base-name>[-<size>][-<style>]`.
+ * 1. It validates that the filename ends with a valid style variant.
+ * 2. It strips the style suffix, then checks if the new last part is a numeric size and strips it.
+ *
+ * @example
  *  - 'zoom-in-20-filled.tsx' -> 'zoom-in'
  *  - 'my-icon-16-regular' -> 'my-icon'
  *
- * @param {string} fileName
- * @param {string[]=} styleVariants
+ * @param {string} fileName - The raw file name or path component to normalize.
+ * @param {string[]} [styleVariants=ICON_STYLE_VARIANTS] - The list of allowed style suffixes to identify and remove.
+ * @returns {string} The normalized base name of the icon.
+ * @throws {Error} If the filename does not end with a valid style suffix.
  */
 function normalizeBaseName(fileName, styleVariants = ICON_STYLE_VARIANTS) {
-  const name = fileName.replace(/\.tsx?$/, '');
-  // normalize separators (underscores -> hyphens) then split
-  const normalized = name.replace(/_/g, '-');
-  const parts = normalized.split('-');
-  const styleSet = new Set(styleVariants);
+  const { parts, isValid } = parseIconFileName(fileName, styleVariants);
 
-  // first part of the name can be like `styleVariants`, eg: 'color-20-filled' -> 'color', 'light-16-regular' -> 'light'
-  // for that reason we don't process the first part
-  while (parts.length > 1) {
-    const last = parts[parts.length - 1];
-    // Check if the trailing part is a variant marker:
-    // If ANY condition matches, the part is removed and we continue checking the next part.
-    // This allows removal of chained variants like 'icon-20-filled' -> remove 'filled' -> remove '20'.
-    if (
-      // 1. /^\d+$/.test(last) - Pure numeric suffix (icon size: 16, 20, 24, etc.)
-      //    Examples: 'zoom-in-20', 'mail-16', 'settings-24'
-      //
-      /^\d+$/.test(last) ||
-      // 2. styleSet.has(last) - Exact match against standard style variants ('regular', 'filled', 'light', 'color')
-      //    Examples: 'zoom-in-regular', 'mail-filled', 'settings-light'
-      //
-      styleSet.has(last)
-    ) {
-      parts.pop();
-    } else {
-      break;
-    }
+  if (!isValid) {
+    throw new Error(
+      `Invalid icon filename '${fileName}' - must end with a style variant (${styleVariants.join(', ')})`,
+    );
   }
 
-  return parts.join('-') || name;
+  // Strip style suffix (validated above)
+  parts.pop();
+
+  // Strip size suffix if numeric
+  if (parts.length > 1 && /^\d+$/.test(parts[parts.length - 1])) {
+    parts.pop();
+  }
+
+  return parts.join('-');
 }
 
 module.exports = { writePerIconFiles, normalizeBaseName };

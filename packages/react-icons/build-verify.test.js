@@ -1830,15 +1830,15 @@ describe('Build Verification', () => {
       const { svgPathCjs, svgPathEsm } = getAssetPaths();
       const esmStats = await getStats(svgPathEsm);
       const cjsStats = await getStats(svgPathCjs);
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2805`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2805`);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2806`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2806`);
     });
     it(`should have same number of atoms/fonts icon files in lib and lib-cjs`, async () => {
       const { fontsPathCjs, fontsPathEsm } = getAssetPaths();
       const esmStats = await getStats(fontsPathEsm);
       const cjsStats = await getStats(fontsPathCjs);
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2798`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2798`);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2799`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2799`);
     });
     it.each(['lib', 'lib-cjs'])('should have atoms/svg directory with icon files in %s', async (libDir) => {
       const atomsSvgPath = path.join(__dirname, libDir, 'atoms', 'svg');
@@ -1950,6 +1950,44 @@ describe('Build Verification', () => {
       expect(packageJson.exports['./fonts/*'].import).toBe('./lib/atoms/fonts/*.js');
       expect(packageJson.exports['./fonts/*'].require).toBe('./lib-cjs/atoms/fonts/*.js');
     });
+
+    it.each(['svg', 'fonts'])(
+      'text-color atoms should be properly separated from text atoms in lib/atoms/%s',
+      async (exportKindDir) => {
+        const textFile = path.join(__dirname, 'lib', 'atoms', exportKindDir, 'text.js');
+        const textColorFile = path.join(__dirname, 'lib', 'atoms', exportKindDir, 'text-color.js');
+        // Both files should exist
+        expect(fs.existsSync(textFile)).toBe(true);
+        expect(fs.existsSync(textColorFile)).toBe(true);
+
+        const textContent = await readFile(textFile, 'utf-8');
+        const textColorContent = await readFile(textColorFile, 'utf-8');
+
+        // text-color.js should only contain TextColor* exports
+        expect(textColorContent).toContain(`export const TextColorFilled`);
+        expect(textColorContent).toContain(`export const TextColorRegular`);
+        expect(textColorContent).toContain(`export const TextColor16Regular`);
+        expect(textColorContent).toContain(`export const TextColor20Regular`);
+        expect(textColorContent).toContain(`export const TextColor24Regular`);
+
+        // text-color.js should NOT contain Text* exports (without Color in the name)
+        expect(textColorContent).not.toContain('export const Text12Regular');
+        expect(textColorContent).not.toContain('export const Text16Regular');
+
+        // text.js should contain Text* exports
+        expect(textContent).toContain('export const Text12Regular');
+        expect(textContent).toContain('export const Text16Regular');
+        expect(textContent).toContain('export const Text32Regular');
+
+        // text.js should have backward-compatible re-exports for TextColor* with deprecation notice
+        expect(textContent).toContain(`@deprecated use \`@fluentui/${exportKindDir}/text-color\` import`);
+        expect(textContent).toContain(`export const TextColorFilled`);
+        expect(textContent).toContain(`export const TextColorRegular`);
+        expect(textContent).toContain(`export const TextColor16Regular`);
+        expect(textContent).toContain(`export const TextColor20Regular`);
+        expect(textContent).toContain(`export const TextColor24Regular`);
+      },
+    );
   });
 
   describe('Metadata Validation', () => {
