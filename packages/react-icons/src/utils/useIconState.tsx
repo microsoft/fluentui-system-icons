@@ -1,12 +1,11 @@
-import { useIconContext } from "../contexts";
-import { FluentIconsProps } from "./FluentIconsProps.types";
-import { mergeClasses } from "@griffel/react";
-import { useStyles } from "./useIconStyles.styles";
-
+import { useIconContext } from '../contexts';
+import { FluentIconsProps } from './FluentIconsProps.types';
+import { mergeClasses } from '@griffel/react';
+import { useStyles } from './useIconStyles.styles';
 
 export type UseIconStateOptions = {
   flipInRtl?: boolean;
-}
+};
 
 export const useIconState = <
   TBaseAttributes extends
@@ -17,38 +16,38 @@ export const useIconState = <
   props: FluentIconsProps<TBaseAttributes, TRefType>,
   options?: UseIconStateOptions,
 ): Omit<FluentIconsProps<TBaseAttributes, TRefType>, 'primaryFill'> => {
-    const {
-      // remove unwanted props to be set on the svg/html element
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      filled,
-      title,
+  const {
+    // remove unwanted props to be set on the svg/html element
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    filled,
+    title,
 
-      primaryFill = 'currentColor',
-      ...rest
-    } = props;
-    const state = {
-      ...rest,
-      fill: primaryFill,
-    } as Omit<FluentIconsProps<TBaseAttributes, TRefType>, 'primaryFill'>;
+    primaryFill = 'currentColor',
+    ...rest
+  } = props;
+  const state = {
+    ...rest,
+    fill: primaryFill,
+  } as Omit<FluentIconsProps<TBaseAttributes, TRefType>, 'primaryFill'>;
 
-    const styles = useStyles();
-    const iconContext = useIconContext();
+  const styles = useStyles();
+  const iconContext = useIconContext();
 
-    state.className = mergeClasses(
-      styles.root,
-      options?.flipInRtl && iconContext?.textDirection === 'rtl' && styles.rtl,
-      state.className
-    );
+  state.className = mergeClasses(
+    styles.root,
+    options?.flipInRtl && iconContext?.textDirection === 'rtl' && styles.rtl,
+    state.className,
+  );
 
-    if (title) {
-      state['aria-label'] = title;
-    }
+  if (title) {
+    state['aria-label'] = title;
+  }
 
-    if (!state['aria-label'] && !state['aria-labelledby']) {
-      state['aria-hidden'] = true;
-    } else {
-      state['role'] = 'img';
-    }
+  if (!state['aria-label'] && !state['aria-labelledby']) {
+    state['aria-hidden'] = true;
+  } else {
+    state['role'] = 'img';
+  }
 
-    return state;
+  return state;
 };

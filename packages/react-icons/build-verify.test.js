@@ -31,7 +31,11 @@ function trimContentForSnapshot(content, threshold = 30) {
 
   // Add filtering message at the beginning if exports were filtered
   if (voidExportCount > 0) {
-    filteredLines.splice(0, 0, `... (${voidExportCount} export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))`);
+    filteredLines.splice(
+      0,
+      0,
+      `... (${voidExportCount} export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))`,
+    );
   }
 
   const trimmedLines = filteredLines.slice(0, threshold);
@@ -197,12 +201,11 @@ describe('Build Verification', () => {
   });
 
   describe('Styles Files', () => {
-   it(`should produce griffel processed .styles.js and unprocessed .styles.raw.js [lib]`, () => {
-
-     const root = path.join(__dirname, 'lib');
-     const processed = 'utils/useIconStyles.styles.js'
-     const unprocessed = 'utils/useIconStyles.styles.raw.js'
-     expect(fs.readFileSync(path.join(root, processed), 'utf8')).toMatchInlineSnapshot(`
+    it(`should produce griffel processed .styles.js and unprocessed .styles.raw.js [lib]`, () => {
+      const root = path.join(__dirname, 'lib');
+      const processed = 'utils/useIconStyles.styles.js';
+      const unprocessed = 'utils/useIconStyles.styles.raw.js';
+      expect(fs.readFileSync(path.join(root, processed), 'utf8')).toMatchInlineSnapshot(`
        "import { __styles } from "@griffel/react";
        export const useStyles = __styles({
          "root": {
@@ -216,7 +219,7 @@ describe('Build Verification', () => {
          "d": [".f1w7gpdv{display:inline;}", ".fez10in{line-height:0;}", ".f13rod7r{transform:scaleX(-1);}"]
        });"
      `);
-     expect(fs.readFileSync(path.join(root, unprocessed), 'utf8')).toMatchInlineSnapshot(`
+      expect(fs.readFileSync(path.join(root, unprocessed), 'utf8')).toMatchInlineSnapshot(`
        "import { makeStyles } from "@griffel/react";
        export const useStyles = makeStyles({
            root: {
@@ -229,15 +232,13 @@ describe('Build Verification', () => {
        });
        "
      `);
+    });
 
-   });
-
-   it(`should produce griffel processed .styles.js and unprocessed .styles.raw.js [lib-cjs]`, () => {
-
-     const root = path.join(__dirname, 'lib-cjs');
-     const processed = 'utils/useIconStyles.styles.js'
-     const unprocessed = 'utils/useIconStyles.styles.raw.js'
-     expect(fs.readFileSync(path.join(root, processed), 'utf8')).toMatchInlineSnapshot(`
+    it(`should produce griffel processed .styles.js and unprocessed .styles.raw.js [lib-cjs]`, () => {
+      const root = path.join(__dirname, 'lib-cjs');
+      const processed = 'utils/useIconStyles.styles.js';
+      const unprocessed = 'utils/useIconStyles.styles.raw.js';
+      expect(fs.readFileSync(path.join(root, processed), 'utf8')).toMatchInlineSnapshot(`
        ""use strict";
 
        Object.defineProperty(exports, "__esModule", {
@@ -257,7 +258,7 @@ describe('Build Verification', () => {
          "d": [".f1w7gpdv{display:inline;}", ".fez10in{line-height:0;}", ".f13rod7r{transform:scaleX(-1);}"]
        });"
      `);
-     expect(fs.readFileSync(path.join(root, unprocessed), 'utf8')).toMatchInlineSnapshot(`
+      expect(fs.readFileSync(path.join(root, unprocessed), 'utf8')).toMatchInlineSnapshot(`
        ""use strict";
        Object.defineProperty(exports, "__esModule", { value: true });
        exports.useStyles = void 0;
@@ -273,19 +274,18 @@ describe('Build Verification', () => {
        });
        "
      `);
-
-   });
+    });
 
     it.each(['lib', 'lib-cjs'])('should have required styles files in utils (%s)', async (libDir) => {
       const utilsPath = path.join(__dirname, libDir, 'utils');
       const files = await readdir(utilsPath);
 
       // Check for .styles.raw.js files
-      const rawStylesFiles = files.filter(file => file.endsWith('.styles.raw.js'));
+      const rawStylesFiles = files.filter((file) => file.endsWith('.styles.raw.js'));
       expect(rawStylesFiles.length).toBeGreaterThan(0);
 
       // Check for .styles.js files
-      const stylesFiles = files.filter(file => file.endsWith('.styles.js') && !file.endsWith('.raw.js'));
+      const stylesFiles = files.filter((file) => file.endsWith('.styles.js') && !file.endsWith('.raw.js'));
       expect(stylesFiles.length).toBeGreaterThan(0);
 
       // Verify specific expected files exist
@@ -295,7 +295,7 @@ describe('Build Verification', () => {
         'bundleIcon.styles.raw.js',
         'bundleIcon.styles.js',
         'useIconStyles.styles.raw.js',
-        'useIconStyles.styles.js'
+        'useIconStyles.styles.js',
       ];
 
       for (const file of expectedStylesFiles) {
@@ -306,10 +306,7 @@ describe('Build Verification', () => {
 
     it.each(['lib', 'lib-cjs'])('should have required font styles files in utils/fonts (%s)', async (libDir) => {
       const fontsUtilsPath = path.join(__dirname, libDir, 'utils', 'fonts');
-      const expectedFontsStylesFiles = [
-        'createFluentFontIcon.styles.raw.js',
-        'createFluentFontIcon.styles.js'
-      ];
+      const expectedFontsStylesFiles = ['createFluentFontIcon.styles.raw.js', 'createFluentFontIcon.styles.js'];
 
       for (const file of expectedFontsStylesFiles) {
         const filePath = path.join(fontsUtilsPath, file);
@@ -325,7 +322,7 @@ describe('Build Verification', () => {
 
       // Check icons chunks
       const iconFiles = await readdir(iconsPath);
-      const iconChunks = iconFiles.filter(file => file.startsWith('chunk-'));
+      const iconChunks = iconFiles.filter((file) => file.startsWith('chunk-'));
       expect(iconChunks.length).toBeGreaterThan(0);
 
       // Verify each chunk has both .js and .d.ts files
@@ -347,7 +344,7 @@ describe('Build Verification', () => {
 
       // Check sizedIcons chunks
       const sizedIconFiles = await readdir(sizedIconsPath);
-      const sizedIconChunks = sizedIconFiles.filter(file => file.startsWith('chunk-'));
+      const sizedIconChunks = sizedIconFiles.filter((file) => file.startsWith('chunk-'));
       expect(sizedIconChunks.length).toBeGreaterThan(0);
 
       // Verify each chunk has both .js and .d.ts files
@@ -372,7 +369,7 @@ describe('Build Verification', () => {
       // Check fonts/icons chunks
       const fontsIconsPath = path.join(__dirname, libDir, 'fonts', 'icons');
       const fontsIconFiles = await readdir(fontsIconsPath);
-      const fontsIconChunks = fontsIconFiles.filter(file => file.startsWith('chunk-'));
+      const fontsIconChunks = fontsIconFiles.filter((file) => file.startsWith('chunk-'));
       expect(fontsIconChunks.length).toBeGreaterThan(0);
 
       // Verify each font icon chunk has both .js and .d.ts files
@@ -395,7 +392,7 @@ describe('Build Verification', () => {
       // Check fonts/sizedIcons chunks
       const fontsSizedIconsPath = path.join(__dirname, libDir, 'fonts', 'sizedIcons');
       const fontsSizedIconFiles = await readdir(fontsSizedIconsPath);
-      const fontsSizedIconChunks = fontsSizedIconFiles.filter(file => file.startsWith('chunk-'));
+      const fontsSizedIconChunks = fontsSizedIconFiles.filter((file) => file.startsWith('chunk-'));
       expect(fontsSizedIconChunks.length).toBeGreaterThan(0);
 
       // Verify each font sized icon chunk has both .js and .d.ts files
@@ -418,7 +415,6 @@ describe('Build Verification', () => {
   });
 
   describe('Chunk Contents', () => {
-
     it(`should have valid generated contents  in entry points (lib)`, async () => {
       const mainEntry = path.join(__dirname, 'lib/index.js');
       const mainEntryDts = path.join(__dirname, 'lib/index.d.ts');
@@ -568,7 +564,7 @@ describe('Build Verification', () => {
       `);
     });
 
-     it(`should have valid generated contents  in entry points (lib-cjs)`, async () => {
+    it(`should have valid generated contents  in entry points (lib-cjs)`, async () => {
       const mainEntry = path.join(__dirname, 'lib-cjs/index.js');
       const mainEntryDts = path.join(__dirname, 'lib-cjs/index.d.ts');
       const jsContent = await readFile(mainEntry, 'utf8');
@@ -723,7 +719,7 @@ describe('Build Verification', () => {
         export type { IconDirectionContextValue } from './contexts/index';
         "
       `);
-     })
+    });
 
     it(`should have valid generated contents  in entry points (lib/fonts)`, async () => {
       const mainEntry = path.join(__dirname, 'lib/fonts/index.js');
@@ -1037,12 +1033,12 @@ describe('Build Verification', () => {
         export type { IconDirectionContextValue } from '../contexts/index';
         "
       `);
-    })
+    });
 
     it('should have valid chunk contents in lib icons', async () => {
       const iconsPath = path.join(__dirname, 'lib', 'icons');
       const iconFiles = await readdir(iconsPath);
-      const iconChunks = iconFiles.filter(file => file.startsWith('chunk-') && file.endsWith('.js'));
+      const iconChunks = iconFiles.filter((file) => file.startsWith('chunk-') && file.endsWith('.js'));
 
       expect(iconChunks.length).toBeGreaterThan(0);
 
@@ -1133,7 +1129,7 @@ describe('Build Verification', () => {
     it('should have valid chunk contents in lib-cjs icons', async () => {
       const iconsPath = path.join(__dirname, 'lib-cjs', 'icons');
       const iconFiles = await readdir(iconsPath);
-      const iconChunks = iconFiles.filter(file => file.startsWith('chunk-') && file.endsWith('.js'));
+      const iconChunks = iconFiles.filter((file) => file.startsWith('chunk-') && file.endsWith('.js'));
 
       expect(iconChunks.length).toBeGreaterThan(0);
 
@@ -1224,7 +1220,7 @@ describe('Build Verification', () => {
     it('should have valid chunk contents in lib sizedIcons', async () => {
       const sizedIconsPath = path.join(__dirname, 'lib', 'sizedIcons');
       const sizedIconFiles = await readdir(sizedIconsPath);
-      const sizedIconChunks = sizedIconFiles.filter(file => file.startsWith('chunk-') && file.endsWith('.js'));
+      const sizedIconChunks = sizedIconFiles.filter((file) => file.startsWith('chunk-') && file.endsWith('.js'));
 
       expect(sizedIconChunks.length).toBeGreaterThan(0);
 
@@ -1315,7 +1311,7 @@ describe('Build Verification', () => {
     it('should have valid chunk contents in lib-cjs sizedIcons', async () => {
       const sizedIconsPath = path.join(__dirname, 'lib-cjs', 'sizedIcons');
       const sizedIconFiles = await readdir(sizedIconsPath);
-      const sizedIconChunks = sizedIconFiles.filter(file => file.startsWith('chunk-') && file.endsWith('.js'));
+      const sizedIconChunks = sizedIconFiles.filter((file) => file.startsWith('chunk-') && file.endsWith('.js'));
 
       expect(sizedIconChunks.length).toBeGreaterThan(0);
 
@@ -1406,7 +1402,7 @@ describe('Build Verification', () => {
     it('should have valid font chunk contents in lib fonts/icons', async () => {
       const fontsIconsPath = path.join(__dirname, 'lib', 'fonts', 'icons');
       const fontsIconFiles = await readdir(fontsIconsPath);
-      const fontsIconChunks = fontsIconFiles.filter(file => file.startsWith('chunk-') && file.endsWith('.js'));
+      const fontsIconChunks = fontsIconFiles.filter((file) => file.startsWith('chunk-') && file.endsWith('.js'));
 
       expect(fontsIconChunks.length).toBeGreaterThan(0);
 
@@ -1497,7 +1493,7 @@ describe('Build Verification', () => {
     it('should have valid font chunk contents in lib-cjs fonts/icons', async () => {
       const fontsIconsPath = path.join(__dirname, 'lib-cjs', 'fonts', 'icons');
       const fontsIconFiles = await readdir(fontsIconsPath);
-      const fontsIconChunks = fontsIconFiles.filter(file => file.startsWith('chunk-') && file.endsWith('.js'));
+      const fontsIconChunks = fontsIconFiles.filter((file) => file.startsWith('chunk-') && file.endsWith('.js'));
 
       expect(fontsIconChunks.length).toBeGreaterThan(0);
 
@@ -1588,7 +1584,9 @@ describe('Build Verification', () => {
     it('should have valid font chunk contents in lib fonts/sizedIcons', async () => {
       const fontsSizedIconsPath = path.join(__dirname, 'lib', 'fonts', 'sizedIcons');
       const fontsSizedIconFiles = await readdir(fontsSizedIconsPath);
-      const fontsSizedIconChunks = fontsSizedIconFiles.filter(file => file.startsWith('chunk-') && file.endsWith('.js'));
+      const fontsSizedIconChunks = fontsSizedIconFiles.filter(
+        (file) => file.startsWith('chunk-') && file.endsWith('.js'),
+      );
 
       expect(fontsSizedIconChunks.length).toBeGreaterThan(0);
 
@@ -1679,7 +1677,9 @@ describe('Build Verification', () => {
     it('should have valid font chunk contents in lib-cjs fonts/sizedIcons', async () => {
       const fontsSizedIconsPath = path.join(__dirname, 'lib-cjs', 'fonts', 'sizedIcons');
       const fontsSizedIconFiles = await readdir(fontsSizedIconsPath);
-      const fontsSizedIconChunks = fontsSizedIconFiles.filter(file => file.startsWith('chunk-') && file.endsWith('.js'));
+      const fontsSizedIconChunks = fontsSizedIconFiles.filter(
+        (file) => file.startsWith('chunk-') && file.endsWith('.js'),
+      );
 
       expect(fontsSizedIconChunks.length).toBeGreaterThan(0);
 
@@ -1797,7 +1797,7 @@ describe('Build Verification', () => {
         'createFluentFontIcon.js',
         'createFluentFontIcon.d.ts',
         'createFluentFontIcon.shared.js',
-        'createFluentFontIcon.shared.d.ts'
+        'createFluentFontIcon.shared.d.ts',
       ];
 
       for (const file of fontCreationFiles) {

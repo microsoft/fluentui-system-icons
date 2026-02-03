@@ -25,7 +25,7 @@ main().catch((error) => {
 
 // ====================================
 
-function processArgs(){
+function processArgs() {
   // Parse CLI arguments
   let options;
   try {
@@ -76,7 +76,6 @@ function processArgs(){
 
   return { packageName, preid, baseVersion };
 
-
   /**
    *
    * @param {string} packageName
@@ -104,7 +103,7 @@ function processArgs(){
       return {
         major: parsed.major,
         minor: parsed.minor,
-        patch: parsed.patch
+        patch: parsed.patch,
       };
     } catch (error) {
       console.error(`❌ Failed to read package.json: ${error instanceof Error ? error.message : String(error)}`);
@@ -159,7 +158,7 @@ function parseVersion(versionString) {
     patch: parseInt(match[3], 10),
     preid: match[4] || null,
     prerelease: match[5] ? parseInt(match[5], 10) : null,
-    full: versionString
+    full: versionString,
   };
 }
 
@@ -176,7 +175,7 @@ function getLatestPrereleaseVersion(packageInfo, preid) {
   // Get all versions matching the preid
   const versions = Object.keys(packageInfo.versions)
     .map(parseVersion)
-    .filter(v => v && v.preid === preid)
+    .filter((v) => v && v.preid === preid)
     .sort((a, b) => {
       // Sort by major.minor.patch.prerelease descending
       if (!a || !b) return 0;
@@ -199,7 +198,7 @@ function findPackageJson(packageName) {
     // Use nx show project to get project root
     const result = execSync(`npx nx show project ${packageName} --json`, {
       encoding: 'utf8',
-      stdio: ['pipe', 'pipe', 'pipe'] // Suppress stderr
+      stdio: ['pipe', 'pipe', 'pipe'], // Suppress stderr
     });
 
     const projectInfo = JSON.parse(result);
@@ -210,7 +209,9 @@ function findPackageJson(packageName) {
 
     return path.join(projectInfo.root, 'package.json');
   } catch (error) {
-    throw new Error(`Failed to locate package ${packageName}: ${error instanceof Error ? error.message : String(error)}`);
+    throw new Error(
+      `Failed to locate package ${packageName}: ${error instanceof Error ? error.message : String(error)}`,
+    );
   }
 }
 
@@ -227,9 +228,13 @@ function incrementPrerelease(latestPrerelease, baseVersion, preid) {
   }
 
   // Check if base version is newer than latest prerelease
-  if (baseVersion.major > latestPrerelease.major ||
-      (baseVersion.major === latestPrerelease.major && baseVersion.minor > latestPrerelease.minor) ||
-      (baseVersion.major === latestPrerelease.major && baseVersion.minor === latestPrerelease.minor && baseVersion.patch > latestPrerelease.patch)) {
+  if (
+    baseVersion.major > latestPrerelease.major ||
+    (baseVersion.major === latestPrerelease.major && baseVersion.minor > latestPrerelease.minor) ||
+    (baseVersion.major === latestPrerelease.major &&
+      baseVersion.minor === latestPrerelease.minor &&
+      baseVersion.patch > latestPrerelease.patch)
+  ) {
     // Base version is newer, increment patch from base version
     return `${baseVersion.major}.${baseVersion.minor}.${baseVersion.patch + 1}-${preid}.0`;
   }
@@ -260,7 +265,6 @@ async function main() {
     // IMPORTANT: Output to stdout for use in workflow
     console.log(nextVersion);
     // This output will be captured by the GitHub Actions workflow
-
   } catch (error) {
     console.error('❌ Error:', error instanceof Error ? error.message : String(error));
     process.exit(1);

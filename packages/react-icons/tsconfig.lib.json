@@ -9,7 +9,7 @@
     "noEmit": false,
     "declaration": true,
     "importHelpers": true,
-    "jsx": "react",
+    "jsx": "react"
   },
   "include": ["src"],
   "exclude": ["lib", "lib-cjs", "node_modules", "src/**/*.test.ts", "src/**/*.test.tsx"]

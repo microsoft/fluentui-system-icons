@@ -15,7 +15,7 @@ const yargs = require('yargs');
  * Process command-line arguments
  * @returns {{ICONS_DIR: string, SPRITES_DIR: string, NUM_WORKERS: number}}
  */
-function processArgs(){
+function processArgs() {
   // Parse command-line arguments
   const argv = yargs
     .option('icons', {
@@ -40,17 +40,14 @@ function processArgs(){
     .alias('help', 'h')
     .example('$0', 'Generate sprites using default directories')
     .example('$0 --icons ./custom-icons --output ./custom-sprites', 'Use custom directories')
-    .example('$0 --workers 4', 'Use 4 parallel workers')
-    .argv;
+    .example('$0 --workers 4', 'Use 4 parallel workers').argv;
 
   const ICONS_DIR = path.resolve(argv.icons);
   const SPRITES_DIR = path.resolve(argv.output);
   const NUM_WORKERS = argv.workers > 0 ? argv.workers : os.cpus().length;
 
-  return {ICONS_DIR, SPRITES_DIR, NUM_WORKERS}
+  return { ICONS_DIR, SPRITES_DIR, NUM_WORKERS };
 }
-
-
 
 /**
  * Creates a sprite SVG file from a single icon SVG using svgstore
@@ -98,7 +95,7 @@ async function processBatch(files, startIdx, endIdx, iconsDir, spritesDir) {
 
         return { success: true, file };
       } catch (error) {
-        return { success: false, file, error: /** @type {Error} */(error).message };
+        return { success: false, file, error: /** @type {Error} */ (error).message };
       }
     })();
 
@@ -112,7 +109,7 @@ async function processBatch(files, startIdx, endIdx, iconsDir, spritesDir) {
  * Main function
  */
 async function main() {
-  const {ICONS_DIR,NUM_WORKERS,SPRITES_DIR} = processArgs()
+  const { ICONS_DIR, NUM_WORKERS, SPRITES_DIR } = processArgs();
   const startTime = Date.now();
 
   console.log('🚀 Starting sprite generation...');
@@ -121,7 +118,7 @@ async function main() {
   try {
     await fs.mkdir(SPRITES_DIR, { recursive: true });
   } catch (error) {
-    if (/** @type {any} */(error).code !== 'EEXIST') throw error;
+    if (/** @type {any} */ (error).code !== 'EEXIST') throw error;
   }
 
   // Check if icons directory exists
@@ -134,7 +131,7 @@ async function main() {
 
   // Get all SVG files
   const files = await fs.readdir(ICONS_DIR);
-  const svgFiles = files.filter(f => f.endsWith('.svg'));
+  const svgFiles = files.filter((f) => f.endsWith('.svg'));
 
   if (svgFiles.length === 0) {
     console.log('⚠️  No SVG files found in icons directory.');
@@ -160,8 +157,8 @@ async function main() {
 
   // Flatten results
   const allResults = results.flat();
-  const successful = allResults.filter(r => r.success).length;
-  const failed = allResults.filter(r => !r.success);
+  const successful = allResults.filter((r) => r.success).length;
+  const failed = allResults.filter((r) => !r.success);
 
   const duration = ((Date.now() - startTime) / 1000).toFixed(2);
   const durationNum = parseFloat(duration);
@@ -171,12 +168,12 @@ async function main() {
 
   if (failed.length > 0) {
     console.error(`\n❌ Failed to process ${failed.length} files:`);
-    failed.forEach(f => console.error(`  - ${f.file}: ${f.error}`));
+    failed.forEach((f) => console.error(`  - ${f.file}: ${f.error}`));
     process.exit(1);
   }
 }
 
-main().catch(error => {
+main().catch((error) => {
   console.error('❌ Error:', error);
   process.exit(1);
 });

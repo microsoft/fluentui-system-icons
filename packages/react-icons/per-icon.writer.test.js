@@ -81,5 +81,3 @@ describe('normalizeBaseName', () => {
     expect(() => normalizeBaseName('filled.tsx')).toThrow(/must end with a style variant/);
   });
 });
-
-

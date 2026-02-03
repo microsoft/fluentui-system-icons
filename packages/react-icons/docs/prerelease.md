@@ -53,6 +53,7 @@ Prerelease versions follow semantic versioning with prerelease identifiers:
 ```
 
 Examples:
+
 - `2.0.0-alpha.1` - First alpha of v2.0.0
 - `2.0.0-beta.2` - Second beta of v2.0.0
 - `2.0.0-rc.1` - Release candidate for v2.0.0
@@ -112,6 +113,7 @@ npm install @fluentui/react-icons@prerelease
 **Cause:** You attempted to run the workflow on the `main` branch.
 
 **Solution:**
+
 - Switch to a feature or release branch
 - Run the workflow from that branch instead
 - The main branch should only receive prerelease versions via the standard publishing pipeline
@@ -121,6 +123,7 @@ npm install @fluentui/react-icons@prerelease
 **Cause:** The npm token is missing or invalid.
 
 **Solution:**
+
 - Contact a repository maintainer
 - Ensure the `NPM_TOKEN` secret is configured in repository settings
 - The token should have publish permissions for scoped packages
@@ -130,6 +133,7 @@ npm install @fluentui/react-icons@prerelease
 **Cause:** The calculated version was already published to npm.
 
 **Solution:**
+
 - This shouldn't happen under normal circumstances
 - If it does, run the workflow again (it will auto-increment the prerelease number)
 
