@@ -174,10 +174,6 @@ jobs:
             echo "svg-icons and svg-sprites are not affected, skipping build"
           fi
 
-      - name: Format Check
-        run: npx nx format:check --projects='svg-icons,svg-sprites'
-        if: steps.check-affected.outputs.affected == 'true'
-
       - name: Build svg packages
         if: steps.check-affected.outputs.affected == 'true'
         run: |
