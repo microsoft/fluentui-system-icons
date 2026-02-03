@@ -206,32 +206,32 @@ describe('Build Verification', () => {
       const processed = 'utils/useIconStyles.styles.js';
       const unprocessed = 'utils/useIconStyles.styles.raw.js';
       expect(fs.readFileSync(path.join(root, processed), 'utf8')).toMatchInlineSnapshot(`
-       "import { __styles } from "@griffel/react";
-       export const useStyles = __styles({
-         "root": {
-           "mc9l5x": "f1w7gpdv",
-           "Bg96gwp": "fez10in"
-         },
-         "rtl": {
-           "Bz10aip": "f13rod7r"
-         }
-       }, {
-         "d": [".f1w7gpdv{display:inline;}", ".fez10in{line-height:0;}", ".f13rod7r{transform:scaleX(-1);}"]
-       });"
-     `);
+        "import { __styles } from '@griffel/react';
+        export const useStyles = __styles({
+          "root": {
+            "mc9l5x": "f1w7gpdv",
+            "Bg96gwp": "fez10in"
+          },
+          "rtl": {
+            "Bz10aip": "f13rod7r"
+          }
+        }, {
+          "d": [".f1w7gpdv{display:inline;}", ".fez10in{line-height:0;}", ".f13rod7r{transform:scaleX(-1);}"]
+        });"
+      `);
       expect(fs.readFileSync(path.join(root, unprocessed), 'utf8')).toMatchInlineSnapshot(`
-       "import { makeStyles } from "@griffel/react";
-       export const useStyles = makeStyles({
-           root: {
-               display: 'inline',
-               lineHeight: 0
-           },
-           rtl: {
-               transform: 'scaleX(-1)'
-           }
-       });
-       "
-     `);
+        "import { makeStyles } from '@griffel/react';
+        export const useStyles = makeStyles({
+            root: {
+                display: 'inline',
+                lineHeight: 0,
+            },
+            rtl: {
+                transform: 'scaleX(-1)',
+            },
+        });
+        "
+      `);
     });
 
     it(`should produce griffel processed .styles.js and unprocessed .styles.raw.js [lib-cjs]`, () => {
@@ -259,21 +259,21 @@ describe('Build Verification', () => {
        });"
      `);
       expect(fs.readFileSync(path.join(root, unprocessed), 'utf8')).toMatchInlineSnapshot(`
-       ""use strict";
-       Object.defineProperty(exports, "__esModule", { value: true });
-       exports.useStyles = void 0;
-       const react_1 = require("@griffel/react");
-       exports.useStyles = react_1.makeStyles({
-           root: {
-               display: 'inline',
-               lineHeight: 0
-           },
-           rtl: {
-               transform: 'scaleX(-1)'
-           }
-       });
-       "
-     `);
+        ""use strict";
+        Object.defineProperty(exports, "__esModule", { value: true });
+        exports.useStyles = void 0;
+        const react_1 = require("@griffel/react");
+        exports.useStyles = react_1.makeStyles({
+            root: {
+                display: 'inline',
+                lineHeight: 0,
+            },
+            rtl: {
+                transform: 'scaleX(-1)',
+            },
+        });
+        "
+      `);
     });
 
     it.each(['lib', 'lib-cjs'])('should have required styles files in utils (%s)', async (libDir) => {

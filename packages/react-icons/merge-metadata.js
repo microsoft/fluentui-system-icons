@@ -85,7 +85,7 @@ async function mergeMetadata() {
   }
 
   // Write merged metadata
-  await fs.writeFile(outputPath, JSON.stringify(mergedMetadata, null, 2));
+  await fs.writeFile(outputPath, JSON.stringify(mergedMetadata, null, 2) + '\n', 'utf-8');
   console.log(`✓ Merged metadata written to ${outputPath} (${Object.keys(mergedMetadata).length} icons total)`);
 
   // Print summary
