@@ -2,11 +2,8 @@
 **/lib/
 **/lib-cjs/
 **/intermediate/
-**/src/icons/
-**/src/sizedIcons/
-**/src/fonts/
 **/dist/
-node_modules/
+/node_modules/
 **/node_modules/
 
 # Platform-specific code (outside packages/)
@@ -28,3 +25,4 @@ patches/*.patch
 
 # Root level files
 /package-lock.json
+/icons_*.md
