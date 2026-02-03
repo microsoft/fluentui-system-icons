@@ -27,6 +27,8 @@ package.json @microsoft/cxe-prg
 nx.json @microsoft/cxe-prg
 monosize.config.mjs @microsoft/cxe-prg
 monosize.baseline.json @microsoft/cxe-prg
+.prettierignore @microsoft/cxe-prg
+.prettierrc @microsoft/cxe-prg
 
 ## Assets
 assets/ @spencer-nelson @willchavez
