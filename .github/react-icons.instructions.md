@@ -48,7 +48,7 @@ Fast checks: `npm run build-verify` (Vitest) validates metadata integrity withou
 
 1. Add SVG(s) under appropriate group folder in root `assets/` (validate fill color; skip `_color.svg` rule only if multi-colored).
 2. If direction-specific asset (LTR/RTL differ), confirm `rtlMetadata.js` covers filename; extend script if new pattern.
-3. Run `npm run build` in `packages/react-icons` (or root then `cd` in) to regenerate components + metadata.
+3. Run `npx nx run react-icons:build` to regenerate components + metadata.
 4. Run `npm run build-verify` (should succeed; failing usually means duplicate/missing metadata keys after script changes).
 5. Commit: added SVG(s) + updated generated outputs (`src/`, `metadata.json`). Avoid partial commits that exclude metadata.
 6. Open PR; CI will enforce fill + lint + build.
@@ -67,8 +67,9 @@ Fast checks: `npm run build-verify` (Vitest) validates metadata integrity withou
 
 ## Tests & Lint
 
-- `npm run lint` (ESLint with Griffel rules) — keep TS language features compatible with TS `~4.1.0`.
-- `npm run build-verify` (Vitest) — do NOT delete/rename metadata keys without updating test expectations.
+- `npx nx run react-icons:lint` (ESLint with Griffel rules) — keep TS language features compatible with TS `~4.1.0`.
+- `npx nx run react-icons:build-verify` (Vitest) — do NOT delete/rename metadata keys without updating test expectations.
+- `npx nx run react-icons:test` (Vitest).
 
 ## Do / Avoid
 
