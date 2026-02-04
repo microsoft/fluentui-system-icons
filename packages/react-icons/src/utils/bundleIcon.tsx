@@ -5,6 +5,11 @@ import { iconFilledClassName, iconRegularClassName } from './constants';
 import type { FluentIcon } from './createFluentIcon';
 import { useBundledIconStyles } from './bundleIcon.styles';
 
+/**
+ *
+ * Combine the Regular and Filled versions of icons
+ * Could be used to toggle between them on hover.
+ */
 export const bundleIcon = (FilledIcon: FluentIcon, RegularIcon: FluentIcon): FluentIcon => {
   const Component: FluentIcon = (props) => {
     const { className, filled, ...rest } = props;
