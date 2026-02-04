@@ -26,329 +26,327 @@ jobs:
       actions: write
 
     steps:
-    - name: Generate a token
-      id: generate-token
-      uses: actions/create-github-app-token@v1
-      with:
-        app-id: ${{ secrets.GH_FLUENT_CI_APP_ID }}
-        private-key: ${{ secrets.GH_FLUENT_CI_PRIVATE_KEY }}
+      - name: Generate a token
+        id: generate-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.GH_FLUENT_CI_APP_ID }}
+          private-key: ${{ secrets.GH_FLUENT_CI_PRIVATE_KEY }}
 
-    - uses: actions/checkout@v6
-      with:
-        token: ${{ steps.generate-token.outputs.token }}
-        #  Git knows file names/paths for history, but blobs (file contents) are fetched on demand.
-        filter: blob:none
-        # NOTE: This is needed for nx release changelog to detect all commits between releases
-        #  - temporarily increasing fetch-depth to 50 to get commit history for changelog generation
-        #  - we should consider switching to fetch-depth: 0 if we run into issues or switching to Nx Version plans instead conventional commits
-        fetch-depth: 50
-        fetch-tags: true
+      - uses: actions/checkout@v6
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+          #  Git knows file names/paths for history, but blobs (file contents) are fetched on demand.
+          filter: blob:none
+          # NOTE: This is needed for nx release changelog to detect all commits between releases
+          #  - temporarily increasing fetch-depth to 50 to get commit history for changelog generation
+          #  - we should consider switching to fetch-depth: 0 if we run into issues or switching to Nx Version plans instead conventional commits
+          fetch-depth: 50
+          fetch-tags: true
 
-    - name: Bump version patch
-      run: |
-        grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec | python3 -c """
-        import sys
-        import os
-        current_version = sys.stdin.read().strip().split(\"'\")[1]
-        major, minor, patch = current_version.split('.')
-        os.system(f'echo \"CURRENT_VERSION={current_version}\" >> \$GITHUB_ENV')
-        os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
-        """
+      - name: Bump version patch
+        run: |
+          grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec | python3 -c """
+          import sys
+          import os
+          current_version = sys.stdin.read().strip().split(\"'\")[1]
+          major, minor, patch = current_version.split('.')
+          os.system(f'echo \"CURRENT_VERSION={current_version}\" >> \$GITHUB_ENV')
+          os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
+          """
 
-    - name: Check CURRENT_VERSION tag availability
-      run: |
-        set -euo pipefail
-        echo "CURRENT_VERSION=$CURRENT_VERSION"
+      - name: Check CURRENT_VERSION tag availability
+        run: |
+          set -euo pipefail
+          echo "CURRENT_VERSION=$CURRENT_VERSION"
 
-        echo "Checking for tag locally..."
-        if git show-ref --tags --quiet "refs/tags/$CURRENT_VERSION"; then
-          echo "✅ Tag exists locally: $CURRENT_VERSION"
-        else
-          echo "⚠️ Tag not found locally: $CURRENT_VERSION"
-          echo "Known tags (last 20):"
-          git tag --sort=-creatordate | head -n 20
-        fi
+          echo "Checking for tag locally..."
+          if git show-ref --tags --quiet "refs/tags/$CURRENT_VERSION"; then
+            echo "✅ Tag exists locally: $CURRENT_VERSION"
+          else
+            echo "⚠️ Tag not found locally: $CURRENT_VERSION"
+            echo "Known tags (last 20):"
+            git tag --sort=-creatordate | head -n 20
+          fi
 
-        echo "Checking tag resolves to a commit..."
-        if git rev-parse "$CURRENT_VERSION^{commit}" >/dev/null 2>&1; then
-          echo "✅ Tag resolves to commit: $(git rev-parse "$CURRENT_VERSION^{commit}")"
-        else
-          echo "⚠️ Tag does not resolve to a commit: $CURRENT_VERSION"
-        fi
+          echo "Checking tag resolves to a commit..."
+          if git rev-parse "$CURRENT_VERSION^{commit}" >/dev/null 2>&1; then
+            echo "✅ Tag resolves to commit: $(git rev-parse "$CURRENT_VERSION^{commit}")"
+          else
+            echo "⚠️ Tag does not resolve to a commit: $CURRENT_VERSION"
+          fi
 
-    - name: Bump react version patch
-      run: |
-        grep -E "[0-9]+\.[0-9]+\.[0-9]+" ./packages/react-icons/package.json | python3 -c """
-        import sys
-        import os
-        current_version = sys.stdin.read().strip().split(':')[1]
-        current_version = current_version.split('\"')[1]
-        major,minor,asset = current_version.split('.')
-        os.system(f'echo \"REACT_VERSION={major}.{minor}.{int(asset) + 1}\" >> \$GITHUB_ENV')
-        """
+      - name: Bump react version patch
+        run: |
+          grep -E "[0-9]+\.[0-9]+\.[0-9]+" ./packages/react-icons/package.json | python3 -c """
+          import sys
+          import os
+          current_version = sys.stdin.read().strip().split(':')[1]
+          current_version = current_version.split('\"')[1]
+          major,minor,asset = current_version.split('.')
+          os.system(f'echo \"REACT_VERSION={major}.{minor}.{int(asset) + 1}\" >> \$GITHUB_ENV')
+          """
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in react-native-icons/package.json
-      run: |
-        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?(-rc\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-native-icons/package.json
-        rm packages/react-native-icons/package.json.bk
+      # Needs to be "-E" instead of "-r" on macOS
+      - name: Replace version number in react-native-icons/package.json
+        run: |
+          sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?(-rc\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-native-icons/package.json
+          rm packages/react-native-icons/package.json.bk
 
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 22.x
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
 
-    - name: Install dependencies
-      run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-    ## iOS
-    - name: Run iOS generate script
-      run: npm run deploy:ios
-      working-directory: importer
+      ## iOS
+      - name: Run iOS generate script
+        run: npm run deploy:ios
+        working-directory: importer
 
-    - name: Build Fonts
-      run: npm run deploy:fonts
-      working-directory: importer
+      - name: Build Fonts
+        run: npm run deploy:fonts
+        working-directory: importer
 
-    ## Flutter
-    # Disabling for now until the pipeline job is fixed
-    # - name: Run Flutter generate script
-    #   run: npm run deploy:flutter
-    #   working-directory: importer
+      ## Flutter
+      # Disabling for now until the pipeline job is fixed
+      # - name: Run Flutter generate script
+      #   run: npm run deploy:flutter
+      #   working-directory: importer
 
-    # # The name should be same as the package name on pub.dev
-    # - name: 'fluentui_system_icons'
-    #   uses: k-paxian/dart-package-publisher@master
-    #   with:
-    #     relativePath: 'flutter'
-    #     skipTests: true
-    #     accessToken: ${{ secrets.FLUTTER_OAUTH_ACCESS_TOKEN }}
-    #     refreshToken: ${{ secrets.FLUTTER_OAUTH_REFRESH_TOKEN }}
+      # # The name should be same as the package name on pub.dev
+      # - name: 'fluentui_system_icons'
+      #   uses: k-paxian/dart-package-publisher@master
+      #   with:
+      #     relativePath: 'flutter'
+      #     skipTests: true
+      #     accessToken: ${{ secrets.FLUTTER_OAUTH_ACCESS_TOKEN }}
+      #     refreshToken: ${{ secrets.FLUTTER_OAUTH_REFRESH_TOKEN }}
 
-    ## Publish
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version numbers in README.md
-      run: |
-        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" README.md
-        rm README.md.bk
+      ## Publish
+      # Needs to be "-E" instead of "-r" on macOS
+      - name: Replace version numbers in README.md
+        run: |
+          sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" README.md
+          rm README.md.bk
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version numbers in ios/README.md
-      run: |
-        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" ios/README.md
-        rm ios/README.md.bk
+      # Needs to be "-E" instead of "-r" on macOS
+      - name: Replace version numbers in ios/README.md
+        run: |
+          sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" ios/README.md
+          rm ios/README.md.bk
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in Podspec
-      run: |
-        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" ios/FluentIcons.podspec
-        rm ios/FluentIcons.podspec.bk
+      # Needs to be "-E" instead of "-r" on macOS
+      - name: Replace version number in Podspec
+        run: |
+          sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" ios/FluentIcons.podspec
+          rm ios/FluentIcons.podspec.bk
 
-    # Disabling Flutter version updates for now until the pipeline is fixed
-    # # Needs to be "-E" instead of "-r" on macOS
-    # - name: Replace version number in flutter/CHANGELOG.md
-    #   run: |
-    #     sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" flutter/CHANGELOG.md
-    #     rm flutter/CHANGELOG.md.bk
+      # Disabling Flutter version updates for now until the pipeline is fixed
+      # # Needs to be "-E" instead of "-r" on macOS
+      # - name: Replace version number in flutter/CHANGELOG.md
+      #   run: |
+      #     sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" flutter/CHANGELOG.md
+      #     rm flutter/CHANGELOG.md.bk
 
-    # # Needs to be "-E" instead of "-r" on macOS
-    # - name: Replace version number in flutter/pubspec.yaml
-    #   run: |
-    #     sed -i.bk -r "s/version: [0-9]+\.[0-9]+\.[0-9]+/version: $NEW_VERSION/g" flutter/pubspec.yaml
-    #     rm flutter/pubspec.yaml.bk
+      # # Needs to be "-E" instead of "-r" on macOS
+      # - name: Replace version number in flutter/pubspec.yaml
+      #   run: |
+      #     sed -i.bk -r "s/version: [0-9]+\.[0-9]+\.[0-9]+/version: $NEW_VERSION/g" flutter/pubspec.yaml
+      #     rm flutter/pubspec.yaml.bk
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in svg-icons/package.json
-      run: |
-        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/svg-icons/package.json
-        rm packages/svg-icons/package.json.bk
+      # Needs to be "-E" instead of "-r" on macOS
+      - name: Replace version number in svg-icons/package.json
+        run: |
+          sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/svg-icons/package.json
+          rm packages/svg-icons/package.json.bk
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in svg-sprites/package.json
-      run: |
-        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/svg-sprites/package.json
-        rm packages/svg-sprites/package.json.bk
+      # Needs to be "-E" instead of "-r" on macOS
+      - name: Replace version number in svg-sprites/package.json
+        run: |
+          sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/svg-sprites/package.json
+          rm packages/svg-sprites/package.json.bk
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in react-native-icons/package.json
-      run: |
-        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$REACT_VERSION\"/g" packages/react-native-icons/package.json
-        rm packages/react-native-icons/package.json.bk
+      # Needs to be "-E" instead of "-r" on macOS
+      - name: Replace version number in react-native-icons/package.json
+        run: |
+          sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$REACT_VERSION\"/g" packages/react-native-icons/package.json
+          rm packages/react-native-icons/package.json.bk
 
+      - name: Build SVG library
+        run: |
+          npm run build
+        working-directory: packages/svg-icons
 
-    - name: Build SVG library
-      run: |
-        npm run build
-      working-directory: packages/svg-icons
+      - name: Build SVG sprite library
+        run: |
+          npm run build
+        working-directory: packages/svg-sprites
 
-    - name: Build SVG sprite library
-      run: |
-        npm run build
-      working-directory: packages/svg-sprites
+      - name: Build React-Native library
+        run: |
+          npm run build
+        working-directory: packages/react-native-icons
 
+      - name: Build Webpack plugin library
+        run: |
+          npx nx run react-icons-font-subsetting-webpack-plugin:build
 
-    - name: Build React-Native library
-      run: |
-        npm run build
-      working-directory: packages/react-native-icons
+      - name: Build React library
+        run: |
+          npx nx run react-icons:build
+          npx nx run react-icons:build-verify -u
 
-    - name: Build Webpack plugin library
-      run: |
-        npx nx run react-icons-font-subsetting-webpack-plugin:build
+      # NX Release (react-icons + react-icons-font-subsetting-webpack-plugin)
+      - name: Prepare NPM release (version + changelog)
+        run: |
+          npx nx release version $REACT_VERSION --verbose ${{ inputs.dry-run && '--dry-run' || '' }}
+          npx nx release changelog $REACT_VERSION --from $CURRENT_VERSION --no-git-tag --no-git-commit --verbose ${{ inputs.dry-run && '--dry-run' || '' }}
 
-    - name: Build React library
-      run: |
-        npx nx run react-icons:build
-        npx nx run react-icons:build-verify -u
+      - name: Publish svg-icons to npm
+        if: ${{ !inputs.dry-run }}
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          access: public
+          package: packages/svg-icons/package.json
 
-    # NX Release (react-icons + react-icons-font-subsetting-webpack-plugin)
-    - name: Prepare NPM release (version + changelog)
-      run: |
-        npx nx release version $REACT_VERSION --verbose ${{ inputs.dry-run && '--dry-run' || '' }}
-        npx nx release changelog $REACT_VERSION --from $CURRENT_VERSION --no-git-tag --no-git-commit --verbose ${{ inputs.dry-run && '--dry-run' || '' }}
+      - name: Publish svg-sprites to npm
+        if: ${{ !inputs.dry-run }}
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          access: public
+          package: packages/svg-sprites/package.json
 
-    - name: Publish svg-icons to npm
-      if: ${{ !inputs.dry-run }}
-      uses: JS-DevTools/npm-publish@v1
-      with:
-        token: ${{ secrets.NPM_TOKEN }}
-        access: public
-        package: packages/svg-icons/package.json
+      - name: Publish react-icons to npm
+        if: ${{ !inputs.dry-run }}
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          access: public
+          package: packages/react-icons/package.json
 
-    - name: Publish svg-sprites to npm
-      if: ${{ !inputs.dry-run }}
-      uses: JS-DevTools/npm-publish@v1
-      with:
-        token: ${{ secrets.NPM_TOKEN }}
-        access: public
-        package: packages/svg-sprites/package.json
+      - name: Publish react-icons-font-subsetting-webpack-plugin to npm
+        if: ${{ !inputs.dry-run }}
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          access: public
+          package: packages/react-icons-font-subsetting-webpack-plugin/package.json
 
-    - name: Publish react-icons to npm
-      if: ${{ !inputs.dry-run }}
-      uses: JS-DevTools/npm-publish@v1
-      with:
-        token: ${{ secrets.NPM_TOKEN }}
-        access: public
-        package: packages/react-icons/package.json
+      - name: Publish react-native-icons to npm
+        if: ${{ !inputs.dry-run }}
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          access: public
+          package: packages/react-native-icons/package.json
 
-    - name: Publish react-icons-font-subsetting-webpack-plugin to npm
-      if: ${{ !inputs.dry-run }}
-      uses: JS-DevTools/npm-publish@v1
-      with:
-        token: ${{ secrets.NPM_TOKEN }}
-        access: public
-        package: packages/react-icons-font-subsetting-webpack-plugin/package.json
+      # Android
+      - name: Run Android generate script
+        env:
+          # see https://github.com/JS-DevTools/npm-publish/issues/15
+          INPUT_TOKEN: ''
+        run: npm run deploy:android
+        working-directory: importer
 
-    - name: Publish react-native-icons to npm
-      if: ${{ !inputs.dry-run }}
-      uses: JS-DevTools/npm-publish@v1
-      with:
-        token: ${{ secrets.NPM_TOKEN }}
-        access: public
-        package: packages/react-native-icons/package.json
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
 
-    # Android
-    - name: Run Android generate script
-      env:
-        # see https://github.com/JS-DevTools/npm-publish/issues/15
-        INPUT_TOKEN: ''
-      run: npm run deploy:android
-      working-directory: importer
+      # - name: Base64 decodes and pipes the GPG key content into the secret file
+      #   env:
+      #     GPG_KEY_CONTENT: ${{ secrets.GPG_KEY_CONTENT }}
+      #     SIGNING_SECRET_KEY_RING_FILE: ${{ secrets.SIGNING_SECRET_KEY_RING_FILE }}
+      #   run: |
+      #     git fetch --unshallow
+      #     sudo bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
 
-    - name: Setup Java
-      uses: actions/setup-java@v1
-      with:
-        java-version: 11
+      - name: Build Android library
+        uses: eskatos/gradle-command-action@v1
+        with:
+          arguments: assembleRelease -DversionName='${{ env.NEW_VERSION }}'
+          build-root-directory: android
+          wrapper-directory: android
 
-    # - name: Base64 decodes and pipes the GPG key content into the secret file
-    #   env:
-    #     GPG_KEY_CONTENT: ${{ secrets.GPG_KEY_CONTENT }}
-    #     SIGNING_SECRET_KEY_RING_FILE: ${{ secrets.SIGNING_SECRET_KEY_RING_FILE }}
-    #   run: |
-    #     git fetch --unshallow
-    #     sudo bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
+      # Temporarily commenting out the publishing to Maven Central, as it is blocking the release for other platforms
+      # - name: Publish to Maven Central
+      #   if: ${{ !inputs.dry-run }}
+      #   uses: eskatos/gradle-command-action@v1
+      #   env:
+      #     OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+      #     OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+      #     GPG_SIGNING_KEY_ID: ${{ secrets.GPG_SIGNING_KEY_ID }}
+      #     GPG_SIGNING_PASSWORD: ${{ secrets.GPG_SIGNING_PASSWORD }}
+      #     SIGNING_SECRET_KEY_RING_FILE: ${{ secrets.SIGNING_SECRET_KEY_RING_FILE }}
+      #     SONATYPE_STAGING_PROFILE_ID: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
+      #     VERSION_NAME: ${{ env.NEW_VERSION }}
+      #   with:
+      #     arguments: publishReleasePublicationToSonatypeRepository --max-workers 1 closeAndReleaseSonatypeStagingRepository
+      #     build-root-directory: android
+      #     wrapper-directory: android
 
-    - name: Build Android library
-      uses: eskatos/gradle-command-action@v1
-      with:
-        arguments: assembleRelease -DversionName='${{ env.NEW_VERSION }}'
-        build-root-directory: android
-        wrapper-directory: android
+      - name: Generate BUILD.gn file for Android
+        run: python3 generate_build_gn_android.py
+        working-directory: importer
 
-    # Temporarily commenting out the publishing to Maven Central, as it is blocking the release for other platforms
-    # - name: Publish to Maven Central
-    #   if: ${{ !inputs.dry-run }}
-    #   uses: eskatos/gradle-command-action@v1
-    #   env:
-    #     OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-    #     OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
-    #     GPG_SIGNING_KEY_ID: ${{ secrets.GPG_SIGNING_KEY_ID }}
-    #     GPG_SIGNING_PASSWORD: ${{ secrets.GPG_SIGNING_PASSWORD }}
-    #     SIGNING_SECRET_KEY_RING_FILE: ${{ secrets.SIGNING_SECRET_KEY_RING_FILE }}
-    #     SONATYPE_STAGING_PROFILE_ID: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
-    #     VERSION_NAME: ${{ env.NEW_VERSION }}
-    #   with:
-    #     arguments: publishReleasePublicationToSonatypeRepository --max-workers 1 closeAndReleaseSonatypeStagingRepository
-    #     build-root-directory: android
-    #     wrapper-directory: android
+      - name: Update icon sheet
+        run: python3 generate_icons_md.py
 
-    - name: Generate BUILD.gn file for Android
-      run: python3 generate_build_gn_android.py
-      working-directory: importer
+      - name: Config git credentials
+        run: git config user.email "flubuild@microsoft.com" && git config user.name "Fluent Build System"
 
-    - name: Update icon sheet
-      run: python3 generate_icons_md.py
+      - name: Commit version number change
+        if: ${{ !inputs.dry-run }}
+        run: |
+          git add -A
+          git commit -m "Release $NEW_VERSION [skip ci]"
 
-    - name: Config git credentials
-      run: git config user.email "flubuild@microsoft.com" && git config user.name "Fluent Build System"
+      - name: Tag release
+        if: ${{ !inputs.dry-run }}
+        run: git tag "$NEW_VERSION"
 
-    - name: Commit version number change
-      if: ${{ !inputs.dry-run }}
-      run: |
-        git add -A
-        git commit -m "Release $NEW_VERSION [skip ci]"
+      - name: Push release
+        if: ${{ !inputs.dry-run }}
+        run: |
+          git push origin HEAD:main --follow-tags --tags
 
-    - name: Tag release
-      if: ${{ !inputs.dry-run }}
-      run: git tag "$NEW_VERSION"
+      - name: Trigger CocoaPods publish
+        if: ${{ !inputs.dry-run }}
+        run: gh workflow run cocoapods-publish.yml
+        env:
+          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
 
-    - name: Push release
-      if: ${{ !inputs.dry-run }}
-      run: |
-        git push origin HEAD:main --follow-tags --tags
-
-    - name: Trigger CocoaPods publish
-      if: ${{ !inputs.dry-run }}
-      run: gh workflow run cocoapods-publish.yml
-      env:
-        GH_TOKEN: ${{ steps.generate-token.outputs.token }}
-
-    - name: Dry-run summary
-      if: ${{ inputs.dry-run }}
-      run: |
-        echo "## 🧪 Dry-run Summary" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "The following actions would have been performed:" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "### 📦 Versions" >> $GITHUB_STEP_SUMMARY
-        echo "- **Library version:** \`$NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
-        echo "- **React icons version:** \`$REACT_VERSION\`" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "### 📤 npm packages that would be published" >> $GITHUB_STEP_SUMMARY
-        echo "- \`@fluentui/svg-icons@$NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
-        echo "- \`@fluentui/svg-sprites@$NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
-        echo "- \`@fluentui/react-icons@$REACT_VERSION\`" >> $GITHUB_STEP_SUMMARY
-        echo "- \`@fluentui/react-icons-font-subsetting-webpack-plugin@$REACT_VERSION\`" >> $GITHUB_STEP_SUMMARY
-        echo "- \`@fluentui/react-native-icons@$REACT_VERSION\`" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "### 🏷️ Git operations that would be performed" >> $GITHUB_STEP_SUMMARY
-        echo "- Commit: \`Release $NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
-        echo "- Tag: \`$NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
-        echo "- Push to: \`origin/main\`" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "### 📝 Files modified (not committed)" >> $GITHUB_STEP_SUMMARY
-        echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-        git status --short >> $GITHUB_STEP_SUMMARY
-        echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+      - name: Dry-run summary
+        if: ${{ inputs.dry-run }}
+        run: |
+          echo "## 🧪 Dry-run Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "The following actions would have been performed:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📦 Versions" >> $GITHUB_STEP_SUMMARY
+          echo "- **Library version:** \`$NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **React icons version:** \`$REACT_VERSION\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📤 npm packages that would be published" >> $GITHUB_STEP_SUMMARY
+          echo "- \`@fluentui/svg-icons@$NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
+          echo "- \`@fluentui/svg-sprites@$NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
+          echo "- \`@fluentui/react-icons@$REACT_VERSION\`" >> $GITHUB_STEP_SUMMARY
+          echo "- \`@fluentui/react-icons-font-subsetting-webpack-plugin@$REACT_VERSION\`" >> $GITHUB_STEP_SUMMARY
+          echo "- \`@fluentui/react-native-icons@$REACT_VERSION\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🏷️ Git operations that would be performed" >> $GITHUB_STEP_SUMMARY
+          echo "- Commit: \`Release $NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Tag: \`$NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Push to: \`origin/main\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📝 Files modified (not committed)" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          git status --short >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
 
   # publish-android-demo:
   #   name: Publish Android demo app

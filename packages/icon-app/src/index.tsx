@@ -2,14 +2,12 @@ import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 import { App } from './app';
 
-
-main()
+main();
 
 function main() {
-    const rootDiv = document.createElement('div');
-    document.body.append(rootDiv);
+  const rootDiv = document.createElement('div');
+  document.body.append(rootDiv);
 
-    const root = createRoot(rootDiv);
-    root.render(<App />);
+  const root = createRoot(rootDiv);
+  root.render(<App />);
 }
-

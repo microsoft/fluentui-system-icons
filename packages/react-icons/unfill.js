@@ -1,6 +1,6 @@
 // @ts-check
 
-const {readFile, writeFile, readdir, stat} = require('node:fs/promises');
+const { readFile, writeFile, readdir, stat } = require('node:fs/promises');
 const path = require('node:path');
 
 const yargs = require('yargs');
@@ -14,10 +14,9 @@ const yargs = require('yargs');
  * @property {number} colorVariantCount - Number of color variant files excluded
  */
 
-
 // Run the script
 if (require.main === module) {
-  main().catch(error => {
+  main().catch((error) => {
     console.error('❌ Unexpected error:', error);
     process.exit(1);
   });
@@ -33,18 +32,17 @@ async function main() {
       alias: 's',
       description: 'Source directory containing SVG files',
       type: 'string',
-      demandOption: true
+      demandOption: true,
     })
     .option('dry-run', {
       description: 'Show what would be modified without writing changes to disk',
       type: 'boolean',
-      default: false
+      default: false,
     })
     .help()
     .alias('help', 'h')
     .example('$0 --source ./intermediate', 'Process SVG files in place')
-    .example('$0 --source ./intermediate --dry-run', 'Preview what would be modified without making changes')
-    .argv;
+    .example('$0 --source ./intermediate --dry-run', 'Preview what would be modified without making changes').argv;
 
   const startTime = Date.now();
   const sourceDir = path.resolve(argv.source);
@@ -71,7 +69,9 @@ async function main() {
     const svgResults = await findSvgFiles(sourceDir);
 
     console.log(`📊 Found ${svgResults.totalCount} total SVG files`);
-    console.log(`📊 Found ${svgResults.processableCount} processable SVG files (excluding ${svgResults.colorVariantCount} color variants)`);
+    console.log(
+      `📊 Found ${svgResults.processableCount} processable SVG files (excluding ${svgResults.colorVariantCount} color variants)`,
+    );
 
     if (svgResults.processableCount === 0) {
       console.log('ℹ️  No processable SVG files found.');
@@ -86,7 +86,6 @@ async function main() {
     const duration = ((endTime - startTime) / 1000).toFixed(2);
     const action = dryRun ? 'analysis' : 'unfill';
     console.log(`✅ ${action.charAt(0).toUpperCase() + action.slice(1)} completed in ${duration}s`);
-
   } catch (error) {
     console.error('❌ Error during unfill process:', error.message);
     process.exit(1);
@@ -112,20 +111,22 @@ async function findSvgFiles(dir) {
     try {
       const entries = await readdir(currentDir);
 
-      await Promise.all(entries.map(async (entry) => {
-        const fullPath = path.join(currentDir, entry);
-        const stats = await stat(fullPath);
+      await Promise.all(
+        entries.map(async (entry) => {
+          const fullPath = path.join(currentDir, entry);
+          const stats = await stat(fullPath);
 
-        if (stats.isDirectory()) {
-          await traverse(fullPath);
-        } else if (entry.endsWith('.svg')) {
-          allSvgFiles.push(fullPath);
-          // Only process non-color variants
-          if (!entry.includes('_color')) {
-            processableSvgFiles.push(fullPath);
+          if (stats.isDirectory()) {
+            await traverse(fullPath);
+          } else if (entry.endsWith('.svg')) {
+            allSvgFiles.push(fullPath);
+            // Only process non-color variants
+            if (!entry.includes('_color')) {
+              processableSvgFiles.push(fullPath);
+            }
           }
-        }
-      }));
+        }),
+      );
     } catch (error) {
       // Skip directories that can't be read
       console.warn(`Warning: Could not read directory ${currentDir}:`, error.message);
@@ -139,7 +140,7 @@ async function findSvgFiles(dir) {
     processableSvgFiles,
     totalCount: allSvgFiles.length,
     processableCount: processableSvgFiles.length,
-    colorVariantCount: allSvgFiles.length - processableSvgFiles.length
+    colorVariantCount: allSvgFiles.length - processableSvgFiles.length,
   };
 }
 
@@ -166,38 +167,40 @@ async function processFilesInBatches(files, dryRun = false, batchSize = 50) {
   for (let i = 0; i < files.length; i += batchSize) {
     const batch = files.slice(i, i + batchSize);
 
-    await Promise.all(batch.map(async (filePath) => {
-      try {
-        const originalContent = await readFile(filePath, 'utf8');
-        const modifiedContent = removeFillNone(originalContent);
+    await Promise.all(
+      batch.map(async (filePath) => {
+        try {
+          const originalContent = await readFile(filePath, 'utf8');
+          const modifiedContent = removeFillNone(originalContent);
 
-        // Check if content would change
-        const wouldModify = originalContent !== modifiedContent;
+          // Check if content would change
+          const wouldModify = originalContent !== modifiedContent;
 
-        if (wouldModify) {
-          if (!dryRun) {
-            await writeFile(filePath, modifiedContent, 'utf8');
+          if (wouldModify) {
+            if (!dryRun) {
+              await writeFile(filePath, modifiedContent, 'utf8');
+            }
+            modifiedCount++;
           }
-          modifiedCount++;
-        }
 
-        processedCount++;
+          processedCount++;
 
-        // Progress indicator
-        if (processedCount % 100 === 0 || processedCount === files.length) {
-          const action = dryRun ? 'analyzed' : 'processed';
-          const wouldText = dryRun ? ' (would be modified)' : ' modified';
-          process.stdout.write(`\r${action.charAt(0).toUpperCase() + action.slice(1)} ${processedCount}/${files.length} files (${modifiedCount}${wouldText})`);
+          // Progress indicator
+          if (processedCount % 100 === 0 || processedCount === files.length) {
+            const action = dryRun ? 'analyzed' : 'processed';
+            const wouldText = dryRun ? ' (would be modified)' : ' modified';
+            process.stdout.write(
+              `\r${action.charAt(0).toUpperCase() + action.slice(1)} ${processedCount}/${files.length} files (${modifiedCount}${wouldText})`,
+            );
+          }
+        } catch (error) {
+          console.error(`\nError processing ${filePath}:`, error.message);
         }
-      } catch (error) {
-        console.error(`\nError processing ${filePath}:`, error.message);
-      }
-    }));
+      }),
+    );
   }
 
   const action = dryRun ? 'Analyzed' : 'Processed';
   const wouldText = dryRun ? ' would be modified' : ' modified';
   console.log(`\n${action}! ${action} ${processedCount} files, ${modifiedCount}${wouldText}.`);
 }
-
-

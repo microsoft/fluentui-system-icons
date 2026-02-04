@@ -3,6 +3,7 @@
 **IMPORTANT: PLEASE READ**
 
 @fluentui/react-icons has been major bumped to 2.x. There are some key changes in the API and usages. The main ones are:
+
 - The general icons are now resizeable using styling (i.e. scaling using the `height` and `width` props or using `fontSize` prop, etc). Ex: `<AccessTimeFilled fontSize={40}>`
 - There is now a more general icon offering included with the sized icons. Instead of importing `<AccessTime24Filled>`, you just import `<AccessTimeFilled>`.
 - The sized icons are still available, and are recommended if you know the specific size you want your icons to be. For the general case, the more general icons are available to you.
@@ -24,7 +25,7 @@ There are also helpful interfaces that will allow you to add styling to fit the 
 In order to use these icons, simply import them as `import { [Componentname][variant] } from @fluentui/react-icons` as follows:
 
 ```tsx
-import { AccessTimeFilled } from "@fluentui/react-icons";
+import { AccessTimeFilled } from '@fluentui/react-icons';
 ```
 
 The previous icon offerings are scalable, but if you know what size you want to use for your icons, and you are not planning on using multiple sizes, it is recommended to use the sized icons. These are the same icons as the general case, but in multiple different sizes, built to look pixel perfect at those specific sizes.
@@ -32,7 +33,7 @@ The previous icon offerings are scalable, but if you know what size you want to 
 You can import the sized icons in a similar way:
 
 ```tsx
-import { AccessTime24Filled } from "@fluentui/react-icons";
+import { AccessTime24Filled } from '@fluentui/react-icons';
 ```
 
 You can also style the icons using the `FluentIconsProps` interface, with the `className` prop or the `primaryFill` prop.
@@ -41,56 +42,55 @@ Finally, you can bundle the `Filled` and `Regular` versions of each icon into a 
 
 The bundled icon accepts a `filled` prop (boolean) to control which variant is displayed: when `filled={true}`, the filled variant is shown; when `filled={false}` or omitted, the regular variant is shown.
 
-
 ```tsx
-import * as React from "react";
-import * as ReactDOM from "react-dom";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 
 import {
-    AccessTimeFilled,
-    AccessTimeRegular,
-    bundleIcon,
-    iconFilledClassName,
-    iconRegularClassName
-} from "@fluentui/react-icons";
-import { makeStyles } from "@griffel/react";
+  AccessTimeFilled,
+  AccessTimeRegular,
+  bundleIcon,
+  iconFilledClassName,
+  iconRegularClassName,
+} from '@fluentui/react-icons';
+import { makeStyles } from '@griffel/react';
 
 // Define props to customize the icon's appearance
 // primaryFill: Sets the icon's color
 // className: Applies custom CSS class for additional styling
 const iconStyleProps: FluentIconsProps = {
-    primaryFill: "purple",
-    className: "iconClass"
+  primaryFill: 'purple',
+  className: 'iconClass',
 };
 
 // Create styles using Griffel's makeStyles
 // This example toggles between Filled and Regular variants on hover
 const useIconStyles = makeStyles({
-    icon: {
-        ":hover": {
-            // Hide the filled variant on hover
-            [`& .${iconFilledClassName}`]: {
-                display: "none"
-            },
-            // Show the regular variant on hover
-            [`& .${iconRegularClassName}`]: {
-                display: "inline"
-            }
-        }
-    }
-})
+  icon: {
+    ':hover': {
+      // Hide the filled variant on hover
+      [`& .${iconFilledClassName}`]: {
+        display: 'none',
+      },
+      // Show the regular variant on hover
+      [`& .${iconRegularClassName}`]: {
+        display: 'inline',
+      },
+    },
+  },
+});
 
 // Bundle both icon variants into a single component
 // By default, displays the Filled variant; use filled={false} prop to show Regular variant
-const AccessTime = bundleIcon(AccessTimeFilled, AccessTimeRegular)
-const rootElement = document.getElementById("root");
+const AccessTime = bundleIcon(AccessTimeFilled, AccessTimeRegular);
+const rootElement = document.getElementById('root');
 const styles = useIconStyles();
 ReactDOM.render(
-    <div className={styles.icon}>
-        <AccessTime aria-label="AccessTime" {...iconStyleProps} />
-    </div>,
-    rootElement
-    )
+  <div className={styles.icon}>
+    <AccessTime aria-label="AccessTime" {...iconStyleProps} />
+  </div>,
+  rootElement,
+);
 ```
 
 ### Using the icon font
@@ -157,16 +157,18 @@ This grouping strikes a balance between granularity and convenience, making it e
 ### Using API Directly
 
 Icons are available via two export maps:
+
 - `@fluentui/react-icons/svg/*` - SVG-based icons
 - `@fluentui/react-icons/fonts/*` - Font-based icons
 
 The following utility module is also available:
+
 - `@fluentui/react-icons/utils` - General icon helper utilities
 
 ```tsx
 // Import individual icon variants from grouped files
-import { AccessTime20Filled, AccessTime24Filled, AccessTime20Regular } from "@fluentui/react-icons/svg/access-time";
-import { Add16Filled, Add20Filled } from "@fluentui/react-icons/fonts/add";
+import { AccessTime20Filled, AccessTime24Filled, AccessTime20Regular } from '@fluentui/react-icons/svg/access-time';
+import { Add16Filled, Add20Filled } from '@fluentui/react-icons/fonts/add';
 
 function MyComponent() {
   return (
@@ -201,12 +203,13 @@ Migrating a larger codebase to the new performant atomic imports might be a daun
 These transforms automatically rewrite imports from:
 
 ```tsx
-import { AccessTime24Filled } from "@fluentui/react-icons";
+import { AccessTime24Filled } from '@fluentui/react-icons';
 ```
 
 To the optimized atomic import:
+
 ```tsx
-import { AccessTime24Filled } from "@fluentui/react-icons/svg/access-time";
+import { AccessTime24Filled } from '@fluentui/react-icons/svg/access-time';
 ```
 
 This transformation happens at build time, so your source code remains unchanged while your bundled output gets the full tree-shaking benefits.
@@ -234,7 +237,7 @@ module.exports = {
               'iconFilledClassName',
               'iconRegularClassName',
               'iconColorClassName',
-              'iconLightClassName'
+              'iconLightClassName',
             ];
 
             if (utilityExports.includes(importName)) {
@@ -242,14 +245,9 @@ module.exports = {
             }
 
             // Handle icon imports
-            const withoutSuffix = importName.replace(
-              /(\d*)?(Regular|Filled|Light|Color)$/,
-              ''
-            );
+            const withoutSuffix = importName.replace(/(\d*)?(Regular|Filled|Light|Color)$/, '');
 
-            const kebabCase = withoutSuffix
-              .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
-              .toLowerCase();
+            const kebabCase = withoutSuffix.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
 
             return `@fluentui/react-icons/svg/${kebabCase}`;
           },
@@ -280,24 +278,24 @@ If you use SWC for transpilation, add [@swc/plugin-transform-imports](https://ww
                 // Transform utility imports to /utils
                 [
                   "^(bundleIcon|iconClassName|iconFilledClassName|iconRegularClassName|iconColorClassName|iconLightClassName)$",
-                  "@fluentui/react-icons/utils"
+                  "@fluentui/react-icons/utils",
                 ],
                 // Transform icon imports to /svg/{icon-name}
                 [
                   "(\\D*)(\\d*)?(Regular|Filled|Light|Color)",
-                  "@fluentui/react-icons/svg/{{ kebabCase memberMatches.[1] }}"
-                ]
+                  "@fluentui/react-icons/svg/{{ kebabCase memberMatches.[1] }}",
+                ],
               ],
               "preventFullImport": false,
               "skipDefaultConversion": true,
               "handleDefaultImport": false,
-              "handleNamespaceImport": false
-            }
-          }
-        ]
-      ]
-    }
-  }
+              "handleNamespaceImport": false,
+            },
+          },
+        ],
+      ],
+    },
+  },
 }
 ```
 

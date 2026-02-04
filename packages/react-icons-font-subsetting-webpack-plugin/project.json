@@ -7,14 +7,8 @@
   "targets": {
     "build": {
       "cache": true,
-      "inputs": [
-          "default",
-          "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
-          "!{projectRoot}/test/**"
-      ],
-      "outputs": [
-          "{projectRoot}/lib"
-      ]
+      "inputs": ["default", "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)", "!{projectRoot}/test/**"],
+      "outputs": ["{projectRoot}/lib"]
     },
     "test": {
       "dependsOn": ["build"]

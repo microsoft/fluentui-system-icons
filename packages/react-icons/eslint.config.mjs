@@ -6,7 +6,7 @@ import reactHooksPlugin from 'eslint-plugin-react-hooks';
 export default tseslint.config(
   {
     ignores: [
-       // generated assets
+      // generated assets
       'lib/',
       'lib-cjs/',
       'intermediate/',
@@ -40,16 +40,13 @@ export default tseslint.config(
         {
           types: {
             'JSX.IntrinsicElements': {
-              message:
-                '`JSX.IntrinsicElements` is not compatible with @types/react@>=19.'
+              message: '`JSX.IntrinsicElements` is not compatible with @types/react@>=19.',
             },
             'React.JSX.IntrinsicElements': {
-              message:
-                '`React.JSX.IntrinsicElements` is not backwards compatible with @types/react@17'
+              message: '`React.JSX.IntrinsicElements` is not backwards compatible with @types/react@17',
             },
             'JSX.Element': {
-              message:
-                '`JSX.Element` is not compatible with @types/react@>=19. Use `React.ReactElement` instead',
+              message: '`JSX.Element` is not compatible with @types/react@>=19. Use `React.ReactElement` instead',
               fixWith: 'React.ReactElement',
             },
             'React.JSX.Element': {

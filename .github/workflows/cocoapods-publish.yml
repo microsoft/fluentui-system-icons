@@ -10,11 +10,11 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v6
+      - uses: actions/checkout@v6
 
-    - name: Deploy to CocoaPods
-      run: |
-        pod spec lint --allow-warnings --quick
-        pod trunk push --skip-import-validation --skip-tests --allow-warnings
-      env:
-        COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+      - name: Deploy to CocoaPods
+        run: |
+          pod spec lint --allow-warnings --quick
+          pod trunk push --skip-import-validation --skip-tests --allow-warnings
+        env:
+          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}

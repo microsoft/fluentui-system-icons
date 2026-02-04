@@ -118,7 +118,10 @@ describe(`convert  utils`, () => {
     });
 
     it('still treats icons ending with _color as color icons', () => {
-      writeFile('ic_fluent_patient_20_color.svg', '<svg width="20"><g fill="#000"/><path d="M1 2" fill="#ff0000"/></svg>');
+      writeFile(
+        'ic_fluent_patient_20_color.svg',
+        '<svg width="20"><g fill="#000"/><path d="M1 2" fill="#ff0000"/></svg>',
+      );
       const res = makeIconExport({
         file: 'ic_fluent_patient_20_color.svg',
         srcFile: path.join(tmpDir, 'ic_fluent_patient_20_color.svg'),

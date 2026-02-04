@@ -12,13 +12,14 @@ Fluent UI System Icons are a collection of familiar, friendly and modern icons f
 
 - [View the full list of filled icons](icons_filled.md)
 
-
 ## Direction
+
 Within the metadata.json file for an icon, a property named `directionType` is used to indicate the direction of the icon. This property can have one of the following values:
+
 - `unique`, meaning that the icon is unique and has a specific RTL and LTR version
 - `mirror`, meaning that the icon can be mirrored for RTL or LTR languages
 
-The property `singleton` is also used to indicate the default direction that should be used for the icon. 
+The property `singleton` is also used to indicate the default direction that should be used for the icon.
 
 ## Installation
 

@@ -64,10 +64,9 @@ function createStableChunks(iconExports, iconNames, options) {
   }
 
   // Filter out empty chunks and return
-  return chunks.filter(chunk => chunk.length > 0);
+  return chunks.filter((chunk) => chunk.length > 0);
 
   // ===========
-
 }
 
 /**
@@ -82,16 +81,16 @@ function simpleHash(str) {
 }
 
 /**
-* Get a stable prefix key for an icon name that balances locality with distribution
-* @param {string} name - Icon name
-* @param {number} prefixLength - Length of prefix to use (1-3)
-* @returns {string}
-*/
+ * Get a stable prefix key for an icon name that balances locality with distribution
+ * @param {string} name - Icon name
+ * @param {number} prefixLength - Length of prefix to use (1-3)
+ * @returns {string}
+ */
 function getPrefix(name, prefixLength) {
   return name.substring(0, Math.min(prefixLength, name.length)).toUpperCase();
 }
 
 module.exports = {
   createStableChunks,
-  simpleHash
+  simpleHash,
 };
