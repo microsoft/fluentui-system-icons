@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { makeStyles } from '@griffel/react';
 
+import { SvgIconExamples } from './svg-icon.example';
+
 const Atoms = React.lazy(() => import('./atoms').then((mod) => ({ default: mod.Atoms })));
 const Chunk = React.lazy(() => import('./chunk').then((mod) => ({ default: mod.Chunk })));
 const All = React.lazy(() => import('./all').then((mod) => ({ default: mod.All })));
+const AllSvg = React.lazy(() => import('./all-svg').then((mod) => ({ default: mod.AllSvgIcons })));
 
 const useRootStyles = makeStyles({
   root: {
@@ -15,7 +18,7 @@ const useRootStyles = makeStyles({
 
 export function App() {
   const styles = useRootStyles();
-  const [state, setState] = React.useState<'atoms' | 'all' | 'chunk' | null>(null);
+  const [state, setState] = React.useState<'atoms' | 'all' | 'all-svg' | 'chunk' | null>(null);
 
   return (
     <main>
@@ -25,6 +28,13 @@ export function App() {
           <div>
             <p>Demonstration of All icons (import all at once)</p>
             <button onClick={() => setState('all')}>All</button>
+          </div>
+          <div>
+            <SvgIconExamples />
+          </div>
+          <div>
+            <p>Demonstration of All Svg icons (import all at once)</p>
+            <button onClick={() => setState('all-svg')}>All Svg</button>
           </div>
           <div>
             <p>Demonstration of Chunk icons (import a chunk of icons).</p>
@@ -45,6 +55,7 @@ export function App() {
             <div className={styles.root}>
               {state === 'atoms' && <Atoms />}
               {state === 'all' && <All />}
+              {state === 'all-svg' && <AllSvg />}
               {state === 'chunk' && <Chunk />}
             </div>
           </React.Suspense>
