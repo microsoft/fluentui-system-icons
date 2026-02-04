@@ -9,3 +9,4 @@ export {
   iconColorClassName,
   iconLightClassName,
 } from './utils/constants';
+export { SvgIcon } from './utils/svg-icon';
