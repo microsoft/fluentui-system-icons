@@ -100,7 +100,7 @@ function processPerChunk(sourceFiles, dest, rtlMetadata) {
 
   const indexPath = path.join(dest, 'index.tsx');
   // Finally add the interface definition and then write out the index.
-  indexContents.push("export { default as wrapIcon } from './utils/wrapIcon'");
+  indexContents.push("export { wrapIcon } from './utils/wrapIcon'");
   indexContents.push("export { bundleIcon } from './utils/bundleIcon'");
   indexContents.push("export { createFluentIcon } from './utils/createFluentIcon'");
   indexContents.push("export * from './utils/useIconState'");
