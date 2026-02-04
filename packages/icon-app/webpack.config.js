@@ -32,6 +32,10 @@ module.exports = {
         test: /\.(ttf|woff2?)$/,
         type: 'asset',
       },
+      {
+        test: /\.svg$/,
+        type: 'asset/resource',
+      },
     ],
   },
   plugins: [
