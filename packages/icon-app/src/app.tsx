@@ -2,6 +2,7 @@ import * as React from 'react';
 import { makeStyles } from '@griffel/react';
 
 import { SvgIconExamples } from './svg-icon.example';
+import { SvgSpritesApiExamples } from './svg-sprites-api.example';
 
 const Atoms = React.lazy(() => import('./atoms').then((mod) => ({ default: mod.Atoms })));
 const Chunk = React.lazy(() => import('./chunk').then((mod) => ({ default: mod.Chunk })));
@@ -30,6 +31,8 @@ export function App() {
             <button onClick={() => setState('all')}>All</button>
           </div>
           <div>
+            <SvgSpritesApiExamples />
+            <hr />
             <SvgIconExamples />
           </div>
           <div>

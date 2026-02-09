@@ -7,7 +7,8 @@ import spritePath from './svg-sprite.svg'
  */
 export const SvgIconExamples: React.FC = () => {
   return (
-    <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', padding: '20px' }}>
+    <section style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', padding: '20px' }}>
+      <h3>SVG Icon API</h3>
       {/* Basic usage with default size (1em) */}
       <SvgIcon iconId="AirplaneRegular" spritePath={spritePath} />
 
@@ -33,8 +34,8 @@ export const SvgIconExamples: React.FC = () => {
       <SvgIcon iconId="CalculatorFilled" className="my-custom-class" spritePath={spritePath} />
 
       {/* Custom sprite path */}
-      <SvgIcon iconId="BackspaceFilled" size="20" spritePath={spritePath}/>
-    </div>
+      <SvgIcon iconId="BackspaceFilled" size="20" spritePath={spritePath} />
+    </section>
   );
 };
 
@@ -42,7 +43,7 @@ export const SvgIconExamples: React.FC = () => {
  * Comparison: SvgIcon vs createFluentIcon
  *
  * Before (using createFluentIcon - renders inline paths):
- * import { CalendarFilled } from '@fluentui/react-icons';
+ * import { CalendarFilled } from '@fluentui/react-icons/svg';
  * <CalendarFilled />
  *
  * After (using SvgIcon - uses sprite):
