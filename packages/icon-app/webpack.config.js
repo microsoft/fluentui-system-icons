@@ -1,6 +1,9 @@
 // @ts-check
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('node:path');
+const {
+  default: FluentUIReactIconsSvgSpriteSubsettingPlugin,
+} = require('@fluentui/react-icons-svg-sprite-subsetting-webpack-plugin');
 
 /** @type {import('webpack').Configuration} */
 module.exports = {
@@ -42,5 +45,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Fluent React Icons Demo',
     }),
+    // new FluentUIReactIconsSvgSpriteSubsettingPlugin({
+    //   mode: 'atomic', // or 'merged'
+    // }),
   ],
 };
