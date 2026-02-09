@@ -1,0 +1,12 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "icon-app",
+  "projectType": "application",
+  "sourceRoot": "packages/icon-app/src",
+  "tags": [],
+  "targets": {
+    "test:svg-sprite-subsetting": {
+      "dependsOn": ["^build"]
+    }
+  }
+}

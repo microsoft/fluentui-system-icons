@@ -7,7 +7,8 @@
   "scripts": {
     "clean": "git clean -fXd dist/",
     "build": "webpack",
-    "dev": "webpack serve --open"
+    "dev": "webpack serve --open",
+    "test:svg-sprite-subsetting": "webpack --config webpack.svg-sprite.config.js"
   },
   "author": "",
   "license": "ISC",
