@@ -25,7 +25,7 @@ module.exports = {
   },
   entry: isMerged ? { merged: './src/merged.js' } : { atomic: './src/atomic.js' },
   output: {
-    path: resolve(__dirname, 'dist'),
+    path: resolve(__dirname, 'dist', isMerged ? 'merged' : 'atomic'),
     filename: '[name].js',
     clean: true,
   },
@@ -36,16 +36,16 @@ module.exports = {
     }),
     {
       apply(compiler) {
-        compiler.hooks.afterEmit.tap('test-svg-sprite-subsetting', compilation => {
+        compiler.hooks.afterEmit.tap('test-svg-sprite-subsetting', (compilation) => {
           const outDir = compilation.outputOptions.path || resolve(__dirname, 'dist');
           const svgAssets = compilation
             .getAssets()
-            .map(a => a.name)
-            .filter(name => name.endsWith('.svg'))
-            .map(name => ({ name, source: readFileSync(join(outDir, name), 'utf8') }));
+            .map((a) => a.name)
+            .filter((name) => name.endsWith('.svg'))
+            .map((name) => ({ name, source: readFileSync(join(outDir, name), 'utf8') }));
 
           if (isMerged) {
-            const merged = svgAssets.find(a => a.name === 'fluentui-react-icons.svg');
+            const merged = svgAssets.find((a) => a.name === 'fluentui-react-icons.svg');
             if (!merged) {
               throw new Error('Merged sprite asset was not emitted');
             }
@@ -55,12 +55,16 @@ module.exports = {
             if (merged.source.includes('id="BackpackRegular"')) {
               throw new Error('Merged sprite still contains unused symbols');
             }
-            const atomicSprites = svgAssets.filter(a => a.name.startsWith('backpack-') || a.name.startsWith('calculator-'));
+            const atomicSprites = svgAssets.filter(
+              (a) => a.name.startsWith('backpack-') || a.name.startsWith('calculator-'),
+            );
             if (atomicSprites.length > 0) {
-              throw new Error(`Atomic sprite assets should not be emitted in merged mode: ${atomicSprites.map(a => a.name).join(', ')}`);
+              throw new Error(
+                `Atomic sprite assets should not be emitted in merged mode: ${atomicSprites.map((a) => a.name).join(', ')}`,
+              );
             }
           } else {
-            const backpack = svgAssets.find(a => a.name.startsWith('backpack-'));
+            const backpack = svgAssets.find((a) => a.name.startsWith('backpack-'));
             if (!backpack) {
               throw new Error('Backpack sprite asset was not emitted');
             }
