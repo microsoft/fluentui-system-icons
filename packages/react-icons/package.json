@@ -109,6 +109,11 @@
       "import": "./lib/atoms/svg/*.js",
       "require": "./lib-cjs/atoms/svg/*.js"
     },
+    "./svg-sprite/*": {
+      "types": "./lib/atoms/svg-sprite/*.d.ts",
+      "import": "./lib/atoms/svg-sprite/*.js",
+      "require": "./lib-cjs/atoms/svg-sprite/*.js"
+    },
     "./lib/atoms/svg/*": {
       "types": "./lib/atoms/svg/*.d.ts",
       "import": "./lib/atoms/svg/*.js",
