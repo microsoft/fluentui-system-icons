@@ -1,11 +1,15 @@
 #!/usr/bin/env node
+
+// @ts-check
+
 /*
- * Generates per-module SVG sprites for react-icons "svg-sprites" atoms.
+ * Generates per-module SVG sprites for react-icons "svg-sprite" atoms.
  *
  * Input:
- *   packages/react-icons/src/atoms/svg-sprites/*.tsx
+ *   packages/react-icons/src/atoms/svg/*.tsx
  * Output:
- *   packages/react-icons/src/atoms/svg-sprites/*.svg (same basename)
+ *   packages/react-icons/src/atoms/svg-sprite/*.svg (same basename)
+ *   packages/react-icons/src/atoms/svg-sprite/*.tsx (same basename)
  *
  * The generated SVG sprite contains <symbol> entries for every icon ID referenced
  * by the module, with paths sourced from the corresponding atoms in:
@@ -19,9 +23,36 @@ const path = require('node:path');
 const yargs = require('yargs/yargs');
 
 const REPO_ROOT = path.join(__dirname, '..', '..');
-const DEFAULT_MODULES_DIR = path.join(__dirname, 'src', 'atoms', 'svg-sprites');
+const DEFAULT_MODULES_DIR = path.join(__dirname, 'src', 'atoms', 'svg-sprite');
 const DEFAULT_SVG_ATOMS_DIR = path.join(__dirname, 'src', 'atoms', 'svg');
 
+/**
+ * @param {unknown} error
+ * @returns {string}
+ */
+function getErrorMessage(error) {
+  if (error instanceof Error) {
+    return error.message;
+  }
+  return String(error);
+}
+
+/**
+ * @param {unknown} error
+ * @returns {string}
+ */
+function formatError(error) {
+  if (error instanceof Error) {
+    return error.stack ? error.stack : error.message;
+  }
+  return String(error);
+}
+
+/**
+ * @param {string} dirPath
+ * @param {string} extension
+ * @returns {string[]}
+ */
 function getAllFilesRecursive(dirPath, extension) {
   /** @type {string[]} */
   const results = [];
@@ -45,12 +76,20 @@ function getAllFilesRecursive(dirPath, extension) {
   return results.sort();
 }
 
+/**
+ * @param {string} width
+ * @returns {string}
+ */
 function viewBoxWidthFromIconWidth(width) {
   if (width === '1em') return '20';
   if (/^\d+$/.test(width)) return width;
   return '20';
 }
 
+/**
+ * @param {string} value
+ * @returns {string}
+ */
 function escapeAttr(value) {
   return String(value)
     .replace(/&/g, '&amp;')
@@ -59,12 +98,23 @@ function escapeAttr(value) {
     .replace(/>/g, '&gt;');
 }
 
+/**
+ * @param {string} value
+ * @returns {string}
+ */
 function escapeRegExp(value) {
   return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+/**
+ * Prefixes all internal SVG ids (and references) with a namespace.
+ * @param {string} rawSvg
+ * @param {string} namespace
+ * @returns {string}
+ */
 function namespaceSvgIds(rawSvg, namespace) {
   let output = rawSvg;
+  /** @type {Set<string>} */
   const ids = new Set();
 
   const idRegex = /\bid="([^"]+)"/g;
@@ -73,7 +123,7 @@ function namespaceSvgIds(rawSvg, namespace) {
     ids.add(match[1]);
   }
 
-  for (const id of ids) {
+  for (const id of Array.from(ids)) {
     const newId = `${namespace}__${id}`;
     const escaped = escapeRegExp(id);
 
@@ -88,6 +138,9 @@ function namespaceSvgIds(rawSvg, namespace) {
 /**
  * Parses a react-icons atoms/svg TSX module and returns a map:
  *   iconId -> { width, paths }
+ * @param {string} content
+ * @param {string} filePathForErrors
+ * @returns {Map<string, { width: string, paths?: string[], rawSvg?: string }>}
  */
 function parseSvgAtomsTsx(content, filePathForErrors) {
   /** @type {Map<string, { width: string, paths?: string[], rawSvg?: string }>} */
@@ -123,6 +176,9 @@ function parseSvgAtomsTsx(content, filePathForErrors) {
 /**
  * Parses a react-icons atoms/svg TSX module and returns entries in file order:
  *   { exportName, iconId, width }
+ * @param {string} content
+ * @param {string} filePathForErrors
+ * @returns {Array<{ exportName: string; iconId: string; width: string }>}
  */
 function parseSvgAtomsExports(content, filePathForErrors) {
   /** @type {Array<{ exportName: string; iconId: string; width: string }>} */
@@ -146,18 +202,25 @@ function parseSvgAtomsExports(content, filePathForErrors) {
   return entries;
 }
 
+/**
+ * @param {string} relativeDir
+ * @param {string} baseName
+ * @param {Array<{ exportName: string; iconId: string; width: string }>} exportsInfo
+ * @returns {string}
+ */
 function generateSpriteModuleTsx(relativeDir, baseName, exportsInfo) {
   const importPathSvg = `./${baseName}.svg`;
   const header =
     '"use client";\n' +
-    "import type { FluentIcon } from '../../utils/createFluentIcon';\n" +
-    "import { createFluentIcon } from '../../utils/createFluentIcon';\n" +
+    "import type { FluentIcon } from '../../utils/svg-icon';\n" +
+    "import { createFluentIcon } from '../../utils/svg-icon';\n" +
     `import sprite from '${importPathSvg}';\n\n`;
 
   const body = exportsInfo
     .map(
+      /** @param {{ exportName: string; iconId: string; width: string }} e */
       (e) =>
-        `export const ${e.exportName}: FluentIcon = (/*#__PURE__*/createFluentIcon(sprite,'${e.iconId}', "${e.width}"));`,
+        `export const ${e.exportName}: FluentIcon = (/*#__PURE__*/createFluentIcon('${e.iconId}', "${e.width}",sprite));`,
     )
     .join('\n');
 
@@ -169,13 +232,21 @@ function generateSpriteModuleTsx(relativeDir, baseName, exportsInfo) {
 
 /**
  * Parses a svg-sprites TSX module and returns the ordered list of icon IDs referenced.
- * Expected pattern (current generated format):
+ * Expected patterns (generated formats):
+ *   createFluentIcon('AccessTimeFilled', "1em",sprite)
  *   createFluentIcon(sprite,'AccessTimeFilled', "1em")
+ * @param {string} content
+ * @param {string} filePathForErrors
+ * @returns {string[]}
  */
 function parseSpriteModuleTsx(content, filePathForErrors) {
   /** @type {string[]} */
   const iconIds = [];
-  const regex = /createFluentIcon\(\s*[^,]+\s*,\s*'([^']+)'\s*,\s*"([^"]+)"/g;
+  // Supports both:
+  // - createFluentIcon('IconId', "20", sprite)
+  // - createFluentIcon(sprite, 'IconId', "20")
+  // The optional first argument is only consumed when it is NOT a quoted string.
+  const regex = /createFluentIcon\(\s*(?:[^'"][^,]*,\s*)?'([^']+)'\s*,\s*"([^"]+)"/g;
 
   let match;
   while ((match = regex.exec(content)) !== null) {
@@ -200,6 +271,12 @@ function parseSpriteModuleTsx(content, filePathForErrors) {
   return orderedUnique;
 }
 
+/**
+ * @param {string[]} iconIds
+ * @param {Map<string, { width: string, paths?: string[], rawSvg?: string }>} atomsById
+ * @param {string} outputFilePath
+ * @returns {string}
+ */
 function generateSpriteSvg(iconIds, atomsById, outputFilePath) {
   const symbols = iconIds.map((iconId) => {
     const atom = atomsById.get(iconId);
@@ -231,6 +308,10 @@ function generateSpriteSvg(iconIds, atomsById, outputFilePath) {
   ].join('\n');
 }
 
+/**
+ * @param {string[]} argv
+ * @returns {{ modulesDir: string; svgAtomsDir: string; generateModules: boolean; verbose: boolean; limit: number }}
+ */
 function parseArgs(argv) {
   const parsed = yargs(argv.slice(2))
     .scriptName('generate-svg-sprites-from-modules')
@@ -250,7 +331,7 @@ function parseArgs(argv) {
     .option('generateModules', {
       type: 'boolean',
       describe:
-        'Generate svg-sprites TSX modules for every atoms/svg TSX file, then generate matching .svg sprites (recommended). Use --no-generateModules to only process existing modulesDir files.',
+        'Generate svg-sprite TSX modules for every atoms/svg TSX file, then generate matching .svg sprites (recommended). Use --no-generateModules to only process existing modulesDir files.',
       default: true,
     })
     .option('verbose', {
@@ -289,7 +370,7 @@ function main() {
   try {
     fs.mkdirSync(modulesDir, { recursive: true });
   } catch (error) {
-    throw new Error(`Failed to create modulesDir: ${modulesDir}\n${error && error.message ? error.message : String(error)}`);
+    throw new Error(`Failed to create modulesDir: ${modulesDir}\n${getErrorMessage(error)}`);
   }
 
   if (generateModules) {
@@ -403,6 +484,6 @@ try {
   main();
 } catch (error) {
   // eslint-disable-next-line no-console
-  console.error('❌ Failed to generate sprites:', error && error.stack ? error.stack : String(error));
+  console.error('❌ Failed to generate sprites:', formatError(error));
   process.exit(1);
 }

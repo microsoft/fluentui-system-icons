@@ -27,6 +27,8 @@ function main() {
   applyBabelTransform('lib', projectRoot);
   applyBabelTransform('lib-cjs', projectRoot);
 
+  copyAssets('src/atoms/svg-sprite/*.svg', './lib/atoms/svg-sprite', projectRoot);
+  copyAssets('src/atoms/svg-sprite/*.svg', './lib-cjs/atoms/svg-sprite', projectRoot);
   copyAssets('src/utils/fonts/*.{ttf,woff,woff2,json}', './lib/utils/fonts', projectRoot);
   copyAssets('src/utils/fonts/*.{ttf,woff,woff2,json}', './lib-cjs/utils/fonts', projectRoot);
 }
