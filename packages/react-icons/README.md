@@ -164,6 +164,7 @@ Icons are available via two export maps:
 The following utility module is also available:
 
 - `@fluentui/react-icons/utils` - General icon helper utilities
+- `@fluentui/react-icons/providers` - React Context related apis
 
 ```tsx
 // Import individual icon variants from grouped files
@@ -230,21 +231,16 @@ module.exports = {
       {
         '@fluentui/react-icons': {
           transform: (importName) => {
-            // Handle utility imports (bundleIcon, className constants)
-            const utilityExports = [
-              'bundleIcon',
-              'iconClassName',
-              'iconFilledClassName',
-              'iconRegularClassName',
-              'iconColorClassName',
-              'iconLightClassName',
-            ];
+            if (importName === 'useIconContext' || importName === 'IconDirectionContextProvider') {
+              return '@fluentui/react-icons/providers';
+            }
 
-            if (utilityExports.includes(importName)) {
+            // Icons end with a style suffix
+            const isIcon = importName.match(/(\d*)?(Regular|Filled|Light|Color)$/);
+            if (!isIcon) {
               return '@fluentui/react-icons/utils';
             }
 
-            // Handle icon imports
             const withoutSuffix = importName.replace(/(\d*)?(Regular|Filled|Light|Color)$/, '');
 
             const kebabCase = withoutSuffix.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
@@ -275,16 +271,15 @@ If you use SWC for transpilation, add [@swc/plugin-transform-imports](https://ww
           {
             "@fluentui/react-icons": {
               "transform": [
-                // Transform utility imports to /utils
-                [
-                  "^(bundleIcon|iconClassName|iconFilledClassName|iconRegularClassName|iconColorClassName|iconLightClassName)$",
-                  "@fluentui/react-icons/utils",
-                ],
+                // Transform provider imports to /providers
+                ["^(useIconContext|IconDirectionContextProvider)$", "@fluentui/react-icons/providers"],
                 // Transform icon imports to /svg/{icon-name}
                 [
-                  "(\\D*)(\\d*)?(Regular|Filled|Light|Color)",
+                  "(\\D*)(\\d*)?(Regular|Filled|Light|Color)$",
                   "@fluentui/react-icons/svg/{{ kebabCase memberMatches.[1] }}",
                 ],
+                // Fallback: all other exports are utilities
+                [".*", "@fluentui/react-icons/utils"],
               ],
               "preventFullImport": false,
               "skipDefaultConversion": true,
