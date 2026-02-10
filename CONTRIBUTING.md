@@ -27,7 +27,7 @@ Pull request titles must follow the [Conventional Commits](https://www.conventio
 - `fix(svg-sprites): correct sprite generation for RTL icons`
 - `docs: update installation instructions`
 - `chore(deps): update dependencies`
-- `feat(assets): add new icons
+- `feat(assets): add new icons`
 
 **Common types**:
 

@@ -34,8 +34,8 @@ The following packages are published during each release:
 
 ## Release cadence
 
-- Releases are scheduled for every 2nd week by Design Team
-- Releases can be triggered at any time in between if there is a high priority NPM package change that needs to be published (eg.: security vulnerability mitigation, critical fix etc)
+- Releases are scheduled on a bi-weekly cadence by the Fluent Design Team. For details, refer to [Fluent Design Calendar](https://aka.ms/fluentdesigncalendar)
+- Releases can be triggered at any time in between if there is a high priority NPM package change that needs to be published (e.g.: security vulnerability mitigation, critical fix etc.)
 
 ## Release Process
 
