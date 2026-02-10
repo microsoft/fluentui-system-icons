@@ -8,7 +8,8 @@
     "clean": "git clean -fXd dist/",
     "build": "webpack",
     "dev": "webpack serve --open",
-    "test:svg-sprite-subsetting": "webpack --config webpack.svg-sprite.config.js"
+    "dev:svg-sprite-subsetting": "webpack serve --config webpack.svg-sprite.config.js --mode development --open",
+    "test:svg-sprite-subsetting": "webpack --config webpack.svg-sprite.config.js --mode production"
   },
   "author": "",
   "license": "ISC",
@@ -20,7 +21,8 @@
     "typescript": "5.0.4",
     "webpack": "^5.100.2",
     "webpack-cli": "^6.0.1",
-    "webpack-dev-server": "^5.2.2"
+    "webpack-dev-server": "^5.2.2",
+    "svg-chunk-webpack-plugin": "^8.1.0"
   },
   "dependencies": {
     "@fluentui/react-icons": "*",

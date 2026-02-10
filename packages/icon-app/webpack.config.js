@@ -10,7 +10,8 @@ module.exports = {
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'bundle.[contenthash].js',
+    chunkFilename: '[name].[contenthash].js',
     clean: true,
   },
   resolve: {
@@ -38,6 +39,9 @@ module.exports = {
       {
         test: /\.svg$/,
         type: 'asset/resource',
+        generator: {
+          filename: `[name]-[contenthash][ext]`,
+        },
       },
     ],
   },
