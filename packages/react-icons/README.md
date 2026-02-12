@@ -126,7 +126,7 @@ import { makeStyles } from '@griffel/react';
 import { bundleIcon, iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { CodeBlock48Color, CodeBlock48Filled } from '@fluentui/react-icons';
 
-const CodeBlockIcon = bundleIcon(CodeBlock48Filled, CodeBlock48Color);
+const CodeBlock48ColorFixed = bundleIcon(CodeBlock48Filled, CodeBlock48Color);
 
 const useStyles = makeStyles({
   icon: {
