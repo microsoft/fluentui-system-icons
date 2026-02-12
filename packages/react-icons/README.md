@@ -156,11 +156,11 @@ function MyComponent() {
 
 **Note:** This approach increases bundle size as both variants are included.
 
-**2. SVG Gradient ID Conflicts**
+##### 2. SVG Gradient ID Conflicts
 
 Color icons with gradients use non-scoped `id` attributes. When multiple instances of the same color icon exist on a page, hiding one with `display: none` will hide all instances.
 
-**Root cause:** SVG gradient IDs exist in the global DOM namespace. When one icon is hidden, the gradient definition becomes inaccessible, affecting all icons referencing that ID ([#936](https://github.com/microsoft/fluentui-system-icons/issues/936)).
+**Root cause:** SVG gradient IDs exist in the global DOM namespace. When one icon has applied css rule `display: 'none'`, the gradient definition becomes inaccessible, affecting all icons referencing that ID ([#936](https://github.com/microsoft/fluentui-system-icons/issues/936)).
 
 **Workarounds:**
 
@@ -190,7 +190,7 @@ Color icons with gradients use non-scoped `id` attributes. When multiple instanc
 
 ✅ **Option 3: Use `visibility: 'hidden'`** (maintains layout space)
 
-**3. Dark Theme Contrast Issues**
+##### 3. Dark Theme Contrast Issues
 
 Color variants have insufficient contrast ratios in dark themes, failing WCAG accessibility standards.
 
