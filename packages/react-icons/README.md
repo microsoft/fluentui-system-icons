@@ -109,6 +109,108 @@ module.exports = {
 
 If you do choose this route, you may wish to use `@fluentui/react-icons-font-subsetting-webpack-plugin` to optimize the font assets.
 
+### Using color variants
+
+> **⚠️ Warning:** We strongly recommend avoiding `Color` icon variants due to several accessibility issues. Use `Filled` or `Regular` variants instead.
+
+#### Known Accessibility Issues
+
+**1. High Contrast Mode (HCM) Non-Compliance**
+
+Color variants do not adapt to Windows High Contrast Mode, making them invisible to users who rely on this feature ([#951](https://github.com/microsoft/fluentui-system-icons/issues/951)).
+
+**Workaround:** If you must use color variants, bundle them with `Filled` variants and switch between them using a Griffel media query:
+
+```tsx
+import { makeStyles } from '@griffel/react';
+import {
+  bundleIcon,
+  iconFilledClassName,
+  iconRegularClassName,
+} from '@fluentui/react-icons';
+import { CodeBlock48Color, CodeBlock48Filled } from '@fluentui/react-icons';
+
+const CodeBlockIcon = bundleIcon(CodeBlock48Filled, CodeBlock48Color);
+
+const useStyles = makeStyles({
+  icon: {
+    [`& .${iconFilledClassName}`]: {
+      display: 'none',
+    },
+    [`& .${iconRegularClassName}`]: {
+      display: 'inline',
+    },
+
+    '@media (forced-colors: active)': {
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
+    },
+  },
+});
+
+function MyComponent() {
+  const styles = useStyles();
+  return <CodeBlockIcon className={styles.icon} />;
+}
+```
+
+**Note:** This approach increases bundle size as both variants are included.
+
+**2. SVG Gradient ID Conflicts**
+
+Color icons with gradients use non-scoped `id` attributes. When multiple instances of the same color icon exist on a page, hiding one with `display: none` will hide all instances.
+
+**Root cause:** SVG gradient IDs exist in the global DOM namespace. When one icon is hidden, the gradient definition becomes inaccessible, affecting all icons referencing that ID ([#936](https://github.com/microsoft/fluentui-system-icons/issues/936)).
+
+**Workarounds:**
+
+✅ **Option 1: Use SVG sprites (recommended for multiple instances)**
+
+```tsx
+<svg>
+  <symbol id="code-block-48-color">
+    <CodeBlock48Color />
+  </symbol>
+</svg>
+
+// Reference it multiple times without gradient ID conflicts
+<svg width="48" height="48">
+  <use href="#code-block-48-color" />
+</svg>
+<svg width="48" height="48">
+  <use href="#code-block-48-color" />
+</svg>
+```
+
+✅ **Option 2: Move off-screen with absolute positioning**
+
+```tsx
+<Icon style={{ position: 'absolute', top: '-9999px', left: '-9999px' }} />
+```
+
+✅ **Option 3: Use `visibility: 'hidden'`** (maintains layout space)
+
+**3. Dark Theme Contrast Issues**
+
+Color variants have insufficient contrast ratios in dark themes, failing WCAG accessibility standards.
+
+**WCAG Requirements:**
+- **Non-text elements** (simple icons): Minimum 3:1 contrast ratio ([WCAG 2.1 SC 1.4.11](https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast.html))
+- **Text-like elements** (icons with letters/numbers or small details): Minimum 4.5:1 for normal text, 3:1 for large text ([WCAG 2.0 SC 1.4.3](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html))
+- **Decorative icons**: No contrast requirements
+
+**Current status:** Most color icons meet 3:1 contrast, but contain small visual details that could be treated as text-equivalent elements which require 4.5:1 contrast. This makes them non-compliant in dark themes.
+
+#### Recommendation
+
+For accessible, maintainable icon implementations:
+- ✅ Use `Filled` or `Regular` variants
+- ❌ Avoid `Color` variants unless absolutely necessary and you've implemented the HCM workaround
+
 ## API Contract
 
 > [!IMPORTANT]
