@@ -150,7 +150,7 @@ const useStyles = makeStyles({
 
 function MyComponent() {
   const styles = useStyles();
-  return <CodeBlockIcon className={styles.icon} />;
+  return <CodeBlock48ColorFixed className={styles.icon} />;
 }
 ```
 
