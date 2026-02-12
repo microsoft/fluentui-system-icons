@@ -117,7 +117,7 @@ If you do choose this route, you may wish to use `@fluentui/react-icons-font-sub
 
 **1. High Contrast Mode (HCM) Non-Compliance**
 
-Color variants do not adapt to Windows High Contrast Mode, making them invisible to users who rely on this feature ([#951](https://github.com/microsoft/fluentui-system-icons/issues/951)).
+Color variants do not adapt to Windows High Contrast Mode in compliant way, making them not accessible to users who rely on this feature ([#951](https://github.com/microsoft/fluentui-system-icons/issues/951)).
 
 **Workaround:** If you must use color variants, bundle them with `Filled` variants and switch between them using a Griffel media query:
 
