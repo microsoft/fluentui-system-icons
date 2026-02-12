@@ -123,11 +123,7 @@ Color variants do not adapt to Windows High Contrast Mode, making them invisible
 
 ```tsx
 import { makeStyles } from '@griffel/react';
-import {
-  bundleIcon,
-  iconFilledClassName,
-  iconRegularClassName,
-} from '@fluentui/react-icons';
+import { bundleIcon, iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { CodeBlock48Color, CodeBlock48Filled } from '@fluentui/react-icons';
 
 const CodeBlockIcon = bundleIcon(CodeBlock48Filled, CodeBlock48Color);
@@ -199,6 +195,7 @@ Color icons with gradients use non-scoped `id` attributes. When multiple instanc
 Color variants have insufficient contrast ratios in dark themes, failing WCAG accessibility standards.
 
 **WCAG Requirements:**
+
 - **Non-text elements** (simple icons): Minimum 3:1 contrast ratio ([WCAG 2.1 SC 1.4.11](https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast.html))
 - **Text-like elements** (icons with letters/numbers or small details): Minimum 4.5:1 for normal text, 3:1 for large text ([WCAG 2.0 SC 1.4.3](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html))
 - **Decorative icons**: No contrast requirements
@@ -208,6 +205,7 @@ Color variants have insufficient contrast ratios in dark themes, failing WCAG ac
 #### Recommendation
 
 For accessible, maintainable icon implementations:
+
 - ✅ Use `Filled` or `Regular` variants
 - ❌ Avoid `Color` variants unless absolutely necessary and you've implemented the HCM workaround
 
