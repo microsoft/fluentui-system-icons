@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "mode": {
+      "enum": ["atomic", "merged"]
+    },
+    "mergedSpriteFilename": {
+      "type": "string"
+    },
+    "forceEnableUsedExports": {
+      "type": "boolean"
+    },
+    "generateSpritesManifest": {
+      "type": "boolean"
+    },
+    "injectSpritesInTemplates": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "mode": {
+              "enum": ["inline", "reference"]
+            }
+          },
+          "required": ["mode"]
+        }
+      ]
+    }
+  }
+}

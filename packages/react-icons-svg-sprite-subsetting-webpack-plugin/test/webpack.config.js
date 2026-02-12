@@ -5,6 +5,13 @@ const { join, resolve } = require('path');
 const { default: FluentUIReactIconsSvgSpriteSubsettingPlugin } = require('../lib/');
 
 const isMerged = process.env.SVG_SPRITE_MODE === 'merged';
+const injectMode = process.env.SVG_SPRITE_INJECT;
+const generateManifest = process.env.SVG_SPRITE_MANIFEST === '1';
+const mergedSpriteFilename = process.env.SVG_SPRITE_MERGED_FILENAME;
+const entryName = isMerged ? 'merged' : 'atomic';
+
+const hasHtmlInjection = injectMode === 'inline' || injectMode === 'reference';
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 console.log(`Running svg-sprite subsetting test in ${isMerged ? 'merged' : 'atomic'} mode`);
 
@@ -32,8 +39,18 @@ module.exports = {
   plugins: [
     new FluentUIReactIconsSvgSpriteSubsettingPlugin({
       mode: isMerged ? 'merged' : 'atomic',
-      mergedSpriteFilename: 'fluentui-react-icons.svg',
+      mergedSpriteFilename: isMerged ? mergedSpriteFilename || 'fluentui-react-icons.svg' : undefined,
+      generateSpritesManifest: generateManifest,
+      injectSpritesInTemplates: hasHtmlInjection ? { mode: injectMode } : false,
     }),
+    ...(hasHtmlInjection
+      ? [
+          new HtmlWebpackPlugin({
+            filename: 'index.html',
+            chunks: [entryName],
+          }),
+        ]
+      : []),
     {
       apply(compiler) {
         compiler.hooks.afterEmit.tap('test-svg-sprite-subsetting', (compilation) => {
@@ -44,8 +61,13 @@ module.exports = {
             .filter((name) => name.endsWith('.svg'))
             .map((name) => ({ name, source: readFileSync(join(outDir, name), 'utf8') }));
 
+          const mergedFilenamePattern = (mergedSpriteFilename || 'fluentui-react-icons.svg').replace(/\./g, '\\.');
+          const mergedFilenameRegex = new RegExp(
+            `^${mergedFilenamePattern.replace(/\[contenthash\]/g, '[a-f0-9]+').replace(/\[fullhash\]/g, '[a-f0-9]+')}$`,
+          );
+
           if (isMerged) {
-            const merged = svgAssets.find((a) => a.name === 'fluentui-react-icons.svg');
+            const merged = svgAssets.find((a) => mergedFilenameRegex.test(a.name));
             if (!merged) {
               throw new Error('Merged sprite asset was not emitted');
             }
@@ -64,15 +86,45 @@ module.exports = {
               );
             }
           } else {
-            const backpack = svgAssets.find((a) => a.name.startsWith('backpack-'));
-            if (!backpack) {
-              throw new Error('Backpack sprite asset was not emitted');
+            if (!hasHtmlInjection || injectMode !== 'inline') {
+              const backpack = svgAssets.find((a) => a.name.startsWith('backpack-'));
+              if (!backpack) {
+                throw new Error('Backpack sprite asset was not emitted');
+              }
+              if (!backpack.source.includes('id="BackpackFilled"')) {
+                throw new Error('Backpack sprite is missing BackpackFilled symbol');
+              }
+              if (
+                backpack.source.includes('id="BackpackRegular"') ||
+                backpack.source.includes('id="Backpack12Filled"')
+              ) {
+                throw new Error('Atomic sprite was not subset down to only used symbols');
+              }
             }
-            if (!backpack.source.includes('id="BackpackFilled"')) {
-              throw new Error('Backpack sprite is missing BackpackFilled symbol');
+          }
+
+          if (generateManifest) {
+            const manifestText = readFileSync(join(outDir, 'sprites-manifest.json'), 'utf8');
+            const manifest = JSON.parse(manifestText);
+            if (!manifest.atomic) {
+              throw new Error('sprites-manifest.json missing atomic entrypoint');
             }
-            if (backpack.source.includes('id="BackpackRegular"') || backpack.source.includes('id="Backpack12Filled"')) {
-              throw new Error('Atomic sprite was not subset down to only used symbols');
+            if (!Array.isArray(manifest.atomic.sprites) || manifest.atomic.sprites.length === 0) {
+              throw new Error('sprites-manifest.json atomic sprites list missing');
+            }
+          }
+
+          if (hasHtmlInjection) {
+            const html = readFileSync(join(outDir, 'index.html'), 'utf8');
+            if (injectMode === 'inline') {
+              if (!html.includes('<svg') || !html.includes('id="BackpackFilled"')) {
+                throw new Error('Inline sprite was not injected into HTML');
+              }
+            }
+            if (injectMode === 'reference') {
+              if (!html.includes('rel="preload"') || !html.includes('.svg')) {
+                throw new Error('Reference preload links were not injected into HTML');
+              }
             }
           }
         });
