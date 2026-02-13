@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?5f1c94171e8e116dab4cbc379fa64671") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?5f1c94171e8e116dab4cbc379fa64671") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?5f1c94171e8e116dab4cbc379fa64671") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?2197588c3a14a7d8f772a68bdc704201") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?2197588c3a14a7d8f772a68bdc704201") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?2197588c3a14a7d8f772a68bdc704201") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -28413,4 +28413,136 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_window_new_rotate_180_48_filled:before {
     content: "\f0bf9";
+}
+.icon-ic_fluent_checkmark_circle_sparkle_20_filled:before {
+    content: "\f0bfa";
+}
+.icon-ic_fluent_checkmark_circle_sparkle_24_filled:before {
+    content: "\f0bfb";
+}
+.icon-ic_fluent_clipboard_off_16_filled:before {
+    content: "\f0bfc";
+}
+.icon-ic_fluent_clipboard_off_20_filled:before {
+    content: "\f0bfd";
+}
+.icon-ic_fluent_clipboard_off_24_filled:before {
+    content: "\f0bfe";
+}
+.icon-ic_fluent_code_off_16_filled:before {
+    content: "\f0bff";
+}
+.icon-ic_fluent_code_off_20_filled:before {
+    content: "\f0c00";
+}
+.icon-ic_fluent_code_off_24_filled:before {
+    content: "\f0c01";
+}
+.icon-ic_fluent_column_16_filled:before {
+    content: "\f0c02";
+}
+.icon-ic_fluent_column_28_filled:before {
+    content: "\f0c03";
+}
+.icon-ic_fluent_column_32_filled:before {
+    content: "\f0c04";
+}
+.icon-ic_fluent_column_48_filled:before {
+    content: "\f0c05";
+}
+.icon-ic_fluent_document_arrow_down_off_20_filled:before {
+    content: "\f0c06";
+}
+.icon-ic_fluent_document_arrow_down_off_24_filled:before {
+    content: "\f0c07";
+}
+.icon-ic_fluent_edit_off_12_filled:before {
+    content: "\f0c08";
+}
+.icon-ic_fluent_headset_vr_off_20_filled:before {
+    content: "\f0c09";
+}
+.icon-ic_fluent_headset_vr_off_24_filled:before {
+    content: "\f0c0a";
+}
+.icon-ic_fluent_home_empty_16_filled:before {
+    content: "\f0c0b";
+}
+.icon-ic_fluent_home_money_16_filled:before {
+    content: "\f0c0c";
+}
+.icon-ic_fluent_home_money_20_filled:before {
+    content: "\f0c0d";
+}
+.icon-ic_fluent_home_money_24_filled:before {
+    content: "\f0c0e";
+}
+.icon-ic_fluent_keyboard_off_16_filled:before {
+    content: "\f0c0f";
+}
+.icon-ic_fluent_keyboard_off_20_filled:before {
+    content: "\f0c10";
+}
+.icon-ic_fluent_keyboard_off_24_filled:before {
+    content: "\f0c11";
+}
+.icon-ic_fluent_laptop_off_16_filled:before {
+    content: "\f0c12";
+}
+.icon-ic_fluent_laptop_off_20_filled:before {
+    content: "\f0c13";
+}
+.icon-ic_fluent_laptop_off_24_filled:before {
+    content: "\f0c14";
+}
+.icon-ic_fluent_router_off_20_filled:before {
+    content: "\f0c15";
+}
+.icon-ic_fluent_router_off_24_filled:before {
+    content: "\f0c16";
+}
+.icon-ic_fluent_serial_port_off_16_filled:before {
+    content: "\f0c17";
+}
+.icon-ic_fluent_serial_port_off_20_filled:before {
+    content: "\f0c18";
+}
+.icon-ic_fluent_serial_port_off_24_filled:before {
+    content: "\f0c19";
+}
+.icon-ic_fluent_text_font_size_off_16_filled:before {
+    content: "\f0c1a";
+}
+.icon-ic_fluent_text_font_size_off_20_filled:before {
+    content: "\f0c1b";
+}
+.icon-ic_fluent_text_font_size_off_24_filled:before {
+    content: "\f0c1c";
+}
+.icon-ic_fluent_usb_16_filled:before {
+    content: "\f0c1d";
+}
+.icon-ic_fluent_usb_20_filled:before {
+    content: "\f0c1e";
+}
+.icon-ic_fluent_usb_24_filled:before {
+    content: "\f0c1f";
+}
+.icon-ic_fluent_usb_off_16_filled:before {
+    content: "\f0c20";
+}
+.icon-ic_fluent_usb_off_20_filled:before {
+    content: "\f0c21";
+}
+.icon-ic_fluent_usb_off_24_filled:before {
+    content: "\f0c22";
+}
+.icon-ic_fluent_window_multiple_off_16_filled:before {
+    content: "\f0c23";
+}
+.icon-ic_fluent_window_multiple_off_20_filled:before {
+    content: "\f0c24";
+}
+.icon-ic_fluent_window_multiple_off_24_filled:before {
+    content: "\f0c25";
 }
