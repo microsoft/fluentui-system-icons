@@ -194,6 +194,8 @@ jobs:
           npx nx run react-icons-font-subsetting-webpack-plugin:build
 
       - name: Build React library
+        env:
+          REACT_ICONS_SKIP_METADATA_DIFF_CHECK: 'true'
         run: |
           npx nx run react-icons:build
           npx nx run react-icons:build-verify -u

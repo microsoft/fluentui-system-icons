@@ -1991,43 +1991,59 @@ describe('Build Verification', () => {
   });
 
   describe('Metadata Validation', () => {
-    it('metadata.json should have no uncommitted changes after build', () => {
-      // Check if metadata.json exists
+    it('metadata.json should exist and be valid JSON', () => {
       const metadataPath = path.join(__dirname, 'metadata.json');
       expect(fs.existsSync(metadataPath)).toBe(true);
 
-      try {
-        // Run git diff to check if metadata.json has any uncommitted changes
-        const gitDiff = execSync('git diff metadata.json', {
-          encoding: 'utf-8',
-          cwd: __dirname,
-          stdio: 'pipe',
-        });
-
-        // If there's a diff, the test should fail with a helpful message
-        if (gitDiff.trim()) {
-          throw new Error(
-            `metadata.json has uncommitted changes after build.\n` +
-              `This means the committed metadata.json is out of sync with the current icons.\n` +
-              `Please run 'npm run build' and commit the updated metadata.json file.\n\n` +
-              `Git diff:\n${gitDiff}`,
-          );
-        }
-
-        // If no diff, the test passes
-        expect(gitDiff.trim()).toBe('');
-      } catch (error) {
-        // Handle cases where git command fails (e.g., not in a git repo, file not tracked)
-        if (error && typeof error === 'object' && 'status' in error && error.status === 128) {
-          // Git command failed - this might be expected in some CI environments
-          // We'll skip this test with a warning
-          console.warn('Git diff check skipped - not in a git repository or metadata.json not tracked');
-          return;
-        }
-
-        // Re-throw other errors (including our custom error above)
-        throw error;
-      }
+      // Ensure it's valid JSON
+      const content = fs.readFileSync(metadataPath, 'utf-8');
+      expect(() => JSON.parse(content)).not.toThrow();
     });
+
+    // The publish pipeline runs `build` (which regenerates metadata.json) followed by
+    // `build-verify`. The updated file is committed later in the pipeline, so an uncommitted
+    // diff is *expected* there and must not fail the build. Set REACT_ICONS_SKIP_METADATA_DIFF_CHECK=true
+    // in that workflow to skip this test.
+    // On PR validation and locally, this test must run so stale metadata.json is caught.
+    (process.env.REACT_ICONS_SKIP_METADATA_DIFF_CHECK ? it.skip : it)(
+      'metadata.json should have no uncommitted changes after build',
+      () => {
+        const metadataPath = path.join(__dirname, 'metadata.json');
+        expect(fs.existsSync(metadataPath)).toBe(true);
+
+        try {
+          // Run git diff to check if metadata.json has any uncommitted changes
+          const gitDiff = execSync('git diff metadata.json', {
+            encoding: 'utf-8',
+            cwd: __dirname,
+            stdio: 'pipe',
+          });
+
+          // If there's a diff, the test should fail with a helpful message
+          if (gitDiff.trim()) {
+            throw new Error(
+              `metadata.json has uncommitted changes after build.\n` +
+                `This means the committed metadata.json is out of sync with the current icons.\n` +
+                `Please run 'npm run build' and commit the updated metadata.json file.\n\n` +
+                `Git diff:\n${gitDiff}`,
+            );
+          }
+
+          // If no diff, the test passes
+          expect(gitDiff.trim()).toBe('');
+        } catch (error) {
+          // Handle cases where git command fails (e.g., not in a git repo, file not tracked)
+          if (error && typeof error === 'object' && 'status' in error && error.status === 128) {
+            // Git command failed - this might be expected in some CI environments
+            // We'll skip this test with a warning
+            console.warn('Git diff check skipped - not in a git repository or metadata.json not tracked');
+            return;
+          }
+
+          // Re-throw other errors (including our custom error above)
+          throw error;
+        }
+      },
+    );
   });
 });
