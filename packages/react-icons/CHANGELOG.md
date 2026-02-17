@@ -1,3 +1,13 @@
+## 2.0.319 (2026-02-13)
+
+### 🚀 Features
+
+- **react-icons:** expand /utils api endpoint with additional utils to completely streamline build transforms to atomic imports ([#975](https://github.com/microsoft/fluentui-system-icons/pull/975))
+
+### 🩹 Fixes
+
+- **react-icons:** properly resolve atoms grouppings if icon contains style variant as part of its name ([#955](https://github.com/microsoft/fluentui-system-icons/pull/955))
+
 ## 2.0.318 (2026-02-02)
 
 ### 🚀 Features
