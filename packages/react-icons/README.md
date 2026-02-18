@@ -117,7 +117,7 @@ If you do choose this route, you may wish to use `@fluentui/react-icons-font-sub
 
 ##### 1. High Contrast Mode (HCM) Non-Compliance
 
-Color variants do not adapt to Windows High Contrast Mode in compliant way, making them not accessible to users who rely on this feature ([#951](https://github.com/microsoft/fluentui-system-icons/issues/951)).
+Color variants are non‑compliant with Windows High Contrast Mode, resulting in accessibility issues for users who depend on high‑contrast settings ([#951](https://github.com/microsoft/fluentui-system-icons/issues/951)).
 
 **Workaround:** If you must use color variants, bundle them with `Filled` variants and switch between them using a Griffel media query:
 
@@ -156,7 +156,7 @@ function MyComponent() {
 
 **Note:** This approach increases bundle size as both variants are included.
 
-##### 2. SVG Gradient ID Conflicts
+##### 2. SVG Gradient ID Collision
 
 Color icons with gradients use non-scoped `id` attributes. When multiple instances of the same color icon exist on a page, hiding one with `display: none` will hide all instances.
 
@@ -173,7 +173,7 @@ Color icons with gradients use non-scoped `id` attributes. When multiple instanc
   </symbol>
 </svg>
 
-// Reference it multiple times without gradient ID conflicts
+// Reference it multiple times without gradient ID Collision
 <svg width="48" height="48">
   <use href="#code-block-48-color" />
 </svg>
