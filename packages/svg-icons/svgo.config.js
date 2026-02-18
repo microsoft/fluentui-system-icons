@@ -6,7 +6,7 @@ module.exports = {
         overrides: {
           removeViewBox: false,
           mergePaths: false,
-          cleanupIDs: false,
+          cleanupIds: false,
         },
       },
     },
