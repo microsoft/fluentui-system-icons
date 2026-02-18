@@ -136,6 +136,7 @@
   },
   "properties": {
     "localizable": true,
+    "preserves-vector-representation": true,
     "template-rendering-intent": "template"
   }
 }

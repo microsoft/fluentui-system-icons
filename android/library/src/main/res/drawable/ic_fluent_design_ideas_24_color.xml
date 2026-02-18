@@ -45,7 +45,7 @@
     </path>
     <path android:pathData="M10.5 16c3.59 0 6.5-2.91 6.5-6.5 0-0.168-0.006-0.335-0.019-0.5H13c-1.657 0-3 1.343-3 3v3.981C10.165 15.994 10.332 16 10.5 16z" android:fillType="evenOdd">
         <aapt:attr name="android:fillColor">
-            <gradient android:startY="17.7053" android:startX="17.4196" android:endY="6.04378" android:endX="9.07616" android:type="linear">
+            <gradient android:startY="17.7053" android:startX="17.4196" android:endY="6.04378" android:endX="9.07613" android:type="linear">
                 <item android:offset="0.194812" android:color="#FF7631FF"/>
                 <item android:offset="0.885651" android:color="#FFE63080"/>
             </gradient>

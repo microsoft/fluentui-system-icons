@@ -1,0 +1,8 @@
+{
+  "name": "Layout Add Above",
+  "size": [16, 20, 24, 32],
+  "style": ["Filled", "Regular"],
+  "keyword": "fluent-icon, vscode",
+  "description": "Used to represent UI layouts.",
+  "metaphor": ["ui", "layout", "structure", "customize"]
+}

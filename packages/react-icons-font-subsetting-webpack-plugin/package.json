@@ -1,11 +1,12 @@
 {
   "name": "@fluentui/react-icons-font-subsetting-webpack-plugin",
-  "version": "2.0.293",
+  "version": "2.0.319",
   "description": "Webpack plugin to subset the icon fonts used by @fluentui/react-icons based on which icons are used.",
   "main": "lib/index.js",
   "scripts": {
     "test": "webpack -c test/webpack.config.js",
-    "build": "tsc"
+    "dev": "webpack serve -c test/webpack.config.js --open",
+    "build": "tsc -p ."
   },
   "engines": {
     "node": ">=14.5.0"
@@ -22,9 +23,10 @@
   },
   "homepage": "https://github.com/microsoft/fluentui-system-icons/packages/react-icons-font-subsetting-webpack-plugin#readme",
   "devDependencies": {
-    "typescript": "^4.6.3",
+    "typescript": "5.0.4",
     "webpack": "^5.72.0",
-    "@fluentui/react-icons": "*"
+    "@fluentui/react-icons": "*",
+    "@types/node": "14"
   },
   "dependencies": {
     "subset-font": "^1.4.0"

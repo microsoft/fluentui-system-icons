@@ -1,0 +1,16 @@
+{
+  "images": [
+    {
+      "filename": "ic_fluent_device_meeting_room_all_in_one_32_filled.svg",
+      "idiom": "universal"
+    }
+  ],
+  "info": {
+    "author": "xcode",
+    "version": 1
+  },
+  "properties": {
+    "preserves-vector-representation": true,
+    "template-rendering-intent": "template"
+  }
+}

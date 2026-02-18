@@ -1,0 +1,61 @@
+name: Bundle Size Baseline
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/react-icons/**'
+      # Icons changes can affect the bundle size so we wanna run the baseline update here as well
+      - 'assets/**'
+
+jobs:
+  bundle-size-baseline:
+    if: ${{ github.repository_owner == 'microsoft' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: write
+
+    steps:
+      - name: Generate a token
+        id: generate-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.GH_FLUENT_CI_APP_ID }}
+          private-key: ${{ secrets.GH_FLUENT_CI_PRIVATE_KEY }}
+
+      - uses: actions/checkout@v6
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+
+      - run: npm ci
+
+      - name: Prepare bundle size report
+        run: |
+          npx nx run-many -t bundle-size --nxBail
+
+      - name: Update bundle size baseline
+        run: npx monosize upload-report --branch main --commit-sha ${{ github.sha }}
+
+      - name: Check for changes
+        id: check-changes
+        run: |
+          if [ -n "$(git status --porcelain monosize.baseline.json)" ]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push baseline update
+        if: steps.check-changes.outputs.changes == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add monosize.baseline.json
+          git commit -m "chore(bundle-size): update bundle size baseline [skip ci]"
+          git push origin HEAD:main

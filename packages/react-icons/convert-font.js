@@ -2,191 +2,340 @@
 // Licensed under the MIT license.
 // @ts-check
 
-const fs = require("fs/promises");
-const fsS = require("fs");
-const path = require("path");
-const process = require("process");
-const argv = require("yargs").boolean("selector").default("selector", false).argv;
-const _ = require("lodash");
+const fs = require('fs/promises');
+const fsS = require('fs');
+const path = require('path');
 const mkdirp = require('mkdirp');
-const { promisify } = require('util');
-const { option } = require("yargs");
-const glob = promisify(require('glob'));
 
-// @ts-ignore
-const SRC_PATH = argv.source;
-// @ts-ignore
-const DEST_PATH = argv.dest;
-// @ts-ignore
-const CODEPOINT_DEST_PATH = argv.codepointDest;
-// @ts-ignore
-const RTL_FILE = argv.rtl;
+const yargs = require('yargs');
+const _ = require('lodash');
+const {
+  assertCompoundStyleVariantIssues,
+  handleDeprecatedColorAtoms,
+  handleDeprecatedTextColorAtoms,
+} = require('./deprecated-atoms');
+const { createFormatMetadata, writeMetadata } = require('./metadata.utils');
+const { createStableChunks } = require('./chunking-utils');
+const {
+  getReactIconNameFromGlyphName,
+  loadRtlMetadata,
+  buildFontIconExport,
+  getCreateFluentIconHeader,
+  generatePerIconFiles,
+} = require('./convert-font.utils');
 
-
-if (!SRC_PATH) {
-  throw new Error("Icon source folder not specified by --source");
-}
-if (!DEST_PATH) {
-  throw new Error("Output destination folder not specified by --dest");
-}
-if (!CODEPOINT_DEST_PATH) {
-  throw new Error("Output destination folder for codepoint map not specified by --dest");
-}
-if (!RTL_FILE) {
-  throw new Error("RTL file not specified by --rtl");
+if (require.main === module) {
+  main().catch((err) => {
+    console.error('[font generation] failed', err);
+    process.exit(1);
+  });
 }
 
-processFiles(SRC_PATH, DEST_PATH)
+async function main() {
+  const { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH, CODEPOINT_DEST_PATH, PER_ICON_DEST } = parseArgs(
+    process.argv.slice(2),
+  );
+  const rtlMetadata = loadRtlMetadata(RTL_FILE);
+  const iconEntries = prepareProcessedCodepointMap(SRC_PATH, CODEPOINT_DEST_PATH);
 
-async function processFiles(src, dest) {
-  /** @type string[] */
-  const indexContents = [];
+  // 1. Generate chunks
+  const { svgMetadata: chunkMetadata } = await processPerChunk(DEST_PATH, iconEntries, rtlMetadata);
 
-  // make file for resizeable icons
-  const iconPath = path.join(dest, 'icons')
-  const iconContents = await processFolder(src, CODEPOINT_DEST_PATH, true);
+  // 2. Generate per-icon output
+  const perIconMetadataPath = METADATA_PATH.replace(/\.json$/, '.atom.json');
+  const { svgMetadata: perIconMetadata } = await processPerIcon(PER_ICON_DEST, iconEntries, rtlMetadata);
 
-  await cleanFolder(iconPath);
+  // 3. Write processed (React-name) map once per original JSON (shared core dedupes)
+  iconEntries.resizable.forEach(({ writeProcessedCodepointMap }) => writeProcessedCodepointMap());
+  iconEntries.sized.forEach(({ writeProcessedCodepointMap }) => writeProcessedCodepointMap());
 
-  await Promise.all(iconContents.map(async (chunk, i) => {
-    const chunkFileName = `chunk-${i}`
-    const chunkPath = path.resolve(iconPath, `${chunkFileName}.tsx`);
-    indexContents.push(`export * from './icons/${chunkFileName}'`);
-    await fs.writeFile(chunkPath, chunk);
-  }));
+  await writeMetadata(METADATA_PATH, chunkMetadata);
+  await writeMetadata(perIconMetadataPath, perIconMetadata);
 
-  // make file for sized icons
-  const sizedIconPath = path.join(dest, 'sizedIcons');
-  const sizedIconContents = await processFolder(src, CODEPOINT_DEST_PATH, false);
-  await cleanFolder(sizedIconPath);
-
-  await Promise.all(sizedIconContents.map(async (chunk, i) => {
-    const chunkFileName = `chunk-${i}`
-    const chunkPath = path.resolve(sizedIconPath, `${chunkFileName}.tsx`);
-    indexContents.push(`export * from './sizedIcons/${chunkFileName}'`);
-    await fs.writeFile(chunkPath, chunk);
-  }));
-
-  const indexPath = path.join(dest, 'index.tsx')
-  // Finally add the interface definition and then write out the index.
-  indexContents.push('export { FluentIconsProps } from \'../utils/FluentIconsProps.types\'');
-  indexContents.push('export { default as wrapIcon } from \'../utils/wrapIcon\'');
-  indexContents.push('export { default as bundleIcon } from \'../utils/bundleIcon\'');
-  indexContents.push('export { createFluentIcon } from \'../utils/createFluentIcon\'');
-  indexContents.push('export { createFluentFontIcon } from \'../utils/fonts/createFluentFontIcon\'');
-  indexContents.push('export type { FluentIcon } from \'../utils/createFluentIcon\'');
-  indexContents.push('export * from \'../utils/useIconState\'');
-  indexContents.push('export * from \'../utils/constants\'');
-  indexContents.push('export { IconDirectionContextProvider, useIconContext } from \'../contexts/index\'');
-  indexContents.push('export type { IconDirectionContextValue } from \'../contexts/index\'');
-
-
-  await fs.writeFile(indexPath, indexContents.join('\n'));
-
+  console.log(
+    `[font generation] Finished chunk + per-icon outputs. Chunk dest: ${DEST_PATH} | Per-icon dest: ${PER_ICON_DEST}`,
+  );
 }
 
 /**
  * Process a folder of svg files and convert them to React components, following naming patterns for the FluentUI System Icons
- * @param {string} srcPath 
- * @param {string} codepointMapDestFolder
- * @param {boolean} resizable 
- * @returns { Promise<string[]> } - chunked icon files to insert
+ * @param {string} dest
+ * @param {{ resizable: IconEntry[]; sized: IconEntry[];}} iconEntries
+ * @param {import('./convert-font.utils').RtlMetadata} rtlMetadata
  */
-async function processFolder(srcPath, codepointMapDestFolder, resizable) {
-  var files = await glob(resizable ? 'FluentSystemIcons-Resizable.json' : 'FluentSystemIcons-{Filled,Regular,Light}.json', { cwd: srcPath, absolute: true });
-
+async function processPerChunk(dest, iconEntries, rtlMetadata) {
   /** @type string[] */
-  const iconExports = [];
-  await Promise.all(files.map(async (srcFile, index) => {
-    /** @type {Record<string, number>} */
-    const iconEntries = JSON.parse(await fs.readFile(srcFile, 'utf8'));
-    iconExports.push(...generateReactIconEntries(iconEntries, resizable));
+  const indexContents = [];
 
-    return generateCodepointMapForWebpackPlugin(
-      path.resolve(codepointMapDestFolder, path.basename(srcFile)),
-      iconEntries,
-      resizable
-    );
-  }));
+  // Collect all font metadata
+  /** @type {import('./metadata.utils').IconMetadataCollection} */
+  const fontMetadata = {};
 
-  // chunk all icons into separate files to keep build reasonably fast
-  /** @type string[][] */
-  const iconChunks = [];
-  while (iconExports.length > 0) {
-    iconChunks.push(iconExports.splice(0, 500));
-  }
-
-  for (const chunk of iconChunks) {
-    chunk.unshift(`import {createFluentFontIcon} from "../../utils/fonts/createFluentFontIcon";`)
-    chunk.unshift(`"use client";`);
-  }
-
-  /** @type string[] */
-  const chunkContent = iconChunks.map(chunk => chunk.join('\n'));
-
-  return chunkContent;
-}
-
-/**
- * 
- * @param {string} destPath 
- * @param {Record<string,number>} iconEntries 
- * @param {boolean} resizable 
- */
-async function generateCodepointMapForWebpackPlugin(destPath, iconEntries, resizable) {
-  const finalCodepointMap = Object.fromEntries(
-    Object.entries(iconEntries)
-      .map(([name, codepoint]) => [getReactIconNameFromGlyphName(name, resizable), codepoint])
+  // make file for resizeable icons
+  const iconPath = path.join(dest, 'icons');
+  const { content: iconContents, iconNames: resizableIconNames } = await processFolder(
+    iconEntries.resizable,
+    rtlMetadata,
+    true,
   );
 
-  await fs.writeFile(destPath, JSON.stringify(finalCodepointMap, null, 2));
+  await cleanFolder(iconPath);
+
+  await Promise.all(
+    iconContents.map(async (chunk, i) => {
+      const chunkFileName = `chunk-${i}`;
+      const chunkPath = path.resolve(iconPath, `${chunkFileName}.tsx`);
+      indexContents.push(`export * from './icons/${chunkFileName}'`);
+      await fs.writeFile(chunkPath, chunk);
+    }),
+  );
+
+  // Create font metadata for resizable icons
+  Object.assign(fontMetadata, createFormatMetadata(resizableIconNames, 'font', 'resizable'));
+
+  // make file for sized icons
+  const sizedIconPath = path.join(dest, 'sizedIcons');
+  const { content: sizedIconContents, iconNames: sizedIconNames } = await processFolder(
+    iconEntries.sized,
+    rtlMetadata,
+    false,
+  );
+  await cleanFolder(sizedIconPath);
+
+  await Promise.all(
+    sizedIconContents.map(async (chunk, i) => {
+      const chunkFileName = `chunk-${i}`;
+      const chunkPath = path.resolve(sizedIconPath, `${chunkFileName}.tsx`);
+      indexContents.push(`export * from './sizedIcons/${chunkFileName}'`);
+      await fs.writeFile(chunkPath, chunk);
+    }),
+  );
+
+  // Create font metadata for sized icons
+  Object.assign(fontMetadata, createFormatMetadata(sizedIconNames, 'font', 'sized'));
+
+  const indexPath = path.join(dest, 'index.tsx');
+  // Finally add the interface definition and then write out the index.
+  indexContents.push("export { wrapIcon } from '../utils/wrapIcon'");
+  indexContents.push("export { bundleIcon } from '../utils/bundleIcon'");
+  indexContents.push("export { createFluentIcon } from '../utils/createFluentIcon'");
+  indexContents.push("export { createFluentFontIcon } from '../utils/fonts/createFluentFontIcon'");
+  indexContents.push("export * from '../utils/useIconState'");
+  indexContents.push("export * from '../utils/constants'");
+  indexContents.push("export { IconDirectionContextProvider, useIconContext } from '../contexts/index'");
+  indexContents.push("export type { FluentIconsProps } from '../utils/FluentIconsProps.types'");
+  indexContents.push("export type { FluentIcon } from '../utils/createFluentIcon'");
+  indexContents.push("export type { FluentFontIcon } from '../utils/fonts/createFluentFontIcon'");
+  indexContents.push("export type { IconDirectionContextValue } from '../contexts/index'");
+
+  await fs.writeFile(indexPath, indexContents.join('\n'));
+
+  return { svgMetadata: fontMetadata };
 }
 
 /**
- * 
- * @param {Record<string, number>} iconEntries 
- * @param {boolean} resizable 
- * @returns {string[]}
+ * @typedef {{ iconEntries: Record<string, number>; writeProcessedCodepointMap: () => void; }} IconEntry
  */
-function generateReactIconEntries(iconEntries, resizable) {
-  /** @type {string[]} */
-  const iconExports = [];
-  const metadata = JSON.parse(fsS.readFileSync(RTL_FILE, 'utf-8'));
-  for (const [iconName, codepoint] of Object.entries(iconEntries)) {
-    let destFilename = getReactIconNameFromGlyphName(iconName, resizable);
-    var flipInRtl = metadata[destFilename] === 'mirror';  
-    let iconStyle = /filled$/i.test(iconName) ? 0 /* Filled */ : /regular$/i.test(iconName) ? 1 /* Regular */ : 3 /* Light */
-    var jsCode = `export const ${destFilename} = /*#__PURE__*/createFluentFontIcon(${JSON.stringify(destFilename)
-      }, ${JSON.stringify(String.fromCodePoint(codepoint))
-      }, ${resizable ? 2 /* Resizable */ : iconStyle
-      }, ${resizable ? undefined : ` ${/(?<=_)\d+(?=_filled|_regular|_light)/.exec(iconName)?.[0]}`
-      }${flipInRtl ? `, { flipInRtl: true }` : ''});`;
 
-    iconExports.push(jsCode);
+/**
+ *
+ * @param {string} srcPath
+ * @param {string} destFolder
+ * @returns {{ resizable: IconEntry[]; sized: IconEntry[]; }}
+ */
+function prepareProcessedCodepointMap(srcPath, destFolder) {
+  const fileNamesResizable = ['FluentSystemIcons-Resizable.json'];
+  const fileNamesSized = [
+    'FluentSystemIcons-Light.json',
+    'FluentSystemIcons-Filled.json',
+    'FluentSystemIcons-Regular.json',
+  ];
+
+  const resolveExistingFiles = (/** @type {string[]} */ names) =>
+    names.map((name) => path.resolve(srcPath, name)).filter((f) => fsS.existsSync(f));
+
+  const resizable = buildEntries(fileNamesResizable, true);
+  const sized = buildEntries(fileNamesSized, false);
+
+  return { resizable, sized };
+
+  /**
+   * @param {string[]} names
+   * @param {boolean} resizable
+   * @returns {IconEntry[]}
+   */
+  function buildEntries(names, resizable) {
+    const files = resolveExistingFiles(names);
+    return files.map((srcFile) => {
+      /** @type {Record<string, number>} */
+      const iconEntries = JSON.parse(fsS.readFileSync(srcFile, 'utf8'));
+      const finalMap = Object.fromEntries(
+        Object.entries(iconEntries).map(([name, codepoint]) => [
+          getReactIconNameFromGlyphName(name, resizable),
+          codepoint,
+        ]),
+      );
+      const writeProcessedCodepointMap = () => {
+        const outputPath = path.resolve(destFolder, path.basename(srcFile));
+        console.log('- original codepoint map path', srcFile);
+        console.log('- writing processed codepoint map to', outputPath);
+        fsS.writeFileSync(outputPath, JSON.stringify(finalMap, null, 2));
+      };
+
+      return { iconEntries, writeProcessedCodepointMap };
+    });
+  }
+}
+
+/**
+ * Process a folder of svg files and convert them to React components, following naming patterns for the FluentUI System Icons
+ * @param {IconEntry[]} iconEntries
+ * @param {Record<string, 'mirror' | 'unique'>} rtlMetadata
+ * @param {boolean} resizable
+ * @returns { Promise<{ content: string[], iconNames: string[] }> } - chunked icon files to insert and list of icon names
+ */
+async function processFolder(iconEntries, rtlMetadata, resizable) {
+  /** @type string[] */
+  const iconExports = [];
+  /** @type string[] */
+  const iconNames = [];
+
+  // Process files sequentially to maintain consistent order
+  for (const entry of iconEntries) {
+    const { entries, names } = generateReactIconEntries(entry.iconEntries, rtlMetadata, resizable);
+    iconExports.push(...entries);
+    iconNames.push(...names);
   }
 
-  return iconExports;
+  // chunk all icons into separate files to keep build reasonably fast
+  // Use stable chunking to prevent bundle size regressions when new icons are added
+  // IMPORTANT: chunkCount should NEVER change after initial release to prevent reshuffling
+  const iconChunks = createStableChunks(iconExports, iconNames, { chunkCount: 30 });
+
+  const chunkHeader = getCreateFluentIconHeader('../../utils/fonts/createFluentFontIcon');
+  for (const chunk of iconChunks) {
+    chunk.unshift(...chunkHeader);
+  }
+
+  /** @type string[] */
+  const chunkContent = iconChunks.map((chunk) => chunk.join('\n'));
+
+  return { content: chunkContent, iconNames };
 }
 
 /**
- * 
- * @param {string} iconName 
- * @param {boolean} resizable 
- * @returns {string}
+ *
+ * @param {string} destPath
+ * @param {Record<string,number>} iconEntries
+ * @param {boolean} resizable
  */
-function getReactIconNameFromGlyphName(iconName, resizable) {
-  let destFilename = iconName.replace("ic_fluent_", ""); // strip ic_fluent_
-  destFilename = resizable ? destFilename.replace("20", "") : destFilename;
-  destFilename = _.camelCase(destFilename); // We want them to be camelCase, so access_time would become accessTime here
-  destFilename = destFilename.replace(destFilename.substring(0, 1), destFilename.substring(0, 1).toUpperCase()); // capitalize the first letter
-  return destFilename;
+
+/**
+ *
+ * @param {Record<string, number>} iconEntries
+ * @param {boolean} resizable
+ * @param {import('./convert-font.utils').RtlMetadata} rtlMetadata
+ * @returns {{ entries: string[], names: string[] }}
+ */
+function generateReactIconEntries(iconEntries, rtlMetadata, resizable) {
+  /** @type {string[]} */
+  const iconExports = [];
+  /** @type {string[]} */
+  const iconNames = [];
+
+  for (const [iconName, codepoint] of Object.entries(iconEntries)) {
+    const destFilename = getReactIconNameFromGlyphName(iconName, resizable);
+    const flipInRtl = rtlMetadata[destFilename] === 'mirror';
+    const jsCode = buildFontIconExport(destFilename, codepoint, resizable, flipInRtl, iconName);
+
+    iconExports.push(jsCode);
+    iconNames.push(destFilename);
+  }
+
+  return { entries: iconExports, names: iconNames };
 }
 
+/**
+ *
+ * @param {string} folder
+ */
 async function cleanFolder(folder) {
   try {
     await fs.access(folder);
     await fs.rm(folder, { recursive: true, force: true });
-  } catch { }
+  } catch {}
 
   await mkdirp(folder);
 }
+
+/**
+ * Per-icon generation
+ * @param {string} destPath
+ * @param {{ resizable: IconEntry[]; sized: IconEntry[];}} iconEntries
+ * @param {import('./convert-font.utils').RtlMetadata} rtlMetadata
+ */
+async function processPerIcon(destPath, iconEntries, rtlMetadata, options = { groupByBase: true }) {
+  await cleanFolder(destPath);
+
+  /** @type {import('./metadata.utils').IconMetadataCollection} */
+  const fontMetadata = {};
+
+  const resizable = await generatePerIconFiles(destPath, iconEntries.resizable, rtlMetadata, true, options.groupByBase);
+  Object.assign(fontMetadata, createFormatMetadata(resizable.iconNames, 'font', 'resizable'));
+  const sized = await generatePerIconFiles(destPath, iconEntries.sized, rtlMetadata, false, options.groupByBase);
+  Object.assign(fontMetadata, createFormatMetadata(sized.iconNames, 'font', 'sized'));
+
+  handleDeprecatedColorAtoms(destPath, 'font');
+  handleDeprecatedTextColorAtoms(destPath, 'font');
+  await assertCompoundStyleVariantIssues(destPath);
+
+  console.log(`[font per-icon] Wrote ${resizable.fileCount + sized.fileCount} files to ${destPath}`);
+
+  return { svgMetadata: fontMetadata };
+}
+
+/**
+ *
+ * @param {string[]} argv
+ * @returns
+ */
+function parseArgs(argv) {
+  const args = yargs.parse(argv);
+  const SRC_PATH = /** @type {string} */ (args.source); // path with codepoint json maps (src/utils/fonts)
+  const DEST_PATH = /** @type {string} */ (args.dest); // destination folder for chunk output
+  const RTL_FILE = /** @type {string} */ (args.rtl); // rtl metadata json
+  const METADATA_PATH = /** @type {string} */ (args.metadata); // output font metadata file
+  const CODEPOINT_DEST_PATH = /** @type {string} */ (args.codepointDest); // where to output processed codepoint maps
+  const PER_ICON_DEST = /** @type {string} */ (args.perIconDest); // per-icon output folder
+
+  if (!SRC_PATH) {
+    throw new Error('Icon source folder not specified by --source');
+  }
+  if (!DEST_PATH) {
+    throw new Error('Output destination folder not specified by --dest');
+  }
+  if (!PER_ICON_DEST) {
+    throw new Error('Atoms Output destination folder not specified by --perIconDest');
+  }
+  if (!RTL_FILE) {
+    throw new Error('RTL file not specified by --rtl');
+  }
+  if (!METADATA_PATH) {
+    throw new Error('Metadata output file not specified by --metadata');
+  }
+  if (!CODEPOINT_DEST_PATH) {
+    throw new Error('Output destination folder for codepoint map not specified by --dest');
+  }
+
+  if (!fsS.existsSync(DEST_PATH)) {
+    fsS.mkdirSync(DEST_PATH, { recursive: true });
+  }
+
+  if (!fsS.existsSync(PER_ICON_DEST)) {
+    fsS.mkdirSync(PER_ICON_DEST, { recursive: true });
+  }
+
+  return { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH, CODEPOINT_DEST_PATH, PER_ICON_DEST };
+}
+
+module.exports = {};

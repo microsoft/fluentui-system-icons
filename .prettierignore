@@ -1,0 +1,28 @@
+# Generated code and build artifacts (packages/*)
+**/lib/
+**/lib-cjs/
+**/intermediate/
+**/dist/
+/node_modules/
+**/node_modules/
+
+# Platform-specific code (outside packages/)
+/android/
+/ios/
+/flutter/
+/fonts/
+/importer/
+/.swiftpm/
+*.podspec
+*.swift
+*.py
+
+# Asset files
+/assets/
+
+# Build and config files
+patches/*.patch
+
+# Root level files
+/package-lock.json
+/icons_*.md

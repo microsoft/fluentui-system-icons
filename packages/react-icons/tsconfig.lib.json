@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "lib",
+    "target": "ES2019",
+    "module": "esnext",
+    "lib": ["ES2019", "dom"],
+    "types": [],
+    "noEmit": false,
+    "declaration": true,
+    "importHelpers": true,
+    "jsx": "react"
+  },
+  "include": ["src"],
+  "exclude": ["lib", "lib-cjs", "node_modules", "src/**/*.test.ts", "src/**/*.test.tsx"]
+}

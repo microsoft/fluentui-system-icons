@@ -1,14 +1,7 @@
 {
   "name": "Document Header Footer",
-  "size": [
-    24,
-    20,
-    16
-  ],
-  "style": [
-    "Regular",
-    "Filled"
-  ],
+  "size": [32, 28, 24, 20, 16],
+  "style": ["Regular", "Filled", "Light"],
   "keyword": "fluent-icon",
   "description": "Used to represent file type content styles and scenarios.",
   "metaphor": [

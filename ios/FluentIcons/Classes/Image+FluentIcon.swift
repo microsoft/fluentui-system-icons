@@ -9,7 +9,11 @@ import AppKit
 private class FluentIconsBundleCheck {}
 
 public extension NSImage {
+#if FLUENT_ICONS_USE_RESOURCE_BUNDLES
+  @objc static let fluentIconBundle = Bundle(path: Bundle(for: FluentIconsBundleCheck.self).path(forResource: "FluentIcons", ofType: "bundle")!)
+#else
   @objc static let fluentIconBundle = Bundle(for: FluentIconsBundleCheck.self)
+#endif
 
   @objc static func fluentIcon(_ fluent: FluentIcon) -> NSImage {
     // Force unwrap here because the resource strings
@@ -31,7 +35,11 @@ import UIKit
 private class FluentIconsBundleCheck {}
 
 public extension UIImage {
+#if FLUENT_ICONS_USE_RESOURCE_BUNDLES
+  @objc static let fluentIconBundle = Bundle(path: Bundle(for: FluentIconsBundleCheck.self).path(forResource: "FluentIcons", ofType: "bundle")!)
+#else
   @objc static let fluentIconBundle = Bundle(for: FluentIconsBundleCheck.self)
+#endif
 
   @objc convenience init(fluent: FluentIcon) {
     // Force unwrap here because the resource strings

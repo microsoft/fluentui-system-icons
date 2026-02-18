@@ -10,6 +10,10 @@ dist/
 .project
 .classpath
 .settings
+yarn.lock
+# ignore all package-lock.json files except the repo root
+**/package-lock.json
+!/package-lock.json
 
 .idea
 
@@ -19,15 +23,24 @@ xcuserdata
 /ios/FluentIcons/Tests
 
 /packages/svg-icons/icons
+
+# react-icons
 packages/react-icons/intermediate
 packages/react-icons/react-icons-test/
 packages/react-icons/lib/
 packages/react-icons/lib-cjs/
+packages/react-icons/src/atoms
 packages/react-icons/src/icons
 packages/react-icons/src/sizedIcons
 packages/react-icons/src/index.tsx
-packages/react-icons/yarn.lock
-packages/react-icons/package-lock.json
+packages/react-icons/src/fonts/
+packages/react-icons/src/utils/fonts/*.ttf
+packages/react-icons/src/utils/fonts/*.woff
+packages/react-icons/src/utils/fonts/*.woff2
+packages/react-icons/src/utils/fonts/*.css
+packages/react-icons/src/utils/fonts/*.html
+packages/react-icons/src/utils/fonts/*.json
+packages/react-icons/src/utils/fonts/**/*.svg
 
 packages/react-native-icons/intermediate
 packages/react-native-icons/react-icons-test/
@@ -43,3 +56,12 @@ packages/react-native-icons/package-lock.json
 SvgList.txt
 
 .venv
+
+.build
+
+
+
+.nx/cache
+.nx/workspace-data
+.cursor/rules/nx-rules.mdc
+.github/instructions/nx.instructions.md

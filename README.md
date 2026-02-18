@@ -12,13 +12,14 @@ Fluent UI System Icons are a collection of familiar, friendly and modern icons f
 
 - [View the full list of filled icons](icons_filled.md)
 
-
 ## Direction
+
 Within the metadata.json file for an icon, a property named `directionType` is used to indicate the direction of the icon. This property can have one of the following values:
+
 - `unique`, meaning that the icon is unique and has a specific RTL and LTR version
 - `mirror`, meaning that the icon can be mirrored for RTL or LTR languages
 
-The property `singleton` is also used to indicate the default direction that should be used for the icon. 
+The property `singleton` is also used to indicate the default direction that should be used for the icon.
 
 ## Installation
 
@@ -36,7 +37,7 @@ repositories {
 Include the following dependency in your project's `build.gradle`:
 
 ```groovy
-implementation 'com.microsoft.design:fluent-system-icons:1.1.293@aar'
+implementation 'com.microsoft.design:fluent-system-icons:1.1.319@aar'
 ```
 
 For library docs, see [android/README.md](android/README.md).
@@ -48,13 +49,13 @@ For library docs, see [android/README.md](android/README.md).
 ```ruby
 use_frameworks!
 
-pod "FluentIcons", "1.1.293"
+pod "FluentIcons", "1.1.319"
 ```
 
 #### Carthage
 
 ```bash
-git "git@github.com:microsoft/fluentui-system-icons.git" "1.1.293"
+git "git@github.com:microsoft/fluentui-system-icons.git" "1.1.319"
 ```
 
 For library docs, see [ios/README.md](ios/README.md).
@@ -66,7 +67,7 @@ In the `pubspec.yaml` of your flutter project, add the following dependency:
 ```yaml
 dependencies:
   ...
-  fluentui_system_icons: ^1.1.293
+  fluentui_system_icons: ^1.1.319
 ```
 
 For library docs, see [flutter/README.md](flutter/README.md).

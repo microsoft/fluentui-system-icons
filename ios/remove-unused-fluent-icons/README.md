@@ -15,6 +15,10 @@ xed .
 Build the binary and commit it to the repo
 
 ```
+cd ios/remove-unused-fluent-icons
+```
+
+```
 swift build -c release
 yes | cp .build/release/remove-unused-fluent-icons run
 ```

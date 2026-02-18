@@ -149,7 +149,8 @@ def create_icon_set(fluent_icon_assets, original_icon_names, icon_assets_path):
                         "author": "xcode"
                     },
                     "properties": {
-                        "template-rendering-intent": rendering_intent
+                        "template-rendering-intent": rendering_intent,
+                        "preserves-vector-representation": True
                     }
                 }
 

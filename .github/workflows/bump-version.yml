@@ -9,77 +9,77 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-      with:
-        token: ${{ secrets.CI_GITHUB_TOKEN }}
+      - uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.CI_GITHUB_TOKEN }}
 
-    - name: Bump version patch
-      run: |
-        grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec | python3 -c """
-        import sys
-        import os
-        current_version = sys.stdin.read().strip().split(\"'\")[1]
-        major, minor, patch = current_version.split('.')
-        os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
-        """
+      - name: Bump version patch
+        run: |
+          grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec | python3 -c """
+          import sys
+          import os
+          current_version = sys.stdin.read().strip().split(\"'\")[1]
+          major, minor, patch = current_version.split('.')
+          os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
+          """
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version numbers in README.md
-      run: |
-        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" README.md
-        rm README.md.bk
+      # Needs to be "-E" instead of "-r" on macOS
+      - name: Replace version numbers in README.md
+        run: |
+          sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" README.md
+          rm README.md.bk
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version numbers in ios/README.md
-      run: |
-        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" ios/README.md
-        rm ios/README.md.bk
+      # Needs to be "-E" instead of "-r" on macOS
+      - name: Replace version numbers in ios/README.md
+        run: |
+          sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" ios/README.md
+          rm ios/README.md.bk
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in Podspec
-      run: |
-        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" ios/FluentIcons.podspec
-        rm ios/FluentIcons.podspec.bk
+      # Needs to be "-E" instead of "-r" on macOS
+      - name: Replace version number in Podspec
+        run: |
+          sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" ios/FluentIcons.podspec
+          rm ios/FluentIcons.podspec.bk
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in flutter/CHANGELOG.md
-      run: |
-        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" flutter/CHANGELOG.md
-        rm flutter/CHANGELOG.md.bk
+      # Needs to be "-E" instead of "-r" on macOS
+      - name: Replace version number in flutter/CHANGELOG.md
+        run: |
+          sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" flutter/CHANGELOG.md
+          rm flutter/CHANGELOG.md.bk
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in flutter/pubspec.yaml
-      run: |
-        sed -i.bk -r "s/version: [0-9]+\.[0-9]+\.[0-9]+/version: $NEW_VERSION/g" flutter/pubspec.yaml
-        rm flutter/pubspec.yaml.bk
+      # Needs to be "-E" instead of "-r" on macOS
+      - name: Replace version number in flutter/pubspec.yaml
+        run: |
+          sed -i.bk -r "s/version: [0-9]+\.[0-9]+\.[0-9]+/version: $NEW_VERSION/g" flutter/pubspec.yaml
+          rm flutter/pubspec.yaml.bk
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in svg-icons/package.json
-      run: |
-        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/svg-icons/package.json
-        rm packages/svg-icons/package.json.bk
+      # Needs to be "-E" instead of "-r" on macOS
+      - name: Replace version number in svg-icons/package.json
+        run: |
+          sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/svg-icons/package.json
+          rm packages/svg-icons/package.json.bk
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in react-icons/package.json
-      run: |
-        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/react-icons/package.json
-        rm packages/react-icons/package.json.bk
+      # Needs to be "-E" instead of "-r" on macOS
+      - name: Replace version number in react-icons/package.json
+        run: |
+          sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/react-icons/package.json
+          rm packages/react-icons/package.json.bk
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in react-icons-font-subsetting-webpack-plugin/package.json
-      run: |
-        sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/react-icons-font-subsetting-webpack-plugin/package.json
-        rm packages/react-icons-font-subsetting-webpack-plugin/package.json.bk
+      # Needs to be "-E" instead of "-r" on macOS
+      - name: Replace version number in react-icons-font-subsetting-webpack-plugin/package.json
+        run: |
+          sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/react-icons-font-subsetting-webpack-plugin/package.json
+          rm packages/react-icons-font-subsetting-webpack-plugin/package.json.bk
 
-    - name: Config git credentials
-      run: git config user.email "flubuild@microsoft.com" && git config user.name "Fluent Build System"
+      - name: Config git credentials
+        run: git config user.email "flubuild@microsoft.com" && git config user.name "Fluent Build System"
 
-    - name: Commit version number change
-      run: |
-        git add -A
-        git commit -m "Update version number to $NEW_VERSION"
+      - name: Commit version number change
+        run: |
+          git add -A
+          git commit -m "Update version number to $NEW_VERSION"
 
-    - name: Push release
-      run: |
-        REMOTE_REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-        git push $REMOTE_REPO HEAD:main --follow-tags --tags
+      - name: Push release
+        run: |
+          REMOTE_REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push $REMOTE_REPO HEAD:main --follow-tags --tags

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'FluentIcons'
-  s.version          = '1.1.293'
+  s.version          = '1.1.319'
   s.summary          = 'FluentIcons'
 
   s.description      = <<-DESC
@@ -33,10 +33,19 @@ FluentIcons
   end
 
   s.subspec 'Assets' do |sp|
-    # Require this to be used as a dynamic framework
-    # `resource_bundles` are unable to load around 1 in a thousand times
-    # so we need to stick to `resources` here instead.
-    sp.resource = 'ios/FluentIcons/Assets/IconAssets.xcassets'
+    if ENV['FLUENT_ICONS_USE_RESOURCE_BUNDLES'] == '1'
+      sp.resource_bundles = {
+        'FluentIcons' => ['ios/FluentIcons/Assets/IconAssets.xcassets']
+      }
+      sp.pod_target_xcconfig = {
+        'OTHER_SWIFT_FLAGS' => '-DFLUENT_ICONS_USE_RESOURCE_BUNDLES'
+      }
+    else
+      # Require this to be used as a dynamic framework
+      # `resource_bundles` are unable to load around 1 in a thousand times
+      # so we need to stick to `resources` here instead.
+      sp.resource = 'ios/FluentIcons/Assets/IconAssets.xcassets'
+    end
   end
 
   s.subspec 'RemovalScript' do |sp|

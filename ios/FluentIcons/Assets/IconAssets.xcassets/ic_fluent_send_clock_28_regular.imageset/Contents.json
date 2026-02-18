@@ -1,0 +1,17 @@
+{
+  "images": [
+    {
+      "filename": "ic_fluent_send_clock_28_regular.svg",
+      "idiom": "universal",
+      "language-direction": "left-to-right"
+    }
+  ],
+  "info": {
+    "author": "xcode",
+    "version": 1
+  },
+  "properties": {
+    "preserves-vector-representation": true,
+    "template-rendering-intent": "template"
+  }
+}

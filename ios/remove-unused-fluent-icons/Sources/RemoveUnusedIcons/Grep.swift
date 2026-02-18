@@ -30,16 +30,16 @@ enum Language {
   case objc
 }
 
-func searchForCodeReferences(in path: String, language: Language, weights: Set<String>, excludingFileName: String) -> [String] {
+func searchForCodeReferences(in path: String, language: Language, weights: Set<String>, excludingFileName: String) -> Set<String> {
   let include: String
-  let regex: String
+  let regexPattern: String
   switch language {
   case .swift:
     include = "--include=\"*.swift\""
-    regex = "\\.[a-zA-Z0-9]+[0-9]{2}(\(weights.map { $0.capitalized }.joined(separator: "|")))"
+    regexPattern = "\\.([a-zA-Z0-9]+[0-9]{2}(\(weights.map { $0.capitalized }.joined(separator: "|"))))"
   case .objc:
     include = "--include=\"*.m\" --include=\"*.h\""
-    regex = "\(excludingFileName)[a-zA-Z0-9]+[0-9]{2}(\(weights.map { $0.uppercased() }.joined(separator: "|")))"
+    regexPattern = "(\(excludingFileName)[a-zA-Z0-9]+[0-9]{2}(\(weights.map { $0.uppercased() }.joined(separator: "|"))))"
   }
 
   // Newer versions of grep (on macOS 12+) appear to apply the include/exclude arguments in order, so exclude must come last
@@ -50,9 +50,29 @@ func searchForCodeReferences(in path: String, language: Language, weights: Set<S
     --extended-regexp \
     \(include) \
     --exclude=\"\(excludingFileName).swift\" \
-    \"\(regex)\" \(path)
+    \"\(regexPattern)\" \(path)
   """
+
   print(command)
 
-  return shell(command).mapToLines()
+  let regex: NSRegularExpression
+  do {
+    regex = try NSRegularExpression(pattern: regexPattern, options: [])
+  } catch {
+    fatalError("Invalid regex pattern: \(error) \(regexPattern)")
+  }
+
+  let text = shell(command)
+
+  // The grep command returns the full line of code so we need to extract the icon names from each line
+  var output = Set<String>()
+  let matches = regex.matches(in: text, options: [], range: NSRange(location: 0, length: text.utf16.count))
+  for match in matches {
+    let groupRange = match.range(at: 1)
+    if groupRange.location != NSNotFound,
+        let range = Range(groupRange, in: text) {
+      output.insert(String(text[range]))
+    }
+  }
+  return output
 }
