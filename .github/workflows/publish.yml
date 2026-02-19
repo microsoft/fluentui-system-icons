@@ -203,8 +203,8 @@ jobs:
       # NX Release (react-icons + react-icons-font-subsetting-webpack-plugin)
       - name: Prepare NPM release (version + changelog)
         run: |
-          npx nx release version $REACT_VERSION --verbose ${{ inputs.dry-run && '--dry-run' || '' }}
-          npx nx release changelog $REACT_VERSION --from $CURRENT_VERSION --no-git-tag --no-git-commit --verbose ${{ inputs.dry-run && '--dry-run' || '' }}
+          npx nx release version $REACT_VERSION --verbose
+          npx nx release changelog $REACT_VERSION --from $CURRENT_VERSION --no-git-tag --no-git-commit --verbose
 
       - name: Publish svg-icons to npm
         if: ${{ !inputs.dry-run }}

@@ -15,7 +15,7 @@
         "!{projectRoot}/eslint.config.{js,cjs,mjs}",
         "!{projectRoot}/test-setup.[jt]s"
       ],
-      "outputs": ["{projectRoot}/lib", "{projectRoot}/lib-cjs", "{projectRoot}/metadata.json"]
+      "outputs": ["{projectRoot}/lib", "{projectRoot}/lib-cjs"]
     },
     "bundle-size": {
       "dependsOn": ["build"]
