@@ -179,11 +179,14 @@ async function processPerIcon(sourceFiles, destPath, spriteDest, rtlMetadata, op
   /** @type {import('./metadata.utils').IconMetadataCollection} */
   const svgMetadata = {};
 
-  // resizable (base 20 variant names with size removed)
-  const resizable = await generatePerIconFiles(sourceFiles, destPath, rtlMetadata, true, options.groupByBase);
+  // single pass: resizable (base 20 variant names with size removed) + sized (all sizes)
+  const { resizable, sized, fileCount } = await generatePerIconFiles(
+    sourceFiles,
+    destPath,
+    rtlMetadata,
+    options.groupByBase,
+  );
   Object.assign(svgMetadata, createFormatMetadata(resizable.iconNames, 'svg', 'resizable'));
-  // sized (all sizes)
-  const sized = await generatePerIconFiles(sourceFiles, destPath, rtlMetadata, false, options.groupByBase);
   Object.assign(svgMetadata, createFormatMetadata(sized.iconNames, 'svg', 'sized'));
 
   handleDeprecatedColorAtoms(destPath, 'svg');
@@ -194,8 +197,8 @@ async function processPerIcon(sourceFiles, destPath, spriteDest, rtlMetadata, op
   // const { fileCount: spriteFileCount } = await generateSvgSpritesFromSourceFiles(sourceFiles, spriteDest, rtlMetadata);
 
   console.log(
-    `[svg per-icon] Wrote ${resizable.fileCount + sized.fileCount} icon files to ${destPath}`,
-    // `[svg per-icon] Wrote ${resizable.fileCount + sized.fileCount} icon files to ${destPath} | ${spriteFileCount} sprite pair(s) to ${spriteDest}`,
+    `[svg per-icon] Wrote ${fileCount} icon files to ${destPath}`,
+    // `[svg per-icon] Wrote ${fileCount} icon files to ${destPath} | ${spriteFileCount} sprite pair(s) to ${spriteDest}`,
   );
   return { svgMetadata };
 }
