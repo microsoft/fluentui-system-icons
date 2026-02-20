@@ -2020,6 +2020,132 @@ describe('Build Verification', () => {
     );
   });
 
+  describe('Svg Sprite Atoms', () => {
+    function getSpriteAssetPaths() {
+      const svgSpritePathEsm = path.join(__dirname, 'lib', 'atoms/svg-sprite');
+      const svgSpritePathCjs = path.join(__dirname, 'lib-cjs', 'atoms/svg-sprite');
+      return { svgSpritePathEsm, svgSpritePathCjs };
+    }
+
+    /**
+     * @param {string} assetPath
+     */
+    async function getSpriteStats(assetPath) {
+      const files = await readdir(assetPath);
+      const jsFiles = files.filter((f) => f.endsWith('.js'));
+      const svgFiles = files.filter((f) => f.endsWith('.svg'));
+      return { files, jsFiles, svgFiles };
+    }
+
+    it('should have same number of atoms/svg-sprite JS files in lib and lib-cjs', async () => {
+      const { svgSpritePathEsm, svgSpritePathCjs } = getSpriteAssetPaths();
+      const esmAtomsJsFiles = (await readdir(path.join(__dirname, 'lib', 'atoms/svg'))).filter((f) =>
+        f.endsWith('.js'),
+      );
+      const esmStats = await getSpriteStats(svgSpritePathEsm);
+      const cjsStats = await getSpriteStats(svgSpritePathCjs);
+
+      // `/svg-sprite` should have same number of .js files like `/svg`
+      expect(esmStats.jsFiles.length).toEqual(esmAtomsJsFiles.length);
+      expect(esmStats.jsFiles).toEqual(esmAtomsJsFiles);
+
+      // ESM and CJS must be in sync
+      expect(esmStats.jsFiles.length).toEqual(cjsStats.jsFiles.length);
+    });
+
+    it.each(['lib', 'lib-cjs'])('should have atoms/svg-sprite directory with icon files in %s', async (libDir) => {
+      const atomsSvgSpritePath = path.join(__dirname, libDir, 'atoms', 'svg-sprite');
+
+      // Check directory exists
+      expect(fs.existsSync(atomsSvgSpritePath)).toBe(true);
+      const dirStats = await stat(atomsSvgSpritePath);
+      expect(dirStats.isDirectory()).toBe(true);
+
+      const { files, jsFiles, svgFiles } = await getSpriteStats(atomsSvgSpritePath);
+
+      // Every .js file must have a corresponding .svg sprite file and .d.ts declaration file
+      for (const jsFile of jsFiles) {
+        const baseName = jsFile.replace('.js', '');
+        expect(svgFiles).toContain(`${baseName}.svg`);
+        expect(files).toContain(`${baseName}.d.ts`);
+      }
+
+      // Sample check: access-time should exist in all three forms
+      expect(files).toContain('access-time.js');
+      expect(files).toContain('access-time.d.ts');
+      expect(files).toContain('access-time.svg');
+    });
+
+    it('sprite atom JS files should export icon variants correctly', async () => {
+      const atomFilePath = path.join(__dirname, 'lib', 'atoms', 'svg-sprite', 'access-time.js');
+      expect(fs.existsSync(atomFilePath)).toBe(true);
+
+      const content = await readFile(atomFilePath, 'utf-8');
+
+      // Resizable (size-agnostic) variants
+      expect(content).toContain(
+        `export const AccessTimeFilled: FluentIcon = (/*#__PURE__*/createFluentIcon('AccessTimeFilled', "1em", sprite))`,
+      );
+      expect(content).toContain('export const AccessTimeRegular');
+
+      // Sized variants
+      expect(content).toContain('export const AccessTime20Filled');
+      expect(content).toContain('export const AccessTime20Regular');
+      expect(content).toContain(
+        `export const AccessTime24Filled: FluentIcon = (/*#__PURE__*/createFluentIcon('AccessTime24Filled', "24", sprite));`,
+      );
+      expect(content).toContain('export const AccessTime24Regular');
+
+      // Must use createFluentIcon from the svg-icon utility
+      expect(content).toContain('createFluentIcon');
+
+      // Sprite modules pass the imported sprite URL as the third argument
+      expect(content).toContain('sprite');
+    });
+
+    it('sprite atom TypeScript definition files should have correct exports', async () => {
+      const atomDtsPath = path.join(__dirname, 'lib', 'atoms', 'svg-sprite', 'access-time.d.ts');
+      expect(fs.existsSync(atomDtsPath)).toBe(true);
+
+      const content = await readFile(atomDtsPath, 'utf-8');
+
+      expect(content).toContain('export declare const AccessTimeFilled');
+      expect(content).toContain('export declare const AccessTimeRegular');
+      expect(content).toContain('FluentIcon');
+    });
+
+    it('sprite SVG files should be valid SVG sprites', async () => {
+      const svgFilePath = path.join(__dirname, 'lib', 'atoms', 'svg-sprite', 'access-time.svg');
+      expect(fs.existsSync(svgFilePath)).toBe(true);
+
+      const content = await readFile(svgFilePath, 'utf-8');
+
+      // Must be a valid SVG sprite container
+      expect(content).toContain('<svg');
+      expect(content).toContain('</svg>');
+      expect(content).toContain('<symbol');
+      expect(content).toContain('display: none');
+
+      // Must contain symbols for the expected icon variants
+      expect(content).toContain('id="AccessTimeFilled"');
+      expect(content).toContain('id="AccessTimeRegular"');
+      expect(content).toContain('id="AccessTime20Filled"');
+      expect(content).toContain('id="AccessTime24Filled"');
+
+      // Each symbol should have a viewBox attribute
+      expect(content).toContain('viewBox=');
+    });
+
+    it('package.json exports should include ./svg-sprite/*', () => {
+      const packageJsonPath = path.join(__dirname, 'package.json');
+      const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
+
+      expect(packageJson.exports['./svg-sprite/*']).toBeDefined();
+      expect(packageJson.exports['./svg-sprite/*'].import).toBe('./lib/atoms/svg-sprite/*.js');
+      expect(packageJson.exports['./svg-sprite/*'].require).toBe('./lib-cjs/atoms/svg-sprite/*.js');
+    });
+  });
+
   describe('Metadata Validation', () => {
     it('metadata.json should exist and be valid JSON', () => {
       const metadataPath = path.join(__dirname, 'metadata.json');
