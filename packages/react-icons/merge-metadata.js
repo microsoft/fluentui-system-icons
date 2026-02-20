@@ -31,6 +31,7 @@ const argv = yargs
  * Merge SVG and font metadata files into a single metadata file
  */
 async function mergeMetadata() {
+  console.log('[Merging metadata] Starting merge process...');
   const svgMetadataPath = path.resolve(argv.svgMetadata);
   const fontMetadataPath = path.resolve(argv.fontMetadata);
   const outputPath = path.resolve(argv.output);
@@ -98,6 +99,8 @@ async function mergeMetadata() {
   console.log(`  Font only: ${fontOnlyCount} icons`);
   console.log(`  Both SVG & Font: ${bothCount} icons`);
   console.log(`  Total: ${Object.keys(mergedMetadata).length} icons`);
+
+  console.log('[Merging metadata] Merge process completed.');
 }
 
 // Run the merge
