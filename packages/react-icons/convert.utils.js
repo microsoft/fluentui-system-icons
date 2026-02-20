@@ -81,39 +81,66 @@ function loadRtlMetadata(rtlFilePath) {
 }
 
 /**
- * Generates per-icon .tsx files
+ * Generates per-icon .tsx files for both resizable and sized variants in a single pass.
  * @param {Array<{file: string; srcFile: string}>} sourceFiles
  * @param {string} destPath
  * @param {RtlMetadata} rtlMetadata
- * @param {boolean} resizable
  * @param {boolean} groupByBase
- * @returns {Promise<{ iconNames: string[]; fileCount: number }>}
+ * @returns {Promise<{ resizable: { iconNames: string[] }; sized: { iconNames: string[] }; fileCount: number }>}
  */
-async function generatePerIconFiles(sourceFiles, destPath, rtlMetadata, resizable, groupByBase = true) {
+async function generatePerIconFiles(sourceFiles, destPath, rtlMetadata, groupByBase = true) {
   /** @type {string[]} */
-  const iconNames = [];
+  const resizableIconNames = [];
   /** @type {Array<{ exportName: string; exportCode: string; fileName: string; rawName?: string }>} */
-  const items = [];
+  const resizableItems = [];
+
+  /** @type {string[]} */
+  const sizedIconNames = [];
+  /** @type {Array<{ exportName: string; exportCode: string; fileName: string; rawName?: string }>} */
+  const sizedItems = [];
 
   for (const entry of sourceFiles) {
-    if (resizable && !entry.file.includes('20')) {
-      continue; // only base 20 size for resizable set
-    }
-    const result = makeIconExport({ file: entry.file, srcFile: entry.srcFile, resizable, metadata: rtlMetadata });
-    if (!result) {
-      continue;
+    // sized export for every file
+    const sizedResult = makeIconExport({
+      file: entry.file,
+      srcFile: entry.srcFile,
+      resizable: false,
+      metadata: rtlMetadata,
+    });
+    if (sizedResult) {
+      sizedItems.push(sizedResult);
+      sizedIconNames.push(sizedResult.exportName);
     }
 
-    items.push(result);
-    iconNames.push(result.exportName);
+    // resizable export only for 20px files (size removed from name, width="1em")
+    if (entry.file.includes('20')) {
+      const resizableResult = makeIconExport({
+        file: entry.file,
+        srcFile: entry.srcFile,
+        resizable: true,
+        metadata: rtlMetadata,
+      });
+      if (resizableResult) {
+        resizableItems.push(resizableResult);
+        resizableIconNames.push(resizableResult.exportName);
+      }
+    }
   }
 
   const relImport = path.posix.join('..', '..', 'utils', 'createFluentIcon');
   const headerLines = getCreateFluentIconHeader(relImport);
 
-  const result = await writePerIconFiles(destPath, items, headerLines, { groupByBase });
+  // merge both sets into a single write — grouping logic in writePerIconFiles
+  // co-locates resizable + sized variants for the same icon in one file
+  const { fileCount } = await writePerIconFiles(destPath, [...resizableItems, ...sizedItems], headerLines, {
+    groupByBase,
+  });
 
-  return { iconNames, fileCount: result.fileCount };
+  return {
+    resizable: { iconNames: resizableIconNames },
+    sized: { iconNames: sizedIconNames },
+    fileCount,
+  };
 }
 
 module.exports = {
