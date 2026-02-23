@@ -137,10 +137,18 @@ function generateSpriteModuleTsx(baseName, items) {
     `import sprite from '${importPathSvg}';\n\n`;
 
   const body = items
-    .map(
-      (e) =>
-        `export const ${e.exportName}: FluentIcon = (/*#__PURE__*/createFluentIcon('${e.exportName}', "${e.width || '1em'}",sprite));`,
-    )
+    .map((item) => {
+      const widthStr = `"${item.width || '1em'}"`;
+      const options =
+        item.flipInRtl && item.isColor
+          ? ', { flipInRtl: true, color: true }'
+          : item.flipInRtl
+            ? ', { flipInRtl: true }'
+            : item.isColor
+              ? ', { color: true }'
+              : '';
+      return `export const ${item.exportName}: FluentIcon = (/*#__PURE__*/createFluentIcon('${item.exportName}', ${widthStr}, sprite${options}));`;
+    })
     .join('\n');
 
   return `${header}\n${body}\n`;

@@ -48,6 +48,34 @@ function trimContentForSnapshot(content, threshold = 30) {
   return trimmedLines.join('\n');
 }
 
+/**
+ * Shared assertion: verifies that atom JS files pass `options` ({flipInRtl, color})
+ * as the last argument to `createFluentIcon` when applicable.
+ *
+ * @param {string} atomDir - absolute path to the atoms directory to verify
+ */
+async function assertAtomOptionsArgument(atomDir) {
+  // Icon with flipInRtl: true (album has flipInRtl metadata)
+  const albumPath = path.join(atomDir, 'album.js');
+  expect(fs.existsSync(albumPath)).toBe(true);
+  const albumContent = await readFile(albumPath, 'utf-8');
+  expect(albumContent).toContain('{ flipInRtl: true }');
+
+  // Icon with color: true (add-circle has color variants)
+  const addCirclePath = path.join(atomDir, 'add-circle.js');
+  expect(fs.existsSync(addCirclePath)).toBe(true);
+  const addCircleContent = await readFile(addCirclePath, 'utf-8');
+  expect(addCircleContent).toContain('{ color: true }');
+  // Non-color variants in the same file should NOT have the color option
+  expect(addCircleContent).toMatch(/AddCircleFilled[^}]*\)\)/);
+
+  // Icon without any options (access-time has no flipInRtl or color)
+  const accessTimePath = path.join(atomDir, 'access-time.js');
+  const accessTimeContent = await readFile(accessTimePath, 'utf-8');
+  expect(accessTimeContent).not.toContain('flipInRtl');
+  expect(accessTimeContent).not.toContain('color: true');
+}
+
 describe('Build Verification', () => {
   describe('Build Directories', () => {
     it('should have lib and lib-cjs directories', async () => {
@@ -1981,6 +2009,10 @@ describe('Build Verification', () => {
       expect(packageJson.exports['./fonts/*'].require).toBe('./lib-cjs/atoms/fonts/*.js');
     });
 
+    it('atom files should pass options (flipInRtl, color) as last argument when applicable', async () => {
+      await assertAtomOptionsArgument(path.join(__dirname, 'lib', 'atoms', 'svg'));
+    });
+
     it.each(['svg', 'fonts'])(
       'text-color atoms should be properly separated from text atoms in lib/atoms/%s',
       async (exportKindDir) => {
@@ -2116,6 +2148,10 @@ describe('Build Verification', () => {
 
       // Sprite modules pass the imported sprite URL as the third argument
       expect(content).toContain('sprite');
+    });
+
+    it('sprite atom files should pass options (flipInRtl, color) as last argument when applicable', async () => {
+      await assertAtomOptionsArgument(path.join(__dirname, 'lib', 'atoms', 'svg-sprite'));
     });
 
     it('sprite atom TypeScript definition files should have correct exports', async () => {
