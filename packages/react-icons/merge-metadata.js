@@ -36,9 +36,9 @@ async function mergeMetadata() {
   const fontMetadataPath = path.resolve(argv.fontMetadata);
   const outputPath = path.resolve(argv.output);
 
-  /** @type {import('./convert.utils').IconMetadataCollection} */
+  /** @type {import('./metadata.utils').IconMetadataCollection} */
   let svgMetadata = {};
-  /** @type {import('./convert.utils').IconMetadataCollection} */
+  /** @type {import('./metadata.utils').IconMetadataCollection} */
   let fontMetadata = {};
 
   // Read SVG metadata if it exists
