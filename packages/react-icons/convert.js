@@ -7,13 +7,12 @@ const fs = require('fs');
 const { readdir } = require('fs/promises');
 const path = require('path');
 const yargs = require('yargs');
-const { makeIconExport, getCreateFluentIconHeader, loadRtlMetadata, generatePerIconFiles } = require('./convert.utils');
+const { parseIconSource, buildIconExportCode, getCreateFluentIconHeader, loadRtlMetadata, generatePerIconFiles } = require('./convert.utils');
 const {
   assertCompoundStyleVariantIssues,
   handleDeprecatedColorAtoms,
   handleDeprecatedTextColorAtoms,
 } = require('./deprecated-atoms');
-// const { generateSvgSpritesFromSourceFiles } = require('./convert-sprite.utils');
 const { createStableChunks } = require('./chunking-utils');
 const { createFormatMetadata, writeMetadata } = require('./metadata.utils');
 
@@ -34,10 +33,12 @@ async function main() {
 
   // 2. Generate per-icon output + SVG sprites
   const perIconMetadataPath = METADATA_PATH.replace(/\.json$/, '.atom.json');
-  const { svgMetadata: perIconMetadata } = await processPerIcon(srcFiles, PER_ICON_DEST, SPRITE_DEST, rtlMetadata);
+  const spriteMetadataPath = METADATA_PATH.replace(/\.json$/, '.atom-sprite.json');
+  const { svgMetadata: perIconMetadata, spriteMetadata } = await processPerIcon(srcFiles, PER_ICON_DEST, SPRITE_DEST, rtlMetadata);
 
   writeMetadata(METADATA_PATH, chunkMetadata);
   writeMetadata(perIconMetadataPath, perIconMetadata);
+  writeMetadata(spriteMetadataPath, spriteMetadata);
 
   console.log(
     `[svg generation] Finished chunk + per-icon outputs. Chunk dest: ${DEST_PATH} | Per-icon dest: ${PER_ICON_DEST} | Sprite dest: ${SPRITE_DEST}`,
@@ -119,14 +120,10 @@ function processPerChunk(sourceFiles, dest, rtlMetadata) {
 
 /**
  * Process a folder of svg files and convert them to React components, following naming patterns for the FluentUI System Icons
- * @param {string} srcPath
- * @param {boolean} resizable
- * @returns { { content: string[], iconNames: string[] } } - chunked icon files to insert and list of icon names
- */
-/**
  * @param {SourceFiles} srcFiles
  * @param {import('./convert.utils').RtlMetadata} rtlMetadata
  * @param {boolean} resizable
+ * @returns { { content: string[], iconNames: string[] } } - chunked icon files to insert and list of icon names
  */
 function processFolder(srcFiles, rtlMetadata, resizable) {
   /** @type string[] */
@@ -139,10 +136,10 @@ function processFolder(srcFiles, rtlMetadata, resizable) {
       return;
     }
 
-    const result = makeIconExport({ file: entry.file, srcFile: entry.srcFile, resizable, metadata: rtlMetadata });
-    if (result) {
-      iconExports.push(result.exportCode);
-      iconNames.push(result.exportName);
+    const parsed = parseIconSource({ file: entry.file, srcFile: entry.srcFile, resizable, metadata: rtlMetadata });
+    if (parsed) {
+      iconExports.push(buildIconExportCode(parsed));
+      iconNames.push(parsed.exportName);
     }
   });
 
@@ -176,31 +173,39 @@ async function processPerIcon(sourceFiles, destPath, spriteDest, rtlMetadata, op
   }
   fs.mkdirSync(destPath, { recursive: true });
 
+  if (fs.existsSync(spriteDest)) {
+    fs.rmSync(spriteDest, { recursive: true, force: true });
+  }
+  fs.mkdirSync(spriteDest, { recursive: true });
+
   /** @type {import('./metadata.utils').IconMetadataCollection} */
   const svgMetadata = {};
+  /** @type {import('./metadata.utils').IconMetadataCollection} */
+  const spriteMetadata = {};
 
   // single pass: resizable (base 20 variant names with size removed) + sized (all sizes)
-  const { resizable, sized, fileCount } = await generatePerIconFiles(
+  // Also generates SVG sprite pairs when spriteDest is provided.
+  const { resizable, sized, fileCount, spriteFileCount } = await generatePerIconFiles(
     sourceFiles,
-    destPath,
+    { atomsDest: destPath, spriteAtomsDest: spriteDest },
     rtlMetadata,
     options.groupByBase,
   );
   Object.assign(svgMetadata, createFormatMetadata(resizable.iconNames, 'svg', 'resizable'));
   Object.assign(svgMetadata, createFormatMetadata(sized.iconNames, 'svg', 'sized'));
 
+  // Sprite metadata — same icon names, different format tag
+  Object.assign(spriteMetadata, createFormatMetadata(resizable.iconNames, 'svg', 'resizable'));
+  Object.assign(spriteMetadata, createFormatMetadata(sized.iconNames, 'svg', 'sized'));
+
   handleDeprecatedColorAtoms(destPath, 'svg');
   handleDeprecatedTextColorAtoms(destPath, 'svg');
   await assertCompoundStyleVariantIssues(destPath);
 
-  // Generate SVG sprites from the same source files, producing one .svg + .tsx pair per icon group.
-  // const { fileCount: spriteFileCount } = await generateSvgSpritesFromSourceFiles(sourceFiles, spriteDest, rtlMetadata);
-
   console.log(
-    `[svg per-icon] Wrote ${fileCount} icon files to ${destPath}`,
-    // `[svg per-icon] Wrote ${fileCount} icon files to ${destPath} | ${spriteFileCount} sprite pair(s) to ${spriteDest}`,
+    `[svg per-icon] Wrote ${fileCount} icon files to ${destPath} | ${spriteFileCount} sprite pair(s) to ${spriteDest}`,
   );
-  return { svgMetadata };
+  return { svgMetadata, spriteMetadata };
 }
 
 /**
