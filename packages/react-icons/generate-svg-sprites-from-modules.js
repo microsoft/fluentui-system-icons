@@ -2,6 +2,13 @@
 
 // @ts-check
 
+/**
+ * @deprecated This standalone sprite generator is deprecated.
+ * Use the integrated sprite generation in `convert.js --spriteDest <path>` instead,
+ * which produces sprite output as part of the main convert pipeline.
+ * This file is kept for backward compatibility only.
+ */
+
 /*
  * Generates per-module SVG sprites for react-icons "svg-sprite" atoms.
  *
@@ -17,6 +24,11 @@
  */
 
 'use strict';
+
+console.warn(
+  '[DEPRECATED] generate-svg-sprites-from-modules.js is deprecated. ' +
+    'Use the integrated sprite generation via convert.js --spriteDest instead.',
+);
 
 const fs = require('node:fs');
 const path = require('node:path');

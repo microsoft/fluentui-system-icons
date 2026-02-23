@@ -33,7 +33,8 @@
     "build-verify": "vitest run build-verify.test.js",
     "bundle-size": "monosize measure",
     "lint": "eslint src",
-    "test": "vitest --exclude build-verify.test.js"
+    "test": "vitest --exclude build-verify.test.js",
+    "type-check:infra": "../../node_modules/.bin/tsc -p tsconfig.utils.json"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",

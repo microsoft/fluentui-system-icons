@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { describe, it, expect, afterEach } from 'vitest';
 
-import { normalizeBaseName, writePerIconFiles } from './per-icon.writer';
+import { normalizeBaseName, writePerIconFiles, groupItemsByBase } from './per-icon.writer';
 
 describe('writePerIconFiles', () => {
   const tmpDest = path.join(__dirname, 'tmp-writer-dest');
@@ -47,6 +47,58 @@ describe('writePerIconFiles', () => {
       writePerIconFiles(tmpDest, items, [], { groupByBase: true }),
     ).rejects.toThrowErrorMatchingInlineSnapshot(
       `[Error: Duplicate export name(s) detected in group 'dup' while generating to '${tmpDest}': exportName='Dup20Filled' -> files=[dup-20-filled.tsx, dup-22-filled.tsx]. This indicates multiple source inputs generated the same export name and should be fixed.]`,
+    );
+  });
+});
+
+describe('groupItemsByBase', () => {
+  it('groups related variants into a single base key', () => {
+    const items = [
+      { exportName: 'Add20Filled', fileName: 'add-20-filled.tsx' },
+      { exportName: 'Add20Regular', fileName: 'add-20-regular.tsx' },
+      { exportName: 'Alert16Filled', fileName: 'alert-16-filled.tsx' },
+    ];
+    const groups = groupItemsByBase('/fake', items, { groupByBase: true });
+
+    expect([...groups.keys()]).toEqual(['add', 'alert']);
+    expect(groups.get('add')?.map((i) => i.exportName)).toEqual(['Add20Regular', 'Add20Filled']);
+    expect(groups.get('alert')?.map((i) => i.exportName)).toEqual(['Alert16Filled']);
+  });
+
+  it('sorts items deterministically within each group', () => {
+    const items = [
+      { exportName: 'Icon24Filled', fileName: 'icon-24-filled.tsx' },
+      { exportName: 'IconRegular', fileName: 'icon-regular.tsx' },
+      { exportName: 'Icon16Regular', fileName: 'icon-16-regular.tsx' },
+      { exportName: 'Icon20Filled', fileName: 'icon-20-filled.tsx' },
+    ];
+    const groups = groupItemsByBase('/fake', items, { groupByBase: true });
+
+    expect(groups.get('icon')?.map((i) => i.exportName)).toEqual([
+      'IconRegular',
+      'Icon16Regular',
+      'Icon20Filled',
+      'Icon24Filled',
+    ]);
+  });
+
+  it('skips grouping when groupByBase is false', () => {
+    const items = [
+      { exportName: 'Add20Filled', fileName: 'add-20-filled.tsx' },
+      { exportName: 'Add20Regular', fileName: 'add-20-regular.tsx' },
+    ];
+    const groups = groupItemsByBase('/fake', items, { groupByBase: false });
+
+    expect([...groups.keys()]).toEqual(['add-20-filled', 'add-20-regular']);
+  });
+
+  it('throws on duplicate export names within a group', () => {
+    const items = [
+      { exportName: 'Dup20Filled', fileName: 'dup-20-filled.tsx' },
+      { exportName: 'Dup20Filled', fileName: 'dup-22-filled.tsx' },
+    ];
+    expect(() => groupItemsByBase('/fake', items, { groupByBase: true })).toThrow(
+      /Duplicate export name\(s\) detected in group 'dup'/,
     );
   });
 });

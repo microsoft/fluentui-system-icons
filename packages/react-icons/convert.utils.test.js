@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { describe, it, expect, afterAll } from 'vitest';
 
-import { makeIconExport, getCreateFluentIconHeader, generatePerIconFiles } from './convert.utils';
+import { parseIconSource, buildIconExportCode, getCreateFluentIconHeader, generatePerIconFiles } from './convert.utils';
 
 describe(`convert  utils`, () => {
   describe(`getCreateFluentIconHeader`, () => {
@@ -21,7 +21,7 @@ describe(`convert  utils`, () => {
     });
   });
 
-  describe('makeIconExport', () => {
+  describe('parseIconSource', () => {
     const tmpDir = path.join(__dirname, 'tmp-test-icons');
 
     /**
@@ -42,7 +42,7 @@ describe(`convert  utils`, () => {
 
     it('returns null for non-20 file when resizable', () => {
       writeFile('ic_fluent_test_24.svg', '<svg width="24" d="M0 0" ></svg>');
-      const res = makeIconExport({
+      const res = parseIconSource({
         file: 'ic_fluent_test_24.svg',
         srcFile: path.join(tmpDir, 'ic_fluent_test_24.svg'),
         resizable: true,
@@ -51,9 +51,9 @@ describe(`convert  utils`, () => {
       expect(res).toBeNull();
     });
 
-    it('builds export for non-color icon', () => {
+    it('parses non-color icon and extracts paths', () => {
       writeFile('ic_fluent_access_time_20.svg', '<svg width="20" d="M1 2 3" ></svg>');
-      const res = makeIconExport({
+      const res = parseIconSource({
         file: 'ic_fluent_access_time_20.svg',
         srcFile: path.join(tmpDir, 'ic_fluent_access_time_20.svg'),
         resizable: true,
@@ -61,12 +61,14 @@ describe(`convert  utils`, () => {
       });
       expect(res).toBeTruthy();
       expect(res?.exportName).toBe('AccessTime');
-      expect(res?.exportCode).toContain("createFluentIcon('AccessTime'");
+      expect(res?.width).toBe('1em');
+      expect(res?.isColor).toBe(false);
+      expect(res?.iconData).toHaveProperty('paths');
     });
 
-    it('builds export for color icon and includes inner svg', () => {
+    it('parses color icon and extracts rawSvg', () => {
       writeFile('ic_fluent_color_test_20_color.svg', '<svg width="20"><g fill="#000"/><path d="M1 2"/></svg>');
-      const res = makeIconExport({
+      const res = parseIconSource({
         file: 'ic_fluent_color_test_20_color.svg',
         srcFile: path.join(tmpDir, 'ic_fluent_color_test_20_color.svg'),
         resizable: true,
@@ -75,46 +77,45 @@ describe(`convert  utils`, () => {
       expect(res).toBeTruthy();
       // resizable strips the size token (20) so expected name is ColorTestColor
       expect(res?.exportName).toBe('ColorTestColor');
-      expect(res?.exportCode).toContain('createFluentIcon');
+      expect(res?.isColor).toBe(true);
+      expect(res?.iconData).toHaveProperty('rawSvg');
     });
 
-    it('adds rtl mirror option when metadata indicates mirror', () => {
+    it('sets flipInRtl when metadata indicates mirror', () => {
       writeFile('ic_fluent_arrow_20.svg', '<svg width="20" d="M0 0" ></svg>');
       const metadata = /** @type {const} */ ({ Arrow: 'mirror' });
-      const res = makeIconExport({
+      const res = parseIconSource({
         file: 'ic_fluent_arrow_20.svg',
         srcFile: path.join(tmpDir, 'ic_fluent_arrow_20.svg'),
         resizable: true,
         metadata,
       });
       expect(res).toBeTruthy();
-      expect(res?.exportCode).toContain('flipInRtl');
+      expect(res?.flipInRtl).toBe(true);
     });
 
     it('treats TextColor icons as non-color icons (regular/filled)', () => {
       writeFile('ic_fluent_text_color_20_regular.svg', '<svg width="20"><path d="M1 2 3" fill="#212121"/></svg>');
-      const res = makeIconExport({
+      const res = parseIconSource({
         file: 'ic_fluent_text_color_20_regular.svg',
         srcFile: path.join(tmpDir, 'ic_fluent_text_color_20_regular.svg'),
         resizable: true,
         metadata: {},
       });
       expect(res).toBeTruthy();
-      expect(res?.exportCode).not.toContain('fill=');
-      expect(res?.exportCode).not.toContain('color: true');
+      expect(res?.isColor).toBe(false);
     });
 
     it('treats TextColorAccent icons as non-color icons (regular/filled)', () => {
       writeFile('ic_fluent_text_color_accent_20_filled.svg', '<svg width="20"><path d="M5 6 7" fill="#212121"/></svg>');
-      const res = makeIconExport({
+      const res = parseIconSource({
         file: 'ic_fluent_text_color_accent_20_filled.svg',
         srcFile: path.join(tmpDir, 'ic_fluent_text_color_accent_20_filled.svg'),
         resizable: true,
         metadata: {},
       });
       expect(res).toBeTruthy();
-      expect(res?.exportCode).not.toContain('fill=');
-      expect(res?.exportCode).not.toContain('color: true');
+      expect(res?.isColor).toBe(false);
     });
 
     it('still treats icons ending with _color as color icons', () => {
@@ -122,15 +123,56 @@ describe(`convert  utils`, () => {
         'ic_fluent_patient_20_color.svg',
         '<svg width="20"><g fill="#000"/><path d="M1 2" fill="#ff0000"/></svg>',
       );
-      const res = makeIconExport({
+      const res = parseIconSource({
         file: 'ic_fluent_patient_20_color.svg',
         srcFile: path.join(tmpDir, 'ic_fluent_patient_20_color.svg'),
         resizable: true,
         metadata: {},
       });
       expect(res).toBeTruthy();
-      expect(res?.exportCode).toContain('fill=');
-      expect(res?.exportCode).toContain('color: true');
+      expect(res?.isColor).toBe(true);
+    });
+  });
+
+  describe('buildIconExportCode', () => {
+    it('generates export code for non-color icon', () => {
+      const code = buildIconExportCode({
+        exportName: 'AccessTime',
+        fileName: 'access-time.tsx',
+        iconData: { paths: ['M1 2 3'] },
+        width: '1em',
+        isColor: false,
+        flipInRtl: false,
+      });
+      expect(code).toContain("createFluentIcon('AccessTime'");
+      expect(code).toContain('"1em"');
+      expect(code).toContain('["M1 2 3"]');
+      expect(code).not.toContain('color: true');
+    });
+
+    it('generates export code for color icon with rawSvg', () => {
+      const code = buildIconExportCode({
+        exportName: 'PatientColor',
+        fileName: 'patient-color.tsx',
+        iconData: { rawSvg: '<g fill="#000"/><path d="M1 2" fill="#ff0000"/>' },
+        width: '20',
+        isColor: true,
+        flipInRtl: false,
+      });
+      expect(code).toContain('fill=');
+      expect(code).toContain('color: true');
+    });
+
+    it('includes flipInRtl option when set', () => {
+      const code = buildIconExportCode({
+        exportName: 'Arrow',
+        fileName: 'arrow.tsx',
+        iconData: { paths: ['M0 0'] },
+        width: '1em',
+        isColor: false,
+        flipInRtl: true,
+      });
+      expect(code).toContain('flipInRtl');
     });
   });
 
@@ -163,7 +205,7 @@ describe(`convert  utils`, () => {
           const srcFiles = files.map((f) => ({ file: f, srcFile: path.join(tmpSrc, f) }));
 
           // grouping enabled: both map to the same base and exportName -> should throw
-          await expect(generatePerIconFiles(srcFiles, tmpDest, {}, false, true)).rejects.toThrow(
+          await expect(generatePerIconFiles(srcFiles, { atomsDest: tmpDest }, {}, true)).rejects.toThrow(
             /Duplicate export name/,
           );
         } finally {
@@ -202,8 +244,8 @@ describe(`convert  utils`, () => {
 
         // ensure destination exists
         if (!fs.existsSync(tmpDest)) fs.mkdirSync(tmpDest, { recursive: true });
-        // run generator (groupByBase true) and process all sizes (resizable = false)
-        await generatePerIconFiles(srcFiles, tmpDest, {}, false, true);
+        // run generator (groupByBase true) and process all sizes
+        await generatePerIconFiles(srcFiles, { atomsDest: tmpDest }, {}, true);
 
         // check output
         const outFile = path.join(tmpDest, 'zoom-in.tsx');
@@ -231,7 +273,7 @@ describe(`convert  utils`, () => {
         const files = await require('fs/promises').readdir(tmpSrc2);
         const srcFiles = files.map((f) => ({ file: f, srcFile: path.join(tmpSrc2, f) }));
 
-        await generatePerIconFiles(srcFiles, tmpDest2, {}, false, false);
+        await generatePerIconFiles(srcFiles, { atomsDest: tmpDest2 }, {}, false);
 
         // expect separate files like test-20-regular.tsx and test-16-filled.tsx (based on kebab-casing)
         const outFiles = fs.readdirSync(tmpDest2);

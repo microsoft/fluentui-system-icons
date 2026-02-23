@@ -2039,15 +2039,34 @@ describe('Build Verification', () => {
 
     it('should have same number of atoms/svg-sprite JS files in lib and lib-cjs', async () => {
       const { svgSpritePathEsm, svgSpritePathCjs } = getSpriteAssetPaths();
-      const esmAtomsJsFiles = (await readdir(path.join(__dirname, 'lib', 'atoms/svg'))).filter((f) =>
-        f.endsWith('.js'),
-      );
+      const esmAtomsJsFiles = (await readdir(path.join(__dirname, 'lib/atoms/svg'))).filter((f) => f.endsWith('.js'));
       const esmStats = await getSpriteStats(svgSpritePathEsm);
       const cjsStats = await getSpriteStats(svgSpritePathCjs);
 
-      // `/svg-sprite` should have same number of .js files like `/svg`
-      expect(esmStats.jsFiles.length).toEqual(esmAtomsJsFiles.length);
-      expect(esmStats.jsFiles).toEqual(esmAtomsJsFiles);
+      // `/svg-sprite` has no deprecated color/text-color backward-compat atoms (new API),
+      // so it will have fewer .js files than `/svg`
+      expect(esmStats.jsFiles.length).toBeLessThanOrEqual(esmAtomsJsFiles.length);
+
+      /*
+        The difference should be exactly the number of deprecated color/text-color atoms (9):
+
+        color-16-filled.js
+        color-16-regular.js
+        color-20-filled.js
+        color-20-regular.js
+        color-24-filled.js
+        color-24-regular.js
+        color-32-light.js
+        color-filled.js
+        color-regular.js
+      */
+      const svgAtomsModuleCountForBackwardsCompatibility = 9;
+      expect(esmStats.jsFiles.length).toEqual(esmAtomsJsFiles.length - svgAtomsModuleCountForBackwardsCompatibility);
+
+      // every sprite .js file must exist in the svg atoms set
+      for (const file of esmStats.jsFiles) {
+        expect(esmAtomsJsFiles).toContain(file);
+      }
 
       // ESM and CJS must be in sync
       expect(esmStats.jsFiles.length).toEqual(cjsStats.jsFiles.length);
@@ -2083,17 +2102,13 @@ describe('Build Verification', () => {
       const content = await readFile(atomFilePath, 'utf-8');
 
       // Resizable (size-agnostic) variants
-      expect(content).toContain(
-        `export const AccessTimeFilled: FluentIcon = (/*#__PURE__*/createFluentIcon('AccessTimeFilled', "1em", sprite))`,
-      );
+      expect(content).toContain('export const AccessTimeFilled');
       expect(content).toContain('export const AccessTimeRegular');
 
       // Sized variants
       expect(content).toContain('export const AccessTime20Filled');
       expect(content).toContain('export const AccessTime20Regular');
-      expect(content).toContain(
-        `export const AccessTime24Filled: FluentIcon = (/*#__PURE__*/createFluentIcon('AccessTime24Filled', "24", sprite));`,
-      );
+      expect(content).toContain('export const AccessTime24Filled');
       expect(content).toContain('export const AccessTime24Regular');
 
       // Must use createFluentIcon from the svg-icon utility

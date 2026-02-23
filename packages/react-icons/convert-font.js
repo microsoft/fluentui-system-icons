@@ -224,17 +224,9 @@ async function processFolder(iconEntries, rtlMetadata, resizable) {
 }
 
 /**
- *
- * @param {string} destPath
- * @param {Record<string,number>} iconEntries
- * @param {boolean} resizable
- */
-
-/**
- *
  * @param {Record<string, number>} iconEntries
- * @param {boolean} resizable
  * @param {import('./convert-font.utils').RtlMetadata} rtlMetadata
+ * @param {boolean} resizable
  * @returns {{ entries: string[], names: string[] }}
  */
 function generateReactIconEntries(iconEntries, rtlMetadata, resizable) {
@@ -280,16 +272,20 @@ async function processPerIcon(destPath, iconEntries, rtlMetadata, options = { gr
   /** @type {import('./metadata.utils').IconMetadataCollection} */
   const fontMetadata = {};
 
-  const resizable = await generatePerIconFiles(destPath, iconEntries.resizable, rtlMetadata, true, options.groupByBase);
+  const { resizable, sized, fileCount } = await generatePerIconFiles(
+    destPath,
+    iconEntries,
+    rtlMetadata,
+    options.groupByBase,
+  );
   Object.assign(fontMetadata, createFormatMetadata(resizable.iconNames, 'font', 'resizable'));
-  const sized = await generatePerIconFiles(destPath, iconEntries.sized, rtlMetadata, false, options.groupByBase);
   Object.assign(fontMetadata, createFormatMetadata(sized.iconNames, 'font', 'sized'));
 
   handleDeprecatedColorAtoms(destPath, 'font');
   handleDeprecatedTextColorAtoms(destPath, 'font');
   await assertCompoundStyleVariantIssues(destPath);
 
-  console.log(`[font per-icon] Wrote ${resizable.fileCount + sized.fileCount} files to ${destPath}`);
+  console.log(`[font per-icon] Wrote ${fileCount} files to ${destPath}`);
 
   return { svgMetadata: fontMetadata };
 }
