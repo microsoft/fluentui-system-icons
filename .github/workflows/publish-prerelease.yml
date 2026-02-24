@@ -21,7 +21,7 @@ on:
 jobs:
   publish-prerelease:
     if: ${{ github.repository_owner == 'microsoft' }}
-    name: Publish @fluentui/react-icons prerelease
+    name: Publish prerelease packages
     runs-on: ubuntu-latest
 
     permissions:
@@ -53,26 +53,27 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build react-icons package
+      # Derive project names from NX Graph
+      - name: Resolve release projects
+        id: projects
         run: |
-          npx nx run react-icons:build
+          NX_NAMES=$(npx nx show projects -p 'react-*' --exclude 'react-native-icons' --sep ',')
+          echo "nx-names=$NX_NAMES" >> "$GITHUB_OUTPUT"
+
+      - name: Build packages
+        run: |
+          npx nx run-many -t build --projects=${{ steps.projects.outputs.nx-names }}
 
       #  NOTE:
       #   We need to calculate the next version before updating package.json manually. Otherwise the version bump would be the same version which would lead to workflow failure.
       #   This is needed because this repo doesn't set git tags per package so we are unable to leverage default Nx Release logic ( get latest version from git, falling back to package.json version)
-      - name: Calculate next prerelease version
-        id: next-version
+      - name: Calculate and apply prerelease versions
+        id: versions
         run: |
-          NEXT_VERSION=$(node .github/scripts/get-next-prerelease-version.js --package "@fluentui/react-icons" --preid "${{ inputs.preid }}")
-          echo "version=$NEXT_VERSION" >> $GITHUB_OUTPUT
-          echo "📦 Next version will be: $NEXT_VERSION"
-
-      - name: Update package.json version
-        if: ${{ !inputs.dry-run }}
-        run: |
-          npx nx release version ${{ steps.next-version.outputs.version }} \
-            --dry-run=${{ inputs.dry-run }} \
-            --verbose
+          node .github/scripts/apply-prerelease-versions.js \
+            --preid "${{ inputs.preid }}" \
+            --projects "${{ steps.projects.outputs.nx-names }}" \
+            ${{ inputs.dry-run == true && '--dry-run' || '' }}
 
       - name: Publish to npm (Nx Release)
         run: |
@@ -93,13 +94,20 @@ jobs:
             echo "### ✅ Prerelease Published" >> $GITHUB_STEP_SUMMARY
           fi
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Package:** @fluentui/react-icons" >> $GITHUB_STEP_SUMMARY
-          echo "**Version:** ${{ steps.next-version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
           echo "**Tag:** prerelease" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Packages:**" >> $GITHUB_STEP_SUMMARY
+          echo -e "${{ steps.versions.outputs.summary }}" | while IFS= read -r line; do
+            [ -z "$line" ] && continue
+            echo "- $line" >> $GITHUB_STEP_SUMMARY
+          done
           echo "" >> $GITHUB_STEP_SUMMARY
           if [ "${{ inputs.dry-run }}" == "false" ]; then
             echo "Install with:" >> $GITHUB_STEP_SUMMARY
             echo '```bash' >> $GITHUB_STEP_SUMMARY
-            echo "npm install @fluentui/react-icons@${{ steps.next-version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+            echo -e "${{ steps.versions.outputs.summary }}" | while IFS= read -r line; do
+              [ -z "$line" ] && continue
+              echo "npm install $line" >> $GITHUB_STEP_SUMMARY
+            done
             echo '```' >> $GITHUB_STEP_SUMMARY
           fi
