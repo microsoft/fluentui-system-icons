@@ -57,11 +57,11 @@ describe('chunking-utils', () => {
       const iconExports = ['export const A = ...', 'export const B = ...', 'export const C = ...'];
       const iconNames = ['A', 'B', 'C'];
 
-      // With chunkCount=5, should create exactly 5 chunks (some may be empty)
+      // With chunkCount=5, should always create exactly 5 chunks (some may be empty)
       const chunks = createStableChunks(iconExports, iconNames, { chunkCount: 5 });
 
-      // Filter out empty chunks - we should get 3 non-empty chunks or fewer
-      expect(chunks.length).toBe(3);
+      // Always returns the full chunkCount to preserve stable indices
+      expect(chunks.length).toBe(5);
 
       // All icons should be distributed
       const totalIcons = chunks.flat();
@@ -101,6 +101,8 @@ describe('chunking-utils', () => {
             Array [
               "export const C = ...",
             ],
+            Array [],
+        -   Array [],
         +   Array [
         +     "export const A1 = ...",
         +   ],
@@ -115,8 +117,9 @@ describe('chunking-utils', () => {
 
     it('should handle single icon', () => {
       const chunks = createStableChunks(['export const A = ...'], ['A'], { chunkCount: 10 });
-      expect(chunks.length).toBe(1);
-      expect(chunks[0]).toEqual(['export const A = ...']);
+      expect(chunks.length).toBe(10);
+      expect(chunks.flat()).toEqual(['export const A = ...']);
+      expect(chunks[6]).toEqual(['export const A = ...']);
     });
 
     it('should throw when iconExports and iconNames have different lengths', () => {
@@ -135,16 +138,15 @@ describe('chunking-utils', () => {
 
       const chunks = createStableChunks(iconExports, iconNames, { chunkCount: 4 }); // Force exactly 4 chunks max
 
-      // With prefix-based chunking and diverse names, we should get multiple chunks (but may not be exactly 4)
-      expect(chunks.length).toBeGreaterThanOrEqual(1);
-      expect(chunks.length).toBeLessThanOrEqual(4);
+      // Always returns exactly chunkCount chunks to preserve stable indices
+      expect(chunks.length).toBe(4);
 
       // All icons should be distributed
       const totalIcons = chunks.reduce((sum, chunk) => sum + chunk.length, 0);
       expect(totalIcons).toBe(100);
 
-      // Check that no chunk is drastically different in size
-      const chunkSizes = chunks.map((chunk) => chunk.length);
+      // Check that no non-empty chunk is drastically different in size
+      const chunkSizes = chunks.map((chunk) => chunk.length).filter((size) => size > 0);
       const minSize = Math.min(...chunkSizes);
       const maxSize = Math.max(...chunkSizes);
 

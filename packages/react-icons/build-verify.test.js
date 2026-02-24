@@ -1766,6 +1766,36 @@ describe('Build Verification', () => {
         `);
       }
     });
+
+    /**
+     * @param {string} libDir
+     * @param {string} subDir
+     */
+    async function assertNoEmptyChunks(libDir, subDir) {
+      const dirPath = path.join(__dirname, libDir, subDir);
+      const files = await readdir(dirPath);
+      const jsChunks = files.filter((f) => f.startsWith('chunk-') && f.endsWith('.js'));
+      for (const chunk of jsChunks) {
+        const chunkPath = path.join(dirPath, chunk);
+        const content = await readFile(chunkPath, 'utf-8');
+        expect(content.trim().length).toBeGreaterThan(0);
+      }
+    }
+
+    it.each(['lib', 'lib-cjs'])(`should not have EMPTY chunks in %s/icons`, async (libDir) => {
+      await assertNoEmptyChunks(libDir, 'icons');
+    });
+
+    it.each(['lib', 'lib-cjs'])(`should not have EMPTY chunks in %s/sizedIcons`, async (libDir) => {
+      await assertNoEmptyChunks(libDir, 'sizedIcons');
+    });
+
+    it.each(['lib', 'lib-cjs'])(`should not have EMPTY chunks in %s/fonts/icons`, async (libDir) => {
+      await assertNoEmptyChunks(libDir, 'fonts/icons');
+    });
+    it.each(['lib', 'lib-cjs'])(`should not have EMPTY chunks in %s/fonts/sizedIcons`, async (libDir) => {
+      await assertNoEmptyChunks(libDir, 'fonts/sizedIcons');
+    });
   });
 
   describe('Font Files', () => {
