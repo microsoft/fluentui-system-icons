@@ -202,7 +202,14 @@ Color variants have insufficient contrast ratios in dark themes, failing WCAG ac
 
 **Current status:** Most color icons meet 3:1 contrast, but contain small visual details that could be treated as text-equivalent elements which require 4.5:1 contrast. This makes them non-compliant in dark themes.
 
-### Using multiple colors for filled icons
+#### Recommendation
+
+For accessible, maintainable icon implementations:
+
+- ✅ Use `Filled` or `Regular` variants
+- ❌ Avoid `Color` variants unless absolutely necessary and you've implemented the HCM workaround
+
+### Using multiple colors for single-color icons
 
 To apply multiple colors to an icon (e.g., one color for the fill and another for the outline), layer the `Filled` and `Regular` variants using absolute positioning:
 
@@ -236,13 +243,6 @@ function MyComponent() {
 ```
 
 This technique positions both icon variants in the same space using z-index stacking. The `Regular` variant (z-index: 2) sits on top, providing the outline, while the `Filled` variant (z-index: 1) sits underneath, providing the fill. By applying different colors to each layer, you can create custom multi-color effects.
-
-#### Recommendation
-
-For accessible, maintainable icon implementations:
-
-- ✅ Use `Filled` or `Regular` variants
-- ❌ Avoid `Color` variants unless absolutely necessary and you've implemented the HCM workaround
 
 ## API Contract
 
