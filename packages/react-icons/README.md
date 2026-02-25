@@ -209,6 +209,41 @@ For accessible, maintainable icon implementations:
 - ✅ Use `Filled` or `Regular` variants
 - ❌ Avoid `Color` variants unless absolutely necessary and you've implemented the HCM workaround
 
+### Using multiple colors for single-color icons
+
+To apply multiple colors to an icon (e.g., one color for the fill and another for the outline), layer the `Filled` and `Regular` variants using absolute positioning:
+
+```tsx
+import { makeStyles, mergeClasses } from '@fluentui/react-components';
+import { ShieldLock48Filled, ShieldLock48Regular } from '@fluentui/react-icons';
+
+const useStyles = makeStyles({
+  icon: {
+    position: 'absolute',
+  },
+  filled: {
+    zIndex: 1,
+    color: 'yellow',
+  },
+  regular: {
+    zIndex: 2,
+    color: 'red',
+  },
+});
+
+function MyComponent() {
+  const styles = useStyles();
+  return (
+    <span>
+      <ShieldLock48Filled className={mergeClasses(styles.icon, styles.filled)} />
+      <ShieldLock48Regular className={mergeClasses(styles.icon, styles.regular)} />
+    </span>
+  );
+}
+```
+
+This technique positions both icon variants in the same space using z-index stacking. The `Regular` variant (z-index: 2) sits on top, providing the outline, while the `Filled` variant (z-index: 1) sits underneath, providing the fill. By applying different colors to each layer, you can create custom multi-color effects.
+
 ## API Contract
 
 > [!IMPORTANT]
