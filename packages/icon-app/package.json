@@ -22,7 +22,11 @@
     "webpack": "^5.100.2",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2",
-    "svg-chunk-webpack-plugin": "^8.1.0"
+    "svg-chunk-webpack-plugin": "^8.1.0",
+    "@griffel/webpack-loader": "^2.2.21",
+    "@griffel/webpack-extraction-plugin":"^0.5.12",
+    "mini-css-extract-plugin":"^2.10.0",
+    "css-loader": "^7.1.4"
   },
   "dependencies": {
     "@fluentui/react-icons": "*",
