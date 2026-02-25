@@ -13,7 +13,9 @@
         "!{projectRoot}/tsconfig.spec.json",
         "!{projectRoot}/vitest.config.[jt]s",
         "!{projectRoot}/eslint.config.{js,cjs,mjs}",
-        "!{projectRoot}/test-setup.[jt]s"
+        "!{projectRoot}/test-setup.[jt]s",
+        "!{projectRoot}/monosize.config.{js,cjs,mjs}",
+        "!{projectRoot}/bundle-size/**"
       ],
       "outputs": ["{projectRoot}/lib", "{projectRoot}/lib-cjs"]
     },

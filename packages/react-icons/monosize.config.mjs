@@ -17,6 +17,12 @@ const config = {
       type: 'asset/resource',
     });
 
+    // Add loader for SVG files
+    config.module.rules.push({
+      test: /\.svg$/,
+      type: 'asset/resource',
+    });
+
     return config;
   }),
   threshold: '10kB',
