@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-icons-svg-sprite-subsetting-webpack-plugin",
-  "version": "0.0.0",
+  "version": "2.0.319",
   "description": "Webpack plugin to subset or merge SVG sprite assets used by @fluentui/react-icons svg-sprite APIs.",
   "main": "lib/index.js",
   "scripts": {
@@ -30,7 +30,6 @@
     "schema-utils": "^4.2.0"
   },
   "devDependencies": {
-    "@fluentui/react-icons": "*",
     "@types/node": "14",
     "html-webpack-plugin": "^5.5.3",
     "typescript": "5.0.4",
