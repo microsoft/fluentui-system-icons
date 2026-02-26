@@ -63,8 +63,10 @@ function createStableChunks(iconExports, iconNames, options) {
     chunks[chunkIndex].push(iconExports[i]);
   }
 
-  // Filter out empty chunks and return
-  return chunks.filter((chunk) => chunk.length > 0);
+  // Return all chunks (including empty ones) to preserve stable indices.
+  // Filtering would shift chunk positions when a previously-empty slot gets filled,
+  // causing unrelated icons to change chunk files.
+  return chunks;
 
   // ===========
 }
