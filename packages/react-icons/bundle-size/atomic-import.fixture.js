@@ -1,5 +1,6 @@
-import { AirplaneRegular } from '@fluentui/react-icons/svg/airplane';
+import * as AirplaneIconGroup from '@fluentui/react-icons/svg/airplane';
+import * as AgentsIconGroup from '@fluentui/react-icons/svg/agents';
 
-console.log(AirplaneRegular);
+console.log(AirplaneIconGroup, AgentsIconGroup);
 
 export default { name: 'Atomic Imports' };
