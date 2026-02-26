@@ -9,8 +9,12 @@ It supports two modes:
 
 ## Install
 
+> **NOTE:** available as ALPHA Prerelease.
+>
+> Install via `npm i @fluentui/react-icons-svg-sprite-subsetting-webpack-plugin@alpha`
+
 ```sh
-npm i -D @fluentui/react-icons-svg-sprite-subsetting-webpack-plugin
+npm i -D @fluentui/react-icons-svg-sprite-subsetting-webpack-plugin@alpha
 ```
 
 ## Usage
