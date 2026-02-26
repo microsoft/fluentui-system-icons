@@ -36,16 +36,27 @@ async function main() {
   const projects = await resolveProjectMetadata(projectNames);
 
   const summaryLines = [];
+  /** @type {Set<string>} */
+  const versions = new Set();
 
   for (const { npmName, packageJsonPath } of projects) {
     const version = await getNextPrereleaseVersion(npmName, packageJsonPath, preid);
+    versions.add(version);
+
     console.log(`📦 ${npmName} → ${version}`);
     summaryLines.push(`${npmName}@${version}`);
-
-    if (!dryRun) {
-      applyVersion(npmName, version);
-    }
   }
+
+  if (versions.size > 1) {
+    console.warn(
+      '⚠️ Multiple different versions detected across projects:',
+      '⚠️ This is not allowed, every Nx project in the release group must have the same version to ensure consistent releases.',
+      Array.from(versions).join(', '),
+    );
+    process.exit(1);
+  }
+
+  applyVersion(Array.from(versions)[0], dryRun);
 
   writeSummaryOutput(summaryLines);
 }
@@ -128,12 +139,14 @@ async function resolveProjectMetadata(nxNames) {
 }
 
 /**
- * Applies the version to the project via nx release version.
- * @param {string} npmName
+ * Applies the same group version to the projects via nx release version.
  * @param {string} version
+ * @param {boolean} dryRun - If true, skip applying the version and just log it
  */
-function applyVersion(npmName, version) {
-  execSync(`npx nx release version "${version}" --projects="${npmName}" --verbose`, {
+function applyVersion(version, dryRun = true) {
+  // we need to apply version on all nx onboarded projects,
+  // if we used --projects, it would override the version by patch instead of prerelease ( this is caused by nx "updateDependents": "auto" behaviour),
+  execSync(`npx nx release version "${version}" --dry-run=${dryRun} --verbose`, {
     encoding: 'utf8',
     stdio: 'inherit',
   });
