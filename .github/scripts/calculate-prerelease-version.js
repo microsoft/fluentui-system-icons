@@ -3,25 +3,25 @@
 // @ts-check
 
 /**
- * Calculates and applies prerelease versions for release projects.
- * Resolves project metadata via the @nx/devkit project graph, computes the next prerelease version
- * for each, optionally applies them via `nx release version`, and outputs a summary to GITHUB_OUTPUT.
+ * Calculates the next prerelease version for release projects and writes it to GITHUB_OUTPUT.
+ * Resolves project metadata via the @nx/devkit project graph and computes the next prerelease version
+ * for each project. Version application (`nx release version`) is intentionally left to the caller
+ * (i.e. the GHA step) so the command and its output are fully visible in CI logs.
  *
- * Usage: node apply-prerelease-versions.js --preid <preid> --projects <nx-names> [--dry-run]
+ * Usage: node calculate-prerelease-version.js --preid <preid> --projects <nx-names>
  *
  * Options:
  *   --preid: Prerelease identifier (e.g., alpha, beta, rc)
  *   --projects: Comma-separated Nx project names (e.g., react-icons,react-icons-font-subsetting-webpack-plugin)
- *   --dry-run: Skip applying versions (default: false)
  *
  * Outputs (via GITHUB_OUTPUT):
+ *   version: The single calculated prerelease version (e.g. 2.0.1-alpha.0)
  *   summary: Newline-separated list of package@version entries
  */
 
 const fs = require('fs');
 const path = require('path');
 const { parseArgs } = require('node:util');
-const { execSync } = require('child_process');
 const { createProjectGraphAsync } = require('@nx/devkit');
 
 const { getNextPrereleaseVersion } = require('./get-next-prerelease-version');
@@ -32,7 +32,7 @@ main().catch((error) => {
 });
 
 async function main() {
-  const { preid, dryRun, projectNames } = processArgs();
+  const { preid, projectNames } = processArgs();
   const projects = await resolveProjectMetadata(projectNames);
 
   const summaryLines = [];
@@ -43,7 +43,6 @@ async function main() {
     const version = await getNextPrereleaseVersion(npmName, packageJsonPath, preid);
     versions.add(version);
 
-    console.log(`📦 ${npmName} → ${version}`);
     summaryLines.push(`${npmName}@${version}`);
   }
 
@@ -56,9 +55,9 @@ async function main() {
     process.exit(1);
   }
 
-  applyVersion(Array.from(versions)[0], dryRun);
+  const resolvedVersion = Array.from(versions)[0];
 
-  writeSummaryOutput(summaryLines);
+  writeOutputs(resolvedVersion, summaryLines);
 }
 
 // ====================================
@@ -70,7 +69,6 @@ function processArgs() {
       options: {
         preid: { type: 'string' },
         projects: { type: 'string' },
-        'dry-run': { type: 'boolean', default: false },
         help: { type: 'boolean', short: 'h' },
       },
     });
@@ -99,20 +97,18 @@ function processArgs() {
 
   return {
     preid: options.preid,
-    dryRun: options['dry-run'] ?? false,
     projectNames: options.projects.split(','),
   };
 }
 
 function printUsage() {
-  console.error('Usage: node apply-prerelease-versions.js --preid <preid> --projects <nx-names> [--dry-run]');
+  console.error('Usage: node calculate-prerelease-version.js --preid <preid> --projects <nx-names>');
   console.error('');
   console.error('Options:');
   console.error('  --preid: Prerelease identifier (alpha, beta, rc)');
   console.error(
     '  --projects: Comma-separated Nx project names (e.g., react-icons,react-icons-font-subsetting-webpack-plugin)',
   );
-  console.error('  --dry-run: Skip applying versions');
   console.error('  --help, -h: Show this help message');
 }
 
@@ -139,31 +135,20 @@ async function resolveProjectMetadata(nxNames) {
 }
 
 /**
- * Applies the same group version to the projects via nx release version.
+ * Writes version and summary to GITHUB_OUTPUT, or prints them to stdout for local debugging.
  * @param {string} version
- * @param {boolean} dryRun - If true, skip applying the version and just log it
+ * @param {string[]} summaryLines
  */
-function applyVersion(version, dryRun = true) {
-  // we need to apply version on all nx onboarded projects,
-  // if we used --projects, it would override the version by patch instead of prerelease ( this is caused by nx "updateDependents": "auto" behaviour),
-  execSync(`npx nx release version "${version}" --dry-run=${dryRun} --verbose`, {
-    encoding: 'utf8',
-    stdio: 'inherit',
-  });
-}
-
-/**
- * Writes the summary to GITHUB_OUTPUT or stdout.
- * @param {string[]} lines
- */
-function writeSummaryOutput(lines) {
-  const summary = lines.join('\n');
+function writeOutputs(version, summaryLines) {
+  const summary = summaryLines.join('\n');
   const outputFile = process.env.GITHUB_OUTPUT;
 
   if (outputFile) {
+    fs.appendFileSync(outputFile, `version=${version}\n`);
     fs.appendFileSync(outputFile, `summary<<EOF\n${summary}\nEOF\n`);
   } else {
     // Local execution — print to stdout for debugging
+    console.log(`\nversion: ${version}`);
     console.log(`\nsummary:\n${summary}`);
   }
 }

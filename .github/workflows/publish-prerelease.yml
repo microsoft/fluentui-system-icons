@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       preid:
-        description: 'Prerelease identifier (e.g., alpha, beta, rc)'
+        description: 'Prerelease identifier used for npm version, not dist-tag (e.g., alpha, beta, rc)'
         required: false
         default: 'alpha'
         type: choice
@@ -67,13 +67,20 @@ jobs:
       #  NOTE:
       #   We need to calculate the next version before updating package.json manually. Otherwise the version bump would be the same version which would lead to workflow failure.
       #   This is needed because this repo doesn't set git tags per package so we are unable to leverage default Nx Release logic ( get latest version from git, falling back to package.json version)
-      - name: Calculate and apply prerelease versions
+      - name: Calculate prerelease versions
         id: versions
         run: |
-          node .github/scripts/apply-prerelease-versions.js \
+          node .github/scripts/calculate-prerelease-version.js \
             --preid "${{ inputs.preid }}" \
-            --projects "${{ steps.projects.outputs.nx-names }}" \
-            ${{ inputs.dry-run == true && '--dry-run' || '' }}
+            --projects "${{ steps.projects.outputs.nx-names }}"
+
+      - name: Apply prerelease versions
+        # we need to apply version on all nx onboarded projects without --projects,
+        # otherwise nx "updateDependents": "auto" would override the version with a patch bump instead of prerelease.
+        run: |
+          npx nx release version "${{ steps.versions.outputs.version }}" \
+            --dry-run=${{ inputs.dry-run }} \
+            --verbose
 
       - name: Publish to npm (Nx Release)
         run: |
