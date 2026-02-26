@@ -46,18 +46,35 @@ async function main() {
     summaryLines.push(`${npmName}@${version}`);
   }
 
+  // Sorts by the integer after ${preid}. and picks the highest with .at(-1). For example, given 2.0.1-alpha.3 and 2.0.1-alpha.7, it would correctly resolve 2.0.1-alpha.7.
+  const resolvedVersion = /** @type {string} */ (
+    Array.from(versions)
+      .sort((a, b) => {
+        const aNum = Number(a.split(`${preid}.`)[1] ?? '0');
+        const bNum = Number(b.split(`${preid}.`)[1] ?? '0');
+        return aNum - bNum;
+      })
+      .at(-1)
+  );
+
   if (versions.size > 1) {
-    console.warn(
-      '⚠️ Multiple different versions detected across projects:',
-      '⚠️ This is not allowed, every Nx project in the release group must have the same version to ensure consistent releases.',
-      Array.from(versions).join(', '),
-    );
-    process.exit(1);
+    const warningMessage = [
+      '',
+      `⚠️ Multiple different versions for "prerelase: ${preid}" detected:`,
+      '- This might happened because some package failed publish phase',
+      `- ${Array.from(versions).join(', ')}`,
+      '',
+      `⚠️ Using the highest version (${resolvedVersion}) for the release.`,
+      '',
+    ].join('\n');
+    summaryLines.unshift(warningMessage);
   }
 
-  const resolvedVersion = Array.from(versions)[0];
-
   writeOutputs(resolvedVersion, summaryLines);
+
+  // createProjectGraphAsync may open a connection to the Nx daemon, keeping the
+  // process alive indefinitely. Force-exit cleanly after all work is done.
+  process.exit(0);
 }
 
 // ====================================
