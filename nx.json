@@ -12,7 +12,11 @@
     "sharedGlobals": []
   },
   "release": {
-    "projects": ["packages/react-icons", "packages/react-icons-font-subsetting-webpack-plugin"],
+    "projects": [
+      "packages/react-icons",
+      "packages/react-icons-font-subsetting-webpack-plugin",
+      "packages/react-icons-svg-sprite-subsetting-webpack-plugin"
+    ],
     "projectsRelationship": "independent",
     "version": {
       "conventionalCommits": true,
