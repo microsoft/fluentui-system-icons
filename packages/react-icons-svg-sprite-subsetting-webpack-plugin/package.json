@@ -26,6 +26,9 @@
     "url": "https://github.com/microsoft/fluentui-system-icons/issues"
   },
   "homepage": "https://github.com/microsoft/fluentui-system-icons/tree/main/packages/react-icons-svg-sprite-subsetting-webpack-plugin#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "schema-utils": "^4.2.0"
   },
