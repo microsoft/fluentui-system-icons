@@ -269,6 +269,8 @@ async function getNextPrereleaseVersion(npmName, packageJsonPath, preid) {
   const nextVersion = incrementPrerelease(latestPrerelease, baseVersion, preid);
   console.error(`🚀 Next version: ${nextVersion}`);
 
+  console.error(`📦 ${npmName} → ${nextVersion}`);
+
   return nextVersion;
 }
 
