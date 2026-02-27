@@ -1,0 +1,22 @@
+{
+  "name": "Arrow Flow Square Multiple",
+  "size": [
+    48,
+    32,
+    28,
+    24,
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon, outlook",
+  "description": "Used for scenarios involving connection points.",
+  "metaphor": [
+    "arrow",
+    "direction"
+  ],
+  "directionType": "mirror"
+}

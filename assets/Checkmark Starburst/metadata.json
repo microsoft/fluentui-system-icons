@@ -1,6 +1,9 @@
 {
   "name": "Checkmark Starburst",
   "size": [
+    48,
+    32,
+    28,
     24,
     20,
     16
