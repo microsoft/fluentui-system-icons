@@ -1,8 +1,11 @@
 {
   "name": "Stack Vertical",
   "size": [
+    32,
+    28,
     24,
-    20
+    20,
+    16
   ],
   "style": [
     "Regular",

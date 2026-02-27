@@ -1304,6 +1304,16 @@
     "font": true,
     "type": "resizable"
   },
+  "ArrowFlowSquareMultipleFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "ArrowFlowSquareMultipleRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "ArrowFlowUpRightFilled": {
     "svg": true,
     "font": true,
@@ -16010,6 +16020,16 @@
     "type": "resizable"
   },
   "MidiRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "MidiOffFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "MidiOffRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -33624,6 +33644,66 @@
     "font": true,
     "type": "sized"
   },
+  "ArrowFlowSquareMultiple16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowFlowSquareMultiple16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowFlowSquareMultiple20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowFlowSquareMultiple20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowFlowSquareMultiple24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowFlowSquareMultiple24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowFlowSquareMultiple28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowFlowSquareMultiple28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowFlowSquareMultiple32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowFlowSquareMultiple32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowFlowSquareMultiple48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowFlowSquareMultiple48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "ArrowFlowUpRight16Filled": {
     "svg": true,
     "font": true,
@@ -49575,6 +49655,36 @@
     "type": "sized"
   },
   "CheckmarkStarburst24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CheckmarkStarburst28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CheckmarkStarburst28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CheckmarkStarburst32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CheckmarkStarburst32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CheckmarkStarburst48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CheckmarkStarburst48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -81279,6 +81389,16 @@
     "font": true,
     "type": "sized"
   },
+  "Live16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Live16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Live20Filled": {
     "svg": true,
     "font": true,
@@ -81295,6 +81415,16 @@
     "type": "sized"
   },
   "Live24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LiveOff16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LiveOff16Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -85544,6 +85674,16 @@
     "font": true,
     "type": "sized"
   },
+  "Midi16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Midi16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Midi20Filled": {
     "svg": true,
     "font": true,
@@ -85560,6 +85700,36 @@
     "type": "sized"
   },
   "Midi24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "MidiOff16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "MidiOff16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "MidiOff20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "MidiOff20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "MidiOff24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "MidiOff24Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -109669,6 +109839,16 @@
     "font": true,
     "type": "sized"
   },
+  "StackVertical16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "StackVertical16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "StackVertical20Filled": {
     "svg": true,
     "font": true,
@@ -109685,6 +109865,26 @@
     "type": "sized"
   },
   "StackVertical24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "StackVertical28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "StackVertical28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "StackVertical32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "StackVertical32Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
