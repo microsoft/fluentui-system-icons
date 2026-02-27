@@ -1,3 +1,13 @@
+## 2.0.320 (2026-02-27)
+
+### 🚀 Features
+
+- **react-icons:** add new and updated icons ([#997](https://github.com/microsoft/fluentui-system-icons/pull/997))
+
+### 🩹 Fixes
+
+- **react-icons:** generate fixed number of chunks to make chunking indices deterministic ([#992](https://github.com/microsoft/fluentui-system-icons/pull/992))
+
 ## 2.0.319 (2026-02-13)
 
 ### 🚀 Features

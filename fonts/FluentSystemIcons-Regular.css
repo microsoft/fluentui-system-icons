@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.woff2?be57cd43f0b453bba3e6d3f71e144449") format("woff2"),
-url("./FluentSystemIcons-Regular.woff?be57cd43f0b453bba3e6d3f71e144449") format("woff"),
-url("./FluentSystemIcons-Regular.ttf?be57cd43f0b453bba3e6d3f71e144449") format("truetype");
+    src: url("./FluentSystemIcons-Regular.woff2?2ba9c68ab2a0bef95e312f04cfcb7241") format("woff2"),
+url("./FluentSystemIcons-Regular.woff?2ba9c68ab2a0bef95e312f04cfcb7241") format("woff"),
+url("./FluentSystemIcons-Regular.ttf?2ba9c68ab2a0bef95e312f04cfcb7241") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -28167,4 +28167,58 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_window_multiple_off_24_regular:before {
     content: "\f0ba7";
+}
+.icon-ic_fluent_arrow_flow_square_multiple_16_regular:before {
+    content: "\f0ba8";
+}
+.icon-ic_fluent_arrow_flow_square_multiple_20_regular:before {
+    content: "\f0ba9";
+}
+.icon-ic_fluent_arrow_flow_square_multiple_24_regular:before {
+    content: "\f0baa";
+}
+.icon-ic_fluent_arrow_flow_square_multiple_28_regular:before {
+    content: "\f0bab";
+}
+.icon-ic_fluent_arrow_flow_square_multiple_32_regular:before {
+    content: "\f0bac";
+}
+.icon-ic_fluent_arrow_flow_square_multiple_48_regular:before {
+    content: "\f0bad";
+}
+.icon-ic_fluent_checkmark_starburst_28_regular:before {
+    content: "\f0bae";
+}
+.icon-ic_fluent_checkmark_starburst_32_regular:before {
+    content: "\f0baf";
+}
+.icon-ic_fluent_checkmark_starburst_48_regular:before {
+    content: "\f0bb0";
+}
+.icon-ic_fluent_live_16_regular:before {
+    content: "\f0bb1";
+}
+.icon-ic_fluent_live_off_16_regular:before {
+    content: "\f0bb2";
+}
+.icon-ic_fluent_midi_16_regular:before {
+    content: "\f0bb3";
+}
+.icon-ic_fluent_midi_off_16_regular:before {
+    content: "\f0bb4";
+}
+.icon-ic_fluent_midi_off_20_regular:before {
+    content: "\f0bb5";
+}
+.icon-ic_fluent_midi_off_24_regular:before {
+    content: "\f0bb6";
+}
+.icon-ic_fluent_stack_vertical_16_regular:before {
+    content: "\f0bb7";
+}
+.icon-ic_fluent_stack_vertical_28_regular:before {
+    content: "\f0bb8";
+}
+.icon-ic_fluent_stack_vertical_32_regular:before {
+    content: "\f0bb9";
 }
