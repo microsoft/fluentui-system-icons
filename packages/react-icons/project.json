@@ -4,6 +4,7 @@
   "projectType": "library",
   "sourceRoot": "packages/react-icons/src",
   "tags": ["platform:web"],
+  "implicitDependencies": ["!react-icons-font-subsetting-webpack-plugin"],
   "targets": {
     "build": {
       "cache": true,
