@@ -35,22 +35,22 @@ async function main() {
   const { preid, projectNames } = processArgs();
   const projects = await resolveProjectMetadata(projectNames);
 
-  const summaryLines = [];
+  /** @type {{ npmName: string, nextNpmVersion: string }[]} */
+  const perPackageVersions = [];
   /** @type {Set<string>} - Collects distinct versions computed per project; ideally one, but may differ when a prior publish partially succeeded. */
-  const uniqueVersions = new Set();
+  const uniqueNextNpmVersions = new Set();
 
   for (const { npmName, packageJsonPath } of projects) {
-    const version = await getNextPrereleaseVersion(npmName, packageJsonPath, preid);
-    uniqueVersions.add(version);
-
-    summaryLines.push(`${npmName}@${version}`);
+    const nextNpmVersion = await getNextPrereleaseVersion(npmName, packageJsonPath, preid);
+    uniqueNextNpmVersions.add(nextNpmVersion);
+    perPackageVersions.push({ npmName, nextNpmVersion });
   }
 
   // Pick the highest prerelease version across all projects by sorting on the numeric suffix that
   // follows "<preid>.". For example, given "2.0.1-alpha.3" and "2.0.1-alpha.7", this resolves to
-  // "2.0.1-alpha.7". The cast is safe because uniqueVersions always has at least one entry.
+  // "2.0.1-alpha.7". The cast is safe because uniqueNextNpmVersions always has at least one entry.
   const resolvedVersion = /** @type {string} */ (
-    Array.from(uniqueVersions)
+    Array.from(uniqueNextNpmVersions)
       .sort((a, b) => {
         const aPrereleaseNum = Number(a.split(`${preid}.`)[1] ?? '0');
         const bPrereleaseNum = Number(b.split(`${preid}.`)[1] ?? '0');
@@ -59,14 +59,28 @@ async function main() {
       .at(-1)
   );
 
-  if (uniqueVersions.size > 1) {
+  const hasVersionMismatch = uniqueNextNpmVersions.size > 1;
+
+  // Build summary lines now that resolvedVersion is known.
+  // When versions are in sync, each line is simply "<package>@<resolvedVersion>".
+  // When there is a mismatch, annotate packages whose computed npm-next version was overridden
+  // so the pipeline author can see exactly which packages caused the discrepancy.
+  const summaryLines = perPackageVersions.map(({ npmName, nextNpmVersion }) => {
+    const appliedLine = `${npmName}@${resolvedVersion}`;
+    if (hasVersionMismatch && nextNpmVersion !== resolvedVersion) {
+      return `${appliedLine}  (next available on npm was: ${nextNpmVersion})`;
+    }
+    return appliedLine;
+  });
+
+  if (hasVersionMismatch) {
     const versionMismatchWarning = [
       '',
-      `⚠️ Multiple different versions for "prerelease: ${preid}" detected:`,
+      `⚠️ Multiple different "next available" versions for prerelease identifier "${preid}" detected:`,
       '- This may have happened because a package failed the publish phase in a previous release attempt',
-      `- ${Array.from(uniqueVersions).join(', ')}`,
+      `- Computed per-package versions: ${Array.from(uniqueNextNpmVersions).join(', ')}`,
       '',
-      `⚠️ Using the highest version (${resolvedVersion}) for the release.`,
+      `⚠️ Using the highest version (${resolvedVersion}) for all packages in this release.`,
       '',
     ].join('\n');
     summaryLines.unshift(versionMismatchWarning);
