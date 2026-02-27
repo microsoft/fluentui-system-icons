@@ -33,6 +33,7 @@ module.exports = {
   entry: {
     index: './src/index.js',
     atoms: './src/atoms.js',
+    atomsImportStar: './src/atoms-import-star.js',
   },
   output: {
     path: resolve(__dirname, 'dist'),
