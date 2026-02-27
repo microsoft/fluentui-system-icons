@@ -36,38 +36,40 @@ async function main() {
   const projects = await resolveProjectMetadata(projectNames);
 
   const summaryLines = [];
-  /** @type {Set<string>} */
-  const versions = new Set();
+  /** @type {Set<string>} - Collects distinct versions computed per project; ideally one, but may differ when a prior publish partially succeeded. */
+  const uniqueVersions = new Set();
 
   for (const { npmName, packageJsonPath } of projects) {
     const version = await getNextPrereleaseVersion(npmName, packageJsonPath, preid);
-    versions.add(version);
+    uniqueVersions.add(version);
 
     summaryLines.push(`${npmName}@${version}`);
   }
 
-  // Sorts by the integer after ${preid}. and picks the highest with .at(-1). For example, given 2.0.1-alpha.3 and 2.0.1-alpha.7, it would correctly resolve 2.0.1-alpha.7.
+  // Pick the highest prerelease version across all projects by sorting on the numeric suffix that
+  // follows "<preid>.". For example, given "2.0.1-alpha.3" and "2.0.1-alpha.7", this resolves to
+  // "2.0.1-alpha.7". The cast is safe because uniqueVersions always has at least one entry.
   const resolvedVersion = /** @type {string} */ (
-    Array.from(versions)
+    Array.from(uniqueVersions)
       .sort((a, b) => {
-        const aNum = Number(a.split(`${preid}.`)[1] ?? '0');
-        const bNum = Number(b.split(`${preid}.`)[1] ?? '0');
-        return aNum - bNum;
+        const aPrereleaseNum = Number(a.split(`${preid}.`)[1] ?? '0');
+        const bPrereleaseNum = Number(b.split(`${preid}.`)[1] ?? '0');
+        return aPrereleaseNum - bPrereleaseNum;
       })
       .at(-1)
   );
 
-  if (versions.size > 1) {
-    const warningMessage = [
+  if (uniqueVersions.size > 1) {
+    const versionMismatchWarning = [
       '',
-      `⚠️ Multiple different versions for "prerelase: ${preid}" detected:`,
-      '- This might happened because some package failed publish phase in previous release attempt',
-      `- ${Array.from(versions).join(', ')}`,
+      `⚠️ Multiple different versions for "prerelease: ${preid}" detected:`,
+      '- This may have happened because a package failed the publish phase in a previous release attempt',
+      `- ${Array.from(uniqueVersions).join(', ')}`,
       '',
       `⚠️ Using the highest version (${resolvedVersion}) for the release.`,
       '',
     ].join('\n');
-    summaryLines.unshift(warningMessage);
+    summaryLines.unshift(versionMismatchWarning);
   }
 
   writeOutputs(resolvedVersion, summaryLines);
@@ -79,6 +81,12 @@ async function main() {
 
 // ====================================
 
+/**
+ * Parses and validates CLI arguments.
+ * Exits the process with a non-zero code when required arguments are missing or invalid.
+ *
+ * @returns {{ preid: string, projectNames: string[] }}
+ */
 function processArgs() {
   let options;
   try {
@@ -130,16 +138,17 @@ function printUsage() {
 }
 
 /**
- * Resolves project metadata (npm name, package.json path) for given Nx project names
- * using the @nx/devkit project graph.
+ * Resolves project metadata (npm package name, absolute package.json path) for the given Nx
+ * project names by looking them up in the @nx/devkit project graph.
  *
- * @param {string[]} nxNames - Nx project names
+ * @param {string[]} nxProjectNames - Nx project names (as defined in the workspace)
  * @returns {Promise<{ nxName: string, npmName: string, packageJsonPath: string }[]>}
+ *   Array of resolved metadata objects — one per requested project.
  */
-async function resolveProjectMetadata(nxNames) {
+async function resolveProjectMetadata(nxProjectNames) {
   const graph = await createProjectGraphAsync();
 
-  return nxNames.map((nxName) => {
+  return nxProjectNames.map((nxName) => {
     const node = graph.nodes[nxName];
     if (!node) {
       console.error(`❌ Unknown Nx project: ${nxName}`);
@@ -152,9 +161,18 @@ async function resolveProjectMetadata(nxNames) {
 }
 
 /**
- * Writes version and summary to GITHUB_OUTPUT, or prints them to stdout for local debugging.
- * @param {string} version
- * @param {string[]} summaryLines
+ * Writes the resolved version and a human-readable summary to GITHUB_OUTPUT so that downstream
+ * GHA steps can consume them via `${{ steps.<id>.outputs.version }}`. Falls back to stdout when
+ * `GITHUB_OUTPUT` is not set (i.e. local execution).
+ *
+ * Output format:
+ *   version=<semver>            (single line)
+ *   summary<<EOF                (multiline using heredoc syntax)
+ *   <package>@<version>\n...
+ *   EOF
+ *
+ * @param {string} version - The single resolved prerelease version (e.g. "2.0.1-alpha.3")
+ * @param {string[]} summaryLines - Human-readable lines describing per-package versions (and any warnings)
  */
 function writeOutputs(version, summaryLines) {
   const summary = summaryLines.join('\n');
