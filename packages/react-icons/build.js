@@ -37,6 +37,11 @@ function main() {
     addSpriteExportMap(projectRoot);
   }
 
+  copyAssets('src/atoms/headless-svg-sprite/*.svg', './lib/atoms/headless-svg-sprite', projectRoot);
+  copyAssets('src/atoms/headless-svg-sprite/*.svg', './lib-cjs/atoms/headless-svg-sprite', projectRoot);
+  copyAssets('src/headless/*.css', './lib/headless', projectRoot);
+  copyAssets('src/headless/*.css', './lib-cjs/headless', projectRoot);
+
   applyBabelTransform('lib', projectRoot);
   applyBabelTransform('lib-cjs', projectRoot);
 }
