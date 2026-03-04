@@ -8,7 +8,11 @@ const { readdir } = require('fs/promises');
 const path = require('path');
 const yargs = require('yargs');
 const { makeIconExport, getCreateFluentIconHeader, loadRtlMetadata, generatePerIconFiles } = require('./convert.utils');
-const { handleDeprecatedColorAtoms } = require('./deprecated-atoms');
+const {
+  assertCompoundStyleVariantIssues,
+  handleDeprecatedColorAtoms,
+  handleDeprecatedTextColorAtoms,
+} = require('./deprecated-atoms');
 const { createStableChunks } = require('./chunking-utils');
 const { createFormatMetadata, writeMetadata } = require('./metadata.utils');
 
@@ -96,8 +100,8 @@ function processPerChunk(sourceFiles, dest, rtlMetadata) {
 
   const indexPath = path.join(dest, 'index.tsx');
   // Finally add the interface definition and then write out the index.
-  indexContents.push("export { default as wrapIcon } from './utils/wrapIcon'");
-  indexContents.push("export { default as bundleIcon } from './utils/bundleIcon'");
+  indexContents.push("export { wrapIcon } from './utils/wrapIcon'");
+  indexContents.push("export { bundleIcon } from './utils/bundleIcon'");
   indexContents.push("export { createFluentIcon } from './utils/createFluentIcon'");
   indexContents.push("export * from './utils/useIconState'");
   indexContents.push("export * from './utils/constants'");
@@ -180,7 +184,9 @@ async function processPerIcon(sourceFiles, destPath, rtlMetadata, options = { gr
   const sized = await generatePerIconFiles(sourceFiles, destPath, rtlMetadata, false, options.groupByBase);
   Object.assign(svgMetadata, createFormatMetadata(sized.iconNames, 'svg', 'sized'));
 
-  await handleDeprecatedColorAtoms(destPath, 'svg');
+  handleDeprecatedColorAtoms(destPath, 'svg');
+  handleDeprecatedTextColorAtoms(destPath, 'svg');
+  await assertCompoundStyleVariantIssues(destPath);
 
   console.log(`[svg per-icon] Wrote ${resizable.fileCount + sized.fileCount} icon files to ${destPath}`);
   return { svgMetadata };

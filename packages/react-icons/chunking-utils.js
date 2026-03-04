@@ -63,11 +63,12 @@ function createStableChunks(iconExports, iconNames, options) {
     chunks[chunkIndex].push(iconExports[i]);
   }
 
-  // Filter out empty chunks and return
-  return chunks.filter(chunk => chunk.length > 0);
+  // Return all chunks (including empty ones) to preserve stable indices.
+  // Filtering would shift chunk positions when a previously-empty slot gets filled,
+  // causing unrelated icons to change chunk files.
+  return chunks;
 
   // ===========
-
 }
 
 /**
@@ -82,16 +83,16 @@ function simpleHash(str) {
 }
 
 /**
-* Get a stable prefix key for an icon name that balances locality with distribution
-* @param {string} name - Icon name
-* @param {number} prefixLength - Length of prefix to use (1-3)
-* @returns {string}
-*/
+ * Get a stable prefix key for an icon name that balances locality with distribution
+ * @param {string} name - Icon name
+ * @param {number} prefixLength - Length of prefix to use (1-3)
+ * @returns {string}
+ */
 function getPrefix(name, prefixLength) {
   return name.substring(0, Math.min(prefixLength, name.length)).toUpperCase();
 }
 
 module.exports = {
   createStableChunks,
-  simpleHash
+  simpleHash,
 };

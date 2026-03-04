@@ -90,6 +90,48 @@ describe(`convert  utils`, () => {
       expect(res).toBeTruthy();
       expect(res?.exportCode).toContain('flipInRtl');
     });
+
+    it('treats TextColor icons as non-color icons (regular/filled)', () => {
+      writeFile('ic_fluent_text_color_20_regular.svg', '<svg width="20"><path d="M1 2 3" fill="#212121"/></svg>');
+      const res = makeIconExport({
+        file: 'ic_fluent_text_color_20_regular.svg',
+        srcFile: path.join(tmpDir, 'ic_fluent_text_color_20_regular.svg'),
+        resizable: true,
+        metadata: {},
+      });
+      expect(res).toBeTruthy();
+      expect(res?.exportCode).not.toContain('fill=');
+      expect(res?.exportCode).not.toContain('color: true');
+    });
+
+    it('treats TextColorAccent icons as non-color icons (regular/filled)', () => {
+      writeFile('ic_fluent_text_color_accent_20_filled.svg', '<svg width="20"><path d="M5 6 7" fill="#212121"/></svg>');
+      const res = makeIconExport({
+        file: 'ic_fluent_text_color_accent_20_filled.svg',
+        srcFile: path.join(tmpDir, 'ic_fluent_text_color_accent_20_filled.svg'),
+        resizable: true,
+        metadata: {},
+      });
+      expect(res).toBeTruthy();
+      expect(res?.exportCode).not.toContain('fill=');
+      expect(res?.exportCode).not.toContain('color: true');
+    });
+
+    it('still treats icons ending with _color as color icons', () => {
+      writeFile(
+        'ic_fluent_patient_20_color.svg',
+        '<svg width="20"><g fill="#000"/><path d="M1 2" fill="#ff0000"/></svg>',
+      );
+      const res = makeIconExport({
+        file: 'ic_fluent_patient_20_color.svg',
+        srcFile: path.join(tmpDir, 'ic_fluent_patient_20_color.svg'),
+        resizable: true,
+        metadata: {},
+      });
+      expect(res).toBeTruthy();
+      expect(res?.exportCode).toContain('fill=');
+      expect(res?.exportCode).toContain('color: true');
+    });
   });
 
   describe(`generatePerIconFiles`, () => {
@@ -112,9 +154,9 @@ describe(`convert  utils`, () => {
           if (fs.existsSync(tmpDest)) fs.rmSync(tmpDest, { recursive: true, force: true });
 
           // Two different filenames that will produce the same export name when processed
-          writeSvg('ic_fluent_dup_20.svg', '<svg width="20" d="M0"></svg>');
-          // this variant without underscore will camelCase to the same export name (Dup20)
-          writeSvg('ic_fluent_dup20.svg', '<svg width="20" d="M1"></svg>');
+          writeSvg('ic_fluent_dup_20_regular.svg', '<svg width="20" d="M0"></svg>');
+          // this variant without underscore will camelCase to the same export name (Dup20Regular)
+          writeSvg('ic_fluent_dup20_regular.svg', '<svg width="20" d="M1"></svg>');
 
           const files = await import('fs/promises').then((m) => m.readdir(tmpSrc));
           if (!fs.existsSync(tmpDest)) fs.mkdirSync(tmpDest, { recursive: true });
@@ -151,8 +193,8 @@ describe(`convert  utils`, () => {
 
       it('groups related icons into one file and deduplicates exports', async () => {
         // prepare source svgs
-        writeSvg('ic_fluent_zoom_in_20.svg', 'M0 0');
-        writeSvg('ic_fluent_zoom_in_16.svg', 'M1 1');
+        writeSvg('ic_fluent_zoom_in_20_regular.svg', 'M0 0');
+        writeSvg('ic_fluent_zoom_in_16_regular.svg', 'M1 1');
         writeSvg('ic_fluent_zoom_in_20_filled.svg', 'M2 2');
 
         const files = await require('fs/promises').readdir(tmpSrc);
@@ -170,7 +212,7 @@ describe(`convert  utils`, () => {
         // should contain multiple exports
         expect(content).toContain('export const ZoomIn20Filled');
         // 16px variant should be present after processing sized icons
-        expect(content).toMatch(/export const\s+ZoomIn16/);
+        expect(content).toMatch(/export const\s+ZoomIn16Regular/);
         // no duplicate export names
         const names = [...content.matchAll(/export const\s+(\w+)\s*:/g)].map((m) => m[1]);
         const unique = new Set(names);
@@ -183,7 +225,7 @@ describe(`convert  utils`, () => {
         const tmpDest2 = path.join(__dirname, 'tmp-gen-dest-2');
         if (!fs.existsSync(tmpSrc2)) fs.mkdirSync(tmpSrc2, { recursive: true });
         if (!fs.existsSync(tmpDest2)) fs.mkdirSync(tmpDest2, { recursive: true });
-        fs.writeFileSync(path.join(tmpSrc2, 'ic_fluent_test_20.svg'), '<svg width="20" d="M0"></svg>');
+        fs.writeFileSync(path.join(tmpSrc2, 'ic_fluent_test_20_regular.svg'), '<svg width="20" d="M0"></svg>');
         fs.writeFileSync(path.join(tmpSrc2, 'ic_fluent_test_16_filled.svg'), '<svg width="16" d="M1"></svg>');
 
         const files = await require('fs/promises').readdir(tmpSrc2);

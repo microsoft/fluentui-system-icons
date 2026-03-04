@@ -31,7 +31,11 @@ function trimContentForSnapshot(content, threshold = 30) {
 
   // Add filtering message at the beginning if exports were filtered
   if (voidExportCount > 0) {
-    filteredLines.splice(0, 0, `... (${voidExportCount} export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))`);
+    filteredLines.splice(
+      0,
+      0,
+      `... (${voidExportCount} export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))`,
+    );
   }
 
   const trimmedLines = filteredLines.slice(0, threshold);
@@ -197,47 +201,44 @@ describe('Build Verification', () => {
   });
 
   describe('Styles Files', () => {
-   it(`should produce griffel processed .styles.js and unprocessed .styles.raw.js [lib]`, () => {
+    it(`should produce griffel processed .styles.js and unprocessed .styles.raw.js [lib]`, () => {
+      const root = path.join(__dirname, 'lib');
+      const processed = 'utils/useIconStyles.styles.js';
+      const unprocessed = 'utils/useIconStyles.styles.raw.js';
+      expect(fs.readFileSync(path.join(root, processed), 'utf8')).toMatchInlineSnapshot(`
+        "import { __styles } from '@griffel/react';
+        export const useStyles = __styles({
+          "root": {
+            "mc9l5x": "f1w7gpdv",
+            "Bg96gwp": "fez10in"
+          },
+          "rtl": {
+            "Bz10aip": "f13rod7r"
+          }
+        }, {
+          "d": [".f1w7gpdv{display:inline;}", ".fez10in{line-height:0;}", ".f13rod7r{transform:scaleX(-1);}"]
+        });"
+      `);
+      expect(fs.readFileSync(path.join(root, unprocessed), 'utf8')).toMatchInlineSnapshot(`
+        "import { makeStyles } from '@griffel/react';
+        export const useStyles = makeStyles({
+            root: {
+                display: 'inline',
+                lineHeight: 0,
+            },
+            rtl: {
+                transform: 'scaleX(-1)',
+            },
+        });
+        "
+      `);
+    });
 
-     const root = path.join(__dirname, 'lib');
-     const processed = 'utils/useIconStyles.styles.js'
-     const unprocessed = 'utils/useIconStyles.styles.raw.js'
-     expect(fs.readFileSync(path.join(root, processed), 'utf8')).toMatchInlineSnapshot(`
-       "import { __styles } from "@griffel/react";
-       export const useStyles = __styles({
-         "root": {
-           "mc9l5x": "f1w7gpdv",
-           "Bg96gwp": "fez10in"
-         },
-         "rtl": {
-           "Bz10aip": "f13rod7r"
-         }
-       }, {
-         "d": [".f1w7gpdv{display:inline;}", ".fez10in{line-height:0;}", ".f13rod7r{transform:scaleX(-1);}"]
-       });"
-     `);
-     expect(fs.readFileSync(path.join(root, unprocessed), 'utf8')).toMatchInlineSnapshot(`
-       "import { makeStyles } from "@griffel/react";
-       export const useStyles = makeStyles({
-           root: {
-               display: 'inline',
-               lineHeight: 0
-           },
-           rtl: {
-               transform: 'scaleX(-1)'
-           }
-       });
-       "
-     `);
-
-   });
-
-   it(`should produce griffel processed .styles.js and unprocessed .styles.raw.js [lib-cjs]`, () => {
-
-     const root = path.join(__dirname, 'lib-cjs');
-     const processed = 'utils/useIconStyles.styles.js'
-     const unprocessed = 'utils/useIconStyles.styles.raw.js'
-     expect(fs.readFileSync(path.join(root, processed), 'utf8')).toMatchInlineSnapshot(`
+    it(`should produce griffel processed .styles.js and unprocessed .styles.raw.js [lib-cjs]`, () => {
+      const root = path.join(__dirname, 'lib-cjs');
+      const processed = 'utils/useIconStyles.styles.js';
+      const unprocessed = 'utils/useIconStyles.styles.raw.js';
+      expect(fs.readFileSync(path.join(root, processed), 'utf8')).toMatchInlineSnapshot(`
        ""use strict";
 
        Object.defineProperty(exports, "__esModule", {
@@ -257,35 +258,34 @@ describe('Build Verification', () => {
          "d": [".f1w7gpdv{display:inline;}", ".fez10in{line-height:0;}", ".f13rod7r{transform:scaleX(-1);}"]
        });"
      `);
-     expect(fs.readFileSync(path.join(root, unprocessed), 'utf8')).toMatchInlineSnapshot(`
-       ""use strict";
-       Object.defineProperty(exports, "__esModule", { value: true });
-       exports.useStyles = void 0;
-       const react_1 = require("@griffel/react");
-       exports.useStyles = react_1.makeStyles({
-           root: {
-               display: 'inline',
-               lineHeight: 0
-           },
-           rtl: {
-               transform: 'scaleX(-1)'
-           }
-       });
-       "
-     `);
-
-   });
+      expect(fs.readFileSync(path.join(root, unprocessed), 'utf8')).toMatchInlineSnapshot(`
+        ""use strict";
+        Object.defineProperty(exports, "__esModule", { value: true });
+        exports.useStyles = void 0;
+        const react_1 = require("@griffel/react");
+        exports.useStyles = react_1.makeStyles({
+            root: {
+                display: 'inline',
+                lineHeight: 0,
+            },
+            rtl: {
+                transform: 'scaleX(-1)',
+            },
+        });
+        "
+      `);
+    });
 
     it.each(['lib', 'lib-cjs'])('should have required styles files in utils (%s)', async (libDir) => {
       const utilsPath = path.join(__dirname, libDir, 'utils');
       const files = await readdir(utilsPath);
 
       // Check for .styles.raw.js files
-      const rawStylesFiles = files.filter(file => file.endsWith('.styles.raw.js'));
+      const rawStylesFiles = files.filter((file) => file.endsWith('.styles.raw.js'));
       expect(rawStylesFiles.length).toBeGreaterThan(0);
 
       // Check for .styles.js files
-      const stylesFiles = files.filter(file => file.endsWith('.styles.js') && !file.endsWith('.raw.js'));
+      const stylesFiles = files.filter((file) => file.endsWith('.styles.js') && !file.endsWith('.raw.js'));
       expect(stylesFiles.length).toBeGreaterThan(0);
 
       // Verify specific expected files exist
@@ -295,7 +295,7 @@ describe('Build Verification', () => {
         'bundleIcon.styles.raw.js',
         'bundleIcon.styles.js',
         'useIconStyles.styles.raw.js',
-        'useIconStyles.styles.js'
+        'useIconStyles.styles.js',
       ];
 
       for (const file of expectedStylesFiles) {
@@ -306,10 +306,7 @@ describe('Build Verification', () => {
 
     it.each(['lib', 'lib-cjs'])('should have required font styles files in utils/fonts (%s)', async (libDir) => {
       const fontsUtilsPath = path.join(__dirname, libDir, 'utils', 'fonts');
-      const expectedFontsStylesFiles = [
-        'createFluentFontIcon.styles.raw.js',
-        'createFluentFontIcon.styles.js'
-      ];
+      const expectedFontsStylesFiles = ['createFluentFontIcon.styles.raw.js', 'createFluentFontIcon.styles.js'];
 
       for (const file of expectedFontsStylesFiles) {
         const filePath = path.join(fontsUtilsPath, file);
@@ -325,7 +322,7 @@ describe('Build Verification', () => {
 
       // Check icons chunks
       const iconFiles = await readdir(iconsPath);
-      const iconChunks = iconFiles.filter(file => file.startsWith('chunk-'));
+      const iconChunks = iconFiles.filter((file) => file.startsWith('chunk-'));
       expect(iconChunks.length).toBeGreaterThan(0);
 
       // Verify each chunk has both .js and .d.ts files
@@ -347,7 +344,7 @@ describe('Build Verification', () => {
 
       // Check sizedIcons chunks
       const sizedIconFiles = await readdir(sizedIconsPath);
-      const sizedIconChunks = sizedIconFiles.filter(file => file.startsWith('chunk-'));
+      const sizedIconChunks = sizedIconFiles.filter((file) => file.startsWith('chunk-'));
       expect(sizedIconChunks.length).toBeGreaterThan(0);
 
       // Verify each chunk has both .js and .d.ts files
@@ -372,7 +369,7 @@ describe('Build Verification', () => {
       // Check fonts/icons chunks
       const fontsIconsPath = path.join(__dirname, libDir, 'fonts', 'icons');
       const fontsIconFiles = await readdir(fontsIconsPath);
-      const fontsIconChunks = fontsIconFiles.filter(file => file.startsWith('chunk-'));
+      const fontsIconChunks = fontsIconFiles.filter((file) => file.startsWith('chunk-'));
       expect(fontsIconChunks.length).toBeGreaterThan(0);
 
       // Verify each font icon chunk has both .js and .d.ts files
@@ -395,7 +392,7 @@ describe('Build Verification', () => {
       // Check fonts/sizedIcons chunks
       const fontsSizedIconsPath = path.join(__dirname, libDir, 'fonts', 'sizedIcons');
       const fontsSizedIconFiles = await readdir(fontsSizedIconsPath);
-      const fontsSizedIconChunks = fontsSizedIconFiles.filter(file => file.startsWith('chunk-'));
+      const fontsSizedIconChunks = fontsSizedIconFiles.filter((file) => file.startsWith('chunk-'));
       expect(fontsSizedIconChunks.length).toBeGreaterThan(0);
 
       // Verify each font sized icon chunk has both .js and .d.ts files
@@ -418,7 +415,6 @@ describe('Build Verification', () => {
   });
 
   describe('Chunk Contents', () => {
-
     it(`should have valid generated contents  in entry points (lib)`, async () => {
       const mainEntry = path.join(__dirname, 'lib/index.js');
       const mainEntryDts = path.join(__dirname, 'lib/index.d.ts');
@@ -486,8 +482,8 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-27';
         export * from './sizedIcons/chunk-28';
         export * from './sizedIcons/chunk-29';
-        export { default as wrapIcon } from './utils/wrapIcon';
-        export { default as bundleIcon } from './utils/bundleIcon';
+        export { wrapIcon } from './utils/wrapIcon';
+        export { bundleIcon } from './utils/bundleIcon';
         export { createFluentIcon } from './utils/createFluentIcon';
         export * from './utils/useIconState';
         export * from './utils/constants';
@@ -555,8 +551,8 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-27';
         export * from './sizedIcons/chunk-28';
         export * from './sizedIcons/chunk-29';
-        export { default as wrapIcon } from './utils/wrapIcon';
-        export { default as bundleIcon } from './utils/bundleIcon';
+        export { wrapIcon } from './utils/wrapIcon';
+        export { bundleIcon } from './utils/bundleIcon';
         export { createFluentIcon } from './utils/createFluentIcon';
         export * from './utils/useIconState';
         export * from './utils/constants';
@@ -568,7 +564,7 @@ describe('Build Verification', () => {
       `);
     });
 
-     it(`should have valid generated contents  in entry points (lib-cjs)`, async () => {
+    it(`should have valid generated contents  in entry points (lib-cjs)`, async () => {
       const mainEntry = path.join(__dirname, 'lib-cjs/index.js');
       const mainEntryDts = path.join(__dirname, 'lib-cjs/index.d.ts');
       const jsContent = await readFile(mainEntry, 'utf8');
@@ -639,9 +635,9 @@ describe('Build Verification', () => {
         tslib_1.__exportStar(require("./sizedIcons/chunk-28"), exports);
         tslib_1.__exportStar(require("./sizedIcons/chunk-29"), exports);
         var wrapIcon_1 = require("./utils/wrapIcon");
-        Object.defineProperty(exports, "wrapIcon", { enumerable: true, get: function () { return tslib_1.__importDefault(wrapIcon_1).default; } });
+        Object.defineProperty(exports, "wrapIcon", { enumerable: true, get: function () { return wrapIcon_1.wrapIcon; } });
         var bundleIcon_1 = require("./utils/bundleIcon");
-        Object.defineProperty(exports, "bundleIcon", { enumerable: true, get: function () { return tslib_1.__importDefault(bundleIcon_1).default; } });
+        Object.defineProperty(exports, "bundleIcon", { enumerable: true, get: function () { return bundleIcon_1.bundleIcon; } });
         var createFluentIcon_1 = require("./utils/createFluentIcon");
         Object.defineProperty(exports, "createFluentIcon", { enumerable: true, get: function () { return createFluentIcon_1.createFluentIcon; } });
         tslib_1.__exportStar(require("./utils/useIconState"), exports);
@@ -650,7 +646,7 @@ describe('Build Verification', () => {
         Object.defineProperty(exports, "IconDirectionContextProvider", { enumerable: true, get: function () { return index_1.IconDirectionContextProvider; } });
         Object.defineProperty(exports, "useIconContext", { enumerable: true, get: function () { return index_1.useIconContext; } });
         "
-      `)
+      `);
       expect(dtsContent).toMatchInlineSnapshot(`
         "export * from './icons/chunk-0';
         export * from './icons/chunk-1';
@@ -712,8 +708,8 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-27';
         export * from './sizedIcons/chunk-28';
         export * from './sizedIcons/chunk-29';
-        export { default as wrapIcon } from './utils/wrapIcon';
-        export { default as bundleIcon } from './utils/bundleIcon';
+        export { wrapIcon } from './utils/wrapIcon';
+        export { bundleIcon } from './utils/bundleIcon';
         export { createFluentIcon } from './utils/createFluentIcon';
         export * from './utils/useIconState';
         export * from './utils/constants';
@@ -722,8 +718,8 @@ describe('Build Verification', () => {
         export type { FluentIcon } from './utils/createFluentIcon';
         export type { IconDirectionContextValue } from './contexts/index';
         "
-      `)
-     })
+      `);
+    });
 
     it(`should have valid generated contents  in entry points (lib/fonts)`, async () => {
       const mainEntry = path.join(__dirname, 'lib/fonts/index.js');
@@ -792,8 +788,8 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-27';
         export * from './sizedIcons/chunk-28';
         export * from './sizedIcons/chunk-29';
-        export { default as wrapIcon } from '../utils/wrapIcon';
-        export { default as bundleIcon } from '../utils/bundleIcon';
+        export { wrapIcon } from '../utils/wrapIcon';
+        export { bundleIcon } from '../utils/bundleIcon';
         export { createFluentIcon } from '../utils/createFluentIcon';
         export { createFluentFontIcon } from '../utils/fonts/createFluentFontIcon';
         export * from '../utils/useIconState';
@@ -862,8 +858,8 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-27';
         export * from './sizedIcons/chunk-28';
         export * from './sizedIcons/chunk-29';
-        export { default as wrapIcon } from '../utils/wrapIcon';
-        export { default as bundleIcon } from '../utils/bundleIcon';
+        export { wrapIcon } from '../utils/wrapIcon';
+        export { bundleIcon } from '../utils/bundleIcon';
         export { createFluentIcon } from '../utils/createFluentIcon';
         export { createFluentFontIcon } from '../utils/fonts/createFluentFontIcon';
         export * from '../utils/useIconState';
@@ -949,9 +945,9 @@ describe('Build Verification', () => {
         tslib_1.__exportStar(require("./sizedIcons/chunk-28"), exports);
         tslib_1.__exportStar(require("./sizedIcons/chunk-29"), exports);
         var wrapIcon_1 = require("../utils/wrapIcon");
-        Object.defineProperty(exports, "wrapIcon", { enumerable: true, get: function () { return tslib_1.__importDefault(wrapIcon_1).default; } });
+        Object.defineProperty(exports, "wrapIcon", { enumerable: true, get: function () { return wrapIcon_1.wrapIcon; } });
         var bundleIcon_1 = require("../utils/bundleIcon");
-        Object.defineProperty(exports, "bundleIcon", { enumerable: true, get: function () { return tslib_1.__importDefault(bundleIcon_1).default; } });
+        Object.defineProperty(exports, "bundleIcon", { enumerable: true, get: function () { return bundleIcon_1.bundleIcon; } });
         var createFluentIcon_1 = require("../utils/createFluentIcon");
         Object.defineProperty(exports, "createFluentIcon", { enumerable: true, get: function () { return createFluentIcon_1.createFluentIcon; } });
         var createFluentFontIcon_1 = require("../utils/fonts/createFluentFontIcon");
@@ -962,7 +958,7 @@ describe('Build Verification', () => {
         Object.defineProperty(exports, "IconDirectionContextProvider", { enumerable: true, get: function () { return index_1.IconDirectionContextProvider; } });
         Object.defineProperty(exports, "useIconContext", { enumerable: true, get: function () { return index_1.useIconContext; } });
         "
-      `)
+      `);
       expect(dtsContent).toMatchInlineSnapshot(`
         "export * from './icons/chunk-0';
         export * from './icons/chunk-1';
@@ -1024,8 +1020,8 @@ describe('Build Verification', () => {
         export * from './sizedIcons/chunk-27';
         export * from './sizedIcons/chunk-28';
         export * from './sizedIcons/chunk-29';
-        export { default as wrapIcon } from '../utils/wrapIcon';
-        export { default as bundleIcon } from '../utils/bundleIcon';
+        export { wrapIcon } from '../utils/wrapIcon';
+        export { bundleIcon } from '../utils/bundleIcon';
         export { createFluentIcon } from '../utils/createFluentIcon';
         export { createFluentFontIcon } from '../utils/fonts/createFluentFontIcon';
         export * from '../utils/useIconState';
@@ -1036,13 +1032,13 @@ describe('Build Verification', () => {
         export type { FluentFontIcon } from '../utils/fonts/createFluentFontIcon';
         export type { IconDirectionContextValue } from '../contexts/index';
         "
-      `)
-    })
+      `);
+    });
 
     it('should have valid chunk contents in lib icons', async () => {
       const iconsPath = path.join(__dirname, 'lib', 'icons');
       const iconFiles = await readdir(iconsPath);
-      const iconChunks = iconFiles.filter(file => file.startsWith('chunk-') && file.endsWith('.js'));
+      const iconChunks = iconFiles.filter((file) => file.startsWith('chunk-') && file.endsWith('.js'));
 
       expect(iconChunks.length).toBeGreaterThan(0);
 
@@ -1133,7 +1129,7 @@ describe('Build Verification', () => {
     it('should have valid chunk contents in lib-cjs icons', async () => {
       const iconsPath = path.join(__dirname, 'lib-cjs', 'icons');
       const iconFiles = await readdir(iconsPath);
-      const iconChunks = iconFiles.filter(file => file.startsWith('chunk-') && file.endsWith('.js'));
+      const iconChunks = iconFiles.filter((file) => file.startsWith('chunk-') && file.endsWith('.js'));
 
       expect(iconChunks.length).toBeGreaterThan(0);
 
@@ -1224,7 +1220,7 @@ describe('Build Verification', () => {
     it('should have valid chunk contents in lib sizedIcons', async () => {
       const sizedIconsPath = path.join(__dirname, 'lib', 'sizedIcons');
       const sizedIconFiles = await readdir(sizedIconsPath);
-      const sizedIconChunks = sizedIconFiles.filter(file => file.startsWith('chunk-') && file.endsWith('.js'));
+      const sizedIconChunks = sizedIconFiles.filter((file) => file.startsWith('chunk-') && file.endsWith('.js'));
 
       expect(sizedIconChunks.length).toBeGreaterThan(0);
 
@@ -1315,7 +1311,7 @@ describe('Build Verification', () => {
     it('should have valid chunk contents in lib-cjs sizedIcons', async () => {
       const sizedIconsPath = path.join(__dirname, 'lib-cjs', 'sizedIcons');
       const sizedIconFiles = await readdir(sizedIconsPath);
-      const sizedIconChunks = sizedIconFiles.filter(file => file.startsWith('chunk-') && file.endsWith('.js'));
+      const sizedIconChunks = sizedIconFiles.filter((file) => file.startsWith('chunk-') && file.endsWith('.js'));
 
       expect(sizedIconChunks.length).toBeGreaterThan(0);
 
@@ -1406,7 +1402,7 @@ describe('Build Verification', () => {
     it('should have valid font chunk contents in lib fonts/icons', async () => {
       const fontsIconsPath = path.join(__dirname, 'lib', 'fonts', 'icons');
       const fontsIconFiles = await readdir(fontsIconsPath);
-      const fontsIconChunks = fontsIconFiles.filter(file => file.startsWith('chunk-') && file.endsWith('.js'));
+      const fontsIconChunks = fontsIconFiles.filter((file) => file.startsWith('chunk-') && file.endsWith('.js'));
 
       expect(fontsIconChunks.length).toBeGreaterThan(0);
 
@@ -1424,34 +1420,34 @@ describe('Build Verification', () => {
         expect(trimmedJSContent).toMatchInlineSnapshot(`
           ""use client";
           import { createFluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
-          export const BackpackFilled = ( /*#__PURE__*/createFluentFontIcon("BackpackFilled", "", 2, undefined));
-          export const BackpackRegular = ( /*#__PURE__*/createFluentFontIcon("BackpackRegular", "", 2, undefined));
-          export const BackpackAddFilled = ( /*#__PURE__*/createFluentFontIcon("BackpackAddFilled", "", 2, undefined));
-          export const BackpackAddRegular = ( /*#__PURE__*/createFluentFontIcon("BackpackAddRegular", "", 2, undefined));
-          export const BackspaceFilled = ( /*#__PURE__*/createFluentFontIcon("BackspaceFilled", "", 2, undefined));
-          export const BackspaceRegular = ( /*#__PURE__*/createFluentFontIcon("BackspaceRegular", "", 2, undefined));
-          export const CalculatorFilled = ( /*#__PURE__*/createFluentFontIcon("CalculatorFilled", "", 2, undefined));
-          export const CalculatorRegular = ( /*#__PURE__*/createFluentFontIcon("CalculatorRegular", "", 2, undefined));
-          export const CalculatorArrowClockwiseFilled = ( /*#__PURE__*/createFluentFontIcon("CalculatorArrowClockwiseFilled", "", 2, undefined));
-          export const CalculatorArrowClockwiseRegular = ( /*#__PURE__*/createFluentFontIcon("CalculatorArrowClockwiseRegular", "", 2, undefined));
-          export const CalculatorMultipleFilled = ( /*#__PURE__*/createFluentFontIcon("CalculatorMultipleFilled", "", 2, undefined));
-          export const CalculatorMultipleRegular = ( /*#__PURE__*/createFluentFontIcon("CalculatorMultipleRegular", "", 2, undefined));
-          export const CalendarFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarFilled", "", 2, undefined, { flipInRtl: true }));
-          export const CalendarRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarRegular", "", 2, undefined, { flipInRtl: true }));
-          export const Calendar3DayFilled = ( /*#__PURE__*/createFluentFontIcon("Calendar3DayFilled", "", 2, undefined));
-          export const Calendar3DayRegular = ( /*#__PURE__*/createFluentFontIcon("Calendar3DayRegular", "", 2, undefined));
-          export const CalendarAddFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarAddFilled", "", 2, undefined));
-          export const CalendarAddRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarAddRegular", "", 2, undefined));
-          export const CalendarAgendaFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarAgendaFilled", "", 2, undefined));
-          export const CalendarAgendaRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarAgendaRegular", "", 2, undefined));
-          export const CalendarArrowCounterclockwiseFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowCounterclockwiseFilled", "", 2, undefined));
-          export const CalendarArrowCounterclockwiseRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowCounterclockwiseRegular", "", 2, undefined));
-          export const CalendarArrowDownFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowDownFilled", "", 2, undefined));
-          export const CalendarArrowDownRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowDownRegular", "", 2, undefined));
-          export const CalendarArrowRepeatAllFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRepeatAllFilled", "", 2, undefined));
-          export const CalendarArrowRepeatAllRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRepeatAllRegular", "", 2, undefined));
-          export const CalendarArrowRightFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRightFilled", "", 2, undefined));
-          export const CalendarArrowRightRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRightRegular", "", 2, undefined));
+          export const BackpackFilled = ( /*#__PURE__*/createFluentFontIcon("BackpackFilled", "", 2, undefined));
+          export const BackpackRegular = ( /*#__PURE__*/createFluentFontIcon("BackpackRegular", "", 2, undefined));
+          export const BackpackAddFilled = ( /*#__PURE__*/createFluentFontIcon("BackpackAddFilled", "", 2, undefined));
+          export const BackpackAddRegular = ( /*#__PURE__*/createFluentFontIcon("BackpackAddRegular", "", 2, undefined));
+          export const BackspaceFilled = ( /*#__PURE__*/createFluentFontIcon("BackspaceFilled", "", 2, undefined));
+          export const BackspaceRegular = ( /*#__PURE__*/createFluentFontIcon("BackspaceRegular", "", 2, undefined));
+          export const CalculatorFilled = ( /*#__PURE__*/createFluentFontIcon("CalculatorFilled", "", 2, undefined));
+          export const CalculatorRegular = ( /*#__PURE__*/createFluentFontIcon("CalculatorRegular", "", 2, undefined));
+          export const CalculatorArrowClockwiseFilled = ( /*#__PURE__*/createFluentFontIcon("CalculatorArrowClockwiseFilled", "", 2, undefined));
+          export const CalculatorArrowClockwiseRegular = ( /*#__PURE__*/createFluentFontIcon("CalculatorArrowClockwiseRegular", "", 2, undefined));
+          export const CalculatorMultipleFilled = ( /*#__PURE__*/createFluentFontIcon("CalculatorMultipleFilled", "", 2, undefined));
+          export const CalculatorMultipleRegular = ( /*#__PURE__*/createFluentFontIcon("CalculatorMultipleRegular", "", 2, undefined));
+          export const CalendarFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarFilled", "", 2, undefined, { flipInRtl: true }));
+          export const CalendarRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarRegular", "", 2, undefined, { flipInRtl: true }));
+          export const Calendar3DayFilled = ( /*#__PURE__*/createFluentFontIcon("Calendar3DayFilled", "", 2, undefined));
+          export const Calendar3DayRegular = ( /*#__PURE__*/createFluentFontIcon("Calendar3DayRegular", "", 2, undefined));
+          export const CalendarAddFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarAddFilled", "", 2, undefined));
+          export const CalendarAddRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarAddRegular", "", 2, undefined));
+          export const CalendarAgendaFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarAgendaFilled", "", 2, undefined));
+          export const CalendarAgendaRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarAgendaRegular", "", 2, undefined));
+          export const CalendarArrowCounterclockwiseFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowCounterclockwiseFilled", "", 2, undefined));
+          export const CalendarArrowCounterclockwiseRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowCounterclockwiseRegular", "", 2, undefined));
+          export const CalendarArrowDownFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowDownFilled", "", 2, undefined));
+          export const CalendarArrowDownRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowDownRegular", "", 2, undefined));
+          export const CalendarArrowRepeatAllFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRepeatAllFilled", "", 2, undefined));
+          export const CalendarArrowRepeatAllRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRepeatAllRegular", "", 2, undefined));
+          export const CalendarArrowRightFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRightFilled", "", 2, undefined));
+          export const CalendarArrowRightRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRightRegular", "", 2, undefined));
           ... (content truncated for snapshot)"
         `);
 
@@ -1497,7 +1493,7 @@ describe('Build Verification', () => {
     it('should have valid font chunk contents in lib-cjs fonts/icons', async () => {
       const fontsIconsPath = path.join(__dirname, 'lib-cjs', 'fonts', 'icons');
       const fontsIconFiles = await readdir(fontsIconsPath);
-      const fontsIconChunks = fontsIconFiles.filter(file => file.startsWith('chunk-') && file.endsWith('.js'));
+      const fontsIconChunks = fontsIconFiles.filter((file) => file.startsWith('chunk-') && file.endsWith('.js'));
 
       expect(fontsIconChunks.length).toBeGreaterThan(0);
 
@@ -1518,31 +1514,31 @@ describe('Build Verification', () => {
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const createFluentFontIcon_1 = require("../../utils/fonts/createFluentFontIcon");
-          exports.BackpackFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackpackFilled", "", 2, undefined));
-          exports.BackpackRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackpackRegular", "", 2, undefined));
-          exports.BackpackAddFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackpackAddFilled", "", 2, undefined));
-          exports.BackpackAddRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackpackAddRegular", "", 2, undefined));
-          exports.BackspaceFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackspaceFilled", "", 2, undefined));
-          exports.BackspaceRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackspaceRegular", "", 2, undefined));
-          exports.CalculatorFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorFilled", "", 2, undefined));
-          exports.CalculatorRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorRegular", "", 2, undefined));
-          exports.CalculatorArrowClockwiseFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorArrowClockwiseFilled", "", 2, undefined));
-          exports.CalculatorArrowClockwiseRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorArrowClockwiseRegular", "", 2, undefined));
-          exports.CalculatorMultipleFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorMultipleFilled", "", 2, undefined));
-          exports.CalculatorMultipleRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorMultipleRegular", "", 2, undefined));
-          exports.CalendarFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarFilled", "", 2, undefined, { flipInRtl: true }));
-          exports.CalendarRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarRegular", "", 2, undefined, { flipInRtl: true }));
-          exports.Calendar3DayFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Calendar3DayFilled", "", 2, undefined));
-          exports.Calendar3DayRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Calendar3DayRegular", "", 2, undefined));
-          exports.CalendarAddFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAddFilled", "", 2, undefined));
-          exports.CalendarAddRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAddRegular", "", 2, undefined));
-          exports.CalendarAgendaFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAgendaFilled", "", 2, undefined));
-          exports.CalendarAgendaRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAgendaRegular", "", 2, undefined));
-          exports.CalendarArrowCounterclockwiseFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowCounterclockwiseFilled", "", 2, undefined));
-          exports.CalendarArrowCounterclockwiseRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowCounterclockwiseRegular", "", 2, undefined));
-          exports.CalendarArrowDownFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowDownFilled", "", 2, undefined));
-          exports.CalendarArrowDownRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowDownRegular", "", 2, undefined));
-          exports.CalendarArrowRepeatAllFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowRepeatAllFilled", "", 2, undefined));
+          exports.BackpackFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackpackFilled", "", 2, undefined));
+          exports.BackpackRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackpackRegular", "", 2, undefined));
+          exports.BackpackAddFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackpackAddFilled", "", 2, undefined));
+          exports.BackpackAddRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackpackAddRegular", "", 2, undefined));
+          exports.BackspaceFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackspaceFilled", "", 2, undefined));
+          exports.BackspaceRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackspaceRegular", "", 2, undefined));
+          exports.CalculatorFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorFilled", "", 2, undefined));
+          exports.CalculatorRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorRegular", "", 2, undefined));
+          exports.CalculatorArrowClockwiseFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorArrowClockwiseFilled", "", 2, undefined));
+          exports.CalculatorArrowClockwiseRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorArrowClockwiseRegular", "", 2, undefined));
+          exports.CalculatorMultipleFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorMultipleFilled", "", 2, undefined));
+          exports.CalculatorMultipleRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorMultipleRegular", "", 2, undefined));
+          exports.CalendarFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarFilled", "", 2, undefined, { flipInRtl: true }));
+          exports.CalendarRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarRegular", "", 2, undefined, { flipInRtl: true }));
+          exports.Calendar3DayFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Calendar3DayFilled", "", 2, undefined));
+          exports.Calendar3DayRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Calendar3DayRegular", "", 2, undefined));
+          exports.CalendarAddFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAddFilled", "", 2, undefined));
+          exports.CalendarAddRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAddRegular", "", 2, undefined));
+          exports.CalendarAgendaFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAgendaFilled", "", 2, undefined));
+          exports.CalendarAgendaRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAgendaRegular", "", 2, undefined));
+          exports.CalendarArrowCounterclockwiseFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowCounterclockwiseFilled", "", 2, undefined));
+          exports.CalendarArrowCounterclockwiseRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowCounterclockwiseRegular", "", 2, undefined));
+          exports.CalendarArrowDownFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowDownFilled", "", 2, undefined));
+          exports.CalendarArrowDownRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowDownRegular", "", 2, undefined));
+          exports.CalendarArrowRepeatAllFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowRepeatAllFilled", "", 2, undefined));
           ... (content truncated for snapshot)"
         `);
 
@@ -1588,7 +1584,9 @@ describe('Build Verification', () => {
     it('should have valid font chunk contents in lib fonts/sizedIcons', async () => {
       const fontsSizedIconsPath = path.join(__dirname, 'lib', 'fonts', 'sizedIcons');
       const fontsSizedIconFiles = await readdir(fontsSizedIconsPath);
-      const fontsSizedIconChunks = fontsSizedIconFiles.filter(file => file.startsWith('chunk-') && file.endsWith('.js'));
+      const fontsSizedIconChunks = fontsSizedIconFiles.filter(
+        (file) => file.startsWith('chunk-') && file.endsWith('.js'),
+      );
 
       expect(fontsSizedIconChunks.length).toBeGreaterThan(0);
 
@@ -1679,7 +1677,9 @@ describe('Build Verification', () => {
     it('should have valid font chunk contents in lib-cjs fonts/sizedIcons', async () => {
       const fontsSizedIconsPath = path.join(__dirname, 'lib-cjs', 'fonts', 'sizedIcons');
       const fontsSizedIconFiles = await readdir(fontsSizedIconsPath);
-      const fontsSizedIconChunks = fontsSizedIconFiles.filter(file => file.startsWith('chunk-') && file.endsWith('.js'));
+      const fontsSizedIconChunks = fontsSizedIconFiles.filter(
+        (file) => file.startsWith('chunk-') && file.endsWith('.js'),
+      );
 
       expect(fontsSizedIconChunks.length).toBeGreaterThan(0);
 
@@ -1766,6 +1766,36 @@ describe('Build Verification', () => {
         `);
       }
     });
+
+    /**
+     * @param {string} libDir
+     * @param {string} subDir
+     */
+    async function assertNoEmptyChunks(libDir, subDir) {
+      const dirPath = path.join(__dirname, libDir, subDir);
+      const files = await readdir(dirPath);
+      const jsChunks = files.filter((f) => f.startsWith('chunk-') && f.endsWith('.js'));
+      for (const chunk of jsChunks) {
+        const chunkPath = path.join(dirPath, chunk);
+        const content = await readFile(chunkPath, 'utf-8');
+        expect(content.trim().length).toBeGreaterThan(0);
+      }
+    }
+
+    it.each(['lib', 'lib-cjs'])(`should not have EMPTY chunks in %s/icons`, async (libDir) => {
+      await assertNoEmptyChunks(libDir, 'icons');
+    });
+
+    it.each(['lib', 'lib-cjs'])(`should not have EMPTY chunks in %s/sizedIcons`, async (libDir) => {
+      await assertNoEmptyChunks(libDir, 'sizedIcons');
+    });
+
+    it.each(['lib', 'lib-cjs'])(`should not have EMPTY chunks in %s/fonts/icons`, async (libDir) => {
+      await assertNoEmptyChunks(libDir, 'fonts/icons');
+    });
+    it.each(['lib', 'lib-cjs'])(`should not have EMPTY chunks in %s/fonts/sizedIcons`, async (libDir) => {
+      await assertNoEmptyChunks(libDir, 'fonts/sizedIcons');
+    });
   });
 
   describe('Font Files', () => {
@@ -1797,7 +1827,7 @@ describe('Build Verification', () => {
         'createFluentFontIcon.js',
         'createFluentFontIcon.d.ts',
         'createFluentFontIcon.shared.js',
-        'createFluentFontIcon.shared.d.ts'
+        'createFluentFontIcon.shared.d.ts',
       ];
 
       for (const file of fontCreationFiles) {
@@ -1830,15 +1860,15 @@ describe('Build Verification', () => {
       const { svgPathCjs, svgPathEsm } = getAssetPaths();
       const esmStats = await getStats(svgPathEsm);
       const cjsStats = await getStats(svgPathCjs);
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2802`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2802`);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2822`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2822`);
     });
     it(`should have same number of atoms/fonts icon files in lib and lib-cjs`, async () => {
       const { fontsPathCjs, fontsPathEsm } = getAssetPaths();
       const esmStats = await getStats(fontsPathEsm);
       const cjsStats = await getStats(fontsPathCjs);
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2795`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2795`);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2815`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2815`);
     });
     it.each(['lib', 'lib-cjs'])('should have atoms/svg directory with icon files in %s', async (libDir) => {
       const atomsSvgPath = path.join(__dirname, libDir, 'atoms', 'svg');
@@ -1950,46 +1980,100 @@ describe('Build Verification', () => {
       expect(packageJson.exports['./fonts/*'].import).toBe('./lib/atoms/fonts/*.js');
       expect(packageJson.exports['./fonts/*'].require).toBe('./lib-cjs/atoms/fonts/*.js');
     });
+
+    it.each(['svg', 'fonts'])(
+      'text-color atoms should be properly separated from text atoms in lib/atoms/%s',
+      async (exportKindDir) => {
+        const textFile = path.join(__dirname, 'lib', 'atoms', exportKindDir, 'text.js');
+        const textColorFile = path.join(__dirname, 'lib', 'atoms', exportKindDir, 'text-color.js');
+        // Both files should exist
+        expect(fs.existsSync(textFile)).toBe(true);
+        expect(fs.existsSync(textColorFile)).toBe(true);
+
+        const textContent = await readFile(textFile, 'utf-8');
+        const textColorContent = await readFile(textColorFile, 'utf-8');
+
+        // text-color.js should only contain TextColor* exports
+        expect(textColorContent).toContain(`export const TextColorFilled`);
+        expect(textColorContent).toContain(`export const TextColorRegular`);
+        expect(textColorContent).toContain(`export const TextColor16Regular`);
+        expect(textColorContent).toContain(`export const TextColor20Regular`);
+        expect(textColorContent).toContain(`export const TextColor24Regular`);
+
+        // text-color.js should NOT contain Text* exports (without Color in the name)
+        expect(textColorContent).not.toContain('export const Text12Regular');
+        expect(textColorContent).not.toContain('export const Text16Regular');
+
+        // text.js should contain Text* exports
+        expect(textContent).toContain('export const Text12Regular');
+        expect(textContent).toContain('export const Text16Regular');
+        expect(textContent).toContain('export const Text32Regular');
+
+        // text.js should have backward-compatible re-exports for TextColor* with deprecation notice
+        expect(textContent).toContain(`@deprecated use \`@fluentui/${exportKindDir}/text-color\` import`);
+        expect(textContent).toContain(`export const TextColorFilled`);
+        expect(textContent).toContain(`export const TextColorRegular`);
+        expect(textContent).toContain(`export const TextColor16Regular`);
+        expect(textContent).toContain(`export const TextColor20Regular`);
+        expect(textContent).toContain(`export const TextColor24Regular`);
+      },
+    );
   });
 
   describe('Metadata Validation', () => {
-    it('metadata.json should have no uncommitted changes after build', () => {
-      // Check if metadata.json exists
+    it('metadata.json should exist and be valid JSON', () => {
       const metadataPath = path.join(__dirname, 'metadata.json');
       expect(fs.existsSync(metadataPath)).toBe(true);
 
-      try {
-        // Run git diff to check if metadata.json has any uncommitted changes
-        const gitDiff = execSync('git diff metadata.json', {
-          encoding: 'utf-8',
-          cwd: __dirname,
-          stdio: 'pipe',
-        });
-
-        // If there's a diff, the test should fail with a helpful message
-        if (gitDiff.trim()) {
-          throw new Error(
-            `metadata.json has uncommitted changes after build.\n` +
-              `This means the committed metadata.json is out of sync with the current icons.\n` +
-              `Please run 'npm run build' and commit the updated metadata.json file.\n\n` +
-              `Git diff:\n${gitDiff}`,
-          );
-        }
-
-        // If no diff, the test passes
-        expect(gitDiff.trim()).toBe('');
-      } catch (error) {
-        // Handle cases where git command fails (e.g., not in a git repo, file not tracked)
-        if (error && typeof error === 'object' && 'status' in error && error.status === 128) {
-          // Git command failed - this might be expected in some CI environments
-          // We'll skip this test with a warning
-          console.warn('Git diff check skipped - not in a git repository or metadata.json not tracked');
-          return;
-        }
-
-        // Re-throw other errors (including our custom error above)
-        throw error;
-      }
+      // Ensure it's valid JSON
+      const content = fs.readFileSync(metadataPath, 'utf-8');
+      expect(() => JSON.parse(content)).not.toThrow();
     });
+
+    // The publish pipeline runs `build` (which regenerates metadata.json) followed by
+    // `build-verify`. The updated file is committed later in the pipeline, so an uncommitted
+    // diff is *expected* there and must not fail the build. Set REACT_ICONS_SKIP_METADATA_DIFF_CHECK=true
+    // in that workflow to skip this test.
+    // On PR validation and locally, this test must run so stale metadata.json is caught.
+    (process.env.REACT_ICONS_SKIP_METADATA_DIFF_CHECK ? it.skip : it)(
+      'metadata.json should have no uncommitted changes after build',
+      () => {
+        const metadataPath = path.join(__dirname, 'metadata.json');
+        expect(fs.existsSync(metadataPath)).toBe(true);
+
+        try {
+          // Run git diff to check if metadata.json has any uncommitted changes
+          const gitDiff = execSync('git diff metadata.json', {
+            encoding: 'utf-8',
+            cwd: __dirname,
+            stdio: 'pipe',
+          });
+
+          // If there's a diff, the test should fail with a helpful message
+          if (gitDiff.trim()) {
+            throw new Error(
+              `metadata.json has uncommitted changes after build.\n` +
+                `This means the committed metadata.json is out of sync with the current icons.\n` +
+                `Please run 'npm run build' and commit the updated metadata.json file.\n\n` +
+                `Git diff:\n${gitDiff}`,
+            );
+          }
+
+          // If no diff, the test passes
+          expect(gitDiff.trim()).toBe('');
+        } catch (error) {
+          // Handle cases where git command fails (e.g., not in a git repo, file not tracked)
+          if (error && typeof error === 'object' && 'status' in error && error.status === 128) {
+            // Git command failed - this might be expected in some CI environments
+            // We'll skip this test with a warning
+            console.warn('Git diff check skipped - not in a git repository or metadata.json not tracked');
+            return;
+          }
+
+          // Re-throw other errors (including our custom error above)
+          throw error;
+        }
+      },
+    );
   });
 });

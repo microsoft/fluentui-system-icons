@@ -9,7 +9,11 @@ const mkdirp = require('mkdirp');
 
 const yargs = require('yargs');
 const _ = require('lodash');
-const { handleDeprecatedColorAtoms } = require('./deprecated-atoms');
+const {
+  assertCompoundStyleVariantIssues,
+  handleDeprecatedColorAtoms,
+  handleDeprecatedTextColorAtoms,
+} = require('./deprecated-atoms');
 const { createFormatMetadata, writeMetadata } = require('./metadata.utils');
 const { createStableChunks } = require('./chunking-utils');
 const {
@@ -112,8 +116,8 @@ async function processPerChunk(dest, iconEntries, rtlMetadata) {
 
   const indexPath = path.join(dest, 'index.tsx');
   // Finally add the interface definition and then write out the index.
-  indexContents.push("export { default as wrapIcon } from '../utils/wrapIcon'");
-  indexContents.push("export { default as bundleIcon } from '../utils/bundleIcon'");
+  indexContents.push("export { wrapIcon } from '../utils/wrapIcon'");
+  indexContents.push("export { bundleIcon } from '../utils/bundleIcon'");
   indexContents.push("export { createFluentIcon } from '../utils/createFluentIcon'");
   indexContents.push("export { createFluentFontIcon } from '../utils/fonts/createFluentFontIcon'");
   indexContents.push("export * from '../utils/useIconState'");
@@ -281,7 +285,9 @@ async function processPerIcon(destPath, iconEntries, rtlMetadata, options = { gr
   const sized = await generatePerIconFiles(destPath, iconEntries.sized, rtlMetadata, false, options.groupByBase);
   Object.assign(fontMetadata, createFormatMetadata(sized.iconNames, 'font', 'sized'));
 
-  await handleDeprecatedColorAtoms(destPath, 'font');
+  handleDeprecatedColorAtoms(destPath, 'font');
+  handleDeprecatedTextColorAtoms(destPath, 'font');
+  await assertCompoundStyleVariantIssues(destPath);
 
   console.log(`[font per-icon] Wrote ${resizable.fileCount + sized.fileCount} files to ${destPath}`);
 

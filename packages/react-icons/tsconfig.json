@@ -16,5 +16,16 @@
     "allowSyntheticDefaultImports": true
   },
   "include": ["src"],
-  "exclude": ["lib", "lib-cjs", "node_modules", "src/**/*.test.ts", "src/**/*.test.tsx", "src/index.tsx", "src/fonts/", "src/icons/", "src/sizedIcons/", "src/atoms/"]
+  "exclude": [
+    "lib",
+    "lib-cjs",
+    "node_modules",
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx",
+    "src/index.tsx",
+    "src/fonts/",
+    "src/icons/",
+    "src/sizedIcons/",
+    "src/atoms/"
+  ]
 }

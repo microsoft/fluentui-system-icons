@@ -7,9 +7,9 @@ import webpackBundler from 'monosize-bundler-webpack';
 const config = {
   repository: 'https://github.com/microsoft/fluentui-system-icons',
   storage: createLocalStorage(),
-  bundler: webpackBundler(config => {
+  bundler: webpackBundler((config) => {
     return config;
-  })
+  }),
 };
 
 export default config;

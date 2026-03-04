@@ -12,10 +12,11 @@
     "sharedGlobals": []
   },
   "release": {
-    "projects": ["packages/react-icons"],
+    "projects": ["packages/react-icons", "packages/react-icons-font-subsetting-webpack-plugin"],
     "projectsRelationship": "independent",
     "version": {
       "conventionalCommits": true,
+      "preserveMatchingDependencyRanges": ["devDependencies"],
       "fallbackCurrentVersionResolver": "disk",
       "git": {
         "commit": false,
@@ -39,5 +40,5 @@
       }
     }
   },
-  "tui": {"enabled": false}
+  "tui": { "enabled": false }
 }

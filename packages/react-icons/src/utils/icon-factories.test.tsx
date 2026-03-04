@@ -4,7 +4,7 @@ import { describe, expect, test } from 'vitest';
 
 import { createFluentFontIcon, FluentFontIcon } from './fonts/createFluentFontIcon';
 import { createFluentIcon, FluentIcon } from './createFluentIcon';
-import bundleIcon from './bundleIcon';
+import { bundleIcon } from './bundleIcon';
 
 /**
  * @vitest-environment jsdom
@@ -12,7 +12,9 @@ import bundleIcon from './bundleIcon';
 
 describe('React component tests', () => {
   test('createIcon should create a valid icon component', () => {
-    const AccessTimeRegular: FluentIcon = createFluentIcon('AccessTimeRegular', "1em", ["M6.99 8.6A.5.5 0 0 1 6 8.4a1.29 1.29 0 0 1 .07-.24 2 2 0 0 1 .25-.46c.26-.35.71-.7 1.42-.7A1.7 1.7 0 0 1 9.5 8.75c0 .35-.07.65-.2.9a1.8 1.8 0 0 1-.51.6c-.16.11-.33.22-.48.3l-.06.04c-.17.1-.3.19-.42.29-.4.34-.66.7-.77 1.12H9a.5.5 0 0 1 0 1H6.5a.5.5 0 0 1-.5-.5c0-1.01.47-1.77 1.17-2.38.2-.16.4-.29.57-.4l.06-.03.38-.24a.8.8 0 0 0 .23-.26c.05-.1.09-.23.09-.44a.8.8 0 0 0-.19-.53.7.7 0 0 0-.56-.22.7.7 0 0 0-.61.3 1 1 0 0 0-.15.3ZM11 7c.28 0 .5.22.5.5V10H13V7.5a.5.5 0 0 1 1 0v5a.5.5 0 0 1-1 0V11h-2a.5.5 0 0 1-.5-.5v-3c0-.28.22-.5.5-.5Zm-1-5a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm-7 8a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z"]);
+    const AccessTimeRegular: FluentIcon = createFluentIcon('AccessTimeRegular', '1em', [
+      'M6.99 8.6A.5.5 0 0 1 6 8.4a1.29 1.29 0 0 1 .07-.24 2 2 0 0 1 .25-.46c.26-.35.71-.7 1.42-.7A1.7 1.7 0 0 1 9.5 8.75c0 .35-.07.65-.2.9a1.8 1.8 0 0 1-.51.6c-.16.11-.33.22-.48.3l-.06.04c-.17.1-.3.19-.42.29-.4.34-.66.7-.77 1.12H9a.5.5 0 0 1 0 1H6.5a.5.5 0 0 1-.5-.5c0-1.01.47-1.77 1.17-2.38.2-.16.4-.29.57-.4l.06-.03.38-.24a.8.8 0 0 0 .23-.26c.05-.1.09-.23.09-.44a.8.8 0 0 0-.19-.53.7.7 0 0 0-.56-.22.7.7 0 0 0-.61.3 1 1 0 0 0-.15.3ZM11 7c.28 0 .5.22.5.5V10H13V7.5a.5.5 0 0 1 1 0v5a.5.5 0 0 1-1 0V11h-2a.5.5 0 0 1-.5-.5v-3c0-.28.22-.5.5-.5Zm-1-5a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm-7 8a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z',
+    ]);
 
     expect(AccessTimeRegular).toBeDefined();
     expect(AccessTimeRegular.displayName).toBe('AccessTimeRegular');
@@ -33,11 +35,11 @@ describe('React component tests', () => {
           />
         </svg>
       </div>
-    `)
+    `);
   });
 
   test('createFontIcon should create a valid font icon component', () => {
-    const AccessTimeRegular: FluentFontIcon = createFluentFontIcon("AccessTimeRegular", "", 2, undefined);
+    const AccessTimeRegular: FluentFontIcon = createFluentFontIcon('AccessTimeRegular', '', 2, undefined);
 
     expect(AccessTimeRegular).toBeDefined();
     expect(AccessTimeRegular.displayName).toBe('AccessTimeRegular');
@@ -50,7 +52,7 @@ describe('React component tests', () => {
           fill="currentColor"
         />
       </div>
-    `)
+    `);
   });
 
   test('createFluentIcon renders an SVG with expected path', () => {
@@ -74,11 +76,15 @@ describe('React component tests', () => {
   test('createFluentIcon with custom props', () => {
     const d = 'M1 2 L3 4';
     const MyIcon = createFluentIcon('MyIcon', '1em', [d]);
-    const { container } = render(<MyIcon primaryFill="red" className="test-class" />);
+    const { container } = render(<MyIcon primaryFill="red" className="test-class" filled={true} title="one two" />);
 
     const svg = container.querySelector('svg');
     expect(svg).toHaveClass('fui-Icon');
     expect(svg).toHaveClass('test-class');
+
+    // custom props should not be passed to the svg element
+    expect(svg).not.toHaveAttribute('filled');
+    expect(svg).not.toHaveAttribute('title');
 
     const path = svg?.querySelector('path');
     expect(path).toHaveAttribute('fill', 'red');
@@ -100,20 +106,20 @@ describe('React component tests', () => {
     const FilledIcon = createFluentIcon('MyIconFilled', '1em', [d]);
     const RegularIcon = createFluentIcon('MyIconRegular', '1em', [d]);
     const BundledIcon = bundleIcon(FilledIcon, RegularIcon);
-    
+
     const { container: containerFilled } = render(<BundledIcon filled />);
     const svgs = containerFilled.querySelectorAll('svg');
-    
+
     // Both icons should have the base fui-Icon class
-    svgs.forEach(svg => {
+    svgs.forEach((svg) => {
       expect(svg).toHaveClass('fui-Icon');
     });
-    
+
     // Filled icon should be visible and have fui-Icon-filled
     const filledSvg = containerFilled.querySelector('.fui-Icon-filled');
     expect(filledSvg).toHaveClass('fui-Icon');
     expect(filledSvg).toHaveClass('fui-Icon-filled');
-    
+
     const { container: containerRegular } = render(<BundledIcon filled={false} />);
     const regularSvg = containerRegular.querySelector('.fui-Icon-regular');
     expect(regularSvg).toHaveClass('fui-Icon');

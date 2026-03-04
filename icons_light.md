@@ -66,6 +66,7 @@
 |Dismiss Circle|<img src="assets/Dismiss Circle/SVG/ic_fluent_dismiss_circle_32_light.svg?raw=true" width="24" height="24">|`dismissCircle32Light`|`ic_fluent_dismiss_circle_32_light`|
 |Dismiss Square|<img src="assets/Dismiss Square/SVG/ic_fluent_dismiss_square_32_light.svg?raw=true" width="24" height="24">|`dismissSquare32Light`|`ic_fluent_dismiss_square_32_light`|
 |Document|<img src="assets/Document/SVG/ic_fluent_document_48_light.svg?raw=true" width="24" height="24">|`document24Light`<br />`document28Light`<br />`document32Light`<br />`document48Light`|`ic_fluent_document_24_light`<br />`ic_fluent_document_28_light`<br />`ic_fluent_document_32_light`<br />`ic_fluent_document_48_light`|
+|Document Header|<img src="assets/Document Header/SVG/ic_fluent_document_header_32_light.svg?raw=true" width="24" height="24">|`documentHeader32Light`|`ic_fluent_document_header_32_light`|
 |Document Header Footer|<img src="assets/Document Header Footer/SVG/ic_fluent_document_header_footer_32_light.svg?raw=true" width="24" height="24">|`documentHeaderFooter32Light`|`ic_fluent_document_header_footer_32_light`|
 |Document Lightning|<img src="assets/Document Lightning/SVG/ic_fluent_document_lightning_32_light.svg?raw=true" width="24" height="24">|`documentLightning32Light`|`ic_fluent_document_lightning_32_light`|
 |Document Signature|<img src="assets/Document Signature/SVG/ic_fluent_document_signature_32_light.svg?raw=true" width="24" height="24">|`documentSignature32Light`|`ic_fluent_document_signature_32_light`|
@@ -148,6 +149,7 @@
 |Pin|<img src="assets/Pin/SVG/ic_fluent_pin_32_light.svg?raw=true" width="24" height="24">|`pin32Light`|`ic_fluent_pin_32_light`|
 |Pin Off|<img src="assets/Pin Off/SVG/ic_fluent_pin_off_32_light.svg?raw=true" width="24" height="24">|`pinOff32Light`|`ic_fluent_pin_off_32_light`|
 |Poll|<img src="assets/Poll/SVG/ic_fluent_poll_32_light.svg?raw=true" width="24" height="24">|`poll32Light`|`ic_fluent_poll_32_light`|
+|Presenter|<img src="assets/Presenter/SVG/ic_fluent_presenter_32_light.svg?raw=true" width="24" height="24">|`presenter32Light`|`ic_fluent_presenter_32_light`|
 |Print|<img src="assets/Print/SVG/ic_fluent_print_32_light.svg?raw=true" width="24" height="24">|`print32Light`|`ic_fluent_print_32_light`|
 |Question|<img src="assets/Question/SVG/ic_fluent_question_32_light.svg?raw=true" width="24" height="24">|`question32Light`|`ic_fluent_question_32_light`|
 |Read Aloud|<img src="assets/Read Aloud/SVG/ic_fluent_read_aloud_32_light.svg?raw=true" width="24" height="24">|`readAloud32Light`|`ic_fluent_read_aloud_32_light`|
