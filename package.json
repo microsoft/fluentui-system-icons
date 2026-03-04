@@ -19,10 +19,18 @@
     "reset-workspace": "git clean -dXf",
     "postinstall": "patch-package",
     "format": "nx format:write",
-    "format:check": "nx format:check"
+    "format:check": "nx format:check",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "devDependencies": {
+    "@fluentui/react-components": "^9.46.0",
     "@nx/js": "21.6.10",
+    "@storybook/addon-docs": "^8.6.0",
+    "@storybook/addon-webpack5-compiler-babel": "^3.0.6",
+    "@storybook/react-webpack5": "^8.6.0",
+    "@types/react": "17.0.2",
+    "@types/react-dom": "17.0.2",
     "eslint": "8.57.1",
     "nx": "21.6.10",
     "patch-package": "8.0.1",
@@ -30,6 +38,8 @@
     "@types/react": "^17.0.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-window": "^1.8.10",
+    "storybook": "^8.6.0",
     "typescript": "5.0.4",
     "typescript-eslint": "7.18.0",
     "monosize": "0.7.1",
