@@ -1,0 +1,26 @@
+{
+  "name": "@fluentui/icons-docsite",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "@fluentui/react-components": "^9.46.0",
+    "@fluentui/react-icons": "*",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-window": "^1.8.10"
+  },
+  "devDependencies": {
+    "@storybook/addon-docs": "^8.6.0",
+    "@storybook/addon-webpack5-compiler-babel": "^3.0.6",
+    "@storybook/react-webpack5": "^8.6.0",
+    "@types/react": "17.0.2",
+    "@types/react-dom": "17.0.2",
+    "cjs-module-lexer": "^2.2.0",
+    "storybook": "^8.6.0",
+    "typescript": "5.0.4"
+  }
+}
