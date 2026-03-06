@@ -1,11 +1,5 @@
-import * as React from 'react';
 import type { Preview } from '@storybook/react';
 import { FluentProvider, webLightTheme } from '@fluentui/react-components';
-
-import { FluentDocsContainer } from './FluentDocsContainer';
-import { FluentDocsPage } from './FluentDocsPage';
-import './docs-root.css';
-import './docs-root-v9.css';
 
 const preview = {
   decorators: [
@@ -22,10 +16,11 @@ const preview = {
       disable: true,
       expanded: true,
     },
-    docs: {
-      container: FluentDocsContainer,
-      page: FluentDocsPage,
-      codePanel: true,
+    options: {
+      storySort: {
+        method: 'alphabetical',
+        order: ['Icons', ['Overview', 'Catalog', 'Advanced Usage']],
+      },
     },
   },
 
