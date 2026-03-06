@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "storybook": "storybook dev -p 6006 --docs",
+    "build-storybook": "storybook build --docs"
   },
   "dependencies": {
     "@fluentui/react-components": "^9.46.0",
@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@storybook/addon-docs": "^8.6.0",
-    "@storybook/addon-webpack5-compiler-babel": "^3.0.6",
+    "@storybook/addon-webpack5-compiler-swc": "^4.0.2",
     "@storybook/react-webpack5": "^8.6.0",
     "@types/react": "17.0.2",
     "@types/react-dom": "17.0.2",
