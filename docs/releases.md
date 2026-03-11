@@ -67,16 +67,17 @@ flowchart TD
     VerCalc --> GenIOS[Generate iOS Assets<br/>deploy:ios]
     GenIOS --> GenFonts[Generate Fonts<br/>deploy:fonts<br/>Regular/Filled/Light/Resizable]
 
-    GenFonts --> VerReplace[Update Version Numbers<br/>READMEs, Podspec, package.json files]
+    GenFonts --> VerReplace[Update Version Numbers<br/>READMEs, Podspec]
 
     VerReplace --> BuildNpm
 
     subgraph NPM["NPM Package Preparation"]
-        BuildNpm[Build NPM Packages<br/>svg-icons, svg-sprites, react-native-icons,<br/>webpack-plugin, react-icons]
-        BuildNpm --> NxRelease[Nx Release<br/>version + changelog]
+        BuildNpm[Build NPM Packages<br/>nx run-many &#45;&#45;projects tag:npm:public]
+        BuildNpm --> NxRelease[Nx Release<br/>version groups: react + native<br/>+ changelog]
+        NxRelease --> LockUpdate[Update Lockfile<br/>npm install &#45;&#45;package-lock-only]
     end
 
-    NxRelease --> DryRun{Dry-Run<br/>Mode?}
+    LockUpdate --> DryRun{Dry-Run<br/>Mode?}
 
     DryRun -->|Yes| Summary[Generate GitHub<br/>Summary Report]
     Summary --> End([Workflow Complete])
@@ -126,13 +127,17 @@ flowchart TD
 
 #### Changelog Generation
 
-Some npm packages use **Nx Release** for version bump and changelog generation:
+npm packages use **Nx Release** for version bumps and changelog generation:
 
+- Packages are organized into two **release groups** (configured in `nx.json`):
+  - **`react`**: react-icons, webpack-plugin, react-native-icons → versioned with `REACT_VERSION`
+  - **`native`**: svg-icons, svg-sprites → versioned with `NEW_VERSION`
+- `skipLockFileUpdate` is enabled in nx config; the lockfile is updated explicitly after all version bumps via `npm install --package-lock-only`
 - Changelog generated based on **conventional commits** that modified `packages/{package-folder}/` only
 - Uses workspace-wide git tags (`1.1.{number}`) rather than package-specific tags
 - If no relevant changes found, defaults to: `"This release contains icon updates"`
 
-> **Note**: `"projectsRelationship": "independent"` is configured in `nx.json` to filter commits to only those affecting `packages/{project}/`, even though the repo uses a fixed release schema.
+> **Note**: `"projectsRelationship": "independent"` is configured per release group in `nx.json` to filter commits to only those affecting `packages/{project}/`, even though the repo uses a fixed release schema.
 
 ### Environment Variables
 
