@@ -312,6 +312,25 @@ jobs:
           git status --short >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
 
+      - name: Stage changed package files
+        if: ${{ inputs.dry-run }}
+        run: |
+          # Collect all uncommitted package changes into a temp directory for artifact upload.
+          # This allows inspecting what a dry-run publish *would* have committed/published.
+          mkdir -p /tmp/changed-packages
+          # Copy each changed file under packages/ (preserving directory structure) to the staging area
+          git status --porcelain -- 'packages/' | awk '{print $NF}' | xargs -I{} cp --parents {} /tmp/changed-packages/ 2>/dev/null || true
+          # Include root manifests so the artifact is a self-contained snapshot of version bumps
+          cp package.json package-lock.json /tmp/changed-packages/
+
+      - name: Upload changed package files
+        if: ${{ inputs.dry-run }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: changed-packages-files
+          path: /tmp/changed-packages/
+          if-no-files-found: warn
+
   # publish-android-demo:
   #   name: Publish Android demo app
   #   runs-on: ubuntu-latest
