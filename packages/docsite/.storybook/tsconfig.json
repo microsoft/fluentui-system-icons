@@ -20,8 +20,5 @@
     "*.ts",
     "*.tsx"
   ],
-  "exclude": [
-    "../**/*.spec.ts",
-    "../**/*.spec.tsx"
-  ]
+  "exclude": ["../**/*.spec.ts", "../**/*.spec.tsx"]
 }

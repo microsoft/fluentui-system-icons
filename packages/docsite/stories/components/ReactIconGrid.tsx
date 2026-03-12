@@ -8,7 +8,6 @@ import {
   MessageBar,
   Radio,
   RadioGroup,
-  shorthands,
   Toast,
   Toaster,
   ToastTitle,
@@ -24,15 +23,15 @@ import { FixedSizeGrid, type GridChildComponentProps } from 'react-window';
 const ICON_CELL_WIDTH = 250;
 const UNSIZED_ICON_SIZE = 48;
 
-const ICONS_LIST: React.FC<ReactIcons.FluentIconsProps>[] = Object.keys(ReactIcons)
-  .map(iconName => (ReactIcons as any)[iconName])
-  .filter(icon => !!icon && !!icon.displayName);
+const ICONS_LIST: React.FC<ReactIcons.FluentIconsProps>[] = (
+  Object.values(ReactIcons) as React.FC<ReactIcons.FluentIconsProps>[]
+).filter((icon) => !!icon && !!icon.displayName);
 
 const useClasses = makeStyles({
   controls: {
     display: 'grid',
     gridTemplateColumns: '1fr auto',
-    ...shorthands.gap(tokens.spacingVerticalL, tokens.spacingHorizontalL),
+    gap: `${tokens.spacingVerticalL} ${tokens.spacingHorizontalL}`,
     marginBottom: tokens.spacingVerticalM,
   },
 
@@ -46,9 +45,9 @@ const useClasses = makeStyles({
   },
 
   radioControl: {
-    ...shorthands.borderRadius(tokens.borderRadiusSmall),
+    borderRadius: tokens.borderRadiusSmall,
     boxShadow: tokens.shadow2,
-    ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalL),
+    padding: `${tokens.spacingVerticalXS} ${tokens.spacingHorizontalL}`,
     backgroundColor: tokens.colorNeutralBackground1,
   },
 
@@ -61,7 +60,7 @@ const useClasses = makeStyles({
   },
 
   pane: {
-    ...shorthands.borderRadius(tokens.borderRadiusSmall),
+    borderRadius: tokens.borderRadiusSmall,
     boxShadow: tokens.shadow2,
   },
 
@@ -72,24 +71,24 @@ const useClasses = makeStyles({
     justifyItems: 'center',
     gridTemplateColumns: '1fr',
     gridTemplateRows: '1fr auto',
-    ...shorthands.gap(tokens.spacingVerticalMNudge, tokens.spacingHorizontalMNudge),
+    gap: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalMNudge}`,
     fontSize: `${UNSIZED_ICON_SIZE}px`,
-    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
-    ...shorthands.overflow('hidden'),
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS}`,
+    overflow: 'hidden',
     boxShadow: tokens.shadow2,
-    ...shorthands.margin(tokens.spacingVerticalS, tokens.spacingHorizontalS),
-    ...shorthands.borderRadius(tokens.borderRadiusSmall),
+    margin: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS}`,
+    borderRadius: tokens.borderRadiusSmall,
   },
   iconCopyButton: {
-    ...shorthands.gridArea('1', '1', '2', '2'),
+    gridArea: '1 / 1 / 2 / 2',
     zIndex: 1,
     justifySelf: 'end',
   },
   iconGlyph: {
-    ...shorthands.gridArea('1', '1', '2', '2'),
+    gridArea: '1 / 1 / 2 / 2',
   },
   iconCode: {
-    ...shorthands.gridArea('2', '1', '3', '2'),
+    gridArea: '2 / 1 / 3 / 2',
 
     '> code': {
       fontSize: `${tokens.fontSizeBase200} !important`,
@@ -152,12 +151,12 @@ const ReactIconGrid = () => {
 
   const filteredIcons = React.useMemo(
     () =>
-      ICONS_LIST.filter(icon => {
+      ICONS_LIST.filter((icon) => {
         if (size === 'Unsized') {
           return (
             icon.displayName! &&
             !/\d/.test(icon.displayName.toLowerCase()) &&
-            icon.displayName?.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1
+         icon.displayName.toLowerCase().includes(searchQuery.toLowerCase())
           );
         }
 
@@ -190,7 +189,7 @@ const ReactIconGrid = () => {
   };
 
   useIsomorphicLayoutEffect(() => {
-    const observer = new ResizeObserver(entries => {
+    const observer = new ResizeObserver((entries) => {
       setWidth(entries[0].contentRect.width);
     });
 
@@ -232,13 +231,9 @@ const ReactIconGrid = () => {
               ),
             }}
           >
-            <RadioGroup
-              layout="horizontal-stacked"
-              onChange={(ev, data) => setSize(data.value)}
-              value={size}
-            >
+            <RadioGroup layout="horizontal-stacked" onChange={(ev, data) => setSize(data.value)} value={size}>
               <Radio value="Unsized" label="Unsized" />
-              {[16, 20, 24, 28, 32, 48].map(option => (
+              {[16, 20, 24, 28, 32, 48].map((option) => (
                 <Radio key={option} value={String(option)} label={String(option)} />
               ))}
             </RadioGroup>
