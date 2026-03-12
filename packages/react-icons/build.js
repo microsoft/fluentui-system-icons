@@ -24,11 +24,13 @@ function main() {
   transpileTsc({ moduleFormat: 'esnext', outDir: 'lib' }, projectRoot);
   transpileTsc({ moduleFormat: 'commonjs', outDir: 'lib-cjs' }, projectRoot);
 
-  applyBabelTransform('lib', projectRoot);
-  applyBabelTransform('lib-cjs', projectRoot);
-
+  // Font assets must be copied before babel transform — Griffel/Linaria evaluates
+  // the compiled JS in a VM and resolves font file imports via require().
   copyAssets('src/utils/fonts/*.{ttf,woff,woff2,json}', './lib/utils/fonts', projectRoot);
   copyAssets('src/utils/fonts/*.{ttf,woff,woff2,json}', './lib-cjs/utils/fonts', projectRoot);
+
+  applyBabelTransform('lib', projectRoot);
+  applyBabelTransform('lib-cjs', projectRoot);
 }
 
 // =================================================================================================
