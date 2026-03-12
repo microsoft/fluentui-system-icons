@@ -37,8 +37,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
-    "@griffel/babel-preset": "^1.0.0",
-    "@griffel/eslint-plugin": "^2.0.0",
+    "@griffel/babel-preset": "^1.8.1",
+    "@griffel/eslint-plugin": "^2.0.2",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^12.1.2",
     "@types/react": "^17.0.2",
@@ -60,7 +60,7 @@
     "yargs": "^14.0.0"
   },
   "dependencies": {
-    "@griffel/react": "^1.0.0",
+    "@griffel/react": "^1.6.1",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

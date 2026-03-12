@@ -32,6 +32,10 @@
     "typescript": "5.0.4",
     "typescript-eslint": "7.18.0",
     "monosize": "0.7.1",
-    "monosize-bundler-webpack": "0.2.1"
+    "monosize-bundler-webpack": "0.2.1",
+    "@griffel/webpack-loader": "2.2.23",
+    "@griffel/webpack-extraction-plugin": "0.5.14",
+    "mini-css-extract-plugin": "2.10.1",
+    "css-loader": "7.1.4"
   }
 }
