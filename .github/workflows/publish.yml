@@ -87,12 +87,6 @@ jobs:
           os.system(f'echo \"REACT_VERSION={major}.{minor}.{int(asset) + 1}\" >> \$GITHUB_ENV')
           """
 
-      # Needs to be "-E" instead of "-r" on macOS
-      - name: Replace version number in react-native-icons/package.json
-        run: |
-          sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?(-rc\.[0-9]+)?\"/\"version\": \"$REACT_VERSION\"/g" packages/react-native-icons/package.json
-          rm packages/react-native-icons/package.json.bk
-
       - uses: actions/setup-node@v4
         with:
           node-version: 22.x
@@ -156,55 +150,23 @@ jobs:
       #     sed -i.bk -r "s/version: [0-9]+\.[0-9]+\.[0-9]+/version: $NEW_VERSION/g" flutter/pubspec.yaml
       #     rm flutter/pubspec.yaml.bk
 
-      # Needs to be "-E" instead of "-r" on macOS
-      - name: Replace version number in svg-icons/package.json
-        run: |
-          sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/svg-icons/package.json
-          rm packages/svg-icons/package.json.bk
-
-      # Needs to be "-E" instead of "-r" on macOS
-      - name: Replace version number in svg-sprites/package.json
-        run: |
-          sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$NEW_VERSION\"/g" packages/svg-sprites/package.json
-          rm packages/svg-sprites/package.json.bk
-
-      # Needs to be "-E" instead of "-r" on macOS
-      - name: Replace version number in react-native-icons/package.json
-        run: |
-          sed -i.bk -r "s/\"version\": \"[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"$REACT_VERSION\"/g" packages/react-native-icons/package.json
-          rm packages/react-native-icons/package.json.bk
-
-      - name: Build SVG library
-        run: |
-          npm run build
-        working-directory: packages/svg-icons
-
-      - name: Build SVG sprite library
-        run: |
-          npm run build
-        working-directory: packages/svg-sprites
-
-      - name: Build React-Native library
-        run: |
-          npm run build
-        working-directory: packages/react-native-icons
-
-      - name: Build Webpack plugin library
-        run: |
-          npx nx run react-icons-font-subsetting-webpack-plugin:build
-
-      - name: Build React library
+      - name: Build NPM publishable packages
         env:
           REACT_ICONS_SKIP_METADATA_DIFF_CHECK: 'true'
         run: |
-          npx nx run react-icons:build
+          npx nx run-many --target=build --projects="tag:npm:public"
           npx nx run react-icons:build-verify -u
 
-      # NX Release (react-icons + react-icons-font-subsetting-webpack-plugin)
+      # NX Release (all npm packages via release groups)
       - name: Prepare NPM release (version + changelog)
         run: |
-          npx nx release version $REACT_VERSION --verbose
-          npx nx release changelog $REACT_VERSION --from $CURRENT_VERSION --no-git-tag --no-git-commit --verbose
+          npx nx release version $REACT_VERSION --group=react --verbose
+          npx nx release version $NEW_VERSION --group=native --verbose
+          npx nx release changelog $REACT_VERSION --group=react --from $CURRENT_VERSION --no-git-tag --no-git-commit --verbose
+          npx nx release changelog $NEW_VERSION --group=native --from $CURRENT_VERSION --no-git-tag --no-git-commit --verbose
+
+      - name: Update lockfile
+        run: npm install --package-lock-only
 
       - name: Publish svg-icons to npm
         if: ${{ !inputs.dry-run }}

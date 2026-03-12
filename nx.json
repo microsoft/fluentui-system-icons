@@ -12,8 +12,20 @@
     "sharedGlobals": []
   },
   "release": {
-    "projects": ["packages/react-icons", "packages/react-icons-font-subsetting-webpack-plugin"],
-    "projectsRelationship": "independent",
+    "groups": {
+      "react": {
+        "projects": [
+          "packages/react-icons",
+          "packages/react-icons-font-subsetting-webpack-plugin",
+          "packages/react-native-icons"
+        ],
+        "projectsRelationship": "independent"
+      },
+      "native": {
+        "projects": ["packages/svg-icons", "packages/svg-sprites"],
+        "projectsRelationship": "independent"
+      }
+    },
     "version": {
       "conventionalCommits": true,
       "preserveMatchingDependencyRanges": ["devDependencies"],
@@ -22,6 +34,9 @@
         "commit": false,
         "tag": false,
         "commitMessage": "chore(release): version {projectName} {version}"
+      },
+      "versionActionsOptions": {
+        "skipLockFileUpdate": true
       }
     },
     "changelog": {
