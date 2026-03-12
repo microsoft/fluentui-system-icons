@@ -1,3 +1,6 @@
+# NOTE: This workflow is applicable only for the "react" nx release group.
+# It does NOT cover the react-native-icons package, which belongs to a separate release group.
+
 name: Publish Prerelease NPM
 
 on:
@@ -75,16 +78,20 @@ jobs:
             --projects "${{ steps.projects.outputs.nx-names }}"
 
       - name: Apply prerelease versions
-        # we need to apply version on all nx onboarded projects without --projects,
-        # otherwise nx "updateDependents": "auto" would override the version with a patch bump instead of prerelease.
+        # Scope to --group=react so only react group packages are versioned.
+        # We intentionally avoid --projects because nx "updateDependents": "auto"
+        # would override the prerelease version with a patch bump.
+        # react-native-icons gets versioned too but won't be published (change is local-only).
         run: |
           npx nx release version "${{ steps.versions.outputs.version }}" \
+            --group=react \
             --dry-run=${{ inputs.dry-run }} \
             --verbose
 
       - name: Publish to npm (Nx Release)
         run: |
           npx nx release publish \
+            --projects=${{ steps.projects.outputs.nx-names }} \
             --tag prerelease \
             --dry-run=${{ inputs.dry-run }} \
             --verbose

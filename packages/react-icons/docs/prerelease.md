@@ -2,7 +2,7 @@
 
 ## Overview
 
-The prerelease workflow allows you to publish preview versions of `@fluentui/react-icons` to npm before a final release. This is useful for:
+The prerelease workflow allows you to publish preview versions of "react" nx release group (excluding `@fluentui/react-native-icons`) to npm before a final release. This is useful for:
 
 - Testing new features with early adopters
 - Getting feedback before official releases
@@ -39,10 +39,11 @@ Click **Run workflow** and configure:
 The workflow will:
 
 1. ✅ Validate the branch (must not be `main`)
-2. 📦 Build the react-icons package
+2. 📦 Build the react-* packages
 3. 🔢 Calculate the next prerelease version
-4. 📤 Publish to npm (or simulate if dry-run is enabled)
-5. 📝 Generate a summary with installation instructions
+4. 🏷️ Apply versions scoped to the `react` release group (react-native-icons is versioned locally but not published)
+5. 📤 Publish to npm (or simulate if dry-run is enabled)
+6. 📝 Generate a summary with installation instructions
 
 ## Prerelease Versioning
 
