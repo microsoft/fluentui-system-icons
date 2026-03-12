@@ -162,7 +162,8 @@ jobs:
         run: |
           npx nx release version $REACT_VERSION --group=react --verbose
           npx nx release version $NEW_VERSION --group=native --verbose
-          npx nx release changelog $REACT_VERSION --from $CURRENT_VERSION --no-git-tag --no-git-commit --verbose
+          npx nx release changelog $REACT_VERSION --group=react --from $CURRENT_VERSION --no-git-tag --no-git-commit --verbose
+          npx nx release changelog $NEW_VERSION --group=native --from $CURRENT_VERSION --no-git-tag --no-git-commit --verbose
 
       - name: Update lockfile
         run: npm install --package-lock-only

@@ -133,7 +133,7 @@ npm packages use **Nx Release** for version bumps and changelog generation:
   - **`react`**: react-icons, webpack-plugin, react-native-icons → versioned with `REACT_VERSION`
   - **`native`**: svg-icons, svg-sprites → versioned with `NEW_VERSION`
 - `skipLockFileUpdate` is enabled in nx config; the lockfile is updated explicitly after all version bumps via `npm install --package-lock-only`
-- Changelog generated based on **conventional commits** that modified `packages/{package-folder}/` only
+- Changelog is generated **per release group** (each with its respective version), based on **conventional commits** that modified `packages/{package-folder}/` only
 - Uses workspace-wide git tags (`1.1.{number}`) rather than package-specific tags
 - If no relevant changes found, defaults to: `"This release contains icon updates"`
 
