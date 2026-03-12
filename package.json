@@ -19,9 +19,7 @@
     "reset-workspace": "git clean -dXf",
     "postinstall": "patch-package",
     "format": "nx format:write",
-    "format:check": "nx format:check",
-    "storybook": "npm run storybook -w packages/docsite",
-    "build-storybook": "npm run build-storybook -w packages/docsite"
+    "format:check": "nx format:check"
   },
   "devDependencies": {
     "@nx/js": "21.6.10",

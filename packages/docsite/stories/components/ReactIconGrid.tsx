@@ -25,8 +25,8 @@ const ICON_CELL_WIDTH = 250;
 const UNSIZED_ICON_SIZE = 48;
 
 const ICONS_LIST: React.FC<ReactIcons.FluentIconsProps>[] = Object.keys(ReactIcons)
-  .map(iconName => (ReactIcons as any)[iconName])
-  .filter(icon => !!icon && !!icon.displayName);
+  .map((iconName) => (ReactIcons as any)[iconName])
+  .filter((icon) => !!icon && !!icon.displayName);
 
 const useClasses = makeStyles({
   controls: {
@@ -152,7 +152,7 @@ const ReactIconGrid = () => {
 
   const filteredIcons = React.useMemo(
     () =>
-      ICONS_LIST.filter(icon => {
+      ICONS_LIST.filter((icon) => {
         if (size === 'Unsized') {
           return (
             icon.displayName! &&
@@ -190,7 +190,7 @@ const ReactIconGrid = () => {
   };
 
   useIsomorphicLayoutEffect(() => {
-    const observer = new ResizeObserver(entries => {
+    const observer = new ResizeObserver((entries) => {
       setWidth(entries[0].contentRect.width);
     });
 
@@ -232,13 +232,9 @@ const ReactIconGrid = () => {
               ),
             }}
           >
-            <RadioGroup
-              layout="horizontal-stacked"
-              onChange={(ev, data) => setSize(data.value)}
-              value={size}
-            >
+            <RadioGroup layout="horizontal-stacked" onChange={(ev, data) => setSize(data.value)} value={size}>
               <Radio value="Unsized" label="Unsized" />
-              {[16, 20, 24, 28, 32, 48].map(option => (
+              {[16, 20, 24, 28, 32, 48].map((option) => (
                 <Radio key={option} value={String(option)} label={String(option)} />
               ))}
             </RadioGroup>
