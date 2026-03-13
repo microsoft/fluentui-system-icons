@@ -1,0 +1,20 @@
+{
+  "name": "Headphones Convertible",
+  "size": [
+    20,
+    16
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "Used to represent headphone device audio.",
+  "metaphor": [
+    "audio",
+    "sound",
+    "volume",
+    "device",
+    "analog"
+  ]
+}
