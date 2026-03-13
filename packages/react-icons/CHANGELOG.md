@@ -1,3 +1,10 @@
+## 2.0.321 (2026-03-13)
+
+### 🚀 Features
+
+- **react-icons:** add new and updated icons ([#1008](https://github.com/microsoft/fluentui-system-icons/pull/1008))
+- **react-icons:** enable griffel `makeStaticStyles` AOT for font icons ([#1006](https://github.com/microsoft/fluentui-system-icons/pull/1006))
+
 ## 2.0.320 (2026-02-27)
 
 ### 🚀 Features
