@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "declaration": false,
+    "outDir": "",
+    "emitDecoratorMetadata": true
+  },
+  "include": [
+    "../stories/**/*.stories.ts",
+    "../stories/**/*.stories.tsx",
+    "../stories/**/*.stories.mdx",
+    "../stories/**/*.tsx",
+    "../stories/**/*.ts",
+    "*.ts",
+    "*.tsx"
+  ],
+  "exclude": ["../**/*.spec.ts", "../**/*.spec.tsx"]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "docsite",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "storybook": "storybook dev -p 6006 --docs",
+    "build-storybook": "storybook build --docs"
+  },
+  "dependencies": {
+    "@fluentui/react-components": "^9.46.0",
+    "@fluentui/react-icons": "*",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-window": "^1.8.10"
+  },
+  "devDependencies": {
+    "@storybook/addon-docs": "^8.6.0",
+    "@storybook/addon-webpack5-compiler-swc": "^4.0.2",
+    "@storybook/react-webpack5": "^8.6.0",
+    "@types/react": "19.1.13",
+    "@types/react-dom": "19.1.9",
+    "storybook": "^8.6.0",
+    "typescript": "5.0.4"
+  }
+}
