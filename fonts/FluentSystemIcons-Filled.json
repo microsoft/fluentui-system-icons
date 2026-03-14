@@ -9526,5 +9526,13 @@
   "ic_fluent_midi_off_24_filled": 986164,
   "ic_fluent_stack_vertical_16_filled": 986165,
   "ic_fluent_stack_vertical_28_filled": 986166,
-  "ic_fluent_stack_vertical_32_filled": 986167
+  "ic_fluent_stack_vertical_32_filled": 986167,
+  "ic_fluent_device_meeting_room_microphone_above_16_filled": 986168,
+  "ic_fluent_device_meeting_room_microphone_above_20_filled": 986169,
+  "ic_fluent_device_meeting_room_microphone_below_16_filled": 986170,
+  "ic_fluent_device_meeting_room_microphone_below_20_filled": 986171,
+  "ic_fluent_headphones_convertible_16_filled": 986172,
+  "ic_fluent_headphones_convertible_20_filled": 986173,
+  "ic_fluent_headphones_monoaural_16_filled": 986174,
+  "ic_fluent_headphones_monoaural_20_filled": 986175
 }

@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?48b5becd279ef6fe49c9405ad5b5666e") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?48b5becd279ef6fe49c9405ad5b5666e") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?48b5becd279ef6fe49c9405ad5b5666e") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?0f09c59ea5197adf846aba74b10c6ce9") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?0f09c59ea5197adf846aba74b10c6ce9") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?0f09c59ea5197adf846aba74b10c6ce9") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -28599,4 +28599,28 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_stack_vertical_32_filled:before {
     content: "\f0c37";
+}
+.icon-ic_fluent_device_meeting_room_microphone_above_16_filled:before {
+    content: "\f0c38";
+}
+.icon-ic_fluent_device_meeting_room_microphone_above_20_filled:before {
+    content: "\f0c39";
+}
+.icon-ic_fluent_device_meeting_room_microphone_below_16_filled:before {
+    content: "\f0c3a";
+}
+.icon-ic_fluent_device_meeting_room_microphone_below_20_filled:before {
+    content: "\f0c3b";
+}
+.icon-ic_fluent_headphones_convertible_16_filled:before {
+    content: "\f0c3c";
+}
+.icon-ic_fluent_headphones_convertible_20_filled:before {
+    content: "\f0c3d";
+}
+.icon-ic_fluent_headphones_monoaural_16_filled:before {
+    content: "\f0c3e";
+}
+.icon-ic_fluent_headphones_monoaural_20_filled:before {
+    content: "\f0c3f";
 }

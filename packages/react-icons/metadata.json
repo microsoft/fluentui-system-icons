@@ -8899,6 +8899,26 @@
     "font": true,
     "type": "resizable"
   },
+  "DeviceMeetingRoomMicrophoneAboveFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DeviceMeetingRoomMicrophoneAboveRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DeviceMeetingRoomMicrophoneBelowFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DeviceMeetingRoomMicrophoneBelowRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "DeviceMeetingRoomRemoteFilled": {
     "svg": true,
     "font": true,
@@ -12995,6 +13015,26 @@
     "type": "resizable"
   },
   "HeadphonesRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "HeadphonesConvertibleFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "HeadphonesConvertibleRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "HeadphonesMonoauralFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "HeadphonesMonoauralRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -60794,6 +60834,46 @@
     "font": true,
     "type": "sized"
   },
+  "DeviceMeetingRoomMicrophoneAbove16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomMicrophoneAbove16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomMicrophoneAbove20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomMicrophoneAbove20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomMicrophoneBelow16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomMicrophoneBelow16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomMicrophoneBelow20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeviceMeetingRoomMicrophoneBelow20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "DeviceMeetingRoomRemote16Filled": {
     "svg": true,
     "font": true,
@@ -74780,6 +74860,46 @@
     "type": "sized"
   },
   "Headphones48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "HeadphonesConvertible16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "HeadphonesConvertible16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "HeadphonesConvertible20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "HeadphonesConvertible20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "HeadphonesMonoaural16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "HeadphonesMonoaural16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "HeadphonesMonoaural20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "HeadphonesMonoaural20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
