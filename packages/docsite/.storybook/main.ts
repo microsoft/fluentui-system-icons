@@ -1,12 +1,14 @@
+import { fileURLToPath } from "node:url";
+import { dirname } from "node:path";
 import type { StorybookConfig } from '@storybook/react-webpack5';
 
 const config: StorybookConfig = {
   stories: ['../stories/**/*.stories.@(js|jsx|ts|tsx)', '../stories/**/*.mdx'],
 
-  addons: ['@storybook/addon-docs', '@storybook/addon-webpack5-compiler-swc'],
+  addons: [getAbsolutePath("@storybook/addon-docs"), getAbsolutePath("@storybook/addon-webpack5-compiler-swc")],
 
   framework: {
-    name: '@storybook/react-webpack5',
+    name: getAbsolutePath("@storybook/react-webpack5"),
     options: {},
   },
 
@@ -27,3 +29,7 @@ const config: StorybookConfig = {
 };
 
 export default config;
+
+function getAbsolutePath(value: string): any {
+  return dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));
+}

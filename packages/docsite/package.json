@@ -14,12 +14,12 @@
     "react-window": "^1.8.10"
   },
   "devDependencies": {
-    "@storybook/addon-docs": "^8.6.0",
+    "@storybook/addon-docs": "^10.3.0",
     "@storybook/addon-webpack5-compiler-swc": "^4.0.2",
-    "@storybook/react-webpack5": "^8.6.0",
+    "@storybook/react-webpack5": "^10.3.0",
     "@types/react": "19.1.13",
     "@types/react-dom": "19.1.9",
-    "storybook": "^8.6.0",
+    "storybook": "^10.3.0",
     "typescript": "5.0.4"
   }
 }
