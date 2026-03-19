@@ -156,7 +156,7 @@ const ReactIconGrid = () => {
           return (
             icon.displayName! &&
             !/\d/.test(icon.displayName.toLowerCase()) &&
-         icon.displayName.toLowerCase().includes(searchQuery.toLowerCase())
+            icon.displayName.toLowerCase().includes(searchQuery.toLowerCase())
           );
         }
 
