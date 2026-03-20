@@ -2186,7 +2186,11 @@ describe('Build Verification', () => {
     );
   });
 
-  describe('Svg Sprite Atoms', () => {
+  // Sprite tests only run when sprite generation was enabled (--sprites flag passed to convert.js)
+  const spritesGenerated = fs.existsSync(path.join(__dirname, 'lib', 'atoms', 'svg-sprite'));
+  const describeSprites = spritesGenerated ? describe : describe.skip;
+
+  describeSprites('Svg Sprite Atoms', () => {
     function getSpriteAssetPaths() {
       const svgSpritePathEsm = path.join(__dirname, 'lib', 'atoms/svg-sprite');
       const svgSpritePathCjs = path.join(__dirname, 'lib-cjs', 'atoms/svg-sprite');
