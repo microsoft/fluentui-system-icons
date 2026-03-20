@@ -7,7 +7,13 @@ const fs = require('fs');
 const { readdir } = require('fs/promises');
 const path = require('path');
 const yargs = require('yargs');
-const { parseIconSource, buildIconExportCode, getCreateFluentIconHeader, loadRtlMetadata, generatePerIconFiles } = require('./convert.utils');
+const {
+  parseIconSource,
+  buildIconExportCode,
+  getCreateFluentIconHeader,
+  loadRtlMetadata,
+  generatePerIconFiles,
+} = require('./convert.utils');
 const {
   assertCompoundStyleVariantIssues,
   handleDeprecatedColorAtoms,
@@ -33,7 +39,12 @@ async function main() {
 
   // 2. Generate per-icon output (+ SVG sprites when --sprites is enabled)
   const perIconMetadataPath = METADATA_PATH.replace(/\.json$/, '.atom.json');
-  const { svgMetadata: perIconMetadata, spriteMetadata } = await processPerIcon(srcFiles, PER_ICON_DEST, SPRITE_DEST, rtlMetadata);
+  const { svgMetadata: perIconMetadata, spriteMetadata } = await processPerIcon(
+    srcFiles,
+    PER_ICON_DEST,
+    SPRITE_DEST,
+    rtlMetadata,
+  );
 
   writeMetadata(METADATA_PATH, chunkMetadata);
   writeMetadata(perIconMetadataPath, perIconMetadata);
@@ -211,9 +222,7 @@ async function processPerIcon(sourceFiles, destPath, spriteDest, rtlMetadata, op
   await assertCompoundStyleVariantIssues(destPath);
 
   const spriteMsg = spriteDest ? `${spriteFileCount} sprite pair(s) to ${spriteDest}` : 'sprites disabled';
-  console.log(
-    `[svg per-icon] Wrote ${fileCount} icon files to ${destPath} | ${spriteMsg}`,
-  );
+  console.log(`[svg per-icon] Wrote ${fileCount} icon files to ${destPath} | ${spriteMsg}`);
   return { svgMetadata, spriteMetadata };
 }
 

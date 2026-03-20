@@ -41,7 +41,6 @@ function groupItemsByBase(destPath, items, options = { groupByBase: true }) {
 
   // Validate and sort each group
   for (const [base, groupItems] of groups) {
-
     assertNoDuplicateExports(groupItems, base, destPath);
     groupItems.sort(compareByStylePriority);
     groups.set(base, groupItems);

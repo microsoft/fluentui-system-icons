@@ -24,6 +24,6 @@
     "per-icon.writer.js",
     "chunking-utils.js",
     "build.js",
-    "deprecated-atoms.js",
+    "deprecated-atoms.js"
   ]
 }
