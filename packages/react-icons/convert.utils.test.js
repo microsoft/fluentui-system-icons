@@ -144,9 +144,9 @@ describe(`convert  utils`, () => {
         isColor: false,
         flipInRtl: false,
       });
-      expect(code).toContain("createFluentIcon('AccessTime'");
-      expect(code).toContain('"1em"');
-      expect(code).toContain('["M1 2 3"]');
+      expect(code).toMatchInlineSnapshot(
+        `"export const AccessTime: FluentIcon = (/*#__PURE__*/createFluentIcon('AccessTime', "1em", ["M1 2 3"]));"`,
+      );
       expect(code).not.toContain('color: true');
     });
 
@@ -159,6 +159,9 @@ describe(`convert  utils`, () => {
         isColor: true,
         flipInRtl: false,
       });
+      expect(code).toMatchInlineSnapshot(
+        `"export const PatientColor: FluentIcon = (/*#__PURE__*/createFluentIcon('PatientColor', "20", \`<g fill="#000"/><path d="M1 2" fill="#ff0000"/>\`, { color: true }));"`,
+      );
       expect(code).toContain('fill=');
       expect(code).toContain('color: true');
     });
@@ -172,6 +175,7 @@ describe(`convert  utils`, () => {
         isColor: false,
         flipInRtl: true,
       });
+      expect(code).toMatchInlineSnapshot(`"export const Arrow: FluentIcon = (/*#__PURE__*/createFluentIcon('Arrow', "1em", ["M0 0"], { flipInRtl: true }));"`);
       expect(code).toContain('flipInRtl');
     });
   });

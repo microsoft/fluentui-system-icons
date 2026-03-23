@@ -10,9 +10,9 @@ const { groupItemsByBase } = require('./per-icon.writer');
 
 /** @typedef {{ groupByBase?: boolean }} WriteSpriteOptions */
 
-// ---------------------------------------------------------------------------
-// Private helpers (ported from generate-svg-sprites-from-modules.js)
-// ---------------------------------------------------------------------------
+// ---------------
+// Private helpers
+// ---------------
 
 /**
  * @param {string} width - Icon width string (e.g. "20", "1em")
