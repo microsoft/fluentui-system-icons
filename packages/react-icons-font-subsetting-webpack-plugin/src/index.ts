@@ -119,10 +119,7 @@ function getTargetFormat(assetName: string) {
  * Returns `null` when subsetting cannot be performed (e.g. `optimization.usedExports` is
  * disabled, or provided exports are not statically known), so the caller can skip the module.
  */
-function resolveUsedIconExports(
-  m: webpack.NormalModule,
-  moduleGraph: webpack.ModuleGraph,
-): string[] | null {
+function resolveUsedIconExports(m: webpack.NormalModule, moduleGraph: webpack.ModuleGraph): string[] | null {
   const usedModuleExports = moduleGraph.getUsedExports(m, undefined);
 
   if (usedModuleExports === null) {
