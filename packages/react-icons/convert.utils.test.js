@@ -175,7 +175,9 @@ describe(`convert  utils`, () => {
         isColor: false,
         flipInRtl: true,
       });
-      expect(code).toMatchInlineSnapshot(`"export const Arrow: FluentIcon = (/*#__PURE__*/createFluentIcon('Arrow', "1em", ["M0 0"], { flipInRtl: true }));"`);
+      expect(code).toMatchInlineSnapshot(
+        `"export const Arrow: FluentIcon = (/*#__PURE__*/createFluentIcon('Arrow', "1em", ["M0 0"], { flipInRtl: true }));"`,
+      );
       expect(code).toContain('flipInRtl');
     });
   });
