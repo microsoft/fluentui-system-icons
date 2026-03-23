@@ -669,7 +669,7 @@ function subsetSpriteSvg(svgText: string, usedIds: Set<string>): string {
   return (
     '<?xml version="1.0" encoding="UTF-8"?>\n' +
     '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">\n' +
-    keptSymbols.map(s => (s.startsWith('  ') ? s : `  ${s}`)).join('\n') +
+    keptSymbols.map((s) => (s.startsWith('  ') ? s : `  ${s}`)).join('\n') +
     '\n</svg>\n'
   );
 }
@@ -746,4 +746,3 @@ function collectSortedIds(spriteResourceToIds: Map<string, Set<string>>): string
   }
   return Array.from(ids).sort();
 }
-

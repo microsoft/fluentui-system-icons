@@ -20,7 +20,9 @@ npm i -D @fluentui/react-icons-svg-sprite-subsetting-webpack-plugin
 ## Usage
 
 ```js
-const { default: FluentUIReactIconsSvgSpriteSubsettingPlugin } = require('@fluentui/react-icons-svg-sprite-subsetting-webpack-plugin');
+const {
+  default: FluentUIReactIconsSvgSpriteSubsettingPlugin,
+} = require('@fluentui/react-icons-svg-sprite-subsetting-webpack-plugin');
 
 module.exports = {
   // ...
@@ -39,13 +41,13 @@ module.exports = {
 
 You can pass a hash of configuration options to the plugin. Allowed values are as follows:
 
-|Name|Type|Default|Description|
-|:---|:---|:------|:----------|
-|**`mode`**|`{'atomic'\|'merged'}`|`'atomic'`|`'atomic'` subsets each emitted sprite asset (`atoms/svg-sprite/*.svg`) to only used symbols. `'merged'` emits a single merged sprite and rewrites sprite imports to it.|
-|**`mergedSpriteFilename`**|`{String}`|`undefined`|The filename for the merged sprite asset. Only valid when `mode` is `'merged'`. Supports `[fullhash]` and `[contenthash]` placeholders.|
-|**`forceEnableUsedExports`**|`{Boolean}`|`true`|If `true`, automatically enables `optimization.usedExports` when it is not already set in your webpack config.|
-|**`generateSpritesManifest`**|`{Boolean}`|`false`|If `true`, emits a `sprites-manifest.json` file containing entrypoint-level sprite usage information.|
-|**`injectSpritesInTemplates`**|`{Boolean\|Object}`|`false`|Controls HTML injection of sprites via `html-webpack-plugin`. `false` disables injection. `true` is shorthand for `{ mode: 'inline' }`. `{ mode: 'inline' }` injects a merged inline `<svg>` at the start of `<body>`. `{ mode: 'reference' }` injects `<link rel="preload">` tags for used sprite assets.|
+| Name                           | Type                   | Default     | Description                                                                                                                                                                                                                                                                                                |
+| :----------------------------- | :--------------------- | :---------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`mode`**                     | `{'atomic'\|'merged'}` | `'atomic'`  | `'atomic'` subsets each emitted sprite asset (`atoms/svg-sprite/*.svg`) to only used symbols. `'merged'` emits a single merged sprite and rewrites sprite imports to it.                                                                                                                                   |
+| **`mergedSpriteFilename`**     | `{String}`             | `undefined` | The filename for the merged sprite asset. Only valid when `mode` is `'merged'`. Supports `[fullhash]` and `[contenthash]` placeholders.                                                                                                                                                                    |
+| **`forceEnableUsedExports`**   | `{Boolean}`            | `true`      | If `true`, automatically enables `optimization.usedExports` when it is not already set in your webpack config.                                                                                                                                                                                             |
+| **`generateSpritesManifest`**  | `{Boolean}`            | `false`     | If `true`, emits a `sprites-manifest.json` file containing entrypoint-level sprite usage information.                                                                                                                                                                                                      |
+| **`injectSpritesInTemplates`** | `{Boolean\|Object}`    | `false`     | Controls HTML injection of sprites via `html-webpack-plugin`. `false` disables injection. `true` is shorthand for `{ mode: 'inline' }`. `{ mode: 'inline' }` injects a merged inline `<svg>` at the start of `<body>`. `{ mode: 'reference' }` injects `<link rel="preload">` tags for used sprite assets. |
 
 ## Notes
 
