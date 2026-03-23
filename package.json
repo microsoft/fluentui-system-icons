@@ -43,5 +43,17 @@
     "@griffel/webpack-extraction-plugin": "0.5.14",
     "mini-css-extract-plugin": "2.10.1",
     "css-loader": "7.1.4"
+  },
+  "optionalDependencies": {
+    "@nx/nx-darwin-arm64": "22.6.1",
+    "@nx/nx-darwin-x64": "22.6.1",
+    "@nx/nx-freebsd-x64": "22.6.1",
+    "@nx/nx-linux-arm-gnueabihf": "22.6.1",
+    "@nx/nx-linux-arm64-gnu": "22.6.1",
+    "@nx/nx-linux-arm64-musl": "22.6.1",
+    "@nx/nx-linux-x64-gnu": "22.6.1",
+    "@nx/nx-linux-x64-musl": "22.6.1",
+    "@nx/nx-win32-arm64-msvc": "22.6.1",
+    "@nx/nx-win32-x64-msvc": "22.6.1"
   }
 }
