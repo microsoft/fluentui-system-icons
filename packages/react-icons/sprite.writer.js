@@ -121,7 +121,7 @@ function generateSpriteSvg(items) {
 }
 
 /**
- * Generate a sprite TSX module string that imports from `../../utils/svg-icon`
+ * Generate a sprite TSX module string that imports from `../../utils/createFluentIcon.svg-sprite`
  * and references the co-located `.svg` sprite file.
  * @param {string} baseName
  * @param {Array<import('./convert.utils').ParsedIconSource>} items
@@ -132,8 +132,8 @@ function generateSpriteModuleTsx(baseName, items) {
 
   const header =
     '"use client";\n' +
-    "import type { FluentIcon } from '../../utils/svg-icon';\n" +
-    "import { createFluentIcon } from '../../utils/svg-icon';\n" +
+    "import type { FluentIcon } from '../../utils/createFluentIcon.svg-sprite';\n" +
+    "import { createFluentIcon } from '../../utils/createFluentIcon.svg-sprite';\n" +
     `import sprite from '${importPathSvg}';\n\n`;
 
   const body = items

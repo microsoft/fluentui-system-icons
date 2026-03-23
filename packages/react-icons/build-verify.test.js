@@ -2281,7 +2281,7 @@ describe('Build Verification', () => {
       expect(content).toContain('export const AccessTime24Filled');
       expect(content).toContain('export const AccessTime24Regular');
 
-      // Must use createFluentIcon from the svg-icon utility
+      // Must use createFluentIcon from the createFluentIcon.svg-sprite utility
       expect(content).toContain('createFluentIcon');
 
       // Sprite modules pass the imported sprite URL as the third argument
