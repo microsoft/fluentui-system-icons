@@ -23,7 +23,7 @@
   "devDependencies": {
     "renamer": "^2.0.1",
     "shx": "^0.3.2",
-    "svgo": "^2.8.0",
+    "svgo": "2.8.2",
     "svgstore": "^3.0.1",
     "yargs": "^14.0.0"
   }
