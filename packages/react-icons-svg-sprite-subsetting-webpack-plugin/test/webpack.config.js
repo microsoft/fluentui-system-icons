@@ -19,6 +19,26 @@ console.log(`Running svg-sprite subsetting test in ${isMerged ? 'merged' : 'atom
 module.exports = {
   context: __dirname,
   mode: 'production',
+  // The `@fluentui/react-icons/svg-sprite/*` export paths don't exist yet because the
+  // svg-sprite feature is gated in the react-icons package. These aliases redirect imports
+  // to local mock modules that mirror the expected API shape.
+  //
+  // The mocks live under `__mock__/react-icons/lib/atoms/svg-sprite/` so their resolved
+  // paths match the plugin's detection pattern (`react-icons/lib/atoms/svg-sprite/*.js`).
+  //
+  // Remove these aliases once `@fluentui/react-icons` ships the `./svg-sprite/*` export map entries.
+  resolve: {
+    alias: {
+      '@fluentui/react-icons/svg-sprite/backpack': resolve(
+        __dirname,
+        '__mock__/react-icons/lib/atoms/svg-sprite/backpack.js',
+      ),
+      '@fluentui/react-icons/svg-sprite/calculator': resolve(
+        __dirname,
+        '__mock__/react-icons/lib/atoms/svg-sprite/calculator.js',
+      ),
+    },
+  },
   module: {
     rules: [
       {
