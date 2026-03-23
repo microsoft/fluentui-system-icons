@@ -1,9 +1,8 @@
 // @ts-check
 
-const { execSync } = require('child_process');
-const path = require('path');
-const fs = require('fs');
-const glob = require('glob');
+const { execSync } = require('node:child_process');
+const path = require('node:path');
+const fs = require('node:fs');
 
 const packageRoot = path.resolve(__dirname, '..');
 
@@ -18,18 +17,17 @@ function main() {
     console.log('Running tsc...');
     execSync('tsc -p . --pretty', { cwd: packageRoot, stdio: 'inherit' });
 
-    // 2. copy assets from provided path glob to provided output glob
-    const srcPattern = 'src/**/*.{,json}';
+    // 2. copy JSON assets preserving directory structure
+    const srcPattern = 'src/**/*.json';
     const destDir = 'lib';
 
     console.log(`Copying assets from ${srcPattern} to ${destDir}...`);
 
-    const files = glob.sync(srcPattern, { cwd: packageRoot });
+    const files = fs.globSync(srcPattern, { cwd: packageRoot });
     console.log(`Found ${files.length} asset(s) to copy.`);
 
     files.forEach((file) => {
       const srcPath = path.resolve(packageRoot, file);
-      // Maintain directory structure relative to 'src'
       const relativePath = path.relative('src', file);
       const destPath = path.resolve(packageRoot, destDir, relativePath);
 
@@ -39,7 +37,7 @@ function main() {
 
     console.log('Build completed successfully.');
   } catch (error) {
-    console.error('Build failed:', error.message);
+    console.error('Build failed:', /** @type {Error} */ (error).message);
     process.exit(1);
   }
 }

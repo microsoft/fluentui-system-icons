@@ -12,10 +12,11 @@
     "test:inline": "SVG_SPRITE_INJECT=inline webpack -c test/webpack.config.js",
     "test:reference": "SVG_SPRITE_MODE=merged SVG_SPRITE_INJECT=reference webpack -c test/webpack.config.js",
     "test:validation": "node test/validation.js",
-    "build": "node scripts/build"
+    "build": "node scripts/build",
+    "type-check:infra": "tsc -p ./scripts"
   },
   "engines": {
-    "node": ">=14.5.0"
+    "node": ">=20.0.0"
   },
   "repository": {
     "type": "git",
@@ -32,7 +33,7 @@
   },
   "devDependencies": {
     "@fluentui/react-icons": "*",
-    "@types/node": "14",
+    "@types/node": "22",
     "html-webpack-plugin": "^5.5.3",
     "typescript": "5.0.4",
     "webpack": "^5.72.0"
