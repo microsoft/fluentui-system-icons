@@ -17,6 +17,7 @@
   },
   "scripts": {
     "reset-workspace": "git clean -dXf",
+    "prepare": "husky",
     "postinstall": "patch-package",
     "format": "nx format:write",
     "format:check": "nx format:check"
@@ -24,6 +25,8 @@
   "devDependencies": {
     "@nx/js": "21.6.10",
     "eslint": "8.57.1",
+    "husky": "9.1.7",
+    "nano-staged": "0.9.0",
     "nx": "21.6.10",
     "patch-package": "8.0.1",
     "prettier": "3.6.2",
