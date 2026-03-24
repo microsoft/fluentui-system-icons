@@ -5,6 +5,7 @@
     "module": "commonjs",
     "rootDir": "./src",
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "declaration": true,
     "outDir": "./lib",
     "esModuleInterop": true,

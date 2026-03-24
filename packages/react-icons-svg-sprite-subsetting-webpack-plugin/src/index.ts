@@ -1,10 +1,11 @@
 import * as webpack from 'webpack';
 import { dirname, resolve } from 'path';
 import { readFileSync } from 'fs';
+import type { Schema } from 'schema-utils/declarations/validate';
 import { validate } from 'schema-utils';
 import MergedSpriteRuntimeModule from './runtime/MergedSpriteRuntimeModule';
 
-const optionsSchema = require('./options.schema.json') as Record<string, unknown>;
+import optionsSchema from './options.schema.json';
 
 const PLUGIN_NAME = 'FluentUIReactIconsSvgSpriteSubsettingPlugin';
 
@@ -73,7 +74,7 @@ export default class FluentUIReactIconsSvgSpriteSubsettingPlugin implements webp
   private options: NormalizedOptions;
 
   constructor(options: FluentUIReactIconsSvgSpriteSubsettingPluginOptions = {}) {
-    validate(optionsSchema, options, { name: PLUGIN_NAME });
+    validate(optionsSchema as Schema, options, { name: PLUGIN_NAME });
     this.options = normalizeOptions(options);
   }
 
