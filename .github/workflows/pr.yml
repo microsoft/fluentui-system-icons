@@ -226,6 +226,9 @@ jobs:
       - name: Lint
         run: npx nx affected -t lint --exclude='svg-icons,svg-sprites'
 
+      - name: Type Check Infra
+        run: npx nx affected -t type-check:infra --exclude='svg-icons,svg-sprites'
+
       - name: Build
         # svg-icons:build is run in different job (@see build-svg), -> exclude
         # svg-sprites:build doesn't work and is missing owner, -> exclude

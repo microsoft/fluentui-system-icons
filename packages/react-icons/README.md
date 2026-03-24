@@ -429,6 +429,14 @@ If you use SWC for transpilation, add [@swc/plugin-transform-imports](https://ww
 }
 ```
 
+## Atomic API (SVG Sprites) — ⚠️ Alpha
+
+> **This feature is available as an alpha prerelease only.** Install via `npm i @fluentui/react-icons@alpha`
+
+SVG sprites offer smaller bundles, faster renders, and zero runtime overhead.
+
+👉 **[Full documentation →](./docs/preview-features.md#atomic-api-svg-sprites)**
+
 ## Viewing Icons
 
 You can view the full list of available icons by type:

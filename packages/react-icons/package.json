@@ -14,7 +14,7 @@
   "scripts": {
     "clean": "git clean -fXd lib/ lib-cjs/ intermediate/ src/ tmp/",
     "generate:assets-to-svg": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
-    "convert:svg": "node convert.js --source=./intermediate --dest=./src --perIconDest=./src/atoms/svg --rtl=./intermediate/rtl.json --metadata=./tmp/metadata-svg.json",
+    "convert:svg": "node convert.js --source=./intermediate --dest=./src --perIconDest=./src/atoms/svg --spriteDest=./src/atoms/svg-sprite --rtl=./intermediate/rtl.json --metadata=./tmp/metadata-svg.json",
     "convert:fonts": "node convert-font.js --source=./src/utils/fonts --dest=./src/fonts --perIconDest=./src/atoms/fonts --codepointDest=./src/utils/fonts --rtl=./intermediate/rtl.json --metadata=./tmp/metadata-font.json",
     "convert:merge-metadata": "node merge-metadata.js --svgMetadata=./tmp/metadata-svg.json --fontMetadata=./tmp/metadata-font.json --output=./metadata.json",
     "generate:font-regular": "node ../../importer/generateFont.js --source=intermediate --dest=src/utils/fonts --iconType=Regular --codepoints=../../fonts/FluentSystemIcons-Regular.json",
@@ -33,7 +33,8 @@
     "build-verify": "vitest run build-verify.test.js",
     "bundle-size": "monosize measure",
     "lint": "eslint src",
-    "test": "vitest --exclude build-verify.test.js"
+    "test": "vitest --exclude build-verify.test.js",
+    "type-check:infra": "../../node_modules/.bin/tsc -p tsconfig.utils.json"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",

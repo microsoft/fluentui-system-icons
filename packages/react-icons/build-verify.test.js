@@ -48,6 +48,34 @@ function trimContentForSnapshot(content, threshold = 30) {
   return trimmedLines.join('\n');
 }
 
+/**
+ * Shared assertion: verifies that atom JS files pass `options` ({flipInRtl, color})
+ * as the last argument to `createFluentIcon` when applicable.
+ *
+ * @param {string} atomDir - absolute path to the atoms directory to verify
+ */
+async function assertAtomOptionsArgument(atomDir) {
+  // Icon with flipInRtl: true (album has flipInRtl metadata)
+  const albumPath = path.join(atomDir, 'album.js');
+  expect(fs.existsSync(albumPath)).toBe(true);
+  const albumContent = await readFile(albumPath, 'utf-8');
+  expect(albumContent).toContain('{ flipInRtl: true }');
+
+  // Icon with color: true (add-circle has color variants)
+  const addCirclePath = path.join(atomDir, 'add-circle.js');
+  expect(fs.existsSync(addCirclePath)).toBe(true);
+  const addCircleContent = await readFile(addCirclePath, 'utf-8');
+  expect(addCircleContent).toContain('{ color: true }');
+  // Non-color variants in the same file should NOT have the color option
+  expect(addCircleContent).toMatch(/AddCircleFilled[^}]*\)\)/);
+
+  // Icon without any options (access-time has no flipInRtl or color)
+  const accessTimePath = path.join(atomDir, 'access-time.js');
+  const accessTimeContent = await readFile(accessTimePath, 'utf-8');
+  expect(accessTimeContent).not.toContain('flipInRtl');
+  expect(accessTimeContent).not.toContain('color: true');
+}
+
 describe('Build Verification', () => {
   describe('Build Directories', () => {
     it('should have lib and lib-cjs directories', async () => {
@@ -2115,6 +2143,10 @@ describe('Build Verification', () => {
       expect(packageJson.exports['./fonts/*'].require).toBe('./lib-cjs/atoms/fonts/*.js');
     });
 
+    it('atom files should pass options (flipInRtl, color) as last argument when applicable', async () => {
+      await assertAtomOptionsArgument(path.join(__dirname, 'lib', 'atoms', 'svg'));
+    });
+
     it.each(['svg', 'fonts'])(
       'text-color atoms should be properly separated from text atoms in lib/atoms/%s',
       async (exportKindDir) => {
@@ -2152,6 +2184,155 @@ describe('Build Verification', () => {
         expect(textContent).toContain(`export const TextColor24Regular`);
       },
     );
+  });
+
+  // Sprite tests only run when sprite generation was enabled (--sprites flag passed to convert.js)
+  const spritesGenerated = fs.existsSync(path.join(__dirname, 'lib', 'atoms', 'svg-sprite'));
+  const describeSprites = spritesGenerated ? describe : describe.skip;
+
+  describeSprites('Svg Sprite Atoms', () => {
+    function getSpriteAssetPaths() {
+      const svgSpritePathEsm = path.join(__dirname, 'lib', 'atoms/svg-sprite');
+      const svgSpritePathCjs = path.join(__dirname, 'lib-cjs', 'atoms/svg-sprite');
+      return { svgSpritePathEsm, svgSpritePathCjs };
+    }
+
+    /**
+     * @param {string} assetPath
+     */
+    async function getSpriteStats(assetPath) {
+      const files = await readdir(assetPath);
+      const jsFiles = files.filter((f) => f.endsWith('.js'));
+      const svgFiles = files.filter((f) => f.endsWith('.svg'));
+      return { files, jsFiles, svgFiles };
+    }
+
+    it('should have same number of atoms/svg-sprite JS files in lib and lib-cjs', async () => {
+      const { svgSpritePathEsm, svgSpritePathCjs } = getSpriteAssetPaths();
+      const esmAtomsJsFiles = (await readdir(path.join(__dirname, 'lib/atoms/svg'))).filter((f) => f.endsWith('.js'));
+      const esmStats = await getSpriteStats(svgSpritePathEsm);
+      const cjsStats = await getSpriteStats(svgSpritePathCjs);
+
+      // `/svg-sprite` has no deprecated color/text-color backward-compat atoms (new API),
+      // so it will have fewer .js files than `/svg`
+      expect(esmStats.jsFiles.length).toBeLessThanOrEqual(esmAtomsJsFiles.length);
+
+      /*
+        The difference should be exactly the number of deprecated color/text-color atoms (9):
+
+        color-16-filled.js
+        color-16-regular.js
+        color-20-filled.js
+        color-20-regular.js
+        color-24-filled.js
+        color-24-regular.js
+        color-32-light.js
+        color-filled.js
+        color-regular.js
+      */
+      const svgAtomsModuleCountForBackwardsCompatibility = 9;
+      expect(esmStats.jsFiles.length).toEqual(esmAtomsJsFiles.length - svgAtomsModuleCountForBackwardsCompatibility);
+
+      // every sprite .js file must exist in the svg atoms set
+      for (const file of esmStats.jsFiles) {
+        expect(esmAtomsJsFiles).toContain(file);
+      }
+
+      // ESM and CJS must be in sync
+      expect(esmStats.jsFiles.length).toEqual(cjsStats.jsFiles.length);
+    });
+
+    it.each(['lib', 'lib-cjs'])('should have atoms/svg-sprite directory with icon files in %s', async (libDir) => {
+      const atomsSvgSpritePath = path.join(__dirname, libDir, 'atoms', 'svg-sprite');
+
+      // Check directory exists
+      expect(fs.existsSync(atomsSvgSpritePath)).toBe(true);
+      const dirStats = await stat(atomsSvgSpritePath);
+      expect(dirStats.isDirectory()).toBe(true);
+
+      const { files, jsFiles, svgFiles } = await getSpriteStats(atomsSvgSpritePath);
+
+      // Every .js file must have a corresponding .svg sprite file and .d.ts declaration file
+      for (const jsFile of jsFiles) {
+        const baseName = jsFile.replace('.js', '');
+        expect(svgFiles).toContain(`${baseName}.svg`);
+        expect(files).toContain(`${baseName}.d.ts`);
+      }
+
+      // Sample check: access-time should exist in all three forms
+      expect(files).toContain('access-time.js');
+      expect(files).toContain('access-time.d.ts');
+      expect(files).toContain('access-time.svg');
+    });
+
+    it('sprite atom JS files should export icon variants correctly', async () => {
+      const atomFilePath = path.join(__dirname, 'lib', 'atoms', 'svg-sprite', 'access-time.js');
+      expect(fs.existsSync(atomFilePath)).toBe(true);
+
+      const content = await readFile(atomFilePath, 'utf-8');
+
+      // Resizable (size-agnostic) variants
+      expect(content).toContain('export const AccessTimeFilled');
+      expect(content).toContain('export const AccessTimeRegular');
+
+      // Sized variants
+      expect(content).toContain('export const AccessTime20Filled');
+      expect(content).toContain('export const AccessTime20Regular');
+      expect(content).toContain('export const AccessTime24Filled');
+      expect(content).toContain('export const AccessTime24Regular');
+
+      // Must use createFluentIcon from the createFluentIcon.svg-sprite utility
+      expect(content).toContain('createFluentIcon');
+
+      // Sprite modules pass the imported sprite URL as the third argument
+      expect(content).toContain('sprite');
+    });
+
+    it('sprite atom files should pass options (flipInRtl, color) as last argument when applicable', async () => {
+      await assertAtomOptionsArgument(path.join(__dirname, 'lib', 'atoms', 'svg-sprite'));
+    });
+
+    it('sprite atom TypeScript definition files should have correct exports', async () => {
+      const atomDtsPath = path.join(__dirname, 'lib', 'atoms', 'svg-sprite', 'access-time.d.ts');
+      expect(fs.existsSync(atomDtsPath)).toBe(true);
+
+      const content = await readFile(atomDtsPath, 'utf-8');
+
+      expect(content).toContain('export declare const AccessTimeFilled');
+      expect(content).toContain('export declare const AccessTimeRegular');
+      expect(content).toContain('FluentIcon');
+    });
+
+    it('sprite SVG files should be valid SVG sprites', async () => {
+      const svgFilePath = path.join(__dirname, 'lib', 'atoms', 'svg-sprite', 'access-time.svg');
+      expect(fs.existsSync(svgFilePath)).toBe(true);
+
+      const content = await readFile(svgFilePath, 'utf-8');
+
+      // Must be a valid SVG sprite container
+      expect(content).toContain('<svg');
+      expect(content).toContain('</svg>');
+      expect(content).toContain('<symbol');
+      expect(content).toContain('display: none');
+
+      // Must contain symbols for the expected icon variants
+      expect(content).toContain('id="AccessTimeFilled"');
+      expect(content).toContain('id="AccessTimeRegular"');
+      expect(content).toContain('id="AccessTime20Filled"');
+      expect(content).toContain('id="AccessTime24Filled"');
+
+      // Each symbol should have a viewBox attribute
+      expect(content).toContain('viewBox=');
+    });
+
+    it('package.json exports should include ./svg-sprite/*', () => {
+      const packageJsonPath = path.join(__dirname, 'package.json');
+      const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
+
+      expect(packageJson.exports['./svg-sprite/*']).toBeDefined();
+      expect(packageJson.exports['./svg-sprite/*'].import).toBe('./lib/atoms/svg-sprite/*.js');
+      expect(packageJson.exports['./svg-sprite/*'].require).toBe('./lib-cjs/atoms/svg-sprite/*.js');
+    });
   });
 
   describe('Metadata Validation', () => {
