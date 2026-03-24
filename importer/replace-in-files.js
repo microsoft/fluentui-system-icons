@@ -37,12 +37,12 @@ function getFiles(target, options) {
 }
 
 /**
- * Replace content in files matching the given targets.
+ * Replace content in files matching the given paths.
  *
  * @param {{
  *   search: string | RegExp,
  *   replacement: string,
- *   targets: string[],
+ *   paths: string[],
  *   recursive?: boolean,
  *   include?: string,
  *   exclude?: string,
@@ -50,14 +50,14 @@ function getFiles(target, options) {
  * }} options
  */
 function replaceInFiles(options) {
-  const { search, replacement, targets, recursive = false, include, exclude, quiet = false } = options;
+  const { search, replacement, paths, recursive = false, include, exclude, quiet = false } = options;
 
-  let files = targets.flatMap(t => getFiles(t, { recursive }));
+  let files = paths.flatMap(t => getFiles(t, { recursive }));
 
   if (!quiet) {
     console.log(`[replace-in-files] Search:      ${search instanceof RegExp ? search : JSON.stringify(search)}`);
     console.log(`[replace-in-files] Replacement: ${JSON.stringify(replacement)}`);
-    console.log(`[replace-in-files] Targets:     ${targets.join(', ')}`);
+    console.log(`[replace-in-files] Paths:       ${paths.join(', ')}`);
   }
 
   console.log(`[replace-in-files] Files found: ${files.length}`);
@@ -107,12 +107,12 @@ module.exports = { replaceInFiles };
 
 function main(){
 
-  const { flags, search, replacement, targets } = getArgs();
+  const { flags, search, replacement, paths } = getArgs();
 
   replaceInFiles({
     search,
     replacement,
-    targets,
+    paths,
     recursive: flags.recursive,
     exclude: flags.exclude,
     quiet: flags.quiet,
@@ -157,9 +157,9 @@ Options:
     process.exit(1);
   }
 
-  const [search, replacement, ...targets] = positional;
+  const [search, replacement, ...paths] = positional;
 
-  return { flags, search, replacement, targets };
+  return { flags, search, replacement, paths };
 }
 
 // --- CLI entry point ---

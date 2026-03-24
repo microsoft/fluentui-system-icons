@@ -10,7 +10,7 @@ const { values } = parseArgs({ options: { path: { type: 'string' } } });
 replaceInFiles({
   search: /\sfill="(none|#212121)"/g,
   replacement: '',
-  targets: [values.path],
+  paths: [values.path],
   recursive: true,
   include: '*.svg',
   quiet: true,
