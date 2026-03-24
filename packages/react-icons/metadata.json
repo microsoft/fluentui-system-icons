@@ -58554,6 +58554,16 @@
     "font": true,
     "type": "sized"
   },
+  "DataHistogram28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DataHistogram28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "DataLine16Color": {
     "svg": true,
     "font": false,
@@ -111929,6 +111939,16 @@
     "font": true,
     "type": "sized"
   },
+  "TabDesktopBottom28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TabDesktopBottom28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "TabDesktopClock20Filled": {
     "svg": true,
     "font": true,
@@ -112085,6 +112105,16 @@
     "type": "sized"
   },
   "TabDesktopMultipleBottom24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TabDesktopMultipleBottom28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TabDesktopMultipleBottom28Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
