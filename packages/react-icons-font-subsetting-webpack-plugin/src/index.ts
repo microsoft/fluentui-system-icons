@@ -116,15 +116,32 @@ function getTargetFormat(assetName: string) {
 /**
  * Resolves the set of icon export names that are actually consumed from a font chunk module.
  *
- * Returns `null` when subsetting cannot be performed (e.g. `optimization.usedExports` is
- * disabled, or provided exports are not statically known), so the caller can skip the module.
+ * Uses Webpack's `moduleGraph.getUsedExports()` which returns one of four shapes:
+ *
+ * | Return value    | Meaning                                                            | Action                                     |
+ * | --------------- | ------------------------------------------------------------------ | ------------------------------------------ |
+ * | `null`          | `optimization.usedExports` is disabled — no usage info available   | Skip (cannot determine which glyphs to keep)|
+ * | `false`         | Module has zero consumers — nothing is imported from it            | Skip (nothing to subset)                   |
+ * | `true`          | All exports are consumed (e.g. `import * as ns from '...'`)       | Fall back to `getProvidedExports()` ¹       |
+ * | `Set<string>`   | Exact set of named exports that are consumed                      | Use directly for subsetting                |
+ *
+ * ¹ When all exports are marked as used we can still subset: `getProvidedExports()` tells us
+ *   which exports this specific module **declares** (not the entire font), so we subset the font
+ *   to exactly the glyphs this module provides.
+ *
+ *   This is **critical for atomic font imports** (e.g. `import * as XboxConsoleGroup from
+ *   '@fluentui/react-icons/fonts/xbox-console'`) — each atomic module only provides a small icon
+ *   group, so `getProvidedExports()` returns just those few icons, enabling proper subsetting even
+ *   with namespace imports. Without this, namespace imports would skip subsetting entirely and ship
+ *   the full unsubsetted font.
+ *
+ * Returns `null` when subsetting cannot be performed, so the caller can skip the module.
  */
 function resolveUsedIconExports(m: webpack.NormalModule, moduleGraph: webpack.ModuleGraph): string[] | null {
   const usedModuleExports = moduleGraph.getUsedExports(m, undefined);
 
   if (usedModuleExports === null) {
-    // No info on used exports (optimization.usedExports is disabled) -
-    // subsetting requires knowing exactly which exports are used.
+    // No info on used exports (optimization.usedExports is disabled) - subsetting requires knowing exactly which exports are used.
     return null;
   }
 
