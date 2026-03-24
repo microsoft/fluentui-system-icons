@@ -181,10 +181,12 @@ jobs:
           if echo "$AFFECTED" | grep -q 'svg-icons'; then
             echo "Building svg-icons..."
             npx nx run svg-icons:build
+            npx nx run svg-icons:build-verify
           fi
           if echo "$AFFECTED" | grep -q 'svg-sprites'; then
             echo "Building svg-sprites..."
             npx nx run svg-sprites:build
+            npx nx run svg-sprites:build-verify
           fi
 
   build-react:

@@ -15,7 +15,8 @@
     "optimize": "svgo --config svgo.config.js --folder=./icons --recursive --precision=2",
     "unfill": "node unfill.js --path=./icons/",
     "build": "npm run copy && npm run rename && npm run optimize && npm run unfill",
-    "buildforblazor": "npm run copywithdirs && npm run rename && npm run optimize && npm run unfill"
+    "buildforblazor": "npm run copywithdirs && npm run rename && npm run optimize && npm run unfill",
+    "build-verify": "vitest run build-verify.test.js"
   },
   "devDependencies": {
     "renamer": "^2.0.1",
