@@ -1,7 +1,16 @@
 import * as webpack from 'webpack';
 
-export const MERGED_SPRITE_URL_GLOBAL = '__FLUENTUI_REACT_ICONS_SVG_SPRITE_URL__';
+const MERGED_SPRITE_URL_GLOBAL = '__FLUENTUI_REACT_ICONS_SVG_SPRITE_URL__';
 
+/**
+ * A Webpack RuntimeModule that emits bootstrap code setting a global variable
+ * (`__FLUENTUI_REACT_ICONS_SVG_SPRITE_URL__`) to the public URL of the merged
+ * sprite asset.
+ *
+ * Used in `merged` mode (non-inline) so that `mergedSpriteUrlModule` can read
+ * the URL at runtime. Runs at `STAGE_ATTACH` to ensure `__webpack_public_path__`
+ * is already initialised.
+ */
 export default class MergedSpriteRuntimeModule extends webpack.RuntimeModule {
   private readonly assetName: string;
 

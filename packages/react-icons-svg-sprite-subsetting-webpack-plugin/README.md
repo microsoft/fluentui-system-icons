@@ -53,3 +53,7 @@ You can pass a hash of configuration options to the plugin. Allowed values are a
 
 - For best results, run Webpack in production mode (or enable `optimization.usedExports`) so the plugin can detect which icon exports are used.
 - `injectSpritesInTemplates` requires `html-webpack-plugin` to be installed and configured in your Webpack build.
+
+## Contributing
+
+For an in-depth look at the plugin's internal architecture, hook lifecycle, used-exports analysis, and runtime modules, see [SPEC.md](./SPEC.md).

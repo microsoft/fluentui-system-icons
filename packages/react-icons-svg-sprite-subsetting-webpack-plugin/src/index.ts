@@ -20,6 +20,9 @@ const REACT_ICONS_SVG_SPRITE_JS_MODULE_IMPORT_PATTERN =
 
 const ATOMS_SVG_SPRITE_DIR_PATTERN = /(^|[\/\\])atoms[\/\\]svg-sprite([\/\\]|$)/;
 
+/** Matches individual `<symbol>` elements and captures their `id` attribute. */
+const SYMBOL_ELEMENT_PATTERN = /<symbol\b[^>]*\bid="([^"]+)"[^>]*>[\s\S]*?<\/symbol>/g;
+
 export type SvgSpriteOptimizationMode = 'atomic' | 'merged';
 
 type InjectSpritesInTemplatesMode = 'inline' | 'reference';
@@ -259,6 +262,14 @@ export default class FluentUIReactIconsSvgSpriteSubsettingPlugin implements webp
   }
 }
 
+// =============================================================================
+// Internal helper functions
+// =============================================================================
+
+/**
+ * Validates and normalizes raw plugin options into a fully resolved configuration
+ * with defaults applied.
+ */
 function normalizeOptions(options: FluentUIReactIconsSvgSpriteSubsettingPluginOptions): NormalizedOptions {
   const mode = options.mode ?? 'atomic';
   const injectSpritesInTemplates = normalizeInjectSpritesInTemplates(options.injectSpritesInTemplates);
@@ -283,6 +294,10 @@ function normalizeOptions(options: FluentUIReactIconsSvgSpriteSubsettingPluginOp
   };
 }
 
+/**
+ * Normalizes the `injectSpritesInTemplates` option from its flexible user-facing
+ * form (`true | false | { mode }`) into the canonical internal representation.
+ */
 function normalizeInjectSpritesInTemplates(
   input: FluentUIReactIconsSvgSpriteSubsettingPluginOptions['injectSpritesInTemplates'],
 ): InjectSpritesInTemplatesOptions {
@@ -295,6 +310,10 @@ function normalizeInjectSpritesInTemplates(
   return input;
 }
 
+/**
+ * Throws if `mergedSpriteFilename` contains unsupported template placeholders.
+ * Only `[fullhash]` and `[contenthash]` are allowed.
+ */
 function assertValidMergedSpriteFilename(filename: string) {
   const invalidToken = filename.match(/\[(?!fullhash|contenthash)[^\]]+\]/);
   if (invalidToken) {
@@ -302,10 +321,18 @@ function assertValidMergedSpriteFilename(filename: string) {
   }
 }
 
+/**
+ * Resolves a merged sprite filename template by substituting `[fullhash]` and
+ * `[contenthash]` placeholders with their actual values.
+ */
 function resolveMergedSpriteFilename(template: string, fullHash: string, contentHash: string): string {
   return template.replace(/\[fullhash\]/g, fullHash).replace(/\[contenthash\]/g, contentHash);
 }
 
+/**
+ * Creates a content-based hash for the given string using the compilation's
+ * configured hash function, digest format, and digest length.
+ */
 function createContentHash(compilation: webpack.Compilation, content: string): string {
   const { hashFunction, hashDigest, hashDigestLength } = compilation.outputOptions;
   const effectiveHashFunction = hashFunction || 'md4';
@@ -317,6 +344,10 @@ function createContentHash(compilation: webpack.Compilation, content: string): s
   return digest.slice(0, length);
 }
 
+/**
+ * Attempts to require `html-webpack-plugin` at runtime. Returns `null` if the
+ * package is not installed, allowing the plugin to degrade gracefully.
+ */
 function getHtmlWebpackPlugin(): { getHooks: (compilation: webpack.Compilation) => any } | null {
   try {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -326,6 +357,10 @@ function getHtmlWebpackPlugin(): { getHooks: (compilation: webpack.Compilation) 
   }
 }
 
+/**
+ * Resolves the public path to use for HTML-injected asset references.
+ * Handles Webpack 5's `"auto"` default by treating it as an empty string.
+ */
 function getHtmlPublicPath(compilation: webpack.Compilation, data: { publicPath?: string }): string {
   if (typeof data.publicPath === 'string') {
     // Webpack 5 defaults to "auto"; treat it as empty so HTML hrefs are not prefixed with "auto".
@@ -339,6 +374,11 @@ function getHtmlPublicPath(compilation: webpack.Compilation, data: { publicPath?
   return '';
 }
 
+/**
+ * Returns the list of entrypoint names relevant to an HTML page, based on the
+ * `chunks` option from `html-webpack-plugin`. Returns all entrypoints when
+ * the option is `"all"` or unset.
+ */
 function getEntrypointNamesForHtml(compilation: webpack.Compilation, chunksOption?: 'all' | string[]): string[] {
   if (!chunksOption || chunksOption === 'all') {
     return Array.from(compilation.entrypoints.keys());
@@ -349,6 +389,10 @@ function getEntrypointNamesForHtml(compilation: webpack.Compilation, chunksOptio
   return [];
 }
 
+/**
+ * Injects markup immediately after the opening `<body>` tag in an HTML string.
+ * If no `<body>` tag is found, prepends the markup to the entire HTML.
+ */
 function injectIntoBody(html: string, inlineSvg: string): string {
   const bodyTag = html.match(/<body[^>]*>/i);
   if (!bodyTag) {
@@ -358,6 +402,10 @@ function injectIntoBody(html: string, inlineSvg: string): string {
   return html.replace(/<body[^>]*>/i, (match) => `${match}\n${inlineSvg}`);
 }
 
+/**
+ * Injects markup immediately after the opening `<head>` tag in an HTML string.
+ * If no `<head>` tag is found, prepends the markup to the entire HTML.
+ */
 function injectIntoHead(html: string, headMarkup: string): string {
   const headTag = html.match(/<head[^>]*>/i);
   if (!headTag) {
@@ -367,10 +415,18 @@ function injectIntoHead(html: string, headMarkup: string): string {
   return html.replace(/<head[^>]*>/i, (match) => `${match}\n${headMarkup}`);
 }
 
+/**
+ * Strips the leading `<?xml ... ?>` declaration from an SVG string, if present.
+ */
 function stripXmlDeclaration(svgText: string): string {
   return svgText.replace(/^<\?xml[^>]*>\s*/i, '');
 }
 
+/**
+ * Walks all compilation modules to build a per-entrypoint map of sprite SVG
+ * resources and the symbol IDs used from each. This is the core analysis step
+ * that drives both atomic subsetting and merged sprite generation.
+ */
 function collectEntrypointSpriteUsage(compilation: webpack.Compilation): Map<string, Map<string, Set<string>>> {
   const entrypointToSpriteResourceToIds = new Map<string, Map<string, Set<string>>>();
   const entrypointRuntimeByName = new Map<string, RuntimeSpec>();
@@ -436,11 +492,20 @@ function collectEntrypointSpriteUsage(compilation: webpack.Compilation): Map<str
   return entrypointToSpriteResourceToIds;
 }
 
+/**
+ * Extracts the Webpack runtime spec from an entrypoint, used to query
+ * per-entrypoint used-export information from the module graph.
+ */
 function getEntrypointRuntime(entrypoint: webpack.Entrypoint): RuntimeSpec {
   const runtimeChunk = entrypoint.getRuntimeChunk?.();
   return runtimeChunk?.runtime ?? (entrypoint as { runtime?: RuntimeSpec }).runtime;
 }
 
+/**
+ * Retrieves used exports for a module under the given runtime. Falls back to
+ * the undefined-runtime query when the primary result is inconclusive (`null`
+ * or boolean), which can happen in development builds.
+ */
 function getUsedExportsWithFallback(
   compilation: webpack.Compilation,
   module: webpack.NormalModule,
@@ -456,6 +521,11 @@ function getUsedExportsWithFallback(
   return primary;
 }
 
+/**
+ * Merges sprite usage across the specified entrypoints into a single map of
+ * sprite resource paths to used symbol IDs. Used when building HTML-scoped
+ * inline sprites or preload links.
+ */
 function collectSpriteUsageForEntrypoints(
   entrypointNames: string[],
   entrypointToSpriteResourceToIds: Map<string, Map<string, Set<string>>>,
@@ -480,6 +550,11 @@ function collectSpriteUsageForEntrypoints(
   return spriteResourceToIds;
 }
 
+/**
+ * Combines sprite usage across all entrypoints into a single global map.
+ * This gives the union of all used symbols per sprite resource, regardless
+ * of which entrypoint uses them.
+ */
 function combineSpriteUsage(
   entrypointToSpriteResourceToIds: Map<string, Map<string, Set<string>>>,
 ): Map<string, Set<string>> {
@@ -498,6 +573,11 @@ function combineSpriteUsage(
   return combinedSpriteResourceToIds;
 }
 
+/**
+ * Builds a map from sprite SVG resource paths to their emitted asset names
+ * (filenames) in the compilation output. Only considers `.svg` files from
+ * `react-icons` sprite directories.
+ */
 function getSpriteResourceToAssetName(compilation: webpack.Compilation): Map<string, string> {
   const resourceToAssetName = new Map<string, string>();
 
@@ -525,6 +605,10 @@ function getSpriteResourceToAssetName(compilation: webpack.Compilation): Map<str
   return resourceToAssetName;
 }
 
+/**
+ * Performs in-place subsetting of individual (atomic) sprite assets by removing
+ * unused `<symbol>` elements from each SVG file.
+ */
 function subsetAtomicSprites(
   compilation: webpack.Compilation,
   spriteResourceToAssetName: Map<string, string>,
@@ -551,10 +635,17 @@ function subsetAtomicSprites(
   }
 }
 
+/**
+ * Type guard that checks whether a Webpack module is a `NormalModule` instance.
+ */
 function isNormalModule(m: webpack.Module): m is webpack.NormalModule {
   return m instanceof webpack.NormalModule;
 }
 
+/**
+ * Type guard that identifies modules matching the `@fluentui/react-icons`
+ * SVG sprite entrypoint pattern (e.g., `lib/atoms/svg-sprite/backpack.js`).
+ */
 function isFluentUIReactSvgSpriteEntrypointModule(m: webpack.Module): m is webpack.NormalModule {
   if (!isNormalModule(m)) {
     return false;
@@ -573,6 +664,10 @@ function isFluentUIReactSvgSpriteEntrypointModule(m: webpack.Module): m is webpa
   return REACT_ICONS_SVG_SPRITE_JS_MODULE_IMPORT_PATTERN.test(resource);
 }
 
+/**
+ * Retrieves the original source code of a module. Prefers the in-memory
+ * `originalSource()` and falls back to reading from disk if unavailable.
+ */
 function getModuleSource(m: webpack.NormalModule): string {
   const maybeSource = m.originalSource?.();
   if (maybeSource) {
@@ -587,6 +682,10 @@ function getModuleSource(m: webpack.NormalModule): string {
   return readFileSync(m.resource, 'utf8');
 }
 
+/**
+ * Extracts the absolute path of the `.svg` sprite file referenced by a
+ * sprite entrypoint module. Supports both ESM `import` and CJS `require` forms.
+ */
 function getReferencedSpritePath(module: webpack.NormalModule, moduleSource: string): string | null {
   // ESM form: `import sprite from './backpack.svg';`
   const esm = moduleSource.match(/import\s+\w+\s+from\s+['"](.+?\.svg)['"];?/);
@@ -605,6 +704,10 @@ function getReferencedSpritePath(module: webpack.NormalModule, moduleSource: str
   return null;
 }
 
+/**
+ * Parses a sprite entrypoint module's source to build a mapping from exported
+ * component names to their corresponding SVG `<symbol>` IDs.
+ */
 function getExportNameToSymbolIdMap(moduleSource: string): Map<string, string> {
   const map = new Map<string, string>();
 
@@ -621,6 +724,10 @@ function getExportNameToSymbolIdMap(moduleSource: string): Map<string, string> {
   return map;
 }
 
+/**
+ * Maps used exports to their corresponding symbol IDs. When Webpack cannot
+ * determine used exports (e.g., in development mode), all symbols are assumed used.
+ */
 function getUsedSymbolIds(
   usedExports: ReturnType<webpack.Compilation['moduleGraph']['getUsedExports']>,
   exportNameToSymbolId: Map<string, string>,
@@ -645,16 +752,34 @@ function getUsedSymbolIds(
   return usedIds;
 }
 
+/**
+ * Wraps an array of `<symbol>` element strings into a complete SVG sprite
+ * document with an XML declaration. Each symbol is indented with two spaces
+ * if not already indented.
+ */
+function wrapSymbolsInSvg(symbols: string[]): string {
+  return (
+    '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">\n' +
+    symbols.map((s) => (s.startsWith('  ') ? s : `  ${s}`)).join('\n') +
+    '\n</svg>\n'
+  );
+}
+
+/**
+ * Removes unused `<symbol>` elements from an SVG sprite string, keeping only
+ * those whose IDs appear in `usedIds`. Returns the original SVG unchanged if
+ * no symbols match (defensive fallback) or if `usedIds` is empty.
+ */
 function subsetSpriteSvg(svgText: string, usedIds: Set<string>): string {
   if (usedIds.size === 0) {
     return svgText;
   }
 
-  const symbolRegex = /<symbol\b[^>]*\bid="([^"]+)"[^>]*>[\s\S]*?<\/symbol>/g;
   const keptSymbols: string[] = [];
 
   let match: RegExpExecArray | null;
-  while ((match = symbolRegex.exec(svgText))) {
+  while ((match = SYMBOL_ELEMENT_PATTERN.exec(svgText))) {
     const id = match[1];
     if (usedIds.has(id)) {
       keptSymbols.push(match[0]);
@@ -666,24 +791,22 @@ function subsetSpriteSvg(svgText: string, usedIds: Set<string>): string {
     return svgText;
   }
 
-  return (
-    '<?xml version="1.0" encoding="UTF-8"?>\n' +
-    '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">\n' +
-    keptSymbols.map((s) => (s.startsWith('  ') ? s : `  ${s}`)).join('\n') +
-    '\n</svg>\n'
-  );
+  return wrapSymbolsInSvg(keptSymbols);
 }
 
+/**
+ * Reads multiple sprite SVG files from disk and merges their used `<symbol>`
+ * elements into a single SVG sprite document, deduplicating by symbol ID.
+ */
 function buildMergedSprite(spriteResourceToIds: Map<string, Set<string>>): string {
   const mergedSymbolsById = new Map<string, string>();
 
   for (const [spriteResource, usedIds] of spriteResourceToIds) {
     const svgText = readFileSync(spriteResource, 'utf8');
 
-    const symbolRegex = /<symbol\b[^>]*\bid="([^"]+)"[^>]*>[\s\S]*?<\/symbol>/g;
     let match: RegExpExecArray | null;
 
-    while ((match = symbolRegex.exec(svgText))) {
+    while ((match = SYMBOL_ELEMENT_PATTERN.exec(svgText))) {
       const id = match[1];
       if (usedIds.has(id) && !mergedSymbolsById.has(id)) {
         mergedSymbolsById.set(id, match[0]);
@@ -693,14 +816,14 @@ function buildMergedSprite(spriteResourceToIds: Map<string, Set<string>>): strin
 
   const mergedSymbols = Array.from(mergedSymbolsById.values());
 
-  return (
-    '<?xml version="1.0" encoding="UTF-8"?>\n' +
-    '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">\n' +
-    mergedSymbols.map((s) => (s.startsWith('  ') ? s : `  ${s}`)).join('\n') +
-    '\n</svg>\n'
-  );
+  return wrapSymbolsInSvg(mergedSymbols);
 }
 
+/**
+ * Builds a JSON-serializable manifest describing which sprite symbols are used
+ * per entrypoint. In `merged` mode, reports a single merged sprite asset; in
+ * `atomic` mode, reports individual sprite assets with their used symbol IDs.
+ */
 function buildSpritesManifest(
   entrypointToSpriteResourceToIds: Map<string, Map<string, Set<string>>>,
   spriteResourceToAssetName: Map<string, string>,
@@ -737,6 +860,10 @@ function buildSpritesManifest(
   return manifest;
 }
 
+/**
+ * Collects all symbol IDs from a sprite-resource-to-IDs map and returns them
+ * as a sorted array. Used for deterministic manifest output.
+ */
 function collectSortedIds(spriteResourceToIds: Map<string, Set<string>>): string[] {
   const ids = new Set<string>();
   for (const spriteIds of spriteResourceToIds.values()) {
