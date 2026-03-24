@@ -42,6 +42,9 @@
     "@griffel/webpack-loader": "2.2.23",
     "@griffel/webpack-extraction-plugin": "0.5.14",
     "mini-css-extract-plugin": "2.10.1",
-    "css-loader": "7.1.4"
+    "css-loader": "7.1.4",
+    "jest-diff": "^30.2.0",
+    "jsdom": "^21.1.0",
+    "vitest": "^3.2.4"
   }
 }
