@@ -37,10 +37,18 @@ function main() {
     addSpriteExportMap(projectRoot);
   }
 
-  copyAssets('src/atoms/headless-svg-sprite/*.svg', './lib/atoms/headless-svg-sprite', projectRoot);
-  copyAssets('src/atoms/headless-svg-sprite/*.svg', './lib-cjs/atoms/headless-svg-sprite', projectRoot);
-  copyAssets('src/headless/*.css', './lib/headless', projectRoot);
-  copyAssets('src/headless/*.css', './lib-cjs/headless', projectRoot);
+  // Headless assets: only copy when headless generation was enabled
+  const headlessSvgSrcDir = join(projectRoot, 'src/atoms/headless-svg');
+  if (existsSync(headlessSvgSrcDir)) {
+    const headlessSpriteSrcDir = join(projectRoot, 'src/atoms/headless-svg-sprite');
+    if (existsSync(headlessSpriteSrcDir)) {
+      copyAssets('src/atoms/headless-svg-sprite/*.svg', './lib/atoms/headless-svg-sprite', projectRoot);
+      copyAssets('src/atoms/headless-svg-sprite/*.svg', './lib-cjs/atoms/headless-svg-sprite', projectRoot);
+    }
+    copyAssets('src/headless/*.css', './lib/headless', projectRoot);
+    copyAssets('src/headless/*.css', './lib-cjs/headless', projectRoot);
+    addHeadlessExportMap(projectRoot);
+  }
 
   applyBabelTransform('lib', projectRoot);
   applyBabelTransform('lib-cjs', projectRoot);
@@ -172,4 +180,73 @@ function addSpriteExportMap(baseDir) {
 
   writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
   console.log(`  ✓ [exports] Added ${spriteExportKey} to package.json`);
+}
+
+/**
+ * Adds headless export map entries to package.json when headless generation is enabled.
+ *
+ * NOTE: will be part of package.json once headless is stable. then we can remove this dynamic addition and the related build logic that copies headless assets.
+ * @param {string} baseDir
+ */
+function addHeadlessExportMap(baseDir) {
+  const pkgPath = join(baseDir, 'package.json');
+  const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
+
+  /** @type {Record<string, string | {types: string; import: string; require: string}>} */
+  const headlessExports = {
+    './headless': {
+      types: './lib/headless/index.d.ts',
+      import: './lib/headless/index.js',
+      require: './lib-cjs/headless/index.js',
+    },
+    './headless/fonts': {
+      types: './lib/headless/fonts/index.d.ts',
+      import: './lib/headless/fonts/index.js',
+      require: './lib-cjs/headless/fonts/index.js',
+    },
+    './headless/headless.css': './lib/headless/headless.css',
+    './headless/headless-fonts.css': './lib/headless/headless-fonts.css',
+    './headless/svg/*': {
+      types: './lib/atoms/headless-svg/*.d.ts',
+      import: './lib/atoms/headless-svg/*.js',
+      require: './lib-cjs/atoms/headless-svg/*.js',
+    },
+    './headless/svg-sprite/*': {
+      types: './lib/atoms/headless-svg-sprite/*.d.ts',
+      import: './lib/atoms/headless-svg-sprite/*.js',
+      require: './lib-cjs/atoms/headless-svg-sprite/*.js',
+    },
+    './headless/fonts/*': {
+      types: './lib/atoms/headless-fonts/*.d.ts',
+      import: './lib/atoms/headless-fonts/*.js',
+      require: './lib-cjs/atoms/headless-fonts/*.js',
+    },
+  };
+
+  let added = false;
+
+  for (const [key, value] of Object.entries(headlessExports)) {
+    if (pkg.exports[key]) {
+      console.log(`  ✓ [exports] ${key} already present`);
+      continue;
+    }
+    pkg.exports[key] = value;
+    console.log(`  ✓ [exports] Added ${key} to package.json`);
+    added = true;
+  }
+
+  // Add headless CSS sideEffects entries
+  const headlessSideEffects = ['**/headless/headless-fonts.css', '**/headless/headless.css'];
+  const currentSideEffects = Array.isArray(pkg.sideEffects) ? pkg.sideEffects : [];
+
+  const missingSideEffects = headlessSideEffects.filter((se) => !currentSideEffects.includes(se));
+  if (missingSideEffects.length > 0) {
+    pkg.sideEffects = [...currentSideEffects, ...missingSideEffects];
+    missingSideEffects.forEach((se) => console.log(`  ✓ [sideEffects] Added ${se} to package.json`));
+    added = true;
+  }
+
+  if (added) {
+    writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
+  }
 }

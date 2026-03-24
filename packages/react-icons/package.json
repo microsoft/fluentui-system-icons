@@ -126,33 +126,6 @@
       "types": "./lib/providers.d.ts",
       "import": "./lib/providers.js",
       "require": "./lib-cjs/providers.js"
-    },
-    "./headless": {
-      "types": "./lib/headless/index.d.ts",
-      "import": "./lib/headless/index.js",
-      "require": "./lib-cjs/headless/index.js"
-    },
-    "./headless/fonts": {
-      "types": "./lib/headless/fonts/index.d.ts",
-      "import": "./lib/headless/fonts/index.js",
-      "require": "./lib-cjs/headless/fonts/index.js"
-    },
-    "./headless/headless.css": "./lib/headless/headless.css",
-    "./headless/headless-fonts.css": "./lib/headless/headless-fonts.css",
-    "./headless/svg/*": {
-      "types": "./lib/atoms/headless-svg/*.d.ts",
-      "import": "./lib/atoms/headless-svg/*.js",
-      "require": "./lib-cjs/atoms/headless-svg/*.js"
-    },
-    "./headless/svg-sprite/*": {
-      "types": "./lib/atoms/headless-svg-sprite/*.d.ts",
-      "import": "./lib/atoms/headless-svg-sprite/*.js",
-      "require": "./lib-cjs/atoms/headless-svg-sprite/*.js"
-    },
-    "./headless/fonts/*": {
-      "types": "./lib/atoms/headless-fonts/*.d.ts",
-      "import": "./lib/atoms/headless-fonts/*.js",
-      "require": "./lib-cjs/atoms/headless-fonts/*.js"
     }
   }
 }

@@ -61,8 +61,12 @@ async function main() {
   await writeMetadata(METADATA_PATH, chunkMetadata);
   await writeMetadata(perIconMetadataPath, perIconMetadata);
 
+  const headlessSuffix = HEADLESS_PER_ICON_DEST
+    ? ` | Headless dest: ${HEADLESS_PER_ICON_DEST}`
+    : ' | Headless: disabled';
+
   console.log(
-    `[font generation] Finished chunk + per-icon outputs. Chunk dest: ${DEST_PATH} | Per-icon dest: ${PER_ICON_DEST}`,
+    `[font generation] Finished chunk + per-icon outputs. Chunk dest: ${DEST_PATH} | Per-icon dest: ${PER_ICON_DEST}${headlessSuffix}`,
   );
 }
 
@@ -314,7 +318,8 @@ function parseArgs(argv) {
   const METADATA_PATH = /** @type {string} */ (args.metadata); // output font metadata file
   const CODEPOINT_DEST_PATH = /** @type {string} */ (args.codepointDest); // where to output processed codepoint maps
   const PER_ICON_DEST = /** @type {string} */ (args.perIconDest); // per-icon output folder
-  const HEADLESS_PER_ICON_DEST = /** @type {string|undefined} */ (args.headlessPerIconDest); // headless per-icon output folder
+  const HEADLESS_ENABLED = Boolean(args.headless); // opt-in flag for headless component generation
+  const HEADLESS_PER_ICON_DEST = HEADLESS_ENABLED ? /** @type {string} */ (args.headlessPerIconDest) : undefined; // headless per-icon output folder (only when --headless is set)
 
   if (!SRC_PATH) {
     throw new Error('Icon source folder not specified by --source');
@@ -333,6 +338,11 @@ function parseArgs(argv) {
   }
   if (!CODEPOINT_DEST_PATH) {
     throw new Error('Output destination folder for codepoint map not specified by --dest');
+  }
+  if (HEADLESS_ENABLED && !HEADLESS_PER_ICON_DEST) {
+    throw new Error(
+      'Headless per-icon output folder not specified by --headlessPerIconDest (required when --headless is set)',
+    );
   }
 
   if (!fsS.existsSync(DEST_PATH)) {
