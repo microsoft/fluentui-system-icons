@@ -54,15 +54,27 @@ function replaceInFiles(options) {
 
   let files = targets.flatMap(t => getFiles(t, { recursive }));
 
+  if (!quiet) {
+    console.log(`[replace-in-files] Search:      ${search instanceof RegExp ? search : JSON.stringify(search)}`);
+    console.log(`[replace-in-files] Replacement: ${JSON.stringify(replacement)}`);
+    console.log(`[replace-in-files] Targets:     ${targets.join(', ')}`);
+  }
+
+  console.log(`[replace-in-files] Files found: ${files.length}`);
+
   if (include) {
-    const includeRegex = new RegExp(include.replace(/\*/g, '.*'));
-    files = files.filter(f => includeRegex.test(path.basename(f)));
+    files = files.filter(f => path.matchesGlob(path.basename(f), include));
   }
 
   if (exclude) {
-    const excludeRegex = new RegExp(exclude.replace(/\*/g, '.*'));
-    files = files.filter(f => !excludeRegex.test(path.basename(f)));
+    files = files.filter(f => !path.matchesGlob(path.basename(f), exclude));
   }
+
+  if (include || exclude) {
+    console.log(`[replace-in-files] Files after filtering: ${files.length}`);
+  }
+
+  let updatedCount = 0;
 
   for (const file of files) {
     try {
@@ -70,16 +82,24 @@ function replaceInFiles(options) {
       const updated = search instanceof RegExp
         ? content.replace(search, replacement)
         : content.split(search).join(replacement);
+
       if (content !== updated) {
         fs.writeFileSync(file, updated, 'utf8');
+        updatedCount++;
         if (!quiet) {
-          console.log(`Updated: ${file}`);
+          console.log(`[replace-in-files] Updated: ${file}`);
         }
       }
     } catch {
+      if (!quiet) {
+        console.warn(`[replace-in-files] Skipped (unreadable): ${file}`);
+      }
       // Skip binary or unreadable files
     }
   }
+
+  console.log(`[replace-in-files] Done. ${updatedCount}/${files.length} file(s) updated.`);
+
 }
 
 module.exports = { replaceInFiles };
