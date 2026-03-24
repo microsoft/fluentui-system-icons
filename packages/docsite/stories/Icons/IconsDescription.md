@@ -1,6 +1,6 @@
 The `@fluentui/react-icons` package provides [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons) icon set. Each icon within this set is encapsulated within a React component, utilizing SVG-based graphics. Icons are available in two distinct styles: `Filled` and `Regular`.
 
-> **⚠️ Note:** `Color` icon variants are deprecated due to accessibility issues. See the **Advanced Usage** page for details and migration guidance.
+> **⚠️ Note:** `Color` icon variants are deprecated due to accessibility issues. See the **User Guidance** page for details and migration guidance.
 
 ## Sized icons vs unsized icons
 
