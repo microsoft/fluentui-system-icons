@@ -8,7 +8,7 @@
     "url": "https://github.com/microsoft/fluentui-system-icons.git"
   },
   "scripts": {
-    "clean": "shx rm -rf ./icons",
+    "clean": "git clean -fXd ./icons",
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./icons --extension=svg",
     "copywithdirs": "node ../../importer/generate.js --source=../../assets --dest=./icons --extension=svg --keepdirs=true",
     "rename": "renamer --find 'ic_fluent_' '**'",
@@ -19,9 +19,6 @@
   },
   "devDependencies": {
     "renamer": "^2.0.1",
-    "replace": "^1.2.0",
-    "shx": "^0.3.2",
-    "svgo": "2.8.2",
-    "yargs": "^14.0.0"
+    "svgo": "2.8.2"
   }
 }
