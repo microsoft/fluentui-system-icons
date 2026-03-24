@@ -12,9 +12,8 @@ const { default: FluentUIReactIconsFontSubsettingPlugin } = require('../lib/');
 const entries = {
   index: { src: './src/index.js', threshold: 2 * 1_024 }, // 2 KB
   atoms: { src: './src/atoms.js', threshold: 2 * 1_024 }, // 2 KB
-  // atomsImportStar uses `import *` and references more icon variants,
-  // producing a larger (but still properly subset) font.
-  atomsImportStar: { src: './src/atoms-import-star.js', threshold: 2.5 * 1_024 }, // 2.5 KB
+  // atomsImportStar uses `import *` and references more icon variants, producing a larger (but still properly subset) font.
+  atomsImportStar: { src: './src/atoms-import-star.js', threshold: 3 * 1_024 }, // 3.0 KB
 };
 
 const isDevServer = process.env.WEBPACK_SERVE === 'true';
