@@ -27,6 +27,9 @@ const FONT_VARIANT_MAP: Record<FontFile, string> = {
  * Sets data attributes for CSS targeting:
  * - data-fui-icon="font" for base font icon styles
  * - data-fui-icon-font="filled|regular|..." for font-family selection
+ *
+ * @access private
+ * @alpha
  */
 export function createFluentFontIcon(
   displayName: string,

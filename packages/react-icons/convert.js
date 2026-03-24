@@ -64,8 +64,8 @@ async function main() {
   if (HEADLESS_PER_ICON_DEST && HEADLESS_SPRITE_DEST) {
     await processPerIcon(srcFiles, HEADLESS_PER_ICON_DEST, HEADLESS_SPRITE_DEST, rtlMetadata, {
       svgImportPath: '../../headless/createFluentIcon',
-      spriteTypeImportPath: '../../headless/svg-icon',
-      spriteCreateImportPath: '../../headless/svg-icon',
+      spriteTypeImportPath: '../../headless/createFluentIcon.svg-sprite',
+      spriteCreateImportPath: '../../headless/createFluentIcon.svg-sprite',
     });
   }
 

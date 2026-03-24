@@ -1,4 +1,4 @@
-// Headless Fluent Font Icons API — no Griffel/CSS-in-JS runtime dependency.
+// Headless Fluent Font Icons API
 
 export { createFluentFontIcon } from './createFluentFontIcon';
 export type { FluentFontIcon, CreateFluentFontIconOptions } from './createFluentFontIcon';

@@ -1,4 +1,4 @@
-// Headless Fluent Icons API — no Griffel/CSS-in-JS runtime dependency.
+// Headless Fluent Icons API
 // Import the shipped CSS file (headless.css) for default styling via data-attribute selectors.
 
 // Types & constants
@@ -17,7 +17,7 @@ export {
   DATA_FUI_ICON_FONT,
 } from './shared';
 
-// Context (already Griffel-free)
+// Context
 export { IconDirectionContextProvider, useIconContext } from '../contexts/index';
 export type { IconDirectionContextValue } from '../contexts/index';
 
@@ -28,8 +28,6 @@ export type { UseIconStateOptions } from './useIconState';
 // SVG icon factories
 export { createFluentIcon } from './createFluentIcon';
 export { bundleIcon } from './bundleIcon';
-// export { wrapIcon } from './wrapIcon';
 
-// Sprite-based SVG icon
-export { SvgIcon } from './svg-icon';
-export type { SvgIconProps } from './svg-icon';
+// TODO: to maintain API compat for build transform we will probably need to export this as well
+// export { wrapIcon } from './wrapIcon';

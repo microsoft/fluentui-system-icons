@@ -12,13 +12,16 @@ export type CreateFluentIconOptions = {
 };
 
 /**
- * Headless createFluentIcon — SVG icon factory without Griffel.
+ * Headless createFluentIcon — SVG icon factory without Styles.
  *
  * Returns a React component that renders an SVG icon with:
  * - data-fui-icon attribute for CSS targeting
  * - a11y attributes (aria-hidden, aria-label, role)
  * - RTL flip via data-fui-icon-rtl attribute
  * - HCM forced-color-adjust via CSS attribute selector
+ *
+ * @access private
+ * @alpha
  */
 export const createFluentIcon = (
   displayName: string,
