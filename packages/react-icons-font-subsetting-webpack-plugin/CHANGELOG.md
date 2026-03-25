@@ -1,3 +1,9 @@
+## 2.0.322 (2026-03-24)
+
+### 🚀 Features
+
+- **react-icons-font-subsetting-webpack-plugin:** add subsetting support for import star statements from atomic groups ([#1012](https://github.com/microsoft/fluentui-system-icons/pull/1012))
+
 ## 2.0.321 (2026-03-13)
 
 This release contains icon updates

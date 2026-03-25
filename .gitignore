@@ -52,6 +52,12 @@ packages/react-native-icons/src/index.tsx
 packages/react-native-icons/yarn.lock
 packages/react-native-icons/package-lock.json
 
+# npm
+
+packages/**/lib/
+packages/**/lib-cjs/
+packages/**/dist/
+
 # Some Fluent tooling generates this for internal tracking assistance. Make sure it doesn't get committed.
 SvgList.txt
 

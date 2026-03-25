@@ -3,7 +3,7 @@
 // Licensed under the MIT license.
 
 const { execSync } = require('node:child_process');
-const { copyFileSync, readFileSync, writeFileSync } = require('node:fs');
+const { copyFileSync, existsSync, readFileSync, writeFileSync } = require('node:fs');
 const { join, basename } = require('node:path');
 
 const glob = require('glob');
@@ -28,6 +28,14 @@ function main() {
   // the compiled JS in a VM and resolves font file imports via require().
   copyAssets('src/utils/fonts/*.{ttf,woff,woff2,json}', './lib/utils/fonts', projectRoot);
   copyAssets('src/utils/fonts/*.{ttf,woff,woff2,json}', './lib-cjs/utils/fonts', projectRoot);
+
+  // Sprite assets: only copy when sprite generation was enabled
+  const spriteSrcDir = join(projectRoot, 'src/atoms/svg-sprite');
+  if (existsSync(spriteSrcDir)) {
+    copyAssets('src/atoms/svg-sprite/*.svg', './lib/atoms/svg-sprite', projectRoot);
+    copyAssets('src/atoms/svg-sprite/*.svg', './lib-cjs/atoms/svg-sprite', projectRoot);
+    addSpriteExportMap(projectRoot);
+  }
 
   applyBabelTransform('lib', projectRoot);
   applyBabelTransform('lib-cjs', projectRoot);
@@ -132,4 +140,31 @@ function copyAssets(src, dest, baseDir) {
       console.error(`  ✗ Failed to copy ${file}:`, /** @type {Error} */ (error).message);
     }
   });
+}
+
+/**
+ * Adds the `./svg-sprite/*` export map entry to package.json when sprite generation is enabled.
+ *
+ * NOTE: will be part of package.json once svg-sprite is stable. then we can remove this dynamic addition and the related build logic that copies sprite assets.
+ * @param {string} baseDir
+ */
+function addSpriteExportMap(baseDir) {
+  const pkgPath = join(baseDir, 'package.json');
+  const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
+
+  const spriteExportKey = './svg-sprite/*';
+
+  if (pkg.exports[spriteExportKey]) {
+    console.log(`  ✓ [exports] ${spriteExportKey} already present`);
+    return;
+  }
+
+  pkg.exports[spriteExportKey] = {
+    types: './lib/atoms/svg-sprite/*.d.ts',
+    import: './lib/atoms/svg-sprite/*.js',
+    require: './lib-cjs/atoms/svg-sprite/*.js',
+  };
+
+  writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
+  console.log(`  ✓ [exports] Added ${spriteExportKey} to package.json`);
 }

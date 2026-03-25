@@ -89,7 +89,7 @@ describe('convert font utils', () => {
       const entries = [{ iconEntries: map, writeProcessedCodepointMap: () => {} }];
 
       // grouping true -> should create one file dup.tsx containing both exports
-      const res = await generatePerIconFiles(tmpDest, entries, {}, false, true);
+      const res = await generatePerIconFiles(tmpDest, { resizable: [], sized: entries }, {}, true);
       expect(res.fileCount).toBeGreaterThan(0);
       const files = fs.readdirSync(tmpDest);
       const dupFile = files.find((f) => f.startsWith('dup'));
@@ -120,7 +120,7 @@ describe('convert font utils', () => {
       writeMap('test2.json', map);
       const entries = [{ iconEntries: map, writeProcessedCodepointMap: () => {} }];
 
-      const res = await generatePerIconFiles(tmpDest, entries, {}, false, true);
+      const res = await generatePerIconFiles(tmpDest, { resizable: [], sized: entries }, {}, true);
       expect(res.fileCount).toBeGreaterThan(0);
       const files = fs.readdirSync(tmpDest);
       const testFile = files.find((f) => f.startsWith('test'));

@@ -7,7 +7,13 @@ const fs = require('fs');
 const { readdir } = require('fs/promises');
 const path = require('path');
 const yargs = require('yargs');
-const { makeIconExport, getCreateFluentIconHeader, loadRtlMetadata, generatePerIconFiles } = require('./convert.utils');
+const {
+  parseIconSource,
+  buildIconExportCode,
+  getCreateFluentIconHeader,
+  loadRtlMetadata,
+  generatePerIconFiles,
+} = require('./convert.utils');
 const {
   assertCompoundStyleVariantIssues,
   handleDeprecatedColorAtoms,
@@ -24,22 +30,33 @@ if (require.main === module) {
 }
 
 async function main() {
-  const { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH, PER_ICON_DEST } = parseArgs(process.argv.slice(2));
+  const { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH, PER_ICON_DEST, SPRITE_DEST } = parseArgs(process.argv.slice(2));
   const srcFiles = await processSourceDir(SRC_PATH);
   const rtlMetadata = loadRtlMetadata(RTL_FILE);
 
   // 1. Generate chunks
   const { svgMetadata: chunkMetadata } = processPerChunk(srcFiles, DEST_PATH, rtlMetadata);
 
-  // 2. Generate per-icon output
+  // 2. Generate per-icon output (+ SVG sprites when --sprites is enabled)
   const perIconMetadataPath = METADATA_PATH.replace(/\.json$/, '.atom.json');
-  const { svgMetadata: perIconMetadata } = await processPerIcon(srcFiles, PER_ICON_DEST, rtlMetadata);
+  const { svgMetadata: perIconMetadata, spriteMetadata } = await processPerIcon(
+    srcFiles,
+    PER_ICON_DEST,
+    SPRITE_DEST,
+    rtlMetadata,
+  );
 
   writeMetadata(METADATA_PATH, chunkMetadata);
   writeMetadata(perIconMetadataPath, perIconMetadata);
 
+  if (SPRITE_DEST) {
+    const spriteMetadataPath = METADATA_PATH.replace(/\.json$/, '.atom-sprite.json');
+    writeMetadata(spriteMetadataPath, spriteMetadata);
+  }
+
+  const spriteSuffix = SPRITE_DEST ? ` | Sprite dest: ${SPRITE_DEST}` : ' | Sprites: disabled';
   console.log(
-    `[svg generation] Finished chunk + per-icon outputs. Chunk dest: ${DEST_PATH} | Per-icon dest: ${PER_ICON_DEST}`,
+    `[svg generation] Finished chunk + per-icon outputs. Chunk dest: ${DEST_PATH} | Per-icon dest: ${PER_ICON_DEST}${spriteSuffix}`,
   );
 }
 
@@ -118,14 +135,10 @@ function processPerChunk(sourceFiles, dest, rtlMetadata) {
 
 /**
  * Process a folder of svg files and convert them to React components, following naming patterns for the FluentUI System Icons
- * @param {string} srcPath
- * @param {boolean} resizable
- * @returns { { content: string[], iconNames: string[] } } - chunked icon files to insert and list of icon names
- */
-/**
  * @param {SourceFiles} srcFiles
  * @param {import('./convert.utils').RtlMetadata} rtlMetadata
  * @param {boolean} resizable
+ * @returns { { content: string[], iconNames: string[] } } - chunked icon files to insert and list of icon names
  */
 function processFolder(srcFiles, rtlMetadata, resizable) {
   /** @type string[] */
@@ -138,10 +151,10 @@ function processFolder(srcFiles, rtlMetadata, resizable) {
       return;
     }
 
-    const result = makeIconExport({ file: entry.file, srcFile: entry.srcFile, resizable, metadata: rtlMetadata });
-    if (result) {
-      iconExports.push(result.exportCode);
-      iconNames.push(result.exportName);
+    const parsed = parseIconSource({ file: entry.file, srcFile: entry.srcFile, resizable, metadata: rtlMetadata });
+    if (parsed) {
+      iconExports.push(buildIconExportCode(parsed));
+      iconNames.push(parsed.exportName);
     }
   });
 
@@ -162,34 +175,55 @@ function processFolder(srcFiles, rtlMetadata, resizable) {
 }
 
 /**
- * Per-icon generation (merged from former convert-per-icon.js)
+ * Per-icon generation (merged from former convert-per-icon.js) and SVG sprite generation.
  * @param {SourceFiles} sourceFiles
  * @param {string} destPath
+ * @param {string | undefined} spriteDest
  * @param {import('./convert-font.utils').RtlMetadata} rtlMetadata
  */
-async function processPerIcon(sourceFiles, destPath, rtlMetadata, options = { groupByBase: true }) {
+async function processPerIcon(sourceFiles, destPath, spriteDest, rtlMetadata, options = { groupByBase: true }) {
   // local clean (synchronous) similar to chunk variant
   if (fs.existsSync(destPath)) {
     fs.rmSync(destPath, { recursive: true, force: true });
   }
   fs.mkdirSync(destPath, { recursive: true });
 
+  if (spriteDest) {
+    if (fs.existsSync(spriteDest)) {
+      fs.rmSync(spriteDest, { recursive: true, force: true });
+    }
+    fs.mkdirSync(spriteDest, { recursive: true });
+  }
+
   /** @type {import('./metadata.utils').IconMetadataCollection} */
   const svgMetadata = {};
+  /** @type {import('./metadata.utils').IconMetadataCollection} */
+  const spriteMetadata = {};
 
-  // resizable (base 20 variant names with size removed)
-  const resizable = await generatePerIconFiles(sourceFiles, destPath, rtlMetadata, true, options.groupByBase);
+  // single pass: resizable (base 20 variant names with size removed) + sized (all sizes)
+  // Also generates SVG sprite pairs when spriteDest is provided.
+  const { resizable, sized, fileCount, spriteFileCount } = await generatePerIconFiles(
+    sourceFiles,
+    { atomsDest: destPath, spriteAtomsDest: spriteDest },
+    rtlMetadata,
+    options.groupByBase,
+  );
   Object.assign(svgMetadata, createFormatMetadata(resizable.iconNames, 'svg', 'resizable'));
-  // sized (all sizes)
-  const sized = await generatePerIconFiles(sourceFiles, destPath, rtlMetadata, false, options.groupByBase);
   Object.assign(svgMetadata, createFormatMetadata(sized.iconNames, 'svg', 'sized'));
+
+  if (spriteDest) {
+    // Sprite metadata — same icon names, different format tag
+    Object.assign(spriteMetadata, createFormatMetadata(resizable.iconNames, 'svg', 'resizable'));
+    Object.assign(spriteMetadata, createFormatMetadata(sized.iconNames, 'svg', 'sized'));
+  }
 
   handleDeprecatedColorAtoms(destPath, 'svg');
   handleDeprecatedTextColorAtoms(destPath, 'svg');
   await assertCompoundStyleVariantIssues(destPath);
 
-  console.log(`[svg per-icon] Wrote ${resizable.fileCount + sized.fileCount} icon files to ${destPath}`);
-  return { svgMetadata };
+  const spriteMsg = spriteDest ? `${spriteFileCount} sprite pair(s) to ${spriteDest}` : 'sprites disabled';
+  console.log(`[svg per-icon] Wrote ${fileCount} icon files to ${destPath} | ${spriteMsg}`);
+  return { svgMetadata, spriteMetadata };
 }
 
 /**
@@ -233,6 +267,8 @@ function parseArgs(argv) {
   const RTL_FILE = /** @type {string} */ (args.rtl); // rtl metadata json
   const METADATA_PATH = /** @type {string} */ (args.metadata); // output metadata file
   const PER_ICON_DEST = /** @type {string} */ (args.perIconDest); // per-icon output folder
+  const SPRITES_ENABLED = Boolean(args.sprites); // opt-in flag for svg sprite generation
+  const SPRITE_DEST = SPRITES_ENABLED ? /** @type {string} */ (args.spriteDest) : undefined; // svg sprite output folder (only when --sprites is set)
 
   if (!SRC_PATH) {
     throw new Error('Icon source folder not specified by --source');
@@ -242,6 +278,9 @@ function parseArgs(argv) {
   }
   if (!PER_ICON_DEST) {
     throw new Error('Atoms Output destination folder not specified by --perIconDest');
+  }
+  if (SPRITES_ENABLED && !SPRITE_DEST) {
+    throw new Error('SVG sprite output folder not specified by --spriteDest (required when --sprites is set)');
   }
   if (!RTL_FILE) {
     throw new Error('RTL file not specified by --rtl');
@@ -258,7 +297,11 @@ function parseArgs(argv) {
     fs.mkdirSync(PER_ICON_DEST, { recursive: true });
   }
 
-  return { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH, PER_ICON_DEST };
+  if (SPRITE_DEST && !fs.existsSync(SPRITE_DEST)) {
+    fs.mkdirSync(SPRITE_DEST, { recursive: true });
+  }
+
+  return { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH, PER_ICON_DEST, SPRITE_DEST };
 }
 
 module.exports = {};

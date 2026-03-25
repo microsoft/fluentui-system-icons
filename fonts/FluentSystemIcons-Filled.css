@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?0f09c59ea5197adf846aba74b10c6ce9") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?0f09c59ea5197adf846aba74b10c6ce9") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?0f09c59ea5197adf846aba74b10c6ce9") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?358a18e59f2449f0b70b19bf39fcc604") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?358a18e59f2449f0b70b19bf39fcc604") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?358a18e59f2449f0b70b19bf39fcc604") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -28623,4 +28623,13 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_headphones_monoaural_20_filled:before {
     content: "\f0c3f";
+}
+.icon-ic_fluent_data_histogram_28_filled:before {
+    content: "\f0c40";
+}
+.icon-ic_fluent_tab_desktop_bottom_28_filled:before {
+    content: "\f0c41";
+}
+.icon-ic_fluent_tab_desktop_multiple_bottom_28_filled:before {
+    content: "\f0c42";
 }
