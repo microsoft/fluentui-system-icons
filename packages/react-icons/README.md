@@ -437,6 +437,14 @@ SVG sprites offer smaller bundles, faster renders, and zero runtime overhead.
 
 👉 **[Full documentation →](./docs/preview-features.md#atomic-api-svg-sprites)**
 
+## Headless API — ⚠️ Alpha
+
+> **This feature is available as an alpha prerelease only.** Install via `npm i @fluentui/react-icons@alpha`
+
+A drop-in replacement for the standard API that removes the CSS-in-JS runtime — uses static CSS with data-attribute selectors instead.
+
+👉 **[Full documentation →](./docs/preview-features.md#headless-api)**
+
 ## Viewing Icons
 
 You can view the full list of available icons by type:
