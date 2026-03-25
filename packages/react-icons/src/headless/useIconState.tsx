@@ -43,9 +43,9 @@ export const useIconState = <
   const isRtlFlip = options?.flipInRtl && iconContext?.textDirection === 'rtl';
 
   // Data attributes for CSS targeting
-  (state as Record<string, unknown>)[DATA_FUI_ICON] = '';
+  state[DATA_FUI_ICON] = '';
   if (isRtlFlip) {
-    (state as Record<string, unknown>)[DATA_FUI_ICON_RTL] = '';
+    state[DATA_FUI_ICON_RTL] = '';
   }
 
   if (title) {

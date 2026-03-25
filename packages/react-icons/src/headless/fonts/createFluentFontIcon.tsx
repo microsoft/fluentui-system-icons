@@ -46,8 +46,8 @@ export function createFluentFontIcon(
     );
 
     // Override the default data-fui-icon to "font" for font-specific styles
-    (state as Record<string, unknown>)[DATA_FUI_ICON] = 'font';
-    (state as Record<string, unknown>)[DATA_FUI_ICON_FONT] = FONT_VARIANT_MAP[font];
+    state[DATA_FUI_ICON] = 'font';
+    state[DATA_FUI_ICON_FONT] = FONT_VARIANT_MAP[font];
 
     // Map primaryFill to color for font icons
     if (props.primaryFill && props.primaryFill.toLowerCase() !== 'currentcolor') {

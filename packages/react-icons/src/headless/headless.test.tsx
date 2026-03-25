@@ -6,17 +6,17 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { describe, expect, test } from 'vitest';
 
-import { FontFile } from '../utils/fonts/createFluentFontIcon.shared';
 import { createFluentFontIcon, FluentFontIcon } from './fonts';
 import { createFluentIcon } from './createFluentIcon';
-import type { FluentIcon } from './createFluentIcon';
+import { createFluentIcon as createFluentSpriteIcon } from './createFluentIcon.svg-sprite';
 import { bundleIcon } from './bundleIcon';
+import type { FluentIcon } from './shared';
 import { DATA_FUI_ICON, DATA_FUI_ICON_RTL, DATA_FUI_ICON_HIDDEN, DATA_FUI_ICON_FONT } from './shared';
 import { IconDirectionContextProvider } from '../contexts';
 
-describe('Headless API — React component tests', () => {
+describe('Headless API — SVG icons', () => {
   test('createFluentIcon should create a valid icon component', () => {
-    const AccessTimeRegular: FluentIcon = createFluentIcon('AccessTimeRegular', '1em', [
+    const AccessTimeRegular = createFluentIcon('AccessTimeRegular', '1em', [
       'M6.99 8.6A.5.5 0 0 1 6 8.4a1.29 1.29 0 0 1 .07-.24',
     ]);
 
@@ -24,8 +24,26 @@ describe('Headless API — React component tests', () => {
     expect(AccessTimeRegular.displayName).toBe('AccessTimeRegular');
 
     const { container } = render(<AccessTimeRegular />);
+    expect(container).toMatchInlineSnapshot(`
+      <div>
+        <svg
+          aria-hidden="true"
+          class="fui-Icon"
+          data-fui-icon=""
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 20 20"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6.99 8.6A.5.5 0 0 1 6 8.4a1.29 1.29 0 0 1 .07-.24"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+    `);
     const svg = container.querySelector('svg');
-    expect(svg).toBeTruthy();
     expect(svg).toHaveAttribute(DATA_FUI_ICON, '');
     expect(svg).toHaveAttribute('aria-hidden', 'true');
     expect(svg).toHaveClass('fui-Icon');
@@ -55,12 +73,37 @@ describe('Headless API — React component tests', () => {
 
   test('createFluentIcon with color icon (string SVG content)', () => {
     const svgContent = '<circle cx="10" cy="10" r="5" fill="blue"/>';
-    const MyColorIcon = createFluentIcon('MyColorIcon', '1em', svgContent);
+    const MyColorIcon = createFluentIcon(
+      'MyColorIcon',
+      '1em',
+      svgContent,
+      // NOTE: color option is not currently used in createFluentIcon, but we include it here to verify that it doesn't interfere with string SVG content rendering
+      { color: true },
+    );
     const { container } = render(<MyColorIcon />);
 
     const svg = container.querySelector('svg');
-    expect(svg).toBeTruthy();
-    expect(svg?.innerHTML).toContain('circle');
+    expect(svg).toMatchInlineSnapshot(`
+      <svg
+        aria-hidden="true"
+        class="fui-Icon"
+        data-fui-icon=""
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 20 20"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="10"
+          cy="10"
+          fill="blue"
+          r="5"
+        />
+      </svg>
+    `);
+
+    expect(svg?.querySelector('circle')).toHaveAttribute('fill', 'blue');
   });
 
   test('createFluentIcon does not pass filled or title to svg element', () => {
@@ -86,37 +129,74 @@ describe('Headless API — React component tests', () => {
     expect(classNames).toBe('fui-Icon');
   });
 
-  test('createFluentIcon sets data-fui-icon-rtl when flipInRtl and RTL context', () => {
-    const d = 'M1 2 L3 4';
-    const MyIcon = createFluentIcon('MyIcon', '1em', [d], { flipInRtl: true });
+  describeRtlBehaviour(() => ({
+    withFlip: createFluentIcon('MyIcon', '1em', ['M1 2 L3 4'], { flipInRtl: true }),
+    withoutFlip: createFluentIcon('MyIcon', '1em', ['M1 2 L3 4']),
+  }));
+});
 
-    // Without RTL context — no RTL attribute
-    const { container: ltrContainer } = render(<MyIcon />);
-    const ltrSvg = ltrContainer.querySelector('svg');
-    expect(ltrSvg).not.toHaveAttribute(DATA_FUI_ICON_RTL);
+describe('Headless API — SVG sprite icons', () => {
+  test('renders svg with <use> element referencing sprite path', () => {
+    const MyIcon = createFluentSpriteIcon('access-time-20-filled', '20', '/sprites/access-time.svg');
 
-    // With RTL context — RTL attribute present
-    const { container: rtlContainer } = render(
-      <IconDirectionContextProvider value={{ textDirection: 'rtl' }}>
-        <MyIcon />
-      </IconDirectionContextProvider>,
-    );
-    const rtlSvg = rtlContainer.querySelector('svg');
-    expect(rtlSvg).toHaveAttribute(DATA_FUI_ICON_RTL, '');
-  });
-
-  test('createFluentIcon without flipInRtl does not set data-fui-icon-rtl even in RTL context', () => {
-    const d = 'M1 2 L3 4';
-    const MyIcon = createFluentIcon('MyIcon', '1em', [d]);
-
-    const { container } = render(
-      <IconDirectionContextProvider value={{ textDirection: 'rtl' }}>
-        <MyIcon />
-      </IconDirectionContextProvider>,
-    );
+    const { container } = render(<MyIcon />);
     const svg = container.querySelector('svg');
-    expect(svg).not.toHaveAttribute(DATA_FUI_ICON_RTL);
+    expect(svg).toBeTruthy();
+    expect(svg).toHaveAttribute(DATA_FUI_ICON, '');
+    expect(svg).toHaveAttribute('aria-hidden', 'true');
+    expect(svg).toHaveClass('fui-Icon');
+    expect(svg).toHaveAttribute('width', '20');
+    expect(svg).toHaveAttribute('height', '20');
+    expect(svg).toHaveAttribute('viewBox', '0 0 20 20');
+
+    const use = container.querySelector('use');
+    expect(use).toHaveAttribute('href', '/sprites/access-time.svg#access-time-20-filled');
   });
+
+  test('renders <use> with fragment-only href when no spritePath provided', () => {
+    const MyIcon = createFluentSpriteIcon('access-time-20-filled', '20');
+
+    const { container } = render(<MyIcon />);
+    const use = container.querySelector('use');
+    expect(use).toHaveAttribute('href', '#access-time-20-filled');
+  });
+
+  test('uses iconId as displayName', () => {
+    const MyIcon = createFluentSpriteIcon('access-time-20-filled', '20');
+    expect(MyIcon.displayName).toBe('access-time-20-filled');
+  });
+
+  test('resizable icon (1em) uses viewBox 0 0 20 20', () => {
+    const MyIcon = createFluentSpriteIcon('access-time-filled', '1em');
+
+    const { container } = render(<MyIcon />);
+    const svg = container.querySelector('svg');
+    expect(svg).toHaveAttribute('width', '1em');
+    expect(svg).toHaveAttribute('height', '1em');
+    expect(svg).toHaveAttribute('viewBox', '0 0 20 20');
+  });
+
+  test('applies custom primaryFill', () => {
+    const MyIcon = createFluentSpriteIcon('access-time-20-filled', '20');
+
+    const { container } = render(<MyIcon primaryFill="red" />);
+    const svg = container.querySelector('svg');
+    expect(svg).toHaveAttribute('fill', 'red');
+  });
+
+  describeRtlBehaviour(() => ({
+    withFlip: createFluentSpriteIcon('arrow-left-20-regular', '20', '/sprites/arrow-left.svg', { flipInRtl: true }),
+    withoutFlip: createFluentSpriteIcon('access-time-20-filled', '20', '/sprites/access-time.svg'),
+  }));
+});
+
+describe('Headless API — Font icons', () => {
+  const FontFile = {
+    Filled: 0,
+    Regular: 1,
+    Resizable: 2,
+    Light: 3,
+  } as const;
 
   test('createFluentFontIcon renders with data attributes', () => {
     const MyFontIcon: FluentFontIcon = createFluentFontIcon('MyFontIcon', '\uE001', FontFile.Filled, 20);
@@ -144,7 +224,9 @@ describe('Headless API — React component tests', () => {
     const el = container.querySelector('i');
     expect(el?.style.color).toBe('blue');
   });
+});
 
+describe('Headless API — bundleIcon', () => {
   test('bundleIcon renders both variants with data attributes', () => {
     const d = 'M1 2 L3 4';
     const FilledIcon = createFluentIcon('TestFilled', '1em', [d]);
@@ -184,3 +266,57 @@ describe('Headless API — React component tests', () => {
     });
   });
 });
+
+// =============================================================================
+
+/**
+ * Shared RTL test suite — reused by SVG icons and SVG sprite icons.
+ */
+function describeRtlBehaviour(factory: () => { withFlip: FluentIcon; withoutFlip: FluentIcon }) {
+  describe('RTL', () => {
+    test('sets data-fui-icon-rtl when flipInRtl and RTL context', () => {
+      const { withFlip: Icon } = factory();
+
+      // Without RTL context — no RTL attribute
+      const { container: ltrContainer } = render(<Icon />);
+      expect(ltrContainer.querySelector('svg')).not.toHaveAttribute(DATA_FUI_ICON_RTL);
+
+      // With RTL context — RTL attribute present
+      const { container: rtlContainer } = render(
+        <IconDirectionContextProvider value={{ textDirection: 'rtl' }}>
+          <Icon />
+        </IconDirectionContextProvider>,
+      );
+      expect(rtlContainer.querySelector('svg')).toHaveAttribute(DATA_FUI_ICON_RTL, '');
+    });
+
+    test('removes data-fui-icon-rtl on re-render when direction changes back to ltr', () => {
+      const { withFlip: Icon } = factory();
+
+      const { container, rerender } = render(
+        <IconDirectionContextProvider value={{ textDirection: 'rtl' }}>
+          <Icon />
+        </IconDirectionContextProvider>,
+      );
+      expect(container.querySelector('svg')).toHaveAttribute(DATA_FUI_ICON_RTL, '');
+
+      rerender(
+        <IconDirectionContextProvider value={{ textDirection: 'ltr' }}>
+          <Icon />
+        </IconDirectionContextProvider>,
+      );
+      expect(container.querySelector('svg')).not.toHaveAttribute(DATA_FUI_ICON_RTL);
+    });
+
+    test('without flipInRtl does not set data-fui-icon-rtl even in RTL context', () => {
+      const { withoutFlip: Icon } = factory();
+
+      const { container } = render(
+        <IconDirectionContextProvider value={{ textDirection: 'rtl' }}>
+          <Icon />
+        </IconDirectionContextProvider>,
+      );
+      expect(container.querySelector('svg')).not.toHaveAttribute(DATA_FUI_ICON_RTL);
+    });
+  });
+}
