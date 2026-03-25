@@ -2327,7 +2327,7 @@ describe('Build Verification', () => {
   });
 
   // Headless tests only run when headless generation was enabled (--headless flag passed to convert.js / convert-font.js)
-  const headlessGenerated = fs.existsSync(path.join(__dirname, 'lib', 'headless'));
+  const headlessGenerated = fs.existsSync(path.join(__dirname, 'lib', 'atoms', 'headless-svg'));
   const describeHeadless = headlessGenerated ? describe : describe.skip;
 
   describeHeadless('Headless Atoms', () => {
