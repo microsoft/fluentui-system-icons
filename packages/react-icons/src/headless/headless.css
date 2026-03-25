@@ -8,7 +8,7 @@
 
 /* ===== High Contrast Mode (a11y) ===== */
 @media (forced-colors: active) {
-  [data-fui-icon]:not([data-fui-icon="font"]) {
+  [data-fui-icon]:not([data-fui-icon='font']) {
     forced-color-adjust: auto;
   }
 }
@@ -24,7 +24,7 @@
 }
 
 /* ===== Font Icon Defaults ===== */
-[data-fui-icon="font"] {
+[data-fui-icon='font'] {
   display: inline-block;
   font-style: normal;
   line-height: 1em;
@@ -32,15 +32,15 @@
 }
 
 /* ===== Font Icon Family Variants ===== */
-[data-fui-icon-font="filled"] {
+[data-fui-icon-font='filled'] {
   font-family: 'FluentSystemIconsFilled';
 }
-[data-fui-icon-font="regular"] {
+[data-fui-icon-font='regular'] {
   font-family: 'FluentSystemIconsRegular';
 }
-[data-fui-icon-font="resizable"] {
+[data-fui-icon-font='resizable'] {
   font-family: 'FluentSystemIcons';
 }
-[data-fui-icon-font="light"] {
+[data-fui-icon-font='light'] {
   font-family: 'FluentSystemIconsLight';
 }
