@@ -225,30 +225,14 @@ function addHeadlessExportMap(baseDir) {
     },
   };
 
-  let added = false;
-
-  for (const [key, value] of Object.entries(headlessExports)) {
-    if (pkg.exports[key]) {
-      console.log(`  ✓ [exports] ${key} already present`);
-      continue;
-    }
-    pkg.exports[key] = value;
-    console.log(`  ✓ [exports] Added ${key} to package.json`);
-    added = true;
-  }
+  // Add headless export maps
+  Object.assign(pkg.exports, headlessExports);
+  console.log(`  ✓ [exports] Set ${Object.keys(headlessExports).join(', ')}`);
 
   // Add headless CSS sideEffects entries
   const headlessSideEffects = ['**/headless/fonts/headless-fonts.css', '**/headless/headless.css'];
-  const currentSideEffects = Array.isArray(pkg.sideEffects) ? pkg.sideEffects : [];
+  pkg.sideEffects = [...headlessSideEffects];
+  console.log(`  ✓ [sideEffects] Added ${headlessSideEffects.join(', ')}`);
 
-  const missingSideEffects = headlessSideEffects.filter((se) => !currentSideEffects.includes(se));
-  if (missingSideEffects.length > 0) {
-    pkg.sideEffects = [...currentSideEffects, ...missingSideEffects];
-    missingSideEffects.forEach((se) => console.log(`  ✓ [sideEffects] Added ${se} to package.json`));
-    added = true;
-  }
-
-  if (added) {
-    writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
-  }
+  writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
 }
