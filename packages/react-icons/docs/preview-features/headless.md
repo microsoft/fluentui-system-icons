@@ -2,7 +2,7 @@
 
 > **⚠️ Alpha** — this feature is available as an alpha prerelease only.
 >
-> Install via `npm i @fluentui/react-icons@alpha`
+> Install via `npm i @fluentui/react-icons@prerelease`
 
 The Headless API is a drop-in replacement for the standard icon API that removes the CSS-in-JS runtime dependency. It provides `data-*` attribute selectors for styling behaviour with opt-in pre-defined vanilla CSS — making it suitable for any React setup, including those without a CSS-in-JS runtime.
 
