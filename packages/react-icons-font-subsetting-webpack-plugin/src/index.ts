@@ -43,20 +43,14 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements webpack.W
         const packageToUsedFontExports: Map<string, Set<string>> = new Map<string, Set<string>>();
         for (const m of compilation.modules) {
           if (isFluentUIReactFontChunk(m)) {
-            const usedModuleExports = compilation.moduleGraph.getUsedExports(m, undefined);
-
-            // Either all exports are used or there's no info on used exports
-            if (usedModuleExports === null || typeof usedModuleExports === 'boolean') {
-              // In development mode (or when optimization.usedExports is disabled),
-              // getUsedExports() returns `true` (all exports used) or `null` (no info).
-              // Subsetting requires knowing exactly which exports are used.
+            const icons = resolveUsedIconExports(m, compilation.moduleGraph);
+            if (icons === null) {
               continue;
             }
 
             const pkgLibPath = resolve(dirname(m.resource), '../..');
-
             const usedPkgExports = packageToUsedFontExports.get(pkgLibPath) ?? new Set<string>();
-            for (const icon of usedModuleExports) {
+            for (const icon of icons) {
               usedPkgExports.add(icon);
             }
             packageToUsedFontExports.set(pkgLibPath, usedPkgExports);
@@ -117,6 +111,59 @@ function getTargetFormat(assetName: string) {
     default:
       return 'sfnt';
   }
+}
+
+/**
+ * Resolves the set of icon export names that are actually consumed from a font chunk module.
+ *
+ * Uses Webpack's `moduleGraph.getUsedExports()` which returns one of four shapes:
+ *
+ * | Return value    | Meaning                                                            | Action                                     |
+ * | --------------- | ------------------------------------------------------------------ | ------------------------------------------ |
+ * | `null`          | `optimization.usedExports` is disabled — no usage info available   | Skip (cannot determine which glyphs to keep)|
+ * | `false`         | Module has zero consumers — nothing is imported from it            | Skip (nothing to subset)                   |
+ * | `true`          | All exports are consumed (e.g. `import * as ns from '...'`)       | Fall back to `getProvidedExports()` ¹       |
+ * | `Set<string>`   | Exact set of named exports that are consumed                      | Use directly for subsetting                |
+ *
+ * ¹ When all exports are marked as used we can still subset: `getProvidedExports()` tells us
+ *   which exports this specific module **declares** (not the entire font), so we subset the font
+ *   to exactly the glyphs this module provides.
+ *
+ *   This is **critical for atomic font imports** (e.g. `import * as XboxConsoleGroup from
+ *   '@fluentui/react-icons/fonts/xbox-console'`) — each atomic module only provides a small icon
+ *   group, so `getProvidedExports()` returns just those few icons, enabling proper subsetting even
+ *   with namespace imports. Without this, namespace imports would skip subsetting entirely and ship
+ *   the full unsubsetted font.
+ *
+ * Returns `null` when subsetting cannot be performed, so the caller can skip the module.
+ */
+function resolveUsedIconExports(m: webpack.NormalModule, moduleGraph: webpack.ModuleGraph): string[] | null {
+  const usedModuleExports = moduleGraph.getUsedExports(m, undefined);
+
+  if (usedModuleExports === null) {
+    // No info on used exports (optimization.usedExports is disabled) - subsetting requires knowing exactly which exports are used.
+    return null;
+  }
+
+  if (usedModuleExports === false) {
+    // No exports are used from this module - nothing to subset.
+    return null;
+  }
+
+  if (usedModuleExports === true) {
+    // All exports are used (e.g. `import * as ns from '...'` or similar namespace import).
+    // Retrieve statically-provided exports from the module graph so we can subset to exactly
+    // the glyphs this module declares (rather than the full font or nothing).
+    const providedExports = moduleGraph.getProvidedExports(m);
+    if (providedExports === null || providedExports === true) {
+      // Provided exports not statically known (optimization.providedExports disabled) - skip.
+      return null;
+    }
+    return providedExports;
+  }
+
+  // usedModuleExports is a Set<string> with the exact named exports that are used.
+  return Array.from(usedModuleExports);
 }
 
 function isNormalModule(m: webpack.Module): m is webpack.NormalModule {
