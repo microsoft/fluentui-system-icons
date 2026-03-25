@@ -435,15 +435,15 @@ If you use SWC for transpilation, add [@swc/plugin-transform-imports](https://ww
 
 SVG sprites offer smaller bundles, faster renders, and zero runtime overhead.
 
-👉 **[Full documentation →](./docs/preview-features.md#atomic-api-svg-sprites)**
+👉 **[Full documentation →](./docs/preview-features/svg-sprites.md)**
 
 ## Headless API — ⚠️ Alpha
 
 > **This feature is available as an alpha prerelease only.** Install via `npm i @fluentui/react-icons@alpha`
 
-A drop-in replacement for the standard API that removes the CSS-in-JS runtime — uses static CSS with data-attribute selectors instead.
+A drop-in replacement for the standard API that removes the CSS-in-JS runtime — provides data-attribute selectors for styling behaviour with opt-in pre-defined vanilla CSS.
 
-👉 **[Full documentation →](./docs/preview-features.md#headless-api)**
+👉 **[Full documentation →](./docs/preview-features/headless.md)**
 
 ## Viewing Icons
 
