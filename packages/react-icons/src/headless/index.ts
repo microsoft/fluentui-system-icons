@@ -2,8 +2,7 @@
 // Import the shipped CSS file (headless.css) for default styling via data-attribute selectors.
 
 // Types & constants
-export type { FluentIconsProps } from './shared';
-export type { FluentIcon, CreateFluentIconOptions } from './createFluentIcon';
+export type { FluentIconsProps, FluentIcon, CreateFluentIconOptions } from './shared';
 export {
   iconClassName,
   iconFilledClassName,
@@ -15,6 +14,7 @@ export {
   DATA_FUI_ICON_RTL,
   DATA_FUI_ICON_HIDDEN,
   DATA_FUI_ICON_FONT,
+  cx,
 } from './shared';
 
 // Context

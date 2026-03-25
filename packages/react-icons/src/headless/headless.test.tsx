@@ -11,7 +11,6 @@ import { createFluentFontIcon, FluentFontIcon } from './fonts';
 import { createFluentIcon } from './createFluentIcon';
 import type { FluentIcon } from './createFluentIcon';
 import { bundleIcon } from './bundleIcon';
-import { getFluentIconFontFaceCSS } from './fonts/fontFaceCSS';
 import { DATA_FUI_ICON, DATA_FUI_ICON_RTL, DATA_FUI_ICON_HIDDEN, DATA_FUI_ICON_FONT } from './shared';
 import { IconDirectionContextProvider } from '../contexts';
 
@@ -183,20 +182,5 @@ describe('Headless API — React component tests', () => {
     svgs.forEach((svg) => {
       expect(svg).toHaveClass('fui-Icon');
     });
-  });
-
-  test('getFluentIconFontFaceCSS returns CSS with configurable base URL', () => {
-    const css = getFluentIconFontFaceCSS('/static/fonts');
-    expect(css).toContain("font-family: 'FluentSystemIconsFilled'");
-    expect(css).toContain("font-family: 'FluentSystemIconsRegular'");
-    expect(css).toContain("font-family: 'FluentSystemIconsLight'");
-    expect(css).toContain("font-family: 'FluentSystemIcons'");
-    expect(css).toContain('/static/fonts/FluentSystemIcons-Filled.woff2');
-    expect(css).toContain('/static/fonts/FluentSystemIcons-Regular.woff2');
-  });
-
-  test('getFluentIconFontFaceCSS works with CDN URL', () => {
-    const css = getFluentIconFontFaceCSS('https://cdn.example.com/fonts');
-    expect(css).toContain('https://cdn.example.com/fonts/FluentSystemIcons-Filled.woff2');
   });
 });

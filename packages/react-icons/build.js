@@ -46,7 +46,9 @@ function main() {
       copyAssets('src/atoms/headless-svg-sprite/*.svg', './lib-cjs/atoms/headless-svg-sprite', projectRoot);
     }
     copyAssets('src/headless/*.css', './lib/headless', projectRoot);
+    copyAssets('src/headless/fonts/*.css', './lib/headless/fonts', projectRoot);
     copyAssets('src/headless/*.css', './lib-cjs/headless', projectRoot);
+    copyAssets('src/headless/fonts/*.css', './lib-cjs/headless/fonts', projectRoot);
     addHeadlessExportMap(projectRoot);
   }
 
@@ -205,7 +207,7 @@ function addHeadlessExportMap(baseDir) {
       require: './lib-cjs/headless/fonts/index.js',
     },
     './headless/headless.css': './lib/headless/headless.css',
-    './headless/headless-fonts.css': './lib/headless/headless-fonts.css',
+    './headless/headless-fonts.css': './lib/headless/fonts/headless-fonts.css',
     './headless/svg/*': {
       types: './lib/atoms/headless-svg/*.d.ts',
       import: './lib/atoms/headless-svg/*.js',
@@ -236,7 +238,7 @@ function addHeadlessExportMap(baseDir) {
   }
 
   // Add headless CSS sideEffects entries
-  const headlessSideEffects = ['**/headless/headless-fonts.css', '**/headless/headless.css'];
+  const headlessSideEffects = ['**/headless/fonts/headless-fonts.css', '**/headless/headless.css'];
   const currentSideEffects = Array.isArray(pkg.sideEffects) ? pkg.sideEffects : [];
 
   const missingSideEffects = headlessSideEffects.filter((se) => !currentSideEffects.includes(se));
