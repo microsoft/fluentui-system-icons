@@ -7,7 +7,7 @@
     "build-storybook": "storybook build --docs"
   },
   "dependencies": {
-    "@fluentui/react-components": "^9.46.0",
+    "@fluentui/react-components": "^9.73.5",
     "@fluentui/react-icons": "*",
     "react": "19.2.3",
     "react-dom": "19.2.3",
