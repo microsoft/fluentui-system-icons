@@ -24,7 +24,11 @@
     "sourceMap": true,
     "jsx": "react-native",
     "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "react": ["./node_modules/@types/react"]
+    }
   },
   "include": ["src"],
   "exclude": ["lib", "lib-cjs", "node_modules"]
