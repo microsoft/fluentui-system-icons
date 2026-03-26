@@ -280,7 +280,7 @@ jobs:
           echo "| --- | --- |" >> $GITHUB_STEP_SUMMARY
           echo "| **icon-app-build** | Icon app production build |" >> $GITHUB_STEP_SUMMARY
           if [ "${{ steps.docsite.outputs.built }}" == "true" ]; then
-            echo "| **docsite-storybook** | Storybook docsite (download and run \`npx http-server storybook-static\`) |" >> $GITHUB_STEP_SUMMARY
+            echo "| **docsite-storybook** | Storybook docsite (download and run \`npx http-server docsite-storybook\`) |" >> $GITHUB_STEP_SUMMARY
           fi
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "> Artifacts can be downloaded from the **Artifacts** section at the bottom of this workflow run summary page." >> $GITHUB_STEP_SUMMARY
