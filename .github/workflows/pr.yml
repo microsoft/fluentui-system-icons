@@ -241,10 +241,29 @@ jobs:
       - name: Test
         run: npx nx affected -t test --exclude='svg-icons,svg-sprites'
 
+      - name: Docsite
+        id: docsite
+        run: |
+          npx nx affected -t build-storybook --exclude='svg-icons,svg-sprites'
+          if [ -d "packages/docsite/storybook-static" ]; then
+            echo "built=true" >> $GITHUB_OUTPUT
+          else
+            echo "built=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Bundle-Size
         run: |
           npx nx affected -t bundle-size --exclude='svg-icons,svg-sprites'
           npx monosize compare-reports --branch=${{ github.event.pull_request.base.ref }}
+
+
+      - name: Upload Docsite artifact
+        if: steps.docsite.outputs.built == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: docsite-storybook
+          path: packages/docsite/storybook-static/
+          retention-days: 7
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -252,3 +271,17 @@ jobs:
           name: icon-app-build
           path: packages/icon-app/dist/
           retention-days: 7
+
+      - name: Job Summary
+        if: always()
+        run: |
+          echo "## 📦 Build Artifacts" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Artifact | Description |" >> $GITHUB_STEP_SUMMARY
+          echo "| --- | --- |" >> $GITHUB_STEP_SUMMARY
+          echo "| **icon-app-build** | Icon app production build |" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.docsite.outputs.built }}" == "true" ]; then
+            echo "| **docsite-storybook** | Storybook docsite (download and run \`npx http-server storybook-static\`) |" >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "> Artifacts can be downloaded from the **Artifacts** section at the bottom of this workflow run summary page." >> $GITHUB_STEP_SUMMARY
