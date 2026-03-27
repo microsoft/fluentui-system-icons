@@ -370,15 +370,19 @@ module.exports = {
               return '@fluentui/react-icons/providers';
             }
 
-            // Icons end with a style suffix
-            const isIcon = importName.match(/(\d*)?(Regular|Filled|Light|Color)$/);
-            if (!isIcon) {
+            // (.+?) captures icon base name (may include digits like Space3D),
+            // (\d{2})? optionally matches the 2-digit size suffix,
+            // last group matches the style variant.
+            const match = importName.match(/(.+?)(\d{2})?(Regular|Filled|Light|Color)$/);
+            if (!match) {
               return '@fluentui/react-icons/utils';
             }
 
-            const withoutSuffix = importName.replace(/(\d*)?(Regular|Filled|Light|Color)$/, '');
-
-            const kebabCase = withoutSuffix.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+            // Lookahead-based kebab-case: inserts '-' at lowercase→digit and
+            // (lowercase|digit)→uppercase boundaries without consuming the next
+            // character, so overlapping boundaries like "e3D" (Space3D) produce
+            // "e-3-D" in a single pass.
+            const kebabCase = match[1].replace(/([a-z](?=\d)|[a-z0-9](?=[A-Z]))/g, '$1-').toLowerCase();
 
             return `@fluentui/react-icons/svg/${kebabCase}`;
           },
@@ -409,8 +413,13 @@ If you use SWC for transpilation, add [@swc/plugin-transform-imports](https://ww
                 // Transform provider imports to /providers
                 ["^(useIconContext|IconDirectionContextProvider)$", "@fluentui/react-icons/providers"],
                 // Transform icon imports to /svg/{icon-name}
+                // (.+?) lazily captures the icon base name (may contain digits,
+                // e.g. "Space3D", "Rotate315Right"), (\d{2})? optionally strips
+                // an exact 2-digit size suffix (16, 20, 24 …), and the last
+                // group matches the style variant. {{ kebabCase }} on group 1
+                // mirrors lodash.kebabCase used by the generation pipeline.
                 [
-                  "(\\D*)(\\d*)?(Regular|Filled|Light|Color)$",
+                  "(.+?)(\\d{2})?(Regular|Filled|Light|Color)$",
                   "@fluentui/react-icons/svg/{{ kebabCase memberMatches.[1] }}",
                 ],
                 // Fallback: all other exports are utilities
