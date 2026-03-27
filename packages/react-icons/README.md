@@ -356,6 +356,10 @@ If you use Babel for transpilation, add [babel-plugin-transform-imports](https:/
 
 ```js
 // @filename .babelrc.js
+
+/** Simplified lodash.kebabCase – handles PascalCase icon names with digits. */
+const kebabCase = (str) => str.replace(/[a-z\d](?=[A-Z])|[a-zA-Z](?=\d)|[A-Z](?=[A-Z][a-z])/g, '$&-').toLowerCase();
+
 module.exports = {
   presets: [
     // ... your preset configuration
@@ -370,21 +374,17 @@ module.exports = {
               return '@fluentui/react-icons/providers';
             }
 
-            // (.+?) captures icon base name (may include digits like Space3D),
-            // (\d{2})? optionally matches the 2-digit size suffix,
-            // last group matches the style variant.
-            const match = importName.match(/(.+?)(\d{2})?(Regular|Filled|Light|Color)$/);
+            // (.+?) lazily captures the icon base name (may contain digits,
+            // e.g. "Space3D", "Rotate315Right"), (\d+)? greedily strips any
+            // trailing all-digit segment (size suffixes like 16/20/24, but
+            // also level indicators like Battery0) — this mirrors the
+            // normalizeBaseName logic used by the generation pipeline.
+            const match = importName.match(/^(.+?)(\d+)?(Regular|Filled|Light|Color)$/);
             if (!match) {
               return '@fluentui/react-icons/utils';
             }
 
-            // Lookahead-based kebab-case: inserts '-' at lowercase→digit and
-            // (lowercase|digit)→uppercase boundaries without consuming the next
-            // character, so overlapping boundaries like "e3D" (Space3D) produce
-            // "e-3-D" in a single pass.
-            const kebabCase = match[1].replace(/([a-z](?=\d)|[a-z0-9](?=[A-Z]))/g, '$1-').toLowerCase();
-
-            return `@fluentui/react-icons/svg/${kebabCase}`;
+            return `@fluentui/react-icons/svg/${kebabCase(match[1])}`;
           },
           preventFullImport: false,
           skipDefaultConversion: true,
@@ -414,12 +414,13 @@ If you use SWC for transpilation, add [@swc/plugin-transform-imports](https://ww
                 ["^(useIconContext|IconDirectionContextProvider)$", "@fluentui/react-icons/providers"],
                 // Transform icon imports to /svg/{icon-name}
                 // (.+?) lazily captures the icon base name (may contain digits,
-                // e.g. "Space3D", "Rotate315Right"), (\d{2})? optionally strips
-                // an exact 2-digit size suffix (16, 20, 24 …), and the last
-                // group matches the style variant. {{ kebabCase }} on group 1
-                // mirrors lodash.kebabCase used by the generation pipeline.
+                // e.g. "Space3D", "Rotate315Right"), (\d+)? greedily strips any
+                // trailing all-digit segment (size suffixes like 16/20/24, but
+                // also level indicators like Battery0) — this mirrors the
+                // normalizeBaseName logic used by the generation pipeline.
+                // {{ kebabCase }} on group 1 mirrors lodash.kebabCase.
                 [
-                  "(.+?)(\\d{2})?(Regular|Filled|Light|Color)$",
+                  "(.+?)(\\d+)?(Regular|Filled|Light|Color)$",
                   "@fluentui/react-icons/svg/{{ kebabCase memberMatches.[1] }}",
                 ],
                 // Fallback: all other exports are utilities
