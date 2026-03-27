@@ -244,7 +244,7 @@ jobs:
       - name: Bundle-Size
         run: |
           npx nx affected -t bundle-size --exclude='svg-icons,svg-sprites'
-          npx monosize compare-reports --branch=${{ github.event.pull_request.base.ref }} --output markdown > bundle-size-report.md
+          npx monosize compare-reports --branch=${{ github.event.pull_request.base.ref }} --output markdown --quiet > bundle-size-report.md
 
       - name: Write job summary
         if: always()
