@@ -1857,7 +1857,7 @@ describe('Build Verification', () => {
         const jsContent = await readFile(jsFile, 'utf8');
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
-          "... (43 export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))
+          "... (44 export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))
           "use client";
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
@@ -2022,15 +2022,15 @@ describe('Build Verification', () => {
       const { svgPathCjs, svgPathEsm } = getAssetPaths();
       const esmStats = await getStats(svgPathEsm);
       const cjsStats = await getStats(svgPathCjs);
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2826`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2826`);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2828`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2828`);
     });
     it(`should have same number of atoms/fonts icon files in lib and lib-cjs`, async () => {
       const { fontsPathCjs, fontsPathEsm } = getAssetPaths();
       const esmStats = await getStats(fontsPathEsm);
       const cjsStats = await getStats(fontsPathCjs);
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2819`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2819`);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2821`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2821`);
     });
     it.each(['lib', 'lib-cjs'])('should have atoms/svg directory with icon files in %s', async (libDir) => {
       const atomsSvgPath = path.join(__dirname, libDir, 'atoms', 'svg');
