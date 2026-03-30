@@ -43,7 +43,7 @@
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-window": "^1.8.10",
-    "storybook": "9.1.16",
+    "storybook": "9.1.19",
     "typescript": "5.0.4",
     "typescript-eslint": "7.18.0",
     "vitest": "^3.2.4",
