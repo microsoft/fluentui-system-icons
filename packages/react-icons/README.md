@@ -377,7 +377,9 @@ function resolveFluentIconImport(importName) {
   return `@fluentui/react-icons/svg/${kebabCase(match[1])}`;
 }
 
-const kebabCase = (str) => str.replace(/[a-z\d](?=[A-Z])|[a-zA-Z](?=\d)|[A-Z](?=[A-Z][a-z])/g, '$&-').toLowerCase();
+function kebabCase(str) {
+  return str.replace(/[a-z\d](?=[A-Z])|[a-zA-Z](?=\d)|[A-Z](?=[A-Z][a-z])/g, '$&-').toLowerCase();
+}
 
 module.exports = { resolveFluentIconImport };
 ```

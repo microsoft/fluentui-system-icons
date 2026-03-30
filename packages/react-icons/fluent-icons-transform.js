@@ -64,7 +64,8 @@ function resolveFluentIconImport(importName) {
 }
 
 /** Simplified lodash.kebabCase – handles PascalCase icon names with digits. */
-const kebabCase = (/** @type {string} */ str) =>
-  str.replace(/[a-z\d](?=[A-Z])|[a-zA-Z](?=\d)|[A-Z](?=[A-Z][a-z])/g, '$&-').toLowerCase();
+function kebabCase(/** @type {string} */ str) {
+  return str.replace(/[a-z\d](?=[A-Z])|[a-zA-Z](?=\d)|[A-Z](?=[A-Z][a-z])/g, '$&-').toLowerCase();
+}
 
 module.exports = { resolveFluentIconImport };
