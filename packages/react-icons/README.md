@@ -354,11 +354,10 @@ This transformation happens at build time, so your source code remains unchanged
 
 If you use Babel for transpilation, add [babel-plugin-transform-imports](https://www.npmjs.com/package/babel-plugin-transform-imports) with the following setup:
 
+Copy the following helper into your project (e.g. as `fluent-icons-transform.js`):
+
 ```js
 // @filename fluent-icons-transform.js
-
-/** Simplified lodash.kebabCase – handles PascalCase icon names with digits. */
-const kebabCase = (str) => str.replace(/[a-z\d](?=[A-Z])|[a-zA-Z](?=\d)|[A-Z](?=[A-Z][a-z])/g, '$&-').toLowerCase();
 
 /**
  * Resolves a @fluentui/react-icons import name to its atomic module path.
@@ -370,11 +369,6 @@ function resolveFluentIconImport(importName) {
     return '@fluentui/react-icons/providers';
   }
 
-  // (.+?) lazily captures the icon base name (may contain digits,
-  // e.g. "Space3D", "Rotate315Right"), (\d+)? greedily strips any
-  // trailing all-digit segment (size suffixes like 16/20/24, but
-  // also level indicators like Battery0) — this mirrors the
-  // normalizeBaseName logic used by the generation pipeline.
   const match = importName.match(/^(.+?)(\d+)?(Regular|Filled|Light|Color)$/);
   if (!match) {
     return '@fluentui/react-icons/utils';
@@ -383,8 +377,12 @@ function resolveFluentIconImport(importName) {
   return `@fluentui/react-icons/svg/${kebabCase(match[1])}`;
 }
 
+const kebabCase = (str) => str.replace(/[a-z\d](?=[A-Z])|[a-zA-Z](?=\d)|[A-Z](?=[A-Z][a-z])/g, '$&-').toLowerCase();
+
 module.exports = { resolveFluentIconImport };
 ```
+
+Then use it in your Babel config:
 
 ```js
 // @filename .babelrc.js

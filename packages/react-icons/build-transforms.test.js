@@ -4,27 +4,9 @@ import path from 'path';
 import _ from 'lodash';
 import { describe, it, expect } from 'vitest';
 
-/**
- * Inline kebabCase – same implementation documented in the README Babel config.
- * @param {string} str
- * @returns {string}
- */
-const inlineKebabCase = (str) =>
-  str.replace(/[a-z\d](?=[A-Z])|[a-zA-Z](?=\d)|[A-Z](?=[A-Z][a-z])/g, '$&-').toLowerCase();
-
-/**
- * Babel transform – replicates the logic documented in the README
- * for `babel-plugin-transform-imports`.
- * Uses the same regex as SWC + inline kebabCase on capture group 1.
- *
- * @param {string} importName - PascalCase icon export name (e.g. "Space3D24Filled")
- * @returns {string} kebab-case base name used as the atom file path segment
- */
-function babelTransformToKebab(importName) {
-  const match = importName.match(/^(.+?)(\d+)?(Regular|Filled|Light|Color)$/);
-  if (!match) return '';
-  return inlineKebabCase(match[1]);
-}
+// The exact module users copy-paste into their repo (documented in README).
+// Importing it here keeps the snippet under test.
+import { resolveFluentIconImport } from './fluent-icons-transform.js';
 
 /**
  * SWC transform – replicates the regex capture from the README for
@@ -107,11 +89,22 @@ const STANDARD_ICON_CASES = [
 const ALL_CASES = [...DIGIT_ICON_CASES, ...TRAILING_DIGIT_CASES, ...STANDARD_ICON_CASES];
 
 describe('README build-transform kebab-case consistency', () => {
-  describe('Babel transform matches lodash.kebabCase (generation pipeline)', () => {
+  describe('resolveFluentIconImport matches lodash.kebabCase (generation pipeline)', () => {
     it.each(ALL_CASES)('%s → %s', (importName, expected) => {
-      const result = babelTransformToKebab(importName);
-      expect(result).toBe(expected);
-      expect(result).toBe(referenceKebab(importName));
+      expect(resolveFluentIconImport(importName)).toBe(`@fluentui/react-icons/svg/${expected}`);
+      expect(expected).toBe(referenceKebab(importName));
+    });
+  });
+
+  describe('resolveFluentIconImport handles provider and utility imports', () => {
+    it('useIconContext → providers', () => {
+      expect(resolveFluentIconImport('useIconContext')).toBe('@fluentui/react-icons/providers');
+    });
+    it('IconDirectionContextProvider → providers', () => {
+      expect(resolveFluentIconImport('IconDirectionContextProvider')).toBe('@fluentui/react-icons/providers');
+    });
+    it('bundleIcon → utils', () => {
+      expect(resolveFluentIconImport('bundleIcon')).toBe('@fluentui/react-icons/utils');
     });
   });
 
@@ -175,12 +168,13 @@ describe('README build-transforms resolve every generated atom export', () => {
     expect(atomExports.length).toBeGreaterThan(1000);
   });
 
-  it('Babel transform resolves every export to its atom file', () => {
+  it('resolveFluentIconImport resolves every export to its atom file', () => {
     const failures = [];
     for (const [exportName, expectedFile] of atomExports) {
-      const result = babelTransformToKebab(exportName);
-      if (result !== expectedFile) {
-        failures.push(`${exportName}: got "${result}", expected "${expectedFile}"`);
+      const result = resolveFluentIconImport(exportName);
+      const expectedPath = `@fluentui/react-icons/svg/${expectedFile}`;
+      if (result !== expectedPath) {
+        failures.push(`${exportName}: got "${result}", expected "${expectedPath}"`);
       }
     }
     expect(failures).toEqual([]);
