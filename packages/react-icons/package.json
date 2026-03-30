@@ -30,10 +30,10 @@
     "build:js": "node build.js",
     "prebuild": "npm run clean",
     "build": "npm run build:fonts-and-svg && npm run build:generate-chunks-and-atoms && npm run build:js",
-    "build-verify": "vitest run build-verify.test.js",
+    "build-verify": "vitest run build-verify.test.js build-transforms.test.js",
     "bundle-size": "monosize measure",
     "lint": "eslint src",
-    "test": "vitest --exclude build-verify.test.js",
+    "test": "vitest --exclude build-verify.test.js --exclude build-transforms.test.js",
     "type-check:infra": "../../node_modules/.bin/tsc -p tsconfig.utils.json"
   },
   "devDependencies": {
