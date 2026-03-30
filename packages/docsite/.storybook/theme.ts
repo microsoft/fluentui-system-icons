@@ -1,6 +1,6 @@
 import { create } from 'storybook/theming';
 
-import logo from '../public/fluentui-logo.svg';
+import logo from '../public/logo.svg';
 
 const theme = create({
   base: 'light',
