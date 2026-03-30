@@ -1,15 +1,10 @@
 import type { Preview } from '@storybook/react';
-import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+import type { FluentParameters } from '@fluentui/react-storybook-addon';
+
+import './docs-root-v9.css';
+import './docs-root.css';
 
 const preview = {
-  decorators: [
-    (Story) => (
-      <FluentProvider theme={webLightTheme}>
-        <Story />
-      </FluentProvider>
-    ),
-  ],
-
   parameters: {
     viewMode: 'docs',
     controls: {
@@ -22,7 +17,38 @@ const preview = {
         order: ['Icons', ['Overview', 'Catalog', 'Advanced Usage']],
       },
     },
-  },
+
+    // =============
+    // @fluentui/react-storybook-addon parameters
+    // =============
+
+    reactStorybookAddon: {
+      docs: true,
+    },
+
+    // =============
+    // @fluentui/react-storybook-addon-export-to-sandbox parameters
+    // =============
+    docs: {
+      source: {
+        excludeDecorators: true,
+        type: 'code',
+      },
+    },
+    exportToSandbox: {
+      provider: 'stackblitz-cloud',
+      bundler: 'vite',
+      requiredDependencies: {
+        // for React
+        react: '^18',
+        'react-dom': '^18',
+        // necessary for FluentProvider:
+        '@fluentui/react-components': '^9.0.0',
+        '@fluentui/react-icons': 'latest',
+      },
+      optionalDependencies: {},
+    },
+  } satisfies FluentParameters,
 
   tags: ['autodocs'],
 } satisfies Preview;

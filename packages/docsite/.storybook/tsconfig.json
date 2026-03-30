@@ -8,17 +8,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "declaration": false,
-    "outDir": "",
-    "emitDecoratorMetadata": true
+    "outDir": ""
   },
-  "include": [
-    "../stories/**/*.stories.ts",
-    "../stories/**/*.stories.tsx",
-    "../stories/**/*.stories.mdx",
-    "../stories/**/*.tsx",
-    "../stories/**/*.ts",
-    "*.ts",
-    "*.tsx"
-  ],
-  "exclude": ["../**/*.spec.ts", "../**/*.spec.tsx"]
+  "include": ["*.ts", "*.tsx"]
 }
