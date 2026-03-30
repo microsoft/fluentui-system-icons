@@ -1,10 +1,10 @@
 import { SendRegular } from '@fluentui/react-icons';
 import descriptionMd from './IconsDescription.md';
 
-export { Default } from './IconsDefault';
-export { BundleIcon as bundleIcon } from './IconsBundleIcon';
-export { Styling } from './IconsStyling';
-export { FontSize } from './IconsFontSize';
+export { Default } from './IconsDefault.stories';
+export { BundleIcon as bundleIcon } from './IconsBundleIcon.stories';
+export { Styling } from './IconsStyling.stories';
+export { FontSize } from './IconsFontSize.stories';
 
 export default {
   title: 'Icons/Overview',

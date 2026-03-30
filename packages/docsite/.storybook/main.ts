@@ -1,14 +1,21 @@
 import type { StorybookConfig } from '@storybook/react-webpack5';
 
 const config: StorybookConfig = {
-  stories: ['../stories/**/*.stories.@(js|jsx|ts|tsx)', '../stories/**/*.mdx'],
+  stories: ['../stories/**/index.stories.@(ts|tsx)', '../stories/**/*.mdx'],
 
   addons: [
     '@storybook/addon-docs',
     '@storybook/addon-webpack5-compiler-swc',
     '@fluentui/react-storybook-addon',
-    // TODO: enable once bugs are resolved and addon works
-    // '@fluentui/react-storybook-addon-export-to-sandbox',
+    {
+      name: '@fluentui/react-storybook-addon-export-to-sandbox',
+      options: {
+        webpackRule: {
+          test: /\.stories\.tsx$/,
+          include: /stories/,
+        },
+      },
+    },
   ],
 
   framework: {
