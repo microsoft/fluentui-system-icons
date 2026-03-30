@@ -32,9 +32,8 @@ if (require.main === module) {
 }
 
 async function main() {
-  const { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH, CODEPOINT_DEST_PATH, PER_ICON_DEST } = parseArgs(
-    process.argv.slice(2),
-  );
+  const { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH, CODEPOINT_DEST_PATH, PER_ICON_DEST, HEADLESS_PER_ICON_DEST } =
+    parseArgs(process.argv.slice(2));
   const rtlMetadata = loadRtlMetadata(RTL_FILE);
   const iconEntries = prepareProcessedCodepointMap(SRC_PATH, CODEPOINT_DEST_PATH);
 
@@ -43,7 +42,17 @@ async function main() {
 
   // 2. Generate per-icon output
   const perIconMetadataPath = METADATA_PATH.replace(/\.json$/, '.atom.json');
-  const { svgMetadata: perIconMetadata } = await processPerIcon(PER_ICON_DEST, iconEntries, rtlMetadata);
+  const { svgMetadata: perIconMetadata } = await processPerIcon(
+    PER_ICON_DEST,
+    iconEntries,
+    rtlMetadata,
+    '../../utils/fonts/createFluentFontIcon',
+  );
+
+  // 3. Generate headless per-icon output (using headless import paths)
+  if (HEADLESS_PER_ICON_DEST) {
+    await processPerIcon(HEADLESS_PER_ICON_DEST, iconEntries, rtlMetadata, '../../headless/fonts/createFluentFontIcon');
+  }
 
   // 3. Write processed (React-name) map once per original JSON (shared core dedupes)
   iconEntries.resizable.forEach(({ writeProcessedCodepointMap }) => writeProcessedCodepointMap());
@@ -52,8 +61,12 @@ async function main() {
   await writeMetadata(METADATA_PATH, chunkMetadata);
   await writeMetadata(perIconMetadataPath, perIconMetadata);
 
+  const headlessSuffix = HEADLESS_PER_ICON_DEST
+    ? ` | Headless dest: ${HEADLESS_PER_ICON_DEST}`
+    : ' | Headless: disabled';
+
   console.log(
-    `[font generation] Finished chunk + per-icon outputs. Chunk dest: ${DEST_PATH} | Per-icon dest: ${PER_ICON_DEST}`,
+    `[font generation] Finished chunk + per-icon outputs. Chunk dest: ${DEST_PATH} | Per-icon dest: ${PER_ICON_DEST}${headlessSuffix}`,
   );
 }
 
@@ -265,8 +278,9 @@ async function cleanFolder(folder) {
  * @param {string} destPath
  * @param {{ resizable: IconEntry[]; sized: IconEntry[];}} iconEntries
  * @param {import('./convert-font.utils').RtlMetadata} rtlMetadata
+ * @param {string} importPath - import path for the createFluentFontIcon header
  */
-async function processPerIcon(destPath, iconEntries, rtlMetadata, options = { groupByBase: true }) {
+async function processPerIcon(destPath, iconEntries, rtlMetadata, importPath, options = { groupByBase: true }) {
   await cleanFolder(destPath);
 
   /** @type {import('./metadata.utils').IconMetadataCollection} */
@@ -276,6 +290,7 @@ async function processPerIcon(destPath, iconEntries, rtlMetadata, options = { gr
     destPath,
     iconEntries,
     rtlMetadata,
+    importPath,
     options.groupByBase,
   );
   Object.assign(fontMetadata, createFormatMetadata(resizable.iconNames, 'font', 'resizable'));
@@ -303,6 +318,8 @@ function parseArgs(argv) {
   const METADATA_PATH = /** @type {string} */ (args.metadata); // output font metadata file
   const CODEPOINT_DEST_PATH = /** @type {string} */ (args.codepointDest); // where to output processed codepoint maps
   const PER_ICON_DEST = /** @type {string} */ (args.perIconDest); // per-icon output folder
+  const HEADLESS_ENABLED = Boolean(args.headless); // opt-in flag for headless component generation
+  const HEADLESS_PER_ICON_DEST = HEADLESS_ENABLED ? /** @type {string} */ (args.headlessPerIconDest) : undefined; // headless per-icon output folder (only when --headless is set)
 
   if (!SRC_PATH) {
     throw new Error('Icon source folder not specified by --source');
@@ -322,6 +339,11 @@ function parseArgs(argv) {
   if (!CODEPOINT_DEST_PATH) {
     throw new Error('Output destination folder for codepoint map not specified by --dest');
   }
+  if (HEADLESS_ENABLED && !HEADLESS_PER_ICON_DEST) {
+    throw new Error(
+      'Headless per-icon output folder not specified by --headlessPerIconDest (required when --headless is set)',
+    );
+  }
 
   if (!fsS.existsSync(DEST_PATH)) {
     fsS.mkdirSync(DEST_PATH, { recursive: true });
@@ -331,7 +353,11 @@ function parseArgs(argv) {
     fsS.mkdirSync(PER_ICON_DEST, { recursive: true });
   }
 
-  return { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH, CODEPOINT_DEST_PATH, PER_ICON_DEST };
+  if (HEADLESS_PER_ICON_DEST && !fsS.existsSync(HEADLESS_PER_ICON_DEST)) {
+    fsS.mkdirSync(HEADLESS_PER_ICON_DEST, { recursive: true });
+  }
+
+  return { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH, CODEPOINT_DEST_PATH, PER_ICON_DEST, HEADLESS_PER_ICON_DEST };
 }
 
 module.exports = {};

@@ -30,7 +30,16 @@ if (require.main === module) {
 }
 
 async function main() {
-  const { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH, PER_ICON_DEST, SPRITE_DEST } = parseArgs(process.argv.slice(2));
+  const {
+    SRC_PATH,
+    DEST_PATH,
+    RTL_FILE,
+    METADATA_PATH,
+    PER_ICON_DEST,
+    SPRITE_DEST,
+    HEADLESS_PER_ICON_DEST,
+    HEADLESS_SPRITE_DEST,
+  } = parseArgs(process.argv.slice(2));
   const srcFiles = await processSourceDir(SRC_PATH);
   const rtlMetadata = loadRtlMetadata(RTL_FILE);
 
@@ -44,7 +53,21 @@ async function main() {
     PER_ICON_DEST,
     SPRITE_DEST,
     rtlMetadata,
+    {
+      svgImportPath: '../../utils/createFluentIcon',
+      spriteTypeImportPath: '../../utils/createFluentIcon.svg-sprite',
+      spriteCreateImportPath: '../../utils/createFluentIcon.svg-sprite',
+    },
   );
+
+  // 3. Generate headless per-icon output + SVG sprites (using headless import paths) - when --headless is enabled
+  if (HEADLESS_PER_ICON_DEST && HEADLESS_SPRITE_DEST) {
+    await processPerIcon(srcFiles, HEADLESS_PER_ICON_DEST, HEADLESS_SPRITE_DEST, rtlMetadata, {
+      svgImportPath: '../../headless/createFluentIcon',
+      spriteTypeImportPath: '../../headless/createFluentIcon.svg-sprite',
+      spriteCreateImportPath: '../../headless/createFluentIcon.svg-sprite',
+    });
+  }
 
   writeMetadata(METADATA_PATH, chunkMetadata);
   writeMetadata(perIconMetadataPath, perIconMetadata);
@@ -55,8 +78,12 @@ async function main() {
   }
 
   const spriteSuffix = SPRITE_DEST ? ` | Sprite dest: ${SPRITE_DEST}` : ' | Sprites: disabled';
+  const headlessSuffix = HEADLESS_PER_ICON_DEST
+    ? ` | Headless dest: ${HEADLESS_PER_ICON_DEST}`
+    : ' | Headless: disabled';
+
   console.log(
-    `[svg generation] Finished chunk + per-icon outputs. Chunk dest: ${DEST_PATH} | Per-icon dest: ${PER_ICON_DEST}${spriteSuffix}`,
+    `[svg generation] Finished chunk + per-icon outputs. Chunk dest: ${DEST_PATH} | Per-icon dest: ${PER_ICON_DEST}${spriteSuffix}${headlessSuffix}`,
   );
 }
 
@@ -180,8 +207,16 @@ function processFolder(srcFiles, rtlMetadata, resizable) {
  * @param {string} destPath
  * @param {string | undefined} spriteDest
  * @param {import('./convert-font.utils').RtlMetadata} rtlMetadata
+ * @param {import('./convert.utils').ImportConfig} importConfig
  */
-async function processPerIcon(sourceFiles, destPath, spriteDest, rtlMetadata, options = { groupByBase: true }) {
+async function processPerIcon(
+  sourceFiles,
+  destPath,
+  spriteDest,
+  rtlMetadata,
+  importConfig,
+  options = { groupByBase: true },
+) {
   // local clean (synchronous) similar to chunk variant
   if (fs.existsSync(destPath)) {
     fs.rmSync(destPath, { recursive: true, force: true });
@@ -206,6 +241,7 @@ async function processPerIcon(sourceFiles, destPath, spriteDest, rtlMetadata, op
     sourceFiles,
     { atomsDest: destPath, spriteAtomsDest: spriteDest },
     rtlMetadata,
+    importConfig,
     options.groupByBase,
   );
   Object.assign(svgMetadata, createFormatMetadata(resizable.iconNames, 'svg', 'resizable'));
@@ -269,6 +305,9 @@ function parseArgs(argv) {
   const PER_ICON_DEST = /** @type {string} */ (args.perIconDest); // per-icon output folder
   const SPRITES_ENABLED = Boolean(args.sprites); // opt-in flag for svg sprite generation
   const SPRITE_DEST = SPRITES_ENABLED ? /** @type {string} */ (args.spriteDest) : undefined; // svg sprite output folder (only when --sprites is set)
+  const HEADLESS_ENABLED = Boolean(args.headless); // opt-in flag for headless component generation
+  const HEADLESS_PER_ICON_DEST = HEADLESS_ENABLED ? /** @type {string} */ (args.headlessPerIconDest) : undefined; // headless per-icon output folder (only when --headless is set)
+  const HEADLESS_SPRITE_DEST = HEADLESS_ENABLED ? /** @type {string|undefined} */ (args.headlessSpriteDest) : undefined; // headless svg sprite output folder (only when --headless is set)
 
   if (!SRC_PATH) {
     throw new Error('Icon source folder not specified by --source');
@@ -281,6 +320,11 @@ function parseArgs(argv) {
   }
   if (SPRITES_ENABLED && !SPRITE_DEST) {
     throw new Error('SVG sprite output folder not specified by --spriteDest (required when --sprites is set)');
+  }
+  if (HEADLESS_ENABLED && !HEADLESS_PER_ICON_DEST) {
+    throw new Error(
+      'Headless per-icon output folder not specified by --headlessPerIconDest (required when --headless is set)',
+    );
   }
   if (!RTL_FILE) {
     throw new Error('RTL file not specified by --rtl');
@@ -301,7 +345,24 @@ function parseArgs(argv) {
     fs.mkdirSync(SPRITE_DEST, { recursive: true });
   }
 
-  return { SRC_PATH, DEST_PATH, RTL_FILE, METADATA_PATH, PER_ICON_DEST, SPRITE_DEST };
+  if (HEADLESS_PER_ICON_DEST && !fs.existsSync(HEADLESS_PER_ICON_DEST)) {
+    fs.mkdirSync(HEADLESS_PER_ICON_DEST, { recursive: true });
+  }
+
+  if (HEADLESS_SPRITE_DEST && !fs.existsSync(HEADLESS_SPRITE_DEST)) {
+    fs.mkdirSync(HEADLESS_SPRITE_DEST, { recursive: true });
+  }
+
+  return {
+    SRC_PATH,
+    DEST_PATH,
+    RTL_FILE,
+    METADATA_PATH,
+    PER_ICON_DEST,
+    SPRITE_DEST,
+    HEADLESS_PER_ICON_DEST,
+    HEADLESS_SPRITE_DEST,
+  };
 }
 
 module.exports = {};

@@ -121,19 +121,21 @@ function generateSpriteSvg(items) {
 }
 
 /**
- * Generate a sprite TSX module string that imports from `../../utils/createFluentIcon.svg-sprite`
+ * Generate a sprite TSX module string that imports from a configurable icon module
  * and references the co-located `.svg` sprite file.
  * @param {string} baseName
  * @param {Array<import('./convert.utils').ParsedIconSource>} items
+ * @param {{ typeImportPath: string; createImportPath: string }} importConfig
  * @returns {string}
  */
-function generateSpriteModuleTsx(baseName, items) {
+function generateSpriteModuleTsx(baseName, items, importConfig) {
+  const { typeImportPath, createImportPath } = importConfig;
   const importPathSvg = `./${baseName}.svg`;
 
   const header =
     '"use client";\n' +
-    "import type { FluentIcon } from '../../utils/createFluentIcon.svg-sprite';\n" +
-    "import { createFluentIcon } from '../../utils/createFluentIcon.svg-sprite';\n" +
+    `import type { FluentIcon } from '${typeImportPath}';\n` +
+    `import { createFluentIcon } from '${createImportPath}';\n` +
     `import sprite from '${importPathSvg}';\n\n`;
 
   const body = items
@@ -163,10 +165,10 @@ function generateSpriteModuleTsx(baseName, items) {
  *
  * @param {string} destPath - output directory for sprite files
  * @param {import('./convert.utils').ParsedIconSource[]} items - icon items with enriched `iconData`, `width`, `isColor`
- * @param {WriteSpriteOptions} [options]
+ * @param {WriteSpriteOptions & { importConfig: { typeImportPath: string; createImportPath: string } }} options
  * @returns {Promise<{ fileCount: number }>}
  */
-async function writeSpriteFiles(destPath, items, options = { groupByBase: true }) {
+async function writeSpriteFiles(destPath, items, options) {
   const groups = groupItemsByBase(destPath, items, options);
 
   if (!fs.existsSync(destPath)) {
@@ -185,6 +187,7 @@ async function writeSpriteFiles(destPath, items, options = { groupByBase: true }
     const moduleTsx = generateSpriteModuleTsx(
       base,
       /** @type {import('./convert.utils').ParsedIconSource[]} */ (groupItems),
+      options.importConfig,
     );
     const tsxPath = path.join(destPath, `${base}.tsx`);
     await fsP.writeFile(tsxPath, moduleTsx, 'utf8');

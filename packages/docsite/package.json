@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "storybook": "storybook dev -p 6006 --docs",
-    "build-storybook": "storybook build --docs"
+    "dev": "storybook dev -p 6006 --docs",
+    "build": "storybook build --docs"
   },
   "dependencies": {
     "@fluentui/react-components": "^9.46.0",

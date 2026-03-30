@@ -57,6 +57,20 @@ const config = {
       type: 'asset/resource',
     });
 
+    // Add loader for svg files
+    config.module.rules.push({
+      test: /\.svg$/,
+      type: 'asset/resource',
+    });
+
+    // Add loader for vanilla CSS files (needed for headless CSS imports)
+    if (!enableGriffelExtraction) {
+      config.module.rules.push({
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      });
+    }
+
     return config;
   }),
   threshold: '10kB',

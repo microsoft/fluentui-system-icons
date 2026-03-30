@@ -1,12 +1,10 @@
-# Preview Features
-
-## Atomic API (SVG Sprites)
+# Atomic API (SVG Sprites)
 
 > **⚠️ Alpha** — this feature is available as an alpha prerelease only.
 >
-> Install via `npm i @fluentui/react-icons@alpha`
+> Install via `npm i @fluentui/react-icons@prerelease`
 
-### Benefits
+## Benefits
 
 - Smaller bundles, faster renders, zero runtime overhead, and no migration cost.
 - If you use icons at scale, sprites can be considered the new default.
@@ -25,11 +23,11 @@ With sprites, icons are deduplicated at the app level:
 - React re-renders are effectively no‑ops for icons
 - Browsers give you an aggressive, free SVG storage cache, making repeated icon usage extremely cheap
 
-### How it works
+## How it works
 
 Each icon component renders a lightweight `<svg><use href="/path/to/sprite.svg#icon-id" /></svg>` element. The actual icon paths live inside an external `.sprite.svg` file that the browser fetches, caches, and reuses across every render and page navigation. This completely removes icon rendering cost from your JavaScript bundle and React tree.
 
-### Same-origin requirement
+## Same-origin requirement
 
 > **Important:** Browsers block cross-origin SVG `<use href="...">` references due to security constraints — this is **not** a CORS header issue and cannot be solved by adding `Access-Control-Allow-Origin` headers alone.
 
@@ -54,9 +52,9 @@ location /sprites/ {
 
 After proxying, sprite URLs like `/sprites/access-time.sprite.svg` resolve from the same origin and the browser security restriction is lifted.
 
-### Usage
+## Usage
 
-#### Direct API usage
+### Direct API usage
 
 Atomic SVG sprites, similarly to Atomic SVGs, are grouped by icon kind and exposed via `@fluentui/react-icons/svg-sprite/{icon-group}`.
 
@@ -70,7 +68,7 @@ import {
 import { Add16Filled, Add20Filled } from '@fluentui/react-icons/svg-sprite/add';
 ```
 
-#### TypeScript Configuration
+### TypeScript Configuration
 
 **IMPORTANT**: TypeScript users must use `moduleResolution: "bundler"` (or `"node16"`/`"nodenext"`) in their `tsconfig.json` to properly resolve these sprite exports:
 
@@ -82,7 +80,7 @@ import { Add16Filled, Add20Filled } from '@fluentui/react-icons/svg-sprite/add';
 }
 ```
 
-#### Build-Time Transform
+### Build-Time Transform
 
 You can keep root-level barrel imports and leverage build transforms to start using the new atomic sprites API.
 
@@ -98,7 +96,7 @@ To the optimized atomic import:
 import { AccessTime24Filled } from '@fluentui/react-icons/svg-sprite/access-time';
 ```
 
-##### Babel
+#### Babel
 
 If you use Babel for transpilation, add [babel-plugin-transform-imports](https://www.npmjs.com/package/babel-plugin-transform-imports) with the following setup:
 
@@ -144,7 +142,7 @@ module.exports = {
 };
 ```
 
-##### SWC
+#### SWC
 
 If you use SWC for transpilation, add [@swc/plugin-transform-imports](https://www.npmjs.com/package/@swc/plugin-transform-imports) with the following setup:
 
@@ -183,9 +181,9 @@ If you use SWC for transpilation, add [@swc/plugin-transform-imports](https://ww
 }
 ```
 
-### Tooling
+## Tooling
 
-#### Webpack
+### Webpack
 
 Enable static asset processing for SVG files so the bundler emits them as separate URL-addressed resources:
 
@@ -202,7 +200,7 @@ const config = {
 };
 ```
 
-#### Vite
+### Vite
 
 Vite handles static assets out of the box. Ensure SVG files are **not** processed by any SVG-to-component plugin (such as `vite-plugin-svgr`) for sprite files, or scope such plugins to exclude `.sprite.svg`:
 
@@ -219,11 +217,11 @@ export default defineConfig({
 });
 ```
 
-#### Webpack Plugin
+### Webpack Plugin
 
 > **⚠️ Alpha** — this package is available as an alpha prerelease only.
 >
-> Install via `npm i @fluentui/react-icons-svg-sprite-subsetting-webpack-plugin@alpha`
+> Install via `npm i @fluentui/react-icons-svg-sprite-subsetting-webpack-plugin@prerelease`
 
 To leverage performance benefits to the fullest, use the Webpack SvgSprite Subsetting Plugin. It analyzes your application's actual icon usage at build time and strips unused icon definitions from the sprite files — ensuring only icons your app references are shipped.
 

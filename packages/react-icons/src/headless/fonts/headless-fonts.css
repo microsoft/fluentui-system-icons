@@ -1,0 +1,43 @@
+/* Headless Fluent Icons — @font-face declarations with relative font file references.
+ *
+ * Import this CSS file so your bundler (webpack, Vite, esbuild) resolves the font
+ * files into the dependency graph. This enables font subsetting plugins to process them.
+ *
+ * Usage:
+ *   import '@fluentui/react-icons/headless/headless-fonts.css';
+ */
+
+@font-face {
+  font-family: 'FluentSystemIconsFilled';
+  font-display: block;
+  src:
+    url('../../utils/fonts/FluentSystemIcons-Filled.woff2') format('woff2'),
+    url('../../utils/fonts/FluentSystemIcons-Filled.woff') format('woff'),
+    url('../../utils/fonts/FluentSystemIcons-Filled.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'FluentSystemIconsRegular';
+  font-display: block;
+  src:
+    url('../../utils/fonts/FluentSystemIcons-Regular.woff2') format('woff2'),
+    url('../../utils/fonts/FluentSystemIcons-Regular.woff') format('woff'),
+    url('../../utils/fonts/FluentSystemIcons-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'FluentSystemIconsLight';
+  src:
+    url('../../utils/fonts/FluentSystemIcons-Light.woff2') format('woff2'),
+    url('../../utils/fonts/FluentSystemIcons-Light.woff') format('woff'),
+    url('../../utils/fonts/FluentSystemIcons-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'FluentSystemIcons';
+  font-display: block;
+  src:
+    url('../../utils/fonts/FluentSystemIcons-Resizable.woff2') format('woff2'),
+    url('../../utils/fonts/FluentSystemIcons-Resizable.woff') format('woff'),
+    url('../../utils/fonts/FluentSystemIcons-Resizable.ttf') format('truetype');
+}
