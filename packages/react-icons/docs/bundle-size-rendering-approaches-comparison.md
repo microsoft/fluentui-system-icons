@@ -2,7 +2,7 @@
 
 > **Measure metric:** 35 icons used
 >
-> **CSS-in-JS:** Griffel AOT (standard) / vanilla CSS bundled as JS strings via webpack `css-loader` + `style-loader` (base)
+> **CSS bundled in JS:** Griffel AOT (standard) / vanilla CSS inlined in JS bundle via webpack `css-loader` + `style-loader` (base)
 >
 > **CSS Extracted:** Griffel CSS Extraction (standard) / vanilla CSS extracted to `.css` files via `MiniCssExtractPlugin` (base)
 >
@@ -12,30 +12,30 @@
 
 ### SVG Inline Icons
 
-| Variant                |  Minified |      GZIP |         Δ Minified |             Δ GZIP |
-| ---------------------- | --------: | --------: | -----------------: | -----------------: |
-| CSS-in-JS _(baseline)_ | 38.137 kB | 10.526 kB |                  — |                  — |
-| Base, CSS-in-JS        | 38.039 kB | 10.444 kB |  -0.098 kB (-0.3%) |  -0.082 kB (-0.8%) |
-| CSS Extracted          | 36.182 kB |  9.892 kB |  -1.955 kB (-5.1%) |  -0.634 kB (-6.0%) |
-| Base, CSS Extracted    | 33.002 kB |  8.310 kB | -5.135 kB (-13.5%) | -2.216 kB (-21.1%) |
+| Variant                             |  Minified |      GZIP |         Δ Minified |             Δ GZIP |
+| ----------------------------------- | --------: | --------: | -----------------: | -----------------: |
+| Griffel, CSS in bundle _(baseline)_ | 38.137 kB | 10.526 kB |                  — |                  — |
+| Base, CSS in bundle                 | 38.039 kB | 10.444 kB |  -0.098 kB (-0.3%) |  -0.082 kB (-0.8%) |
+| Griffel, CSS extracted              | 36.182 kB |  9.892 kB |  -1.955 kB (-5.1%) |  -0.634 kB (-6.0%) |
+| Base, CSS extracted                 | 33.002 kB |  8.310 kB | -5.135 kB (-13.5%) | -2.216 kB (-21.1%) |
 
 ### Font Icons
 
-| Variant                |  Minified |     GZIP |         Δ Minified |             Δ GZIP |
-| ---------------------- | --------: | -------: | -----------------: | -----------------: |
-| CSS-in-JS _(baseline)_ | 10.166 kB | 4.153 kB |                  — |                  — |
-| Base, CSS-in-JS        | 11.510 kB | 4.590 kB | +1.344 kB (+13.2%) | +0.437 kB (+10.5%) |
-| CSS Extracted          |  6.397 kB | 2.758 kB | -3.769 kB (-37.1%) | -1.395 kB (-33.6%) |
-| Base, CSS Extracted    |  3.098 kB | 1.245 kB | -7.068 kB (-69.5%) | -2.908 kB (-70.0%) |
+| Variant                             |  Minified |     GZIP |         Δ Minified |             Δ GZIP |
+| ----------------------------------- | --------: | -------: | -----------------: | -----------------: |
+| Griffel, CSS in bundle _(baseline)_ | 10.166 kB | 4.153 kB |                  — |                  — |
+| Base, CSS in bundle                 | 11.510 kB | 4.590 kB | +1.344 kB (+13.2%) | +0.437 kB (+10.5%) |
+| Griffel, CSS extracted              |  6.397 kB | 2.758 kB | -3.769 kB (-37.1%) | -1.395 kB (-33.6%) |
+| Base, CSS extracted                 |  3.098 kB | 1.245 kB | -7.068 kB (-69.5%) | -2.908 kB (-70.0%) |
 
 ### SVG Sprite Icons
 
-| Variant                | Minified |     GZIP |         Δ Minified |             Δ GZIP |
-| ---------------------- | -------: | -------: | -----------------: | -----------------: |
-| CSS-in-JS _(baseline)_ | 8.925 kB | 3.657 kB |                  — |                  — |
-| Base, CSS-in-JS        | 8.992 kB | 3.639 kB |  +0.067 kB (+0.8%) |  -0.018 kB (-0.5%) |
-| CSS Extracted          | 6.970 kB | 2.990 kB | -1.955 kB (-21.9%) | -0.667 kB (-18.2%) |
-| Base, CSS Extracted    | 3.959 kB | 1.608 kB | -4.966 kB (-55.6%) | -2.049 kB (-56.0%) |
+| Variant                             | Minified |     GZIP |         Δ Minified |             Δ GZIP |
+| ----------------------------------- | -------: | -------: | -----------------: | -----------------: |
+| Griffel, CSS in bundle _(baseline)_ | 8.925 kB | 3.657 kB |                  — |                  — |
+| Base, CSS in bundle                 | 8.992 kB | 3.639 kB |  +0.067 kB (+0.8%) |  -0.018 kB (-0.5%) |
+| Griffel, CSS extracted              | 6.970 kB | 2.990 kB | -1.955 kB (-21.9%) | -0.667 kB (-18.2%) |
+| Base, CSS extracted                 | 3.959 kB | 1.608 kB | -4.966 kB (-55.6%) | -2.049 kB (-56.0%) |
 
 ---
 
