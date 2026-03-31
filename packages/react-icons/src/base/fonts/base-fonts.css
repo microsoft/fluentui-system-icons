@@ -1,10 +1,10 @@
-/* Headless Fluent Icons — @font-face declarations with relative font file references.
+/* Base Fluent Icons — @font-face declarations with relative font file references.
  *
  * Import this CSS file so your bundler (webpack, Vite, esbuild) resolves the font
  * files into the dependency graph. This enables font subsetting plugins to process them.
  *
  * Usage:
- *   import '@fluentui/react-icons/headless/headless-fonts.css';
+ *   import '@fluentui/react-icons/base/base-fonts.css';
  */
 
 @font-face {

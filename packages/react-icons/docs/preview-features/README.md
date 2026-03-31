@@ -8,6 +8,6 @@
 
 SVG sprites offer smaller bundles, faster renders, and zero runtime overhead.
 
-## [Headless API](./headless.md)
+## [Base API](./base.md)
 
 A drop-in replacement for the standard API that removes the CSS-in-JS runtime — provides data-attribute selectors for styling behaviour with opt-in pre-defined vanilla CSS.

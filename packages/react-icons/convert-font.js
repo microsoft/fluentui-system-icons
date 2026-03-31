@@ -51,7 +51,7 @@ async function main() {
 
   // 3. Generate headless per-icon output (using headless import paths)
   if (HEADLESS_PER_ICON_DEST) {
-    await processPerIcon(HEADLESS_PER_ICON_DEST, iconEntries, rtlMetadata, '../../headless/fonts/createFluentFontIcon');
+    await processPerIcon(HEADLESS_PER_ICON_DEST, iconEntries, rtlMetadata, '../../base/fonts/createFluentFontIcon');
   }
 
   // 3. Write processed (React-name) map once per original JSON (shared core dedupes)

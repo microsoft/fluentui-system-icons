@@ -38,17 +38,17 @@ function main() {
   }
 
   // Headless assets: only copy when headless generation was enabled
-  const headlessSvgSrcDir = join(projectRoot, 'src/atoms/headless-svg');
+  const headlessSvgSrcDir = join(projectRoot, 'src/atoms/base-svg');
   if (existsSync(headlessSvgSrcDir)) {
-    const headlessSpriteSrcDir = join(projectRoot, 'src/atoms/headless-svg-sprite');
+    const headlessSpriteSrcDir = join(projectRoot, 'src/atoms/base-svg-sprite');
     if (existsSync(headlessSpriteSrcDir)) {
-      copyAssets('src/atoms/headless-svg-sprite/*.svg', './lib/atoms/headless-svg-sprite', projectRoot);
-      copyAssets('src/atoms/headless-svg-sprite/*.svg', './lib-cjs/atoms/headless-svg-sprite', projectRoot);
+      copyAssets('src/atoms/base-svg-sprite/*.svg', './lib/atoms/base-svg-sprite', projectRoot);
+      copyAssets('src/atoms/base-svg-sprite/*.svg', './lib-cjs/atoms/base-svg-sprite', projectRoot);
     }
-    copyAssets('src/headless/*.css', './lib/headless', projectRoot);
-    copyAssets('src/headless/fonts/*.css', './lib/headless/fonts', projectRoot);
-    copyAssets('src/headless/*.css', './lib-cjs/headless', projectRoot);
-    copyAssets('src/headless/fonts/*.css', './lib-cjs/headless/fonts', projectRoot);
+    copyAssets('src/base/*.css', './lib/base', projectRoot);
+    copyAssets('src/base/fonts/*.css', './lib/base/fonts', projectRoot);
+    copyAssets('src/base/*.css', './lib-cjs/base', projectRoot);
+    copyAssets('src/base/fonts/*.css', './lib-cjs/base/fonts', projectRoot);
     addHeadlessExportMap(projectRoot);
   }
 
@@ -196,32 +196,32 @@ function addHeadlessExportMap(baseDir) {
 
   /** @type {Record<string, string | {types: string; import: string; require: string}>} */
   const headlessExports = {
-    './headless': {
-      types: './lib/headless/index.d.ts',
-      import: './lib/headless/index.js',
-      require: './lib-cjs/headless/index.js',
+    './base': {
+      types: './lib/base/index.d.ts',
+      import: './lib/base/index.js',
+      require: './lib-cjs/base/index.js',
     },
-    './headless/fonts': {
-      types: './lib/headless/fonts/index.d.ts',
-      import: './lib/headless/fonts/index.js',
-      require: './lib-cjs/headless/fonts/index.js',
+    './base/fonts': {
+      types: './lib/base/fonts/index.d.ts',
+      import: './lib/base/fonts/index.js',
+      require: './lib-cjs/base/fonts/index.js',
     },
-    './headless/headless.css': './lib/headless/headless.css',
-    './headless/headless-fonts.css': './lib/headless/fonts/headless-fonts.css',
-    './headless/svg/*': {
-      types: './lib/atoms/headless-svg/*.d.ts',
-      import: './lib/atoms/headless-svg/*.js',
-      require: './lib-cjs/atoms/headless-svg/*.js',
+    './base/base.css': './lib/base/base.css',
+    './base/base-fonts.css': './lib/base/fonts/base-fonts.css',
+    './base/svg/*': {
+      types: './lib/atoms/base-svg/*.d.ts',
+      import: './lib/atoms/base-svg/*.js',
+      require: './lib-cjs/atoms/base-svg/*.js',
     },
-    './headless/svg-sprite/*': {
-      types: './lib/atoms/headless-svg-sprite/*.d.ts',
-      import: './lib/atoms/headless-svg-sprite/*.js',
-      require: './lib-cjs/atoms/headless-svg-sprite/*.js',
+    './base/svg-sprite/*': {
+      types: './lib/atoms/base-svg-sprite/*.d.ts',
+      import: './lib/atoms/base-svg-sprite/*.js',
+      require: './lib-cjs/atoms/base-svg-sprite/*.js',
     },
-    './headless/fonts/*': {
-      types: './lib/atoms/headless-fonts/*.d.ts',
-      import: './lib/atoms/headless-fonts/*.js',
-      require: './lib-cjs/atoms/headless-fonts/*.js',
+    './base/fonts/*': {
+      types: './lib/atoms/base-fonts/*.d.ts',
+      import: './lib/atoms/base-fonts/*.js',
+      require: './lib-cjs/atoms/base-fonts/*.js',
     },
   };
 
@@ -230,7 +230,7 @@ function addHeadlessExportMap(baseDir) {
   console.log(`  ✓ [exports] Set ${Object.keys(headlessExports).join(', ')}`);
 
   // Add headless CSS sideEffects entries
-  const headlessSideEffects = ['**/headless/fonts/headless-fonts.css', '**/headless/headless.css'];
+  const headlessSideEffects = ['**/base/fonts/base-fonts.css', '**/base/base.css'];
   pkg.sideEffects = [...headlessSideEffects];
   console.log(`  ✓ [sideEffects] Added ${headlessSideEffects.join(', ')}`);
 

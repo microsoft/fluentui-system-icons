@@ -14,7 +14,7 @@ import type { FluentIcon } from './shared';
 import { DATA_FUI_ICON, DATA_FUI_ICON_RTL, DATA_FUI_ICON_HIDDEN, DATA_FUI_ICON_FONT } from './shared';
 import { IconDirectionContextProvider } from '../contexts';
 
-describe('Headless API — SVG icons', () => {
+describe('Base API — SVG icons', () => {
   test('createFluentIcon should create a valid icon component', () => {
     const AccessTimeRegular = createFluentIcon('AccessTimeRegular', '1em', [
       'M6.99 8.6A.5.5 0 0 1 6 8.4a1.29 1.29 0 0 1 .07-.24',
@@ -135,7 +135,7 @@ describe('Headless API — SVG icons', () => {
   }));
 });
 
-describe('Headless API — SVG sprite icons', () => {
+describe('Base API — SVG sprite icons', () => {
   test('renders svg with <use> element referencing sprite path', () => {
     const MyIcon = createFluentSpriteIcon('access-time-20-filled', '20', '/sprites/access-time.svg');
 
@@ -190,7 +190,7 @@ describe('Headless API — SVG sprite icons', () => {
   }));
 });
 
-describe('Headless API — Font icons', () => {
+describe('Base API — Font icons', () => {
   const FontFile = {
     Filled: 0,
     Regular: 1,
@@ -226,7 +226,7 @@ describe('Headless API — Font icons', () => {
   });
 });
 
-describe('Headless API — bundleIcon', () => {
+describe('Base API — bundleIcon', () => {
   test('bundleIcon renders both variants with data attributes', () => {
     const d = 'M1 2 L3 4';
     const FilledIcon = createFluentIcon('TestFilled', '1em', [d]);

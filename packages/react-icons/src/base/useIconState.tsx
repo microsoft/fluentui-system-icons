@@ -8,7 +8,7 @@ export type UseIconStateOptions = {
 };
 
 /**
- * Headless version of useIconState
+ * Base version of useIconState
  *
  * Handles:
  * - a11y: aria-hidden, aria-label, role="img"

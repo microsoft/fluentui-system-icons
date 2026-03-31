@@ -1,10 +1,10 @@
-# Headless API
+# Base API
 
 > **⚠️ Alpha** — this feature is available as an alpha prerelease only.
 >
 > Install via `npm i @fluentui/react-icons@prerelease`
 
-The Headless API is a drop-in replacement for the standard icon API that removes the CSS-in-JS runtime dependency. It provides `data-*` attribute selectors for styling behaviour with opt-in pre-defined vanilla CSS — making it suitable for any React setup, including those without a CSS-in-JS runtime.
+The Base API is a drop-in replacement for the standard icon API that removes the CSS-in-JS runtime dependency. It provides `data-*` attribute selectors for styling behaviour with opt-in pre-defined vanilla CSS — making it suitable for any React setup, including those without a CSS-in-JS runtime.
 
 ## Benefits
 
@@ -16,9 +16,9 @@ The Headless API is a drop-in replacement for the standard icon API that removes
 
 ## How it works
 
-The standard API uses Griffel's `makeStyles` / `mergeClasses` to inject CSS rules at runtime. The headless API replaces this with HTML `data-*` attributes and a shipped CSS file (`headless.css`) that targets them:
+The standard API uses Griffel's `makeStyles` / `mergeClasses` to inject CSS rules at runtime. The base API replaces this with HTML `data-*` attributes and a shipped CSS file (`base.css`) that targets them:
 
-| Concern               | Standard (Griffel)                  | Headless (CSS)                                                             |
+| Concern               | Standard (Griffel)                  | Base (CSS)                                                                 |
 | --------------------- | ----------------------------------- | -------------------------------------------------------------------------- |
 | Base icon layout      | `useRootStyles()` → atomic classes  | `[data-fui-icon] { display: inline; line-height: 0 }`                      |
 | High-contrast mode    | `@media (forced-colors)` in JS      | `@media (forced-colors) { [data-fui-icon] { forced-color-adjust: auto } }` |
@@ -28,22 +28,22 @@ The standard API uses Griffel's `makeStyles` / `mergeClasses` to inject CSS rule
 
 ## CSS Setup
 
-You **must** import the headless CSS file — this is the key difference from the standard API, which injects styles at runtime.
+You **must** import the base CSS file — this is the key difference from the standard API, which injects styles at runtime.
 
 **For SVG icons and SVG sprites:**
 
 ```ts
-import '@fluentui/react-icons/headless/headless.css';
+import '@fluentui/react-icons/base/base.css';
 ```
 
 **For font icons** (additionally):
 
 ```ts
-import '@fluentui/react-icons/headless/headless-fonts.css';
-import '@fluentui/react-icons/headless/headless.css';
+import '@fluentui/react-icons/base/base-fonts.css';
+import '@fluentui/react-icons/base/base.css';
 ```
 
-> **Note:** `headless-fonts.css` contains `@font-face` declarations with relative paths to the font files (`.woff2`, `.woff`, `.ttf`). Your bundler (webpack, Vite, esbuild) will resolve these into the dependency graph automatically, enabling font subsetting plugins to process them.
+> **Note:** `base-fonts.css` contains `@font-face` declarations with relative paths to the font files (`.woff2`, `.woff`, `.ttf`). Your bundler (webpack, Vite, esbuild) will resolve these into the dependency graph automatically, enabling font subsetting plugins to process them.
 
 > **Tip 💡:** It's highly recommended to enable our [`react-icons-font-subsetting-webpack-plugin`](https://www.npmjs.com/package/@fluentui/react-icons-font-subsetting-webpack-plugin) to get same fonts "tree-shaking" perf boost
 
@@ -51,17 +51,17 @@ import '@fluentui/react-icons/headless/headless.css';
 
 ### SVG Icons
 
-Headless SVG icons are grouped by icon kind and exposed via `@fluentui/react-icons/headless/svg/{icon-group}`:
+Base SVG icons are grouped by icon kind and exposed via `@fluentui/react-icons/base/svg/{icon-group}`:
 
 ```tsx
-import '@fluentui/react-icons/headless/headless.css';
+import '@fluentui/react-icons/base/base.css';
 
 import {
   AccessTime20Filled,
   AccessTime24Filled,
   AccessTime20Regular,
-} from '@fluentui/react-icons/headless/svg/access-time';
-import { Add16Filled, Add20Filled } from '@fluentui/react-icons/headless/svg/add';
+} from '@fluentui/react-icons/base/svg/access-time';
+import { Add16Filled, Add20Filled } from '@fluentui/react-icons/base/svg/add';
 
 function MyComponent() {
   return (
@@ -75,13 +75,13 @@ function MyComponent() {
 
 ### SVG Sprites
 
-Headless SVG sprites work the same way as standard SVG sprites but without Griffel:
+Base SVG sprites work the same way as standard SVG sprites but without Griffel:
 
 ```tsx
-import '@fluentui/react-icons/headless/headless.css';
+import '@fluentui/react-icons/base/base.css';
 
-import { AccessTime20Filled, AccessTime24Filled } from '@fluentui/react-icons/headless/svg-sprite/access-time';
-import { Add16Filled } from '@fluentui/react-icons/headless/svg-sprite/add';
+import { AccessTime20Filled, AccessTime24Filled } from '@fluentui/react-icons/base/svg-sprite/access-time';
+import { Add16Filled } from '@fluentui/react-icons/base/svg-sprite/add';
 
 function MyComponent() {
   return (
@@ -97,13 +97,13 @@ function MyComponent() {
 
 ### Font Icons
 
-Headless font icons require both CSS files — `headless.css` for base styles and `headless-fonts.css` for `@font-face` declarations:
+Base font icons require both CSS files — `base.css` for base styles and `base-fonts.css` for `@font-face` declarations:
 
 ```tsx
-import '@fluentui/react-icons/headless/headless-fonts.css';
-import '@fluentui/react-icons/headless/headless.css';
+import '@fluentui/react-icons/base/base-fonts.css';
+import '@fluentui/react-icons/base/base.css';
 
-import { Airplane20Filled, Airplane24Regular } from '@fluentui/react-icons/headless/fonts/airplane';
+import { Airplane20Filled, Airplane24Regular } from '@fluentui/react-icons/base/fonts/airplane';
 
 function MyComponent() {
   return <Airplane20Filled />;
@@ -112,7 +112,7 @@ function MyComponent() {
 
 ### Utilities
 
-The headless entry point (`@fluentui/react-icons/headless`) re-exports all core utilities:
+The base entry point (`@fluentui/react-icons/base`) re-exports all core utilities:
 
 ```tsx
 import {
@@ -143,16 +143,16 @@ import {
 
   // Class name helper
   cx,
-} from '@fluentui/react-icons/headless';
+} from '@fluentui/react-icons/base';
 ```
 
 The `bundleIcon` function works identically to the standard API:
 
 ```tsx
-import '@fluentui/react-icons/headless/headless.css';
-import { bundleIcon } from '@fluentui/react-icons/headless';
-import { AccessTimeFilled } from '@fluentui/react-icons/headless/svg/access-time';
-import { AccessTimeRegular } from '@fluentui/react-icons/headless/svg/access-time';
+import '@fluentui/react-icons/base/base.css';
+import { bundleIcon } from '@fluentui/react-icons/base';
+import { AccessTimeFilled } from '@fluentui/react-icons/base/svg/access-time';
+import { AccessTimeRegular } from '@fluentui/react-icons/base/svg/access-time';
 
 const AccessTime = bundleIcon(AccessTimeFilled, AccessTimeRegular);
 
@@ -163,7 +163,7 @@ function MyComponent() {
 
 ## TypeScript Configuration
 
-**IMPORTANT**: TypeScript users must use `moduleResolution: "bundler"` (or `"node16"`/`"nodenext"`) in their `tsconfig.json` to properly resolve the headless atomic exports:
+**IMPORTANT**: TypeScript users must use `moduleResolution: "bundler"` (or `"node16"`/`"nodenext"`) in their `tsconfig.json` to properly resolve the base atomic exports:
 
 ```json
 {
@@ -175,7 +175,7 @@ function MyComponent() {
 
 ## Build-Time Transform
 
-You can keep root-level barrel imports and leverage build transforms to adopt the headless API without modifying your source code. This works for both existing codebases migrating to headless approach and greenfield projects.
+You can keep root-level barrel imports and leverage build transforms to adopt the base API without modifying your source code. This works for both existing codebases migrating to base approach and greenfield projects.
 
 These transforms automatically rewrite imports from:
 
@@ -183,18 +183,18 @@ These transforms automatically rewrite imports from:
 import { AccessTime24Filled } from '@fluentui/react-icons';
 ```
 
-To the optimized headless atomic import:
+To the optimized base atomic import:
 
 ```tsx
-import { AccessTime24Filled } from '@fluentui/react-icons/headless/svg/access-time';
+import { AccessTime24Filled } from '@fluentui/react-icons/base/svg/access-time';
 ```
 
-> **Note:** You still need to manually add the CSS import (`import '@fluentui/react-icons/headless/headless.css'`) to your application entry point — build transforms only rewrite component imports.
+> **Note:** You still need to manually add the CSS import (`import '@fluentui/react-icons/base/base.css'`) to your application entry point — build transforms only rewrite component imports.
 
-> **Tip 💡:** The examples below target `headless/svg/*`. The same approach applies to SVG sprites and font icons — just replace the target path:
+> **Tip 💡:** The examples below target `base/svg/*`. The same approach applies to SVG sprites and font icons — just replace the target path:
 >
-> - SVG sprites: `@fluentui/react-icons/headless/svg-sprite/{icon-name}`
-> - Font icons: `@fluentui/react-icons/headless/fonts/{icon-name}` (also import `headless-fonts.css`)
+> - SVG sprites: `@fluentui/react-icons/base/svg-sprite/{icon-name}`
+> - Font icons: `@fluentui/react-icons/base/fonts/{icon-name}` (also import `base-fonts.css`)
 
 ### Babel
 
@@ -226,7 +226,7 @@ module.exports = {
 
             const kebabCase = withoutSuffix.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
 
-            return `@fluentui/react-icons/headless/svg/${kebabCase}`;
+            return `@fluentui/react-icons/base/svg/${kebabCase}`;
           },
           preventFullImport: false,
           skipDefaultConversion: true,
@@ -254,10 +254,10 @@ If you use SWC for transpilation, add [@swc/plugin-transform-imports](https://ww
               "transform": [
                 // Transform provider imports to /providers
                 ["^(useIconContext|IconDirectionContextProvider)$", "@fluentui/react-icons/providers"],
-                // Transform icon imports to headless /svg/{icon-name}
+                // Transform icon imports to base /svg/{icon-name}
                 [
                   "(\\D*)(\\d*)?(Regular|Filled|Light|Color)$",
-                  "@fluentui/react-icons/headless/svg/{{ kebabCase memberMatches.[1] }}",
+                  "@fluentui/react-icons/base/svg/{{ kebabCase memberMatches.[1] }}",
                 ],
                 // Fallback: all other exports are utilities
                 [".*", "@fluentui/react-icons/utils"],

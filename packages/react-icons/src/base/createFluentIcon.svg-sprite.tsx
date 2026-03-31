@@ -8,7 +8,7 @@ import type { FluentIcon, CreateFluentIconOptions } from './createFluentIcon';
 export type { FluentIcon, CreateFluentIconOptions } from './createFluentIcon';
 
 /**
- * Headless createFluentIcon for sprite-based icons.
+ * Base createFluentIcon for sprite-based icons.
  *
  * @access private
  * @alpha
