@@ -7,15 +7,7 @@ const config: StorybookConfig = {
     '@storybook/addon-docs',
     '@storybook/addon-webpack5-compiler-swc',
     '@fluentui/react-storybook-addon',
-    {
-      name: '@fluentui/react-storybook-addon-export-to-sandbox',
-      options: {
-        webpackRule: {
-          test: /\.stories\.tsx$/,
-          include: /stories/,
-        },
-      },
-    },
+    '@fluentui/react-storybook-addon-export-to-sandbox',
   ],
 
   framework: {
