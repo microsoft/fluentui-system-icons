@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "storybook dev -p 6006 --docs",
     "build": "storybook build --docs",
-    "extract-storybook-llms": "storybook-llms-extractor --distPath storybook-static --summaryBaseUrl https://microsoft.github.io/fluentui-contrib/"
+    "extract-storybook-llms": "storybook-llms-extractor --distPath storybook-static --summaryBaseUrl https://microsoft.github.io/fluentui-system-icons/"
   },
   "dependencies": {
     "@fluentui/react-components": "^9.46.0",
