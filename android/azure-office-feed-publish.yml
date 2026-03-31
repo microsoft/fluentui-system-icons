@@ -1,3 +1,5 @@
+trigger: none
+pr: none
 variables:
 - group: InfoSec-SecurityResults
 - name: tags

@@ -1,3 +1,16 @@
+## 2.0.323 (2026-03-27)
+
+### 🚀 Features
+
+- **react-icons:** add new and updated icons ([#1028](https://github.com/microsoft/fluentui-system-icons/pull/1028))
+- **react-icons-svg-sprite-subsetting-webpack-plugin:** implement svg sprite subsetting for react-icons `/svg-sprite/*` api ([#1016](https://github.com/microsoft/fluentui-system-icons/pull/1016))
+
+## 2.0.322 (2026-03-24)
+
+### 🚀 Features
+
+- **react-icons:** add new icons ([#1023](https://github.com/microsoft/fluentui-system-icons/pull/1023))
+
 ## 2.0.321 (2026-03-13)
 
 ### 🚀 Features

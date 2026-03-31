@@ -2,7 +2,7 @@
 
 This directory contains patches for third-party dependencies that are automatically applied via `patch-package` during `npm install`.
 
-## fantasticon+1.2.3.patch
+## fantasticon+4.1.0.patch
 
 **Issue**: fantasticon uses `String.fromCharCode()` which doesn't support Unicode codepoints above 0xFFFF (outside the Basic Multilingual Plane).
 
