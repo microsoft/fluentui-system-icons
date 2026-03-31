@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/react';
 import type { FluentParameters } from '@fluentui/react-storybook-addon';
 
+import './react-storybook-addon-export-to-sandbox.styles.css';
 import './docs-root-v9.css';
 import './docs-root.css';
 
