@@ -1,17 +1,17 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
-// The 'replace' module doesn't work on Windows command line.
-const r = require('replace');
-const argv = require('yargs').argv;
+const { parseArgs } = require('node:util');
 
-const path = argv.path;
+const { replaceInFiles } = require('../../importer/replace-in-files');
 
-r({
-  regex: /\sfill="(none|#212121)"/g,
+const { values } = parseArgs({ options: { path: { type: 'string' } } });
+
+replaceInFiles({
+  search: /\sfill="(none|#212121)"/g,
   replacement: '',
-  paths: [path],
+  paths: [values.path],
   recursive: true,
   include: '*.svg',
-  silent: true,
+  quiet: true,
 });

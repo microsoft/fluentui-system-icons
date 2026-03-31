@@ -1857,7 +1857,7 @@ describe('Build Verification', () => {
         const jsContent = await readFile(jsFile, 'utf8');
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
-          "... (43 export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))
+          "... (44 export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))
           "use client";
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
@@ -1999,6 +1999,17 @@ describe('Build Verification', () => {
     });
   });
 
+  /**
+   * Returns file listings for an atom directory.
+   * @param {string} assetPath
+   */
+  async function getAtomDirStats(assetPath) {
+    const files = await readdir(assetPath);
+    const jsFiles = files.filter((f) => f.endsWith('.js'));
+    const svgFiles = files.filter((f) => f.endsWith('.svg'));
+    return { files, jsFiles, svgFiles };
+  }
+
   describe(`Atoms`, () => {
     function getAssetPaths() {
       const svgPathEsm = path.join(__dirname, 'lib', 'atoms/svg');
@@ -2008,29 +2019,19 @@ describe('Build Verification', () => {
       return { svgPathEsm, svgPathCjs, fontsPathEsm, fontsPathCjs };
     }
 
-    /**
-     *
-     * @param {string} assetPath
-     */
-    async function getStats(assetPath) {
-      const files = await readdir(assetPath);
-      const jsFiles = files.filter((f) => f.endsWith('.js'));
-      return { files, jsFiles };
-    }
-
     it(`should have same number of atoms/svg icon files in lib and lib-cjs`, async () => {
       const { svgPathCjs, svgPathEsm } = getAssetPaths();
-      const esmStats = await getStats(svgPathEsm);
-      const cjsStats = await getStats(svgPathCjs);
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2826`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2826`);
+      const esmStats = await getAtomDirStats(svgPathEsm);
+      const cjsStats = await getAtomDirStats(svgPathCjs);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2828`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2828`);
     });
     it(`should have same number of atoms/fonts icon files in lib and lib-cjs`, async () => {
       const { fontsPathCjs, fontsPathEsm } = getAssetPaths();
-      const esmStats = await getStats(fontsPathEsm);
-      const cjsStats = await getStats(fontsPathCjs);
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2819`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2819`);
+      const esmStats = await getAtomDirStats(fontsPathEsm);
+      const cjsStats = await getAtomDirStats(fontsPathCjs);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2821`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2821`);
     });
     it.each(['lib', 'lib-cjs'])('should have atoms/svg directory with icon files in %s', async (libDir) => {
       const atomsSvgPath = path.join(__dirname, libDir, 'atoms', 'svg');
@@ -2040,7 +2041,7 @@ describe('Build Verification', () => {
       const stats = await stat(atomsSvgPath);
       expect(stats.isDirectory()).toBe(true);
 
-      const { files, jsFiles } = await getStats(atomsSvgPath);
+      const { files, jsFiles } = await getAtomDirStats(atomsSvgPath);
 
       // Snapshot the list of .js files to catch any unexpected changes
       expect(jsFiles).toMatchSnapshot();
@@ -2065,7 +2066,7 @@ describe('Build Verification', () => {
       const stats = await stat(atomsFontsPath);
       expect(stats.isDirectory()).toBe(true);
 
-      const { files, jsFiles } = await getStats(atomsFontsPath);
+      const { files, jsFiles } = await getAtomDirStats(atomsFontsPath);
 
       // Snapshot the list of .js files to catch any unexpected changes
       expect(jsFiles).toMatchSnapshot();
@@ -2197,21 +2198,11 @@ describe('Build Verification', () => {
       return { svgSpritePathEsm, svgSpritePathCjs };
     }
 
-    /**
-     * @param {string} assetPath
-     */
-    async function getSpriteStats(assetPath) {
-      const files = await readdir(assetPath);
-      const jsFiles = files.filter((f) => f.endsWith('.js'));
-      const svgFiles = files.filter((f) => f.endsWith('.svg'));
-      return { files, jsFiles, svgFiles };
-    }
-
     it('should have same number of atoms/svg-sprite JS files in lib and lib-cjs', async () => {
       const { svgSpritePathEsm, svgSpritePathCjs } = getSpriteAssetPaths();
       const esmAtomsJsFiles = (await readdir(path.join(__dirname, 'lib/atoms/svg'))).filter((f) => f.endsWith('.js'));
-      const esmStats = await getSpriteStats(svgSpritePathEsm);
-      const cjsStats = await getSpriteStats(svgSpritePathCjs);
+      const esmStats = await getAtomDirStats(svgSpritePathEsm);
+      const cjsStats = await getAtomDirStats(svgSpritePathCjs);
 
       // `/svg-sprite` has no deprecated color/text-color backward-compat atoms (new API),
       // so it will have fewer .js files than `/svg`
@@ -2250,7 +2241,7 @@ describe('Build Verification', () => {
       const dirStats = await stat(atomsSvgSpritePath);
       expect(dirStats.isDirectory()).toBe(true);
 
-      const { files, jsFiles, svgFiles } = await getSpriteStats(atomsSvgSpritePath);
+      const { files, jsFiles, svgFiles } = await getAtomDirStats(atomsSvgSpritePath);
 
       // Every .js file must have a corresponding .svg sprite file and .d.ts declaration file
       for (const jsFile of jsFiles) {
@@ -2332,6 +2323,143 @@ describe('Build Verification', () => {
       expect(packageJson.exports['./svg-sprite/*']).toBeDefined();
       expect(packageJson.exports['./svg-sprite/*'].import).toBe('./lib/atoms/svg-sprite/*.js');
       expect(packageJson.exports['./svg-sprite/*'].require).toBe('./lib-cjs/atoms/svg-sprite/*.js');
+    });
+  });
+
+  // Headless tests only run when headless generation was enabled (--headless flag passed to convert.js / convert-font.js)
+  const headlessGenerated = fs.existsSync(path.join(__dirname, 'lib', 'atoms', 'base-svg'));
+  const describeHeadless = headlessGenerated ? describe : describe.skip;
+
+  describeHeadless('Base Atoms', () => {
+    const headlessSpriteGenerated = fs.existsSync(path.join(__dirname, 'lib', 'atoms', 'base-svg-sprite'));
+
+    it('should have same number of base atom JS files as regular atoms and match ESM/CJS', async () => {
+      /** @type {Array<{headless: string, regular: string}>} */
+      const variants = [
+        { headless: 'base-svg', regular: 'svg' },
+        { headless: 'base-fonts', regular: 'fonts' },
+      ];
+
+      for (const { headless, regular } of variants) {
+        const esmHeadless = await getAtomDirStats(path.join(__dirname, 'lib', 'atoms', headless));
+        const cjsHeadless = await getAtomDirStats(path.join(__dirname, 'lib-cjs', 'atoms', headless));
+        const esmRegular = await getAtomDirStats(path.join(__dirname, 'lib', 'atoms', regular));
+
+        // Base atoms must have the same count as their regular counterparts
+        expect(esmHeadless.jsFiles.length).toEqual(esmRegular.jsFiles.length);
+        // ESM and CJS must be in sync
+        expect(esmHeadless.jsFiles.length).toEqual(cjsHeadless.jsFiles.length);
+      }
+
+      // base-svg-sprite mirrors svg-sprite (base sprite generation is independent of regular sprites)
+      if (headlessSpriteGenerated) {
+        const esmHeadlessSprite = await getAtomDirStats(path.join(__dirname, 'lib', 'atoms', 'base-svg-sprite'));
+        const cjsHeadlessSprite = await getAtomDirStats(path.join(__dirname, 'lib-cjs', 'atoms', 'base-svg-sprite'));
+        const esmRegularSprite = await getAtomDirStats(path.join(__dirname, 'lib', 'atoms', 'svg-sprite'));
+
+        expect(esmHeadlessSprite.jsFiles.length).toEqual(esmRegularSprite.jsFiles.length);
+        expect(esmHeadlessSprite.jsFiles.length).toEqual(cjsHeadlessSprite.jsFiles.length);
+      }
+    });
+
+    it.each(['lib', 'lib-cjs'])('should have base atom directories with .js and .d.ts pairs in %s', async (libDir) => {
+      const atomTypes = ['base-svg', 'base-fonts'];
+      if (headlessSpriteGenerated) {
+        atomTypes.push('base-svg-sprite');
+      }
+
+      for (const atomType of atomTypes) {
+        const atomDir = path.join(__dirname, libDir, 'atoms', atomType);
+        expect(fs.existsSync(atomDir)).toBe(true);
+
+        const { files, jsFiles } = await getAtomDirStats(atomDir);
+
+        // Every .js file must have a corresponding .d.ts declaration file
+        for (const jsFile of jsFiles) {
+          const baseName = jsFile.replace('.js', '');
+          expect(files).toContain(`${baseName}.d.ts`);
+        }
+
+        // Sample check: access-time should exist
+        expect(files).toContain('access-time.js');
+        expect(files).toContain('access-time.d.ts');
+      }
+    });
+
+    it('base atom files should use base factory imports', async () => {
+      // SVG atoms must import from base createFluentIcon (not the regular utils one)
+      const svgAtom = await readFile(path.join(__dirname, 'lib', 'atoms', 'base-svg', 'access-time.js'), 'utf-8');
+      expect(svgAtom).toContain("from '../../base/createFluentIcon'");
+      expect(svgAtom).not.toContain("from '../../utils/");
+      expect(svgAtom).toContain('export const AccessTimeFilled');
+      expect(svgAtom).toContain('export const AccessTimeRegular');
+
+      // Font atoms must import from base createFluentFontIcon
+      const fontAtom = await readFile(path.join(__dirname, 'lib', 'atoms', 'base-fonts', 'access-time.js'), 'utf-8');
+      expect(fontAtom).toContain("from '../../base/fonts/createFluentFontIcon'");
+      expect(fontAtom).not.toContain("from '../../utils/");
+      expect(fontAtom).toContain('export const AccessTimeFilled');
+      expect(fontAtom).toContain('export const AccessTimeRegular');
+
+      // Sprite atoms must import from base createFluentIcon.svg-sprite
+      if (headlessSpriteGenerated) {
+        const spriteAtom = await readFile(
+          path.join(__dirname, 'lib', 'atoms', 'base-svg-sprite', 'access-time.js'),
+          'utf-8',
+        );
+        expect(spriteAtom).toContain("from '../../base/createFluentIcon.svg-sprite'");
+        expect(spriteAtom).not.toContain("from '../../utils/");
+        expect(spriteAtom).toContain('sprite');
+      }
+    });
+
+    it('base atom files should pass options (flipInRtl, color) as last argument when applicable', async () => {
+      await assertAtomOptionsArgument(path.join(__dirname, 'lib', 'atoms', 'base-svg'));
+
+      if (headlessSpriteGenerated) {
+        await assertAtomOptionsArgument(path.join(__dirname, 'lib', 'atoms', 'base-svg-sprite'));
+      }
+    });
+
+    it('base behavior/logic should exist with correct CSS', async () => {
+      const headlessDir = path.join(__dirname, 'lib', 'base');
+
+      // Core infrastructure files
+      const expectedFiles = [
+        'index.js',
+        'index.d.ts',
+        'shared.js',
+        'shared.d.ts',
+        'createFluentIcon.js',
+        'createFluentIcon.d.ts',
+        'createFluentIcon.svg-sprite.js',
+        'createFluentIcon.svg-sprite.d.ts',
+        'useIconState.js',
+        'useIconState.d.ts',
+        'bundleIcon.js',
+        'bundleIcon.d.ts',
+        'base.css',
+      ];
+      for (const file of expectedFiles) {
+        expect(fs.existsSync(path.join(headlessDir, file))).toBe(true);
+      }
+
+      // base.css must use data-attribute selectors (the key differentiator from CSS-in-JS)
+      const css = await readFile(path.join(headlessDir, 'base.css'), 'utf-8');
+      expect(css).toContain('[data-fui-icon]');
+      expect(css).toContain('[data-fui-icon-rtl]');
+      expect(css).toContain('[data-fui-icon-hidden]');
+
+      // Font sub-infrastructure
+      expect(fs.existsSync(path.join(headlessDir, 'fonts', 'createFluentFontIcon.js'))).toBe(true);
+      expect(fs.existsSync(path.join(headlessDir, 'fonts', 'base-fonts.css'))).toBe(true);
+    });
+
+    it('package.json#sideEffects include base entries css entries', () => {
+      const packageJsonPath = path.join(__dirname, 'package.json');
+      const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
+
+      expect(packageJson.sideEffects).toEqual(['**/base/fonts/base-fonts.css', '**/base/base.css']);
     });
   });
 

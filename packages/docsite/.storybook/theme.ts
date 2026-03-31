@@ -1,5 +1,7 @@
 import { create } from 'storybook/theming';
 
+import logo from '../public/logo.svg';
+
 const theme = create({
   base: 'light',
   colorPrimary: 'rgba(255, 255, 255, .4)',
@@ -17,6 +19,7 @@ const theme = create({
   inputBorderRadius: 4,
   brandTitle: 'Fluent UI System Icons',
   brandUrl: 'https://github.com/microsoft/fluentui-system-icons',
+  brandImage: logo,
 });
 
 export default theme;

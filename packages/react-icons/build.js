@@ -37,6 +37,21 @@ function main() {
     addSpriteExportMap(projectRoot);
   }
 
+  // Headless assets: only copy when headless generation was enabled
+  const headlessSvgSrcDir = join(projectRoot, 'src/atoms/base-svg');
+  if (existsSync(headlessSvgSrcDir)) {
+    const headlessSpriteSrcDir = join(projectRoot, 'src/atoms/base-svg-sprite');
+    if (existsSync(headlessSpriteSrcDir)) {
+      copyAssets('src/atoms/base-svg-sprite/*.svg', './lib/atoms/base-svg-sprite', projectRoot);
+      copyAssets('src/atoms/base-svg-sprite/*.svg', './lib-cjs/atoms/base-svg-sprite', projectRoot);
+    }
+    copyAssets('src/base/*.css', './lib/base', projectRoot);
+    copyAssets('src/base/fonts/*.css', './lib/base/fonts', projectRoot);
+    copyAssets('src/base/*.css', './lib-cjs/base', projectRoot);
+    copyAssets('src/base/fonts/*.css', './lib-cjs/base/fonts', projectRoot);
+    addHeadlessExportMap(projectRoot);
+  }
+
   applyBabelTransform('lib', projectRoot);
   applyBabelTransform('lib-cjs', projectRoot);
 }
@@ -167,4 +182,57 @@ function addSpriteExportMap(baseDir) {
 
   writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
   console.log(`  ✓ [exports] Added ${spriteExportKey} to package.json`);
+}
+
+/**
+ * Adds headless export map entries to package.json when headless generation is enabled.
+ *
+ * NOTE: will be part of package.json once headless is stable. then we can remove this dynamic addition and the related build logic that copies headless assets.
+ * @param {string} baseDir
+ */
+function addHeadlessExportMap(baseDir) {
+  const pkgPath = join(baseDir, 'package.json');
+  const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
+
+  /** @type {Record<string, string | {types: string; import: string; require: string}>} */
+  const headlessExports = {
+    './base': {
+      types: './lib/base/index.d.ts',
+      import: './lib/base/index.js',
+      require: './lib-cjs/base/index.js',
+    },
+    './base/fonts': {
+      types: './lib/base/fonts/index.d.ts',
+      import: './lib/base/fonts/index.js',
+      require: './lib-cjs/base/fonts/index.js',
+    },
+    './base/base.css': './lib/base/base.css',
+    './base/base-fonts.css': './lib/base/fonts/base-fonts.css',
+    './base/svg/*': {
+      types: './lib/atoms/base-svg/*.d.ts',
+      import: './lib/atoms/base-svg/*.js',
+      require: './lib-cjs/atoms/base-svg/*.js',
+    },
+    './base/svg-sprite/*': {
+      types: './lib/atoms/base-svg-sprite/*.d.ts',
+      import: './lib/atoms/base-svg-sprite/*.js',
+      require: './lib-cjs/atoms/base-svg-sprite/*.js',
+    },
+    './base/fonts/*': {
+      types: './lib/atoms/base-fonts/*.d.ts',
+      import: './lib/atoms/base-fonts/*.js',
+      require: './lib-cjs/atoms/base-fonts/*.js',
+    },
+  };
+
+  // Add headless export maps
+  Object.assign(pkg.exports, headlessExports);
+  console.log(`  ✓ [exports] Set ${Object.keys(headlessExports).join(', ')}`);
+
+  // Add headless CSS sideEffects entries
+  const headlessSideEffects = ['**/base/fonts/base-fonts.css', '**/base/base.css'];
+  pkg.sideEffects = [...headlessSideEffects];
+  console.log(`  ✓ [sideEffects] Added ${headlessSideEffects.join(', ')}`);
+
+  writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
 }

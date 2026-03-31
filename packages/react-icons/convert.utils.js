@@ -122,6 +122,7 @@ function loadRtlMetadata(rtlFilePath) {
 
 /**
  * @typedef {{ atomsDest: string; spriteAtomsDest?: string }} DestOptions
+ * @typedef {{ svgImportPath: string; spriteTypeImportPath: string; spriteCreateImportPath: string }} ImportConfig
  */
 
 /**
@@ -130,10 +131,11 @@ function loadRtlMetadata(rtlFilePath) {
  * @param {Array<{file: string; srcFile: string}>} sourceFiles
  * @param {DestOptions} dest
  * @param {RtlMetadata} rtlMetadata
- * @param {boolean} groupByBase
+ * @param {ImportConfig} importConfig - import paths for generated icon files
+ * @param {boolean} [groupByBase] - whether to group icons by base name (default: true)
  * @returns {Promise<{ resizable: { iconNames: string[] }; sized: { iconNames: string[] }; fileCount: number; spriteFileCount: number }>}
  */
-async function generatePerIconFiles(sourceFiles, dest, rtlMetadata, groupByBase = true) {
+async function generatePerIconFiles(sourceFiles, dest, rtlMetadata, importConfig, groupByBase = true) {
   const { atomsDest, spriteAtomsDest } = dest;
   /** @type {string[]} */
   const resizableIconNames = [];
@@ -175,7 +177,7 @@ async function generatePerIconFiles(sourceFiles, dest, rtlMetadata, groupByBase 
 
   // merge both sets into a single write — grouping logic in writePerIconFiles
   // co-locates resizable + sized variants for the same icon in one file
-  const svgHeader = getCreateFluentIconHeader('../../utils/createFluentIcon');
+  const svgHeader = getCreateFluentIconHeader(importConfig.svgImportPath);
   const { fileCount } = await writePerIconFiles(atomsDest, [...resizableItems, ...sizedItems], svgHeader, {
     groupByBase,
   });
@@ -183,7 +185,13 @@ async function generatePerIconFiles(sourceFiles, dest, rtlMetadata, groupByBase 
   // Optionally generate SVG sprite pairs (.svg + .tsx) from the same enriched data
   let spriteFileCount = 0;
   if (spriteAtomsDest) {
-    const spriteResult = await writeSpriteFiles(spriteAtomsDest, [...resizableItems, ...sizedItems], { groupByBase });
+    const spriteResult = await writeSpriteFiles(spriteAtomsDest, [...resizableItems, ...sizedItems], {
+      groupByBase,
+      importConfig: {
+        typeImportPath: importConfig.spriteTypeImportPath,
+        createImportPath: importConfig.spriteCreateImportPath,
+      },
+    });
     spriteFileCount = spriteResult.fileCount;
   }
 

@@ -55,6 +55,9 @@ packages/react-native-icons/package-lock.json
 # npm
 
 packages/**/lib/
+# We want to keep the lib folders in the test __mock__ directories for testing purposes, but ignore all other lib folders.
+!packages/react-icons-svg-sprite-subsetting-webpack-plugin/test/__mock__/**/lib/
+!packages/react-icons-svg-sprite-subsetting-webpack-plugin/test/__mock__/**/lib/**
 packages/**/lib-cjs/
 packages/**/dist/
 

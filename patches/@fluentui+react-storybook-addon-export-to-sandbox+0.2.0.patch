@@ -1,0 +1,26 @@
+diff --git a/node_modules/@fluentui/react-storybook-addon-export-to-sandbox/lib-commonjs/webpack.js b/node_modules/@fluentui/react-storybook-addon-export-to-sandbox/lib-commonjs/webpack.js
+index 4237ac2..8b1fbc8 100644
+--- a/node_modules/@fluentui/react-storybook-addon-export-to-sandbox/lib-commonjs/webpack.js
++++ b/node_modules/@fluentui/react-storybook-addon-export-to-sandbox/lib-commonjs/webpack.js
+@@ -24,7 +24,8 @@ const defaultOptions = {
+     webpackRule: {},
+     babelLoaderOptionsUpdater: identity
+ };
+-const PLUGIN_PATH = process.env.NODE_ENV !== 'production' ? '@fluentui/babel-preset-storybook-full-source/__dev' : '@fluentui/babel-preset-storybook-full-source';
++const PLUGIN_PATH = '@fluentui/babel-preset-storybook-full-source';
++
+ function createBabelLoaderRule(config) {
+     const { babelLoaderOptionsUpdater, importMappings, webpackRule } = config;
+     const plugin = [
+diff --git a/node_modules/@fluentui/react-storybook-addon-export-to-sandbox/preset.js b/node_modules/@fluentui/react-storybook-addon-export-to-sandbox/preset.js
+index 29199fb..cfc0dc1 100644
+--- a/node_modules/@fluentui/react-storybook-addon-export-to-sandbox/preset.js
++++ b/node_modules/@fluentui/react-storybook-addon-export-to-sandbox/preset.js
+@@ -1,6 +1,6 @@
+ /* eslint-disable no-shadow */
+ 
+-const preset = require('./lib/preset/preset');
++const preset = require('./lib-commonjs/preset/preset');
+ 
+ function previewAnnotations(entry = []) {
+   return [...entry, require.resolve('./lib/preset/preview')];

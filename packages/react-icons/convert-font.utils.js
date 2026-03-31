@@ -98,16 +98,17 @@ function collectFontIconItems(iconEntries, rtlMetadata, resizable) {
  * @param {string} destPath
  * @param {{ resizable: Array<import('./convert-font').IconEntry>; sized: Array<import('./convert-font').IconEntry> }} iconEntries
  * @param {RtlMetadata} rtlMetadata
- * @param {boolean} groupByBase
+ * @param {string} importPath - import path for the createFluentFontIcon header
+ * @param {boolean} [groupByBase] - whether to group icons by base name (default: true)
  * @returns {Promise<{ resizable: { iconNames: string[] }; sized: { iconNames: string[] }; fileCount: number }>}
  */
-async function generatePerIconFiles(destPath, iconEntries, rtlMetadata, groupByBase = true) {
+async function generatePerIconFiles(destPath, iconEntries, rtlMetadata, importPath, groupByBase = true) {
   const resizable = collectFontIconItems(iconEntries.resizable, rtlMetadata, true);
   const sized = collectFontIconItems(iconEntries.sized, rtlMetadata, false);
 
   // merge both sets into a single write — grouping logic in writePerIconFiles
   // co-locates resizable + sized variants for the same icon in one file
-  const headerLines = getCreateFluentIconHeader('../../utils/fonts/createFluentFontIcon');
+  const headerLines = getCreateFluentIconHeader(importPath);
   const { fileCount } = await writePerIconFiles(destPath, [...resizable.items, ...sized.items], headerLines, {
     groupByBase,
   });

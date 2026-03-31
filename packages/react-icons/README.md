@@ -354,8 +354,42 @@ This transformation happens at build time, so your source code remains unchanged
 
 If you use Babel for transpilation, add [babel-plugin-transform-imports](https://www.npmjs.com/package/babel-plugin-transform-imports) with the following setup:
 
+Copy the following helper into your project (e.g. as `fluent-icons-transform.js`):
+
+```js
+// @filename fluent-icons-transform.js
+
+/**
+ * Resolves a @fluentui/react-icons import name to its atomic module path.
+ * @param {string} importName - The named export being imported.
+ * @returns {string} The resolved module path.
+ */
+function resolveFluentIconImport(importName) {
+  if (importName === 'useIconContext' || importName === 'IconDirectionContextProvider') {
+    return '@fluentui/react-icons/providers';
+  }
+
+  const match = importName.match(/^(.+?)(\d+)?(Regular|Filled|Light|Color)$/);
+  if (!match) {
+    return '@fluentui/react-icons/utils';
+  }
+
+  return `@fluentui/react-icons/svg/${kebabCase(match[1])}`;
+}
+
+function kebabCase(str) {
+  return str.replace(/[a-z\d](?=[A-Z])|[a-zA-Z](?=\d)|[A-Z](?=[A-Z][a-z])/g, '$&-').toLowerCase();
+}
+
+module.exports = { resolveFluentIconImport };
+```
+
+Then use it in your Babel config:
+
 ```js
 // @filename .babelrc.js
+const { resolveFluentIconImport } = require('./fluent-icons-transform');
+
 module.exports = {
   presets: [
     // ... your preset configuration
@@ -365,23 +399,7 @@ module.exports = {
       'transform-imports',
       {
         '@fluentui/react-icons': {
-          transform: (importName) => {
-            if (importName === 'useIconContext' || importName === 'IconDirectionContextProvider') {
-              return '@fluentui/react-icons/providers';
-            }
-
-            // Icons end with a style suffix
-            const isIcon = importName.match(/(\d*)?(Regular|Filled|Light|Color)$/);
-            if (!isIcon) {
-              return '@fluentui/react-icons/utils';
-            }
-
-            const withoutSuffix = importName.replace(/(\d*)?(Regular|Filled|Light|Color)$/, '');
-
-            const kebabCase = withoutSuffix.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
-
-            return `@fluentui/react-icons/svg/${kebabCase}`;
-          },
+          transform: resolveFluentIconImport,
           preventFullImport: false,
           skipDefaultConversion: true,
         },
@@ -409,8 +427,14 @@ If you use SWC for transpilation, add [@swc/plugin-transform-imports](https://ww
                 // Transform provider imports to /providers
                 ["^(useIconContext|IconDirectionContextProvider)$", "@fluentui/react-icons/providers"],
                 // Transform icon imports to /svg/{icon-name}
+                // (.+?) lazily captures the icon base name (may contain digits,
+                // e.g. "Space3D", "Rotate315Right"), (\d+)? greedily strips any
+                // trailing all-digit segment (size suffixes like 16/20/24, but
+                // also level indicators like Battery0) — this mirrors the
+                // normalizeBaseName logic used by the generation pipeline.
+                // {{ kebabCase }} on group 1 mirrors lodash.kebabCase.
                 [
-                  "(\\D*)(\\d*)?(Regular|Filled|Light|Color)$",
+                  "(.+?)(\\d+)?(Regular|Filled|Light|Color)$",
                   "@fluentui/react-icons/svg/{{ kebabCase memberMatches.[1] }}",
                 ],
                 // Fallback: all other exports are utilities
@@ -435,7 +459,15 @@ If you use SWC for transpilation, add [@swc/plugin-transform-imports](https://ww
 
 SVG sprites offer smaller bundles, faster renders, and zero runtime overhead.
 
-👉 **[Full documentation →](./docs/preview-features.md#atomic-api-svg-sprites)**
+👉 **[Full documentation →](./docs/preview-features/svg-sprites.md)**
+
+## Base API — ⚠️ Alpha
+
+> **This feature is available as an alpha prerelease only.** Install via `npm i @fluentui/react-icons@alpha`
+
+A drop-in replacement for the standard API that removes the CSS-in-JS runtime — provides data-attribute selectors for styling behaviour with opt-in pre-defined vanilla CSS.
+
+👉 **[Full documentation →](./docs/preview-features/base.md)**
 
 ## Viewing Icons
 

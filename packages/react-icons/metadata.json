@@ -4804,6 +4804,16 @@
     "font": true,
     "type": "resizable"
   },
+  "CallChevronDownFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "CallChevronDownRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "CallConnectingFilled": {
     "svg": true,
     "font": true,
@@ -14650,6 +14660,16 @@
     "type": "resizable"
   },
   "LightbulbPersonRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "LightbulbPulseFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "LightbulbPulseRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -45869,6 +45889,66 @@
     "font": true,
     "type": "sized"
   },
+  "CallChevronDown16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CallChevronDown16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CallChevronDown20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CallChevronDown20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CallChevronDown24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CallChevronDown24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CallChevronDown28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CallChevronDown28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CallChevronDown32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CallChevronDown32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CallChevronDown48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CallChevronDown48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "CallConnecting20Filled": {
     "svg": true,
     "font": true,
@@ -54824,7 +54904,17 @@
     "font": true,
     "type": "sized"
   },
+  "ColorFill32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "ColorFill32Light": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ColorFill32Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -54850,6 +54940,11 @@
     "type": "sized"
   },
   "ColorFillAccent32Light": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ColorFillAccent32Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -80515,6 +80610,66 @@
     "type": "sized"
   },
   "LightbulbPerson48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LightbulbPulse16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LightbulbPulse16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LightbulbPulse20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LightbulbPulse20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LightbulbPulse24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LightbulbPulse24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LightbulbPulse28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LightbulbPulse28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LightbulbPulse32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LightbulbPulse32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LightbulbPulse48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LightbulbPulse48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -117724,7 +117879,17 @@
     "font": true,
     "type": "sized"
   },
+  "TextClearFormatting32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "TextClearFormatting32Light": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextClearFormatting32Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -118174,6 +118339,16 @@
     "font": true,
     "type": "sized"
   },
+  "TextDirectionHorizontalLeft16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextDirectionHorizontalLeft16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "TextDirectionHorizontalLeft20Filled": {
     "svg": true,
     "font": true,
@@ -118210,6 +118385,16 @@
     "type": "sized"
   },
   "TextDirectionHorizontalLtr24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextDirectionHorizontalRight16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextDirectionHorizontalRight16Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -118254,6 +118439,16 @@
     "font": true,
     "type": "sized"
   },
+  "TextDirectionRotate270Right16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextDirectionRotate270Right16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "TextDirectionRotate270Right20Filled": {
     "svg": true,
     "font": true,
@@ -118270,6 +118465,16 @@
     "type": "sized"
   },
   "TextDirectionRotate270Right24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextDirectionRotate315Right16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextDirectionRotate315Right16Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -118294,6 +118499,16 @@
     "font": true,
     "type": "sized"
   },
+  "TextDirectionRotate45Right16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextDirectionRotate45Right16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "TextDirectionRotate45Right20Filled": {
     "svg": true,
     "font": true,
@@ -118310,6 +118525,16 @@
     "type": "sized"
   },
   "TextDirectionRotate45Right24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextDirectionRotate90Left16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextDirectionRotate90Left16Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -118354,6 +118579,16 @@
     "font": true,
     "type": "sized"
   },
+  "TextDirectionRotate90Right16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextDirectionRotate90Right16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "TextDirectionRotate90Right20Filled": {
     "svg": true,
     "font": true,
@@ -118390,6 +118625,16 @@
     "type": "sized"
   },
   "TextDirectionRotate90Rtl24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextDirectionVertical16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextDirectionVertical16Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -119794,6 +120039,16 @@
     "font": true,
     "type": "sized"
   },
+  "TextLineSpacing16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextLineSpacing16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "TextLineSpacing20Filled": {
     "svg": true,
     "font": true,
@@ -119810,6 +120065,16 @@
     "type": "sized"
   },
   "TextLineSpacing24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextLineSpacing32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextLineSpacing32Regular": {
     "svg": true,
     "font": true,
     "type": "sized"

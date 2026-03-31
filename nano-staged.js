@@ -2,5 +2,5 @@
 'use strict';
 
 module.exports = {
-  '**/*.{ts,tsx,js,mjs,cjs,json,md,mdx}': 'prettier --write',
+  '**/*.{ts,tsx,js,mjs,cjs,json,md,mdx,css,html}': 'prettier --write',
 };

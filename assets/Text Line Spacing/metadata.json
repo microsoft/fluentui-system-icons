@@ -1,8 +1,10 @@
 {
   "name": "Text Line Spacing",
   "size": [
+    32,
     24,
-    20
+    20,
+    16
   ],
   "style": [
     "Regular",
