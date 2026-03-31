@@ -5,8 +5,16 @@
   "sourceRoot": "packages/docsite/src",
   "tags": ["platform:web"],
   "targets": {
+    "build": {
+      "cache": true,
+      "inputs": ["{projectRoot}/.storybook/**", "{projectRoot}/stories/**", "{projectRoot}/public/**"],
+      "outputs": ["{projectRoot}/storybook-static"]
+    },
     "extract-storybook-llms": {
-      "dependsOn": ["build"]
+      "cache": true,
+      "dependsOn": ["build"],
+      "inputs": [{ "externalDependencies": ["@fluentui/storybook-llms-extractor"] }],
+      "outputs": ["{projectRoot}/storybook-static/llms", "{projectRoot}/storybook-static/llms.txt"]
     }
   }
 }
