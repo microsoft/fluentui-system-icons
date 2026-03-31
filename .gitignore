@@ -60,6 +60,7 @@ packages/**/lib/
 !packages/react-icons-svg-sprite-subsetting-webpack-plugin/test/__mock__/**/lib/**
 packages/**/lib-cjs/
 packages/**/dist/
+packages/**/storybook-static/
 
 # Some Fluent tooling generates this for internal tracking assistance. Make sure it doesn't get committed.
 SvgList.txt
