@@ -1,0 +1,12 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "docsite",
+  "projectType": "application",
+  "sourceRoot": "packages/docsite/src",
+  "tags": ["platform:web"],
+  "targets": {
+    "extract-storybook-llms": {
+      "dependsOn": ["build"]
+    }
+  }
+}

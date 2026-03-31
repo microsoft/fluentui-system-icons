@@ -29,7 +29,9 @@ concurrency:
 
 jobs:
   deploy:
-    if: github.repository_owner == 'microsoft'
+    # Only deploy from the main branch of the microsoft org repo to prevent
+    # accidental deployments from forks or feature branches.
+    if: github.repository_owner == 'microsoft' && github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -45,9 +47,12 @@ jobs:
           node-version: 22.x
 
       - run: npm ci
+      - run: npx playwright install --with-deps
 
       - name: Build docsite
-        run: npx nx run docsite:build
+        run: |
+          npx nx run docsite:build
+          npx nx run docsite:extract-storybook-llms
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
