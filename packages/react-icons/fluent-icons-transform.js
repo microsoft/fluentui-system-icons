@@ -5,9 +5,9 @@
  * Build-time import transform helper for `@fluentui/react-icons`.
  *
  * This module is the **single source of truth** for the transform logic
- * documented in the package README (§ "Using API via Build Transform").
+ * documented in `docs/build-transforms.md`.
  * It is NOT published with the package — consumers should copy the snippet
- * from the README into their own repo (e.g. as `fluent-icons-transform.js`).
+ * from the docs into their own repo (e.g. as `fluent-icons-transform.js`).
  *
  * It lives here so the build-transforms test (`build-transforms.test.js`)
  * can import and validate it against every generated atom export, ensuring
@@ -43,9 +43,11 @@
 /**
  * Resolves a @fluentui/react-icons import name to its atomic module path.
  * @param {string} importName - The named export being imported.
+ * @param {string} [target='svg'] - The target subpath (e.g. 'svg', 'svg-sprite', 'fonts',
+ *   'base/svg', 'base/svg-sprite', 'base/fonts').
  * @returns {string} The resolved module path.
  */
-function resolveFluentIconImport(importName) {
+function resolveFluentIconImport(importName, target = 'svg') {
   if (importName === 'useIconContext' || importName === 'IconDirectionContextProvider') {
     return '@fluentui/react-icons/providers';
   }
@@ -60,7 +62,7 @@ function resolveFluentIconImport(importName) {
     return '@fluentui/react-icons/utils';
   }
 
-  return `@fluentui/react-icons/svg/${kebabCase(match[1])}`;
+  return `@fluentui/react-icons/${target}/${kebabCase(match[1])}`;
 }
 
 /** Simplified lodash.kebabCase – handles PascalCase icon names with digits. */
