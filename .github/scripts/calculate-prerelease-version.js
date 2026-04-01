@@ -46,15 +46,22 @@ async function main() {
     perPackageVersions.push({ npmName, nextNpmVersion });
   }
 
-  // Pick the highest prerelease version across all projects by sorting on the numeric suffix that
-  // follows "<preid>.". For example, given "2.0.1-alpha.3" and "2.0.1-alpha.7", this resolves to
-  // "2.0.1-alpha.7". The cast is safe because uniqueNextNpmVersions always has at least one entry.
+  // Pick the highest prerelease version across all projects by comparing the base semver version
+  // first (major.minor.patch) and then the numeric prerelease suffix. For example, given
+  // "2.0.320-alpha.2" and "2.0.324-alpha.0", this resolves to "2.0.324-alpha.0" because the base
+  // version 2.0.324 is higher. The cast is safe because uniqueNextNpmVersions always has at least
+  // one entry.
   const resolvedVersion = /** @type {string} */ (
     Array.from(uniqueNextNpmVersions)
       .sort((a, b) => {
-        const aPrereleaseNum = Number(a.split(`${preid}.`)[1] ?? '0');
-        const bPrereleaseNum = Number(b.split(`${preid}.`)[1] ?? '0');
-        return aPrereleaseNum - bPrereleaseNum;
+        const [aBase, aPrereleaseSuffix] = a.split(`-${preid}.`);
+        const [bBase, bPrereleaseSuffix] = b.split(`-${preid}.`);
+        const [aMajor, aMinor, aPatch] = (aBase ?? '').split('.').map(Number);
+        const [bMajor, bMinor, bPatch] = (bBase ?? '').split('.').map(Number);
+        if (aMajor !== bMajor) return aMajor - bMajor;
+        if (aMinor !== bMinor) return aMinor - bMinor;
+        if (aPatch !== bPatch) return aPatch - bPatch;
+        return Number(aPrereleaseSuffix ?? '0') - Number(bPrereleaseSuffix ?? '0');
       })
       .at(-1)
   );
