@@ -103,8 +103,12 @@ function buildIconExportCode(parsed) {
           ? ', { color: true }'
           : '';
 
+  const deprecatedPrefix = isColor
+    ? '/** @deprecated Color icons are not recommended due to accessibility concerns (not HCM compliant, contrast issues). Consider using Filled or Regular variants instead. */\n'
+    : '';
+
   if ('rawSvg' in iconData) {
-    return `export const ${exportName}: FluentIcon = (/*#__PURE__*/createFluentIcon('${exportName}', ${widthStr}, \`${iconData.rawSvg}\`${options}));`;
+    return `${isColor ? deprecatedPrefix : ''}export const ${exportName}: FluentIcon = (/*#__PURE__*/createFluentIcon('${exportName}', ${widthStr}, \`${iconData.rawSvg}\`${options}));`;
   }
 
   const paths = iconData.paths.map((p) => `"${p}"`).join(',');
