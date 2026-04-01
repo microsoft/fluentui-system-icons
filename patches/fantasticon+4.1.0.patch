@@ -1,0 +1,13 @@
+diff --git a/node_modules/fantasticon/dist/index.cjs b/node_modules/fantasticon/dist/index.cjs
+index 744da25..72d1af9 100644
+--- a/node_modules/fantasticon/dist/index.cjs
++++ b/node_modules/fantasticon/dist/index.cjs
+@@ -375,7 +375,7 @@ var generator = {
+     }).on("data", (data) => font = Buffer.concat([font, Buffer.from(data)])).on("end", () => resolve5(font.toString()));
+     for (const { id, absolutePath } of Object.values(assets)) {
+       const glyph = (0, import_fs2.createReadStream)(absolutePath);
+-      const unicode = String.fromCharCode(codepoints[id]);
++      const unicode = String.fromCodePoint(codepoints[id]);
+       glyph.metadata = { name: id, unicode: [unicode] };
+       fontStream.write(glyph);
+     }

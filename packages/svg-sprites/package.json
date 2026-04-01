@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/svg-sprites",
-  "version": "1.1.321",
+  "version": "1.1.323",
   "description": "Fluent System Icons are a collection of familiar, friendly, and modern icons from Microsoft.",
   "license": "MIT",
   "repository": {
@@ -18,13 +18,12 @@
     "unfill": "node unfill.js --path=./icons/",
     "sprites": "node generate-sprites.js",
     "postsprites": "rm -rf ./icons",
-    "build": "npm run copy && npm run rename && npm run unfill && npm run optimize && npm run sprites"
+    "build": "npm run copy && npm run rename && npm run unfill && npm run optimize && npm run sprites",
+    "build-verify": "vitest run build-verify.test.js"
   },
   "devDependencies": {
     "renamer": "^2.0.1",
-    "replace": "^1.2.0",
-    "shx": "^0.3.2",
-    "svgo": "^2.8.0",
+    "svgo": "2.8.2",
     "svgstore": "^3.0.1",
     "yargs": "^14.0.0"
   }

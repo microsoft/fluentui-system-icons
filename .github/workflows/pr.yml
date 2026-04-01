@@ -181,10 +181,12 @@ jobs:
           if echo "$AFFECTED" | grep -q 'svg-icons'; then
             echo "Building svg-icons..."
             npx nx run svg-icons:build
+            npx nx run svg-icons:build-verify
           fi
           if echo "$AFFECTED" | grep -q 'svg-sprites'; then
             echo "Building svg-sprites..."
             npx nx run svg-sprites:build
+            npx nx run svg-sprites:build-verify
           fi
 
   build-react:
@@ -226,6 +228,9 @@ jobs:
       - name: Lint
         run: npx nx affected -t lint --exclude='svg-icons,svg-sprites'
 
+      - name: Type Check Infra
+        run: npx nx affected -t type-check:infra --exclude='svg-icons,svg-sprites'
+
       - name: Build
         # svg-icons:build is run in different job (@see build-svg), -> exclude
         # svg-sprites:build doesn't work and is missing owner, -> exclude
@@ -239,11 +244,42 @@ jobs:
       - name: Bundle-Size
         run: |
           npx nx affected -t bundle-size --exclude='svg-icons,svg-sprites'
-          npx monosize compare-reports --branch=${{ github.event.pull_request.base.ref }}
+          npx monosize compare-reports --branch=${{ github.event.pull_request.base.ref }} --output markdown --quiet > bundle-size-report.md
 
-      - name: Upload build artifacts
+      - name: Write job summary
+        if: always()
+        run: |
+          # Bundle-size report
+          if [ -f bundle-size-report.md ]; then
+            echo "## 📦 Bundle Size" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            cat bundle-size-report.md >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          # Docsite artifact instructions
+          if [ -d packages/docsite/storybook-static ]; then
+            echo "## 📖 Docsite Preview" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "The docsite has been built and uploaded as an artifact (\`docsite-storybook-build\`)." >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "To preview locally after downloading and extracting:" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo '```sh' >> $GITHUB_STEP_SUMMARY
+            echo "npx http-server ./docsite-storybook-build -o" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Upload icon-app build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: icon-app-build
           path: packages/icon-app/dist/
-          retention-days: 7
+          retention-days: 3
+
+      - name: Upload docsite build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: docsite-storybook-build
+          path: packages/docsite/storybook-static/
+          retention-days: 3

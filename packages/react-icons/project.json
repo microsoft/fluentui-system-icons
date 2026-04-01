@@ -17,6 +17,9 @@
       ],
       "outputs": ["{projectRoot}/lib", "{projectRoot}/lib-cjs"]
     },
+    "build-verify": {
+      "dependsOn": ["build"]
+    },
     "bundle-size": {
       "dependsOn": ["build"]
     }

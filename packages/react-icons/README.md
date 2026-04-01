@@ -336,98 +336,25 @@ Without this setting, TypeScript will not be able to resolve the individual icon
 
 Migrating a larger codebase to the new performant atomic imports might be a daunting task. To make this migration more straightforward, you can leverage build-time import transforms to get all the benefits without modifying your actual code.
 
-These transforms automatically rewrite imports from:
+Use `svg` as the target path. This transformation happens at build time, so your source code remains unchanged while your bundled output gets the full tree-shaking benefits.
 
-```tsx
-import { AccessTime24Filled } from '@fluentui/react-icons';
-```
+👉 **[Build-Time Transform setup (Babel & SWC) →](./docs/build-transforms.md)**
 
-To the optimized atomic import:
+## Atomic API (SVG Sprites) — ⚠️ Alpha
 
-```tsx
-import { AccessTime24Filled } from '@fluentui/react-icons/svg/access-time';
-```
+> **This feature is available as an alpha prerelease only.** Install via `npm i @fluentui/react-icons@alpha`
 
-This transformation happens at build time, so your source code remains unchanged while your bundled output gets the full tree-shaking benefits.
+SVG sprites offer smaller bundles, faster renders, and zero runtime overhead.
 
-#### Babel
+👉 **[Full documentation →](./docs/preview-features/svg-sprites.md)**
 
-If you use Babel for transpilation, add [babel-plugin-transform-imports](https://www.npmjs.com/package/babel-plugin-transform-imports) with the following setup:
+## Base API — ⚠️ Alpha
 
-```js
-// @filename .babelrc.js
-module.exports = {
-  presets: [
-    // ... your preset configuration
-  ],
-  plugins: [
-    [
-      'transform-imports',
-      {
-        '@fluentui/react-icons': {
-          transform: (importName) => {
-            if (importName === 'useIconContext' || importName === 'IconDirectionContextProvider') {
-              return '@fluentui/react-icons/providers';
-            }
+> **This feature is available as an alpha prerelease only.** Install via `npm i @fluentui/react-icons@alpha`
 
-            // Icons end with a style suffix
-            const isIcon = importName.match(/(\d*)?(Regular|Filled|Light|Color)$/);
-            if (!isIcon) {
-              return '@fluentui/react-icons/utils';
-            }
+A drop-in replacement for the standard API that removes the CSS-in-JS runtime — provides data-attribute selectors for styling behaviour with opt-in pre-defined vanilla CSS.
 
-            const withoutSuffix = importName.replace(/(\d*)?(Regular|Filled|Light|Color)$/, '');
-
-            const kebabCase = withoutSuffix.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
-
-            return `@fluentui/react-icons/svg/${kebabCase}`;
-          },
-          preventFullImport: false,
-          skipDefaultConversion: true,
-        },
-      },
-    ],
-  ],
-};
-```
-
-#### SWC
-
-If you use SWC for transpilation, add [@swc/plugin-transform-imports](https://www.npmjs.com/package/@swc/plugin-transform-imports) with the following setup:
-
-```jsonc
-// @filename .swcrc
-{
-  "jsc": {
-    "experimental": {
-      "plugins": [
-        [
-          "@swc/plugin-transform-imports",
-          {
-            "@fluentui/react-icons": {
-              "transform": [
-                // Transform provider imports to /providers
-                ["^(useIconContext|IconDirectionContextProvider)$", "@fluentui/react-icons/providers"],
-                // Transform icon imports to /svg/{icon-name}
-                [
-                  "(\\D*)(\\d*)?(Regular|Filled|Light|Color)$",
-                  "@fluentui/react-icons/svg/{{ kebabCase memberMatches.[1] }}",
-                ],
-                // Fallback: all other exports are utilities
-                [".*", "@fluentui/react-icons/utils"],
-              ],
-              "preventFullImport": false,
-              "skipDefaultConversion": true,
-              "handleDefaultImport": false,
-              "handleNamespaceImport": false,
-            },
-          },
-        ],
-      ],
-    },
-  },
-}
-```
+👉 **[Full documentation →](./docs/preview-features/base.md)**
 
 ## Viewing Icons
 
