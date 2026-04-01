@@ -31,7 +31,6 @@
     "schema-utils": "^4.2.0"
   },
   "devDependencies": {
-    "@fluentui/react-icons": "*",
     "@types/node": "22",
     "html-webpack-plugin": "^5.5.3",
     "typescript": "5.0.4",
