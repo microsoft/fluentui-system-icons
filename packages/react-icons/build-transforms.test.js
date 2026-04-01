@@ -88,7 +88,7 @@ const STANDARD_ICON_CASES = [
 
 const ALL_CASES = [...DIGIT_ICON_CASES, ...TRAILING_DIGIT_CASES, ...STANDARD_ICON_CASES];
 
-describe('README build-transform kebab-case consistency', () => {
+describe('build-transforms kebab-case consistency', () => {
   describe('resolveFluentIconImport matches lodash.kebabCase (generation pipeline)', () => {
     it.each(ALL_CASES)('%s → %s', (importName, expected) => {
       expect(resolveFluentIconImport(importName)).toBe(`@fluentui/react-icons/svg/${expected}`);
@@ -105,6 +105,28 @@ describe('README build-transform kebab-case consistency', () => {
     });
     it('bundleIcon → utils', () => {
       expect(resolveFluentIconImport('bundleIcon')).toBe('@fluentui/react-icons/utils');
+    });
+  });
+
+  describe('resolveFluentIconImport target parameter', () => {
+    it.each([
+      ['svg', '@fluentui/react-icons/svg/access-time'],
+      ['svg-sprite', '@fluentui/react-icons/svg-sprite/access-time'],
+      ['fonts', '@fluentui/react-icons/fonts/access-time'],
+      ['base/svg', '@fluentui/react-icons/base/svg/access-time'],
+      ['base/svg-sprite', '@fluentui/react-icons/base/svg-sprite/access-time'],
+      ['base/fonts', '@fluentui/react-icons/base/fonts/access-time'],
+    ])('target=%s → %s', (target, expected) => {
+      expect(resolveFluentIconImport('AccessTime24Filled', target)).toBe(expected);
+    });
+
+    it('defaults to svg when target is omitted', () => {
+      expect(resolveFluentIconImport('AccessTime24Filled')).toBe('@fluentui/react-icons/svg/access-time');
+    });
+
+    it('provider and utility imports are target-independent', () => {
+      expect(resolveFluentIconImport('useIconContext', 'base/svg')).toBe('@fluentui/react-icons/providers');
+      expect(resolveFluentIconImport('bundleIcon', 'base/svg')).toBe('@fluentui/react-icons/utils');
     });
   });
 
@@ -161,7 +183,7 @@ function collectAtomExports() {
   return pairs;
 }
 
-describe('README build-transforms resolve every generated atom export', () => {
+describe('build-transforms resolve every generated atom export', () => {
   const atomExports = collectAtomExports();
 
   it(`should have collected exports (sanity check)`, () => {

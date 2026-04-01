@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "storybook dev -p 6006 --docs",
-    "build": "storybook build --docs"
+    "build": "storybook build --docs",
+    "extract-storybook-llms": "storybook-llms-extractor --distPath storybook-static --summaryBaseUrl https://microsoft.github.io/fluentui-system-icons/"
   },
   "dependencies": {
     "@fluentui/react-components": "^9.46.0",
@@ -20,6 +21,7 @@
     "@storybook/react-webpack5": "9.1.19",
     "@fluentui/react-storybook-addon": "0.6.0",
     "@fluentui/react-storybook-addon-export-to-sandbox": "0.2.0",
+    "@fluentui/storybook-llms-extractor": "0.0.4",
     "@types/react": "19.1.13",
     "@types/react-dom": "19.1.9",
     "storybook": "9.1.19",

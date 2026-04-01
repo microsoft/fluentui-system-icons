@@ -61,6 +61,8 @@
     "react": ">=16.8.0 <20.0.0"
   },
   "files": [
+    "docs/preview-features/*.md",
+    "docs/build-transforms.md",
     "lib/",
     "lib-cjs/"
   ],
