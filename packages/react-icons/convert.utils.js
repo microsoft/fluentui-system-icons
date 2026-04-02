@@ -103,9 +103,8 @@ function buildIconExportCode(parsed) {
           ? ', { color: true }'
           : '';
 
-  const deprecatedPrefix = isColor
-    ? '/** @deprecated Color icons are not recommended due to accessibility concerns (not HCM compliant, contrast issues). Consider using Filled or Regular variants instead. */\n'
-    : '';
+  const deprecatedPrefix =
+    '/** @deprecated Color icons are not recommended due to accessibility concerns (not HCM compliant, contrast issues). Consider using Filled or Regular variants instead. See https://microsoft.github.io/fluentui-system-icons/?path=/docs/icons-user-guidance--docs for migration guidance. */\n';
 
   if ('rawSvg' in iconData) {
     return `${isColor ? deprecatedPrefix : ''}export const ${exportName}: FluentIcon = (/*#__PURE__*/createFluentIcon('${exportName}', ${widthStr}, \`${iconData.rawSvg}\`${options}));`;
