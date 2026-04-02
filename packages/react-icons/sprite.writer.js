@@ -150,7 +150,7 @@ function generateSpriteModuleTsx(baseName, items, importConfig) {
               ? ', { color: true }'
               : '';
       const deprecatedPrefix =
-        '/** @deprecated Color icons are not recommended due to accessibility concerns (not HCM compliant, contrast issues). Consider using Filled or Regular variants instead. See https://microsoft.github.io/fluentui-system-icons/?path=/docs/icons-user-guidance--docs for migration guidance. */\n';
+        '/** @deprecated Color icons are deprecated. [See User Guidance](https://microsoft.github.io/fluentui-system-icons/?path=/docs/icons-user-guidance--docs#color-variants-deprecated) */\n';
       return `${item.isColor ? deprecatedPrefix : ''}export const ${item.exportName}: FluentIcon = (/*#__PURE__*/createFluentIcon('${item.exportName}', ${widthStr}, sprite${options}));`;
     })
     .join('\n');
