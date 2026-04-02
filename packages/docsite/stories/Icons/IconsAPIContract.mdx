@@ -1,0 +1,28 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Icons/API Contract" />
+
+<h1 className="sbdocs-title">API Contract</h1>
+
+> **Important:** This library does not strictly follow semantic versioning. Breaking changes may occur in patch releases.
+
+### Versioning Strategy
+
+Due to the monorepo architecture, all packages share a unified release cycle. Both minor (feature additions) and patch (bug fixes and icon updates) changes are released as **PATCH version bumps only**. This means:
+
+- `2.0.X` → `2.0.Y` may include new features, icon additions, or breaking changes
+- Major version bumps (`2.X.X` → `3.0.0`) are reserved for significant API redesigns
+
+### Breaking Changes
+
+While we strive to maintain API stability, there are two scenarios where breaking changes can occur outside of major version updates:
+
+1. **Icon Removal**: Icons may be removed from the library due to legal or licensing issues. When an icon asset is removed, any code importing that icon will break.
+
+2. **Icon Renaming**: Icons may be renamed to better reflect their purpose or to align with design system updates. This will break existing imports that reference the old icon name.
+
+These are the only two types of breaking changes that deviate from standard semantic versioning practices. All other aspects of our API contract follow semantic versioning conventions — meaning additions, bug fixes, and internal improvements will not break your existing code.
+
+> **💡 Note:** We could remedy these breaking change scenarios by providing empty icon placeholders, but we believe a failing build pipeline is preferable to silently shipping invalid UI with blank icons to your users.
+
+**Recommendation**: When upgrading, even for patch versions, review the release notes for any removed or renamed icons to ensure your application isn't affected.
