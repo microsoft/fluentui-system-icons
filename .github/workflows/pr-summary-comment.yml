@@ -49,7 +49,7 @@ jobs:
       - name: Check for docsite artifact
         if: steps.pr-info.outputs.pr_number != ''
         id: check-docsite
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: docsite-storybook-build
           path: docsite-build
