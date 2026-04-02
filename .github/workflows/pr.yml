@@ -129,9 +129,9 @@ jobs:
   #       accessToken: "placeholder"
   #       refreshToken: "placeholder"
 
-  build-svg:
+  build-npm:
     if: ${{ github.repository_owner == 'microsoft' }}
-    name: Build svg library
+    name: Build npm packages
     runs-on: ubuntu-latest
     permissions:
       contents: 'read'
@@ -141,66 +141,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
-
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 22.x
-
-      - run: npm ci
-      # Use once allowed
-      # - uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
-
-      - name: Set NX_BASE and NX_HEAD
-        run: |
-          if [ "${{ github.event_name }}" == "pull_request" ]; then
-            echo "NX_BASE=${{ github.event.pull_request.base.sha }}" >> $GITHUB_ENV
-            echo "NX_HEAD=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
-          else
-            echo "NX_BASE=${{ github.event.before }}" >> $GITHUB_ENV
-            echo "NX_HEAD=${{ github.sha }}" >> $GITHUB_ENV
-          fi
-          echo "Base SHA: $NX_BASE"
-          echo "Head SHA: $NX_HEAD"
-
-      - name: Check if svg packages are affected
-        id: check-affected
-        run: |
-          AFFECTED=$(npx nx show projects --affected --base=$NX_BASE --head=$NX_HEAD --json | jq -r '.[]' | grep -E 'svg-icons|svg-sprites' || echo "")
-          if [ -n "$AFFECTED" ]; then
-            echo "affected=true" >> $GITHUB_OUTPUT
-            echo "SVG packages are affected: $AFFECTED"
-          else
-            echo "affected=false" >> $GITHUB_OUTPUT
-            echo "svg-icons and svg-sprites are not affected, skipping build"
-          fi
-
-      - name: Build svg packages
-        if: steps.check-affected.outputs.affected == 'true'
-        run: |
-          AFFECTED=$(npx nx show projects --affected --base=$NX_BASE --head=$NX_HEAD --json | jq -r '.[]')
-          if echo "$AFFECTED" | grep -q 'svg-icons'; then
-            echo "Building svg-icons..."
-            npx nx run svg-icons:build
-            npx nx run svg-icons:build-verify
-          fi
-          if echo "$AFFECTED" | grep -q 'svg-sprites'; then
-            echo "Building svg-sprites..."
-            npx nx run svg-sprites:build
-            npx nx run svg-sprites:build-verify
-          fi
-
-  build-react:
-    if: ${{ github.repository_owner == 'microsoft' }}
-    name: Build react library
-    runs-on: ubuntu-latest
-    permissions:
-      contents: 'read'
-      actions: 'read'
-
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
+          filter: tree:0
 
       - uses: actions/setup-node@v6
         with:
@@ -208,42 +149,28 @@ jobs:
 
       - run: npm ci
 
-      # Use once allowed
-      # - uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
-      - name: Set NX_BASE and NX_HEAD
-        run: |
-          if [ "${{ github.event_name }}" == "pull_request" ]; then
-            echo "NX_BASE=${{ github.event.pull_request.base.sha }}" >> $GITHUB_ENV
-            echo "NX_HEAD=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
-          else
-            echo "NX_BASE=${{ github.event.before }}" >> $GITHUB_ENV
-            echo "NX_HEAD=${{ github.sha }}" >> $GITHUB_ENV
-          fi
-          echo "Base SHA: $NX_BASE"
-          echo "Head SHA: $NX_HEAD"
+      - uses: nrwl/nx-set-shas@afb73a62d26e41464e9254689e1fd6122ee683c1 # v5.0.1
 
       - name: Format Check
-        run: npx nx format:check --exclude='svg-icons,svg-sprites'
+        run: npx nx format:check
 
       - name: Lint
-        run: npx nx affected -t lint --exclude='svg-icons,svg-sprites'
+        run: npx nx affected -t lint
 
       - name: Type Check Infra
-        run: npx nx affected -t type-check:infra --exclude='svg-icons,svg-sprites'
+        run: npx nx affected -t type-check:infra
 
       - name: Build
-        # svg-icons:build is run in different job (@see build-svg), -> exclude
-        # svg-sprites:build doesn't work and is missing owner, -> exclude
         run: |
-          npx nx affected -t build --exclude='svg-icons,svg-sprites'
-          npx nx affected -t build-verify --exclude='svg-icons,svg-sprites'
+          npx nx affected -t build
+          npx nx affected -t build-verify
 
       - name: Test
-        run: npx nx affected -t test --exclude='svg-icons,svg-sprites'
+        run: npx nx affected -t test
 
       - name: Bundle-Size
         run: |
-          npx nx affected -t bundle-size --exclude='svg-icons,svg-sprites'
+          npx nx affected -t bundle-size
           npx monosize compare-reports --branch=${{ github.event.pull_request.base.ref }} --output markdown --quiet > bundle-size-report.md
 
       - name: Write job summary
