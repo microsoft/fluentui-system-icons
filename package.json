@@ -8,6 +8,7 @@
   "engines": {
     "node": "^22.0.0 || ^24.0.0"
   },
+  "packageManager": "npm@10.9.4",
   "description": "![CI](https://github.com/microsoft/fluentui-system-icons/workflows/CI/badge.svg)",
   "version": "1.0.0",
   "main": "index.js",
