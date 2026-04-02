@@ -1,0 +1,37 @@
+{
+  "name": "@fluentui/react-icons-atomic-webpack-loader",
+  "version": "0.1.0",
+  "description": "Webpack loader that transforms barrel imports and re-exports from @fluentui/react-icons into atomic deep paths",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc -p .",
+    "test": "webpack -c test/webpack.config.js"
+  },
+  "engines": {
+    "node": ">=14.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/microsoft/fluentui-system-icons.git",
+    "directory": "packages/react-icons-atomic-webpack-loader"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/microsoft/fluentui-system-icons/issues"
+  },
+  "dependencies": {
+    "acorn": "^8.9.0",
+    "acorn-typescript": "^1.4.13"
+  },
+  "devDependencies": {
+    "typescript": "5.0.4",
+    "webpack": "^5.72.0",
+    "@types/node": "14"
+  },
+  "peerDependencies": {
+    "webpack": ">=5.0.0"
+  },
+  "files": [
+    "lib/*"
+  ]
+}
