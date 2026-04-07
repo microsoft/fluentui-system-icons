@@ -25,7 +25,6 @@
     "magic-string": "^0.30.0"
   },
   "devDependencies": {
-    "@fluentui/react-icons": "*",
     "typescript": "5.0.4",
     "webpack": "^5.72.0",
     "@types/node": "22"
