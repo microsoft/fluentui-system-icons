@@ -10,9 +10,10 @@ export interface FluentIconsAtomicImportLoaderOptions {
 export default function fluentIconsAtomicImportLoader(
   this: LoaderContext<FluentIconsAtomicImportLoaderOptions>,
   sourceCode: string,
-): string {
+): void {
   if (!REACT_ICONS_IMPORT_REGEX.test(sourceCode)) {
-    return sourceCode;
+    this.callback(null, sourceCode);
+    return;
   }
 
   const options = this.getOptions();
@@ -21,9 +22,10 @@ export default function fluentIconsAtomicImportLoader(
   const isTypescript = /\.[mc]?tsx?$/.test(this.resourcePath);
 
   try {
-    return transformSource(sourceCode, { iconVariant, isTypescript, isTsx });
+    const { code, map } = transformSource(sourceCode, { iconVariant, isTypescript, isTsx });
+    this.callback(null, code, map);
   } catch {
     this.emitWarning(new Error(`FluentIconsAtomicImportLoader: Failed to transform "${this.resourcePath}"`));
-    return sourceCode;
+    this.callback(null, sourceCode);
   }
 }

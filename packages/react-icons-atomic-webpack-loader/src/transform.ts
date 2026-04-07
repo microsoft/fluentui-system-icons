@@ -1,6 +1,7 @@
 import * as acorn from 'acorn';
 import tsPlugin from 'acorn-typescript';
-import type { ImportDeclaration, ExportNamedDeclaration, ImportSpecifier, ExportSpecifier, Identifier } from 'estree';
+import MagicString from 'magic-string';
+import type { ImportDeclaration, ExportNamedDeclaration, ImportSpecifier, ExportSpecifier } from 'estree';
 
 type AcornPlugin = (BaseParser: typeof acorn.Parser) => typeof acorn.Parser;
 
@@ -43,7 +44,12 @@ function getParser(options: TransformOptions) {
   return acorn.Parser.extend(plugin);
 }
 
-export function transformSource(source: string, options: TransformOptions): string {
+export interface TransformResult {
+  code: string;
+  map: ReturnType<MagicString['generateMap']>;
+}
+
+export function transformSource(source: string, options: TransformOptions): TransformResult {
   const parser = getParser(options);
 
   const ast = parser.parse(source, {
@@ -52,7 +58,7 @@ export function transformSource(source: string, options: TransformOptions): stri
     locations: false,
   });
 
-  const replacements: { start: number; end: number; text: string }[] = [];
+  const src = new MagicString(source);
 
   for (const node of ast.body) {
     if (node.type === 'ImportDeclaration') {
@@ -86,7 +92,7 @@ export function transformSource(source: string, options: TransformOptions): stri
         lines.push(`import { ${spec} } from '${newSource}';`);
       }
 
-      replacements.push({ start: n.start, end: n.end, text: lines.join('\n') });
+      src.overwrite(n.start, n.end, lines.join('\n'));
     }
 
     if (node.type === 'ExportNamedDeclaration') {
@@ -112,16 +118,12 @@ export function transformSource(source: string, options: TransformOptions): stri
         lines.push(`export { ${spec} } from '${newSource}';`);
       }
 
-      replacements.push({ start: n.start, end: n.end, text: lines.join('\n') });
+      src.overwrite(n.start, n.end, lines.join('\n'));
     }
   }
 
-  // Apply in reverse to preserve character offsets
-  let result = source;
-  for (let i = replacements.length - 1; i >= 0; i--) {
-    const { start, end, text } = replacements[i];
-    result = result.slice(0, start) + text + result.slice(end);
-  }
-
-  return result;
+  return {
+    code: src.toString(),
+    map: src.generateMap({ hires: true }),
+  };
 }

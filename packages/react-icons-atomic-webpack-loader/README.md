@@ -1,6 +1,9 @@
 # @fluentui/react-icons-atomic-webpack-loader
 
-> ⚠️ This package is in early development. The API may change before the first stable release.
+> **⚠️ Alpha** — this package is available as an alpha prerelease only.
+> ⚠️ The API may change before the first stable release.
+
+> Install via `npm install @fluentui/react-icons-atomic-webpack-loader@alpha --save-dev`
 
 Webpack loader that transforms barrel imports and re-exports from `@fluentui/react-icons` into atomic deep paths for better tree-shaking and smaller bundles.
 
@@ -18,15 +21,11 @@ import { useIconContext } from '@fluentui/react-icons/providers';
 export { ArrowLeftRegular } from '@fluentui/react-icons/svg/arrow-left';
 ```
 
-## Install
-
-```bash
-npm install @fluentui/react-icons-atomic-webpack-loader --save-dev
-```
-
 ## Usage
 
-Add the loader to your webpack config. It should run on both your source files and any `node_modules` that re-export from `@fluentui/react-icons`.
+Add the loader to your webpack config as an [`enforce: 'pre'`](https://webpack.js.org/configuration/module/#ruleenforce) rule so it runs on the original source before any other loaders:
+
+NOTE: Unlike most loaders, this one should NOT exclude `node_modules`. It needs to process files inside `node_modules` as well to transform barrel imports from `@fluentui/react-icons` in your third-party dependencies. Files that don't reference `@fluentui/react-icons` are skipped via a fast regex pre-check, so there is no meaningful overhead.
 
 ```js
 // webpack.config.js
@@ -35,23 +34,32 @@ module.exports = {
     rules: [
       {
         test: /\.[mc]?[jt]sx?$/,
-        exclude: /node_modules/,
-        use: [
-          'your-existing-loader', // e.g. babel-loader, ts-loader, swc-loader
-          '@fluentui/react-icons-atomic-webpack-loader',
-        ],
-      },
-      {
-        test: /\.m?js$/,
-        include: /node_modules/,
+        enforce: 'pre',
         use: ['@fluentui/react-icons-atomic-webpack-loader'],
       },
+      // … your other rules (babel-loader, ts-loader, etc.)
     ],
   },
 };
 ```
 
-> **Note:** Webpack loaders run bottom-to-top. Place the atomic import loader **below** your transpilation loader so it runs first on the original source.
+If your existing rules exclude `node_modules`, add a separate rule to cover dependencies:
+
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.[mc]?[jt]sx?$/,
+        include: /[\\/]node_modules[\\/]/,
+        enforce: 'pre',
+        use: ['@fluentui/react-icons-atomic-webpack-loader'],
+      },
+      // … your other rules (babel-loader, ts-loader, etc.)
+    ],
+  },
+};
+```
 
 ## Options
 
@@ -63,10 +71,16 @@ module.exports = {
 
 ```js
 {
-  loader: '@fluentui/react-icons-atomic-webpack-loader',
-  options: {
-    iconVariant: 'fonts',
-  },
+  test: /\.[mc]?[jt]sx?$/,
+  enforce: 'pre',
+  use: [
+    {
+      loader: '@fluentui/react-icons-atomic-webpack-loader',
+      options: {
+        iconVariant: 'fonts',
+      },
+    },
+  ],
 }
 ```
 

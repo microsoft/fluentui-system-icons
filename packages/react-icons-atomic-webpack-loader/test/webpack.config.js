@@ -53,16 +53,18 @@ function createConfig(name, entry) {
     mode: 'production',
     optimization: { minimize: false },
     entry: { [name]: entry.src },
+    experiments: { outputModule: true },
     output: {
       path: resolve(__dirname, 'dist', name),
       filename: '[name].js',
-      libraryTarget: 'commonjs2',
+      library: { type: 'module' },
     },
-    externals: [/^@fluentui\/react-icons/, /^react$/, /^other-package$/],
+    externals: [/^@fluentui\/react-icons/, /^react$/],
     module: {
       rules: [
         {
           test: /\.js$/,
+          enforce: 'pre',
           use: [
             {
               loader: resolve(__dirname, '../lib/index.js'),
