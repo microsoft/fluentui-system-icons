@@ -16,7 +16,9 @@
       "react": {
         "projects": [
           "packages/react-icons",
+          "packages/react-icons-atomic-webpack-loader",
           "packages/react-icons-font-subsetting-webpack-plugin",
+          "packages/react-icons-svg-sprite-subsetting-webpack-plugin",
           "packages/react-native-icons"
         ],
         "projectsRelationship": "independent"
