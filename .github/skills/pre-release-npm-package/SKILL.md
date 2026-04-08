@@ -1,6 +1,6 @@
 ---
 name: pre-release-npm-package
-description: Prepare npm packages for pre-release publishing. Supports two modes — pre-releasing already-published packages from the react release group, or adding private library packages to the release group for pre-release. Keywords: prerelease, pre-release, publish, npm, private, release group.
+description: 'Prepare npm packages for pre-release publishing. Supports two modes — pre-releasing already-published packages from the react release group, or adding private library packages to the release group for pre-release. Keywords: prerelease, pre-release, publish, npm, private, release group.'
 ---
 
 # Pre-Release NPM Package Preparation
