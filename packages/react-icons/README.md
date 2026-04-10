@@ -338,7 +338,7 @@ Migrating a larger codebase to the new performant atomic imports might be a daun
 
 Use `svg` as the target path. This transformation happens at build time, so your source code remains unchanged while your bundled output gets the full tree-shaking benefits.
 
-👉 **[Build-Time Transform setup (Babel & SWC) →](./docs/build-transforms.md)**
+👉 **[Build-Time Transform setup (Babel, SWC & Webpack) →](./docs/build-transforms.md)**
 
 ## Atomic API (SVG Sprites) — ⚠️ Alpha
 

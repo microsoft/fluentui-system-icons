@@ -140,3 +140,46 @@ Replace every `svg` segment in the target paths below with your chosen target (`
   },
 }
 ```
+
+## Webpack
+
+Install [`@fluentui/react-icons-atomic-webpack-loader`](../../react-icons-atomic-webpack-loader/README.md):
+
+```bash
+npm install @fluentui/react-icons-atomic-webpack-loader@alpha --save-dev
+```
+
+Add the loader as an `enforce: 'pre'` rule so it runs before other loaders:
+
+```js
+// webpack.config.js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.[mc]?[jt]sx?$/,
+        enforce: 'pre',
+        use: ['@fluentui/react-icons-atomic-webpack-loader'],
+      },
+      // … your other rules (babel-loader, ts-loader, etc.)
+    ],
+  },
+};
+```
+
+> **Note:** Unlike most loaders, do **not** exclude `node_modules` — the loader needs to transform barrel imports inside dependencies too. Files without `@fluentui/react-icons` references are skipped via a fast regex pre-check.
+
+To use font icons instead of SVG, pass the `iconVariant` option:
+
+```js
+{
+  test: /\.[mc]?[jt]sx?$/,
+  enforce: 'pre',
+  use: [
+    {
+      loader: '@fluentui/react-icons-atomic-webpack-loader',
+      options: { iconVariant: 'fonts' },
+    },
+  ],
+}
+```
