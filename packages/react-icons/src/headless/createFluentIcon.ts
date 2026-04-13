@@ -12,7 +12,7 @@ export type CreateFluentIconOptions = {
 };
 
 /**
- * Base createFluentIcon — SVG icon factory without Styles.
+ * Headless createFluentIcon — SVG icon factory without Styles.
  *
  * Returns a React component that renders an SVG icon with:
  * - data-fui-icon attribute for CSS targeting

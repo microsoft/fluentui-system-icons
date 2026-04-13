@@ -20,14 +20,14 @@ import { AccessTime24Filled } from '@fluentui/react-icons/svg-sprite/access-time
 // Font icons
 import { AccessTime24Filled } from '@fluentui/react-icons/fonts/access-time';
 
-// Base API (SVG)
-import { AccessTime24Filled } from '@fluentui/react-icons/base/svg/access-time';
+// Headless API (SVG)
+import { AccessTime24Filled } from '@fluentui/react-icons/headless/svg/access-time';
 
-// Base API (SVG sprites)
-import { AccessTime24Filled } from '@fluentui/react-icons/base/svg-sprite/access-time';
+// Headless API (SVG sprites)
+import { AccessTime24Filled } from '@fluentui/react-icons/headless/svg-sprite/access-time';
 
-// Base API (fonts)
-import { AccessTime24Filled } from '@fluentui/react-icons/base/fonts/access-time';
+// Headless API (fonts)
+import { AccessTime24Filled } from '@fluentui/react-icons/headless/fonts/access-time';
 ```
 
 The examples below use `svg` as the target path. Replace it with the appropriate path for your setup from the list above.
@@ -45,7 +45,7 @@ Copy the following helper into your project (e.g. as `fluent-icons-transform.js`
  * Resolves a @fluentui/react-icons import name to its atomic module path.
  * @param {string} importName - The named export being imported.
  * @param {string} [target='svg'] - The target subpath (e.g. 'svg', 'svg-sprite', 'fonts',
- *   'base/svg', 'base/svg-sprite', 'base/fonts').
+ *   'headless/svg', 'headless/svg-sprite', 'headless/fonts').
  * @returns {string} The resolved module path.
  */
 function resolveFluentIconImport(importName, target = 'svg') {
@@ -84,7 +84,7 @@ module.exports = {
       {
         '@fluentui/react-icons': {
           // Change the second argument to match your target:
-          //   'svg' | 'svg-sprite' | 'fonts' | 'base/svg' | 'base/svg-sprite' | 'base/fonts'
+          //   'svg' | 'svg-sprite' | 'fonts' | 'headless/svg' | 'headless/svg-sprite' | 'headless/fonts'
           transform: (importName) => resolveFluentIconImport(importName, 'svg'),
           preventFullImport: false,
           skipDefaultConversion: true,
@@ -99,7 +99,7 @@ module.exports = {
 
 Add [@swc/plugin-transform-imports](https://www.npmjs.com/package/@swc/plugin-transform-imports) with the following setup.
 
-Replace every `svg` segment in the target paths below with your chosen target (`svg`, `svg-sprite`, `fonts`, `base/svg`, `base/svg-sprite`, or `base/fonts`):
+Replace every `svg` segment in the target paths below with your chosen target (`svg`, `svg-sprite`, `fonts`, `headless/svg`, `headless/svg-sprite`, or `headless/fonts`):
 
 ```jsonc
 // @filename .swcrc

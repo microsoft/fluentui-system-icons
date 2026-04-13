@@ -113,9 +113,9 @@ describe('build-transforms kebab-case consistency', () => {
       ['svg', '@fluentui/react-icons/svg/access-time'],
       ['svg-sprite', '@fluentui/react-icons/svg-sprite/access-time'],
       ['fonts', '@fluentui/react-icons/fonts/access-time'],
-      ['base/svg', '@fluentui/react-icons/base/svg/access-time'],
-      ['base/svg-sprite', '@fluentui/react-icons/base/svg-sprite/access-time'],
-      ['base/fonts', '@fluentui/react-icons/base/fonts/access-time'],
+      ['headless/svg', '@fluentui/react-icons/headless/svg/access-time'],
+      ['headless/svg-sprite', '@fluentui/react-icons/headless/svg-sprite/access-time'],
+      ['headless/fonts', '@fluentui/react-icons/headless/fonts/access-time'],
     ])('target=%s → %s', (target, expected) => {
       expect(resolveFluentIconImport('AccessTime24Filled', target)).toBe(expected);
     });
@@ -125,8 +125,8 @@ describe('build-transforms kebab-case consistency', () => {
     });
 
     it('provider and utility imports are target-independent', () => {
-      expect(resolveFluentIconImport('useIconContext', 'base/svg')).toBe('@fluentui/react-icons/providers');
-      expect(resolveFluentIconImport('bundleIcon', 'base/svg')).toBe('@fluentui/react-icons/utils');
+      expect(resolveFluentIconImport('useIconContext', 'headless/svg')).toBe('@fluentui/react-icons/providers');
+      expect(resolveFluentIconImport('bundleIcon', 'headless/svg')).toBe('@fluentui/react-icons/utils');
     });
   });
 

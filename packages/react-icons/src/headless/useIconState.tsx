@@ -8,12 +8,12 @@ export type UseIconStateOptions = {
 };
 
 /**
- * Base version of useIconState
+ * Headless version of useIconState
  *
  * Handles:
  * - a11y: aria-hidden, aria-label, role="img"
  * - RTL: sets data-fui-icon-rtl attribute when flipInRtl + RTL context
- * - Base: sets data-fui-icon attribute for CSS targeting
+ * - Headless: sets data-fui-icon attribute for CSS targeting
  * - Fill: maps primaryFill to fill prop
  */
 export const useIconState = <

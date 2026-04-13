@@ -44,7 +44,7 @@
  * Resolves a @fluentui/react-icons import name to its atomic module path.
  * @param {string} importName - The named export being imported.
  * @param {string} [target='svg'] - The target subpath (e.g. 'svg', 'svg-sprite', 'fonts',
- *   'base/svg', 'base/svg-sprite', 'base/fonts').
+ *   'headless/svg', 'headless/svg-sprite', 'headless/fonts').
  * @returns {string} The resolved module path.
  */
 function resolveFluentIconImport(importName, target = 'svg') {
