@@ -2185,6 +2185,33 @@ describe('Build Verification', () => {
         expect(textContent).toContain(`export const TextColor24Regular`);
       },
     );
+
+    it.each(['svg', 'fonts'])(
+      'color backward-compat atom files should have deprecation notice in lib/atoms/%s',
+      async (exportKindDir) => {
+        const colorFile = path.join(__dirname, 'lib', 'atoms', exportKindDir, 'color.js');
+        const colorFilledFile = path.join(__dirname, 'lib', 'atoms', exportKindDir, 'color-filled.js');
+        const colorRegularFile = path.join(__dirname, 'lib', 'atoms', exportKindDir, 'color-regular.js');
+
+        // All files should exist
+        expect(fs.existsSync(colorFile)).toBe(true);
+        expect(fs.existsSync(colorFilledFile)).toBe(true);
+        expect(fs.existsSync(colorRegularFile)).toBe(true);
+
+        const colorContent = await readFile(colorFile, 'utf-8');
+        const colorFilledContent = await readFile(colorFilledFile, 'utf-8');
+        const colorRegularContent = await readFile(colorRegularFile, 'utf-8');
+
+        // color.js is the canonical file - should contain Color* exports without backward-compat deprecation
+        expect(colorContent).toContain('export const ColorFilled');
+        expect(colorContent).toContain('export const ColorRegular');
+        expect(colorContent).not.toContain(`@deprecated use \`@fluentui/${exportKindDir}/color\` import`);
+
+        // color-filled.js and color-regular.js are backward-compat files and must have deprecation notices
+        expect(colorFilledContent).toContain(`@deprecated use \`@fluentui/${exportKindDir}/color\` import`);
+        expect(colorRegularContent).toContain(`@deprecated use \`@fluentui/${exportKindDir}/color\` import`);
+      },
+    );
   });
 
   // Sprite tests only run when sprite generation was enabled (--sprites flag passed to convert.js)
