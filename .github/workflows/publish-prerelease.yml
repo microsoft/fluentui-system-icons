@@ -48,7 +48,7 @@ jobs:
           fi
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 22.x
           registry-url: 'https://registry.npmjs.org'
@@ -93,6 +93,7 @@ jobs:
           npx nx release publish \
             --projects=${{ steps.projects.outputs.nx-names }} \
             --tag prerelease \
+            --access public \
             --dry-run=${{ inputs.dry-run }} \
             --verbose
         env:

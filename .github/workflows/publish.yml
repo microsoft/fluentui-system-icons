@@ -28,7 +28,7 @@ jobs:
     steps:
       - name: Generate a token
         id: generate-token
-        uses: actions/create-github-app-token@v1
+        uses: actions/create-github-app-token@v3
         with:
           app-id: ${{ secrets.GH_FLUENT_CI_APP_ID }}
           private-key: ${{ secrets.GH_FLUENT_CI_PRIVATE_KEY }}
@@ -87,7 +87,7 @@ jobs:
           os.system(f'echo \"REACT_VERSION={major}.{minor}.{int(asset) + 1}\" >> \$GITHUB_ENV')
           """
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: 22.x
 
@@ -170,7 +170,7 @@ jobs:
 
       - name: Publish svg-icons to npm
         if: ${{ !inputs.dry-run }}
-        uses: JS-DevTools/npm-publish@v1
+        uses: JS-DevTools/npm-publish@0fd2f4369c5d6bcfcde6091a7c527d810b9b5c3f # v4.1.5
         with:
           token: ${{ secrets.NPM_TOKEN }}
           access: public
@@ -178,7 +178,7 @@ jobs:
 
       - name: Publish svg-sprites to npm
         if: ${{ !inputs.dry-run }}
-        uses: JS-DevTools/npm-publish@v1
+        uses: JS-DevTools/npm-publish@0fd2f4369c5d6bcfcde6091a7c527d810b9b5c3f # v4.1.5
         with:
           token: ${{ secrets.NPM_TOKEN }}
           access: public
@@ -186,7 +186,7 @@ jobs:
 
       - name: Publish react-icons to npm
         if: ${{ !inputs.dry-run }}
-        uses: JS-DevTools/npm-publish@v1
+        uses: JS-DevTools/npm-publish@0fd2f4369c5d6bcfcde6091a7c527d810b9b5c3f # v4.1.5
         with:
           token: ${{ secrets.NPM_TOKEN }}
           access: public
@@ -194,7 +194,7 @@ jobs:
 
       - name: Publish react-icons-font-subsetting-webpack-plugin to npm
         if: ${{ !inputs.dry-run }}
-        uses: JS-DevTools/npm-publish@v1
+        uses: JS-DevTools/npm-publish@0fd2f4369c5d6bcfcde6091a7c527d810b9b5c3f # v4.1.5
         with:
           token: ${{ secrets.NPM_TOKEN }}
           access: public
@@ -202,7 +202,7 @@ jobs:
 
       - name: Publish react-native-icons to npm
         if: ${{ !inputs.dry-run }}
-        uses: JS-DevTools/npm-publish@v1
+        uses: JS-DevTools/npm-publish@0fd2f4369c5d6bcfcde6091a7c527d810b9b5c3f # v4.1.5
         with:
           token: ${{ secrets.NPM_TOKEN }}
           access: public
@@ -325,7 +325,7 @@ jobs:
 
       - name: Upload changed package files
         if: ${{ inputs.dry-run }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: changed-packages-files
           path: /tmp/changed-packages/

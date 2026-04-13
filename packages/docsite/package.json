@@ -20,7 +20,7 @@
     "@storybook/addon-webpack5-compiler-swc": "^4.0.3",
     "@storybook/react-webpack5": "9.1.19",
     "@fluentui/react-storybook-addon": "0.6.0",
-    "@fluentui/react-storybook-addon-export-to-sandbox": "0.2.0",
+    "@fluentui/react-storybook-addon-export-to-sandbox": "0.2.1",
     "@fluentui/storybook-llms-extractor": "0.0.4",
     "@types/react": "19.1.13",
     "@types/react-dom": "19.1.9",
