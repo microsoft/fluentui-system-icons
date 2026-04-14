@@ -18,6 +18,7 @@
     "@babel/preset-typescript": "^7.26.0",
     "@fluentui/react-icons-font-subsetting-webpack-plugin": "*",
     "@fluentui/react-icons-svg-sprite-subsetting-webpack-plugin": "*",
+    "@fluentui/react-icons-atomic-webpack-loader": "*",
     "@types/react": "19.1.13",
     "@types/react-dom": "19.1.9",
     "babel-loader": "^9.2.1",

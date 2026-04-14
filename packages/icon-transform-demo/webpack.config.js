@@ -23,6 +23,11 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.[mc]?[jt]sx?$/,
+        enforce: 'pre',
+        use: ['@fluentui/react-icons-atomic-webpack-loader'],
+      },
+      {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         use: {
