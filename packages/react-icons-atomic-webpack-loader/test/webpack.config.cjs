@@ -48,6 +48,24 @@ const entries = {
       '@fluentui/react-icons/utils',
     ],
     mustExclude: ['"@fluentui/react-icons"', '@fluentui/react-icons/svg/', '@fluentui/react-icons/fonts/'],
+
+  'ts-satisfies': {
+    src: './src/ts-satisfies.ts',
+    loaderOptions: {},
+    mustInclude: ['@fluentui/react-icons/svg/add'],
+    mustExclude: ['"@fluentui/react-icons"'],
+  },
+  'ts-same-name': {
+    src: './src/ts-same-name.ts',
+    loaderOptions: {},
+    mustInclude: ['@fluentui/react-icons/svg/add'],
+    mustExclude: ['"@fluentui/react-icons"'],
+  },
+  'tsx-spread-children': {
+    src: './src/tsx-spread-children.tsx',
+    loaderOptions: {},
+    mustInclude: ['@fluentui/react-icons/svg/add'],
+    mustExclude: ['"@fluentui/react-icons"'],
   },
 };
 
@@ -69,16 +87,27 @@ function createConfig(name, entry) {
       filename: '[name].js',
       library: { type: 'module' },
     },
+    resolve: {
+      extensions: ['.tsx', '.ts', '.js'],
+    },
     externals: [/^@fluentui\/react-icons/, /^react$/],
     module: {
       rules: [
         {
-          test: /\.js$/,
+          test: /\.(js|tsx?)$/,
           enforce: 'pre',
           use: [
             {
               loader: resolve(__dirname, '../lib/index.js'),
               options: entry.loaderOptions,
+            },
+          ],
+        },
+        {
+          test: /\.tsx?$/,
+          use: [
+            {
+              loader: resolve(__dirname, 'esbuild-loader.cjs'),
             },
           ],
         },

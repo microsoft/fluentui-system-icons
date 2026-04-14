@@ -2,10 +2,11 @@
   "name": "@fluentui/react-icons-atomic-webpack-loader",
   "version": "0.0.0",
   "description": "Webpack loader that transforms barrel imports and re-exports from @fluentui/react-icons into atomic deep paths",
+  "type": "module",
   "main": "lib/index.js",
   "scripts": {
     "build": "tsc -p .",
-    "test": "webpack -c test/webpack.config.js"
+    "test": "webpack -c test/webpack.config.cjs"
   },
   "engines": {
     "node": ">=20.0.0"
@@ -20,11 +21,12 @@
     "url": "https://github.com/microsoft/fluentui-system-icons/issues"
   },
   "dependencies": {
-    "acorn-typescript": "^1.4.13",
+    "@sveltejs/acorn-typescript": "^1.0.9",
     "magic-string": "^0.30.0"
   },
   "devDependencies": {
     "@fluentui/react-icons": "*",
+    "esbuild": "^0.25.0",
     "typescript": "5.0.4",
     "webpack": "^5.72.0",
     "@types/node": "22"

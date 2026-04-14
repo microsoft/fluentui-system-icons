@@ -40,13 +40,58 @@ function getParser(options: TransformOptions) {
     return acorn.Parser;
   }
 
-  const plugin = tsPlugin(options.isTsx ? { jsx: {} } : undefined) as unknown as AcornPlugin;
+  const plugin = tsPlugin(options.isTsx ? { jsx: true } : undefined) as unknown as AcornPlugin;
   return acorn.Parser.extend(plugin);
 }
 
 export interface TransformResult {
   code: string;
   map: ReturnType<MagicString['generateMap']>;
+}
+
+const IMPORT_EXPORT_RE =
+  /(import(?:\s+type)?|export(?:\s+type)?)\s*\{([^}]+)\}\s*from\s*['"]@fluentui\/react-icons['"]\s*;?/g;
+
+const SPECIFIER_RE = /(?:type\s+)?(\w+)(?:\s+as\s+(\w+))?/g;
+
+export function transformSourceRegex(source: string, options: Pick<TransformOptions, 'iconVariant'>): TransformResult {
+  const src = new MagicString(source);
+  let match: RegExpExecArray | null;
+
+  IMPORT_EXPORT_RE.lastIndex = 0;
+  while ((match = IMPORT_EXPORT_RE.exec(source)) !== null) {
+    const keyword = match[1];
+    const specifiersStr = match[2];
+    const isExport = keyword.startsWith('export');
+    const lines: string[] = [];
+
+    SPECIFIER_RE.lastIndex = 0;
+    let spec: RegExpExecArray | null;
+    while ((spec = SPECIFIER_RE.exec(specifiersStr)) !== null) {
+      const firstName = spec[1];
+      const secondName = spec[2];
+
+      const pathName = firstName;
+      const newSource = getAtomicImportPath(pathName, options.iconVariant);
+
+      if (isExport) {
+        const exportSpec = secondName ? `${firstName} as ${secondName}` : firstName;
+        lines.push(`${keyword} { ${exportSpec} } from '${newSource}';`);
+      } else {
+        const importSpec = secondName ? `${firstName} as ${secondName}` : firstName;
+        lines.push(`${keyword} { ${importSpec} } from '${newSource}';`);
+      }
+    }
+
+    if (lines.length > 0) {
+      src.overwrite(match.index, match.index + match[0].length, lines.join('\n'));
+    }
+  }
+
+  return {
+    code: src.toString(),
+    map: src.generateMap({ hires: true }),
+  };
 }
 
 export function transformSource(source: string, options: TransformOptions): TransformResult {
