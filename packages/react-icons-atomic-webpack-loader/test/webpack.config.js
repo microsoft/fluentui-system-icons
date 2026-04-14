@@ -39,6 +39,16 @@ const entries = {
     ],
     mustExclude: ['"@fluentui/react-icons"', '@fluentui/react-icons/svg/'],
   },
+  'svg-sprite-imports': {
+    src: './src/svg-sprite-imports.js',
+    loaderOptions: { iconVariant: 'svg-sprite' },
+    mustInclude: [
+      '@fluentui/react-icons/svg-sprite/add',
+      '@fluentui/react-icons/svg-sprite/arrow-left',
+      '@fluentui/react-icons/utils',
+    ],
+    mustExclude: ['"@fluentui/react-icons"', '@fluentui/react-icons/svg/', '@fluentui/react-icons/fonts/'],
+  },
 };
 
 /**

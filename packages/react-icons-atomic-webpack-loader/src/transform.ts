@@ -9,12 +9,12 @@ const MODULE_NAME = '@fluentui/react-icons';
 const ICON_SUFFIX_REGEX = /(\d*)?(Regular|Filled|Light|Color)$/;
 
 interface TransformOptions {
-  iconVariant: 'svg' | 'fonts';
+  iconVariant: 'svg' | 'fonts' | 'svg-sprite';
   isTypescript: boolean;
   isTsx: boolean;
 }
 
-function getAtomicImportPath(importName: string, iconVariant: 'svg' | 'fonts'): string {
+function getAtomicImportPath(importName: string, iconVariant: 'svg' | 'fonts' | 'svg-sprite'): string {
   if (importName === 'useIconContext' || importName === 'IconDirectionContextProvider') {
     return '@fluentui/react-icons/providers';
   }
