@@ -1,5 +1,5 @@
 import * as acorn from 'acorn';
-import tsPlugin from 'acorn-typescript';
+import { tsPlugin } from 'acorn-typescript';
 import MagicString from 'magic-string';
 import type { ImportDeclaration, ExportNamedDeclaration, ImportSpecifier, ExportSpecifier } from 'estree';
 
@@ -55,7 +55,7 @@ export function transformSource(source: string, options: TransformOptions): Tran
   const ast = parser.parse(source, {
     sourceType: 'module',
     ecmaVersion: 'latest',
-    locations: false,
+    locations: true,
   });
 
   const src = new MagicString(source);
