@@ -1,0 +1,46 @@
+/* Headless Fluent Icons — attribute-selector based styles (no CSS-in-JS runtime) */
+
+/* ===== SVG Icon Defaults ===== */
+[data-fui-icon] {
+  display: inline;
+  line-height: 0;
+}
+
+/* ===== High Contrast Mode (a11y) ===== */
+@media (forced-colors: active) {
+  [data-fui-icon]:not([data-fui-icon='font']) {
+    forced-color-adjust: auto;
+  }
+}
+
+/* ===== RTL Directional Flip ===== */
+[data-fui-icon-rtl] {
+  transform: scaleX(-1);
+}
+
+/* ===== bundleIcon: Hidden Variant ===== */
+[data-fui-icon-hidden] {
+  display: none;
+}
+
+/* ===== Font Icon Defaults ===== */
+[data-fui-icon='font'] {
+  display: inline-block;
+  font-style: normal;
+  line-height: 1em;
+  color: currentColor;
+}
+
+/* ===== Font Icon Family Variants ===== */
+[data-fui-icon-font='filled'] {
+  font-family: 'FluentSystemIconsFilled';
+}
+[data-fui-icon-font='regular'] {
+  font-family: 'FluentSystemIconsRegular';
+}
+[data-fui-icon-font='resizable'] {
+  font-family: 'FluentSystemIcons';
+}
+[data-fui-icon-font='light'] {
+  font-family: 'FluentSystemIconsLight';
+}

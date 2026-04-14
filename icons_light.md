@@ -191,6 +191,7 @@
 |TextBox Align Top Left|<img src="assets/TextBox Align Top Left/SVG/ic_fluent_textbox_align_top_left_32_light.svg?raw=true" width="24" height="24">|`textboxAlignTopLeft32Light`|`ic_fluent_textbox_align_top_left_32_light`|
 |Toolbox|<img src="assets/Toolbox/SVG/ic_fluent_toolbox_32_light.svg?raw=true" width="24" height="24">|`toolbox32Light`|`ic_fluent_toolbox_32_light`|
 |Translate|<img src="assets/Translate/SVG/ic_fluent_translate_32_light.svg?raw=true" width="24" height="24">|`translate32Light`|`ic_fluent_translate_32_light`|
+|VIP|<img src="assets/VIP/SVG/ic_fluent_vip_32_light.svg?raw=true" width="24" height="24">|`vip32Light`|`ic_fluent_vip_32_light`|
 |Video|<img src="assets/Video/SVG/ic_fluent_video_32_light.svg?raw=true" width="24" height="24">|`video32Light`|`ic_fluent_video_32_light`|
 |Video Clip|<img src="assets/Video Clip/SVG/ic_fluent_video_clip_32_light.svg?raw=true" width="24" height="24">|`videoClip32Light`|`ic_fluent_video_clip_32_light`|
 |Weather Moon|<img src="assets/Weather Moon/SVG/ic_fluent_weather_moon_32_light.svg?raw=true" width="24" height="24">|`weatherMoon32Light`|`ic_fluent_weather_moon_32_light`|
