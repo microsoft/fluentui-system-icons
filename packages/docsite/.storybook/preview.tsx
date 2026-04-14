@@ -2,6 +2,8 @@ import type { Preview } from '@storybook/react';
 import type { FluentParameters } from '@fluentui/react-storybook-addon';
 import type { Parameters } from '@fluentui/react-storybook-addon-export-to-sandbox';
 
+import '@fluentui/react-storybook-addon-export-to-sandbox/styles.css';
+
 // TODO: remove once we have a better solution for sharing styles between docsite and storybook (e.g. via a package or something)
 import './docs-root-v9.css';
 import './docs-root.css';
