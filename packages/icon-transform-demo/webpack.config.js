@@ -25,7 +25,14 @@ module.exports = {
       {
         test: /\.[mc]?[jt]sx?$/,
         enforce: 'pre',
-        use: ['@fluentui/react-icons-atomic-webpack-loader'],
+        use: [
+          {
+            loader: '@fluentui/react-icons-atomic-webpack-loader',
+            options: {
+              iconVariant: 'svg',
+            },
+          },
+        ],
       },
       {
         test: /\.tsx?$/,
