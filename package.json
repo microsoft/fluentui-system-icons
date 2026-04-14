@@ -26,7 +26,7 @@
   "devDependencies": {
     "@griffel/webpack-extraction-plugin": "0.5.14",
     "@griffel/webpack-loader": "2.2.23",
-    "@nx/js": "21.6.10",
+    "@nx/js": "22.6.5",
     "@types/react": "19.1.13",
     "@types/react-dom": "19.1.9",
     "css-loader": "7.1.4",
@@ -38,7 +38,7 @@
     "monosize": "0.7.1",
     "monosize-bundler-webpack": "0.2.1",
     "nano-staged": "0.9.0",
-    "nx": "21.6.10",
+    "nx": "22.6.5",
     "patch-package": "8.0.1",
     "prettier": "3.6.2",
     "react": "19.2.3",
