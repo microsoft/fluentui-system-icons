@@ -4,10 +4,71 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 <h1 className="sbdocs-title">User Guidance</h1>
 
-## Setting up icon fonts
+`@fluentui/react-icons` supports three rendering strategies: **inline SVG** (default), **icon fonts**, and **SVG sprites** (⚠️ Alpha). Each has different trade-offs for performance, caching, and styling flexibility.
 
-Fluent icons can be consumed as a font. The API is the same as the React element icons, and there are tools to allow you to more seamlessly integrate the font icons
-into your application. You will also be able to only bundle the font icons you need in your application using the `@fluentui/react-icons-font-subsetting-webpack-plugin` package.
+> **Tip:** Regardless of which rendering approach you choose, always use **atomic imports** for best tree-shaking and bundle size. See the [Atomic API](../?path=/docs/icons-atomic-api--docs) page for details.
+
+## Choosing the right approach
+
+|                         | Inline SVG (default)                            | Icon Font                                                   | SVG Sprites (⚠️ Alpha)                                                               |
+| ----------------------- | ----------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| **Best for**            | General purpose, most apps with very few icons  | Large apps with many icons on screen                        | Large or dynamic icon sets                                                           |
+| **JS bundle size**      | Largest — every icon component is bundled in JS | Smallest — icon shim is tiny; font file is a static asset   | Small — icon shim is tiny; sprites are HTTP-cached files                             |
+| **Rendering mechanism** | DOM node per icon                               | Single font glyph per icon                                  | Single symbol reference from sprite                                                  |
+| **Render performance**  | Worst — one SVG DOM subtree per icon            | Best — single glyph, minimal DOM                            | Good — single DOM node via `<use>`                                                   |
+| **Styling**             | Full CSS + `primaryFill` prop                   | CSS only (color, font-size)                                 | Full CSS + `primaryFill` prop                                                        |
+| **Tree-shaking**        | No static asset to subset                       | Font file subsetted to used glyphs only                     | Unused sprites are never fetched                                                     |
+| **Visual fidelity**     | Pixel-perfect at all sizes                      | Slight reduction at small sizes                             | Pixel-perfect at all sizes                                                           |
+| **Accessibility**       | Full — native SVG semantics                     | Full — implementation covers a11y range (see caveats below) | Full — native SVG semantics                                                          |
+| **Loading**             | Bundled with JS — no flash                      | FOIT / FOUT risk during font load                           | One request per sprite group; webpack plugin can merge into a single request         |
+| **Setup**               | None (default)                                  | Webpack subsetting plugin, static assets hosting (font)     | Webpack subsetting plugin, static assets hosting (sprite), same-origin proxy for CDN |
+
+> **Note:** A **headless** rendering mode (vanilla CSS, no Griffel runtime) is available as an alpha opt-in via `/headless/*` imports (e.g. `@fluentui/react-icons/headless/svg/access-time`). With CSS extraction it reduces JS bundle sizes significantly — up to −70% for font icons, −56% for SVG sprites, −14% for inline SVG. This table will be updated once the headless API ships in stable.
+
+### When to use inline SVG (default)
+
+This is the default approach for icons api and used in most applications:
+
+- Zero configuration needed — works out of the box
+- Best styling flexibility — supports `primaryFill`, `className`, Griffel, and all CSS properties
+- Excellent tree-shaking — only icons you import are bundled
+- Combine with the **Atomic API** for even smaller bundles (see the Atomic API page)
+
+Use inline SVG unless you have a specific reason to choose another approach.
+
+### When to use icon fonts
+
+Consider icon fonts when your application renders **many icons simultaneously** (e.g., data grids, file explorers, dashboards):
+
+- **Rendering performance**: Font glyphs render faster than individual SVG DOM nodes when hundreds of icons are on screen
+- **Reduced DOM complexity**: Each icon is a single `<i>` element instead of an `<svg>` tree
+- **Caching**: Font file is downloaded once and cached by the browser
+
+**Accessibility concerns:**
+
+- **Screen readers may misinterpret glyphs.** Icon fonts render characters from the Unicode Private Use Area. Screen readers may announce the underlying character name or code point instead of the icon's meaning. Always pair icon font elements with `aria-label` or `aria-hidden="true"` with a visible text alternative.
+- **Pseudo-elements are not reliably exposed to assistive technologies.** Icon fonts often rely on `::before` / `::after` with `content` to render glyphs. These pseudo-elements are inconsistently announced across screen readers and browser combinations.
+- **Glyph interpretation varies across environments.** Different operating systems, font rendering engines, or encoding mismatches can cause glyphs to display incorrectly or as blank squares. SVG icons are immune to this class of issues.
+
+**Font loading issues (FOIT & FOUT):**
+
+Icon fonts are subject to the same loading problems as any web font:
+
+- **FOIT (Flash of Invisible Text)** — icon glyphs are invisible until the font file loads. The browser hides text during the font's load period, causing elements to briefly disappear.
+- **FOUT (Flash of Unstyled Text)** — fallback system font glyphs are shown first, then "flash" to the correct icon font glyphs once loading completes. This causes layout shifts and a jarring visual swap.
+
+**Mitigation:** Base64-inline the font into a critical CSS block. This eliminates the loading flash by embedding the font data directly in the render-blocking stylesheet, at the cost of increased CSS size.
+
+**Other trade-offs:**
+
+- Font files are loaded upfront and include all glyphs used in your application, potentially increasing initial load time
+- Slight reduction in visual fidelity, though generally imperceptible at most sizes
+- Requires additional Webpack configuration (see setup below)
+- Styling is limited to CSS properties that work with text (color, font-size) — no `primaryFill` prop
+
+#### Setting up icon fonts
+
+Fluent icons can be consumed as a font. The API is the same as the React element icons, and you can subset the font to include only the glyphs your application uses with the `@fluentui/react-icons-font-subsetting-webpack-plugin` package.
 
 If `optimization.usedExports` is enabled (as it is by default), this plugin will subset the font files to only include the glyphs actually used by your build.
 Here is how you set up your webpack configuration to use font files in your application:
@@ -40,6 +101,35 @@ module.exports = {
 ```
 
 You can also enable font icons without the subsetting plugin by only adding the `resolve.conditionNames` configuration. However, this is **not recommended** as it will include the full font files for all icon variants.
+
+### When to use SVG sprites (⚠️ Alpha)
+
+> **Alpha prerelease:** SVG sprites support is available as an alpha prerelease only. Install via `npm i @fluentui/react-icons@alpha`. Breaking changes may occur before general availability.
+
+Consider SVG sprites when:
+
+- You use a lot of icons and want best fidelity, full styling support, faster rendering than inline SVG, and smaller JS bundles
+- **Dynamic icon sets**: Your application loads different icons depending on context (e.g., CMS-driven UI)
+- **Color icon gradient issues**: Sprites avoid the SVG gradient ID collision that occurs when multiple instances of the same color icon exist on a page (see the Color Variants page)
+
+**Trade-offs:**
+
+- Individual HTTP requests per icon (mitigated by browser caching)
+- Sprites must be served from the same origin — see the [same-origin requirement docs](https://github.com/microsoft/fluentui-system-icons/blob/main/packages/react-icons/docs/preview-features/svg-sprites.md#same-origin-requirement) for details
+
+> **Tip:** We recommend using the webpack plugin for SVG sprites, which merges all icons used by your application into a single sprite file. This means only one network request is needed to load all icons — or you can inline the combined sprite directly into your HTML to eliminate the request entirely.
+
+SVG sprites are available via the `@fluentui/react-icons` package using atomic sprite imports — the API mirrors the standard Atomic API:
+
+```tsx
+import { AccessTime24Filled } from '@fluentui/react-icons/svg-sprite/access-time';
+
+function MyComponent() {
+  return <AccessTime24Filled />;
+}
+```
+
+For setup, tooling, and the same-origin requirement, see the full [SVG Sprites documentation](https://github.com/microsoft/fluentui-system-icons/blob/main/packages/react-icons/docs/preview-features/svg-sprites.md).
 
 ---
 
