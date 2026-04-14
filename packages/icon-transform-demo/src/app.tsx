@@ -34,6 +34,8 @@ import {
   iconRegularClassName,
 } from '@fluentui/react-icons';
 
+// import { AccessTimeRegular as AccessTimeRegularHeadless } from '@fluentui/react-icons/headless/svg/access-time';
+
 // ---------- compound (bundled) icons ----------
 const AccessTime = bundleIcon(AccessTimeFilled, AccessTimeRegular);
 const Accessibility = bundleIcon(AccessibilityFilled, AccessibilityRegular);
@@ -134,6 +136,7 @@ export function App() {
         {icons.map(({ Icon, name }) => (
           <IconCard key={name} Icon={Icon} name={name} />
         ))}
+        {/* <IconCard Icon={AccessTimeRegularHeadless} name="AccessTimeRegular (headless)" /> */}
       </div>
     </main>
   );
