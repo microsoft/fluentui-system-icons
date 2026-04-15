@@ -33,7 +33,7 @@
     "eslint": "8.57.1",
     "husky": "9.1.7",
     "jest-diff": "^30.2.0",
-    "jsdom": "^21.1.0",
+    "jsdom": "^29.0.2",
     "mini-css-extract-plugin": "2.10.1",
     "monosize": "0.7.1",
     "monosize-bundler-webpack": "0.2.1",

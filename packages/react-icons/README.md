@@ -338,7 +338,7 @@ Migrating a larger codebase to the new performant atomic imports might be a daun
 
 Use `svg` as the target path. This transformation happens at build time, so your source code remains unchanged while your bundled output gets the full tree-shaking benefits.
 
-👉 **[Build-Time Transform setup (Babel & SWC) →](./docs/build-transforms.md)**
+👉 **[Build-Time Transform setup (Babel, SWC & Webpack) →](./docs/build-transforms.md)**
 
 ## Atomic API (SVG Sprites) — ⚠️ Alpha
 
@@ -348,13 +348,13 @@ SVG sprites offer smaller bundles, faster renders, and zero runtime overhead.
 
 👉 **[Full documentation →](./docs/preview-features/svg-sprites.md)**
 
-## Base API — ⚠️ Alpha
+## Headless API — ⚠️ Alpha
 
 > **This feature is available as an alpha prerelease only.** Install via `npm i @fluentui/react-icons@alpha`
 
 A drop-in replacement for the standard API that removes the CSS-in-JS runtime — provides data-attribute selectors for styling behaviour with opt-in pre-defined vanilla CSS.
 
-👉 **[Full documentation →](./docs/preview-features/base.md)**
+👉 **[Full documentation →](./docs/preview-features/headless.md)**
 
 ## Viewing Icons
 

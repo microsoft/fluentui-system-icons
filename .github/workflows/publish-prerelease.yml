@@ -93,6 +93,7 @@ jobs:
           npx nx release publish \
             --projects=${{ steps.projects.outputs.nx-names }} \
             --tag prerelease \
+            --access public \
             --dry-run=${{ inputs.dry-run }} \
             --verbose
         env:

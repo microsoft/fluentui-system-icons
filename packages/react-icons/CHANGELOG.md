@@ -1,3 +1,9 @@
+## 2.0.324 (2026-04-13)
+
+### 🚀 Features
+
+- **react-icons-atomic-webpack-loader:** implement build-transform webpack loader ([#1048](https://github.com/microsoft/fluentui-system-icons/pull/1048))
+
 ## 2.0.323 (2026-03-27)
 
 ### 🚀 Features
