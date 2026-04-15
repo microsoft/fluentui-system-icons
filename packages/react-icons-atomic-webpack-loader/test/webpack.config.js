@@ -50,22 +50,16 @@ const entries = {
     mustExclude: ['"@fluentui/react-icons"', '@fluentui/react-icons/svg/', '@fluentui/react-icons/fonts/'],
   },
 
-  'ts-satisfies': {
-    src: './src/ts-satisfies.ts',
+  'jsx-component': {
+    src: './src/jsx-component.jsx',
     loaderOptions: {},
-    mustInclude: ['@fluentui/react-icons/svg/add'],
+    mustInclude: ['@fluentui/react-icons/svg/add', '@fluentui/react-icons/svg/arrow-left'],
     mustExclude: ['"@fluentui/react-icons"'],
   },
-  'ts-same-name': {
-    src: './src/ts-same-name.ts',
+  'tsx-component': {
+    src: './src/tsx-component.tsx',
     loaderOptions: {},
-    mustInclude: ['@fluentui/react-icons/svg/add'],
-    mustExclude: ['"@fluentui/react-icons"'],
-  },
-  'tsx-spread-children': {
-    src: './src/tsx-spread-children.tsx',
-    loaderOptions: {},
-    mustInclude: ['@fluentui/react-icons/svg/add'],
+    mustInclude: ['@fluentui/react-icons/svg/add', '@fluentui/react-icons/svg/arrow-left'],
     mustExclude: ['"@fluentui/react-icons"'],
   },
 };
@@ -89,13 +83,13 @@ function createConfig(name, entry) {
       library: { type: 'module' },
     },
     resolve: {
-      extensions: ['.tsx', '.ts', '.js'],
+      extensions: ['.tsx', '.ts', '.jsx', '.js'],
     },
     externals: [/^@fluentui\/react-icons/, /^react$/],
     module: {
       rules: [
         {
-          test: /\.(js|tsx?)$/,
+          test: /\.(jsx?|tsx?)$/,
           enforce: 'pre',
           use: [
             {
@@ -105,13 +99,14 @@ function createConfig(name, entry) {
           ],
         },
         {
-          test: /\.tsx?$/,
+          test: /\.[jt]sx?$/,
+          exclude: /\.js$/,
           use: [
             {
               loader: 'ts-loader',
               options: {
                 transpileOnly: true,
-                compilerOptions: { jsx: 'react', module: 'es2020' },
+                compilerOptions: { jsx: 'react', module: 'es2020', allowJs: true },
               },
             },
           ],
