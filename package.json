@@ -27,6 +27,9 @@
     "@griffel/webpack-extraction-plugin": "0.5.14",
     "@griffel/webpack-loader": "2.2.23",
     "@nx/js": "22.6.5",
+    "@testing-library/dom": "10.4.1",
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/react": "16.3.2",
     "@types/react": "19.1.13",
     "@types/react-dom": "19.1.9",
     "css-loader": "7.1.4",
@@ -47,10 +50,7 @@
     "storybook": "9.1.19",
     "typescript": "5.0.4",
     "typescript-eslint": "7.18.0",
-    "vitest": "^3.2.4",
-    "@testing-library/dom": "10.4.1",
-    "@testing-library/jest-dom": "6.9.1",
-    "@testing-library/react": "16.3.2"
+    "vitest": "^3.2.4"
   },
   "optionalDependencies": {
     "@esbuild/linux-x64": "0.25.12",

@@ -1,4 +1,4 @@
-import { transformSource, transformSourceRegex } from './transform.js';
+import { transformSource } from './transform';
 import type { LoaderContext } from 'webpack';
 
 const REACT_ICONS_IMPORT_REGEX = /['"]@fluentui\/react-icons['";\s]/;
@@ -12,32 +12,20 @@ export default function fluentIconsAtomicImportLoader(
   this: LoaderContext<FluentIconsAtomicImportLoaderOptions>,
   sourceCode: string,
 ): void {
-  const resourcePath = this.resourcePath;
+  const { resourcePath } = this;
 
   if (!REACT_ICONS_IMPORT_REGEX.test(sourceCode)) {
     return this.callback(null, sourceCode);
   }
 
   const { iconVariant = 'svg' } = this.getOptions();
-  const isTsx = resourcePath.endsWith('.tsx');
   const isTypescript = TS_EXT_REGEX.test(resourcePath);
 
-  let result;
-
   try {
-    result = transformSource(sourceCode, { iconVariant, isTypescript, isTsx });
+    const { code, map } = transformSource(sourceCode, { iconVariant, isTypescript, path: resourcePath });
+    return this.callback(null, code, map);
   } catch {
-    result = null;
+    this.emitWarning(new Error(`FluentIconsAtomicImportLoader: Failed to transform "${resourcePath}"`));
+    return this.callback(null, sourceCode);
   }
-
-  if (!result) {
-    try {
-      result = transformSourceRegex(sourceCode, { iconVariant });
-    } catch {
-      this.emitWarning(new Error(`FluentIconsAtomicImportLoader: Failed to transform "${resourcePath}"`));
-      return this.callback(null, sourceCode);
-    }
-  }
-
-  return this.callback(null, result.code, result.map);
 }

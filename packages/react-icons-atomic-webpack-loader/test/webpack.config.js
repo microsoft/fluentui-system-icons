@@ -48,6 +48,7 @@ const entries = {
       '@fluentui/react-icons/utils',
     ],
     mustExclude: ['"@fluentui/react-icons"', '@fluentui/react-icons/svg/', '@fluentui/react-icons/fonts/'],
+  },
 
   'ts-satisfies': {
     src: './src/ts-satisfies.ts',
@@ -107,7 +108,11 @@ function createConfig(name, entry) {
           test: /\.tsx?$/,
           use: [
             {
-              loader: resolve(__dirname, 'esbuild-loader.cjs'),
+              loader: 'ts-loader',
+              options: {
+                transpileOnly: true,
+                compilerOptions: { jsx: 'react', module: 'es2020' },
+              },
             },
           ],
         },

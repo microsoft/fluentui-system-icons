@@ -2,9 +2,9 @@
   "compilerOptions": {
     "types": ["node"],
     "target": "es2020",
-    "module": "nodenext",
+    "module": "commonjs",
     "rootDir": "./src",
-    "moduleResolution": "nodenext",
+    "moduleResolution": "node",
     "declaration": true,
     "outDir": "./lib",
     "esModuleInterop": true,
