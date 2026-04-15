@@ -160,7 +160,10 @@ describe(`convert  utils`, () => {
         flipInRtl: false,
       });
       expect(code).toMatchInlineSnapshot(
-        `"export const PatientColor: FluentIcon = (/*#__PURE__*/createFluentIcon('PatientColor', "20", \`<g fill="#000"/><path d="M1 2" fill="#ff0000"/>\`, { color: true }));"`,
+        `
+        "/** @deprecated Color icons are deprecated. [See User Guidance](https://microsoft.github.io/fluentui-system-icons/?path=/docs/icons-user-guidance--docs#color-variants-deprecated) */
+        export const PatientColor: FluentIcon = (/*#__PURE__*/createFluentIcon('PatientColor', "20", \`<g fill="#000"/><path d="M1 2" fill="#ff0000"/>\`, { color: true }));"
+      `,
       );
       expect(code).toContain('fill=');
       expect(code).toContain('color: true');
