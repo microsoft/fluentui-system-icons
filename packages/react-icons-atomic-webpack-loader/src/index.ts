@@ -4,7 +4,7 @@ import type { LoaderContext } from 'webpack';
 const REACT_ICONS_IMPORT_REGEX = /['"]@fluentui\/react-icons['";\s]/;
 
 export interface FluentIconsAtomicImportLoaderOptions {
-  iconVariant?: 'svg' | 'fonts';
+  iconVariant?: 'svg' | 'fonts' | 'svg-sprite';
 }
 
 export default function fluentIconsAtomicImportLoader(

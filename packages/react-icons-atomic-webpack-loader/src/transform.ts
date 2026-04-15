@@ -1,5 +1,5 @@
 import * as acorn from 'acorn';
-import tsPlugin from 'acorn-typescript';
+import { tsPlugin } from 'acorn-typescript';
 import MagicString from 'magic-string';
 import type { ImportDeclaration, ExportNamedDeclaration, ImportSpecifier, ExportSpecifier } from 'estree';
 
@@ -9,12 +9,12 @@ const MODULE_NAME = '@fluentui/react-icons';
 const ICON_SUFFIX_REGEX = /(\d*)?(Regular|Filled|Light|Color)$/;
 
 interface TransformOptions {
-  iconVariant: 'svg' | 'fonts';
+  iconVariant: 'svg' | 'fonts' | 'svg-sprite';
   isTypescript: boolean;
   isTsx: boolean;
 }
 
-function getAtomicImportPath(importName: string, iconVariant: 'svg' | 'fonts'): string {
+function getAtomicImportPath(importName: string, iconVariant: 'svg' | 'fonts' | 'svg-sprite'): string {
   if (importName === 'useIconContext' || importName === 'IconDirectionContextProvider') {
     return '@fluentui/react-icons/providers';
   }
@@ -55,7 +55,7 @@ export function transformSource(source: string, options: TransformOptions): Tran
   const ast = parser.parse(source, {
     sourceType: 'module',
     ecmaVersion: 'latest',
-    locations: false,
+    locations: true,
   });
 
   const src = new MagicString(source);
