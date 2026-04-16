@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "description": "Webpack plugin to subset or merge SVG sprite assets used by @fluentui/react-icons svg-sprite APIs.",
   "main": "lib/index.js",
-  "private": true,
   "scripts": {
     "test": "npm run test:atomic && npm run test:merged && npm run test:manifest && npm run test:inline && npm run test:reference && npm run test:validation",
     "test:atomic": "webpack -c test/webpack.config.js",

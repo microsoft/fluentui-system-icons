@@ -24,6 +24,16 @@
       "native": {
         "projects": ["packages/svg-icons", "packages/svg-sprites"],
         "projectsRelationship": "independent"
+      },
+      "standalone": {
+        "projects": [
+          "packages/react-icons-atomic-webpack-loader",
+          "packages/react-icons-svg-sprite-subsetting-webpack-plugin"
+        ],
+        "projectsRelationship": "independent",
+        "version": {
+          "adjustSemverBumpsForZeroMajorVersion": true
+        }
       }
     },
     "version": {

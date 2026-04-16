@@ -3,7 +3,7 @@
   "name": "react-icons-svg-sprite-subsetting-webpack-plugin",
   "projectType": "library",
   "sourceRoot": "packages/react-icons-svg-sprite-subsetting-webpack-plugin/src",
-  "tags": [],
+  "tags": ["npm:standalone"],
   "targets": {
     "build": {
       "cache": true,

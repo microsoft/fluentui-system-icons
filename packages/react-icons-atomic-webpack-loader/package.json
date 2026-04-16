@@ -1,7 +1,6 @@
 {
   "name": "@fluentui/react-icons-atomic-webpack-loader",
   "version": "0.0.0",
-  "private": true,
   "description": "Webpack loader that transforms barrel imports and re-exports from @fluentui/react-icons into atomic deep paths",
   "main": "lib/index.js",
   "scripts": {
