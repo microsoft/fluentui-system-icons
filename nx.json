@@ -55,5 +55,8 @@
       }
     }
   },
-  "tui": { "enabled": false }
+  "tui": {
+    "enabled": false
+  },
+  "analytics": false
 }
