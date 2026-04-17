@@ -1,9 +1,7 @@
 # @fluentui/react-icons-atomic-webpack-loader
 
-> **⚠️ Alpha** — this package is available as an alpha prerelease only.
-> ⚠️ The API may change before the first stable release.
-
-> Install via `npm install @fluentui/react-icons-atomic-webpack-loader@alpha --save-dev`
+> **⚠️ 0.x** — this package is in early development and follows [zero-based major semver](https://0ver.org/).
+> Breaking changes may occur in minor releases until 1.0.
 
 Webpack loader that transforms barrel imports and re-exports from `@fluentui/react-icons` into atomic deep paths for better tree-shaking and smaller bundles.
 

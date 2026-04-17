@@ -126,9 +126,8 @@ export default defineConfig({
 
 ### Webpack Plugin
 
-> **⚠️ Alpha** — this package is available as an alpha prerelease only.
->
-> Install via `npm i @fluentui/react-icons-svg-sprite-subsetting-webpack-plugin@prerelease`
+> **⚠️ 0.x** — this package is in early development and follows [zero-based major semver](https://0ver.org/).
+> Breaking changes may occur in minor releases until 1.0.
 
 To leverage performance benefits to the fullest, use the Webpack SvgSprite Subsetting Plugin. It analyzes your application's actual icon usage at build time and strips unused icon definitions from the sprite files — ensuring only icons your app references are shipped.
 
