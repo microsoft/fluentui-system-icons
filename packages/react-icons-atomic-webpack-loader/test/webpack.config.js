@@ -39,6 +39,29 @@ const entries = {
     ],
     mustExclude: ['"@fluentui/react-icons"', '@fluentui/react-icons/svg/'],
   },
+  'svg-sprite-imports': {
+    src: './src/svg-sprite-imports.js',
+    loaderOptions: { iconVariant: 'svg-sprite' },
+    mustInclude: [
+      '@fluentui/react-icons/svg-sprite/add',
+      '@fluentui/react-icons/svg-sprite/arrow-left',
+      '@fluentui/react-icons/utils',
+    ],
+    mustExclude: ['"@fluentui/react-icons"', '@fluentui/react-icons/svg/', '@fluentui/react-icons/fonts/'],
+  },
+
+  'jsx-component': {
+    src: './src/jsx-component.jsx',
+    loaderOptions: {},
+    mustInclude: ['@fluentui/react-icons/svg/add', '@fluentui/react-icons/svg/arrow-left'],
+    mustExclude: ['"@fluentui/react-icons"'],
+  },
+  'tsx-component': {
+    src: './src/tsx-component.tsx',
+    loaderOptions: {},
+    mustInclude: ['@fluentui/react-icons/svg/add', '@fluentui/react-icons/svg/arrow-left'],
+    mustExclude: ['"@fluentui/react-icons"'],
+  },
 };
 
 /**
@@ -59,16 +82,32 @@ function createConfig(name, entry) {
       filename: '[name].js',
       library: { type: 'module' },
     },
+    resolve: {
+      extensions: ['.tsx', '.ts', '.jsx', '.js'],
+    },
     externals: [/^@fluentui\/react-icons/, /^react$/],
     module: {
       rules: [
         {
-          test: /\.js$/,
+          test: /\.(jsx?|tsx?)$/,
           enforce: 'pre',
           use: [
             {
               loader: resolve(__dirname, '../lib/index.js'),
               options: entry.loaderOptions,
+            },
+          ],
+        },
+        {
+          test: /\.[jt]sx?$/,
+          exclude: /\.js$/,
+          use: [
+            {
+              loader: 'ts-loader',
+              options: {
+                transpileOnly: true,
+                compilerOptions: { jsx: 'react', module: 'es2020', allowJs: true },
+              },
             },
           ],
         },

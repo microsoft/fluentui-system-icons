@@ -3,7 +3,7 @@
   "name": "react-icons-atomic-webpack-loader",
   "projectType": "library",
   "sourceRoot": "packages/react-icons-atomic-webpack-loader/src",
-  "tags": [],
+  "tags": ["npm:standalone"],
   "targets": {
     "build": {
       "cache": true,

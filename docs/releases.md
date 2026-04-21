@@ -4,7 +4,10 @@ This document describes the release process for Fluent UI System Icons across al
 
 ## Overview
 
-The entire repository is released together via the [`.github/workflows/publish.yml`](../.github/workflows/publish.yml) workflow. Releases are **manually triggered** and must be initiated from the `main` branch.
+The repository uses two separate release workflows:
+
+1. **[`.github/workflows/publish.yml`](../.github/workflows/publish.yml)** — Releases the core icon library packages (react, native, SVG) together. **Manually triggered** from the `main` branch.
+2. **[`.github/workflows/publish-standalone.yml`](../.github/workflows/publish-standalone.yml)** — Releases standalone tooling packages independently. **Manually triggered** from the `main` branch.
 
 ## Release Strategy
 
@@ -25,6 +28,13 @@ The following packages are published during each release:
 - `@fluentui/react-icons` - React Web SVG components inc font support
 - `@fluentui/react-icons-font-subsetting-webpack-plugin` - Webpack plugin for font subsetting
 - `@fluentui/react-native-icons` - React Native components
+
+#### Standalone npm Packages
+
+These packages are released independently via the `publish-standalone.yml` workflow and follow **zero-ver semver** (`0.x.y`):
+
+- `@fluentui/react-icons-atomic-webpack-loader` - Webpack loader for atomic icon imports
+- `@fluentui/react-icons-svg-sprite-subsetting-webpack-plugin` - Webpack plugin for SVG sprite subsetting
 
 #### Platform-Specific Packages
 
@@ -129,9 +139,10 @@ flowchart TD
 
 npm packages use **Nx Release** for version bumps and changelog generation:
 
-- Packages are organized into two **release groups** (configured in `nx.json`):
+- Packages are organized into release groups (configured in `nx.json`):
   - **`react`**: react-icons, webpack-plugin, react-native-icons → versioned with `REACT_VERSION`
   - **`native`**: svg-icons, svg-sprites → versioned with `NEW_VERSION`
+  - **`standalone`**: atomic-webpack-loader, svg-sprite-subsetting-webpack-plugin → versioned independently via conventional commits with zero-ver policy (`feat`/`fix` → patch, `feat!` → minor)
 - `skipLockFileUpdate` is enabled in nx config; the lockfile is updated explicitly after all version bumps via `npm install --package-lock-only`
 - Changelog is generated **per release group** (each with its respective version), based on **conventional commits** that modified `packages/{package-folder}/` only
 - Uses workspace-wide git tags (`1.1.{number}`) rather than package-specific tags

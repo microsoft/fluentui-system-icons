@@ -1,20 +1,16 @@
-import * as acorn from 'acorn';
-import tsPlugin from 'acorn-typescript';
+import { parseSync } from 'oxc-parser';
+import type { StaticImport, StaticExport } from 'oxc-parser';
 import MagicString from 'magic-string';
-import type { ImportDeclaration, ExportNamedDeclaration, ImportSpecifier, ExportSpecifier } from 'estree';
-
-type AcornPlugin = (BaseParser: typeof acorn.Parser) => typeof acorn.Parser;
 
 const MODULE_NAME = '@fluentui/react-icons';
 const ICON_SUFFIX_REGEX = /(\d*)?(Regular|Filled|Light|Color)$/;
 
 interface TransformOptions {
-  iconVariant: 'svg' | 'fonts';
-  isTypescript: boolean;
-  isTsx: boolean;
+  iconVariant: 'svg' | 'fonts' | 'svg-sprite';
+  path: string;
 }
 
-function getAtomicImportPath(importName: string, iconVariant: 'svg' | 'fonts'): string {
+function getAtomicImportPath(importName: string, iconVariant: 'svg' | 'fonts' | 'svg-sprite'): string {
   if (importName === 'useIconContext' || importName === 'IconDirectionContextProvider') {
     return '@fluentui/react-icons/providers';
   }
@@ -31,95 +27,69 @@ function getAtomicImportPath(importName: string, iconVariant: 'svg' | 'fonts'): 
   return `@fluentui/react-icons/${iconVariant}/${kebabCase}`;
 }
 
-function getName(node: { type: string; name?: string; value?: unknown }): string {
-  return (node.name ?? String(node.value))!;
-}
-
-function getParser(options: TransformOptions) {
-  if (!options.isTypescript) {
-    return acorn.Parser;
-  }
-
-  const plugin = tsPlugin(options.isTsx ? { jsx: {} } : undefined) as unknown as AcornPlugin;
-  return acorn.Parser.extend(plugin);
-}
-
 export interface TransformResult {
   code: string;
   map: ReturnType<MagicString['generateMap']>;
 }
 
 export function transformSource(source: string, options: TransformOptions): TransformResult {
-  const parser = getParser(options);
+  const { iconVariant, path } = options;
 
-  const ast = parser.parse(source, {
+  const result = parseSync(path, source, {
     sourceType: 'module',
-    ecmaVersion: 'latest',
-    locations: false,
   });
 
+  if (result.errors.length > 0) {
+    throw new Error(result.errors[0].message);
+  }
+
+  const { staticImports, staticExports } = result.module;
   const src = new MagicString(source);
 
-  for (const node of ast.body) {
-    if (node.type === 'ImportDeclaration') {
-      const n = node as unknown as ImportDeclaration & { start: number; end: number };
+  for (const imp of staticImports) {
+    if (imp.moduleRequest.value !== MODULE_NAME) continue;
 
-      if (n.source.value !== MODULE_NAME) {
-        continue;
-      }
+    const namedEntries = imp.entries.filter((e) => e.importName.kind === 'Name');
+    if (namedEntries.length === 0) continue;
 
-      const memberImports = n.specifiers.filter((s): s is ImportSpecifier => s.type === 'ImportSpecifier');
+    const otherEntries = imp.entries.filter((e) => e.importName.kind !== 'Name');
+    const lines: string[] = [];
 
-      if (memberImports.length === 0) {
-        continue;
-      }
-
-      const fullImports = n.specifiers.filter((s) => s.type !== 'ImportSpecifier');
-      const lines: string[] = [];
-
-      if (fullImports.length > 0) {
-        const names = fullImports
-          .map((s) => (s.type === 'ImportDefaultSpecifier' ? s.local.name : `* as ${s.local.name}`))
-          .join(', ');
-        lines.push(`import ${names} from '${MODULE_NAME}';`);
-      }
-
-      for (const specifier of memberImports) {
-        const importedName = getName(specifier.imported);
-        const localName = specifier.local.name;
-        const newSource = getAtomicImportPath(importedName, options.iconVariant);
-        const spec = importedName === localName ? importedName : `${importedName} as ${localName}`;
-        lines.push(`import { ${spec} } from '${newSource}';`);
-      }
-
-      src.overwrite(n.start, n.end, lines.join('\n'));
+    if (otherEntries.length > 0) {
+      const names = otherEntries
+        .map((e) => (e.importName.kind === 'Default' ? e.localName.value : `* as ${e.localName.value}`))
+        .join(', ');
+      lines.push(`import ${names} from '${MODULE_NAME}';`);
     }
 
-    if (node.type === 'ExportNamedDeclaration') {
-      const n = node as unknown as ExportNamedDeclaration & { start: number; end: number };
-
-      if (!n.source || n.source.value !== MODULE_NAME) {
-        continue;
-      }
-
-      const specifiers = n.specifiers.filter((s): s is ExportSpecifier => s.type === 'ExportSpecifier');
-
-      if (specifiers.length === 0) {
-        continue;
-      }
-
-      const lines: string[] = [];
-
-      for (const specifier of specifiers) {
-        const localName = getName(specifier.local);
-        const exportedName = getName(specifier.exported);
-        const newSource = getAtomicImportPath(localName, options.iconVariant);
-        const spec = localName === exportedName ? localName : `${localName} as ${exportedName}`;
-        lines.push(`export { ${spec} } from '${newSource}';`);
-      }
-
-      src.overwrite(n.start, n.end, lines.join('\n'));
+    for (const entry of namedEntries) {
+      const importedName = entry.importName.name!;
+      const localName = entry.localName.value;
+      const newSource = getAtomicImportPath(importedName, iconVariant);
+      const spec = importedName === localName ? importedName : `${importedName} as ${localName}`;
+      lines.push(`import { ${spec} } from '${newSource}';`);
     }
+
+    src.overwrite(imp.start, imp.end, lines.join('\n'));
+  }
+
+  for (const exp of staticExports) {
+    const relevantEntries = exp.entries.filter(
+      (e) => e.moduleRequest?.value === MODULE_NAME && e.exportName.kind === 'Name',
+    );
+    if (relevantEntries.length === 0) continue;
+
+    const lines: string[] = [];
+
+    for (const entry of relevantEntries) {
+      const importedName = entry.importName.name!;
+      const exportedName = entry.exportName.name!;
+      const newSource = getAtomicImportPath(importedName, iconVariant);
+      const spec = importedName === exportedName ? importedName : `${importedName} as ${exportedName}`;
+      lines.push(`export { ${spec} } from '${newSource}';`);
+    }
+
+    src.overwrite(exp.start, exp.end, lines.join('\n'));
   }
 
   return {

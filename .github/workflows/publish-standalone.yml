@@ -1,0 +1,159 @@
+name: Publish Standalone Packages
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: 'Run in dry-run mode (no publishing, no git commits)'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  publish-standalone:
+    # Prevent infinite loops: skip if the commit was made by the build system itself
+    if: "!contains(github.event.head_commit.author.email, 'flubuild@microsoft.com')"
+    name: Publish standalone packages
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      packages: write
+
+    steps:
+      - name: Validate branch
+        run: |
+          if [ "${{ github.ref }}" != "refs/heads/main" ]; then
+            echo "❌ ERROR: This workflow can only be run on the main branch" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Current ref: ${{ github.ref }}" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+
+      - name: Generate a token
+        id: generate-token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ secrets.GH_FLUENT_CI_APP_ID }}
+          private-key: ${{ secrets.GH_FLUENT_CI_PRIVATE_KEY }}
+
+      - uses: actions/checkout@v6
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+          filter: blob:none
+          fetch-depth: 50
+          fetch-tags: true
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22.x
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Resolve standalone projects
+        id: projects
+        run: |
+          NX_NAMES=$(npx nx show projects -p "tag:npm:standalone" --sep ',')
+          echo "nx-names=$NX_NAMES" >> "$GITHUB_OUTPUT"
+          echo "### Standalone projects" >> $GITHUB_STEP_SUMMARY
+          echo "$NX_NAMES" | tr ',' '\n' | while read -r p; do echo "- $p" >> $GITHUB_STEP_SUMMARY; done
+
+      - name: Build packages
+        run: |
+          npx nx run-many -t build --projects=tag:npm:standalone
+
+      - name: Version packages (Nx Release)
+        run: |
+          npx nx release version --group=standalone --verbose
+
+      - name: Generate changelogs (Nx Release)
+        # --first-release: allows changelog generation when no prior git tag exists (first release).
+        # Safe to keep permanently — once per-package tags exist, they take priority and this flag becomes a no-op.
+        # Scoped here instead of global nx.json `automaticFromRef` to avoid masking tag-resolution failures in other release groups.
+        run: |
+          for pkg in $(echo "${{ steps.projects.outputs.nx-names }}" | tr ',' '\n'); do
+            VERSION=$(node -p "require('./packages/${pkg}/package.json').version")
+            echo "Generating changelog for ${pkg}@${VERSION}"
+            npx nx release changelog "$VERSION" --projects="$pkg" --first-release --no-git-tag --no-git-commit --verbose
+          done
+
+      - name: Update lockfile
+        run: npm install --package-lock-only
+
+      - name: Publish to npm (Nx Release)
+        if: ${{ !inputs.dry-run }}
+        run: |
+          npx nx release publish --projects=${{ steps.projects.outputs.nx-names }} --access public --verbose
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Config git credentials
+        run: git config user.email "flubuild@microsoft.com" && git config user.name "Fluent Build System"
+
+      - name: Commit version changes
+        if: ${{ !inputs.dry-run }}
+        run: |
+          git add -A
+          git commit -m "Release standalone packages [skip ci]"
+
+      - name: Tag releases
+        # Tags must be created manually after the final commit (which includes lockfile updates, changelogs, etc.)
+        # rather than by nx release (git.tag: false in nx.json) — nx would tag before the commit is finalized,
+        # causing tags to point to an intermediate state instead of the release commit.
+        if: ${{ !inputs.dry-run }}
+        run: |
+          for pkg in $(echo "${{ steps.projects.outputs.nx-names }}" | tr ',' '\n'); do
+            VERSION=$(node -p "require('./packages/${pkg}/package.json').version")
+            TAG="${pkg}@${VERSION}"
+            echo "Creating tag: $TAG"
+            git tag "$TAG"
+          done
+
+      - name: Push release
+        if: ${{ !inputs.dry-run }}
+        run: |
+          git push origin HEAD:main --follow-tags --tags
+
+      - name: Dry-run summary
+        if: ${{ inputs.dry-run }}
+        run: |
+          echo "## 🧪 Dry-run Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "The following actions would have been performed:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📦 Packages that would be published" >> $GITHUB_STEP_SUMMARY
+          for pkg in $(echo "${{ steps.projects.outputs.nx-names }}" | tr ',' '\n'); do
+            VERSION=$(node -p "require('./packages/${pkg}/package.json').version")
+            NAME=$(node -p "require('./packages/${pkg}/package.json').name")
+            echo "- \`${NAME}@${VERSION}\`" >> $GITHUB_STEP_SUMMARY
+          done
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🏷️ Git operations that would be performed" >> $GITHUB_STEP_SUMMARY
+          echo "- Commit: \`Release standalone packages [skip ci]\`" >> $GITHUB_STEP_SUMMARY
+          for pkg in $(echo "${{ steps.projects.outputs.nx-names }}" | tr ',' '\n'); do
+            VERSION=$(node -p "require('./packages/${pkg}/package.json').version")
+            echo "- Tag: \`${pkg}@${VERSION}\`" >> $GITHUB_STEP_SUMMARY
+          done
+          echo "- Push to: \`origin/main\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📝 Files modified (not committed)" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          git status --short >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
+      - name: Stage changed package files
+        if: ${{ inputs.dry-run }}
+        run: |
+          mkdir -p /tmp/changed-packages
+          git status --porcelain -- 'packages/' | awk '{print $NF}' | xargs -I{} cp --parents {} /tmp/changed-packages/ 2>/dev/null || true
+          cp package.json package-lock.json /tmp/changed-packages/
+
+      - name: Upload changed package files
+        if: ${{ inputs.dry-run }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: changed-packages-files
+          path: /tmp/changed-packages/
+          if-no-files-found: warn

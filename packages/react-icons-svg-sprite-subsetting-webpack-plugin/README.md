@@ -1,8 +1,7 @@
 # @fluentui/react-icons-svg-sprite-subsetting-webpack-plugin
 
-> **⚠️ Alpha** — this package is available as an alpha prerelease only.
->
-> Install via `npm i @fluentui/react-icons-svg-sprite-subsetting-webpack-plugin@alpha`
+> **⚠️ 0.x** — this package is in early development and follows [zero-based major semver](https://0ver.org/).
+> Breaking changes may occur in minor releases until 1.0.
 
 Webpack plugin that optimizes the `@fluentui/react-icons/svg-sprite/*` entrypoints.
 

@@ -146,7 +146,7 @@ Replace every `svg` segment in the target paths below with your chosen target (`
 Install [`@fluentui/react-icons-atomic-webpack-loader`](../../react-icons-atomic-webpack-loader/README.md):
 
 ```bash
-npm install @fluentui/react-icons-atomic-webpack-loader@alpha --save-dev
+npm install @fluentui/react-icons-atomic-webpack-loader --save-dev
 ```
 
 Add the loader as an `enforce: 'pre'` rule so it runs before other loaders:
