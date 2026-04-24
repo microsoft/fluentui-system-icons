@@ -5099,6 +5099,16 @@
     "font": true,
     "type": "resizable"
   },
+  "CardUiInfoFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "CardUiInfoRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "CardUiPortraitFlipFilled": {
     "svg": true,
     "font": true,
@@ -14414,6 +14424,16 @@
     "font": true,
     "type": "resizable"
   },
+  "LayoutInfographicFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "LayoutInfographicRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "LayoutRowFourFilled": {
     "svg": true,
     "font": true,
@@ -23555,6 +23575,26 @@
     "type": "resizable"
   },
   "TableCellCenterSearchRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TableCellCrossFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TableCellCrossRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TableCellCrossBrushFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TableCellCrossBrushRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -36169,6 +36209,16 @@
     "font": true,
     "type": "sized"
   },
+  "ArrowSyncDismiss16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowSyncDismiss16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "ArrowSyncDismiss20Filled": {
     "svg": true,
     "font": true,
@@ -46910,6 +46960,36 @@
     "type": "sized"
   },
   "CardUi24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CardUiInfo16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CardUiInfo16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CardUiInfo20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CardUiInfo20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CardUiInfo24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CardUiInfo24Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -61245,6 +61325,16 @@
     "type": "sized"
   },
   "DialpadQuestionMark24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Diamond12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Diamond12Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -79725,6 +79815,56 @@
     "type": "sized"
   },
   "LayoutDynamic24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutInfographic16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutInfographic16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutInfographic20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutInfographic20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutInfographic24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutInfographic24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutInfographic28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutInfographic28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutInfographic32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutInfographic32Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -113194,6 +113334,66 @@
     "font": true,
     "type": "sized"
   },
+  "TableCellCross16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableCellCross16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableCellCross20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableCellCross20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableCellCross24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableCellCross24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableCellCrossBrush16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableCellCrossBrush16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableCellCrossBrush20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableCellCrossBrush20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableCellCrossBrush24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableCellCrossBrush24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "TableCellEdit16Filled": {
     "svg": true,
     "font": true,
@@ -117419,6 +117619,16 @@
     "font": true,
     "type": "sized"
   },
+  "TextBold28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextBold28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "TextBoxSettings20Filled": {
     "svg": true,
     "font": true,
@@ -120255,6 +120465,16 @@
     "type": "sized"
   },
   "TextItalic24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextItalic28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextItalic28Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
