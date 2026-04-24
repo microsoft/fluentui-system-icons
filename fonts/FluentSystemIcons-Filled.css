@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?14c7ffe137fa3da47500f4952e8400b7") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?14c7ffe137fa3da47500f4952e8400b7") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?14c7ffe137fa3da47500f4952e8400b7") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?f0ee998116d404740d1de9cf2ca9e221") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?f0ee998116d404740d1de9cf2ca9e221") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?f0ee998116d404740d1de9cf2ca9e221") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -28782,4 +28782,58 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_vip_48_filled:before {
     content: "\f0c74";
+}
+.icon-ic_fluent_arrow_sync_dismiss_16_filled:before {
+    content: "\f0c75";
+}
+.icon-ic_fluent_card_ui_info_16_filled:before {
+    content: "\f0c76";
+}
+.icon-ic_fluent_card_ui_info_20_filled:before {
+    content: "\f0c77";
+}
+.icon-ic_fluent_card_ui_info_24_filled:before {
+    content: "\f0c78";
+}
+.icon-ic_fluent_diamond_12_filled:before {
+    content: "\f0c79";
+}
+.icon-ic_fluent_layout_infographic_16_filled:before {
+    content: "\f0c7a";
+}
+.icon-ic_fluent_layout_infographic_20_filled:before {
+    content: "\f0c7b";
+}
+.icon-ic_fluent_layout_infographic_24_filled:before {
+    content: "\f0c7c";
+}
+.icon-ic_fluent_layout_infographic_28_filled:before {
+    content: "\f0c7d";
+}
+.icon-ic_fluent_layout_infographic_32_filled:before {
+    content: "\f0c7e";
+}
+.icon-ic_fluent_table_cell_cross_16_filled:before {
+    content: "\f0c7f";
+}
+.icon-ic_fluent_table_cell_cross_20_filled:before {
+    content: "\f0c80";
+}
+.icon-ic_fluent_table_cell_cross_24_filled:before {
+    content: "\f0c81";
+}
+.icon-ic_fluent_table_cell_cross_brush_16_filled:before {
+    content: "\f0c82";
+}
+.icon-ic_fluent_table_cell_cross_brush_20_filled:before {
+    content: "\f0c83";
+}
+.icon-ic_fluent_table_cell_cross_brush_24_filled:before {
+    content: "\f0c84";
+}
+.icon-ic_fluent_text_bold_28_filled:before {
+    content: "\f0c85";
+}
+.icon-ic_fluent_text_italic_28_filled:before {
+    content: "\f0c86";
 }
