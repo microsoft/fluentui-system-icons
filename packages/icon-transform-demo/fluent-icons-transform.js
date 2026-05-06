@@ -1,5 +1,7 @@
 // @ts-check
 
+// NOTE: this is not used anymore - we use our new webpack loader
+
 /**
  * Resolves a @fluentui/react-icons import name to its atomic module path.
  * @param {string} importName - The named export being imported.

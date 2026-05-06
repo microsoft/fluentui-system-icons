@@ -3,8 +3,8 @@ import { makeStyles } from '@griffel/react';
 
 // ----------------------------------------------------------------
 // All imports below use the barrel entry `@fluentui/react-icons`.
-// At build time, `babel-plugin-transform-imports` rewrites each
-// named import to its atomic module path, e.g.:
+// At build time, `@fluentui/react-icons-atomic-webpack-loader`
+// rewrites each named import to its atomic module path, e.g.:
 //   import { AddRegular } from '@fluentui/react-icons'
 //   → import { AddRegular } from '@fluentui/react-icons/svg/add'
 // ----------------------------------------------------------------
@@ -129,7 +129,7 @@ export function App() {
         <p className={styles.subtitle}>
           20 icons (10 groups × Filled + Regular) imported via barrel entry.
           <br />
-          <code>babel-plugin-transform-imports</code> rewrites them to atomic paths at build time.
+          <code>@fluentui/react-icons-atomic-webpack-loader</code> rewrites them to atomic paths at build time.
         </p>
       </div>
       <div className={styles.grid}>
