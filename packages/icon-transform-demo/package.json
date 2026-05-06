@@ -1,0 +1,38 @@
+{
+  "name": "icon-transform-demo",
+  "version": "1.0.0",
+  "description": "Demo app for @fluentui/react-icons with babel-plugin-transform-imports showcase",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "clean": "git clean -fXd dist/",
+    "build": "webpack",
+    "dev": "webpack serve --open"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.26.0",
+    "@babel/preset-typescript": "^7.26.0",
+    "@fluentui/react-icons-font-subsetting-webpack-plugin": "*",
+    "@fluentui/react-icons-svg-sprite-subsetting-webpack-plugin": "*",
+    "@fluentui/react-icons-atomic-webpack-loader": "*",
+    "@types/react": "19.1.13",
+    "@types/react-dom": "19.1.9",
+    "babel-loader": "^9.2.1",
+    "babel-plugin-transform-imports": "^2.0.0",
+    "html-webpack-plugin": "^5.6.3",
+    "typescript": "5.0.4",
+    "webpack": "^5.100.2",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
+  },
+  "dependencies": {
+    "@fluentui/react-icons": "*",
+    "@griffel/react": "1.6.1",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  }
+}
