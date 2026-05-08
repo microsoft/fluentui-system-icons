@@ -1,3 +1,9 @@
+## 2.0.326 (2026-05-08)
+
+### 🩹 Fixes
+
+- **release:** prevent cross-group version cascade to standalone packages ([#1072](https://github.com/microsoft/fluentui-system-icons/pull/1072))
+
 ## 2.0.325 (2026-04-24)
 
 ### 🚀 Features
