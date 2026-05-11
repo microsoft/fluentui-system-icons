@@ -15,11 +15,9 @@ export default tseslint.config(
       'src/fonts/',
       'node_modules/',
       // build scripts and configs
+      'scripts/**',
       '*.js',
       '*.config.js',
-      'build.js',
-      'convert.js',
-      'convert-font.js',
     ],
   },
   ...tseslint.configs.recommended,
