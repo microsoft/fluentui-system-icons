@@ -9,7 +9,7 @@ const { join, basename } = require('node:path');
 const glob = require('glob');
 const { transformSync } = require('@babel/core');
 
-main();
+main({ root: join(__dirname, '..') });
 
 /**
  * Builds source TypeScript and copys assets to the output directories.
@@ -17,9 +17,11 @@ main();
  * It transpiles TypeScript files to both ESNext and CommonJS formats,
  * applies Babel transformations, and copies font assets.
  * It also creates raw style copies for .styles.js files.
+ *
+ * @param {{ root: string; }} options
  */
-function main() {
-  const projectRoot = __dirname;
+function main(options) {
+  const projectRoot = options.root;
 
   transpileTsc({ moduleFormat: 'esnext', outDir: 'lib' }, projectRoot);
   transpileTsc({ moduleFormat: 'commonjs', outDir: 'lib-cjs' }, projectRoot);

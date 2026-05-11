@@ -13,17 +13,5 @@
     "strictNullChecks": true,
     "pretty": true
   },
-  "include": [
-    "convert.js",
-    "convert-font.js",
-    "convert.utils.js",
-    "convert-font.utils.js",
-    "merge-metadata.js",
-    "metadata.utils.js",
-    "sprite.writer.js",
-    "per-icon.writer.js",
-    "chunking-utils.js",
-    "build.js",
-    "deprecated-atoms.js"
-  ]
+  "include": ["scripts/"]
 }
