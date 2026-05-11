@@ -4,7 +4,6 @@
 const svgr = require('@svgr/core');
 const fs = require('fs');
 const path = require('path');
-const process = require('process');
 const argv = require('yargs').boolean('selector').default('selector', false).option('native', {
   type: 'boolean',
 }).argv;
@@ -92,7 +91,7 @@ function processFiles(src, dest) {
 
   const indexPath = path.join(dest, 'index.tsx');
   // Finally add the interface definition and then write out the index.
-  indexContents.push("export { FluentIconsProps } from './utils/FluentIconsProps.types'");
+  indexContents.push("export type { FluentIconsProps } from './utils/FluentIconsProps.types'");
   indexContents.push("export { default as wrapIcon } from './utils/wrapIcon'");
   indexContents.push("export { useIconState } from './utils/useIconState'");
 
@@ -148,7 +147,7 @@ function processFolder(srcPath, destPath, resizable) {
       if (resizable && !file.includes('20')) {
         return;
       }
-      var iconName = file.substr(0, file.length - 4); // strip '.svg'
+      var iconName = file.substring(0, file.length - 4); // strip '.svg'
       iconName = iconName.replace('ic_fluent_', ''); // strip ic_fluent_
       iconName = resizable ? iconName.replace('20', '') : iconName;
       var destFilename = _.camelCase(iconName); // We want them to be camelCase, so access_time would become accessTime here

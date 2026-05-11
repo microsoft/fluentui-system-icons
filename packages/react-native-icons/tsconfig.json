@@ -1,35 +1,13 @@
 {
+  "extends": "@rnx-kit/tsconfig",
   "compilerOptions": {
+    "rootDir": "src",
     "outDir": "lib",
     "target": "ES6",
     "module": "esnext",
-    "lib": ["es6", "dom"],
-    "types": [],
-    "moduleResolution": "node",
-    "declaration": true,
-    "declarationMap": true,
-    "strict": true,
     "importHelpers": true,
     "strictBindCallApply": false,
-    "forceConsistentCasingInFileNames": true,
-    "strictNullChecks": false,
-    "noImplicitAny": false,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "sourceMap": true,
-    "jsx": "react-native",
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
-    "paths": {
-      "react": ["./node_modules/@types/react"]
-    }
+    "noImplicitAny": false
   },
-  "include": ["src"],
-  "exclude": ["lib", "lib-cjs", "node_modules"]
+  "include": ["src"]
 }

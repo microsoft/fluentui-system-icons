@@ -297,7 +297,8 @@ async function processSourceDir(srcPath) {
  * @returns
  */
 function parseArgs(argv) {
-  const args = yargs.parse(argv);
+  /** @typedef {import("./types").Args} Args */
+  const args = /** @type {Args} */ (/** @type {unknown} */ (yargs.parse(argv)));
   const SRC_PATH = /** @type {string} */ (args.source); // path with source svg files
   const DEST_PATH = /** @type {string} */ (args.dest); // destination folder for chunk output
   const RTL_FILE = /** @type {string} */ (args.rtl); // rtl metadata json
