@@ -40,18 +40,9 @@ function escapeAttr(value) {
 }
 
 /**
- * Escapes special characters in a string for safe use inside a `RegExp` constructor.
- * Prefixes all regex metacharacters (`.*+?^${}()|[]\`) with a backslash.
+ * Prefixes all internal SVG ids (and their `url(#…)` / `"#…"` references)
+ * with a namespace to avoid cross-icon collisions in sprites.
  *
- * @param {string} value - The raw string to escape.
- * @returns {string} The escaped string safe for `new RegExp()` usage.
- */
-function escapeRegExp(value) {
-  return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
-/**
- * Prefixes all internal SVG ids (and references) with a namespace.
  * @param {string} rawSvg
  * @param {string} namespace
  * @returns {string}
@@ -69,7 +60,7 @@ function namespaceSvgIds(rawSvg, namespace) {
 
   for (const id of Array.from(ids)) {
     const newId = `${namespace}__${id}`;
-    const escaped = escapeRegExp(id);
+    const escaped = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
     output = output.replace(new RegExp(`\\bid="${escaped}"`, 'g'), `id="${newId}"`);
     output = output.replace(new RegExp(`url\\(#${escaped}\\)`, 'g'), `url(#${newId})`);
