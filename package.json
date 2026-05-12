@@ -17,18 +17,16 @@
     "url": "git+https://github.com/microsoft/fluentui-system-icons.git"
   },
   "scripts": {
-    "format": "nx format:write",
-    "format:check": "nx format:check",
-    "postinstall": "patch-package",
-    "prepare": "husky",
     "reset-workspace": "git clean -dXf",
-    "rnx-align-deps": "rnx-align-deps --requirements react-native@0.85"
+    "prepare": "husky",
+    "postinstall": "patch-package",
+    "format": "nx format:write",
+    "format:check": "nx format:check"
   },
   "devDependencies": {
     "@griffel/webpack-extraction-plugin": "0.5.14",
     "@griffel/webpack-loader": "2.2.23",
     "@nx/js": "22.6.5",
-    "@rnx-kit/align-deps": "^3.5.0",
     "@testing-library/dom": "10.4.1",
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/react": "16.3.2",

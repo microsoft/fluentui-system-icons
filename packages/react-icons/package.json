@@ -41,7 +41,6 @@
     "@griffel/babel-preset": "^1.8.1",
     "@griffel/eslint-plugin": "^2.0.2",
     "@types/react": "^17.0.2",
-    "@types/yargs": "^15.0.0",
     "concurrently": "^9.2.0",
     "eslint": "8.57.1",
     "eslint-plugin-react-hooks": "^5.2.0",

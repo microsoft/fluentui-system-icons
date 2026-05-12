@@ -8,6 +8,7 @@ const path = require('path');
 const mkdirp = require('mkdirp');
 
 const yargs = require('yargs');
+const _ = require('lodash');
 const {
   assertCompoundStyleVariantIssues,
   handleDeprecatedColorAtoms,
@@ -310,8 +311,7 @@ async function processPerIcon(destPath, iconEntries, rtlMetadata, importPath, op
  * @returns
  */
 function parseArgs(argv) {
-  /** @typedef {import("./types").Args} Args */
-  const args = /** @type {Args} */ (/** @type {unknown} */ (yargs.parse(argv)));
+  const args = yargs.parse(argv);
   const SRC_PATH = /** @type {string} */ (args.source); // path with codepoint json maps (src/utils/fonts)
   const DEST_PATH = /** @type {string} */ (args.dest); // destination folder for chunk output
   const RTL_FILE = /** @type {string} */ (args.rtl); // rtl metadata json

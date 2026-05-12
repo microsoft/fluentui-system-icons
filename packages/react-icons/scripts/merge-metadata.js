@@ -28,14 +28,6 @@ const argv = yargs
   .help().argv;
 
 /**
- * @param {unknown} e
- * @returns {e is Record<string, unknown>}
- */
-function isRecord(e) {
-  return Boolean(e && typeof e === 'object' && !Array.isArray(e));
-}
-
-/**
  * Merge SVG and font metadata files into a single metadata file
  */
 async function mergeMetadata() {
@@ -55,7 +47,7 @@ async function mergeMetadata() {
     svgMetadata = JSON.parse(svgData);
     console.log(`✓ Read SVG metadata from ${svgMetadataPath} (${Object.keys(svgMetadata).length} icons)`);
   } catch (error) {
-    if (isRecord(error) && error.code !== 'ENOENT') {
+    if (error.code !== 'ENOENT') {
       console.warn(`Warning: Could not read SVG metadata from ${svgMetadataPath}:`, error.message);
     }
   }
@@ -66,7 +58,7 @@ async function mergeMetadata() {
     fontMetadata = JSON.parse(fontData);
     console.log(`✓ Read font metadata from ${fontMetadataPath} (${Object.keys(fontMetadata).length} icons)`);
   } catch (error) {
-    if (isRecord(error) && error.code !== 'ENOENT') {
+    if (error.code !== 'ENOENT') {
       console.warn(`Warning: Could not read font metadata from ${fontMetadataPath}:`, error.message);
     }
   }
