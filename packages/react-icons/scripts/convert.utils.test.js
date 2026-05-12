@@ -362,6 +362,15 @@ describe(`convert  utils`, () => {
       ]);
     });
 
+    it('parses inline style attributes as React-compatible style objects', () => {
+      const nodes = parseSvgToNodes(
+        '<g style="mask-type:alpha"><rect style="mix-blend-mode:multiply;opacity:0.5"/></g>',
+      );
+      expect(nodes).toEqual([
+        ['g', { style: { maskType: 'alpha' } }, ['rect', { style: { mixBlendMode: 'multiply', opacity: '0.5' } }]],
+      ]);
+    });
+
     it('parses a real color icon SVG fragment', () => {
       const svg =
         '<path d="M2 8" fill="url(#a)"/><defs><linearGradient id="a" x1="1" gradientUnits="userSpaceOnUse"><stop stop-color="#52D17C"/><stop offset="1" stop-color="#22918B"/></linearGradient></defs>';

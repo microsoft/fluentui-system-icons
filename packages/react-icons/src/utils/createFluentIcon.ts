@@ -12,7 +12,11 @@ export type CreateFluentIconOptions = {
   color?: boolean;
 };
 
-export type SvgNode = [tag: string, attrs: Record<string, string> | null, ...children: SvgNode[]];
+export type SvgNode = [
+  tag: string,
+  attrs: Record<string, string | Record<string, string>> | null,
+  ...children: SvgNode[],
+];
 
 const renderSvgNode = (node: SvgNode, key: number): React.ReactElement => {
   const [tag, attrs, ...children] = node;

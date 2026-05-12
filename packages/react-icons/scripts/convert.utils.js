@@ -23,7 +23,29 @@ function svgAttrToReactProp(attr) {
 }
 
 /**
- * @typedef {[tag: string, attrs: Record<string, string> | null, ...children: SvgNode[]]} SvgNode
+ * Parse a CSS style string into a React-compatible style object.
+ *
+ * React requires `style` to be an object (e.g. `{ maskType: "alpha" }`),
+ * not a CSS string (e.g. `"mask-type:alpha"`). Passing a string throws:
+ * "The `style` prop expects a mapping from style properties to values, not a string."
+ *
+ * @param {string} cssText - inline CSS text (e.g. "mask-type:alpha;mix-blend-mode:multiply")
+ * @returns {Record<string, string>}
+ */
+function parseCssStyleToObject(cssText) {
+  /** @type {Record<string, string>} */
+  const styleObj = {};
+  for (const decl of cssText.split(';')) {
+    const colon = decl.indexOf(':');
+    if (colon === -1) continue;
+    const prop = svgAttrToReactProp(decl.slice(0, colon).trim());
+    styleObj[prop] = decl.slice(colon + 1).trim();
+  }
+  return styleObj;
+}
+
+/**
+ * @typedef {[tag: string, attrs: Record<string, string | Record<string, string>> | null, ...children: SvgNode[]]} SvgNode
  */
 
 /**
@@ -53,12 +75,17 @@ function parseSvgToNodes(svgString) {
       continue;
     }
 
-    /** @type {Record<string, string>} */
+    /** @type {Record<string, string | Record<string, string>>} */
     const attrs = {};
     let attrMatch;
     attrRe.lastIndex = 0;
     while ((attrMatch = attrRe.exec(attrStr)) !== null) {
-      attrs[svgAttrToReactProp(attrMatch[1])] = attrMatch[2];
+      const name = svgAttrToReactProp(attrMatch[1]);
+      if (name === 'style') {
+        attrs[name] = parseCssStyleToObject(attrMatch[2]);
+      } else {
+        attrs[name] = attrMatch[2];
+      }
     }
 
     /** @type {SvgNode} */
