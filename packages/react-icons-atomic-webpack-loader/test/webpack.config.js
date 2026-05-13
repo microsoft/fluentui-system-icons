@@ -29,6 +29,16 @@ const entries = {
     ],
     mustExclude: ['"@fluentui/react-icons"'],
   },
+  'indirect-reexports': {
+    src: './src/indirect-reexports.js',
+    loaderOptions: {},
+    mustInclude: [
+      '@fluentui/react-icons/svg/add',
+      '@fluentui/react-icons/svg/arrow-left',
+      '@fluentui/react-icons/utils',
+    ],
+    mustExclude: ['"@fluentui/react-icons"'],
+  },
   'fonts-imports': {
     src: './src/fonts-imports.js',
     loaderOptions: { iconVariant: 'fonts' },

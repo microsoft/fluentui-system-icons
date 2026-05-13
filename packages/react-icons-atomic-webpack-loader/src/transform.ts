@@ -75,8 +75,13 @@ export function transformSource(source: string, options: TransformOptions): Tran
 
   for (const exp of staticExports) {
     const relevantEntries = exp.entries.filter(
-      (e) => e.moduleRequest?.value === MODULE_NAME && e.exportName.kind === 'Name',
+      (e) =>
+        e.moduleRequest?.value === MODULE_NAME &&
+        e.exportName.kind === 'Name' &&
+        e.start >= exp.start &&
+        e.end <= exp.end,
     );
+
     if (relevantEntries.length === 0) continue;
 
     const lines: string[] = [];
