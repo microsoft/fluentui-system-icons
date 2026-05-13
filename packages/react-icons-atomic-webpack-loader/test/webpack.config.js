@@ -39,6 +39,28 @@ const entries = {
     ],
     mustExclude: ['"@fluentui/react-icons"'],
   },
+  'aliased-indirect-reexports': {
+    src: './src/aliased-indirect-reexports.js',
+    loaderOptions: {},
+    mustInclude: ['@fluentui/react-icons/svg/add', '@fluentui/react-icons/svg/arrow-left'],
+    mustExclude: ['"@fluentui/react-icons"'],
+  },
+  'renamed-indirect-reexports': {
+    src: './src/renamed-indirect-reexports.js',
+    loaderOptions: {},
+    mustInclude: ['@fluentui/react-icons/svg/add', '@fluentui/react-icons/svg/arrow-left'],
+    mustExclude: ['"@fluentui/react-icons"'],
+  },
+  'mixed-reexports': {
+    src: './src/mixed-reexports.js',
+    loaderOptions: {},
+    mustInclude: [
+      '@fluentui/react-icons/svg/add',
+      '@fluentui/react-icons/svg/arrow-left',
+      '@fluentui/react-icons/utils',
+    ],
+    mustExclude: ['"@fluentui/react-icons"'],
+  },
   'fonts-imports': {
     src: './src/fonts-imports.js',
     loaderOptions: { iconVariant: 'fonts' },
