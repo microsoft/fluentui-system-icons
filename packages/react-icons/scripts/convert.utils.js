@@ -12,6 +12,97 @@ const { writeSpriteFiles } = require('./sprite.writer');
 /** @typedef {{ [key: string]: 'mirror' | 'unique' }} RtlMetadata */
 
 /**
+ * Convert a hyphenated SVG attribute name to React-compatible camelCase.
+ * e.g. 'stop-color' → 'stopColor', 'fill-opacity' → 'fillOpacity'
+ *
+ * @param {string} attr
+ * @returns {string}
+ */
+function svgAttrToReactProp(attr) {
+  return attr.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+}
+
+/**
+ * Parse a CSS style string into a React-compatible style object.
+ *
+ * React requires `style` to be an object (e.g. `{ maskType: "alpha" }`),
+ * not a CSS string (e.g. `"mask-type:alpha"`). Passing a string throws:
+ * "The `style` prop expects a mapping from style properties to values, not a string."
+ *
+ * @param {string} cssText - inline CSS text (e.g. "mask-type:alpha;mix-blend-mode:multiply")
+ * @returns {Record<string, string>}
+ */
+function parseCssStyleToObject(cssText) {
+  /** @type {Record<string, string>} */
+  const styleObj = {};
+  for (const decl of cssText.split(';')) {
+    const colon = decl.indexOf(':');
+    if (colon === -1) continue;
+    const prop = svgAttrToReactProp(decl.slice(0, colon).trim());
+    styleObj[prop] = decl.slice(colon + 1).trim();
+  }
+  return styleObj;
+}
+
+/**
+ * @typedef {[tag: string, attrs: Record<string, string | Record<string, string>> | null, ...children: SvgNode[]]} SvgNode
+ */
+
+/**
+ * Parse an SVG inner-HTML string into a structured SvgNode[] tree.
+ * Converts hyphenated SVG attribute names to React-compatible camelCase.
+ *
+ * Uses a single regex to tokenize tags and a stack to track nesting.
+ * Icon SVGs contain no text/CDATA/comments — only elements with attributes.
+ *
+ * @param {string} svgString - inner SVG content (without outer `<svg>` tag)
+ * @returns {SvgNode[]}
+ */
+function parseSvgToNodes(svgString) {
+  /** @type {SvgNode[]} */
+  const root = [];
+  /** @type {SvgNode[][]} */
+  const stack = [root];
+  const tagRe = /<(\/?)(\w+)((?:\s+[\w:-]+="[^"]*")*)\s*(\/?)>/g;
+  const attrRe = /([\w:-]+)="([^"]*)"/g;
+
+  let tagMatch;
+  while ((tagMatch = tagRe.exec(svgString)) !== null) {
+    const [, isClose, tag, attrStr, isSelfClose] = tagMatch;
+
+    if (isClose) {
+      stack.pop();
+      continue;
+    }
+
+    /** @type {Record<string, string | Record<string, string>>} */
+    const attrs = {};
+    let attrMatch;
+    attrRe.lastIndex = 0;
+    while ((attrMatch = attrRe.exec(attrStr)) !== null) {
+      const name = svgAttrToReactProp(attrMatch[1]);
+      if (name === 'style') {
+        attrs[name] = parseCssStyleToObject(attrMatch[2]);
+      } else {
+        attrs[name] = attrMatch[2];
+      }
+    }
+
+    /** @type {SvgNode} */
+    const node = [tag, Object.keys(attrs).length > 0 ? attrs : null];
+    stack[stack.length - 1].push(node);
+
+    if (!isSelfClose) {
+      // For non-self-closing tags, push node itself as the new container.
+      // Children will be appended starting at index 2 (after tag and attrs).
+      stack.push(/** @type {any} */ (node));
+    }
+  }
+
+  return root;
+}
+
+/**
  * Returns the standard header lines used in generated icon files.
  * @param {string} relImport - relative import path to createFluentIcon
  * @returns {string[]}
@@ -28,7 +119,7 @@ function getCreateFluentIconHeader(relImport) {
  * @typedef {Object} ParsedIconSource
  * @property {string} exportName - PascalCase export name (e.g. 'AccessTime20Filled')
  * @property {string} fileName - kebab-case file name with .tsx extension
- * @property {{ paths: string[] } | { rawSvg: string }} iconData - extracted SVG data
+ * @property {{ paths: string[] } | { nodes: SvgNode[], rawSvg: string }} iconData - extracted SVG data
  * @property {string} width - numeric width string (e.g. '20') or '1em' for resizable
  * @property {boolean} isColor - true if this is a color icon variant
  * @property {boolean} flipInRtl - true if the icon should be mirrored in RTL contexts
@@ -66,14 +157,14 @@ function parseIconSource(opts) {
   const rawWidth = resizable ? '"1em"' : getAttr('width')[0];
   const width = rawWidth.replace(/"/g, '');
 
-  /** @type {{ paths: string[] } | { rawSvg: string }} */
+  /** @type {{ paths: string[] } | { nodes: SvgNode[], rawSvg: string }} */
   let iconData;
   if (isColor) {
     const innerSvg = svgContent
       .replace(/^[\s\S]*?<svg[^>]*>/, '')
       .replace(/<\/svg>[\s\S]*$/, '')
       .trim();
-    iconData = { rawSvg: innerSvg };
+    iconData = { nodes: parseSvgToNodes(innerSvg), rawSvg: innerSvg };
   } else {
     const pathValues = getAttr('d').map((v) => v.slice(1, -1)); // strip surrounding quotes
     iconData = { paths: pathValues };
@@ -106,8 +197,9 @@ function buildIconExportCode(parsed) {
   const deprecatedPrefix =
     '/** @deprecated Color icons are deprecated. [See User Guidance](https://microsoft.github.io/fluentui-system-icons/?path=/docs/icons-user-guidance--docs#color-variants-deprecated) */\n';
 
-  if ('rawSvg' in iconData) {
-    return `${isColor ? deprecatedPrefix : ''}export const ${exportName}: FluentIcon = (/*#__PURE__*/createFluentIcon('${exportName}', ${widthStr}, \`${iconData.rawSvg}\`${options}));`;
+  if ('nodes' in iconData) {
+    const nodesStr = JSON.stringify(iconData.nodes);
+    return `${isColor ? deprecatedPrefix : ''}export const ${exportName}: FluentIcon = (/*#__PURE__*/createFluentIcon('${exportName}', ${widthStr}, ${nodesStr}${options}));`;
   }
 
   const paths = iconData.paths.map((p) => `"${p}"`).join(',');
@@ -212,4 +304,5 @@ module.exports = {
   getCreateFluentIconHeader,
   loadRtlMetadata,
   generatePerIconFiles,
+  parseSvgToNodes,
 };

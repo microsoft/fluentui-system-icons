@@ -12,16 +12,46 @@ export type CreateFluentIconOptions = {
   color?: boolean;
 };
 
+export type SvgNode = [
+  tag: string,
+  attrs: Record<string, string | Record<string, string>> | null,
+  ...children: SvgNode[],
+];
+
+const renderSvgNode = (node: SvgNode, key: number): React.ReactElement => {
+  const [tag, attrs, ...children] = node;
+  return React.createElement(tag, { ...attrs, key }, ...children.map(renderSvgNode));
+};
+
+/**
+ * Creates a Fluent icon React component with Griffel styling.
+ *
+ * @param displayName - The display name for the component (used in React DevTools).
+ * @param width - The intrinsic width/height of the icon (e.g. `"20"`, `"24"`, `"1em"`).
+ * @param pathsOrSvg - Icon content in one of three forms:
+ *   - `string[]` — Array of SVG path `d` attributes (mono-color icons).
+ *   - `SvgNode[]` — Structured SVG element tree for color icons (CSP-safe).
+ *   - `string` — Raw SVG innerHTML string.
+ *     **Deprecated:** Use `SvgNode[]` with `options.color` instead. The `string` overload uses
+ *     `dangerouslySetInnerHTML` which violates Trusted Types CSP policies.
+ * @param options - Optional configuration.
+ */
 export const createFluentIcon = (
   displayName: string,
   width: string,
-  pathsOrSvg: string[] | string,
+  pathsOrSvg: string[] | string | SvgNode[],
   options?: CreateFluentIconOptions,
 ): FluentIcon => {
   const viewBoxWidth = width === '1em' ? '20' : width;
+  // Pre-render color SVG nodes once in the factory so the recursion
+  // never runs during React renders.
+  const colorChildren =
+    typeof pathsOrSvg !== 'string' && (options?.color || Array.isArray(pathsOrSvg[0]))
+      ? (pathsOrSvg as SvgNode[]).map(renderSvgNode)
+      : undefined;
   const Icon = React.forwardRef((props: FluentIconsProps, ref: React.Ref<HTMLElement>) => {
     const styles = useRootStyles();
-    const iconState = useIconState(props, { flipInRtl: options?.flipInRtl }); // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
+    const iconState = useIconState(props, { flipInRtl: options?.flipInRtl });
     const state = {
       ...iconState,
       className: mergeClasses(iconClassName, iconState.className, styles.root),
@@ -31,17 +61,21 @@ export const createFluentIcon = (
       viewBox: `0 0 ${viewBoxWidth} ${viewBoxWidth}`,
       xmlns: 'http://www.w3.org/2000/svg',
     };
+    // @deprecated - this branch is not used in our code, only keeping for backwards compatibility
+    // Color icon: render raw SVG children
     if (typeof pathsOrSvg === 'string') {
-      // Color icon: render raw SVG children
       return React.createElement('svg', { ...state, dangerouslySetInnerHTML: { __html: pathsOrSvg } });
-    } else {
-      // Non-color icon: render paths as before
-      return React.createElement(
-        'svg',
-        state,
-        ...pathsOrSvg.map((d) => React.createElement('path', { d, fill: state.fill })),
-      );
     }
+    // Color icon: use pre-rendered elements
+    if (colorChildren) {
+      return React.createElement('svg', state, ...colorChildren);
+    }
+
+    return React.createElement(
+      'svg',
+      state,
+      ...(pathsOrSvg as string[]).map((d) => React.createElement('path', { d, fill: state.fill })),
+    );
   }) as FluentIcon;
   Icon.displayName = displayName;
   return Icon;
