@@ -79,6 +79,11 @@ export function transformSource(source: string, options: TransformOptions): Tran
     );
     if (relevantEntries.length === 0) continue;
 
+    // Skip indirect re-exports (`import { X } from '...'; export { X };`): oxc reports these as static
+    // exports anchored at the originating `import` statement. The import loop above has already
+    // rewritten that range, so emitting again here would produce duplicate declarations.
+    if (source.startsWith('import', exp.start)) continue;
+
     const lines: string[] = [];
 
     for (const entry of relevantEntries) {

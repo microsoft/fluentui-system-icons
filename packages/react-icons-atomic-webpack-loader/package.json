@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "tsc -p .",
-    "test": "webpack -c test/webpack.config.js"
+    "test": "vitest run && webpack -c test/webpack.config.js"
   },
   "engines": {
     "node": ">=20.0.0"
