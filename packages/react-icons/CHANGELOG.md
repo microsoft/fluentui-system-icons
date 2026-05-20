@@ -1,3 +1,10 @@
+## 2.0.327 (2026-05-20)
+
+### 🩹 Fixes
+
+- **nx:** mark react-icons and react-native-icons as implicitly depending on importer ([#1088](https://github.com/microsoft/fluentui-system-icons/pull/1088))
+- **react-icons:** replace dangerouslySetInnerHTML with structured SvgNode rendering for color icons ([#1078](https://github.com/microsoft/fluentui-system-icons/pull/1078))
+
 ## 2.0.326 (2026-05-08)
 
 ### 🩹 Fixes
