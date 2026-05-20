@@ -4,6 +4,7 @@
   "projectType": "library",
   "sourceRoot": "packages/react-icons/src",
   "tags": ["platform:web"],
+  "implicitDependencies": ["@fluentui/system-icons-processing"],
   "targets": {
     "build": {
       "cache": true,
