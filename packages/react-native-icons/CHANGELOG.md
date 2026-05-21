@@ -1,3 +1,9 @@
+## 2.0.327 (2026-05-20)
+
+### 🩹 Fixes
+
+- **nx:** mark react-icons and react-native-icons as implicitly depending on importer ([#1088](https://github.com/microsoft/fluentui-system-icons/pull/1088))
+
 ## 2.0.326 (2026-05-08)
 
 This release contains icon updates

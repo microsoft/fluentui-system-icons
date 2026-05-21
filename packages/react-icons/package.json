@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-icons",
-  "version": "2.0.326",
+  "version": "2.0.327",
   "sideEffects": false,
   "main": "lib-cjs/index.js",
   "module": "lib/index.js",
@@ -30,10 +30,10 @@
     "build:js": "node scripts/build.js",
     "prebuild": "npm run clean",
     "build": "npm run build:fonts-and-svg && npm run build:generate-chunks-and-atoms && npm run build:js",
-    "build-verify": "vitest run build-verify.test.js build-transforms.test.js",
+    "build-verify": "vitest run build-verify.test.js build-transforms.test.js build-color-render.test.js",
     "bundle-size": "monosize measure",
     "lint": "eslint src",
-    "test": "vitest --exclude build-verify.test.js --exclude build-transforms.test.js",
+    "test": "vitest --exclude build-verify.test.js --exclude build-transforms.test.js --exclude build-color-render.test.js",
     "type-check:infra": "../../node_modules/.bin/tsc -p tsconfig.utils.json"
   },
   "devDependencies": {
@@ -41,6 +41,7 @@
     "@griffel/babel-preset": "^1.8.1",
     "@griffel/eslint-plugin": "^2.0.2",
     "@types/react": "^17.0.2",
+    "@types/yargs": "^15.0.0",
     "concurrently": "^9.2.0",
     "eslint": "8.57.1",
     "eslint-plugin-react-hooks": "^5.2.0",

@@ -3,7 +3,13 @@ import fs from 'fs';
 import path from 'path';
 import { describe, it, expect, afterAll } from 'vitest';
 
-import { parseIconSource, buildIconExportCode, getCreateFluentIconHeader, generatePerIconFiles } from './convert.utils';
+import {
+  parseIconSource,
+  buildIconExportCode,
+  getCreateFluentIconHeader,
+  generatePerIconFiles,
+  parseSvgToNodes,
+} from './convert.utils';
 
 describe(`convert  utils`, () => {
   describe(`getCreateFluentIconHeader`, () => {
@@ -13,7 +19,7 @@ describe(`convert  utils`, () => {
       expect(header).toHaveLength(3);
       expect(header).toMatchInlineSnapshot(`
       [
-        ""use client";",
+        "\"use client\";",
         "import type { FluentIcon } from '../utils/createFluentIcon';",
         "import { createFluentIcon } from '../utils/createFluentIcon';",
       ]
@@ -66,7 +72,7 @@ describe(`convert  utils`, () => {
       expect(res?.iconData).toHaveProperty('paths');
     });
 
-    it('parses color icon and extracts rawSvg', () => {
+    it('parses color icon and extracts rawSvg, nodes', () => {
       writeFile('ic_fluent_color_test_20_color.svg', '<svg width="20"><g fill="#000"/><path d="M1 2"/></svg>');
       const res = parseIconSource({
         file: 'ic_fluent_color_test_20_color.svg',
@@ -79,6 +85,7 @@ describe(`convert  utils`, () => {
       expect(res?.exportName).toBe('ColorTestColor');
       expect(res?.isColor).toBe(true);
       expect(res?.iconData).toHaveProperty('rawSvg');
+      expect(res?.iconData).toHaveProperty('nodes');
     });
 
     it('sets flipInRtl when metadata indicates mirror', () => {
@@ -150,11 +157,17 @@ describe(`convert  utils`, () => {
       expect(code).not.toContain('color: true');
     });
 
-    it('generates export code for color icon with rawSvg', () => {
+    it('generates export code for color icon with rawSvg and nodes', () => {
       const code = buildIconExportCode({
         exportName: 'PatientColor',
         fileName: 'patient-color.tsx',
-        iconData: { rawSvg: '<g fill="#000"/><path d="M1 2" fill="#ff0000"/>' },
+        iconData: {
+          rawSvg: '<g fill="#000"/><path d="M1 2" fill="#ff0000"/>',
+          nodes: [
+            ['g', { fill: '#000' }],
+            ['path', { d: 'M1 2', fill: '#ff0000' }],
+          ],
+        },
         width: '20',
         isColor: true,
         flipInRtl: false,
@@ -162,10 +175,10 @@ describe(`convert  utils`, () => {
       expect(code).toMatchInlineSnapshot(
         `
         "/** @deprecated Color icons are deprecated. [See User Guidance](https://microsoft.github.io/fluentui-system-icons/?path=/docs/icons-user-guidance--docs#color-variants-deprecated) */
-        export const PatientColor: FluentIcon = (/*#__PURE__*/createFluentIcon('PatientColor', "20", \`<g fill="#000"/><path d="M1 2" fill="#ff0000"/>\`, { color: true }));"
+        export const PatientColor: FluentIcon = (/*#__PURE__*/createFluentIcon('PatientColor', \"20\", [[\"g\",{\"fill\":\"#000\"}],[\"path\",{\"d\":\"M1 2\",\"fill\":\"#ff0000\"}]], { color: true }));"
       `,
       );
-      expect(code).toContain('fill=');
+      expect(code).toContain('fill');
       expect(code).toContain('color: true');
     });
 
@@ -322,6 +335,59 @@ describe(`convert  utils`, () => {
         fs.rmSync(tmpSrc2, { recursive: true, force: true });
         fs.rmSync(tmpDest2, { recursive: true, force: true });
       });
+    });
+  });
+
+  describe('parseSvgToNodes', () => {
+    it('parses self-closing elements', () => {
+      const nodes = parseSvgToNodes('<path d="M1 2" fill="#000"/>');
+      expect(nodes).toEqual([['path', { d: 'M1 2', fill: '#000' }]]);
+    });
+
+    it('parses nested elements with children', () => {
+      const nodes = parseSvgToNodes('<defs><linearGradient id="a"><stop stop-color="#fff"/></linearGradient></defs>');
+      expect(nodes).toEqual([['defs', null, ['linearGradient', { id: 'a' }, ['stop', { stopColor: '#fff' }]]]]);
+    });
+
+    it('converts hyphenated SVG attributes to camelCase', () => {
+      const nodes = parseSvgToNodes('<path fill-opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"/>');
+      expect(nodes).toEqual([['path', { fillOpacity: '0.5', fillRule: 'evenodd', clipRule: 'evenodd' }]]);
+    });
+
+    it('parses multiple top-level elements', () => {
+      const nodes = parseSvgToNodes('<path d="M1"/><path d="M2"/>');
+      expect(nodes).toEqual([
+        ['path', { d: 'M1' }],
+        ['path', { d: 'M2' }],
+      ]);
+    });
+
+    it('parses inline style attributes as React-compatible style objects', () => {
+      const nodes = parseSvgToNodes(
+        '<g style="mask-type:alpha"><rect style="mix-blend-mode:multiply;opacity:0.5"/></g>',
+      );
+      expect(nodes).toEqual([
+        ['g', { style: { maskType: 'alpha' } }, ['rect', { style: { mixBlendMode: 'multiply', opacity: '0.5' } }]],
+      ]);
+    });
+
+    it('parses a real color icon SVG fragment', () => {
+      const svg =
+        '<path d="M2 8" fill="url(#a)"/><defs><linearGradient id="a" x1="1" gradientUnits="userSpaceOnUse"><stop stop-color="#52D17C"/><stop offset="1" stop-color="#22918B"/></linearGradient></defs>';
+      const nodes = parseSvgToNodes(svg);
+      expect(nodes).toEqual([
+        ['path', { d: 'M2 8', fill: 'url(#a)' }],
+        [
+          'defs',
+          null,
+          [
+            'linearGradient',
+            { id: 'a', x1: '1', gradientUnits: 'userSpaceOnUse' },
+            ['stop', { stopColor: '#52D17C' }],
+            ['stop', { offset: '1', stopColor: '#22918B' }],
+          ],
+        ],
+      ]);
     });
   });
 });

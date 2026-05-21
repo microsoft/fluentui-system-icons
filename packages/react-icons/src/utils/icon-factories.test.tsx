@@ -101,6 +101,31 @@ describe('React component tests', () => {
     expect(svg?.innerHTML).toContain('fill="blue"');
   });
 
+  test('createFluentIcon with color SvgNode[] containing style objects', () => {
+    const MyColorIcon = createFluentIcon(
+      'MyColorIcon',
+      '1em',
+      [
+        [
+          'g',
+          { style: { maskType: 'alpha' } as unknown as string },
+          [
+            'rect',
+            { width: '20', height: '20', fill: 'url(#a)', style: { mixBlendMode: 'multiply' } as unknown as string },
+          ],
+        ],
+      ],
+      { color: true },
+    );
+    const { container } = render(<MyColorIcon />);
+
+    const g = container.querySelector('g');
+    expect(g).toHaveStyle({ maskType: 'alpha' });
+
+    const rect = container.querySelector('rect');
+    expect(rect).toHaveStyle({ mixBlendMode: 'multiply' });
+  });
+
   test('bundleIcon creates icon with fui-Icon className on both filled and regular icons', () => {
     const d = 'M1 2 L3 4';
     const FilledIcon = createFluentIcon('MyIconFilled', '1em', [d]);

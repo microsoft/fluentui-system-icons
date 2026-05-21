@@ -1,10 +1,11 @@
+/.github/CODEOWNERS @microsoft/cxe-prg @microsoft/react-native-sdk-admins
 /.github/ISSUE_TEMPLATE/01-react-icons-bug-report.yml @microsoft/cxe-prg
 /.github/ISSUE_TEMPLATE/02-react-icons-feature-request.yml @microsoft/cxe-prg
 /.github/react-icons.instructions.md @microsoft/cxe-prg
 /.github/workflows/copilot-setup-steps.yml @microsoft/cxe-prg
-/.github/workflows/pr.yml @microsoft/cxe-prg @spencer-nelson
+/.github/workflows/pr.yml @microsoft/cxe-prg @microsoft/react-native-sdk-admins @spencer-nelson
 /.github/workflows/pr-summary-comment.yml @microsoft/cxe-prg
-/.github/workflows/publish.yml @microsoft/cxe-prg @spencer-nelson
+/.github/workflows/publish.yml @microsoft/cxe-prg @microsoft/react-native-sdk-admins @spencer-nelson
 /.github/workflows/publish-prerelease.yml @microsoft/cxe-prg
 /.github/workflows/bundle-size.baseline.yml @microsoft/cxe-prg
 /.github/workflows/deploy-docsite.yml @microsoft/cxe-prg
@@ -16,13 +17,15 @@ packages/docsite @microsoft/cxe-prg
 packages/icon-app @microsoft/cxe-prg
 packages/react-icons @microsoft/cxe-prg @microsoft/cxe-red
 packages/react-icons-font-subsetting-webpack-plugin @MLoughry @microsoft/cxe-prg
-packages/svg-icons @tomi-msft
-packages/svg-sprites @tomi-msft
-packages/react-native-icons @praveen970
+packages/react-icons-svg-sprite-subsetting-webpack-plugin @microsoft/cxe-prg
+packages/react-icons-atomic-webpack-loader @microsoft/cxe-prg
+packages/svg-icons
+packages/svg-sprites
+packages/react-native-icons @microsoft/react-native-sdk-admins
 
 
 ## Build Systems
-android/ @praveen970
+android/ @microsoft/react-native-sdk-admins
 flutter/ @nickromano
 ios/ @nickromano
 package-lock.json @microsoft/cxe-prg
