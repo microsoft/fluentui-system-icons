@@ -1,3 +1,9 @@
+## 2.0.328 (2026-05-22)
+
+### 🚀 Features
+
+- **react-icons:** add new and updated icons ([#1090](https://github.com/microsoft/fluentui-system-icons/pull/1090))
+
 ## 2.0.327 (2026-05-20)
 
 ### 🩹 Fixes
