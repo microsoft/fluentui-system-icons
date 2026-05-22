@@ -17029,6 +17029,16 @@
     "font": true,
     "type": "resizable"
   },
+  "OrganizationAddFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "OrganizationAddRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "OrganizationHorizontalFilled": {
     "svg": true,
     "font": true,
@@ -22305,6 +22315,16 @@
     "type": "resizable"
   },
   "SparkleCircleRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "SparkleCircleOffFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "SparkleCircleOffRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -28055,6 +28075,16 @@
     "type": "resizable"
   },
   "WeatherHazeRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "WeatherHumidityFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "WeatherHumidityRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -44109,6 +44139,16 @@
     "font": true,
     "type": "sized"
   },
+  "CalendarChat16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarChat16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "CalendarChat20Filled": {
     "svg": true,
     "font": true,
@@ -44125,6 +44165,36 @@
     "type": "sized"
   },
   "CalendarChat24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarChat28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarChat28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarChat32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarChat32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarChat48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarChat48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -54470,6 +54540,16 @@
     "type": "sized"
   },
   "CloudWords48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Clover12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Clover12Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -66974,6 +67054,16 @@
     "font": true,
     "type": "sized"
   },
+  "Drop32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Drop32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Drop48Filled": {
     "svg": true,
     "font": true,
@@ -70240,6 +70330,16 @@
     "type": "sized"
   },
   "FlagPrideProgress48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Flash12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Flash12Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -74335,6 +74435,16 @@
     "type": "sized"
   },
   "GridCircles28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GridDots16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GridDots16Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -90079,6 +90189,36 @@
     "font": true,
     "type": "sized"
   },
+  "OrganizationAdd16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "OrganizationAdd16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "OrganizationAdd20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "OrganizationAdd20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "OrganizationAdd24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "OrganizationAdd24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "OrganizationHorizontal16Filled": {
     "svg": true,
     "font": true,
@@ -102209,6 +102349,16 @@
     "font": true,
     "type": "sized"
   },
+  "Rhombus12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Rhombus12Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Rhombus16Filled": {
     "svg": true,
     "font": true,
@@ -102775,6 +102925,16 @@
     "type": "sized"
   },
   "Rss24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Ruler12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Ruler12Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -109209,6 +109369,46 @@
     "font": true,
     "type": "sized"
   },
+  "SparkleCircleOff16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleCircleOff16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleCircleOff20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleCircleOff20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleCircleOff24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleCircleOff24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleCircleOff28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleCircleOff28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "SparkleInfo20Filled": {
     "svg": true,
     "font": true,
@@ -109255,6 +109455,36 @@
     "type": "sized"
   },
   "SparkleOff24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleOff28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleOff28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleOff32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleOff32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleOff48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleOff48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -127960,6 +128190,86 @@
     "type": "sized"
   },
   "WeatherHaze48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity12Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherMoon12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherMoon12Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
