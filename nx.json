@@ -17,7 +17,8 @@
         "projects": [
           "packages/react-icons",
           "packages/react-icons-font-subsetting-webpack-plugin",
-          "packages/react-native-icons"
+          "packages/react-native-icons",
+          "packages/react-native-icons-modular"
         ],
         "projectsRelationship": "independent"
       },

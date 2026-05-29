@@ -1,0 +1,7 @@
+src/
+intermediate/
+*.ts
+!*.d.ts
+tsconfig.json
+convert-rn-modular.cjs
+generate-exports-map.cjs

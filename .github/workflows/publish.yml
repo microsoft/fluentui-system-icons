@@ -208,6 +208,14 @@ jobs:
           access: public
           package: packages/react-native-icons/package.json
 
+      - name: Publish react-native-icons-modular to npm
+        if: ${{ !inputs.dry-run }}
+        uses: JS-DevTools/npm-publish@0fd2f4369c5d6bcfcde6091a7c527d810b9b5c3f # v4.1.5
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          access: public
+          package: packages/react-native-icons-modular/package.json
+
       # Android
       - name: Run Android generate script
         env:

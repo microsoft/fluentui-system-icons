@@ -1,0 +1,9 @@
+# Generated directories — do not commit
+/intermediate/
+/src/icons/
+/src/sizedIcons/
+/lib/
+
+# Build artifacts
+*.tgz
+node_modules/
