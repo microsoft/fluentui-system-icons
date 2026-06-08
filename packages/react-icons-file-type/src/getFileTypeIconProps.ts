@@ -28,6 +28,37 @@ const LIST_FORM = 'listform';
 const CAMPAIGN = 'spocampaign';
 const SHORTCUTS_DEFAULT_FOLDER = 'companyfolder';
 
+/**
+ * Maps a numeric {@link FileIconType} value to its icon base name. Indexed by the
+ * enum value so a lookup replaces the previous per-case `switch`. Values without an
+ * entry (e.g. `genericFile`) fall back to {@link GENERIC_FILE}.
+ */
+const TYPE_TO_ICON_NAME: { [type: number]: string } = {
+  [FileIconType.docset]: DOCSET_FOLDER,
+  [FileIconType.folder]: FOLDER,
+  [FileIconType.listItem]: LIST_ITEM,
+  [FileIconType.sharedFolder]: SHARED_FOLDER,
+  [FileIconType.stream]: STREAM,
+  [FileIconType.multiple]: MULTIPLE_ITEMS,
+  [FileIconType.news]: NEWS,
+  [FileIconType.desktopFolder]: DESKTOP_FOLDER,
+  [FileIconType.documentsFolder]: DOCUMENTS_FOLDER,
+  [FileIconType.picturesFolder]: PICTURES_FOLDER,
+  [FileIconType.linkedFolder]: LINKED_FOLDER,
+  [FileIconType.list]: LIST,
+  [FileIconType.form]: FORM,
+  [FileIconType.sway]: SWAY,
+  [FileIconType.playlist]: PLAYLIST,
+  [FileIconType.loopworkspace]: LOOP_WORKSPACE,
+  [FileIconType.planner]: PLANNER,
+  [FileIconType.todoItem]: TODOITEM,
+  [FileIconType.portfolio]: PORTFOLIO,
+  [FileIconType.album]: ALBUM,
+  [FileIconType.listForm]: LIST_FORM,
+  [FileIconType.campaign]: CAMPAIGN,
+  [FileIconType.shortcutsdefaultfolder]: SHORTCUTS_DEFAULT_FOLDER,
+};
+
 export interface FileTypeIconOptions {
   /**
    * The file extension, such as .pptx, for which you need an icon.
@@ -57,85 +88,14 @@ export function getFileTypeIconNameFromExtensionOrType(
   extension: string | undefined,
   type: FileIconType | undefined,
 ): string {
-  let iconBaseName: string | undefined;
   if (extension) {
     // Strip periods, force lowercase.
     extension = extension.replace('.', '').toLowerCase();
     return getFileTypeIconExtensionMap()[extension] || GENERIC_FILE;
   } else if (type) {
-    switch (type) {
-      case FileIconType.docset:
-        iconBaseName = DOCSET_FOLDER;
-        break;
-      case FileIconType.folder:
-        iconBaseName = FOLDER;
-        break;
-      case FileIconType.listItem:
-        iconBaseName = LIST_ITEM;
-        break;
-      case FileIconType.sharedFolder:
-        iconBaseName = SHARED_FOLDER;
-        break;
-      case FileIconType.stream:
-        iconBaseName = STREAM;
-        break;
-      case FileIconType.multiple:
-        iconBaseName = MULTIPLE_ITEMS;
-        break;
-      case FileIconType.news:
-        iconBaseName = NEWS;
-        break;
-      case FileIconType.desktopFolder:
-        iconBaseName = DESKTOP_FOLDER;
-        break;
-      case FileIconType.documentsFolder:
-        iconBaseName = DOCUMENTS_FOLDER;
-        break;
-      case FileIconType.picturesFolder:
-        iconBaseName = PICTURES_FOLDER;
-        break;
-      case FileIconType.linkedFolder:
-        iconBaseName = LINKED_FOLDER;
-        break;
-      case FileIconType.list:
-        iconBaseName = LIST;
-        break;
-      case FileIconType.form:
-        iconBaseName = FORM;
-        break;
-      case FileIconType.sway:
-        iconBaseName = SWAY;
-        break;
-      case FileIconType.playlist:
-        iconBaseName = PLAYLIST;
-        break;
-      case FileIconType.loopworkspace:
-        iconBaseName = LOOP_WORKSPACE;
-        break;
-      case FileIconType.planner:
-        iconBaseName = PLANNER;
-        break;
-      case FileIconType.todoItem:
-        iconBaseName = TODOITEM;
-        break;
-      case FileIconType.portfolio:
-        iconBaseName = PORTFOLIO;
-        break;
-      case FileIconType.album:
-        iconBaseName = ALBUM;
-        break;
-      case FileIconType.listForm:
-        iconBaseName = LIST_FORM;
-        break;
-      case FileIconType.campaign:
-        iconBaseName = CAMPAIGN;
-        break;
-      case FileIconType.shortcutsdefaultfolder:
-        iconBaseName = SHORTCUTS_DEFAULT_FOLDER;
-        break;
-    }
+    return TYPE_TO_ICON_NAME[type] || GENERIC_FILE;
   }
-  return iconBaseName || GENERIC_FILE;
+  return GENERIC_FILE;
 }
 
 export function getFileTypeIconSuffix(
