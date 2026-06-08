@@ -34,11 +34,3 @@ import { FileTypeIcon, FileIconType } from '@fluentui/react-icons-file-type';
 
 <FileTypeIcon type={FileIconType.folder} size={24} />;
 ```
-
-## Migrating from v8 (`@fluentui/react-file-type-icons`)
-
-The v9 package is **not** a drop-in re-export of v8 — the package name is different, several v8
-APIs are intentionally not ported, and `FileIconType` is now a `const` object. See the dedicated
-**File Type Icons → Migration (v8 → v9)** page for the full, step-by-step guide (package rename,
-removing `initializeFileTypeIcons()`, the `getFileTypeIconProps`/`<Icon>` → `FileTypeIcon`
-rewrite, configuring a custom CDN, and the list of v8 APIs that were not ported).
