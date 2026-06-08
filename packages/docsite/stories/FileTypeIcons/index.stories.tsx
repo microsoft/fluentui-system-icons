@@ -1,8 +1,9 @@
-import { FileTypeIcon } from '@fluentui/react-icons-file-type';
+import { FileTypeIcon, FileIconType } from '@fluentui/react-icons-file-type';
 import descriptionMd from './FileTypeIconsDescription.md';
 
 export { Default } from './FileTypeIconsDefault.stories';
 export { Sizes } from './FileTypeIconsSizes.stories';
+export { Types } from './FileTypeIconsTypes.stories';
 export { Provider } from './FileTypeIconsProvider.stories';
 
 export default {
@@ -22,7 +23,9 @@ export default {
       type: { name: 'string' },
     },
     type: {
-      control: false,
+      control: 'select',
+      options: Object.values(FileIconType),
+      labels: Object.fromEntries(Object.entries(FileIconType).map(([name, value]) => [value, name])),
       description: 'A `FileIconType` for icons not associated with a file extension, such as `folder`',
     },
     size: {
@@ -36,11 +39,6 @@ export default {
       options: ['svg', 'png'],
       description: 'The image format to use',
       table: { defaultValue: { summary: 'svg' } },
-    },
-    baseUrl: {
-      control: false,
-      description: 'Override the asset host for this icon. Falls back to the provider value or the Fluent CDN default',
-      type: { name: 'string' },
     },
   },
 };

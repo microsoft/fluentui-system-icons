@@ -14,9 +14,8 @@ import { FileTypeIcon } from '@fluentui/react-icons-file-type';
 
 Wrap a subtree with `FileTypeIconsProvider` to serve the icons from your own host (for example a same-origin CDN proxy). The `baseUrl` is resolved with the following precedence:
 
-1. the `baseUrl` prop on `<FileTypeIcon>` (per-icon override)
-2. the `baseUrl` from the nearest `<FileTypeIconsProvider>`
-3. the Fluent CDN default
+1. the `baseUrl` from the nearest `<FileTypeIconsProvider>`
+2. the Fluent CDN default
 
 ```tsx
 import { FileTypeIconsProvider, FileTypeIcon } from '@fluentui/react-icons-file-type';
@@ -63,11 +62,11 @@ import { FileTypeIcon } from '@fluentui/react-icons-file-type';
 
 Key differences:
 
-| v8                                                      | v9                                                                                             |
-| ------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `initializeFileTypeIcons()` required at startup         | Not needed — remove the call                                                                   |
-| `<Icon {...getFileTypeIconProps(options)} />`           | `<FileTypeIcon {...options} />`                                                                |
-| Custom CDN passed to `initializeFileTypeIcons(baseUrl)` | `<FileTypeIconsProvider baseUrl="...">` (or the `baseUrl` prop); the Fluent CDN is the default |
-| Icons registered into the global icon registry          | No global state; assets resolved per render                                                    |
+| v8                                                      | v9                                                                     |
+| ------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `initializeFileTypeIcons()` required at startup         | Not needed — remove the call                                           |
+| `<Icon {...getFileTypeIconProps(options)} />`           | `<FileTypeIcon {...options} />`                                        |
+| Custom CDN passed to `initializeFileTypeIcons(baseUrl)` | `<FileTypeIconsProvider baseUrl="...">`; the Fluent CDN is the default |
+| Icons registered into the global icon registry          | No global state; assets resolved per render                            |
 
-`getFileTypeIconProps` is still exported for advanced scenarios, but most code can switch to the `FileTypeIcon` component. The `getFileTypeIconAsUrl` and `getFileTypeIconAsHTMLString` helpers cover non-React usage.
+In v9 the file type icons are rendered through the `FileTypeIcon` component — there is no `getFileTypeIconProps`/`<Icon>` indirection. For non-extension icons (folders, lists, etc.) use the `type` prop with `FileIconType`, and configure the asset host via `FileTypeIconsProvider`.
