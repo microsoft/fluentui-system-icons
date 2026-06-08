@@ -1,34 +1,14 @@
 import * as React from 'react';
 import { mergeClasses } from '@griffel/react';
 import { getFileTypeIconSrc } from './getFileTypeIconSrc';
+import type { FileTypeIconOptions } from './getFileTypeIconSrc';
 import { useFileTypeIconsContext } from './FileTypeIconsContext';
 import { useFileTypeIconStyles } from './FileTypeIcon.styles';
 import { DEFAULT_ICON_SIZE } from './constants';
-import type { FileIconTypeInput } from './FileIconType';
-import type { FileTypeIconSize, ImageFileType } from './constants';
 
-export interface FileTypeIconProps extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'src' | 'width' | 'height'> {
-  /**
-   * The file extension, such as `pptx`, for which an icon is needed. For file type icons
-   * that are not associated with a file extension, such as `folder`, use the `type` prop.
-   */
-  extension?: string;
-  /**
-   * The type of file type icon needed. Use this for icons that are not associated with a
-   * file extension, such as `folder`.
-   */
-  type?: FileIconTypeInput;
-  /**
-   * The size of the icon in pixels.
-   * @default 16
-   */
-  size?: FileTypeIconSize;
-  /**
-   * The image format to use.
-   * @default 'svg'
-   */
-  imageFileType?: ImageFileType;
-}
+export interface FileTypeIconProps
+  extends FileTypeIconOptions,
+    Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'src' | 'width' | 'height'> {}
 
 /**
  * Resolves the accessibility attributes for the rendered `<img>`.
