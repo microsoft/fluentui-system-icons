@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { mergeClasses } from '@griffel/react';
-import { getFileTypeIconSrc } from './getFileTypeIconSrc';
-import type { FileTypeIconOptions } from './getFileTypeIconSrc';
+import { getFileTypeIconSrc } from './fileTypeIconResolver';
+import type { FileTypeIconOptions } from './fileTypeIconResolver';
 import { useFileTypeIconsContext } from './FileTypeIconsContext';
 import { useFileTypeIconStyles } from './FileTypeIcon.styles';
 import { DEFAULT_ICON_SIZE } from './constants';

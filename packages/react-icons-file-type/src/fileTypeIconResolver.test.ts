@@ -2,7 +2,7 @@ import {
   getFileTypeIconNameFromExtensionOrType,
   getFileTypeIconSrc,
   getFileTypeIconSuffix,
-} from './getFileTypeIconSrc';
+} from './fileTypeIconResolver';
 import { getFileTypeIconExtensionMap } from './fileTypeIconMap.generated';
 import { FileIconType } from './FileIconType';
 import { DEFAULT_BASE_URL } from './constants';
