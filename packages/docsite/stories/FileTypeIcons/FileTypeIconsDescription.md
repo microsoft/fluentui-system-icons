@@ -34,3 +34,33 @@ import { FileTypeIcon, FileIconType } from '@fluentui/react-icons-file-type';
 
 <FileTypeIcon type={FileIconType.folder} size={24} />;
 ```
+
+## Headless (style-free) API
+
+The default `FileTypeIcon` is styled with [Griffel](https://github.com/microsoft/griffel) so it works with zero setup. If you want to avoid bundling the Griffel runtime — for example to ship the smallest possible bundle or to own all styling yourself — import from the `/headless` subpath instead.
+
+The headless component is identical in behavior (same props, same `src`/accessibility resolution) but ships **no** styling runtime. It tags the rendered `<img>` with a `data-fui-filetype-icon` attribute that you can style. Bring your own styles in one of two ways:
+
+```tsx
+// Option A: import the opt-in stylesheet once (reproduces the default box behavior)
+import '@fluentui/react-icons-file-type/headless/styles.css';
+import { FileTypeIcon } from '@fluentui/react-icons-file-type/headless';
+
+<FileTypeIcon extension="docx" size={24} />;
+```
+
+```css
+/* Option B: target the data attribute (or pass your own className) with your own CSS */
+[data-fui-filetype-icon] {
+  display: inline-block;
+  overflow: hidden;
+  object-fit: contain;
+}
+```
+
+The `/headless` entry point re-exports the same `FileTypeIconsProvider`, `useFileTypeIconsContext`, `FileIconType`, and constants, so it is fully usable on its own. Prefer the default `@fluentui/react-icons-file-type` entry point unless you specifically need to drop the Griffel runtime.
+
+| Entry point                                 | Griffel runtime | Styling                                            |
+| ------------------------------------------- | --------------- | -------------------------------------------------- |
+| `@fluentui/react-icons-file-type` (default) | included        | Griffel, zero setup                                |
+| `@fluentui/react-icons-file-type/headless`  | none            | bring your own (`headless/styles.css` or your CSS) |
