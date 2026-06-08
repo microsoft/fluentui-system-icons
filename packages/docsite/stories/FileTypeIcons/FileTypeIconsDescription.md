@@ -37,36 +37,8 @@ import { FileTypeIcon, FileIconType } from '@fluentui/react-icons-file-type';
 
 ## Migrating from v8 (`@fluentui/react-file-type-icons`)
 
-In v8 you registered the icons globally and rendered them through the v8 `<Icon>` component:
-
-```tsx
-// v8
-import { initializeFileTypeIcons } from '@fluentui/react-file-type-icons';
-import { Icon } from '@fluentui/react';
-import { getFileTypeIconProps } from '@fluentui/react-file-type-icons';
-
-// once, at app startup
-initializeFileTypeIcons();
-
-<Icon {...getFileTypeIconProps({ extension: 'docx', size: 24 })} />;
-```
-
-In v9 there is no global registry. The Fluent CDN is still the default asset host, but it is now an overridable default of `FileTypeIconsProvider` rather than hardcoded into your app — render `FileTypeIcon` directly:
-
-```tsx
-// v9
-import { FileTypeIcon } from '@fluentui/react-icons-file-type';
-
-<FileTypeIcon extension="docx" size={24} />;
-```
-
-Key differences:
-
-| v8                                                      | v9                                                                     |
-| ------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `initializeFileTypeIcons()` required at startup         | Not needed — remove the call                                           |
-| `<Icon {...getFileTypeIconProps(options)} />`           | `<FileTypeIcon {...options} />`                                        |
-| Custom CDN passed to `initializeFileTypeIcons(baseUrl)` | `<FileTypeIconsProvider baseUrl="...">`; the Fluent CDN is the default |
-| Icons registered into the global icon registry          | No global state; assets resolved per render                            |
-
-In v9 the file type icons are rendered through the `FileTypeIcon` component — there is no `getFileTypeIconProps`/`<Icon>` indirection. For non-extension icons (folders, lists, etc.) use the `type` prop with `FileIconType`, and configure the asset host via `FileTypeIconsProvider`.
+The v9 package is **not** a drop-in re-export of v8 — the package name is different, several v8
+APIs are intentionally not ported, and `FileIconType` is now a `const` object. See the dedicated
+**File Type Icons → Migration (v8 → v9)** page for the full, step-by-step guide (package rename,
+removing `initializeFileTypeIcons()`, the `getFileTypeIconProps`/`<Icon>` → `FileTypeIcon`
+rewrite, configuring a custom CDN, and the list of v8 APIs that were not ported).

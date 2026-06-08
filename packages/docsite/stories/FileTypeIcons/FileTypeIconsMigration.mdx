@@ -1,0 +1,114 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="File Type Icons/Migration (v8 → v9)" />
+
+<h1 className="sbdocs-title">Migrating from v8</h1>
+
+> This page is written to be self-contained for both humans and automated agents. It lists the
+> exact package/API differences and the rewrite for each v8 usage pattern. The v9 package
+> (`@fluentui/react-icons-file-type`) is **not** a drop-in re-export of v8
+> (`@fluentui/react-file-type-icons`) — the package name is different, several v8 APIs are
+> intentionally not ported, and `FileIconType` is now a `const` object.
+
+## 1. The package name changed
+
+The name's words are reordered — update `package.json` and every import.
+
+|          | Package                           |
+| -------- | --------------------------------- |
+| v8 (old) | `@fluentui/react-file-type-icons` |
+| v9 (new) | `@fluentui/react-icons-file-type` |
+
+```bash
+npm uninstall @fluentui/react-file-type-icons
+npm install @fluentui/react-icons-file-type
+```
+
+```diff
+- import { ... } from '@fluentui/react-file-type-icons';
++ import { ... } from '@fluentui/react-icons-file-type';
+```
+
+## 2. Render the `FileTypeIcon` component (no global registry)
+
+In v8 you registered the icons globally and rendered them through the v8 `<Icon>` component:
+
+```tsx
+// v8
+import { initializeFileTypeIcons, getFileTypeIconProps } from '@fluentui/react-file-type-icons';
+import { Icon } from '@fluentui/react';
+
+// once, at app startup
+initializeFileTypeIcons();
+
+<Icon {...getFileTypeIconProps({ extension: 'docx', size: 24 })} />;
+```
+
+In v9 there is **no global registry** and no `initializeFileTypeIcons()` — render `FileTypeIcon`
+directly with the same options as props (`extension`, `type`, `size`, `imageFileType`):
+
+```tsx
+// v9
+import { FileTypeIcon } from '@fluentui/react-icons-file-type';
+
+<FileTypeIcon extension="docx" size={24} />;
+```
+
+## 3. Configure a custom CDN via the provider
+
+The Fluent CDN is the **default** asset host in both v8 and v9. To override it, wrap a subtree
+with `FileTypeIconsProvider` instead of passing a base URL to `initializeFileTypeIcons()`. There
+is no per-`FileTypeIcon` `baseUrl` prop.
+
+```tsx
+// v9
+import { FileTypeIconsProvider, FileTypeIcon } from '@fluentui/react-icons-file-type';
+
+<FileTypeIconsProvider baseUrl="https://my-cdn.example.com/item-types/">
+  <FileTypeIcon extension="pptx" size={24} />
+</FileTypeIconsProvider>;
+```
+
+## 4. `FileIconType` is a `const` object, not an `enum`
+
+Value and type usage are unchanged (`FileIconType.folder` and `type: FileIconType` both work),
+so it's a drop-in for typical use. The one behavioral difference: a `const` object has **no
+reverse mapping**, so `FileIconType[7]` (number → name) is not available. If you relied on that,
+keep your own name table.
+
+```tsx
+import { FileTypeIcon, FileIconType } from '@fluentui/react-icons-file-type';
+
+<FileTypeIcon type={FileIconType.folder} size={24} />;
+```
+
+## Key differences at a glance
+
+| v8                                                      | v9                                                                     |
+| ------------------------------------------------------- | ---------------------------------------------------------------------- |
+| Package `@fluentui/react-file-type-icons`               | Package `@fluentui/react-icons-file-type`                              |
+| `initializeFileTypeIcons()` required at startup         | Not needed — remove the call                                           |
+| `<Icon {...getFileTypeIconProps(options)} />`           | `<FileTypeIcon {...options} />`                                        |
+| Custom CDN passed to `initializeFileTypeIcons(baseUrl)` | `<FileTypeIconsProvider baseUrl="...">`; the Fluent CDN is the default |
+| Icons registered into the global icon registry          | No global state; assets resolved per render                            |
+| `FileIconType` is a TS `enum` (with reverse mapping)    | `FileIconType` is a `const` object (no reverse mapping)                |
+
+## APIs that were not ported
+
+These v8 exports are intentionally **not** part of the v9 public API — use the `FileTypeIcon`
+component instead:
+
+| v8 export                       | v9                                            |
+| ------------------------------- | --------------------------------------------- |
+| `initializeFileTypeIcons()`     | removed — no global registry                  |
+| `getFileTypeIconProps()`        | `<FileTypeIcon {...options} />`               |
+| `getFileTypeIconAsUrl()`        | not exported — use `<FileTypeIcon>`           |
+| `getFileTypeIconAsHTMLString()` | not exported — use `<FileTypeIcon>`           |
+| `FileTypeIconMap`               | not exported — internal implementation detail |
+
+## v9 public API surface
+
+- **Components:** `FileTypeIcon`, `FileTypeIconsProvider`
+- **Hook:** `useFileTypeIconsContext`
+- **Values:** `FileIconType`, `DEFAULT_BASE_URL`, `FLUENT_CDN_BASE_URL`, `DEFAULT_ICON_SIZE`, `ICON_SIZES`
+- **Types:** `FileTypeIconProps`, `FileTypeIconsContextValue`, `FileTypeIconsProviderProps`, `FileIconTypeInput`, `FileTypeIconSize`, `ImageFileType`
