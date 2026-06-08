@@ -16,6 +16,7 @@ AGENTS.md @microsoft/cxe-prg
 packages/docsite @microsoft/cxe-prg
 packages/icon-app @microsoft/cxe-prg
 packages/react-icons @microsoft/cxe-prg @microsoft/cxe-red
+packages/react-icons-file-type @microsoft/cxe-prg @microsoft/cxe-red @bigbadcapers
 packages/react-icons-font-subsetting-webpack-plugin @MLoughry @microsoft/cxe-prg
 packages/react-icons-svg-sprite-subsetting-webpack-plugin @microsoft/cxe-prg
 packages/react-icons-atomic-webpack-loader @microsoft/cxe-prg
