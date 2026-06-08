@@ -1,85 +1,25 @@
 import * as React from 'react';
 import { mergeClasses } from '@griffel/react';
-import { getFileTypeIconSrc } from './fileTypeIconResolver';
-import type { FileTypeIconOptions } from './fileTypeIconResolver';
-import { useFileTypeIconsContext } from './FileTypeIconsContext';
+import { FileTypeIcon as FileTypeIconHeadless } from './headless/FileTypeIcon';
+import type { FileTypeIconProps } from './headless/FileTypeIcon';
 import { useFileTypeIconStyles } from './FileTypeIcon.styles';
-import { DEFAULT_ICON_SIZE } from './constants';
 
-export interface FileTypeIconProps
-  extends FileTypeIconOptions,
-    Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'src' | 'width' | 'height'> {}
+export type { FileTypeIconProps } from './headless/FileTypeIcon';
 
 /**
- * Resolves the accessibility attributes for the rendered `<img>`.
+ * Renders a file type icon as an `<img>` sourced from CDN-hosted assets, styled with Griffel
+ * (zero setup required). This is the default entry point.
  *
- * The icon is considered *labelled* when it has an accessible name — a non-empty `alt`
- * (or `extension` fallback), an `aria-label`, an `aria-labelledby`, or the native `title`
- * tooltip. Otherwise it is treated as purely decorative.
+ * The component is a thin wrapper over the headless `FileTypeIcon` from
+ * `@fluentui/react-icons-file-type/headless` — it layers the static Griffel styles on top via
+ * `mergeClasses`. To avoid the Griffel runtime, import from the `/headless` subpath and provide
+ * your own styles (see `headless/styles.css`).
  *
- * Notes:
- * - `role` is intentionally omitted. A native `<img>` already exposes the implicit `img`
- *   role when it has an accessible name, so setting `role="img"` would be redundant.
- * - We do NOT mirror the `title` -> `aria-label` mapping used for SVG icons (see
- *   `useIconState` in `@fluentui/react-icons`). That mapping is an SVG-specific workaround
- *   because SVG `<title>` is a child element, not an attribute. On a native `<img>`, `title`
- *   is a real HTML attribute that both renders a tooltip and participates in the accessible
- *   name computation (priority: `aria-labelledby` > `aria-label` > `alt` > `title`).
- * - When labelled by `aria-*` or `title`, we omit `alt` entirely rather than emit `alt=""`.
- *   An empty `alt` forces the decorative (`presentation`) role and suppresses those name
- *   sources, which would hide the icon from assistive technologies.
- * - For truly decorative icons we emit `alt=""` (the spec-defined decorative opt-out) and
- *   additionally set `aria-hidden` as a defensive guard against browser auto-labelling
- *   heuristics (e.g. generated image descriptions) that could otherwise surface the image
- *   to assistive technologies.
- */
-function getImageA11yProps(props: FileTypeIconProps): { alt?: string; 'aria-hidden'?: true } {
-  const resolvedAlt = props.alt ?? props.extension;
-
-  // Labelled by alt/extension -> use it as the accessible name.
-  if (resolvedAlt) {
-    return { alt: resolvedAlt };
-  }
-
-  // Labelled by aria-* or the native title tooltip -> keep the icon in the a11y tree and
-  // omit alt so those sources can supply the accessible name (alt="" would force a
-  // decorative role and suppress them).
-  if (props['aria-label'] || props['aria-labelledby'] || props.title) {
-    return {};
-  }
-
-  // Truly decorative -> spec-defined opt-out plus defensive guard against auto-labelling.
-  return { alt: '', 'aria-hidden': true };
-}
-
-/**
- * Renders a file type icon as an `<img>` sourced from CDN-hosted assets.
- *
- * The asset host is resolved from the nearest `FileTypeIconsProvider`, falling back to
- * the Fluent CDN default when no provider is present.
+ * The asset host is resolved from the nearest `FileTypeIconsProvider`, falling back to the
+ * Fluent CDN default when no provider is present.
  */
 export const FileTypeIcon: React.FC<FileTypeIconProps> = (props) => {
-  const { extension, type, size = DEFAULT_ICON_SIZE, imageFileType, className, ...imgProps } = props;
-
-  const { baseUrl, targetWindow } = useFileTypeIconsContext();
   const styles = useFileTypeIconStyles();
 
-  const src = getFileTypeIconSrc({ extension, type, size, imageFileType }, baseUrl, targetWindow);
-
-  if (!src) {
-    return null;
-  }
-
-  const a11yProps = getImageA11yProps(props);
-
-  return (
-    <img
-      {...imgProps}
-      {...a11yProps}
-      src={src}
-      width={size}
-      height={size}
-      className={mergeClasses(styles.root, className)}
-    />
-  );
+  return <FileTypeIconHeadless {...props} className={mergeClasses(styles.root, props.className)} />;
 };

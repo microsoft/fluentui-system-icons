@@ -3,7 +3,8 @@
 // Licensed under the MIT license.
 
 const { execSync } = require('node:child_process');
-const { join } = require('node:path');
+const fs = require('node:fs');
+const { join, dirname } = require('node:path');
 
 main({ root: join(__dirname, '..') });
 
@@ -17,6 +18,24 @@ function main(options) {
 
   transpileTsc({ moduleFormat: 'esnext', outDir: 'lib' }, projectRoot);
   transpileTsc({ moduleFormat: 'commonjs', outDir: 'lib-cjs' }, projectRoot);
+
+  // tsc does not emit non-TS assets — copy the opt-in headless CSS into both outputs.
+  copyAsset(join('src', 'headless', 'styles.css'), join('lib', 'headless', 'styles.css'), projectRoot);
+  copyAsset(join('src', 'headless', 'styles.css'), join('lib-cjs', 'headless', 'styles.css'), projectRoot);
+}
+
+/**
+ * Copies a file from `from` to `to` (both relative to `baseDir`), creating directories as needed.
+ *
+ * @param {string} from
+ * @param {string} to
+ * @param {string} baseDir
+ */
+function copyAsset(from, to, baseDir) {
+  const dest = join(baseDir, to);
+  console.log(`Copying asset ${from} -> ${to}`);
+  fs.mkdirSync(dirname(dest), { recursive: true });
+  fs.copyFileSync(join(baseDir, from), dest);
 }
 
 /**

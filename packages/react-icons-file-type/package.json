@@ -6,7 +6,9 @@
   "main": "lib-cjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/headless/styles.css"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/microsoft/fluentui-system-icons.git",
@@ -56,6 +58,13 @@
       "types": "./lib/index.d.ts",
       "import": "./lib/index.js",
       "require": "./lib-cjs/index.js"
-    }
+    },
+    "./headless": {
+      "types": "./lib/headless/index.d.ts",
+      "import": "./lib/headless/index.js",
+      "require": "./lib-cjs/headless/index.js"
+    },
+    "./headless/styles.css": "./lib/headless/styles.css",
+    "./package.json": "./package.json"
   }
 }
