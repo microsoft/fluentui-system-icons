@@ -1,7 +1,6 @@
 import { FileTypeIconMap } from './FileTypeIconMap';
 import { FileIconType } from './FileIconType';
 import type { FileIconTypeInput } from './FileIconType';
-import { DEFAULT_ICON_SIZE } from './constants';
 import type { FileTypeIconSize, ImageFileType } from './constants';
 
 let _extensionToIconName: { [key: string]: string };
@@ -54,26 +53,6 @@ export interface FileTypeIconOptions {
    * @default 'svg'
    */
   imageFileType?: ImageFileType;
-}
-
-/**
- * This function returns properties for a file type icon given the FileTypeIconOptions.
- * It accounts for different device pixel ratios. For example,
- * `getFileTypeIconProps({ extension: 'doc', size: 16, imageFileType: 'png' })`
- * will return `{ iconName: 'docx16_2x_png' }` if the `devicePixelRatio` is 2.
- * @param options
- */
-export function getFileTypeIconProps(options: FileTypeIconOptions): { iconName: string; 'aria-label'?: string } {
-  // First, obtain the base name of the icon using the extension or type.
-  const { extension, type, size, imageFileType } = options;
-
-  const iconBaseName = getFileTypeIconNameFromExtensionOrType(extension, type);
-  // Next, obtain the suffix using the icon size, user's device pixel ration, and
-  // preference for svg or png
-  const _size: FileTypeIconSize = size || DEFAULT_ICON_SIZE;
-  const suffix: string = getFileTypeIconSuffix(_size, imageFileType);
-
-  return { iconName: iconBaseName + suffix, 'aria-label': extension };
 }
 
 export function getFileTypeIconNameFromExtensionOrType(
@@ -182,11 +161,10 @@ export function getFileTypeIconSuffix(
   imageFileType: ImageFileType = 'svg',
   win?: Window,
 ): string {
-  // SSR-safe: `window` may be undefined in non-DOM environments. Default the
-  // device pixel ratio to 1 (the standard-density asset) when it is unavailable.
-  // eslint-disable-next-line no-restricted-globals
-  const resolvedWindow = win ?? (typeof window !== 'undefined' ? window : undefined);
-  const devicePixelRatio: number = resolvedWindow?.devicePixelRatio ?? 1;
+  // The target window is supplied by the caller (resolved from the
+  // `FileTypeIconsProvider` context). Default the device pixel ratio to 1
+  // (the standard-density asset) when no window is available, e.g. during SSR.
+  const devicePixelRatio: number = win?.devicePixelRatio ?? 1;
   let devicePixelRatioSuffix = ''; // Default is 1x
 
   // SVGs scale well, so you can generally use the default image.

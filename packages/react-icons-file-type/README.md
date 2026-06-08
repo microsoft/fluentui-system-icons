@@ -40,9 +40,8 @@ function App() {
 
 `baseUrl` resolution precedence:
 
-1. the `baseUrl` prop on `<FileTypeIcon>` (per-icon override)
-2. the `baseUrl` from the nearest `<FileTypeIconsProvider>`
-3. the Fluent CDN default
+1. the `baseUrl` from the nearest `<FileTypeIconsProvider>`
+2. the Fluent CDN default
 
 ### Icons without a file extension
 
@@ -53,24 +52,6 @@ import { FileTypeIcon, FileIconType } from '@fluentui/react-icons-file-type';
 
 <FileTypeIcon type={FileIconType.folder} size={24} />;
 ```
-
-### Framework-agnostic helpers
-
-For non-React environments or custom rendering:
-
-```tsx
-import {
-  getFileTypeIconAsUrl,
-  getFileTypeIconAsHTMLString,
-  getFileTypeIconProps,
-} from '@fluentui/react-icons-file-type';
-
-getFileTypeIconAsUrl({ extension: 'docx', size: 24 }); // -> "https://.../24/docx.svg"
-getFileTypeIconAsHTMLString({ extension: 'docx', size: 24 }); // -> "<img ... />"
-getFileTypeIconProps({ extension: 'docx', size: 24 }); // -> { iconName, 'aria-label' }
-```
-
-All helpers accept an optional `baseUrl` second argument and default to the Fluent CDN.
 
 ## Migrating from `@fluentui/react-file-type-icons` (v8)
 

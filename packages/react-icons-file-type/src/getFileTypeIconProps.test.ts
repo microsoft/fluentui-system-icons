@@ -1,6 +1,6 @@
 import { FileIconType } from './FileIconType';
 import { FileTypeIconMap } from './FileTypeIconMap';
-import { getFileTypeIconNameFromExtensionOrType, getFileTypeIconProps } from './getFileTypeIconProps';
+import { getFileTypeIconNameFromExtensionOrType } from './getFileTypeIconProps';
 
 describe('getFileTypeIconNameFromExtensionOrType', () => {
   it('returns an icon name present in the file type icon map for every FileIconType', () => {
@@ -20,13 +20,5 @@ describe('getFileTypeIconNameFromExtensionOrType', () => {
 
   it('falls back to genericfile for unknown extensions', () => {
     expect(getFileTypeIconNameFromExtensionOrType('totally-unknown-ext', undefined)).toBe('genericfile');
-  });
-});
-
-describe('getFileTypeIconProps', () => {
-  it('returns an iconName and aria-label for an extension', () => {
-    const props = getFileTypeIconProps({ extension: 'pptx', size: 24 });
-    expect(props.iconName).toBe('pptx24_svg');
-    expect(props['aria-label']).toBe('pptx');
   });
 });

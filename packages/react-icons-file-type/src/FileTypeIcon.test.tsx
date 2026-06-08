@@ -2,6 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { FileTypeIcon } from './FileTypeIcon';
 import { FileTypeIconsProvider } from './FileTypeIconsContext';
+import { FileIconType } from './FileIconType';
 import { DEFAULT_BASE_URL } from './constants';
 
 describe('FileTypeIcon', () => {
@@ -25,15 +26,52 @@ describe('FileTypeIcon', () => {
     expect(container.querySelector('img')).toHaveAttribute('src', `${baseUrl}24/pdf.svg`);
   });
 
-  it('lets a per-icon baseUrl prop override the provider', () => {
-    const providerUrl = 'https://provider.example.com/item-types/';
-    const iconUrl = 'https://icon.example.com/item-types/';
+  it('resolves the asset density from the provider targetWindow device pixel ratio', () => {
     const { container } = render(
-      <FileTypeIconsProvider baseUrl={providerUrl}>
-        <FileTypeIcon extension="pptx" size={32} baseUrl={iconUrl} />
+      <FileTypeIconsProvider targetWindow={{ devicePixelRatio: 2 } as Window}>
+        <FileTypeIcon extension="docx" size={24} imageFileType="png" />
       </FileTypeIconsProvider>,
     );
-    expect(container.querySelector('img')).toHaveAttribute('src', `${iconUrl}32/pptx.svg`);
+    expect(container.querySelector('img')).toHaveAttribute('src', `${DEFAULT_BASE_URL}24_2x/docx.png`);
+  });
+
+  it('exposes the image to assistive tech when it has an accessible name', () => {
+    const { container } = render(<FileTypeIcon extension="docx" size={24} alt="A document" />);
+    const img = container.querySelector('img');
+    expect(img).toHaveAttribute('alt', 'A document');
+    expect(img).not.toHaveAttribute('aria-hidden');
+  });
+
+  it('hides the image from assistive tech when it has no accessible name', () => {
+    const { container } = render(<FileTypeIcon extension="docx" size={24} alt="" />);
+    const img = container.querySelector('img');
+    expect(img).toHaveAttribute('alt', '');
+    expect(img).toHaveAttribute('aria-hidden', 'true');
+    expect(img).not.toHaveAttribute('role');
+  });
+
+  it('defaults to a decorative empty alt when no alt or extension is provided', () => {
+    const { container } = render(<FileTypeIcon type={FileIconType.folder} size={24} />);
+    const img = container.querySelector('img');
+    expect(img).toHaveAttribute('alt', '');
+    expect(img).toHaveAttribute('aria-hidden', 'true');
+    expect(img).not.toHaveAttribute('role');
+  });
+
+  it('keeps the icon in the a11y tree and omits alt when labelled by aria-label', () => {
+    const { container } = render(<FileTypeIcon type={FileIconType.folder} size={24} aria-label="My folder" />);
+    const img = container.querySelector('img');
+    expect(img).toHaveAttribute('aria-label', 'My folder');
+    expect(img).not.toHaveAttribute('alt');
+    expect(img).not.toHaveAttribute('aria-hidden');
+  });
+
+  it('keeps the icon in the a11y tree and omits alt when labelled by the native title', () => {
+    const { container } = render(<FileTypeIcon type={FileIconType.folder} size={24} title="My folder" />);
+    const img = container.querySelector('img');
+    expect(img).toHaveAttribute('title', 'My folder');
+    expect(img).not.toHaveAttribute('alt');
+    expect(img).not.toHaveAttribute('aria-hidden');
   });
 
   it('forwards arbitrary img attributes and merges className', () => {
