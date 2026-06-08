@@ -3,19 +3,21 @@
 > **⚠️ 0.x** — this package is in early development and follows [zero-based major semver](https://0ver.org/).
 > Breaking changes may occur in minor releases until 1.0.
 
-Webpack loader that transforms barrel imports and re-exports from `@fluentui/react-icons` into atomic deep paths for better tree-shaking and smaller bundles.
+Webpack loader that transforms barrel imports and re-exports from `@fluentui/react-icons` and `@fluentui/react-brand-icons` into atomic deep paths for better tree-shaking and smaller bundles.
 
 ## Before / After
 
 ```js
 // Before — barrel import pulls in the entire icon set
 import { AddFilled, bundleIcon, useIconContext } from '@fluentui/react-icons';
+import { WordColor } from '@fluentui/react-brand-icons';
 export { ArrowLeftRegular } from '@fluentui/react-icons';
 
 // After — each reference resolves to a small, isolated module
 import { AddFilled } from '@fluentui/react-icons/svg/add';
 import { bundleIcon } from '@fluentui/react-icons/utils';
 import { useIconContext } from '@fluentui/react-icons/providers';
+import { WordColor } from '@fluentui/react-brand-icons/svg/word';
 export { ArrowLeftRegular } from '@fluentui/react-icons/svg/arrow-left';
 ```
 
@@ -64,6 +66,7 @@ module.exports = {
 | Option        | Type                                   | Default | Description                                                        |
 | ------------- | -------------------------------------- | ------- | ------------------------------------------------------------------ |
 | `iconVariant` | `'svg'` \| `'fonts'` \| `'svg-sprite'` | `'svg'` | Whether icons resolve to SVG, font-based, or SVG sprite components |
+| `modules`     | `string[]`                             | `['@fluentui/react-icons', '@fluentui/react-brand-icons']` | Icon package names to transform |
 
 ### Using font icons
 
@@ -103,9 +106,29 @@ This changes icon resolution from `@fluentui/react-icons/svg/*` to `@fluentui/re
 
 This changes icon resolution from `@fluentui/react-icons/svg/*` to `@fluentui/react-icons/svg-sprite/*`. Non-icon exports (`utils`, `providers`) are unaffected.
 
+### Limiting to specific packages
+
+By default the loader transforms both `@fluentui/react-icons` and `@fluentui/react-brand-icons`. Use the `modules` option to limit which packages are transformed:
+
+```js
+{
+  test: /\.[mc]?[jt]sx?$/,
+  enforce: 'pre',
+  use: [
+    {
+      loader: '@fluentui/react-icons-atomic-webpack-loader',
+      options: {
+        // Only transform react-icons, leave react-brand-icons barrel imports as-is
+        modules: ['@fluentui/react-icons'],
+      },
+    },
+  ],
+}
+```
+
 ## How it works
 
-The loader uses a Babel transform to rewrite import and re-export declarations that reference `@fluentui/react-icons`. Each named specifier is routed to an atomic subpath based on its name:
+The loader uses a Babel transform to rewrite import and re-export declarations that reference supported icon packages (`@fluentui/react-icons` and `@fluentui/react-brand-icons` by default). Each named specifier is routed to an atomic subpath based on its name:
 
 | Export type    | Example                                          | Resolved path                                                        |
 | -------------- | ------------------------------------------------ | -------------------------------------------------------------------- |
@@ -113,9 +136,10 @@ The loader uses a Babel transform to rewrite import and re-export declarations t
 | Context / hook | `useIconContext`, `IconDirectionContextProvider` | `@fluentui/react-icons/providers`                                    |
 | Utility        | `bundleIcon`, `createFluentIcon`                 | `@fluentui/react-icons/utils`                                        |
 
-Files that don't reference `@fluentui/react-icons` are passed through untouched (fast regex pre-check).
+Files that don't reference any of the configured icon packages are passed through untouched (fast string pre-check).
 
 ## Requirements
 
 - `webpack` >= 5
 - `@fluentui/react-icons` >= 2 (with atomic subpath exports)
+- `@fluentui/react-brand-icons` >= 2 (with atomic subpath exports, optional)

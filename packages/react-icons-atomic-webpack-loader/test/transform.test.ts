@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import { transformSource } from '../src/transform';
 
-const transform = (source: string, iconVariant: 'svg' | 'fonts' | 'svg-sprite' = 'svg') =>
-  transformSource(source, { iconVariant, path: 'input.js' }).code;
+const transform = (source: string, iconVariant: 'svg' | 'fonts' | 'svg-sprite' = 'svg', modules?: string[]) =>
+  transformSource(source, { iconVariant, path: 'input.js', modules }).code;
 
 describe('transformSource', () => {
   describe('imports', () => {
@@ -159,6 +159,85 @@ describe('transformSource', () => {
         export { AddFilled, bundleIcon };
         export { ArrowLeftRegular } from '@fluentui/react-icons/svg/arrow-left';"
       `);
+    });
+  });
+
+  describe('@fluentui/react-brand-icons', () => {
+    it('rewrites brand icon imports to atomic paths', () => {
+      expect(transform(`import { WordColor } from '@fluentui/react-brand-icons';`)).toBe(
+        `import { WordColor } from '@fluentui/react-brand-icons/svg/word';`,
+      );
+    });
+
+    it('rewrites brand icon imports with Filled suffix', () => {
+      expect(transform(`import { AccessFilled } from '@fluentui/react-brand-icons';`)).toBe(
+        `import { AccessFilled } from '@fluentui/react-brand-icons/svg/access';`,
+      );
+    });
+
+    it('rewrites brand icon imports with Regular suffix', () => {
+      expect(transform(`import { AccessRegular } from '@fluentui/react-brand-icons';`)).toBe(
+        `import { AccessRegular } from '@fluentui/react-brand-icons/svg/access';`,
+      );
+    });
+
+    it('splits multi-binding brand icon imports', () => {
+      expect(transform(`import { WordColor, ExcelColor } from '@fluentui/react-brand-icons';`)).toBe(
+        [
+          `import { WordColor } from '@fluentui/react-brand-icons/svg/word';`,
+          `import { ExcelColor } from '@fluentui/react-brand-icons/svg/excel';`,
+        ].join('\n'),
+      );
+    });
+
+    it('routes brand icon utility imports to /utils', () => {
+      expect(transform(`import { bundleIcon, createFluentIcon } from '@fluentui/react-brand-icons';`)).toBe(
+        [
+          `import { bundleIcon } from '@fluentui/react-brand-icons/utils';`,
+          `import { createFluentIcon } from '@fluentui/react-brand-icons/utils';`,
+        ].join('\n'),
+      );
+    });
+
+    it('rewrites brand icon direct re-exports', () => {
+      expect(transform(`export { WordColor } from '@fluentui/react-brand-icons';`)).toBe(
+        `export { WordColor } from '@fluentui/react-brand-icons/svg/word';`,
+      );
+    });
+
+    it('handles mixed react-icons and react-brand-icons in the same file', () => {
+      const source = [
+        `import { AddFilled } from '@fluentui/react-icons';`,
+        `import { WordColor } from '@fluentui/react-brand-icons';`,
+      ].join('\n');
+
+      expect(transform(source)).toBe(
+        [
+          `import { AddFilled } from '@fluentui/react-icons/svg/add';`,
+          `import { WordColor } from '@fluentui/react-brand-icons/svg/word';`,
+        ].join('\n'),
+      );
+    });
+
+    it('leaves brand icons untouched when excluded via modules option', () => {
+      const source = `import { WordColor } from '@fluentui/react-brand-icons';`;
+      expect(transform(source, 'svg', ['@fluentui/react-icons'])).toBe(source);
+    });
+  });
+
+  describe('modules option', () => {
+    it('only transforms modules listed in the modules option', () => {
+      const source = [
+        `import { AddFilled } from '@fluentui/react-icons';`,
+        `import { WordColor } from '@fluentui/react-brand-icons';`,
+      ].join('\n');
+
+      expect(transform(source, 'svg', ['@fluentui/react-brand-icons'])).toBe(
+        [
+          `import { AddFilled } from '@fluentui/react-icons';`,
+          `import { WordColor } from '@fluentui/react-brand-icons/svg/word';`,
+        ].join('\n'),
+      );
     });
   });
 });
