@@ -1,9 +1,7 @@
-import { FileTypeIconMap } from './FileTypeIconMap';
+import { getFileTypeIconExtensionMap } from './fileTypeIconMap.generated';
 import { FileIconType } from './FileIconType';
 import type { FileIconTypeInput } from './FileIconType';
 import type { FileTypeIconSize, ImageFileType } from './constants';
-
-let _extensionToIconName: { [key: string]: string };
 
 const GENERIC_FILE = 'genericfile';
 const FOLDER = 'folder';
@@ -61,25 +59,9 @@ export function getFileTypeIconNameFromExtensionOrType(
 ): string {
   let iconBaseName: string | undefined;
   if (extension) {
-    if (!_extensionToIconName) {
-      _extensionToIconName = {};
-
-      for (const iconName in FileTypeIconMap) {
-        if (Object.prototype.hasOwnProperty.call(FileTypeIconMap, iconName)) {
-          const extensions = FileTypeIconMap[iconName].extensions;
-
-          if (extensions) {
-            for (let i = 0; i < extensions.length; i++) {
-              _extensionToIconName[extensions[i]] = iconName;
-            }
-          }
-        }
-      }
-    }
-
     // Strip periods, force lowercase.
     extension = extension.replace('.', '').toLowerCase();
-    return _extensionToIconName[extension] || GENERIC_FILE;
+    return getFileTypeIconExtensionMap()[extension] || GENERIC_FILE;
   } else if (type) {
     switch (type) {
       case FileIconType.docset:
