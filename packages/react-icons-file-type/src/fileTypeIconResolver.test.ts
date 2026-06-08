@@ -1,7 +1,7 @@
 import {
   getFileTypeIconNameFromExtensionOrType,
   getFileTypeIconSrc,
-  getFileTypeIconSuffix,
+  getFileTypeIconDensitySuffix,
 } from './fileTypeIconResolver';
 import { getFileTypeIconExtensionMap } from './fileTypeIconMap.generated';
 import { FileIconType } from './FileIconType';
@@ -54,52 +54,52 @@ describe('getFileTypeIconNameFromExtensionOrType', () => {
   });
 });
 
-describe('getFileTypeIconSuffix', () => {
-  it('defaults to svg at standard density (1x) when no window is provided', () => {
-    expect(getFileTypeIconSuffix(16)).toBe('16_svg');
-    expect(getFileTypeIconSuffix(96, 'svg')).toBe('96_svg');
+describe('getFileTypeIconDensitySuffix', () => {
+  it('returns no suffix (1x) for svg at standard density', () => {
+    expect(getFileTypeIconDensitySuffix(16, 'svg')).toBe('');
+    expect(getFileTypeIconDensitySuffix(96, 'svg', { devicePixelRatio: 1 } as Window)).toBe('');
   });
 
-  it('returns a png suffix at standard density (1x)', () => {
-    expect(getFileTypeIconSuffix(16, 'png')).toBe('16_png');
+  it('returns no suffix (1x) for png at standard density', () => {
+    expect(getFileTypeIconDensitySuffix(16, 'png')).toBe('');
   });
 
   describe('svg', () => {
     it('uses the 1.5x asset for device pixel ratios in (1, 1.5]', () => {
-      expect(getFileTypeIconSuffix(24, 'svg', { devicePixelRatio: 1.25 } as Window)).toBe('24_1.5x_svg');
-      expect(getFileTypeIconSuffix(24, 'svg', { devicePixelRatio: 1.5 } as Window)).toBe('24_1.5x_svg');
+      expect(getFileTypeIconDensitySuffix(24, 'svg', { devicePixelRatio: 1.25 } as Window)).toBe('_1.5x');
+      expect(getFileTypeIconDensitySuffix(24, 'svg', { devicePixelRatio: 1.5 } as Window)).toBe('_1.5x');
     });
 
     it('snaps size 20 to 1x (no 1.5x asset published)', () => {
-      expect(getFileTypeIconSuffix(20, 'svg', { devicePixelRatio: 1.25 } as Window)).toBe('20_svg');
+      expect(getFileTypeIconDensitySuffix(20, 'svg', { devicePixelRatio: 1.25 } as Window)).toBe('');
     });
 
     it('uses the base (1x) asset above 1.5x since svgs scale', () => {
-      expect(getFileTypeIconSuffix(24, 'svg', { devicePixelRatio: 2 } as Window)).toBe('24_svg');
-      expect(getFileTypeIconSuffix(24, 'svg', { devicePixelRatio: 3 } as Window)).toBe('24_svg');
+      expect(getFileTypeIconDensitySuffix(24, 'svg', { devicePixelRatio: 2 } as Window)).toBe('');
+      expect(getFileTypeIconDensitySuffix(24, 'svg', { devicePixelRatio: 3 } as Window)).toBe('');
     });
   });
 
   describe('png', () => {
     it('uses the 1.5x asset for device pixel ratios in (1, 1.5]', () => {
-      expect(getFileTypeIconSuffix(24, 'png', { devicePixelRatio: 1.25 } as Window)).toBe('24_1.5x_png');
-      expect(getFileTypeIconSuffix(24, 'png', { devicePixelRatio: 1.5 } as Window)).toBe('24_1.5x_png');
+      expect(getFileTypeIconDensitySuffix(24, 'png', { devicePixelRatio: 1.25 } as Window)).toBe('_1.5x');
+      expect(getFileTypeIconDensitySuffix(24, 'png', { devicePixelRatio: 1.5 } as Window)).toBe('_1.5x');
     });
 
     it('snaps size 20 to 2x for ratios in (1, 1.5] (no 1.5x asset published)', () => {
-      expect(getFileTypeIconSuffix(20, 'png', { devicePixelRatio: 1.25 } as Window)).toBe('20_2x_png');
+      expect(getFileTypeIconDensitySuffix(20, 'png', { devicePixelRatio: 1.25 } as Window)).toBe('_2x');
     });
 
     it('uses the 2x asset for ratios in (1.5, 2]', () => {
-      expect(getFileTypeIconSuffix(24, 'png', { devicePixelRatio: 2 } as Window)).toBe('24_2x_png');
+      expect(getFileTypeIconDensitySuffix(24, 'png', { devicePixelRatio: 2 } as Window)).toBe('_2x');
     });
 
     it('uses the 3x asset for ratios in (2, 3]', () => {
-      expect(getFileTypeIconSuffix(24, 'png', { devicePixelRatio: 3 } as Window)).toBe('24_3x_png');
+      expect(getFileTypeIconDensitySuffix(24, 'png', { devicePixelRatio: 3 } as Window)).toBe('_3x');
     });
 
     it('uses the 4x asset for ratios above 3', () => {
-      expect(getFileTypeIconSuffix(24, 'png', { devicePixelRatio: 4 } as Window)).toBe('24_4x_png');
+      expect(getFileTypeIconDensitySuffix(24, 'png', { devicePixelRatio: 4 } as Window)).toBe('_4x');
     });
   });
 });

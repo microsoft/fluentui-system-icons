@@ -19,7 +19,7 @@
   "homepage": "https://github.com/microsoft/fluentui-system-icons/tree/main/packages/react-icons-file-type#readme",
   "scripts": {
     "clean": "git clean -fXd lib/ lib-cjs/",
-    "generate": "node scripts/generateFileTypeIconMap.js",
+    "generate": "node scripts/generateFileTypeIconMap.js && node scripts/generateFileIconTypes.js",
     "prebuild": "npm run clean && npm run generate",
     "build": "node scripts/build.js",
     "bundle-size": "monosize measure",
