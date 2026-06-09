@@ -1,7 +1,11 @@
 {
   "name": "@fluentui/react-icons",
   "version": "2.0.329",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/headless/fonts/headless-fonts.css",
+    "**/headless/headless.css",
+    "**/image/image.css"
+  ],
   "main": "lib-cjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -14,8 +18,8 @@
   "scripts": {
     "clean": "git clean -fXd lib/ lib-cjs/ intermediate/ src/ tmp/",
     "generate:assets-to-svg": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
-    "convert:svg": "node scripts/convert.js --source=./intermediate --dest=./src --perIconDest=./src/atoms/svg --spriteDest=./src/atoms/svg-sprite --headlessPerIconDest=./src/atoms/headless-svg --headlessSpriteDest=./src/atoms/headless-svg-sprite --rtl=./intermediate/rtl.json --metadata=./tmp/metadata-svg.json",
-    "convert:fonts": "node scripts/convert-font.js --source=./src/utils/fonts --dest=./src/fonts --perIconDest=./src/atoms/fonts --headlessPerIconDest=./src/atoms/headless-fonts --codepointDest=./src/utils/fonts --rtl=./intermediate/rtl.json --metadata=./tmp/metadata-font.json",
+    "convert:svg": "node scripts/convert.js --source=./intermediate --dest=./src --perIconDest=./src/atoms/svg --spriteDest=./src/atoms/svg-sprite --headlessPerIconDest=./src/atoms/headless-svg --headlessSpriteDest=./src/atoms/headless-svg-sprite --imagePerIconDest=./src/atoms/image --rtl=./intermediate/rtl.json --metadata=./tmp/metadata-svg.json  --sprites --headless --image",
+    "convert:fonts": "node scripts/convert-font.js --source=./src/utils/fonts --dest=./src/fonts --perIconDest=./src/atoms/fonts --headlessPerIconDest=./src/atoms/headless-fonts --codepointDest=./src/utils/fonts --rtl=./intermediate/rtl.json --metadata=./tmp/metadata-font.json --headless",
     "convert:merge-metadata": "node scripts/merge-metadata.js --svgMetadata=./tmp/metadata-svg.json --fontMetadata=./tmp/metadata-font.json --output=./metadata.json",
     "generate:font-regular": "node ../../importer/generateFont.js --source=intermediate --dest=src/utils/fonts --iconType=Regular --codepoints=../../fonts/FluentSystemIcons-Regular.json",
     "generate:font-filled": "node ../../importer/generateFont.js --source=intermediate --dest=src/utils/fonts --iconType=Filled --codepoints=../../fonts/FluentSystemIcons-Filled.json",
@@ -129,6 +133,49 @@
       "types": "./lib/providers.d.ts",
       "import": "./lib/providers.js",
       "require": "./lib-cjs/providers.js"
+    },
+    "./svg-sprite/*": {
+      "types": "./lib/atoms/svg-sprite/*.d.ts",
+      "import": "./lib/atoms/svg-sprite/*.js",
+      "require": "./lib-cjs/atoms/svg-sprite/*.js"
+    },
+    "./headless": {
+      "types": "./lib/headless/index.d.ts",
+      "import": "./lib/headless/index.js",
+      "require": "./lib-cjs/headless/index.js"
+    },
+    "./headless/fonts": {
+      "types": "./lib/headless/fonts/index.d.ts",
+      "import": "./lib/headless/fonts/index.js",
+      "require": "./lib-cjs/headless/fonts/index.js"
+    },
+    "./headless/headless.css": "./lib/headless/headless.css",
+    "./headless/headless-fonts.css": "./lib/headless/fonts/headless-fonts.css",
+    "./headless/svg/*": {
+      "types": "./lib/atoms/headless-svg/*.d.ts",
+      "import": "./lib/atoms/headless-svg/*.js",
+      "require": "./lib-cjs/atoms/headless-svg/*.js"
+    },
+    "./headless/svg-sprite/*": {
+      "types": "./lib/atoms/headless-svg-sprite/*.d.ts",
+      "import": "./lib/atoms/headless-svg-sprite/*.js",
+      "require": "./lib-cjs/atoms/headless-svg-sprite/*.js"
+    },
+    "./headless/fonts/*": {
+      "types": "./lib/atoms/headless-fonts/*.d.ts",
+      "import": "./lib/atoms/headless-fonts/*.js",
+      "require": "./lib-cjs/atoms/headless-fonts/*.js"
+    },
+    "./image": {
+      "types": "./lib/image/index.d.ts",
+      "import": "./lib/image/index.js",
+      "require": "./lib-cjs/image/index.js"
+    },
+    "./image/image.css": "./lib/image/image.css",
+    "./image/*": {
+      "types": "./lib/atoms/image/*.d.ts",
+      "import": "./lib/atoms/image/*.js",
+      "require": "./lib-cjs/atoms/image/*.js"
     }
   }
 }

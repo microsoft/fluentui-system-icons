@@ -13,6 +13,7 @@ const {
   getCreateFluentIconHeader,
   loadRtlMetadata,
   generatePerIconFiles,
+  generateImageFiles,
 } = require('./convert.utils');
 const {
   assertCompoundStyleVariantIssues,
@@ -39,6 +40,7 @@ async function main() {
     SPRITE_DEST,
     HEADLESS_PER_ICON_DEST,
     HEADLESS_SPRITE_DEST,
+    IMAGE_PER_ICON_DEST,
   } = parseArgs(process.argv.slice(2));
   const srcFiles = await processSourceDir(SRC_PATH);
   const rtlMetadata = loadRtlMetadata(RTL_FILE);
@@ -69,6 +71,11 @@ async function main() {
     });
   }
 
+  // 4. Generate image atom output (CSS-mask `<span>` / color `<img>`) - when --image is enabled
+  if (IMAGE_PER_ICON_DEST) {
+    await processImage(srcFiles, IMAGE_PER_ICON_DEST, rtlMetadata);
+  }
+
   writeMetadata(METADATA_PATH, chunkMetadata);
   writeMetadata(perIconMetadataPath, perIconMetadata);
 
@@ -85,6 +92,27 @@ async function main() {
   console.log(
     `[svg generation] Finished chunk + per-icon outputs. Chunk dest: ${DEST_PATH} | Per-icon dest: ${PER_ICON_DEST}${spriteSuffix}${headlessSuffix}`,
   );
+}
+
+/**
+ * Image atom generation (CSS-mask `<span>` / color `<img>`).
+ * Writes one `.tsx` module per icon group plus one standalone `.svg` per variant (mask/image source).
+ * @param {SourceFiles} sourceFiles
+ * @param {string} destPath
+ * @param {import('./convert-font.utils').RtlMetadata} rtlMetadata
+ */
+async function processImage(sourceFiles, destPath, rtlMetadata) {
+  if (fs.existsSync(destPath)) {
+    fs.rmSync(destPath, { recursive: true, force: true });
+  }
+  fs.mkdirSync(destPath, { recursive: true });
+
+  const { fileCount, svgFileCount } = await generateImageFiles(sourceFiles, destPath, rtlMetadata, {
+    iconImportPath: '../../image/createImageIcon',
+    colorImportPath: '../../image/createImageColorIcon',
+  });
+
+  console.log(`[image atoms] Wrote ${fileCount} icon module(s) and ${svgFileCount} svg source(s) to ${destPath}`);
 }
 
 /**
@@ -308,6 +336,8 @@ function parseArgs(argv) {
   const HEADLESS_ENABLED = Boolean(args.headless); // opt-in flag for headless component generation
   const HEADLESS_PER_ICON_DEST = HEADLESS_ENABLED ? /** @type {string} */ (args.headlessPerIconDest) : undefined; // headless per-icon output folder (only when --headless is set)
   const HEADLESS_SPRITE_DEST = HEADLESS_ENABLED ? /** @type {string|undefined} */ (args.headlessSpriteDest) : undefined; // headless svg sprite output folder (only when --headless is set)
+  const IMAGE_ENABLED = Boolean(args.image); // opt-in flag for image (CSS-mask / <img>) atom generation
+  const IMAGE_PER_ICON_DEST = IMAGE_ENABLED ? /** @type {string} */ (args.imagePerIconDest) : undefined; // image atoms output folder (only when --image is set)
 
   if (!SRC_PATH) {
     throw new Error('Icon source folder not specified by --source');
@@ -325,6 +355,9 @@ function parseArgs(argv) {
     throw new Error(
       'Headless per-icon output folder not specified by --headlessPerIconDest (required when --headless is set)',
     );
+  }
+  if (IMAGE_ENABLED && !IMAGE_PER_ICON_DEST) {
+    throw new Error('Image atoms output folder not specified by --imagePerIconDest (required when --image is set)');
   }
   if (!RTL_FILE) {
     throw new Error('RTL file not specified by --rtl');
@@ -353,6 +386,10 @@ function parseArgs(argv) {
     fs.mkdirSync(HEADLESS_SPRITE_DEST, { recursive: true });
   }
 
+  if (IMAGE_PER_ICON_DEST && !fs.existsSync(IMAGE_PER_ICON_DEST)) {
+    fs.mkdirSync(IMAGE_PER_ICON_DEST, { recursive: true });
+  }
+
   return {
     SRC_PATH,
     DEST_PATH,
@@ -362,6 +399,7 @@ function parseArgs(argv) {
     SPRITE_DEST,
     HEADLESS_PER_ICON_DEST,
     HEADLESS_SPRITE_DEST,
+    IMAGE_PER_ICON_DEST,
   };
 }
 

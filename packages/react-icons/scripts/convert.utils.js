@@ -8,6 +8,7 @@ const _ = require('lodash');
 
 const { writePerIconFiles } = require('./per-icon.writer');
 const { writeSpriteFiles } = require('./sprite.writer');
+const { writeImageFiles } = require('./image.writer');
 
 /** @typedef {{ [key: string]: 'mirror' | 'unique' }} RtlMetadata */
 
@@ -298,11 +299,78 @@ async function generatePerIconFiles(sourceFiles, dest, rtlMetadata, importConfig
   };
 }
 
+/**
+ * @typedef {{ iconImportPath: string; colorImportPath: string }} ImageImportConfig
+ */
+
+/**
+ * Generates image atom files (CSS-mask `<span>` / color `<img>`) for both resizable and sized
+ * variants in a single pass. Each icon group yields one `.tsx` module plus one standalone `.svg`
+ * per variant (the mask / image source), consumed via a bundler-resolved URL import.
+ *
+ * @param {Array<{file: string; srcFile: string}>} sourceFiles
+ * @param {string} destPath - image atoms output folder
+ * @param {RtlMetadata} rtlMetadata
+ * @param {ImageImportConfig} importConfig - import paths for the image factories
+ * @param {boolean} [groupByBase] - whether to group icons by base name (default: true)
+ * @returns {Promise<{ resizable: { iconNames: string[] }; sized: { iconNames: string[] }; fileCount: number; svgFileCount: number }>}
+ */
+async function generateImageFiles(sourceFiles, destPath, rtlMetadata, importConfig, groupByBase = true) {
+  /** @type {string[]} */
+  const resizableIconNames = [];
+  /** @type {ParsedIconSource[]} */
+  const resizableItems = [];
+
+  /** @type {string[]} */
+  const sizedIconNames = [];
+  /** @type {ParsedIconSource[]} */
+  const sizedItems = [];
+
+  for (const entry of sourceFiles) {
+    const sizedParsed = parseIconSource({
+      file: entry.file,
+      srcFile: entry.srcFile,
+      resizable: false,
+      metadata: rtlMetadata,
+    });
+    if (sizedParsed) {
+      sizedItems.push(sizedParsed);
+      sizedIconNames.push(sizedParsed.exportName);
+    }
+
+    if (entry.file.includes('20')) {
+      const resizableParsed = parseIconSource({
+        file: entry.file,
+        srcFile: entry.srcFile,
+        resizable: true,
+        metadata: rtlMetadata,
+      });
+      if (resizableParsed) {
+        resizableItems.push(resizableParsed);
+        resizableIconNames.push(resizableParsed.exportName);
+      }
+    }
+  }
+
+  const { fileCount, svgFileCount } = await writeImageFiles(destPath, [...resizableItems, ...sizedItems], {
+    groupByBase,
+    importConfig,
+  });
+
+  return {
+    resizable: { iconNames: resizableIconNames },
+    sized: { iconNames: sizedIconNames },
+    fileCount,
+    svgFileCount,
+  };
+}
+
 module.exports = {
   parseIconSource,
   buildIconExportCode,
   getCreateFluentIconHeader,
   loadRtlMetadata,
   generatePerIconFiles,
+  generateImageFiles,
   parseSvgToNodes,
 };

@@ -54,6 +54,16 @@ function main(options) {
     addHeadlessExportMap(projectRoot);
   }
 
+  // Image assets: only copy when image generation was enabled
+  const imageSrcDir = join(projectRoot, 'src/atoms/image');
+  if (existsSync(imageSrcDir)) {
+    copyAssets('src/atoms/image/*.svg', './lib/atoms/image', projectRoot);
+    copyAssets('src/atoms/image/*.svg', './lib-cjs/atoms/image', projectRoot);
+    copyAssets('src/image/*.css', './lib/image', projectRoot);
+    copyAssets('src/image/*.css', './lib-cjs/image', projectRoot);
+    addImageExportMap(projectRoot);
+  }
+
   applyBabelTransform('lib', projectRoot);
   applyBabelTransform('lib-cjs', projectRoot);
 }
@@ -235,6 +245,46 @@ function addHeadlessExportMap(baseDir) {
   const headlessSideEffects = ['**/headless/fonts/headless-fonts.css', '**/headless/headless.css'];
   pkg.sideEffects = [...headlessSideEffects];
   console.log(`  ✓ [sideEffects] Added ${headlessSideEffects.join(', ')}`);
+
+  writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
+}
+
+/**
+ * Adds image (CSS-mask / `<img>`) export map entries to package.json when image generation is enabled.
+ *
+ * NOTE: will be part of package.json once image is stable. then we can remove this dynamic addition and the related build logic that copies image assets.
+ * @param {string} baseDir
+ */
+function addImageExportMap(baseDir) {
+  const pkgPath = join(baseDir, 'package.json');
+  const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
+
+  /** @type {Record<string, string | {types: string; import: string; require: string}>} */
+  const imageExports = {
+    './image': {
+      types: './lib/image/index.d.ts',
+      import: './lib/image/index.js',
+      require: './lib-cjs/image/index.js',
+    },
+    './image/image.css': './lib/image/image.css',
+    './image/*': {
+      types: './lib/atoms/image/*.d.ts',
+      import: './lib/atoms/image/*.js',
+      require: './lib-cjs/atoms/image/*.js',
+    },
+  };
+
+  // Add image export maps
+  Object.assign(pkg.exports, imageExports);
+  console.log(`  ✓ [exports] Set ${Object.keys(imageExports).join(', ')}`);
+
+  // Append image CSS sideEffect (preserve existing sideEffects, e.g. headless)
+  const imageSideEffect = '**/image/image.css';
+  const existingSideEffects = Array.isArray(pkg.sideEffects) ? pkg.sideEffects : [];
+  if (!existingSideEffects.includes(imageSideEffect)) {
+    pkg.sideEffects = [...existingSideEffects, imageSideEffect];
+    console.log(`  ✓ [sideEffects] Added ${imageSideEffect}`);
+  }
 
   writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
 }

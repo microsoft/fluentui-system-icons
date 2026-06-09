@@ -1,0 +1,39 @@
+/* Image Fluent Icons — attribute/class-selector based styles (no CSS-in-JS runtime). */
+
+/* ===== Mask icon (monochrome, recolorable) ===== */
+.fui-Icon-Image {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  /* Color is driven by `currentColor` so the icon recolors like text. */
+  background-color: currentColor;
+  /* `-webkit-` prefixed first for Safari < 15.4 (mask is Baseline 2023; prefix is the fallback). */
+  -webkit-mask: var(--fui-img) center / contain no-repeat;
+  mask: var(--fui-img) center / contain no-repeat;
+}
+
+/* ===== Color icon (multicolor <img>, not recolorable) ===== */
+.fui-Icon-Image-Color {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+}
+
+/* ===== RTL Directional Flip ===== */
+[data-fui-icon-rtl] {
+  transform: scaleX(-1);
+}
+
+/* ===== High Contrast Mode (a11y) =====
+ * SVG icons use `forced-color-adjust: auto` to let the system override `fill`. A mask icon gets
+ * its color from `background-color: currentColor`, which forced-colors would otherwise force to
+ * `Canvas` — making the icon invisible. Pin it to the `CanvasText` system color so the masked
+ * shape stays visible and adapts to the system theme.
+ */
+@media (forced-colors: active) {
+  .fui-Icon-Image {
+    background-color: CanvasText;
+  }
+}
