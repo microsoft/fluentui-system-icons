@@ -12419,6 +12419,16 @@
     "font": true,
     "type": "resizable"
   },
+  "GaugeRotate315Filled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GaugeRotate315Regular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "GavelFilled": {
     "svg": true,
     "font": true,
@@ -73125,6 +73135,66 @@
     "type": "sized"
   },
   "GaugeAdd20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate31516Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate31516Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate31520Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate31520Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate31524Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate31524Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate31528Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate31528Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate31532Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate31532Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate31548Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate31548Regular": {
     "svg": true,
     "font": true,
     "type": "sized"

@@ -9556,5 +9556,11 @@
   "ic_fluent_weather_humidity_28_regular": 986194,
   "ic_fluent_weather_humidity_32_regular": 986195,
   "ic_fluent_weather_humidity_48_regular": 986196,
-  "ic_fluent_weather_moon_12_regular": 986197
+  "ic_fluent_weather_moon_12_regular": 986197,
+  "ic_fluent_gauge_rotate_315_16_regular": 986198,
+  "ic_fluent_gauge_rotate_315_20_regular": 986199,
+  "ic_fluent_gauge_rotate_315_24_regular": 986200,
+  "ic_fluent_gauge_rotate_315_28_regular": 986201,
+  "ic_fluent_gauge_rotate_315_32_regular": 986202,
+  "ic_fluent_gauge_rotate_315_48_regular": 986203
 }

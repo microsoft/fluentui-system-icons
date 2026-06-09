@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.woff2?5f3c8466891e4ad196ff588022331a8c") format("woff2"),
-url("./FluentSystemIcons-Regular.woff?5f3c8466891e4ad196ff588022331a8c") format("woff"),
-url("./FluentSystemIcons-Regular.ttf?5f3c8466891e4ad196ff588022331a8c") format("truetype");
+    src: url("./FluentSystemIcons-Regular.woff2?174d1841cd1810f385ee5c87aecae0d4") format("woff2"),
+url("./FluentSystemIcons-Regular.woff?174d1841cd1810f385ee5c87aecae0d4") format("woff"),
+url("./FluentSystemIcons-Regular.ttf?174d1841cd1810f385ee5c87aecae0d4") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -28689,4 +28689,22 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_weather_moon_12_regular:before {
     content: "\f0c55";
+}
+.icon-ic_fluent_gauge_rotate_315_16_regular:before {
+    content: "\f0c56";
+}
+.icon-ic_fluent_gauge_rotate_315_20_regular:before {
+    content: "\f0c57";
+}
+.icon-ic_fluent_gauge_rotate_315_24_regular:before {
+    content: "\f0c58";
+}
+.icon-ic_fluent_gauge_rotate_315_28_regular:before {
+    content: "\f0c59";
+}
+.icon-ic_fluent_gauge_rotate_315_32_regular:before {
+    content: "\f0c5a";
+}
+.icon-ic_fluent_gauge_rotate_315_48_regular:before {
+    content: "\f0c5b";
 }
