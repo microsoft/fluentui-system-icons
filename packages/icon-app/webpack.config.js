@@ -20,8 +20,18 @@ module.exports = {
       // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
       { test: /\.tsx?$/, loader: 'ts-loader' },
       {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
         test: /\.(ttf|woff2?)$/,
         type: 'asset',
+      },
+      // Image API icons import their SVG as a URL (mask / <img> source).
+      // `asset/resource` emits a separate hashed file (keeps the JS bundle tiny).
+      {
+        test: /\.svg$/,
+        type: 'asset/resource',
       },
     ],
   },

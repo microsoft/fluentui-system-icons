@@ -4,6 +4,7 @@ import { makeStyles } from '@griffel/react';
 const Atoms = React.lazy(() => import('./atoms').then((mod) => ({ default: mod.Atoms })));
 const Chunk = React.lazy(() => import('./chunk').then((mod) => ({ default: mod.Chunk })));
 const All = React.lazy(() => import('./all').then((mod) => ({ default: mod.All })));
+const Image = React.lazy(() => import('./image').then((mod) => ({ default: mod.Image })));
 
 const useRootStyles = makeStyles({
   root: {
@@ -15,7 +16,7 @@ const useRootStyles = makeStyles({
 
 export function App() {
   const styles = useRootStyles();
-  const [state, setState] = React.useState<'atoms' | 'all' | 'chunk' | null>(null);
+  const [state, setState] = React.useState<'atoms' | 'all' | 'chunk' | 'image' | null>(null);
 
   return (
     <main>
@@ -38,6 +39,10 @@ export function App() {
             <p>Demonstration of Atoms icons (import per icon)</p>
             <button onClick={() => setState('atoms')}>Atoms</button>
           </div>
+          <div>
+            <p>Demonstration of the Image API (CSS mask / &lt;img&gt;, zero icon rendering in JS)</p>
+            <button onClick={() => setState('image')}>Image</button>
+          </div>
         </div>
         <div>
           <h2>Icons</h2>
@@ -46,6 +51,7 @@ export function App() {
               {state === 'atoms' && <Atoms />}
               {state === 'all' && <All />}
               {state === 'chunk' && <Chunk />}
+              {state === 'image' && <Image />}
             </div>
           </React.Suspense>
         </div>
