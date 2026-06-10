@@ -19,7 +19,7 @@ packages/react-icons @microsoft/cxe-prg @microsoft/cxe-red
 packages/react-icons-font-subsetting-webpack-plugin @MLoughry @microsoft/cxe-prg
 packages/react-icons-svg-sprite-subsetting-webpack-plugin @microsoft/cxe-prg
 packages/react-icons-atomic-webpack-loader @microsoft/cxe-prg
-packages/svg-icons
+packages/svg-icons @microsoft/cxe-prg
 packages/svg-sprites
 packages/react-native-icons @microsoft/react-native-sdk-admins
 
