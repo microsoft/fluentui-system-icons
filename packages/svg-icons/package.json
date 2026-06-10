@@ -21,5 +21,10 @@
   "devDependencies": {
     "renamer": "^2.0.1",
     "svgo": "2.8.2"
-  }
+  },
+  "files": [
+    "icons/",
+    "README.md",
+    "CHANGELOG.md"
+  ]
 }
