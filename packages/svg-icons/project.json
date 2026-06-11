@@ -1,0 +1,13 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "svg-icons",
+  "projectType": "library",
+  "tags": ["platform:web"],
+  "implicitDependencies": ["@fluentui/system-icons-processing"],
+  "targets": {
+    "build": {
+      "cache": true,
+      "outputs": ["{projectRoot}/icons"]
+    }
+  }
+}
