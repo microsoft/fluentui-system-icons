@@ -7,6 +7,15 @@
   "targets": {
     "build": {
       "cache": true,
+      "inputs": [
+        "{projectRoot}/package.json",
+        "{projectRoot}/svgo.config.js",
+        "{projectRoot}/unfill.js",
+        "{workspaceRoot}/assets/**/*",
+        "{workspaceRoot}/importer/generate.js",
+        "{workspaceRoot}/importer/replace-in-files.js",
+        "{workspaceRoot}/importer/svgo.config.shared.cjs"
+      ],
       "outputs": ["{projectRoot}/icons"]
     }
   }
