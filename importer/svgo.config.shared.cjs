@@ -15,8 +15,9 @@
 // - `removeViewBox: false` keeps the viewBox so icons remain scalable.
 // - `mergePaths: false` preserves per-layer paths (required by color icons whose
 //   layers carry distinct fills/gradients).
-// - `prefixIds` namespaces ids (e.g. gradient ids) with the file's basename so
-//   color icons rendered together on a single page never collide.
+// - `prefixIds` namespaces ids (e.g. gradient ids) with the canonical
+//   `ic_fluent_` icon prefix so color icons rendered together on a single page
+//   never collide, and so the ids stay identical across svg-icons and react-icons.
 const nodePath = require('node:path');
 
 module.exports = {
@@ -34,9 +35,13 @@ module.exports = {
       name: 'prefixIds',
       params: {
         prefix: (_, { path }) => {
-          // Generate a unique prefix based on file path or name
+          // Namespace ids with the canonical `ic_fluent_` icon prefix so generated
+          // ids are stable regardless of whether the source filename carries it
+          // (svg-icons strips the prefix from filenames; react-icons keeps it).
+          // This keeps the rendered ids identical across both packages.
           const filePath = path.filePath || path;
-          return nodePath.basename(filePath, '.svg');
+          const base = nodePath.basename(filePath, '.svg');
+          return base.startsWith('ic_fluent_') ? base : `ic_fluent_${base}`;
         },
       },
     },
