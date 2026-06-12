@@ -42,7 +42,6 @@
     "react": "19.2.3",
     "react-native": "^0.85.0",
     "react-native-svg": "^15.15.3",
-    "renamer": "^2.0.1",
     "svgo": "2.8.2",
     "typescript": "5.0.4",
     "yargs": "^14.0.0"

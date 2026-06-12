@@ -22,6 +22,7 @@ packages/react-icons-atomic-webpack-loader @microsoft/cxe-prg
 packages/svg-icons @microsoft/cxe-prg
 packages/svg-sprites
 packages/react-native-icons @microsoft/react-native-sdk-admins
+importer/ @microsoft/cxe-prg
 
 
 ## Build Systems
