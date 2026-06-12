@@ -4,13 +4,17 @@
   "projectType": "library",
   "sourceRoot": "packages/react-icons/src",
   "tags": ["platform:web"],
-  "implicitDependencies": ["@fluentui/system-icons-processing", "svg-icons"],
+  "implicitDependencies": ["system-icons-processing", "svg-icons"],
   "targets": {
     "build": {
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": [
         "default",
+        "{workspaceRoot}/fonts/FluentSystemIcons-*.ttf",
+        "{workspaceRoot}/fonts/FluentSystemIcons-*.woff",
+        "{workspaceRoot}/fonts/FluentSystemIcons-*.woff2",
+        "{workspaceRoot}/fonts/FluentSystemIcons-*.json",
         "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
         "!{projectRoot}/tsconfig.spec.json",
         "!{projectRoot}/vitest.config.[jt]s",

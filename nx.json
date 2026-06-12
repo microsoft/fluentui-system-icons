@@ -9,6 +9,15 @@
   },
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals", "{workspaceRoot}/.github/workflows/pr.yml"],
+    "fonts": [
+      "{workspaceRoot}/assets/**/*",
+      "{workspaceRoot}/importer/generate.js",
+      "{workspaceRoot}/importer/generateFont.js",
+      "{workspaceRoot}/importer/replace-in-files.js",
+      "{workspaceRoot}/importer/svgo.config.mjs",
+      "{workspaceRoot}/importer/svgo.config.shared.cjs",
+      "{workspaceRoot}/importer/package.json"
+    ],
     "sharedGlobals": []
   },
   "release": {

@@ -1,0 +1,12 @@
+{
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "name": "system-icons-processing",
+  "projectType": "library",
+  "targets": {
+    "deploy:fonts": {
+      "cache": true,
+      "inputs": ["fonts"],
+      "outputs": ["{workspaceRoot}/fonts"]
+    }
+  }
+}
