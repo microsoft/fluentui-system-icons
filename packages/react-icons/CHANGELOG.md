@@ -1,3 +1,9 @@
+## 2.0.330 (2026-06-12)
+
+### 🚀 Features
+
+- **svg-icons:** unify raw SVG processing with react-icons ([#1100](https://github.com/microsoft/fluentui-system-icons/pull/1100))
+
 ## 2.0.329 (2026-06-09)
 
 This release contains icon updates

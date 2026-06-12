@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?62a34e06120eee8de3e066979eb7bf74") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?62a34e06120eee8de3e066979eb7bf74") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?62a34e06120eee8de3e066979eb7bf74") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?ee1a4430f23b1ff7e36c70abd63671dd") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?ee1a4430f23b1ff7e36c70abd63671dd") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?ee1a4430f23b1ff7e36c70abd63671dd") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -29082,4 +29082,46 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_gauge_rotate_315_48_filled:before {
     content: "\f0cd8";
+}
+.icon-ic_fluent_arrow_trending_lines_28_filled:before {
+    content: "\f0cd9";
+}
+.icon-ic_fluent_arrow_trending_lines_32_filled:before {
+    content: "\f0cda";
+}
+.icon-ic_fluent_arrow_trending_lines_48_filled:before {
+    content: "\f0cdb";
+}
+.icon-ic_fluent_chat_help_16_filled:before {
+    content: "\f0cdc";
+}
+.icon-ic_fluent_document_arrow_up_24_filled:before {
+    content: "\f0cdd";
+}
+.icon-ic_fluent_folder_hint_20_filled:before {
+    content: "\f0cde";
+}
+.icon-ic_fluent_image_style_guide_16_filled:before {
+    content: "\f0cdf";
+}
+.icon-ic_fluent_image_style_guide_20_filled:before {
+    content: "\f0ce0";
+}
+.icon-ic_fluent_incognito_16_filled:before {
+    content: "\f0ce1";
+}
+.icon-ic_fluent_incognito_28_filled:before {
+    content: "\f0ce2";
+}
+.icon-ic_fluent_link_settings_20_filled:before {
+    content: "\f0ce3";
+}
+.icon-ic_fluent_task_list_rectangle_28_filled:before {
+    content: "\f0ce4";
+}
+.icon-ic_fluent_ticket_diagonal_32_filled:before {
+    content: "\f0ce5";
+}
+.icon-ic_fluent_ticket_diagonal_48_filled:before {
+    content: "\f0ce6";
 }
