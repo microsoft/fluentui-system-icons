@@ -9562,5 +9562,19 @@
   "ic_fluent_gauge_rotate_315_24_regular": 986200,
   "ic_fluent_gauge_rotate_315_28_regular": 986201,
   "ic_fluent_gauge_rotate_315_32_regular": 986202,
-  "ic_fluent_gauge_rotate_315_48_regular": 986203
+  "ic_fluent_gauge_rotate_315_48_regular": 986203,
+  "ic_fluent_arrow_trending_lines_28_regular": 986204,
+  "ic_fluent_arrow_trending_lines_32_regular": 986205,
+  "ic_fluent_arrow_trending_lines_48_regular": 986206,
+  "ic_fluent_chat_help_16_regular": 986207,
+  "ic_fluent_document_arrow_up_24_regular": 986208,
+  "ic_fluent_folder_hint_20_regular": 986209,
+  "ic_fluent_image_style_guide_16_regular": 986210,
+  "ic_fluent_image_style_guide_20_regular": 986211,
+  "ic_fluent_incognito_16_regular": 986212,
+  "ic_fluent_incognito_28_regular": 986213,
+  "ic_fluent_link_settings_20_regular": 986214,
+  "ic_fluent_task_list_rectangle_28_regular": 986215,
+  "ic_fluent_ticket_diagonal_32_regular": 986216,
+  "ic_fluent_ticket_diagonal_48_regular": 986217
 }

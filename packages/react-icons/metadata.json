@@ -11879,6 +11879,16 @@
     "font": true,
     "type": "resizable"
   },
+  "FolderHintFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "FolderHintRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "FolderLightningFilled": {
     "svg": true,
     "font": true,
@@ -13764,6 +13774,16 @@
     "font": true,
     "type": "resizable"
   },
+  "ImageStyleGuideFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "ImageStyleGuideRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "ImageTableFilled": {
     "svg": true,
     "font": true,
@@ -15010,6 +15030,16 @@
     "type": "resizable"
   },
   "LinkPersonRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "LinkSettingsFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "LinkSettingsRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -36539,6 +36569,36 @@
     "font": true,
     "type": "sized"
   },
+  "ArrowTrendingLines28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowTrendingLines28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowTrendingLines32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowTrendingLines32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowTrendingLines48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowTrendingLines48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "ArrowTrendingSettings20Filled": {
     "svg": true,
     "font": true,
@@ -48890,6 +48950,16 @@
     "type": "sized"
   },
   "ChatEmpty48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ChatHelp16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ChatHelp16Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -62854,6 +62924,16 @@
     "font": true,
     "type": "sized"
   },
+  "DocumentArrowUp24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentArrowUp24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "DocumentBorder20Filled": {
     "svg": true,
     "font": true,
@@ -71374,6 +71454,16 @@
     "font": true,
     "type": "sized"
   },
+  "FolderHint20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FolderHint20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "FolderLightning16Filled": {
     "svg": true,
     "font": true,
@@ -78049,6 +78139,26 @@
     "font": true,
     "type": "sized"
   },
+  "ImageStyleGuide16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ImageStyleGuide16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ImageStyleGuide20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ImageStyleGuide20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "ImageTable16Filled": {
     "svg": true,
     "font": true,
@@ -78239,6 +78349,16 @@
     "font": true,
     "type": "sized"
   },
+  "Incognito16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Incognito16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Incognito20Filled": {
     "svg": true,
     "font": true,
@@ -78255,6 +78375,16 @@
     "type": "sized"
   },
   "Incognito24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Incognito28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Incognito28Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -82300,6 +82430,16 @@
     "type": "sized"
   },
   "LinkPerson48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LinkSettings20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LinkSettings20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -117054,6 +117194,16 @@
     "font": true,
     "type": "sized"
   },
+  "TaskListRectangle28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TaskListRectangle28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "TaskListRtl20Filled": {
     "svg": true,
     "font": true,
@@ -123320,6 +123470,31 @@
     "type": "sized"
   },
   "TicketDiagonal28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TicketDiagonal32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TicketDiagonal32Light": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TicketDiagonal32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TicketDiagonal48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TicketDiagonal48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
