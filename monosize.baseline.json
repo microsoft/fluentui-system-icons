@@ -1,6 +1,6 @@
 {
   "branch": "main",
-  "commitSHA": "3547ef4bffc647463e243bfd3a445f6ec62fc39c",
+  "commitSHA": "56b3865fd3526fe0609f9109fe4c79a7143be8a3",
   "report": [
     {
       "packageName": "react-icons",
@@ -10,11 +10,32 @@
       "gzippedSize": 3225
     },
     {
+      "packageName": "react-icons-file-type",
+      "name": "FileTypeIcon (headless, no Griffel)",
+      "path": "bundle-size/file-type-icon-headless.fixture.js",
+      "minifiedSize": 4664,
+      "gzippedSize": 2483
+    },
+    {
+      "packageName": "react-icons-file-type",
+      "name": "FileTypeIcon",
+      "path": "bundle-size/file-type-icon.fixture.js",
+      "minifiedSize": 33122,
+      "gzippedSize": 12652
+    },
+    {
       "packageName": "react-icons",
       "name": "Single Icon via Import all",
       "path": "bundle-size/icons-import-all.fixture.js",
       "minifiedSize": 6999,
       "gzippedSize": 3227
+    },
+    {
+      "packageName": "react-icons-file-type",
+      "name": "FileTypeIconsProvider",
+      "path": "bundle-size/provider.fixture.js",
+      "minifiedSize": 286,
+      "gzippedSize": 234
     },
     {
       "packageName": "react-icons",
@@ -28,7 +49,7 @@
       "name": "Single Fonts",
       "path": "bundle-size/single-fonts.fixture.js",
       "minifiedSize": 8056,
-      "gzippedSize": 3489
+      "gzippedSize": 3491
     },
     {
       "packageName": "react-icons",
