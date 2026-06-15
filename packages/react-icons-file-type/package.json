@@ -1,0 +1,70 @@
+{
+  "name": "@fluentui/react-icons-file-type",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Fluent UI React (v9-compatible) file type icon components rendered from CDN-hosted assets.",
+  "main": "lib-cjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "sideEffects": [
+    "**/headless/styles.css"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/microsoft/fluentui-system-icons.git",
+    "directory": "packages/react-icons-file-type"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/microsoft/fluentui-system-icons/issues"
+  },
+  "homepage": "https://github.com/microsoft/fluentui-system-icons/tree/main/packages/react-icons-file-type#readme",
+  "scripts": {
+    "clean": "git clean -fXd lib/ lib-cjs/",
+    "generate": "node scripts/generateFileTypeIconMap.js && node scripts/generateFileIconTypes.js",
+    "prebuild": "npm run clean && npm run generate",
+    "build": "node scripts/build.js",
+    "bundle-size": "monosize measure",
+    "lint": "eslint src",
+    "pretest": "npm run generate",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@griffel/react": "^1.6.1",
+    "tslib": "^2.1.0"
+  },
+  "peerDependencies": {
+    "@types/react": ">=16.8.0 <20.0.0",
+    "react": ">=16.8.0 <20.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@griffel/eslint-plugin": "^2.0.2",
+    "eslint": "8.57.1",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "typescript": "5.0.4",
+    "typescript-eslint": "7.18.0"
+  },
+  "files": [
+    "lib/",
+    "lib-cjs/"
+  ],
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-cjs/index.js"
+    },
+    "./headless": {
+      "types": "./lib/headless/index.d.ts",
+      "import": "./lib/headless/index.js",
+      "require": "./lib-cjs/headless/index.js"
+    },
+    "./headless/styles.css": "./lib/headless/styles.css",
+    "./package.json": "./package.json"
+  }
+}

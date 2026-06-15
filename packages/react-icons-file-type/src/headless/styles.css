@@ -1,0 +1,13 @@
+/*
+ * Opt-in static styles for the headless `FileTypeIcon` from
+ * `@fluentui/react-icons-file-type/headless`. Import this file once in your app to reproduce
+ * the default (Griffel) box behavior without the CSS-in-JS runtime:
+ *
+ *   import '@fluentui/react-icons-file-type/headless/styles.css';
+ *
+ * Or skip it and target `[data-fui-filetype-icon]` (or a `className`) with your own CSS.
+ */
+[data-fui-filetype-icon] {
+  display: inline-block;
+  object-fit: contain;
+}

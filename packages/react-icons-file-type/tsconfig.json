@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "pretty": true,
+    "noEmit": true,
+    "target": "ES2019",
+    "module": "esnext",
+    "lib": ["ES2019", "dom"],
+    "types": [],
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "jsx": "react",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "react": ["./node_modules/@types/react"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["lib", "lib-cjs", "node_modules", "src/**/*.test.ts", "src/**/*.test.tsx"]
+}

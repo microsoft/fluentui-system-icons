@@ -10,6 +10,7 @@
   "dependencies": {
     "@fluentui/react-components": "^9.46.0",
     "@fluentui/react-icons": "*",
+    "@fluentui/react-icons-file-type": "*",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-window": "^1.8.10"
