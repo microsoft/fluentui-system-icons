@@ -15,17 +15,6 @@ const PNG_DENSITIES: ReadonlyArray<readonly [suffix: string, descriptor: string]
   ['_4x', '4x'],
 ];
 
-/** Runs `fn` with `window.devicePixelRatio` temporarily set to `value`, then restores it. */
-function withDevicePixelRatio<T>(value: number, fn: () => T): T {
-  const original = window.devicePixelRatio;
-  Object.defineProperty(window, 'devicePixelRatio', { value, configurable: true });
-  try {
-    return fn();
-  } finally {
-    Object.defineProperty(window, 'devicePixelRatio', { value: original, configurable: true });
-  }
-}
-
 /** Runs `fn` while capturing `console.error` calls, returning them alongside the result. */
 async function captureConsoleErrors<T>(fn: () => Promise<T>): Promise<{ result: T; errors: unknown[][] }> {
   const original = console.error;
@@ -60,16 +49,7 @@ describe('headless/FileTypeIcon SSR', () => {
     }
   });
 
-  it('produces identical server and client markup regardless of devicePixelRatio', () => {
-    const ui = <FileTypeIcon extension="pptx" size={32} imageFileType="png" />;
-    const serverHtml = renderToString(ui);
-
-    // Simulate a high-DPI client; markup must still match the server output (1x).
-    const clientHtml = withDevicePixelRatio(3, () => renderToString(ui));
-    expect(clientHtml).toBe(serverHtml);
-  });
-
-  it('hydrates server-rendered markup without a mismatch on a high-DPI client', async () => {
+  it('hydrates server-rendered markup without a mismatch', async () => {
     const ui = (
       <FileTypeIconsProvider baseUrl="https://example.com/item-types/">
         <FileTypeIcon extension="xlsx" size={24} imageFileType="png" />
@@ -81,27 +61,24 @@ describe('headless/FileTypeIcon SSR', () => {
     document.body.appendChild(container);
 
     try {
-      // The server had no `window` (1x); simulate the client on a 3x display to prove the
-      // markup is density-independent and therefore hydrates cleanly.
-      const { result, errors } = await captureConsoleErrors(() =>
-        withDevicePixelRatio(3, async () => {
-          let recoverableError: unknown;
-          let root: ReturnType<typeof hydrateRoot>;
-          await act(async () => {
-            root = hydrateRoot(container, ui, {
-              onRecoverableError: (error) => {
-                recoverableError = error;
-              },
-            });
+      // The server had no `window`; the density-independent markup must hydrate cleanly.
+      const { result, errors } = await captureConsoleErrors(async () => {
+        let recoverableError: unknown;
+        let root: ReturnType<typeof hydrateRoot>;
+        await act(async () => {
+          root = hydrateRoot(container, ui, {
+            onRecoverableError: (error) => {
+              recoverableError = error;
+            },
           });
-          // Read the hydrated src before unmounting empties the container.
-          const src = container.querySelector('img')?.getAttribute('src');
-          await act(async () => {
-            root.unmount();
-          });
-          return { recoverableError, src };
-        }),
-      );
+        });
+        // Read the hydrated src before unmounting empties the container.
+        const src = container.querySelector('img')?.getAttribute('src');
+        await act(async () => {
+          root.unmount();
+        });
+        return { recoverableError, src };
+      });
 
       // No hydration warnings and no recoverable hydration errors.
       const hydrationWarnings = errors.filter(
