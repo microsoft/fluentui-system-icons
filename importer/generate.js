@@ -81,23 +81,9 @@ const parseArgs = (args=process.argv.slice(2)) => {
 
 const { SRC_PATH, DEST_PATH, EXTENSION, TARGET, SELECTOR, KEEP_DIRS, ON_DUPLICATE } = parseArgs();
 
-/**
- * Source folders known to collide with canonical asset folders today.
- * These folders appear to be staging artifacts (no metadata.json, contain SVG
- * files named after the OPPOSITE icon, e.g. `Arrow Undo Temp RTL/SVG/ic_fluent_arrow_redo_*.svg`).
- * They cause non-deterministic atom output because multiple source folders
- * write to the same intermediate filename — see issue tracker for cleanup.
- * Until they are removed from `assets/`, collisions involving these folders
- * are downgraded to warnings so the build does not fail today.
- *
- * TODO: remove this allowlist once the `* Temp (LTR|RTL)` folders are deleted
- * from `assets/`.
- */
-const KNOWN_DUPLICATE_SOURCE = / Temp (LTR|RTL)(\/|\\|$)/;
-
 /** @type {Map<string, string>} destFile -> first srcFile that wrote it */
 const writtenFiles = new Map();
-/** @type {Array<{ destFile: string, previousSrc: string, conflictingSrc: string, allowlisted: boolean }>} */
+/** @type {Array<{ destFile: string, previousSrc: string, conflictingSrc: string }>} */
 const duplicateCollisions = [];
 const ICON_OUTLINE_STYLE = '_regular'
 const ICON_FILLED_STYLE = '_filled'
@@ -196,9 +182,7 @@ function processFolder(srcPath, destPath, folderDepth) {
         }
         const previousSrc = writtenFiles.get(destFile);
         if (previousSrc && previousSrc !== srcFile) {
-          const allowlisted =
-            KNOWN_DUPLICATE_SOURCE.test(previousSrc) || KNOWN_DUPLICATE_SOURCE.test(srcFile);
-          duplicateCollisions.push({ destFile, previousSrc, conflictingSrc: srcFile, allowlisted });
+          duplicateCollisions.push({ destFile, previousSrc, conflictingSrc: srcFile });
         } else {
           writtenFiles.set(destFile, srcFile);
         }
@@ -285,19 +269,14 @@ export default ${iconName + REACT_SUFFIX};
  * and Node would otherwise exit naturally.
  *
  * Behaviour per `--on-duplicate`:
- *   - fail    (default): non-zero exit if any non-allowlisted collision occurred
+ *   - fail    (default): non-zero exit if any collision occurred
  *   - warn             : prints all collisions but keeps exit code 0
  *   - ignore           : prints nothing
- *
- * Collisions where either side matches `KNOWN_DUPLICATE_SOURCE` are downgraded
- * to a warning even under `--on-duplicate=fail`.
  */
 process.on('exit', () => {
   if (ON_DUPLICATE === 'ignore' || duplicateCollisions.length === 0) {
     return;
   }
-  const blocking = duplicateCollisions.filter((c) => !c.allowlisted);
-  const allowlisted = duplicateCollisions.filter((c) => c.allowlisted);
   /** @param {typeof duplicateCollisions} list */
   const formatList = (list) =>
     list
@@ -306,22 +285,14 @@ process.on('exit', () => {
           `  - ${c.destFile}\n      first : ${c.previousSrc}\n      collide: ${c.conflictingSrc}`
       )
       .join('\n');
-  if (allowlisted.length > 0) {
-    console.warn(
-      `\n[generate.js] ${allowlisted.length} known duplicate destination(s) ` +
-        `(allowlisted via KNOWN_DUPLICATE_SOURCE):\n${formatList(allowlisted)}\n`
-    );
-  }
-  if (blocking.length > 0) {
-    const message =
-      `\n[generate.js] ${blocking.length} duplicate destination(s) detected. ` +
-      `Two source folders produced the same output filename; output is non-deterministic. ` +
-      `Rename one of the source folders or remove the duplicate asset.\n${formatList(blocking)}\n`;
-    if (ON_DUPLICATE === 'fail') {
-      console.error(message);
-      process.exitCode = 1;
-    } else {
-      console.warn(message);
-    }
+  const message =
+    `\n[generate.js] ${duplicateCollisions.length} duplicate destination(s) detected. ` +
+    `Two source folders produced the same output filename; output is non-deterministic. ` +
+    `Rename one of the source folders or remove the duplicate asset.\n${formatList(duplicateCollisions)}\n`;
+  if (ON_DUPLICATE === 'fail') {
+    console.error(message);
+    process.exitCode = 1;
+  } else {
+    console.warn(message);
   }
 });
