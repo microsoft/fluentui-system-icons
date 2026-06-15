@@ -13,7 +13,7 @@
   "scripts": {
     "clean": "git clean -fXd ./icons ./sprites",
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./icons --extension=svg",
-    "rename": "renamer --find ic_fluent_ './icons/*'",
+    "rename": "node ../../importer/rename-strip-prefix.js --dir ./icons --prefix ic_fluent_ --flat",
     "optimize": "svgo --config svgo.config.js --folder=./icons --precision=2",
     "unfill": "node unfill.js --path=./icons/",
     "sprites": "node generate-sprites.js",
@@ -22,7 +22,6 @@
     "build-verify": "vitest run build-verify.test.js"
   },
   "devDependencies": {
-    "renamer": "^2.0.1",
     "svgo": "2.8.2",
     "svgstore": "^3.0.1",
     "yargs": "^14.0.0"
