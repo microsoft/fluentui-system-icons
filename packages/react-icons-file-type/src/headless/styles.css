@@ -9,7 +9,5 @@
  */
 [data-fui-filetype-icon] {
   display: inline-block;
-  overflow-x: hidden;
-  overflow-y: hidden;
   object-fit: contain;
 }

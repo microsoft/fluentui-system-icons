@@ -2,16 +2,14 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import type { FileTypeIconState } from './common/useFileTypeIcon';
 
 /**
- * Static styles for the `FileTypeIcon` image. Reproduces the box behavior the legacy
- * v8 icon registry applied (`overflow: hidden`) plus sensible image rendering defaults.
- * The dynamic `width`/`height` (which depend on the `size` prop) are applied inline by
- * the state hook.
+ * Static styles for the `FileTypeIcon` image. `object-fit: contain` keeps non-square assets
+ * from being stretched within the square `width`/`height` box (both applied inline by the
+ * state hook from the `size` prop). `object-fit` only affects replaced elements, so these
+ * styles must live on the `<img>` itself, not on a wrapper.
  */
 const useStyles = makeStyles({
   root: {
     display: 'inline-block',
-    overflowX: 'hidden',
-    overflowY: 'hidden',
     objectFit: 'contain',
   },
 });

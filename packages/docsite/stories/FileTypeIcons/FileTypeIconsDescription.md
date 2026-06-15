@@ -53,7 +53,6 @@ import { FileTypeIcon } from '@fluentui/react-icons-file-type/headless';
 /* Option B: target the data attribute (or pass your own className) with your own CSS */
 [data-fui-filetype-icon] {
   display: inline-block;
-  overflow: hidden;
   object-fit: contain;
 }
 ```
