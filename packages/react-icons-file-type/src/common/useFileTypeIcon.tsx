@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { getFileTypeIconSrc, getFileTypeIconSrcSet } from '../fileTypeIconResolver';
-import type { FileTypeIconOptions } from '../fileTypeIconResolver';
-import { useFileTypeIconsContext } from '../FileTypeIconsContext';
-import { DEFAULT_ICON_SIZE } from '../constants';
+import { getFileTypeIconSrc, getFileTypeIconSrcSet } from './fileTypeIconResolver';
+import type { FileTypeIconOptions } from './fileTypeIconResolver';
+import { useFileTypeIconsContext } from './FileTypeIconsContext';
+import { DEFAULT_ICON_SIZE } from './constants';
 
 export interface FileTypeIconProps
   extends FileTypeIconOptions,

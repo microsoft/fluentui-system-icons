@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { FileTypeIcon, fileTypeIconDataAttribute } from './FileTypeIcon';
-import { FileTypeIconsProvider } from '../FileTypeIconsContext';
-import { FileIconType } from '../FileIconType';
-import { DEFAULT_BASE_URL } from '../constants';
+import { FileTypeIconsProvider } from '../common/FileTypeIconsContext';
+import { FileIconType } from '../common/FileIconType';
+import { DEFAULT_BASE_URL } from '../common/constants';
 
 describe('headless/FileTypeIcon', () => {
   it('renders an img using the default Fluent CDN when no provider is present', () => {

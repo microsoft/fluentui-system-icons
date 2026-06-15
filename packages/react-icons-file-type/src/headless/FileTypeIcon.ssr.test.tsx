@@ -3,8 +3,8 @@ import { act } from 'react';
 import { renderToString } from 'react-dom/server';
 import { hydrateRoot } from 'react-dom/client';
 import { FileTypeIcon } from './FileTypeIcon';
-import { FileTypeIconsProvider } from '../FileTypeIconsContext';
-import { DEFAULT_BASE_URL } from '../constants';
+import { FileTypeIconsProvider } from '../common/FileTypeIconsContext';
+import { DEFAULT_BASE_URL } from '../common/constants';
 
 /** Published png densities as `[folderSuffix, srcsetDescriptor]` pairs. */
 const PNG_DENSITIES: ReadonlyArray<readonly [suffix: string, descriptor: string]> = [

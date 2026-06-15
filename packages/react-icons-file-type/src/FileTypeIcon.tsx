@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { useFileTypeIcon, renderFileTypeIcon } from './headless/useFileTypeIcon';
-import type { FileTypeIconProps } from './headless/useFileTypeIcon';
+import { useFileTypeIcon, renderFileTypeIcon } from './common/useFileTypeIcon';
+import type { FileTypeIconProps } from './common/useFileTypeIcon';
 import { useFileTypeIconStyles } from './FileTypeIcon.styles';
 
-export type { FileTypeIconProps } from './headless/useFileTypeIcon';
+export type { FileTypeIconProps } from './common/useFileTypeIcon';
 
 /**
  * Renders a file type icon as an `<img>` sourced from CDN-hosted assets, styled with Griffel

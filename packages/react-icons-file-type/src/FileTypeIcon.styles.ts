@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
-import type { FileTypeIconState } from './headless/useFileTypeIcon';
+import type { FileTypeIconState } from './common/useFileTypeIcon';
 
 /**
  * Static styles for the `FileTypeIcon` image. Reproduces the box behavior the legacy

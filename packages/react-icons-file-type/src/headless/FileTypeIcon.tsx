@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { useFileTypeIcon, renderFileTypeIcon } from './useFileTypeIcon';
-import type { FileTypeIconProps } from './useFileTypeIcon';
+import { useFileTypeIcon, renderFileTypeIcon } from '../common/useFileTypeIcon';
+import type { FileTypeIconProps } from '../common/useFileTypeIcon';
 
-export type { FileTypeIconProps, FileTypeIconState } from './useFileTypeIcon';
-export { fileTypeIconDataAttribute, useFileTypeIcon, renderFileTypeIcon } from './useFileTypeIcon';
+export type { FileTypeIconProps, FileTypeIconState } from '../common/useFileTypeIcon';
+export { fileTypeIconDataAttribute, useFileTypeIcon, renderFileTypeIcon } from '../common/useFileTypeIcon';
 
 /**
  * Headless (Griffel-free) file type icon. Renders an `<img>` sourced from CDN-hosted assets
