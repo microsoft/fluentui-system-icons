@@ -26,13 +26,20 @@ describe('FileTypeIcon', () => {
     expect(container.querySelector('img')).toHaveAttribute('src', `${baseUrl}24/pdf.svg`);
   });
 
-  it('resolves the asset density from the provider targetWindow device pixel ratio', () => {
-    const { container } = render(
-      <FileTypeIconsProvider targetWindow={{ devicePixelRatio: 2 } as Window}>
-        <FileTypeIcon extension="docx" size={24} imageFileType="png" />
-      </FileTypeIconsProvider>,
+  it('emits a density srcset so the browser selects the asset for the device pixel ratio', () => {
+    const { container } = render(<FileTypeIcon extension="docx" size={24} imageFileType="png" />);
+    const img = container.querySelector('img');
+    expect(img).toHaveAttribute('src', `${DEFAULT_BASE_URL}24/docx.png`);
+    expect(img).toHaveAttribute(
+      'srcset',
+      [
+        `${DEFAULT_BASE_URL}24/docx.png 1x`,
+        `${DEFAULT_BASE_URL}24_1.5x/docx.png 1.5x`,
+        `${DEFAULT_BASE_URL}24_2x/docx.png 2x`,
+        `${DEFAULT_BASE_URL}24_3x/docx.png 3x`,
+        `${DEFAULT_BASE_URL}24_4x/docx.png 4x`,
+      ].join(', '),
     );
-    expect(container.querySelector('img')).toHaveAttribute('src', `${DEFAULT_BASE_URL}24_2x/docx.png`);
   });
 
   it('exposes the image to assistive tech when it has an accessible name', () => {

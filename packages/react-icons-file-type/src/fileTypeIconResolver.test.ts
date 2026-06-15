@@ -1,7 +1,7 @@
 import {
   getFileTypeIconNameFromExtensionOrType,
   getFileTypeIconSrc,
-  getFileTypeIconDensitySuffix,
+  getFileTypeIconSrcSet,
 } from './fileTypeIconResolver';
 import { getFileTypeIconExtensionMap } from './fileTypeIconMap.generated';
 import { FileIconType } from './FileIconType';
@@ -54,53 +54,59 @@ describe('getFileTypeIconNameFromExtensionOrType', () => {
   });
 });
 
-describe('getFileTypeIconDensitySuffix', () => {
-  it('returns no suffix (1x) for svg at standard density', () => {
-    expect(getFileTypeIconDensitySuffix(16, 'svg')).toBe('');
-    expect(getFileTypeIconDensitySuffix(96, 'svg', { devicePixelRatio: 1 } as Window)).toBe('');
-  });
-
-  it('returns no suffix (1x) for png at standard density', () => {
-    expect(getFileTypeIconDensitySuffix(16, 'png')).toBe('');
-  });
-
+describe('getFileTypeIconSrcSet', () => {
   describe('svg', () => {
-    it('uses the 1.5x asset for device pixel ratios in (1, 1.5]', () => {
-      expect(getFileTypeIconDensitySuffix(24, 'svg', { devicePixelRatio: 1.25 } as Window)).toBe('_1.5x');
-      expect(getFileTypeIconDensitySuffix(24, 'svg', { devicePixelRatio: 1.5 } as Window)).toBe('_1.5x');
+    it('lists the 1x and 1.5x candidates (svgs scale, so no 2x+ assets)', () => {
+      expect(getFileTypeIconSrcSet({ extension: 'docx', size: 24 }, CUSTOM_BASE_URL)).toBe(
+        `${CUSTOM_BASE_URL}24/docx.svg 1x, ${CUSTOM_BASE_URL}24_1.5x/docx.svg 1.5x`,
+      );
     });
 
-    it('snaps size 20 to 1x (no 1.5x asset published)', () => {
-      expect(getFileTypeIconDensitySuffix(20, 'svg', { devicePixelRatio: 1.25 } as Window)).toBe('');
-    });
-
-    it('uses the base (1x) asset above 1.5x since svgs scale', () => {
-      expect(getFileTypeIconDensitySuffix(24, 'svg', { devicePixelRatio: 2 } as Window)).toBe('');
-      expect(getFileTypeIconDensitySuffix(24, 'svg', { devicePixelRatio: 3 } as Window)).toBe('');
+    it('lists only the 1x candidate for size 20 (no 1.5x asset published)', () => {
+      expect(getFileTypeIconSrcSet({ extension: 'docx', size: 20 }, CUSTOM_BASE_URL)).toBe(
+        `${CUSTOM_BASE_URL}20/docx.svg 1x`,
+      );
     });
   });
 
   describe('png', () => {
-    it('uses the 1.5x asset for device pixel ratios in (1, 1.5]', () => {
-      expect(getFileTypeIconDensitySuffix(24, 'png', { devicePixelRatio: 1.25 } as Window)).toBe('_1.5x');
-      expect(getFileTypeIconDensitySuffix(24, 'png', { devicePixelRatio: 1.5 } as Window)).toBe('_1.5x');
+    it('lists every density bucket from 1x through 4x', () => {
+      expect(getFileTypeIconSrcSet({ extension: 'docx', size: 24, imageFileType: 'png' }, CUSTOM_BASE_URL)).toBe(
+        [
+          `${CUSTOM_BASE_URL}24/docx.png 1x`,
+          `${CUSTOM_BASE_URL}24_1.5x/docx.png 1.5x`,
+          `${CUSTOM_BASE_URL}24_2x/docx.png 2x`,
+          `${CUSTOM_BASE_URL}24_3x/docx.png 3x`,
+          `${CUSTOM_BASE_URL}24_4x/docx.png 4x`,
+        ].join(', '),
+      );
     });
 
-    it('snaps size 20 to 2x for ratios in (1, 1.5] (no 1.5x asset published)', () => {
-      expect(getFileTypeIconDensitySuffix(20, 'png', { devicePixelRatio: 1.25 } as Window)).toBe('_2x');
+    it('omits the missing 1.5x bucket for size 20', () => {
+      expect(getFileTypeIconSrcSet({ extension: 'docx', size: 20, imageFileType: 'png' }, CUSTOM_BASE_URL)).toBe(
+        [
+          `${CUSTOM_BASE_URL}20/docx.png 1x`,
+          `${CUSTOM_BASE_URL}20_2x/docx.png 2x`,
+          `${CUSTOM_BASE_URL}20_3x/docx.png 3x`,
+          `${CUSTOM_BASE_URL}20_4x/docx.png 4x`,
+        ].join(', '),
+      );
     });
+  });
 
-    it('uses the 2x asset for ratios in (1.5, 2]', () => {
-      expect(getFileTypeIconDensitySuffix(24, 'png', { devicePixelRatio: 2 } as Window)).toBe('_2x');
-    });
+  it('defaults to the Fluent CDN base url and svg when none are provided', () => {
+    expect(getFileTypeIconSrcSet({ extension: 'pdf', size: 16 })).toBe(
+      `${DEFAULT_BASE_URL}16/pdf.svg 1x, ${DEFAULT_BASE_URL}16_1.5x/pdf.svg 1.5x`,
+    );
+  });
 
-    it('uses the 3x asset for ratios in (2, 3]', () => {
-      expect(getFileTypeIconDensitySuffix(24, 'png', { devicePixelRatio: 3 } as Window)).toBe('_3x');
-    });
-
-    it('uses the 4x asset for ratios above 3', () => {
-      expect(getFileTypeIconDensitySuffix(24, 'png', { devicePixelRatio: 4 } as Window)).toBe('_4x');
-    });
+  it('resolves a FileIconType and falls back to genericfile for unknown extensions', () => {
+    expect(getFileTypeIconSrcSet({ type: FileIconType.folder, size: 24 }, CUSTOM_BASE_URL)).toBe(
+      `${CUSTOM_BASE_URL}24/folder.svg 1x, ${CUSTOM_BASE_URL}24_1.5x/folder.svg 1.5x`,
+    );
+    expect(getFileTypeIconSrcSet({ extension: 'totally-unknown-ext', size: 24 }, CUSTOM_BASE_URL)).toBe(
+      `${CUSTOM_BASE_URL}24/genericfile.svg 1x, ${CUSTOM_BASE_URL}24_1.5x/genericfile.svg 1.5x`,
+    );
   });
 });
 
@@ -151,16 +157,8 @@ describe('getFileTypeIconSrc', () => {
     );
   });
 
-  it('builds a high-density folder url (3-part suffix) from the window device pixel ratio', () => {
-    const win = { devicePixelRatio: 2 } as Window;
-    expect(getFileTypeIconSrc({ extension: 'docx', size: 24, imageFileType: 'png' }, CUSTOM_BASE_URL, win)).toBe(
-      `${CUSTOM_BASE_URL}24_2x/docx.png`,
-    );
-  });
-
-  it('keeps the standard-density url when the device pixel ratio is 1', () => {
-    const win = { devicePixelRatio: 1 } as Window;
-    expect(getFileTypeIconSrc({ extension: 'docx', size: 24, imageFileType: 'png' }, CUSTOM_BASE_URL, win)).toBe(
+  it('always resolves the deterministic standard-density (1x) url', () => {
+    expect(getFileTypeIconSrc({ extension: 'docx', size: 24, imageFileType: 'png' }, CUSTOM_BASE_URL)).toBe(
       `${CUSTOM_BASE_URL}24/docx.png`,
     );
   });

@@ -82,6 +82,34 @@ import { FileTypeIcon, FileIconType } from '@fluentui/react-icons-file-type';
 <FileTypeIcon type={FileIconType.folder} size={24} />;
 ```
 
+## 5. High-DPI handling is now SSR-safe (`srcset`)
+
+In v8 the resolver picked a **single** asset URL based on the device pixel ratio it read at
+call time. That has two problems: under server-side rendering there is no `window`, so the
+server always emitted the standard-density (1x) URL, and the first client render had to match it
+— then a post-hydration effect would swap in the high-density asset, causing a flicker and a
+redundant download. It also could not react to a window moving to a display with a different DPI.
+
+In v9 `FileTypeIcon` no longer reads `devicePixelRatio` in JavaScript. It renders a deterministic
+1x `src` plus a [`srcset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset)
+listing every published density, and lets the **browser** select the right asset:
+
+```html
+<!-- v9 output (png, size 24) -->
+<img
+  src="…/24/docx.png"
+  srcset="…/24/docx.png 1x, …/24_1.5x/docx.png 1.5x, …/24_2x/docx.png 2x, …/24_3x/docx.png 3x, …/24_4x/docx.png 4x"
+  width="24"
+  height="24"
+/>
+```
+
+This is fully server/client deterministic (no hydration mismatch, no flicker, no double-fetch)
+and the browser re-evaluates the density automatically when the image moves across displays.
+There is nothing to configure — it is the default behavior. As a result, the v8 notion of
+selecting density from an explicit window/device pixel ratio has no v9 equivalent (and is not
+needed).
+
 ## Key differences at a glance
 
 | v8                                                      | v9                                                                     |
@@ -91,6 +119,7 @@ import { FileTypeIcon, FileIconType } from '@fluentui/react-icons-file-type';
 | `<Icon {...getFileTypeIconProps(options)} />`           | `<FileTypeIcon {...options} />`                                        |
 | Custom CDN passed to `initializeFileTypeIcons(baseUrl)` | `<FileTypeIconsProvider baseUrl="...">`; the Fluent CDN is the default |
 | Icons registered into the global icon registry          | No global state; assets resolved per render                            |
+| Single density-resolved `src` (not SSR-safe)            | SSR-safe 1x `src` + `srcset`; browser picks the density                |
 | `FileIconType` is a TS `enum` (with reverse mapping)    | `FileIconType` is a `const` object (no reverse mapping)                |
 
 ## APIs that were not ported

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getFileTypeIconSrc } from '../fileTypeIconResolver';
+import { getFileTypeIconSrc, getFileTypeIconSrcSet } from '../fileTypeIconResolver';
 import type { FileTypeIconOptions } from '../fileTypeIconResolver';
 import { useFileTypeIconsContext } from '../FileTypeIconsContext';
 import { DEFAULT_ICON_SIZE } from '../constants';
@@ -73,9 +73,14 @@ function getImageA11yProps(props: FileTypeIconProps): { alt?: string; 'aria-hidd
 export const FileTypeIcon: React.FC<FileTypeIconProps> = (props) => {
   const { extension, type, size = DEFAULT_ICON_SIZE, imageFileType, className, ...imgProps } = props;
 
-  const { baseUrl, targetWindow } = useFileTypeIconsContext();
+  const { baseUrl } = useFileTypeIconsContext();
 
-  const src = getFileTypeIconSrc({ extension, type, size, imageFileType }, baseUrl, targetWindow);
+  const iconOptions: FileTypeIconOptions = { extension, type, size, imageFileType };
+  // `src` is the deterministic 1x fallback; `srcset` lets the browser pick the right density for
+  // the device pixel ratio. Resolving density in the browser (rather than from `devicePixelRatio`
+  // in JS) keeps server and client markup identical — no hydration mismatch, no post-mount swap.
+  const src = getFileTypeIconSrc(iconOptions, baseUrl);
+  const srcSet = getFileTypeIconSrcSet(iconOptions, baseUrl);
 
   if (!src) {
     return null;
@@ -88,6 +93,7 @@ export const FileTypeIcon: React.FC<FileTypeIconProps> = (props) => {
       {...imgProps}
       {...a11yProps}
       src={src}
+      srcSet={srcSet}
       width={size}
       height={size}
       className={className}

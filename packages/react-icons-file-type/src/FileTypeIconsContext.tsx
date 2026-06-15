@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { DEFAULT_BASE_URL } from './constants';
 
-// SSR-safe reference to the ambient window, used as the default when no explicit
-// `targetWindow` is provided. `undefined` in non-DOM environments (e.g. during SSR).
-// eslint-disable-next-line no-restricted-globals
-const defaultTargetWindow: Window | undefined = typeof window !== 'undefined' ? window : undefined;
-
 export interface FileTypeIconsContextValue {
   /**
    * Base URL used to resolve file type icon assets for all descendant `FileTypeIcon`
@@ -13,12 +8,6 @@ export interface FileTypeIconsContextValue {
    * Provide your own asset host to serve the icons from a different (e.g. same-origin) location.
    */
   baseUrl: string;
-  /**
-   * Window used to resolve the device pixel ratio when selecting the asset density.
-   * Provide an explicit window to support multi-window scenarios (e.g. popped-out
-   * surfaces). Falls back to the ambient `window`, or standard density (1x) during SSR.
-   */
-  targetWindow?: Window;
 }
 
 const FileTypeIconsContext = React.createContext<FileTypeIconsContextValue | undefined>(undefined);
@@ -29,11 +18,6 @@ export interface FileTypeIconsProviderProps {
    * @default the Fluent CDN base url
    */
   baseUrl?: string;
-  /**
-   * Window used to resolve the device pixel ratio when selecting the asset density.
-   * @default the ambient `window` (or undefined during SSR)
-   */
-  targetWindow?: Window;
   children?: React.ReactNode;
 }
 
@@ -44,8 +28,8 @@ export interface FileTypeIconsProviderProps {
  * without hardcoding the CDN inside the icon component itself.
  */
 export const FileTypeIconsProvider: React.FC<FileTypeIconsProviderProps> = (props) => {
-  const { baseUrl = DEFAULT_BASE_URL, targetWindow = defaultTargetWindow, children } = props;
-  const value = React.useMemo<FileTypeIconsContextValue>(() => ({ baseUrl, targetWindow }), [baseUrl, targetWindow]);
+  const { baseUrl = DEFAULT_BASE_URL, children } = props;
+  const value = React.useMemo<FileTypeIconsContextValue>(() => ({ baseUrl }), [baseUrl]);
 
   return <FileTypeIconsContext.Provider value={value}>{children}</FileTypeIconsContext.Provider>;
 };
@@ -56,5 +40,5 @@ export const FileTypeIconsProvider: React.FC<FileTypeIconsProviderProps> = (prop
  */
 export const useFileTypeIconsContext = (): FileTypeIconsContextValue => {
   const context = React.useContext(FileTypeIconsContext);
-  return context ?? { baseUrl: DEFAULT_BASE_URL, targetWindow: defaultTargetWindow };
+  return context ?? { baseUrl: DEFAULT_BASE_URL };
 };
