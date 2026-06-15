@@ -189,6 +189,7 @@
 |Text Edit Style|<img src="assets/Text Edit Style/SVG/ic_fluent_text_edit_style_32_light.svg?raw=true" width="24" height="24">|`textEditStyle32Light`|`ic_fluent_text_edit_style_32_light`|
 |Text Expand|<img src="assets/Text Expand/SVG/ic_fluent_text_expand_32_light.svg?raw=true" width="24" height="24">|`textExpand32Light`|`ic_fluent_text_expand_32_light`|
 |TextBox Align Top Left|<img src="assets/TextBox Align Top Left/SVG/ic_fluent_textbox_align_top_left_32_light.svg?raw=true" width="24" height="24">|`textboxAlignTopLeft32Light`|`ic_fluent_textbox_align_top_left_32_light`|
+|Ticket Diagonal|<img src="assets/Ticket Diagonal/SVG/ic_fluent_ticket_diagonal_32_light.svg?raw=true" width="24" height="24">|`ticketDiagonal32Light`|`ic_fluent_ticket_diagonal_32_light`|
 |Toolbox|<img src="assets/Toolbox/SVG/ic_fluent_toolbox_32_light.svg?raw=true" width="24" height="24">|`toolbox32Light`|`ic_fluent_toolbox_32_light`|
 |Translate|<img src="assets/Translate/SVG/ic_fluent_translate_32_light.svg?raw=true" width="24" height="24">|`translate32Light`|`ic_fluent_translate_32_light`|
 |VIP|<img src="assets/VIP/SVG/ic_fluent_vip_32_light.svg?raw=true" width="24" height="24">|`vip32Light`|`ic_fluent_vip_32_light`|

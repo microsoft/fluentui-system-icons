@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.woff2?174d1841cd1810f385ee5c87aecae0d4") format("woff2"),
-url("./FluentSystemIcons-Regular.woff?174d1841cd1810f385ee5c87aecae0d4") format("woff"),
-url("./FluentSystemIcons-Regular.ttf?174d1841cd1810f385ee5c87aecae0d4") format("truetype");
+    src: url("./FluentSystemIcons-Regular.woff2?fb7b0b4522d52ff9c10c56efe98e575e") format("woff2"),
+url("./FluentSystemIcons-Regular.woff?fb7b0b4522d52ff9c10c56efe98e575e") format("woff"),
+url("./FluentSystemIcons-Regular.ttf?fb7b0b4522d52ff9c10c56efe98e575e") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -28707,4 +28707,46 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_gauge_rotate_315_48_regular:before {
     content: "\f0c5b";
+}
+.icon-ic_fluent_arrow_trending_lines_28_regular:before {
+    content: "\f0c5c";
+}
+.icon-ic_fluent_arrow_trending_lines_32_regular:before {
+    content: "\f0c5d";
+}
+.icon-ic_fluent_arrow_trending_lines_48_regular:before {
+    content: "\f0c5e";
+}
+.icon-ic_fluent_chat_help_16_regular:before {
+    content: "\f0c5f";
+}
+.icon-ic_fluent_document_arrow_up_24_regular:before {
+    content: "\f0c60";
+}
+.icon-ic_fluent_folder_hint_20_regular:before {
+    content: "\f0c61";
+}
+.icon-ic_fluent_image_style_guide_16_regular:before {
+    content: "\f0c62";
+}
+.icon-ic_fluent_image_style_guide_20_regular:before {
+    content: "\f0c63";
+}
+.icon-ic_fluent_incognito_16_regular:before {
+    content: "\f0c64";
+}
+.icon-ic_fluent_incognito_28_regular:before {
+    content: "\f0c65";
+}
+.icon-ic_fluent_link_settings_20_regular:before {
+    content: "\f0c66";
+}
+.icon-ic_fluent_task_list_rectangle_28_regular:before {
+    content: "\f0c67";
+}
+.icon-ic_fluent_ticket_diagonal_32_regular:before {
+    content: "\f0c68";
+}
+.icon-ic_fluent_ticket_diagonal_48_regular:before {
+    content: "\f0c69";
 }
