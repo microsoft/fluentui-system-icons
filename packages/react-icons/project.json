@@ -4,10 +4,11 @@
   "projectType": "library",
   "sourceRoot": "packages/react-icons/src",
   "tags": ["platform:web"],
-  "implicitDependencies": ["@fluentui/system-icons-processing"],
+  "implicitDependencies": ["@fluentui/system-icons-processing", "svg-icons"],
   "targets": {
     "build": {
       "cache": true,
+      "dependsOn": ["^build"],
       "inputs": [
         "default",
         "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",

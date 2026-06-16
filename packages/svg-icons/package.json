@@ -12,8 +12,9 @@
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./icons --extension=svg",
     "copywithdirs": "node ../../importer/generate.js --source=../../assets --dest=./icons --extension=svg --keepdirs=true",
     "rename": "node ../../importer/rename-strip-prefix.js --dir ./icons --prefix ic_fluent_",
-    "optimize": "svgo --config svgo.config.js --folder=./icons --recursive --precision=2",
+    "optimize": "svgo --config svgo.config.js --folder=./icons --recursive --precision=2 --quiet",
     "unfill": "node unfill.js --path=./icons/",
+    "prebuild": "npm run clean",
     "build": "npm run copy && npm run rename && npm run optimize && npm run unfill",
     "buildforblazor": "npm run copywithdirs && npm run rename && npm run optimize && npm run unfill",
     "build-verify": "vitest run build-verify.test.js"
