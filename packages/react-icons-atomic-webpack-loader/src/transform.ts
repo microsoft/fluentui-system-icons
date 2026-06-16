@@ -1,30 +1,16 @@
 import { parseSync } from 'oxc-parser';
-import type { StaticImport, StaticExport } from 'oxc-parser';
 import MagicString from 'magic-string';
 
-const MODULE_NAME = '@fluentui/react-icons';
-const ICON_SUFFIX_REGEX = /(\d*)?(Regular|Filled|Light|Color)$/;
+import { getModuleDescriptor } from './modules';
+import type { IconVariant } from './modules';
 
 interface TransformOptions {
-  iconVariant: 'svg' | 'fonts' | 'svg-sprite';
+  /**
+   * The resolved icon variant per module specifier. Only modules present in
+   * this map are rewritten; any other module is left untouched.
+   */
+  variants: Record<string, IconVariant>;
   path: string;
-}
-
-function getAtomicImportPath(importName: string, iconVariant: 'svg' | 'fonts' | 'svg-sprite'): string {
-  if (importName === 'useIconContext' || importName === 'IconDirectionContextProvider') {
-    return '@fluentui/react-icons/providers';
-  }
-
-  const isIcon = importName.match(ICON_SUFFIX_REGEX);
-
-  if (!isIcon) {
-    return '@fluentui/react-icons/utils';
-  }
-
-  const withoutSuffix = importName.replace(ICON_SUFFIX_REGEX, '');
-  const kebabCase = withoutSuffix.replace(/[a-z\d](?=[A-Z])|[a-zA-Z](?=\d)|[A-Z](?=[A-Z][a-z])/g, '$&-').toLowerCase();
-
-  return `@fluentui/react-icons/${iconVariant}/${kebabCase}`;
 }
 
 export interface TransformResult {
@@ -33,7 +19,7 @@ export interface TransformResult {
 }
 
 export function transformSource(source: string, options: TransformOptions): TransformResult {
-  const { iconVariant, path } = options;
+  const { variants, path } = options;
 
   const result = parseSync(path, source, {
     sourceType: 'module',
@@ -47,7 +33,12 @@ export function transformSource(source: string, options: TransformOptions): Tran
   const src = new MagicString(source);
 
   for (const imp of staticImports) {
-    if (imp.moduleRequest.value !== MODULE_NAME) continue;
+    const moduleName = imp.moduleRequest.value;
+    const descriptor = getModuleDescriptor(moduleName);
+    if (!descriptor) continue;
+
+    const variant = variants[moduleName];
+    if (!variant) continue;
 
     const namedEntries = imp.entries.filter((e) => e.importName.kind === 'Name');
     if (namedEntries.length === 0) continue;
@@ -59,13 +50,13 @@ export function transformSource(source: string, options: TransformOptions): Tran
       const names = otherEntries
         .map((e) => (e.importName.kind === 'Default' ? e.localName.value : `* as ${e.localName.value}`))
         .join(', ');
-      lines.push(`import ${names} from '${MODULE_NAME}';`);
+      lines.push(`import ${names} from '${moduleName}';`);
     }
 
     for (const entry of namedEntries) {
       const importedName = entry.importName.name!;
       const localName = entry.localName.value;
-      const newSource = getAtomicImportPath(importedName, iconVariant);
+      const newSource = descriptor.resolve(importedName, variant);
       const spec = importedName === localName ? importedName : `${importedName} as ${localName}`;
       lines.push(`import { ${spec} } from '${newSource}';`);
     }
@@ -75,7 +66,7 @@ export function transformSource(source: string, options: TransformOptions): Tran
 
   for (const exp of staticExports) {
     const relevantEntries = exp.entries.filter(
-      (e) => e.moduleRequest?.value === MODULE_NAME && e.exportName.kind === 'Name',
+      (e) => e.moduleRequest && getModuleDescriptor(e.moduleRequest.value) && e.exportName.kind === 'Name',
     );
     if (relevantEntries.length === 0) continue;
 
@@ -87,12 +78,19 @@ export function transformSource(source: string, options: TransformOptions): Tran
     const lines: string[] = [];
 
     for (const entry of relevantEntries) {
+      const moduleName = entry.moduleRequest!.value;
+      const descriptor = getModuleDescriptor(moduleName)!;
+      const variant = variants[moduleName];
+      if (!variant) continue;
+
       const importedName = entry.importName.name!;
       const exportedName = entry.exportName.name!;
-      const newSource = getAtomicImportPath(importedName, iconVariant);
+      const newSource = descriptor.resolve(importedName, variant);
       const spec = importedName === exportedName ? importedName : `${importedName} as ${exportedName}`;
       lines.push(`export { ${spec} } from '${newSource}';`);
     }
+
+    if (lines.length === 0) continue;
 
     src.overwrite(exp.start, exp.end, lines.join('\n'));
   }
