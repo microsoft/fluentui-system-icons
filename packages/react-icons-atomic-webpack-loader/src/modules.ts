@@ -74,3 +74,55 @@ export const SUPPORTED_MODULE_NAMES: string[] = MODULES.map((m) => m.name);
 export function getModuleDescriptor(moduleName: string): ModuleDescriptor | undefined {
   return MODULES.find((m) => m.name === moduleName);
 }
+
+/**
+ * Outcome of resolving the effective variant for a single module given the
+ * requested `iconVariant` and optional `fallbackVariant`.
+ *
+ * - `variant` is the variant to rewrite with, when resolution succeeds.
+ * - `error` is set when the module cannot be satisfied and no fallback exists.
+ * - `warning` is set when the resolution succeeded only by degrading to the
+ *   safety variant.
+ */
+export interface VariantResolution {
+  variant?: IconVariant;
+  error?: string;
+  warning?: string;
+}
+
+/**
+ * Resolves the effective icon variant for a module, applying the
+ * `iconVariant` → `fallbackVariant` → safety-variant precedence. This is pure
+ * policy logic; callers decide how to surface `error`/`warning`.
+ */
+export function resolveModuleVariant(
+  descriptor: ModuleDescriptor,
+  iconVariant: IconVariant,
+  fallbackVariant: IconVariant | undefined,
+): VariantResolution {
+  if (descriptor.supportedVariants.includes(iconVariant)) {
+    return { variant: iconVariant };
+  }
+
+  const supported = descriptor.supportedVariants.join(', ');
+
+  if (fallbackVariant === undefined) {
+    return {
+      error:
+        `"${descriptor.name}" does not support iconVariant "${iconVariant}" ` +
+        `(supported: ${supported}). Provide a "fallbackVariant" option to resolve this.`,
+    };
+  }
+
+  if (descriptor.supportedVariants.includes(fallbackVariant)) {
+    return { variant: fallbackVariant };
+  }
+
+  return {
+    variant: DEFAULT_SAFETY_VARIANT,
+    warning:
+      `"${descriptor.name}" supports neither iconVariant "${iconVariant}" nor ` +
+      `fallbackVariant "${fallbackVariant}" (supported: ${supported}). ` +
+      `Falling back to "${DEFAULT_SAFETY_VARIANT}".`,
+  };
+}

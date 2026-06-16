@@ -1,25 +1,35 @@
 import { parseSync } from 'oxc-parser';
 import MagicString from 'magic-string';
 
-import { getModuleDescriptor } from './modules';
-import type { IconVariant } from './modules';
+import { getModuleDescriptor, resolveModuleVariant } from './modules';
+import type { IconVariant, ModuleDescriptor } from './modules';
 
 interface TransformOptions {
-  /**
-   * The resolved icon variant per module specifier. Only modules present in
-   * this map are rewritten; any other module is left untouched.
-   */
-  variants: Record<string, IconVariant>;
+  /** The requested icon variant. Applied to every supported module. */
+  iconVariant: IconVariant;
+  /** The variant to fall back to when a module does not support `iconVariant`. */
+  fallbackVariant?: IconVariant;
   path: string;
+}
+
+export interface Diagnostic {
+  level: 'error' | 'warning';
+  message: string;
 }
 
 export interface TransformResult {
   code: string;
   map: ReturnType<MagicString['generateMap']>;
+  /**
+   * Diagnostics gathered while rewriting. Only modules that are actually
+   * imported/re-exported (as reported by the parsed module record) contribute
+   * diagnostics, so mentions in comments or string literals never trigger one.
+   */
+  diagnostics: Diagnostic[];
 }
 
 export function transformSource(source: string, options: TransformOptions): TransformResult {
-  const { variants, path } = options;
+  const { iconVariant, fallbackVariant, path } = options;
 
   const result = parseSync(path, source, {
     sourceType: 'module',
@@ -32,12 +42,40 @@ export function transformSource(source: string, options: TransformOptions): Tran
   const { staticImports, staticExports } = result.module;
   const src = new MagicString(source);
 
+  const diagnostics: Diagnostic[] = [];
+  // Resolve (and diagnose) each referenced module at most once.
+  const resolvedVariants = new Map<string, IconVariant | null>();
+
+  /**
+   * Returns the variant to rewrite a referenced module with, or `null` when it
+   * could not be resolved (an error diagnostic has been recorded and the module
+   * should be left untouched).
+   */
+  const variantFor = (descriptor: ModuleDescriptor): IconVariant | null => {
+    if (resolvedVariants.has(descriptor.name)) {
+      return resolvedVariants.get(descriptor.name)!;
+    }
+
+    const resolution = resolveModuleVariant(descriptor, iconVariant, fallbackVariant);
+
+    if (resolution.warning) {
+      diagnostics.push({ level: 'warning', message: resolution.warning });
+    }
+    if (resolution.error) {
+      diagnostics.push({ level: 'error', message: resolution.error });
+    }
+
+    const variant = resolution.variant ?? null;
+    resolvedVariants.set(descriptor.name, variant);
+    return variant;
+  };
+
   for (const imp of staticImports) {
     const moduleName = imp.moduleRequest.value;
     const descriptor = getModuleDescriptor(moduleName);
     if (!descriptor) continue;
 
-    const variant = variants[moduleName];
+    const variant = variantFor(descriptor);
     if (!variant) continue;
 
     const namedEntries = imp.entries.filter((e) => e.importName.kind === 'Name');
@@ -80,7 +118,7 @@ export function transformSource(source: string, options: TransformOptions): Tran
     for (const entry of relevantEntries) {
       const moduleName = entry.moduleRequest!.value;
       const descriptor = getModuleDescriptor(moduleName)!;
-      const variant = variants[moduleName];
+      const variant = variantFor(descriptor);
       if (!variant) continue;
 
       const importedName = entry.importName.name!;
@@ -98,5 +136,6 @@ export function transformSource(source: string, options: TransformOptions): Tran
   return {
     code: src.toString(),
     map: src.generateMap({ hires: true }),
+    diagnostics,
   };
 }
