@@ -11,10 +11,7 @@
       "dependsOn": ["^build"],
       "inputs": [
         "default",
-        "{workspaceRoot}/fonts/FluentSystemIcons-*.ttf",
-        "{workspaceRoot}/fonts/FluentSystemIcons-*.woff",
-        "{workspaceRoot}/fonts/FluentSystemIcons-*.woff2",
-        "{workspaceRoot}/fonts/FluentSystemIcons-*.json",
+        "fontArtifacts",
         "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
         "!{projectRoot}/tsconfig.spec.json",
         "!{projectRoot}/vitest.config.[jt]s",
