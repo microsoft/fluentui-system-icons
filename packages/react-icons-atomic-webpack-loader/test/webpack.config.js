@@ -82,6 +82,26 @@ const entries = {
     mustExclude: ['"@fluentui/react-icons"', '@fluentui/react-icons/svg/', '@fluentui/react-icons/fonts/'],
   },
 
+  'brand-icons-imports': {
+    src: './src/brand-icons-imports.js',
+    loaderOptions: {},
+    mustInclude: [
+      '@fluentui/react-brand-icons/svg/calendar-taskbar',
+      '@fluentui/react-brand-icons/svg/project',
+      '@fluentui/react-brand-icons/utils',
+    ],
+    mustExclude: ['"@fluentui/react-brand-icons"'],
+  },
+
+  'mixed-modules-fonts': {
+    src: './src/mixed-modules-fonts.js',
+    // react-icons honors 'fonts'; react-brand-icons only ships 'svg', so it
+    // falls back via the explicit fallbackVariant without erroring.
+    loaderOptions: { iconVariant: 'fonts', fallbackVariant: 'svg' },
+    mustInclude: ['@fluentui/react-icons/fonts/add', '@fluentui/react-brand-icons/svg/project'],
+    mustExclude: ['"@fluentui/react-icons"', '"@fluentui/react-brand-icons"', '@fluentui/react-brand-icons/fonts/'],
+  },
+
   'jsx-component': {
     src: './src/jsx-component.jsx',
     loaderOptions: {},
@@ -117,7 +137,7 @@ function createConfig(name, entry) {
     resolve: {
       extensions: ['.tsx', '.ts', '.jsx', '.js'],
     },
-    externals: [/^@fluentui\/react-icons/, /^react$/],
+    externals: [/^@fluentui\/react-icons/, /^@fluentui\/react-brand-icons/, /^react$/],
     module: {
       rules: [
         {

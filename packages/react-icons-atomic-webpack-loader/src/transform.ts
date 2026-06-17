@@ -1,39 +1,35 @@
 import { parseSync } from 'oxc-parser';
-import type { StaticImport, StaticExport } from 'oxc-parser';
 import MagicString from 'magic-string';
 
-const MODULE_NAME = '@fluentui/react-icons';
-const ICON_SUFFIX_REGEX = /(\d*)?(Regular|Filled|Light|Color)$/;
+import { getModuleDescriptor, resolveModuleVariant } from './modules';
+import type { IconVariant, ModuleDescriptor } from './modules';
 
 interface TransformOptions {
-  iconVariant: 'svg' | 'fonts' | 'svg-sprite';
+  /** The requested icon variant. Applied to every supported module. */
+  iconVariant: IconVariant;
+  /** The variant to fall back to when a module does not support `iconVariant`. */
+  fallbackVariant?: IconVariant;
   path: string;
 }
 
-function getAtomicImportPath(importName: string, iconVariant: 'svg' | 'fonts' | 'svg-sprite'): string {
-  if (importName === 'useIconContext' || importName === 'IconDirectionContextProvider') {
-    return '@fluentui/react-icons/providers';
-  }
-
-  const isIcon = importName.match(ICON_SUFFIX_REGEX);
-
-  if (!isIcon) {
-    return '@fluentui/react-icons/utils';
-  }
-
-  const withoutSuffix = importName.replace(ICON_SUFFIX_REGEX, '');
-  const kebabCase = withoutSuffix.replace(/[a-z\d](?=[A-Z])|[a-zA-Z](?=\d)|[A-Z](?=[A-Z][a-z])/g, '$&-').toLowerCase();
-
-  return `@fluentui/react-icons/${iconVariant}/${kebabCase}`;
+export interface Diagnostic {
+  level: 'error' | 'warning';
+  message: string;
 }
 
 export interface TransformResult {
   code: string;
   map: ReturnType<MagicString['generateMap']>;
+  /**
+   * Diagnostics gathered while rewriting. Only modules that are actually
+   * imported/re-exported (as reported by the parsed module record) contribute
+   * diagnostics, so mentions in comments or string literals never trigger one.
+   */
+  diagnostics: Diagnostic[];
 }
 
 export function transformSource(source: string, options: TransformOptions): TransformResult {
-  const { iconVariant, path } = options;
+  const { iconVariant, fallbackVariant, path } = options;
 
   const result = parseSync(path, source, {
     sourceType: 'module',
@@ -46,8 +42,41 @@ export function transformSource(source: string, options: TransformOptions): Tran
   const { staticImports, staticExports } = result.module;
   const src = new MagicString(source);
 
+  const diagnostics: Diagnostic[] = [];
+  // Resolve (and diagnose) each referenced module at most once.
+  const resolvedVariants = new Map<string, IconVariant | null>();
+
+  /**
+   * Returns the variant to rewrite a referenced module with, or `null` when it
+   * could not be resolved (an error diagnostic has been recorded and the module
+   * should be left untouched).
+   */
+  const variantFor = (descriptor: ModuleDescriptor): IconVariant | null => {
+    if (resolvedVariants.has(descriptor.name)) {
+      return resolvedVariants.get(descriptor.name)!;
+    }
+
+    const resolution = resolveModuleVariant(descriptor, iconVariant, fallbackVariant);
+
+    if (resolution.warning) {
+      diagnostics.push({ level: 'warning', message: resolution.warning });
+    }
+    if (resolution.error) {
+      diagnostics.push({ level: 'error', message: resolution.error });
+    }
+
+    const variant = resolution.variant ?? null;
+    resolvedVariants.set(descriptor.name, variant);
+    return variant;
+  };
+
   for (const imp of staticImports) {
-    if (imp.moduleRequest.value !== MODULE_NAME) continue;
+    const moduleName = imp.moduleRequest.value;
+    const descriptor = getModuleDescriptor(moduleName);
+    if (!descriptor) continue;
+
+    const variant = variantFor(descriptor);
+    if (!variant) continue;
 
     const namedEntries = imp.entries.filter((e) => e.importName.kind === 'Name');
     if (namedEntries.length === 0) continue;
@@ -59,13 +88,13 @@ export function transformSource(source: string, options: TransformOptions): Tran
       const names = otherEntries
         .map((e) => (e.importName.kind === 'Default' ? e.localName.value : `* as ${e.localName.value}`))
         .join(', ');
-      lines.push(`import ${names} from '${MODULE_NAME}';`);
+      lines.push(`import ${names} from '${moduleName}';`);
     }
 
     for (const entry of namedEntries) {
       const importedName = entry.importName.name!;
       const localName = entry.localName.value;
-      const newSource = getAtomicImportPath(importedName, iconVariant);
+      const newSource = descriptor.resolve(importedName, variant);
       const spec = importedName === localName ? importedName : `${importedName} as ${localName}`;
       lines.push(`import { ${spec} } from '${newSource}';`);
     }
@@ -75,7 +104,7 @@ export function transformSource(source: string, options: TransformOptions): Tran
 
   for (const exp of staticExports) {
     const relevantEntries = exp.entries.filter(
-      (e) => e.moduleRequest?.value === MODULE_NAME && e.exportName.kind === 'Name',
+      (e) => e.moduleRequest && getModuleDescriptor(e.moduleRequest.value) && e.exportName.kind === 'Name',
     );
     if (relevantEntries.length === 0) continue;
 
@@ -87,12 +116,19 @@ export function transformSource(source: string, options: TransformOptions): Tran
     const lines: string[] = [];
 
     for (const entry of relevantEntries) {
+      const moduleName = entry.moduleRequest!.value;
+      const descriptor = getModuleDescriptor(moduleName)!;
+      const variant = variantFor(descriptor);
+      if (!variant) continue;
+
       const importedName = entry.importName.name!;
       const exportedName = entry.exportName.name!;
-      const newSource = getAtomicImportPath(importedName, iconVariant);
+      const newSource = descriptor.resolve(importedName, variant);
       const spec = importedName === exportedName ? importedName : `${importedName} as ${exportedName}`;
       lines.push(`export { ${spec} } from '${newSource}';`);
     }
+
+    if (lines.length === 0) continue;
 
     src.overwrite(exp.start, exp.end, lines.join('\n'));
   }
@@ -100,5 +136,6 @@ export function transformSource(source: string, options: TransformOptions): Tran
   return {
     code: src.toString(),
     map: src.generateMap({ hires: true }),
+    diagnostics,
   };
 }

@@ -1,8 +1,9 @@
 import { describe, it, expect } from 'vitest';
 import { transformSource } from '../src/transform';
+import type { IconVariant } from '../src/modules';
 
-const transform = (source: string, iconVariant: 'svg' | 'fonts' | 'svg-sprite' = 'svg') =>
-  transformSource(source, { iconVariant, path: 'input.js' }).code;
+const transform = (source: string, iconVariant: IconVariant = 'svg', fallbackVariant?: IconVariant) =>
+  transformSource(source, { iconVariant, fallbackVariant, path: 'input.js' }).code;
 
 describe('transformSource', () => {
   describe('imports', () => {
@@ -159,6 +160,143 @@ describe('transformSource', () => {
         export { AddFilled, bundleIcon };
         export { ArrowLeftRegular } from '@fluentui/react-icons/svg/arrow-left';"
       `);
+    });
+  });
+
+  describe('@fluentui/react-brand-icons', () => {
+    it('rewrites an unsized brand icon import to its atomic svg path', () => {
+      expect(transform(`import { CalendarTaskbarFilled } from '@fluentui/react-brand-icons';`)).toBe(
+        `import { CalendarTaskbarFilled } from '@fluentui/react-brand-icons/svg/calendar-taskbar';`,
+      );
+    });
+
+    it('rewrites a sized brand icon import to its atomic svg path', () => {
+      expect(transform(`import { CalendarTaskbar20Filled } from '@fluentui/react-brand-icons';`)).toBe(
+        `import { CalendarTaskbar20Filled } from '@fluentui/react-brand-icons/svg/calendar-taskbar';`,
+      );
+    });
+
+    it('rewrites a color brand icon import to its atomic svg path', () => {
+      expect(transform(`import { ProjectColor } from '@fluentui/react-brand-icons';`)).toBe(
+        `import { ProjectColor } from '@fluentui/react-brand-icons/svg/project';`,
+      );
+    });
+
+    it('routes brand utility bindings to /utils', () => {
+      expect(transform(`import { bundleIcon, createFluentIcon } from '@fluentui/react-brand-icons';`)).toBe(
+        [
+          `import { bundleIcon } from '@fluentui/react-brand-icons/utils';`,
+          `import { createFluentIcon } from '@fluentui/react-brand-icons/utils';`,
+        ].join('\n'),
+      );
+    });
+
+    it('preserves local aliases on brand icon imports', () => {
+      expect(transform(`import { ProjectColor as MyProject } from '@fluentui/react-brand-icons';`)).toBe(
+        `import { ProjectColor as MyProject } from '@fluentui/react-brand-icons/svg/project';`,
+      );
+    });
+
+    it('rewrites direct brand re-exports', () => {
+      expect(transform(`export { ProjectColor } from '@fluentui/react-brand-icons';`)).toBe(
+        `export { ProjectColor } from '@fluentui/react-brand-icons/svg/project';`,
+      );
+    });
+
+    it('always resolves brand icons to svg regardless of iconVariant', () => {
+      expect(transform(`import { ProjectColor } from '@fluentui/react-brand-icons';`, 'fonts', 'svg')).toBe(
+        `import { ProjectColor } from '@fluentui/react-brand-icons/svg/project';`,
+      );
+    });
+
+    it('rewrites system and brand icons in the same module independently', () => {
+      const source = [
+        `import { AddFilled } from '@fluentui/react-icons';`,
+        `import { ProjectColor } from '@fluentui/react-brand-icons';`,
+      ].join('\n');
+
+      expect(transform(source, 'fonts', 'svg')).toBe(
+        [
+          `import { AddFilled } from '@fluentui/react-icons/fonts/add';`,
+          `import { ProjectColor } from '@fluentui/react-brand-icons/svg/project';`,
+        ].join('\n'),
+      );
+    });
+  });
+
+  describe('diagnostics', () => {
+    it('does not diagnose a module that only appears in a comment', () => {
+      const source = [
+        `// see @fluentui/react-brand-icons for product icons`,
+        `import { AddFilled } from '@fluentui/react-icons';`,
+      ].join('\n');
+
+      const { code, diagnostics } = transformSource(source, {
+        iconVariant: 'fonts',
+        path: 'input.js',
+      });
+
+      expect(diagnostics).toEqual([]);
+      expect(code).toBe(
+        [
+          `// see @fluentui/react-brand-icons for product icons`,
+          `import { AddFilled } from '@fluentui/react-icons/fonts/add';`,
+        ].join('\n'),
+      );
+    });
+
+    it('does not diagnose a module that only appears in a string literal', () => {
+      const source = [
+        `const docs = '@fluentui/react-brand-icons';`,
+        `import { AddFilled } from '@fluentui/react-icons';`,
+      ].join('\n');
+
+      const { diagnostics } = transformSource(source, { iconVariant: 'fonts', path: 'input.js' });
+
+      expect(diagnostics).toEqual([]);
+    });
+
+    it('emits an error diagnostic for a referenced module that cannot honor the variant', () => {
+      const { diagnostics } = transformSource(`import { ProjectColor } from '@fluentui/react-brand-icons';`, {
+        iconVariant: 'fonts',
+        path: 'input.js',
+      });
+
+      expect(diagnostics).toHaveLength(1);
+      expect(diagnostics[0].level).toBe('error');
+      expect(diagnostics[0].message).toContain('@fluentui/react-brand-icons');
+      expect(diagnostics[0].message).toContain('fallbackVariant');
+    });
+
+    it('leaves a module untouched when it produces an error diagnostic', () => {
+      const source = `import { ProjectColor } from '@fluentui/react-brand-icons';`;
+
+      const { code } = transformSource(source, { iconVariant: 'fonts', path: 'input.js' });
+
+      expect(code).toBe(source);
+    });
+
+    it('emits a warning and degrades to svg when fallbackVariant is also unsupported', () => {
+      const { code, diagnostics } = transformSource(`import { ProjectColor } from '@fluentui/react-brand-icons';`, {
+        iconVariant: 'fonts',
+        fallbackVariant: 'svg-sprite',
+        path: 'input.js',
+      });
+
+      expect(diagnostics).toHaveLength(1);
+      expect(diagnostics[0].level).toBe('warning');
+      expect(code).toBe(`import { ProjectColor } from '@fluentui/react-brand-icons/svg/project';`);
+    });
+
+    it('resolves and diagnoses each referenced module only once', () => {
+      const source = [
+        `import { ProjectColor } from '@fluentui/react-brand-icons';`,
+        `import { CalendarTaskbarFilled } from '@fluentui/react-brand-icons';`,
+      ].join('\n');
+
+      const { diagnostics } = transformSource(source, { iconVariant: 'fonts', path: 'input.js' });
+
+      expect(diagnostics).toHaveLength(1);
     });
   });
 });
