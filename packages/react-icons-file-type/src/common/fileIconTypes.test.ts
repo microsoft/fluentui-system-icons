@@ -32,6 +32,12 @@ describe('FileIconType', () => {
       listForm: 22,
       campaign: 23,
       shortcutsdefaultfolder: 24,
+      pbiApp: 25,
+      pbiDashboard: 26,
+      pbiPaginatedReport: 27,
+      pbiScorecard: 28,
+      pbiSemanticModel: 29,
+      pbiReport: 30,
     });
   });
 

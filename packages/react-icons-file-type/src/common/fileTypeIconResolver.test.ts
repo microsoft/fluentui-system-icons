@@ -24,6 +24,7 @@ describe('getFileTypeIconNameFromExtensionOrType', () => {
     expect(getFileTypeIconNameFromExtensionOrType('docx', undefined)).toBe('docx');
     expect(getFileTypeIconNameFromExtensionOrType('.DOCX', undefined)).toBe('docx');
     expect(getFileTypeIconNameFromExtensionOrType('doc', undefined)).toBe('docx');
+    expect(getFileTypeIconNameFromExtensionOrType('work', undefined)).toBe('agentwork');
   });
 
   it('falls back to genericfile for unknown extensions', () => {
@@ -47,6 +48,12 @@ describe('getFileTypeIconNameFromExtensionOrType', () => {
     expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.sharedFolder)).toBe('sharedfolder');
     expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.list)).toBe('splist');
     expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.stream)).toBe('video');
+    expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.pbiApp)).toBe('pbiapp');
+    expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.pbiDashboard)).toBe('pbidashboard');
+    expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.pbiPaginatedReport)).toBe('pbipagereport');
+    expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.pbiScorecard)).toBe('pbiscorecard');
+    expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.pbiSemanticModel)).toBe('pbisemmodel');
+    expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.pbiReport)).toBe('powerbi');
   });
 
   it('falls back to genericfile for the genericFile type (no dedicated map entry)', () => {

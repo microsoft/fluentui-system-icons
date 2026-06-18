@@ -22,5 +22,11 @@
   { "value": 21, "name": "album", "icon": "album" },
   { "value": 22, "name": "listForm", "icon": "listform" },
   { "value": 23, "name": "campaign", "icon": "spocampaign" },
-  { "value": 24, "name": "shortcutsdefaultfolder", "icon": "companyfolder" }
+  { "value": 24, "name": "shortcutsdefaultfolder", "icon": "companyfolder" },
+  { "value": 25, "name": "pbiApp", "icon": "pbiapp" },
+  { "value": 26, "name": "pbiDashboard", "icon": "pbidashboard" },
+  { "value": 27, "name": "pbiPaginatedReport", "icon": "pbipagereport" },
+  { "value": 28, "name": "pbiScorecard", "icon": "pbiscorecard" },
+  { "value": 29, "name": "pbiSemanticModel", "icon": "pbisemmodel" },
+  { "value": 30, "name": "pbiReport", "icon": "powerbi" }
 ]

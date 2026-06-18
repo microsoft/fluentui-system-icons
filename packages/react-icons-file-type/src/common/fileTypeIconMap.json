@@ -1,5 +1,6 @@
 {
   "accdb": ["accdb", "mdb"],
+  "agentwork": ["work"],
   "aipage": ["page"],
   "album": null,
   "archive": ["7z", "ace", "arc", "arj", "dmg", "gz", "iso", "lzh", "pkg", "rar", "sit", "tgz", "tar", "z"],
@@ -237,7 +238,6 @@
   "companyfolder": null,
   "contact": ["vcf"],
   "copilot": ["copilot"],
-  "cowork": ["work"],
   "csv": ["csv"],
   "designer": ["design"],
   "desktopfolder": null,
@@ -300,6 +300,10 @@
   "onepage": ["onepage"],
   "onetoc": ["ms-one-stub", "onetoc", "onetoc2", "onepkg"],
   "pbiapp": null,
+  "pbidashboard": null,
+  "pbipagereport": null,
+  "pbiscorecard": null,
+  "pbisemmodel": null,
   "pdf": ["pdf"],
   "photo": [
     "arw",
