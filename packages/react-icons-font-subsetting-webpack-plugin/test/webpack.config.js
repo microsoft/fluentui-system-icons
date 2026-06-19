@@ -18,6 +18,14 @@ const entries = {
   // Headless font atoms — fonts arrive via the headless `styles.css` import (css-loader) rather than Griffel.
   // No Griffel runtime is involved, so a tighter threshold is used to validate subsetting.
   headlessAtoms: { src: './src/headless-atoms.js', threshold: 1.5 * 1_024 }, // 1.5 KB
+  // End-to-end: a *barrel* import is rewritten by the atomic loader (headless + fonts) into
+  // headless font atoms, then subset here. Also asserts the graph stays Griffel-free.
+  e2eBarrelHeadlessFonts: {
+    src: './src/e2e-barrel-headless-fonts.js',
+    threshold: 2 * 1_024, // 2 KB
+    useAtomicLoader: true,
+    assertNoGriffel: true,
+  },
 };
 
 const isDevServer = process.env.WEBPACK_SERVE === 'true';
@@ -26,7 +34,7 @@ console.log(`Running webpack in ${isDevServer ? 'development' : 'production'} mo
 
 /**
  * @param {string} name
- * @param {{ src: string, threshold: number }} entry
+ * @param {{ src: string, threshold: number, useAtomicLoader?: boolean, assertNoGriffel?: boolean }} entry
  * @returns {import('webpack').Configuration}
  */
 function createConfig(name, entry) {
@@ -38,8 +46,28 @@ function createConfig(name, entry) {
     // This is enabled by default in production mode.
     // In development mode, webpack doesn't track used exports, so the plugin skips subsetting.
     mode: 'production',
+    // Keep modules un-concatenated for the e2e entry so the Griffel-free assertion
+    // can inspect individual module resources.
+    optimization: entry.assertNoGriffel ? { concatenateModules: false } : undefined,
     module: {
       rules: [
+        ...(entry.useAtomicLoader
+          ? [
+              {
+                // Rewrite barrel `@fluentui/react-icons` imports to headless font atoms
+                // before webpack parses them.
+                test: /\.js$/,
+                include: resolve(__dirname, 'src'),
+                enforce: /** @type {'pre'} */ ('pre'),
+                use: [
+                  {
+                    loader: resolve(__dirname, '../../react-icons-atomic-webpack-loader/lib/index.js'),
+                    options: { headless: true, iconVariant: 'fonts' },
+                  },
+                ],
+              },
+            ]
+          : []),
         {
           test: /\.(ttf|woff2?)$/,
           type: 'asset',
@@ -85,6 +113,19 @@ function createConfig(name, entry) {
                   `[${name}] Asset "${assetName}" (${source.size()} bytes) exceeds the ` +
                     `${entry.threshold}-byte threshold — font may not have been properly subset.`,
                 );
+              }
+            }
+
+            // Headless builds must not pull in Griffel.
+            if (entry.assertNoGriffel) {
+              for (const m of compilation.modules) {
+                const resource = /** @type {{ resource?: string }} */ (m).resource;
+                if (resource && /[\\/]@griffel[\\/]/.test(resource)) {
+                  throw new Error(
+                    `[${name}] Module graph includes a @griffel module (${resource}) — ` +
+                      `headless build expected to be Griffel-free.`,
+                  );
+                }
               }
             }
           });
