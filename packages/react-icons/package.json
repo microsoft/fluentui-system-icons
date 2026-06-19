@@ -64,6 +64,7 @@
   "files": [
     "docs/preview-features/*.md",
     "docs/build-transforms.md",
+    "docs/headless.md",
     "lib/",
     "lib-cjs/"
   ],
