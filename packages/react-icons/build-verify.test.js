@@ -2473,28 +2473,28 @@ describe('Build Verification', () => {
         'useIconState.d.ts',
         'bundleIcon.js',
         'bundleIcon.d.ts',
-        'headless.css',
+        'styles.css',
       ];
       for (const file of expectedFiles) {
         expect(fs.existsSync(path.join(headlessDir, file))).toBe(true);
       }
 
-      // headless.css must use data-attribute selectors (the key differentiator from CSS-in-JS)
-      const css = await readFile(path.join(headlessDir, 'headless.css'), 'utf-8');
+      // styles.css must use data-attribute selectors (the key differentiator from CSS-in-JS)
+      const css = await readFile(path.join(headlessDir, 'styles.css'), 'utf-8');
       expect(css).toContain('[data-fui-icon]');
       expect(css).toContain('[data-fui-icon-rtl]');
       expect(css).toContain('[data-fui-icon-hidden]');
 
       // Font sub-infrastructure
       expect(fs.existsSync(path.join(headlessDir, 'fonts', 'createFluentFontIcon.js'))).toBe(true);
-      expect(fs.existsSync(path.join(headlessDir, 'fonts', 'headless-fonts.css'))).toBe(true);
+      expect(fs.existsSync(path.join(headlessDir, 'fonts', 'styles.css'))).toBe(true);
     });
 
     it('package.json#sideEffects include headless entries css entries', () => {
       const packageJsonPath = path.join(__dirname, 'package.json');
       const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
 
-      expect(packageJson.sideEffects).toEqual(['**/headless/fonts/headless-fonts.css', '**/headless/headless.css']);
+      expect(packageJson.sideEffects).toEqual(['**/headless/fonts/styles.css', '**/headless/styles.css']);
     });
   });
 

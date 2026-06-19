@@ -208,8 +208,8 @@ function addHeadlessExportMap(baseDir) {
       import: './lib/headless/fonts/index.js',
       require: './lib-cjs/headless/fonts/index.js',
     },
-    './headless/headless.css': './lib/headless/headless.css',
-    './headless/headless-fonts.css': './lib/headless/fonts/headless-fonts.css',
+    './headless/styles.css': './lib/headless/styles.css',
+    './headless/fonts/styles.css': './lib/headless/fonts/styles.css',
     './headless/svg/*': {
       types: './lib/atoms/headless-svg/*.d.ts',
       import: './lib/atoms/headless-svg/*.js',
@@ -232,7 +232,7 @@ function addHeadlessExportMap(baseDir) {
   console.log(`  ✓ [exports] Set ${Object.keys(headlessExports).join(', ')}`);
 
   // Add headless CSS sideEffects entries
-  const headlessSideEffects = ['**/headless/fonts/headless-fonts.css', '**/headless/headless.css'];
+  const headlessSideEffects = ['**/headless/fonts/styles.css', '**/headless/styles.css'];
   pkg.sideEffects = [...headlessSideEffects];
   console.log(`  ✓ [sideEffects] Added ${headlessSideEffects.join(', ')}`);
 

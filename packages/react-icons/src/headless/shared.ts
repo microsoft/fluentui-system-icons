@@ -1,5 +1,5 @@
 // Data attribute names used by headless icons for CSS targeting.
-// The shipped headless.css file uses these attribute selectors for styling.
+// The shipped styles.css file uses these attribute selectors for styling.
 
 /** Base data attribute applied to all icons (SVG and font). */
 export const DATA_FUI_ICON = 'data-fui-icon';
