@@ -224,6 +224,83 @@ describe('transformSource', () => {
     });
   });
 
+  describe('headless option', () => {
+    const transformHeadless = (source: string, iconVariant: IconVariant = 'svg', fallbackVariant?: IconVariant) =>
+      transformSource(source, { iconVariant, fallbackVariant, headless: true, path: 'input.js' }).code;
+
+    it('rewrites icon imports to the headless svg atomic path', () => {
+      expect(transformHeadless(`import { AddFilled } from '@fluentui/react-icons';`)).toBe(
+        `import { AddFilled } from '@fluentui/react-icons/headless/svg/add';`,
+      );
+    });
+
+    it('rewrites icon imports to the headless fonts atomic path', () => {
+      expect(transformHeadless(`import { AddFilled } from '@fluentui/react-icons';`, 'fonts')).toBe(
+        `import { AddFilled } from '@fluentui/react-icons/headless/fonts/add';`,
+      );
+    });
+
+    it('routes utility bindings to /headless/utils', () => {
+      expect(transformHeadless(`import { bundleIcon } from '@fluentui/react-icons';`)).toBe(
+        `import { bundleIcon } from '@fluentui/react-icons/headless/utils';`,
+      );
+    });
+
+    it('routes provider bindings to the shared /providers (not headless)', () => {
+      expect(transformHeadless(`import { useIconContext } from '@fluentui/react-icons';`)).toBe(
+        `import { useIconContext } from '@fluentui/react-icons/providers';`,
+      );
+    });
+
+    it('rewrites direct re-exports to headless paths', () => {
+      expect(transformHeadless(`export { AddFilled } from '@fluentui/react-icons';`)).toBe(
+        `export { AddFilled } from '@fluentui/react-icons/headless/svg/add';`,
+      );
+    });
+
+    it('degrades headless svg-sprite to the standard sprite with a warning', () => {
+      const { code, diagnostics } = transformSource(`import { AddFilled } from '@fluentui/react-icons';`, {
+        iconVariant: 'svg-sprite',
+        headless: true,
+        path: 'input.js',
+      });
+
+      expect(code).toBe(`import { AddFilled } from '@fluentui/react-icons/svg-sprite/add';`);
+      expect(diagnostics).toHaveLength(1);
+      expect(diagnostics[0].level).toBe('warning');
+      expect(diagnostics[0].message).toContain('headless');
+    });
+
+    it('degrades brand icons (no headless build) to standard svg with a warning', () => {
+      const { code, diagnostics } = transformSource(`import { ProjectColor } from '@fluentui/react-brand-icons';`, {
+        iconVariant: 'svg',
+        headless: true,
+        path: 'input.js',
+      });
+
+      expect(code).toBe(`import { ProjectColor } from '@fluentui/react-brand-icons/svg/project';`);
+      expect(diagnostics).toHaveLength(1);
+      expect(diagnostics[0].level).toBe('warning');
+      expect(diagnostics[0].message).toContain('@fluentui/react-brand-icons');
+    });
+
+    it('keeps system icons headless while degrading brand icons in the same module', () => {
+      const source = [
+        `import { AddFilled } from '@fluentui/react-icons';`,
+        `import { ProjectColor } from '@fluentui/react-brand-icons';`,
+      ].join('\n');
+
+      const { code } = transformSource(source, { iconVariant: 'svg', headless: true, path: 'input.js' });
+
+      expect(code).toBe(
+        [
+          `import { AddFilled } from '@fluentui/react-icons/headless/svg/add';`,
+          `import { ProjectColor } from '@fluentui/react-brand-icons/svg/project';`,
+        ].join('\n'),
+      );
+    });
+  });
+
   describe('diagnostics', () => {
     it('does not diagnose a module that only appears in a comment', () => {
       const source = [

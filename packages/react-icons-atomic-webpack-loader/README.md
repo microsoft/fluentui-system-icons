@@ -63,10 +63,10 @@ module.exports = {
 
 ## Supported modules
 
-| Module                        | Variants                     | Notes                         |
-| ----------------------------- | ---------------------------- | ----------------------------- |
-| `@fluentui/react-icons`       | `svg`, `fonts`, `svg-sprite` | Has `/providers` and `/utils` |
-| `@fluentui/react-brand-icons` | `svg`                        | Has `/utils`; no `/providers` |
+| Module                        | Variants                     | Headless       | Notes                         |
+| ----------------------------- | ---------------------------- | -------------- | ----------------------------- |
+| `@fluentui/react-icons`       | `svg`, `fonts`, `svg-sprite` | `svg`, `fonts` | Has `/providers` and `/utils` |
+| `@fluentui/react-brand-icons` | `svg`                        | — (none yet)   | Has `/utils`; no `/providers` |
 
 ## Options
 
@@ -74,6 +74,7 @@ module.exports = {
 | ----------------- | -------------------------------------- | ----------- | -------------------------------------------------------------------------- |
 | `iconVariant`     | `'svg'` \| `'fonts'` \| `'svg-sprite'` | `'svg'`     | Variant icons resolve to. Applied to every supported module.               |
 | `fallbackVariant` | `'svg'` \| `'fonts'` \| `'svg-sprite'` | `undefined` | Variant used for a module that does not support `iconVariant` (see below). |
+| `headless`        | `boolean`                              | `false`     | Resolve to the headless (Griffel-free) build where the module ships one.   |
 
 ### Variant resolution & `fallbackVariant`
 
@@ -115,6 +116,39 @@ Resolution is lazy and per file: only modules actually imported in a given file 
 ```
 
 This changes icon resolution from `@fluentui/react-icons/svg/*` to `@fluentui/react-icons/fonts/*`. Non-icon exports (`utils`, `providers`) are unaffected.
+
+### Using the headless API
+
+Set `headless: true` to resolve to the Griffel-free headless build. It composes with `iconVariant`:
+
+```js
+{
+  loader: '@fluentui/react-icons-atomic-webpack-loader',
+  options: {
+    iconVariant: 'fonts',
+    headless: true,
+  },
+}
+```
+
+With the example above:
+
+| Import              | Resolves to                                |
+| ------------------- | ------------------------------------------ |
+| `AddFilled`         | `@fluentui/react-icons/headless/fonts/add` |
+| `bundleIcon` (util) | `@fluentui/react-icons/headless/utils`     |
+| `useIconContext`    | `@fluentui/react-icons/providers` (shared) |
+
+Notes:
+
+- **Best-effort per module:** a module without a headless build for the resolved variant degrades to its standard (Griffel) implementation with a warning rather than failing the build. This applies to `@fluentui/react-brand-icons` (no headless build) and to headless `svg-sprite` (not generated yet).
+- **Context is shared:** `useIconContext` / `IconDirectionContextProvider` always resolve to `@fluentui/react-icons/providers` — it is framework-agnostic and reused by both APIs.
+- **CSS is your responsibility:** the loader only rewrites component/utility imports. You must still import the headless CSS in your app entry point:
+  ```js
+  import '@fluentui/react-icons/headless/styles.css';
+  // and, for font icons:
+  import '@fluentui/react-icons/headless/fonts/styles.css';
+  ```
 
 ### Using SVG sprite icons
 
