@@ -208,6 +208,11 @@ function addHeadlessExportMap(baseDir) {
       import: './lib/headless/fonts/index.js',
       require: './lib-cjs/headless/fonts/index.js',
     },
+    './headless/utils': {
+      types: './lib/headless/utils.d.ts',
+      import: './lib/headless/utils.js',
+      require: './lib-cjs/headless/utils.js',
+    },
     './headless/styles.css': './lib/headless/styles.css',
     './headless/fonts/styles.css': './lib/headless/fonts/styles.css',
     './headless/svg/*': {

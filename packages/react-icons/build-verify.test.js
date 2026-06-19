@@ -2473,6 +2473,8 @@ describe('Build Verification', () => {
         'useIconState.d.ts',
         'bundleIcon.js',
         'bundleIcon.d.ts',
+        'utils.js',
+        'utils.d.ts',
         'styles.css',
       ];
       for (const file of expectedFiles) {

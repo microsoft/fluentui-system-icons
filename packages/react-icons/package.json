@@ -151,6 +151,11 @@
       "types": "./lib/atoms/headless-fonts/*.d.ts",
       "import": "./lib/atoms/headless-fonts/*.js",
       "require": "./lib-cjs/atoms/headless-fonts/*.js"
+    },
+    "./headless/utils": {
+      "types": "./lib/headless/utils.d.ts",
+      "import": "./lib/headless/utils.js",
+      "require": "./lib-cjs/headless/utils.js"
     }
   }
 }
