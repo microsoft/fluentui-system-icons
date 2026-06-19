@@ -3,19 +3,14 @@ import * as React from 'react';
 import type { FluentIconsProps } from './shared';
 import { iconClassName, cx } from './shared';
 import { useIconState } from './useIconState';
+import { computeViewBox, precomputeColorChildren, renderSvgBody } from '../core/svg';
+import type { SvgNode } from '../core/svg';
 
 export type FluentIcon = React.FC<FluentIconsProps>;
 
 export type CreateFluentIconOptions = {
   flipInRtl?: boolean;
   color?: boolean;
-};
-
-type SvgNode = [tag: string, attrs: Record<string, string | Record<string, string>> | null, ...children: SvgNode[]];
-
-const renderSvgNode = (node: SvgNode, key: number): React.ReactElement => {
-  const [tag, attrs, ...children] = node;
-  return React.createElement(tag, { ...attrs, key }, ...children.map(renderSvgNode));
 };
 
 /**
@@ -46,13 +41,10 @@ export const createFluentIcon = (
   pathsOrSvg: string[] | string | SvgNode[],
   options?: CreateFluentIconOptions,
 ): FluentIcon => {
-  const viewBoxWidth = width === '1em' ? '20' : width;
+  const viewBoxWidth = computeViewBox(width);
   // Pre-render color SVG nodes once in the factory so the recursion
   // never runs during React renders.
-  const colorChildren =
-    typeof pathsOrSvg !== 'string' && (options?.color || Array.isArray(pathsOrSvg[0]))
-      ? (pathsOrSvg as SvgNode[]).map(renderSvgNode)
-      : undefined;
+  const colorChildren = precomputeColorChildren(pathsOrSvg, options);
   const Icon = React.forwardRef((props: FluentIconsProps, ref: React.Ref<HTMLElement>) => {
     const iconState = useIconState(props, { flipInRtl: options?.flipInRtl });
     const state = {
@@ -64,17 +56,7 @@ export const createFluentIcon = (
       viewBox: `0 0 ${viewBoxWidth} ${viewBoxWidth}`,
       xmlns: 'http://www.w3.org/2000/svg',
     };
-    if (typeof pathsOrSvg === 'string') {
-      return React.createElement('svg', { ...state, dangerouslySetInnerHTML: { __html: pathsOrSvg } });
-    }
-    if (colorChildren) {
-      return React.createElement('svg', state, ...colorChildren);
-    }
-    return React.createElement(
-      'svg',
-      state,
-      ...(pathsOrSvg as string[]).map((d) => React.createElement('path', { d, fill: state.fill })),
-    );
+    return renderSvgBody(state, pathsOrSvg, colorChildren);
   }) as FluentIcon;
   Icon.displayName = displayName;
   return Icon;

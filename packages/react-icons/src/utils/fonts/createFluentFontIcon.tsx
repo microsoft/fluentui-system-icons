@@ -7,6 +7,7 @@ import { fontIconClassName } from '../constants';
 
 import { useRootStyles, useStaticStyles } from './createFluentFontIcon.styles';
 import { FontFile } from './createFluentFontIcon.shared';
+import { applyFontStyle, renderFontBody } from '../../core/fontIcon';
 
 export type CreateFluentFontIconOptions = {
   flipInRtl?: boolean;
@@ -33,21 +34,9 @@ export function createFluentFontIcon(
     );
 
     // We want to keep the same API surface as the SVG icons, so translate `primaryFill` to `color`
-    if (props.primaryFill && props.primaryFill.toLowerCase() !== 'currentcolor') {
-      state.style = {
-        ...state.style,
-        color: props.primaryFill,
-      };
-    }
+    applyFontStyle(state, props.primaryFill, fontSize);
 
-    if (fontSize) {
-      state.style = {
-        ...state.style,
-        fontSize,
-      };
-    }
-
-    return <i {...state}>{codepoint}</i>;
+    return renderFontBody(state, codepoint);
   };
   Component.displayName = displayName;
   Component.codepoint = codepoint;

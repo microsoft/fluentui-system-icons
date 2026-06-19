@@ -5,6 +5,7 @@ import { fontIconClassName, DATA_FUI_ICON, DATA_FUI_ICON_FONT, cx } from '../sha
 
 import { useIconState } from '../useIconState';
 import { FontFile } from '../../utils/fonts/createFluentFontIcon.shared';
+import { applyFontStyle, renderFontBody } from '../../core/fontIcon';
 
 export type CreateFluentFontIconOptions = {
   flipInRtl?: boolean;
@@ -50,21 +51,9 @@ export function createFluentFontIcon(
     state[DATA_FUI_ICON_FONT] = FONT_VARIANT_MAP[font];
 
     // Map primaryFill to color for font icons
-    if (props.primaryFill && props.primaryFill.toLowerCase() !== 'currentcolor') {
-      state.style = {
-        ...state.style,
-        color: props.primaryFill,
-      };
-    }
+    applyFontStyle(state, props.primaryFill, fontSize);
 
-    if (fontSize) {
-      state.style = {
-        ...state.style,
-        fontSize,
-      };
-    }
-
-    return <i {...state}>{codepoint}</i>;
+    return renderFontBody(state, codepoint);
   };
   Component.displayName = displayName;
   Component.codepoint = codepoint;
