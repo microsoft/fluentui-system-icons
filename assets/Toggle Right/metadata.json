@@ -12,7 +12,7 @@
     "Filled"
   ],
   "keyword": "fluent-icon",
-  "description": "Used to represent options, settings, etc. â ï¸ Should not be used as toggle UI.",
+  "description": "Used to represent options, settings, etc. ⚠️ Should not be used as toggle UI.",
   "metaphor": [
     "on",
     "off",
