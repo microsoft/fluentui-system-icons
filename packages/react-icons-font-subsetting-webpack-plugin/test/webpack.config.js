@@ -14,6 +14,8 @@ const entries = {
   atoms: { src: './src/atoms.js', threshold: 2 * 1_024 }, // 2 KB
   // atomsImportStar uses `import *` and references more icon variants, producing a larger (but still properly subset) font.
   atomsImportStar: { src: './src/atoms-import-star.js', threshold: 3 * 1_024 }, // 3.0 KB
+  // Headless font atoms — fonts arrive via the headless `styles.css` import (css-loader) rather than Griffel.
+  headlessAtoms: { src: './src/headless-atoms.js', threshold: 2 * 1_024 }, // 2 KB
 };
 
 const isDevServer = process.env.WEBPACK_SERVE === 'true';
@@ -43,6 +45,12 @@ function createConfig(name, entry) {
             filename: `[name]-[contenthash][ext]`,
             dataUrl: {},
           },
+        },
+        {
+          // Headless fonts pull their `@font-face` (and font files) in via CSS.
+          // css-loader resolves the `url(...)` references into asset modules.
+          test: /\.css$/,
+          use: ['css-loader'],
         },
       ],
     },
