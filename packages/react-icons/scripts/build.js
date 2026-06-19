@@ -215,17 +215,21 @@ function addHeadlessExportMap(baseDir) {
       import: './lib/atoms/headless-svg/*.js',
       require: './lib-cjs/atoms/headless-svg/*.js',
     },
-    './headless/svg-sprite/*': {
-      types: './lib/atoms/headless-svg-sprite/*.d.ts',
-      import: './lib/atoms/headless-svg-sprite/*.js',
-      require: './lib-cjs/atoms/headless-svg-sprite/*.js',
-    },
     './headless/fonts/*': {
       types: './lib/atoms/headless-fonts/*.d.ts',
       import: './lib/atoms/headless-fonts/*.js',
       require: './lib-cjs/atoms/headless-fonts/*.js',
     },
   };
+
+  // Only expose the headless svg-sprite subpath when those atoms were generated
+  if (existsSync(join(baseDir, 'src/atoms/headless-svg-sprite'))) {
+    headlessExports['./headless/svg-sprite/*'] = {
+      types: './lib/atoms/headless-svg-sprite/*.d.ts',
+      import: './lib/atoms/headless-svg-sprite/*.js',
+      require: './lib-cjs/atoms/headless-svg-sprite/*.js',
+    };
+  }
 
   // Add headless export maps
   Object.assign(pkg.exports, headlessExports);
