@@ -9,6 +9,13 @@ on:
         default: false
         type: boolean
 
+# Serialize all automated writers to `main` (this workflow and publish.yml / bundle-size.baseline.yml
+# share the same group) so their pushes can never race and clobber each other.
+# `cancel-in-progress: false` queues runs instead of cancelling them.
+concurrency:
+  group: main-writer
+  cancel-in-progress: false
+
 jobs:
   publish-standalone:
     # Prevent infinite loops: skip if the commit was made by the build system itself
@@ -55,18 +62,22 @@ jobs:
       - name: Resolve standalone projects
         id: projects
         run: |
-          NX_NAMES=$(npx nx show projects -p "tag:npm:standalone" --sep ',')
+          # Intersect `npm:standalone` with the Nx-inferred `npm:public` tag (derived from each
+          # package.json `private` field) so private packages (e.g. react-icons-file-type) — which
+          # belong to the standalone release group only for pre-release versioning — are never
+          # versioned/changelogged/published/tagged by this public release workflow.
+          NX_NAMES=$(npx nx show projects -p "tag:npm:standalone" --exclude "tag:npm:private" --sep ',')
           echo "nx-names=$NX_NAMES" >> "$GITHUB_OUTPUT"
-          echo "### Standalone projects" >> $GITHUB_STEP_SUMMARY
+          echo "### Standalone projects (publishable)" >> $GITHUB_STEP_SUMMARY
           echo "$NX_NAMES" | tr ',' '\n' | while read -r p; do echo "- $p" >> $GITHUB_STEP_SUMMARY; done
 
       - name: Build packages
         run: |
-          npx nx run-many -t build --projects=tag:npm:standalone
+          npx nx run-many -t build --projects=${{ steps.projects.outputs.nx-names }}
 
       - name: Version packages (Nx Release)
         run: |
-          npx nx release version --group=standalone --verbose
+          npx nx release version --projects=${{ steps.projects.outputs.nx-names }} --verbose
 
       - name: Generate changelogs (Nx Release)
         # --first-release: allows changelog generation when no prior git tag exists (first release).
