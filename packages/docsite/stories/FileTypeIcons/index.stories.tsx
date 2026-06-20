@@ -5,6 +5,7 @@ export { Default } from './FileTypeIconsDefault.stories';
 export { Sizes } from './FileTypeIconsSizes.stories';
 export { Types } from './FileTypeIconsTypes.stories';
 export { Provider } from './FileTypeIconsProvider.stories';
+export { RecentAdditions } from './FileTypeIconsRecentAdditions.stories';
 
 export default {
   title: 'File Type Icons/Overview',
