@@ -1,16 +1,8 @@
 import type { StorybookConfig } from '@storybook/react-webpack5';
-import { resolve } from 'node:path';
 import remarkGfm from 'remark-gfm';
 
 const config: StorybookConfig = {
   stories: ['../stories/**/index.stories.@(ts|tsx)', '../stories/**/*.mdx'],
-
-  staticDirs: [
-    {
-      from: resolve(__dirname, '../../../../fabric-cdn/app-min/assets'),
-      to: '/fabric-cdn-assets',
-    },
-  ],
 
   addons: [
     {

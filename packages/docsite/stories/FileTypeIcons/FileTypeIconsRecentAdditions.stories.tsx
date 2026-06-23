@@ -1,8 +1,6 @@
 import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
-import { FileIconType, FileTypeIcon, FileTypeIconsProvider } from '@fluentui/react-icons-file-type';
+import { FileIconType, FileTypeIcon } from '@fluentui/react-icons-file-type';
 import * as React from 'react';
-
-const localFabricCdnBaseUrl = '/fabric-cdn-assets/item-types/';
 
 const recentIcons = [
   { label: 'pbiApp', type: FileIconType.pbiApp },
@@ -44,28 +42,25 @@ export const RecentAdditions = () => {
   const classes = useClasses();
 
   return (
-    <FileTypeIconsProvider baseUrl={localFabricCdnBaseUrl}>
-      <div className={classes.grid}>
-        {recentIcons.map((icon) => (
-          <div className={classes.item} key={icon.label}>
-            {'type' in icon ? (
-              <FileTypeIcon type={icon.type} size={64} />
-            ) : (
-              <FileTypeIcon extension={icon.extension} size={64} />
-            )}
-            <span className={classes.label}>{icon.label}</span>
-          </div>
-        ))}
-      </div>
-    </FileTypeIconsProvider>
+    <div className={classes.grid}>
+      {recentIcons.map((icon) => (
+        <div className={classes.item} key={icon.label}>
+          {'type' in icon ? (
+            <FileTypeIcon type={icon.type} size={64} />
+          ) : (
+            <FileTypeIcon extension={icon.extension} size={64} />
+          )}
+          <span className={classes.label}>{icon.label}</span>
+        </div>
+      ))}
+    </div>
   );
 };
 
 RecentAdditions.parameters = {
   docs: {
     description: {
-      story:
-        'Recent additions rendered from the local fabric-cdn asset mount so they are visible before the production CDN path is updated.',
+      story: 'Recent additions rendered from the package default CDN path.',
     },
   },
 };
