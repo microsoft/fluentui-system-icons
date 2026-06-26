@@ -654,6 +654,16 @@
     "font": true,
     "type": "resizable"
   },
+  "AppsBulletListFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "AppsBulletListRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "AppsListColor": {
     "svg": true,
     "font": false,
@@ -5694,6 +5704,16 @@
     "font": true,
     "type": "resizable"
   },
+  "ChatPersonFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "ChatPersonRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "ChatSettingsFilled": {
     "svg": true,
     "font": true,
@@ -8139,6 +8159,16 @@
     "font": true,
     "type": "resizable"
   },
+  "DashboardFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DashboardRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "DataAreaColor": {
     "svg": true,
     "font": false,
@@ -8859,6 +8889,16 @@
     "font": true,
     "type": "resizable"
   },
+  "DesktopTagFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DesktopTagRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "DesktopToolboxFilled": {
     "svg": true,
     "font": true,
@@ -9305,6 +9345,16 @@
     "type": "resizable"
   },
   "DocumentBriefcaseRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DocumentBrokenFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DocumentBrokenRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -11434,6 +11484,16 @@
     "font": true,
     "type": "resizable"
   },
+  "FilmstripMusicNote2Filled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "FilmstripMusicNote2Regular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "FilmstripPlayFilled": {
     "svg": true,
     "font": true,
@@ -11859,6 +11919,16 @@
     "font": true,
     "type": "resizable"
   },
+  "FolderDataBarFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "FolderDataBarRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "FolderDocumentFilled": {
     "svg": true,
     "font": true,
@@ -11885,6 +11955,16 @@
     "type": "resizable"
   },
   "FolderHintRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "FolderHolderFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "FolderHolderRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -12344,6 +12424,86 @@
     "font": true,
     "type": "resizable"
   },
+  "GameControllerBumperLeftFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerBumperLeftRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerBumperRightFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerBumperRightRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerButtonAFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerButtonARegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerButtonBFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerButtonBRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerButtonXFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerButtonXRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerButtonYFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerButtonYRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerTriggerLeftFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerTriggerLeftRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerTriggerRightFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerTriggerRightRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "GamesFilled": {
     "svg": true,
     "font": true,
@@ -12425,6 +12585,16 @@
     "type": "resizable"
   },
   "GaugeAddRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GaugeRotate0Filled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GaugeRotate0Regular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -12745,6 +12915,16 @@
     "type": "resizable"
   },
   "GlobeShieldRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GlobeStandFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GlobeStandRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -13649,6 +13829,16 @@
     "font": true,
     "type": "resizable"
   },
+  "ImageDismissFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "ImageDismissRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "ImageEditFilled": {
     "svg": true,
     "font": true,
@@ -14150,6 +14340,16 @@
     "type": "resizable"
   },
   "LaptopBriefcaseRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "LaptopCheckmarkFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "LaptopCheckmarkRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -15149,6 +15349,16 @@
     "font": true,
     "type": "resizable"
   },
+  "LocalLanguageGlobeFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "LocalLanguageGlobeRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "LocationFilled": {
     "svg": true,
     "font": true,
@@ -15890,6 +16100,16 @@
     "type": "resizable"
   },
   "MapDriveRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "MapPinFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "MapPinRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -17815,6 +18035,16 @@
     "type": "resizable"
   },
   "PeopleEyeRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "PeopleGameControllerFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "PeopleGameControllerRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -20114,12 +20344,42 @@
     "font": true,
     "type": "resizable"
   },
+  "RectangleLandscapeClockFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "RectangleLandscapeClockRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "RectangleLandscapeHintCopyFilled": {
     "svg": true,
     "font": true,
     "type": "resizable"
   },
   "RectangleLandscapeHintCopyRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "RectangleLandscapeLineHorizontalFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "RectangleLandscapeLineHorizontalRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "RectangleLandscapeOffFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "RectangleLandscapeOffRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -21189,6 +21449,16 @@
     "font": true,
     "type": "resizable"
   },
+  "SettingsSyncFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "SettingsSyncRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "ShapeExcludeFilled": {
     "svg": true,
     "font": true,
@@ -21660,6 +21930,16 @@
     "type": "resizable"
   },
   "ShiftsTeamRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "ShirtFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "ShirtRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -22449,6 +22729,16 @@
     "font": true,
     "type": "resizable"
   },
+  "SpeakerBoxKeyboardFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "SpeakerBoxKeyboardRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "SpeakerEditFilled": {
     "svg": true,
     "font": true,
@@ -23140,6 +23430,16 @@
     "type": "resizable"
   },
   "StreamOutputRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "StreetHomeFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "StreetHomeRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -24279,6 +24579,16 @@
     "font": true,
     "type": "resizable"
   },
+  "TabletPhoneDesktopFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TabletPhoneDesktopRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "TabletSpeakerFilled": {
     "svg": true,
     "font": true,
@@ -25030,6 +25340,16 @@
     "type": "resizable"
   },
   "TextBulletListDismissRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TextBulletListEditFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TextBulletListEditRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -26640,6 +26960,16 @@
     "type": "resizable"
   },
   "TextboxAlignTopRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TextboxAlignTopArrowClockwiseFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TextboxAlignTopArrowClockwiseRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -28759,6 +29089,16 @@
     "font": true,
     "type": "resizable"
   },
+  "WindowToolboxFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "WindowToolboxRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "WindowWrenchFilled": {
     "svg": true,
     "font": true,
@@ -28845,6 +29185,16 @@
     "type": "resizable"
   },
   "XboxControllerErrorRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "XboxOneConsoleFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "XboxOneConsoleRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -31465,6 +31815,16 @@
     "type": "sized"
   },
   "AppsAddInOff48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "AppsBulletList20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "AppsBulletList20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -41714,6 +42074,16 @@
     "font": true,
     "type": "sized"
   },
+  "Brain16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Brain16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Brain20Filled": {
     "svg": true,
     "font": true,
@@ -41810,6 +42180,16 @@
     "type": "sized"
   },
   "BrainCircuit48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BrainSparkle16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BrainSparkle16Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -49109,6 +49489,16 @@
     "font": false,
     "type": "sized"
   },
+  "ChatMultiple12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ChatMultiple12Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "ChatMultiple16Color": {
     "svg": true,
     "font": false,
@@ -49400,6 +49790,16 @@
     "type": "sized"
   },
   "ChatOff24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ChatPerson20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ChatPerson20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -57784,6 +58184,16 @@
     "font": true,
     "type": "sized"
   },
+  "Copy48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Copy48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "CopyAdd20Filled": {
     "svg": true,
     "font": true,
@@ -58815,6 +59225,16 @@
     "type": "sized"
   },
   "DarkTheme24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Dashboard20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Dashboard20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -61209,6 +61629,16 @@
     "font": true,
     "type": "sized"
   },
+  "DesktopTag20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DesktopTag20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "DesktopToolbox20Filled": {
     "svg": true,
     "font": true,
@@ -63030,6 +63460,16 @@
     "type": "sized"
   },
   "DocumentBriefcase32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentBroken20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentBroken20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -69729,6 +70169,16 @@
     "font": true,
     "type": "sized"
   },
+  "FilmstripMusicNote220Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FilmstripMusicNote220Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "FilmstripOff48Filled": {
     "svg": true,
     "font": true,
@@ -71394,6 +71844,16 @@
     "font": true,
     "type": "sized"
   },
+  "FolderDataBar20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FolderDataBar20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "FolderDocument16Filled": {
     "svg": true,
     "font": true,
@@ -71460,6 +71920,16 @@
     "type": "sized"
   },
   "FolderHint20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FolderHolder20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FolderHolder20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -72994,6 +73464,86 @@
     "font": true,
     "type": "sized"
   },
+  "GameControllerBumperLeft20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerBumperLeft20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerBumperRight20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerBumperRight20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerButtonA20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerButtonA20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerButtonB20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerButtonB20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerButtonX20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerButtonX20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerButtonY20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerButtonY20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerTriggerLeft20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerTriggerLeft20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerTriggerRight20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerTriggerRight20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Games16Filled": {
     "svg": true,
     "font": true,
@@ -73225,6 +73775,66 @@
     "type": "sized"
   },
   "GaugeAdd20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate016Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate016Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate020Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate020Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate024Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate024Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate028Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate028Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate032Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate032Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate048Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate048Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -74375,6 +74985,16 @@
     "type": "sized"
   },
   "GlobeShield48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GlobeStand20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GlobeStand20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -77764,6 +78384,16 @@
     "font": true,
     "type": "sized"
   },
+  "ImageDismiss20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ImageDismiss20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "ImageEdit16Filled": {
     "svg": true,
     "font": true,
@@ -78345,6 +78975,16 @@
     "type": "sized"
   },
   "Important32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Incognito12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Incognito12Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -79435,6 +80075,16 @@
     "type": "sized"
   },
   "LaptopBriefcase32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LaptopCheckmark20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LaptopCheckmark20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -82764,6 +83414,16 @@
     "font": true,
     "type": "sized"
   },
+  "LocalLanguageGlobe20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LocalLanguageGlobe20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Location12Filled": {
     "svg": true,
     "font": true,
@@ -85670,6 +86330,16 @@
     "type": "sized"
   },
   "MapDrive24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "MapPin20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "MapPin20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -93430,6 +94100,16 @@
     "type": "sized"
   },
   "PeopleEye20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PeopleGameController20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PeopleGameController20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -101814,6 +102494,16 @@
     "font": true,
     "type": "sized"
   },
+  "RectangleLandscapeClock20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "RectangleLandscapeClock20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "RectangleLandscapeHintCopy16Filled": {
     "svg": true,
     "font": true,
@@ -101840,6 +102530,26 @@
     "type": "sized"
   },
   "RectangleLandscapeHintCopy24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "RectangleLandscapeLineHorizontal20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "RectangleLandscapeLineHorizontal20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "RectangleLandscapeOff20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "RectangleLandscapeOff20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -105409,6 +106119,16 @@
     "font": true,
     "type": "sized"
   },
+  "SettingsSync20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SettingsSync20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "ShapeExclude16Filled": {
     "svg": true,
     "font": true,
@@ -107160,6 +107880,16 @@
     "type": "sized"
   },
   "ShiftsTeam24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Shirt20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Shirt20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -109429,6 +110159,16 @@
     "font": true,
     "type": "sized"
   },
+  "Sparkle12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Sparkle12Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Sparkle16Filled": {
     "svg": true,
     "font": true,
@@ -109635,6 +110375,16 @@
     "type": "sized"
   },
   "SparkleInfo24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleOff12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleOff12Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -109995,6 +110745,16 @@
     "type": "sized"
   },
   "SpeakerBox24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SpeakerBoxKeyboard20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SpeakerBoxKeyboard20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -112595,6 +113355,16 @@
     "type": "sized"
   },
   "StreamOutput20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "StreetHome20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "StreetHome20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -116339,6 +117109,16 @@
     "font": true,
     "type": "sized"
   },
+  "TabletPhoneDesktop20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TabletPhoneDesktop20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "TabletSpeaker20Filled": {
     "svg": true,
     "font": true,
@@ -118695,6 +119475,16 @@
     "type": "sized"
   },
   "TextBulletListDismiss20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextBulletListEdit20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextBulletListEdit20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -123065,6 +123855,16 @@
     "type": "sized"
   },
   "TextboxAlignTop24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextboxAlignTopArrowClockwise20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextboxAlignTopArrowClockwise20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -130239,6 +131039,16 @@
     "font": true,
     "type": "sized"
   },
+  "WindowToolbox20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WindowToolbox20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "WindowWrench16Filled": {
     "svg": true,
     "font": true,
@@ -130600,6 +131410,16 @@
     "type": "sized"
   },
   "XboxControllerError48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "XboxOneConsole20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "XboxOneConsole20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
