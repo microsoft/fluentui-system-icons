@@ -1,3 +1,9 @@
+## 1.1.331 (2026-06-26)
+
+### 🚀 Features
+
+- **react-icons:** build geometry from @fluentui/svg-icons base ([#1102](https://github.com/microsoft/fluentui-system-icons/pull/1102))
+
 ## 1.1.330 (2026-06-12)
 
 ### 🚀 Features

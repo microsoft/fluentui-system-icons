@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?ee1a4430f23b1ff7e36c70abd63671dd") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?ee1a4430f23b1ff7e36c70abd63671dd") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?ee1a4430f23b1ff7e36c70abd63671dd") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?422f5404eeb0caa3631e5a2fb18e74c8") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?422f5404eeb0caa3631e5a2fb18e74c8") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?422f5404eeb0caa3631e5a2fb18e74c8") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -29124,4 +29124,145 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_ticket_diagonal_48_filled:before {
     content: "\f0ce6";
+}
+.icon-ic_fluent_apps_bullet_list_20_filled:before {
+    content: "\f0ce7";
+}
+.icon-ic_fluent_brain_16_filled:before {
+    content: "\f0ce8";
+}
+.icon-ic_fluent_brain_sparkle_16_filled:before {
+    content: "\f0ce9";
+}
+.icon-ic_fluent_chat_multiple_12_filled:before {
+    content: "\f0cea";
+}
+.icon-ic_fluent_chat_person_20_filled:before {
+    content: "\f0ceb";
+}
+.icon-ic_fluent_copy_48_filled:before {
+    content: "\f0cec";
+}
+.icon-ic_fluent_dashboard_20_filled:before {
+    content: "\f0ced";
+}
+.icon-ic_fluent_desktop_tag_20_filled:before {
+    content: "\f0cee";
+}
+.icon-ic_fluent_document_broken_20_filled:before {
+    content: "\f0cef";
+}
+.icon-ic_fluent_filmstrip_music_note_2_20_filled:before {
+    content: "\f0cf0";
+}
+.icon-ic_fluent_folder_data_bar_20_filled:before {
+    content: "\f0cf1";
+}
+.icon-ic_fluent_folder_holder_20_filled:before {
+    content: "\f0cf2";
+}
+.icon-ic_fluent_game_controller_bumper_left_20_filled:before {
+    content: "\f0cf3";
+}
+.icon-ic_fluent_game_controller_bumper_right_20_filled:before {
+    content: "\f0cf4";
+}
+.icon-ic_fluent_game_controller_button_a_20_filled:before {
+    content: "\f0cf5";
+}
+.icon-ic_fluent_game_controller_button_b_20_filled:before {
+    content: "\f0cf6";
+}
+.icon-ic_fluent_game_controller_button_x_20_filled:before {
+    content: "\f0cf7";
+}
+.icon-ic_fluent_game_controller_button_y_20_filled:before {
+    content: "\f0cf8";
+}
+.icon-ic_fluent_game_controller_trigger_left_20_filled:before {
+    content: "\f0cf9";
+}
+.icon-ic_fluent_game_controller_trigger_right_20_filled:before {
+    content: "\f0cfa";
+}
+.icon-ic_fluent_gauge_rotate_0_16_filled:before {
+    content: "\f0cfb";
+}
+.icon-ic_fluent_gauge_rotate_0_20_filled:before {
+    content: "\f0cfc";
+}
+.icon-ic_fluent_gauge_rotate_0_24_filled:before {
+    content: "\f0cfd";
+}
+.icon-ic_fluent_gauge_rotate_0_28_filled:before {
+    content: "\f0cfe";
+}
+.icon-ic_fluent_gauge_rotate_0_32_filled:before {
+    content: "\f0cff";
+}
+.icon-ic_fluent_gauge_rotate_0_48_filled:before {
+    content: "\f0d00";
+}
+.icon-ic_fluent_globe_stand_20_filled:before {
+    content: "\f0d01";
+}
+.icon-ic_fluent_image_dismiss_20_filled:before {
+    content: "\f0d02";
+}
+.icon-ic_fluent_incognito_12_filled:before {
+    content: "\f0d03";
+}
+.icon-ic_fluent_laptop_checkmark_20_filled:before {
+    content: "\f0d04";
+}
+.icon-ic_fluent_local_language_globe_20_filled:before {
+    content: "\f0d05";
+}
+.icon-ic_fluent_map_pin_20_filled:before {
+    content: "\f0d06";
+}
+.icon-ic_fluent_people_game_controller_20_filled:before {
+    content: "\f0d07";
+}
+.icon-ic_fluent_rectangle_landscape_clock_20_filled:before {
+    content: "\f0d08";
+}
+.icon-ic_fluent_rectangle_landscape_line_horizontal_20_filled:before {
+    content: "\f0d09";
+}
+.icon-ic_fluent_rectangle_landscape_off_20_filled:before {
+    content: "\f0d0a";
+}
+.icon-ic_fluent_settings_sync_20_filled:before {
+    content: "\f0d0b";
+}
+.icon-ic_fluent_shirt_20_filled:before {
+    content: "\f0d0c";
+}
+.icon-ic_fluent_sparkle_12_filled:before {
+    content: "\f0d0d";
+}
+.icon-ic_fluent_sparkle_off_12_filled:before {
+    content: "\f0d0e";
+}
+.icon-ic_fluent_speaker_box_keyboard_20_filled:before {
+    content: "\f0d0f";
+}
+.icon-ic_fluent_street_home_20_filled:before {
+    content: "\f0d10";
+}
+.icon-ic_fluent_tablet_phone_desktop_20_filled:before {
+    content: "\f0d11";
+}
+.icon-ic_fluent_text_bullet_list_edit_20_filled:before {
+    content: "\f0d12";
+}
+.icon-ic_fluent_textbox_align_top_arrow_clockwise_20_filled:before {
+    content: "\f0d13";
+}
+.icon-ic_fluent_window_toolbox_20_filled:before {
+    content: "\f0d14";
+}
+.icon-ic_fluent_xbox_one_console_20_filled:before {
+    content: "\f0d15";
 }
