@@ -1,3 +1,11 @@
+## 2.0.331 (2026-06-26)
+
+### 🚀 Features
+
+- **react-icons:** add new and updated icons ([#1127](https://github.com/microsoft/fluentui-system-icons/pull/1127))
+- **react-icons:** build geometry from @fluentui/svg-icons base ([#1102](https://github.com/microsoft/fluentui-system-icons/pull/1102))
+- **react-icons-file-type:** implement v8 alternative for v9,modern ([#1095](https://github.com/microsoft/fluentui-system-icons/pull/1095))
+
 ## 2.0.330 (2026-06-12)
 
 ### 🚀 Features
