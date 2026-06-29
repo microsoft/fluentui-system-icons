@@ -15,7 +15,8 @@ const entries = {
   // atomsImportStar uses `import *` and references more icon variants, producing a larger (but still properly subset) font.
   atomsImportStar: { src: './src/atoms-import-star.js', threshold: 3 * 1_024 }, // 3.0 KB
   // Headless font atoms — fonts arrive via the headless `styles.css` import (css-loader) rather than Griffel.
-  headlessAtoms: { src: './src/headless-atoms.js', threshold: 2 * 1_024 }, // 2 KB
+  // No Griffel runtime is involved, so a tighter threshold is used to validate subsetting.
+  headlessAtoms: { src: './src/headless-atoms.js', threshold: 1.5 * 1_024 }, // 1.5 KB
 };
 
 const isDevServer = process.env.WEBPACK_SERVE === 'true';
