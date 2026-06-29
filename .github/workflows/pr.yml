@@ -48,6 +48,24 @@ jobs:
             exit 1
           fi
 
+  valid-pr-title:
+    name: Validate PR Title
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22.x
+
+      - run: npm ci
+
+      - name: Validate PR title follows Conventional Commits
+        env:
+          # Pass the title via env to avoid shell injection from untrusted PR titles.
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: echo "$PR_TITLE" | npx commitlint
+
   build-ios:
     name: Build iOS library
     runs-on: ubuntu-latest
