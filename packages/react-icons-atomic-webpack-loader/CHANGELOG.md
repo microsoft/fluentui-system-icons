@@ -1,3 +1,9 @@
+## 0.0.3 (2026-06-29)
+
+### 🚀 Features
+
+- **react-icons-atomic-webpack-loader:** support @fluentui/react-brand-icons ([#1113](https://github.com/microsoft/fluentui-system-icons/pull/1113))
+
 ## 0.0.2 (2026-05-18)
 
 ### 🩹 Fixes
