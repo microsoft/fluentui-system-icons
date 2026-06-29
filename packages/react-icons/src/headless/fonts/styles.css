@@ -4,7 +4,7 @@
  * files into the dependency graph. This enables font subsetting plugins to process them.
  *
  * Usage:
- *   import '@fluentui/react-icons/headless/headless-fonts.css';
+ *   import '@fluentui/react-icons/headless/fonts/styles.css';
  */
 
 @font-face {

@@ -208,17 +208,17 @@ function addHeadlessExportMap(baseDir) {
       import: './lib/headless/fonts/index.js',
       require: './lib-cjs/headless/fonts/index.js',
     },
-    './headless/headless.css': './lib/headless/headless.css',
-    './headless/headless-fonts.css': './lib/headless/fonts/headless-fonts.css',
+    './headless/utils': {
+      types: './lib/headless/utils.d.ts',
+      import: './lib/headless/utils.js',
+      require: './lib-cjs/headless/utils.js',
+    },
+    './headless/styles.css': './lib/headless/styles.css',
+    './headless/fonts/styles.css': './lib/headless/fonts/styles.css',
     './headless/svg/*': {
       types: './lib/atoms/headless-svg/*.d.ts',
       import: './lib/atoms/headless-svg/*.js',
       require: './lib-cjs/atoms/headless-svg/*.js',
-    },
-    './headless/svg-sprite/*': {
-      types: './lib/atoms/headless-svg-sprite/*.d.ts',
-      import: './lib/atoms/headless-svg-sprite/*.js',
-      require: './lib-cjs/atoms/headless-svg-sprite/*.js',
     },
     './headless/fonts/*': {
       types: './lib/atoms/headless-fonts/*.d.ts',
@@ -227,12 +227,21 @@ function addHeadlessExportMap(baseDir) {
     },
   };
 
+  // Only expose the headless svg-sprite subpath when those atoms were generated
+  if (existsSync(join(baseDir, 'src/atoms/headless-svg-sprite'))) {
+    headlessExports['./headless/svg-sprite/*'] = {
+      types: './lib/atoms/headless-svg-sprite/*.d.ts',
+      import: './lib/atoms/headless-svg-sprite/*.js',
+      require: './lib-cjs/atoms/headless-svg-sprite/*.js',
+    };
+  }
+
   // Add headless export maps
   Object.assign(pkg.exports, headlessExports);
   console.log(`  ✓ [exports] Set ${Object.keys(headlessExports).join(', ')}`);
 
   // Add headless CSS sideEffects entries
-  const headlessSideEffects = ['**/headless/fonts/headless-fonts.css', '**/headless/headless.css'];
+  const headlessSideEffects = ['**/headless/fonts/styles.css', '**/headless/styles.css'];
   pkg.sideEffects = [...headlessSideEffects];
   console.log(`  ✓ [sideEffects] Added ${headlessSideEffects.join(', ')}`);
 

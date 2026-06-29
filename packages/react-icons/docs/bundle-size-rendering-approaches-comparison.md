@@ -51,7 +51,7 @@
 
 When webpack uses `style-loader` (the default — no `MiniCssExtractPlugin`), the **headless fonts** bundle is **+1,344 B minified (+13%)** larger than the Griffel baseline. This is counter-intuitive — the headless approach was designed to remove the CSS-in-JS runtime, but in this mode it _replaces_ it with an even heavier runtime.
 
-**Root cause:** The two plain CSS imports (`headless-fonts.css`, `headless.css`) require webpack's `css-loader` + `style-loader` runtime to inject styles into the DOM at runtime. This runtime comprises ~10 extra webpack modules (style injection/removal API, `<style>` element creation, CSP nonce support, URL escaping, CSS text stringification, etc.) that collectively weigh more than Griffel's built-in runtime (hash function, `mergeClasses`, `makeStyles`, style insertion).
+**Root cause:** The two plain CSS imports (`fonts/styles.css`, `styles.css`) require webpack's `css-loader` + `style-loader` runtime to inject styles into the DOM at runtime. This runtime comprises ~10 extra webpack modules (style injection/removal API, `<style>` element creation, CSP nonce support, URL escaping, CSS text stringification, etc.) that collectively weigh more than Griffel's built-in runtime (hash function, `mergeClasses`, `makeStyles`, style insertion).
 
 **When headless _does_ win:** With CSS extraction (`MiniCssExtractPlugin`), the CSS moves into a separate `.css` file and the loader runtime is not needed — headless fonts then drop to **3.098 kB** (−69.5%). The style-loader overhead also gets amortized when an app already uses `css-loader`/`style-loader` for other CSS imports (the runtime is shared).
 

@@ -4,6 +4,8 @@ import { FluentIconsProps } from './FluentIconsProps.types';
 import { useIconState } from './useIconState';
 import { useRootStyles } from './createFluentIcon.styles';
 import { iconClassName } from './constants';
+import { computeViewBox, precomputeColorChildren, renderSvgBody } from '../core/svg';
+import type { SvgNode } from '../core/svg';
 
 export type FluentIcon = React.FC<FluentIconsProps>;
 
@@ -12,16 +14,7 @@ export type CreateFluentIconOptions = {
   color?: boolean;
 };
 
-export type SvgNode = [
-  tag: string,
-  attrs: Record<string, string | Record<string, string>> | null,
-  ...children: SvgNode[],
-];
-
-const renderSvgNode = (node: SvgNode, key: number): React.ReactElement => {
-  const [tag, attrs, ...children] = node;
-  return React.createElement(tag, { ...attrs, key }, ...children.map(renderSvgNode));
-};
+export type { SvgNode };
 
 /**
  * Creates a Fluent icon React component with Griffel styling.
@@ -42,13 +35,10 @@ export const createFluentIcon = (
   pathsOrSvg: string[] | string | SvgNode[],
   options?: CreateFluentIconOptions,
 ): FluentIcon => {
-  const viewBoxWidth = width === '1em' ? '20' : width;
+  const viewBoxWidth = computeViewBox(width);
   // Pre-render color SVG nodes once in the factory so the recursion
   // never runs during React renders.
-  const colorChildren =
-    typeof pathsOrSvg !== 'string' && (options?.color || Array.isArray(pathsOrSvg[0]))
-      ? (pathsOrSvg as SvgNode[]).map(renderSvgNode)
-      : undefined;
+  const colorChildren = precomputeColorChildren(pathsOrSvg, options);
   const Icon = React.forwardRef((props: FluentIconsProps, ref: React.Ref<HTMLElement>) => {
     const styles = useRootStyles();
     const iconState = useIconState(props, { flipInRtl: options?.flipInRtl });
@@ -61,21 +51,7 @@ export const createFluentIcon = (
       viewBox: `0 0 ${viewBoxWidth} ${viewBoxWidth}`,
       xmlns: 'http://www.w3.org/2000/svg',
     };
-    // @deprecated - this branch is not used in our code, only keeping for backwards compatibility
-    // Color icon: render raw SVG children
-    if (typeof pathsOrSvg === 'string') {
-      return React.createElement('svg', { ...state, dangerouslySetInnerHTML: { __html: pathsOrSvg } });
-    }
-    // Color icon: use pre-rendered elements
-    if (colorChildren) {
-      return React.createElement('svg', state, ...colorChildren);
-    }
-
-    return React.createElement(
-      'svg',
-      state,
-      ...(pathsOrSvg as string[]).map((d) => React.createElement('path', { d, fill: state.fill })),
-    );
+    return renderSvgBody(state, pathsOrSvg, colorChildren);
   }) as FluentIcon;
   Icon.displayName = displayName;
   return Icon;

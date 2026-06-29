@@ -25,6 +25,18 @@ import { DeleteRegular } from '@fluentui/react-icons/fonts/delete';
 
 Atomic imports provide better tree-shaking and faster build times for applications using a small number of icons.
 
+### 3. Using headless atomic imports from `@fluentui/react-icons/headless/fonts/*`
+
+```js
+// Headless font atoms — no Griffel runtime.
+// You MUST also import the headless font CSS so the @font-face declarations and
+// font files enter the module graph (the headless atoms don't import them):
+import '@fluentui/react-icons/headless/fonts/styles.css';
+import { AddRegular, AddFilled } from '@fluentui/react-icons/headless/fonts/add';
+```
+
+The plugin subsets the same shared font files used by the standard API, based on the headless icons you actually use. Because the font files arrive via `styles.css`, your config needs a CSS loader (e.g. `css-loader`) so the `url(...)` references resolve into webpack assets.
+
 ## Usage
 
 ### With `fluentIconFont` condition

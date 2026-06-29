@@ -2473,28 +2473,58 @@ describe('Build Verification', () => {
         'useIconState.d.ts',
         'bundleIcon.js',
         'bundleIcon.d.ts',
-        'headless.css',
+        'utils.js',
+        'utils.d.ts',
+        'styles.css',
       ];
       for (const file of expectedFiles) {
         expect(fs.existsSync(path.join(headlessDir, file))).toBe(true);
       }
 
-      // headless.css must use data-attribute selectors (the key differentiator from CSS-in-JS)
-      const css = await readFile(path.join(headlessDir, 'headless.css'), 'utf-8');
+      // styles.css must use data-attribute selectors (the key differentiator from CSS-in-JS)
+      const css = await readFile(path.join(headlessDir, 'styles.css'), 'utf-8');
       expect(css).toContain('[data-fui-icon]');
       expect(css).toContain('[data-fui-icon-rtl]');
       expect(css).toContain('[data-fui-icon-hidden]');
 
       // Font sub-infrastructure
       expect(fs.existsSync(path.join(headlessDir, 'fonts', 'createFluentFontIcon.js'))).toBe(true);
-      expect(fs.existsSync(path.join(headlessDir, 'fonts', 'headless-fonts.css'))).toBe(true);
+      expect(fs.existsSync(path.join(headlessDir, 'fonts', 'styles.css'))).toBe(true);
     });
 
     it('package.json#sideEffects include headless entries css entries', () => {
       const packageJsonPath = path.join(__dirname, 'package.json');
       const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
 
-      expect(packageJson.sideEffects).toEqual(['**/headless/fonts/headless-fonts.css', '**/headless/headless.css']);
+      expect(packageJson.sideEffects).toEqual(['**/headless/fonts/styles.css', '**/headless/styles.css']);
+    });
+
+    // Tree-shaking guardrail: the headless API and its atoms must never pull in
+    // Griffel. The shared core/ modules are styling-agnostic, so any Griffel
+    // reference here means a regression leaked the CSS-in-JS runtime into headless.
+    it('headless output must be Griffel-free (tree-shaking guardrail)', () => {
+      const targets = [
+        path.join(__dirname, 'lib', 'headless'),
+        path.join(__dirname, 'lib', 'atoms', 'headless-svg'),
+        path.join(__dirname, 'lib', 'atoms', 'headless-fonts'),
+        path.join(__dirname, 'lib-cjs', 'headless'),
+        path.join(__dirname, 'lib-cjs', 'atoms', 'headless-svg'),
+        path.join(__dirname, 'lib-cjs', 'atoms', 'headless-fonts'),
+      ];
+      /** @type {string[]} */
+      const offenders = [];
+      for (const dir of targets) {
+        if (!fs.existsSync(dir)) continue;
+        for (const entry of fs.readdirSync(dir, { recursive: true })) {
+          const rel = String(entry);
+          if (!rel.endsWith('.js')) continue;
+          const full = path.join(dir, rel);
+          if (/@griffel/.test(fs.readFileSync(full, 'utf-8'))) {
+            offenders.push(path.relative(__dirname, full));
+          }
+        }
+      }
+      expect(offenders).toEqual([]);
     });
   });
 
