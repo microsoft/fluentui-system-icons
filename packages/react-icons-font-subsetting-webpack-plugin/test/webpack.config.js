@@ -2,6 +2,7 @@
 const { resolve } = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const { default: FluentUIReactIconsFontSubsettingPlugin } = require('../lib/');
 
@@ -49,9 +50,11 @@ function createConfig(name, entry) {
         },
         {
           // Headless fonts pull their `@font-face` (and font files) in via CSS.
-          // css-loader resolves the `url(...)` references into asset modules.
+          // MiniCssExtractPlugin emits a real `[name].css` asset (instead of inlining the CSS
+          // string into the JS bundle), and css-loader resolves the `url(...)` references into
+          // asset modules so the subsetting plugin has font files to process.
           test: /\.css$/,
-          use: ['css-loader'],
+          use: [MiniCssExtractPlugin.loader, 'css-loader'],
         },
       ],
     },
@@ -71,6 +74,7 @@ function createConfig(name, entry) {
             }),
           ]
         : []),
+      new MiniCssExtractPlugin(),
       new FluentUIReactIconsFontSubsettingPlugin(),
       {
         apply(compiler) {
