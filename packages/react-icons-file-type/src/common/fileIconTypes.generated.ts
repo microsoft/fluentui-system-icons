@@ -41,6 +41,12 @@ export const FileIconType = {
   listForm: 22,
   campaign: 23,
   shortcutsdefaultfolder: 24,
+  pbiApp: 25,
+  pbiDashboard: 26,
+  pbiPaginatedReport: 27,
+  pbiScorecard: 28,
+  pbiSemanticModel: 29,
+  pbiReport: 30,
 } as const;
 
 export type FileIconType = (typeof FileIconType)[keyof typeof FileIconType];
@@ -83,4 +89,10 @@ export const TYPE_TO_ICON_NAME: ReadonlyArray<string> = [
   'listform', // 22 listForm
   'spocampaign', // 23 campaign
   'companyfolder', // 24 shortcutsdefaultfolder
+  'pbiapp', // 25 pbiApp
+  'pbidashboard', // 26 pbiDashboard
+  'pbipagereport', // 27 pbiPaginatedReport
+  'pbiscorecard', // 28 pbiScorecard
+  'pbisemmodel', // 29 pbiSemanticModel
+  'powerbi', // 30 pbiReport
 ];

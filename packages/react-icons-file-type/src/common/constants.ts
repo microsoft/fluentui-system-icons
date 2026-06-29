@@ -6,7 +6,7 @@
  * started. To use your own asset host, supply a `baseUrl` to `FileTypeIconsProvider`
  * (or to the individual helper functions / the `baseUrl` prop on `FileTypeIcon`).
  */
-export const FLUENT_CDN_BASE_URL = 'https://res.cdn.office.net/files/fabric-cdn-prod_20260506.001';
+export const FLUENT_CDN_BASE_URL = 'https://res.cdn.office.net/files/fabric-cdn-prod_20260623.001';
 
 /**
  * Default base URL used to resolve file type icon assets when no `baseUrl` is provided.
