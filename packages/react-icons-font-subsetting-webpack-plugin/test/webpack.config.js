@@ -2,6 +2,7 @@
 const { resolve } = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const { default: FluentUIReactIconsFontSubsettingPlugin } = require('../lib/');
 
@@ -14,6 +15,9 @@ const entries = {
   atoms: { src: './src/atoms.js', threshold: 2 * 1_024 }, // 2 KB
   // atomsImportStar uses `import *` and references more icon variants, producing a larger (but still properly subset) font.
   atomsImportStar: { src: './src/atoms-import-star.js', threshold: 3 * 1_024 }, // 3.0 KB
+  // Headless font atoms — fonts arrive via the headless `styles.css` import (css-loader) rather than Griffel.
+  // No Griffel runtime is involved, so a tighter threshold is used to validate subsetting.
+  headlessAtoms: { src: './src/headless-atoms.js', threshold: 1.5 * 1_024 }, // 1.5 KB
 };
 
 const isDevServer = process.env.WEBPACK_SERVE === 'true';
@@ -44,6 +48,14 @@ function createConfig(name, entry) {
             dataUrl: {},
           },
         },
+        {
+          // Headless fonts pull their `@font-face` (and font files) in via CSS.
+          // MiniCssExtractPlugin emits a real `[name].css` asset (instead of inlining the CSS
+          // string into the JS bundle), and css-loader resolves the `url(...)` references into
+          // asset modules so the subsetting plugin has font files to process.
+          test: /\.css$/,
+          use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        },
       ],
     },
     entry: { [name]: entry.src },
@@ -62,6 +74,7 @@ function createConfig(name, entry) {
             }),
           ]
         : []),
+      new MiniCssExtractPlugin(),
       new FluentUIReactIconsFontSubsettingPlugin(),
       {
         apply(compiler) {
