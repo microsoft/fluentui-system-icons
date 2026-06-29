@@ -4,6 +4,7 @@ import type { FluentIconsProps } from './shared';
 import { cx, iconClassName } from './shared';
 import { useIconState } from './useIconState';
 import type { FluentIcon, CreateFluentIconOptions } from './createFluentIcon';
+import { computeViewBox, renderSpriteBody } from '../core/svg';
 
 export type { FluentIcon, CreateFluentIconOptions } from './createFluentIcon';
 
@@ -19,7 +20,7 @@ export const createFluentIcon = (
   spritePath?: string,
   options?: CreateFluentIconOptions,
 ): FluentIcon => {
-  const viewBoxWidth = size === '1em' ? '20' : size;
+  const viewBoxWidth = computeViewBox(size);
 
   const Icon = React.forwardRef((props: FluentIconsProps, ref: React.Ref<HTMLElement>) => {
     const iconState = useIconState(props, { flipInRtl: options?.flipInRtl });
@@ -33,9 +34,7 @@ export const createFluentIcon = (
       xmlns: 'http://www.w3.org/2000/svg',
     };
 
-    const href = spritePath ? `${spritePath}#${iconId}` : `#${iconId}`;
-
-    return React.createElement('svg', state, React.createElement('use', { href }));
+    return renderSpriteBody(state, iconId, spritePath);
   }) as FluentIcon;
   Icon.displayName = iconId;
   return Icon;

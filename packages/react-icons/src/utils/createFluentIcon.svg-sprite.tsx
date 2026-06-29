@@ -5,6 +5,7 @@ import type { FluentIconsProps } from './FluentIconsProps.types';
 import { useIconState } from './useIconState';
 import { useRootStyles } from './createFluentIcon.styles';
 import { iconClassName } from './constants';
+import { computeViewBox, renderSpriteBody } from '../core/svg';
 
 export type FluentIcon = React.FC<FluentIconsProps>;
 type CreateFluentIconOptions = {
@@ -30,7 +31,7 @@ export const createFluentIcon = (
   spritePath?: string,
   options?: CreateFluentIconOptions,
 ): FluentIcon => {
-  const viewBoxWidth = size === '1em' ? '20' : size;
+  const viewBoxWidth = computeViewBox(size);
 
   const Icon = React.forwardRef((props: FluentIconsProps, ref: React.Ref<HTMLElement>) => {
     const styles = useRootStyles();
@@ -45,16 +46,7 @@ export const createFluentIcon = (
       xmlns: 'http://www.w3.org/2000/svg',
     };
 
-    const href = spritePath ? `${spritePath}#${iconId}` : `#${iconId}`;
-
-    return React.createElement(
-      'svg',
-      state,
-      React.createElement('use', {
-        href,
-        // The fill is applied to the svg element and inherited by use
-      }),
-    );
+    return renderSpriteBody(state, iconId, spritePath);
   }) as FluentIcon;
   Icon.displayName = iconId;
   return Icon;

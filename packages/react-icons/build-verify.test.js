@@ -2498,6 +2498,34 @@ describe('Build Verification', () => {
 
       expect(packageJson.sideEffects).toEqual(['**/headless/fonts/styles.css', '**/headless/styles.css']);
     });
+
+    // Tree-shaking guardrail: the headless API and its atoms must never pull in
+    // Griffel. The shared core/ modules are styling-agnostic, so any Griffel
+    // reference here means a regression leaked the CSS-in-JS runtime into headless.
+    it('headless output must be Griffel-free (tree-shaking guardrail)', () => {
+      const targets = [
+        path.join(__dirname, 'lib', 'headless'),
+        path.join(__dirname, 'lib', 'atoms', 'headless-svg'),
+        path.join(__dirname, 'lib', 'atoms', 'headless-fonts'),
+        path.join(__dirname, 'lib-cjs', 'headless'),
+        path.join(__dirname, 'lib-cjs', 'atoms', 'headless-svg'),
+        path.join(__dirname, 'lib-cjs', 'atoms', 'headless-fonts'),
+      ];
+      /** @type {string[]} */
+      const offenders = [];
+      for (const dir of targets) {
+        if (!fs.existsSync(dir)) continue;
+        for (const entry of fs.readdirSync(dir, { recursive: true })) {
+          const rel = String(entry);
+          if (!rel.endsWith('.js')) continue;
+          const full = path.join(dir, rel);
+          if (/@griffel/.test(fs.readFileSync(full, 'utf-8'))) {
+            offenders.push(path.relative(__dirname, full));
+          }
+        }
+      }
+      expect(offenders).toEqual([]);
+    });
   });
 
   describe('Metadata Validation', () => {
