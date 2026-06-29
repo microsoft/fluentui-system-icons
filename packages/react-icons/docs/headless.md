@@ -1,9 +1,5 @@
 # Headless API
 
-> **⚠️ Alpha** — this feature is available as an alpha prerelease only.
->
-> Install via `npm i @fluentui/react-icons@prerelease`
-
 The Headless API is a drop-in replacement for the standard icon API that removes the CSS-in-JS runtime dependency. It provides `data-*` attribute selectors for styling behaviour with opt-in pre-defined vanilla CSS — making it suitable for any React setup, including those without a CSS-in-JS runtime.
 
 ## Benefits
@@ -16,7 +12,7 @@ The Headless API is a drop-in replacement for the standard icon API that removes
 
 ## How it works
 
-The standard API uses Griffel's `makeStyles` / `mergeClasses` to inject CSS rules at runtime. The headless API replaces this with HTML `data-*` attributes and a shipped CSS file (`headless.css`) that targets them:
+The standard API uses Griffel's `makeStyles` / `mergeClasses` to inject CSS rules at runtime. The headless API replaces this with HTML `data-*` attributes and a shipped CSS file (`styles.css`) that targets them:
 
 | Concern               | Standard (Griffel)                  | Headless (CSS)                                                             |
 | --------------------- | ----------------------------------- | -------------------------------------------------------------------------- |
@@ -33,17 +29,17 @@ You **must** import the headless CSS file — this is the key difference from th
 **For SVG icons and SVG sprites:**
 
 ```ts
-import '@fluentui/react-icons/headless/headless.css';
+import '@fluentui/react-icons/headless/styles.css';
 ```
 
 **For font icons** (additionally):
 
 ```ts
-import '@fluentui/react-icons/headless/headless-fonts.css';
-import '@fluentui/react-icons/headless/headless.css';
+import '@fluentui/react-icons/headless/fonts/styles.css';
+import '@fluentui/react-icons/headless/styles.css';
 ```
 
-> **Note:** `headless-fonts.css` contains `@font-face` declarations with relative paths to the font files (`.woff2`, `.woff`, `.ttf`). Your bundler (webpack, Vite, esbuild) will resolve these into the dependency graph automatically, enabling font subsetting plugins to process them.
+> **Note:** `fonts/styles.css` contains `@font-face` declarations with relative paths to the font files (`.woff2`, `.woff`, `.ttf`). Your bundler (webpack, Vite, esbuild) will resolve these into the dependency graph automatically, enabling font subsetting plugins to process them.
 
 > **Tip 💡:** It's highly recommended to enable our [`react-icons-font-subsetting-webpack-plugin`](https://www.npmjs.com/package/@fluentui/react-icons-font-subsetting-webpack-plugin) to get same fonts "tree-shaking" perf boost
 
@@ -54,7 +50,7 @@ import '@fluentui/react-icons/headless/headless.css';
 Headless SVG icons are grouped by icon kind and exposed via `@fluentui/react-icons/headless/svg/{icon-group}`:
 
 ```tsx
-import '@fluentui/react-icons/headless/headless.css';
+import '@fluentui/react-icons/headless/styles.css';
 
 import {
   AccessTime20Filled,
@@ -78,7 +74,7 @@ function MyComponent() {
 Headless SVG sprites work the same way as standard SVG sprites but without Griffel:
 
 ```tsx
-import '@fluentui/react-icons/headless/headless.css';
+import '@fluentui/react-icons/headless/styles.css';
 
 import { AccessTime20Filled, AccessTime24Filled } from '@fluentui/react-icons/headless/svg-sprite/access-time';
 import { Add16Filled } from '@fluentui/react-icons/headless/svg-sprite/add';
@@ -93,15 +89,15 @@ function MyComponent() {
 }
 ```
 
-> **Same-origin requirement:** Sprite files must be served from the same origin as your application. See the [SVG Sprites same-origin section](./svg-sprites.md#same-origin-requirement) for details.
+> **Same-origin requirement:** Sprite files must be served from the same origin as your application. See the [SVG Sprites same-origin section](./preview-features/svg-sprites.md#same-origin-requirement) for details.
 
 ### Font Icons
 
-Headless font icons require both CSS files — `headless.css` for base styles and `headless-fonts.css` for `@font-face` declarations:
+Headless font icons require both CSS files — `styles.css` for base styles and `fonts/styles.css` for `@font-face` declarations:
 
 ```tsx
-import '@fluentui/react-icons/headless/headless-fonts.css';
-import '@fluentui/react-icons/headless/headless.css';
+import '@fluentui/react-icons/headless/fonts/styles.css';
+import '@fluentui/react-icons/headless/styles.css';
 
 import { Airplane20Filled, Airplane24Regular } from '@fluentui/react-icons/headless/fonts/airplane';
 
@@ -149,7 +145,7 @@ import {
 The `bundleIcon` function works identically to the standard API:
 
 ```tsx
-import '@fluentui/react-icons/headless/headless.css';
+import '@fluentui/react-icons/headless/styles.css';
 import { bundleIcon } from '@fluentui/react-icons/headless';
 import { AccessTimeFilled } from '@fluentui/react-icons/headless/svg/access-time';
 import { AccessTimeRegular } from '@fluentui/react-icons/headless/svg/access-time';
@@ -179,6 +175,6 @@ You can keep root-level barrel imports and leverage build transforms to adopt th
 
 Use `headless/svg` as the target path (or `headless/svg-sprite` for sprites, `headless/fonts` for font icons).
 
-> **Note:** You still need to manually add the CSS import (`import '@fluentui/react-icons/headless/headless.css'`) to your application entry point — build transforms only rewrite component imports.
+> **Note:** You still need to manually add the CSS import (`import '@fluentui/react-icons/headless/styles.css'`) to your application entry point — build transforms only rewrite component imports.
 
-👉 **[Build-Time Transform setup (Babel & SWC) →](../build-transforms.md)**
+👉 **[Build-Time Transform setup (Babel & SWC) →](./build-transforms.md)**

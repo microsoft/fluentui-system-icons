@@ -60,8 +60,8 @@ async function main() {
     },
   );
 
-  // 3. Generate headless per-icon output + SVG sprites (using headless import paths) - when --headless is enabled
-  if (HEADLESS_PER_ICON_DEST && HEADLESS_SPRITE_DEST) {
+  // 3. Generate headless per-icon output (+ SVG sprites when --headlessSpriteDest is provided) - when --headless is enabled
+  if (HEADLESS_PER_ICON_DEST) {
     await processPerIcon(srcFiles, HEADLESS_PER_ICON_DEST, HEADLESS_SPRITE_DEST, rtlMetadata, {
       svgImportPath: '../../headless/createFluentIcon',
       spriteTypeImportPath: '../../headless/createFluentIcon.svg-sprite',
