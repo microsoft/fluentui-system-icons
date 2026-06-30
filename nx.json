@@ -9,6 +9,24 @@
   },
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals", "{workspaceRoot}/.github/workflows/pr.yml"],
+    "assets": ["{workspaceRoot}/assets/**/*"],
+    "iconGenerationToolchain": [
+      "{workspaceRoot}/importer/generate.js",
+      "{workspaceRoot}/importer/replace-in-files.js",
+      "{workspaceRoot}/importer/svgo.config.shared.cjs"
+    ],
+    "fontGenerationToolchain": [
+      "iconGenerationToolchain",
+      "{workspaceRoot}/importer/generateFont.js",
+      "{workspaceRoot}/importer/svgo.config.mjs",
+      "{workspaceRoot}/importer/package.json"
+    ],
+    "fontArtifacts": [
+      "{workspaceRoot}/fonts/FluentSystemIcons-*.ttf",
+      "{workspaceRoot}/fonts/FluentSystemIcons-*.woff",
+      "{workspaceRoot}/fonts/FluentSystemIcons-*.woff2",
+      "{workspaceRoot}/fonts/FluentSystemIcons-*.json"
+    ],
     "sharedGlobals": []
   },
   "release": {
