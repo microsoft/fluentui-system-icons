@@ -36,6 +36,9 @@ export const useBaseIconState = <
     // remove unwanted props to be set on the svg/html element
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     filled,
+    // consumed by the icon factory to scope color-icon ids, never a DOM attribute
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    idPrefix,
     title,
     primaryFill = 'currentColor',
     ...rest

@@ -126,6 +126,71 @@ describe('React component tests', () => {
     expect(rect).toHaveStyle({ mixBlendMode: 'multiply' });
   });
 
+  test('createFluentIcon color icon scopes ids and url(#…) references with idPrefix', () => {
+    const MyColorIcon = createFluentIcon(
+      'MyColorIcon',
+      '1em',
+      [
+        ['path', { d: 'M0 0h20v20H0z', fill: 'url(#grad)' }],
+        ['defs', null, ['linearGradient', { id: 'grad' }, ['stop', { stopColor: '#fff' }]]],
+      ],
+      { color: true },
+    );
+
+    const { container } = render(<MyColorIcon idPrefix="x-" />);
+
+    expect(container.querySelector('linearGradient')).toHaveAttribute('id', 'x-grad');
+    expect(container.querySelector('path')).toHaveAttribute('fill', 'url(#x-grad)');
+  });
+
+  test('createFluentIcon color icon keeps original ids when no idPrefix is passed', () => {
+    const MyColorIcon = createFluentIcon(
+      'MyColorIcon',
+      '1em',
+      [
+        ['path', { d: 'M0 0h20v20H0z', fill: 'url(#grad)' }],
+        ['defs', null, ['linearGradient', { id: 'grad' }, ['stop', { stopColor: '#fff' }]]],
+      ],
+      { color: true },
+    );
+
+    const { container } = render(<MyColorIcon />);
+
+    expect(container.querySelector('linearGradient')).toHaveAttribute('id', 'grad');
+    expect(container.querySelector('path')).toHaveAttribute('fill', 'url(#grad)');
+  });
+
+  test('createFluentIcon idPrefix produces unique ids across two instances', () => {
+    const MyColorIcon = createFluentIcon(
+      'MyColorIcon',
+      '1em',
+      [
+        ['path', { d: 'M0 0h20v20H0z', fill: 'url(#grad)' }],
+        ['defs', null, ['linearGradient', { id: 'grad' }, ['stop', { stopColor: '#fff' }]]],
+      ],
+      { color: true },
+    );
+
+    const { container } = render(
+      <>
+        <MyColorIcon idPrefix="a-" />
+        <MyColorIcon idPrefix="b-" />
+      </>,
+    );
+
+    const ids = Array.from(container.querySelectorAll('linearGradient')).map((node) => node.getAttribute('id'));
+    expect(ids).toEqual(['a-grad', 'b-grad']);
+  });
+
+  test('createFluentIcon idPrefix is a no-op for mono-color (path string) icons', () => {
+    const MyIcon = createFluentIcon('MyIcon', '1em', ['M1 2 L3 4']);
+    const { container } = render(<MyIcon idPrefix="x-" />);
+
+    const svg = container.querySelector('svg');
+    expect(svg).toBeTruthy();
+    expect(container.querySelector('path')).toHaveAttribute('d', 'M1 2 L3 4');
+  });
+
   test('bundleIcon creates icon with fui-Icon className on both filled and regular icons', () => {
     const d = 'M1 2 L3 4';
     const FilledIcon = createFluentIcon('MyIconFilled', '1em', [d]);

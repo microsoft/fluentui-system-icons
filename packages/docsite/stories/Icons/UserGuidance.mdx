@@ -223,7 +223,8 @@ Color icons with gradients use non-scoped `id` attributes. When multiple instanc
 
 **Workarounds:**
 
-- **SVG sprites** (recommended): Wrap the icon in a `<symbol>` and reference it via `<use>`, avoiding duplicate gradient IDs.
+- **Scoped IDs via `idPrefix`** (recommended): Pass a unique `idPrefix` per rendered instance so every locally-defined `id` (gradients, clip paths, filters) and its `url(#…)` reference is scoped, eliminating the collision. Applies to `Color` variants only.
+- **SVG sprites**: Wrap the icon in a `<symbol>` and reference it via `<use>`, avoiding duplicate gradient IDs.
 - **Absolute positioning off-screen**: Use `position: 'absolute', top: '-9999px'` instead of `display: 'none'`.
 - **`visibility: 'hidden'`**: Hides the icon while keeping the gradient definition accessible (maintains layout space).
 
