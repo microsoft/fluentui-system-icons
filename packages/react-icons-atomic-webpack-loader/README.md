@@ -142,6 +142,7 @@ With the example above:
 Notes:
 
 - **Best-effort per module:** a module without a headless build for the resolved variant degrades to its standard (Griffel) implementation with a warning rather than failing the build. This applies to headless `svg-sprite` (not generated yet).
+- **Version requirement:** headless `@fluentui/react-brand-icons` requires `>= 2.0.206`. The loader rewrites imports statically and does not check the installed version, so an older brand-icons will fail to resolve the `/headless/*` entries at build time.
 - **Context is shared:** `useIconContext` / `IconDirectionContextProvider` always resolve to `@fluentui/react-icons/providers` — it is framework-agnostic and reused by both APIs.
 - **CSS is your responsibility:** the loader only rewrites component/utility imports. You must still import the headless CSS in your app entry point:
   ```js
@@ -195,3 +196,4 @@ Files that don't reference a supported module are passed through untouched (fast
 - `webpack` >= 5
 - `@fluentui/react-icons` >= 2 (with atomic subpath exports)
 - `@fluentui/react-brand-icons` (with atomic subpath exports), if used
+  - `>= 2.0.206` when using `headless: true` — earlier versions do not ship the `/headless/svg/*` and `/headless/utils` entries, so the loader's rewritten imports will fail to resolve.
