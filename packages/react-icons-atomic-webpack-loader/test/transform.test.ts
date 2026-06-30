@@ -271,20 +271,24 @@ describe('transformSource', () => {
       expect(diagnostics[0].message).toContain('headless');
     });
 
-    it('degrades brand icons (no headless build) to standard svg with a warning', () => {
+    it('rewrites brand icons to the headless svg atomic path', () => {
       const { code, diagnostics } = transformSource(`import { ProjectColor } from '@fluentui/react-brand-icons';`, {
         iconVariant: 'svg',
         headless: true,
         path: 'input.js',
       });
 
-      expect(code).toBe(`import { ProjectColor } from '@fluentui/react-brand-icons/svg/project';`);
-      expect(diagnostics).toHaveLength(1);
-      expect(diagnostics[0].level).toBe('warning');
-      expect(diagnostics[0].message).toContain('@fluentui/react-brand-icons');
+      expect(code).toBe(`import { ProjectColor } from '@fluentui/react-brand-icons/headless/svg/project';`);
+      expect(diagnostics).toEqual([]);
     });
 
-    it('keeps system icons headless while degrading brand icons in the same module', () => {
+    it('routes brand utility bindings to /headless/utils', () => {
+      expect(transformHeadless(`import { bundleIcon } from '@fluentui/react-brand-icons';`)).toBe(
+        `import { bundleIcon } from '@fluentui/react-brand-icons/headless/utils';`,
+      );
+    });
+
+    it('keeps both system and brand icons headless in the same module', () => {
       const source = [
         `import { AddFilled } from '@fluentui/react-icons';`,
         `import { ProjectColor } from '@fluentui/react-brand-icons';`,
@@ -295,7 +299,7 @@ describe('transformSource', () => {
       expect(code).toBe(
         [
           `import { AddFilled } from '@fluentui/react-icons/headless/svg/add';`,
-          `import { ProjectColor } from '@fluentui/react-brand-icons/svg/project';`,
+          `import { ProjectColor } from '@fluentui/react-brand-icons/headless/svg/project';`,
         ].join('\n'),
       );
     });

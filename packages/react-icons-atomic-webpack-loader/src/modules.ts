@@ -69,14 +69,16 @@ const reactIcons: ModuleDescriptor = {
 const reactBrandIcons: ModuleDescriptor = {
   name: '@fluentui/react-brand-icons',
   supportedVariants: ['svg'],
-  // No headless build for brand icons yet.
-  headlessVariants: [],
-  resolve(importName) {
+  // Brand icons ship a headless (Griffel-free) svg build.
+  headlessVariants: ['svg'],
+  resolve(importName, _variant, headless) {
+    const pkg = headless ? '@fluentui/react-brand-icons/headless' : '@fluentui/react-brand-icons';
+
     if (!isIconName(importName)) {
-      return '@fluentui/react-brand-icons/utils';
+      return `${pkg}/utils`;
     }
 
-    return `@fluentui/react-brand-icons/svg/${iconBaseName(importName)}`;
+    return `${pkg}/svg/${iconBaseName(importName)}`;
   },
 };
 

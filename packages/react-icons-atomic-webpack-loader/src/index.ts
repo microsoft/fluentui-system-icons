@@ -25,9 +25,9 @@ export interface FluentIconsAtomicImportLoaderOptions {
    * referenced module ships one. Defaults to `false`.
    *
    * Headless is best-effort per module: a module without a headless build for
-   * the resolved variant (e.g. `@fluentui/react-brand-icons`, or headless
-   * `svg-sprite` which isn't generated yet) degrades to its standard
-   * implementation with a warning instead of failing the build.
+   * the resolved variant (e.g. headless `svg-sprite` which isn't generated yet)
+   * degrades to its standard implementation with a warning instead of failing
+   * the build.
    *
    * NOTE: the loader only rewrites component/utility imports — you must still
    * import the headless CSS (`@fluentui/react-icons/headless/styles.css`, plus

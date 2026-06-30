@@ -66,7 +66,7 @@ module.exports = {
 | Module                        | Variants                     | Headless       | Notes                         |
 | ----------------------------- | ---------------------------- | -------------- | ----------------------------- |
 | `@fluentui/react-icons`       | `svg`, `fonts`, `svg-sprite` | `svg`, `fonts` | Has `/providers` and `/utils` |
-| `@fluentui/react-brand-icons` | `svg`                        | — (none yet)   | Has `/utils`; no `/providers` |
+| `@fluentui/react-brand-icons` | `svg`                        | `svg`          | Has `/utils`; no `/providers` |
 
 ## Options
 
@@ -141,7 +141,7 @@ With the example above:
 
 Notes:
 
-- **Best-effort per module:** a module without a headless build for the resolved variant degrades to its standard (Griffel) implementation with a warning rather than failing the build. This applies to `@fluentui/react-brand-icons` (no headless build) and to headless `svg-sprite` (not generated yet).
+- **Best-effort per module:** a module without a headless build for the resolved variant degrades to its standard (Griffel) implementation with a warning rather than failing the build. This applies to headless `svg-sprite` (not generated yet).
 - **Context is shared:** `useIconContext` / `IconDirectionContextProvider` always resolve to `@fluentui/react-icons/providers` — it is framework-agnostic and reused by both APIs.
 - **CSS is your responsibility:** the loader only rewrites component/utility imports. You must still import the headless CSS in your app entry point:
   ```js
