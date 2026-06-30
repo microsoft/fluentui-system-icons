@@ -275,7 +275,7 @@ jobs:
         if: ${{ !inputs.dry-run }}
         run: |
           git add -A
-          git commit -m "Release $NEW_VERSION [skip ci]"
+          git commit -m "chore(release): publish $NEW_VERSION [skip ci]"
 
       - name: Tag release
         if: ${{ !inputs.dry-run }}
@@ -311,7 +311,7 @@ jobs:
           echo "- \`@fluentui/react-native-icons@$REACT_VERSION\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 🏷️ Git operations that would be performed" >> $GITHUB_STEP_SUMMARY
-          echo "- Commit: \`Release $NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Commit: \`chore(release): publish $NEW_VERSION [skip ci]\`" >> $GITHUB_STEP_SUMMARY
           echo "- Tag: \`$NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
           echo "- Push to: \`origin/main\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY

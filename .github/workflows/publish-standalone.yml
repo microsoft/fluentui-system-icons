@@ -107,7 +107,7 @@ jobs:
         if: ${{ !inputs.dry-run }}
         run: |
           git add -A
-          git commit -m "Release standalone packages [skip ci]"
+          git commit -m "chore(release): publish standalone packages [skip ci]"
 
       - name: Tag releases
         # Tags must be created manually after the final commit (which includes lockfile updates, changelogs, etc.)
@@ -142,7 +142,7 @@ jobs:
           done
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 🏷️ Git operations that would be performed" >> $GITHUB_STEP_SUMMARY
-          echo "- Commit: \`Release standalone packages [skip ci]\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Commit: \`chore(release): publish standalone packages [skip ci]\`" >> $GITHUB_STEP_SUMMARY
           for pkg in $(echo "${{ steps.projects.outputs.nx-names }}" | tr ',' '\n'); do
             VERSION=$(node -p "require('./packages/${pkg}/package.json').version")
             echo "- Tag: \`${pkg}@${VERSION}\`" >> $GITHUB_STEP_SUMMARY
