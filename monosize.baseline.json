@@ -1,6 +1,6 @@
 {
   "branch": "main",
-  "commitSHA": "066149444a32680a99f41048ae4f0454d10e750c",
+  "commitSHA": "d765cea4f33aa125111a472f799294f251154fe6",
   "report": [
     {
       "packageName": "react-icons",
@@ -13,15 +13,15 @@
       "packageName": "react-icons-file-type",
       "name": "FileTypeIcon (headless, no Griffel)",
       "path": "bundle-size/file-type-icon-headless.fixture.js",
-      "minifiedSize": 4664,
-      "gzippedSize": 2483
+      "minifiedSize": 4746,
+      "gzippedSize": 2517
     },
     {
       "packageName": "react-icons-file-type",
       "name": "FileTypeIcon",
       "path": "bundle-size/file-type-icon.fixture.js",
-      "minifiedSize": 33122,
-      "gzippedSize": 12652
+      "minifiedSize": 33204,
+      "gzippedSize": 12685
     },
     {
       "packageName": "react-icons",
