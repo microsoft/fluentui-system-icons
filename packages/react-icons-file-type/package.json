@@ -1,6 +1,5 @@
 {
   "name": "@fluentui/react-icons-file-type",
-  "private": true,
   "version": "0.0.0",
   "description": "Fluent UI React (v9-compatible) file type icon components rendered from CDN-hosted assets.",
   "main": "lib-cjs/index.js",
