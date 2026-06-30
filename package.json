@@ -24,6 +24,8 @@
     "format:check": "nx format:check"
   },
   "devDependencies": {
+    "@commitlint/cli": "^21.1.0",
+    "@commitlint/config-conventional": "^21.1.0",
     "@griffel/webpack-extraction-plugin": "0.5.14",
     "@griffel/webpack-loader": "2.2.23",
     "@nx/js": "22.6.5",
