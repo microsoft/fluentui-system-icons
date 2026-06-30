@@ -10,6 +10,10 @@ const config = {
   bundler: webpackBundler((config) => {
     return config;
   }),
+  // Absolute per-fixture regression threshold used by `monosize compare-reports`
+  // (which runs at the repo root). Without this, compare-reports falls back to the
+  // 10% default, which is too strict for the small headless fixtures.
+  threshold: '10kB',
 };
 
 export default config;
