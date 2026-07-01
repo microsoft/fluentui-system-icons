@@ -40,7 +40,7 @@ jobs:
           app-id: ${{ secrets.GH_FLUENT_CI_APP_ID }}
           private-key: ${{ secrets.GH_FLUENT_CI_PRIVATE_KEY }}
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           token: ${{ steps.generate-token.outputs.token }}
           #  Git knows file names/paths for history, but blobs (file contents) are fetched on demand.
@@ -345,7 +345,7 @@ jobs:
   #   needs: publish-library
 
   #   steps:
-  #   - uses: actions/checkout@v6
+  #   - uses: actions/checkout@v7
 
   #   - name: Bump version patch
   #     run: |
