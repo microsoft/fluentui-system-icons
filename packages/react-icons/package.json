@@ -34,7 +34,7 @@
     "type-check:infra": "../../node_modules/.bin/tsc -p tsconfig.utils.json"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.0",
+    "@babel/core": "^7.29.6",
     "@griffel/babel-preset": "^1.8.1",
     "@griffel/eslint-plugin": "^2.0.2",
     "@types/react": "^17.0.2",
