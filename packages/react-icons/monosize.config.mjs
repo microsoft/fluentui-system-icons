@@ -73,7 +73,6 @@ const config = {
 
     return config;
   }),
-  threshold: '10kB',
 };
 
 export default config;
