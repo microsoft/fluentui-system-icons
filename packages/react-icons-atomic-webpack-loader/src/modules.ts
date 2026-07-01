@@ -31,39 +31,54 @@ export interface ModuleDescriptor {
   /** Icon variants this module ships atomic entry points for. */
   supportedVariants: IconVariant[];
   /**
+   * Icon variants for which this module ships a *headless* (Griffel-free) build.
+   * Empty when the module has no headless build at all.
+   */
+  headlessVariants: IconVariant[];
+  /**
    * Resolves the atomic subpath for a single named import.
    *
    * @param importName - The imported binding name (e.g. `AddFilled`, `bundleIcon`).
    * @param variant - The already-resolved, supported icon variant for this module.
+   * @param headless - Whether to resolve to the headless (Griffel-free) build.
    */
-  resolve(importName: string, variant: IconVariant): string;
+  resolve(importName: string, variant: IconVariant, headless: boolean): string;
 }
 
 const reactIcons: ModuleDescriptor = {
   name: '@fluentui/react-icons',
   supportedVariants: ['svg', 'fonts', 'svg-sprite'],
-  resolve(importName, variant) {
+  // Headless ships svg + fonts today; headless svg-sprite is not generated yet.
+  headlessVariants: ['svg', 'fonts'],
+  resolve(importName, variant, headless) {
     if (importName === 'useIconContext' || importName === 'IconDirectionContextProvider') {
+      // Context is framework-agnostic and shared by both APIs.
       return '@fluentui/react-icons/providers';
     }
 
+    const pkg = headless ? '@fluentui/react-icons/headless' : '@fluentui/react-icons';
+
     if (!isIconName(importName)) {
-      return '@fluentui/react-icons/utils';
+      return `${pkg}/utils`;
     }
 
-    return `@fluentui/react-icons/${variant}/${iconBaseName(importName)}`;
+    return `${pkg}/${variant}/${iconBaseName(importName)}`;
   },
 };
 
 const reactBrandIcons: ModuleDescriptor = {
   name: '@fluentui/react-brand-icons',
   supportedVariants: ['svg'],
-  resolve(importName) {
+  // Brand icons ship a headless (Griffel-free) svg build.
+  headlessVariants: ['svg'],
+  resolve(importName, _variant, headless) {
+    const pkg = headless ? '@fluentui/react-brand-icons/headless' : '@fluentui/react-brand-icons';
+
     if (!isIconName(importName)) {
-      return '@fluentui/react-brand-icons/utils';
+      return `${pkg}/utils`;
     }
 
-    return `@fluentui/react-brand-icons/svg/${iconBaseName(importName)}`;
+    return `${pkg}/svg/${iconBaseName(importName)}`;
   },
 };
 
@@ -124,5 +139,43 @@ export function resolveModuleVariant(
       `"${descriptor.name}" supports neither iconVariant "${iconVariant}" nor ` +
       `fallbackVariant "${fallbackVariant}" (supported: ${supported}). ` +
       `Falling back to "${DEFAULT_SAFETY_VARIANT}".`,
+  };
+}
+
+/**
+ * Resolves whether to use a module's headless build, given the requested
+ * `headless` flag and the already-resolved `variant`.
+ *
+ * Headless is best-effort: when a module has no headless build for the resolved
+ * variant, the loader degrades to the standard (Griffel) implementation and
+ * records a warning rather than failing the build.
+ */
+export function resolveModuleHeadless(
+  descriptor: ModuleDescriptor,
+  variant: IconVariant,
+  headless: boolean,
+): { headless: boolean; warning?: string } {
+  if (!headless) {
+    return { headless: false };
+  }
+
+  if (descriptor.headlessVariants.includes(variant)) {
+    return { headless: true };
+  }
+
+  if (descriptor.headlessVariants.length === 0) {
+    return {
+      headless: false,
+      warning:
+        `"${descriptor.name}" has no headless build; using its standard (Griffel) ` + `implementation for this import.`,
+    };
+  }
+
+  return {
+    headless: false,
+    warning:
+      `"${descriptor.name}" has no headless build for variant "${variant}" ` +
+      `(headless supports: ${descriptor.headlessVariants.join(', ')}); using its standard ` +
+      `(Griffel) implementation for this import.`,
   };
 }

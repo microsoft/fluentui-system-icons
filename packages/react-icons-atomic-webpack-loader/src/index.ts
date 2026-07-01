@@ -20,6 +20,20 @@ export interface FluentIconsAtomicImportLoaderOptions {
    * loader fails with a descriptive error.
    */
   fallbackVariant?: IconVariant;
+  /**
+   * Resolve atomic imports to the **headless** (Griffel-free) build where the
+   * referenced module ships one. Defaults to `false`.
+   *
+   * Headless is best-effort per module: a module without a headless build for
+   * the resolved variant (e.g. headless `svg-sprite` which isn't generated yet)
+   * degrades to its standard implementation with a warning instead of failing
+   * the build.
+   *
+   * NOTE: the loader only rewrites component/utility imports — you must still
+   * import the headless CSS (`@fluentui/react-icons/headless/styles.css`, plus
+   * `headless/fonts/styles.css` for font icons) in your app entry point.
+   */
+  headless?: boolean;
 }
 
 export default function fluentIconsAtomicImportLoader(
@@ -34,14 +48,19 @@ export default function fluentIconsAtomicImportLoader(
     return this.callback(null, sourceCode);
   }
 
-  const { iconVariant = 'svg', fallbackVariant } = this.getOptions();
+  const { iconVariant = 'svg', fallbackVariant, headless = false } = this.getOptions();
 
   let code: string;
   let map: ReturnType<typeof transformSource>['map'];
   let diagnostics: ReturnType<typeof transformSource>['diagnostics'];
 
   try {
-    ({ code, map, diagnostics } = transformSource(sourceCode, { iconVariant, fallbackVariant, path: resourcePath }));
+    ({ code, map, diagnostics } = transformSource(sourceCode, {
+      iconVariant,
+      fallbackVariant,
+      headless,
+      path: resourcePath,
+    }));
   } catch (error) {
     const reason = error instanceof Error ? error.message : String(error);
     return this.callback(new Error(`FluentIconsAtomicImportLoader: Failed to transform "${resourcePath}": ${reason}`));

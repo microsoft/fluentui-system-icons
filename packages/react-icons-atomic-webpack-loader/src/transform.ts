@@ -1,7 +1,7 @@
 import { parseSync } from 'oxc-parser';
 import MagicString from 'magic-string';
 
-import { getModuleDescriptor, resolveModuleVariant } from './modules';
+import { getModuleDescriptor, resolveModuleVariant, resolveModuleHeadless } from './modules';
 import type { IconVariant, ModuleDescriptor } from './modules';
 
 interface TransformOptions {
@@ -9,6 +9,8 @@ interface TransformOptions {
   iconVariant: IconVariant;
   /** The variant to fall back to when a module does not support `iconVariant`. */
   fallbackVariant?: IconVariant;
+  /** Resolve to the headless (Griffel-free) build where the module supports it. */
+  headless?: boolean;
   path: string;
 }
 
@@ -28,8 +30,11 @@ export interface TransformResult {
   diagnostics: Diagnostic[];
 }
 
+/** A module's resolved rewrite target: the icon variant and whether to use its headless build. */
+type ResolvedTarget = { variant: IconVariant; headless: boolean };
+
 export function transformSource(source: string, options: TransformOptions): TransformResult {
-  const { iconVariant, fallbackVariant, path } = options;
+  const { iconVariant, fallbackVariant, headless = false, path } = options;
 
   const result = parseSync(path, source, {
     sourceType: 'module',
@@ -44,16 +49,16 @@ export function transformSource(source: string, options: TransformOptions): Tran
 
   const diagnostics: Diagnostic[] = [];
   // Resolve (and diagnose) each referenced module at most once.
-  const resolvedVariants = new Map<string, IconVariant | null>();
+  const resolvedTargets = new Map<string, ResolvedTarget | null>();
 
   /**
-   * Returns the variant to rewrite a referenced module with, or `null` when it
-   * could not be resolved (an error diagnostic has been recorded and the module
-   * should be left untouched).
+   * Returns the target (variant + headless) to rewrite a referenced module
+   * with, or `null` when it could not be resolved (an error diagnostic has been
+   * recorded and the module should be left untouched).
    */
-  const variantFor = (descriptor: ModuleDescriptor): IconVariant | null => {
-    if (resolvedVariants.has(descriptor.name)) {
-      return resolvedVariants.get(descriptor.name)!;
+  const targetFor = (descriptor: ModuleDescriptor): ResolvedTarget | null => {
+    if (resolvedTargets.has(descriptor.name)) {
+      return resolvedTargets.get(descriptor.name)!;
     }
 
     const resolution = resolveModuleVariant(descriptor, iconVariant, fallbackVariant);
@@ -65,9 +70,19 @@ export function transformSource(source: string, options: TransformOptions): Tran
       diagnostics.push({ level: 'error', message: resolution.error });
     }
 
-    const variant = resolution.variant ?? null;
-    resolvedVariants.set(descriptor.name, variant);
-    return variant;
+    if (!resolution.variant) {
+      resolvedTargets.set(descriptor.name, null);
+      return null;
+    }
+
+    const headlessResolution = resolveModuleHeadless(descriptor, resolution.variant, headless);
+    if (headlessResolution.warning) {
+      diagnostics.push({ level: 'warning', message: headlessResolution.warning });
+    }
+
+    const target: ResolvedTarget = { variant: resolution.variant, headless: headlessResolution.headless };
+    resolvedTargets.set(descriptor.name, target);
+    return target;
   };
 
   for (const imp of staticImports) {
@@ -75,7 +90,7 @@ export function transformSource(source: string, options: TransformOptions): Tran
     const descriptor = getModuleDescriptor(moduleName);
     if (!descriptor) continue;
 
-    const variant = variantFor(descriptor);
+    const variant = targetFor(descriptor);
     if (!variant) continue;
 
     const namedEntries = imp.entries.filter((e) => e.importName.kind === 'Name');
@@ -94,7 +109,7 @@ export function transformSource(source: string, options: TransformOptions): Tran
     for (const entry of namedEntries) {
       const importedName = entry.importName.name!;
       const localName = entry.localName.value;
-      const newSource = descriptor.resolve(importedName, variant);
+      const newSource = descriptor.resolve(importedName, variant.variant, variant.headless);
       const spec = importedName === localName ? importedName : `${importedName} as ${localName}`;
       lines.push(`import { ${spec} } from '${newSource}';`);
     }
@@ -118,12 +133,12 @@ export function transformSource(source: string, options: TransformOptions): Tran
     for (const entry of relevantEntries) {
       const moduleName = entry.moduleRequest!.value;
       const descriptor = getModuleDescriptor(moduleName)!;
-      const variant = variantFor(descriptor);
+      const variant = targetFor(descriptor);
       if (!variant) continue;
 
       const importedName = entry.importName.name!;
       const exportedName = entry.exportName.name!;
-      const newSource = descriptor.resolve(importedName, variant);
+      const newSource = descriptor.resolve(importedName, variant.variant, variant.headless);
       const spec = importedName === exportedName ? importedName : `${importedName} as ${exportedName}`;
       lines.push(`export { ${spec} } from '${newSource}';`);
     }

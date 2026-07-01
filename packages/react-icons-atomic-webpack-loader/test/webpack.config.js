@@ -82,6 +82,22 @@ const entries = {
     mustExclude: ['"@fluentui/react-icons"', '@fluentui/react-icons/svg/', '@fluentui/react-icons/fonts/'],
   },
 
+  'headless-imports': {
+    src: './src/headless-imports.js',
+    loaderOptions: { headless: true },
+    mustInclude: [
+      '@fluentui/react-icons/headless/svg/add',
+      '@fluentui/react-icons/headless/svg/arrow-left',
+      '@fluentui/react-icons/headless/svg/arrow-circle-down',
+      '@fluentui/react-icons/headless/svg/people',
+      // context stays on the shared (non-headless) providers entry
+      '@fluentui/react-icons/providers',
+      '@fluentui/react-icons/headless/utils',
+    ],
+    // no standard (non-headless) svg/utils paths should leak through
+    mustExclude: ['"@fluentui/react-icons"', '@fluentui/react-icons/svg/', '@fluentui/react-icons/utils'],
+  },
+
   'brand-icons-imports': {
     src: './src/brand-icons-imports.js',
     loaderOptions: {},
