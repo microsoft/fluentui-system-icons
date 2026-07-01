@@ -108,7 +108,7 @@ jobs:
 
       # https://github.com/marketplace/actions/gradle-command
       - name: Build Android library
-        uses: eskatos/gradle-command-action@v1
+        uses: eskatos/gradle-command-action@v3
         with:
           arguments: assembleRelease
           build-root-directory: android
