@@ -1,13 +1,13 @@
 {
   "branch": "main",
-  "commitSHA": "3182aa710fd48d77ca083db39abcc6f66bbae6bc",
+  "commitSHA": "e876c57b1e949a0b83d19cef7434320dfe28945a",
   "report": [
     {
       "packageName": "react-icons",
       "name": "Atomic Imports",
       "path": "bundle-size/atomic-import.fixture.js",
-      "minifiedSize": 7125,
-      "gzippedSize": 3285
+      "minifiedSize": 7478,
+      "gzippedSize": 3435
     },
     {
       "packageName": "react-icons-file-type",
@@ -27,29 +27,29 @@
       "packageName": "react-icons",
       "name": "Headless - Bundle Icon",
       "path": "bundle-size/headless-bundle.fixture.js",
-      "minifiedSize": 2767,
-      "gzippedSize": 1437
+      "minifiedSize": 3120,
+      "gzippedSize": 1621
     },
     {
       "packageName": "react-icons",
       "name": "Headless - Single Fonts",
       "path": "bundle-size/headless-fonts.fixture.js",
-      "minifiedSize": 1110,
-      "gzippedSize": 629
+      "minifiedSize": 1121,
+      "gzippedSize": 639
     },
     {
       "packageName": "react-icons",
       "name": "Headless - Single SVG",
       "path": "bundle-size/headless-svg.fixture.js",
-      "minifiedSize": 2022,
-      "gzippedSize": 1149
+      "minifiedSize": 2375,
+      "gzippedSize": 1332
     },
     {
       "packageName": "react-icons",
       "name": "Single Icon via Import all",
       "path": "bundle-size/icons-import-all.fixture.js",
-      "minifiedSize": 7127,
-      "gzippedSize": 3287
+      "minifiedSize": 7480,
+      "gzippedSize": 3436
     },
     {
       "packageName": "react-icons-file-type",
@@ -69,15 +69,15 @@
       "packageName": "react-icons",
       "name": "Single Fonts",
       "path": "bundle-size/single-fonts.fixture.js",
-      "minifiedSize": 8133,
-      "gzippedSize": 3533
+      "minifiedSize": 8144,
+      "gzippedSize": 3543
     },
     {
       "packageName": "react-icons",
       "name": "Single Icons",
       "path": "bundle-size/single-icons.fixture.js",
-      "minifiedSize": 7127,
-      "gzippedSize": 3287
+      "minifiedSize": 7480,
+      "gzippedSize": 3436
     }
   ]
 }
