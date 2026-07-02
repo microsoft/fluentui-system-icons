@@ -40,7 +40,7 @@ jobs:
           app-id: ${{ secrets.GH_FLUENT_CI_APP_ID }}
           private-key: ${{ secrets.GH_FLUENT_CI_PRIVATE_KEY }}
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           token: ${{ steps.generate-token.outputs.token }}
           #  Git knows file names/paths for history, but blobs (file contents) are fetched on demand.
@@ -238,16 +238,15 @@ jobs:
       #     sudo bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
 
       - name: Build Android library
-        uses: eskatos/gradle-command-action@v1
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: assembleRelease -DversionName='${{ env.NEW_VERSION }}'
           build-root-directory: android
-          wrapper-directory: android
 
       # Temporarily commenting out the publishing to Maven Central, as it is blocking the release for other platforms
       # - name: Publish to Maven Central
       #   if: ${{ !inputs.dry-run }}
-      #   uses: eskatos/gradle-command-action@v1
+      #   uses: gradle/gradle-build-action@v3
       #   env:
       #     OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
       #     OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
@@ -259,7 +258,6 @@ jobs:
       #   with:
       #     arguments: publishReleasePublicationToSonatypeRepository --max-workers 1 closeAndReleaseSonatypeStagingRepository
       #     build-root-directory: android
-      #     wrapper-directory: android
 
       - name: Generate BUILD.gn file for Android
         run: python3 generate_build_gn_android.py
@@ -345,7 +343,7 @@ jobs:
   #   needs: publish-library
 
   #   steps:
-  #   - uses: actions/checkout@v6
+  #   - uses: actions/checkout@v7
 
   #   - name: Bump version patch
   #     run: |
@@ -381,11 +379,10 @@ jobs:
   #       gpg -d --passphrase "${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" --batch release.keystore.asc > release.keystore
 
   #   - name: Build Android demo app
-  #     uses: eskatos/gradle-command-action@v1
+  #     uses: gradle/gradle-build-action@v3
   #     with:
   #       arguments: ':sample-showcase:assembleRelease -DversionName=${{ env.NEW_VERSION }} -DversionCode=${{ github.run_number }} -Pandroid.injected.signing.store.file=/home/runner/work/fluentui-system-icons/fluentui-system-icons/release.keystore -Pandroid.injected.signing.store.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }} -Pandroid.injected.signing.key.alias=${{ secrets.ANDROID_KEYSTORE_ALIAS }} -Pandroid.injected.signing.key.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}'
   #       build-root-directory: android
-  #       wrapper-directory: android
 
   #   - name: Publish apk to App Center
   #     uses: wzieba/AppCenter-Github-Action@v1.0.0

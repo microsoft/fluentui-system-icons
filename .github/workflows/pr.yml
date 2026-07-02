@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Check asset directories are valid for Windows
         run: |
@@ -33,7 +33,7 @@ jobs:
     name: Validate Asset Fills
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Check that all SVGs have the right fill
         run: |
@@ -52,7 +52,7 @@ jobs:
     name: Validate PR Title
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - uses: actions/setup-node@v6
         with:
@@ -71,7 +71,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - uses: actions/setup-node@v6
         with:
@@ -88,7 +88,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - uses: actions/setup-node@v6
         with:
@@ -108,11 +108,10 @@ jobs:
 
       # https://github.com/marketplace/actions/gradle-command
       - name: Build Android library
-        uses: eskatos/gradle-command-action@v1
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: assembleRelease
           build-root-directory: android
-          wrapper-directory: android
 
       - name: Generate BUILD.gn file for Android
         run: python3 generate_build_gn_android.py
@@ -124,7 +123,7 @@ jobs:
   #   runs-on: ubuntu-latest
 
   #   steps:
-  #   - uses: actions/checkout@v6
+  #   - uses: actions/checkout@v7
 
   #   - uses: actions/setup-node@v4
   #     with:
@@ -157,7 +156,7 @@ jobs:
       actions: 'read'
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
           filter: tree:0
