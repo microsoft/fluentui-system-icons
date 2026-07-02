@@ -17,12 +17,12 @@ const entries = {
   atomsImportStar: { src: './src/atoms-import-star.js', threshold: 3 * 1_024 }, // 3.0 KB
   // Headless font atoms — fonts arrive via the headless `styles.css` import (css-loader) rather than Griffel.
   // No Griffel runtime is involved, so a tighter threshold is used to validate subsetting.
-  headlessAtoms: { src: './src/headless-atoms.js', threshold: 1.5 * 1_024 }, // 1.5 KB
+  headlessAtoms: { src: './src/headless-atoms.js', threshold: 1.5 * 1_024, assertNoGriffel: true }, // 1.5 KB
   // End-to-end: a *barrel* import is rewritten by the atomic loader (headless + fonts) into
   // headless font atoms, then subset here. Also asserts the graph stays Griffel-free.
   e2eBarrelHeadlessFonts: {
     src: './src/e2e-barrel-headless-fonts.js',
-    threshold: 2 * 1_024, // 2 KB
+    threshold: 1.5 * 1_024, // 1.5 KB
     useAtomicLoader: true,
     assertNoGriffel: true,
   },
@@ -46,8 +46,9 @@ function createConfig(name, entry) {
     // This is enabled by default in production mode.
     // In development mode, webpack doesn't track used exports, so the plugin skips subsetting.
     mode: 'production',
-    // Keep modules un-concatenated for the e2e entry so the Griffel-free assertion
-    // can inspect individual module resources.
+    // Keep modules un-concatenated for entries that assert Griffel-freedom so the assertion
+    // can inspect individual module resources (scope hoisting would merge them into a
+    // ConcatenatedModule with no per-module `resource`, hiding a leaked @griffel module).
     optimization: entry.assertNoGriffel ? { concatenateModules: false } : undefined,
     module: {
       rules: [
