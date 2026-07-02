@@ -1,7 +1,13 @@
 import { parseSync } from 'oxc-parser';
 import MagicString from 'magic-string';
 
-import { getModuleDescriptor, resolveModuleVariant, resolveModuleHeadless } from './modules';
+import {
+  getModuleDescriptor,
+  resolveModuleVariant,
+  resolveColorVariant,
+  resolveModuleHeadless,
+  isColorIconName,
+} from './modules';
 import type { IconVariant, ModuleDescriptor } from './modules';
 
 interface TransformOptions {
@@ -48,40 +54,67 @@ export function transformSource(source: string, options: TransformOptions): Tran
   const src = new MagicString(source);
 
   const diagnostics: Diagnostic[] = [];
-  // Resolve (and diagnose) each referenced module at most once.
+  // Dedupe diagnostics by message so a module's variant / color / headless
+  // concern surfaces at most once, even though resolution now runs per
+  // (module, color-ness) rather than per module.
+  const seenDiagnostics = new Set<string>();
+  const pushDiagnostic = (diagnostic: Diagnostic): void => {
+    const key = `${diagnostic.level}:${diagnostic.message}`;
+    if (seenDiagnostics.has(key)) return;
+    seenDiagnostics.add(key);
+    diagnostics.push(diagnostic);
+  };
+
+  // Resolve each referenced module at most once per color-ness: color icons may
+  // route to a different variant than their non-color siblings, so the cache key
+  // is `${name}:${isColor}`. Resolution stays O(#modules × 2) regardless of how
+  // many icons a file imports.
   const resolvedTargets = new Map<string, ResolvedTarget | null>();
 
   /**
-   * Returns the target (variant + headless) to rewrite a referenced module
-   * with, or `null` when it could not be resolved (an error diagnostic has been
-   * recorded and the module should be left untouched).
+   * Returns the target (variant + headless) to rewrite a single referenced
+   * import with, or `null` when the module could not be resolved (an error
+   * diagnostic has been recorded and the import should be left untouched).
    */
-  const targetFor = (descriptor: ModuleDescriptor): ResolvedTarget | null => {
-    if (resolvedTargets.has(descriptor.name)) {
-      return resolvedTargets.get(descriptor.name)!;
+  const targetFor = (descriptor: ModuleDescriptor, isColor: boolean): ResolvedTarget | null => {
+    const cacheKey = `${descriptor.name}:${isColor}`;
+    if (resolvedTargets.has(cacheKey)) {
+      return resolvedTargets.get(cacheKey)!;
     }
 
     const resolution = resolveModuleVariant(descriptor, iconVariant, fallbackVariant);
 
     if (resolution.warning) {
-      diagnostics.push({ level: 'warning', message: resolution.warning });
+      pushDiagnostic({ level: 'warning', message: resolution.warning });
     }
     if (resolution.error) {
-      diagnostics.push({ level: 'error', message: resolution.error });
+      pushDiagnostic({ level: 'error', message: resolution.error });
     }
 
     if (!resolution.variant) {
-      resolvedTargets.set(descriptor.name, null);
+      resolvedTargets.set(cacheKey, null);
       return null;
     }
 
-    const headlessResolution = resolveModuleHeadless(descriptor, resolution.variant, headless);
-    if (headlessResolution.warning) {
-      diagnostics.push({ level: 'warning', message: headlessResolution.warning });
+    let variant = resolution.variant;
+
+    // Color icons are SVG-only; reroute them off any color-less variant (fonts)
+    // to a color-capable one, honoring the fallback precedence.
+    if (isColor) {
+      const colorResolution = resolveColorVariant(descriptor, variant, iconVariant, fallbackVariant);
+      if (colorResolution.warning) {
+        pushDiagnostic({ level: 'warning', message: colorResolution.warning });
+      }
+      variant = colorResolution.variant;
     }
 
-    const target: ResolvedTarget = { variant: resolution.variant, headless: headlessResolution.headless };
-    resolvedTargets.set(descriptor.name, target);
+    const headlessResolution = resolveModuleHeadless(descriptor, variant, headless);
+    if (headlessResolution.warning) {
+      pushDiagnostic({ level: 'warning', message: headlessResolution.warning });
+    }
+
+    const target: ResolvedTarget = { variant, headless: headlessResolution.headless };
+    resolvedTargets.set(cacheKey, target);
     return target;
   };
 
@@ -90,11 +123,20 @@ export function transformSource(source: string, options: TransformOptions): Tran
     const descriptor = getModuleDescriptor(moduleName);
     if (!descriptor) continue;
 
-    const variant = targetFor(descriptor);
-    if (!variant) continue;
-
     const namedEntries = imp.entries.filter((e) => e.importName.kind === 'Name');
     if (namedEntries.length === 0) continue;
+
+    // Resolve each named specifier independently — color icons may route to a
+    // different variant than their non-color siblings in the same statement.
+    const resolvedEntries = namedEntries.map((entry) => ({
+      entry,
+      importedName: entry.importName.name!,
+      target: targetFor(descriptor, isColorIconName(entry.importName.name!)),
+    }));
+
+    // A module-level resolution error is independent of color-ness, so if any
+    // specifier is unresolved they all are — leave the whole statement untouched.
+    if (resolvedEntries.some(({ target }) => !target)) continue;
 
     const otherEntries = imp.entries.filter((e) => e.importName.kind !== 'Name');
     const lines: string[] = [];
@@ -106,10 +148,9 @@ export function transformSource(source: string, options: TransformOptions): Tran
       lines.push(`import ${names} from '${moduleName}';`);
     }
 
-    for (const entry of namedEntries) {
-      const importedName = entry.importName.name!;
+    for (const { entry, importedName, target } of resolvedEntries) {
       const localName = entry.localName.value;
-      const newSource = descriptor.resolve(importedName, variant.variant, variant.headless);
+      const newSource = descriptor.resolve(importedName, target!.variant, target!.headless);
       const spec = importedName === localName ? importedName : `${importedName} as ${localName}`;
       lines.push(`import { ${spec} } from '${newSource}';`);
     }
@@ -133,12 +174,12 @@ export function transformSource(source: string, options: TransformOptions): Tran
     for (const entry of relevantEntries) {
       const moduleName = entry.moduleRequest!.value;
       const descriptor = getModuleDescriptor(moduleName)!;
-      const variant = targetFor(descriptor);
-      if (!variant) continue;
-
       const importedName = entry.importName.name!;
+      const target = targetFor(descriptor, isColorIconName(importedName));
+      if (!target) continue;
+
       const exportedName = entry.exportName.name!;
-      const newSource = descriptor.resolve(importedName, variant.variant, variant.headless);
+      const newSource = descriptor.resolve(importedName, target.variant, target.headless);
       const spec = importedName === exportedName ? importedName : `${importedName} as ${exportedName}`;
       lines.push(`export { ${spec} } from '${newSource}';`);
     }

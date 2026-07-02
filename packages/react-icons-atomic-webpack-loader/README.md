@@ -68,6 +68,8 @@ module.exports = {
 | `@fluentui/react-icons`       | `svg`, `fonts`, `svg-sprite` | `svg`, `fonts` | Has `/providers` and `/utils` |
 | `@fluentui/react-brand-icons` | `svg`                        | `svg`          | Has `/utils`; no `/providers` |
 
+> **Color icons are SVG-only.** Color variants (`*Color`) rely on gradients that cannot be represented in an icon font, so they ship only in the `svg` and `svg-sprite` builds — never `fonts`. The loader reroutes color imports off font variants automatically (see [Color icons](#color-icons) below).
+
 ## Options
 
 | Option            | Type                                   | Default     | Description                                                                |
@@ -98,6 +100,26 @@ Resolution is lazy and per file: only modules actually imported in a given file 
 }
 ```
 
+### Color icons
+
+Color variants (`*Color`, e.g. `AddCircleColor`) are **SVG-only** — their gradients cannot be represented in an icon font, so the `fonts` build ships no color glyphs. When a color icon is imported under a color-less variant (`iconVariant: 'fonts'`), the loader reroutes just that import to a color-capable variant, following the same precedence as above (constrained to `svg` / `svg-sprite`), and emits a warning:
+
+1. If `iconVariant` is already color-capable (`svg` / `svg-sprite`), the color import is left on it — no reroute, no warning.
+2. Otherwise, if `fallbackVariant` is set and color-capable, it is used (e.g. `svg-sprite`).
+3. Otherwise the loader falls back to `svg`.
+
+Rerouting is per specifier, so color and non-color icons in the same statement resolve independently:
+
+```js
+// iconVariant: 'fonts'
+import { AddFilled, AddCircleColor } from '@fluentui/react-icons';
+// →
+import { AddFilled } from '@fluentui/react-icons/fonts/add';
+import { AddCircleColor } from '@fluentui/react-icons/svg/add-circle';
+```
+
+> Color icons are deprecated. See the [user guidance](https://microsoft.github.io/fluentui-system-icons/?path=/docs/icons-user-guidance--docs#color-variants-deprecated).
+
 ### Using font icons
 
 ```js
@@ -117,9 +139,9 @@ Resolution is lazy and per file: only modules actually imported in a given file 
 
 This changes icon resolution from `@fluentui/react-icons/svg/*` to `@fluentui/react-icons/fonts/*`. Non-icon exports (`utils`, `providers`) are unaffected.
 
-### Using the headless API
+> Color icons have no font build and are rerouted to `svg` (or `svg-sprite`) automatically — see [Color icons](#color-icons).
 
-Set `headless: true` to resolve to the Griffel-free headless build. It composes with `iconVariant`:
+### Using the headless API
 
 ```js
 {
@@ -173,6 +195,40 @@ This changes icon resolution from `@fluentui/react-icons/svg/*` to `@fluentui/re
 ## How it works
 
 The loader parses each module and rewrites import and re-export declarations that reference a supported module. Each named specifier is routed to an atomic subpath based on its name:
+
+### Resolution flow
+
+Each named specifier is resolved independently, so color and non-color icons — even within the same statement — can land on different variants.
+
+```mermaid
+flowchart TD
+    A["Named specifier from a supported module"] --> B{"Icon name? ends in Regular / Filled / Light / Color"}
+    B -->|"context / hook"| P["/providers"]
+    B -->|"utility"| U["/utils"]
+    B -->|"yes"| V{"Module supports iconVariant?"}
+
+    V -->|"yes"| R["variant = iconVariant"]
+    V -->|"no"| F{"fallbackVariant set?"}
+    F -->|"no"| ERR["Error: import left untouched, set fallbackVariant"]
+    F -->|"yes, supported"| R2["variant = fallbackVariant"]
+    F -->|"yes, unsupported"| RS["variant = svg (warning)"]
+
+    R --> C{"Color icon?"}
+    R2 --> C
+    RS --> C
+
+    C -->|"no"| H{"headless requested and available for variant?"}
+    C -->|"yes, already color-capable: svg / svg-sprite"| H
+    C -->|"yes, color-less variant: fonts"| CC["reroute to first color-capable of iconVariant, fallbackVariant, svg (warning)"]
+    CC --> H
+
+    H -->|"yes"| HP["prefix with /headless"]
+    H -->|"no / not available (warning)"| STD["standard build"]
+    HP --> OUT["resolved atomic path"]
+    STD --> OUT
+```
+
+> Steps marked "(warning)" emit a build warning — a best-effort degrade rather than a hard failure.
 
 ### `@fluentui/react-icons`
 
