@@ -353,7 +353,16 @@ Migrating a larger codebase to the new performant atomic imports might be a daun
 
 Use `svg` as the target path. This transformation happens at build time, so your source code remains unchanged while your bundled output gets the full tree-shaking benefits.
 
-👉 **[Build-Time Transform setup (Babel, SWC & Webpack) →](./docs/build-transforms.md)**
+**Webpack (recommended):** we ship two dedicated packages — [`@fluentui/react-icons-atomic-webpack-loader`](../react-icons-atomic-webpack-loader/README.md) for the import transform and [`@fluentui/react-icons-font-subsetting-webpack-plugin`](../react-icons-font-subsetting-webpack-plugin/README.md) for font subsetting.
+
+<details>
+<summary>Using Babel or SWC instead?</summary>
+
+Equivalent setups for Babel and SWC are documented in the full guide.
+
+</details>
+
+👉 **[Build-Time Transform setup →](./docs/build-transforms.md)**
 
 ## Atomic API (SVG Sprites) — ⚠️ Alpha
 
