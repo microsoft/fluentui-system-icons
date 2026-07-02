@@ -1,0 +1,48 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Icons/Recipes" />
+
+<h1 className="sbdocs-title">Recipes</h1>
+
+Reusable patterns for common icon-styling tasks.
+
+## Using multiple colors for single-color icons
+
+To apply multiple colors to an icon (e.g., one color for the fill and another for the outline), layer the `Filled` and `Regular` variants using absolute positioning:
+
+```tsx
+import { makeStyles, mergeClasses } from '@fluentui/react-components';
+import { ShieldLock48Filled, ShieldLock48Regular } from '@fluentui/react-icons';
+
+const useStyles = makeStyles({
+  icon: {
+    position: 'absolute',
+  },
+  filled: {
+    zIndex: 1,
+    color: 'yellow',
+  },
+  regular: {
+    zIndex: 2,
+    color: 'red',
+  },
+});
+
+function MyComponent() {
+  const styles = useStyles();
+  return (
+    <span>
+      <ShieldLock48Filled className={mergeClasses(styles.icon, styles.filled)} />
+      <ShieldLock48Regular className={mergeClasses(styles.icon, styles.regular)} />
+    </span>
+  );
+}
+```
+
+This technique positions both icon variants in the same space using z-index stacking. The `Regular` variant (z-index: 2) sits on top, providing the outline, while the `Filled` variant (z-index: 1) sits underneath, providing the fill. By applying different colors to each layer, you can create custom multi-color effects.
+
+## Rendering the same `Color` icon multiple times
+
+Rendering the same `Color` variant more than once on a page can break its gradients because SVG `id`s live in the global DOM namespace. Scope them per instance with the `idPrefix` prop.
+
+👉 See [Scoping gradient IDs with `idPrefix`](?path=/docs/icons-color-variants--docs#scoping-gradient-ids-with-idprefix) on the Color Variants page.

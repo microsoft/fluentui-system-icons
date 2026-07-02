@@ -18,7 +18,7 @@ To the optimized atomic import for your chosen target:
 // SVG (standard)
 import { AccessTime24Filled } from '@fluentui/react-icons/svg/access-time';
 
-// SVG sprites
+// SVG sprites (⚠️ preview)
 import { AccessTime24Filled } from '@fluentui/react-icons/svg-sprite/access-time';
 
 // Font icons
@@ -26,9 +26,6 @@ import { AccessTime24Filled } from '@fluentui/react-icons/fonts/access-time';
 
 // Headless API (SVG)
 import { AccessTime24Filled } from '@fluentui/react-icons/headless/svg/access-time';
-
-// Headless API (SVG sprites)
-import { AccessTime24Filled } from '@fluentui/react-icons/headless/svg-sprite/access-time';
 
 // Headless API (fonts)
 import { AccessTime24Filled } from '@fluentui/react-icons/headless/fonts/access-time';
@@ -38,13 +35,20 @@ The examples below use `svg` as the target path. Replace it with the appropriate
 
 ## Webpack (recommended)
 
-Add [@fluentui/react-icons-atomic-webpack-loader](https://www.npmjs.com/package/@fluentui/react-icons-atomic-webpack-loader) to your project:
+We ship two dedicated webpack packages that, used together, give you the smallest possible bundles with zero source changes:
+
+1. **[@fluentui/react-icons-atomic-webpack-loader](https://www.npmjs.com/package/@fluentui/react-icons-atomic-webpack-loader)** — rewrites barrel imports into atomic deep paths for optimal tree-shaking.
+2. **[@fluentui/react-icons-font-subsetting-webpack-plugin](https://www.npmjs.com/package/@fluentui/react-icons-font-subsetting-webpack-plugin)** — when using the font variant, subsets the icon font files down to only the glyphs your app actually uses.
+
+### 1. Atomic import loader
+
+Install the loader:
 
 ```bash
 npm install --save-dev @fluentui/react-icons-atomic-webpack-loader
 ```
 
-Then add it to your webpack config:
+Add it as an `enforce: 'pre'` rule so it runs **before** other loaders:
 
 ```js
 // @filename webpack.config.js
@@ -56,15 +60,15 @@ module.exports = {
         enforce: 'pre',
         use: ['@fluentui/react-icons-atomic-webpack-loader'],
       },
-      // ... your other rules (babel-loader, ts-loader, etc.)
+      // … your other rules (babel-loader, ts-loader, etc.)
     ],
   },
 };
 ```
 
-**Important:** Use `enforce: 'pre'` so the loader runs before other loaders. Do **not** exclude `node_modules` — the loader must be able to transform barrel imports found inside dependencies.
+**Important:** Do **not** exclude `node_modules` — the loader must be able to transform barrel imports found inside dependencies too. Files without `@fluentui/react-icons` references are skipped via a fast regex pre-check, so there is no meaningful overhead.
 
-To use the font variant instead of SVG, pass the `iconVariant` option:
+Pass the `iconVariant` option to target a different implementation (`'svg'` — default, `'svg-sprite'`, or `'fonts'`). To adopt the Headless API, add `headless: true`:
 
 ```js
 {
@@ -73,117 +77,57 @@ To use the font variant instead of SVG, pass the `iconVariant` option:
   use: [
     {
       loader: '@fluentui/react-icons-atomic-webpack-loader',
-      options: { iconVariant: 'fonts' },
+      // e.g. headless font icons
+      options: { iconVariant: 'fonts', headless: true },
     },
   ],
 }
 ```
 
-## Babel
+### 2. Font subsetting plugin
 
-Add [babel-plugin-transform-imports](https://www.npmjs.com/package/babel-plugin-transform-imports) with the following setup.
+When you use the font variant (`iconVariant: 'fonts'`), pair the loader with the font subsetting plugin so only the glyphs used by your build are shipped:
 
-Copy the following helper into your project (e.g. as `fluent-icons-transform.js`):
-
-```js
-// @filename fluent-icons-transform.js
-
-/**
- * Resolves a @fluentui/react-icons import name to its atomic module path.
- * @param {string} importName - The named export being imported.
- * @param {string} [target='svg'] - The target subpath (e.g. 'svg', 'svg-sprite', 'fonts',
- *   'headless/svg', 'headless/svg-sprite', 'headless/fonts').
- * @returns {string} The resolved module path.
- */
-function resolveFluentIconImport(importName, target = 'svg') {
-  if (importName === 'useIconContext' || importName === 'IconDirectionContextProvider') {
-    return '@fluentui/react-icons/providers';
-  }
-
-  const match = importName.match(/^(.+?)(\d+)?(Regular|Filled|Light|Color)$/);
-  if (!match) {
-    return '@fluentui/react-icons/utils';
-  }
-
-  return `@fluentui/react-icons/${target}/${kebabCase(match[1])}`;
-}
-
-function kebabCase(str) {
-  return str.replace(/[a-z\d](?=[A-Z])|[a-zA-Z](?=\d)|[A-Z](?=[A-Z][a-z])/g, '$&-').toLowerCase();
-}
-
-module.exports = { resolveFluentIconImport };
+```bash
+npm install --save-dev @fluentui/react-icons-font-subsetting-webpack-plugin
 ```
 
-Then use it in your Babel config:
-
 ```js
-// @filename .babelrc.js
-const { resolveFluentIconImport } = require('./fluent-icons-transform');
+// @filename webpack.config.js
+const {
+  default: FluentUIReactIconsFontSubsettingPlugin,
+} = require('@fluentui/react-icons-font-subsetting-webpack-plugin');
 
 module.exports = {
-  presets: [
-    // ... your preset configuration
-  ],
-  plugins: [
-    [
-      'transform-imports',
+  module: {
+    rules: [
+      // The atomic loader from step 1
       {
-        '@fluentui/react-icons': {
-          // Change the second argument to match your target:
-          //   'svg' | 'svg-sprite' | 'fonts' | 'headless/svg' | 'headless/svg-sprite' | 'headless/fonts'
-          transform: (importName) => resolveFluentIconImport(importName, 'svg'),
-          preventFullImport: false,
-          skipDefaultConversion: true,
-        },
+        test: /\.[mc]?[jt]sx?$/,
+        enforce: 'pre',
+        use: [
+          {
+            loader: '@fluentui/react-icons-atomic-webpack-loader',
+            options: { iconVariant: 'fonts' },
+          },
+        ],
+      },
+      // Treat the font files as webpack assets so they can be subset
+      {
+        test: /\.(ttf|woff2?)$/,
+        type: 'asset',
       },
     ],
+  },
+  plugins: [
+    // Subsets font files to only the glyphs used by your build
+    new FluentUIReactIconsFontSubsettingPlugin(),
   ],
 };
 ```
 
-## SWC
+> **Note:** Subsetting requires `optimization.usedExports` to be enabled, which webpack does by default in production mode. Without this plugin the full font files (all icon glyphs) are bundled, which is **not recommended**.
 
-Add [@swc/plugin-transform-imports](https://www.npmjs.com/package/@swc/plugin-transform-imports) with the following setup.
+---
 
-Replace every `svg` segment in the target paths below with your chosen target (`svg`, `svg-sprite`, `fonts`, `headless/svg`, `headless/svg-sprite`, or `headless/fonts`):
-
-```jsonc
-// @filename .swcrc
-{
-  "jsc": {
-    "experimental": {
-      "plugins": [
-        [
-          "@swc/plugin-transform-imports",
-          {
-            "@fluentui/react-icons": {
-              "transform": [
-                // Transform provider imports to /providers
-                ["^(useIconContext|IconDirectionContextProvider)$", "@fluentui/react-icons/providers"],
-                // Transform icon imports to /{target}/{icon-name}
-                // (.+?) lazily captures the icon base name (may contain digits,
-                // e.g. "Space3D", "Rotate315Right"), (\d+)? greedily strips any
-                // trailing all-digit segment (size suffixes like 16/20/24, but
-                // also level indicators like Battery0) — this mirrors the
-                // normalizeBaseName logic used by the generation pipeline.
-                // {{ kebabCase }} on group 1 mirrors lodash.kebabCase.
-                [
-                  "(.+?)(\\d+)?(Regular|Filled|Light|Color)$",
-                  "@fluentui/react-icons/svg/{{ kebabCase memberMatches.[1] }}",
-                ],
-                // Fallback: all other exports are utilities
-                [".*", "@fluentui/react-icons/utils"],
-              ],
-              "preventFullImport": false,
-              "skipDefaultConversion": true,
-              "handleDefaultImport": false,
-              "handleNamespaceImport": false,
-            },
-          },
-        ],
-      ],
-    },
-  },
-}
-```
+> **Using another build tool?** Equivalent Babel and SWC transform setups are documented in the [Build-Time Import Transforms guide on GitHub](https://github.com/microsoft/fluentui-system-icons/blob/main/packages/react-icons/docs/build-transforms.md).

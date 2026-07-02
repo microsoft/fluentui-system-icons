@@ -1,11 +1,11 @@
-# Headless API
+The **Headless API** is a drop-in replacement for the standard icon API that removes the CSS-in-JS (Griffel) runtime dependency. It provides `data-*` attribute selectors for styling behaviour with opt-in pre-defined vanilla CSS — making it suitable for any React setup, including those without a CSS-in-JS runtime.
 
-The Headless API is a drop-in replacement for the standard icon API that removes the CSS-in-JS runtime dependency. It provides `data-*` attribute selectors for styling behaviour with opt-in pre-defined vanilla CSS — making it suitable for any React setup, including those without a CSS-in-JS runtime.
+> **Complements Fluent UI Headless components.** If you are building with the [Fluent UI Headless components](https://storybooks.fluentui.dev/headless/?path=/docs/overview-introduction--docs), this API is the icon counterpart — same unstyled, bring-your-own-CSS philosophy.
 
 ## Benefits
 
-- **No CSS-in-JS runtime** — removes the CSS-in-JS dependency entirely; styling is handled by an opt in plain CSS file or in user-land
-- **Smaller JavaScript bundles** — icon styling code is moved from JS to a static CSS file
+- **No CSS-in-JS runtime** — removes the Griffel dependency entirely; styling is handled by an opt-in plain CSS file or in user-land
+- **Smaller JavaScript bundles** — icon styling code is moved from JS to a static CSS file. With CSS extraction this reduces JS bundle sizes significantly (see the [Bundle Size](?path=/docs/icons-bundle-size--docs) page — up to −70% for font icons)
 - **Framework-agnostic styling** — works in any environment that can load a CSS file (Vite, Next.js, Remix, etc.)
 - **Same API surface** — `createFluentIcon`, `bundleIcon`, `useIconState`, and all constants work identically to the standard API
 - **Migration-friendly** — works with both existing codebases (via build-time transforms) and greenfield projects (via direct imports)
@@ -41,7 +41,7 @@ import '@fluentui/react-icons/headless/styles.css';
 
 > **Note:** `fonts/styles.css` contains `@font-face` declarations with relative paths to the font files (`.woff2`, `.woff`, `.ttf`). Your bundler (webpack, Vite, esbuild) will resolve these into the dependency graph automatically, enabling font subsetting plugins to process them.
 
-> **Tip 💡:** It's highly recommended to enable our [`react-icons-font-subsetting-webpack-plugin`](https://www.npmjs.com/package/@fluentui/react-icons-font-subsetting-webpack-plugin) to get same fonts "tree-shaking" perf boost
+> **Tip 💡:** It's highly recommended to enable the [`@fluentui/react-icons-font-subsetting-webpack-plugin`](https://www.npmjs.com/package/@fluentui/react-icons-font-subsetting-webpack-plugin) to get the same font "tree-shaking" perf boost. See the [Build Transforms](?path=/docs/icons-build-transforms--docs) page.
 
 ## Usage
 
@@ -69,7 +69,7 @@ function MyComponent() {
 }
 ```
 
-> **SVG sprites are not available in the Headless API yet.** SVG sprites are still a [preview feature](./preview-features/svg-sprites.md) of the standard (Griffel) API only; a headless sprite variant is not published.
+> **SVG sprites are not available in the Headless API yet.** SVG sprites are still a [preview feature](https://github.com/microsoft/fluentui-system-icons/blob/main/packages/react-icons/docs/preview-features/svg-sprites.md) of the standard (Griffel) API only. A headless sprite variant is not published.
 
 ### Font Icons
 
@@ -88,7 +88,7 @@ function MyComponent() {
 
 ### Utilities
 
-The headless entry point (`@fluentui/react-icons/headless`) re-exports all core utilities:
+Import core utilities from the atomic `@fluentui/react-icons/headless/utils` subpath (preferred over the barrel for best tree-shaking):
 
 ```tsx
 import {
@@ -119,16 +119,15 @@ import {
 
   // Class name helper
   cx,
-} from '@fluentui/react-icons/headless';
+} from '@fluentui/react-icons/headless/utils';
 ```
 
 The `bundleIcon` function works identically to the standard API:
 
 ```tsx
 import '@fluentui/react-icons/headless/styles.css';
-import { bundleIcon } from '@fluentui/react-icons/headless';
-import { AccessTimeFilled } from '@fluentui/react-icons/headless/svg/access-time';
-import { AccessTimeRegular } from '@fluentui/react-icons/headless/svg/access-time';
+import { bundleIcon } from '@fluentui/react-icons/headless/utils';
+import { AccessTimeFilled, AccessTimeRegular } from '@fluentui/react-icons/headless/svg/access-time';
 
 const AccessTime = bundleIcon(AccessTimeFilled, AccessTimeRegular);
 
@@ -139,7 +138,7 @@ function MyComponent() {
 
 ## TypeScript Configuration
 
-**IMPORTANT**: TypeScript users must use `moduleResolution: "bundler"` (or `"node16"`/`"nodenext"`) in their `tsconfig.json` to properly resolve the headless atomic exports:
+**Important:** TypeScript users must use `moduleResolution: "bundler"` (or `"node16"`/`"nodenext"`) in their `tsconfig.json` to properly resolve the headless atomic exports:
 
 ```json
 {
@@ -151,10 +150,8 @@ function MyComponent() {
 
 ## Build-Time Transform
 
-You can keep root-level barrel imports and leverage build transforms to adopt the headless API without modifying your source code. This works for both existing codebases migrating to headless approach and greenfield projects.
-
-Use `headless/svg` as the target path (or `headless/fonts` for font icons).
+You can keep root-level barrel imports and leverage build transforms to adopt the headless API without modifying your source code. Use the `headless: true` option of the webpack loader (or a `headless/svg` target for Babel/SWC).
 
 > **Note:** You still need to manually add the CSS import (`import '@fluentui/react-icons/headless/styles.css'`) to your application entry point — build transforms only rewrite component imports.
 
-👉 **[Build-Time Transform setup (Babel & SWC) →](./build-transforms.md)**
+👉 **[Build Transforms setup →](?path=/docs/icons-build-transforms--docs)**
