@@ -108,11 +108,10 @@ jobs:
 
       # https://github.com/marketplace/actions/gradle-command
       - name: Build Android library
-        uses: eskatos/gradle-command-action@v3
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: assembleRelease
           build-root-directory: android
-          wrapper-directory: android
 
       - name: Generate BUILD.gn file for Android
         run: python3 generate_build_gn_android.py
