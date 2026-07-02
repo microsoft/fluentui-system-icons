@@ -37,6 +37,8 @@ import { AddRegular, AddFilled } from '@fluentui/react-icons/headless/fonts/add'
 
 The plugin subsets the same shared font files used by the standard API, based on the headless icons you actually use. Because the font files arrive via `styles.css`, your config needs a CSS loader (e.g. `css-loader`) so the `url(...)` references resolve into webpack assets.
 
+> **Tip 💡:** You don't have to write atomic headless imports by hand. Pair this plugin with [`@fluentui/react-icons-atomic-webpack-loader`](../react-icons-atomic-webpack-loader) using `{ headless: true, iconVariant: 'fonts' }` — it rewrites plain barrel imports (`import { AddFilled } from '@fluentui/react-icons'`) into headless font atoms, which this plugin then subsets. You still import `@fluentui/react-icons/headless/fonts/styles.css` yourself.
+
 ## Usage
 
 ### With `fluentIconFont` condition
