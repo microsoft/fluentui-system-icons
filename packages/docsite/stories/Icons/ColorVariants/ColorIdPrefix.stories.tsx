@@ -1,9 +1,15 @@
-import { Body1Stronger, makeStyles, shorthands, tokens } from '@fluentui/react-components';
+import { Body1Stronger, Button, makeStyles, shorthands, tokens } from '@fluentui/react-components';
 import { CalendarColor } from '@fluentui/react-icons';
 import * as React from 'react';
 
 const useClasses = makeStyles({
   root: {
+    display: 'flex',
+    flexDirection: 'column',
+    ...shorthands.gap('16px'),
+    alignItems: 'flex-start',
+  },
+  columns: {
     display: 'flex',
     ...shorthands.gap('32px'),
   },
@@ -18,8 +24,6 @@ const useClasses = makeStyles({
   icons: {
     fontSize: '48px',
   },
-  // Hiding one instance with display:none triggers the gradient ID collision
-  // for any sibling that shares the same (unscoped) IDs.
   hidden: {
     display: 'none',
   },
@@ -29,22 +33,40 @@ const useClasses = makeStyles({
 // Recipes page so the demo stays defined in a single place (1:1, no duplication).
 export const ColorIdPrefix = () => {
   const classes = useClasses();
+  // Toggling `display: none` on one instance is what triggers the gradient ID
+  // collision: the removed <defs> take the shared (unscoped) ids with them.
+  const [hidden, setHidden] = React.useState(false);
 
   return (
     <div className={classes.root}>
-      <div className={classes.column}>
-        <Body1Stronger>❌ Without idPrefix</Body1Stronger>
-        <div className={classes.icons}>
-          <CalendarColor className={classes.hidden} aria-hidden />
-          <CalendarColor aria-label="Calendar without idPrefix" />
-        </div>
-      </div>
+      <Button onClick={() => setHidden((value) => !value)}>
+        {hidden ? 'Show first instance' : 'Hide first instance (display: none)'}
+      </Button>
 
-      <div className={classes.column}>
-        <Body1Stronger>✅ With idPrefix</Body1Stronger>
-        <div className={classes.icons}>
-          <CalendarColor idPrefix="cal-a-" className={classes.hidden} aria-hidden />
-          <CalendarColor idPrefix="cal-b-" aria-label="Calendar with idPrefix" />
+      <div className={classes.columns}>
+        <div className={classes.column}>
+          <Body1Stronger>❌ Without idPrefix</Body1Stronger>
+          <div className={classes.icons}>
+            <CalendarColor
+              className={hidden ? classes.hidden : undefined}
+              aria-hidden={hidden}
+              aria-label="Calendar A"
+            />
+            <CalendarColor aria-label="Calendar B" />
+          </div>
+        </div>
+
+        <div className={classes.column}>
+          <Body1Stronger>✅ With idPrefix</Body1Stronger>
+          <div className={classes.icons}>
+            <CalendarColor
+              idPrefix="cal-a-"
+              className={hidden ? classes.hidden : undefined}
+              aria-hidden={hidden}
+              aria-label="Calendar A"
+            />
+            <CalendarColor idPrefix="cal-b-" aria-label="Calendar B" />
+          </div>
         </div>
       </div>
     </div>
@@ -55,7 +77,7 @@ ColorIdPrefix.parameters = {
   docs: {
     description: {
       story:
-        'Rendering the same `Color` variant more than once can break its gradients because SVG `id`s live in the global DOM namespace. Pass a unique `idPrefix` per instance to scope them. The left column (no `idPrefix`) loses its gradients when one instance is hidden; the right column (unique `idPrefix` per instance) renders correctly.',
+        'Rendering the same `Color` variant more than once can break its gradients because SVG `id`s live in the global DOM namespace. Click the button to hide the first instance with `display: none`: **without** `idPrefix` (left) the remaining visible icon loses its gradients — its shared `<defs>` were removed with the hidden instance; **with** a unique `idPrefix` per instance (right) each icon owns its ids, so it keeps rendering correctly.',
     },
   },
 };
