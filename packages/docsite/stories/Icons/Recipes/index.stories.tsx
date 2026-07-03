@@ -1,5 +1,4 @@
 import { ShieldLock48Regular } from '@fluentui/react-icons';
-import { Description, Stories, Title } from '@storybook/addon-docs/blocks';
 
 import descriptionMd from './RecipesDescription.md';
 
@@ -14,15 +13,12 @@ export default {
       description: {
         component: descriptionMd,
       },
-      // Render each recipe as its own section (name → description → demo) via the
-      // Stories block, instead of the default Primary + Controls layout.
-      page: () => (
-        <>
-          <Title />
-          <Description />
-          <Stories includePrimary />
-        </>
-      ),
+      // Recipes is a catalog of independent demos, not a single-component page:
+      // drop the headlined Primary hero and the (unused) Args table so every
+      // recipe renders uniformly in the Stories list. The Fluent addon's TOC
+      // still works — each recipe heading anchors the "On this page" nav.
+      skipPrimaryStory: true,
+      hideArgsTable: true,
     },
   },
 };

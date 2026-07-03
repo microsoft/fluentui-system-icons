@@ -1,5 +1,4 @@
 import { CalendarColor } from '@fluentui/react-icons';
-import { Controls, Description, Primary, Title } from '@storybook/addon-docs/blocks';
 
 import descriptionMd from './ColorVariantsDescription.md';
 
@@ -13,25 +12,12 @@ export default {
       description: {
         component: descriptionMd,
       },
-      // Single-story page: render the example once (Primary) and omit the
-      // autodocs `Stories` block, which would otherwise repeat the same story.
-      page: () => (
-        <>
-          <Title />
-          <Description />
-          <Primary />
-          <Controls />
-        </>
-      ),
-    },
-  },
-  argTypes: {
-    idPrefix: {
-      control: 'text',
-      description:
-        'Scopes the locally-defined SVG ids (gradients, clip paths, filters) of a `Color` variant per instance to avoid global DOM id collisions. Ignored by mono-color icons.',
-      table: { defaultValue: '' },
-      type: { name: 'string' },
+      // Drop the duplicate Primary hero and the auto Args table: the `idPrefix`
+      // prop is already documented in the description ("Scoping gradient IDs with
+      // idPrefix"), and the table would otherwise render above the demo. Keeps
+      // the Fluent addon chrome (TOC, theme/RTL/copy toggles).
+      skipPrimaryStory: true,
+      hideArgsTable: true,
     },
   },
 };

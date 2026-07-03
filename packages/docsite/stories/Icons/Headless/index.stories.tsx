@@ -1,6 +1,5 @@
 import { bundleIcon } from '@fluentui/react-icons/headless/utils';
 import { AccessTimeFilled, AccessTimeRegular } from '@fluentui/react-icons/headless/svg/access-time';
-import { Description, Primary, Title } from '@storybook/addon-docs/blocks';
 
 import descriptionMd from './IconsHeadless.md';
 
@@ -16,15 +15,10 @@ export default {
       description: {
         component: descriptionMd,
       },
-      // Single-story page: render the example once (Primary) and omit the
-      // autodocs `Stories` block, which would otherwise repeat the same story.
-      page: () => (
-        <>
-          <Title />
-          <Description />
-          <Primary />
-        </>
-      ),
+      // Single-demo page: drop the duplicate Primary hero and the (unused) Args
+      // table, while keeping the Fluent addon chrome (TOC, theme/RTL/copy toggles).
+      skipPrimaryStory: true,
+      hideArgsTable: true,
     },
   },
 };
