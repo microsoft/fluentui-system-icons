@@ -83,9 +83,21 @@ jobs:
         # --first-release: allows changelog generation when no prior git tag exists (first release).
         # Safe to keep permanently — once per-package tags exist, they take priority and this flag becomes a no-op.
         # Scoped here instead of global nx.json `automaticFromRef` to avoid masking tag-resolution failures in other release groups.
+        #
+        # Change-aware guard: `nx release version` only bumps packages with releasable
+        # conventional-commit changes; unchanged packages keep their version (and therefore
+        # their existing tag). We use "the {pkg}@{version} tag already exists" as the signal for
+        # "this version was already released" and skip it — this prevents a duplicate changelog
+        # entry for an unchanged package and keeps re-runs idempotent (a re-run after a partial
+        # failure re-generates only the not-yet-tagged versions).
         run: |
           for pkg in $(echo "${{ steps.projects.outputs.nx-names }}" | tr ',' '\n'); do
             VERSION=$(node -p "require('./packages/${pkg}/package.json').version")
+            TAG="${pkg}@${VERSION}"
+            if git rev-parse -q --verify "refs/tags/${TAG}" >/dev/null; then
+              echo "Skipping changelog for ${TAG} — tag already exists (no new release for ${pkg})"
+              continue
+            fi
             echo "Generating changelog for ${pkg}@${VERSION}"
             npx nx release changelog "$VERSION" --projects="$pkg" --first-release --no-git-tag --no-git-commit --verbose
           done
@@ -107,17 +119,35 @@ jobs:
         if: ${{ !inputs.dry-run }}
         run: |
           git add -A
-          git commit -m "chore(release): publish standalone packages [skip ci]"
+          # Guard against an empty commit: if every targeted package was unchanged there is
+          # nothing staged, and `git commit` would fail the job. Skip cleanly instead.
+          if git diff --cached --quiet; then
+            echo "No release changes to commit — all targeted packages were already released"
+          else
+            git commit -m "chore(release): publish standalone packages [skip ci]"
+          fi
 
       - name: Tag releases
-        # Tags must be created manually after the final commit (which includes lockfile updates, changelogs, etc.)
-        # rather than by nx release (git.tag: false in nx.json) — nx would tag before the commit is finalized,
-        # causing tags to point to an intermediate state instead of the release commit.
+        # Tags are created manually (git.tag: false in nx.json) after the final commit so they point
+        # at the release commit that also includes the lockfile update — nx would otherwise tag before
+        # that commit is finalized. nx.json uses granular `version.git`/`changelog.git` config, which
+        # the unified `nx release` command (the only variant that natively skips unchanged packages
+        # when tagging) refuses to run with; migrating to top-level `release.git` would also alter the
+        # sub-command flow that publish.yml depends on. So we tag here, but idempotently.
+        #
+        # Idempotent guard: skip any tag that already exists. This turns the reported failure
+        # (`fatal: tag '<pkg>@<version>' already exists` for an unchanged package) into a no-op and,
+        # combined with nx release publish's built-in "already published" skip, makes the whole
+        # workflow safely re-runnable after a partial failure (e.g. npm published but git push failed).
         if: ${{ !inputs.dry-run }}
         run: |
           for pkg in $(echo "${{ steps.projects.outputs.nx-names }}" | tr ',' '\n'); do
             VERSION=$(node -p "require('./packages/${pkg}/package.json').version")
             TAG="${pkg}@${VERSION}"
+            if git rev-parse -q --verify "refs/tags/${TAG}" >/dev/null; then
+              echo "Tag ${TAG} already exists — skipping"
+              continue
+            fi
             echo "Creating tag: $TAG"
             git tag "$TAG"
           done
