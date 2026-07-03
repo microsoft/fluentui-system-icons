@@ -4,7 +4,7 @@ import { Description, Stories, Title } from '@storybook/addon-docs/blocks';
 import descriptionMd from './RecipesDescription.md';
 
 export { MultipleColors } from './MultipleColors.stories';
-export { ScopingGradientIds } from './ScopingGradientIds.stories';
+export { ColorIdPrefix } from '../ColorVariants/ColorIdPrefix.stories';
 
 export default {
   title: 'Icons/Recipes',
