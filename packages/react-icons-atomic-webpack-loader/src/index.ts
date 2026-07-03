@@ -12,12 +12,21 @@ export interface FluentIconsAtomicImportLoaderOptions {
    * Not every module supports every variant (e.g. `@fluentui/react-brand-icons`
    * only ships `svg`). When a referenced module does not support this variant,
    * `fallbackVariant` is used instead.
+   *
+   * Color icons are an exception: they are SVG-only (gradients cannot live in an
+   * icon font), so a `*Color` import under `iconVariant: 'fonts'` is rerouted to
+   * a color-capable variant (`svg` / `svg-sprite`) following the same
+   * `iconVariant → fallbackVariant → svg` precedence, with a warning.
    */
   iconVariant?: IconVariant;
   /**
    * The variant to use for a referenced module that does not support
    * `iconVariant`. When omitted and a module cannot honor `iconVariant`, the
    * loader fails with a descriptive error.
+   *
+   * Also used as the preferred target when rerouting SVG-only color icons off a
+   * color-less `iconVariant` (e.g. `fonts`), provided the fallback itself is
+   * color-capable; otherwise the loader degrades to `svg`.
    */
   fallbackVariant?: IconVariant;
   /**

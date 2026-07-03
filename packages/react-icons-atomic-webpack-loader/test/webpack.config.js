@@ -71,6 +71,14 @@ const entries = {
     ],
     mustExclude: ['"@fluentui/react-icons"', '@fluentui/react-icons/svg/'],
   },
+  'color-fonts-imports': {
+    src: './src/color-fonts-imports.js',
+    // Color icons are SVG-only; under 'fonts' they reroute to svg while their
+    // non-color siblings stay on the font build.
+    loaderOptions: { iconVariant: 'fonts' },
+    mustInclude: ['@fluentui/react-icons/fonts/add', '@fluentui/react-icons/svg/add-circle'],
+    mustExclude: ['"@fluentui/react-icons"', '@fluentui/react-icons/fonts/add-circle'],
+  },
   'svg-sprite-imports': {
     src: './src/svg-sprite-imports.js',
     loaderOptions: { iconVariant: 'svg-sprite' },
@@ -96,6 +104,15 @@ const entries = {
     ],
     // no standard (non-headless) svg/utils paths should leak through
     mustExclude: ['"@fluentui/react-icons"', '@fluentui/react-icons/svg/', '@fluentui/react-icons/utils'],
+  },
+
+  'color-headless-fonts-imports': {
+    src: './src/color-headless-fonts-imports.js',
+    // Under headless fonts, color icons reroute to the headless svg build while
+    // their non-color siblings stay on the headless font build.
+    loaderOptions: { iconVariant: 'fonts', headless: true },
+    mustInclude: ['@fluentui/react-icons/headless/fonts/add', '@fluentui/react-icons/headless/svg/add-circle'],
+    mustExclude: ['"@fluentui/react-icons"', '@fluentui/react-icons/headless/fonts/add-circle'],
   },
 
   'brand-icons-imports': {

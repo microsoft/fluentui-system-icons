@@ -305,6 +305,107 @@ describe('transformSource', () => {
     });
   });
 
+  describe('color icons (SVG-only fallback)', () => {
+    it('reroutes a color icon from fonts to svg (no font color glyphs)', () => {
+      const { code, diagnostics } = transformSource(`import { AddCircleColor } from '@fluentui/react-icons';`, {
+        iconVariant: 'fonts',
+        path: 'input.js',
+      });
+
+      expect(code).toBe(`import { AddCircleColor } from '@fluentui/react-icons/svg/add-circle';`);
+      expect(diagnostics).toHaveLength(1);
+      expect(diagnostics[0].level).toBe('warning');
+      expect(diagnostics[0].message).toContain('color icons are SVG-only');
+    });
+
+    it('reroutes a sized color icon from fonts to svg', () => {
+      expect(transform(`import { AddCircle20Color } from '@fluentui/react-icons';`, 'fonts')).toBe(
+        `import { AddCircle20Color } from '@fluentui/react-icons/svg/add-circle';`,
+      );
+    });
+
+    it('honors a color-capable fallbackVariant (svg-sprite) for color icons under fonts', () => {
+      const { code, diagnostics } = transformSource(`import { AddCircleColor } from '@fluentui/react-icons';`, {
+        iconVariant: 'fonts',
+        fallbackVariant: 'svg-sprite',
+        path: 'input.js',
+      });
+
+      expect(code).toBe(`import { AddCircleColor } from '@fluentui/react-icons/svg-sprite/add-circle';`);
+      expect(diagnostics).toHaveLength(1);
+      expect(diagnostics[0].level).toBe('warning');
+    });
+
+    it('falls back to svg when neither iconVariant nor fallbackVariant is color-capable', () => {
+      expect(transform(`import { AddCircleColor } from '@fluentui/react-icons';`, 'fonts', 'fonts')).toBe(
+        `import { AddCircleColor } from '@fluentui/react-icons/svg/add-circle';`,
+      );
+    });
+
+    it('leaves color icons untouched when iconVariant is svg-sprite (sprites support color)', () => {
+      const { code, diagnostics } = transformSource(`import { AddCircleColor } from '@fluentui/react-icons';`, {
+        iconVariant: 'svg-sprite',
+        path: 'input.js',
+      });
+
+      expect(code).toBe(`import { AddCircleColor } from '@fluentui/react-icons/svg-sprite/add-circle';`);
+      expect(diagnostics).toEqual([]);
+    });
+
+    it('leaves color icons on svg when iconVariant is svg', () => {
+      const { code, diagnostics } = transformSource(`import { AddCircleColor } from '@fluentui/react-icons';`, {
+        iconVariant: 'svg',
+        path: 'input.js',
+      });
+
+      expect(code).toBe(`import { AddCircleColor } from '@fluentui/react-icons/svg/add-circle';`);
+      expect(diagnostics).toEqual([]);
+    });
+
+    it('routes color and non-color specifiers in the same statement independently', () => {
+      const { code } = transformSource(`import { AddFilled, AddCircleColor } from '@fluentui/react-icons';`, {
+        iconVariant: 'fonts',
+        path: 'input.js',
+      });
+
+      expect(code).toBe(
+        [
+          `import { AddFilled } from '@fluentui/react-icons/fonts/add';`,
+          `import { AddCircleColor } from '@fluentui/react-icons/svg/add-circle';`,
+        ].join('\n'),
+      );
+    });
+
+    it('reroutes color icons in direct re-exports too', () => {
+      expect(transform(`export { AddCircleColor } from '@fluentui/react-icons';`, 'fonts')).toBe(
+        `export { AddCircleColor } from '@fluentui/react-icons/svg/add-circle';`,
+      );
+    });
+
+    it('resolves the headless svg build for color icons under headless fonts', () => {
+      const { code, diagnostics } = transformSource(`import { AddCircleColor } from '@fluentui/react-icons';`, {
+        iconVariant: 'fonts',
+        headless: true,
+        path: 'input.js',
+      });
+
+      expect(code).toBe(`import { AddCircleColor } from '@fluentui/react-icons/headless/svg/add-circle';`);
+      expect(diagnostics).toHaveLength(1);
+      expect(diagnostics[0].message).toContain('color icons are SVG-only');
+    });
+
+    it('emits the color warning only once per module', () => {
+      const source = [
+        `import { AddCircleColor } from '@fluentui/react-icons';`,
+        `import { AlbumColor } from '@fluentui/react-icons';`,
+      ].join('\n');
+
+      const { diagnostics } = transformSource(source, { iconVariant: 'fonts', path: 'input.js' });
+
+      expect(diagnostics).toHaveLength(1);
+    });
+  });
+
   describe('diagnostics', () => {
     it('does not diagnose a module that only appears in a comment', () => {
       const source = [
