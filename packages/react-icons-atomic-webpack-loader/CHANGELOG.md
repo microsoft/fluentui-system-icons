@@ -1,3 +1,10 @@
+## 0.0.5 (2026-07-03)
+
+### 🚀 Features
+
+- **react-icons-atomic-webpack-loader:** reroute SVG-only color icons off font variants ([#1137](https://github.com/microsoft/fluentui-system-icons/pull/1137))
+- **react-icons-atomic-webpack-loader:** add headless option ([#1122](https://github.com/microsoft/fluentui-system-icons/pull/1122))
+
 ## 0.0.4 (2026-06-30)
 
 This release contains icon updates
