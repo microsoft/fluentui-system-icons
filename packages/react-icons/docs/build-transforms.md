@@ -14,7 +14,7 @@ To the optimized atomic import for your chosen target:
 // SVG (standard)
 import { AccessTime24Filled } from '@fluentui/react-icons/svg/access-time';
 
-// SVG sprites
+// SVG sprites (⚠️ preview)
 import { AccessTime24Filled } from '@fluentui/react-icons/svg-sprite/access-time';
 
 // Font icons
@@ -23,14 +23,66 @@ import { AccessTime24Filled } from '@fluentui/react-icons/fonts/access-time';
 // Headless API (SVG)
 import { AccessTime24Filled } from '@fluentui/react-icons/headless/svg/access-time';
 
-// Headless API (SVG sprites)
-import { AccessTime24Filled } from '@fluentui/react-icons/headless/svg-sprite/access-time';
-
 // Headless API (fonts)
 import { AccessTime24Filled } from '@fluentui/react-icons/headless/fonts/access-time';
 ```
 
 The examples below use `svg` as the target path. Replace it with the appropriate path for your setup from the list above.
+
+## Webpack (recommended)
+
+For webpack we ship two dedicated packages:
+
+- [`@fluentui/react-icons-atomic-webpack-loader`](../../react-icons-atomic-webpack-loader/README.md) — rewrites barrel imports into atomic deep paths.
+- [`@fluentui/react-icons-font-subsetting-webpack-plugin`](../../react-icons-font-subsetting-webpack-plugin/README.md) — subsets font files down to the glyphs your app uses (font variant only).
+
+Install the loader:
+
+```bash
+npm install @fluentui/react-icons-atomic-webpack-loader --save-dev
+```
+
+Add the loader as an `enforce: 'pre'` rule so it runs before other loaders:
+
+```js
+// webpack.config.js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.[mc]?[jt]sx?$/,
+        enforce: 'pre',
+        use: ['@fluentui/react-icons-atomic-webpack-loader'],
+      },
+      // … your other rules (babel-loader, ts-loader, etc.)
+    ],
+  },
+};
+```
+
+> **Note:** Unlike most loaders, do **not** exclude `node_modules` — the loader needs to transform barrel imports inside dependencies too. Files without `@fluentui/react-icons` references are skipped via a fast regex pre-check.
+
+To use font icons instead of SVG, pass the `iconVariant` option (add `headless: true` for the Headless API):
+
+```js
+{
+  test: /\.[mc]?[jt]sx?$/,
+  enforce: 'pre',
+  use: [
+    {
+      loader: '@fluentui/react-icons-atomic-webpack-loader',
+      options: { iconVariant: 'fonts' },
+    },
+  ],
+}
+```
+
+When using the font variant, pair the loader with the [font subsetting plugin](../../react-icons-font-subsetting-webpack-plugin/README.md) so only the glyphs your app uses are shipped.
+
+<details>
+<summary><strong>Advanced: Babel &amp; SWC</strong></summary>
+
+> Prefer the Webpack setup above. These alternatives are provided for projects that don't use webpack.
 
 ## Babel
 
@@ -45,7 +97,7 @@ Copy the following helper into your project (e.g. as `fluent-icons-transform.js`
  * Resolves a @fluentui/react-icons import name to its atomic module path.
  * @param {string} importName - The named export being imported.
  * @param {string} [target='svg'] - The target subpath (e.g. 'svg', 'svg-sprite', 'fonts',
- *   'headless/svg', 'headless/svg-sprite', 'headless/fonts').
+ *   'headless/svg', 'headless/fonts').
  * @returns {string} The resolved module path.
  */
 function resolveFluentIconImport(importName, target = 'svg') {
@@ -84,7 +136,7 @@ module.exports = {
       {
         '@fluentui/react-icons': {
           // Change the second argument to match your target:
-          //   'svg' | 'svg-sprite' | 'fonts' | 'headless/svg' | 'headless/svg-sprite' | 'headless/fonts'
+          //   'svg' | 'svg-sprite' | 'fonts' | 'headless/svg' | 'headless/fonts'
           transform: (importName) => resolveFluentIconImport(importName, 'svg'),
           preventFullImport: false,
           skipDefaultConversion: true,
@@ -99,7 +151,7 @@ module.exports = {
 
 Add [@swc/plugin-transform-imports](https://www.npmjs.com/package/@swc/plugin-transform-imports) with the following setup.
 
-Replace every `svg` segment in the target paths below with your chosen target (`svg`, `svg-sprite`, `fonts`, `headless/svg`, `headless/svg-sprite`, or `headless/fonts`):
+Replace every `svg` segment in the target paths below with your chosen target (`svg`, `svg-sprite`, `fonts`, `headless/svg`, or `headless/fonts`):
 
 ```jsonc
 // @filename .swcrc
@@ -141,45 +193,4 @@ Replace every `svg` segment in the target paths below with your chosen target (`
 }
 ```
 
-## Webpack
-
-Install [`@fluentui/react-icons-atomic-webpack-loader`](../../react-icons-atomic-webpack-loader/README.md):
-
-```bash
-npm install @fluentui/react-icons-atomic-webpack-loader --save-dev
-```
-
-Add the loader as an `enforce: 'pre'` rule so it runs before other loaders:
-
-```js
-// webpack.config.js
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.[mc]?[jt]sx?$/,
-        enforce: 'pre',
-        use: ['@fluentui/react-icons-atomic-webpack-loader'],
-      },
-      // … your other rules (babel-loader, ts-loader, etc.)
-    ],
-  },
-};
-```
-
-> **Note:** Unlike most loaders, do **not** exclude `node_modules` — the loader needs to transform barrel imports inside dependencies too. Files without `@fluentui/react-icons` references are skipped via a fast regex pre-check.
-
-To use font icons instead of SVG, pass the `iconVariant` option:
-
-```js
-{
-  test: /\.[mc]?[jt]sx?$/,
-  enforce: 'pre',
-  use: [
-    {
-      loader: '@fluentui/react-icons-atomic-webpack-loader',
-      options: { iconVariant: 'fonts' },
-    },
-  ],
-}
-```
+</details>
