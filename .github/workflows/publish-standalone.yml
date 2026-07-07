@@ -170,26 +170,57 @@ jobs:
 
       - name: Dry-run summary
         if: ${{ inputs.dry-run }}
+        # Mirrors the real run exactly: only the change-aware "released" set (see "Resolve released
+        # projects") is published/committed/tagged. Unchanged/already-released packages are listed
+        # separately as skipped, so the summary reflects what would actually happen — not the full
+        # candidate list.
         run: |
+          RELEASED="${{ steps.released.outputs.names }}"
+
           echo "## 🧪 Dry-run Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "The following actions would have been performed:" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
+
           echo "### 📦 Packages that would be published" >> $GITHUB_STEP_SUMMARY
+          echo "_nx release publish additionally skips any version already on the npm registry._" >> $GITHUB_STEP_SUMMARY
+          if [ -z "$RELEASED" ]; then
+            echo "- (none — every targeted package is already released)" >> $GITHUB_STEP_SUMMARY
+          else
+            for pkg in $(echo "$RELEASED" | tr ',' '\n'); do
+              VERSION=$(node -p "require('./packages/${pkg}/package.json').version")
+              NAME=$(node -p "require('./packages/${pkg}/package.json').name")
+              echo "- \`${NAME}@${VERSION}\`" >> $GITHUB_STEP_SUMMARY
+            done
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          echo "### ⏭️ Packages skipped (tag already exists — no new release)" >> $GITHUB_STEP_SUMMARY
+          SKIPPED_ANY=false
           for pkg in $(echo "${{ steps.projects.outputs.nx-names }}" | tr ',' '\n'); do
+            case ",$RELEASED," in
+              *",$pkg,"*) continue ;;
+            esac
             VERSION=$(node -p "require('./packages/${pkg}/package.json').version")
             NAME=$(node -p "require('./packages/${pkg}/package.json').name")
-            echo "- \`${NAME}@${VERSION}\`" >> $GITHUB_STEP_SUMMARY
+            echo "- \`${NAME}@${VERSION}\` (tag \`${pkg}@${VERSION}\` already exists)" >> $GITHUB_STEP_SUMMARY
+            SKIPPED_ANY=true
           done
+          [ "$SKIPPED_ANY" = false ] && echo "- (none)" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
+
           echo "### 🏷️ Git operations that would be performed" >> $GITHUB_STEP_SUMMARY
-          echo "- Commit: \`chore(release): publish standalone packages [skip ci]\`" >> $GITHUB_STEP_SUMMARY
-          for pkg in $(echo "${{ steps.projects.outputs.nx-names }}" | tr ',' '\n'); do
-            VERSION=$(node -p "require('./packages/${pkg}/package.json').version")
-            echo "- Tag: \`${pkg}@${VERSION}\`" >> $GITHUB_STEP_SUMMARY
-          done
-          echo "- Push to: \`origin/main\`" >> $GITHUB_STEP_SUMMARY
+          if [ -z "$RELEASED" ]; then
+            echo "- Commit: _(skipped — nothing to commit)_" >> $GITHUB_STEP_SUMMARY
+            echo "- Tags: _(none)_" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- Commit: \`chore(release): publish standalone packages [skip ci]\`" >> $GITHUB_STEP_SUMMARY
+            for pkg in $(echo "$RELEASED" | tr ',' '\n'); do
+              VERSION=$(node -p "require('./packages/${pkg}/package.json').version")
+              echo "- Tag: \`${pkg}@${VERSION}\`" >> $GITHUB_STEP_SUMMARY
+            done
+            echo "- Push to: \`origin/main\`" >> $GITHUB_STEP_SUMMARY
+          fi
           echo "" >> $GITHUB_STEP_SUMMARY
+
           echo "### 📝 Files modified (not committed)" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
           git status --short >> $GITHUB_STEP_SUMMARY
