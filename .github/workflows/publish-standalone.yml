@@ -79,25 +79,42 @@ jobs:
         run: |
           npx nx release version --projects=${{ steps.projects.outputs.nx-names }} --verbose
 
-      - name: Generate changelogs (Nx Release)
-        # --first-release: allows changelog generation when no prior git tag exists (first release).
-        # Safe to keep permanently — once per-package tags exist, they take priority and this flag becomes a no-op.
-        # Scoped here instead of global nx.json `automaticFromRef` to avoid masking tag-resolution failures in other release groups.
-        #
-        # Change-aware guard: `nx release version` only bumps packages with releasable
-        # conventional-commit changes; unchanged packages keep their version (and therefore
-        # their existing tag). We use "the {pkg}@{version} tag already exists" as the signal for
-        # "this version was already released" and skip it — this prevents a duplicate changelog
-        # entry for an unchanged package and keeps re-runs idempotent (a re-run after a partial
-        # failure re-generates only the not-yet-tagged versions).
+      - name: Resolve released projects (new versions this run)
+        id: released
+        # `nx release version` only bumps packages with releasable conventional-commit changes;
+        # unchanged packages keep their version (and therefore their existing tag). We treat
+        # "the {pkg}@{version} tag already exists" as "this version was already released" and drop
+        # it from the set. Every downstream step (changelog, publish, tag) operates on this single
+        # source of truth, which also makes re-runs idempotent: a re-run after a partial failure
+        # only re-processes the versions that were not yet tagged.
         run: |
+          RELEASED=""
           for pkg in $(echo "${{ steps.projects.outputs.nx-names }}" | tr ',' '\n'); do
             VERSION=$(node -p "require('./packages/${pkg}/package.json').version")
             TAG="${pkg}@${VERSION}"
             if git rev-parse -q --verify "refs/tags/${TAG}" >/dev/null; then
-              echo "Skipping changelog for ${TAG} — tag already exists (no new release for ${pkg})"
+              echo "Skipping ${TAG} — already released (tag exists)"
               continue
             fi
+            RELEASED="${RELEASED:+$RELEASED,}$pkg"
+          done
+          echo "names=$RELEASED" >> "$GITHUB_OUTPUT"
+          echo "### Released projects (new versions this run)" >> $GITHUB_STEP_SUMMARY
+          if [ -z "$RELEASED" ]; then
+            echo "- (none — all targeted packages already released)" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "$RELEASED" | tr ',' '\n' | while read -r p; do echo "- $p" >> $GITHUB_STEP_SUMMARY; done
+          fi
+
+      - name: Generate changelogs (Nx Release)
+        # --first-release: allows changelog generation when no prior git tag exists (first release).
+        # Safe to keep permanently — once per-package tags exist, they take priority and this flag becomes a no-op.
+        # Scoped here instead of global nx.json `automaticFromRef` to avoid masking tag-resolution failures in other release groups.
+        # Operates on the already-filtered released set (see "Resolve released projects").
+        run: |
+          for pkg in $(echo "${{ steps.released.outputs.names }}" | tr ',' '\n'); do
+            [ -z "$pkg" ] && continue
+            VERSION=$(node -p "require('./packages/${pkg}/package.json').version")
             echo "Generating changelog for ${pkg}@${VERSION}"
             npx nx release changelog "$VERSION" --projects="$pkg" --first-release --no-git-tag --no-git-commit --verbose
           done
@@ -106,9 +123,9 @@ jobs:
         run: npm install --package-lock-only
 
       - name: Publish to npm (Nx Release)
-        if: ${{ !inputs.dry-run }}
+        if: ${{ !inputs.dry-run && steps.released.outputs.names != '' }}
         run: |
-          npx nx release publish --projects=${{ steps.projects.outputs.nx-names }} --access public --verbose
+          npx nx release publish --projects=${{ steps.released.outputs.names }} --access public --verbose
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -133,21 +150,15 @@ jobs:
         # that commit is finalized. nx.json uses granular `version.git`/`changelog.git` config, which
         # the unified `nx release` command (the only variant that natively skips unchanged packages
         # when tagging) refuses to run with; migrating to top-level `release.git` would also alter the
-        # sub-command flow that publish.yml depends on. So we tag here, but idempotently.
-        #
-        # Idempotent guard: skip any tag that already exists. This turns the reported failure
-        # (`fatal: tag '<pkg>@<version>' already exists` for an unchanged package) into a no-op and,
-        # combined with nx release publish's built-in "already published" skip, makes the whole
-        # workflow safely re-runnable after a partial failure (e.g. npm published but git push failed).
+        # sub-command flow that publish.yml depends on. So we tag here, over the already-filtered
+        # released set (see "Resolve released projects") — so an unchanged/already-tagged package can
+        # never abort the job, and re-runs after a partial failure only create the missing tags.
         if: ${{ !inputs.dry-run }}
         run: |
-          for pkg in $(echo "${{ steps.projects.outputs.nx-names }}" | tr ',' '\n'); do
+          for pkg in $(echo "${{ steps.released.outputs.names }}" | tr ',' '\n'); do
+            [ -z "$pkg" ] && continue
             VERSION=$(node -p "require('./packages/${pkg}/package.json').version")
             TAG="${pkg}@${VERSION}"
-            if git rev-parse -q --verify "refs/tags/${TAG}" >/dev/null; then
-              echo "Tag ${TAG} already exists — skipping"
-              continue
-            fi
             echo "Creating tag: $TAG"
             git tag "$TAG"
           done
