@@ -1,3 +1,9 @@
+## 1.1.332 (2026-07-07)
+
+### 🔥 Performance
+
+- **react-icons:** reuse canonical fonts instead of regenerating ([#1105](https://github.com/microsoft/fluentui-system-icons/pull/1105))
+
 ## 1.1.331 (2026-06-26)
 
 ### 🚀 Features

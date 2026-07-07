@@ -1,3 +1,18 @@
+## 2.0.332 (2026-07-07)
+
+### 🚀 Features
+
+- **react-icons:** add idPrefix prop to scope Color variant SVG ids ([#1131](https://github.com/microsoft/fluentui-system-icons/pull/1131))
+- **react-icons:** propagate `headless/` API to stable ([#1119](https://github.com/microsoft/fluentui-system-icons/pull/1119))
+
+### 🩹 Fixes
+
+- **bundle-size:** apply intended 1 kB threshold at repo root for compare-reports ([#1134](https://github.com/microsoft/fluentui-system-icons/pull/1134))
+
+### 🔥 Performance
+
+- **react-icons:** reuse canonical fonts instead of regenerating ([#1105](https://github.com/microsoft/fluentui-system-icons/pull/1105))
+
 ## 2.0.331 (2026-06-26)
 
 ### 🚀 Features

@@ -1,3 +1,9 @@
+## 2.0.332 (2026-07-07)
+
+### 🚀 Features
+
+- **font-subsetting-plugin:** subset headless font atoms ([#1121](https://github.com/microsoft/fluentui-system-icons/pull/1121))
+
 ## 2.0.331 (2026-06-26)
 
 This release contains icon updates
