@@ -11,13 +11,14 @@ import * as React from 'react';
 // filled and regular variants of the bundled icon side by side.
 const AccessTime = bundleIcon(AccessTimeFilled, AccessTimeRegular);
 
-// Styling is plain CSS — no Griffel runtime. Inline styles make the point that
-// headless icons are colored/sized with ordinary CSS (color, font-size).
+// Styling is plain CSS — no Griffel runtime. Icons inherit `color` and `font-size`
+// from their container (SVG icons size via `font-size` and paint via `currentColor`),
+// so the shared look lives on the root and inline styles are used only to override.
 export const HeadlessIcons = () => {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-      <AccessTime filled aria-label="AccessTime filled" style={{ fontSize: 32, color: '#0f6cbd' }} />
-      <AccessTime aria-label="AccessTime regular" style={{ fontSize: 32, color: '#0f6cbd' }} />
+    <div style={{ display: 'flex', alignItems: 'center', gap: 16, fontSize: 32, color: '#0f6cbd' }}>
+      <AccessTime filled aria-label="AccessTime filled" />
+      <AccessTime aria-label="AccessTime regular" />
       <SendRegular aria-label="Send" style={{ fontSize: 48, color: '#c50f1f' }} />
     </div>
   );

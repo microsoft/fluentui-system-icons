@@ -1,4 +1,4 @@
-import { Body1Stronger, Button, makeStyles, shorthands, tokens } from '@fluentui/react-components';
+import { Body1Stronger, Button, makeStyles, tokens } from '@fluentui/react-components';
 import { CalendarColor } from '@fluentui/react-icons';
 import * as React from 'react';
 
@@ -6,19 +6,19 @@ const useClasses = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.gap('16px'),
+    gap: '16px',
     alignItems: 'flex-start',
   },
   columns: {
     display: 'flex',
-    ...shorthands.gap('32px'),
+    gap: '32px',
   },
   column: {
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.gap('8px'),
-    ...shorthands.padding('12px'),
-    ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke2),
+    gap: '8px',
+    padding: '12px',
+    border: `1px solid ${tokens.colorNeutralStroke2}`,
     borderRadius: tokens.borderRadiusMedium,
   },
   icons: {

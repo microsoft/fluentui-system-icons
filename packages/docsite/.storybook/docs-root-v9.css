@@ -21,3 +21,22 @@
 .sb-errordisplay {
   display: none !important;
 }
+
+/* package version badge shown on Overview docs pages (see stories/components/VersionBadge.tsx) */
+#storybook-docs .fluent-version-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 4px 12px;
+  border-radius: var(--borderRadiusMedium, 4px);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  color: var(--colorBrandForeground1, #0f6cbd); /* --color-brand-foreground-1 */
+  background: var(--colorBrandBackground2, #e6f2fb); /* --color-brand-background-2 */
+}
+
+#storybook-docs .fluent-version-badge__name {
+  font-family: 'Cascadia Code', Menlo, 'Courier New', Courier, monospace;
+}
