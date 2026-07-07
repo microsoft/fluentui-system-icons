@@ -47,7 +47,7 @@
  *   'headless/svg', 'headless/svg-sprite', 'headless/fonts').
  * @returns {string} The resolved module path.
  */
-function resolveFluentIconImport(importName, target = 'svg') {
+export function resolveFluentIconImport(importName, target = 'svg') {
   if (importName === 'useIconContext' || importName === 'IconDirectionContextProvider') {
     return '@fluentui/react-icons/providers';
   }
@@ -69,5 +69,3 @@ function resolveFluentIconImport(importName, target = 'svg') {
 function kebabCase(/** @type {string} */ str) {
   return str.replace(/[a-z\d](?=[A-Z])|[a-zA-Z](?=\d)|[A-Z](?=[A-Z][a-z])/g, '$&-').toLowerCase();
 }
-
-module.exports = { resolveFluentIconImport };
