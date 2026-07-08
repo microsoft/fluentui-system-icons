@@ -314,12 +314,14 @@ describe('Build Verification', () => {
           },
           root: {
             mc9l5x: "f14t3ns0",
+            a9b677: "fhson10",
+            Bqenvij: "f1un31zh",
             B80ckks: "fmd4ok8",
             Bg96gwp: "fne0op0",
             sj55zd: "f303qgw"
           }
         }, {
-          d: [".f9dzkbp{font-family:FluentSystemIconsFilled;}", ".f1krtbx5{font-family:FluentSystemIconsRegular;}", ".f1sxfq9t{font-family:FluentSystemIcons;}", ".fgtzeza{font-family:FluentSystemIconsLight;}", ".f14t3ns0{display:inline-block;}", ".fmd4ok8{font-style:normal;}", ".fne0op0{line-height:1em;}", ".f303qgw{color:currentColor;}"]
+          d: [".f9dzkbp{font-family:FluentSystemIconsFilled;}", ".f1krtbx5{font-family:FluentSystemIconsRegular;}", ".f1sxfq9t{font-family:FluentSystemIcons;}", ".fgtzeza{font-family:FluentSystemIconsLight;}", ".f14t3ns0{display:inline-block;}", ".fhson10{width:1em;}", ".f1un31zh{height:1em;}", ".fmd4ok8{font-style:normal;}", ".fne0op0{line-height:1em;}", ".f303qgw{color:currentColor;}"]
         });"
       `);
       expect(fs.readFileSync(path.join(root, unprocessed), 'utf8')).toMatchInlineSnapshot(`
@@ -375,6 +377,13 @@ describe('Build Verification', () => {
         export const useRootStyles = makeStyles({
             root: {
                 display: 'inline-block',
+                // Reserve a 1em box up front (mirrors the resizable SVG's width/height="1em").
+                // Without this the box is sized by the glyph advance, which is 0 until the
+                // webfont loads (font-display: block + PUA codepoints have no fallback glyph),
+                // causing layout shift on every font icon. Glyph ink stays within ~1.6% of the
+                // em box across all fonts, so overflow is intentionally left visible (no clip).
+                width: '1em',
+                height: '1em',
                 fontStyle: 'normal',
                 lineHeight: '1em',
                 color: 'currentColor',
