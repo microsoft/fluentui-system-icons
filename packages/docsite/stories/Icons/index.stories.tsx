@@ -7,6 +7,9 @@ export { Default } from './IconsDefault.stories';
 export { BundleIcon as bundleIcon } from './IconsBundleIcon.stories';
 export { Styling } from './IconsStyling.stories';
 export { FontSize } from './IconsFontSize.stories';
+export { FontIcons } from './IconsFontIcons.stories';
+export { FontIconsSizing } from './IconsFontIconsSizing.stories';
+export { FontIconsBox } from './IconsFontIconsBox.stories';
 
 export default {
   title: 'Icons/Overview',
