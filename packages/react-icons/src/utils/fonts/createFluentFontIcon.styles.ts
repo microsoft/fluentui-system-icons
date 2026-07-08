@@ -58,6 +58,13 @@ export const useStaticStyles = makeStaticStyles(`
 export const useRootStyles = makeStyles({
   root: {
     display: 'inline-block',
+    // Reserve a 1em box up front (mirrors the resizable SVG's width/height="1em").
+    // Without this the box is sized by the glyph advance, which is 0 until the
+    // webfont loads (font-display: block + PUA codepoints have no fallback glyph),
+    // causing layout shift on every font icon. Glyph ink stays within ~1.6% of the
+    // em box across all fonts, so overflow is intentionally left visible (no clip).
+    width: '1em',
+    height: '1em',
     fontStyle: 'normal',
     lineHeight: '1em',
     color: 'currentColor',
