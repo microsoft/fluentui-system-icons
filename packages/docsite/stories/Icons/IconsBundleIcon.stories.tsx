@@ -5,15 +5,15 @@ import {
   iconFilledClassName,
   iconRegularClassName,
 } from '@fluentui/react-icons';
-import { Body1Stronger, makeStyles, shorthands, tokens } from '@fluentui/react-components';
+import { Body1Stronger, makeStyles, tokens } from '@fluentui/react-components';
 import * as React from 'react';
 
 import description from './IconsBundleIcon.md';
 
 const useClasses = makeStyles({
   container: {
-    ...shorthands.padding('10px'),
-    ...shorthands.border('2px', 'solid', tokens.colorBrandStroke1),
+    padding: '10px',
+    border: `2px solid ${tokens.colorBrandStroke1}`,
     boxSizing: 'border-box',
     width: '200px',
     borderBottomLeftRadius: tokens.borderRadiusMedium,
@@ -36,7 +36,7 @@ const useClasses = makeStyles({
     backgroundColor: tokens.colorBrandStroke1,
     color: tokens.colorNeutralForegroundOnBrand,
 
-    ...shorthands.padding('4px'),
+    padding: '4px',
     borderTopLeftRadius: tokens.borderRadiusMedium,
     borderTopRightRadius: tokens.borderRadiusMedium,
   },

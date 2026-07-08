@@ -1,4 +1,4 @@
-import { makeStyles, shorthands } from '@fluentui/react-components';
+import { makeStyles } from '@fluentui/react-components';
 import { FileTypeIcon, ICON_SIZES } from '@fluentui/react-icons-file-type';
 import * as React from 'react';
 
@@ -6,7 +6,7 @@ const useClasses = makeStyles({
   container: {
     display: 'flex',
     alignItems: 'flex-end',
-    ...shorthands.gap('16px'),
+    gap: '16px',
   },
 });
 
