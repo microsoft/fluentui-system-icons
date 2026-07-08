@@ -23,6 +23,7 @@ describe('React component tests', () => {
         <svg
           aria-hidden="true"
           class="fui-Icon ___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
+          data-fui-icon=""
           fill="currentColor"
           height="1em"
           viewBox="0 0 20 20"
@@ -49,6 +50,7 @@ describe('React component tests', () => {
         <i
           aria-hidden="true"
           class="fui-Icon-font ___qaf4230_1r6c92s f14t3ns0 fne0op0 fmd4ok8 f303qgw f1sxfq9t"
+          data-fui-icon=""
           fill="currentColor"
         />
       </div>
