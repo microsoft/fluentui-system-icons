@@ -2,6 +2,7 @@ import { ShieldLock48Regular } from '@fluentui/react-icons';
 
 import descriptionMd from './RecipesDescription.md';
 
+export { TargetIconsFromCss } from './TargetIconsFromCss.stories';
 export { MultipleColors } from './MultipleColors.stories';
 export { ColorIdPrefix } from '../ColorVariants/ColorIdPrefix.stories';
 

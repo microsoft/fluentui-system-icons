@@ -1,5 +1,6 @@
 import type * as React from 'react';
 import { useIconContext } from '../contexts';
+import { DATA_FUI_ICON } from '../utils/constants';
 import type { FluentIconsProps } from '../utils/FluentIconsProps.types';
 
 export type UseIconStateOptions = {
@@ -18,10 +19,11 @@ export type BaseIconState<
  * - strips non-DOM props (`filled`)
  * - maps `primaryFill` -> `fill`
  * - applies a11y (`title` -> `aria-label`, otherwise `aria-hidden`; `role="img"`)
+ * - sets the base `data-fui-icon` attribute so any icon is CSS-selectable
  * - resolves the RTL flip decision from icon context
  *
- * Callers layer their own className / `data-*` attribute styling on top, and
- * apply the visual RTL flip using `isRtlFlip`.
+ * Callers layer their own className / additional `data-*` attribute styling on
+ * top, and apply the visual RTL flip using `isRtlFlip`.
  */
 export const useBaseIconState = <
   TBaseAttributes extends
@@ -60,6 +62,9 @@ export const useBaseIconState = <
   } else {
     state['role'] = 'img';
   }
+
+  // Universal data attribute so any icon (SVG or font) can be targeted via `[data-fui-icon]`.
+  state[DATA_FUI_ICON] = '';
 
   return { state, isRtlFlip };
 };
