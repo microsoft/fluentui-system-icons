@@ -9,21 +9,6 @@ The prerelease workflow lets you publish preview versions of one or more **selec
 - Publishing experimental APIs
 - Coordinating releases across teams
 
-## Workflow at a glance
-
-```mermaid
-flowchart TD
-    A["workflow_dispatch<br/>inputs: projects, exclude, preid, dry-run"] --> B{Branch != main?}
-    B -- no --> X["❌ Fail: cannot run on main"]
-    B -- yes --> C["Resolve projects<br/>nx show projects -p projects<br/>--exclude tag:npm:private (+ exclude)"]
-    C --> D["expand-release-projects.js<br/>auto-include publishable runtime deps<br/>(devDependencies not followed)"]
-    D --> E["Build<br/>nx run-many -t build"]
-    E --> F["calculate-prerelease-version.js<br/>per-project next prerelease from npm<br/>→ tmp/prerelease-versions.json"]
-    F --> G["apply-prerelease-versions.js<br/>write versions + rewrite runtime cross-refs<br/>(dry-run: log only)"]
-    G --> H["nx release publish --tag prerelease<br/>(dry-run: simulate)"]
-    H --> I["Summary + version plan table"]
-```
-
 ## Prerequisites
 
 - You must have write access to the `microsoft/fluentui-system-icons` repository
