@@ -9,6 +9,31 @@ import { default as FluentUIReactIconsFontSubsettingPlugin } from '@fluentui/rea
 const readPackageVersion = (packageDir: string): string =>
   JSON.parse(fs.readFileSync(path.resolve(__dirname, packageDir, 'package.json'), 'utf8')).version;
 
+// The headless icon CSS shipped by `@fluentui/react-icons` (base `data-fui-icon` rules + @font-face).
+const HEADLESS_ICONS_CSS = /[\\/]react-icons[\\/]lib[\\/]headless[\\/].*\.css$/;
+
+/**
+ * Extract ONLY the `@fluentui/react-icons` headless CSS to a real stylesheet asset (a `<link>`) so
+ * the headless font-icon demo's `@font-face` loads statically (real `font-display: block`). All
+ * other CSS keeps Storybook's default runtime `style-loader`. Meant for the production build only
+ * (dev keeps `style-loader` so HMR works).
+ */
+const extractHeadlessIconsCss = (config: webpack.Configuration): void => {
+  const rules = config.module?.rules;
+  if (!rules) {
+    return;
+  }
+  // Storybook's flat `.css` rule (style-loader) must skip the headless CSS so our rule owns it.
+  for (const rule of rules) {
+    if (rule && typeof rule === 'object' && rule.test instanceof RegExp && rule.test.test('.css')) {
+      rule.exclude = HEADLESS_ICONS_CSS;
+    }
+  }
+  rules.push({ test: HEADLESS_ICONS_CSS, use: [MiniCssExtractPlugin.loader, 'css-loader'] });
+  config.plugins = config.plugins ?? [];
+  config.plugins.push(new MiniCssExtractPlugin());
+};
+
 const config: StorybookConfig = {
   stories: ['../stories/**/index.stories.@(ts|tsx)', '../stories/**/*.mdx'],
 
@@ -57,21 +82,12 @@ const config: StorybookConfig = {
     webpackConfig.optimization.usedExports = true;
     webpackConfig.plugins.push(new FluentUIReactIconsFontSubsettingPlugin());
 
-    // Extract CSS to a real stylesheet asset (a `<link>`) in the production build, so the headless
-    // font-icon demo's `@font-face` loads as a static stylesheet (real `font-display: block`
-    // behaviour) instead of Storybook's default runtime `style-loader` injection. Storybook's CSS
-    // handling is a single flat rule, so swapping its `style-loader` is all that's needed. Dev
-    // keeps `style-loader` for HMR.
+    // Extract the headless icon CSS to a real stylesheet asset (a `<link>`) in the production
+    // build, so the headless font-icon demo's `@font-face` loads as a static stylesheet (real
+    // `font-display: block` behaviour) instead of Storybook's default runtime `style-loader`
+    // injection. Dev keeps `style-loader` for HMR.
     if (options.configType === 'PRODUCTION') {
-      for (const rule of webpackConfig.module?.rules ?? []) {
-        if (rule && typeof rule === 'object' && Array.isArray(rule.use)) {
-          rule.use = rule.use.map((entry) => {
-            const loader = typeof entry === 'string' ? entry : (entry as { loader?: string } | null)?.loader;
-            return typeof loader === 'string' && loader.includes('style-loader') ? MiniCssExtractPlugin.loader : entry;
-          });
-        }
-      }
-      webpackConfig.plugins.push(new MiniCssExtractPlugin());
+      extractHeadlessIconsCss(webpackConfig);
     }
 
     return webpackConfig;
