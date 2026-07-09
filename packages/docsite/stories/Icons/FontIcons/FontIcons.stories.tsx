@@ -42,11 +42,7 @@ export const FontIcons = () => {
 FontIcons.parameters = {
   docs: {
     description: {
-      story: [
-        'Font icons are imported from the `@fluentui/react-icons/fonts/*` entry point and render as',
-        '`<i>` glyph elements. Like the SVG icons they inherit `color` (via `currentColor` /',
-        '`primaryFill`) and are sized with `font-size`.',
-      ].join(' '),
+      story: 'A gallery of font icons in their `Regular` and `Filled` styles.',
     },
   },
 };
