@@ -9,6 +9,8 @@ import '@fluentui/react-icons/headless/fonts/styles.css';
 import { SendRegular } from '@fluentui/react-icons/headless/fonts/send';
 import { makeStyles, tokens } from '@fluentui/react-components';
 import * as React from 'react';
+import clsDemoGif from './CLS-demo.gif';
+import descriptionMd from './FontIconsLayoutShift.md';
 
 const SLOT_PX = 32; // reserved icon box (1em at the chip's 32px font-size)
 const GAP_PX = 8; // gap between the icon slot and the label
@@ -113,20 +115,9 @@ FontIconsLayoutShift.parameters = {
   docs: {
     description: {
       story: [
-        'Uses the **headless** font icons, whose `@font-face` and `1em` box rules ship as a real',
-        'stylesheet (extracted to a static `<link>` in the production build) rather than Griffel',
-        'runtime CSS, so the browser performs real `font-display: block` loading.',
+        descriptionMd,
         '',
-        'While the webfont loads the glyph is invisible; without a reserved size the `<i>` collapses',
-        'to 0 width and the following text sits left, then jumps right when the glyph paints — a',
-        'layout shift. The `1em` box holds the space from first paint.',
-        '',
-        'Both cases share one box and a dashed vertical guide at the reserved label position; the',
-        'dashed icon outlines show the reserved box.',
-        '',
-        '> **How to see it live:** open this story in the built Storybook, then in DevTools → Network',
-        '> disable cache (and throttle) and reload. Row 1 starts left of the guide and jumps onto it',
-        '> as the glyph paints; row 2 stays on it.',
+        `<p align="center"><img alt="Throttled reload: the font icon without a reserved box collapses and its label shifts left, then jumps right when the glyph paints, while the reserved 1em icon stays stable." src="${clsDemoGif}" width="640" /></p>`,
       ].join('\n'),
     },
   },
