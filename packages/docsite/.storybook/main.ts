@@ -3,6 +3,7 @@ import remarkGfm from 'remark-gfm';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import webpack from 'webpack';
+import { default as FluentUIReactIconsFontSubsettingPlugin } from '@fluentui/react-icons-font-subsetting-webpack-plugin';
 
 const readPackageVersion = (packageDir: string): string =>
   JSON.parse(fs.readFileSync(path.resolve(__dirname, packageDir, 'package.json'), 'utf8')).version;
@@ -47,6 +48,14 @@ const config: StorybookConfig = {
         STORYBOOK_REACT_ICONS_FILE_TYPE_VERSION: JSON.stringify(readPackageVersion('../../react-icons-file-type')),
       }),
     );
+
+    // Subset the icon fonts to only the glyphs used by the font-icon stories, so the built
+    // Storybook doesn't ship the multi-MB full fonts. Requires `optimization.usedExports` so the
+    // plugin can see which font atom exports are actually referenced (production build only).
+    webpackConfig.optimization = webpackConfig.optimization ?? {};
+    webpackConfig.optimization.usedExports = true;
+    webpackConfig.plugins.push(new FluentUIReactIconsFontSubsettingPlugin());
+
     return webpackConfig;
   },
 };
