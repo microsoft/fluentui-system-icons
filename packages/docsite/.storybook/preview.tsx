@@ -26,6 +26,7 @@ const preview = {
             'Atomic API',
             'Headless API',
             'Color Variants',
+            'Font Icons',
             'Recipes',
             'API Contract',
             'Build Transforms',
