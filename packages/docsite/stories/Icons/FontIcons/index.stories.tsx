@@ -3,6 +3,7 @@ import { SendRegular } from '@fluentui/react-icons/fonts/send';
 export { FontIcons } from './FontIcons.stories';
 export { FontIconsSizing } from './FontIconsSizing.stories';
 export { FontIconsBox } from './FontIconsBox.stories';
+export { FontIconsLayoutShift } from './FontIconsLayoutShift.stories';
 
 export default {
   title: 'Icons/Font Icons',
