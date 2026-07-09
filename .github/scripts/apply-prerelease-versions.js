@@ -19,10 +19,10 @@
  * avoids Nx's "one specifier per invocation" limitation while still producing the same cross-reference
  * rewrites Nx performs when a dependency and dependent are versioned together.
  *
- * Usage: node apply-prerelease-versions.js [--in <file>] [--dry-run]
+ * Usage: node apply-prerelease-versions.js --in <file> [--dry-run=true|false]
  *
  * Options:
- *   --in: Path to the versions JSON produced by calculate-prerelease-version.js (default: tmp/prerelease-versions.json)
+ *   --in: Path to the versions JSON produced by calculate-prerelease-version.js (required)
  *   --dry-run: Log intended changes without writing any package.json files
  */
 
@@ -96,8 +96,13 @@ function processArgs() {
     process.exit(0);
   }
 
+  if (!options.in) {
+    printUsage();
+    process.exit(1);
+  }
+
   return {
-    inFile: options.in || 'tmp/prerelease-versions.json',
+    inFile: options.in,
     // Accept `--dry-run=true|false`, matching `nx release` ergonomics. Any value other than
     // "false" (including omitting the value) is treated as true; omitting the flag entirely is false.
     dryRun: options['dry-run'] === undefined ? false : String(options['dry-run']).toLowerCase() !== 'false',
@@ -105,10 +110,10 @@ function processArgs() {
 }
 
 function printUsage() {
-  console.error('Usage: node apply-prerelease-versions.js [--in <file>] [--dry-run=true|false]');
+  console.error('Usage: node apply-prerelease-versions.js --in <file> [--dry-run=true|false]');
   console.error('');
   console.error('Options:');
-  console.error('  --in: Path to the versions JSON (default: tmp/prerelease-versions.json)');
+  console.error('  --in: Path to the versions JSON (required)');
   console.error('  --dry-run=true|false: Log intended changes without writing any package.json files (default: false)');
   console.error('  --help, -h: Show this help message');
 }

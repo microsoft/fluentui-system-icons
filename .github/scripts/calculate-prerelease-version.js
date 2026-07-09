@@ -13,12 +13,12 @@
  * span packages on different version lines (e.g. react-icons @ 2.0.x and react-icons-file-type @ 0.0.x);
  * collapsing them to a single shared version would corrupt one of the lines.
  *
- * Usage: node calculate-prerelease-version.js --preid <preid> --projects <nx-names> [--out <file>]
+ * Usage: node calculate-prerelease-version.js --preid <preid> --projects <nx-names> --out <file>
  *
  * Options:
  *   --preid: Prerelease identifier (e.g., alpha, beta, rc)
  *   --projects: Comma-separated Nx project names (e.g., react-icons,react-icons-font-subsetting-webpack-plugin)
- *   --out: Path to write the per-project versions JSON (default: tmp/prerelease-versions.json)
+ *   --out: Path to write the per-project versions JSON (required)
  *
  * Outputs:
  *   <out> file: { preid, projects: [{ nxName, npmName, packageJsonPath, version }] }
@@ -91,7 +91,7 @@ function processArgs() {
     process.exit(0);
   }
 
-  if (!options.preid || !options.projects) {
+  if (!options.preid || !options.projects || !options.out) {
     printUsage();
     process.exit(1);
   }
@@ -108,19 +108,19 @@ function processArgs() {
       .split(/[,\s]+/)
       .map((s) => s.trim())
       .filter(Boolean),
-    outFile: options.out || 'tmp/prerelease-versions.json',
+    outFile: options.out,
   };
 }
 
 function printUsage() {
-  console.error('Usage: node calculate-prerelease-version.js --preid <preid> --projects <nx-names> [--out <file>]');
+  console.error('Usage: node calculate-prerelease-version.js --preid <preid> --projects <nx-names> --out <file>');
   console.error('');
   console.error('Options:');
   console.error('  --preid: Prerelease identifier (alpha, beta, rc)');
   console.error(
     '  --projects: Comma-separated Nx project names (e.g., react-icons,react-icons-font-subsetting-webpack-plugin)',
   );
-  console.error('  --out: Path to write the per-project versions JSON (default: tmp/prerelease-versions.json)');
+  console.error('  --out: Path to write the per-project versions JSON (required)');
   console.error('  --help, -h: Show this help message');
 }
 
