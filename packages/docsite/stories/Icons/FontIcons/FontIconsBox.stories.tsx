@@ -7,36 +7,42 @@ import { makeStyles, tokens } from '@fluentui/react-components';
 import * as React from 'react';
 
 const useClasses = makeStyles({
-  // Reveals the icon's own box. The 1em width/height we set on font icons means
-  // this outline is always a perfect square equal to the current font-size,
-  // matching the SVG icon's box (and reserved before the webfont loads → no CLS).
+  row: {
+    display: 'flex',
+    gap: tokens.spacingHorizontalXXL,
+    alignItems: 'flex-start',
+    marginBottom: tokens.spacingVerticalXL,
+  },
+  // A labelled cell: the boxed icon on top, its label below.
+  cell: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: tokens.spacingVerticalS,
+  },
+  // Sizes the icon; the dashed outline then reveals its 1em square box.
+  iconBox: {
+    display: 'inline-flex',
+    fontSize: '64px',
+  },
   boxed: {
     outlineWidth: '1px',
     outlineStyle: 'dashed',
     outlineColor: tokens.colorPaletteRedBorderActive,
   },
-  boxRow: {
-    display: 'flex',
-    gap: tokens.spacingHorizontalXXL,
-    alignItems: 'center',
-    fontSize: '64px',
+  label: {
+    fontSize: tokens.fontSizeBase300,
+    fontWeight: tokens.fontWeightSemibold,
+    color: tokens.colorNeutralForeground1,
+  },
+  sublabel: {
+    fontSize: tokens.fontSizeBase200,
+    color: tokens.colorNeutralForeground3,
   },
   paragraph: {
     maxWidth: '480px',
     fontSize: tokens.fontSizeBase400,
     lineHeight: tokens.lineHeightBase400,
-  },
-  legend: {
-    display: 'flex',
-    gap: tokens.spacingHorizontalXXL,
-    marginBottom: tokens.spacingVerticalM,
-    fontSize: tokens.fontSizeBase300,
-    color: tokens.colorNeutralForeground3,
-  },
-  legendItem: {
-    display: 'flex',
-    gap: tokens.spacingHorizontalS,
-    alignItems: 'center',
   },
 });
 
@@ -51,26 +57,28 @@ export const FontIconsBox = () => {
 
   return (
     <div>
-      <div className={classes.legend}>
-        <span className={classes.legendItem}>
-          <SendRegularSvg aria-hidden className={classes.boxed} style={{ fontSize: '24px' }} /> SVG (svg element)
-        </span>
-        <span className={classes.legendItem}>
-          <SendRegular aria-hidden className={classes.boxed} style={{ fontSize: '24px' }} /> Font (i element)
-        </span>
-      </div>
+      <div className={classes.row}>
+        <div className={classes.cell}>
+          <span className={classes.iconBox}>
+            <SendRegularSvg aria-hidden className={classes.boxed} />
+          </span>
+          <span className={classes.label}>SVG icon</span>
+          <span className={classes.sublabel}>&lt;svg&gt; element</span>
+        </div>
 
-      <div className={classes.boxRow}>
-        <SendRegularSvg aria-label="Send SVG, boxed" className={classes.boxed} />
-        <SendRegular aria-label="Send font, boxed" className={classes.boxed} />
-        <AlertFilled aria-label="Alert font, boxed" className={classes.boxed} />
-        <SettingsRegular aria-label="Settings font, boxed" className={classes.boxed} />
+        <div className={classes.cell}>
+          <span className={classes.iconBox}>
+            <SendRegular aria-hidden className={classes.boxed} />
+          </span>
+          <span className={classes.label}>Font icon</span>
+          <span className={classes.sublabel}>&lt;i&gt; glyph</span>
+        </div>
       </div>
 
       <p className={classes.paragraph}>
-        Inline font icons such as <SettingsRegular aria-label="settings" /> and <AlertFilled aria-label="alert" /> stay
-        aligned to the surrounding text and occupy a stable 1em box, so the line does not reflow when the icon font
-        finishes loading.
+        Both dashed boxes are the same 1em square — the font icon reserves an identical footprint to the SVG icon.
+        Inline font icons such as <SettingsRegular aria-label="settings" /> and <AlertFilled aria-label="alert" /> also
+        stay baseline-aligned with the surrounding text.
       </p>
     </div>
   );
