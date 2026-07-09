@@ -111,7 +111,7 @@ jobs:
           node .github/scripts/calculate-prerelease-version.js \
             --preid "$PREID" \
             --projects "$NX_NAMES" \
-            --out prerelease-versions.json
+            --out tmp/prerelease-versions.json
 
       # Apply the computed versions and synchronize cross-package runtime dependency references so no
       # published package points at an unpublished workspace version. In dry-run the changes are only
@@ -119,7 +119,7 @@ jobs:
       - name: Apply prerelease versions
         run: |
           node .github/scripts/apply-prerelease-versions.js \
-            --in prerelease-versions.json \
+            --in tmp/prerelease-versions.json \
             --dry-run=${{ inputs.dry-run }}
 
       - name: Publish to npm (Nx Release)

@@ -18,7 +18,7 @@
  * Options:
  *   --preid: Prerelease identifier (e.g., alpha, beta, rc)
  *   --projects: Comma-separated Nx project names (e.g., react-icons,react-icons-font-subsetting-webpack-plugin)
- *   --out: Path to write the per-project versions JSON (default: prerelease-versions.json)
+ *   --out: Path to write the per-project versions JSON (default: tmp/prerelease-versions.json)
  *
  * Outputs:
  *   <out> file: { preid, projects: [{ nxName, npmName, packageJsonPath, version }] }
@@ -108,7 +108,7 @@ function processArgs() {
       .split(/[,\s]+/)
       .map((s) => s.trim())
       .filter(Boolean),
-    outFile: options.out || 'prerelease-versions.json',
+    outFile: options.out || 'tmp/prerelease-versions.json',
   };
 }
 
@@ -120,7 +120,7 @@ function printUsage() {
   console.error(
     '  --projects: Comma-separated Nx project names (e.g., react-icons,react-icons-font-subsetting-webpack-plugin)',
   );
-  console.error('  --out: Path to write the per-project versions JSON (default: prerelease-versions.json)');
+  console.error('  --out: Path to write the per-project versions JSON (default: tmp/prerelease-versions.json)');
   console.error('  --help, -h: Show this help message');
 }
 
@@ -155,6 +155,7 @@ async function resolveProjectMetadata(nxProjectNames) {
  */
 function writeVersionsFile(outFile, data) {
   const resolvedPath = path.resolve(outFile);
+  fs.mkdirSync(path.dirname(resolvedPath), { recursive: true });
   fs.writeFileSync(resolvedPath, `${JSON.stringify(data, null, 2)}\n`);
   console.error(`✅ Wrote per-project versions to ${resolvedPath}`);
 }
