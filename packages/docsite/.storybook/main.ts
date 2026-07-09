@@ -3,6 +3,7 @@ import remarkGfm from 'remark-gfm';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import webpack from 'webpack';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { default as FluentUIReactIconsFontSubsettingPlugin } from '@fluentui/react-icons-font-subsetting-webpack-plugin';
 
 const readPackageVersion = (packageDir: string): string =>
@@ -40,7 +41,7 @@ const config: StorybookConfig = {
     docsMode: true,
   },
 
-  webpackFinal: async (webpackConfig) => {
+  webpackFinal: async (webpackConfig, options) => {
     webpackConfig.plugins = webpackConfig.plugins ?? [];
     webpackConfig.plugins.push(
       new webpack.DefinePlugin({
@@ -55,6 +56,23 @@ const config: StorybookConfig = {
     webpackConfig.optimization = webpackConfig.optimization ?? {};
     webpackConfig.optimization.usedExports = true;
     webpackConfig.plugins.push(new FluentUIReactIconsFontSubsettingPlugin());
+
+    // Extract CSS to a real stylesheet asset (a `<link>`) in the production build, so the headless
+    // font-icon demo's `@font-face` loads as a static stylesheet (real `font-display: block`
+    // behaviour) instead of Storybook's default runtime `style-loader` injection. Storybook's CSS
+    // handling is a single flat rule, so swapping its `style-loader` is all that's needed. Dev
+    // keeps `style-loader` for HMR.
+    if (options.configType === 'PRODUCTION') {
+      for (const rule of webpackConfig.module?.rules ?? []) {
+        if (rule && typeof rule === 'object' && Array.isArray(rule.use)) {
+          rule.use = rule.use.map((entry) => {
+            const loader = typeof entry === 'string' ? entry : (entry as { loader?: string } | null)?.loader;
+            return typeof loader === 'string' && loader.includes('style-loader') ? MiniCssExtractPlugin.loader : entry;
+          });
+        }
+      }
+      webpackConfig.plugins.push(new MiniCssExtractPlugin());
+    }
 
     return webpackConfig;
   },
