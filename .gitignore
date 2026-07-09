@@ -77,3 +77,6 @@ SvgList.txt
 .github/instructions/nx.instructions.md
 .claude/worktrees
 .claude/settings.local.json
+
+# Ephemeral output of the prerelease version calculation (see .github/scripts/calculate-prerelease-version.js)
+prerelease-versions.json

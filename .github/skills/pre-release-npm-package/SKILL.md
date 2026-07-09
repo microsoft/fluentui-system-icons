@@ -1,16 +1,18 @@
 ---
 name: pre-release-npm-package
-description: 'Prepare npm packages for pre-release publishing. Supports two modes — pre-releasing already-published packages from the react release group, or adding private library packages to the release group for pre-release. Keywords: prerelease, pre-release, publish, npm, private, release group.'
+description: 'Prepare npm packages for pre-release publishing. Supports two modes — pre-releasing already-publishable packages, or making private library packages publishable for pre-release. Keywords: prerelease, pre-release, publish, npm, private, release group.'
 ---
 
 # Pre-Release NPM Package Preparation
 
 This skill prepares packages for pre-release publishing. It supports two modes:
 
-- **Published packages only** — Pre-release existing public packages already in the `react` Nx release group. No code changes needed; the skill validates the branch and guides the user to trigger the CI workflow.
-- **Include private packages** — Add private library packages to the `react` release group (removing their `"private": true` flag), so they are pre-released alongside the already-published packages. Code changes are committed on the pre-release branch.
+- **Publishable packages only** — Pre-release existing public packages. No code changes needed; the skill validates the branch and guides the user to trigger the CI workflow, where the package(s) are selected via the workflow's `projects` input.
+- **Include private packages** — Make private library packages publishable (removing their `"private": true` flag) so they can be pre-released. Code changes are committed on the pre-release branch.
 
-After this skill completes, the `Publish Prerelease NPM` GitHub Actions workflow (`.github/workflows/publish-prerelease.yml`) can be triggered to build, version, and publish the packages to npm.
+> **Note:** The `Publish Prerelease NPM` workflow selects packages ad-hoc via its `projects` input (Nx selection syntax) and excludes `tag:npm:private` by default. A package therefore only needs to be **publishable** (no `"private": true`) to be pre-released — it does **not** need to be added to a specific Nx release release group.
+
+After this skill completes, the `Publish Prerelease NPM` GitHub Actions workflow (`.github/workflows/publish-prerelease.yml`) can be triggered to build, version, and publish the selected packages (plus their publishable runtime dependencies) to npm.
 
 ---
 
@@ -43,8 +45,8 @@ git checkout -b "release/pre/react-icons/<feature-name>"
 
 Ask the user which mode they want:
 
-1. **Published packages only** — Pre-release the packages already in the `react` release group (no code changes). Skip to [Step 5: Next Steps](#step-5-next-steps).
-2. **Include private packages** — Also add private library packages to the release group. Continue to Step 3.
+1. **Publishable packages only** — Pre-release packages that are already publishable (no code changes). Skip to [Step 5: Next Steps](#step-5-next-steps).
+2. **Include private packages** — Also make private library packages publishable for pre-release. Continue to Step 3.
 
 ---
 
@@ -78,21 +80,13 @@ If no eligible packages are found, inform the user and fall back to "Published p
 
 ### Prompt User to Select Packages
 
-Ask the user which eligible packages to add to the pre-release. They may select one or more.
+Ask the user which eligible packages to make publishable for the pre-release. They may select one or more.
 
-#### Workflow Compatibility Warning
+#### Workflow Compatibility Note
 
-The `publish-prerelease.yml` workflow discovers projects using:
+The `publish-prerelease.yml` workflow selects packages via its `projects` input using Nx project-selection syntax and **excludes `tag:npm:private` by default**. Any package the user names in that input will be picked up — there is no `react-*` naming restriction — **as long as it is publishable** (no `"private": true`).
 
-```bash
-npx nx show projects -p 'react-*' --exclude 'react-native-icons'
-```
-
-If any selected package's Nx project name (the directory name under `packages/`) does **NOT** start with `react-`, warn the user:
-
-> ⚠️ Package `<package-name>` has Nx project name `<dir-name>` which does not match the `react-*` glob used by the publish-prerelease workflow. This package will be added to the release group but will NOT be picked up for building/publishing unless the workflow is also updated.
-
-Let the user decide whether to proceed despite the warning.
+Therefore, the only change required to pre-release a currently-private package is removing its `"private": true` flag (Step 4). No Nx release-group membership is required.
 
 ---
 
@@ -100,65 +94,22 @@ Let the user decide whether to proceed despite the warning.
 
 > _This step only applies when the user chose "Include private packages" in Step 2._
 
-For each selected package, make two modifications:
+For each selected package, remove the `"private": true` flag so it becomes publishable for pre-release.
 
-### 4a. Add to `nx.json` React Release Group
-
-Read `nx.json` and add the package path to `release.groups.react.projects` array.
-
-The path format is: `packages/<dir-name>` (e.g., `packages/react-icons-atomic-webpack-loader`).
-
-**Only add if not already present** in the array.
-
-Example — before:
-
-```json
-{
-  "release": {
-    "groups": {
-      "react": {
-        "projects": [
-          "packages/react-icons",
-          "packages/react-icons-font-subsetting-webpack-plugin",
-          "packages/react-native-icons"
-        ]
-      }
-    }
-  }
-}
-```
-
-After adding `react-icons-atomic-webpack-loader`:
-
-```json
-{
-  "release": {
-    "groups": {
-      "react": {
-        "projects": [
-          "packages/react-icons",
-          "packages/react-icons-font-subsetting-webpack-plugin",
-          "packages/react-native-icons",
-          "packages/react-icons-atomic-webpack-loader"
-        ]
-      }
-    }
-  }
-}
-```
-
-### 4b. Remove `"private": true` from `package.json`
+### 4a. Remove `"private": true` from `package.json`
 
 Edit the selected package's `package.json` to remove the `"private": true` field entirely.
 
-**Do not** modify any other fields in the `package.json`.
+**Do not** modify any other fields in the `package.json`, and do **not** add the package to any Nx release group — the pre-release workflow selects packages ad-hoc via its `projects` input.
 
-### 4c. Stage and Commit
+> Removing `"private": true` makes the package resolve as `tag:npm:public`, so it is no longer excluded by the workflow's default `--exclude tag:npm:private` filter.
+
+### 4b. Stage and Commit
 
 Stage all modified files and create a commit:
 
 ```bash
-git add nx.json <paths-to-modified-package.json-files>
+git add <paths-to-modified-package.json-files>
 git commit -m "feat: prepare packages for pre-release - <comma-separated npm package names>"
 ```
 
@@ -167,7 +118,7 @@ The commit message should use the npm package names (e.g., `@fluentui/react-icon
 Example:
 
 ```bash
-git add nx.json packages/react-icons-atomic-webpack-loader/package.json packages/react-icons-svg-sprite-subsetting-webpack-plugin/package.json
+git add packages/react-icons-atomic-webpack-loader/package.json packages/react-icons-svg-sprite-subsetting-webpack-plugin/package.json
 git commit -m "feat: prepare packages for pre-release - @fluentui/react-icons-atomic-webpack-loader, @fluentui/react-icons-svg-sprite-subsetting-webpack-plugin"
 ```
 
@@ -179,5 +130,10 @@ Inform the user of next steps:
 
 1. Push the branch to GitHub: `git push -u origin release/pre/react-icons/<feature-name>`
 2. Navigate to [Publish Prerelease NPM workflow](https://github.com/microsoft/fluentui-system-icons/actions/workflows/publish-prerelease.yml)
-3. Click **Run workflow**, select the pre-release branch, choose preid (`alpha`/`beta`/`rc`), and optionally enable dry-run
+3. Click **Run workflow** and:
+   - select the pre-release branch,
+   - set **`projects`** to the package(s) to pre-release using Nx selection syntax (e.g. `react-icons`, `react-icons,react-icons-file-type`, `react-*`, or `tag:npm:standalone`),
+   - optionally set **`exclude`**,
+   - choose **`preid`** (`alpha`/`beta`/`rc`), and optionally enable **`dry-run`**.
+   - Publishable runtime dependencies of the selection are auto-included so the published set is self-consistent.
 4. For detailed instructions, see [Prerelease Publishing Guide](../../../packages/react-icons/docs/prerelease.md)

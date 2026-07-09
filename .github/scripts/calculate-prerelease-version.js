@@ -3,20 +3,26 @@
 // @ts-check
 
 /**
- * Calculates the next prerelease version for release projects and writes it to GITHUB_OUTPUT.
+ * Calculates the next prerelease version for each release project independently and writes the
+ * result to a JSON file (consumed by apply-prerelease-versions.js) plus a human-readable summary.
  * Resolves project metadata via the @nx/devkit project graph and computes the next prerelease version
- * for each project. Version application (`nx release version`) is intentionally left to the caller
- * (i.e. the GHA step) so the command and its output are fully visible in CI logs.
+ * for each project from the npm registry. Version application is intentionally left to a separate
+ * step so the computed values are fully visible in CI logs.
  *
- * Usage: node calculate-prerelease-version.js --preid <preid> --projects <nx-names>
+ * Versions are computed PER PROJECT (independent). This is required because a scoped pre-release may
+ * span packages on different version lines (e.g. react-icons @ 2.0.x and react-icons-file-type @ 0.0.x);
+ * collapsing them to a single shared version would corrupt one of the lines.
+ *
+ * Usage: node calculate-prerelease-version.js --preid <preid> --projects <nx-names> [--out <file>]
  *
  * Options:
  *   --preid: Prerelease identifier (e.g., alpha, beta, rc)
  *   --projects: Comma-separated Nx project names (e.g., react-icons,react-icons-font-subsetting-webpack-plugin)
+ *   --out: Path to write the per-project versions JSON (default: prerelease-versions.json)
  *
- * Outputs (via GITHUB_OUTPUT):
- *   version: The single calculated prerelease version (e.g. 2.0.1-alpha.0)
- *   summary: Newline-separated list of package@version entries
+ * Outputs:
+ *   <out> file: { preid, projects: [{ nxName, npmName, packageJsonPath, version }] }
+ *   GITHUB_OUTPUT: summary (newline-separated package@version entries)
  */
 
 const fs = require('fs');
@@ -26,74 +32,28 @@ const { createProjectGraphAsync } = require('@nx/devkit');
 
 const { getNextPrereleaseVersion } = require('./get-next-prerelease-version');
 
+// Entry point: compute per-project prerelease versions and write them to disk.
 main().catch((error) => {
   console.error('❌ Unhandled error:', error instanceof Error ? error.message : String(error));
   process.exit(1);
 });
 
 async function main() {
-  const { preid, projectNames } = processArgs();
+  const { preid, projectNames, outFile } = processArgs();
   const projects = await resolveProjectMetadata(projectNames);
 
-  /** @type {{ npmName: string, nextNpmVersion: string }[]} */
+  /** @type {{ nxName: string, npmName: string, packageJsonPath: string, version: string }[]} */
   const perPackageVersions = [];
-  /** @type {Set<string>} - Collects distinct versions computed per project; ideally one, but may differ when a prior publish partially succeeded. */
-  const uniqueNextNpmVersions = new Set();
 
-  for (const { npmName, packageJsonPath } of projects) {
-    const nextNpmVersion = await getNextPrereleaseVersion(npmName, packageJsonPath, preid);
-    uniqueNextNpmVersions.add(nextNpmVersion);
-    perPackageVersions.push({ npmName, nextNpmVersion });
+  for (const { nxName, npmName, packageJsonPath } of projects) {
+    const version = await getNextPrereleaseVersion(npmName, packageJsonPath, preid);
+    perPackageVersions.push({ nxName, npmName, packageJsonPath, version });
   }
 
-  // Pick the highest prerelease version across all projects by comparing the base semver version
-  // first (major.minor.patch) and then the numeric prerelease suffix. For example, given
-  // "2.0.320-alpha.2" and "2.0.324-alpha.0", this resolves to "2.0.324-alpha.0" because the base
-  // version 2.0.324 is higher. The cast is safe because uniqueNextNpmVersions always has at least
-  // one entry.
-  const resolvedVersion = /** @type {string} */ (
-    Array.from(uniqueNextNpmVersions)
-      .sort((a, b) => {
-        const [aBase, aPrereleaseSuffix] = a.split(`-${preid}.`);
-        const [bBase, bPrereleaseSuffix] = b.split(`-${preid}.`);
-        const [aMajor, aMinor, aPatch] = (aBase ?? '').split('.').map(Number);
-        const [bMajor, bMinor, bPatch] = (bBase ?? '').split('.').map(Number);
-        if (aMajor !== bMajor) return aMajor - bMajor;
-        if (aMinor !== bMinor) return aMinor - bMinor;
-        if (aPatch !== bPatch) return aPatch - bPatch;
-        return Number(aPrereleaseSuffix ?? '0') - Number(bPrereleaseSuffix ?? '0');
-      })
-      .at(-1)
-  );
+  const summaryLines = perPackageVersions.map(({ npmName, version }) => `${npmName}@${version}`);
 
-  const hasVersionMismatch = uniqueNextNpmVersions.size > 1;
-
-  // Build summary lines now that resolvedVersion is known.
-  // When versions are in sync, each line is simply "<package>@<resolvedVersion>".
-  // When there is a mismatch, annotate packages whose computed npm-next version was overridden
-  // so the pipeline author can see exactly which packages caused the discrepancy.
-  const summaryLines = perPackageVersions.map(({ npmName, nextNpmVersion }) => {
-    const appliedLine = `${npmName}@${resolvedVersion}`;
-    if (hasVersionMismatch && nextNpmVersion !== resolvedVersion) {
-      return `${appliedLine}  (next available on npm was: ${nextNpmVersion})`;
-    }
-    return appliedLine;
-  });
-
-  if (hasVersionMismatch) {
-    const versionMismatchWarning = [
-      '',
-      `⚠️ Multiple different "next available" versions for prerelease identifier "${preid}" detected:`,
-      '- This may have happened because a package failed the publish phase in a previous release attempt',
-      `- Computed per-package versions: ${Array.from(uniqueNextNpmVersions).join(', ')}`,
-      '',
-      `⚠️ Using the highest version (${resolvedVersion}) for all packages in this release.`,
-      '',
-    ].join('\n');
-    summaryLines.unshift(versionMismatchWarning);
-  }
-
-  writeOutputs(resolvedVersion, summaryLines);
+  writeVersionsFile(outFile, { preid, projects: perPackageVersions });
+  writeOutputs(summaryLines);
 
   // createProjectGraphAsync may open a connection to the Nx daemon, keeping the
   // process alive indefinitely. Force-exit cleanly after all work is done.
@@ -106,7 +66,7 @@ async function main() {
  * Parses and validates CLI arguments.
  * Exits the process with a non-zero code when required arguments are missing or invalid.
  *
- * @returns {{ preid: string, projectNames: string[] }}
+ * @returns {{ preid: string, projectNames: string[], outFile: string }}
  */
 function processArgs() {
   let options;
@@ -115,6 +75,7 @@ function processArgs() {
       options: {
         preid: { type: 'string' },
         projects: { type: 'string' },
+        out: { type: 'string' },
         help: { type: 'boolean', short: 'h' },
       },
     });
@@ -143,18 +104,23 @@ function processArgs() {
 
   return {
     preid: options.preid,
-    projectNames: options.projects.split(','),
+    projectNames: options.projects
+      .split(/[,\s]+/)
+      .map((s) => s.trim())
+      .filter(Boolean),
+    outFile: options.out || 'prerelease-versions.json',
   };
 }
 
 function printUsage() {
-  console.error('Usage: node calculate-prerelease-version.js --preid <preid> --projects <nx-names>');
+  console.error('Usage: node calculate-prerelease-version.js --preid <preid> --projects <nx-names> [--out <file>]');
   console.error('');
   console.error('Options:');
   console.error('  --preid: Prerelease identifier (alpha, beta, rc)');
   console.error(
     '  --projects: Comma-separated Nx project names (e.g., react-icons,react-icons-font-subsetting-webpack-plugin)',
   );
+  console.error('  --out: Path to write the per-project versions JSON (default: prerelease-versions.json)');
   console.error('  --help, -h: Show this help message');
 }
 
@@ -182,29 +148,37 @@ async function resolveProjectMetadata(nxProjectNames) {
 }
 
 /**
- * Writes the resolved version and a human-readable summary to GITHUB_OUTPUT so that downstream
- * GHA steps can consume them via `${{ steps.<id>.outputs.version }}`. Falls back to stdout when
- * `GITHUB_OUTPUT` is not set (i.e. local execution).
+ * Writes the per-project versions to a JSON file consumed by apply-prerelease-versions.js.
+ *
+ * @param {string} outFile - Path to write the JSON file to
+ * @param {{ preid: string, projects: { nxName: string, npmName: string, packageJsonPath: string, version: string }[] }} data
+ */
+function writeVersionsFile(outFile, data) {
+  const resolvedPath = path.resolve(outFile);
+  fs.writeFileSync(resolvedPath, `${JSON.stringify(data, null, 2)}\n`);
+  console.error(`✅ Wrote per-project versions to ${resolvedPath}`);
+}
+
+/**
+ * Writes a human-readable summary to GITHUB_OUTPUT so downstream GHA steps can consume it via
+ * `${{ steps.<id>.outputs.summary }}`. Falls back to stdout when `GITHUB_OUTPUT` is not set
+ * (i.e. local execution).
  *
  * Output format:
- *   version=<semver>            (single line)
  *   summary<<EOF                (multiline using heredoc syntax)
  *   <package>@<version>\n...
  *   EOF
  *
- * @param {string} version - The single resolved prerelease version (e.g. "2.0.1-alpha.3")
- * @param {string[]} summaryLines - Human-readable lines describing per-package versions (and any warnings)
+ * @param {string[]} summaryLines - Human-readable per-package version lines
  */
-function writeOutputs(version, summaryLines) {
+function writeOutputs(summaryLines) {
   const summary = summaryLines.join('\n');
   const outputFile = process.env.GITHUB_OUTPUT;
 
   if (outputFile) {
-    fs.appendFileSync(outputFile, `version=${version}\n`);
     fs.appendFileSync(outputFile, `summary<<EOF\n${summary}\nEOF\n`);
   } else {
     // Local execution — print to stdout for debugging
-    console.log(`\nversion: ${version}`);
     console.log(`\nsummary:\n${summary}`);
   }
 }
