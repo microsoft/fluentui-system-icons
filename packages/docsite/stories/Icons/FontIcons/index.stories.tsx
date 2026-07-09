@@ -1,4 +1,5 @@
 import { SendRegular } from '@fluentui/react-icons/fonts/send';
+import descriptionMd from './FontIconsDescription.md';
 
 export { FontIcons } from './FontIcons.stories';
 export { FontIconsSizing } from './FontIconsSizing.stories';
@@ -11,11 +12,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [
-          'Font-based icons are the alternate delivery of `@fluentui/react-icons`, imported from the',
-          '`@fluentui/react-icons/fonts/*` entry point. Each icon renders as an `<i>` glyph element',
-          'and, like the SVG icons, reserves a `1em × 1em` box and inherits `color` and `font-size`.',
-        ].join(' '),
+        component: descriptionMd,
       },
       skipPrimaryStory: true,
       hideArgsTable: true,
