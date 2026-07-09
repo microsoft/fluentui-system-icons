@@ -2,12 +2,27 @@
 
 ## Overview
 
-The prerelease workflow allows you to publish preview versions of "react" nx release group (excluding `@fluentui/react-native-icons`) to npm before a final release. This is useful for:
+The prerelease workflow lets you publish preview versions of one or more **selected** packages to npm before a final release. You choose which package(s) to pre-release via the `projects` input (Nx selection syntax); publishable runtime dependencies of the selection are auto-included, and private packages (`tag:npm:private`) are excluded by default. This is useful for:
 
 - Testing new features with early adopters
 - Getting feedback before official releases
 - Publishing experimental APIs
 - Coordinating releases across teams
+
+## Workflow at a glance
+
+```mermaid
+flowchart TD
+    A["workflow_dispatch<br/>inputs: projects, exclude, preid, dry-run"] --> B{Branch != main?}
+    B -- no --> X["❌ Fail: cannot run on main"]
+    B -- yes --> C["Resolve projects<br/>nx show projects -p projects<br/>--exclude tag:npm:private (+ exclude)"]
+    C --> D["expand-release-projects.js<br/>auto-include publishable runtime deps<br/>(devDependencies not followed)"]
+    D --> E["Build<br/>nx run-many -t build"]
+    E --> F["calculate-prerelease-version.js<br/>per-project next prerelease from npm<br/>→ tmp/prerelease-versions.json"]
+    F --> G["apply-prerelease-versions.js<br/>write versions + rewrite runtime cross-refs<br/>(dry-run: log only)"]
+    G --> H["nx release publish --tag prerelease<br/>(dry-run: simulate)"]
+    H --> I["Summary + version plan table"]
+```
 
 ## Prerequisites
 
@@ -27,6 +42,8 @@ The prerelease workflow allows you to publish preview versions of "react" nx rel
 
 Click **Run workflow** and configure:
 
+- **Projects** (required): The package(s) to pre-release, using Nx selection syntax (comma/space delimited names, globs, or `tag:` selectors). Examples: `react-icons`, `react-icons,react-icons-file-type`, `react-*`, `tag:npm:standalone`. Publishable runtime dependencies of the selection are auto-included.
+- **Exclude** (optional): An Nx selection to remove from the resolved set (e.g. `react-native-icons`).
 - **Prerelease identifier** (required): Choose one of:
   - `alpha` - For early development versions (e.g., `2.0.0-alpha.1`)
   - `beta` - For feature-complete but untested versions (e.g., `2.0.0-beta.1`)
@@ -39,11 +56,12 @@ Click **Run workflow** and configure:
 The workflow will:
 
 1. ✅ Validate the branch (must not be `main`)
-2. 📦 Build the react-\* packages
-3. 🔢 Calculate the next prerelease version
-4. 🏷️ Apply versions scoped to the `react` release group (react-native-icons is versioned locally but not published)
-5. 📤 Publish to npm (or simulate if dry-run is enabled)
-6. 📝 Generate a summary with installation instructions
+2. 🧭 Resolve the selection and auto-include publishable runtime dependencies
+3. 📦 Build the resolved packages
+4. 🔢 Calculate each package's next prerelease version independently
+5. 🏷️ Apply versions and sync cross-package runtime dependency references
+6. 📤 Publish the resolved set to npm (or simulate if dry-run is enabled)
+7. 📝 Generate a summary with the version plan and installation instructions
 
 ## Prerelease Versioning
 
@@ -88,6 +106,7 @@ npm install @fluentui/react-icons@prerelease
 1. Create a feature branch: `git checkout -b release/my-feature`
 2. Make your changes and push to GitHub
 3. Run the workflow with:
+   - **Projects:** `react-icons`
    - **Prerelease identifier:** `alpha`
    - **Dry run:** ☐ (unchecked)
 4. Result: Publishes `2.0.0-alpha.1` (or next alpha number)
