@@ -80,10 +80,9 @@ FontIconsBox.parameters = {
   docs: {
     description: {
       story: [
-        'Font icons reserve a `1em × 1em` box (`width`/`height: 1em`), mirroring the resizable SVG.',
-        'The dashed outline shows the box is a perfect square equal to the current `font-size`; the',
-        'SVG and font icons share an identical footprint. Because the box is reserved up front, the',
-        'inline paragraph does not shift when the webfont loads.',
+        'The dashed outline reveals each icon’s box — a perfect square equal to the current',
+        '`font-size`. The SVG and font versions share an identical footprint, and inline font icons',
+        'stay baseline-aligned with the surrounding text.',
       ].join(' '),
     },
   },
