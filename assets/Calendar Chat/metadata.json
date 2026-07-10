@@ -1,8 +1,12 @@
 {
   "name": "Calendar Chat",
   "size": [
+    16,
     20,
-    24
+    24,
+    28,
+    32,
+    48
   ],
   "style": [
     "Regular",

@@ -1,11 +1,11 @@
 import { AccessTimeFilled, SendRegular } from '@fluentui/react-icons';
-import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
+import { makeStyles, tokens } from '@fluentui/react-components';
 import * as React from 'react';
 
 const useClasses = makeStyles({
   container: {
     display: 'flex',
-    ...shorthands.gap('10px'),
+    gap: '10px',
   },
 
   iconAccessTime: {

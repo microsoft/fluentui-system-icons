@@ -1,11 +1,9 @@
-import * as React from 'react';
-import { useIconContext } from '../contexts';
 import type { FluentIconsProps } from './shared';
-import { DATA_FUI_ICON, DATA_FUI_ICON_RTL } from './shared';
+import { DATA_FUI_ICON_RTL } from './shared';
+import { useBaseIconState } from '../core/useBaseIconState';
+import type { UseIconStateOptions } from '../core/useBaseIconState';
 
-export type UseIconStateOptions = {
-  flipInRtl?: boolean;
-};
+export type { UseIconStateOptions };
 
 /**
  * Headless version of useIconState
@@ -25,37 +23,11 @@ export const useIconState = <
   props: FluentIconsProps<TBaseAttributes, TRefType>,
   options?: UseIconStateOptions,
 ): Omit<FluentIconsProps<TBaseAttributes, TRefType>, 'primaryFill'> => {
-  const {
-    // remove unwanted props to be set on the svg/html element
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    filled,
-    title,
+  const { state, isRtlFlip } = useBaseIconState(props, options);
 
-    primaryFill = 'currentColor',
-    ...rest
-  } = props;
-  const state = {
-    ...rest,
-    fill: primaryFill,
-  } as Omit<FluentIconsProps<TBaseAttributes, TRefType>, 'primaryFill'>;
-
-  const iconContext = useIconContext();
-  const isRtlFlip = options?.flipInRtl && iconContext?.textDirection === 'rtl';
-
-  // Data attributes for CSS targeting
-  state[DATA_FUI_ICON] = '';
+  // Headless-only data attribute for RTL flip via CSS.
   if (isRtlFlip) {
     state[DATA_FUI_ICON_RTL] = '';
-  }
-
-  if (title) {
-    state['aria-label'] = title;
-  }
-
-  if (!state['aria-label'] && !state['aria-labelledby']) {
-    state['aria-hidden'] = true;
-  } else {
-    state['role'] = 'img';
   }
 
   return state;

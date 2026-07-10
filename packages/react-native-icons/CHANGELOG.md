@@ -1,3 +1,39 @@
+## 2.0.332 (2026-07-07)
+
+### 🔥 Performance
+
+- **react-icons:** reuse canonical fonts instead of regenerating ([#1105](https://github.com/microsoft/fluentui-system-icons/pull/1105))
+
+## 2.0.331 (2026-06-26)
+
+This release contains icon updates
+
+## 2.0.330 (2026-06-12)
+
+This release contains icon updates
+
+## 2.0.329 (2026-06-09)
+
+This release contains icon updates
+
+## 2.0.328 (2026-05-22)
+
+This release contains icon updates
+
+## 2.0.327 (2026-05-20)
+
+### 🩹 Fixes
+
+- **nx:** mark react-icons and react-native-icons as implicitly depending on importer ([#1088](https://github.com/microsoft/fluentui-system-icons/pull/1088))
+
+## 2.0.326 (2026-05-08)
+
+This release contains icon updates
+
+## 2.0.325 (2026-04-24)
+
+This release contains icon updates
+
 ## 2.0.324 (2026-04-13)
 
 This release contains icon updates

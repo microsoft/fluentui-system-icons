@@ -1231,7 +1231,7 @@ describe('Build Verification', () => {
           export const CalculatorMultipleFilled = ( /*#__PURE__*/createFluentIcon('CalculatorMultipleFilled', "1em", ["M5.5 2A2.5 2.5 0 0 0 3 4.5v9A2.5 2.5 0 0 0 5.5 16h7a2.5 2.5 0 0 0 2.5-2.5v-9A2.5 2.5 0 0 0 12.5 2h-7ZM5 5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5Zm0 5a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm4-1a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm0 2.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM11 10a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm1 1.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm-6 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM7.5 18a2.5 2.5 0 0 1-2-1h7a3.5 3.5 0 0 0 3.5-3.5v-9c.6.46 1 1.18 1 2v7a4.5 4.5 0 0 1-4.5 4.5h-5Z"]));
           export const CalculatorMultipleRegular = ( /*#__PURE__*/createFluentIcon('CalculatorMultipleRegular', "1em", ["M6 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H6Zm0 1h6v2H6V5Zm2 5a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm1 1.75a1 1 0 1 0 0 2 1 1 0 0 0 0-2ZM11 10a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm1 1.75a1 1 0 1 0 0 2 1 1 0 0 0 0-2ZM5 10a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm1 1.75a1 1 0 1 0 0 2 1 1 0 0 0 0-2ZM5.5 2A2.5 2.5 0 0 0 3 4.5v9A2.5 2.5 0 0 0 5.5 16h7a2.5 2.5 0 0 0 2.5-2.5v-9A2.5 2.5 0 0 0 12.5 2h-7ZM4 4.5C4 3.67 4.67 3 5.5 3h7c.83 0 1.5.67 1.5 1.5v9c0 .83-.67 1.5-1.5 1.5h-7A1.5 1.5 0 0 1 4 13.5v-9ZM7.5 18a2.5 2.5 0 0 1-2-1h7a3.5 3.5 0 0 0 3.5-3.5v-9c.6.46 1 1.18 1 2v7a4.5 4.5 0 0 1-4.5 4.5h-5Z"]));
           /** @deprecated Color icons are deprecated. [See User Guidance](https://microsoft.github.io/fluentui-system-icons/?path=/docs/icons-user-guidance--docs#color-variants-deprecated) */
-          export const CalendarColor = ( /*#__PURE__*/createFluentIcon('CalendarColor', "1em", \`<path d="M17 6H3v8.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5V6Z" fill="url(#ic_fluent_calendar_20_color__a)"/><path d="M17 6H3v8.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5V6Z" fill="url(#ic_fluent_calendar_20_color__b)"/><g filter="url(#ic_fluent_calendar_20_color__c)"><path d="M8 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" fill="url(#ic_fluent_calendar_20_color__d)"/><path d="M8 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" fill="url(#ic_fluent_calendar_20_color__e)"/><path d="M11 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" fill="url(#ic_fluent_calendar_20_color__f)"/><path d="M10 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" fill="url(#ic_fluent_calendar_20_color__g)"/><path d="M14 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" fill="url(#ic_fluent_calendar_20_color__h)"/></g><path d="M17 5.5A2.5 2.5 0 0 0 14.5 3h-9A2.5 2.5 0 0 0 3 5.5V7h14V5.5Z" fill="url(#ic_fluent_calendar_20_color__i)"/><defs><linearGradient id="ic_fluent_calendar_20_color__a" x1="12.53" y1="18.35" x2="8.5" y2="6.56" gradientUnits="userSpaceOnUse"><stop stop-color="#B3E0FF"/><stop offset="1" stop-color="#B3E0FF"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__b" x1="11.5" y1="10.5" x2="13.5" y2="19.5" gradientUnits="userSpaceOnUse"><stop stop-color="#DCF8FF" stop-opacity="0"/><stop offset="1" stop-color="#FF6CE8" stop-opacity=".7"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__d" x1="9.27" y1="8.42" x2="10.91" y2="18.39" gradientUnits="userSpaceOnUse"><stop stop-color="#0078D4"/><stop offset="1" stop-color="#0067BF"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__e" x1="9.27" y1="8.42" x2="10.91" y2="18.39" gradientUnits="userSpaceOnUse"><stop stop-color="#0078D4"/><stop offset="1" stop-color="#0067BF"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__f" x1="9.27" y1="8.42" x2="10.91" y2="18.39" gradientUnits="userSpaceOnUse"><stop stop-color="#0078D4"/><stop offset="1" stop-color="#0067BF"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__g" x1="9.27" y1="8.42" x2="10.91" y2="18.39" gradientUnits="userSpaceOnUse"><stop stop-color="#0078D4"/><stop offset="1" stop-color="#0067BF"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__h" x1="9.27" y1="8.42" x2="10.91" y2="18.39" gradientUnits="userSpaceOnUse"><stop stop-color="#0078D4"/><stop offset="1" stop-color="#0067BF"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__i" x1="3" y1="3" x2="15.02" y2="-.77" gradientUnits="userSpaceOnUse"><stop stop-color="#0094F0"/><stop offset="1" stop-color="#2764E7"/></linearGradient><filter id="ic_fluent_calendar_20_color__c" x="4.67" y="8.33" width="10.67" height="7.67" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy=".67"/><feGaussianBlur stdDeviation=".67"/><feColorMatrix values="0 0 0 0 0.1242 0 0 0 0 0.323337 0 0 0 0 0.7958 0 0 0 0.32 0"/><feBlend in2="BackgroundImageFix" result="effect1_dropShadow_378174_9787"/><feBlend in="SourceGraphic" in2="effect1_dropShadow_378174_9787" result="shape"/></filter></defs>\`, { color: true }));
+          export const CalendarColor = ( /*#__PURE__*/createFluentIcon('CalendarColor', "1em", [["path", { "d": "M17 6H3v8.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5V6Z", "fill": "url(#ic_fluent_calendar_20_color__a)" }], ["path", { "d": "M17 6H3v8.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5V6Z", "fill": "url(#ic_fluent_calendar_20_color__b)" }], ["g", { "filter": "url(#ic_fluent_calendar_20_color__c)" }, ["path", { "d": "M8 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z", "fill": "url(#ic_fluent_calendar_20_color__d)" }], ["path", { "d": "M8 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z", "fill": "url(#ic_fluent_calendar_20_color__e)" }], ["path", { "d": "M11 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z", "fill": "url(#ic_fluent_calendar_20_color__f)" }], ["path", { "d": "M10 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z", "fill": "url(#ic_fluent_calendar_20_color__g)" }], ["path", { "d": "M14 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z", "fill": "url(#ic_fluent_calendar_20_color__h)" }]], ["path", { "d": "M17 5.5A2.5 2.5 0 0 0 14.5 3h-9A2.5 2.5 0 0 0 3 5.5V7h14V5.5Z", "fill": "url(#ic_fluent_calendar_20_color__i)" }], ["defs", null, ["linearGradient", { "id": "ic_fluent_calendar_20_color__a", "x1": "12.53", "y1": "18.35", "x2": "8.5", "y2": "6.56", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#B3E0FF" }], ["stop", { "offset": "1", "stopColor": "#B3E0FF" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__b", "x1": "11.5", "y1": "10.5", "x2": "13.5", "y2": "19.5", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#DCF8FF", "stopOpacity": "0" }], ["stop", { "offset": "1", "stopColor": "#FF6CE8", "stopOpacity": ".7" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__d", "x1": "9.27", "y1": "8.42", "x2": "10.91", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078D4" }], ["stop", { "offset": "1", "stopColor": "#0067BF" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__e", "x1": "9.27", "y1": "8.42", "x2": "10.91", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078D4" }], ["stop", { "offset": "1", "stopColor": "#0067BF" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__f", "x1": "9.27", "y1": "8.42", "x2": "10.91", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078D4" }], ["stop", { "offset": "1", "stopColor": "#0067BF" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__g", "x1": "9.27", "y1": "8.42", "x2": "10.91", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078D4" }], ["stop", { "offset": "1", "stopColor": "#0067BF" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__h", "x1": "9.27", "y1": "8.42", "x2": "10.91", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078D4" }], ["stop", { "offset": "1", "stopColor": "#0067BF" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__i", "x1": "3", "y1": "3", "x2": "15.02", "y2": "-.77", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0094F0" }], ["stop", { "offset": "1", "stopColor": "#2764E7" }]], ["filter", { "id": "ic_fluent_calendar_20_color__c", "x": "4.67", "y": "8.33", "width": "10.67", "height": "7.67", "filterUnits": "userSpaceOnUse", "colorInterpolationFilters": "sRGB" }, ["feFlood", { "floodOpacity": "0", "result": "BackgroundImageFix" }], ["feColorMatrix", { "in": "SourceAlpha", "values": "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0", "result": "hardAlpha" }], ["feOffset", { "dy": ".67" }], ["feGaussianBlur", { "stdDeviation": ".67" }], ["feColorMatrix", { "values": "0 0 0 0 0.1242 0 0 0 0 0.323337 0 0 0 0 0.7958 0 0 0 0.32 0" }], ["feBlend", { "in2": "BackgroundImageFix", "result": "effect1_dropShadow_378174_9787" }], ["feBlend", { "in": "SourceGraphic", "in2": "effect1_dropShadow_378174_9787", "result": "shape" }]]]], { color: true }));
           export const CalendarFilled = ( /*#__PURE__*/createFluentIcon('CalendarFilled', "1em", ["M5.5 3A2.5 2.5 0 0 0 3 5.5V6h14v-.5A2.5 2.5 0 0 0 14.5 3h-9ZM17 7H3v7.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5V7Zm-9 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-1 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm4-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-1 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm4-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"], { flipInRtl: true }));
           export const CalendarRegular = ( /*#__PURE__*/createFluentIcon('CalendarRegular', "1em", ["M7 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm1 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm2-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm1 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm2-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm4-5.5A2.5 2.5 0 0 0 14.5 3h-9A2.5 2.5 0 0 0 3 5.5v9A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5v-9ZM4 7h12v7.5c0 .83-.67 1.5-1.5 1.5h-9A1.5 1.5 0 0 1 4 14.5V7Zm1.5-3h9c.83 0 1.5.67 1.5 1.5V6H4v-.5C4 4.67 4.67 4 5.5 4Z"], { flipInRtl: true }));
           export const Calendar3DayFilled = ( /*#__PURE__*/createFluentIcon('Calendar3DayFilled', "1em", ["M14.5 3A2.5 2.5 0 0 1 17 5.5v9a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9Zm-8 3a.5.5 0 0 0-.5.41v7.18a.5.5 0 0 0 1 0V6.41A.5.5 0 0 0 6.5 6ZM10 6a.5.5 0 0 0-.5.41v7.18a.5.5 0 0 0 1 0V6.41A.5.5 0 0 0 10 6Zm3.5 0a.5.5 0 0 0-.5.41v7.18a.5.5 0 0 0 1 0V6.41a.5.5 0 0 0-.5-.41Z"]));
@@ -1325,7 +1325,7 @@ describe('Build Verification', () => {
           exports.CalculatorMultipleFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalculatorMultipleFilled', "1em", ["M5.5 2A2.5 2.5 0 0 0 3 4.5v9A2.5 2.5 0 0 0 5.5 16h7a2.5 2.5 0 0 0 2.5-2.5v-9A2.5 2.5 0 0 0 12.5 2h-7ZM5 5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5Zm0 5a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm4-1a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm0 2.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM11 10a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm1 1.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm-6 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM7.5 18a2.5 2.5 0 0 1-2-1h7a3.5 3.5 0 0 0 3.5-3.5v-9c.6.46 1 1.18 1 2v7a4.5 4.5 0 0 1-4.5 4.5h-5Z"]));
           exports.CalculatorMultipleRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalculatorMultipleRegular', "1em", ["M6 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H6Zm0 1h6v2H6V5Zm2 5a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm1 1.75a1 1 0 1 0 0 2 1 1 0 0 0 0-2ZM11 10a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm1 1.75a1 1 0 1 0 0 2 1 1 0 0 0 0-2ZM5 10a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm1 1.75a1 1 0 1 0 0 2 1 1 0 0 0 0-2ZM5.5 2A2.5 2.5 0 0 0 3 4.5v9A2.5 2.5 0 0 0 5.5 16h7a2.5 2.5 0 0 0 2.5-2.5v-9A2.5 2.5 0 0 0 12.5 2h-7ZM4 4.5C4 3.67 4.67 3 5.5 3h7c.83 0 1.5.67 1.5 1.5v9c0 .83-.67 1.5-1.5 1.5h-7A1.5 1.5 0 0 1 4 13.5v-9ZM7.5 18a2.5 2.5 0 0 1-2-1h7a3.5 3.5 0 0 0 3.5-3.5v-9c.6.46 1 1.18 1 2v7a4.5 4.5 0 0 1-4.5 4.5h-5Z"]));
           /** @deprecated Color icons are deprecated. [See User Guidance](https://microsoft.github.io/fluentui-system-icons/?path=/docs/icons-user-guidance--docs#color-variants-deprecated) */
-          exports.CalendarColor = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarColor', "1em", \`<path d="M17 6H3v8.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5V6Z" fill="url(#ic_fluent_calendar_20_color__a)"/><path d="M17 6H3v8.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5V6Z" fill="url(#ic_fluent_calendar_20_color__b)"/><g filter="url(#ic_fluent_calendar_20_color__c)"><path d="M8 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" fill="url(#ic_fluent_calendar_20_color__d)"/><path d="M8 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" fill="url(#ic_fluent_calendar_20_color__e)"/><path d="M11 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" fill="url(#ic_fluent_calendar_20_color__f)"/><path d="M10 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" fill="url(#ic_fluent_calendar_20_color__g)"/><path d="M14 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" fill="url(#ic_fluent_calendar_20_color__h)"/></g><path d="M17 5.5A2.5 2.5 0 0 0 14.5 3h-9A2.5 2.5 0 0 0 3 5.5V7h14V5.5Z" fill="url(#ic_fluent_calendar_20_color__i)"/><defs><linearGradient id="ic_fluent_calendar_20_color__a" x1="12.53" y1="18.35" x2="8.5" y2="6.56" gradientUnits="userSpaceOnUse"><stop stop-color="#B3E0FF"/><stop offset="1" stop-color="#B3E0FF"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__b" x1="11.5" y1="10.5" x2="13.5" y2="19.5" gradientUnits="userSpaceOnUse"><stop stop-color="#DCF8FF" stop-opacity="0"/><stop offset="1" stop-color="#FF6CE8" stop-opacity=".7"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__d" x1="9.27" y1="8.42" x2="10.91" y2="18.39" gradientUnits="userSpaceOnUse"><stop stop-color="#0078D4"/><stop offset="1" stop-color="#0067BF"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__e" x1="9.27" y1="8.42" x2="10.91" y2="18.39" gradientUnits="userSpaceOnUse"><stop stop-color="#0078D4"/><stop offset="1" stop-color="#0067BF"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__f" x1="9.27" y1="8.42" x2="10.91" y2="18.39" gradientUnits="userSpaceOnUse"><stop stop-color="#0078D4"/><stop offset="1" stop-color="#0067BF"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__g" x1="9.27" y1="8.42" x2="10.91" y2="18.39" gradientUnits="userSpaceOnUse"><stop stop-color="#0078D4"/><stop offset="1" stop-color="#0067BF"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__h" x1="9.27" y1="8.42" x2="10.91" y2="18.39" gradientUnits="userSpaceOnUse"><stop stop-color="#0078D4"/><stop offset="1" stop-color="#0067BF"/></linearGradient><linearGradient id="ic_fluent_calendar_20_color__i" x1="3" y1="3" x2="15.02" y2="-.77" gradientUnits="userSpaceOnUse"><stop stop-color="#0094F0"/><stop offset="1" stop-color="#2764E7"/></linearGradient><filter id="ic_fluent_calendar_20_color__c" x="4.67" y="8.33" width="10.67" height="7.67" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy=".67"/><feGaussianBlur stdDeviation=".67"/><feColorMatrix values="0 0 0 0 0.1242 0 0 0 0 0.323337 0 0 0 0 0.7958 0 0 0 0.32 0"/><feBlend in2="BackgroundImageFix" result="effect1_dropShadow_378174_9787"/><feBlend in="SourceGraphic" in2="effect1_dropShadow_378174_9787" result="shape"/></filter></defs>\`, { color: true }));
+          exports.CalendarColor = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarColor', "1em", [["path", { "d": "M17 6H3v8.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5V6Z", "fill": "url(#ic_fluent_calendar_20_color__a)" }], ["path", { "d": "M17 6H3v8.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5V6Z", "fill": "url(#ic_fluent_calendar_20_color__b)" }], ["g", { "filter": "url(#ic_fluent_calendar_20_color__c)" }, ["path", { "d": "M8 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z", "fill": "url(#ic_fluent_calendar_20_color__d)" }], ["path", { "d": "M8 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z", "fill": "url(#ic_fluent_calendar_20_color__e)" }], ["path", { "d": "M11 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z", "fill": "url(#ic_fluent_calendar_20_color__f)" }], ["path", { "d": "M10 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z", "fill": "url(#ic_fluent_calendar_20_color__g)" }], ["path", { "d": "M14 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z", "fill": "url(#ic_fluent_calendar_20_color__h)" }]], ["path", { "d": "M17 5.5A2.5 2.5 0 0 0 14.5 3h-9A2.5 2.5 0 0 0 3 5.5V7h14V5.5Z", "fill": "url(#ic_fluent_calendar_20_color__i)" }], ["defs", null, ["linearGradient", { "id": "ic_fluent_calendar_20_color__a", "x1": "12.53", "y1": "18.35", "x2": "8.5", "y2": "6.56", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#B3E0FF" }], ["stop", { "offset": "1", "stopColor": "#B3E0FF" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__b", "x1": "11.5", "y1": "10.5", "x2": "13.5", "y2": "19.5", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#DCF8FF", "stopOpacity": "0" }], ["stop", { "offset": "1", "stopColor": "#FF6CE8", "stopOpacity": ".7" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__d", "x1": "9.27", "y1": "8.42", "x2": "10.91", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078D4" }], ["stop", { "offset": "1", "stopColor": "#0067BF" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__e", "x1": "9.27", "y1": "8.42", "x2": "10.91", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078D4" }], ["stop", { "offset": "1", "stopColor": "#0067BF" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__f", "x1": "9.27", "y1": "8.42", "x2": "10.91", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078D4" }], ["stop", { "offset": "1", "stopColor": "#0067BF" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__g", "x1": "9.27", "y1": "8.42", "x2": "10.91", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078D4" }], ["stop", { "offset": "1", "stopColor": "#0067BF" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__h", "x1": "9.27", "y1": "8.42", "x2": "10.91", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078D4" }], ["stop", { "offset": "1", "stopColor": "#0067BF" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__i", "x1": "3", "y1": "3", "x2": "15.02", "y2": "-.77", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0094F0" }], ["stop", { "offset": "1", "stopColor": "#2764E7" }]], ["filter", { "id": "ic_fluent_calendar_20_color__c", "x": "4.67", "y": "8.33", "width": "10.67", "height": "7.67", "filterUnits": "userSpaceOnUse", "colorInterpolationFilters": "sRGB" }, ["feFlood", { "floodOpacity": "0", "result": "BackgroundImageFix" }], ["feColorMatrix", { "in": "SourceAlpha", "values": "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0", "result": "hardAlpha" }], ["feOffset", { "dy": ".67" }], ["feGaussianBlur", { "stdDeviation": ".67" }], ["feColorMatrix", { "values": "0 0 0 0 0.1242 0 0 0 0 0.323337 0 0 0 0 0.7958 0 0 0 0.32 0" }], ["feBlend", { "in2": "BackgroundImageFix", "result": "effect1_dropShadow_378174_9787" }], ["feBlend", { "in": "SourceGraphic", "in2": "effect1_dropShadow_378174_9787", "result": "shape" }]]]], { color: true }));
           exports.CalendarFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarFilled', "1em", ["M5.5 3A2.5 2.5 0 0 0 3 5.5V6h14v-.5A2.5 2.5 0 0 0 14.5 3h-9ZM17 7H3v7.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5V7Zm-9 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-1 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm4-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-1 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm4-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"], { flipInRtl: true }));
           exports.CalendarRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarRegular', "1em", ["M7 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm1 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm2-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm1 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm2-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm4-5.5A2.5 2.5 0 0 0 14.5 3h-9A2.5 2.5 0 0 0 3 5.5v9A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5v-9ZM4 7h12v7.5c0 .83-.67 1.5-1.5 1.5h-9A1.5 1.5 0 0 1 4 14.5V7Zm1.5-3h9c.83 0 1.5.67 1.5 1.5V6H4v-.5C4 4.67 4.67 4 5.5 4Z"], { flipInRtl: true }));
           exports.Calendar3DayFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Calendar3DayFilled', "1em", ["M14.5 3A2.5 2.5 0 0 1 17 5.5v9a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9Zm-8 3a.5.5 0 0 0-.5.41v7.18a.5.5 0 0 0 1 0V6.41A.5.5 0 0 0 6.5 6ZM10 6a.5.5 0 0 0-.5.41v7.18a.5.5 0 0 0 1 0V6.41A.5.5 0 0 0 10 6Zm3.5 0a.5.5 0 0 0-.5.41v7.18a.5.5 0 0 0 1 0V6.41a.5.5 0 0 0-.5-.41Z"]));
@@ -1489,7 +1489,7 @@ describe('Build Verification', () => {
         const jsContent = await readFile(jsFile, 'utf8');
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
-          "... (45 export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))
+          "... (46 export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))
           "use client";
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
@@ -1582,34 +1582,34 @@ describe('Build Verification', () => {
         expect(trimmedJSContent).toMatchInlineSnapshot(`
           ""use client";
           import { createFluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
-          export const BackpackFilled = ( /*#__PURE__*/createFluentFontIcon("BackpackFilled", "", 2, undefined));
-          export const BackpackRegular = ( /*#__PURE__*/createFluentFontIcon("BackpackRegular", "", 2, undefined));
-          export const BackpackAddFilled = ( /*#__PURE__*/createFluentFontIcon("BackpackAddFilled", "", 2, undefined));
-          export const BackpackAddRegular = ( /*#__PURE__*/createFluentFontIcon("BackpackAddRegular", "", 2, undefined));
-          export const BackspaceFilled = ( /*#__PURE__*/createFluentFontIcon("BackspaceFilled", "", 2, undefined));
-          export const BackspaceRegular = ( /*#__PURE__*/createFluentFontIcon("BackspaceRegular", "", 2, undefined));
-          export const CalculatorFilled = ( /*#__PURE__*/createFluentFontIcon("CalculatorFilled", "", 2, undefined));
-          export const CalculatorRegular = ( /*#__PURE__*/createFluentFontIcon("CalculatorRegular", "", 2, undefined));
-          export const CalculatorArrowClockwiseFilled = ( /*#__PURE__*/createFluentFontIcon("CalculatorArrowClockwiseFilled", "", 2, undefined));
-          export const CalculatorArrowClockwiseRegular = ( /*#__PURE__*/createFluentFontIcon("CalculatorArrowClockwiseRegular", "", 2, undefined));
-          export const CalculatorMultipleFilled = ( /*#__PURE__*/createFluentFontIcon("CalculatorMultipleFilled", "", 2, undefined));
-          export const CalculatorMultipleRegular = ( /*#__PURE__*/createFluentFontIcon("CalculatorMultipleRegular", "", 2, undefined));
-          export const CalendarFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarFilled", "", 2, undefined, { flipInRtl: true }));
-          export const CalendarRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarRegular", "", 2, undefined, { flipInRtl: true }));
-          export const Calendar3DayFilled = ( /*#__PURE__*/createFluentFontIcon("Calendar3DayFilled", "", 2, undefined));
-          export const Calendar3DayRegular = ( /*#__PURE__*/createFluentFontIcon("Calendar3DayRegular", "", 2, undefined));
-          export const CalendarAddFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarAddFilled", "", 2, undefined));
-          export const CalendarAddRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarAddRegular", "", 2, undefined));
-          export const CalendarAgendaFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarAgendaFilled", "", 2, undefined));
-          export const CalendarAgendaRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarAgendaRegular", "", 2, undefined));
-          export const CalendarArrowCounterclockwiseFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowCounterclockwiseFilled", "", 2, undefined));
-          export const CalendarArrowCounterclockwiseRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowCounterclockwiseRegular", "", 2, undefined));
-          export const CalendarArrowDownFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowDownFilled", "", 2, undefined));
-          export const CalendarArrowDownRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowDownRegular", "", 2, undefined));
-          export const CalendarArrowRepeatAllFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRepeatAllFilled", "", 2, undefined));
-          export const CalendarArrowRepeatAllRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRepeatAllRegular", "", 2, undefined));
-          export const CalendarArrowRightFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRightFilled", "", 2, undefined));
-          export const CalendarArrowRightRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRightRegular", "", 2, undefined));
+          export const BackpackFilled = ( /*#__PURE__*/createFluentFontIcon("BackpackFilled", "", 2, undefined));
+          export const BackpackRegular = ( /*#__PURE__*/createFluentFontIcon("BackpackRegular", "", 2, undefined));
+          export const BackpackAddFilled = ( /*#__PURE__*/createFluentFontIcon("BackpackAddFilled", "", 2, undefined));
+          export const BackpackAddRegular = ( /*#__PURE__*/createFluentFontIcon("BackpackAddRegular", "", 2, undefined));
+          export const BackspaceFilled = ( /*#__PURE__*/createFluentFontIcon("BackspaceFilled", "", 2, undefined));
+          export const BackspaceRegular = ( /*#__PURE__*/createFluentFontIcon("BackspaceRegular", "", 2, undefined));
+          export const CalculatorFilled = ( /*#__PURE__*/createFluentFontIcon("CalculatorFilled", "", 2, undefined));
+          export const CalculatorRegular = ( /*#__PURE__*/createFluentFontIcon("CalculatorRegular", "", 2, undefined));
+          export const CalculatorArrowClockwiseFilled = ( /*#__PURE__*/createFluentFontIcon("CalculatorArrowClockwiseFilled", "", 2, undefined));
+          export const CalculatorArrowClockwiseRegular = ( /*#__PURE__*/createFluentFontIcon("CalculatorArrowClockwiseRegular", "", 2, undefined));
+          export const CalculatorMultipleFilled = ( /*#__PURE__*/createFluentFontIcon("CalculatorMultipleFilled", "", 2, undefined));
+          export const CalculatorMultipleRegular = ( /*#__PURE__*/createFluentFontIcon("CalculatorMultipleRegular", "", 2, undefined));
+          export const CalendarFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarFilled", "", 2, undefined, { flipInRtl: true }));
+          export const CalendarRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarRegular", "", 2, undefined, { flipInRtl: true }));
+          export const Calendar3DayFilled = ( /*#__PURE__*/createFluentFontIcon("Calendar3DayFilled", "", 2, undefined));
+          export const Calendar3DayRegular = ( /*#__PURE__*/createFluentFontIcon("Calendar3DayRegular", "", 2, undefined));
+          export const CalendarAddFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarAddFilled", "", 2, undefined));
+          export const CalendarAddRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarAddRegular", "", 2, undefined));
+          export const CalendarAgendaFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarAgendaFilled", "", 2, undefined));
+          export const CalendarAgendaRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarAgendaRegular", "", 2, undefined));
+          export const CalendarArrowCounterclockwiseFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowCounterclockwiseFilled", "", 2, undefined));
+          export const CalendarArrowCounterclockwiseRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowCounterclockwiseRegular", "", 2, undefined));
+          export const CalendarArrowDownFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowDownFilled", "", 2, undefined));
+          export const CalendarArrowDownRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowDownRegular", "", 2, undefined));
+          export const CalendarArrowRepeatAllFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRepeatAllFilled", "", 2, undefined));
+          export const CalendarArrowRepeatAllRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRepeatAllRegular", "", 2, undefined));
+          export const CalendarArrowRightFilled = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRightFilled", "", 2, undefined));
+          export const CalendarArrowRightRegular = ( /*#__PURE__*/createFluentFontIcon("CalendarArrowRightRegular", "", 2, undefined));
           ... (content truncated for snapshot)"
         `);
 
@@ -1676,31 +1676,31 @@ describe('Build Verification', () => {
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const createFluentFontIcon_1 = require("../../utils/fonts/createFluentFontIcon");
-          exports.BackpackFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackpackFilled", "", 2, undefined));
-          exports.BackpackRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackpackRegular", "", 2, undefined));
-          exports.BackpackAddFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackpackAddFilled", "", 2, undefined));
-          exports.BackpackAddRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackpackAddRegular", "", 2, undefined));
-          exports.BackspaceFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackspaceFilled", "", 2, undefined));
-          exports.BackspaceRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackspaceRegular", "", 2, undefined));
-          exports.CalculatorFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorFilled", "", 2, undefined));
-          exports.CalculatorRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorRegular", "", 2, undefined));
-          exports.CalculatorArrowClockwiseFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorArrowClockwiseFilled", "", 2, undefined));
-          exports.CalculatorArrowClockwiseRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorArrowClockwiseRegular", "", 2, undefined));
-          exports.CalculatorMultipleFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorMultipleFilled", "", 2, undefined));
-          exports.CalculatorMultipleRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorMultipleRegular", "", 2, undefined));
-          exports.CalendarFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarFilled", "", 2, undefined, { flipInRtl: true }));
-          exports.CalendarRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarRegular", "", 2, undefined, { flipInRtl: true }));
-          exports.Calendar3DayFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Calendar3DayFilled", "", 2, undefined));
-          exports.Calendar3DayRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Calendar3DayRegular", "", 2, undefined));
-          exports.CalendarAddFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAddFilled", "", 2, undefined));
-          exports.CalendarAddRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAddRegular", "", 2, undefined));
-          exports.CalendarAgendaFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAgendaFilled", "", 2, undefined));
-          exports.CalendarAgendaRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAgendaRegular", "", 2, undefined));
-          exports.CalendarArrowCounterclockwiseFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowCounterclockwiseFilled", "", 2, undefined));
-          exports.CalendarArrowCounterclockwiseRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowCounterclockwiseRegular", "", 2, undefined));
-          exports.CalendarArrowDownFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowDownFilled", "", 2, undefined));
-          exports.CalendarArrowDownRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowDownRegular", "", 2, undefined));
-          exports.CalendarArrowRepeatAllFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowRepeatAllFilled", "", 2, undefined));
+          exports.BackpackFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackpackFilled", "", 2, undefined));
+          exports.BackpackRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackpackRegular", "", 2, undefined));
+          exports.BackpackAddFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackpackAddFilled", "", 2, undefined));
+          exports.BackpackAddRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackpackAddRegular", "", 2, undefined));
+          exports.BackspaceFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackspaceFilled", "", 2, undefined));
+          exports.BackspaceRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackspaceRegular", "", 2, undefined));
+          exports.CalculatorFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorFilled", "", 2, undefined));
+          exports.CalculatorRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorRegular", "", 2, undefined));
+          exports.CalculatorArrowClockwiseFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorArrowClockwiseFilled", "", 2, undefined));
+          exports.CalculatorArrowClockwiseRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorArrowClockwiseRegular", "", 2, undefined));
+          exports.CalculatorMultipleFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorMultipleFilled", "", 2, undefined));
+          exports.CalculatorMultipleRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalculatorMultipleRegular", "", 2, undefined));
+          exports.CalendarFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarFilled", "", 2, undefined, { flipInRtl: true }));
+          exports.CalendarRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarRegular", "", 2, undefined, { flipInRtl: true }));
+          exports.Calendar3DayFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Calendar3DayFilled", "", 2, undefined));
+          exports.Calendar3DayRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Calendar3DayRegular", "", 2, undefined));
+          exports.CalendarAddFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAddFilled", "", 2, undefined));
+          exports.CalendarAddRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAddRegular", "", 2, undefined));
+          exports.CalendarAgendaFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAgendaFilled", "", 2, undefined));
+          exports.CalendarAgendaRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarAgendaRegular", "", 2, undefined));
+          exports.CalendarArrowCounterclockwiseFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowCounterclockwiseFilled", "", 2, undefined));
+          exports.CalendarArrowCounterclockwiseRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowCounterclockwiseRegular", "", 2, undefined));
+          exports.CalendarArrowDownFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowDownFilled", "", 2, undefined));
+          exports.CalendarArrowDownRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowDownRegular", "", 2, undefined));
+          exports.CalendarArrowRepeatAllFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarArrowRepeatAllFilled", "", 2, undefined));
           ... (content truncated for snapshot)"
         `);
 
@@ -2023,15 +2023,15 @@ describe('Build Verification', () => {
       const { svgPathCjs, svgPathEsm } = getAssetPaths();
       const esmStats = await getAtomDirStats(svgPathEsm);
       const cjsStats = await getAtomDirStats(svgPathCjs);
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2831`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2831`);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2884`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2884`);
     });
     it(`should have same number of atoms/fonts icon files in lib and lib-cjs`, async () => {
       const { fontsPathCjs, fontsPathEsm } = getAssetPaths();
       const esmStats = await getAtomDirStats(fontsPathEsm);
       const cjsStats = await getAtomDirStats(fontsPathCjs);
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2824`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2824`);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2877`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2877`);
     });
     it.each(['lib', 'lib-cjs'])('should have atoms/svg directory with icon files in %s', async (libDir) => {
       const atomsSvgPath = path.join(__dirname, libDir, 'atoms', 'svg');
@@ -2473,28 +2473,58 @@ describe('Build Verification', () => {
         'useIconState.d.ts',
         'bundleIcon.js',
         'bundleIcon.d.ts',
-        'headless.css',
+        'utils.js',
+        'utils.d.ts',
+        'styles.css',
       ];
       for (const file of expectedFiles) {
         expect(fs.existsSync(path.join(headlessDir, file))).toBe(true);
       }
 
-      // headless.css must use data-attribute selectors (the key differentiator from CSS-in-JS)
-      const css = await readFile(path.join(headlessDir, 'headless.css'), 'utf-8');
+      // styles.css must use data-attribute selectors (the key differentiator from CSS-in-JS)
+      const css = await readFile(path.join(headlessDir, 'styles.css'), 'utf-8');
       expect(css).toContain('[data-fui-icon]');
       expect(css).toContain('[data-fui-icon-rtl]');
       expect(css).toContain('[data-fui-icon-hidden]');
 
       // Font sub-infrastructure
       expect(fs.existsSync(path.join(headlessDir, 'fonts', 'createFluentFontIcon.js'))).toBe(true);
-      expect(fs.existsSync(path.join(headlessDir, 'fonts', 'headless-fonts.css'))).toBe(true);
+      expect(fs.existsSync(path.join(headlessDir, 'fonts', 'styles.css'))).toBe(true);
     });
 
     it('package.json#sideEffects include headless entries css entries', () => {
       const packageJsonPath = path.join(__dirname, 'package.json');
       const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
 
-      expect(packageJson.sideEffects).toEqual(['**/headless/fonts/headless-fonts.css', '**/headless/headless.css']);
+      expect(packageJson.sideEffects).toEqual(['**/headless/fonts/styles.css', '**/headless/styles.css']);
+    });
+
+    // Tree-shaking guardrail: the headless API and its atoms must never pull in
+    // Griffel. The shared core/ modules are styling-agnostic, so any Griffel
+    // reference here means a regression leaked the CSS-in-JS runtime into headless.
+    it('headless output must be Griffel-free (tree-shaking guardrail)', () => {
+      const targets = [
+        path.join(__dirname, 'lib', 'headless'),
+        path.join(__dirname, 'lib', 'atoms', 'headless-svg'),
+        path.join(__dirname, 'lib', 'atoms', 'headless-fonts'),
+        path.join(__dirname, 'lib-cjs', 'headless'),
+        path.join(__dirname, 'lib-cjs', 'atoms', 'headless-svg'),
+        path.join(__dirname, 'lib-cjs', 'atoms', 'headless-fonts'),
+      ];
+      /** @type {string[]} */
+      const offenders = [];
+      for (const dir of targets) {
+        if (!fs.existsSync(dir)) continue;
+        for (const entry of fs.readdirSync(dir, { recursive: true })) {
+          const rel = String(entry);
+          if (!rel.endsWith('.js')) continue;
+          const full = path.join(dir, rel);
+          if (/@griffel/.test(fs.readFileSync(full, 'utf-8'))) {
+            offenders.push(path.relative(__dirname, full));
+          }
+        }
+      }
+      expect(offenders).toEqual([]);
     });
   });
 

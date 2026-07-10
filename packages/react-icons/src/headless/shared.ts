@@ -1,8 +1,8 @@
 // Data attribute names used by headless icons for CSS targeting.
-// The shipped headless.css file uses these attribute selectors for styling.
+// The shipped styles.css file uses these attribute selectors for styling.
 
-/** Base data attribute applied to all icons (SVG and font). */
-export const DATA_FUI_ICON = 'data-fui-icon';
+// Base data attribute applied to all icons (SVG and font). Shared with the
+// default (Griffel) API — single source of truth lives in ../utils/constants.
 
 /** Data attribute applied to icons that should flip in RTL text direction. */
 export const DATA_FUI_ICON_RTL = 'data-fui-icon-rtl';
@@ -21,6 +21,7 @@ export {
   iconLightClassName,
   iconColorClassName,
   fontIconClassName,
+  DATA_FUI_ICON,
 } from '../utils/constants';
 
 // Re-export types

@@ -1,0 +1,17 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "react-icons-file-type",
+  "projectType": "library",
+  "sourceRoot": "packages/react-icons-file-type/src",
+  "tags": ["platform:web", "npm:standalone"],
+  "targets": {
+    "build": {
+      "cache": true,
+      "inputs": ["default", "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)"],
+      "outputs": ["{projectRoot}/lib", "{projectRoot}/lib-cjs"]
+    },
+    "bundle-size": {
+      "dependsOn": ["build"]
+    }
+  }
+}

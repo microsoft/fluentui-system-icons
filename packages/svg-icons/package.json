@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/svg-icons",
-  "version": "1.1.324",
+  "version": "1.1.332",
   "description": "Fluent System Icons are a collection of familiar, friendly, and modern icons from Microsoft.",
   "license": "MIT",
   "repository": {
@@ -11,15 +11,20 @@
     "clean": "git clean -fXd ./icons",
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./icons --extension=svg",
     "copywithdirs": "node ../../importer/generate.js --source=../../assets --dest=./icons --extension=svg --keepdirs=true",
-    "rename": "renamer --find 'ic_fluent_' '**'",
-    "optimize": "svgo --config svgo.config.js --folder=./icons --recursive --precision=2",
+    "rename": "node ../../importer/rename-strip-prefix.js --dir ./icons --prefix ic_fluent_",
+    "optimize": "svgo --config svgo.config.js --folder=./icons --recursive --precision=2 --quiet",
     "unfill": "node unfill.js --path=./icons/",
+    "prebuild": "npm run clean",
     "build": "npm run copy && npm run rename && npm run optimize && npm run unfill",
     "buildforblazor": "npm run copywithdirs && npm run rename && npm run optimize && npm run unfill",
     "build-verify": "vitest run build-verify.test.js"
   },
   "devDependencies": {
-    "renamer": "^2.0.1",
     "svgo": "2.8.2"
-  }
+  },
+  "files": [
+    "icons/",
+    "README.md",
+    "CHANGELOG.md"
+  ]
 }

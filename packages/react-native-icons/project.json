@@ -1,0 +1,8 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "react-native-icons",
+  "projectType": "library",
+  "sourceRoot": "packages/react-native-icons/src",
+  "tags": ["platform:react-native"],
+  "implicitDependencies": ["system-icons-processing"]
+}

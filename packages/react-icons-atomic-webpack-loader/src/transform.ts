@@ -1,39 +1,46 @@
 import { parseSync } from 'oxc-parser';
-import type { StaticImport, StaticExport } from 'oxc-parser';
 import MagicString from 'magic-string';
 
-const MODULE_NAME = '@fluentui/react-icons';
-const ICON_SUFFIX_REGEX = /(\d*)?(Regular|Filled|Light|Color)$/;
+import {
+  getModuleDescriptor,
+  resolveModuleVariant,
+  resolveColorVariant,
+  resolveModuleHeadless,
+  isColorIconName,
+} from './modules';
+import type { IconVariant, ModuleDescriptor } from './modules';
 
 interface TransformOptions {
-  iconVariant: 'svg' | 'fonts' | 'svg-sprite';
+  /** The requested icon variant. Applied to every supported module. */
+  iconVariant: IconVariant;
+  /** The variant to fall back to when a module does not support `iconVariant`. */
+  fallbackVariant?: IconVariant;
+  /** Resolve to the headless (Griffel-free) build where the module supports it. */
+  headless?: boolean;
   path: string;
 }
 
-function getAtomicImportPath(importName: string, iconVariant: 'svg' | 'fonts' | 'svg-sprite'): string {
-  if (importName === 'useIconContext' || importName === 'IconDirectionContextProvider') {
-    return '@fluentui/react-icons/providers';
-  }
-
-  const isIcon = importName.match(ICON_SUFFIX_REGEX);
-
-  if (!isIcon) {
-    return '@fluentui/react-icons/utils';
-  }
-
-  const withoutSuffix = importName.replace(ICON_SUFFIX_REGEX, '');
-  const kebabCase = withoutSuffix.replace(/[a-z\d](?=[A-Z])|[a-zA-Z](?=\d)|[A-Z](?=[A-Z][a-z])/g, '$&-').toLowerCase();
-
-  return `@fluentui/react-icons/${iconVariant}/${kebabCase}`;
+export interface Diagnostic {
+  level: 'error' | 'warning';
+  message: string;
 }
 
 export interface TransformResult {
   code: string;
   map: ReturnType<MagicString['generateMap']>;
+  /**
+   * Diagnostics gathered while rewriting. Only modules that are actually
+   * imported/re-exported (as reported by the parsed module record) contribute
+   * diagnostics, so mentions in comments or string literals never trigger one.
+   */
+  diagnostics: Diagnostic[];
 }
 
+/** A module's resolved rewrite target: the icon variant and whether to use its headless build. */
+type ResolvedTarget = { variant: IconVariant; headless: boolean };
+
 export function transformSource(source: string, options: TransformOptions): TransformResult {
-  const { iconVariant, path } = options;
+  const { iconVariant, fallbackVariant, headless = false, path } = options;
 
   const result = parseSync(path, source, {
     sourceType: 'module',
@@ -46,11 +53,90 @@ export function transformSource(source: string, options: TransformOptions): Tran
   const { staticImports, staticExports } = result.module;
   const src = new MagicString(source);
 
+  const diagnostics: Diagnostic[] = [];
+  // Dedupe diagnostics by message so a module's variant / color / headless
+  // concern surfaces at most once, even though resolution now runs per
+  // (module, color-ness) rather than per module.
+  const seenDiagnostics = new Set<string>();
+  const pushDiagnostic = (diagnostic: Diagnostic): void => {
+    const key = `${diagnostic.level}:${diagnostic.message}`;
+    if (seenDiagnostics.has(key)) return;
+    seenDiagnostics.add(key);
+    diagnostics.push(diagnostic);
+  };
+
+  // Resolve each referenced module at most once per color-ness: color icons may
+  // route to a different variant than their non-color siblings, so the cache key
+  // is `${name}:${isColor}`. Resolution stays O(#modules × 2) regardless of how
+  // many icons a file imports.
+  const resolvedTargets = new Map<string, ResolvedTarget | null>();
+
+  /**
+   * Returns the target (variant + headless) to rewrite a single referenced
+   * import with, or `null` when the module could not be resolved (an error
+   * diagnostic has been recorded and the import should be left untouched).
+   */
+  const targetFor = (descriptor: ModuleDescriptor, isColor: boolean): ResolvedTarget | null => {
+    const cacheKey = `${descriptor.name}:${isColor}`;
+    if (resolvedTargets.has(cacheKey)) {
+      return resolvedTargets.get(cacheKey)!;
+    }
+
+    const resolution = resolveModuleVariant(descriptor, iconVariant, fallbackVariant);
+
+    if (resolution.warning) {
+      pushDiagnostic({ level: 'warning', message: resolution.warning });
+    }
+    if (resolution.error) {
+      pushDiagnostic({ level: 'error', message: resolution.error });
+    }
+
+    if (!resolution.variant) {
+      resolvedTargets.set(cacheKey, null);
+      return null;
+    }
+
+    let variant = resolution.variant;
+
+    // Color icons are SVG-only; reroute them off any color-less variant (fonts)
+    // to a color-capable one, honoring the fallback precedence.
+    if (isColor) {
+      const colorResolution = resolveColorVariant(descriptor, variant, iconVariant, fallbackVariant);
+      if (colorResolution.warning) {
+        pushDiagnostic({ level: 'warning', message: colorResolution.warning });
+      }
+      variant = colorResolution.variant;
+    }
+
+    const headlessResolution = resolveModuleHeadless(descriptor, variant, headless);
+    if (headlessResolution.warning) {
+      pushDiagnostic({ level: 'warning', message: headlessResolution.warning });
+    }
+
+    const target: ResolvedTarget = { variant, headless: headlessResolution.headless };
+    resolvedTargets.set(cacheKey, target);
+    return target;
+  };
+
   for (const imp of staticImports) {
-    if (imp.moduleRequest.value !== MODULE_NAME) continue;
+    const moduleName = imp.moduleRequest.value;
+    const descriptor = getModuleDescriptor(moduleName);
+    if (!descriptor) continue;
 
     const namedEntries = imp.entries.filter((e) => e.importName.kind === 'Name');
     if (namedEntries.length === 0) continue;
+
+    // Resolve each named specifier independently — color icons may route to a
+    // different variant than their non-color siblings in the same statement.
+    const resolvedEntries = namedEntries.map((entry) => ({
+      entry,
+      importedName: entry.importName.name!,
+      target: targetFor(descriptor, isColorIconName(entry.importName.name!)),
+    }));
+
+    // A module-level resolution error is independent of color-ness, so if any
+    // specifier is unresolved they all are — leave the whole statement untouched.
+    if (resolvedEntries.some(({ target }) => !target)) continue;
 
     const otherEntries = imp.entries.filter((e) => e.importName.kind !== 'Name');
     const lines: string[] = [];
@@ -59,13 +145,12 @@ export function transformSource(source: string, options: TransformOptions): Tran
       const names = otherEntries
         .map((e) => (e.importName.kind === 'Default' ? e.localName.value : `* as ${e.localName.value}`))
         .join(', ');
-      lines.push(`import ${names} from '${MODULE_NAME}';`);
+      lines.push(`import ${names} from '${moduleName}';`);
     }
 
-    for (const entry of namedEntries) {
-      const importedName = entry.importName.name!;
+    for (const { entry, importedName, target } of resolvedEntries) {
       const localName = entry.localName.value;
-      const newSource = getAtomicImportPath(importedName, iconVariant);
+      const newSource = descriptor.resolve(importedName, target!.variant, target!.headless);
       const spec = importedName === localName ? importedName : `${importedName} as ${localName}`;
       lines.push(`import { ${spec} } from '${newSource}';`);
     }
@@ -75,19 +160,31 @@ export function transformSource(source: string, options: TransformOptions): Tran
 
   for (const exp of staticExports) {
     const relevantEntries = exp.entries.filter(
-      (e) => e.moduleRequest?.value === MODULE_NAME && e.exportName.kind === 'Name',
+      (e) => e.moduleRequest && getModuleDescriptor(e.moduleRequest.value) && e.exportName.kind === 'Name',
     );
     if (relevantEntries.length === 0) continue;
+
+    // Skip indirect re-exports (`import { X } from '...'; export { X };`): oxc reports these as static
+    // exports anchored at the originating `import` statement. The import loop above has already
+    // rewritten that range, so emitting again here would produce duplicate declarations.
+    if (source.startsWith('import', exp.start)) continue;
 
     const lines: string[] = [];
 
     for (const entry of relevantEntries) {
+      const moduleName = entry.moduleRequest!.value;
+      const descriptor = getModuleDescriptor(moduleName)!;
       const importedName = entry.importName.name!;
+      const target = targetFor(descriptor, isColorIconName(importedName));
+      if (!target) continue;
+
       const exportedName = entry.exportName.name!;
-      const newSource = getAtomicImportPath(importedName, iconVariant);
+      const newSource = descriptor.resolve(importedName, target.variant, target.headless);
       const spec = importedName === exportedName ? importedName : `${importedName} as ${exportedName}`;
       lines.push(`export { ${spec} } from '${newSource}';`);
     }
+
+    if (lines.length === 0) continue;
 
     src.overwrite(exp.start, exp.end, lines.join('\n'));
   }
@@ -95,5 +192,6 @@ export function transformSource(source: string, options: TransformOptions): Tran
   return {
     code: src.toString(),
     map: src.generateMap({ hires: true }),
+    diagnostics,
   };
 }

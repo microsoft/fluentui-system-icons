@@ -1,0 +1,169 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="File Type Icons/Migration (v8 → v9)" />
+
+<h1 className="sbdocs-title">Migrating from v8</h1>
+
+> This page is written to be self-contained for both humans and automated agents. It lists the
+> exact package/API differences and the rewrite for each v8 usage pattern. The v9 package
+> (`@fluentui/react-icons-file-type`) is **not** a drop-in re-export of v8
+> (`@fluentui/react-file-type-icons`) — the package name is different, several v8 APIs are
+> intentionally not ported, and `FileIconType` is now a `const` object.
+
+## 1. The package name changed
+
+The name's words are reordered — update `package.json` and every import.
+
+|          | Package                           |
+| -------- | --------------------------------- |
+| v8 (old) | `@fluentui/react-file-type-icons` |
+| v9 (new) | `@fluentui/react-icons-file-type` |
+
+```bash
+npm uninstall @fluentui/react-file-type-icons
+npm install @fluentui/react-icons-file-type
+```
+
+```diff
+- import { ... } from '@fluentui/react-file-type-icons';
++ import { ... } from '@fluentui/react-icons-file-type';
+```
+
+## 2. Render the `FileTypeIcon` component (no global registry)
+
+In v8 you registered the icons globally and rendered them through the v8 `<Icon>` component:
+
+```tsx
+// v8
+import { initializeFileTypeIcons, getFileTypeIconProps } from '@fluentui/react-file-type-icons';
+import { Icon } from '@fluentui/react';
+
+// once, at app startup
+initializeFileTypeIcons();
+
+<Icon {...getFileTypeIconProps({ extension: 'docx', size: 24 })} />;
+```
+
+In v9 there is **no global registry** and no `initializeFileTypeIcons()` — render `FileTypeIcon`
+directly with the same options as props (`extension`, `type`, `size`, `imageFileType`):
+
+```tsx
+// v9
+import { FileTypeIcon } from '@fluentui/react-icons-file-type';
+
+<FileTypeIcon extension="docx" size={24} />;
+```
+
+## 3. Configure a custom CDN via the provider
+
+The Fluent CDN is the **default** asset host in both v8 and v9. To override it, wrap a subtree
+with `FileTypeIconsProvider` instead of passing a base URL to `initializeFileTypeIcons()`. There
+is no per-`FileTypeIcon` `baseUrl` prop.
+
+```tsx
+// v9
+import { FileTypeIconsProvider, FileTypeIcon } from '@fluentui/react-icons-file-type';
+
+<FileTypeIconsProvider baseUrl="https://my-cdn.example.com/item-types/">
+  <FileTypeIcon extension="pptx" size={24} />
+</FileTypeIconsProvider>;
+```
+
+## 4. `FileIconType` is a `const` object, not an `enum`
+
+Value and type usage are unchanged (`FileIconType.folder` and `type: FileIconType` both work),
+so it's a drop-in for typical use. The one behavioral difference: a `const` object has **no
+reverse mapping**, so `FileIconType[7]` (number → name) is not available. If you relied on that,
+keep your own name table.
+
+```tsx
+import { FileTypeIcon, FileIconType } from '@fluentui/react-icons-file-type';
+
+<FileTypeIcon type={FileIconType.folder} size={24} />;
+```
+
+## 5. High-DPI handling is now SSR-safe (`srcset`)
+
+In v8 the resolver picked a **single** asset URL based on the device pixel ratio it read at
+call time. That has two problems: under server-side rendering there is no `window`, so the
+server always emitted the standard-density (1x) URL, and the first client render had to match it
+— then a post-hydration effect would swap in the high-density asset, causing a flicker and a
+redundant download. It also could not react to a window moving to a display with a different DPI.
+
+In v9 `FileTypeIcon` no longer reads `devicePixelRatio` in JavaScript. It renders a deterministic
+1x `src` plus a [`srcset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset)
+listing every published density, and lets the **browser** select the right asset:
+
+```html
+<!-- v9 output (png, size 24) -->
+<img
+  src="…/24/docx.png"
+  srcset="…/24/docx.png 1x, …/24_1.5x/docx.png 1.5x, …/24_2x/docx.png 2x, …/24_3x/docx.png 3x, …/24_4x/docx.png 4x"
+  width="24"
+  height="24"
+/>
+```
+
+This is fully server/client deterministic (no hydration mismatch, no flicker, no double-fetch)
+and the browser re-evaluates the density automatically when the image moves across displays.
+There is nothing to configure — it is the default behavior. As a result, the v8 notion of
+selecting density from an explicit window/device pixel ratio has no v9 equivalent (and is not
+needed).
+
+## 6. Styling targets a single `<img>` (no wrapper element)
+
+The v8 icon was rendered through the `<Icon>` component, which wrapped the glyph in its own box
+and applied container-oriented styles such as `overflow: hidden`. The v9 `FileTypeIcon` renders a
+**single `<img>`** with no wrapper, so styling applies directly to that element:
+
+- The default (Griffel) entry point and the opt-in `headless/styles.css` apply only what is
+  meaningful on a replaced element: `display: inline-block` and `object-fit: contain` (which keeps
+  non-square assets from stretching inside the square `width`/`height` box). `object-fit` is
+  **only** honored on the `<img>` itself — it has no effect on a parent element.
+- The v8 `overflow: hidden` is intentionally **dropped**: `overflow` is a no-op on a replaced
+  element like `<img>`, so it served no purpose.
+
+If your own CSS targeted the v8 wrapper (or relied on `overflow` to clip the icon), update it to
+target the `<img>` directly (via `className` or the `[data-fui-filetype-icon]` attribute) and rely
+on `object-fit`/`width`/`height` instead:
+
+```css
+[data-fui-filetype-icon] {
+  display: inline-block;
+  object-fit: contain;
+}
+```
+
+## Key differences at a glance
+
+| v8                                                      | v9                                                                     |
+| ------------------------------------------------------- | ---------------------------------------------------------------------- |
+| Package `@fluentui/react-file-type-icons`               | Package `@fluentui/react-icons-file-type`                              |
+| `initializeFileTypeIcons()` required at startup         | Not needed — remove the call                                           |
+| `<Icon {...getFileTypeIconProps(options)} />`           | `<FileTypeIcon {...options} />`                                        |
+| Custom CDN passed to `initializeFileTypeIcons(baseUrl)` | `<FileTypeIconsProvider baseUrl="...">`; the Fluent CDN is the default |
+| Icons registered into the global icon registry          | No global state; assets resolved per render                            |
+| Single density-resolved `src` (not SSR-safe)            | SSR-safe 1x `src` + `srcset`; browser picks the density                |
+| `<Icon>` wrapper with container styles (`overflow`)     | Single `<img>`, no wrapper; `object-fit` on the image (no `overflow`)  |
+| `FileIconType` is a TS `enum` (with reverse mapping)    | `FileIconType` is a `const` object (no reverse mapping)                |
+
+## APIs that were not ported
+
+These v8 exports are intentionally **not** part of the v9 public API — use the `FileTypeIcon`
+component instead:
+
+| v8 export                       | v9                                            |
+| ------------------------------- | --------------------------------------------- |
+| `initializeFileTypeIcons()`     | removed — no global registry                  |
+| `getFileTypeIconProps()`        | `<FileTypeIcon {...options} />`               |
+| `getFileTypeIconAsUrl()`        | not exported — use `<FileTypeIcon>`           |
+| `getFileTypeIconAsHTMLString()` | not exported — use `<FileTypeIcon>`           |
+| `FileTypeIconMap`               | not exported — internal implementation detail |
+
+## v9 public API surface
+
+- **Components:** `FileTypeIcon`, `FileTypeIconsProvider`
+- **Hook:** `useFileTypeIconsContext`
+- **Values:** `FileIconType`, `DEFAULT_BASE_URL`, `FLUENT_CDN_BASE_URL`, `DEFAULT_ICON_SIZE`, `ICON_SIZES`
+- **Types:** `FileTypeIconProps`, `FileTypeIconsContextValue`, `FileTypeIconsProviderProps`, `FileIconTypeInput`, `FileTypeIconSize`, `ImageFileType`
+- **Entry points:** `@fluentui/react-icons-file-type` (default, Griffel-styled) and `@fluentui/react-icons-file-type/headless` (no Griffel runtime; opt-in `headless/styles.css`)

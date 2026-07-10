@@ -18,7 +18,23 @@ const preview = {
     options: {
       storySort: {
         method: 'alphabetical',
-        order: ['Icons', ['Overview', 'Catalog', 'User Guidance']],
+        order: [
+          'Icons',
+          [
+            'Overview',
+            'Catalog',
+            'Rendering Approaches',
+            'Atomic API',
+            'Headless API',
+            'Color Variants',
+            'Recipes',
+            'API Contract',
+            'Build Transforms',
+            'Bundle Size',
+          ],
+          'File Type Icons',
+          ['Overview', 'Migration (v8 → v9)'],
+        ],
       },
     },
 

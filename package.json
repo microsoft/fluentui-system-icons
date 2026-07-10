@@ -24,6 +24,8 @@
     "format:check": "nx format:check"
   },
   "devDependencies": {
+    "@commitlint/cli": "^21.1.0",
+    "@commitlint/config-conventional": "^21.1.0",
     "@griffel/webpack-extraction-plugin": "0.5.14",
     "@griffel/webpack-loader": "2.2.23",
     "@nx/js": "22.6.5",
@@ -50,7 +52,7 @@
     "storybook": "9.1.19",
     "typescript": "5.0.4",
     "typescript-eslint": "7.18.0",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.6"
   },
   "optionalDependencies": {
     "@esbuild/linux-x64": "0.25.12",

@@ -9,6 +9,13 @@ on:
         default: false
         type: boolean
 
+# Serialize all automated writers to `main` (this workflow and publish.yml / bundle-size.baseline.yml
+# share the same group) so their pushes can never race and clobber each other.
+# `cancel-in-progress: false` queues runs instead of cancelling them.
+concurrency:
+  group: main-writer
+  cancel-in-progress: false
+
 jobs:
   publish-standalone:
     # Prevent infinite loops: skip if the commit was made by the build system itself
@@ -37,7 +44,7 @@ jobs:
           app-id: ${{ secrets.GH_FLUENT_CI_APP_ID }}
           private-key: ${{ secrets.GH_FLUENT_CI_PRIVATE_KEY }}
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           token: ${{ steps.generate-token.outputs.token }}
           filter: blob:none
@@ -55,25 +62,58 @@ jobs:
       - name: Resolve standalone projects
         id: projects
         run: |
-          NX_NAMES=$(npx nx show projects -p "tag:npm:standalone" --sep ',')
+          # Intersect `npm:standalone` with the Nx-inferred `npm:public` tag (derived from each
+          # package.json `private` field) so private packages (e.g. react-icons-file-type) — which
+          # belong to the standalone release group only for pre-release versioning — are never
+          # versioned/changelogged/published/tagged by this public release workflow.
+          NX_NAMES=$(npx nx show projects -p "tag:npm:standalone" --exclude "tag:npm:private" --sep ',')
           echo "nx-names=$NX_NAMES" >> "$GITHUB_OUTPUT"
-          echo "### Standalone projects" >> $GITHUB_STEP_SUMMARY
+          echo "### Standalone projects (publishable)" >> $GITHUB_STEP_SUMMARY
           echo "$NX_NAMES" | tr ',' '\n' | while read -r p; do echo "- $p" >> $GITHUB_STEP_SUMMARY; done
 
       - name: Build packages
         run: |
-          npx nx run-many -t build --projects=tag:npm:standalone
+          npx nx run-many -t build --projects=${{ steps.projects.outputs.nx-names }}
 
       - name: Version packages (Nx Release)
         run: |
-          npx nx release version --group=standalone --verbose
+          npx nx release version --projects=${{ steps.projects.outputs.nx-names }} --verbose
+
+      - name: Resolve released projects (new versions this run)
+        id: released
+        # `nx release version` only bumps packages with releasable conventional-commit changes;
+        # unchanged packages keep their version (and therefore their existing tag). We treat
+        # "the {pkg}@{version} tag already exists" as "this version was already released" and drop
+        # it from the set. Every downstream step (changelog, publish, tag) operates on this single
+        # source of truth, which also makes re-runs idempotent: a re-run after a partial failure
+        # only re-processes the versions that were not yet tagged.
+        run: |
+          RELEASED=""
+          for pkg in $(echo "${{ steps.projects.outputs.nx-names }}" | tr ',' '\n'); do
+            VERSION=$(node -p "require('./packages/${pkg}/package.json').version")
+            TAG="${pkg}@${VERSION}"
+            if git rev-parse -q --verify "refs/tags/${TAG}" >/dev/null; then
+              echo "Skipping ${TAG} — already released (tag exists)"
+              continue
+            fi
+            RELEASED="${RELEASED:+$RELEASED,}$pkg"
+          done
+          echo "names=$RELEASED" >> "$GITHUB_OUTPUT"
+          echo "### Released projects (new versions this run)" >> $GITHUB_STEP_SUMMARY
+          if [ -z "$RELEASED" ]; then
+            echo "- (none — all targeted packages already released)" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "$RELEASED" | tr ',' '\n' | while read -r p; do echo "- $p" >> $GITHUB_STEP_SUMMARY; done
+          fi
 
       - name: Generate changelogs (Nx Release)
         # --first-release: allows changelog generation when no prior git tag exists (first release).
         # Safe to keep permanently — once per-package tags exist, they take priority and this flag becomes a no-op.
         # Scoped here instead of global nx.json `automaticFromRef` to avoid masking tag-resolution failures in other release groups.
+        # Operates on the already-filtered released set (see "Resolve released projects").
         run: |
-          for pkg in $(echo "${{ steps.projects.outputs.nx-names }}" | tr ',' '\n'); do
+          for pkg in $(echo "${{ steps.released.outputs.names }}" | tr ',' '\n'); do
+            [ -z "$pkg" ] && continue
             VERSION=$(node -p "require('./packages/${pkg}/package.json').version")
             echo "Generating changelog for ${pkg}@${VERSION}"
             npx nx release changelog "$VERSION" --projects="$pkg" --first-release --no-git-tag --no-git-commit --verbose
@@ -83,9 +123,9 @@ jobs:
         run: npm install --package-lock-only
 
       - name: Publish to npm (Nx Release)
-        if: ${{ !inputs.dry-run }}
+        if: ${{ !inputs.dry-run && steps.released.outputs.names != '' }}
         run: |
-          npx nx release publish --projects=${{ steps.projects.outputs.nx-names }} --access public --verbose
+          npx nx release publish --projects=${{ steps.released.outputs.names }} --access public --verbose
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -96,15 +136,27 @@ jobs:
         if: ${{ !inputs.dry-run }}
         run: |
           git add -A
-          git commit -m "Release standalone packages [skip ci]"
+          # Guard against an empty commit: if every targeted package was unchanged there is
+          # nothing staged, and `git commit` would fail the job. Skip cleanly instead.
+          if git diff --cached --quiet; then
+            echo "No release changes to commit — all targeted packages were already released"
+          else
+            git commit -m "chore(release): publish standalone packages [skip ci]"
+          fi
 
       - name: Tag releases
-        # Tags must be created manually after the final commit (which includes lockfile updates, changelogs, etc.)
-        # rather than by nx release (git.tag: false in nx.json) — nx would tag before the commit is finalized,
-        # causing tags to point to an intermediate state instead of the release commit.
+        # Tags are created manually (git.tag: false in nx.json) after the final commit so they point
+        # at the release commit that also includes the lockfile update — nx would otherwise tag before
+        # that commit is finalized. nx.json uses granular `version.git`/`changelog.git` config, which
+        # the unified `nx release` command (the only variant that natively skips unchanged packages
+        # when tagging) refuses to run with; migrating to top-level `release.git` would also alter the
+        # sub-command flow that publish.yml depends on. So we tag here, over the already-filtered
+        # released set (see "Resolve released projects") — so an unchanged/already-tagged package can
+        # never abort the job, and re-runs after a partial failure only create the missing tags.
         if: ${{ !inputs.dry-run }}
         run: |
-          for pkg in $(echo "${{ steps.projects.outputs.nx-names }}" | tr ',' '\n'); do
+          for pkg in $(echo "${{ steps.released.outputs.names }}" | tr ',' '\n'); do
+            [ -z "$pkg" ] && continue
             VERSION=$(node -p "require('./packages/${pkg}/package.json').version")
             TAG="${pkg}@${VERSION}"
             echo "Creating tag: $TAG"
@@ -118,26 +170,57 @@ jobs:
 
       - name: Dry-run summary
         if: ${{ inputs.dry-run }}
+        # Mirrors the real run exactly: only the change-aware "released" set (see "Resolve released
+        # projects") is published/committed/tagged. Unchanged/already-released packages are listed
+        # separately as skipped, so the summary reflects what would actually happen — not the full
+        # candidate list.
         run: |
+          RELEASED="${{ steps.released.outputs.names }}"
+
           echo "## 🧪 Dry-run Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "The following actions would have been performed:" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
+
           echo "### 📦 Packages that would be published" >> $GITHUB_STEP_SUMMARY
+          echo "_nx release publish additionally skips any version already on the npm registry._" >> $GITHUB_STEP_SUMMARY
+          if [ -z "$RELEASED" ]; then
+            echo "- (none — every targeted package is already released)" >> $GITHUB_STEP_SUMMARY
+          else
+            for pkg in $(echo "$RELEASED" | tr ',' '\n'); do
+              VERSION=$(node -p "require('./packages/${pkg}/package.json').version")
+              NAME=$(node -p "require('./packages/${pkg}/package.json').name")
+              echo "- \`${NAME}@${VERSION}\`" >> $GITHUB_STEP_SUMMARY
+            done
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          echo "### ⏭️ Packages skipped (tag already exists — no new release)" >> $GITHUB_STEP_SUMMARY
+          SKIPPED_ANY=false
           for pkg in $(echo "${{ steps.projects.outputs.nx-names }}" | tr ',' '\n'); do
+            case ",$RELEASED," in
+              *",$pkg,"*) continue ;;
+            esac
             VERSION=$(node -p "require('./packages/${pkg}/package.json').version")
             NAME=$(node -p "require('./packages/${pkg}/package.json').name")
-            echo "- \`${NAME}@${VERSION}\`" >> $GITHUB_STEP_SUMMARY
+            echo "- \`${NAME}@${VERSION}\` (tag \`${pkg}@${VERSION}\` already exists)" >> $GITHUB_STEP_SUMMARY
+            SKIPPED_ANY=true
           done
+          [ "$SKIPPED_ANY" = false ] && echo "- (none)" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
+
           echo "### 🏷️ Git operations that would be performed" >> $GITHUB_STEP_SUMMARY
-          echo "- Commit: \`Release standalone packages [skip ci]\`" >> $GITHUB_STEP_SUMMARY
-          for pkg in $(echo "${{ steps.projects.outputs.nx-names }}" | tr ',' '\n'); do
-            VERSION=$(node -p "require('./packages/${pkg}/package.json').version")
-            echo "- Tag: \`${pkg}@${VERSION}\`" >> $GITHUB_STEP_SUMMARY
-          done
-          echo "- Push to: \`origin/main\`" >> $GITHUB_STEP_SUMMARY
+          if [ -z "$RELEASED" ]; then
+            echo "- Commit: _(skipped — nothing to commit)_" >> $GITHUB_STEP_SUMMARY
+            echo "- Tags: _(none)_" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- Commit: \`chore(release): publish standalone packages [skip ci]\`" >> $GITHUB_STEP_SUMMARY
+            for pkg in $(echo "$RELEASED" | tr ',' '\n'); do
+              VERSION=$(node -p "require('./packages/${pkg}/package.json').version")
+              echo "- Tag: \`${pkg}@${VERSION}\`" >> $GITHUB_STEP_SUMMARY
+            done
+            echo "- Push to: \`origin/main\`" >> $GITHUB_STEP_SUMMARY
+          fi
           echo "" >> $GITHUB_STEP_SUMMARY
+
           echo "### 📝 Files modified (not committed)" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
           git status --short >> $GITHUB_STEP_SUMMARY

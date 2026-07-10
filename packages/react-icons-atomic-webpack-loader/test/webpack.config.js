@@ -29,6 +29,38 @@ const entries = {
     ],
     mustExclude: ['"@fluentui/react-icons"'],
   },
+  'indirect-reexports': {
+    src: './src/indirect-reexports.js',
+    loaderOptions: {},
+    mustInclude: [
+      '@fluentui/react-icons/svg/add',
+      '@fluentui/react-icons/svg/arrow-left',
+      '@fluentui/react-icons/utils',
+    ],
+    mustExclude: ['"@fluentui/react-icons"'],
+  },
+  'aliased-indirect-reexports': {
+    src: './src/aliased-indirect-reexports.js',
+    loaderOptions: {},
+    mustInclude: ['@fluentui/react-icons/svg/add', '@fluentui/react-icons/svg/arrow-left'],
+    mustExclude: ['"@fluentui/react-icons"'],
+  },
+  'renamed-indirect-reexports': {
+    src: './src/renamed-indirect-reexports.js',
+    loaderOptions: {},
+    mustInclude: ['@fluentui/react-icons/svg/add', '@fluentui/react-icons/svg/arrow-left'],
+    mustExclude: ['"@fluentui/react-icons"'],
+  },
+  'mixed-reexports': {
+    src: './src/mixed-reexports.js',
+    loaderOptions: {},
+    mustInclude: [
+      '@fluentui/react-icons/svg/add',
+      '@fluentui/react-icons/svg/arrow-left',
+      '@fluentui/react-icons/utils',
+    ],
+    mustExclude: ['"@fluentui/react-icons"'],
+  },
   'fonts-imports': {
     src: './src/fonts-imports.js',
     loaderOptions: { iconVariant: 'fonts' },
@@ -39,6 +71,14 @@ const entries = {
     ],
     mustExclude: ['"@fluentui/react-icons"', '@fluentui/react-icons/svg/'],
   },
+  'color-fonts-imports': {
+    src: './src/color-fonts-imports.js',
+    // Color icons are SVG-only; under 'fonts' they reroute to svg while their
+    // non-color siblings stay on the font build.
+    loaderOptions: { iconVariant: 'fonts' },
+    mustInclude: ['@fluentui/react-icons/fonts/add', '@fluentui/react-icons/svg/add-circle'],
+    mustExclude: ['"@fluentui/react-icons"', '@fluentui/react-icons/fonts/add-circle'],
+  },
   'svg-sprite-imports': {
     src: './src/svg-sprite-imports.js',
     loaderOptions: { iconVariant: 'svg-sprite' },
@@ -48,6 +88,51 @@ const entries = {
       '@fluentui/react-icons/utils',
     ],
     mustExclude: ['"@fluentui/react-icons"', '@fluentui/react-icons/svg/', '@fluentui/react-icons/fonts/'],
+  },
+
+  'headless-imports': {
+    src: './src/headless-imports.js',
+    loaderOptions: { headless: true },
+    mustInclude: [
+      '@fluentui/react-icons/headless/svg/add',
+      '@fluentui/react-icons/headless/svg/arrow-left',
+      '@fluentui/react-icons/headless/svg/arrow-circle-down',
+      '@fluentui/react-icons/headless/svg/people',
+      // context stays on the shared (non-headless) providers entry
+      '@fluentui/react-icons/providers',
+      '@fluentui/react-icons/headless/utils',
+    ],
+    // no standard (non-headless) svg/utils paths should leak through
+    mustExclude: ['"@fluentui/react-icons"', '@fluentui/react-icons/svg/', '@fluentui/react-icons/utils'],
+  },
+
+  'color-headless-fonts-imports': {
+    src: './src/color-headless-fonts-imports.js',
+    // Under headless fonts, color icons reroute to the headless svg build while
+    // their non-color siblings stay on the headless font build.
+    loaderOptions: { iconVariant: 'fonts', headless: true },
+    mustInclude: ['@fluentui/react-icons/headless/fonts/add', '@fluentui/react-icons/headless/svg/add-circle'],
+    mustExclude: ['"@fluentui/react-icons"', '@fluentui/react-icons/headless/fonts/add-circle'],
+  },
+
+  'brand-icons-imports': {
+    src: './src/brand-icons-imports.js',
+    loaderOptions: {},
+    mustInclude: [
+      '@fluentui/react-brand-icons/svg/calendar-taskbar',
+      '@fluentui/react-brand-icons/svg/project',
+      '@fluentui/react-brand-icons/utils',
+    ],
+    mustExclude: ['"@fluentui/react-brand-icons"'],
+  },
+
+  'mixed-modules-fonts': {
+    src: './src/mixed-modules-fonts.js',
+    // react-icons honors 'fonts'; react-brand-icons only ships 'svg', so it
+    // falls back via the explicit fallbackVariant without erroring.
+    loaderOptions: { iconVariant: 'fonts', fallbackVariant: 'svg' },
+    mustInclude: ['@fluentui/react-icons/fonts/add', '@fluentui/react-brand-icons/svg/project'],
+    mustExclude: ['"@fluentui/react-icons"', '"@fluentui/react-brand-icons"', '@fluentui/react-brand-icons/fonts/'],
   },
 
   'jsx-component': {
@@ -85,7 +170,7 @@ function createConfig(name, entry) {
     resolve: {
       extensions: ['.tsx', '.ts', '.jsx', '.js'],
     },
-    externals: [/^@fluentui\/react-icons/, /^react$/],
+    externals: [/^@fluentui\/react-icons/, /^@fluentui\/react-brand-icons/, /^react$/],
     module: {
       rules: [
         {

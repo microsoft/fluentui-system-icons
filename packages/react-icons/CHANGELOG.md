@@ -1,3 +1,63 @@
+## 2.0.332 (2026-07-07)
+
+### 🚀 Features
+
+- **react-icons:** add idPrefix prop to scope Color variant SVG ids ([#1131](https://github.com/microsoft/fluentui-system-icons/pull/1131))
+- **react-icons:** propagate `headless/` API to stable ([#1119](https://github.com/microsoft/fluentui-system-icons/pull/1119))
+
+### 🩹 Fixes
+
+- **bundle-size:** apply intended 1 kB threshold at repo root for compare-reports ([#1134](https://github.com/microsoft/fluentui-system-icons/pull/1134))
+
+### 🔥 Performance
+
+- **react-icons:** reuse canonical fonts instead of regenerating ([#1105](https://github.com/microsoft/fluentui-system-icons/pull/1105))
+
+## 2.0.331 (2026-06-26)
+
+### 🚀 Features
+
+- **react-icons:** add new and updated icons ([#1127](https://github.com/microsoft/fluentui-system-icons/pull/1127))
+- **react-icons:** build geometry from @fluentui/svg-icons base ([#1102](https://github.com/microsoft/fluentui-system-icons/pull/1102))
+- **react-icons-file-type:** implement v8 alternative for v9,modern ([#1095](https://github.com/microsoft/fluentui-system-icons/pull/1095))
+
+## 2.0.330 (2026-06-12)
+
+### 🚀 Features
+
+- **svg-icons:** unify raw SVG processing with react-icons ([#1100](https://github.com/microsoft/fluentui-system-icons/pull/1100))
+
+## 2.0.329 (2026-06-09)
+
+This release contains icon updates
+
+## 2.0.328 (2026-05-22)
+
+### 🚀 Features
+
+- **react-icons:** add new and updated icons ([#1090](https://github.com/microsoft/fluentui-system-icons/pull/1090))
+
+## 2.0.327 (2026-05-20)
+
+### 🩹 Fixes
+
+- **nx:** mark react-icons and react-native-icons as implicitly depending on importer ([#1088](https://github.com/microsoft/fluentui-system-icons/pull/1088))
+- **react-icons:** replace dangerouslySetInnerHTML with structured SvgNode rendering for color icons ([#1078](https://github.com/microsoft/fluentui-system-icons/pull/1078))
+
+## 2.0.326 (2026-05-08)
+
+### 🩹 Fixes
+
+- **release:** prevent cross-group version cascade to standalone packages ([#1072](https://github.com/microsoft/fluentui-system-icons/pull/1072))
+
+## 2.0.325 (2026-04-24)
+
+### 🚀 Features
+
+- **react-icons:** add new and updated icons ([#1068](https://github.com/microsoft/fluentui-system-icons/pull/1068))
+- **react-icons-atomic-webpack-loader:** replace acorn parser with oxc-parser ([#1061](https://github.com/microsoft/fluentui-system-icons/pull/1061))
+- **react-icons:** deprecate colored svg variants ([#1010](https://github.com/microsoft/fluentui-system-icons/pull/1010))
+
 ## 2.0.324 (2026-04-13)
 
 ### 🚀 Features

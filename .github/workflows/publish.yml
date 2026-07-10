@@ -9,6 +9,13 @@ on:
         default: false
         type: boolean
 
+# Serialize all automated writers to `main` (this workflow and bundle-size.baseline.yml
+# share the same group) so their pushes can never race and clobber each other.
+# `cancel-in-progress: false` queues runs instead of cancelling them.
+concurrency:
+  group: main-writer
+  cancel-in-progress: false
+
 env:
   LIBRARY_VERSION: 1.1.${{ github.run_number }}
 
@@ -33,7 +40,7 @@ jobs:
           app-id: ${{ secrets.GH_FLUENT_CI_APP_ID }}
           private-key: ${{ secrets.GH_FLUENT_CI_PRIVATE_KEY }}
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           token: ${{ steps.generate-token.outputs.token }}
           #  Git knows file names/paths for history, but blobs (file contents) are fetched on demand.
@@ -217,8 +224,9 @@ jobs:
         working-directory: importer
 
       - name: Setup Java
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v5
         with:
+          distribution: temurin
           java-version: 11
 
       # - name: Base64 decodes and pipes the GPG key content into the secret file
@@ -267,7 +275,7 @@ jobs:
         if: ${{ !inputs.dry-run }}
         run: |
           git add -A
-          git commit -m "Release $NEW_VERSION [skip ci]"
+          git commit -m "chore(release): publish $NEW_VERSION [skip ci]"
 
       - name: Tag release
         if: ${{ !inputs.dry-run }}
@@ -303,7 +311,7 @@ jobs:
           echo "- \`@fluentui/react-native-icons@$REACT_VERSION\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 🏷️ Git operations that would be performed" >> $GITHUB_STEP_SUMMARY
-          echo "- Commit: \`Release $NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Commit: \`chore(release): publish $NEW_VERSION [skip ci]\`" >> $GITHUB_STEP_SUMMARY
           echo "- Tag: \`$NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
           echo "- Push to: \`origin/main\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
@@ -337,7 +345,7 @@ jobs:
   #   needs: publish-library
 
   #   steps:
-  #   - uses: actions/checkout@v6
+  #   - uses: actions/checkout@v7
 
   #   - name: Bump version patch
   #     run: |
@@ -362,8 +370,9 @@ jobs:
   #     working-directory: importer
 
   #   - name: Setup Java
-  #     uses: actions/setup-java@v1
+  #     uses: actions/setup-java@v5
   #     with:
+  #       distribution: temurin
   #       java-version: 8
 
   #   - name: Restore release keystore

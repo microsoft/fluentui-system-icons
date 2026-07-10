@@ -106,6 +106,31 @@ describe('Headless API — SVG icons', () => {
     expect(svg?.querySelector('circle')).toHaveAttribute('fill', 'blue');
   });
 
+  test('createFluentIcon with color SvgNode[] containing style objects', () => {
+    const MyColorIcon = createFluentIcon(
+      'MyColorIcon',
+      '1em',
+      [
+        [
+          'g',
+          { style: { maskType: 'alpha' } as unknown as string },
+          [
+            'rect',
+            { width: '20', height: '20', fill: 'url(#a)', style: { mixBlendMode: 'multiply' } as unknown as string },
+          ],
+        ],
+      ],
+      { color: true },
+    );
+    const { container } = render(<MyColorIcon />);
+
+    const g = container.querySelector('g');
+    expect(g).toHaveStyle({ maskType: 'alpha' });
+
+    const rect = container.querySelector('rect');
+    expect(rect).toHaveStyle({ mixBlendMode: 'multiply' });
+  });
+
   test('createFluentIcon does not pass filled or title to svg element', () => {
     const d = 'M1 2 L3 4';
     const MyIcon = createFluentIcon('MyIcon', '1em', [d]);

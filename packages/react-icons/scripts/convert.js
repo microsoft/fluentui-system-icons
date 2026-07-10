@@ -1,0 +1,368 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT license.
+
+// @ts-check
+
+const fs = require('fs');
+const { readdir } = require('fs/promises');
+const path = require('path');
+const yargs = require('yargs');
+const {
+  parseIconSource,
+  buildIconExportCode,
+  getCreateFluentIconHeader,
+  loadRtlMetadata,
+  generatePerIconFiles,
+} = require('./convert.utils');
+const {
+  assertCompoundStyleVariantIssues,
+  handleDeprecatedColorAtoms,
+  handleDeprecatedTextColorAtoms,
+} = require('./deprecated-atoms');
+const { createStableChunks } = require('./chunking-utils');
+const { createFormatMetadata, writeMetadata } = require('./metadata.utils');
+
+if (require.main === module) {
+  main().catch((err) => {
+    console.error('[svg generation] failed:', err);
+    process.exit(1);
+  });
+}
+
+async function main() {
+  const {
+    SRC_PATH,
+    DEST_PATH,
+    RTL_FILE,
+    METADATA_PATH,
+    PER_ICON_DEST,
+    SPRITE_DEST,
+    HEADLESS_PER_ICON_DEST,
+    HEADLESS_SPRITE_DEST,
+  } = parseArgs(process.argv.slice(2));
+  const srcFiles = await processSourceDir(SRC_PATH);
+  const rtlMetadata = loadRtlMetadata(RTL_FILE);
+
+  // 1. Generate chunks
+  const { svgMetadata: chunkMetadata } = processPerChunk(srcFiles, DEST_PATH, rtlMetadata);
+
+  // 2. Generate per-icon output (+ SVG sprites when --sprites is enabled)
+  const perIconMetadataPath = METADATA_PATH.replace(/\.json$/, '.atom.json');
+  const { svgMetadata: perIconMetadata, spriteMetadata } = await processPerIcon(
+    srcFiles,
+    PER_ICON_DEST,
+    SPRITE_DEST,
+    rtlMetadata,
+    {
+      svgImportPath: '../../utils/createFluentIcon',
+      spriteTypeImportPath: '../../utils/createFluentIcon.svg-sprite',
+      spriteCreateImportPath: '../../utils/createFluentIcon.svg-sprite',
+    },
+  );
+
+  // 3. Generate headless per-icon output (+ SVG sprites when --headlessSpriteDest is provided) - when --headless is enabled
+  if (HEADLESS_PER_ICON_DEST) {
+    await processPerIcon(srcFiles, HEADLESS_PER_ICON_DEST, HEADLESS_SPRITE_DEST, rtlMetadata, {
+      svgImportPath: '../../headless/createFluentIcon',
+      spriteTypeImportPath: '../../headless/createFluentIcon.svg-sprite',
+      spriteCreateImportPath: '../../headless/createFluentIcon.svg-sprite',
+    });
+  }
+
+  writeMetadata(METADATA_PATH, chunkMetadata);
+  writeMetadata(perIconMetadataPath, perIconMetadata);
+
+  if (SPRITE_DEST) {
+    const spriteMetadataPath = METADATA_PATH.replace(/\.json$/, '.atom-sprite.json');
+    writeMetadata(spriteMetadataPath, spriteMetadata);
+  }
+
+  const spriteSuffix = SPRITE_DEST ? ` | Sprite dest: ${SPRITE_DEST}` : ' | Sprites: disabled';
+  const headlessSuffix = HEADLESS_PER_ICON_DEST
+    ? ` | Headless dest: ${HEADLESS_PER_ICON_DEST}`
+    : ' | Headless: disabled';
+
+  console.log(
+    `[svg generation] Finished chunk + per-icon outputs. Chunk dest: ${DEST_PATH} | Per-icon dest: ${PER_ICON_DEST}${spriteSuffix}${headlessSuffix}`,
+  );
+}
+
+/**
+ *
+ * @typedef {Awaited<ReturnType<typeof processSourceDir>>} SourceFiles
+ */
+
+/**
+ * @param {SourceFiles} sourceFiles
+ * @param {string} dest
+ * @param {Record<string, any>} rtlMetadata
+ */
+function processPerChunk(sourceFiles, dest, rtlMetadata) {
+  /** @type string[] */
+  const indexContents = [];
+
+  // Collect all SVG metadata
+  /** @type {import('./metadata.utils').IconMetadataCollection} */
+  const svgMetadata = {};
+
+  // make file for resizeable icons
+  const iconPath = path.join(dest, 'icons');
+  const { content: iconContents, iconNames: resizableIconNames } = processFolder(sourceFiles, rtlMetadata, true);
+
+  if (fs.existsSync(iconPath)) {
+    fs.rmSync(iconPath, { recursive: true, force: true });
+  }
+  fs.mkdirSync(iconPath);
+
+  iconContents.forEach((chunk, i) => {
+    const chunkFileName = `chunk-${i}`;
+    const chunkPath = path.resolve(iconPath, `${chunkFileName}.tsx`);
+    indexContents.push(`export * from './icons/${chunkFileName}'`);
+    fs.writeFileSync(chunkPath, chunk);
+  });
+
+  // Create SVG metadata for resizable icons
+  Object.assign(svgMetadata, createFormatMetadata(resizableIconNames, 'svg', 'resizable'));
+
+  // make file for sized icons
+  const sizedIconPath = path.join(dest, 'sizedIcons');
+  const { content: sizedIconContents, iconNames: sizedIconNames } = processFolder(sourceFiles, rtlMetadata, false);
+  if (fs.existsSync(sizedIconPath)) {
+    fs.rmSync(sizedIconPath, { recursive: true, force: true });
+  }
+  fs.mkdirSync(sizedIconPath);
+
+  sizedIconContents.forEach((chunk, i) => {
+    const chunkFileName = `chunk-${i}`;
+    const chunkPath = path.resolve(sizedIconPath, `${chunkFileName}.tsx`);
+    indexContents.push(`export * from './sizedIcons/${chunkFileName}'`);
+    fs.writeFileSync(chunkPath, chunk);
+  });
+
+  // Create SVG metadata for sized icons
+  Object.assign(svgMetadata, createFormatMetadata(sizedIconNames, 'svg', 'sized'));
+
+  const indexPath = path.join(dest, 'index.tsx');
+  // Finally add the interface definition and then write out the index.
+  indexContents.push("export { wrapIcon } from './utils/wrapIcon'");
+  indexContents.push("export { bundleIcon } from './utils/bundleIcon'");
+  indexContents.push("export { createFluentIcon } from './utils/createFluentIcon'");
+  indexContents.push("export * from './utils/useIconState'");
+  indexContents.push("export * from './utils/constants'");
+  indexContents.push("export { IconDirectionContextProvider, useIconContext } from './contexts/index'");
+  // types
+  indexContents.push("export type { FluentIconsProps } from './utils/FluentIconsProps.types'");
+  indexContents.push("export type { FluentIcon } from './utils/createFluentIcon'");
+  indexContents.push("export type { IconDirectionContextValue } from './contexts/index'");
+
+  fs.writeFileSync(indexPath, indexContents.join('\n'));
+
+  return { svgMetadata };
+}
+
+/**
+ * Process a folder of svg files and convert them to React components, following naming patterns for the FluentUI System Icons
+ * @param {SourceFiles} srcFiles
+ * @param {import('./convert.utils').RtlMetadata} rtlMetadata
+ * @param {boolean} resizable
+ * @returns { { content: string[], iconNames: string[] } } - chunked icon files to insert and list of icon names
+ */
+function processFolder(srcFiles, rtlMetadata, resizable) {
+  /** @type string[] */
+  const iconExports = [];
+  /** @type string[] */
+  const iconNames = [];
+
+  srcFiles.forEach(function (entry) {
+    if (resizable && !entry.file.includes('20')) {
+      return;
+    }
+
+    const parsed = parseIconSource({ file: entry.file, srcFile: entry.srcFile, resizable, metadata: rtlMetadata });
+    if (parsed) {
+      iconExports.push(buildIconExportCode(parsed));
+      iconNames.push(parsed.exportName);
+    }
+  });
+
+  // chunk all icons into separate files to keep build reasonably fast
+  // Use stable chunking to prevent bundle size regressions when new icons are added
+  // IMPORTANT: chunkCount should NEVER change after initial release to prevent reshuffling
+  const iconChunks = createStableChunks(iconExports, iconNames, { chunkCount: 30 });
+
+  const chunkHeader = getCreateFluentIconHeader('../utils/createFluentIcon');
+  for (const chunk of iconChunks) {
+    chunk.unshift(...chunkHeader);
+  }
+
+  /** @type string[] */
+  const chunkContent = iconChunks.map((chunk) => chunk.join('\n'));
+
+  return { content: chunkContent, iconNames };
+}
+
+/**
+ * Per-icon generation (merged from former convert-per-icon.js) and SVG sprite generation.
+ * @param {SourceFiles} sourceFiles
+ * @param {string} destPath
+ * @param {string | undefined} spriteDest
+ * @param {import('./convert-font.utils').RtlMetadata} rtlMetadata
+ * @param {import('./convert.utils').ImportConfig} importConfig
+ */
+async function processPerIcon(
+  sourceFiles,
+  destPath,
+  spriteDest,
+  rtlMetadata,
+  importConfig,
+  options = { groupByBase: true },
+) {
+  // local clean (synchronous) similar to chunk variant
+  if (fs.existsSync(destPath)) {
+    fs.rmSync(destPath, { recursive: true, force: true });
+  }
+  fs.mkdirSync(destPath, { recursive: true });
+
+  if (spriteDest) {
+    if (fs.existsSync(spriteDest)) {
+      fs.rmSync(spriteDest, { recursive: true, force: true });
+    }
+    fs.mkdirSync(spriteDest, { recursive: true });
+  }
+
+  /** @type {import('./metadata.utils').IconMetadataCollection} */
+  const svgMetadata = {};
+  /** @type {import('./metadata.utils').IconMetadataCollection} */
+  const spriteMetadata = {};
+
+  // single pass: resizable (base 20 variant names with size removed) + sized (all sizes)
+  // Also generates SVG sprite pairs when spriteDest is provided.
+  const { resizable, sized, fileCount, spriteFileCount } = await generatePerIconFiles(
+    sourceFiles,
+    { atomsDest: destPath, spriteAtomsDest: spriteDest },
+    rtlMetadata,
+    importConfig,
+    options.groupByBase,
+  );
+  Object.assign(svgMetadata, createFormatMetadata(resizable.iconNames, 'svg', 'resizable'));
+  Object.assign(svgMetadata, createFormatMetadata(sized.iconNames, 'svg', 'sized'));
+
+  if (spriteDest) {
+    // Sprite metadata — same icon names, different format tag
+    Object.assign(spriteMetadata, createFormatMetadata(resizable.iconNames, 'svg', 'resizable'));
+    Object.assign(spriteMetadata, createFormatMetadata(sized.iconNames, 'svg', 'sized'));
+  }
+
+  handleDeprecatedColorAtoms(destPath, 'svg');
+  handleDeprecatedTextColorAtoms(destPath, 'svg');
+  await assertCompoundStyleVariantIssues(destPath);
+
+  const spriteMsg = spriteDest ? `${spriteFileCount} sprite pair(s) to ${spriteDest}` : 'sprites disabled';
+  console.log(`[svg per-icon] Wrote ${fileCount} icon files to ${destPath} | ${spriteMsg}`);
+  return { svgMetadata, spriteMetadata };
+}
+
+/**
+ *
+ * @param {string} srcPath
+ */
+async function processSourceDir(srcPath) {
+  const srcFiles = await readdir(srcPath);
+  /** @type {{ srcFile: string; file: string; }[]} */
+  const filePaths = [];
+
+  for (const file of srcFiles) {
+    const srcFile = path.join(srcPath, file);
+
+    // for now, ignore subdirectories/localization, until we have a plan for handling it
+    // Will likely involve appending the lang/locale to the end of the friendly name for the unique component name
+    // var joinedDestPath = path.join(destPath, file)
+    // if (!fs.existsSync(joinedDestPath)) {
+    //   fs.mkdirSync(joinedDestPath);
+    // }
+    // indexContents += processFolder(srcFile, joinedDestPath)
+    if (fs.lstatSync(srcFile).isDirectory() || !file.endsWith('.svg')) continue;
+
+    filePaths.push({ srcFile, file });
+  }
+
+  console.info(`[process src]: processed ${filePaths.length} files`);
+
+  return filePaths;
+}
+
+/**
+ *
+ * @param {string[]} argv
+ * @returns
+ */
+function parseArgs(argv) {
+  const args = yargs.parse(argv);
+  const SRC_PATH = /** @type {string} */ (args.source); // path with source svg files
+  const DEST_PATH = /** @type {string} */ (args.dest); // destination folder for chunk output
+  const RTL_FILE = /** @type {string} */ (args.rtl); // rtl metadata json
+  const METADATA_PATH = /** @type {string} */ (args.metadata); // output metadata file
+  const PER_ICON_DEST = /** @type {string} */ (args.perIconDest); // per-icon output folder
+  const SPRITES_ENABLED = Boolean(args.sprites); // opt-in flag for svg sprite generation
+  const SPRITE_DEST = SPRITES_ENABLED ? /** @type {string} */ (args.spriteDest) : undefined; // svg sprite output folder (only when --sprites is set)
+  const HEADLESS_ENABLED = Boolean(args.headless); // opt-in flag for headless component generation
+  const HEADLESS_PER_ICON_DEST = HEADLESS_ENABLED ? /** @type {string} */ (args.headlessPerIconDest) : undefined; // headless per-icon output folder (only when --headless is set)
+  const HEADLESS_SPRITE_DEST = HEADLESS_ENABLED ? /** @type {string|undefined} */ (args.headlessSpriteDest) : undefined; // headless svg sprite output folder (only when --headless is set)
+
+  if (!SRC_PATH) {
+    throw new Error('Icon source folder not specified by --source');
+  }
+  if (!DEST_PATH) {
+    throw new Error('Output destination folder not specified by --dest');
+  }
+  if (!PER_ICON_DEST) {
+    throw new Error('Atoms Output destination folder not specified by --perIconDest');
+  }
+  if (SPRITES_ENABLED && !SPRITE_DEST) {
+    throw new Error('SVG sprite output folder not specified by --spriteDest (required when --sprites is set)');
+  }
+  if (HEADLESS_ENABLED && !HEADLESS_PER_ICON_DEST) {
+    throw new Error(
+      'Headless per-icon output folder not specified by --headlessPerIconDest (required when --headless is set)',
+    );
+  }
+  if (!RTL_FILE) {
+    throw new Error('RTL file not specified by --rtl');
+  }
+  if (!METADATA_PATH) {
+    throw new Error('Metadata output file not specified by --metadata');
+  }
+
+  if (!fs.existsSync(DEST_PATH)) {
+    fs.mkdirSync(DEST_PATH, { recursive: true });
+  }
+
+  if (!fs.existsSync(PER_ICON_DEST)) {
+    fs.mkdirSync(PER_ICON_DEST, { recursive: true });
+  }
+
+  if (SPRITE_DEST && !fs.existsSync(SPRITE_DEST)) {
+    fs.mkdirSync(SPRITE_DEST, { recursive: true });
+  }
+
+  if (HEADLESS_PER_ICON_DEST && !fs.existsSync(HEADLESS_PER_ICON_DEST)) {
+    fs.mkdirSync(HEADLESS_PER_ICON_DEST, { recursive: true });
+  }
+
+  if (HEADLESS_SPRITE_DEST && !fs.existsSync(HEADLESS_SPRITE_DEST)) {
+    fs.mkdirSync(HEADLESS_SPRITE_DEST, { recursive: true });
+  }
+
+  return {
+    SRC_PATH,
+    DEST_PATH,
+    RTL_FILE,
+    METADATA_PATH,
+    PER_ICON_DEST,
+    SPRITE_DEST,
+    HEADLESS_PER_ICON_DEST,
+    HEADLESS_SPRITE_DEST,
+  };
+}
+
+module.exports = {};

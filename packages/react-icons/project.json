@@ -4,11 +4,14 @@
   "projectType": "library",
   "sourceRoot": "packages/react-icons/src",
   "tags": ["platform:web"],
+  "implicitDependencies": ["system-icons-processing", "svg-icons"],
   "targets": {
     "build": {
       "cache": true,
+      "dependsOn": ["^build"],
       "inputs": [
         "default",
+        "fontArtifacts",
         "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
         "!{projectRoot}/tsconfig.spec.json",
         "!{projectRoot}/vitest.config.[jt]s",

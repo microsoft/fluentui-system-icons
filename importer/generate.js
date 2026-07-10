@@ -42,6 +42,12 @@ const parseArgs = (args=process.argv.slice(2)) => {
       describe: 'Keep original directories in output',
       default: false,
     })
+    .option('on-duplicate', {
+      type: 'string',
+      choices: ['fail', 'warn', 'ignore'],
+      describe: 'How to handle two source folders producing the same destination filename',
+      default: 'fail',
+    })
     .help()
     .wrap(Math.min(120, process.stdout.columns || 120))
     .argv;
@@ -49,6 +55,7 @@ const parseArgs = (args=process.argv.slice(2)) => {
   /**
    * @typedef {'react'|'android'|'ios'|'flutter'} TargetType
    * @typedef {'svg'|'xml'|'pdf'|'tsx'} ExtensionType
+   * @typedef {'fail'|'warn'|'ignore'} OnDuplicate
    *
    * @typedef {{
    *   SRC_PATH: string,
@@ -56,7 +63,8 @@ const parseArgs = (args=process.argv.slice(2)) => {
    *   EXTENSION: ExtensionType,
    *   TARGET: TargetType,
    *   SELECTOR: boolean,
-   *   KEEP_DIRS: boolean
+   *   KEEP_DIRS: boolean,
+   *   ON_DUPLICATE: OnDuplicate,
    * }} ParseResult
    */
 
@@ -67,10 +75,16 @@ const parseArgs = (args=process.argv.slice(2)) => {
     TARGET: /** @type {TargetType} */ (argv.target),
     SELECTOR: Boolean(argv.selector),
     KEEP_DIRS: Boolean(argv.keepdirs),
+    ON_DUPLICATE: /** @type {OnDuplicate} */ (argv['on-duplicate']),
   });
 };
 
-const { SRC_PATH, DEST_PATH, EXTENSION, TARGET, SELECTOR, KEEP_DIRS } = parseArgs();
+const { SRC_PATH, DEST_PATH, EXTENSION, TARGET, SELECTOR, KEEP_DIRS, ON_DUPLICATE } = parseArgs();
+
+/** @type {Map<string, string>} destFile -> first srcFile that wrote it */
+const writtenFiles = new Map();
+/** @type {Array<{ destFile: string, previousSrc: string, conflictingSrc: string }>} */
+const duplicateCollisions = [];
 const ICON_OUTLINE_STYLE = '_regular'
 const ICON_FILLED_STYLE = '_filled'
 const ICON_LIGHT_STYLE = '_light'
@@ -166,6 +180,12 @@ function processFolder(srcPath, destPath, folderDepth) {
         if (!fs.existsSync(destPath)) {
           fs.mkdirSync(destPath)
         }
+        const previousSrc = writtenFiles.get(destFile);
+        if (previousSrc && previousSrc !== srcFile) {
+          duplicateCollisions.push({ destFile, previousSrc, conflictingSrc: srcFile });
+        } else {
+          writtenFiles.set(destFile, srcFile);
+        }
         fs.copyFileSync(srcFile, destFile);
         // Generate selector if both filled/regular styles are available
         if (SELECTOR && file.endsWith(SVG_EXTENSION)) {
@@ -240,3 +260,39 @@ export default ${iconName + REACT_SUFFIX};
     if (err) throw err;
   });
 }
+
+/**
+ * Report any duplicate-destination collisions detected during the walk.
+ *
+ * The walker is async-callback based and has no explicit completion signal,
+ * so we hook `process.on('exit')` which fires after all queued callbacks drain
+ * and Node would otherwise exit naturally.
+ *
+ * Behaviour per `--on-duplicate`:
+ *   - fail    (default): non-zero exit if any collision occurred
+ *   - warn             : prints all collisions but keeps exit code 0
+ *   - ignore           : prints nothing
+ */
+process.on('exit', () => {
+  if (ON_DUPLICATE === 'ignore' || duplicateCollisions.length === 0) {
+    return;
+  }
+  /** @param {typeof duplicateCollisions} list */
+  const formatList = (list) =>
+    list
+      .map(
+        (c) =>
+          `  - ${c.destFile}\n      first : ${c.previousSrc}\n      collide: ${c.conflictingSrc}`
+      )
+      .join('\n');
+  const message =
+    `\n[generate.js] ${duplicateCollisions.length} duplicate destination(s) detected. ` +
+    `Two source folders produced the same output filename; output is non-deterministic. ` +
+    `Rename one of the source folders or remove the duplicate asset.\n${formatList(duplicateCollisions)}\n`;
+  if (ON_DUPLICATE === 'fail') {
+    console.error(message);
+    process.exitCode = 1;
+  } else {
+    console.warn(message);
+  }
+});

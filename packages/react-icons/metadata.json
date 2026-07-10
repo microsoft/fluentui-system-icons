@@ -154,6 +154,16 @@
     "font": true,
     "type": "resizable"
   },
+  "AgentsSyncFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "AgentsSyncRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "AirplaneFilled": {
     "svg": true,
     "font": true,
@@ -640,6 +650,16 @@
     "type": "resizable"
   },
   "AppsAddInOffRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "AppsBulletListFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "AppsBulletListRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -5099,6 +5119,16 @@
     "font": true,
     "type": "resizable"
   },
+  "CardUiInfoFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "CardUiInfoRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "CardUiPortraitFlipFilled": {
     "svg": true,
     "font": true,
@@ -5514,6 +5544,16 @@
     "font": true,
     "type": "resizable"
   },
+  "ChatCheckmarkFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "ChatCheckmarkRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "ChatCursorFilled": {
     "svg": true,
     "font": true,
@@ -5660,6 +5700,16 @@
     "type": "resizable"
   },
   "ChatOffRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "ChatPersonFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "ChatPersonRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -8109,6 +8159,16 @@
     "font": true,
     "type": "resizable"
   },
+  "DashboardFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DashboardRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "DataAreaColor": {
     "svg": true,
     "font": false,
@@ -8629,12 +8689,32 @@
     "font": true,
     "type": "resizable"
   },
+  "DeskCheckmarkFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DeskCheckmarkRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "DeskMultipleFilled": {
     "svg": true,
     "font": true,
     "type": "resizable"
   },
   "DeskMultipleRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DeskMultipleCheckmarkFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DeskMultipleCheckmarkRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -8805,6 +8885,16 @@
     "type": "resizable"
   },
   "DesktopSyncRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DesktopTagFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DesktopTagRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -9255,6 +9345,16 @@
     "type": "resizable"
   },
   "DocumentBriefcaseRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DocumentBrokenFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DocumentBrokenRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -9720,6 +9820,16 @@
     "type": "resizable"
   },
   "DocumentMarginsRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DocumentMarkdownFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DocumentMarkdownRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -10275,6 +10385,16 @@
     "type": "resizable"
   },
   "DocumentWidthRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DocumentWordFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DocumentWordRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -11364,6 +11484,16 @@
     "font": true,
     "type": "resizable"
   },
+  "FilmstripMusicNote2Filled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "FilmstripMusicNote2Regular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "FilmstripPlayFilled": {
     "svg": true,
     "font": true,
@@ -11789,6 +11919,16 @@
     "font": true,
     "type": "resizable"
   },
+  "FolderDataBarFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "FolderDataBarRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "FolderDocumentFilled": {
     "svg": true,
     "font": true,
@@ -11805,6 +11945,26 @@
     "type": "resizable"
   },
   "FolderGlobeRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "FolderHintFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "FolderHintRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "FolderHolderFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "FolderHolderRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -12264,6 +12424,86 @@
     "font": true,
     "type": "resizable"
   },
+  "GameControllerBumperLeftFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerBumperLeftRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerBumperRightFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerBumperRightRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerButtonAFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerButtonARegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerButtonBFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerButtonBRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerButtonXFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerButtonXRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerButtonYFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerButtonYRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerTriggerLeftFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerTriggerLeftRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerTriggerRightFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GameControllerTriggerRightRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "GamesFilled": {
     "svg": true,
     "font": true,
@@ -12345,6 +12585,26 @@
     "type": "resizable"
   },
   "GaugeAddRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GaugeRotate0Filled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GaugeRotate0Regular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GaugeRotate315Filled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GaugeRotate315Regular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -12655,6 +12915,16 @@
     "type": "resizable"
   },
   "GlobeShieldRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GlobeStandFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "GlobeStandRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -13559,6 +13829,16 @@
     "font": true,
     "type": "resizable"
   },
+  "ImageDismissFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "ImageDismissRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "ImageEditFilled": {
     "svg": true,
     "font": true,
@@ -13680,6 +13960,16 @@
     "type": "resizable"
   },
   "ImageStackRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "ImageStyleGuideFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "ImageStyleGuideRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -14054,6 +14344,16 @@
     "font": true,
     "type": "resizable"
   },
+  "LaptopCheckmarkFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "LaptopCheckmarkRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "LaptopDismissFilled": {
     "svg": true,
     "font": true,
@@ -14410,6 +14710,16 @@
     "type": "resizable"
   },
   "LayoutDynamicRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "LayoutInfographicFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "LayoutInfographicRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -14924,6 +15234,16 @@
     "font": true,
     "type": "resizable"
   },
+  "LinkSettingsFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "LinkSettingsRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "LinkSquareFilled": {
     "svg": true,
     "font": true,
@@ -15025,6 +15345,16 @@
     "type": "resizable"
   },
   "LocalLanguageRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "LocalLanguageGlobeFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "LocalLanguageGlobeRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -15770,6 +16100,16 @@
     "type": "resizable"
   },
   "MapDriveRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "MapPinFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "MapPinRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -16949,6 +17289,16 @@
     "font": true,
     "type": "resizable"
   },
+  "OrganizationAddFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "OrganizationAddRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "OrganizationHorizontalFilled": {
     "svg": true,
     "font": true,
@@ -17685,6 +18035,16 @@
     "type": "resizable"
   },
   "PeopleEyeRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "PeopleGameControllerFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "PeopleGameControllerRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -19984,12 +20344,42 @@
     "font": true,
     "type": "resizable"
   },
+  "RectangleLandscapeClockFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "RectangleLandscapeClockRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "RectangleLandscapeHintCopyFilled": {
     "svg": true,
     "font": true,
     "type": "resizable"
   },
   "RectangleLandscapeHintCopyRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "RectangleLandscapeLineHorizontalFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "RectangleLandscapeLineHorizontalRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "RectangleLandscapeOffFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "RectangleLandscapeOffRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -21059,6 +21449,16 @@
     "font": true,
     "type": "resizable"
   },
+  "SettingsSyncFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "SettingsSyncRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "ShapeExcludeFilled": {
     "svg": true,
     "font": true,
@@ -21530,6 +21930,16 @@
     "type": "resizable"
   },
   "ShiftsTeamRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "ShirtFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "ShirtRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -22159,6 +22569,16 @@
     "font": true,
     "type": "resizable"
   },
+  "SoundWaveCircleSparkleOffFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "SoundWaveCircleSparkleOffRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "SoundWaveCircleSubtractFilled": {
     "svg": true,
     "font": true,
@@ -22215,6 +22635,16 @@
     "type": "resizable"
   },
   "SparkleCircleRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "SparkleCircleOffFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "SparkleCircleOffRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -22295,6 +22725,16 @@
     "type": "resizable"
   },
   "SpeakerBoxRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "SpeakerBoxKeyboardFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "SpeakerBoxKeyboardRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -22994,6 +23434,16 @@
     "font": true,
     "type": "resizable"
   },
+  "StreetHomeFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "StreetHomeRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "StreetSignFilled": {
     "svg": true,
     "font": true,
@@ -23559,6 +24009,26 @@
     "font": true,
     "type": "resizable"
   },
+  "TableCellCrossFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TableCellCrossRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TableCellCrossBrushFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TableCellCrossBrushRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "TableCellEditFilled": {
     "svg": true,
     "font": true,
@@ -24105,6 +24575,16 @@
     "type": "resizable"
   },
   "TabletLaptopRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TabletPhoneDesktopFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TabletPhoneDesktopRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -24860,6 +25340,16 @@
     "type": "resizable"
   },
   "TextBulletListDismissRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TextBulletListEditFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TextBulletListEditRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -26474,6 +26964,16 @@
     "font": true,
     "type": "resizable"
   },
+  "TextboxAlignTopArrowClockwiseFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TextboxAlignTopArrowClockwiseRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "TextboxAlignTopCenterFilled": {
     "svg": true,
     "font": true,
@@ -27949,6 +28449,16 @@
     "font": true,
     "type": "resizable"
   },
+  "WeatherHumidityFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "WeatherHumidityRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "WeatherMoonFilled": {
     "svg": true,
     "font": true,
@@ -28579,12 +29089,32 @@
     "font": true,
     "type": "resizable"
   },
+  "WindowToolboxFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "WindowToolboxRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "WindowWrenchFilled": {
     "svg": true,
     "font": true,
     "type": "resizable"
   },
   "WindowWrenchRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "WorkIqFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "WorkIqRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -28655,6 +29185,16 @@
     "type": "resizable"
   },
   "XboxControllerErrorRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "XboxOneConsoleFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "XboxOneConsoleRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -29430,6 +29970,36 @@
     "type": "sized"
   },
   "AgentsAdd24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "AgentsSync20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "AgentsSync20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "AgentsSync24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "AgentsSync24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "AgentsSync28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "AgentsSync28Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -31245,6 +31815,16 @@
     "type": "sized"
   },
   "AppsAddInOff48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "AppsBulletList20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "AppsBulletList20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -36169,6 +36749,16 @@
     "font": true,
     "type": "sized"
   },
+  "ArrowSyncDismiss16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowSyncDismiss16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "ArrowSyncDismiss20Filled": {
     "svg": true,
     "font": true,
@@ -36335,6 +36925,36 @@
     "type": "sized"
   },
   "ArrowTrendingLines24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowTrendingLines28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowTrendingLines28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowTrendingLines32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowTrendingLines32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowTrendingLines48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowTrendingLines48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -41454,6 +42074,16 @@
     "font": true,
     "type": "sized"
   },
+  "Brain16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Brain16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Brain20Filled": {
     "svg": true,
     "font": true,
@@ -41550,6 +42180,16 @@
     "type": "sized"
   },
   "BrainCircuit48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BrainSparkle16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BrainSparkle16Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -43949,6 +44589,16 @@
     "font": true,
     "type": "sized"
   },
+  "CalendarChat16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarChat16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "CalendarChat20Filled": {
     "svg": true,
     "font": true,
@@ -43965,6 +44615,36 @@
     "type": "sized"
   },
   "CalendarChat24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarChat28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarChat28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarChat32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarChat32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarChat48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarChat48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -46914,6 +47594,36 @@
     "font": true,
     "type": "sized"
   },
+  "CardUiInfo16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CardUiInfo16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CardUiInfo20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CardUiInfo20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CardUiInfo24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CardUiInfo24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "CardUiPortraitFlip16Filled": {
     "svg": true,
     "font": true,
@@ -48424,6 +49134,76 @@
     "font": true,
     "type": "sized"
   },
+  "ChatCheckmark12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ChatCheckmark12Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ChatCheckmark16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ChatCheckmark16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ChatCheckmark20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ChatCheckmark20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ChatCheckmark24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ChatCheckmark24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ChatCheckmark28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ChatCheckmark28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ChatCheckmark32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ChatCheckmark32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ChatCheckmark48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ChatCheckmark48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "ChatCursor16Filled": {
     "svg": true,
     "font": true,
@@ -48550,6 +49330,16 @@
     "type": "sized"
   },
   "ChatEmpty48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ChatHelp16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ChatHelp16Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -48697,6 +49487,16 @@
   "ChatMore24Color": {
     "svg": true,
     "font": false,
+    "type": "sized"
+  },
+  "ChatMultiple12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ChatMultiple12Regular": {
+    "svg": true,
+    "font": true,
     "type": "sized"
   },
   "ChatMultiple16Color": {
@@ -48990,6 +49790,16 @@
     "type": "sized"
   },
   "ChatOff24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ChatPerson20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ChatPerson20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -49540,6 +50350,16 @@
     "type": "sized"
   },
   "CheckmarkCircle24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CheckmarkCircle28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CheckmarkCircle28Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -54204,6 +55024,16 @@
     "font": true,
     "type": "sized"
   },
+  "Clover12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Clover12Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Clover16Filled": {
     "svg": true,
     "font": true,
@@ -57354,6 +58184,16 @@
     "font": true,
     "type": "sized"
   },
+  "Copy48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Copy48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "CopyAdd20Filled": {
     "svg": true,
     "font": true,
@@ -58385,6 +59225,16 @@
     "type": "sized"
   },
   "DarkTheme24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Dashboard20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Dashboard20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -60069,6 +60919,56 @@
     "font": true,
     "type": "sized"
   },
+  "DeskCheckmark16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeskCheckmark16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeskCheckmark20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeskCheckmark20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeskCheckmark24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeskCheckmark24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeskCheckmark28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeskCheckmark28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeskMultiple16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeskMultiple16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "DeskMultiple20Filled": {
     "svg": true,
     "font": true,
@@ -60085,6 +60985,46 @@
     "type": "sized"
   },
   "DeskMultiple24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeskMultiple28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeskMultiple28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeskMultipleCheckmark20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeskMultipleCheckmark20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeskMultipleCheckmark24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeskMultipleCheckmark24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeskMultipleCheckmark28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DeskMultipleCheckmark28Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -60689,6 +61629,16 @@
     "font": true,
     "type": "sized"
   },
+  "DesktopTag20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DesktopTag20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "DesktopToolbox20Filled": {
     "svg": true,
     "font": true,
@@ -61245,6 +62195,16 @@
     "type": "sized"
   },
   "DialpadQuestionMark24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Diamond12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Diamond12Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -62394,6 +63354,16 @@
     "font": true,
     "type": "sized"
   },
+  "DocumentArrowUp24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentArrowUp24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "DocumentBorder20Filled": {
     "svg": true,
     "font": true,
@@ -62490,6 +63460,16 @@
     "type": "sized"
   },
   "DocumentBriefcase32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentBroken20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentBroken20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -63925,6 +64905,26 @@
     "type": "sized"
   },
   "DocumentMargins24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentMarkdown16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentMarkdown16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentMarkdown20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentMarkdown20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -65754,6 +66754,66 @@
     "font": true,
     "type": "sized"
   },
+  "DocumentWord16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentWord16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentWord20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentWord20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentWord24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentWord24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentWord28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentWord28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentWord32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentWord32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentWord48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentWord48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "DocumentYml16Filled": {
     "svg": true,
     "font": true,
@@ -66520,6 +67580,16 @@
     "type": "sized"
   },
   "Drop28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Drop32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Drop32Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -69099,6 +70169,16 @@
     "font": true,
     "type": "sized"
   },
+  "FilmstripMusicNote220Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FilmstripMusicNote220Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "FilmstripOff48Filled": {
     "svg": true,
     "font": true,
@@ -69790,6 +70870,16 @@
     "type": "sized"
   },
   "FlagPrideProgress48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Flash12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Flash12Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -70754,6 +71844,16 @@
     "font": true,
     "type": "sized"
   },
+  "FolderDataBar20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FolderDataBar20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "FolderDocument16Filled": {
     "svg": true,
     "font": true,
@@ -70810,6 +71910,26 @@
     "type": "sized"
   },
   "FolderGlobe20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FolderHint20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FolderHint20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FolderHolder20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FolderHolder20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -72344,6 +73464,86 @@
     "font": true,
     "type": "sized"
   },
+  "GameControllerBumperLeft20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerBumperLeft20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerBumperRight20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerBumperRight20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerButtonA20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerButtonA20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerButtonB20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerButtonB20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerButtonX20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerButtonX20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerButtonY20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerButtonY20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerTriggerLeft20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerTriggerLeft20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerTriggerRight20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GameControllerTriggerRight20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Games16Filled": {
     "svg": true,
     "font": true,
@@ -72575,6 +73775,126 @@
     "type": "sized"
   },
   "GaugeAdd20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate016Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate016Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate020Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate020Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate024Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate024Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate028Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate028Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate032Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate032Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate048Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate048Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate31516Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate31516Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate31520Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate31520Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate31524Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate31524Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate31528Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate31528Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate31532Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate31532Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate31548Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GaugeRotate31548Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -73669,6 +74989,16 @@
     "font": true,
     "type": "sized"
   },
+  "GlobeStand20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GlobeStand20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "GlobeStar16Filled": {
     "svg": true,
     "font": true,
@@ -73885,6 +75215,16 @@
     "type": "sized"
   },
   "GridCircles28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GridDots16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "GridDots16Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -76469,6 +77809,16 @@
     "font": true,
     "type": "sized"
   },
+  "Hourglass12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Hourglass12Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Hourglass16Filled": {
     "svg": true,
     "font": true,
@@ -76495,6 +77845,16 @@
     "type": "sized"
   },
   "Hourglass24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "HourglassHalf12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "HourglassHalf12Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -76529,6 +77889,16 @@
     "font": true,
     "type": "sized"
   },
+  "HourglassOneQuarter12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "HourglassOneQuarter12Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "HourglassOneQuarter16Filled": {
     "svg": true,
     "font": true,
@@ -76555,6 +77925,16 @@
     "type": "sized"
   },
   "HourglassOneQuarter24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "HourglassThreeQuarter12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "HourglassThreeQuarter12Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -77004,6 +78384,16 @@
     "font": true,
     "type": "sized"
   },
+  "ImageDismiss20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ImageDismiss20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "ImageEdit16Filled": {
     "svg": true,
     "font": true,
@@ -77379,6 +78769,26 @@
     "font": true,
     "type": "sized"
   },
+  "ImageStyleGuide16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ImageStyleGuide16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ImageStyleGuide20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ImageStyleGuide20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "ImageTable16Filled": {
     "svg": true,
     "font": true,
@@ -77569,6 +78979,26 @@
     "font": true,
     "type": "sized"
   },
+  "Incognito12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Incognito12Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Incognito16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Incognito16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Incognito20Filled": {
     "svg": true,
     "font": true,
@@ -77585,6 +79015,16 @@
     "type": "sized"
   },
   "Incognito24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Incognito28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Incognito28Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -78635,6 +80075,16 @@
     "type": "sized"
   },
   "LaptopBriefcase32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LaptopCheckmark20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LaptopCheckmark20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -79725,6 +81175,56 @@
     "type": "sized"
   },
   "LayoutDynamic24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutInfographic16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutInfographic16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutInfographic20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutInfographic20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutInfographic24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutInfographic24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutInfographic28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutInfographic28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutInfographic32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LayoutInfographic32Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -81584,6 +83084,16 @@
     "font": true,
     "type": "sized"
   },
+  "LinkSettings20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LinkSettings20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "LinkSettings24Filled": {
     "svg": true,
     "font": true,
@@ -81900,6 +83410,16 @@
     "type": "sized"
   },
   "LocalLanguage28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LocalLanguageGlobe20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LocalLanguageGlobe20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -84814,6 +86334,26 @@
     "font": true,
     "type": "sized"
   },
+  "MapPin20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "MapPin20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Markdown16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Markdown16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Markdown20Filled": {
     "svg": true,
     "font": true,
@@ -84830,6 +86370,16 @@
     "type": "sized"
   },
   "Markdown24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Markdown28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Markdown28Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -89519,6 +91069,36 @@
     "font": true,
     "type": "sized"
   },
+  "OrganizationAdd16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "OrganizationAdd16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "OrganizationAdd20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "OrganizationAdd20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "OrganizationAdd24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "OrganizationAdd24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "OrganizationHorizontal16Filled": {
     "svg": true,
     "font": true,
@@ -92520,6 +94100,16 @@
     "type": "sized"
   },
   "PeopleEye20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PeopleGameController20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PeopleGameController20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -100904,6 +102494,16 @@
     "font": true,
     "type": "sized"
   },
+  "RectangleLandscapeClock20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "RectangleLandscapeClock20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "RectangleLandscapeHintCopy16Filled": {
     "svg": true,
     "font": true,
@@ -100930,6 +102530,26 @@
     "type": "sized"
   },
   "RectangleLandscapeHintCopy24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "RectangleLandscapeLineHorizontal20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "RectangleLandscapeLineHorizontal20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "RectangleLandscapeOff20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "RectangleLandscapeOff20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -101649,6 +103269,16 @@
     "font": true,
     "type": "sized"
   },
+  "Rhombus12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Rhombus12Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Rhombus16Filled": {
     "svg": true,
     "font": true,
@@ -102004,6 +103634,36 @@
     "font": true,
     "type": "sized"
   },
+  "Rocket28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Rocket28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Rocket32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Rocket32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Rocket48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Rocket48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "RotateLeft20Filled": {
     "svg": true,
     "font": true,
@@ -102185,6 +103845,16 @@
     "type": "sized"
   },
   "Rss24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Ruler12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Ruler12Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -104449,6 +106119,16 @@
     "font": true,
     "type": "sized"
   },
+  "SettingsSync20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SettingsSync20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "ShapeExclude16Filled": {
     "svg": true,
     "font": true,
@@ -106200,6 +107880,16 @@
     "type": "sized"
   },
   "ShiftsTeam24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Shirt20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Shirt20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -108319,6 +110009,46 @@
     "font": true,
     "type": "sized"
   },
+  "SoundWaveCircleSparkleOff16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SoundWaveCircleSparkleOff16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SoundWaveCircleSparkleOff20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SoundWaveCircleSparkleOff20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SoundWaveCircleSparkleOff24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SoundWaveCircleSparkleOff24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SoundWaveCircleSparkleOff28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SoundWaveCircleSparkleOff28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "SoundWaveCircleSubtract20Filled": {
     "svg": true,
     "font": true,
@@ -108425,6 +110155,16 @@
     "type": "sized"
   },
   "Spacebar24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Sparkle12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Sparkle12Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -108579,6 +110319,46 @@
     "font": true,
     "type": "sized"
   },
+  "SparkleCircleOff16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleCircleOff16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleCircleOff20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleCircleOff20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleCircleOff24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleCircleOff24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleCircleOff28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleCircleOff28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "SparkleInfo20Filled": {
     "svg": true,
     "font": true,
@@ -108599,6 +110379,26 @@
     "font": true,
     "type": "sized"
   },
+  "SparkleOff12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleOff12Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleOff16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleOff16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "SparkleOff20Filled": {
     "svg": true,
     "font": true,
@@ -108615,6 +110415,36 @@
     "type": "sized"
   },
   "SparkleOff24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleOff28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleOff28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleOff32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleOff32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleOff48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SparkleOff48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -108915,6 +110745,16 @@
     "type": "sized"
   },
   "SpeakerBox24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SpeakerBoxKeyboard20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SpeakerBoxKeyboard20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -111519,6 +113359,16 @@
     "font": true,
     "type": "sized"
   },
+  "StreetHome20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "StreetHome20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "StreetSign20Filled": {
     "svg": true,
     "font": true,
@@ -113190,6 +115040,66 @@
     "type": "sized"
   },
   "TableCellCenterSearch28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableCellCross16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableCellCross16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableCellCross20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableCellCross20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableCellCross24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableCellCross24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableCellCrossBrush16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableCellCrossBrush16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableCellCrossBrush20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableCellCrossBrush20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableCellCrossBrush24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableCellCrossBrush24Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -115199,6 +117109,16 @@
     "font": true,
     "type": "sized"
   },
+  "TabletPhoneDesktop20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TabletPhoneDesktop20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "TabletSpeaker20Filled": {
     "svg": true,
     "font": true,
@@ -116050,6 +117970,16 @@
     "type": "sized"
   },
   "TaskListLtr24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TaskListRectangle28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TaskListRectangle28Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -117419,6 +119349,16 @@
     "font": true,
     "type": "sized"
   },
+  "TextBold28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextBold28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "TextBoxSettings20Filled": {
     "svg": true,
     "font": true,
@@ -117535,6 +119475,16 @@
     "type": "sized"
   },
   "TextBulletListDismiss20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextBulletListEdit20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextBulletListEdit20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -120259,6 +122209,16 @@
     "font": true,
     "type": "sized"
   },
+  "TextItalic28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextItalic28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "TextLineSpacing16Filled": {
     "svg": true,
     "font": true,
@@ -121899,6 +123859,16 @@
     "font": true,
     "type": "sized"
   },
+  "TextboxAlignTopArrowClockwise20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextboxAlignTopArrowClockwise20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "TextboxAlignTopCenter16Filled": {
     "svg": true,
     "font": true,
@@ -122300,6 +124270,31 @@
     "type": "sized"
   },
   "TicketDiagonal28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TicketDiagonal32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TicketDiagonal32Light": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TicketDiagonal32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TicketDiagonal48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TicketDiagonal48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -127244,6 +129239,86 @@
     "font": true,
     "type": "sized"
   },
+  "WeatherHumidity12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity12Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherHumidity48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherMoon12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WeatherMoon12Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "WeatherMoon16Filled": {
     "svg": true,
     "font": true,
@@ -128964,6 +131039,16 @@
     "font": true,
     "type": "sized"
   },
+  "WindowToolbox20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WindowToolbox20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "WindowWrench16Filled": {
     "svg": true,
     "font": true,
@@ -129020,6 +131105,66 @@
     "type": "sized"
   },
   "WindowWrench48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WorkIq16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WorkIq16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WorkIq20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WorkIq20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WorkIq24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WorkIq24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WorkIq28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WorkIq28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WorkIq32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WorkIq32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WorkIq48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WorkIq48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -129265,6 +131410,16 @@
     "type": "sized"
   },
   "XboxControllerError48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "XboxOneConsole20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "XboxOneConsole20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"

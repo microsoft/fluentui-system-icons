@@ -71,7 +71,9 @@ async function main() {
     await fs.mkdir(stagingFolder, { recursive: true });
 
     /** @type {string[]} */
-    const svgFiles = await glob(path.resolve(SRC_PATH, `*_${ICON_TYPE === 'Resizable' ? '20_{filled,regular,light}' : ICON_TYPE.toLowerCase()}.svg`));
+    // Sort glob results so codepoint assignment (and thus the generated font
+    // bytes) are deterministic regardless of the filesystem's readdir order.
+    const svgFiles = (await glob(path.resolve(SRC_PATH, `*_${ICON_TYPE === 'Resizable' ? '20_{filled,regular,light}' : ICON_TYPE.toLowerCase()}.svg`))).sort();
     const icons = new Set(svgFiles.map(file => path.basename(file).replace(/\.svg$/, '')));
 
     if (icons.size > MAX_PRIVATE_USE_CODEPOINTS) {
@@ -90,7 +92,9 @@ async function main() {
         name: `FluentSystemIcons-${ICON_TYPE}`,
         fontTypes: [fantasticon.ASSET_TYPES.WOFF2, fantasticon.ASSET_TYPES.WOFF, fantasticon.ASSET_TYPES.TTF],
         assetTypes: [fantasticon.ASSET_TYPES.CSS, fantasticon.ASSET_TYPES.HTML, fantasticon.ASSET_TYPES.JSON],
-        formatOptions: { json: { indent: 2 } },
+        // `ttf.ts: 0` pins svg2ttf's created/modified timestamps so font binaries
+        // are byte-deterministic across builds (WOFF/WOFF2 wrap the TTF bytes).
+        formatOptions: { json: { indent: 2 }, ttf: { ts: 0 } },
         codepoints: await getCodepoints(icons),
         fontHeight: 500,
         normalize: true

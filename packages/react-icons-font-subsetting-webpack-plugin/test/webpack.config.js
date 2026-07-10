@@ -2,6 +2,7 @@
 const { resolve } = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const { default: FluentUIReactIconsFontSubsettingPlugin } = require('../lib/');
 
@@ -14,6 +15,17 @@ const entries = {
   atoms: { src: './src/atoms.js', threshold: 2 * 1_024 }, // 2 KB
   // atomsImportStar uses `import *` and references more icon variants, producing a larger (but still properly subset) font.
   atomsImportStar: { src: './src/atoms-import-star.js', threshold: 3 * 1_024 }, // 3.0 KB
+  // Headless font atoms — fonts arrive via the headless `styles.css` import (css-loader) rather than Griffel.
+  // No Griffel runtime is involved, so a tighter threshold is used to validate subsetting.
+  headlessAtoms: { src: './src/headless-atoms.js', threshold: 1.5 * 1_024, assertNoGriffel: true }, // 1.5 KB
+  // End-to-end: a *barrel* import is rewritten by the atomic loader (headless + fonts) into
+  // headless font atoms, then subset here. Also asserts the graph stays Griffel-free.
+  e2eBarrelHeadlessFonts: {
+    src: './src/e2e-barrel-headless-fonts.js',
+    threshold: 1.5 * 1_024, // 1.5 KB
+    useAtomicLoader: true,
+    assertNoGriffel: true,
+  },
 };
 
 const isDevServer = process.env.WEBPACK_SERVE === 'true';
@@ -22,7 +34,7 @@ console.log(`Running webpack in ${isDevServer ? 'development' : 'production'} mo
 
 /**
  * @param {string} name
- * @param {{ src: string, threshold: number }} entry
+ * @param {{ src: string, threshold: number, useAtomicLoader?: boolean, assertNoGriffel?: boolean }} entry
  * @returns {import('webpack').Configuration}
  */
 function createConfig(name, entry) {
@@ -34,8 +46,29 @@ function createConfig(name, entry) {
     // This is enabled by default in production mode.
     // In development mode, webpack doesn't track used exports, so the plugin skips subsetting.
     mode: 'production',
+    // Keep modules un-concatenated for entries that assert Griffel-freedom so the assertion
+    // can inspect individual module resources (scope hoisting would merge them into a
+    // ConcatenatedModule with no per-module `resource`, hiding a leaked @griffel module).
+    optimization: entry.assertNoGriffel ? { concatenateModules: false } : undefined,
     module: {
       rules: [
+        ...(entry.useAtomicLoader
+          ? [
+              {
+                // Rewrite barrel `@fluentui/react-icons` imports to headless font atoms
+                // before webpack parses them.
+                test: /\.js$/,
+                include: resolve(__dirname, 'src'),
+                enforce: /** @type {'pre'} */ ('pre'),
+                use: [
+                  {
+                    loader: resolve(__dirname, '../../react-icons-atomic-webpack-loader/lib/index.js'),
+                    options: { headless: true, iconVariant: 'fonts' },
+                  },
+                ],
+              },
+            ]
+          : []),
         {
           test: /\.(ttf|woff2?)$/,
           type: 'asset',
@@ -43,6 +76,14 @@ function createConfig(name, entry) {
             filename: `[name]-[contenthash][ext]`,
             dataUrl: {},
           },
+        },
+        {
+          // Headless fonts pull their `@font-face` (and font files) in via CSS.
+          // MiniCssExtractPlugin emits a real `[name].css` asset (instead of inlining the CSS
+          // string into the JS bundle), and css-loader resolves the `url(...)` references into
+          // asset modules so the subsetting plugin has font files to process.
+          test: /\.css$/,
+          use: [MiniCssExtractPlugin.loader, 'css-loader'],
         },
       ],
     },
@@ -62,6 +103,7 @@ function createConfig(name, entry) {
             }),
           ]
         : []),
+      new MiniCssExtractPlugin(),
       new FluentUIReactIconsFontSubsettingPlugin(),
       {
         apply(compiler) {
@@ -72,6 +114,19 @@ function createConfig(name, entry) {
                   `[${name}] Asset "${assetName}" (${source.size()} bytes) exceeds the ` +
                     `${entry.threshold}-byte threshold — font may not have been properly subset.`,
                 );
+              }
+            }
+
+            // Headless builds must not pull in Griffel.
+            if (entry.assertNoGriffel) {
+              for (const m of compilation.modules) {
+                const resource = /** @type {{ resource?: string }} */ (m).resource;
+                if (resource && /[\\/]@griffel[\\/]/.test(resource)) {
+                  throw new Error(
+                    `[${name}] Module graph includes a @griffel module (${resource}) — ` +
+                      `headless build expected to be Griffel-free.`,
+                  );
+                }
               }
             }
           });

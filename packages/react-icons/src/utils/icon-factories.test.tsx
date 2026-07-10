@@ -23,6 +23,7 @@ describe('React component tests', () => {
         <svg
           aria-hidden="true"
           class="fui-Icon ___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
+          data-fui-icon=""
           fill="currentColor"
           height="1em"
           viewBox="0 0 20 20"
@@ -49,6 +50,7 @@ describe('React component tests', () => {
         <i
           aria-hidden="true"
           class="fui-Icon-font ___qaf4230_1r6c92s f14t3ns0 fne0op0 fmd4ok8 f303qgw f1sxfq9t"
+          data-fui-icon=""
           fill="currentColor"
         />
       </div>
@@ -99,6 +101,96 @@ describe('React component tests', () => {
     expect(svg).toBeTruthy();
     expect(svg?.innerHTML).toContain('circle');
     expect(svg?.innerHTML).toContain('fill="blue"');
+  });
+
+  test('createFluentIcon with color SvgNode[] containing style objects', () => {
+    const MyColorIcon = createFluentIcon(
+      'MyColorIcon',
+      '1em',
+      [
+        [
+          'g',
+          { style: { maskType: 'alpha' } as unknown as string },
+          [
+            'rect',
+            { width: '20', height: '20', fill: 'url(#a)', style: { mixBlendMode: 'multiply' } as unknown as string },
+          ],
+        ],
+      ],
+      { color: true },
+    );
+    const { container } = render(<MyColorIcon />);
+
+    const g = container.querySelector('g');
+    expect(g).toHaveStyle({ maskType: 'alpha' });
+
+    const rect = container.querySelector('rect');
+    expect(rect).toHaveStyle({ mixBlendMode: 'multiply' });
+  });
+
+  test('createFluentIcon color icon scopes ids and url(#…) references with idPrefix', () => {
+    const MyColorIcon = createFluentIcon(
+      'MyColorIcon',
+      '1em',
+      [
+        ['path', { d: 'M0 0h20v20H0z', fill: 'url(#grad)' }],
+        ['defs', null, ['linearGradient', { id: 'grad' }, ['stop', { stopColor: '#fff' }]]],
+      ],
+      { color: true },
+    );
+
+    const { container } = render(<MyColorIcon idPrefix="x-" />);
+
+    expect(container.querySelector('linearGradient')).toHaveAttribute('id', 'x-grad');
+    expect(container.querySelector('path')).toHaveAttribute('fill', 'url(#x-grad)');
+  });
+
+  test('createFluentIcon color icon keeps original ids when no idPrefix is passed', () => {
+    const MyColorIcon = createFluentIcon(
+      'MyColorIcon',
+      '1em',
+      [
+        ['path', { d: 'M0 0h20v20H0z', fill: 'url(#grad)' }],
+        ['defs', null, ['linearGradient', { id: 'grad' }, ['stop', { stopColor: '#fff' }]]],
+      ],
+      { color: true },
+    );
+
+    const { container } = render(<MyColorIcon />);
+
+    expect(container.querySelector('linearGradient')).toHaveAttribute('id', 'grad');
+    expect(container.querySelector('path')).toHaveAttribute('fill', 'url(#grad)');
+  });
+
+  test('createFluentIcon idPrefix produces unique ids across two instances', () => {
+    const MyColorIcon = createFluentIcon(
+      'MyColorIcon',
+      '1em',
+      [
+        ['path', { d: 'M0 0h20v20H0z', fill: 'url(#grad)' }],
+        ['defs', null, ['linearGradient', { id: 'grad' }, ['stop', { stopColor: '#fff' }]]],
+      ],
+      { color: true },
+    );
+
+    const { container } = render(
+      <>
+        <MyColorIcon idPrefix="a-" />
+        <MyColorIcon idPrefix="b-" />
+      </>,
+    );
+
+    const ids = Array.from(container.querySelectorAll('linearGradient')).map((node) => node.getAttribute('id'));
+    expect(ids).toEqual(['a-grad', 'b-grad']);
+  });
+
+  test('createFluentIcon idPrefix is a no-op for mono-color (path string) icons', () => {
+    const MyIcon = createFluentIcon('MyIcon', '1em', ['M1 2 L3 4']);
+    const { container } = render(<MyIcon idPrefix="x-" />);
+
+    const svg = container.querySelector('svg');
+    expect(svg).toBeTruthy();
+    expect(container.querySelector('path')).toHaveAttribute('d', 'M1 2 L3 4');
   });
 
   test('bundleIcon creates icon with fui-Icon className on both filled and regular icons', () => {

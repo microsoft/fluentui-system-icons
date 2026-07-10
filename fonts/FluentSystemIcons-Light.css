@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Light";
-    src: url("./FluentSystemIcons-Light.woff2?2aaf7e09b44d55c0f8d98c0b9485a8a5") format("woff2"),
-url("./FluentSystemIcons-Light.woff?2aaf7e09b44d55c0f8d98c0b9485a8a5") format("woff"),
-url("./FluentSystemIcons-Light.ttf?2aaf7e09b44d55c0f8d98c0b9485a8a5") format("truetype");
+    src: url("./FluentSystemIcons-Light.woff2?bd6554dac2efb30f0bdaf020057d1787") format("woff2"),
+url("./FluentSystemIcons-Light.woff?bd6554dac2efb30f0bdaf020057d1787") format("woff"),
+url("./FluentSystemIcons-Light.ttf?bd6554dac2efb30f0bdaf020057d1787") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -592,36 +592,39 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 .icon-ic_fluent_textbox_align_top_left_32_light:before {
     content: "\e0bf";
 }
-.icon-ic_fluent_toolbox_32_light:before {
+.icon-ic_fluent_ticket_diagonal_32_light:before {
     content: "\e0c0";
 }
-.icon-ic_fluent_translate_32_light:before {
+.icon-ic_fluent_toolbox_32_light:before {
     content: "\e0c1";
 }
-.icon-ic_fluent_video_32_light:before {
+.icon-ic_fluent_translate_32_light:before {
     content: "\e0c2";
 }
-.icon-ic_fluent_video_clip_32_light:before {
+.icon-ic_fluent_video_32_light:before {
     content: "\e0c3";
 }
-.icon-ic_fluent_vip_32_light:before {
+.icon-ic_fluent_video_clip_32_light:before {
     content: "\e0c4";
 }
-.icon-ic_fluent_weather_moon_32_light:before {
+.icon-ic_fluent_vip_32_light:before {
     content: "\e0c5";
 }
-.icon-ic_fluent_weather_sunny_32_light:before {
+.icon-ic_fluent_weather_moon_32_light:before {
     content: "\e0c6";
 }
-.icon-ic_fluent_window_32_light:before {
+.icon-ic_fluent_weather_sunny_32_light:before {
     content: "\e0c7";
 }
-.icon-ic_fluent_wrench_screwdriver_32_light:before {
+.icon-ic_fluent_window_32_light:before {
     content: "\e0c8";
 }
-.icon-ic_fluent_zoom_in_32_light:before {
+.icon-ic_fluent_wrench_screwdriver_32_light:before {
     content: "\e0c9";
 }
-.icon-ic_fluent_zoom_out_32_light:before {
+.icon-ic_fluent_zoom_in_32_light:before {
     content: "\e0ca";
+}
+.icon-ic_fluent_zoom_out_32_light:before {
+    content: "\e0cb";
 }
