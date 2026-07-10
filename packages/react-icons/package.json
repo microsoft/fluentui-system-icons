@@ -1,11 +1,12 @@
 {
   "name": "@fluentui/react-icons",
   "version": "2.0.332",
+  "type": "module",
   "sideEffects": [
     "**/headless/fonts/styles.css",
     "**/headless/styles.css"
   ],
-  "main": "lib-cjs/index.js",
+  "main": "lib-cjs/index.cjs",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
   "description": "Fluent System Icons are a collection of familiar, friendly, and modern icons from Microsoft.",
@@ -27,10 +28,10 @@
     "build:js": "node scripts/build.js",
     "prebuild": "npm run clean",
     "build": "npm run build:fonts-and-svg && npm run build:generate-chunks-and-atoms && npm run build:js",
-    "build-verify": "vitest run build-verify.test.js build-transforms.test.js build-color-render.test.js",
+    "build-verify": "vitest run build-verify.test.js build-transforms.test.js build-color-render.test.js esm-exports.smoke.test.js",
     "bundle-size": "monosize measure",
     "lint": "eslint src",
-    "test": "vitest --exclude build-verify.test.js --exclude build-transforms.test.js --exclude build-color-render.test.js",
+    "test": "vitest --exclude build-verify.test.js --exclude build-transforms.test.js --exclude build-color-render.test.js --exclude esm-exports.smoke.test.js",
     "type-check:infra": "../../node_modules/.bin/tsc -p tsconfig.utils.json"
   },
   "devDependencies": {
@@ -66,92 +67,177 @@
   "exports": {
     ".": {
       "fluentIconFont": {
-        "types": "./lib/fonts/index.d.ts",
-        "import": "./lib/fonts/index.js",
-        "require": "./lib-cjs/fonts/index.js"
+        "import": {
+          "types": "./lib/fonts/index.d.ts",
+          "default": "./lib/fonts/index.js"
+        },
+        "require": {
+          "types": "./lib-cjs/fonts/index.d.cts",
+          "default": "./lib-cjs/fonts/index.cjs"
+        }
       },
       "default": {
-        "types": "./lib/index.d.ts",
-        "import": "./lib/index.js",
-        "require": "./lib-cjs/index.js"
+        "import": {
+          "types": "./lib/index.d.ts",
+          "default": "./lib/index.js"
+        },
+        "require": {
+          "types": "./lib-cjs/index.d.cts",
+          "default": "./lib-cjs/index.cjs"
+        }
       }
     },
     "./fonts": {
-      "types": "./lib/fonts/index.d.ts",
-      "import": "./lib/fonts/index.js",
-      "require": "./lib-cjs/fonts/index.js"
+      "import": {
+        "types": "./lib/fonts/index.d.ts",
+        "default": "./lib/fonts/index.js"
+      },
+      "require": {
+        "types": "./lib-cjs/fonts/index.d.cts",
+        "default": "./lib-cjs/fonts/index.cjs"
+      }
     },
     "./fonts/*": {
-      "types": "./lib/atoms/fonts/*.d.ts",
-      "import": "./lib/atoms/fonts/*.js",
-      "require": "./lib-cjs/atoms/fonts/*.js"
+      "import": {
+        "types": "./lib/atoms/fonts/*.d.ts",
+        "default": "./lib/atoms/fonts/*.js"
+      },
+      "require": {
+        "types": "./lib-cjs/atoms/fonts/*.d.cts",
+        "default": "./lib-cjs/atoms/fonts/*.cjs"
+      }
     },
     "./lib/fonts": {
-      "types": "./lib/fonts/index.d.ts",
-      "import": "./lib/fonts/index.js",
-      "require": "./lib-cjs/fonts/index.js"
+      "import": {
+        "types": "./lib/fonts/index.d.ts",
+        "default": "./lib/fonts/index.js"
+      },
+      "require": {
+        "types": "./lib-cjs/fonts/index.d.cts",
+        "default": "./lib-cjs/fonts/index.cjs"
+      }
     },
     "./svg": {
-      "types": "./lib/index.d.ts",
-      "import": "./lib/index.js",
-      "require": "./lib-cjs/index.js"
+      "import": {
+        "types": "./lib/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "require": {
+        "types": "./lib-cjs/index.d.cts",
+        "default": "./lib-cjs/index.cjs"
+      }
     },
     "./svg/*": {
-      "types": "./lib/atoms/svg/*.d.ts",
-      "import": "./lib/atoms/svg/*.js",
-      "require": "./lib-cjs/atoms/svg/*.js"
+      "import": {
+        "types": "./lib/atoms/svg/*.d.ts",
+        "default": "./lib/atoms/svg/*.js"
+      },
+      "require": {
+        "types": "./lib-cjs/atoms/svg/*.d.cts",
+        "default": "./lib-cjs/atoms/svg/*.cjs"
+      }
     },
     "./lib/atoms/svg/*": {
-      "types": "./lib/atoms/svg/*.d.ts",
-      "import": "./lib/atoms/svg/*.js",
-      "require": "./lib-cjs/atoms/svg/*.js"
+      "import": {
+        "types": "./lib/atoms/svg/*.d.ts",
+        "default": "./lib/atoms/svg/*.js"
+      },
+      "require": {
+        "types": "./lib-cjs/atoms/svg/*.d.cts",
+        "default": "./lib-cjs/atoms/svg/*.cjs"
+      }
     },
     "./lib/svg": {
-      "types": "./lib/index.d.ts",
-      "import": "./lib/index.js",
-      "require": "./lib-cjs/index.js"
+      "import": {
+        "types": "./lib/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "require": {
+        "types": "./lib-cjs/index.d.cts",
+        "default": "./lib-cjs/index.cjs"
+      }
     },
     "./utils": {
-      "types": "./lib/utils.d.ts",
-      "import": "./lib/utils.js",
-      "require": "./lib-cjs/utils.js"
+      "import": {
+        "types": "./lib/utils.d.ts",
+        "default": "./lib/utils.js"
+      },
+      "require": {
+        "types": "./lib-cjs/utils.d.cts",
+        "default": "./lib-cjs/utils.cjs"
+      }
     },
     "./providers": {
-      "types": "./lib/providers.d.ts",
-      "import": "./lib/providers.js",
-      "require": "./lib-cjs/providers.js"
+      "import": {
+        "types": "./lib/providers.d.ts",
+        "default": "./lib/providers.js"
+      },
+      "require": {
+        "types": "./lib-cjs/providers.d.cts",
+        "default": "./lib-cjs/providers.cjs"
+      }
     },
     "./lib/providers": {
-      "types": "./lib/providers.d.ts",
-      "import": "./lib/providers.js",
-      "require": "./lib-cjs/providers.js"
+      "import": {
+        "types": "./lib/providers.d.ts",
+        "default": "./lib/providers.js"
+      },
+      "require": {
+        "types": "./lib-cjs/providers.d.cts",
+        "default": "./lib-cjs/providers.cjs"
+      }
     },
     "./headless": {
-      "types": "./lib/headless/index.d.ts",
-      "import": "./lib/headless/index.js",
-      "require": "./lib-cjs/headless/index.js"
+      "import": {
+        "types": "./lib/headless/index.d.ts",
+        "default": "./lib/headless/index.js"
+      },
+      "require": {
+        "types": "./lib-cjs/headless/index.d.cts",
+        "default": "./lib-cjs/headless/index.cjs"
+      }
     },
     "./headless/fonts": {
-      "types": "./lib/headless/fonts/index.d.ts",
-      "import": "./lib/headless/fonts/index.js",
-      "require": "./lib-cjs/headless/fonts/index.js"
+      "import": {
+        "types": "./lib/headless/fonts/index.d.ts",
+        "default": "./lib/headless/fonts/index.js"
+      },
+      "require": {
+        "types": "./lib-cjs/headless/fonts/index.d.cts",
+        "default": "./lib-cjs/headless/fonts/index.cjs"
+      }
     },
     "./headless/styles.css": "./lib/headless/styles.css",
     "./headless/fonts/styles.css": "./lib/headless/fonts/styles.css",
     "./headless/svg/*": {
-      "types": "./lib/atoms/headless-svg/*.d.ts",
-      "import": "./lib/atoms/headless-svg/*.js",
-      "require": "./lib-cjs/atoms/headless-svg/*.js"
+      "import": {
+        "types": "./lib/atoms/headless-svg/*.d.ts",
+        "default": "./lib/atoms/headless-svg/*.js"
+      },
+      "require": {
+        "types": "./lib-cjs/atoms/headless-svg/*.d.cts",
+        "default": "./lib-cjs/atoms/headless-svg/*.cjs"
+      }
     },
     "./headless/fonts/*": {
-      "types": "./lib/atoms/headless-fonts/*.d.ts",
-      "import": "./lib/atoms/headless-fonts/*.js",
-      "require": "./lib-cjs/atoms/headless-fonts/*.js"
+      "import": {
+        "types": "./lib/atoms/headless-fonts/*.d.ts",
+        "default": "./lib/atoms/headless-fonts/*.js"
+      },
+      "require": {
+        "types": "./lib-cjs/atoms/headless-fonts/*.d.cts",
+        "default": "./lib-cjs/atoms/headless-fonts/*.cjs"
+      }
     },
     "./headless/utils": {
-      "types": "./lib/headless/utils.d.ts",
-      "import": "./lib/headless/utils.js",
-      "require": "./lib-cjs/headless/utils.js"
+      "import": {
+        "types": "./lib/headless/utils.d.ts",
+        "default": "./lib/headless/utils.js"
+      },
+      "require": {
+        "types": "./lib-cjs/headless/utils.d.cts",
+        "default": "./lib-cjs/headless/utils.cjs"
+      }
     }
   }
 }

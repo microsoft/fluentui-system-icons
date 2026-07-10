@@ -9,6 +9,8 @@ const { join, basename } = require('node:path');
 const glob = require('glob');
 const { transformSync } = require('@babel/core');
 
+const { fullySpecifyEsm, finalizeCjs } = require('./module-format');
+
 main({ root: join(__dirname, '..') });
 
 /**
@@ -56,6 +58,14 @@ function main(options) {
 
   applyBabelTransform('lib', projectRoot);
   applyBabelTransform('lib-cjs', projectRoot);
+
+  // Make `lib/` valid native ESM (fully-specified relative specifiers) and, when the
+  // package ships `"type": "module"`, turn `lib-cjs/` into `.cjs`/`.d.cts` output.
+  const pkg = JSON.parse(readFileSync(join(projectRoot, 'package.json'), 'utf-8'));
+  fullySpecifyEsm(join(projectRoot, 'lib'));
+  if (pkg.type === 'module') {
+    finalizeCjs(join(projectRoot, 'lib-cjs'));
+  }
 }
 
 // =================================================================================================
@@ -177,9 +187,14 @@ function addSpriteExportMap(baseDir) {
   }
 
   pkg.exports[spriteExportKey] = {
-    types: './lib/atoms/svg-sprite/*.d.ts',
-    import: './lib/atoms/svg-sprite/*.js',
-    require: './lib-cjs/atoms/svg-sprite/*.js',
+    import: {
+      types: './lib/atoms/svg-sprite/*.d.ts',
+      default: './lib/atoms/svg-sprite/*.js',
+    },
+    require: {
+      types: './lib-cjs/atoms/svg-sprite/*.d.cts',
+      default: './lib-cjs/atoms/svg-sprite/*.cjs',
+    },
   };
 
   writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
@@ -196,43 +211,43 @@ function addHeadlessExportMap(baseDir) {
   const pkgPath = join(baseDir, 'package.json');
   const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
 
-  /** @type {Record<string, string | {types: string; import: string; require: string}>} */
+  /**
+   * @typedef {{ import: { types: string; default: string }; require: { types: string; default: string } }} ConditionalExport
+   * @type {Record<string, string | ConditionalExport>}
+   */
   const headlessExports = {
     './headless': {
-      types: './lib/headless/index.d.ts',
-      import: './lib/headless/index.js',
-      require: './lib-cjs/headless/index.js',
+      import: { types: './lib/headless/index.d.ts', default: './lib/headless/index.js' },
+      require: { types: './lib-cjs/headless/index.d.cts', default: './lib-cjs/headless/index.cjs' },
     },
     './headless/fonts': {
-      types: './lib/headless/fonts/index.d.ts',
-      import: './lib/headless/fonts/index.js',
-      require: './lib-cjs/headless/fonts/index.js',
+      import: { types: './lib/headless/fonts/index.d.ts', default: './lib/headless/fonts/index.js' },
+      require: { types: './lib-cjs/headless/fonts/index.d.cts', default: './lib-cjs/headless/fonts/index.cjs' },
     },
     './headless/utils': {
-      types: './lib/headless/utils.d.ts',
-      import: './lib/headless/utils.js',
-      require: './lib-cjs/headless/utils.js',
+      import: { types: './lib/headless/utils.d.ts', default: './lib/headless/utils.js' },
+      require: { types: './lib-cjs/headless/utils.d.cts', default: './lib-cjs/headless/utils.cjs' },
     },
     './headless/styles.css': './lib/headless/styles.css',
     './headless/fonts/styles.css': './lib/headless/fonts/styles.css',
     './headless/svg/*': {
-      types: './lib/atoms/headless-svg/*.d.ts',
-      import: './lib/atoms/headless-svg/*.js',
-      require: './lib-cjs/atoms/headless-svg/*.js',
+      import: { types: './lib/atoms/headless-svg/*.d.ts', default: './lib/atoms/headless-svg/*.js' },
+      require: { types: './lib-cjs/atoms/headless-svg/*.d.cts', default: './lib-cjs/atoms/headless-svg/*.cjs' },
     },
     './headless/fonts/*': {
-      types: './lib/atoms/headless-fonts/*.d.ts',
-      import: './lib/atoms/headless-fonts/*.js',
-      require: './lib-cjs/atoms/headless-fonts/*.js',
+      import: { types: './lib/atoms/headless-fonts/*.d.ts', default: './lib/atoms/headless-fonts/*.js' },
+      require: { types: './lib-cjs/atoms/headless-fonts/*.d.cts', default: './lib-cjs/atoms/headless-fonts/*.cjs' },
     },
   };
 
   // Only expose the headless svg-sprite subpath when those atoms were generated
   if (existsSync(join(baseDir, 'src/atoms/headless-svg-sprite'))) {
     headlessExports['./headless/svg-sprite/*'] = {
-      types: './lib/atoms/headless-svg-sprite/*.d.ts',
-      import: './lib/atoms/headless-svg-sprite/*.js',
-      require: './lib-cjs/atoms/headless-svg-sprite/*.js',
+      import: { types: './lib/atoms/headless-svg-sprite/*.d.ts', default: './lib/atoms/headless-svg-sprite/*.js' },
+      require: {
+        types: './lib-cjs/atoms/headless-svg-sprite/*.d.cts',
+        default: './lib-cjs/atoms/headless-svg-sprite/*.cjs',
+      },
     };
   }
 
