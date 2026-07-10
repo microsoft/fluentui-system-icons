@@ -466,6 +466,7 @@
   "vssx": ["vss", "vssm", "vssx"],
   "vstx": ["vst", "vstm", "vstx", "vsx"],
   "whiteboard": ["whiteboard", "wbtx"],
+  "wikipage": null,
   "xlsx": ["xlc", "xls", "xlsb", "xlsm", "xlsx", "xlw"],
   "xltx": ["xlt", "xltm", "xltx"],
   "xml": ["xaml", "xml", "xsl"],
