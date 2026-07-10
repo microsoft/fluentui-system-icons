@@ -1,3 +1,15 @@
+## 2.0.333 (2026-07-10)
+
+### 🚀 Features
+
+- **assets:** add new and updated icons ([#1154](https://github.com/microsoft/fluentui-system-icons/pull/1154))
+- **react-icons:** render data-fui-icon attribute on all icon factories ([#1144](https://github.com/microsoft/fluentui-system-icons/pull/1144))
+
+### 🩹 Fixes
+
+- **react-icons:** honor fontSize prop on resizable font icons (SVG/font parity) ([#1146](https://github.com/microsoft/fluentui-system-icons/pull/1146))
+- **react-icons:** resolve [data-fui-icon-hidden] specificity ordering ([#1153](https://github.com/microsoft/fluentui-system-icons/pull/1153))
+
 ## 2.0.332 (2026-07-07)
 
 ### 🚀 Features

@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?422f5404eeb0caa3631e5a2fb18e74c8") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?422f5404eeb0caa3631e5a2fb18e74c8") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?422f5404eeb0caa3631e5a2fb18e74c8") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?9c4f5323131c8d91515ee406d1c9ebd0") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?9c4f5323131c8d91515ee406d1c9ebd0") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?9c4f5323131c8d91515ee406d1c9ebd0") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -29265,4 +29265,34 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_xbox_one_console_20_filled:before {
     content: "\f0d15";
+}
+.icon-ic_fluent_circle_hint_12_filled:before {
+    content: "\f0d16";
+}
+.icon-ic_fluent_clipboard_markdown_16_filled:before {
+    content: "\f0d17";
+}
+.icon-ic_fluent_clipboard_markdown_20_filled:before {
+    content: "\f0d18";
+}
+.icon-ic_fluent_clipboard_markdown_24_filled:before {
+    content: "\f0d19";
+}
+.icon-ic_fluent_database_settings_16_filled:before {
+    content: "\f0d1a";
+}
+.icon-ic_fluent_database_settings_20_filled:before {
+    content: "\f0d1b";
+}
+.icon-ic_fluent_database_settings_24_filled:before {
+    content: "\f0d1c";
+}
+.icon-ic_fluent_door_add_16_filled:before {
+    content: "\f0d1d";
+}
+.icon-ic_fluent_door_add_20_filled:before {
+    content: "\f0d1e";
+}
+.icon-ic_fluent_door_add_24_filled:before {
+    content: "\f0d1f";
 }

@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Resizable";
-    src: url("./FluentSystemIcons-Resizable.woff2?f0bb58c76725d244f9844744415ea5f0") format("woff2"),
-url("./FluentSystemIcons-Resizable.woff?f0bb58c76725d244f9844744415ea5f0") format("woff"),
-url("./FluentSystemIcons-Resizable.ttf?f0bb58c76725d244f9844744415ea5f0") format("truetype");
+    src: url("./FluentSystemIcons-Resizable.woff2?a9d63301bc7d3a76991a33799462b633") format("woff2"),
+url("./FluentSystemIcons-Resizable.woff?a9d63301bc7d3a76991a33799462b633") format("woff"),
+url("./FluentSystemIcons-Resizable.ttf?a9d63301bc7d3a76991a33799462b633") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -16965,4 +16965,22 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_zoom_out_20_regular:before {
     content: "\f611";
+}
+.icon-ic_fluent_clipboard_markdown_20_filled:before {
+    content: "\f612";
+}
+.icon-ic_fluent_clipboard_markdown_20_regular:before {
+    content: "\f613";
+}
+.icon-ic_fluent_database_settings_20_filled:before {
+    content: "\f614";
+}
+.icon-ic_fluent_database_settings_20_regular:before {
+    content: "\f615";
+}
+.icon-ic_fluent_door_add_20_filled:before {
+    content: "\f616";
+}
+.icon-ic_fluent_door_add_20_regular:before {
+    content: "\f617";
 }
