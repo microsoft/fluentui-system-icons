@@ -57,6 +57,34 @@ describe('React component tests', () => {
     `);
   });
 
+  test('createFontIcon applies the `fontSize` prop as a CSS style (API parity with SVG icons)', () => {
+    const AccessTimeRegular: FluentFontIcon = createFluentFontIcon('AccessTimeRegular', '', 2, undefined);
+
+    const { container } = render(<AccessTimeRegular fontSize="32px" />);
+    const i = container.querySelector('i');
+
+    expect(i).toBeTruthy();
+    expect(i).toHaveStyle({ fontSize: '32px' });
+    // The prop must NOT leak onto the element as an (inert) DOM attribute.
+    expect(i).not.toHaveAttribute('fontSize');
+    expect(i).not.toHaveAttribute('fontsize');
+  });
+
+  test('createFontIcon sized icons ignore the `fontSize` prop and keep their baked-in size (parity with sized SVG)', () => {
+    // A non-undefined baked size marks a *sized* icon (e.g. Send24Regular).
+    const Send24Regular: FluentFontIcon = createFluentFontIcon('Send24Regular', '', 1, 24);
+
+    // No prop -> baked-in size is used.
+    const withDefault = render(<Send24Regular />).container.querySelector('i');
+    expect(withDefault).toHaveStyle({ fontSize: '24px' });
+
+    // `fontSize` prop is ignored: sized icons are fixed-size, matching sized SVG icons
+    // (whose hardcoded width/height ignore font-size), so a SVG->font swap stays consistent.
+    const withProp = render(<Send24Regular fontSize={16} />).container.querySelector('i');
+    expect(withProp).toHaveStyle({ fontSize: '24px' });
+    expect(withProp).not.toHaveAttribute('fontsize');
+  });
+
   test('createFluentIcon renders an SVG with expected path', () => {
     const d = 'M1 2 L3 4';
     const MyIcon = createFluentIcon('MyIcon', '1em', [d]);

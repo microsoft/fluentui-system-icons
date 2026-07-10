@@ -24,4 +24,14 @@ export type FluentIconsProps<
      * NOTE: This prop only applies to `Color` icon variants; it is ignored by mono-color icons.
      */
     idPrefix?: string;
+    /**
+     * Sets the rendered size of a **resizable** icon. For SVG icons this maps to the `font-size`
+     * presentation attribute (the icon is `1em`); for font icons it maps to the `font-size` CSS
+     * style. Exposing it on both keeps the prop working when an icon is switched between the SVG
+     * and font variants.
+     *
+     * NOTE: **Sized** variants (e.g. `Send24Regular`) render at their fixed design size and ignore
+     * this prop in both SVG and font form.
+     */
+    fontSize?: string | number;
   };
