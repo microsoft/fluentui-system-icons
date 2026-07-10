@@ -5648,5 +5648,11 @@
   "ic_fluent_zoom_in_20_filled": 62990,
   "ic_fluent_zoom_in_20_regular": 62991,
   "ic_fluent_zoom_out_20_filled": 62992,
-  "ic_fluent_zoom_out_20_regular": 62993
+  "ic_fluent_zoom_out_20_regular": 62993,
+  "ic_fluent_clipboard_markdown_20_filled": 62994,
+  "ic_fluent_clipboard_markdown_20_regular": 62995,
+  "ic_fluent_database_settings_20_filled": 62996,
+  "ic_fluent_database_settings_20_regular": 62997,
+  "ic_fluent_door_add_20_filled": 62998,
+  "ic_fluent_door_add_20_regular": 62999
 }
