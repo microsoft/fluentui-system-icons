@@ -106,13 +106,17 @@ jobs:
           distribution: temurin
           java-version: 11
 
-      # https://github.com/marketplace/actions/gradle-command
-      - name: Build Android library
-        uses: eskatos/gradle-command-action@v1
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v5
         with:
-          arguments: assembleRelease
-          build-root-directory: android
-          wrapper-directory: android
+          gradle-version: wrapper
+          gradle-home-cache-excludes: |
+            caches
+            jdks
+
+      - name: Build Android library
+        run: ./gradlew assembleRelease
+        working-directory: android
 
       - name: Generate BUILD.gn file for Android
         run: python3 generate_build_gn_android.py
