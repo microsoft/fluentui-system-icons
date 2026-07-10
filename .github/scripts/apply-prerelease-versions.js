@@ -3,34 +3,23 @@
 // @ts-check
 
 /**
- * Applies the per-project prerelease versions computed by calculate-prerelease-version.js and
- * synchronizes cross-package runtime dependency references so a published package never points at
- * an unpublished workspace version.
+ * Applies the per-project prerelease versions computed by calculate-prerelease-version.js by writing
+ * each project's `package.json` `version` field.
  *
- * For every project in the batch:
- *   1. Its package.json `version` is set to the computed prerelease version.
- *   2. Any `dependencies` / `peerDependencies` / `optionalDependencies` entry that targets ANOTHER
- *      in-batch workspace package is rewritten to that package's new (exact) prerelease version.
- *      `devDependencies` are intentionally left untouched — their ranges are preserved by nx release
- *      (nx.json `preserveMatchingDependencyRanges: ["devDependencies"]`) and are not part of the
- *      published runtime closure.
- *
- * Doing this in a single deterministic pass (instead of per-project `nx release version` calls)
- * avoids Nx's "one specifier per invocation" limitation while still producing the same cross-reference
- * rewrites Nx performs when a dependency and dependent are versioned together.
+ * Cross-package dependency references are intentionally NOT rewritten: only already-published public
+ * packages are pre-released, so any repo dependency of a pre-released package is already resolvable on
+ * npm. Each package is versioned independently.
  *
  * Usage: node apply-prerelease-versions.js --in <file> [--dry-run=true|false]
  *
  * Options:
  *   --in: Path to the versions JSON produced by calculate-prerelease-version.js (required)
- *   --dry-run: Log intended changes without writing any package.json files
+ *   --dry-run=true|false: Log intended changes without writing any package.json files (default: false)
  */
 
 const fs = require('fs');
 const path = require('path');
 const { parseArgs } = require('node:util');
-
-const RUNTIME_DEP_COLLECTIONS = ['dependencies', 'peerDependencies', 'optionalDependencies'];
 
 main();
 
@@ -51,14 +40,10 @@ function main() {
     process.exit(1);
   }
 
-  // npm package name -> new prerelease version, for every package in this batch.
-  /** @type {Map<string, string>} */
-  const inBatchVersions = new Map(data.projects.map((p) => [p.npmName, p.version]));
-
   /** @type {{ project: { nxName: string, npmName: string, version: string }, changes: Change[] }[]} */
   const results = data.projects.map((project) => ({
     project,
-    changes: applyToProject(project, inBatchVersions, dryRun),
+    changes: applyToProject(project, dryRun),
   }));
 
   printPlan(results, dryRun);
@@ -119,41 +104,22 @@ function printUsage() {
 }
 
 /**
- * Computes (and, unless dry-run, writes) the version + runtime dependency changes for a project.
+ * Computes (and, unless dry-run, writes) the version change for a project.
  *
  * @param {{ nxName: string, npmName: string, packageJsonPath: string, version: string }} project
- * @param {Map<string, string>} inBatchVersions - npm name -> new prerelease version
  * @param {boolean} dryRun
  * @returns {Change[]} the list of changes for this project
  */
-function applyToProject(project, inBatchVersions, dryRun) {
+function applyToProject(project, dryRun) {
   const pkgPath = path.resolve(project.packageJsonPath);
   const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
 
   /** @type {Change[]} */
   const changes = [];
 
-  // 1. Set the package's own version.
   if (pkg.version !== project.version) {
     changes.push({ field: 'version', from: pkg.version, to: project.version });
     pkg.version = project.version;
-  }
-
-  // 2. Rewrite runtime dependency references to in-batch packages (exact prerelease versions).
-  for (const collection of RUNTIME_DEP_COLLECTIONS) {
-    const deps = pkg[collection];
-    if (!deps || typeof deps !== 'object') continue;
-
-    for (const depName of Object.keys(deps)) {
-      if (depName === project.npmName) continue; // never self-reference
-      const newVersion = inBatchVersions.get(depName);
-      if (!newVersion) continue; // external dep or not part of this batch
-
-      if (deps[depName] !== newVersion) {
-        changes.push({ field: `${collection}.${depName}`, from: deps[depName], to: newVersion });
-        deps[depName] = newVersion;
-      }
-    }
   }
 
   if (!dryRun && changes.length > 0) {

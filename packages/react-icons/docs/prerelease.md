@@ -2,7 +2,7 @@
 
 ## Overview
 
-The prerelease workflow lets you publish preview versions of one or more **selected** packages to npm before a final release. You choose which package(s) to pre-release via the `projects` input (Nx selection syntax); publishable runtime dependencies of the selection are auto-included, and private packages (`tag:npm:private`) are excluded by default. This is useful for:
+The prerelease workflow lets you publish preview versions of one or more **selected, already-public** packages to npm before a final release. You choose which package(s) to pre-release via the `projects` input (Nx selection syntax); private packages (`tag:npm:private`) are excluded by default. Each selected package is versioned and published **independently**. This is useful for:
 
 - Testing new features with early adopters
 - Getting feedback before official releases
@@ -27,7 +27,7 @@ The prerelease workflow lets you publish preview versions of one or more **selec
 
 Click **Run workflow** and configure:
 
-- **Projects** (required): The package(s) to pre-release, using Nx selection syntax (comma/space delimited names, globs, or `tag:` selectors). Examples: `react-icons`, `react-icons,react-icons-file-type`, `react-*`, `tag:npm:standalone`. Publishable runtime dependencies of the selection are auto-included.
+- **Projects** (required): The package(s) to pre-release, using Nx selection syntax (comma/space delimited names, globs, or `tag:` selectors). Examples: `react-icons`, `react-icons,react-icons-file-type`, `react-*`, `tag:npm:standalone`. Only already-public packages are eligible (private packages are excluded).
 - **Exclude** (optional): An Nx selection to remove from the resolved set (e.g. `react-native-icons`).
 - **Prerelease identifier** (required): Choose one of:
   - `alpha` - For early development versions (e.g., `2.0.0-alpha.1`)
@@ -41,12 +41,11 @@ Click **Run workflow** and configure:
 The workflow will:
 
 1. ✅ Validate the branch (must not be `main`)
-2. 🧭 Resolve the selection and auto-include publishable runtime dependencies
-3. 📦 Build the resolved packages
-4. 🔢 Calculate each package's next prerelease version independently
-5. 🏷️ Apply versions and sync cross-package runtime dependency references
-6. 📤 Publish the resolved set to npm (or simulate if dry-run is enabled)
-7. 📝 Generate a summary with the version plan and installation instructions
+2. 🔢 Resolve the selection and calculate each package's next prerelease version independently
+3. 📦 Build the selected packages
+4. 🏷️ Write the prerelease version into each selected package's `package.json`
+5. 📤 Publish the selected packages to npm (or simulate if dry-run is enabled)
+6. 📝 Generate a summary with the version plan and installation instructions
 
 ## Prerelease Versioning
 

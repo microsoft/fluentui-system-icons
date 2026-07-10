@@ -1,8 +1,8 @@
-# NOTE: This workflow pre-releases an explicitly selected set of npm packages.
+# NOTE: This workflow pre-releases an explicitly selected set of already-public npm packages.
 # Packages are chosen via the `projects` input using Nx project-selection syntax
-# (names, globs, or `tag:` selectors). Private packages (`tag:npm:private`) are excluded
-# by default; publishable runtime dependencies of the selection are auto-included so the
-# published set is self-consistent.
+# (names, globs, or `tag:` selectors). Private packages (`tag:npm:private`) are excluded by default.
+# Each selected package is versioned and published independently. Only already-released packages are
+# eligible — which implies they already belong to a release group in nx.json.
 
 name: Publish Prerelease NPM
 
@@ -68,9 +68,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Resolve the user selection into concrete, publishable Nx project names, then expand with any
-      # publishable runtime workspace dependencies so the published closure is self-consistent
-      # (a published package never references an unpublished workspace version).
+      # Resolve the user selection into concrete, publishable Nx project names. Private packages are
+      # excluded by default.
       - name: Resolve release projects
         id: projects
         env:
@@ -82,26 +81,19 @@ jobs:
             EXCLUDE_ARGS+=(--exclude "$EXCLUDE_INPUT")
           fi
 
-          SELECTED=$(npx nx show projects -p "$PROJECTS_INPUT" "${EXCLUDE_ARGS[@]}" --sep ',')
-          if [ -z "$SELECTED" ]; then
+          NX_NAMES=$(npx nx show projects -p "$PROJECTS_INPUT" "${EXCLUDE_ARGS[@]}" --sep ',')
+          if [ -z "$NX_NAMES" ]; then
             echo "❌ ERROR: No publishable projects matched '$PROJECTS_INPUT' (after excluding tag:npm:private)." >> $GITHUB_STEP_SUMMARY
             exit 1
           fi
 
-          NX_NAMES=$(node .github/scripts/expand-release-projects.js --projects "$SELECTED")
           echo "Resolved projects: $NX_NAMES"
           echo "nx-names=$NX_NAMES" >> "$GITHUB_OUTPUT"
 
-      - name: Build packages
-        env:
-          NX_NAMES: ${{ steps.projects.outputs.nx-names }}
-        run: |
-          npx nx run-many -t build --projects="$NX_NAMES"
-
       #  NOTE:
-      #   We calculate each package's next prerelease version independently before writing package.json.
-      #   This repo does not set per-package git tags, so we cannot rely on Nx's default version resolution;
-      #   versions are derived from the npm registry (see calculate-prerelease-version.js).
+      #   We calculate each package's next prerelease version independently. This repo does not set
+      #   per-package git tags, so we cannot rely on Nx's default version resolution; versions are
+      #   derived from the npm registry (see calculate-prerelease-version.js).
       - name: Calculate prerelease versions
         id: versions
         env:
@@ -113,9 +105,14 @@ jobs:
             --projects "$NX_NAMES" \
             --out tmp/prerelease-versions.json
 
-      # Apply the computed versions and synchronize cross-package runtime dependency references so no
-      # published package points at an unpublished workspace version. In dry-run the changes are only
-      # logged (not written); the plan is surfaced in the run summary either way.
+      - name: Build packages
+        env:
+          NX_NAMES: ${{ steps.projects.outputs.nx-names }}
+        run: |
+          npx nx run-many -t build --projects="$NX_NAMES"
+
+      # Write the computed prerelease version into each selected package's package.json. In dry-run the
+      # changes are only logged (not written); the plan is surfaced in the run summary either way.
       - name: Apply prerelease versions
         run: |
           node .github/scripts/apply-prerelease-versions.js \
