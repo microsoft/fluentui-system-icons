@@ -1,11 +1,23 @@
-# NOTE: This workflow is applicable only for the "react" nx release group.
-# It does NOT cover the react-native-icons package, which belongs to a separate release group.
+# NOTE: This workflow pre-releases an explicitly selected set of already-public npm packages.
+# Packages are chosen via the `projects` input using Nx project-selection syntax
+# (names, globs, or `tag:` selectors). Private packages (`tag:npm:private`) are excluded by default.
+# Each selected package is versioned and published independently. Only already-released packages are
+# eligible — which implies they already belong to a release group in nx.json.
 
 name: Publish Prerelease NPM
 
 on:
   workflow_dispatch:
     inputs:
+      projects:
+        description: 'Packages to pre-release (Nx selection syntax, comma/space delimited). e.g. "react-icons", "react-icons,react-icons-file-type", "react-*", "tag:npm:standalone"'
+        required: true
+        type: string
+      exclude:
+        description: 'Optional Nx selection to exclude from the resolved set (e.g. "react-native-icons")'
+        required: false
+        default: ''
+        type: string
       preid:
         description: 'Prerelease identifier used for npm version, not dist-tag (e.g., alpha, beta, rc)'
         required: false
@@ -56,48 +68,68 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Derive project names from NX Graph
+      # Resolve the user selection into concrete, publishable Nx project names. Private packages are
+      # excluded by default.
       - name: Resolve release projects
         id: projects
+        env:
+          PROJECTS_INPUT: ${{ inputs.projects }}
+          EXCLUDE_INPUT: ${{ inputs.exclude }}
         run: |
-          NX_NAMES=$(npx nx show projects -p 'react-*' --exclude 'react-native-icons' --sep ',')
+          EXCLUDE_ARGS=(--exclude "tag:npm:private")
+          if [ -n "$EXCLUDE_INPUT" ]; then
+            EXCLUDE_ARGS+=(--exclude "$EXCLUDE_INPUT")
+          fi
+
+          NX_NAMES=$(npx nx show projects -p "$PROJECTS_INPUT" "${EXCLUDE_ARGS[@]}" --sep ',')
+          if [ -z "$NX_NAMES" ]; then
+            echo "❌ ERROR: No publishable projects matched '$PROJECTS_INPUT' (after excluding tag:npm:private)." >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+
+          echo "Resolved projects: $NX_NAMES"
           echo "nx-names=$NX_NAMES" >> "$GITHUB_OUTPUT"
 
-      - name: Build packages
-        run: |
-          npx nx run-many -t build --projects=${{ steps.projects.outputs.nx-names }}
-
       #  NOTE:
-      #   We need to calculate the next version before updating package.json manually. Otherwise the version bump would be the same version which would lead to workflow failure.
-      #   This is needed because this repo doesn't set git tags per package so we are unable to leverage default Nx Release logic ( get latest version from git, falling back to package.json version)
+      #   We calculate each package's next prerelease version independently. This repo does not set
+      #   per-package git tags, so we cannot rely on Nx's default version resolution; versions are
+      #   derived from the npm registry (see calculate-prerelease-version.js).
       - name: Calculate prerelease versions
         id: versions
+        env:
+          PREID: ${{ inputs.preid }}
+          NX_NAMES: ${{ steps.projects.outputs.nx-names }}
         run: |
           node .github/scripts/calculate-prerelease-version.js \
-            --preid "${{ inputs.preid }}" \
-            --projects "${{ steps.projects.outputs.nx-names }}"
+            --preid "$PREID" \
+            --projects "$NX_NAMES" \
+            --out tmp/prerelease-versions.json
 
-      - name: Apply prerelease versions
-        # Scope to --group=react so only react group packages are versioned.
-        # We intentionally avoid --projects because nx "updateDependents": "auto"
-        # would override the prerelease version with a patch bump.
-        # react-native-icons gets versioned too but won't be published (change is local-only).
+      - name: Build packages
+        env:
+          NX_NAMES: ${{ steps.projects.outputs.nx-names }}
         run: |
-          npx nx release version "${{ steps.versions.outputs.version }}" \
-            --group=react \
-            --dry-run=${{ inputs.dry-run }} \
-            --verbose
+          npx nx run-many -t build --projects="$NX_NAMES"
+
+      # Write the computed prerelease version into each selected package's package.json. In dry-run the
+      # changes are only logged (not written); the plan is surfaced in the run summary either way.
+      - name: Apply prerelease versions
+        run: |
+          node .github/scripts/apply-prerelease-versions.js \
+            --in tmp/prerelease-versions.json \
+            --dry-run=${{ inputs.dry-run }}
 
       - name: Publish to npm (Nx Release)
+        env:
+          NX_NAMES: ${{ steps.projects.outputs.nx-names }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           npx nx release publish \
-            --projects=${{ steps.projects.outputs.nx-names }} \
+            --projects="$NX_NAMES" \
             --tag prerelease \
             --access public \
             --dry-run=${{ inputs.dry-run }} \
             --verbose
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Summary
         run: |
