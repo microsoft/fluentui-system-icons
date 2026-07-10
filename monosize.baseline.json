@@ -1,6 +1,6 @@
 {
   "branch": "main",
-  "commitSHA": "9b72181cdf68f6c7679df40e0fe13a4800883bb5",
+  "commitSHA": "1b01e08067241270f893adb77efb90bfcb243fb6",
   "report": [
     {
       "packageName": "react-icons",
@@ -34,8 +34,8 @@
       "packageName": "react-icons",
       "name": "Headless - Single Fonts",
       "path": "bundle-size/headless-fonts.fixture.js",
-      "minifiedSize": 1115,
-      "gzippedSize": 639
+      "minifiedSize": 1143,
+      "gzippedSize": 644
     },
     {
       "packageName": "react-icons",
@@ -69,8 +69,8 @@
       "packageName": "react-icons",
       "name": "Single Fonts",
       "path": "bundle-size/single-fonts.fixture.js",
-      "minifiedSize": 8166,
-      "gzippedSize": 3554
+      "minifiedSize": 8195,
+      "gzippedSize": 3564
     },
     {
       "packageName": "react-icons",
