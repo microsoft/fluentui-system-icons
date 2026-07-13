@@ -43,6 +43,24 @@ export interface FluentIconsAtomicImportLoaderOptions {
    * `headless/fonts/styles.css` for font icons) in your app entry point.
    */
   headless?: boolean;
+  /**
+   * Rewrite a **narrow, statically-provable** subset of dynamic `import()` barrel
+   * calls into atomic dynamic imports. Defaults to `false`.
+   *
+   * Only two shapes are rewritten, where the imported names are known literals at
+   * the call site:
+   * - `const { AddFilled } = await import('@fluentui/react-icons')`
+   * - `import('@fluentui/react-icons').then(({ AddFilled }) => …)`
+   *
+   * Names from the same atom are grouped into one import; names from different
+   * atoms become a positional `Promise.all([...])`. Anything else (namespace
+   * binding `const ns = await import(…)`, `.then(m => m.X)`, rest/computed/default
+   * patterns, non-literal specifiers) is left untouched and still warns.
+   *
+   * Prefer a dedicated module of **static** atomic imports that you lazy-load
+   * (`import('./icons')`) over relying on this; see the README for the gotchas.
+   */
+  allowDynamicImports?: boolean;
 }
 
 export default function fluentIconsAtomicImportLoader(
@@ -57,7 +75,7 @@ export default function fluentIconsAtomicImportLoader(
     return this.callback(null, sourceCode);
   }
 
-  const { iconVariant = 'svg', fallbackVariant, headless = false } = this.getOptions();
+  const { iconVariant = 'svg', fallbackVariant, headless = false, allowDynamicImports = false } = this.getOptions();
 
   let code: string;
   let map: ReturnType<typeof transformSource>['map'];
@@ -68,6 +86,7 @@ export default function fluentIconsAtomicImportLoader(
       iconVariant,
       fallbackVariant,
       headless,
+      allowDynamicImports,
       path: resourcePath,
     }));
   } catch (error) {
