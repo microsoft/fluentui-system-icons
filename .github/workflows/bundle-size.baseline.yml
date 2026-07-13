@@ -9,32 +9,15 @@ on:
       # Icons changes can affect the bundle size so we wanna run the baseline update here as well
       - 'assets/**'
 
-# Serialize all automated writers to `main` (this workflow and publish.yml share the
-# same group) so their pushes can never race and clobber each other.
-# `cancel-in-progress: false` queues runs instead of cancelling them.
-concurrency:
-  group: main-writer
-  cancel-in-progress: false
-
 jobs:
   bundle-size-baseline:
     if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      actions: write
+      contents: read
 
     steps:
-      - name: Generate a token
-        id: generate-token
-        uses: actions/create-github-app-token@v3
-        with:
-          app-id: ${{ secrets.GH_FLUENT_CI_APP_ID }}
-          private-key: ${{ secrets.GH_FLUENT_CI_PRIVATE_KEY }}
-
       - uses: actions/checkout@v7
-        with:
-          token: ${{ steps.generate-token.outputs.token }}
 
       - uses: actions/setup-node@v6
         with:
@@ -46,23 +29,13 @@ jobs:
         run: |
           npx nx run-many -t bundle-size --nxBail
 
-      - name: Update bundle size baseline
+      - name: Aggregate bundle size report
         run: npx monosize upload-report --branch main --commit-sha ${{ github.sha }}
 
-      - name: Check for changes
-        id: check-changes
-        run: |
-          if [ -n "$(git status --porcelain monosize.baseline.json)" ]; then
-            echo "changes=true" >> $GITHUB_OUTPUT
-          else
-            echo "changes=false" >> $GITHUB_OUTPUT
-          fi
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: monosize-report
+          path: dist/bundle-size-report.json
+          retention-days: 90
 
-      - name: Commit and push baseline update
-        if: steps.check-changes.outputs.changes == 'true'
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add monosize.baseline.json
-          git commit -m "chore(bundle-size): update bundle size baseline [skip ci]"
-          git push origin HEAD:main
