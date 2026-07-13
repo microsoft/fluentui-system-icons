@@ -481,4 +481,76 @@ describe('transformSource', () => {
       expect(diagnostics).toHaveLength(1);
     });
   });
+
+  describe('dynamic imports (cannot be atomized)', () => {
+    it('warns and leaves a dynamic barrel import untouched', () => {
+      const source = `const icons = await import('@fluentui/react-icons');`;
+
+      const { code, diagnostics } = transformSource(source, { iconVariant: 'svg', path: 'input.js' });
+
+      expect(code).toBe(source);
+      expect(diagnostics).toHaveLength(1);
+      expect(diagnostics[0].level).toBe('warning');
+      expect(diagnostics[0].message).toMatchInlineSnapshot(
+        `"dynamic import of the "@fluentui/react-icons" barrel cannot be atomized, so the entire icon set will be bundled into the async chunk. Import an atomic path directly instead, e.g. import('@fluentui/react-icons/svg/add')."`,
+      );
+    });
+
+    it('warns for a dynamic brand-icons barrel import', () => {
+      const { diagnostics } = transformSource(`import('@fluentui/react-brand-icons').then(m => m.ProjectColor);`, {
+        iconVariant: 'svg',
+        path: 'input.js',
+      });
+
+      expect(diagnostics).toHaveLength(1);
+      expect(diagnostics[0].level).toBe('warning');
+      expect(diagnostics[0].message).toMatchInlineSnapshot(
+        `"dynamic import of the "@fluentui/react-brand-icons" barrel cannot be atomized, so the entire icon set will be bundled into the async chunk. Import an atomic path directly instead, e.g. import('@fluentui/react-brand-icons/svg/add')."`,
+      );
+    });
+
+    it('does not warn for a dynamic import of an atomic path', () => {
+      const source = `const { AddFilled } = await import('@fluentui/react-icons/svg/add');`;
+
+      const { code, diagnostics } = transformSource(source, { iconVariant: 'svg', path: 'input.js' });
+
+      expect(code).toBe(source);
+      expect(diagnostics).toEqual([]);
+    });
+
+    it('does not warn for a dynamic import of a subpath barrel (not a supported bare module)', () => {
+      const { diagnostics } = transformSource(`const m = await import('@fluentui/react-icons/svg');`, {
+        iconVariant: 'svg',
+        path: 'input.js',
+      });
+
+      expect(diagnostics).toEqual([]);
+    });
+
+    it('does not warn for a dynamic import with a non-static specifier', () => {
+      const source = [`const pkg = '@fluentui/react-icons';`, `const m = await import(pkg);`].join('\n');
+
+      const { diagnostics } = transformSource(source, { iconVariant: 'svg', path: 'input.js' });
+
+      expect(diagnostics).toEqual([]);
+    });
+
+    it('warns once per dynamic barrel and still rewrites sibling static imports', () => {
+      const source = [
+        `import { AddFilled } from '@fluentui/react-icons';`,
+        `const lazy = () => import('@fluentui/react-icons');`,
+      ].join('\n');
+
+      const { code, diagnostics } = transformSource(source, { iconVariant: 'svg', path: 'input.js' });
+
+      expect(code).toBe(
+        [
+          `import { AddFilled } from '@fluentui/react-icons/svg/add';`,
+          `const lazy = () => import('@fluentui/react-icons');`,
+        ].join('\n'),
+      );
+      expect(diagnostics).toHaveLength(1);
+      expect(diagnostics[0].level).toBe('warning');
+    });
+  });
 });
