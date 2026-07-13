@@ -1,6 +1,6 @@
 {
   "branch": "main",
-  "commitSHA": "c6456e145a239c390deac0a84cfdbfadcef2b504",
+  "commitSHA": "d4819e48891824acab2b6ab5077cbc52885ae4a7",
   "report": [
     {
       "packageName": "react-icons",
@@ -70,7 +70,7 @@
       "name": "Single Fonts",
       "path": "bundle-size/single-fonts.fixture.js",
       "minifiedSize": 8195,
-      "gzippedSize": 3564
+      "gzippedSize": 3566
     },
     {
       "packageName": "react-icons",
