@@ -2,6 +2,18 @@
 const { resolve } = require('path');
 const { readFileSync } = require('fs');
 
+/**
+ * @typedef {object} EntryConfig
+ * @property {string} src Entry source file, relative to this config.
+ * @property {object} loaderOptions Options passed to the atomic import loader.
+ * @property {string[]} mustInclude Substrings the emitted bundle must contain.
+ * @property {string[]} mustExclude Substrings the emitted bundle must NOT contain.
+ * @property {string[]} [mustWarn] Substrings each of which must appear in at least
+ *   one emitted build warning. When set, all warnings are also printed so they are
+ *   directly visible in the test output.
+ */
+
+/** @type {Record<string, EntryConfig>} */
 const entries = {
   'svg-imports': {
     src: './src/svg-imports.js',
@@ -147,11 +159,26 @@ const entries = {
     mustInclude: ['@fluentui/react-icons/svg/add', '@fluentui/react-icons/svg/arrow-left'],
     mustExclude: ['"@fluentui/react-icons"'],
   },
+
+  'dynamic-barrel-imports': {
+    src: './src/dynamic-barrel-imports.js',
+    loaderOptions: {},
+    // Dynamic imports are code-split into separate async chunks and left
+    // untouched by the loader, so there is nothing to assert on the main bundle
+    // content — the point of this fixture is the emitted warnings below.
+    mustInclude: [],
+    mustExclude: [],
+    // Each barrel dynamic import must surface a warning; the atomic one must not.
+    mustWarn: [
+      'dynamic import of the "@fluentui/react-icons" barrel cannot be atomized',
+      'dynamic import of the "@fluentui/react-brand-icons" barrel cannot be atomized',
+    ],
+  },
 };
 
 /**
  * @param {string} name
- * @param {typeof entries[keyof typeof entries]} entry
+ * @param {EntryConfig} entry
  * @returns {import('webpack').Configuration}
  */
 function createConfig(name, entry) {
@@ -201,7 +228,7 @@ function createConfig(name, entry) {
     plugins: [
       {
         apply(compiler) {
-          compiler.hooks.afterEmit.tap('verify-transforms', () => {
+          compiler.hooks.afterEmit.tap('verify-transforms', (compilation) => {
             const outputPath = resolve(__dirname, 'dist', name, `${name}.js`);
             const output = readFileSync(outputPath, 'utf8');
 
@@ -214,6 +241,20 @@ function createConfig(name, entry) {
             for (const pattern of entry.mustExclude) {
               if (output.includes(pattern)) {
                 throw new Error(`[${name}] Expected output NOT to contain "${pattern}" but it was found.`);
+              }
+            }
+
+            if (entry.mustWarn && entry.mustWarn.length > 0) {
+              const warnings = compilation.warnings.map((w) => (w instanceof Error ? w.message : String(w)));
+
+              for (const warning of warnings) {
+                console.log(`  ⚠ ${name}: ${warning}`);
+              }
+
+              for (const expected of entry.mustWarn) {
+                if (!warnings.some((w) => w.includes(expected))) {
+                  throw new Error(`[${name}] Expected a build warning containing "${expected}" but none was emitted.`);
+                }
               }
             }
 
