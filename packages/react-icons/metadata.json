@@ -6546,12 +6546,12 @@
   },
   "ClipboardMarkdownFilled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "ClipboardMarkdownRegular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "ClipboardMathFormulaFilled": {
@@ -8566,12 +8566,12 @@
   },
   "DatabaseSettingsFilled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "DatabaseSettingsRegular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "DatabaseSwitchFilled": {
@@ -10441,12 +10441,12 @@
   },
   "DoorAddFilled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "DoorAddRegular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "DoorArrowLeftFilled": {
@@ -51611,12 +51611,12 @@
   },
   "CircleHint12Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "CircleHint12Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "CircleHint16Filled": {
@@ -52881,32 +52881,32 @@
   },
   "ClipboardMarkdown16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ClipboardMarkdown16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ClipboardMarkdown20Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ClipboardMarkdown20Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ClipboardMarkdown24Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ClipboardMarkdown24Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ClipboardMathFormula16Filled": {
@@ -60536,32 +60536,32 @@
   },
   "DatabaseSettings16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "DatabaseSettings16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "DatabaseSettings20Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "DatabaseSettings20Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "DatabaseSettings24Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "DatabaseSettings24Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "DatabaseStack16Filled": {
@@ -66986,32 +66986,32 @@
   },
   "DoorAdd16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "DoorAdd16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "DoorAdd20Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "DoorAdd20Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "DoorAdd24Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "DoorAdd24Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "DoorArrowLeft16Filled": {
