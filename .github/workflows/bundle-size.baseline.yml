@@ -38,4 +38,3 @@ jobs:
           name: monosize-report
           path: dist/bundle-size-report.json
           retention-days: 90
-
