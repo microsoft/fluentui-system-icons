@@ -628,22 +628,42 @@ describe('transformSource', () => {
         const source = `const icons = await import('@fluentui/react-icons');`;
         const { code, diagnostics } = rewrite(source);
         expect(code).toBe(source);
-        expect(diagnostics).toHaveLength(1);
-        expect(diagnostics[0].level).toBe('warning');
+        expect(diagnostics).toMatchInlineSnapshot(`
+          [
+            {
+              "level": "warning",
+              "message": "dynamic import of the "@fluentui/react-icons" barrel cannot be atomized, so the entire icon set will be bundled into the async chunk. Import an atomic path directly instead, e.g. import('@fluentui/react-icons/svg/add').",
+            },
+          ]
+        `);
       });
 
       it('does not rewrite a `.then(m => m.X)` namespace access', () => {
         const source = `import('@fluentui/react-icons').then((m) => m.AddFilled);`;
         const { code, diagnostics } = rewrite(source);
         expect(code).toBe(source);
-        expect(diagnostics).toHaveLength(1);
+        expect(diagnostics).toMatchInlineSnapshot(`
+          [
+            {
+              "level": "warning",
+              "message": "dynamic import of the "@fluentui/react-icons" barrel cannot be atomized, so the entire icon set will be bundled into the async chunk. Import an atomic path directly instead, e.g. import('@fluentui/react-icons/svg/add').",
+            },
+          ]
+        `);
       });
 
       it('does not rewrite a rest element', () => {
         const source = `const { AddFilled, ...rest } = await import('@fluentui/react-icons');`;
         const { code, diagnostics } = rewrite(source);
         expect(code).toBe(source);
-        expect(diagnostics).toHaveLength(1);
+        expect(diagnostics).toMatchInlineSnapshot(`
+          [
+            {
+              "level": "warning",
+              "message": "dynamic import of the "@fluentui/react-icons" barrel cannot be atomized, so the entire icon set will be bundled into the async chunk. Import an atomic path directly instead, e.g. import('@fluentui/react-icons/svg/add').",
+            },
+          ]
+        `);
       });
 
       it('does not rewrite a defaulted property', () => {
@@ -664,8 +684,14 @@ describe('transformSource', () => {
       const source = `const { AddFilled } = await import('@fluentui/react-icons');`;
       const { code, diagnostics } = transformSource(source, { iconVariant: 'svg', path: 'input.js' });
       expect(code).toBe(source);
-      expect(diagnostics).toHaveLength(1);
-      expect(diagnostics[0].level).toBe('warning');
+      expect(diagnostics).toMatchInlineSnapshot(`
+        [
+          {
+            "level": "warning",
+            "message": "dynamic import of the "@fluentui/react-icons" barrel cannot be atomized, so the entire icon set will be bundled into the async chunk. Import an atomic path directly instead, e.g. import('@fluentui/react-icons/svg/add').",
+          },
+        ]
+      `);
     });
   });
 });

@@ -1,6 +1,6 @@
 // @ts-check
 const { resolve } = require('path');
-const { readFileSync } = require('fs');
+const { readdirSync, readFileSync } = require('fs');
 
 /**
  * @typedef {object} EntryConfig
@@ -174,6 +174,15 @@ const entries = {
       'dynamic import of the "@fluentui/react-brand-icons" barrel cannot be atomized',
     ],
   },
+
+  'dynamic-atomize': {
+    src: './src/dynamic-atomize.js',
+    loaderOptions: { allowDynamicImports: true },
+    // With allowDynamicImports the barrel dynamic import is rewritten to atomic
+    // dynamic imports; the bare barrel specifier must be gone.
+    mustInclude: ['@fluentui/react-icons/svg/add', '@fluentui/react-icons/svg/arrow-left'],
+    mustExclude: ['"@fluentui/react-icons"'],
+  },
 };
 
 /**
@@ -229,8 +238,14 @@ function createConfig(name, entry) {
       {
         apply(compiler) {
           compiler.hooks.afterEmit.tap('verify-transforms', (compilation) => {
-            const outputPath = resolve(__dirname, 'dist', name, `${name}.js`);
-            const output = readFileSync(outputPath, 'utf8');
+            // Read every emitted JS chunk from disk (entry chunk + async chunks)
+            // so assertions also cover code split behind a dynamic import().
+            // afterEmit sources are size-only, hence reading the written files.
+            const outDir = resolve(__dirname, 'dist', name);
+            const output = readdirSync(outDir)
+              .filter((file) => file.endsWith('.js'))
+              .map((file) => readFileSync(resolve(outDir, file), 'utf8'))
+              .join('\n');
 
             for (const pattern of entry.mustInclude) {
               if (!output.includes(pattern)) {
