@@ -1,4 +1,5 @@
-import { parseSync } from 'oxc-parser';
+import { parseSync, Visitor } from 'oxc-parser';
+import type { ObjectPattern } from 'oxc-parser';
 import MagicString from 'magic-string';
 
 import {
@@ -45,24 +46,6 @@ export interface TransformResult {
 
 /** A module's resolved rewrite target: the icon variant and whether to use its headless build. */
 type ResolvedTarget = { variant: IconVariant; headless: boolean };
-
-/** A minimal AST node view — oxc emits ESTree-shaped nodes with `type` + spans. */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type AstNode = any;
-
-/** Depth-first walk over the oxc AST, invoking `visit` on every node with a `type`. */
-function walkAst(node: AstNode, visit: (n: AstNode) => void): void {
-  if (!node || typeof node !== 'object') return;
-  if (Array.isArray(node)) {
-    for (const child of node) walkAst(child, visit);
-    return;
-  }
-  if (typeof node.type === 'string') visit(node);
-  for (const key in node) {
-    if (key === 'type' || key === 'start' || key === 'end' || key === 'range' || key === 'loc') continue;
-    walkAst(node[key], visit);
-  }
-}
 
 /** One atom's worth of destructured specifiers, e.g. `{ source, specs: ['AddFilled', 'AddRegular'] }`. */
 type RewriteGroup = { source: string; specs: string[] };
@@ -233,13 +216,13 @@ export function transformSource(source: string, options: TransformOptions): Tran
     // Turn an object pattern (`{ AddFilled, ArrowLeftRegular: arrow }`) into atom
     // groups, or `null` when any property is not a plain, statically-known
     // name→binding pair (rest, computed, default, nested pattern, string key…).
-    const buildGroups = (objectPattern: AstNode, descriptor: ModuleDescriptor): RewriteGroup[] | null => {
+    const buildGroups = (objectPattern: ObjectPattern, descriptor: ModuleDescriptor): RewriteGroup[] | null => {
       const bySource = new Map<string, string[]>();
       const order: string[] = [];
 
       for (const prop of objectPattern.properties) {
         if (prop.type !== 'Property' || prop.computed || prop.kind !== 'init') return null;
-        if (prop.key?.type !== 'Identifier' || prop.value?.type !== 'Identifier') return null;
+        if (prop.key.type !== 'Identifier' || prop.value.type !== 'Identifier') return null;
 
         const importedName: string = prop.key.name;
         const localName: string = prop.value.name;
@@ -268,16 +251,20 @@ export function transformSource(source: string, options: TransformOptions): Tran
         ? `{ ${groups[0].specs.join(', ')} }`
         : `[${groups.map((g) => `{ ${g.specs.join(', ')} }`).join(', ')}]`;
 
-    walkAst(result.program, (node) => {
+    const visitor = new Visitor({
       // `const { A, B } = await import('barrel')`
-      if (
-        node.type === 'VariableDeclarator' &&
-        node.id?.type === 'ObjectPattern' &&
-        node.init?.type === 'AwaitExpression' &&
-        node.init.argument?.type === 'ImportExpression' &&
-        node.init.argument.source?.type === 'Literal'
-      ) {
+      VariableDeclarator(node) {
+        if (
+          node.id.type !== 'ObjectPattern' ||
+          node.init?.type !== 'AwaitExpression' ||
+          node.init.argument.type !== 'ImportExpression'
+        ) {
+          return;
+        }
+
         const importExpr = node.init.argument;
+        if (importExpr.source.type !== 'Literal' || typeof importExpr.source.value !== 'string') return;
+
         const descriptor = getModuleDescriptor(importExpr.source.value);
         if (!descriptor) return;
 
@@ -286,28 +273,32 @@ export function transformSource(source: string, options: TransformOptions): Tran
 
         src.overwrite(node.start, node.end, `${patternText(groups)} = await ${importCallText(groups)}`);
         rewrittenImportStarts.add(importExpr.source.start);
-        return;
-      }
+      },
 
       // `import('barrel').then(({ A, B }) => …)`
-      if (
-        node.type === 'CallExpression' &&
-        node.callee?.type === 'MemberExpression' &&
-        !node.callee.computed &&
-        node.callee.property?.type === 'Identifier' &&
-        node.callee.property.name === 'then' &&
-        node.callee.object?.type === 'ImportExpression' &&
-        node.callee.object.source?.type === 'Literal'
-      ) {
+      CallExpression(node) {
+        if (
+          node.callee.type !== 'MemberExpression' ||
+          node.callee.computed ||
+          node.callee.property.type !== 'Identifier' ||
+          node.callee.property.name !== 'then' ||
+          node.callee.object.type !== 'ImportExpression'
+        ) {
+          return;
+        }
+
         const importExpr = node.callee.object;
+        if (importExpr.source.type !== 'Literal' || typeof importExpr.source.value !== 'string') return;
+
         const descriptor = getModuleDescriptor(importExpr.source.value);
         if (!descriptor) return;
 
-        const callback = node.arguments?.[0];
-        if (!callback || (callback.type !== 'ArrowFunctionExpression' && callback.type !== 'FunctionExpression'))
+        const callback = node.arguments[0];
+        if (!callback || (callback.type !== 'ArrowFunctionExpression' && callback.type !== 'FunctionExpression')) {
           return;
+        }
 
-        const param = callback.params?.[0];
+        const param = callback.params[0];
         if (param?.type !== 'ObjectPattern') return;
 
         const groups = buildGroups(param, descriptor);
@@ -320,9 +311,10 @@ export function transformSource(source: string, options: TransformOptions): Tran
           src.overwrite(param.start, param.end, patternText(groups));
         }
         rewrittenImportStarts.add(importExpr.source.start);
-        return;
-      }
+      },
     });
+
+    visitor.visit(result.program);
   }
 
   // Dynamic imports of a barrel (`import('@fluentui/react-icons')`) cannot be
