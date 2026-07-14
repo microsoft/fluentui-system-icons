@@ -9,7 +9,7 @@ on:
         default: false
         type: boolean
 
-# Serialize all automated writers to `main` (this workflow and bundle-size.baseline.yml
+# Serialize all automated writers to `main` (this workflow and publish-standalone.yml
 # share the same group) so their pushes can never race and clobber each other.
 # `cancel-in-progress: false` queues runs instead of cancelling them.
 concurrency:

@@ -192,6 +192,10 @@ jobs:
         run: npx nx affected -t test
 
       - name: Bundle-Size
+        env:
+          # Required by monosize-storage-git to read the baseline report artifact
+          # from the target branch via the GitHub API.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npx nx affected -t bundle-size
           npx monosize compare-reports --branch=${{ github.event.pull_request.base.ref }} --output markdown --quiet > bundle-size-report.md
