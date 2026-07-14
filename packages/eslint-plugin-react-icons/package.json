@@ -2,9 +2,18 @@
   "name": "@fluentui/eslint-plugin-react-icons",
   "version": "0.0.0",
   "private": true,
-  "description": "ESLint plugin for @fluentui/react-icons.",
+  "description": "ESLint plugin for @fluentui/react-icons and @fluentui/react-brand-icons.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "type": "commonjs",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "require": "./lib/index.js",
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "build": "tsc -p .",
     "lint": "eslint src",
@@ -28,6 +37,7 @@
   "devDependencies": {
     "eslint": "8.57.1",
     "typescript": "5.0.4",
+    "typescript-eslint": "7.18.0",
     "@types/node": "22"
   },
   "peerDependencies": {
