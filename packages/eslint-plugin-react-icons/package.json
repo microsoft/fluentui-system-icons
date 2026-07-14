@@ -1,0 +1,39 @@
+{
+  "name": "@fluentui/eslint-plugin-react-icons",
+  "version": "0.0.0",
+  "private": true,
+  "description": "ESLint plugin for @fluentui/react-icons.",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc -p .",
+    "lint": "eslint src",
+    "test": "vitest run"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/microsoft/fluentui-system-icons.git",
+    "directory": "packages/eslint-plugin-react-icons"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/microsoft/fluentui-system-icons/issues"
+  },
+  "dependencies": {
+    "@typescript-eslint/utils": "7.18.0"
+  },
+  "devDependencies": {
+    "eslint": "8.57.1",
+    "typescript": "5.0.4",
+    "@types/node": "22"
+  },
+  "peerDependencies": {
+    "eslint": ">=8.0.0"
+  },
+  "files": [
+    "lib/*"
+  ]
+}

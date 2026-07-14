@@ -47,7 +47,8 @@
         "projects": [
           "packages/react-icons-atomic-webpack-loader",
           "packages/react-icons-svg-sprite-subsetting-webpack-plugin",
-          "packages/react-icons-file-type"
+          "packages/react-icons-file-type",
+          "packages/eslint-plugin-react-icons"
         ],
         "projectsRelationship": "independent",
         "version": {
