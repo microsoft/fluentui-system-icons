@@ -205,17 +205,50 @@ export function transformSource(source: string, options: TransformOptions): Tran
   const rewrittenImportStarts = new Set<number>();
 
   if (allowDynamicImports) {
-    // Resolve a single destructured name to its atomic subpath, or `null` when
-    // the owning module can't be resolved (an error diagnostic is recorded).
+    /**
+     * Resolves one destructured binding name to the atomic subpath it should be
+     * imported from, honoring the active `iconVariant` / `headless` / color rules
+     * (same policy as static imports). Returns `null` when the owning module can't
+     * be resolved — `targetFor` has already recorded an error diagnostic — which
+     * signals the caller to bail and leave the dynamic import untouched.
+     *
+     * @example
+     * // iconVariant: 'svg'
+     * resolveNameSource(reactIcons, 'AddFilled')   // → '@fluentui/react-icons/svg/add'
+     * resolveNameSource(reactIcons, 'bundleIcon')  // → '@fluentui/react-icons/utils'
+     * // iconVariant: 'fonts'
+     * resolveNameSource(reactIcons, 'AddFilled')   // → '@fluentui/react-icons/fonts/add'
+     */
     const resolveNameSource = (descriptor: ModuleDescriptor, importedName: string): string | null => {
       const target = targetFor(descriptor, isColorIconName(importedName));
       if (!target) return null;
       return descriptor.resolve(importedName, target.variant, target.headless);
     };
 
-    // Turn an object pattern (`{ AddFilled, ArrowLeftRegular: arrow }`) into atom
-    // groups, or `null` when any property is not a plain, statically-known
-    // name→binding pair (rest, computed, default, nested pattern, string key…).
+    /**
+     * Groups the properties of a destructuring object pattern by the atomic module
+     * each imported name resolves to, preserving first-seen order. Each group's
+     * `specs` are the emit-ready specifier strings (`'AddFilled'`, or
+     * `'ArrowLeftRegular: arrow'` for a rename).
+     *
+     * Returns `null` (bail — leave the dynamic import untouched) when any property
+     * isn't a plain, statically-known `name → binding` pair: rest elements,
+     * computed/string keys, default values, or nested patterns.
+     *
+     * @example
+     * // `{ AddFilled, AddRegular }`  — both live in the `add` atom
+     * // → [{ source: '@fluentui/react-icons/svg/add', specs: ['AddFilled', 'AddRegular'] }]
+     *
+     * @example
+     * // `{ AddFilled, ArrowLeftRegular: arrow }`  — different atoms, one renamed
+     * // → [
+     * //     { source: '@fluentui/react-icons/svg/add',        specs: ['AddFilled'] },
+     * //     { source: '@fluentui/react-icons/svg/arrow-left', specs: ['ArrowLeftRegular: arrow'] },
+     * //   ]
+     *
+     * @example
+     * // `{ AddFilled, ...rest }`  → null   (rest element → bail)
+     */
     const buildGroups = (objectPattern: ObjectPattern, descriptor: ModuleDescriptor): RewriteGroup[] | null => {
       const bySource = new Map<string, string[]>();
       const order: string[] = [];
