@@ -7,6 +7,7 @@ import {
   resolveColorVariant,
   resolveModuleHeadless,
   isColorIconName,
+  SUPPORTED_MODULE_NAMES,
 } from './modules';
 import type { IconVariant, ModuleDescriptor } from './modules';
 
@@ -50,7 +51,7 @@ export function transformSource(source: string, options: TransformOptions): Tran
     throw new Error(result.errors[0].message);
   }
 
-  const { staticImports, staticExports } = result.module;
+  const { staticImports, staticExports, dynamicImports } = result.module;
   const src = new MagicString(source);
 
   const diagnostics: Diagnostic[] = [];
@@ -187,6 +188,36 @@ export function transformSource(source: string, options: TransformOptions): Tran
     if (lines.length === 0) continue;
 
     src.overwrite(exp.start, exp.end, lines.join('\n'));
+  }
+
+  // Dynamic imports of a barrel (`import('@fluentui/react-icons')`) cannot be
+  // atomized: the returned namespace object is a runtime value whose usage is
+  // not statically known, so the whole icon set ends up in the async chunk. We
+  // can't rewrite it safely, but we can warn and point at the atomic escape
+  // hatch (`import('@fluentui/react-icons/svg/add')`). Atomic and subpath
+  // requests don't match a barrel descriptor, so they never warn.
+  for (const dyn of dynamicImports) {
+    const request = dyn.moduleRequest;
+    if (!request) continue;
+
+    // Unlike static imports, oxc doesn't resolve a dynamic import's argument to a
+    // specifier value — it's an arbitrary expression. Match the raw span against
+    // each supported module's quoted spellings; this naturally ignores variables,
+    // interpolated templates, and subpath/atomic requests (module names never
+    // contain quotes).
+    const raw = source.slice(request.start, request.end);
+    const moduleName = SUPPORTED_MODULE_NAMES.find(
+      (name) => raw === `'${name}'` || raw === `"${name}"` || raw === `\`${name}\``,
+    );
+    if (!moduleName) continue;
+
+    pushDiagnostic({
+      level: 'warning',
+      message:
+        `dynamic import of the "${moduleName}" barrel cannot be atomized, so the entire icon ` +
+        `set will be bundled into the async chunk. Import an atomic path directly instead, ` +
+        `e.g. import('${moduleName}/svg/add').`,
+    });
   }
 
   return {

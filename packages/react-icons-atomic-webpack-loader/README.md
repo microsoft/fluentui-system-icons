@@ -247,6 +247,29 @@ flowchart TD
 
 Files that don't reference a supported module are passed through untouched (fast pre-check).
 
+## Limitations
+
+### Dynamic imports are not atomized
+
+The loader only rewrites **static** `import` / `export … from` declarations. A dynamic `import()` of a barrel cannot be atomized, because the returned module-namespace object is a runtime value whose usage the loader cannot statically prove:
+
+```js
+// ⚠️ Not rewritten — the ENTIRE icon set is pulled into the async chunk.
+const { AddFilled } = await import('@fluentui/react-icons');
+React.lazy(() => import('@fluentui/react-icons'));
+```
+
+When it detects a dynamic import of a supported barrel, the loader emits a warning. Import the atomic path directly instead — then you lazy-load only the icons you use:
+
+```js
+// ✅ Only this icon lands in the async chunk.
+const { AddFilled } = await import('@fluentui/react-icons/svg/add');
+```
+
+Alternatively, move the icons behind a local module that statically imports them; the loader atomizes that module, and only your lazy chunk pays for what it uses.
+
+> The same applies to full-barrel subpaths (`@fluentui/react-icons/svg`, `@fluentui/react-icons/fonts`) — dynamically importing those also bundles the whole set. Always target a per-icon atomic path.
+
 ## Requirements
 
 - `webpack` >= 5
