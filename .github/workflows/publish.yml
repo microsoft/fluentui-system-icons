@@ -99,6 +99,9 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 22.x
+          # Required so setup-node writes an .npmrc that wires npm auth to NODE_AUTH_TOKEN,
+          # which `nx release publish` (npm publish under the hood) relies on.
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
         run: npm ci
@@ -177,51 +180,19 @@ jobs:
       - name: Update lockfile
         run: npm install --package-lock-only
 
-      - name: Publish svg-icons to npm
-        if: ${{ !inputs.dry-run }}
-        uses: JS-DevTools/npm-publish@0fd2f4369c5d6bcfcde6091a7c527d810b9b5c3f # v4.1.5
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          access: public
-          package: packages/svg-icons/package.json
-
-      - name: Publish svg-sprites to npm
-        if: ${{ !inputs.dry-run }}
-        uses: JS-DevTools/npm-publish@0fd2f4369c5d6bcfcde6091a7c527d810b9b5c3f # v4.1.5
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          access: public
-          package: packages/svg-sprites/package.json
-
-      - name: Publish react-icons to npm
-        if: ${{ !inputs.dry-run }}
-        uses: JS-DevTools/npm-publish@0fd2f4369c5d6bcfcde6091a7c527d810b9b5c3f # v4.1.5
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          access: public
-          package: packages/react-icons/package.json
-
-      - name: Publish react-icons-font-subsetting-webpack-plugin to npm
-        if: ${{ !inputs.dry-run }}
-        uses: JS-DevTools/npm-publish@0fd2f4369c5d6bcfcde6091a7c527d810b9b5c3f # v4.1.5
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          access: public
-          package: packages/react-icons-font-subsetting-webpack-plugin/package.json
-
-      - name: Publish react-native-icons to npm
-        if: ${{ !inputs.dry-run }}
-        uses: JS-DevTools/npm-publish@0fd2f4369c5d6bcfcde6091a7c527d810b9b5c3f # v4.1.5
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          access: public
-          package: packages/react-native-icons/package.json
+      # Publishes the `react` + `native` release groups (svg-icons, svg-sprites, react-icons,
+      # react-icons-font-subsetting-webpack-plugin, react-native-icons) via Nx Release, which
+      # reads npm auth from NODE_AUTH_TOKEN (see setup-node registry-url above). On dry-run we
+      # still exercise the publish path with `--dry-run` instead of skipping it entirely.
+      - name: Publish to npm (Nx Release)
+        run: |
+          npx nx release publish --group=react --access public ${{ inputs.dry-run && '--dry-run' || '' }} --verbose
+          npx nx release publish --group=native --access public ${{ inputs.dry-run && '--dry-run' || '' }} --verbose
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # Android
       - name: Run Android generate script
-        env:
-          # see https://github.com/JS-DevTools/npm-publish/issues/15
-          INPUT_TOKEN: ''
         run: npm run deploy:android
         working-directory: importer
 
