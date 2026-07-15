@@ -10,8 +10,6 @@ Fluent UI System and Brand Icons. It helps developers:
 - Maintain consistency across `@fluentui/react-icons` usage
 - Catch common mistakes and anti-patterns early
 
-> **Note:** This package is in early scaffolding. No rules are shipped yet.
-
 ## Installation
 
 ```bash
@@ -51,7 +49,7 @@ module.exports = [
       '@fluentui/react-icons': fluentuiReactIcons,
     },
     rules: {
-      // '@fluentui/react-icons/<rule-name>': 'warn',
+      '@fluentui/react-icons/prefer-resizable': 'warn',
     },
   },
 ];
@@ -70,7 +68,15 @@ module.exports = {
 
 ## Available Rules
 
-_No rules are available yet._
+💼 Configurations enabled in.\
+🔧 Whether the rule has an auto-fixer and/or has suggestions.
+
+| Name                                                 | Description                                                       | 💼  | 🔧  |
+| ---------------------------------------------------- | ----------------------------------------------------------------- | --- | --- |
+| [prefer-resizable](./docs/rules/prefer-resizable.md) | Prefer resizable Fluent icons over fixed-size ("sized") variants. | ✅  | 💡  |
+
+💼 ✅ = enabled in the `recommended` config (as `warn`).\
+🔧 = fixable , 💡 = has suggestions.
 
 ## License
 
