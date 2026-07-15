@@ -2,16 +2,14 @@
   "compilerOptions": {
     "types": ["node"],
     "target": "es2020",
-    "module": "commonjs",
+    "module": "esnext",
     "rootDir": "./src",
-    "moduleResolution": "node",
-    "declaration": true,
-    "outDir": "./lib",
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "noEmit": true
   },
-  "include": ["src"],
-  "exclude": ["src/**/*.test.ts"]
+  "include": ["src"]
 }

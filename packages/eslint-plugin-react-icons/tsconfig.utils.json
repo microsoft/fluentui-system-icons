@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "nodenext",
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "noEmit": true,
+    "module": "nodenext",
+    "target": "es2022",
+    "allowJs": true,
+    "checkJs": true,
+    "types": ["node"],
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "pretty": true
+  },
+  "include": ["scripts/"]
+}

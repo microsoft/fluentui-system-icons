@@ -61,6 +61,7 @@
     "@types/react-native": "^0.68.0",
     "@types/yargs": "^15.0.0",
     "@typescript-eslint/utils": "7.18.0",
+    "@typescript-eslint/rule-tester": "7.18.0",
     "cpy-cli": "^4.1.0",
     "css-loader": "7.1.4",
     "eslint": "8.57.1",
