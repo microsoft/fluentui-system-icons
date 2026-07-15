@@ -107,7 +107,7 @@ jobs:
           java-version: 11
 
       - name: Set up Gradle
-        uses: gradle/actions/setup-gradle@v5
+        uses: gradle/actions/setup-gradle@v6
         with:
           gradle-version: wrapper
           gradle-home-cache-excludes: |
