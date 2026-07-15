@@ -52,6 +52,7 @@ previous_icons_data = {}
 
 # Regex pattern to parse the file names
 pattern = re.compile(r'ic_fluent_(.*?)_(\d+)_(.*?).svg')
+exclude_pattern = re.compile(r'_color\.svg$')
 
 # Function to parse the files and populate the dictionary
 def parse_files(folder, is_previous=False):
@@ -66,7 +67,7 @@ def parse_files(folder, is_previous=False):
         None
     """
     for file_name in os.listdir(folder):
-        if file_name.endswith('.svg'):
+        if file_name.endswith('.svg') and not exclude_pattern.search(file_name):
             match = pattern.match(file_name)
             if match:
                 name, size, style = match.groups()
@@ -110,14 +111,13 @@ html = '''
             letter-spacing: .1em;
         }
         table {
-            width: 100%;
+            width: 1910px;
             border-collapse: collapse;
         }
         table, th, td {
             border-bottom: 1px solid #c8c8c8;
         }
         th, td {
-            padding: 15px;
             text-align: left;
         }
         td {
@@ -150,6 +150,22 @@ html = '''
         }
         .hidden {
             display: none;
+        }
+        .col-1-size {
+            padding-left: 1rem;
+            padding-right: 1rem;
+            width: 200px;
+            min-width: 200px;
+            max-width: 200px;
+        }
+        .col-2-size {
+            width: 500px;
+            min-width: 500px;
+            max-width: 500px;
+        }
+        .heading-padding {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
         }
     </style>
     <script>
@@ -188,11 +204,11 @@ html = '''
     <button onclick="toggleSize()">Toggle Icon Zoom</button>
     <table>
         <tr>
-            <th><b>ICON NAME</b></th>
-            <th><b>SIZES</b></th>
-            <th><b>REGULAR</b></th>
-            <th><b>FILLED</b></th>
-            <th><b>DIFFERENCE</b> <button onclick="togglePrevious()">Toggle New Icons</button></th>
+            <th class='col-1-size heading-padding'><b>ICON NAME</b></th>
+            <th class='col-1-size heading-padding'><b>SIZES</b></th>
+            <th class='col-2-size'><b>REGULAR</b></th>
+            <th class='col-2-size'><b>FILLED</b></th>
+            <th class='col-2-size'><b>DIFFERENCE</b> <button onclick="togglePrevious()">Toggle New Icons</button></th>
         </tr>'''
 
 for icon, data in previous_icons_data.items():
@@ -218,17 +234,20 @@ for icon, data in previous_icons_data.items():
                         <img src="{prev_file_path}" class="previous" alt="{icon} {size} {style}" data-original-size="{size}px">
                         <img src="{file_path}" class="new" alt="{icon} {size} {style}" data-original-size="{size}px">
                     </div>''')
-                
+    
+    regular_imgs = regular_imgs[:2]
+    filled_imgs = filled_imgs[:2]
+    differences = differences[:2]
     regular = ' '.join(regular_imgs)
     filled = ' '.join(filled_imgs)
     difference = '<div class="icon-difference">' + ''.join(differences) + '</div>'
     html += f'''
         <tr>
-            <td>{icon.replace("_", " ").title()}</td>
-            <td>{sizes}</td>
-            <td>{regular}</td>
-            <td>{filled}</td>
-            <td>{difference}</td>
+            <td class='col-1-size'>{icon.replace("_", " ").title()}</td>
+            <td class='col-1-size'>{sizes}</td>
+            <td class='col-2-size'>{regular}</td>
+            <td class='col-2-size'>{filled}</td>
+            <td class='col-2-size'>{difference}</td>
         </tr>'''
 
 html += '''
