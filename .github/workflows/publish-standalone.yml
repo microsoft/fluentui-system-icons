@@ -144,29 +144,48 @@ jobs:
             git commit -m "chore(release): publish standalone packages [skip ci]"
           fi
 
-      - name: Tag releases
-        # Tags are created manually (git.tag: false in nx.json) after the final commit so they point
-        # at the release commit that also includes the lockfile update — nx would otherwise tag before
-        # that commit is finalized. nx.json uses granular `version.git`/`changelog.git` config, which
-        # the unified `nx release` command (the only variant that natively skips unchanged packages
-        # when tagging) refuses to run with; migrating to top-level `release.git` would also alter the
-        # sub-command flow that publish.yml depends on. So we tag here, over the already-filtered
-        # released set (see "Resolve released projects") — so an unchanged/already-tagged package can
-        # never abort the job, and re-runs after a partial failure only create the missing tags.
+      - name: Push release commit
         if: ${{ !inputs.dry-run }}
         run: |
+          set -euo pipefail
+          # Re-sync ONLY here (never rebuild): replay the already-built release commit onto
+          # the latest main. main can advance during the long build via any writer — another
+          # automated job or a PR merge. Those changes are normally disjoint from a release
+          # commit, so this replays cleanly and keeps the just-published artifacts byte-for-
+          # byte. A genuine conflict aborts the job instead of silently mutating a published
+          # artifact.
+          git fetch origin main
+          git rebase origin/main
+          # Branch FIRST: push the commit, then (in the next step) tag the SHA now guaranteed
+          # on main. This ordering makes an orphaned tag impossible and fails closed if main
+          # moved in the interim — just re-run to retry.
+          git push origin HEAD:main
+
+      - name: Tag releases
+        # Tags are created manually (git.tag: false in nx.json) AFTER the release commit is
+        # pushed to main (previous step), so each tag points at a SHA already on main — an
+        # orphaned tag (tag without its commit on main) is therefore impossible. Tagging after
+        # the rebase/push also guarantees the tag targets the rebased commit, not a stale SHA.
+        # nx.json uses granular `version.git`/`changelog.git` config, which the unified
+        # `nx release` command (the only variant that natively skips unchanged packages when
+        # tagging) refuses to run with; migrating to top-level `release.git` would also alter
+        # the sub-command flow that publish.yml depends on. So we tag here, over the already-
+        # filtered released set (see "Resolve released projects") — so an unchanged/already-
+        # tagged package can never abort the job, and re-runs after a partial failure only
+        # create the missing tags. Tags are pushed explicitly (never --tags/--follow-tags,
+        # which push tags independently of the branch, so a rejected branch push could still
+        # leave a tag pointing at a commit not on main).
+        if: ${{ !inputs.dry-run }}
+        run: |
+          set -euo pipefail
           for pkg in $(echo "${{ steps.released.outputs.names }}" | tr ',' '\n'); do
             [ -z "$pkg" ] && continue
             VERSION=$(node -p "require('./packages/${pkg}/package.json').version")
             TAG="${pkg}@${VERSION}"
-            echo "Creating tag: $TAG"
+            echo "Creating and pushing tag: $TAG"
             git tag "$TAG"
+            git push origin "refs/tags/$TAG"
           done
-
-      - name: Push release
-        if: ${{ !inputs.dry-run }}
-        run: |
-          git push origin HEAD:main --follow-tags --tags
 
       - name: Dry-run summary
         if: ${{ inputs.dry-run }}

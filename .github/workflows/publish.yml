@@ -279,14 +279,26 @@ jobs:
           git add -A
           git commit -m "chore(release): publish $NEW_VERSION [skip ci]"
 
-      - name: Tag release
-        if: ${{ !inputs.dry-run }}
-        run: git tag "$NEW_VERSION"
-
       - name: Push release
         if: ${{ !inputs.dry-run }}
         run: |
-          git push origin HEAD:main --follow-tags --tags
+          set -euo pipefail
+          # Re-sync ONLY here (never rebuild): replay the already-built release commit onto
+          # the latest main. main can advance during the long build via any writer — another
+          # automated job or a PR merge. Those changes are normally disjoint from a release
+          # commit, so this replays cleanly and keeps the just-published artifacts byte-for-
+          # byte. A genuine conflict aborts the job instead of silently mutating a published
+          # artifact.
+          git fetch origin main
+          git rebase origin/main
+          # Branch FIRST, tag SECOND: push the commit, then tag the SHA now guaranteed on
+          # main. This ordering makes an orphaned tag (tag without its commit on main)
+          # impossible, and fails closed if main moved in the interim — just re-run to retry.
+          # (Do NOT use --tags/--follow-tags: they push tags independently of the branch, so
+          # a rejected branch push can still leave a tag pointing at a commit not on main.)
+          git push origin HEAD:main
+          git tag "$NEW_VERSION"
+          git push origin "refs/tags/$NEW_VERSION"
 
       - name: Trigger CocoaPods publish
         if: ${{ !inputs.dry-run }}
