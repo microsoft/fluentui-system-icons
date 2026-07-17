@@ -4,7 +4,8 @@ import descriptionMd from './RecipesDescription.md';
 
 export { TargetIconsFromCss } from './TargetIconsFromCss.stories';
 export { MultipleColors } from './MultipleColors.stories';
-export { ColorIdPrefix } from '../ColorVariants/ColorIdPrefix.stories';
+export { ColorIdPrefix } from './ColorIdPrefix.stories';
+export { ColorHcmForcedColors } from './ColorHcmForcedColors.stories';
 
 export default {
   title: 'Icons/Recipes',
