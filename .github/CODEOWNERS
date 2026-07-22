@@ -1,16 +1,10 @@
+## .github — default ownership
+/.github/ @microsoft/cxe-prg
+
+## .github — team co-ownership overrides
 /.github/CODEOWNERS @microsoft/cxe-prg @microsoft/react-native-sdk-admins
-/.github/ISSUE_TEMPLATE/01-react-icons-bug-report.yml @microsoft/cxe-prg
-/.github/ISSUE_TEMPLATE/02-react-icons-feature-request.yml @microsoft/cxe-prg
-/.github/react-icons.instructions.md @microsoft/cxe-prg
-/.github/workflows/copilot-setup-steps.yml @microsoft/cxe-prg
-/.github/workflows/pr.yml @microsoft/cxe-prg @microsoft/react-native-sdk-admins @spencer-nelson
-/.github/workflows/pr-summary-comment.yml @microsoft/cxe-prg
-/.github/workflows/publish.yml @microsoft/cxe-prg @microsoft/react-native-sdk-admins @spencer-nelson
-/.github/workflows/publish-standalone.yml @microsoft/cxe-prg
-/.github/workflows/publish-prerelease.yml @microsoft/cxe-prg
-/.github/workflows/bundle-size.baseline.yml @microsoft/cxe-prg
-/.github/workflows/deploy-docsite.yml @microsoft/cxe-prg
-/.github/scripts @microsoft/cxe-prg
+/.github/workflows/pr.yml @microsoft/cxe-prg @microsoft/react-native-sdk-admins
+/.github/workflows/publish.yml @microsoft/cxe-prg @microsoft/react-native-sdk-admins
 AGENTS.md @microsoft/cxe-prg
 
 ## packages
