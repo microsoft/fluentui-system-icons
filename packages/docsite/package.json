@@ -12,17 +12,5 @@
     "@fluentui/react-components": "^9.46.0",
     "@fluentui/react-icons": "*",
     "@fluentui/react-icons-file-type": "*"
-  },
-  "devDependencies": {
-    "@fluentui/react-storybook-addon": "0.6.0",
-    "@fluentui/react-storybook-addon-export-to-sandbox": "0.2.1",
-    "@fluentui/storybook-llms-extractor": "0.0.4",
-    "@griffel/eslint-plugin": "^2.0.2",
-    "@storybook/addon-docs": "9.1.19",
-    "@storybook/addon-webpack5-compiler-swc": "^4.0.3",
-    "@storybook/react": "9.1.19",
-    "@storybook/react-webpack5": "9.1.19",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "remark-gfm": "^4.0.1"
   }
 }

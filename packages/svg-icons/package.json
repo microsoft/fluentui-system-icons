@@ -19,9 +19,6 @@
     "buildforblazor": "npm run copywithdirs && npm run rename && npm run optimize && npm run unfill",
     "build-verify": "vitest run build-verify.test.js"
   },
-  "devDependencies": {
-    "svgo": "2.8.2"
-  },
   "files": [
     "icons/",
     "README.md",

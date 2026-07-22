@@ -12,6 +12,7 @@
     "test:reference": "SVG_SPRITE_MODE=merged SVG_SPRITE_INJECT=reference webpack -c test/webpack.config.js",
     "test:validation": "node test/validation.js",
     "build": "node scripts/build",
+    "lint": "eslint package.json",
     "type-check:infra": "tsc -p ./scripts"
   },
   "engines": {
@@ -31,11 +32,7 @@
     "schema-utils": "^4.2.0"
   },
   "devDependencies": {
-    "@fluentui/react-icons": "*",
-    "@types/node": "22",
-    "html-webpack-plugin": "^5.5.3",
-    "typescript": "5.0.4",
-    "webpack": "^5.72.0"
+    "@fluentui/react-icons": "*"
   },
   "peerDependencies": {
     "webpack": ">=5.0.0"
