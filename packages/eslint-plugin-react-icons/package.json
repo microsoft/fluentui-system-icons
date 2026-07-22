@@ -2,7 +2,7 @@
   "name": "@fluentui/eslint-plugin-react-icons",
   "version": "0.0.0",
   "private": true,
-  "description": "ESLint plugin for @fluentui/react-icons and @fluentui/react-brand-icons.",
+  "description": "ESLint plugin for @fluentui/react-icons and @fluentui/react-brand-icons",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "type": "commonjs",
