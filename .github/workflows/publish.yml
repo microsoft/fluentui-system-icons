@@ -96,7 +96,7 @@ jobs:
           os.system(f'echo \"REACT_VERSION={major}.{minor}.{int(asset) + 1}\" >> \$GITHUB_ENV')
           """
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: 22.x
           # Required so setup-node writes an .npmrc that wires npm auth to NODE_AUTH_TOKEN,
