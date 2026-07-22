@@ -7,7 +7,12 @@
   "targets": {
     "build": {
       "cache": true,
-      "inputs": ["default", "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)", "!{projectRoot}/test/**"],
+      "inputs": [
+        "default",
+        "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+        "!{projectRoot}/test/**",
+        "{workspaceRoot}/packages/react-icons/metadata.json"
+      ],
       "outputs": ["{projectRoot}/lib"]
     },
     "test": {

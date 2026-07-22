@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import plugin from './index';
+import * as plugin from './index';
 
 describe('@fluentui/eslint-plugin-react-icons', () => {
   it('exposes plugin meta', () => {
@@ -9,6 +9,7 @@ describe('@fluentui/eslint-plugin-react-icons', () => {
 
   it('exposes a rules registry', () => {
     expect(plugin.rules).toBeTypeOf('object');
+    expect(plugin.rules['prefer-resizable']).toBeDefined();
   });
 
   it('exposes a recommended config', () => {

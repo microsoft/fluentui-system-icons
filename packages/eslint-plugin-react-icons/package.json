@@ -15,9 +15,13 @@
     "./package.json": "./package.json"
   },
   "scripts": {
-    "build": "tsc -p .",
+    "clean": "git clean -fXd lib/",
+    "generate:data": "node scripts/generate-icon-sizes.mjs --metadata ../react-icons/metadata.json --out src/rules/prefer-resizable/icon-sizes.generated.ts",
+    "build": "npm run clean && npm run generate:data && tsc -p tsconfig.lib.json",
     "lint": "eslint src",
-    "test": "vitest run"
+    "test": "vitest run",
+    "type-check": "tsc -p tsconfig.json",
+    "type-check:infra": "tsc -p tsconfig.utils.json"
   },
   "engines": {
     "node": ">=20.0.0"
@@ -35,6 +39,7 @@
     "@typescript-eslint/utils": "7.18.0"
   },
   "devDependencies": {
+    "@typescript-eslint/rule-tester": "7.18.0",
     "eslint": "8.57.1",
     "typescript": "5.0.4",
     "typescript-eslint": "7.18.0",
@@ -44,6 +49,7 @@
     "eslint": ">=8.0.0"
   },
   "files": [
-    "lib/*"
+    "lib/*",
+    "docs"
   ]
 }
