@@ -4,3 +4,37 @@ updates:
     directory: '/'
     schedule:
       interval: 'weekly'
+    groups:
+      github-actions:
+        patterns:
+          - '*'
+      # Grouped security fixes, produced on the same weekly cadence as version updates.
+      github-actions-security:
+        applies-to: security-updates
+        patterns:
+          - '*'
+
+  - package-ecosystem: 'npm'
+    directories:
+      - '**/*'
+    schedule:
+      interval: 'weekly'
+    # Only minor/patch version bumps — skip majors to avoid churn and breaking changes.
+    # (Does not affect security updates, which must be able to jump majors.)
+    ignore:
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
+    groups:
+      production-dependencies:
+        dependency-type: 'production'
+        patterns:
+          - '*'
+      development-dependencies:
+        dependency-type: 'development'
+        patterns:
+          - '*'
+      # Grouped security fixes, produced on the same weekly cadence as version updates.
+      security-dependencies:
+        applies-to: security-updates
+        patterns:
+          - '*'
