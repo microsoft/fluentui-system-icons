@@ -1,7 +1,19 @@
 /* Headless Fluent Icons — attribute-selector based styles (no CSS-in-JS runtime) */
 
 /* ===== SVG Icon Defaults ===== */
-[data-fui-icon] {
+/*
+ * `[data-fui-icon]` is the only selector shared with the Griffel (CSS-in-JS) API —
+ * every icon from both APIs carries this attribute. Wrapping it in `:where()` gives
+ * it ZERO specificity so any class-based styling always wins, regardless of
+ * stylesheet injection order. This is what lets these vanilla-CSS defaults coexist
+ * with Griffel: Griffel's `bundleIcon` hides the inactive variant with a class rule
+ * (`display: none`, specificity 0,1,0) on an element that also has `[data-fui-icon]`.
+ * Without `:where()` the two tie on specificity and source order decides — and since
+ * this file is often injected after Griffel's runtime styles, the default would win
+ * and unhide the variant, rendering BOTH bundled icons. Every other `data-fui-icon-*`
+ * selector below is headless-only, so it never ties with a Griffel class.
+ */
+:where([data-fui-icon]) {
   display: inline;
   line-height: 0;
 }
