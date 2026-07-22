@@ -27,7 +27,7 @@
       "{workspaceRoot}/fonts/FluentSystemIcons-*.woff2",
       "{workspaceRoot}/fonts/FluentSystemIcons-*.json"
     ],
-    "sharedGlobals": []
+    "sharedGlobals": ["{workspaceRoot}/eslint.config.base.mjs"]
   },
   "release": {
     "groups": {
