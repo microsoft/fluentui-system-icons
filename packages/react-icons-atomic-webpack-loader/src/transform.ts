@@ -1,4 +1,5 @@
-import { parseSync } from 'oxc-parser';
+import { parseSync, Visitor } from 'oxc-parser';
+import type { ObjectPattern } from 'oxc-parser';
 import MagicString from 'magic-string';
 
 import {
@@ -18,6 +19,12 @@ interface TransformOptions {
   fallbackVariant?: IconVariant;
   /** Resolve to the headless (Griffel-free) build where the module supports it. */
   headless?: boolean;
+  /**
+   * Rewrite a narrow, statically-provable subset of dynamic `import()` barrel
+   * calls into atomic dynamic imports (see {@link rewriteDynamicImports}).
+   * Defaults to `false`. Un-rewritable dynamic barrel imports still warn.
+   */
+  allowDynamicImports?: boolean;
   path: string;
 }
 
@@ -40,8 +47,11 @@ export interface TransformResult {
 /** A module's resolved rewrite target: the icon variant and whether to use its headless build. */
 type ResolvedTarget = { variant: IconVariant; headless: boolean };
 
+/** One atom's worth of destructured specifiers, e.g. `{ source, specs: ['AddFilled', 'AddRegular'] }`. */
+type RewriteGroup = { source: string; specs: string[] };
+
 export function transformSource(source: string, options: TransformOptions): TransformResult {
-  const { iconVariant, fallbackVariant, headless = false, path } = options;
+  const { iconVariant, fallbackVariant, headless = false, allowDynamicImports = false, path } = options;
 
   const result = parseSync(path, source, {
     sourceType: 'module',
@@ -190,6 +200,156 @@ export function transformSource(source: string, options: TransformOptions): Tran
     src.overwrite(exp.start, exp.end, lines.join('\n'));
   }
 
+  // Source-literal start offsets of dynamic imports that were atomized below.
+  // Used to suppress the "cannot be atomized" warning for imports we rewrote.
+  const rewrittenImportStarts = new Set<number>();
+
+  if (allowDynamicImports) {
+    /**
+     * Resolves one destructured binding name to the atomic subpath it should be
+     * imported from, honoring the active `iconVariant` / `headless` / color rules
+     * (same policy as static imports). Returns `null` when the owning module can't
+     * be resolved — `targetFor` has already recorded an error diagnostic — which
+     * signals the caller to bail and leave the dynamic import untouched.
+     *
+     * @example
+     * // iconVariant: 'svg'
+     * resolveNameSource(reactIcons, 'AddFilled')   // → '@fluentui/react-icons/svg/add'
+     * resolveNameSource(reactIcons, 'bundleIcon')  // → '@fluentui/react-icons/utils'
+     * // iconVariant: 'fonts'
+     * resolveNameSource(reactIcons, 'AddFilled')   // → '@fluentui/react-icons/fonts/add'
+     */
+    const resolveNameSource = (descriptor: ModuleDescriptor, importedName: string): string | null => {
+      const target = targetFor(descriptor, isColorIconName(importedName));
+      if (!target) return null;
+      return descriptor.resolve(importedName, target.variant, target.headless);
+    };
+
+    /**
+     * Groups the properties of a destructuring object pattern by the atomic module
+     * each imported name resolves to, preserving first-seen order. Each group's
+     * `specs` are the emit-ready specifier strings (`'AddFilled'`, or
+     * `'ArrowLeftRegular: arrow'` for a rename).
+     *
+     * Returns `null` (bail — leave the dynamic import untouched) when any property
+     * isn't a plain, statically-known `name → binding` pair: rest elements,
+     * computed/string keys, default values, or nested patterns.
+     *
+     * @example
+     * // `{ AddFilled, AddRegular }`  — both live in the `add` atom
+     * // → [{ source: '@fluentui/react-icons/svg/add', specs: ['AddFilled', 'AddRegular'] }]
+     *
+     * @example
+     * // `{ AddFilled, ArrowLeftRegular: arrow }`  — different atoms, one renamed
+     * // → [
+     * //     { source: '@fluentui/react-icons/svg/add',        specs: ['AddFilled'] },
+     * //     { source: '@fluentui/react-icons/svg/arrow-left', specs: ['ArrowLeftRegular: arrow'] },
+     * //   ]
+     *
+     * @example
+     * // `{ AddFilled, ...rest }`  → null   (rest element → bail)
+     */
+    const buildGroups = (objectPattern: ObjectPattern, descriptor: ModuleDescriptor): RewriteGroup[] | null => {
+      const bySource = new Map<string, string[]>();
+      const order: string[] = [];
+
+      for (const prop of objectPattern.properties) {
+        if (prop.type !== 'Property' || prop.computed || prop.kind !== 'init') return null;
+        if (prop.key.type !== 'Identifier' || prop.value.type !== 'Identifier') return null;
+
+        const importedName: string = prop.key.name;
+        const localName: string = prop.value.name;
+        const resolvedSource = resolveNameSource(descriptor, importedName);
+        if (resolvedSource === null) return null;
+
+        const spec = importedName === localName ? importedName : `${importedName}: ${localName}`;
+        if (!bySource.has(resolvedSource)) {
+          bySource.set(resolvedSource, []);
+          order.push(resolvedSource);
+        }
+        bySource.get(resolvedSource)!.push(spec);
+      }
+
+      if (order.length === 0) return null;
+      return order.map((groupSource) => ({ source: groupSource, specs: bySource.get(groupSource)! }));
+    };
+
+    const importCallText = (groups: RewriteGroup[]): string =>
+      groups.length === 1
+        ? `import('${groups[0].source}')`
+        : `Promise.all([${groups.map((g) => `import('${g.source}')`).join(', ')}])`;
+
+    const patternText = (groups: RewriteGroup[]): string =>
+      groups.length === 1
+        ? `{ ${groups[0].specs.join(', ')} }`
+        : `[${groups.map((g) => `{ ${g.specs.join(', ')} }`).join(', ')}]`;
+
+    const visitor = new Visitor({
+      // `const { A, B } = await import('barrel')`
+      VariableDeclarator(node) {
+        if (
+          node.id.type !== 'ObjectPattern' ||
+          node.init?.type !== 'AwaitExpression' ||
+          node.init.argument.type !== 'ImportExpression'
+        ) {
+          return;
+        }
+
+        const importExpr = node.init.argument;
+        if (importExpr.source.type !== 'Literal' || typeof importExpr.source.value !== 'string') return;
+
+        const descriptor = getModuleDescriptor(importExpr.source.value);
+        if (!descriptor) return;
+
+        const groups = buildGroups(node.id, descriptor);
+        if (!groups) return;
+
+        src.overwrite(node.start, node.end, `${patternText(groups)} = await ${importCallText(groups)}`);
+        rewrittenImportStarts.add(importExpr.source.start);
+      },
+
+      // `import('barrel').then(({ A, B }) => …)`
+      CallExpression(node) {
+        if (
+          node.callee.type !== 'MemberExpression' ||
+          node.callee.computed ||
+          node.callee.property.type !== 'Identifier' ||
+          node.callee.property.name !== 'then' ||
+          node.callee.object.type !== 'ImportExpression'
+        ) {
+          return;
+        }
+
+        const importExpr = node.callee.object;
+        if (importExpr.source.type !== 'Literal' || typeof importExpr.source.value !== 'string') return;
+
+        const descriptor = getModuleDescriptor(importExpr.source.value);
+        if (!descriptor) return;
+
+        const callback = node.arguments[0];
+        if (!callback || (callback.type !== 'ArrowFunctionExpression' && callback.type !== 'FunctionExpression')) {
+          return;
+        }
+
+        const param = callback.params[0];
+        if (param?.type !== 'ObjectPattern') return;
+
+        const groups = buildGroups(param, descriptor);
+        if (!groups) return;
+
+        src.overwrite(importExpr.start, importExpr.end, importCallText(groups));
+        // Multiple atoms resolve to an array, so the callback must destructure by
+        // position instead of by name.
+        if (groups.length > 1) {
+          src.overwrite(param.start, param.end, patternText(groups));
+        }
+        rewrittenImportStarts.add(importExpr.source.start);
+      },
+    });
+
+    visitor.visit(result.program);
+  }
+
   // Dynamic imports of a barrel (`import('@fluentui/react-icons')`) cannot be
   // atomized: the returned namespace object is a runtime value whose usage is
   // not statically known, so the whole icon set ends up in the async chunk. We
@@ -199,6 +359,9 @@ export function transformSource(source: string, options: TransformOptions): Tran
   for (const dyn of dynamicImports) {
     const request = dyn.moduleRequest;
     if (!request) continue;
+
+    // Skip imports we already atomized above (their usage was statically provable).
+    if (rewrittenImportStarts.has(request.start)) continue;
 
     // Unlike static imports, oxc doesn't resolve a dynamic import's argument to a
     // specifier value — it's an arbitrary expression. Match the raw span against

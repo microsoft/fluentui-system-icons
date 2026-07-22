@@ -72,11 +72,12 @@ module.exports = {
 
 ## Options
 
-| Option            | Type                                   | Default     | Description                                                                |
-| ----------------- | -------------------------------------- | ----------- | -------------------------------------------------------------------------- |
-| `iconVariant`     | `'svg'` \| `'fonts'` \| `'svg-sprite'` | `'svg'`     | Variant icons resolve to. Applied to every supported module.               |
-| `fallbackVariant` | `'svg'` \| `'fonts'` \| `'svg-sprite'` | `undefined` | Variant used for a module that does not support `iconVariant` (see below). |
-| `headless`        | `boolean`                              | `false`     | Resolve to the headless (Griffel-free) build where the module ships one.   |
+| Option                | Type                                   | Default     | Description                                                                             |
+| --------------------- | -------------------------------------- | ----------- | --------------------------------------------------------------------------------------- |
+| `iconVariant`         | `'svg'` \| `'fonts'` \| `'svg-sprite'` | `'svg'`     | Variant icons resolve to. Applied to every supported module.                            |
+| `fallbackVariant`     | `'svg'` \| `'fonts'` \| `'svg-sprite'` | `undefined` | Variant used for a module that does not support `iconVariant` (see below).              |
+| `headless`            | `boolean`                              | `false`     | Resolve to the headless (Griffel-free) build where the module ships one.                |
+| `allowDynamicImports` | `boolean`                              | `false`     | Atomize a narrow, statically-provable subset of dynamic `import()` barrels (see below). |
 
 ### Variant resolution & `fallbackVariant`
 
@@ -269,6 +270,63 @@ const { AddFilled } = await import('@fluentui/react-icons/svg/add');
 Alternatively, move the icons behind a local module that statically imports them; the loader atomizes that module, and only your lazy chunk pays for what it uses.
 
 > The same applies to full-barrel subpaths (`@fluentui/react-icons/svg`, `@fluentui/react-icons/fonts`) — dynamically importing those also bundles the whole set. Always target a per-icon atomic path.
+
+### Opt-in: `allowDynamicImports`
+
+> **Prefer a dedicated module of static imports.** The most robust pattern is a
+> small module that statically imports the icons you need and is itself lazy-loaded
+> (`const { AddFilled } = await import('./lazy-icons')`). Static imports are
+> atomized unconditionally, tree-shake predictably, and avoid every gotcha below.
+> Reach for `allowDynamicImports` only when refactoring to that pattern isn't
+> practical.
+
+With `allowDynamicImports: true`, the loader additionally rewrites a **narrow,
+statically-provable** subset of dynamic barrel imports into atomic ones. Only two
+call-site shapes qualify — where the imported names are literals at the `import()`:
+
+```js
+// await + object destructure
+const { AddFilled } = await import('@fluentui/react-icons');
+// → const { AddFilled } = await import('@fluentui/react-icons/svg/add');
+
+// .then + object-pattern callback param
+import('@fluentui/react-icons').then(({ AddFilled }) => …);
+// → import('@fluentui/react-icons/svg/add').then(({ AddFilled }) => …);
+```
+
+Names from the **same** atom are grouped into one import; names from **different**
+atoms become a positional `Promise.all([...])`:
+
+```js
+const { AddFilled, ArrowLeftRegular } = await import('@fluentui/react-icons');
+// →
+const [{ AddFilled }, { ArrowLeftRegular }] = await Promise.all([
+  import('@fluentui/react-icons/svg/add'),
+  import('@fluentui/react-icons/svg/arrow-left'),
+]);
+```
+
+It honors `iconVariant` / `fallbackVariant` / `headless` and per-name color
+rerouting exactly like static imports.
+
+#### Gotchas — what is **not** rewritten (left untouched, still warns)
+
+- **Namespace binding**: `const ns = await import('@fluentui/react-icons')` — `ns`
+  is a runtime object; usage isn't statically known, so the whole set ships.
+- **`.then(m => m.AddFilled)`**: namespace parameter + member access — not a
+  destructure, so the names aren't visible at the call site.
+- **Rest / computed / default / nested patterns**: `{ AddFilled, ...rest }`,
+  `{ [name]: icon }`, `{ AddFilled = fallback }`, `{ Add: { … } }`.
+- **Non-literal specifiers**: `import(pkg)`, template interpolation, or a promise
+  stored in a variable and `.then`-ed elsewhere.
+
+For any of these the loader leaves your code as-is and emits the standard
+"cannot be atomized" warning — the safe default.
+
+> ⚠️ The `Promise.all` rewrite changes the emitted runtime structure (parallel
+> chunk loading, positional destructuring). It's semantically equivalent for the
+> supported shapes, but if you depend on the exact expression shape, prefer the
+> dedicated-module pattern above.
 
 ## Requirements
 

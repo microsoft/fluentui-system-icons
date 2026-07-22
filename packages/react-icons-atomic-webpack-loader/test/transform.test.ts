@@ -553,4 +553,145 @@ describe('transformSource', () => {
       expect(diagnostics[0].level).toBe('warning');
     });
   });
+
+  describe('allowDynamicImports', () => {
+    const rewrite = (source: string, extra: Partial<Parameters<typeof transformSource>[1]> = {}) =>
+      transformSource(source, { iconVariant: 'svg', allowDynamicImports: true, path: 'input.js', ...extra });
+
+    describe('await destructure', () => {
+      it('rewrites a single-name await destructure to the atomic import', () => {
+        const { code, diagnostics } = rewrite(`const { AddRegular } = await import('@fluentui/react-icons');`);
+        expect(code).toBe(`const { AddRegular } = await import('@fluentui/react-icons/svg/add');`);
+        expect(diagnostics).toEqual([]);
+      });
+
+      it('groups multiple names from the same atom into one import', () => {
+        const { code } = rewrite(`const { AddFilled, AddRegular } = await import('@fluentui/react-icons');`);
+        expect(code).toBe(`const { AddFilled, AddRegular } = await import('@fluentui/react-icons/svg/add');`);
+      });
+
+      it('splits names from different atoms into a positional Promise.all', () => {
+        const { code } = rewrite(`const { AddFilled, ArrowLeftRegular } = await import('@fluentui/react-icons');`);
+        expect(code).toBe(
+          `const [{ AddFilled }, { ArrowLeftRegular }] = await Promise.all([import('@fluentui/react-icons/svg/add'), import('@fluentui/react-icons/svg/arrow-left')]);`,
+        );
+      });
+
+      it('preserves renamed bindings', () => {
+        const { code } = rewrite(`const { AddFilled: myAdd } = await import('@fluentui/react-icons');`);
+        expect(code).toBe(`const { AddFilled: myAdd } = await import('@fluentui/react-icons/svg/add');`);
+      });
+
+      it('routes utility bindings to /utils alongside icons', () => {
+        const { code } = rewrite(`const { AddFilled, bundleIcon } = await import('@fluentui/react-icons');`);
+        expect(code).toBe(
+          `const [{ AddFilled }, { bundleIcon }] = await Promise.all([import('@fluentui/react-icons/svg/add'), import('@fluentui/react-icons/utils')]);`,
+        );
+      });
+
+      it('honors the fonts variant', () => {
+        const { code } = rewrite(`const { AddFilled } = await import('@fluentui/react-icons');`, {
+          iconVariant: 'fonts',
+        });
+        expect(code).toBe(`const { AddFilled } = await import('@fluentui/react-icons/fonts/add');`);
+      });
+
+      it('reroutes color icons off fonts per name', () => {
+        const { code } = rewrite(`const { AddFilled, AddCircleColor } = await import('@fluentui/react-icons');`, {
+          iconVariant: 'fonts',
+        });
+        expect(code).toBe(
+          `const [{ AddFilled }, { AddCircleColor }] = await Promise.all([import('@fluentui/react-icons/fonts/add'), import('@fluentui/react-icons/svg/add-circle')]);`,
+        );
+      });
+    });
+
+    describe('.then destructure', () => {
+      it('rewrites the specifier for a single-atom .then object pattern', () => {
+        const { code, diagnostics } = rewrite(`import('@fluentui/react-icons').then(({ AddFilled }) => AddFilled);`);
+        expect(code).toBe(`import('@fluentui/react-icons/svg/add').then(({ AddFilled }) => AddFilled);`);
+        expect(diagnostics).toEqual([]);
+      });
+
+      it('rewrites a multi-atom .then into Promise.all with a positional param', () => {
+        const { code } = rewrite(
+          `import('@fluentui/react-icons').then(({ AddFilled, ArrowLeftRegular }) => AddFilled);`,
+        );
+        expect(code).toBe(
+          `Promise.all([import('@fluentui/react-icons/svg/add'), import('@fluentui/react-icons/svg/arrow-left')]).then(([{ AddFilled }, { ArrowLeftRegular }]) => AddFilled);`,
+        );
+      });
+    });
+
+    describe('bail cases (left untouched, still warn)', () => {
+      it('does not rewrite a namespace binding', () => {
+        const source = `const icons = await import('@fluentui/react-icons');`;
+        const { code, diagnostics } = rewrite(source);
+        expect(code).toBe(source);
+        expect(diagnostics).toMatchInlineSnapshot(`
+          [
+            {
+              "level": "warning",
+              "message": "dynamic import of the "@fluentui/react-icons" barrel cannot be atomized, so the entire icon set will be bundled into the async chunk. Import an atomic path directly instead, e.g. import('@fluentui/react-icons/svg/add').",
+            },
+          ]
+        `);
+      });
+
+      it('does not rewrite a `.then(m => m.X)` namespace access', () => {
+        const source = `import('@fluentui/react-icons').then((m) => m.AddFilled);`;
+        const { code, diagnostics } = rewrite(source);
+        expect(code).toBe(source);
+        expect(diagnostics).toMatchInlineSnapshot(`
+          [
+            {
+              "level": "warning",
+              "message": "dynamic import of the "@fluentui/react-icons" barrel cannot be atomized, so the entire icon set will be bundled into the async chunk. Import an atomic path directly instead, e.g. import('@fluentui/react-icons/svg/add').",
+            },
+          ]
+        `);
+      });
+
+      it('does not rewrite a rest element', () => {
+        const source = `const { AddFilled, ...rest } = await import('@fluentui/react-icons');`;
+        const { code, diagnostics } = rewrite(source);
+        expect(code).toBe(source);
+        expect(diagnostics).toMatchInlineSnapshot(`
+          [
+            {
+              "level": "warning",
+              "message": "dynamic import of the "@fluentui/react-icons" barrel cannot be atomized, so the entire icon set will be bundled into the async chunk. Import an atomic path directly instead, e.g. import('@fluentui/react-icons/svg/add').",
+            },
+          ]
+        `);
+      });
+
+      it('does not rewrite a defaulted property', () => {
+        const source = `const { AddFilled = null } = await import('@fluentui/react-icons');`;
+        const { code } = rewrite(source);
+        expect(code).toBe(source);
+      });
+
+      it('leaves atomic dynamic imports untouched (no warning)', () => {
+        const source = `const { AddFilled } = await import('@fluentui/react-icons/svg/add');`;
+        const { code, diagnostics } = rewrite(source);
+        expect(code).toBe(source);
+        expect(diagnostics).toEqual([]);
+      });
+    });
+
+    it('is off by default — barrel dynamic imports only warn', () => {
+      const source = `const { AddFilled } = await import('@fluentui/react-icons');`;
+      const { code, diagnostics } = transformSource(source, { iconVariant: 'svg', path: 'input.js' });
+      expect(code).toBe(source);
+      expect(diagnostics).toMatchInlineSnapshot(`
+        [
+          {
+            "level": "warning",
+            "message": "dynamic import of the "@fluentui/react-icons" barrel cannot be atomized, so the entire icon set will be bundled into the async chunk. Import an atomic path directly instead, e.g. import('@fluentui/react-icons/svg/add').",
+          },
+        ]
+      `);
+    });
+  });
 });
