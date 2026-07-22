@@ -2,6 +2,8 @@ import { Body1Stronger, Button, makeStyles, tokens } from '@fluentui/react-compo
 import { CalendarColor } from '@fluentui/react-icons';
 import * as React from 'react';
 
+import description from './ColorIdPrefix.md';
+
 const useClasses = makeStyles({
   root: {
     display: 'flex',
@@ -29,8 +31,9 @@ const useClasses = makeStyles({
   },
 });
 
-// Canonical `idPrefix` demo — re-exported by both the Color Variants page and the
-// Recipes page so the demo stays defined in a single place (1:1, no duplication).
+// `idPrefix` recipe: scope a Color icon's gradient/clip-path/filter ids so the
+// same icon can render multiple times without id collisions. The Color Variants
+// concept page links here rather than duplicating the demo.
 export const ColorIdPrefix = () => {
   const classes = useClasses();
   // Toggling `display: none` on one instance is what triggers the gradient ID
@@ -76,8 +79,7 @@ ColorIdPrefix.storyName = 'Rendering the same Color icon multiple times';
 ColorIdPrefix.parameters = {
   docs: {
     description: {
-      story:
-        'Rendering the same `Color` variant more than once can break its gradients because SVG `id`s live in the global DOM namespace. Click the button to hide the first instance with `display: none`: **without** `idPrefix` (left) the remaining visible icon loses its gradients — its shared `<defs>` were removed with the hidden instance; **with** a unique `idPrefix` per instance (right) each icon owns its ids, so it keeps rendering correctly.',
+      story: description,
     },
   },
 };
