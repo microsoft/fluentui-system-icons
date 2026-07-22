@@ -16,7 +16,7 @@
   },
   "scripts": {
     "build": "tsc -p .",
-    "lint": "eslint src",
+    "lint": "eslint src package.json",
     "test": "vitest run"
   },
   "engines": {
@@ -33,12 +33,6 @@
   },
   "dependencies": {
     "@typescript-eslint/utils": "7.18.0"
-  },
-  "devDependencies": {
-    "eslint": "8.57.1",
-    "typescript": "5.0.4",
-    "typescript-eslint": "7.18.0",
-    "@types/node": "22"
   },
   "peerDependencies": {
     "eslint": ">=8.0.0"

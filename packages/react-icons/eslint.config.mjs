@@ -2,6 +2,8 @@
 import tseslint from 'typescript-eslint';
 import griffelPlugin from '@griffel/eslint-plugin';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import nxPlugin from '@nx/eslint-plugin';
+import * as jsoncParser from 'jsonc-eslint-parser';
 
 export default tseslint.config(
   {
@@ -53,6 +55,32 @@ export default tseslint.config(
               fixWith: 'React.ReactElement',
             },
           },
+        },
+      ],
+    },
+  },
+  {
+    // Single version policy: enforce that runtime dependencies are declared with
+    // versions matching the workspace root package.json.
+    files: ['**/package.json'],
+    languageOptions: { parser: jsoncParser },
+    plugins: { '@nx': nxPlugin },
+    rules: {
+      '@nx/dependency-checks': [
+        'error',
+        {
+          // Only analyze shipped library source; build scripts, tests and configs
+          // rely on tooling that lives in the workspace root package.json.
+          ignoredFiles: [
+            '{projectRoot}/scripts/**/*',
+            '{projectRoot}/*.js',
+            '{projectRoot}/*.config.{js,mjs,ts}',
+            '{projectRoot}/**/*.test.{js,ts,tsx}',
+            '{projectRoot}/**/*.spec.{js,ts,tsx}',
+            '{projectRoot}/vitest.config.{js,ts}',
+            '{projectRoot}/eslint.config.mjs',
+          ],
+          ignoredDependencies: ['tslib'],
         },
       ],
     },

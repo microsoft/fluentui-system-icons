@@ -31,15 +31,5 @@
     "deploy:flutter": "npm run build:flutter && cp ../fonts/*.ttf ../flutter/lib/fonts && cp dist/flutter/fluent_icons.dart ../flutter/lib/src/fluent_icons.dart && cp dist/flutter/sample_icons.dart ../flutter/example/lib/sample_icons.dart && npm run clean"
   },
   "author": "Microsoft Inc.",
-  "license": "Microsoft",
-  "devDependencies": {
-    "avocado": "1.0.0",
-    "fantasticon": "^4.1.0",
-    "glob": "^8.0.1",
-    "lodash": "4.18.1",
-    "mkdirp": "^1.0.4",
-    "shx": "^0.3.2",
-    "svgo": "2.8.2",
-    "yargs": "^14.2.3"
-  }
+  "license": "Microsoft"
 }
