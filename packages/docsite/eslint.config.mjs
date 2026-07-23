@@ -1,5 +1,5 @@
 // @ts-check
-import { tseslint, griffelReact } from '../../eslint.config.base.mjs';
+import { tseslint, griffel, reactHooks } from '../../eslint.config.base.mjs';
 
 export default tseslint.config(
   {
@@ -14,7 +14,7 @@ export default tseslint.config(
     ],
   },
   ...tseslint.configs.recommended,
-  griffelReact({
+  griffel({
     // Griffel supports CSS shorthands natively — disallow the deprecated `shorthands.*` helper.
     '@griffel/no-deprecated-shorthands': 'error',
     // Complementary safety-net for the few border-group/`all` shorthands Griffel can't atomically expand.
@@ -23,4 +23,5 @@ export default tseslint.config(
     '@griffel/hook-naming': 'error',
     '@griffel/pseudo-element-naming': 'error',
   }),
+  reactHooks,
 );

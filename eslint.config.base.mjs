@@ -49,25 +49,37 @@ export function dependencyChecks({ ignoredFiles = [], ignoredDependencies = [] }
 }
 
 /**
- * Shared Griffel + React hooks rules applied to TypeScript/TSX source. Extra
- * rules are merged on top of the shared `react-hooks` baseline.
+ * Griffel styling rules applied to TypeScript/TSX source. Griffel is a CSS-in-JS
+ * concern, independent from React hooks linting — compose it with {@link reactHooks}
+ * when a package needs both.
  *
  * @param {import('eslint').Linter.RulesRecord} [rules]
  * @returns {import('typescript-eslint').ConfigWithExtends}
  */
-export function griffelReact(rules = {}) {
+export function griffel(rules = {}) {
   return {
     files: ['**/*.{ts,tsx}'],
     plugins: {
       '@griffel': griffelPlugin,
-      'react-hooks': reactHooksPlugin,
     },
-    rules: {
-      'react-hooks/rules-of-hooks': 'error',
-      'react-hooks/exhaustive-deps': 'warn',
-      ...rules,
-    },
+    rules,
   };
 }
+
+/**
+ * React hooks rules applied to TypeScript/TSX source.
+ *
+ * @type {import('typescript-eslint').ConfigWithExtends}
+ */
+export const reactHooks = {
+  files: ['**/*.{ts,tsx}'],
+  plugins: {
+    'react-hooks': reactHooksPlugin,
+  },
+  rules: {
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+  },
+};
 
 export { tseslint };
