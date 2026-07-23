@@ -13,13 +13,6 @@
       "isIgnored": true
     },
     {
-      "label": "Allowlisted exception: font-subsetting-webpack-plugin ships against @types/node 14",
-      "packages": ["@fluentui/react-icons-font-subsetting-webpack-plugin"],
-      "dependencies": ["@types/node"],
-      "dependencyTypes": ["dev"],
-      "isIgnored": true
-    },
-    {
       "label": "Single version policy: devDependencies must live only in the workspace root",
       "packages": ["!@fluentui/system-icons-repo"],
       "dependencyTypes": ["dev"],

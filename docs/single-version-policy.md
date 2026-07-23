@@ -22,11 +22,10 @@ root** [package.json](../package.json).
 
 ## Allowlisted exceptions
 
-| Package                                                | Dependency     | Version   | Reason                                                                       |
-| ------------------------------------------------------ | -------------- | --------- | ---------------------------------------------------------------------------- |
-| `@fluentui/react-icons`                                | `typescript`   | `4.1.6`   | Ships type declarations compatible with the legacy TypeScript 4.x toolchain. |
-| `@fluentui/react-icons`                                | `@types/react` | `^17.0.2` | Built and validated against the React 17 type surface.                       |
-| `@fluentui/react-icons-font-subsetting-webpack-plugin` | `@types/node`  | `14`      | Targets the Node 14 API surface for its published typings.                   |
+| Package                 | Dependency     | Version   | Reason                                                                       |
+| ----------------------- | -------------- | --------- | ---------------------------------------------------------------------------- |
+| `@fluentui/react-icons` | `typescript`   | `4.1.6`   | Ships type declarations compatible with the legacy TypeScript 4.x toolchain. |
+| `@fluentui/react-icons` | `@types/react` | `^17.0.2` | Built and validated against the React 17 type surface.                       |
 
 Workspace-local package references (e.g. `"@fluentui/react-icons": "*"`) are managed by
 `nx release` and are not subject to the policy.
