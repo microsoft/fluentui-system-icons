@@ -29,25 +29,13 @@
     "build": "npm run build:fonts-and-svg && npm run build:generate-chunks-and-atoms && npm run build:js",
     "build-verify": "vitest run build-verify.test.js build-transforms.test.js build-color-render.test.js",
     "bundle-size": "monosize measure",
-    "lint": "eslint src",
+    "lint": "eslint src package.json",
     "test": "vitest --exclude build-verify.test.js --exclude build-transforms.test.js --exclude build-color-render.test.js",
     "type-check:infra": "../../node_modules/.bin/tsc -p tsconfig.utils.json"
   },
   "devDependencies": {
-    "@babel/core": "^7.29.6",
-    "@griffel/babel-preset": "^1.8.1",
-    "@griffel/eslint-plugin": "^2.0.2",
     "@types/react": "^17.0.2",
-    "@types/yargs": "^15.0.0",
-    "eslint": "8.57.1",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "glob": "^7.2.0",
-    "lodash": "4.18.1",
-    "mkdirp": "^1.0.4",
-    "svgo": "2.8.2",
-    "typescript": "4.1.6",
-    "typescript-eslint": "7.18.0",
-    "yargs": "^14.0.0"
+    "typescript": "4.1.6"
   },
   "dependencies": {
     "@griffel/react": "^1.6.1",

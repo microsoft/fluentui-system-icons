@@ -177,6 +177,9 @@ jobs:
       - name: Format Check
         run: npx nx format:check
 
+      - name: Single Version Policy Check
+        run: npm run deps:check
+
       - name: Lint
         run: npx nx affected -t lint
 

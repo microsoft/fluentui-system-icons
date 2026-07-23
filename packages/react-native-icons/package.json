@@ -21,30 +21,8 @@
     "unfill": "find ./intermediate -type f -name \"*.svg\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./intermediate -type f -name \"*.bak\" -delete",
     "build": "npm run copy && npm run optimize && npm run unfill && npm run convert:rnsvg && npm run cleanSvg && npm run build:esm && npm run build:cjs",
     "build:cjs": "tsc -p . --module commonjs --outDir lib-cjs && babel lib-cjs --out-dir lib-cjs",
-    "build:esm": "tsc -p . && babel lib --out-dir lib"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.16.0",
-    "@babel/core": "^7.29.6",
-    "@babel/preset-react": "^7.18.6",
-    "@babel/preset-typescript": "^7.16.7",
-    "@react-native-community/cli": "^20.1.0",
-    "@react-native-community/cli-platform-android": "^20.1.0",
-    "@react-native-community/cli-platform-ios": "^20.1.0",
-    "@react-native/metro-config": "^0.85.0",
-    "@rnx-kit/tsconfig": "^3.0.3",
-    "@svgr/core": "^6.5.1",
-    "@types/react": "19.1.13",
-    "cpy-cli": "^4.1.0",
-    "glob": "^7.2.0",
-    "lodash": "^4.18.1",
-    "mkdirp": "^1.0.4",
-    "react": "19.2.3",
-    "react-native": "^0.85.0",
-    "react-native-svg": "^15.15.3",
-    "svgo": "2.8.2",
-    "typescript": "5.0.4",
-    "yargs": "^14.0.0"
+    "build:esm": "tsc -p . && babel lib --out-dir lib",
+    "lint": "eslint package.json"
   },
   "dependencies": {
     "@types/react-native": "^0.68.0",

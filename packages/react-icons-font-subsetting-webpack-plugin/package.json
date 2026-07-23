@@ -6,7 +6,8 @@
   "scripts": {
     "test": "webpack -c test/webpack.config.js",
     "dev": "webpack serve -c test/webpack.config.js --open",
-    "build": "tsc -p ."
+    "build": "tsc -p .",
+    "lint": "eslint package.json"
   },
   "engines": {
     "node": ">=14.5.0"
@@ -23,10 +24,7 @@
   },
   "homepage": "https://github.com/microsoft/fluentui-system-icons/packages/react-icons-font-subsetting-webpack-plugin#readme",
   "devDependencies": {
-    "typescript": "5.0.4",
-    "webpack": "^5.72.0",
-    "@fluentui/react-icons": "*",
-    "@types/node": "14"
+    "@fluentui/react-icons": "*"
   },
   "dependencies": {
     "subset-font": "^1.4.0"
