@@ -41,7 +41,10 @@ async function loadColorIcons() {
 
   for (const { file, mod } of modules) {
     for (const [name, Component] of Object.entries(mod)) {
-      if (!name.includes('Color')) continue;
+      // Real color-variant icons always end with the `Color` suffix (e.g. `BeachColor`).
+      // Mono-color glyphs that merely contain "Color" in their name (e.g. `ColorFilled`,
+      // `ColorLineRegular`) end with a style suffix (`Filled`/`Regular`/`Light`) and must be excluded.
+      if (!name.endsWith('Color')) continue;
       if (typeof Component !== 'function' && typeof (/** @type {any} */ (Component)?.render) !== 'function') continue;
       colorIcons.push({ name, file, Component });
     }
@@ -54,7 +57,7 @@ describe('Color Icon Rendering', () => {
   it('all color icon exports from lib/atoms/svg should render valid SVG', async () => {
     const colorIcons = await loadColorIcons();
 
-    expect(colorIcons.length).toMatchInlineSnapshot(`1181`);
+    expect(colorIcons.length).toMatchInlineSnapshot(`1086`);
 
     /** @type {Array<{ name: string; file: string; error: unknown }>} */
     const failures = [];
