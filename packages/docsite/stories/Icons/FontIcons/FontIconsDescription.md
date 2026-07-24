@@ -1,0 +1,3 @@
+Font-based icons are the alternate delivery of `@fluentui/react-icons`, imported from the `@fluentui/react-icons/fonts/*` entry point. Each icon renders as an `<i>` glyph element and, like the SVG icons, reserves a `1em × 1em` box and inherits `color` and `font-size`.
+
+> **Tip:** The `@fluentui/react-icons/fonts/*` export map lets you import font icons atomically by hand — but you don't have to. Keep your plain `@fluentui/react-icons` barrel imports and let the build tooling do the work: the **atomic import loader** rewrites them to the optimal atomic font paths, and the **font‑subsetting webpack plugin** trims the icon fonts down to only the glyphs you actually use. See the [Build Transforms](?path=/docs/icons-build-transforms--docs) page.
