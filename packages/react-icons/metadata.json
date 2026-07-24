@@ -7299,6 +7299,16 @@
     "font": true,
     "type": "resizable"
   },
+  "ColorOffFilled": {
+    "svg": true,
+    "font": false,
+    "type": "resizable"
+  },
+  "ColorOffRegular": {
+    "svg": true,
+    "font": false,
+    "type": "resizable"
+  },
   "ColumnFilled": {
     "svg": true,
     "font": true,
@@ -15252,6 +15262,16 @@
   "LinkMultipleRegular": {
     "svg": true,
     "font": true,
+    "type": "resizable"
+  },
+  "LinkOffFilled": {
+    "svg": true,
+    "font": false,
+    "type": "resizable"
+  },
+  "LinkOffRegular": {
+    "svg": true,
+    "font": false,
     "type": "resizable"
   },
   "LinkPersonFilled": {
@@ -34154,6 +34174,31 @@
     "font": true,
     "type": "sized"
   },
+  "ArrowExportLtr28Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowExportLtr28Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowExportLtr32Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowExportLtr32Light": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowExportLtr32Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
   "ArrowExportRtl16Filled": {
     "svg": true,
     "font": true,
@@ -34184,6 +34229,31 @@
     "font": true,
     "type": "sized"
   },
+  "ArrowExportRtl28Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowExportRtl28Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowExportRtl32Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowExportRtl32Light": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowExportRtl32Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
   "ArrowExportUp16Filled": {
     "svg": true,
     "font": true,
@@ -34212,6 +34282,31 @@
   "ArrowExportUp24Regular": {
     "svg": true,
     "font": true,
+    "type": "sized"
+  },
+  "ArrowExportUp28Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowExportUp28Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowExportUp32Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowExportUp32Light": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowExportUp32Regular": {
+    "svg": true,
+    "font": false,
     "type": "sized"
   },
   "ArrowFit16Filled": {
@@ -34817,6 +34912,31 @@
   "ArrowImport24Regular": {
     "svg": true,
     "font": true,
+    "type": "sized"
+  },
+  "ArrowImport28Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowImport28Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowImport32Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowImport32Light": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowImport32Regular": {
+    "svg": true,
+    "font": false,
     "type": "sized"
   },
   "ArrowJoin20Filled": {
@@ -35844,6 +35964,46 @@
     "font": true,
     "type": "sized"
   },
+  "ArrowRotateClockwise28Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowRotateClockwise28Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowRotateClockwise32Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowRotateClockwise32Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowRotateClockwise48Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowRotateClockwise48Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowRotateCounterclockwise16Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowRotateCounterclockwise16Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
   "ArrowRotateCounterclockwise20Filled": {
     "svg": true,
     "font": true,
@@ -35862,6 +36022,36 @@
   "ArrowRotateCounterclockwise24Regular": {
     "svg": true,
     "font": true,
+    "type": "sized"
+  },
+  "ArrowRotateCounterclockwise28Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowRotateCounterclockwise28Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowRotateCounterclockwise32Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowRotateCounterclockwise32Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowRotateCounterclockwise48Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowRotateCounterclockwise48Regular": {
+    "svg": true,
+    "font": false,
     "type": "sized"
   },
   "ArrowRouting20Filled": {
@@ -55799,9 +55989,29 @@
     "font": true,
     "type": "sized"
   },
+  "Color28Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "Color28Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "Color32Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
   "Color32Light": {
     "svg": true,
     "font": true,
+    "type": "sized"
+  },
+  "Color32Regular": {
+    "svg": true,
+    "font": false,
     "type": "sized"
   },
   "ColorBackground20Filled": {
@@ -55962,6 +56172,36 @@
   "ColorLineAccent24Regular": {
     "svg": true,
     "font": true,
+    "type": "sized"
+  },
+  "ColorOff20Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ColorOff20Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ColorOff24Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ColorOff24Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ColorOff28Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ColorOff28Regular": {
+    "svg": true,
+    "font": false,
     "type": "sized"
   },
   "Column16Filled": {
@@ -64122,6 +64362,16 @@
   "DocumentDismiss24Regular": {
     "svg": true,
     "font": true,
+    "type": "sized"
+  },
+  "DocumentDismiss48Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "DocumentDismiss48Regular": {
+    "svg": true,
+    "font": false,
     "type": "sized"
   },
   "DocumentEdit16Color": {
@@ -73154,6 +73404,21 @@
     "font": true,
     "type": "sized"
   },
+  "Form32Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "Form32Light": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "Form32Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
   "Form48Color": {
     "svg": true,
     "font": false,
@@ -73267,6 +73532,21 @@
   "FormNew28Regular": {
     "svg": true,
     "font": true,
+    "type": "sized"
+  },
+  "FormNew32Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "FormNew32Light": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "FormNew32Regular": {
+    "svg": true,
+    "font": false,
     "type": "sized"
   },
   "FormNew48Filled": {
@@ -83164,6 +83444,36 @@
     "font": true,
     "type": "sized"
   },
+  "LinkOff20Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "LinkOff20Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "LinkOff24Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "LinkOff24Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "LinkOff28Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "LinkOff28Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
   "LinkPerson16Filled": {
     "svg": true,
     "font": true,
@@ -91759,6 +92069,16 @@
     "font": true,
     "type": "sized"
   },
+  "Pair16Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "Pair16Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
   "Pair20Filled": {
     "svg": true,
     "font": true,
@@ -94597,6 +94917,16 @@
   "PeopleProhibited24Regular": {
     "svg": true,
     "font": true,
+    "type": "sized"
+  },
+  "PeopleProhibited48Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "PeopleProhibited48Regular": {
+    "svg": true,
+    "font": false,
     "type": "sized"
   },
   "PeopleQueue20Filled": {
@@ -100619,6 +100949,31 @@
     "font": true,
     "type": "sized"
   },
+  "PreviewLink28Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "PreviewLink28Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "PreviewLink32Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "PreviewLink32Light": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "PreviewLink32Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
   "Previous16Filled": {
     "svg": true,
     "font": true,
@@ -103524,6 +103879,16 @@
     "font": true,
     "type": "sized"
   },
+  "Ribbon28Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "Ribbon28Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
   "Ribbon32Color": {
     "svg": true,
     "font": false,
@@ -103597,6 +103962,16 @@
   "RibbonOff24Regular": {
     "svg": true,
     "font": true,
+    "type": "sized"
+  },
+  "RibbonOff28Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "RibbonOff28Regular": {
+    "svg": true,
+    "font": false,
     "type": "sized"
   },
   "RibbonOff32Filled": {
@@ -104424,6 +104799,16 @@
     "font": true,
     "type": "sized"
   },
+  "Scales16Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "Scales16Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
   "Scales20Filled": {
     "svg": true,
     "font": true,
@@ -104444,6 +104829,16 @@
     "font": true,
     "type": "sized"
   },
+  "Scales28Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "Scales28Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
   "Scales32Filled": {
     "svg": true,
     "font": true,
@@ -104452,6 +104847,16 @@
   "Scales32Regular": {
     "svg": true,
     "font": true,
+    "type": "sized"
+  },
+  "Scales48Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "Scales48Regular": {
+    "svg": true,
+    "font": false,
     "type": "sized"
   },
   "Scan16Filled": {
@@ -105564,6 +105969,16 @@
     "font": true,
     "type": "sized"
   },
+  "SelectObject16Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "SelectObject16Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
   "SelectObject20Filled": {
     "svg": true,
     "font": true,
@@ -105582,6 +105997,16 @@
   "SelectObject24Regular": {
     "svg": true,
     "font": true,
+    "type": "sized"
+  },
+  "SelectObjectSkew16Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "SelectObjectSkew16Regular": {
+    "svg": true,
+    "font": false,
     "type": "sized"
   },
   "SelectObjectSkew20Filled": {
@@ -107364,6 +107789,16 @@
     "font": true,
     "type": "sized"
   },
+  "ShieldDismiss48Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ShieldDismiss48Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
   "ShieldDismissShield20Filled": {
     "svg": true,
     "font": true,
@@ -109109,6 +109544,16 @@
     "font": true,
     "type": "sized"
   },
+  "SlideLink28Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "SlideLink28Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
   "SlideMicrophone20Filled": {
     "svg": true,
     "font": true,
@@ -109137,6 +109582,16 @@
   "SlideMicrophone32Regular": {
     "svg": true,
     "font": true,
+    "type": "sized"
+  },
+  "SlideMultiple16Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "SlideMultiple16Regular": {
+    "svg": true,
+    "font": false,
     "type": "sized"
   },
   "SlideMultiple20Filled": {
@@ -118827,6 +119282,31 @@
   "TextAdd20Regular": {
     "svg": true,
     "font": true,
+    "type": "sized"
+  },
+  "TextAdd28Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "TextAdd28Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "TextAdd32Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "TextAdd32Light": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "TextAdd32Regular": {
+    "svg": true,
+    "font": false,
     "type": "sized"
   },
   "TextAddSpaceAfter20Filled": {
@@ -130254,6 +130734,16 @@
     "font": true,
     "type": "sized"
   },
+  "Wifi148Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "Wifi148Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
   "Wifi20Color": {
     "svg": true,
     "font": false,
@@ -130362,6 +130852,16 @@
   "WifiOff24Regular": {
     "svg": true,
     "font": true,
+    "type": "sized"
+  },
+  "WifiOff48Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "WifiOff48Regular": {
+    "svg": true,
+    "font": false,
     "type": "sized"
   },
   "WifiSettings20Filled": {

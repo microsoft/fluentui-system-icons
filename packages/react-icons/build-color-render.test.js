@@ -54,7 +54,7 @@ describe('Color Icon Rendering', () => {
   it('all color icon exports from lib/atoms/svg should render valid SVG', async () => {
     const colorIcons = await loadColorIcons();
 
-    expect(colorIcons.length).toMatchInlineSnapshot(`1165`);
+    expect(colorIcons.length).toMatchInlineSnapshot(`1181`);
 
     /** @type {Array<{ name: string; file: string; error: unknown }>} */
     const failures = [];
