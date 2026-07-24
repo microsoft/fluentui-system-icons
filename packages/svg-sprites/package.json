@@ -22,7 +22,7 @@
     "build-verify": "vitest run build-verify.test.js"
   },
   "devDependencies": {
-    "svgo": "2.8.2",
+    "svgo": "2.8.3",
     "svgstore": "^3.0.1",
     "yargs": "^14.0.0"
   }

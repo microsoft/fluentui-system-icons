@@ -42,7 +42,7 @@
     "mini-css-extract-plugin": "2.10.1",
     "monosize": "0.9.0",
     "monosize-bundler-webpack": "0.4.0",
-    "monosize-storage-git": "0.3.4",
+    "monosize-storage-git": "0.3.5",
     "nano-staged": "0.9.0",
     "nx": "22.6.5",
     "patch-package": "8.0.1",
