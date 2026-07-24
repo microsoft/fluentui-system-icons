@@ -7301,12 +7301,12 @@
   },
   "ColorOffFilled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "ColorOffRegular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "ColumnFilled": {
@@ -15266,12 +15266,12 @@
   },
   "LinkOffFilled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "LinkOffRegular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "LinkPersonFilled": {
@@ -34176,27 +34176,27 @@
   },
   "ArrowExportLtr28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowExportLtr28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowExportLtr32Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowExportLtr32Light": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowExportLtr32Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowExportRtl16Filled": {
@@ -34231,27 +34231,27 @@
   },
   "ArrowExportRtl28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowExportRtl28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowExportRtl32Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowExportRtl32Light": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowExportRtl32Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowExportUp16Filled": {
@@ -34286,27 +34286,27 @@
   },
   "ArrowExportUp28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowExportUp28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowExportUp32Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowExportUp32Light": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowExportUp32Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowFit16Filled": {
@@ -34916,27 +34916,27 @@
   },
   "ArrowImport28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowImport28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowImport32Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowImport32Light": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowImport32Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowJoin20Filled": {
@@ -35966,42 +35966,42 @@
   },
   "ArrowRotateClockwise28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowRotateClockwise28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowRotateClockwise32Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowRotateClockwise32Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowRotateClockwise48Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowRotateClockwise48Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowRotateCounterclockwise16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowRotateCounterclockwise16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowRotateCounterclockwise20Filled": {
@@ -36026,32 +36026,32 @@
   },
   "ArrowRotateCounterclockwise28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowRotateCounterclockwise28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowRotateCounterclockwise32Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowRotateCounterclockwise32Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowRotateCounterclockwise48Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowRotateCounterclockwise48Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ArrowRouting20Filled": {
@@ -55991,17 +55991,17 @@
   },
   "Color28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Color28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Color32Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Color32Light": {
@@ -56011,7 +56011,7 @@
   },
   "Color32Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ColorBackground20Filled": {
@@ -56176,32 +56176,32 @@
   },
   "ColorOff20Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ColorOff20Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ColorOff24Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ColorOff24Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ColorOff28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ColorOff28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Column16Filled": {
@@ -64366,12 +64366,12 @@
   },
   "DocumentDismiss48Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "DocumentDismiss48Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "DocumentEdit16Color": {
@@ -73406,17 +73406,17 @@
   },
   "Form32Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Form32Light": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Form32Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Form48Color": {
@@ -73536,17 +73536,17 @@
   },
   "FormNew32Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FormNew32Light": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FormNew32Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FormNew48Filled": {
@@ -83446,32 +83446,32 @@
   },
   "LinkOff20Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "LinkOff20Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "LinkOff24Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "LinkOff24Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "LinkOff28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "LinkOff28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "LinkPerson16Filled": {
@@ -92071,12 +92071,12 @@
   },
   "Pair16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Pair16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Pair20Filled": {
@@ -94921,12 +94921,12 @@
   },
   "PeopleProhibited48Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "PeopleProhibited48Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "PeopleQueue20Filled": {
@@ -100951,27 +100951,27 @@
   },
   "PreviewLink28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "PreviewLink28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "PreviewLink32Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "PreviewLink32Light": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "PreviewLink32Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Previous16Filled": {
@@ -103881,12 +103881,12 @@
   },
   "Ribbon28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Ribbon28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Ribbon32Color": {
@@ -103966,12 +103966,12 @@
   },
   "RibbonOff28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "RibbonOff28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "RibbonOff32Filled": {
@@ -104801,12 +104801,12 @@
   },
   "Scales16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Scales16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Scales20Filled": {
@@ -104831,12 +104831,12 @@
   },
   "Scales28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Scales28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Scales32Filled": {
@@ -104851,12 +104851,12 @@
   },
   "Scales48Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Scales48Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Scan16Filled": {
@@ -105971,12 +105971,12 @@
   },
   "SelectObject16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "SelectObject16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "SelectObject20Filled": {
@@ -106001,12 +106001,12 @@
   },
   "SelectObjectSkew16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "SelectObjectSkew16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "SelectObjectSkew20Filled": {
@@ -107791,12 +107791,12 @@
   },
   "ShieldDismiss48Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ShieldDismiss48Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ShieldDismissShield20Filled": {
@@ -109546,12 +109546,12 @@
   },
   "SlideLink28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "SlideLink28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "SlideMicrophone20Filled": {
@@ -109586,12 +109586,12 @@
   },
   "SlideMultiple16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "SlideMultiple16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "SlideMultiple20Filled": {
@@ -119286,27 +119286,27 @@
   },
   "TextAdd28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TextAdd28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TextAdd32Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TextAdd32Light": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TextAdd32Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TextAddSpaceAfter20Filled": {
@@ -130736,12 +130736,12 @@
   },
   "Wifi148Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Wifi148Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Wifi20Color": {
@@ -130856,12 +130856,12 @@
   },
   "WifiOff48Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "WifiOff48Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "WifiSettings20Filled": {

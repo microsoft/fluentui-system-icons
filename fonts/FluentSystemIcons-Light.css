@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Light";
-    src: url("./FluentSystemIcons-Light.woff2?bd6554dac2efb30f0bdaf020057d1787") format("woff2"),
-url("./FluentSystemIcons-Light.woff?bd6554dac2efb30f0bdaf020057d1787") format("woff"),
-url("./FluentSystemIcons-Light.ttf?bd6554dac2efb30f0bdaf020057d1787") format("truetype");
+    src: url("./FluentSystemIcons-Light.woff2?91beb00125f9d2070fdae66c951976ff") format("woff2"),
+url("./FluentSystemIcons-Light.woff?91beb00125f9d2070fdae66c951976ff") format("woff"),
+url("./FluentSystemIcons-Light.ttf?91beb00125f9d2070fdae66c951976ff") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -627,4 +627,28 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_zoom_out_32_light:before {
     content: "\e0cb";
+}
+.icon-ic_fluent_arrow_export_ltr_32_light:before {
+    content: "\e0cc";
+}
+.icon-ic_fluent_arrow_export_rtl_32_light:before {
+    content: "\e0cd";
+}
+.icon-ic_fluent_arrow_export_up_32_light:before {
+    content: "\e0ce";
+}
+.icon-ic_fluent_arrow_import_32_light:before {
+    content: "\e0cf";
+}
+.icon-ic_fluent_form_32_light:before {
+    content: "\e0d0";
+}
+.icon-ic_fluent_form_new_32_light:before {
+    content: "\e0d1";
+}
+.icon-ic_fluent_preview_link_32_light:before {
+    content: "\e0d2";
+}
+.icon-ic_fluent_text_add_32_light:before {
+    content: "\e0d3";
 }

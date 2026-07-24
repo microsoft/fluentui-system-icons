@@ -1,3 +1,13 @@
+## 2.0.334 (2026-07-24)
+
+### 🚀 Features
+
+- **react-icons:** add new and updated icons ([#1181](https://github.com/microsoft/fluentui-system-icons/pull/1181))
+
+### 🩹 Fixes
+
+- **react-icons:** stop headless base CSS from overriding shared data-fui-icon styling ([#1172](https://github.com/microsoft/fluentui-system-icons/pull/1172))
+
 ## 2.0.333 (2026-07-10)
 
 ### 🚀 Features

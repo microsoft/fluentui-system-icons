@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Resizable";
-    src: url("./FluentSystemIcons-Resizable.woff2?a9d63301bc7d3a76991a33799462b633") format("woff2"),
-url("./FluentSystemIcons-Resizable.woff?a9d63301bc7d3a76991a33799462b633") format("woff"),
-url("./FluentSystemIcons-Resizable.ttf?a9d63301bc7d3a76991a33799462b633") format("truetype");
+    src: url("./FluentSystemIcons-Resizable.woff2?a919a05b09d9d8dc9cd2633e3bfd7fda") format("woff2"),
+url("./FluentSystemIcons-Resizable.woff?a919a05b09d9d8dc9cd2633e3bfd7fda") format("woff"),
+url("./FluentSystemIcons-Resizable.ttf?a919a05b09d9d8dc9cd2633e3bfd7fda") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -16983,4 +16983,16 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_door_add_20_regular:before {
     content: "\f617";
+}
+.icon-ic_fluent_color_off_20_filled:before {
+    content: "\f618";
+}
+.icon-ic_fluent_color_off_20_regular:before {
+    content: "\f619";
+}
+.icon-ic_fluent_link_off_20_filled:before {
+    content: "\f61a";
+}
+.icon-ic_fluent_link_off_20_regular:before {
+    content: "\f61b";
 }

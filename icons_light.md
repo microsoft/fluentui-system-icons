@@ -13,11 +13,15 @@
 |Arrow Clockwise|<img src="assets/Arrow Clockwise/SVG/ic_fluent_arrow_clockwise_32_light.svg?raw=true" width="24" height="24">|`arrowClockwise32Light`|`ic_fluent_arrow_clockwise_32_light`|
 |Arrow Down|<img src="assets/Arrow Down/SVG/ic_fluent_arrow_down_32_light.svg?raw=true" width="24" height="24">|`arrowDown32Light`|`ic_fluent_arrow_down_32_light`|
 |Arrow Download|<img src="assets/Arrow Download/SVG/ic_fluent_arrow_download_32_light.svg?raw=true" width="24" height="24">|`arrowDownload32Light`|`ic_fluent_arrow_download_32_light`|
+|Arrow Export LTR|<img src="assets/Arrow Export LTR/SVG/ic_fluent_arrow_export_ltr_32_light.svg?raw=true" width="24" height="24">|`arrowExportLtr32Light`|`ic_fluent_arrow_export_ltr_32_light`|
+|Arrow Export RTL|<img src="assets/Arrow Export RTL/SVG/ic_fluent_arrow_export_rtl_32_light.svg?raw=true" width="24" height="24">|`arrowExportRtl32Light`|`ic_fluent_arrow_export_rtl_32_light`|
+|Arrow Export Up|<img src="assets/Arrow Export Up/SVG/ic_fluent_arrow_export_up_32_light.svg?raw=true" width="24" height="24">|`arrowExportUp32Light`|`ic_fluent_arrow_export_up_32_light`|
 |Arrow Forward|<img src="assets/Arrow Forward/SVG/ic_fluent_arrow_forward_32_light.svg?raw=true" width="24" height="24">|`arrowForward32Light`|`ic_fluent_arrow_forward_32_light`|
 |Arrow Hook Down Left|<img src="assets/Arrow Hook Down Left/SVG/ic_fluent_arrow_hook_down_left_32_light.svg?raw=true" width="24" height="24">|`arrowHookDownLeft32Light`|`ic_fluent_arrow_hook_down_left_32_light`|
 |Arrow Hook Down Right|<img src="assets/Arrow Hook Down Right/SVG/ic_fluent_arrow_hook_down_right_32_light.svg?raw=true" width="24" height="24">|`arrowHookDownRight32Light`|`ic_fluent_arrow_hook_down_right_32_light`|
 |Arrow Hook Up Left|<img src="assets/Arrow Hook Up Left/SVG/ic_fluent_arrow_hook_up_left_32_light.svg?raw=true" width="24" height="24">|`arrowHookUpLeft32Light`|`ic_fluent_arrow_hook_up_left_32_light`|
 |Arrow Hook Up Right|<img src="assets/Arrow Hook Up Right/SVG/ic_fluent_arrow_hook_up_right_32_light.svg?raw=true" width="24" height="24">|`arrowHookUpRight32Light`|`ic_fluent_arrow_hook_up_right_32_light`|
+|Arrow Import|<img src="assets/Arrow Import/SVG/ic_fluent_arrow_import_32_light.svg?raw=true" width="24" height="24">|`arrowImport32Light`|`ic_fluent_arrow_import_32_light`|
 |Arrow Redo|<img src="assets/Arrow Redo/SVG/ic_fluent_arrow_redo_32_light.svg?raw=true" width="24" height="24">|`arrowRedo32Light`|`ic_fluent_arrow_redo_32_light`|
 |Arrow Reply|<img src="assets/Arrow Reply/SVG/ic_fluent_arrow_reply_32_light.svg?raw=true" width="24" height="24">|`arrowReply32Light`|`ic_fluent_arrow_reply_32_light`|
 |Arrow Reply All|<img src="assets/Arrow Reply All/SVG/ic_fluent_arrow_reply_all_32_light.svg?raw=true" width="24" height="24">|`arrowReplyAll32Light`|`ic_fluent_arrow_reply_all_32_light`|
@@ -82,6 +86,8 @@
 |Flash|<img src="assets/Flash/SVG/ic_fluent_flash_32_light.svg?raw=true" width="24" height="24">|`flash32Light`|`ic_fluent_flash_32_light`|
 |Folder Arrow Right|<img src="assets/Folder Arrow Right/SVG/ic_fluent_folder_arrow_right_32_light.svg?raw=true" width="24" height="24">|`folderArrowRight32Light`|`ic_fluent_folder_arrow_right_32_light`|
 |Folder Mail|<img src="assets/Folder Mail/SVG/ic_fluent_folder_mail_32_light.svg?raw=true" width="24" height="24">|`folderMail32Light`|`ic_fluent_folder_mail_32_light`|
+|Form|<img src="assets/Form/SVG/ic_fluent_form_32_light.svg?raw=true" width="24" height="24">|`form32Light`|`ic_fluent_form_32_light`|
+|Form New|<img src="assets/Form New/SVG/ic_fluent_form_new_32_light.svg?raw=true" width="24" height="24">|`formNew32Light`|`ic_fluent_form_new_32_light`|
 |Globe|<img src="assets/Globe/SVG/ic_fluent_globe_32_light.svg?raw=true" width="24" height="24">|`globe32Light`|`ic_fluent_globe_32_light`|
 |Hand Draw|<img src="assets/Hand Draw/SVG/ic_fluent_hand_draw_32_light.svg?raw=true" width="24" height="24">|`handDraw32Light`|`ic_fluent_hand_draw_32_light`|
 |History|<img src="assets/History/SVG/ic_fluent_history_32_light.svg?raw=true" width="24" height="24">|`history32Light`|`ic_fluent_history_32_light`|
@@ -150,6 +156,7 @@
 |Pin Off|<img src="assets/Pin Off/SVG/ic_fluent_pin_off_32_light.svg?raw=true" width="24" height="24">|`pinOff32Light`|`ic_fluent_pin_off_32_light`|
 |Poll|<img src="assets/Poll/SVG/ic_fluent_poll_32_light.svg?raw=true" width="24" height="24">|`poll32Light`|`ic_fluent_poll_32_light`|
 |Presenter|<img src="assets/Presenter/SVG/ic_fluent_presenter_32_light.svg?raw=true" width="24" height="24">|`presenter32Light`|`ic_fluent_presenter_32_light`|
+|Preview Link|<img src="assets/Preview Link/SVG/ic_fluent_preview_link_32_light.svg?raw=true" width="24" height="24">|`previewLink32Light`|`ic_fluent_preview_link_32_light`|
 |Print|<img src="assets/Print/SVG/ic_fluent_print_32_light.svg?raw=true" width="24" height="24">|`print32Light`|`ic_fluent_print_32_light`|
 |Question|<img src="assets/Question/SVG/ic_fluent_question_32_light.svg?raw=true" width="24" height="24">|`question32Light`|`ic_fluent_question_32_light`|
 |Read Aloud|<img src="assets/Read Aloud/SVG/ic_fluent_read_aloud_32_light.svg?raw=true" width="24" height="24">|`readAloud32Light`|`ic_fluent_read_aloud_32_light`|
@@ -183,6 +190,7 @@
 |Table Simple|<img src="assets/Table Simple/SVG/ic_fluent_table_simple_32_light.svg?raw=true" width="24" height="24">|`tableSimple32Light`|`ic_fluent_table_simple_32_light`|
 |Tag|<img src="assets/Tag/SVG/ic_fluent_tag_32_light.svg?raw=true" width="24" height="24">|`tag32Light`|`ic_fluent_tag_32_light`|
 |Text|<img src="assets/Text/SVG/ic_fluent_text_32_light.svg?raw=true" width="24" height="24">|`text32Light`|`ic_fluent_text_32_light`|
+|Text Add|<img src="assets/Text Add/SVG/ic_fluent_text_add_32_light.svg?raw=true" width="24" height="24">|`textAdd32Light`|`ic_fluent_text_add_32_light`|
 |Text Clear Formatting|<img src="assets/Text Clear Formatting/SVG/ic_fluent_text_clear_formatting_32_light.svg?raw=true" width="24" height="24">|`textClearFormatting32Light`|`ic_fluent_text_clear_formatting_32_light`|
 |Text Collapse|<img src="assets/Text Collapse/SVG/ic_fluent_text_collapse_32_light.svg?raw=true" width="24" height="24">|`textCollapse32Light`|`ic_fluent_text_collapse_32_light`|
 |Text Density|<img src="assets/Text Density/SVG/ic_fluent_text_density_32_light.svg?raw=true" width="24" height="24">|`textDensity32Light`|`ic_fluent_text_density_32_light`|

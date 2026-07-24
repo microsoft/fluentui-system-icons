@@ -202,5 +202,13 @@
   "ic_fluent_window_32_light": 57544,
   "ic_fluent_wrench_screwdriver_32_light": 57545,
   "ic_fluent_zoom_in_32_light": 57546,
-  "ic_fluent_zoom_out_32_light": 57547
+  "ic_fluent_zoom_out_32_light": 57547,
+  "ic_fluent_arrow_export_ltr_32_light": 57548,
+  "ic_fluent_arrow_export_rtl_32_light": 57549,
+  "ic_fluent_arrow_export_up_32_light": 57550,
+  "ic_fluent_arrow_import_32_light": 57551,
+  "ic_fluent_form_32_light": 57552,
+  "ic_fluent_form_new_32_light": 57553,
+  "ic_fluent_preview_link_32_light": 57554,
+  "ic_fluent_text_add_32_light": 57555
 }

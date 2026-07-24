@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?9c4f5323131c8d91515ee406d1c9ebd0") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?9c4f5323131c8d91515ee406d1c9ebd0") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?9c4f5323131c8d91515ee406d1c9ebd0") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?be7b2a4c64fb3ca9a22df12ca86deb1c") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?be7b2a4c64fb3ca9a22df12ca86deb1c") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?be7b2a4c64fb3ca9a22df12ca86deb1c") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -29295,4 +29295,136 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_door_add_24_filled:before {
     content: "\f0d1f";
+}
+.icon-ic_fluent_arrow_export_ltr_28_filled:before {
+    content: "\f0d20";
+}
+.icon-ic_fluent_arrow_export_ltr_32_filled:before {
+    content: "\f0d21";
+}
+.icon-ic_fluent_arrow_export_rtl_28_filled:before {
+    content: "\f0d22";
+}
+.icon-ic_fluent_arrow_export_rtl_32_filled:before {
+    content: "\f0d23";
+}
+.icon-ic_fluent_arrow_export_up_28_filled:before {
+    content: "\f0d24";
+}
+.icon-ic_fluent_arrow_export_up_32_filled:before {
+    content: "\f0d25";
+}
+.icon-ic_fluent_arrow_import_28_filled:before {
+    content: "\f0d26";
+}
+.icon-ic_fluent_arrow_import_32_filled:before {
+    content: "\f0d27";
+}
+.icon-ic_fluent_arrow_rotate_clockwise_28_filled:before {
+    content: "\f0d28";
+}
+.icon-ic_fluent_arrow_rotate_clockwise_32_filled:before {
+    content: "\f0d29";
+}
+.icon-ic_fluent_arrow_rotate_clockwise_48_filled:before {
+    content: "\f0d2a";
+}
+.icon-ic_fluent_arrow_rotate_counterclockwise_16_filled:before {
+    content: "\f0d2b";
+}
+.icon-ic_fluent_arrow_rotate_counterclockwise_28_filled:before {
+    content: "\f0d2c";
+}
+.icon-ic_fluent_arrow_rotate_counterclockwise_32_filled:before {
+    content: "\f0d2d";
+}
+.icon-ic_fluent_arrow_rotate_counterclockwise_48_filled:before {
+    content: "\f0d2e";
+}
+.icon-ic_fluent_color_28_filled:before {
+    content: "\f0d2f";
+}
+.icon-ic_fluent_color_32_filled:before {
+    content: "\f0d30";
+}
+.icon-ic_fluent_color_off_20_filled:before {
+    content: "\f0d31";
+}
+.icon-ic_fluent_color_off_24_filled:before {
+    content: "\f0d32";
+}
+.icon-ic_fluent_color_off_28_filled:before {
+    content: "\f0d33";
+}
+.icon-ic_fluent_document_dismiss_48_filled:before {
+    content: "\f0d34";
+}
+.icon-ic_fluent_form_32_filled:before {
+    content: "\f0d35";
+}
+.icon-ic_fluent_form_new_32_filled:before {
+    content: "\f0d36";
+}
+.icon-ic_fluent_link_off_20_filled:before {
+    content: "\f0d37";
+}
+.icon-ic_fluent_link_off_24_filled:before {
+    content: "\f0d38";
+}
+.icon-ic_fluent_link_off_28_filled:before {
+    content: "\f0d39";
+}
+.icon-ic_fluent_pair_16_filled:before {
+    content: "\f0d3a";
+}
+.icon-ic_fluent_people_prohibited_48_filled:before {
+    content: "\f0d3b";
+}
+.icon-ic_fluent_preview_link_28_filled:before {
+    content: "\f0d3c";
+}
+.icon-ic_fluent_preview_link_32_filled:before {
+    content: "\f0d3d";
+}
+.icon-ic_fluent_ribbon_28_filled:before {
+    content: "\f0d3e";
+}
+.icon-ic_fluent_ribbon_off_28_filled:before {
+    content: "\f0d3f";
+}
+.icon-ic_fluent_scales_16_filled:before {
+    content: "\f0d40";
+}
+.icon-ic_fluent_scales_28_filled:before {
+    content: "\f0d41";
+}
+.icon-ic_fluent_scales_48_filled:before {
+    content: "\f0d42";
+}
+.icon-ic_fluent_select_object_16_filled:before {
+    content: "\f0d43";
+}
+.icon-ic_fluent_select_object_skew_16_filled:before {
+    content: "\f0d44";
+}
+.icon-ic_fluent_shield_dismiss_48_filled:before {
+    content: "\f0d45";
+}
+.icon-ic_fluent_slide_link_28_filled:before {
+    content: "\f0d46";
+}
+.icon-ic_fluent_slide_multiple_16_filled:before {
+    content: "\f0d47";
+}
+.icon-ic_fluent_text_add_28_filled:before {
+    content: "\f0d48";
+}
+.icon-ic_fluent_text_add_32_filled:before {
+    content: "\f0d49";
+}
+.icon-ic_fluent_wifi_1_48_filled:before {
+    content: "\f0d4a";
+}
+.icon-ic_fluent_wifi_off_48_filled:before {
+    content: "\f0d4b";
 }
