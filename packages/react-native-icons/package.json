@@ -42,7 +42,7 @@
     "react": "19.2.3",
     "react-native": "^0.85.0",
     "react-native-svg": "^15.15.3",
-    "svgo": "2.8.2",
+    "svgo": "2.8.3",
     "typescript": "5.0.4",
     "yargs": "^14.0.0"
   },
