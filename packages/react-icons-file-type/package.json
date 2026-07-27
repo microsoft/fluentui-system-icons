@@ -24,7 +24,7 @@
     "prebuild": "npm run clean && npm run generate",
     "build": "node scripts/build.js",
     "bundle-size": "monosize measure",
-    "lint": "eslint src",
+    "lint": "eslint src package.json",
     "pretest": "npm run generate",
     "test": "vitest run"
   },
@@ -40,13 +40,6 @@
     "@types/react": {
       "optional": true
     }
-  },
-  "devDependencies": {
-    "@griffel/eslint-plugin": "^2.0.2",
-    "eslint": "8.57.1",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "typescript": "5.0.4",
-    "typescript-eslint": "7.18.0"
   },
   "files": [
     "lib/",

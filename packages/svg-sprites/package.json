@@ -20,10 +20,5 @@
     "postsprites": "rm -rf ./icons",
     "build": "npm run copy && npm run rename && npm run unfill && npm run optimize && npm run sprites",
     "build-verify": "vitest run build-verify.test.js"
-  },
-  "devDependencies": {
-    "svgo": "2.8.2",
-    "svgstore": "^3.0.1",
-    "yargs": "^14.0.0"
   }
 }

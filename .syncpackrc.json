@@ -1,0 +1,29 @@
+{
+  "versionGroups": [
+    {
+      "label": "Workspace-local package references are managed by nx release, ignore them",
+      "dependencies": ["$LOCAL"],
+      "isIgnored": true
+    },
+    {
+      "label": "Allowlisted exception: @fluentui/react-icons is pinned to its legacy TypeScript 4.x / React 17 types toolchain",
+      "packages": ["@fluentui/react-icons"],
+      "dependencies": ["typescript", "@types/react"],
+      "dependencyTypes": ["dev"],
+      "isIgnored": true
+    },
+    {
+      "label": "Single version policy: devDependencies must live only in the workspace root",
+      "packages": ["!@fluentui/system-icons-repo"],
+      "dependencyTypes": ["dev"],
+      "dependencies": ["**"],
+      "isBanned": true
+    },
+    {
+      "label": "peerDependencies declare intentionally broad support ranges and are exempt from the single version policy",
+      "dependencyTypes": ["peer"],
+      "dependencies": ["**"],
+      "isIgnored": true
+    }
+  ]
+}
