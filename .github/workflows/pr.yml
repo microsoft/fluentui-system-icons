@@ -39,10 +39,10 @@ jobs:
         run: |
           error_found=false
 
-          for file in $(find ./assets -type f -name "*.svg" -print0 | grep -zv '_color.svg' | xargs -0 grep -L 'fill="#212121"'); do
-            echo "Error: $file does not have 'fill=\"#212121\"' or has a different fill."
+          while IFS= read -r -d '' file; do
+            echo "Error: $file does not have 'fill=\"#212121\"' or 'fill=\"black\" fill-opacity=\"0.858824\"' or has a different fill."
             error_found=true
-          done
+          done < <(find ./assets -type f -name "*.svg" -print0 | grep -zv '_color.svg' | xargs -0 grep -LZE 'fill="#212121"|fill="black" fill-opacity="0.858824"')
 
           if [[ $error_found == true ]]; then
             exit 1
