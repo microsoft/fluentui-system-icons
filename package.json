@@ -22,7 +22,8 @@
     "format": "nx format:write",
     "format:check": "nx format:check",
     "deps:check": "syncpack list-mismatches",
-    "deps:fix": "syncpack fix-mismatches"
+    "deps:fix": "syncpack fix-mismatches",
+    "scripts:check": "node scripts/check-package-scripts.mjs"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.0",

@@ -52,7 +52,7 @@ the repo and silently defeats the intent of the policy.
 
 ## Enforcement
 
-Two complementary gates run in CI (see [.github/workflows/pr.yml](../.github/workflows/pr.yml)):
+Three complementary gates run in CI (see [.github/workflows/pr.yml](../.github/workflows/pr.yml)):
 
 - **syncpack** — repo-wide gate configured in [.syncpackrc.json](../.syncpackrc.json). It
   fails if any two packages declare mismatched versions of the same dependency, and bans any
@@ -65,6 +65,12 @@ Two complementary gates run in CI (see [.github/workflows/pr.yml](../.github/wor
   it actually imports, with versions matching the root `package.json`.
   - Run: `yarn nx affected -t lint` (or `yarn nx run-many -t lint`)
   - Auto-fix: append `--fix` to the underlying `eslint` invocation.
+
+- **package script check** — [scripts/check-package-scripts.mjs](../scripts/check-package-scripts.mjs),
+  which enforces the binary invocation conventions described below. It is a plain script
+  rather than an ESLint rule because `svg-icons`, `svg-sprites`, `icon-app` and `importer`
+  have no lint target, and those are the packages with the most shell in their scripts.
+  - Check: `yarn scripts:check`
 
 ## Consequence: running root-owned binaries
 

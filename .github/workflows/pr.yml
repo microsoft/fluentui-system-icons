@@ -192,6 +192,9 @@ jobs:
       - name: Single Version Policy Check
         run: yarn deps:check
 
+      - name: Package Scripts Check
+        run: yarn scripts:check
+
       - name: Lint
         run: yarn nx affected -t lint
 
