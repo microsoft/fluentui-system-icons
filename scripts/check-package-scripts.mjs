@@ -1,4 +1,7 @@
+#!/usr/bin/env node
+
 // @ts-check
+
 /**
  * Guards the conventions that the yarn 4 migration relies on.
  *
@@ -11,9 +14,17 @@
  *
  * Yarn also has no arbitrary `pre*`/`post*` script hooks, so those keys are
  * silently dead code outside the handful of names yarn does implement.
+ *
+ * Usage: node scripts/check-package-scripts.mjs [--verbose]
+ *
+ * Options:
+ *   --verbose, -v: Print the resolved binaries and the tokens treated as executed programs
+ *   --help, -h: Show this help message
  */
+
 import fs from 'node:fs';
 import path from 'node:path';
+import { parseArgs } from 'node:util';
 import { fileURLToPath } from 'node:url';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -34,6 +45,114 @@ const LIFECYCLE_SCRIPTS = new Set([
 
 /** Commands that take the binary to run as their next argument. */
 const COMMAND_RUNNERS = new Set(['-exec', '-execdir', 'xargs', 'exec']);
+
+/**
+ * Diagnostic logger. `processArgs` swaps in a real implementation when
+ * `--verbose` is passed, so call sites never guard on the flag.
+ *
+ * @type {(...args: unknown[]) => void}
+ */
+let verbose = () => {};
+
+main();
+
+function main() {
+  processArgs();
+
+  const rootManifest = readManifest(repoRoot);
+  if (!rootManifest) {
+    throw new Error(`no package.json found at ${repoRoot}`);
+  }
+
+  const rootName = /** @type {string} */ (rootManifest.name);
+  const rootBins = binsOf(rootManifest, repoRoot);
+  const workspaceDirs = collectWorkspaceDirs(rootManifest);
+
+  verbose(`repo root: ${repoRoot}`);
+  verbose(`root binaries (${rootBins.size}): ${[...rootBins].sort().join(', ')}`);
+  verbose('');
+
+  const problems = workspaceDirs.flatMap((dir) => checkWorkspace(dir, rootBins, rootName));
+
+  // The root workspace owns every tool, so bare invocations resolve there. Only
+  // its lifecycle hook usage is worth checking.
+  for (const name of Object.keys(/** @type {Record<string, string>} */ (rootManifest.scripts ?? {}))) {
+    if (/^(?:pre|post)./.test(name) && !LIFECYCLE_SCRIPTS.has(name)) {
+      problems.push(`package.json → scripts.${name}: yarn does not run arbitrary "pre"/"post" script hooks.`);
+    }
+  }
+
+  if (problems.length > 0) {
+    console.error(`Found ${problems.length} package script problem(s):\n`);
+    for (const problem of problems) {
+      console.error(`  ✖ ${problem}`);
+    }
+    console.error('\nSee docs/single-version-policy.md for the conventions these scripts must follow.');
+    process.exit(1);
+  }
+
+  console.log(`✔ ${workspaceDirs.length} workspace manifests follow the package script conventions.`);
+}
+
+// ====================================
+
+function processArgs() {
+  let options;
+  try {
+    const { values } = parseArgs({
+      options: {
+        verbose: { type: 'boolean', short: 'v' },
+        help: { type: 'boolean', short: 'h' },
+      },
+    });
+    options = values;
+  } catch (error) {
+    console.error('Error parsing arguments:', error instanceof Error ? error.message : String(error));
+    printUsage();
+    process.exit(1);
+  }
+
+  if (options.help) {
+    printUsage();
+    process.exit(0);
+  }
+
+  if (options.verbose) {
+    verbose = (...args) => console.log(...args);
+  }
+}
+
+function printUsage() {
+  console.error('Usage: node scripts/check-package-scripts.mjs [--verbose]');
+  console.error('');
+  console.error('Verifies every workspace package.json follows the yarn 4 script conventions:');
+  console.error('  - root owned binaries are invoked through "yarn run -T <bin>"');
+  console.error('  - no "npx", no "npm run", no hardcoded "node_modules/.bin" paths');
+  console.error('  - no arbitrary "pre"/"post" script hooks, which yarn never runs');
+  console.error('');
+  console.error('Options:');
+  console.error('  --verbose, -v: Print the resolved binaries and the tokens treated as executed programs');
+  console.error('  --help, -h: Show this help message');
+}
+
+/**
+ * Every workspace directory declared by the root manifest that has a manifest of its own.
+ *
+ * @param {Record<string, unknown>} rootManifest
+ * @returns {string[]}
+ */
+function collectWorkspaceDirs(rootManifest) {
+  return /** @type {string[]} */ (rootManifest.workspaces ?? [])
+    .flatMap((pattern) =>
+      pattern.endsWith('/*')
+        ? fs
+            .readdirSync(path.join(repoRoot, pattern.slice(0, -2)), { withFileTypes: true })
+            .filter((entry) => entry.isDirectory())
+            .map((entry) => path.join(repoRoot, pattern.slice(0, -2), entry.name))
+        : [path.join(repoRoot, pattern)],
+    )
+    .filter((dir) => fs.existsSync(path.join(dir, 'package.json')));
+}
 
 /**
  * @param {string} pkgDir
@@ -130,6 +249,8 @@ function checkWorkspace(workspaceDir, rootBins, rootName) {
   const ownBins = binsOf(manifest, workspaceDir);
   const problems = [];
 
+  verbose(`${path.join(relativeDir, 'package.json')} (own bins: ${[...ownBins].sort().join(', ') || 'none'})`);
+
   for (const [name, body] of Object.entries(scripts)) {
     const at = `${path.join(relativeDir, 'package.json')} → scripts.${name}`;
 
@@ -161,7 +282,11 @@ function checkWorkspace(workspaceDir, rootBins, rootName) {
       }
     }
 
-    for (const token of executedTokens(body)) {
+    const executed = executedTokens(body);
+
+    verbose(`  scripts.${name} → ${executed.join(', ') || '(nothing executable)'}`);
+
+    for (const token of executed) {
       if (!ownBins.has(token) && rootBins.has(token)) {
         problems.push(
           `${at}: "${token}" is provided by a root dependency and is not on PATH here. Use "yarn run -T ${token}", or declare it here with "${token}": "catalog:" when it runs in a loop.`,
@@ -172,43 +297,3 @@ function checkWorkspace(workspaceDir, rootBins, rootName) {
 
   return problems;
 }
-
-const rootManifest = readManifest(repoRoot);
-if (!rootManifest) {
-  throw new Error(`no package.json found at ${repoRoot}`);
-}
-
-const rootBins = binsOf(rootManifest, repoRoot);
-const workspaceDirs = /** @type {string[]} */ (rootManifest.workspaces ?? [])
-  .flatMap((pattern) =>
-    pattern.endsWith('/*')
-      ? fs
-          .readdirSync(path.join(repoRoot, pattern.slice(0, -2)), { withFileTypes: true })
-          .filter((entry) => entry.isDirectory())
-          .map((entry) => path.join(repoRoot, pattern.slice(0, -2), entry.name))
-      : [path.join(repoRoot, pattern)],
-  )
-  .filter((dir) => fs.existsSync(path.join(dir, 'package.json')));
-
-const problems = workspaceDirs.flatMap((dir) =>
-  checkWorkspace(dir, rootBins, /** @type {string} */ (rootManifest.name)),
-);
-
-// The root workspace owns every tool, so bare invocations resolve there. Only
-// its lifecycle hook usage is worth checking.
-for (const name of Object.keys(/** @type {Record<string, string>} */ (rootManifest.scripts ?? {}))) {
-  if (/^(?:pre|post)./.test(name) && !LIFECYCLE_SCRIPTS.has(name)) {
-    problems.push(`package.json → scripts.${name}: yarn does not run arbitrary "pre"/"post" script hooks.`);
-  }
-}
-
-if (problems.length > 0) {
-  console.error(`Found ${problems.length} package script problem(s):\n`);
-  for (const problem of problems) {
-    console.error(`  ✖ ${problem}`);
-  }
-  console.error('\nSee docs/single-version-policy.md for the conventions these scripts must follow.');
-  process.exit(1);
-}
-
-console.log(`✔ ${workspaceDirs.length} workspace manifests follow the package script conventions.`);
