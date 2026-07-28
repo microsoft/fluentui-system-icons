@@ -10,10 +10,16 @@ dist/
 .project
 .classpath
 .settings
-yarn.lock
-# ignore all package-lock.json files except the repo root
-**/package-lock.json
-!/package-lock.json
+package-lock.json
+
+# yarn 4 (node-modules linker, no zero-installs)
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
 
 .idea
 
@@ -49,8 +55,6 @@ packages/react-native-icons/lib-cjs/
 packages/react-native-icons/src/icons
 packages/react-native-icons/src/sizedIcons
 packages/react-native-icons/src/index.tsx
-packages/react-native-icons/yarn.lock
-packages/react-native-icons/package-lock.json
 
 # npm
 
