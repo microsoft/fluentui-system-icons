@@ -21,10 +21,10 @@
   "scripts": {
     "clean": "git clean -fXd lib/ lib-cjs/",
     "generate": "node scripts/generateFileTypeIconMap.js && node scripts/generateFileIconTypes.js",
-    "build": "npm run clean && npm run generate && node scripts/build.js",
-    "bundle-size": "monosize measure",
-    "lint": "eslint src package.json",
-    "test": "npm run generate && vitest run"
+    "build": "yarn clean && yarn generate && node scripts/build.js",
+    "bundle-size": "yarn run -T monosize measure",
+    "lint": "yarn run -T eslint src package.json",
+    "test": "yarn generate && yarn run -T vitest run"
   },
   "dependencies": {
     "@griffel/react": "^1.6.1",

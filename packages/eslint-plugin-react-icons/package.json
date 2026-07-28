@@ -15,9 +15,9 @@
     "./package.json": "./package.json"
   },
   "scripts": {
-    "build": "tsc -p .",
-    "lint": "eslint src package.json",
-    "test": "vitest run"
+    "build": "yarn run -T tsc -p .",
+    "lint": "yarn run -T eslint src package.json",
+    "test": "yarn run -T vitest run"
   },
   "engines": {
     "node": ">=20.0.0"

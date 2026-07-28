@@ -17,12 +17,12 @@
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
     "convert:rnsvg": "node ../react-native-icons/convert-rn.js --source=./intermediate --dest=./src --native=true",
     "rollup": "node ./generateRollup.js",
-    "optimize": "svgo --config svgo.config.js --folder=./intermediate --precision=2 --quiet",
+    "optimize": "yarn run -T svgo --config svgo.config.js --folder=./intermediate --precision=2 --quiet",
     "unfill": "find ./intermediate -type f -name \"*.svg\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./intermediate -type f -name \"*.bak\" -delete",
-    "build": "npm run copy && npm run optimize && npm run unfill && npm run convert:rnsvg && npm run cleanSvg && npm run build:esm && npm run build:cjs",
-    "build:cjs": "tsc -p . --module commonjs --outDir lib-cjs && babel lib-cjs --out-dir lib-cjs",
-    "build:esm": "tsc -p . && babel lib --out-dir lib",
-    "lint": "eslint package.json"
+    "build": "yarn copy && yarn optimize && yarn unfill && yarn convert:rnsvg && yarn cleanSvg && yarn build:esm && yarn build:cjs",
+    "build:cjs": "yarn run -T tsc -p . --module commonjs --outDir lib-cjs && yarn run -T babel lib-cjs --out-dir lib-cjs",
+    "build:esm": "yarn run -T tsc -p . && yarn run -T babel lib --out-dir lib",
+    "lint": "yarn run -T eslint package.json"
   },
   "dependencies": {
     "@types/react-native": "^0.68.0",

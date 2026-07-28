@@ -4,9 +4,9 @@
   "description": "Webpack loader that transforms barrel imports and re-exports from @fluentui/react-icons into atomic deep paths",
   "main": "lib/index.js",
   "scripts": {
-    "build": "tsc -p .",
-    "lint": "eslint package.json",
-    "test": "vitest run && webpack -c test/webpack.config.js"
+    "build": "yarn run -T tsc -p .",
+    "lint": "yarn run -T eslint package.json",
+    "test": "yarn run -T vitest run && yarn run -T webpack -c test/webpack.config.js"
   },
   "engines": {
     "node": ">=20.0.0"

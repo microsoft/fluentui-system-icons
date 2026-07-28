@@ -6,8 +6,8 @@
   "private": true,
   "scripts": {
     "clean": "git clean -fXd dist/",
-    "build": "webpack",
-    "dev": "webpack serve --open"
+    "build": "yarn run -T webpack",
+    "dev": "yarn run -T webpack serve --open"
   },
   "author": "",
   "license": "ISC",

@@ -15,7 +15,7 @@ function main() {
   try {
     // 1. run tsc -p . from project root
     console.log('Running tsc...');
-    execSync('tsc -p . --pretty', { cwd: packageRoot, stdio: 'inherit' });
+    execSync('yarn run -T tsc -p . --pretty', { cwd: packageRoot, stdio: 'inherit' });
 
     // 2. copy JSON assets preserving directory structure
     const srcPattern = 'src/**/*.json';

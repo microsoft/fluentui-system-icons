@@ -85,7 +85,8 @@ function createRawStylesCopy(styleFile) {
 function transpileTsc(options, baseDir) {
   const { moduleFormat, outDir } = options;
   console.log(`Transpiling module format [${moduleFormat}] to -> ${outDir}/`);
-  const cmd = `npx tsc -p ./tsconfig.lib.json --module ${moduleFormat} --outDir ${outDir}`;
+  // `yarn` (not `yarn -T`) so this resolves the typescript pinned by this package.
+  const cmd = `yarn tsc -p ./tsconfig.lib.json --module ${moduleFormat} --outDir ${outDir}`;
   return execSync(cmd, { stdio: 'inherit', cwd: baseDir });
 }
 
