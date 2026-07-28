@@ -15,8 +15,8 @@ updates:
           - '*'
 
   - package-ecosystem: 'npm'
-    directories:
-      - '**/*'
+    # Single yarn workspace root: yarn.lock at `/` covers every workspace package.
+    directory: '/'
     schedule:
       interval: 'weekly'
     # Only minor/patch version bumps — skip majors to avoid churn and breaking changes.

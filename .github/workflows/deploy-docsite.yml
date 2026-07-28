@@ -42,17 +42,20 @@ jobs:
         with:
           fetch-depth: 0
 
+      - run: corepack enable
+
       - uses: actions/setup-node@v7
         with:
           node-version: 22.x
+          cache: 'yarn'
 
-      - run: npm ci
-      - run: npx playwright install --with-deps
+      - run: yarn install --immutable
+      - run: yarn playwright install --with-deps
 
       - name: Build docsite
         run: |
-          npx nx run docsite:build
-          npx nx run docsite:extract-storybook-llms
+          yarn nx run docsite:build
+          yarn nx run docsite:extract-storybook-llms
 
       - name: Setup Pages
         uses: actions/configure-pages@v6

@@ -23,9 +23,12 @@ jobs:
         with:
           fetch-depth: 0
 
+      - run: corepack enable
+
       - name: Set up Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: '20'
+          node-version: 22.x
+          cache: 'yarn'
 
-      - run: npm ci
+      - run: yarn install --immutable
