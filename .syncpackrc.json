@@ -24,6 +24,12 @@
       "dependencyTypes": ["peer"],
       "dependencies": ["**"],
       "isIgnored": true
+    },
+    {
+      "label": "resolutions deliberately override a transitive version and need not match the declared range",
+      "dependencyTypes": ["resolutions"],
+      "dependencies": ["**"],
+      "isIgnored": true
     }
   ]
 }
