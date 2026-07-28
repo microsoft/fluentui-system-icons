@@ -32,23 +32,31 @@ Workspace-local package references (e.g. `"@fluentui/react-icons": "*"`) are man
 
 ### Install-time overrides
 
-`@fluentui/react-icons` publishes `@griffel/react` at `^1.6.1`, but griffel 1.7+ writes its
-type declarations with TypeScript 4.5+ syntax, which the pinned TypeScript 4.1.6 above cannot
-parse. Rather than hold the whole repo back, the root [package.json](../package.json) scopes an
-install-time override to that one workspace:
+Both `@fluentui/react-icons` and `@fluentui/react-icons-file-type` publish `@griffel/react` at
+`^1.6.1`. Griffel is held at the low end of that range by the root
+[package.json](../package.json):
 
 ```jsonc
 "resolutions": {
-  // only @fluentui/react-icons resolves the old griffel; everything else tracks latest
-  "@fluentui/react-icons/@griffel/react": "1.6.1"
+  "@griffel/core": "1.20.1",
+  "@griffel/react": "1.6.1"
 }
 ```
 
-The **published** range stays `^1.6.1`, so consumers still deduplicate griffel with the rest of
-their app. Remove this override once `@fluentui/react-icons` moves off TypeScript 4.1.6.
+Two reasons keep it there:
 
-Prefer a scoped `parent/child` key over a bare package name: a bare key rewrites every copy in
-the repo and silently defeats the intent of the policy.
+- **Types.** Griffel 1.7+ writes its declarations with TypeScript 4.5+ syntax, which the pinned
+  TypeScript 4.1.6 above cannot parse.
+- **Bundle size.** Griffel 1.7.6 / core 1.21.3 add ~1.1 kB minified to the `FileTypeIcon`
+  fixture, which trips the 1 kB `monosize` threshold in [monosize.config.mjs](../monosize.config.mjs).
+
+The **published** ranges stay `^1.6.1`, so consumers still deduplicate griffel with the rest of
+their app. Remove these overrides once the packages move off TypeScript 4.1.6 and the bundle
+cost has been re-measured.
+
+Prefer a scoped `parent/child` key when only one workspace needs the override — a bare key
+rewrites every copy in the repo. Griffel is the exception: every consumer here needs the same
+version, so a bare key states that intent directly instead of repeating the pin per workspace.
 
 ## Enforcement
 
