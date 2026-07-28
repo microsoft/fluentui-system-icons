@@ -16,8 +16,7 @@
     "rename": "node ../../importer/rename-strip-prefix.js --dir ./icons --prefix ic_fluent_ --flat",
     "optimize": "svgo --config svgo.config.js --folder=./icons --precision=2",
     "unfill": "node unfill.js --path=./icons/",
-    "sprites": "node generate-sprites.js",
-    "postsprites": "rm -rf ./icons",
+    "sprites": "node generate-sprites.js && rm -rf ./icons",
     "build": "npm run copy && npm run rename && npm run unfill && npm run optimize && npm run sprites",
     "build-verify": "vitest run build-verify.test.js"
   }
