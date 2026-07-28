@@ -227,7 +227,9 @@ function createConfig(name, entry) {
               loader: 'ts-loader',
               options: {
                 transpileOnly: true,
-                compilerOptions: { jsx: 'react', module: 'es2020', allowJs: true },
+                // These fixtures live outside the package `rootDir`, and
+                // ts-loader picks up the package tsconfig.json for them.
+                compilerOptions: { jsx: 'react', module: 'es2020', allowJs: true, rootDir: __dirname },
               },
             },
           ],

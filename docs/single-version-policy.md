@@ -30,6 +30,26 @@ root** [package.json](../package.json).
 Workspace-local package references (e.g. `"@fluentui/react-icons": "*"`) are managed by
 `nx release` and are not subject to the policy.
 
+### Install-time overrides
+
+`@fluentui/react-icons` publishes `@griffel/react` at `^1.6.1`, but griffel 1.7+ writes its
+type declarations with TypeScript 4.5+ syntax, which the pinned TypeScript 4.1.6 above cannot
+parse. Rather than hold the whole repo back, the root [package.json](../package.json) scopes an
+install-time override to that one workspace:
+
+```jsonc
+"resolutions": {
+  // only @fluentui/react-icons resolves the old griffel; everything else tracks latest
+  "@fluentui/react-icons/@griffel/react": "1.6.1"
+}
+```
+
+The **published** range stays `^1.6.1`, so consumers still deduplicate griffel with the rest of
+their app. Remove this override once `@fluentui/react-icons` moves off TypeScript 4.1.6.
+
+Prefer a scoped `parent/child` key over a bare package name: a bare key rewrites every copy in
+the repo and silently defeats the intent of the policy.
+
 ## Enforcement
 
 Two complementary gates run in CI (see [.github/workflows/pr.yml](../.github/workflows/pr.yml)):
