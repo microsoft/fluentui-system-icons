@@ -4982,6 +4982,8 @@ __metadata:
 "@fluentui/system-icons-processing@workspace:importer":
   version: 0.0.0-use.local
   resolution: "@fluentui/system-icons-processing@workspace:importer"
+  dependencies:
+    avocado: "catalog:"
   languageName: unknown
   linkType: soft
 
@@ -5024,7 +5026,6 @@ __metadata:
     "@types/react-native": "npm:^0.68.0"
     "@types/yargs": "npm:^15.0.0"
     "@typescript-eslint/utils": "npm:7.18.0"
-    avocado: "npm:1.0.0"
     cpy-cli: "npm:^4.1.0"
     css-loader: "npm:7.1.4"
     eslint: "npm:8.57.1"

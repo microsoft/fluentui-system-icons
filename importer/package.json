@@ -13,7 +13,7 @@
     "build:android": "yarn create:android && yarn optimize:android && yarn finalize:android",
     "finalize:android": "node replace-in-files.js '#212121' '@color/fluent_default_icon_tint' ./dist --exclude=\"*.selector\" --recursive && node replace-in-files.js '\"http://schemas.android.com/apk/res/android\"' '\"http://schemas.android.com/apk/res/android\" android:autoMirrored=\"true\"' $(awk '$0=\"./dist/\"$0\".xml\"' rtl.txt)",
     "create:android": "yarn generate:svg-android && find ./dist/ -type d -exec sh -c 'tools/vd-tool/bin/vd-tool -c -in {} -out {}' \\;",
-    "optimize:android": "find ./dist/ -type f -name '*.svg' -delete && AVOCADO=$(yarn workspace @fluentui/system-icons-repo bin avocado) && find ./dist/ -type d ! -name '*_selector.xml' -exec sh -c 'exec \"$AVOCADO\" -q \"$1\"' _ {} \\;",
+    "optimize:android": "find ./dist/ -type f -name '*.svg' -delete && find ./dist/ -type d ! -name '*_selector.xml' -exec avocado -q {} \\;",
     "build:react": "yarn generate:react",
     "deploy:android": "yarn build:android && rm -rf ../android/library/src/main/res/drawable && mkdir ../android/library/src/main/res/drawable && find ./dist/ -type f -name \"*.xml\" -maxdepth 1 -exec cp {} ../android/library/src/main/res/drawable \\; && yarn clean",
     "deploy:react": "yarn build:react && rm -rf ../react/src/components && mkdir ../react/src/components && find ./dist/ -type f -name \"*.tsx\" -exec cp {} ../react/src/components \\; && yarn clean",
@@ -30,5 +30,8 @@
     "deploy:flutter": "yarn build:flutter && cp ../fonts/*.ttf ../flutter/lib/fonts && cp dist/flutter/fluent_icons.dart ../flutter/lib/src/fluent_icons.dart && cp dist/flutter/sample_icons.dart ../flutter/example/lib/sample_icons.dart && yarn clean"
   },
   "author": "Microsoft Inc.",
-  "license": "Microsoft"
+  "license": "Microsoft",
+  "devDependencies": {
+    "avocado": "catalog:"
+  }
 }

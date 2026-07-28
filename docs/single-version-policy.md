@@ -92,9 +92,8 @@ Notes:
 - The flag only exists on the explicit `run` command: `yarn run -T <bin>`, not `yarn -T <bin>`.
 - `find -exec ... {} +` batches its arguments into one process, so `yarn run -T` is fine there.
   A `find -exec ... \;` loop runs the command once per match, and at ~190ms of yarn startup
-  each that adds up fast. Resolve the path once instead — note that `yarn bin` is scoped to
-  the current workspace exactly like `PATH` is, so it has to be asked of the root workspace:
-  `BIN=$(yarn workspace @fluentui/system-icons-repo bin avocado) && find . -exec "$BIN" {} \;`
+  each that adds up fast — `importer`'s avocado loop alone runs ~2970 times. Declare the tool
+  in a **catalog** instead (see below) so the loop can call it by bare name.
 - `@fluentui/react-icons` is the one package with its own pinned `typescript`, so its build
   uses plain `yarn tsc` (local 4.1.6) while `type-check:infra` uses `yarn run -T tsc`
   (root 5.0.4).
@@ -106,6 +105,38 @@ Notes:
 - Yarn 4 disables dependency build scripts by default. Packages that genuinely need to
   compile on install are opted in explicitly via `dependenciesMeta.<pkg>.built` in the root
   `package.json`.
+
+### Catalogs: when a workspace has to own the binary
+
+`yarn run -T` costs roughly 190ms of yarn startup per call, which is invisible for a one-shot
+command and ruinous inside a `find -exec ... \;` loop. The way out is to make the tool a real
+dependency of the workspace that runs it — yarn then puts it on that workspace's script
+`PATH` — without giving up the single version policy, because a catalog keeps the version in
+one place:
+
+```yaml
+# .yarnrc.yml
+catalog:
+  avocado: 1.0.0
+```
+
+```jsonc
+// importer/package.json
+{
+  "devDependencies": { "avocado": "catalog:" },
+  "scripts": {
+    // bare name: no yarn process, no `sh -c` wrapper, ~112ms per call instead of ~440ms
+    "optimize:android": "find ./dist/ -type d -exec avocado -q {} \\;",
+  },
+}
+```
+
+Bump the version in `.yarnrc.yml` and every `catalog:` consumer follows. Add the package to
+the allowlist in [.syncpackrc.json](../.syncpackrc.json) so the "devDependencies live only in
+the root" rule does not fire on it.
+
+Reach for this only when the per-call overhead genuinely matters. `yarn run -T` stays the
+default.
 
 ## Adding or updating a dependency
 

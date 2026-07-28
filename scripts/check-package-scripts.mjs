@@ -7,7 +7,7 @@
  * that workspace's own declared dependencies. Because this repo enforces a
  * single version policy (see docs/single-version-policy.md) every tool lives in
  * the root manifest, so workspace scripts must go through `yarn run -T <bin>`
- * (or resolve the path once with `yarn bin <bin>` in hot loops).
+ * (or declare the tool via a `catalog:` entry when it runs in a hot loop).
  *
  * Yarn also has no arbitrary `pre*`/`post*` script hooks, so those keys are
  * silently dead code outside the handful of names yarn does implement.
@@ -164,7 +164,7 @@ function checkWorkspace(workspaceDir, rootBins, rootName) {
     for (const token of executedTokens(body)) {
       if (!ownBins.has(token) && rootBins.has(token)) {
         problems.push(
-          `${at}: "${token}" is provided by a root dependency and is not on PATH here. Use "yarn run -T ${token}", or "B=$(yarn bin ${token})" when it runs in a loop.`,
+          `${at}: "${token}" is provided by a root dependency and is not on PATH here. Use "yarn run -T ${token}", or declare it here with "${token}": "catalog:" when it runs in a loop.`,
         );
       }
     }
