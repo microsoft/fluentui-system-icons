@@ -16,13 +16,14 @@ Purpose: Enable rapid, correct contributions across multi-platform icon packages
 
 ## Key Workflows (Local)
 
-- Install deps (root + packages): `npm ci` at repo root (Yarn/PNPM NOT configured; uses npm workspaces).
-- React icons build (full): `npx nx run react-icons:build`. Quick validation only: `npx nx run react-icons:build-verify` (output assets and metadata checks).
-- React Native icons build: `cd packages/react-native-icons && npm run build`.
-- SVG raw assets: `cd packages/svg-icons && npm run build`.
-- Sprites: `cd packages/svg-sprites && npm run build`.
-- Importer operations (multi-platform generation & version bumps): `cd importer && npm run deploy:android|deploy:ios|deploy:fonts`.
-- Clean React icons intermediates: `npm run clean` in each package (removes generated `lib*` and `intermediate/`). Avoid manual deletion to keep scripts deterministic.
+- Install deps (root + packages): `corepack enable && yarn install --immutable` at repo root (yarn 4, `nodeLinker: node-modules`; npm/pnpm are NOT configured).
+- React icons build (full): `yarn nx run react-icons:build`. Quick validation only: `yarn nx run react-icons:build-verify` (output assets and metadata checks).
+- React Native icons build: `yarn workspace @fluentui/react-native-icons build`.
+- SVG raw assets: `yarn workspace @fluentui/svg-icons build`.
+- Sprites: `yarn workspace @fluentui/svg-sprites build`.
+- Importer operations (multi-platform generation & version bumps): `cd importer && yarn deploy:android|deploy:ios|deploy:fonts`.
+- Clean React icons intermediates: `yarn clean` in each package (removes generated `lib*` and `intermediate/`). Avoid manual deletion to keep scripts deterministic.
+- Package scripts must invoke root-owned binaries as `yarn run -T <bin>` — yarn puts no `node_modules/.bin` on `PATH`. See [Single Version Policy](../docs/single-version-policy.md).
 
 ## CI Expectations / Pitfalls
 
@@ -51,8 +52,8 @@ Purpose: Enable rapid, correct contributions across multi-platform icon packages
 
 If React pipelines failed you will probably need to update metadata.json and test snapshot to reflect new assets addition.
 
-- Run `npx nx run react-icons:build` to regenerate outputs and update snapshots.
-- Run `npx nx run react-icons:build-verify -u` to update snapshots.
+- Run `yarn nx run react-icons:build` to regenerate outputs and update snapshots.
+- Run `yarn nx run react-icons:build-verify -u` to update snapshots.
 - Commit generated outputs (generated code is tracked—do not manually edit `lib/` outputs; edit sources or generation scripts instead).
 
 ## When Modifying Generators

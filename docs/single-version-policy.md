@@ -8,7 +8,7 @@ root** [package.json](../package.json).
 
 1. **devDependencies live only in the root.** Build/test tooling (TypeScript, ESLint,
    Babel, webpack, svgo, glob, yargs, storybook, etc.) is declared exclusively in the root
-   `package.json` and resolved through npm workspace hoisting. Individual packages must not
+   `package.json` and resolved through yarn workspace hoisting. Individual packages must not
    declare their own `devDependencies` (except the allowlisted exceptions below).
 
 2. **Runtime dependencies are single-sourced from the root.** Publishable packages keep the
@@ -57,19 +57,54 @@ Two complementary gates run in CI (see [.github/workflows/pr.yml](../.github/wor
 - **syncpack** — repo-wide gate configured in [.syncpackrc.json](../.syncpackrc.json). It
   fails if any two packages declare mismatched versions of the same dependency, and bans any
   `devDependency` declared outside the root (outside the allowlist).
-  - Check: `npm run deps:check`
-  - Auto-fix: `npm run deps:fix`
+  - Check: `yarn deps:check`
+  - Auto-fix: `yarn deps:fix`
 
 - **@nx/dependency-checks** — per-package ESLint rule (part of each package's
   `nx lint` target) that verifies each publishable package declares the runtime dependencies
   it actually imports, with versions matching the root `package.json`.
-  - Run: `npx nx affected -t lint` (or `npx nx run-many -t lint`)
+  - Run: `yarn nx affected -t lint` (or `yarn nx run-many -t lint`)
   - Auto-fix: append `--fix` to the underlying `eslint` invocation.
+
+## Consequence: running root-owned binaries
+
+Because every binary is a root devDependency, and because yarn (unlike npm) does **not**
+put any `node_modules/.bin` directory on `PATH` when it runs a workspace script, package
+scripts cannot call binaries by bare name. Use the top-level flag instead:
+
+```jsonc
+{
+  "scripts": {
+    "lint": "yarn run -T eslint src package.json", // resolves the root eslint
+    "build": "yarn run -T tsc -p .",
+  },
+}
+```
+
+Notes:
+
+- The flag only exists on the explicit `run` command: `yarn run -T <bin>`, not `yarn -T <bin>`.
+- `find -exec ... {} +` batches its arguments into one process, so `yarn run -T` is fine there.
+  A `find -exec ... \;` loop runs the command once per match, and at ~190ms of yarn startup
+  each that adds up fast. Resolve the path once instead — note that `yarn bin` is scoped to
+  the current workspace exactly like `PATH` is, so it has to be asked of the root workspace:
+  `BIN=$(yarn workspace @fluentui/system-icons-repo bin avocado) && find . -exec "$BIN" {} \;`
+- `@fluentui/react-icons` is the one package with its own pinned `typescript`, so its build
+  uses plain `yarn tsc` (local 4.1.6) while `type-check:infra` uses `yarn run -T tsc`
+  (root 5.0.4).
+- Yarn runs scripts through its own portable shell rather than `sh`, and that shell expands
+  globs in environment assignments too. A value such as
+  `NAME=sprite.[contenthash].svg` fails with `No matches found`, so quote it.
+- Yarn does not support arbitrary `pre*`/`post*` script hooks. Only the root `postinstall`
+  runs, as part of the install lifecycle. Chain steps explicitly instead.
+- Yarn 4 disables dependency build scripts by default. Packages that genuinely need to
+  compile on install are opted in explicitly via `dependenciesMeta.<pkg>.built` in the root
+  `package.json`.
 
 ## Adding or updating a dependency
 
 1. Add or bump the dependency version in the **root** `package.json`.
 2. For a publishable package that imports it at runtime, list the package name (no version,
    or a matching version) in that package's `dependencies`, then run
-   `npx nx run <project>:lint --fix` to sync the version from the root.
-3. Run `npm run deps:check` to confirm the policy passes.
+   `yarn nx run <project>:lint --fix` to sync the version from the root.
+3. Run `yarn deps:check` to confirm the policy passes.

@@ -82,23 +82,25 @@ Inline svg directly. See [packages/svg-icons/README.md](packages/svg-icons/READM
 
 The importer generates the Android and iOS libraries from the icons in the `assets` directory.
 
+Install dependencies from the repository root (this is a single yarn workspace, so
+dependencies for every package are installed in one go):
+
+```
+corepack enable
+yarn install
+```
+
 Jump into the directory:
 
 ```
 cd importer
-```
-
-Install npm dependencies:
-
-```
-npm install
-npm run clean
+yarn clean
 ```
 
 List all the available commands:
 
 ```
-npm run
+yarn run
 ```
 
 ### Build Pipeline
@@ -111,7 +113,7 @@ You can build and run the demo apps following the steps below.
 
 ### Android
 
-1. Follow the **Importer** section above and run the command `npm run deploy:android`
+1. Follow the **Importer** section above and run the command `yarn deploy:android`
 2. Open the [android](android) directory in Android Studio
 3. Select the `sample-showcase` in the build configuration dropdown
 4. Click run
