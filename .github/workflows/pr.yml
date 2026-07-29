@@ -201,9 +201,14 @@ jobs:
       - name: Type Check Infra
         run: yarn nx affected -t type-check:infra
 
+      - name: Install Playwright browsers
+        # `docsite:extract-storybook-llms` crawls the built storybook with Playwright.
+        run: yarn playwright install --with-deps chromium
+
       - name: Build
         run: |
           yarn nx affected -t build
+          yarn nx affected -t extract-storybook-llms
           yarn nx affected -t build-verify
 
       - name: Test

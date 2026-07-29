@@ -82,6 +82,7 @@
     "nano-staged": "0.9.0",
     "nx": "22.6.5",
     "oxc-parser": "^0.125.0",
+    "playwright": "^1.55.1",
     "prettier": "3.6.2",
     "react": "19.2.3",
     "react-dom": "19.2.3",

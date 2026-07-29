@@ -5047,6 +5047,7 @@ __metadata:
     nano-staged: "npm:0.9.0"
     nx: "npm:22.6.5"
     oxc-parser: "npm:^0.125.0"
+    playwright: "npm:^1.55.1"
     prettier: "npm:3.6.2"
     react: "npm:19.2.3"
     react-dom: "npm:19.2.3"
