@@ -214,12 +214,12 @@ test/
 
 ```sh
 # Full test suite (all modes)
-npx nx run react-icons-svg-sprite-subsetting-webpack-plugin:test
+yarn nx run react-icons-svg-sprite-subsetting-webpack-plugin:test
 
 # Individual test scripts
-npm run test:atomic      # atomic mode build + validation
-npm run test:merged      # merged mode build + validation
-npm run test:inline      # inline injection build + validation
-npm run test:reference   # reference injection build + validation
-npm run test:validation  # constructor validation
+yarn test:atomic      # atomic mode build + validation
+yarn test:merged      # merged mode build + validation
+yarn test:inline      # inline injection build + validation
+yarn test:reference   # reference injection build + validation
+yarn test:validation  # constructor validation
 ```

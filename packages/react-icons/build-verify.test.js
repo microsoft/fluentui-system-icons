@@ -2562,7 +2562,7 @@ describe('Build Verification', () => {
             throw new Error(
               `metadata.json has uncommitted changes after build.\n` +
                 `This means the committed metadata.json is out of sync with the current icons.\n` +
-                `Please run 'npm run build' and commit the updated metadata.json file.\n\n` +
+                `Please run 'yarn build' and commit the updated metadata.json file.\n\n` +
                 `Git diff:\n${gitDiff}`,
             );
           }

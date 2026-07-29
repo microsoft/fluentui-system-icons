@@ -349,11 +349,10 @@ jobs:
   #     with:
   #       node-version: 11.x
 
-  #   - run: npm install
-  #     working-directory: importer
+  #   - run: yarn install --immutable
 
   #   - name: Run generate script
-  #     run: npm run deploy:android
+  #     run: yarn deploy:android
   #     working-directory: importer
 
   #   - name: Setup Java

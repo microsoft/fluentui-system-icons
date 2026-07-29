@@ -21,8 +21,8 @@
 /assets/
 
 # Build and config files
-patches/*.patch
+.yarn/patches/*.patch
 
 # Root level files
-/package-lock.json
+/yarn.lock
 /icons_*.md

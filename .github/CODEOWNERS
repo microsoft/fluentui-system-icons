@@ -26,7 +26,7 @@ importer/ @microsoft/cxe-prg
 android/ @microsoft/react-native-sdk-admins
 flutter/ @nickromano
 ios/ @nickromano
-package-lock.json @microsoft/cxe-prg
+yarn.lock @microsoft/cxe-prg
 package.json @microsoft/cxe-prg
 nx.json @microsoft/cxe-prg
 nano-staged.js @microsoft/cxe-prg

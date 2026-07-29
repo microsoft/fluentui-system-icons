@@ -143,10 +143,10 @@ jobs:
   #     with:
   #       node-version: 22.x
 
-  #   - run: npm ci
+  #   - run: yarn install --immutable
 
   #   - name: Run generate script
-  #     run: npm run deploy:flutter
+  #     run: yarn deploy:flutter
   #     working-directory: importer
 
   #   # Build Flutter library
@@ -238,6 +238,8 @@ jobs:
             echo "To preview locally after downloading and extracting:" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             echo '```sh' >> $GITHUB_STEP_SUMMARY
+            # npx, not yarn dlx: this runs in whatever folder the artifact was
+            # extracted to, so it only needs Node — not a yarn install.
             echo "npx http-server ./docsite-storybook-build -o" >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
           fi

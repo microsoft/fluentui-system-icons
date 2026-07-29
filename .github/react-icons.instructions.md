@@ -18,7 +18,7 @@ Focus: Generation & maintenance of `@fluentui/react-icons` (web React package) f
 
 ## Build Pipeline (expanded)
 
-Full `npm run build` executes, in order:
+Full `yarn build` executes, in order:
 
 1. `generate:assets-to-svg` → copy raw SVGs into `intermediate/` (React target naming).
 2. `generate:font-*` (parallel) → build four font variants (Regular / Filled / Light / Resizable) into `src/utils/fonts`.
@@ -30,7 +30,7 @@ Full `npm run build` executes, in order:
 8. `convert:merge-metadata` → merge SVG + font metadata → `metadata.json` (public contract consumed by tests/fonts).
 9. `build:js` → TypeScript compile + Babel transform into `lib/` & `lib-cjs/`.
 
-Fast checks: `npm run build-verify` (Vitest) validates metadata integrity without regenerating assets if already built.
+Fast checks: `yarn build-verify` (Vitest) validates metadata integrity without regenerating assets if already built.
 
 ## Icon Component Conventions
 
@@ -48,8 +48,8 @@ Fast checks: `npm run build-verify` (Vitest) validates metadata integrity withou
 
 1. Add SVG(s) under appropriate group folder in root `assets/` (validate fill color; skip `_color.svg` rule only if multi-colored).
 2. If direction-specific asset (LTR/RTL differ), confirm `rtlMetadata.js` covers filename; extend script if new pattern.
-3. Run `npx nx run react-icons:build` to regenerate components + metadata.
-4. Run `npm run build-verify` (should succeed; failing usually means duplicate/missing metadata keys after script changes).
+3. Run `yarn nx run react-icons:build` to regenerate components + metadata.
+4. Run `yarn build-verify` (should succeed; failing usually means duplicate/missing metadata keys after script changes).
 5. Commit: added SVG(s) + updated generated outputs (`src/`, `metadata.json`). Avoid partial commits that exclude metadata.
 6. Open PR; CI will enforce fill + lint + build.
 
@@ -63,13 +63,13 @@ Fast checks: `npm run build-verify` (Vitest) validates metadata integrity withou
 - Missing component after build: ensure SVG filename begins with `ic_fluent_` pattern in generated intermediate (run `generate:assets-to-svg` and inspect).
 - Wrong direction in RTL: verify entry in `intermediate/rtl.json`; re-run `generate:rtl`.
 - Font glyph absent: check corresponding codepoint JSON in `src/utils/fonts`; if missing, regenerate fonts (`generate:font-*`).
-- Build is slow during iteration: run only early stages (`npm run generate:assets-to-svg && npm run optimize && npm run convert:svg`) while editing converter scripts, then full build before commit.
+- Build is slow during iteration: run only early stages (`yarn generate:assets-to-svg && yarn optimize && yarn convert:svg`) while editing converter scripts, then full build before commit.
 
 ## Tests & Lint
 
-- `npx nx run react-icons:lint` (ESLint with Griffel rules) — keep TS language features compatible with TS `~4.1.0`.
-- `npx nx run react-icons:build-verify` (Vitest) — do NOT delete/rename metadata keys without updating test expectations.
-- `npx nx run react-icons:test` (Vitest).
+- `yarn nx run react-icons:lint` (ESLint with Griffel rules) — keep TS language features compatible with TS `~4.1.0`.
+- `yarn nx run react-icons:build-verify` (Vitest) — do NOT delete/rename metadata keys without updating test expectations.
+- `yarn nx run react-icons:test` (Vitest).
 
 ## Do / Avoid
 
