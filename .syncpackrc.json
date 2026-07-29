@@ -13,6 +13,13 @@
       "isIgnored": true
     },
     {
+      "label": "Allowlisted exception: catalog-backed tools are declared where they run, but their version still lives in a single place (.yarnrc.yml)",
+      "packages": ["@fluentui/system-icons-processing"],
+      "dependencies": ["avocado"],
+      "dependencyTypes": ["dev"],
+      "isIgnored": true
+    },
+    {
       "label": "Single version policy: devDependencies must live only in the workspace root",
       "packages": ["!@fluentui/system-icons-repo"],
       "dependencyTypes": ["dev"],
@@ -22,6 +29,12 @@
     {
       "label": "peerDependencies declare intentionally broad support ranges and are exempt from the single version policy",
       "dependencyTypes": ["peer"],
+      "dependencies": ["**"],
+      "isIgnored": true
+    },
+    {
+      "label": "resolutions deliberately override a transitive version and need not match the declared range",
+      "dependencyTypes": ["resolutions"],
       "dependencies": ["**"],
       "isIgnored": true
     }

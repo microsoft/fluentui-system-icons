@@ -57,13 +57,16 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
 
+      - run: corepack enable
+
       - uses: actions/setup-node@v7
         with:
           node-version: 22.x
+          cache: 'yarn'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install --immutable
 
       - name: Resolve standalone projects
         id: projects
@@ -72,18 +75,18 @@ jobs:
           # package.json `private` field) so private packages (e.g. react-icons-file-type) — which
           # belong to the standalone release group only for pre-release versioning — are never
           # versioned/changelogged/published/tagged by this public release workflow.
-          NX_NAMES=$(npx nx show projects -p "tag:npm:standalone" --exclude "tag:npm:private" --sep ',')
+          NX_NAMES=$(yarn nx show projects -p "tag:npm:standalone" --exclude "tag:npm:private" --sep ',')
           echo "nx-names=$NX_NAMES" >> "$GITHUB_OUTPUT"
           echo "### Standalone projects (publishable)" >> $GITHUB_STEP_SUMMARY
           echo "$NX_NAMES" | tr ',' '\n' | while read -r p; do echo "- $p" >> $GITHUB_STEP_SUMMARY; done
 
       - name: Build packages
         run: |
-          npx nx run-many -t build --projects=${{ steps.projects.outputs.nx-names }}
+          yarn nx run-many -t build --projects=${{ steps.projects.outputs.nx-names }}
 
       - name: Version packages (Nx Release)
         run: |
-          npx nx release version --projects=${{ steps.projects.outputs.nx-names }} --verbose
+          yarn nx release version --projects=${{ steps.projects.outputs.nx-names }} --verbose
 
       - name: Resolve released projects (new versions this run)
         id: released
@@ -122,16 +125,13 @@ jobs:
             [ -z "$pkg" ] && continue
             VERSION=$(node -p "require('./packages/${pkg}/package.json').version")
             echo "Generating changelog for ${pkg}@${VERSION}"
-            npx nx release changelog "$VERSION" --projects="$pkg" --first-release --no-git-tag --no-git-commit --verbose
+            yarn nx release changelog "$VERSION" --projects="$pkg" --first-release --no-git-tag --no-git-commit --verbose
           done
-
-      - name: Update lockfile
-        run: npm install --package-lock-only
 
       - name: Publish to npm (Nx Release)
         if: ${{ !inputs.dry-run && steps.released.outputs.names != '' }}
         run: |
-          npx nx release publish --projects=${{ steps.released.outputs.names }} --access public --verbose
+          yarn nx release publish --projects=${{ steps.released.outputs.names }} --access public --verbose
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -256,7 +256,7 @@ jobs:
         run: |
           mkdir -p /tmp/changed-packages
           git status --porcelain -- 'packages/' | awk '{print $NF}' | xargs -I{} cp --parents {} /tmp/changed-packages/ 2>/dev/null || true
-          cp package.json package-lock.json /tmp/changed-packages/
+          cp package.json yarn.lock /tmp/changed-packages/
 
       - name: Upload changed package files
         if: ${{ inputs.dry-run }}

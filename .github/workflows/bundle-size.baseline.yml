@@ -19,18 +19,21 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
+      - run: corepack enable
+
       - uses: actions/setup-node@v7
         with:
           node-version: 22.x
+          cache: 'yarn'
 
-      - run: npm ci
+      - run: yarn install --immutable
 
       - name: Prepare bundle size report
         run: |
-          npx nx run-many -t bundle-size --nxBail
+          yarn nx run-many -t bundle-size --nxBail
 
       - name: Aggregate bundle size report
-        run: npx monosize upload-report --branch main --commit-sha ${{ github.sha }}
+        run: yarn monosize upload-report --branch main --commit-sha ${{ github.sha }}
 
       - name: Upload report artifact
         uses: actions/upload-artifact@v7

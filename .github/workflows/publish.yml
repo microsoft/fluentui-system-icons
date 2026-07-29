@@ -96,29 +96,32 @@ jobs:
           os.system(f'echo \"REACT_VERSION={major}.{minor}.{int(asset) + 1}\" >> \$GITHUB_ENV')
           """
 
+      - run: corepack enable
+
       - uses: actions/setup-node@v7
         with:
           node-version: 22.x
+          cache: 'yarn'
           # Required so setup-node writes an .npmrc that wires npm auth to NODE_AUTH_TOKEN,
           # which `nx release publish` (npm publish under the hood) relies on.
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install --immutable
 
       ## iOS
       - name: Run iOS generate script
-        run: npm run deploy:ios
+        run: yarn deploy:ios
         working-directory: importer
 
       - name: Build Fonts
-        run: npm run deploy:fonts
+        run: yarn deploy:fonts
         working-directory: importer
 
       ## Flutter
       # Disabling for now until the pipeline job is fixed
       # - name: Run Flutter generate script
-      #   run: npm run deploy:flutter
+      #   run: yarn deploy:flutter
       #   working-directory: importer
 
       # # The name should be same as the package name on pub.dev
@@ -166,19 +169,16 @@ jobs:
         env:
           REACT_ICONS_SKIP_METADATA_DIFF_CHECK: 'true'
         run: |
-          npx nx run-many --target=build --projects="tag:npm:public"
-          npx nx run react-icons:build-verify -u
+          yarn nx run-many --target=build --projects="tag:npm:public"
+          yarn nx run react-icons:build-verify -u
 
       # NX Release (all npm packages via release groups)
       - name: Prepare NPM release (version + changelog)
         run: |
-          npx nx release version $REACT_VERSION --group=react --verbose
-          npx nx release version $NEW_VERSION --group=native --verbose
-          npx nx release changelog $REACT_VERSION --group=react --from $CURRENT_VERSION --no-git-tag --no-git-commit --verbose
-          npx nx release changelog $NEW_VERSION --group=native --from $CURRENT_VERSION --no-git-tag --no-git-commit --verbose
-
-      - name: Update lockfile
-        run: npm install --package-lock-only
+          yarn nx release version $REACT_VERSION --group=react --verbose
+          yarn nx release version $NEW_VERSION --group=native --verbose
+          yarn nx release changelog $REACT_VERSION --group=react --from $CURRENT_VERSION --no-git-tag --no-git-commit --verbose
+          yarn nx release changelog $NEW_VERSION --group=native --from $CURRENT_VERSION --no-git-tag --no-git-commit --verbose
 
       # Publishes the `react` + `native` release groups (svg-icons, svg-sprites, react-icons,
       # react-icons-font-subsetting-webpack-plugin, react-native-icons) via Nx Release, which
@@ -186,14 +186,14 @@ jobs:
       # still exercise the publish path with `--dry-run` instead of skipping it entirely.
       - name: Publish to npm (Nx Release)
         run: |
-          npx nx release publish --group=react --access public ${{ inputs.dry-run && '--dry-run' || '' }} --verbose
-          npx nx release publish --group=native --access public ${{ inputs.dry-run && '--dry-run' || '' }} --verbose
+          yarn nx release publish --group=react --access public ${{ inputs.dry-run && '--dry-run' || '' }} --verbose
+          yarn nx release publish --group=native --access public ${{ inputs.dry-run && '--dry-run' || '' }} --verbose
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # Android
       - name: Run Android generate script
-        run: npm run deploy:android
+        run: yarn deploy:android
         working-directory: importer
 
       - name: Setup Java
@@ -316,7 +316,7 @@ jobs:
           # Copy each changed file under packages/ (preserving directory structure) to the staging area
           git status --porcelain -- 'packages/' | awk '{print $NF}' | xargs -I{} cp --parents {} /tmp/changed-packages/ 2>/dev/null || true
           # Include root manifests so the artifact is a self-contained snapshot of version bumps
-          cp package.json package-lock.json /tmp/changed-packages/
+          cp package.json yarn.lock /tmp/changed-packages/
 
       - name: Upload changed package files
         if: ${{ inputs.dry-run }}
@@ -349,11 +349,10 @@ jobs:
   #     with:
   #       node-version: 11.x
 
-  #   - run: npm install
-  #     working-directory: importer
+  #   - run: yarn install --immutable
 
   #   - name: Run generate script
-  #     run: npm run deploy:android
+  #     run: yarn deploy:android
   #     working-directory: importer
 
   #   - name: Setup Java

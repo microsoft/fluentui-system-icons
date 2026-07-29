@@ -54,17 +54,20 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
+      - run: corepack enable
+
       - uses: actions/setup-node@v7
         with:
           node-version: 22.x
+          cache: 'yarn'
 
-      - run: npm ci
+      - run: yarn install --immutable
 
       - name: Validate PR title follows Conventional Commits
         env:
           # Pass the title via env to avoid shell injection from untrusted PR titles.
           PR_TITLE: ${{ github.event.pull_request.title }}
-        run: echo "$PR_TITLE" | npx commitlint
+        run: echo "$PR_TITLE" | yarn commitlint
 
   build-ios:
     name: Build iOS library
@@ -73,14 +76,17 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
+      - run: corepack enable
+
       - uses: actions/setup-node@v7
         with:
           node-version: 22.x
+          cache: 'yarn'
 
-      - run: npm ci
+      - run: yarn install --immutable
 
       - name: Run generate script
-        run: npm run deploy:ios
+        run: yarn deploy:ios
         working-directory: importer
 
   build-android:
@@ -90,14 +96,17 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
+      - run: corepack enable
+
       - uses: actions/setup-node@v7
         with:
           node-version: 22.x
+          cache: 'yarn'
 
-      - run: npm ci
+      - run: yarn install --immutable
 
       - name: Run generate script
-        run: npm run deploy:android
+        run: yarn deploy:android
         working-directory: importer
 
       - name: Setup Java
@@ -134,10 +143,10 @@ jobs:
   #     with:
   #       node-version: 22.x
 
-  #   - run: npm ci
+  #   - run: yarn install --immutable
 
   #   - name: Run generate script
-  #     run: npm run deploy:flutter
+  #     run: yarn deploy:flutter
   #     working-directory: importer
 
   #   # Build Flutter library
@@ -166,33 +175,44 @@ jobs:
           fetch-depth: 0
           filter: tree:0
 
+      - run: corepack enable
+
       - uses: actions/setup-node@v7
         with:
           node-version: 22.x
+          cache: 'yarn'
 
-      - run: npm ci
+      - run: yarn install --immutable
 
       - uses: nrwl/nx-set-shas@afb73a62d26e41464e9254689e1fd6122ee683c1 # v5.0.1
 
       - name: Format Check
-        run: npx nx format:check
+        run: yarn nx format:check
 
       - name: Single Version Policy Check
-        run: npm run deps:check
+        run: yarn deps:check
+
+      - name: Package Scripts Check
+        run: yarn scripts:check
 
       - name: Lint
-        run: npx nx affected -t lint
+        run: yarn nx affected -t lint
 
       - name: Type Check Infra
-        run: npx nx affected -t type-check:infra
+        run: yarn nx affected -t type-check:infra
+
+      - name: Install Playwright browsers
+        # `docsite:extract-storybook-llms` crawls the built storybook with Playwright.
+        run: yarn playwright install --with-deps chromium
 
       - name: Build
         run: |
-          npx nx affected -t build
-          npx nx affected -t build-verify
+          yarn nx affected -t build
+          yarn nx affected -t extract-storybook-llms
+          yarn nx affected -t build-verify
 
       - name: Test
-        run: npx nx affected -t test
+        run: yarn nx affected -t test
 
       - name: Bundle-Size
         env:
@@ -200,8 +220,8 @@ jobs:
           # from the target branch via the GitHub API.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npx nx affected -t bundle-size
-          npx monosize compare-reports --branch=${{ github.event.pull_request.base.ref }} --output markdown --quiet > bundle-size-report.md
+          yarn nx affected -t bundle-size
+          yarn monosize compare-reports --branch=${{ github.event.pull_request.base.ref }} --output markdown --quiet > bundle-size-report.md
 
       - name: Write job summary
         if: always()
@@ -223,6 +243,8 @@ jobs:
             echo "To preview locally after downloading and extracting:" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             echo '```sh' >> $GITHUB_STEP_SUMMARY
+            # npx, not yarn dlx: this runs in whatever folder the artifact was
+            # extracted to, so it only needs Node — not a yarn install.
             echo "npx http-server ./docsite-storybook-build -o" >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
           fi

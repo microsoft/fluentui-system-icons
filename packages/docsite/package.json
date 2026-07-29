@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "storybook dev -p 6006 --docs",
-    "build": "storybook build --docs",
-    "lint": "eslint stories .storybook",
-    "extract-storybook-llms": "storybook-llms-extractor --distPath storybook-static --summaryBaseUrl https://microsoft.github.io/fluentui-system-icons/"
+    "dev": "yarn run -T storybook dev -p 6006 --docs",
+    "build": "yarn run -T storybook build --docs",
+    "lint": "yarn run -T eslint stories .storybook",
+    "extract-storybook-llms": "yarn run -T storybook-llms-extractor --distPath storybook-static --summaryBaseUrl https://microsoft.github.io/fluentui-system-icons/"
   },
   "dependencies": {
     "@fluentui/react-components": "^9.46.0",

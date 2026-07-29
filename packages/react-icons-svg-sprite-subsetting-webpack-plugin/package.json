@@ -4,16 +4,16 @@
   "description": "Webpack plugin to subset or merge SVG sprite assets used by @fluentui/react-icons svg-sprite APIs.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "npm run test:atomic && npm run test:merged && npm run test:manifest && npm run test:inline && npm run test:reference && npm run test:validation",
-    "test:atomic": "webpack -c test/webpack.config.js",
-    "test:merged": "SVG_SPRITE_MODE=merged SVG_SPRITE_MERGED_FILENAME=fluentui-react-icons.[contenthash].svg webpack -c test/webpack.config.js",
-    "test:manifest": "SVG_SPRITE_MANIFEST=1 webpack -c test/webpack.config.js",
-    "test:inline": "SVG_SPRITE_INJECT=inline webpack -c test/webpack.config.js",
-    "test:reference": "SVG_SPRITE_MODE=merged SVG_SPRITE_INJECT=reference webpack -c test/webpack.config.js",
+    "test": "yarn test:atomic && yarn test:merged && yarn test:manifest && yarn test:inline && yarn test:reference && yarn test:validation",
+    "test:atomic": "yarn run -T webpack -c test/webpack.config.js",
+    "test:merged": "SVG_SPRITE_MODE=merged SVG_SPRITE_MERGED_FILENAME='fluentui-react-icons.[contenthash].svg' yarn run -T webpack -c test/webpack.config.js",
+    "test:manifest": "SVG_SPRITE_MANIFEST=1 yarn run -T webpack -c test/webpack.config.js",
+    "test:inline": "SVG_SPRITE_INJECT=inline yarn run -T webpack -c test/webpack.config.js",
+    "test:reference": "SVG_SPRITE_MODE=merged SVG_SPRITE_INJECT=reference yarn run -T webpack -c test/webpack.config.js",
     "test:validation": "node test/validation.js",
     "build": "node scripts/build",
-    "lint": "eslint package.json",
-    "type-check:infra": "tsc -p ./scripts"
+    "lint": "yarn run -T eslint package.json",
+    "type-check:infra": "yarn run -T tsc -p ./scripts"
   },
   "engines": {
     "node": ">=20.0.0"

@@ -46,7 +46,7 @@ export const Icon = (props: IconProps) => {
 Generate sprite files from source icons:
 
 ```bash
-npm run build
+yarn build
 ```
 
 This will:

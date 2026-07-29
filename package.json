@@ -8,7 +8,7 @@
   "engines": {
     "node": "^22.0.0 || ^24.0.0"
   },
-  "packageManager": "npm@10.9.4",
+  "packageManager": "yarn@4.17.1",
   "description": "![CI](https://github.com/microsoft/fluentui-system-icons/workflows/CI/badge.svg)",
   "version": "1.0.0",
   "main": "index.js",
@@ -18,12 +18,12 @@
   },
   "scripts": {
     "reset-workspace": "git clean -dXf",
-    "prepare": "husky",
-    "postinstall": "patch-package",
+    "postinstall": "husky",
     "format": "nx format:write",
     "format:check": "nx format:check",
     "deps:check": "syncpack list-mismatches",
-    "deps:fix": "syncpack fix-mismatches"
+    "deps:fix": "syncpack fix-mismatches",
+    "scripts:check": "node scripts/check-package-scripts.mjs"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.0",
@@ -33,7 +33,7 @@
     "@commitlint/cli": "^21.1.0",
     "@commitlint/config-conventional": "^21.1.0",
     "@fluentui/react-storybook-addon": "0.6.0",
-    "@fluentui/react-storybook-addon-export-to-sandbox": "0.2.1",
+    "@fluentui/react-storybook-addon-export-to-sandbox": "0.3.0",
     "@fluentui/storybook-llms-extractor": "0.0.4",
     "@griffel/babel-preset": "^1.8.1",
     "@griffel/eslint-plugin": "^2.0.2",
@@ -61,12 +61,11 @@
     "@types/react-native": "^0.68.0",
     "@types/yargs": "^15.0.0",
     "@typescript-eslint/utils": "7.18.0",
-    "avocado": "1.0.0",
     "cpy-cli": "^4.1.0",
     "css-loader": "7.1.4",
     "eslint": "8.57.1",
     "eslint-plugin-react-hooks": "^5.2.0",
-    "fantasticon": "^4.1.0",
+    "fantasticon": "patch:fantasticon@npm%3A4.1.0#~/.yarn/patches/fantasticon-npm-4.1.0-3af043d076.patch",
     "glob": "^8.0.1",
     "html-webpack-plugin": "^5.6.3",
     "husky": "9.1.7",
@@ -83,7 +82,7 @@
     "nano-staged": "0.9.0",
     "nx": "22.6.5",
     "oxc-parser": "^0.125.0",
-    "patch-package": "8.0.1",
+    "playwright": "^1.55.1",
     "prettier": "3.6.2",
     "react": "19.2.3",
     "react-dom": "19.2.3",
@@ -108,10 +107,23 @@
     "webpack-dev-server": "^5.2.5",
     "yargs": "^14.2.3"
   },
-  "optionalDependencies": {
-    "@esbuild/linux-x64": "0.25.12",
-    "@nx/nx-linux-x64-gnu": "22.6.5",
-    "@rollup/rollup-linux-x64-gnu": "4.60.0",
-    "@swc/core-linux-x64-gnu": "1.15.21"
+  "dependenciesMeta": {
+    "@swc/core": {
+      "built": true
+    },
+    "esbuild": {
+      "built": true
+    },
+    "nx": {
+      "built": true
+    },
+    "ttf2woff2": {
+      "built": true
+    }
+  },
+  "resolutions": {
+    "@griffel/core": "1.20.1",
+    "@griffel/react": "1.6.1",
+    "@linaria/shaker/@babel/plugin-transform-runtime": "^7"
   }
 }

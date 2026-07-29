@@ -23,7 +23,14 @@ const config: StorybookConfig = {
     },
     '@storybook/addon-webpack5-compiler-swc',
     '@fluentui/react-storybook-addon',
-    '@fluentui/react-storybook-addon-export-to-sandbox',
+    {
+      name: '@fluentui/react-storybook-addon-export-to-sandbox',
+      options: {
+        // Required since 0.3.0. We publish no unstable entry points that need
+        // rewriting before a story is exported, so the mapping is empty.
+        importMappings: {},
+      },
+    },
   ],
 
   framework: {
