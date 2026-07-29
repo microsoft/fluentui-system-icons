@@ -3876,7 +3876,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-icons-font-subsetting-webpack-plugin@workspace:packages/react-icons-font-subsetting-webpack-plugin":
+"@fluentui/react-icons-font-subsetting-webpack-plugin@npm:*, @fluentui/react-icons-font-subsetting-webpack-plugin@workspace:packages/react-icons-font-subsetting-webpack-plugin":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-icons-font-subsetting-webpack-plugin@workspace:packages/react-icons-font-subsetting-webpack-plugin"
   dependencies:
@@ -11121,6 +11121,7 @@ __metadata:
     "@fluentui/react-components": "npm:^9.46.0"
     "@fluentui/react-icons": "npm:*"
     "@fluentui/react-icons-file-type": "npm:*"
+    "@fluentui/react-icons-font-subsetting-webpack-plugin": "npm:*"
   languageName: unknown
   linkType: soft
 
