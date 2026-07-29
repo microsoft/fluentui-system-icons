@@ -5059,7 +5059,7 @@ __metadata:
     shx: "npm:^0.3.2"
     storybook: "npm:9.1.19"
     subset-font: "npm:^1.4.0"
-    svgo: "npm:2.8.2"
+    svgo: "npm:2.8.3"
     svgstore: "npm:^3.0.1"
     syncpack: "npm:^13.0.4"
     ts-loader: "npm:^9.5.4"
@@ -19349,9 +19349,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svgo@npm:2.8.2":
-  version: 2.8.2
-  resolution: "svgo@npm:2.8.2"
+"svgo@npm:2.8.3":
+  version: 2.8.3
+  resolution: "svgo@npm:2.8.3"
   dependencies:
     commander: "npm:^7.2.0"
     css-select: "npm:^4.1.3"
@@ -19362,7 +19362,7 @@ __metadata:
     stable: "npm:^0.1.8"
   bin:
     svgo: ./bin/svgo
-  checksum: 10c0/a3a533e1678aecdfa1c67f06d71f104da7ef574a3f63a8dfeda10368b42428c67d09a06b4eee233c5ed49ac815f1febb6193cba0f611a21bfc00366d7930205d
+  checksum: 10c0/0052299bbc4c76e22312e4e7288772e9a5655e850622f67a7d61609469ea4da608047e89ebc432d9aab854a559d98d3f4b8b06c89f899f227214cc5145c4933a
   languageName: node
   linkType: hard
 

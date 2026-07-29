@@ -94,7 +94,7 @@
     "shx": "^0.3.2",
     "storybook": "9.1.19",
     "subset-font": "^1.4.0",
-    "svgo": "2.8.2",
+    "svgo": "2.8.3",
     "svgstore": "^3.0.1",
     "syncpack": "^13.0.4",
     "ts-loader": "^9.5.4",
