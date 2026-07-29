@@ -5025,6 +5025,7 @@ __metadata:
     "@types/react-dom": "npm:19.1.9"
     "@types/react-native": "npm:^0.68.0"
     "@types/yargs": "npm:^15.0.0"
+    "@typescript-eslint/rule-tester": "npm:7.18.0"
     "@typescript-eslint/utils": "npm:7.18.0"
     cpy-cli: "npm:^4.1.0"
     css-loader: "npm:7.1.4"
@@ -8313,6 +8314,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@typescript-eslint/rule-tester@npm:7.18.0":
+  version: 7.18.0
+  resolution: "@typescript-eslint/rule-tester@npm:7.18.0"
+  dependencies:
+    "@typescript-eslint/typescript-estree": "npm:7.18.0"
+    "@typescript-eslint/utils": "npm:7.18.0"
+    ajv: "npm:^6.12.6"
+    json-stable-stringify-without-jsonify: "npm:^1.0.1"
+    lodash.merge: "npm:4.6.2"
+    semver: "npm:^7.6.0"
+  peerDependencies:
+    "@eslint/eslintrc": ">=2"
+    eslint: ^8.56.0
+  checksum: 10c0/ca18e6cb8957583228c01da2c3f96c3ba9b33f2460f0ee20ebb29260122cacae017545871fa5149dd1098b236df94b3d438382a80b54cb866619fdfa4bf82aa3
+  languageName: node
+  linkType: hard
+
 "@typescript-eslint/scope-manager@npm:7.18.0":
   version: 7.18.0
   resolution: "@typescript-eslint/scope-manager@npm:7.18.0"
@@ -9000,7 +9018,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ajv@npm:^6.12.4, ajv@npm:^6.12.5":
+"ajv@npm:^6.12.4, ajv@npm:^6.12.5, ajv@npm:^6.12.6":
   version: 6.15.0
   resolution: "ajv@npm:6.15.0"
   dependencies:
@@ -14654,7 +14672,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash.merge@npm:^4.6.2":
+"lodash.merge@npm:4.6.2, lodash.merge@npm:^4.6.2":
   version: 4.6.2
   resolution: "lodash.merge@npm:4.6.2"
   checksum: 10c0/402fa16a1edd7538de5b5903a90228aa48eb5533986ba7fa26606a49db2572bf414ff73a2c9f5d5fd36b31c46a5d5c7e1527749c07cbcf965ccff5fbdf32c506
