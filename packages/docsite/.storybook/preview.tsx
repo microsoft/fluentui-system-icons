@@ -59,13 +59,21 @@ const preview = {
       bundler: 'vite',
       requiredDependencies: {
         // for React
-        react: '^18',
-        'react-dom': '^18',
+        react: '^19',
+        'react-dom': '^19',
         // necessary for FluentProvider:
         '@fluentui/react-components': '^9.0.0',
         '@fluentui/react-icons': 'latest',
       },
       optionalDependencies: {},
+      // The addon defaults to React 17 types + TS ~4.7, which don't typecheck
+      // against the React 19 runtime pinned above (`tsc` runs in the sandbox
+      // build script).
+      devDependencies: {
+        '@types/react': '^19',
+        '@types/react-dom': '^19',
+        typescript: '^5.0.0',
+      },
     },
   } satisfies FluentParameters & Parameters,
 
