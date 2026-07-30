@@ -28,9 +28,8 @@ Detection is data-driven, generated from `@fluentui/react-icons` `metadata.json`
   (e.g. `Battery10Regular`, `Fps120Regular`, `Timer10Filled`) are excluded via a
   generated collision denylist, so they are never mis-flagged.
 
-The generated data (`src/data/icon-sizes.generated.ts`) is verified to classify
-every icon exactly as `metadata.json` does; regenerate it with
-`npm run generate:data` when the icon set changes.
+The generated data is verified to classify every icon exactly as `metadata.json` does;
+regenerate it with `yarn generate:data` when the icon set changes.
 
 ## Examples
 
