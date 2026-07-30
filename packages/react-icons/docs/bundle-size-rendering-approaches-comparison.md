@@ -1,58 +1,155 @@
 ## Bundle Size: Icon Rendering Approaches
 
-> **Measure metric:** 35 icons used
+> **CSS extracted:** the shipped stylesheets are pulled out of JS into a `.css` asset by
+> `MiniCssExtractPlugin`. The JS bundle carries no styling code at all.
 >
-> **CSS bundled in JS:** Griffel AOT (standard) / vanilla CSS inlined in JS bundle via webpack `css-loader` + `style-loader` (headless)
+> **CSS in bundle:** webpack's default — `css-loader` + `style-loader` inline the stylesheets
+> into the JS bundle and inject them into the DOM at runtime.
 >
-> **CSS Extracted:** Griffel CSS Extraction (standard) / vanilla CSS extracted to `.css` files via `MiniCssExtractPlugin` (headless)
->
-> Δ is relative to the **baseline** (first row) of each group.
->
-> _Note: Headless variants use vanilla CSS (not Griffel). With CSS extraction (`MiniCssExtractPlugin`) the CSS moves out of JS entirely, yielding smaller JS bundles. Without CSS extraction (`style-loader`), webpack's css-loader/style-loader runtime is added to the JS bundle — see the [analysis below](#%EF%B8%8F-style-loader-no-css-extraction-headless-fonts-are-larger)._
+> _Every icon needs `@fluentui/react-icons/styles.css` (plus `fonts/styles.css` for font icons).
+> The only question these tables answer is where that CSS ends up. See
+> [headless.md](./headless.md) for the import itself._
 
-### SVG Inline Icons
+### The short version
 
-| Variant                             |  Minified |      GZIP |         Δ Minified |             Δ GZIP |
-| ----------------------------------- | --------: | --------: | -----------------: | -----------------: |
-| Griffel, CSS in bundle _(baseline)_ | 38.137 kB | 10.526 kB |                  — |                  — |
-| Headless, CSS in bundle             | 38.039 kB | 10.444 kB |  -0.098 kB (-0.3%) |  -0.082 kB (-0.8%) |
-| Griffel, CSS extracted              | 36.182 kB |  9.892 kB |  -1.955 kB (-5.1%) |  -0.634 kB (-6.0%) |
-| Headless, CSS extracted             | 33.002 kB |  8.310 kB | -5.135 kB (-13.5%) | -2.216 kB (-21.1%) |
+**Enable CSS extraction.** It is worth more than any other choice on this page: it removes the
+whole `css-loader` + `style-loader` runtime from the JS bundle, and that runtime — not the icons
+— is what makes the difference. Measured on this package's fixtures, importing the stylesheet
+costs **~6.6 kB minified under `style-loader` and 0 under extraction**.
 
-### Font Icons
+**With extraction on, this release is smaller than the previous one everywhere** — a single SVG
+atom by 58.3%, a font atom by 74.9%, 35 icons by 18.0%.
 
-| Variant                             |  Minified |     GZIP |         Δ Minified |             Δ GZIP |
-| ----------------------------------- | --------: | -------: | -----------------: | -----------------: |
-| Griffel, CSS in bundle _(baseline)_ | 10.166 kB | 4.153 kB |                  — |                  — |
-| Headless, CSS in bundle             | 11.510 kB | 4.590 kB | +1.344 kB (+13.2%) | +0.437 kB (+10.5%) |
-| Griffel, CSS extracted              |  6.397 kB | 2.758 kB | -3.769 kB (-37.1%) | -1.395 kB (-33.6%) |
-| Headless, CSS extracted             |  3.098 kB | 1.245 kB | -7.068 kB (-69.5%) | -2.908 kB (-70.0%) |
-
-### SVG Sprite Icons
-
-| Variant                             | Minified |     GZIP |         Δ Minified |             Δ GZIP |
-| ----------------------------------- | -------: | -------: | -----------------: | -----------------: |
-| Griffel, CSS in bundle _(baseline)_ | 8.925 kB | 3.657 kB |                  — |                  — |
-| Headless, CSS in bundle             | 8.992 kB | 3.639 kB |  +0.067 kB (+0.8%) |  -0.018 kB (-0.5%) |
-| Griffel, CSS extracted              | 6.970 kB | 2.990 kB | -1.955 kB (-21.9%) | -0.667 kB (-18.2%) |
-| Headless, CSS extracted             | 3.959 kB | 1.608 kB | -4.966 kB (-55.6%) | -2.049 kB (-56.0%) |
+**With extraction off, it is larger** — by ~1.5 kB minified for SVG icons and ~2.9 kB for font
+icons, once per application. That is the honest cost of moving styling out of JS, and it is the
+one case where the removed CSS-in-JS implementation was smaller. It is not per-icon: one icon and
+thirty-five icons cost within 22 B of each other.
 
 ---
 
-### Summary
+## Measured on the package fixtures
 
-**With CSS extraction (recommended for production):** Headless is the clear winner across all icon types — **−70% for fonts**, **−56% for sprites**, **−14% for SVG inline** (minified). This is the ideal setup where vanilla CSS is fully extracted to `.css` files with zero JS runtime overhead.
+These are the `monosize` fixtures in [`bundle-size/`](../bundle-size), which run in CI against a
+1 kB absolute per-fixture threshold. `before` is the last build with the CSS-in-JS
+implementation; `after` is this one. Minified bytes, then gzip.
 
-**Without CSS extraction (webpack `style-loader` default):** Headless provides negligible-to-negative JS savings. Font icons are actually **+13% larger** because webpack's `css-loader`/`style-loader` runtime outweighs Griffel's runtime. SVG inline and sprite icons break roughly even (~±1%).
+### CSS extracted — everything drops
 
-**Across all scenarios:** Font icons are the smallest approach overall (3–11 kB vs 9–38 kB for SVG inline), and SVG sprites sit in between (4–9 kB). The best overall combination is **Headless + CSS Extracted font icons** at just **1.245 kB gzipped**.
+| Fixture                 |   Before |    After |        Δ Minified |            Δ GZIP |
+| ----------------------- | -------: | -------: | ----------------: | ----------------: |
+| `Atomic Fonts`          |  4,574 B |  1,149 B | -3,425 B (-74.9%) | -1,568 B (-70.9%) |
+| `Atomic Imports`        |  5,641 B |  2,353 B | -3,288 B (-58.3%) | -1,458 B (-52.4%) |
+| `Bundle Icon`           |  6,428 B |  3,091 B | -3,337 B (-51.9%) | -1,484 B (-47.9%) |
+| `Dynamic - Bundle Icon` |  4,272 B |  3,074 B | -1,198 B (-28.0%) |   -437 B (-21.7%) |
+| `35 Icons`              | 18,331 B | 15,031 B | -3,300 B (-18.0%) | -1,609 B (-22.3%) |
+| `Provider`              |    728 B |    728 B |                 — |                 — |
 
-#### ⚠️ Style-loader (no CSS extraction): Headless Fonts are _larger_
+The absolute saving is roughly constant at ~3.2–3.4 kB, because what was removed is a **fixed
+runtime**, not a per-icon cost. It reads as −74.9% against a font atom and −18.0% against 35
+inline SVG icons, but it is the same ~3.3 kB in both. `Provider` is unchanged because it renders
+no icon and therefore never touched the styling runtime.
 
-When webpack uses `style-loader` (the default — no `MiniCssExtractPlugin`), the **headless fonts** bundle is **+1,344 B minified (+13%)** larger than the Griffel baseline. This is counter-intuitive — the headless approach was designed to remove the CSS-in-JS runtime, but in this mode it _replaces_ it with an even heavier runtime.
+The extracted CSS itself is not counted above — monosize reports `Asset types: js`. Measured
+directly, `styles.css` is 2,173 B raw / 950 B gzip and `fonts/styles.css` is 1,526 B / 441 B.
+Add them back and the 35-icon case is still ahead by 1,127 B minified, and the CSS is a fixed
+cost that amortises as icon count grows while a styling runtime does not.
 
-**Root cause:** The two plain CSS imports (`fonts/styles.css`, `styles.css`) require webpack's `css-loader` + `style-loader` runtime to inject styles into the DOM at runtime. This runtime comprises ~10 extra webpack modules (style injection/removal API, `<style>` element creation, CSP nonce support, URL escaping, CSS text stringification, etc.) that collectively weigh more than Griffel's built-in runtime (hash function, `mergeClasses`, `makeStyles`, style insertion).
+### CSS in bundle (`style-loader`) — a regression
 
-**When headless _does_ win:** With CSS extraction (`MiniCssExtractPlugin`), the CSS moves into a separate `.css` file and the loader runtime is not needed — headless fonts then drop to **3.098 kB** (−69.5%). The style-loader overhead also gets amortized when an app already uses `css-loader`/`style-loader` for other CSS imports (the runtime is shared).
+`before` needed no stylesheet import; `after` is the corresponding `+ CSS` fixture, because an
+icon without its stylesheet is not a working icon. This is what a consumer actually pays.
 
-**Takeaway:** Headless font icons deliver significant JS savings only when the consumer uses CSS extraction or a bundler with lightweight CSS handling (Vite, esbuild). With webpack's default `style-loader` mode, prefer the Griffel variant.
+| Fixture                    |   Before |    After |            Δ Minified |            Δ GZIP |
+| -------------------------- | -------: | -------: | --------------------: | ----------------: |
+| `Atomic Imports` → `+ CSS` |  7,479 B |  8,984 B | **+1,505 B (+20.1%)** |   +612 B (+17.8%) |
+| `Atomic Fonts` → `+ CSS`   |  8,332 B | 11,240 B | **+2,908 B (+34.9%)** | +1,056 B (+29.2%) |
+| `35 Icons` → `+ CSS`       | 20,193 B | 21,676 B |  **+1,483 B (+7.3%)** |    +631 B (+8.0%) |
+
+**The regression is not limited to font icons.** SVG icons pay it too — the +20.1% row above is
+a single SVG atom. Any earlier guidance in this document that read SVG inline as break-even under
+`style-loader` came from a harness that is not in this repository and did not reproduce against
+these fixtures; the fixtures supersede it.
+
+**Root cause.** Under `style-loader` the plain CSS import pulls in webpack's `css-loader` +
+`style-loader` runtime — style injection/removal, `<style>` element creation, CSP nonce support,
+URL escaping, CSS text stringification — plus the stylesheet's own text, inlined as a JS string.
+Isolating it by subtracting each bare fixture from its `+ CSS` twin:
+
+| Stylesheet import                                                         | Cost under `style-loader` |
+| ------------------------------------------------------------------------- | ------------------------: |
+| `styles.css`, 1 icon (`Atomic Imports + CSS` − `Atomic Imports`)          |                   6,631 B |
+| `styles.css`, 35 icons (`35 Icons + CSS` − `35 Icons`)                    |                   6,645 B |
+| `styles.css` + `fonts/styles.css` (`Atomic Fonts + CSS` − `Atomic Fonts`) |                  10,091 B |
+
+6,631 B versus 6,645 B is the whole argument: **the cost is fixed at ~6.6 kB per application**,
+not per icon. The font row is higher because font icons import a second stylesheet whose
+`@font-face` URLs additionally pull the font binaries into webpack's graph.
+
+Two consequences follow, and they point in opposite directions:
+
+- It is **shared**. An application that already imports any `.css` anywhere has already paid the
+  loader runtime; the icon stylesheets then add only their own text. In that case this release is
+  _smaller_ than the previous one even without extraction, because the ~5.1 kB CSS-in-JS runtime
+  is gone (`Atomic Imports`, style-loader: 7,479 B → 2,353 B) and only ~2.2 kB of CSS text
+  replaces it.
+- It is **unavoidable for a `style-loader`-only application whose sole CSS is the icons'**. That
+  application pays the +1.5 kB (SVG) or +2.9 kB (fonts) in the first table above, in full.
+
+### Turning extraction on is worth more than either
+
+Moving a webpack-default build to `MiniCssExtractPlugin` at the same time as upgrading:
+
+| Fixture          | Before, `style-loader` | After, extracted |                     Δ |
+| ---------------- | ---------------------: | ---------------: | --------------------: |
+| `Atomic Fonts`   |                8,332 B |          1,149 B | **-7,183 B (-86.2%)** |
+| `Atomic Imports` |                7,479 B |          2,353 B |     -5,126 B (-68.5%) |
+| `35 Icons`       |               20,193 B |         15,031 B |     -5,162 B (-25.6%) |
+
+---
+
+## Choosing a rendering approach
+
+Measured on a separate 35-icon webpack application (not in this repository), with CSS extraction
+enabled — the configuration recommended above:
+
+|            |  Minified |     GZIP | vs. fonts |
+| ---------- | --------: | -------: | --------: |
+| Font       |  3.098 kB | 1.245 kB |        1× |
+| SVG sprite |  3.959 kB | 1.608 kB |      1.3× |
+| SVG inline | 33.002 kB | 8.310 kB |     10.6× |
+
+Inline SVG carries the path data for all 35 icons in the JS bundle; the other two reference
+glyphs or `<symbol>` ids in an external asset, so their JS stays close to fixed regardless of
+icon count. That is the entire difference — it is not a styling cost, and it does not change
+with the CSS strategy.
+
+For font icons, also enable
+[`@fluentui/react-icons-font-subsetting-webpack-plugin`](https://www.npmjs.com/package/@fluentui/react-icons-font-subsetting-webpack-plugin);
+it strips unused glyphs from the font binaries, which dwarfs everything measured here.
+
+> **Note on provenance.** The percentages this application produces for CSS extraction reproduce
+> against the fixtures above; its absolute sizes do not, because it sampled physically larger
+> icons (its 35-icon baseline is 38 kB against the fixtures' 20 kB). Its `style-loader` figures
+> did not reproduce at all and have been dropped. Treat the table above as an approach ranking,
+> and the fixture tables as the numbers.
+
+---
+
+## Enabling CSS extraction
+
+- **webpack:** add [`mini-css-extract-plugin`](https://webpack.js.org/plugins/mini-css-extract-plugin/)
+  and route `.css` through `MiniCssExtractPlugin.loader` instead of `style-loader`. This is the
+  standard production setup and most framework presets already do it.
+- **Vite, Next.js, Remix, Parcel, esbuild:** already extract CSS in production builds. Nothing to
+  configure.
+
+### Reproducing the fixture numbers
+
+```sh
+yarn nx run react-icons:bundle-size                     # style-loader (webpack default)
+CSS_EXTRACTION=true yarn nx run react-icons:bundle-size # MiniCssExtractPlugin
+```
+
+The `Atomic Imports` / `Atomic Imports + CSS` fixture pairs exist precisely so that both columns
+of this trade-off stay measured: the bare fixture is the JS runtime in isolation, the `+ CSS`
+twin is what a consumer pays.

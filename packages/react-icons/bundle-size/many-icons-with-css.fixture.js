@@ -4,11 +4,10 @@
 // `docs/bundle-size-rendering-approaches-comparison.md` under CI.
 import '@fluentui/react-icons/styles.css';
 // 35 icons — the same sample size `docs/bundle-size-rendering-approaches-comparison.md`
-// used. Every other fixture imports a single icon, where the fixed cost of a styling
-// runtime dominates and the per-icon cost is invisible. This pair (with
-// `headless-many-icons`) is the only one measured at a scale a real consumer reaches,
-// and it is what keeps that document's headline numbers under CI rather than resting on
-// a one-off manual measurement.
+// used. Every other fixture imports a single icon, where the fixed cost of the CSS loader
+// runtime dominates and the per-icon cost is invisible. This pair (with `many-icons`) is
+// the only one measured at a scale a real consumer reaches, and comparing the two is what
+// proves that cost is per-application rather than per-icon.
 import {
   AirplaneFilled,
   AirplaneRegular,

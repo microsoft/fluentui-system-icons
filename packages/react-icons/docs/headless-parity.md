@@ -198,8 +198,9 @@ the mandatory imports and are the honest comparison.
 ### Measurements
 
 `yarn nx run react-icons:bundle-size`, 21 fixtures, minified / gzip. "style-loader" is the
-webpack default; "extraction" is `GRIFFEL_EXTRACTION=true`, which adds
-`GriffelCSSExtractionPlugin` + `MiniCssExtractPlugin`.
+webpack default; "extraction" is `GRIFFEL_EXTRACTION=true`, which at the time added
+`GriffelCSSExtractionPlugin` + `MiniCssExtractPlugin`. That flag is now `CSS_EXTRACTION=true`
+and adds `MiniCssExtractPlugin` alone — there is no Griffel left to extract.
 
 Headless vs its standard twin — negative is smaller:
 
@@ -265,8 +266,10 @@ All four were settled by the promotion:
 2. **`wrapIcon` emits no `class` attribute** — **recorded** as a breaking change in the
    CHANGELOG, and pinned by a test so it cannot widen.
 3. **The `style-loader` guidance** in `docs/bundle-size-rendering-approaches-comparison.md`
-   — **still open**, and now the only outstanding item. It recommends "prefer the Griffel
-   variant", which no longer exists. Rewriting it is part of the documentation stage; the
-   fixtures it needs to be rewritten against (`… + CSS`) are in place.
+   — **rewritten.** It recommended "prefer the Griffel variant", which no longer exists. That
+   document is now built on the `… + CSS` fixtures rather than on the unreproducible harness,
+   recommends CSS extraction, and states the regression as this finding established it —
+   **not limited to font icons**. The harness's `style-loader` column is dropped; its
+   extraction column survives as an approach ranking only, labelled as such.
 4. **No headless icon barrel** — **resolved by the promotion**: `.`, `./svg` and `./fonts`
    are the headless barrels now, rather than new subpaths being added alongside them.
