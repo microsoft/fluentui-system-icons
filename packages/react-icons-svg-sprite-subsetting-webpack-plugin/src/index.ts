@@ -10,16 +10,21 @@ import optionsSchema from './options.schema.json';
 const PLUGIN_NAME = 'FluentUIReactIconsSvgSpriteSubsettingPlugin';
 
 /**
- * Matches the ESM and CJS `@fluentui/react-icons/svg-sprite/*` entrypoints.
+ * Matches the ESM and CJS `@fluentui/react-icons/svg-sprite/*` entrypoints, and
+ * their `headless/svg-sprite/*` counterparts. Both emit the same module shape
+ * (`createFluentIcon(<symbolId>, …, sprite)` plus a co-located `.svg` import),
+ * so subsetting is identical for either API.
  *
  * Examples:
  * - .../react-icons/lib/atoms/svg-sprite/backpack.js
  * - .../react-icons/lib-cjs/atoms/svg-sprite/backpack.js
+ * - .../react-icons/lib/atoms/headless-svg-sprite/backpack.js
+ * - .../react-icons/lib-cjs/atoms/headless-svg-sprite/backpack.js
  */
 const REACT_ICONS_SVG_SPRITE_JS_MODULE_IMPORT_PATTERN =
-  /react-icons[\/\\]lib(-cjs)?[\/\\]atoms[\/\\]svg-sprite[\/\\][\w-]+\.js$/;
+  /react-icons[\/\\]lib(-cjs)?[\/\\]atoms[\/\\](headless-)?svg-sprite[\/\\][\w-]+\.js$/;
 
-const ATOMS_SVG_SPRITE_DIR_PATTERN = /(^|[\/\\])atoms[\/\\]svg-sprite([\/\\]|$)/;
+const ATOMS_SVG_SPRITE_DIR_PATTERN = /(^|[\/\\])atoms[\/\\](headless-)?svg-sprite([\/\\]|$)/;
 
 /** Matches individual `<symbol>` elements and captures their `id` attribute. */
 const SYMBOL_ELEMENT_PATTERN = /<symbol\b[^>]*\bid="([^"]+)"[^>]*>[\s\S]*?<\/symbol>/g;

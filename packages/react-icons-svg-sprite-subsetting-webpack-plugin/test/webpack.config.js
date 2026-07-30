@@ -23,10 +23,12 @@ module.exports = {
   // svg-sprite feature is gated in the react-icons package. These aliases redirect imports
   // to local mock modules that mirror the expected API shape.
   //
-  // The mocks live under `__mock__/react-icons/lib/atoms/svg-sprite/` so their resolved
-  // paths match the plugin's detection pattern (`react-icons/lib/atoms/svg-sprite/*.js`).
+  // The mocks live under `__mock__/react-icons/lib/atoms/svg-sprite/` (and
+  // `.../atoms/headless-svg-sprite/`) so their resolved paths match the plugin's
+  // detection pattern (`react-icons/lib/atoms/(headless-)?svg-sprite/*.js`).
   //
-  // Remove these aliases once `@fluentui/react-icons` ships the `./svg-sprite/*` export map entries.
+  // Remove these aliases once `@fluentui/react-icons` ships the `./svg-sprite/*` and
+  // `./headless/svg-sprite/*` export map entries.
   resolve: {
     alias: {
       '@fluentui/react-icons/svg-sprite/backpack': resolve(
@@ -36,6 +38,10 @@ module.exports = {
       '@fluentui/react-icons/svg-sprite/calculator': resolve(
         __dirname,
         '__mock__/react-icons/lib/atoms/svg-sprite/calculator.js',
+      ),
+      '@fluentui/react-icons/headless/svg-sprite/notepad': resolve(
+        __dirname,
+        '__mock__/react-icons/lib/atoms/headless-svg-sprite/notepad.js',
       ),
     },
   },
@@ -94,11 +100,16 @@ module.exports = {
             if (!merged.source.includes('id="BackpackFilled"') || !merged.source.includes('id="CalculatorFilled"')) {
               throw new Error('Merged sprite does not contain required symbols');
             }
-            if (merged.source.includes('id="BackpackRegular"')) {
+            // Headless sprite atoms must merge alongside the standard ones.
+            if (!merged.source.includes('id="NotepadFilled"')) {
+              throw new Error('Merged sprite does not contain the headless NotepadFilled symbol');
+            }
+            if (merged.source.includes('id="BackpackRegular"') || merged.source.includes('id="NotepadRegular"')) {
               throw new Error('Merged sprite still contains unused symbols');
             }
             const atomicSprites = svgAssets.filter(
-              (a) => a.name.startsWith('backpack-') || a.name.startsWith('calculator-'),
+              (a) =>
+                a.name.startsWith('backpack-') || a.name.startsWith('calculator-') || a.name.startsWith('notepad-'),
             );
             if (atomicSprites.length > 0) {
               throw new Error(
@@ -119,6 +130,18 @@ module.exports = {
                 backpack.source.includes('id="Backpack12Filled"')
               ) {
                 throw new Error('Atomic sprite was not subset down to only used symbols');
+              }
+
+              // Headless sprite atoms are subset by the same code path.
+              const notepad = svgAssets.find((a) => a.name.startsWith('notepad-'));
+              if (!notepad) {
+                throw new Error('Headless notepad sprite asset was not emitted');
+              }
+              if (!notepad.source.includes('id="NotepadFilled"')) {
+                throw new Error('Headless notepad sprite is missing NotepadFilled symbol');
+              }
+              if (notepad.source.includes('id="NotepadRegular"') || notepad.source.includes('id="Notepad20Filled"')) {
+                throw new Error('Headless atomic sprite was not subset down to only used symbols');
               }
             }
           }
