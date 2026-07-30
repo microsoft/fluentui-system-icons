@@ -60,7 +60,7 @@ async function main() {
     },
   );
 
-  // 3. Generate headless per-icon output (+ SVG sprites when --headlessSpriteDest is provided) - when --headless is enabled
+  // 3. Generate headless per-icon output (+ SVG sprites when --sprites is enabled) - when --headless is enabled
   if (HEADLESS_PER_ICON_DEST) {
     await processPerIcon(srcFiles, HEADLESS_PER_ICON_DEST, HEADLESS_SPRITE_DEST, rtlMetadata, {
       svgImportPath: '../../headless/createFluentIcon',
@@ -307,7 +307,10 @@ function parseArgs(argv) {
   const SPRITE_DEST = SPRITES_ENABLED ? /** @type {string} */ (args.spriteDest) : undefined; // svg sprite output folder (only when --sprites is set)
   const HEADLESS_ENABLED = Boolean(args.headless); // opt-in flag for headless component generation
   const HEADLESS_PER_ICON_DEST = HEADLESS_ENABLED ? /** @type {string} */ (args.headlessPerIconDest) : undefined; // headless per-icon output folder (only when --headless is set)
-  const HEADLESS_SPRITE_DEST = HEADLESS_ENABLED ? /** @type {string|undefined} */ (args.headlessSpriteDest) : undefined; // headless svg sprite output folder (only when --headless is set)
+  // Headless sprites follow the same `--sprites` opt-in as the standard ones, so both
+  // API surfaces expose the sprite rendering approach together instead of drifting apart.
+  const HEADLESS_SPRITE_DEST =
+    HEADLESS_ENABLED && SPRITES_ENABLED ? /** @type {string} */ (args.headlessSpriteDest) : undefined; // headless svg sprite output folder (only when --headless and --sprites are set)
 
   if (!SRC_PATH) {
     throw new Error('Icon source folder not specified by --source');
@@ -324,6 +327,11 @@ function parseArgs(argv) {
   if (HEADLESS_ENABLED && !HEADLESS_PER_ICON_DEST) {
     throw new Error(
       'Headless per-icon output folder not specified by --headlessPerIconDest (required when --headless is set)',
+    );
+  }
+  if (HEADLESS_ENABLED && SPRITES_ENABLED && !HEADLESS_SPRITE_DEST) {
+    throw new Error(
+      'Headless SVG sprite output folder not specified by --headlessSpriteDest (required when --headless and --sprites are set)',
     );
   }
   if (!RTL_FILE) {

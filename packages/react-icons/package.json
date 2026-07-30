@@ -17,7 +17,7 @@
   "scripts": {
     "clean": "git clean -fXd lib/ lib-cjs/ intermediate/ src/ tmp/",
     "generate:base-svg": "node scripts/copy-base-svg.js --source=../svg-icons/icons --dest=./intermediate",
-    "convert:svg": "node scripts/convert.js --source=./intermediate --dest=./src --perIconDest=./src/atoms/svg --spriteDest=./src/atoms/svg-sprite --headless --headlessPerIconDest=./src/atoms/headless-svg --rtl=./intermediate/rtl.json --metadata=./tmp/metadata-svg.json",
+    "convert:svg": "node scripts/convert.js --source=./intermediate --dest=./src --perIconDest=./src/atoms/svg --spriteDest=./src/atoms/svg-sprite --headless --headlessPerIconDest=./src/atoms/headless-svg --headlessSpriteDest=./src/atoms/headless-svg-sprite --rtl=./intermediate/rtl.json --metadata=./tmp/metadata-svg.json",
     "convert:fonts": "node scripts/convert-font.js --source=./src/utils/fonts --dest=./src/fonts --perIconDest=./src/atoms/fonts --headless --headlessPerIconDest=./src/atoms/headless-fonts --codepointDest=./src/utils/fonts --rtl=./intermediate/rtl.json --metadata=./tmp/metadata-font.json",
     "convert:merge-metadata": "node scripts/merge-metadata.js --svgMetadata=./tmp/metadata-svg.json --fontMetadata=./tmp/metadata-font.json --output=./metadata.json",
     "generate:font": "node scripts/copy-base-fonts.js --source=../../fonts --dest=src/utils/fonts",
