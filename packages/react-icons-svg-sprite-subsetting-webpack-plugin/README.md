@@ -3,11 +3,13 @@
 > **⚠️ 0.x** — this package is in early development and follows [zero-based major semver](https://0ver.org/).
 > Breaking changes may occur in minor releases until 1.0.
 
-Webpack plugin that optimizes the `@fluentui/react-icons/svg-sprite/*` entrypoints.
+Webpack plugin that optimizes the `@fluentui/react-icons/svg-sprite/*` entrypoints, and their
+`@fluentui/react-icons/headless/svg-sprite/*` counterparts. Both are handled automatically — no
+per-entrypoint configuration is required.
 
 It supports two modes:
 
-- **`atomic` (default):** subsets each emitted sprite asset (`atoms/svg-sprite/*.svg`) to only the `<symbol>` IDs that are actually used.
+- **`atomic` (default):** subsets each emitted sprite asset (`atoms/svg-sprite/*.svg`, `atoms/headless-svg-sprite/*.svg`) to only the `<symbol>` IDs that are actually used.
 - **`merged`:** emits a single merged sprite asset containing only the used `<symbol>` IDs, and rewrites internal sprite imports so all icons reference the merged file.
 
 ## Install

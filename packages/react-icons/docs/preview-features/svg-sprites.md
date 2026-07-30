@@ -68,6 +68,10 @@ import {
 import { Add16Filled, Add20Filled } from '@fluentui/react-icons/svg-sprite/add';
 ```
 
+The [Headless API](../headless.md) exposes the same sprites without the CSS-in-JS runtime, via
+`@fluentui/react-icons/headless/svg-sprite/{icon-group}`. Everything on this page — the same-origin
+requirement, the bundler setup and the subsetting plugin — applies unchanged to both.
+
 ### TypeScript Configuration
 
 **IMPORTANT**: TypeScript users must use `moduleResolution: "bundler"` (or `"node16"`/`"nodenext"`) in their `tsconfig.json` to properly resolve these sprite exports:

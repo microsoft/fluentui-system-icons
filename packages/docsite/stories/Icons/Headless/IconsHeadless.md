@@ -43,6 +43,24 @@ import '@fluentui/react-icons/headless/styles.css';
 
 > **Tip 💡:** It's highly recommended to enable the [`@fluentui/react-icons-font-subsetting-webpack-plugin`](https://www.npmjs.com/package/@fluentui/react-icons-font-subsetting-webpack-plugin) to get the same font "tree-shaking" perf boost. See the [Build Transforms](?path=/docs/icons-build-transforms--docs) page.
 
+### Cascade layers
+
+The shipped stylesheets are **unlayered**. Cascade layers are resolved before specificity, so an
+unlayered rule beats a layered one no matter how specific the layered rule is. If your application
+organises its CSS with `@layer`, your own layered rules therefore cannot override these icon
+defaults until the icon styles are part of the same layer system.
+
+Assign them to a layer at import time:
+
+```css
+@import '@fluentui/react-icons/headless/styles.css' layer(base);
+@import '@fluentui/react-icons/headless/fonts/styles.css' layer(base);
+```
+
+Replace `base` with whichever layer your application wants the icon defaults to sit in — typically
+the lowest one, so component styles win. The package deliberately does not pick a layer name, since
+that choice belongs to the consuming application.
+
 ## Usage
 
 ### SVG Icons
@@ -69,7 +87,23 @@ function MyComponent() {
 }
 ```
 
-> **SVG sprites are not available in the Headless API yet.** SVG sprites are still a [preview feature](https://github.com/microsoft/fluentui-system-icons/blob/main/packages/react-icons/docs/preview-features/svg-sprites.md) of the standard (Griffel) API only. A headless sprite variant is not published.
+### SVG Sprites
+
+> **⚠️ Alpha** — SVG sprites are a [preview feature](https://github.com/microsoft/fluentui-system-icons/blob/main/packages/react-icons/docs/preview-features/svg-sprites.md); the same caveats (same-origin requirement, tooling setup) apply to the headless variant.
+
+Headless sprite icons are exposed via `@fluentui/react-icons/headless/svg-sprite/{icon-group}` and behave exactly like the standard sprite entrypoints — each component renders `<svg><use href="…#icon-id" /></svg>` against an external sprite file:
+
+```tsx
+import '@fluentui/react-icons/headless/styles.css';
+
+import { AccessTime20Filled, AccessTime24Filled } from '@fluentui/react-icons/headless/svg-sprite/access-time';
+
+function MyComponent() {
+  return <AccessTime20Filled />;
+}
+```
+
+The [`@fluentui/react-icons-svg-sprite-subsetting-webpack-plugin`](https://www.npmjs.com/package/@fluentui/react-icons-svg-sprite-subsetting-webpack-plugin) subsets headless sprite entrypoints the same way it subsets the standard ones — no extra configuration is required.
 
 ### Font Icons
 
@@ -95,6 +129,7 @@ import {
   // Icon factories
   createFluentIcon,
   bundleIcon,
+  wrapIcon,
 
   // Core hook
   useIconState,
@@ -150,7 +185,7 @@ function MyComponent() {
 
 ## Build-Time Transform
 
-You can keep root-level barrel imports and leverage build transforms to adopt the headless API without modifying your source code. Use the `headless: true` option of the webpack loader (or a `headless/svg` target for Babel/SWC).
+You can keep root-level barrel imports and leverage build transforms to adopt the headless API without modifying your source code. Use the `headless: true` option of the webpack loader (or a `headless/svg`, `headless/svg-sprite` or `headless/fonts` target for Babel/SWC).
 
 > **Note:** You still need to manually add the CSS import (`import '@fluentui/react-icons/headless/styles.css'`) to your application entry point — build transforms only rewrite component imports.
 

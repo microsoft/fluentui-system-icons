@@ -4,7 +4,7 @@
 
 ## Overview
 
-The plugin optimises `@fluentui/react-icons/svg-sprite/*` entrypoints at build time by analysing which icon exports are actually used and stripping unused `<symbol>` elements from sprite SVGs.
+The plugin optimises `@fluentui/react-icons/svg-sprite/*` and `@fluentui/react-icons/headless/svg-sprite/*` entrypoints at build time by analysing which icon exports are actually used and stripping unused `<symbol>` elements from sprite SVGs. Both entrypoints emit the same module shape, so a single code path handles them.
 
 It hooks into Webpack's module resolution, runtime injection, HTML template processing, and asset optimisation stages to achieve this across three operating modes: **atomic**, **merged**, and **inline**.
 
@@ -31,7 +31,7 @@ flowchart TB
 
 **Condition:** `mode === 'merged'` OR `injectSpritesInTemplates.mode === 'inline'`.
 
-Intercepts `.svg` import requests originating from `atoms/svg-sprite/` directories (matched by `ATOMS_SVG_SPRITE_DIR_PATTERN`). Rewrites the request to one of two runtime modules:
+Intercepts `.svg` import requests originating from `atoms/svg-sprite/` and `atoms/headless-svg-sprite/` directories (matched by `ATOMS_SVG_SPRITE_DIR_PATTERN`). Rewrites the request to one of two runtime modules:
 
 | Scenario          | Replacement module              | Exported value                        |
 | ----------------- | ------------------------------- | ------------------------------------- |
@@ -74,7 +74,7 @@ The core analysis runs during `processAssets` (lazily initialised and cached). I
 
 ```mermaid
 flowchart TD
-  A["Module detection<br/>isFluentUIReactSvgSpriteEntrypointModule()<br/>Match: react-icons/lib(-cjs)?/atoms/svg-sprite/*.js"]
+  A["Module detection<br/>isFluentUIReactSvgSpriteEntrypointModule()<br/>Match: react-icons/lib(-cjs)?/atoms/(headless-)?svg-sprite/*.js"]
   B["Source parsing<br/>getModuleSource() → raw JS source<br/>getReferencedSpritePath() → absolute path to .svg<br/>getExportNameToSymbolIdMap() → Map‹exportName, symbolId›"]
   C["Webpack used-exports query<br/>getUsedExportsWithFallback()<br/>Falls back to undefined-runtime query when inconclusive"]
   D["Symbol ID resolution<br/>getUsedSymbolIds()<br/>Maps used export names → symbol IDs<br/>Dev mode fallback: assume all used"]
@@ -191,20 +191,24 @@ test/
 ├── webpack.config.js         # Configurable via env vars
 ├── validation.js             # Constructor validation tests
 ├── src/
-│   ├── atomic.js             # Entry: imports BackpackFilled, CalculatorFilled
+│   ├── atomic.js             # Entry: imports BackpackFilled, CalculatorFilled, NotepadFilled
 │   └── merged.js             # Entry: same imports
 └── __mock__/
-    └── react-icons/lib/atoms/svg-sprite/
-        ├── backpack.js       # 18 exports (various sizes/styles)
-        ├── backpack.svg      # 18 <symbol> elements
-        ├── calculator.js     # 6 exports
-        └── calculator.svg    # 6 <symbol> elements
+    └── react-icons/lib/
+        ├── atoms/svg-sprite/
+        │   ├── backpack.js       # 18 exports (various sizes/styles)
+        │   ├── backpack.svg      # 18 <symbol> elements
+        │   ├── calculator.js     # 6 exports
+        │   └── calculator.svg    # 6 <symbol> elements
+        └── atoms/headless-svg-sprite/
+            ├── notepad.js        # 4 exports (headless entrypoint)
+            └── notepad.svg       # 4 <symbol> elements
 ```
 
 ### What is validated
 
-- **Atomic mode:** Each sprite asset contains only used symbols (e.g. `BackpackFilled` present, `BackpackRegular` absent).
-- **Merged mode:** A single merged sprite contains only used symbols; no individual sprite assets are emitted.
+- **Atomic mode:** Each sprite asset contains only used symbols (e.g. `BackpackFilled` present, `BackpackRegular` absent), for both the standard and headless entrypoints.
+- **Merged mode:** A single merged sprite contains only used symbols from both entrypoints; no individual sprite assets are emitted.
 - **Inline injection:** HTML contains the inline `<svg>` with used symbol IDs.
 - **Reference injection:** HTML contains `<link rel="preload">` tags pointing to sprite assets.
 - **Manifest:** `sprites-manifest.json` is emitted with correct entrypoint/symbol structure.
