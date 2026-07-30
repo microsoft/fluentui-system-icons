@@ -1,0 +1,47 @@
+/* Demo app styling. Plain CSS — this app exists to exercise `@fluentui/react-icons`, so it
+ * deliberately carries no styling runtime of its own. */
+
+.app-icon-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.app-icon-cell {
+  display: flex;
+  flex-direction: column;
+  justify-items: end;
+  height: 120px;
+  width: 120px;
+  background-color: #ccc;
+  margin: 5px;
+}
+
+.app-icon-cell__zone {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+}
+
+.app-icon-cell__icon {
+  background-color: #fff;
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  justify-items: end;
+  font-size: 40px;
+  margin: 5px;
+}
+
+.app-icon-cell__sublabel {
+  display: inline-block;
+  font-size: 14px;
+  height: 20px;
+}
+
+.app-icon-cell__label {
+  font-size: 14px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  margin: 5px;
+}

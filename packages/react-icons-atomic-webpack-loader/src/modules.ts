@@ -42,8 +42,13 @@ export interface ModuleDescriptor {
   /** Icon variants this module ships atomic entry points for. */
   supportedVariants: IconVariant[];
   /**
-   * Icon variants for which this module ships a *headless* (Griffel-free) build.
-   * Empty when the module has no headless build at all.
+   * Icon variants for which this module ships a `/headless` entry point. Empty when the
+   * module has no headless build at all.
+   *
+   * For `@fluentui/react-icons` the headless implementation has been promoted to the
+   * default, so `/headless/*` is a deprecated alias of the default subpaths rather than a
+   * second build. The option is kept because other modules (and older installed versions
+   * of this one) still make the distinction.
    */
   headlessVariants: IconVariant[];
   /**
@@ -67,8 +72,9 @@ export interface ModuleDescriptor {
 const reactIcons: ModuleDescriptor = {
   name: '@fluentui/react-icons',
   supportedVariants: ['svg', 'fonts', 'svg-sprite'],
-  // Headless ships svg + fonts today; headless svg-sprite is not generated yet.
-  headlessVariants: ['svg', 'fonts'],
+  // All three: headless sprite atoms are generated alongside the standard ones, and
+  // `./headless/svg-sprite/*` is exported as an alias of `./svg-sprite/*`.
+  headlessVariants: ['svg', 'fonts', 'svg-sprite'],
   // Color icons ship in svg + svg-sprite; the font build has no color glyphs.
   colorVariants: ['svg', 'svg-sprite'],
   resolve(importName, variant, headless) {
@@ -211,8 +217,8 @@ export function resolveColorVariant(
  * `headless` flag and the already-resolved `variant`.
  *
  * Headless is best-effort: when a module has no headless build for the resolved
- * variant, the loader degrades to the standard (Griffel) implementation and
- * records a warning rather than failing the build.
+ * variant, the loader degrades to the standard implementation and records a
+ * warning rather than failing the build.
  */
 export function resolveModuleHeadless(
   descriptor: ModuleDescriptor,
@@ -230,8 +236,7 @@ export function resolveModuleHeadless(
   if (descriptor.headlessVariants.length === 0) {
     return {
       headless: false,
-      warning:
-        `"${descriptor.name}" has no headless build; using its standard (Griffel) ` + `implementation for this import.`,
+      warning: `"${descriptor.name}" has no headless build; using its standard ` + `implementation for this import.`,
     };
   }
 
@@ -240,6 +245,6 @@ export function resolveModuleHeadless(
     warning:
       `"${descriptor.name}" has no headless build for variant "${variant}" ` +
       `(headless supports: ${descriptor.headlessVariants.join(', ')}); using its standard ` +
-      `(Griffel) implementation for this import.`,
+      `implementation for this import.`,
   };
 }

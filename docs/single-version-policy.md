@@ -14,8 +14,8 @@ root** [package.json](../package.json).
 2. **Runtime dependencies are single-sourced from the root.** Publishable packages keep the
    runtime `dependencies` they ship (so consumers install them), but the **version** of each
    must match the version declared in the root `package.json`. The root therefore also
-   declares the runtime libraries (e.g. `@griffel/react`, `tslib`, `subset-font`) so it
-   remains the single source of truth.
+   declares the runtime libraries (e.g. `tslib`, `subset-font`) so it remains the single
+   source of truth.
 
 3. **peerDependencies are exempt.** Peer ranges intentionally declare broad support windows
    and are not held to the single version policy.
@@ -32,31 +32,28 @@ Workspace-local package references (e.g. `"@fluentui/react-icons": "*"`) are man
 
 ### Install-time overrides
 
-Both `@fluentui/react-icons` and `@fluentui/react-icons-file-type` publish `@griffel/react` at
-`^1.6.1`. Griffel is held at the low end of that range by the root
-[package.json](../package.json):
+The root [package.json](../package.json) used to pin `@griffel/core` and `@griffel/react` for
+the whole repo, because both publishable packages shipped `@griffel/react` in `dependencies`.
+That pin is **gone**: neither package has a CSS-in-JS runtime any more, so both of its stated
+reasons expired at once.
 
-```jsonc
-"resolutions": {
-  "@griffel/core": "1.20.1",
-  "@griffel/react": "1.6.1"
-}
-```
+- **Types.** Griffel 1.7+ writes its declarations with TypeScript 4.5+ syntax, which
+  `@fluentui/react-icons`' pinned TypeScript 4.1.6 could not parse. There is no Griffel
+  `.d.ts` in that package's compilation any more. The `typescript@4.1.6` allowlist entry above
+  stays — it is about the declarations react-icons _emits_ for legacy consumers, a separate
+  contract — but it no longer constrains any dependency.
+- **Bundle size.** Griffel 1.7.6 / core 1.21.3 added ~1.1 kB minified to the `FileTypeIcon`
+  fixture, tripping the 1 kB `monosize` threshold. That fixture now measures a package with no
+  Griffel in it, so the version is irrelevant to it.
 
-Two reasons keep it there:
+Griffel is still installed, at whatever version resolution picks: the docsite depends on the
+published `@fluentui/react-components`, which is a Griffel-based library. That is a third-party
+edge, not a first-party one — **no package in this repo declares a `@griffel/*` runtime
+dependency.** The one first-party `@griffel/*` entry left is the root
+`@griffel/eslint-plugin` devDependency, which lints the docsite's own Griffel-authored stories.
 
-- **Types.** Griffel 1.7+ writes its declarations with TypeScript 4.5+ syntax, which the pinned
-  TypeScript 4.1.6 above cannot parse.
-- **Bundle size.** Griffel 1.7.6 / core 1.21.3 add ~1.1 kB minified to the `FileTypeIcon`
-  fixture, which trips the 1 kB `monosize` threshold in [monosize.config.mjs](../monosize.config.mjs).
-
-The **published** ranges stay `^1.6.1`, so consumers still deduplicate griffel with the rest of
-their app. Remove these overrides once the packages move off TypeScript 4.1.6 and the bundle
-cost has been re-measured.
-
-Prefer a scoped `parent/child` key when only one workspace needs the override — a bare key
-rewrites every copy in the repo. Griffel is the exception: every consumer here needs the same
-version, so a bare key states that intent directly instead of repeating the pin per workspace.
+When an override is genuinely needed, prefer a scoped `parent/child` key — a bare key rewrites
+every copy in the repo, which is only correct when every consumer must agree.
 
 ## Enforcement
 

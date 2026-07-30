@@ -1,20 +1,18 @@
 import * as React from 'react';
-import { makeStyles } from '@griffel/react';
+
+// `@fluentui/react-icons` styles icons through `data-fui-icon*` attributes resolved by these
+// stylesheets, so a consumer that skips them loses `display`, the RTL flip and the
+// high-contrast handling everywhere. This app renders both SVG and font icons, hence both
+// imports. Its own layout lives in `./styles.css`.
+import '@fluentui/react-icons/styles.css';
+import '@fluentui/react-icons/fonts/styles.css';
+import './styles.css';
 
 const Atoms = React.lazy(() => import('./atoms').then((mod) => ({ default: mod.Atoms })));
 const Chunk = React.lazy(() => import('./chunk').then((mod) => ({ default: mod.Chunk })));
 const All = React.lazy(() => import('./all').then((mod) => ({ default: mod.All })));
 
-const useRootStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-});
-
 export function App() {
-  const styles = useRootStyles();
   const [state, setState] = React.useState<'atoms' | 'all' | 'chunk' | null>(null);
 
   return (
@@ -42,7 +40,7 @@ export function App() {
         <div>
           <h2>Icons</h2>
           <React.Suspense fallback={<div>Loading...</div>}>
-            <div className={styles.root}>
+            <div className="app-icon-grid">
               {state === 'atoms' && <Atoms />}
               {state === 'all' && <All />}
               {state === 'chunk' && <Chunk />}

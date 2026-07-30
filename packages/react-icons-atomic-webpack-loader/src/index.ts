@@ -30,17 +30,23 @@ export interface FluentIconsAtomicImportLoaderOptions {
    */
   fallbackVariant?: IconVariant;
   /**
-   * Resolve atomic imports to the **headless** (Griffel-free) build where the
-   * referenced module ships one. Defaults to `false`.
+   * Resolve atomic imports to a module's `/headless` entry point where it ships
+   * one. Defaults to `false`.
+   *
+   * DEPRECATED for `@fluentui/react-icons`: the headless implementation has been
+   * promoted to the default there, so `/headless/*` is an alias of the default
+   * subpaths and this option changes only which spelling is emitted. Leave it
+   * `false` for that module; it stays meaningful for modules that still ship two
+   * builds.
    *
    * Headless is best-effort per module: a module without a headless build for
-   * the resolved variant (e.g. headless `svg-sprite` which isn't generated yet)
-   * degrades to its standard implementation with a warning instead of failing
-   * the build.
+   * the resolved variant degrades to its standard implementation with a warning
+   * instead of failing the build.
    *
    * NOTE: the loader only rewrites component/utility imports — you must still
-   * import the headless CSS (`@fluentui/react-icons/headless/styles.css`, plus
-   * `headless/fonts/styles.css` for font icons) in your app entry point.
+   * import the stylesheet (`@fluentui/react-icons/styles.css`, plus
+   * `fonts/styles.css` for font icons) in your app entry point. That is required
+   * now regardless of this option.
    */
   headless?: boolean;
   /**

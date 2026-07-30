@@ -35,11 +35,7 @@
     "@fluentui/react-storybook-addon": "0.6.0",
     "@fluentui/react-storybook-addon-export-to-sandbox": "0.3.0",
     "@fluentui/storybook-llms-extractor": "0.0.4",
-    "@griffel/babel-preset": "^1.8.1",
     "@griffel/eslint-plugin": "^2.0.2",
-    "@griffel/react": "^1.6.1",
-    "@griffel/webpack-extraction-plugin": "0.5.14",
-    "@griffel/webpack-loader": "2.2.23",
     "@nx/eslint-plugin": "^22.6.5",
     "@nx/js": "22.6.5",
     "@react-native-community/cli": "^20.1.0",
@@ -123,8 +119,6 @@
     }
   },
   "resolutions": {
-    "@griffel/core": "1.20.1",
-    "@griffel/react": "1.6.1",
     "@linaria/shaker/@babel/plugin-transform-runtime": "^7"
   }
 }

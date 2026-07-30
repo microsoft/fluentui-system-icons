@@ -15,11 +15,15 @@ const entries = {
   atoms: { src: './src/atoms.js', threshold: 2 * 1_024 }, // 2 KB
   // atomsImportStar uses `import *` and references more icon variants, producing a larger (but still properly subset) font.
   atomsImportStar: { src: './src/atoms-import-star.js', threshold: 3 * 1_024 }, // 3.0 KB
-  // Headless font atoms — fonts arrive via the headless `styles.css` import (css-loader) rather than Griffel.
-  // No Griffel runtime is involved, so a tighter threshold is used to validate subsetting.
+  // Fonts arrive via the `fonts/styles.css` import (css-loader). `assertNoGriffel` is now a
+  // whole-package property rather than a property of one subtree, but it is asserted on these
+  // two entries only because the assertion needs `concatenateModules: false` to see individual
+  // module resources, and turning scope hoisting off everywhere would change what the other
+  // thresholds measure.
   headlessAtoms: { src: './src/headless-atoms.js', threshold: 1.5 * 1_024, assertNoGriffel: true }, // 1.5 KB
-  // End-to-end: a *barrel* import is rewritten by the atomic loader (headless + fonts) into
-  // headless font atoms, then subset here. Also asserts the graph stays Griffel-free.
+  // End-to-end: a *barrel* import is rewritten by the atomic loader into font atoms, then
+  // subset here. Exercises the deprecated `./headless/fonts/*` alias for as long as it ships,
+  // and asserts the graph carries no CSS-in-JS runtime.
   e2eBarrelHeadlessFonts: {
     src: './src/e2e-barrel-headless-fonts.js',
     threshold: 1.5 * 1_024, // 1.5 KB
@@ -117,14 +121,16 @@ function createConfig(name, entry) {
               }
             }
 
-            // Headless builds must not pull in Griffel.
+            // The icon package ships no CSS-in-JS runtime. This is the guard that keeps it
+            // that way: a reintroduced dependency would otherwise only show up as a bundle
+            // size regression, which is easy to explain away.
             if (entry.assertNoGriffel) {
               for (const m of compilation.modules) {
                 const resource = /** @type {{ resource?: string }} */ (m).resource;
                 if (resource && /[\\/]@griffel[\\/]/.test(resource)) {
                   throw new Error(
                     `[${name}] Module graph includes a @griffel module (${resource}) — ` +
-                      `headless build expected to be Griffel-free.`,
+                      `@fluentui/react-icons is expected to carry no CSS-in-JS runtime.`,
                   );
                 }
               }

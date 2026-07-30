@@ -23,6 +23,14 @@ module.exports = {
         test: /\.(ttf|woff2?)$/,
         type: 'asset',
       },
+      // `@fluentui/react-icons` ships its styling as plain `.css`, and this app's own layout
+      // is plain `.css` too. `style-loader` is fine for a dev demo; production apps should
+      // prefer `MiniCssExtractPlugin` — see
+      // `packages/react-icons/docs/bundle-size-rendering-approaches-comparison.md`.
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   plugins: [

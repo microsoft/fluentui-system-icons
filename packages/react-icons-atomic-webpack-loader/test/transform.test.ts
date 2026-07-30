@@ -258,17 +258,19 @@ describe('transformSource', () => {
       );
     });
 
-    it('degrades headless svg-sprite to the standard sprite with a warning', () => {
+    it('rewrites headless svg-sprite without degrading', () => {
+      // Headless sprite atoms are generated alongside the standard ones and
+      // `./headless/svg-sprite/*` is exported as an alias of `./svg-sprite/*`, so there is
+      // nothing left to degrade to. This case used to warn and fall back to the standard
+      // sprite path.
       const { code, diagnostics } = transformSource(`import { AddFilled } from '@fluentui/react-icons';`, {
         iconVariant: 'svg-sprite',
         headless: true,
         path: 'input.js',
       });
 
-      expect(code).toBe(`import { AddFilled } from '@fluentui/react-icons/svg-sprite/add';`);
-      expect(diagnostics).toHaveLength(1);
-      expect(diagnostics[0].level).toBe('warning');
-      expect(diagnostics[0].message).toContain('headless');
+      expect(code).toBe(`import { AddFilled } from '@fluentui/react-icons/headless/svg-sprite/add';`);
+      expect(diagnostics).toEqual([]);
     });
 
     it('rewrites brand icons to the headless svg atomic path', () => {
