@@ -1,14 +1,14 @@
-import { bundleIcon } from '@fluentui/react-icons/headless/utils';
-import { AccessTimeFilled, AccessTimeRegular } from '@fluentui/react-icons/headless/svg/access-time';
+import { bundleIcon } from '@fluentui/react-icons/utils';
+import { AccessTimeFilled, AccessTimeRegular } from '@fluentui/react-icons/svg/access-time';
 
-import descriptionMd from './IconsHeadless.md';
+import descriptionMd from './IconsStyling.md';
 
-export { HeadlessIcons } from './Headless.stories';
+export { StyledIcons } from './StylingDemo.stories';
 
 const AccessTime = bundleIcon(AccessTimeFilled, AccessTimeRegular);
 
 export default {
-  title: 'Icons/Headless API',
+  title: 'Icons/Styling',
   component: AccessTime,
   parameters: {
     docs: {

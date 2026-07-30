@@ -10,27 +10,27 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 ## Choosing the right approach
 
-|                         | Inline SVG (default)                            | Icon Font                                                   | SVG Sprites (⚠️ Alpha)                                                               |
-| ----------------------- | ----------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| **Best for**            | General purpose, most apps with very few icons  | Large apps with many icons on screen                        | Large or dynamic icon sets                                                           |
-| **JS bundle size**      | Largest — every icon component is bundled in JS | Smallest — icon shim is tiny; font file is a static asset   | Small — icon shim is tiny; sprites are HTTP-cached files                             |
-| **Rendering mechanism** | DOM node per icon                               | Single font glyph per icon                                  | Single symbol reference from sprite                                                  |
-| **Render performance**  | Worst — one SVG DOM subtree per icon            | Best — single glyph, minimal DOM                            | Good — single DOM node via `<use>`                                                   |
-| **Styling**             | Full CSS + `primaryFill` prop                   | CSS only (color, font-size)                                 | Full CSS + `primaryFill` prop                                                        |
-| **Tree-shaking**        | No static asset to subset                       | Font file subsetted to used glyphs only                     | Unused sprites are never fetched                                                     |
-| **Visual fidelity**     | Pixel-perfect at all sizes                      | Slight reduction at small sizes                             | Pixel-perfect at all sizes                                                           |
-| **Accessibility**       | Full — native SVG semantics                     | Full — implementation covers a11y range (see caveats below) | Full — native SVG semantics                                                          |
-| **Loading**             | Bundled with JS — no flash                      | FOIT / FOUT risk during font load                           | One request per sprite group; webpack plugin can merge into a single request         |
-| **Setup**               | None (default)                                  | Webpack subsetting plugin, static assets hosting (font)     | Webpack subsetting plugin, static assets hosting (sprite), same-origin proxy for CDN |
+|                         | Inline SVG (default)                            | Icon Font                                                                                       | SVG Sprites (⚠️ Alpha)                                                                                  |
+| ----------------------- | ----------------------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| **Best for**            | General purpose, most apps with very few icons  | Large apps with many icons on screen                                                            | Large or dynamic icon sets                                                                              |
+| **JS bundle size**      | Largest — every icon component is bundled in JS | Smallest — icon shim is tiny; font file is a static asset                                       | Small — icon shim is tiny; sprites are HTTP-cached files                                                |
+| **Rendering mechanism** | DOM node per icon                               | Single font glyph per icon                                                                      | Single symbol reference from sprite                                                                     |
+| **Render performance**  | Worst — one SVG DOM subtree per icon            | Best — single glyph, minimal DOM                                                                | Good — single DOM node via `<use>`                                                                      |
+| **Styling**             | Full CSS + `primaryFill` prop                   | CSS only (color, font-size)                                                                     | Full CSS + `primaryFill` prop                                                                           |
+| **Tree-shaking**        | No static asset to subset                       | Font file subsetted to used glyphs only                                                         | Unused sprites are never fetched                                                                        |
+| **Visual fidelity**     | Pixel-perfect at all sizes                      | Slight reduction at small sizes                                                                 | Pixel-perfect at all sizes                                                                              |
+| **Accessibility**       | Full — native SVG semantics                     | Full — implementation covers a11y range (see caveats below)                                     | Full — native SVG semantics                                                                             |
+| **Loading**             | Bundled with JS — no flash                      | FOIT / FOUT risk during font load                                                               | One request per sprite group; webpack plugin can merge into a single request                            |
+| **Setup**               | Stylesheet import only                          | Stylesheet import + `fonts/styles.css`; webpack subsetting plugin, static assets hosting (font) | Stylesheet import; webpack subsetting plugin, static assets hosting (sprite), same-origin proxy for CDN |
 
-> **Note:** A **headless** rendering mode (vanilla CSS, no Griffel runtime) is available via `/headless/*` imports (e.g. `@fluentui/react-icons/headless/svg/access-time`). With CSS extraction it reduces JS bundle sizes significantly — up to −70% for font icons and −14% for inline SVG. All three rendering approaches on this page have a headless counterpart, SVG sprites included (`@fluentui/react-icons/headless/svg-sprite/*`). See the [Headless API](?path=/docs/icons-headless-api--docs) page for details and the [Bundle Size](?path=/docs/icons-bundle-size--docs) page for the full comparison.
+> **Note:** all three approaches are styled the same way — by the plain CSS file the package ships, which you must import once (`@fluentui/react-icons/styles.css`, plus `fonts/styles.css` for font icons). None of them carries a CSS-in-JS runtime. See the [Styling](?path=/docs/icons-styling--docs) page for that setup step and the [Bundle Size](?path=/docs/icons-bundle-size--docs) page for where the CSS ends up in your build — enabling CSS extraction is worth more than the choice on this page.
 
 ### When to use inline SVG (default)
 
 This is the default approach for icons api and used in most applications:
 
-- Zero configuration needed — works out of the box
-- Best styling flexibility — supports `primaryFill`, `className`, Griffel, and all CSS properties
+- No bundler configuration needed beyond the stylesheet import every approach requires
+- Best styling flexibility — supports `primaryFill`, `className`, and all CSS properties
 - Excellent tree-shaking — only icons you import are bundled
 - Combine with the **Atomic API** for even smaller bundles (see the Atomic API page)
 

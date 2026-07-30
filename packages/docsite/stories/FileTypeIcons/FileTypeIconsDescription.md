@@ -35,31 +35,31 @@ import { FileTypeIcon, FileIconType } from '@fluentui/react-icons-file-type';
 <FileTypeIcon type={FileIconType.folder} size={24} />;
 ```
 
-## Headless (style-free) API
+## Styling: import the stylesheet
 
-The default `FileTypeIcon` is styled with [Griffel](https://github.com/microsoft/griffel) so it works with zero setup. If you want to avoid bundling the Griffel runtime — for example to ship the smallest possible bundle or to own all styling yourself — import from the `/headless` subpath instead.
+`FileTypeIcon` carries **no** CSS-in-JS runtime. It renders a single `<img>` tagged with a `data-fui-filetype-icon` attribute, and the styling that attribute needs lives in a plain CSS file the package ships:
 
-The headless component is identical in behavior (same props, same `src`/accessibility resolution) but ships **no** styling runtime. It tags the rendered `<img>` with a `data-fui-filetype-icon` attribute that you can style. Bring your own styles in one of two ways:
-
-```tsx
-// Option A: import the opt-in stylesheet once (reproduces the default box behavior)
-import '@fluentui/react-icons-file-type/headless/styles.css';
-import { FileTypeIcon } from '@fluentui/react-icons-file-type/headless';
-
-<FileTypeIcon extension="docx" size={24} />;
+```ts
+import '@fluentui/react-icons-file-type/styles.css';
 ```
 
+Without it the icon still renders, but loses `display: inline-block` and `object-fit: contain` — so a non-square asset stretches inside the square `width`/`height` box the `size` prop sets. That is a quieter failure than a blank icon, not a less real one.
+
+The stylesheet is **unlayered**. Cascade layers are compared before specificity, so a layered rule of yours loses to an unlayered rule here no matter how specific it is. If your application organises its CSS with `@layer`, assign the stylesheet a layer at import time:
+
 ```css
-/* Option B: target the data attribute (or pass your own className) with your own CSS */
+@import '@fluentui/react-icons-file-type/styles.css' layer(base);
+```
+
+Shipping the layer inside the package would impose a layer name on the whole ecosystem, so the file stays unlayered and the obligation is documented instead.
+
+You can also skip the shipped stylesheet entirely and write the two rules yourself, against the attribute or your own `className`:
+
+```css
 [data-fui-filetype-icon] {
   display: inline-block;
   object-fit: contain;
 }
 ```
 
-The `/headless` entry point re-exports the same `FileTypeIconsProvider`, `useFileTypeIconsContext`, `FileIconType`, and constants, so it is fully usable on its own. Prefer the default `@fluentui/react-icons-file-type` entry point unless you specifically need to drop the Griffel runtime.
-
-| Entry point                                 | Griffel runtime | Styling                                            |
-| ------------------------------------------- | --------------- | -------------------------------------------------- |
-| `@fluentui/react-icons-file-type` (default) | included        | Griffel, zero setup                                |
-| `@fluentui/react-icons-file-type/headless`  | none            | bring your own (`headless/styles.css` or your CSS) |
+> **Upgrading from the `/headless` subpath?** `@fluentui/react-icons-file-type/headless` and `/headless/styles.css` are now deprecated aliases of `.` and `./styles.css` — the same module and the same file. They are removed in the next major.

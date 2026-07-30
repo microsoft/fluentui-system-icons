@@ -32,9 +32,13 @@ const preview = {
           [
             'Overview',
             'Catalog',
+            // Styling sits directly after the catalog because the stylesheet import it
+            // documents is required setup, not an optional topic — an application that
+            // skips it renders every icon wrong. It was "Headless API", further down,
+            // when that implementation was one of two choices.
+            'Styling',
             'Rendering Approaches',
             'Atomic API',
-            'Headless API',
             'Color Variants',
             'Recipes',
             'API Contract',

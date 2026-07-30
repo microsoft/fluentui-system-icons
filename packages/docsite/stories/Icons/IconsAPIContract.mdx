@@ -25,4 +25,12 @@ These are the only two types of breaking changes that deviate from standard sema
 
 > **💡 Note:** We could remedy these breaking change scenarios by providing empty icon placeholders, but we believe a failing build pipeline is preferable to silently shipping invalid UI with blank icons to your users.
 
+### Styling-mechanism changes require a major
+
+A change to **how** icons are styled — the required stylesheet, the attribute or class contract it targets, or its layering — is a third category, and it takes a **major version bump**. It does not qualify for the patch-only convention above.
+
+The reason is the note directly above it. Icon removal and renaming break the build, loudly, at the import. A styling change does not: it type-checks, it compiles, it ships, and the icons render without `display`, without the RTL flip, without high-contrast handling, and with both `bundleIcon` variants visible at once. Applying this document's own "a failing build pipeline is preferable to silently shipping invalid UI" principle to a change that _cannot_ fail the build means the version number has to carry the warning instead.
+
+See the [Styling](?path=/docs/icons-styling--docs) page for the current contract.
+
 **Recommendation**: When upgrading, even for patch versions, review the release notes for any removed or renamed icons to ensure your application isn't affected.

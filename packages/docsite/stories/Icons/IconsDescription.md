@@ -23,12 +23,19 @@ Icons can be delivered three ways, trading off bundle size, render performance, 
 
 See the <a href="./?path=/docs/icons-rendering-approaches--docs" target="_top">Rendering Approaches</a> page for the full comparison and setup.
 
-## Default (Griffel) vs Headless
+## Styling: import the stylesheet
 
-- **Default** icons (imported from `@fluentui/react-icons`) are styled with [Griffel](https://github.com/microsoft/griffel) and work with zero setup — styles are injected at runtime.
-- **Headless** icons (imported from `@fluentui/react-icons/headless/*`) ship **no** CSS-in-JS runtime; you opt into styling by importing a small vanilla CSS file once. This yields smaller JS bundles, especially with CSS extraction.
+Icons carry **no** CSS-in-JS runtime. Styling behaviour is expressed as `data-*` attributes on the rendered element and resolved by a plain CSS file the package ships, so there is one required setup step:
 
-The **default** icons are the right choice for most applications. Reach for the **headless** icons when you build with the [Fluent UI Headless components](https://storybooks.fluentui.dev/headless/?path=/docs/overview-introduction--docs), which are Griffel-free by design — pairing them with headless icons keeps your app free of the CSS-in-JS runtime. See the <a href="./?path=/docs/icons-headless-api--docs" target="_top">Headless API</a> page for details and the <a href="./?path=/docs/icons-bundle-size--docs" target="_top">Bundle Size</a> page for the trade-offs.
+```ts
+import '@fluentui/react-icons/styles.css';
+// …and additionally, if you use the font icons:
+import '@fluentui/react-icons/fonts/styles.css';
+```
+
+Skip it and nothing throws — every icon simply loses `display`, the RTL flip and the high-contrast handling, and a `bundleIcon` pair renders both variants at once. The stylesheet is also **unlayered**, which applications organising their CSS with `@layer` have to account for. Both are covered on the <a href="./?path=/docs/icons-styling--docs" target="_top">Styling</a> page; the <a href="./?path=/docs/icons-bundle-size--docs" target="_top">Bundle Size</a> page covers where that CSS ends up in your build.
+
+> **Upgrading from the `/headless/*` subpaths?** They are now deprecated aliases of the default ones — same modules, same files. The <a href="./?path=/docs/icons-styling--docs" target="_top">Styling</a> page has the mapping.
 
 ## Barrel imports vs Atomic API
 

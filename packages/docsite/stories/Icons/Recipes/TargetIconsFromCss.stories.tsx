@@ -1,27 +1,17 @@
-// Headless icons ship no CSS-in-JS runtime — you opt into styling by importing
-// the shipped vanilla CSS file once. This is the key difference from the standard API.
-import '@fluentui/react-icons/headless/styles.css';
-// Headless font icons additionally need their @font-face declarations.
-// import '@fluentui/react-icons/headless/fonts/styles.css';
-
 import { makeStyles, mergeClasses, tokens } from '@fluentui/react-components';
-// SVG icons (Griffel / CSS-in-JS)
+// SVG icons — an <svg> element per icon.
 import { AccessTimeFilled } from '@fluentui/react-icons/svg/access-time';
 import { CalendarLtrRegular } from '@fluentui/react-icons/svg/calendar-ltr';
-// Font icons — the same catalogue delivered as an icon font.
+import { AlertRegular } from '@fluentui/react-icons/svg/alert';
+// Font icons — the same catalogue delivered as an icon font, rendered as <i>.
 import { SendRegular } from '@fluentui/react-icons/fonts/send';
 import { SettingsFilled } from '@fluentui/react-icons/fonts/settings';
-// Headless icons — vanilla CSS, no Griffel runtime.
-import { AlertRegular } from '@fluentui/react-icons/headless/svg/alert';
-import { StarFilled } from '@fluentui/react-icons/headless/svg/star';
-// Headless font icons — vanilla CSS + the icon font.
-import { HomeFilled } from '@fluentui/react-icons/headless/fonts/home';
-import { SearchRegular } from '@fluentui/react-icons/headless/fonts/search';
+import { HomeFilled } from '@fluentui/react-icons/fonts/home';
 import * as React from 'react';
 
 const useStyles = makeStyles({
-  // A single rule styles *every* descendant icon at once — SVG, font, or headless —
-  // via the `data-fui-icon` attribute they all render, no per-icon className required.
+  // A single rule styles *every* descendant icon at once — SVG or font — via the
+  // `data-fui-icon` attribute they all render, no per-icon className required.
   toolbar: {
     display: 'flex',
     gap: '16px',
@@ -43,20 +33,17 @@ const useStyles = makeStyles({
   },
 });
 
-// A mix of every delivery mechanism. The rendered markup differs per flavor
-// (Griffel `<svg>`, Griffel font `<i>`, headless `<svg>`, headless font `<i>`),
+// A mix of both delivery mechanisms. The rendered markup differs (`<svg>` vs `<i>`),
 // but each one emits the same `data-fui-icon` attribute — so the single CSS rule
 // above styles them all.
 const IconMix = () => (
   <>
     <AccessTimeFilled aria-label="Access time (SVG)" />
     <CalendarLtrRegular aria-label="Calendar (SVG)" />
+    <AlertRegular aria-label="Alert (SVG)" />
     <SendRegular aria-label="Send (font)" />
     <SettingsFilled aria-label="Settings (font)" />
-    <AlertRegular aria-label="Alert (headless SVG)" />
-    <StarFilled aria-label="Star (headless SVG)" />
-    <HomeFilled aria-label="Home (headless font)" />
-    <SearchRegular aria-label="Search (headless font)" />
+    <HomeFilled aria-label="Home (font)" />
   </>
 );
 
@@ -80,17 +67,21 @@ TargetIconsFromCss.parameters = {
   docs: {
     description: {
       story: [
-        'Every icon — SVG or font, Griffel or headless, `Filled`, `Regular`, sized or resizable — renders a **`data-fui-icon`** attribute.',
+        'Every icon — SVG or font, `Filled`, `Regular`, sized or resizable — renders a **`data-fui-icon`** attribute.',
         'That gives you one universal selector, `[data-fui-icon]`, to style *all* icons within a scope from a single CSS rule,',
         'without adding a `className` to each icon.',
         '',
-        'Each toolbar below mixes every delivery mechanism — Griffel SVG (`@fluentui/react-icons/svg/*`), Griffel font',
-        '(`@fluentui/react-icons/fonts/*`), headless SVG (`@fluentui/react-icons/headless/svg/*`), and headless font',
-        '(`@fluentui/react-icons/headless/fonts/*`). Their rendered markup differs (`<svg>` vs `<i>`), yet the same base rule',
+        'Each toolbar below mixes both delivery mechanisms — SVG (`@fluentui/react-icons/svg/*`) and font',
+        '(`@fluentui/react-icons/fonts/*`). Their rendered markup differs (`<svg>` vs `<i>`), yet the same base rule',
         '(`& [data-fui-icon]` sets color + size) styles them all; the second toolbar layers a scoped override that recolors its icons.',
         '',
         'The attribute name is also exported as the `DATA_FUI_ICON` constant. For more specific targeting, icons also carry the',
         'class-name constants (`fui-Icon`, `fui-Icon-filled`, `fui-Icon-regular`, `fui-Icon-light`, `fui-Icon-color`, `fui-Icon-font`).',
+        '',
+        'These attributes are the same ones the package’s own stylesheet targets — see the',
+        '[Styling](?path=/docs/icons-styling--docs) page. Your rules win over it: its base rule is wrapped in `:where()`,',
+        'so it carries zero specificity. Its `[data-fui-icon-hidden]` rule deliberately is not, which is why an application',
+        'organising CSS with `@layer` has to assign the stylesheet a layer before its own layered rules can override that one.',
       ].join('\n'),
     },
   },

@@ -15,7 +15,7 @@ import { AccessTime24Filled } from '@fluentui/react-icons';
 To the optimized atomic import for your chosen target:
 
 ```tsx
-// SVG (standard)
+// SVG (default)
 import { AccessTime24Filled } from '@fluentui/react-icons/svg/access-time';
 
 // SVG sprites (⚠️ preview)
@@ -23,15 +23,11 @@ import { AccessTime24Filled } from '@fluentui/react-icons/svg-sprite/access-time
 
 // Font icons
 import { AccessTime24Filled } from '@fluentui/react-icons/fonts/access-time';
-
-// Headless API (SVG)
-import { AccessTime24Filled } from '@fluentui/react-icons/headless/svg/access-time';
-
-// Headless API (fonts)
-import { AccessTime24Filled } from '@fluentui/react-icons/headless/fonts/access-time';
 ```
 
 The examples below use `svg` as the target path. Replace it with the appropriate path for your setup from the list above.
+
+> **Transforms rewrite component imports only.** The stylesheet import is yours to add, once, at your application entry point — see the [Styling](?path=/docs/icons-styling--docs) page.
 
 ## Webpack (recommended)
 
@@ -68,7 +64,7 @@ module.exports = {
 
 **Important:** Do **not** exclude `node_modules` — the loader must be able to transform barrel imports found inside dependencies too. Files without `@fluentui/react-icons` references are skipped via a fast regex pre-check, so there is no meaningful overhead.
 
-Pass the `iconVariant` option to target a different implementation (`'svg'` — default, `'svg-sprite'`, or `'fonts'`). To adopt the Headless API, add `headless: true`:
+Pass the `iconVariant` option to target a different implementation (`'svg'` — default, `'svg-sprite'`, or `'fonts'`):
 
 ```js
 {
@@ -77,12 +73,14 @@ Pass the `iconVariant` option to target a different implementation (`'svg'` — 
   use: [
     {
       loader: '@fluentui/react-icons-atomic-webpack-loader',
-      // e.g. headless font icons
-      options: { iconVariant: 'fonts', headless: true },
+      // e.g. font icons
+      options: { iconVariant: 'fonts' },
     },
   ],
 }
 ```
+
+> **The `headless: true` option is deprecated for `@fluentui/react-icons`.** That implementation is the package default now, so `/headless/*` is an alias of the default subpaths and the option changes only which spelling the loader emits — leave it off. It remains meaningful for modules that still ship two builds, such as `@fluentui/react-brand-icons`.
 
 ### 2. Font subsetting plugin
 
