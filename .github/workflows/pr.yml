@@ -202,7 +202,10 @@ jobs:
         run: yarn nx affected -t type-check:infra
 
       - name: Install Playwright browsers
-        # `docsite:extract-storybook-llms` crawls the built storybook with Playwright.
+        # Two consumers, both of which run after this step:
+        # - `docsite:extract-storybook-llms` crawls the built storybook with Playwright;
+        # - `react-icons:test` compares the computed styles the standard and headless
+        #   APIs produce, which needs a real engine (see src/parity/render-parity.test.tsx).
         run: yarn playwright install --with-deps chromium
 
       - name: Build
