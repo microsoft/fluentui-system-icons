@@ -11,7 +11,7 @@ export interface VersionBadgeProps {
 /**
  * A small pill showing a package name and its version.
  *
- * Styling lives in `.storybook/docs-root-v9.css` (`.fluent-version-badge`) rather than
+ * Styling lives in `.storybook/docsite.css` (`.fluent-version-badge`) rather than
  * Griffel because this badge is serialized to an HTML string and injected into a
  * Storybook docs `description` — so it renders as static markup (via markdown-to-jsx),
  * not as a live React component. The docs page is wrapped in a `FluentProvider`
