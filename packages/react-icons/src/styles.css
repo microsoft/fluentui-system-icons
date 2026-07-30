@@ -1,0 +1,68 @@
+/* Fluent Icons — the default icon stylesheet.
+ *
+ * Every icon factory expresses its styling as attributes (`data-fui-icon`,
+ * `data-fui-icon-rtl`, `data-fui-icon-hidden`, `data-fui-icon-font`) instead of
+ * runtime-generated class names, so this file is REQUIRED. Without it icons have no
+ * `display`, no RTL flip, no high-contrast handling, and a bundled pair renders BOTH
+ * variants at once.
+ *
+ *   import '@fluentui/react-icons/styles.css';
+ *
+ * These rules are UNLAYERED. Cascade layers are compared before specificity, so a
+ * layered consumer rule loses to an unlayered rule here no matter how specific it is —
+ * `[data-fui-icon-hidden]` in particular is deliberately not `:where()`-wrapped because
+ * it has to beat the base rule. Design systems that use `@layer` must assign this
+ * stylesheet a layer at import time:
+ *
+ *   @import '@fluentui/react-icons/styles.css' layer(your-base-layer);
+ */
+
+/* ===== SVG Icon Defaults ===== */
+/*
+ * Wrapped in `:where()` so it has ZERO specificity and any class-based styling always
+ * wins, regardless of stylesheet order. Every other selector below is a state marker
+ * that must beat this base rule, so those are left unwrapped.
+ */
+:where([data-fui-icon]) {
+  display: inline;
+  line-height: 0;
+}
+
+/* ===== High Contrast Mode (a11y) ===== */
+@media (forced-colors: active) {
+  [data-fui-icon]:not([data-fui-icon='font']) {
+    forced-color-adjust: auto;
+  }
+}
+
+/* ===== Font Icon Defaults ===== */
+[data-fui-icon='font'] {
+  display: inline-block;
+  font-style: normal;
+  line-height: 1em;
+  color: currentColor;
+}
+
+/* ===== RTL Directional Flip ===== */
+[data-fui-icon-rtl] {
+  transform: scaleX(-1);
+}
+
+/* ===== bundleIcon: Hidden Variant ===== */
+[data-fui-icon-hidden] {
+  display: none;
+}
+
+/* ===== Font Icon Family Variants ===== */
+[data-fui-icon-font='filled'] {
+  font-family: 'FluentSystemIconsFilled';
+}
+[data-fui-icon-font='regular'] {
+  font-family: 'FluentSystemIconsRegular';
+}
+[data-fui-icon-font='resizable'] {
+  font-family: 'FluentSystemIcons';
+}
+[data-fui-icon-font='light'] {
+  font-family: 'FluentSystemIconsLight';
+}

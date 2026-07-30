@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { mergeClasses } from '@griffel/react';
-import { FluentIconsProps } from './FluentIconsProps.types';
-import { useIconState } from './useIconState';
-import { useRootStyles } from './createFluentIcon.styles';
+
+import type { FluentIconsProps } from './FluentIconsProps.types';
 import { iconClassName } from './constants';
+import { cx } from './cx';
+import { useIconState } from './useIconState';
 import { computeViewBox, createColorChildrenResolver, renderSvgBody } from '../core/svg';
 import type { SvgNode } from '../core/svg';
 
@@ -17,7 +17,11 @@ export type CreateFluentIconOptions = {
 export type { SvgNode };
 
 /**
- * Creates a Fluent icon React component with Griffel styling.
+ * Creates a Fluent icon React component.
+ *
+ * Styling is expressed as attributes (`data-fui-icon`, `data-fui-icon-rtl`) plus the
+ * `fui-Icon` class, and resolved by the shipped stylesheet — consumers must import
+ * `@fluentui/react-icons/styles.css`.
  *
  * @param displayName - The display name for the component (used in React DevTools).
  * @param width - The intrinsic width/height of the icon (e.g. `"20"`, `"24"`, `"1em"`).
@@ -40,12 +44,11 @@ export const createFluentIcon = (
   // color icons get per-instance memoized `idPrefix` scoping.
   const useColorChildren = createColorChildrenResolver(pathsOrSvg, options);
   const Icon = React.forwardRef((props: FluentIconsProps, ref: React.Ref<HTMLElement>) => {
-    const styles = useRootStyles();
     const iconState = useIconState(props, { flipInRtl: options?.flipInRtl });
     const colorChildren = useColorChildren(props.idPrefix);
     const state = {
       ...iconState,
-      className: mergeClasses(iconClassName, iconState.className, styles.root),
+      className: cx(iconClassName, iconState.className),
       ref,
       width,
       height: width,

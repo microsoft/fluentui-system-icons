@@ -1,11 +1,22 @@
-import { mergeClasses } from '@griffel/react';
 import type { FluentIconsProps } from './FluentIconsProps.types';
-import { useStyles } from './useIconStyles.styles';
+import { DATA_FUI_ICON_RTL } from './constants';
 import { useBaseIconState } from '../core/useBaseIconState';
 import type { UseIconStateOptions } from '../core/useBaseIconState';
 
 export type { UseIconStateOptions };
 
+/**
+ * Resolves the DOM state shared by every icon factory.
+ *
+ * Handles:
+ * - a11y: `aria-hidden`, `aria-label`, `role="img"`
+ * - fill: maps `primaryFill` to the `fill` prop
+ * - CSS targeting: sets the `data-fui-icon` attribute
+ * - RTL: sets `data-fui-icon-rtl` when `flipInRtl` is set and the icon context is RTL
+ *
+ * The visual result of the last two comes from the shipped stylesheet, which
+ * consumers must import (`@fluentui/react-icons/styles.css`).
+ */
 export const useIconState = <
   TBaseAttributes extends
     | React.SVGAttributes<SVGElement>
@@ -15,8 +26,11 @@ export const useIconState = <
   props: FluentIconsProps<TBaseAttributes, TRefType>,
   options?: UseIconStateOptions,
 ): Omit<FluentIconsProps<TBaseAttributes, TRefType>, 'primaryFill'> => {
-  const styles = useStyles();
   const { state, isRtlFlip } = useBaseIconState(props, options);
-  state.className = mergeClasses(styles.root, isRtlFlip && styles.rtl, state.className);
+
+  if (isRtlFlip) {
+    state[DATA_FUI_ICON_RTL] = '';
+  }
+
   return state;
 };

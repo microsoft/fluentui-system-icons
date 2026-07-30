@@ -1,6 +1,14 @@
-// Headless counterpart of `many-icons`, including the mandatory stylesheet import.
-// See that fixture for why 35 icons is the sample size.
-import '@fluentui/react-icons/headless/styles.css';
+// The 35-icon fixture WITH the mandatory stylesheet import — what a consumer of the icon
+// package actually pays. `many-icons` measures the JS runtime in isolation; this one is the
+// honest comparison, and the fixture that keeps the headline numbers in
+// `docs/bundle-size-rendering-approaches-comparison.md` under CI.
+import '@fluentui/react-icons/styles.css';
+// 35 icons — the same sample size `docs/bundle-size-rendering-approaches-comparison.md`
+// used. Every other fixture imports a single icon, where the fixed cost of a styling
+// runtime dominates and the per-icon cost is invisible. This pair (with
+// `headless-many-icons`) is the only one measured at a scale a real consumer reaches,
+// and it is what keeps that document's headline numbers under CI rather than resting on
+// a one-off manual measurement.
 import {
   AirplaneFilled,
   AirplaneRegular,
@@ -16,7 +24,7 @@ import {
   Airplane32Filled,
   Airplane48Regular,
   Airplane48Filled,
-} from '@fluentui/react-icons/headless/svg/airplane';
+} from '@fluentui/react-icons/svg/airplane';
 import {
   ArchiveFilled,
   ArchiveRegular,
@@ -33,7 +41,7 @@ import {
   Archive32Light,
   Archive48Regular,
   Archive48Filled,
-} from '@fluentui/react-icons/headless/svg/archive';
+} from '@fluentui/react-icons/svg/archive';
 import {
   ArrowLeftFilled,
   ArrowLeftRegular,
@@ -41,7 +49,7 @@ import {
   ArrowLeft12Filled,
   ArrowLeft16Regular,
   ArrowLeft16Filled,
-} from '@fluentui/react-icons/headless/svg/arrow-left';
+} from '@fluentui/react-icons/svg/arrow-left';
 
 console.log(
   AirplaneFilled,
@@ -81,4 +89,4 @@ console.log(
   ArrowLeft16Filled,
 );
 
-export default { name: 'Headless - 35 Icons + CSS' };
+export default { name: '35 Icons + CSS' };

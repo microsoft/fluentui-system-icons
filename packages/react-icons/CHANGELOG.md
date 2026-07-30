@@ -1,3 +1,77 @@
+## Unreleased
+
+### 🚀 Features
+
+- **react-icons:** promote the headless API to the package default
+
+  `scripts/build.js` has carried the note _"will be part of package.json once headless is
+  stable"_ for a while. It is. The default entrypoints — `.`, `./svg`, `./svg/*`,
+  `./fonts`, `./fonts/*`, `./utils` — now serve the attribute-driven, Griffel-free
+  implementation, and the CSS-in-JS one is deleted. `@griffel/react` is gone from this
+  package's `dependencies`; nothing in the published output references it.
+
+  Sizes move in the direction the headless fixtures always showed: with CSS extraction a
+  single SVG atom drops from 5.641 kB to 2.353 kB minified (−58.3%), and 35 icons from
+  18.331 kB to 15.031 kB (−18.0%). Without extraction the shipped stylesheet is inlined
+  into the JS bundle instead, so measure your own build before assuming a win there.
+
+### 💥 Breaking changes
+
+- **A stylesheet import is now required.** Styling is expressed as `data-fui-icon*`
+  attributes resolved by a shipped CSS file rather than injected at runtime, so:
+
+  ```js
+  import '@fluentui/react-icons/styles.css';
+  // …and additionally, if you use the font icons:
+  import '@fluentui/react-icons/fonts/styles.css';
+  ```
+
+  Without it every icon loses `display`, the RTL flip and the high-contrast handling —
+  and a `bundleIcon` pair renders **both** variants at once. The failure is silent and
+  application-wide, so wire the import up before upgrading, not after.
+
+  The stylesheet is **unlayered**. Cascade layers are compared before specificity, so a
+  layered rule of yours loses to an unlayered rule here no matter how specific it is
+  (`[data-fui-icon-hidden]` in particular is deliberately not `:where()`-wrapped, because
+  it has to beat the base rule). Design systems that use `@layer` must assign the
+  stylesheet a layer at import time:
+
+  ```css
+  @import '@fluentui/react-icons/styles.css' layer(your-base-layer);
+  ```
+
+  Shipping the layer inside the package would impose a layer name on the whole ecosystem,
+  so the file stays unlayered and the obligation is documented instead. See
+  `docs/headless.md` for the full rationale.
+
+- **`wrapIcon` no longer emits a `class` attribute** when the caller passes no
+  `className`. Every other factory contributes a `fui-*` contract class, so `class`
+  survives there; `wrapIcon` contributes none, and there are no generated class names left
+  to fill it. Code doing `element.className.split(' ')` on a wrapped icon is the one
+  pattern this breaks.
+
+- **`./headless*` subpaths are deprecated.** They are kept for this release as aliases of
+  the default entrypoints — the very same modules and files — so existing headless adopters
+  upgrade without a code change. Migrate `@fluentui/react-icons/headless` →
+  `@fluentui/react-icons`, `…/headless/utils` → `…/utils`, `…/headless/svg/*` → `…/svg/*`,
+  `…/headless/fonts/*` → `…/fonts/*`, `…/headless/styles.css` → `…/styles.css`,
+  `…/headless/fonts/styles.css` → `…/fonts/styles.css`. They will be removed in the next
+  major.
+
+- The `--headless` generation flags on `convert.js` / `convert-font.js` are gone, and the
+  duplicated `atoms/headless-*` directories are no longer published. The default atoms
+  _are_ the headless atoms now.
+
+### 🩹 Fixes
+
+- **react-icons:** `wrapIcon` now gets the high-contrast fix. The removed CSS-in-JS
+  implementation scoped `forced-color-adjust: auto` to the two factories that called
+  `useRootStyles()`, so a wrapped custom SVG kept Chromium's forced-colors default of
+  `preserve-parent-color` and its internal colours were never re-mapped. The stylesheet
+  targets `[data-fui-icon]`, which `wrapIcon` also sets, so wrapped icons are now
+  consistent with factory-built ones. Verified in Chromium by
+  `src/contract/rendered-styles.test.tsx`.
+
 ## 2.0.334 (2026-07-24)
 
 ### 🚀 Features

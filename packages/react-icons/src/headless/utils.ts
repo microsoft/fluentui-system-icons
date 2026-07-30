@@ -1,15 +1,5 @@
-// Headless utilities endpoint — mirrors `@fluentui/react-icons/utils` for the
-// headless (data-attribute) API. Pairs with the atomic `headless/*` icon atoms
-// so build transforms can route utility imports here instead of the Griffel ones.
-
-export { bundleIcon } from './bundleIcon';
-export { wrapIcon } from './wrapIcon';
-export { createFluentIcon } from './createFluentIcon';
-export { useIconState } from './useIconState';
-export {
-  iconClassName,
-  iconFilledClassName,
-  iconRegularClassName,
-  iconColorClassName,
-  iconLightClassName,
-} from './shared';
+/**
+ * @deprecated Transition alias for `@fluentui/react-icons/utils`, which now serves the
+ * headless implementation. Removed in the next major.
+ */
+export * from '../utils';

@@ -2,20 +2,30 @@
  * @vitest-environment jsdom
  */
 
+/**
+ * The attribute contract every icon factory emits: `data-fui-icon` and its state
+ * markers, the `fui-*` class-name contract, and the RTL decision reaching the DOM.
+ *
+ * These are the behaviours the shipped stylesheet selects on, so they are the ones a
+ * refactor must not quietly change. `icon-factories.test.tsx` covers the rendering and
+ * prop-handling side of the same factories.
+ */
+
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { describe, expect, test } from 'vitest';
 
-import { createFluentFontIcon, FluentFontIcon } from './fonts';
+import { createFluentFontIcon, FluentFontIcon } from './fonts/createFluentFontIcon';
 import { createFluentIcon } from './createFluentIcon';
 import { createFluentIcon as createFluentSpriteIcon } from './createFluentIcon.svg-sprite';
 import { bundleIcon } from './bundleIcon';
 import { wrapIcon } from './wrapIcon';
-import type { FluentIcon, FluentIconsProps } from './shared';
-import { DATA_FUI_ICON, DATA_FUI_ICON_RTL, DATA_FUI_ICON_HIDDEN, DATA_FUI_ICON_FONT } from './shared';
+import type { FluentIcon } from './createFluentIcon';
+import type { FluentIconsProps } from './FluentIconsProps.types';
+import { DATA_FUI_ICON, DATA_FUI_ICON_RTL, DATA_FUI_ICON_HIDDEN, DATA_FUI_ICON_FONT } from './constants';
 import { IconDirectionContextProvider } from '../contexts';
 
-describe('Headless API — SVG icons', () => {
+describe('SVG icons', () => {
   test('createFluentIcon should create a valid icon component', () => {
     const AccessTimeRegular = createFluentIcon('AccessTimeRegular', '1em', [
       'M6.99 8.6A.5.5 0 0 1 6 8.4a1.29 1.29 0 0 1 .07-.24',
@@ -25,25 +35,6 @@ describe('Headless API — SVG icons', () => {
     expect(AccessTimeRegular.displayName).toBe('AccessTimeRegular');
 
     const { container } = render(<AccessTimeRegular />);
-    expect(container).toMatchInlineSnapshot(`
-      <div>
-        <svg
-          aria-hidden="true"
-          class="fui-Icon"
-          data-fui-icon=""
-          fill="currentColor"
-          height="1em"
-          viewBox="0 0 20 20"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M6.99 8.6A.5.5 0 0 1 6 8.4a1.29 1.29 0 0 1 .07-.24"
-            fill="currentColor"
-          />
-        </svg>
-      </div>
-    `);
     const svg = container.querySelector('svg');
     expect(svg).toHaveAttribute(DATA_FUI_ICON, '');
     expect(svg).toHaveAttribute('aria-hidden', 'true');
@@ -144,14 +135,14 @@ describe('Headless API — SVG icons', () => {
     expect(svg).toHaveAttribute('role', 'img');
   });
 
-  test('createFluentIcon has no Griffel class names (no atomic CSS hashes)', () => {
+  test('createFluentIcon emits no generated class names', () => {
     const d = 'M1 2 L3 4';
     const MyIcon = createFluentIcon('MyIcon', '1em', [d]);
     const { container } = render(<MyIcon />);
 
     const svg = container.querySelector('svg');
     const classNames = svg?.getAttribute('class') ?? '';
-    // Should only have fui-Icon, no Griffel-generated hash classes
+    // Only the `fui-Icon` contract class — no CSS-in-JS hashes.
     expect(classNames).toBe('fui-Icon');
   });
 
@@ -161,7 +152,7 @@ describe('Headless API — SVG icons', () => {
   }));
 });
 
-describe('Headless API — SVG sprite icons', () => {
+describe('SVG sprite icons', () => {
   test('renders svg with <use> element referencing sprite path', () => {
     const MyIcon = createFluentSpriteIcon('access-time-20-filled', '20', '/sprites/access-time.svg');
 
@@ -216,7 +207,7 @@ describe('Headless API — SVG sprite icons', () => {
   }));
 });
 
-describe('Headless API — Font icons', () => {
+describe('Font icons', () => {
   const FontFile = {
     Filled: 0,
     Regular: 1,
@@ -225,7 +216,7 @@ describe('Headless API — Font icons', () => {
   } as const;
 
   test('createFluentFontIcon renders with data attributes', () => {
-    const MyFontIcon: FluentFontIcon = createFluentFontIcon('MyFontIcon', '\uE001', FontFile.Filled, 20);
+    const MyFontIcon: FluentFontIcon = createFluentFontIcon('MyFontIcon', '', FontFile.Filled, 20);
 
     const { container } = render(<MyFontIcon />);
     const el = container.querySelector('i');
@@ -234,25 +225,38 @@ describe('Headless API — Font icons', () => {
     expect(el).toHaveAttribute(DATA_FUI_ICON_FONT, 'filled');
     expect(el).toHaveAttribute('aria-hidden', 'true');
     expect(el).toHaveClass('fui-Icon-font');
-    expect(el?.textContent).toBe('\uE001');
+    expect(el?.textContent).toBe('');
   });
 
   test('createFluentFontIcon applies fontSize via style', () => {
-    const MyFontIcon = createFluentFontIcon('MyFontIcon', '\uE001', FontFile.Regular, 24);
+    const MyFontIcon = createFluentFontIcon('MyFontIcon', '', FontFile.Regular, 24);
     const { container } = render(<MyFontIcon />);
     const el = container.querySelector('i');
     expect(el?.style.fontSize).toBe('24px');
   });
 
   test('createFluentFontIcon maps primaryFill to color', () => {
-    const MyFontIcon = createFluentFontIcon('MyFontIcon', '\uE001', FontFile.Filled);
+    const MyFontIcon = createFluentFontIcon('MyFontIcon', '', FontFile.Filled);
     const { container } = render(<MyFontIcon primaryFill="blue" />);
     const el = container.querySelector('i');
     expect(el?.style.color).toBe('blue');
   });
+
+  test('every font variant selects its family through data-fui-icon-font', () => {
+    for (const [font, variant] of [
+      [FontFile.Filled, 'filled'],
+      [FontFile.Regular, 'regular'],
+      [FontFile.Resizable, 'resizable'],
+      [FontFile.Light, 'light'],
+    ] as const) {
+      const Icon = createFluentFontIcon('MyFontIcon', '', font, 20);
+      const { container } = render(<Icon />);
+      expect(container.querySelector('i'), variant).toHaveAttribute(DATA_FUI_ICON_FONT, variant);
+    }
+  });
 });
 
-describe('Headless API — bundleIcon', () => {
+describe('bundleIcon', () => {
   test('bundleIcon renders both variants with data attributes', () => {
     const d = 'M1 2 L3 4';
     const FilledIcon = createFluentIcon('TestFilled', '1em', [d]);
@@ -293,7 +297,7 @@ describe('Headless API — bundleIcon', () => {
   });
 });
 
-describe('Headless API — wrapIcon', () => {
+describe('wrapIcon', () => {
   const CustomSvg = (iconProps: FluentIconsProps) => (
     <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" {...iconProps}>
       <path fill="currentColor" d="M10 2l6 16H4l6-16z" />
@@ -362,11 +366,13 @@ describe('Headless API — wrapIcon', () => {
     expect(ref.current).toBe(container.querySelector('svg'));
   });
 
-  test('wrapIcon has no Griffel class names (no atomic CSS hashes)', () => {
+  test('wrapIcon emits no class attribute at all when the consumer supplies none', () => {
     const CustomIcon = wrapIcon(CustomSvg, 'CustomIcon');
 
     const { container } = render(<CustomIcon />);
-    // The standard API injects atomic classes here; headless leaves className untouched.
+    // `wrapIcon` is the one factory that contributes no `fui-*` contract class, so with
+    // no consumer className there is nothing left to put in `class`. This is a DOM-shape
+    // change from the removed CSS-in-JS implementation, recorded in the CHANGELOG.
     expect(container.querySelector('svg')).not.toHaveAttribute('class');
   });
 

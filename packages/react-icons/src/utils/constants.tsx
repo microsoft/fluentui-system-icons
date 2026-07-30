@@ -10,3 +10,12 @@ export const fontIconClassName = 'fui-Icon-font';
  * Enables selecting any icon from the catalogue via the `[data-fui-icon]` selector.
  */
 export const DATA_FUI_ICON = 'data-fui-icon';
+
+/** Data attribute applied to icons that should flip in RTL text direction. */
+export const DATA_FUI_ICON_RTL = 'data-fui-icon-rtl';
+
+/** Data attribute applied to the inactive variant in a bundled icon pair. */
+export const DATA_FUI_ICON_HIDDEN = 'data-fui-icon-hidden';
+
+/** Data attribute for font icon font-family variant selection (filled|regular|resizable|light). */
+export const DATA_FUI_ICON_FONT = 'data-fui-icon-font';

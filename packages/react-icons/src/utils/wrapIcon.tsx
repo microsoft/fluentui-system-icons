@@ -7,6 +7,10 @@ import type { CreateFluentIconOptions, FluentIcon } from './createFluentIcon';
  *
  * Wraps custom Svg Component with Fluent Icon behaviour
  *
+ * The wrapped component receives the `data-fui-icon` / `data-fui-icon-rtl` attributes the
+ * shipped stylesheet targets. Unlike every other factory it contributes no `fui-*` class,
+ * so a wrapped icon with no consumer `className` carries no `class` attribute at all.
+ *
  * @example
  * ```tsx
  const CustomSvg = (iconProps: FluentIconsProps) =>

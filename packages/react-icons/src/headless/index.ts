@@ -1,8 +1,16 @@
-// Headless Fluent Icons API
-// Import the shipped CSS file (styles.css) for default styling via data-attribute selectors.
+/**
+ * @deprecated Transition alias. The headless implementation IS the default API as of
+ * this release — `./headless` now re-exports it unchanged. Import from
+ * `@fluentui/react-icons` (or `@fluentui/react-icons/utils`) instead, and import
+ * `@fluentui/react-icons/styles.css` rather than `@fluentui/react-icons/headless/styles.css`.
+ *
+ * This subpath is kept for one release so existing headless adopters upgrade without a
+ * code change, and will be removed in the next major.
+ */
 
 // Types & constants
-export type { FluentIconsProps, FluentIcon, CreateFluentIconOptions } from './shared';
+export type { FluentIconsProps } from '../utils/FluentIconsProps.types';
+export type { FluentIcon, CreateFluentIconOptions } from '../utils/createFluentIcon';
 export {
   iconClassName,
   iconFilledClassName,
@@ -14,18 +22,18 @@ export {
   DATA_FUI_ICON_RTL,
   DATA_FUI_ICON_HIDDEN,
   DATA_FUI_ICON_FONT,
-  cx,
-} from './shared';
+} from '../utils/constants';
+export { cx } from '../utils/cx';
 
 // Context
 export { IconDirectionContextProvider, useIconContext } from '../contexts/index';
 export type { IconDirectionContextValue } from '../contexts/index';
 
 // Core hook
-export { useIconState } from './useIconState';
-export type { UseIconStateOptions } from './useIconState';
+export { useIconState } from '../utils/useIconState';
+export type { UseIconStateOptions } from '../utils/useIconState';
 
 // SVG icon factories
-export { createFluentIcon } from './createFluentIcon';
-export { bundleIcon } from './bundleIcon';
-export { wrapIcon } from './wrapIcon';
+export { createFluentIcon } from '../utils/createFluentIcon';
+export { bundleIcon } from '../utils/bundleIcon';
+export { wrapIcon } from '../utils/wrapIcon';

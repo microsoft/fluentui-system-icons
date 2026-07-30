@@ -1,5 +1,15 @@
 # Headless ↔ standard API parity report
 
+> **Status: superseded by the promotion it was written to justify.** The headless
+> implementation is now the default one and the CSS-in-JS entrypoint is deleted, so the
+> two APIs this report compares no longer coexist. It is kept as the evidence the
+> promotion rested on. The suites listed below were repointed at the single remaining
+> implementation and renamed accordingly:
+> `src/parity/entrypoint-api-parity.test.ts` → `src/contract/entrypoint-api.test.ts`,
+> `src/parity/render-parity.test.tsx` → `src/contract/rendered-styles.test.tsx`,
+> `build-verify-parity.test.js` → `build-verify-contract.test.js`. All four
+> [open items](#open-items) are resolved — see the CHANGELOG entry for the promotion.
+
 `scripts/build.js` has carried the same note for a while:
 
 > `NOTE: will be part of package.json once headless is stable. then we can remove this dynamic addition and the related build logic that copies headless assets.`
@@ -246,12 +256,17 @@ removes an asset-emitting fixture.
 
 ## Open items
 
-1. **`wrapIcon` under forced colors** (Finding 1) — accept the improvement, or add an
-   attribute to preserve the current omission. Recommend accepting.
-2. **`wrapIcon` emits no `class` attribute** — the only DOM-shape break. Worth a line in the
-   changelog for the promotion.
+All four were settled by the promotion:
+
+1. **`wrapIcon` under forced colors** (Finding 1) — **accepted as an improvement.** Wrapped
+   icons now get `forced-color-adjust: auto` like every other icon;
+   `src/contract/rendered-styles.test.tsx` asserts it in Chromium and the CHANGELOG records
+   it as a fix.
+2. **`wrapIcon` emits no `class` attribute** — **recorded** as a breaking change in the
+   CHANGELOG, and pinned by a test so it cannot widen.
 3. **The `style-loader` guidance** in `docs/bundle-size-rendering-approaches-comparison.md`
-   recommends "prefer the Griffel variant", which cannot survive Griffel's removal, and its
-   SVG row does not reproduce. Rewrite against the fixtures added here.
-4. **No headless icon barrel** — resolved by promotion rather than before it, but the
-   sequencing should be explicit in the promotion PR.
+   — **still open**, and now the only outstanding item. It recommends "prefer the Griffel
+   variant", which no longer exists. Rewriting it is part of the documentation stage; the
+   fixtures it needs to be rewritten against (`… + CSS`) are in place.
+4. **No headless icon barrel** — **resolved by the promotion**: `.`, `./svg` and `./fonts`
+   are the headless barrels now, rather than new subpaths being added alongside them.

@@ -228,252 +228,13 @@ describe('Build Verification', () => {
     });
   });
 
-  describe('Styles Files', () => {
-    it(`should produce griffel processed .styles.js and unprocessed .styles.raw.js [lib]`, () => {
-      const root = path.join(__dirname, 'lib');
-      const processed = 'utils/useIconStyles.styles.js';
-      const unprocessed = 'utils/useIconStyles.styles.raw.js';
-      expect(fs.readFileSync(path.join(root, processed), 'utf8')).toMatchInlineSnapshot(`
-        "import { __styles } from '@griffel/react';
-        export const useStyles = __styles({
-          root: {
-            mc9l5x: "f1w7gpdv",
-            Bg96gwp: "fez10in"
-          },
-          rtl: {
-            Bz10aip: "f13rod7r"
-          }
-        }, {
-          d: [".f1w7gpdv{display:inline;}", ".fez10in{line-height:0;}", ".f13rod7r{transform:scaleX(-1);}"]
-        });"
-      `);
-      expect(fs.readFileSync(path.join(root, unprocessed), 'utf8')).toMatchInlineSnapshot(`
-        "import { makeStyles } from '@griffel/react';
-        export const useStyles = makeStyles({
-            root: {
-                display: 'inline',
-                lineHeight: 0,
-            },
-            rtl: {
-                transform: 'scaleX(-1)',
-            },
-        });
-        "
-      `);
-    });
-    it(`should produce griffel processed .styles.js and unprocessed .styles.raw.js having makeStaticStyles calls [lib]`, () => {
-      const root = path.join(__dirname, 'lib');
-      const processed = 'utils/fonts/createFluentFontIcon.styles.js';
-      const unprocessed = 'utils/fonts/createFluentFontIcon.styles.raw.js';
-      expect(fs.readFileSync(path.join(root, processed), 'utf8')).toMatchInlineSnapshot(`
-        "import _asset10 from "./FluentSystemIcons-Resizable.ttf";
-        import _asset1 from "./FluentSystemIcons-Resizable.woff";
-        import _asset0 from "./FluentSystemIcons-Resizable.woff2";
-        import _asset9 from "./FluentSystemIcons-Light.ttf";
-        import _asset8 from "./FluentSystemIcons-Light.woff";
-        import _asset7 from "./FluentSystemIcons-Light.woff2";
-        import _asset6 from "./FluentSystemIcons-Regular.ttf";
-        import _asset5 from "./FluentSystemIcons-Regular.woff";
-        import _asset4 from "./FluentSystemIcons-Regular.woff2";
-        import _asset3 from "./FluentSystemIcons-Filled.ttf";
-        import _asset2 from "./FluentSystemIcons-Filled.woff";
-        import _asset from "./FluentSystemIcons-Filled.woff2";
-        import { __styles, __staticStyles } from '@griffel/react';
-        import fontFilledTtf from './FluentSystemIcons-Filled.ttf';
-        import fontFilledWoff from './FluentSystemIcons-Filled.woff';
-        import fontFilledWoff2 from './FluentSystemIcons-Filled.woff2';
-        import fontRegularTtf from './FluentSystemIcons-Regular.ttf';
-        import fontRegularWoff from './FluentSystemIcons-Regular.woff';
-        import fontRegularWoff2 from './FluentSystemIcons-Regular.woff2';
-        import fontLightTtf from './FluentSystemIcons-Light.ttf';
-        import fontLightWoff from './FluentSystemIcons-Light.woff';
-        import fontLightWoff2 from './FluentSystemIcons-Light.woff2';
-        import fontOneSizeTtf from './FluentSystemIcons-Resizable.ttf';
-        import fontOneSizeWoff from './FluentSystemIcons-Resizable.woff';
-        import fontOneSizeWoff2 from './FluentSystemIcons-Resizable.woff2';
-        const FONT_FAMILY_MAP = {
-          [0 /* Filled */]: 'FluentSystemIconsFilled',
-          [1 /* Regular */]: 'FluentSystemIconsRegular',
-          [2 /* Resizable */]: 'FluentSystemIcons'
-        };
-        export const useStaticStyles = __staticStyles({
-          d: [\`@font-face{font-family:FluentSystemIconsFilled;font-display:"block";src:url(\${_asset}) format("woff2"),url(\${_asset2}) format("woff"),url(\${_asset3}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIconsRegular;font-display:"block";src:url(\${_asset4}) format("woff2"),url(\${_asset5}) format("woff"),url(\${_asset6}) format("truetype");}\`, \`@font-face{font-family:undefined;src:url(\${_asset7}) format("woff2"),url(\${_asset8}) format("woff"),url(\${_asset9}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIcons;font-display:"block";src:url(\${_asset0}) format("woff2"),url(\${_asset1}) format("woff"),url(\${_asset10}) format("truetype");}\`]
-        });
-        export const useRootStyles = __styles({
-          "0": {
-            Bahqtrf: "f9dzkbp"
-          },
-          "1": {
-            Bahqtrf: "f1krtbx5"
-          },
-          "2": {
-            Bahqtrf: "f1sxfq9t"
-          },
-          "3": {
-            Bahqtrf: "fgtzeza"
-          },
-          root: {
-            mc9l5x: "f14t3ns0",
-            B80ckks: "fmd4ok8",
-            Bg96gwp: "fne0op0",
-            sj55zd: "f303qgw"
-          }
-        }, {
-          d: [".f9dzkbp{font-family:FluentSystemIconsFilled;}", ".f1krtbx5{font-family:FluentSystemIconsRegular;}", ".f1sxfq9t{font-family:FluentSystemIcons;}", ".fgtzeza{font-family:FluentSystemIconsLight;}", ".f14t3ns0{display:inline-block;}", ".fmd4ok8{font-style:normal;}", ".fne0op0{line-height:1em;}", ".f303qgw{color:currentColor;}"]
-        });"
-      `);
-      expect(fs.readFileSync(path.join(root, unprocessed), 'utf8')).toMatchInlineSnapshot(`
-        "import { makeStyles, makeStaticStyles } from '@griffel/react';
-        import fontFilledTtf from './FluentSystemIcons-Filled.ttf';
-        import fontFilledWoff from './FluentSystemIcons-Filled.woff';
-        import fontFilledWoff2 from './FluentSystemIcons-Filled.woff2';
-        import fontRegularTtf from './FluentSystemIcons-Regular.ttf';
-        import fontRegularWoff from './FluentSystemIcons-Regular.woff';
-        import fontRegularWoff2 from './FluentSystemIcons-Regular.woff2';
-        import fontLightTtf from './FluentSystemIcons-Light.ttf';
-        import fontLightWoff from './FluentSystemIcons-Light.woff';
-        import fontLightWoff2 from './FluentSystemIcons-Light.woff2';
-        import fontOneSizeTtf from './FluentSystemIcons-Resizable.ttf';
-        import fontOneSizeWoff from './FluentSystemIcons-Resizable.woff';
-        import fontOneSizeWoff2 from './FluentSystemIcons-Resizable.woff2';
-        const FONT_FAMILY_MAP = {
-            [0 /* Filled */]: 'FluentSystemIconsFilled',
-            [1 /* Regular */]: 'FluentSystemIconsRegular',
-            [2 /* Resizable */]: 'FluentSystemIcons',
-        };
-        export const useStaticStyles = makeStaticStyles(\`
-        @font-face {
-            font-family: \${FONT_FAMILY_MAP[0 /* Filled */]};
-            font-display: "block";
-            src: url(\${JSON.stringify(fontFilledWoff2)}) format("woff2"),
-            url(\${JSON.stringify(fontFilledWoff)}) format("woff"),
-            url(\${JSON.stringify(fontFilledTtf)}) format("truetype");
-        }
-        @font-face {
-            font-family: \${FONT_FAMILY_MAP[1 /* Regular */]};
-            font-display: "block";
-            src: url(\${JSON.stringify(fontRegularWoff2)}) format("woff2"),
-            url(\${JSON.stringify(fontRegularWoff)}) format("woff"),
-            url(\${JSON.stringify(fontRegularTtf)}) format("truetype");
-        }
-
-        @font-face {
-            font-family: \${FONT_FAMILY_MAP[3 /* Light */]};
-            src: url(\${JSON.stringify(fontLightWoff2)}) format("woff2"),
-            url(\${JSON.stringify(fontLightWoff)}) format("woff"),
-            url(\${JSON.stringify(fontLightTtf)}) format("truetype");
-        }
-
-        @font-face {
-            font-family: \${FONT_FAMILY_MAP[2 /* Resizable */]};
-            font-display: "block";
-            src: url(\${JSON.stringify(fontOneSizeWoff2)}) format("woff2"),
-            url(\${JSON.stringify(fontOneSizeWoff)}) format("woff"),
-            url(\${JSON.stringify(fontOneSizeTtf)}) format("truetype");
-        }
-        \`);
-        export const useRootStyles = makeStyles({
-            root: {
-                display: 'inline-block',
-                fontStyle: 'normal',
-                lineHeight: '1em',
-                color: 'currentColor',
-            },
-            [0 /* Filled */]: {
-                fontFamily: 'FluentSystemIconsFilled',
-            },
-            [1 /* Regular */]: {
-                fontFamily: 'FluentSystemIconsRegular',
-            },
-            [2 /* Resizable */]: {
-                fontFamily: 'FluentSystemIcons',
-            },
-            [3 /* Light */]: {
-                fontFamily: 'FluentSystemIconsLight',
-            },
-        });
-        "
-      `);
+  describe('Stylesheets', () => {
+    it.each(['lib', 'lib-cjs'])('should copy the base stylesheet to %s', (libDir) => {
+      expect(fs.existsSync(path.join(__dirname, libDir, 'styles.css'))).toBe(true);
     });
 
-    it(`should produce griffel processed .styles.js and unprocessed .styles.raw.js [lib-cjs]`, () => {
-      const root = path.join(__dirname, 'lib-cjs');
-      const processed = 'utils/useIconStyles.styles.js';
-      const unprocessed = 'utils/useIconStyles.styles.raw.js';
-      expect(fs.readFileSync(path.join(root, processed), 'utf8')).toMatchInlineSnapshot(`
-        ""use strict";
-
-        Object.defineProperty(exports, "__esModule", {
-          value: true
-        });
-        exports.useStyles = void 0;
-        const react_1 = require("@griffel/react");
-        exports.useStyles = react_1.__styles({
-          root: {
-            mc9l5x: "f1w7gpdv",
-            Bg96gwp: "fez10in"
-          },
-          rtl: {
-            Bz10aip: "f13rod7r"
-          }
-        }, {
-          d: [".f1w7gpdv{display:inline;}", ".fez10in{line-height:0;}", ".f13rod7r{transform:scaleX(-1);}"]
-        });"
-      `);
-      expect(fs.readFileSync(path.join(root, unprocessed), 'utf8')).toMatchInlineSnapshot(`
-        ""use strict";
-        Object.defineProperty(exports, "__esModule", { value: true });
-        exports.useStyles = void 0;
-        const react_1 = require("@griffel/react");
-        exports.useStyles = react_1.makeStyles({
-            root: {
-                display: 'inline',
-                lineHeight: 0,
-            },
-            rtl: {
-                transform: 'scaleX(-1)',
-            },
-        });
-        "
-      `);
-    });
-
-    it.each(['lib', 'lib-cjs'])('should have required styles files in utils/ (%s)', async (libDir) => {
-      const utilsPath = path.join(__dirname, libDir, 'utils');
-      const files = await readdir(utilsPath);
-
-      // Check for .styles.raw.js files
-      const rawStylesFiles = files.filter((file) => file.endsWith('.styles.raw.js'));
-      expect(rawStylesFiles.length).toBeGreaterThan(0);
-
-      // Check for .styles.js files
-      const stylesFiles = files.filter((file) => file.endsWith('.styles.js') && !file.endsWith('.raw.js'));
-      expect(stylesFiles.length).toBeGreaterThan(0);
-
-      // Verify specific expected files exist
-      const expectedStylesFiles = [
-        'createFluentIcon.styles.raw.js',
-        'createFluentIcon.styles.js',
-        'bundleIcon.styles.raw.js',
-        'bundleIcon.styles.js',
-        'useIconStyles.styles.raw.js',
-        'useIconStyles.styles.js',
-      ];
-
-      for (const file of expectedStylesFiles) {
-        const filePath = path.join(utilsPath, file);
-        expect(fs.existsSync(filePath)).toBe(true);
-      }
-    });
-
-    it.each(['lib', 'lib-cjs'])('should have required font styles files in utils/fonts (%s)', async (libDir) => {
-      const fontsUtilsPath = path.join(__dirname, libDir, 'utils', 'fonts');
-      const expectedFontsStylesFiles = ['createFluentFontIcon.styles.raw.js', 'createFluentFontIcon.styles.js'];
-
-      for (const file of expectedFontsStylesFiles) {
-        const filePath = path.join(fontsUtilsPath, file);
-        expect(fs.existsSync(filePath)).toBe(true);
-      }
+    it.each(['lib', 'lib-cjs'])('should copy the @font-face stylesheet to %s/utils/fonts', (libDir) => {
+      expect(fs.existsSync(path.join(__dirname, libDir, 'utils', 'fonts', 'styles.css'))).toBe(true);
     });
   });
 
@@ -647,6 +408,7 @@ describe('Build Verification', () => {
         export { wrapIcon } from './utils/wrapIcon';
         export { bundleIcon } from './utils/bundleIcon';
         export { createFluentIcon } from './utils/createFluentIcon';
+        export { cx } from './utils/cx';
         export * from './utils/useIconState';
         export * from './utils/constants';
         export { IconDirectionContextProvider, useIconContext } from './contexts/index';
@@ -716,6 +478,7 @@ describe('Build Verification', () => {
         export { wrapIcon } from './utils/wrapIcon';
         export { bundleIcon } from './utils/bundleIcon';
         export { createFluentIcon } from './utils/createFluentIcon';
+        export { cx } from './utils/cx';
         export * from './utils/useIconState';
         export * from './utils/constants';
         export { IconDirectionContextProvider, useIconContext } from './contexts/index';
@@ -734,7 +497,7 @@ describe('Build Verification', () => {
       expect(jsContent).toMatchInlineSnapshot(`
         ""use strict";
         Object.defineProperty(exports, "__esModule", { value: true });
-        exports.useIconContext = exports.IconDirectionContextProvider = exports.createFluentIcon = exports.bundleIcon = exports.wrapIcon = void 0;
+        exports.useIconContext = exports.IconDirectionContextProvider = exports.cx = exports.createFluentIcon = exports.bundleIcon = exports.wrapIcon = void 0;
         const tslib_1 = require("tslib");
         tslib_1.__exportStar(require("./icons/chunk-0"), exports);
         tslib_1.__exportStar(require("./icons/chunk-1"), exports);
@@ -802,6 +565,8 @@ describe('Build Verification', () => {
         Object.defineProperty(exports, "bundleIcon", { enumerable: true, get: function () { return bundleIcon_1.bundleIcon; } });
         var createFluentIcon_1 = require("./utils/createFluentIcon");
         Object.defineProperty(exports, "createFluentIcon", { enumerable: true, get: function () { return createFluentIcon_1.createFluentIcon; } });
+        var cx_1 = require("./utils/cx");
+        Object.defineProperty(exports, "cx", { enumerable: true, get: function () { return cx_1.cx; } });
         tslib_1.__exportStar(require("./utils/useIconState"), exports);
         tslib_1.__exportStar(require("./utils/constants"), exports);
         var index_1 = require("./contexts/index");
@@ -873,6 +638,7 @@ describe('Build Verification', () => {
         export { wrapIcon } from './utils/wrapIcon';
         export { bundleIcon } from './utils/bundleIcon';
         export { createFluentIcon } from './utils/createFluentIcon';
+        export { cx } from './utils/cx';
         export * from './utils/useIconState';
         export * from './utils/constants';
         export { IconDirectionContextProvider, useIconContext } from './contexts/index';
@@ -954,6 +720,7 @@ describe('Build Verification', () => {
         export { bundleIcon } from '../utils/bundleIcon';
         export { createFluentIcon } from '../utils/createFluentIcon';
         export { createFluentFontIcon } from '../utils/fonts/createFluentFontIcon';
+        export { cx } from '../utils/cx';
         export * from '../utils/useIconState';
         export * from '../utils/constants';
         export { IconDirectionContextProvider, useIconContext } from '../contexts/index';
@@ -1024,6 +791,7 @@ describe('Build Verification', () => {
         export { bundleIcon } from '../utils/bundleIcon';
         export { createFluentIcon } from '../utils/createFluentIcon';
         export { createFluentFontIcon } from '../utils/fonts/createFluentFontIcon';
+        export { cx } from '../utils/cx';
         export * from '../utils/useIconState';
         export * from '../utils/constants';
         export { IconDirectionContextProvider, useIconContext } from '../contexts/index';
@@ -1044,7 +812,7 @@ describe('Build Verification', () => {
       expect(jsContent).toMatchInlineSnapshot(`
         ""use strict";
         Object.defineProperty(exports, "__esModule", { value: true });
-        exports.useIconContext = exports.IconDirectionContextProvider = exports.createFluentFontIcon = exports.createFluentIcon = exports.bundleIcon = exports.wrapIcon = void 0;
+        exports.useIconContext = exports.IconDirectionContextProvider = exports.cx = exports.createFluentFontIcon = exports.createFluentIcon = exports.bundleIcon = exports.wrapIcon = void 0;
         const tslib_1 = require("tslib");
         tslib_1.__exportStar(require("./icons/chunk-0"), exports);
         tslib_1.__exportStar(require("./icons/chunk-1"), exports);
@@ -1114,6 +882,8 @@ describe('Build Verification', () => {
         Object.defineProperty(exports, "createFluentIcon", { enumerable: true, get: function () { return createFluentIcon_1.createFluentIcon; } });
         var createFluentFontIcon_1 = require("../utils/fonts/createFluentFontIcon");
         Object.defineProperty(exports, "createFluentFontIcon", { enumerable: true, get: function () { return createFluentFontIcon_1.createFluentFontIcon; } });
+        var cx_1 = require("../utils/cx");
+        Object.defineProperty(exports, "cx", { enumerable: true, get: function () { return cx_1.cx; } });
         tslib_1.__exportStar(require("../utils/useIconState"), exports);
         tslib_1.__exportStar(require("../utils/constants"), exports);
         var index_1 = require("../contexts/index");
@@ -1186,6 +956,7 @@ describe('Build Verification', () => {
         export { bundleIcon } from '../utils/bundleIcon';
         export { createFluentIcon } from '../utils/createFluentIcon';
         export { createFluentFontIcon } from '../utils/fonts/createFluentFontIcon';
+        export { cx } from '../utils/cx';
         export * from '../utils/useIconState';
         export * from '../utils/constants';
         export { IconDirectionContextProvider, useIconContext } from '../contexts/index';
@@ -2353,172 +2124,93 @@ describe('Build Verification', () => {
     });
   });
 
-  // Headless tests only run when headless generation was enabled (--headless flag passed to convert.js / convert-font.js)
-  const headlessGenerated = fs.existsSync(path.join(__dirname, 'lib', 'atoms', 'headless-svg'));
-  const describeHeadless = headlessGenerated ? describe : describe.skip;
-
-  describeHeadless('Headless Atoms', () => {
-    const headlessSpriteGenerated = fs.existsSync(path.join(__dirname, 'lib', 'atoms', 'headless-svg-sprite'));
-
-    it('should have same number of headless atom JS files as regular atoms and match ESM/CJS', async () => {
-      /** @type {Array<{headless: string, regular: string}>} */
-      const variants = [
-        { headless: 'headless-svg', regular: 'svg' },
-        { headless: 'headless-fonts', regular: 'fonts' },
-      ];
-
-      for (const { headless, regular } of variants) {
-        const esmHeadless = await getAtomDirStats(path.join(__dirname, 'lib', 'atoms', headless));
-        const cjsHeadless = await getAtomDirStats(path.join(__dirname, 'lib-cjs', 'atoms', headless));
-        const esmRegular = await getAtomDirStats(path.join(__dirname, 'lib', 'atoms', regular));
-
-        // Headless atoms must have the same count as their regular counterparts
-        expect(esmHeadless.jsFiles.length).toEqual(esmRegular.jsFiles.length);
-        // ESM and CJS must be in sync
-        expect(esmHeadless.jsFiles.length).toEqual(cjsHeadless.jsFiles.length);
+  describe('Promoted default output', () => {
+    it('ships the base stylesheet next to the barrel', async () => {
+      for (const libDir of ['lib', 'lib-cjs']) {
+        expect(fs.existsSync(path.join(__dirname, libDir, 'styles.css')), `${libDir}/styles.css`).toBe(true);
       }
 
-      // headless-svg-sprite mirrors svg-sprite (headless sprite generation is independent of regular sprites)
-      if (headlessSpriteGenerated) {
-        const esmHeadlessSprite = await getAtomDirStats(path.join(__dirname, 'lib', 'atoms', 'headless-svg-sprite'));
-        const cjsHeadlessSprite = await getAtomDirStats(
-          path.join(__dirname, 'lib-cjs', 'atoms', 'headless-svg-sprite'),
-        );
-        const esmRegularSprite = await getAtomDirStats(path.join(__dirname, 'lib', 'atoms', 'svg-sprite'));
-
-        expect(esmHeadlessSprite.jsFiles.length).toEqual(esmRegularSprite.jsFiles.length);
-        expect(esmHeadlessSprite.jsFiles.length).toEqual(cjsHeadlessSprite.jsFiles.length);
-      }
-    });
-
-    it.each(['lib', 'lib-cjs'])(
-      'should have headless atom directories with .js and .d.ts pairs in %s',
-      async (libDir) => {
-        const atomTypes = ['headless-svg', 'headless-fonts'];
-        if (headlessSpriteGenerated) {
-          atomTypes.push('headless-svg-sprite');
-        }
-
-        for (const atomType of atomTypes) {
-          const atomDir = path.join(__dirname, libDir, 'atoms', atomType);
-          expect(fs.existsSync(atomDir)).toBe(true);
-
-          const { files, jsFiles } = await getAtomDirStats(atomDir);
-
-          // Every .js file must have a corresponding .d.ts declaration file
-          for (const jsFile of jsFiles) {
-            const baseName = jsFile.replace('.js', '');
-            expect(files).toContain(`${baseName}.d.ts`);
-          }
-
-          // Sample check: access-time should exist
-          expect(files).toContain('access-time.js');
-          expect(files).toContain('access-time.d.ts');
-        }
-      },
-    );
-
-    it('headless atom files should use headless factory imports', async () => {
-      // SVG atoms must import from headless createFluentIcon (not the regular utils one)
-      const svgAtom = await readFile(path.join(__dirname, 'lib', 'atoms', 'headless-svg', 'access-time.js'), 'utf-8');
-      expect(svgAtom).toContain("from '../../headless/createFluentIcon'");
-      expect(svgAtom).not.toContain("from '../../utils/");
-      expect(svgAtom).toContain('export const AccessTimeFilled');
-      expect(svgAtom).toContain('export const AccessTimeRegular');
-
-      // Font atoms must import from headless createFluentFontIcon
-      const fontAtom = await readFile(
-        path.join(__dirname, 'lib', 'atoms', 'headless-fonts', 'access-time.js'),
-        'utf-8',
-      );
-      expect(fontAtom).toContain("from '../../headless/fonts/createFluentFontIcon'");
-      expect(fontAtom).not.toContain("from '../../utils/");
-      expect(fontAtom).toContain('export const AccessTimeFilled');
-      expect(fontAtom).toContain('export const AccessTimeRegular');
-
-      // Sprite atoms must import from headless createFluentIcon.svg-sprite
-      if (headlessSpriteGenerated) {
-        const spriteAtom = await readFile(
-          path.join(__dirname, 'lib', 'atoms', 'headless-svg-sprite', 'access-time.js'),
-          'utf-8',
-        );
-        expect(spriteAtom).toContain("from '../../headless/createFluentIcon.svg-sprite'");
-        expect(spriteAtom).not.toContain("from '../../utils/");
-        expect(spriteAtom).toContain('sprite');
-      }
-    });
-
-    it('headless atom files should pass options (flipInRtl, color) as last argument when applicable', async () => {
-      await assertAtomOptionsArgument(path.join(__dirname, 'lib', 'atoms', 'headless-svg'));
-
-      if (headlessSpriteGenerated) {
-        await assertAtomOptionsArgument(path.join(__dirname, 'lib', 'atoms', 'headless-svg-sprite'));
-      }
-    });
-
-    it('headless behavior/logic should exist with correct CSS', async () => {
-      const headlessDir = path.join(__dirname, 'lib', 'headless');
-
-      // Core infrastructure files
-      const expectedFiles = [
-        'index.js',
-        'index.d.ts',
-        'shared.js',
-        'shared.d.ts',
-        'createFluentIcon.js',
-        'createFluentIcon.d.ts',
-        'createFluentIcon.svg-sprite.js',
-        'createFluentIcon.svg-sprite.d.ts',
-        'useIconState.js',
-        'useIconState.d.ts',
-        'bundleIcon.js',
-        'bundleIcon.d.ts',
-        'utils.js',
-        'utils.d.ts',
-        'styles.css',
-      ];
-      for (const file of expectedFiles) {
-        expect(fs.existsSync(path.join(headlessDir, file))).toBe(true);
-      }
-
-      // styles.css must use data-attribute selectors (the key differentiator from CSS-in-JS)
-      const css = await readFile(path.join(headlessDir, 'styles.css'), 'utf-8');
+      const css = await readFile(path.join(__dirname, 'lib', 'styles.css'), 'utf-8');
       expect(css).toContain('[data-fui-icon]');
       expect(css).toContain('[data-fui-icon-rtl]');
       expect(css).toContain('[data-fui-icon-hidden]');
-
-      // Font sub-infrastructure
-      expect(fs.existsSync(path.join(headlessDir, 'fonts', 'createFluentFontIcon.js'))).toBe(true);
-      expect(fs.existsSync(path.join(headlessDir, 'fonts', 'styles.css'))).toBe(true);
+      expect(css).toContain('[data-fui-icon-font=');
     });
 
-    it('package.json#sideEffects include headless entries css entries', () => {
+    it('ships the @font-face stylesheet next to the font binaries it references', async () => {
+      for (const libDir of ['lib', 'lib-cjs']) {
+        expect(fs.existsSync(path.join(__dirname, libDir, 'utils', 'fonts', 'styles.css')), libDir).toBe(true);
+      }
+
+      const css = await readFile(path.join(__dirname, 'lib', 'utils', 'fonts', 'styles.css'), 'utf-8');
+      expect(css).toContain('@font-face');
+
+      // Relative, same-directory URLs — the build copies the binaries alongside the CSS.
+      for (const family of ['Filled', 'Regular', 'Light', 'Resizable']) {
+        expect(css, family).toContain(`./FluentSystemIcons-${family}.woff2`);
+        expect(
+          fs.existsSync(path.join(__dirname, 'lib', 'utils', 'fonts', `FluentSystemIcons-${family}.woff2`)),
+          family,
+        ).toBe(true);
+      }
+    });
+
+    it('keeps the deprecated ./headless subpaths resolvable as re-export shims', () => {
+      for (const libDir of ['lib', 'lib-cjs']) {
+        for (const file of ['headless/index.js', 'headless/utils.js', 'headless/fonts/index.js']) {
+          expect(fs.existsSync(path.join(__dirname, libDir, file)), `${libDir}/${file}`).toBe(true);
+        }
+      }
+
+      // The shims must not carry an implementation of their own.
+      for (const file of ['headless/shared.js', 'headless/createFluentIcon.js', 'headless/styles.css']) {
+        expect(fs.existsSync(path.join(__dirname, 'lib', file)), file).toBe(false);
+      }
+    });
+
+    it('no longer emits duplicated headless atom directories', () => {
+      // The default atoms ARE the headless atoms now; `./headless/svg/*` is an alias.
+      for (const libDir of ['lib', 'lib-cjs']) {
+        for (const dir of ['headless-svg', 'headless-fonts', 'headless-svg-sprite']) {
+          expect(fs.existsSync(path.join(__dirname, libDir, 'atoms', dir)), `${libDir}/atoms/${dir}`).toBe(false);
+        }
+      }
+    });
+
+    it('package.json#sideEffects covers the shipped stylesheets', () => {
       const packageJsonPath = path.join(__dirname, 'package.json');
       const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
 
-      expect(packageJson.sideEffects).toEqual(['**/headless/fonts/styles.css', '**/headless/styles.css']);
+      expect(packageJson.sideEffects).toEqual(['**/*.css']);
     });
 
-    // Tree-shaking guardrail: the headless API and its atoms must never pull in
-    // Griffel. The shared core/ modules are styling-agnostic, so any Griffel
-    // reference here means a regression leaked the CSS-in-JS runtime into headless.
-    it('headless output must be Griffel-free (tree-shaking guardrail)', () => {
-      const targets = [
-        path.join(__dirname, 'lib', 'headless'),
-        path.join(__dirname, 'lib', 'atoms', 'headless-svg'),
-        path.join(__dirname, 'lib', 'atoms', 'headless-fonts'),
-        path.join(__dirname, 'lib-cjs', 'headless'),
-        path.join(__dirname, 'lib-cjs', 'atoms', 'headless-svg'),
-        path.join(__dirname, 'lib-cjs', 'atoms', 'headless-fonts'),
-      ];
+    it('no longer emits CSS-in-JS style artefacts', () => {
       /** @type {string[]} */
       const offenders = [];
-      for (const dir of targets) {
-        if (!fs.existsSync(dir)) continue;
-        for (const entry of fs.readdirSync(dir, { recursive: true })) {
+      for (const libDir of ['lib', 'lib-cjs']) {
+        const root = path.join(__dirname, libDir);
+        for (const entry of fs.readdirSync(root, { recursive: true })) {
+          const rel = String(entry);
+          if (/[.]styles([.]raw)?[.]js$/.test(rel)) {
+            offenders.push(`${libDir}/${rel}`);
+          }
+        }
+      }
+      expect(offenders).toEqual([]);
+    });
+
+    // Tree-shaking guardrail: no module in the published output may pull in Griffel.
+    // Before the promotion this could only be asserted over the headless subtree; now it
+    // holds for everything the package ships.
+    it('the whole published output is Griffel-free', () => {
+      /** @type {string[]} */
+      const offenders = [];
+      for (const libDir of ['lib', 'lib-cjs']) {
+        const root = path.join(__dirname, libDir);
+        for (const entry of fs.readdirSync(root, { recursive: true })) {
           const rel = String(entry);
           if (!rel.endsWith('.js')) continue;
-          const full = path.join(dir, rel);
+          const full = path.join(root, rel);
           if (/@griffel/.test(fs.readFileSync(full, 'utf-8'))) {
             offenders.push(path.relative(__dirname, full));
           }

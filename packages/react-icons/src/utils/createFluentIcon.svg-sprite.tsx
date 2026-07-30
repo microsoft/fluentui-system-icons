@@ -1,17 +1,13 @@
 import * as React from 'react';
-import { mergeClasses } from '@griffel/react';
 
 import type { FluentIconsProps } from './FluentIconsProps.types';
-import { useIconState } from './useIconState';
-import { useRootStyles } from './createFluentIcon.styles';
 import { iconClassName } from './constants';
+import { cx } from './cx';
+import { useIconState } from './useIconState';
+import type { FluentIcon, CreateFluentIconOptions } from './createFluentIcon';
 import { computeViewBox, renderSpriteBody } from '../core/svg';
 
-export type FluentIcon = React.FC<FluentIconsProps>;
-type CreateFluentIconOptions = {
-  flipInRtl?: boolean;
-  color?: boolean;
-};
+export type { FluentIcon, CreateFluentIconOptions } from './createFluentIcon';
 
 /**
  * Creates a React component for a Fluent icon that references an SVG symbol from a sprite.
@@ -34,11 +30,10 @@ export const createFluentIcon = (
   const viewBoxWidth = computeViewBox(size);
 
   const Icon = React.forwardRef((props: FluentIconsProps, ref: React.Ref<HTMLElement>) => {
-    const styles = useRootStyles();
-    const iconState = useIconState(props, { flipInRtl: options?.flipInRtl }); // HTML attributes/props for things like accessibility can be passed in, and will be expanded on the svg object at the start of the object
+    const iconState = useIconState(props, { flipInRtl: options?.flipInRtl });
     const state = {
       ...iconState,
-      className: mergeClasses(iconClassName, iconState.className, styles.root),
+      className: cx(iconClassName, iconState.className),
       ref,
       width: size,
       height: size,

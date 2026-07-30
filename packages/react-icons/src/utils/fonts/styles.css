@@ -1,0 +1,44 @@
+/* Fluent Icons — `@font-face` declarations with relative font file references.
+ *
+ * Required in addition to `@fluentui/react-icons/styles.css` when using the font icons.
+ * Importing it is what puts the font files into your bundler's dependency graph, which
+ * is also what lets `@fluentui/react-icons-font-subsetting-webpack-plugin` subset them.
+ *
+ * Usage:
+ *   import '@fluentui/react-icons/fonts/styles.css';
+ */
+
+@font-face {
+  font-family: 'FluentSystemIconsFilled';
+  font-display: block;
+  src:
+    url('./FluentSystemIcons-Filled.woff2') format('woff2'),
+    url('./FluentSystemIcons-Filled.woff') format('woff'),
+    url('./FluentSystemIcons-Filled.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'FluentSystemIconsRegular';
+  font-display: block;
+  src:
+    url('./FluentSystemIcons-Regular.woff2') format('woff2'),
+    url('./FluentSystemIcons-Regular.woff') format('woff'),
+    url('./FluentSystemIcons-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'FluentSystemIconsLight';
+  src:
+    url('./FluentSystemIcons-Light.woff2') format('woff2'),
+    url('./FluentSystemIcons-Light.woff') format('woff'),
+    url('./FluentSystemIcons-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'FluentSystemIcons';
+  font-display: block;
+  src:
+    url('./FluentSystemIcons-Resizable.woff2') format('woff2'),
+    url('./FluentSystemIcons-Resizable.woff') format('woff'),
+    url('./FluentSystemIcons-Resizable.ttf') format('truetype');
+}
