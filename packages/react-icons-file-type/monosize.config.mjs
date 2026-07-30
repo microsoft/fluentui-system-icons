@@ -1,50 +1,19 @@
+// @ts-check
+
 import webpackBundler from 'monosize-bundler-webpack';
 
-import { GriffelCSSExtractionPlugin } from '@griffel/webpack-extraction-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 import baseConfig from '../../monosize.config.mjs';
 
-const enableGriffelExtraction = process.env.GRIFFEL_EXTRACTION === 'true';
+// The icon ships a plain `.css` file, so the only variable left is where webpack puts it:
+// inlined into the JS bundle behind `style-loader` (webpack's default) or pulled out into a
+// `.css` asset by `MiniCssExtractPlugin`.
+const enableCssExtraction = process.env.CSS_EXTRACTION === 'true';
 
-console.info(`Griffel CSS Extraction is ${enableGriffelExtraction ? 'enabled' : 'disabled'}.`);
-if (!enableGriffelExtraction) {
-  console.info(`Set GRIFFEL_EXTRACTION=true to enable.`);
-}
-
-/**
- * @param {import('webpack').Configuration} config
- */
-function applyGriffelExtraction(config) {
-  /** @typedef {{ module: {rules: Array<import('webpack').RuleSetRule>}; plugins: Array<import('webpack').WebpackPluginInstance> }} AssertConfig */
-
-  /** @type {AssertConfig} */ (config).module.rules.push(
-    {
-      test: /\.styles\.js$/,
-      // Apply "exclude" only if your dependencies **do not use** Griffel
-      // exclude: /node_modules/,
-      use: {
-        loader: GriffelCSSExtractionPlugin.loader,
-      },
-    },
-    {
-      // `@griffel/webpack-loader` performs the AOT transform of `makeStyles` into the
-      // pre-resolved `__styles` form. It is a **prerequisite** for the extraction plugin
-      // above — without it there is no extractable CSS and the full Griffel runtime stays
-      // in the bundle. The styles being measured live in the package's compiled `lib/*.js`,
-      // so `.js` must be matched and the workspace package must not be excluded.
-      test: /\.styles\.js$/,
-      use: {
-        loader: '@griffel/webpack-loader',
-      },
-    },
-    {
-      test: /\.css$/,
-      use: [MiniCssExtractPlugin.loader, 'css-loader'],
-    },
-  );
-  /** @type {AssertConfig} */ (config).plugins.push(new GriffelCSSExtractionPlugin(), new MiniCssExtractPlugin());
-  // config.resolve.extensions = ['.raw.js', '...']; // Add Griffel AOT extraction for better bundle size measurements
+console.info(`CSS extraction is ${enableCssExtraction ? 'enabled' : 'disabled'}.`);
+if (!enableCssExtraction) {
+  console.info(`Set CSS_EXTRACTION=true to enable.`);
 }
 
 /** @type {import('monosize').MonoSizeConfig} */
@@ -56,13 +25,25 @@ const config = {
     config.module.rules = config.module.rules ?? [];
     config.plugins = config.plugins ?? [];
 
-    if (enableGriffelExtraction) {
-      applyGriffelExtraction(config);
+    if (enableCssExtraction) {
+      config.module.rules.push({
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      });
+      config.plugins.push(new MiniCssExtractPlugin());
+    } else {
+      config.module.rules.push({
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      });
     }
 
     return config;
   }),
-  threshold: '10kB',
+  // No `threshold` override: the 10 kB one existed to absorb the CSS-in-JS runtime's
+  // version-to-version drift (a Griffel bump cost this package's fixture ~1.1 kB, see
+  // `docs/single-version-policy.md`). With that runtime gone the fixtures are small and
+  // stable, so the root's absolute 1 kB inherited from `baseConfig` is the right gate.
 };
 
 export default config;

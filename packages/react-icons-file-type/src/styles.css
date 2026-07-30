@@ -1,0 +1,27 @@
+/* Fluent file type icons — the default stylesheet.
+ *
+ * `FileTypeIcon` expresses its box behavior as a `data-fui-filetype-icon` attribute rather
+ * than a runtime-generated class name, so this file is REQUIRED unless you style that
+ * attribute (or a `className`) yourself:
+ *
+ *   import '@fluentui/react-icons-file-type/styles.css';
+ *
+ * `object-fit` only affects replaced elements, so these rules must land on the `<img>`
+ * itself rather than on a wrapper. `width`/`height` are applied inline by the state hook
+ * from the `size` prop; `object-fit: contain` is what stops a non-square asset from being
+ * stretched inside that square box.
+ *
+ * These rules are UNLAYERED. Cascade layers are compared before specificity, so a layered
+ * consumer rule loses to an unlayered rule here no matter how specific it is. Design systems
+ * that use `@layer` must assign this stylesheet a layer at import time:
+ *
+ *   @import '@fluentui/react-icons-file-type/styles.css' layer(your-base-layer);
+ *
+ * The selector is additionally wrapped in `:where()` so it carries ZERO specificity and any
+ * class-based styling wins regardless of stylesheet order — matching what the removed
+ * CSS-in-JS implementation gave you by merging the consumer `className` last.
+ */
+:where([data-fui-filetype-icon]) {
+  display: inline-block;
+  object-fit: contain;
+}

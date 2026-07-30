@@ -3,8 +3,8 @@ import { act } from 'react';
 import { renderToString } from 'react-dom/server';
 import { hydrateRoot } from 'react-dom/client';
 import { FileTypeIcon } from './FileTypeIcon';
-import { FileTypeIconsProvider } from '../common/FileTypeIconsContext';
-import { DEFAULT_BASE_URL } from '../common/constants';
+import { FileTypeIconsProvider } from './common/FileTypeIconsContext';
+import { DEFAULT_BASE_URL } from './common/constants';
 
 /** Published png densities as `[folderSuffix, srcsetDescriptor]` pairs. */
 const PNG_DENSITIES: ReadonlyArray<readonly [suffix: string, descriptor: string]> = [
@@ -36,7 +36,7 @@ async function captureConsoleErrors<T>(fn: () => Promise<T>): Promise<{ result: 
  * differ from the client). Density selection is delegated to the browser via `srcset`,
  * so the server and client always produce identical markup and hydration is clean.
  */
-describe('headless/FileTypeIcon SSR', () => {
+describe('FileTypeIcon SSR', () => {
   it('renders deterministic markup on the server (1x src + full density srcset)', () => {
     const html = renderToString(<FileTypeIcon extension="docx" size={24} imageFileType="png" />);
 

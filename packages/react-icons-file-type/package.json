@@ -6,7 +6,7 @@
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
   "sideEffects": [
-    "**/headless/styles.css"
+    "**/*.css"
   ],
   "repository": {
     "type": "git",
@@ -27,7 +27,6 @@
     "test": "yarn generate && yarn run -T vitest run"
   },
   "dependencies": {
-    "@griffel/react": "^1.6.1",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -49,12 +48,13 @@
       "import": "./lib/index.js",
       "require": "./lib-cjs/index.js"
     },
+    "./styles.css": "./lib/styles.css",
     "./headless": {
       "types": "./lib/headless/index.d.ts",
       "import": "./lib/headless/index.js",
       "require": "./lib-cjs/headless/index.js"
     },
-    "./headless/styles.css": "./lib/headless/styles.css",
+    "./headless/styles.css": "./lib/styles.css",
     "./package.json": "./package.json"
   }
 }

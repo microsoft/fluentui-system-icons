@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { FileTypeIcon } from './FileTypeIcon';
+import { FileTypeIcon, fileTypeIconDataAttribute } from './FileTypeIcon';
 import { FileTypeIconsProvider } from './common/FileTypeIconsContext';
 import { FileIconType } from './common/FileIconType';
 import { DEFAULT_BASE_URL } from './common/constants';
@@ -89,5 +89,23 @@ describe('FileTypeIcon', () => {
     expect(img).toHaveAttribute('data-testid', 'ft');
     expect(img).toHaveAttribute('alt', 'A document');
     expect(img?.className).toContain('custom');
+  });
+
+  it('tags the img with the styling-hook data attribute', () => {
+    // The whole styling contract hangs off this attribute — `styles.css` targets nothing else.
+    const { container } = render(<FileTypeIcon extension="docx" size={24} />);
+    expect(container.querySelector('img')).toHaveAttribute(fileTypeIconDataAttribute);
+  });
+
+  it('applies a consumer className verbatim, with no generated classes alongside it', () => {
+    // There is no style runtime left to contribute a class, so `class` is exactly what the
+    // caller passed. Code reading `className.split(' ')` can rely on that.
+    const { container } = render(<FileTypeIcon extension="docx" size={24} className="custom" alt="A document" />);
+    expect(container.querySelector('img')?.getAttribute('class')).toBe('custom');
+  });
+
+  it('emits no class attribute at all when the caller passes no className', () => {
+    const { container } = render(<FileTypeIcon extension="docx" size={24} alt="A document" />);
+    expect(container.querySelector('img')).not.toHaveAttribute('class');
   });
 });

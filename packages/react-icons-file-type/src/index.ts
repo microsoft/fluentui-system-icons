@@ -1,5 +1,5 @@
-export { FileTypeIcon } from './FileTypeIcon';
-export type { FileTypeIconProps } from './FileTypeIcon';
+export { FileTypeIcon, fileTypeIconDataAttribute, useFileTypeIcon, renderFileTypeIcon } from './FileTypeIcon';
+export type { FileTypeIconProps, FileTypeIconState } from './FileTypeIcon';
 
 export { FileTypeIconsProvider, useFileTypeIconsContext } from './common/FileTypeIconsContext';
 export type { FileTypeIconsContextValue, FileTypeIconsProviderProps } from './common/FileTypeIconsContext';

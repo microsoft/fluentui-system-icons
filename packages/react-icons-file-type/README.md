@@ -10,9 +10,44 @@ npm install @fluentui/react-icons-file-type
 
 ## Usage
 
+### Import the stylesheet, once
+
+`FileTypeIcon` ships no styling runtime. It tags the rendered `<img>` with a
+`data-fui-filetype-icon` attribute, and a shipped stylesheet gives that attribute its box
+behavior. Import it once, at your app entry point:
+
+```ts
+import '@fluentui/react-icons-file-type/styles.css';
+```
+
+Skip it only if you are styling the attribute (or a `className`) yourself. Without either, the
+icon still renders — it just loses `display: inline-block` and `object-fit: contain`, so a
+non-square asset stretches inside the square `width`/`height` box.
+
+```css
+/* the equivalent, hand-written */
+[data-fui-filetype-icon] {
+  display: inline-block;
+  object-fit: contain;
+}
+```
+
+> **Cascade layers.** The shipped stylesheet is **unlayered**, and cascade layers are compared
+> before specificity — so a layered rule of yours loses to an unlayered rule here regardless of
+> how specific it is. If your application organises its CSS with `@layer`, assign the stylesheet
+> a layer at import time, typically your lowest one:
+>
+> ```css
+> @import '@fluentui/react-icons-file-type/styles.css' layer(base);
+> ```
+>
+> The package deliberately does not pick a layer name; that choice belongs to the consuming
+> application.
+
 ### Zero configuration
 
-The icon resolves its assets from the Fluent CDN by default, so it works out of the box — no provider or setup required.
+Beyond that import, the icon resolves its assets from the Fluent CDN by default, so it works out
+of the box — no provider or setup required.
 
 ```tsx
 import { FileTypeIcon } from '@fluentui/react-icons-file-type';
@@ -53,28 +88,19 @@ import { FileTypeIcon, FileIconType } from '@fluentui/react-icons-file-type';
 <FileTypeIcon type={FileIconType.folder} size={24} />;
 ```
 
-### Headless (style-free) API
+### The `/headless` subpath is deprecated
 
-The default `FileTypeIcon` is styled with [Griffel](https://github.com/microsoft/griffel) (zero setup). To avoid bundling the Griffel runtime and own all styling yourself, import from the `/headless` subpath. The component is behavior-identical but ships **no** styling runtime; it tags the `<img>` with a `data-fui-filetype-icon` attribute you can style.
+The headless implementation **is** the default one now, so `@fluentui/react-icons-file-type/headless`
+re-exports it unchanged and `@fluentui/react-icons-file-type/headless/styles.css` points at the same
+file as `.../styles.css`. Both are kept for one release so existing headless adopters upgrade without
+a code change, and both are removed in the next major.
 
-```tsx
-// import the opt-in stylesheet once (reproduces the default box behavior)...
-import '@fluentui/react-icons-file-type/headless/styles.css';
-import { FileTypeIcon } from '@fluentui/react-icons-file-type/headless';
-
-<FileTypeIcon extension="docx" size={24} />;
+```diff
+- import '@fluentui/react-icons-file-type/headless/styles.css';
+- import { FileTypeIcon } from '@fluentui/react-icons-file-type/headless';
++ import '@fluentui/react-icons-file-type/styles.css';
++ import { FileTypeIcon } from '@fluentui/react-icons-file-type';
 ```
-
-```css
-/* ...or target the data attribute (or a className) with your own CSS */
-[data-fui-filetype-icon] {
-  display: inline-block;
-  overflow: hidden;
-  object-fit: contain;
-}
-```
-
-The `/headless` entry point re-exports `FileTypeIconsProvider`, `useFileTypeIconsContext`, `FileIconType`, and the constants, so it is usable on its own. Prefer the default entry point unless you specifically need to drop the Griffel runtime.
 
 ## Migrating from `@fluentui/react-file-type-icons` (v8)
 
@@ -175,7 +201,9 @@ The following v8 exports are intentionally **not** part of the v9 public API. Us
 ### v9 public API surface (for reference)
 
 - Components: `FileTypeIcon`, `FileTypeIconsProvider`
-- Hook: `useFileTypeIconsContext`
-- Values: `FileIconType`, `DEFAULT_BASE_URL`, `FLUENT_CDN_BASE_URL`, `DEFAULT_ICON_SIZE`, `ICON_SIZES`
-- Types: `FileTypeIconProps`, `FileTypeIconsContextValue`, `FileTypeIconsProviderProps`,
-  `FileIconTypeInput`, `FileTypeIconSize`, `ImageFileType`
+- Hooks: `useFileTypeIconsContext`, `useFileTypeIcon`, `renderFileTypeIcon`
+- Values: `FileIconType`, `fileTypeIconDataAttribute`, `DEFAULT_BASE_URL`, `FLUENT_CDN_BASE_URL`,
+  `DEFAULT_ICON_SIZE`, `ICON_SIZES`
+- Types: `FileTypeIconProps`, `FileTypeIconState`, `FileTypeIconsContextValue`,
+  `FileTypeIconsProviderProps`, `FileIconTypeInput`, `FileTypeIconSize`, `ImageFileType`
+- Stylesheet: `@fluentui/react-icons-file-type/styles.css`

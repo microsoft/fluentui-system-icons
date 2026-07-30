@@ -19,9 +19,11 @@ function main(options) {
   transpileTsc({ moduleFormat: 'esnext', outDir: 'lib' }, projectRoot);
   transpileTsc({ moduleFormat: 'commonjs', outDir: 'lib-cjs' }, projectRoot);
 
-  // tsc does not emit non-TS assets — copy the opt-in headless CSS into both outputs.
-  copyAsset(join('src', 'headless', 'styles.css'), join('lib', 'headless', 'styles.css'), projectRoot);
-  copyAsset(join('src', 'headless', 'styles.css'), join('lib-cjs', 'headless', 'styles.css'), projectRoot);
+  // tsc does not emit non-TS assets — copy the required stylesheet into both outputs. The
+  // deprecated `./headless/styles.css` subpath points at this same file, so there is one copy
+  // per output rather than one per subpath.
+  copyAsset(join('src', 'styles.css'), join('lib', 'styles.css'), projectRoot);
+  copyAsset(join('src', 'styles.css'), join('lib-cjs', 'styles.css'), projectRoot);
 }
 
 /**
