@@ -10,7 +10,8 @@ import { createFluentFontIcon, FluentFontIcon } from './fonts';
 import { createFluentIcon } from './createFluentIcon';
 import { createFluentIcon as createFluentSpriteIcon } from './createFluentIcon.svg-sprite';
 import { bundleIcon } from './bundleIcon';
-import type { FluentIcon } from './shared';
+import { wrapIcon } from './wrapIcon';
+import type { FluentIcon, FluentIconsProps } from './shared';
 import { DATA_FUI_ICON, DATA_FUI_ICON_RTL, DATA_FUI_ICON_HIDDEN, DATA_FUI_ICON_FONT } from './shared';
 import { IconDirectionContextProvider } from '../contexts';
 
@@ -292,10 +293,100 @@ describe('Headless API — bundleIcon', () => {
   });
 });
 
+describe('Headless API — wrapIcon', () => {
+  const CustomSvg = (iconProps: FluentIconsProps) => (
+    <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" {...iconProps}>
+      <path fill="currentColor" d="M10 2l6 16H4l6-16z" />
+    </svg>
+  );
+
+  test('wrapIcon should create a valid icon component', () => {
+    const CustomIcon = wrapIcon(CustomSvg, 'CustomIcon');
+
+    expect(CustomIcon).toBeDefined();
+    expect(CustomIcon.displayName).toBe('CustomIcon');
+
+    const { container } = render(<CustomIcon />);
+    expect(container).toMatchInlineSnapshot(`
+      <div>
+        <svg
+          aria-hidden="true"
+          data-fui-icon=""
+          fill="currentColor"
+          height="20"
+          viewBox="0 0 20 20"
+          width="20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 2l6 16H4l6-16z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+    `);
+  });
+
+  test('wrapIcon forwards the base data attribute and a11y state to the wrapped component', () => {
+    const CustomIcon = wrapIcon(CustomSvg, 'CustomIcon');
+
+    const { container } = render(<CustomIcon />);
+    const svg = container.querySelector('svg');
+    expect(svg).toHaveAttribute(DATA_FUI_ICON, '');
+    expect(svg).toHaveAttribute('aria-hidden', 'true');
+  });
+
+  test('wrapIcon maps primaryFill to fill', () => {
+    const CustomIcon = wrapIcon(CustomSvg, 'CustomIcon');
+
+    const { container } = render(<CustomIcon primaryFill="red" />);
+    expect(container.querySelector('svg')).toHaveAttribute('fill', 'red');
+  });
+
+  test('wrapIcon does not pass filled or title to the wrapped element', () => {
+    const CustomIcon = wrapIcon(CustomSvg, 'CustomIcon');
+
+    const { container } = render(<CustomIcon filled={true} title="test" />);
+    const svg = container.querySelector('svg');
+    expect(svg).not.toHaveAttribute('filled');
+    expect(svg).not.toHaveAttribute('title');
+    expect(svg).toHaveAttribute('aria-label', 'test');
+    expect(svg).toHaveAttribute('role', 'img');
+  });
+
+  test('wrapIcon forwards a ref to the wrapped element', () => {
+    const CustomIcon = wrapIcon(CustomSvg, 'CustomIcon');
+    const ref = React.createRef<SVGSVGElement>();
+
+    const { container } = render(<CustomIcon ref={ref} />);
+    expect(ref.current).toBe(container.querySelector('svg'));
+  });
+
+  test('wrapIcon has no Griffel class names (no atomic CSS hashes)', () => {
+    const CustomIcon = wrapIcon(CustomSvg, 'CustomIcon');
+
+    const { container } = render(<CustomIcon />);
+    // The standard API injects atomic classes here; headless leaves className untouched.
+    expect(container.querySelector('svg')).not.toHaveAttribute('class');
+  });
+
+  test('wrapIcon preserves a consumer supplied className', () => {
+    const CustomIcon = wrapIcon(CustomSvg, 'CustomIcon');
+
+    const { container } = render(<CustomIcon className="my-icon" />);
+    expect(container.querySelector('svg')).toHaveClass('my-icon');
+  });
+
+  describeRtlBehaviour(() => ({
+    withFlip: wrapIcon(CustomSvg, 'CustomIcon', { flipInRtl: true }),
+    withoutFlip: wrapIcon(CustomSvg, 'CustomIcon'),
+  }));
+});
+
 // =============================================================================
 
 /**
- * Shared RTL test suite — reused by SVG icons and SVG sprite icons.
+ * Shared RTL test suite — reused by SVG icons, SVG sprite icons and wrapIcon.
  */
 function describeRtlBehaviour(factory: () => { withFlip: FluentIcon; withoutFlip: FluentIcon }) {
   describe('RTL', () => {
