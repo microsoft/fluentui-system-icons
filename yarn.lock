@@ -4006,6 +4006,7 @@ __metadata:
     schema-utils: "npm:^4.2.0"
     shx: "npm:^0.3.2"
     storybook: "npm:9.1.19"
+    style-loader: "npm:3.3.4"
     subset-font: "npm:^1.4.0"
     svgo: "npm:4.0.2"
     svgstore: "npm:^3.0.1"
@@ -17972,7 +17973,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"style-loader@npm:^3.3.1":
+"style-loader@npm:3.3.4, style-loader@npm:^3.3.1":
   version: 3.3.4
   resolution: "style-loader@npm:3.3.4"
   peerDependencies:
