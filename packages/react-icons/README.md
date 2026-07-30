@@ -20,6 +20,36 @@ Icons are available in multiple variants: `Regular` and `Filled` for most icons,
 
 There are also helpful interfaces that will allow you to add styling to fit the icons to your specific application.
 
+## Setup: import the stylesheet
+
+Icon styling is expressed as `data-fui-icon*` attributes on the rendered element and resolved by
+a plain CSS file this package ships. There is no CSS-in-JS runtime, so **you must import that
+file once** in your application entry point:
+
+```ts
+import '@fluentui/react-icons/styles.css';
+// …and additionally, if you use the font icons:
+import '@fluentui/react-icons/fonts/styles.css';
+```
+
+Skipping it fails **silently and application-wide**: every icon loses `display`, the RTL flip and
+the high-contrast handling, and a `bundleIcon` pair renders **both** variants at once. Nothing
+throws.
+
+> **⚠️ If your app uses `@layer`, read this.** The shipped stylesheets are **unlayered**, and
+> cascade layers are compared **before** specificity — so a layered rule of yours loses to an
+> unlayered rule here no matter how specific it is. Assign them a layer at import time:
+>
+> ```css
+> @import '@fluentui/react-icons/styles.css' layer(base);
+> @import '@fluentui/react-icons/fonts/styles.css' layer(base);
+> ```
+>
+> The package deliberately does not pick a layer name; that choice belongs to the consuming
+> application.
+
+👉 **[Full styling documentation →](./docs/headless.md)**
+
 ## Usage
 
 In order to use these icons, simply import them as `import { [Componentname][variant] } from @fluentui/react-icons` as follows:
@@ -42,18 +72,27 @@ Finally, you can bundle the `Filled` and `Regular` versions of each icon into a 
 
 The bundled icon accepts a `filled` prop (boolean) to control which variant is displayed: when `filled={true}`, the filled variant is shown; when `filled={false}` or omitted, the regular variant is shown.
 
+The two class names are plain, stable strings — style them with whatever your application already
+uses. This example swaps the variants on hover:
+
+```css
+/* app.css */
+.icon-swap:hover .fui-Icon-filled {
+  display: none;
+}
+.icon-swap:hover .fui-Icon-regular {
+  display: inline;
+}
+```
+
 ```tsx
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
-import {
-  AccessTimeFilled,
-  AccessTimeRegular,
-  bundleIcon,
-  iconFilledClassName,
-  iconRegularClassName,
-} from '@fluentui/react-icons';
-import { makeStyles } from '@griffel/react';
+import '@fluentui/react-icons/styles.css';
+import './app.css';
+
+import { AccessTimeFilled, AccessTimeRegular, bundleIcon } from '@fluentui/react-icons';
 
 // Define props to customize the icon's appearance
 // primaryFill: Sets the icon's color
@@ -63,35 +102,19 @@ const iconStyleProps: FluentIconsProps = {
   className: 'iconClass',
 };
 
-// Create styles using Griffel's makeStyles
-// This example toggles between Filled and Regular variants on hover
-const useIconStyles = makeStyles({
-  icon: {
-    ':hover': {
-      // Hide the filled variant on hover
-      [`& .${iconFilledClassName}`]: {
-        display: 'none',
-      },
-      // Show the regular variant on hover
-      [`& .${iconRegularClassName}`]: {
-        display: 'inline',
-      },
-    },
-  },
-});
-
 // Bundle both icon variants into a single component
 // By default, displays the Filled variant; use filled={false} prop to show Regular variant
 const AccessTime = bundleIcon(AccessTimeFilled, AccessTimeRegular);
-const rootElement = document.getElementById('root');
-const styles = useIconStyles();
-ReactDOM.render(
-  <div className={styles.icon}>
+
+createRoot(document.getElementById('root')).render(
+  <div className="icon-swap">
     <AccessTime aria-label="AccessTime" {...iconStyleProps} />
   </div>,
-  rootElement,
 );
 ```
+
+If you would rather not hard-code the strings, `iconFilledClassName` and `iconRegularClassName`
+are exported from `@fluentui/react-icons/utils` and are typed as their literal values.
 
 ### Using the icon font
 
@@ -119,38 +142,36 @@ If you do choose this route, you may wish to use `@fluentui/react-icons-font-sub
 
 Color variants are non‑compliant with Windows High Contrast Mode, resulting in accessibility issues for users who depend on high‑contrast settings ([#951](https://github.com/microsoft/fluentui-system-icons/issues/951)).
 
-**Workaround:** If you must use color variants, bundle them with `Filled` variants and switch between them using a Griffel media query:
+**Workaround:** If you must use color variants, bundle them with `Filled` variants and switch between them in a media query:
+
+```css
+/* app.css */
+.hcm-color-fix .fui-Icon-filled {
+  display: none;
+}
+.hcm-color-fix .fui-Icon-regular {
+  display: inline;
+}
+
+@media (forced-colors: active) {
+  .hcm-color-fix .fui-Icon-filled {
+    display: inline;
+  }
+  .hcm-color-fix .fui-Icon-regular {
+    display: none;
+  }
+}
+```
 
 ```tsx
-import { makeStyles } from '@griffel/react';
-import { bundleIcon, iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
-import { CodeBlock48Color, CodeBlock48Filled } from '@fluentui/react-icons';
+import '@fluentui/react-icons/styles.css';
+import './app.css';
+import { bundleIcon, CodeBlock48Color, CodeBlock48Filled } from '@fluentui/react-icons';
 
 const CodeBlock48ColorFixed = bundleIcon(CodeBlock48Filled, CodeBlock48Color);
 
-const useStyles = makeStyles({
-  icon: {
-    [`& .${iconFilledClassName}`]: {
-      display: 'none',
-    },
-    [`& .${iconRegularClassName}`]: {
-      display: 'inline',
-    },
-
-    '@media (forced-colors: active)': {
-      [`& .${iconFilledClassName}`]: {
-        display: 'inline',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'none',
-      },
-    },
-  },
-});
-
 function MyComponent() {
-  const styles = useStyles();
-  return <CodeBlock48ColorFixed className={styles.icon} />;
+  return <CodeBlock48ColorFixed className="hcm-color-fix" />;
 }
 ```
 
@@ -228,30 +249,31 @@ For accessible, maintainable icon implementations:
 
 To apply multiple colors to an icon (e.g., one color for the fill and another for the outline), layer the `Filled` and `Regular` variants using absolute positioning:
 
+```css
+/* app.css */
+.layered-icon {
+  position: absolute;
+}
+.layered-icon--filled {
+  z-index: 1;
+  color: yellow;
+}
+.layered-icon--regular {
+  z-index: 2;
+  color: red;
+}
+```
+
 ```tsx
-import { makeStyles, mergeClasses } from '@fluentui/react-components';
+import '@fluentui/react-icons/styles.css';
+import './app.css';
 import { ShieldLock48Filled, ShieldLock48Regular } from '@fluentui/react-icons';
 
-const useStyles = makeStyles({
-  icon: {
-    position: 'absolute',
-  },
-  filled: {
-    zIndex: 1,
-    color: 'yellow',
-  },
-  regular: {
-    zIndex: 2,
-    color: 'red',
-  },
-});
-
 function MyComponent() {
-  const styles = useStyles();
   return (
     <span>
-      <ShieldLock48Filled className={mergeClasses(styles.icon, styles.filled)} />
-      <ShieldLock48Regular className={mergeClasses(styles.icon, styles.regular)} />
+      <ShieldLock48Filled className="layered-icon layered-icon--filled" />
+      <ShieldLock48Regular className="layered-icon layered-icon--regular" />
     </span>
   );
 }
@@ -282,6 +304,19 @@ While we strive to maintain API stability, there are two scenarios where breakin
 These are the only two types of breaking changes that deviate from standard semantic versioning practices. All other aspects of our API contract follow semantic versioning conventions - meaning additions, bug fixes, and internal improvements will not break your existing code.
 
 > **💡 NOTE:** We could remedy these breaking change scenarios by providing empty icon placeholders, but we believe a failing build pipeline is preferable to silently shipping invalid UI with blank icons to your users.
+
+### Styling-mechanism changes require a major
+
+A change to **how** icons are styled — the required stylesheet, the attribute or class contract it
+targets, or its layering — is a third category, and it takes a **major version bump**. It does not
+qualify for the patch-only convention above.
+
+The reason is the note directly above it. Icon removal and renaming break the build, loudly, at
+the import. A styling change does not: it type-checks, it compiles, it ships, and the icons render
+without `display`, without the RTL flip, without high-contrast handling, and with both
+`bundleIcon` variants visible at once. Applying the doc's own "a failing build pipeline is
+preferable to silently shipping invalid UI" principle to a change that _cannot_ fail the build
+means the version number has to carry the warning instead.
 
 **Recommendation**: When upgrading, even for patch versions, review the release notes for any removed or renamed icons to ensure your application isn't affected.
 
@@ -372,11 +407,23 @@ SVG sprites offer smaller bundles, faster renders, and zero runtime overhead.
 
 👉 **[Full documentation →](./docs/preview-features/svg-sprites.md)**
 
-## Headless API
+## The `./headless` subpaths (deprecated)
 
-A drop-in replacement for the standard API that removes the CSS-in-JS runtime — provides data-attribute selectors for styling behaviour with opt-in pre-defined vanilla CSS.
+The headless implementation is the default one now, so `@fluentui/react-icons/headless*` is an
+alias of the corresponding default subpath — the same modules and the same files. The aliases are
+kept for one release so existing adopters upgrade without a code change, and are removed in the
+next major. Drop `headless/` from the specifier:
 
-👉 **[Full documentation →](./docs/headless.md)**
+```diff
+- import '@fluentui/react-icons/headless/styles.css';
+- import { bundleIcon } from '@fluentui/react-icons/headless/utils';
+- import { AddFilled } from '@fluentui/react-icons/headless/svg/add';
++ import '@fluentui/react-icons/styles.css';
++ import { bundleIcon } from '@fluentui/react-icons/utils';
++ import { AddFilled } from '@fluentui/react-icons/svg/add';
+```
+
+👉 **[Full mapping and styling documentation →](./docs/headless.md)**
 
 ## Viewing Icons
 

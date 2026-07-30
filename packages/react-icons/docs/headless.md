@@ -1,81 +1,107 @@
-# Headless API
+# Styling
 
-The Headless API is a drop-in replacement for the standard icon API that removes the CSS-in-JS runtime dependency. It provides `data-*` attribute selectors for styling behaviour with opt-in pre-defined vanilla CSS — making it suitable for any React setup, including those without a CSS-in-JS runtime.
+> **This file was `Headless API`.** The headless implementation is the default one now, so this
+> is no longer documentation for an alternative — it is how `@fluentui/react-icons` is styled.
+> The filename is kept so existing links keep resolving, and will be renamed in the next major.
 
-## Benefits
+Icons carry no CSS-in-JS runtime. Styling behavior is expressed as `data-*` attributes on the
+rendered element and resolved by a plain CSS file the package ships. That makes the icons usable
+in any React setup — Vite, Next.js, Remix, webpack, esbuild — and moves the styling bytes out of
+your JavaScript bundle.
 
-- **No CSS-in-JS runtime** — removes the CSS-in-JS dependency entirely; styling is handled by an opt in plain CSS file or in user-land
-- **Smaller JavaScript bundles** — icon styling code is moved from JS to a static CSS file
-- **Framework-agnostic styling** — works in any environment that can load a CSS file (Vite, Next.js, Remix, etc.)
-- **Same API surface** — `createFluentIcon`, `bundleIcon`, `useIconState`, and all constants work identically to the standard API
-- **Migration-friendly** — works with both existing codebases (via build-time transforms) and greenfield projects (via direct imports)
+## You must import the stylesheet
+
+This is the one setup step, and skipping it fails **silently and application-wide**.
+
+**For SVG and sprite icons:**
+
+```ts
+import '@fluentui/react-icons/styles.css';
+```
+
+**For font icons** (both, since the second only carries `@font-face`):
+
+```ts
+import '@fluentui/react-icons/styles.css';
+import '@fluentui/react-icons/fonts/styles.css';
+```
+
+Without them every icon loses `display`, the RTL flip and the high-contrast handling — and a
+`bundleIcon` pair renders **both** variants at once. Nothing throws; the icons just look wrong,
+everywhere. Wire the import up before upgrading, not after.
+
+> **Note:** `fonts/styles.css` contains `@font-face` declarations with relative paths to the font
+> files (`.woff2`, `.woff`, `.ttf`). Your bundler resolves these into the dependency graph
+> automatically, which is what lets font subsetting plugins see them.
+
+> **Tip 💡:** enable [`react-icons-font-subsetting-webpack-plugin`](https://www.npmjs.com/package/@fluentui/react-icons-font-subsetting-webpack-plugin)
+> to strip unused glyphs from the font binaries.
+
+> **Bundle size:** prefer CSS extraction (`MiniCssExtractPlugin`, or any bundler that extracts CSS
+> in production) over webpack's default `style-loader`. It is worth several kB — see
+> [bundle-size-rendering-approaches-comparison.md](./bundle-size-rendering-approaches-comparison.md).
+
+## Cascade layers
+
+The shipped stylesheets are **unlayered**, and this matters more than it sounds. Cascade layers
+are compared **before** specificity, so an unlayered rule beats a layered one no matter how
+specific the layered rule is:
+
+```css
+[data-fui-icon-hidden] {
+  display: none;
+} /* unlayered, 0-1-0 */
+@layer components {
+  .my-button:hover .fui-Icon-filled {
+    display: inline;
+  }
+} /* layered, 0-2-0 — still LOSES */
+```
+
+If your application organises its CSS with `@layer`, your own layered rules therefore cannot
+override these icon defaults until the icon styles are part of the same layer system. Assign them
+a layer at import time:
+
+```css
+@import '@fluentui/react-icons/styles.css' layer(base);
+@import '@fluentui/react-icons/fonts/styles.css' layer(base);
+```
+
+Replace `base` with whichever layer the icon defaults should sit in — typically your lowest one,
+so component styles win. The package deliberately does not pick a layer name: shipping one would
+impose it on the whole ecosystem, and the choice belongs to the consuming application.
+
+Note that `:where()` alone does not solve this. The base rule _is_ `:where()`-wrapped (zero
+specificity, so any class-based styling wins), but the contentious rule is
+`[data-fui-icon-hidden]`, which is deliberately **not** wrapped — it has to beat the base rule.
+Layering is the only mechanism that subordinates it to yours.
 
 ## How it works
 
-The standard API uses Griffel's `makeStyles` / `mergeClasses` to inject CSS rules at runtime. The headless API replaces this with HTML `data-*` attributes and a shipped CSS file (`styles.css`) that targets them:
+| Concern               | Mechanism                                                                  |
+| --------------------- | -------------------------------------------------------------------------- |
+| Base icon layout      | `:where([data-fui-icon]) { display: inline; line-height: 0 }`              |
+| High-contrast mode    | `@media (forced-colors) { [data-fui-icon] { forced-color-adjust: auto } }` |
+| RTL directional flip  | `[data-fui-icon-rtl] { transform: scaleX(-1) }`                            |
+| bundleIcon visibility | `[data-fui-icon-hidden] { display: none }`                                 |
+| Font icon family      | `[data-fui-icon-font="filled"] { font-family: '…' }`                       |
 
-| Concern               | Standard (Griffel)                  | Headless (CSS)                                                             |
-| --------------------- | ----------------------------------- | -------------------------------------------------------------------------- |
-| Base icon layout      | `useRootStyles()` → atomic classes  | `[data-fui-icon] { display: inline; line-height: 0 }`                      |
-| High-contrast mode    | `@media (forced-colors)` in JS      | `@media (forced-colors) { [data-fui-icon] { forced-color-adjust: auto } }` |
-| RTL directional flip  | `transform: scaleX(-1)` via Griffel | `[data-fui-icon-rtl] { transform: scaleX(-1) }`                            |
-| bundleIcon visibility | Generated show/hide classes         | `[data-fui-icon-hidden] { display: none }`                                 |
-| Font icon family      | Griffel styles per variant          | `[data-fui-icon-font="filled"] { font-family: '...' }`                     |
+The `fui-Icon`, `fui-Icon-filled`, `fui-Icon-regular`, `fui-Icon-light`, `fui-Icon-color` and
+`fui-Icon-font` class names are still applied, unchanged, and remain the supported hook for
+targeting icons from your own CSS.
 
-## CSS Setup
-
-You **must** import the headless CSS file — this is the key difference from the standard API, which injects styles at runtime.
-
-**For SVG icons:**
-
-```ts
-import '@fluentui/react-icons/headless/styles.css';
-```
-
-**For font icons** (additionally):
-
-```ts
-import '@fluentui/react-icons/headless/fonts/styles.css';
-import '@fluentui/react-icons/headless/styles.css';
-```
-
-> **Note:** `fonts/styles.css` contains `@font-face` declarations with relative paths to the font files (`.woff2`, `.woff`, `.ttf`). Your bundler (webpack, Vite, esbuild) will resolve these into the dependency graph automatically, enabling font subsetting plugins to process them.
-
-> **Tip 💡:** It's highly recommended to enable our [`react-icons-font-subsetting-webpack-plugin`](https://www.npmjs.com/package/@fluentui/react-icons-font-subsetting-webpack-plugin) to get same fonts "tree-shaking" perf boost
-
-### Cascade layers
-
-The shipped stylesheets are **unlayered**. Cascade layers are resolved before specificity, so an
-unlayered rule beats a layered one no matter how specific the layered rule is. If your application
-organises its CSS with `@layer`, your own layered rules therefore cannot override these icon
-defaults until the icon styles are part of the same layer system.
-
-Assign them to a layer at import time:
-
-```css
-@import '@fluentui/react-icons/headless/styles.css' layer(base);
-@import '@fluentui/react-icons/headless/fonts/styles.css' layer(base);
-```
-
-Replace `base` with whichever layer your application wants the icon defaults to sit in — typically
-the lowest one, so component styles win. The package deliberately does not pick a layer name, since
-that choice belongs to the consuming application.
+Because nothing is inserted at runtime, there is no `<style>` ordering to reason about, no
+hydration step and no CSP nonce to thread through — server and client markup are identical.
 
 ## Usage
 
-### SVG Icons
-
-Headless SVG icons are grouped by icon kind and exposed via `@fluentui/react-icons/headless/svg/{icon-group}`:
+### SVG icons
 
 ```tsx
-import '@fluentui/react-icons/headless/styles.css';
+import '@fluentui/react-icons/styles.css';
 
-import {
-  AccessTime20Filled,
-  AccessTime24Filled,
-  AccessTime20Regular,
-} from '@fluentui/react-icons/headless/svg/access-time';
-import { Add16Filled, Add20Filled } from '@fluentui/react-icons/headless/svg/add';
+import { AccessTime20Filled, AccessTime24Filled, AccessTime20Regular } from '@fluentui/react-icons/svg/access-time';
+import { Add16Filled, Add20Filled } from '@fluentui/react-icons/svg/add';
 
 function MyComponent() {
   return (
@@ -87,19 +113,17 @@ function MyComponent() {
 }
 ```
 
-### SVG Sprites
+### SVG sprites
 
-> **⚠️ Alpha** — SVG sprites are a [preview feature](./preview-features/svg-sprites.md); the same
-> caveats (same-origin requirement, tooling setup) apply to the headless variant.
+> **⚠️ Alpha** — SVG sprites are a [preview feature](./preview-features/svg-sprites.md).
 
-Headless sprite icons are exposed via `@fluentui/react-icons/headless/svg-sprite/{icon-group}` and
-behave exactly like the standard sprite entrypoints — each component renders
-`<svg><use href="…#icon-id" /></svg>` against an external sprite file:
+Sprite icons are exposed via `@fluentui/react-icons/svg-sprite/{icon-group}`; each component
+renders `<svg><use href="…#icon-id" /></svg>` against an external sprite file:
 
 ```tsx
-import '@fluentui/react-icons/headless/styles.css';
+import '@fluentui/react-icons/styles.css';
 
-import { AccessTime20Filled, AccessTime24Filled } from '@fluentui/react-icons/headless/svg-sprite/access-time';
+import { AccessTime20Filled } from '@fluentui/react-icons/svg-sprite/access-time';
 
 function MyComponent() {
   return <AccessTime20Filled />;
@@ -107,18 +131,18 @@ function MyComponent() {
 ```
 
 The [`react-icons-svg-sprite-subsetting-webpack-plugin`](https://www.npmjs.com/package/@fluentui/react-icons-svg-sprite-subsetting-webpack-plugin)
-subsets headless sprite entrypoints the same way it subsets the standard ones — no extra
-configuration is required.
+subsets these entrypoints with no extra configuration.
 
-### Font Icons
+### Font icons
 
-Headless font icons require both CSS files — `styles.css` for base styles and `fonts/styles.css` for `@font-face` declarations:
+Font icons need both stylesheets — `styles.css` for the base rules and `fonts/styles.css` for the
+`@font-face` declarations:
 
 ```tsx
-import '@fluentui/react-icons/headless/fonts/styles.css';
-import '@fluentui/react-icons/headless/styles.css';
+import '@fluentui/react-icons/styles.css';
+import '@fluentui/react-icons/fonts/styles.css';
 
-import { Airplane20Filled, Airplane24Regular } from '@fluentui/react-icons/headless/fonts/airplane';
+import { Airplane20Filled, Airplane24Regular } from '@fluentui/react-icons/fonts/airplane';
 
 function MyComponent() {
   return <Airplane20Filled />;
@@ -126,8 +150,6 @@ function MyComponent() {
 ```
 
 ### Utilities
-
-The headless entry point (`@fluentui/react-icons/headless`) re-exports all core utilities:
 
 ```tsx
 import {
@@ -153,22 +175,20 @@ import {
   DATA_FUI_ICON_HIDDEN, // 'data-fui-icon-hidden'
   DATA_FUI_ICON_FONT, // 'data-fui-icon-font'
 
-  // Context
-  IconDirectionContextProvider,
-  useIconContext,
-
   // Class name helper
   cx,
-} from '@fluentui/react-icons/headless';
+} from '@fluentui/react-icons/utils';
+
+import { IconDirectionContextProvider, useIconContext } from '@fluentui/react-icons/providers';
 ```
 
-The `bundleIcon` function works identically to the standard API:
+`bundleIcon` composes a filled/regular pair into one component; the inactive variant gets
+`data-fui-icon-hidden`, which is what the stylesheet hides:
 
 ```tsx
-import '@fluentui/react-icons/headless/styles.css';
-import { bundleIcon } from '@fluentui/react-icons/headless';
-import { AccessTimeFilled } from '@fluentui/react-icons/headless/svg/access-time';
-import { AccessTimeRegular } from '@fluentui/react-icons/headless/svg/access-time';
+import '@fluentui/react-icons/styles.css';
+import { bundleIcon } from '@fluentui/react-icons/utils';
+import { AccessTimeFilled, AccessTimeRegular } from '@fluentui/react-icons/svg/access-time';
 
 const AccessTime = bundleIcon(AccessTimeFilled, AccessTimeRegular);
 
@@ -177,9 +197,30 @@ function MyComponent() {
 }
 ```
 
-## TypeScript Configuration
+## Migrating from the `./headless` subpaths
 
-**IMPORTANT**: TypeScript users must use `moduleResolution: "bundler"` (or `"node16"`/`"nodenext"`) in their `tsconfig.json` to properly resolve the headless atomic exports:
+`./headless*` is **deprecated**. Every one of those subpaths is an alias of its default
+counterpart — the same modules and the same files — kept for one release so existing adopters
+upgrade without a code change. They are removed in the next major.
+
+| Deprecated                                        | Use                                      |
+| ------------------------------------------------- | ---------------------------------------- |
+| `@fluentui/react-icons/headless`                  | `@fluentui/react-icons`                  |
+| `@fluentui/react-icons/headless/utils`            | `@fluentui/react-icons/utils`            |
+| `@fluentui/react-icons/headless/svg/*`            | `@fluentui/react-icons/svg/*`            |
+| `@fluentui/react-icons/headless/svg-sprite/*`     | `@fluentui/react-icons/svg-sprite/*`     |
+| `@fluentui/react-icons/headless/fonts`            | `@fluentui/react-icons/fonts`            |
+| `@fluentui/react-icons/headless/fonts/*`          | `@fluentui/react-icons/fonts/*`          |
+| `@fluentui/react-icons/headless/styles.css`       | `@fluentui/react-icons/styles.css`       |
+| `@fluentui/react-icons/headless/fonts/styles.css` | `@fluentui/react-icons/fonts/styles.css` |
+
+Likewise, the atomic webpack loader's `headless: true` option is deprecated for this package —
+it now only selects which spelling of the same modules gets emitted.
+
+## TypeScript configuration
+
+**IMPORTANT**: TypeScript users must use `moduleResolution: "bundler"` (or `"node16"` /
+`"nodenext"`) in their `tsconfig.json` to resolve the atomic exports:
 
 ```json
 {
@@ -189,13 +230,12 @@ function MyComponent() {
 }
 ```
 
-## Build-Time Transform
+## Build-time transform
 
-You can keep root-level barrel imports and leverage build transforms to adopt the headless API without modifying your source code. This works for both existing codebases migrating to headless approach and greenfield projects.
+You can keep root-level barrel imports and let a build transform rewrite them to atomic paths,
+without touching your source. Use `svg` as the target path (or `svg-sprite` / `fonts`).
 
-Use `headless/svg` as the target path (or `headless/svg-sprite` / `headless/fonts` for the other
-rendering approaches).
-
-> **Note:** You still need to manually add the CSS import (`import '@fluentui/react-icons/headless/styles.css'`) to your application entry point — build transforms only rewrite component imports.
+> **Note:** the transform only rewrites component imports. You still have to add the stylesheet
+> import to your application entry point yourself.
 
 👉 **[Build-Time Transform setup (Babel & SWC) →](./build-transforms.md)**

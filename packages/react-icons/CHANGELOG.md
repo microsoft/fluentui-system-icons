@@ -62,6 +62,14 @@
   duplicated `atoms/headless-*` directories are no longer published. The default atoms
   _are_ the headless atoms now.
 
+- **A styling-mechanism change now requires a major version bump.** `README.md`'s API contract
+  sanctioned exactly two non-major breaking changes — icon removal and icon renaming — on the
+  stated principle that _"a failing build pipeline is preferable to silently shipping invalid
+  UI"_. A change to the required stylesheet, to the attribute/class contract it targets, or to
+  its layering is neither of those, and unlike them it **cannot** fail a build: it type-checks,
+  compiles, ships, and the icons render wrong. The contract now names it as a third category so
+  the version number carries the warning the compiler cannot.
+
 ### 🩹 Fixes
 
 - **react-icons:** `wrapIcon` now gets the high-contrast fix. The removed CSS-in-JS

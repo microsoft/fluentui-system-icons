@@ -68,9 +68,10 @@ import {
 import { Add16Filled, Add20Filled } from '@fluentui/react-icons/svg-sprite/add';
 ```
 
-The [Headless API](../headless.md) exposes the same sprites without the CSS-in-JS runtime, via
-`@fluentui/react-icons/headless/svg-sprite/{icon-group}`. Everything on this page — the same-origin
-requirement, the bundler setup and the subsetting plugin — applies unchanged to both.
+Sprite icons carry no CSS-in-JS runtime and, like every other rendering approach, need the shipped
+stylesheet imported once — see [Styling](../headless.md). The deprecated
+`@fluentui/react-icons/headless/svg-sprite/{icon-group}` subpath is an alias of the above,
+resolving to the same files; drop `headless/` from the specifier.
 
 ### TypeScript Configuration
 
