@@ -3346,15 +3346,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fluentui/babel-preset-storybook-full-source@npm:^0.1.2":
-  version: 0.1.2
-  resolution: "@fluentui/babel-preset-storybook-full-source@npm:0.1.2"
+"@fluentui/babel-preset-storybook-full-source@npm:^0.1.3":
+  version: 0.1.3
+  resolution: "@fluentui/babel-preset-storybook-full-source@npm:0.1.3"
   dependencies:
     "@babel/core": "npm:^7.10.4"
     "@swc/helpers": "npm:^0.5.1"
     pkg-up: "npm:^3.1.0"
     prettier: "npm:^2.8.8"
-  checksum: 10c0/bd3e057d3d419d62f571abf73553ac88ba11d4f3340528c0a0c41bcd8f208e49dc4290ed5a750e8355a06f243e8fedff85ddcc3e1d9523adce990930b50e41d5
+  checksum: 10c0/983a2c94e405b337513471063d953b176696671cb7b464011d31184bbec3a5a03f3bef6b34ad29c18c04f827a70bac11c594b9c9f0ae83021c49b2272f35b8e5
   languageName: node
   linkType: hard
 
@@ -3433,7 +3433,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fluentui/react-aria@npm:^9.17.10, @fluentui/react-aria@npm:^9.17.13":
+"@fluentui/react-aria@npm:^9.17.13":
   version: 9.17.13
   resolution: "@fluentui/react-aria@npm:9.17.13"
   dependencies:
@@ -3521,7 +3521,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fluentui/react-button@npm:^9.10.1, @fluentui/react-button@npm:^9.8.2":
+"@fluentui/react-button@npm:^9.10.1":
   version: 9.10.1
   resolution: "@fluentui/react-button@npm:9.10.1"
   dependencies:
@@ -4008,7 +4008,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fluentui/react-label@npm:^9.3.15, @fluentui/react-label@npm:^9.4.3":
+"@fluentui/react-label@npm:^9.4.3":
   version: 9.4.3
   resolution: "@fluentui/react-label@npm:9.4.3"
   dependencies:
@@ -4027,7 +4027,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fluentui/react-link@npm:^9.7.4, @fluentui/react-link@npm:^9.8.3":
+"@fluentui/react-link@npm:^9.8.3":
   version: 9.8.3
   resolution: "@fluentui/react-link@npm:9.8.3"
   dependencies:
@@ -4071,7 +4071,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fluentui/react-menu@npm:^9.22.0, @fluentui/react-menu@npm:^9.25.1":
+"@fluentui/react-menu@npm:^9.25.1":
   version: 9.25.1
   resolution: "@fluentui/react-menu@npm:9.25.1"
   dependencies:
@@ -4324,7 +4324,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fluentui/react-provider@npm:^9.22.15, @fluentui/react-provider@npm:^9.22.18":
+"@fluentui/react-provider@npm:^9.22.18":
   version: 9.22.18
   resolution: "@fluentui/react-provider@npm:9.22.18"
   dependencies:
@@ -4507,7 +4507,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fluentui/react-spinner@npm:^9.7.15, @fluentui/react-spinner@npm:^9.8.4":
+"@fluentui/react-spinner@npm:^9.8.4":
   version: 9.8.4
   resolution: "@fluentui/react-spinner@npm:9.8.4"
   dependencies:
@@ -4527,39 +4527,39 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fluentui/react-storybook-addon-export-to-sandbox@npm:0.3.0":
-  version: 0.3.0
-  resolution: "@fluentui/react-storybook-addon-export-to-sandbox@npm:0.3.0"
+"@fluentui/react-storybook-addon-export-to-sandbox@npm:0.3.1":
+  version: 0.3.1
+  resolution: "@fluentui/react-storybook-addon-export-to-sandbox@npm:0.3.1"
   dependencies:
-    "@fluentui/babel-preset-storybook-full-source": "npm:^0.1.2"
+    "@fluentui/babel-preset-storybook-full-source": "npm:^0.1.3"
     "@swc/helpers": "npm:^0.5.1"
     babel-loader: "npm:^9.1.3"
     codesandbox-import-utils: "npm:^2.2.3"
     dedent: "npm:^1.2.0"
   peerDependencies:
     "@storybook/react": ^9.1.17
-  checksum: 10c0/ac0bc180c30c433f21df173cb36229e1a4eca7806342fc54e5d930a0343e3eac9de7461ffcaac0eda0844bd885a74f378d3a7f4de567db7077622abed623124b
+  checksum: 10c0/8dc78817eb40cdc66519a476cd8188a9172bc69c67ec457faad1cffd910a68f760cb4a9e1d2c57c01461cf2dae73329c5ac1b8e9b32d4bccd4844084d159b5aa
   languageName: node
   linkType: hard
 
-"@fluentui/react-storybook-addon@npm:0.6.0":
-  version: 0.6.0
-  resolution: "@fluentui/react-storybook-addon@npm:0.6.0"
+"@fluentui/react-storybook-addon@npm:0.7.1":
+  version: 0.7.1
+  resolution: "@fluentui/react-storybook-addon@npm:0.7.1"
   dependencies:
-    "@fluentui/react-aria": "npm:^9.17.10"
-    "@fluentui/react-button": "npm:^9.8.2"
+    "@fluentui/react-aria": "npm:^9.17.13"
+    "@fluentui/react-button": "npm:^9.10.1"
     "@fluentui/react-icons": "npm:^2.0.245"
-    "@fluentui/react-label": "npm:^9.3.15"
-    "@fluentui/react-link": "npm:^9.7.4"
-    "@fluentui/react-menu": "npm:^9.22.0"
-    "@fluentui/react-provider": "npm:^9.22.15"
+    "@fluentui/react-label": "npm:^9.4.3"
+    "@fluentui/react-link": "npm:^9.8.3"
+    "@fluentui/react-menu": "npm:^9.25.1"
+    "@fluentui/react-provider": "npm:^9.22.18"
     "@fluentui/react-shared-contexts": "npm:^9.26.2"
-    "@fluentui/react-spinner": "npm:^9.7.15"
-    "@fluentui/react-switch": "npm:^9.6.0"
-    "@fluentui/react-text": "npm:^9.6.15"
+    "@fluentui/react-spinner": "npm:^9.8.4"
+    "@fluentui/react-switch": "npm:^9.7.4"
+    "@fluentui/react-text": "npm:^9.6.18"
     "@fluentui/react-theme": "npm:^9.2.1"
-    "@fluentui/react-toast": "npm:^9.7.14"
-    "@fluentui/react-utilities": "npm:^9.26.2"
+    "@fluentui/react-toast": "npm:^9.8.1"
+    "@fluentui/react-utilities": "npm:^9.26.5"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
@@ -4571,7 +4571,7 @@ __metadata:
     react: ">=16.14.0 <20.0.0"
     react-dom: ">=16.14.0 <20.0.0"
     storybook: ^9.1.17
-  checksum: 10c0/6a3921dad3997ab04a953570a81fabc4e59b4dc61a842b384065e373e97be6112247bdf4722b81a2cd94d14395f016fe60127291be2f5dba7bb58723bfd45502
+  checksum: 10c0/cbad7f1ce790793c6c08b30ed5fd508521decb26a0963742242b84f156d47df5ead2ae7b83f0d1b204f34586e74ba8ea01948005eec6375fd3ad5a4dad525fe6
   languageName: node
   linkType: hard
 
@@ -4598,7 +4598,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fluentui/react-switch@npm:^9.6.0, @fluentui/react-switch@npm:^9.7.4":
+"@fluentui/react-switch@npm:^9.7.4":
   version: 9.7.4
   resolution: "@fluentui/react-switch@npm:9.7.4"
   dependencies:
@@ -4768,7 +4768,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fluentui/react-text@npm:^9.6.15, @fluentui/react-text@npm:^9.6.18":
+"@fluentui/react-text@npm:^9.6.18":
   version: 9.6.18
   resolution: "@fluentui/react-text@npm:9.6.18"
   dependencies:
@@ -4817,7 +4817,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fluentui/react-toast@npm:^9.7.14, @fluentui/react-toast@npm:^9.8.1":
+"@fluentui/react-toast@npm:^9.8.1":
   version: 9.8.1
   resolution: "@fluentui/react-toast@npm:9.8.1"
   dependencies:
@@ -4920,7 +4920,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fluentui/react-utilities@npm:*, @fluentui/react-utilities@npm:^9.26.2, @fluentui/react-utilities@npm:^9.26.5":
+"@fluentui/react-utilities@npm:*, @fluentui/react-utilities@npm:^9.26.5":
   version: 9.26.5
   resolution: "@fluentui/react-utilities@npm:9.26.5"
   dependencies:
@@ -4997,8 +4997,8 @@ __metadata:
     "@babel/preset-typescript": "npm:^7.16.7"
     "@commitlint/cli": "npm:^21.1.0"
     "@commitlint/config-conventional": "npm:^21.1.0"
-    "@fluentui/react-storybook-addon": "npm:0.6.0"
-    "@fluentui/react-storybook-addon-export-to-sandbox": "npm:0.3.0"
+    "@fluentui/react-storybook-addon": "npm:0.7.1"
+    "@fluentui/react-storybook-addon-export-to-sandbox": "npm:0.3.1"
     "@fluentui/storybook-llms-extractor": "npm:0.0.4"
     "@griffel/babel-preset": "npm:^1.8.1"
     "@griffel/eslint-plugin": "npm:^2.0.2"
