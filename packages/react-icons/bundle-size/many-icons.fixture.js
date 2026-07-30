@@ -1,0 +1,87 @@
+// 35 icons — the same sample size `docs/bundle-size-rendering-approaches-comparison.md`
+// used. Every other fixture imports a single icon, where the fixed cost of a styling
+// runtime dominates and the per-icon cost is invisible. This pair (with
+// `headless-many-icons`) is the only one measured at a scale a real consumer reaches,
+// and it is what keeps that document's headline numbers under CI rather than resting on
+// a one-off manual measurement.
+import {
+  AirplaneFilled,
+  AirplaneRegular,
+  Airplane16Regular,
+  Airplane16Filled,
+  Airplane20Regular,
+  Airplane20Filled,
+  Airplane24Regular,
+  Airplane24Filled,
+  Airplane28Regular,
+  Airplane28Filled,
+  Airplane32Regular,
+  Airplane32Filled,
+  Airplane48Regular,
+  Airplane48Filled,
+} from '@fluentui/react-icons/svg/airplane';
+import {
+  ArchiveFilled,
+  ArchiveRegular,
+  Archive16Regular,
+  Archive16Filled,
+  Archive20Regular,
+  Archive20Filled,
+  Archive24Regular,
+  Archive24Filled,
+  Archive28Regular,
+  Archive28Filled,
+  Archive32Regular,
+  Archive32Filled,
+  Archive32Light,
+  Archive48Regular,
+  Archive48Filled,
+} from '@fluentui/react-icons/svg/archive';
+import {
+  ArrowLeftFilled,
+  ArrowLeftRegular,
+  ArrowLeft12Regular,
+  ArrowLeft12Filled,
+  ArrowLeft16Regular,
+  ArrowLeft16Filled,
+} from '@fluentui/react-icons/svg/arrow-left';
+
+console.log(
+  AirplaneFilled,
+  AirplaneRegular,
+  Airplane16Regular,
+  Airplane16Filled,
+  Airplane20Regular,
+  Airplane20Filled,
+  Airplane24Regular,
+  Airplane24Filled,
+  Airplane28Regular,
+  Airplane28Filled,
+  Airplane32Regular,
+  Airplane32Filled,
+  Airplane48Regular,
+  Airplane48Filled,
+  ArchiveFilled,
+  ArchiveRegular,
+  Archive16Regular,
+  Archive16Filled,
+  Archive20Regular,
+  Archive20Filled,
+  Archive24Regular,
+  Archive24Filled,
+  Archive28Regular,
+  Archive28Filled,
+  Archive32Regular,
+  Archive32Filled,
+  Archive32Light,
+  Archive48Regular,
+  Archive48Filled,
+  ArrowLeftFilled,
+  ArrowLeftRegular,
+  ArrowLeft12Regular,
+  ArrowLeft12Filled,
+  ArrowLeft16Regular,
+  ArrowLeft16Filled,
+);
+
+export default { name: '35 Icons' };
