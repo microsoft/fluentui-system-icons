@@ -1,3 +1,10 @@
+## 0.0.6 (2026-07-30)
+
+### 🚀 Features
+
+- **react-icons-atomic-webpack-loader:** atomize dynamic barrel imports behind allowDynamicImports ([#1163](https://github.com/microsoft/fluentui-system-icons/pull/1163))
+- **react-icons-atomic-webpack-loader:** warn on un-atomizable dynamic barrel imports ([#1161](https://github.com/microsoft/fluentui-system-icons/pull/1161))
+
 ## 0.0.5 (2026-07-03)
 
 ### 🚀 Features
