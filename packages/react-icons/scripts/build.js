@@ -32,9 +32,7 @@ const { values: cliOptions } = parseArgs({
   allowPositionals: true,
 });
 
-const enableNativeEsm = cliOptions['enable-native-esm'];
-
-main({ root: join(__dirname, '..') });
+main({ root: join(__dirname, '..'), enableNativeEsm: cliOptions['enable-native-esm'] });
 
 /**
  * Builds source TypeScript and copys assets to the output directories.
@@ -43,7 +41,7 @@ main({ root: join(__dirname, '..') });
  * applies Babel transformations, and copies font assets.
  * It also creates raw style copies for .styles.js files.
  *
- * @param {{ root: string; }} options
+ * @param {{ root: string; enableNativeEsm?: boolean; }} options
  */
 function main(options) {
   const projectRoot = options.root;
@@ -82,7 +80,7 @@ function main(options) {
   applyBabelTransform('lib', projectRoot);
   applyBabelTransform('lib-cjs', projectRoot);
 
-  if (enableNativeEsm) {
+  if (options.enableNativeEsm) {
     convertToNativeEsm(projectRoot);
   }
 }
