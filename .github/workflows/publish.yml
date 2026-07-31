@@ -197,7 +197,7 @@ jobs:
         working-directory: importer
 
       - name: Setup Java
-        uses: actions/setup-java@v5
+        uses: actions/setup-java@v5.6.0
         with:
           distribution: temurin
           java-version: 11
@@ -356,7 +356,7 @@ jobs:
   #     working-directory: importer
 
   #   - name: Setup Java
-  #     uses: actions/setup-java@v5
+  #     uses: actions/setup-java@v5.6.0
   #     with:
   #       distribution: temurin
   #       java-version: 8
