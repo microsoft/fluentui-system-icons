@@ -161,9 +161,9 @@ jobs:
   #       accessToken: "placeholder"
   #       refreshToken: "placeholder"
 
-  verify-native-esm:
+  build-npm-native-esm:
     if: ${{ github.repository_owner == 'microsoft' }}
-    name: Verify native ESM output
+    name: Build npm packages (native ESM)
     runs-on: ubuntu-latest
     permissions:
       contents: 'read'
