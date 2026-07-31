@@ -185,6 +185,39 @@ describe('module-format', () => {
       expect(warn).toHaveBeenCalledWith(expect.stringContaining(`could not resolve './missing'`));
     });
 
+    it('ignores commented-out imports, which tsc preserves into the output', async () => {
+      const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+      const root = createTree({
+        'index.js': [
+          `// TODO: export this once it exists`,
+          `// export { wrapIcon } from './wrapIcon';`,
+          `  // export { other } from './other';`,
+        ].join('\n'),
+      });
+
+      await fullySpecifyEsm(root);
+
+      expect(read(root, 'index.js')).toBe(
+        [
+          `// TODO: export this once it exists`,
+          `// export { wrapIcon } from './wrapIcon';`,
+          `  // export { other } from './other';`,
+        ].join('\n'),
+      );
+      expect(warn).not.toHaveBeenCalled();
+    });
+
+    it('still rewrites a live import that carries a trailing comment', async () => {
+      const root = createTree({
+        'index.js': `export { a } from './a'; // keep ./b in mind\n`,
+        'a.js': '',
+      });
+
+      await fullySpecifyEsm(root);
+
+      expect(read(root, 'index.js')).toBe(`export { a } from './a.js'; // keep ./b in mind\n`);
+    });
+
     it('ignores files that are not JavaScript or declarations', async () => {
       const root = createTree({
         'sprite.svg': `<svg data-from="./a" />`,

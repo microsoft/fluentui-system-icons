@@ -99,6 +99,22 @@ const HAS_KNOWN_EXT = /\.(c?js|mjs|json|css|svg|ttf|woff2?|node)$/;
 const SPECIFIER_RE = /(\bfrom\s*|\bimport\s*\(\s*|\bimport\s+|\brequire\s*\(\s*)(['"])(\.\.?\/[^'"]*)\2/g;
 
 /**
+ * Is the match at `offset` on a line that is entirely commented out?
+ *
+ * `tsc` preserves commented-out imports into the output, and the scanner works on raw
+ * text, so those would otherwise be reported as unresolvable — noise that hides the real
+ * warnings. Deliberately narrow: only a line whose first non-space characters are `//`
+ * counts, so a trailing comment after a live import still gets rewritten.
+ *
+ * @param {string} code
+ * @param {number} offset
+ */
+function isCommentedOut(code, offset) {
+  const lineStart = code.lastIndexOf('\n', offset - 1) + 1;
+  return code.slice(lineStart, offset).trimStart().startsWith('//');
+}
+
+/**
  * Builds a specifier rewriter bound to a known set of emitted files.
  *
  * Resolution is answered from `fileSet` instead of `existsSync`, and memoised per
@@ -149,7 +165,11 @@ function createRewriter(fileSet, ext) {
    * @returns {string}
    */
   return function rewriteSpecifiers(code, fileDir, filePath) {
-    return code.replace(SPECIFIER_RE, (match, pre, quote, spec) => {
+    return code.replace(SPECIFIER_RE, (match, pre, quote, spec, offset) => {
+      if (isCommentedOut(code, offset)) {
+        return match;
+      }
+
       const resolved = resolve(fileDir, spec);
       if (resolved === null) {
         console.warn(`  ! [module-format] could not resolve '${spec}' in ${filePath}`);
