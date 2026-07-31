@@ -5,6 +5,7 @@
 const { execSync } = require('node:child_process');
 const { copyFileSync, existsSync, readFileSync, writeFileSync } = require('node:fs');
 const { join, basename } = require('node:path');
+const { parseArgs } = require('node:util');
 
 const glob = require('glob');
 const { transformSync } = require('@babel/core');
@@ -22,7 +23,16 @@ const { fullySpecifyEsm, finalizeCjs, applyEsmFirstManifest } = require('./modul
  * icons change — before the format is switched on for real. It is temporary: once
  * ESM-first becomes the default, the flag and these branches get deleted.
  */
-const enableNativeEsm = process.argv.includes('--enable-native-esm');
+const { values: cliOptions } = parseArgs({
+  options: {
+    'enable-native-esm': { type: 'boolean', default: false },
+  },
+  // Fail loudly on a mistyped flag rather than silently doing a dual build.
+  strict: true,
+  allowPositionals: true,
+});
+
+const enableNativeEsm = cliOptions['enable-native-esm'];
 
 main({ root: join(__dirname, '..') });
 
