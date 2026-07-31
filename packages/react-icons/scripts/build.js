@@ -32,7 +32,10 @@ const { values: cliOptions } = parseArgs({
   allowPositionals: true,
 });
 
-main({ root: join(__dirname, '..'), enableNativeEsm: cliOptions['enable-native-esm'] });
+main({ root: join(__dirname, '..'), enableNativeEsm: cliOptions['enable-native-esm'] }).catch((error) => {
+  console.error(error);
+  process.exit(1);
+});
 
 /**
  * Builds source TypeScript and copys assets to the output directories.
@@ -43,7 +46,7 @@ main({ root: join(__dirname, '..'), enableNativeEsm: cliOptions['enable-native-e
  *
  * @param {{ root: string; enableNativeEsm?: boolean; }} options
  */
-function main(options) {
+async function main(options) {
   const projectRoot = options.root;
 
   transpileTsc({ moduleFormat: 'esnext', outDir: 'lib' }, projectRoot);
@@ -81,7 +84,7 @@ function main(options) {
   applyBabelTransform('lib-cjs', projectRoot);
 
   if (options.enableNativeEsm) {
-    convertToNativeEsm(projectRoot);
+    await convertToNativeEsm(projectRoot);
   }
 }
 
@@ -95,9 +98,9 @@ function main(options) {
  *
  * @param {string} projectRoot
  */
-function convertToNativeEsm(projectRoot) {
-  fullySpecifyEsm(join(projectRoot, 'lib'));
-  finalizeCjs(join(projectRoot, 'lib-cjs'));
+async function convertToNativeEsm(projectRoot) {
+  await fullySpecifyEsm(join(projectRoot, 'lib'));
+  await finalizeCjs(join(projectRoot, 'lib-cjs'));
 
   const pkgPath = join(projectRoot, 'package.json');
   const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
