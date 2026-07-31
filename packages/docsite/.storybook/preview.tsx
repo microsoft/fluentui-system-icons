@@ -2,11 +2,10 @@ import type { Preview } from '@storybook/react';
 import type { FluentParameters } from '@fluentui/react-storybook-addon';
 import type { Parameters } from '@fluentui/react-storybook-addon-export-to-sandbox';
 
+import '@fluentui/react-storybook-addon/styles.css';
 import '@fluentui/react-storybook-addon-export-to-sandbox/styles.css';
 
-// TODO: remove once we have a better solution for sharing styles between docsite and storybook (e.g. via a package or something)
-import './docs-root-v9.css';
-import './docs-root.css';
+import './docsite.css';
 
 const preview = {
   parameters: {
@@ -60,13 +59,21 @@ const preview = {
       bundler: 'vite',
       requiredDependencies: {
         // for React
-        react: '^18',
-        'react-dom': '^18',
+        react: '^19',
+        'react-dom': '^19',
         // necessary for FluentProvider:
         '@fluentui/react-components': '^9.0.0',
         '@fluentui/react-icons': 'latest',
       },
       optionalDependencies: {},
+      // The addon defaults to React 17 types + TS ~4.7, which don't typecheck
+      // against the React 19 runtime pinned above (`tsc` runs in the sandbox
+      // build script).
+      devDependencies: {
+        '@types/react': '^19',
+        '@types/react-dom': '^19',
+        typescript: '^5.0.0',
+      },
     },
   } satisfies FluentParameters & Parameters,
 

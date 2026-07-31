@@ -1,26 +1,8 @@
-/* remove the docs wrapper bg to let page bg show through */
-/* remove unnecessary padding now that theme switcher is not taking up space */
-#storybook-docs .sbdocs-wrapper {
-  background: transparent !important;
-  padding: 0 48px;
-}
-
-/* sb-show-main is missing during page transitions causing a page shift */
-/* todo: cleanup once we no longer inherit docs-root */
-.sb-show-main.sb-main-fullscreen,
-.sb-main-fullscreen {
-  margin: 0;
-  padding: 0;
-  display: block;
-}
-
-/* remove loading overlay */
-.sb-preparing-story,
-.sb-preparing-docs,
-.sb-nopreview,
-.sb-errordisplay {
-  display: none !important;
-}
+/* Docsite-only preview styles.
+   Everything that used to live here (docs layout, typography, Segoe UI faces,
+   fullscreen/loading-overlay resets) was upstreamed in
+   @fluentui/react-storybook-addon 0.7.0 and is now imported from
+   `@fluentui/react-storybook-addon/styles.css` in preview.tsx. */
 
 /* package version badge shown on Overview docs pages (see stories/components/VersionBadge.tsx) */
 #storybook-docs .fluent-version-badge {
