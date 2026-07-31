@@ -23,6 +23,16 @@
     "build-verify": {
       "dependsOn": ["build"]
     },
+    "build-native-esm": {
+      "//": "Opt-in native ESM-first build (see scripts/module-format.js). Not cached: it rewrites package.json in place, which is not expressible as an nx output.",
+      "cache": false,
+      "dependsOn": ["^build"]
+    },
+    "verify-native-esm": {
+      "//": "Keeps the native ESM path honest as icons change, ahead of it becoming the default.",
+      "cache": false,
+      "dependsOn": ["build-native-esm"]
+    },
     "bundle-size": {
       "dependsOn": ["build"]
     }

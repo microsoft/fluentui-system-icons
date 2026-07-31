@@ -9,6 +9,21 @@ const { join, basename } = require('node:path');
 const glob = require('glob');
 const { transformSync } = require('@babel/core');
 
+const { fullySpecifyEsm, finalizeCjs, applyEsmFirstManifest } = require('./module-format');
+
+/**
+ * Opt-in switch for native ESM-first packaging.
+ *
+ * Off (the default) the build is byte-for-byte the historical dual output:
+ * extensionless specifiers in `lib/`, plain `.js` in `lib-cjs/`, manifest untouched.
+ *
+ * On, the emitted output becomes valid bare-Node ESM and the manifest is flipped to
+ * match. This flag exists so the tooling can live on `main` — and stay in sync as
+ * icons change — before the format is switched on for real. It is temporary: once
+ * ESM-first becomes the default, the flag and these branches get deleted.
+ */
+const enableNativeEsm = process.argv.includes('--enable-native-esm');
+
 main({ root: join(__dirname, '..') });
 
 /**
@@ -56,6 +71,29 @@ function main(options) {
 
   applyBabelTransform('lib', projectRoot);
   applyBabelTransform('lib-cjs', projectRoot);
+
+  if (enableNativeEsm) {
+    convertToNativeEsm(projectRoot);
+  }
+}
+
+/**
+ * Converts the freshly built dual output into native ESM-first output.
+ *
+ * Runs last on purpose: rewriting the manifest to `"type": "module"` changes how Node
+ * interprets every `.js` file in this package, so nothing may be `require`d after it.
+ * It also has to follow the sprite/headless export-map emitters, whose (format-agnostic)
+ * entries are picked up and converted along with the rest of the map.
+ *
+ * @param {string} projectRoot
+ */
+function convertToNativeEsm(projectRoot) {
+  fullySpecifyEsm(join(projectRoot, 'lib'));
+  finalizeCjs(join(projectRoot, 'lib-cjs'));
+
+  const pkgPath = join(projectRoot, 'package.json');
+  const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
+  writeFileSync(pkgPath, JSON.stringify(applyEsmFirstManifest(pkg), null, 2) + '\n');
 }
 
 // =================================================================================================

@@ -25,11 +25,14 @@
     "build:fonts-and-svg": "yarn generate:base-svg && yarn generate:font && yarn generate:rtl",
     "build:generate-chunks-and-atoms": "yarn convert:svg && yarn convert:fonts && yarn convert:merge-metadata",
     "build:js": "node scripts/build.js",
+    "build:js:native-esm": "node scripts/build.js --enable-native-esm",
     "build": "yarn clean && yarn build:fonts-and-svg && yarn build:generate-chunks-and-atoms && yarn build:js",
-    "build-verify": "yarn run -T vitest run build-verify.test.js build-transforms.test.js build-color-render.test.js",
+    "build-native-esm": "yarn clean && yarn build:fonts-and-svg && yarn build:generate-chunks-and-atoms && yarn build:js:native-esm",
+    "build-verify": "yarn run -T vitest run build-verify.test.js build-transforms.test.js build-color-render.test.js esm-exports.smoke.test.js",
+    "verify-native-esm": "yarn run -T vitest run esm-exports.smoke.test.js",
     "bundle-size": "yarn run -T monosize measure",
     "lint": "yarn run -T eslint src package.json",
-    "test": "yarn run -T vitest --exclude build-verify.test.js --exclude build-transforms.test.js --exclude build-color-render.test.js",
+    "test": "yarn run -T vitest --exclude build-verify.test.js --exclude build-transforms.test.js --exclude build-color-render.test.js --exclude esm-exports.smoke.test.js",
     "type-check:infra": "yarn run -T tsc -p tsconfig.utils.json"
   },
   "devDependencies": {
