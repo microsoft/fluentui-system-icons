@@ -81,7 +81,7 @@
     "monosize-bundler-webpack": "0.4.0",
     "monosize-storage-git": "0.3.4",
     "nano-staged": "0.9.0",
-    "nx": "22.6.5",
+    "nx": "22.7.2",
     "oxc-parser": "^0.125.0",
     "playwright": "^1.55.1",
     "prettier": "3.6.2",
