@@ -37,7 +37,7 @@
     "@fluentui/storybook-llms-extractor": "0.0.4",
     "@griffel/babel-preset": "^1.8.1",
     "@griffel/eslint-plugin": "^2.0.2",
-    "@griffel/react": "^1.6.1",
+    "@griffel/react": "^1.7.6",
     "@griffel/webpack-extraction-plugin": "0.5.14",
     "@griffel/webpack-loader": "2.2.23",
     "@nx/eslint-plugin": "^22.6.5",
@@ -56,8 +56,8 @@
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/react": "16.3.2",
     "@types/node": "22",
-    "@types/react": "19.1.13",
-    "@types/react-dom": "19.1.9",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
     "@types/react-native": "^0.68.0",
     "@types/yargs": "^15.0.0",
     "@typescript-eslint/rule-tester": "7.18.0",
@@ -82,11 +82,11 @@
     "monosize-storage-git": "0.3.4",
     "nano-staged": "0.9.0",
     "nx": "22.6.5",
-    "oxc-parser": "^0.125.0",
+    "oxc-parser": "^0.142.0",
     "playwright": "^1.55.1",
     "prettier": "3.6.2",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
     "react-native": "^0.85.0",
     "react-native-svg": "^15.15.3",
     "react-window": "^1.8.10",
@@ -124,7 +124,7 @@
   },
   "resolutions": {
     "@griffel/core": "1.20.1",
-    "@griffel/react": "1.6.1",
+    "@griffel/react": "1.7.6",
     "@linaria/shaker/@babel/plugin-transform-runtime": "^7"
   }
 }
