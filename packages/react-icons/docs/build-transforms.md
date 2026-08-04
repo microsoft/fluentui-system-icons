@@ -20,10 +20,9 @@ import { AccessTime24Filled } from '@fluentui/react-icons/svg-sprite/access-time
 // Font icons
 import { AccessTime24Filled } from '@fluentui/react-icons/fonts/access-time';
 
-// Headless API (SVG)
+// Deprecated `/headless` aliases (same modules as the default subpaths above;
+// removed in the next major)
 import { AccessTime24Filled } from '@fluentui/react-icons/headless/svg/access-time';
-
-// Headless API (fonts)
 import { AccessTime24Filled } from '@fluentui/react-icons/headless/fonts/access-time';
 ```
 
@@ -62,7 +61,7 @@ module.exports = {
 
 > **Note:** Unlike most loaders, do **not** exclude `node_modules` — the loader needs to transform barrel imports inside dependencies too. Files without `@fluentui/react-icons` references are skipped via a fast regex pre-check.
 
-To use font icons instead of SVG, pass the `iconVariant` option (add `headless: true` for the Headless API):
+To use font icons instead of SVG, pass the `iconVariant` option (the `headless: true` option is deprecated for this package — it now only selects the deprecated `/headless` spelling of the same modules):
 
 ```js
 {

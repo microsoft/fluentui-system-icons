@@ -9,7 +9,7 @@
 // font families and their glyph-named codepoint maps.
 //
 // Copied per family (Regular / Filled / Light / Resizable):
-//   - {ttf,woff,woff2}  -> imported by createFluentFontIcon.styles.ts (@font-face)
+//   - {ttf,woff,woff2}  -> referenced by src/utils/fonts/styles.css (@font-face)
 //   - .json (glyph-named) -> read by convert-font.js, which then overwrites it
 //                            in place with the React-named codepoint map.
 //

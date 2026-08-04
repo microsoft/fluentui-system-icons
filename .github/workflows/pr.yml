@@ -204,8 +204,8 @@ jobs:
       - name: Install Playwright browsers
         # Two consumers, both of which run after this step:
         # - `docsite:extract-storybook-llms` crawls the built storybook with Playwright;
-        # - `react-icons:test` compares the computed styles the standard and headless
-        #   APIs produce, which needs a real engine (see src/parity/render-parity.test.tsx).
+        # - `react-icons:test` pins the computed styles the shipped stylesheet produces,
+        #   which needs a real engine (see src/contract/rendered-styles.test.tsx).
         run: yarn playwright install --with-deps chromium
 
       - name: Build

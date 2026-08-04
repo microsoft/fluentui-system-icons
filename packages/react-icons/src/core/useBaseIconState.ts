@@ -13,7 +13,7 @@ export type BaseIconState<
 > = Omit<FluentIconsProps<TBaseAttributes, TRefType>, 'primaryFill'>;
 
 /**
- * Styling-agnostic icon state shared by the Griffel and headless APIs.
+ * Styling-agnostic icon state shared by every icon factory (SVG, SVG sprite and font).
  *
  * Handles the parts that are identical regardless of styling strategy:
  * - strips non-DOM props (`filled`)

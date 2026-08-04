@@ -10,17 +10,16 @@ export interface FileTypeIconProps
 
 /**
  * Data attribute set on the rendered `<img>`. It is the styling hook targeted by the
- * opt-in `@fluentui/react-icons-file-type/headless/styles.css` (or by a consumer's own
- * CSS). The attribute is inert until such CSS is loaded, so it is harmless for the default
- * (Griffel-styled) entry point.
+ * shipped `@fluentui/react-icons-file-type/styles.css` (or by a consumer's own CSS).
+ * The attribute is inert until such CSS is loaded.
  */
 export const fileTypeIconDataAttribute = 'data-fui-filetype-icon';
 
 /**
  * The resolved `<img>` props produced by {@link useFileTypeIcon} and consumed by
  * {@link renderFileTypeIcon}. Following the Fluent v9 pattern, the state is a plain,
- * mutable bag of slot props so a style hook (e.g. `useFileTypeIconStyles`) can layer
- * additional classes on top before rendering.
+ * mutable bag of slot props so callers can layer additional classes or attributes on
+ * top before rendering.
  */
 export interface FileTypeIconState extends React.ImgHTMLAttributes<HTMLImageElement> {
   src: string;
@@ -71,9 +70,8 @@ function getImageA11yProps(props: FileTypeIconProps): { alt?: string; 'aria-hidd
 
 /**
  * State hook: resolves {@link FileTypeIconProps} into the {@link FileTypeIconState} `<img>`
- * props. This is the shared core used by both the headless and the Griffel-styled
- * `FileTypeIcon` components — the latter runs a style hook over the returned state before
- * rendering.
+ * props. This is the core of the `FileTypeIcon` component; styling comes from the shipped
+ * stylesheet via {@link fileTypeIconDataAttribute} rather than from a style hook.
  *
  * The asset host is resolved from the nearest `FileTypeIconsProvider`, falling back to the
  * Fluent CDN default when no provider is present.
