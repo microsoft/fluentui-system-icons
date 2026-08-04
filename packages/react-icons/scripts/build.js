@@ -5,11 +5,37 @@
 const { execSync } = require('node:child_process');
 const { copyFileSync, existsSync, readFileSync, writeFileSync } = require('node:fs');
 const { join, basename } = require('node:path');
+const { parseArgs } = require('node:util');
 
 const glob = require('glob');
 const { transformSync } = require('@babel/core');
 
-main({ root: join(__dirname, '..') });
+const { fullySpecifyEsm, finalizeCjs, applyEsmFirstManifest } = require('./module-format');
+
+/**
+ * Opt-in switch for native ESM-first packaging.
+ *
+ * Off (the default) the build is byte-for-byte the historical dual output:
+ * extensionless specifiers in `lib/`, plain `.js` in `lib-cjs/`, manifest untouched.
+ *
+ * On, the emitted output becomes valid bare-Node ESM and the manifest is flipped to
+ * match. This flag exists so the tooling can live on `main` — and stay in sync as
+ * icons change — before the format is switched on for real. It is temporary: once
+ * ESM-first becomes the default, the flag and these branches get deleted.
+ */
+const { values: cliOptions } = parseArgs({
+  options: {
+    'enable-native-esm': { type: 'boolean', default: false },
+  },
+  // Fail loudly on a mistyped flag rather than silently doing a dual build.
+  strict: true,
+  allowPositionals: true,
+});
+
+main({ root: join(__dirname, '..'), enableNativeEsm: cliOptions['enable-native-esm'] }).catch((error) => {
+  console.error(error);
+  process.exit(1);
+});
 
 /**
  * Builds source TypeScript and copys assets to the output directories.
@@ -18,9 +44,9 @@ main({ root: join(__dirname, '..') });
  * applies Babel transformations, and copies font assets.
  * It also creates raw style copies for .styles.js files.
  *
- * @param {{ root: string; }} options
+ * @param {{ root: string; enableNativeEsm?: boolean; }} options
  */
-function main(options) {
+async function main(options) {
   const projectRoot = options.root;
 
   transpileTsc({ moduleFormat: 'esnext', outDir: 'lib' }, projectRoot);
@@ -56,6 +82,29 @@ function main(options) {
 
   applyBabelTransform('lib', projectRoot);
   applyBabelTransform('lib-cjs', projectRoot);
+
+  if (options.enableNativeEsm) {
+    await convertToNativeEsm(projectRoot);
+  }
+}
+
+/**
+ * Converts the freshly built dual output into native ESM-first output.
+ *
+ * Runs last on purpose: rewriting the manifest to `"type": "module"` changes how Node
+ * interprets every `.js` file in this package, so nothing may be `require`d after it.
+ * It also has to follow the sprite/headless export-map emitters, whose (format-agnostic)
+ * entries are picked up and converted along with the rest of the map.
+ *
+ * @param {string} projectRoot
+ */
+async function convertToNativeEsm(projectRoot) {
+  await fullySpecifyEsm(join(projectRoot, 'lib'));
+  await finalizeCjs(join(projectRoot, 'lib-cjs'));
+
+  const pkgPath = join(projectRoot, 'package.json');
+  const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
+  writeFileSync(pkgPath, JSON.stringify(applyEsmFirstManifest(pkg), null, 2) + '\n');
 }
 
 // =================================================================================================
