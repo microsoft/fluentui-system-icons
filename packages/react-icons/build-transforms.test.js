@@ -106,6 +106,27 @@ describe('build-transforms kebab-case consistency', () => {
     it('bundleIcon → utils', () => {
       expect(resolveFluentIconImport('bundleIcon')).toBe('@fluentui/react-icons/utils');
     });
+
+    // Every non-icon binding the root barrel exports must map to `/utils`, and
+    // `/utils` must actually export it — `entrypoint-api.test.ts` pins the latter.
+    it.each([
+      'wrapIcon',
+      'createFluentIcon',
+      'useIconState',
+      'cx',
+      'iconClassName',
+      'iconFilledClassName',
+      'iconRegularClassName',
+      'iconLightClassName',
+      'iconColorClassName',
+      'fontIconClassName',
+      'DATA_FUI_ICON',
+      'DATA_FUI_ICON_RTL',
+      'DATA_FUI_ICON_HIDDEN',
+      'DATA_FUI_ICON_FONT',
+    ])('%s → utils', (importName) => {
+      expect(resolveFluentIconImport(importName)).toBe('@fluentui/react-icons/utils');
+    });
   });
 
   describe('resolveFluentIconImport target parameter', () => {

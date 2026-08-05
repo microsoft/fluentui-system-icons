@@ -56,12 +56,43 @@ describe('API surface — /utils', () => {
       createFluentIcon: { kind: 'function', arity: 4 },
       useIconState: { kind: 'function', arity: 2 },
       wrapIcon: { kind: 'function', arity: 3 },
+      cx: { kind: 'function', arity: 0 },
       iconClassName: { kind: 'string', value: 'fui-Icon' },
       iconFilledClassName: { kind: 'string', value: 'fui-Icon-filled' },
       iconRegularClassName: { kind: 'string', value: 'fui-Icon-regular' },
       iconLightClassName: { kind: 'string', value: 'fui-Icon-light' },
       iconColorClassName: { kind: 'string', value: 'fui-Icon-color' },
+      fontIconClassName: { kind: 'string', value: 'fui-Icon-font' },
+      DATA_FUI_ICON: { kind: 'string', value: 'data-fui-icon' },
+      DATA_FUI_ICON_RTL: { kind: 'string', value: 'data-fui-icon-rtl' },
+      DATA_FUI_ICON_HIDDEN: { kind: 'string', value: 'data-fui-icon-hidden' },
+      DATA_FUI_ICON_FONT: { kind: 'string', value: 'data-fui-icon-font' },
     });
+  });
+
+  test('covers every non-icon value binding the root barrel exports (build-transform contract)', () => {
+    // The documented import transforms (docs/build-transforms.md, the atomic webpack
+    // loader, and the Babel/SWC snippets) rewrite every non-icon, non-provider root
+    // import to `@fluentui/react-icons/utils`. Any value the root barrel exports that
+    // `/utils` does not re-export would therefore fail to resolve in transformed
+    // consumer builds. `/utils` must stay a superset of those bindings.
+    //
+    // Mirrors the utility exports emitted into the root barrel by
+    // `scripts/convert.js` (`processPerChunk`), minus the provider bindings, which
+    // the transforms route to `/providers` instead.
+    const rootUtilityBindings = [
+      'wrapIcon',
+      'bundleIcon',
+      'createFluentIcon',
+      'cx',
+      'useIconState',
+      ...Object.keys(constants), // `export * from './utils/constants'`
+    ];
+    const utilsSurface = new Set(Object.keys(utilsEntry));
+
+    for (const name of rootUtilityBindings) {
+      expect(utilsSurface.has(name), `/utils must re-export root barrel binding \`${name}\``).toBe(true);
+    }
   });
 
   test('the sprite and font factories keep their shapes', () => {

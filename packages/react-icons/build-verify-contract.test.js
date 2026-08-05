@@ -128,6 +128,33 @@ describe('published surface — .d.ts declarations', () => {
     }
   });
 
+  it('the /utils entrypoint re-exports every non-icon binding the root barrel publishes', () => {
+    // The documented import transforms (docs/build-transforms.md and the atomic
+    // webpack loader) rewrite every non-icon, non-provider root import to
+    // `@fluentui/react-icons/utils`. A root barrel binding missing here fails to
+    // resolve in transformed consumer builds.
+    const utilsDts = read('utils.d.ts');
+    for (const name of [
+      'wrapIcon',
+      'bundleIcon',
+      'createFluentIcon',
+      'useIconState',
+      'cx',
+      'iconClassName',
+      'iconFilledClassName',
+      'iconRegularClassName',
+      'iconColorClassName',
+      'iconLightClassName',
+      'fontIconClassName',
+      'DATA_FUI_ICON',
+      'DATA_FUI_ICON_RTL',
+      'DATA_FUI_ICON_HIDDEN',
+      'DATA_FUI_ICON_FONT',
+    ]) {
+      expect(utilsDts, `utils.d.ts re-exports ${name}`).toMatch(new RegExp(`\\b${name}\\b`));
+    }
+  });
+
   it('the class-name constants keep their literal types', () => {
     // Consumers narrow on these; widening them to `string` is a silent break.
     expect(read('utils/constants.d.ts')).toMatch(/export declare const iconFilledClassName = "fui-Icon-filled"/);
