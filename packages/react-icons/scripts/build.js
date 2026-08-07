@@ -5,34 +5,13 @@
 const { execSync } = require('node:child_process');
 const { copyFileSync, existsSync, readFileSync, writeFileSync } = require('node:fs');
 const { join, basename } = require('node:path');
-const { parseArgs } = require('node:util');
 
 const glob = require('glob');
 const { transformSync } = require('@babel/core');
 
-const { fullySpecifyEsm, finalizeCjs, applyEsmFirstManifest } = require('./module-format');
+const { fullySpecifyEsm, finalizeCjs, esmFirstEntry } = require('./module-format');
 
-/**
- * Opt-in switch for native ESM-first packaging.
- *
- * Off (the default) the build is byte-for-byte the historical dual output:
- * extensionless specifiers in `lib/`, plain `.js` in `lib-cjs/`, manifest untouched.
- *
- * On, the emitted output becomes valid bare-Node ESM and the manifest is flipped to
- * match. This flag exists so the tooling can live on `main` — and stay in sync as
- * icons change — before the format is switched on for real. It is temporary: once
- * ESM-first becomes the default, the flag and these branches get deleted.
- */
-const { values: cliOptions } = parseArgs({
-  options: {
-    'enable-native-esm': { type: 'boolean', default: false },
-  },
-  // Fail loudly on a mistyped flag rather than silently doing a dual build.
-  strict: true,
-  allowPositionals: true,
-});
-
-main({ root: join(__dirname, '..'), enableNativeEsm: cliOptions['enable-native-esm'] }).catch((error) => {
+main({ root: join(__dirname, '..') }).catch((error) => {
   console.error(error);
   process.exit(1);
 });
@@ -44,7 +23,7 @@ main({ root: join(__dirname, '..'), enableNativeEsm: cliOptions['enable-native-e
  * applies Babel transformations, and copies font assets.
  * It also creates raw style copies for .styles.js files.
  *
- * @param {{ root: string; enableNativeEsm?: boolean; }} options
+ * @param {{ root: string; }} options
  */
 async function main(options) {
   const projectRoot = options.root;
@@ -83,28 +62,10 @@ async function main(options) {
   applyBabelTransform('lib', projectRoot);
   applyBabelTransform('lib-cjs', projectRoot);
 
-  if (options.enableNativeEsm) {
-    await convertToNativeEsm(projectRoot);
-  }
-}
-
-/**
- * Converts the freshly built dual output into native ESM-first output.
- *
- * Runs last on purpose: rewriting the manifest to `"type": "module"` changes how Node
- * interprets every `.js` file in this package, so nothing may be `require`d after it.
- * It also has to follow the sprite/headless export-map emitters, whose (format-agnostic)
- * entries are picked up and converted along with the rest of the map.
- *
- * @param {string} projectRoot
- */
-async function convertToNativeEsm(projectRoot) {
+  // Last on purpose: the package is `"type": "module"`, so once `lib-cjs/` is renamed to
+  // `.cjs` nothing above may resolve it as a plain `.js` file anymore.
   await fullySpecifyEsm(join(projectRoot, 'lib'));
   await finalizeCjs(join(projectRoot, 'lib-cjs'));
-
-  const pkgPath = join(projectRoot, 'package.json');
-  const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
-  writeFileSync(pkgPath, JSON.stringify(applyEsmFirstManifest(pkg), null, 2) + '\n');
 }
 
 // =================================================================================================
@@ -226,11 +187,7 @@ function addSpriteExportMap(baseDir) {
     return;
   }
 
-  pkg.exports[spriteExportKey] = {
-    types: './lib/atoms/svg-sprite/*.d.ts',
-    import: './lib/atoms/svg-sprite/*.js',
-    require: './lib-cjs/atoms/svg-sprite/*.js',
-  };
+  pkg.exports[spriteExportKey] = esmFirstEntry('./lib/atoms/svg-sprite/*.js');
 
   writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
   console.log(`  ✓ [exports] Added ${spriteExportKey} to package.json`);
@@ -246,44 +203,20 @@ function addHeadlessExportMap(baseDir) {
   const pkgPath = join(baseDir, 'package.json');
   const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
 
-  /** @type {Record<string, string | {types: string; import: string; require: string}>} */
+  /** @type {Record<string, string | ReturnType<typeof esmFirstEntry>>} */
   const headlessExports = {
-    './headless': {
-      types: './lib/headless/index.d.ts',
-      import: './lib/headless/index.js',
-      require: './lib-cjs/headless/index.js',
-    },
-    './headless/fonts': {
-      types: './lib/headless/fonts/index.d.ts',
-      import: './lib/headless/fonts/index.js',
-      require: './lib-cjs/headless/fonts/index.js',
-    },
-    './headless/utils': {
-      types: './lib/headless/utils.d.ts',
-      import: './lib/headless/utils.js',
-      require: './lib-cjs/headless/utils.js',
-    },
+    './headless': esmFirstEntry('./lib/headless/index.js'),
+    './headless/fonts': esmFirstEntry('./lib/headless/fonts/index.js'),
+    './headless/utils': esmFirstEntry('./lib/headless/utils.js'),
     './headless/styles.css': './lib/headless/styles.css',
     './headless/fonts/styles.css': './lib/headless/fonts/styles.css',
-    './headless/svg/*': {
-      types: './lib/atoms/headless-svg/*.d.ts',
-      import: './lib/atoms/headless-svg/*.js',
-      require: './lib-cjs/atoms/headless-svg/*.js',
-    },
-    './headless/fonts/*': {
-      types: './lib/atoms/headless-fonts/*.d.ts',
-      import: './lib/atoms/headless-fonts/*.js',
-      require: './lib-cjs/atoms/headless-fonts/*.js',
-    },
+    './headless/svg/*': esmFirstEntry('./lib/atoms/headless-svg/*.js'),
+    './headless/fonts/*': esmFirstEntry('./lib/atoms/headless-fonts/*.js'),
   };
 
   // Only expose the headless svg-sprite subpath when those atoms were generated
   if (existsSync(join(baseDir, 'src/atoms/headless-svg-sprite'))) {
-    headlessExports['./headless/svg-sprite/*'] = {
-      types: './lib/atoms/headless-svg-sprite/*.d.ts',
-      import: './lib/atoms/headless-svg-sprite/*.js',
-      require: './lib-cjs/atoms/headless-svg-sprite/*.js',
-    };
+    headlessExports['./headless/svg-sprite/*'] = esmFirstEntry('./lib/atoms/headless-svg-sprite/*.js');
   }
 
   // Add headless export maps
