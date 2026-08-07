@@ -5658,5 +5658,11 @@
   "ic_fluent_color_off_20_filled": 63000,
   "ic_fluent_color_off_20_regular": 63001,
   "ic_fluent_link_off_20_filled": 63002,
-  "ic_fluent_link_off_20_regular": 63003
+  "ic_fluent_link_off_20_regular": 63003,
+  "ic_fluent_calendar_agenda_clock_20_filled": 63004,
+  "ic_fluent_calendar_agenda_clock_20_regular": 63005,
+  "ic_fluent_folder_dismiss_20_filled": 63006,
+  "ic_fluent_folder_dismiss_20_regular": 63007,
+  "ic_fluent_orientation_portrait_20_filled": 63008,
+  "ic_fluent_orientation_portrait_20_regular": 63009
 }

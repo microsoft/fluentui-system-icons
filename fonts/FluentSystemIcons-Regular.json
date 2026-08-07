@@ -9674,8 +9674,18 @@
   "ic_fluent_shield_dismiss_48_regular": 986312,
   "ic_fluent_slide_link_28_regular": 986313,
   "ic_fluent_slide_multiple_16_regular": 986314,
-  "ic_fluent_text_add_28_regular": 986315,
-  "ic_fluent_text_add_32_regular": 986316,
   "ic_fluent_wifi_1_48_regular": 986317,
-  "ic_fluent_wifi_off_48_regular": 986318
+  "ic_fluent_wifi_off_48_regular": 986318,
+  "ic_fluent_calendar_agenda_16_regular": 986315,
+  "ic_fluent_calendar_agenda_clock_16_regular": 986316,
+  "ic_fluent_calendar_agenda_clock_20_regular": 986319,
+  "ic_fluent_calendar_agenda_clock_24_regular": 986320,
+  "ic_fluent_calendar_agenda_clock_28_regular": 986321,
+  "ic_fluent_folder_dismiss_16_regular": 986322,
+  "ic_fluent_folder_dismiss_20_regular": 986323,
+  "ic_fluent_folder_dismiss_24_regular": 986324,
+  "ic_fluent_orientation_portrait_20_regular": 986325,
+  "ic_fluent_orientation_portrait_24_regular": 986326,
+  "ic_fluent_text_add_t_28_regular": 986327,
+  "ic_fluent_text_add_t_32_regular": 986328
 }

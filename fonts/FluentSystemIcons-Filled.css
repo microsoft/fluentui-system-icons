@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?be7b2a4c64fb3ca9a22df12ca86deb1c") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?be7b2a4c64fb3ca9a22df12ca86deb1c") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?be7b2a4c64fb3ca9a22df12ca86deb1c") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?052881176167350e80e9edee63c359d2") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?052881176167350e80e9edee63c359d2") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?052881176167350e80e9edee63c359d2") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -29416,15 +29416,45 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 .icon-ic_fluent_slide_multiple_16_filled:before {
     content: "\f0d47";
 }
-.icon-ic_fluent_text_add_28_filled:before {
-    content: "\f0d48";
-}
-.icon-ic_fluent_text_add_32_filled:before {
-    content: "\f0d49";
-}
 .icon-ic_fluent_wifi_1_48_filled:before {
     content: "\f0d4a";
 }
 .icon-ic_fluent_wifi_off_48_filled:before {
     content: "\f0d4b";
+}
+.icon-ic_fluent_calendar_agenda_16_filled:before {
+    content: "\f0d48";
+}
+.icon-ic_fluent_calendar_agenda_clock_16_filled:before {
+    content: "\f0d49";
+}
+.icon-ic_fluent_calendar_agenda_clock_20_filled:before {
+    content: "\f0d4c";
+}
+.icon-ic_fluent_calendar_agenda_clock_24_filled:before {
+    content: "\f0d4d";
+}
+.icon-ic_fluent_calendar_agenda_clock_28_filled:before {
+    content: "\f0d4e";
+}
+.icon-ic_fluent_folder_dismiss_16_filled:before {
+    content: "\f0d4f";
+}
+.icon-ic_fluent_folder_dismiss_20_filled:before {
+    content: "\f0d50";
+}
+.icon-ic_fluent_folder_dismiss_24_filled:before {
+    content: "\f0d51";
+}
+.icon-ic_fluent_orientation_portrait_20_filled:before {
+    content: "\f0d52";
+}
+.icon-ic_fluent_orientation_portrait_24_filled:before {
+    content: "\f0d53";
+}
+.icon-ic_fluent_text_add_t_28_filled:before {
+    content: "\f0d54";
+}
+.icon-ic_fluent_text_add_t_32_filled:before {
+    content: "\f0d55";
 }

@@ -190,7 +190,7 @@
 |Table Simple|<img src="assets/Table Simple/SVG/ic_fluent_table_simple_32_light.svg?raw=true" width="24" height="24">|`tableSimple32Light`|`ic_fluent_table_simple_32_light`|
 |Tag|<img src="assets/Tag/SVG/ic_fluent_tag_32_light.svg?raw=true" width="24" height="24">|`tag32Light`|`ic_fluent_tag_32_light`|
 |Text|<img src="assets/Text/SVG/ic_fluent_text_32_light.svg?raw=true" width="24" height="24">|`text32Light`|`ic_fluent_text_32_light`|
-|Text Add|<img src="assets/Text Add/SVG/ic_fluent_text_add_32_light.svg?raw=true" width="24" height="24">|`textAdd32Light`|`ic_fluent_text_add_32_light`|
+|Text Add T|<img src="assets/Text Add T/SVG/ic_fluent_text_add_t_32_light.svg?raw=true" width="24" height="24">|`textAddT32Light`|`ic_fluent_text_add_t_32_light`|
 |Text Clear Formatting|<img src="assets/Text Clear Formatting/SVG/ic_fluent_text_clear_formatting_32_light.svg?raw=true" width="24" height="24">|`textClearFormatting32Light`|`ic_fluent_text_clear_formatting_32_light`|
 |Text Collapse|<img src="assets/Text Collapse/SVG/ic_fluent_text_collapse_32_light.svg?raw=true" width="24" height="24">|`textCollapse32Light`|`ic_fluent_text_collapse_32_light`|
 |Text Density|<img src="assets/Text Density/SVG/ic_fluent_text_density_32_light.svg?raw=true" width="24" height="24">|`textDensity32Light`|`ic_fluent_text_density_32_light`|
