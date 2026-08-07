@@ -14,10 +14,10 @@ const PLUGIN_NAME = 'FluentUIReactIconsSvgSpriteSubsettingPlugin';
  *
  * Examples:
  * - .../react-icons/lib/atoms/svg-sprite/backpack.js
- * - .../react-icons/lib-cjs/atoms/svg-sprite/backpack.js
+ * - .../react-icons/lib-cjs/atoms/svg-sprite/backpack.cjs
  */
 const REACT_ICONS_SVG_SPRITE_JS_MODULE_IMPORT_PATTERN =
-  /react-icons[\/\\]lib(-cjs)?[\/\\]atoms[\/\\]svg-sprite[\/\\][\w-]+\.js$/;
+  /react-icons[\/\\]lib(-cjs)?[\/\\]atoms[\/\\]svg-sprite[\/\\][\w-]+\.c?js$/;
 
 const ATOMS_SVG_SPRITE_DIR_PATTERN = /(^|[\/\\])atoms[\/\\]svg-sprite([\/\\]|$)/;
 
