@@ -1240,12 +1240,12 @@ describe('Build Verification', () => {
           export const CalendarAddRegular = ( /*#__PURE__*/createFluentIcon('CalendarAddRegular', "1em", ["M14.5 3A2.5 2.5 0 0 1 17 5.5v4.1q-.48-.24-1-.4V7H4v7.5c0 .83.67 1.5 1.5 1.5h3.7q.16.52.4 1H5.5A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3zm0 1h-9C4.67 4 4 4.67 4 5.5V6h12v-.5c0-.83-.67-1.5-1.5-1.5M19 14.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0m-4-2a.5.5 0 0 0-1 0V14h-1.5a.5.5 0 0 0 0 1H14v1.5a.5.5 0 0 0 1 0V15h1.5a.5.5 0 0 0 0-1H15z"]));
           export const CalendarAgendaFilled = ( /*#__PURE__*/createFluentIcon('CalendarAgendaFilled', "1em", ["M17 14.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9A2.5 2.5 0 0 1 17 5.5zm-3-8a.5.5 0 0 0-.41-.5H6.41a.5.5 0 0 0 0 1h7.18a.5.5 0 0 0 .41-.5m0 3.5a.5.5 0 0 0-.41-.5H6.41a.5.5 0 0 0 0 1h7.18A.5.5 0 0 0 14 10m0 3.5a.5.5 0 0 0-.41-.5H6.41a.5.5 0 0 0 0 1h7.18a.5.5 0 0 0 .41-.5"]));
           export const CalendarAgendaRegular = ( /*#__PURE__*/createFluentIcon('CalendarAgendaRegular', "1em", ["M17 14.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9A2.5 2.5 0 0 1 17 5.5zm-1 0v-9c0-.83-.67-1.5-1.5-1.5h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5m-2-8a.5.5 0 0 1-.41.5H6.5a.5.5 0 0 1-.09-1h7.09c.28 0 .5.22.5.5m0 3.5a.5.5 0 0 1-.41.5H6.5a.5.5 0 0 1-.09-1h7.09c.28 0 .5.22.5.5m0 3.5a.5.5 0 0 1-.41.5H6.5a.5.5 0 0 1-.09-1h7.09c.28 0 .5.22.5.5"]));
+          export const CalendarAgendaClockFilled = ( /*#__PURE__*/createFluentIcon('CalendarAgendaClockFilled', "1em", ["M14.5 10a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9m0-7A2.5 2.5 0 0 1 17 5.5v4.1a5.5 5.5 0 0 0-4.8-.1H6.42a.5.5 0 0 0 0 1h4.32A5.5 5.5 0 0 0 9.2 13H6.4a.5.5 0 0 0 0 1h2.61a5.6 5.6 0 0 0 .58 3H5.5A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3zm0 9a.5.5 0 0 0-.5.5v2c0 .28.22.5.5.5H16a.5.5 0 0 0 0-1h-1v-1.5a.5.5 0 0 0-.5-.5M6.41 6a.5.5 0 0 0 0 1h7.18a.5.5 0 0 0 0-1H6.41"]));
+          export const CalendarAgendaClockRegular = ( /*#__PURE__*/createFluentIcon('CalendarAgendaClockRegular', "1em", ["M14.5 10a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9m0-7A2.5 2.5 0 0 1 17 5.5v4.1q-.48-.25-1-.4V5.5c0-.83-.67-1.5-1.5-1.5h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h3.7q.15.52.4 1H5.5A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3zm0 9a.5.5 0 0 0-.5.5v2c0 .28.22.5.5.5H16a.5.5 0 0 0 0-1h-1v-1.5a.5.5 0 0 0-.5-.5m-5.3 1q-.13.49-.18 1H6.5a.5.5 0 0 1-.09-1H9.2m3-3.5a6 6 0 0 0-1.47 1H6.5a.5.5 0 0 1-.09-1h5.79M13.5 6a.5.5 0 0 1 .09 1H6.5a.5.5 0 0 1-.09-1h7.09"]));
           export const CalendarArrowCounterclockwiseFilled = ( /*#__PURE__*/createFluentIcon('CalendarArrowCounterclockwiseFilled', "1em", ["M3 5.5A2.5 2.5 0 0 1 5.5 3h9A2.5 2.5 0 0 1 17 5.5V6H6.11l-.06-.06A1.5 1.5 0 0 0 4 5.87V7.3l.65-.64a.5.5 0 1 1 .7.7l-1.5 1.5a.5.5 0 0 1-.7 0l-1.5-1.5a.5.5 0 1 1 .7-.7l.65.64zM17 7v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5V9.92a1.5 1.5 0 0 0 1.55-.36l1.5-1.5Q6.5 7.6 6.5 7zM7 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-1 2a1 1 0 1 0 2 0 1 1 0 0 0-2 0m4-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-1 2a1 1 0 1 0 2 0 1 1 0 0 0-2 0m4-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2"]));
           export const CalendarArrowCounterclockwiseRegular = ( /*#__PURE__*/createFluentIcon('CalendarArrowCounterclockwiseRegular', "1em", ["M5.5 17A2.5 2.5 0 0 1 3 14.5v-4a.5.5 0 0 1 1 0v4c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5V7H6.5q0-.56-.4-1H16v-.5c0-.83-.67-1.5-1.5-1.5h-9C4.67 4 4 4.67 4 5.5v1.8l.65-.65a.5.5 0 1 1 .7.7l-1.5 1.5a.5.5 0 0 1-.7 0l-1.5-1.5a.5.5 0 1 1 .7-.7l.65.64V5.5A2.5 2.5 0 0 1 5.5 3h9A2.5 2.5 0 0 1 17 5.5v9a2.5 2.5 0 0 1-2.5 2.5zM8 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-1 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m4-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-1 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m4-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0"]));
           export const CalendarArrowDownFilled = ( /*#__PURE__*/createFluentIcon('CalendarArrowDownFilled', "1em", ["M5.5 3A2.5 2.5 0 0 0 3 5.5V6h14v-.5A2.5 2.5 0 0 0 14.5 3zM17 7H3v7.5A2.5 2.5 0 0 0 5.5 17h4.1q-.59-1.14-.6-2.5a5.5 5.5 0 0 1 8-4.9zm2 7.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0m-4.85 2.35a.5.5 0 0 0 .35.15.5.5 0 0 0 .35-.15l2-2a.5.5 0 0 0-.7-.7L15 15.29V12.5a.5.5 0 0 0-1 0v2.8l-1.15-1.15a.5.5 0 0 0-.7.7z"]));
           export const CalendarArrowDownRegular = ( /*#__PURE__*/createFluentIcon('CalendarArrowDownRegular', "1em", ["M5.5 3A2.5 2.5 0 0 0 3 5.5v9A2.5 2.5 0 0 0 5.5 17h4.1q-.24-.48-.4-1H5.5A1.5 1.5 0 0 1 4 14.5V7h12v2.2q.52.16 1 .4V5.5A2.5 2.5 0 0 0 14.5 3zM4 5.5C4 4.67 4.67 4 5.5 4h9c.83 0 1.5.67 1.5 1.5V6H4zm15 9a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0m-4.85 2.35a.5.5 0 0 0 .35.15.5.5 0 0 0 .35-.15l2-2a.5.5 0 0 0-.7-.7L15 15.29V12.5a.5.5 0 0 0-1 0v2.8l-1.15-1.15a.5.5 0 0 0-.7.7z"]));
-          export const CalendarArrowRepeatAllFilled = ( /*#__PURE__*/createFluentIcon('CalendarArrowRepeatAllFilled', "1em", ["M17 11V7H3v7.5A2.5 2.5 0 0 0 5.5 17h4.47a1.5 1.5 0 0 1-1.17-.6A3.99 3.99 0 0 1 12 10h.5a1.5 1.5 0 0 1 2.56-1.06l1.5 1.5q.25.25.36.56zm0-5.5A2.5 2.5 0 0 0 14.5 3h-9A2.5 2.5 0 0 0 3 5.5V6h14zm-2.65 4.15a.5.5 0 0 0-.7.7l.64.65H12a3 3 0 0 0-2.4 4.8.5.5 0 1 0 .8-.6q-.39-.51-.4-1.2c0-1.1.9-2 2-2h2.3l-.65.65a.5.5 0 0 0 .7.7l1.5-1.5a.5.5 0 0 0 0-.7zm3.05 2.55a.5.5 0 0 0-.8.6q.39.51.4 1.2a2 2 0 0 1-2 2h-2.3l.65-.65a.5.5 0 0 0-.7-.7l-1.5 1.5a.5.5 0 0 0 0 .7l1.5 1.5a.5.5 0 0 0 .7-.7l-.64-.65H15a3 3 0 0 0 2.4-4.8"]));
-          export const CalendarArrowRepeatAllRegular = ( /*#__PURE__*/createFluentIcon('CalendarArrowRepeatAllRegular', "1em", ["M17 5.5A2.5 2.5 0 0 0 14.5 3h-9A2.5 2.5 0 0 0 3 5.5v9A2.5 2.5 0 0 0 5.5 17h4.47a1.5 1.5 0 0 1-1.17-.6q-.14-.2-.26-.4H5.5A1.5 1.5 0 0 1 4 14.5V7h12v2.88l.56.56q.25.25.36.56H17zM5.5 4h9c.83 0 1.5.67 1.5 1.5V6H4v-.5C4 4.67 4.67 4 5.5 4m8.85 5.65a.5.5 0 0 0-.7.7l.64.65H12a3 3 0 0 0-2.4 4.8.5.5 0 1 0 .8-.6q-.39-.51-.4-1.2c0-1.1.9-2 2-2h2.3l-.65.65a.5.5 0 0 0 .7.7l1.5-1.5a.5.5 0 0 0 0-.7zm3.05 2.55a.5.5 0 0 0-.8.6q.39.51.4 1.2a2 2 0 0 1-2 2h-2.3l.65-.65a.5.5 0 0 0-.7-.7l-1.5 1.5a.5.5 0 0 0 0 .7l1.5 1.5a.5.5 0 0 0 .7-.7l-.64-.65H15a3 3 0 0 0 2.4-4.8"]));
           ... (content truncated for snapshot)"
         `);
 
@@ -1276,13 +1276,13 @@ describe('Build Verification', () => {
           export declare const CalendarAddRegular: FluentIcon;
           export declare const CalendarAgendaFilled: FluentIcon;
           export declare const CalendarAgendaRegular: FluentIcon;
+          export declare const CalendarAgendaClockFilled: FluentIcon;
+          export declare const CalendarAgendaClockRegular: FluentIcon;
           export declare const CalendarArrowCounterclockwiseFilled: FluentIcon;
           export declare const CalendarArrowCounterclockwiseRegular: FluentIcon;
           export declare const CalendarArrowDownFilled: FluentIcon;
           export declare const CalendarArrowDownRegular: FluentIcon;
           export declare const CalendarArrowRepeatAllFilled: FluentIcon;
-          export declare const CalendarArrowRepeatAllRegular: FluentIcon;
-          export declare const CalendarArrowRightFilled: FluentIcon;
           ... (content truncated for snapshot)"
         `);
       }
@@ -1334,9 +1334,9 @@ describe('Build Verification', () => {
           exports.CalendarAddRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarAddRegular', "1em", ["M14.5 3A2.5 2.5 0 0 1 17 5.5v4.1q-.48-.24-1-.4V7H4v7.5c0 .83.67 1.5 1.5 1.5h3.7q.16.52.4 1H5.5A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3zm0 1h-9C4.67 4 4 4.67 4 5.5V6h12v-.5c0-.83-.67-1.5-1.5-1.5M19 14.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0m-4-2a.5.5 0 0 0-1 0V14h-1.5a.5.5 0 0 0 0 1H14v1.5a.5.5 0 0 0 1 0V15h1.5a.5.5 0 0 0 0-1H15z"]));
           exports.CalendarAgendaFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarAgendaFilled', "1em", ["M17 14.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9A2.5 2.5 0 0 1 17 5.5zm-3-8a.5.5 0 0 0-.41-.5H6.41a.5.5 0 0 0 0 1h7.18a.5.5 0 0 0 .41-.5m0 3.5a.5.5 0 0 0-.41-.5H6.41a.5.5 0 0 0 0 1h7.18A.5.5 0 0 0 14 10m0 3.5a.5.5 0 0 0-.41-.5H6.41a.5.5 0 0 0 0 1h7.18a.5.5 0 0 0 .41-.5"]));
           exports.CalendarAgendaRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarAgendaRegular', "1em", ["M17 14.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9A2.5 2.5 0 0 1 17 5.5zm-1 0v-9c0-.83-.67-1.5-1.5-1.5h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5m-2-8a.5.5 0 0 1-.41.5H6.5a.5.5 0 0 1-.09-1h7.09c.28 0 .5.22.5.5m0 3.5a.5.5 0 0 1-.41.5H6.5a.5.5 0 0 1-.09-1h7.09c.28 0 .5.22.5.5m0 3.5a.5.5 0 0 1-.41.5H6.5a.5.5 0 0 1-.09-1h7.09c.28 0 .5.22.5.5"]));
+          exports.CalendarAgendaClockFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarAgendaClockFilled', "1em", ["M14.5 10a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9m0-7A2.5 2.5 0 0 1 17 5.5v4.1a5.5 5.5 0 0 0-4.8-.1H6.42a.5.5 0 0 0 0 1h4.32A5.5 5.5 0 0 0 9.2 13H6.4a.5.5 0 0 0 0 1h2.61a5.6 5.6 0 0 0 .58 3H5.5A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3zm0 9a.5.5 0 0 0-.5.5v2c0 .28.22.5.5.5H16a.5.5 0 0 0 0-1h-1v-1.5a.5.5 0 0 0-.5-.5M6.41 6a.5.5 0 0 0 0 1h7.18a.5.5 0 0 0 0-1H6.41"]));
+          exports.CalendarAgendaClockRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarAgendaClockRegular', "1em", ["M14.5 10a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9m0-7A2.5 2.5 0 0 1 17 5.5v4.1q-.48-.25-1-.4V5.5c0-.83-.67-1.5-1.5-1.5h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h3.7q.15.52.4 1H5.5A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3zm0 9a.5.5 0 0 0-.5.5v2c0 .28.22.5.5.5H16a.5.5 0 0 0 0-1h-1v-1.5a.5.5 0 0 0-.5-.5m-5.3 1q-.13.49-.18 1H6.5a.5.5 0 0 1-.09-1H9.2m3-3.5a6 6 0 0 0-1.47 1H6.5a.5.5 0 0 1-.09-1h5.79M13.5 6a.5.5 0 0 1 .09 1H6.5a.5.5 0 0 1-.09-1h7.09"]));
           exports.CalendarArrowCounterclockwiseFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarArrowCounterclockwiseFilled', "1em", ["M3 5.5A2.5 2.5 0 0 1 5.5 3h9A2.5 2.5 0 0 1 17 5.5V6H6.11l-.06-.06A1.5 1.5 0 0 0 4 5.87V7.3l.65-.64a.5.5 0 1 1 .7.7l-1.5 1.5a.5.5 0 0 1-.7 0l-1.5-1.5a.5.5 0 1 1 .7-.7l.65.64zM17 7v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5V9.92a1.5 1.5 0 0 0 1.55-.36l1.5-1.5Q6.5 7.6 6.5 7zM7 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-1 2a1 1 0 1 0 2 0 1 1 0 0 0-2 0m4-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-1 2a1 1 0 1 0 2 0 1 1 0 0 0-2 0m4-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2"]));
-          exports.CalendarArrowCounterclockwiseRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarArrowCounterclockwiseRegular', "1em", ["M5.5 17A2.5 2.5 0 0 1 3 14.5v-4a.5.5 0 0 1 1 0v4c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5V7H6.5q0-.56-.4-1H16v-.5c0-.83-.67-1.5-1.5-1.5h-9C4.67 4 4 4.67 4 5.5v1.8l.65-.65a.5.5 0 1 1 .7.7l-1.5 1.5a.5.5 0 0 1-.7 0l-1.5-1.5a.5.5 0 1 1 .7-.7l.65.64V5.5A2.5 2.5 0 0 1 5.5 3h9A2.5 2.5 0 0 1 17 5.5v9a2.5 2.5 0 0 1-2.5 2.5zM8 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-1 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m4-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-1 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m4-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0"]));
-          exports.CalendarArrowDownFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarArrowDownFilled', "1em", ["M5.5 3A2.5 2.5 0 0 0 3 5.5V6h14v-.5A2.5 2.5 0 0 0 14.5 3zM17 7H3v7.5A2.5 2.5 0 0 0 5.5 17h4.1q-.59-1.14-.6-2.5a5.5 5.5 0 0 1 8-4.9zm2 7.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0m-4.85 2.35a.5.5 0 0 0 .35.15.5.5 0 0 0 .35-.15l2-2a.5.5 0 0 0-.7-.7L15 15.29V12.5a.5.5 0 0 0-1 0v2.8l-1.15-1.15a.5.5 0 0 0-.7.7z"]));
           ... (content truncated for snapshot)"
         `);
 
@@ -1367,13 +1367,13 @@ describe('Build Verification', () => {
           export declare const CalendarAddRegular: FluentIcon;
           export declare const CalendarAgendaFilled: FluentIcon;
           export declare const CalendarAgendaRegular: FluentIcon;
+          export declare const CalendarAgendaClockFilled: FluentIcon;
+          export declare const CalendarAgendaClockRegular: FluentIcon;
           export declare const CalendarArrowCounterclockwiseFilled: FluentIcon;
           export declare const CalendarArrowCounterclockwiseRegular: FluentIcon;
           export declare const CalendarArrowDownFilled: FluentIcon;
           export declare const CalendarArrowDownRegular: FluentIcon;
           export declare const CalendarArrowRepeatAllFilled: FluentIcon;
-          export declare const CalendarArrowRepeatAllRegular: FluentIcon;
-          export declare const CalendarArrowRightFilled: FluentIcon;
           ... (content truncated for snapshot)"
         `);
       }
@@ -2023,8 +2023,8 @@ describe('Build Verification', () => {
       const { svgPathCjs, svgPathEsm } = getAssetPaths();
       const esmStats = await getAtomDirStats(svgPathEsm);
       const cjsStats = await getAtomDirStats(svgPathCjs);
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2893`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2893`);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2896`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2896`);
     });
     it(`should have same number of atoms/fonts icon files in lib and lib-cjs`, async () => {
       const { fontsPathCjs, fontsPathEsm } = getAssetPaths();
