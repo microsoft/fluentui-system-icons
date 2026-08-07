@@ -285,6 +285,22 @@ These are the only two types of breaking changes that deviate from standard sema
 
 **Recommendation**: When upgrading, even for patch versions, review the release notes for any removed or renamed icons to ensure your application isn't affected.
 
+### Module Formats
+
+> **Since `v2.0.335`.**
+
+The package is **ESM-first**: it is marked `"type": "module"` and ships native ESM in `lib/` alongside a CommonJS build in `lib-cjs/` (`.cjs` / `.d.cts`). Every entry point is declared in the `exports` map with both an `import` and a `require` condition, so your toolchain picks the right one automatically.
+
+This is a packaging change only — no API surface changed:
+
+- **Bundlers** (webpack, Vite, Rollup, Metro, esbuild): nothing changes. They already resolved the ESM build via the `import`/`module` conditions.
+- **CommonJS consumers**: `require('@fluentui/react-icons')` keeps working and now resolves to `.cjs` files with matching `.d.cts` declarations.
+- **Bare Node ESM**: `import` now works without a bundler, because the ESM output uses fully specified relative specifiers (`./utils/wrapIcon.js` rather than `./utils/wrapIcon`).
+
+> **NOTE:** The font (`/fonts`, `/headless/fonts`) and `.css` entry points remain bundler-only. Font modules import `.ttf`/`.woff` binaries and CSS is not JavaScript, so neither can be loaded by bare Node — this is unchanged.
+
+No `tsconfig.json` change is required for this. `moduleResolution: "bundler"` is still the recommended setting (see [TypeScript Configuration](#typescript-configuration)) because it is what makes the subpath exports resolve, but ESM-first packaging does not force you onto `"node16"`.
+
 ## Atomic API
 
 The Atomic API provides a more granular way to import icons, with each icon variant exported individually from dedicated module files. This approach can significantly improve tree-shaking and reduce bundle sizes, especially when you only use a small subset of the available icons.

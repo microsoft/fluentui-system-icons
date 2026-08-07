@@ -4,7 +4,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
-import { fullySpecifyEsm, finalizeCjs, applyEsmFirstManifest } from './module-format';
+import { fullySpecifyEsm, finalizeCjs, esmFirstEntry } from './module-format';
 
 /** @type {string[]} */
 const tempRoots = [];
@@ -274,122 +274,22 @@ describe('module-format', () => {
     });
   });
 
-  describe('applyEsmFirstManifest', () => {
-    it('flips type, main and the export conditions to the ESM-first shape', () => {
-      const pkg = applyEsmFirstManifest({
-        type: undefined,
-        main: 'lib-cjs/index.js',
-        module: 'lib/index.js',
-        exports: {
-          './utils': {
-            types: './lib/utils.d.ts',
-            import: './lib/utils.js',
-            require: './lib-cjs/utils.js',
-          },
-        },
-      });
-
-      expect(pkg.type).toBe('module');
-      expect(pkg.main).toBe('lib-cjs/index.cjs');
-      // the ESM entry is untouched — only the CommonJS side gains an extension
-      expect(pkg.module).toBe('lib/index.js');
-      expect(pkg.exports['./utils']).toEqual({
-        import: { types: './lib/utils.d.ts', default: './lib/utils.js' },
-        require: { types: './lib-cjs/utils.d.cts', default: './lib-cjs/utils.cjs' },
+  describe('esmFirstEntry', () => {
+    it('pairs an ESM target with its finalized lib-cjs counterpart', () => {
+      expect(esmFirstEntry('./lib/headless/index.js')).toEqual({
+        import: { types: './lib/headless/index.d.ts', default: './lib/headless/index.js' },
+        require: { types: './lib-cjs/headless/index.d.cts', default: './lib-cjs/headless/index.cjs' },
       });
     });
 
-    it('recurses into nested conditions such as the fluentIconFont split', () => {
-      const pkg = applyEsmFirstManifest({
-        main: 'lib-cjs/index.js',
-        exports: {
-          '.': {
-            fluentIconFont: {
-              types: './lib/fonts/index.d.ts',
-              import: './lib/fonts/index.js',
-              require: './lib-cjs/fonts/index.js',
-            },
-            default: {
-              types: './lib/index.d.ts',
-              import: './lib/index.js',
-              require: './lib-cjs/index.js',
-            },
-          },
+    it('handles wildcard subpaths', () => {
+      expect(esmFirstEntry('./lib/atoms/svg-sprite/*.js')).toEqual({
+        import: { types: './lib/atoms/svg-sprite/*.d.ts', default: './lib/atoms/svg-sprite/*.js' },
+        require: {
+          types: './lib-cjs/atoms/svg-sprite/*.d.cts',
+          default: './lib-cjs/atoms/svg-sprite/*.cjs',
         },
       });
-
-      expect(pkg.exports['.']).toEqual({
-        fluentIconFont: {
-          import: { types: './lib/fonts/index.d.ts', default: './lib/fonts/index.js' },
-          require: { types: './lib-cjs/fonts/index.d.cts', default: './lib-cjs/fonts/index.cjs' },
-        },
-        default: {
-          import: { types: './lib/index.d.ts', default: './lib/index.js' },
-          require: { types: './lib-cjs/index.d.cts', default: './lib-cjs/index.cjs' },
-        },
-      });
-    });
-
-    it('converts wildcard subpaths, including ones appended at build time', () => {
-      const pkg = applyEsmFirstManifest({
-        main: 'lib-cjs/index.js',
-        exports: {
-          './svg/*': {
-            types: './lib/atoms/svg/*.d.ts',
-            import: './lib/atoms/svg/*.js',
-            require: './lib-cjs/atoms/svg/*.js',
-          },
-          './headless/svg-sprite/*': {
-            types: './lib/atoms/headless-svg-sprite/*.d.ts',
-            import: './lib/atoms/headless-svg-sprite/*.js',
-            require: './lib-cjs/atoms/headless-svg-sprite/*.js',
-          },
-        },
-      });
-
-      expect(pkg.exports['./svg/*'].require).toEqual({
-        types: './lib-cjs/atoms/svg/*.d.cts',
-        default: './lib-cjs/atoms/svg/*.cjs',
-      });
-      expect(pkg.exports['./headless/svg-sprite/*'].require).toEqual({
-        types: './lib-cjs/atoms/headless-svg-sprite/*.d.cts',
-        default: './lib-cjs/atoms/headless-svg-sprite/*.cjs',
-      });
-    });
-
-    it('leaves plain string targets such as CSS side effects untouched', () => {
-      const pkg = applyEsmFirstManifest({
-        main: 'lib-cjs/index.js',
-        exports: {
-          './headless/styles.css': './lib/headless/styles.css',
-          './headless/fonts/styles.css': './lib/headless/fonts/styles.css',
-        },
-      });
-
-      expect(pkg.exports).toEqual({
-        './headless/styles.css': './lib/headless/styles.css',
-        './headless/fonts/styles.css': './lib/headless/fonts/styles.css',
-      });
-    });
-
-    it('is idempotent, so a rebuilt package is not double-converted', () => {
-      /** @type {Record<string, any>} */
-      const original = {
-        main: 'lib-cjs/index.js',
-        exports: {
-          './utils': {
-            types: './lib/utils.d.ts',
-            import: './lib/utils.js',
-            require: './lib-cjs/utils.js',
-          },
-          './headless/styles.css': './lib/headless/styles.css',
-        },
-      };
-
-      const once = applyEsmFirstManifest(JSON.parse(JSON.stringify(original)));
-      const twice = applyEsmFirstManifest(JSON.parse(JSON.stringify(once)));
-
-      expect(twice).toEqual(once);
     });
   });
 });

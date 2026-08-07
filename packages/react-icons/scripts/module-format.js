@@ -4,21 +4,19 @@
 
 /**
  * @fileoverview
- * Post-`tsc` codemods that turn the default dual-format output into **native
- * ESM-first** output. All of this is opt-in behind `build.js --enable-native-esm`;
- * with the flag off none of these functions run and the build is unchanged.
+ * Post-`tsc` codemods that turn the raw dual-format `tsc` output into the **native
+ * ESM-first** output this package ships.
  *
  * - `fullySpecifyEsm(dir)` rewrites every relative import/export specifier in the
  *   ESM output (`lib/`) to be *fully specified* (`./x` -> `./x.js`, directory ->
  *   `./x/index.js`). TypeScript 4.x cannot emit extensions, so bare-Node ESM
  *   (and strict bundler resolution) would otherwise reject the output.
  * - `finalizeCjs(dir)` turns the CommonJS output (`lib-cjs/`) into `.cjs`/`.d.cts`
- *   files (required once the package is `"type": "module"`, where a bare `.js`
+ *   files (required because the package is `"type": "module"`, where a bare `.js`
  *   would be interpreted as ESM) and rewrites its relative `require()`/type
  *   specifiers to point at the renamed files.
- * - `applyEsmFirstManifest(pkg)` flips the manifest to match that output:
- *   `type: module`, a `.cjs` `main`, and per-condition `import`/`require` exports
- *   with `.d.ts`/`.d.cts` types.
+ * - `esmFirstEntry(target)` builds an `exports` entry matching that output, for the
+ *   subpaths `build.js` appends to the manifest at build time.
  */
 
 const { readdirSync } = require('node:fs');
@@ -258,93 +256,27 @@ async function finalizeCjs(dir) {
 }
 
 /**
- * Is this a flat export entry of the shape `{ types, import, require }`?
- * @param {any} value
- * @returns {value is { types: string; import: string; require: string }}
- */
-function isFlatConditions(value) {
-  return (
-    typeof value === 'object' &&
-    value !== null &&
-    typeof value.types === 'string' &&
-    typeof value.import === 'string' &&
-    typeof value.require === 'string'
-  );
-}
-
-/**
- * Rewrite a `lib-cjs/*.js` target to its finalized counterpart produced by `finalizeCjs`.
- * Works for concrete paths and `*` wildcard patterns alike.
- * @param {string} p
- * @param {'.cjs' | '.d.cts'} ext
- */
-const toCjsTarget = (p, ext) => p.replace(/\.js$/, ext);
-
-/**
- * Recursively convert the *flat* export conditions used by the dual build into the
- * nested, per-condition form required by ESM-first packaging:
+ * Build an ESM-first export entry from a single `./lib/**\/*.js` ESM target.
+ *
+ * The CJS counterpart is the `lib-cjs/` mirror of that path, carrying the `.cjs` /
+ * `.d.cts` extensions that `finalizeCjs` produces. Works for concrete paths and `*`
+ * wildcard patterns alike:
  *
  * ```
- * { types, import, require }
- *   -> { import:  { types, default: <import> },
- *        require: { types: <require>.d.cts, default: <require>.cjs } }
+ * './lib/headless/index.js'
+ *   -> { import:  { types: './lib/headless/index.d.ts',    default: './lib/headless/index.js' },
+ *        require: { types: './lib-cjs/headless/index.d.cts', default: './lib-cjs/headless/index.cjs' } }
  * ```
  *
- * Because this transforms whatever is already in the map, subpaths appended at build
- * time (sprite / headless) are converted too — those emitters stay format-agnostic.
- * String targets (e.g. `.css` side-effect entries) are left untouched.
- *
- * @param {any} node
- * @returns {any}
+ * @param {string} esmTarget - path into `./lib/`, ending in `.js`
  */
-function toNestedConditions(node) {
-  if (typeof node === 'string' || node == null) {
-    return node;
-  }
+function esmFirstEntry(esmTarget) {
+  const cjsTarget = esmTarget.replace(/^\.\/lib\//, './lib-cjs/');
 
-  if (isFlatConditions(node)) {
-    return {
-      import: { types: node.types, default: node.import },
-      require: {
-        types: toCjsTarget(node.require, '.d.cts'),
-        default: toCjsTarget(node.require, '.cjs'),
-      },
-    };
-  }
-
-  // Nested condition object (e.g. the `fluentIconFont` / `default` split on ".").
-  /** @type {Record<string, unknown>} */
-  const out = {};
-  for (const [key, value] of Object.entries(node)) {
-    out[key] = toNestedConditions(value);
-  }
-  return out;
+  return {
+    import: { types: esmTarget.replace(/\.js$/, '.d.ts'), default: esmTarget },
+    require: { types: cjsTarget.replace(/\.js$/, '.d.cts'), default: cjsTarget.replace(/\.js$/, '.cjs') },
+  };
 }
 
-/**
- * Flip the manifest to the ESM-first shape so it matches the output produced by
- * `fullySpecifyEsm` + `finalizeCjs`.
- *
- * Mutates and returns `pkg`; the caller persists it. The build only does this when
- * `--enable-native-esm` is passed.
- *
- * @param {Record<string, any>} pkg - parsed package.json
- * @returns {Record<string, any>} the same object, mutated
- */
-function applyEsmFirstManifest(pkg) {
-  pkg.type = 'module';
-
-  // Under `type: module` the CommonJS entry must carry the `.cjs` extension.
-  if (typeof pkg.main === 'string') {
-    pkg.main = toCjsTarget(pkg.main, '.cjs');
-  }
-
-  if (pkg.exports) {
-    pkg.exports = toNestedConditions(pkg.exports);
-  }
-
-  console.log(`  ✓ [module-format] applied ESM-first manifest (type=module, main=${pkg.main})`);
-  return pkg;
-}
-
-module.exports = { fullySpecifyEsm, finalizeCjs, applyEsmFirstManifest };
+module.exports = { fullySpecifyEsm, finalizeCjs, esmFirstEntry };
