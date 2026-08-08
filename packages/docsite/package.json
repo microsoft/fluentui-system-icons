@@ -11,6 +11,7 @@
   "dependencies": {
     "@fluentui/react-components": "^9.46.0",
     "@fluentui/react-icons": "*",
-    "@fluentui/react-icons-file-type": "*"
+    "@fluentui/react-icons-file-type": "*",
+    "@fluentui/react-icons-font-subsetting-webpack-plugin": "*"
   }
 }

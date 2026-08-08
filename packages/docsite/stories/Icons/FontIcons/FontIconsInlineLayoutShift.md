@@ -1,0 +1,7 @@
+Uses the **headless** font icons (real `font-display: block` loading via an extracted static stylesheet, see `.storybook/main.ts`) rendered in **normal inline text flow** — not inside a `display: flex` chip like the other Font Icons stories.
+
+The `1em` box fixes the **horizontal** shift. On top of it, a font icon is `display: inline-block`; by default its baseline is derived from the glyph, which moves when the icon webfont loads (different ascent/descent than the fallback), growing the line box and dropping the text below it — a **vertical** layout shift. The shipped default adds `overflow: hidden`, which pins the inline-block baseline to the box's bottom edge (font-independent, like the resizable SVG), removing that shift. Flex chips hide the issue entirely because `align-items: center` sizes the row independently of the inline baseline.
+
+Both columns render the same sentence with the same 1em font icon, so they wrap identically and start flush with the dashed guide (pinned to the stable column's paragraph bottom). The left column is the shipped default (`overflow: hidden`) and stays put. The right column opts out (`overflow: visible`), restoring the pre-fix behaviour; while the webfont loads its paragraph sits on the guide, then its lower lines drop below the guide when the glyph paints.
+
+> **How to see it live:** open this story in the built Storybook, then in DevTools → Network disable cache (and throttle), and reload. Watch the right column's lower lines slip below the guide that the left (default) column stays on.
