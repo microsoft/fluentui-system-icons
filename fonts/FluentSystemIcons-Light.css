@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Light";
-    src: url("./FluentSystemIcons-Light.woff2?91beb00125f9d2070fdae66c951976ff") format("woff2"),
-url("./FluentSystemIcons-Light.woff?91beb00125f9d2070fdae66c951976ff") format("woff"),
-url("./FluentSystemIcons-Light.ttf?91beb00125f9d2070fdae66c951976ff") format("truetype");
+    src: url("./FluentSystemIcons-Light.woff2?a15211e663a8f156e6f93f083c26d37e") format("woff2"),
+url("./FluentSystemIcons-Light.woff?a15211e663a8f156e6f93f083c26d37e") format("woff"),
+url("./FluentSystemIcons-Light.ttf?a15211e663a8f156e6f93f083c26d37e") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -649,6 +649,6 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 .icon-ic_fluent_preview_link_32_light:before {
     content: "\e0d2";
 }
-.icon-ic_fluent_text_add_32_light:before {
+.icon-ic_fluent_text_add_t_32_light:before {
     content: "\e0d3";
 }

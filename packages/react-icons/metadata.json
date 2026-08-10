@@ -4289,6 +4289,16 @@
     "font": true,
     "type": "resizable"
   },
+  "CalendarAgendaClockFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "CalendarAgendaClockRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "CalendarArrowCounterclockwiseFilled": {
     "svg": true,
     "font": true,
@@ -11969,6 +11979,16 @@
     "font": true,
     "type": "resizable"
   },
+  "FolderDismissFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "FolderDismissRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "FolderDocumentFilled": {
     "svg": true,
     "font": true,
@@ -17365,6 +17385,16 @@
     "type": "resizable"
   },
   "OrientationRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "OrientationPortraitFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "OrientationPortraitRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -44534,6 +44564,16 @@
     "font": true,
     "type": "sized"
   },
+  "CalendarAgenda16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarAgenda16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "CalendarAgenda20Filled": {
     "svg": true,
     "font": true,
@@ -44560,6 +44600,46 @@
     "type": "sized"
   },
   "CalendarAgenda28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarAgendaClock16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarAgendaClock16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarAgendaClock20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarAgendaClock20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarAgendaClock24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarAgendaClock24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarAgendaClock28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarAgendaClock28Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -72234,6 +72314,36 @@
     "font": true,
     "type": "sized"
   },
+  "FolderDismiss16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FolderDismiss16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FolderDismiss20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FolderDismiss20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FolderDismiss24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FolderDismiss24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "FolderDocument16Filled": {
     "svg": true,
     "font": true,
@@ -91585,6 +91695,26 @@
     "type": "sized"
   },
   "Orientation24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "OrientationPortrait20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "OrientationPortrait20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "OrientationPortrait24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "OrientationPortrait24Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -119284,31 +119414,6 @@
     "font": true,
     "type": "sized"
   },
-  "TextAdd28Filled": {
-    "svg": true,
-    "font": true,
-    "type": "sized"
-  },
-  "TextAdd28Regular": {
-    "svg": true,
-    "font": true,
-    "type": "sized"
-  },
-  "TextAdd32Filled": {
-    "svg": true,
-    "font": true,
-    "type": "sized"
-  },
-  "TextAdd32Light": {
-    "svg": true,
-    "font": true,
-    "type": "sized"
-  },
-  "TextAdd32Regular": {
-    "svg": true,
-    "font": true,
-    "type": "sized"
-  },
   "TextAddSpaceAfter20Filled": {
     "svg": true,
     "font": true,
@@ -119365,6 +119470,31 @@
     "type": "sized"
   },
   "TextAddT24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextAddT28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextAddT28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextAddT32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextAddT32Light": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextAddT32Regular": {
     "svg": true,
     "font": true,
     "type": "sized"

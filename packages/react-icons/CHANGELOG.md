@@ -1,3 +1,14 @@
+## 2.0.335 (2026-08-07)
+
+### 🚀 Features
+
+- **react-icons:** add new and updated icons ([#1206](https://github.com/microsoft/fluentui-system-icons/pull/1206))
+- **react-icons:** add opt-in native ESM build behind --enable-native-esm ([#1199](https://github.com/microsoft/fluentui-system-icons/pull/1199))
+
+### 🩹 Fixes
+
+- migrate SVGO v2 → v4 to restore Food icon fork handles ([#1187](https://github.com/microsoft/fluentui-system-icons/pull/1187))
+
 ## 2.0.334 (2026-07-24)
 
 ### 🚀 Features
