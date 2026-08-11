@@ -10,7 +10,10 @@ const SPRITES_DIR = path.join(__dirname, 'sprites');
 const ICONS_DIR = path.join(__dirname, 'icons');
 
 /** @param {string} name */
-const isSpriteSvg = (name) => /^[a-z][a-z0-9_]*_\d+_(regular|filled|light|color)\.sprite\.svg$/.test(name);
+const isSpriteSvg = (name) =>
+  /^(?:[a-z][a-z0-9_]*_\d+_(regular|filled|light|color)|fluent-(regular|filled|light|color)-\d+)\.sprite\.svg$/.test(
+    name,
+  );
 
 describe('Build Verification', () => {
   it('should have sprites directory with sprite SVG files', async () => {
@@ -48,11 +51,17 @@ describe('Build Verification', () => {
       // Sprite should be a valid SVG
       expect(content, `${file} should contain <svg`).toMatch(/<svg\b/);
 
-      // Should contain a <symbol> with matching id
       const expectedId = path.basename(file, '.sprite.svg');
-      expect(content, `${file} should contain <symbol> with id="${expectedId}"`).toMatch(
-        new RegExp(`<symbol[^>]+id="${expectedId}"`),
-      );
+      const isGroupedSprite = /^fluent-(regular|filled|light|color)-\d+\.sprite\.svg$/.test(file);
+
+      if (isGroupedSprite) {
+        expect(content, `${file} should contain <symbol> elements`).toMatch(/<symbol\b/);
+      } else {
+        // Should contain a <symbol> with matching id
+        expect(content, `${file} should contain <symbol> with id="${expectedId}"`).toMatch(
+          new RegExp(`<symbol[^>]+id="${expectedId}"`),
+        );
+      }
 
       // Symbol should have viewBox
       expect(content, `${file} symbol should have viewBox`).toMatch(/<symbol[^>]+viewBox="/);

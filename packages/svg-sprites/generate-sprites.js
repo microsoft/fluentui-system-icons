@@ -50,6 +50,43 @@ function processArgs() {
 }
 
 /**
+ * Parses an icon filename into its semantic id + variant metadata.
+ * @param {string} fileName
+ * @returns {{ iconId: string, size?: string, style?: string, fileName: string }}
+ */
+function parseIconMeta(fileName) {
+  const withoutExt = path.basename(fileName, '.svg');
+  const match = withoutExt.match(/^(.*)_(\d+)_(regular|filled|light|color)$/);
+
+  if (match) {
+    return {
+      iconId: match[1],
+      size: match[2],
+      style: match[3],
+      fileName: withoutExt,
+    };
+  }
+
+  return { iconId: withoutExt, fileName: withoutExt };
+}
+
+/**
+ * Builds a combined sprite file containing multiple symbols.
+ * @param {{ iconId: string, iconPath: string }[]} entries
+ * @returns {Promise<string>}
+ */
+async function createCombinedSprite(entries) {
+  const sprites = svgstore();
+
+  for (const entry of entries) {
+    const iconContent = await fs.readFile(entry.iconPath, 'utf-8');
+    sprites.add(entry.iconId, iconContent);
+  }
+
+  return sprites.toString();
+}
+
+/**
  * Creates a sprite SVG file from a single icon SVG using svgstore
  * @param {string} iconPath - Path to the icon file
  * @param {string} iconId - ID for the icon
@@ -140,7 +177,7 @@ async function main() {
 
   console.log(`📊 Processing ${svgFiles.length} icons with ${NUM_WORKERS} workers...`);
 
-  // Split work into batches (one per CPU core)
+  // Build the existing one-icon-per-file sprite set.
   const batchSize = Math.ceil(svgFiles.length / NUM_WORKERS);
   const batches = [];
 
@@ -152,18 +189,44 @@ async function main() {
     }
   }
 
-  // Process all batches in parallel
   const results = await Promise.all(batches);
-
-  // Flatten results
   const allResults = results.flat();
   const successful = allResults.filter((r) => r.success).length;
   const failed = allResults.filter((r) => !r.success);
 
+  // Also generate combined files grouped by size and style, matching the local bundle layout.
+  const groupedBySizeAndStyle = new Map();
+
+  for (const file of svgFiles) {
+    const meta = parseIconMeta(file);
+    if (!meta.size || !meta.style) {
+      continue;
+    }
+
+    const key = `${meta.style}-${meta.size}`;
+    const bucket = groupedBySizeAndStyle.get(key) ?? [];
+    bucket.push({
+      iconId: meta.iconId,
+      iconPath: path.join(ICONS_DIR, file),
+    });
+    groupedBySizeAndStyle.set(key, bucket);
+  }
+
+  const combinedFiles = [];
+
+  for (const [key, entries] of groupedBySizeAndStyle) {
+    const spriteContent = await createCombinedSprite(entries);
+    const [style, size] = key.split('-');
+    const outputFile = `fluent-${style}-${size}.sprite.svg`;
+    const outputPath = path.join(SPRITES_DIR, outputFile);
+    await fs.writeFile(outputPath, spriteContent, 'utf-8');
+    combinedFiles.push(outputFile);
+  }
+
   const duration = ((Date.now() - startTime) / 1000).toFixed(2);
   const durationNum = parseFloat(duration);
 
-  console.log(`\n✅ Generated ${successful} sprites in ${duration}s`);
+  console.log(`\n✅ Generated ${successful} per-icon sprites and ${combinedFiles.length} grouped sprites in ${duration}s`);
   console.log(`⚡ Performance: ${(svgFiles.length / durationNum).toFixed(0)} sprites/second`);
 
   if (failed.length > 0) {
