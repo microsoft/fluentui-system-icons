@@ -287,7 +287,7 @@ These are the only two types of breaking changes that deviate from standard sema
 
 ### Module Formats
 
-> **Since `v2.0.335`.**
+> **Since `v2.0.336`.**
 
 The package is **ESM-first**: it is marked `"type": "module"` and ships native ESM in `lib/` alongside a CommonJS build in `lib-cjs/` (`.cjs` / `.d.cts`). Every entry point is declared in the `exports` map with both an `import` and a `require` condition, so your toolchain picks the right one automatically.
 
