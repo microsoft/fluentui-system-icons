@@ -15,7 +15,9 @@ export default tseslint.config(
       // build scripts and configs
       'scripts/**',
       '*.js',
+      '*.cjs',
       '*.config.js',
+      '*.config.cjs',
     ],
   },
   ...tseslint.configs.recommended,
