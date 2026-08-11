@@ -26,6 +26,7 @@
     "scripts:check": "node scripts/check-package-scripts.mjs"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.2",
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.29.6",
     "@babel/preset-react": "^7.18.6",

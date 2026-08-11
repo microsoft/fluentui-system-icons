@@ -161,42 +161,6 @@ jobs:
   #       accessToken: "placeholder"
   #       refreshToken: "placeholder"
 
-  build-npm-native-esm:
-    if: ${{ github.repository_owner == 'microsoft' }}
-    name: Build npm packages (native ESM)
-    runs-on: ubuntu-latest
-    permissions:
-      contents: 'read'
-      actions: 'read'
-
-    steps:
-      - uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
-          filter: tree:0
-
-      - run: corepack enable
-
-      - uses: actions/setup-node@v7
-        with:
-          node-version: 22.x
-          cache: 'yarn'
-
-      - run: yarn install --immutable
-
-      - uses: nrwl/nx-set-shas@afb73a62d26e41464e9254689e1fd6122ee683c1 # v5.0.1
-
-      # `@fluentui/react-icons` is still published as the historical dual build; native
-      # ESM-first output is opt-in behind `build.js --enable-native-esm`. Building that
-      # variant here keeps it from drifting as icons are added or changed, so flipping
-      # the default later stays a one-line change rather than a rediscovery exercise.
-      #
-      # This runs in its own job on purpose: the native ESM build rewrites
-      # `packages/react-icons/package.json` in place (type/main/exports), which would
-      # otherwise leak into the packaging and bundle-size steps of `build-npm`.
-      - name: Build and verify native ESM output
-        run: yarn nx affected -t verify-native-esm
-
   build-npm:
     if: ${{ github.repository_owner == 'microsoft' }}
     name: Build npm packages
@@ -246,6 +210,7 @@ jobs:
           yarn nx affected -t build
           yarn nx affected -t extract-storybook-llms
           yarn nx affected -t build-verify
+          yarn nx affected -t check:types-packaging
 
       - name: Test
         run: yarn nx affected -t test
