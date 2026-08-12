@@ -13,6 +13,8 @@ updates:
         applies-to: security-updates
         patterns:
           - '*'
+    cooldown:
+      default-days: 7
 
   - package-ecosystem: 'npm'
     # Single yarn workspace root: yarn.lock at `/` covers every workspace package.
