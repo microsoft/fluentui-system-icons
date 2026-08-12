@@ -49,7 +49,7 @@ describe('React component tests', () => {
       <div>
         <i
           aria-hidden="true"
-          class="fui-Icon-font ___qaf4230_1r6c92s f14t3ns0 fne0op0 fmd4ok8 f303qgw f1sxfq9t"
+          class="fui-Icon-font ___33p1ap0_6yslol0 f14t3ns0 fne0op0 fhson10 f1un31zh f1a3p1vp fmd4ok8 f303qgw f1sxfq9t"
           data-fui-icon=""
           fill="currentColor"
         />
