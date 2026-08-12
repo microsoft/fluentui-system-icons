@@ -1,3 +1,7 @@
+## 2.0.336 (2026-08-12)
+
+This release contains icon updates
+
 ## 2.0.335 (2026-08-07)
 
 ### 🩹 Fixes

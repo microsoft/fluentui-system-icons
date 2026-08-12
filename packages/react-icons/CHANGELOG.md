@@ -1,3 +1,13 @@
+## 2.0.336 (2026-08-12)
+
+### 🚀 Features
+
+- **react-icons:** ship native ESM output by default ([#1205](https://github.com/microsoft/fluentui-system-icons/pull/1205))
+
+### 🩹 Fixes
+
+- **react-icons:** reserve 1em box for font icons to prevent layout shift ([#1145](https://github.com/microsoft/fluentui-system-icons/pull/1145))
+
 ## 2.0.335 (2026-08-07)
 
 ### 🚀 Features
