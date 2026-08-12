@@ -203,7 +203,7 @@ async function main() {
       continue;
     }
 
-    const key = `${meta.style}-${meta.size}`;
+    const key = `${meta.size}_${meta.style}`;
     const bucket = groupedBySizeAndStyle.get(key) ?? [];
     bucket.push({
       iconId: meta.iconId,
@@ -216,8 +216,7 @@ async function main() {
 
   for (const [key, entries] of groupedBySizeAndStyle) {
     const spriteContent = await createCombinedSprite(entries);
-    const [style, size] = key.split('-');
-    const outputFile = `fluent-${style}-${size}.sprite.svg`;
+    const outputFile = `fluent_icons_${key}.sprite.svg`;
     const outputPath = path.join(SPRITES_DIR, outputFile);
     await fs.writeFile(outputPath, spriteContent, 'utf-8');
     combinedFiles.push(outputFile);
@@ -226,7 +225,9 @@ async function main() {
   const duration = ((Date.now() - startTime) / 1000).toFixed(2);
   const durationNum = parseFloat(duration);
 
-  console.log(`\n✅ Generated ${successful} per-icon sprites and ${combinedFiles.length} grouped sprites in ${duration}s`);
+  console.log(
+    `\n✅ Generated ${successful} per-icon sprites and ${combinedFiles.length} grouped sprites in ${duration}s`,
+  );
   console.log(`⚡ Performance: ${(svgFiles.length / durationNum).toFixed(0)} sprites/second`);
 
   if (failed.length > 0) {
