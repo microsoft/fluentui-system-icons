@@ -25,6 +25,7 @@ describe('getFileTypeIconNameFromExtensionOrType', () => {
     expect(getFileTypeIconNameFromExtensionOrType('.DOCX', undefined)).toBe('docx');
     expect(getFileTypeIconNameFromExtensionOrType('doc', undefined)).toBe('docx');
     expect(getFileTypeIconNameFromExtensionOrType('work', undefined)).toBe('agentwork');
+    expect(getFileTypeIconNameFromExtensionOrType('clpx', undefined)).toBe('clipchamp');
   });
 
   it('falls back to genericfile for unknown extensions', () => {
