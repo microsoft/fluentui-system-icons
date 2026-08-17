@@ -20,9 +20,10 @@ const FONT_EXTENSIONS = ['.ttf', '.woff', '.woff2'];
  *  - lib/fonts/sizedIcons/chunk-0.js        (chunk-based, standard)
  *  - lib/atoms/fonts/access-time.js         (atomic imports, standard)
  *  - lib/atoms/headless-fonts/access-time.js (atomic imports, headless)
+ *  - lib-cjs/atoms/fonts/access-time.cjs    (CommonJS output)
  */
 const REACT_ICONS_FONT_MODULE_IMPORT_PATTERN =
-  /react-icons[\/\\]lib(-cjs)?[\/\\](fonts[\/\\](sizedIcons|icons)[\/\\]chunk-\d+|atoms[\/\\](headless-)?fonts[\/\\][\w-]+)\.js$/;
+  /react-icons[\/\\]lib(-cjs)?[\/\\](fonts[\/\\](sizedIcons|icons)[\/\\]chunk-\d+|atoms[\/\\](headless-)?fonts[\/\\][\w-]+)\.c?js$/;
 
 export default class FluentUIReactIconsFontSubsettingPlugin implements webpack.WebpackPluginInstance {
   /**

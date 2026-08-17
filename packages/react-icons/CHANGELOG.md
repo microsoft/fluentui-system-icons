@@ -80,6 +80,31 @@
   consistent with factory-built ones. Verified in Chromium by
   `src/contract/rendered-styles.test.tsx`.
 
+## 2.0.337 (2026-08-13)
+
+This release contains icon updates
+
+## 2.0.336 (2026-08-12)
+
+### 🚀 Features
+
+- **react-icons:** ship native ESM output by default ([#1205](https://github.com/microsoft/fluentui-system-icons/pull/1205))
+
+### 🩹 Fixes
+
+- **react-icons:** reserve 1em box for font icons to prevent layout shift ([#1145](https://github.com/microsoft/fluentui-system-icons/pull/1145))
+
+## 2.0.335 (2026-08-07)
+
+### 🚀 Features
+
+- **react-icons:** add new and updated icons ([#1206](https://github.com/microsoft/fluentui-system-icons/pull/1206))
+- **react-icons:** add opt-in native ESM build behind --enable-native-esm ([#1199](https://github.com/microsoft/fluentui-system-icons/pull/1199))
+
+### 🩹 Fixes
+
+- migrate SVGO v2 → v4 to restore Food icon fork handles ([#1187](https://github.com/microsoft/fluentui-system-icons/pull/1187))
+
 ## 2.0.334 (2026-07-24)
 
 ### 🚀 Features

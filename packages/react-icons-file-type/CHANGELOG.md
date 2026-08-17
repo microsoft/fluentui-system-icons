@@ -71,6 +71,10 @@
   is the reason `docs/single-version-policy.md` pins it. With that runtime gone the fixtures are
   small and stable, so the repo's absolute 1 kB gate applies here like everywhere else.
 
+## 0.0.2 (2026-07-30)
+
+This release contains icon updates
+
 ## 0.0.1 (2026-06-30)
 
 ### 🚀 Features

@@ -9,6 +9,28 @@ import { execSync } from 'node:child_process';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /**
+ * The package ships ESM-first: `lib/` is native ESM (`.js` + `.d.ts`, fully specified
+ * relative specifiers) while `lib-cjs/` is finalized CommonJS (`.cjs` + `.d.cts`) so it
+ * stays loadable under `"type": "module"`.
+ *
+ * @param {string} libDir - either `lib` or `lib-cjs`
+ * @returns {{ js: string, dts: string }} the module/declaration extensions for that output
+ */
+function extensionsFor(libDir) {
+  return libDir === 'lib-cjs' ? { js: '.cjs', dts: '.d.cts' } : { js: '.js', dts: '.d.ts' };
+}
+
+/**
+ * Matches `chunk-<n>` files for either output format.
+ * @param {string} libDir - either `lib` or `lib-cjs`
+ */
+function chunkFileRegex(libDir) {
+  const { js, dts } = extensionsFor(libDir);
+  const escape = (/** @type {string} */ value) => value.replace(/\./g, '\\.');
+  return new RegExp(`^chunk-(\\d+)(${escape(js)}|${escape(dts)})$`);
+}
+
+/**
  * Trims content to first N lines for snapshot testing
  * @param {string} content - The content to trim
  * @param {number} threshold - The maximum number of lines to include (default: 30)
@@ -94,10 +116,11 @@ describe('Build Verification', () => {
   describe('Library Directory Structure', () => {
     it.each(['lib', 'lib-cjs'])('should have correct structure in %s', async (libDir) => {
       const libPath = path.join(__dirname, libDir);
+      const { js, dts } = extensionsFor(libDir);
 
       // Check main structure
       const requiredDirs = ['icons', 'sizedIcons', 'fonts', 'utils', 'atoms'];
-      const requiredFiles = ['index.js', 'index.d.ts', 'providers.js', 'providers.d.ts'];
+      const requiredFiles = [`index${js}`, `index${dts}`, `providers${js}`, `providers${dts}`];
 
       for (const dir of requiredDirs) {
         const dirPath = path.join(libPath, dir);
@@ -118,7 +141,7 @@ describe('Build Verification', () => {
       // Check fonts directory structure
       const fontsDir = path.join(libPath, 'fonts');
       const fontRequiredDirs = ['icons', 'sizedIcons'];
-      const fontRequiredFiles = ['index.js', 'index.d.ts'];
+      const fontRequiredFiles = [`index${js}`, `index${dts}`];
 
       for (const dir of fontRequiredDirs) {
         const dirPath = path.join(fontsDir, dir);
@@ -132,7 +155,7 @@ describe('Build Verification', () => {
 
       // Check atoms directory structure
       const atomsDirSvg = path.join(libPath, 'atoms/svg');
-      const atomRequiredFiles = ['access-time.js', 'access-time.d.ts'];
+      const atomRequiredFiles = [`access-time${js}`, `access-time${dts}`];
 
       for (const file of atomRequiredFiles) {
         const filePath = path.join(atomsDirSvg, file);
@@ -242,24 +265,27 @@ describe('Build Verification', () => {
     it.each(['lib', 'lib-cjs'])('should have chunk files with correct structure in %s', async (libDir) => {
       const iconsPath = path.join(__dirname, libDir, 'icons');
       const sizedIconsPath = path.join(__dirname, libDir, 'sizedIcons');
+      const { js, dts } = extensionsFor(libDir);
+      const chunkRegex = chunkFileRegex(libDir);
 
       // Check icons chunks
       const iconFiles = await readdir(iconsPath);
       const iconChunks = iconFiles.filter((file) => file.startsWith('chunk-'));
       expect(iconChunks.length).toBeGreaterThan(0);
 
-      // Verify each chunk has both .js and .d.ts files
+      // Verify each chunk has both a module and a declaration file
       const chunkNumbers = new Set();
       for (const file of iconChunks) {
-        const match = file.match(/chunk-(\d+)\.(js|d\.ts)$/);
+        const match = file.match(chunkRegex);
         if (match) {
           chunkNumbers.add(match[1]);
         }
       }
+      expect(chunkNumbers.size).toBeGreaterThan(0);
 
       for (const chunkNum of Array.from(chunkNumbers)) {
-        const jsFile = path.join(iconsPath, `chunk-${chunkNum}.js`);
-        const dtsFile = path.join(iconsPath, `chunk-${chunkNum}.d.ts`);
+        const jsFile = path.join(iconsPath, `chunk-${chunkNum}${js}`);
+        const dtsFile = path.join(iconsPath, `chunk-${chunkNum}${dts}`);
 
         expect(fs.existsSync(jsFile)).toBe(true);
         expect(fs.existsSync(dtsFile)).toBe(true);
@@ -270,18 +296,19 @@ describe('Build Verification', () => {
       const sizedIconChunks = sizedIconFiles.filter((file) => file.startsWith('chunk-'));
       expect(sizedIconChunks.length).toBeGreaterThan(0);
 
-      // Verify each chunk has both .js and .d.ts files
+      // Verify each chunk has both a module and a declaration file
       const sizedChunkNumbers = new Set();
       for (const file of sizedIconChunks) {
-        const match = file.match(/chunk-(\d+)\.(js|d\.ts)$/);
+        const match = file.match(chunkRegex);
         if (match) {
           sizedChunkNumbers.add(match[1]);
         }
       }
+      expect(sizedChunkNumbers.size).toBeGreaterThan(0);
 
       for (const chunkNum of Array.from(sizedChunkNumbers)) {
-        const jsFile = path.join(sizedIconsPath, `chunk-${chunkNum}.js`);
-        const dtsFile = path.join(sizedIconsPath, `chunk-${chunkNum}.d.ts`);
+        const jsFile = path.join(sizedIconsPath, `chunk-${chunkNum}${js}`);
+        const dtsFile = path.join(sizedIconsPath, `chunk-${chunkNum}${dts}`);
 
         expect(fs.existsSync(jsFile)).toBe(true);
         expect(fs.existsSync(dtsFile)).toBe(true);
@@ -289,24 +316,28 @@ describe('Build Verification', () => {
     });
 
     it.each(['lib', 'lib-cjs'])('should have font chunk files with correct structure in %s', async (libDir) => {
+      const { js, dts } = extensionsFor(libDir);
+      const chunkRegex = chunkFileRegex(libDir);
+
       // Check fonts/icons chunks
       const fontsIconsPath = path.join(__dirname, libDir, 'fonts', 'icons');
       const fontsIconFiles = await readdir(fontsIconsPath);
       const fontsIconChunks = fontsIconFiles.filter((file) => file.startsWith('chunk-'));
       expect(fontsIconChunks.length).toBeGreaterThan(0);
 
-      // Verify each font icon chunk has both .js and .d.ts files
+      // Verify each font icon chunk has both a module and a declaration file
       const fontsIconChunkNumbers = new Set();
       for (const file of fontsIconChunks) {
-        const match = file.match(/chunk-(\d+)\.(js|d\.ts)$/);
+        const match = file.match(chunkRegex);
         if (match) {
           fontsIconChunkNumbers.add(match[1]);
         }
       }
+      expect(fontsIconChunkNumbers.size).toBeGreaterThan(0);
 
       for (const chunkNum of Array.from(fontsIconChunkNumbers)) {
-        const jsFile = path.join(fontsIconsPath, `chunk-${chunkNum}.js`);
-        const dtsFile = path.join(fontsIconsPath, `chunk-${chunkNum}.d.ts`);
+        const jsFile = path.join(fontsIconsPath, `chunk-${chunkNum}${js}`);
+        const dtsFile = path.join(fontsIconsPath, `chunk-${chunkNum}${dts}`);
 
         expect(fs.existsSync(jsFile)).toBe(true);
         expect(fs.existsSync(dtsFile)).toBe(true);
@@ -318,18 +349,19 @@ describe('Build Verification', () => {
       const fontsSizedIconChunks = fontsSizedIconFiles.filter((file) => file.startsWith('chunk-'));
       expect(fontsSizedIconChunks.length).toBeGreaterThan(0);
 
-      // Verify each font sized icon chunk has both .js and .d.ts files
+      // Verify each font sized icon chunk has both a module and a declaration file
       const fontsSizedIconChunkNumbers = new Set();
       for (const file of fontsSizedIconChunks) {
-        const match = file.match(/chunk-(\d+)\.(js|d\.ts)$/);
+        const match = file.match(chunkRegex);
         if (match) {
           fontsSizedIconChunkNumbers.add(match[1]);
         }
       }
+      expect(fontsSizedIconChunkNumbers.size).toBeGreaterThan(0);
 
       for (const chunkNum of Array.from(fontsSizedIconChunkNumbers)) {
-        const jsFile = path.join(fontsSizedIconsPath, `chunk-${chunkNum}.js`);
-        const dtsFile = path.join(fontsSizedIconsPath, `chunk-${chunkNum}.d.ts`);
+        const jsFile = path.join(fontsSizedIconsPath, `chunk-${chunkNum}${js}`);
+        const dtsFile = path.join(fontsSizedIconsPath, `chunk-${chunkNum}${dts}`);
 
         expect(fs.existsSync(jsFile)).toBe(true);
         expect(fs.existsSync(dtsFile)).toBe(true);
@@ -345,153 +377,153 @@ describe('Build Verification', () => {
       const dtsContent = await readFile(mainEntryDts, 'utf8');
 
       expect(jsContent).toMatchInlineSnapshot(`
-        "export * from './icons/chunk-0';
-        export * from './icons/chunk-1';
-        export * from './icons/chunk-2';
-        export * from './icons/chunk-3';
-        export * from './icons/chunk-4';
-        export * from './icons/chunk-5';
-        export * from './icons/chunk-6';
-        export * from './icons/chunk-7';
-        export * from './icons/chunk-8';
-        export * from './icons/chunk-9';
-        export * from './icons/chunk-10';
-        export * from './icons/chunk-11';
-        export * from './icons/chunk-12';
-        export * from './icons/chunk-13';
-        export * from './icons/chunk-14';
-        export * from './icons/chunk-15';
-        export * from './icons/chunk-16';
-        export * from './icons/chunk-17';
-        export * from './icons/chunk-18';
-        export * from './icons/chunk-19';
-        export * from './icons/chunk-20';
-        export * from './icons/chunk-21';
-        export * from './icons/chunk-22';
-        export * from './icons/chunk-23';
-        export * from './icons/chunk-24';
-        export * from './icons/chunk-25';
-        export * from './icons/chunk-26';
-        export * from './icons/chunk-27';
-        export * from './icons/chunk-28';
-        export * from './icons/chunk-29';
-        export * from './sizedIcons/chunk-0';
-        export * from './sizedIcons/chunk-1';
-        export * from './sizedIcons/chunk-2';
-        export * from './sizedIcons/chunk-3';
-        export * from './sizedIcons/chunk-4';
-        export * from './sizedIcons/chunk-5';
-        export * from './sizedIcons/chunk-6';
-        export * from './sizedIcons/chunk-7';
-        export * from './sizedIcons/chunk-8';
-        export * from './sizedIcons/chunk-9';
-        export * from './sizedIcons/chunk-10';
-        export * from './sizedIcons/chunk-11';
-        export * from './sizedIcons/chunk-12';
-        export * from './sizedIcons/chunk-13';
-        export * from './sizedIcons/chunk-14';
-        export * from './sizedIcons/chunk-15';
-        export * from './sizedIcons/chunk-16';
-        export * from './sizedIcons/chunk-17';
-        export * from './sizedIcons/chunk-18';
-        export * from './sizedIcons/chunk-19';
-        export * from './sizedIcons/chunk-20';
-        export * from './sizedIcons/chunk-21';
-        export * from './sizedIcons/chunk-22';
-        export * from './sizedIcons/chunk-23';
-        export * from './sizedIcons/chunk-24';
-        export * from './sizedIcons/chunk-25';
-        export * from './sizedIcons/chunk-26';
-        export * from './sizedIcons/chunk-27';
-        export * from './sizedIcons/chunk-28';
-        export * from './sizedIcons/chunk-29';
-        export { wrapIcon } from './utils/wrapIcon';
-        export { bundleIcon } from './utils/bundleIcon';
-        export { createFluentIcon } from './utils/createFluentIcon';
-        export { cx } from './utils/cx';
-        export * from './utils/useIconState';
-        export * from './utils/constants';
-        export { IconDirectionContextProvider, useIconContext } from './contexts/index';
+        "export * from './icons/chunk-0.js';
+        export * from './icons/chunk-1.js';
+        export * from './icons/chunk-2.js';
+        export * from './icons/chunk-3.js';
+        export * from './icons/chunk-4.js';
+        export * from './icons/chunk-5.js';
+        export * from './icons/chunk-6.js';
+        export * from './icons/chunk-7.js';
+        export * from './icons/chunk-8.js';
+        export * from './icons/chunk-9.js';
+        export * from './icons/chunk-10.js';
+        export * from './icons/chunk-11.js';
+        export * from './icons/chunk-12.js';
+        export * from './icons/chunk-13.js';
+        export * from './icons/chunk-14.js';
+        export * from './icons/chunk-15.js';
+        export * from './icons/chunk-16.js';
+        export * from './icons/chunk-17.js';
+        export * from './icons/chunk-18.js';
+        export * from './icons/chunk-19.js';
+        export * from './icons/chunk-20.js';
+        export * from './icons/chunk-21.js';
+        export * from './icons/chunk-22.js';
+        export * from './icons/chunk-23.js';
+        export * from './icons/chunk-24.js';
+        export * from './icons/chunk-25.js';
+        export * from './icons/chunk-26.js';
+        export * from './icons/chunk-27.js';
+        export * from './icons/chunk-28.js';
+        export * from './icons/chunk-29.js';
+        export * from './sizedIcons/chunk-0.js';
+        export * from './sizedIcons/chunk-1.js';
+        export * from './sizedIcons/chunk-2.js';
+        export * from './sizedIcons/chunk-3.js';
+        export * from './sizedIcons/chunk-4.js';
+        export * from './sizedIcons/chunk-5.js';
+        export * from './sizedIcons/chunk-6.js';
+        export * from './sizedIcons/chunk-7.js';
+        export * from './sizedIcons/chunk-8.js';
+        export * from './sizedIcons/chunk-9.js';
+        export * from './sizedIcons/chunk-10.js';
+        export * from './sizedIcons/chunk-11.js';
+        export * from './sizedIcons/chunk-12.js';
+        export * from './sizedIcons/chunk-13.js';
+        export * from './sizedIcons/chunk-14.js';
+        export * from './sizedIcons/chunk-15.js';
+        export * from './sizedIcons/chunk-16.js';
+        export * from './sizedIcons/chunk-17.js';
+        export * from './sizedIcons/chunk-18.js';
+        export * from './sizedIcons/chunk-19.js';
+        export * from './sizedIcons/chunk-20.js';
+        export * from './sizedIcons/chunk-21.js';
+        export * from './sizedIcons/chunk-22.js';
+        export * from './sizedIcons/chunk-23.js';
+        export * from './sizedIcons/chunk-24.js';
+        export * from './sizedIcons/chunk-25.js';
+        export * from './sizedIcons/chunk-26.js';
+        export * from './sizedIcons/chunk-27.js';
+        export * from './sizedIcons/chunk-28.js';
+        export * from './sizedIcons/chunk-29.js';
+        export { wrapIcon } from './utils/wrapIcon.js';
+        export { bundleIcon } from './utils/bundleIcon.js';
+        export { createFluentIcon } from './utils/createFluentIcon.js';
+        export { cx } from './utils/cx.js';
+        export * from './utils/useIconState.js';
+        export * from './utils/constants.js';
+        export { IconDirectionContextProvider, useIconContext } from './contexts/index.js';
         "
       `);
       expect(dtsContent).toMatchInlineSnapshot(`
-        "export * from './icons/chunk-0';
-        export * from './icons/chunk-1';
-        export * from './icons/chunk-2';
-        export * from './icons/chunk-3';
-        export * from './icons/chunk-4';
-        export * from './icons/chunk-5';
-        export * from './icons/chunk-6';
-        export * from './icons/chunk-7';
-        export * from './icons/chunk-8';
-        export * from './icons/chunk-9';
-        export * from './icons/chunk-10';
-        export * from './icons/chunk-11';
-        export * from './icons/chunk-12';
-        export * from './icons/chunk-13';
-        export * from './icons/chunk-14';
-        export * from './icons/chunk-15';
-        export * from './icons/chunk-16';
-        export * from './icons/chunk-17';
-        export * from './icons/chunk-18';
-        export * from './icons/chunk-19';
-        export * from './icons/chunk-20';
-        export * from './icons/chunk-21';
-        export * from './icons/chunk-22';
-        export * from './icons/chunk-23';
-        export * from './icons/chunk-24';
-        export * from './icons/chunk-25';
-        export * from './icons/chunk-26';
-        export * from './icons/chunk-27';
-        export * from './icons/chunk-28';
-        export * from './icons/chunk-29';
-        export * from './sizedIcons/chunk-0';
-        export * from './sizedIcons/chunk-1';
-        export * from './sizedIcons/chunk-2';
-        export * from './sizedIcons/chunk-3';
-        export * from './sizedIcons/chunk-4';
-        export * from './sizedIcons/chunk-5';
-        export * from './sizedIcons/chunk-6';
-        export * from './sizedIcons/chunk-7';
-        export * from './sizedIcons/chunk-8';
-        export * from './sizedIcons/chunk-9';
-        export * from './sizedIcons/chunk-10';
-        export * from './sizedIcons/chunk-11';
-        export * from './sizedIcons/chunk-12';
-        export * from './sizedIcons/chunk-13';
-        export * from './sizedIcons/chunk-14';
-        export * from './sizedIcons/chunk-15';
-        export * from './sizedIcons/chunk-16';
-        export * from './sizedIcons/chunk-17';
-        export * from './sizedIcons/chunk-18';
-        export * from './sizedIcons/chunk-19';
-        export * from './sizedIcons/chunk-20';
-        export * from './sizedIcons/chunk-21';
-        export * from './sizedIcons/chunk-22';
-        export * from './sizedIcons/chunk-23';
-        export * from './sizedIcons/chunk-24';
-        export * from './sizedIcons/chunk-25';
-        export * from './sizedIcons/chunk-26';
-        export * from './sizedIcons/chunk-27';
-        export * from './sizedIcons/chunk-28';
-        export * from './sizedIcons/chunk-29';
-        export { wrapIcon } from './utils/wrapIcon';
-        export { bundleIcon } from './utils/bundleIcon';
-        export { createFluentIcon } from './utils/createFluentIcon';
-        export { cx } from './utils/cx';
-        export * from './utils/useIconState';
-        export * from './utils/constants';
-        export { IconDirectionContextProvider, useIconContext } from './contexts/index';
-        export type { FluentIconsProps } from './utils/FluentIconsProps.types';
-        export type { FluentIcon } from './utils/createFluentIcon';
-        export type { IconDirectionContextValue } from './contexts/index';
+        "export * from './icons/chunk-0.js';
+        export * from './icons/chunk-1.js';
+        export * from './icons/chunk-2.js';
+        export * from './icons/chunk-3.js';
+        export * from './icons/chunk-4.js';
+        export * from './icons/chunk-5.js';
+        export * from './icons/chunk-6.js';
+        export * from './icons/chunk-7.js';
+        export * from './icons/chunk-8.js';
+        export * from './icons/chunk-9.js';
+        export * from './icons/chunk-10.js';
+        export * from './icons/chunk-11.js';
+        export * from './icons/chunk-12.js';
+        export * from './icons/chunk-13.js';
+        export * from './icons/chunk-14.js';
+        export * from './icons/chunk-15.js';
+        export * from './icons/chunk-16.js';
+        export * from './icons/chunk-17.js';
+        export * from './icons/chunk-18.js';
+        export * from './icons/chunk-19.js';
+        export * from './icons/chunk-20.js';
+        export * from './icons/chunk-21.js';
+        export * from './icons/chunk-22.js';
+        export * from './icons/chunk-23.js';
+        export * from './icons/chunk-24.js';
+        export * from './icons/chunk-25.js';
+        export * from './icons/chunk-26.js';
+        export * from './icons/chunk-27.js';
+        export * from './icons/chunk-28.js';
+        export * from './icons/chunk-29.js';
+        export * from './sizedIcons/chunk-0.js';
+        export * from './sizedIcons/chunk-1.js';
+        export * from './sizedIcons/chunk-2.js';
+        export * from './sizedIcons/chunk-3.js';
+        export * from './sizedIcons/chunk-4.js';
+        export * from './sizedIcons/chunk-5.js';
+        export * from './sizedIcons/chunk-6.js';
+        export * from './sizedIcons/chunk-7.js';
+        export * from './sizedIcons/chunk-8.js';
+        export * from './sizedIcons/chunk-9.js';
+        export * from './sizedIcons/chunk-10.js';
+        export * from './sizedIcons/chunk-11.js';
+        export * from './sizedIcons/chunk-12.js';
+        export * from './sizedIcons/chunk-13.js';
+        export * from './sizedIcons/chunk-14.js';
+        export * from './sizedIcons/chunk-15.js';
+        export * from './sizedIcons/chunk-16.js';
+        export * from './sizedIcons/chunk-17.js';
+        export * from './sizedIcons/chunk-18.js';
+        export * from './sizedIcons/chunk-19.js';
+        export * from './sizedIcons/chunk-20.js';
+        export * from './sizedIcons/chunk-21.js';
+        export * from './sizedIcons/chunk-22.js';
+        export * from './sizedIcons/chunk-23.js';
+        export * from './sizedIcons/chunk-24.js';
+        export * from './sizedIcons/chunk-25.js';
+        export * from './sizedIcons/chunk-26.js';
+        export * from './sizedIcons/chunk-27.js';
+        export * from './sizedIcons/chunk-28.js';
+        export * from './sizedIcons/chunk-29.js';
+        export { wrapIcon } from './utils/wrapIcon.js';
+        export { bundleIcon } from './utils/bundleIcon.js';
+        export { createFluentIcon } from './utils/createFluentIcon.js';
+        export { cx } from './utils/cx.js';
+        export * from './utils/useIconState.js';
+        export * from './utils/constants.js';
+        export { IconDirectionContextProvider, useIconContext } from './contexts/index.js';
+        export type { FluentIconsProps } from './utils/FluentIconsProps.types.js';
+        export type { FluentIcon } from './utils/createFluentIcon.js';
+        export type { IconDirectionContextValue } from './contexts/index.js';
         "
       `);
     });
 
     it(`should have valid generated contents  in entry points (lib-cjs)`, async () => {
-      const mainEntry = path.join(__dirname, 'lib-cjs/index.js');
-      const mainEntryDts = path.join(__dirname, 'lib-cjs/index.d.ts');
+      const mainEntry = path.join(__dirname, 'lib-cjs/index.cjs');
+      const mainEntryDts = path.join(__dirname, 'lib-cjs/index.d.cts');
       const jsContent = await readFile(mainEntry, 'utf8');
       const dtsContent = await readFile(mainEntryDts, 'utf8');
       expect(jsContent).toMatchInlineSnapshot(`
@@ -499,152 +531,152 @@ describe('Build Verification', () => {
         Object.defineProperty(exports, "__esModule", { value: true });
         exports.useIconContext = exports.IconDirectionContextProvider = exports.cx = exports.createFluentIcon = exports.bundleIcon = exports.wrapIcon = void 0;
         const tslib_1 = require("tslib");
-        tslib_1.__exportStar(require("./icons/chunk-0"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-1"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-2"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-3"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-4"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-5"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-6"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-7"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-8"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-9"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-10"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-11"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-12"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-13"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-14"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-15"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-16"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-17"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-18"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-19"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-20"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-21"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-22"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-23"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-24"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-25"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-26"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-27"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-28"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-29"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-0"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-1"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-2"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-3"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-4"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-5"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-6"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-7"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-8"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-9"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-10"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-11"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-12"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-13"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-14"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-15"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-16"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-17"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-18"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-19"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-20"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-21"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-22"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-23"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-24"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-25"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-26"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-27"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-28"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-29"), exports);
-        var wrapIcon_1 = require("./utils/wrapIcon");
+        tslib_1.__exportStar(require("./icons/chunk-0.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-1.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-2.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-3.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-4.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-5.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-6.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-7.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-8.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-9.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-10.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-11.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-12.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-13.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-14.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-15.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-16.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-17.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-18.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-19.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-20.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-21.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-22.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-23.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-24.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-25.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-26.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-27.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-28.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-29.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-0.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-1.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-2.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-3.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-4.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-5.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-6.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-7.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-8.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-9.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-10.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-11.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-12.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-13.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-14.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-15.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-16.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-17.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-18.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-19.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-20.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-21.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-22.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-23.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-24.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-25.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-26.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-27.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-28.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-29.cjs"), exports);
+        var wrapIcon_1 = require("./utils/wrapIcon.cjs");
         Object.defineProperty(exports, "wrapIcon", { enumerable: true, get: function () { return wrapIcon_1.wrapIcon; } });
-        var bundleIcon_1 = require("./utils/bundleIcon");
+        var bundleIcon_1 = require("./utils/bundleIcon.cjs");
         Object.defineProperty(exports, "bundleIcon", { enumerable: true, get: function () { return bundleIcon_1.bundleIcon; } });
-        var createFluentIcon_1 = require("./utils/createFluentIcon");
+        var createFluentIcon_1 = require("./utils/createFluentIcon.cjs");
         Object.defineProperty(exports, "createFluentIcon", { enumerable: true, get: function () { return createFluentIcon_1.createFluentIcon; } });
-        var cx_1 = require("./utils/cx");
+        var cx_1 = require("./utils/cx.cjs");
         Object.defineProperty(exports, "cx", { enumerable: true, get: function () { return cx_1.cx; } });
-        tslib_1.__exportStar(require("./utils/useIconState"), exports);
-        tslib_1.__exportStar(require("./utils/constants"), exports);
-        var index_1 = require("./contexts/index");
+        tslib_1.__exportStar(require("./utils/useIconState.cjs"), exports);
+        tslib_1.__exportStar(require("./utils/constants.cjs"), exports);
+        var index_1 = require("./contexts/index.cjs");
         Object.defineProperty(exports, "IconDirectionContextProvider", { enumerable: true, get: function () { return index_1.IconDirectionContextProvider; } });
         Object.defineProperty(exports, "useIconContext", { enumerable: true, get: function () { return index_1.useIconContext; } });
         "
       `);
       expect(dtsContent).toMatchInlineSnapshot(`
-        "export * from './icons/chunk-0';
-        export * from './icons/chunk-1';
-        export * from './icons/chunk-2';
-        export * from './icons/chunk-3';
-        export * from './icons/chunk-4';
-        export * from './icons/chunk-5';
-        export * from './icons/chunk-6';
-        export * from './icons/chunk-7';
-        export * from './icons/chunk-8';
-        export * from './icons/chunk-9';
-        export * from './icons/chunk-10';
-        export * from './icons/chunk-11';
-        export * from './icons/chunk-12';
-        export * from './icons/chunk-13';
-        export * from './icons/chunk-14';
-        export * from './icons/chunk-15';
-        export * from './icons/chunk-16';
-        export * from './icons/chunk-17';
-        export * from './icons/chunk-18';
-        export * from './icons/chunk-19';
-        export * from './icons/chunk-20';
-        export * from './icons/chunk-21';
-        export * from './icons/chunk-22';
-        export * from './icons/chunk-23';
-        export * from './icons/chunk-24';
-        export * from './icons/chunk-25';
-        export * from './icons/chunk-26';
-        export * from './icons/chunk-27';
-        export * from './icons/chunk-28';
-        export * from './icons/chunk-29';
-        export * from './sizedIcons/chunk-0';
-        export * from './sizedIcons/chunk-1';
-        export * from './sizedIcons/chunk-2';
-        export * from './sizedIcons/chunk-3';
-        export * from './sizedIcons/chunk-4';
-        export * from './sizedIcons/chunk-5';
-        export * from './sizedIcons/chunk-6';
-        export * from './sizedIcons/chunk-7';
-        export * from './sizedIcons/chunk-8';
-        export * from './sizedIcons/chunk-9';
-        export * from './sizedIcons/chunk-10';
-        export * from './sizedIcons/chunk-11';
-        export * from './sizedIcons/chunk-12';
-        export * from './sizedIcons/chunk-13';
-        export * from './sizedIcons/chunk-14';
-        export * from './sizedIcons/chunk-15';
-        export * from './sizedIcons/chunk-16';
-        export * from './sizedIcons/chunk-17';
-        export * from './sizedIcons/chunk-18';
-        export * from './sizedIcons/chunk-19';
-        export * from './sizedIcons/chunk-20';
-        export * from './sizedIcons/chunk-21';
-        export * from './sizedIcons/chunk-22';
-        export * from './sizedIcons/chunk-23';
-        export * from './sizedIcons/chunk-24';
-        export * from './sizedIcons/chunk-25';
-        export * from './sizedIcons/chunk-26';
-        export * from './sizedIcons/chunk-27';
-        export * from './sizedIcons/chunk-28';
-        export * from './sizedIcons/chunk-29';
-        export { wrapIcon } from './utils/wrapIcon';
-        export { bundleIcon } from './utils/bundleIcon';
-        export { createFluentIcon } from './utils/createFluentIcon';
-        export { cx } from './utils/cx';
-        export * from './utils/useIconState';
-        export * from './utils/constants';
-        export { IconDirectionContextProvider, useIconContext } from './contexts/index';
-        export type { FluentIconsProps } from './utils/FluentIconsProps.types';
-        export type { FluentIcon } from './utils/createFluentIcon';
-        export type { IconDirectionContextValue } from './contexts/index';
+        "export * from './icons/chunk-0.cjs';
+        export * from './icons/chunk-1.cjs';
+        export * from './icons/chunk-2.cjs';
+        export * from './icons/chunk-3.cjs';
+        export * from './icons/chunk-4.cjs';
+        export * from './icons/chunk-5.cjs';
+        export * from './icons/chunk-6.cjs';
+        export * from './icons/chunk-7.cjs';
+        export * from './icons/chunk-8.cjs';
+        export * from './icons/chunk-9.cjs';
+        export * from './icons/chunk-10.cjs';
+        export * from './icons/chunk-11.cjs';
+        export * from './icons/chunk-12.cjs';
+        export * from './icons/chunk-13.cjs';
+        export * from './icons/chunk-14.cjs';
+        export * from './icons/chunk-15.cjs';
+        export * from './icons/chunk-16.cjs';
+        export * from './icons/chunk-17.cjs';
+        export * from './icons/chunk-18.cjs';
+        export * from './icons/chunk-19.cjs';
+        export * from './icons/chunk-20.cjs';
+        export * from './icons/chunk-21.cjs';
+        export * from './icons/chunk-22.cjs';
+        export * from './icons/chunk-23.cjs';
+        export * from './icons/chunk-24.cjs';
+        export * from './icons/chunk-25.cjs';
+        export * from './icons/chunk-26.cjs';
+        export * from './icons/chunk-27.cjs';
+        export * from './icons/chunk-28.cjs';
+        export * from './icons/chunk-29.cjs';
+        export * from './sizedIcons/chunk-0.cjs';
+        export * from './sizedIcons/chunk-1.cjs';
+        export * from './sizedIcons/chunk-2.cjs';
+        export * from './sizedIcons/chunk-3.cjs';
+        export * from './sizedIcons/chunk-4.cjs';
+        export * from './sizedIcons/chunk-5.cjs';
+        export * from './sizedIcons/chunk-6.cjs';
+        export * from './sizedIcons/chunk-7.cjs';
+        export * from './sizedIcons/chunk-8.cjs';
+        export * from './sizedIcons/chunk-9.cjs';
+        export * from './sizedIcons/chunk-10.cjs';
+        export * from './sizedIcons/chunk-11.cjs';
+        export * from './sizedIcons/chunk-12.cjs';
+        export * from './sizedIcons/chunk-13.cjs';
+        export * from './sizedIcons/chunk-14.cjs';
+        export * from './sizedIcons/chunk-15.cjs';
+        export * from './sizedIcons/chunk-16.cjs';
+        export * from './sizedIcons/chunk-17.cjs';
+        export * from './sizedIcons/chunk-18.cjs';
+        export * from './sizedIcons/chunk-19.cjs';
+        export * from './sizedIcons/chunk-20.cjs';
+        export * from './sizedIcons/chunk-21.cjs';
+        export * from './sizedIcons/chunk-22.cjs';
+        export * from './sizedIcons/chunk-23.cjs';
+        export * from './sizedIcons/chunk-24.cjs';
+        export * from './sizedIcons/chunk-25.cjs';
+        export * from './sizedIcons/chunk-26.cjs';
+        export * from './sizedIcons/chunk-27.cjs';
+        export * from './sizedIcons/chunk-28.cjs';
+        export * from './sizedIcons/chunk-29.cjs';
+        export { wrapIcon } from './utils/wrapIcon.cjs';
+        export { bundleIcon } from './utils/bundleIcon.cjs';
+        export { createFluentIcon } from './utils/createFluentIcon.cjs';
+        export { cx } from './utils/cx.cjs';
+        export * from './utils/useIconState.cjs';
+        export * from './utils/constants.cjs';
+        export { IconDirectionContextProvider, useIconContext } from './contexts/index.cjs';
+        export type { FluentIconsProps } from './utils/FluentIconsProps.types.cjs';
+        export type { FluentIcon } from './utils/createFluentIcon.cjs';
+        export type { IconDirectionContextValue } from './contexts/index.cjs';
         "
       `);
     });
@@ -656,156 +688,156 @@ describe('Build Verification', () => {
       const dtsContent = await readFile(mainEntryDts, 'utf8');
 
       expect(jsContent).toMatchInlineSnapshot(`
-        "export * from './icons/chunk-0';
-        export * from './icons/chunk-1';
-        export * from './icons/chunk-2';
-        export * from './icons/chunk-3';
-        export * from './icons/chunk-4';
-        export * from './icons/chunk-5';
-        export * from './icons/chunk-6';
-        export * from './icons/chunk-7';
-        export * from './icons/chunk-8';
-        export * from './icons/chunk-9';
-        export * from './icons/chunk-10';
-        export * from './icons/chunk-11';
-        export * from './icons/chunk-12';
-        export * from './icons/chunk-13';
-        export * from './icons/chunk-14';
-        export * from './icons/chunk-15';
-        export * from './icons/chunk-16';
-        export * from './icons/chunk-17';
-        export * from './icons/chunk-18';
-        export * from './icons/chunk-19';
-        export * from './icons/chunk-20';
-        export * from './icons/chunk-21';
-        export * from './icons/chunk-22';
-        export * from './icons/chunk-23';
-        export * from './icons/chunk-24';
-        export * from './icons/chunk-25';
-        export * from './icons/chunk-26';
-        export * from './icons/chunk-27';
-        export * from './icons/chunk-28';
-        export * from './icons/chunk-29';
-        export * from './sizedIcons/chunk-0';
-        export * from './sizedIcons/chunk-1';
-        export * from './sizedIcons/chunk-2';
-        export * from './sizedIcons/chunk-3';
-        export * from './sizedIcons/chunk-4';
-        export * from './sizedIcons/chunk-5';
-        export * from './sizedIcons/chunk-6';
-        export * from './sizedIcons/chunk-7';
-        export * from './sizedIcons/chunk-8';
-        export * from './sizedIcons/chunk-9';
-        export * from './sizedIcons/chunk-10';
-        export * from './sizedIcons/chunk-11';
-        export * from './sizedIcons/chunk-12';
-        export * from './sizedIcons/chunk-13';
-        export * from './sizedIcons/chunk-14';
-        export * from './sizedIcons/chunk-15';
-        export * from './sizedIcons/chunk-16';
-        export * from './sizedIcons/chunk-17';
-        export * from './sizedIcons/chunk-18';
-        export * from './sizedIcons/chunk-19';
-        export * from './sizedIcons/chunk-20';
-        export * from './sizedIcons/chunk-21';
-        export * from './sizedIcons/chunk-22';
-        export * from './sizedIcons/chunk-23';
-        export * from './sizedIcons/chunk-24';
-        export * from './sizedIcons/chunk-25';
-        export * from './sizedIcons/chunk-26';
-        export * from './sizedIcons/chunk-27';
-        export * from './sizedIcons/chunk-28';
-        export * from './sizedIcons/chunk-29';
-        export { wrapIcon } from '../utils/wrapIcon';
-        export { bundleIcon } from '../utils/bundleIcon';
-        export { createFluentIcon } from '../utils/createFluentIcon';
-        export { createFluentFontIcon } from '../utils/fonts/createFluentFontIcon';
-        export { cx } from '../utils/cx';
-        export * from '../utils/useIconState';
-        export * from '../utils/constants';
-        export { IconDirectionContextProvider, useIconContext } from '../contexts/index';
+        "export * from './icons/chunk-0.js';
+        export * from './icons/chunk-1.js';
+        export * from './icons/chunk-2.js';
+        export * from './icons/chunk-3.js';
+        export * from './icons/chunk-4.js';
+        export * from './icons/chunk-5.js';
+        export * from './icons/chunk-6.js';
+        export * from './icons/chunk-7.js';
+        export * from './icons/chunk-8.js';
+        export * from './icons/chunk-9.js';
+        export * from './icons/chunk-10.js';
+        export * from './icons/chunk-11.js';
+        export * from './icons/chunk-12.js';
+        export * from './icons/chunk-13.js';
+        export * from './icons/chunk-14.js';
+        export * from './icons/chunk-15.js';
+        export * from './icons/chunk-16.js';
+        export * from './icons/chunk-17.js';
+        export * from './icons/chunk-18.js';
+        export * from './icons/chunk-19.js';
+        export * from './icons/chunk-20.js';
+        export * from './icons/chunk-21.js';
+        export * from './icons/chunk-22.js';
+        export * from './icons/chunk-23.js';
+        export * from './icons/chunk-24.js';
+        export * from './icons/chunk-25.js';
+        export * from './icons/chunk-26.js';
+        export * from './icons/chunk-27.js';
+        export * from './icons/chunk-28.js';
+        export * from './icons/chunk-29.js';
+        export * from './sizedIcons/chunk-0.js';
+        export * from './sizedIcons/chunk-1.js';
+        export * from './sizedIcons/chunk-2.js';
+        export * from './sizedIcons/chunk-3.js';
+        export * from './sizedIcons/chunk-4.js';
+        export * from './sizedIcons/chunk-5.js';
+        export * from './sizedIcons/chunk-6.js';
+        export * from './sizedIcons/chunk-7.js';
+        export * from './sizedIcons/chunk-8.js';
+        export * from './sizedIcons/chunk-9.js';
+        export * from './sizedIcons/chunk-10.js';
+        export * from './sizedIcons/chunk-11.js';
+        export * from './sizedIcons/chunk-12.js';
+        export * from './sizedIcons/chunk-13.js';
+        export * from './sizedIcons/chunk-14.js';
+        export * from './sizedIcons/chunk-15.js';
+        export * from './sizedIcons/chunk-16.js';
+        export * from './sizedIcons/chunk-17.js';
+        export * from './sizedIcons/chunk-18.js';
+        export * from './sizedIcons/chunk-19.js';
+        export * from './sizedIcons/chunk-20.js';
+        export * from './sizedIcons/chunk-21.js';
+        export * from './sizedIcons/chunk-22.js';
+        export * from './sizedIcons/chunk-23.js';
+        export * from './sizedIcons/chunk-24.js';
+        export * from './sizedIcons/chunk-25.js';
+        export * from './sizedIcons/chunk-26.js';
+        export * from './sizedIcons/chunk-27.js';
+        export * from './sizedIcons/chunk-28.js';
+        export * from './sizedIcons/chunk-29.js';
+        export { wrapIcon } from '../utils/wrapIcon.js';
+        export { bundleIcon } from '../utils/bundleIcon.js';
+        export { createFluentIcon } from '../utils/createFluentIcon.js';
+        export { createFluentFontIcon } from '../utils/fonts/createFluentFontIcon.js';
+        export { cx } from '../utils/cx.js';
+        export * from '../utils/useIconState.js';
+        export * from '../utils/constants.js';
+        export { IconDirectionContextProvider, useIconContext } from '../contexts/index.js';
         "
       `);
       expect(dtsContent).toMatchInlineSnapshot(`
-        "export * from './icons/chunk-0';
-        export * from './icons/chunk-1';
-        export * from './icons/chunk-2';
-        export * from './icons/chunk-3';
-        export * from './icons/chunk-4';
-        export * from './icons/chunk-5';
-        export * from './icons/chunk-6';
-        export * from './icons/chunk-7';
-        export * from './icons/chunk-8';
-        export * from './icons/chunk-9';
-        export * from './icons/chunk-10';
-        export * from './icons/chunk-11';
-        export * from './icons/chunk-12';
-        export * from './icons/chunk-13';
-        export * from './icons/chunk-14';
-        export * from './icons/chunk-15';
-        export * from './icons/chunk-16';
-        export * from './icons/chunk-17';
-        export * from './icons/chunk-18';
-        export * from './icons/chunk-19';
-        export * from './icons/chunk-20';
-        export * from './icons/chunk-21';
-        export * from './icons/chunk-22';
-        export * from './icons/chunk-23';
-        export * from './icons/chunk-24';
-        export * from './icons/chunk-25';
-        export * from './icons/chunk-26';
-        export * from './icons/chunk-27';
-        export * from './icons/chunk-28';
-        export * from './icons/chunk-29';
-        export * from './sizedIcons/chunk-0';
-        export * from './sizedIcons/chunk-1';
-        export * from './sizedIcons/chunk-2';
-        export * from './sizedIcons/chunk-3';
-        export * from './sizedIcons/chunk-4';
-        export * from './sizedIcons/chunk-5';
-        export * from './sizedIcons/chunk-6';
-        export * from './sizedIcons/chunk-7';
-        export * from './sizedIcons/chunk-8';
-        export * from './sizedIcons/chunk-9';
-        export * from './sizedIcons/chunk-10';
-        export * from './sizedIcons/chunk-11';
-        export * from './sizedIcons/chunk-12';
-        export * from './sizedIcons/chunk-13';
-        export * from './sizedIcons/chunk-14';
-        export * from './sizedIcons/chunk-15';
-        export * from './sizedIcons/chunk-16';
-        export * from './sizedIcons/chunk-17';
-        export * from './sizedIcons/chunk-18';
-        export * from './sizedIcons/chunk-19';
-        export * from './sizedIcons/chunk-20';
-        export * from './sizedIcons/chunk-21';
-        export * from './sizedIcons/chunk-22';
-        export * from './sizedIcons/chunk-23';
-        export * from './sizedIcons/chunk-24';
-        export * from './sizedIcons/chunk-25';
-        export * from './sizedIcons/chunk-26';
-        export * from './sizedIcons/chunk-27';
-        export * from './sizedIcons/chunk-28';
-        export * from './sizedIcons/chunk-29';
-        export { wrapIcon } from '../utils/wrapIcon';
-        export { bundleIcon } from '../utils/bundleIcon';
-        export { createFluentIcon } from '../utils/createFluentIcon';
-        export { createFluentFontIcon } from '../utils/fonts/createFluentFontIcon';
-        export { cx } from '../utils/cx';
-        export * from '../utils/useIconState';
-        export * from '../utils/constants';
-        export { IconDirectionContextProvider, useIconContext } from '../contexts/index';
-        export type { FluentIconsProps } from '../utils/FluentIconsProps.types';
-        export type { FluentIcon } from '../utils/createFluentIcon';
-        export type { FluentFontIcon } from '../utils/fonts/createFluentFontIcon';
-        export type { IconDirectionContextValue } from '../contexts/index';
+        "export * from './icons/chunk-0.js';
+        export * from './icons/chunk-1.js';
+        export * from './icons/chunk-2.js';
+        export * from './icons/chunk-3.js';
+        export * from './icons/chunk-4.js';
+        export * from './icons/chunk-5.js';
+        export * from './icons/chunk-6.js';
+        export * from './icons/chunk-7.js';
+        export * from './icons/chunk-8.js';
+        export * from './icons/chunk-9.js';
+        export * from './icons/chunk-10.js';
+        export * from './icons/chunk-11.js';
+        export * from './icons/chunk-12.js';
+        export * from './icons/chunk-13.js';
+        export * from './icons/chunk-14.js';
+        export * from './icons/chunk-15.js';
+        export * from './icons/chunk-16.js';
+        export * from './icons/chunk-17.js';
+        export * from './icons/chunk-18.js';
+        export * from './icons/chunk-19.js';
+        export * from './icons/chunk-20.js';
+        export * from './icons/chunk-21.js';
+        export * from './icons/chunk-22.js';
+        export * from './icons/chunk-23.js';
+        export * from './icons/chunk-24.js';
+        export * from './icons/chunk-25.js';
+        export * from './icons/chunk-26.js';
+        export * from './icons/chunk-27.js';
+        export * from './icons/chunk-28.js';
+        export * from './icons/chunk-29.js';
+        export * from './sizedIcons/chunk-0.js';
+        export * from './sizedIcons/chunk-1.js';
+        export * from './sizedIcons/chunk-2.js';
+        export * from './sizedIcons/chunk-3.js';
+        export * from './sizedIcons/chunk-4.js';
+        export * from './sizedIcons/chunk-5.js';
+        export * from './sizedIcons/chunk-6.js';
+        export * from './sizedIcons/chunk-7.js';
+        export * from './sizedIcons/chunk-8.js';
+        export * from './sizedIcons/chunk-9.js';
+        export * from './sizedIcons/chunk-10.js';
+        export * from './sizedIcons/chunk-11.js';
+        export * from './sizedIcons/chunk-12.js';
+        export * from './sizedIcons/chunk-13.js';
+        export * from './sizedIcons/chunk-14.js';
+        export * from './sizedIcons/chunk-15.js';
+        export * from './sizedIcons/chunk-16.js';
+        export * from './sizedIcons/chunk-17.js';
+        export * from './sizedIcons/chunk-18.js';
+        export * from './sizedIcons/chunk-19.js';
+        export * from './sizedIcons/chunk-20.js';
+        export * from './sizedIcons/chunk-21.js';
+        export * from './sizedIcons/chunk-22.js';
+        export * from './sizedIcons/chunk-23.js';
+        export * from './sizedIcons/chunk-24.js';
+        export * from './sizedIcons/chunk-25.js';
+        export * from './sizedIcons/chunk-26.js';
+        export * from './sizedIcons/chunk-27.js';
+        export * from './sizedIcons/chunk-28.js';
+        export * from './sizedIcons/chunk-29.js';
+        export { wrapIcon } from '../utils/wrapIcon.js';
+        export { bundleIcon } from '../utils/bundleIcon.js';
+        export { createFluentIcon } from '../utils/createFluentIcon.js';
+        export { createFluentFontIcon } from '../utils/fonts/createFluentFontIcon.js';
+        export { cx } from '../utils/cx.js';
+        export * from '../utils/useIconState.js';
+        export * from '../utils/constants.js';
+        export { IconDirectionContextProvider, useIconContext } from '../contexts/index.js';
+        export type { FluentIconsProps } from '../utils/FluentIconsProps.types.js';
+        export type { FluentIcon } from '../utils/createFluentIcon.js';
+        export type { FluentFontIcon } from '../utils/fonts/createFluentFontIcon.js';
+        export type { IconDirectionContextValue } from '../contexts/index.js';
         "
       `);
     });
 
     it(`should have valid generated contents  in entry points (lib-cjs/fonts)`, async () => {
-      const mainEntry = path.join(__dirname, 'lib-cjs/fonts/index.js');
-      const mainEntryDts = path.join(__dirname, 'lib-cjs/fonts/index.d.ts');
+      const mainEntry = path.join(__dirname, 'lib-cjs/fonts/index.cjs');
+      const mainEntryDts = path.join(__dirname, 'lib-cjs/fonts/index.d.cts');
       const jsContent = await readFile(mainEntry, 'utf8');
       const dtsContent = await readFile(mainEntryDts, 'utf8');
 
@@ -814,156 +846,156 @@ describe('Build Verification', () => {
         Object.defineProperty(exports, "__esModule", { value: true });
         exports.useIconContext = exports.IconDirectionContextProvider = exports.cx = exports.createFluentFontIcon = exports.createFluentIcon = exports.bundleIcon = exports.wrapIcon = void 0;
         const tslib_1 = require("tslib");
-        tslib_1.__exportStar(require("./icons/chunk-0"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-1"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-2"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-3"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-4"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-5"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-6"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-7"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-8"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-9"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-10"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-11"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-12"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-13"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-14"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-15"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-16"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-17"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-18"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-19"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-20"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-21"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-22"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-23"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-24"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-25"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-26"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-27"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-28"), exports);
-        tslib_1.__exportStar(require("./icons/chunk-29"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-0"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-1"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-2"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-3"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-4"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-5"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-6"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-7"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-8"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-9"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-10"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-11"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-12"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-13"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-14"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-15"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-16"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-17"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-18"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-19"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-20"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-21"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-22"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-23"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-24"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-25"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-26"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-27"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-28"), exports);
-        tslib_1.__exportStar(require("./sizedIcons/chunk-29"), exports);
-        var wrapIcon_1 = require("../utils/wrapIcon");
+        tslib_1.__exportStar(require("./icons/chunk-0.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-1.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-2.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-3.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-4.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-5.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-6.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-7.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-8.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-9.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-10.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-11.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-12.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-13.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-14.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-15.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-16.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-17.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-18.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-19.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-20.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-21.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-22.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-23.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-24.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-25.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-26.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-27.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-28.cjs"), exports);
+        tslib_1.__exportStar(require("./icons/chunk-29.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-0.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-1.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-2.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-3.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-4.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-5.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-6.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-7.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-8.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-9.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-10.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-11.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-12.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-13.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-14.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-15.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-16.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-17.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-18.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-19.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-20.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-21.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-22.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-23.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-24.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-25.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-26.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-27.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-28.cjs"), exports);
+        tslib_1.__exportStar(require("./sizedIcons/chunk-29.cjs"), exports);
+        var wrapIcon_1 = require("../utils/wrapIcon.cjs");
         Object.defineProperty(exports, "wrapIcon", { enumerable: true, get: function () { return wrapIcon_1.wrapIcon; } });
-        var bundleIcon_1 = require("../utils/bundleIcon");
+        var bundleIcon_1 = require("../utils/bundleIcon.cjs");
         Object.defineProperty(exports, "bundleIcon", { enumerable: true, get: function () { return bundleIcon_1.bundleIcon; } });
-        var createFluentIcon_1 = require("../utils/createFluentIcon");
+        var createFluentIcon_1 = require("../utils/createFluentIcon.cjs");
         Object.defineProperty(exports, "createFluentIcon", { enumerable: true, get: function () { return createFluentIcon_1.createFluentIcon; } });
-        var createFluentFontIcon_1 = require("../utils/fonts/createFluentFontIcon");
+        var createFluentFontIcon_1 = require("../utils/fonts/createFluentFontIcon.cjs");
         Object.defineProperty(exports, "createFluentFontIcon", { enumerable: true, get: function () { return createFluentFontIcon_1.createFluentFontIcon; } });
-        var cx_1 = require("../utils/cx");
+        var cx_1 = require("../utils/cx.cjs");
         Object.defineProperty(exports, "cx", { enumerable: true, get: function () { return cx_1.cx; } });
-        tslib_1.__exportStar(require("../utils/useIconState"), exports);
-        tslib_1.__exportStar(require("../utils/constants"), exports);
-        var index_1 = require("../contexts/index");
+        tslib_1.__exportStar(require("../utils/useIconState.cjs"), exports);
+        tslib_1.__exportStar(require("../utils/constants.cjs"), exports);
+        var index_1 = require("../contexts/index.cjs");
         Object.defineProperty(exports, "IconDirectionContextProvider", { enumerable: true, get: function () { return index_1.IconDirectionContextProvider; } });
         Object.defineProperty(exports, "useIconContext", { enumerable: true, get: function () { return index_1.useIconContext; } });
         "
       `);
       expect(dtsContent).toMatchInlineSnapshot(`
-        "export * from './icons/chunk-0';
-        export * from './icons/chunk-1';
-        export * from './icons/chunk-2';
-        export * from './icons/chunk-3';
-        export * from './icons/chunk-4';
-        export * from './icons/chunk-5';
-        export * from './icons/chunk-6';
-        export * from './icons/chunk-7';
-        export * from './icons/chunk-8';
-        export * from './icons/chunk-9';
-        export * from './icons/chunk-10';
-        export * from './icons/chunk-11';
-        export * from './icons/chunk-12';
-        export * from './icons/chunk-13';
-        export * from './icons/chunk-14';
-        export * from './icons/chunk-15';
-        export * from './icons/chunk-16';
-        export * from './icons/chunk-17';
-        export * from './icons/chunk-18';
-        export * from './icons/chunk-19';
-        export * from './icons/chunk-20';
-        export * from './icons/chunk-21';
-        export * from './icons/chunk-22';
-        export * from './icons/chunk-23';
-        export * from './icons/chunk-24';
-        export * from './icons/chunk-25';
-        export * from './icons/chunk-26';
-        export * from './icons/chunk-27';
-        export * from './icons/chunk-28';
-        export * from './icons/chunk-29';
-        export * from './sizedIcons/chunk-0';
-        export * from './sizedIcons/chunk-1';
-        export * from './sizedIcons/chunk-2';
-        export * from './sizedIcons/chunk-3';
-        export * from './sizedIcons/chunk-4';
-        export * from './sizedIcons/chunk-5';
-        export * from './sizedIcons/chunk-6';
-        export * from './sizedIcons/chunk-7';
-        export * from './sizedIcons/chunk-8';
-        export * from './sizedIcons/chunk-9';
-        export * from './sizedIcons/chunk-10';
-        export * from './sizedIcons/chunk-11';
-        export * from './sizedIcons/chunk-12';
-        export * from './sizedIcons/chunk-13';
-        export * from './sizedIcons/chunk-14';
-        export * from './sizedIcons/chunk-15';
-        export * from './sizedIcons/chunk-16';
-        export * from './sizedIcons/chunk-17';
-        export * from './sizedIcons/chunk-18';
-        export * from './sizedIcons/chunk-19';
-        export * from './sizedIcons/chunk-20';
-        export * from './sizedIcons/chunk-21';
-        export * from './sizedIcons/chunk-22';
-        export * from './sizedIcons/chunk-23';
-        export * from './sizedIcons/chunk-24';
-        export * from './sizedIcons/chunk-25';
-        export * from './sizedIcons/chunk-26';
-        export * from './sizedIcons/chunk-27';
-        export * from './sizedIcons/chunk-28';
-        export * from './sizedIcons/chunk-29';
-        export { wrapIcon } from '../utils/wrapIcon';
-        export { bundleIcon } from '../utils/bundleIcon';
-        export { createFluentIcon } from '../utils/createFluentIcon';
-        export { createFluentFontIcon } from '../utils/fonts/createFluentFontIcon';
-        export { cx } from '../utils/cx';
-        export * from '../utils/useIconState';
-        export * from '../utils/constants';
-        export { IconDirectionContextProvider, useIconContext } from '../contexts/index';
-        export type { FluentIconsProps } from '../utils/FluentIconsProps.types';
-        export type { FluentIcon } from '../utils/createFluentIcon';
-        export type { FluentFontIcon } from '../utils/fonts/createFluentFontIcon';
-        export type { IconDirectionContextValue } from '../contexts/index';
+        "export * from './icons/chunk-0.cjs';
+        export * from './icons/chunk-1.cjs';
+        export * from './icons/chunk-2.cjs';
+        export * from './icons/chunk-3.cjs';
+        export * from './icons/chunk-4.cjs';
+        export * from './icons/chunk-5.cjs';
+        export * from './icons/chunk-6.cjs';
+        export * from './icons/chunk-7.cjs';
+        export * from './icons/chunk-8.cjs';
+        export * from './icons/chunk-9.cjs';
+        export * from './icons/chunk-10.cjs';
+        export * from './icons/chunk-11.cjs';
+        export * from './icons/chunk-12.cjs';
+        export * from './icons/chunk-13.cjs';
+        export * from './icons/chunk-14.cjs';
+        export * from './icons/chunk-15.cjs';
+        export * from './icons/chunk-16.cjs';
+        export * from './icons/chunk-17.cjs';
+        export * from './icons/chunk-18.cjs';
+        export * from './icons/chunk-19.cjs';
+        export * from './icons/chunk-20.cjs';
+        export * from './icons/chunk-21.cjs';
+        export * from './icons/chunk-22.cjs';
+        export * from './icons/chunk-23.cjs';
+        export * from './icons/chunk-24.cjs';
+        export * from './icons/chunk-25.cjs';
+        export * from './icons/chunk-26.cjs';
+        export * from './icons/chunk-27.cjs';
+        export * from './icons/chunk-28.cjs';
+        export * from './icons/chunk-29.cjs';
+        export * from './sizedIcons/chunk-0.cjs';
+        export * from './sizedIcons/chunk-1.cjs';
+        export * from './sizedIcons/chunk-2.cjs';
+        export * from './sizedIcons/chunk-3.cjs';
+        export * from './sizedIcons/chunk-4.cjs';
+        export * from './sizedIcons/chunk-5.cjs';
+        export * from './sizedIcons/chunk-6.cjs';
+        export * from './sizedIcons/chunk-7.cjs';
+        export * from './sizedIcons/chunk-8.cjs';
+        export * from './sizedIcons/chunk-9.cjs';
+        export * from './sizedIcons/chunk-10.cjs';
+        export * from './sizedIcons/chunk-11.cjs';
+        export * from './sizedIcons/chunk-12.cjs';
+        export * from './sizedIcons/chunk-13.cjs';
+        export * from './sizedIcons/chunk-14.cjs';
+        export * from './sizedIcons/chunk-15.cjs';
+        export * from './sizedIcons/chunk-16.cjs';
+        export * from './sizedIcons/chunk-17.cjs';
+        export * from './sizedIcons/chunk-18.cjs';
+        export * from './sizedIcons/chunk-19.cjs';
+        export * from './sizedIcons/chunk-20.cjs';
+        export * from './sizedIcons/chunk-21.cjs';
+        export * from './sizedIcons/chunk-22.cjs';
+        export * from './sizedIcons/chunk-23.cjs';
+        export * from './sizedIcons/chunk-24.cjs';
+        export * from './sizedIcons/chunk-25.cjs';
+        export * from './sizedIcons/chunk-26.cjs';
+        export * from './sizedIcons/chunk-27.cjs';
+        export * from './sizedIcons/chunk-28.cjs';
+        export * from './sizedIcons/chunk-29.cjs';
+        export { wrapIcon } from '../utils/wrapIcon.cjs';
+        export { bundleIcon } from '../utils/bundleIcon.cjs';
+        export { createFluentIcon } from '../utils/createFluentIcon.cjs';
+        export { createFluentFontIcon } from '../utils/fonts/createFluentFontIcon.cjs';
+        export { cx } from '../utils/cx.cjs';
+        export * from '../utils/useIconState.cjs';
+        export * from '../utils/constants.cjs';
+        export { IconDirectionContextProvider, useIconContext } from '../contexts/index.cjs';
+        export type { FluentIconsProps } from '../utils/FluentIconsProps.types.cjs';
+        export type { FluentIcon } from '../utils/createFluentIcon.cjs';
+        export type { FluentFontIcon } from '../utils/fonts/createFluentFontIcon.cjs';
+        export type { IconDirectionContextValue } from '../contexts/index.cjs';
         "
       `);
     });
@@ -988,7 +1020,7 @@ describe('Build Verification', () => {
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
           ""use client";
-          import { createFluentIcon } from '../utils/createFluentIcon';
+          import { createFluentIcon } from '../utils/createFluentIcon.js';
           export const BackpackFilled = ( /*#__PURE__*/createFluentIcon('BackpackFilled', "1em", ["M8 8.7c0-.39.31-.7.7-.7h2.6c.39 0 .7.31.7.7a.3.3 0 0 1-.3.3H8.3a.3.3 0 0 1-.3-.3M10 2a2.5 2.5 0 0 0-2.5 2.5v.04A6 6 0 0 0 4 10v2h12v-2a6 6 0 0 0-3.5-5.46V4.5A2.5 2.5 0 0 0 10 2m0 2q.76 0 1.47.18a1.5 1.5 0 0 0-2.94 0Q9.23 4 10 4M8.7 7h2.6c.94 0 1.7.76 1.7 1.7 0 .72-.58 1.3-1.3 1.3H8.3A1.3 1.3 0 0 1 7 8.7C7 7.76 7.76 7 8.7 7M7 14.5V13H4v2a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-2H8v1.5a.5.5 0 0 1-1 0"]));
           export const BackpackRegular = ( /*#__PURE__*/createFluentIcon('BackpackRegular', "1em", ["M8.7 7C7.76 7 7 7.76 7 8.7c0 .72.58 1.3 1.3 1.3h3.4c.72 0 1.3-.58 1.3-1.3 0-.94-.76-1.7-1.7-1.7zM8 8.7c0-.39.31-.7.7-.7h2.6c.39 0 .7.31.7.7a.3.3 0 0 1-.3.3H8.3a.3.3 0 0 1-.3-.3M10 2a2.5 2.5 0 0 0-2.5 2.5v.04A6 6 0 0 0 4 10v5a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-5a6 6 0 0 0-3.5-5.46V4.5A2.5 2.5 0 0 0 10 2m5 10H5v-2a5 5 0 0 1 10 0zm-8 2.5a.5.5 0 0 0 1 0V13h7v2a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-2h2zM10 4q-.76 0-1.47.18a1.5 1.5 0 0 1 2.94 0A6 6 0 0 0 10 4"]));
           export const BackpackAddFilled = ( /*#__PURE__*/createFluentIcon('BackpackAddFilled', "1em", ["M7.5 4.5a2.5 2.5 0 0 1 5 0v.04a6 6 0 0 1 3.45 4.65 5.5 5.5 0 0 0-3.07.05Q13 9 13 8.7c0-.94-.76-1.7-1.7-1.7H8.7C7.76 7 7 7.76 7 8.7c0 .72.58 1.3 1.3 1.3h3.04a5.5 5.5 0 0 0-1.74 2H4v-2a6 6 0 0 1 3.5-5.46zm3.97-.32a1.5 1.5 0 0 0-2.94 0 6 6 0 0 1 2.94 0M9 14.5q0-.78.2-1.5H8v1.5a.5.5 0 0 1-1 0V13H4v2a3 3 0 0 0 3 3h3.26A5.5 5.5 0 0 1 9 14.5M8.7 8a.7.7 0 0 0-.7.7c0 .17.13.3.3.3h3.4a.3.3 0 0 0 .3-.3.7.7 0 0 0-.7-.7zM19 14.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0m-4-2a.5.5 0 0 0-1 0V14h-1.5a.5.5 0 0 0 0 1H14v1.5a.5.5 0 0 0 1 0V15h1.5a.5.5 0 0 0 0-1H15z"]));
@@ -1024,7 +1056,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentIcon } from '../utils/createFluentIcon';
+          "import type { FluentIcon } from '../utils/createFluentIcon.js';
           export declare const BackpackFilled: FluentIcon;
           export declare const BackpackRegular: FluentIcon;
           export declare const BackpackAddFilled: FluentIcon;
@@ -1062,17 +1094,17 @@ describe('Build Verification', () => {
     it('should have valid chunk contents in lib-cjs icons', async () => {
       const iconsPath = path.join(__dirname, 'lib-cjs', 'icons');
       const iconFiles = await readdir(iconsPath);
-      const iconChunks = iconFiles.filter((file) => file.startsWith('chunk-') && file.endsWith('.js'));
+      const iconChunks = iconFiles.filter((file) => file.startsWith('chunk-') && file.endsWith('.cjs'));
 
       expect(iconChunks.length).toBeGreaterThan(0);
 
       // Take the first chunk for content verification
       const firstChunk = iconChunks[0];
-      const chunkNumber = firstChunk.match(/chunk-(\d+)\.js$/)?.[1];
+      const chunkNumber = firstChunk.match(/chunk-(\d+)\.cjs$/)?.[1];
 
       if (chunkNumber) {
-        const jsFile = path.join(iconsPath, `chunk-${chunkNumber}.js`);
-        const dtsFile = path.join(iconsPath, `chunk-${chunkNumber}.d.ts`);
+        const jsFile = path.join(iconsPath, `chunk-${chunkNumber}.cjs`);
+        const dtsFile = path.join(iconsPath, `chunk-${chunkNumber}.d.cts`);
 
         // Read and verify JS file content with inline snapshot
         const jsContent = await readFile(jsFile, 'utf8');
@@ -1082,7 +1114,7 @@ describe('Build Verification', () => {
           "use client";
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
-          const createFluentIcon_1 = require("../utils/createFluentIcon");
+          const createFluentIcon_1 = require("../utils/createFluentIcon.cjs");
           exports.BackpackFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('BackpackFilled', "1em", ["M8 8.7c0-.39.31-.7.7-.7h2.6c.39 0 .7.31.7.7a.3.3 0 0 1-.3.3H8.3a.3.3 0 0 1-.3-.3M10 2a2.5 2.5 0 0 0-2.5 2.5v.04A6 6 0 0 0 4 10v2h12v-2a6 6 0 0 0-3.5-5.46V4.5A2.5 2.5 0 0 0 10 2m0 2q.76 0 1.47.18a1.5 1.5 0 0 0-2.94 0Q9.23 4 10 4M8.7 7h2.6c.94 0 1.7.76 1.7 1.7 0 .72-.58 1.3-1.3 1.3H8.3A1.3 1.3 0 0 1 7 8.7C7 7.76 7.76 7 8.7 7M7 14.5V13H4v2a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-2H8v1.5a.5.5 0 0 1-1 0"]));
           exports.BackpackRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('BackpackRegular', "1em", ["M8.7 7C7.76 7 7 7.76 7 8.7c0 .72.58 1.3 1.3 1.3h3.4c.72 0 1.3-.58 1.3-1.3 0-.94-.76-1.7-1.7-1.7zM8 8.7c0-.39.31-.7.7-.7h2.6c.39 0 .7.31.7.7a.3.3 0 0 1-.3.3H8.3a.3.3 0 0 1-.3-.3M10 2a2.5 2.5 0 0 0-2.5 2.5v.04A6 6 0 0 0 4 10v5a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-5a6 6 0 0 0-3.5-5.46V4.5A2.5 2.5 0 0 0 10 2m5 10H5v-2a5 5 0 0 1 10 0zm-8 2.5a.5.5 0 0 0 1 0V13h7v2a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-2h2zM10 4q-.76 0-1.47.18a1.5 1.5 0 0 1 2.94 0A6 6 0 0 0 10 4"]));
           exports.BackpackAddFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('BackpackAddFilled', "1em", ["M7.5 4.5a2.5 2.5 0 0 1 5 0v.04a6 6 0 0 1 3.45 4.65 5.5 5.5 0 0 0-3.07.05Q13 9 13 8.7c0-.94-.76-1.7-1.7-1.7H8.7C7.76 7 7 7.76 7 8.7c0 .72.58 1.3 1.3 1.3h3.04a5.5 5.5 0 0 0-1.74 2H4v-2a6 6 0 0 1 3.5-5.46zm3.97-.32a1.5 1.5 0 0 0-2.94 0 6 6 0 0 1 2.94 0M9 14.5q0-.78.2-1.5H8v1.5a.5.5 0 0 1-1 0V13H4v2a3 3 0 0 0 3 3h3.26A5.5 5.5 0 0 1 9 14.5M8.7 8a.7.7 0 0 0-.7.7c0 .17.13.3.3.3h3.4a.3.3 0 0 0 .3-.3.7.7 0 0 0-.7-.7zM19 14.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0m-4-2a.5.5 0 0 0-1 0V14h-1.5a.5.5 0 0 0 0 1H14v1.5a.5.5 0 0 0 1 0V15h1.5a.5.5 0 0 0 0-1H15z"]));
@@ -1115,7 +1147,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentIcon } from '../utils/createFluentIcon';
+          "import type { FluentIcon } from '../utils/createFluentIcon.cjs';
           export declare const BackpackFilled: FluentIcon;
           export declare const BackpackRegular: FluentIcon;
           export declare const BackpackAddFilled: FluentIcon;
@@ -1170,7 +1202,7 @@ describe('Build Verification', () => {
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
           ""use client";
-          import { createFluentIcon } from '../utils/createFluentIcon';
+          import { createFluentIcon } from '../utils/createFluentIcon.js';
           export const Backpack12Filled = ( /*#__PURE__*/createFluentIcon('Backpack12Filled', "12", ["M4.06 3.5H4v-1C4 1.67 4.67 1 5.5 1h1C7.33 1 8 1.67 8 2.5v1h-.06A4 4 0 0 1 10 7v2.5c0 .83-.67 1.5-1.5 1.5h-5A1.5 1.5 0 0 1 2 9.5V7a4 4 0 0 1 2.06-3.5m.94-1v.63a4 4 0 0 1 2 0V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m0 3c0 .28.22.5.5.5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0-.5.5M4.5 8a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1z"]));
           export const Backpack12Regular = ( /*#__PURE__*/createFluentIcon('Backpack12Regular', "12", ["M5 5.5c0-.28.22-.5.5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5M4.5 8a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zm-.44-4.5H4v-1C4 1.67 4.67 1 5.5 1h1C7.33 1 8 1.67 8 2.5v1h-.06A4 4 0 0 1 10 7v2.5c0 .83-.67 1.5-1.5 1.5h-5A1.5 1.5 0 0 1 2 9.5V7a4 4 0 0 1 2.06-3.5m.94-1v.63a4 4 0 0 1 2 0V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M3 7v2.5c0 .28.22.5.5.5h5a.5.5 0 0 0 .5-.5V7a3 3 0 0 0-6 0"]));
           export const Backpack16Filled = ( /*#__PURE__*/createFluentIcon('Backpack16Filled', "16", ["M6 8a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1zm2-7a2 2 0 0 0-2 2v.42A5 5 0 0 0 3 8v2h10V8a5 5 0 0 0-3-4.58V3a2 2 0 0 0-2-2m0 2q-.51 0-1 .1V3a1 1 0 0 1 2 0v.1Q8.52 3 8 3M7 6h2a2 2 0 0 1 2 2 1 1 0 0 1-1 1H6a1 1 0 0 1-1-1c0-1.1.9-2 2-2m-1 6.5V11H3v1.5A2.5 2.5 0 0 0 5.5 15h5a2.5 2.5 0 0 0 2.5-2.5V11H7v1.5a.5.5 0 0 1-1 0"]));
@@ -1206,7 +1238,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentIcon } from '../utils/createFluentIcon';
+          "import type { FluentIcon } from '../utils/createFluentIcon.js';
           export declare const Backpack12Filled: FluentIcon;
           export declare const Backpack12Regular: FluentIcon;
           export declare const Backpack16Filled: FluentIcon;
@@ -1244,17 +1276,17 @@ describe('Build Verification', () => {
     it('should have valid chunk contents in lib-cjs sizedIcons', async () => {
       const sizedIconsPath = path.join(__dirname, 'lib-cjs', 'sizedIcons');
       const sizedIconFiles = await readdir(sizedIconsPath);
-      const sizedIconChunks = sizedIconFiles.filter((file) => file.startsWith('chunk-') && file.endsWith('.js'));
+      const sizedIconChunks = sizedIconFiles.filter((file) => file.startsWith('chunk-') && file.endsWith('.cjs'));
 
       expect(sizedIconChunks.length).toBeGreaterThan(0);
 
       // Take the first chunk for content verification
       const firstChunk = sizedIconChunks[0];
-      const chunkNumber = firstChunk.match(/chunk-(\d+)\.js$/)?.[1];
+      const chunkNumber = firstChunk.match(/chunk-(\d+)\.cjs$/)?.[1];
 
       if (chunkNumber) {
-        const jsFile = path.join(sizedIconsPath, `chunk-${chunkNumber}.js`);
-        const dtsFile = path.join(sizedIconsPath, `chunk-${chunkNumber}.d.ts`);
+        const jsFile = path.join(sizedIconsPath, `chunk-${chunkNumber}.cjs`);
+        const dtsFile = path.join(sizedIconsPath, `chunk-${chunkNumber}.d.cts`);
 
         // Read and verify JS file content with inline snapshot
         const jsContent = await readFile(jsFile, 'utf8');
@@ -1264,7 +1296,7 @@ describe('Build Verification', () => {
           "use client";
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
-          const createFluentIcon_1 = require("../utils/createFluentIcon");
+          const createFluentIcon_1 = require("../utils/createFluentIcon.cjs");
           exports.Backpack12Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Backpack12Filled', "12", ["M4.06 3.5H4v-1C4 1.67 4.67 1 5.5 1h1C7.33 1 8 1.67 8 2.5v1h-.06A4 4 0 0 1 10 7v2.5c0 .83-.67 1.5-1.5 1.5h-5A1.5 1.5 0 0 1 2 9.5V7a4 4 0 0 1 2.06-3.5m.94-1v.63a4 4 0 0 1 2 0V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m0 3c0 .28.22.5.5.5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0-.5.5M4.5 8a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1z"]));
           exports.Backpack12Regular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Backpack12Regular', "12", ["M5 5.5c0-.28.22-.5.5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5M4.5 8a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zm-.44-4.5H4v-1C4 1.67 4.67 1 5.5 1h1C7.33 1 8 1.67 8 2.5v1h-.06A4 4 0 0 1 10 7v2.5c0 .83-.67 1.5-1.5 1.5h-5A1.5 1.5 0 0 1 2 9.5V7a4 4 0 0 1 2.06-3.5m.94-1v.63a4 4 0 0 1 2 0V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M3 7v2.5c0 .28.22.5.5.5h5a.5.5 0 0 0 .5-.5V7a3 3 0 0 0-6 0"]));
           exports.Backpack16Filled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Backpack16Filled', "16", ["M6 8a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1zm2-7a2 2 0 0 0-2 2v.42A5 5 0 0 0 3 8v2h10V8a5 5 0 0 0-3-4.58V3a2 2 0 0 0-2-2m0 2q-.51 0-1 .1V3a1 1 0 0 1 2 0v.1Q8.52 3 8 3M7 6h2a2 2 0 0 1 2 2 1 1 0 0 1-1 1H6a1 1 0 0 1-1-1c0-1.1.9-2 2-2m-1 6.5V11H3v1.5A2.5 2.5 0 0 0 5.5 15h5a2.5 2.5 0 0 0 2.5-2.5V11H7v1.5a.5.5 0 0 1-1 0"]));
@@ -1297,7 +1329,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentIcon } from '../utils/createFluentIcon';
+          "import type { FluentIcon } from '../utils/createFluentIcon.cjs';
           export declare const Backpack12Filled: FluentIcon;
           export declare const Backpack12Regular: FluentIcon;
           export declare const Backpack16Filled: FluentIcon;
@@ -1352,7 +1384,7 @@ describe('Build Verification', () => {
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
           ""use client";
-          import { createFluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
+          import { createFluentFontIcon } from '../../utils/fonts/createFluentFontIcon.js';
           export const BackpackFilled = ( /*#__PURE__*/createFluentFontIcon("BackpackFilled", "", 2, undefined));
           export const BackpackRegular = ( /*#__PURE__*/createFluentFontIcon("BackpackRegular", "", 2, undefined));
           export const BackpackAddFilled = ( /*#__PURE__*/createFluentFontIcon("BackpackAddFilled", "", 2, undefined));
@@ -1388,7 +1420,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
+          "import type { FluentFontIcon } from '../../utils/fonts/createFluentFontIcon.js';
           export declare const BackpackFilled: FluentFontIcon;
           export declare const BackpackRegular: FluentFontIcon;
           export declare const BackpackAddFilled: FluentFontIcon;
@@ -1426,17 +1458,17 @@ describe('Build Verification', () => {
     it('should have valid font chunk contents in lib-cjs fonts/icons', async () => {
       const fontsIconsPath = path.join(__dirname, 'lib-cjs', 'fonts', 'icons');
       const fontsIconFiles = await readdir(fontsIconsPath);
-      const fontsIconChunks = fontsIconFiles.filter((file) => file.startsWith('chunk-') && file.endsWith('.js'));
+      const fontsIconChunks = fontsIconFiles.filter((file) => file.startsWith('chunk-') && file.endsWith('.cjs'));
 
       expect(fontsIconChunks.length).toBeGreaterThan(0);
 
       // Take the first chunk for content verification
       const firstChunk = fontsIconChunks[0];
-      const chunkNumber = firstChunk.match(/chunk-(\d+)\.js$/)?.[1];
+      const chunkNumber = firstChunk.match(/chunk-(\d+)\.cjs$/)?.[1];
 
       if (chunkNumber) {
-        const jsFile = path.join(fontsIconsPath, `chunk-${chunkNumber}.js`);
-        const dtsFile = path.join(fontsIconsPath, `chunk-${chunkNumber}.d.ts`);
+        const jsFile = path.join(fontsIconsPath, `chunk-${chunkNumber}.cjs`);
+        const dtsFile = path.join(fontsIconsPath, `chunk-${chunkNumber}.d.cts`);
 
         // Read and verify JS file content with inline snapshot
         const jsContent = await readFile(jsFile, 'utf8');
@@ -1446,7 +1478,7 @@ describe('Build Verification', () => {
           "use client";
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
-          const createFluentFontIcon_1 = require("../../utils/fonts/createFluentFontIcon");
+          const createFluentFontIcon_1 = require("../../utils/fonts/createFluentFontIcon.cjs");
           exports.BackpackFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackpackFilled", "", 2, undefined));
           exports.BackpackRegular = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackpackRegular", "", 2, undefined));
           exports.BackpackAddFilled = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("BackpackAddFilled", "", 2, undefined));
@@ -1479,7 +1511,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
+          "import type { FluentFontIcon } from '../../utils/fonts/createFluentFontIcon.cjs';
           export declare const BackpackFilled: FluentFontIcon;
           export declare const BackpackRegular: FluentFontIcon;
           export declare const BackpackAddFilled: FluentFontIcon;
@@ -1536,7 +1568,7 @@ describe('Build Verification', () => {
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
           ""use client";
-          import { createFluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
+          import { createFluentFontIcon } from '../../utils/fonts/createFluentFontIcon.js';
           export const Calendar3Day32Light = ( /*#__PURE__*/createFluentFontIcon("Calendar3Day32Light", "", 3, 32));
           export const CalendarCheckmark32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarCheckmark32Light", "", 3, 32));
           export const CalendarClock32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarClock32Light", "", 3, 32));
@@ -1572,7 +1604,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
+          "import type { FluentFontIcon } from '../../utils/fonts/createFluentFontIcon.js';
           export declare const Calendar3Day32Light: FluentFontIcon;
           export declare const CalendarCheckmark32Light: FluentFontIcon;
           export declare const CalendarClock32Light: FluentFontIcon;
@@ -1611,18 +1643,18 @@ describe('Build Verification', () => {
       const fontsSizedIconsPath = path.join(__dirname, 'lib-cjs', 'fonts', 'sizedIcons');
       const fontsSizedIconFiles = await readdir(fontsSizedIconsPath);
       const fontsSizedIconChunks = fontsSizedIconFiles.filter(
-        (file) => file.startsWith('chunk-') && file.endsWith('.js'),
+        (file) => file.startsWith('chunk-') && file.endsWith('.cjs'),
       );
 
       expect(fontsSizedIconChunks.length).toBeGreaterThan(0);
 
       // Take the first chunk for content verification
       const firstChunk = fontsSizedIconChunks[0];
-      const chunkNumber = firstChunk.match(/chunk-(\d+)\.js$/)?.[1];
+      const chunkNumber = firstChunk.match(/chunk-(\d+)\.cjs$/)?.[1];
 
       if (chunkNumber) {
-        const jsFile = path.join(fontsSizedIconsPath, `chunk-${chunkNumber}.js`);
-        const dtsFile = path.join(fontsSizedIconsPath, `chunk-${chunkNumber}.d.ts`);
+        const jsFile = path.join(fontsSizedIconsPath, `chunk-${chunkNumber}.cjs`);
+        const dtsFile = path.join(fontsSizedIconsPath, `chunk-${chunkNumber}.d.cts`);
 
         // Read and verify JS file content with inline snapshot
         const jsContent = await readFile(jsFile, 'utf8');
@@ -1632,7 +1664,7 @@ describe('Build Verification', () => {
           "use client";
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
-          const createFluentFontIcon_1 = require("../../utils/fonts/createFluentFontIcon");
+          const createFluentFontIcon_1 = require("../../utils/fonts/createFluentFontIcon.cjs");
           exports.Calendar3Day32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Calendar3Day32Light", "", 3, 32));
           exports.CalendarCheckmark32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarCheckmark32Light", "", 3, 32));
           exports.CalendarClock32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarClock32Light", "", 3, 32));
@@ -1665,7 +1697,7 @@ describe('Build Verification', () => {
         const dtsContent = await readFile(dtsFile, 'utf8');
         const trimmedDTSContent = trimContentForSnapshot(dtsContent);
         expect(trimmedDTSContent).toMatchInlineSnapshot(`
-          "import type { FluentFontIcon } from '../../utils/fonts/createFluentFontIcon';
+          "import type { FluentFontIcon } from '../../utils/fonts/createFluentFontIcon.cjs';
           export declare const Calendar3Day32Light: FluentFontIcon;
           export declare const CalendarCheckmark32Light: FluentFontIcon;
           export declare const CalendarClock32Light: FluentFontIcon;
@@ -1705,9 +1737,11 @@ describe('Build Verification', () => {
      * @param {string} subDir
      */
     async function assertNoEmptyChunks(libDir, subDir) {
+      const { js } = extensionsFor(libDir);
       const dirPath = path.join(__dirname, libDir, subDir);
       const files = await readdir(dirPath);
-      const jsChunks = files.filter((f) => f.startsWith('chunk-') && f.endsWith('.js'));
+      const jsChunks = files.filter((f) => f.startsWith('chunk-') && f.endsWith(js));
+      expect(jsChunks.length).toBeGreaterThan(0);
       for (const chunk of jsChunks) {
         const chunkPath = path.join(dirPath, chunk);
         const content = await readFile(chunkPath, 'utf-8');
@@ -1773,10 +1807,12 @@ describe('Build Verification', () => {
   /**
    * Returns file listings for an atom directory.
    * @param {string} assetPath
+   * @param {string} [libDir] - which output the directory belongs to; drives the module extension
    */
-  async function getAtomDirStats(assetPath) {
+  async function getAtomDirStats(assetPath, libDir = 'lib') {
+    const { js } = extensionsFor(libDir);
     const files = await readdir(assetPath);
-    const jsFiles = files.filter((f) => f.endsWith('.js'));
+    const jsFiles = files.filter((f) => f.endsWith(js));
     const svgFiles = files.filter((f) => f.endsWith('.svg'));
     return { files, jsFiles, svgFiles };
   }
@@ -1793,65 +1829,67 @@ describe('Build Verification', () => {
     it(`should have same number of atoms/svg icon files in lib and lib-cjs`, async () => {
       const { svgPathCjs, svgPathEsm } = getAssetPaths();
       const esmStats = await getAtomDirStats(svgPathEsm);
-      const cjsStats = await getAtomDirStats(svgPathCjs);
+      const cjsStats = await getAtomDirStats(svgPathCjs, 'lib-cjs');
       expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2893`);
       expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2893`);
     });
     it(`should have same number of atoms/fonts icon files in lib and lib-cjs`, async () => {
       const { fontsPathCjs, fontsPathEsm } = getAssetPaths();
       const esmStats = await getAtomDirStats(fontsPathEsm);
-      const cjsStats = await getAtomDirStats(fontsPathCjs);
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2886`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2886`);
+      const cjsStats = await getAtomDirStats(fontsPathCjs, 'lib-cjs');
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2889`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2889`);
     });
     it.each(['lib', 'lib-cjs'])('should have atoms/svg directory with icon files in %s', async (libDir) => {
       const atomsSvgPath = path.join(__dirname, libDir, 'atoms', 'svg');
+      const { js, dts } = extensionsFor(libDir);
 
       // Check atoms/svg directory exists
       expect(fs.existsSync(atomsSvgPath)).toBe(true);
       const stats = await stat(atomsSvgPath);
       expect(stats.isDirectory()).toBe(true);
 
-      const { files, jsFiles } = await getAtomDirStats(atomsSvgPath);
+      const { files, jsFiles } = await getAtomDirStats(atomsSvgPath, libDir);
 
-      // Snapshot the list of .js files to catch any unexpected changes
+      // Snapshot the list of module files to catch any unexpected changes
       expect(jsFiles).toMatchSnapshot();
 
-      // Every .js file should have a corresponding .d.ts file
+      // Every module file should have a corresponding declaration file
       for (const jsFile of jsFiles) {
-        const baseName = jsFile.replace('.js', '');
-        const dtsFile = `${baseName}.d.ts`;
+        const baseName = jsFile.slice(0, -js.length);
+        const dtsFile = `${baseName}${dts}`;
         expect(files).toContain(dtsFile);
       }
 
       // Sample check: access-time should exist
-      expect(files).toContain('access-time.js');
-      expect(files).toContain('access-time.d.ts');
+      expect(files).toContain(`access-time${js}`);
+      expect(files).toContain(`access-time${dts}`);
     });
 
     it.each(['lib', 'lib-cjs'])('should have atoms/fonts directory with icon files in %s', async (libDir) => {
       const atomsFontsPath = path.join(__dirname, libDir, 'atoms', 'fonts');
+      const { js, dts } = extensionsFor(libDir);
 
       // Check atoms/fonts directory exists
       expect(fs.existsSync(atomsFontsPath)).toBe(true);
       const stats = await stat(atomsFontsPath);
       expect(stats.isDirectory()).toBe(true);
 
-      const { files, jsFiles } = await getAtomDirStats(atomsFontsPath);
+      const { files, jsFiles } = await getAtomDirStats(atomsFontsPath, libDir);
 
-      // Snapshot the list of .js files to catch any unexpected changes
+      // Snapshot the list of module files to catch any unexpected changes
       expect(jsFiles).toMatchSnapshot();
 
-      // Every .js file should have a corresponding .d.ts file
+      // Every module file should have a corresponding declaration file
       for (const jsFile of jsFiles) {
-        const baseName = jsFile.replace('.js', '');
-        const dtsFile = `${baseName}.d.ts`;
+        const baseName = jsFile.slice(0, -js.length);
+        const dtsFile = `${baseName}${dts}`;
         expect(files).toContain(dtsFile);
       }
 
       // Sample check: access-time should exist
-      expect(files).toContain('access-time.js');
-      expect(files).toContain('access-time.d.ts');
+      expect(files).toContain(`access-time${js}`);
+      expect(files).toContain(`access-time${dts}`);
     });
 
     it('atom files should export icon variants correctly [svg]', async () => {
@@ -1908,11 +1946,24 @@ describe('Build Verification', () => {
       expect(packageJson.exports['./svg/*']).toBeDefined();
       expect(packageJson.exports['./fonts/*']).toBeDefined();
 
-      // Check that they point to atoms directories
-      expect(packageJson.exports['./svg/*'].import).toBe('./lib/atoms/svg/*.js');
-      expect(packageJson.exports['./svg/*'].require).toBe('./lib-cjs/atoms/svg/*.js');
-      expect(packageJson.exports['./fonts/*'].import).toBe('./lib/atoms/fonts/*.js');
-      expect(packageJson.exports['./fonts/*'].require).toBe('./lib-cjs/atoms/fonts/*.js');
+      // Check that they point to atoms directories, ESM-first: `import` serves native ESM
+      // from `lib/`, `require` serves the finalized CommonJS from `lib-cjs/`.
+      expect(packageJson.exports['./svg/*'].import).toEqual({
+        types: './lib/atoms/svg/*.d.ts',
+        default: './lib/atoms/svg/*.js',
+      });
+      expect(packageJson.exports['./svg/*'].require).toEqual({
+        types: './lib-cjs/atoms/svg/*.d.cts',
+        default: './lib-cjs/atoms/svg/*.cjs',
+      });
+      expect(packageJson.exports['./fonts/*'].import).toEqual({
+        types: './lib/atoms/fonts/*.d.ts',
+        default: './lib/atoms/fonts/*.js',
+      });
+      expect(packageJson.exports['./fonts/*'].require).toEqual({
+        types: './lib-cjs/atoms/fonts/*.d.cts',
+        default: './lib-cjs/atoms/fonts/*.cjs',
+      });
     });
 
     it('atom files should pass options (flipInRtl, color) as last argument when applicable', async () => {
@@ -2000,7 +2051,7 @@ describe('Build Verification', () => {
       const { svgSpritePathEsm, svgSpritePathCjs } = getSpriteAssetPaths();
       const esmAtomsJsFiles = (await readdir(path.join(__dirname, 'lib/atoms/svg'))).filter((f) => f.endsWith('.js'));
       const esmStats = await getAtomDirStats(svgSpritePathEsm);
-      const cjsStats = await getAtomDirStats(svgSpritePathCjs);
+      const cjsStats = await getAtomDirStats(svgSpritePathCjs, 'lib-cjs');
 
       // `/svg-sprite` has no deprecated color/text-color backward-compat atoms (new API),
       // so it will have fewer .js files than `/svg`
@@ -2033,24 +2084,25 @@ describe('Build Verification', () => {
 
     it.each(['lib', 'lib-cjs'])('should have atoms/svg-sprite directory with icon files in %s', async (libDir) => {
       const atomsSvgSpritePath = path.join(__dirname, libDir, 'atoms', 'svg-sprite');
+      const { js, dts } = extensionsFor(libDir);
 
       // Check directory exists
       expect(fs.existsSync(atomsSvgSpritePath)).toBe(true);
       const dirStats = await stat(atomsSvgSpritePath);
       expect(dirStats.isDirectory()).toBe(true);
 
-      const { files, jsFiles, svgFiles } = await getAtomDirStats(atomsSvgSpritePath);
+      const { files, jsFiles, svgFiles } = await getAtomDirStats(atomsSvgSpritePath, libDir);
 
-      // Every .js file must have a corresponding .svg sprite file and .d.ts declaration file
+      // Every module file must have a corresponding .svg sprite file and declaration file
       for (const jsFile of jsFiles) {
-        const baseName = jsFile.replace('.js', '');
+        const baseName = jsFile.slice(0, -js.length);
         expect(svgFiles).toContain(`${baseName}.svg`);
-        expect(files).toContain(`${baseName}.d.ts`);
+        expect(files).toContain(`${baseName}${dts}`);
       }
 
       // Sample check: access-time should exist in all three forms
-      expect(files).toContain('access-time.js');
-      expect(files).toContain('access-time.d.ts');
+      expect(files).toContain(`access-time${js}`);
+      expect(files).toContain(`access-time${dts}`);
       expect(files).toContain('access-time.svg');
     });
 
@@ -2119,8 +2171,14 @@ describe('Build Verification', () => {
       const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
 
       expect(packageJson.exports['./svg-sprite/*']).toBeDefined();
-      expect(packageJson.exports['./svg-sprite/*'].import).toBe('./lib/atoms/svg-sprite/*.js');
-      expect(packageJson.exports['./svg-sprite/*'].require).toBe('./lib-cjs/atoms/svg-sprite/*.js');
+      expect(packageJson.exports['./svg-sprite/*'].import).toEqual({
+        types: './lib/atoms/svg-sprite/*.d.ts',
+        default: './lib/atoms/svg-sprite/*.js',
+      });
+      expect(packageJson.exports['./svg-sprite/*'].require).toEqual({
+        types: './lib-cjs/atoms/svg-sprite/*.d.cts',
+        default: './lib-cjs/atoms/svg-sprite/*.cjs',
+      });
     });
   });
 
@@ -2156,8 +2214,13 @@ describe('Build Verification', () => {
     });
 
     it('keeps the deprecated ./headless subpaths resolvable as re-export shims', () => {
-      for (const libDir of ['lib', 'lib-cjs']) {
-        for (const file of ['headless/index.js', 'headless/utils.js', 'headless/fonts/index.js']) {
+      // `finalizeCjs` renames the CommonJS output, so the shim extension is format-dependent.
+      for (const [libDir, ext] of [
+        ['lib', 'js'],
+        ['lib-cjs', 'cjs'],
+      ]) {
+        for (const stem of ['headless/index', 'headless/utils', 'headless/fonts/index']) {
+          const file = `${stem}.${ext}`;
           expect(fs.existsSync(path.join(__dirname, libDir, file)), `${libDir}/${file}`).toBe(true);
         }
       }
@@ -2191,7 +2254,9 @@ describe('Build Verification', () => {
         const root = path.join(__dirname, libDir);
         for (const entry of fs.readdirSync(root, { recursive: true })) {
           const rel = String(entry);
-          if (/[.]styles([.]raw)?[.]js$/.test(rel)) {
+          // `.cjs` as well as `.js`: `finalizeCjs` renames the CommonJS output, so a stray
+          // `lib-cjs/**/*.styles.js` would reach the published package as `*.styles.cjs`.
+          if (/[.]styles([.]raw)?[.]c?js$/.test(rel)) {
             offenders.push(`${libDir}/${rel}`);
           }
         }
@@ -2209,7 +2274,7 @@ describe('Build Verification', () => {
         const root = path.join(__dirname, libDir);
         for (const entry of fs.readdirSync(root, { recursive: true })) {
           const rel = String(entry);
-          if (!rel.endsWith('.js')) continue;
+          if (!rel.endsWith('.js') && !rel.endsWith('.cjs')) continue;
           const full = path.join(root, rel);
           if (/@griffel/.test(fs.readFileSync(full, 'utf-8'))) {
             offenders.push(path.relative(__dirname, full));

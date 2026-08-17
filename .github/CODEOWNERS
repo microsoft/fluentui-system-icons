@@ -27,6 +27,9 @@ android/ @microsoft/react-native-sdk-admins
 flutter/ @nickromano
 ios/ @nickromano
 yarn.lock @microsoft/cxe-prg
+.yarnrc.yml @microsoft/cxe-prg
+.yarn/ @microsoft/cxe-prg
+.npmrc @microsoft/cxe-prg
 package.json @microsoft/cxe-prg
 nx.json @microsoft/cxe-prg
 nano-staged.js @microsoft/cxe-prg

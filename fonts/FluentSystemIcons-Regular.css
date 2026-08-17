@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.woff2?78729a42881dfe1b5393536f0e677c2c") format("woff2"),
-url("./FluentSystemIcons-Regular.woff?78729a42881dfe1b5393536f0e677c2c") format("woff"),
-url("./FluentSystemIcons-Regular.ttf?78729a42881dfe1b5393536f0e677c2c") format("truetype");
+    src: url("./FluentSystemIcons-Regular.woff2?5d6afb6330f4ece011d6b5ac461b244d") format("woff2"),
+url("./FluentSystemIcons-Regular.woff?5d6afb6330f4ece011d6b5ac461b244d") format("woff"),
+url("./FluentSystemIcons-Regular.ttf?5d6afb6330f4ece011d6b5ac461b244d") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -29041,15 +29041,45 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 .icon-ic_fluent_slide_multiple_16_regular:before {
     content: "\f0cca";
 }
-.icon-ic_fluent_text_add_28_regular:before {
-    content: "\f0ccb";
-}
-.icon-ic_fluent_text_add_32_regular:before {
-    content: "\f0ccc";
-}
 .icon-ic_fluent_wifi_1_48_regular:before {
     content: "\f0ccd";
 }
 .icon-ic_fluent_wifi_off_48_regular:before {
     content: "\f0cce";
+}
+.icon-ic_fluent_calendar_agenda_16_regular:before {
+    content: "\f0ccb";
+}
+.icon-ic_fluent_calendar_agenda_clock_16_regular:before {
+    content: "\f0ccc";
+}
+.icon-ic_fluent_calendar_agenda_clock_20_regular:before {
+    content: "\f0ccf";
+}
+.icon-ic_fluent_calendar_agenda_clock_24_regular:before {
+    content: "\f0cd0";
+}
+.icon-ic_fluent_calendar_agenda_clock_28_regular:before {
+    content: "\f0cd1";
+}
+.icon-ic_fluent_folder_dismiss_16_regular:before {
+    content: "\f0cd2";
+}
+.icon-ic_fluent_folder_dismiss_20_regular:before {
+    content: "\f0cd3";
+}
+.icon-ic_fluent_folder_dismiss_24_regular:before {
+    content: "\f0cd4";
+}
+.icon-ic_fluent_orientation_portrait_20_regular:before {
+    content: "\f0cd5";
+}
+.icon-ic_fluent_orientation_portrait_24_regular:before {
+    content: "\f0cd6";
+}
+.icon-ic_fluent_text_add_t_28_regular:before {
+    content: "\f0cd7";
+}
+.icon-ic_fluent_text_add_t_32_regular:before {
+    content: "\f0cd8";
 }

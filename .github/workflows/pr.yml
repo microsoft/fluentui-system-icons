@@ -213,6 +213,7 @@ jobs:
           yarn nx affected -t build
           yarn nx affected -t extract-storybook-llms
           yarn nx affected -t build-verify
+          yarn nx affected -t check:types-packaging
 
       - name: Test
         run: yarn nx affected -t test

@@ -6,7 +6,7 @@ import { describe, it, expect } from 'vitest';
 
 // The exact module users copy-paste into their repo (documented in README).
 // Importing it here keeps the snippet under test.
-import { resolveFluentIconImport } from './fluent-icons-transform.js';
+import { resolveFluentIconImport } from './fluent-icons-transform.cjs';
 
 /**
  * SWC transform – replicates the regex capture from the README for

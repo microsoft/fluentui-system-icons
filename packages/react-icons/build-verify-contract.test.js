@@ -68,9 +68,11 @@ describe('published surface — the default entrypoints serve the promoted imple
   });
 
   it('the default barrel and atoms are the promoted implementation, not a Griffel one', () => {
+    // The `.js` is optional in these specifiers: `fullySpecifyEsm` appends it to the ESM
+    // output, but what this asserts is the module being imported, not the extension.
     expect(read('utils/createFluentIcon.js')).not.toMatch(/@griffel/);
-    expect(read('atoms/svg/access-time.js')).toContain("from '../../utils/createFluentIcon'");
-    expect(read('atoms/fonts/access-time.js')).toContain("from '../../utils/fonts/createFluentFontIcon'");
+    expect(read('atoms/svg/access-time.js')).toMatch(/from '\.\.\/\.\.\/utils\/createFluentIcon(\.js)?'/);
+    expect(read('atoms/fonts/access-time.js')).toMatch(/from '\.\.\/\.\.\/utils\/fonts\/createFluentFontIcon(\.js)?'/);
   });
 
   it('every declared subpath resolves to files that exist', () => {
@@ -105,9 +107,9 @@ describe('published surface — the deprecated ./headless aliases', () => {
 
   it('the re-export aliases forward rather than redeclare', () => {
     // A copy here would let the alias drift from the default API during the transition.
-    expect(read('headless/utils.d.ts')).toMatch(/export \* from '\.\.\/utils'/);
-    expect(read('headless/index.d.ts')).toMatch(/from '\.\.\/utils\/createFluentIcon'/);
-    expect(read('headless/fonts/index.d.ts')).toMatch(/from '\.\.\/\.\.\/utils\/fonts\/createFluentFontIcon'/);
+    expect(read('headless/utils.d.ts')).toMatch(/export \* from '\.\.\/utils(\.js)?'/);
+    expect(read('headless/index.d.ts')).toMatch(/from '\.\.\/utils\/createFluentIcon(\.js)?'/);
+    expect(read('headless/fonts/index.d.ts')).toMatch(/from '\.\.\/\.\.\/utils\/fonts\/createFluentFontIcon(\.js)?'/);
   });
 });
 

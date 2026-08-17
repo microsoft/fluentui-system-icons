@@ -8,7 +8,12 @@ const { join, basename } = require('node:path');
 
 const glob = require('glob');
 
-main({ root: join(__dirname, '..') });
+const { fullySpecifyEsm, finalizeCjs, esmFirstEntry } = require('./module-format');
+
+main({ root: join(__dirname, '..') }).catch((error) => {
+  console.error(error);
+  process.exit(1);
+});
 
 /**
  * Builds source TypeScript and copies assets to the output directories.
@@ -18,7 +23,7 @@ main({ root: join(__dirname, '..') });
  *
  * @param {{ root: string; }} options
  */
-function main(options) {
+async function main(options) {
   const projectRoot = options.root;
 
   transpileTsc({ moduleFormat: 'esnext', outDir: 'lib' }, projectRoot);
@@ -40,6 +45,16 @@ function main(options) {
     copyAssets('src/atoms/svg-sprite/*.svg', './lib-cjs/atoms/svg-sprite', projectRoot);
     addSpriteExportMap(projectRoot);
   }
+
+  // Last on purpose: the package is `"type": "module"`, so once `lib-cjs/` is renamed to
+  // `.cjs` nothing above may resolve it as a plain `.js` file anymore.
+  //
+  // Upstream runs a Babel pass over `**/*.styles.js` here to apply the Griffel AOT preset.
+  // This package no longer has a CSS-in-JS runtime — styling is `data-fui-icon*` attributes
+  // resolved by `src/styles.css` — so there are no `.styles.js` files to transform and the
+  // pass is deliberately not carried over.
+  await fullySpecifyEsm(join(projectRoot, 'lib'));
+  await finalizeCjs(join(projectRoot, 'lib-cjs'));
 }
 
 // =================================================================================================
@@ -102,11 +117,7 @@ function addSpriteExportMap(baseDir) {
     return;
   }
 
-  const target = {
-    types: './lib/atoms/svg-sprite/*.d.ts',
-    import: './lib/atoms/svg-sprite/*.js',
-    require: './lib-cjs/atoms/svg-sprite/*.js',
-  };
+  const target = esmFirstEntry('./lib/atoms/svg-sprite/*.js');
 
   pkg.exports[spriteExportKey] = target;
   pkg.exports[headlessSpriteExportKey] = { ...target };

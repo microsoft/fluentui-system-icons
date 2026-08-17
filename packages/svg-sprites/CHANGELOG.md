@@ -1,3 +1,17 @@
+## 1.1.337 (2026-08-13)
+
+This release contains icon updates
+
+## 1.1.336 (2026-08-12)
+
+This release contains icon updates
+
+## 1.1.335 (2026-08-07)
+
+### 🩹 Fixes
+
+- migrate SVGO v2 → v4 to restore Food icon fork handles ([#1187](https://github.com/microsoft/fluentui-system-icons/pull/1187))
+
 ## 1.1.334 (2026-07-24)
 
 This release contains icon updates
