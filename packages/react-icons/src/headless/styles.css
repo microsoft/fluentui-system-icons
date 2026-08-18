@@ -57,6 +57,7 @@
 }
 
 /* ===== Font Icon Family Variants ===== */
+/* #region @generated font-families */
 [data-fui-icon-font='filled'] {
   font-family: 'FluentSystemIconsFilled';
 }
@@ -69,3 +70,4 @@
 [data-fui-icon-font='light'] {
   font-family: 'FluentSystemIconsLight';
 }
+/* #endregion @generated font-families */

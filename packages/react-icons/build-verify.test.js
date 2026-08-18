@@ -6,6 +6,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execSync } from 'node:child_process';
 
+import { FONT_FAMILIES } from './scripts/font-families';
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /**
@@ -289,12 +291,12 @@ describe('Build Verification', () => {
       const processed = 'utils/fonts/createFluentFontIcon.styles.js';
       const unprocessed = 'utils/fonts/createFluentFontIcon.styles.raw.js';
       expect(fs.readFileSync(path.join(root, processed), 'utf8')).toMatchInlineSnapshot(`
-        "import _asset10 from "./FluentSystemIcons-Resizable.ttf";
-        import _asset1 from "./FluentSystemIcons-Resizable.woff";
-        import _asset0 from "./FluentSystemIcons-Resizable.woff2";
-        import _asset9 from "./FluentSystemIcons-Light.ttf";
-        import _asset8 from "./FluentSystemIcons-Light.woff";
-        import _asset7 from "./FluentSystemIcons-Light.woff2";
+        "import _asset10 from "./FluentSystemIcons-Light.ttf";
+        import _asset1 from "./FluentSystemIcons-Light.woff";
+        import _asset0 from "./FluentSystemIcons-Light.woff2";
+        import _asset9 from "./FluentSystemIcons-Resizable.ttf";
+        import _asset8 from "./FluentSystemIcons-Resizable.woff";
+        import _asset7 from "./FluentSystemIcons-Resizable.woff2";
         import _asset6 from "./FluentSystemIcons-Regular.ttf";
         import _asset5 from "./FluentSystemIcons-Regular.woff";
         import _asset4 from "./FluentSystemIcons-Regular.woff2";
@@ -302,27 +304,23 @@ describe('Build Verification', () => {
         import _asset2 from "./FluentSystemIcons-Filled.woff";
         import _asset from "./FluentSystemIcons-Filled.woff2";
         import { __styles, __staticStyles } from '@griffel/react';
-        import fontFilledTtf from './FluentSystemIcons-Filled.ttf';
-        import fontFilledWoff from './FluentSystemIcons-Filled.woff';
+        // #region @generated font-faces
         import fontFilledWoff2 from './FluentSystemIcons-Filled.woff2';
-        import fontRegularTtf from './FluentSystemIcons-Regular.ttf';
-        import fontRegularWoff from './FluentSystemIcons-Regular.woff';
+        import fontFilledWoff from './FluentSystemIcons-Filled.woff';
+        import fontFilledTtf from './FluentSystemIcons-Filled.ttf';
         import fontRegularWoff2 from './FluentSystemIcons-Regular.woff2';
-        import fontLightTtf from './FluentSystemIcons-Light.ttf';
-        import fontLightWoff from './FluentSystemIcons-Light.woff';
+        import fontRegularWoff from './FluentSystemIcons-Regular.woff';
+        import fontRegularTtf from './FluentSystemIcons-Regular.ttf';
+        import fontResizableWoff2 from './FluentSystemIcons-Resizable.woff2';
+        import fontResizableWoff from './FluentSystemIcons-Resizable.woff';
+        import fontResizableTtf from './FluentSystemIcons-Resizable.ttf';
         import fontLightWoff2 from './FluentSystemIcons-Light.woff2';
-        import fontOneSizeTtf from './FluentSystemIcons-Resizable.ttf';
-        import fontOneSizeWoff from './FluentSystemIcons-Resizable.woff';
-        import fontOneSizeWoff2 from './FluentSystemIcons-Resizable.woff2';
-        const FONT_FAMILY_MAP = {
-          [0 /* Filled */]: 'FluentSystemIconsFilled',
-          [1 /* Regular */]: 'FluentSystemIconsRegular',
-          [2 /* Resizable */]: 'FluentSystemIcons',
-          [3 /* Light */]: 'FluentSystemIconsLight'
-        };
+        import fontLightWoff from './FluentSystemIcons-Light.woff';
+        import fontLightTtf from './FluentSystemIcons-Light.ttf';
         export const useStaticStyles = __staticStyles({
-          d: [\`@font-face{font-family:FluentSystemIconsFilled;font-display:"block";src:url(\${_asset}) format("woff2"),url(\${_asset2}) format("woff"),url(\${_asset3}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIconsRegular;font-display:"block";src:url(\${_asset4}) format("woff2"),url(\${_asset5}) format("woff"),url(\${_asset6}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIconsLight;font-display:"block";src:url(\${_asset7}) format("woff2"),url(\${_asset8}) format("woff"),url(\${_asset9}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIcons;font-display:"block";src:url(\${_asset0}) format("woff2"),url(\${_asset1}) format("woff"),url(\${_asset10}) format("truetype");}\`]
+          d: [\`@font-face{font-family:FluentSystemIconsFilled;font-display:"block";src:url(\${_asset}) format("woff2"),url(\${_asset2}) format("woff"),url(\${_asset3}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIconsRegular;font-display:"block";src:url(\${_asset4}) format("woff2"),url(\${_asset5}) format("woff"),url(\${_asset6}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIcons;font-display:"block";src:url(\${_asset7}) format("woff2"),url(\${_asset8}) format("woff"),url(\${_asset9}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIconsLight;font-display:"block";src:url(\${_asset0}) format("woff2"),url(\${_asset1}) format("woff"),url(\${_asset10}) format("truetype");}\`]
         });
+        // #endregion @generated font-faces
         export const useRootStyles = __styles({
           "0": {
             Bahqtrf: "f9dzkbp"
@@ -355,56 +353,54 @@ describe('Build Verification', () => {
       `);
       expect(fs.readFileSync(path.join(root, unprocessed), 'utf8')).toMatchInlineSnapshot(`
         "import { makeStyles, makeStaticStyles } from '@griffel/react';
-        import fontFilledTtf from './FluentSystemIcons-Filled.ttf';
-        import fontFilledWoff from './FluentSystemIcons-Filled.woff';
+        // #region @generated font-faces
         import fontFilledWoff2 from './FluentSystemIcons-Filled.woff2';
-        import fontRegularTtf from './FluentSystemIcons-Regular.ttf';
-        import fontRegularWoff from './FluentSystemIcons-Regular.woff';
+        import fontFilledWoff from './FluentSystemIcons-Filled.woff';
+        import fontFilledTtf from './FluentSystemIcons-Filled.ttf';
         import fontRegularWoff2 from './FluentSystemIcons-Regular.woff2';
-        import fontLightTtf from './FluentSystemIcons-Light.ttf';
-        import fontLightWoff from './FluentSystemIcons-Light.woff';
+        import fontRegularWoff from './FluentSystemIcons-Regular.woff';
+        import fontRegularTtf from './FluentSystemIcons-Regular.ttf';
+        import fontResizableWoff2 from './FluentSystemIcons-Resizable.woff2';
+        import fontResizableWoff from './FluentSystemIcons-Resizable.woff';
+        import fontResizableTtf from './FluentSystemIcons-Resizable.ttf';
         import fontLightWoff2 from './FluentSystemIcons-Light.woff2';
-        import fontOneSizeTtf from './FluentSystemIcons-Resizable.ttf';
-        import fontOneSizeWoff from './FluentSystemIcons-Resizable.woff';
-        import fontOneSizeWoff2 from './FluentSystemIcons-Resizable.woff2';
-        const FONT_FAMILY_MAP = {
-            [0 /* Filled */]: 'FluentSystemIconsFilled',
-            [1 /* Regular */]: 'FluentSystemIconsRegular',
-            [2 /* Resizable */]: 'FluentSystemIcons',
-            [3 /* Light */]: 'FluentSystemIconsLight',
-        };
+        import fontLightWoff from './FluentSystemIcons-Light.woff';
+        import fontLightTtf from './FluentSystemIcons-Light.ttf';
         export const useStaticStyles = makeStaticStyles(\`
         @font-face {
-            font-family: \${FONT_FAMILY_MAP[0 /* Filled */]};
+            font-family: FluentSystemIconsFilled;
             font-display: "block";
-            src: url(\${JSON.stringify(fontFilledWoff2)}) format("woff2"),
+            src:
+            url(\${JSON.stringify(fontFilledWoff2)}) format("woff2"),
             url(\${JSON.stringify(fontFilledWoff)}) format("woff"),
             url(\${JSON.stringify(fontFilledTtf)}) format("truetype");
         }
         @font-face {
-            font-family: \${FONT_FAMILY_MAP[1 /* Regular */]};
+            font-family: FluentSystemIconsRegular;
             font-display: "block";
-            src: url(\${JSON.stringify(fontRegularWoff2)}) format("woff2"),
+            src:
+            url(\${JSON.stringify(fontRegularWoff2)}) format("woff2"),
             url(\${JSON.stringify(fontRegularWoff)}) format("woff"),
             url(\${JSON.stringify(fontRegularTtf)}) format("truetype");
         }
-
         @font-face {
-            font-family: \${FONT_FAMILY_MAP[3 /* Light */]};
+            font-family: FluentSystemIcons;
             font-display: "block";
-            src: url(\${JSON.stringify(fontLightWoff2)}) format("woff2"),
+            src:
+            url(\${JSON.stringify(fontResizableWoff2)}) format("woff2"),
+            url(\${JSON.stringify(fontResizableWoff)}) format("woff"),
+            url(\${JSON.stringify(fontResizableTtf)}) format("truetype");
+        }
+        @font-face {
+            font-family: FluentSystemIconsLight;
+            font-display: "block";
+            src:
+            url(\${JSON.stringify(fontLightWoff2)}) format("woff2"),
             url(\${JSON.stringify(fontLightWoff)}) format("woff"),
             url(\${JSON.stringify(fontLightTtf)}) format("truetype");
         }
-
-        @font-face {
-            font-family: \${FONT_FAMILY_MAP[2 /* Resizable */]};
-            font-display: "block";
-            src: url(\${JSON.stringify(fontOneSizeWoff2)}) format("woff2"),
-            url(\${JSON.stringify(fontOneSizeWoff)}) format("woff"),
-            url(\${JSON.stringify(fontOneSizeTtf)}) format("truetype");
-        }
         \`);
+        // #endregion @generated font-faces
         export const useRootStyles = makeStyles({
             root: {
                 display: 'inline-block',
@@ -425,6 +421,7 @@ describe('Build Verification', () => {
                 lineHeight: '1em',
                 color: 'currentColor',
             },
+            // #region @generated font-families
             [0 /* Filled */]: {
                 fontFamily: 'FluentSystemIconsFilled',
             },
@@ -2024,7 +2021,7 @@ describe('Build Verification', () => {
       const fontsPath = path.join(__dirname, 'lib', 'utils', 'fonts');
 
       // Check for different font types
-      const fontTypes = ['Regular', 'Filled', 'Light', 'Resizable'];
+      const fontTypes = FONT_FAMILIES.map(({ key }) => key);
       const fontExtensions = ['json', 'ttf', 'woff', 'woff2'];
 
       for (const fontType of fontTypes) {
@@ -2055,6 +2052,32 @@ describe('Build Verification', () => {
         const filePath = path.join(fontsPath, file);
         expect(fs.existsSync(filePath)).toBe(true);
       }
+    });
+
+    // A family declared on only one of the two surfaces renders as no font at all. This
+    // asserts the shipped artifacts agree with each other and with scripts/font-families.js.
+    it('should declare the same font families in the Griffel and headless outputs', () => {
+      const expected = FONT_FAMILIES.map(({ family }) => family).sort();
+
+      const griffel = fs.readFileSync(path.join(__dirname, 'lib/utils/fonts/createFluentFontIcon.styles.js'), 'utf8');
+      const headless = fs.readFileSync(path.join(__dirname, 'lib/headless/fonts/styles.css'), 'utf8');
+
+      /** @param {string} source */
+      const fontFaceFamilies = (source) =>
+        [...source.matchAll(/@font-face\s*\{[^}]*?font-family:\s*'?([\w-]+)'?\s*;/g)].map((match) => match[1]).sort();
+
+      expect(fontFaceFamilies(griffel)).toEqual(expected);
+      expect(fontFaceFamilies(headless)).toEqual(expected);
+
+      // …and the same families are selectable from both APIs.
+      const variants = fs.readFileSync(path.join(__dirname, 'lib/headless/styles.css'), 'utf8');
+      const griffelRules = [...griffel.matchAll(/\.[\w-]+\{font-family:([\w-]+);\}/g)].map((match) => match[1]).sort();
+      const headlessRules = [...variants.matchAll(/\[data-fui-icon-font=[^\]]+\]\s*\{\s*font-family:\s*'([\w-]+)'/g)]
+        .map((match) => match[1])
+        .sort();
+
+      expect(griffelRules).toEqual(expected);
+      expect(headlessRules).toEqual(expected);
     });
   });
 

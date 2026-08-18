@@ -7,6 +7,7 @@
  *   import '@fluentui/react-icons/headless/fonts/styles.css';
  */
 
+/* #region @generated font-faces */
 @font-face {
   font-family: 'FluentSystemIconsFilled';
   font-display: block;
@@ -26,15 +27,6 @@
 }
 
 @font-face {
-  font-family: 'FluentSystemIconsLight';
-  font-display: block;
-  src:
-    url('../../utils/fonts/FluentSystemIcons-Light.woff2') format('woff2'),
-    url('../../utils/fonts/FluentSystemIcons-Light.woff') format('woff'),
-    url('../../utils/fonts/FluentSystemIcons-Light.ttf') format('truetype');
-}
-
-@font-face {
   font-family: 'FluentSystemIcons';
   font-display: block;
   src:
@@ -42,3 +34,13 @@
     url('../../utils/fonts/FluentSystemIcons-Resizable.woff') format('woff'),
     url('../../utils/fonts/FluentSystemIcons-Resizable.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: 'FluentSystemIconsLight';
+  font-display: block;
+  src:
+    url('../../utils/fonts/FluentSystemIcons-Light.woff2') format('woff2'),
+    url('../../utils/fonts/FluentSystemIcons-Light.woff') format('woff'),
+    url('../../utils/fonts/FluentSystemIcons-Light.ttf') format('truetype');
+}
+/* #endregion @generated font-faces */

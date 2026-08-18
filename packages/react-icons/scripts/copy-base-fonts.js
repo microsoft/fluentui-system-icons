@@ -20,8 +20,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { parseArgs } = require('node:util');
 
-const FONT_TYPES = ['Regular', 'Filled', 'Light', 'Resizable'];
-const BINARY_EXTENSIONS = ['ttf', 'woff', 'woff2'];
+const { FONT_FAMILIES, FONT_BINARY_EXTENSIONS } = require('./font-families');
 
 if (require.main === module) {
   try {
@@ -61,10 +60,9 @@ function main() {
   fs.mkdirSync(destDir, { recursive: true });
 
   let copied = 0;
-  for (const type of FONT_TYPES) {
-    const baseName = `FluentSystemIcons-${type}`;
-    for (const ext of [...BINARY_EXTENSIONS, 'json']) {
-      const fileName = `${baseName}.${ext}`;
+  for (const { file } of FONT_FAMILIES) {
+    for (const ext of [...FONT_BINARY_EXTENSIONS, 'json']) {
+      const fileName = `${file}.${ext}`;
       const srcPath = path.join(sourceDir, fileName);
       if (!fs.existsSync(srcPath)) {
         throw new Error(`Expected font file missing in source: ${srcPath}`);
