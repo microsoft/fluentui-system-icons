@@ -21,6 +21,7 @@ const FONT_FAMILY_MAP = {
   [FontFile.Filled]: 'FluentSystemIconsFilled',
   [FontFile.Regular]: 'FluentSystemIconsRegular',
   [FontFile.Resizable]: 'FluentSystemIcons',
+  [FontFile.Light]: 'FluentSystemIconsLight',
 } as const;
 
 export const useStaticStyles = makeStaticStyles(`
@@ -41,6 +42,7 @@ export const useStaticStyles = makeStaticStyles(`
 
 @font-face {
     font-family: ${FONT_FAMILY_MAP[FontFile.Light]};
+    font-display: "block";
     src: url(${JSON.stringify(fontLightWoff2)}) format("woff2"),
     url(${JSON.stringify(fontLightWoff)}) format("woff"),
     url(${JSON.stringify(fontLightTtf)}) format("truetype");
