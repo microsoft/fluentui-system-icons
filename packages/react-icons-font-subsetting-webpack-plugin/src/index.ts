@@ -1,7 +1,66 @@
-import type * as webpack from 'webpack';
 import subsetFont from 'subset-font';
 import { extname, dirname, resolve } from 'path';
 import { readFile } from 'fs/promises';
+
+/**
+ * Minimal structural description of the bundler APIs this plugin touches.
+ *
+ * Deliberately not `import type ... from 'webpack'`: both bundlers are optional peers, so
+ * referencing webpack's types here would leak into the generated `.d.ts` and break type-checking
+ * for consumers who only installed `@rspack/core`. These stay internal so they are never emitted.
+ */
+interface Source {
+  source(): string | Buffer;
+}
+
+interface Module {
+  readonly resource?: string;
+}
+
+interface NormalModule extends Module {
+  readonly resource: string;
+}
+
+interface ModuleGraph {
+  /** webpack resolves `undefined` across all runtimes; rspack requires explicit runtime names. */
+  getUsedExports(module: Module, runtime: string[] | undefined): Set<string> | string[] | boolean | null;
+  getProvidedExports(module: Module): string[] | true | null;
+}
+
+interface Asset {
+  name: string;
+  source: Source;
+  info?: { sourceFilename?: string };
+}
+
+interface Compilation {
+  hooks: {
+    processAssets: {
+      tapPromise(options: { name: string; stage: number }, fn: () => Promise<void>): void;
+    };
+  };
+  modules: Iterable<Module>;
+  moduleGraph: ModuleGraph;
+  entrypoints: ReadonlyMap<string, unknown>;
+  warnings: Error[];
+  getAsset(name: string): Asset | undefined | void;
+  getAssets(): readonly Asset[];
+  updateAsset(name: string, source: Source): void;
+}
+
+interface Compiler {
+  context: string;
+  /** rspack aliases this to its own namespace, which is why no bundler is imported at runtime. */
+  webpack: {
+    Compilation: { PROCESS_ASSETS_STAGE_OPTIMIZE: number };
+    sources: { RawSource: new (value: string | Buffer) => Source };
+  };
+  hooks: {
+    compilation: {
+      tap(name: string, fn: (compilation: Compilation) => void): void;
+    };
+  };
+}
 
 const PLUGIN_NAME = 'FluentUIReactIconsFontSubsettingPlugin';
 
@@ -25,7 +84,7 @@ const FONT_EXTENSIONS = ['.ttf', '.woff', '.woff2'];
 const REACT_ICONS_FONT_MODULE_IMPORT_PATTERN =
   /react-icons[\/\\]lib(-cjs)?[\/\\](fonts[\/\\](sizedIcons|icons)[\/\\]chunk-\d+|atoms[\/\\](headless-)?fonts[\/\\][\w-]+)\.c?js$/;
 
-export default class FluentUIReactIconsFontSubsettingPlugin implements webpack.WebpackPluginInstance {
+export default class FluentUIReactIconsFontSubsettingPlugin {
   /**
    * Entry point for the bundler plugin that registers hooks to perform font subsetting for `@fluentui/react-icons`.
    *
@@ -40,16 +99,18 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements webpack.W
    * Works with both webpack 5 and rspack. All bundler internals are reached through `compiler.webpack`,
    * which rspack aliases to its own namespace, so neither bundler is imported at runtime.
    *
-   * @param compiler - The webpack or rspack compiler instance.
+   * @param compiler - The webpack or rspack compiler instance. Typed as `unknown` so the plugin
+   * stays assignable to both bundlers' plugin arrays without importing either one's types.
    */
-  apply(compiler: webpack.Compiler) {
-    const { Compilation, sources } = compiler.webpack;
+  apply(compiler: unknown) {
+    const bundler = compiler as Compiler;
+    const { Compilation, sources } = bundler.webpack;
 
-    compiler.hooks.compilation.tap(PLUGIN_NAME, (compilation: webpack.Compilation) => {
+    bundler.hooks.compilation.tap(PLUGIN_NAME, (compilation: Compilation) => {
       compilation.hooks.processAssets.tapPromise(
         { name: PLUGIN_NAME, stage: Compilation.PROCESS_ASSETS_STAGE_OPTIMIZE },
         async () => {
-          const runtime = getRuntimeSpec(compiler, compilation);
+          const runtime = getRuntimeSpec(bundler, compilation);
 
           // There could be multiple instances of `@fluentui/react-icons`, and they need to be subset separately
           const packageToUsedFontExports: Map<string, Set<string>> = new Map<string, Set<string>>();
@@ -71,17 +132,16 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements webpack.W
           const optimizationPromises: Promise<void>[] = [];
 
           for (const [pkgLibPath, usedExports] of packageToUsedFontExports) {
-            const fontAssets = await getFontAssetsAndCodepoints(pkgLibPath, compilation, compiler.context);
+            const fontAssets = await getFontAssetsAndCodepoints(pkgLibPath, compilation, bundler.context);
 
             if (fontAssets.length === 0) {
               // Loud failure: silently shipping an un-subset font is worse than a broken build.
-              // Plain `Error` rather than `WebpackError`, which rspack does not expose.
               compilation.warnings.push(
                 new Error(
                   `${PLUGIN_NAME}: found used icon fonts in "${pkgLibPath}" but could not map any font module ` +
                     `to an emitted asset. Fonts will NOT be subset. Ensure a \`type: 'asset'\` (or 'asset/resource') ` +
                     `module rule matches /\\.(ttf|woff2?)$/.`,
-                ) as webpack.WebpackError,
+                ),
               );
               continue;
             }
@@ -107,7 +167,7 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements webpack.W
  * webpack accepts `undefined` to mean "merged across all runtimes", but rspack's binding requires an
  * explicit `string | string[]`, so entrypoint names are passed instead.
  */
-function getRuntimeSpec(compiler: webpack.Compiler, compilation: webpack.Compilation): string[] | undefined {
+function getRuntimeSpec(compiler: Compiler, compilation: Compilation): string[] | undefined {
   if (!isRspack(compiler)) {
     return undefined;
   }
@@ -115,16 +175,16 @@ function getRuntimeSpec(compiler: webpack.Compiler, compilation: webpack.Compila
   return Array.from(compilation.entrypoints.keys());
 }
 
-function isRspack(compiler: webpack.Compiler): boolean {
+function isRspack(compiler: Compiler): boolean {
   return 'rspack' in compiler;
 }
 
 async function optimizeFontAsset(
   codepointMap: Record<string, number>,
   usedExports: Set<string>,
-  compilation: webpack.Compilation,
+  compilation: Compilation,
   assetName: string,
-  RawSource: typeof webpack.sources.RawSource,
+  RawSource: Compiler['webpack']['sources']['RawSource'],
 ) {
   // Build subset text from the used exports set (usually small) instead of scanning all glyphs
   let subsetText = '';
@@ -193,11 +253,11 @@ function getTargetFormat(assetName: string) {
  * Returns `null` when subsetting cannot be performed, so the caller can skip the module.
  */
 function resolveUsedIconExports(
-  m: webpack.NormalModule,
-  moduleGraph: webpack.ModuleGraph,
+  m: NormalModule,
+  moduleGraph: ModuleGraph,
   runtime: string[] | undefined,
 ): string[] | null {
-  const usedModuleExports = moduleGraph.getUsedExports(m, runtime as never);
+  const usedModuleExports = moduleGraph.getUsedExports(m, runtime);
 
   if (usedModuleExports === null) {
     // No info on used exports (optimization.usedExports is disabled) - subsetting requires knowing exactly which exports are used.
@@ -229,11 +289,11 @@ function resolveUsedIconExports(
  * rspack modules are proxies over Rust objects and are never instances of webpack's `NormalModule`,
  * so presence of `resource` is used as the portable discriminator.
  */
-function isNormalModule(m: webpack.Module): m is webpack.NormalModule {
-  return typeof (m as webpack.NormalModule).resource === 'string';
+function isNormalModule(m: Module): m is NormalModule {
+  return typeof m.resource === 'string';
 }
 
-function isFluentUIReactFontChunk(m: webpack.Module): m is webpack.NormalModule {
+function isFluentUIReactFontChunk(m: Module): m is NormalModule {
   if (!isNormalModule(m)) {
     return false;
   }
@@ -259,7 +319,7 @@ function isFluentUIReactFontChunk(m: webpack.Module): m is webpack.NormalModule 
  */
 async function getFontAssetsAndCodepoints(
   pkgLibPath: string,
-  compilation: webpack.Compilation,
+  compilation: Compilation,
   context: string,
 ): Promise<{ assetName: string; codepoints: Record<string, number> }[]> {
   const utilsFontsFolder = resolve(pkgLibPath, 'utils/fonts');
