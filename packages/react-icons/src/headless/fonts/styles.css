@@ -27,6 +27,7 @@
 
 @font-face {
   font-family: 'FluentSystemIconsLight';
+  font-display: block;
   src:
     url('../../utils/fonts/FluentSystemIcons-Light.woff2') format('woff2'),
     url('../../utils/fonts/FluentSystemIcons-Light.woff') format('woff'),
