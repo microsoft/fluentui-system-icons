@@ -48,6 +48,7 @@
     "@react-native-community/cli-platform-ios": "^20.1.0",
     "@react-native/metro-config": "^0.85.0",
     "@rnx-kit/tsconfig": "^3.0.3",
+    "@rspack/core": "^2.1.10",
     "@storybook/addon-docs": "9.1.19",
     "@storybook/addon-webpack5-compiler-swc": "^4.0.3",
     "@storybook/react": "9.1.19",

@@ -1,8 +1,8 @@
 # @fluentui/react-icons-font-subsetting-webpack-plugin
 
-This package includes a plugin for `webpack@>=5.0.0` to subset the icon font files used by `@fluentui/react-icons` when using font-based icon implementations.
+This package includes a plugin for `webpack@>=5.0.0` and `@rspack/core@>=1.0.0` to subset the icon font files used by `@fluentui/react-icons` when using font-based icon implementations.
 
-If `optimization.usedExports` is enabled (as it is by default in webpack `production` mode), this plugin will subset the font files to only include the glyphs actually used by your build.
+If `optimization.usedExports` is enabled (as it is by default in `production` mode), this plugin will subset the font files to only include the glyphs actually used by your build.
 
 ## Supported Import Patterns
 
@@ -94,3 +94,31 @@ module.exports = {
   ],
 };
 ```
+
+### With rspack
+
+The plugin is bundler-agnostic and works unchanged in rspack — the same configuration applies:
+
+```js
+// rspack.config.js
+const {
+  default: FluentUIReactIconsFontSubsettingPlugin,
+} = require('@fluentui/react-icons-font-subsetting-webpack-plugin');
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(ttf|woff2?)$/,
+        type: 'asset',
+      },
+    ],
+  },
+  plugins: [new FluentUIReactIconsFontSubsettingPlugin()],
+};
+```
+
+Two rspack-specific notes:
+
+- For the headless import pattern, use `rspack.CssExtractRspackPlugin` instead of `mini-css-extract-plugin`, which is not compatible with rspack.
+- `webpack` and `@rspack/core` are both declared as **optional** peer dependencies, so you only need to install the bundler you actually use.
