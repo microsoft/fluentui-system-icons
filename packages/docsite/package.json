@@ -9,7 +9,7 @@
     "extract-storybook-llms": "yarn run -T storybook-llms-extractor --distPath storybook-static --summaryBaseUrl https://microsoft.github.io/fluentui-system-icons/"
   },
   "dependencies": {
-    "@fluentui/react-components": "^9.46.0",
+    "@fluentui/react-components": "^9.74.6",
     "@fluentui/react-icons": "*",
     "@fluentui/react-icons-file-type": "*",
     "@fluentui/react-icons-font-subsetting-webpack-plugin": "*"
