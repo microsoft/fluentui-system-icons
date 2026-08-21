@@ -156,12 +156,12 @@
   },
   "AgentsPersonFilled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "AgentsPersonRegular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "AgentsSyncFilled": {
@@ -2366,12 +2366,12 @@
   },
   "AutopilotFilled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "AutopilotRegular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "AutosumFilled": {
@@ -11546,22 +11546,22 @@
   },
   "FilmstripArrowUpFilled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "FilmstripArrowUpRegular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "FilmstripGlobeFilled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "FilmstripGlobeRegular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "FilmstripImageFilled": {
@@ -17711,12 +17711,12 @@
   },
   "PanelLeftTallFilled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "PanelLeftTallRegular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "PanelLeftTextFilled": {
@@ -24561,12 +24561,12 @@
   },
   "TableSelectRangeFilled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "TableSelectRangeRegular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "TableSettingsFilled": {
@@ -30116,32 +30116,32 @@
   },
   "AgentsPerson16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "AgentsPerson16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "AgentsPerson20Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "AgentsPerson20Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "AgentsPerson24Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "AgentsPerson24Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "AgentsSync20Filled": {
@@ -38376,12 +38376,12 @@
   },
   "Autopilot20Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Autopilot20Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Autosum16Filled": {
@@ -47671,22 +47671,22 @@
   },
   "CallWarning24Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "CallWarning24Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "CallWarning28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "CallWarning28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "CalligraphyPen20Filled": {
@@ -70731,82 +70731,82 @@
   },
   "FilmstripArrowUp16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FilmstripArrowUp16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FilmstripArrowUp20Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FilmstripArrowUp20Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FilmstripArrowUp24Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FilmstripArrowUp24Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FilmstripArrowUp32Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FilmstripArrowUp32Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FilmstripGlobe16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FilmstripGlobe16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FilmstripGlobe20Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FilmstripGlobe20Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FilmstripGlobe24Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FilmstripGlobe24Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FilmstripGlobe32Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FilmstripGlobe32Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FilmstripImage20Filled": {
@@ -92886,12 +92886,12 @@
   },
   "PanelLeftTall20Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "PanelLeftTall20Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "PanelLeftText16Filled": {
@@ -95166,12 +95166,12 @@
   },
   "PeopleLock16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "PeopleLock16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "PeopleLock20Filled": {
@@ -117426,32 +117426,32 @@
   },
   "TableSelectRange16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TableSelectRange16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TableSelectRange20Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TableSelectRange20Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TableSelectRange24Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TableSelectRange24Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TableSettings16Filled": {
