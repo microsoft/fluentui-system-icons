@@ -23,6 +23,7 @@ const {
   getCreateFluentIconHeader,
   generatePerIconFiles,
 } = require('./convert-font.utils');
+const { FONT_FAMILIES, getFontFamilyByKey } = require('./font-families');
 
 if (require.main === module) {
   main().catch((err) => {
@@ -157,12 +158,10 @@ async function processPerChunk(dest, iconEntries, rtlMetadata) {
  * @returns {{ resizable: IconEntry[]; sized: IconEntry[]; }}
  */
 function prepareProcessedCodepointMap(srcPath, destFolder) {
-  const fileNamesResizable = ['FluentSystemIcons-Resizable.json'];
-  const fileNamesSized = [
-    'FluentSystemIcons-Light.json',
-    'FluentSystemIcons-Filled.json',
-    'FluentSystemIcons-Regular.json',
-  ];
+  // Order is load-bearing: it decides chunk assignment for the generated sized icons.
+  const SIZED_ORDER = ['Light', 'Filled', 'Regular'];
+  const fileNamesResizable = FONT_FAMILIES.filter((f) => f.resizable).map((f) => `${f.file}.json`);
+  const fileNamesSized = SIZED_ORDER.map((key) => `${getFontFamilyByKey(key).file}.json`);
 
   const resolveExistingFiles = (/** @type {string[]} */ names) =>
     names.map((name) => path.resolve(srcPath, name)).filter((f) => fsS.existsSync(f));
