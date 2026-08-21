@@ -3,63 +3,83 @@ import { extname, dirname, resolve } from 'path';
 import { readFile } from 'fs/promises';
 
 /**
- * Minimal structural description of the bundler APIs this plugin touches.
+ * Hand-maintained description of the bundler APIs this plugin touches.
  *
  * Deliberately not `import type ... from 'webpack'`: both bundlers are optional peers, so
  * referencing webpack's types here would leak into the generated `.d.ts` and break type-checking
- * for consumers who only installed `@rspack/core`. These stay internal so they are never emitted.
+ * for consumers who only installed `@rspack/core`.
+ *
+ * Every member is intentionally *wider* than the corresponding webpack and rspack type, so both
+ * real compilers remain assignable to `BundlerCompiler`. That contravariance is what lets `apply()`
+ * take a typed parameter instead of `unknown`. `test/types.conformance.ts` fails to compile if
+ * either bundler ever drifts out of these bounds.
  */
-interface Source {
+export interface BundlerSource {
   source(): string | Buffer;
 }
 
-interface Module {
+/** `type` is present on both bundlers' modules; `resource` only on normal modules. */
+export interface BundlerModule {
+  readonly type?: string;
   readonly resource?: string;
 }
 
-interface NormalModule extends Module {
+interface NormalModule extends BundlerModule {
   readonly resource: string;
 }
 
-interface ModuleGraph {
-  /** webpack resolves `undefined` across all runtimes; rspack requires explicit runtime names. */
-  getUsedExports(module: Module, runtime: string[] | undefined): Set<string> | string[] | boolean | null;
-  getProvidedExports(module: Module): string[] | true | null;
+export interface BundlerModuleGraph {
+  /** webpack passes a `RuntimeSpec`; rspack requires explicit runtime names. */
+  getUsedExports(
+    module: BundlerModule,
+    runtime: string | string[] | ReadonlySet<string> | undefined,
+  ): ReadonlySet<string> | readonly string[] | boolean | null;
+  getProvidedExports(module: BundlerModule): readonly string[] | boolean | null;
 }
 
-interface Asset {
+export interface BundlerAsset {
   name: string;
-  source: Source;
+  source: BundlerSource;
   info?: { sourceFilename?: string };
 }
 
-interface Compilation {
+export interface BundlerCompilation {
   hooks: {
     processAssets: {
       tapPromise(options: { name: string; stage: number }, fn: () => Promise<void>): void;
     };
   };
-  modules: Iterable<Module>;
-  moduleGraph: ModuleGraph;
+  modules: Iterable<BundlerModule>;
+  moduleGraph: BundlerModuleGraph;
   entrypoints: ReadonlyMap<string, unknown>;
   warnings: Error[];
-  getAsset(name: string): Asset | undefined | void;
-  getAssets(): readonly Asset[];
-  updateAsset(name: string, source: Source): void;
+  getAsset(name: string): BundlerAsset | undefined | void;
+  getAssets(): readonly BundlerAsset[];
+  /**
+   * `any` is load-bearing: both bundlers accept a full `webpack-sources` `Source` here, and only
+   * `any` is assignable to that, which is what keeps real compilers assignable to this interface.
+   * The value passed is always one the bundler itself constructed via `sources.RawSource`.
+   */
+  updateAsset(name: string, source: any): void;
 }
 
-interface Compiler {
+export interface BundlerCompiler {
   context: string;
   /** rspack aliases this to its own namespace, which is why no bundler is imported at runtime. */
   webpack: {
     Compilation: { PROCESS_ASSETS_STAGE_OPTIMIZE: number };
-    sources: { RawSource: new (value: string | Buffer) => Source };
+    sources: { RawSource: new (value: string | Buffer, ...rest: any[]) => BundlerSource };
   };
   hooks: {
     compilation: {
-      tap(name: string, fn: (compilation: Compilation) => void): void;
+      tap(name: string, fn: (compilation: BundlerCompilation) => void): void;
     };
   };
+}
+
+/** The shape both bundlers require of a plugin instance. */
+export interface BundlerPlugin {
+  apply(compiler: BundlerCompiler): void;
 }
 
 const PLUGIN_NAME = 'FluentUIReactIconsFontSubsettingPlugin';
@@ -84,7 +104,7 @@ const FONT_EXTENSIONS = ['.ttf', '.woff', '.woff2'];
 const REACT_ICONS_FONT_MODULE_IMPORT_PATTERN =
   /react-icons[\/\\]lib(-cjs)?[\/\\](fonts[\/\\](sizedIcons|icons)[\/\\]chunk-\d+|atoms[\/\\](headless-)?fonts[\/\\][\w-]+)\.c?js$/;
 
-export default class FluentUIReactIconsFontSubsettingPlugin {
+export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPlugin {
   /**
    * Entry point for the bundler plugin that registers hooks to perform font subsetting for `@fluentui/react-icons`.
    *
@@ -99,18 +119,16 @@ export default class FluentUIReactIconsFontSubsettingPlugin {
    * Works with both webpack 5 and rspack. All bundler internals are reached through `compiler.webpack`,
    * which rspack aliases to its own namespace, so neither bundler is imported at runtime.
    *
-   * @param compiler - The webpack or rspack compiler instance. Typed as `unknown` so the plugin
-   * stays assignable to both bundlers' plugin arrays without importing either one's types.
+   * @param compiler - The webpack or rspack compiler instance.
    */
-  apply(compiler: unknown) {
-    const bundler = compiler as Compiler;
-    const { Compilation, sources } = bundler.webpack;
+  apply(compiler: BundlerCompiler) {
+    const { Compilation, sources } = compiler.webpack;
 
-    bundler.hooks.compilation.tap(PLUGIN_NAME, (compilation: Compilation) => {
+    compiler.hooks.compilation.tap(PLUGIN_NAME, (compilation) => {
       compilation.hooks.processAssets.tapPromise(
         { name: PLUGIN_NAME, stage: Compilation.PROCESS_ASSETS_STAGE_OPTIMIZE },
         async () => {
-          const runtime = getRuntimeSpec(bundler, compilation);
+          const runtime = getRuntimeSpec(compiler, compilation);
 
           // There could be multiple instances of `@fluentui/react-icons`, and they need to be subset separately
           const packageToUsedFontExports: Map<string, Set<string>> = new Map<string, Set<string>>();
@@ -132,7 +150,7 @@ export default class FluentUIReactIconsFontSubsettingPlugin {
           const optimizationPromises: Promise<void>[] = [];
 
           for (const [pkgLibPath, usedExports] of packageToUsedFontExports) {
-            const fontAssets = await getFontAssetsAndCodepoints(pkgLibPath, compilation, bundler.context);
+            const fontAssets = await getFontAssetsAndCodepoints(pkgLibPath, compilation, compiler.context);
 
             if (fontAssets.length === 0) {
               // Loud failure: silently shipping an un-subset font is worse than a broken build.
@@ -167,7 +185,7 @@ export default class FluentUIReactIconsFontSubsettingPlugin {
  * webpack accepts `undefined` to mean "merged across all runtimes", but rspack's binding requires an
  * explicit `string | string[]`, so entrypoint names are passed instead.
  */
-function getRuntimeSpec(compiler: Compiler, compilation: Compilation): string[] | undefined {
+function getRuntimeSpec(compiler: BundlerCompiler, compilation: BundlerCompilation): string[] | undefined {
   if (!isRspack(compiler)) {
     return undefined;
   }
@@ -175,16 +193,16 @@ function getRuntimeSpec(compiler: Compiler, compilation: Compilation): string[] 
   return Array.from(compilation.entrypoints.keys());
 }
 
-function isRspack(compiler: Compiler): boolean {
+function isRspack(compiler: BundlerCompiler): boolean {
   return 'rspack' in compiler;
 }
 
 async function optimizeFontAsset(
   codepointMap: Record<string, number>,
   usedExports: Set<string>,
-  compilation: Compilation,
+  compilation: BundlerCompilation,
   assetName: string,
-  RawSource: Compiler['webpack']['sources']['RawSource'],
+  RawSource: BundlerCompiler['webpack']['sources']['RawSource'],
 ) {
   // Build subset text from the used exports set (usually small) instead of scanning all glyphs
   let subsetText = '';
@@ -254,7 +272,7 @@ function getTargetFormat(assetName: string) {
  */
 function resolveUsedIconExports(
   m: NormalModule,
-  moduleGraph: ModuleGraph,
+  moduleGraph: BundlerModuleGraph,
   runtime: string[] | undefined,
 ): string[] | null {
   const usedModuleExports = moduleGraph.getUsedExports(m, runtime);
@@ -274,11 +292,11 @@ function resolveUsedIconExports(
     // Retrieve statically-provided exports from the module graph so we can subset to exactly
     // the glyphs this module declares (rather than the full font or nothing).
     const providedExports = moduleGraph.getProvidedExports(m);
-    if (providedExports === null || providedExports === true) {
+    if (providedExports === null || typeof providedExports === 'boolean') {
       // Provided exports not statically known (optimization.providedExports disabled) - skip.
       return null;
     }
-    return providedExports;
+    return [...providedExports];
   }
 
   // usedModuleExports is a Set<string> (webpack) or string[] (rspack) with the exact named exports that are used.
@@ -289,11 +307,11 @@ function resolveUsedIconExports(
  * rspack modules are proxies over Rust objects and are never instances of webpack's `NormalModule`,
  * so presence of `resource` is used as the portable discriminator.
  */
-function isNormalModule(m: Module): m is NormalModule {
+function isNormalModule(m: BundlerModule): m is NormalModule {
   return typeof m.resource === 'string';
 }
 
-function isFluentUIReactFontChunk(m: Module): m is NormalModule {
+function isFluentUIReactFontChunk(m: BundlerModule): m is NormalModule {
   if (!isNormalModule(m)) {
     return false;
   }
@@ -319,7 +337,7 @@ function isFluentUIReactFontChunk(m: Module): m is NormalModule {
  */
 async function getFontAssetsAndCodepoints(
   pkgLibPath: string,
-  compilation: Compilation,
+  compilation: BundlerCompilation,
   context: string,
 ): Promise<{ assetName: string; codepoints: Record<string, number> }[]> {
   const utilsFontsFolder = resolve(pkgLibPath, 'utils/fonts');
