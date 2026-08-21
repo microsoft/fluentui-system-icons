@@ -154,6 +154,16 @@
     "font": true,
     "type": "resizable"
   },
+  "AgentsPersonFilled": {
+    "svg": true,
+    "font": false,
+    "type": "resizable"
+  },
+  "AgentsPersonRegular": {
+    "svg": true,
+    "font": false,
+    "type": "resizable"
+  },
   "AgentsSyncFilled": {
     "svg": true,
     "font": true,
@@ -2352,6 +2362,16 @@
   "AutocorrectRegular": {
     "svg": true,
     "font": true,
+    "type": "resizable"
+  },
+  "AutopilotFilled": {
+    "svg": true,
+    "font": false,
+    "type": "resizable"
+  },
+  "AutopilotRegular": {
+    "svg": true,
+    "font": false,
     "type": "resizable"
   },
   "AutosumFilled": {
@@ -11524,6 +11544,26 @@
     "font": true,
     "type": "resizable"
   },
+  "FilmstripArrowUpFilled": {
+    "svg": true,
+    "font": false,
+    "type": "resizable"
+  },
+  "FilmstripArrowUpRegular": {
+    "svg": true,
+    "font": false,
+    "type": "resizable"
+  },
+  "FilmstripGlobeFilled": {
+    "svg": true,
+    "font": false,
+    "type": "resizable"
+  },
+  "FilmstripGlobeRegular": {
+    "svg": true,
+    "font": false,
+    "type": "resizable"
+  },
   "FilmstripImageFilled": {
     "svg": true,
     "font": true,
@@ -17667,6 +17707,16 @@
   "PanelLeftKeyRegular": {
     "svg": true,
     "font": true,
+    "type": "resizable"
+  },
+  "PanelLeftTallFilled": {
+    "svg": true,
+    "font": false,
+    "type": "resizable"
+  },
+  "PanelLeftTallRegular": {
+    "svg": true,
+    "font": false,
     "type": "resizable"
   },
   "PanelLeftTextFilled": {
@@ -24509,6 +24559,16 @@
     "font": true,
     "type": "resizable"
   },
+  "TableSelectRangeFilled": {
+    "svg": true,
+    "font": false,
+    "type": "resizable"
+  },
+  "TableSelectRangeRegular": {
+    "svg": true,
+    "font": false,
+    "type": "resizable"
+  },
   "TableSettingsFilled": {
     "svg": true,
     "font": true,
@@ -30052,6 +30112,36 @@
   "AgentsAdd24Regular": {
     "svg": true,
     "font": true,
+    "type": "sized"
+  },
+  "AgentsPerson16Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "AgentsPerson16Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "AgentsPerson20Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "AgentsPerson20Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "AgentsPerson24Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "AgentsPerson24Regular": {
+    "svg": true,
+    "font": false,
     "type": "sized"
   },
   "AgentsSync20Filled": {
@@ -38282,6 +38372,16 @@
   "Autocorrect32Regular": {
     "svg": true,
     "font": true,
+    "type": "sized"
+  },
+  "Autopilot20Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "Autopilot20Regular": {
+    "svg": true,
+    "font": false,
     "type": "sized"
   },
   "Autosum16Filled": {
@@ -47567,6 +47667,26 @@
   "CallWarning20Regular": {
     "svg": true,
     "font": true,
+    "type": "sized"
+  },
+  "CallWarning24Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "CallWarning24Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "CallWarning28Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "CallWarning28Regular": {
+    "svg": true,
+    "font": false,
     "type": "sized"
   },
   "CalligraphyPen20Filled": {
@@ -70609,6 +70729,86 @@
     "font": true,
     "type": "sized"
   },
+  "FilmstripArrowUp16Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "FilmstripArrowUp16Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "FilmstripArrowUp20Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "FilmstripArrowUp20Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "FilmstripArrowUp24Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "FilmstripArrowUp24Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "FilmstripArrowUp32Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "FilmstripArrowUp32Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "FilmstripGlobe16Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "FilmstripGlobe16Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "FilmstripGlobe20Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "FilmstripGlobe20Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "FilmstripGlobe24Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "FilmstripGlobe24Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "FilmstripGlobe32Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "FilmstripGlobe32Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
   "FilmstripImage20Filled": {
     "svg": true,
     "font": true,
@@ -92684,6 +92884,16 @@
     "font": true,
     "type": "sized"
   },
+  "PanelLeftTall20Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "PanelLeftTall20Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
   "PanelLeftText16Filled": {
     "svg": true,
     "font": true,
@@ -94952,6 +95162,16 @@
   "PeopleList32Regular": {
     "svg": true,
     "font": true,
+    "type": "sized"
+  },
+  "PeopleLock16Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "PeopleLock16Regular": {
+    "svg": true,
+    "font": false,
     "type": "sized"
   },
   "PeopleLock20Filled": {
@@ -117202,6 +117422,36 @@
   "TableSearch28Regular": {
     "svg": true,
     "font": true,
+    "type": "sized"
+  },
+  "TableSelectRange16Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "TableSelectRange16Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "TableSelectRange20Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "TableSelectRange20Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "TableSelectRange24Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "TableSelectRange24Regular": {
+    "svg": true,
+    "font": false,
     "type": "sized"
   },
   "TableSettings16Filled": {
