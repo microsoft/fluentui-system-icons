@@ -1,7 +1,18 @@
-import * as webpack from 'webpack';
 import subsetFont from 'subset-font';
 import { extname, dirname, resolve } from 'path';
 import { readFile } from 'fs/promises';
+
+import type {
+  BundlerCompilation,
+  BundlerCompiler,
+  BundlerModule,
+  BundlerModuleGraph,
+  BundlerNormalModule,
+  BundlerPlugin,
+  BundlerRawSource,
+} from './bundler-api';
+
+export type * from './bundler-api';
 
 const PLUGIN_NAME = 'FluentUIReactIconsFontSubsettingPlugin';
 
@@ -25,63 +36,105 @@ const FONT_EXTENSIONS = ['.ttf', '.woff', '.woff2'];
 const REACT_ICONS_FONT_MODULE_IMPORT_PATTERN =
   /react-icons[\/\\]lib(-cjs)?[\/\\](fonts[\/\\](sizedIcons|icons)[\/\\]chunk-\d+|atoms[\/\\](headless-)?fonts[\/\\][\w-]+)\.c?js$/;
 
-export default class FluentUIReactIconsFontSubsettingPlugin implements webpack.WebpackPluginInstance {
+export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPlugin {
   /**
-   * Entry point for the Webpack plugin that registers hooks to perform font subsetting for `@fluentui/react-icons`.
+   * Entry point for the bundler plugin that registers hooks to perform font subsetting for `@fluentui/react-icons`.
    *
-   * This method is executed **once** by Webpack when the plugin is initialized during the compiler's
-   * bootstrap phase. The internal logic hooked into `optimizeAssets` is executed **once per compilation**
-   * (whenever Webpack processes the module graph and prepares to output assets) during the
+   * This method is executed **once** by the bundler when the plugin is initialized during the compiler's
+   * bootstrap phase. The internal logic hooked into `processAssets` is executed **once per compilation**
+   * (whenever the bundler processes the module graph and prepares to output assets) during the
    * asset optimization stage.
    *
    * It analyzes the module graph to determine which specific icons are used from Fluent UI icon packages
    * and triggers font subsetting to remove unused glyphs from the final output assets.
    *
-   * @param compiler - The Webpack compiler instance.
+   * Works with both webpack 5 and rspack. All bundler internals are reached through `compiler.webpack`,
+   * which rspack aliases to its own namespace, so neither bundler is imported at runtime.
+   *
+   * @param compiler - The webpack or rspack compiler instance.
    */
-  apply(compiler: webpack.Compiler) {
-    compiler.hooks.compilation.tap(PLUGIN_NAME, (compilation: webpack.Compilation) => {
-      compilation.hooks.optimizeAssets.tapPromise(PLUGIN_NAME, async () => {
-        // There could be multiple instances of `@fluentui/react-icons`, and they need to be subset separately
-        const packageToUsedFontExports: Map<string, Set<string>> = new Map<string, Set<string>>();
-        for (const m of compilation.modules) {
-          if (isFluentUIReactFontChunk(m)) {
-            const icons = resolveUsedIconExports(m, compilation.moduleGraph);
-            if (icons === null) {
+  apply(compiler: BundlerCompiler) {
+    const { Compilation, sources } = compiler.webpack;
+
+    compiler.hooks.compilation.tap(PLUGIN_NAME, (compilation) => {
+      compilation.hooks.processAssets.tapPromise(
+        { name: PLUGIN_NAME, stage: Compilation.PROCESS_ASSETS_STAGE_OPTIMIZE },
+        async () => {
+          const runtime = getRuntimeSpec(compiler, compilation);
+
+          // There could be multiple instances of `@fluentui/react-icons`, and they need to be subset separately
+          const packageToUsedFontExports: Map<string, Set<string>> = new Map<string, Set<string>>();
+          for (const m of compilation.modules) {
+            if (isFluentUIReactFontChunk(m)) {
+              const icons = resolveUsedIconExports(m, compilation.moduleGraph, runtime);
+              if (icons === null) {
+                continue;
+              }
+
+              const pkgLibPath = resolve(dirname(m.resource), '../..');
+              const usedPkgExports = packageToUsedFontExports.get(pkgLibPath) ?? new Set<string>();
+              for (const icon of icons) {
+                usedPkgExports.add(icon);
+              }
+              packageToUsedFontExports.set(pkgLibPath, usedPkgExports);
+            }
+          }
+          const optimizationPromises: Promise<void>[] = [];
+
+          for (const [pkgLibPath, usedExports] of packageToUsedFontExports) {
+            const fontAssets = await getFontAssetsAndCodepoints(pkgLibPath, compilation, compiler.context);
+
+            if (fontAssets.length === 0) {
+              // Loud failure: silently shipping an un-subset font is worse than a broken build.
+              compilation.warnings.push(
+                new Error(
+                  `${PLUGIN_NAME}: found used icon fonts in "${pkgLibPath}" but could not map any font module ` +
+                    `to an emitted asset. Fonts will NOT be subset. Ensure a \`type: 'asset'\` (or 'asset/resource') ` +
+                    `module rule matches /\\.(ttf|woff2?)$/.`,
+                ),
+              );
               continue;
             }
 
-            const pkgLibPath = resolve(dirname(m.resource), '../..');
-            const usedPkgExports = packageToUsedFontExports.get(pkgLibPath) ?? new Set<string>();
-            for (const icon of icons) {
-              usedPkgExports.add(icon);
+            for (const { assetName, codepoints: codepointMap } of fontAssets) {
+              optimizationPromises.push(
+                optimizeFontAsset(codepointMap, usedExports, compilation, assetName, sources.RawSource),
+              );
             }
-            packageToUsedFontExports.set(pkgLibPath, usedPkgExports);
           }
-        }
-        const optimizationPromises: Promise<void>[] = [];
 
-        for (const [pkgLibPath, usedExports] of packageToUsedFontExports) {
-          for (const { assetName, codepoints: codepointMap } of await getFontAssetsAndCodepoints(
-            pkgLibPath,
-            compilation,
-          )) {
-            optimizationPromises.push(optimizeFontAsset(codepointMap, usedExports, compilation, assetName));
-          }
-        }
-
-        // IMPORTANT: actually await all subsetting work
-        await Promise.all(optimizationPromises);
-      });
+          // IMPORTANT: actually await all subsetting work
+          await Promise.all(optimizationPromises);
+        },
+      );
     });
   }
+}
+
+/**
+ * Resolves the runtime to query used-exports information for.
+ *
+ * webpack accepts `undefined` to mean "merged across all runtimes", but rspack's binding requires an
+ * explicit `string | string[]`, so entrypoint names are passed instead.
+ */
+function getRuntimeSpec(compiler: BundlerCompiler, compilation: BundlerCompilation): string[] | undefined {
+  if (!isRspack(compiler)) {
+    return undefined;
+  }
+
+  return Array.from(compilation.entrypoints.keys());
+}
+
+function isRspack(compiler: BundlerCompiler): boolean {
+  return 'rspack' in compiler;
 }
 
 async function optimizeFontAsset(
   codepointMap: Record<string, number>,
   usedExports: Set<string>,
-  compilation: webpack.Compilation,
+  compilation: BundlerCompilation,
   assetName: string,
+  RawSource: BundlerRawSource,
 ) {
   // Build subset text from the used exports set (usually small) instead of scanning all glyphs
   let subsetText = '';
@@ -92,16 +145,25 @@ async function optimizeFontAsset(
     }
   }
 
-  let source = compilation.assets[assetName].source();
+  const asset = compilation.getAsset(assetName);
+  if (!asset) {
+    return;
+  }
+
+  let source = asset.source.source();
 
   if (typeof source === 'string') {
     source = Buffer.from(source);
   }
 
-  compilation.assets[assetName] = new webpack.sources.RawSource(
-    await subsetFont(source, subsetText, {
-      targetFormat: getTargetFormat(assetName),
-    }),
+  // rspack's `compilation.assets` is a read-only proxy, so writes must go through `updateAsset`.
+  compilation.updateAsset(
+    assetName,
+    new RawSource(
+      await subsetFont(source, subsetText, {
+        targetFormat: getTargetFormat(assetName),
+      }),
+    ),
   );
 }
 
@@ -119,14 +181,14 @@ function getTargetFormat(assetName: string) {
 /**
  * Resolves the set of icon export names that are actually consumed from a font chunk module.
  *
- * Uses Webpack's `moduleGraph.getUsedExports()` which returns one of four shapes:
+ * Uses the bundler's `moduleGraph.getUsedExports()` which returns one of four shapes:
  *
- * | Return value    | Meaning                                                            | Action                                     |
- * | --------------- | ------------------------------------------------------------------ | ------------------------------------------ |
- * | `null`          | `optimization.usedExports` is disabled — no usage info available   | Skip (cannot determine which glyphs to keep)|
- * | `false`         | Module has zero consumers — nothing is imported from it            | Skip (nothing to subset)                   |
- * | `true`          | All exports are consumed (e.g. `import * as ns from '...'`)       | Fall back to `getProvidedExports()` ¹       |
- * | `Set<string>`   | Exact set of named exports that are consumed                      | Use directly for subsetting                |
+ * | Return value             | Meaning                                                            | Action                                     |
+ * | ------------------------ | ------------------------------------------------------------------ | ------------------------------------------ |
+ * | `null`                   | `optimization.usedExports` is disabled — no usage info available   | Skip (cannot determine which glyphs to keep)|
+ * | `false`                  | Module has zero consumers — nothing is imported from it            | Skip (nothing to subset)                   |
+ * | `true`                   | All exports are consumed (e.g. `import * as ns from '...'`)       | Fall back to `getProvidedExports()` ¹       |
+ * | `Set<string>`/`string[]` | Exact set of named exports that are consumed                      | Use directly for subsetting                |
  *
  * ¹ When all exports are marked as used we can still subset: `getProvidedExports()` tells us
  *   which exports this specific module **declares** (not the entire font), so we subset the font
@@ -140,8 +202,12 @@ function getTargetFormat(assetName: string) {
  *
  * Returns `null` when subsetting cannot be performed, so the caller can skip the module.
  */
-function resolveUsedIconExports(m: webpack.NormalModule, moduleGraph: webpack.ModuleGraph): string[] | null {
-  const usedModuleExports = moduleGraph.getUsedExports(m, undefined);
+function resolveUsedIconExports(
+  m: BundlerNormalModule,
+  moduleGraph: BundlerModuleGraph,
+  runtime: string[] | undefined,
+): string[] | null {
+  const usedModuleExports = moduleGraph.getUsedExports(m, runtime);
 
   if (usedModuleExports === null) {
     // No info on used exports (optimization.usedExports is disabled) - subsetting requires knowing exactly which exports are used.
@@ -158,22 +224,26 @@ function resolveUsedIconExports(m: webpack.NormalModule, moduleGraph: webpack.Mo
     // Retrieve statically-provided exports from the module graph so we can subset to exactly
     // the glyphs this module declares (rather than the full font or nothing).
     const providedExports = moduleGraph.getProvidedExports(m);
-    if (providedExports === null || providedExports === true) {
+    if (providedExports === null || typeof providedExports === 'boolean') {
       // Provided exports not statically known (optimization.providedExports disabled) - skip.
       return null;
     }
-    return providedExports;
+    return [...providedExports];
   }
 
-  // usedModuleExports is a Set<string> with the exact named exports that are used.
+  // usedModuleExports is a Set<string> (webpack) or string[] (rspack) with the exact named exports that are used.
   return Array.from(usedModuleExports);
 }
 
-function isNormalModule(m: webpack.Module): m is webpack.NormalModule {
-  return m instanceof webpack.NormalModule;
+/**
+ * rspack modules are proxies over Rust objects and are never instances of webpack's `NormalModule`,
+ * so presence of `resource` is used as the portable discriminator.
+ */
+function isNormalModule(m: BundlerModule): m is BundlerNormalModule {
+  return typeof m.resource === 'string';
 }
 
-function isFluentUIReactFontChunk(m: webpack.Module): m is webpack.NormalModule {
+function isFluentUIReactFontChunk(m: BundlerModule): m is BundlerNormalModule {
   if (!isNormalModule(m)) {
     return false;
   }
@@ -191,9 +261,16 @@ function isFluentUIReactFontChunk(m: webpack.Module): m is webpack.NormalModule 
   return REACT_ICONS_FONT_MODULE_IMPORT_PATTERN.test(resource);
 }
 
+/**
+ * Maps emitted font assets back to their codepoint tables.
+ *
+ * Assets are matched through `AssetInfo.sourceFilename` (the originating file, relative to the compiler
+ * context) rather than the module's `buildInfo`, which rspack leaves empty for asset modules.
+ */
 async function getFontAssetsAndCodepoints(
   pkgLibPath: string,
-  compilation: webpack.Compilation,
+  compilation: BundlerCompilation,
+  context: string,
 ): Promise<{ assetName: string; codepoints: Record<string, number> }[]> {
   const utilsFontsFolder = resolve(pkgLibPath, 'utils/fonts');
   const codepoints: Record<string, Record<string, number>> = Object.fromEntries(
@@ -212,12 +289,15 @@ async function getFontAssetsAndCodepoints(
 
   const result: { assetName: string; codepoints: Record<string, number> }[] = [];
 
-  for (const m of compilation.modules) {
-    if (isNormalModule(m) && fontPaths.has(m.resource)) {
-      const assetName = m.buildInfo?.filename;
-      if (assetName) {
-        result.push({ assetName, codepoints: fontPaths.get(m.resource)! });
-      }
+  for (const { name: assetName, info } of compilation.getAssets()) {
+    const sourceFilename = info?.sourceFilename;
+    if (!sourceFilename) {
+      continue;
+    }
+
+    const codepointsForAsset = fontPaths.get(resolve(context, sourceFilename));
+    if (codepointsForAsset) {
+      result.push({ assetName, codepoints: codepointsForAsset });
     }
   }
 
