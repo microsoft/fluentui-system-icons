@@ -2,85 +2,17 @@ import subsetFont from 'subset-font';
 import { extname, dirname, resolve } from 'path';
 import { readFile } from 'fs/promises';
 
-/**
- * Hand-maintained description of the bundler APIs this plugin touches.
- *
- * Deliberately not `import type ... from 'webpack'`: both bundlers are optional peers, so
- * referencing webpack's types here would leak into the generated `.d.ts` and break type-checking
- * for consumers who only installed `@rspack/core`.
- *
- * Every member is intentionally *wider* than the corresponding webpack and rspack type, so both
- * real compilers remain assignable to `BundlerCompiler`. That contravariance is what lets `apply()`
- * take a typed parameter instead of `unknown`. `test/types.conformance.ts` fails to compile if
- * either bundler ever drifts out of these bounds.
- */
-export interface BundlerSource {
-  source(): string | Buffer;
-}
+import type {
+  BundlerCompilation,
+  BundlerCompiler,
+  BundlerModule,
+  BundlerModuleGraph,
+  BundlerNormalModule,
+  BundlerPlugin,
+  BundlerRawSource,
+} from './bundler-api';
 
-/** `type` is present on both bundlers' modules; `resource` only on normal modules. */
-export interface BundlerModule {
-  readonly type?: string;
-  readonly resource?: string;
-}
-
-interface NormalModule extends BundlerModule {
-  readonly resource: string;
-}
-
-export interface BundlerModuleGraph {
-  /** webpack passes a `RuntimeSpec`; rspack requires explicit runtime names. */
-  getUsedExports(
-    module: BundlerModule,
-    runtime: string | string[] | ReadonlySet<string> | undefined,
-  ): ReadonlySet<string> | readonly string[] | boolean | null;
-  getProvidedExports(module: BundlerModule): readonly string[] | boolean | null;
-}
-
-export interface BundlerAsset {
-  name: string;
-  source: BundlerSource;
-  info?: { sourceFilename?: string };
-}
-
-export interface BundlerCompilation {
-  hooks: {
-    processAssets: {
-      tapPromise(options: { name: string; stage: number }, fn: () => Promise<void>): void;
-    };
-  };
-  modules: Iterable<BundlerModule>;
-  moduleGraph: BundlerModuleGraph;
-  entrypoints: ReadonlyMap<string, unknown>;
-  warnings: Error[];
-  getAsset(name: string): BundlerAsset | undefined | void;
-  getAssets(): readonly BundlerAsset[];
-  /**
-   * `any` is load-bearing: both bundlers accept a full `webpack-sources` `Source` here, and only
-   * `any` is assignable to that, which is what keeps real compilers assignable to this interface.
-   * The value passed is always one the bundler itself constructed via `sources.RawSource`.
-   */
-  updateAsset(name: string, source: any): void;
-}
-
-export interface BundlerCompiler {
-  context: string;
-  /** rspack aliases this to its own namespace, which is why no bundler is imported at runtime. */
-  webpack: {
-    Compilation: { PROCESS_ASSETS_STAGE_OPTIMIZE: number };
-    sources: { RawSource: new (value: string | Buffer, ...rest: any[]) => BundlerSource };
-  };
-  hooks: {
-    compilation: {
-      tap(name: string, fn: (compilation: BundlerCompilation) => void): void;
-    };
-  };
-}
-
-/** The shape both bundlers require of a plugin instance. */
-export interface BundlerPlugin {
-  apply(compiler: BundlerCompiler): void;
-}
+export type * from './bundler-api';
 
 const PLUGIN_NAME = 'FluentUIReactIconsFontSubsettingPlugin';
 
@@ -202,7 +134,7 @@ async function optimizeFontAsset(
   usedExports: Set<string>,
   compilation: BundlerCompilation,
   assetName: string,
-  RawSource: BundlerCompiler['webpack']['sources']['RawSource'],
+  RawSource: BundlerRawSource,
 ) {
   // Build subset text from the used exports set (usually small) instead of scanning all glyphs
   let subsetText = '';
@@ -271,7 +203,7 @@ function getTargetFormat(assetName: string) {
  * Returns `null` when subsetting cannot be performed, so the caller can skip the module.
  */
 function resolveUsedIconExports(
-  m: NormalModule,
+  m: BundlerNormalModule,
   moduleGraph: BundlerModuleGraph,
   runtime: string[] | undefined,
 ): string[] | null {
@@ -307,11 +239,11 @@ function resolveUsedIconExports(
  * rspack modules are proxies over Rust objects and are never instances of webpack's `NormalModule`,
  * so presence of `resource` is used as the portable discriminator.
  */
-function isNormalModule(m: BundlerModule): m is NormalModule {
+function isNormalModule(m: BundlerModule): m is BundlerNormalModule {
   return typeof m.resource === 'string';
 }
 
-function isFluentUIReactFontChunk(m: BundlerModule): m is NormalModule {
+function isFluentUIReactFontChunk(m: BundlerModule): m is BundlerNormalModule {
   if (!isNormalModule(m)) {
     return false;
   }

@@ -1,12 +1,12 @@
 // Type-level conformance test — no runtime behaviour, checked by `tsc` only.
 //
-// Asserts that the hand-maintained bundler interfaces in `src/index.ts` remain supertypes of the
-// real webpack and rspack types. If either bundler changes a signature we depend on, this fails to
-// compile, which is the drift protection that justifies maintaining those interfaces by hand.
+// Asserts that the hand-maintained bundler interfaces in `src/bundler-api.ts` remain supertypes of
+// the real webpack and rspack types. If either bundler changes a signature we depend on, this fails
+// to compile, which is the drift protection that justifies maintaining those interfaces by hand.
 import type * as webpack from 'webpack';
 import type * as rspack from '@rspack/core';
 
-import type { BundlerCompiler, BundlerPlugin } from '../src/index';
+import type { BundlerCompiler, BundlerPlugin } from '../src/bundler-api';
 import FluentUIReactIconsFontSubsettingPlugin from '../src/index';
 
 /** Fails to compile unless `Actual` is assignable to `Expected`. */
