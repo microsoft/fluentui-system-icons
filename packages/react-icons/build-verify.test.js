@@ -317,10 +317,11 @@ describe('Build Verification', () => {
         const FONT_FAMILY_MAP = {
           [0 /* Filled */]: 'FluentSystemIconsFilled',
           [1 /* Regular */]: 'FluentSystemIconsRegular',
-          [2 /* Resizable */]: 'FluentSystemIcons'
+          [2 /* Resizable */]: 'FluentSystemIcons',
+          [3 /* Light */]: 'FluentSystemIconsLight'
         };
         export const useStaticStyles = __staticStyles({
-          d: [\`@font-face{font-family:FluentSystemIconsFilled;font-display:"block";src:url(\${_asset}) format("woff2"),url(\${_asset2}) format("woff"),url(\${_asset3}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIconsRegular;font-display:"block";src:url(\${_asset4}) format("woff2"),url(\${_asset5}) format("woff"),url(\${_asset6}) format("truetype");}\`, \`@font-face{font-family:undefined;src:url(\${_asset7}) format("woff2"),url(\${_asset8}) format("woff"),url(\${_asset9}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIcons;font-display:"block";src:url(\${_asset0}) format("woff2"),url(\${_asset1}) format("woff"),url(\${_asset10}) format("truetype");}\`]
+          d: [\`@font-face{font-family:FluentSystemIconsFilled;font-display:"block";src:url(\${_asset}) format("woff2"),url(\${_asset2}) format("woff"),url(\${_asset3}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIconsRegular;font-display:"block";src:url(\${_asset4}) format("woff2"),url(\${_asset5}) format("woff"),url(\${_asset6}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIconsLight;font-display:"block";src:url(\${_asset7}) format("woff2"),url(\${_asset8}) format("woff"),url(\${_asset9}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIcons;font-display:"block";src:url(\${_asset0}) format("woff2"),url(\${_asset1}) format("woff"),url(\${_asset10}) format("truetype");}\`]
         });
         export const useRootStyles = __styles({
           "0": {
@@ -370,6 +371,7 @@ describe('Build Verification', () => {
             [0 /* Filled */]: 'FluentSystemIconsFilled',
             [1 /* Regular */]: 'FluentSystemIconsRegular',
             [2 /* Resizable */]: 'FluentSystemIcons',
+            [3 /* Light */]: 'FluentSystemIconsLight',
         };
         export const useStaticStyles = makeStaticStyles(\`
         @font-face {
@@ -389,6 +391,7 @@ describe('Build Verification', () => {
 
         @font-face {
             font-family: \${FONT_FAMILY_MAP[3 /* Light */]};
+            font-display: "block";
             src: url(\${JSON.stringify(fontLightWoff2)}) format("woff2"),
             url(\${JSON.stringify(fontLightWoff)}) format("woff"),
             url(\${JSON.stringify(fontLightTtf)}) format("truetype");
@@ -1725,7 +1728,7 @@ describe('Build Verification', () => {
         const jsContent = await readFile(jsFile, 'utf8');
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
-          "... (12 export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))
+          "... (13 export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))
           "use client";
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
@@ -1911,7 +1914,7 @@ describe('Build Verification', () => {
         const jsContent = await readFile(jsFile, 'utf8');
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
-          "... (44 export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))
+          "... (45 export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))
           "use client";
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
@@ -2081,15 +2084,15 @@ describe('Build Verification', () => {
       const { svgPathCjs, svgPathEsm } = getAssetPaths();
       const esmStats = await getAtomDirStats(svgPathEsm);
       const cjsStats = await getAtomDirStats(svgPathCjs, 'lib-cjs');
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2896`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2896`);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2902`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2902`);
     });
     it(`should have same number of atoms/fonts icon files in lib and lib-cjs`, async () => {
       const { fontsPathCjs, fontsPathEsm } = getAssetPaths();
       const esmStats = await getAtomDirStats(fontsPathEsm);
       const cjsStats = await getAtomDirStats(fontsPathCjs, 'lib-cjs');
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2889`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2889`);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2895`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2895`);
     });
     it.each(['lib', 'lib-cjs'])('should have atoms/svg directory with icon files in %s', async (libDir) => {
       const atomsSvgPath = path.join(__dirname, libDir, 'atoms', 'svg');

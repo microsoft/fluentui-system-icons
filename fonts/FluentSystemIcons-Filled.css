@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?052881176167350e80e9edee63c359d2") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?052881176167350e80e9edee63c359d2") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?052881176167350e80e9edee63c359d2") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?1e57c81e29073be1ab003a8333fe83c0") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?1e57c81e29073be1ab003a8333fe83c0") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?1e57c81e29073be1ab003a8333fe83c0") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -29457,4 +29457,61 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_text_add_t_32_filled:before {
     content: "\f0d55";
+}
+.icon-ic_fluent_agents_person_16_filled:before {
+    content: "\f0d56";
+}
+.icon-ic_fluent_agents_person_20_filled:before {
+    content: "\f0d57";
+}
+.icon-ic_fluent_agents_person_24_filled:before {
+    content: "\f0d58";
+}
+.icon-ic_fluent_autopilot_20_filled:before {
+    content: "\f0d59";
+}
+.icon-ic_fluent_call_warning_24_filled:before {
+    content: "\f0d5a";
+}
+.icon-ic_fluent_call_warning_28_filled:before {
+    content: "\f0d5b";
+}
+.icon-ic_fluent_filmstrip_arrow_up_16_filled:before {
+    content: "\f0d5c";
+}
+.icon-ic_fluent_filmstrip_arrow_up_20_filled:before {
+    content: "\f0d5d";
+}
+.icon-ic_fluent_filmstrip_arrow_up_24_filled:before {
+    content: "\f0d5e";
+}
+.icon-ic_fluent_filmstrip_arrow_up_32_filled:before {
+    content: "\f0d5f";
+}
+.icon-ic_fluent_filmstrip_globe_16_filled:before {
+    content: "\f0d60";
+}
+.icon-ic_fluent_filmstrip_globe_20_filled:before {
+    content: "\f0d61";
+}
+.icon-ic_fluent_filmstrip_globe_24_filled:before {
+    content: "\f0d62";
+}
+.icon-ic_fluent_filmstrip_globe_32_filled:before {
+    content: "\f0d63";
+}
+.icon-ic_fluent_panel_left_tall_20_filled:before {
+    content: "\f0d64";
+}
+.icon-ic_fluent_people_lock_16_filled:before {
+    content: "\f0d65";
+}
+.icon-ic_fluent_table_select_range_16_filled:before {
+    content: "\f0d66";
+}
+.icon-ic_fluent_table_select_range_20_filled:before {
+    content: "\f0d67";
+}
+.icon-ic_fluent_table_select_range_24_filled:before {
+    content: "\f0d68";
 }
