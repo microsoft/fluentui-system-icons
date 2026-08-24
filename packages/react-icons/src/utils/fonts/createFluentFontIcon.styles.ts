@@ -21,6 +21,7 @@ const FONT_FAMILY_MAP = {
   [FontFile.Filled]: 'FluentSystemIconsFilled',
   [FontFile.Regular]: 'FluentSystemIconsRegular',
   [FontFile.Resizable]: 'FluentSystemIcons',
+  [FontFile.Light]: 'FluentSystemIconsLight',
 } as const;
 
 export const useStaticStyles = makeStaticStyles(`
@@ -41,6 +42,7 @@ export const useStaticStyles = makeStaticStyles(`
 
 @font-face {
     font-family: ${FONT_FAMILY_MAP[FontFile.Light]};
+    font-display: "block";
     src: url(${JSON.stringify(fontLightWoff2)}) format("woff2"),
     url(${JSON.stringify(fontLightWoff)}) format("woff"),
     url(${JSON.stringify(fontLightTtf)}) format("truetype");
@@ -58,6 +60,19 @@ export const useStaticStyles = makeStaticStyles(`
 export const useRootStyles = makeStyles({
   root: {
     display: 'inline-block',
+    // Reserve a 1em box up front (mirrors the resizable SVG's width/height="1em").
+    // Without this the box is sized by the glyph advance, which is 0 until the
+    // webfont loads (font-display: block + PUA codepoints have no fallback glyph),
+    // causing layout shift on every font icon.
+    width: '1em',
+    height: '1em',
+    // Pin the inline-block baseline to its bottom edge (like the resizable SVG, a
+    // replaced element). By default an inline-block is baseline-aligned via its
+    // glyph, whose baseline moves when the webfont's metrics swap in, growing the
+    // line box and shifting inline text vertically. `overflow: hidden` makes the
+    // baseline the bottom margin edge instead, which is font-independent and matches
+    // where the loaded glyph already sits (no visible reposition).
+    overflow: 'hidden',
     fontStyle: 'normal',
     lineHeight: '1em',
     color: 'currentColor',

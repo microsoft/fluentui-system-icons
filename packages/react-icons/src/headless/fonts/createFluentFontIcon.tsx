@@ -40,9 +40,11 @@ export function createFluentFontIcon(
   options?: CreateFluentFontIconOptions,
 ): FluentFontIcon {
   const Component: FluentFontIcon = (props) => {
+    // `fontSize` is applied as a CSS style below, so keep it off the spread onto the `<i>` element.
+    const { fontSize: fontSizeOverride, ...rest } = props;
     const className = cx(fontIconClassName, props.className);
     const state = useIconState<React.HTMLAttributes<HTMLElement>, HTMLElement>(
-      { ...props, className },
+      { ...rest, className },
       { flipInRtl: options?.flipInRtl },
     );
 
@@ -50,8 +52,10 @@ export function createFluentFontIcon(
     state[DATA_FUI_ICON] = 'font';
     state[DATA_FUI_ICON_FONT] = FONT_VARIANT_MAP[font];
 
-    // Map primaryFill to color for font icons
-    applyFontStyle(state, props.primaryFill, fontSize);
+    // Map primaryFill to color for font icons. Only resizable icons (no baked-in size) honor a
+    // `fontSize` prop; sized icons keep their baked-in size, mirroring sized SVG icons whose
+    // hardcoded width/height ignore `font-size`.
+    applyFontStyle(state, props.primaryFill, fontSize === undefined ? fontSizeOverride : fontSize);
 
     return renderFontBody(state, codepoint);
   };

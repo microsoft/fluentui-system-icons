@@ -84,10 +84,9 @@ flowchart TD
     subgraph NPM["NPM Package Preparation"]
         BuildNpm[Build NPM Packages<br/>nx run-many &#45;&#45;projects tag:npm:public]
         BuildNpm --> NxRelease[Nx Release<br/>version groups: react + native<br/>+ changelog]
-        NxRelease --> LockUpdate[Update Lockfile<br/>npm install &#45;&#45;package-lock-only]
     end
 
-    LockUpdate --> DryRun{Dry-Run<br/>Mode?}
+    NxRelease --> DryRun{Dry-Run<br/>Mode?}
 
     DryRun -->|Yes| Summary[Generate GitHub<br/>Summary Report]
     Summary --> End([Workflow Complete])
@@ -143,7 +142,7 @@ npm packages use **Nx Release** for version bumps and changelog generation:
   - **`react`**: react-icons, webpack-plugin, react-native-icons → versioned with `REACT_VERSION`
   - **`native`**: svg-icons, svg-sprites → versioned with `NEW_VERSION`
   - **`standalone`**: atomic-webpack-loader, svg-sprite-subsetting-webpack-plugin → versioned independently via conventional commits with zero-ver policy (`feat`/`fix` → patch, `feat!` → minor)
-- `skipLockFileUpdate` is enabled in nx config; the lockfile is updated explicitly after all version bumps via `npm install --package-lock-only`
+- `skipLockFileUpdate` is enabled in nx config. No lockfile refresh is needed: every cross-workspace dependency is `"*"` and yarn records workspace entries as `0.0.0-use.local`, so version bumps cannot dirty `yarn.lock`
 - Changelog is generated **per release group** (each with its respective version), based on **conventional commits** that modified `packages/{package-folder}/` only
 - Uses workspace-wide git tags (`1.1.{number}`) rather than package-specific tags
 - If no relevant changes found, defaults to: `"This release contains icon updates"`

@@ -1,0 +1,13 @@
+diff --git a/dist/index.cjs b/dist/index.cjs
+index 744da25ae9a7a38ea5a6a5979d856751e4ddeb4f..72d1af9b6e4a7538865d619630409a250ebd3a62 100644
+--- a/dist/index.cjs
++++ b/dist/index.cjs
+@@ -375,7 +375,7 @@ var generator = {
+     }).on("data", (data) => font = Buffer.concat([font, Buffer.from(data)])).on("end", () => resolve5(font.toString()));
+     for (const { id, absolutePath } of Object.values(assets)) {
+       const glyph = (0, import_fs2.createReadStream)(absolutePath);
+-      const unicode = String.fromCharCode(codepoints[id]);
++      const unicode = String.fromCodePoint(codepoints[id]);
+       glyph.metadata = { name: id, unicode: [unicode] };
+       fontStream.write(glyph);
+     }

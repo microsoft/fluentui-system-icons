@@ -3,30 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "storybook dev -p 6006 --docs",
-    "build": "storybook build --docs",
-    "extract-storybook-llms": "storybook-llms-extractor --distPath storybook-static --summaryBaseUrl https://microsoft.github.io/fluentui-system-icons/"
+    "dev": "yarn run -T storybook dev -p 6006 --docs",
+    "build": "yarn run -T storybook build --docs",
+    "lint": "yarn run -T eslint stories .storybook",
+    "extract-storybook-llms": "yarn run -T storybook-llms-extractor --distPath storybook-static --summaryBaseUrl https://microsoft.github.io/fluentui-system-icons/"
   },
   "dependencies": {
     "@fluentui/react-components": "^9.46.0",
     "@fluentui/react-icons": "*",
     "@fluentui/react-icons-file-type": "*",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
-    "react-window": "^1.8.10"
-  },
-  "devDependencies": {
-    "@fluentui/react-storybook-addon": "0.6.0",
-    "@fluentui/react-storybook-addon-export-to-sandbox": "0.2.1",
-    "@fluentui/storybook-llms-extractor": "0.0.4",
-    "@storybook/addon-docs": "9.1.19",
-    "@storybook/addon-webpack5-compiler-swc": "^4.0.3",
-    "@storybook/react": "9.1.19",
-    "@storybook/react-webpack5": "9.1.19",
-    "@types/react": "19.1.13",
-    "@types/react-dom": "19.1.9",
-    "remark-gfm": "^4.0.1",
-    "storybook": "9.1.19",
-    "typescript": "5.0.4"
+    "@fluentui/react-icons-font-subsetting-webpack-plugin": "*"
   }
 }

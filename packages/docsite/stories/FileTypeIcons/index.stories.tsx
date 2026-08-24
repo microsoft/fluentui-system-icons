@@ -1,5 +1,7 @@
 import { FileTypeIcon, FileIconType } from '@fluentui/react-icons-file-type';
 import descriptionMd from './FileTypeIconsDescription.md';
+import { reactIconsFileTypeVersion } from '../utils/packageVersion';
+import { versionBadgeMarkup } from '../components/VersionBadge';
 
 export { Default } from './FileTypeIconsDefault.stories';
 export { Sizes } from './FileTypeIconsSizes.stories';
@@ -12,7 +14,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: descriptionMd,
+        component: `${versionBadgeMarkup({ packageName: '@fluentui/react-icons-file-type', version: reactIconsFileTypeVersion })}\n\n${descriptionMd}`,
       },
     },
   },

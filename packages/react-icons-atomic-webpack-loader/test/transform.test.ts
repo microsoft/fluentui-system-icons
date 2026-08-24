@@ -224,6 +224,188 @@ describe('transformSource', () => {
     });
   });
 
+  describe('headless option', () => {
+    const transformHeadless = (source: string, iconVariant: IconVariant = 'svg', fallbackVariant?: IconVariant) =>
+      transformSource(source, { iconVariant, fallbackVariant, headless: true, path: 'input.js' }).code;
+
+    it('rewrites icon imports to the headless svg atomic path', () => {
+      expect(transformHeadless(`import { AddFilled } from '@fluentui/react-icons';`)).toBe(
+        `import { AddFilled } from '@fluentui/react-icons/headless/svg/add';`,
+      );
+    });
+
+    it('rewrites icon imports to the headless fonts atomic path', () => {
+      expect(transformHeadless(`import { AddFilled } from '@fluentui/react-icons';`, 'fonts')).toBe(
+        `import { AddFilled } from '@fluentui/react-icons/headless/fonts/add';`,
+      );
+    });
+
+    it('routes utility bindings to /headless/utils', () => {
+      expect(transformHeadless(`import { bundleIcon } from '@fluentui/react-icons';`)).toBe(
+        `import { bundleIcon } from '@fluentui/react-icons/headless/utils';`,
+      );
+    });
+
+    it('routes provider bindings to the shared /providers (not headless)', () => {
+      expect(transformHeadless(`import { useIconContext } from '@fluentui/react-icons';`)).toBe(
+        `import { useIconContext } from '@fluentui/react-icons/providers';`,
+      );
+    });
+
+    it('rewrites direct re-exports to headless paths', () => {
+      expect(transformHeadless(`export { AddFilled } from '@fluentui/react-icons';`)).toBe(
+        `export { AddFilled } from '@fluentui/react-icons/headless/svg/add';`,
+      );
+    });
+
+    it('degrades headless svg-sprite to the standard sprite with a warning', () => {
+      const { code, diagnostics } = transformSource(`import { AddFilled } from '@fluentui/react-icons';`, {
+        iconVariant: 'svg-sprite',
+        headless: true,
+        path: 'input.js',
+      });
+
+      expect(code).toBe(`import { AddFilled } from '@fluentui/react-icons/svg-sprite/add';`);
+      expect(diagnostics).toHaveLength(1);
+      expect(diagnostics[0].level).toBe('warning');
+      expect(diagnostics[0].message).toContain('headless');
+    });
+
+    it('rewrites brand icons to the headless svg atomic path', () => {
+      const { code, diagnostics } = transformSource(`import { ProjectColor } from '@fluentui/react-brand-icons';`, {
+        iconVariant: 'svg',
+        headless: true,
+        path: 'input.js',
+      });
+
+      expect(code).toBe(`import { ProjectColor } from '@fluentui/react-brand-icons/headless/svg/project';`);
+      expect(diagnostics).toEqual([]);
+    });
+
+    it('routes brand utility bindings to /headless/utils', () => {
+      expect(transformHeadless(`import { bundleIcon } from '@fluentui/react-brand-icons';`)).toBe(
+        `import { bundleIcon } from '@fluentui/react-brand-icons/headless/utils';`,
+      );
+    });
+
+    it('keeps both system and brand icons headless in the same module', () => {
+      const source = [
+        `import { AddFilled } from '@fluentui/react-icons';`,
+        `import { ProjectColor } from '@fluentui/react-brand-icons';`,
+      ].join('\n');
+
+      const { code } = transformSource(source, { iconVariant: 'svg', headless: true, path: 'input.js' });
+
+      expect(code).toBe(
+        [
+          `import { AddFilled } from '@fluentui/react-icons/headless/svg/add';`,
+          `import { ProjectColor } from '@fluentui/react-brand-icons/headless/svg/project';`,
+        ].join('\n'),
+      );
+    });
+  });
+
+  describe('color icons (SVG-only fallback)', () => {
+    it('reroutes a color icon from fonts to svg (no font color glyphs)', () => {
+      const { code, diagnostics } = transformSource(`import { AddCircleColor } from '@fluentui/react-icons';`, {
+        iconVariant: 'fonts',
+        path: 'input.js',
+      });
+
+      expect(code).toBe(`import { AddCircleColor } from '@fluentui/react-icons/svg/add-circle';`);
+      expect(diagnostics).toHaveLength(1);
+      expect(diagnostics[0].level).toBe('warning');
+      expect(diagnostics[0].message).toContain('color icons are SVG-only');
+    });
+
+    it('reroutes a sized color icon from fonts to svg', () => {
+      expect(transform(`import { AddCircle20Color } from '@fluentui/react-icons';`, 'fonts')).toBe(
+        `import { AddCircle20Color } from '@fluentui/react-icons/svg/add-circle';`,
+      );
+    });
+
+    it('honors a color-capable fallbackVariant (svg-sprite) for color icons under fonts', () => {
+      const { code, diagnostics } = transformSource(`import { AddCircleColor } from '@fluentui/react-icons';`, {
+        iconVariant: 'fonts',
+        fallbackVariant: 'svg-sprite',
+        path: 'input.js',
+      });
+
+      expect(code).toBe(`import { AddCircleColor } from '@fluentui/react-icons/svg-sprite/add-circle';`);
+      expect(diagnostics).toHaveLength(1);
+      expect(diagnostics[0].level).toBe('warning');
+    });
+
+    it('falls back to svg when neither iconVariant nor fallbackVariant is color-capable', () => {
+      expect(transform(`import { AddCircleColor } from '@fluentui/react-icons';`, 'fonts', 'fonts')).toBe(
+        `import { AddCircleColor } from '@fluentui/react-icons/svg/add-circle';`,
+      );
+    });
+
+    it('leaves color icons untouched when iconVariant is svg-sprite (sprites support color)', () => {
+      const { code, diagnostics } = transformSource(`import { AddCircleColor } from '@fluentui/react-icons';`, {
+        iconVariant: 'svg-sprite',
+        path: 'input.js',
+      });
+
+      expect(code).toBe(`import { AddCircleColor } from '@fluentui/react-icons/svg-sprite/add-circle';`);
+      expect(diagnostics).toEqual([]);
+    });
+
+    it('leaves color icons on svg when iconVariant is svg', () => {
+      const { code, diagnostics } = transformSource(`import { AddCircleColor } from '@fluentui/react-icons';`, {
+        iconVariant: 'svg',
+        path: 'input.js',
+      });
+
+      expect(code).toBe(`import { AddCircleColor } from '@fluentui/react-icons/svg/add-circle';`);
+      expect(diagnostics).toEqual([]);
+    });
+
+    it('routes color and non-color specifiers in the same statement independently', () => {
+      const { code } = transformSource(`import { AddFilled, AddCircleColor } from '@fluentui/react-icons';`, {
+        iconVariant: 'fonts',
+        path: 'input.js',
+      });
+
+      expect(code).toBe(
+        [
+          `import { AddFilled } from '@fluentui/react-icons/fonts/add';`,
+          `import { AddCircleColor } from '@fluentui/react-icons/svg/add-circle';`,
+        ].join('\n'),
+      );
+    });
+
+    it('reroutes color icons in direct re-exports too', () => {
+      expect(transform(`export { AddCircleColor } from '@fluentui/react-icons';`, 'fonts')).toBe(
+        `export { AddCircleColor } from '@fluentui/react-icons/svg/add-circle';`,
+      );
+    });
+
+    it('resolves the headless svg build for color icons under headless fonts', () => {
+      const { code, diagnostics } = transformSource(`import { AddCircleColor } from '@fluentui/react-icons';`, {
+        iconVariant: 'fonts',
+        headless: true,
+        path: 'input.js',
+      });
+
+      expect(code).toBe(`import { AddCircleColor } from '@fluentui/react-icons/headless/svg/add-circle';`);
+      expect(diagnostics).toHaveLength(1);
+      expect(diagnostics[0].message).toContain('color icons are SVG-only');
+    });
+
+    it('emits the color warning only once per module', () => {
+      const source = [
+        `import { AddCircleColor } from '@fluentui/react-icons';`,
+        `import { AlbumColor } from '@fluentui/react-icons';`,
+      ].join('\n');
+
+      const { diagnostics } = transformSource(source, { iconVariant: 'fonts', path: 'input.js' });
+
+      expect(diagnostics).toHaveLength(1);
+    });
+  });
+
   describe('diagnostics', () => {
     it('does not diagnose a module that only appears in a comment', () => {
       const source = [
@@ -297,6 +479,219 @@ describe('transformSource', () => {
       const { diagnostics } = transformSource(source, { iconVariant: 'fonts', path: 'input.js' });
 
       expect(diagnostics).toHaveLength(1);
+    });
+  });
+
+  describe('dynamic imports (cannot be atomized)', () => {
+    it('warns and leaves a dynamic barrel import untouched', () => {
+      const source = `const icons = await import('@fluentui/react-icons');`;
+
+      const { code, diagnostics } = transformSource(source, { iconVariant: 'svg', path: 'input.js' });
+
+      expect(code).toBe(source);
+      expect(diagnostics).toHaveLength(1);
+      expect(diagnostics[0].level).toBe('warning');
+      expect(diagnostics[0].message).toMatchInlineSnapshot(
+        `"dynamic import of the "@fluentui/react-icons" barrel cannot be atomized, so the entire icon set will be bundled into the async chunk. Import an atomic path directly instead, e.g. import('@fluentui/react-icons/svg/add')."`,
+      );
+    });
+
+    it('warns for a dynamic brand-icons barrel import', () => {
+      const { diagnostics } = transformSource(`import('@fluentui/react-brand-icons').then(m => m.ProjectColor);`, {
+        iconVariant: 'svg',
+        path: 'input.js',
+      });
+
+      expect(diagnostics).toHaveLength(1);
+      expect(diagnostics[0].level).toBe('warning');
+      expect(diagnostics[0].message).toMatchInlineSnapshot(
+        `"dynamic import of the "@fluentui/react-brand-icons" barrel cannot be atomized, so the entire icon set will be bundled into the async chunk. Import an atomic path directly instead, e.g. import('@fluentui/react-brand-icons/svg/add')."`,
+      );
+    });
+
+    it('does not warn for a dynamic import of an atomic path', () => {
+      const source = `const { AddFilled } = await import('@fluentui/react-icons/svg/add');`;
+
+      const { code, diagnostics } = transformSource(source, { iconVariant: 'svg', path: 'input.js' });
+
+      expect(code).toBe(source);
+      expect(diagnostics).toEqual([]);
+    });
+
+    it('does not warn for a dynamic import of a subpath barrel (not a supported bare module)', () => {
+      const { diagnostics } = transformSource(`const m = await import('@fluentui/react-icons/svg');`, {
+        iconVariant: 'svg',
+        path: 'input.js',
+      });
+
+      expect(diagnostics).toEqual([]);
+    });
+
+    it('does not warn for a dynamic import with a non-static specifier', () => {
+      const source = [`const pkg = '@fluentui/react-icons';`, `const m = await import(pkg);`].join('\n');
+
+      const { diagnostics } = transformSource(source, { iconVariant: 'svg', path: 'input.js' });
+
+      expect(diagnostics).toEqual([]);
+    });
+
+    it('warns once per dynamic barrel and still rewrites sibling static imports', () => {
+      const source = [
+        `import { AddFilled } from '@fluentui/react-icons';`,
+        `const lazy = () => import('@fluentui/react-icons');`,
+      ].join('\n');
+
+      const { code, diagnostics } = transformSource(source, { iconVariant: 'svg', path: 'input.js' });
+
+      expect(code).toBe(
+        [
+          `import { AddFilled } from '@fluentui/react-icons/svg/add';`,
+          `const lazy = () => import('@fluentui/react-icons');`,
+        ].join('\n'),
+      );
+      expect(diagnostics).toHaveLength(1);
+      expect(diagnostics[0].level).toBe('warning');
+    });
+  });
+
+  describe('allowDynamicImports', () => {
+    const rewrite = (source: string, extra: Partial<Parameters<typeof transformSource>[1]> = {}) =>
+      transformSource(source, { iconVariant: 'svg', allowDynamicImports: true, path: 'input.js', ...extra });
+
+    describe('await destructure', () => {
+      it('rewrites a single-name await destructure to the atomic import', () => {
+        const { code, diagnostics } = rewrite(`const { AddRegular } = await import('@fluentui/react-icons');`);
+        expect(code).toBe(`const { AddRegular } = await import('@fluentui/react-icons/svg/add');`);
+        expect(diagnostics).toEqual([]);
+      });
+
+      it('groups multiple names from the same atom into one import', () => {
+        const { code } = rewrite(`const { AddFilled, AddRegular } = await import('@fluentui/react-icons');`);
+        expect(code).toBe(`const { AddFilled, AddRegular } = await import('@fluentui/react-icons/svg/add');`);
+      });
+
+      it('splits names from different atoms into a positional Promise.all', () => {
+        const { code } = rewrite(`const { AddFilled, ArrowLeftRegular } = await import('@fluentui/react-icons');`);
+        expect(code).toBe(
+          `const [{ AddFilled }, { ArrowLeftRegular }] = await Promise.all([import('@fluentui/react-icons/svg/add'), import('@fluentui/react-icons/svg/arrow-left')]);`,
+        );
+      });
+
+      it('preserves renamed bindings', () => {
+        const { code } = rewrite(`const { AddFilled: myAdd } = await import('@fluentui/react-icons');`);
+        expect(code).toBe(`const { AddFilled: myAdd } = await import('@fluentui/react-icons/svg/add');`);
+      });
+
+      it('routes utility bindings to /utils alongside icons', () => {
+        const { code } = rewrite(`const { AddFilled, bundleIcon } = await import('@fluentui/react-icons');`);
+        expect(code).toBe(
+          `const [{ AddFilled }, { bundleIcon }] = await Promise.all([import('@fluentui/react-icons/svg/add'), import('@fluentui/react-icons/utils')]);`,
+        );
+      });
+
+      it('honors the fonts variant', () => {
+        const { code } = rewrite(`const { AddFilled } = await import('@fluentui/react-icons');`, {
+          iconVariant: 'fonts',
+        });
+        expect(code).toBe(`const { AddFilled } = await import('@fluentui/react-icons/fonts/add');`);
+      });
+
+      it('reroutes color icons off fonts per name', () => {
+        const { code } = rewrite(`const { AddFilled, AddCircleColor } = await import('@fluentui/react-icons');`, {
+          iconVariant: 'fonts',
+        });
+        expect(code).toBe(
+          `const [{ AddFilled }, { AddCircleColor }] = await Promise.all([import('@fluentui/react-icons/fonts/add'), import('@fluentui/react-icons/svg/add-circle')]);`,
+        );
+      });
+    });
+
+    describe('.then destructure', () => {
+      it('rewrites the specifier for a single-atom .then object pattern', () => {
+        const { code, diagnostics } = rewrite(`import('@fluentui/react-icons').then(({ AddFilled }) => AddFilled);`);
+        expect(code).toBe(`import('@fluentui/react-icons/svg/add').then(({ AddFilled }) => AddFilled);`);
+        expect(diagnostics).toEqual([]);
+      });
+
+      it('rewrites a multi-atom .then into Promise.all with a positional param', () => {
+        const { code } = rewrite(
+          `import('@fluentui/react-icons').then(({ AddFilled, ArrowLeftRegular }) => AddFilled);`,
+        );
+        expect(code).toBe(
+          `Promise.all([import('@fluentui/react-icons/svg/add'), import('@fluentui/react-icons/svg/arrow-left')]).then(([{ AddFilled }, { ArrowLeftRegular }]) => AddFilled);`,
+        );
+      });
+    });
+
+    describe('bail cases (left untouched, still warn)', () => {
+      it('does not rewrite a namespace binding', () => {
+        const source = `const icons = await import('@fluentui/react-icons');`;
+        const { code, diagnostics } = rewrite(source);
+        expect(code).toBe(source);
+        expect(diagnostics).toMatchInlineSnapshot(`
+          [
+            {
+              "level": "warning",
+              "message": "dynamic import of the "@fluentui/react-icons" barrel cannot be atomized, so the entire icon set will be bundled into the async chunk. Import an atomic path directly instead, e.g. import('@fluentui/react-icons/svg/add').",
+            },
+          ]
+        `);
+      });
+
+      it('does not rewrite a `.then(m => m.X)` namespace access', () => {
+        const source = `import('@fluentui/react-icons').then((m) => m.AddFilled);`;
+        const { code, diagnostics } = rewrite(source);
+        expect(code).toBe(source);
+        expect(diagnostics).toMatchInlineSnapshot(`
+          [
+            {
+              "level": "warning",
+              "message": "dynamic import of the "@fluentui/react-icons" barrel cannot be atomized, so the entire icon set will be bundled into the async chunk. Import an atomic path directly instead, e.g. import('@fluentui/react-icons/svg/add').",
+            },
+          ]
+        `);
+      });
+
+      it('does not rewrite a rest element', () => {
+        const source = `const { AddFilled, ...rest } = await import('@fluentui/react-icons');`;
+        const { code, diagnostics } = rewrite(source);
+        expect(code).toBe(source);
+        expect(diagnostics).toMatchInlineSnapshot(`
+          [
+            {
+              "level": "warning",
+              "message": "dynamic import of the "@fluentui/react-icons" barrel cannot be atomized, so the entire icon set will be bundled into the async chunk. Import an atomic path directly instead, e.g. import('@fluentui/react-icons/svg/add').",
+            },
+          ]
+        `);
+      });
+
+      it('does not rewrite a defaulted property', () => {
+        const source = `const { AddFilled = null } = await import('@fluentui/react-icons');`;
+        const { code } = rewrite(source);
+        expect(code).toBe(source);
+      });
+
+      it('leaves atomic dynamic imports untouched (no warning)', () => {
+        const source = `const { AddFilled } = await import('@fluentui/react-icons/svg/add');`;
+        const { code, diagnostics } = rewrite(source);
+        expect(code).toBe(source);
+        expect(diagnostics).toEqual([]);
+      });
+    });
+
+    it('is off by default — barrel dynamic imports only warn', () => {
+      const source = `const { AddFilled } = await import('@fluentui/react-icons');`;
+      const { code, diagnostics } = transformSource(source, { iconVariant: 'svg', path: 'input.js' });
+      expect(code).toBe(source);
+      expect(diagnostics).toMatchInlineSnapshot(`
+        [
+          {
+            "level": "warning",
+            "message": "dynamic import of the "@fluentui/react-icons" barrel cannot be atomized, so the entire icon set will be bundled into the async chunk. Import an atomic path directly instead, e.g. import('@fluentui/react-icons/svg/add').",
+          },
+        ]
+      `);
     });
   });
 });

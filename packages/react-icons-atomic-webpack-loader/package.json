@@ -1,11 +1,12 @@
 {
   "name": "@fluentui/react-icons-atomic-webpack-loader",
-  "version": "0.0.2",
+  "version": "0.0.6",
   "description": "Webpack loader that transforms barrel imports and re-exports from @fluentui/react-icons into atomic deep paths",
   "main": "lib/index.js",
   "scripts": {
-    "build": "tsc -p .",
-    "test": "vitest run && webpack -c test/webpack.config.js"
+    "build": "yarn run -T tsc -p .",
+    "lint": "yarn run -T eslint package.json",
+    "test": "yarn run -T vitest run && yarn run -T webpack -c test/webpack.config.js"
   },
   "engines": {
     "node": ">=20.0.0"
@@ -24,11 +25,7 @@
     "oxc-parser": "^0.125.0"
   },
   "devDependencies": {
-    "@fluentui/react-icons": "*",
-    "ts-loader": "^9.5.0",
-    "typescript": "5.0.4",
-    "webpack": "^5.72.0",
-    "@types/node": "22"
+    "@fluentui/react-icons": "*"
   },
   "peerDependencies": {
     "webpack": ">=5.0.0"

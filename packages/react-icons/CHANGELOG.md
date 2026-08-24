@@ -1,3 +1,75 @@
+## 2.0.338 (2026-08-21)
+
+### 🚀 Features
+
+- **react-icons:** add new and updated icons ([#1222](https://github.com/microsoft/fluentui-system-icons/pull/1222))
+
+### 🩹 Fixes
+
+- **react-icons:** render Light font icons ([#1217](https://github.com/microsoft/fluentui-system-icons/pull/1217))
+
+## 2.0.337 (2026-08-13)
+
+This release contains icon updates
+
+## 2.0.336 (2026-08-12)
+
+### 🚀 Features
+
+- **react-icons:** ship native ESM output by default ([#1205](https://github.com/microsoft/fluentui-system-icons/pull/1205))
+
+### 🩹 Fixes
+
+- **react-icons:** reserve 1em box for font icons to prevent layout shift ([#1145](https://github.com/microsoft/fluentui-system-icons/pull/1145))
+
+## 2.0.335 (2026-08-07)
+
+### 🚀 Features
+
+- **react-icons:** add new and updated icons ([#1206](https://github.com/microsoft/fluentui-system-icons/pull/1206))
+- **react-icons:** add opt-in native ESM build behind --enable-native-esm ([#1199](https://github.com/microsoft/fluentui-system-icons/pull/1199))
+
+### 🩹 Fixes
+
+- migrate SVGO v2 → v4 to restore Food icon fork handles ([#1187](https://github.com/microsoft/fluentui-system-icons/pull/1187))
+
+## 2.0.334 (2026-07-24)
+
+### 🚀 Features
+
+- **react-icons:** add new and updated icons ([#1181](https://github.com/microsoft/fluentui-system-icons/pull/1181))
+
+### 🩹 Fixes
+
+- **react-icons:** stop headless base CSS from overriding shared data-fui-icon styling ([#1172](https://github.com/microsoft/fluentui-system-icons/pull/1172))
+
+## 2.0.333 (2026-07-10)
+
+### 🚀 Features
+
+- **assets:** add new and updated icons ([#1154](https://github.com/microsoft/fluentui-system-icons/pull/1154))
+- **react-icons:** render data-fui-icon attribute on all icon factories ([#1144](https://github.com/microsoft/fluentui-system-icons/pull/1144))
+
+### 🩹 Fixes
+
+- **react-icons:** honor fontSize prop on resizable font icons (SVG/font parity) ([#1146](https://github.com/microsoft/fluentui-system-icons/pull/1146))
+- **react-icons:** resolve [data-fui-icon-hidden] specificity ordering ([#1153](https://github.com/microsoft/fluentui-system-icons/pull/1153))
+
+## 2.0.332 (2026-07-07)
+
+### 🚀 Features
+
+- **react-icons:** add idPrefix prop to scope Color variant SVG ids ([#1131](https://github.com/microsoft/fluentui-system-icons/pull/1131))
+- **react-icons:** propagate `headless/` API to stable ([#1119](https://github.com/microsoft/fluentui-system-icons/pull/1119))
+
+### 🩹 Fixes
+
+- **bundle-size:** apply intended 1 kB threshold at repo root for compare-reports ([#1134](https://github.com/microsoft/fluentui-system-icons/pull/1134))
+
+### 🔥 Performance
+
+- **react-icons:** reuse canonical fonts instead of regenerating ([#1105](https://github.com/microsoft/fluentui-system-icons/pull/1105))
+
 ## 2.0.331 (2026-06-26)
 
 ### 🚀 Features

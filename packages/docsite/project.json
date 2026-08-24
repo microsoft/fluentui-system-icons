@@ -10,6 +10,10 @@
       "inputs": ["{projectRoot}/.storybook/**", "{projectRoot}/stories/**", "{projectRoot}/public/**"],
       "outputs": ["{projectRoot}/storybook-static"]
     },
+    "lint": {
+      "cache": true,
+      "inputs": ["{projectRoot}/stories/**", "{projectRoot}/.storybook/**", "{projectRoot}/eslint.config.mjs"]
+    },
     "extract-storybook-llms": {
       "cache": true,
       "dependsOn": ["build"],

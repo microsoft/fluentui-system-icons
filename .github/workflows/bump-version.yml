@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           token: ${{ secrets.CI_GITHUB_TOKEN }}
 
@@ -77,7 +77,7 @@ jobs:
       - name: Commit version number change
         run: |
           git add -A
-          git commit -m "Update version number to $NEW_VERSION"
+          git commit -m "chore(release): update version number to $NEW_VERSION"
 
       - name: Push release
         run: |

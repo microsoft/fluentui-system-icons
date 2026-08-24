@@ -9,7 +9,7 @@ on:
         default: false
         type: boolean
 
-# Serialize all automated writers to `main` (this workflow and bundle-size.baseline.yml
+# Serialize all automated writers to `main` (this workflow and publish-standalone.yml
 # share the same group) so their pushes can never race and clobber each other.
 # `cancel-in-progress: false` queues runs instead of cancelling them.
 concurrency:
@@ -40,15 +40,17 @@ jobs:
           app-id: ${{ secrets.GH_FLUENT_CI_APP_ID }}
           private-key: ${{ secrets.GH_FLUENT_CI_PRIVATE_KEY }}
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           token: ${{ steps.generate-token.outputs.token }}
-          #  Git knows file names/paths for history, but blobs (file contents) are fetched on demand.
-          filter: blob:none
-          # NOTE: This is needed for nx release changelog to detect all commits between releases
-          #  - temporarily increasing fetch-depth to 50 to get commit history for changelog generation
-          #  - we should consider switching to fetch-depth: 0 if we run into issues or switching to Nx Version plans instead conventional commits
-          fetch-depth: 50
+          # Nx (release changelog / affected) needs the full commit history to resolve
+          # ranges between release tags. On this gigantic repo we keep the checkout cheap
+          # via a `tree:0` partial clone: full history is present, but trees/blobs are
+          # fetched on demand instead of a fragile `fetch-depth: 50` window that breaks
+          # once more than 50 commits land between releases.
+          # See https://github.com/nrwl/nx-set-shas#usage (fetch-depth: 0 + filter: tree:0).
+          filter: tree:0
+          fetch-depth: 0
           fetch-tags: true
 
       - name: Bump version patch
@@ -94,26 +96,32 @@ jobs:
           os.system(f'echo \"REACT_VERSION={major}.{minor}.{int(asset) + 1}\" >> \$GITHUB_ENV')
           """
 
-      - uses: actions/setup-node@v6
+      - run: corepack enable
+
+      - uses: actions/setup-node@v7
         with:
           node-version: 22.x
+          cache: 'yarn'
+          # Required so setup-node writes an .npmrc that wires npm auth to NODE_AUTH_TOKEN,
+          # which `nx release publish` (npm publish under the hood) relies on.
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install --immutable
 
       ## iOS
       - name: Run iOS generate script
-        run: npm run deploy:ios
+        run: yarn deploy:ios
         working-directory: importer
 
       - name: Build Fonts
-        run: npm run deploy:fonts
+        run: yarn deploy:fonts
         working-directory: importer
 
       ## Flutter
       # Disabling for now until the pipeline job is fixed
       # - name: Run Flutter generate script
-      #   run: npm run deploy:flutter
+      #   run: yarn deploy:flutter
       #   working-directory: importer
 
       # # The name should be same as the package name on pub.dev
@@ -161,66 +169,31 @@ jobs:
         env:
           REACT_ICONS_SKIP_METADATA_DIFF_CHECK: 'true'
         run: |
-          npx nx run-many --target=build --projects="tag:npm:public"
-          npx nx run react-icons:build-verify -u
+          yarn nx run-many --target=build --projects="tag:npm:public"
+          yarn nx run react-icons:build-verify -u
 
       # NX Release (all npm packages via release groups)
       - name: Prepare NPM release (version + changelog)
         run: |
-          npx nx release version $REACT_VERSION --group=react --verbose
-          npx nx release version $NEW_VERSION --group=native --verbose
-          npx nx release changelog $REACT_VERSION --group=react --from $CURRENT_VERSION --no-git-tag --no-git-commit --verbose
-          npx nx release changelog $NEW_VERSION --group=native --from $CURRENT_VERSION --no-git-tag --no-git-commit --verbose
+          yarn nx release version $REACT_VERSION --group=react --verbose
+          yarn nx release version $NEW_VERSION --group=native --verbose
+          yarn nx release changelog $REACT_VERSION --group=react --from $CURRENT_VERSION --no-git-tag --no-git-commit --verbose
+          yarn nx release changelog $NEW_VERSION --group=native --from $CURRENT_VERSION --no-git-tag --no-git-commit --verbose
 
-      - name: Update lockfile
-        run: npm install --package-lock-only
-
-      - name: Publish svg-icons to npm
-        if: ${{ !inputs.dry-run }}
-        uses: JS-DevTools/npm-publish@0fd2f4369c5d6bcfcde6091a7c527d810b9b5c3f # v4.1.5
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          access: public
-          package: packages/svg-icons/package.json
-
-      - name: Publish svg-sprites to npm
-        if: ${{ !inputs.dry-run }}
-        uses: JS-DevTools/npm-publish@0fd2f4369c5d6bcfcde6091a7c527d810b9b5c3f # v4.1.5
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          access: public
-          package: packages/svg-sprites/package.json
-
-      - name: Publish react-icons to npm
-        if: ${{ !inputs.dry-run }}
-        uses: JS-DevTools/npm-publish@0fd2f4369c5d6bcfcde6091a7c527d810b9b5c3f # v4.1.5
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          access: public
-          package: packages/react-icons/package.json
-
-      - name: Publish react-icons-font-subsetting-webpack-plugin to npm
-        if: ${{ !inputs.dry-run }}
-        uses: JS-DevTools/npm-publish@0fd2f4369c5d6bcfcde6091a7c527d810b9b5c3f # v4.1.5
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          access: public
-          package: packages/react-icons-font-subsetting-webpack-plugin/package.json
-
-      - name: Publish react-native-icons to npm
-        if: ${{ !inputs.dry-run }}
-        uses: JS-DevTools/npm-publish@0fd2f4369c5d6bcfcde6091a7c527d810b9b5c3f # v4.1.5
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          access: public
-          package: packages/react-native-icons/package.json
+      # Publishes the `react` + `native` release groups (svg-icons, svg-sprites, react-icons,
+      # react-icons-font-subsetting-webpack-plugin, react-native-icons) via Nx Release, which
+      # reads npm auth from NODE_AUTH_TOKEN (see setup-node registry-url above). On dry-run we
+      # still exercise the publish path with `--dry-run` instead of skipping it entirely.
+      - name: Publish to npm (Nx Release)
+        run: |
+          yarn nx release publish --group=react --access public ${{ inputs.dry-run && '--dry-run' || '' }} --verbose
+          yarn nx release publish --group=native --access public ${{ inputs.dry-run && '--dry-run' || '' }} --verbose
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # Android
       - name: Run Android generate script
-        env:
-          # see https://github.com/JS-DevTools/npm-publish/issues/15
-          INPUT_TOKEN: ''
-        run: npm run deploy:android
+        run: yarn deploy:android
         working-directory: importer
 
       - name: Setup Java
@@ -228,6 +201,14 @@ jobs:
         with:
           distribution: temurin
           java-version: 11
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@3f131e8634966bd73d06cc69884922b02e6faf92 # v6.2.0
+        with:
+          gradle-version: wrapper
+          gradle-home-cache-excludes: |
+            caches
+            jdks
 
       # - name: Base64 decodes and pipes the GPG key content into the secret file
       #   env:
@@ -238,16 +219,12 @@ jobs:
       #     sudo bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
 
       - name: Build Android library
-        uses: eskatos/gradle-command-action@v1
-        with:
-          arguments: assembleRelease -DversionName='${{ env.NEW_VERSION }}'
-          build-root-directory: android
-          wrapper-directory: android
+        run: ./gradlew assembleRelease -DversionName='${{ env.NEW_VERSION }}'
+        working-directory: android
 
       # Temporarily commenting out the publishing to Maven Central, as it is blocking the release for other platforms
       # - name: Publish to Maven Central
       #   if: ${{ !inputs.dry-run }}
-      #   uses: eskatos/gradle-command-action@v1
       #   env:
       #     OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
       #     OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
@@ -256,10 +233,8 @@ jobs:
       #     SIGNING_SECRET_KEY_RING_FILE: ${{ secrets.SIGNING_SECRET_KEY_RING_FILE }}
       #     SONATYPE_STAGING_PROFILE_ID: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
       #     VERSION_NAME: ${{ env.NEW_VERSION }}
-      #   with:
-      #     arguments: publishReleasePublicationToSonatypeRepository --max-workers 1 closeAndReleaseSonatypeStagingRepository
-      #     build-root-directory: android
-      #     wrapper-directory: android
+      #   run: ./gradlew publishReleasePublicationToSonatypeRepository --max-workers 1 closeAndReleaseSonatypeStagingRepository
+      #   working-directory: android
 
       - name: Generate BUILD.gn file for Android
         run: python3 generate_build_gn_android.py
@@ -275,16 +250,28 @@ jobs:
         if: ${{ !inputs.dry-run }}
         run: |
           git add -A
-          git commit -m "Release $NEW_VERSION [skip ci]"
-
-      - name: Tag release
-        if: ${{ !inputs.dry-run }}
-        run: git tag "$NEW_VERSION"
+          git commit -m "chore(release): publish $NEW_VERSION [skip ci]"
 
       - name: Push release
         if: ${{ !inputs.dry-run }}
         run: |
-          git push origin HEAD:main --follow-tags --tags
+          set -euo pipefail
+          # Re-sync ONLY here (never rebuild): replay the already-built release commit onto
+          # the latest main. main can advance during the long build via any writer — another
+          # automated job or a PR merge. Those changes are normally disjoint from a release
+          # commit, so this replays cleanly and keeps the just-published artifacts byte-for-
+          # byte. A genuine conflict aborts the job instead of silently mutating a published
+          # artifact.
+          git fetch origin main
+          git rebase origin/main
+          # Branch FIRST, tag SECOND: push the commit, then tag the SHA now guaranteed on
+          # main. This ordering makes an orphaned tag (tag without its commit on main)
+          # impossible, and fails closed if main moved in the interim — just re-run to retry.
+          # (Do NOT use --tags/--follow-tags: they push tags independently of the branch, so
+          # a rejected branch push can still leave a tag pointing at a commit not on main.)
+          git push origin HEAD:main
+          git tag "$NEW_VERSION"
+          git push origin "refs/tags/$NEW_VERSION"
 
       - name: Trigger CocoaPods publish
         if: ${{ !inputs.dry-run }}
@@ -311,7 +298,7 @@ jobs:
           echo "- \`@fluentui/react-native-icons@$REACT_VERSION\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 🏷️ Git operations that would be performed" >> $GITHUB_STEP_SUMMARY
-          echo "- Commit: \`Release $NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Commit: \`chore(release): publish $NEW_VERSION [skip ci]\`" >> $GITHUB_STEP_SUMMARY
           echo "- Tag: \`$NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
           echo "- Push to: \`origin/main\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
@@ -329,7 +316,7 @@ jobs:
           # Copy each changed file under packages/ (preserving directory structure) to the staging area
           git status --porcelain -- 'packages/' | awk '{print $NF}' | xargs -I{} cp --parents {} /tmp/changed-packages/ 2>/dev/null || true
           # Include root manifests so the artifact is a self-contained snapshot of version bumps
-          cp package.json package-lock.json /tmp/changed-packages/
+          cp package.json yarn.lock /tmp/changed-packages/
 
       - name: Upload changed package files
         if: ${{ inputs.dry-run }}
@@ -345,7 +332,7 @@ jobs:
   #   needs: publish-library
 
   #   steps:
-  #   - uses: actions/checkout@v6
+  #   - uses: actions/checkout@v7
 
   #   - name: Bump version patch
   #     run: |
@@ -362,11 +349,10 @@ jobs:
   #     with:
   #       node-version: 11.x
 
-  #   - run: npm install
-  #     working-directory: importer
+  #   - run: yarn install --immutable
 
   #   - name: Run generate script
-  #     run: npm run deploy:android
+  #     run: yarn deploy:android
   #     working-directory: importer
 
   #   - name: Setup Java
@@ -375,17 +361,22 @@ jobs:
   #       distribution: temurin
   #       java-version: 8
 
+  #   - name: Set up Gradle
+  #     uses: gradle/actions/setup-gradle@v5
+  #     with:
+  #       gradle-version: wrapper
+  #       gradle-home-cache-excludes: |
+  #         caches
+  #         jdks
+
   #   - name: Restore release keystore
   #     run: |
   #       echo "${{ secrets.ANDROID_KEYSTORE }}" > release.keystore.asc
   #       gpg -d --passphrase "${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" --batch release.keystore.asc > release.keystore
 
   #   - name: Build Android demo app
-  #     uses: eskatos/gradle-command-action@v1
-  #     with:
-  #       arguments: ':sample-showcase:assembleRelease -DversionName=${{ env.NEW_VERSION }} -DversionCode=${{ github.run_number }} -Pandroid.injected.signing.store.file=/home/runner/work/fluentui-system-icons/fluentui-system-icons/release.keystore -Pandroid.injected.signing.store.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }} -Pandroid.injected.signing.key.alias=${{ secrets.ANDROID_KEYSTORE_ALIAS }} -Pandroid.injected.signing.key.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}'
-  #       build-root-directory: android
-  #       wrapper-directory: android
+  #     run: ./gradlew :sample-showcase:assembleRelease -DversionName=${{ env.NEW_VERSION }} -DversionCode=${{ github.run_number }} -Pandroid.injected.signing.store.file=/home/runner/work/fluentui-system-icons/fluentui-system-icons/release.keystore -Pandroid.injected.signing.store.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }} -Pandroid.injected.signing.key.alias=${{ secrets.ANDROID_KEYSTORE_ALIAS }} -Pandroid.injected.signing.key.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+  #     working-directory: android
 
   #   - name: Publish apk to App Center
   #     uses: wzieba/AppCenter-Github-Action@v1.0.0

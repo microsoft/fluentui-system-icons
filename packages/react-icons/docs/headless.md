@@ -26,7 +26,7 @@ The standard API uses Griffel's `makeStyles` / `mergeClasses` to inject CSS rule
 
 You **must** import the headless CSS file — this is the key difference from the standard API, which injects styles at runtime.
 
-**For SVG icons and SVG sprites:**
+**For SVG icons:**
 
 ```ts
 import '@fluentui/react-icons/headless/styles.css';
@@ -69,27 +69,7 @@ function MyComponent() {
 }
 ```
 
-### SVG Sprites
-
-Headless SVG sprites work the same way as standard SVG sprites but without Griffel:
-
-```tsx
-import '@fluentui/react-icons/headless/styles.css';
-
-import { AccessTime20Filled, AccessTime24Filled } from '@fluentui/react-icons/headless/svg-sprite/access-time';
-import { Add16Filled } from '@fluentui/react-icons/headless/svg-sprite/add';
-
-function MyComponent() {
-  return (
-    <>
-      <AccessTime20Filled />
-      <Add16Filled />
-    </>
-  );
-}
-```
-
-> **Same-origin requirement:** Sprite files must be served from the same origin as your application. See the [SVG Sprites same-origin section](./preview-features/svg-sprites.md#same-origin-requirement) for details.
+> **SVG sprites are not available in the Headless API yet.** SVG sprites are still a [preview feature](./preview-features/svg-sprites.md) of the standard (Griffel) API only; a headless sprite variant is not published.
 
 ### Font Icons
 
@@ -173,7 +153,7 @@ function MyComponent() {
 
 You can keep root-level barrel imports and leverage build transforms to adopt the headless API without modifying your source code. This works for both existing codebases migrating to headless approach and greenfield projects.
 
-Use `headless/svg` as the target path (or `headless/svg-sprite` for sprites, `headless/fonts` for font icons).
+Use `headless/svg` as the target path (or `headless/fonts` for font icons).
 
 > **Note:** You still need to manually add the CSS import (`import '@fluentui/react-icons/headless/styles.css'`) to your application entry point — build transforms only rewrite component imports.
 

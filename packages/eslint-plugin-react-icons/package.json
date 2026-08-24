@@ -1,0 +1,47 @@
+{
+  "name": "@fluentui/eslint-plugin-react-icons",
+  "version": "0.0.1",
+  "description": "ESLint plugin for @fluentui/react-icons and @fluentui/react-brand-icons",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "type": "commonjs",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "require": "./lib/index.js",
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "clean": "git clean -fXd lib/",
+    "generate:data": "node scripts/generate-icon-sizes.mjs --metadata ../react-icons/metadata.json --out src/rules/prefer-resizable/icon-sizes.generated.ts",
+    "build": "yarn clean && yarn generate:data && yarn run -T tsc -p tsconfig.lib.json",
+    "lint": "yarn run -T eslint src package.json",
+    "test": "yarn run -T vitest run",
+    "type-check": "yarn run -T tsc -p tsconfig.json",
+    "type-check:infra": "yarn run -T tsc -p tsconfig.utils.json"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/microsoft/fluentui-system-icons.git",
+    "directory": "packages/eslint-plugin-react-icons"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/microsoft/fluentui-system-icons/issues"
+  },
+  "dependencies": {
+    "@typescript-eslint/utils": "7.18.0"
+  },
+  "peerDependencies": {
+    "eslint": ">=8.0.0"
+  },
+  "files": [
+    "lib/*",
+    "docs"
+  ]
+}

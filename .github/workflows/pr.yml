@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Check asset directories are valid for Windows
         run: |
@@ -33,7 +33,7 @@ jobs:
     name: Validate Asset Fills
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Check that all SVGs have the right fill
         run: |
@@ -48,21 +48,45 @@ jobs:
             exit 1
           fi
 
+  valid-pr-title:
+    name: Validate PR Title
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - run: corepack enable
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22.x
+          cache: 'yarn'
+
+      - run: yarn install --immutable
+
+      - name: Validate PR title follows Conventional Commits
+        env:
+          # Pass the title via env to avoid shell injection from untrusted PR titles.
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: echo "$PR_TITLE" | yarn commitlint
+
   build-ios:
     name: Build iOS library
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v6
+      - run: corepack enable
+
+      - uses: actions/setup-node@v7
         with:
           node-version: 22.x
+          cache: 'yarn'
 
-      - run: npm ci
+      - run: yarn install --immutable
 
       - name: Run generate script
-        run: npm run deploy:ios
+        run: yarn deploy:ios
         working-directory: importer
 
   build-android:
@@ -70,16 +94,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v6
+      - run: corepack enable
+
+      - uses: actions/setup-node@v7
         with:
           node-version: 22.x
+          cache: 'yarn'
 
-      - run: npm ci
+      - run: yarn install --immutable
 
       - name: Run generate script
-        run: npm run deploy:android
+        run: yarn deploy:android
         working-directory: importer
 
       - name: Setup Java
@@ -88,13 +115,17 @@ jobs:
           distribution: temurin
           java-version: 11
 
-      # https://github.com/marketplace/actions/gradle-command
-      - name: Build Android library
-        uses: eskatos/gradle-command-action@v1
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@3f131e8634966bd73d06cc69884922b02e6faf92 # v6.2.0
         with:
-          arguments: assembleRelease
-          build-root-directory: android
-          wrapper-directory: android
+          gradle-version: wrapper
+          gradle-home-cache-excludes: |
+            caches
+            jdks
+
+      - name: Build Android library
+        run: ./gradlew assembleRelease
+        working-directory: android
 
       - name: Generate BUILD.gn file for Android
         run: python3 generate_build_gn_android.py
@@ -106,16 +137,16 @@ jobs:
   #   runs-on: ubuntu-latest
 
   #   steps:
-  #   - uses: actions/checkout@v6
+  #   - uses: actions/checkout@v7
 
   #   - uses: actions/setup-node@v4
   #     with:
   #       node-version: 22.x
 
-  #   - run: npm ci
+  #   - run: yarn install --immutable
 
   #   - name: Run generate script
-  #     run: npm run deploy:flutter
+  #     run: yarn deploy:flutter
   #     working-directory: importer
 
   #   # Build Flutter library
@@ -139,40 +170,59 @@ jobs:
       actions: 'read'
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
           filter: tree:0
 
-      - uses: actions/setup-node@v6
+      - run: corepack enable
+
+      - uses: actions/setup-node@v7
         with:
           node-version: 22.x
+          cache: 'yarn'
 
-      - run: npm ci
+      - run: yarn install --immutable
 
       - uses: nrwl/nx-set-shas@afb73a62d26e41464e9254689e1fd6122ee683c1 # v5.0.1
 
       - name: Format Check
-        run: npx nx format:check
+        run: yarn nx format:check
+
+      - name: Single Version Policy Check
+        run: yarn deps:check
+
+      - name: Package Scripts Check
+        run: yarn scripts:check
 
       - name: Lint
-        run: npx nx affected -t lint
+        run: yarn nx affected -t lint
 
       - name: Type Check Infra
-        run: npx nx affected -t type-check:infra
+        run: yarn nx affected -t type-check:infra
+
+      - name: Install Playwright browsers
+        # `docsite:extract-storybook-llms` crawls the built storybook with Playwright.
+        run: yarn playwright install --with-deps chromium
 
       - name: Build
         run: |
-          npx nx affected -t build
-          npx nx affected -t build-verify
+          yarn nx affected -t build
+          yarn nx affected -t extract-storybook-llms
+          yarn nx affected -t build-verify
+          yarn nx affected -t check:types-packaging
 
       - name: Test
-        run: npx nx affected -t test
+        run: yarn nx affected -t test
 
       - name: Bundle-Size
+        env:
+          # Required by monosize-storage-git to read the baseline report artifact
+          # from the target branch via the GitHub API.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npx nx affected -t bundle-size
-          npx monosize compare-reports --branch=${{ github.event.pull_request.base.ref }} --output markdown --quiet > bundle-size-report.md
+          yarn nx affected -t bundle-size
+          yarn monosize compare-reports --branch=${{ github.event.pull_request.base.ref }} --output markdown --quiet > bundle-size-report.md
 
       - name: Write job summary
         if: always()
@@ -194,6 +244,8 @@ jobs:
             echo "To preview locally after downloading and extracting:" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             echo '```sh' >> $GITHUB_STEP_SUMMARY
+            # npx, not yarn dlx: this runs in whatever folder the artifact was
+            # extracted to, so it only needs Node — not a yarn install.
             echo "npx http-server ./docsite-storybook-build -o" >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
           fi

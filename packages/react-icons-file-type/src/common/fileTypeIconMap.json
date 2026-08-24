@@ -32,7 +32,7 @@
   ],
   "calendar": ["ical", "icalendar", "ics", "ifb", "vcs"],
   "classifier": ["classifier"],
-  "clipchamp": ["clipchamp"],
+  "clipchamp": ["clipchamp", "clpx"],
   "cliptemplate": ["cliptemplate"],
   "code": [
     "abap",

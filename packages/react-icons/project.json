@@ -4,13 +4,14 @@
   "projectType": "library",
   "sourceRoot": "packages/react-icons/src",
   "tags": ["platform:web"],
-  "implicitDependencies": ["@fluentui/system-icons-processing", "svg-icons"],
+  "implicitDependencies": ["system-icons-processing", "svg-icons"],
   "targets": {
     "build": {
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": [
         "default",
+        "fontArtifacts",
         "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
         "!{projectRoot}/tsconfig.spec.json",
         "!{projectRoot}/vitest.config.[jt]s",
@@ -21,6 +22,20 @@
     },
     "build-verify": {
       "dependsOn": ["build"]
+    },
+    "check:types-packaging": {
+      "//": [
+        "are-the-types-wrong: guards the ESM-first exports map against types/runtime drift,",
+        "so `import` never resolves to CJS types (and vice versa) as icons or entry points are added.",
+        "Runs the `node16` profile: `node10` predates `exports` maps entirely, so it cannot see any",
+        "subpath and its failures say nothing about this package. `moduleResolution: bundler` and",
+        "`node16` are both covered by that profile.",
+        "The two `.css` entry points are excluded because they are not JavaScript and therefore have",
+        "no type resolution to check."
+      ],
+      "cache": true,
+      "dependsOn": ["build"],
+      "inputs": ["{projectRoot}/package.json", "{projectRoot}/lib", "{projectRoot}/lib-cjs"]
     },
     "bundle-size": {
       "dependsOn": ["build"]

@@ -4,5 +4,5 @@
   "projectType": "library",
   "sourceRoot": "packages/react-native-icons/src",
   "tags": ["platform:react-native"],
-  "implicitDependencies": ["@fluentui/system-icons-processing"]
+  "implicitDependencies": ["system-icons-processing"]
 }

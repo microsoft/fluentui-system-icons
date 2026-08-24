@@ -1,0 +1,42 @@
+{
+  "versionGroups": [
+    {
+      "label": "Workspace-local package references are managed by nx release, ignore them",
+      "dependencies": ["$LOCAL"],
+      "isIgnored": true
+    },
+    {
+      "label": "Allowlisted exception: @fluentui/react-icons is pinned to its legacy TypeScript 4.x / React 17 types toolchain",
+      "packages": ["@fluentui/react-icons"],
+      "dependencies": ["typescript", "@types/react"],
+      "dependencyTypes": ["dev"],
+      "isIgnored": true
+    },
+    {
+      "label": "Allowlisted exception: catalog-backed tools are declared where they run, but their version still lives in a single place (.yarnrc.yml)",
+      "packages": ["@fluentui/system-icons-processing"],
+      "dependencies": ["avocado"],
+      "dependencyTypes": ["dev"],
+      "isIgnored": true
+    },
+    {
+      "label": "Single version policy: devDependencies must live only in the workspace root",
+      "packages": ["!@fluentui/system-icons-repo"],
+      "dependencyTypes": ["dev"],
+      "dependencies": ["**"],
+      "isBanned": true
+    },
+    {
+      "label": "peerDependencies declare intentionally broad support ranges and are exempt from the single version policy",
+      "dependencyTypes": ["peer"],
+      "dependencies": ["**"],
+      "isIgnored": true
+    },
+    {
+      "label": "resolutions deliberately override a transitive version and need not match the declared range",
+      "dependencyTypes": ["resolutions"],
+      "dependencies": ["**"],
+      "isIgnored": true
+    }
+  ]
+}

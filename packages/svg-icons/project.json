@@ -3,18 +3,16 @@
   "name": "svg-icons",
   "projectType": "library",
   "tags": ["platform:web"],
-  "implicitDependencies": ["@fluentui/system-icons-processing"],
+  "implicitDependencies": ["system-icons-processing"],
   "targets": {
     "build": {
       "cache": true,
       "inputs": [
+        "assets",
+        "iconGenerationToolchain",
         "{projectRoot}/package.json",
         "{projectRoot}/svgo.config.js",
-        "{projectRoot}/unfill.js",
-        "{workspaceRoot}/assets/**/*",
-        "{workspaceRoot}/importer/generate.js",
-        "{workspaceRoot}/importer/replace-in-files.js",
-        "{workspaceRoot}/importer/svgo.config.shared.cjs"
+        "{projectRoot}/unfill.js"
       ],
       "outputs": ["{projectRoot}/icons"]
     }

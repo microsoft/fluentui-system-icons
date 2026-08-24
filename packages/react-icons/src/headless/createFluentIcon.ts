@@ -3,7 +3,7 @@ import * as React from 'react';
 import type { FluentIconsProps } from './shared';
 import { iconClassName, cx } from './shared';
 import { useIconState } from './useIconState';
-import { computeViewBox, precomputeColorChildren, renderSvgBody } from '../core/svg';
+import { computeViewBox, createColorChildrenResolver, renderSvgBody } from '../core/svg';
 import type { SvgNode } from '../core/svg';
 
 export type FluentIcon = React.FC<FluentIconsProps>;
@@ -42,11 +42,12 @@ export const createFluentIcon = (
   options?: CreateFluentIconOptions,
 ): FluentIcon => {
   const viewBoxWidth = computeViewBox(width);
-  // Pre-render color SVG nodes once in the factory so the recursion
-  // never runs during React renders.
-  const colorChildren = precomputeColorChildren(pathsOrSvg, options);
+  // Resolve color children once per component: mono-color icons pay nothing,
+  // color icons get per-instance memoized `idPrefix` scoping.
+  const useColorChildren = createColorChildrenResolver(pathsOrSvg, options);
   const Icon = React.forwardRef((props: FluentIconsProps, ref: React.Ref<HTMLElement>) => {
     const iconState = useIconState(props, { flipInRtl: options?.flipInRtl });
+    const colorChildren = useColorChildren(props.idPrefix);
     const state = {
       ...iconState,
       className: cx(iconClassName, iconState.className),

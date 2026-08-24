@@ -1,3 +1,33 @@
+## 1.1.338 (2026-08-21)
+
+This release contains icon updates
+
+## 1.1.337 (2026-08-13)
+
+This release contains icon updates
+
+## 1.1.336 (2026-08-12)
+
+This release contains icon updates
+
+## 1.1.335 (2026-08-07)
+
+This release contains icon updates
+
+## 1.1.334 (2026-07-24)
+
+This release contains icon updates
+
+## 1.1.333 (2026-07-10)
+
+This release contains icon updates
+
+## 1.1.332 (2026-07-07)
+
+### 🔥 Performance
+
+- **react-icons:** reuse canonical fonts instead of regenerating ([#1105](https://github.com/microsoft/fluentui-system-icons/pull/1105))
+
 ## 1.1.331 (2026-06-26)
 
 ### 🚀 Features

@@ -1,3 +1,27 @@
+## 0.0.6 (2026-07-30)
+
+### 🚀 Features
+
+- **react-icons-atomic-webpack-loader:** atomize dynamic barrel imports behind allowDynamicImports ([#1163](https://github.com/microsoft/fluentui-system-icons/pull/1163))
+- **react-icons-atomic-webpack-loader:** warn on un-atomizable dynamic barrel imports ([#1161](https://github.com/microsoft/fluentui-system-icons/pull/1161))
+
+## 0.0.5 (2026-07-03)
+
+### 🚀 Features
+
+- **react-icons-atomic-webpack-loader:** reroute SVG-only color icons off font variants ([#1137](https://github.com/microsoft/fluentui-system-icons/pull/1137))
+- **react-icons-atomic-webpack-loader:** add headless option ([#1122](https://github.com/microsoft/fluentui-system-icons/pull/1122))
+
+## 0.0.4 (2026-06-30)
+
+This release contains icon updates
+
+## 0.0.3 (2026-06-29)
+
+### 🚀 Features
+
+- **react-icons-atomic-webpack-loader:** support @fluentui/react-brand-icons ([#1113](https://github.com/microsoft/fluentui-system-icons/pull/1113))
+
 ## 0.0.2 (2026-05-18)
 
 ### 🩹 Fixes

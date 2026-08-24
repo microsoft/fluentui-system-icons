@@ -10,7 +10,7 @@ import * as React from 'react';
 export const applyFontStyle = (
   state: { style?: React.CSSProperties },
   primaryFill: string | undefined,
-  fontSize: number | undefined,
+  fontSize: number | string | undefined,
 ): void => {
   if (primaryFill && primaryFill.toLowerCase() !== 'currentcolor') {
     state.style = {

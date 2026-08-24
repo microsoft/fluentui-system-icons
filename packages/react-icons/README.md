@@ -164,7 +164,22 @@ Color icons with gradients use non-scoped `id` attributes. When multiple instanc
 
 **Workarounds:**
 
-✅ **Option 1: Use SVG sprites (recommended for multiple instances)**
+✅ **Option 1: Scope the IDs with `idPrefix` (recommended)**
+
+Pass a unique `idPrefix` per rendered instance. Every locally-defined `id` (gradients, clip paths, filters) and its matching `url(#…)` reference is prefixed, so instances no longer share IDs in the global DOM namespace. The prop only applies to `Color` variants — mono-color icons ignore it.
+
+```tsx
+<CalendarColor idPrefix="cal-a-" />
+<CalendarColor idPrefix="cal-b-" />
+```
+
+> **Tips:**
+>
+> - **On React 18+, `React.useId()` is the recommended source** for the prefix — it's stable across re-renders and SSR-safe: `const id = React.useId()` then `<CalendarColor idPrefix={id} />`. Use one `useId()` per component instance; if you render several color icons in one component, append a discriminator (e.g. ``idPrefix={`${id}-${i}`}``) so they don't collide with each other. (The colons in `useId()` output are fine — `url(#…)` resolves via `getElementById`, not CSS selectors.)
+> - On React 16.8–17 (no `useId`), derive a **stable, unique** value from your data/key instead. Either way, avoid regenerating it on every render so the icon's memoized output stays cached.
+> - For color-icon-heavy trees that re-render frequently, also consider wrapping icons in `React.memo` to skip renders entirely when props are unchanged. `React.memo` (skips the whole render when props are stable) and `idPrefix` memoization (reuses the scoped SVG tree across re-renders) are complementary.
+
+✅ **Option 2: Use SVG sprites (good for many repeated instances)**
 
 ```tsx
 <svg>
@@ -182,13 +197,13 @@ Color icons with gradients use non-scoped `id` attributes. When multiple instanc
 </svg>
 ```
 
-✅ **Option 2: Move off-screen with absolute positioning**
+✅ **Option 3: Move off-screen with absolute positioning**
 
 ```tsx
 <Icon style={{ position: 'absolute', top: '-9999px', left: '-9999px' }} />
 ```
 
-✅ **Option 3: Use `visibility: 'hidden'`** (maintains layout space)
+✅ **Option 4: Use `visibility: 'hidden'`** (maintains layout space)
 
 ##### 3. Dark Theme Contrast Issues
 
@@ -270,6 +285,22 @@ These are the only two types of breaking changes that deviate from standard sema
 
 **Recommendation**: When upgrading, even for patch versions, review the release notes for any removed or renamed icons to ensure your application isn't affected.
 
+### Module Formats
+
+> **Since `v2.0.336`.**
+
+The package is **ESM-first**: it is marked `"type": "module"` and ships native ESM in `lib/` alongside a CommonJS build in `lib-cjs/` (`.cjs` / `.d.cts`). Every entry point is declared in the `exports` map with both an `import` and a `require` condition, so your toolchain picks the right one automatically.
+
+This is a packaging change only — no API surface changed:
+
+- **Bundlers** (webpack, Vite, Rollup, Metro, esbuild): nothing changes. They already resolved the ESM build via the `import`/`module` conditions.
+- **CommonJS consumers**: `require('@fluentui/react-icons')` keeps working and now resolves to `.cjs` files with matching `.d.cts` declarations.
+- **Bare Node ESM**: `import` now works without a bundler, because the ESM output uses fully specified relative specifiers (`./utils/wrapIcon.js` rather than `./utils/wrapIcon`).
+
+> **NOTE:** The font (`/fonts`, `/headless/fonts`) and `.css` entry points remain bundler-only. Font modules import `.ttf`/`.woff` binaries and CSS is not JavaScript, so neither can be loaded by bare Node — this is unchanged.
+
+No `tsconfig.json` change is required for this. `moduleResolution: "bundler"` is still the recommended setting (see [TypeScript Configuration](#typescript-configuration)) because it is what makes the subpath exports resolve, but ESM-first packaging does not force you onto `"node16"`.
+
 ## Atomic API
 
 The Atomic API provides a more granular way to import icons, with each icon variant exported individually from dedicated module files. This approach can significantly improve tree-shaking and reduce bundle sizes, especially when you only use a small subset of the available icons.
@@ -338,7 +369,16 @@ Migrating a larger codebase to the new performant atomic imports might be a daun
 
 Use `svg` as the target path. This transformation happens at build time, so your source code remains unchanged while your bundled output gets the full tree-shaking benefits.
 
-👉 **[Build-Time Transform setup (Babel, SWC & Webpack) →](./docs/build-transforms.md)**
+**Webpack (recommended):** we ship two dedicated packages — [`@fluentui/react-icons-atomic-webpack-loader`](../react-icons-atomic-webpack-loader/README.md) for the import transform and [`@fluentui/react-icons-font-subsetting-webpack-plugin`](../react-icons-font-subsetting-webpack-plugin/README.md) for font subsetting.
+
+<details>
+<summary>Using Babel or SWC instead?</summary>
+
+Equivalent setups for Babel and SWC are documented in the full guide.
+
+</details>
+
+👉 **[Build-Time Transform setup →](./docs/build-transforms.md)**
 
 ## Atomic API (SVG Sprites) — ⚠️ Alpha
 

@@ -154,6 +154,16 @@
     "font": true,
     "type": "resizable"
   },
+  "AgentsPersonFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "AgentsPersonRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "AgentsSyncFilled": {
     "svg": true,
     "font": true,
@@ -2354,6 +2364,16 @@
     "font": true,
     "type": "resizable"
   },
+  "AutopilotFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "AutopilotRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "AutosumFilled": {
     "svg": true,
     "font": true,
@@ -4285,6 +4305,16 @@
     "type": "resizable"
   },
   "CalendarAgendaRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "CalendarAgendaClockFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "CalendarAgendaClockRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -6544,6 +6574,16 @@
     "font": true,
     "type": "resizable"
   },
+  "ClipboardMarkdownFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "ClipboardMarkdownRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "ClipboardMathFormulaFilled": {
     "svg": true,
     "font": true,
@@ -7285,6 +7325,16 @@
     "type": "resizable"
   },
   "ColorLineAccentRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "ColorOffFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "ColorOffRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -8550,6 +8600,16 @@
     "type": "resizable"
   },
   "DatabaseSearchRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DatabaseSettingsFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DatabaseSettingsRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -10419,6 +10479,16 @@
     "font": true,
     "type": "resizable"
   },
+  "DoorAddFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "DoorAddRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "DoorArrowLeftFilled": {
     "svg": true,
     "font": true,
@@ -11474,6 +11544,26 @@
     "font": true,
     "type": "resizable"
   },
+  "FilmstripArrowUpFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "FilmstripArrowUpRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "FilmstripGlobeFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "FilmstripGlobeRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "FilmstripImageFilled": {
     "svg": true,
     "font": true,
@@ -11925,6 +12015,16 @@
     "type": "resizable"
   },
   "FolderDataBarRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "FolderDismissFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "FolderDismissRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -15224,6 +15324,16 @@
     "font": true,
     "type": "resizable"
   },
+  "LinkOffFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "LinkOffRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "LinkPersonFilled": {
     "svg": true,
     "font": true,
@@ -17319,6 +17429,16 @@
     "font": true,
     "type": "resizable"
   },
+  "OrientationPortraitFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "OrientationPortraitRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "OvalFilled": {
     "svg": true,
     "font": true,
@@ -17585,6 +17705,16 @@
     "type": "resizable"
   },
   "PanelLeftKeyRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "PanelLeftTallFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "PanelLeftTallRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -24429,6 +24559,16 @@
     "font": true,
     "type": "resizable"
   },
+  "TableSelectRangeFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "TableSelectRangeRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "TableSettingsFilled": {
     "svg": true,
     "font": true,
@@ -29974,6 +30114,36 @@
     "font": true,
     "type": "sized"
   },
+  "AgentsPerson16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "AgentsPerson16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "AgentsPerson20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "AgentsPerson20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "AgentsPerson24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "AgentsPerson24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "AgentsSync20Filled": {
     "svg": true,
     "font": true,
@@ -34124,6 +34294,31 @@
     "font": true,
     "type": "sized"
   },
+  "ArrowExportLtr28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowExportLtr28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowExportLtr32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowExportLtr32Light": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowExportLtr32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "ArrowExportRtl16Filled": {
     "svg": true,
     "font": true,
@@ -34154,6 +34349,31 @@
     "font": true,
     "type": "sized"
   },
+  "ArrowExportRtl28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowExportRtl28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowExportRtl32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowExportRtl32Light": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowExportRtl32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "ArrowExportUp16Filled": {
     "svg": true,
     "font": true,
@@ -34180,6 +34400,31 @@
     "type": "sized"
   },
   "ArrowExportUp24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowExportUp28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowExportUp28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowExportUp32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowExportUp32Light": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowExportUp32Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -34785,6 +35030,31 @@
     "type": "sized"
   },
   "ArrowImport24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowImport28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowImport28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowImport32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowImport32Light": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowImport32Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -35814,6 +36084,46 @@
     "font": true,
     "type": "sized"
   },
+  "ArrowRotateClockwise28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowRotateClockwise28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowRotateClockwise32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowRotateClockwise32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowRotateClockwise48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowRotateClockwise48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowRotateCounterclockwise16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowRotateCounterclockwise16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "ArrowRotateCounterclockwise20Filled": {
     "svg": true,
     "font": true,
@@ -35830,6 +36140,36 @@
     "type": "sized"
   },
   "ArrowRotateCounterclockwise24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowRotateCounterclockwise28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowRotateCounterclockwise28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowRotateCounterclockwise32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowRotateCounterclockwise32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowRotateCounterclockwise48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ArrowRotateCounterclockwise48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -38030,6 +38370,16 @@
     "type": "sized"
   },
   "Autocorrect32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Autopilot20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Autopilot20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -44314,6 +44664,16 @@
     "font": true,
     "type": "sized"
   },
+  "CalendarAgenda16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarAgenda16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "CalendarAgenda20Filled": {
     "svg": true,
     "font": true,
@@ -44340,6 +44700,46 @@
     "type": "sized"
   },
   "CalendarAgenda28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarAgendaClock16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarAgendaClock16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarAgendaClock20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarAgendaClock20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarAgendaClock24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarAgendaClock24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarAgendaClock28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CalendarAgendaClock28Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -47265,6 +47665,26 @@
     "type": "sized"
   },
   "CallWarning20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CallWarning24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CallWarning24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CallWarning28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CallWarning28Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -51579,6 +51999,16 @@
     "font": true,
     "type": "sized"
   },
+  "CircleHint12Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CircleHint12Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "CircleHint16Filled": {
     "svg": true,
     "font": true,
@@ -52835,6 +53265,36 @@
     "type": "sized"
   },
   "ClipboardLink24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClipboardMarkdown16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClipboardMarkdown16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClipboardMarkdown20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClipboardMarkdown20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClipboardMarkdown24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ClipboardMarkdown24Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -55729,7 +56189,27 @@
     "font": true,
     "type": "sized"
   },
+  "Color28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Color28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Color32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Color32Light": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Color32Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -55890,6 +56370,36 @@
     "type": "sized"
   },
   "ColorLineAccent24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ColorOff20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ColorOff20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ColorOff24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ColorOff24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ColorOff28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ColorOff28Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -60464,6 +60974,36 @@
     "font": true,
     "type": "sized"
   },
+  "DatabaseSettings16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DatabaseSettings16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DatabaseSettings20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DatabaseSettings20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DatabaseSettings24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DatabaseSettings24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "DatabaseStack16Filled": {
     "svg": true,
     "font": true,
@@ -64024,6 +64564,16 @@
     "font": true,
     "type": "sized"
   },
+  "DocumentDismiss48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DocumentDismiss48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "DocumentEdit16Color": {
     "svg": true,
     "font": false,
@@ -66880,6 +67430,36 @@
     "type": "sized"
   },
   "Door32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DoorAdd16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DoorAdd16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DoorAdd20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DoorAdd20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DoorAdd24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "DoorAdd24Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -70149,6 +70729,86 @@
     "font": true,
     "type": "sized"
   },
+  "FilmstripArrowUp16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FilmstripArrowUp16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FilmstripArrowUp20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FilmstripArrowUp20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FilmstripArrowUp24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FilmstripArrowUp24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FilmstripArrowUp32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FilmstripArrowUp32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FilmstripGlobe16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FilmstripGlobe16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FilmstripGlobe20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FilmstripGlobe20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FilmstripGlobe24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FilmstripGlobe24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FilmstripGlobe32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FilmstripGlobe32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "FilmstripImage20Filled": {
     "svg": true,
     "font": true,
@@ -71854,6 +72514,36 @@
     "font": true,
     "type": "sized"
   },
+  "FolderDismiss16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FolderDismiss16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FolderDismiss20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FolderDismiss20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FolderDismiss24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FolderDismiss24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "FolderDocument16Filled": {
     "svg": true,
     "font": true,
@@ -73024,6 +73714,21 @@
     "font": true,
     "type": "sized"
   },
+  "Form32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Form32Light": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Form32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Form48Color": {
     "svg": true,
     "font": false,
@@ -73135,6 +73840,21 @@
     "type": "sized"
   },
   "FormNew28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FormNew32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FormNew32Light": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FormNew32Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -83034,6 +83754,36 @@
     "font": true,
     "type": "sized"
   },
+  "LinkOff20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LinkOff20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LinkOff24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LinkOff24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LinkOff28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "LinkOff28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "LinkPerson16Filled": {
     "svg": true,
     "font": true,
@@ -91149,6 +91899,26 @@
     "font": true,
     "type": "sized"
   },
+  "OrientationPortrait20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "OrientationPortrait20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "OrientationPortrait24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "OrientationPortrait24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Oval16Filled": {
     "svg": true,
     "font": true,
@@ -91629,6 +92399,16 @@
     "font": true,
     "type": "sized"
   },
+  "Pair16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Pair16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Pair20Filled": {
     "svg": true,
     "font": true,
@@ -92100,6 +92880,16 @@
     "type": "sized"
   },
   "PanelLeftKey24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PanelLeftTall20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PanelLeftTall20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -94374,6 +95164,16 @@
     "font": true,
     "type": "sized"
   },
+  "PeopleLock16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PeopleLock16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "PeopleLock20Filled": {
     "svg": true,
     "font": true,
@@ -94465,6 +95265,16 @@
     "type": "sized"
   },
   "PeopleProhibited24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PeopleProhibited48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PeopleProhibited48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -100489,6 +101299,31 @@
     "font": true,
     "type": "sized"
   },
+  "PreviewLink28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PreviewLink28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PreviewLink32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PreviewLink32Light": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "PreviewLink32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Previous16Filled": {
     "svg": true,
     "font": true,
@@ -103394,6 +104229,16 @@
     "font": true,
     "type": "sized"
   },
+  "Ribbon28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Ribbon28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Ribbon32Color": {
     "svg": true,
     "font": false,
@@ -103465,6 +104310,16 @@
     "type": "sized"
   },
   "RibbonOff24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "RibbonOff28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "RibbonOff28Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -104294,6 +105149,16 @@
     "font": true,
     "type": "sized"
   },
+  "Scales16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Scales16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Scales20Filled": {
     "svg": true,
     "font": true,
@@ -104314,12 +105179,32 @@
     "font": true,
     "type": "sized"
   },
+  "Scales28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Scales28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Scales32Filled": {
     "svg": true,
     "font": true,
     "type": "sized"
   },
   "Scales32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Scales48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Scales48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -105434,6 +106319,16 @@
     "font": true,
     "type": "sized"
   },
+  "SelectObject16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SelectObject16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "SelectObject20Filled": {
     "svg": true,
     "font": true,
@@ -105450,6 +106345,16 @@
     "type": "sized"
   },
   "SelectObject24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SelectObjectSkew16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SelectObjectSkew16Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -107234,6 +108139,16 @@
     "font": true,
     "type": "sized"
   },
+  "ShieldDismiss48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "ShieldDismiss48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "ShieldDismissShield20Filled": {
     "svg": true,
     "font": true,
@@ -108979,6 +109894,16 @@
     "font": true,
     "type": "sized"
   },
+  "SlideLink28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SlideLink28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "SlideMicrophone20Filled": {
     "svg": true,
     "font": true,
@@ -109005,6 +109930,16 @@
     "type": "sized"
   },
   "SlideMicrophone32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SlideMultiple16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SlideMultiple16Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -116489,6 +117424,36 @@
     "font": true,
     "type": "sized"
   },
+  "TableSelectRange16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableSelectRange16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableSelectRange20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableSelectRange20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableSelectRange24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TableSelectRange24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "TableSettings16Filled": {
     "svg": true,
     "font": true,
@@ -118755,6 +119720,31 @@
     "type": "sized"
   },
   "TextAddT24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextAddT28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextAddT28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextAddT32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextAddT32Light": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextAddT32Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -130124,6 +131114,16 @@
     "font": true,
     "type": "sized"
   },
+  "Wifi148Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Wifi148Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Wifi20Color": {
     "svg": true,
     "font": false,
@@ -130230,6 +131230,16 @@
     "type": "sized"
   },
   "WifiOff24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WifiOff48Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "WifiOff48Regular": {
     "svg": true,
     "font": true,
     "type": "sized"

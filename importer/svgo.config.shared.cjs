@@ -12,7 +12,8 @@
 // (`--precision=2`); recursion/folder selection is also a CLI concern.
 //
 // Notes:
-// - `removeViewBox: false` keeps the viewBox so icons remain scalable.
+// - SVGO v4 no longer removes the viewBox by default, so icons stay scalable
+//   without any extra configuration.
 // - `mergePaths: false` preserves per-layer paths (required by color icons whose
 //   layers carry distinct fills/gradients).
 // - `prefixIds` namespaces ids (e.g. gradient ids) with the canonical
@@ -26,7 +27,6 @@ module.exports = {
       name: 'preset-default',
       params: {
         overrides: {
-          removeViewBox: false,
           mergePaths: false,
         },
       },

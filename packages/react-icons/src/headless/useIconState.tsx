@@ -1,5 +1,5 @@
 import type { FluentIconsProps } from './shared';
-import { DATA_FUI_ICON, DATA_FUI_ICON_RTL } from './shared';
+import { DATA_FUI_ICON_RTL } from './shared';
 import { useBaseIconState } from '../core/useBaseIconState';
 import type { UseIconStateOptions } from '../core/useBaseIconState';
 
@@ -25,8 +25,7 @@ export const useIconState = <
 ): Omit<FluentIconsProps<TBaseAttributes, TRefType>, 'primaryFill'> => {
   const { state, isRtlFlip } = useBaseIconState(props, options);
 
-  // Data attributes for CSS targeting
-  state[DATA_FUI_ICON] = '';
+  // Headless-only data attribute for RTL flip via CSS.
   if (isRtlFlip) {
     state[DATA_FUI_ICON_RTL] = '';
   }

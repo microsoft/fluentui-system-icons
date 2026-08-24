@@ -11,7 +11,7 @@
       "outputs": ["{projectRoot}/lib"]
     },
     "test": {
-      "dependsOn": ["build"]
+      "dependsOn": ["build", { "projects": ["react-icons-atomic-webpack-loader"], "target": "build" }]
     }
   }
 }

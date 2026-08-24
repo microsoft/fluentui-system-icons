@@ -1,3 +1,19 @@
+## 0.0.6 (2026-07-30)
+
+This release contains icon updates
+
+## 0.0.5 (2026-07-03)
+
+This release contains icon updates
+
+## 0.0.4 (2026-06-30)
+
+This release contains icon updates
+
+## 0.0.3 (2026-06-29)
+
+This release contains icon updates
+
 ## 0.0.2 (2026-05-18)
 
 ### 🩹 Fixes

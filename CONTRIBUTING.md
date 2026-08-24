@@ -19,6 +19,8 @@ or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any addi
 
 Pull request titles must follow the [Conventional Commits](https://www.conventionalcommits.org/) standard. This helps us generate accurate changelogs and maintain a clear project history.
 
+> PR titles are automatically validated in CI. In addition, every local commit message is validated by a Husky `commit-msg` hook (via [commitlint](https://commitlint.js.org)), so individual commits must follow the same convention.
+
 **Format**: `<type>(<scope>): <description>`
 
 **Examples**:

@@ -9,7 +9,12 @@ const { join, basename } = require('node:path');
 const glob = require('glob');
 const { transformSync } = require('@babel/core');
 
-main({ root: join(__dirname, '..') });
+const { fullySpecifyEsm, finalizeCjs, esmFirstEntry } = require('./module-format');
+
+main({ root: join(__dirname, '..') }).catch((error) => {
+  console.error(error);
+  process.exit(1);
+});
 
 /**
  * Builds source TypeScript and copys assets to the output directories.
@@ -20,7 +25,7 @@ main({ root: join(__dirname, '..') });
  *
  * @param {{ root: string; }} options
  */
-function main(options) {
+async function main(options) {
   const projectRoot = options.root;
 
   transpileTsc({ moduleFormat: 'esnext', outDir: 'lib' }, projectRoot);
@@ -56,6 +61,11 @@ function main(options) {
 
   applyBabelTransform('lib', projectRoot);
   applyBabelTransform('lib-cjs', projectRoot);
+
+  // Last on purpose: the package is `"type": "module"`, so once `lib-cjs/` is renamed to
+  // `.cjs` nothing above may resolve it as a plain `.js` file anymore.
+  await fullySpecifyEsm(join(projectRoot, 'lib'));
+  await finalizeCjs(join(projectRoot, 'lib-cjs'));
 }
 
 // =================================================================================================
@@ -85,7 +95,8 @@ function createRawStylesCopy(styleFile) {
 function transpileTsc(options, baseDir) {
   const { moduleFormat, outDir } = options;
   console.log(`Transpiling module format [${moduleFormat}] to -> ${outDir}/`);
-  const cmd = `npx tsc -p ./tsconfig.lib.json --module ${moduleFormat} --outDir ${outDir}`;
+  // `yarn` (not `yarn -T`) so this resolves the typescript pinned by this package.
+  const cmd = `yarn tsc -p ./tsconfig.lib.json --module ${moduleFormat} --outDir ${outDir}`;
   return execSync(cmd, { stdio: 'inherit', cwd: baseDir });
 }
 
@@ -176,11 +187,7 @@ function addSpriteExportMap(baseDir) {
     return;
   }
 
-  pkg.exports[spriteExportKey] = {
-    types: './lib/atoms/svg-sprite/*.d.ts',
-    import: './lib/atoms/svg-sprite/*.js',
-    require: './lib-cjs/atoms/svg-sprite/*.js',
-  };
+  pkg.exports[spriteExportKey] = esmFirstEntry('./lib/atoms/svg-sprite/*.js');
 
   writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
   console.log(`  ✓ [exports] Added ${spriteExportKey} to package.json`);
@@ -196,44 +203,20 @@ function addHeadlessExportMap(baseDir) {
   const pkgPath = join(baseDir, 'package.json');
   const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
 
-  /** @type {Record<string, string | {types: string; import: string; require: string}>} */
+  /** @type {Record<string, string | ReturnType<typeof esmFirstEntry>>} */
   const headlessExports = {
-    './headless': {
-      types: './lib/headless/index.d.ts',
-      import: './lib/headless/index.js',
-      require: './lib-cjs/headless/index.js',
-    },
-    './headless/fonts': {
-      types: './lib/headless/fonts/index.d.ts',
-      import: './lib/headless/fonts/index.js',
-      require: './lib-cjs/headless/fonts/index.js',
-    },
-    './headless/utils': {
-      types: './lib/headless/utils.d.ts',
-      import: './lib/headless/utils.js',
-      require: './lib-cjs/headless/utils.js',
-    },
+    './headless': esmFirstEntry('./lib/headless/index.js'),
+    './headless/fonts': esmFirstEntry('./lib/headless/fonts/index.js'),
+    './headless/utils': esmFirstEntry('./lib/headless/utils.js'),
     './headless/styles.css': './lib/headless/styles.css',
     './headless/fonts/styles.css': './lib/headless/fonts/styles.css',
-    './headless/svg/*': {
-      types: './lib/atoms/headless-svg/*.d.ts',
-      import: './lib/atoms/headless-svg/*.js',
-      require: './lib-cjs/atoms/headless-svg/*.js',
-    },
-    './headless/fonts/*': {
-      types: './lib/atoms/headless-fonts/*.d.ts',
-      import: './lib/atoms/headless-fonts/*.js',
-      require: './lib-cjs/atoms/headless-fonts/*.js',
-    },
+    './headless/svg/*': esmFirstEntry('./lib/atoms/headless-svg/*.js'),
+    './headless/fonts/*': esmFirstEntry('./lib/atoms/headless-fonts/*.js'),
   };
 
   // Only expose the headless svg-sprite subpath when those atoms were generated
   if (existsSync(join(baseDir, 'src/atoms/headless-svg-sprite'))) {
-    headlessExports['./headless/svg-sprite/*'] = {
-      types: './lib/atoms/headless-svg-sprite/*.d.ts',
-      import: './lib/atoms/headless-svg-sprite/*.js',
-      require: './lib-cjs/atoms/headless-svg-sprite/*.js',
-    };
+    headlessExports['./headless/svg-sprite/*'] = esmFirstEntry('./lib/atoms/headless-svg-sprite/*.js');
   }
 
   // Add headless export maps

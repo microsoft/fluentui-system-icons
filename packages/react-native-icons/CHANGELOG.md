@@ -1,3 +1,35 @@
+## 2.0.338 (2026-08-21)
+
+This release contains icon updates
+
+## 2.0.337 (2026-08-13)
+
+This release contains icon updates
+
+## 2.0.336 (2026-08-12)
+
+This release contains icon updates
+
+## 2.0.335 (2026-08-07)
+
+### 🩹 Fixes
+
+- migrate SVGO v2 → v4 to restore Food icon fork handles ([#1187](https://github.com/microsoft/fluentui-system-icons/pull/1187))
+
+## 2.0.334 (2026-07-24)
+
+This release contains icon updates
+
+## 2.0.333 (2026-07-10)
+
+This release contains icon updates
+
+## 2.0.332 (2026-07-07)
+
+### 🔥 Performance
+
+- **react-icons:** reuse canonical fonts instead of regenerating ([#1105](https://github.com/microsoft/fluentui-system-icons/pull/1105))
+
 ## 2.0.331 (2026-06-26)
 
 This release contains icon updates

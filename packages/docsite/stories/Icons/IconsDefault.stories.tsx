@@ -1,11 +1,11 @@
-import { makeStyles, shorthands } from '@fluentui/react-components';
+import { makeStyles } from '@fluentui/react-components';
 import { SendRegular, SendFilled } from '@fluentui/react-icons';
 import * as React from 'react';
 
 const useClasses = makeStyles({
   container: {
     display: 'flex',
-    ...shorthands.gap('5px'),
+    gap: '5px',
   },
 
   icon24: { fontSize: '24px' },

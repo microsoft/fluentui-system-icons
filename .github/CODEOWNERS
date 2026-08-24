@@ -1,20 +1,15 @@
+## .github — default ownership
+/.github/ @microsoft/cxe-prg
+
+## .github — team co-ownership overrides
 /.github/CODEOWNERS @microsoft/cxe-prg @microsoft/react-native-sdk-admins
-/.github/ISSUE_TEMPLATE/01-react-icons-bug-report.yml @microsoft/cxe-prg
-/.github/ISSUE_TEMPLATE/02-react-icons-feature-request.yml @microsoft/cxe-prg
-/.github/react-icons.instructions.md @microsoft/cxe-prg
-/.github/workflows/copilot-setup-steps.yml @microsoft/cxe-prg
-/.github/workflows/pr.yml @microsoft/cxe-prg @microsoft/react-native-sdk-admins @spencer-nelson
-/.github/workflows/pr-summary-comment.yml @microsoft/cxe-prg
-/.github/workflows/publish.yml @microsoft/cxe-prg @microsoft/react-native-sdk-admins @spencer-nelson
-/.github/workflows/publish-standalone.yml @microsoft/cxe-prg
-/.github/workflows/publish-prerelease.yml @microsoft/cxe-prg
-/.github/workflows/bundle-size.baseline.yml @microsoft/cxe-prg
-/.github/workflows/deploy-docsite.yml @microsoft/cxe-prg
-/.github/scripts @microsoft/cxe-prg
+/.github/workflows/pr.yml @microsoft/cxe-prg @microsoft/react-native-sdk-admins
+/.github/workflows/publish.yml @microsoft/cxe-prg @microsoft/react-native-sdk-admins
 AGENTS.md @microsoft/cxe-prg
 
 ## packages
 packages/docsite @microsoft/cxe-prg
+packages/eslint-plugin-react-icons @microsoft/cxe-prg
 packages/icon-app @microsoft/cxe-prg
 packages/react-icons @microsoft/cxe-prg @microsoft/cxe-red
 packages/react-icons-file-type @microsoft/cxe-prg @microsoft/cxe-red @bigbadcapers
@@ -31,11 +26,14 @@ importer/ @microsoft/cxe-prg
 android/ @microsoft/react-native-sdk-admins
 flutter/ @nickromano
 ios/ @nickromano
-package-lock.json @microsoft/cxe-prg
+yarn.lock @microsoft/cxe-prg
+.yarnrc.yml @microsoft/cxe-prg
+.yarn/ @microsoft/cxe-prg
+.npmrc @microsoft/cxe-prg
 package.json @microsoft/cxe-prg
 nx.json @microsoft/cxe-prg
+nano-staged.js @microsoft/cxe-prg
 monosize.config.mjs @microsoft/cxe-prg
-monosize.baseline.json @microsoft/cxe-prg
 .prettierignore @microsoft/cxe-prg
 .prettierrc @microsoft/cxe-prg
 

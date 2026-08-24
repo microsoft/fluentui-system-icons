@@ -1,0 +1,22 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "eslint-plugin-react-icons",
+  "projectType": "library",
+  "sourceRoot": "packages/eslint-plugin-react-icons/src",
+  "tags": ["npm:standalone"],
+  "targets": {
+    "build": {
+      "cache": true,
+      "inputs": [
+        "default",
+        "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+        "!{projectRoot}/test/**",
+        "{workspaceRoot}/packages/react-icons/metadata.json"
+      ],
+      "outputs": ["{projectRoot}/lib"]
+    },
+    "test": {
+      "dependsOn": ["build"]
+    }
+  }
+}

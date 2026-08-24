@@ -1,5 +1,7 @@
 import { SendRegular } from '@fluentui/react-icons';
 import descriptionMd from './IconsDescription.md';
+import { reactIconsVersion } from '../utils/packageVersion';
+import { versionBadgeMarkup } from '../components/VersionBadge';
 
 export { Default } from './IconsDefault.stories';
 export { BundleIcon as bundleIcon } from './IconsBundleIcon.stories';
@@ -12,7 +14,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: descriptionMd,
+        component: `${versionBadgeMarkup({ packageName: '@fluentui/react-icons', version: reactIconsVersion })}\n\n${descriptionMd}`,
       },
     },
   },

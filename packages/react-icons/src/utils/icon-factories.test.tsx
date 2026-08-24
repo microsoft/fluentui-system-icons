@@ -23,6 +23,7 @@ describe('React component tests', () => {
         <svg
           aria-hidden="true"
           class="fui-Icon ___9ctc0p0_1xvj9ao f1w7gpdv fez10in f1dd5bof"
+          data-fui-icon=""
           fill="currentColor"
           height="1em"
           viewBox="0 0 20 20"
@@ -48,11 +49,40 @@ describe('React component tests', () => {
       <div>
         <i
           aria-hidden="true"
-          class="fui-Icon-font ___qaf4230_1r6c92s f14t3ns0 fne0op0 fmd4ok8 f303qgw f1sxfq9t"
+          class="fui-Icon-font ___33p1ap0_6yslol0 f14t3ns0 fne0op0 fhson10 f1un31zh f1a3p1vp fmd4ok8 f303qgw f1sxfq9t"
+          data-fui-icon=""
           fill="currentColor"
         />
       </div>
     `);
+  });
+
+  test('createFontIcon applies the `fontSize` prop as a CSS style (API parity with SVG icons)', () => {
+    const AccessTimeRegular: FluentFontIcon = createFluentFontIcon('AccessTimeRegular', '', 2, undefined);
+
+    const { container } = render(<AccessTimeRegular fontSize="32px" />);
+    const i = container.querySelector('i');
+
+    expect(i).toBeTruthy();
+    expect(i).toHaveStyle({ fontSize: '32px' });
+    // The prop must NOT leak onto the element as an (inert) DOM attribute.
+    expect(i).not.toHaveAttribute('fontSize');
+    expect(i).not.toHaveAttribute('fontsize');
+  });
+
+  test('createFontIcon sized icons ignore the `fontSize` prop and keep their baked-in size (parity with sized SVG)', () => {
+    // A non-undefined baked size marks a *sized* icon (e.g. Send24Regular).
+    const Send24Regular: FluentFontIcon = createFluentFontIcon('Send24Regular', '', 1, 24);
+
+    // No prop -> baked-in size is used.
+    const withDefault = render(<Send24Regular />).container.querySelector('i');
+    expect(withDefault).toHaveStyle({ fontSize: '24px' });
+
+    // `fontSize` prop is ignored: sized icons are fixed-size, matching sized SVG icons
+    // (whose hardcoded width/height ignore font-size), so a SVG->font swap stays consistent.
+    const withProp = render(<Send24Regular fontSize={16} />).container.querySelector('i');
+    expect(withProp).toHaveStyle({ fontSize: '24px' });
+    expect(withProp).not.toHaveAttribute('fontsize');
   });
 
   test('createFluentIcon renders an SVG with expected path', () => {
@@ -124,6 +154,71 @@ describe('React component tests', () => {
 
     const rect = container.querySelector('rect');
     expect(rect).toHaveStyle({ mixBlendMode: 'multiply' });
+  });
+
+  test('createFluentIcon color icon scopes ids and url(#…) references with idPrefix', () => {
+    const MyColorIcon = createFluentIcon(
+      'MyColorIcon',
+      '1em',
+      [
+        ['path', { d: 'M0 0h20v20H0z', fill: 'url(#grad)' }],
+        ['defs', null, ['linearGradient', { id: 'grad' }, ['stop', { stopColor: '#fff' }]]],
+      ],
+      { color: true },
+    );
+
+    const { container } = render(<MyColorIcon idPrefix="x-" />);
+
+    expect(container.querySelector('linearGradient')).toHaveAttribute('id', 'x-grad');
+    expect(container.querySelector('path')).toHaveAttribute('fill', 'url(#x-grad)');
+  });
+
+  test('createFluentIcon color icon keeps original ids when no idPrefix is passed', () => {
+    const MyColorIcon = createFluentIcon(
+      'MyColorIcon',
+      '1em',
+      [
+        ['path', { d: 'M0 0h20v20H0z', fill: 'url(#grad)' }],
+        ['defs', null, ['linearGradient', { id: 'grad' }, ['stop', { stopColor: '#fff' }]]],
+      ],
+      { color: true },
+    );
+
+    const { container } = render(<MyColorIcon />);
+
+    expect(container.querySelector('linearGradient')).toHaveAttribute('id', 'grad');
+    expect(container.querySelector('path')).toHaveAttribute('fill', 'url(#grad)');
+  });
+
+  test('createFluentIcon idPrefix produces unique ids across two instances', () => {
+    const MyColorIcon = createFluentIcon(
+      'MyColorIcon',
+      '1em',
+      [
+        ['path', { d: 'M0 0h20v20H0z', fill: 'url(#grad)' }],
+        ['defs', null, ['linearGradient', { id: 'grad' }, ['stop', { stopColor: '#fff' }]]],
+      ],
+      { color: true },
+    );
+
+    const { container } = render(
+      <>
+        <MyColorIcon idPrefix="a-" />
+        <MyColorIcon idPrefix="b-" />
+      </>,
+    );
+
+    const ids = Array.from(container.querySelectorAll('linearGradient')).map((node) => node.getAttribute('id'));
+    expect(ids).toEqual(['a-grad', 'b-grad']);
+  });
+
+  test('createFluentIcon idPrefix is a no-op for mono-color (path string) icons', () => {
+    const MyIcon = createFluentIcon('MyIcon', '1em', ['M1 2 L3 4']);
+    const { container } = render(<MyIcon idPrefix="x-" />);
+
+    const svg = container.querySelector('svg');
+    expect(svg).toBeTruthy();
+    expect(container.querySelector('path')).toHaveAttribute('d', 'M1 2 L3 4');
   });
 
   test('bundleIcon creates icon with fui-Icon className on both filled and regular icons', () => {
