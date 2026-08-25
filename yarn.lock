@@ -3904,7 +3904,7 @@ __metadata:
     magic-string: "npm:^0.30.0"
     oxc-parser: "npm:^0.125.0"
   peerDependencies:
-    "@rspack/core": ">=1.0.0"
+    "@rspack/core": ">=2.1.0"
     webpack: ">=5.0.0"
   peerDependenciesMeta:
     "@rspack/core":
