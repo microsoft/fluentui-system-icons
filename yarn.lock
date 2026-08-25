@@ -3930,7 +3930,7 @@ __metadata:
     "@fluentui/react-icons": "npm:*"
     subset-font: "npm:^1.4.0"
   peerDependencies:
-    "@rspack/core": ">=1.0.0"
+    "@rspack/core": ">=2.1.0"
     webpack: ">=5.0.0"
   peerDependenciesMeta:
     "@rspack/core":
