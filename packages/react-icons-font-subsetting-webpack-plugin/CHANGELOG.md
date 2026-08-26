@@ -1,3 +1,9 @@
+## 2.0.339 (2026-08-26)
+
+### 🚀 Features
+
+- **react-icons-font-subsetting-webpack-plugin:** support rspack ([#1219](https://github.com/microsoft/fluentui-system-icons/pull/1219))
+
 ## 2.0.338 (2026-08-21)
 
 This release contains icon updates
