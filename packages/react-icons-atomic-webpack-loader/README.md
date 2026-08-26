@@ -27,6 +27,8 @@ Add the loader to your webpack config as an [`enforce: 'pre'`](https://webpack.j
 
 NOTE: Unlike most loaders, this one should NOT exclude `node_modules`. It needs to process files inside `node_modules` as well to transform barrel imports from `@fluentui/react-icons` and `@fluentui/react-brand-icons` in your third-party dependencies. Files that don't reference a supported module are skipped via a fast pre-check, so there is no meaningful overhead.
 
+The loader also works unchanged with [rspack](https://rspack.rs) (`>=2.1.0`) — the same rule shape applies, and every fixture in this package's test suite is verified against both bundlers. `webpack` and `@rspack/core` are declared as **optional** peer dependencies, so you only need to install the one you use.
+
 ```js
 // webpack.config.js
 module.exports = {

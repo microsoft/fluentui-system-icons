@@ -6,7 +6,10 @@
   "scripts": {
     "build": "yarn run -T tsc -p .",
     "lint": "yarn run -T eslint package.json",
-    "test": "yarn run -T vitest run && yarn run -T webpack -c test/webpack.config.js"
+    "test": "yarn run -T vitest run && yarn run test:types && node test/run.js --bundler all",
+    "test:types": "yarn run -T tsc -p test/tsconfig.conformance.json",
+    "test:webpack": "node test/run.js --bundler webpack",
+    "test:rspack": "node test/run.js --bundler rspack"
   },
   "engines": {
     "node": ">=20.0.0"
@@ -28,7 +31,16 @@
     "@fluentui/react-icons": "*"
   },
   "peerDependencies": {
+    "@rspack/core": ">=2.1.0",
     "webpack": ">=5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@rspack/core": {
+      "optional": true
+    },
+    "webpack": {
+      "optional": true
+    }
   },
   "files": [
     "lib/*"
