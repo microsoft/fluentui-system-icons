@@ -13,6 +13,9 @@ export const DATA_FUI_ICON_HIDDEN = 'data-fui-icon-hidden';
 /** Data attribute for font icon font-family variant selection (filled|regular|resizable|light). */
 export const DATA_FUI_ICON_FONT = 'data-fui-icon-font';
 
+/** Data attribute stamped by `bundleIcon` on each glyph, stating its variant (filled|regular). */
+export const DATA_FUI_ICON_VARIANT = 'data-fui-icon-variant';
+
 // Re-export existing constants (CSS class names for consumer targeting)
 export {
   iconClassName,

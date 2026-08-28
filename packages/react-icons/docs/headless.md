@@ -14,13 +14,14 @@ The Headless API is a drop-in replacement for the standard icon API that removes
 
 The standard API uses Griffel's `makeStyles` / `mergeClasses` to inject CSS rules at runtime. The headless API replaces this with HTML `data-*` attributes and a shipped CSS file (`styles.css`) that targets them:
 
-| Concern               | Standard (Griffel)                  | Headless (CSS)                                                             |
-| --------------------- | ----------------------------------- | -------------------------------------------------------------------------- |
-| Base icon layout      | `useRootStyles()` → atomic classes  | `[data-fui-icon] { display: inline; line-height: 0 }`                      |
-| High-contrast mode    | `@media (forced-colors)` in JS      | `@media (forced-colors) { [data-fui-icon] { forced-color-adjust: auto } }` |
-| RTL directional flip  | `transform: scaleX(-1)` via Griffel | `[data-fui-icon-rtl] { transform: scaleX(-1) }`                            |
-| bundleIcon visibility | Generated show/hide classes         | `[data-fui-icon-hidden] { display: none }`                                 |
-| Font icon family      | Griffel styles per variant          | `[data-fui-icon-font="filled"] { font-family: '...' }`                     |
+| Concern               | Standard (Griffel)                                 | Headless (CSS)                                                             |
+| --------------------- | -------------------------------------------------- | -------------------------------------------------------------------------- |
+| Base icon layout      | `useRootStyles()` → atomic classes                 | `[data-fui-icon] { display: inline; line-height: 0 }`                      |
+| High-contrast mode    | `@media (forced-colors)` in JS                     | `@media (forced-colors) { [data-fui-icon] { forced-color-adjust: auto } }` |
+| RTL directional flip  | `transform: scaleX(-1)` via Griffel                | `[data-fui-icon-rtl] { transform: scaleX(-1) }`                            |
+| bundleIcon visibility | Generated show/hide classes                        | `[data-fui-icon-hidden] { display: none }`                                 |
+| bundleIcon variant    | `fui-Icon-filled` / `fui-Icon-regular` class names | `[data-fui-icon-variant="filled"] { ... }`                                 |
+| Font icon family      | Griffel styles per variant                         | `[data-fui-icon-font="filled"] { font-family: '...' }`                     |
 
 ## CSS Setup
 
@@ -112,6 +113,7 @@ import {
   DATA_FUI_ICON_RTL, // 'data-fui-icon-rtl'
   DATA_FUI_ICON_HIDDEN, // 'data-fui-icon-hidden'
   DATA_FUI_ICON_FONT, // 'data-fui-icon-font'
+  DATA_FUI_ICON_VARIANT, // 'data-fui-icon-variant'
 
   // Context
   IconDirectionContextProvider,
