@@ -213,8 +213,13 @@ async function finalizeCjs(dir) {
   const fileSet = new Set();
   /** @type {Array<{ from: string, to: string }>} */
   const renames = [];
-  /** @type {string[]} */
-  const toRewrite = [];
+  /**
+   * A stale pre-renamed file plus its fresh source can both map to one target; a set keeps
+   * the target recorded once, since duplicates would race two concurrent rewrites on the
+   * same path and tear the file.
+   * @type {Set<string>}
+   */
+  const toRewrite = new Set();
   let jsCount = 0;
   let dtsCount = 0;
 
@@ -235,7 +240,7 @@ async function finalizeCjs(dir) {
 
     fileSet.add(target);
     if (target.endsWith('.cjs') || target.endsWith('.d.cts')) {
-      toRewrite.push(target);
+      toRewrite.add(target);
     }
   }
 
@@ -244,7 +249,7 @@ async function finalizeCjs(dir) {
 
   const rewrite = createRewriter(fileSet, '.cjs');
 
-  await forEachConcurrent(toRewrite, async (file) => {
+  await forEachConcurrent([...toRewrite], async (file) => {
     const code = await readFile(file, 'utf8');
     const next = rewrite(code, dirname(file), file);
     if (next !== code) {
