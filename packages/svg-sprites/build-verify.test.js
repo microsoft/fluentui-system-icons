@@ -48,15 +48,32 @@ describe('Build Verification', () => {
       // Sprite should be a valid SVG
       expect(content, `${file} should contain <svg`).toMatch(/<svg\b/);
 
-      // Should contain a <symbol> with matching id
       const expectedId = path.basename(file, '.sprite.svg');
-      expect(content, `${file} should contain <symbol> with id="${expectedId}"`).toMatch(
-        new RegExp(`<symbol[^>]+id="${expectedId}"`),
-      );
+      const isGroupedSprite = /^fluent_icons_\d+_(regular|filled|light|color)\.sprite\.svg$/.test(file);
+
+      if (isGroupedSprite) {
+        expect(content, `${file} should contain <symbol> elements`).toMatch(/<symbol\b/);
+      } else {
+        // Should contain a <symbol> with matching id
+        expect(content, `${file} should contain <symbol> with id="${expectedId}"`).toMatch(
+          new RegExp(`<symbol[^>]+id="${expectedId}"`),
+        );
+      }
 
       // Symbol should have viewBox
       expect(content, `${file} symbol should have viewBox`).toMatch(/<symbol[^>]+viewBox="/);
     }
+  });
+
+  it('should group all icons for a size and style into one sprite', async () => {
+    const file = 'fluent_icons_20_regular.sprite.svg';
+    const content = await readFile(path.join(SPRITES_DIR, file), 'utf8');
+    const symbolIds = [...content.matchAll(/<symbol[^>]+id="([^"]+)"/g)].map((match) => match[1]);
+
+    expect(symbolIds.length, `${file} should contain multiple symbols`).toBeGreaterThan(1);
+    expect(new Set(symbolIds).size, `${file} should contain unique symbol ids`).toBe(symbolIds.length);
+    expect(symbolIds).toContain('access_time');
+    expect(symbolIds).toContain('add');
   });
 
   // TODO: to enable this we would need to update snapshot during release - lets avoid that for now
