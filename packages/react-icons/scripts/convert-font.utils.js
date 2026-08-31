@@ -7,6 +7,7 @@ const path = require('path');
 const _ = require('lodash');
 
 const { writePerIconFiles } = require('./per-icon.writer');
+const { getFontFamilyByKey } = require('./font-families');
 
 /** @typedef {{ [key: string]: 'mirror' | 'unique' }} RtlMetadata */
 
@@ -39,10 +40,14 @@ function loadRtlMetadata(rtlFilePath) {
  * @param {string=} rawGlyphName Used to derive size for sized variants
  */
 function buildFontIconExport(exportName, codepoint, resizable, flipInRtl, rawGlyphName) {
-  const style = /filled$/i.test(rawGlyphName || '') ? 0 : /regular$/i.test(rawGlyphName || '') ? 1 : 3; // Light = 3
+  const style = /filled$/i.test(rawGlyphName || '')
+    ? getFontFamilyByKey('Filled').value
+    : /regular$/i.test(rawGlyphName || '')
+      ? getFontFamilyByKey('Regular').value
+      : getFontFamilyByKey('Light').value;
   const sizeMatch = rawGlyphName && /(?<=_)\d+(?=_filled|_regular|_light)/.exec(rawGlyphName);
   const size = resizable ? undefined : sizeMatch?.[0];
-  return `export const ${exportName}: FluentFontIcon = (/*#__PURE__*/createFluentFontIcon(${JSON.stringify(exportName)}, ${JSON.stringify(String.fromCodePoint(codepoint))}, ${resizable ? 2 : style}, ${resizable ? undefined : size}${flipInRtl ? ', { flipInRtl: true }' : ''}));`;
+  return `export const ${exportName}: FluentFontIcon = (/*#__PURE__*/createFluentFontIcon(${JSON.stringify(exportName)}, ${JSON.stringify(String.fromCodePoint(codepoint))}, ${resizable ? getFontFamilyByKey('Resizable').value : style}, ${resizable ? undefined : size}${flipInRtl ? ', { flipInRtl: true }' : ''}));`;
 }
 
 /**

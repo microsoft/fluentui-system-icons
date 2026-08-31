@@ -1,61 +1,59 @@
 import { makeStyles, makeStaticStyles } from '@griffel/react';
 
-import fontFilledTtf from './FluentSystemIcons-Filled.ttf';
-import fontFilledWoff from './FluentSystemIcons-Filled.woff';
-import fontFilledWoff2 from './FluentSystemIcons-Filled.woff2';
-
-import fontRegularTtf from './FluentSystemIcons-Regular.ttf';
-import fontRegularWoff from './FluentSystemIcons-Regular.woff';
-import fontRegularWoff2 from './FluentSystemIcons-Regular.woff2';
-
-import fontLightTtf from './FluentSystemIcons-Light.ttf';
-import fontLightWoff from './FluentSystemIcons-Light.woff';
-import fontLightWoff2 from './FluentSystemIcons-Light.woff2';
-
-import fontOneSizeTtf from './FluentSystemIcons-Resizable.ttf';
-import fontOneSizeWoff from './FluentSystemIcons-Resizable.woff';
-import fontOneSizeWoff2 from './FluentSystemIcons-Resizable.woff2';
 import { FontFile } from './createFluentFontIcon.shared';
 
-const FONT_FAMILY_MAP = {
-  [FontFile.Filled]: 'FluentSystemIconsFilled',
-  [FontFile.Regular]: 'FluentSystemIconsRegular',
-  [FontFile.Resizable]: 'FluentSystemIcons',
-  [FontFile.Light]: 'FluentSystemIconsLight',
-} as const;
+// #region @generated font-faces
+import fontFilledWoff2 from './FluentSystemIcons-Filled.woff2';
+import fontFilledWoff from './FluentSystemIcons-Filled.woff';
+import fontFilledTtf from './FluentSystemIcons-Filled.ttf';
+
+import fontRegularWoff2 from './FluentSystemIcons-Regular.woff2';
+import fontRegularWoff from './FluentSystemIcons-Regular.woff';
+import fontRegularTtf from './FluentSystemIcons-Regular.ttf';
+
+import fontResizableWoff2 from './FluentSystemIcons-Resizable.woff2';
+import fontResizableWoff from './FluentSystemIcons-Resizable.woff';
+import fontResizableTtf from './FluentSystemIcons-Resizable.ttf';
+
+import fontLightWoff2 from './FluentSystemIcons-Light.woff2';
+import fontLightWoff from './FluentSystemIcons-Light.woff';
+import fontLightTtf from './FluentSystemIcons-Light.ttf';
 
 export const useStaticStyles = makeStaticStyles(`
 @font-face {
-    font-family: ${FONT_FAMILY_MAP[FontFile.Filled]};
+    font-family: FluentSystemIconsFilled;
     font-display: "block";
-    src: url(${JSON.stringify(fontFilledWoff2)}) format("woff2"),
+    src:
+    url(${JSON.stringify(fontFilledWoff2)}) format("woff2"),
     url(${JSON.stringify(fontFilledWoff)}) format("woff"),
     url(${JSON.stringify(fontFilledTtf)}) format("truetype");
 }
 @font-face {
-    font-family: ${FONT_FAMILY_MAP[FontFile.Regular]};
+    font-family: FluentSystemIconsRegular;
     font-display: "block";
-    src: url(${JSON.stringify(fontRegularWoff2)}) format("woff2"),
+    src:
+    url(${JSON.stringify(fontRegularWoff2)}) format("woff2"),
     url(${JSON.stringify(fontRegularWoff)}) format("woff"),
     url(${JSON.stringify(fontRegularTtf)}) format("truetype");
 }
-
 @font-face {
-    font-family: ${FONT_FAMILY_MAP[FontFile.Light]};
+    font-family: FluentSystemIcons;
     font-display: "block";
-    src: url(${JSON.stringify(fontLightWoff2)}) format("woff2"),
+    src:
+    url(${JSON.stringify(fontResizableWoff2)}) format("woff2"),
+    url(${JSON.stringify(fontResizableWoff)}) format("woff"),
+    url(${JSON.stringify(fontResizableTtf)}) format("truetype");
+}
+@font-face {
+    font-family: FluentSystemIconsLight;
+    font-display: "block";
+    src:
+    url(${JSON.stringify(fontLightWoff2)}) format("woff2"),
     url(${JSON.stringify(fontLightWoff)}) format("woff"),
     url(${JSON.stringify(fontLightTtf)}) format("truetype");
 }
-
-@font-face {
-    font-family: ${FONT_FAMILY_MAP[FontFile.Resizable]};
-    font-display: "block";
-    src: url(${JSON.stringify(fontOneSizeWoff2)}) format("woff2"),
-    url(${JSON.stringify(fontOneSizeWoff)}) format("woff"),
-    url(${JSON.stringify(fontOneSizeTtf)}) format("truetype");
-}
 `);
+// #endregion @generated font-faces
 
 export const useRootStyles = makeStyles({
   root: {
@@ -87,6 +85,7 @@ export const useRootStyles = makeStyles({
     // Rather than setting forced-color-adjust to 'none' or 'auto', we leave this value
     // default, inherited from the parent control.
   },
+  // #region @generated font-families
   [FontFile.Filled]: {
     fontFamily: 'FluentSystemIconsFilled',
   },
@@ -99,4 +98,5 @@ export const useRootStyles = makeStyles({
   [FontFile.Light]: {
     fontFamily: 'FluentSystemIconsLight',
   },
+  // #endregion @generated font-families
 });

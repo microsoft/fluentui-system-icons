@@ -15,12 +15,14 @@ export type FluentFontIcon = React.FC<FluentIconsProps<React.HTMLAttributes<HTML
   codepoint: string;
 };
 
+// #region @generated font-variants
 const FONT_VARIANT_MAP: Record<FontFile, string> = {
   [FontFile.Filled]: 'filled',
   [FontFile.Regular]: 'regular',
   [FontFile.Resizable]: 'resizable',
   [FontFile.Light]: 'light',
 };
+// #endregion @generated font-variants
 
 /**
  * Headless createFluentFontIcon — font icon factory without Griffel.
