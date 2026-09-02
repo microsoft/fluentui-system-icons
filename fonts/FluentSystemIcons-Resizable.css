@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Resizable";
-    src: url("./FluentSystemIcons-Resizable.woff2?fba656075454f2c5dcc2bd3abf31c1a1") format("woff2"),
-url("./FluentSystemIcons-Resizable.woff?fba656075454f2c5dcc2bd3abf31c1a1") format("woff"),
-url("./FluentSystemIcons-Resizable.ttf?fba656075454f2c5dcc2bd3abf31c1a1") format("truetype");
+    src: url("./FluentSystemIcons-Resizable.woff2?3acc2c707a32287ecb1752f611f1ff05") format("woff2"),
+url("./FluentSystemIcons-Resizable.woff?3acc2c707a32287ecb1752f611f1ff05") format("woff"),
+url("./FluentSystemIcons-Resizable.ttf?3acc2c707a32287ecb1752f611f1ff05") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -17013,4 +17013,40 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_orientation_portrait_20_regular:before {
     content: "\f621";
+}
+.icon-ic_fluent_agents_person_20_filled:before {
+    content: "\f622";
+}
+.icon-ic_fluent_agents_person_20_regular:before {
+    content: "\f623";
+}
+.icon-ic_fluent_autopilot_20_filled:before {
+    content: "\f624";
+}
+.icon-ic_fluent_autopilot_20_regular:before {
+    content: "\f625";
+}
+.icon-ic_fluent_filmstrip_arrow_up_20_filled:before {
+    content: "\f626";
+}
+.icon-ic_fluent_filmstrip_arrow_up_20_regular:before {
+    content: "\f627";
+}
+.icon-ic_fluent_filmstrip_globe_20_filled:before {
+    content: "\f628";
+}
+.icon-ic_fluent_filmstrip_globe_20_regular:before {
+    content: "\f629";
+}
+.icon-ic_fluent_panel_left_tall_20_filled:before {
+    content: "\f62a";
+}
+.icon-ic_fluent_panel_left_tall_20_regular:before {
+    content: "\f62b";
+}
+.icon-ic_fluent_table_select_range_20_filled:before {
+    content: "\f62c";
+}
+.icon-ic_fluent_table_select_range_20_regular:before {
+    content: "\f62d";
 }

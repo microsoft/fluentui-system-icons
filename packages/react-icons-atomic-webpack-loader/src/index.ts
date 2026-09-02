@@ -1,9 +1,10 @@
 import { transformSource } from './transform';
 import { SUPPORTED_MODULE_NAMES } from './modules';
 import type { IconVariant } from './modules';
-import type { LoaderContext } from 'webpack';
+import type { AtomicLoaderContext } from './loader-context';
 
 export type { IconVariant };
+export type { AtomicLoaderContext };
 
 export interface FluentIconsAtomicImportLoaderOptions {
   /**
@@ -63,10 +64,7 @@ export interface FluentIconsAtomicImportLoaderOptions {
   allowDynamicImports?: boolean;
 }
 
-export default function fluentIconsAtomicImportLoader(
-  this: LoaderContext<FluentIconsAtomicImportLoaderOptions>,
-  sourceCode: string,
-): void {
+export default function fluentIconsAtomicImportLoader(this: AtomicLoaderContext, sourceCode: string): void {
   const { resourcePath } = this;
 
   // Cheap pre-skip only: a false positive here just means we parse the file and
