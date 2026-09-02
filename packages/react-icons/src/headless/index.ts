@@ -14,6 +14,7 @@ export {
   DATA_FUI_ICON_RTL,
   DATA_FUI_ICON_HIDDEN,
   DATA_FUI_ICON_FONT,
+  DATA_FUI_ICON_VARIANT,
   cx,
 } from './shared';
 

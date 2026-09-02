@@ -11,7 +11,13 @@ import { createFluentIcon } from './createFluentIcon';
 import { createFluentIcon as createFluentSpriteIcon } from './createFluentIcon.svg-sprite';
 import { bundleIcon } from './bundleIcon';
 import type { FluentIcon } from './shared';
-import { DATA_FUI_ICON, DATA_FUI_ICON_RTL, DATA_FUI_ICON_HIDDEN, DATA_FUI_ICON_FONT } from './shared';
+import {
+  DATA_FUI_ICON,
+  DATA_FUI_ICON_RTL,
+  DATA_FUI_ICON_HIDDEN,
+  DATA_FUI_ICON_FONT,
+  DATA_FUI_ICON_VARIANT,
+} from './shared';
 import { IconDirectionContextProvider } from '../contexts';
 
 describe('Headless API — SVG icons', () => {
@@ -276,6 +282,20 @@ describe('Headless API — bundleIcon', () => {
 
     const regularSvg = containerRegular.querySelector('.fui-Icon-regular');
     expect(regularSvg).not.toHaveAttribute(DATA_FUI_ICON_HIDDEN);
+  });
+
+  test('bundleIcon stamps data-fui-icon-variant on both glyphs regardless of filled', () => {
+    const d = 'M1 2 L3 4';
+    const FilledIcon = createFluentIcon('TestFilled', '1em', [d]);
+    const RegularIcon = createFluentIcon('TestRegular', '1em', [d]);
+    const BundledIcon = bundleIcon(FilledIcon, RegularIcon);
+
+    for (const filled of [true, false]) {
+      const { container } = render(<BundledIcon filled={filled} />);
+
+      expect(container.querySelector('.fui-Icon-filled')).toHaveAttribute(DATA_FUI_ICON_VARIANT, 'filled');
+      expect(container.querySelector('.fui-Icon-regular')).toHaveAttribute(DATA_FUI_ICON_VARIANT, 'regular');
+    }
   });
 
   test('bundleIcon preserves fui-Icon class on both variants', () => {

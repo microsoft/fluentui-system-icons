@@ -52,6 +52,14 @@
 }
 
 /* ===== bundleIcon: Hidden Variant ===== */
+/*
+ * Higher specificity than the `:where()`-flat default above, so it wins wherever both apply.
+ * Consumers importing this file into a cascade layer must place it BELOW their component
+ * layers: a component revealing the inactive variant (hover glyph swap) then overrides this
+ * with a normal declaration. Icon components carrying UNLAYERED classes that set `display`
+ * (the Griffel `@fluentui/react-icons` API) cannot be bundled by this API — use the headless
+ * icon atoms under `./svg/*`.
+ */
 [data-fui-icon-hidden] {
   display: none;
 }
