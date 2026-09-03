@@ -61,12 +61,14 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPl
         { name: PLUGIN_NAME, stage: Compilation.PROCESS_ASSETS_STAGE_OPTIMIZE },
         async () => {
           const runtime = getRuntimeSpec(compiler, compilation);
+          // Set when a namespace import is found but the bundler cannot report provided exports.
+          const diagnostics = { namespaceImportsUnsupported: false };
 
           // There could be multiple instances of `@fluentui/react-icons`, and they need to be subset separately
           const packageToUsedFontExports: Map<string, Set<string>> = new Map<string, Set<string>>();
           for (const m of compilation.modules) {
             if (isFluentUIReactFontChunk(m)) {
-              const icons = resolveUsedIconExports(m, compilation.moduleGraph, runtime);
+              const icons = resolveUsedIconExports(m, compilation.moduleGraph, runtime, diagnostics);
               if (icons === null) {
                 continue;
               }
@@ -80,6 +82,17 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPl
             }
           }
           const optimizationPromises: Promise<void>[] = [];
+
+          if (diagnostics.namespaceImportsUnsupported) {
+            // Degrading quietly would ship a full font while looking healthy, so say so once.
+            compilation.warnings.push(
+              new Error(
+                `${PLUGIN_NAME}: this bundler does not expose \`moduleGraph.getProvidedExports()\`, so icons ` +
+                  `reached through a namespace import (\`import * as ...\`) cannot be subset and were left ` +
+                  `un-subset. Named imports are unaffected. Upgrade to rspack >=2.1.0 for full coverage.`,
+              ),
+            );
+          }
 
           for (const [pkgLibPath, usedExports] of packageToUsedFontExports) {
             const fontAssets = await getFontAssetsAndCodepoints(pkgLibPath, compilation, compiler.context);
@@ -222,6 +235,7 @@ function resolveUsedIconExports(
   m: BundlerNormalModule,
   moduleGraph: BundlerModuleGraph,
   runtime: string[] | undefined,
+  diagnostics: { namespaceImportsUnsupported: boolean },
 ): string[] | null {
   const usedModuleExports = moduleGraph.getUsedExports(m, runtime);
 
@@ -239,6 +253,12 @@ function resolveUsedIconExports(
     // All exports are used (e.g. `import * as ns from '...'` or similar namespace import).
     // Retrieve statically-provided exports from the module graph so we can subset to exactly
     // the glyphs this module declares (rather than the full font or nothing).
+    if (typeof moduleGraph.getProvidedExports !== 'function') {
+      // rspack <2.1 has no such API; skip rather than crash, and let the caller warn.
+      diagnostics.namespaceImportsUnsupported = true;
+      return null;
+    }
+
     const providedExports = moduleGraph.getProvidedExports(m);
     if (providedExports === null || typeof providedExports === 'boolean') {
       // Provided exports not statically known (optimization.providedExports disabled) - skip.

@@ -1,6 +1,6 @@
 # @fluentui/react-icons-font-subsetting-webpack-plugin
 
-This package includes a plugin for `webpack@>=5.0.0` and `@rspack/core@>=2.1.0` to subset the icon font files used by `@fluentui/react-icons` when using font-based icon implementations.
+This package includes a plugin for `webpack@>=5.0.0` and `@rspack/core@>=2.0.0` to subset the icon font files used by `@fluentui/react-icons` when using font-based icon implementations.
 
 If `optimization.usedExports` is enabled (as it is by default in `production` mode), this plugin will subset the font files to only include the glyphs actually used by your build.
 
@@ -123,6 +123,11 @@ Two rspack-specific notes:
 - For the headless import pattern, use `rspack.CssExtractRspackPlugin` instead of `mini-css-extract-plugin`, which is not compatible with rspack.
 - `webpack` and `@rspack/core` are both declared as **optional** peer dependencies, so you only need to install the bundler you actually use.
 
-rspack `>=2.1.0` is required because subsetting reads the module graph: `moduleGraph.getUsedExports()`
-was exposed to the JS API in rspack 2.0.0, and `moduleGraph.getProvidedExports()` — which this plugin
-relies on to subset namespace imports (`import * as …`) — only landed in 2.1.0.
+rspack `>=2.0.0` is required because subsetting reads the module graph, and
+`moduleGraph.getUsedExports()` was exposed to the JS API in rspack 2.0.0.
+
+On rspack `2.0.x` there is one limitation: `moduleGraph.getProvidedExports()` only landed in 2.1.0,
+and it is what lets the plugin subset icons reached through a **namespace import**
+(`import * as Icons from '@fluentui/react-icons/fonts/…'`). Those modules are skipped and their font
+is left un-subset, with a build warning saying so. Named imports — the common case — are unaffected
+and subset fully. Upgrade to rspack `>=2.1.0` for complete coverage.

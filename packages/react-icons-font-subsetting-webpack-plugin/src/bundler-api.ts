@@ -31,8 +31,8 @@ export interface BundlerModuleGraph {
     module: BundlerModule,
     runtime: string | string[] | ReadonlySet<string> | undefined,
   ): ReadonlySet<string> | readonly string[] | boolean | null;
-  /** Exposed to rspack's JS API only in 2.1.0, which is what sets the `@rspack/core` peer floor. */
-  getProvidedExports(module: BundlerModule): readonly string[] | boolean | null;
+  /** Optional: exposed to rspack's JS API only in 2.1.0, so absent on the supported 2.0.x floor. */
+  getProvidedExports?(module: BundlerModule): readonly string[] | boolean | null;
 }
 
 export interface BundlerAsset {
