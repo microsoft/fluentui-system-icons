@@ -32,11 +32,19 @@ const entries = {
   },
   // Async chunks: one icon is eager, the other reachable only through `import()`, and they live in
   // different font families. The size ceiling cannot police this on its own — losing the async
-  // glyph makes the font *smaller* — so both families are also asserted to retain a real glyph.
+  // glyph makes the font *smaller* — so glyph counts are asserted too (`.notdef` is always glyph 0).
   lazyAtoms: {
     src: './src/lazy-atoms.js',
     threshold: 2 * 1_024, // 2 KB
-    fontsWithGlyphs: ['FluentSystemIcons-Resizable', 'FluentSystemIcons-Filled'],
+    fontGlyphCounts: { 'FluentSystemIcons-Resizable': 2, 'FluentSystemIcons-Filled': 2 },
+  },
+  // The harder variant: both icons are sized+Filled, so a *single* emitted font must carry glyphs
+  // contributed by two different chunks. Fonts are subset per family across the whole build, not
+  // per chunk, so the eager half must not subset the async half's glyph away.
+  lazySharedFontFamily: {
+    src: './src/lazy-shared-family.js',
+    threshold: 2 * 1_024, // 2 KB
+    fontGlyphCounts: { 'FluentSystemIcons-Filled': 3 },
   },
 };
 
@@ -147,7 +155,7 @@ function createConfig(name, entry, adapter, isDevServer) {
  * Fails the build when a font asset was not subset, or when a headless entry leaked Griffel.
  *
  * @param {string} name
- * @param {{ threshold: number, assertNoGriffel?: boolean, fontsWithGlyphs?: string[] }} entry
+ * @param {{ threshold: number, assertNoGriffel?: boolean, fontGlyphCounts?: Record<string, number> }} entry
  * @param {BundlerAdapter} adapter
  */
 function createAssertionPlugin(name, entry, adapter) {
@@ -169,7 +177,7 @@ function createAssertionPlugin(name, entry, adapter) {
           }
         }
 
-        for (const fontBaseName of entry.fontsWithGlyphs ?? []) {
+        for (const [fontBaseName, expectedGlyphs] of Object.entries(entry.fontGlyphCounts ?? {})) {
           // Only .ttf is inspected; .woff/.woff2 wrap the same glyphs in a compressed container.
           const asset = fontAssets.find(({ name: assetName }) =>
             new RegExp(`^${fontBaseName}[.-][^/]*\\.ttf$`).test(assetName),
@@ -181,11 +189,10 @@ function createAssertionPlugin(name, entry, adapter) {
 
           // `afterEmit` downgrades sources to size-only, so the bytes come back off disk.
           const glyphCount = readGlyphCount(readFileSync(join(compiler.outputPath, asset.name)));
-          // Every subset keeps .notdef, so a font stripped of all real glyphs still reports 1.
-          if (glyphCount < 2) {
+          if (glyphCount < expectedGlyphs) {
             throw new Error(
-              `[${adapter.name}/${name}] Asset "${asset.name}" contains no glyphs beyond .notdef — ` +
-                `an icon that should have been kept was subset away.`,
+              `[${adapter.name}/${name}] Asset "${asset.name}" has ${glyphCount} glyphs, expected at least ` +
+                `${expectedGlyphs} (including .notdef) — an icon that should have been kept was subset away.`,
             );
           }
         }
