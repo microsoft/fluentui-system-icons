@@ -5,7 +5,8 @@
  * The same entries, thresholds and assertions run against both webpack and rspack; only the
  * CSS-extraction and HTML plugins differ, so they are injected by the bundler-specific configs.
  */
-const { resolve } = require('path');
+const { resolve, join } = require('path');
+const { readFileSync } = require('fs');
 
 const { default: FluentUIReactIconsFontSubsettingPlugin } = require('../lib/');
 
@@ -28,6 +29,14 @@ const entries = {
     threshold: 1.5 * 1_024, // 1.5 KB
     useAtomicLoader: true,
     assertNoGriffel: true,
+  },
+  // Async chunks: one icon is eager, the other reachable only through `import()`, and they live in
+  // different font families. The size ceiling cannot police this on its own — losing the async
+  // glyph makes the font *smaller* — so both families are also asserted to retain a real glyph.
+  lazyAtoms: {
+    src: './src/lazy-atoms.js',
+    threshold: 2 * 1_024, // 2 KB
+    fontsWithGlyphs: ['FluentSystemIcons-Resizable', 'FluentSystemIcons-Filled'],
   },
 };
 
@@ -138,7 +147,7 @@ function createConfig(name, entry, adapter, isDevServer) {
  * Fails the build when a font asset was not subset, or when a headless entry leaked Griffel.
  *
  * @param {string} name
- * @param {{ threshold: number, assertNoGriffel?: boolean }} entry
+ * @param {{ threshold: number, assertNoGriffel?: boolean, fontsWithGlyphs?: string[] }} entry
  * @param {BundlerAdapter} adapter
  */
 function createAssertionPlugin(name, entry, adapter) {
@@ -160,6 +169,27 @@ function createAssertionPlugin(name, entry, adapter) {
           }
         }
 
+        for (const fontBaseName of entry.fontsWithGlyphs ?? []) {
+          // Only .ttf is inspected; .woff/.woff2 wrap the same glyphs in a compressed container.
+          const asset = fontAssets.find(({ name: assetName }) =>
+            new RegExp(`^${fontBaseName}[.-][^/]*\\.ttf$`).test(assetName),
+          );
+
+          if (!asset) {
+            throw new Error(`[${adapter.name}/${name}] No emitted .ttf asset for "${fontBaseName}".`);
+          }
+
+          // `afterEmit` downgrades sources to size-only, so the bytes come back off disk.
+          const glyphCount = readGlyphCount(readFileSync(join(compiler.outputPath, asset.name)));
+          // Every subset keeps .notdef, so a font stripped of all real glyphs still reports 1.
+          if (glyphCount < 2) {
+            throw new Error(
+              `[${adapter.name}/${name}] Asset "${asset.name}" contains no glyphs beyond .notdef — ` +
+                `an icon that should have been kept was subset away.`,
+            );
+          }
+        }
+
         // Headless builds must not pull in Griffel.
         if (entry.assertNoGriffel) {
           for (const m of compilation.modules) {
@@ -175,6 +205,29 @@ function createAssertionPlugin(name, entry, adapter) {
       });
     },
   };
+}
+
+/**
+ * Reads `numGlyphs` out of a TrueType font's `maxp` table.
+ *
+ * Byte sizes make a poor correctness signal here: a font that wrongly dropped a glyph is *smaller*,
+ * so it slips under any ceiling. The glyph count says outright whether an icon survived.
+ *
+ * @param {Buffer} ttf
+ * @returns {number}
+ */
+function readGlyphCount(ttf) {
+  const tableCount = ttf.readUInt16BE(4);
+
+  for (let i = 0; i < tableCount; i++) {
+    // Table directory: 12-byte header, then 16 bytes per record (tag, checksum, offset, length).
+    const record = 12 + i * 16;
+    if (ttf.toString('ascii', record, record + 4) === 'maxp') {
+      return ttf.readUInt16BE(ttf.readUInt32BE(record + 8) + 4);
+    }
+  }
+
+  throw new Error('Font has no `maxp` table — not a TrueType font?');
 }
 
 module.exports = { makeConfigs, entries };
