@@ -114,15 +114,31 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPl
 /**
  * Resolves the runtime to query used-exports information for.
  *
- * webpack accepts `undefined` to mean "merged across all runtimes", but rspack's binding requires an
- * explicit `string | string[]`, so entrypoint names are passed instead.
+ * webpack accepts `undefined`, meaning "merged across all runtimes". rspack requires explicit
+ * runtime names, and those are the names of the *runtime chunks* — which are only the entrypoint
+ * names by coincidence. Any build that names its runtime chunk (`entry.runtime`,
+ * `optimization.runtimeChunk`) makes the two diverge, and querying the wrong runtime reports every
+ * module as unused, so nothing gets subset. The runtimes are therefore read off the chunks.
  */
 function getRuntimeSpec(compiler: BundlerCompiler, compilation: BundlerCompilation): string[] | undefined {
   if (!isRspack(compiler)) {
     return undefined;
   }
 
-  return Array.from(compilation.entrypoints.keys());
+  const runtimes = new Set<string>();
+  for (const chunk of compilation.chunks) {
+    const { runtime } = chunk;
+    if (typeof runtime === 'string') {
+      runtimes.add(runtime);
+    } else if (runtime) {
+      for (const name of runtime) {
+        runtimes.add(name);
+      }
+    }
+  }
+
+  // Entrypoint names remain a last resort for the (unexpected) case of chunks without runtimes.
+  return runtimes.size > 0 ? Array.from(runtimes) : Array.from(compilation.entrypoints.keys());
 }
 
 function isRspack(compiler: BundlerCompiler): boolean {

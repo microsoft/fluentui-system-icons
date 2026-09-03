@@ -29,7 +29,25 @@ const entries = {
     useAtomicLoader: true,
     assertNoGriffel: true,
   },
+  // Regression guard: naming the runtime chunk makes the runtime name differ from the entry name.
+  // rspack resolves used exports per runtime, so querying the wrong one reports every module as
+  // unused and silently subsets nothing. Every other entry here happens to have runtime === entry
+  // name, which is exactly why this went unnoticed.
+  namedRuntimeChunk: {
+    src: './src/atoms.js',
+    threshold: 2 * 1_024, // 2 KB — same content as `atoms`, so the same budget must hold
+    runtimeChunkName: 'shared-runtime',
+  },
 };
+
+/**
+ * @typedef {object} EntryConfig
+ * @property {string} src
+ * @property {number} threshold
+ * @property {boolean} [useAtomicLoader]
+ * @property {boolean} [assertNoGriffel]
+ * @property {string} [runtimeChunkName] Name the runtime chunk, decoupling runtime name from entry name.
+ */
 
 /**
  * @typedef {object} BundlerAdapter
@@ -54,7 +72,7 @@ function makeConfigs(adapter, options = {}) {
 
 /**
  * @param {string} name
- * @param {{ src: string, threshold: number, useAtomicLoader?: boolean, assertNoGriffel?: boolean }} entry
+ * @param {EntryConfig} entry
  * @param {BundlerAdapter} adapter
  * @param {boolean} isDevServer
  * @returns {import('webpack').Configuration}
@@ -111,7 +129,7 @@ function createConfig(name, entry, adapter, isDevServer) {
         },
       ],
     },
-    entry: { [name]: entry.src },
+    entry: { [name]: entry.runtimeChunkName ? { import: entry.src, runtime: entry.runtimeChunkName } : entry.src },
     output: {
       path: resolve(__dirname, 'dist', adapter.name, name),
       filename: '[name].js',

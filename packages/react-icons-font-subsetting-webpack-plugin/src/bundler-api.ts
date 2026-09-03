@@ -41,6 +41,11 @@ export interface BundlerAsset {
   info?: { sourceFilename?: string };
 }
 
+/** webpack's `RuntimeSpec` is `string | SortableSet<string> | undefined`; rspack's is a `Set<string>`. */
+export interface BundlerChunk {
+  runtime?: string | ReadonlySet<string>;
+}
+
 export interface BundlerCompilation {
   hooks: {
     processAssets: {
@@ -48,6 +53,7 @@ export interface BundlerCompilation {
     };
   };
   modules: Iterable<BundlerModule>;
+  chunks: Iterable<BundlerChunk>;
   moduleGraph: BundlerModuleGraph;
   entrypoints: ReadonlyMap<string, unknown>;
   warnings: Error[];
