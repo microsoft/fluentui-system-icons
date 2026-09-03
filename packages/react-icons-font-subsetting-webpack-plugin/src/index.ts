@@ -25,6 +25,9 @@ const FONT_FILES_BASE_NAMES = [
 
 const FONT_EXTENSIONS = ['.ttf', '.woff', '.woff2'];
 
+/** Separates "this module's icons are unknowable" from the benign "this module contributes nothing". */
+const UNRESOLVABLE_NAMESPACE_IMPORT = Symbol('unresolvable-namespace-import');
+
 /**
  *  Match both chunk files and atomic font imports, for the standard (Griffel)
  *  and headless APIs:
@@ -61,19 +64,25 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPl
         { name: PLUGIN_NAME, stage: Compilation.PROCESS_ASSETS_STAGE_OPTIMIZE },
         async () => {
           const runtime = getRuntimeSpec(compiler, compilation);
-          // Set when a namespace import is found but the bundler cannot report provided exports.
-          const diagnostics = { namespaceImportsUnsupported: false };
+          // Packages holding a namespace import this bundler cannot resolve; their fonts must be left whole.
+          const unresolvableNamespacePackages = new Set<string>();
 
           // There could be multiple instances of `@fluentui/react-icons`, and they need to be subset separately
           const packageToUsedFontExports: Map<string, Set<string>> = new Map<string, Set<string>>();
           for (const m of compilation.modules) {
             if (isFluentUIReactFontChunk(m)) {
-              const icons = resolveUsedIconExports(m, compilation.moduleGraph, runtime, diagnostics);
+              const pkgLibPath = resolve(dirname(m.resource), '../..');
+              const icons = resolveUsedIconExports(m, compilation.moduleGraph, runtime);
+
+              if (icons === UNRESOLVABLE_NAMESPACE_IMPORT) {
+                unresolvableNamespacePackages.add(pkgLibPath);
+                continue;
+              }
+
               if (icons === null) {
                 continue;
               }
 
-              const pkgLibPath = resolve(dirname(m.resource), '../..');
               const usedPkgExports = packageToUsedFontExports.get(pkgLibPath) ?? new Set<string>();
               for (const icon of icons) {
                 usedPkgExports.add(icon);
@@ -83,13 +92,18 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPl
           }
           const optimizationPromises: Promise<void>[] = [];
 
-          if (diagnostics.namespaceImportsUnsupported) {
-            // Degrading quietly would ship a full font while looking healthy, so say so once.
+          for (const pkgLibPath of unresolvableNamespacePackages) {
+            // Sibling modules would otherwise subset this package's shared fonts down to *their*
+            // glyphs alone, dropping the ones the namespace import needs.
+            packageToUsedFontExports.delete(pkgLibPath);
             compilation.warnings.push(
               new Error(
-                `${PLUGIN_NAME}: this bundler does not expose \`moduleGraph.getProvidedExports()\`, so icons ` +
-                  `reached through a namespace import (\`import * as ...\`) cannot be subset and were left ` +
-                  `un-subset. Named imports are unaffected. Upgrade to rspack >=2.1.0 for full coverage.`,
+                `${PLUGIN_NAME}: "${pkgLibPath}" is reached through a namespace import (\`import * as ...\`) ` +
+                  `whose icons cannot be determined — either the bundler does not expose ` +
+                  `\`moduleGraph.getProvidedExports()\` (rspack <2.1.0), or \`optimization.providedExports\` is ` +
+                  `disabled. Every font in this package was left un-subset, because subsetting from the ` +
+                  `remaining imports alone would drop glyphs that are actually used. Named imports are ` +
+                  `unaffected. Upgrade to rspack >=2.1.0 for full coverage.`,
               ),
             );
           }
@@ -229,14 +243,15 @@ function getTargetFormat(assetName: string) {
  *   with namespace imports. Without this, namespace imports would skip subsetting entirely and ship
  *   the full unsubsetted font.
  *
- * Returns `null` when subsetting cannot be performed, so the caller can skip the module.
+ * Returns `null` when the module contributes no glyphs, and {@link UNRESOLVABLE_NAMESPACE_IMPORT}
+ * when its glyphs exist but cannot be identified — the caller must then leave the whole package's
+ * fonts alone, since dropping the module silently would subset those glyphs away.
  */
 function resolveUsedIconExports(
   m: BundlerNormalModule,
   moduleGraph: BundlerModuleGraph,
   runtime: string[] | undefined,
-  diagnostics: { namespaceImportsUnsupported: boolean },
-): string[] | null {
+): string[] | null | typeof UNRESOLVABLE_NAMESPACE_IMPORT {
   const usedModuleExports = moduleGraph.getUsedExports(m, runtime);
 
   if (usedModuleExports === null) {
@@ -254,15 +269,14 @@ function resolveUsedIconExports(
     // Retrieve statically-provided exports from the module graph so we can subset to exactly
     // the glyphs this module declares (rather than the full font or nothing).
     if (typeof moduleGraph.getProvidedExports !== 'function') {
-      // rspack <2.1 has no such API; skip rather than crash, and let the caller warn.
-      diagnostics.namespaceImportsUnsupported = true;
-      return null;
+      // rspack <2.1 has no such API; the glyphs are real but unknowable, so the caller must bail.
+      return UNRESOLVABLE_NAMESPACE_IMPORT;
     }
 
     const providedExports = moduleGraph.getProvidedExports(m);
     if (providedExports === null || typeof providedExports === 'boolean') {
-      // Provided exports not statically known (optimization.providedExports disabled) - skip.
-      return null;
+      // Provided exports not statically known (optimization.providedExports disabled).
+      return UNRESOLVABLE_NAMESPACE_IMPORT;
     }
     return [...providedExports];
   }

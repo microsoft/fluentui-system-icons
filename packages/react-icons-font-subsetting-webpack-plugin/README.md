@@ -128,6 +128,8 @@ rspack `>=2.0.0` is required because subsetting reads the module graph, and
 
 On rspack `2.0.x` there is one limitation: `moduleGraph.getProvidedExports()` only landed in 2.1.0,
 and it is what lets the plugin subset icons reached through a **namespace import**
-(`import * as Icons from '@fluentui/react-icons/fonts/…'`). Those modules are skipped and their font
-is left un-subset, with a build warning saying so. Named imports — the common case — are unaffected
-and subset fully. Upgrade to rspack `>=2.1.0` for complete coverage.
+(`import * as Icons from '@fluentui/react-icons/fonts/…'`). Because those icons cannot be
+identified, _every_ font in the affected package is left un-subset — not just the namespace import's
+own module — since subsetting from the package's remaining imports would drop glyphs the namespace
+import actually uses. A build warning names the package when this happens. Named imports — the
+common case — are unaffected and subset fully. Upgrade to rspack `>=2.1.0` for complete coverage.

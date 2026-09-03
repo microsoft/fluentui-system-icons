@@ -10,6 +10,8 @@ import type { BundlerCompiler } from '../src/bundler-api';
 const REACT_ICONS_LIB = resolve(dirname(fileURLToPath(import.meta.url)), '../../react-icons/lib');
 const FONT_FILE = resolve(REACT_ICONS_LIB, 'utils/fonts/FluentSystemIcons-Regular.ttf');
 const FONT_MODULE = resolve(REACT_ICONS_LIB, 'atoms/fonts/games.js');
+/** A second module in the *same* package, so both share one set of font assets. */
+const SIBLING_FONT_MODULE = resolve(REACT_ICONS_LIB, 'atoms/fonts/add.js');
 
 /**
  * webpack's `RuntimeSpec` value meaning "do not scope this query — merge across every runtime".
@@ -26,7 +28,9 @@ interface HarnessOptions {
   isRspack?: boolean;
   /** Whether the bundler exposes the 2.1-only API. */
   hasProvidedExports?: boolean;
-  usedExports: () => ReadonlySet<string> | readonly string[] | boolean | null;
+  /** Font module resources to place in the graph. */
+  moduleResources?: string[];
+  usedExports: (resource: string) => ReadonlySet<string> | readonly string[] | boolean | null;
 }
 
 /**
@@ -46,9 +50,9 @@ async function harness(options: HarnessOptions) {
   let processAssets: (() => Promise<void>) | undefined;
 
   const moduleGraph = {
-    getUsedExports(_m: unknown, runtime: unknown) {
+    getUsedExports(m: { resource: string }, runtime: unknown) {
       runtimesSeen.push(runtime);
-      return options.usedExports();
+      return options.usedExports(m.resource);
     },
     // Omitted entirely when absent, mirroring rspack 2.0.x where the method does not exist.
     ...(options.hasProvidedExports ? { getProvidedExports: () => ['GamesFilled'] as readonly string[] } : {}),
@@ -62,7 +66,10 @@ async function harness(options: HarnessOptions) {
         },
       },
     },
-    modules: [{ type: 'javascript/auto', resource: FONT_MODULE }],
+    modules: (options.moduleResources ?? [FONT_MODULE]).map((resource) => ({
+      type: 'javascript/auto',
+      resource,
+    })),
     // rspack exposes `chunk.runtime` as a Set; webpack's may also be a bare string.
     chunks: [{ runtime: new Set([RUNTIME_CHUNK_NAME]) }],
     moduleGraph,
@@ -164,5 +171,20 @@ describe('getProvidedExports capability guard', () => {
     expect(warnings).toEqual([]);
     expect(updatedAssets).toHaveLength(1);
     expect(updatedAssets[0].size).toBeLessThan(originalSize);
+  });
+
+  it('leaves the package whole when a namespace import sits alongside a named one', async () => {
+    const { updatedAssets, warnings } = await harness({
+      isRspack: true,
+      hasProvidedExports: false,
+      moduleResources: [FONT_MODULE, SIBLING_FONT_MODULE],
+      usedExports: (resource) => (resource === FONT_MODULE ? true : ['AddFilled']),
+    });
+
+    // Both modules share one font, so subsetting to the named import alone would delete the
+    // glyphs the unresolvable namespace import needs — a broken build that still looks green.
+    expect(updatedAssets).toEqual([]);
+    expect(warnings).toHaveLength(1);
+    expect(warnings[0].message).toContain(REACT_ICONS_LIB);
   });
 });
