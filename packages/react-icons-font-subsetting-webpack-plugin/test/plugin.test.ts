@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { readFileSync } from 'node:fs';
+import { copyFileSync, mkdirSync, mkdtempSync, readFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -12,6 +13,32 @@ const FONT_FILE = resolve(REACT_ICONS_LIB, 'utils/fonts/FluentSystemIcons-Regula
 const FONT_MODULE = resolve(REACT_ICONS_LIB, 'atoms/fonts/games.js');
 /** A second module in the *same* package, so both share one set of font assets. */
 const SIBLING_FONT_MODULE = resolve(REACT_ICONS_LIB, 'atoms/fonts/add.js');
+
+const FONT_BASE_NAMES = [
+  'FluentSystemIcons-Filled',
+  'FluentSystemIcons-Resizable',
+  'FluentSystemIcons-Regular',
+  'FluentSystemIcons-Light',
+];
+
+/**
+ * A second installed copy of the package, as produced by peer-dependency variants in a virtual
+ * store. Only the codepoint tables are materialised — the plugin reads those, and derives
+ * everything else from path arithmetic.
+ */
+function createDuplicateInstance() {
+  const lib = resolve(mkdtempSync(resolve(tmpdir(), 'react-icons-copy-')), 'react-icons/lib');
+  mkdirSync(resolve(lib, 'utils/fonts'), { recursive: true });
+
+  for (const baseName of FONT_BASE_NAMES) {
+    copyFileSync(
+      resolve(REACT_ICONS_LIB, `utils/fonts/${baseName}.json`),
+      resolve(lib, `utils/fonts/${baseName}.json`),
+    );
+  }
+
+  return { lib, fontModule: resolve(lib, 'atoms/fonts/games.js') };
+}
 
 /**
  * webpack's `RuntimeSpec` value meaning "do not scope this query — merge across every runtime".
@@ -30,6 +57,9 @@ interface HarnessOptions {
   hasProvidedExports?: boolean;
   /** Font module resources to place in the graph. */
   moduleResources?: string[];
+  /** Emitted font assets, as `sourceFilename` values. Defaults to the one real font file. */
+  assetSources?: string[];
+  pluginOptions?: ConstructorParameters<typeof FluentUIReactIconsFontSubsettingPlugin>[0];
   usedExports: (resource: string) => ReadonlySet<string> | readonly string[] | boolean | null;
 }
 
@@ -45,6 +75,7 @@ async function harness(options: HarnessOptions) {
   const runtimesSeen: unknown[] = [];
   const updatedAssets: { name: string; size: number }[] = [];
   const warnings: Error[] = [];
+  const errors: Error[] = [];
 
   /** Captures the callback the plugin registers on `processAssets`, so the test can invoke it. */
   let processAssets: (() => Promise<void>) | undefined;
@@ -75,11 +106,15 @@ async function harness(options: HarnessOptions) {
     moduleGraph,
     entrypoints: new Map([[ENTRYPOINT_NAME, {}]]),
     warnings,
+    errors,
     getAsset: (name: string) => ({ name, source: { source: () => originalFont } }),
     // An absolute `sourceFilename` resolves independently of `context`.
-    getAssets: () => [
-      { name: 'Regular.ttf', source: { source: () => originalFont }, info: { sourceFilename: FONT_FILE } },
-    ],
+    getAssets: () =>
+      (options.assetSources ?? [FONT_FILE]).map((sourceFilename, i) => ({
+        name: `Regular-${i}.ttf`,
+        source: { source: () => originalFont },
+        info: { sourceFilename },
+      })),
     updateAsset: (name: string, source: { source(): string | Buffer }) => {
       updatedAssets.push({ name, size: Buffer.from(source.source()).length });
     },
@@ -103,10 +138,10 @@ async function harness(options: HarnessOptions) {
     hooks: { compilation: { tap: (_name: string, fn: (c: unknown) => void) => fn(compilation) } },
   };
 
-  new FluentUIReactIconsFontSubsettingPlugin().apply(compiler as unknown as BundlerCompiler);
+  new FluentUIReactIconsFontSubsettingPlugin(options.pluginOptions).apply(compiler as unknown as BundlerCompiler);
   await processAssets!();
 
-  return { runtimesSeen, updatedAssets, warnings, originalSize: originalFont.length };
+  return { runtimesSeen, updatedAssets, warnings, errors, originalSize: originalFont.length };
 }
 
 describe('runtime resolution', () => {
@@ -186,5 +221,53 @@ describe('getProvidedExports capability guard', () => {
     expect(updatedAssets).toEqual([]);
     expect(warnings).toHaveLength(1);
     expect(warnings[0].message).toContain(REACT_ICONS_LIB);
+  });
+});
+
+describe('duplicate installed instances', () => {
+  it('leaves fonts whole when a copy owns no emitted asset', async () => {
+    const duplicate = createDuplicateInstance();
+
+    const { updatedAssets, warnings } = await harness({
+      moduleResources: [FONT_MODULE, duplicate.fontModule],
+      // Identical fonts across copies collapse to one emitted asset, which can name only one copy.
+      assetSources: [FONT_FILE],
+      usedExports: (resource) => (resource === FONT_MODULE ? ['GamesFilled'] : ['AddFilled']),
+    });
+
+    // Subsetting the shared asset for the copy that happens to own it drops every glyph belonging
+    // to the copies that do not — silently, which is how this reached production.
+    expect(updatedAssets).toEqual([]);
+    expect(warnings).toHaveLength(1);
+    expect(warnings[0].message).toContain(REACT_ICONS_LIB);
+    expect(warnings[0].message).toContain(duplicate.lib);
+  });
+
+  it('fails the build instead when asked to', async () => {
+    const duplicate = createDuplicateInstance();
+
+    const { updatedAssets, warnings, errors } = await harness({
+      moduleResources: [FONT_MODULE, duplicate.fontModule],
+      assetSources: [FONT_FILE],
+      pluginOptions: { onDuplicateInstances: 'error' },
+      usedExports: (resource) => (resource === FONT_MODULE ? ['GamesFilled'] : ['AddFilled']),
+    });
+
+    expect(errors).toHaveLength(1);
+    expect(errors[0].message).toContain(duplicate.lib);
+    expect(warnings).toEqual([]);
+    expect(updatedAssets).toEqual([]);
+  });
+
+  it('still reports a missing asset rule when no copy owns an asset', async () => {
+    const { updatedAssets, warnings } = await harness({
+      // Nothing emitted at all is a bundler misconfiguration, not duplicate instances.
+      assetSources: [],
+      usedExports: () => ['GamesFilled'],
+    });
+
+    expect(updatedAssets).toEqual([]);
+    expect(warnings).toHaveLength(1);
+    expect(warnings[0].message).toContain("type: 'asset'");
   });
 });

@@ -133,3 +133,28 @@ identified, _every_ font in the affected package is left un-subset — not just 
 own module — since subsetting from the package's remaining imports would drop glyphs the namespace
 import actually uses. A build warning names the package when this happens. Named imports — the
 common case — are unaffected and subset fully. Upgrade to rspack `>=2.1.0` for complete coverage.
+
+## Options
+
+### `onDuplicateInstances`
+
+`'warn' | 'error'`, default `'warn'`.
+
+When several copies of `@fluentui/react-icons` are installed — peer-dependency variants in a virtual
+store will do it, without any version conflict — their font files are byte-identical, so they hash to
+a single emitted asset. That asset can name only one copy as its source, and nothing in the module
+graph says which copy a given icon came from. Subsetting it for the copy that happens to own it
+deletes every glyph the other copies contribute.
+
+The plugin detects this and leaves the affected fonts un-subset, so all glyphs still render, and
+warns with the paths of the copies involved. Set `'error'` to fail the build instead:
+
+```js
+new FluentUIReactIconsFontSubsettingPlugin({ onDuplicateInstances: 'error' });
+```
+
+To get subsetting back, collapse the copies onto one instance with bundler `resolve.alias` entries.
+Note that this also binds every copy to a single React and Griffel instance.
+
+Copies of genuinely _different_ versions ship different fonts, emit separate assets, and continue to
+be subset independently — they do not trigger this.

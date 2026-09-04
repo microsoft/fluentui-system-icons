@@ -10,7 +10,7 @@
     "test:rspack": "node test/run.js --bundler rspack",
     "dev": "yarn run -T webpack serve -c test/webpack.config.js --open",
     "build": "yarn run -T tsc -p .",
-    "lint": "yarn run -T eslint package.json"
+    "lint": "yarn run -T eslint src package.json"
   },
   "engines": {
     "node": ">=14.5.0"
