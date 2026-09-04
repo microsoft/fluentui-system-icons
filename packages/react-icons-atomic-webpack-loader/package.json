@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "magic-string": "^0.30.0",
-    "oxc-parser": "^0.125.0"
+    "oxc-parser": "^0.147.0"
   },
   "devDependencies": {
     "@fluentui/react-icons": "*"
