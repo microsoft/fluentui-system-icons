@@ -51,10 +51,10 @@ export interface FluentUIReactIconsFontSubsettingPluginOptions {
 }
 
 export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPlugin {
-  private readonly onDuplicateInstances: 'warn' | 'error';
+  private readonly __onDuplicateInstances: 'warn' | 'error';
 
   constructor(options: FluentUIReactIconsFontSubsettingPluginOptions = {}) {
-    this.onDuplicateInstances = options.onDuplicateInstances ?? 'warn';
+    this.__onDuplicateInstances = options.onDuplicateInstances ?? 'warn';
   }
 
   /**
@@ -151,7 +151,7 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPl
                 `and Griffel instance.`,
             );
 
-            if (this.onDuplicateInstances === 'error') {
+            if (this.__onDuplicateInstances === 'error') {
               compilation.errors.push(message);
             } else {
               compilation.warnings.push(message);
