@@ -25,6 +25,9 @@ const FONT_FILES_BASE_NAMES = [
 
 const FONT_EXTENSIONS = ['.ttf', '.woff', '.woff2'];
 
+/** Separates "this module's icons are unknowable" from the benign "this module contributes nothing". */
+const UNRESOLVABLE_NAMESPACE_IMPORT = Symbol('unresolvable-namespace-import');
+
 /**
  *  Match both chunk files and atomic font imports, for the standard (Griffel)
  *  and headless APIs:
@@ -61,17 +64,25 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPl
         { name: PLUGIN_NAME, stage: Compilation.PROCESS_ASSETS_STAGE_OPTIMIZE },
         async () => {
           const runtime = getRuntimeSpec(compiler, compilation);
+          // Packages holding a namespace import this bundler cannot resolve; their fonts must be left whole.
+          const unresolvableNamespacePackages = new Set<string>();
 
           // There could be multiple instances of `@fluentui/react-icons`, and they need to be subset separately
           const packageToUsedFontExports: Map<string, Set<string>> = new Map<string, Set<string>>();
           for (const m of compilation.modules) {
             if (isFluentUIReactFontChunk(m)) {
+              const pkgLibPath = resolve(dirname(m.resource), '../..');
               const icons = resolveUsedIconExports(m, compilation.moduleGraph, runtime);
+
+              if (icons === UNRESOLVABLE_NAMESPACE_IMPORT) {
+                unresolvableNamespacePackages.add(pkgLibPath);
+                continue;
+              }
+
               if (icons === null) {
                 continue;
               }
 
-              const pkgLibPath = resolve(dirname(m.resource), '../..');
               const usedPkgExports = packageToUsedFontExports.get(pkgLibPath) ?? new Set<string>();
               for (const icon of icons) {
                 usedPkgExports.add(icon);
@@ -80,6 +91,22 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPl
             }
           }
           const optimizationPromises: Promise<void>[] = [];
+
+          for (const pkgLibPath of unresolvableNamespacePackages) {
+            // Sibling modules would otherwise subset this package's shared fonts down to *their*
+            // glyphs alone, dropping the ones the namespace import needs.
+            packageToUsedFontExports.delete(pkgLibPath);
+            compilation.warnings.push(
+              new Error(
+                `${PLUGIN_NAME}: "${pkgLibPath}" is reached through a namespace import (\`import * as ...\`) ` +
+                  `whose icons cannot be determined — either the bundler does not expose ` +
+                  `\`moduleGraph.getProvidedExports()\` (rspack <2.1.0), or \`optimization.providedExports\` is ` +
+                  `disabled. Every font in this package was left un-subset, because subsetting from the ` +
+                  `remaining imports alone would drop glyphs that are actually used. Named imports are ` +
+                  `unaffected. Upgrade to rspack >=2.1.0 for full coverage.`,
+              ),
+            );
+          }
 
           for (const [pkgLibPath, usedExports] of packageToUsedFontExports) {
             const fontAssets = await getFontAssetsAndCodepoints(pkgLibPath, compilation, compiler.context);
@@ -114,15 +141,31 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPl
 /**
  * Resolves the runtime to query used-exports information for.
  *
- * webpack accepts `undefined` to mean "merged across all runtimes", but rspack's binding requires an
- * explicit `string | string[]`, so entrypoint names are passed instead.
+ * webpack accepts `undefined`, meaning "merged across all runtimes". rspack requires explicit
+ * runtime names, and those are the names of the *runtime chunks* — which are only the entrypoint
+ * names by coincidence. Any build that names its runtime chunk (`entry.runtime`,
+ * `optimization.runtimeChunk`) makes the two diverge, and querying the wrong runtime reports every
+ * module as unused, so nothing gets subset. The runtimes are therefore read off the chunks.
  */
 function getRuntimeSpec(compiler: BundlerCompiler, compilation: BundlerCompilation): string[] | undefined {
   if (!isRspack(compiler)) {
     return undefined;
   }
 
-  return Array.from(compilation.entrypoints.keys());
+  const runtimes = new Set<string>();
+  for (const chunk of compilation.chunks) {
+    const { runtime } = chunk;
+    if (typeof runtime === 'string') {
+      runtimes.add(runtime);
+    } else if (runtime) {
+      for (const name of runtime) {
+        runtimes.add(name);
+      }
+    }
+  }
+
+  // Entrypoint names remain a last resort for the (unexpected) case of chunks without runtimes.
+  return runtimes.size > 0 ? Array.from(runtimes) : Array.from(compilation.entrypoints.keys());
 }
 
 function isRspack(compiler: BundlerCompiler): boolean {
@@ -200,13 +243,15 @@ function getTargetFormat(assetName: string) {
  *   with namespace imports. Without this, namespace imports would skip subsetting entirely and ship
  *   the full unsubsetted font.
  *
- * Returns `null` when subsetting cannot be performed, so the caller can skip the module.
+ * Returns `null` when the module contributes no glyphs, and {@link UNRESOLVABLE_NAMESPACE_IMPORT}
+ * when its glyphs exist but cannot be identified — the caller must then leave the whole package's
+ * fonts alone, since dropping the module silently would subset those glyphs away.
  */
 function resolveUsedIconExports(
   m: BundlerNormalModule,
   moduleGraph: BundlerModuleGraph,
   runtime: string[] | undefined,
-): string[] | null {
+): string[] | null | typeof UNRESOLVABLE_NAMESPACE_IMPORT {
   const usedModuleExports = moduleGraph.getUsedExports(m, runtime);
 
   if (usedModuleExports === null) {
@@ -223,10 +268,15 @@ function resolveUsedIconExports(
     // All exports are used (e.g. `import * as ns from '...'` or similar namespace import).
     // Retrieve statically-provided exports from the module graph so we can subset to exactly
     // the glyphs this module declares (rather than the full font or nothing).
+    if (typeof moduleGraph.getProvidedExports !== 'function') {
+      // rspack <2.1 has no such API; the glyphs are real but unknowable, so the caller must bail.
+      return UNRESOLVABLE_NAMESPACE_IMPORT;
+    }
+
     const providedExports = moduleGraph.getProvidedExports(m);
     if (providedExports === null || typeof providedExports === 'boolean') {
-      // Provided exports not statically known (optimization.providedExports disabled) - skip.
-      return null;
+      // Provided exports not statically known (optimization.providedExports disabled).
+      return UNRESOLVABLE_NAMESPACE_IMPORT;
     }
     return [...providedExports];
   }
