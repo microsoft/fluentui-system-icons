@@ -28,5 +28,6 @@
   { "value": 27, "name": "pbiPaginatedReport", "icon": "pbipagereport" },
   { "value": 28, "name": "pbiScorecard", "icon": "pbiscorecard" },
   { "value": 29, "name": "pbiSemanticModel", "icon": "pbisemmodel" },
-  { "value": 30, "name": "pbiReport", "icon": "powerbi" }
+  { "value": 30, "name": "pbiReport", "icon": "powerbi" },
+  { "value": 31, "name": "wikiPage", "icon": "wikipage" }
 ]
