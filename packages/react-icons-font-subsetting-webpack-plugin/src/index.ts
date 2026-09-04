@@ -39,7 +39,24 @@ const UNRESOLVABLE_NAMESPACE_IMPORT = Symbol('unresolvable-namespace-import');
 const REACT_ICONS_FONT_MODULE_IMPORT_PATTERN =
   /react-icons[\/\\]lib(-cjs)?[\/\\](fonts[\/\\](sizedIcons|icons)[\/\\]chunk-\d+|atoms[\/\\](headless-)?fonts[\/\\][\w-]+)\.c?js$/;
 
+export interface FluentUIReactIconsFontSubsettingPluginOptions {
+  /**
+   * What to do when several installed copies of `@fluentui/react-icons` share one emitted font
+   * asset, which makes it impossible to tell which icons belong to it.
+   *
+   * `'warn'` (default) leaves the affected fonts un-subset, so every glyph still renders.
+   * `'error'` fails the build instead.
+   */
+  onDuplicateInstances?: 'warn' | 'error';
+}
+
 export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPlugin {
+  private readonly onDuplicateInstances: 'warn' | 'error';
+
+  constructor(options: FluentUIReactIconsFontSubsettingPluginOptions = {}) {
+    this.onDuplicateInstances = options.onDuplicateInstances ?? 'warn';
+  }
+
   /**
    * Entry point for the bundler plugin that registers hooks to perform font subsetting for `@fluentui/react-icons`.
    *
@@ -91,6 +108,10 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPl
             }
           }
           const optimizationPromises: Promise<void>[] = [];
+          const packageToFontAssets = new Map<
+            string,
+            { usedExports: Set<string>; fontAssets: { assetName: string; codepoints: Record<string, number> }[] }
+          >();
 
           for (const pkgLibPath of unresolvableNamespacePackages) {
             // Sibling modules would otherwise subset this package's shared fonts down to *their*
@@ -110,19 +131,49 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPl
 
           for (const [pkgLibPath, usedExports] of packageToUsedFontExports) {
             const fontAssets = await getFontAssetsAndCodepoints(pkgLibPath, compilation, compiler.context);
+            packageToFontAssets.set(pkgLibPath, { usedExports, fontAssets });
+          }
 
-            if (fontAssets.length === 0) {
-              // Loud failure: silently shipping an un-subset font is worse than a broken build.
-              compilation.warnings.push(
-                new Error(
-                  `${PLUGIN_NAME}: found used icon fonts in "${pkgLibPath}" but could not map any font module ` +
-                    `to an emitted asset. Fonts will NOT be subset. Ensure a \`type: 'asset'\` (or 'asset/resource') ` +
-                    `module rule matches /\\.(ttf|woff2?)$/.`,
-                ),
-              );
-              continue;
+          const owningPackages = [...packageToFontAssets].filter(([, { fontAssets }]) => fontAssets.length > 0);
+          const orphanedPackages = [...packageToFontAssets].filter(([, { fontAssets }]) => fontAssets.length === 0);
+
+          if (owningPackages.length > 0 && orphanedPackages.length > 0) {
+            // Identical fonts across copies hash to one asset, which can name only one copy as its
+            // source. Subsetting it for that copy would delete every glyph the others contribute,
+            // and nothing in the module graph says which copy an icon really came from.
+            const message = new Error(
+              `${PLUGIN_NAME}: "@fluentui/react-icons" is installed more than once and the copies share ` +
+                `emitted font assets, so icons cannot be attributed to a font. Fonts were left un-subset ` +
+                `to avoid dropping glyphs. Copies owning an emitted font: ` +
+                `${owningPackages.map(([p]) => `"${p}"`).join(', ')}. Copies sharing them: ` +
+                `${orphanedPackages.map(([p]) => `"${p}"`).join(', ')}. Collapse them onto one instance with ` +
+                `bundler \`resolve.alias\` entries — note that this also binds every copy to a single React ` +
+                `and Griffel instance.`,
+            );
+
+            if (this.onDuplicateInstances === 'error') {
+              compilation.errors.push(message);
+            } else {
+              compilation.warnings.push(message);
             }
 
+            return;
+          }
+
+          if (owningPackages.length === 0 && packageToFontAssets.size > 0) {
+            // Loud failure: silently shipping an un-subset font is worse than a broken build.
+            compilation.warnings.push(
+              new Error(
+                `${PLUGIN_NAME}: found used icon fonts in ` +
+                  `${[...packageToFontAssets.keys()].map((p) => `"${p}"`).join(', ')} but could not map any font ` +
+                  `module to an emitted asset. Fonts will NOT be subset. Ensure a \`type: 'asset'\` ` +
+                  `(or 'asset/resource') module rule matches /\\.(ttf|woff2?)$/.`,
+              ),
+            );
+            return;
+          }
+
+          for (const [, { usedExports, fontAssets }] of owningPackages) {
             for (const { assetName, codepoints: codepointMap } of fontAssets) {
               optimizationPromises.push(
                 optimizeFontAsset(codepointMap, usedExports, compilation, assetName, sources.RawSource),
