@@ -42,6 +42,7 @@
      where the loaded glyph already sits (no visible reposition). */
   overflow: hidden;
   font-style: normal;
+  /* Prevent inherited font weight from distorting the icon glyph. */
   font-weight: normal;
   line-height: 1em;
   color: currentColor;
