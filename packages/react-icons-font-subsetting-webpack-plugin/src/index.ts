@@ -28,6 +28,12 @@ const FONT_EXTENSIONS = ['.ttf', '.woff', '.woff2'];
 /** Separates "this module's icons are unknowable" from the benign "this module contributes nothing". */
 const UNRESOLVABLE_NAMESPACE_IMPORT = Symbol('unresolvable-namespace-import');
 
+/** An emitted font asset paired with the codepoint table of the package it came from. */
+interface FontAssetCodepoints {
+  assetName: string;
+  codepoints: Record<string, number>;
+}
+
 /**
  *  Match both chunk files and atomic font imports, for the standard (Griffel)
  *  and headless APIs:
@@ -108,10 +114,7 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPl
             }
           }
           const optimizationPromises: Promise<void>[] = [];
-          const packageToFontAssets = new Map<
-            string,
-            { usedExports: Set<string>; fontAssets: { assetName: string; codepoints: Record<string, number> }[] }
-          >();
+          const packageToFontAssets = new Map<string, FontAssetCodepoints[]>();
 
           for (const pkgLibPath of unresolvableNamespacePackages) {
             // Sibling modules would otherwise subset this package's shared fonts down to *their*
@@ -129,13 +132,19 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPl
             );
           }
 
-          for (const [pkgLibPath, usedExports] of packageToUsedFontExports) {
-            const fontAssets = await getFontAssetsAndCodepoints(pkgLibPath, compilation, compiler.context);
-            packageToFontAssets.set(pkgLibPath, { usedExports, fontAssets });
+          // Namespace copies contribute no *known* glyphs, so they never reach the used-exports
+          // map — but their fonts still have to survive, which makes them part of this analysis.
+          const participants = new Set([...packageToUsedFontExports.keys(), ...unresolvableNamespacePackages]);
+
+          for (const pkgLibPath of participants) {
+            packageToFontAssets.set(
+              pkgLibPath,
+              await getFontAssetsAndCodepoints(pkgLibPath, compilation, compiler.context),
+            );
           }
 
-          const owningPackages = [...packageToFontAssets].filter(([, { fontAssets }]) => fontAssets.length > 0);
-          const orphanedPackages = [...packageToFontAssets].filter(([, { fontAssets }]) => fontAssets.length === 0);
+          const owningPackages = [...packageToFontAssets].filter(([, fontAssets]) => fontAssets.length > 0);
+          const orphanedPackages = [...packageToFontAssets].filter(([, fontAssets]) => fontAssets.length === 0);
 
           if (owningPackages.length > 0 && orphanedPackages.length > 0) {
             // Identical fonts across copies hash to one asset, which can name only one copy as its
@@ -160,20 +169,28 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPl
             return;
           }
 
-          if (owningPackages.length === 0 && packageToFontAssets.size > 0) {
+          const subsettablePackages: { usedExports: Set<string>; fontAssets: FontAssetCodepoints[] }[] = [];
+          for (const [pkgLibPath, fontAssets] of owningPackages) {
+            const usedExports = packageToUsedFontExports.get(pkgLibPath);
+            if (usedExports) {
+              subsettablePackages.push({ usedExports, fontAssets });
+            }
+          }
+
+          if (subsettablePackages.length === 0 && packageToUsedFontExports.size > 0) {
             // Loud failure: silently shipping an un-subset font is worse than a broken build.
             compilation.warnings.push(
               new Error(
                 `${PLUGIN_NAME}: found used icon fonts in ` +
-                  `${[...packageToFontAssets.keys()].map((p) => `"${p}"`).join(', ')} but could not map any font ` +
-                  `module to an emitted asset. Fonts will NOT be subset. Ensure a \`type: 'asset'\` ` +
+                  `${[...packageToUsedFontExports.keys()].map((p) => `"${p}"`).join(', ')} but could not map any ` +
+                  `font module to an emitted asset. Fonts will NOT be subset. Ensure a \`type: 'asset'\` ` +
                   `(or 'asset/resource') module rule matches /\\.(ttf|woff2?)$/.`,
               ),
             );
             return;
           }
 
-          for (const [, { usedExports, fontAssets }] of owningPackages) {
+          for (const { usedExports, fontAssets } of subsettablePackages) {
             for (const { assetName, codepoints: codepointMap } of fontAssets) {
               optimizationPromises.push(
                 optimizeFontAsset(codepointMap, usedExports, compilation, assetName, sources.RawSource),
@@ -372,7 +389,7 @@ async function getFontAssetsAndCodepoints(
   pkgLibPath: string,
   compilation: BundlerCompilation,
   context: string,
-): Promise<{ assetName: string; codepoints: Record<string, number> }[]> {
+): Promise<FontAssetCodepoints[]> {
   const utilsFontsFolder = resolve(pkgLibPath, 'utils/fonts');
   const codepoints: Record<string, Record<string, number>> = Object.fromEntries(
     await Promise.all(
@@ -388,7 +405,7 @@ async function getFontAssetsAndCodepoints(
     ),
   );
 
-  const result: { assetName: string; codepoints: Record<string, number> }[] = [];
+  const result: FontAssetCodepoints[] = [];
 
   for (const { name: assetName, info } of compilation.getAssets()) {
     const sourceFilename = info?.sourceFilename;

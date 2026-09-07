@@ -37,7 +37,11 @@ function createDuplicateInstance() {
     );
   }
 
-  return { lib, fontModule: resolve(lib, 'atoms/fonts/games.js') };
+  return {
+    lib,
+    fontModule: resolve(lib, 'atoms/fonts/games.js'),
+    fontFile: resolve(lib, 'utils/fonts/FluentSystemIcons-Regular.ttf'),
+  };
 }
 
 /**
@@ -269,5 +273,41 @@ describe('duplicate installed instances', () => {
     expect(updatedAssets).toEqual([]);
     expect(warnings).toHaveLength(1);
     expect(warnings[0].message).toContain("type: 'asset'");
+  });
+
+  it('counts a copy reached only through an unresolvable namespace import', async () => {
+    const duplicate = createDuplicateInstance();
+
+    const { updatedAssets, warnings } = await harness({
+      isRspack: true,
+      hasProvidedExports: false,
+      moduleResources: [FONT_MODULE, duplicate.fontModule],
+      assetSources: [FONT_FILE],
+      usedExports: (resource) => (resource === FONT_MODULE ? ['GamesFilled'] : true),
+    });
+
+    // Such a copy has no *known* glyphs, so it never reaches the used-exports map — but its fonts
+    // are the same shared asset, and subsetting for the copy that owns it deletes the glyphs it
+    // needs. That is the case the namespace warning claims cannot happen.
+    expect(updatedAssets).toEqual([]);
+    expect(warnings.map(({ message }) => message).join('\n')).toContain('installed more than once');
+  });
+
+  it('reports a collision, not a missing asset rule, when the unresolvable copy owns the asset', async () => {
+    const duplicate = createDuplicateInstance();
+
+    const { updatedAssets, warnings } = await harness({
+      isRspack: true,
+      hasProvidedExports: false,
+      moduleResources: [FONT_MODULE, duplicate.fontModule],
+      // The emitted asset names the namespace copy, leaving the named-import copy orphaned.
+      assetSources: [duplicate.fontFile],
+      usedExports: (resource) => (resource === FONT_MODULE ? ['GamesFilled'] : true),
+    });
+
+    const messages = warnings.map(({ message }) => message).join('\n');
+    expect(updatedAssets).toEqual([]);
+    expect(messages).toContain('installed more than once');
+    expect(messages).not.toContain("type: 'asset'");
   });
 });
