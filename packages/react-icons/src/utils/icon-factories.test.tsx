@@ -49,12 +49,24 @@ describe('React component tests', () => {
       <div>
         <i
           aria-hidden="true"
-          class="fui-Icon-font ___33p1ap0_6yslol0 f14t3ns0 fne0op0 fhson10 f1un31zh f1a3p1vp fmd4ok8 f303qgw f1sxfq9t"
+          class="fui-Icon-font ___5dcbuy0_g10qsx0 f14t3ns0 fne0op0 fhson10 f1un31zh f1a3p1vp fmd4ok8 f5ljve1 f303qgw f1sxfq9t"
           data-fui-icon=""
           fill="currentColor"
         />
       </div>
     `);
+  });
+
+  test('createFontIcon does not inherit font weight', () => {
+    const AccessTimeRegular: FluentFontIcon = createFluentFontIcon('AccessTimeRegular', '', 2, undefined);
+
+    const { container } = render(
+      <div style={{ fontWeight: 600 }}>
+        <AccessTimeRegular />
+      </div>,
+    );
+
+    expect(getComputedStyle(container.querySelector('i')!).fontWeight).toBe('normal');
   });
 
   test('createFontIcon applies the `fontSize` prop as a CSS style (API parity with SVG icons)', () => {

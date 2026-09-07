@@ -2571,6 +2571,7 @@ describe('Build Verification', () => {
       expect(css).toContain('[data-fui-icon]');
       expect(css).toContain('[data-fui-icon-rtl]');
       expect(css).toContain('[data-fui-icon-hidden]');
+      expect(css).toMatch(/\[data-fui-icon=['"]font['"]\][^{]*\{[^}]*font-weight:\s*normal/s);
 
       // Font sub-infrastructure
       expect(fs.existsSync(path.join(headlessDir, 'fonts', 'createFluentFontIcon.js'))).toBe(true);
