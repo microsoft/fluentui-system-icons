@@ -66,7 +66,9 @@ describe('React component tests', () => {
       </div>,
     );
 
-    expect(getComputedStyle(container.querySelector('i')!).fontWeight).toBe('normal');
+    const i = container.querySelector('i');
+    expect(i).toBeTruthy();
+    expect(getComputedStyle(i as HTMLElement).fontWeight).toMatch(/^(normal|400)$/);
   });
 
   test('createFontIcon applies the `fontSize` prop as a CSS style (API parity with SVG icons)', () => {
