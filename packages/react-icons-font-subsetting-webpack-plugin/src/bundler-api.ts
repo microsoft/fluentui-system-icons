@@ -57,6 +57,7 @@ export interface BundlerCompilation {
   moduleGraph: BundlerModuleGraph;
   entrypoints: ReadonlyMap<string, unknown>;
   warnings: Error[];
+  errors: Error[];
   getAsset(name: string): BundlerAsset | undefined | void;
   getAssets(): readonly BundlerAsset[];
   /**
