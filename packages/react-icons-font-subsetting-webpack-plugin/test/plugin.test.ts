@@ -46,8 +46,8 @@ function createDuplicateInstance() {
 
 function normalizeDiagnostics(diagnostics: Error[], duplicateLib?: string) {
   return diagnostics.map(({ message }) => {
-    const normalized = message.replaceAll(REACT_ICONS_LIB, '<react-icons-lib>');
-    return duplicateLib ? normalized.replaceAll(duplicateLib, '<duplicate-react-icons-lib>') : normalized;
+    const normalized = message.split(REACT_ICONS_LIB).join('<react-icons-lib>');
+    return duplicateLib ? normalized.split(duplicateLib).join('<duplicate-react-icons-lib>') : normalized;
   });
 }
 
@@ -139,9 +139,9 @@ async function harness(options: HarnessOptions) {
       Compilation: { PROCESS_ASSETS_STAGE_OPTIMIZE: 0 },
       sources: {
         RawSource: class {
-          constructor(private readonly value: string | Buffer) {}
+          constructor(private readonly __value: string | Buffer) {}
           source() {
-            return this.value;
+            return this.__value;
           }
         },
       },
@@ -236,7 +236,25 @@ describe('getProvidedExports capability guard', () => {
 });
 
 describe('duplicate installed instances', () => {
-  it('leaves fonts whole when a copy owns no emitted asset', async () => {
+  it('leaves fonts whole when multiple copies each emit assets', async () => {
+    const duplicate = createDuplicateInstance();
+
+    const { updatedAssets, warnings } = await harness({
+      moduleResources: [FONT_MODULE, duplicate.fontModule],
+      assetSources: [FONT_FILE, duplicate.fontFile],
+      usedExports: (resource) => (resource === FONT_MODULE ? ['GamesFilled'] : ['AddFilled']),
+    });
+
+    // Even distinct assets do not establish one coherent font/codepoint source for the build.
+    expect(updatedAssets).toEqual([]);
+    expect(normalizeDiagnostics(warnings, duplicate.lib)).toMatchInlineSnapshot(`
+      [
+        "FluentUIReactIconsFontSubsettingPlugin: more than one installed copy of "@fluentui/react-icons" contributes icons, so font assets cannot be attributed safely. Fonts were left un-subset to avoid dropping glyphs. Participating copies: "<react-icons-lib>", "<duplicate-react-icons-lib>". Collapse them onto one instance with bundler \`resolve.alias\` entries — note that this also binds every copy to a single React and Griffel instance.",
+      ]
+    `);
+  });
+
+  it('leaves fonts whole when emitted assets are attributed to only one copy', async () => {
     const duplicate = createDuplicateInstance();
 
     const { updatedAssets, warnings } = await harness({
@@ -246,12 +264,11 @@ describe('duplicate installed instances', () => {
       usedExports: (resource) => (resource === FONT_MODULE ? ['GamesFilled'] : ['AddFilled']),
     });
 
-    // Subsetting the shared asset for the copy that happens to own it drops every glyph belonging
-    // to the copies that do not — silently, which is how this reached production.
+    // Content hashing can collapse identical inputs to one asset attributed to one copy.
     expect(updatedAssets).toEqual([]);
     expect(normalizeDiagnostics(warnings, duplicate.lib)).toMatchInlineSnapshot(`
       [
-        "FluentUIReactIconsFontSubsettingPlugin: "@fluentui/react-icons" is installed more than once and the copies share emitted font assets, so icons cannot be attributed to a font. Fonts were left un-subset to avoid dropping glyphs. Copies owning an emitted font: "<react-icons-lib>". Copies sharing them: "<duplicate-react-icons-lib>". Collapse them onto one instance with bundler \`resolve.alias\` entries — note that this also binds every copy to a single React and Griffel instance.",
+        "FluentUIReactIconsFontSubsettingPlugin: more than one installed copy of "@fluentui/react-icons" contributes icons, so font assets cannot be attributed safely. Fonts were left un-subset to avoid dropping glyphs. Participating copies: "<react-icons-lib>", "<duplicate-react-icons-lib>". Collapse them onto one instance with bundler \`resolve.alias\` entries — note that this also binds every copy to a single React and Griffel instance.",
       ]
     `);
   });
@@ -270,7 +287,7 @@ describe('duplicate installed instances', () => {
     expect(updatedAssets).toEqual([]);
     expect(normalizeDiagnostics(errors, duplicate.lib)).toMatchInlineSnapshot(`
       [
-        "FluentUIReactIconsFontSubsettingPlugin: "@fluentui/react-icons" is installed more than once and the copies share emitted font assets, so icons cannot be attributed to a font. Fonts were left un-subset to avoid dropping glyphs. Copies owning an emitted font: "<react-icons-lib>". Copies sharing them: "<duplicate-react-icons-lib>". Collapse them onto one instance with bundler \`resolve.alias\` entries — note that this also binds every copy to a single React and Griffel instance.",
+        "FluentUIReactIconsFontSubsettingPlugin: more than one installed copy of "@fluentui/react-icons" contributes icons, so font assets cannot be attributed safely. Fonts were left un-subset to avoid dropping glyphs. Participating copies: "<react-icons-lib>", "<duplicate-react-icons-lib>". Collapse them onto one instance with bundler \`resolve.alias\` entries — note that this also binds every copy to a single React and Griffel instance.",
       ]
     `);
   });
@@ -308,19 +325,19 @@ describe('duplicate installed instances', () => {
     expect(normalizeDiagnostics(warnings, duplicate.lib)).toMatchInlineSnapshot(`
       [
         "FluentUIReactIconsFontSubsettingPlugin: "<duplicate-react-icons-lib>" is reached through a namespace import (\`import * as ...\`) whose icons cannot be determined — either the bundler does not expose \`moduleGraph.getProvidedExports()\` (rspack <2.1.0), or \`optimization.providedExports\` is disabled. Every font in this package was left un-subset, because subsetting from the remaining imports alone would drop glyphs that are actually used. Named imports are unaffected. Upgrade to rspack >=2.1.0 for full coverage.",
-        "FluentUIReactIconsFontSubsettingPlugin: "@fluentui/react-icons" is installed more than once and the copies share emitted font assets, so icons cannot be attributed to a font. Fonts were left un-subset to avoid dropping glyphs. Copies owning an emitted font: "<react-icons-lib>". Copies sharing them: "<duplicate-react-icons-lib>". Collapse them onto one instance with bundler \`resolve.alias\` entries — note that this also binds every copy to a single React and Griffel instance.",
+        "FluentUIReactIconsFontSubsettingPlugin: more than one installed copy of "@fluentui/react-icons" contributes icons, so font assets cannot be attributed safely. Fonts were left un-subset to avoid dropping glyphs. Participating copies: "<react-icons-lib>", "<duplicate-react-icons-lib>". Collapse them onto one instance with bundler \`resolve.alias\` entries — note that this also binds every copy to a single React and Griffel instance.",
       ]
     `);
   });
 
-  it('reports a collision, not a missing asset rule, when the unresolvable copy owns the asset', async () => {
+  it('detects an unresolvable namespace copy regardless of asset attribution', async () => {
     const duplicate = createDuplicateInstance();
 
     const { updatedAssets, warnings } = await harness({
       isRspack: true,
       hasProvidedExports: false,
       moduleResources: [FONT_MODULE, duplicate.fontModule],
-      // The emitted asset names the namespace copy, leaving the named-import copy orphaned.
+      // The emitted asset happens to name the namespace copy rather than the named-import copy.
       assetSources: [duplicate.fontFile],
       usedExports: (resource) => (resource === FONT_MODULE ? ['GamesFilled'] : true),
     });
@@ -329,7 +346,7 @@ describe('duplicate installed instances', () => {
     expect(normalizeDiagnostics(warnings, duplicate.lib)).toMatchInlineSnapshot(`
       [
         "FluentUIReactIconsFontSubsettingPlugin: "<duplicate-react-icons-lib>" is reached through a namespace import (\`import * as ...\`) whose icons cannot be determined — either the bundler does not expose \`moduleGraph.getProvidedExports()\` (rspack <2.1.0), or \`optimization.providedExports\` is disabled. Every font in this package was left un-subset, because subsetting from the remaining imports alone would drop glyphs that are actually used. Named imports are unaffected. Upgrade to rspack >=2.1.0 for full coverage.",
-        "FluentUIReactIconsFontSubsettingPlugin: "@fluentui/react-icons" is installed more than once and the copies share emitted font assets, so icons cannot be attributed to a font. Fonts were left un-subset to avoid dropping glyphs. Copies owning an emitted font: "<duplicate-react-icons-lib>". Copies sharing them: "<react-icons-lib>". Collapse them onto one instance with bundler \`resolve.alias\` entries — note that this also binds every copy to a single React and Griffel instance.",
+        "FluentUIReactIconsFontSubsettingPlugin: more than one installed copy of "@fluentui/react-icons" contributes icons, so font assets cannot be attributed safely. Fonts were left un-subset to avoid dropping glyphs. Participating copies: "<react-icons-lib>", "<duplicate-react-icons-lib>". Collapse them onto one instance with bundler \`resolve.alias\` entries — note that this also binds every copy to a single React and Griffel instance.",
       ]
     `);
   });
