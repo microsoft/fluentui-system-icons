@@ -321,7 +321,7 @@ describe('Build Verification', () => {
           [3 /* Light */]: 'FluentSystemIconsLight'
         };
         export const useStaticStyles = __staticStyles({
-          d: [\`@font-face{font-family:FluentSystemIconsFilled;font-display:"block";src:url(\${_asset}) format("woff2"),url(\${_asset2}) format("woff"),url(\${_asset3}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIconsRegular;font-display:"block";src:url(\${_asset4}) format("woff2"),url(\${_asset5}) format("woff"),url(\${_asset6}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIconsLight;font-display:"block";src:url(\${_asset7}) format("woff2"),url(\${_asset8}) format("woff"),url(\${_asset9}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIcons;font-display:"block";src:url(\${_asset0}) format("woff2"),url(\${_asset1}) format("woff"),url(\${_asset10}) format("truetype");}\`]
+          d: [\`@font-face{font-family:FluentSystemIconsFilled;font-display:block;src:url(\${_asset}) format("woff2"),url(\${_asset2}) format("woff"),url(\${_asset3}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIconsRegular;font-display:block;src:url(\${_asset4}) format("woff2"),url(\${_asset5}) format("woff"),url(\${_asset6}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIconsLight;font-display:block;src:url(\${_asset7}) format("woff2"),url(\${_asset8}) format("woff"),url(\${_asset9}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIcons;font-display:block;src:url(\${_asset0}) format("woff2"),url(\${_asset1}) format("woff"),url(\${_asset10}) format("truetype");}\`]
         });
         export const useRootStyles = __styles({
           "0": {
@@ -377,14 +377,14 @@ describe('Build Verification', () => {
         export const useStaticStyles = makeStaticStyles(\`
         @font-face {
             font-family: \${FONT_FAMILY_MAP[0 /* Filled */]};
-            font-display: "block";
+          font-display: block;
             src: url(\${JSON.stringify(fontFilledWoff2)}) format("woff2"),
             url(\${JSON.stringify(fontFilledWoff)}) format("woff"),
             url(\${JSON.stringify(fontFilledTtf)}) format("truetype");
         }
         @font-face {
             font-family: \${FONT_FAMILY_MAP[1 /* Regular */]};
-            font-display: "block";
+          font-display: block;
             src: url(\${JSON.stringify(fontRegularWoff2)}) format("woff2"),
             url(\${JSON.stringify(fontRegularWoff)}) format("woff"),
             url(\${JSON.stringify(fontRegularTtf)}) format("truetype");
@@ -392,7 +392,7 @@ describe('Build Verification', () => {
 
         @font-face {
             font-family: \${FONT_FAMILY_MAP[3 /* Light */]};
-            font-display: "block";
+          font-display: block;
             src: url(\${JSON.stringify(fontLightWoff2)}) format("woff2"),
             url(\${JSON.stringify(fontLightWoff)}) format("woff"),
             url(\${JSON.stringify(fontLightTtf)}) format("truetype");
@@ -400,7 +400,7 @@ describe('Build Verification', () => {
 
         @font-face {
             font-family: \${FONT_FAMILY_MAP[2 /* Resizable */]};
-            font-display: "block";
+          font-display: block;
             src: url(\${JSON.stringify(fontOneSizeWoff2)}) format("woff2"),
             url(\${JSON.stringify(fontOneSizeWoff)}) format("woff"),
             url(\${JSON.stringify(fontOneSizeTtf)}) format("truetype");
