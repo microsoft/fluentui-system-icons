@@ -344,13 +344,14 @@ describe('Build Verification', () => {
             Bmxbyg5: 0,
             Bpg54ce: "f1a3p1vp",
             B80ckks: "fmd4ok8",
+            Bhrd7zp: "f5ljve1",
             Bg96gwp: "fne0op0",
             sj55zd: "f303qgw"
           }
         }, {
           d: [".f9dzkbp{font-family:FluentSystemIconsFilled;}", ".f1krtbx5{font-family:FluentSystemIconsRegular;}", ".f1sxfq9t{font-family:FluentSystemIcons;}", ".fgtzeza{font-family:FluentSystemIconsLight;}", ".f14t3ns0{display:inline-block;}", ".fhson10{width:1em;}", ".f1un31zh{height:1em;}", [".f1a3p1vp{overflow:hidden;}", {
             p: -1
-          }], ".fmd4ok8{font-style:normal;}", ".fne0op0{line-height:1em;}", ".f303qgw{color:currentColor;}"]
+          }], ".fmd4ok8{font-style:normal;}", ".f5ljve1{font-weight:normal;}", ".fne0op0{line-height:1em;}", ".f303qgw{color:currentColor;}"]
         });"
       `);
       expect(fs.readFileSync(path.join(root, unprocessed), 'utf8')).toMatchInlineSnapshot(`
@@ -422,6 +423,7 @@ describe('Build Verification', () => {
                 // where the loaded glyph already sits (no visible reposition).
                 overflow: 'hidden',
                 fontStyle: 'normal',
+                fontWeight: 'normal',
                 lineHeight: '1em',
                 color: 'currentColor',
             },
@@ -2571,6 +2573,7 @@ describe('Build Verification', () => {
       expect(css).toContain('[data-fui-icon]');
       expect(css).toContain('[data-fui-icon-rtl]');
       expect(css).toContain('[data-fui-icon-hidden]');
+      expect(css).toMatch(/\[data-fui-icon=['"]font['"]\][^{]*\{[^}]*font-weight:\s*normal/s);
 
       // Font sub-infrastructure
       expect(fs.existsSync(path.join(headlessDir, 'fonts', 'createFluentFontIcon.js'))).toBe(true);

@@ -74,6 +74,7 @@ export const useRootStyles = makeStyles({
     // where the loaded glyph already sits (no visible reposition).
     overflow: 'hidden',
     fontStyle: 'normal',
+    fontWeight: 'normal',
     lineHeight: '1em',
     color: 'currentColor',
 
