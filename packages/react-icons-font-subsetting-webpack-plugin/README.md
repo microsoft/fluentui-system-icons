@@ -140,9 +140,9 @@ common case — are unaffected and subset fully. Upgrade to rspack `>=2.1.0` for
 
 `'warn' | 'error'`, default `'warn'`.
 
-The plugin subsets against one resolved `@fluentui/react-icons` package instance. When more than one
-installed copy contributes icons — peer-dependency variants in a virtual store will do this without
-any version conflict — emitted font assets cannot be attributed safely to one coherent source.
+The plugin subsets against one resolved `@fluentui/react-icons` package instance. When font modules
+resolve from more than one installed copy — peer-dependency variants in a virtual store will do this
+without any version conflict — emitted font assets cannot be attributed safely to one coherent source.
 
 The plugin detects multiple participating copies before inspecting font-asset ownership, leaves all
 fonts un-subset so every glyph still renders, and warns with the paths involved. Set `'error'` to fail
@@ -154,3 +154,6 @@ new FluentUIReactIconsFontSubsettingPlugin({ onDuplicateInstances: 'error' });
 
 To get subsetting back, collapse the copies onto one instance with bundler `resolve.alias` entries.
 Note that this also binds every copy to a single React and Griffel instance.
+
+Using ESM `import` and CommonJS `require()` from the same installation does not count as two copies.
+Their used exports are combined, and each emitted font asset is subset once.

@@ -34,6 +34,12 @@ interface FontAssetCodepoints {
   codepoints: Record<string, number>;
 }
 
+interface FontPackageUsage {
+  outputRoots: Set<string>;
+  usedExports: Set<string>;
+  hasUnresolvableNamespace: boolean;
+}
+
 /**
  *  Match both chunk files and atomic font imports, for the standard (Griffel)
  *  and headless APIs:
@@ -47,7 +53,7 @@ const REACT_ICONS_FONT_MODULE_IMPORT_PATTERN =
 
 export interface FluentUIReactIconsFontSubsettingPluginOptions {
   /**
-   * What to do when more than one installed copy of `@fluentui/react-icons` contributes icons.
+   * What to do when font modules resolve from more than one installed copy of `@fluentui/react-icons`.
    *
    * `'warn'` (default) leaves all fonts un-subset, so every glyph still renders.
    * `'error'` fails the build instead.
@@ -86,41 +92,45 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPl
         { name: PLUGIN_NAME, stage: Compilation.PROCESS_ASSETS_STAGE_OPTIMIZE },
         async () => {
           const runtime = getRuntimeSpec(compiler, compilation);
-          // Packages holding a namespace import this bundler cannot resolve; their fonts must be left whole.
-          const unresolvableNamespacePackages = new Set<string>();
+          const packageUsages = new Map<string, FontPackageUsage>();
 
-          // There could be multiple instances of `@fluentui/react-icons`, and they need to be subset separately
-          const packageToUsedFontExports: Map<string, Set<string>> = new Map<string, Set<string>>();
           for (const m of compilation.modules) {
             if (isFluentUIReactFontChunk(m)) {
-              const pkgLibPath = resolve(dirname(m.resource), '../..');
               const icons = resolveUsedIconExports(m, compilation.moduleGraph, runtime);
-
-              if (icons === UNRESOLVABLE_NAMESPACE_IMPORT) {
-                unresolvableNamespacePackages.add(pkgLibPath);
-                continue;
-              }
-
               if (icons === null) {
                 continue;
               }
 
-              const usedPkgExports = packageToUsedFontExports.get(pkgLibPath) ?? new Set<string>();
-              for (const icon of icons) {
-                usedPkgExports.add(icon);
+              const outputRoot = resolve(dirname(m.resource), '../..');
+              const packageRoot = dirname(outputRoot);
+              const usage = packageUsages.get(packageRoot) ?? {
+                outputRoots: new Set<string>(),
+                usedExports: new Set<string>(),
+                hasUnresolvableNamespace: false,
+              };
+              usage.outputRoots.add(outputRoot);
+
+              if (icons === UNRESOLVABLE_NAMESPACE_IMPORT) {
+                usage.hasUnresolvableNamespace = true;
+              } else {
+                for (const icon of icons) {
+                  usage.usedExports.add(icon);
+                }
               }
-              packageToUsedFontExports.set(pkgLibPath, usedPkgExports);
+
+              packageUsages.set(packageRoot, usage);
             }
           }
           const optimizationPromises: Promise<void>[] = [];
 
-          for (const pkgLibPath of unresolvableNamespacePackages) {
-            // Sibling modules would otherwise subset this package's shared fonts down to *their*
-            // glyphs alone, dropping the ones the namespace import needs.
-            packageToUsedFontExports.delete(pkgLibPath);
+          for (const [packageRoot, usage] of packageUsages) {
+            if (!usage.hasUnresolvableNamespace) {
+              continue;
+            }
+
             compilation.warnings.push(
               new Error(
-                `${PLUGIN_NAME}: "${pkgLibPath}" is reached through a namespace import (\`import * as ...\`) ` +
+                `${PLUGIN_NAME}: "${packageRoot}" is reached through a namespace import (\`import * as ...\`) ` +
                   `whose icons cannot be determined — either the bundler does not expose ` +
                   `\`moduleGraph.getProvidedExports()\` (rspack <2.1.0), or \`optimization.providedExports\` is ` +
                   `disabled. Every font in this package was left un-subset, because subsetting from the ` +
@@ -130,15 +140,11 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPl
             );
           }
 
-          // Namespace copies contribute no *known* glyphs, so they never reach the used-exports
-          // map — but their fonts still have to survive, which makes them part of this analysis.
-          const participants = new Set([...packageToUsedFontExports.keys(), ...unresolvableNamespacePackages]);
-
-          if (participants.size > 1) {
+          if (packageUsages.size > 1) {
             const message = new Error(
-              `${PLUGIN_NAME}: more than one installed copy of "@fluentui/react-icons" contributes icons, ` +
+              `${PLUGIN_NAME}: font modules from more than one installed copy of "@fluentui/react-icons" were resolved, ` +
                 `so font assets cannot be attributed safely. Fonts were left un-subset to avoid dropping ` +
-                `glyphs. Participating copies: ${[...participants].map((p) => `"${p}"`).join(', ')}. ` +
+                `glyphs. Participating copies: ${[...packageUsages.keys()].map((p) => `"${p}"`).join(', ')}. ` +
                 `Collapse them onto one instance with ` +
                 `bundler \`resolve.alias\` entries — note that this also binds every copy to a single React ` +
                 `and Griffel instance.`,
@@ -153,14 +159,24 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPl
             return;
           }
 
-          for (const [pkgLibPath, usedExports] of packageToUsedFontExports) {
-            const fontAssets = await getFontAssetsAndCodepoints(pkgLibPath, compilation, compiler.context);
+          for (const [packageRoot, usage] of packageUsages) {
+            if (usage.hasUnresolvableNamespace) {
+              continue;
+            }
 
-            if (fontAssets.length === 0) {
+            const fontAssetsByName = new Map<string, FontAssetCodepoints>();
+            for (const outputRoot of usage.outputRoots) {
+              const fontAssets = await getFontAssetsAndCodepoints(outputRoot, compilation, compiler.context);
+              for (const fontAsset of fontAssets) {
+                fontAssetsByName.set(fontAsset.assetName, fontAsset);
+              }
+            }
+
+            if (fontAssetsByName.size === 0) {
               // Loud failure: silently shipping an un-subset font is worse than a broken build.
               compilation.warnings.push(
                 new Error(
-                  `${PLUGIN_NAME}: found used icon fonts in "${pkgLibPath}" but could not map any font module ` +
+                  `${PLUGIN_NAME}: found used icon fonts in "${packageRoot}" but could not map any font module ` +
                     `to an emitted asset. Fonts will NOT be subset. Ensure a \`type: 'asset'\` ` +
                     `(or 'asset/resource') module rule matches /\\.(ttf|woff2?)$/.`,
                 ),
@@ -168,9 +184,9 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPl
               continue;
             }
 
-            for (const { assetName, codepoints: codepointMap } of fontAssets) {
+            for (const { assetName, codepoints: codepointMap } of fontAssetsByName.values()) {
               optimizationPromises.push(
-                optimizeFontAsset(codepointMap, usedExports, compilation, assetName, sources.RawSource),
+                optimizeFontAsset(codepointMap, usage.usedExports, compilation, assetName, sources.RawSource),
               );
             }
           }

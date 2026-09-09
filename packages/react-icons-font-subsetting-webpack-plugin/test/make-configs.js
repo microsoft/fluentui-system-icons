@@ -21,6 +21,12 @@ const entries = {
   // Headless font atoms — fonts arrive via the headless `styles.css` import (css-loader) rather than Griffel.
   // No Griffel runtime is involved, so a tighter threshold is used to validate subsetting.
   headlessAtoms: { src: './src/headless-atoms.js', threshold: 1.5 * 1_024, assertNoGriffel: true }, // 1.5 KB
+  mixedModuleFormats: {
+    src: './src/mixed-module-formats.js',
+    threshold: 1.5 * 1_024,
+    assertNoGriffel: true,
+    assertModuleFormats: true,
+  },
   // End-to-end: a *barrel* import is rewritten by the atomic loader (headless + fonts) into
   // headless font atoms, then subset here. Also asserts the graph stays Griffel-free.
   e2eBarrelHeadlessFonts: {
@@ -46,6 +52,7 @@ const entries = {
  * @property {number} threshold
  * @property {boolean} [useAtomicLoader]
  * @property {boolean} [assertNoGriffel]
+ * @property {boolean} [assertModuleFormats]
  * @property {string} [runtimeChunkName] Name the runtime chunk, decoupling runtime name from entry name.
  */
 
@@ -135,7 +142,7 @@ function createConfig(name, entry, adapter, isDevServer) {
       filename: '[name].js',
     },
     resolve: {
-      conditionNames: ['fluentIconFont', 'import'],
+      conditionNames: entry.assertModuleFormats ? ['fluentIconFont', '...'] : ['fluentIconFont', 'import'],
     },
     plugins: [
       ...(isDevServer && HtmlPlugin
@@ -156,7 +163,7 @@ function createConfig(name, entry, adapter, isDevServer) {
  * Fails the build when a font asset was not subset, or when a headless entry leaked Griffel.
  *
  * @param {string} name
- * @param {{ threshold: number, assertNoGriffel?: boolean }} entry
+ * @param {{ threshold: number, assertNoGriffel?: boolean, assertModuleFormats?: boolean }} entry
  * @param {BundlerAdapter} adapter
  */
 function createAssertionPlugin(name, entry, adapter) {
@@ -187,6 +194,18 @@ function createAssertionPlugin(name, entry, adapter) {
                 `[${adapter.name}/${name}] Module graph includes a @griffel module (${resource}) — ` +
                   `headless build expected to be Griffel-free.`,
               );
+            }
+          }
+        }
+
+        if (entry.assertModuleFormats) {
+          const resources = Array.from(compilation.modules, (m) => /** @type {{ resource?: string }} */ (m).resource);
+          for (const outputRoot of ['lib', 'lib-cjs']) {
+            const atomPath = new RegExp(
+              `[\\\\/]react-icons[\\\\/]${outputRoot}[\\\\/]atoms[\\\\/]headless-fonts[\\\\/]`,
+            );
+            if (!resources.some((resource) => typeof resource === 'string' && atomPath.test(resource))) {
+              throw new Error(`[${adapter.name}/${name}] No ${outputRoot} font atom found in the module graph.`);
             }
           }
         }
