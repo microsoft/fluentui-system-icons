@@ -1,3 +1,13 @@
+## 2.0.340 (2026-09-10)
+
+### 🩹 Fixes
+
+- **react-icons:** emit valid font-display descriptor ([#1237](https://github.com/microsoft/fluentui-system-icons/pull/1237))
+- **react-icons-atomic-webpack-loader:** lower rspack peer floor to >=2.0.0 ([#1231](https://github.com/microsoft/fluentui-system-icons/pull/1231))
+- **react-icons:** prevent synthetic bolding of font icons ([#1236](https://github.com/microsoft/fluentui-system-icons/pull/1236))
+- **react-icons-font-subsetting-webpack-plugin:** detect duplicate installed instances ([#1234](https://github.com/microsoft/fluentui-system-icons/pull/1234))
+- **react-icons-font-subsetting-webpack-plugin:** derive rspack runtime from chunks, support rspack 2.0.x ([#1230](https://github.com/microsoft/fluentui-system-icons/pull/1230))
+
 ## 2.0.339 (2026-08-26)
 
 ### 🚀 Features
