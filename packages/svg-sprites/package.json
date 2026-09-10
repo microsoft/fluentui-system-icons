@@ -17,7 +17,7 @@
     "optimize": "yarn run -T svgo --config svgo.config.js --folder=./icons --precision=2",
     "unfill": "node unfill.js --path=./icons/",
     "sprites": "node generate-sprites.js && rm -rf ./icons",
-    "build": "yarn copy && yarn rename && yarn unfill && yarn optimize && yarn sprites",
+    "build": "yarn clean && yarn copy && yarn rename && yarn unfill && yarn optimize && yarn sprites",
     "build-verify": "yarn run -T vitest run build-verify.test.js"
   }
 }
