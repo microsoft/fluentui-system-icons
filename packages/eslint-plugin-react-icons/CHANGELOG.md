@@ -1,3 +1,7 @@
+## 0.0.2 (2026-09-10)
+
+This release contains icon updates
+
 ## 0.0.1 (2026-07-30)
 
 ### 🚀 Features

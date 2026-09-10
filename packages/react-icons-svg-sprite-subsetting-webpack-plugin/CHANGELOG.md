@@ -1,3 +1,9 @@
+## 0.0.7 (2026-09-10)
+
+### 🚀 Features
+
+- **react-icons:** ship native ESM output by default ([#1205](https://github.com/microsoft/fluentui-system-icons/pull/1205))
+
 ## 0.0.6 (2026-07-30)
 
 This release contains icon updates
