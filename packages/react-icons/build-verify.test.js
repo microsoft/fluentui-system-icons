@@ -172,6 +172,13 @@ describe('Build Verification', () => {
   });
 
   describe('Package.json Exports', () => {
+    it('should export package.json', async () => {
+      const packageJsonPath = path.join(__dirname, 'package.json');
+      const packageJson = JSON.parse(await readFile(packageJsonPath, 'utf8'));
+
+      expect(packageJson.exports['./package.json']).toBe('./package.json');
+    });
+
     it('should have all exported files exist', async () => {
       const packageJsonPath = path.join(__dirname, 'package.json');
       /** @type {{main:string;module:string;typings:string;exports:Record<string,string>}} */

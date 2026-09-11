@@ -226,6 +226,7 @@
         "types": "./lib-cjs/headless/utils.d.cts",
         "default": "./lib-cjs/headless/utils.cjs"
       }
-    }
+    },
+    "./package.json": "./package.json"
   }
 }
