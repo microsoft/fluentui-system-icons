@@ -38,6 +38,7 @@ describe('FileIconType', () => {
       pbiScorecard: 28,
       pbiSemanticModel: 29,
       pbiReport: 30,
+      wikiPage: 31,
     });
   });
 
