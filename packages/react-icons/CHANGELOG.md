@@ -1,3 +1,13 @@
+## 2.0.341 (2026-09-11)
+
+### 🚀 Features
+
+- **react-icons:** add new and updated icons ([#1245](https://github.com/microsoft/fluentui-system-icons/pull/1245))
+
+### 🩹 Fixes
+
+- **react-icons:** export package metadata ([#1242](https://github.com/microsoft/fluentui-system-icons/pull/1242))
+
 ## 2.0.340 (2026-09-10)
 
 ### 🩹 Fixes

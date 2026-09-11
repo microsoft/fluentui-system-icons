@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?1e57c81e29073be1ab003a8333fe83c0") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?1e57c81e29073be1ab003a8333fe83c0") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?1e57c81e29073be1ab003a8333fe83c0") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?fb79bcac19bbbfeaa9d6f77053d08462") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?fb79bcac19bbbfeaa9d6f77053d08462") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?fb79bcac19bbbfeaa9d6f77053d08462") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -29514,4 +29514,142 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_table_select_range_24_filled:before {
     content: "\f0d68";
+}
+.icon-ic_fluent_channel_arrow_right_16_filled:before {
+    content: "\f0d69";
+}
+.icon-ic_fluent_channel_arrow_right_20_filled:before {
+    content: "\f0d6a";
+}
+.icon-ic_fluent_channel_arrow_right_24_filled:before {
+    content: "\f0d6b";
+}
+.icon-ic_fluent_channel_arrow_right_28_filled:before {
+    content: "\f0d6c";
+}
+.icon-ic_fluent_chart_multiple_28_filled:before {
+    content: "\f0d6d";
+}
+.icon-ic_fluent_cowork_16_filled:before {
+    content: "\f0d6e";
+}
+.icon-ic_fluent_cowork_20_filled:before {
+    content: "\f0d6f";
+}
+.icon-ic_fluent_cowork_24_filled:before {
+    content: "\f0d70";
+}
+.icon-ic_fluent_cowork_28_filled:before {
+    content: "\f0d71";
+}
+.icon-ic_fluent_cowork_32_filled:before {
+    content: "\f0d72";
+}
+.icon-ic_fluent_cowork_48_filled:before {
+    content: "\f0d73";
+}
+.icon-ic_fluent_filter_add_16_filled:before {
+    content: "\f0d74";
+}
+.icon-ic_fluent_filter_add_24_filled:before {
+    content: "\f0d75";
+}
+.icon-ic_fluent_filter_sync_16_filled:before {
+    content: "\f0d76";
+}
+.icon-ic_fluent_flow_arrow_16_filled:before {
+    content: "\f0d77";
+}
+.icon-ic_fluent_flow_arrow_20_filled:before {
+    content: "\f0d78";
+}
+.icon-ic_fluent_flow_arrow_24_filled:before {
+    content: "\f0d79";
+}
+.icon-ic_fluent_flow_arrow_28_filled:before {
+    content: "\f0d7a";
+}
+.icon-ic_fluent_flow_arrow_32_filled:before {
+    content: "\f0d7b";
+}
+.icon-ic_fluent_flow_arrow_48_filled:before {
+    content: "\f0d7c";
+}
+.icon-ic_fluent_hand_multiple_stack_20_filled:before {
+    content: "\f0d7d";
+}
+.icon-ic_fluent_hand_multiple_stack_24_filled:before {
+    content: "\f0d7e";
+}
+.icon-ic_fluent_hand_multiple_stack_28_filled:before {
+    content: "\f0d7f";
+}
+.icon-ic_fluent_lightbulb_sparkle_16_filled:before {
+    content: "\f0d80";
+}
+.icon-ic_fluent_lightbulb_sparkle_20_filled:before {
+    content: "\f0d81";
+}
+.icon-ic_fluent_lightbulb_sparkle_24_filled:before {
+    content: "\f0d82";
+}
+.icon-ic_fluent_omega_16_filled:before {
+    content: "\f0d83";
+}
+.icon-ic_fluent_omega_20_filled:before {
+    content: "\f0d84";
+}
+.icon-ic_fluent_omega_24_filled:before {
+    content: "\f0d85";
+}
+.icon-ic_fluent_omega_28_filled:before {
+    content: "\f0d86";
+}
+.icon-ic_fluent_omega_32_filled:before {
+    content: "\f0d87";
+}
+.icon-ic_fluent_options_speaker_16_filled:before {
+    content: "\f0d88";
+}
+.icon-ic_fluent_options_speaker_20_filled:before {
+    content: "\f0d89";
+}
+.icon-ic_fluent_options_speaker_24_filled:before {
+    content: "\f0d8a";
+}
+.icon-ic_fluent_options_speaker_28_filled:before {
+    content: "\f0d8b";
+}
+.icon-ic_fluent_slide_arrow_forward_20_filled:before {
+    content: "\f0d8c";
+}
+.icon-ic_fluent_slide_arrow_forward_24_filled:before {
+    content: "\f0d8d";
+}
+.icon-ic_fluent_text_bullet_list_square_clock_16_filled:before {
+    content: "\f0d8e";
+}
+.icon-ic_fluent_text_bullet_list_square_clock_24_filled:before {
+    content: "\f0d8f";
+}
+.icon-ic_fluent_text_bullet_list_square_clock_28_filled:before {
+    content: "\f0d90";
+}
+.icon-ic_fluent_text_number_list_ltr_28_filled:before {
+    content: "\f0d91";
+}
+.icon-ic_fluent_text_number_list_ltr_rotate_270_28_filled:before {
+    content: "\f0d92";
+}
+.icon-ic_fluent_text_number_list_ltr_rotate_90_28_filled:before {
+    content: "\f0d93";
+}
+.icon-ic_fluent_text_number_list_rtl_28_filled:before {
+    content: "\f0d94";
+}
+.icon-ic_fluent_text_number_list_rtl_rotate_270_28_filled:before {
+    content: "\f0d95";
+}
+.icon-ic_fluent_text_number_list_rtl_rotate_90_28_filled:before {
+    content: "\f0d96";
 }

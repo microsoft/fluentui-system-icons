@@ -5446,12 +5446,12 @@
   },
   "ChannelArrowRightFilled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "ChannelArrowRightRegular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "ChannelDismissFilled": {
@@ -7941,12 +7941,12 @@
   },
   "CoworkFilled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "CoworkRegular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "CreditCardClockFilled": {
@@ -11911,12 +11911,12 @@
   },
   "FlowArrowFilled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "FlowArrowRegular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "FlowDotFilled": {
@@ -13266,12 +13266,12 @@
   },
   "HandMultipleStackFilled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "HandMultipleStackRegular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "HandOpenHeartFilled": {
@@ -15136,12 +15136,12 @@
   },
   "LightbulbSparkleFilled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "LightbulbSparkleRegular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "LikertFilled": {
@@ -17391,12 +17391,12 @@
   },
   "OmegaFilled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "OmegaRegular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "OpenFilled": {
@@ -17446,12 +17446,12 @@
   },
   "OptionsSpeakerFilled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "OptionsSpeakerRegular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "OrgColor": {
@@ -22406,12 +22406,12 @@
   },
   "SlideArrowForwardFilled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "SlideArrowForwardRegular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "SlideArrowRightFilled": {
@@ -49016,42 +49016,42 @@
   },
   "ChannelArrowRight16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ChannelArrowRight16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ChannelArrowRight20Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ChannelArrowRight20Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ChannelArrowRight24Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ChannelArrowRight24Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ChannelArrowRight28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ChannelArrowRight28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ChannelDismiss16Filled": {
@@ -49261,12 +49261,12 @@
   },
   "ChartMultiple28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ChartMultiple28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "ChartMultiple32Color": {
@@ -58976,62 +58976,62 @@
   },
   "Cowork16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Cowork16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Cowork20Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Cowork20Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Cowork24Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Cowork24Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Cowork28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Cowork28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Cowork32Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Cowork32Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Cowork48Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Cowork48Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "CreditCardClock20Filled": {
@@ -71186,12 +71186,12 @@
   },
   "FilterAdd16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FilterAdd16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FilterAdd20Filled": {
@@ -71206,12 +71206,12 @@
   },
   "FilterAdd24Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FilterAdd24Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FilterDismiss16Filled": {
@@ -71246,12 +71246,12 @@
   },
   "FilterSync16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FilterSync16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FilterSync20Filled": {
@@ -72221,62 +72221,62 @@
   },
   "FlowArrow16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FlowArrow16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FlowArrow20Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FlowArrow20Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FlowArrow24Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FlowArrow24Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FlowArrow28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FlowArrow28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FlowArrow32Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FlowArrow32Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FlowArrow48Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FlowArrow48Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "FlowDot16Filled": {
@@ -76736,32 +76736,32 @@
   },
   "HandMultipleStack20Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "HandMultipleStack20Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "HandMultipleStack24Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "HandMultipleStack24Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "HandMultipleStack28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "HandMultipleStack28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "HandOpenHeart20Filled": {
@@ -83336,32 +83336,32 @@
   },
   "LightbulbSparkle16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "LightbulbSparkle16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "LightbulbSparkle20Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "LightbulbSparkle20Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "LightbulbSparkle24Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "LightbulbSparkle24Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Likert16Filled": {
@@ -91796,57 +91796,57 @@
   },
   "Omega16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Omega16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Omega20Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Omega20Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Omega24Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Omega24Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Omega28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Omega28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Omega32Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Omega32Light": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Omega32Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Open12Filled": {
@@ -92116,42 +92116,42 @@
   },
   "OptionsSpeaker16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "OptionsSpeaker16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "OptionsSpeaker20Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "OptionsSpeaker20Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "OptionsSpeaker24Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "OptionsSpeaker24Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "OptionsSpeaker28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "OptionsSpeaker28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "Org16Color": {
@@ -110181,22 +110181,22 @@
   },
   "SlideArrowForward20Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "SlideArrowForward20Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "SlideArrowForward24Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "SlideArrowForward24Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "SlideArrowRight20Filled": {
@@ -121126,12 +121126,12 @@
   },
   "TextBulletListSquareClock16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TextBulletListSquareClock16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TextBulletListSquareClock20Filled": {
@@ -121146,22 +121146,22 @@
   },
   "TextBulletListSquareClock24Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TextBulletListSquareClock24Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TextBulletListSquareClock28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TextBulletListSquareClock28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TextBulletListSquareEdit20Filled": {
@@ -123886,12 +123886,12 @@
   },
   "TextNumberListLtr28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TextNumberListLtr28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TextNumberListLtr9020Filled": {
@@ -123936,22 +123936,22 @@
   },
   "TextNumberListLtrRotate27028Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TextNumberListLtrRotate27028Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TextNumberListLtrRotate9028Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TextNumberListLtrRotate9028Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TextNumberListRotate27020Filled": {
@@ -124026,12 +124026,12 @@
   },
   "TextNumberListRtl28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TextNumberListRtl28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TextNumberListRtl9020Filled": {
@@ -124076,22 +124076,22 @@
   },
   "TextNumberListRtlRotate27028Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TextNumberListRtlRotate27028Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TextNumberListRtlRotate9028Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TextNumberListRtlRotate9028Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "TextParagraph16Filled": {

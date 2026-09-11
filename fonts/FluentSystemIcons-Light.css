@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Light";
-    src: url("./FluentSystemIcons-Light.woff2?a15211e663a8f156e6f93f083c26d37e") format("woff2"),
-url("./FluentSystemIcons-Light.woff?a15211e663a8f156e6f93f083c26d37e") format("woff"),
-url("./FluentSystemIcons-Light.ttf?a15211e663a8f156e6f93f083c26d37e") format("truetype");
+    src: url("./FluentSystemIcons-Light.woff2?c805c4951aeb452c55a77c224ea33009") format("woff2"),
+url("./FluentSystemIcons-Light.woff?c805c4951aeb452c55a77c224ea33009") format("woff"),
+url("./FluentSystemIcons-Light.ttf?c805c4951aeb452c55a77c224ea33009") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -651,4 +651,7 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_text_add_t_32_light:before {
     content: "\e0d3";
+}
+.icon-ic_fluent_omega_32_light:before {
+    content: "\e0d4";
 }

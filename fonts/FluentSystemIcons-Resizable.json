@@ -5676,5 +5676,21 @@
   "ic_fluent_panel_left_tall_20_filled": 63018,
   "ic_fluent_panel_left_tall_20_regular": 63019,
   "ic_fluent_table_select_range_20_filled": 63020,
-  "ic_fluent_table_select_range_20_regular": 63021
+  "ic_fluent_table_select_range_20_regular": 63021,
+  "ic_fluent_channel_arrow_right_20_filled": 63022,
+  "ic_fluent_channel_arrow_right_20_regular": 63023,
+  "ic_fluent_cowork_20_filled": 63024,
+  "ic_fluent_cowork_20_regular": 63025,
+  "ic_fluent_flow_arrow_20_filled": 63026,
+  "ic_fluent_flow_arrow_20_regular": 63027,
+  "ic_fluent_hand_multiple_stack_20_filled": 63028,
+  "ic_fluent_hand_multiple_stack_20_regular": 63029,
+  "ic_fluent_lightbulb_sparkle_20_filled": 63030,
+  "ic_fluent_lightbulb_sparkle_20_regular": 63031,
+  "ic_fluent_omega_20_filled": 63032,
+  "ic_fluent_omega_20_regular": 63033,
+  "ic_fluent_options_speaker_20_filled": 63034,
+  "ic_fluent_options_speaker_20_regular": 63035,
+  "ic_fluent_slide_arrow_forward_20_filled": 63036,
+  "ic_fluent_slide_arrow_forward_20_regular": 63037
 }

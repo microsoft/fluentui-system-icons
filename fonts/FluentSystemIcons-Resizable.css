@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Resizable";
-    src: url("./FluentSystemIcons-Resizable.woff2?3acc2c707a32287ecb1752f611f1ff05") format("woff2"),
-url("./FluentSystemIcons-Resizable.woff?3acc2c707a32287ecb1752f611f1ff05") format("woff"),
-url("./FluentSystemIcons-Resizable.ttf?3acc2c707a32287ecb1752f611f1ff05") format("truetype");
+    src: url("./FluentSystemIcons-Resizable.woff2?b76a51f286c7828ad6685ee61f569012") format("woff2"),
+url("./FluentSystemIcons-Resizable.woff?b76a51f286c7828ad6685ee61f569012") format("woff"),
+url("./FluentSystemIcons-Resizable.ttf?b76a51f286c7828ad6685ee61f569012") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -17049,4 +17049,52 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_table_select_range_20_regular:before {
     content: "\f62d";
+}
+.icon-ic_fluent_channel_arrow_right_20_filled:before {
+    content: "\f62e";
+}
+.icon-ic_fluent_channel_arrow_right_20_regular:before {
+    content: "\f62f";
+}
+.icon-ic_fluent_cowork_20_filled:before {
+    content: "\f630";
+}
+.icon-ic_fluent_cowork_20_regular:before {
+    content: "\f631";
+}
+.icon-ic_fluent_flow_arrow_20_filled:before {
+    content: "\f632";
+}
+.icon-ic_fluent_flow_arrow_20_regular:before {
+    content: "\f633";
+}
+.icon-ic_fluent_hand_multiple_stack_20_filled:before {
+    content: "\f634";
+}
+.icon-ic_fluent_hand_multiple_stack_20_regular:before {
+    content: "\f635";
+}
+.icon-ic_fluent_lightbulb_sparkle_20_filled:before {
+    content: "\f636";
+}
+.icon-ic_fluent_lightbulb_sparkle_20_regular:before {
+    content: "\f637";
+}
+.icon-ic_fluent_omega_20_filled:before {
+    content: "\f638";
+}
+.icon-ic_fluent_omega_20_regular:before {
+    content: "\f639";
+}
+.icon-ic_fluent_options_speaker_20_filled:before {
+    content: "\f63a";
+}
+.icon-ic_fluent_options_speaker_20_regular:before {
+    content: "\f63b";
+}
+.icon-ic_fluent_slide_arrow_forward_20_filled:before {
+    content: "\f63c";
+}
+.icon-ic_fluent_slide_arrow_forward_20_regular:before {
+    content: "\f63d";
 }

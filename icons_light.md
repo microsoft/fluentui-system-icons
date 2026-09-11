@@ -129,6 +129,7 @@
 |Mic|<img src="assets/Mic/SVG/ic_fluent_mic_32_light.svg?raw=true" width="24" height="24">|`mic32Light`|`ic_fluent_mic_32_light`|
 |Molecule|<img src="assets/Molecule/SVG/ic_fluent_molecule_32_light.svg?raw=true" width="24" height="24">|`molecule32Light`|`ic_fluent_molecule_32_light`|
 |Note|<img src="assets/Note/SVG/ic_fluent_note_32_light.svg?raw=true" width="24" height="24">|`note32Light`|`ic_fluent_note_32_light`|
+|Omega|<img src="assets/Omega/SVG/ic_fluent_omega_32_light.svg?raw=true" width="24" height="24">|`omega32Light`|`ic_fluent_omega_32_light`|
 |Options|<img src="assets/Options/SVG/ic_fluent_options_32_light.svg?raw=true" width="24" height="24">|`options32Light`|`ic_fluent_options_32_light`|
 |Paint Brush|<img src="assets/Paint Brush/SVG/ic_fluent_paint_brush_32_light.svg?raw=true" width="24" height="24">|`paintBrush32Light`|`ic_fluent_paint_brush_32_light`|
 |Panel Left Default|<img src="assets/Panel Left Default/SVG/ic_fluent_panel_left_default_32_light.svg?raw=true" width="24" height="24">|`panelLeftDefault32Light`|`ic_fluent_panel_left_default_32_light`|
