@@ -6,7 +6,6 @@
  * CSS-extraction and HTML plugins differ, so they are injected by the bundler-specific configs.
  */
 const { resolve, join } = require('path');
-const { readFileSync } = require('fs');
 
 const { default: FluentUIReactIconsFontSubsettingPlugin } = require('../lib/');
 
@@ -71,6 +70,7 @@ const entries = {
  * @property {boolean} [assertNoGriffel]
  * @property {boolean} [assertModuleFormats]
  * @property {string} [runtimeChunkName] Name the runtime chunk, decoupling runtime name from entry name.
+ * @property {Record<string, number>} [fontGlyphCounts]
  */
 
 /**
@@ -180,13 +180,18 @@ function createConfig(name, entry, adapter, isDevServer) {
  * Fails the build when a font asset was not subset, or when a headless entry leaked Griffel.
  *
  * @param {string} name
- * @param {{ threshold: number, assertNoGriffel?: boolean, assertModuleFormats?: boolean, fontsWithGlyphs?: Record<string, number> }} entry
+ * @param {EntryConfig} entry
  * @param {BundlerAdapter} adapter
  */
 function createAssertionPlugin(name, entry, adapter) {
   return {
     apply(/** @type {import('webpack').Compiler} */ compiler) {
-      compiler.hooks.afterEmit.tap('test-subsetting', (compilation) => {
+      compiler.hooks.afterEmit.tapPromise('test-subsetting', async (compilation) => {
+        const { outputFileSystem } = compiler;
+        if (!outputFileSystem) {
+          throw new Error(`[${adapter.name}/${name}] Compiler has no output filesystem.`);
+        }
+
         const fontAssets = compilation.getAssets().filter(({ name: assetName }) => /\.(ttf|woff2?)$/.test(assetName));
 
         if (fontAssets.length === 0) {
@@ -212,8 +217,10 @@ function createAssertionPlugin(name, entry, adapter) {
             throw new Error(`[${adapter.name}/${name}] No emitted .ttf asset for "${fontBaseName}".`);
           }
 
-          // `afterEmit` downgrades sources to size-only, so the bytes come back off disk.
-          const glyphCount = readGlyphCount(readFileSync(join(compiler.outputPath, asset.name)));
+          // `afterEmit` downgrades sources to size-only, so read through the bundler's output
+          // filesystem. webpack-dev-server keeps emitted assets in memory by default.
+          const fontBytes = await readOutputFile(outputFileSystem, join(compiler.outputPath, asset.name));
+          const glyphCount = readGlyphCount(fontBytes);
           if (glyphCount < expectedGlyphs) {
             throw new Error(
               `[${adapter.name}/${name}] Asset "${asset.name}" has ${glyphCount} glyphs, expected at least ` +
@@ -249,6 +256,29 @@ function createAssertionPlugin(name, entry, adapter) {
       });
     },
   };
+}
+
+/**
+ * @param {import('webpack').OutputFileSystem} outputFileSystem
+ * @param {string} path
+ * @returns {Promise<Buffer>}
+ */
+function readOutputFile(outputFileSystem, path) {
+  return new Promise((resolvePromise, rejectPromise) => {
+    outputFileSystem.readFile(path, (error, data) => {
+      if (error) {
+        rejectPromise(error);
+        return;
+      }
+
+      if (data === undefined) {
+        rejectPromise(new Error(`Output filesystem returned no data for "${path}".`));
+        return;
+      }
+
+      resolvePromise(Buffer.isBuffer(data) ? data : Buffer.from(data));
+    });
+  });
 }
 
 /**
