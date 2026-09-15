@@ -12,6 +12,8 @@ import type { FluentIconsAtomicImportLoaderOptions } from './index';
  */
 export interface AtomicLoaderContext {
   readonly resourcePath: string;
+  readonly resourceQuery: string;
+  readonly _compilation?: unknown;
   getOptions(): FluentIconsAtomicImportLoaderOptions;
   callback(err: Error | null | undefined, content?: string | Buffer, sourceMap?: any, additionalData?: any): void;
   emitWarning(warning: Error): void;

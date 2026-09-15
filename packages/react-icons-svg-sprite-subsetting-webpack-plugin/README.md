@@ -52,6 +52,14 @@ You can pass a hash of configuration options to the plugin. Allowed values are a
 
 - For best results, run Webpack in production mode (or enable `optimization.usedExports`) so the plugin can detect which icon exports are used.
 - `injectSpritesInTemplates` requires `html-webpack-plugin` to be installed and configured in your Webpack build.
+- The plugin supports the atomic loader's `moduleGranularity: 'icon'` mode and
+  attributes queried modules using their query-free physical sprite paths.
+  Selected modules must retain transformed in-memory source; the plugin fails
+  rather than reading the full family from disk and silently restoring sibling
+  symbol usage.
+- Use coordinated loader/plugin releases for icon granularity. A compilation-level
+  `v1` selector capability handshake rejects missing or incompatible query
+  support. The SVG-sprite plugin remains Webpack-only.
 
 ## Contributing
 

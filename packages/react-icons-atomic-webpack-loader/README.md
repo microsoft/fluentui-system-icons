@@ -80,6 +80,44 @@ module.exports = {
 | `fallbackVariant`     | `'svg'` \| `'fonts'` \| `'svg-sprite'` | `undefined` | Variant used for a module that does not support `iconVariant` (see below).              |
 | `headless`            | `boolean`                              | `false`     | Resolve to the headless (Griffel-free) build where the module ships one.                |
 | `allowDynamicImports` | `boolean`                              | `false`     | Atomize a narrow, statically-provable subset of dynamic `import()` barrels (see below). |
+| `moduleGranularity`   | `'family'` \| `'icon'`                 | `'family'`  | Give each selected icon export its own bundler module identity (see below).             |
+
+### Export-level module granularity
+
+`moduleGranularity: 'icon'` appends an internal, versioned resource query to
+each icon-family request. The loader then processes the resolved generated ESM
+family a second time and emits only the selected declaration plus its directives
+and imports. This gives SplitChunks independently placeable icon modules without
+publishing one physical file per export:
+
+```js
+{
+  loader: '@fluentui/react-icons-atomic-webpack-loader',
+  options: { moduleGranularity: 'icon' },
+}
+```
+
+The loader rule must include both application/dependency source and generated
+ESM atom files under `@fluentui/react-icons` and
+`@fluentui/react-brand-icons`; do not exclude all of `node_modules`.
+Utilities, providers, and helper modules remain canonical and unqueried.
+
+Direct named family imports are selected without changing their explicit
+strategy, so `/svg/add` stays SVG even when `iconVariant: 'fonts'` is configured.
+Namespace/default direct imports and imports whose family membership cannot be
+proven retain family behavior with a warning. CommonJS resources remain
+family-level; malformed or stale selector queries fail the build.
+
+Font and SVG-sprite icon granularity requires compatible releases of the
+corresponding subsetting plugin. A compilation-level protocol handshake fails
+closed if the plugin is absent or query-unaware. Revert to
+`moduleGranularity: 'family'` for immediate rollback.
+
+Each selected export becomes a module-graph and persistent-cache entry, and each
+selected React Server Component module repeats its `"use client"` directive.
+Measure cold/warm build time, peak memory, cache size, module count, and route
+ownership before rollout. SplitChunks rules matching icon atom resources should
+account for `resourceQuery` rather than assuming one family module.
 
 ### Variant resolution & `fallbackVariant`
 
@@ -251,6 +289,9 @@ flowchart TD
 Files that don't reference a supported module are passed through untouched (fast pre-check).
 
 ## Limitations
+
+Export-level selection applies to generated ESM atoms only. Existing unqueried
+CommonJS deep imports continue to use family-level behavior.
 
 ### Dynamic imports are not atomized
 

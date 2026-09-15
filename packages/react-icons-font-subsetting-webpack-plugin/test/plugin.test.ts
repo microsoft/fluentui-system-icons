@@ -159,6 +159,26 @@ async function harness(options: HarnessOptions) {
 }
 
 describe('runtime resolution', () => {
+  it('normalizes selector queries before package-root path arithmetic', async () => {
+    const { updatedAssets, errors } = await harness({
+      moduleResources: [`${FONT_MODULE}?__fluentIcon=v1&export=47616d657346696c6c6564`],
+      usedExports: () => ['GamesFilled'],
+    });
+
+    expect(errors).toEqual([]);
+    expect(updatedAssets).toHaveLength(1);
+  });
+
+  it('hard-errors on an unsupported selector protocol', async () => {
+    const { errors } = await harness({
+      moduleResources: [`${FONT_MODULE}?__fluentIcon=v2&export=47616d657346696c6c6564`],
+      usedExports: () => ['GamesFilled'],
+    });
+
+    expect(errors).toHaveLength(1);
+    expect(errors[0].message).toContain('unsupported Fluent icon selector protocol "v2"');
+  });
+
   it('asks rspack about the runtime chunk, not the entrypoint', async () => {
     const { runtimesSeen } = await harness({
       isRspack: true,

@@ -1,3 +1,9 @@
+## Unreleased
+
+### 🚀 Features
+
+- Add opt-in export-level icon modules with the versioned `v1` selector protocol.
+
 ## 0.0.7 (2026-09-10)
 
 ### 🩹 Fixes

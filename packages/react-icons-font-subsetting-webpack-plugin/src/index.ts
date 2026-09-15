@@ -15,6 +15,8 @@ import type {
 export type * from './bundler-api';
 
 const PLUGIN_NAME = 'FluentUIReactIconsFontSubsettingPlugin';
+const SELECTOR_PROTOCOL_VERSION = 'v1';
+const SELECTOR_CAPABILITY = Symbol.for('fluentui.react-icons.selector-protocol');
 
 const FONT_FILES_BASE_NAMES = [
   'FluentSystemIcons-Filled',
@@ -88,6 +90,7 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPl
     const { Compilation, sources } = compiler.webpack;
 
     compiler.hooks.compilation.tap(PLUGIN_NAME, (compilation) => {
+      registerSelectorCapability(compilation, 'fonts');
       compilation.hooks.processAssets.tapPromise(
         { name: PLUGIN_NAME, stage: Compilation.PROCESS_ASSETS_STAGE_OPTIMIZE },
         async () => {
@@ -96,12 +99,13 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPl
 
           for (const m of compilation.modules) {
             if (isFluentUIReactFontChunk(m)) {
+              assertSupportedSelector(m.resource, compilation);
               const icons = resolveUsedIconExports(m, compilation.moduleGraph, runtime);
               if (icons === null) {
                 continue;
               }
 
-              const outputRoot = resolve(dirname(m.resource), '../..');
+              const outputRoot = resolve(dirname(getPhysicalResource(m.resource)), '../..');
               const packageRoot = dirname(outputRoot);
               const usage = packageUsages.get(packageRoot) ?? {
                 outputRoots: new Set<string>(),
@@ -359,7 +363,7 @@ function isFluentUIReactFontChunk(m: BundlerModule): m is BundlerNormalModule {
     return false;
   }
 
-  const resource = m.resource;
+  const resource = getPhysicalResource(m.resource);
   if (!resource) {
     return false;
   }
@@ -370,6 +374,35 @@ function isFluentUIReactFontChunk(m: BundlerModule): m is BundlerNormalModule {
   }
 
   return REACT_ICONS_FONT_MODULE_IMPORT_PATTERN.test(resource);
+}
+
+function getPhysicalResource(resource: string): string {
+  const queryIndex = resource.indexOf('?');
+  return queryIndex === -1 ? resource : resource.slice(0, queryIndex);
+}
+
+function assertSupportedSelector(resource: string, compilation: BundlerCompilation): void {
+  const match = /(?:\?|&)__fluentIcon=([^&]+)/.exec(resource);
+  if (match && match[1] !== SELECTOR_PROTOCOL_VERSION) {
+    compilation.errors.push(
+      new Error(
+        `${PLUGIN_NAME}: unsupported Fluent icon selector protocol "${match[1]}" ` +
+          `(expected "${SELECTOR_PROTOCOL_VERSION}") in "${resource}".`,
+      ),
+    );
+  }
+}
+
+function registerSelectorCapability(compilation: BundlerCompilation, capability: string): void {
+  const target = compilation as unknown as Record<PropertyKey, unknown>;
+  let capabilities = target[SELECTOR_CAPABILITY] as Map<string, Set<string>> | undefined;
+  if (!capabilities) {
+    capabilities = new Map<string, Set<string>>();
+    target[SELECTOR_CAPABILITY] = capabilities;
+  }
+  const versions = capabilities.get(capability) ?? new Set<string>();
+  versions.add(SELECTOR_PROTOCOL_VERSION);
+  capabilities.set(capability, versions);
 }
 
 /**

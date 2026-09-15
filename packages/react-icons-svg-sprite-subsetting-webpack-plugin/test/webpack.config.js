@@ -42,6 +42,16 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        enforce: 'pre',
+        use: [
+          {
+            loader: resolve(__dirname, '../../react-icons-atomic-webpack-loader/lib/index.js'),
+            options: { iconVariant: 'svg-sprite', moduleGranularity: 'icon' },
+          },
+        ],
+      },
+      {
         test: /\.svg$/,
         type: 'asset/resource',
         generator: {
@@ -75,6 +85,19 @@ module.exports = {
       apply(compiler) {
         compiler.hooks.afterEmit.tap('test-svg-sprite-subsetting', (compilation) => {
           const outDir = compilation.outputOptions.path || resolve(__dirname, 'dist');
+          const spriteModules = Array.from(compilation.modules)
+            .map((module) => module.resource)
+            .filter(
+              (resource) =>
+                typeof resource === 'string' &&
+                /[\\/]react-icons[\\/]lib[\\/]atoms[\\/]svg-sprite[\\/].+\.js(?:\?|$)/.test(resource),
+            );
+          if (spriteModules.filter((resource) => resource.includes('?__fluentIcon=v1&export=')).length !== 2) {
+            throw new Error(`Expected two queried sprite modules, found: ${spriteModules.join(', ')}`);
+          }
+          if (spriteModules.some((resource) => !resource.includes('?__fluentIcon='))) {
+            throw new Error(`Found an unqueried sprite family module in icon mode: ${spriteModules.join(', ')}`);
+          }
           const svgAssets = compilation
             .getAssets()
             .map((a) => a.name)

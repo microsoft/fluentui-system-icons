@@ -1,3 +1,9 @@
+## Unreleased
+
+### 🚀 Features
+
+- Support query-selected icon modules without restoring family-level sprite unions.
+
 ## 0.0.7 (2026-09-10)
 
 ### 🚀 Features

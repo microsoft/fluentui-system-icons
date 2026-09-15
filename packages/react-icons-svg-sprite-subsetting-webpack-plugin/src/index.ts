@@ -8,6 +8,8 @@ import MergedSpriteRuntimeModule from './runtime/MergedSpriteRuntimeModule';
 import optionsSchema from './options.schema.json';
 
 const PLUGIN_NAME = 'FluentUIReactIconsSvgSpriteSubsettingPlugin';
+const SELECTOR_PROTOCOL_VERSION = 'v1';
+const SELECTOR_CAPABILITY = Symbol.for('fluentui.react-icons.selector-protocol');
 
 /**
  * Matches the ESM and CJS `@fluentui/react-icons/svg-sprite/*` entrypoints.
@@ -116,6 +118,7 @@ export default class FluentUIReactIconsSvgSpriteSubsettingPlugin implements webp
     }
 
     compiler.hooks.compilation.tap(PLUGIN_NAME, (compilation) => {
+      registerSelectorCapability(compilation, 'svg-sprite');
       let entrypointToSpriteResourceToIds: Map<string, Map<string, Set<string>>> | null = null;
       let spriteResourceToAssetName: Map<string, string> | null = null;
       let mergedSpriteSvg: string | null = null;
@@ -652,10 +655,11 @@ function isFluentUIReactSvgSpriteEntrypointModule(m: webpack.Module): m is webpa
     return false;
   }
 
-  const resource = m.resource;
+  const resource = getPhysicalResource(m.resource);
   if (!resource) {
     return false;
   }
+  assertSupportedSelector(m.resource);
 
   // Cheap pre-filter before regex
   if (!resource.includes('react-icons')) {
@@ -679,8 +683,15 @@ function getModuleSource(m: webpack.NormalModule): string {
     return src.toString();
   }
 
-  // Fallback (should be rare)
-  return readFileSync(m.resource, 'utf8');
+  if (hasFluentSelector(m.resource)) {
+    throw new Error(
+      `${PLUGIN_NAME}: transformed source is unavailable for selected module "${m.resource}"; ` +
+        `refusing to read the full family module from disk.`,
+    );
+  }
+
+  // Family-mode fallback.
+  return readFileSync(getPhysicalResource(m.resource), 'utf8');
 }
 
 /**
@@ -692,17 +703,48 @@ function getReferencedSpritePath(module: webpack.NormalModule, moduleSource: str
   const esm = moduleSource.match(/import\s+\w+\s+from\s+['"](.+?\.svg)['"];?/);
   const rawPath = esm?.[1];
   if (rawPath) {
-    return resolve(dirname(module.resource), rawPath);
+    return resolve(dirname(getPhysicalResource(module.resource)), rawPath);
   }
 
   // CJS form: `var sprite = require('./backpack.svg');`
   const cjs = moduleSource.match(/require\(['"](.+?\.svg)['"]\)/);
   const rawPath2 = cjs?.[1];
   if (rawPath2) {
-    return resolve(dirname(module.resource), rawPath2);
+    return resolve(dirname(getPhysicalResource(module.resource)), rawPath2);
   }
 
   return null;
+}
+
+function getPhysicalResource(resource: string): string {
+  const queryIndex = resource.indexOf('?');
+  return queryIndex === -1 ? resource : resource.slice(0, queryIndex);
+}
+
+function hasFluentSelector(resource: string): boolean {
+  return /(?:\?|&)__fluentIcon=/.test(resource);
+}
+
+function assertSupportedSelector(resource: string): void {
+  const match = /(?:\?|&)__fluentIcon=([^&]+)/.exec(resource);
+  if (match && match[1] !== SELECTOR_PROTOCOL_VERSION) {
+    throw new Error(
+      `${PLUGIN_NAME}: unsupported Fluent icon selector protocol "${match[1]}" ` +
+        `(expected "${SELECTOR_PROTOCOL_VERSION}") in "${resource}".`,
+    );
+  }
+}
+
+function registerSelectorCapability(compilation: webpack.Compilation, capability: string): void {
+  const target = compilation as unknown as Record<PropertyKey, unknown>;
+  let capabilities = target[SELECTOR_CAPABILITY] as Map<string, Set<string>> | undefined;
+  if (!capabilities) {
+    capabilities = new Map<string, Set<string>>();
+    target[SELECTOR_CAPABILITY] = capabilities;
+  }
+  const versions = capabilities.get(capability) ?? new Set<string>();
+  versions.add(SELECTOR_PROTOCOL_VERSION);
+  capabilities.set(capability, versions);
 }
 
 /**

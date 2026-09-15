@@ -11,8 +11,11 @@ import {
   SUPPORTED_MODULE_NAMES,
 } from './modules';
 import type { IconVariant, ModuleDescriptor } from './modules';
+import { isIconName } from './modules';
+import { belongsToDirectIconPath, classifyDirectIconPath } from './direct-path';
+import { createExportSelector, createGroupSelector } from './selector-protocol';
 
-interface TransformOptions {
+export interface TransformOptions {
   /** The requested icon variant. Applied to every supported module. */
   iconVariant: IconVariant;
   /** The variant to fall back to when a module does not support `iconVariant`. */
@@ -25,6 +28,8 @@ interface TransformOptions {
    * Defaults to `false`. Un-rewritable dynamic barrel imports still warn.
    */
   allowDynamicImports?: boolean;
+  /** Emit one logical bundler module per icon export. Defaults to `family`. */
+  moduleGranularity?: 'family' | 'icon';
   path: string;
 }
 
@@ -51,7 +56,14 @@ type ResolvedTarget = { variant: IconVariant; headless: boolean };
 type RewriteGroup = { source: string; specs: string[] };
 
 export function transformSource(source: string, options: TransformOptions): TransformResult {
-  const { iconVariant, fallbackVariant, headless = false, allowDynamicImports = false, path } = options;
+  const {
+    iconVariant,
+    fallbackVariant,
+    headless = false,
+    allowDynamicImports = false,
+    moduleGranularity = 'family',
+    path,
+  } = options;
 
   const result = parseSync(path, source, {
     sourceType: 'module',
@@ -81,6 +93,9 @@ export function transformSource(source: string, options: TransformOptions): Tran
   // is `${name}:${isColor}`. Resolution stays O(#modules × 2) regardless of how
   // many icons a file imports.
   const resolvedTargets = new Map<string, ResolvedTarget | null>();
+
+  const selectorFor = (importedName: string): string =>
+    moduleGranularity === 'icon' && isIconName(importedName) ? createExportSelector(importedName) : '';
 
   /**
    * Returns the target (variant + headless) to rewrite a single referenced
@@ -132,10 +147,57 @@ export function transformSource(source: string, options: TransformOptions): Tran
   for (const imp of staticImports) {
     const moduleName = imp.moduleRequest.value;
     const descriptor = getModuleDescriptor(moduleName);
-    if (!descriptor) continue;
+    const directPath = classifyDirectIconPath(moduleName);
+    if (!descriptor && !directPath) continue;
 
     const namedEntries = imp.entries.filter((e) => e.importName.kind === 'Name');
-    if (namedEntries.length === 0) continue;
+    if (namedEntries.length === 0) {
+      if (directPath && moduleGranularity === 'icon') {
+        pushDiagnostic({
+          level: 'warning',
+          message:
+            `namespace/default import from direct icon family "${moduleName}" cannot be selected at export level; ` +
+            `retaining family-level behavior.`,
+        });
+      }
+      continue;
+    }
+
+    if (directPath) {
+      if (moduleGranularity !== 'icon') continue;
+      if (imp.entries.some((entry) => entry.importName.kind !== 'Name')) {
+        pushDiagnostic({
+          level: 'warning',
+          message:
+            `namespace/default import from direct icon family "${moduleName}" cannot be selected at export level; ` +
+            `retaining family-level behavior.`,
+        });
+        continue;
+      }
+      const lines: string[] = [];
+      let canRewrite = true;
+      for (const entry of namedEntries) {
+        const importedName = entry.importName.name!;
+        if (!isIconName(importedName) || !belongsToDirectIconPath(importedName, directPath)) {
+          canRewrite = false;
+          pushDiagnostic({
+            level: 'warning',
+            message:
+              `export "${importedName}" cannot be proven to belong to direct icon family "${moduleName}"; ` +
+              `retaining family-level behavior.`,
+          });
+          break;
+        }
+        const localName = entry.localName.value;
+        const spec = importedName === localName ? importedName : `${importedName} as ${localName}`;
+        lines.push(`import { ${spec} } from '${moduleName}${createExportSelector(importedName)}';`);
+      }
+      if (canRewrite) {
+        src.overwrite(imp.start, imp.end, lines.join('\n'));
+      }
+      continue;
+    }
+    if (!descriptor) continue;
 
     // Resolve each named specifier independently — color icons may route to a
     // different variant than their non-color siblings in the same statement.
@@ -161,7 +223,7 @@ export function transformSource(source: string, options: TransformOptions): Tran
 
     for (const { entry, importedName, target } of resolvedEntries) {
       const localName = entry.localName.value;
-      const newSource = descriptor.resolve(importedName, target!.variant, target!.headless);
+      const newSource = descriptor.resolve(importedName, target!.variant, target!.headless) + selectorFor(importedName);
       const spec = importedName === localName ? importedName : `${importedName} as ${localName}`;
       lines.push(`import { ${spec} } from '${newSource}';`);
     }
@@ -171,7 +233,10 @@ export function transformSource(source: string, options: TransformOptions): Tran
 
   for (const exp of staticExports) {
     const relevantEntries = exp.entries.filter(
-      (e) => e.moduleRequest && getModuleDescriptor(e.moduleRequest.value) && e.exportName.kind === 'Name',
+      (e) =>
+        e.moduleRequest &&
+        (getModuleDescriptor(e.moduleRequest.value) || classifyDirectIconPath(e.moduleRequest.value)) &&
+        e.exportName.kind === 'Name',
     );
     if (relevantEntries.length === 0) continue;
 
@@ -181,21 +246,38 @@ export function transformSource(source: string, options: TransformOptions): Tran
     if (source.startsWith('import', exp.start)) continue;
 
     const lines: string[] = [];
+    let retainOriginalDirectExport = false;
 
     for (const entry of relevantEntries) {
       const moduleName = entry.moduleRequest!.value;
-      const descriptor = getModuleDescriptor(moduleName)!;
+      const descriptor = getModuleDescriptor(moduleName);
+      const directPath = classifyDirectIconPath(moduleName);
       const importedName = entry.importName.name!;
-      const target = targetFor(descriptor, isColorIconName(importedName));
-      if (!target) continue;
+      if (directPath) {
+        if (moduleGranularity !== 'icon') continue;
+        if (!isIconName(importedName) || !belongsToDirectIconPath(importedName, directPath)) {
+          retainOriginalDirectExport = true;
+          pushDiagnostic({
+            level: 'warning',
+            message:
+              `export "${importedName}" cannot be proven to belong to direct icon family "${moduleName}"; ` +
+              `retaining family-level behavior.`,
+          });
+          continue;
+        }
+      }
+      const target = descriptor ? targetFor(descriptor, isColorIconName(importedName)) : null;
+      if (descriptor && !target) continue;
 
       const exportedName = entry.exportName.name!;
-      const newSource = descriptor.resolve(importedName, target.variant, target.headless);
+      const newSource = descriptor
+        ? descriptor.resolve(importedName, target!.variant, target!.headless) + selectorFor(importedName)
+        : moduleName + createExportSelector(importedName);
       const spec = importedName === exportedName ? importedName : `${importedName} as ${exportedName}`;
       lines.push(`export { ${spec} } from '${newSource}';`);
     }
 
-    if (lines.length === 0) continue;
+    if (lines.length === 0 || retainOriginalDirectExport) continue;
 
     src.overwrite(exp.start, exp.end, lines.join('\n'));
   }
@@ -249,9 +331,14 @@ export function transformSource(source: string, options: TransformOptions): Tran
      * @example
      * // `{ AddFilled, ...rest }`  → null   (rest element → bail)
      */
-    const buildGroups = (objectPattern: ObjectPattern, descriptor: ModuleDescriptor): RewriteGroup[] | null => {
+    const buildGroups = (
+      objectPattern: ObjectPattern,
+      descriptor: ModuleDescriptor | undefined,
+      directSource?: string,
+    ): RewriteGroup[] | null => {
       const bySource = new Map<string, string[]>();
       const order: string[] = [];
+      const directPath = directSource ? classifyDirectIconPath(directSource) : null;
 
       for (const prop of objectPattern.properties) {
         if (prop.type !== 'Property' || prop.computed || prop.kind !== 'init') return null;
@@ -259,7 +346,28 @@ export function transformSource(source: string, options: TransformOptions): Tran
 
         const importedName: string = prop.key.name;
         const localName: string = prop.value.name;
-        const resolvedSource = resolveNameSource(descriptor, importedName);
+        let resolvedSource: string | null;
+        if (descriptor) {
+          resolvedSource = resolveNameSource(descriptor, importedName);
+        } else if (
+          directSource &&
+          directPath &&
+          moduleGranularity === 'icon' &&
+          isIconName(importedName) &&
+          belongsToDirectIconPath(importedName, directPath)
+        ) {
+          resolvedSource = directSource;
+        } else {
+          if (directSource) {
+            pushDiagnostic({
+              level: 'warning',
+              message:
+                `dynamic export "${importedName}" cannot be proven to belong to direct icon family ` +
+                `"${directSource}"; retaining family-level behavior.`,
+            });
+          }
+          return null;
+        }
         if (resolvedSource === null) return null;
 
         const spec = importedName === localName ? importedName : `${importedName}: ${localName}`;
@@ -271,7 +379,17 @@ export function transformSource(source: string, options: TransformOptions): Tran
       }
 
       if (order.length === 0) return null;
-      return order.map((groupSource) => ({ source: groupSource, specs: bySource.get(groupSource)! }));
+      return order.map((groupSource) => {
+        const specs = bySource.get(groupSource)!;
+        if (moduleGranularity !== 'icon') {
+          return { source: groupSource, specs };
+        }
+        const exportNames = specs.map((spec) => spec.split(':', 1)[0]);
+        if (!exportNames.every(isIconName)) {
+          return { source: groupSource, specs };
+        }
+        return { source: groupSource + createGroupSelector(exportNames), specs };
+      });
     };
 
     const importCallText = (groups: RewriteGroup[]): string =>
@@ -298,10 +416,12 @@ export function transformSource(source: string, options: TransformOptions): Tran
         const importExpr = node.init.argument;
         if (importExpr.source.type !== 'Literal' || typeof importExpr.source.value !== 'string') return;
 
-        const descriptor = getModuleDescriptor(importExpr.source.value);
-        if (!descriptor) return;
+        const moduleName = importExpr.source.value;
+        const descriptor = getModuleDescriptor(moduleName);
+        const directPath = classifyDirectIconPath(moduleName);
+        if (!descriptor && !(directPath && moduleGranularity === 'icon')) return;
 
-        const groups = buildGroups(node.id, descriptor);
+        const groups = buildGroups(node.id, descriptor, directPath ? moduleName : undefined);
         if (!groups) return;
 
         src.overwrite(node.start, node.end, `${patternText(groups)} = await ${importCallText(groups)}`);
@@ -323,8 +443,10 @@ export function transformSource(source: string, options: TransformOptions): Tran
         const importExpr = node.callee.object;
         if (importExpr.source.type !== 'Literal' || typeof importExpr.source.value !== 'string') return;
 
-        const descriptor = getModuleDescriptor(importExpr.source.value);
-        if (!descriptor) return;
+        const moduleName = importExpr.source.value;
+        const descriptor = getModuleDescriptor(moduleName);
+        const directPath = classifyDirectIconPath(moduleName);
+        if (!descriptor && !(directPath && moduleGranularity === 'icon')) return;
 
         const callback = node.arguments[0];
         if (!callback || (callback.type !== 'ArrowFunctionExpression' && callback.type !== 'FunctionExpression')) {
@@ -334,7 +456,7 @@ export function transformSource(source: string, options: TransformOptions): Tran
         const param = callback.params[0];
         if (param?.type !== 'ObjectPattern') return;
 
-        const groups = buildGroups(param, descriptor);
+        const groups = buildGroups(param, descriptor, directPath ? moduleName : undefined);
         if (!groups) return;
 
         src.overwrite(importExpr.start, importExpr.end, importCallText(groups));

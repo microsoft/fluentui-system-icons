@@ -2,6 +2,16 @@ import { transformSource } from './transform';
 import { SUPPORTED_MODULE_NAMES } from './modules';
 import type { IconVariant } from './modules';
 import type { AtomicLoaderContext } from './loader-context';
+import { selectExports } from './select-export';
+import {
+  assertSelectableResource,
+  getRegisteredSelectorCapabilities,
+  getSelectorCapability,
+  parseSelectorQuery,
+  SELECTOR_PROTOCOL_VERSION,
+} from './selector-protocol';
+
+const remapping: (maps: any[], loader: () => null) => any = require('@jridgewell/remapping');
 
 export type { IconVariant };
 export type { AtomicLoaderContext };
@@ -62,10 +72,40 @@ export interface FluentIconsAtomicImportLoaderOptions {
    * (`import('./icons')`) over relying on this; see the README for the gotchas.
    */
   allowDynamicImports?: boolean;
+  /**
+   * Module graph granularity for icon implementations. `"family"` preserves the
+   * existing family-module behavior. `"icon"` emits query-addressed per-export
+   * modules for independently placeable chunks.
+   */
+  moduleGranularity?: 'family' | 'icon';
 }
 
-export default function fluentIconsAtomicImportLoader(this: AtomicLoaderContext, sourceCode: string): void {
-  const { resourcePath } = this;
+export default function fluentIconsAtomicImportLoader(
+  this: AtomicLoaderContext,
+  sourceCode: string,
+  inputSourceMap?: any,
+): void {
+  const { resourcePath, resourceQuery = '' } = this;
+
+  try {
+    const selector = parseSelectorQuery(resourceQuery);
+    if (selector) {
+      assertSelectableResource(resourcePath, selector);
+      assertPluginCapability(this, resourcePath);
+      const selected = selectExports(sourceCode, resourcePath, selector);
+      const map = inputSourceMap ? remapping([selected.map as any, inputSourceMap], () => null) : selected.map;
+      return this.callback(null, selected.code, map);
+    }
+  } catch (error) {
+    const reason = error instanceof Error ? error.message : String(error);
+    return this.callback(
+      new Error(`FluentIconsAtomicImportLoader: Failed to select "${resourcePath}${resourceQuery}": ${reason}`),
+    );
+  }
+
+  if (isGeneratedIconPackageResource(resourcePath)) {
+    return this.callback(null, sourceCode, inputSourceMap);
+  }
 
   // Cheap pre-skip only: a false positive here just means we parse the file and
   // let the module record decide. Diagnostics are driven by actual imports.
@@ -73,7 +113,18 @@ export default function fluentIconsAtomicImportLoader(this: AtomicLoaderContext,
     return this.callback(null, sourceCode);
   }
 
-  const { iconVariant = 'svg', fallbackVariant, headless = false, allowDynamicImports = false } = this.getOptions();
+  function isGeneratedIconPackageResource(resourcePath: string): boolean {
+    const normalized = resourcePath.replace(/\\/g, '/');
+    return /\/react-(?:brand-)?icons\/lib(?:-cjs)?\//.test(normalized);
+  }
+
+  const {
+    iconVariant = 'svg',
+    fallbackVariant,
+    headless = false,
+    allowDynamicImports = false,
+    moduleGranularity = 'family',
+  } = this.getOptions();
 
   let code: string;
   let map: ReturnType<typeof transformSource>['map'];
@@ -85,6 +136,7 @@ export default function fluentIconsAtomicImportLoader(this: AtomicLoaderContext,
       fallbackVariant,
       headless,
       allowDynamicImports,
+      moduleGranularity,
       path: resourcePath,
     }));
   } catch (error) {
@@ -104,4 +156,21 @@ export default function fluentIconsAtomicImportLoader(this: AtomicLoaderContext,
   }
 
   return this.callback(null, code, map);
+}
+
+function assertPluginCapability(context: AtomicLoaderContext, resourcePath: string): void {
+  const capability = getSelectorCapability(resourcePath);
+  if (!capability) {
+    return;
+  }
+
+  const versions = context._compilation
+    ? getRegisteredSelectorCapabilities(context._compilation).get(capability)
+    : undefined;
+  if (!versions?.has(SELECTOR_PROTOCOL_VERSION)) {
+    throw new Error(
+      `"${capability}" icon selection requires a query-aware subsetting plugin supporting ` +
+        `selector protocol "${SELECTOR_PROTOCOL_VERSION}"`,
+    );
+  }
 }
