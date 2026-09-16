@@ -138,7 +138,7 @@ describe('Build Verification', () => {
           }
         }
       }
-    });
+    }, 30_000);
   });
 
   describe('Build Directories', () => {

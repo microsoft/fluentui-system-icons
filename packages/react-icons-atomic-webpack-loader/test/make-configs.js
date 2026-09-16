@@ -266,6 +266,9 @@ function createConfig(name, entry, adapter) {
       rules: [
         {
           test: /\.(jsx?|tsx?)$/,
+          include: entry.bundleIcons
+            ? [resolve(__dirname, 'src'), /[\\/]react-(?:brand-)?icons[\\/]lib[\\/]atoms[\\/]/]
+            : undefined,
           enforce: 'pre',
           use: [
             {

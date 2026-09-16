@@ -9,7 +9,8 @@
     "test": "yarn run -T vitest run && yarn run test:types && node test/run.js --bundler all",
     "test:types": "yarn run -T tsc -p test/tsconfig.conformance.json",
     "test:webpack": "node test/run.js --bundler webpack",
-    "test:rspack": "node test/run.js --bundler rspack"
+    "test:rspack": "node test/run.js --bundler rspack",
+    "benchmark": "yarn build && node test/benchmark.js"
   },
   "engines": {
     "node": ">=20.0.0"

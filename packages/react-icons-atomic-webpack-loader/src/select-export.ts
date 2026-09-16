@@ -19,19 +19,41 @@ interface StructuralModule {
 
 const MAX_CACHE_ENTRIES = 256;
 const structuralCache = new Map<string, StructuralModule>();
+const collectMetrics = process.env.FLUENT_ICON_SELECTOR_METRICS === '1';
+const metrics = { emissions: 0, parses: 0, cacheHits: 0 };
+
+export function getSelectorTransformMetrics(): Readonly<typeof metrics> & { cacheEntries: number } {
+  return { ...metrics, cacheEntries: structuralCache.size };
+}
+
+export function resetSelectorTransformMetrics(): void {
+  structuralCache.clear();
+  metrics.emissions = 0;
+  metrics.parses = 0;
+  metrics.cacheHits = 0;
+}
 
 export function selectExports(
   source: string,
   resourcePath: string,
   selector: Selector,
-): { code: string; map: ReturnType<MagicString['generateMap']> } {
+  generateSourceMap = true,
+): { code: string; map: ReturnType<MagicString['generateMap']> | undefined } {
+  if (collectMetrics) {
+    metrics.emissions++;
+  }
   if (selector.kind === 'group') {
     const filename = basename(resourcePath);
     const code = selector.exportNames
       .map((exportName) => `export { ${exportName} } from './${filename}${createExportSelector(exportName)}';`)
       .join('\n');
     const generated = new MagicString(code);
-    return { code, map: generated.generateMap({ hires: true, source: resourcePath, includeContent: true }) };
+    return {
+      code,
+      map: generateSourceMap
+        ? generated.generateMap({ hires: true, source: resourcePath, includeContent: true })
+        : undefined,
+    };
   }
 
   const structure = getStructure(source, resourcePath);
@@ -63,7 +85,7 @@ export function selectExports(
 
   return {
     code: src.toString(),
-    map: src.generateMap({ hires: true, source: resourcePath, includeContent: true }),
+    map: generateSourceMap ? src.generateMap({ hires: true, source: resourcePath, includeContent: true }) : undefined,
   };
 }
 
@@ -72,12 +94,18 @@ function getStructure(source: string, resourcePath: string): StructuralModule {
   const key = `${resourcePath}\0${hash}`;
   const cached = structuralCache.get(key);
   if (cached) {
+    if (collectMetrics) {
+      metrics.cacheHits++;
+    }
     structuralCache.delete(key);
     structuralCache.set(key, cached);
     return cached;
   }
 
   const parsed = parseSync(resourcePath, source, { sourceType: 'module' });
+  if (collectMetrics) {
+    metrics.parses++;
+  }
   if (parsed.errors.length > 0) {
     throw new Error(parsed.errors[0].message);
   }

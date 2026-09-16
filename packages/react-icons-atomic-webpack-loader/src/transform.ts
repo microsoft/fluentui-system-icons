@@ -30,6 +30,8 @@ export interface TransformOptions {
   allowDynamicImports?: boolean;
   /** Emit one logical bundler module per icon export. Defaults to `family`. */
   moduleGranularity?: 'family' | 'icon';
+  /** Generate a high-resolution source map. Defaults to `true`. */
+  sourceMap?: boolean;
   path: string;
 }
 
@@ -40,7 +42,7 @@ export interface Diagnostic {
 
 export interface TransformResult {
   code: string;
-  map: ReturnType<MagicString['generateMap']>;
+  map: ReturnType<MagicString['generateMap']> | undefined;
   /**
    * Diagnostics gathered while rewriting. Only modules that are actually
    * imported/re-exported (as reported by the parsed module record) contribute
@@ -62,6 +64,7 @@ export function transformSource(source: string, options: TransformOptions): Tran
     headless = false,
     allowDynamicImports = false,
     moduleGranularity = 'family',
+    sourceMap = true,
     path,
   } = options;
 
@@ -507,7 +510,7 @@ export function transformSource(source: string, options: TransformOptions): Tran
 
   return {
     code: src.toString(),
-    map: src.generateMap({ hires: true }),
+    map: sourceMap ? src.generateMap({ hires: true }) : undefined,
     diagnostics,
   };
 }

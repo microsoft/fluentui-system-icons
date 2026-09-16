@@ -97,10 +97,42 @@ publishing one physical file per export:
 }
 ```
 
-The loader rule must include both application/dependency source and generated
-ESM atom files under `@fluentui/react-icons` and
-`@fluentui/react-brand-icons`; do not exclude all of `node_modules`.
-Utilities, providers, and helper modules remain canonical and unqueried.
+The loader rule must include both application/dependency source and the
+generated ESM atom files under `@fluentui/react-icons` and
+`@fluentui/react-brand-icons`. It does not need to process all of
+`node_modules`; an application that only rewrites its own source can use a
+targeted include:
+
+```js
+const path = require('path');
+
+{
+  test: /\.[mc]?[jt]sx?$/,
+  include: [
+    path.resolve(__dirname, 'src'),
+    /node_modules[\\/]@fluentui[\\/]react-(?:brand-)?icons[\\/]lib[\\/]atoms[\\/]/,
+  ],
+  enforce: 'pre',
+  use: [
+    {
+      loader: '@fluentui/react-icons-atomic-webpack-loader',
+      options: { moduleGranularity: 'icon' },
+    },
+  ],
+}
+```
+
+The first pass rewrites application imports to query-addressed family
+requests. The bundler resolves each request to a physical generated atom file,
+then applies the same loader rule again to emit the selected virtual module.
+Webpack and Rspack do not interpret the selector query themselves. If the atom
+directory is excluded, the second pass cannot run and the full physical family
+source is loaded under the queried identity. The loader cannot diagnose that
+misconfiguration because it is never invoked for that resource.
+
+Broaden dependency coverage only when barrel imports inside third-party
+packages should also be rewritten. Utilities, providers, and helper modules
+remain canonical and unqueried.
 
 Direct named family imports are selected without changing their explicit
 strategy, so `/svg/add` stays SVG even when `iconVariant: 'fonts'` is configured.
@@ -118,6 +150,21 @@ selected React Server Component module repeats its `"use client"` directive.
 Measure cold/warm build time, peak memory, cache size, module count, and route
 ownership before rollout. SplitChunks rules matching icon atom resources should
 account for `resourceQuery` rather than assuming one family module.
+
+The loader skips source-map generation when the bundler disables source maps.
+When enabled, importer and selector maps are composed with any incoming map.
+Repository contributors can run the repeatable 2,000-export microbenchmark with:
+
+```sh
+yarn workspace @fluentui/react-icons-atomic-webpack-loader benchmark
+```
+
+Override its scale with `ICON_BENCHMARK_EXPORTS` and
+`ICON_BENCHMARK_ITERATIONS`. The benchmark reports fast-skip and importer
+rewrite timing, source-map cost, selector emissions, unique physical parses,
+cache hits, cache entries, and RSS growth. It measures loader work only;
+consumer validation must additionally record bundler module counts,
+persistent-cache size, and route ownership.
 
 ### Variant resolution & `fallbackVariant`
 

@@ -86,14 +86,15 @@ export default function fluentIconsAtomicImportLoader(
   inputSourceMap?: any,
 ): void {
   const { resourcePath, resourceQuery = '' } = this;
+  const generateSourceMap = this.sourceMap !== false;
 
   try {
     const selector = parseSelectorQuery(resourceQuery);
     if (selector) {
       assertSelectableResource(resourcePath, selector);
       assertPluginCapability(this, resourcePath);
-      const selected = selectExports(sourceCode, resourcePath, selector);
-      const map = inputSourceMap ? remapping([selected.map as any, inputSourceMap], () => null) : selected.map;
+      const selected = selectExports(sourceCode, resourcePath, selector, generateSourceMap);
+      const map = composeSourceMaps(selected.map, inputSourceMap);
       return this.callback(null, selected.code, map);
     }
   } catch (error) {
@@ -110,12 +111,7 @@ export default function fluentIconsAtomicImportLoader(
   // Cheap pre-skip only: a false positive here just means we parse the file and
   // let the module record decide. Diagnostics are driven by actual imports.
   if (!SUPPORTED_MODULE_NAMES.some((name) => sourceCode.includes(name))) {
-    return this.callback(null, sourceCode);
-  }
-
-  function isGeneratedIconPackageResource(resourcePath: string): boolean {
-    const normalized = resourcePath.replace(/\\/g, '/');
-    return /\/react-(?:brand-)?icons\/lib(?:-cjs)?\//.test(normalized);
+    return this.callback(null, sourceCode, inputSourceMap);
   }
 
   const {
@@ -137,6 +133,7 @@ export default function fluentIconsAtomicImportLoader(
       headless,
       allowDynamicImports,
       moduleGranularity,
+      sourceMap: generateSourceMap,
       path: resourcePath,
     }));
   } catch (error) {
@@ -155,7 +152,19 @@ export default function fluentIconsAtomicImportLoader(
     return this.callback(new Error(`FluentIconsAtomicImportLoader: ${firstError.message}`));
   }
 
-  return this.callback(null, code, map);
+  return this.callback(null, code, composeSourceMaps(map, inputSourceMap));
+}
+
+function isGeneratedIconPackageResource(resourcePath: string): boolean {
+  const normalized = resourcePath.replace(/\\/g, '/');
+  return /\/react-(?:brand-)?icons\/lib(?:-cjs)?\//.test(normalized);
+}
+
+function composeSourceMaps(generatedMap: unknown, inputSourceMap: unknown): unknown {
+  if (!generatedMap || !inputSourceMap) {
+    return generatedMap;
+  }
+  return remapping([generatedMap, inputSourceMap], () => null);
 }
 
 function assertPluginCapability(context: AtomicLoaderContext, resourcePath: string): void {

@@ -11,19 +11,27 @@ const source = [
   "export const AddRegular = createFluentIcon('AddRegular', '1em', ['regular']);",
 ].join('\n');
 
-function runLoader(resourcePath: string, resourceQuery: string, compilation: unknown = {}) {
-  let result: { error?: Error | null; code?: string } = {};
+interface RunLoaderOptions {
+  compilation?: unknown;
+  inputSource?: string;
+  inputSourceMap?: unknown;
+  sourceMap?: boolean;
+}
+
+function runLoader(resourcePath: string, resourceQuery: string, options: RunLoaderOptions = {}) {
+  let result: { error?: Error | null; code?: string; map?: unknown } = {};
   const context: AtomicLoaderContext = {
     resourcePath,
     resourceQuery,
-    _compilation: compilation,
+    sourceMap: options.sourceMap ?? true,
+    _compilation: options.compilation ?? {},
     getOptions: () => ({ moduleGranularity: 'icon' }),
     emitWarning: () => undefined,
-    callback: (error, code) => {
-      result = { error, code: typeof code === 'string' ? code : undefined };
+    callback: (error, code, map) => {
+      result = { error, code: typeof code === 'string' ? code : undefined, map };
     },
   };
-  loader.call(context, source);
+  loader.call(context, options.inputSource ?? source, options.inputSourceMap);
   return result;
 }
 
@@ -60,5 +68,48 @@ describe('loader selector branch', () => {
       createExportSelector('ArrowLeftRegular'),
     );
     expect(result.error?.message).toContain('does not belong to icon family "add"');
+  });
+
+  it('passes an incoming map through unchanged on the fast no-op path', () => {
+    const inputMap = { version: 3, sources: ['original.ts'], names: [], mappings: 'AAAA' };
+    const result = runLoader('/app/src/plain.js', '', {
+      inputSource: 'export const value = 1;',
+      inputSourceMap: inputMap,
+    });
+    expect(result.map).toBe(inputMap);
+  });
+
+  it('composes an incoming map for ordinary barrel rewrites', () => {
+    const inputMap = {
+      version: 3,
+      file: 'intermediate.js',
+      sources: ['original.ts'],
+      sourcesContent: [`import { AddFilled } from '@fluentui/react-icons';`],
+      names: [],
+      mappings: 'AAAA',
+    };
+    const result = runLoader('/app/src/icons.js', '', {
+      inputSource: `import { AddFilled } from '@fluentui/react-icons';`,
+      inputSourceMap: inputMap,
+    });
+    expect(result.error).toBeNull();
+    expect((result.map as { sources: string[] }).sources).toContain('original.ts');
+  });
+
+  it('skips map generation when the bundler disables source maps', () => {
+    const result = runLoader('/app/src/icons.js', '', {
+      inputSource: `import { AddFilled } from '@fluentui/react-icons';`,
+      sourceMap: false,
+    });
+    expect(result.map).toBeUndefined();
+  });
+
+  it('skips selected-module map generation when the bundler disables source maps', () => {
+    const result = runLoader(
+      '/app/node_modules/@fluentui/react-icons/lib/atoms/svg/add.js',
+      createExportSelector('AddFilled'),
+      { sourceMap: false },
+    );
+    expect(result.map).toBeUndefined();
   });
 });
