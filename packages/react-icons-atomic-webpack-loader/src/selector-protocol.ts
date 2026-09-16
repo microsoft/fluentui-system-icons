@@ -3,9 +3,11 @@ import { basename, extname } from 'path';
 export const SELECTOR_PROTOCOL_VERSION = 'v1';
 export const SELECTOR_CACHE_SALT = `fluent-icon-selector-${SELECTOR_PROTOCOL_VERSION}`;
 export const SELECTOR_CAPABILITY = Symbol.for('fluentui.react-icons.selector-protocol');
+export const SELECTOR_QUERY_KEY = '__fluentIcon';
 
 const IDENTIFIER_PATTERN = /^[A-Za-z_$][A-Za-z0-9_$]*$/;
 const HEX_PATTERN = /^(?:[0-9a-f]{2})+$/;
+const SELECTOR_QUERY_PATTERN = new RegExp(`(?:^\\?|&)${SELECTOR_QUERY_KEY}=`);
 
 export type Selector = { kind: 'export'; exportName: string } | { kind: 'group'; exportNames: string[] };
 export type SelectorCapability = 'fonts' | 'svg-sprite';
@@ -29,7 +31,7 @@ export function decodeExportName(encoded: string): string {
 }
 
 export function createExportSelector(exportName: string): string {
-  return `?__fluentIcon=${SELECTOR_PROTOCOL_VERSION}&export=${encodeExportName(exportName)}`;
+  return `?${SELECTOR_QUERY_KEY}=${SELECTOR_PROTOCOL_VERSION}&export=${encodeExportName(exportName)}`;
 }
 
 export function createGroupSelector(exportNames: Iterable<string>): string {
@@ -37,14 +39,14 @@ export function createGroupSelector(exportNames: Iterable<string>): string {
   if (encoded.length === 0) {
     throw new Error('a selector group must contain at least one export');
   }
-  return `?__fluentIcon=${SELECTOR_PROTOCOL_VERSION}&group=${encoded.join('.')}`;
+  return `?${SELECTOR_QUERY_KEY}=${SELECTOR_PROTOCOL_VERSION}&group=${encoded.join('.')}`;
 }
 
 export function parseSelectorQuery(resourceQuery: string): Selector | null {
   if (!resourceQuery) {
     return null;
   }
-  if (!/(?:^\?|&)__fluentIcon=/.test(resourceQuery)) {
+  if (!SELECTOR_QUERY_PATTERN.test(resourceQuery)) {
     return null;
   }
   if (!resourceQuery.startsWith('?')) {
@@ -70,17 +72,17 @@ export function parseSelectorQuery(resourceQuery: string): Selector | null {
     values.set(key, value);
   }
 
-  if (!values.has('__fluentIcon')) {
+  if (!values.has(SELECTOR_QUERY_KEY)) {
     return null;
   }
   for (const key of values.keys()) {
-    if (key !== '__fluentIcon' && key !== 'export' && key !== 'group') {
+    if (key !== SELECTOR_QUERY_KEY && key !== 'export' && key !== 'group') {
       throw new Error(`unknown Fluent icon selector key "${key}"`);
     }
   }
-  if (values.get('__fluentIcon') !== SELECTOR_PROTOCOL_VERSION) {
+  if (values.get(SELECTOR_QUERY_KEY) !== SELECTOR_PROTOCOL_VERSION) {
     throw new Error(
-      `unsupported Fluent icon selector protocol "${values.get('__fluentIcon') ?? ''}" ` +
+      `unsupported Fluent icon selector protocol "${values.get(SELECTOR_QUERY_KEY) ?? ''}" ` +
         `(expected "${SELECTOR_PROTOCOL_VERSION}")`,
     );
   }

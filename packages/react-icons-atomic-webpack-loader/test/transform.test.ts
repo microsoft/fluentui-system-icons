@@ -31,8 +31,19 @@ describe('transformSource', () => {
         iconVariant: 'fonts',
         headless: true,
       });
+
       expect(code).toBe(
         `import { AddFilled } from '@fluentui/react-icons/svg/add?__fluentIcon=v1&export=41646446696c6c6564';`,
+      );
+    });
+
+    it('selects the configured headless font variant', () => {
+      const { code } = transformIcons(`import { AddFilled } from '@fluentui/react-icons';`, {
+        iconVariant: 'fonts',
+        headless: true,
+      });
+      expect(code).toBe(
+        `import { AddFilled } from '@fluentui/react-icons/headless/fonts/add?__fluentIcon=v1&export=41646446696c6c6564';`,
       );
     });
 

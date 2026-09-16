@@ -1,13 +1,3 @@
-## Unreleased
-
-### 🚀 Features
-
-- Support query-selected icon modules without restoring family-level sprite unions.
-
-### 🩹 Fixes
-
-- Keep selected sprite usage isolated to the entrypoints that actually consume it.
-
 ## 0.0.7 (2026-09-10)
 
 ### 🚀 Features

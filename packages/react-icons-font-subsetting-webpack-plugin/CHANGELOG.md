@@ -1,9 +1,3 @@
-## Unreleased
-
-### 🚀 Features
-
-- Support exact glyph attribution from export-level icon selector modules.
-
 ## 2.0.341 (2026-09-11)
 
 This release contains icon updates

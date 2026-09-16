@@ -8,6 +8,7 @@
  */
 const { resolve } = require('path');
 const { readdirSync, readFileSync } = require('fs');
+const { createExportSelector, createGroupSelector } = require('../lib/selector-protocol');
 
 /**
  * @typedef {object} EntryAssertions
@@ -26,8 +27,8 @@ const { readdirSync, readFileSync } = require('fs');
  * @property {string[]} mustExclude
  * @property {string[]} [mustWarn]
  * @property {boolean} [bundleIcons]
- * @property {number} [selectedModuleCount]
- * @property {number} [selectedGroupCount]
+ * @property {string[]} [selectedExports]
+ * @property {string[][]} [selectedGroups]
  * @property {Record<string, EntryAssertions>} [overrides] Per-bundler assertion overrides,
  *   keyed by bundler name. Only present where a bundler's output legitimately differs.
  */
@@ -206,7 +207,7 @@ const entries = {
     src: './src/icon-granularity-svg.js',
     loaderOptions: { moduleGranularity: 'icon' },
     bundleIcons: true,
-    selectedModuleCount: 3,
+    selectedExports: ['AddFilled', 'AddRegular', 'DrawImage24Filled'],
     mustInclude: ['AddFilled', 'AddRegular', 'DrawImage24Filled'],
     mustExclude: ['Add12Regular', 'DrawImageRegular'],
   },
@@ -214,8 +215,8 @@ const entries = {
     src: './src/icon-granularity-dynamic.js',
     loaderOptions: { moduleGranularity: 'icon', allowDynamicImports: true },
     bundleIcons: true,
-    selectedModuleCount: 2,
-    selectedGroupCount: 1,
+    selectedExports: ['AddFilled', 'AddRegular'],
+    selectedGroups: [['AddFilled', 'AddRegular']],
     mustInclude: ['AddFilled', 'AddRegular'],
     mustExclude: ['Add12Regular'],
   },
@@ -342,7 +343,7 @@ function createAssertionPlugin(name, entry, adapter) {
           }
         }
 
-        if (entry.selectedModuleCount !== undefined) {
+        if (entry.selectedExports !== undefined) {
           const resources = Array.from(compilation.modules, (m) => {
             const module = /** @type {{ resource?: string, identifier?: () => string }} */ (m);
             return module.resource ?? module.identifier?.();
@@ -350,22 +351,30 @@ function createAssertionPlugin(name, entry, adapter) {
           const selectorResources = new Set(
             resources.flatMap((resource) => {
               if (typeof resource !== 'string') return [];
-              const match = resource.match(/[^!|]+\.js\?__fluentIcon=v1&(?:export|group)=[0-9a-f.]+/);
+              const match = resource.match(/[^!|]+\.js\?__fluentIcon=v1&(?:export|group)=[^!|]+/);
               return match ? [match[0]] : [];
             }),
           );
           const selectedResources = Array.from(selectorResources).filter((resource) => resource.includes('&export='));
-          if (selectedResources.length !== entry.selectedModuleCount) {
+          const getCanonicalQuery = (resource) => {
+            const query = resource.slice(resource.indexOf('?'));
+            return query.endsWith('.js') ? query.slice(0, -3) : query;
+          };
+          const selectedQueries = selectedResources.map(getCanonicalQuery).sort();
+          const expectedSelectedQueries = entry.selectedExports.map(createExportSelector).sort();
+          if (JSON.stringify(selectedQueries) !== JSON.stringify(expectedSelectedQueries)) {
             throw new Error(
-              `[${label}] Expected ${entry.selectedModuleCount} selected icon modules, found ` +
-                `${selectedResources.length}: ${selectedResources.join(', ')}`,
+              `[${label}] Expected selected icon queries ${JSON.stringify(expectedSelectedQueries)}, found ` +
+                `${JSON.stringify(selectedQueries)}`,
             );
           }
           const selectedGroups = Array.from(selectorResources).filter((resource) => resource.includes('&group='));
-          if (selectedGroups.length !== (entry.selectedGroupCount ?? 0)) {
+          const selectedGroupQueries = selectedGroups.map(getCanonicalQuery).sort();
+          const expectedGroupQueries = (entry.selectedGroups ?? []).map(createGroupSelector).sort();
+          if (JSON.stringify(selectedGroupQueries) !== JSON.stringify(expectedGroupQueries)) {
             throw new Error(
-              `[${label}] Expected ${entry.selectedGroupCount ?? 0} selector group modules, found ` +
-                `${selectedGroups.length}: ${selectedGroups.join(', ')}`,
+              `[${label}] Expected selector group queries ${JSON.stringify(expectedGroupQueries)}, found ` +
+                `${JSON.stringify(selectedGroupQueries)}`,
             );
           }
           const unselectedAtom = resources.find(

@@ -1,14 +1,3 @@
-## Unreleased
-
-### 🚀 Features
-
-- Add opt-in export-level icon modules with the versioned `v1` selector protocol.
-
-### 🩹 Fixes
-
-- Preserve and compose incoming source maps while avoiding map generation when disabled.
-- Document the targeted generated-atom rule required for selector emission.
-
 ## 0.0.7 (2026-09-10)
 
 ### 🩹 Fixes

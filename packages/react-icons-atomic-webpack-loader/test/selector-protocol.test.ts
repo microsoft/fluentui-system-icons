@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import {
+  assertSelectableResource,
   createExportSelector,
   createGroupSelector,
   decodeExportName,
@@ -53,24 +54,47 @@ describe('selector protocol', () => {
 });
 
 describe('selected ESM emission', () => {
-  const resourcePath = '/app/node_modules/@fluentui/react-icons/lib/atoms/svg/add.js';
+  const source = [
+    '"use client";',
+    "import { createFluentIcon } from '../../utils/createFluentIcon.js';",
+    "export const AddFilled = createFluentIcon('AddFilled', '1em', ['filled']);",
+    "export const AddRegular = createFluentIcon('AddRegular', '1em', ['regular']);",
+  ].join('\n');
 
-  it('preserves directives and imports while emitting exactly one declaration', () => {
-    const source = [
+  const selectExport = (resourcePath: string, moduleSource: string, exportName: string) => {
+    const selector = { kind: 'export', exportName } as const;
+    assertSelectableResource(resourcePath, selector);
+    return selectExports(moduleSource, resourcePath, selector).code;
+  };
+
+  it('preserves directives and imports for a selected system icon declaration', () => {
+    expect(
+      selectExport('/app/node_modules/@fluentui/react-icons/lib/atoms/svg/add.js', source, 'AddFilled'),
+    ).toMatchInlineSnapshot(
+      `""use client";import { createFluentIcon } from '../../utils/createFluentIcon.js';export const AddFilled = createFluentIcon('AddFilled', '1em', ['filled']);"`,
+    );
+  });
+
+  it('preserves directives and imports for a selected brand icon declaration', () => {
+    const brandSource = [
       '"use client";',
       "import { createFluentIcon } from '../../utils/createFluentIcon.js';",
-      "export const AddFilled = createFluentIcon('AddFilled', '1em', ['filled']);",
-      "export const AddRegular = createFluentIcon('AddRegular', '1em', ['regular']);",
+      "export const ProjectColor = createFluentIcon('ProjectColor', '1em', ['color']);",
+      "export const ProjectRegular = createFluentIcon('ProjectRegular', '1em', ['regular']);",
     ].join('\n');
-
-    const result = selectExports(source, resourcePath, { kind: 'export', exportName: 'AddFilled' });
-    expect(result.code).toContain('"use client"');
-    expect(result.code).toContain('createFluentIcon');
-    expect(result.code).toContain('export const AddFilled');
-    expect(result.code).not.toContain('export const AddRegular');
+    expect(
+      selectExport(
+        '/app/node_modules/@fluentui/react-brand-icons/lib/atoms/svg/project.js',
+        brandSource,
+        'ProjectColor',
+      ),
+    ).toMatchInlineSnapshot(
+      `""use client";import { createFluentIcon } from '../../utils/createFluentIcon.js';export const ProjectColor = createFluentIcon('ProjectColor', '1em', ['color']);"`,
+    );
   });
 
   it('emits groups as re-exports from canonical per-icon selector modules', () => {
+    const resourcePath = '/app/node_modules/@fluentui/react-icons/lib/atoms/svg/add.js';
     const result = selectExports('', resourcePath, {
       kind: 'group',
       exportNames: ['AddFilled', 'AddRegular'],
@@ -81,6 +105,7 @@ describe('selected ESM emission', () => {
   });
 
   it('rejects declarations that reference another module-level binding', () => {
+    const resourcePath = '/app/node_modules/@fluentui/react-icons/lib/atoms/svg/add.js';
     const source = [
       "import { createFluentIcon } from '../../utils/createFluentIcon.js';",
       "const shared = ['path'];",

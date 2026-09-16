@@ -97,11 +97,16 @@ publishing one physical file per export:
 }
 ```
 
-The loader rule must include both application/dependency source and the
-generated ESM atom files under `@fluentui/react-icons` and
-`@fluentui/react-brand-icons`. It does not need to process all of
-`node_modules`; an application that only rewrites its own source can use a
-targeted include:
+The loader rule must cover every source file whose Fluent barrel imports should
+be rewritten, plus the generated ESM atom files under
+`@fluentui/react-icons` and `@fluentui/react-brand-icons`. To rewrite imports
+inside arbitrary third-party packages, omit `include` so matching JavaScript
+and TypeScript throughout the dependency graph are processed. The loader's
+source-text pre-check cheaply skips files that do not reference a supported
+Fluent icon package.
+
+For the lowest rule-matching overhead, applications that only rewrite their
+own source and a known set of dependencies can use a targeted include:
 
 ```js
 const path = require('path');
@@ -110,6 +115,7 @@ const path = require('path');
   test: /\.[mc]?[jt]sx?$/,
   include: [
     path.resolve(__dirname, 'src'),
+    path.dirname(require.resolve('known-dependency/package.json')),
     /node_modules[\\/]@fluentui[\\/]react-(?:brand-)?icons[\\/]lib[\\/]atoms[\\/]/,
   ],
   enforce: 'pre',
@@ -130,9 +136,9 @@ directory is excluded, the second pass cannot run and the full physical family
 source is loaded under the queried identity. The loader cannot diagnose that
 misconfiguration because it is never invoked for that resource.
 
-Broaden dependency coverage only when barrel imports inside third-party
-packages should also be rewritten. Utilities, providers, and helper modules
-remain canonical and unqueried.
+Every third-party importer that should be rewritten must be represented in the
+targeted list; otherwise use the comprehensive rule without `include`.
+Utilities, providers, and helper modules remain canonical and unqueried.
 
 Direct named family imports are selected without changing their explicit
 strategy, so `/svg/add` stays SVG even when `iconVariant: 'fonts'` is configured.

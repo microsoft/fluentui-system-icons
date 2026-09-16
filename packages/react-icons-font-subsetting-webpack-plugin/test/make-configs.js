@@ -107,6 +107,7 @@ function createConfig(name, entry, adapter, isDevServer) {
                 // Rewrite barrel `@fluentui/react-icons` imports to headless font atoms
                 // before the bundler parses them.
                 test: /\.js$/,
+                include: [resolve(__dirname, 'src'), /[\\/]react-(?:brand-)?icons[\\/]lib[\\/]atoms[\\/]/],
                 enforce: /** @type {'pre'} */ ('pre'),
                 use: [
                   {
