@@ -12,16 +12,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ampproject/remapping@npm:^2.3.0":
-  version: 2.3.0
-  resolution: "@ampproject/remapping@npm:2.3.0"
-  dependencies:
-    "@jridgewell/gen-mapping": "npm:^0.3.5"
-    "@jridgewell/trace-mapping": "npm:^0.3.24"
-  checksum: 10c0/81d63cca5443e0f0c72ae18b544cc28c7c0ec2cea46e7cb888bb0e0f411a1191d0d6b7af798d54e30777d8d1488b2ec0732aac2be342d3d7d3ffd271c6f489ed
-  languageName: node
-  linkType: hard
-
 "@andrewbranch/untar.js@npm:^1.0.3":
   version: 1.0.4
   resolution: "@andrewbranch/untar.js@npm:1.0.4"
@@ -3910,8 +3900,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-icons-atomic-webpack-loader@workspace:packages/react-icons-atomic-webpack-loader"
   dependencies:
-    "@ampproject/remapping": "npm:^2.3.0"
     "@fluentui/react-icons": "npm:*"
+    "@jridgewell/remapping": "npm:^2.3.5"
     magic-string: "npm:^0.30.0"
     oxc-parser: "npm:^0.125.0"
   peerDependencies:

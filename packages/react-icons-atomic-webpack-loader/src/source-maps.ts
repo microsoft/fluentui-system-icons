@@ -1,9 +1,26 @@
-import remapping, { type SourceMapInput } from '@ampproject/remapping';
 import type MagicString from 'magic-string';
 
 type GeneratedSourceMap = ReturnType<MagicString['generateMap']>;
 
-export type { SourceMapInput };
+export type SourceMapInput =
+  | string
+  | {
+      version: number;
+      file?: string | null;
+      names: string[];
+      sourceRoot?: string;
+      sources: (string | null)[];
+      sourcesContent?: (string | null)[];
+      mappings: string | unknown[][];
+      x_google_ignoreList?: number[];
+    };
+
+// TS 5.0 cannot parse remapping's `export = function` declaration, so keep the
+// compatibility override local until the package ships a standard CJS type declaration.
+const remapping = require('@jridgewell/remapping') as (
+  input: SourceMapInput | SourceMapInput[],
+  loader: () => null,
+) => SourceMapInput;
 
 export function composeSourceMaps(
   generatedMap: GeneratedSourceMap | undefined,
