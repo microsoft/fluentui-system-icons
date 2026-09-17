@@ -172,6 +172,9 @@ cache hits, cache entries, and RSS growth. It measures loader work only;
 consumer validation must additionally record bundler module counts,
 persistent-cache size, and route ownership.
 
+Set `ICON_BENCHMARK_JSON=1` for machine-readable output. The benchmark is not a
+CI gate because wall-clock and RSS measurements vary across shared runners.
+
 ### Variant resolution & `fallbackVariant`
 
 `iconVariant` is applied to every supported module referenced in a file. Because not every module ships every variant (for example `@fluentui/react-brand-icons` only ships `svg`), the loader resolves the variant per module:

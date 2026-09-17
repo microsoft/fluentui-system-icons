@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import loader from '../src/index';
 import type { AtomicLoaderContext } from '../src/loader-context';
 import { createExportSelector } from '../src/selector-protocol';
+import type { SourceMapInput } from '../src/source-maps';
 
 const source = [
   '"use client";',
@@ -14,7 +15,7 @@ const source = [
 interface RunLoaderOptions {
   compilation?: unknown;
   inputSource?: string;
-  inputSourceMap?: unknown;
+  inputSourceMap?: SourceMapInput;
   sourceMap?: boolean;
 }
 
@@ -71,7 +72,7 @@ describe('loader selector branch', () => {
   });
 
   it('passes an incoming map through unchanged on the fast no-op path', () => {
-    const inputMap = { version: 3, sources: ['original.ts'], names: [], mappings: 'AAAA' };
+    const inputMap: SourceMapInput = { version: 3, sources: ['original.ts'], names: [], mappings: 'AAAA' };
     const result = runLoader('/app/src/plain.js', '', {
       inputSource: 'export const value = 1;',
       inputSourceMap: inputMap,
@@ -80,7 +81,7 @@ describe('loader selector branch', () => {
   });
 
   it('composes an incoming map for ordinary barrel rewrites', () => {
-    const inputMap = {
+    const inputMap: SourceMapInput = {
       version: 3,
       file: 'intermediate.js',
       sources: ['original.ts'],
