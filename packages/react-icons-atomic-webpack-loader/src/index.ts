@@ -86,6 +86,7 @@ export default function fluentIconsAtomicImportLoader(
 ): void {
   const { resourcePath, resourceQuery = '' } = this;
   const generateSourceMap = this.sourceMap !== false;
+  const passThroughSourceMap = generateSourceMap ? inputSourceMap : undefined;
 
   try {
     const selector = parseSelectorQuery(resourceQuery);
@@ -104,13 +105,13 @@ export default function fluentIconsAtomicImportLoader(
   }
 
   if (isGeneratedIconPackageResource(resourcePath)) {
-    return this.callback(null, sourceCode, inputSourceMap);
+    return this.callback(null, sourceCode, passThroughSourceMap);
   }
 
   // Cheap pre-skip only: a false positive here just means we parse the file and
   // let the module record decide. Diagnostics are driven by actual imports.
   if (!SUPPORTED_MODULE_NAMES.some((name) => sourceCode.includes(name))) {
-    return this.callback(null, sourceCode, inputSourceMap);
+    return this.callback(null, sourceCode, passThroughSourceMap);
   }
 
   const {

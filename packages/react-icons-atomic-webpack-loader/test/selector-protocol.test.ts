@@ -99,9 +99,10 @@ describe('selected ESM emission', () => {
       kind: 'group',
       exportNames: ['AddFilled', 'AddRegular'],
     });
-    expect(result.code).toContain(`export { AddFilled } from './add.js${createExportSelector('AddFilled')}';`);
-    expect(result.code).toContain(`export { AddRegular } from './add.js${createExportSelector('AddRegular')}';`);
-    expect(result.code).not.toContain('export *');
+    expect(result.code).toMatchInlineSnapshot(`
+      "export { AddFilled } from './add.js?__fluentIcon=v1&export=41646446696c6c6564';
+      export { AddRegular } from './add.js?__fluentIcon=v1&export=416464526567756c6172';"
+    `);
   });
 
   it('rejects declarations that reference another module-level binding', () => {

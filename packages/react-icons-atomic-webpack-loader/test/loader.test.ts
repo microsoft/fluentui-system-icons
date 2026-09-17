@@ -146,4 +146,25 @@ describe('loader selector branch', () => {
     );
     expect(result.map).toBeUndefined();
   });
+
+  it.each([
+    {
+      name: 'generated package pass-through',
+      resourcePath: '/app/node_modules/@fluentui/react-icons/lib/atoms/svg/add.js',
+      inputSource: source,
+    },
+    {
+      name: 'source-text fast no-op',
+      resourcePath: '/app/src/plain.js',
+      inputSource: 'export const value = 1;',
+    },
+  ])('drops an incoming map on the $name path when source maps are disabled', ({ resourcePath, inputSource }) => {
+    const inputMap: SourceMapInput = { version: 3, sources: ['original.ts'], names: [], mappings: 'AAAA' };
+    const result = runLoader(resourcePath, '', {
+      inputSource,
+      inputSourceMap: inputMap,
+      sourceMap: false,
+    });
+    expect(result.map).toBeUndefined();
+  });
 });
