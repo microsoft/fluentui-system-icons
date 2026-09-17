@@ -159,7 +159,7 @@ account for `resourceQuery` rather than assuming one family module.
 
 The loader skips source-map generation when the bundler disables source maps.
 When enabled, importer and selector maps are composed with any incoming map.
-Repository contributors can run the repeatable 2,000-export microbenchmark with:
+Repository contributors can run the repeatable 5,000-export microbenchmark with:
 
 ```sh
 yarn workspace @fluentui/react-icons-atomic-webpack-loader benchmark
@@ -168,7 +168,8 @@ yarn workspace @fluentui/react-icons-atomic-webpack-loader benchmark
 Override its scale with `ICON_BENCHMARK_EXPORTS` and
 `ICON_BENCHMARK_ITERATIONS`. The benchmark reports fast-skip and importer
 rewrite timing, source-map cost, selector emissions, unique physical parses,
-cache hits, cache entries, and RSS growth. It measures loader work only;
+cache hits, cache entries, and RSS change (the process's resident memory at the
+end of a scenario minus its resident memory at the start). It measures loader work only;
 consumer validation must additionally record bundler module counts,
 persistent-cache size, and route ownership.
 

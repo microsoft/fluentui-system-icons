@@ -8,7 +8,7 @@ const { performance } = require('perf_hooks');
 const loader = require('../lib').default;
 const { getSelectorTransformMetrics, resetSelectorTransformMetrics, selectExports } = require('../lib/select-export');
 
-const SAMPLE_SIZE = Number(process.env.ICON_BENCHMARK_EXPORTS || 2_000);
+const SAMPLE_SIZE = Number(process.env.ICON_BENCHMARK_EXPORTS || 5_000);
 const ITERATIONS = Number(process.env.ICON_BENCHMARK_ITERATIONS || 20);
 const JSON_OUTPUT = process.env.ICON_BENCHMARK_JSON === '1';
 const atomDirectory = resolve(__dirname, '../../react-icons/lib/atoms/svg');
@@ -116,7 +116,7 @@ if (JSON_OUTPUT) {
       Iterations: iterations,
       'Total (ms)': totalMs,
       'Avg (ms)': Number((totalMs / iterations).toFixed(4)),
-      'RSS delta (MiB)': rssDeltaMiB,
+      'RSS change (MiB)': rssDeltaMiB,
     })),
   );
   console.log(
