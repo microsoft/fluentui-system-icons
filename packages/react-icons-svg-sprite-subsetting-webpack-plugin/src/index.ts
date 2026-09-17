@@ -504,8 +504,8 @@ function getEntrypointRuntime(entrypoint: webpack.Entrypoint): RuntimeSpec {
 
 /**
  * Retrieves used exports for a module under the given runtime. Falls back to
- * the undefined-runtime query when the primary result is inconclusive (`null`
- * or boolean), which can happen in development builds.
+ * the undefined-runtime query only when the primary result is unavailable
+ * (`null`). `false` definitively means the module is unused in this runtime.
  */
 function getUsedExportsWithFallback(
   compilation: webpack.Compilation,
@@ -513,9 +513,9 @@ function getUsedExportsWithFallback(
   runtime: RuntimeSpec,
 ): ReturnType<webpack.Compilation['moduleGraph']['getUsedExports']> {
   const primary = compilation.moduleGraph.getUsedExports(module, runtime);
-  if (primary === null || typeof primary === 'boolean') {
+  if (primary === null) {
     const fallback = compilation.moduleGraph.getUsedExports(module, undefined);
-    if (fallback !== null && typeof fallback !== 'boolean') {
+    if (fallback !== null) {
       return fallback;
     }
   }
@@ -735,8 +735,12 @@ function getUsedSymbolIds(
 ): Set<string> {
   const usedIds = new Set<string>();
 
-  // If Webpack can't tell, assume all exports are used.
-  if (usedExports === null || typeof usedExports === 'boolean') {
+  if (usedExports === false) {
+    return usedIds;
+  }
+
+  // If Webpack can't identify a narrower set, assume all exports are used.
+  if (usedExports === null || usedExports === true) {
     for (const symbolId of exportNameToSymbolId.values()) {
       usedIds.add(symbolId);
     }
