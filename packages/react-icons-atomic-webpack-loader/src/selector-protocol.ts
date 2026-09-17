@@ -2,8 +2,9 @@ import { basename, extname } from 'path';
 
 export const SELECTOR_PROTOCOL_VERSION = 'v1';
 export const SELECTOR_CACHE_SALT = `fluent-icon-selector-${SELECTOR_PROTOCOL_VERSION}`;
-export const SELECTOR_CAPABILITY = Symbol.for('fluentui.react-icons.selector-protocol');
 export const SELECTOR_QUERY_KEY = '__fluentIcon';
+export const SELECTOR_PROTOCOL_IDENTIFIER = `${SELECTOR_QUERY_KEY}=${SELECTOR_PROTOCOL_VERSION}`;
+export const SELECTOR_CAPABILITY = Symbol.for(`fluentui.react-icons.selector-protocol:${SELECTOR_PROTOCOL_IDENTIFIER}`);
 
 const IDENTIFIER_PATTERN = /^[A-Za-z_$][A-Za-z0-9_$]*$/;
 const HEX_PATTERN = /^(?:[0-9a-f]{2})+$/;
@@ -147,11 +148,11 @@ export function getSelectorCapability(resourcePath: string): SelectorCapability 
   return null;
 }
 
-export function getRegisteredSelectorCapabilities(compilation: unknown): Map<string, Set<string>> {
+export function getRegisteredSelectorCapabilities(compilation: unknown): Set<SelectorCapability> {
   const target = compilation as Record<PropertyKey, unknown>;
-  let capabilities = target[SELECTOR_CAPABILITY] as Map<string, Set<string>> | undefined;
+  let capabilities = target[SELECTOR_CAPABILITY] as Set<SelectorCapability> | undefined;
   if (!capabilities) {
-    capabilities = new Map<string, Set<string>>();
+    capabilities = new Set<SelectorCapability>();
     target[SELECTOR_CAPABILITY] = capabilities;
   }
   return capabilities;

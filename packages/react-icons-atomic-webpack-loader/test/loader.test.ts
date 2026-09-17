@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import loader from '../src/index';
 import type { AtomicLoaderContext } from '../src/loader-context';
-import { createExportSelector } from '../src/selector-protocol';
+import { createExportSelector, SELECTOR_CAPABILITY, SELECTOR_PROTOCOL_IDENTIFIER } from '../src/selector-protocol';
 import type { SourceMapInput } from '../src/source-maps';
 
 const source = [
@@ -53,6 +53,39 @@ describe('loader selector branch', () => {
       createExportSelector('AddFilled'),
     );
     expect(result.error?.message).toContain('requires a query-aware subsetting plugin');
+  });
+
+  it('accepts a plugin registered for the complete selector protocol identifier', () => {
+    const compilation = { [SELECTOR_CAPABILITY]: new Set(['fonts']) };
+    const result = runLoader(
+      '/app/node_modules/@fluentui/react-icons/lib/atoms/fonts/add.js',
+      createExportSelector('AddFilled'),
+      { compilation },
+    );
+    expect(result.error).toBeNull();
+    expect(result.code).toContain('export const AddFilled');
+  });
+
+  it('rejects a plugin registered under a different selector key', () => {
+    const wrongKeyCapability = Symbol.for('fluentui.react-icons.selector-protocol:_fluentIcon=v1');
+    const compilation = { [wrongKeyCapability]: new Set(['fonts']) };
+    const result = runLoader(
+      '/app/node_modules/@fluentui/react-icons/lib/atoms/fonts/add.js',
+      createExportSelector('AddFilled'),
+      { compilation },
+    );
+    expect(result.error?.message).toContain(`selector protocol "${SELECTOR_PROTOCOL_IDENTIFIER}"`);
+  });
+
+  it('rejects a plugin registered under a different selector version', () => {
+    const staleVersionCapability = Symbol.for('fluentui.react-icons.selector-protocol:__fluentIcon=v2');
+    const compilation = { [staleVersionCapability]: new Set(['fonts']) };
+    const result = runLoader(
+      '/app/node_modules/@fluentui/react-icons/lib/atoms/fonts/add.js',
+      createExportSelector('AddFilled'),
+      { compilation },
+    );
+    expect(result.error?.message).toContain(`selector protocol "${SELECTOR_PROTOCOL_IDENTIFIER}"`);
   });
 
   it('rejects queried CommonJS resources', () => {

@@ -9,7 +9,7 @@ import {
   getRegisteredSelectorCapabilities,
   getSelectorCapability,
   parseSelectorQuery,
-  SELECTOR_PROTOCOL_VERSION,
+  SELECTOR_PROTOCOL_IDENTIFIER,
 } from './selector-protocol';
 
 export type { IconVariant };
@@ -165,13 +165,11 @@ function assertPluginCapability(context: AtomicLoaderContext, resourcePath: stri
     return;
   }
 
-  const versions = context._compilation
-    ? getRegisteredSelectorCapabilities(context._compilation).get(capability)
-    : undefined;
-  if (!versions?.has(SELECTOR_PROTOCOL_VERSION)) {
+  const capabilities = context._compilation ? getRegisteredSelectorCapabilities(context._compilation) : undefined;
+  if (!capabilities?.has(capability)) {
     throw new Error(
       `"${capability}" icon selection requires a query-aware subsetting plugin supporting ` +
-        `selector protocol "${SELECTOR_PROTOCOL_VERSION}"`,
+        `selector protocol "${SELECTOR_PROTOCOL_IDENTIFIER}"`,
     );
   }
 }

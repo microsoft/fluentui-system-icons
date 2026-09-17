@@ -4,12 +4,11 @@ import { readFileSync } from 'fs';
 import type { Schema } from 'schema-utils/declarations/validate';
 import { validate } from 'schema-utils';
 import MergedSpriteRuntimeModule from './runtime/MergedSpriteRuntimeModule';
+import { assertSupportedSelector, hasFluentSelector, registerSelectorCapability } from './selector-protocol';
 
 import optionsSchema from './options.schema.json';
 
 const PLUGIN_NAME = 'FluentUIReactIconsSvgSpriteSubsettingPlugin';
-const SELECTOR_PROTOCOL_VERSION = 'v1';
-const SELECTOR_CAPABILITY = Symbol.for('fluentui.react-icons.selector-protocol');
 
 /**
  * Matches the ESM and CJS `@fluentui/react-icons/svg-sprite/*` entrypoints.
@@ -118,7 +117,7 @@ export default class FluentUIReactIconsSvgSpriteSubsettingPlugin implements webp
     }
 
     compiler.hooks.compilation.tap(PLUGIN_NAME, (compilation) => {
-      registerSelectorCapability(compilation, 'svg-sprite');
+      registerSelectorCapability(compilation);
       let entrypointToSpriteResourceToIds: Map<string, Map<string, Set<string>>> | null = null;
       let spriteResourceToAssetName: Map<string, string> | null = null;
       let mergedSpriteSvg: string | null = null;
@@ -719,32 +718,6 @@ function getReferencedSpritePath(module: webpack.NormalModule, moduleSource: str
 function getPhysicalResource(resource: string): string {
   const queryIndex = resource.indexOf('?');
   return queryIndex === -1 ? resource : resource.slice(0, queryIndex);
-}
-
-function hasFluentSelector(resource: string): boolean {
-  return /(?:\?|&)__fluentIcon=/.test(resource);
-}
-
-function assertSupportedSelector(resource: string): void {
-  const match = /(?:\?|&)__fluentIcon=([^&]+)/.exec(resource);
-  if (match && match[1] !== SELECTOR_PROTOCOL_VERSION) {
-    throw new Error(
-      `${PLUGIN_NAME}: unsupported Fluent icon selector protocol "${match[1]}" ` +
-        `(expected "${SELECTOR_PROTOCOL_VERSION}") in "${resource}".`,
-    );
-  }
-}
-
-function registerSelectorCapability(compilation: webpack.Compilation, capability: string): void {
-  const target = compilation as unknown as Record<PropertyKey, unknown>;
-  let capabilities = target[SELECTOR_CAPABILITY] as Map<string, Set<string>> | undefined;
-  if (!capabilities) {
-    capabilities = new Map<string, Set<string>>();
-    target[SELECTOR_CAPABILITY] = capabilities;
-  }
-  const versions = capabilities.get(capability) ?? new Set<string>();
-  versions.add(SELECTOR_PROTOCOL_VERSION);
-  capabilities.set(capability, versions);
 }
 
 /**
