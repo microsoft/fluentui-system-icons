@@ -140,6 +140,56 @@ Every third-party importer that should be rewritten must be represented in the
 targeted list; otherwise use the comprehensive rule without `include`.
 Utilities, providers, and helper modules remain canonical and unqueried.
 
+#### Opt out high-cardinality application areas
+
+`moduleGranularity` is selected per loader rule, so an application can use icon
+granularity for most source files while retaining family granularity for an
+area that intentionally uses many or all icons, such as an icon picker. This
+avoids creating thousands of virtual module and cache entries where independent
+chunk placement provides little benefit:
+
+```js
+const path = require('path');
+
+const loader = require.resolve('@fluentui/react-icons-atomic-webpack-loader');
+const appSource = path.resolve(__dirname, 'src');
+const iconPickerSource = path.resolve(appSource, 'icon-picker');
+const fluentAtoms = /node_modules[\\/]@fluentui[\\/]react-(?:brand-)?icons[\\/]lib[\\/]atoms[\\/]/;
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.[mc]?[jt]sx?$/,
+        include: [appSource, fluentAtoms],
+        exclude: iconPickerSource,
+        enforce: 'pre',
+        loader,
+        options: { moduleGranularity: 'icon' },
+      },
+      {
+        test: /\.[mc]?[jt]sx?$/,
+        include: iconPickerSource,
+        enforce: 'pre',
+        loader,
+        options: { moduleGranularity: 'family' },
+      },
+    ],
+  },
+};
+```
+
+The generated atom directory stays in the icon rule because query-selected
+requests need the loader's second pass. The `moduleGranularity` option is not
+consulted during that pass: the `__fluentIcon` query already identifies the
+selection request. Unqueried atom modules produced by the family-mode rule pass
+through unchanged.
+
+For a runtime picker that truly needs the complete export set, placing an
+unatomized `import('@fluentui/react-icons')` behind a lazy boundary keeps that
+cost in the picker's async chunk. Dynamic barrel imports are intentionally not
+expanded into thousands of selected modules.
+
 Direct named family imports are selected without changing their explicit
 strategy, so `/svg/add` stays SVG even when `iconVariant: 'fonts'` is configured.
 Namespace/default direct imports and imports whose family membership cannot be
