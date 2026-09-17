@@ -1,3 +1,6 @@
+import remapping, { type SourceMapInput } from '@ampproject/remapping';
+import type MagicString from 'magic-string';
+
 import { transformSource } from './transform';
 import { SUPPORTED_MODULE_NAMES } from './modules';
 import type { IconVariant } from './modules';
@@ -10,8 +13,6 @@ import {
   parseSelectorQuery,
   SELECTOR_PROTOCOL_VERSION,
 } from './selector-protocol';
-
-const remapping: (maps: any[], loader: () => null) => any = require('@jridgewell/remapping');
 
 export type { IconVariant };
 export type { AtomicLoaderContext };
@@ -83,7 +84,7 @@ export interface FluentIconsAtomicImportLoaderOptions {
 export default function fluentIconsAtomicImportLoader(
   this: AtomicLoaderContext,
   sourceCode: string,
-  inputSourceMap?: any,
+  inputSourceMap?: SourceMapInput,
 ): void {
   const { resourcePath, resourceQuery = '' } = this;
   const generateSourceMap = this.sourceMap !== false;
@@ -160,11 +161,23 @@ function isGeneratedIconPackageResource(resourcePath: string): boolean {
   return /\/react-(?:brand-)?icons\/lib(?:-cjs)?\//.test(normalized);
 }
 
-function composeSourceMaps(generatedMap: unknown, inputSourceMap: unknown): unknown {
+function composeSourceMaps(
+  generatedMap: ReturnType<MagicString['generateMap']> | undefined,
+  inputSourceMap: SourceMapInput | undefined,
+): ReturnType<MagicString['generateMap']> | ReturnType<typeof remapping> | undefined {
   if (!generatedMap || !inputSourceMap) {
     return generatedMap;
   }
-  return remapping([generatedMap, inputSourceMap], () => null);
+  const generatedMapInput: SourceMapInput = {
+    version: 3,
+    file: generatedMap.file,
+    names: generatedMap.names,
+    sources: generatedMap.sources,
+    sourcesContent: generatedMap.sourcesContent,
+    mappings: generatedMap.mappings,
+    x_google_ignoreList: generatedMap.x_google_ignoreList,
+  };
+  return remapping([generatedMapInput, inputSourceMap], () => null);
 }
 
 function assertPluginCapability(context: AtomicLoaderContext, resourcePath: string): void {

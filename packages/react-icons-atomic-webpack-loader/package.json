@@ -25,7 +25,7 @@
     "url": "https://github.com/microsoft/fluentui-system-icons/issues"
   },
   "dependencies": {
-    "@jridgewell/remapping": "^2.3.5",
+    "@ampproject/remapping": "^2.3.0",
     "magic-string": "^0.30.0",
     "oxc-parser": "^0.125.0"
   },
