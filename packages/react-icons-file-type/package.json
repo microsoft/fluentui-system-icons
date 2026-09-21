@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/microsoft/fluentui-system-icons/tree/main/packages/react-icons-file-type#readme",
   "scripts": {
-    "clean": "git clean -fXd lib/ lib-cjs/",
+    "clean": "git clean -fXd lib/ lib-cjs/ metadata.json",
     "generate": "node scripts/generateFileTypeIconMap.js && node scripts/generateFileIconTypes.js",
     "build": "yarn clean && yarn generate && node scripts/build.js",
     "bundle-size": "yarn run -T monosize measure",
@@ -41,7 +41,8 @@
   },
   "files": [
     "lib/",
-    "lib-cjs/"
+    "lib-cjs/",
+    "metadata.json"
   ],
   "exports": {
     ".": {
@@ -49,7 +50,7 @@
       "import": "./lib/index.js",
       "require": "./lib-cjs/index.js"
     },
-    "./metadata.json": "./lib/metadata.json",
+    "./metadata.json": "./metadata.json",
     "./headless": {
       "types": "./lib/headless/index.d.ts",
       "import": "./lib/headless/index.js",

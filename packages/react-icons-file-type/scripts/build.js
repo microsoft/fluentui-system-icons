@@ -25,7 +25,7 @@ function main(options) {
     fileIconTypes: JSON.parse(fs.readFileSync(join(projectRoot, 'src', 'common', 'fileIconTypes.json'), 'utf8')),
     fileTypeIconMap: JSON.parse(fs.readFileSync(join(projectRoot, 'src', 'common', 'fileTypeIconMap.json'), 'utf8')),
   };
-  fs.writeFileSync(join(projectRoot, 'lib', 'metadata.json'), JSON.stringify(metadata, null, 2) + '\n');
+  fs.writeFileSync(join(projectRoot, 'metadata.json'), JSON.stringify(metadata, null, 2) + '\n');
 
   // tsc does not emit non-TS assets — copy the opt-in headless CSS into both outputs.
   copyAsset(join('src', 'headless', 'styles.css'), join('lib', 'headless', 'styles.css'), projectRoot);
