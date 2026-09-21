@@ -10,6 +10,9 @@
       "inputs": ["default", "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)"],
       "outputs": ["{projectRoot}/lib", "{projectRoot}/lib-cjs"]
     },
+    "test": {
+      "dependsOn": ["build"]
+    },
     "bundle-size": {
       "dependsOn": ["build"]
     }

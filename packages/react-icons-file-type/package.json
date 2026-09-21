@@ -49,6 +49,7 @@
       "import": "./lib/index.js",
       "require": "./lib-cjs/index.js"
     },
+    "./metadata.json": "./lib/metadata.json",
     "./headless": {
       "types": "./lib/headless/index.d.ts",
       "import": "./lib/headless/index.js",

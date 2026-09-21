@@ -19,6 +19,14 @@ function main(options) {
   transpileTsc({ moduleFormat: 'esnext', outDir: 'lib' }, projectRoot);
   transpileTsc({ moduleFormat: 'commonjs', outDir: 'lib-cjs' }, projectRoot);
 
+  const { FLUENT_CDN_BASE_URL } = require(join(projectRoot, 'lib-cjs', 'common', 'constants.js'));
+  const metadata = {
+    cdnBaseUrl: FLUENT_CDN_BASE_URL,
+    fileIconTypes: JSON.parse(fs.readFileSync(join(projectRoot, 'src', 'common', 'fileIconTypes.json'), 'utf8')),
+    fileTypeIconMap: JSON.parse(fs.readFileSync(join(projectRoot, 'src', 'common', 'fileTypeIconMap.json'), 'utf8')),
+  };
+  fs.writeFileSync(join(projectRoot, 'lib', 'metadata.json'), JSON.stringify(metadata, null, 2) + '\n');
+
   // tsc does not emit non-TS assets — copy the opt-in headless CSS into both outputs.
   copyAsset(join('src', 'headless', 'styles.css'), join('lib', 'headless', 'styles.css'), projectRoot);
   copyAsset(join('src', 'headless', 'styles.css'), join('lib-cjs', 'headless', 'styles.css'), projectRoot);
