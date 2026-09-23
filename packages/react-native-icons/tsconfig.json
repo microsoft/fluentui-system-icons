@@ -6,6 +6,10 @@
     "target": "ES6",
     "module": "esnext",
     "moduleResolution": "node",
+    // react-native >=0.86 exposes its types only via the "exports" map, which "node" module resolution cannot read
+    "paths": {
+      "react-native": ["../../node_modules/react-native/types/index.d.ts"]
+    },
     "importHelpers": true,
     "strictBindCallApply": false,
     "noImplicitAny": false

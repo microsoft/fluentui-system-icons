@@ -4218,7 +4218,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-native-icons@workspace:packages/react-native-icons"
   dependencies:
-    "@types/react-native": "npm:^0.68.0"
     tslib: "npm:^2.1.0"
   peerDependencies:
     react: ">=16.8.0 <20.0.0"
@@ -5084,7 +5083,6 @@ __metadata:
     "@types/node": "npm:22"
     "@types/react": "npm:19.1.13"
     "@types/react-dom": "npm:19.1.9"
-    "@types/react-native": "npm:^0.68.0"
     "@types/yargs": "npm:^15.0.0"
     "@typescript-eslint/rule-tester": "npm:7.18.0"
     "@typescript-eslint/utils": "npm:7.18.0"
@@ -8378,15 +8376,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-native@npm:^0.68.0":
-  version: 0.68.20
-  resolution: "@types/react-native@npm:0.68.20"
-  dependencies:
-    "@types/react": "npm:^17"
-  checksum: 10c0/491b6c75b2313e503a5ac2e9b472ed39ed9ac333f8e12491eb794ab2d47fa80b71375f7a93d24ac73e405ee0adb91b2d92f0a93e6d3e9311b070b374f9a24148
-  languageName: node
-  linkType: hard
-
 "@types/react@npm:19.1.13":
   version: 19.1.13
   resolution: "@types/react@npm:19.1.13"
@@ -8396,7 +8385,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^17, @types/react@npm:^17.0.2":
+"@types/react@npm:^17.0.2":
   version: 17.0.93
   resolution: "@types/react@npm:17.0.93"
   dependencies:
