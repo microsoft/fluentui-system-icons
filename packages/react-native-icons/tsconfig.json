@@ -6,9 +6,13 @@
     "target": "ES6",
     "module": "esnext",
     "moduleResolution": "node",
-    // react-native >=0.86 exposes its types only via the "exports" map, which "node" module resolution cannot read
+    // react-native >=0.86 exposes its types only via the "exports" map, which "node" module resolution cannot read.
+    // "bundler"/"node16" resolution is not an option as `build:cjs` compiles with `--module commonjs`.
     "paths": {
-      "react-native": ["../../node_modules/react-native/types/index.d.ts"]
+      "react-native": [
+        "./node_modules/react-native/types/index.d.ts",
+        "../../node_modules/react-native/types/index.d.ts"
+      ]
     },
     "importHelpers": true,
     "strictBindCallApply": false,
