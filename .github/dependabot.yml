@@ -19,10 +19,6 @@ updates:
   - package-ecosystem: 'npm'
     # Single yarn workspace root: yarn.lock at `/` covers every workspace package.
     directory: '/'
-    # packages/react-icons pins its own TypeScript version (see the dedicated entry below)
-    # and must not be touched by this grouped update, so its manifest is handled separately.
-    exclude-paths:
-      - 'packages/react-icons/**'
     schedule:
       interval: 'weekly'
     # Only minor/patch version bumps — skip majors to avoid churn and breaking changes.
@@ -38,37 +34,9 @@ updates:
       - dependency-name: 'nx'
       - dependency-name: '@nx/*'
       - dependency-name: '@nrwl/*'
-    groups:
-      production-dependencies:
-        dependency-type: 'production'
-        patterns:
-          - '*'
-      development-dependencies:
-        dependency-type: 'development'
-        patterns:
-          - '*'
-      # Grouped security fixes, produced on the same weekly cadence as version updates.
-      security-dependencies:
-        applies-to: security-updates
-        patterns:
-          - '*'
-
-  - package-ecosystem: 'npm'
-    # packages/react-icons intentionally pins `typescript` to 4.1.6 (see package.json), which
-    # is independent of the repo-wide toolchain version. This dedicated entry keeps every other
-    # dependency in this workspace up to date without letting the grouped root update above
-    # (which excludes this path) bump `typescript` here.
-    directory: 'packages/react-icons'
-    schedule:
-      interval: 'weekly'
-    ignore:
-      - dependency-name: '*'
-        update-types: ['version-update:semver-major']
-      - dependency-name: 'nx'
-      - dependency-name: '@nx/*'
-      - dependency-name: '@nrwl/*'
-      # Must stay on 4.1.6 — see the language/TS version constraints called out in
-      # packages/react-icons/package.json. Security updates are intentionally included here too.
+      # packages/react-icons pins `typescript` to 4.1.6 independently of the repo-wide
+      # toolchain (see packages/react-icons/package.json). Banned outright, security updates
+      # included, until that workspace is deliberately migrated to a newer TypeScript.
       - dependency-name: 'typescript'
     groups:
       production-dependencies:
@@ -79,6 +47,7 @@ updates:
         dependency-type: 'development'
         patterns:
           - '*'
+      # Grouped security fixes, produced on the same weekly cadence as version updates.
       security-dependencies:
         applies-to: security-updates
         patterns:
