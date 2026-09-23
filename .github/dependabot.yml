@@ -34,6 +34,10 @@ updates:
       - dependency-name: 'nx'
       - dependency-name: '@nx/*'
       - dependency-name: '@nrwl/*'
+      # packages/react-icons pins `typescript` to 4.1.6 independently of the repo-wide
+      # toolchain (see packages/react-icons/package.json). Banned outright, security updates
+      # included, until that workspace is deliberately migrated to a newer TypeScript.
+      - dependency-name: 'typescript'
     groups:
       production-dependencies:
         dependency-type: 'production'
