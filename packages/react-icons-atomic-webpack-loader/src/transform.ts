@@ -510,7 +510,7 @@ export function transformSource(source: string, options: TransformOptions): Tran
 
   return {
     code: src.toString(),
-    map: sourceMap ? src.generateMap({ hires: true }) : undefined,
+    map: sourceMap ? src.generateMap({ hires: true, source: path, includeContent: true }) : undefined,
     diagnostics,
   };
 }

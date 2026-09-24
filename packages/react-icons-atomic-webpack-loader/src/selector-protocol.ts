@@ -8,7 +8,7 @@ export const SELECTOR_CAPABILITY = Symbol.for(`fluentui.react-icons.selector-pro
 
 const IDENTIFIER_PATTERN = /^[A-Za-z_$][A-Za-z0-9_$]*$/;
 const HEX_PATTERN = /^(?:[0-9a-f]{2})+$/;
-const SELECTOR_QUERY_PATTERN = new RegExp(`(?:^\\?|&)${SELECTOR_QUERY_KEY}=`);
+const SELECTOR_QUERY_PATTERN = new RegExp(`(?:^\\?|&)${SELECTOR_QUERY_KEY}(?:=|&|$)`);
 
 export type Selector = { kind: 'export'; exportName: string } | { kind: 'group'; exportNames: string[] };
 export type SelectorCapability = 'fonts' | 'svg-sprite';

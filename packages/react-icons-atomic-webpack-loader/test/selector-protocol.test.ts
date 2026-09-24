@@ -33,6 +33,8 @@ describe('selector protocol', () => {
   });
 
   it.each([
+    '?__fluentIcon',
+    '?foo=1&__fluentIcon',
     '?__fluentIcon=v2&export=41646446696c6c6564',
     '?__fluentIcon=v1&export=ADD',
     '?__fluentIcon=v1&export=41646446696c6c6564&extra=1',
@@ -44,6 +46,7 @@ describe('selector protocol', () => {
 
   it('ignores unrelated resource queries', () => {
     expect(parseSelectorQuery('?raw')).toBeNull();
+    expect(parseSelectorQuery('?__fluentIconExtra')).toBeNull();
   });
 
   it('rejects invalid decoded identifiers', () => {
@@ -95,7 +98,7 @@ describe('selected ESM emission', () => {
 
   it('emits groups as re-exports from canonical per-icon selector modules', () => {
     const resourcePath = '/app/node_modules/@fluentui/react-icons/lib/atoms/svg/add.js';
-    const result = selectExports('', resourcePath, {
+    const result = selectExports(source, resourcePath, {
       kind: 'group',
       exportNames: ['AddFilled', 'AddRegular'],
     });

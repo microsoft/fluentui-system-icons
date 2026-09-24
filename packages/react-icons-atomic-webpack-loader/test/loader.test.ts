@@ -104,6 +104,12 @@ describe('loader selector branch', () => {
     expect(result.error?.message).toContain('does not belong to icon family "add"');
   });
 
+  it.each(['?__fluentIcon', '?foo=1&__fluentIcon'])('rejects a malformed reserved query %s', (query) => {
+    const result = runLoader('/app/node_modules/@fluentui/react-icons/lib/atoms/svg/add.js', query);
+    expect(result.error?.message).toContain('malformed Fluent icon selector');
+    expect(result.code).toBeUndefined();
+  });
+
   it('passes an incoming map through unchanged on the fast no-op path', () => {
     const inputMap: SourceMapInput = { version: 3, sources: ['original.ts'], names: [], mappings: 'AAAA' };
     const result = runLoader('/app/src/plain.js', '', {
@@ -128,6 +134,16 @@ describe('loader selector branch', () => {
     });
     expect(result.error).toBeNull();
     expect((result.map as { sources: string[] }).sources).toContain('original.ts');
+  });
+
+  it('names and embeds the importer in a rewrite map without an incoming map', () => {
+    const inputSource = `import { AddFilled } from '@fluentui/react-icons';`;
+    const result = runLoader('/app/src/icons.js', '', { inputSource });
+    expect(result.error).toBeNull();
+    expect(result.map).toMatchObject({
+      sources: ['/app/src/icons.js'],
+      sourcesContent: [inputSource],
+    });
   });
 
   it('skips map generation when the bundler disables source maps', () => {
