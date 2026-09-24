@@ -8,6 +8,7 @@
  */
 const { resolve } = require('path');
 const { readdirSync, readFileSync } = require('fs');
+const { createExportSelector, createGroupSelector } = require('../lib/selector-protocol');
 
 /**
  * @typedef {object} EntryAssertions
@@ -25,6 +26,9 @@ const { readdirSync, readFileSync } = require('fs');
  * @property {string[]} mustInclude
  * @property {string[]} mustExclude
  * @property {string[]} [mustWarn]
+ * @property {boolean} [bundleIcons]
+ * @property {string[]} [selectedExports]
+ * @property {string[][]} [selectedGroups]
  * @property {Record<string, EntryAssertions>} [overrides] Per-bundler assertion overrides,
  *   keyed by bundler name. Only present where a bundler's output legitimately differs.
  */
@@ -199,6 +203,23 @@ const entries = {
     mustInclude: ['@fluentui/react-icons/svg/add', '@fluentui/react-icons/svg/arrow-left'],
     mustExclude: ['"@fluentui/react-icons"'],
   },
+  'icon-granularity-svg': {
+    src: './src/icon-granularity-svg.js',
+    loaderOptions: { moduleGranularity: 'icon' },
+    bundleIcons: true,
+    selectedExports: ['AddFilled', 'AddRegular', 'DrawImage24Filled'],
+    mustInclude: ['AddFilled', 'AddRegular', 'DrawImage24Filled'],
+    mustExclude: ['Add12Regular', 'DrawImageRegular'],
+  },
+  'icon-granularity-dynamic': {
+    src: './src/icon-granularity-dynamic.js',
+    loaderOptions: { moduleGranularity: 'icon', allowDynamicImports: true },
+    bundleIcons: true,
+    selectedExports: ['AddFilled', 'AddRegular'],
+    selectedGroups: [['AddFilled', 'AddRegular']],
+    mustInclude: ['AddFilled', 'AddRegular'],
+    mustExclude: ['Add12Regular'],
+  },
 };
 
 /**
@@ -239,11 +260,16 @@ function createConfig(name, entry, adapter) {
     resolve: {
       extensions: ['.tsx', '.ts', '.jsx', '.js'],
     },
-    externals: [/^@fluentui\/react-icons/, /^@fluentui\/react-brand-icons/, /^react$/],
+    externals: entry.bundleIcons
+      ? [/^react$/, /^@griffel\//]
+      : [/^@fluentui\/react-icons/, /^@fluentui\/react-brand-icons/, /^react$/],
     module: {
       rules: [
         {
           test: /\.(jsx?|tsx?)$/,
+          include: entry.bundleIcons
+            ? [resolve(__dirname, 'src'), /[\\/]react-(?:brand-)?icons[\\/]lib[\\/]atoms[\\/]/]
+            : undefined,
           enforce: 'pre',
           use: [
             {
@@ -252,6 +278,14 @@ function createConfig(name, entry, adapter) {
             },
           ],
         },
+        ...(entry.bundleIcons
+          ? [
+              {
+                resourceQuery: /raw/,
+                type: 'asset/source',
+              },
+            ]
+          : []),
         adapter.typescriptRule(__dirname),
       ],
     },
@@ -306,6 +340,50 @@ function createAssertionPlugin(name, entry, adapter) {
             if (!warnings.some((w) => w.includes(expected))) {
               throw new Error(`[${label}] Expected a build warning containing "${expected}" but none was emitted.`);
             }
+          }
+        }
+
+        if (entry.selectedExports !== undefined) {
+          const resources = Array.from(compilation.modules, (m) => {
+            const module = /** @type {{ resource?: string, identifier?: () => string }} */ (m);
+            return module.resource ?? module.identifier?.();
+          });
+          const selectorResources = new Set(
+            resources.flatMap((resource) => {
+              if (typeof resource !== 'string') return [];
+              const match = resource.match(/[^!|]+\.js\?__fluentIcon=v1&(?:export|group)=[^!|]+/);
+              return match ? [match[0]] : [];
+            }),
+          );
+          const selectedResources = Array.from(selectorResources).filter((resource) => resource.includes('&export='));
+          const getCanonicalQuery = (resource) => {
+            const query = resource.slice(resource.indexOf('?'));
+            return query.endsWith('.js') ? query.slice(0, -3) : query;
+          };
+          const selectedQueries = selectedResources.map(getCanonicalQuery).sort();
+          const expectedSelectedQueries = entry.selectedExports.map(createExportSelector).sort();
+          if (JSON.stringify(selectedQueries) !== JSON.stringify(expectedSelectedQueries)) {
+            throw new Error(
+              `[${label}] Expected selected icon queries ${JSON.stringify(expectedSelectedQueries)}, found ` +
+                `${JSON.stringify(selectedQueries)}`,
+            );
+          }
+          const selectedGroups = Array.from(selectorResources).filter((resource) => resource.includes('&group='));
+          const selectedGroupQueries = selectedGroups.map(getCanonicalQuery).sort();
+          const expectedGroupQueries = (entry.selectedGroups ?? []).map(createGroupSelector).sort();
+          if (JSON.stringify(selectedGroupQueries) !== JSON.stringify(expectedGroupQueries)) {
+            throw new Error(
+              `[${label}] Expected selector group queries ${JSON.stringify(expectedGroupQueries)}, found ` +
+                `${JSON.stringify(selectedGroupQueries)}`,
+            );
+          }
+          const unselectedAtom = resources.find(
+            (resource) =>
+              typeof resource === 'string' &&
+              /[\\/]react-icons[\\/]lib[\\/]atoms[\\/]svg[\\/](add|draw-image)\.js$/.test(resource),
+          );
+          if (unselectedAtom) {
+            throw new Error(`[${label}] Found an unselected family module in icon mode: ${unselectedAtom}`);
           }
         }
 

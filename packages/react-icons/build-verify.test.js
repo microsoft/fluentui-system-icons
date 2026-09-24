@@ -2089,6 +2089,46 @@ describe('Build Verification', () => {
       return { svgPathEsm, svgPathCjs, fontsPathEsm, fontsPathCjs };
     }
 
+    it('keeps every generated ESM declaration independently selectable', async () => {
+      const atomRoot = path.join(__dirname, 'lib/atoms');
+      const atomDirectories = ['svg', 'fonts', 'headless-svg', 'headless-fonts', 'svg-sprite'];
+
+      for (const directory of atomDirectories) {
+        const directoryPath = path.join(atomRoot, directory);
+        if (!fs.existsSync(directoryPath)) continue;
+
+        for (const filename of await readdir(directoryPath)) {
+          if (!filename.endsWith('.js')) continue;
+          const source = await readFile(path.join(directoryPath, filename), 'utf8');
+          const lines = source.split('\n').filter(Boolean);
+          const exportNames = lines
+            .map((line) => /^export const ([A-Za-z_$][\w$]*)\s*=/.exec(line)?.[1])
+            .filter(Boolean);
+          const exportNameSet = new Set(exportNames);
+
+          expect(exportNames.length, `${directory}/${filename} must export icon declarations`).toBeGreaterThan(0);
+
+          for (const line of lines) {
+            expect(
+              /^(?:"[^"]+";|import .+;|\/\*\*.*\*\/|export const [A-Za-z_$][\w$]*\s*=.+;)$/.test(line),
+              `${directory}/${filename} contains unsupported top-level syntax: ${line}`,
+            ).toBe(true);
+          }
+
+          for (const line of lines.filter((value) => value.startsWith('export const '))) {
+            const ownName = /^export const ([A-Za-z_$][\w$]*)\s*=/.exec(line)?.[1];
+            const siblingReference = line
+              .match(/[A-Za-z_$][\w$]*/g)
+              ?.find((identifier) => identifier !== ownName && exportNameSet.has(identifier));
+            expect(
+              siblingReference,
+              `${directory}/${filename}:${ownName} depends on sibling export ${siblingReference}`,
+            ).toBeUndefined();
+          }
+        }
+      }
+    }, 30_000);
+
     it(`should have same number of atoms/svg icon files in lib and lib-cjs`, async () => {
       const { svgPathCjs, svgPathEsm } = getAssetPaths();
       const esmStats = await getAtomDirStats(svgPathEsm);

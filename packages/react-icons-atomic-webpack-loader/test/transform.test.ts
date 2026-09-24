@@ -6,6 +6,91 @@ const transform = (source: string, iconVariant: IconVariant = 'svg', fallbackVar
   transformSource(source, { iconVariant, fallbackVariant, path: 'input.js' }).code;
 
 describe('transformSource', () => {
+  describe('icon module granularity', () => {
+    const transformIcons = (source: string, extra: Partial<Parameters<typeof transformSource>[1]> = {}) =>
+      transformSource(source, {
+        iconVariant: 'svg',
+        moduleGranularity: 'icon',
+        path: 'input.js',
+        ...extra,
+      });
+
+    it('adds deterministic selectors to icons but not utilities or providers', () => {
+      const { code } = transformIcons(`import { AddFilled, bundleIcon, useIconContext } from '@fluentui/react-icons';`);
+      expect(code).toBe(
+        [
+          `import { AddFilled } from '@fluentui/react-icons/svg/add?__fluentIcon=v1&export=41646446696c6c6564';`,
+          `import { bundleIcon } from '@fluentui/react-icons/utils';`,
+          `import { useIconContext } from '@fluentui/react-icons/providers';`,
+        ].join('\n'),
+      );
+    });
+
+    it('preserves explicit direct-path strategy while selecting the export', () => {
+      const { code } = transformIcons(`import { AddFilled } from '@fluentui/react-icons/svg/add';`, {
+        iconVariant: 'fonts',
+        headless: true,
+      });
+
+      expect(code).toBe(
+        `import { AddFilled } from '@fluentui/react-icons/svg/add?__fluentIcon=v1&export=41646446696c6c6564';`,
+      );
+    });
+
+    it('selects the configured headless font variant', () => {
+      const { code } = transformIcons(`import { AddFilled } from '@fluentui/react-icons';`, {
+        iconVariant: 'fonts',
+        headless: true,
+      });
+      expect(code).toBe(
+        `import { AddFilled } from '@fluentui/react-icons/headless/fonts/add?__fluentIcon=v1&export=41646446696c6c6564';`,
+      );
+    });
+
+    it('adds selectors to direct re-exports without changing their strategy', () => {
+      const { code } = transformIcons(`export { AddFilled as Plus } from '@fluentui/react-icons/svg/add';`, {
+        iconVariant: 'fonts',
+        headless: true,
+      });
+      expect(code).toBe(
+        `export { AddFilled as Plus } from '@fluentui/react-icons/svg/add?__fluentIcon=v1&export=41646446696c6c6564';`,
+      );
+    });
+
+    it('warns and retains a mismatched direct family import', () => {
+      const source = `import { ArrowLeftRegular } from '@fluentui/react-icons/svg/add';`;
+      const { code, diagnostics } = transformIcons(source);
+      expect(code).toBe(source);
+      expect(diagnostics[0].message).toContain('cannot be proven to belong');
+    });
+
+    it('warns and retains direct namespace imports', () => {
+      const source = `import * as AddIcons from '@fluentui/react-icons/svg/add';`;
+      const { code, diagnostics } = transformIcons(source);
+      expect(code).toBe(source);
+      expect(diagnostics[0].message).toContain('namespace/default import');
+    });
+
+    it('uses one deterministic group request for same-family dynamic exports', () => {
+      const { code } = transformIcons(`const { AddRegular, AddFilled } = await import('@fluentui/react-icons');`, {
+        allowDynamicImports: true,
+      });
+      expect(code).toBe(
+        `const { AddRegular, AddFilled } = await import('@fluentui/react-icons/svg/add?__fluentIcon=v1&group=41646446696c6c6564.416464526567756c6172');`,
+      );
+    });
+
+    it('selects supported dynamic direct-family imports without rerouting them', () => {
+      const { code } = transformIcons(
+        `const { AddRegular, AddFilled } = await import('@fluentui/react-icons/svg/add');`,
+        { allowDynamicImports: true, iconVariant: 'fonts', headless: true },
+      );
+      expect(code).toBe(
+        `const { AddRegular, AddFilled } = await import('@fluentui/react-icons/svg/add?__fluentIcon=v1&group=41646446696c6c6564.416464526567756c6172');`,
+      );
+    });
+  });
+
   describe('imports', () => {
     it('rewrites a single named icon import to its atomic path', () => {
       expect(transform(`import { AddFilled } from '@fluentui/react-icons';`)).toBe(

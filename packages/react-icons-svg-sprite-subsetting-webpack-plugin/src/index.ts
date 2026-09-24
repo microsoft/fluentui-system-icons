@@ -4,6 +4,7 @@ import { readFileSync } from 'fs';
 import type { Schema } from 'schema-utils/declarations/validate';
 import { validate } from 'schema-utils';
 import MergedSpriteRuntimeModule from './runtime/MergedSpriteRuntimeModule';
+import { assertSupportedSelector, hasFluentSelector, registerSelectorCapability } from './selector-protocol';
 
 import optionsSchema from './options.schema.json';
 
@@ -116,6 +117,7 @@ export default class FluentUIReactIconsSvgSpriteSubsettingPlugin implements webp
     }
 
     compiler.hooks.compilation.tap(PLUGIN_NAME, (compilation) => {
+      registerSelectorCapability(compilation);
       let entrypointToSpriteResourceToIds: Map<string, Map<string, Set<string>>> | null = null;
       let spriteResourceToAssetName: Map<string, string> | null = null;
       let mergedSpriteSvg: string | null = null;
@@ -652,10 +654,11 @@ function isFluentUIReactSvgSpriteEntrypointModule(m: webpack.Module): m is webpa
     return false;
   }
 
-  const resource = m.resource;
+  const resource = getPhysicalResource(m.resource);
   if (!resource) {
     return false;
   }
+  assertSupportedSelector(m.resource);
 
   // Cheap pre-filter before regex
   if (!resource.includes('react-icons')) {
@@ -679,8 +682,15 @@ function getModuleSource(m: webpack.NormalModule): string {
     return src.toString();
   }
 
-  // Fallback (should be rare)
-  return readFileSync(m.resource, 'utf8');
+  if (hasFluentSelector(m.resource)) {
+    throw new Error(
+      `${PLUGIN_NAME}: transformed source is unavailable for selected module "${m.resource}"; ` +
+        `refusing to read the full family module from disk.`,
+    );
+  }
+
+  // Family-mode fallback.
+  return readFileSync(getPhysicalResource(m.resource), 'utf8');
 }
 
 /**
@@ -692,17 +702,22 @@ function getReferencedSpritePath(module: webpack.NormalModule, moduleSource: str
   const esm = moduleSource.match(/import\s+\w+\s+from\s+['"](.+?\.svg)['"];?/);
   const rawPath = esm?.[1];
   if (rawPath) {
-    return resolve(dirname(module.resource), rawPath);
+    return resolve(dirname(getPhysicalResource(module.resource)), rawPath);
   }
 
   // CJS form: `var sprite = require('./backpack.svg');`
   const cjs = moduleSource.match(/require\(['"](.+?\.svg)['"]\)/);
   const rawPath2 = cjs?.[1];
   if (rawPath2) {
-    return resolve(dirname(module.resource), rawPath2);
+    return resolve(dirname(getPhysicalResource(module.resource)), rawPath2);
   }
 
   return null;
+}
+
+function getPhysicalResource(resource: string): string {
+  const queryIndex = resource.indexOf('?');
+  return queryIndex === -1 ? resource : resource.slice(0, queryIndex);
 }
 
 /**

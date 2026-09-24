@@ -35,6 +35,13 @@ const entries = {
     useAtomicLoader: true,
     assertNoGriffel: true,
   },
+  e2eBarrelHeadlessFontsIcon: {
+    src: './src/e2e-barrel-headless-fonts.js',
+    threshold: 1.5 * 1_024, // 1.5 KB
+    useAtomicLoader: true,
+    moduleGranularity: 'icon',
+    assertNoGriffel: true,
+  },
   // Regression guard: naming the runtime chunk makes the runtime name differ from the entry name.
   // rspack resolves used exports per runtime, so querying the wrong one reports every module as
   // unused and silently subsets nothing. Every other entry here happens to have runtime === entry
@@ -67,6 +74,7 @@ const entries = {
  * @property {string} src
  * @property {number} threshold
  * @property {boolean} [useAtomicLoader]
+ * @property {'icon'} [moduleGranularity]
  * @property {boolean} [assertNoGriffel]
  * @property {boolean} [assertModuleFormats]
  * @property {string} [runtimeChunkName] Name the runtime chunk, decoupling runtime name from entry name.
@@ -124,12 +132,16 @@ function createConfig(name, entry, adapter, isDevServer) {
                 // Rewrite barrel `@fluentui/react-icons` imports to headless font atoms
                 // before the bundler parses them.
                 test: /\.js$/,
-                include: resolve(__dirname, 'src'),
+                include: [resolve(__dirname, 'src'), /[\\/]react-(?:brand-)?icons[\\/]lib[\\/]atoms[\\/]/],
                 enforce: /** @type {'pre'} */ ('pre'),
                 use: [
                   {
                     loader: resolve(__dirname, '../../react-icons-atomic-webpack-loader/lib/index.js'),
-                    options: { headless: true, iconVariant: 'fonts' },
+                    options: {
+                      headless: true,
+                      iconVariant: 'fonts',
+                      ...(entry.moduleGranularity ? { moduleGranularity: entry.moduleGranularity } : {}),
+                    },
                   },
                 ],
               },

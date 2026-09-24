@@ -8,6 +8,7 @@ const isMerged = process.env.SVG_SPRITE_MODE === 'merged';
 const injectMode = process.env.SVG_SPRITE_INJECT;
 const generateManifest = process.env.SVG_SPRITE_MANIFEST === '1';
 const mergedSpriteFilename = process.env.SVG_SPRITE_MERGED_FILENAME;
+const useIconGranularity = process.env.SVG_SPRITE_ICON_GRANULARITY === '1';
 const entryName = isMerged ? 'merged' : 'atomic';
 
 const hasHtmlInjection = injectMode === 'inline' || injectMode === 'reference';
@@ -41,6 +42,22 @@ module.exports = {
   },
   module: {
     rules: [
+      // Direct atomic imports already exercise the normal family-module path without the loader.
+      // Enable it only to cover the distinct query-selected identities produced by icon granularity.
+      ...(useIconGranularity
+        ? [
+            {
+              test: /\.js$/,
+              enforce: 'pre',
+              use: [
+                {
+                  loader: resolve(__dirname, '../../react-icons-atomic-webpack-loader/lib/index.js'),
+                  options: { iconVariant: 'svg-sprite', moduleGranularity: 'icon' },
+                },
+              ],
+            },
+          ]
+        : []),
       {
         test: /\.svg$/,
         type: 'asset/resource',
@@ -75,6 +92,23 @@ module.exports = {
       apply(compiler) {
         compiler.hooks.afterEmit.tap('test-svg-sprite-subsetting', (compilation) => {
           const outDir = compilation.outputOptions.path || resolve(__dirname, 'dist');
+          if (useIconGranularity) {
+            const spriteModules = Array.from(compilation.modules)
+              .map((module) => module.resource)
+              .filter(
+                (resource) =>
+                  typeof resource === 'string' &&
+                  /[\\/]react-icons[\\/]lib[\\/]atoms[\\/]svg-sprite[\\/].+\.js(?:\?|$)/.test(resource),
+              );
+            // Each imported icon must have its own query-selected module identity.
+            if (spriteModules.filter((resource) => resource.includes('?__fluentIcon=v1&export=')).length !== 2) {
+              throw new Error(`Expected two queried sprite modules, found: ${spriteModules.join(', ')}`);
+            }
+            // An additional unqueried module would include the complete icon family and defeat icon granularity.
+            if (spriteModules.some((resource) => !resource.includes('?__fluentIcon='))) {
+              throw new Error(`Found an unqueried sprite family module in icon mode: ${spriteModules.join(', ')}`);
+            }
+          }
           const svgAssets = compilation
             .getAssets()
             .map((a) => a.name)
