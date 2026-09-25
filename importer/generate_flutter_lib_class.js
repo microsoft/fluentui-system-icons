@@ -21,6 +21,7 @@ const ICON_CLASS_HEADER =
 
 import 'package:flutter/widgets.dart';
 
+@staticIconProvider
 class FluentIcons {
 
   // This class is not meant to be instantiated or extended; this constructor
