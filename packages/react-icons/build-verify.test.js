@@ -347,18 +347,13 @@ describe('Build Verification', () => {
             mc9l5x: "f14t3ns0",
             a9b677: "fhson10",
             Bqenvij: "f1un31zh",
-            B68tc82: 0,
-            Bmxbyg5: 0,
-            Bpg54ce: "f1a3p1vp",
             B80ckks: "fmd4ok8",
             Bhrd7zp: "f5ljve1",
             Bg96gwp: "fne0op0",
             sj55zd: "f303qgw"
           }
         }, {
-          d: [".f9dzkbp{font-family:FluentSystemIconsFilled;}", ".f1krtbx5{font-family:FluentSystemIconsRegular;}", ".f1sxfq9t{font-family:FluentSystemIcons;}", ".fgtzeza{font-family:FluentSystemIconsLight;}", ".f14t3ns0{display:inline-block;}", ".fhson10{width:1em;}", ".f1un31zh{height:1em;}", [".f1a3p1vp{overflow:hidden;}", {
-            p: -1
-          }], ".fmd4ok8{font-style:normal;}", ".f5ljve1{font-weight:normal;}", ".fne0op0{line-height:1em;}", ".f303qgw{color:currentColor;}"]
+          d: [".f9dzkbp{font-family:FluentSystemIconsFilled;}", ".f1krtbx5{font-family:FluentSystemIconsRegular;}", ".f1sxfq9t{font-family:FluentSystemIcons;}", ".fgtzeza{font-family:FluentSystemIconsLight;}", ".f14t3ns0{display:inline-block;}", ".fhson10{width:1em;}", ".f1un31zh{height:1em;}", ".fmd4ok8{font-style:normal;}", ".f5ljve1{font-weight:normal;}", ".fne0op0{line-height:1em;}", ".f303qgw{color:currentColor;}"]
         });"
       `);
       expect(fs.readFileSync(path.join(root, unprocessed), 'utf8')).toMatchInlineSnapshot(`
@@ -422,13 +417,6 @@ describe('Build Verification', () => {
                 // causing layout shift on every font icon.
                 width: '1em',
                 height: '1em',
-                // Pin the inline-block baseline to its bottom edge (like the resizable SVG, a
-                // replaced element). By default an inline-block is baseline-aligned via its
-                // glyph, whose baseline moves when the webfont's metrics swap in, growing the
-                // line box and shifting inline text vertically. \`overflow: hidden\` makes the
-                // baseline the bottom margin edge instead, which is font-independent and matches
-                // where the loaded glyph already sits (no visible reposition).
-                overflow: 'hidden',
                 fontStyle: 'normal',
                 fontWeight: 'normal',
                 lineHeight: '1em',
