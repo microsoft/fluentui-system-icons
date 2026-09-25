@@ -2121,8 +2121,8 @@ describe('Build Verification', () => {
       const { svgPathCjs, svgPathEsm } = getAssetPaths();
       const esmStats = await getAtomDirStats(svgPathEsm);
       const cjsStats = await getAtomDirStats(svgPathCjs, 'lib-cjs');
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2910`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2910`);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2912`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2912`);
     });
     it(`should have same number of atoms/fonts icon files in lib and lib-cjs`, async () => {
       const { fontsPathCjs, fontsPathEsm } = getAssetPaths();
