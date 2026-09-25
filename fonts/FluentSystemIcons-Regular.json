@@ -9752,5 +9752,18 @@
   "ic_fluent_text_number_list_ltr_rotate_90_28_regular": 986390,
   "ic_fluent_text_number_list_rtl_28_regular": 986391,
   "ic_fluent_text_number_list_rtl_rotate_270_28_regular": 986392,
-  "ic_fluent_text_number_list_rtl_rotate_90_28_regular": 986393
+  "ic_fluent_text_number_list_rtl_rotate_90_28_regular": 986393,
+  "ic_fluent_autopilot_24_regular": 986394,
+  "ic_fluent_autopilot_28_regular": 986395,
+  "ic_fluent_autopilot_32_regular": 986396,
+  "ic_fluent_circle_image_off_20_regular": 986397,
+  "ic_fluent_keyboard_mouse_20_regular": 986398,
+  "ic_fluent_keyboard_mouse_off_20_regular": 986399,
+  "ic_fluent_pivot_16_regular": 986400,
+  "ic_fluent_rename_a_16_regular": 986401,
+  "ic_fluent_rename_a_24_regular": 986402,
+  "ic_fluent_rename_a_28_regular": 986403,
+  "ic_fluent_text_collapse_16_regular": 986404,
+  "ic_fluent_text_collapse_28_regular": 986405,
+  "ic_fluent_text_collapse_32_regular": 986406
 }

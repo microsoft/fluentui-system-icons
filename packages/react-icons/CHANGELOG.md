@@ -1,3 +1,9 @@
+## 2.0.343 (2026-09-25)
+
+### 🚀 Features
+
+- **reaction-icons:** add new and updated icons ([#1257](https://github.com/microsoft/fluentui-system-icons/pull/1257))
+
 ## 2.0.342 (2026-09-25)
 
 ### 🚀 Features

@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Resizable";
-    src: url("./FluentSystemIcons-Resizable.woff2?b76a51f286c7828ad6685ee61f569012") format("woff2"),
-url("./FluentSystemIcons-Resizable.woff?b76a51f286c7828ad6685ee61f569012") format("woff"),
-url("./FluentSystemIcons-Resizable.ttf?b76a51f286c7828ad6685ee61f569012") format("truetype");
+    src: url("./FluentSystemIcons-Resizable.woff2?7453c799479f2e431276447aa2058bc8") format("woff2"),
+url("./FluentSystemIcons-Resizable.woff?7453c799479f2e431276447aa2058bc8") format("woff"),
+url("./FluentSystemIcons-Resizable.ttf?7453c799479f2e431276447aa2058bc8") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -17097,4 +17097,22 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_slide_arrow_forward_20_regular:before {
     content: "\f63d";
+}
+.icon-ic_fluent_circle_image_off_20_filled:before {
+    content: "\f63e";
+}
+.icon-ic_fluent_circle_image_off_20_regular:before {
+    content: "\f63f";
+}
+.icon-ic_fluent_keyboard_mouse_20_filled:before {
+    content: "\f640";
+}
+.icon-ic_fluent_keyboard_mouse_20_regular:before {
+    content: "\f641";
+}
+.icon-ic_fluent_keyboard_mouse_off_20_filled:before {
+    content: "\f642";
+}
+.icon-ic_fluent_keyboard_mouse_off_20_regular:before {
+    content: "\f643";
 }

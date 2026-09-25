@@ -2128,8 +2128,8 @@ describe('Build Verification', () => {
       const { fontsPathCjs, fontsPathEsm } = getAssetPaths();
       const esmStats = await getAtomDirStats(fontsPathEsm);
       const cjsStats = await getAtomDirStats(fontsPathCjs, 'lib-cjs');
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2903`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2903`);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2905`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2905`);
     });
     it.each(['lib', 'lib-cjs'])('should have atoms/svg directory with icon files in %s', async (libDir) => {
       const atomsSvgPath = path.join(__dirname, libDir, 'atoms', 'svg');
