@@ -6269,6 +6269,16 @@
     "font": true,
     "type": "resizable"
   },
+  "CircleImageOffFilled": {
+    "svg": true,
+    "font": false,
+    "type": "resizable"
+  },
+  "CircleImageOffRegular": {
+    "svg": true,
+    "font": false,
+    "type": "resizable"
+  },
   "CircleLineFilled": {
     "svg": true,
     "font": true,
@@ -14417,6 +14427,26 @@
   "KeyboardLayoutSplitRegular": {
     "svg": true,
     "font": true,
+    "type": "resizable"
+  },
+  "KeyboardMouseFilled": {
+    "svg": true,
+    "font": false,
+    "type": "resizable"
+  },
+  "KeyboardMouseRegular": {
+    "svg": true,
+    "font": false,
+    "type": "resizable"
+  },
+  "KeyboardMouseOffFilled": {
+    "svg": true,
+    "font": false,
+    "type": "resizable"
+  },
+  "KeyboardMouseOffRegular": {
+    "svg": true,
+    "font": false,
     "type": "resizable"
   },
   "KeyboardOffFilled": {
@@ -38464,6 +38494,36 @@
     "font": true,
     "type": "sized"
   },
+  "Autopilot24Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "Autopilot24Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "Autopilot28Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "Autopilot28Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "Autopilot32Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "Autopilot32Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
   "Autosum16Filled": {
     "svg": true,
     "font": true,
@@ -52327,6 +52387,16 @@
   "CircleImage28Regular": {
     "svg": true,
     "font": true,
+    "type": "sized"
+  },
+  "CircleImageOff20Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "CircleImageOff20Regular": {
+    "svg": true,
+    "font": false,
     "type": "sized"
   },
   "CircleLine12Filled": {
@@ -80869,6 +80939,26 @@
     "font": true,
     "type": "sized"
   },
+  "KeyboardMouse20Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "KeyboardMouse20Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "KeyboardMouseOff20Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "KeyboardMouseOff20Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
   "KeyboardOff16Filled": {
     "svg": true,
     "font": true,
@@ -100289,6 +100379,16 @@
     "font": true,
     "type": "sized"
   },
+  "Pivot16Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "Pivot16Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
   "Pivot20Filled": {
     "svg": true,
     "font": true,
@@ -104184,6 +104284,16 @@
     "font": true,
     "type": "sized"
   },
+  "RenameA16Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "RenameA16Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
   "RenameA20Filled": {
     "svg": true,
     "font": true,
@@ -104192,6 +104302,26 @@
   "RenameA20Regular": {
     "svg": true,
     "font": true,
+    "type": "sized"
+  },
+  "RenameA24Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "RenameA24Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "RenameA28Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "RenameA28Regular": {
+    "svg": true,
+    "font": false,
     "type": "sized"
   },
   "Reorder20Filled": {
@@ -121539,6 +121669,16 @@
     "font": true,
     "type": "sized"
   },
+  "TextCollapse16Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "TextCollapse16Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
   "TextCollapse20Filled": {
     "svg": true,
     "font": true,
@@ -121559,9 +121699,29 @@
     "font": true,
     "type": "sized"
   },
+  "TextCollapse28Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "TextCollapse28Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "TextCollapse32Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
   "TextCollapse32Light": {
     "svg": true,
     "font": true,
+    "type": "sized"
+  },
+  "TextCollapse32Regular": {
+    "svg": true,
+    "font": false,
     "type": "sized"
   },
   "TextColor16Filled": {
