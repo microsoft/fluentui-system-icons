@@ -34,13 +34,6 @@
      causing layout shift on every font icon. */
   width: 1em;
   height: 1em;
-  /* Pin the inline-block baseline to its bottom edge (like the resizable SVG, a
-     replaced element). By default an inline-block is baseline-aligned via its
-     glyph, whose baseline moves when the webfont's metrics swap in, growing the
-     line box and shifting inline text vertically. `overflow: hidden` makes the
-     baseline the bottom margin edge instead, which is font-independent and matches
-     where the loaded glyph already sits (no visible reposition). */
-  overflow: hidden;
   font-style: normal;
   /* Prevent inherited font weight from distorting the icon glyph. */
   font-weight: normal;

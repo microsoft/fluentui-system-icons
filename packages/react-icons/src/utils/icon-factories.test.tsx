@@ -49,12 +49,24 @@ describe('React component tests', () => {
       <div>
         <i
           aria-hidden="true"
-          class="fui-Icon-font ___5dcbuy0_g10qsx0 f14t3ns0 fne0op0 fhson10 f1un31zh f1a3p1vp fmd4ok8 f5ljve1 f303qgw f1sxfq9t"
+          class="fui-Icon-font ___1gffe3h_1f86gh5 f14t3ns0 fne0op0 fhson10 f1un31zh fmd4ok8 f5ljve1 f303qgw f1sxfq9t"
           data-fui-icon=""
           fill="currentColor"
         />
       </div>
     `);
+  });
+
+  test.each([0, 1, 2, 3])('createFontIcon reserves space without clipping font family %s', (fontFile) => {
+    const FontIcon = createFluentFontIcon('FontIcon', '\uE001', fontFile, undefined);
+    const { container } = render(<FontIcon />);
+    const icon = container.querySelector('i')!;
+    const styles = getComputedStyle(icon);
+
+    expect(styles.display).toBe('inline-block');
+    expect(styles.width).toBe('1em');
+    expect(styles.height).toBe('1em');
+    expect(styles.overflow || 'visible').toBe('visible');
   });
 
   test('createFontIcon does not inherit font weight', () => {
