@@ -1,3 +1,13 @@
+## 2.0.342 (2026-09-25)
+
+### 🚀 Features
+
+- **react-icons-atomic-webpack-loader:** add export-level atomization ([#1246](https://github.com/microsoft/fluentui-system-icons/pull/1246))
+
+### 🩹 Fixes
+
+- **react-icons:** avoid clipping font icon glyphs ([#1255](https://github.com/microsoft/fluentui-system-icons/pull/1255))
+
 ## 2.0.341 (2026-09-11)
 
 ### 🚀 Features
