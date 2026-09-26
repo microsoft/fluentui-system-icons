@@ -63,6 +63,7 @@ packages/**/lib/
 !packages/react-icons-svg-sprite-subsetting-webpack-plugin/test/__mock__/**/lib/
 !packages/react-icons-svg-sprite-subsetting-webpack-plugin/test/__mock__/**/lib/**
 packages/**/lib-cjs/
+packages/react-icons-file-type/metadata.json
 packages/**/dist/
 packages/**/storybook-static/
 
