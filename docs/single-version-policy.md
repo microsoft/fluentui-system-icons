@@ -54,6 +54,11 @@ The **published** ranges stay `^1.6.1`, so consumers still deduplicate griffel w
 their app. Remove these overrides once the packages move off TypeScript 4.1.6 and the bundle
 cost has been re-measured.
 
+`@types/react-native` still publishes a `^0.68.0` runtime dependency for compatibility with
+consumers, but its declarations depend on `@types/react@^17`. The root resolution above the
+dependency is scoped to this package so the workspace build uses the root React 19 types instead
+of installing a second, incompatible React type version.
+
 Prefer a scoped `parent/child` key when only one workspace needs the override — a bare key
 rewrites every copy in the repo. Griffel is the exception: every consumer here needs the same
 version, so a bare key states that intent directly instead of repeating the pin per workspace.
