@@ -15,7 +15,7 @@
     "Light"
   ],
   "keyword": "fluent-icon",
-  "description": "Used for adding actions.â ï¸ Note - because of the way strokes blur in between 2 pixels, we have made Add work for low density screens for 16, 20px sizes.",
+  "description": "Used for adding actions. ⚠️ Note - because of the way strokes blur in between 2 pixels, we have made Add work for low density screens for 16, 20px sizes.",
   "metaphor": [
     "plus",
     "addition",
