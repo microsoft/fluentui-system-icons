@@ -25,7 +25,7 @@
     "lint": "yarn run -T eslint package.json"
   },
   "dependencies": {
-    "@types/react-native": "^0.68.0",
+    "@types/react-native": "^0.72.8",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

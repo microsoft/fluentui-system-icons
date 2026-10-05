@@ -4433,7 +4433,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-native-icons@workspace:packages/react-native-icons"
   dependencies:
-    "@types/react-native": "npm:^0.68.0"
+    "@types/react-native": "npm:^0.72.8"
     tslib: "npm:^2.1.0"
   peerDependencies:
     react: ">=16.8.0 <20.0.0"
@@ -5521,7 +5521,7 @@ __metadata:
     "@types/node": "npm:22"
     "@types/react": "npm:19.1.13"
     "@types/react-dom": "npm:19.1.9"
-    "@types/react-native": "npm:^0.68.0"
+    "@types/react-native": "npm:^0.72.8"
     "@types/yargs": "npm:^15.0.0"
     "@typescript-eslint/rule-tester": "npm:7.18.0"
     "@typescript-eslint/utils": "npm:7.18.0"
@@ -7503,6 +7503,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native/virtualized-lists@npm:^0.72.4":
+  version: 0.72.8
+  resolution: "@react-native/virtualized-lists@npm:0.72.8"
+  dependencies:
+    invariant: "npm:^2.2.4"
+    nullthrows: "npm:^1.1.1"
+  peerDependencies:
+    react-native: "*"
+  checksum: 10c0/1fe43afeacf5aacec270d7f64b9ce6c69afe1c65d1e487fff75e647d1f57114527f2223602d546b95fc982b348a6f1773db66184a2e90ba434f4f013f3991bac
+  languageName: node
+  linkType: hard
+
 "@rnx-kit/tsconfig@npm:^3.0.3":
   version: 3.0.3
   resolution: "@rnx-kit/tsconfig@npm:3.0.3"
@@ -8824,12 +8836,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-native@npm:^0.68.0":
-  version: 0.68.20
-  resolution: "@types/react-native@npm:0.68.20"
+"@types/react-native@npm:^0.72.8":
+  version: 0.72.8
+  resolution: "@types/react-native@npm:0.72.8"
   dependencies:
-    "@types/react": "npm:^17"
-  checksum: 10c0/491b6c75b2313e503a5ac2e9b472ed39ed9ac333f8e12491eb794ab2d47fa80b71375f7a93d24ac73e405ee0adb91b2d92f0a93e6d3e9311b070b374f9a24148
+    "@react-native/virtualized-lists": "npm:^0.72.4"
+    "@types/react": "npm:*"
+  checksum: 10c0/2dde171c2331ac8f6102f9b7a88616c695d158d3140e7b7aee3a393e3645f2aaa202b3411ae371fbbcd28386459fca8d47bd5d3801a0adfdd8815a8ba5c0d5fe
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:*":
+  version: 19.3.0
+  resolution: "@types/react@npm:19.3.0"
+  dependencies:
+    csstype: "npm:^3.2.2"
+  checksum: 10c0/fbcabf303f935ca9f36ed2dcf81751cf84744098c5a683c8a62a0fa7edd31714b48d5c46b12fd0014f7f2dfe4d9ec6de428a850748eec719a70294e51029551b
   languageName: node
   linkType: hard
 
@@ -8842,7 +8864,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^17, @types/react@npm:^17.0.2":
+"@types/react@npm:^17.0.2":
   version: 17.0.93
   resolution: "@types/react@npm:17.0.93"
   dependencies:
