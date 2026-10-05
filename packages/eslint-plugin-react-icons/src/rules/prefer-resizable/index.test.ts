@@ -21,6 +21,18 @@ const ruleTester = new RuleTester({
 ruleTester.run(RULE_NAME, rule, {
   valid: [
     {
+      code: `import { BookQuestionMark24Filled_ar } from '@fluentui/react-icons';`,
+    },
+    {
+      code: `import { CommentNote24Regular_he as Note } from '@fluentui/react-icons/headless/fonts/comment-note_he';\nconst a = <Note />;`,
+    },
+    {
+      code: `import * as Icons from '@fluentui/react-icons';\nconst a = <Icons.TextClearFormatting32Regular_ko />;`,
+    },
+    {
+      code: `import { AlignDistributeBottom16Regular, AccessibilityCheckmark32Light } from '@fluentui/react-icons';`,
+    },
+    {
       code: `import { TextBoldRegular_srCyrl } from '@fluentui/react-icons/headless/svg/text-bold_sr-cyrl';\nconst a = <TextBoldRegular_srCyrl />;`,
     },
     // Resizable named import + usage.
@@ -47,6 +59,35 @@ ruleTester.run(RULE_NAME, rule, {
     },
   ],
   invalid: [
+    {
+      code: `import { AlignDistributeBottom16Regular } from 'custom-icons';`,
+      options: [{ sources: ['custom-icons'] }],
+      errors: [
+        {
+          messageId: 'preferResizable',
+          suggestions: [
+            {
+              messageId: 'useResizable',
+              output: `import { AlignDistributeBottomRegular } from 'custom-icons';`,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `import * as Icons from '@fluentui/react-brand-icons';\nconst a = <Icons.AlignDistributeBottom16Regular />;`,
+      errors: [
+        {
+          messageId: 'preferResizable',
+          suggestions: [
+            {
+              messageId: 'useResizable',
+              output: `import * as Icons from '@fluentui/react-brand-icons';\nconst a = <Icons.AlignDistributeBottomRegular />;`,
+            },
+          ],
+        },
+      ],
+    },
     {
       code: `import { TextBold24Regular_es } from '@fluentui/react-icons';\nconst a = <TextBold24Regular_es />;`,
       errors: [
