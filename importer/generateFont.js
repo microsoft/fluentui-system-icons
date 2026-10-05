@@ -14,6 +14,7 @@ const yargs = require('yargs');
 // See patches/fantasticon+1.2.3.patch for details
 // Related PR: https://github.com/tancredi/fantasticon/pull/507
 const fantasticon = require('fantasticon');
+const { parseIconName, getGlyphName, isDirectionOnlyIconSource } = require('./icon-name');
 
 const parseArgs = (args = process.argv.slice(2)) => {
   const argv = yargs(args)
@@ -70,11 +71,22 @@ async function main() {
     const stagingFolder = path.resolve(DEST_PATH, ICON_TYPE);
     await fs.mkdir(stagingFolder, { recursive: true });
 
-    /** @type {string[]} */
     // Sort glob results so codepoint assignment (and thus the generated font
     // bytes) are deterministic regardless of the filesystem's readdir order.
-    const svgFiles = (await glob(path.resolve(SRC_PATH, `*_${ICON_TYPE === 'Resizable' ? '20_{filled,regular,light}' : ICON_TYPE.toLowerCase()}.svg`))).sort();
-    const icons = new Set(svgFiles.map(file => path.basename(file).replace(/\.svg$/, '')));
+    const sourceRoot = path.resolve(SRC_PATH);
+    const outputRoot = path.resolve(DEST_PATH) + path.sep;
+    const svgFiles = (await glob(path.resolve(SRC_PATH, '**/*.svg'))).sort()
+        .filter(file => !file.startsWith(outputRoot))
+        .map(source => {
+            const relative = path.relative(sourceRoot, source).split(path.sep).join('/');
+            return { source, name: getGlyphName(relative), identity: parseIconName(relative) };
+        })
+        .filter(({ name }) => !isDirectionOnlyIconSource(name))
+        .filter(({ identity }) => ICON_TYPE === 'Resizable'
+            ? identity.size === '20' && ['filled', 'regular', 'light'].includes(identity.style)
+            : identity.style === ICON_TYPE.toLowerCase());
+    const icons = new Set(svgFiles.map(file => file.name));
+    if (icons.size !== svgFiles.length) throw new Error('Duplicate qualified font glyph name');
 
     if (icons.size > MAX_PRIVATE_USE_CODEPOINTS) {
         throw new Error('Too many icons to fit into the Unicode private use area(s). See https://www.unicode.org/faq/private_use.html')
@@ -82,7 +94,7 @@ async function main() {
 
     // Copy all icons of the given icon type to the staging folder
     await Promise.all((svgFiles).map(
-        async svgFile => fs.copyFile(svgFile, path.resolve(stagingFolder, path.basename(svgFile)))
+        async svgFile => fs.copyFile(svgFile.source, path.resolve(stagingFolder, `${svgFile.name}.svg`))
     ));
 
     // Generate the font and associated assets
@@ -102,7 +114,7 @@ async function main() {
 
     // Clean up staging folder
     await Promise.all(svgFiles.map(
-        async svgFile => fs.unlink(path.resolve(stagingFolder, path.basename(svgFile)))
+        async svgFile => fs.unlink(path.resolve(stagingFolder, `${svgFile.name}.svg`))
     ));
     if ((await fs.readdir(stagingFolder)).length === 0) {
         await fs.rmdir(stagingFolder);

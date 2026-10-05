@@ -4,6 +4,15 @@ const { join, resolve } = require('path');
 
 const { default: FluentUIReactIconsSvgSpriteSubsettingPlugin } = require('../lib/');
 
+const iconMetadata = require('../../react-icons/metadata.json');
+const selectedLocaleSymbols = ['TextBoldRegular_es', 'TextBold24Regular_srCyrl'];
+const unusedLocaleSymbols = ['TextBold24Regular_es', 'TextBoldRegular_srCyrl'];
+for (const symbol of [...selectedLocaleSymbols, ...unusedLocaleSymbols]) {
+  if (!(symbol in iconMetadata)) {
+    throw new Error(`${symbol} must be an actual generated export`);
+  }
+}
+
 const isMerged = process.env.SVG_SPRITE_MODE === 'merged';
 const injectMode = process.env.SVG_SPRITE_INJECT;
 const generateManifest = process.env.SVG_SPRITE_MANIFEST === '1';
@@ -36,6 +45,14 @@ module.exports = {
       '@fluentui/react-icons/svg-sprite/calculator': resolve(
         __dirname,
         '__mock__/react-icons/lib/atoms/svg-sprite/calculator.js',
+      ),
+      '@fluentui/react-icons/svg-sprite/text-bold_es': resolve(
+        __dirname,
+        '__mock__/react-icons/lib/atoms/svg-sprite/text-bold_es.js',
+      ),
+      '@fluentui/react-icons/svg-sprite/text-bold_sr-cyrl': resolve(
+        __dirname,
+        '__mock__/react-icons/lib/atoms/svg-sprite/text-bold_sr-cyrl.js',
       ),
     },
   },
@@ -98,7 +115,8 @@ module.exports = {
               throw new Error('Merged sprite still contains unused symbols');
             }
             const atomicSprites = svgAssets.filter(
-              (a) => a.name.startsWith('backpack-') || a.name.startsWith('calculator-'),
+              (a) =>
+                a.name.startsWith('backpack-') || a.name.startsWith('calculator-') || a.name.startsWith('text-bold_'),
             );
             if (atomicSprites.length > 0) {
               throw new Error(
@@ -145,6 +163,21 @@ module.exports = {
               if (!html.includes('rel="preload"') || !html.includes('.svg')) {
                 throw new Error('Reference preload links were not injected into HTML');
               }
+            }
+          }
+
+          const spriteContent =
+            injectMode === 'inline'
+              ? readFileSync(join(outDir, 'index.html'), 'utf8')
+              : svgAssets.map((asset) => asset.source).join('\n');
+          for (const symbol of selectedLocaleSymbols) {
+            if (!spriteContent.includes(`id="${symbol}"`)) {
+              throw new Error(`Localized sprite is missing selected symbol ${symbol}`);
+            }
+          }
+          for (const symbol of unusedLocaleSymbols) {
+            if (spriteContent.includes(`id="${symbol}"`)) {
+              throw new Error(`Localized sprite still contains unused symbol ${symbol}`);
             }
           }
         });

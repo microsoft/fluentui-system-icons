@@ -105,12 +105,13 @@ function resolveFluentIconImport(importName, target = 'svg') {
     return '@fluentui/react-icons/providers';
   }
 
-  const match = importName.match(/^(.+?)(\d+)?(Regular|Filled|Light|Color)$/);
+  const match = importName.match(/^(.+?)(\d+)?(Regular|Filled|Light|Color)(?:_([a-z][a-zA-Z0-9]*))?$/);
   if (!match) {
     return '@fluentui/react-icons/utils';
   }
 
-  return `@fluentui/react-icons/${target}/${kebabCase(match[1])}`;
+  const qualifier = match[4] ? `_${kebabCase(match[4])}` : '';
+  return `@fluentui/react-icons/${target}/${kebabCase(match[1])}${qualifier}`;
 }
 
 function kebabCase(str) {
@@ -174,7 +175,11 @@ Replace every `svg` segment in the target paths below with your chosen target (`
                 // normalizeBaseName logic used by the generation pipeline.
                 // {{ kebabCase }} on group 1 mirrors lodash.kebabCase.
                 [
-                  "(.+?)(\\d+)?(Regular|Filled|Light|Color)$",
+                  "^(.+?)(\\d+)?(Regular|Filled|Light|Color)_([a-z][a-zA-Z0-9]*)$",
+                  "@fluentui/react-icons/svg/{{ kebabCase memberMatches.[1] }}_{{ kebabCase memberMatches.[4] }}",
+                ],
+                [
+                  "^(.+?)(\\d+)?(Regular|Filled|Light|Color)$",
                   "@fluentui/react-icons/svg/{{ kebabCase memberMatches.[1] }}",
                 ],
                 // Fallback: all other exports are utilities

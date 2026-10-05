@@ -7,6 +7,7 @@ const path = require('path');
 const _ = require('lodash');
 
 const { writePerIconFiles } = require('./per-icon.writer');
+const { parseIconName, getIconExportName, getIconFileName, getIconFlipInRtl } = require('../../../importer/icon-name');
 
 /** @typedef {{ [key: string]: 'mirror' | 'unique' }} RtlMetadata */
 
@@ -16,9 +17,7 @@ const { writePerIconFiles } = require('./per-icon.writer');
  * @param {boolean} resizable Whether we're processing resizable icons (strip the size token)
  */
 function getReactIconNameFromGlyphName(iconName, resizable) {
-  let name = iconName.replace('ic_fluent_', '');
-  name = resizable ? name.replace('20', '') : name;
-  return _.upperFirst(_.camelCase(name));
+  return getIconExportName(iconName, resizable);
 }
 
 /**
@@ -39,9 +38,9 @@ function loadRtlMetadata(rtlFilePath) {
  * @param {string=} rawGlyphName Used to derive size for sized variants
  */
 function buildFontIconExport(exportName, codepoint, resizable, flipInRtl, rawGlyphName) {
-  const style = /filled$/i.test(rawGlyphName || '') ? 0 : /regular$/i.test(rawGlyphName || '') ? 1 : 3; // Light = 3
-  const sizeMatch = rawGlyphName && /(?<=_)\d+(?=_filled|_regular|_light)/.exec(rawGlyphName);
-  const size = resizable ? undefined : sizeMatch?.[0];
+  const identity = rawGlyphName ? parseIconName(rawGlyphName) : undefined;
+  const style = identity?.style === 'filled' ? 0 : identity?.style === 'regular' ? 1 : 3;
+  const size = resizable ? undefined : identity?.size;
   return `export const ${exportName}: FluentFontIcon = (/*#__PURE__*/createFluentFontIcon(${JSON.stringify(exportName)}, ${JSON.stringify(String.fromCodePoint(codepoint))}, ${resizable ? 2 : style}, ${resizable ? undefined : size}${flipInRtl ? ', { flipInRtl: true }' : ''}));`;
 }
 
@@ -78,9 +77,9 @@ function collectFontIconItems(iconEntries, rtlMetadata, resizable) {
   for (const entry of iconEntries) {
     for (const [rawName, codepoint] of Object.entries(entry.iconEntries)) {
       const exportName = getReactIconNameFromGlyphName(rawName, resizable);
-      const flipInRtl = rtlMetadata[exportName] === 'mirror';
+      const flipInRtl = getIconFlipInRtl(rawName, resizable, rtlMetadata);
       const exportCode = buildFontIconExport(exportName, codepoint, resizable, flipInRtl, rawName);
-      const fileName = `${_.kebabCase(exportName)}.tsx`;
+      const fileName = getIconFileName(exportName);
 
       items.push({ exportName, exportCode, fileName, rawName });
       iconNames.push(exportName);

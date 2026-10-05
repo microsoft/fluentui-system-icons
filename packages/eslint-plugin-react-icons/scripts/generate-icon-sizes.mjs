@@ -70,7 +70,7 @@ function loadMetadata(metadataPath) {
  * @returns {number | null}
  */
 function extractSize(name) {
-  const match = new RegExp(`(\\d{2})(?:${VARIANT_SUFFIX})$`).exec(name);
+  const match = new RegExp(`(\\d{2})(?:${VARIANT_SUFFIX})(?:_[a-z][a-zA-Z0-9]*)?$`).exec(name);
   return match ? Number(match[1]) : null;
 }
 
@@ -82,7 +82,7 @@ function buildSizedRegExp(sizes) {
   // Sort descending so multi-digit sizes (should any ever be added) are matched
   // greedily-first; two-digit sizes are mutually exclusive so order is cosmetic.
   const alternation = [...sizes].sort((a, b) => b - a).join('|');
-  return new RegExp(`(${alternation})(?:${VARIANT_SUFFIX})$`);
+  return new RegExp(`(${alternation})(?:${VARIANT_SUFFIX})(?:_[a-z][a-zA-Z0-9]*)?$`);
 }
 
 /**

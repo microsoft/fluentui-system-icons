@@ -11,7 +11,7 @@ const VARIANT_SUFFIX = 'Filled|Regular|Color|Light';
  * descending so any multi-digit size (should one ever be added) is matched first.
  */
 export const SIZED_ICON_RE = new RegExp(
-  `(${[...SIZED_ICON_SIZES].sort((a, b) => b - a).join('|')})(${VARIANT_SUFFIX})$`,
+  `(${[...SIZED_ICON_SIZES].sort((a, b) => b - a).join('|')})(${VARIANT_SUFFIX})(_[a-z][a-zA-Z0-9]*)?$`,
 );
 
 const collisions = new Set<string>(RESIZABLE_COLLISIONS);
@@ -37,5 +37,5 @@ export function getResizableIconName(name: string): string | null {
   if (!isSizedIconName(name)) {
     return null;
   }
-  return name.replace(SIZED_ICON_RE, '$2');
+  return name.replace(SIZED_ICON_RE, '$2$3');
 }

@@ -23,13 +23,19 @@ Detection is data-driven, generated from `@fluentui/react-icons` `metadata.json`
 
 - A name is "sized" when it ends with a real two-digit Fluent size
   (`10, 12, 16, 20, 24, 28, 32, 48`) immediately before its variant suffix
-  (`Filled` / `Regular` / `Color` / `Light`).
+  (`Filled` / `Regular` / `Color` / `Light`), optionally followed by a locale
+  qualifier such as `_es` or `_srCyrl`.
 - Names whose trailing digits are part of a product name rather than a size
   (e.g. `Battery10Regular`, `Fps120Regular`, `Timer10Filled`) are excluded via a
   generated collision denylist, so they are never mis-flagged.
 
 The generated data is verified to classify every icon exactly as `metadata.json` does;
 regenerate it with `yarn generate:data` when the icon set changes.
+
+Localized suggestions preserve the locale and atom path: `TextBold24Regular_srCyrl`
+becomes `TextBoldRegular_srCyrl`, including imports from
+`@fluentui/react-icons/headless/fonts/text-bold_sr-cyrl`. Aliases and namespace
+usages are handled the same way as default icons.
 
 ## Examples
 

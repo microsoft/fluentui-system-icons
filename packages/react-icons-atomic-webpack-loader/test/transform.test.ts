@@ -1,12 +1,35 @@
 import { describe, it, expect } from 'vitest';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { transformSource } from '../src/transform';
 import type { IconVariant } from '../src/modules';
+
+const iconMetadata = JSON.parse(readFileSync(resolve(__dirname, '../../react-icons/metadata.json'), 'utf8'));
 
 const transform = (source: string, iconVariant: IconVariant = 'svg', fallbackVariant?: IconVariant) =>
   transformSource(source, { iconVariant, fallbackVariant, path: 'input.js' }).code;
 
 describe('transformSource', () => {
   describe('imports', () => {
+    it.each(['svg', 'fonts', 'svg-sprite'] as const)(
+      'rewrites actual localized and canonical directional exports to %s atoms',
+      (variant) => {
+        for (const [iconName, atomName] of [
+          ['TextBold24Regular_es', 'text-bold_es'],
+          ['TextBold24Regular_srCyrl', 'text-bold_sr-cyrl'],
+          ['TextBold24Regular_srLatn', 'text-bold_sr-latn'],
+          ['TextDirectionHorizontalRtl24Regular_ko', 'text-direction-horizontal-rtl_ko'],
+          ['TextNumberListRtl90Regular', 'text-number-list-rtl'],
+          ['TextNumberListLtr90Regular', 'text-number-list-ltr'],
+        ]) {
+          expect(iconMetadata[iconName], `${iconName} must be an actual generated export`).toBeDefined();
+          expect(transform(`import { ${iconName} } from '@fluentui/react-icons';`, variant)).toBe(
+            `import { ${iconName} } from '@fluentui/react-icons/${variant}/${atomName}';`,
+          );
+        }
+      },
+    );
+
     it('rewrites a single named icon import to its atomic path', () => {
       expect(transform(`import { AddFilled } from '@fluentui/react-icons';`)).toBe(
         `import { AddFilled } from '@fluentui/react-icons/svg/add';`,

@@ -93,6 +93,49 @@ ReactDOM.render(
 );
 ```
 
+### Localized and directional icons
+
+Localized artwork is exported explicitly, without runtime locale detection:
+
+```tsx
+import { TextBold24Regular_es, TextBoldRegular_srCyrl } from '@fluentui/react-icons';
+import { TextBoldRegular_es } from '@fluentui/react-icons/svg/text-bold_es';
+```
+
+Names follow `{icon}{size}{style}_{locale}`; resizable names omit the size. Locale
+tags are camel-cased in export names and hyphenated in module paths, with `_`
+separating the icon name from its locale. Serbian Cyrillic `sr-cyrl` becomes
+`_srCyrl` in exports and `_sr-cyrl` in module paths; Serbian Latin `sr-latn`
+becomes `_srLatn` and `_sr-latn`. For example, `TextBoldRegular_srCyrl` is available
+from `@fluentui/react-icons/headless/svg/text-bold_sr-cyrl`. Single-part locales
+such as `_es` are unchanged. Source locale tags are unchanged.
+
+Directional icons retain `Ltr` or `Rtl` in the base name before the locale suffix,
+such as `TextDirectionHorizontalLtr24Regular_ko` and
+`TextDirectionHorizontalRtl24Regular_ko`. Choose the appropriate artwork explicitly;
+the direction provider does not switch between these exports. Existing names such as
+`TextNumberListRtl90Regular` are unchanged, and no direction-only `_ltr`/`_rtl` aliases
+are generated. Only locale variants present in the source artwork are added.
+
+Automatic mirroring is separate from locale selection. Icons marked `mirror` in
+their source direction metadata, such as `CommentNote24Regular_ar`, inherit
+`flipInRtl` and mirror when `IconDirectionContextProvider` supplies
+`textDirection: 'rtl'`. A locale suffix alone does not enable mirroring.
+
+Qualified atom groups are separate from default groups, including font and headless
+paths such as `fonts/text-bold_es` and `headless/fonts/text-bold_es`. Unchanged named
+imports do not gain locale-selection code or unused artwork. Whole-library imports
+include the additional exports and therefore grow.
+
+Localized monochrome icons also work with the `fluentIconFont` condition in the
+existing font families. Existing codepoints remain unchanged. Full fonts contain
+the added glyphs and grow; use the font-subsetting plugin to ship only consumed glyphs.
+
+To enforce zero JS/CSS growth for the existing named-import fixtures, run
+`yarn nx run react-icons:check:localized-bundle-size --baseline=/tmp/icons-baseline --record`
+against a freshly built baseline, then omit `--record` against the changed build.
+The check covers minified, gzip, and Brotli output separately from font assets.
+
 ### Using the icon font
 
 If, for performance or other reasons, you wish to use the font implementation of these icons rather than the SVG implementation, you can specify `"fluentIconFont"` as a condition for the import, either via [Node >= 12.19.0](https://nodejs.org/dist/latest-v16.x/docs/api/packages.html#resolving-user-conditions) or [webpack >= 5.0.0](https://webpack.js.org/configuration/resolve/#resolveconditionnames).

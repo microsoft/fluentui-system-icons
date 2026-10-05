@@ -20,6 +20,9 @@ const ruleTester = new RuleTester({
 
 ruleTester.run(RULE_NAME, rule, {
   valid: [
+    {
+      code: `import { TextBoldRegular_srCyrl } from '@fluentui/react-icons/headless/svg/text-bold_sr-cyrl';\nconst a = <TextBoldRegular_srCyrl />;`,
+    },
     // Resizable named import + usage.
     {
       code: `import { SendRegular } from '@fluentui/react-icons';\nconst a = <SendRegular />;`,
@@ -44,6 +47,49 @@ ruleTester.run(RULE_NAME, rule, {
     },
   ],
   invalid: [
+    {
+      code: `import { TextBold24Regular_es } from '@fluentui/react-icons';\nconst a = <TextBold24Regular_es />;`,
+      errors: [
+        {
+          messageId: 'preferResizable',
+          data: { sized: 'TextBold24Regular_es', resizable: 'TextBoldRegular_es' },
+          suggestions: [
+            {
+              messageId: 'useResizable',
+              output: `import { TextBoldRegular_es } from '@fluentui/react-icons';\nconst a = <TextBoldRegular_es />;`,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `import { TextBold24Regular_srCyrl as Bold } from '@fluentui/react-icons/headless/fonts/text-bold_sr-cyrl';\nconst a = <Bold />;`,
+      errors: [
+        {
+          messageId: 'preferResizable',
+          suggestions: [
+            {
+              messageId: 'useResizable',
+              output: `import { TextBoldRegular_srCyrl as Bold } from '@fluentui/react-icons/headless/fonts/text-bold_sr-cyrl';\nconst a = <Bold />;`,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `import * as Icons from '@fluentui/react-icons';\nconst a = <Icons.TextBold24Regular_srCyrl />;`,
+      errors: [
+        {
+          messageId: 'preferResizable',
+          suggestions: [
+            {
+              messageId: 'useResizable',
+              output: `import * as Icons from '@fluentui/react-icons';\nconst a = <Icons.TextBoldRegular_srCyrl />;`,
+            },
+          ],
+        },
+      ],
+    },
     // Named sized import (non-aliased) + JSX usage: renames binding and usages.
     {
       code: `import { Send24Regular } from '@fluentui/react-icons';\nconst a = <Send24Regular />;`,

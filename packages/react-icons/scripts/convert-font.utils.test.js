@@ -27,6 +27,12 @@ describe('convert font utils', () => {
   });
 
   describe('getReactIconNameFromGlyphName', () => {
+    it('preserves locale and direction suffixes outside the PascalCase name', () => {
+      expect(getReactIconNameFromGlyphName('ic_fluent_text_bold_24_regular_sr_cyrl', false)).toBe(
+        'TextBold24Regular_srCyrl',
+      );
+      expect(getReactIconNameFromGlyphName('ic_fluent_text_bold_20_filled_es_rtl', true)).toBe('TextBoldFilled_esRtl');
+    });
     it('converts standard filled glyph name', () => {
       expect(getReactIconNameFromGlyphName('ic_fluent_access_time_20_filled', true)).toBe('AccessTimeFilled');
     });
@@ -37,6 +43,16 @@ describe('convert font utils', () => {
   });
 
   describe('buildFontIconExport', () => {
+    it.each([
+      ['filled', 0],
+      ['regular', 1],
+      ['light', 3],
+    ])('selects %s family for a qualified sized glyph', (style, family) => {
+      const rawName = `ic_fluent_text_bold_24_${style}_es`;
+      const code = buildFontIconExport(getReactIconNameFromGlyphName(rawName, false), 0xf0000, false, false, rawName);
+      expect(code).toContain(`, ${family}, 24`);
+      expect(code).toContain(String.fromCodePoint(0xf0000));
+    });
     it('builds export with resizable flag', () => {
       const code = buildFontIconExport('AccessTimeFilled', 0xe001, true, false, 'ic_fluent_access_time_20_filled');
       expect(code).toContain('AccessTimeFilled');
@@ -72,6 +88,22 @@ describe('convert font utils', () => {
     afterAll(() => {
       if (fs.existsSync(tmpSrc)) fs.rmSync(tmpSrc, { recursive: true, force: true });
       if (fs.existsSync(tmpDest)) fs.rmSync(tmpDest, { recursive: true, force: true });
+    });
+
+    it('groups script locale glyphs under hyphenated paths with camel-cased exports', async () => {
+      const iconEntries = { ic_fluent_text_bold_20_regular_sr_cyrl: 0xf0000 };
+      const entries = [{ iconEntries, writeProcessedCodepointMap: () => {} }];
+      await generatePerIconFiles(
+        tmpDest,
+        { resizable: entries, sized: entries },
+        {},
+        '../../utils/fonts/createFluentFontIcon',
+      );
+      const content = fs.readFileSync(path.join(tmpDest, 'text-bold_sr-cyrl.tsx'), 'utf8');
+      expect(content).toContain('export const TextBoldRegular_srCyrl');
+      expect(content).toContain('export const TextBold20Regular_srCyrl');
+      expect(content).toContain(String.fromCodePoint(0xf0000));
+      expect(fs.existsSync(path.join(tmpDest, 'text-bold_sr_cyrl.tsx'))).toBe(false);
     });
 
     it('groups font icons when grouping enabled and orders variants deterministically', async () => {

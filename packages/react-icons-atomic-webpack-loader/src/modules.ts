@@ -7,7 +7,7 @@ export type IconVariant = 'svg' | 'fonts' | 'svg-sprite';
  */
 export const DEFAULT_SAFETY_VARIANT: IconVariant = 'svg';
 
-const ICON_SUFFIX_REGEX = /(\d*)?(Regular|Filled|Light|Color)$/;
+const ICON_SUFFIX_REGEX = /(\d*)?(Regular|Filled|Light|Color)(?:_([a-z][a-zA-Z0-9]*))?$/;
 
 function isIconName(importName: string): boolean {
   return ICON_SUFFIX_REGEX.test(importName);
@@ -29,7 +29,8 @@ function toKebabCase(value: string): string {
 }
 
 function iconBaseName(importName: string): string {
-  return toKebabCase(importName.replace(ICON_SUFFIX_REGEX, ''));
+  const qualifier = ICON_SUFFIX_REGEX.exec(importName)?.[3] || '';
+  return toKebabCase(importName.replace(ICON_SUFFIX_REGEX, '')) + (qualifier ? `_${toKebabCase(qualifier)}` : '');
 }
 
 /**

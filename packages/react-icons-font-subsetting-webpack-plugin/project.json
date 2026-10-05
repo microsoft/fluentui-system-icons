@@ -12,6 +12,9 @@
     },
     "test": {
       "dependsOn": ["build", { "projects": ["react-icons-atomic-webpack-loader"], "target": "build" }]
+    },
+    "test:render": {
+      "dependsOn": ["build"]
     }
   }
 }
