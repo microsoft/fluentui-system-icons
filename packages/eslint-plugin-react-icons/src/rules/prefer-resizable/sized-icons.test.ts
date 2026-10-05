@@ -25,6 +25,23 @@ describe('sized-icons classification', () => {
     expect(mismatches).toEqual([]);
   });
 
+  it('only suggests targets that exist as resizable exports in metadata', () => {
+    const missing = Object.keys(metadata).flatMap((name) => {
+      const target = getResizableIconName(name);
+      return target !== null && metadata[target]?.type !== 'resizable' ? [`${name} -> ${target}`] : [];
+    });
+    expect(missing.length, missing.slice(0, 10).join('\n')).toBe(0);
+  });
+
+  it.each(['AlignDistributeBottom16Regular', 'AccessibilityCheckmark32Light', 'AppStore24Filled'])(
+    'does not suggest a nonexistent resizable counterpart for %s',
+    (name) => {
+      expect(metadata[name]?.type).toBe('sized');
+      expect(isSizedIconName(name)).toBe(true);
+      expect(getResizableIconName(name)).toBe(null);
+    },
+  );
+
   it('maps sized names to an existing resizable variant', () => {
     expect(getResizableIconName('AccessTime24Filled')).toBe('AccessTimeFilled');
     expect(getResizableIconName('Send24Regular')).toBe('SendRegular');
