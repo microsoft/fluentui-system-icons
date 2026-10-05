@@ -29,7 +29,11 @@ Detection is data-driven, generated from `@fluentui/react-icons` `metadata.json`
 - Names whose trailing digits are part of a product name rather than a size
   (e.g. `Battery10Regular`, `Fps120Regular`, `Timer10Filled`) are excluded via a
   generated collision denylist, so they are never mis-flagged.
-- Known system-icon sized exports without a resizable counterpart are recorded
+- Light system icons remain classified as sized, but never receive resizable
+  suggestions. They are a special 1px design treatment for sizes above 20px,
+  with no 20px or resizable Light counterpart. This general policy avoids storing
+  a separate exception for every Light icon.
+- Other known system-icon sized exports without a resizable counterpart are recorded
   in a separate generated list and do not receive suggestions. This availability
   check applies to `@fluentui/react-icons` and its subpaths, not brand icons or
   custom `sources`, whose exports are not described by the system-icon metadata.
@@ -41,9 +45,12 @@ exports. Regenerate the data with `yarn generate:data` when the icon set changes
 
 Resizable system icons are generated from 20px artwork of the same style.
 Some source variants only exist at other sizes, so a fixed-size export does not
-guarantee a resizable equivalent. For example, `AccessibilityCheckmark32Light`
-has no 20px Light source and therefore no `AccessibilityCheckmarkLight` export,
-even though the same icon has resizable Filled and Regular variants.
+guarantee a resizable equivalent. For example, `AlignDistributeBottom16Regular`
+has only 16px artwork and therefore no `AlignDistributeBottomRegular` export.
+
+The Light policy and generated availability list apply only to
+`@fluentui/react-icons` and its subpaths. Brand icons and custom sources retain
+their existing behavior.
 
 ## Examples
 

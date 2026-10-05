@@ -132,7 +132,12 @@ function computeData(metadataPath) {
   }
 
   const withoutResizable = entries
-    .filter(([name, meta]) => meta.type === 'sized' && metadata[name.replace(sizedRegExp, '$2')]?.type !== 'resizable')
+    .filter(
+      ([name, meta]) =>
+        meta.type === 'sized' &&
+        sizedRegExp.exec(name)?.[2] !== 'Light' &&
+        metadata[name.replace(sizedRegExp, '$2')]?.type !== 'resizable',
+    )
     .map(([name]) => name)
     .sort((a, b) => a.localeCompare(b));
 

@@ -21,6 +21,12 @@ const ruleTester = new RuleTester({
 ruleTester.run(RULE_NAME, rule, {
   valid: [
     {
+      code: `import { ZoomOut32Light } from '@fluentui/react-icons';\nconst a = <ZoomOut32Light />;`,
+    },
+    {
+      code: `import * as Icons from '@fluentui/react-icons/fonts/zoom-out';\nconst a = <Icons.ZoomOut32Light />;`,
+    },
+    {
       code: `import { AlignDistributeBottom16Regular, AccessibilityCheckmark32Light } from '@fluentui/react-icons';`,
     },
     {
@@ -56,6 +62,21 @@ ruleTester.run(RULE_NAME, rule, {
     },
   ],
   invalid: [
+    {
+      code: `import { ZoomOut32Light } from 'custom-icons';`,
+      options: [{ sources: ['custom-icons'] }],
+      errors: [
+        {
+          messageId: 'preferResizable',
+          suggestions: [
+            {
+              messageId: 'useResizable',
+              output: `import { ZoomOutLight } from 'custom-icons';`,
+            },
+          ],
+        },
+      ],
+    },
     {
       code: `import { AlignDistributeBottom16Regular } from 'custom-icons';`,
       options: [{ sources: ['custom-icons'] }],

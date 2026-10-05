@@ -31,7 +31,8 @@ export function isSizedIconName(name: string): boolean {
 
 /**
  * The resizable equivalent of a sized icon name (the size token stripped), or
- * `null` when the name is not sized or a known system icon has no counterpart.
+ * `null` when the name is not sized, is a system Light variant, or a known
+ * system icon has no counterpart.
  * E.g. `Send24Regular` -> `SendRegular`,
  * `PresenceDnd10Filled` -> `PresenceDndFilled`.
  */
@@ -41,7 +42,7 @@ export function getResizableIconName(name: string, source = '@fluentui/react-ico
   }
   if (
     (source === '@fluentui/react-icons' || source.startsWith('@fluentui/react-icons/')) &&
-    withoutResizable.has(name)
+    (SIZED_ICON_RE.exec(name)?.[2] === 'Light' || withoutResizable.has(name))
   ) {
     return null;
   }
