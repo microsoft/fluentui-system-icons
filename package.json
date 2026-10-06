@@ -126,6 +126,7 @@
   },
   "resolutions": {
     "@types/react-native": "0.72.8",
+    "playwright": "1.63.0",
     "@griffel/core": "1.20.1",
     "@griffel/react": "1.6.1",
     "@linaria/shaker/@babel/plugin-transform-runtime": "^7"
