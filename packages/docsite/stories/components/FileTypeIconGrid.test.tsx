@@ -47,6 +47,24 @@ describe('file type catalog search', () => {
     expect(screen.getByRole('img', { name: 'folder' })).toBeInTheDocument();
   });
 
+  it.each(['docx', '.docx', '  .DOCX  '])('finds the document icon using %s', (query) => {
+    render(<FileTypeIconGrid />);
+    search(query);
+    expect(screen.getByRole('img', { name: 'docx' })).toBeInTheDocument();
+  });
+
+  it('uses a search placeholder focused on icons and file extensions', () => {
+    render(<FileTypeIconGrid />);
+    expect(screen.getByPlaceholderText('Search icons or file extensions')).toBeInTheDocument();
+  });
+
+  it('keeps enum expressions out of the extension aliases', () => {
+    render(<FileTypeIconGrid />);
+    search('folder');
+    const tile = screen.getByText('folder', { selector: 'code' }).parentElement!;
+    expect(within(tile).queryByText('FileIconType.folder')).not.toBeInTheDocument();
+  });
+
   it('continues matching extension aliases', () => {
     const [name, aliases] = Object.entries(fileTypeIconMap).find(([iconName, extensions]) =>
       extensions?.some((extension) => extension !== iconName),

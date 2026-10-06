@@ -149,13 +149,16 @@ const FileTypeIconGrid = () => {
     setUnavailableIcons(new Set());
   }, [size]);
 
-  const normalizedQuery = searchQuery.trim().toLowerCase();
+  const normalizedQuery = searchQuery
+    .trim()
+    .toLowerCase()
+    .replace(/^(?:fileicontype\.|\.)/, '');
   const filteredIcons = CATALOG_ICONS.filter(
     ({ aliases, name, typeName }) =>
       !normalizedQuery ||
       name.includes(normalizedQuery) ||
       aliases.some((alias) => alias.includes(normalizedQuery)) ||
-      (typeName && `FileIconType.${typeName}`.toLowerCase().includes(normalizedQuery)),
+      typeName?.toLowerCase().includes(normalizedQuery),
   );
 
   const markUnavailable = (name: string) => {
@@ -202,7 +205,7 @@ const FileTypeIconGrid = () => {
           className={classes.search}
           type="search"
           onChange={(_event, data) => setSearchQuery(data.value)}
-          placeholder="Icon name, extension, or FileIconType..."
+          placeholder="Search icons or file extensions"
           size="large"
           value={searchQuery}
         />
@@ -232,7 +235,7 @@ const FileTypeIconGrid = () => {
           {filteredIcons.map((icon) => {
             const snippet = getCopySnippet(icon, size);
             const isUnavailable = unavailableIcons.has(icon.name);
-            const aliases = [...icon.aliases, ...(icon.typeName ? [`FileIconType.${icon.typeName}`] : [])];
+            const aliases = icon.aliases.join(', ');
 
             return (
               <div className={classes.tile} key={icon.name}>
@@ -281,9 +284,9 @@ const FileTypeIconGrid = () => {
                 </code>
                 <span
                   className={isUnavailable ? classes.unavailable : classes.aliases}
-                  title={isUnavailable ? 'Unavailable on current CDN' : aliases.join(', ')}
+                  title={isUnavailable ? 'Unavailable on current CDN' : aliases}
                 >
-                  {isUnavailable ? 'Unavailable on current CDN' : aliases.join(', ')}
+                  {isUnavailable ? 'Unavailable on current CDN' : aliases}
                 </span>
               </div>
             );

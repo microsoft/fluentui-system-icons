@@ -22,11 +22,8 @@
     },
     "test": {
       "cache": true,
-      "inputs": [
-        "{projectRoot}/stories/**",
-        "{projectRoot}/vitest.config.ts",
-        "{workspaceRoot}/packages/react-icons-file-type/src/**"
-      ]
+      "dependsOn": ["^build"],
+      "inputs": ["{projectRoot}/stories/**", "{projectRoot}/vitest.config.ts", "{projectRoot}/package.json", "^default"]
     },
     "extract-storybook-llms": {
       "cache": true,
