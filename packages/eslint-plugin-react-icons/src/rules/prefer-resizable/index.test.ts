@@ -21,6 +21,15 @@ const ruleTester = new RuleTester({
 ruleTester.run(RULE_NAME, rule, {
   valid: [
     {
+      code: `import { ZoomOut32Light, TextEditStyle32Light_en } from '@fluentui/react-icons';`,
+    },
+    {
+      code: `import { TextEditStyle32Light_en as Edit } from '@fluentui/react-icons/headless/fonts/text-edit-style_en';\nconst a = <Edit />;`,
+    },
+    {
+      code: `import * as Icons from '@fluentui/react-icons/fonts/text-edit-style_en';\nconst a = <Icons.TextEditStyle32Light_en />;`,
+    },
+    {
       code: `import { BookQuestionMark24Filled_ar } from '@fluentui/react-icons';`,
     },
     {
@@ -59,6 +68,21 @@ ruleTester.run(RULE_NAME, rule, {
     },
   ],
   invalid: [
+    {
+      code: `import { TextEditStyle32Light_en } from 'custom-icons';`,
+      options: [{ sources: ['custom-icons'] }],
+      errors: [
+        {
+          messageId: 'preferResizable',
+          suggestions: [
+            {
+              messageId: 'useResizable',
+              output: `import { TextEditStyleLight_en } from 'custom-icons';`,
+            },
+          ],
+        },
+      ],
+    },
     {
       code: `import { AlignDistributeBottom16Regular } from 'custom-icons';`,
       options: [{ sources: ['custom-icons'] }],

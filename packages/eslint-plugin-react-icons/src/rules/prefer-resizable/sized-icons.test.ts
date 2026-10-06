@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 
 import { getResizableIconName, isSizedIconName } from './sized-icons';
+import { SIZED_WITHOUT_RESIZABLE } from './icon-sizes.generated';
 
 type IconMeta = { svg: boolean; font: boolean; type: 'sized' | 'resizable' };
 
@@ -31,6 +32,36 @@ describe('sized-icons classification', () => {
       return target !== null && metadata[target]?.type !== 'resizable' ? [`${name} -> ${target}`] : [];
     });
     expect(missing.length, missing.slice(0, 10).join('\n')).toBe(0);
+  });
+
+  it.each(['ZoomOut32Light', 'TextEditStyle32Light_en'])(
+    'keeps %s sized without storing per-icon Light exceptions',
+    (name) => {
+      expect(metadata[name]?.type).toBe('sized');
+      expect(isSizedIconName(name)).toBe(true);
+      expect(getResizableIconName(name)).toBe(null);
+      expect(SIZED_WITHOUT_RESIZABLE.some((entry) => /Light(?:_[a-z][a-zA-Z0-9]*)?$/.test(entry))).toBe(false);
+    },
+  );
+
+  it('requires review if the catalogue gains a 20px or resizable Light variant, including locales', () => {
+    const light = Object.entries(metadata).filter(([name]) => /Light(?:_[a-z][a-zA-Z0-9]*)?$/.test(name));
+    expect(light.length).toBeGreaterThan(0);
+    expect(
+      light.filter(([name, meta]) => meta.type === 'resizable' || /20Light(?:_[a-z][a-zA-Z0-9]*)?$/.test(name)),
+    ).toEqual([]);
+  });
+
+  it('limits the Light policy to system-icon imports and not names containing Light', () => {
+    expect(getResizableIconName('ZoomOut32Light', '@fluentui/react-icons/fonts/zoom-out')).toBe(null);
+    expect(
+      getResizableIconName('TextEditStyle32Light_en', '@fluentui/react-icons/headless/fonts/text-edit-style_en'),
+    ).toBe(null);
+    expect(getResizableIconName('TextEditStyle32Light_en', '@fluentui/react-brand-icons')).toBe(
+      'TextEditStyleLight_en',
+    );
+    expect(getResizableIconName('TextEditStyle32Light_en', 'custom-icons')).toBe('TextEditStyleLight_en');
+    expect(getResizableIconName('Lightbulb24Regular')).toBe('LightbulbRegular');
   });
 
   it.each([
