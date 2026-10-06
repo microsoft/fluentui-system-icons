@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import FileTypeIconGridLazy from '../components/FileTypeIconGridLazy';
+
+<Meta title="File Type Icons/Catalog" />
+
+<h1 className="sbdocs-title">File type icons catalog</h1>
+
+Search the available `@fluentui/react-icons-file-type` assets by icon name, file extension, or `FileIconType`. Select an icon size, then copy a ready-to-use JSX snippet.
+
+For file extensions:
+
+```tsx
+import { FileTypeIcon } from '@fluentui/react-icons-file-type';
+
+function App() {
+  return <FileTypeIcon extension="docx" size={48} />;
+}
+```
+
+For icons that are not associated with a file extension:
+
+```tsx
+import { FileIconType, FileTypeIcon } from '@fluentui/react-icons-file-type';
+
+function App() {
+  return <FileTypeIcon type={FileIconType.folder} size={48} />;
+}
+```
+
+<FileTypeIconGridLazy />
