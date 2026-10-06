@@ -1,9 +1,9 @@
 # Keeps yarn.lock honest, mirroring the `yarn install --immutable` gate in CI.
 
 # Catches a lockfile that was regenerated locally but never committed; `--immutable`
-# alone cannot see this, because it only ever inspects the working tree.
-if ! git diff --quiet HEAD -- yarn.lock; then
-  echo "pre-push: yarn.lock differs from HEAD. Commit it before pushing." >&2
+# alone cannot see this, or a local manifest undo hiding committed dependency drift.
+if ! git diff --quiet HEAD -- ':(top)yarn.lock' ':(top)package.json' ':(top,glob)packages/*/package.json' ':(top)importer/package.json'; then
+  echo "pre-push: yarn.lock or a workspace manifest differs from HEAD. Commit it before pushing." >&2
   exit 1
 fi
 
