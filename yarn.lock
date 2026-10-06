@@ -4433,7 +4433,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-native-icons@workspace:packages/react-native-icons"
   dependencies:
-    "@types/react-native": "npm:^0.72.8"
+    "@types/react-native": "npm:^0.68.0"
     tslib: "npm:^2.1.0"
   peerDependencies:
     react: ">=16.8.0 <20.0.0"
@@ -8836,7 +8836,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-native@npm:^0.72.8":
+"@types/react-native@npm:0.72.8":
   version: 0.72.8
   resolution: "@types/react-native@npm:0.72.8"
   dependencies:
