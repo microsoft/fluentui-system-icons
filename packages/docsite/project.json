@@ -20,6 +20,14 @@
       "cache": true,
       "inputs": ["{projectRoot}/stories/**", "{projectRoot}/.storybook/**", "{projectRoot}/eslint.config.mjs"]
     },
+    "test": {
+      "cache": true,
+      "inputs": [
+        "{projectRoot}/stories/**",
+        "{projectRoot}/vitest.config.ts",
+        "{workspaceRoot}/packages/react-icons-file-type/src/**"
+      ]
+    },
     "extract-storybook-llms": {
       "cache": true,
       "dependsOn": ["build"],

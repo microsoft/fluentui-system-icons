@@ -155,21 +155,41 @@ const FileTypeIconGrid = () => {
       !normalizedQuery ||
       name.includes(normalizedQuery) ||
       aliases.some((alias) => alias.includes(normalizedQuery)) ||
-      typeName?.toLowerCase().includes(normalizedQuery),
+      (typeName && `FileIconType.${typeName}`.toLowerCase().includes(normalizedQuery)),
   );
 
   const markUnavailable = (name: string) => {
     setUnavailableIcons((current) => new Set(current).add(name));
   };
 
-  const copyIcon = (snippet: string) => {
-    void navigator.clipboard.writeText(snippet);
-    dispatchToast(
-      <Toast>
-        <ToastTitle>Icon JSX was copied to the clipboard</ToastTitle>
-      </Toast>,
-      { intent: 'success' },
-    );
+  const markAvailable = (name: string) => {
+    setUnavailableIcons((current) => {
+      if (!current.has(name)) {
+        return current;
+      }
+      const next = new Set(current);
+      next.delete(name);
+      return next;
+    });
+  };
+
+  const copyIcon = async (snippet: string) => {
+    try {
+      await navigator.clipboard.writeText(snippet);
+      dispatchToast(
+        <Toast>
+          <ToastTitle>Icon JSX was copied to the clipboard</ToastTitle>
+        </Toast>,
+        { intent: 'success' },
+      );
+    } catch {
+      dispatchToast(
+        <Toast>
+          <ToastTitle>Icon JSX could not be copied to the clipboard</ToastTitle>
+        </Toast>,
+        { intent: 'error' },
+      );
+    }
   };
 
   return (
@@ -222,7 +242,7 @@ const FileTypeIconGrid = () => {
                     aria-label={`Copy ${icon.name} JSX`}
                     className={classes.copyButton}
                     icon={<CopyRegular />}
-                    onClick={() => copyIcon(snippet)}
+                    onClick={() => void copyIcon(snippet)}
                     title="Copy icon JSX to clipboard"
                   />
                 )}
@@ -233,12 +253,14 @@ const FileTypeIconGrid = () => {
                       alt={icon.name}
                       extension={icon.extension}
                       onError={() => markUnavailable(icon.name)}
+                      onLoad={() => markAvailable(icon.name)}
                       size={size}
                     />
                   ) : icon.typeName ? (
                     <FileTypeIcon
                       alt={icon.name}
                       onError={() => markUnavailable(icon.name)}
+                      onLoad={() => markAvailable(icon.name)}
                       size={size}
                       type={FileIconType[icon.typeName]}
                     />
@@ -247,6 +269,7 @@ const FileTypeIconGrid = () => {
                       alt={icon.name}
                       height={size}
                       onError={() => markUnavailable(icon.name)}
+                      onLoad={() => markAvailable(icon.name)}
                       src={`${DEFAULT_BASE_URL}${size}/${icon.name}.svg`}
                       width={size}
                     />
