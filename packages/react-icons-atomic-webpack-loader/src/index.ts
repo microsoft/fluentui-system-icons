@@ -2,6 +2,15 @@ import { transformSource } from './transform';
 import { SUPPORTED_MODULE_NAMES } from './modules';
 import type { IconVariant } from './modules';
 import type { AtomicLoaderContext } from './loader-context';
+import { selectExports } from './select-export';
+import { composeSourceMaps, type SourceMapInput } from './source-maps';
+import {
+  assertSelectableResource,
+  getRegisteredSelectorCapabilities,
+  getSelectorCapability,
+  parseSelectorQuery,
+  SELECTOR_PROTOCOL_IDENTIFIER,
+} from './selector-protocol';
 
 export type { IconVariant };
 export type { AtomicLoaderContext };
@@ -62,18 +71,56 @@ export interface FluentIconsAtomicImportLoaderOptions {
    * (`import('./icons')`) over relying on this; see the README for the gotchas.
    */
   allowDynamicImports?: boolean;
+  /**
+   * Module graph granularity for icon implementations. `"family"` preserves the
+   * existing family-module behavior. `"icon"` emits query-addressed per-export
+   * modules for independently placeable chunks.
+   */
+  moduleGranularity?: 'family' | 'icon';
 }
 
-export default function fluentIconsAtomicImportLoader(this: AtomicLoaderContext, sourceCode: string): void {
-  const { resourcePath } = this;
+export default function fluentIconsAtomicImportLoader(
+  this: AtomicLoaderContext,
+  sourceCode: string,
+  inputSourceMap?: SourceMapInput,
+): void {
+  const { resourcePath, resourceQuery = '' } = this;
+  const generateSourceMap = this.sourceMap !== false;
+  const passThroughSourceMap = generateSourceMap ? inputSourceMap : undefined;
+
+  try {
+    const selector = parseSelectorQuery(resourceQuery);
+    if (selector) {
+      assertSelectableResource(resourcePath, selector);
+      assertPluginCapability(this, resourcePath);
+      const selected = selectExports(sourceCode, resourcePath, selector, generateSourceMap);
+      const map = composeSourceMaps(selected.map, inputSourceMap);
+      return this.callback(null, selected.code, map);
+    }
+  } catch (error) {
+    const reason = error instanceof Error ? error.message : String(error);
+    return this.callback(
+      new Error(`FluentIconsAtomicImportLoader: Failed to select "${resourcePath}${resourceQuery}": ${reason}`),
+    );
+  }
+
+  if (isGeneratedIconPackageResource(resourcePath)) {
+    return this.callback(null, sourceCode, passThroughSourceMap);
+  }
 
   // Cheap pre-skip only: a false positive here just means we parse the file and
   // let the module record decide. Diagnostics are driven by actual imports.
   if (!SUPPORTED_MODULE_NAMES.some((name) => sourceCode.includes(name))) {
-    return this.callback(null, sourceCode);
+    return this.callback(null, sourceCode, passThroughSourceMap);
   }
 
-  const { iconVariant = 'svg', fallbackVariant, headless = false, allowDynamicImports = false } = this.getOptions();
+  const {
+    iconVariant = 'svg',
+    fallbackVariant,
+    headless = false,
+    allowDynamicImports = false,
+    moduleGranularity = 'family',
+  } = this.getOptions();
 
   let code: string;
   let map: ReturnType<typeof transformSource>['map'];
@@ -85,6 +132,8 @@ export default function fluentIconsAtomicImportLoader(this: AtomicLoaderContext,
       fallbackVariant,
       headless,
       allowDynamicImports,
+      moduleGranularity,
+      sourceMap: generateSourceMap,
       path: resourcePath,
     }));
   } catch (error) {
@@ -103,5 +152,25 @@ export default function fluentIconsAtomicImportLoader(this: AtomicLoaderContext,
     return this.callback(new Error(`FluentIconsAtomicImportLoader: ${firstError.message}`));
   }
 
-  return this.callback(null, code, map);
+  return this.callback(null, code, composeSourceMaps(map, inputSourceMap));
+}
+
+function isGeneratedIconPackageResource(resourcePath: string): boolean {
+  const normalized = resourcePath.replace(/\\/g, '/');
+  return /\/react-(?:brand-)?icons\/lib(?:-cjs)?\//.test(normalized);
+}
+
+function assertPluginCapability(context: AtomicLoaderContext, resourcePath: string): void {
+  const capability = getSelectorCapability(resourcePath);
+  if (!capability) {
+    return;
+  }
+
+  const capabilities = context._compilation ? getRegisteredSelectorCapabilities(context._compilation) : undefined;
+  if (!capabilities?.has(capability)) {
+    throw new Error(
+      `"${capability}" icon selection requires a query-aware subsetting plugin supporting ` +
+        `selector protocol "${SELECTOR_PROTOCOL_IDENTIFIER}"`,
+    );
+  }
 }

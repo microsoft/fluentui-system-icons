@@ -1,3 +1,9 @@
+## 0.0.4 (2026-09-24)
+
+### 🚀 Features
+
+- add Fabric Ontology file type icon ([#1248](https://github.com/microsoft/fluentui-system-icons/pull/1248))
+
 ## 0.0.3 (2026-09-10)
 
 ### 🩹 Fixes

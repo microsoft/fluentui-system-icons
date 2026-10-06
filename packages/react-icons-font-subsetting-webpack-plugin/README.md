@@ -39,6 +39,13 @@ The plugin subsets the same shared font files used by the standard API, based on
 
 > **Tip 💡:** You don't have to write atomic headless imports by hand. Pair this plugin with [`@fluentui/react-icons-atomic-webpack-loader`](../react-icons-atomic-webpack-loader) using `{ headless: true, iconVariant: 'fonts' }` — it rewrites plain barrel imports (`import { AddFilled } from '@fluentui/react-icons'`) into headless font atoms, which this plugin then subsets. You still import `@fluentui/react-icons/headless/fonts/styles.css` yourself.
 
+The plugin is query-aware for the atomic loader's
+`moduleGranularity: 'icon'` mode. Queried modules are attributed through their
+query-free physical paths while their exact selected exports are aggregated.
+Use coordinated loader/plugin releases: the two packages perform a
+compilation-level `v1` selector capability handshake and fail the build instead
+of producing an incorrect subset when support is missing or incompatible.
+
 ## Usage
 
 ### With `fluentIconFont` condition

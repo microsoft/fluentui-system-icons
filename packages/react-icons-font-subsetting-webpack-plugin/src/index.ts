@@ -11,6 +11,7 @@ import type {
   BundlerPlugin,
   BundlerRawSource,
 } from './bundler-api';
+import { assertSupportedSelector, registerSelectorCapability } from './selector-protocol';
 
 export type * from './bundler-api';
 
@@ -88,6 +89,7 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPl
     const { Compilation, sources } = compiler.webpack;
 
     compiler.hooks.compilation.tap(PLUGIN_NAME, (compilation) => {
+      registerSelectorCapability(compilation);
       compilation.hooks.processAssets.tapPromise(
         { name: PLUGIN_NAME, stage: Compilation.PROCESS_ASSETS_STAGE_OPTIMIZE },
         async () => {
@@ -96,12 +98,13 @@ export default class FluentUIReactIconsFontSubsettingPlugin implements BundlerPl
 
           for (const m of compilation.modules) {
             if (isFluentUIReactFontChunk(m)) {
+              assertSupportedSelector(m.resource, compilation);
               const icons = resolveUsedIconExports(m, compilation.moduleGraph, runtime);
               if (icons === null) {
                 continue;
               }
 
-              const outputRoot = resolve(dirname(m.resource), '../..');
+              const outputRoot = resolve(dirname(getPhysicalResource(m.resource)), '../..');
               const packageRoot = dirname(outputRoot);
               const usage = packageUsages.get(packageRoot) ?? {
                 outputRoots: new Set<string>(),
@@ -359,7 +362,7 @@ function isFluentUIReactFontChunk(m: BundlerModule): m is BundlerNormalModule {
     return false;
   }
 
-  const resource = m.resource;
+  const resource = getPhysicalResource(m.resource);
   if (!resource) {
     return false;
   }
@@ -370,6 +373,11 @@ function isFluentUIReactFontChunk(m: BundlerModule): m is BundlerNormalModule {
   }
 
   return REACT_ICONS_FONT_MODULE_IMPORT_PATTERN.test(resource);
+}
+
+function getPhysicalResource(resource: string): string {
+  const queryIndex = resource.indexOf('?');
+  return queryIndex === -1 ? resource : resource.slice(0, queryIndex);
 }
 
 /**

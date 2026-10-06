@@ -347,18 +347,13 @@ describe('Build Verification', () => {
             mc9l5x: "f14t3ns0",
             a9b677: "fhson10",
             Bqenvij: "f1un31zh",
-            B68tc82: 0,
-            Bmxbyg5: 0,
-            Bpg54ce: "f1a3p1vp",
             B80ckks: "fmd4ok8",
             Bhrd7zp: "f5ljve1",
             Bg96gwp: "fne0op0",
             sj55zd: "f303qgw"
           }
         }, {
-          d: [".f9dzkbp{font-family:FluentSystemIconsFilled;}", ".f1krtbx5{font-family:FluentSystemIconsRegular;}", ".f1sxfq9t{font-family:FluentSystemIcons;}", ".fgtzeza{font-family:FluentSystemIconsLight;}", ".f14t3ns0{display:inline-block;}", ".fhson10{width:1em;}", ".f1un31zh{height:1em;}", [".f1a3p1vp{overflow:hidden;}", {
-            p: -1
-          }], ".fmd4ok8{font-style:normal;}", ".f5ljve1{font-weight:normal;}", ".fne0op0{line-height:1em;}", ".f303qgw{color:currentColor;}"]
+          d: [".f9dzkbp{font-family:FluentSystemIconsFilled;}", ".f1krtbx5{font-family:FluentSystemIconsRegular;}", ".f1sxfq9t{font-family:FluentSystemIcons;}", ".fgtzeza{font-family:FluentSystemIconsLight;}", ".f14t3ns0{display:inline-block;}", ".fhson10{width:1em;}", ".f1un31zh{height:1em;}", ".fmd4ok8{font-style:normal;}", ".f5ljve1{font-weight:normal;}", ".fne0op0{line-height:1em;}", ".f303qgw{color:currentColor;}"]
         });"
       `);
       expect(fs.readFileSync(path.join(root, unprocessed), 'utf8')).toMatchInlineSnapshot(`
@@ -422,13 +417,6 @@ describe('Build Verification', () => {
                 // causing layout shift on every font icon.
                 width: '1em',
                 height: '1em',
-                // Pin the inline-block baseline to its bottom edge (like the resizable SVG, a
-                // replaced element). By default an inline-block is baseline-aligned via its
-                // glyph, whose baseline moves when the webfont's metrics swap in, growing the
-                // line box and shifting inline text vertically. \`overflow: hidden\` makes the
-                // baseline the bottom margin edge instead, which is font-independent and matches
-                // where the loaded glyph already sits (no visible reposition).
-                overflow: 'hidden',
                 fontStyle: 'normal',
                 fontWeight: 'normal',
                 lineHeight: '1em',
@@ -2089,19 +2077,59 @@ describe('Build Verification', () => {
       return { svgPathEsm, svgPathCjs, fontsPathEsm, fontsPathCjs };
     }
 
+    it('keeps every generated ESM declaration independently selectable', async () => {
+      const atomRoot = path.join(__dirname, 'lib/atoms');
+      const atomDirectories = ['svg', 'fonts', 'headless-svg', 'headless-fonts', 'svg-sprite'];
+
+      for (const directory of atomDirectories) {
+        const directoryPath = path.join(atomRoot, directory);
+        if (!fs.existsSync(directoryPath)) continue;
+
+        for (const filename of await readdir(directoryPath)) {
+          if (!filename.endsWith('.js')) continue;
+          const source = await readFile(path.join(directoryPath, filename), 'utf8');
+          const lines = source.split('\n').filter(Boolean);
+          const exportNames = lines
+            .map((line) => /^export const ([A-Za-z_$][\w$]*)\s*=/.exec(line)?.[1])
+            .filter(Boolean);
+          const exportNameSet = new Set(exportNames);
+
+          expect(exportNames.length, `${directory}/${filename} must export icon declarations`).toBeGreaterThan(0);
+
+          for (const line of lines) {
+            expect(
+              /^(?:"[^"]+";|import .+;|\/\*\*.*\*\/|export const [A-Za-z_$][\w$]*\s*=.+;)$/.test(line),
+              `${directory}/${filename} contains unsupported top-level syntax: ${line}`,
+            ).toBe(true);
+          }
+
+          for (const line of lines.filter((value) => value.startsWith('export const '))) {
+            const ownName = /^export const ([A-Za-z_$][\w$]*)\s*=/.exec(line)?.[1];
+            const siblingReference = line
+              .match(/[A-Za-z_$][\w$]*/g)
+              ?.find((identifier) => identifier !== ownName && exportNameSet.has(identifier));
+            expect(
+              siblingReference,
+              `${directory}/${filename}:${ownName} depends on sibling export ${siblingReference}`,
+            ).toBeUndefined();
+          }
+        }
+      }
+    }, 30_000);
+
     it(`should have same number of atoms/svg icon files in lib and lib-cjs`, async () => {
       const { svgPathCjs, svgPathEsm } = getAssetPaths();
       const esmStats = await getAtomDirStats(svgPathEsm);
       const cjsStats = await getAtomDirStats(svgPathCjs, 'lib-cjs');
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`3052`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`3052`);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`3054`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`3054`);
     });
     it(`should have same number of atoms/fonts icon files in lib and lib-cjs`, async () => {
       const { fontsPathCjs, fontsPathEsm } = getAssetPaths();
       const esmStats = await getAtomDirStats(fontsPathEsm);
       const cjsStats = await getAtomDirStats(fontsPathCjs, 'lib-cjs');
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`3045`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`3045`);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`3047`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`3047`);
     });
     it.each(['lib', 'lib-cjs'])('should have atoms/svg directory with icon files in %s', async (libDir) => {
       const atomsSvgPath = path.join(__dirname, libDir, 'atoms', 'svg');

@@ -6269,6 +6269,16 @@
     "font": true,
     "type": "resizable"
   },
+  "CircleImageOffFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "CircleImageOffRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
   "CircleLineFilled": {
     "svg": true,
     "font": true,
@@ -14415,6 +14425,26 @@
     "type": "resizable"
   },
   "KeyboardLayoutSplitRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "KeyboardMouseFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "KeyboardMouseRegular": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "KeyboardMouseOffFilled": {
+    "svg": true,
+    "font": true,
+    "type": "resizable"
+  },
+  "KeyboardMouseOffRegular": {
     "svg": true,
     "font": true,
     "type": "resizable"
@@ -39804,6 +39834,36 @@
     "font": true,
     "type": "sized"
   },
+  "Autopilot24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Autopilot24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Autopilot28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Autopilot28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Autopilot32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Autopilot32Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Autosum16Filled": {
     "svg": true,
     "font": true,
@@ -53665,6 +53725,16 @@
     "type": "sized"
   },
   "CircleImage28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CircleImageOff20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "CircleImageOff20Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -82209,6 +82279,26 @@
     "font": true,
     "type": "sized"
   },
+  "KeyboardMouse20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "KeyboardMouse20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "KeyboardMouseOff20Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "KeyboardMouseOff20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "KeyboardOff16Filled": {
     "svg": true,
     "font": true,
@@ -101629,6 +101719,16 @@
     "font": true,
     "type": "sized"
   },
+  "Pivot16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "Pivot16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "Pivot20Filled": {
     "svg": true,
     "font": true,
@@ -105524,12 +105624,42 @@
     "font": true,
     "type": "sized"
   },
+  "RenameA16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "RenameA16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "RenameA20Filled": {
     "svg": true,
     "font": true,
     "type": "sized"
   },
   "RenameA20Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "RenameA24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "RenameA24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "RenameA28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "RenameA28Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -122879,6 +123009,16 @@
     "font": true,
     "type": "sized"
   },
+  "TextCollapse16Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextCollapse16Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "TextCollapse20Filled": {
     "svg": true,
     "font": true,
@@ -122899,7 +123039,27 @@
     "font": true,
     "type": "sized"
   },
+  "TextCollapse28Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextCollapse28Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextCollapse32Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "TextCollapse32Light": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "TextCollapse32Regular": {
     "svg": true,
     "font": true,
     "type": "sized"

@@ -176,8 +176,6 @@ export const SIZED_WITHOUT_RESIZABLE: readonly string[] = [
   'IosArrowLtr24Regular',
   'IosArrowRtl24Filled',
   'IosArrowRtl24Regular',
-  'KeyboardMouse16Filled',
-  'KeyboardMouse16Regular',
   'Kiosk24Filled',
   'Kiosk24Regular',
   'LaptopMultiple24Filled',

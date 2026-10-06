@@ -3901,6 +3901,7 @@ __metadata:
   resolution: "@fluentui/react-icons-atomic-webpack-loader@workspace:packages/react-icons-atomic-webpack-loader"
   dependencies:
     "@fluentui/react-icons": "npm:*"
+    "@jridgewell/remapping": "npm:^2.3.5"
     magic-string: "npm:^0.30.0"
     oxc-parser: "npm:^0.125.0"
   peerDependencies:

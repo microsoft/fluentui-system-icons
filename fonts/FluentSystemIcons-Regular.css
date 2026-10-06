@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.woff2?f6dbe09bc7de663d913a03749a3c8ce3") format("woff2"),
-url("./FluentSystemIcons-Regular.woff?f6dbe09bc7de663d913a03749a3c8ce3") format("woff"),
-url("./FluentSystemIcons-Regular.ttf?f6dbe09bc7de663d913a03749a3c8ce3") format("truetype");
+    src: url("./FluentSystemIcons-Regular.woff2?4b3e90116ab06026dba769646869abc2") format("woff2"),
+url("./FluentSystemIcons-Regular.woff?4b3e90116ab06026dba769646869abc2") format("woff"),
+url("./FluentSystemIcons-Regular.ttf?4b3e90116ab06026dba769646869abc2") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -29278,19 +29278,43 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 .icon-ic_fluent_text_number_list_rtl_rotate_90_28_regular:before {
     content: "\f0d19";
 }
-.icon-ic_fluent_book_question_mark_24_regular_ar:before {
+.icon-ic_fluent_autopilot_24_regular:before {
+    content: "\f0d1a";
+}
+.icon-ic_fluent_autopilot_28_regular:before {
+    content: "\f0d1b";
+}
+.icon-ic_fluent_autopilot_32_regular:before {
+    content: "\f0d1c";
+}
+.icon-ic_fluent_circle_image_off_20_regular:before {
+    content: "\f0d1d";
+}
+.icon-ic_fluent_keyboard_mouse_20_regular:before {
+    content: "\f0d1e";
+}
+.icon-ic_fluent_keyboard_mouse_off_20_regular:before {
+    content: "\f0d1f";
+}
+.icon-ic_fluent_pivot_16_regular:before {
+    content: "\f0d20";
+}
+.icon-ic_fluent_rename_a_16_regular:before {
+    content: "\f0d21";
+}
+.icon-ic_fluent_rename_a_24_regular:before {
     content: "\f0d22";
 }
-.icon-ic_fluent_comment_note_24_regular_ar:before {
+.icon-ic_fluent_rename_a_28_regular:before {
     content: "\f0d23";
 }
-.icon-ic_fluent_image_arrow_back_24_regular_ar:before {
+.icon-ic_fluent_text_collapse_16_regular:before {
     content: "\f0d24";
 }
-.icon-ic_fluent_image_arrow_forward_24_regular_ar:before {
+.icon-ic_fluent_text_collapse_28_regular:before {
     content: "\f0d25";
 }
-.icon-ic_fluent_text_bold_16_regular_bg:before {
+.icon-ic_fluent_text_collapse_32_regular:before {
     content: "\f0d26";
 }
 .icon-ic_fluent_text_bold_20_regular_bg:before {
@@ -30669,4 +30693,19 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_text_proofing_tools_24_regular_zh:before {
     content: "\f0ef1";
+}
+.icon-ic_fluent_book_question_mark_24_regular_ar:before {
+    content: "\f0ef2";
+}
+.icon-ic_fluent_comment_note_24_regular_ar:before {
+    content: "\f0ef3";
+}
+.icon-ic_fluent_image_arrow_back_24_regular_ar:before {
+    content: "\f0ef4";
+}
+.icon-ic_fluent_image_arrow_forward_24_regular_ar:before {
+    content: "\f0ef5";
+}
+.icon-ic_fluent_text_bold_16_regular_bg:before {
+    content: "\f0ef6";
 }

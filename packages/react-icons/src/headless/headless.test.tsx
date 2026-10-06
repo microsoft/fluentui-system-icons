@@ -3,6 +3,8 @@
  */
 
 import * as React from 'react';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { render } from '@testing-library/react';
 import { describe, expect, test } from 'vitest';
 
@@ -235,6 +237,29 @@ describe('Headless API — Font icons', () => {
     expect(el).toHaveClass('fui-Icon-font');
     expect(el?.textContent).toBe('\uE001');
   });
+
+  test.each([FontFile.Filled, FontFile.Regular, FontFile.Resizable, FontFile.Light])(
+    'reserves space without clipping font family %s',
+    (fontFile) => {
+      const stylesheet = document.createElement('style');
+      stylesheet.textContent = readFileSync(join(__dirname, 'styles.css'), 'utf8');
+      document.head.appendChild(stylesheet);
+
+      try {
+        const FontIcon = createFluentFontIcon('FontIcon', '\uE001', fontFile);
+        const { container } = render(<FontIcon />);
+        const icon = container.querySelector('i')!;
+        const styles = getComputedStyle(icon);
+
+        expect(styles.display).toBe('inline-block');
+        expect(styles.width).toBe('1em');
+        expect(styles.height).toBe('1em');
+        expect(styles.overflow || 'visible').toBe('visible');
+      } finally {
+        stylesheet.remove();
+      }
+    },
+  );
 
   test('createFluentFontIcon applies fontSize via style', () => {
     const MyFontIcon = createFluentFontIcon('MyFontIcon', '\uE001', FontFile.Regular, 24);

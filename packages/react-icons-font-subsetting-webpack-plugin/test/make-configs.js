@@ -5,7 +5,7 @@
  * The same entries, thresholds and assertions run against both webpack and rspack; only the
  * CSS-extraction and HTML plugins differ, so they are injected by the bundler-specific configs.
  */
-const { resolve } = require('path');
+const { resolve, join } = require('path');
 const { readFileSync } = require('node:fs');
 const { create: createFont } = require('fontkit');
 
@@ -20,6 +20,15 @@ const entries = {
     src: './src/localized.js',
     threshold: 3 * 1_024,
     useAtomicLoader: true,
+    assertNoGriffel: true,
+    glyphs: ['TextBoldRegular', 'TextBoldRegular_es', 'TextBold24Regular_srCyrl', 'TextNumberListRtl90Regular'],
+    excludedGlyphs: ['TextBoldRegular_fr', 'TextBold24Regular_fr'],
+  },
+  localizedIcon: {
+    src: './src/localized.js',
+    threshold: 3 * 1_024,
+    useAtomicLoader: true,
+    moduleGranularity: 'icon',
     assertNoGriffel: true,
     glyphs: ['TextBoldRegular', 'TextBoldRegular_es', 'TextBold24Regular_srCyrl', 'TextNumberListRtl90Regular'],
     excludedGlyphs: ['TextBoldRegular_fr', 'TextBold24Regular_fr'],
@@ -45,6 +54,13 @@ const entries = {
     useAtomicLoader: true,
     assertNoGriffel: true,
   },
+  e2eBarrelHeadlessFontsIcon: {
+    src: './src/e2e-barrel-headless-fonts.js',
+    threshold: 1.5 * 1_024, // 1.5 KB
+    useAtomicLoader: true,
+    moduleGranularity: 'icon',
+    assertNoGriffel: true,
+  },
   // Regression guard: naming the runtime chunk makes the runtime name differ from the entry name.
   // rspack resolves used exports per runtime, so querying the wrong one reports every module as
   // unused and silently subsets nothing. Every other entry here happens to have runtime === entry
@@ -54,6 +70,22 @@ const entries = {
     threshold: 2 * 1_024, // 2 KB — same content as `atoms`, so the same budget must hold
     runtimeChunkName: 'shared-runtime',
   },
+  // Async chunks: one icon is eager, the other reachable only through `import()`, and they live in
+  // different font families. The size ceiling cannot police this on its own — losing the async
+  // glyph makes the font *smaller* — so glyph counts are asserted too (`.notdef` is always glyph 0).
+  lazyAtoms: {
+    src: './src/lazy-atoms.js',
+    threshold: 2 * 1_024, // 2 KB
+    fontGlyphCounts: { 'FluentSystemIcons-Resizable': 2, 'FluentSystemIcons-Filled': 2 },
+  },
+  // The harder variant: both icons are sized+Filled, so a *single* emitted font must carry glyphs
+  // contributed by two different chunks. Fonts are subset per family across the whole build, not
+  // per chunk, so the eager half must not subset the async half's glyph away.
+  lazySharedFontFamily: {
+    src: './src/lazy-shared-family.js',
+    threshold: 2 * 1_024, // 2 KB
+    fontGlyphCounts: { 'FluentSystemIcons-Filled': 3 },
+  },
 };
 
 /**
@@ -61,11 +93,13 @@ const entries = {
  * @property {string} src
  * @property {number} threshold
  * @property {boolean} [useAtomicLoader]
+ * @property {'icon'} [moduleGranularity]
  * @property {boolean} [assertNoGriffel]
  * @property {boolean} [assertModuleFormats]
  * @property {string[]} [glyphs]
  * @property {string[]} [excludedGlyphs]
  * @property {string} [runtimeChunkName] Name the runtime chunk, decoupling runtime name from entry name.
+ * @property {Record<string, number>} [fontGlyphCounts]
  */
 
 /**
@@ -119,12 +153,16 @@ function createConfig(name, entry, adapter, isDevServer) {
                 // Rewrite barrel `@fluentui/react-icons` imports to headless font atoms
                 // before the bundler parses them.
                 test: /\.js$/,
-                include: resolve(__dirname, 'src'),
+                include: [resolve(__dirname, 'src'), /[\\/]react-(?:brand-)?icons[\\/]lib[\\/]atoms[\\/]/],
                 enforce: /** @type {'pre'} */ ('pre'),
                 use: [
                   {
                     loader: resolve(__dirname, '../../react-icons-atomic-webpack-loader/lib/index.js'),
-                    options: { headless: true, iconVariant: 'fonts' },
+                    options: {
+                      headless: true,
+                      iconVariant: 'fonts',
+                      ...(entry.moduleGranularity ? { moduleGranularity: entry.moduleGranularity } : {}),
+                    },
                   },
                 ],
               },
@@ -181,7 +219,12 @@ function createConfig(name, entry, adapter, isDevServer) {
 function createAssertionPlugin(name, entry, adapter) {
   return {
     apply(/** @type {import('webpack').Compiler} */ compiler) {
-      compiler.hooks.afterEmit.tap('test-subsetting', (compilation) => {
+      compiler.hooks.afterEmit.tapPromise('test-subsetting', async (compilation) => {
+        const { outputFileSystem } = compiler;
+        if (!outputFileSystem) {
+          throw new Error(`[${adapter.name}/${name}] Compiler has no output filesystem.`);
+        }
+
         const fontAssets = compilation.getAssets().filter(({ name: assetName }) => /\.(ttf|woff2?)$/.test(assetName));
 
         if (fontAssets.length === 0) {
@@ -196,9 +239,7 @@ function createAssertionPlugin(name, entry, adapter) {
             );
           }
           if (entry.glyphs) {
-            const font = createFont(
-              readFileSync(resolve(compilation.outputOptions.path || compiler.context, assetName)),
-            );
+            const font = createFont(await readOutputFile(outputFileSystem, join(compiler.outputPath, assetName)));
             if (!('hasGlyphForCodePoint' in font)) throw new Error(`Unexpected font collection: ${assetName}`);
             const map = JSON.parse(
               readFileSync(resolve(__dirname, `../../react-icons/lib/utils/fonts/${font.familyName}.json`), 'utf8'),
@@ -214,6 +255,28 @@ function createAssertionPlugin(name, entry, adapter) {
                 throw new Error(`[${adapter.name}/${name}] Unused locale glyph ${glyph} remains in ${assetName}`);
               }
             }
+          }
+        }
+
+        for (const [fontBaseName, expectedGlyphs] of Object.entries(entry.fontGlyphCounts ?? {})) {
+          // Only .ttf is inspected; .woff/.woff2 wrap the same glyphs in a compressed container.
+          const asset = fontAssets.find(({ name: assetName }) =>
+            new RegExp(`^${fontBaseName}[.-][^/]*\\.ttf$`).test(assetName),
+          );
+
+          if (!asset) {
+            throw new Error(`[${adapter.name}/${name}] No emitted .ttf asset for "${fontBaseName}".`);
+          }
+
+          // `afterEmit` downgrades sources to size-only, so read through the bundler's output
+          // filesystem. webpack-dev-server keeps emitted assets in memory by default.
+          const fontBytes = await readOutputFile(outputFileSystem, join(compiler.outputPath, asset.name));
+          const glyphCount = readGlyphCount(fontBytes);
+          if (glyphCount < expectedGlyphs) {
+            throw new Error(
+              `[${adapter.name}/${name}] Asset "${asset.name}" has ${glyphCount} glyphs, expected at least ` +
+                `${expectedGlyphs} (including .notdef) — an icon that should have been kept was subset away.`,
+            );
           }
         }
 
@@ -244,6 +307,52 @@ function createAssertionPlugin(name, entry, adapter) {
       });
     },
   };
+}
+
+/**
+ * @param {import('webpack').OutputFileSystem} outputFileSystem
+ * @param {string} path
+ * @returns {Promise<Buffer>}
+ */
+function readOutputFile(outputFileSystem, path) {
+  return new Promise((resolvePromise, rejectPromise) => {
+    outputFileSystem.readFile(path, (error, data) => {
+      if (error) {
+        rejectPromise(error);
+        return;
+      }
+
+      if (data === undefined) {
+        rejectPromise(new Error(`Output filesystem returned no data for "${path}".`));
+        return;
+      }
+
+      resolvePromise(Buffer.isBuffer(data) ? data : Buffer.from(data));
+    });
+  });
+}
+
+/**
+ * Reads `numGlyphs` out of a TrueType font's `maxp` table.
+ *
+ * Byte sizes make a poor correctness signal here: a font that wrongly dropped a glyph is *smaller*,
+ * so it slips under any ceiling. The glyph count says outright whether an icon survived.
+ *
+ * @param {Buffer} ttf
+ * @returns {number}
+ */
+function readGlyphCount(ttf) {
+  const tableCount = ttf.readUInt16BE(4);
+
+  for (let i = 0; i < tableCount; i++) {
+    // Table directory: 12-byte header, then 16 bytes per record (tag, checksum, offset, length).
+    const record = 12 + i * 16;
+    if (ttf.toString('ascii', record, record + 4) === 'maxp') {
+      return ttf.readUInt16BE(ttf.readUInt32BE(record + 8) + 4);
+    }
+  }
+
+  throw new Error('Font has no `maxp` table — not a TrueType font?');
 }
 
 module.exports = { makeConfigs, entries };
