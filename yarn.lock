@@ -18340,7 +18340,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright@npm:1.63.0":
+"playwright@npm:^1.55.1, playwright@npm:^1.63.0":
   version: 1.63.0
   resolution: "playwright@npm:1.63.0"
   dependencies:
