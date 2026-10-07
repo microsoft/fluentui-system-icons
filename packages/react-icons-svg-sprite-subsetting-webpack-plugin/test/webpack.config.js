@@ -107,6 +107,35 @@ module.exports = {
       : []),
     {
       apply(compiler) {
+        if (hasHtmlInjection) {
+          compiler.hooks.compilation.tap('test-svg-sprite-subsetting', (compilation) => {
+            HtmlWebpackPlugin.getHooks(compilation).beforeEmit.tap('test-svg-sprite-subsetting', (data) => {
+              if (
+                injectMode === 'inline' &&
+                (!data.html.includes('<svg') || !data.html.includes('id="BackpackFilled"'))
+              ) {
+                throw new Error('Inline sprite was not injected into HTML');
+              }
+              if (injectMode === 'reference' && (!data.html.includes('rel="preload"') || !data.html.includes('.svg'))) {
+                throw new Error('Reference preload links were not injected into HTML');
+              }
+              if (injectMode === 'inline') {
+                for (const symbol of selectedLocaleSymbols) {
+                  if (!data.html.includes(`id="${symbol}"`)) {
+                    throw new Error(`Localized sprite is missing selected symbol ${symbol}`);
+                  }
+                }
+                for (const symbol of unusedLocaleSymbols) {
+                  if (data.html.includes(`id="${symbol}"`)) {
+                    throw new Error(`Localized sprite still contains unused symbol ${symbol}`);
+                  }
+                }
+              }
+              return data;
+            });
+          });
+        }
+
         compiler.hooks.afterEmit.tap('test-svg-sprite-subsetting', (compilation) => {
           const outDir = compilation.outputOptions.path || resolve(__dirname, 'dist');
           if (useIconGranularity) {
@@ -132,7 +161,7 @@ module.exports = {
           }
           const svgAssets = compilation
             .getAssets()
-            .map((a) => a.name)
+            .map((asset) => asset.name)
             .filter((name) => name.endsWith('.svg'))
             .map((name) => ({ name, source: readFileSync(join(outDir, name), 'utf8') }));
 
@@ -189,33 +218,17 @@ module.exports = {
               throw new Error('sprites-manifest.json atomic sprites list missing');
             }
           }
-
-          if (hasHtmlInjection) {
-            const html = readFileSync(join(outDir, 'index.html'), 'utf8');
-            if (injectMode === 'inline') {
-              if (!html.includes('<svg') || !html.includes('id="BackpackFilled"')) {
-                throw new Error('Inline sprite was not injected into HTML');
+          if (injectMode !== 'inline') {
+            const spriteContent = svgAssets.map((asset) => asset.source).join('\n');
+            for (const symbol of selectedLocaleSymbols) {
+              if (!spriteContent.includes(`id="${symbol}"`)) {
+                throw new Error(`Localized sprite is missing selected symbol ${symbol}`);
               }
             }
-            if (injectMode === 'reference') {
-              if (!html.includes('rel="preload"') || !html.includes('.svg')) {
-                throw new Error('Reference preload links were not injected into HTML');
+            for (const symbol of unusedLocaleSymbols) {
+              if (spriteContent.includes(`id="${symbol}"`)) {
+                throw new Error(`Localized sprite still contains unused symbol ${symbol}`);
               }
-            }
-          }
-
-          const spriteContent =
-            injectMode === 'inline'
-              ? readFileSync(join(outDir, 'index.html'), 'utf8')
-              : svgAssets.map((asset) => asset.source).join('\n');
-          for (const symbol of selectedLocaleSymbols) {
-            if (!spriteContent.includes(`id="${symbol}"`)) {
-              throw new Error(`Localized sprite is missing selected symbol ${symbol}`);
-            }
-          }
-          for (const symbol of unusedLocaleSymbols) {
-            if (spriteContent.includes(`id="${symbol}"`)) {
-              throw new Error(`Localized sprite still contains unused symbol ${symbol}`);
             }
           }
         });
