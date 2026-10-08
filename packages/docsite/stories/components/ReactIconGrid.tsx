@@ -11,6 +11,7 @@ import {
 import * as React from 'react';
 import { FixedSizeGrid, type GridChildComponentProps } from 'react-window';
 import { IconCatalogControls } from './IconCatalogControls';
+import { isSizedIconName, SIZED_ICON_RE } from './sized-icons';
 import { useIconCatalogClipboard } from './useIconCatalogClipboard';
 
 const ICON_CELL_WIDTH = 250;
@@ -128,38 +129,27 @@ export const ReactIconGrid = () => {
   const filteredIcons = React.useMemo(
     () =>
       ICONS_LIST.filter((icon) => {
-        if (variant !== 'all' && !icon.displayName?.endsWith(variant)) {
+        const name = icon.displayName;
+        if (!name || !name.toLowerCase().includes(searchQuery.toLowerCase())) {
+          return false;
+        }
+        if (variant !== 'all' && !name.endsWith(variant)) {
           return false;
         }
         if (size === 'all') {
-          return icon.displayName?.toLowerCase().includes(searchQuery.toLowerCase());
+          return true;
         }
         if (size === 'resizable') {
-          return (
-            icon.displayName! &&
-            !/\d/.test(icon.displayName.toLowerCase()) &&
-            icon.displayName.toLowerCase().includes(searchQuery.toLowerCase())
-          );
+          return !isSizedIconName(name);
         }
 
-        return (
-          icon.displayName?.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1 &&
-          icon.displayName?.indexOf(String(size)) !== -1
-        );
+        return isSizedIconName(name) && name.match(SIZED_ICON_RE)?.[1] === size;
       }),
     [searchQuery, size, variant],
   );
 
   const columnCount = Math.max(1, Math.floor(width / ICON_CELL_WIDTH));
-  const previewSize =
-    size === 'all'
-      ? filteredIcons.reduce((maxSize, icon) => {
-          const nativeSize = Number(icon.displayName?.match(/(\d+)(?:Regular|Filled|Light|Color)$/)?.[1]);
-          return Math.max(maxSize, nativeSize || RESIZABLE_ICON_SIZE);
-        }, RESIZABLE_ICON_SIZE)
-      : size === 'resizable'
-        ? RESIZABLE_ICON_SIZE
-        : Number(size);
+  const previewSize = size === 'all' || size === 'resizable' ? RESIZABLE_ICON_SIZE : Number(size);
   const rowHeight = Math.max(30, previewSize) + 55;
   const height = Math.min(Math.ceil(filteredIcons.length / columnCount) * rowHeight + 10, 1000);
 

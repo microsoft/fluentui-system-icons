@@ -2,12 +2,16 @@ import '@testing-library/jest-dom/vitest';
 import * as React from 'react';
 import { act, cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { RESIZABLE_COLLISIONS } from './icon-sizes';
 import { ReactIconGrid } from './ReactIconGrid';
 
 const { dispatchToast } = vi.hoisted(() => ({ dispatchToast: vi.fn() }));
+const RESIZABLE_ICON_COUNT = 7 + RESIZABLE_COLLISIONS.length;
+const ALL_ICON_COUNT = 18 + RESIZABLE_COLLISIONS.length;
 
 vi.mock('@fluentui/react-icons', async () => {
   const React = await import('react');
+  const { RESIZABLE_COLLISIONS } = await import('./icon-sizes');
   const createIcon = (name: string) => {
     const Icon = (props: React.SVGProps<SVGSVGElement>) => <svg role="img" {...props} />;
     Icon.displayName = name;
@@ -25,9 +29,14 @@ vi.mock('@fluentui/react-icons', async () => {
     Send24Light: createIcon('Send24Light'),
     Send24Color: createIcon('Send24Color'),
     Send48Regular: createIcon('Send48Regular'),
-    Send96Regular: createIcon('Send96Regular'),
     FolderRegular: createIcon('FolderRegular'),
     Folder24Regular: createIcon('Folder24Regular'),
+    Fps96024Filled: createIcon('Fps96024Filled'),
+    Fps960Regular: createIcon('Fps960Regular'),
+    Battery1016Regular: createIcon('Battery1016Regular'),
+    Battery1020Filled: createIcon('Battery1020Filled'),
+    Fps12024Regular: createIcon('Fps12024Regular'),
+    ...Object.fromEntries(RESIZABLE_COLLISIONS.map((name) => [name, createIcon(name)])),
     CopyRegular: () => null,
     bundleIcon: () => null,
   };
@@ -136,23 +145,93 @@ describe('React icon catalogue controls', () => {
   it('omits the sizing guide from the filter toolbar', () => {
     render(<ReactIconGrid />);
     expect(screen.queryByRole('link', { name: 'Sizing guide' })).not.toBeInTheDocument();
-    expect(screen.getByRole('status', { name: 'Icon count' })).toHaveTextContent('6 icons');
+    expect(screen.getByRole('status', { name: 'Icon count' })).toHaveTextContent(`${RESIZABLE_ICON_COUNT} icons`);
+  });
+});
+
+describe('React icon catalogue resizable collisions', () => {
+  it.each(RESIZABLE_COLLISIONS)('finds %s with the Resizable filter', (name) => {
+    render(<ReactIconGrid />);
+    search(name);
+    expect(screen.getByLabelText('Icon size')).toHaveValue('resizable');
+    expect(screen.getByRole('img', { name })).toBeInTheDocument();
+    expect(screen.getByRole('status', { name: 'Icon count' })).toHaveTextContent('1 icon');
+  });
+
+  it('includes numeric product names that do not contain a native-size suffix', () => {
+    render(<ReactIconGrid />);
+    search('Fps960');
+    expect(screen.getByRole('img', { name: 'Fps960Regular' })).toBeInTheDocument();
+    expect(screen.queryByRole('img', { name: 'Fps96024Filled' })).not.toBeInTheDocument();
+  });
+
+  it('combines collision-aware size classification with variant selection', () => {
+    render(<ReactIconGrid />);
+    search('Battery10');
+    selectVariant('Regular');
+    expect(screen.getByRole('img', { name: 'Battery10Regular' })).toBeInTheDocument();
+    expect(screen.queryByRole('img', { name: 'Battery10Filled' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('img', { name: 'Battery1016Regular' })).not.toBeInTheDocument();
+    selectSize('16');
+    expect(screen.getByRole('img', { name: 'Battery1016Regular' })).toBeInTheDocument();
+    expect(screen.queryByRole('img', { name: 'Battery10Regular' })).not.toBeInTheDocument();
+  });
+
+  it('matches only the actual native size, not a number inside the product name', () => {
+    render(<ReactIconGrid />);
+    search('Fps120');
+    selectSize('20');
+    expect(screen.queryByRole('img')).not.toBeInTheDocument();
+    selectSize('24');
+    expect(screen.getByRole('img', { name: 'Fps12024Regular' })).toBeInTheDocument();
+    expect(screen.queryByRole('img', { name: 'Fps120Regular' })).not.toBeInTheDocument();
+    selectSize('resizable');
+    expect(screen.getByRole('img', { name: 'Fps120Regular' })).toBeInTheDocument();
+    expect(screen.queryByRole('img', { name: 'Fps12024Regular' })).not.toBeInTheDocument();
   });
 });
 
 describe('React icon catalogue all-sizes filter', () => {
+  it('restores results after clearing a numeric name filter without oversized rows', () => {
+    render(<ReactIconGrid />);
+    search('16');
+    selectSize('all');
+    expect(screen.getByRole('img', { name: 'Send16Regular' })).toBeInTheDocument();
+    expect(screen.getByRole('status', { name: 'Icon count' })).toHaveTextContent('2 icons');
+
+    search('');
+
+    expect(screen.getByLabelText('Icon name')).toHaveValue('');
+    expect(screen.getByLabelText('Icon size')).toHaveValue('all');
+    expect(screen.getByRole('status', { name: 'Icon count' })).toHaveTextContent(`${ALL_ICON_COUNT} icons`);
+    const cell = screen.getByRole('img', { name: 'SendRegular' }).parentElement!.parentElement!;
+    expect(Number.parseFloat(cell.style.height)).toBe(48 + 55);
+    expect(screen.getByRole('img', { name: 'Folder24Regular' })).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: 'Fps96024Filled' })).toBeInTheDocument();
+  });
+
+  it('uses the correct preview size for numeric sized and resizable names', () => {
+    render(<ReactIconGrid />);
+    search('Fps960');
+    selectSize('all');
+    expect(screen.getByRole('img', { name: 'Fps960Regular' })).toBeInTheDocument();
+    expect(screen.getByRole('status', { name: 'Icon count' })).toHaveTextContent('2 icons');
+    const cell = screen.getByRole('img', { name: 'Fps96024Filled' }).parentElement!.parentElement!;
+    expect(Number.parseFloat(cell.style.height)).toBe(48 + 55);
+  });
+
   it('includes resizable and native-size exports with room for the largest preview', () => {
     render(<ReactIconGrid />);
     selectSize('all');
     expect(screen.getByRole('img', { name: 'SendRegular' })).toBeInTheDocument();
-    for (const size of ['16', '24', '48', '96']) {
+    for (const size of ['16', '24', '48']) {
       expect(screen.getByRole('img', { name: `Send${size}Regular` })).toBeInTheDocument();
     }
     expect(screen.getByRole('img', { name: 'FolderRegular' })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: 'Folder24Regular' })).toBeInTheDocument();
-    expect(screen.getByRole('status', { name: 'Icon count' })).toHaveTextContent('14 icons');
-    const cell = screen.getByRole('img', { name: 'Send96Regular' }).parentElement!.parentElement!;
-    expect(Number.parseFloat(cell.style.height)).toBeGreaterThanOrEqual(96 + 55);
+    expect(screen.getByRole('status', { name: 'Icon count' })).toHaveTextContent(`${ALL_ICON_COUNT} icons`);
+    const cell = screen.getByRole('img', { name: 'Send48Regular' }).parentElement!.parentElement!;
+    expect(Number.parseFloat(cell.style.height)).toBe(48 + 55);
   });
 
   it('combines All sizes with name and variant filters and restores specific sizes', () => {
@@ -162,10 +241,10 @@ describe('React icon catalogue all-sizes filter', () => {
     selectSize('all');
     expect(screen.getByRole('img', { name: 'SendRegular' })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: 'Send24Regular' })).toBeInTheDocument();
-    expect(screen.getByRole('img', { name: 'Send96Regular' })).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: 'Send48Regular' })).toBeInTheDocument();
     expect(screen.queryByRole('img', { name: 'Send24Filled' })).not.toBeInTheDocument();
     expect(screen.queryByRole('img', { name: 'FolderRegular' })).not.toBeInTheDocument();
-    expect(screen.getByRole('status', { name: 'Icon count' })).toHaveTextContent('6 icons');
+    expect(screen.getByRole('status', { name: 'Icon count' })).toHaveTextContent('5 icons');
     selectSize('24');
     expect(screen.getByRole('img', { name: 'Send24Regular' })).toBeInTheDocument();
     expect(screen.queryByRole('img', { name: 'SendRegular' })).not.toBeInTheDocument();
@@ -180,8 +259,8 @@ describe('React icon catalogue all-sizes filter', () => {
     setClipboard(writeText);
     render(<ReactIconGrid />);
     selectSize('all');
-    fireEvent.click(screen.getByRole('button', { name: 'Copy Send96Regular JSX' }));
-    expect(writeText).toHaveBeenCalledWith('<Send96Regular />');
+    fireEvent.click(screen.getByRole('button', { name: 'Copy Send48Regular JSX' }));
+    expect(writeText).toHaveBeenCalledWith('<Send48Regular />');
     await waitFor(() => expect(dispatchToast).toHaveBeenCalledWith(expect.anything(), { intent: 'success' }));
   });
 });
@@ -198,7 +277,7 @@ describe('React icon catalogue variants', () => {
         .getAllByRole('option')
         .map((option) => option.textContent),
     ).toEqual(['All variants', 'Regular', 'Filled', 'Light', 'Color']);
-    expect(screen.getByRole('status', { name: 'Icon count' })).toHaveTextContent('6 icons');
+    expect(screen.getByRole('status', { name: 'Icon count' })).toHaveTextContent(`${RESIZABLE_ICON_COUNT} icons`);
   });
 
   it.each(['Regular', 'Filled', 'Light', 'Color'])('filters %s exports by their variant suffix', (variant) => {
