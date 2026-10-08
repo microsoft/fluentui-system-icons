@@ -46,7 +46,7 @@ const useClasses = makeStyles({
   },
 });
 
-const IconCatalogControls = ({
+export const IconCatalogControls = ({
   searchPlaceholder,
   searchQuery,
   onSearchChange,
@@ -102,5 +102,3 @@ const IconCatalogControls = ({
     </div>
   );
 };
-
-export default IconCatalogControls;

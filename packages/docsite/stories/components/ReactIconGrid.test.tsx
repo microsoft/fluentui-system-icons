@@ -2,7 +2,7 @@ import '@testing-library/jest-dom/vitest';
 import * as React from 'react';
 import { act, cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import ReactIconGrid from './ReactIconGrid';
+import { ReactIconGrid } from './ReactIconGrid';
 
 const { dispatchToast } = vi.hoisted(() => ({ dispatchToast: vi.fn() }));
 

@@ -10,7 +10,7 @@ import { Button, makeStyles, MessageBar, Toaster, tokens } from '@fluentui/react
 import * as React from 'react';
 import fileIconTypes from '../../../react-icons-file-type/src/common/fileIconTypes.json';
 import fileTypeIconMap from '../../../react-icons-file-type/src/common/fileTypeIconMap.json';
-import IconCatalogControls from './IconCatalogControls';
+import { IconCatalogControls } from './IconCatalogControls';
 import { useIconCatalogClipboard } from './useIconCatalogClipboard';
 
 type FileIconTypeName = keyof typeof FileIconType;
@@ -106,7 +106,7 @@ function getCopySnippet(icon: CatalogIcon, size: FileTypeIconSize): string | und
   return undefined;
 }
 
-const FileTypeIconGrid = () => {
+export const FileTypeIconGrid = () => {
   const classes = useClasses();
   const { copyIcon, toasterId } = useIconCatalogClipboard();
   const [searchQuery, setSearchQuery] = React.useState('');
@@ -228,5 +228,3 @@ const FileTypeIconGrid = () => {
     </div>
   );
 };
-
-export default FileTypeIconGrid;

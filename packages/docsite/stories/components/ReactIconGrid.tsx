@@ -10,7 +10,7 @@ import {
 } from '@fluentui/react-components';
 import * as React from 'react';
 import { FixedSizeGrid, type GridChildComponentProps } from 'react-window';
-import IconCatalogControls from './IconCatalogControls';
+import { IconCatalogControls } from './IconCatalogControls';
 import { useIconCatalogClipboard } from './useIconCatalogClipboard';
 
 const ICON_CELL_WIDTH = 250;
@@ -112,7 +112,7 @@ const renderIconCell = (itemProps: GridChildComponentProps & { data: IconCellDat
   );
 };
 
-const ReactIconGrid = () => {
+export const ReactIconGrid = () => {
   const classes = useClasses();
   const scrollBarWidth = useScrollbarWidth({ targetDocument: document }) ?? 0;
 
@@ -224,5 +224,3 @@ const ReactIconGrid = () => {
     </div>
   );
 };
-
-export default ReactIconGrid;

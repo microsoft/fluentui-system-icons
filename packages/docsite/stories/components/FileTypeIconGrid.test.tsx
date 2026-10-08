@@ -5,7 +5,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { ICON_SIZES } from '@fluentui/react-icons-file-type';
 import fileIconTypes from '../../../react-icons-file-type/src/common/fileIconTypes.json';
 import fileTypeIconMap from '../../../react-icons-file-type/src/common/fileTypeIconMap.json';
-import FileTypeIconGrid from './FileTypeIconGrid';
+import { FileTypeIconGrid } from './FileTypeIconGrid';
 
 const { dispatchToast } = vi.hoisted(() => ({ dispatchToast: vi.fn() }));
 
