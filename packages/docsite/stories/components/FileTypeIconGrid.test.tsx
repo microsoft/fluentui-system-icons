@@ -2,6 +2,7 @@ import '@testing-library/jest-dom/vitest';
 import * as React from 'react';
 import { act, cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { ICON_SIZES } from '@fluentui/react-icons-file-type';
 import fileIconTypes from '../../../react-icons-file-type/src/common/fileIconTypes.json';
 import fileTypeIconMap from '../../../react-icons-file-type/src/common/fileTypeIconMap.json';
 import FileTypeIconGrid from './FileTypeIconGrid';
@@ -37,8 +38,53 @@ function setClipboard(writeText: ReturnType<typeof vi.fn>) {
 }
 
 function search(query: string) {
-  fireEvent.change(screen.getByRole('searchbox', { name: 'Search file type icons' }), { target: { value: query } });
+  fireEvent.change(screen.getByRole('searchbox', { name: 'Icon name' }), { target: { value: query } });
 }
+
+describe('file type catalogue controls', () => {
+  it('uses the same labelled fields without offering unsupported variants', () => {
+    render(<FileTypeIconGrid />);
+    expect(screen.getByLabelText('Icon name')).toHaveAttribute('type', 'search');
+    expect(screen.getByLabelText('Icon size')).toHaveValue('48');
+    expect(screen.queryByLabelText('Icon variant')).not.toBeInTheDocument();
+    expect(screen.getByRole('status', { name: 'Icon count' })).toHaveTextContent(
+      `${Object.keys(fileTypeIconMap).length} icons`,
+    );
+    search('no-such-file-type-icon');
+    expect(screen.getByRole('status', { name: 'Icon count' })).toHaveTextContent('0 icons');
+  });
+
+  it('offers its supported sizes and defaults to 48px', () => {
+    render(<FileTypeIconGrid />);
+    expect(screen.getByRole('combobox', { name: 'Icon size' })).toHaveValue('48');
+    expect(screen.getAllByRole('option').map((option) => option.textContent)).toEqual(
+      ICON_SIZES.map((size) => `${size}px`),
+    );
+    expect(screen.queryByRole('option', { name: 'Resizable' })).not.toBeInTheDocument();
+  });
+
+  it('updates the preview and copied JSX when the size changes', async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    setClipboard(writeText);
+    render(<FileTypeIconGrid />);
+    search('folder');
+    fireEvent.change(screen.getByRole('combobox', { name: 'Icon size' }), { target: { value: '24' } });
+    expect(screen.getByRole('img', { name: 'folder' })).toHaveAttribute('width', '24');
+    fireEvent.click(screen.getByRole('button', { name: 'Copy folder JSX' }));
+    await waitFor(() =>
+      expect(writeText).toHaveBeenCalledWith('<FileTypeIcon type={FileIconType.folder} size={24} />'),
+    );
+  });
+
+  it('recovers from an empty search while preserving the selected size', () => {
+    render(<FileTypeIconGrid />);
+    fireEvent.change(screen.getByRole('combobox', { name: 'Icon size' }), { target: { value: '24' } });
+    search('no-such-file-type-icon');
+    expect(screen.getByText('No file type icons found. Try another search.')).toBeInTheDocument();
+    search('folder');
+    expect(screen.getByRole('img', { name: 'folder' })).toHaveAttribute('width', '24');
+  });
+});
 
 describe('file type catalog search', () => {
   it.each(['folder', 'FileIconType.folder', '  FILEICONTYPE.FOLDER  '])('finds the folder icon using %s', (query) => {

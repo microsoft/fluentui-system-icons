@@ -1,60 +1,35 @@
 import * as ReactIcons from '@fluentui/react-icons';
 import {
   Button,
-  Field,
-  Input,
-  Link,
   makeStyles,
   MessageBar,
-  Radio,
-  RadioGroup,
-  Toast,
   Toaster,
-  ToastTitle,
   tokens,
-  useId,
   useIsomorphicLayoutEffect,
   useScrollbarWidth,
-  useToastController,
 } from '@fluentui/react-components';
 import * as React from 'react';
 import { FixedSizeGrid, type GridChildComponentProps } from 'react-window';
+import IconCatalogControls from './IconCatalogControls';
+import { useIconCatalogClipboard } from './useIconCatalogClipboard';
 
 const ICON_CELL_WIDTH = 250;
-const UNSIZED_ICON_SIZE = 48;
+const RESIZABLE_ICON_SIZE = 48;
+const SIZE_OPTIONS = [
+  { value: 'all', label: 'All sizes' },
+  { value: 'resizable', label: 'Resizable' },
+  ...[16, 20, 24, 28, 32, 48].map((size) => ({ value: String(size), label: `${size}px` })),
+];
+const VARIANT_OPTIONS = [
+  { value: 'all', label: 'All variants' },
+  ...['Regular', 'Filled', 'Light', 'Color'].map((variant) => ({ value: variant, label: variant })),
+];
 
 const ICONS_LIST: React.FC<ReactIcons.FluentIconsProps>[] = (
   Object.values(ReactIcons) as React.FC<ReactIcons.FluentIconsProps>[]
 ).filter((icon) => !!icon && !!icon.displayName);
 
 const useClasses = makeStyles({
-  controls: {
-    display: 'grid',
-    gridTemplateColumns: '1fr auto',
-    gap: `${tokens.spacingVerticalL} ${tokens.spacingHorizontalL}`,
-    marginBottom: tokens.spacingVerticalM,
-  },
-
-  inputControl: {
-    display: 'flex',
-    alignSelf: 'center',
-  },
-
-  input: {
-    width: '100%',
-  },
-
-  radioControl: {
-    borderRadius: tokens.borderRadiusSmall,
-    boxShadow: tokens.shadow2,
-    padding: `${tokens.spacingVerticalXS} ${tokens.spacingHorizontalL}`,
-    backgroundColor: tokens.colorNeutralBackground1,
-  },
-
-  radioLabel: {
-    marginLeft: tokens.spacingHorizontalS,
-  },
-
   message: {
     marginBottom: tokens.spacingVerticalM,
   },
@@ -72,7 +47,7 @@ const useClasses = makeStyles({
     gridTemplateColumns: '1fr',
     gridTemplateRows: '1fr auto',
     gap: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalMNudge}`,
-    fontSize: `${UNSIZED_ICON_SIZE}px`,
+    fontSize: `${RESIZABLE_ICON_SIZE}px`,
     padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS}`,
     overflow: 'hidden',
     boxShadow: tokens.shadow2,
@@ -122,9 +97,10 @@ const renderIconCell = (itemProps: GridChildComponentProps & { data: IconCellDat
         <div className={classes.iconCopyButton}>
           <Button
             appearance="transparent"
+            aria-label={`Copy ${Icon.displayName} JSX`}
             icon={<ReactIcons.CopyRegular />}
             onClick={() => onCopy(Icon.displayName as string)}
-            title="Copy icon name to clipboard"
+            title="Copy icon JSX to clipboard"
           />
         </div>
         <Icon className={classes.iconGlyph} aria-label={Icon.displayName} />
@@ -140,11 +116,11 @@ const ReactIconGrid = () => {
   const classes = useClasses();
   const scrollBarWidth = useScrollbarWidth({ targetDocument: document }) ?? 0;
 
-  const toasterId = useId('toaster');
-  const { dispatchToast } = useToastController(toasterId);
+  const { copyIcon, toasterId } = useIconCatalogClipboard();
 
   const [searchQuery, setSearchQuery] = React.useState('');
-  const [size, setSize] = React.useState<string>('Unsized');
+  const [size, setSize] = React.useState<string>('resizable');
+  const [variant, setVariant] = React.useState('all');
 
   const areaRef = React.useRef<HTMLDivElement>(null);
   const [width, setWidth] = React.useState<number>(1000);
@@ -152,7 +128,13 @@ const ReactIconGrid = () => {
   const filteredIcons = React.useMemo(
     () =>
       ICONS_LIST.filter((icon) => {
-        if (size === 'Unsized') {
+        if (variant !== 'all' && !icon.displayName?.endsWith(variant)) {
+          return false;
+        }
+        if (size === 'all') {
+          return icon.displayName?.toLowerCase().includes(searchQuery.toLowerCase());
+        }
+        if (size === 'resizable') {
           return (
             icon.displayName! &&
             !/\d/.test(icon.displayName.toLowerCase()) &&
@@ -165,32 +147,35 @@ const ReactIconGrid = () => {
           icon.displayName?.indexOf(String(size)) !== -1
         );
       }),
-    [searchQuery, size],
+    [searchQuery, size, variant],
   );
 
-  const columnCount = Math.floor(width / ICON_CELL_WIDTH);
-  const rowHeight = Math.max(30, size === 'Unsized' ? UNSIZED_ICON_SIZE : Number(size)) + 55;
+  const columnCount = Math.max(1, Math.floor(width / ICON_CELL_WIDTH));
+  const previewSize =
+    size === 'all'
+      ? filteredIcons.reduce((maxSize, icon) => {
+          const nativeSize = Number(icon.displayName?.match(/(\d+)(?:Regular|Filled|Light|Color)$/)?.[1]);
+          return Math.max(maxSize, nativeSize || RESIZABLE_ICON_SIZE);
+        }, RESIZABLE_ICON_SIZE)
+      : size === 'resizable'
+        ? RESIZABLE_ICON_SIZE
+        : Number(size);
+  const rowHeight = Math.max(30, previewSize) + 55;
   const height = Math.min(Math.ceil(filteredIcons.length / columnCount) * rowHeight + 10, 1000);
 
   const iconCellData: IconCellData = {
     icons: filteredIcons,
     classes,
     columnCount,
-    onCopy: (iconName: string) => {
-      navigator.clipboard.writeText(`<${iconName} />`);
-
-      dispatchToast(
-        <Toast>
-          <ToastTitle>Icon was copied to clipboard</ToastTitle>
-        </Toast>,
-        { intent: 'success' },
-      );
-    },
+    onCopy: (iconName: string) => void copyIcon(`<${iconName} />`),
   };
 
   useIsomorphicLayoutEffect(() => {
     const observer = new ResizeObserver((entries) => {
-      setWidth(entries[0].contentRect.width);
+      const nextWidth = entries[0].contentRect.width;
+      if (nextWidth > 0) {
+        setWidth(nextWidth);
+      }
     });
 
     if (areaRef.current) {
@@ -206,40 +191,16 @@ const ReactIconGrid = () => {
     <div ref={areaRef}>
       <Toaster toasterId={toasterId} />
 
-      <div className={classes.controls}>
-        <div className={classes.inputControl}>
-          <Input
-            aria-label="search"
-            className={classes.input}
-            type="search"
-            onChange={(ev, data) => setSearchQuery(data.value)}
-            placeholder="Icon name..."
-            size="large"
-            value={searchQuery}
-          />
-        </div>
-
-        <div className={classes.radioControl}>
-          <Field
-            label={{ children: 'Choose icon set:', className: classes.radioLabel }}
-            hint={{
-              className: classes.radioLabel,
-              children: (
-                <>
-                  What icon set to use? Check <Link href="/?path=/docs/icons-overview--docs">docs</Link>
-                </>
-              ),
-            }}
-          >
-            <RadioGroup layout="horizontal-stacked" onChange={(ev, data) => setSize(data.value)} value={size}>
-              <Radio value="Unsized" label="Unsized" />
-              {[16, 20, 24, 28, 32, 48].map((option) => (
-                <Radio key={option} value={String(option)} label={String(option)} />
-              ))}
-            </RadioGroup>
-          </Field>
-        </div>
-      </div>
+      <IconCatalogControls
+        searchPlaceholder="Icon name..."
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
+        size={size}
+        sizeOptions={SIZE_OPTIONS}
+        onSizeChange={setSize}
+        variantFilter={{ value: variant, options: VARIANT_OPTIONS, onChange: setVariant }}
+        resultCount={filteredIcons.length}
+      />
 
       {filteredIcons.length === 0 ? (
         <MessageBar intent="warning" className={classes.message}>

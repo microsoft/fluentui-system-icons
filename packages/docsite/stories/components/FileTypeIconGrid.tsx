@@ -6,24 +6,15 @@ import {
   type FileTypeIconSize,
 } from '@fluentui/react-icons-file-type';
 import { CopyRegular } from '@fluentui/react-icons';
-import {
-  Button,
-  Input,
-  makeStyles,
-  MessageBar,
-  Select,
-  Toast,
-  Toaster,
-  ToastTitle,
-  tokens,
-  useId,
-  useToastController,
-} from '@fluentui/react-components';
+import { Button, makeStyles, MessageBar, Toaster, tokens } from '@fluentui/react-components';
 import * as React from 'react';
 import fileIconTypes from '../../../react-icons-file-type/src/common/fileIconTypes.json';
 import fileTypeIconMap from '../../../react-icons-file-type/src/common/fileTypeIconMap.json';
+import IconCatalogControls from './IconCatalogControls';
+import { useIconCatalogClipboard } from './useIconCatalogClipboard';
 
 type FileIconTypeName = keyof typeof FileIconType;
+const SIZE_OPTIONS = ICON_SIZES.map((size) => ({ value: String(size), label: `${size}px` }));
 
 type CatalogIcon = {
   aliases: string[];
@@ -47,28 +38,6 @@ const CATALOG_ICONS: CatalogIcon[] = Object.entries(fileTypeIconMap)
   .sort((first, second) => first.name.localeCompare(second.name));
 
 const useClasses = makeStyles({
-  controls: {
-    display: 'grid',
-    gridTemplateColumns: 'minmax(200px, 1fr) auto',
-    gap: tokens.spacingHorizontalL,
-    marginBottom: tokens.spacingVerticalL,
-
-    '@media (max-width: 600px)': {
-      gridTemplateColumns: '1fr',
-      gap: tokens.spacingVerticalS,
-    },
-  },
-  search: {
-    width: '100%',
-  },
-  sizeControl: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: tokens.spacingHorizontalS,
-  },
-  sizeLabel: {
-    whiteSpace: 'nowrap',
-  },
   message: {
     marginBottom: tokens.spacingVerticalM,
   },
@@ -139,8 +108,7 @@ function getCopySnippet(icon: CatalogIcon, size: FileTypeIconSize): string | und
 
 const FileTypeIconGrid = () => {
   const classes = useClasses();
-  const toasterId = useId('file-type-icon-toaster');
-  const { dispatchToast } = useToastController(toasterId);
+  const { copyIcon, toasterId } = useIconCatalogClipboard();
   const [searchQuery, setSearchQuery] = React.useState('');
   const [size, setSize] = React.useState<FileTypeIconSize>(48);
   const [unavailableIcons, setUnavailableIcons] = React.useState<Set<string>>(() => new Set());
@@ -176,55 +144,19 @@ const FileTypeIconGrid = () => {
     });
   };
 
-  const copyIcon = async (snippet: string) => {
-    try {
-      await navigator.clipboard.writeText(snippet);
-      dispatchToast(
-        <Toast>
-          <ToastTitle>Icon JSX was copied to the clipboard</ToastTitle>
-        </Toast>,
-        { intent: 'success' },
-      );
-    } catch {
-      dispatchToast(
-        <Toast>
-          <ToastTitle>Icon JSX could not be copied to the clipboard</ToastTitle>
-        </Toast>,
-        { intent: 'error' },
-      );
-    }
-  };
-
   return (
     <div>
       <Toaster toasterId={toasterId} />
 
-      <div className={classes.controls}>
-        <Input
-          aria-label="Search file type icons"
-          className={classes.search}
-          type="search"
-          onChange={(_event, data) => setSearchQuery(data.value)}
-          placeholder="Search icons or file extensions"
-          size="large"
-          value={searchQuery}
-        />
-
-        <label className={classes.sizeControl}>
-          <span className={classes.sizeLabel}>Icon size</span>
-          <Select
-            aria-label="Icon size"
-            value={String(size)}
-            onChange={(event) => setSize(Number(event.target.value) as FileTypeIconSize)}
-          >
-            {ICON_SIZES.map((option) => (
-              <option key={option} value={option}>
-                {option}px
-              </option>
-            ))}
-          </Select>
-        </label>
-      </div>
+      <IconCatalogControls
+        searchPlaceholder="Search icons or file extensions"
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
+        size={String(size)}
+        sizeOptions={SIZE_OPTIONS}
+        onSizeChange={(value) => setSize(Number(value) as FileTypeIconSize)}
+        resultCount={filteredIcons.length}
+      />
 
       {filteredIcons.length === 0 ? (
         <MessageBar intent="warning" className={classes.message}>
