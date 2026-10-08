@@ -2,12 +2,12 @@ import '@testing-library/jest-dom/vitest';
 import * as React from 'react';
 import { act, cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { RESIZABLE_COLLISIONS } from './icon-sizes';
+import { RESIZABLE_COLLISIONS, SIZED_ICON_SIZES } from './icon-sizes';
 import { ReactIconGrid } from './ReactIconGrid';
 
 const { dispatchToast } = vi.hoisted(() => ({ dispatchToast: vi.fn() }));
 const RESIZABLE_ICON_COUNT = 7 + RESIZABLE_COLLISIONS.length;
-const ALL_ICON_COUNT = 18 + RESIZABLE_COLLISIONS.length;
+const ALL_ICON_COUNT = 20 + RESIZABLE_COLLISIONS.length;
 
 vi.mock('@fluentui/react-icons', async () => {
   const React = await import('react');
@@ -23,6 +23,8 @@ vi.mock('@fluentui/react-icons', async () => {
     SendLight: createIcon('SendLight'),
     SendColor: createIcon('SendColor'),
     SendColorRegular: createIcon('SendColorRegular'),
+    PresenceDnd10Filled: createIcon('PresenceDnd10Filled'),
+    Add12Regular: createIcon('Add12Regular'),
     Send16Regular: createIcon('Send16Regular'),
     Send24Regular: createIcon('Send24Regular'),
     Send24Filled: createIcon('Send24Filled'),
@@ -92,14 +94,14 @@ function setClipboard(writeText: ReturnType<typeof vi.fn>) {
 }
 
 describe('React icon catalogue controls', () => {
-  it('offers All sizes, Resizable and the existing native sizes in a select', () => {
+  it('offers All sizes, Resizable and every shared native size in a select', () => {
     render(<ReactIconGrid />);
     expect(screen.getByRole('combobox', { name: 'Icon size' })).toHaveValue('resizable');
     expect(
       within(screen.getByRole('combobox', { name: 'Icon size' }))
         .getAllByRole('option')
         .map((option) => option.textContent),
-    ).toEqual(['All sizes', 'Resizable', '16px', '20px', '24px', '28px', '32px', '48px']);
+    ).toEqual(['All sizes', 'Resizable', ...SIZED_ICON_SIZES.map((size) => `${size}px`)]);
     expect(screen.queryByRole('radio')).not.toBeInTheDocument();
     expect(screen.queryByText('bundleIcon')).not.toBeInTheDocument();
   });
@@ -109,6 +111,21 @@ describe('React icon catalogue controls', () => {
     expect(screen.getByRole('img', { name: 'SendRegular' })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: 'FolderRegular' })).toBeInTheDocument();
     expect(screen.queryByRole('img', { name: 'Send24Regular' })).not.toBeInTheDocument();
+  });
+
+  it.each([
+    ['10', 'PresenceDnd10Filled'],
+    ['12', 'Add12Regular'],
+  ])('filters %spx exports from the shared size table', (size, name) => {
+    render(<ReactIconGrid />);
+    selectSize(size);
+    expect(screen.getByRole('img', { name })).toBeInTheDocument();
+    expect(screen.getByRole('status', { name: 'Icon count' })).toHaveTextContent('1 icon');
+    expect(screen.queryByRole('img', { name: 'SendRegular' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('img', { name: 'Battery10Filled' })).not.toBeInTheDocument();
+    selectSize('resizable');
+    expect(screen.getByRole('img', { name: 'Battery10Filled' })).toBeInTheDocument();
+    expect(screen.queryByRole('img', { name })).not.toBeInTheDocument();
   });
 
   it.each(['16', '24', '48'])('selects purpose-built %spx exports and can return to Resizable', (size) => {

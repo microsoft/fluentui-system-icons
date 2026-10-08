@@ -11,6 +11,7 @@ import {
 import * as React from 'react';
 import { FixedSizeGrid, type GridChildComponentProps } from 'react-window';
 import { IconCatalogControls } from './IconCatalogControls';
+import { SIZED_ICON_SIZES } from './icon-sizes';
 import { isSizedIconName, SIZED_ICON_RE } from './sized-icons';
 import { useIconCatalogClipboard } from './useIconCatalogClipboard';
 
@@ -19,7 +20,7 @@ const RESIZABLE_ICON_SIZE = 48;
 const SIZE_OPTIONS = [
   { value: 'all', label: 'All sizes' },
   { value: 'resizable', label: 'Resizable' },
-  ...[16, 20, 24, 28, 32, 48].map((size) => ({ value: String(size), label: `${size}px` })),
+  ...SIZED_ICON_SIZES.map((size) => ({ value: String(size), label: `${size}px` })),
 ];
 const VARIANT_OPTIONS = [
   { value: 'all', label: 'All variants' },
