@@ -50,16 +50,16 @@ export const rule = createRule<Options, MessageIds>({
     const sources = options.sources ?? DEFAULT_SOURCES;
     const { sourceCode } = context;
 
-    /** Local identifiers bound to `import * as X` from an icon source. */
-    const namespaceLocals = new Set<string>();
+    /** Local identifiers bound to `import * as X` and their icon sources. */
+    const namespaceLocals = new Map<string, string>();
 
     function isIconSource(value: string): boolean {
       return sources.some((source) => value === source || value.startsWith(`${source}/`));
     }
 
-    function reportNamed(specifier: TSESTree.ImportSpecifier): void {
+    function reportNamed(specifier: TSESTree.ImportSpecifier, source: string): void {
       const importedName = specifier.imported.name;
-      const resizable = getResizableIconName(importedName);
+      const resizable = getResizableIconName(importedName, source);
       if (resizable === null) {
         return;
       }
@@ -94,8 +94,8 @@ export const rule = createRule<Options, MessageIds>({
       });
     }
 
-    function reportNamespaceMember(property: TSESTree.Identifier | TSESTree.JSXIdentifier): void {
-      const resizable = getResizableIconName(property.name);
+    function reportNamespaceMember(property: TSESTree.Identifier | TSESTree.JSXIdentifier, source: string): void {
+      const resizable = getResizableIconName(property.name, source);
       if (resizable === null) {
         return;
       }
@@ -121,24 +121,26 @@ export const rule = createRule<Options, MessageIds>({
         }
         for (const specifier of node.specifiers) {
           if (specifier.type === 'ImportSpecifier') {
-            reportNamed(specifier);
+            reportNamed(specifier, node.source.value);
           } else if (specifier.type === 'ImportNamespaceSpecifier') {
-            namespaceLocals.add(specifier.local.name);
+            namespaceLocals.set(specifier.local.name, node.source.value);
           }
         }
       },
       'JSXMemberExpression[object.type="JSXIdentifier"]'(node: TSESTree.JSXMemberExpression): void {
         const object = node.object as TSESTree.JSXIdentifier;
-        if (namespaceLocals.has(object.name)) {
-          reportNamespaceMember(node.property);
+        const source = namespaceLocals.get(object.name);
+        if (source !== undefined) {
+          reportNamespaceMember(node.property, source);
         }
       },
       'MemberExpression[object.type="Identifier"][property.type="Identifier"][computed=false]'(
         node: TSESTree.MemberExpression,
       ): void {
         const object = node.object as TSESTree.Identifier;
-        if (namespaceLocals.has(object.name)) {
-          reportNamespaceMember(node.property as TSESTree.Identifier);
+        const source = namespaceLocals.get(object.name);
+        if (source !== undefined) {
+          reportNamespaceMember(node.property as TSESTree.Identifier, source);
         }
       },
     };
