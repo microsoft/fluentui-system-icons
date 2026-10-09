@@ -1,3 +1,7 @@
+## 2.0.344 (2026-10-09)
+
+This release contains icon updates
+
 ## 2.0.343 (2026-09-25)
 
 This release contains icon updates

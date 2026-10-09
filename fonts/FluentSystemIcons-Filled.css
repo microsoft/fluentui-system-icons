@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?1d34cc80ec0e08f8254129eb68667477") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?1d34cc80ec0e08f8254129eb68667477") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?1d34cc80ec0e08f8254129eb68667477") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?d3519bcf14a1654d36a42dc28bd31bbc") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?d3519bcf14a1654d36a42dc28bd31bbc") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?d3519bcf14a1654d36a42dc28bd31bbc") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -29691,4 +29691,40 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_text_collapse_32_filled:before {
     content: "\f0da3";
+}
+.icon-ic_fluent_circle_multiple_concentric_dashes_16_filled:before {
+    content: "\f0da4";
+}
+.icon-ic_fluent_circle_multiple_concentric_dashes_20_filled:before {
+    content: "\f0da5";
+}
+.icon-ic_fluent_circle_multiple_concentric_dashes_24_filled:before {
+    content: "\f0da6";
+}
+.icon-ic_fluent_circle_multiple_concentric_dashes_28_filled:before {
+    content: "\f0da7";
+}
+.icon-ic_fluent_circle_multiple_concentric_dashes_32_filled:before {
+    content: "\f0da8";
+}
+.icon-ic_fluent_circle_multiple_concentric_dashes_48_filled:before {
+    content: "\f0da9";
+}
+.icon-ic_fluent_layout_infographic_two_sparkle_16_filled:before {
+    content: "\f0daa";
+}
+.icon-ic_fluent_layout_infographic_two_sparkle_20_filled:before {
+    content: "\f0dab";
+}
+.icon-ic_fluent_plug_puzzle_16_filled:before {
+    content: "\f0dac";
+}
+.icon-ic_fluent_plug_puzzle_20_filled:before {
+    content: "\f0dad";
+}
+.icon-ic_fluent_plug_puzzle_24_filled:before {
+    content: "\f0dae";
+}
+.icon-ic_fluent_plug_puzzle_32_filled:before {
+    content: "\f0daf";
 }

@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Regular";
-    src: url("./FluentSystemIcons-Regular.woff2?7086a22b83f9464ded2867cbbab57664") format("woff2"),
-url("./FluentSystemIcons-Regular.woff?7086a22b83f9464ded2867cbbab57664") format("woff"),
-url("./FluentSystemIcons-Regular.ttf?7086a22b83f9464ded2867cbbab57664") format("truetype");
+    src: url("./FluentSystemIcons-Regular.woff2?b167c3389696d1910184bdd75002d62a") format("woff2"),
+url("./FluentSystemIcons-Regular.woff?b167c3389696d1910184bdd75002d62a") format("woff"),
+url("./FluentSystemIcons-Regular.ttf?b167c3389696d1910184bdd75002d62a") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -29316,4 +29316,40 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_text_collapse_32_regular:before {
     content: "\f0d26";
+}
+.icon-ic_fluent_circle_multiple_concentric_dashes_16_regular:before {
+    content: "\f0d27";
+}
+.icon-ic_fluent_circle_multiple_concentric_dashes_20_regular:before {
+    content: "\f0d28";
+}
+.icon-ic_fluent_circle_multiple_concentric_dashes_24_regular:before {
+    content: "\f0d29";
+}
+.icon-ic_fluent_circle_multiple_concentric_dashes_28_regular:before {
+    content: "\f0d2a";
+}
+.icon-ic_fluent_circle_multiple_concentric_dashes_32_regular:before {
+    content: "\f0d2b";
+}
+.icon-ic_fluent_circle_multiple_concentric_dashes_48_regular:before {
+    content: "\f0d2c";
+}
+.icon-ic_fluent_layout_infographic_two_sparkle_16_regular:before {
+    content: "\f0d2d";
+}
+.icon-ic_fluent_layout_infographic_two_sparkle_20_regular:before {
+    content: "\f0d2e";
+}
+.icon-ic_fluent_plug_puzzle_16_regular:before {
+    content: "\f0d2f";
+}
+.icon-ic_fluent_plug_puzzle_20_regular:before {
+    content: "\f0d30";
+}
+.icon-ic_fluent_plug_puzzle_24_regular:before {
+    content: "\f0d31";
+}
+.icon-ic_fluent_plug_puzzle_32_regular:before {
+    content: "\f0d32";
 }

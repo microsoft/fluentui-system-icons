@@ -6301,12 +6301,12 @@
   },
   "CircleMultipleConcentricDashesFilled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "CircleMultipleConcentricDashesRegular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "CircleMultipleHintCheckmarkFilled": {
@@ -14906,12 +14906,12 @@
   },
   "LayoutInfographicTwoSparkleFilled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "LayoutInfographicTwoSparkleRegular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "LayoutRowFourFilled": {
@@ -19781,12 +19781,12 @@
   },
   "PlugPuzzleFilled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "PlugPuzzleRegular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "resizable"
   },
   "PointScanFilled": {
@@ -52501,62 +52501,62 @@
   },
   "CircleMultipleConcentricDashes16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "CircleMultipleConcentricDashes16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "CircleMultipleConcentricDashes20Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "CircleMultipleConcentricDashes20Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "CircleMultipleConcentricDashes24Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "CircleMultipleConcentricDashes24Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "CircleMultipleConcentricDashes28Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "CircleMultipleConcentricDashes28Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "CircleMultipleConcentricDashes32Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "CircleMultipleConcentricDashes32Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "CircleMultipleConcentricDashes48Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "CircleMultipleConcentricDashes48Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "CircleMultipleHintCheckmark16Color": {
@@ -82441,22 +82441,22 @@
   },
   "LayoutInfographicTwoSparkle16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "LayoutInfographicTwoSparkle16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "LayoutInfographicTwoSparkle20Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "LayoutInfographicTwoSparkle20Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "LayoutRowFour16Filled": {
@@ -101041,42 +101041,42 @@
   },
   "PlugPuzzle16Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "PlugPuzzle16Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "PlugPuzzle20Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "PlugPuzzle20Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "PlugPuzzle24Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "PlugPuzzle24Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "PlugPuzzle32Filled": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "PlugPuzzle32Regular": {
     "svg": true,
-    "font": false,
+    "font": true,
     "type": "sized"
   },
   "PointScan20Filled": {
