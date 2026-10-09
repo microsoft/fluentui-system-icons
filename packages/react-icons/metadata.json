@@ -6299,6 +6299,16 @@
     "font": true,
     "type": "resizable"
   },
+  "CircleMultipleConcentricDashesFilled": {
+    "svg": true,
+    "font": false,
+    "type": "resizable"
+  },
+  "CircleMultipleConcentricDashesRegular": {
+    "svg": true,
+    "font": false,
+    "type": "resizable"
+  },
   "CircleMultipleHintCheckmarkFilled": {
     "svg": true,
     "font": true,
@@ -14894,6 +14904,16 @@
     "font": true,
     "type": "resizable"
   },
+  "LayoutInfographicTwoSparkleFilled": {
+    "svg": true,
+    "font": false,
+    "type": "resizable"
+  },
+  "LayoutInfographicTwoSparkleRegular": {
+    "svg": true,
+    "font": false,
+    "type": "resizable"
+  },
   "LayoutRowFourFilled": {
     "svg": true,
     "font": true,
@@ -19757,6 +19777,16 @@
   "PlugDisconnectedRegular": {
     "svg": true,
     "font": true,
+    "type": "resizable"
+  },
+  "PlugPuzzleFilled": {
+    "svg": true,
+    "font": false,
+    "type": "resizable"
+  },
+  "PlugPuzzleRegular": {
+    "svg": true,
+    "font": false,
     "type": "resizable"
   },
   "PointScanFilled": {
@@ -52469,6 +52499,66 @@
     "font": true,
     "type": "sized"
   },
+  "CircleMultipleConcentricDashes16Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "CircleMultipleConcentricDashes16Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "CircleMultipleConcentricDashes20Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "CircleMultipleConcentricDashes20Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "CircleMultipleConcentricDashes24Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "CircleMultipleConcentricDashes24Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "CircleMultipleConcentricDashes28Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "CircleMultipleConcentricDashes28Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "CircleMultipleConcentricDashes32Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "CircleMultipleConcentricDashes32Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "CircleMultipleConcentricDashes48Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "CircleMultipleConcentricDashes48Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
   "CircleMultipleHintCheckmark16Color": {
     "svg": true,
     "font": false,
@@ -82349,6 +82439,26 @@
     "font": true,
     "type": "sized"
   },
+  "LayoutInfographicTwoSparkle16Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "LayoutInfographicTwoSparkle16Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "LayoutInfographicTwoSparkle20Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "LayoutInfographicTwoSparkle20Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
   "LayoutRowFour16Filled": {
     "svg": true,
     "font": true,
@@ -100927,6 +101037,46 @@
   "PlugDisconnected48Regular": {
     "svg": true,
     "font": true,
+    "type": "sized"
+  },
+  "PlugPuzzle16Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "PlugPuzzle16Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "PlugPuzzle20Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "PlugPuzzle20Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "PlugPuzzle24Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "PlugPuzzle24Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "PlugPuzzle32Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "PlugPuzzle32Regular": {
+    "svg": true,
+    "font": false,
     "type": "sized"
   },
   "PointScan20Filled": {
