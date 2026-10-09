@@ -72,6 +72,16 @@ dependencies:
 
 For library docs, see [flutter/README.md](flutter/README.md).
 
+### .NET MAUI
+
+Install the community package:
+
+```shell
+dotnet add package IconFont.Maui.FluentIcons
+```
+
+For library docs, see [IconFont.Maui.FluentIcons](https://github.com/jfversluis/IconFont.Maui.FluentIcons).
+
 ### Plain svg
 
 Inline svg directly. See [packages/svg-icons/README.md](packages/svg-icons/README.md).
