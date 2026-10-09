@@ -173,7 +173,9 @@ async function assertCompoundStyleVariantIssues(destPath) {
     for (const exportName of exportNames) {
       // Extract base by removing trailing size+style pattern
       // e.g., TextColor16Regular -> TextColor, Text16Regular -> Text
-      const baseMatch = exportName.match(/^([A-Z][a-z]+(?:[A-Z][a-z]+)*)\d+(Regular|Filled|Light|Color)?$/);
+      const baseMatch = exportName
+        .split('_')[0]
+        .match(/^([A-Z][a-z]+(?:[A-Z][a-z]+)*)\d+(Regular|Filled|Light|Color)?$/);
       if (baseMatch) {
         const base = baseMatch[1];
         if (!basePrefixes.has(base)) {

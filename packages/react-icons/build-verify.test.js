@@ -2121,15 +2121,15 @@ describe('Build Verification', () => {
       const { svgPathCjs, svgPathEsm } = getAssetPaths();
       const esmStats = await getAtomDirStats(svgPathEsm);
       const cjsStats = await getAtomDirStats(svgPathCjs, 'lib-cjs');
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2912`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2912`);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`3054`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`3054`);
     });
     it(`should have same number of atoms/fonts icon files in lib and lib-cjs`, async () => {
       const { fontsPathCjs, fontsPathEsm } = getAssetPaths();
       const esmStats = await getAtomDirStats(fontsPathEsm);
       const cjsStats = await getAtomDirStats(fontsPathCjs, 'lib-cjs');
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2905`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2905`);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`3047`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`3047`);
     });
     it.each(['lib', 'lib-cjs'])('should have atoms/svg directory with icon files in %s', async (libDir) => {
       const atomsSvgPath = path.join(__dirname, libDir, 'atoms', 'svg');
@@ -2674,7 +2674,7 @@ describe('Build Verification', () => {
 
         try {
           // Run git diff to check if metadata.json has any uncommitted changes
-          const gitDiff = execSync('git diff metadata.json', {
+          const gitDiff = execSync('git diff --name-only -- metadata.json', {
             encoding: 'utf-8',
             cwd: __dirname,
             stdio: 'pipe',
@@ -2686,7 +2686,7 @@ describe('Build Verification', () => {
               `metadata.json has uncommitted changes after build.\n` +
                 `This means the committed metadata.json is out of sync with the current icons.\n` +
                 `Please run 'yarn build' and commit the updated metadata.json file.\n\n` +
-                `Git diff:\n${gitDiff}`,
+                `Changed file:\n${gitDiff}`,
             );
           }
 

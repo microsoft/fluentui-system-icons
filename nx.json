@@ -12,6 +12,7 @@
     "assets": ["{workspaceRoot}/assets/**/*"],
     "iconGenerationToolchain": [
       "{workspaceRoot}/importer/generate.js",
+      "{workspaceRoot}/importer/icon-name.js",
       "{workspaceRoot}/importer/replace-in-files.js",
       "{workspaceRoot}/importer/svgo.config.shared.cjs"
     ],

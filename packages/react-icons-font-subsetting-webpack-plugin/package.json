@@ -8,6 +8,7 @@
     "test:types": "yarn run -T tsc -p test/tsconfig.conformance.json",
     "test:webpack": "node test/run.js --bundler webpack",
     "test:rspack": "node test/run.js --bundler rspack",
+    "test:render": "node test/check-localized-font-render.js",
     "dev": "yarn run -T webpack serve -c test/webpack.config.js --open",
     "build": "yarn run -T tsc -p .",
     "lint": "yarn run -T eslint src package.json"

@@ -20,6 +20,30 @@ const ruleTester = new RuleTester({
 
 ruleTester.run(RULE_NAME, rule, {
   valid: [
+    {
+      code: `import { ZoomOut32Light, TextEditStyle32Light_en } from '@fluentui/react-icons';`,
+    },
+    {
+      code: `import { TextEditStyle32Light_en as Edit } from '@fluentui/react-icons/headless/fonts/text-edit-style_en';\nconst a = <Edit />;`,
+    },
+    {
+      code: `import * as Icons from '@fluentui/react-icons/fonts/text-edit-style_en';\nconst a = <Icons.TextEditStyle32Light_en />;`,
+    },
+    {
+      code: `import { BookQuestionMark24Filled_ar } from '@fluentui/react-icons';`,
+    },
+    {
+      code: `import { CommentNote24Regular_he as Note } from '@fluentui/react-icons/headless/fonts/comment-note_he';\nconst a = <Note />;`,
+    },
+    {
+      code: `import * as Icons from '@fluentui/react-icons';\nconst a = <Icons.TextClearFormatting32Regular_ko />;`,
+    },
+    {
+      code: `import { AlignDistributeBottom16Regular, AccessibilityCheckmark32Light } from '@fluentui/react-icons';`,
+    },
+    {
+      code: `import { TextBoldRegular_srCyrl } from '@fluentui/react-icons/headless/svg/text-bold_sr-cyrl';\nconst a = <TextBoldRegular_srCyrl />;`,
+    },
     // Resizable named import + usage.
     {
       code: `import { SendRegular } from '@fluentui/react-icons';\nconst a = <SendRegular />;`,
@@ -44,6 +68,93 @@ ruleTester.run(RULE_NAME, rule, {
     },
   ],
   invalid: [
+    {
+      code: `import { TextEditStyle32Light_en } from 'custom-icons';`,
+      options: [{ sources: ['custom-icons'] }],
+      errors: [
+        {
+          messageId: 'preferResizable',
+          suggestions: [
+            {
+              messageId: 'useResizable',
+              output: `import { TextEditStyleLight_en } from 'custom-icons';`,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `import { AlignDistributeBottom16Regular } from 'custom-icons';`,
+      options: [{ sources: ['custom-icons'] }],
+      errors: [
+        {
+          messageId: 'preferResizable',
+          suggestions: [
+            {
+              messageId: 'useResizable',
+              output: `import { AlignDistributeBottomRegular } from 'custom-icons';`,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `import * as Icons from '@fluentui/react-brand-icons';\nconst a = <Icons.AlignDistributeBottom16Regular />;`,
+      errors: [
+        {
+          messageId: 'preferResizable',
+          suggestions: [
+            {
+              messageId: 'useResizable',
+              output: `import * as Icons from '@fluentui/react-brand-icons';\nconst a = <Icons.AlignDistributeBottomRegular />;`,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `import { TextBold24Regular_es } from '@fluentui/react-icons';\nconst a = <TextBold24Regular_es />;`,
+      errors: [
+        {
+          messageId: 'preferResizable',
+          data: { sized: 'TextBold24Regular_es', resizable: 'TextBoldRegular_es' },
+          suggestions: [
+            {
+              messageId: 'useResizable',
+              output: `import { TextBoldRegular_es } from '@fluentui/react-icons';\nconst a = <TextBoldRegular_es />;`,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `import { TextBold24Regular_srCyrl as Bold } from '@fluentui/react-icons/headless/fonts/text-bold_sr-cyrl';\nconst a = <Bold />;`,
+      errors: [
+        {
+          messageId: 'preferResizable',
+          suggestions: [
+            {
+              messageId: 'useResizable',
+              output: `import { TextBoldRegular_srCyrl as Bold } from '@fluentui/react-icons/headless/fonts/text-bold_sr-cyrl';\nconst a = <Bold />;`,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `import * as Icons from '@fluentui/react-icons';\nconst a = <Icons.TextBold24Regular_srCyrl />;`,
+      errors: [
+        {
+          messageId: 'preferResizable',
+          suggestions: [
+            {
+              messageId: 'useResizable',
+              output: `import * as Icons from '@fluentui/react-icons';\nconst a = <Icons.TextBoldRegular_srCyrl />;`,
+            },
+          ],
+        },
+      ],
+    },
     // Named sized import (non-aliased) + JSX usage: renames binding and usages.
     {
       code: `import { Send24Regular } from '@fluentui/react-icons';\nconst a = <Send24Regular />;`,

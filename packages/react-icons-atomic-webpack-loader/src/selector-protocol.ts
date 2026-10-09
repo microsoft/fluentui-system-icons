@@ -159,11 +159,12 @@ export function getRegisteredSelectorCapabilities(compilation: unknown): Set<Sel
 }
 
 export function getIconFamilyName(exportName: string): string | null {
-  const match = /(\d*)?(Regular|Filled|Light|Color)$/.exec(exportName);
+  const match = /(\d*)?(Regular|Filled|Light|Color)(?:_([a-z][a-zA-Z0-9]*))?$/.exec(exportName);
   if (!match) {
     return null;
   }
-  return toKebabCase(exportName.slice(0, match.index));
+  const qualifier = match[3] ? `_${toKebabCase(match[3])}` : '';
+  return toKebabCase(exportName.slice(0, match.index)) + qualifier;
 }
 
 function assertExportIdentifier(exportName: string): void {
