@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "noEmit": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "target": "es2020",
+    "module": "esnext",
+    // rspack ships its types behind an `exports` map, which node10 resolution cannot read.
+    "moduleResolution": "bundler",
+    "types": ["node"]
+  },
+  "include": ["types.conformance.ts", "../src/**/*.ts"]
+}

@@ -247,6 +247,7 @@
   "dotx": ["dot", "dotm", "dotx"],
   "email": ["eml", "msg", "oft", "ost", "pst"],
   "exe": ["application", "appref-ms", "apk", "app", "appx", "exe", "ipa", "msi", "xap"],
+  "fabricontology": null,
   "favoritesfolder": null,
   "folder": null,
   "font": ["ttf", "otf", "woff"],

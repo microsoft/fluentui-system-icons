@@ -13,6 +13,8 @@ updates:
         applies-to: security-updates
         patterns:
           - '*'
+    cooldown:
+      default-days: 7
 
   - package-ecosystem: 'npm'
     # Single yarn workspace root: yarn.lock at `/` covers every workspace package.
@@ -24,6 +26,18 @@ updates:
     ignore:
       - dependency-name: '*'
         update-types: ['version-update:semver-major']
+      # Nx is upgraded exclusively via `yarn nx migrate`, which keeps the whole `nx`/`@nx/*` set
+      # version-locked and applies config codemods (nx.json, project.json, migrations.json).
+      # A Dependabot bump only touches package.json/yarn.lock, so it silently skips the codemods
+      # and can desync plugin versions from the Nx runtime. Banned outright, security updates
+      # included — those must go through `nx migrate` too.
+      - dependency-name: 'nx'
+      - dependency-name: '@nx/*'
+      - dependency-name: '@nrwl/*'
+      # packages/react-icons pins `typescript` to 4.1.6 independently of the repo-wide
+      # toolchain (see packages/react-icons/package.json). Banned outright, security updates
+      # included, until that workspace is deliberately migrated to a newer TypeScript.
+      - dependency-name: 'typescript'
     groups:
       production-dependencies:
         dependency-type: 'production'

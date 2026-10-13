@@ -11,9 +11,9 @@ AGENTS.md @microsoft/cxe-prg
 packages/docsite @microsoft/cxe-prg
 packages/eslint-plugin-react-icons @microsoft/cxe-prg
 packages/icon-app @microsoft/cxe-prg
-packages/react-icons @microsoft/cxe-prg @microsoft/cxe-red
-packages/react-icons-file-type @microsoft/cxe-prg @microsoft/cxe-red @bigbadcapers
-packages/react-icons-font-subsetting-webpack-plugin @MLoughry @microsoft/cxe-prg
+packages/react-icons @microsoft/cxe-prg
+packages/react-icons-file-type @microsoft/cxe-prg @bigbadcapers
+packages/react-icons-font-subsetting-webpack-plugin @microsoft/cxe-prg
 packages/react-icons-svg-sprite-subsetting-webpack-plugin @microsoft/cxe-prg
 packages/react-icons-atomic-webpack-loader @microsoft/cxe-prg
 packages/svg-icons @microsoft/cxe-prg
@@ -24,8 +24,8 @@ importer/ @microsoft/cxe-prg
 
 ## Build Systems
 android/ @microsoft/react-native-sdk-admins
-flutter/ @nickromano
-ios/ @nickromano
+flutter/
+ios/
 yarn.lock @microsoft/cxe-prg
 .yarnrc.yml @microsoft/cxe-prg
 .yarn/ @microsoft/cxe-prg
@@ -38,4 +38,4 @@ monosize.config.mjs @microsoft/cxe-prg
 .prettierrc @microsoft/cxe-prg
 
 ## Assets
-assets/ @spencer-nelson @willchavez
+assets/ @willchavez

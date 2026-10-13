@@ -6,7 +6,7 @@
 import type * as webpack from 'webpack';
 import type * as rspack from '@rspack/core';
 
-import type { BundlerCompiler, BundlerPlugin } from '../src/bundler-api';
+import type { BundlerCompilation, BundlerCompiler, BundlerPlugin } from '../src/bundler-api';
 import FluentUIReactIconsFontSubsettingPlugin from '../src/index';
 
 /** Fails to compile unless `Actual` is assignable to `Expected`. */
@@ -16,6 +16,11 @@ type AssertAssignable<Expected, Actual extends Expected> = Actual;
 // BundlerCompiler. This is what makes `implements` work without casting.
 type WebpackCompilerConforms = AssertAssignable<BundlerCompiler, webpack.Compiler>;
 type RspackCompilerConforms = AssertAssignable<BundlerCompiler, rspack.Compiler>;
+
+// Checked directly rather than through `hooks.compilation.tap`, whose parameters are bivariant and
+// so would accept a `BundlerCompilation` the real compilations do not satisfy.
+type WebpackCompilationConforms = AssertAssignable<BundlerCompilation, webpack.Compilation>;
+type RspackCompilationConforms = AssertAssignable<BundlerCompilation, rspack.Compilation>;
 
 // The plugin must remain usable in both bundlers' `plugins` arrays.
 type IsWebpackPlugin = AssertAssignable<webpack.WebpackPluginInstance, FluentUIReactIconsFontSubsettingPlugin>;
@@ -34,5 +39,13 @@ new FluentUIReactIconsFontSubsettingPlugin().apply(rspackCompiler);
 const webpackConfig: webpack.Configuration = { plugins: [new FluentUIReactIconsFontSubsettingPlugin()] };
 const rspackConfig: rspack.Configuration = { plugins: [new FluentUIReactIconsFontSubsettingPlugin()] };
 
-export type { WebpackCompilerConforms, RspackCompilerConforms, IsWebpackPlugin, IsRspackPlugin, ImplementsContract };
+export type {
+  WebpackCompilerConforms,
+  RspackCompilerConforms,
+  WebpackCompilationConforms,
+  RspackCompilationConforms,
+  IsWebpackPlugin,
+  IsRspackPlugin,
+  ImplementsContract,
+};
 export { webpackConfig, rspackConfig };

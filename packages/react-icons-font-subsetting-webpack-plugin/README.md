@@ -1,6 +1,6 @@
 # @fluentui/react-icons-font-subsetting-webpack-plugin
 
-This package includes a plugin for `webpack@>=5.0.0` and `@rspack/core@>=2.1.0` to subset the icon font files used by `@fluentui/react-icons` when using font-based icon implementations.
+This package includes a plugin for `webpack@>=5.0.0` and `@rspack/core@>=2.0.0` to subset the icon font files used by `@fluentui/react-icons` when using font-based icon implementations.
 
 If `optimization.usedExports` is enabled (as it is by default in `production` mode), this plugin will subset the font files to only include the glyphs actually used by your build.
 
@@ -38,6 +38,13 @@ import { AddRegular, AddFilled } from '@fluentui/react-icons/headless/fonts/add'
 The plugin subsets the same shared font files used by the standard API, based on the headless icons you actually use. Because the font files arrive via `styles.css`, your config needs a CSS loader (e.g. `css-loader`) so the `url(...)` references resolve into webpack assets.
 
 > **Tip 💡:** You don't have to write atomic headless imports by hand. Pair this plugin with [`@fluentui/react-icons-atomic-webpack-loader`](../react-icons-atomic-webpack-loader) using `{ headless: true, iconVariant: 'fonts' }` — it rewrites plain barrel imports (`import { AddFilled } from '@fluentui/react-icons'`) into headless font atoms, which this plugin then subsets. You still import `@fluentui/react-icons/headless/fonts/styles.css` yourself.
+
+The plugin is query-aware for the atomic loader's
+`moduleGranularity: 'icon'` mode. Queried modules are attributed through their
+query-free physical paths while their exact selected exports are aggregated.
+Use coordinated loader/plugin releases: the two packages perform a
+compilation-level `v1` selector capability handshake and fail the build instead
+of producing an incorrect subset when support is missing or incompatible.
 
 ## Usage
 
@@ -123,6 +130,37 @@ Two rspack-specific notes:
 - For the headless import pattern, use `rspack.CssExtractRspackPlugin` instead of `mini-css-extract-plugin`, which is not compatible with rspack.
 - `webpack` and `@rspack/core` are both declared as **optional** peer dependencies, so you only need to install the bundler you actually use.
 
-rspack `>=2.1.0` is required because subsetting reads the module graph: `moduleGraph.getUsedExports()`
-was exposed to the JS API in rspack 2.0.0, and `moduleGraph.getProvidedExports()` — which this plugin
-relies on to subset namespace imports (`import * as …`) — only landed in 2.1.0.
+rspack `>=2.0.0` is required because subsetting reads the module graph, and
+`moduleGraph.getUsedExports()` was exposed to the JS API in rspack 2.0.0.
+
+On rspack `2.0.x` there is one limitation: `moduleGraph.getProvidedExports()` only landed in 2.1.0,
+and it is what lets the plugin subset icons reached through a **namespace import**
+(`import * as Icons from '@fluentui/react-icons/fonts/…'`). Because those icons cannot be
+identified, _every_ font in the affected package is left un-subset — not just the namespace import's
+own module — since subsetting from the package's remaining imports would drop glyphs the namespace
+import actually uses. A build warning names the package when this happens. Named imports — the
+common case — are unaffected and subset fully. Upgrade to rspack `>=2.1.0` for complete coverage.
+
+## Options
+
+### `onDuplicateInstances`
+
+`'warn' | 'error'`, default `'warn'`.
+
+The plugin subsets against one resolved `@fluentui/react-icons` package instance. When font modules
+resolve from more than one installed copy — peer-dependency variants in a virtual store will do this
+without any version conflict — emitted font assets cannot be attributed safely to one coherent source.
+
+The plugin detects multiple participating copies before inspecting font-asset ownership, leaves all
+fonts un-subset so every glyph still renders, and warns with the paths involved. Set `'error'` to fail
+the build instead:
+
+```js
+new FluentUIReactIconsFontSubsettingPlugin({ onDuplicateInstances: 'error' });
+```
+
+To get subsetting back, collapse the copies onto one instance with bundler `resolve.alias` entries.
+Note that this also binds every copy to a single React and Griffel instance.
+
+Using ESM `import` and CommonJS `require()` from the same installation does not count as two copies.
+Their used exports are combined, and each emitted font asset is subset once.

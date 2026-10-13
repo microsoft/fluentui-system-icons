@@ -6,12 +6,12 @@ The `@fluentui/react-icons` package provides the [Fluent UI System Icons](https:
 
 Not sure which icon you need? Explore the full set in the <a href="./?path=/docs/icons-catalog--docs" target="_top">icon catalog</a> — search by name and pick the component to use.
 
-## Sized icons vs unsized icons
+## Resizable icons vs sized icons
 
-- **Unsized** icons (e.g., `SendRegular`, `SendFilled`, etc.) are set to `1em` in size and can be adjusted proportionally using the `fontSize` property.
-- **Sized** icons (e.g., `Send24Regular`, `Send32Regular`) are fixed to predetermined sizes and do not scale.
+- **Resizable** icons (e.g., `SendRegular`, `SendFilled`) use `1em` dimensions and scale with `fontSize` or CSS `font-size`.
+- **Sized** icons (e.g., `Send24Regular`, `Send32Regular`) use fixed dimensions and artwork optically tuned for their native size.
 
-As a general guideline, it's recommended to utilize unsized icons since the same instance of an icon can be reused multiple times. However, there are instances where icons may not scale effectively. For example, icons containing logos and signs often have varied glyph sizes. In such cases, it's advisable to opt for sized icons.
+Prefer resizable icons when the same component needs to work at different sizes. Choose a sized variant when you need artwork tuned for a specific size, particularly for detailed icons, logos, and signs.
 
 ## Rendering approaches
 

@@ -172,6 +172,13 @@ describe('Build Verification', () => {
   });
 
   describe('Package.json Exports', () => {
+    it('should export package.json', async () => {
+      const packageJsonPath = path.join(__dirname, 'package.json');
+      const packageJson = JSON.parse(await readFile(packageJsonPath, 'utf8'));
+
+      expect(packageJson.exports['./package.json']).toBe('./package.json');
+    });
+
     it('should have all exported files exist', async () => {
       const packageJsonPath = path.join(__dirname, 'package.json');
       /** @type {{main:string;module:string;typings:string;exports:Record<string,string>}} */
@@ -321,7 +328,7 @@ describe('Build Verification', () => {
           [3 /* Light */]: 'FluentSystemIconsLight'
         };
         export const useStaticStyles = __staticStyles({
-          d: [\`@font-face{font-family:FluentSystemIconsFilled;font-display:"block";src:url(\${_asset}) format("woff2"),url(\${_asset2}) format("woff"),url(\${_asset3}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIconsRegular;font-display:"block";src:url(\${_asset4}) format("woff2"),url(\${_asset5}) format("woff"),url(\${_asset6}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIconsLight;font-display:"block";src:url(\${_asset7}) format("woff2"),url(\${_asset8}) format("woff"),url(\${_asset9}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIcons;font-display:"block";src:url(\${_asset0}) format("woff2"),url(\${_asset1}) format("woff"),url(\${_asset10}) format("truetype");}\`]
+          d: [\`@font-face{font-family:FluentSystemIconsFilled;font-display:block;src:url(\${_asset}) format("woff2"),url(\${_asset2}) format("woff"),url(\${_asset3}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIconsRegular;font-display:block;src:url(\${_asset4}) format("woff2"),url(\${_asset5}) format("woff"),url(\${_asset6}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIconsLight;font-display:block;src:url(\${_asset7}) format("woff2"),url(\${_asset8}) format("woff"),url(\${_asset9}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIcons;font-display:block;src:url(\${_asset0}) format("woff2"),url(\${_asset1}) format("woff"),url(\${_asset10}) format("truetype");}\`]
         });
         export const useRootStyles = __styles({
           "0": {
@@ -340,17 +347,13 @@ describe('Build Verification', () => {
             mc9l5x: "f14t3ns0",
             a9b677: "fhson10",
             Bqenvij: "f1un31zh",
-            B68tc82: 0,
-            Bmxbyg5: 0,
-            Bpg54ce: "f1a3p1vp",
             B80ckks: "fmd4ok8",
+            Bhrd7zp: "f5ljve1",
             Bg96gwp: "fne0op0",
             sj55zd: "f303qgw"
           }
         }, {
-          d: [".f9dzkbp{font-family:FluentSystemIconsFilled;}", ".f1krtbx5{font-family:FluentSystemIconsRegular;}", ".f1sxfq9t{font-family:FluentSystemIcons;}", ".fgtzeza{font-family:FluentSystemIconsLight;}", ".f14t3ns0{display:inline-block;}", ".fhson10{width:1em;}", ".f1un31zh{height:1em;}", [".f1a3p1vp{overflow:hidden;}", {
-            p: -1
-          }], ".fmd4ok8{font-style:normal;}", ".fne0op0{line-height:1em;}", ".f303qgw{color:currentColor;}"]
+          d: [".f9dzkbp{font-family:FluentSystemIconsFilled;}", ".f1krtbx5{font-family:FluentSystemIconsRegular;}", ".f1sxfq9t{font-family:FluentSystemIcons;}", ".fgtzeza{font-family:FluentSystemIconsLight;}", ".f14t3ns0{display:inline-block;}", ".fhson10{width:1em;}", ".f1un31zh{height:1em;}", ".fmd4ok8{font-style:normal;}", ".f5ljve1{font-weight:normal;}", ".fne0op0{line-height:1em;}", ".f303qgw{color:currentColor;}"]
         });"
       `);
       expect(fs.readFileSync(path.join(root, unprocessed), 'utf8')).toMatchInlineSnapshot(`
@@ -376,14 +379,14 @@ describe('Build Verification', () => {
         export const useStaticStyles = makeStaticStyles(\`
         @font-face {
             font-family: \${FONT_FAMILY_MAP[0 /* Filled */]};
-            font-display: "block";
+          font-display: block;
             src: url(\${JSON.stringify(fontFilledWoff2)}) format("woff2"),
             url(\${JSON.stringify(fontFilledWoff)}) format("woff"),
             url(\${JSON.stringify(fontFilledTtf)}) format("truetype");
         }
         @font-face {
             font-family: \${FONT_FAMILY_MAP[1 /* Regular */]};
-            font-display: "block";
+          font-display: block;
             src: url(\${JSON.stringify(fontRegularWoff2)}) format("woff2"),
             url(\${JSON.stringify(fontRegularWoff)}) format("woff"),
             url(\${JSON.stringify(fontRegularTtf)}) format("truetype");
@@ -391,7 +394,7 @@ describe('Build Verification', () => {
 
         @font-face {
             font-family: \${FONT_FAMILY_MAP[3 /* Light */]};
-            font-display: "block";
+          font-display: block;
             src: url(\${JSON.stringify(fontLightWoff2)}) format("woff2"),
             url(\${JSON.stringify(fontLightWoff)}) format("woff"),
             url(\${JSON.stringify(fontLightTtf)}) format("truetype");
@@ -399,7 +402,7 @@ describe('Build Verification', () => {
 
         @font-face {
             font-family: \${FONT_FAMILY_MAP[2 /* Resizable */]};
-            font-display: "block";
+          font-display: block;
             src: url(\${JSON.stringify(fontOneSizeWoff2)}) format("woff2"),
             url(\${JSON.stringify(fontOneSizeWoff)}) format("woff"),
             url(\${JSON.stringify(fontOneSizeTtf)}) format("truetype");
@@ -414,14 +417,8 @@ describe('Build Verification', () => {
                 // causing layout shift on every font icon.
                 width: '1em',
                 height: '1em',
-                // Pin the inline-block baseline to its bottom edge (like the resizable SVG, a
-                // replaced element). By default an inline-block is baseline-aligned via its
-                // glyph, whose baseline moves when the webfont's metrics swap in, growing the
-                // line box and shifting inline text vertically. \`overflow: hidden\` makes the
-                // baseline the bottom margin edge instead, which is font-independent and matches
-                // where the loaded glyph already sits (no visible reposition).
-                overflow: 'hidden',
                 fontStyle: 'normal',
+                fontWeight: 'normal',
                 lineHeight: '1em',
                 color: 'currentColor',
             },
@@ -2080,19 +2077,59 @@ describe('Build Verification', () => {
       return { svgPathEsm, svgPathCjs, fontsPathEsm, fontsPathCjs };
     }
 
+    it('keeps every generated ESM declaration independently selectable', async () => {
+      const atomRoot = path.join(__dirname, 'lib/atoms');
+      const atomDirectories = ['svg', 'fonts', 'headless-svg', 'headless-fonts', 'svg-sprite'];
+
+      for (const directory of atomDirectories) {
+        const directoryPath = path.join(atomRoot, directory);
+        if (!fs.existsSync(directoryPath)) continue;
+
+        for (const filename of await readdir(directoryPath)) {
+          if (!filename.endsWith('.js')) continue;
+          const source = await readFile(path.join(directoryPath, filename), 'utf8');
+          const lines = source.split('\n').filter(Boolean);
+          const exportNames = lines
+            .map((line) => /^export const ([A-Za-z_$][\w$]*)\s*=/.exec(line)?.[1])
+            .filter(Boolean);
+          const exportNameSet = new Set(exportNames);
+
+          expect(exportNames.length, `${directory}/${filename} must export icon declarations`).toBeGreaterThan(0);
+
+          for (const line of lines) {
+            expect(
+              /^(?:"[^"]+";|import .+;|\/\*\*.*\*\/|export const [A-Za-z_$][\w$]*\s*=.+;)$/.test(line),
+              `${directory}/${filename} contains unsupported top-level syntax: ${line}`,
+            ).toBe(true);
+          }
+
+          for (const line of lines.filter((value) => value.startsWith('export const '))) {
+            const ownName = /^export const ([A-Za-z_$][\w$]*)\s*=/.exec(line)?.[1];
+            const siblingReference = line
+              .match(/[A-Za-z_$][\w$]*/g)
+              ?.find((identifier) => identifier !== ownName && exportNameSet.has(identifier));
+            expect(
+              siblingReference,
+              `${directory}/${filename}:${ownName} depends on sibling export ${siblingReference}`,
+            ).toBeUndefined();
+          }
+        }
+      }
+    }, 30_000);
+
     it(`should have same number of atoms/svg icon files in lib and lib-cjs`, async () => {
       const { svgPathCjs, svgPathEsm } = getAssetPaths();
       const esmStats = await getAtomDirStats(svgPathEsm);
       const cjsStats = await getAtomDirStats(svgPathCjs, 'lib-cjs');
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2902`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2902`);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2915`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2915`);
     });
     it(`should have same number of atoms/fonts icon files in lib and lib-cjs`, async () => {
       const { fontsPathCjs, fontsPathEsm } = getAssetPaths();
       const esmStats = await getAtomDirStats(fontsPathEsm);
       const cjsStats = await getAtomDirStats(fontsPathCjs, 'lib-cjs');
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2895`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2895`);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2908`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2908`);
     });
     it.each(['lib', 'lib-cjs'])('should have atoms/svg directory with icon files in %s', async (libDir) => {
       const atomsSvgPath = path.join(__dirname, libDir, 'atoms', 'svg');
@@ -2571,6 +2608,7 @@ describe('Build Verification', () => {
       expect(css).toContain('[data-fui-icon]');
       expect(css).toContain('[data-fui-icon-rtl]');
       expect(css).toContain('[data-fui-icon-hidden]');
+      expect(css).toMatch(/\[data-fui-icon=['"]font['"]\][^{]*\{[^}]*font-weight:\s*normal/s);
 
       // Font sub-infrastructure
       expect(fs.existsSync(path.join(headlessDir, 'fonts', 'createFluentFontIcon.js'))).toBe(true);

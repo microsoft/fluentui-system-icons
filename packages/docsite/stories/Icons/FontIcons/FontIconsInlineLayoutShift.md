@@ -1,7 +1,17 @@
-Uses the **headless** font icons (real `font-display: block` loading via an extracted static stylesheet, see `.storybook/main.ts`) rendered in **normal inline text flow** — not inside a `display: flex` chip like the other Font Icons stories.
+Font icons reserve a `1em × 1em` box, but their baseline can still shift inline text when the font loads. Add **`contain: layout`** directly to the icon to stabilize its baseline without a wrapper or clipping:
 
-The `1em` box fixes the **horizontal** shift. On top of it, a font icon is `display: inline-block`; by default its baseline is derived from the glyph, which moves when the icon webfont loads (different ascent/descent than the fallback), growing the line box and dropping the text below it — a **vertical** layout shift. The shipped default adds `overflow: hidden`, which pins the inline-block baseline to the box's bottom edge (font-independent, like the resizable SVG), removing that shift. Flex chips hide the issue entirely because `align-items: center` sizes the row independently of the inline baseline.
+```tsx
+import { SendRegular } from '@fluentui/react-icons/fonts/send';
 
-Both columns render the same sentence with the same 1em font icon, so they wrap identically and start flush with the dashed guide (pinned to the stable column's paragraph bottom). The left column is the shipped default (`overflow: hidden`) and stays put. The right column opts out (`overflow: visible`), restoring the pre-fix behaviour; while the webfont loads its paragraph sits on the guide, then its lower lines drop below the guide when the glyph paints.
+<SendRegular aria-label="Send" style={{ contain: 'layout' }} />;
+```
 
-> **How to see it live:** open this story in the built Storybook, then in DevTools → Network disable cache (and throttle), and reload. Watch the right column's lower lines slip below the guide that the left (default) column stays on.
+Keep the default `inline-block` display and `1em` dimensions. This opt-in works with both Griffel and headless font icons.
+
+Use `layout` only, not `paint`, `content`, or `strict`, which can clip glyphs. On versions that set `overflow: hidden`, also override it with `overflow: 'visible'`.
+
+Containment creates a stacking context and a containing block for positioned descendants. Normally portaled tooltips and popovers are unaffected.
+
+**Support:** Chrome 52+, Edge 79+, Firefox 69+, Safari/iOS 15.4+ ([compatibility](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/contain#browser_compatibility)). Older browsers ignore it.
+
+The demo compares default inline flow with layout containment. To watch font loading, open the **built Storybook**, disable cache, throttle the network, and reload. This addresses icon-font loading, not shifts from a separately loading text font.

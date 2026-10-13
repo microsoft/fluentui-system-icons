@@ -1,3 +1,34 @@
+## 2.0.344 (2026-10-09)
+
+This release contains icon updates
+
+## 2.0.343 (2026-09-25)
+
+This release contains icon updates
+
+## 2.0.342 (2026-09-25)
+
+### 🚀 Features
+
+- **react-icons-atomic-webpack-loader:** add export-level atomization ([#1246](https://github.com/microsoft/fluentui-system-icons/pull/1246))
+
+## 2.0.341 (2026-09-11)
+
+This release contains icon updates
+
+## 2.0.340 (2026-09-10)
+
+### 🩹 Fixes
+
+- **react-icons-font-subsetting-webpack-plugin:** detect duplicate installed instances ([#1234](https://github.com/microsoft/fluentui-system-icons/pull/1234))
+- **react-icons-font-subsetting-webpack-plugin:** derive rspack runtime from chunks, support rspack 2.0.x ([#1230](https://github.com/microsoft/fluentui-system-icons/pull/1230))
+
+## 2.0.339 (2026-08-26)
+
+### 🚀 Features
+
+- **react-icons-font-subsetting-webpack-plugin:** support rspack ([#1219](https://github.com/microsoft/fluentui-system-icons/pull/1219))
+
 ## 2.0.338 (2026-08-21)
 
 This release contains icon updates

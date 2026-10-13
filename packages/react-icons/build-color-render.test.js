@@ -10,14 +10,14 @@
  *
  * This test runs as part of build-verify (after `nx run react-icons:build`).
  *
- * Strategy: Load all atom modules from lib/atoms/svg/ in parallel, then filter
- * for Color exports and render each one.
+ * Strategy: Scan generated atom sources for Color candidates before importing,
+ * then filter runtime exports and render each color icon.
  */
 
 import { describe, it, expect } from 'vitest';
-import { render } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import { createElement } from 'react';
-import { readdir } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -25,7 +25,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const atomsDir = path.join(__dirname, 'lib', 'atoms', 'svg');
 
 /**
- * Load all atom modules in parallel and collect Color icon exports.
+ * Import only generated atom sources mentioning Color, then collect Color exports.
  * @returns {Promise<Array<{ name: string; file: string; Component: any }>>}
  */
 async function loadColorIcons() {
@@ -33,13 +33,19 @@ async function loadColorIcons() {
   const jsFiles = files.filter((f) => f.endsWith('.js'));
 
   const modules = await Promise.all(
-    jsFiles.map((file) => import(path.join(atomsDir, file)).then((mod) => ({ file, mod }))),
+    jsFiles.map(async (file) => {
+      const filePath = path.join(atomsDir, file);
+      const source = await readFile(filePath, 'utf8');
+      return source.includes('Color') ? { file, mod: await import(filePath) } : undefined;
+    }),
   );
 
   /** @type {Array<{ name: string; file: string; Component: any }>} */
   const colorIcons = [];
 
-  for (const { file, mod } of modules) {
+  for (const entry of modules) {
+    if (!entry) continue;
+    const { file, mod } = entry;
     for (const [name, Component] of Object.entries(mod)) {
       // Real color-variant icons always end with the `Color` suffix (e.g. `BeachColor`).
       // Mono-color glyphs that merely contain "Color" in their name (e.g. `ColorFilled`,
@@ -77,6 +83,8 @@ describe('Color Icon Rendering', () => {
         expect(svg, `${name}: should have viewBox`).toHaveAttribute('viewBox');
       } catch (error) {
         failures.push({ name, file, error });
+      } finally {
+        cleanup();
       }
     }
 

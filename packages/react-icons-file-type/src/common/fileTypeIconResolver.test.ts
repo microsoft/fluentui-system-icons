@@ -56,6 +56,7 @@ describe('getFileTypeIconNameFromExtensionOrType', () => {
     expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.pbiSemanticModel)).toBe('pbisemmodel');
     expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.pbiReport)).toBe('powerbi');
     expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.wikiPage)).toBe('wikipage');
+    expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.fabricOntology)).toBe('fabricontology');
   });
 
   it('falls back to genericfile for the genericFile type (no dedicated map entry)', () => {

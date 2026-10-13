@@ -82,4 +82,31 @@ export const reactHooks = {
   },
 };
 
+/**
+ * Requires private class members to carry a `__` prefix, so a member's visibility is legible at the
+ * usage site and not only at its declaration.
+ *
+ * @param {string[]} [files]
+ * @returns {import('typescript-eslint').ConfigWithExtends}
+ */
+export function privateMemberNaming(files = ['**/*.{ts,tsx}']) {
+  return {
+    files,
+    plugins: { '@typescript-eslint': tseslint.plugin },
+    languageOptions: { parser: tseslint.parser },
+    rules: {
+      '@typescript-eslint/naming-convention': [
+        'error',
+        {
+          selector: 'memberLike',
+          modifiers: ['private'],
+          format: ['camelCase'],
+          // `require` would accept a single underscore; the convention here is two.
+          leadingUnderscore: 'requireDouble',
+        },
+      ],
+    },
+  };
+}
+
 export { tseslint };

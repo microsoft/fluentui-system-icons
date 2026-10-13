@@ -29,5 +29,6 @@
   { "value": 28, "name": "pbiScorecard", "icon": "pbiscorecard" },
   { "value": 29, "name": "pbiSemanticModel", "icon": "pbisemmodel" },
   { "value": 30, "name": "pbiReport", "icon": "powerbi" },
-  { "value": 31, "name": "wikiPage", "icon": "wikipage" }
+  { "value": 31, "name": "fabricOntology", "icon": "fabricontology" },
+  { "value": 32, "name": "wikiPage", "icon": "wikipage" }
 ]

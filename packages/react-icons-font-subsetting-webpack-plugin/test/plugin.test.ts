@@ -1,0 +1,409 @@
+import { describe, expect, it } from 'vitest';
+import { copyFileSync, mkdirSync, mkdtempSync, readFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+import FluentUIReactIconsFontSubsettingPlugin from '../src/index';
+import type { BundlerCompiler } from '../src/bundler-api';
+
+// The package's `exports` map hides package.json, so the sibling workspace path is used instead.
+const REACT_ICONS_LIB = resolve(dirname(fileURLToPath(import.meta.url)), '../../react-icons/lib');
+const REACT_ICONS_ROOT = dirname(REACT_ICONS_LIB);
+const REACT_ICONS_LIB_CJS = resolve(REACT_ICONS_LIB, '../lib-cjs');
+const FONT_FILE = resolve(REACT_ICONS_LIB, 'utils/fonts/FluentSystemIcons-Regular.ttf');
+const FONT_MODULE = resolve(REACT_ICONS_LIB, 'atoms/fonts/games.js');
+const CJS_FONT_MODULE = resolve(REACT_ICONS_LIB_CJS, 'atoms/fonts/add.cjs');
+/** A second module in the *same* package, so both share one set of font assets. */
+const SIBLING_FONT_MODULE = resolve(REACT_ICONS_LIB, 'atoms/fonts/add.js');
+
+const FONT_BASE_NAMES = [
+  'FluentSystemIcons-Filled',
+  'FluentSystemIcons-Resizable',
+  'FluentSystemIcons-Regular',
+  'FluentSystemIcons-Light',
+];
+
+/**
+ * A second installed copy of the package, as produced by peer-dependency variants in a virtual
+ * store. Only the codepoint tables are materialised — the plugin reads those, and derives
+ * everything else from path arithmetic.
+ */
+function createDuplicateInstance() {
+  const lib = resolve(mkdtempSync(resolve(tmpdir(), 'react-icons-copy-')), 'react-icons/lib');
+  mkdirSync(resolve(lib, 'utils/fonts'), { recursive: true });
+
+  for (const baseName of FONT_BASE_NAMES) {
+    copyFileSync(
+      resolve(REACT_ICONS_LIB, `utils/fonts/${baseName}.json`),
+      resolve(lib, `utils/fonts/${baseName}.json`),
+    );
+  }
+
+  return {
+    lib,
+    fontModule: resolve(lib, 'atoms/fonts/games.js'),
+    fontFile: resolve(lib, 'utils/fonts/FluentSystemIcons-Regular.ttf'),
+  };
+}
+
+function normalizeDiagnostics(diagnostics: Error[], duplicateLib?: string) {
+  return diagnostics.map(({ message }) => {
+    const normalized = message.split(REACT_ICONS_ROOT).join('<react-icons-root>');
+    return duplicateLib ? normalized.split(dirname(duplicateLib)).join('<duplicate-react-icons-root>') : normalized;
+  });
+}
+
+/**
+ * webpack's `RuntimeSpec` value meaning "do not scope this query — merge across every runtime".
+ * rspack has no equivalent and rejects it, which is why the two bundlers take different paths.
+ */
+const MERGED_ACROSS_ALL_RUNTIMES = undefined;
+
+/** Deliberately different from the entrypoint name, which is what the runtime bug confused it with. */
+const RUNTIME_CHUNK_NAME = 'shared-runtime';
+const ENTRYPOINT_NAME = 'main';
+
+interface HarnessOptions {
+  /** Adds the `rspack` marker so the plugin takes the explicit-runtime path. */
+  isRspack?: boolean;
+  /** Whether the bundler exposes the 2.1-only API. */
+  hasProvidedExports?: boolean;
+  /** Font module resources to place in the graph. */
+  moduleResources?: string[];
+  /** Emitted font assets, as `sourceFilename` values. Defaults to the one real font file. */
+  assetSources?: string[];
+  pluginOptions?: ConstructorParameters<typeof FluentUIReactIconsFontSubsettingPlugin>[0];
+  usedExports: (resource: string) => ReadonlySet<string> | readonly string[] | boolean | null;
+}
+
+/**
+ * Drives `apply()` against a minimal fake compiler.
+ *
+ * The bundler-integration suite cannot express "an rspack without `getProvidedExports`" or assert
+ * which runtime was queried, so both live here instead.
+ */
+async function harness(options: HarnessOptions) {
+  const originalFont = readFileSync(FONT_FILE);
+  /** Every `runtime` argument the plugin passed to `getUsedExports`, in call order. */
+  const runtimesSeen: unknown[] = [];
+  const updatedAssets: { name: string; size: number }[] = [];
+  const warnings: Error[] = [];
+  const errors: Error[] = [];
+
+  /** Captures the callback the plugin registers on `processAssets`, so the test can invoke it. */
+  let processAssets: (() => Promise<void>) | undefined;
+
+  const moduleGraph = {
+    getUsedExports(m: { resource: string }, runtime: unknown) {
+      runtimesSeen.push(runtime);
+      return options.usedExports(m.resource);
+    },
+    // Omitted entirely when absent, mirroring rspack 2.0.x where the method does not exist.
+    ...(options.hasProvidedExports ? { getProvidedExports: () => ['GamesFilled'] as readonly string[] } : {}),
+  };
+
+  const compilation = {
+    hooks: {
+      processAssets: {
+        tapPromise(_options: unknown, fn: () => Promise<void>) {
+          processAssets = fn;
+        },
+      },
+    },
+    modules: (options.moduleResources ?? [FONT_MODULE]).map((resource) => ({
+      type: 'javascript/auto',
+      resource,
+    })),
+    // rspack exposes `chunk.runtime` as a Set; webpack's may also be a bare string.
+    chunks: [{ runtime: new Set([RUNTIME_CHUNK_NAME]) }],
+    moduleGraph,
+    entrypoints: new Map([[ENTRYPOINT_NAME, {}]]),
+    warnings,
+    errors,
+    getAsset: (name: string) => ({ name, source: { source: () => originalFont } }),
+    // An absolute `sourceFilename` resolves independently of `context`.
+    getAssets: () =>
+      (options.assetSources ?? [FONT_FILE]).map((sourceFilename, i) => ({
+        name: `Regular-${i}.ttf`,
+        source: { source: () => originalFont },
+        info: { sourceFilename },
+      })),
+    updateAsset: (name: string, source: { source(): string | Buffer }) => {
+      updatedAssets.push({ name, size: Buffer.from(source.source()).length });
+    },
+  };
+
+  const compiler = {
+    context: '/',
+    // The plugin detects rspack via this marker.
+    ...(options.isRspack ? { rspack: {} } : {}),
+    webpack: {
+      Compilation: { PROCESS_ASSETS_STAGE_OPTIMIZE: 0 },
+      sources: {
+        RawSource: class {
+          constructor(private readonly __value: string | Buffer) {}
+          source() {
+            return this.__value;
+          }
+        },
+      },
+    },
+    hooks: { compilation: { tap: (_name: string, fn: (c: unknown) => void) => fn(compilation) } },
+  };
+
+  new FluentUIReactIconsFontSubsettingPlugin(options.pluginOptions).apply(compiler as unknown as BundlerCompiler);
+  await processAssets!();
+
+  return { runtimesSeen, updatedAssets, warnings, errors, originalSize: originalFont.length };
+}
+
+describe('runtime resolution', () => {
+  it('normalizes selector queries before package-root path arithmetic', async () => {
+    const { updatedAssets, errors } = await harness({
+      moduleResources: [`${FONT_MODULE}?__fluentIcon=v1&export=47616d657346696c6c6564`],
+      usedExports: () => ['GamesFilled'],
+    });
+
+    expect(errors).toEqual([]);
+    expect(updatedAssets).toHaveLength(1);
+  });
+
+  it('hard-errors on an unsupported selector protocol', async () => {
+    const { errors } = await harness({
+      moduleResources: [`${FONT_MODULE}?__fluentIcon=v2&export=47616d657346696c6c6564`],
+      usedExports: () => ['GamesFilled'],
+    });
+
+    expect(errors).toHaveLength(1);
+    expect(errors[0].message).toContain('unsupported Fluent icon selector protocol "v2"');
+  });
+
+  it('asks rspack about the runtime chunk, not the entrypoint', async () => {
+    const { runtimesSeen } = await harness({
+      isRspack: true,
+      hasProvidedExports: true,
+      usedExports: () => ['GamesFilled'],
+    });
+
+    // The two names coincide only when the runtime chunk is unnamed, which is true of every
+    // fixture in the bundler suite. Query the entrypoint instead and rspack reports every module
+    // unused, so the plugin skips everything and ships full fonts without failing the build.
+    expect(runtimesSeen).toEqual([[RUNTIME_CHUNK_NAME]]);
+    expect(runtimesSeen).not.toEqual([[ENTRYPOINT_NAME]]);
+  });
+
+  it('asks webpack for usage merged across all runtimes', async () => {
+    const { runtimesSeen } = await harness({ hasProvidedExports: true, usedExports: () => ['GamesFilled'] });
+
+    // Scoping webpack to specific runtimes would be the inverse failure: an icon used only in an
+    // unlisted runtime would look unused and lose its glyph — a wrong subset, silently.
+    expect(runtimesSeen).toEqual([MERGED_ACROSS_ALL_RUNTIMES]);
+  });
+});
+
+describe('getProvidedExports capability guard', () => {
+  it('warns and skips instead of throwing when the bundler lacks the API', async () => {
+    const { updatedAssets, warnings } = await harness({
+      isRspack: true,
+      hasProvidedExports: false,
+      // `true` is what both bundlers return for a namespace import: "every export is used".
+      usedExports: () => true,
+    });
+
+    expect(warnings).toHaveLength(1);
+    expect(warnings[0].message).toContain('getProvidedExports');
+    // Skipped, so the font is left whole rather than wrongly subset.
+    expect(updatedAssets).toEqual([]);
+  });
+
+  it('subsets namespace imports when the API is available', async () => {
+    const { updatedAssets, warnings, originalSize } = await harness({
+      isRspack: true,
+      hasProvidedExports: true,
+      usedExports: () => true,
+    });
+
+    expect(warnings).toEqual([]);
+    expect(updatedAssets).toHaveLength(1);
+    expect(updatedAssets[0].size).toBeLessThan(originalSize);
+  });
+
+  it('subsets named imports without needing the API at all', async () => {
+    const { updatedAssets, warnings, originalSize } = await harness({
+      isRspack: true,
+      // The rspack 2.0.x shape: no `getProvidedExports`, and named imports never need it.
+      hasProvidedExports: false,
+      usedExports: () => ['GamesFilled'],
+    });
+
+    expect(warnings).toEqual([]);
+    expect(updatedAssets).toHaveLength(1);
+    expect(updatedAssets[0].size).toBeLessThan(originalSize);
+  });
+
+  it('leaves the package whole when a namespace import sits alongside a named one', async () => {
+    const { updatedAssets, warnings } = await harness({
+      isRspack: true,
+      hasProvidedExports: false,
+      moduleResources: [FONT_MODULE, SIBLING_FONT_MODULE],
+      usedExports: (resource) => (resource === FONT_MODULE ? true : ['AddFilled']),
+    });
+
+    // Both modules share one font, so subsetting to the named import alone would delete the
+    // glyphs the unresolvable namespace import needs — a broken build that still looks green.
+    expect(updatedAssets).toEqual([]);
+    expect(warnings).toHaveLength(1);
+    expect(warnings[0].message).toContain(REACT_ICONS_ROOT);
+  });
+});
+
+describe('duplicate installed instances', () => {
+  it('treats ESM and CommonJS output as one installed package', async () => {
+    const esmOnly = await harness({
+      usedExports: () => ['Games24Regular'],
+    });
+    const mixedFormats = await harness({
+      moduleResources: [FONT_MODULE, CJS_FONT_MODULE],
+      // Identical ESM/CJS font inputs collapse to one emitted asset attributed to either tree.
+      assetSources: [FONT_FILE],
+      usedExports: (resource) => (resource === FONT_MODULE ? ['Games24Regular'] : ['Add24Regular']),
+    });
+
+    expect(mixedFormats.warnings).toEqual([]);
+    expect(mixedFormats.updatedAssets).toHaveLength(1);
+    expect(mixedFormats.updatedAssets[0].size).toBeGreaterThan(esmOnly.updatedAssets[0].size);
+  });
+
+  it('counts a second installed copy even when its used-export set is empty', async () => {
+    const duplicate = createDuplicateInstance();
+
+    const { updatedAssets, warnings } = await harness({
+      moduleResources: [FONT_MODULE, duplicate.fontModule],
+      assetSources: [FONT_FILE],
+      usedExports: (resource) => (resource === FONT_MODULE ? ['GamesFilled'] : []),
+    });
+
+    expect(updatedAssets).toEqual([]);
+    expect(normalizeDiagnostics(warnings, duplicate.lib)).toMatchInlineSnapshot(`
+      [
+        "FluentUIReactIconsFontSubsettingPlugin: font modules from more than one installed copy of "@fluentui/react-icons" were resolved, so font assets cannot be attributed safely. Fonts were left un-subset to avoid dropping glyphs. Participating copies: "<react-icons-root>", "<duplicate-react-icons-root>". Collapse them onto one instance with bundler \`resolve.alias\` entries — note that this also binds every copy to a single React and Griffel instance.",
+      ]
+    `);
+  });
+
+  it('leaves fonts whole when multiple copies each emit assets', async () => {
+    const duplicate = createDuplicateInstance();
+
+    const { updatedAssets, warnings } = await harness({
+      moduleResources: [FONT_MODULE, duplicate.fontModule],
+      assetSources: [FONT_FILE, duplicate.fontFile],
+      usedExports: (resource) => (resource === FONT_MODULE ? ['GamesFilled'] : ['AddFilled']),
+    });
+
+    // Even distinct assets do not establish one coherent font/codepoint source for the build.
+    expect(updatedAssets).toEqual([]);
+    expect(normalizeDiagnostics(warnings, duplicate.lib)).toMatchInlineSnapshot(`
+      [
+        "FluentUIReactIconsFontSubsettingPlugin: font modules from more than one installed copy of "@fluentui/react-icons" were resolved, so font assets cannot be attributed safely. Fonts were left un-subset to avoid dropping glyphs. Participating copies: "<react-icons-root>", "<duplicate-react-icons-root>". Collapse them onto one instance with bundler \`resolve.alias\` entries — note that this also binds every copy to a single React and Griffel instance.",
+      ]
+    `);
+  });
+
+  it('leaves fonts whole when emitted assets are attributed to only one copy', async () => {
+    const duplicate = createDuplicateInstance();
+
+    const { updatedAssets, warnings } = await harness({
+      moduleResources: [FONT_MODULE, duplicate.fontModule],
+      // Identical fonts across copies collapse to one emitted asset, which can name only one copy.
+      assetSources: [FONT_FILE],
+      usedExports: (resource) => (resource === FONT_MODULE ? ['GamesFilled'] : ['AddFilled']),
+    });
+
+    // Content hashing can collapse identical inputs to one asset attributed to one copy.
+    expect(updatedAssets).toEqual([]);
+    expect(normalizeDiagnostics(warnings, duplicate.lib)).toMatchInlineSnapshot(`
+      [
+        "FluentUIReactIconsFontSubsettingPlugin: font modules from more than one installed copy of "@fluentui/react-icons" were resolved, so font assets cannot be attributed safely. Fonts were left un-subset to avoid dropping glyphs. Participating copies: "<react-icons-root>", "<duplicate-react-icons-root>". Collapse them onto one instance with bundler \`resolve.alias\` entries — note that this also binds every copy to a single React and Griffel instance.",
+      ]
+    `);
+  });
+
+  it('fails the build instead when asked to', async () => {
+    const duplicate = createDuplicateInstance();
+
+    const { updatedAssets, warnings, errors } = await harness({
+      moduleResources: [FONT_MODULE, duplicate.fontModule],
+      assetSources: [FONT_FILE],
+      pluginOptions: { onDuplicateInstances: 'error' },
+      usedExports: (resource) => (resource === FONT_MODULE ? ['GamesFilled'] : ['AddFilled']),
+    });
+
+    expect(warnings).toEqual([]);
+    expect(updatedAssets).toEqual([]);
+    expect(normalizeDiagnostics(errors, duplicate.lib)).toMatchInlineSnapshot(`
+      [
+        "FluentUIReactIconsFontSubsettingPlugin: font modules from more than one installed copy of "@fluentui/react-icons" were resolved, so font assets cannot be attributed safely. Fonts were left un-subset to avoid dropping glyphs. Participating copies: "<react-icons-root>", "<duplicate-react-icons-root>". Collapse them onto one instance with bundler \`resolve.alias\` entries — note that this also binds every copy to a single React and Griffel instance.",
+      ]
+    `);
+  });
+
+  it('still reports a missing asset rule when no copy owns an asset', async () => {
+    const { updatedAssets, warnings } = await harness({
+      // Nothing emitted at all is a bundler misconfiguration, not duplicate instances.
+      assetSources: [],
+      usedExports: () => ['GamesFilled'],
+    });
+
+    expect(updatedAssets).toEqual([]);
+    expect(normalizeDiagnostics(warnings)).toMatchInlineSnapshot(`
+      [
+        "FluentUIReactIconsFontSubsettingPlugin: found used icon fonts in "<react-icons-root>" but could not map any font module to an emitted asset. Fonts will NOT be subset. Ensure a \`type: 'asset'\` (or 'asset/resource') module rule matches /\\.(ttf|woff2?)$/.",
+      ]
+    `);
+  });
+
+  it('counts a copy reached only through an unresolvable namespace import', async () => {
+    const duplicate = createDuplicateInstance();
+
+    const { updatedAssets, warnings } = await harness({
+      isRspack: true,
+      hasProvidedExports: false,
+      moduleResources: [FONT_MODULE, duplicate.fontModule],
+      assetSources: [FONT_FILE],
+      usedExports: (resource) => (resource === FONT_MODULE ? ['GamesFilled'] : true),
+    });
+
+    // Such a copy has no *known* glyphs, so it never reaches the used-exports map — but its fonts
+    // are the same shared asset, and subsetting for the copy that owns it deletes the glyphs it
+    // needs. That is the case the namespace warning claims cannot happen.
+    expect(updatedAssets).toEqual([]);
+    expect(normalizeDiagnostics(warnings, duplicate.lib)).toMatchInlineSnapshot(`
+      [
+        "FluentUIReactIconsFontSubsettingPlugin: "<duplicate-react-icons-root>" is reached through a namespace import (\`import * as ...\`) whose icons cannot be determined — either the bundler does not expose \`moduleGraph.getProvidedExports()\` (rspack <2.1.0), or \`optimization.providedExports\` is disabled. Every font in this package was left un-subset, because subsetting from the remaining imports alone would drop glyphs that are actually used. Named imports are unaffected. Upgrade to rspack >=2.1.0 for full coverage.",
+        "FluentUIReactIconsFontSubsettingPlugin: font modules from more than one installed copy of "@fluentui/react-icons" were resolved, so font assets cannot be attributed safely. Fonts were left un-subset to avoid dropping glyphs. Participating copies: "<react-icons-root>", "<duplicate-react-icons-root>". Collapse them onto one instance with bundler \`resolve.alias\` entries — note that this also binds every copy to a single React and Griffel instance.",
+      ]
+    `);
+  });
+
+  it('detects an unresolvable namespace copy regardless of asset attribution', async () => {
+    const duplicate = createDuplicateInstance();
+
+    const { updatedAssets, warnings } = await harness({
+      isRspack: true,
+      hasProvidedExports: false,
+      moduleResources: [FONT_MODULE, duplicate.fontModule],
+      // The emitted asset happens to name the namespace copy rather than the named-import copy.
+      assetSources: [duplicate.fontFile],
+      usedExports: (resource) => (resource === FONT_MODULE ? ['GamesFilled'] : true),
+    });
+
+    expect(updatedAssets).toEqual([]);
+    expect(normalizeDiagnostics(warnings, duplicate.lib)).toMatchInlineSnapshot(`
+      [
+        "FluentUIReactIconsFontSubsettingPlugin: "<duplicate-react-icons-root>" is reached through a namespace import (\`import * as ...\`) whose icons cannot be determined — either the bundler does not expose \`moduleGraph.getProvidedExports()\` (rspack <2.1.0), or \`optimization.providedExports\` is disabled. Every font in this package was left un-subset, because subsetting from the remaining imports alone would drop glyphs that are actually used. Named imports are unaffected. Upgrade to rspack >=2.1.0 for full coverage.",
+        "FluentUIReactIconsFontSubsettingPlugin: font modules from more than one installed copy of "@fluentui/react-icons" were resolved, so font assets cannot be attributed safely. Fonts were left un-subset to avoid dropping glyphs. Participating copies: "<react-icons-root>", "<duplicate-react-icons-root>". Collapse them onto one instance with bundler \`resolve.alias\` entries — note that this also binds every copy to a single React and Griffel instance.",
+      ]
+    `);
+  });
+});

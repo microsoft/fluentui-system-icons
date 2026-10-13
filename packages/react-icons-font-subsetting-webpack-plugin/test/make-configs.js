@@ -5,7 +5,7 @@
  * The same entries, thresholds and assertions run against both webpack and rspack; only the
  * CSS-extraction and HTML plugins differ, so they are injected by the bundler-specific configs.
  */
-const { resolve } = require('path');
+const { resolve, join } = require('path');
 
 const { default: FluentUIReactIconsFontSubsettingPlugin } = require('../lib/');
 
@@ -21,6 +21,12 @@ const entries = {
   // Headless font atoms — fonts arrive via the headless `styles.css` import (css-loader) rather than Griffel.
   // No Griffel runtime is involved, so a tighter threshold is used to validate subsetting.
   headlessAtoms: { src: './src/headless-atoms.js', threshold: 1.5 * 1_024, assertNoGriffel: true }, // 1.5 KB
+  mixedModuleFormats: {
+    src: './src/mixed-module-formats.js',
+    threshold: 1.5 * 1_024,
+    assertNoGriffel: true,
+    assertModuleFormats: true,
+  },
   // End-to-end: a *barrel* import is rewritten by the atomic loader (headless + fonts) into
   // headless font atoms, then subset here. Also asserts the graph stays Griffel-free.
   e2eBarrelHeadlessFonts: {
@@ -29,7 +35,51 @@ const entries = {
     useAtomicLoader: true,
     assertNoGriffel: true,
   },
+  e2eBarrelHeadlessFontsIcon: {
+    src: './src/e2e-barrel-headless-fonts.js',
+    threshold: 1.5 * 1_024, // 1.5 KB
+    useAtomicLoader: true,
+    moduleGranularity: 'icon',
+    assertNoGriffel: true,
+  },
+  // Regression guard: naming the runtime chunk makes the runtime name differ from the entry name.
+  // rspack resolves used exports per runtime, so querying the wrong one reports every module as
+  // unused and silently subsets nothing. Every other entry here happens to have runtime === entry
+  // name, which is exactly why this went unnoticed.
+  namedRuntimeChunk: {
+    src: './src/atoms.js',
+    threshold: 2 * 1_024, // 2 KB — same content as `atoms`, so the same budget must hold
+    runtimeChunkName: 'shared-runtime',
+  },
+  // Async chunks: one icon is eager, the other reachable only through `import()`, and they live in
+  // different font families. The size ceiling cannot police this on its own — losing the async
+  // glyph makes the font *smaller* — so glyph counts are asserted too (`.notdef` is always glyph 0).
+  lazyAtoms: {
+    src: './src/lazy-atoms.js',
+    threshold: 2 * 1_024, // 2 KB
+    fontGlyphCounts: { 'FluentSystemIcons-Resizable': 2, 'FluentSystemIcons-Filled': 2 },
+  },
+  // The harder variant: both icons are sized+Filled, so a *single* emitted font must carry glyphs
+  // contributed by two different chunks. Fonts are subset per family across the whole build, not
+  // per chunk, so the eager half must not subset the async half's glyph away.
+  lazySharedFontFamily: {
+    src: './src/lazy-shared-family.js',
+    threshold: 2 * 1_024, // 2 KB
+    fontGlyphCounts: { 'FluentSystemIcons-Filled': 3 },
+  },
 };
+
+/**
+ * @typedef {object} EntryConfig
+ * @property {string} src
+ * @property {number} threshold
+ * @property {boolean} [useAtomicLoader]
+ * @property {'icon'} [moduleGranularity]
+ * @property {boolean} [assertNoGriffel]
+ * @property {boolean} [assertModuleFormats]
+ * @property {string} [runtimeChunkName] Name the runtime chunk, decoupling runtime name from entry name.
+ * @property {Record<string, number>} [fontGlyphCounts]
+ */
 
 /**
  * @typedef {object} BundlerAdapter
@@ -54,7 +104,7 @@ function makeConfigs(adapter, options = {}) {
 
 /**
  * @param {string} name
- * @param {{ src: string, threshold: number, useAtomicLoader?: boolean, assertNoGriffel?: boolean }} entry
+ * @param {EntryConfig} entry
  * @param {BundlerAdapter} adapter
  * @param {boolean} isDevServer
  * @returns {import('webpack').Configuration}
@@ -82,12 +132,16 @@ function createConfig(name, entry, adapter, isDevServer) {
                 // Rewrite barrel `@fluentui/react-icons` imports to headless font atoms
                 // before the bundler parses them.
                 test: /\.js$/,
-                include: resolve(__dirname, 'src'),
+                include: [resolve(__dirname, 'src'), /[\\/]react-(?:brand-)?icons[\\/]lib[\\/]atoms[\\/]/],
                 enforce: /** @type {'pre'} */ ('pre'),
                 use: [
                   {
                     loader: resolve(__dirname, '../../react-icons-atomic-webpack-loader/lib/index.js'),
-                    options: { headless: true, iconVariant: 'fonts' },
+                    options: {
+                      headless: true,
+                      iconVariant: 'fonts',
+                      ...(entry.moduleGranularity ? { moduleGranularity: entry.moduleGranularity } : {}),
+                    },
                   },
                 ],
               },
@@ -111,13 +165,13 @@ function createConfig(name, entry, adapter, isDevServer) {
         },
       ],
     },
-    entry: { [name]: entry.src },
+    entry: { [name]: entry.runtimeChunkName ? { import: entry.src, runtime: entry.runtimeChunkName } : entry.src },
     output: {
       path: resolve(__dirname, 'dist', adapter.name, name),
       filename: '[name].js',
     },
     resolve: {
-      conditionNames: ['fluentIconFont', 'import'],
+      conditionNames: entry.assertModuleFormats ? ['fluentIconFont', '...'] : ['fluentIconFont', 'import'],
     },
     plugins: [
       ...(isDevServer && HtmlPlugin
@@ -138,13 +192,18 @@ function createConfig(name, entry, adapter, isDevServer) {
  * Fails the build when a font asset was not subset, or when a headless entry leaked Griffel.
  *
  * @param {string} name
- * @param {{ threshold: number, assertNoGriffel?: boolean }} entry
+ * @param {EntryConfig} entry
  * @param {BundlerAdapter} adapter
  */
 function createAssertionPlugin(name, entry, adapter) {
   return {
     apply(/** @type {import('webpack').Compiler} */ compiler) {
-      compiler.hooks.afterEmit.tap('test-subsetting', (compilation) => {
+      compiler.hooks.afterEmit.tapPromise('test-subsetting', async (compilation) => {
+        const { outputFileSystem } = compiler;
+        if (!outputFileSystem) {
+          throw new Error(`[${adapter.name}/${name}] Compiler has no output filesystem.`);
+        }
+
         const fontAssets = compilation.getAssets().filter(({ name: assetName }) => /\.(ttf|woff2?)$/.test(assetName));
 
         if (fontAssets.length === 0) {
@@ -156,6 +215,28 @@ function createAssertionPlugin(name, entry, adapter) {
             throw new Error(
               `[${adapter.name}/${name}] Asset "${assetName}" (${source.size()} bytes) exceeds the ` +
                 `${entry.threshold}-byte threshold — font may not have been properly subset.`,
+            );
+          }
+        }
+
+        for (const [fontBaseName, expectedGlyphs] of Object.entries(entry.fontGlyphCounts ?? {})) {
+          // Only .ttf is inspected; .woff/.woff2 wrap the same glyphs in a compressed container.
+          const asset = fontAssets.find(({ name: assetName }) =>
+            new RegExp(`^${fontBaseName}[.-][^/]*\\.ttf$`).test(assetName),
+          );
+
+          if (!asset) {
+            throw new Error(`[${adapter.name}/${name}] No emitted .ttf asset for "${fontBaseName}".`);
+          }
+
+          // `afterEmit` downgrades sources to size-only, so read through the bundler's output
+          // filesystem. webpack-dev-server keeps emitted assets in memory by default.
+          const fontBytes = await readOutputFile(outputFileSystem, join(compiler.outputPath, asset.name));
+          const glyphCount = readGlyphCount(fontBytes);
+          if (glyphCount < expectedGlyphs) {
+            throw new Error(
+              `[${adapter.name}/${name}] Asset "${asset.name}" has ${glyphCount} glyphs, expected at least ` +
+                `${expectedGlyphs} (including .notdef) — an icon that should have been kept was subset away.`,
             );
           }
         }
@@ -172,9 +253,67 @@ function createAssertionPlugin(name, entry, adapter) {
             }
           }
         }
+
+        if (entry.assertModuleFormats) {
+          const resources = Array.from(compilation.modules, (m) => /** @type {{ resource?: string }} */ (m).resource);
+          for (const outputRoot of ['lib', 'lib-cjs']) {
+            const atomPath = new RegExp(
+              `[\\\\/]react-icons[\\\\/]${outputRoot}[\\\\/]atoms[\\\\/]headless-fonts[\\\\/]`,
+            );
+            if (!resources.some((resource) => typeof resource === 'string' && atomPath.test(resource))) {
+              throw new Error(`[${adapter.name}/${name}] No ${outputRoot} font atom found in the module graph.`);
+            }
+          }
+        }
       });
     },
   };
+}
+
+/**
+ * @param {import('webpack').OutputFileSystem} outputFileSystem
+ * @param {string} path
+ * @returns {Promise<Buffer>}
+ */
+function readOutputFile(outputFileSystem, path) {
+  return new Promise((resolvePromise, rejectPromise) => {
+    outputFileSystem.readFile(path, (error, data) => {
+      if (error) {
+        rejectPromise(error);
+        return;
+      }
+
+      if (data === undefined) {
+        rejectPromise(new Error(`Output filesystem returned no data for "${path}".`));
+        return;
+      }
+
+      resolvePromise(Buffer.isBuffer(data) ? data : Buffer.from(data));
+    });
+  });
+}
+
+/**
+ * Reads `numGlyphs` out of a TrueType font's `maxp` table.
+ *
+ * Byte sizes make a poor correctness signal here: a font that wrongly dropped a glyph is *smaller*,
+ * so it slips under any ceiling. The glyph count says outright whether an icon survived.
+ *
+ * @param {Buffer} ttf
+ * @returns {number}
+ */
+function readGlyphCount(ttf) {
+  const tableCount = ttf.readUInt16BE(4);
+
+  for (let i = 0; i < tableCount; i++) {
+    // Table directory: 12-byte header, then 16 bytes per record (tag, checksum, offset, length).
+    const record = 12 + i * 16;
+    if (ttf.toString('ascii', record, record + 4) === 'maxp') {
+      return ttf.readUInt16BE(ttf.readUInt32BE(record + 8) + 4);
+    }
+  }
+
+  throw new Error('Font has no `maxp` table — not a TrueType font?');
 }
 
 module.exports = { makeConfigs, entries };
