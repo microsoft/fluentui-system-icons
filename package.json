@@ -104,7 +104,7 @@
     "tslib": "^2.1.0",
     "typescript": "5.0.4",
     "typescript-eslint": "7.18.0",
-    "vitest": "^3.2.6",
+    "vitest": "^5.0.5",
     "webpack": "^5.111.1",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.5",
