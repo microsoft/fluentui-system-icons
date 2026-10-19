@@ -38,6 +38,11 @@ updates:
       # toolchain (see packages/react-icons/package.json). Banned outright, security updates
       # included, until that workspace is deliberately migrated to a newer TypeScript.
       - dependency-name: 'typescript'
+      # Dependabot tracks the root Yarn workspace, so these exclusions apply workspace-wide.
+      # Keep react-icons on React 17 types (its TypeScript 4.1 build is incompatible with newer
+      # @types/react); the Griffel bump is not needed at this stage.
+      - dependency-name: '@types/react'
+      - dependency-name: '@griffel/*'
     groups:
       production-dependencies:
         dependency-type: 'production'
