@@ -3995,7 +3995,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-icons-file-type@workspace:packages/react-icons-file-type"
   dependencies:
-    "@griffel/react": "npm:^1.7.8"
+    "@griffel/react": "npm:^1.6.1"
     tslib: "npm:^2.1.0"
   peerDependencies:
     "@types/react": ">=16.8.0 <20.0.0"
@@ -14447,7 +14447,7 @@ __metadata:
   resolution: "icon-app@workspace:packages/icon-app"
   dependencies:
     "@fluentui/react-icons": "npm:*"
-    "@griffel/react": "npm:^1.7.8"
+    "@griffel/react": "npm:^1.6.1"
     react: "npm:19.3.1"
     react-dom: "npm:19.3.1"
   languageName: unknown
