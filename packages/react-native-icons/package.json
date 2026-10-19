@@ -25,12 +25,11 @@
     "lint": "yarn run -T eslint package.json"
   },
   "dependencies": {
-    "@types/react-native": "^0.68.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "react": ">=16.8.0 <20.0.0",
-    "react-native": ">=0.68.0",
+    "react": ">=18.2.0 <20.0.0",
+    "react-native": ">=0.73.0",
     "react-native-svg": ">=12.5.0"
   },
   "files": [
