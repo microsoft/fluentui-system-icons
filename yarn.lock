@@ -4038,8 +4038,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-icons@workspace:packages/react-icons"
   dependencies:
-    "@griffel/react": "npm:^1.7.8"
-    "@types/react": "npm:^19.3.0"
+    "@griffel/react": "npm:^1.6.1"
+    "@types/react": "npm:^17.0.2"
     tslib: "npm:^2.1.0"
     typescript: "npm:4.1.6"
   peerDependencies:
@@ -5564,7 +5564,7 @@ __metadata:
     "@fluentui/storybook-llms-extractor": "npm:0.0.4"
     "@griffel/babel-preset": "npm:^1.9.2"
     "@griffel/eslint-plugin": "npm:^2.0.2"
-    "@griffel/react": "npm:^1.7.8"
+    "@griffel/react": "npm:^1.6.1"
     "@griffel/webpack-extraction-plugin": "npm:0.5.22"
     "@griffel/webpack-loader": "npm:2.2.31"
     "@nx/eslint-plugin": "npm:^22.6.5"
@@ -5711,15 +5711,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@griffel/react@npm:1.7.8":
-  version: 1.7.8
-  resolution: "@griffel/react@npm:1.7.8"
+"@griffel/react@npm:1.6.1":
+  version: 1.6.1
+  resolution: "@griffel/react@npm:1.6.1"
   dependencies:
-    "@griffel/core": "npm:^1.21.4"
+    "@griffel/core": "npm:^1.20.1"
     tslib: "npm:^2.1.0"
   peerDependencies:
-    react: ">=16.14.0 <20.0.0"
-  checksum: 10c0/4e9e37e6e9703e1f32752db43ddabef3c3846c4f30d757a11fb53302973fa4d26b0b22e61f7d20b2b25dade72cd64d28cbecf78e699fe6e076c01909ad2f3a52
+    react: ">=16.8.0 <20.0.0"
+  checksum: 10c0/953ab19add128f118d2c4995b93a806c8f015ebc9433b78cdabec0ab79f8d056664bf839115138eec513f89a03e54e9bd5c1af013c045b16d08e74b05e267b74
   languageName: node
   linkType: hard
 
@@ -8860,6 +8860,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/prop-types@npm:*":
+  version: 15.7.15
+  resolution: "@types/prop-types@npm:15.7.15"
+  checksum: 10c0/b59aad1ad19bf1733cf524fd4e618196c6c7690f48ee70a327eb450a42aab8e8a063fbe59ca0a5701aebe2d92d582292c0fb845ea57474f6a15f6994b0e260b2
+  languageName: node
+  linkType: hard
+
 "@types/qs@npm:*":
   version: 6.15.1
   resolution: "@types/qs@npm:6.15.1"
@@ -8893,12 +8900,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:19.3.0, @types/react@npm:^19.3.0":
+"@types/react@npm:*, @types/react@npm:19.3.0":
   version: 19.3.0
   resolution: "@types/react@npm:19.3.0"
   dependencies:
     csstype: "npm:^3.2.2"
   checksum: 10c0/fbcabf303f935ca9f36ed2dcf81751cf84744098c5a683c8a62a0fa7edd31714b48d5c46b12fd0014f7f2dfe4d9ec6de428a850748eec719a70294e51029551b
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^17.0.2":
+  version: 17.0.93
+  resolution: "@types/react@npm:17.0.93"
+  dependencies:
+    "@types/prop-types": "npm:*"
+    "@types/scheduler": "npm:^0.16"
+    csstype: "npm:^3.2.2"
+  checksum: 10c0/46c47d8ad8905482a22007c5702b6f02f2498933dabfbde3542d321bf027e30a5a16aea822eebb151962cf7b3f68daa1791ed7b4a31b6b83aa00f013f577fea1
   languageName: node
   linkType: hard
 
@@ -8922,6 +8940,13 @@ __metadata:
   dependencies:
     "@types/node": "npm:*"
   checksum: 10c0/d077a761a0753b079bf8279b3993948030ca86ed9125437b9b29c1de40db9b2deb7fddc369f014b58861d450e8b8cc75f163aa29dc8cea81952efbfd859168cf
+  languageName: node
+  linkType: hard
+
+"@types/scheduler@npm:^0.16":
+  version: 0.16.8
+  resolution: "@types/scheduler@npm:0.16.8"
+  checksum: 10c0/f86de504945b8fc41b1f391f847444d542e2e4067cf7e5d9bfeb5d2d2393d3203b1161bc0ef3b1e104d828dabfb60baf06e8d2c27e27ff7e8258e6e618d8c4ec
   languageName: node
   linkType: hard
 

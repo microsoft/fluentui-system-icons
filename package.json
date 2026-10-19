@@ -38,7 +38,7 @@
     "@fluentui/storybook-llms-extractor": "0.0.4",
     "@griffel/babel-preset": "^1.9.2",
     "@griffel/eslint-plugin": "^2.0.2",
-    "@griffel/react": "^1.7.8",
+    "@griffel/react": "^1.6.1",
     "@griffel/webpack-extraction-plugin": "0.5.22",
     "@griffel/webpack-loader": "2.2.31",
     "@nx/eslint-plugin": "^22.6.5",
@@ -127,7 +127,7 @@
   "resolutions": {
     "@types/react-native": "0.72.8",
     "@griffel/core": "1.20.1",
-    "@griffel/react": "1.7.8",
+    "@griffel/react": "1.6.1",
     "@linaria/shaker/@babel/plugin-transform-runtime": "^7"
   }
 }
