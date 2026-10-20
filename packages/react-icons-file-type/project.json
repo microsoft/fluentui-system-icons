@@ -8,7 +8,10 @@
     "build": {
       "cache": true,
       "inputs": ["default", "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)"],
-      "outputs": ["{projectRoot}/lib", "{projectRoot}/lib-cjs"]
+      "outputs": ["{projectRoot}/lib", "{projectRoot}/lib-cjs", "{projectRoot}/metadata.json"]
+    },
+    "test": {
+      "dependsOn": ["build"]
     },
     "bundle-size": {
       "dependsOn": ["build"]
