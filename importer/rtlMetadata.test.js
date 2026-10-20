@@ -26,7 +26,7 @@ describe('RTL metadata generator', () => {
       const result = spawnSync(
         process.execPath,
         [
-          path.resolve(__dirname, '../../../importer/rtlMetadata.js'),
+          path.resolve(__dirname, 'rtlMetadata.js'),
           `--source=${path.join(root, 'assets')}`,
           `--dest=${destination}`,
         ],
