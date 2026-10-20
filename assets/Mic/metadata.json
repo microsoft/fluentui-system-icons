@@ -11,7 +11,8 @@
   "style": [
     "Regular",
     "Filled",
-    "Light"
+    "Light",
+    "Color"
   ],
   "keyword": "fluent-icon, teams",
   "description": "Used to general microphone audio scenarios.",

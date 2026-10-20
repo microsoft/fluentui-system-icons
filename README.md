@@ -78,6 +78,33 @@ Inline svg directly. See [packages/svg-icons/README.md](packages/svg-icons/READM
 
 ## Contributing
 
+### Asset metadata
+
+For groups with an `assets/<group>/metadata.json` file, keep its `size` and `style`
+arrays in sync with the SVG files in that group's `SVG/` directory. These arrays
+describe the sets of available sizes and styles, not every size/style combination.
+Directional `_ltr` and `_rtl` suffixes do not introduce separate styles.
+
+Check all existing metadata files locally:
+
+```sh
+yarn nx run system-icons-processing:check:assets-metadata
+```
+
+To reconcile only the size/style arrays with the SVG filenames:
+
+```sh
+yarn nx run system-icons-processing:check:assets-metadata --fix
+```
+
+Review the changes before committing. The checker does not infer descriptions or
+directionality and explicitly skips groups without metadata; those remain a
+separate data-completeness task. PR CI runs the validator and its regression tests
+whenever assets, the validator, or its workflow change, independently of Nx
+affected-project detection. CI uses Node directly because the checker and tests
+require no package installation. Run its tests locally with
+`yarn nx run system-icons-processing:test:assets-metadata`.
+
 ### Importer
 
 The importer generates the Android and iOS libraries from the icons in the `assets` directory.

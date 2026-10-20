@@ -6,6 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "yarn run -T vitest run --dir . --exclude \"dist/**\" --exclude \"tools/**\"",
+    "check:assets-metadata": "node check-assets-metadata.mjs",
+    "test:assets-metadata": "node --test check-assets-metadata.node-test.mjs",
     "clean": "find dist -type f ! -name '.keep' -delete && rm -rf dist/*",
     "generate:svg": "node generate.js --source=../assets --dest=./dist --extension=svg",
     "generate:svg-android": "node generate.js --source=../assets --dest=./dist --extension=svg --selector",

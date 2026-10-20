@@ -2,11 +2,13 @@
   "name": "Apps List Detail",
   "size": [
     20,
-    24
+    24,
+    32
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Color"
   ],
   "keyword": "fluent-icon",
   "description": "Used for content representing app ui.",

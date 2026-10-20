@@ -1,0 +1,26 @@
+name: Asset metadata validation
+
+on:
+  pull_request:
+    paths:
+      - 'assets/**'
+      - 'importer/check-assets-metadata*.mjs'
+      - 'importer/package.json'
+      - '.github/workflows/assets-metadata.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate asset metadata
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22.x
+      - name: Test metadata validator
+        run: node --test importer/check-assets-metadata.node-test.mjs
+      - name: Check metadata against SVG assets
+        run: node importer/check-assets-metadata.mjs

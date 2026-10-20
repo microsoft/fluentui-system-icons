@@ -11,7 +11,8 @@
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Color"
   ],
   "keyword": "fluent-icon",
   "description": "Used to represent home in UI or physical home space in travel scenarios.",

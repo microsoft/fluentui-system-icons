@@ -11,7 +11,8 @@
   "style": [
     "Regular",
     "Filled",
-    "Light"
+    "Light",
+    "Color"
   ],
   "keyword": "fluent-icon, outlook",
   "description": "Used in mail to mark as important.",

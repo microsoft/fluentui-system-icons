@@ -1,10 +1,7 @@
 {
   "name": "Clipboard Text",
   "size": [
-    24,
-    20,
-    32,
-    16
+    32
   ],
   "style": [
     "Regular",
