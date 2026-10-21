@@ -6,7 +6,7 @@
     "importer"
   ],
   "engines": {
-    "node": "^22.0.0 || ^24.0.0"
+    "node": "^22.12.0 || ^24.0.0"
   },
   "packageManager": "yarn@4.17.1",
   "description": "![CI](https://github.com/microsoft/fluentui-system-icons/workflows/CI/badge.svg)",
@@ -41,8 +41,9 @@
     "@griffel/react": "^1.6.1",
     "@griffel/webpack-extraction-plugin": "0.5.22",
     "@griffel/webpack-loader": "2.2.31",
-    "@nx/eslint-plugin": "^22.6.5",
-    "@nx/js": "22.6.5",
+    "@nx/devkit": "23.3.0",
+    "@nx/eslint-plugin": "23.3.0",
+    "@nx/js": "23.3.0",
     "@react-native-community/cli": "^20.1.0",
     "@react-native-community/cli-platform-android": "^20.1.0",
     "@react-native-community/cli-platform-ios": "^20.1.0",
@@ -83,7 +84,7 @@
     "monosize-bundler-webpack": "0.4.1",
     "monosize-storage-git": "0.3.5",
     "nano-staged": "0.9.0",
-    "nx": "22.6.5",
+    "nx": "23.3.0",
     "oxc-parser": "^0.125.0",
     "playwright": "^1.64.0",
     "prettier": "3.9.10",
