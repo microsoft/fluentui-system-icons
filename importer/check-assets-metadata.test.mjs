@@ -3,18 +3,17 @@ import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { test } from 'node:test';
 import { fileURLToPath } from 'node:url';
+import { onTestFinished, test } from 'vitest';
 
 const script = fileURLToPath(new URL('./check-assets-metadata.mjs', import.meta.url));
 
 /**
- * @param {import('node:test').TestContext} t
  * @param {unknown} metadata
  */
-function fixture(t, metadata = { size: [32, 24], style: ['Regular', 'Filled', 'Light'] }) {
+function fixture(metadata = { size: [32, 24], style: ['Regular', 'Filled', 'Light'] }) {
   const source = fs.mkdtempSync(path.join(os.tmpdir(), 'fluent-assets-metadata-'));
-  t.after(() => fs.rmSync(source, { recursive: true, force: true }));
+  onTestFinished(() => fs.rmSync(source, { recursive: true, force: true }));
   const group = path.join(source, 'Arrow Import');
   const svg = path.join(group, 'SVG');
   const metadataPath = path.join(group, 'metadata.json');
@@ -32,16 +31,16 @@ function fixture(t, metadata = { size: [32, 24], style: ['Regular', 'Filled', 'L
   };
 }
 
-test('accepts unions of sizes/styles without requiring every combination or reordering metadata', (t) => {
-  const { run, metadataPath } = fixture(t);
+test('accepts unions of sizes/styles without requiring every combination or reordering metadata', () => {
+  const { run, metadataPath } = fixture();
   const before = fs.readFileSync(metadataPath, 'utf8');
   const result = run();
   assert.equal(result.status, 0, result.stderr);
   assert.equal(fs.readFileSync(metadataPath, 'utf8'), before);
 });
 
-test('reports missing Light and 32px declarations with an actionable path and does not write in check mode', (t) => {
-  const { run, metadataPath } = fixture(t, { size: [24], style: ['Regular', 'Filled'] });
+test('reports missing Light and 32px declarations with an actionable path and does not write in check mode', () => {
+  const { run, metadataPath } = fixture({ size: [24], style: ['Regular', 'Filled'] });
   const before = fs.readFileSync(metadataPath, 'utf8');
   const result = run();
   assert.equal(result.status, 1);
@@ -50,15 +49,15 @@ test('reports missing Light and 32px declarations with an actionable path and do
   assert.equal(fs.readFileSync(metadataPath, 'utf8'), before);
 });
 
-test('reports stale sizes and styles', (t) => {
-  const { run } = fixture(t, { size: [16, 24, 32], style: ['Regular', 'Filled', 'Light', 'Color'] });
+test('reports stale sizes and styles', () => {
+  const { run } = fixture({ size: [16, 24, 32], style: ['Regular', 'Filled', 'Light', 'Color'] });
   const result = run();
   assert.equal(result.status, 1);
   assert.match(result.stderr, /stale sizes \[16\], styles \["Color"\]/);
 });
 
-test('recognizes LTR/RTL suffixes, color and mono styles', (t) => {
-  const { run, svg } = fixture(t, { size: [24, 32], style: ['Regular', 'Filled', 'Light', 'Color', 'Mono'] });
+test('recognizes LTR/RTL suffixes, color and mono styles', () => {
+  const { run, svg } = fixture({ size: [24, 32], style: ['Regular', 'Filled', 'Light', 'Color', 'Mono'] });
   fs.renameSync(
     path.join(svg, 'ic_fluent_arrow_import_24_regular.svg'),
     path.join(svg, 'ic_fluent_arrow_import_24_regular_ltr.svg'),
@@ -71,7 +70,7 @@ test('recognizes LTR/RTL suffixes, color and mono styles', (t) => {
   assert.equal(result.status, 0, result.stderr);
 });
 
-test('fix reconciles only size/style, preserves other fields and is idempotent', (t) => {
+test('fix reconciles only size/style, preserves other fields and is idempotent', () => {
   const metadata = {
     name: 'Arrow Import',
     size: [24, 16],
@@ -80,7 +79,7 @@ test('fix reconciles only size/style, preserves other fields and is idempotent',
     description: 'Keep this.',
     metaphor: ['arrow'],
   };
-  const { run, metadataPath } = fixture(t, metadata);
+  const { run, metadataPath } = fixture(metadata);
   const result = run('--fix');
   assert.equal(result.status, 0, result.stderr);
   assert.deepEqual(JSON.parse(fs.readFileSync(metadataPath, 'utf8')), {
@@ -94,16 +93,16 @@ test('fix reconciles only size/style, preserves other fields and is idempotent',
   assert.equal(fs.readFileSync(metadataPath, 'utf8'), fixed);
 });
 
-test('explicitly skips groups without metadata', (t) => {
-  const { run, source } = fixture(t);
+test('explicitly skips groups without metadata', () => {
+  const { run, source } = fixture();
   fs.mkdirSync(path.join(source, 'No Metadata'));
   const result = run();
   assert.equal(result.status, 0, result.stderr);
   assert.match(result.stdout, /skipped 1 groups without metadata/);
 });
 
-test('fails rather than passing an empty metadata scope', (t) => {
-  const { run, metadataPath } = fixture(t);
+test('fails rather than passing an empty metadata scope', () => {
+  const { run, metadataPath } = fixture();
   fs.unlinkSync(metadataPath);
   const result = run();
   assert.equal(result.status, 1);
@@ -117,8 +116,8 @@ for (const metadata of [
   { size: [32, 32], style: ['Light'] },
   { size: [32], style: ['Light', 'Light'] },
 ]) {
-  test(`rejects invalid metadata ${JSON.stringify(metadata)} even with --fix`, (t) => {
-    const { run, metadataPath } = fixture(t, metadata);
+  test(`rejects invalid metadata ${JSON.stringify(metadata)} even with --fix`, () => {
+    const { run, metadataPath } = fixture(metadata);
     const before = fs.readFileSync(metadataPath, 'utf8');
     const result = run('--fix');
     assert.equal(result.status, 1);
@@ -127,24 +126,24 @@ for (const metadata of [
   });
 }
 
-test('reports malformed JSON with its metadata path', (t) => {
-  const { run, metadataPath } = fixture(t);
+test('reports malformed JSON with its metadata path', () => {
+  const { run, metadataPath } = fixture();
   fs.writeFileSync(metadataPath, '{');
   const result = run();
   assert.equal(result.status, 1);
   assert.ok(result.stderr.includes(metadataPath));
 });
 
-test('rejects unrecognized SVG filenames', (t) => {
-  const { run, svg } = fixture(t);
+test('rejects unrecognized SVG filenames', () => {
+  const { run, svg } = fixture();
   fs.writeFileSync(path.join(svg, 'unknown.svg'), '<svg/>');
   const result = run('--fix');
   assert.equal(result.status, 1);
   assert.match(result.stderr, /unrecognized SVG filename: unknown.svg/);
 });
 
-test('rejects missing or empty SVG directories', (t) => {
-  const { run, svg } = fixture(t);
+test('rejects missing or empty SVG directories', () => {
+  const { run, svg } = fixture();
   for (const name of fs.readdirSync(svg)) {
     fs.unlinkSync(path.join(svg, name));
   }

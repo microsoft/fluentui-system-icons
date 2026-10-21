@@ -99,11 +99,9 @@ yarn nx run system-icons-processing:check:assets-metadata --fix
 
 Review the changes before committing. The checker does not infer descriptions or
 directionality and explicitly skips groups without metadata; those remain a
-separate data-completeness task. PR CI runs the validator and its regression tests
-whenever assets, the validator, or its workflow change, independently of Nx
-affected-project detection. CI uses Node directly because the checker and tests
-require no package installation. Run its tests locally with
-`yarn nx run system-icons-processing:test:assets-metadata`.
+separate data-completeness task. PR CI runs the check (and its regression tests,
+via `dependsOn`) through `nx affected`; the target declares `assets/**` as an
+input, so asset changes both select it and invalidate its cache.
 
 ### Importer
 
