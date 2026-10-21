@@ -91,17 +91,13 @@ async function processFolder(srcPath) {
                 iconName = iconName.replace(iconName.substring(0, 1), iconName.substring(0, 1).toUpperCase()) // capitalize the first letter
 
                 for (const size of iconSize) { //iterate through the size file and create entries for each icon file
-                    let tempName = iconName + size + "Filled";
-                    result[tempName] = directionType;
-
-                    tempName = iconName + size + "Regular";
-                    result[tempName] = directionType;
+                    for (const style of metadata.style) {
+                        result[iconName + size + style] = directionType;
+                    }
                 }
-                let tempName = iconName + "Filled";
-                result[tempName] = directionType;
-
-                tempName = iconName + "Regular";
-                result[tempName] = directionType;
+                for (const style of metadata.style) {
+                    result[iconName + style] = directionType;
+                }
             } catch (error) {
                 console.error('Error parsing JSON in metadata file:', error);
             }
