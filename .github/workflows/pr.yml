@@ -198,6 +198,9 @@ jobs:
       - name: Lint
         run: yarn nx affected -t lint
 
+      - name: Validate asset metadata
+        run: yarn nx affected -t check:assets-metadata
+
       - name: Type Check Infra
         run: yarn nx affected -t type-check:infra
 

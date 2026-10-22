@@ -116,7 +116,7 @@ async function writePerIconFiles(destPath, items, headerLines, options = { group
  * @returns {{size: number|null, style: string|null}}
  */
 function parseVariant(name) {
-  const matchedResult = name.match(/(\d+)([A-Za-z_]*)$/);
+  const matchedResult = name.split('_')[0].match(/(\d+)([A-Za-z]*)$/);
   if (!matchedResult) {
     return { size: null, style: null };
   }
@@ -203,13 +203,15 @@ const ICON_STYLE_VARIANTS = ['regular', 'filled', 'light', 'color'];
  */
 function parseIconFileName(fileName, styleVariants = ICON_STYLE_VARIANTS) {
   const nameWithoutFileExt = fileName.replace(/\.tsx?$/, '');
-  const normalized = nameWithoutFileExt.replace(/_/g, '-');
+  const qualified = nameWithoutFileExt.match(/^(.*[-_](?:regular|filled|light|color))(_[a-z0-9-]+)$/);
+  const qualifier = qualified ? qualified[2] : '';
+  const normalized = (qualified ? qualified[1] : nameWithoutFileExt).replace(/_/g, '-');
   const parts = normalized.split('-');
   const styleSet = new Set(styleVariants);
   // Require at least 2 parts: base name + style suffix (e.g., 'icon-filled', not just 'filled')
   const isValid = parts.length > 1 && styleSet.has(parts[parts.length - 1]);
 
-  return { parts, isValid };
+  return { parts, isValid, qualifier };
 }
 
 /**
@@ -229,7 +231,7 @@ function parseIconFileName(fileName, styleVariants = ICON_STYLE_VARIANTS) {
  * @throws {Error} If the filename does not end with a valid style suffix.
  */
 function normalizeBaseName(fileName, styleVariants = ICON_STYLE_VARIANTS) {
-  const { parts, isValid } = parseIconFileName(fileName, styleVariants);
+  const { parts, isValid, qualifier } = parseIconFileName(fileName, styleVariants);
 
   if (!isValid) {
     throw new Error(
@@ -245,7 +247,7 @@ function normalizeBaseName(fileName, styleVariants = ICON_STYLE_VARIANTS) {
     parts.pop();
   }
 
-  return parts.join('-');
+  return parts.join('-') + qualifier;
 }
 
 module.exports = { writePerIconFiles, groupItemsByBase, normalizeBaseName };

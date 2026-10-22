@@ -5,11 +5,27 @@ import {
   createExportSelector,
   createGroupSelector,
   decodeExportName,
+  getIconFamilyName,
   parseSelectorQuery,
 } from '../src/selector-protocol';
 import { selectExports } from '../src/select-export';
 
 describe('selector protocol', () => {
+  it.each([
+    ['TextBold24Regular_es', 'text-bold_es'],
+    ['TextBoldRegular_srCyrl', 'text-bold_sr-cyrl'],
+    ['TextDirectionHorizontalRtl24Regular_ko', 'text-direction-horizontal-rtl_ko'],
+  ])('maps localized export %s to selectable family %s', (exportName, family) => {
+    expect(getIconFamilyName(exportName)).toBe(family);
+    expect(() =>
+      assertSelectableResource(`/app/node_modules/@fluentui/react-icons/lib/atoms/svg/${family}.js`, {
+        kind: 'export',
+        exportName,
+      }),
+    ).not.toThrow();
+    expect(parseSelectorQuery(createExportSelector(exportName))).toEqual({ kind: 'export', exportName });
+  });
+
   it('serializes export names as canonical lowercase UTF-8 hex', () => {
     const query = createExportSelector('Prompt16Regular');
     expect(query).toBe('?__fluentIcon=v1&export=50726f6d70743136526567756c6172');

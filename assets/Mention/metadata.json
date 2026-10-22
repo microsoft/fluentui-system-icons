@@ -6,11 +6,13 @@
     16,
     12,
     32,
-    48
+    48,
+    28
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon, outlook, teams",
   "description": "Used to represent a mention in UI.",

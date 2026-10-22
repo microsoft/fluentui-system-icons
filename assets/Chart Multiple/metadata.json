@@ -3,11 +3,14 @@
   "size": [
     20,
     24,
-    16
+    16,
+    32,
+    28
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Color"
   ],
   "keyword": "fluent-icon, teams",
   "description": "Used to represent multiple data points.",

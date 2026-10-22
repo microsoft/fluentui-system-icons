@@ -2,11 +2,15 @@
   "name": "Arrow Trending Lines",
   "size": [
     20,
-    24
+    24,
+    48,
+    32,
+    28
   ],
   "style": [
     "Filled",
-    "Regular"
+    "Regular",
+    "Color"
   ],
   "keyword": "fluent-icon",
   "description": "Used to indicate growth.",
