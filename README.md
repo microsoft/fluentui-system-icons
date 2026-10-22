@@ -94,7 +94,7 @@ yarn nx run system-icons-processing:check:assets-metadata
 To reconcile only the size/style arrays with the SVG filenames:
 
 ```sh
-yarn nx run system-icons-processing:check:assets-metadata --fix
+yarn nx run system-icons-processing:check:assets-metadata --fix --skip-nx-cache
 ```
 
 Review the changes before committing. The checker does not infer descriptions or
