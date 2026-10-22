@@ -102,39 +102,23 @@ import { TextBold24Regular_es, TextBoldRegular_srCyrl } from '@fluentui/react-ic
 import { TextBoldRegular_es } from '@fluentui/react-icons/svg/text-bold_es';
 ```
 
-Names follow `{icon}{size}{style}_{locale}`; resizable names omit the size. Locale
-tags are camel-cased in export names and hyphenated in module paths, with `_`
-separating the icon name from its locale. Serbian Cyrillic `sr-cyrl` becomes
-`_srCyrl` in exports and `_sr-cyrl` in module paths; Serbian Latin `sr-latn`
-becomes `_srLatn` and `_sr-latn`. For example, `TextBoldRegular_srCyrl` is available
-from `@fluentui/react-icons/headless/svg/text-bold_sr-cyrl`. Single-part locales
-such as `_es` are unchanged. Source locale tags are unchanged.
+Names follow `{icon}{size}{style}_{locale}`; resizable names omit the size. The `_`
+separates the icon name from its locale. Multi-part locale tags are camel-cased in
+export names and hyphenated in module paths: Serbian Cyrillic (`sr-cyrl`) is
+`TextBoldRegular_srCyrl` from `@fluentui/react-icons/headless/svg/text-bold_sr-cyrl`.
+Only locale variants present in the source artwork are generated.
 
-Directional icons retain `Ltr` or `Rtl` in the base name before the locale suffix,
-such as `TextDirectionHorizontalLtr24Regular_ko` and
-`TextDirectionHorizontalRtl24Regular_ko`. Choose the appropriate artwork explicitly;
-the direction provider does not switch between these exports. Existing names such as
-`TextNumberListRtl90Regular` are unchanged, and no direction-only `_ltr`/`_rtl` aliases
-are generated. Only locale variants present in the source artwork are added.
+Directional artwork keeps `Ltr`/`Rtl` in the base name, before the locale suffix
+(for example `TextDirectionHorizontalRtl24Regular_ko`). Choose it explicitly; the
+direction provider does not switch between exports. Automatic mirroring is separate:
+icons whose source metadata marks them `mirror`, such as `CommentNote24Regular_ar`,
+flip when `IconDirectionContextProvider` supplies `textDirection: 'rtl'`. A locale
+suffix alone never enables mirroring.
 
-Automatic mirroring is separate from locale selection. Icons marked `mirror` in
-their source direction metadata, such as `CommentNote24Regular_ar`, inherit
-`flipInRtl` and mirror when `IconDirectionContextProvider` supplies
-`textDirection: 'rtl'`. A locale suffix alone does not enable mirroring.
-
-Qualified atom groups are separate from default groups, including font and headless
-paths such as `fonts/text-bold_es` and `headless/fonts/text-bold_es`. Unchanged named
-imports do not gain locale-selection code or unused artwork. Whole-library imports
-include the additional exports and therefore grow.
-
-Localized monochrome icons also work with the `fluentIconFont` condition in the
-existing font families. Existing codepoints remain unchanged. Full fonts contain
-the added glyphs and grow; use the font-subsetting plugin to ship only consumed glyphs.
-
-To enforce zero JS/CSS growth for the existing named-import fixtures, run
-`yarn nx run react-icons:check:localized-bundle-size --baseline=/tmp/icons-baseline --record`
-against a freshly built baseline, then omit `--record` against the changed build.
-The check covers minified, gzip, and Brotli output separately from font assets.
+Localized icons live in separate atom groups (`svg/`, `fonts/`, `headless/svg/`,
+`headless/fonts/`), so unchanged named imports gain no code or artwork. Whole-library
+imports grow. Monochrome localized icons use the existing font families with unchanged
+codepoints; full fonts grow, so use the font-subsetting plugin to ship only consumed glyphs.
 
 ### Using the icon font
 

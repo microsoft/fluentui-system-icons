@@ -48,8 +48,7 @@ function getIconExportName(file, resizable) {
           : sourceName,
     ),
   );
-  const exportQualifier = qualifier.split('_').map((part, index) => index ? upperFirst(part) : part).join('');
-  return name + (qualifier ? `_${exportQualifier}` : '');
+  return name + (qualifier ? `_${camelCase(qualifier)}` : '');
 }
 
 /** @param {string} file */
@@ -67,8 +66,7 @@ function isDirectionOnlyIconSource(file) {
 /** @param {string} exportName */
 function getIconFileName(exportName) {
   const [name, qualifier] = exportName.split('_');
-  const fileQualifier = qualifier?.replace(/([a-z\d])([A-Z])/g, '$1-$2').replace(/([a-z])(\d)/g, '$1-$2').toLowerCase();
-  return kebabCase(name) + (fileQualifier ? `_${fileQualifier}` : '') + '.tsx';
+  return kebabCase(name) + (qualifier ? `_${kebabCase(qualifier)}` : '') + '.tsx';
 }
 
 /** @param {string} file */

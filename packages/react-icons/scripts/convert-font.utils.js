@@ -4,7 +4,6 @@
 
 const fs = require('fs');
 const path = require('path');
-const _ = require('lodash');
 
 const { writePerIconFiles } = require('./per-icon.writer');
 const { parseIconName, getIconExportName, getIconFileName, getIconFlipInRtl } = require('../../../importer/icon-name');

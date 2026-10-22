@@ -1,3 +1,8 @@
+// Zero-growth gate for unchanged named-import fixtures (JS/CSS, minified, gzip, Brotli;
+// font assets reported separately). Record a baseline from a fresh build first:
+//   yarn nx run react-icons:check:localized-bundle-size --baseline=/tmp/icons-baseline --record
+// then run the same command without --record against the changed build.
+//
 // TODO(monosize): Migrate these fixtures, measurements, and baselines to the existing
 // monosize pipeline, then remove this temporary runner and its package/Nx target.
 // This may require monosize changes: combined totals can hide CSS growth behind a
