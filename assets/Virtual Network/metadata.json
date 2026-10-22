@@ -1,7 +1,9 @@
 {
   "name": "Virtual Network",
   "size": [
-    20
+    20,
+    24,
+    16
   ],
   "style": [
     "Regular",

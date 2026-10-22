@@ -2,11 +2,13 @@
   "name": "Number Symbol Square",
   "size": [
     20,
-    24
+    24,
+    32
   ],
   "style": [
     "Filled",
-    "Regular"
+    "Regular",
+    "Color"
   ],
   "keyword": "fluent-icon",
   "description": "Used to represent a general number or in hashtag scenarios on social media.",

@@ -4,11 +4,15 @@
     24,
     20,
     28,
-    32
+    32,
+    48,
+    16
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Color",
+    "Light"
   ],
   "keyword": "fluent-icon",
   "description": "Used as a contact collection.",

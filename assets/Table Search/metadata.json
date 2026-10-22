@@ -1,7 +1,9 @@
 {
   "name": "Table Search",
   "size": [
-    20
+    20,
+    28,
+    24
   ],
   "style": [
     "Regular",

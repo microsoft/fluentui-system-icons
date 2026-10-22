@@ -2,7 +2,12 @@
   "name": "Incognito",
   "size": [
     24,
-    20
+    20,
+    48,
+    32,
+    28,
+    16,
+    12
   ],
   "style": [
     "Regular",
