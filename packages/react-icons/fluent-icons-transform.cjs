@@ -57,12 +57,13 @@ function resolveFluentIconImport(importName, target = 'svg') {
   // trailing all-digit segment (size suffixes like 16/20/24, but
   // also level indicators like Battery0) — this mirrors the
   // normalizeBaseName logic used by the generation pipeline.
-  const match = importName.match(/^(.+?)(\d+)?(Regular|Filled|Light|Color)$/);
+  const match = importName.match(/^(.+?)(\d+)?(Regular|Filled|Light|Color)(?:_([a-z][a-zA-Z0-9]*))?$/);
   if (!match) {
     return '@fluentui/react-icons/utils';
   }
 
-  return `@fluentui/react-icons/${target}/${kebabCase(match[1])}`;
+  const qualifier = match[4] ? `_${kebabCase(match[4])}` : '';
+  return `@fluentui/react-icons/${target}/${kebabCase(match[1])}${qualifier}`;
 }
 
 /** Simplified lodash.kebabCase – handles PascalCase icon names with digits. */

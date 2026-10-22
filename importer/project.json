@@ -3,6 +3,10 @@
   "name": "system-icons-processing",
   "projectType": "library",
   "targets": {
+    "test": {
+      "cache": true,
+      "inputs": ["default"]
+    },
     "deploy:fonts": {
       "cache": true,
       "inputs": ["assets", "fontGenerationToolchain"],

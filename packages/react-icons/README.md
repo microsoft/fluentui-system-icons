@@ -93,6 +93,33 @@ ReactDOM.render(
 );
 ```
 
+### Localized and directional icons
+
+Localized artwork is exported explicitly, without runtime locale detection:
+
+```tsx
+import { TextBold24Regular_es, TextBoldRegular_srCyrl } from '@fluentui/react-icons';
+import { TextBoldRegular_es } from '@fluentui/react-icons/svg/text-bold_es';
+```
+
+Names follow `{icon}{size}{style}_{locale}`; resizable names omit the size. The `_`
+separates the icon name from its locale. Multi-part locale tags are camel-cased in
+export names and hyphenated in module paths: Serbian Cyrillic (`sr-cyrl`) is
+`TextBoldRegular_srCyrl` from `@fluentui/react-icons/headless/svg/text-bold_sr-cyrl`.
+Only locale variants present in the source artwork are generated.
+
+Directional artwork keeps `Ltr`/`Rtl` in the base name, before the locale suffix
+(for example `TextDirectionHorizontalRtl24Regular_ko`). Choose it explicitly; the
+direction provider does not switch between exports. Automatic mirroring is separate:
+icons whose source metadata marks them `mirror`, such as `CommentNote24Regular_ar`,
+flip when `IconDirectionContextProvider` supplies `textDirection: 'rtl'`. A locale
+suffix alone never enables mirroring.
+
+Localized icons live in separate atom groups (`svg/`, `fonts/`, `headless/svg/`,
+`headless/fonts/`), so unchanged named imports gain no code or artwork. Whole-library
+imports grow. Monochrome localized icons use the existing font families with unchanged
+codepoints; full fonts grow, so use the font-subsetting plugin to ship only consumed glyphs.
+
 ### Using the icon font
 
 If, for performance or other reasons, you wish to use the font implementation of these icons rather than the SVG implementation, you can specify `"fluentIconFont"` as a condition for the import, either via [Node >= 12.19.0](https://nodejs.org/dist/latest-v16.x/docs/api/packages.html#resolving-user-conditions) or [webpack >= 5.0.0](https://webpack.js.org/configuration/resolve/#resolveconditionnames).
