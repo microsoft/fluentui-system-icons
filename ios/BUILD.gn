@@ -36335,6 +36335,102 @@ bundle_data_xcassets("ic_fluent_circle_multiple_concentric_24_regular") {
   ]
 }
 
+bundle_data_xcassets("ic_fluent_circle_multiple_concentric_dashes_16_filled") {
+  catalog = "FluentIcons/Assets/IconAssets.xcassets"
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_circle_multiple_concentric_dashes_16_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_circle_multiple_concentric_dashes_16_filled.imageset/ic_fluent_circle_multiple_concentric_dashes_16_filled.svg",
+  ]
+}
+
+bundle_data_xcassets("ic_fluent_circle_multiple_concentric_dashes_16_regular") {
+  catalog = "FluentIcons/Assets/IconAssets.xcassets"
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_circle_multiple_concentric_dashes_16_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_circle_multiple_concentric_dashes_16_regular.imageset/ic_fluent_circle_multiple_concentric_dashes_16_regular.svg",
+  ]
+}
+
+bundle_data_xcassets("ic_fluent_circle_multiple_concentric_dashes_20_filled") {
+  catalog = "FluentIcons/Assets/IconAssets.xcassets"
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_circle_multiple_concentric_dashes_20_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_circle_multiple_concentric_dashes_20_filled.imageset/ic_fluent_circle_multiple_concentric_dashes_20_filled.svg",
+  ]
+}
+
+bundle_data_xcassets("ic_fluent_circle_multiple_concentric_dashes_20_regular") {
+  catalog = "FluentIcons/Assets/IconAssets.xcassets"
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_circle_multiple_concentric_dashes_20_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_circle_multiple_concentric_dashes_20_regular.imageset/ic_fluent_circle_multiple_concentric_dashes_20_regular.svg",
+  ]
+}
+
+bundle_data_xcassets("ic_fluent_circle_multiple_concentric_dashes_24_filled") {
+  catalog = "FluentIcons/Assets/IconAssets.xcassets"
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_circle_multiple_concentric_dashes_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_circle_multiple_concentric_dashes_24_filled.imageset/ic_fluent_circle_multiple_concentric_dashes_24_filled.svg",
+  ]
+}
+
+bundle_data_xcassets("ic_fluent_circle_multiple_concentric_dashes_24_regular") {
+  catalog = "FluentIcons/Assets/IconAssets.xcassets"
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_circle_multiple_concentric_dashes_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_circle_multiple_concentric_dashes_24_regular.imageset/ic_fluent_circle_multiple_concentric_dashes_24_regular.svg",
+  ]
+}
+
+bundle_data_xcassets("ic_fluent_circle_multiple_concentric_dashes_28_filled") {
+  catalog = "FluentIcons/Assets/IconAssets.xcassets"
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_circle_multiple_concentric_dashes_28_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_circle_multiple_concentric_dashes_28_filled.imageset/ic_fluent_circle_multiple_concentric_dashes_28_filled.svg",
+  ]
+}
+
+bundle_data_xcassets("ic_fluent_circle_multiple_concentric_dashes_28_regular") {
+  catalog = "FluentIcons/Assets/IconAssets.xcassets"
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_circle_multiple_concentric_dashes_28_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_circle_multiple_concentric_dashes_28_regular.imageset/ic_fluent_circle_multiple_concentric_dashes_28_regular.svg",
+  ]
+}
+
+bundle_data_xcassets("ic_fluent_circle_multiple_concentric_dashes_32_filled") {
+  catalog = "FluentIcons/Assets/IconAssets.xcassets"
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_circle_multiple_concentric_dashes_32_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_circle_multiple_concentric_dashes_32_filled.imageset/ic_fluent_circle_multiple_concentric_dashes_32_filled.svg",
+  ]
+}
+
+bundle_data_xcassets("ic_fluent_circle_multiple_concentric_dashes_32_regular") {
+  catalog = "FluentIcons/Assets/IconAssets.xcassets"
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_circle_multiple_concentric_dashes_32_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_circle_multiple_concentric_dashes_32_regular.imageset/ic_fluent_circle_multiple_concentric_dashes_32_regular.svg",
+  ]
+}
+
+bundle_data_xcassets("ic_fluent_circle_multiple_concentric_dashes_48_filled") {
+  catalog = "FluentIcons/Assets/IconAssets.xcassets"
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_circle_multiple_concentric_dashes_48_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_circle_multiple_concentric_dashes_48_filled.imageset/ic_fluent_circle_multiple_concentric_dashes_48_filled.svg",
+  ]
+}
+
+bundle_data_xcassets("ic_fluent_circle_multiple_concentric_dashes_48_regular") {
+  catalog = "FluentIcons/Assets/IconAssets.xcassets"
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_circle_multiple_concentric_dashes_48_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_circle_multiple_concentric_dashes_48_regular.imageset/ic_fluent_circle_multiple_concentric_dashes_48_regular.svg",
+  ]
+}
+
 bundle_data_xcassets("ic_fluent_circle_multiple_hint_checkmark_16_color") {
   catalog = "FluentIcons/Assets/IconAssets.xcassets"
   sources = [
@@ -83907,6 +84003,38 @@ bundle_data_xcassets("ic_fluent_layout_infographic_32_regular") {
   ]
 }
 
+bundle_data_xcassets("ic_fluent_layout_infographic_two_sparkle_16_filled") {
+  catalog = "FluentIcons/Assets/IconAssets.xcassets"
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_layout_infographic_two_sparkle_16_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_layout_infographic_two_sparkle_16_filled.imageset/ic_fluent_layout_infographic_two_sparkle_16_filled.svg",
+  ]
+}
+
+bundle_data_xcassets("ic_fluent_layout_infographic_two_sparkle_16_regular") {
+  catalog = "FluentIcons/Assets/IconAssets.xcassets"
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_layout_infographic_two_sparkle_16_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_layout_infographic_two_sparkle_16_regular.imageset/ic_fluent_layout_infographic_two_sparkle_16_regular.svg",
+  ]
+}
+
+bundle_data_xcassets("ic_fluent_layout_infographic_two_sparkle_20_filled") {
+  catalog = "FluentIcons/Assets/IconAssets.xcassets"
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_layout_infographic_two_sparkle_20_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_layout_infographic_two_sparkle_20_filled.imageset/ic_fluent_layout_infographic_two_sparkle_20_filled.svg",
+  ]
+}
+
+bundle_data_xcassets("ic_fluent_layout_infographic_two_sparkle_20_regular") {
+  catalog = "FluentIcons/Assets/IconAssets.xcassets"
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_layout_infographic_two_sparkle_20_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_layout_infographic_two_sparkle_20_regular.imageset/ic_fluent_layout_infographic_two_sparkle_20_regular.svg",
+  ]
+}
+
 bundle_data_xcassets("ic_fluent_layout_row_four_16_filled") {
   catalog = "FluentIcons/Assets/IconAssets.xcassets"
   sources = [
@@ -113582,6 +113710,70 @@ bundle_data_xcassets("ic_fluent_plug_disconnected_48_regular") {
   sources = [
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_plug_disconnected_48_regular.imageset/Contents.json",
     "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_plug_disconnected_48_regular.imageset/ic_fluent_plug_disconnected_48_regular.svg",
+  ]
+}
+
+bundle_data_xcassets("ic_fluent_plug_puzzle_16_filled") {
+  catalog = "FluentIcons/Assets/IconAssets.xcassets"
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_plug_puzzle_16_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_plug_puzzle_16_filled.imageset/ic_fluent_plug_puzzle_16_filled.svg",
+  ]
+}
+
+bundle_data_xcassets("ic_fluent_plug_puzzle_16_regular") {
+  catalog = "FluentIcons/Assets/IconAssets.xcassets"
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_plug_puzzle_16_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_plug_puzzle_16_regular.imageset/ic_fluent_plug_puzzle_16_regular.svg",
+  ]
+}
+
+bundle_data_xcassets("ic_fluent_plug_puzzle_20_filled") {
+  catalog = "FluentIcons/Assets/IconAssets.xcassets"
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_plug_puzzle_20_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_plug_puzzle_20_filled.imageset/ic_fluent_plug_puzzle_20_filled.svg",
+  ]
+}
+
+bundle_data_xcassets("ic_fluent_plug_puzzle_20_regular") {
+  catalog = "FluentIcons/Assets/IconAssets.xcassets"
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_plug_puzzle_20_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_plug_puzzle_20_regular.imageset/ic_fluent_plug_puzzle_20_regular.svg",
+  ]
+}
+
+bundle_data_xcassets("ic_fluent_plug_puzzle_24_filled") {
+  catalog = "FluentIcons/Assets/IconAssets.xcassets"
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_plug_puzzle_24_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_plug_puzzle_24_filled.imageset/ic_fluent_plug_puzzle_24_filled.svg",
+  ]
+}
+
+bundle_data_xcassets("ic_fluent_plug_puzzle_24_regular") {
+  catalog = "FluentIcons/Assets/IconAssets.xcassets"
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_plug_puzzle_24_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_plug_puzzle_24_regular.imageset/ic_fluent_plug_puzzle_24_regular.svg",
+  ]
+}
+
+bundle_data_xcassets("ic_fluent_plug_puzzle_32_filled") {
+  catalog = "FluentIcons/Assets/IconAssets.xcassets"
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_plug_puzzle_32_filled.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_plug_puzzle_32_filled.imageset/ic_fluent_plug_puzzle_32_filled.svg",
+  ]
+}
+
+bundle_data_xcassets("ic_fluent_plug_puzzle_32_regular") {
+  catalog = "FluentIcons/Assets/IconAssets.xcassets"
+  sources = [
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_plug_puzzle_32_regular.imageset/Contents.json",
+    "FluentIcons/Assets/IconAssets.xcassets/ic_fluent_plug_puzzle_32_regular.imageset/ic_fluent_plug_puzzle_32_regular.svg",
   ]
 }
 

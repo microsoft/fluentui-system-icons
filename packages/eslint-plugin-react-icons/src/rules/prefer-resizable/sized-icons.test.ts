@@ -70,6 +70,7 @@ describe('sized-icons classification', () => {
     'TextClearFormatting32Regular_ko',
     'AlignDistributeBottom16Regular',
     'AccessibilityCheckmark32Light',
+    'AppStore24Filled',
   ])('does not suggest a nonexistent resizable counterpart for %s', (name) => {
     expect(metadata[name]?.type).toBe('sized');
     expect(isSizedIconName(name)).toBe(true);

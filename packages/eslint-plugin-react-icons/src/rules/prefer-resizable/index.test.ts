@@ -39,10 +39,25 @@ ruleTester.run(RULE_NAME, rule, {
       code: `import * as Icons from '@fluentui/react-icons';\nconst a = <Icons.TextClearFormatting32Regular_ko />;`,
     },
     {
+      code: `import { ZoomOut32Light } from '@fluentui/react-icons';\nconst a = <ZoomOut32Light />;`,
+    },
+    {
+      code: `import * as Icons from '@fluentui/react-icons/fonts/zoom-out';\nconst a = <Icons.ZoomOut32Light />;`,
+    },
+    {
       code: `import { AlignDistributeBottom16Regular, AccessibilityCheckmark32Light } from '@fluentui/react-icons';`,
     },
     {
       code: `import { TextBoldRegular_srCyrl } from '@fluentui/react-icons/headless/svg/text-bold_sr-cyrl';\nconst a = <TextBoldRegular_srCyrl />;`,
+    },
+    {
+      code: `import { AppStore24Filled as Store } from '@fluentui/react-icons/headless/fonts/app-store';\nconst a = <Store />;`,
+    },
+    {
+      code: `import * as Icons from '@fluentui/react-icons';\nconst a = <Icons.AppStore24Filled />;`,
+    },
+    {
+      code: `import * as Icons from '@fluentui/react-icons';\nconst C = Icons.AppStore24Filled;`,
     },
     // Resizable named import + usage.
     {

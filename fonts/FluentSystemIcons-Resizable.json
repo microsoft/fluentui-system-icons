@@ -5699,10 +5699,12 @@
   "ic_fluent_keyboard_mouse_20_regular": 63041,
   "ic_fluent_keyboard_mouse_off_20_filled": 63042,
   "ic_fluent_keyboard_mouse_off_20_regular": 63043,
-  "ic_fluent_text_bold_20_filled_bg": 63046,
-  "ic_fluent_text_bold_20_regular_bg": 63047,
-  "ic_fluent_text_italic_20_filled_bg": 63048,
-  "ic_fluent_text_italic_20_regular_bg": 63049,
+  "ic_fluent_circle_multiple_concentric_dashes_20_filled": 63044,
+  "ic_fluent_circle_multiple_concentric_dashes_20_regular": 63045,
+  "ic_fluent_layout_infographic_two_sparkle_20_filled": 63046,
+  "ic_fluent_layout_infographic_two_sparkle_20_regular": 63047,
+  "ic_fluent_plug_puzzle_20_filled": 63048,
+  "ic_fluent_plug_puzzle_20_regular": 63049,
   "ic_fluent_text_sort_ascending_20_filled_bg": 63050,
   "ic_fluent_text_sort_ascending_20_regular_bg": 63051,
   "ic_fluent_text_sort_descending_20_filled_bg": 63052,
@@ -5966,5 +5968,9 @@
   "ic_fluent_text_paragraph_20_filled_zh": 63310,
   "ic_fluent_text_paragraph_20_regular_zh": 63311,
   "ic_fluent_text_proofing_tools_20_filled_zh": 63312,
-  "ic_fluent_text_proofing_tools_20_regular_zh": 63313
+  "ic_fluent_text_proofing_tools_20_regular_zh": 63313,
+  "ic_fluent_text_bold_20_filled_bg": 63314,
+  "ic_fluent_text_bold_20_regular_bg": 63315,
+  "ic_fluent_text_italic_20_filled_bg": 63316,
+  "ic_fluent_text_italic_20_regular_bg": 63317
 }

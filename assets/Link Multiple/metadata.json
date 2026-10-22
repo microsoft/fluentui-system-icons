@@ -7,7 +7,8 @@
   ],
   "style": [
     "Filled",
-    "Regular"
+    "Regular",
+    "Color"
   ],
   "keyword": "fluent-icon",
   "description": "Used for generic linking collections only. Use Link for standard single link scenarios.",

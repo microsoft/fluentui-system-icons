@@ -4,8 +4,8 @@ Prefer resizable Fluent icons over fixed-size ("sized") variants.
 
 ## Rule Details
 
-`@fluentui/react-icons` (and `@fluentui/react-brand-icons`) ship each icon in two
-shapes:
+`@fluentui/react-icons` (and `@fluentui/react-brand-icons`) provide two icon
+shapes, but not every icon has both:
 
 - **Resizable** — e.g. `SendRegular`, `AccessTimeFilled`. Rendered at `1em`, so
   they scale to any size via `fontSize` / CSS and let a bundler ship a single glyph

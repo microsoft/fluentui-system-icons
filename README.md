@@ -37,7 +37,7 @@ repositories {
 Include the following dependency in your project's `build.gradle`:
 
 ```groovy
-implementation 'com.microsoft.design:fluent-system-icons:1.1.343@aar'
+implementation 'com.microsoft.design:fluent-system-icons:1.1.344@aar'
 ```
 
 For library docs, see [android/README.md](android/README.md).
@@ -49,13 +49,13 @@ For library docs, see [android/README.md](android/README.md).
 ```ruby
 use_frameworks!
 
-pod "FluentIcons", "1.1.343"
+pod "FluentIcons", "1.1.344"
 ```
 
 #### Carthage
 
 ```bash
-git "git@github.com:microsoft/fluentui-system-icons.git" "1.1.343"
+git "git@github.com:microsoft/fluentui-system-icons.git" "1.1.344"
 ```
 
 For library docs, see [ios/README.md](ios/README.md).
@@ -67,7 +67,7 @@ In the `pubspec.yaml` of your flutter project, add the following dependency:
 ```yaml
 dependencies:
   ...
-  fluentui_system_icons: ^1.1.343
+  fluentui_system_icons: ^1.1.344
 ```
 
 For library docs, see [flutter/README.md](flutter/README.md).
@@ -77,6 +77,31 @@ For library docs, see [flutter/README.md](flutter/README.md).
 Inline svg directly. See [packages/svg-icons/README.md](packages/svg-icons/README.md).
 
 ## Contributing
+
+### Asset metadata
+
+For groups with an `assets/<group>/metadata.json` file, keep its `size` and `style`
+arrays in sync with the SVG files in that group's `SVG/` directory. These arrays
+describe the sets of available sizes and styles, not every size/style combination.
+Directional `_ltr` and `_rtl` suffixes do not introduce separate styles.
+
+Check all existing metadata files locally:
+
+```sh
+yarn nx run system-icons-processing:check:assets-metadata
+```
+
+To reconcile only the size/style arrays with the SVG filenames:
+
+```sh
+yarn nx run system-icons-processing:check:assets-metadata --fix --skip-nx-cache
+```
+
+Review the changes before committing. The checker does not infer descriptions or
+directionality and explicitly skips groups without metadata; those remain a
+separate data-completeness task. PR CI runs the check (and its regression tests,
+via `dependsOn`) through `nx affected`; the target declares `assets/**` as an
+input, so asset changes both select it and invalidate its cache.
 
 ### Importer
 

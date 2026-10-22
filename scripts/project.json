@@ -1,0 +1,15 @@
+{
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "name": "repo-scripts",
+  "projectType": "library",
+  "targets": {
+    "test": {
+      "executor": "nx:run-commands",
+      "cache": true,
+      "inputs": ["default", "{workspaceRoot}/.husky/pre-push"],
+      "options": {
+        "command": "node --test scripts/*.test.mjs"
+      }
+    }
+  }
+}

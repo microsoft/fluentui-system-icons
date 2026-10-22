@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?6ea0957c2664f25480f02434157076a6") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?6ea0957c2664f25480f02434157076a6") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?6ea0957c2664f25480f02434157076a6") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?c55741400573d4a065bb5bbf256e2a41") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?c55741400573d4a065bb5bbf256e2a41") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?c55741400573d4a065bb5bbf256e2a41") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -29692,40 +29692,40 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 .icon-ic_fluent_text_collapse_32_filled:before {
     content: "\f0da3";
 }
-.icon-ic_fluent_text_bold_20_filled_bg:before {
+.icon-ic_fluent_circle_multiple_concentric_dashes_16_filled:before {
     content: "\f0da4";
 }
-.icon-ic_fluent_text_bold_24_filled_bg:before {
+.icon-ic_fluent_circle_multiple_concentric_dashes_20_filled:before {
     content: "\f0da5";
 }
-.icon-ic_fluent_text_bold_28_filled_bg:before {
+.icon-ic_fluent_circle_multiple_concentric_dashes_24_filled:before {
     content: "\f0da6";
 }
-.icon-ic_fluent_text_italic_16_filled_bg:before {
+.icon-ic_fluent_circle_multiple_concentric_dashes_28_filled:before {
     content: "\f0da7";
 }
-.icon-ic_fluent_text_italic_20_filled_bg:before {
+.icon-ic_fluent_circle_multiple_concentric_dashes_32_filled:before {
     content: "\f0da8";
 }
-.icon-ic_fluent_text_italic_24_filled_bg:before {
+.icon-ic_fluent_circle_multiple_concentric_dashes_48_filled:before {
     content: "\f0da9";
 }
-.icon-ic_fluent_text_italic_28_filled_bg:before {
+.icon-ic_fluent_layout_infographic_two_sparkle_16_filled:before {
     content: "\f0daa";
 }
-.icon-ic_fluent_text_sort_ascending_16_filled_bg:before {
+.icon-ic_fluent_layout_infographic_two_sparkle_20_filled:before {
     content: "\f0dab";
 }
-.icon-ic_fluent_text_sort_ascending_20_filled_bg:before {
+.icon-ic_fluent_plug_puzzle_16_filled:before {
     content: "\f0dac";
 }
-.icon-ic_fluent_text_sort_ascending_24_filled_bg:before {
+.icon-ic_fluent_plug_puzzle_20_filled:before {
     content: "\f0dad";
 }
-.icon-ic_fluent_text_sort_descending_16_filled_bg:before {
+.icon-ic_fluent_plug_puzzle_24_filled:before {
     content: "\f0dae";
 }
-.icon-ic_fluent_text_sort_descending_20_filled_bg:before {
+.icon-ic_fluent_plug_puzzle_32_filled:before {
     content: "\f0daf";
 }
 .icon-ic_fluent_text_sort_descending_24_filled_bg:before {
@@ -31086,4 +31086,40 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_text_bold_16_filled_bg:before {
     content: "\f0f74";
+}
+.icon-ic_fluent_text_bold_20_filled_bg:before {
+    content: "\f0f75";
+}
+.icon-ic_fluent_text_bold_24_filled_bg:before {
+    content: "\f0f76";
+}
+.icon-ic_fluent_text_bold_28_filled_bg:before {
+    content: "\f0f77";
+}
+.icon-ic_fluent_text_italic_16_filled_bg:before {
+    content: "\f0f78";
+}
+.icon-ic_fluent_text_italic_20_filled_bg:before {
+    content: "\f0f79";
+}
+.icon-ic_fluent_text_italic_24_filled_bg:before {
+    content: "\f0f7a";
+}
+.icon-ic_fluent_text_italic_28_filled_bg:before {
+    content: "\f0f7b";
+}
+.icon-ic_fluent_text_sort_ascending_16_filled_bg:before {
+    content: "\f0f7c";
+}
+.icon-ic_fluent_text_sort_ascending_20_filled_bg:before {
+    content: "\f0f7d";
+}
+.icon-ic_fluent_text_sort_ascending_24_filled_bg:before {
+    content: "\f0f7e";
+}
+.icon-ic_fluent_text_sort_descending_16_filled_bg:before {
+    content: "\f0f7f";
+}
+.icon-ic_fluent_text_sort_descending_20_filled_bg:before {
+    content: "\f0f80";
 }

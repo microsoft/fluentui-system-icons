@@ -11,6 +11,10 @@
       "cache": true,
       "inputs": ["assets", "fontGenerationToolchain"],
       "outputs": ["{workspaceRoot}/fonts"]
+    },
+    "check:assets-metadata": {
+      "cache": true,
+      "inputs": ["assets", "{projectRoot}/check-assets-metadata.mjs"]
     }
   }
 }
