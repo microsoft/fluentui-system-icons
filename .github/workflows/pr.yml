@@ -56,7 +56,7 @@ jobs:
 
       - run: corepack enable
 
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 22.x
           cache: 'yarn'
@@ -78,7 +78,7 @@ jobs:
 
       - run: corepack enable
 
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 22.x
           cache: 'yarn'
@@ -98,7 +98,7 @@ jobs:
 
       - run: corepack enable
 
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 22.x
           cache: 'yarn'
@@ -116,7 +116,7 @@ jobs:
           java-version: 11
 
       - name: Set up Gradle
-        uses: gradle/actions/setup-gradle@9c971963bec38e04b3d30dcc455b5382be2fdbfb # v6.3.0
+        uses: gradle/actions/setup-gradle@3f5f9adaf7d9fecd50b5935e54106014257a94e6 # v6.4.0
         with:
           gradle-version: wrapper
           gradle-home-cache-excludes: |
@@ -177,7 +177,7 @@ jobs:
 
       - run: corepack enable
 
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 22.x
           cache: 'yarn'
@@ -197,6 +197,9 @@ jobs:
 
       - name: Lint
         run: yarn nx affected -t lint
+
+      - name: Validate asset metadata
+        run: yarn nx affected -t check:assets-metadata
 
       - name: Type Check Infra
         run: yarn nx affected -t type-check:infra
@@ -251,14 +254,14 @@ jobs:
           fi
 
       - name: Upload icon-app build artifacts
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: icon-app-build
           path: packages/icon-app/dist/
           retention-days: 3
 
       - name: Upload docsite build artifacts
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: docsite-storybook-build
           path: packages/docsite/storybook-static/

@@ -3,11 +3,13 @@
   "size": [
     24,
     20,
-    16
+    16,
+    28
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Color"
   ],
   "keyword": "fluent-icon, teams",
   "description": "Used in editing text scenarios.",

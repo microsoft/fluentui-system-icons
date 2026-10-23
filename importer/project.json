@@ -3,10 +3,18 @@
   "name": "system-icons-processing",
   "projectType": "library",
   "targets": {
+    "test": {
+      "cache": true,
+      "inputs": ["default"]
+    },
     "deploy:fonts": {
       "cache": true,
       "inputs": ["assets", "fontGenerationToolchain"],
       "outputs": ["{workspaceRoot}/fonts"]
+    },
+    "check:assets-metadata": {
+      "cache": true,
+      "inputs": ["assets", "{projectRoot}/check-assets-metadata.mjs"]
     }
   }
 }

@@ -4,11 +4,14 @@
     24,
     16,
     20,
-    28
+    28,
+    48,
+    32
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Color"
   ],
   "keyword": "fluent-icon, outlook",
   "description": "Used for board views, collecting columns in a horizontal view.",

@@ -29,6 +29,7 @@
     "build": "yarn clean && yarn build:fonts-and-svg && yarn build:generate-chunks-and-atoms && yarn build:js",
     "build-verify": "yarn run -T vitest run build-verify.test.js build-transforms.test.js build-color-render.test.js esm-exports.smoke.test.js",
     "bundle-size": "yarn run -T monosize measure",
+    "check:localized-bundle-size": "node scripts/check-localized-bundle-size.js",
     "check:types-packaging": "yarn run -T attw --pack . --profile node16 --exclude-entrypoints ./headless/styles.css ./headless/fonts/styles.css",
     "lint": "yarn run -T eslint src package.json",
     "test": "yarn run -T vitest --exclude build-verify.test.js --exclude build-transforms.test.js --exclude build-color-render.test.js --exclude esm-exports.smoke.test.js",

@@ -1,4 +1,4 @@
-import { getIconFamilyName } from './selector-protocol';
+import { getIconFamilyName, ICON_SUFFIX_REGEX } from './selector-protocol';
 
 export type IconVariant = 'svg' | 'fonts' | 'svg-sprite';
 
@@ -8,8 +8,6 @@ export type IconVariant = 'svg' | 'fonts' | 'svg-sprite';
  * Every module supports `svg`, so it is always a valid resolution target.
  */
 export const DEFAULT_SAFETY_VARIANT: IconVariant = 'svg';
-
-const ICON_SUFFIX_REGEX = /(\d*)?(Regular|Filled|Light|Color)$/;
 
 export function isIconName(importName: string): boolean {
   return ICON_SUFFIX_REGEX.test(importName);

@@ -164,3 +164,14 @@ Note that this also binds every copy to a single React and Griffel instance.
 
 Using ESM `import` and CommonJS `require()` from the same installation does not count as two copies.
 Their used exports are combined, and each emitted font asset is subset once.
+
+## Development Checks
+
+Run `yarn nx run react-icons-font-subsetting-webpack-plugin:test` for unit, type,
+and webpack/rspack integration coverage.
+
+Run `yarn nx run react-icons-font-subsetting-webpack-plugin:test:render` for the
+localized full/subset font browser check. It requires Playwright Chromium
+(`yarn playwright install chromium`) and checks standard/headless rendering,
+LTR/RTL contexts, and desktop/mobile viewports. Screenshots are written to
+`tmp/localized-font-render` at the repository root.

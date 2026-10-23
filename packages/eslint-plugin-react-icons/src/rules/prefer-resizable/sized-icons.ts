@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
-import { RESIZABLE_COLLISIONS, SIZED_ICON_SIZES } from './icon-sizes.generated';
+import { RESIZABLE_COLLISIONS, SIZED_ICON_SIZES, SIZED_WITHOUT_RESIZABLE } from './icon-sizes.generated';
 
 const VARIANT_SUFFIX = 'Filled|Regular|Color|Light';
 
@@ -11,10 +11,11 @@ const VARIANT_SUFFIX = 'Filled|Regular|Color|Light';
  * descending so any multi-digit size (should one ever be added) is matched first.
  */
 export const SIZED_ICON_RE = new RegExp(
-  `(${[...SIZED_ICON_SIZES].sort((a, b) => b - a).join('|')})(${VARIANT_SUFFIX})$`,
+  `(${[...SIZED_ICON_SIZES].sort((a, b) => b - a).join('|')})(${VARIANT_SUFFIX})(_[a-z][a-zA-Z0-9]*)?$`,
 );
 
 const collisions = new Set<string>(RESIZABLE_COLLISIONS);
+const withoutResizable = new Set<string>(SIZED_WITHOUT_RESIZABLE);
 
 /**
  * Whether an icon export name refers to a fixed-size ("sized") icon variant
@@ -30,12 +31,20 @@ export function isSizedIconName(name: string): boolean {
 
 /**
  * The resizable equivalent of a sized icon name (the size token stripped), or
- * `null` when the name is not a sized icon. E.g. `Send24Regular` -> `SendRegular`,
+ * `null` when the name is not sized, is a system Light variant, or a known
+ * system icon has no counterpart.
+ * E.g. `Send24Regular` -> `SendRegular`,
  * `PresenceDnd10Filled` -> `PresenceDndFilled`.
  */
-export function getResizableIconName(name: string): string | null {
+export function getResizableIconName(name: string, source = '@fluentui/react-icons'): string | null {
   if (!isSizedIconName(name)) {
     return null;
   }
-  return name.replace(SIZED_ICON_RE, '$2');
+  if (
+    (source === '@fluentui/react-icons' || source.startsWith('@fluentui/react-icons/')) &&
+    (SIZED_ICON_RE.exec(name)?.[2] === 'Light' || withoutResizable.has(name))
+  ) {
+    return null;
+  }
+  return name.replace(SIZED_ICON_RE, '$2$3');
 }
