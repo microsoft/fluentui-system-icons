@@ -55,6 +55,7 @@ describe('getFileTypeIconNameFromExtensionOrType', () => {
     expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.pbiScorecard)).toBe('pbiscorecard');
     expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.pbiSemanticModel)).toBe('pbisemmodel');
     expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.pbiReport)).toBe('powerbi');
+    expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.wikiPage)).toBe('wikipage');
     expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.fabricOntology)).toBe('fabricontology');
   });
 
