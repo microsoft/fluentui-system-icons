@@ -98,5 +98,5 @@ export const TYPE_TO_ICON_NAME: ReadonlyArray<string> = [
   'pbisemmodel', // 29 pbiSemanticModel
   'powerbi', // 30 pbiReport
   'fabricontology', // 31 fabricOntology
-   'wikipage', // 32 wikiPage
+  'wikipage', // 32 wikiPage
 ];
