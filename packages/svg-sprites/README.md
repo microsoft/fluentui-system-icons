@@ -39,6 +39,15 @@ export const Icon = (props: IconProps) => {
 };
 ```
 
+The package also emits grouped sprite files following the local bundle format, for example:
+
+```text
+fluent_icons_20_regular.sprite.svg
+fluent_icons_20_filled.sprite.svg
+```
+
+Those files contain all symbols for a given size/style pairing, with ids like `access_time`, `add`, and `alert` instead of repeating the size/style suffix inside each id.
+
 ## Development
 
 ### Building Sprites
