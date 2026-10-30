@@ -1,0 +1,17 @@
+{
+  "name": "Box Question Mark",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "A box with a question mark.",
+  "metaphor": [
+    "package",
+    "box",
+    "question"
+  ]
+}
