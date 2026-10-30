@@ -42384,6 +42384,16 @@
     "font": true,
     "type": "sized"
   },
+  "BookOpenArc24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BookOpenArc24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
   "BookOpenGlobe20Filled": {
     "svg": true,
     "font": true,
@@ -42475,6 +42485,26 @@
     "type": "sized"
   },
   "BookOpenLightbulb48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BookOpenLines24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BookOpenLines24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BookOpenLinesSearch24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BookOpenLinesSearch24Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -42605,6 +42635,16 @@
     "type": "sized"
   },
   "BookSearch24Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BookSearch24TrlFilled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "BookSearch24TrlRegular": {
     "svg": true,
     "font": true,
     "type": "sized"
@@ -108275,6 +108315,16 @@
     "type": "sized"
   },
   "Search48Regular": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SearchFull24Filled": {
+    "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "SearchFull24Regular": {
     "svg": true,
     "font": true,
     "type": "sized"
