@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/microsoft/fluentui-system-icons/tree/main/packages/react-icons-svg-sprite-subsetting-webpack-plugin#readme",
   "dependencies": {
-    "schema-utils": "^4.2.0"
+    "schema-utils": "^4.5.0"
   },
   "devDependencies": {
     "@fluentui/react-icons": "*"
