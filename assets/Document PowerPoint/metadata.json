@@ -1,0 +1,17 @@
+{
+  "name": "Document PowerPoint",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "A PowerPoint document.",
+  "metaphor": [
+    "document",
+    "presentation",
+    "powerpoint"
+  ]
+}
