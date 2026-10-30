@@ -1,3 +1,9 @@
+## 2.0.345 (2026-10-30)
+
+### 🚀 Features
+
+- **react-icons:** add localized icon variants ([#1261](https://github.com/microsoft/fluentui-system-icons/pull/1261))
+
 ## 2.0.344 (2026-10-09)
 
 This release contains icon updates

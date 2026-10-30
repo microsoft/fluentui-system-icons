@@ -34,6 +34,7 @@
 |Breakout Room|<img src="assets/Breakout Room/SVG/ic_fluent_breakout_room_32_light.svg?raw=true" width="24" height="24">|`breakoutRoom32Light`|`ic_fluent_breakout_room_32_light`|
 |Broom|<img src="assets/Broom/SVG/ic_fluent_broom_32_light.svg?raw=true" width="24" height="24">|`broom32Light`|`ic_fluent_broom_32_light`|
 |Calendar 3 Day|<img src="assets/Calendar 3 Day/SVG/ic_fluent_calendar_3_day_32_light.svg?raw=true" width="24" height="24">|`calendar3Day32Light`|`ic_fluent_calendar_3_day_32_light`|
+|Calendar Cancel|<img src="assets/Calendar Cancel/SVG/ic_fluent_calendar_cancel_32_light.svg?raw=true" width="24" height="24">|`calendarCancel32Light`|`ic_fluent_calendar_cancel_32_light`|
 |Calendar Checkmark|<img src="assets/Calendar Checkmark/SVG/ic_fluent_calendar_checkmark_32_light.svg?raw=true" width="24" height="24">|`calendarCheckmark32Light`|`ic_fluent_calendar_checkmark_32_light`|
 |Calendar Clock|<img src="assets/Calendar Clock/SVG/ic_fluent_calendar_clock_32_light.svg?raw=true" width="24" height="24">|`calendarClock32Light`|`ic_fluent_calendar_clock_32_light`|
 |Calendar Data Bar|<img src="assets/Calendar Data Bar/SVG/ic_fluent_calendar_data_bar_32_light.svg?raw=true" width="24" height="24">|`calendarDataBar32Light`|`ic_fluent_calendar_data_bar_32_light`|
@@ -58,6 +59,7 @@
 |Color|<img src="assets/Color/SVG/ic_fluent_color_32_light.svg?raw=true" width="24" height="24">|`color32Light`|`ic_fluent_color_32_light`|
 |Color Fill|<img src="assets/Color Fill/SVG/ic_fluent_color_fill_32_light.svg?raw=true" width="24" height="24">|`colorFill32Light`|`ic_fluent_color_fill_32_light`|
 |Color Fill Accent|<img src="assets/Color Fill Accent/SVG/ic_fluent_color_fill_accent_32_light.svg?raw=true" width="24" height="24">|`colorFillAccent32Light`|`ic_fluent_color_fill_accent_32_light`|
+|Color Line|<img src="assets/Color Line/SVG/ic_fluent_color_line_32_light.svg?raw=true" width="24" height="24">|`colorLine32Light`|`ic_fluent_color_line_32_light`|
 |Comment|<img src="assets/Comment/SVG/ic_fluent_comment_32_light.svg?raw=true" width="24" height="24">|`comment32Light`|`ic_fluent_comment_32_light`|
 |Comment Add|<img src="assets/Comment Add/SVG/ic_fluent_comment_add_32_light.svg?raw=true" width="24" height="24">|`commentAdd32Light`|`ic_fluent_comment_add_32_light`|
 |Compose|<img src="assets/Compose/SVG/ic_fluent_compose_32_light.svg?raw=true" width="24" height="24">|`compose32Light`|`ic_fluent_compose_32_light`|
@@ -118,6 +120,7 @@
 |Mail Edit|<img src="assets/Mail Edit/SVG/ic_fluent_mail_edit_32_light.svg?raw=true" width="24" height="24">|`mailEdit32Light`|`ic_fluent_mail_edit_32_light`|
 |Mail List|<img src="assets/Mail List/SVG/ic_fluent_mail_list_32_light.svg?raw=true" width="24" height="24">|`mailList32Light`|`ic_fluent_mail_list_32_light`|
 |Mail Multiple|<img src="assets/Mail Multiple/SVG/ic_fluent_mail_multiple_32_light.svg?raw=true" width="24" height="24">|`mailMultiple32Light`|`ic_fluent_mail_multiple_32_light`|
+|Mail Open Person|<img src="assets/Mail Open Person/SVG/ic_fluent_mail_open_person_32_light.svg?raw=true" width="24" height="24">|`mailOpenPerson32Light`|`ic_fluent_mail_open_person_32_light`|
 |Mail Read|<img src="assets/Mail Read/SVG/ic_fluent_mail_read_32_light.svg?raw=true" width="24" height="24">|`mailRead32Light`|`ic_fluent_mail_read_32_light`|
 |Mail Read Multiple|<img src="assets/Mail Read Multiple/SVG/ic_fluent_mail_read_multiple_32_light.svg?raw=true" width="24" height="24">|`mailReadMultiple32Light`|`ic_fluent_mail_read_multiple_32_light`|
 |Mail Rewind|<img src="assets/Mail Rewind/SVG/ic_fluent_mail_rewind_32_light.svg?raw=true" width="24" height="24">|`mailRewind32Light`|`ic_fluent_mail_rewind_32_light`|

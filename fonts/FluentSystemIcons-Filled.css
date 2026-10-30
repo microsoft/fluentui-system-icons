@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Filled";
-    src: url("./FluentSystemIcons-Filled.woff2?c55741400573d4a065bb5bbf256e2a41") format("woff2"),
-url("./FluentSystemIcons-Filled.woff?c55741400573d4a065bb5bbf256e2a41") format("woff"),
-url("./FluentSystemIcons-Filled.ttf?c55741400573d4a065bb5bbf256e2a41") format("truetype");
+    src: url("./FluentSystemIcons-Filled.woff2?f37cf939c66132f3399e03bda8c9634d") format("woff2"),
+url("./FluentSystemIcons-Filled.woff?f37cf939c66132f3399e03bda8c9634d") format("woff"),
+url("./FluentSystemIcons-Filled.ttf?f37cf939c66132f3399e03bda8c9634d") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -31122,4 +31122,64 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_text_sort_descending_20_filled_bg:before {
     content: "\f0f80";
+}
+.icon-ic_fluent_app_folder_hint_20_filled:before {
+    content: "\f0f81";
+}
+.icon-ic_fluent_box_question_mark_20_filled:before {
+    content: "\f0f82";
+}
+.icon-ic_fluent_calendar_cancel_32_filled:before {
+    content: "\f0f83";
+}
+.icon-ic_fluent_color_line_28_filled:before {
+    content: "\f0f84";
+}
+.icon-ic_fluent_color_line_32_filled:before {
+    content: "\f0f85";
+}
+.icon-ic_fluent_conference_room_sparkle_16_filled:before {
+    content: "\f0f86";
+}
+.icon-ic_fluent_conference_room_sparkle_20_filled:before {
+    content: "\f0f87";
+}
+.icon-ic_fluent_conference_room_sparkle_24_filled:before {
+    content: "\f0f88";
+}
+.icon-ic_fluent_conference_room_sparkle_28_filled:before {
+    content: "\f0f89";
+}
+.icon-ic_fluent_document_excel_20_filled:before {
+    content: "\f0f8a";
+}
+.icon-ic_fluent_document_powerpoint_20_filled:before {
+    content: "\f0f8b";
+}
+.icon-ic_fluent_folder_globe_24_filled:before {
+    content: "\f0f8c";
+}
+.icon-ic_fluent_folder_globe_28_filled:before {
+    content: "\f0f8d";
+}
+.icon-ic_fluent_home_checkmark_28_filled:before {
+    content: "\f0f8e";
+}
+.icon-ic_fluent_home_checkmark_32_filled:before {
+    content: "\f0f8f";
+}
+.icon-ic_fluent_home_checkmark_48_filled:before {
+    content: "\f0f90";
+}
+.icon-ic_fluent_mail_open_person_28_filled:before {
+    content: "\f0f91";
+}
+.icon-ic_fluent_mail_open_person_32_filled:before {
+    content: "\f0f92";
+}
+.icon-ic_fluent_thumb_dislike_28_filled:before {
+    content: "\f0f93";
+}
+.icon-ic_fluent_thumb_dislike_48_filled:before {
+    content: "\f0f94";
 }

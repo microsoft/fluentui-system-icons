@@ -5972,5 +5972,15 @@
   "ic_fluent_text_bold_20_filled_bg": 63314,
   "ic_fluent_text_bold_20_regular_bg": 63315,
   "ic_fluent_text_italic_20_filled_bg": 63316,
-  "ic_fluent_text_italic_20_regular_bg": 63317
+  "ic_fluent_text_italic_20_regular_bg": 63317,
+  "ic_fluent_app_folder_hint_20_filled": 63318,
+  "ic_fluent_app_folder_hint_20_regular": 63319,
+  "ic_fluent_box_question_mark_20_filled": 63320,
+  "ic_fluent_box_question_mark_20_regular": 63321,
+  "ic_fluent_conference_room_sparkle_20_filled": 63322,
+  "ic_fluent_conference_room_sparkle_20_regular": 63323,
+  "ic_fluent_document_excel_20_filled": 63324,
+  "ic_fluent_document_excel_20_regular": 63325,
+  "ic_fluent_document_powerpoint_20_filled": 63326,
+  "ic_fluent_document_powerpoint_20_regular": 63327
 }
