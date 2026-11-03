@@ -3,11 +3,15 @@
   "size": [
     24,
     20,
-    12
+    12,
+    32,
+    28,
+    16
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon",
   "description": "Used to represent sticker collections in UI.",

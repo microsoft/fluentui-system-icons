@@ -4,10 +4,20 @@ const { join, resolve } = require('path');
 
 const { default: FluentUIReactIconsSvgSpriteSubsettingPlugin } = require('../lib/');
 
+const iconMetadata = require('../../react-icons/metadata.json');
+const selectedLocaleSymbols = ['TextBoldRegular_es', 'TextBold24Regular_srCyrl'];
+const unusedLocaleSymbols = ['TextBold24Regular_es', 'TextBoldRegular_srCyrl'];
+for (const symbol of [...selectedLocaleSymbols, ...unusedLocaleSymbols]) {
+  if (!(symbol in iconMetadata)) {
+    throw new Error(`${symbol} must be an actual generated export`);
+  }
+}
+
 const isMerged = process.env.SVG_SPRITE_MODE === 'merged';
 const injectMode = process.env.SVG_SPRITE_INJECT;
 const generateManifest = process.env.SVG_SPRITE_MANIFEST === '1';
 const mergedSpriteFilename = process.env.SVG_SPRITE_MERGED_FILENAME;
+const useIconGranularity = process.env.SVG_SPRITE_ICON_GRANULARITY === '1';
 const entryName = isMerged ? 'merged' : 'atomic';
 
 const hasHtmlInjection = injectMode === 'inline' || injectMode === 'reference';
@@ -37,10 +47,34 @@ module.exports = {
         __dirname,
         '__mock__/react-icons/lib/atoms/svg-sprite/calculator.js',
       ),
+      '@fluentui/react-icons/svg-sprite/text-bold_es': resolve(
+        __dirname,
+        '__mock__/react-icons/lib/atoms/svg-sprite/text-bold_es.js',
+      ),
+      '@fluentui/react-icons/svg-sprite/text-bold_sr-cyrl': resolve(
+        __dirname,
+        '__mock__/react-icons/lib/atoms/svg-sprite/text-bold_sr-cyrl.js',
+      ),
     },
   },
   module: {
     rules: [
+      // Direct atomic imports already exercise the normal family-module path without the loader.
+      // Enable it only to cover the distinct query-selected identities produced by icon granularity.
+      ...(useIconGranularity
+        ? [
+            {
+              test: /\.js$/,
+              enforce: 'pre',
+              use: [
+                {
+                  loader: resolve(__dirname, '../../react-icons-atomic-webpack-loader/lib/index.js'),
+                  options: { iconVariant: 'svg-sprite', moduleGranularity: 'icon' },
+                },
+              ],
+            },
+          ]
+        : []),
       {
         test: /\.svg$/,
         type: 'asset/resource',
@@ -73,11 +107,61 @@ module.exports = {
       : []),
     {
       apply(compiler) {
+        if (hasHtmlInjection) {
+          compiler.hooks.compilation.tap('test-svg-sprite-subsetting', (compilation) => {
+            HtmlWebpackPlugin.getHooks(compilation).beforeEmit.tap('test-svg-sprite-subsetting', (data) => {
+              if (
+                injectMode === 'inline' &&
+                (!data.html.includes('<svg') || !data.html.includes('id="BackpackFilled"'))
+              ) {
+                throw new Error('Inline sprite was not injected into HTML');
+              }
+              if (injectMode === 'reference' && (!data.html.includes('rel="preload"') || !data.html.includes('.svg'))) {
+                throw new Error('Reference preload links were not injected into HTML');
+              }
+              if (injectMode === 'inline') {
+                for (const symbol of selectedLocaleSymbols) {
+                  if (!data.html.includes(`id="${symbol}"`)) {
+                    throw new Error(`Localized sprite is missing selected symbol ${symbol}`);
+                  }
+                }
+                for (const symbol of unusedLocaleSymbols) {
+                  if (data.html.includes(`id="${symbol}"`)) {
+                    throw new Error(`Localized sprite still contains unused symbol ${symbol}`);
+                  }
+                }
+              }
+              return data;
+            });
+          });
+        }
+
         compiler.hooks.afterEmit.tap('test-svg-sprite-subsetting', (compilation) => {
           const outDir = compilation.outputOptions.path || resolve(__dirname, 'dist');
+          if (useIconGranularity) {
+            const spriteModules = Array.from(compilation.modules)
+              .map((module) => module.resource)
+              .filter(
+                (resource) =>
+                  typeof resource === 'string' &&
+                  /[\\/]react-icons[\\/]lib[\\/]atoms[\\/]svg-sprite[\\/].+\.js(?:\?|$)/.test(resource),
+              );
+            // Each imported icon must have its own query-selected module identity.
+            const expectedModules = 2 + selectedLocaleSymbols.length;
+            if (
+              spriteModules.filter((resource) => resource.includes('?__fluentIcon=v1&export=')).length !==
+              expectedModules
+            ) {
+              throw new Error(`Expected ${expectedModules} queried sprite modules, found: ${spriteModules.join(', ')}`);
+            }
+            // An additional unqueried module would include the complete icon family and defeat icon granularity.
+            if (spriteModules.some((resource) => !resource.includes('?__fluentIcon='))) {
+              throw new Error(`Found an unqueried sprite family module in icon mode: ${spriteModules.join(', ')}`);
+            }
+          }
           const svgAssets = compilation
             .getAssets()
-            .map((a) => a.name)
+            .map((asset) => asset.name)
             .filter((name) => name.endsWith('.svg'))
             .map((name) => ({ name, source: readFileSync(join(outDir, name), 'utf8') }));
 
@@ -98,7 +182,8 @@ module.exports = {
               throw new Error('Merged sprite still contains unused symbols');
             }
             const atomicSprites = svgAssets.filter(
-              (a) => a.name.startsWith('backpack-') || a.name.startsWith('calculator-'),
+              (a) =>
+                a.name.startsWith('backpack-') || a.name.startsWith('calculator-') || a.name.startsWith('text-bold_'),
             );
             if (atomicSprites.length > 0) {
               throw new Error(
@@ -133,17 +218,16 @@ module.exports = {
               throw new Error('sprites-manifest.json atomic sprites list missing');
             }
           }
-
-          if (hasHtmlInjection) {
-            const html = readFileSync(join(outDir, 'index.html'), 'utf8');
-            if (injectMode === 'inline') {
-              if (!html.includes('<svg') || !html.includes('id="BackpackFilled"')) {
-                throw new Error('Inline sprite was not injected into HTML');
+          if (injectMode !== 'inline') {
+            const spriteContent = svgAssets.map((asset) => asset.source).join('\n');
+            for (const symbol of selectedLocaleSymbols) {
+              if (!spriteContent.includes(`id="${symbol}"`)) {
+                throw new Error(`Localized sprite is missing selected symbol ${symbol}`);
               }
             }
-            if (injectMode === 'reference') {
-              if (!html.includes('rel="preload"') || !html.includes('.svg')) {
-                throw new Error('Reference preload links were not injected into HTML');
+            for (const symbol of unusedLocaleSymbols) {
+              if (spriteContent.includes(`id="${symbol}"`)) {
+                throw new Error(`Localized sprite still contains unused symbol ${symbol}`);
               }
             }
           }

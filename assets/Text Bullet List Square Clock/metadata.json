@@ -1,7 +1,10 @@
 {
   "name": "Text Bullet List Square Clock",
   "size": [
-    20
+    20,
+    28,
+    24,
+    16
   ],
   "style": [
     "Regular",

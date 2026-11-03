@@ -2,13 +2,11 @@
   "name": "Star Arrow Right Start",
   "size": [
     24,
-    20,
-    32
+    20
   ],
   "style": [
     "Regular",
-    "Filled",
-    "Light"
+    "Filled"
   ],
   "keyword": "fluent-icon",
   "description": "Used in general rating scenarios.",

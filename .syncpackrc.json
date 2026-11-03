@@ -13,6 +13,13 @@
       "isIgnored": true
     },
     {
+      "label": "Allowlisted exception: react-native-icons keeps its published @types/react-native range while the monorepo resolution is overridden",
+      "packages": ["@fluentui/react-native-icons"],
+      "dependencies": ["@types/react-native"],
+      "dependencyTypes": ["prod"],
+      "isIgnored": true
+    },
+    {
       "label": "Allowlisted exception: catalog-backed tools are declared where they run, but their version still lives in a single place (.yarnrc.yml)",
       "packages": ["@fluentui/system-icons-processing"],
       "dependencies": ["avocado"],

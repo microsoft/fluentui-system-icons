@@ -172,6 +172,13 @@ describe('Build Verification', () => {
   });
 
   describe('Package.json Exports', () => {
+    it('should export package.json', async () => {
+      const packageJsonPath = path.join(__dirname, 'package.json');
+      const packageJson = JSON.parse(await readFile(packageJsonPath, 'utf8'));
+
+      expect(packageJson.exports['./package.json']).toBe('./package.json');
+    });
+
     it('should have all exported files exist', async () => {
       const packageJsonPath = path.join(__dirname, 'package.json');
       /** @type {{main:string;module:string;typings:string;exports:Record<string,string>}} */
@@ -317,10 +324,11 @@ describe('Build Verification', () => {
         const FONT_FAMILY_MAP = {
           [0 /* Filled */]: 'FluentSystemIconsFilled',
           [1 /* Regular */]: 'FluentSystemIconsRegular',
-          [2 /* Resizable */]: 'FluentSystemIcons'
+          [2 /* Resizable */]: 'FluentSystemIcons',
+          [3 /* Light */]: 'FluentSystemIconsLight'
         };
         export const useStaticStyles = __staticStyles({
-          d: [\`@font-face{font-family:FluentSystemIconsFilled;font-display:"block";src:url(\${_asset}) format("woff2"),url(\${_asset2}) format("woff"),url(\${_asset3}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIconsRegular;font-display:"block";src:url(\${_asset4}) format("woff2"),url(\${_asset5}) format("woff"),url(\${_asset6}) format("truetype");}\`, \`@font-face{font-family:undefined;src:url(\${_asset7}) format("woff2"),url(\${_asset8}) format("woff"),url(\${_asset9}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIcons;font-display:"block";src:url(\${_asset0}) format("woff2"),url(\${_asset1}) format("woff"),url(\${_asset10}) format("truetype");}\`]
+          d: [\`@font-face{font-family:FluentSystemIconsFilled;font-display:block;src:url(\${_asset}) format("woff2"),url(\${_asset2}) format("woff"),url(\${_asset3}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIconsRegular;font-display:block;src:url(\${_asset4}) format("woff2"),url(\${_asset5}) format("woff"),url(\${_asset6}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIconsLight;font-display:block;src:url(\${_asset7}) format("woff2"),url(\${_asset8}) format("woff"),url(\${_asset9}) format("truetype");}\`, \`@font-face{font-family:FluentSystemIcons;font-display:block;src:url(\${_asset0}) format("woff2"),url(\${_asset1}) format("woff"),url(\${_asset10}) format("truetype");}\`]
         });
         export const useRootStyles = __styles({
           "0": {
@@ -337,12 +345,15 @@ describe('Build Verification', () => {
           },
           root: {
             mc9l5x: "f14t3ns0",
+            a9b677: "fhson10",
+            Bqenvij: "f1un31zh",
             B80ckks: "fmd4ok8",
+            Bhrd7zp: "f5ljve1",
             Bg96gwp: "fne0op0",
             sj55zd: "f303qgw"
           }
         }, {
-          d: [".f9dzkbp{font-family:FluentSystemIconsFilled;}", ".f1krtbx5{font-family:FluentSystemIconsRegular;}", ".f1sxfq9t{font-family:FluentSystemIcons;}", ".fgtzeza{font-family:FluentSystemIconsLight;}", ".f14t3ns0{display:inline-block;}", ".fmd4ok8{font-style:normal;}", ".fne0op0{line-height:1em;}", ".f303qgw{color:currentColor;}"]
+          d: [".f9dzkbp{font-family:FluentSystemIconsFilled;}", ".f1krtbx5{font-family:FluentSystemIconsRegular;}", ".f1sxfq9t{font-family:FluentSystemIcons;}", ".fgtzeza{font-family:FluentSystemIconsLight;}", ".f14t3ns0{display:inline-block;}", ".fhson10{width:1em;}", ".f1un31zh{height:1em;}", ".fmd4ok8{font-style:normal;}", ".f5ljve1{font-weight:normal;}", ".fne0op0{line-height:1em;}", ".f303qgw{color:currentColor;}"]
         });"
       `);
       expect(fs.readFileSync(path.join(root, unprocessed), 'utf8')).toMatchInlineSnapshot(`
@@ -363,18 +374,19 @@ describe('Build Verification', () => {
             [0 /* Filled */]: 'FluentSystemIconsFilled',
             [1 /* Regular */]: 'FluentSystemIconsRegular',
             [2 /* Resizable */]: 'FluentSystemIcons',
+            [3 /* Light */]: 'FluentSystemIconsLight',
         };
         export const useStaticStyles = makeStaticStyles(\`
         @font-face {
             font-family: \${FONT_FAMILY_MAP[0 /* Filled */]};
-            font-display: "block";
+          font-display: block;
             src: url(\${JSON.stringify(fontFilledWoff2)}) format("woff2"),
             url(\${JSON.stringify(fontFilledWoff)}) format("woff"),
             url(\${JSON.stringify(fontFilledTtf)}) format("truetype");
         }
         @font-face {
             font-family: \${FONT_FAMILY_MAP[1 /* Regular */]};
-            font-display: "block";
+          font-display: block;
             src: url(\${JSON.stringify(fontRegularWoff2)}) format("woff2"),
             url(\${JSON.stringify(fontRegularWoff)}) format("woff"),
             url(\${JSON.stringify(fontRegularTtf)}) format("truetype");
@@ -382,6 +394,7 @@ describe('Build Verification', () => {
 
         @font-face {
             font-family: \${FONT_FAMILY_MAP[3 /* Light */]};
+          font-display: block;
             src: url(\${JSON.stringify(fontLightWoff2)}) format("woff2"),
             url(\${JSON.stringify(fontLightWoff)}) format("woff"),
             url(\${JSON.stringify(fontLightTtf)}) format("truetype");
@@ -389,7 +402,7 @@ describe('Build Verification', () => {
 
         @font-face {
             font-family: \${FONT_FAMILY_MAP[2 /* Resizable */]};
-            font-display: "block";
+          font-display: block;
             src: url(\${JSON.stringify(fontOneSizeWoff2)}) format("woff2"),
             url(\${JSON.stringify(fontOneSizeWoff)}) format("woff"),
             url(\${JSON.stringify(fontOneSizeTtf)}) format("truetype");
@@ -398,7 +411,14 @@ describe('Build Verification', () => {
         export const useRootStyles = makeStyles({
             root: {
                 display: 'inline-block',
+                // Reserve a 1em box up front (mirrors the resizable SVG's width/height="1em").
+                // Without this the box is sized by the glyph advance, which is 0 until the
+                // webfont loads (font-display: block + PUA codepoints have no fallback glyph),
+                // causing layout shift on every font icon.
+                width: '1em',
+                height: '1em',
                 fontStyle: 'normal',
+                fontWeight: 'normal',
                 lineHeight: '1em',
                 color: 'currentColor',
             },
@@ -1265,7 +1285,7 @@ describe('Build Verification', () => {
           export const CalculatorMultipleFilled = ( /*#__PURE__*/createFluentIcon('CalculatorMultipleFilled', "1em", ["M5.5 2A2.5 2.5 0 0 0 3 4.5v9A2.5 2.5 0 0 0 5.5 16h7a2.5 2.5 0 0 0 2.5-2.5v-9A2.5 2.5 0 0 0 12.5 2zM5 5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1zm0 5a1 1 0 1 1 2 0 1 1 0 0 1-2 0m4-1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m0 2.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2M11 10a1 1 0 1 1 2 0 1 1 0 0 1-2 0m1 1.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2m-6 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2M7.5 18a2.5 2.5 0 0 1-2-1h7a3.5 3.5 0 0 0 3.5-3.5v-9c.6.46 1 1.18 1 2v7a4.5 4.5 0 0 1-4.5 4.5z"]));
           export const CalculatorMultipleRegular = ( /*#__PURE__*/createFluentIcon('CalculatorMultipleRegular', "1em", ["M6 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1zm0 1h6v2H6zm2 5a1 1 0 1 1 2 0 1 1 0 0 1-2 0m1 1.75a1 1 0 1 0 0 2 1 1 0 0 0 0-2M11 10a1 1 0 1 1 2 0 1 1 0 0 1-2 0m1 1.75a1 1 0 1 0 0 2 1 1 0 0 0 0-2M5 10a1 1 0 1 1 2 0 1 1 0 0 1-2 0m1 1.75a1 1 0 1 0 0 2 1 1 0 0 0 0-2M5.5 2A2.5 2.5 0 0 0 3 4.5v9A2.5 2.5 0 0 0 5.5 16h7a2.5 2.5 0 0 0 2.5-2.5v-9A2.5 2.5 0 0 0 12.5 2zM4 4.5C4 3.67 4.67 3 5.5 3h7c.83 0 1.5.67 1.5 1.5v9c0 .83-.67 1.5-1.5 1.5h-7A1.5 1.5 0 0 1 4 13.5zM7.5 18a2.5 2.5 0 0 1-2-1h7a3.5 3.5 0 0 0 3.5-3.5v-9c.6.46 1 1.18 1 2v7a4.5 4.5 0 0 1-4.5 4.5z"]));
           /** @deprecated Color icons are deprecated. [See User Guidance](https://microsoft.github.io/fluentui-system-icons/?path=/docs/icons-user-guidance--docs#color-variants-deprecated) */
-          export const CalendarColor = ( /*#__PURE__*/createFluentIcon('CalendarColor', "1em", [["path", { "fill": "url(#ic_fluent_calendar_20_color__a)", "d": "M17 6H3v8.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5z" }], ["path", { "fill": "url(#ic_fluent_calendar_20_color__b)", "d": "M17 6H3v8.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5z" }], ["g", { "filter": "url(#ic_fluent_calendar_20_color__c)" }, ["path", { "fill": "url(#ic_fluent_calendar_20_color__d)", "d": "M8 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0" }], ["path", { "fill": "url(#ic_fluent_calendar_20_color__e)", "d": "M8 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0" }], ["path", { "fill": "url(#ic_fluent_calendar_20_color__f)", "d": "M11 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0" }], ["path", { "fill": "url(#ic_fluent_calendar_20_color__g)", "d": "M10 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2" }], ["path", { "fill": "url(#ic_fluent_calendar_20_color__h)", "d": "M14 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0" }]], ["path", { "fill": "url(#ic_fluent_calendar_20_color__i)", "d": "M17 5.5A2.5 2.5 0 0 0 14.5 3h-9A2.5 2.5 0 0 0 3 5.5V7h14z" }], ["defs", null, ["linearGradient", { "id": "ic_fluent_calendar_20_color__a", "x1": "12.53", "x2": "8.5", "y1": "18.35", "y2": "6.56", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#b3e0ff" }], ["stop", { "offset": "1", "stopColor": "#b3e0ff" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__b", "x1": "11.5", "x2": "13.5", "y1": "10.5", "y2": "19.5", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#dcf8ff", "stopOpacity": "0" }], ["stop", { "offset": "1", "stopColor": "#ff6ce8", "stopOpacity": ".7" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__d", "x1": "9.27", "x2": "10.91", "y1": "8.42", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078d4" }], ["stop", { "offset": "1", "stopColor": "#0067bf" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__e", "x1": "9.27", "x2": "10.91", "y1": "8.42", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078d4" }], ["stop", { "offset": "1", "stopColor": "#0067bf" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__f", "x1": "9.27", "x2": "10.91", "y1": "8.42", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078d4" }], ["stop", { "offset": "1", "stopColor": "#0067bf" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__g", "x1": "9.27", "x2": "10.91", "y1": "8.42", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078d4" }], ["stop", { "offset": "1", "stopColor": "#0067bf" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__h", "x1": "9.27", "x2": "10.91", "y1": "8.42", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078d4" }], ["stop", { "offset": "1", "stopColor": "#0067bf" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__i", "x1": "3", "x2": "15.02", "y1": "3", "y2": "-.77", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0094f0" }], ["stop", { "offset": "1", "stopColor": "#2764e7" }]], ["filter", { "id": "ic_fluent_calendar_20_color__c", "width": "10.67", "height": "7.67", "x": "4.67", "y": "8.33", "colorInterpolationFilters": "sRGB", "filterUnits": "userSpaceOnUse" }, ["feFlood", { "floodOpacity": "0", "result": "BackgroundImageFix" }], ["feColorMatrix", { "in": "SourceAlpha", "result": "hardAlpha", "values": "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" }], ["feOffset", { "dy": ".67" }], ["feGaussianBlur", { "stdDeviation": ".67" }], ["feColorMatrix", { "values": "0 0 0 0 0.1242 0 0 0 0 0.323337 0 0 0 0 0.7958 0 0 0 0.32 0" }], ["feBlend", { "in2": "BackgroundImageFix", "result": "effect1_dropShadow_378174_9787" }], ["feBlend", { "in": "SourceGraphic", "in2": "effect1_dropShadow_378174_9787", "result": "shape" }]]]], { color: true }));
+          export const CalendarColor = ( /*#__PURE__*/createFluentIcon('CalendarColor', "1em", [["path", { "fill": "url(#ic_fluent_calendar_20_color__a)", "d": "M17 6H3v8.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5z" }], ["path", { "fill": "url(#ic_fluent_calendar_20_color__b)", "d": "M17 6H3v8.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5z" }], ["g", { "filter": "url(#ic_fluent_calendar_20_color__c)" }, ["path", { "fill": "url(#ic_fluent_calendar_20_color__d)", "d": "M8 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0" }], ["path", { "fill": "url(#ic_fluent_calendar_20_color__e)", "d": "M8 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0" }], ["path", { "fill": "url(#ic_fluent_calendar_20_color__f)", "d": "M11 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0" }], ["path", { "fill": "url(#ic_fluent_calendar_20_color__g)", "d": "M10 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2" }], ["path", { "fill": "url(#ic_fluent_calendar_20_color__h)", "d": "M14 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0" }]], ["path", { "fill": "url(#ic_fluent_calendar_20_color__i)", "d": "M17 5.5A2.5 2.5 0 0 0 14.5 3h-9A2.5 2.5 0 0 0 3 5.5V7h14z" }], ["defs", null, ["linearGradient", { "id": "ic_fluent_calendar_20_color__a", "x1": "12.53", "x2": "8.5", "y1": "18.35", "y2": "6.56", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#b3e0ff" }], ["stop", { "offset": "1", "stopColor": "#b3e0ff" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__b", "x1": "11.5", "x2": "13.5", "y1": "10.5", "y2": "19.5", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#dcf8ff", "stopOpacity": "0" }], ["stop", { "offset": "1", "stopColor": "#ff6ce8", "stopOpacity": ".7" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__d", "x1": "9.27", "x2": "10.91", "y1": "8.42", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078d4" }], ["stop", { "offset": "1", "stopColor": "#0067bf" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__e", "x1": "9.27", "x2": "10.91", "y1": "8.42", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078d4" }], ["stop", { "offset": "1", "stopColor": "#0067bf" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__f", "x1": "9.27", "x2": "10.91", "y1": "8.42", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078d4" }], ["stop", { "offset": "1", "stopColor": "#0067bf" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__g", "x1": "9.27", "x2": "10.91", "y1": "8.42", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078d4" }], ["stop", { "offset": "1", "stopColor": "#0067bf" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__h", "x1": "9.27", "x2": "10.91", "y1": "8.42", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078d4" }], ["stop", { "offset": "1", "stopColor": "#0067bf" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__i", "x1": "3", "x2": "15.02", "y1": "3", "y2": "-.77", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0094f0" }], ["stop", { "offset": "1", "stopColor": "#2764e7" }]], ["filter", { "id": "ic_fluent_calendar_20_color__c", "width": "10.67", "height": "7.67", "x": "4.67", "y": "8.33", "colorInterpolationFilters": "sRGB", "filterUnits": "userSpaceOnUse" }, ["feFlood", { "floodOpacity": "0", "result": "BackgroundImageFix" }], ["feColorMatrix", { "in": "SourceAlpha", "result": "hardAlpha", "values": "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" }], ["feOffset", { "dy": ".67" }], ["feGaussianBlur", { "stdDeviation": ".67" }], ["feColorMatrix", { "values": "0 0 0 0 0.1242 0 0 0 0 0.323337 0 0 0 0 0.7958 0 0 0 0.32 0" }], ["feBlend", { "in2": "BackgroundImageFix", "result": "effect1_dropShadow_378174_9787" }], ["feBlend", { "in": "SourceGraphic", "in2": "effect1_dropShadow_378174_9787", "result": "shape" }]]]], { flipInRtl: true, color: true }));
           export const CalendarFilled = ( /*#__PURE__*/createFluentIcon('CalendarFilled', "1em", ["M5.5 3A2.5 2.5 0 0 0 3 5.5V6h14v-.5A2.5 2.5 0 0 0 14.5 3zM17 7H3v7.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5zm-9 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-1 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2m4-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-1 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2m4-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0"], { flipInRtl: true }));
           export const CalendarRegular = ( /*#__PURE__*/createFluentIcon('CalendarRegular', "1em", ["M7 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2m1 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0m2-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2m1 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0m2-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2m4-5.5A2.5 2.5 0 0 0 14.5 3h-9A2.5 2.5 0 0 0 3 5.5v9A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5zM4 7h12v7.5c0 .83-.67 1.5-1.5 1.5h-9A1.5 1.5 0 0 1 4 14.5zm1.5-3h9c.83 0 1.5.67 1.5 1.5V6H4v-.5C4 4.67 4.67 4 5.5 4"], { flipInRtl: true }));
           export const Calendar3DayFilled = ( /*#__PURE__*/createFluentIcon('Calendar3DayFilled', "1em", ["M14.5 3A2.5 2.5 0 0 1 17 5.5v9a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3zm-8 3a.5.5 0 0 0-.5.41v7.18a.5.5 0 0 0 1 0V6.41A.5.5 0 0 0 6.5 6M10 6a.5.5 0 0 0-.5.41v7.18a.5.5 0 0 0 1 0V6.41A.5.5 0 0 0 10 6m3.5 0a.5.5 0 0 0-.5.41v7.18a.5.5 0 0 0 1 0V6.41a.5.5 0 0 0-.5-.41"]));
@@ -1359,7 +1379,7 @@ describe('Build Verification', () => {
           exports.CalculatorMultipleFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalculatorMultipleFilled', "1em", ["M5.5 2A2.5 2.5 0 0 0 3 4.5v9A2.5 2.5 0 0 0 5.5 16h7a2.5 2.5 0 0 0 2.5-2.5v-9A2.5 2.5 0 0 0 12.5 2zM5 5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1zm0 5a1 1 0 1 1 2 0 1 1 0 0 1-2 0m4-1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m0 2.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2M11 10a1 1 0 1 1 2 0 1 1 0 0 1-2 0m1 1.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2m-6 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2M7.5 18a2.5 2.5 0 0 1-2-1h7a3.5 3.5 0 0 0 3.5-3.5v-9c.6.46 1 1.18 1 2v7a4.5 4.5 0 0 1-4.5 4.5z"]));
           exports.CalculatorMultipleRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalculatorMultipleRegular', "1em", ["M6 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1zm0 1h6v2H6zm2 5a1 1 0 1 1 2 0 1 1 0 0 1-2 0m1 1.75a1 1 0 1 0 0 2 1 1 0 0 0 0-2M11 10a1 1 0 1 1 2 0 1 1 0 0 1-2 0m1 1.75a1 1 0 1 0 0 2 1 1 0 0 0 0-2M5 10a1 1 0 1 1 2 0 1 1 0 0 1-2 0m1 1.75a1 1 0 1 0 0 2 1 1 0 0 0 0-2M5.5 2A2.5 2.5 0 0 0 3 4.5v9A2.5 2.5 0 0 0 5.5 16h7a2.5 2.5 0 0 0 2.5-2.5v-9A2.5 2.5 0 0 0 12.5 2zM4 4.5C4 3.67 4.67 3 5.5 3h7c.83 0 1.5.67 1.5 1.5v9c0 .83-.67 1.5-1.5 1.5h-7A1.5 1.5 0 0 1 4 13.5zM7.5 18a2.5 2.5 0 0 1-2-1h7a3.5 3.5 0 0 0 3.5-3.5v-9c.6.46 1 1.18 1 2v7a4.5 4.5 0 0 1-4.5 4.5z"]));
           /** @deprecated Color icons are deprecated. [See User Guidance](https://microsoft.github.io/fluentui-system-icons/?path=/docs/icons-user-guidance--docs#color-variants-deprecated) */
-          exports.CalendarColor = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarColor', "1em", [["path", { "fill": "url(#ic_fluent_calendar_20_color__a)", "d": "M17 6H3v8.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5z" }], ["path", { "fill": "url(#ic_fluent_calendar_20_color__b)", "d": "M17 6H3v8.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5z" }], ["g", { "filter": "url(#ic_fluent_calendar_20_color__c)" }, ["path", { "fill": "url(#ic_fluent_calendar_20_color__d)", "d": "M8 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0" }], ["path", { "fill": "url(#ic_fluent_calendar_20_color__e)", "d": "M8 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0" }], ["path", { "fill": "url(#ic_fluent_calendar_20_color__f)", "d": "M11 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0" }], ["path", { "fill": "url(#ic_fluent_calendar_20_color__g)", "d": "M10 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2" }], ["path", { "fill": "url(#ic_fluent_calendar_20_color__h)", "d": "M14 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0" }]], ["path", { "fill": "url(#ic_fluent_calendar_20_color__i)", "d": "M17 5.5A2.5 2.5 0 0 0 14.5 3h-9A2.5 2.5 0 0 0 3 5.5V7h14z" }], ["defs", null, ["linearGradient", { "id": "ic_fluent_calendar_20_color__a", "x1": "12.53", "x2": "8.5", "y1": "18.35", "y2": "6.56", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#b3e0ff" }], ["stop", { "offset": "1", "stopColor": "#b3e0ff" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__b", "x1": "11.5", "x2": "13.5", "y1": "10.5", "y2": "19.5", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#dcf8ff", "stopOpacity": "0" }], ["stop", { "offset": "1", "stopColor": "#ff6ce8", "stopOpacity": ".7" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__d", "x1": "9.27", "x2": "10.91", "y1": "8.42", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078d4" }], ["stop", { "offset": "1", "stopColor": "#0067bf" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__e", "x1": "9.27", "x2": "10.91", "y1": "8.42", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078d4" }], ["stop", { "offset": "1", "stopColor": "#0067bf" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__f", "x1": "9.27", "x2": "10.91", "y1": "8.42", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078d4" }], ["stop", { "offset": "1", "stopColor": "#0067bf" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__g", "x1": "9.27", "x2": "10.91", "y1": "8.42", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078d4" }], ["stop", { "offset": "1", "stopColor": "#0067bf" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__h", "x1": "9.27", "x2": "10.91", "y1": "8.42", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078d4" }], ["stop", { "offset": "1", "stopColor": "#0067bf" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__i", "x1": "3", "x2": "15.02", "y1": "3", "y2": "-.77", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0094f0" }], ["stop", { "offset": "1", "stopColor": "#2764e7" }]], ["filter", { "id": "ic_fluent_calendar_20_color__c", "width": "10.67", "height": "7.67", "x": "4.67", "y": "8.33", "colorInterpolationFilters": "sRGB", "filterUnits": "userSpaceOnUse" }, ["feFlood", { "floodOpacity": "0", "result": "BackgroundImageFix" }], ["feColorMatrix", { "in": "SourceAlpha", "result": "hardAlpha", "values": "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" }], ["feOffset", { "dy": ".67" }], ["feGaussianBlur", { "stdDeviation": ".67" }], ["feColorMatrix", { "values": "0 0 0 0 0.1242 0 0 0 0 0.323337 0 0 0 0 0.7958 0 0 0 0.32 0" }], ["feBlend", { "in2": "BackgroundImageFix", "result": "effect1_dropShadow_378174_9787" }], ["feBlend", { "in": "SourceGraphic", "in2": "effect1_dropShadow_378174_9787", "result": "shape" }]]]], { color: true }));
+          exports.CalendarColor = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarColor', "1em", [["path", { "fill": "url(#ic_fluent_calendar_20_color__a)", "d": "M17 6H3v8.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5z" }], ["path", { "fill": "url(#ic_fluent_calendar_20_color__b)", "d": "M17 6H3v8.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5z" }], ["g", { "filter": "url(#ic_fluent_calendar_20_color__c)" }, ["path", { "fill": "url(#ic_fluent_calendar_20_color__d)", "d": "M8 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0" }], ["path", { "fill": "url(#ic_fluent_calendar_20_color__e)", "d": "M8 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0" }], ["path", { "fill": "url(#ic_fluent_calendar_20_color__f)", "d": "M11 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0" }], ["path", { "fill": "url(#ic_fluent_calendar_20_color__g)", "d": "M10 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2" }], ["path", { "fill": "url(#ic_fluent_calendar_20_color__h)", "d": "M14 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0" }]], ["path", { "fill": "url(#ic_fluent_calendar_20_color__i)", "d": "M17 5.5A2.5 2.5 0 0 0 14.5 3h-9A2.5 2.5 0 0 0 3 5.5V7h14z" }], ["defs", null, ["linearGradient", { "id": "ic_fluent_calendar_20_color__a", "x1": "12.53", "x2": "8.5", "y1": "18.35", "y2": "6.56", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#b3e0ff" }], ["stop", { "offset": "1", "stopColor": "#b3e0ff" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__b", "x1": "11.5", "x2": "13.5", "y1": "10.5", "y2": "19.5", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#dcf8ff", "stopOpacity": "0" }], ["stop", { "offset": "1", "stopColor": "#ff6ce8", "stopOpacity": ".7" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__d", "x1": "9.27", "x2": "10.91", "y1": "8.42", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078d4" }], ["stop", { "offset": "1", "stopColor": "#0067bf" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__e", "x1": "9.27", "x2": "10.91", "y1": "8.42", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078d4" }], ["stop", { "offset": "1", "stopColor": "#0067bf" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__f", "x1": "9.27", "x2": "10.91", "y1": "8.42", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078d4" }], ["stop", { "offset": "1", "stopColor": "#0067bf" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__g", "x1": "9.27", "x2": "10.91", "y1": "8.42", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078d4" }], ["stop", { "offset": "1", "stopColor": "#0067bf" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__h", "x1": "9.27", "x2": "10.91", "y1": "8.42", "y2": "18.39", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0078d4" }], ["stop", { "offset": "1", "stopColor": "#0067bf" }]], ["linearGradient", { "id": "ic_fluent_calendar_20_color__i", "x1": "3", "x2": "15.02", "y1": "3", "y2": "-.77", "gradientUnits": "userSpaceOnUse" }, ["stop", { "stopColor": "#0094f0" }], ["stop", { "offset": "1", "stopColor": "#2764e7" }]], ["filter", { "id": "ic_fluent_calendar_20_color__c", "width": "10.67", "height": "7.67", "x": "4.67", "y": "8.33", "colorInterpolationFilters": "sRGB", "filterUnits": "userSpaceOnUse" }, ["feFlood", { "floodOpacity": "0", "result": "BackgroundImageFix" }], ["feColorMatrix", { "in": "SourceAlpha", "result": "hardAlpha", "values": "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" }], ["feOffset", { "dy": ".67" }], ["feGaussianBlur", { "stdDeviation": ".67" }], ["feColorMatrix", { "values": "0 0 0 0 0.1242 0 0 0 0 0.323337 0 0 0 0 0.7958 0 0 0 0.32 0" }], ["feBlend", { "in2": "BackgroundImageFix", "result": "effect1_dropShadow_378174_9787" }], ["feBlend", { "in": "SourceGraphic", "in2": "effect1_dropShadow_378174_9787", "result": "shape" }]]]], { flipInRtl: true, color: true }));
           exports.CalendarFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarFilled', "1em", ["M5.5 3A2.5 2.5 0 0 0 3 5.5V6h14v-.5A2.5 2.5 0 0 0 14.5 3zM17 7H3v7.5A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5zm-9 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-1 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2m4-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-1 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2m4-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0"], { flipInRtl: true }));
           exports.CalendarRegular = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('CalendarRegular', "1em", ["M7 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2m1 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0m2-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2m1 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0m2-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2m4-5.5A2.5 2.5 0 0 0 14.5 3h-9A2.5 2.5 0 0 0 3 5.5v9A2.5 2.5 0 0 0 5.5 17h9a2.5 2.5 0 0 0 2.5-2.5zM4 7h12v7.5c0 .83-.67 1.5-1.5 1.5h-9A1.5 1.5 0 0 1 4 14.5zm1.5-3h9c.83 0 1.5.67 1.5 1.5V6H4v-.5C4 4.67 4.67 4 5.5 4"], { flipInRtl: true }));
           exports.Calendar3DayFilled = ( /*#__PURE__*/createFluentIcon_1.createFluentIcon('Calendar3DayFilled', "1em", ["M14.5 3A2.5 2.5 0 0 1 17 5.5v9a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3zm-8 3a.5.5 0 0 0-.5.41v7.18a.5.5 0 0 0 1 0V6.41A.5.5 0 0 0 6.5 6M10 6a.5.5 0 0 0-.5.41v7.18a.5.5 0 0 0 1 0V6.41A.5.5 0 0 0 10 6m3.5 0a.5.5 0 0 0-.5.41v7.18a.5.5 0 0 0 1 0V6.41a.5.5 0 0 0-.5-.41"]));
@@ -1705,7 +1725,7 @@ describe('Build Verification', () => {
         const jsContent = await readFile(jsFile, 'utf8');
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
-          "... (12 export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))
+          "... (13 export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))
           "use client";
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
@@ -1812,11 +1832,11 @@ describe('Build Verification', () => {
           export const CalendarMultiple32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarMultiple32Light", "", 3, 32));
           export const CalendarPattern32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarPattern32Light", "", 3, 32));
           export const CalendarReply32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarReply32Light", "", 3, 32));
-          export const CalendarSparkle32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarSparkle32Light", "", 3, 32));
+          export const CalendarSparkle32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarSparkle32Light", "", 3, 32, { flipInRtl: true }));
           export const CalendarTodo32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarTodo32Light", "", 3, 32));
           export const CalendarWorkWeek32Light = ( /*#__PURE__*/createFluentFontIcon("CalendarWorkWeek32Light", "", 3, 32));
-          export const Comment32Light = ( /*#__PURE__*/createFluentFontIcon("Comment32Light", "", 3, 32));
-          export const CommentAdd32Light = ( /*#__PURE__*/createFluentFontIcon("CommentAdd32Light", "", 3, 32));
+          export const Comment32Light = ( /*#__PURE__*/createFluentFontIcon("Comment32Light", "", 3, 32, { flipInRtl: true }));
+          export const CommentAdd32Light = ( /*#__PURE__*/createFluentFontIcon("CommentAdd32Light", "", 3, 32, { flipInRtl: true }));
           export const Compose32Light = ( /*#__PURE__*/createFluentFontIcon("Compose32Light", "", 3, 32));
           export const Lasso32Light = ( /*#__PURE__*/createFluentFontIcon("Lasso32Light", "", 3, 32));
           export const Mail32Light = ( /*#__PURE__*/createFluentFontIcon("Mail32Light", "", 3, 32));
@@ -1891,7 +1911,7 @@ describe('Build Verification', () => {
         const jsContent = await readFile(jsFile, 'utf8');
         const trimmedJSContent = trimContentForSnapshot(jsContent);
         expect(trimmedJSContent).toMatchInlineSnapshot(`
-          "... (44 export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))
+          "... (45 export void 0 declarations filtered (exports.Icon1 = exports.Icon3 = void 0))
           "use client";
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
@@ -1908,11 +1928,11 @@ describe('Build Verification', () => {
           exports.CalendarMultiple32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarMultiple32Light", "", 3, 32));
           exports.CalendarPattern32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarPattern32Light", "", 3, 32));
           exports.CalendarReply32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarReply32Light", "", 3, 32));
-          exports.CalendarSparkle32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarSparkle32Light", "", 3, 32));
+          exports.CalendarSparkle32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarSparkle32Light", "", 3, 32, { flipInRtl: true }));
           exports.CalendarTodo32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarTodo32Light", "", 3, 32));
           exports.CalendarWorkWeek32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CalendarWorkWeek32Light", "", 3, 32));
-          exports.Comment32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Comment32Light", "", 3, 32));
-          exports.CommentAdd32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CommentAdd32Light", "", 3, 32));
+          exports.Comment32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Comment32Light", "", 3, 32, { flipInRtl: true }));
+          exports.CommentAdd32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("CommentAdd32Light", "", 3, 32, { flipInRtl: true }));
           exports.Compose32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Compose32Light", "", 3, 32));
           exports.Lasso32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Lasso32Light", "", 3, 32));
           exports.Mail32Light = ( /*#__PURE__*/createFluentFontIcon_1.createFluentFontIcon("Mail32Light", "", 3, 32));
@@ -2057,19 +2077,59 @@ describe('Build Verification', () => {
       return { svgPathEsm, svgPathCjs, fontsPathEsm, fontsPathCjs };
     }
 
+    it('keeps every generated ESM declaration independently selectable', async () => {
+      const atomRoot = path.join(__dirname, 'lib/atoms');
+      const atomDirectories = ['svg', 'fonts', 'headless-svg', 'headless-fonts', 'svg-sprite'];
+
+      for (const directory of atomDirectories) {
+        const directoryPath = path.join(atomRoot, directory);
+        if (!fs.existsSync(directoryPath)) continue;
+
+        for (const filename of await readdir(directoryPath)) {
+          if (!filename.endsWith('.js')) continue;
+          const source = await readFile(path.join(directoryPath, filename), 'utf8');
+          const lines = source.split('\n').filter(Boolean);
+          const exportNames = lines
+            .map((line) => /^export const ([A-Za-z_$][\w$]*)\s*=/.exec(line)?.[1])
+            .filter(Boolean);
+          const exportNameSet = new Set(exportNames);
+
+          expect(exportNames.length, `${directory}/${filename} must export icon declarations`).toBeGreaterThan(0);
+
+          for (const line of lines) {
+            expect(
+              /^(?:"[^"]+";|import .+;|\/\*\*.*\*\/|export const [A-Za-z_$][\w$]*\s*=.+;)$/.test(line),
+              `${directory}/${filename} contains unsupported top-level syntax: ${line}`,
+            ).toBe(true);
+          }
+
+          for (const line of lines.filter((value) => value.startsWith('export const '))) {
+            const ownName = /^export const ([A-Za-z_$][\w$]*)\s*=/.exec(line)?.[1];
+            const siblingReference = line
+              .match(/[A-Za-z_$][\w$]*/g)
+              ?.find((identifier) => identifier !== ownName && exportNameSet.has(identifier));
+            expect(
+              siblingReference,
+              `${directory}/${filename}:${ownName} depends on sibling export ${siblingReference}`,
+            ).toBeUndefined();
+          }
+        }
+      }
+    }, 30_000);
+
     it(`should have same number of atoms/svg icon files in lib and lib-cjs`, async () => {
       const { svgPathCjs, svgPathEsm } = getAssetPaths();
       const esmStats = await getAtomDirStats(svgPathEsm);
       const cjsStats = await getAtomDirStats(svgPathCjs, 'lib-cjs');
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2896`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2896`);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`3062`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`3062`);
     });
     it(`should have same number of atoms/fonts icon files in lib and lib-cjs`, async () => {
       const { fontsPathCjs, fontsPathEsm } = getAssetPaths();
       const esmStats = await getAtomDirStats(fontsPathEsm);
       const cjsStats = await getAtomDirStats(fontsPathCjs, 'lib-cjs');
-      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`2889`);
-      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`2889`);
+      expect(esmStats.jsFiles.length).toMatchInlineSnapshot(`3055`);
+      expect(cjsStats.jsFiles.length).toMatchInlineSnapshot(`3055`);
     });
     it.each(['lib', 'lib-cjs'])('should have atoms/svg directory with icon files in %s', async (libDir) => {
       const atomsSvgPath = path.join(__dirname, libDir, 'atoms', 'svg');
@@ -2548,6 +2608,7 @@ describe('Build Verification', () => {
       expect(css).toContain('[data-fui-icon]');
       expect(css).toContain('[data-fui-icon-rtl]');
       expect(css).toContain('[data-fui-icon-hidden]');
+      expect(css).toMatch(/\[data-fui-icon=['"]font['"]\][^{]*\{[^}]*font-weight:\s*normal/s);
 
       // Font sub-infrastructure
       expect(fs.existsSync(path.join(headlessDir, 'fonts', 'createFluentFontIcon.js'))).toBe(true);
@@ -2613,7 +2674,7 @@ describe('Build Verification', () => {
 
         try {
           // Run git diff to check if metadata.json has any uncommitted changes
-          const gitDiff = execSync('git diff metadata.json', {
+          const gitDiff = execSync('git diff --name-only -- metadata.json', {
             encoding: 'utf-8',
             cwd: __dirname,
             stdio: 'pipe',
@@ -2625,7 +2686,7 @@ describe('Build Verification', () => {
               `metadata.json has uncommitted changes after build.\n` +
                 `This means the committed metadata.json is out of sync with the current icons.\n` +
                 `Please run 'yarn build' and commit the updated metadata.json file.\n\n` +
-                `Git diff:\n${gitDiff}`,
+                `Changed file:\n${gitDiff}`,
             );
           }
 

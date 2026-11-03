@@ -25,6 +25,7 @@ describe('getFileTypeIconNameFromExtensionOrType', () => {
     expect(getFileTypeIconNameFromExtensionOrType('.DOCX', undefined)).toBe('docx');
     expect(getFileTypeIconNameFromExtensionOrType('doc', undefined)).toBe('docx');
     expect(getFileTypeIconNameFromExtensionOrType('work', undefined)).toBe('agentwork');
+    expect(getFileTypeIconNameFromExtensionOrType('clpx', undefined)).toBe('clipchamp');
   });
 
   it('falls back to genericfile for unknown extensions', () => {
@@ -54,6 +55,8 @@ describe('getFileTypeIconNameFromExtensionOrType', () => {
     expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.pbiScorecard)).toBe('pbiscorecard');
     expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.pbiSemanticModel)).toBe('pbisemmodel');
     expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.pbiReport)).toBe('powerbi');
+    expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.wikiPage)).toBe('wikipage');
+    expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.fabricOntology)).toBe('fabricontology');
   });
 
   it('falls back to genericfile for the genericFile type (no dedicated map entry)', () => {

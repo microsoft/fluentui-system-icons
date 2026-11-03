@@ -1,3 +1,15 @@
+## 0.0.8 (2026-09-24)
+
+### 🚀 Features
+
+- **react-icons-atomic-webpack-loader:** add export-level atomization ([#1246](https://github.com/microsoft/fluentui-system-icons/pull/1246))
+
+## 0.0.7 (2026-09-10)
+
+### 🩹 Fixes
+
+- **react-icons-atomic-webpack-loader:** lower rspack peer floor to >=2.0.0 ([#1231](https://github.com/microsoft/fluentui-system-icons/pull/1231))
+
 ## 0.0.6 (2026-07-30)
 
 ### 🚀 Features

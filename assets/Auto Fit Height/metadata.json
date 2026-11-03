@@ -3,12 +3,12 @@
   "size": [
     24,
     20,
-    32
+    32,
+    28
   ],
   "style": [
     "Regular",
-    "Filled",
-    "Light"
+    "Filled"
   ],
   "keyword": "fluent-icon",
   "description": "Used to scale content to fit. Similar to Arrow Fit. Contains directional variants.",

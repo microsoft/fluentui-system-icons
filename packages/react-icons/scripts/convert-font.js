@@ -16,6 +16,7 @@ const {
 } = require('./deprecated-atoms');
 const { createFormatMetadata, writeMetadata } = require('./metadata.utils');
 const { createStableChunks } = require('./chunking-utils');
+const { getIconFlipInRtl } = require('../../../importer/icon-name');
 const {
   getReactIconNameFromGlyphName,
   loadRtlMetadata,
@@ -250,7 +251,7 @@ function generateReactIconEntries(iconEntries, rtlMetadata, resizable) {
 
   for (const [iconName, codepoint] of Object.entries(iconEntries)) {
     const destFilename = getReactIconNameFromGlyphName(iconName, resizable);
-    const flipInRtl = rtlMetadata[destFilename] === 'mirror';
+    const flipInRtl = getIconFlipInRtl(iconName, resizable, rtlMetadata);
     const jsCode = buildFontIconExport(destFilename, codepoint, resizable, flipInRtl, iconName);
 
     iconExports.push(jsCode);

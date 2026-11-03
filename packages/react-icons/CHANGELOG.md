@@ -1,3 +1,87 @@
+## 2.0.345 (2026-10-30)
+
+### 🚀 Features
+
+- **react-icons:** add new and updated icons ([#1287](https://github.com/microsoft/fluentui-system-icons/pull/1287))
+- **react-icons:** add localized icon variants ([#1261](https://github.com/microsoft/fluentui-system-icons/pull/1261))
+
+### 🩹 Fixes
+
+- **react-icons:** synchronize `assets/` metadata and validate SVG variants in CI, add 80+ icons RTL support ([#1280](https://github.com/microsoft/fluentui-system-icons/pull/1280))
+- **react-icons:** generate RTL metadata for light icons ([#1262](https://github.com/microsoft/fluentui-system-icons/pull/1262))
+
+## 2.0.344 (2026-10-09)
+
+### 🚀 Features
+
+- **react-icons:** add new and updated icons ([#1267](https://github.com/microsoft/fluentui-system-icons/pull/1267))
+
+## 2.0.343 (2026-09-25)
+
+### 🚀 Features
+
+- **reaction-icons:** add new and updated icons ([#1257](https://github.com/microsoft/fluentui-system-icons/pull/1257))
+
+## 2.0.342 (2026-09-25)
+
+### 🚀 Features
+
+- **react-icons-atomic-webpack-loader:** add export-level atomization ([#1246](https://github.com/microsoft/fluentui-system-icons/pull/1246))
+
+### 🩹 Fixes
+
+- **react-icons:** avoid clipping font icon glyphs ([#1255](https://github.com/microsoft/fluentui-system-icons/pull/1255))
+
+## 2.0.341 (2026-09-11)
+
+### 🚀 Features
+
+- **react-icons:** add new and updated icons ([#1245](https://github.com/microsoft/fluentui-system-icons/pull/1245))
+
+### 🩹 Fixes
+
+- **react-icons:** export package metadata ([#1242](https://github.com/microsoft/fluentui-system-icons/pull/1242))
+
+## 2.0.340 (2026-09-10)
+
+### 🩹 Fixes
+
+- **react-icons:** emit valid font-display descriptor ([#1237](https://github.com/microsoft/fluentui-system-icons/pull/1237))
+- **react-icons-atomic-webpack-loader:** lower rspack peer floor to >=2.0.0 ([#1231](https://github.com/microsoft/fluentui-system-icons/pull/1231))
+- **react-icons:** prevent synthetic bolding of font icons ([#1236](https://github.com/microsoft/fluentui-system-icons/pull/1236))
+- **react-icons-font-subsetting-webpack-plugin:** detect duplicate installed instances ([#1234](https://github.com/microsoft/fluentui-system-icons/pull/1234))
+- **react-icons-font-subsetting-webpack-plugin:** derive rspack runtime from chunks, support rspack 2.0.x ([#1230](https://github.com/microsoft/fluentui-system-icons/pull/1230))
+
+## 2.0.339 (2026-08-26)
+
+### 🚀 Features
+
+- **react-icons-font-subsetting-webpack-plugin:** support rspack ([#1219](https://github.com/microsoft/fluentui-system-icons/pull/1219))
+
+## 2.0.338 (2026-08-21)
+
+### 🚀 Features
+
+- **react-icons:** add new and updated icons ([#1222](https://github.com/microsoft/fluentui-system-icons/pull/1222))
+
+### 🩹 Fixes
+
+- **react-icons:** render Light font icons ([#1217](https://github.com/microsoft/fluentui-system-icons/pull/1217))
+
+## 2.0.337 (2026-08-13)
+
+This release contains icon updates
+
+## 2.0.336 (2026-08-12)
+
+### 🚀 Features
+
+- **react-icons:** ship native ESM output by default ([#1205](https://github.com/microsoft/fluentui-system-icons/pull/1205))
+
+### 🩹 Fixes
+
+- **react-icons:** reserve 1em box for font icons to prevent layout shift ([#1145](https://github.com/microsoft/fluentui-system-icons/pull/1145))
+
 ## 2.0.335 (2026-08-07)
 
 ### 🚀 Features

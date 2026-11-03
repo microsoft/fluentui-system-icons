@@ -3,11 +3,20 @@
 // @ts-check
 
 const fs = require('fs');
+const { readdir } = require('fs/promises');
 const path = require('path');
 const _ = require('lodash');
 
 const { writePerIconFiles } = require('./per-icon.writer');
 const { writeSpriteFiles } = require('./sprite.writer');
+const {
+  parseIconName,
+  getIconExportName,
+  getIconFileName,
+  getIconFlipInRtl,
+  isResizableIconSource,
+  isDirectionOnlyIconSource,
+} = require('../../../importer/icon-name');
 
 /** @typedef {{ [key: string]: 'mirror' | 'unique' }} RtlMetadata */
 
@@ -138,16 +147,11 @@ function getCreateFluentIconHeader(relImport) {
  */
 function parseIconSource(opts) {
   const { file, srcFile, resizable, metadata } = opts;
-  if (resizable && !file.includes('20')) return null;
-
-  let iconName = file.slice(0, -4); // strip .svg
-  iconName = iconName.replace('ic_fluent_', '');
-  iconName = resizable ? iconName.replace('20', '') : iconName;
-
-  let exportBasename = _.camelCase(iconName);
-  const exportName = exportBasename[0].toUpperCase() + exportBasename.slice(1);
-  const flipInRtl = metadata[exportName] === 'mirror';
-  const isColor = iconName.endsWith('_color');
+  const identity = parseIconName(file);
+  if (resizable && !isResizableIconSource(file)) return null;
+  const exportName = getIconExportName(file, resizable);
+  const flipInRtl = getIconFlipInRtl(file, resizable, metadata);
+  const isColor = identity.style === 'color';
 
   const svgContent = fs.readFileSync(srcFile, 'utf8');
   /**
@@ -170,7 +174,7 @@ function parseIconSource(opts) {
     iconData = { paths: pathValues };
   }
 
-  return { exportName, fileName: _.kebabCase(exportName) + '.tsx', iconData, width, isColor, flipInRtl };
+  return { exportName, fileName: getIconFileName(exportName), iconData, width, isColor, flipInRtl };
 }
 
 /**
@@ -256,7 +260,7 @@ async function generatePerIconFiles(sourceFiles, dest, rtlMetadata, importConfig
     }
 
     // resizable export only for 20px files (size removed from name, width="1em")
-    if (entry.file.includes('20')) {
+    if (isResizableIconSource(entry.file)) {
       const resizableParsed = parseIconSource({
         file: entry.file,
         srcFile: entry.srcFile,
@@ -298,7 +302,35 @@ async function generatePerIconFiles(sourceFiles, dest, rtlMetadata, importConfig
   };
 }
 
+/**
+ *
+ * @param {string} srcPath
+ */
+async function processSourceDir(srcPath) {
+  /** @type {{ srcFile: string; file: string; }[]} */
+  const filePaths = [];
+  /** @param {string} relative */
+  async function walk(relative) {
+    const entries = await readdir(path.join(srcPath, relative), { withFileTypes: true });
+    entries.sort((left, right) => (left.name < right.name ? -1 : left.name > right.name ? 1 : 0));
+    for (const entry of entries.filter((entry) => entry.isFile() && entry.name.endsWith('.svg'))) {
+      const file = path.posix.join(relative, entry.name);
+      parseIconName(file);
+      if (isDirectionOnlyIconSource(file)) continue;
+      filePaths.push({ srcFile: path.join(srcPath, file), file });
+    }
+    for (const entry of entries.filter((entry) => entry.isDirectory())) {
+      await walk(path.posix.join(relative, entry.name));
+    }
+  }
+  await walk('');
+  console.info(`[process src]: processed ${filePaths.length} files`);
+
+  return filePaths;
+}
+
 module.exports = {
+  processSourceDir,
   parseIconSource,
   buildIconExportCode,
   getCreateFluentIconHeader,

@@ -1,7 +1,8 @@
 {
   "name": "Navigation Play",
   "size": [
-    20
+    20,
+    16
   ],
   "style": [
     "Filled",

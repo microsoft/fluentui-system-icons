@@ -21,19 +21,20 @@ const FONT_FAMILY_MAP = {
   [FontFile.Filled]: 'FluentSystemIconsFilled',
   [FontFile.Regular]: 'FluentSystemIconsRegular',
   [FontFile.Resizable]: 'FluentSystemIcons',
+  [FontFile.Light]: 'FluentSystemIconsLight',
 } as const;
 
 export const useStaticStyles = makeStaticStyles(`
 @font-face {
     font-family: ${FONT_FAMILY_MAP[FontFile.Filled]};
-    font-display: "block";
+  font-display: block;
     src: url(${JSON.stringify(fontFilledWoff2)}) format("woff2"),
     url(${JSON.stringify(fontFilledWoff)}) format("woff"),
     url(${JSON.stringify(fontFilledTtf)}) format("truetype");
 }
 @font-face {
     font-family: ${FONT_FAMILY_MAP[FontFile.Regular]};
-    font-display: "block";
+  font-display: block;
     src: url(${JSON.stringify(fontRegularWoff2)}) format("woff2"),
     url(${JSON.stringify(fontRegularWoff)}) format("woff"),
     url(${JSON.stringify(fontRegularTtf)}) format("truetype");
@@ -41,6 +42,7 @@ export const useStaticStyles = makeStaticStyles(`
 
 @font-face {
     font-family: ${FONT_FAMILY_MAP[FontFile.Light]};
+  font-display: block;
     src: url(${JSON.stringify(fontLightWoff2)}) format("woff2"),
     url(${JSON.stringify(fontLightWoff)}) format("woff"),
     url(${JSON.stringify(fontLightTtf)}) format("truetype");
@@ -48,7 +50,7 @@ export const useStaticStyles = makeStaticStyles(`
 
 @font-face {
     font-family: ${FONT_FAMILY_MAP[FontFile.Resizable]};
-    font-display: "block";
+  font-display: block;
     src: url(${JSON.stringify(fontOneSizeWoff2)}) format("woff2"),
     url(${JSON.stringify(fontOneSizeWoff)}) format("woff"),
     url(${JSON.stringify(fontOneSizeTtf)}) format("truetype");
@@ -58,7 +60,14 @@ export const useStaticStyles = makeStaticStyles(`
 export const useRootStyles = makeStyles({
   root: {
     display: 'inline-block',
+    // Reserve a 1em box up front (mirrors the resizable SVG's width/height="1em").
+    // Without this the box is sized by the glyph advance, which is 0 until the
+    // webfont loads (font-display: block + PUA codepoints have no fallback glyph),
+    // causing layout shift on every font icon.
+    width: '1em',
+    height: '1em',
     fontStyle: 'normal',
+    fontWeight: 'normal',
     lineHeight: '1em',
     color: 'currentColor',
 

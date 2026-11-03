@@ -1,9 +1,12 @@
 // @ts-check
 import fs from 'fs';
 import path from 'path';
+import os from 'node:os';
 import { describe, it, expect, afterAll } from 'vitest';
 
+import { getIconExportName } from '../../../importer/icon-name';
 import {
+  processSourceDir,
   parseIconSource,
   buildIconExportCode,
   getCreateFluentIconHeader,
@@ -12,6 +15,70 @@ import {
 } from './convert.utils';
 
 describe(`convert  utils`, () => {
+  it('keeps established directional names without adding direction-only aliases', async () => {
+    const source = fs.mkdtempSync(path.join(os.tmpdir(), 'fluent-directional-svg-'));
+    const legacy = 'ic_fluent_text_number_list_rtl_90_20_regular.svg';
+    const directional = 'ic_fluent_text_number_list_rotate_90_20_regular.svg';
+    const localized = 'ic_fluent_text_bold_20_regular.svg';
+    try {
+      for (const file of [legacy, `RTL/${directional}`, `LTR/${directional}`, `es/RTL/${localized}`]) {
+        fs.mkdirSync(path.dirname(path.join(source, file)), { recursive: true });
+        fs.writeFileSync(path.join(source, file), '<svg width="20"><path d="M1 2"/></svg>');
+      }
+      const sources = await processSourceDir(source);
+      expect(sources.map((entry) => entry.file)).toEqual([legacy, `es/RTL/${localized}`]);
+      expect(sources.map((entry) => getIconExportName(entry.file, true))).toEqual([
+        'TextNumberListRtl90Regular',
+        'TextBoldRegular_esRtl',
+      ]);
+    } finally {
+      fs.rmSync(source, { recursive: true, force: true });
+    }
+  });
+
+  it('discovers localized artwork and keeps its exports separate from the default atom', async () => {
+    const source = fs.mkdtempSync(path.join(os.tmpdir(), 'fluent-localized-svg-'));
+    const dest = path.join(source, 'output');
+    const file = 'ic_fluent_text_bold_20_regular.svg';
+    const baseSvg = path.resolve(__dirname, '../../../assets/Text Bold/SVG', file);
+    const localizedSvg = path.resolve(__dirname, '../../../assets/Text Bold/es/SVG', file);
+    try {
+      fs.mkdirSync(path.join(source, 'es'));
+      fs.mkdirSync(path.join(source, 'sr-cyrl'));
+      fs.copyFileSync(baseSvg, path.join(source, file));
+      fs.copyFileSync(localizedSvg, path.join(source, 'es', file));
+      fs.copyFileSync(
+        path.resolve(__dirname, '../../../assets/Text Bold/sr-cyrl/SVG', file),
+        path.join(source, 'sr-cyrl', file),
+      );
+      const sources = await processSourceDir(source);
+      expect(sources.map((entry) => entry.file)).toEqual([file, `es/${file}`, `sr-cyrl/${file}`]);
+      await generatePerIconFiles(
+        sources,
+        { atomsDest: dest },
+        {},
+        {
+          svgImportPath: '../../utils/createFluentIcon',
+          spriteTypeImportPath: '../../utils/createFluentIcon.svg-sprite',
+          spriteCreateImportPath: '../../utils/createFluentIcon.svg-sprite',
+        },
+      );
+      const defaultAtom = fs.readFileSync(path.join(dest, 'text-bold.tsx'), 'utf8');
+      const localeAtom = fs.readFileSync(path.join(dest, 'text-bold_es.tsx'), 'utf8');
+      expect(defaultAtom).not.toContain('_es');
+      expect(localeAtom).toContain('export const TextBold20Regular_es');
+      expect(localeAtom).toContain('export const TextBoldRegular_es');
+      expect(localeAtom).not.toEqual(defaultAtom);
+      const scriptAtom = fs.readFileSync(path.join(dest, 'text-bold_sr-cyrl.tsx'), 'utf8');
+      expect(scriptAtom).toContain('export const TextBold20Regular_srCyrl');
+      expect(scriptAtom).toContain('export const TextBoldRegular_srCyrl');
+      expect(defaultAtom).not.toContain('_srCyrl');
+      expect(fs.existsSync(path.join(dest, 'text-bold_sr_cyrl.tsx'))).toBe(false);
+    } finally {
+      fs.rmSync(source, { recursive: true, force: true });
+    }
+  });
+
   describe(`getCreateFluentIconHeader`, () => {
     it('returns expected header lines from getCreateFluentIconHeader', () => {
       const header = getCreateFluentIconHeader('../utils/createFluentIcon');
@@ -55,6 +122,14 @@ describe(`convert  utils`, () => {
         metadata: {},
       });
       expect(res).toBeNull();
+    });
+
+    it('preserves legacy default size aliases without creating them for localized assets', () => {
+      const file = 'ic_fluent_fps_120_24_regular.svg';
+      writeFile(file, '<svg width="24"><path d="M1 2"/></svg>');
+      const options = { srcFile: path.join(tmpDir, file), resizable: true, metadata: {} };
+      expect(parseIconSource({ ...options, file })?.exportName).toBe('Fps124Regular');
+      expect(parseIconSource({ ...options, file: `es/${file}` })).toBeNull();
     });
 
     it('parses non-color icon and extracts paths', () => {

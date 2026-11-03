@@ -1,0 +1,17 @@
+{
+  "name": "App Folder Hint",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "An app folder with a hint.",
+  "metaphor": [
+    "app",
+    "folder",
+    "hint"
+  ]
+}

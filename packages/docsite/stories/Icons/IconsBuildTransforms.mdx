@@ -84,6 +84,48 @@ Pass the `iconVariant` option to target a different implementation (`'svg'` — 
 }
 ```
 
+The default `moduleGranularity: 'family'` mode already tree-shakes unused icon exports. Set `moduleGranularity: 'icon'` when you need finer chunk distribution: this opt-in mode gives every selected icon export its own module identity, allowing the bundler to place icons independently instead of moving an entire icon family between chunks:
+
+```js
+{
+  loader: '@fluentui/react-icons-atomic-webpack-loader',
+  options: { moduleGranularity: 'icon' },
+}
+```
+
+Keep the loader rule active for generated Fluent icon atoms in `node_modules`; the loader processes those ESM files a second time to emit the selected per-icon modules. Font and SVG-sprite variants also require their matching subsetting plugin.
+
+Icon granularity can be scoped by loader rule. For example, an icon picker that intentionally uses many icons can retain family granularity:
+
+```js
+const path = require('path');
+
+const iconPicker = path.resolve(__dirname, 'src/icon-picker');
+const fluentAtoms = /node_modules[\\/]@fluentui[\\/]react-(?:brand-)?icons[\\/]lib[\\/]atoms[\\/]/;
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.[mc]?[jt]sx?$/,
+        include: [path.resolve(__dirname, 'src'), fluentAtoms],
+        exclude: iconPicker,
+        loader: '@fluentui/react-icons-atomic-webpack-loader',
+        options: { moduleGranularity: 'icon' },
+      },
+      {
+        test: /\.[mc]?[jt]sx?$/,
+        include: iconPicker,
+        loader: '@fluentui/react-icons-atomic-webpack-loader',
+        options: { moduleGranularity: 'family' },
+      },
+    ],
+  },
+};
+```
+
+Keep `fluentAtoms` in the icon-mode rule because query-selected requests require the loader's second pass; unqueried family modules pass through unchanged. A picker that needs every icon can instead lazy-load the unatomized barrel so the complete set stays in its own async chunk.
+
 ### 2. Font subsetting plugin
 
 When you use the font variant (`iconVariant: 'fonts'`), pair the loader with the font subsetting plugin so only the glyphs used by your build are shipped:

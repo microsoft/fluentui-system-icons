@@ -1,7 +1,10 @@
 {
   "name": "Password Clock",
   "size": [
-    48
+    48,
+    24,
+    20,
+    16
   ],
   "style": [
     "Regular",

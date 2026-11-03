@@ -5,7 +5,8 @@
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Color"
   ],
   "keyword": "fluent-icon, xbox",
   "description": "Used to represent game chat, or in game communication generally.",

@@ -3,11 +3,13 @@
   "size": [
     16,
     20,
-    24
+    24,
+    32
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Color"
   ],
   "keyword": "fluent-icon",
   "description": "Used to represent formatting & specific recap lists powered by AI.",

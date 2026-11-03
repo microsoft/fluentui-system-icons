@@ -12,7 +12,8 @@
   "style": [
     "Regular",
     "Filled",
-    "Light"
+    "Light",
+    "Color"
   ],
   "keyword": "fluent-icon, outlook",
   "description": "Used in editing/update or drawing scenarios.",

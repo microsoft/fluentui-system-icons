@@ -17,10 +17,10 @@
  * - **loaded**: SVG/utility/provider/headless(non-font) entries are actually
  *   `import()`-ed and asserted to expose named exports. This is the true bare-Node
  *   ESM proof for the surface the ESM-first change targets.
- * - **resolve-only**: font entries and `.css` entries are only *resolved* (not
+ * - **resolve-only**: font entries, `.css` entries, and `.json` entries are only *resolved* (not
  *   imported). Font modules transitively `import './*.ttf'|'*.woff'` (binary assets
- *   that only a bundler can load), and `.css` is not JavaScript — neither is meant
- *   to load in bare Node. We still assert their export-map target is a real,
+ *   that only a bundler can load), while CSS and JSON are not JavaScript modules.
+ *   We still assert their export-map target is a real,
  *   fully-specified file on disk.
  *
  * Pass `--font` (together with `node --conditions=fluentIconFont`) to verify the
@@ -63,8 +63,8 @@ for (const { key, spec, isCss } of deriveEntries()) {
       throw new Error(`export map resolved to a missing file: ${resolvedPath}`);
     }
 
-    if (isCss) {
-      console.log(`  ✓ resolve-only  ${key}  ->  ${spec}  (css asset)`);
+    if (isCss || resolvedPath.endsWith('.json')) {
+      console.log(`  ✓ resolve-only  ${key}  ->  ${spec}  (non-JavaScript asset)`);
     } else if (isFontTarget(resolvedPath)) {
       console.log(`  ✓ resolve-only  ${key}  ->  ${spec}  (font/binary-asset graph)`);
     } else {

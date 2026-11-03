@@ -3,11 +3,13 @@
   "size": [
     24,
     20,
-    16
+    16,
+    32
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Color"
   ],
   "keyword": "fluent-icon",
   "description": "Used for alerts or notifications.",

@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "noEmit": true,
+    "module": "commonjs",
+    "target": "es2020",
+    "allowJs": true,
+    "checkJs": true,
+    "types": ["node"],
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "pretty": true
+  },
+  "include": ["icon-name.js", "icon-name.test.js", "generateFont.js", "generateFont.test.js"]
+}

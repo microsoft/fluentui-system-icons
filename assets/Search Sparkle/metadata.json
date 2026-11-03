@@ -10,7 +10,9 @@
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Color",
+    "Light"
   ],
   "keyword": "fluent-icon",
   "description": "Used in AI powered search scenarios.",

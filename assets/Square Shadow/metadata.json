@@ -2,7 +2,9 @@
   "name": "Square Shadow",
   "size": [
     12,
-    20
+    20,
+    24,
+    16
   ],
   "style": [
     "Regular",

@@ -12,6 +12,7 @@
       "inputs": [
         "default",
         "fontArtifacts",
+        "{workspaceRoot}/importer/icon-name.js",
         "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
         "!{projectRoot}/tsconfig.spec.json",
         "!{projectRoot}/vitest.config.[jt]s",
@@ -19,6 +20,9 @@
         "!{projectRoot}/test-setup.[jt]s"
       ],
       "outputs": ["{projectRoot}/lib", "{projectRoot}/lib-cjs"]
+    },
+    "test": {
+      "inputs": ["default", "{workspaceRoot}/importer/icon-name.js"]
     },
     "build-verify": {
       "dependsOn": ["build"]
@@ -38,6 +42,9 @@
       "inputs": ["{projectRoot}/package.json", "{projectRoot}/lib", "{projectRoot}/lib-cjs"]
     },
     "bundle-size": {
+      "dependsOn": ["build"]
+    },
+    "check:localized-bundle-size": {
       "dependsOn": ["build"]
     }
   }

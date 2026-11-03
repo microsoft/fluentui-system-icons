@@ -21,6 +21,31 @@ Icons with multiple variants are automatically grouped into a single file:
 
 This grouping strikes a balance between granularity and convenience, making it easy to import related variants while still maintaining excellent tree-shaking characteristics.
 
+### Localized Groups
+
+Localized icons use explicit `_{locale}` exports and separate atom groups:
+
+```tsx
+import { TextBold24Regular_es } from '@fluentui/react-icons/svg/text-bold_es';
+import { TextBoldRegular_srCyrl } from '@fluentui/react-icons/headless/svg/text-bold_sr-cyrl';
+```
+
+Resizable exports omit the size. The `_` separates the icon name from its locale;
+multi-part locale tags are camel-cased in exports and hyphenated in module paths
+(Serbian Cyrillic: `_srCyrl` / `_sr-cyrl`).
+The same groups are available through `fonts/*` and `headless/fonts/*` for monochrome icons.
+
+There is no runtime locale detection or automatic switch between directional
+artworks: `Ltr`/`Rtl` stays in the base name (`TextDirectionHorizontalRtl24Regular_ko`).
+Automatic mirroring is controlled by the icon's direction metadata and
+`IconDirectionContextProvider`, never by the locale.
+
+Unchanged named imports do not include unused localized artwork. Whole-library
+imports and full fonts grow; pair localized font imports with the font-subsetting
+plugin to ship only consumed glyphs.
+The [catalog](?path=/docs/icons-catalog--docs) includes localized exports; search
+for a suffix such as `_es` or `_srCyrl` to find them.
+
 ### Using the API Directly
 
 Icons are available via two export maps:

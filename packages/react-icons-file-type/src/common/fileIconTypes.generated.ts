@@ -47,6 +47,8 @@ export const FileIconType = {
   pbiScorecard: 28,
   pbiSemanticModel: 29,
   pbiReport: 30,
+  fabricOntology: 31,
+  wikiPage: 32,
 } as const;
 
 export type FileIconType = (typeof FileIconType)[keyof typeof FileIconType];
@@ -95,4 +97,6 @@ export const TYPE_TO_ICON_NAME: ReadonlyArray<string> = [
   'pbiscorecard', // 28 pbiScorecard
   'pbisemmodel', // 29 pbiSemanticModel
   'powerbi', // 30 pbiReport
+  'fabricontology', // 31 fabricOntology
+  'wikipage', // 32 wikiPage
 ];
