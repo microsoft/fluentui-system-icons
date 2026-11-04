@@ -85,15 +85,28 @@ Here the path inherits the root fill, so `primaryFill` works without a per-path 
 
 ## Package output and code generation
 
-The package provides ESM in `lib/` and CommonJS in `lib-cjs/`, with TypeScript declarations. Package exports select the appropriate format. Use the public root and `/utils` entry points rather than internal generated chunk paths.
+The package provides ESM in `lib/` and CommonJS in `lib-cjs/`, with TypeScript declarations. Package exports select the appropriate format. Use the public entry points rather than internal generated chunk paths:
 
-The `convert:rnsvg` step generates components from the prepared SVGs in `intermediate/`:
+| Entry point                            | Exports                                                              |
+| -------------------------------------- | -------------------------------------------------------------------- |
+| `@fluentui/react-native-icons`         | Every icon, plus `useIconState`, `wrapIcon`, and `FluentIconsProps`. |
+| `@fluentui/react-native-icons/regular` | Only the `Regular` icons, in every size.                             |
+| `@fluentui/react-native-icons/filled`  | Only the `Filled` icons, in every size.                              |
+| `@fluentui/react-native-icons/light`   | Only the `Light` icons, in every size.                               |
+| `@fluentui/react-native-icons/color`   | Only the multicolor `Color` icons, in every size.                    |
+| `@fluentui/react-native-icons/utils`   | `FluentSvg`, `useIconState`, `wrapIcon`, and their types.            |
 
+The style entry points hold the same components as the root, so `import { AccessTimeFilled } from '@fluentui/react-native-icons/filled'` resolves to the identical binding. Use them to scope imports, or to keep a barrel module small, without changing icon behavior. They rely on package `exports` resolution, which Metro enables by default from React Native 0.79 and otherwise requires opting in to.
+
+The `convert:rnsvg` step generates components from the optimized SVGs in `packages/svg-icons/icons/`, the same canonical output that `@fluentui/svg-icons` publishes. The project declares `svg-icons` as an Nx dependency, so `yarn nx run react-native-icons:build` builds or restores those SVGs first:
+
+- XML namespace attributes are removed because `react-native-svg` does not accept them.
 - Each icon renders `FluentSvg` directly, using an inferred component name instead of a generated `displayName` assignment.
 - Square sized icons use `size`; default dimensions and conformant viewBoxes are omitted.
 - Simple monochrome shapes inherit the root fill. Complex artwork retains explicit fills where needed.
-- Eligible resizable and size-20 components live in the same chunk and share path-data strings, without an extra icon component layer. Short paths remain inline when sharing would increase code size.
-- Barrels use `export *`; sized chunks re-export colocated components to preserve existing bindings.
+- Output is split by style into `src/regular/`, `src/filled/`, `src/light/`, and `src/color/`. Each directory holds numbered chunk files and an `index.ts` that re-exports them with `export *`; the root `src/index.tsx` re-exports every chunk directly (for example, `export * from './regular/chunk-0'`) to avoid nested barrels that can interfere with tree-shaking.
+- All sizes of an icon in one style, including its resizable component, are generated into the same chunk file. A chunk holds at most 500 components, and an icon's sizes are never split across chunks.
+- The resizable and size-20 components of an icon share path-data strings, without an extra icon component layer. Short paths remain inline when sharing would increase code size.
 
 Icons are still grouped into chunks. Named imports and side-effect-free modules allow tree-shaking where supported, but the code included in an application depends on its bundler.
 
@@ -106,12 +119,10 @@ corepack enable
 yarn install --immutable
 ```
 
-If `packages/react-native-icons/intermediate/` is not already prepared, generate and optimize the SVG inputs first:
+If `packages/svg-icons/icons/` is not already built, build the canonical SVG inputs first:
 
 ```sh
-yarn nx run react-native-icons:copy
-yarn nx run react-native-icons:optimize
-yarn nx run react-native-icons:unfill
+yarn nx run svg-icons:build
 ```
 
 For code generation and an ESM-only build:
@@ -123,6 +134,6 @@ yarn nx run react-native-icons:test
 yarn nx run react-native-icons:lint
 ```
 
-`build:esm` runs TypeScript only; it does not regenerate icons. The package uses TypeScript 7, targets ES2022, and uses the automatic React JSX transform (`react-jsx`). `build:cjs` separately emits CommonJS, while the full `build` script refreshes the SVG inputs and builds both formats.
+`build:esm` runs TypeScript only; it does not regenerate icons. The package uses TypeScript 7, targets ES2022, and uses the automatic React JSX transform (`react-jsx`). `build:cjs` separately emits CommonJS, while the full `build` script regenerates icons from the canonical SVGs and builds both formats.
 
-Edit source assets, `convert-rn.js`, or handwritten utilities as appropriate. Do not hand-edit generated files in `src/icons/`, `src/sizedIcons/`, `src/index.tsx`, `lib/`, or `lib-cjs/`.
+Edit source assets, `convert-rn.js`, or handwritten utilities as appropriate. Do not hand-edit generated files in `src/regular/`, `src/filled/`, `src/light/`, `src/color/`, `src/index.tsx`, `lib/`, or `lib-cjs/`.
