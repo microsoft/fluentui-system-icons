@@ -189,7 +189,6 @@ export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename
 
   for (const chunk of iconChunks) {
     chunk.unshift(`import wrapIcon from "../utils/wrapIcon";`);
-    chunk.unshift(`import * as React from "react";`);
 
     var foundElements = {};
 

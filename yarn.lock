@@ -4231,7 +4231,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-native-icons@workspace:packages/react-native-icons"
   dependencies:
-    tslib: "npm:^2.1.0"
     typescript: "npm:^7.0.2"
   peerDependencies:
     react: ">=18.2.0 <20.0.0"
