@@ -29,12 +29,10 @@ export function createFluentFontIcon(
 
     // We want to keep the same API surface as the SVG icons, so translate `primaryFill` to `color`
     if (props.primaryFill) {
-      // @ts-expect-error TypeScript cannot infer that `state.style` is defined
       state.style['color'] = props.primaryFill;
     }
 
     if (fontSize) {
-      // @ts-expect-error TypeScript cannot infer that `state.style` is defined
       state.style['fontSize'] = fontSize;
     }
 
