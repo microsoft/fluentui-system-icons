@@ -1,16 +1,10 @@
 {
-  "extends": "@rnx-kit/tsconfig/tsconfig.node.json",
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "lib",
-    "target": "ES6",
     "module": "esnext",
-    "moduleResolution": "bundler",
-    "importHelpers": true,
-    "strictBindCallApply": false,
-    "noImplicitAny": false,
-    "erasableSyntaxOnly": false,
-    "jsx": "react"
+    "moduleResolution": "bundler"
   },
   "include": ["src"]
 }
