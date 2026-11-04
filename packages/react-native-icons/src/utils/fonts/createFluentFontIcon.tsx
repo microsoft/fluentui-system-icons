@@ -24,7 +24,7 @@ export function createFluentFontIcon(
     const state = useIconState<TextProps>(props);
 
     if (state.style == undefined && (props.primaryFill || fontSize)) {
-      state.style = {};
+      (state as Record<string, unknown>).style = {};
     }
 
     // We want to keep the same API surface as the SVG icons, so translate `primaryFill` to `color`
