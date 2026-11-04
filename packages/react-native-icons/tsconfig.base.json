@@ -4,7 +4,7 @@
     "rootDir": "src",
     "outDir": "lib",
     "target": "es2022",
-    "importHelpers": true,
+    "importHelpers": false,
     "strictBindCallApply": false,
     "noImplicitAny": false,
     "erasableSyntaxOnly": false,
