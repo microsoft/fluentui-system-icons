@@ -1,0 +1,14 @@
+{
+  "extends": "@rnx-kit/tsconfig/tsconfig.node.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib-cjs",
+    "target": "ES6",
+    "importHelpers": true,
+    "strictBindCallApply": false,
+    "noImplicitAny": false,
+    "erasableSyntaxOnly": false,
+    "jsx": "react"
+  },
+  "include": ["src"]
+}
