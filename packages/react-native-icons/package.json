@@ -13,13 +13,8 @@
   },
   "scripts": {
     "clean": "find ./src -type f ! -name \"wrapIcon.tsx\" -name \"*.tsx\" -delete",
-    "cleanSvg": "rm -rf ./intermediate",
-    "copy": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
-    "convert:rnsvg": "node ../react-native-icons/convert-rn.js --source=./intermediate --dest=./src --native=true",
-    "rollup": "node ./generateRollup.js",
-    "optimize": "yarn run -T svgo --config svgo.config.js --folder=./intermediate --precision=2 --quiet",
-    "unfill": "find ./intermediate -type f -name \"*.svg\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./intermediate -type f -name \"*.bak\" -delete",
-    "build": "yarn copy && yarn optimize && yarn unfill && yarn convert:rnsvg && yarn cleanSvg && yarn build:esm && yarn build:cjs",
+    "convert:rnsvg": "node ./convert-rn.js --source=../svg-icons/icons --dest=./src --native",
+    "build": "yarn convert:rnsvg && yarn build:esm && yarn build:cjs",
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "build:esm": "tsc",
     "lint": "yarn run -T eslint package.json",
@@ -49,6 +44,26 @@
       "types": "./lib/utils/index.d.ts",
       "import": "./lib/utils/index.js",
       "require": "./lib-cjs/utils/index.js"
+    },
+    "./regular": {
+      "types": "./lib/regular/index.d.ts",
+      "import": "./lib/regular/index.js",
+      "require": "./lib-cjs/regular/index.js"
+    },
+    "./filled": {
+      "types": "./lib/filled/index.d.ts",
+      "import": "./lib/filled/index.js",
+      "require": "./lib-cjs/filled/index.js"
+    },
+    "./light": {
+      "types": "./lib/light/index.d.ts",
+      "import": "./lib/light/index.js",
+      "require": "./lib-cjs/light/index.js"
+    },
+    "./color": {
+      "types": "./lib/color/index.d.ts",
+      "import": "./lib/color/index.js",
+      "require": "./lib-cjs/color/index.js"
     }
   }
 }
