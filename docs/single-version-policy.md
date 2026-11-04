@@ -22,10 +22,11 @@ root** [package.json](../package.json).
 
 ## Allowlisted exceptions
 
-| Package                 | Dependency     | Version   | Reason                                                                       |
-| ----------------------- | -------------- | --------- | ---------------------------------------------------------------------------- |
-| `@fluentui/react-icons` | `typescript`   | `4.1.6`   | Ships type declarations compatible with the legacy TypeScript 4.x toolchain. |
-| `@fluentui/react-icons` | `@types/react` | `^17.0.2` | Built and validated against the React 17 type surface.                       |
+| Package                        | Dependency     | Version   | Reason                                                                       |
+| ------------------------------ | -------------- | --------- | ---------------------------------------------------------------------------- |
+| `@fluentui/react-icons`        | `typescript`   | `4.1.6`   | Ships type declarations compatible with the legacy TypeScript 4.x toolchain. |
+| `@fluentui/react-icons`        | `@types/react` | `^17.0.2` | Built and validated against the React 17 type surface.                       |
+| `@fluentui/react-native-icons` | `typescript`   | `^7.0.2`  | Builds with the native TypeScript 7 compiler.                                |
 
 Workspace-local package references (e.g. `"@fluentui/react-icons": "*"`) are managed by
 `nx release` and are not subject to the policy.
@@ -102,9 +103,9 @@ Notes:
   A `find -exec ... \;` loop runs the command once per match, and at ~190ms of yarn startup
   each that adds up fast — `importer`'s avocado loop alone runs ~2970 times. Declare the tool
   in a **catalog** instead (see below) so the loop can call it by bare name.
-- `@fluentui/react-icons` is the one package with its own pinned `typescript`, so its build
-  uses plain `yarn tsc` (local 4.1.6) while `type-check:infra` uses `yarn run -T tsc`
-  (root 5.0.4).
+- `@fluentui/react-icons` and `@fluentui/react-native-icons` declare their own `typescript`, so
+  their builds call the local `tsc` (4.1.6 and 7 respectively) rather than `yarn run -T tsc`.
+  `react-icons`' `type-check:infra` still uses `yarn run -T tsc` (root 5.0.4).
 - Yarn runs scripts through its own portable shell rather than `sh`, and that shell expands
   globs in environment assignments too. A value such as
   `NAME=sprite.[contenthash].svg` fails with `No matches found`, so quote it.
