@@ -10,6 +10,8 @@ yarn add @fluentui/react-native-icons react-native-svg
 
 The package requires React `>=18.2.0 <20.0.0`, React Native `>=0.73.0`, and `react-native-svg >=12.5.0`. Choose a `react-native-svg` version compatible with your React Native version and follow its [installation instructions](https://github.com/software-mansion/react-native-svg#installation), including native setup where required. For Expo, use `npx expo install react-native-svg` to select a compatible version.
 
+`@svgr/core` and `@fluentui/svg-icons` are optional peer dependencies, needed only to [generate icon components on demand](#code-generation).
+
 ## Usage
 
 Import icons by name from the package root. Most families provide `Filled` and `Regular` styles; selected icons also provide `Light` or multicolor `Color` styles. Not every family has every style or size.
@@ -83,22 +85,71 @@ Here the path inherits the root fill, so `primaryFill` works without a per-path 
 
 `useIconState` normalizes color and accessibility props. `wrapIcon` remains available for compatibility, but generated icons no longer use it. `useIconState`, `wrapIcon`, and the `FluentIconsProps` type also remain exported from the package root.
 
+## Code generation
+
+The `@fluentui/react-native-icons/codegen` entry point exposes the same code paths that generate this package's own icons, so build tooling and plugins can produce one or more icon components on demand. It runs in Node.js (it reads and writes files) and belongs in build scripts, not in an application bundle.
+
+### Optional peer dependencies
+
+Both dependencies are optional peers: apps that only render icons never install them.
+
+| Peer dependency       | Range    | Needed when                                                                                                                                                                             |
+| --------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `@svgr/core`          | `^6.5.1` | Always, to use `/codegen`. It converts SVG markup to `react-native-svg` JSX. Version 7 and later do not include the JSX plugin that the generator relies on, so they are not supported. |
+| `@fluentui/svg-icons` | `^1.1.0` | Only when you pass icons by name without `svgDir`. It supplies the canonical SVGs. Not needed if you pass SVG markup yourself.                                                          |
+
+```sh
+yarn add -D @svgr/core@^6.5.1 @fluentui/svg-icons
+```
+
+### Generating a file
+
+`generateIconFile(file, icons, options?)` writes a `.tsx` file with the given name (creating its directory) that exports a component for each icon. `generateIconModule(icons, options?)` returns the same source as a string. Pass each icon as a name of the form `<name>_<size>_<regular|filled|light|color>`, such as `access_time_20_regular`, or as `{ name, svg }` to supply the SVG markup directly. Icons listed more than once are generated once.
+
+```ts
+import { generateIconFile } from '@fluentui/react-native-icons/codegen';
+
+generateIconFile('src/icons/AppIcons.tsx', ['access_time_20_regular', 'add_circle_24_filled']);
+```
+
+The file exports components with the same names and behavior as the package root: `AccessTime20Regular`, plus `AccessTimeRegular` for icons whose artwork is resizable, and `AddCircle24Filled`. Generated files import `react-native-svg` and `@fluentui/react-native-icons/utils`, so the consuming app needs both installed.
+
+Lower-level building blocks are also exported: `generateIconComponents(icon, options?)` returns the code of each component an icon produces, `renderIconModule(components, options?)` assembles components into a module with the imports they need, `parseIconName`, `resolveSvgIconsDir`, `ICON_STYLES`, and `DEFAULT_UTIL_PATH`.
+
+### Options
+
+| Option     | Default                                     | Description                                                                                                                                                                                       |
+| ---------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `quote`    | `"`                                         | Quote character, `"` or `'`, for generated import specifiers and string literals. JSX attribute values always use double quotes, like the `jsx-quotes` default.                                   |
+| `utilPath` | `@fluentui/react-native-icons/utils`        | Module specifier that generated components import `FluentSvg` and `FluentIconsProps` from. This package generates its own icons with `../utils`, so builds do not depend on `exports` resolution. |
+| `svgDir`   | the `icons` folder of `@fluentui/svg-icons` | Directory of `<name>.svg` files for icons passed by name.                                                                                                                                         |
+
+Set `utilPath` to a relative path, or another module that re-exports `FluentSvg` and `FluentIconsProps`, if the output must build under `moduleResolution: node` (TypeScript's legacy `node10` mode), which ignores package `exports`.
+
+```ts
+generateIconFile('src/icons/AppIcons.tsx', [{ name: 'logo_24_filled', svg: logoSvg }], {
+  quote: "'",
+  utilPath: '../utils',
+});
+```
+
 ## Package output and code generation
 
 The package provides ESM in `lib/` and CommonJS in `lib-cjs/`, with TypeScript declarations. Package exports select the appropriate format. Use the public entry points rather than internal generated chunk paths:
 
-| Entry point                            | Exports                                                              |
-| -------------------------------------- | -------------------------------------------------------------------- |
-| `@fluentui/react-native-icons`         | Every icon, plus `useIconState`, `wrapIcon`, and `FluentIconsProps`. |
-| `@fluentui/react-native-icons/regular` | Only the `Regular` icons, in every size.                             |
-| `@fluentui/react-native-icons/filled`  | Only the `Filled` icons, in every size.                              |
-| `@fluentui/react-native-icons/light`   | Only the `Light` icons, in every size.                               |
-| `@fluentui/react-native-icons/color`   | Only the multicolor `Color` icons, in every size.                    |
-| `@fluentui/react-native-icons/utils`   | `FluentSvg`, `useIconState`, `wrapIcon`, and their types.            |
+| Entry point                            | Exports                                                                  |
+| -------------------------------------- | ------------------------------------------------------------------------ |
+| `@fluentui/react-native-icons`         | Every icon, plus `useIconState`, `wrapIcon`, and `FluentIconsProps`.     |
+| `@fluentui/react-native-icons/regular` | Only the `Regular` icons, in every size.                                 |
+| `@fluentui/react-native-icons/filled`  | Only the `Filled` icons, in every size.                                  |
+| `@fluentui/react-native-icons/light`   | Only the `Light` icons, in every size.                                   |
+| `@fluentui/react-native-icons/color`   | Only the multicolor `Color` icons, in every size.                        |
+| `@fluentui/react-native-icons/utils`   | `FluentSvg`, `useIconState`, `wrapIcon`, and their types.                |
+| `@fluentui/react-native-icons/codegen` | Node-only icon code generation. See [Code generation](#code-generation). |
 
 The style entry points hold the same components as the root, so `import { AccessTimeFilled } from '@fluentui/react-native-icons/filled'` resolves to the identical binding. Use them to scope imports, or to keep a barrel module small, without changing icon behavior. They rely on package `exports` resolution, which Metro enables by default from React Native 0.79 and otherwise requires opting in to.
 
-The `convert:rnsvg` step generates components from the optimized SVGs in `packages/svg-icons/icons/`, the same canonical output that `@fluentui/svg-icons` publishes. The project declares `svg-icons` as an Nx dependency, so `yarn nx run react-native-icons:build` builds or restores those SVGs first:
+The `convert:rnsvg` step (`convert-rn.js`, a thin command-line wrapper over the `codegen` entry point) generates components from the optimized SVGs in `packages/svg-icons/icons/`, the same canonical output that `@fluentui/svg-icons` publishes. The project declares `svg-icons` as an Nx dependency, so `yarn nx run react-native-icons:build` builds or restores those SVGs first:
 
 - XML namespace attributes are removed because `react-native-svg` does not accept them.
 - Each icon renders `FluentSvg` directly, using an inferred component name instead of a generated `displayName` assignment.
@@ -112,7 +163,7 @@ Icons are still grouped into chunks. Named imports and side-effect-free modules 
 
 ## Development
 
-Use the repository's Yarn 4 setup with Node.js 22 or 24. From the repository root:
+Use the repository's Yarn 4 setup with Node.js 22.18 or later (or 24). The generator and its tests run TypeScript sources directly with Node's built-in type stripping, which is enabled by default from 22.18. From the repository root:
 
 ```sh
 corepack enable
@@ -136,4 +187,4 @@ yarn nx run react-native-icons:lint
 
 `build:esm` runs TypeScript only; it does not regenerate icons. The package uses TypeScript 7, targets ES2022, and uses the automatic React JSX transform (`react-jsx`). `build:cjs` separately emits CommonJS, while the full `build` script regenerates icons from the canonical SVGs and builds both formats.
 
-Edit source assets, `convert-rn.js`, or handwritten utilities as appropriate. Do not hand-edit generated files in `src/regular/`, `src/filled/`, `src/light/`, `src/color/`, `src/index.tsx`, `lib/`, or `lib-cjs/`.
+Edit source assets, `convert-rn.js`, the generator in `src/codegen/`, or handwritten utilities as appropriate. Source files under `src/codegen/` must use only [erasable TypeScript syntax](https://www.typescriptlang.org/tsconfig/#erasableSyntaxOnly) and `.ts` extensions in relative imports so Node can run them without a build step. Do not hand-edit generated files in `src/regular/`, `src/filled/`, `src/light/`, `src/color/`, `src/index.tsx`, `lib/`, or `lib-cjs/`.
