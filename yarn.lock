@@ -4234,7 +4234,8 @@ __metadata:
     typescript: "npm:^7.0.2"
   peerDependencies:
     "@fluentui/svg-icons": ^1.1.0
-    "@svgr/core": ^6.5.1
+    "@svgr/core": ^6.5.1 || ^7.0.0 || ^8.0.0
+    "@svgr/plugin-jsx": ^6.5.1 || ^7.0.0 || ^8.0.0
     react: ">=18.2.0 <20.0.0"
     react-native: ">=0.73.0"
     react-native-svg: ">=12.5.0"
@@ -4242,6 +4243,8 @@ __metadata:
     "@fluentui/svg-icons":
       optional: true
     "@svgr/core":
+      optional: true
+    "@svgr/plugin-jsx":
       optional: true
   languageName: unknown
   linkType: soft
