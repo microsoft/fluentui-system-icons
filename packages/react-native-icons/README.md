@@ -10,7 +10,7 @@ yarn add @fluentui/react-native-icons react-native-svg
 
 The package requires React `>=18.2.0 <20.0.0`, React Native `>=0.73.0`, and `react-native-svg >=12.5.0`. Choose a `react-native-svg` version compatible with your React Native version and follow its [installation instructions](https://github.com/software-mansion/react-native-svg#installation), including native setup where required. For Expo, use `npx expo install react-native-svg` to select a compatible version.
 
-`@svgr/core` and `@fluentui/svg-icons` are optional peer dependencies, needed only to [generate icon components on demand](#code-generation).
+`@svgr/core`, `@svgr/plugin-jsx`, and `@fluentui/svg-icons` are optional peer dependencies, needed only to [generate icon components on demand](#code-generation).
 
 ## Usage
 
@@ -91,15 +91,16 @@ The `@fluentui/react-native-icons/codegen` entry point exposes the same code pat
 
 ### Optional peer dependencies
 
-Both dependencies are optional peers: apps that only render icons never install them.
+These dependencies are all optional peers: apps that only render icons never install them.
 
-| Peer dependency       | Range    | Needed when                                                                                                                                                                             |
-| --------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `@svgr/core`          | `^6.5.1` | Always, to use `/codegen`. It converts SVG markup to `react-native-svg` JSX. Version 7 and later do not include the JSX plugin that the generator relies on, so they are not supported. |
-| `@fluentui/svg-icons` | `^1.1.0` | Only when you pass icons by name without `svgDir`. It supplies the canonical SVGs. Not needed if you pass SVG markup yourself.                                                          |
+| Peer dependency       | Range                            | Needed when                                                                                                                                                                                   |
+| --------------------- | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `@svgr/core`          | `^6.5.1 \|\| ^7.0.0 \|\| ^8.0.0` | Always, to use `/codegen`. It converts SVG markup to `react-native-svg` JSX.                                                                                                                  |
+| `@svgr/plugin-jsx`    | `^6.5.1 \|\| ^7.0.0 \|\| ^8.0.0` | With `@svgr/core` 7 or later, which no longer includes it. Install the same version as `@svgr/core`, alongside it so `@svgr/core` can load it by name. Version 6 of `@svgr/core` includes it. |
+| `@fluentui/svg-icons` | `^1.1.0`                         | Only when you pass icons by name without `svgDir`. It supplies the canonical SVGs. Not needed if you pass SVG markup yourself.                                                                |
 
 ```sh
-yarn add -D @svgr/core@^6.5.1 @fluentui/svg-icons
+yarn add -D @svgr/core @svgr/plugin-jsx @fluentui/svg-icons
 ```
 
 ### Generating a file
