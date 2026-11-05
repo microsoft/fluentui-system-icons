@@ -4233,9 +4233,16 @@ __metadata:
   dependencies:
     typescript: "npm:^7.0.2"
   peerDependencies:
+    "@fluentui/svg-icons": ^1.1.0
+    "@svgr/core": ^6.5.1
     react: ">=18.2.0 <20.0.0"
     react-native: ">=0.73.0"
     react-native-svg: ">=12.5.0"
+  peerDependenciesMeta:
+    "@fluentui/svg-icons":
+      optional: true
+    "@svgr/core":
+      optional: true
   languageName: unknown
   linkType: soft
 

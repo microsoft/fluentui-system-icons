@@ -62,7 +62,12 @@ describe('React Native SVG generation', () => {
     }
     const result = spawnSync(
       process.execPath,
-      [path.resolve(__dirname, 'convert-rn.js'), `--source=${source}`, `--dest=${output}`, '--native'],
+      [
+        '--disable-warning=MODULE_TYPELESS_PACKAGE_JSON',
+        path.resolve(__dirname, 'convert-rn.js'),
+        `--source=${source}`,
+        `--dest=${output}`,
+      ],
       { encoding: 'utf8' },
     );
     expect(result.status, result.stderr).toBe(0);
@@ -122,9 +127,9 @@ describe('React Native SVG generation', () => {
     expect(icon).toContain('/*#__PURE__*/(props: FluentIconsProps<SvgProps>) =>');
     expect(icon).not.toContain('primaryFill');
     expect(icon).toContain('<Path d=');
-    expect(generated).toContain('import { FluentSvg } from "../utils/fluentSvg";');
+    expect(generated).toContain('import { FluentSvg } from "../utils";');
     expect(generated).toContain('import type { SvgProps } from "react-native-svg";');
-    expect(generated).toContain('import type { FluentIconsProps } from "../utils/FluentIconsProps.types";');
+    expect(generated).toContain('import type { FluentIconsProps } from "../utils";');
     expect(generated).not.toMatch(/wrapIcon|displayName|const \w+Icon =|export \{/);
     expect(index).not.toContain('SquareFilled');
     expect(index).toContain("export { default as wrapIcon } from './utils/wrapIcon'");
@@ -181,7 +186,7 @@ describe('React Native SVG generation', () => {
 
   it('retains literal fills, definition contexts, and primaryFill references outside fill attributes', () => {
     for (const name of ['MixedFilled', 'ClippedFilled', 'StrokeRegular']) {
-      expect(component(generated, name)).toContain("const { primaryFill = 'currentColor' } = props;");
+      expect(component(generated, name)).toContain('const { primaryFill = "currentColor" } = props;');
     }
     expect(component(generated, 'MixedFilled')).toContain('<Path fill={primaryFill}');
     expect(component(generated, 'MixedFilled')).toContain('fill="none"');
