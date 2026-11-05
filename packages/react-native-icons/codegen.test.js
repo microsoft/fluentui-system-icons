@@ -117,18 +117,38 @@ process.stdout.write(generateIconModule([{ name: 'dot_20_regular', svg: ${JSON.s
     expect(result.stdout).toBe(generateIconModule([{ name: 'dot_20_regular', svg: simple }]));
   });
 
-  it('fails fast when @svgr/core returns the SVG unconverted, as versions 7 and later do', async () => {
+  const importWithSvgr = async (factory) => {
     vi.resetModules();
-    vi.doMock('@svgr/core', () => ({ transform: { sync: (svg) => svg } }));
+    vi.doMock('@svgr/core', factory);
     try {
-      const unconverted = await import('./src/codegen/index.ts');
-      expect(() => unconverted.generateIconComponents({ name: 'dot_20_regular', svg: simple })).toThrow(
-        /did not convert dot_20_regular.*\^6\.5\.1/,
-      );
+      return await import('./src/codegen/index.ts');
     } finally {
       vi.doUnmock('@svgr/core');
       vi.resetModules();
     }
+  };
+
+  it('names the JSX plugin, which @svgr/core 7 and later no longer apply by default', async () => {
+    const codegen = await importWithSvgr(async (importOriginal) => {
+      const { transform } = await importOriginal();
+      return {
+        transform: {
+          sync: (svg, config, state) => transform.sync(svg, { ...config, plugins: config.plugins ?? [] }, state),
+        },
+      };
+    });
+    const icons = [
+      { name: 'dot_20_regular', svg: simple },
+      { name: 'dot_24_filled', svg: mixed },
+    ];
+    expect(codegen.generateIconModule(icons)).toBe(generateIconModule(icons));
+  });
+
+  it('fails fast when @svgr/core returns the SVG unconverted', async () => {
+    const codegen = await importWithSvgr(() => ({ transform: { sync: (svg) => svg } }));
+    expect(() => codegen.generateIconComponents({ name: 'dot_20_regular', svg: simple })).toThrow(
+      /did not convert dot_20_regular.*@svgr\/plugin-jsx/,
+    );
   });
 
   it('resolves @fluentui/svg-icons from the given directory', () => {

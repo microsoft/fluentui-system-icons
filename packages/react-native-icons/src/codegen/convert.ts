@@ -46,9 +46,11 @@ function toComponent(
     .sync(content, getSvgrOptions(isColorIcon, resizable), { filePath: `${iconName}.svg` })
     .trim()
     .replace(/;$/, '');
-  // @svgr/core 7 and later no longer include the JSX plugin, so they return the SVG unconverted.
+  // Without a working JSX plugin, @svgr/core returns the SVG unconverted rather than failing.
   if (!jsxCode.includes('<FluentSvg')) {
-    throw new Error(`@svgr/core did not convert ${iconName} to a component. Use @svgr/core ^6.5.1.`);
+    throw new Error(
+      `@svgr/core did not convert ${iconName} to a component. Install @svgr/plugin-jsx with the same version as @svgr/core.`,
+    );
   }
   // Complex artwork still needs explicit fills; simple shapes inherit from FluentSvg.
   const body = jsxCode.includes('{primaryFill}')
@@ -74,6 +76,9 @@ function getSvgrOptions(isColorIcon: boolean, isResizable: boolean): Config {
     native: true,
     // Skip .svgrrc and svgr.config.js files found from the working directory, so the output is the same wherever codegen runs.
     runtimeConfig: false,
+    // @svgr/core 7 and later no longer include the JSX plugin by default. @svgr/core loads it by name,
+    // and version 6 resolves it from its own dependencies.
+    plugins: ['@svgr/plugin-jsx'],
     jsx: {
       babelConfig: {
         plugins: [[fluentSvgPlugin, { resizable: isResizable, isColorIcon }]],
