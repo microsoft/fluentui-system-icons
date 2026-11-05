@@ -23,9 +23,9 @@ export type FluentSvgProps = FluentIconsProps<SvgProps> & {
  */
 export function FluentSvg(props: FluentSvgProps) {
   const { size, ...rest } = props;
-  rest.width ??= size ?? 24;
-  rest.height ??= size ?? 24;
-  rest.viewBox ??= `0 0 ${size ?? 20} ${size ?? 20}`;
+  if (!('width' in rest)) rest.width = size ?? 24;
+  if (!('height' in rest)) rest.height = size ?? 24;
+  if (!('viewBox' in rest)) rest.viewBox = `0 0 ${size ?? 20} ${size ?? 20}`;
   const svgProps = useIconState(rest);
   return <Svg {...svgProps} />;
 }
