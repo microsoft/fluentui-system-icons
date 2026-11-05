@@ -13,13 +13,8 @@
   },
   "scripts": {
     "clean": "find ./src -type f ! -name \"wrapIcon.tsx\" -name \"*.tsx\" -delete",
-    "cleanSvg": "rm -rf ./intermediate",
-    "copy": "node ../../importer/generate.js --source=../../assets --dest=./intermediate --extension=svg --target=react",
-    "convert:rnsvg": "node ../react-native-icons/convert-rn.js --source=./intermediate --dest=./src --native=true",
-    "rollup": "node ./generateRollup.js",
-    "optimize": "yarn run -T svgo --config svgo.config.js --folder=./intermediate --precision=2 --quiet",
-    "unfill": "find ./intermediate -type f -name \"*.svg\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./intermediate -type f -name \"*.bak\" -delete",
-    "build": "yarn copy && yarn optimize && yarn unfill && yarn convert:rnsvg && yarn cleanSvg && yarn build:esm && yarn build:cjs",
+    "convert:rnsvg": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON ./convert-rn.js --source=../svg-icons/icons --dest=./src",
+    "build": "yarn convert:rnsvg && yarn build:esm && yarn build:cjs",
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "build:esm": "tsc",
     "lint": "yarn run -T eslint package.json",
@@ -29,9 +24,23 @@
     "typescript": "^7.0.2"
   },
   "peerDependencies": {
+    "@fluentui/svg-icons": "^1.1.0",
+    "@svgr/core": "^6.5.1 || ^7.0.0 || ^8.0.0",
+    "@svgr/plugin-jsx": "^6.5.1 || ^7.0.0 || ^8.0.0",
     "react": ">=18.2.0 <20.0.0",
     "react-native": ">=0.73.0",
     "react-native-svg": ">=12.5.0"
+  },
+  "peerDependenciesMeta": {
+    "@fluentui/svg-icons": {
+      "optional": true
+    },
+    "@svgr/core": {
+      "optional": true
+    },
+    "@svgr/plugin-jsx": {
+      "optional": true
+    }
   },
   "files": [
     "lib/",
@@ -49,6 +58,31 @@
       "types": "./lib/utils/index.d.ts",
       "import": "./lib/utils/index.js",
       "require": "./lib-cjs/utils/index.js"
+    },
+    "./regular": {
+      "types": "./lib/regular/index.d.ts",
+      "import": "./lib/regular/index.js",
+      "require": "./lib-cjs/regular/index.js"
+    },
+    "./filled": {
+      "types": "./lib/filled/index.d.ts",
+      "import": "./lib/filled/index.js",
+      "require": "./lib-cjs/filled/index.js"
+    },
+    "./light": {
+      "types": "./lib/light/index.d.ts",
+      "import": "./lib/light/index.js",
+      "require": "./lib-cjs/light/index.js"
+    },
+    "./color": {
+      "types": "./lib/color/index.d.ts",
+      "import": "./lib/color/index.js",
+      "require": "./lib-cjs/color/index.js"
+    },
+    "./codegen": {
+      "types": "./lib/codegen/index.d.ts",
+      "import": "./lib/codegen/index.js",
+      "require": "./lib-cjs/codegen/index.js"
     }
   }
 }

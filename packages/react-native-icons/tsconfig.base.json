@@ -7,7 +7,6 @@
     "importHelpers": false,
     "strictBindCallApply": false,
     "noImplicitAny": false,
-    "erasableSyntaxOnly": false,
     "jsx": "react-jsx"
   },
   "include": ["src"]
