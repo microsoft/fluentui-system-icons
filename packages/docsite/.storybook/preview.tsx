@@ -32,6 +32,8 @@ const preview = {
             'Build Transforms',
             'Bundle Size',
           ],
+          'SVG Icons',
+          ['Overview'],
           'File Type Icons',
           ['Overview', 'Catalog', 'Migration (v8 → v9)'],
         ],
