@@ -34,6 +34,26 @@ const extractHeadlessIconsCss = (config: webpack.Configuration): void => {
   config.plugins.push(new MiniCssExtractPlugin());
 };
 
+const SVG_ASSET_QUERY = /[?&](raw|url)(?:&|$)/;
+
+const excludeSvgAssetQueries = (rules: NonNullable<webpack.ModuleOptions['rules']>): void => {
+  for (const rule of rules) {
+    if (!rule || typeof rule !== 'object') {
+      continue;
+    }
+    if (rule.test instanceof RegExp && rule.test.test('icon.svg')) {
+      const excludeQuery = { not: [SVG_ASSET_QUERY] };
+      rule.resourceQuery = rule.resourceQuery ? { and: [rule.resourceQuery, excludeQuery] } : excludeQuery;
+    }
+    if (rule.oneOf) {
+      excludeSvgAssetQueries(rule.oneOf);
+    }
+    if (rule.rules) {
+      excludeSvgAssetQueries(rule.rules);
+    }
+  }
+};
+
 const config: StorybookConfig = {
   stories: ['../stories/**/index.stories.@(ts|tsx)', '../stories/**/*.mdx'],
 
@@ -74,11 +94,20 @@ const config: StorybookConfig = {
   },
 
   webpackFinal: async (webpackConfig, options) => {
+    webpackConfig.module = webpackConfig.module ?? {};
+    webpackConfig.module.rules = webpackConfig.module.rules ?? [];
+    excludeSvgAssetQueries(webpackConfig.module.rules);
+    webpackConfig.module.rules.push(
+      { test: /\.svg$/, resourceQuery: /[?&]url(?:&|$)/, type: 'asset/resource' },
+      { test: /\.svg$/, resourceQuery: /[?&]raw(?:&|$)/, type: 'asset/source' },
+    );
+
     webpackConfig.plugins = webpackConfig.plugins ?? [];
     webpackConfig.plugins.push(
       new webpack.DefinePlugin({
         STORYBOOK_REACT_ICONS_VERSION: JSON.stringify(readPackageVersion('../../react-icons')),
         STORYBOOK_REACT_ICONS_FILE_TYPE_VERSION: JSON.stringify(readPackageVersion('../../react-icons-file-type')),
+        STORYBOOK_SVG_ICONS_VERSION: JSON.stringify(readPackageVersion('../../svg-icons')),
       }),
     );
 

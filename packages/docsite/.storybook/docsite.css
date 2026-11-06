@@ -22,3 +22,31 @@
 #storybook-docs .fluent-version-badge__name {
   font-family: 'Cascadia Code', Menlo, 'Courier New', Courier, monospace;
 }
+
+#storybook-docs .svg-icons-description,
+#storybook-docs div:has(> .svg-icons-description) {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+  #storybook-docs .sbdocs-content:has(.svg-icons-description) div:has(> .fui-SplitButton) {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  #storybook-docs .sbdocs-content:has(.svg-icons-description) :not(pre) > code {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  #storybook-docs .sbdocs-content:has(.svg-icons-description) div:has(> .docblock-code-toggle) {
+    position: static;
+    flex-wrap: wrap;
+  }
+
+  #storybook-docs .sbdocs-content:has(.svg-icons-description) .docblock-code-toggle {
+    flex: 1 1 90px;
+    min-width: 0;
+  }
+}
