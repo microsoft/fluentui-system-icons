@@ -26,3 +26,5 @@
 # Root level files
 /yarn.lock
 /icons_*.md
+
+.nx/self-healing

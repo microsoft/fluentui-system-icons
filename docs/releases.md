@@ -55,6 +55,32 @@ These packages are released independently via the `publish-standalone.yml` workf
 - Permissions to trigger GitHub Actions workflows
 - Valid tokens configured in repository secrets
 
+### Local compatibility checks
+
+When updating Nx, preserve the independent `react`, `native`, and `standalone`
+groups in `nx.json`, their project selections, and the granular
+`version.git` / `changelog.git` settings. The workflows use the version and
+changelog subcommands separately; switching to the unified `nx release` command
+or moving these settings changes that contract.
+
+For a local version-calculation check without publishing or modifying package
+versions, run the subcommand explicitly in dry-run mode:
+
+```sh
+yarn nx release version patch --groups=react --dry-run --no-git-commit --no-git-tag --no-git-push --no-stage-changes
+```
+
+Repeat for `native` and `standalone`; also check conventional-commit versioning
+without the explicit `patch` specifier for standalone packages. Verify that
+package manifests and `yarn.lock` remain unchanged. Check prerelease helpers
+against the same project graph: they resolve Nx names and npm package names
+differently and rely on the directly declared `@nx/devkit` dependency.
+
+A workflow's **dry-run** input is not equivalent to a read-only local check:
+workflow versioning and generation steps can still modify files. Do not dispatch
+release workflows to validate an Nx migration. Publishing, tagging, pushing,
+and creating remote releases are separate release operations, not validation.
+
 ### How to Trigger a Release
 
 - Go to https://github.com/microsoft/fluentui-system-icons/actions/workflows/publish.yml

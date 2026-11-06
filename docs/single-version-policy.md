@@ -153,3 +153,28 @@ default.
    or a matching version) in that package's `dependencies`, then run
    `yarn nx run <project>:lint --fix` to sync the version from the root.
 3. Run `yarn deps:check` to confirm the policy passes.
+
+### Updating Nx
+
+Keep `nx`, `@nx/js`, `@nx/eslint-plugin`, and `@nx/devkit` on the same exact
+version. The prerelease scripts import `@nx/devkit` directly, so it is a root
+dependency rather than relying on another Nx package to hoist it.
+
+Nx 23 supports Node 22.12+ and Node 24 within this repository's declared engine
+ranges; see the [Nx Node.js support matrix](https://nx.dev/docs/technologies/node/introduction).
+The existing Node 22.x CI selection satisfies this minimum. This does not change
+the intentional TypeScript 5.0.4 root / 4.1.6 React icons split above.
+
+Use `yarn nx migrate nx@<version>`, review the generated package updates and
+`migrations.json`, run `yarn install`, then `yarn nx migrate --run-migrations`.
+Do not replay an old migration list or accept unrelated compiler upgrades.
+The Nx 23.3.0 migration replaces the retained Nx 22 migration list; its TypeScript 6
+migrations do not apply to these compiler versions.
+
+After migrating, check `yarn install --immutable`, `yarn nx report`, and the
+resolved project graph, including target commands, working directories, inputs,
+outputs, dependency ordering, and release selections. Run build targets before
+build-verification targets, as CI does: not every verification target declares
+its build dependency. Compare generated package artifacts and cold/warm cache
+restoration, not just successful command exits. Keep required release and cache
+fixes in the same change as the dependency update.
