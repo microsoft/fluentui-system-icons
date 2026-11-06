@@ -72,9 +72,15 @@ dependencies:
 
 For library docs, see [flutter/README.md](flutter/README.md).
 
-### Plain svg
+### SVG (Any Framework)
 
-Inline svg directly. See [packages/svg-icons/README.md](packages/svg-icons/README.md).
+Use the official `@fluentui/svg-icons` package for optimized SVG assets in HTML, non-React frameworks, or React applications that manage assets directly:
+
+```sh
+npm install @fluentui/svg-icons
+```
+
+Use ordinary images, CSS masks, or inline SVG without a React wrapper. See [packages/svg-icons/README.md](packages/svg-icons/README.md) for styles (including Light), localized artwork, accessibility, and bundler setup, or explore the [live SVG examples](https://microsoft.github.io/fluentui-system-icons/?path=/docs/svg-icons-overview--docs).
 
 ## Contributing
 
