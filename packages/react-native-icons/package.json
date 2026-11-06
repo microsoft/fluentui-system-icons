@@ -25,7 +25,7 @@
     "lint": "yarn run -T eslint package.json"
   },
   "dependencies": {
-    "tslib": "^2.1.0"
+    "tslib": "^2.9.1"
   },
   "peerDependencies": {
     "react": ">=18.2.0 <20.0.0",
