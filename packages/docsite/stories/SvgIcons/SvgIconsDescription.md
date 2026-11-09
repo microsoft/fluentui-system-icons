@@ -75,3 +75,7 @@ For example: `mail_32_regular.svg`, `mail_32_filled.svg`, and `mail_32_light.svg
 - **Image:** Load a URL with `<img>` for ordinary image loading and browser caching. Page `color` and `fill` do not reach inside the SVG.
 - **CSS mask:** Use the SVG as a silhouette painted by CSS. Best for monochrome icons that follow text color.
 - **Inline SVG:** Embed package markup when you need SVG styling. Use only trusted markup and scope local IDs/references per instance; external images isolate their SVG IDs.
+
+## Monochrome recoloring options
+
+Set `color` on the surrounding control. CSS masks use `background-color: currentColor`; inline SVG uses `fill: currentColor`. External images keep their own colors. Fixed child fills take precedence over an inherited fill.

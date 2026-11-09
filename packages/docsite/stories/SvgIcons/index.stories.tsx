@@ -1,10 +1,8 @@
-import * as React from 'react';
-import { DocsStory, HeaderMdx, Markdown } from '@storybook/addon-docs/blocks';
 import type { Meta } from '@storybook/react';
-import { FluentDocsPage, type FluentParameters } from '@fluentui/react-storybook-addon';
+import type { FluentParameters } from '@fluentui/react-storybook-addon';
 import type { Parameters } from '@fluentui/react-storybook-addon-export-to-sandbox';
 import descriptionMd from './SvgIconsDescription.md';
-import accessibilityMd from './SvgIconsAccessibility.md?raw';
+import accessibilityMd from './SvgIconsAccessibility.md';
 import { svgIconsVersion } from '../utils/packageVersion';
 import { versionBadgeMarkup } from '../components/VersionBadge';
 
@@ -16,27 +14,8 @@ export default {
   title: 'SVG Icons/Overview',
   parameters: {
     docs: {
-      page: () => (
-        <FluentDocsPage
-          renderStories={({ stories }) => (
-            <>
-              {stories.map((story) => (
-                <React.Fragment key={story.id}>
-                  {story.id.endsWith('--coloring') && (
-                    <HeaderMdx as="h2" id="monochrome-recoloring-options">
-                      Monochrome recoloring options
-                    </HeaderMdx>
-                  )}
-                  <DocsStory of={story.moduleExport} expanded />
-                </React.Fragment>
-              ))}
-              <Markdown>{accessibilityMd}</Markdown>
-            </>
-          )}
-        />
-      ),
       description: {
-        component: `<div class="svg-icons-description">${versionBadgeMarkup({ packageName: '@fluentui/svg-icons', version: svgIconsVersion })}</div>\n\n${descriptionMd}`,
+        component: `<div class="svg-icons-description">${versionBadgeMarkup({ packageName: '@fluentui/svg-icons', version: svgIconsVersion })}</div>\n\n${descriptionMd}\n\n${accessibilityMd}`,
       },
       hideArgsTable: true,
     },

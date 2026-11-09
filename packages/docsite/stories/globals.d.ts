@@ -15,11 +15,6 @@ declare module '*.svg?raw' {
   export default markup;
 }
 
-declare module '*.md?raw' {
-  const markdown: string;
-  export default markdown;
-}
-
 // Image assets imported by stories resolve to their emitted URL (webpack `asset/resource`).
 declare module '*.gif' {
   const src: string;
