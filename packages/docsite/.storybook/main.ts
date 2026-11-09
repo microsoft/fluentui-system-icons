@@ -34,26 +34,6 @@ const extractHeadlessIconsCss = (config: webpack.Configuration): void => {
   config.plugins.push(new MiniCssExtractPlugin());
 };
 
-const SVG_ASSET_QUERY = /[?&](raw|url)(?:&|$)/;
-
-const excludeSvgAssetQueries = (rules: NonNullable<webpack.ModuleOptions['rules']>): void => {
-  for (const rule of rules) {
-    if (!rule || typeof rule !== 'object') {
-      continue;
-    }
-    if (rule.test instanceof RegExp && rule.test.test('icon.svg')) {
-      const excludeQuery = { not: [SVG_ASSET_QUERY] };
-      rule.resourceQuery = rule.resourceQuery ? { and: [rule.resourceQuery, excludeQuery] } : excludeQuery;
-    }
-    if (rule.oneOf) {
-      excludeSvgAssetQueries(rule.oneOf);
-    }
-    if (rule.rules) {
-      excludeSvgAssetQueries(rule.rules);
-    }
-  }
-};
-
 const config: StorybookConfig = {
   stories: ['../stories/**/index.stories.@(ts|tsx)', '../stories/**/*.mdx'],
 
@@ -96,11 +76,22 @@ const config: StorybookConfig = {
   webpackFinal: async (webpackConfig, options) => {
     webpackConfig.module = webpackConfig.module ?? {};
     webpackConfig.module.rules = webpackConfig.module.rules ?? [];
-    excludeSvgAssetQueries(webpackConfig.module.rules);
-    webpackConfig.module.rules.push(
-      { test: /\.svg$/, resourceQuery: /[?&]url(?:&|$)/, type: 'asset/resource' },
-      { test: /\.svg$/, resourceQuery: /[?&]raw(?:&|$)/, type: 'asset/source' },
+    const rules = webpackConfig.module.rules;
+    const mediaRuleIndex = rules.findIndex(
+      (rule) =>
+        rule &&
+        typeof rule === 'object' &&
+        rule.type === 'asset/resource' &&
+        rule.test instanceof RegExp &&
+        rule.test.test('icon.svg'),
     );
+    const mediaRule = rules[mediaRuleIndex];
+    if (!mediaRule || typeof mediaRule !== 'object') {
+      throw new Error('Storybook SVG asset/resource rule was not found');
+    }
+    rules[mediaRuleIndex] = {
+      oneOf: [{ test: /\.svg$/, resourceQuery: /[?&]raw(?:&|$)/, type: 'asset/source' }, mediaRule],
+    };
 
     webpackConfig.plugins = webpackConfig.plugins ?? [];
     webpackConfig.plugins.push(

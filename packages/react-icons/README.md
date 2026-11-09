@@ -20,7 +20,7 @@ Icons are available in multiple variants: `Regular` and `Filled` for most icons,
 
 There are also helpful interfaces that will allow you to add styling to fit the icons to your specific application.
 
-For non-React consumers, see the separate [`@fluentui/svg-icons` package guide](https://github.com/microsoft/fluentui-system-icons/blob/main/packages/svg-icons/README.md).
+For raw SVG consumption, see the separate [`@fluentui/svg-icons` package guide](https://github.com/microsoft/fluentui-system-icons/blob/main/packages/svg-icons/README.md).
 
 ## Usage
 

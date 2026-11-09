@@ -17,6 +17,7 @@
         "{projectRoot}/public/**",
         "{workspaceRoot}/packages/react-icons-file-type/src/common/fileIconTypes.json",
         "{workspaceRoot}/packages/react-icons-file-type/src/common/fileTypeIconMap.json",
+        "assets",
         "^default"
       ],
       "outputs": ["{projectRoot}/storybook-static"]
