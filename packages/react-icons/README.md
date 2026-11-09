@@ -93,16 +93,9 @@ ReactDOM.render(
 );
 ```
 
-### Breaking change: Pride Flag icons use Color
+### Breaking changes and migration
 
-The Flag Pride, Flag Pride Progress, Flag Pride Philadelphia, and Flag Pride Intersex Inclusive Progress families have moved from `Filled` to `Color`. Replace `Filled` with `Color` in their sized (16, 20, 24, 28, 32, 48) and resizable SVG imports; the old Filled SVG exports are removed, not aliased.
-
-```tsx
-import { FlagPrideProgress24Color } from '@fluentui/react-icons/svg/flag-pride-progress';
-import { FlagPrideProgress24Color as HeadlessFlag } from '@fluentui/react-icons/headless/svg/flag-pride-progress';
-```
-
-The root SVG entry points also export the new names. Both standard and headless SVG components preserve the authored palette, including white regions and the Intersex flag's purple stroke; `primaryFill` no longer recolors the artwork. Use SVG imports for these multicolor icons, not icon fonts, which cannot preserve the palette. Raw SVG consumers must likewise replace `_filled.svg` with `_color.svg`. Other icon families are unchanged.
+See the [migration guide](./MIGRATION.md) for explicit breaking changes and upgrade instructions, including the Pride Flag families' move from `Filled` to `Color`.
 
 ### Localized and directional icons
 
