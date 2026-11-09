@@ -8,7 +8,7 @@ const { parseArgs } = require('node:util');
 const { values } = parseArgs({ options: { path: { type: 'string' } } });
 
 replaceInFiles({
-  search: /\sfill="(none|#212121)"/g,
+  search: /\sfill="(none|#212121|#242424)"/g,
   replacement: '',
   paths: [values.path],
   recursive: true,
