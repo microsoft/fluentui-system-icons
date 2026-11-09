@@ -33,7 +33,7 @@ const preview = {
             'Bundle Size',
           ],
           'SVG Icons',
-          ['Overview'],
+          ['Overview', 'Catalog'],
           'File Type Icons',
           ['Overview', 'Catalog', 'Migration (v8 → v9)'],
         ],

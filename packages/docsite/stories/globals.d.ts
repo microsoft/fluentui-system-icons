@@ -3,6 +3,7 @@
 declare const STORYBOOK_REACT_ICONS_VERSION: string;
 declare const STORYBOOK_REACT_ICONS_FILE_TYPE_VERSION: string;
 declare const STORYBOOK_SVG_ICONS_VERSION: string;
+declare const STORYBOOK_SVG_ICON_PATHS: readonly string[];
 
 declare module '*.svg?url' {
   const src: string;
@@ -12,6 +13,11 @@ declare module '*.svg?url' {
 declare module '*.svg?raw' {
   const markup: string;
   export default markup;
+}
+
+declare module '*.md?raw' {
+  const markdown: string;
+  export default markdown;
 }
 
 // Image assets imported by stories resolve to their emitted URL (webpack `asset/resource`).

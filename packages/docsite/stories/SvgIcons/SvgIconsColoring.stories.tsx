@@ -76,7 +76,7 @@ Coloring.parameters = {
   docs: {
     description: {
       story:
-        'All three previews receive the selected CSS `color`. Only the CSS mask (`background-color: currentColor`) and inline SVG (`fill: currentColor`) follow it. The external `<img>` keeps its original black fill because page styles cannot reach inside its SVG document. This comparison uses monochrome artwork and trusted package markup, not color variants.',
+        'All three previews receive the selected CSS color. Only the mask and inline SVG repaint; the external image stays black. See [Accessibility when recoloring](?path=/docs/svg-icons-overview--docs#accessibility-when-recoloring) for contrast and forced-colors guidance.',
     },
   },
 };

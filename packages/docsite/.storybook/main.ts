@@ -11,6 +11,7 @@ const readPackageVersion = (packageDir: string): string =>
 
 // The headless icon CSS shipped by `@fluentui/react-icons` (base `data-fui-icon` rules + @font-face).
 const HEADLESS_ICONS_CSS = /[\\/]react-icons[\\/]lib[\\/]headless[\\/].*\.css$/;
+const SVG_ICONS_DIRECTORY = path.resolve(__dirname, '../../svg-icons/icons');
 
 /**
  * Extract ONLY the `@fluentui/react-icons` headless CSS to a real stylesheet asset (a `<link>`) so
@@ -36,6 +37,7 @@ const extractHeadlessIconsCss = (config: webpack.Configuration): void => {
 
 const config: StorybookConfig = {
   stories: ['../stories/**/index.stories.@(ts|tsx)', '../stories/**/*.mdx'],
+  staticDirs: [{ from: SVG_ICONS_DIRECTORY, to: '/svg-icons' }],
 
   addons: [
     {
@@ -99,6 +101,16 @@ const config: StorybookConfig = {
         STORYBOOK_REACT_ICONS_VERSION: JSON.stringify(readPackageVersion('../../react-icons')),
         STORYBOOK_REACT_ICONS_FILE_TYPE_VERSION: JSON.stringify(readPackageVersion('../../react-icons-file-type')),
         STORYBOOK_SVG_ICONS_VERSION: JSON.stringify(readPackageVersion('../../svg-icons')),
+        STORYBOOK_SVG_ICON_PATHS: JSON.stringify(
+          fs
+            .readdirSync(SVG_ICONS_DIRECTORY, { recursive: true })
+            .filter((file) => file.endsWith('.svg'))
+            .map((file) => file.split(path.sep).join('/'))
+            .sort(
+              (first, second) =>
+                Number(first.includes('/')) - Number(second.includes('/')) || first.localeCompare(second),
+            ),
+        ),
       }),
     );
 

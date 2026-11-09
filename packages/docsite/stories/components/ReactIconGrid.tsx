@@ -1,19 +1,12 @@
 import * as ReactIcons from '@fluentui/react-icons';
-import {
-  Button,
-  makeStyles,
-  MessageBar,
-  Toaster,
-  tokens,
-  useIsomorphicLayoutEffect,
-  useScrollbarWidth,
-} from '@fluentui/react-components';
+import { Button, makeStyles, MessageBar, Toaster, tokens } from '@fluentui/react-components';
 import * as React from 'react';
 import { FixedSizeGrid, type GridChildComponentProps } from 'react-window';
 import { IconCatalogControls } from './IconCatalogControls';
 import { SIZED_ICON_SIZES } from './icon-sizes';
 import { isSizedIconName, SIZED_ICON_RE } from './sized-icons';
 import { useIconCatalogClipboard } from './useIconCatalogClipboard';
+import { useIconCatalogGridLayout } from './useIconCatalogGridLayout';
 
 const ICON_CELL_WIDTH = 250;
 const RESIZABLE_ICON_SIZE = 48;
@@ -116,16 +109,12 @@ const renderIconCell = (itemProps: GridChildComponentProps & { data: IconCellDat
 
 export const ReactIconGrid = () => {
   const classes = useClasses();
-  const scrollBarWidth = useScrollbarWidth({ targetDocument: document }) ?? 0;
 
   const { copyIcon, toasterId } = useIconCatalogClipboard();
 
   const [searchQuery, setSearchQuery] = React.useState('');
   const [size, setSize] = React.useState<string>('resizable');
   const [variant, setVariant] = React.useState('all');
-
-  const areaRef = React.useRef<HTMLDivElement>(null);
-  const [width, setWidth] = React.useState<number>(1000);
 
   const filteredIcons = React.useMemo(
     () =>
@@ -149,34 +138,20 @@ export const ReactIconGrid = () => {
     [searchQuery, size, variant],
   );
 
-  const columnCount = Math.max(1, Math.floor(width / ICON_CELL_WIDTH));
   const previewSize = size === 'all' || size === 'resizable' ? RESIZABLE_ICON_SIZE : Number(size);
   const rowHeight = Math.max(30, previewSize) + 55;
-  const height = Math.min(Math.ceil(filteredIcons.length / columnCount) * rowHeight + 10, 1000);
+  const { areaRef, gridRef, gridProps } = useIconCatalogGridLayout({
+    items: filteredIcons,
+    cellWidth: ICON_CELL_WIDTH,
+    rowHeight,
+  });
 
   const iconCellData: IconCellData = {
     icons: filteredIcons,
     classes,
-    columnCount,
+    columnCount: gridProps.columnCount,
     onCopy: (iconName: string) => void copyIcon(`<${iconName} />`),
   };
-
-  useIsomorphicLayoutEffect(() => {
-    const observer = new ResizeObserver((entries) => {
-      const nextWidth = entries[0].contentRect.width;
-      if (nextWidth > 0) {
-        setWidth(nextWidth);
-      }
-    });
-
-    if (areaRef.current) {
-      observer.observe(areaRef.current);
-
-      return () => {
-        observer.disconnect();
-      };
-    }
-  }, []);
 
   return (
     <div ref={areaRef}>
@@ -199,15 +174,7 @@ export const ReactIconGrid = () => {
         </MessageBar>
       ) : (
         <div className={classes.pane}>
-          <FixedSizeGrid
-            itemData={iconCellData}
-            columnCount={columnCount}
-            columnWidth={width / columnCount - scrollBarWidth / columnCount}
-            height={height}
-            rowCount={Math.ceil(filteredIcons.length / columnCount)}
-            rowHeight={rowHeight}
-            width={width}
-          >
+          <FixedSizeGrid ref={gridRef} itemData={iconCellData} {...gridProps}>
             {renderIconCell}
           </FixedSizeGrid>
         </div>
