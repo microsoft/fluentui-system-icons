@@ -5,7 +5,11 @@
   "targets": {
     "test": {
       "cache": true,
-      "inputs": ["default"]
+      "inputs": [
+        "default",
+        "{workspaceRoot}/assets/Checkmark Circle/SVG/ic_fluent_checkmark_circle_24_regular.svg",
+        "{workspaceRoot}/fonts/FluentSystemIcons-Regular.json"
+      ]
     },
     "deploy:fonts": {
       "cache": true,
