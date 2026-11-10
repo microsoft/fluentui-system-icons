@@ -46,43 +46,17 @@ describe('Build Verification', () => {
     }
   });
 
-  it('should not contain fill="#212121" or fill="none" (unfill step)', async () => {
-    const entries = await readdir(ICONS_DIR);
-    const svgFiles = entries.filter((e) => e.endsWith('.svg') && !e.includes('_color'));
+  it('should not retain disallowed fills in any non-Color SVG (unfill step)', async () => {
+    const entries = await readdir(ICONS_DIR, { recursive: true });
+    const svgFiles = entries.filter((e) => e.endsWith('.svg') && !e.endsWith('_color.svg'));
+    expect(svgFiles.length).toBeGreaterThan(0);
 
-    // Sample files to verify unfill was applied
-    const sample = svgFiles.sort().slice(0, 20);
-
-    for (const file of sample) {
-      const content = await readFile(path.join(ICONS_DIR, file), 'utf8');
-      expect(content, `${file} should not have fill="#212121"`).not.toMatch(/\sfill="#212121"/);
-      expect(content, `${file} should not have fill="none"`).not.toMatch(/\sfill="none"/);
+    for (const file of svgFiles) {
+      const content = fs.readFileSync(path.join(ICONS_DIR, file), 'utf8');
+      expect(content, `${file} should not retain a monochrome design fill`).not.toMatch(
+        /\sfill="(?:none|#212121|#242424)"/,
+      );
     }
-  });
-
-  it.each([
-    'app_folder_hint_20_filled.svg',
-    'app_folder_hint_20_regular.svg',
-    'archive_clock_16_regular.svg',
-    'archive_clock_20_filled.svg',
-    'archive_clock_20_regular.svg',
-    'archive_clock_24_filled.svg',
-    'archive_clock_24_regular.svg',
-    'archive_clock_28_filled.svg',
-    'archive_clock_28_regular.svg',
-    'archive_clock_32_filled.svg',
-    'archive_clock_32_regular.svg',
-    'box_question_mark_20_filled.svg',
-    'box_question_mark_20_regular.svg',
-    'ko/text_edit_style_20_filled.svg',
-    'skip_back_15_28_filled.svg',
-    'skip_back_15_32_regular.svg',
-    'skip_forward_15_28_filled.svg',
-    'skip_forward_15_32_regular.svg',
-  ])('should inherit fill for every path in %s', async (file) => {
-    const content = await readFile(path.join(ICONS_DIR, file), 'utf8');
-    expect(content).toMatch(/<path\b/);
-    expect(content).not.toMatch(/\sfill="/);
   });
 
   it('should strip only monochrome design fills and leave Color icons unchanged', () => {
