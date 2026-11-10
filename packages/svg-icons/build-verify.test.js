@@ -4,6 +4,8 @@ import { readdir, readFile, stat } from 'node:fs/promises';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { execFileSync } from 'node:child_process';
+import { tmpdir } from 'node:os';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ICONS_DIR = path.join(__dirname, 'icons');
@@ -44,17 +46,54 @@ describe('Build Verification', () => {
     }
   });
 
-  it('should not contain fill="#212121" or fill="none" (unfill step)', async () => {
-    const entries = await readdir(ICONS_DIR);
-    const svgFiles = entries.filter((e) => e.endsWith('.svg') && !e.includes('_color'));
+  it('should not retain disallowed fills in any non-Color SVG (unfill step)', async () => {
+    const entries = await readdir(ICONS_DIR, { recursive: true });
+    const svgFiles = entries.filter((e) => e.endsWith('.svg') && !e.endsWith('_color.svg'));
+    expect(svgFiles.length).toBeGreaterThan(0);
 
-    // Sample files to verify unfill was applied
-    const sample = svgFiles.sort().slice(0, 20);
+    for (const file of svgFiles) {
+      const content = fs.readFileSync(path.join(ICONS_DIR, file), 'utf8');
+      expect(content, `${file} should not retain a monochrome design fill`).not.toMatch(
+        /\sfill="(?:none|#212121|#242424)"/,
+      );
+    }
+  });
 
-    for (const file of sample) {
-      const content = await readFile(path.join(ICONS_DIR, file), 'utf8');
-      expect(content, `${file} should not have fill="#212121"`).not.toMatch(/\sfill="#212121"/);
-      expect(content, `${file} should not have fill="none"`).not.toMatch(/\sfill="none"/);
+  it('should strip only monochrome design fills and leave Color icons unchanged', () => {
+    const dir = fs.mkdtempSync(path.join(tmpdir(), 'fluent-svg-unfill-'));
+    const svg =
+      '<svg fill="none"><path fill="#212121" d="M0 0h1v1z"/>' +
+      '<path fill="#242424" stroke="#242424" d="M1 1h1v1z"/>' +
+      '<path fill="#fff" d="M2 2h1v1z"/><path fill="#E50000" d="M3 3h1v1z"/>' +
+      '<defs><clipPath id="clip"><path fill="white" d="M0 0h4v4z"/></clipPath></defs></svg>';
+    try {
+      fs.mkdirSync(path.join(dir, 'ko'));
+      for (const file of [
+        'test_20_regular.svg',
+        'ko/test_20_filled.svg',
+        'test_20_color.svg',
+        'ko/test_20_color.svg',
+      ]) {
+        fs.writeFileSync(path.join(dir, file), svg);
+      }
+
+      execFileSync(process.execPath, [path.join(__dirname, 'unfill.js'), `--path=${dir}`]);
+
+      for (const file of ['test_20_regular.svg', 'ko/test_20_filled.svg']) {
+        const content = fs.readFileSync(path.join(dir, file), 'utf8');
+        expect(content).not.toContain(' fill="none"');
+        expect(content).not.toContain(' fill="#212121"');
+        expect(content).not.toContain(' fill="#242424"');
+        expect(content).toContain('stroke="#242424"');
+        expect(content).toContain('fill="#fff"');
+        expect(content).toContain('fill="#E50000"');
+        expect(content).toContain('<clipPath id="clip">');
+      }
+      for (const file of ['test_20_color.svg', 'ko/test_20_color.svg']) {
+        expect(fs.readFileSync(path.join(dir, file), 'utf8')).toBe(svg);
+      }
+    } finally {
+      fs.rmSync(dir, { recursive: true, force: true });
     }
   });
 
