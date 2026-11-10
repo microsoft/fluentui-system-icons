@@ -5054,7 +5054,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fluentui/svg-icons@workspace:packages/svg-icons":
+"@fluentui/svg-icons@npm:*, @fluentui/svg-icons@workspace:packages/svg-icons":
   version: 0.0.0-use.local
   resolution: "@fluentui/svg-icons@workspace:packages/svg-icons"
   languageName: unknown
@@ -11527,6 +11527,7 @@ __metadata:
     "@fluentui/react-icons": "npm:*"
     "@fluentui/react-icons-file-type": "npm:*"
     "@fluentui/react-icons-font-subsetting-webpack-plugin": "npm:*"
+    "@fluentui/svg-icons": "npm:*"
   languageName: unknown
   linkType: soft
 
