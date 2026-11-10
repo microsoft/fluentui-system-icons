@@ -5,8 +5,51 @@ import os from 'node:os';
 import { spawnSync } from 'node:child_process';
 import { create as createFont } from 'fontkit';
 import { describe, it, expect } from 'vitest';
+import { optimize } from 'svgo';
 
 describe('font generation', () => {
+  it('preserves the CheckmarkCircle Regular checkmark contour after optimization', async () => {
+    const source = fs.mkdtempSync(path.join(os.tmpdir(), 'fluent-checkmark-font-'));
+    const output = path.join(source, 'fonts');
+    const stem = 'ic_fluent_checkmark_circle_24_regular';
+    try {
+      const { default: config } = await import('./svgo.config.mjs');
+      const svg = fs.readFileSync(path.resolve(__dirname, `../assets/Checkmark Circle/SVG/${stem}.svg`), 'utf8');
+      fs.writeFileSync(path.join(source, `${stem}.svg`), optimize(svg, /** @type {import('svgo').Config} */ (config)).data);
+      const result = spawnSync(
+        process.execPath,
+        [
+          path.resolve(__dirname, 'generateFont.js'),
+          `--source=${source}`,
+          `--dest=${output}`,
+          '--iconType=Regular',
+          `--codepoints=${path.resolve(__dirname, '../fonts/FluentSystemIcons-Regular.json')}`,
+        ],
+        { encoding: 'utf8' },
+      );
+      expect(result.status, result.stderr).toBe(0);
+      const map = JSON.parse(fs.readFileSync(path.join(output, 'FluentSystemIcons-Regular.json'), 'utf8'));
+      expect(map[stem]).toBe(0xf299);
+      for (const extension of ['ttf', 'woff', 'woff2']) {
+        const font = createFont(fs.readFileSync(path.join(output, `FluentSystemIcons-Regular.${extension}`)));
+        if (!('glyphForCodePoint' in font)) throw new Error('Expected a single icon font');
+        const commands = font.glyphForCodePoint(map[stem]).path.commands;
+        const checkmarkStart = commands.map(({ command }) => command).lastIndexOf('moveTo');
+        expect(
+          commands.slice(checkmarkStart).filter(({ command }) => command === 'moveTo' || command === 'lineTo'),
+        ).toEqual([
+          { command: 'moveTo', args: [224, 220] },
+          { command: 'lineTo', args: [317, 313] },
+          { command: 'lineTo', args: [235, 187] },
+          { command: 'lineTo', args: [161, 239] },
+          { command: 'lineTo', args: [183, 261] },
+        ]);
+      }
+    } finally {
+      fs.rmSync(source, { recursive: true, force: true });
+    }
+  }, 30000);
+
   it.each(['Filled', 'Regular', 'Light', 'Resizable'])(
     'generates localized glyphs in the existing %s family without reassigning codepoints',
     (family) => {
