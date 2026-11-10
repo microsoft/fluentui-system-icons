@@ -1,37 +1,24 @@
 // @ts-check
-/**
- * @vitest-environment jsdom
- */
-
 import { describe, it, expect } from 'vitest';
 import { optimize } from 'svgo';
 import config from './svgo.config';
 import removeFullViewBoxClip from './remove-full-viewbox-clip';
 
-const artwork = '<path d="M2 2h4v4H2z" fill="#212121"/>';
-const source = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g clip-path="url(#clip)">${artwork}</g><defs><clipPath id="clip"><rect width="16" height="16" fill="white"/></clipPath></defs></svg>`;
+const source =
+  '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z" fill="#212121"/></g><defs><clipPath id="clip"><rect width="16" height="16" fill="white"/></clipPath></defs></svg>';
 
 describe('full-viewBox clip normalization', () => {
   it.each([12, 16, 20, 24])('normalizes %ipx artwork before converting clipping rectangles to paths', (size) => {
-    const input = source.replaceAll('16', String(size));
+    const input = `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" fill="none"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z" fill="#212121"/></g><defs><clipPath id="clip"><rect width="${size}" height="${size}" fill="white"/></clipPath></defs></svg>`;
     const actual = optimize(input, { ...config, path: `test_${size}_regular.svg` }).data;
-    const expected = optimize(
-      `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" fill="none">${artwork}</svg>`,
-      { ...config, path: `test_${size}_regular.svg` },
-    ).data;
+    const expected = `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" fill="none" viewBox="0 0 ${size} ${size}"><path fill="#212121" d="M2 2h4v4H2z"/></svg>`;
 
     expect(actual).toBe(expected);
-    const svg = new DOMParser().parseFromString(actual, 'image/svg+xml');
-    expect(svg.querySelector('clipPath, [clip-path], defs, g, rect')).toBeNull();
-    expect(svg.querySelectorAll('path')).toHaveLength(1);
   });
 
   it('supports explicit user-space units, non-zero viewBox origins, and multiple direct consumers', () => {
-    const input = source
-      .replace('viewBox="0 0 16 16"', 'viewBox="-2 1 16 16"')
-      .replace('<clipPath id="clip">', '<clipPath id="clip" clipPathUnits="userSpaceOnUse">')
-      .replace('<rect ', '<rect x="-2" y="1" ')
-      .replace('</g>', `</g><g clip-path="url(#clip)">${artwork}</g>`);
+    const input =
+      '<svg width="16" height="16" viewBox="-2 1 16 16"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><g clip-path="url(#clip)"><path d="M3 3h4v4H3z"/></g><defs><clipPath id="clip" clipPathUnits="userSpaceOnUse"><rect x="-2" y="1" width="16" height="16"/></clipPath></defs></svg>';
     const actual = optimize(input, { plugins: [removeFullViewBoxClip] }).data;
 
     expect(actual).not.toMatch(/clip-path|clipPath|<rect/);
@@ -39,42 +26,109 @@ describe('full-viewBox clip normalization', () => {
   });
 
   it.each([
-    ['smaller clip', source.replace('<rect width="16"', '<rect width="8"')],
-    ['offset clip', source.replace('<rect ', '<rect x="1" ')],
-    ['rounded clip', source.replace('<rect ', '<rect rx="1" ')],
-    ['transformed rectangle', source.replace('<rect ', '<rect transform="translate(1)" ')],
-    ['transformed clip', source.replace('<clipPath ', '<clipPath transform="translate(1)" ')],
-    ['object bounding box units', source.replace('<clipPath ', '<clipPath clipPathUnits="objectBoundingBox" ')],
-    ['percentage dimensions', source.replace('<rect width="16"', '<rect width="100%"')],
-    ['multiple clipping shapes', source.replace('</clipPath>', '<rect width="8" height="8"/></clipPath>')],
-    ['transformed consumer', source.replace('<g ', '<g transform="translate(1)" ')],
-    ['filtered consumer', source.replace('<g ', '<g filter="url(#filter)" ')],
-    ['nested consumer', source.replace('<g ', '<g transform="translate(1)"><g ').replace('</g>', '</g></g>')],
-    ['additional href reference', source.replace('</svg>', '<use href="#clip"/></svg>')],
+    [
+      'smaller clip',
+      '<svg width="16" height="16" viewBox="0 0 16 16"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><defs><clipPath id="clip"><rect width="8" height="16"/></clipPath></defs></svg>',
+    ],
+    [
+      'offset clip',
+      '<svg width="16" height="16" viewBox="0 0 16 16"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><defs><clipPath id="clip"><rect x="1" width="16" height="16"/></clipPath></defs></svg>',
+    ],
+    [
+      'rounded clip',
+      '<svg width="16" height="16" viewBox="0 0 16 16"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><defs><clipPath id="clip"><rect rx="1" width="16" height="16"/></clipPath></defs></svg>',
+    ],
+    [
+      'transformed rectangle',
+      '<svg width="16" height="16" viewBox="0 0 16 16"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><defs><clipPath id="clip"><rect transform="translate(1)" width="16" height="16"/></clipPath></defs></svg>',
+    ],
+    [
+      'transformed clip',
+      '<svg width="16" height="16" viewBox="0 0 16 16"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><defs><clipPath id="clip" transform="translate(1)"><rect width="16" height="16"/></clipPath></defs></svg>',
+    ],
+    [
+      'object bounding box units',
+      '<svg width="16" height="16" viewBox="0 0 16 16"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><defs><clipPath id="clip" clipPathUnits="objectBoundingBox"><rect width="16" height="16"/></clipPath></defs></svg>',
+    ],
+    [
+      'percentage dimensions',
+      '<svg width="16" height="16" viewBox="0 0 16 16"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><defs><clipPath id="clip"><rect width="100%" height="16"/></clipPath></defs></svg>',
+    ],
+    [
+      'multiple clipping shapes',
+      '<svg width="16" height="16" viewBox="0 0 16 16"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><defs><clipPath id="clip"><rect width="16" height="16"/><rect width="8" height="8"/></clipPath></defs></svg>',
+    ],
+    [
+      'transformed consumer',
+      '<svg width="16" height="16" viewBox="0 0 16 16"><g transform="translate(1)" clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><defs><clipPath id="clip"><rect width="16" height="16"/></clipPath></defs></svg>',
+    ],
+    [
+      'filtered consumer',
+      '<svg width="16" height="16" viewBox="0 0 16 16"><g filter="url(#filter)" clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><defs><clipPath id="clip"><rect width="16" height="16"/></clipPath></defs></svg>',
+    ],
+    [
+      'nested consumer',
+      '<svg width="16" height="16" viewBox="0 0 16 16"><g transform="translate(1)"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g></g><defs><clipPath id="clip"><rect width="16" height="16"/></clipPath></defs></svg>',
+    ],
+    [
+      'additional href reference',
+      '<svg width="16" height="16" viewBox="0 0 16 16"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><defs><clipPath id="clip"><rect width="16" height="16"/></clipPath></defs><use href="#clip"/></svg>',
+    ],
     [
       'encoded fragment reference',
-      source.replace('</svg>', `<g transform="translate(1)" clip-path="url(#%63lip)">${artwork}</g></svg>`),
+      '<svg width="16" height="16" viewBox="0 0 16 16"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><defs><clipPath id="clip"><rect width="16" height="16"/></clipPath></defs><g transform="translate(1)" clip-path="url(#%63lip)"><path d="M2 2h4v4H2z"/></g></svg>',
     ],
     [
       'CSS-escaped reference',
-      source.replace('</svg>', `<g transform="translate(1)" style="clip-path:url(#\\63lip)">${artwork}</g></svg>`),
+      '<svg width="16" height="16" viewBox="0 0 16 16"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><defs><clipPath id="clip"><rect width="16" height="16"/></clipPath></defs><g transform="translate(1)" style="clip-path:url(#\\63lip)"><path d="M2 2h4v4H2z"/></g></svg>',
     ],
-    ['duplicate IDs', source.replace('</defs>', '<clipPath id="clip"><rect width="8" height="8"/></clipPath></defs>')],
-    ['referenced rectangle', source.replace('<rect ', '<rect id="rectangle" ')],
-    ['styled root', source.replace('<svg ', '<svg style="overflow:visible" ')],
-    ['visible overflow', source.replace('<svg ', '<svg overflow="visible" ')],
-    ['transformed root', source.replace('<svg ', '<svg transform="translate(1)" ')],
-    ['inherited definition transform', source.replace('<defs>', '<defs transform="translate(1)">')],
-    ['stylesheet', source.replace('</svg>', '<style>rect { rx: 2px; }</style></svg>')],
-    ['animation', source.replace('</svg>', '<animate attributeName="viewBox" dur="1s"/></svg>')],
-    ['missing viewBox', source.replace(' viewBox="0 0 16 16"', '')],
-    ['letterboxed viewport', source.replace('width="16" height="16" viewBox', 'width="32" height="16" viewBox')],
-    ['relative viewport', source.replace('width="16" height="16" viewBox', 'width="100%" height="100%" viewBox')],
+    [
+      'duplicate IDs',
+      '<svg width="16" height="16" viewBox="0 0 16 16"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><defs><clipPath id="clip"><rect width="16" height="16"/></clipPath><clipPath id="clip"><rect width="8" height="8"/></clipPath></defs></svg>',
+    ],
+    [
+      'referenced rectangle',
+      '<svg width="16" height="16" viewBox="0 0 16 16"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><defs><clipPath id="clip"><rect id="rectangle" width="16" height="16"/></clipPath></defs></svg>',
+    ],
+    [
+      'styled root',
+      '<svg style="overflow:visible" width="16" height="16" viewBox="0 0 16 16"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><defs><clipPath id="clip"><rect width="16" height="16"/></clipPath></defs></svg>',
+    ],
+    [
+      'visible overflow',
+      '<svg overflow="visible" width="16" height="16" viewBox="0 0 16 16"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><defs><clipPath id="clip"><rect width="16" height="16"/></clipPath></defs></svg>',
+    ],
+    [
+      'transformed root',
+      '<svg transform="translate(1)" width="16" height="16" viewBox="0 0 16 16"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><defs><clipPath id="clip"><rect width="16" height="16"/></clipPath></defs></svg>',
+    ],
+    [
+      'inherited definition transform',
+      '<svg width="16" height="16" viewBox="0 0 16 16"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><defs transform="translate(1)"><clipPath id="clip"><rect width="16" height="16"/></clipPath></defs></svg>',
+    ],
+    [
+      'stylesheet',
+      '<svg width="16" height="16" viewBox="0 0 16 16"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><defs><clipPath id="clip"><rect width="16" height="16"/></clipPath></defs><style>rect { rx: 2px; }</style></svg>',
+    ],
+    [
+      'animation',
+      '<svg width="16" height="16" viewBox="0 0 16 16"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><defs><clipPath id="clip"><rect width="16" height="16"/></clipPath></defs><animate attributeName="viewBox" dur="1s"/></svg>',
+    ],
+    [
+      'missing viewBox',
+      '<svg width="16" height="16"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><defs><clipPath id="clip"><rect width="16" height="16"/></clipPath></defs></svg>',
+    ],
+    [
+      'letterboxed viewport',
+      '<svg width="32" height="16" viewBox="0 0 16 16"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><defs><clipPath id="clip"><rect width="16" height="16"/></clipPath></defs></svg>',
+    ],
+    [
+      'relative viewport',
+      '<svg width="100%" height="100%" viewBox="0 0 16 16"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><defs><clipPath id="clip"><rect width="16" height="16"/></clipPath></defs></svg>',
+    ],
   ])('preserves %s without modifying its definition or references', (_name, input) => {
     const actual = optimize(input, { plugins: [removeFullViewBoxClip] }).data;
-    const unchanged = optimize(input, { plugins: [] }).data;
-
-    expect(actual).toBe(unchanged);
+    expect(actual).toBe(input);
   });
 
   it.each(['test_16_color.svg', 'es/test_16_color.svg', 'test_16_color_es.svg'])(
@@ -85,7 +139,7 @@ describe('full-viewBox clip normalization', () => {
         path,
       }).data;
 
-      expect(actual).toBe(optimize(source, { plugins: [] }).data);
+      expect(actual).toBe(source);
     },
   );
 
@@ -96,11 +150,11 @@ describe('full-viewBox clip normalization', () => {
   });
 
   it('preserves unrelated definitions when removing a redundant clip', () => {
-    const input = source.replace('</defs>', '<clipPath id="necessary"><rect width="4" height="4"/></clipPath></defs>');
+    const input =
+      '<svg width="16" height="16" viewBox="0 0 16 16"><g clip-path="url(#clip)"><path d="M2 2h4v4H2z"/></g><defs><clipPath id="clip"><rect width="16" height="16"/></clipPath><clipPath id="necessary"><rect width="4" height="4"/></clipPath></defs></svg>';
     const actual = optimize(input, { plugins: [removeFullViewBoxClip] }).data;
-    const svg = new DOMParser().parseFromString(actual, 'image/svg+xml');
-
-    expect(svg.querySelector('#clip, [clip-path]')).toBeNull();
-    expect(svg.querySelector('#necessary rect')?.getAttribute('width')).toBe('4');
+    expect(actual).toBe(
+      '<svg width="16" height="16" viewBox="0 0 16 16"><g><path d="M2 2h4v4H2z"/></g><defs><clipPath id="necessary"><rect width="4" height="4"/></clipPath></defs></svg>',
+    );
   });
 });
