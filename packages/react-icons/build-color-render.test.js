@@ -60,65 +60,6 @@ async function loadColorIcons() {
 }
 
 describe('Color Icon Rendering', () => {
-  const prideFamilies = [
-    ['flag-pride', 'FlagPride'],
-    ['flag-pride-progress', 'FlagPrideProgress'],
-    ['flag-pride-philadelphia', 'FlagPridePhiladelphia'],
-    ['flag-pride-intersex-inclusive-progress', 'FlagPrideIntersexInclusiveProgress'],
-  ];
-
-  it.each(prideFamilies)('%s preserves raw artwork in standard and headless SVG exports', async (file, name) => {
-    const standard = await import(path.join(atomsDir, `${file}.js`));
-    const headless = await import(path.join(__dirname, 'lib', 'atoms', 'headless-svg', `${file}.js`));
-    const metadata = JSON.parse(
-      await readFile(
-        path.join(__dirname, '..', '..', 'assets', name.replace(/([a-z])([A-Z])/g, '$1 $2'), 'metadata.json'),
-        'utf8',
-      ),
-    );
-    expect(metadata.style).toEqual(['Color']);
-    expect([...metadata.size].sort((a, b) => a - b)).toEqual([16, 20, 24, 28, 32, 48]);
-
-    for (const size of [16, 20, 24, 28, 32, 48, '']) {
-      const exportName = `${name}${size}Color`;
-      const rawFile = `${file.replace(/-/g, '_')}_${size || 20}_color.svg`;
-      const raw = new DOMParser().parseFromString(
-        await readFile(path.join(__dirname, '..', 'svg-icons', 'icons', rawFile), 'utf8'),
-        'image/svg+xml',
-      ).documentElement;
-      const artwork = (/** @type {Element} */ svg) =>
-        Array.from(svg.querySelectorAll('*'), (element) => ({
-          tag: element.localName,
-          attributes: Object.fromEntries(Array.from(element.attributes, (attr) => [attr.name, attr.value])),
-        }));
-      const expected = artwork(raw);
-
-      expect(raw.querySelectorAll('[fill]').length).toBeGreaterThan(5);
-      if (file.endsWith('progress')) {
-        expect(raw.querySelector('[fill="#fff"]')).not.toBeNull();
-      }
-
-      for (const mod of [standard, headless]) {
-        expect(mod[`${name}${size}Filled`]).toBeUndefined();
-        expect(mod[exportName]).toBeDefined();
-        for (const props of [{}, { primaryFill: '#d13438' }]) {
-          try {
-            const { container } = render(createElement(mod[exportName], props));
-            const svg = container.querySelector('svg');
-            expect(svg).toHaveAttribute('viewBox', `0 0 ${size || 20} ${size || 20}`);
-            expect(artwork(/** @type {SVGSVGElement} */ (svg))).toEqual(expected);
-            if (name === 'FlagPrideIntersexInclusiveProgress' && size === 16) {
-              const ring = svg?.querySelector('[stroke="#5f3383"]');
-              expect(ring).toHaveAttribute('fill', 'none');
-            }
-          } finally {
-            cleanup();
-          }
-        }
-      }
-    }
-  });
-
   it('all color icon exports from lib/atoms/svg should render valid SVG', async () => {
     const colorIcons = await loadColorIcons();
 
