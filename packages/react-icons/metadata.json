@@ -11819,24 +11819,24 @@
     "font": true,
     "type": "resizable"
   },
-  "FlagPrideFilled": {
+  "FlagPrideColor": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "resizable"
   },
-  "FlagPrideIntersexInclusiveProgressFilled": {
+  "FlagPrideIntersexInclusiveProgressColor": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "resizable"
   },
-  "FlagPridePhiladelphiaFilled": {
+  "FlagPridePhiladelphiaColor": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "resizable"
   },
-  "FlagPrideProgressFilled": {
+  "FlagPrideProgressColor": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "resizable"
   },
   "FlashFilled": {
@@ -73314,124 +73314,124 @@
     "font": true,
     "type": "sized"
   },
-  "FlagPride16Filled": {
+  "FlagPride16Color": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "sized"
   },
-  "FlagPride20Filled": {
+  "FlagPride20Color": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "sized"
   },
-  "FlagPride24Filled": {
+  "FlagPride24Color": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "sized"
   },
-  "FlagPride28Filled": {
+  "FlagPride28Color": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "sized"
   },
-  "FlagPride32Filled": {
+  "FlagPride32Color": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "sized"
   },
-  "FlagPride48Filled": {
+  "FlagPride48Color": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "sized"
   },
-  "FlagPrideIntersexInclusiveProgress16Filled": {
+  "FlagPrideIntersexInclusiveProgress16Color": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "sized"
   },
-  "FlagPrideIntersexInclusiveProgress20Filled": {
+  "FlagPrideIntersexInclusiveProgress20Color": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "sized"
   },
-  "FlagPrideIntersexInclusiveProgress24Filled": {
+  "FlagPrideIntersexInclusiveProgress24Color": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "sized"
   },
-  "FlagPrideIntersexInclusiveProgress28Filled": {
+  "FlagPrideIntersexInclusiveProgress28Color": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "sized"
   },
-  "FlagPrideIntersexInclusiveProgress32Filled": {
+  "FlagPrideIntersexInclusiveProgress32Color": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "sized"
   },
-  "FlagPrideIntersexInclusiveProgress48Filled": {
+  "FlagPrideIntersexInclusiveProgress48Color": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "sized"
   },
-  "FlagPridePhiladelphia16Filled": {
+  "FlagPridePhiladelphia16Color": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "sized"
   },
-  "FlagPridePhiladelphia20Filled": {
+  "FlagPridePhiladelphia20Color": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "sized"
   },
-  "FlagPridePhiladelphia24Filled": {
+  "FlagPridePhiladelphia24Color": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "sized"
   },
-  "FlagPridePhiladelphia28Filled": {
+  "FlagPridePhiladelphia28Color": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "sized"
   },
-  "FlagPridePhiladelphia32Filled": {
+  "FlagPridePhiladelphia32Color": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "sized"
   },
-  "FlagPridePhiladelphia48Filled": {
+  "FlagPridePhiladelphia48Color": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "sized"
   },
-  "FlagPrideProgress16Filled": {
+  "FlagPrideProgress16Color": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "sized"
   },
-  "FlagPrideProgress20Filled": {
+  "FlagPrideProgress20Color": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "sized"
   },
-  "FlagPrideProgress24Filled": {
+  "FlagPrideProgress24Color": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "sized"
   },
-  "FlagPrideProgress28Filled": {
+  "FlagPrideProgress28Color": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "sized"
   },
-  "FlagPrideProgress32Filled": {
+  "FlagPrideProgress32Color": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "sized"
   },
-  "FlagPrideProgress48Filled": {
+  "FlagPrideProgress48Color": {
     "svg": true,
-    "font": true,
+    "font": false,
     "type": "sized"
   },
   "Flash12Filled": {
@@ -139711,6 +139711,146 @@
   },
   "TextProofingTools24Regular_zh": {
     "svg": true,
+    "font": true,
+    "type": "sized"
+  },
+  "FlagPrideFilled": {
+    "svg": false,
+    "font": true,
+    "type": "resizable"
+  },
+  "FlagPrideIntersexInclusiveProgressFilled": {
+    "svg": false,
+    "font": true,
+    "type": "resizable"
+  },
+  "FlagPridePhiladelphiaFilled": {
+    "svg": false,
+    "font": true,
+    "type": "resizable"
+  },
+  "FlagPrideProgressFilled": {
+    "svg": false,
+    "font": true,
+    "type": "resizable"
+  },
+  "FlagPride16Filled": {
+    "svg": false,
+    "font": true,
+    "type": "sized"
+  },
+  "FlagPride20Filled": {
+    "svg": false,
+    "font": true,
+    "type": "sized"
+  },
+  "FlagPride24Filled": {
+    "svg": false,
+    "font": true,
+    "type": "sized"
+  },
+  "FlagPride28Filled": {
+    "svg": false,
+    "font": true,
+    "type": "sized"
+  },
+  "FlagPride48Filled": {
+    "svg": false,
+    "font": true,
+    "type": "sized"
+  },
+  "FlagPride32Filled": {
+    "svg": false,
+    "font": true,
+    "type": "sized"
+  },
+  "FlagPrideIntersexInclusiveProgress16Filled": {
+    "svg": false,
+    "font": true,
+    "type": "sized"
+  },
+  "FlagPrideIntersexInclusiveProgress20Filled": {
+    "svg": false,
+    "font": true,
+    "type": "sized"
+  },
+  "FlagPrideIntersexInclusiveProgress24Filled": {
+    "svg": false,
+    "font": true,
+    "type": "sized"
+  },
+  "FlagPrideIntersexInclusiveProgress28Filled": {
+    "svg": false,
+    "font": true,
+    "type": "sized"
+  },
+  "FlagPrideIntersexInclusiveProgress32Filled": {
+    "svg": false,
+    "font": true,
+    "type": "sized"
+  },
+  "FlagPrideIntersexInclusiveProgress48Filled": {
+    "svg": false,
+    "font": true,
+    "type": "sized"
+  },
+  "FlagPridePhiladelphia16Filled": {
+    "svg": false,
+    "font": true,
+    "type": "sized"
+  },
+  "FlagPridePhiladelphia20Filled": {
+    "svg": false,
+    "font": true,
+    "type": "sized"
+  },
+  "FlagPridePhiladelphia24Filled": {
+    "svg": false,
+    "font": true,
+    "type": "sized"
+  },
+  "FlagPridePhiladelphia28Filled": {
+    "svg": false,
+    "font": true,
+    "type": "sized"
+  },
+  "FlagPridePhiladelphia32Filled": {
+    "svg": false,
+    "font": true,
+    "type": "sized"
+  },
+  "FlagPridePhiladelphia48Filled": {
+    "svg": false,
+    "font": true,
+    "type": "sized"
+  },
+  "FlagPrideProgress16Filled": {
+    "svg": false,
+    "font": true,
+    "type": "sized"
+  },
+  "FlagPrideProgress20Filled": {
+    "svg": false,
+    "font": true,
+    "type": "sized"
+  },
+  "FlagPrideProgress24Filled": {
+    "svg": false,
+    "font": true,
+    "type": "sized"
+  },
+  "FlagPrideProgress28Filled": {
+    "svg": false,
+    "font": true,
+    "type": "sized"
+  },
+  "FlagPrideProgress32Filled": {
+    "svg": false,
+    "font": true,
+    "type": "sized"
+  },
+  "FlagPrideProgress48Filled": {
+    "svg": false,
     "font": true,
     "type": "sized"
   }
