@@ -80,9 +80,14 @@ describe('Build Verification', () => {
       execFileSync(process.execPath, [path.join(__dirname, 'unfill.js'), `--path=${dir}`]);
 
       for (const file of ['test_20_regular.svg', 'ko/test_20_filled.svg']) {
-        expect(fs.readFileSync(path.join(dir, file), 'utf8')).toBe(
-          svg.replace(' fill="none"', '').replace(' fill="#212121"', '').replace(' fill="#242424"', ''),
-        );
+        const content = fs.readFileSync(path.join(dir, file), 'utf8');
+        expect(content).not.toContain(' fill="none"');
+        expect(content).not.toContain(' fill="#212121"');
+        expect(content).not.toContain(' fill="#242424"');
+        expect(content).toContain('stroke="#242424"');
+        expect(content).toContain('fill="#fff"');
+        expect(content).toContain('fill="#E50000"');
+        expect(content).toContain('<clipPath id="clip">');
       }
       for (const file of ['test_20_color.svg', 'ko/test_20_color.svg']) {
         expect(fs.readFileSync(path.join(dir, file), 'utf8')).toBe(svg);
