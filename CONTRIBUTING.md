@@ -43,7 +43,8 @@ Color variants are identified by their filename style, including localized and
 directional variants, and are excluded from the monochrome fill check. Intentional
 multicolor artwork must have a design-reviewed Color classification. Changing an
 existing public variant requires agreement on compatibility; do not strip meaningful
-colors or add palette exceptions just to pass validation.
+colors just to pass validation. If a reviewed migration cannot land first, use a
+narrow file exclusion instead of weakening the default palette or structure rules.
 
 Source filenames must use `ic_fluent_<name>_<size>_<style>.svg`, with a positive
 integer size and an explicit Regular, Filled, Light, or Color style written in
@@ -64,7 +65,36 @@ Run the same read-only asset validation locally as CI:
 yarn nx run system-icons-processing:check:assets
 ```
 
-This command checks the real asset tree directly. Fixture tests for the validator run
+This command checks the real asset tree directly with the reviewed entries in
+`importer/check-assets.exclusions.json`. Each entry maps an exact path relative to
+`assets/` to a nonempty review reason, for example:
+
+```json
+{
+  "Legacy/SVG/ic_fluent_legacy_20_filled.svg": "Intentional palette pending design-reviewed Color classification."
+}
+```
+
+Exclusions suppress only that file's monochrome contract diagnostics. Source
+identities, directory-name checks, and XML parsing still run. Glob patterns and
+parent-directory traversal are not supported. The CLI reports every applied
+exclusion with its reason and a separate excluded count. Missing-file exclusions
+and entries for files that already satisfy the contract fail validation and must
+be removed. The existing multicolor Filled flags are listed individually so new
+files and variants do not inherit their exclusions.
+
+The standalone CLI is strict unless exclusions are explicitly supplied:
+
+```sh
+node importer/check-assets.mjs
+node importer/check-assets.mjs --exclusions importer/check-assets.exclusions.json
+```
+
+Custom scopes can use `--source <directory>` with an optional `--exclusions <file>`.
+Future bailout entries require review and a reason; they are not a global skip.
+The exclusion file is included in Nx inputs, so changing it reruns the check.
+
+Fixture tests for the validator run
 with the existing `system-icons-processing:test` target; no second full-assets test
 scan is needed. CI runs asset validation when assets or validation inputs are affected.
 Changes to this contract require explicit engineering and design review, not an

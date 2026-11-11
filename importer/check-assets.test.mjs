@@ -188,3 +188,76 @@ test('asset offers help and rejects unsupported options', () => {
   expect(invalidOptionResult.status).toBe(1);
   expect(invalidOptionResult.stderr).toMatch(/Error parsing arguments/);
 });
+
+test('asset exclusions suppress only the listed file and report the reason', () => {
+  const { assetsRoot, writeSvg, runValidator } = createAssetFixture();
+  writeSvg('Valid/SVG/ic_fluent_valid_20_regular.svg');
+  const excludedAssetPath = 'Legacy/SVG/ic_fluent_legacy_20_filled.svg';
+  const excludedContent = validMonochromeSvg.replace('#212121', '#123456');
+  const excludedFilePath = writeSvg(excludedAssetPath, excludedContent);
+  const exclusionsPath = path.join(assetsRoot, 'exclusions.json');
+  fs.writeFileSync(exclusionsPath, JSON.stringify({ [excludedAssetPath]: 'Intentional palette pending design review.' }));
+
+  const acceptedResult = runValidator(`--exclusions=${exclusionsPath}`);
+  expect(acceptedResult.status, acceptedResult.stderr).toBe(0);
+  expect(acceptedResult.stdout).toContain(`Excluded ${excludedAssetPath}: Intentional palette pending design review.`);
+  expect(acceptedResult.stdout).toContain('excluded 1 monochrome SVG');
+  expect(fs.readFileSync(excludedFilePath, 'utf8')).toBe(excludedContent);
+
+  writeSvg('Legacy/SVG/ic_fluent_legacy_24_filled.svg', excludedContent);
+  const rejectedResult = runValidator(`--exclusions=${exclusionsPath}`);
+  expect(rejectedResult.status).toBe(1);
+  expect(rejectedResult.stderr).toContain('Legacy/SVG/ic_fluent_legacy_24_filled.svg');
+});
+
+test.each([
+  { scenario: 'missing asset', assetRelativePath: 'Missing/SVG/ic_fluent_missing_20_regular.svg', expectedDiagnostic: /Unmatched exclusion/ },
+  { scenario: 'already valid asset', assetRelativePath: 'Example/SVG/ic_fluent_example_20_regular.svg', expectedDiagnostic: /Unnecessary exclusion/ },
+])('asset exclusions reject $scenario entries', ({ assetRelativePath, expectedDiagnostic }) => {
+  const { assetsRoot, writeSvg, runValidator } = createAssetFixture();
+  writeSvg('Example/SVG/ic_fluent_example_20_regular.svg');
+  const exclusionsPath = path.join(assetsRoot, 'exclusions.json');
+  fs.writeFileSync(exclusionsPath, JSON.stringify({ [assetRelativePath]: 'Temporary migration.' }));
+  const validationResult = runValidator(`--exclusions=${exclusionsPath}`);
+  expect(validationResult.status).toBe(1);
+  expect(validationResult.stderr).toMatch(expectedDiagnostic);
+});
+
+test.each([
+  { scenario: 'array instead of path map', exclusions: [] },
+  { scenario: 'missing reason', exclusions: { 'Example/SVG/ic_fluent_example_20_regular.svg': '' } },
+  { scenario: 'glob pattern', exclusions: { 'Example/SVG/*.svg': 'Too broad.' } },
+  { scenario: 'parent traversal', exclusions: { '../Example/SVG/ic_fluent_example_20_regular.svg': 'Outside the asset root.' } },
+])('asset exclusions reject $scenario', ({ exclusions }) => {
+  const { assetsRoot, writeSvg, runValidator } = createAssetFixture();
+  writeSvg('Example/SVG/ic_fluent_example_20_regular.svg');
+  const exclusionsPath = path.join(assetsRoot, 'exclusions.json');
+  fs.writeFileSync(exclusionsPath, JSON.stringify(exclusions));
+  const validationResult = runValidator(`--exclusions=${exclusionsPath}`);
+  expect(validationResult.status).toBe(1);
+  expect(validationResult.stderr).toMatch(/Invalid exclusions/);
+});
+
+test('asset exclusions cannot suppress malformed XML or directory-name checks', () => {
+  const { assetsRoot, writeSvg, runValidator } = createAssetFixture();
+  writeSvg('Valid/SVG/ic_fluent_valid_20_regular.svg');
+  const excludedAssetPath = 'Legacy /SVG/ic_fluent_legacy_20_regular.svg';
+  writeSvg(excludedAssetPath, '<svg><path></svg>');
+  const exclusionsPath = path.join(assetsRoot, 'exclusions.json');
+  fs.writeFileSync(exclusionsPath, JSON.stringify({ [excludedAssetPath]: 'Temporary migration.' }));
+  const validationResult = runValidator(`--exclusions=${exclusionsPath}`);
+  expect(validationResult.status).toBe(1);
+  expect(validationResult.stderr).toContain('Malformed XML');
+  expect(validationResult.stderr).toContain('has a trailing space');
+});
+
+test('asset exclusions report an entirely excluded scope without claiming files were checked', () => {
+  const { assetsRoot, writeSvg, runValidator } = createAssetFixture();
+  const excludedAssetPath = 'Legacy/SVG/ic_fluent_legacy_20_filled.svg';
+  writeSvg(excludedAssetPath, validMonochromeSvg.replace('#212121', '#123456'));
+  const exclusionsPath = path.join(assetsRoot, 'exclusions.json');
+  fs.writeFileSync(exclusionsPath, JSON.stringify({ [excludedAssetPath]: 'Intentional palette pending design review.' }));
+  const validationResult = runValidator(`--exclusions=${exclusionsPath}`);
+  expect(validationResult.status, validationResult.stderr).toBe(0);
+  expect(validationResult.stdout).toContain('Checked 0 monochrome SVGs; skipped 0 Color SVGs; excluded 1 monochrome SVGs.');
+});

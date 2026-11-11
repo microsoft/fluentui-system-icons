@@ -5,10 +5,11 @@
 /**
  * Validates source asset directory names and monochrome SVG fills without writing files.
  *
- * Usage: node importer/check-assets.mjs [--source <directory>]
+ * Usage: node importer/check-assets.mjs [--source <directory>] [--exclusions <file>]
  *
  * Options:
  *   --source: Asset root (defaults to the repository assets directory)
+ *   --exclusions: JSON map of exact asset-relative paths to review reasons
  *   --help, -h: Show this help message
  */
 
@@ -26,13 +27,18 @@ const monochromeElements = new Set(['svg', 'g', 'path']);
 main();
 
 function main() {
-  const source = processArgs();
+  const { source, exclusionsPath } = processArgs();
   /** @type {string[]} */
   const failures = [];
   let checked = 0;
   let skipped = 0;
+  let excluded = 0;
+  /** @type {Map<string, string>} */
+  let exclusions = new Map();
+  const matchedExclusions = new Set();
 
   try {
+    exclusions = readExclusions(exclusionsPath);
     for (const file of collectSvgFiles(source, failures)) {
       const relative = path.relative(source, file).split(path.sep).join('/');
       try {
@@ -41,8 +47,21 @@ function main() {
           skipped++;
           continue;
         }
-        checked++;
-        inspectSvg(fs.readFileSync(file, 'utf8'), relative, failures);
+        const reason = exclusions.get(relative);
+        if (reason !== undefined) matchedExclusions.add(relative);
+        else checked++;
+        const contractFailures = [];
+        inspectSvg(fs.readFileSync(file, 'utf8'), relative, contractFailures);
+        if (reason !== undefined && contractFailures.length > 0) {
+          excluded++;
+          console.log(`Excluded ${relative}: ${reason} (${contractFailures.length} contract diagnostics suppressed).`);
+        } else {
+          failures.push(...contractFailures);
+          if (reason !== undefined) {
+            checked++;
+            failures.push(`${relative}: Unnecessary exclusion; the source already satisfies the contract. Remove its exclusion entry.`);
+          }
+        }
       } catch (error) {
         failures.push(`${relative}: ${error instanceof Error ? error.message : String(error)}`);
       }
@@ -51,10 +70,15 @@ function main() {
     failures.push(`${source}: ${error instanceof Error ? error.message : String(error)}`);
   }
 
-  if (checked === 0) {
+  for (const assetRelativePath of exclusions.keys()) {
+    if (!matchedExclusions.has(assetRelativePath)) {
+      failures.push(`${assetRelativePath}: Unmatched exclusion; no monochrome source SVG matched. Remove stale entries.`);
+    }
+  }
+  if (checked === 0 && excluded === 0) {
     failures.push('No monochrome SVGs found in the asset scope.');
   }
-  console.log(`Checked ${checked} monochrome SVGs; skipped ${skipped} Color SVGs.`);
+  console.log(`Checked ${checked} monochrome SVGs; skipped ${skipped} Color SVGs; excluded ${excluded} monochrome SVGs.`);
   if (failures.length > 0) {
     for (const failure of failures.sort()) {
       console.error(failure);
@@ -74,6 +98,7 @@ function processArgs() {
     const { values } = parseArgs({
       options: {
         source: { type: 'string', default: defaultSource },
+        exclusions: { type: 'string' },
         help: { type: 'boolean', short: 'h' },
       },
     });
@@ -81,7 +106,7 @@ function processArgs() {
       printUsage();
       process.exit(0);
     }
-    return path.resolve(values.source);
+    return { source: path.resolve(values.source), exclusionsPath: values.exclusions };
   } catch (error) {
     console.error(`Error parsing arguments: ${error instanceof Error ? error.message : String(error)}`);
     printUsage();
@@ -90,10 +115,40 @@ function processArgs() {
 }
 
 function printUsage() {
-  console.error('Usage: node importer/check-assets.mjs [--source <directory>]');
+  console.error('Usage: node importer/check-assets.mjs [--source <directory>] [--exclusions <file>]');
   console.error('Options:');
   console.error('  --source: Asset root (defaults to repository assets/)');
+  console.error('  --exclusions: JSON map of exact asset-relative paths to review reasons; strict when omitted');
   console.error('  --help, -h: Show this help message');
+}
+
+/**
+ * @param {string | undefined} exclusionsPath
+ * @returns {Map<string, string>}
+ */
+function readExclusions(exclusionsPath) {
+  const exclusions = new Map();
+  if (exclusionsPath === undefined) return exclusions;
+  try {
+    /** @type {unknown} */
+    const entries = JSON.parse(fs.readFileSync(exclusionsPath, 'utf8'));
+    if (typeof entries !== 'object' || entries === null || Array.isArray(entries)) {
+      throw new Error('Expected an object mapping exact asset-relative SVG paths to reasons.');
+    }
+    for (const [assetRelativePath, reason] of Object.entries(entries)) {
+      if (
+        typeof reason !== 'string' || !reason.trim() || assetRelativePath.includes('\\') ||
+        path.posix.isAbsolute(assetRelativePath) || path.posix.normalize(assetRelativePath) !== assetRelativePath
+      ) {
+        throw new Error(`Entry ${JSON.stringify(assetRelativePath)} must be an exact normalized asset-relative path with a nonempty reason.`);
+      }
+      parseSourceIdentity(assetRelativePath);
+      exclusions.set(assetRelativePath, reason.trim());
+    }
+    return exclusions;
+  } catch (error) {
+    throw new Error(`Invalid exclusions ${exclusionsPath}: ${error instanceof Error ? error.message : String(error)}`);
+  }
 }
 
 /**
