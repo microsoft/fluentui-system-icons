@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "yarn run -T vitest run --dir . --exclude \"dist/**\" --exclude \"tools/**\"",
+    "check:assets": "node check-assets.mjs",
     "check:assets-metadata": "node check-assets-metadata.mjs",
     "type-check:infra": "yarn run -T tsc -p tsconfig.utils.json",
     "clean": "find dist -type f ! -name '.keep' -delete && rm -rf dist/*",
