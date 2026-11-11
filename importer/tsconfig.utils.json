@@ -4,7 +4,7 @@
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "noEmit": true,
-    "module": "commonjs",
+    "module": "esnext",
     "target": "es2020",
     "allowJs": true,
     "checkJs": true,
@@ -13,5 +13,12 @@
     "strictNullChecks": true,
     "pretty": true
   },
-  "include": ["icon-name.js", "icon-name.test.js", "generateFont.js", "generateFont.test.js"]
+  "include": [
+    "icon-name.js",
+    "icon-name.test.js",
+    "generateFont.js",
+    "generateFont.test.js",
+    "check-assets.mjs",
+    "check-assets.test.mjs"
+  ]
 }

@@ -5146,6 +5146,7 @@ __metadata:
     react-native-svg: "npm:^15.15.3"
     react-window: "npm:^1.8.10"
     remark-gfm: "npm:^4.0.1"
+    saxes: "npm:6.0.0"
     schema-utils: "npm:^4.2.0"
     shx: "npm:^0.4.0"
     storybook: "npm:9.1.21"
@@ -19057,7 +19058,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"saxes@npm:^6.0.0":
+"saxes@npm:6.0.0, saxes@npm:^6.0.0":
   version: 6.0.0
   resolution: "saxes@npm:6.0.0"
   dependencies:

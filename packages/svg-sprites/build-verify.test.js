@@ -59,6 +59,16 @@ describe('Build Verification', () => {
     }
   });
 
+  it('should not retain noncanonical dark paint in generated monochrome sprites', async () => {
+    const entries = await readdir(SPRITES_DIR, { recursive: true });
+    const spriteFiles = entries.filter((file) => file.endsWith('.sprite.svg') && !file.endsWith('_color.sprite.svg'));
+    expect(spriteFiles.length).toBeGreaterThan(0);
+    for (const file of spriteFiles) {
+      const content = fs.readFileSync(path.join(SPRITES_DIR, file), 'utf8');
+      expect(content, `${file} should not retain source fill drift`).not.toMatch(/\sfill="#242424"/);
+    }
+  });
+
   // TODO: to enable this we would need to update snapshot during release - lets avoid that for now
   it.skip('should have a stable set of sprite files (snapshot)', async () => {
     const entries = await readdir(SPRITES_DIR);

@@ -7,46 +7,31 @@ env:
   NX_VERBOSE_LOGGING: true
 
 jobs:
-  valid-asset-names:
-    name: Validate Asset Names
+  assets-validation:
+    name: Asset Validation
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: 'read'
+      actions: 'read'
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          filter: tree:0
 
-      - name: Check asset directories are valid for Windows
-        run: |
-          ls assets | python3 -c """
-          import sys
-          assets_dir = sys.stdin.read().strip().split('\n')
-          invalid_asset_dirs = []
-          for dir in assets_dir:
-            if dir.endswith(' '):
-              invalid_asset_dirs.append(dir)
+      - run: corepack enable
 
-          if invalid_asset_dirs:
-            print('Invalid asset directories, remove the trailing space')
-            print(invalid_asset_dirs)
-            exit(1)
-          """
-  valid-asset-fills:
-    name: Validate Asset Fills
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22.x
+          cache: 'yarn'
 
-      - name: Check that all SVGs have the right fill
-        run: |
-          error_found=false
+      - run: yarn install --immutable
 
-          for file in $(find ./assets -type f -name "*.svg" -print0 | grep -zv '_color.svg' | xargs -0 grep -L 'fill="#212121"'); do
-            echo "Error: $file does not have 'fill=\"#212121\"' or has a different fill."
-            error_found=true
-          done
+      - uses: nrwl/nx-set-shas@afb73a62d26e41464e9254689e1fd6122ee683c1 # v5.0.1
 
-          if [[ $error_found == true ]]; then
-            exit 1
-          fi
+      - name: Validate asset names and monochrome fills
+        run: yarn nx affected -t check:assets
 
   valid-pr-title:
     name: Validate PR Title
