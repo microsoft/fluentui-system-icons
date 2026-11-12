@@ -279,6 +279,12 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.generate-token.outputs.token }}
 
+      - name: Trigger Android Maven publish
+        if: ${{ !inputs.dry-run }}
+        run: gh workflow run publish-android.yml -f version="$NEW_VERSION"
+        env:
+          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
+
       - name: Dry-run summary
         if: ${{ inputs.dry-run }}
         run: |
@@ -289,6 +295,10 @@ jobs:
           echo "### 📦 Versions" >> $GITHUB_STEP_SUMMARY
           echo "- **Library version:** \`$NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
           echo "- **React icons version:** \`$REACT_VERSION\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📱 Platform releases that would be triggered" >> $GITHUB_STEP_SUMMARY
+          echo "- CocoaPods: \`cocoapods-publish.yml\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Maven Central: \`publish-android.yml\` for \`$NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 📤 npm packages that would be published" >> $GITHUB_STEP_SUMMARY
           echo "- \`@fluentui/svg-icons@$NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY

@@ -39,7 +39,7 @@ These packages are released independently via the `publish-standalone.yml` workf
 #### Platform-Specific Packages
 
 - **iOS**: CocoaPods package (triggered separately via `cocoapods-publish.yml`)
-- **Android**: Maven Central (currently disabled, builds only)
+- **Android**: Maven Central (triggered by the main release workflow; see [Android publishing setup](../android/MAVEN_PUBLISHING.md))
 - **Flutter**: pub.dev package (currently disabled)
 
 ## Release cadence
