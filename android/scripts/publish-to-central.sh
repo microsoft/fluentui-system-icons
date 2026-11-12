@@ -6,11 +6,6 @@ set -euo pipefail
 : "${MAVEN_CENTRAL_USERNAME:?MAVEN_CENTRAL_USERNAME must contain the Central Portal token username}"
 : "${MAVEN_CENTRAL_PASSWORD:?MAVEN_CENTRAL_PASSWORD must contain the Central Portal token password}"
 
-if [[ ! "$VERSION_NAME" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-  echo "VERSION_NAME must be an X.Y.Z release version, got: $VERSION_NAME" >&2
-  exit 1
-fi
-
 GROUP_PATH="com/microsoft/design"
 ARTIFACT_ID="fluent-system-icons"
 REPOSITORY_DIR="${CENTRAL_REPOSITORY_DIR:-library/build/artifacts}"

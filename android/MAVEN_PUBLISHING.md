@@ -1,10 +1,10 @@
 # Maven Central publishing
 
-The main `publish.yml` workflow creates the `1.1.x` release tag and then
-dispatches `publish-android.yml`, matching the CocoaPods release pattern.
-`publish-android.yml` checks out that tag, builds the signed AAR publication,
-and uploads it to the existing `com.microsoft.design:fluent-system-icons`
-coordinates through the Central Portal Publisher API.
+The main `publish.yml` workflow dispatches `publish-android.yml`, matching the
+CocoaPods release pattern. `publish-android.yml` builds the signed AAR
+publication and uploads it to the existing
+`com.microsoft.design:fluent-system-icons` coordinates through the Central
+Portal Publisher API.
 
 ## One-time setup
 
@@ -36,6 +36,5 @@ No publishing credential belongs in the repository or a workflow file.
 
 ## Retrying a release
 
-Run **Publish Android library** in GitHub Actions and enter the existing
-`1.1.x` tag. Maven Central versions are immutable, so a failure after
-publication requires a new version.
+Run **Publish Android library** in GitHub Actions. Maven Central versions are
+immutable, so a failure after publication requires a new version.

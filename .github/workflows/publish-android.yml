@@ -2,15 +2,6 @@ name: Publish Android library
 
 on:
   workflow_dispatch:
-    inputs:
-      version:
-        description: 'Existing 1.1.x release tag to publish'
-        required: true
-        type: string
-
-concurrency:
-  group: android-maven-central-${{ inputs.version }}
-  cancel-in-progress: false
 
 jobs:
   publish-android:
@@ -21,21 +12,14 @@ jobs:
       contents: read
 
     steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
       - name: Resolve release version
         id: version
         shell: bash
-        env:
-          EVENT_VERSION: ${{ inputs.version }}
         run: |
-          if [[ ! "$EVENT_VERSION" =~ ^1\.1\.[0-9]+$ ]]; then
-            echo "Expected a 1.1.x release tag, got '$EVENT_VERSION'." >&2
-            exit 1
-          fi
-          echo "version=$EVENT_VERSION" >> "$GITHUB_OUTPUT"
-
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          ref: ${{ steps.version.outputs.version }}
+          version=$(sed -nE "s/.*'([0-9]+\.[0-9]+\.[0-9]+)'.*/\1/p" FluentIcons.podspec | head -1)
+          echo "version=$version" >> "$GITHUB_OUTPUT"
 
       - name: Setup Java
         uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
