@@ -13,10 +13,10 @@
       "isIgnored": true
     },
     {
-      "label": "Allowlisted exception: react-native-icons keeps its published @types/react-native range while the monorepo resolution is overridden",
+      "label": "Allowlisted exception: react-native-icons builds with TypeScript 7",
       "packages": ["@fluentui/react-native-icons"],
-      "dependencies": ["@types/react-native"],
-      "dependencyTypes": ["prod"],
+      "dependencies": ["typescript"],
+      "dependencyTypes": ["dev"],
       "isIgnored": true
     },
     {

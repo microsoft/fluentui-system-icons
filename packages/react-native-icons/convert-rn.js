@@ -12,9 +12,10 @@ const _ = require('lodash');
 const SRC_PATH = argv.source;
 const DEST_PATH = argv.dest;
 const REACT_NATIVE = argv.native;
-const exportNameRegex = /export const (\S*)/gm;
+const CHUNK_SIZE = 500;
 
 const rnSvgElements = [
+  'Svg',
   'Path',
   'Circle',
   'Ellipse',
@@ -51,10 +52,13 @@ processFiles(SRC_PATH, DEST_PATH);
 function processFiles(src, dest) {
   /** @type string[] */
   const indexContents = [];
+  const icons = processFolder(src, true);
+  const sizedIcons = processFolder(src, false);
+  sharePathData(icons, sizedIcons);
 
   // make file for resizeable icons
   const iconPath = path.join(dest, 'icons');
-  const iconContents = processFolder(src, dest, true);
+  const iconContents = chunkIcons(icons);
 
   if (fs.existsSync(iconPath)) {
     fs.rmSync(iconPath, { recursive: true, force: true });
@@ -64,8 +68,7 @@ function processFiles(src, dest) {
   iconContents.forEach((chunk, i) => {
     const chunkFileName = `chunk-${i}`;
     const chunkPath = path.resolve(iconPath, `${chunkFileName}.tsx`);
-    const exportNames = Array.from(chunk.matchAll(exportNameRegex), (m) => m[1]);
-    indexContents.push(`export { ${exportNames.join(', ')} } from './icons/${chunkFileName}'`);
+    indexContents.push(`export * from './icons/${chunkFileName}'`);
     fs.writeFileSync(chunkPath, chunk, (err) => {
       if (err) throw err;
     });
@@ -73,7 +76,7 @@ function processFiles(src, dest) {
 
   // make file for sized icons
   const sizedIconPath = path.join(dest, 'sizedIcons');
-  const sizedIconContents = processFolder(src, dest, false);
+  const sizedIconContents = chunkIcons(sizedIcons);
   if (fs.existsSync(sizedIconPath)) {
     fs.rmSync(sizedIconPath, { recursive: true, force: true });
   }
@@ -82,8 +85,7 @@ function processFiles(src, dest) {
   sizedIconContents.forEach((chunk, i) => {
     const chunkFileName = `chunk-${i}`;
     const chunkPath = path.resolve(sizedIconPath, `${chunkFileName}.tsx`);
-    const exportNames = Array.from(chunk.matchAll(exportNameRegex), (m) => m[1]);
-    indexContents.push(`export { ${exportNames.join(', ')} } from './sizedIcons/${chunkFileName}'`);
+    indexContents.push(`export * from './sizedIcons/${chunkFileName}'`);
     fs.writeFileSync(chunkPath, chunk, (err) => {
       if (err) throw err;
     });
@@ -104,9 +106,9 @@ function processFiles(src, dest) {
  * Process a folder of svg files and convert them to React components, following naming patterns for the FluentUI System Icons
  * @param {string} srcPath
  * @param {boolean} resizable
- * @returns { string [] } - chunked icon files to insert
+ * @returns {{ file: string, name: string, code: string }[]}
  */
-function processFolder(srcPath, destPath, resizable) {
+function processFolder(srcPath, resizable) {
   var files = fs.readdirSync(srcPath);
 
   // These options will be passed to svgr/core
@@ -121,6 +123,11 @@ function processFolder(srcPath, destPath, resizable) {
       typescript: true,
       prettier: true,
       native: REACT_NATIVE,
+      jsx: {
+        babelConfig: {
+          plugins: [[fluentSvgPlugin, { resizable: isResizable, isColorIcon }]],
+        },
+      },
     };
 
     // Add icon: true only if it's not a sized icon
@@ -131,9 +138,8 @@ function processFolder(srcPath, destPath, resizable) {
     return options;
   }
 
-  /** @type string[] */
   const iconExports = [];
-  files.forEach(function (file, index) {
+  files.forEach(function (file) {
     var srcFile = path.join(srcPath, file);
     if (fs.lstatSync(srcFile).isDirectory()) {
       // for now, ignore subdirectories/localization, until we have a plan for handling it
@@ -155,41 +161,82 @@ function processFolder(srcPath, destPath, resizable) {
 
       var iconContent = fs.readFileSync(srcFile, { encoding: 'utf8' });
 
-      var jsxCode = resizable
-        ? svgr.transform.sync(iconContent, getSvgrOptions(file, true), { filePath: file })
-        : svgr.transform.sync(iconContent, getSvgrOptions(file, false), { filePath: file });
+      var jsxCode = svgr.transform
+        .sync(iconContent, getSvgrOptions(file, resizable), { filePath: file })
+        .trim()
+        .replace(/;$/, '');
 
-      var jsCode = destFilename.endsWith('Color')
-        ? `
-const ${destFilename}Icon = (props) => {
-  return ${jsxCode};
-}
-
-export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename}Icon, '${destFilename}');
-      `
-        : `
-
-const ${destFilename}Icon = (props) => {
-  const { fill: primaryFill = 'currentColor' } = props;
-  return ${jsxCode};
-}
-
-export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename}Icon, '${destFilename}');
-      `;
-      iconExports.push(jsCode);
+      // Complex artwork still needs explicit fills; simple shapes inherit from FluentSvg.
+      var body = jsxCode.includes('{primaryFill}')
+        ? `{\n  const { primaryFill = 'currentColor' } = props;\n  return ${jsxCode};\n}`
+        : jsxCode;
+      var jsCode = `
+export const ${destFilename} = /*#__PURE__*/(props: FluentIconsProps<SvgProps>) => ${body};
+`;
+      iconExports.push({ file, name: destFilename, code: jsCode });
     }
   });
 
+  return iconExports;
+}
+
+function sharePathData(icons, sizedIcons) {
+  const sizedByFile = new Map(sizedIcons.map((icon) => [icon.file, icon]));
+  icons.forEach((icon, index) => {
+    // Keep legacy aliases from names containing "20" separate from actual size-20 pairs.
+    if (!/_20_(filled|regular|light|color)\.svg$/.test(icon.file)) {
+      return;
+    }
+    const sized = sizedByFile.get(icon.file);
+    if (!sized) {
+      return;
+    }
+    const paths = (code) => Array.from(code.matchAll(/\bd="([^"]*)"/g), (match) => match[1]);
+    const resizablePaths = paths(icon.code);
+    const sizedPaths = paths(sized.code);
+    const shared = new Map();
+    const declarations = [];
+    for (const data of new Set(resizablePaths)) {
+      if (!sizedPaths.includes(data)) {
+        continue;
+      }
+      const name = `${sized.name}Path${shared.size}`;
+      const declaration = `const ${name} = ${JSON.stringify(data)};\n`;
+      const occurrences = [...resizablePaths, ...sizedPaths].filter((value) => value === data).length;
+      if (occurrences * (data.length - name.length) <= declaration.length) {
+        continue;
+      }
+      shared.set(data, name);
+      declarations.push(declaration);
+    }
+    if (!shared.size) {
+      return;
+    }
+    const replacePaths = (code) =>
+      code.replace(/\bd="([^"]*)"/g, (attribute, data) => (shared.has(data) ? `d={${shared.get(data)}}` : attribute));
+    const sharedCode = declarations.join('') + replacePaths(icon.code) + replacePaths(sized.code);
+    // Preserve sized-chunk imports while both direct components share module-local strings.
+    const reexport = `export { ${sized.name} } from '../icons/chunk-${Math.floor(index / CHUNK_SIZE)}';`;
+    if (sharedCode.length + reexport.length < icon.code.length + sized.code.length) {
+      icon.code = sharedCode;
+      sized.code = reexport;
+    }
+  });
+}
+
+function chunkIcons(icons) {
+  const iconExports = icons.map((icon) => icon.code);
   // chunk all icons into separate files to keep build reasonably fast
   /** @type string[][] */
   const iconChunks = [];
   while (iconExports.length > 0) {
-    iconChunks.push(iconExports.splice(0, 500));
+    iconChunks.push(iconExports.splice(0, CHUNK_SIZE));
   }
 
   for (const chunk of iconChunks) {
-    chunk.unshift(`import wrapIcon from "../utils/wrapIcon";`);
-    chunk.unshift(`import * as React from "react";`);
+    chunk.unshift(`import { FluentSvg } from "../utils/fluentSvg";`);
+    chunk.unshift(`import type { FluentIconsProps } from "../utils/FluentIconsProps.types";`);
+    chunk.unshift(`import type { SvgProps } from "react-native-svg";`);
 
     var foundElements = {};
 
@@ -204,12 +251,9 @@ export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename
       });
     });
 
-    var extraImports = '';
-    Object.entries(foundElements).forEach(([element, _]) => {
-      extraImports += ', ' + element;
-    });
-
-    chunk.unshift(`import {Svg${extraImports}} from "react-native-svg";`);
+    if (Object.keys(foundElements).length) {
+      chunk.unshift(`import { ${Object.keys(foundElements).join(', ')} } from "react-native-svg";`);
+    }
   }
 
   /** @type string[] */
@@ -226,4 +270,89 @@ function fileTemplate(variables, { tpl }) {
   ${variables.jsx}
  
 `;
+}
+
+function fluentSvgPlugin({ types: t }, { resizable, isColorIcon }) {
+  return {
+    visitor: {
+      JSXElement: {
+        exit(path) {
+          // Compact only the root after SVGR has normalized native elements and dimensions.
+          if (!path.parentPath.isExpressionStatement()) {
+            return;
+          }
+
+          const { openingElement, closingElement } = path.node;
+          const inheritedFills = [];
+          let canInheritFill = !isColorIcon;
+          path.traverse({
+            JSXOpeningElement(child) {
+              if (
+                child.node !== openingElement &&
+                !['Path', 'Circle', 'Ellipse', 'Line', 'Polygon', 'Polyline', 'Rect'].includes(child.node.name.name)
+              ) {
+                canInheritFill = false;
+              }
+              for (const attribute of child.node.attributes) {
+                if (attribute.name?.name === 'style') {
+                  canInheritFill = false;
+                }
+                if (attribute.name?.name === 'fill') {
+                  if (t.isIdentifier(attribute.value?.expression, { name: 'primaryFill' })) {
+                    inheritedFills.push([child.node, attribute]);
+                  } else {
+                    canInheritFill = false;
+                  }
+                }
+              }
+            },
+          });
+          if (canInheritFill) {
+            for (const [element, fill] of inheritedFills) {
+              element.attributes = element.attributes.filter((attribute) => attribute !== fill);
+            }
+          }
+
+          const getAttribute = (name) => openingElement.attributes.find((attribute) => attribute.name?.name === name);
+          const width = getAttribute('width');
+          const height = getAttribute('height');
+          const square =
+            t.isNumericLiteral(width?.value?.expression) &&
+            t.isNumericLiteral(height?.value?.expression) &&
+            width.value.expression.value === height.value.expression.value;
+          const size = !resizable && square ? width.value.expression.value : undefined;
+
+          // FluentSvg defaults resizable icons to 24x24 and sized icons to `size`.
+          if (square && (!resizable || width.value.expression.value === 24)) {
+            openingElement.attributes = openingElement.attributes.filter(
+              (attribute) => attribute !== width && attribute !== height,
+            );
+            if (size !== undefined) {
+              openingElement.attributes.unshift(t.jsxAttribute(t.jsxIdentifier('size'), width.value));
+            }
+          }
+
+          const viewBox = getAttribute('viewBox');
+          const defaultViewBox = [0, 0, size ?? 20, size ?? 20];
+          const coordinates = t.isStringLiteral(viewBox?.value)
+            ? viewBox.value.value
+                .trim()
+                .split(/[\s,]+/)
+                .map(Number)
+            : [];
+          if (
+            coordinates.length === 4 &&
+            coordinates.every((coordinate, index) => coordinate === defaultViewBox[index])
+          ) {
+            openingElement.attributes = openingElement.attributes.filter((attribute) => attribute !== viewBox);
+          }
+
+          openingElement.name = t.jsxIdentifier('FluentSvg');
+          if (closingElement) {
+            closingElement.name = t.jsxIdentifier('FluentSvg');
+          }
+        },
+      },
+    },
+  };
 }

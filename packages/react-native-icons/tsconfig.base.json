@@ -1,0 +1,14 @@
+{
+  "extends": "@rnx-kit/tsconfig/tsconfig.node.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "target": "es2022",
+    "importHelpers": false,
+    "strictBindCallApply": false,
+    "noImplicitAny": false,
+    "erasableSyntaxOnly": false,
+    "jsx": "react-jsx"
+  },
+  "include": ["src"]
+}
