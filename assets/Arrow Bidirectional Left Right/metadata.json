@@ -4,11 +4,13 @@
     28,
     24,
     20,
-    16
+    16,
+    32
   ],
   "style": [
     "Filled",
-    "Regular"
+    "Regular",
+    "Light"
   ],
   "keyword": "fluent-icon",
   "description": "Used for measuring width.",
