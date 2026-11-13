@@ -34159,36 +34159,6 @@
     "font": true,
     "type": "sized"
   },
-  "ArrowBidirectional24Regular": {
-    "svg": true,
-    "font": false,
-    "type": "sized"
-  },
-  "ArrowBidirectional28Filled": {
-    "svg": true,
-    "font": false,
-    "type": "sized"
-  },
-  "ArrowBidirectional28Regular": {
-    "svg": true,
-    "font": false,
-    "type": "sized"
-  },
-  "ArrowBidirectional32Filled": {
-    "svg": true,
-    "font": false,
-    "type": "sized"
-  },
-  "ArrowBidirectional32Light": {
-    "svg": true,
-    "font": false,
-    "type": "sized"
-  },
-  "ArrowBidirectional32Regular": {
-    "svg": true,
-    "font": false,
-    "type": "sized"
-  },
   "ArrowBidirectionalLeftRight16Filled": {
     "svg": true,
     "font": true,
@@ -34282,6 +34252,31 @@
   "ArrowBidirectionalUpDown24Regular": {
     "svg": true,
     "font": true,
+    "type": "sized"
+  },
+  "ArrowBidirectionalUpDown28Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowBidirectionalUpDown28Regular": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowBidirectionalUpDown32Filled": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowBidirectionalUpDown32Light": {
+    "svg": true,
+    "font": false,
+    "type": "sized"
+  },
+  "ArrowBidirectionalUpDown32Regular": {
+    "svg": true,
+    "font": false,
     "type": "sized"
   },
   "ArrowBounce12Filled": {
