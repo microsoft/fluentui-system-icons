@@ -27,8 +27,8 @@
     "test": "yarn generate && yarn run -T vitest run"
   },
   "dependencies": {
-    "@griffel/react": "^1.6.1",
-    "tslib": "^2.1.0"
+    "@griffel/react": "^1.7.8",
+    "tslib": "^2.9.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <20.0.0",
