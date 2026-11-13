@@ -51,7 +51,7 @@ icons_data = {}
 previous_icons_data = {}
 
 # Regex pattern to parse the file names
-pattern = re.compile(r'ic_fluent_(.*?)_(\d+)_(.*?).svg')
+pattern = re.compile(r'ic_fluent_(.+)_(\d+)_(.+)\.svg$')
 
 # Function to parse the files and populate the dictionary
 def parse_files(folder, is_previous=False):
