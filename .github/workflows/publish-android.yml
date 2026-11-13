@@ -1,0 +1,71 @@
+name: Publish Android library
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Existing release tag to publish'
+        required: true
+        type: string
+
+concurrency:
+  group: android-maven-central-${{ inputs.version }}
+  cancel-in-progress: false
+
+jobs:
+  publish-android:
+    name: Publish Maven Central artifact
+    runs-on: ubuntu-latest
+    environment: android-maven-central
+    permissions:
+      contents: read
+
+    steps:
+      - name: Resolve release version
+        id: version
+        shell: bash
+        env:
+          EVENT_VERSION: ${{ inputs.version }}
+        run: |
+          if [[ ! "$EVENT_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Expected an X.Y.Z release tag, got '$EVENT_VERSION'." >&2
+            exit 1
+          fi
+          echo "version=$EVENT_VERSION" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ steps.version.outputs.version }}
+
+      - name: Setup Java
+        uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
+        with:
+          distribution: temurin
+          java-version: 11
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@3f5f9adaf7d9fecd50b5935e54106014257a94e6 # v6.4.0
+        with:
+          gradle-version: wrapper
+          gradle-home-cache-excludes: |
+            caches
+            jdks
+
+      - name: Build and stage signed Maven publication
+        working-directory: android
+        env:
+          VERSION_NAME: ${{ steps.version.outputs.version }}
+          GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
+          GPG_SIGNING_PASSWORD: ${{ secrets.GPG_SIGNING_PASSWORD }}
+        run: |
+          : "${GPG_SIGNING_KEY:?Configure the GPG_SIGNING_KEY environment secret}"
+          : "${GPG_SIGNING_PASSWORD:?Configure the GPG_SIGNING_PASSWORD environment secret}"
+          ./gradlew :library:assembleRelease :library:publishReleasePublicationToLocalRepository
+
+      - name: Publish bundle to Maven Central
+        working-directory: android
+        env:
+          VERSION_NAME: ${{ steps.version.outputs.version }}
+          MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          MAVEN_CENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+        run: ./scripts/publish-to-central.sh

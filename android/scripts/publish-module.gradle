@@ -3,16 +3,18 @@ apply plugin: 'signing'
 
 task androidSourcesJar(type: Jar) {
     archiveClassifier.set('sources')
-//    if (project.plugins.findPlugin("com.android.library")) {
-//        from android.sourceSets.main.java.srcDirs
-//    } else {
-//        from sourceSets.main.java.srcDirs
-//    }
     from android.sourceSets.main.java.srcDirs
+    from android.sourceSets.main.res.srcDirs
+    from android.sourceSets.main.manifest.srcFile
+}
+
+task androidJavadocsJar(type: Jar) {
+    archiveClassifier.set('javadoc')
 }
 
 artifacts {
     archives androidSourcesJar
+    archives androidJavadocsJar
 }
 
 group = project.POM_GROUP_ID
@@ -33,16 +35,12 @@ afterEvaluate {
                 artifactId project.POM_ARTIFACT_ID
                 version getReleaseVersion()
 
-//                if (project.plugins.findPlugin("com.android.library")) {
-//                    artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
-//                } else {
-//                    artifact("$buildDir/libs/${project.getName()}-${version}.jar")
-//                }
                 artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
-
                 artifact androidSourcesJar
+                artifact androidJavadocsJar
 
                 pom {
+                    packaging = 'aar'
                     name = project.POM_ARTIFACT_ID
                     description = 'Fluent System Icons are a collection of familiar, friendly and modern icons from Microsoft.'
                     url = 'https://github.com/microsoft/fluentui-system-icons'
@@ -78,20 +76,50 @@ afterEvaluate {
             }
         }
     }
+
+    tasks.named('publishReleasePublicationToLocalRepository') {
+        dependsOn 'assembleRelease', androidSourcesJar, androidJavadocsJar
+    }
+    tasks.named('signReleasePublication') {
+        dependsOn 'bundleReleaseAar'
+    }
 }
 
-ext["signing.keyId"] = project.hasProperty('GPGSigningKeyID') ? "$GPGSigningKeyID" : ''
-ext["signing.password"] = project.hasProperty('GPGSigningPassword') ? "$GPGSigningPassword" : ''
-ext["signing.secretKeyRingFile"] = project.hasProperty('SigningSecretKeyRingFile') ? "$SigningSecretKeyRingFile" : ''
+def signingKey = System.getenv('GPG_SIGNING_KEY')
+def signingPassword = System.getenv('GPG_SIGNING_PASSWORD') ?:
+    project.findProperty('GPGSigningPassword')
+def signingKeyId = project.findProperty('GPGSigningKeyID')
+def signingKeyRingFile = project.findProperty('SigningSecretKeyRingFile') ?:
+    System.getenv('SIGNING_SECRET_KEY_RING_FILE')
+
+if (signingKeyId) {
+    ext["signing.keyId"] = signingKeyId
+}
+if (signingPassword) {
+    ext["signing.password"] = signingPassword
+}
+if (signingKeyRingFile) {
+    ext["signing.secretKeyRingFile"] = signingKeyRingFile
+}
 
 signing {
+    required {
+        signingKey || signingKeyRingFile
+    }
+    if (signingKey) {
+        useInMemoryPgpKeys(signingKey, signingPassword)
+    }
     sign publishing.publications
 }
 
 String getReleaseVersion() {
-    String version = System.getenv('VERSION_NAME')
-    if (version == null || version == "") {
-        return project.VERSION_NAME + "-SNAPSHOT"
+    String version = System.getenv('VERSION_NAME') ?:
+        project.findProperty('VERSION_NAME') ?:
+        project.findProperty('versionName')
+
+    if (version) {
+        return version
     }
-    return version
+
+    return project.VERSION_NAME + "-SNAPSHOT"
 }
