@@ -1,3 +1,13 @@
+## 2.0.346 (2026-11-13)
+
+### 🚀 Features
+
+- **react-icons:** add new and updated icons ([#1309](https://github.com/microsoft/fluentui-system-icons/pull/1309))
+
+### 🩹 Fixes
+
+- **react-icons:** expose deprecated headless wrapIcon ([#1289](https://github.com/microsoft/fluentui-system-icons/pull/1289))
+
 ## 2.0.345 (2026-10-30)
 
 ### 🚀 Features

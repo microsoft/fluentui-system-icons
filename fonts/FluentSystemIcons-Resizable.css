@@ -1,8 +1,8 @@
 @font-face {
     font-family: "FluentSystemIcons-Resizable";
-    src: url("./FluentSystemIcons-Resizable.woff2?d8535515a84cf133b73a6804a3297ae2") format("woff2"),
-url("./FluentSystemIcons-Resizable.woff?d8535515a84cf133b73a6804a3297ae2") format("woff"),
-url("./FluentSystemIcons-Resizable.ttf?d8535515a84cf133b73a6804a3297ae2") format("truetype");
+    src: url("./FluentSystemIcons-Resizable.woff2?fb9ca1f469ac686173bd6776a464c375") format("woff2"),
+url("./FluentSystemIcons-Resizable.woff?fb9ca1f469ac686173bd6776a464c375") format("woff"),
+url("./FluentSystemIcons-Resizable.ttf?fb9ca1f469ac686173bd6776a464c375") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -17967,4 +17967,22 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_fluent_document_powerpoint_20_regular:before {
     content: "\f75f";
+}
+.icon-ic_fluent_autopilot_face_20_filled:before {
+    content: "\f760";
+}
+.icon-ic_fluent_autopilot_face_20_regular:before {
+    content: "\f761";
+}
+.icon-ic_fluent_card_ui_sparkle_20_filled:before {
+    content: "\f762";
+}
+.icon-ic_fluent_card_ui_sparkle_20_regular:before {
+    content: "\f763";
+}
+.icon-ic_fluent_threat_actor_20_filled:before {
+    content: "\f764";
+}
+.icon-ic_fluent_threat_actor_20_regular:before {
+    content: "\f765";
 }
