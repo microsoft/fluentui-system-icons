@@ -243,6 +243,7 @@
   "desktopfolder": null,
   "docset": null,
   "documentsfolder": null,
+  "docuworks": ["xbd", "xct", "xdw"],
   "docx": ["doc", "docm", "docx", "docb"],
   "dotx": ["dot", "dotm", "dotx"],
   "email": ["eml", "msg", "oft", "ost", "pst"],
