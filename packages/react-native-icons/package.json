@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-native-icons",
-  "version": "2.0.344",
+  "version": "2.0.345",
   "sideEffects": false,
   "main": "lib-cjs/index.js",
   "module": "lib/index.js",
@@ -20,12 +20,13 @@
     "optimize": "yarn run -T svgo --config svgo.config.js --folder=./intermediate --precision=2 --quiet",
     "unfill": "find ./intermediate -type f -name \"*.svg\" -exec sed -i.bak 's/fill=\"none\"//g' {} \\; && find ./intermediate -type f -name \"*.bak\" -delete",
     "build": "yarn copy && yarn optimize && yarn unfill && yarn convert:rnsvg && yarn cleanSvg && yarn build:esm && yarn build:cjs",
-    "build:cjs": "yarn run -T tsc -p . --module commonjs --outDir lib-cjs && yarn run -T babel lib-cjs --out-dir lib-cjs",
-    "build:esm": "yarn run -T tsc -p . && yarn run -T babel lib --out-dir lib",
-    "lint": "yarn run -T eslint package.json"
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc",
+    "lint": "yarn run -T eslint package.json",
+    "test": "yarn run -T vitest run --dir ."
   },
-  "dependencies": {
-    "tslib": "^2.1.0"
+  "devDependencies": {
+    "typescript": "^7.0.2"
   },
   "peerDependencies": {
     "react": ">=18.2.0 <20.0.0",
@@ -43,6 +44,11 @@
         "import": "./lib/index.js",
         "require": "./lib-cjs/index.js"
       }
+    },
+    "./utils": {
+      "types": "./lib/utils/index.d.ts",
+      "import": "./lib/utils/index.js",
+      "require": "./lib-cjs/utils/index.js"
     }
   }
 }

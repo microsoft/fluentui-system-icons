@@ -384,6 +384,41 @@ describe('React icon catalogue clipboard', () => {
 });
 
 describe('React icon catalogue responsive grid', () => {
+  it.each(['search', 'size', 'variant'])('returns to the top after scrolling and changing %s', (filter) => {
+    const { container } = render(<ReactIconGrid />);
+    const grid = container.querySelector<HTMLDivElement>('div[style*="overflow: auto"]')!;
+    Object.defineProperties(grid, {
+      clientHeight: { configurable: true, value: 200 },
+      scrollHeight: { configurable: true, value: 2000 },
+    });
+    fireEvent.scroll(grid, { target: { scrollTop: 400 } });
+    expect(grid.scrollTop).toBe(400);
+
+    if (filter === 'search') search('SendRegular');
+    if (filter === 'size') selectSize('24');
+    if (filter === 'variant') selectVariant('Filled');
+
+    expect(grid.scrollTop).toBe(0);
+  });
+
+  it('resets after scrolling when replacement results have the same count', () => {
+    const { container } = render(<ReactIconGrid />);
+    search('SendRegular');
+    const grid = container.querySelector<HTMLDivElement>('div[style*="overflow: auto"]')!;
+    Object.defineProperties(grid, {
+      clientHeight: { configurable: true, value: 200 },
+      scrollHeight: { configurable: true, value: 1000 },
+    });
+    fireEvent.scroll(grid, { target: { scrollTop: 400 } });
+    expect(grid.scrollTop).toBe(400);
+
+    search('FolderRegular');
+
+    expect(screen.getByRole('status', { name: 'Icon count' })).toHaveTextContent('1 icon');
+    expect(grid.scrollTop).toBe(0);
+    expect(screen.getByRole('img', { name: 'FolderRegular' })).toBeInTheDocument();
+  });
+
   it.each([200, 0])('keeps visible icons and finite cells after a %spx resize', (width) => {
     const { container } = render(<ReactIconGrid />);
     const observer = resizeObservers.find((item) =>

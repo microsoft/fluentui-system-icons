@@ -5,6 +5,8 @@ homepage: https://github.com/microsoft/fluentui-system-icons/tree/main
 
 environment:
     sdk: '>=2.12.0 <3.0.0'
+    # staticIconProvider, used by the icon tree shaker, ships with Flutter 3.10.
+    flutter: '>=3.10.0'
 
 dependencies:
     flutter:

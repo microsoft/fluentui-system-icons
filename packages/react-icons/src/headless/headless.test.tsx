@@ -12,9 +12,88 @@ import { createFluentFontIcon, FluentFontIcon } from './fonts';
 import { createFluentIcon } from './createFluentIcon';
 import { createFluentIcon as createFluentSpriteIcon } from './createFluentIcon.svg-sprite';
 import { bundleIcon } from './bundleIcon';
-import type { FluentIcon } from './shared';
+import * as headless from './index';
+import * as headlessUtils from './utils';
+import type { FluentIcon, FluentIconsProps } from './shared';
 import { DATA_FUI_ICON, DATA_FUI_ICON_RTL, DATA_FUI_ICON_HIDDEN, DATA_FUI_ICON_FONT } from './shared';
 import { IconDirectionContextProvider } from '../contexts';
+
+describe('Headless API - wrapIcon', () => {
+  const CustomSvg = (props: FluentIconsProps) => (
+    <svg width="20" height="20" viewBox="0 0 20 20" {...props}>
+      <path d="M10 2l6 16H4l6-16z" />
+    </svg>
+  );
+
+  test('exports the same wrapper from both headless entry points', () => {
+    expect(typeof headless.wrapIcon).toBe('function');
+    expect(headlessUtils.wrapIcon).toBe(headless.wrapIcon);
+  });
+
+  test('preserves custom SVG content and props without Griffel classes', () => {
+    const CustomIcon = headlessUtils.wrapIcon(CustomSvg, 'CustomIcon');
+    const { container } = render(<CustomIcon className="custom-icon" opacity={0.5} />);
+    const svg = container.querySelector('svg');
+
+    expect(CustomIcon.displayName).toBe('CustomIcon');
+    expect(svg).toHaveAttribute(DATA_FUI_ICON, '');
+    expect(svg).toHaveAttribute('aria-hidden', 'true');
+    expect(svg).toHaveAttribute('fill', 'currentColor');
+    expect(svg).toHaveAttribute('class', 'custom-icon');
+    expect(svg).toHaveAttribute('opacity', '0.5');
+    expect(svg).toHaveAttribute('width', '20');
+    expect(svg).toHaveAttribute('height', '20');
+    expect(svg).toHaveAttribute('viewBox', '0 0 20 20');
+    expect(svg?.querySelector('path')).toHaveAttribute('d', 'M10 2l6 16H4l6-16z');
+  });
+
+  test('accepts an omitted displayName and options', () => {
+    const CustomIcon = headless.wrapIcon(CustomSvg);
+    const { container } = render(<CustomIcon />);
+
+    expect(CustomIcon.displayName).toBeUndefined();
+    expect(container.querySelector('svg')).toHaveAttribute(DATA_FUI_ICON, '');
+  });
+
+  test('maps primaryFill and title without leaking icon-specific props', () => {
+    const CustomIcon = headless.wrapIcon(CustomSvg);
+    const { container } = render(<CustomIcon primaryFill="red" title="Custom icon" filled />);
+    const svg = container.querySelector('svg');
+
+    expect(svg).toHaveAttribute('fill', 'red');
+    expect(svg).toHaveAttribute('aria-label', 'Custom icon');
+    expect(svg).toHaveAttribute('role', 'img');
+    expect(svg).not.toHaveAttribute('aria-hidden');
+    expect(svg).not.toHaveAttribute('primaryFill');
+    expect(svg).not.toHaveAttribute('title');
+    expect(svg).not.toHaveAttribute('filled');
+  });
+
+  test('preserves an explicit accessible label', () => {
+    const CustomIcon = headless.wrapIcon(CustomSvg);
+    const { container } = render(<CustomIcon aria-label="Custom label" />);
+
+    expect(container.querySelector('svg')).toHaveAttribute('aria-label', 'Custom label');
+    expect(container.querySelector('svg')).not.toHaveAttribute('aria-hidden');
+  });
+
+  test('forwards refs through a ref-capable custom SVG component', () => {
+    const RefSvg = React.forwardRef<SVGSVGElement, FluentIconsProps>((props, ref) => (
+      <svg {...props} ref={ref} />
+    )) as typeof CustomSvg;
+    const CustomIcon = headless.wrapIcon(RefSvg);
+    const ref = React.createRef<SVGSVGElement>();
+    const { container } = render(<CustomIcon ref={ref} />);
+
+    expect(ref.current).toBe(container.querySelector('svg'));
+    expect(ref.current).not.toBeNull();
+  });
+
+  describeRtlBehaviour(() => ({
+    withFlip: headless.wrapIcon(CustomSvg, 'CustomIcon', { flipInRtl: true }),
+    withoutFlip: headless.wrapIcon(CustomSvg),
+  }));
+});
 
 describe('Headless API — SVG icons', () => {
   test('createFluentIcon should create a valid icon component', () => {

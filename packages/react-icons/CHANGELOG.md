@@ -1,3 +1,15 @@
+## 2.0.345 (2026-10-30)
+
+### 🚀 Features
+
+- **react-icons:** add new and updated icons ([#1287](https://github.com/microsoft/fluentui-system-icons/pull/1287))
+- **react-icons:** add localized icon variants ([#1261](https://github.com/microsoft/fluentui-system-icons/pull/1261))
+
+### 🩹 Fixes
+
+- **react-icons:** synchronize `assets/` metadata and validate SVG variants in CI, add 80+ icons RTL support ([#1280](https://github.com/microsoft/fluentui-system-icons/pull/1280))
+- **react-icons:** generate RTL metadata for light icons ([#1262](https://github.com/microsoft/fluentui-system-icons/pull/1262))
+
 ## 2.0.344 (2026-10-09)
 
 ### 🚀 Features

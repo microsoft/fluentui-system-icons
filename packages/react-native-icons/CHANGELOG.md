@@ -1,3 +1,9 @@
+## 2.0.345 (2026-10-30)
+
+### 🚀 Features
+
+- **react-native-icons:** bump the minimum react-native version to 0.73 ([#1278](https://github.com/microsoft/fluentui-system-icons/pull/1278))
+
 ## 2.0.344 (2026-10-09)
 
 This release contains icon updates
