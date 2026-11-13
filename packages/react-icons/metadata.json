@@ -12059,16 +12059,6 @@
     "font": true,
     "type": "resizable"
   },
-  "FluentFlexFilled": {
-    "svg": true,
-    "font": false,
-    "type": "resizable"
-  },
-  "FluentFlexRegular": {
-    "svg": true,
-    "font": false,
-    "type": "resizable"
-  },
   "FluidFilled": {
     "svg": true,
     "font": true,
@@ -74357,66 +74347,6 @@
   "Fluent48Regular": {
     "svg": true,
     "font": true,
-    "type": "sized"
-  },
-  "FluentFlex16Filled": {
-    "svg": true,
-    "font": false,
-    "type": "sized"
-  },
-  "FluentFlex16Regular": {
-    "svg": true,
-    "font": false,
-    "type": "sized"
-  },
-  "FluentFlex20Filled": {
-    "svg": true,
-    "font": false,
-    "type": "sized"
-  },
-  "FluentFlex20Regular": {
-    "svg": true,
-    "font": false,
-    "type": "sized"
-  },
-  "FluentFlex24Filled": {
-    "svg": true,
-    "font": false,
-    "type": "sized"
-  },
-  "FluentFlex24Regular": {
-    "svg": true,
-    "font": false,
-    "type": "sized"
-  },
-  "FluentFlex28Filled": {
-    "svg": true,
-    "font": false,
-    "type": "sized"
-  },
-  "FluentFlex28Regular": {
-    "svg": true,
-    "font": false,
-    "type": "sized"
-  },
-  "FluentFlex32Filled": {
-    "svg": true,
-    "font": false,
-    "type": "sized"
-  },
-  "FluentFlex32Regular": {
-    "svg": true,
-    "font": false,
-    "type": "sized"
-  },
-  "FluentFlex48Filled": {
-    "svg": true,
-    "font": false,
-    "type": "sized"
-  },
-  "FluentFlex48Regular": {
-    "svg": true,
-    "font": false,
     "type": "sized"
   },
   "Fluid16Filled": {
