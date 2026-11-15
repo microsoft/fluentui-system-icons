@@ -1,3 +1,9 @@
+## 2.0.346 (2026-11-13)
+
+### 🚀 Features
+
+- **react-native-icons:** generate FluentSvg components and shrink package output ([#1290](https://github.com/microsoft/fluentui-system-icons/pull/1290))
+
 ## 2.0.345 (2026-10-30)
 
 ### 🚀 Features

@@ -2,6 +2,8 @@ The `@fluentui/react-icons` package provides the [Fluent UI System Icons](https:
 
 > **⚠️ Note:** `Color` icon variants are deprecated due to accessibility issues. See the <a href="./?path=/docs/icons-color-variants--docs" target="_top">Color Variants</a> page for details and migration guidance.
 
+For raw SVG consumption, see the separate <a href="./?path=/docs/svg-icons-overview--docs" target="_top">SVG Icons</a> package guide.
+
 ## Browse the catalog
 
 Not sure which icon you need? Explore the full set in the <a href="./?path=/docs/icons-catalog--docs" target="_top">icon catalog</a> — search by name and pick the component to use.

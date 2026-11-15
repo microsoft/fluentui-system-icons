@@ -1,0 +1,14 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { SvgIconGridLazy } from '../components/SvgIconGridLazy';
+import { VersionBadge } from '../components/VersionBadge';
+import { svgIconsVersion } from '../utils/packageVersion';
+
+<Meta title="SVG Icons/Catalog" />
+
+<h1 className="sbdocs-title">SVG icons catalogue</h1>
+
+<VersionBadge packageName="@fluentui/svg-icons" version={svgIconsVersion} />
+
+Files in `@fluentui/svg-icons`. Copy buttons return exact package paths, including locale and direction directories. See the [file API contract](?path=/docs/svg-icons-overview--docs#file-api-contract) for selection and fallback rules.
+
+<SvgIconGridLazy />

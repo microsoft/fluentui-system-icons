@@ -5,14 +5,20 @@
   "sourceRoot": "packages/docsite/src",
   "tags": ["platform:web"],
   "targets": {
+    "dev": {
+      "dependsOn": [{ "target": "build", "projects": ["svg-icons"] }]
+    },
     "build": {
       "cache": true,
       "inputs": [
         "{projectRoot}/.storybook/**",
         "{projectRoot}/stories/**",
+        "{projectRoot}/package.json",
         "{projectRoot}/public/**",
         "{workspaceRoot}/packages/react-icons-file-type/src/common/fileIconTypes.json",
-        "{workspaceRoot}/packages/react-icons-file-type/src/common/fileTypeIconMap.json"
+        "{workspaceRoot}/packages/react-icons-file-type/src/common/fileTypeIconMap.json",
+        "assets",
+        "^default"
       ],
       "outputs": ["{projectRoot}/storybook-static"]
     },

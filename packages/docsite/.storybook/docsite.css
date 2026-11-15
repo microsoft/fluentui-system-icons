@@ -22,3 +22,11 @@
 #storybook-docs .fluent-version-badge__name {
   font-family: 'Cascadia Code', Menlo, 'Courier New', Courier, monospace;
 }
+
+/* TODO: Fix description grid sizing in @fluentui/react-storybook-addon and remove
+   this workaround. Long SVG import examples otherwise expand the grid beyond the page width. */
+#storybook-docs .svg-icons-description,
+#storybook-docs div:has(> .svg-icons-description) {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}

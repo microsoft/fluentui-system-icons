@@ -13,6 +13,7 @@
     "@fluentui/react-components": "^9.46.0",
     "@fluentui/react-icons": "*",
     "@fluentui/react-icons-file-type": "*",
-    "@fluentui/react-icons-font-subsetting-webpack-plugin": "*"
+    "@fluentui/react-icons-font-subsetting-webpack-plugin": "*",
+    "@fluentui/svg-icons": "*"
   }
 }

@@ -6,21 +6,13 @@ export const useIconState = <TBaseAttributes extends SvgProps | TextProps = SvgP
   props: FluentIconsProps<TBaseAttributes>,
 ): Omit<FluentIconsProps<TBaseAttributes>, 'primaryFill'> => {
   const { title, primaryFill = 'currentColor', ...rest } = props;
-  const state = {
+  const hasAccessibleName = title || rest['aria-label'] || rest['aria-labelledby'];
+
+  return {
     ...rest,
     title: undefined,
     fill: primaryFill,
+    ...(title ? { 'aria-label': title } : {}),
+    ...(hasAccessibleName ? { role: 'img' } : { 'aria-hidden': true }),
   } as Omit<FluentIconsProps<TBaseAttributes>, 'primaryFill'>;
-
-  if (title) {
-    state['aria-label'] = title;
-  }
-
-  if (!state['aria-label'] && !state['aria-labelledby']) {
-    state['aria-hidden'] = true;
-  } else {
-    state['role'] = 'img';
-  }
-
-  return state;
 };
