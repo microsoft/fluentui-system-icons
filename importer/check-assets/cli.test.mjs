@@ -144,6 +144,22 @@ test('asset excludes actual Color styles but not names containing color', () => 
   expect(rejectedResult.stderr).toContain('ic_fluent_text_color_20_regular.svg');
 });
 
+test.each([
+  { scenario: 'mismatched closing tag', svgContent: '<svg><path></svg>' },
+  { scenario: 'multiple roots', svgContent: validMonochromeSvg + validMonochromeSvg },
+  { scenario: 'truncated trailing element', svgContent: validMonochromeSvg + '<svg fill="#ff0000"' },
+  { scenario: 'unclosed trailing comment', svgContent: validMonochromeSvg + '<!-- unfinished' },
+])('asset rejects Color XML with $scenario without rewriting it', ({ svgContent }) => {
+  const { writeSvg, runValidator } = createAssetFixture();
+  writeSvg('Example/SVG/ic_fluent_example_20_regular.svg');
+  const colorAssetPath = 'Example/SVG/ic_fluent_example_20_color.svg';
+  const colorFilePath = writeSvg(colorAssetPath, svgContent);
+  const validationResult = runValidator();
+  expect(validationResult.status).toBe(1);
+  expect(validationResult.stderr).toContain(`${colorAssetPath}: Malformed XML`);
+  expect(fs.readFileSync(colorFilePath, 'utf8')).toBe(svgContent);
+});
+
 test('asset allows spaces inside a group name but rejects a trailing space', () => {
   const { writeSvg, runValidator } = createAssetFixture();
   writeSvg('Example Icon/SVG/ic_fluent_example_icon_20_regular.svg');

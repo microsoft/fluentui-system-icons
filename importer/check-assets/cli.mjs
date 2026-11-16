@@ -5,9 +5,9 @@
 /**
  * Checks the raw SVG artwork in assets/ before it is used to generate platform packages.
  *
- * Validates asset group names, SVG filenames and locale/direction folder layouts.
- * For non-Color icons, also checks well-formed XML, supported svg/g/path structure,
- * and that every painted path inherits or explicitly uses the design fill #212121.
+ * Validates asset group names, SVG filenames, locale/direction folder layouts and
+ * well-formed XML for every SVG. For non-Color icons, also checks supported
+ * svg/g/path structure and that every painted path uses the design fill #212121.
  *
  * Color variants skip monochrome checks. An optional exclusions file can suppress
  * monochrome contract violations for specific files with a review reason; source
@@ -55,15 +55,16 @@ function main() {
       const relative = path.relative(source, file).split(path.sep).join('/');
       try {
         const identity = parseSourceIdentity(relative);
-        if (identity.style === 'color') {
+        const monochrome = identity.style !== 'color';
+        const reason = monochrome ? exclusions.get(relative) : undefined;
+        if (reason !== undefined) matchedExclusions.add(relative);
+        else if (monochrome) checked++;
+        const contractFailures = [];
+        inspectSvg(fs.readFileSync(file, 'utf8'), relative, contractFailures, monochrome);
+        if (!monochrome) {
           skipped++;
           continue;
         }
-        const reason = exclusions.get(relative);
-        if (reason !== undefined) matchedExclusions.add(relative);
-        else checked++;
-        const contractFailures = [];
-        inspectSvg(fs.readFileSync(file, 'utf8'), relative, contractFailures);
         if (reason !== undefined && contractFailures.length > 0) {
           excluded++;
           console.log(`Excluded ${relative}: ${reason} (${contractFailures.length} contract diagnostics suppressed).`);
@@ -213,40 +214,43 @@ function parseSourceIdentity(relative) {
 }
 
 /**
- * Checks one SVG without rewriting it, collecting contract diagnostics.
+ * Parses every SVG without rewriting it, optionally collecting monochrome diagnostics.
  *
  * @param {string} content
  * @param {string} file
  * @param {string[]} failures
+ * @param {boolean} monochrome
  */
-function inspectSvg(content, file, failures) {
+function inspectSvg(content, file, failures, monochrome) {
   let hasCanonicalPaint = false;
-  /** @type {SvgElementContext[]} */
-  const elementStack = [];
   const parser = new SaxesParser({ xmlns: true });
   parser.on('error', (error) => {
     throw new Error(`Malformed XML: ${error.message}`);
   });
-  parser.on('processinginstruction', (instruction) => {
-    failures.push(`${file}: Unsupported processing instruction ${instruction.target}; source artwork must not load stylesheets or processing directives.`);
-  });
-  parser.on('opentag', (node) => {
-    const parentElement = elementStack[elementStack.length - 1];
-    const element = createElementContext(node, parentElement);
-    elementStack.push(element);
+  if (monochrome) {
+    /** @type {SvgElementContext[]} */
+    const elementStack = [];
+    parser.on('processinginstruction', (instruction) => {
+      failures.push(`${file}: Unsupported processing instruction ${instruction.target}; source artwork must not load stylesheets or processing directives.`);
+    });
+    parser.on('opentag', (node) => {
+      const parentElement = elementStack[elementStack.length - 1];
+      const element = createElementContext(node, parentElement);
+      elementStack.push(element);
 
-    validateElementStructure(element, file, failures);
-    validateElementAttributes(element, file, failures);
-    if (element.name === 'path') {
-      const isCanonicalPath = validatePaintedPath(element, file, failures);
-      hasCanonicalPaint ||= isCanonicalPath;
-    }
-  });
-  parser.on('closetag', () => {
-    elementStack.pop();
-  });
+      validateElementStructure(element, file, failures);
+      validateElementAttributes(element, file, failures);
+      if (element.name === 'path') {
+        const isCanonicalPath = validatePaintedPath(element, file, failures);
+        hasCanonicalPaint ||= isCanonicalPath;
+      }
+    });
+    parser.on('closetag', () => {
+      elementStack.pop();
+    });
+  }
   parser.write(content).close();
-  if (!hasCanonicalPaint) {
+  if (monochrome && !hasCanonicalPaint) {
     failures.push(`${file}: No canonical painted path geometry. Provide a nonempty supported path with effective fill ${canonicalFill}.`);
   }
 }

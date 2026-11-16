@@ -1,14 +1,14 @@
 # Asset Contract
 
 Raw SVGs in `assets/` are shared inputs for every platform. Contract changes require
-engineering and design review.
+engineering and design review. All variants, including Color, must contain well-formed XML.
 
 ## Monochrome Artwork
 
 - Use one outer `svg`, optional `g` containers, and nonempty painted `path` elements.
 - Every path must resolve to `fill="#212121"`, explicitly or through inheritance.
   `fill="none"` is allowed on containers only when paths override it with canonical paint.
-- Use well-formed XML and unprefixed SVG elements and attributes. No CSS, stylesheets,
+- Use unprefixed SVG elements and attributes. No CSS, stylesheets,
   processing instructions, foreign namespaces, or paint-server fills. XML declarations
   and comments are allowed.
 - Definitions, clipping, masks, references, and shape primitives are unsupported by the
