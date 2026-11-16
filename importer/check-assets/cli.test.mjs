@@ -6,7 +6,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { expect, onTestFinished, test } from 'vitest';
 
-const validatorScriptPath = fileURLToPath(new URL('./check-assets.mjs', import.meta.url));
+const validatorScriptPath = fileURLToPath(new URL('./cli.mjs', import.meta.url));
 const validMonochromeSvg = '<svg xmlns="http://www.w3.org/2000/svg" fill="none"><path fill="#212121" d="M0 0h1v1z"/></svg>';
 
 function createAssetFixture() {

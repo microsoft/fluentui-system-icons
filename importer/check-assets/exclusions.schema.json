@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Asset validation exclusions",
+  "description": "Exact asset-relative SVG paths mapped to nonempty review reasons. The CLI enforces source identities and stale-entry checks.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Editor schema association; not an asset exclusion."
+    }
+  },
+  "patternProperties": {
+    "^[^/\\\\]+/(?:[^/\\\\]+/)?SVG/[^/\\\\]+\\.svg$": {
+      "type": "string",
+      "pattern": "\\S",
+      "description": "Why this exact source SVG requires an exclusion and what migration or review is pending."
+    }
+  },
+  "additionalProperties": false
+}

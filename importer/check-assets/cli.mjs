@@ -5,7 +5,7 @@
 /**
  * Validates source asset directory names and monochrome SVG fills without writing files.
  *
- * Usage: node importer/check-assets.mjs [--source <directory>] [--exclusions <file>]
+ * Usage: node importer/check-assets/cli.mjs [--source <directory>] [--exclusions <file>]
  *
  * Options:
  *   --source: Asset root (defaults to the repository assets directory)
@@ -18,7 +18,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
 import { SaxesParser } from 'saxes';
-import { parseIconName } from './icon-name.js';
+import { parseIconName } from '../icon-name.js';
 
 const canonicalFill = '#212121';
 const svgNamespace = 'http://www.w3.org/2000/svg';
@@ -93,7 +93,7 @@ function main() {
 // ====================================
 
 function processArgs() {
-  const defaultSource = fileURLToPath(new URL('../assets/', import.meta.url));
+  const defaultSource = fileURLToPath(new URL('../../assets/', import.meta.url));
   try {
     const { values } = parseArgs({
       options: {
@@ -115,7 +115,7 @@ function processArgs() {
 }
 
 function printUsage() {
-  console.error('Usage: node importer/check-assets.mjs [--source <directory>] [--exclusions <file>]');
+  console.error('Usage: node importer/check-assets/cli.mjs [--source <directory>] [--exclusions <file>]');
   console.error('Options:');
   console.error('  --source: Asset root (defaults to repository assets/)');
   console.error('  --exclusions: JSON map of exact asset-relative paths to review reasons; strict when omitted');
@@ -136,6 +136,10 @@ function readExclusions(exclusionsPath) {
       throw new Error('Expected an object mapping exact asset-relative SVG paths to reasons.');
     }
     for (const [assetRelativePath, reason] of Object.entries(entries)) {
+      if (assetRelativePath === '$schema') {
+        if (typeof reason !== 'string') throw new Error('$schema metadata must be a string.');
+        continue;
+      }
       if (
         typeof reason !== 'string' || !reason.trim() || assetRelativePath.includes('\\') ||
         path.posix.isAbsolute(assetRelativePath) || path.posix.normalize(assetRelativePath) !== assetRelativePath

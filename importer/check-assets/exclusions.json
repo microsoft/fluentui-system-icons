@@ -1,4 +1,5 @@
 {
+  "$schema": "./exclusions.schema.json",
   "Flag Pride/SVG/ic_fluent_flag_pride_16_filled.svg": "Existing multicolor Filled flag; preserve its palette pending design-reviewed Color reclassification.",
   "Flag Pride/SVG/ic_fluent_flag_pride_20_filled.svg": "Existing multicolor Filled flag; preserve its palette pending design-reviewed Color reclassification.",
   "Flag Pride/SVG/ic_fluent_flag_pride_24_filled.svg": "Existing multicolor Filled flag; preserve its palette pending design-reviewed Color reclassification.",
