@@ -10,6 +10,8 @@
 |App Generic|<img src="assets/App Generic/SVG/ic_fluent_app_generic_32_light.svg?raw=true" width="24" height="24">|`appGeneric32Light`|`ic_fluent_app_generic_32_light`|
 |Archive|<img src="assets/Archive/SVG/ic_fluent_archive_32_light.svg?raw=true" width="24" height="24">|`archive32Light`|`ic_fluent_archive_32_light`|
 |Archive Settings|<img src="assets/Archive Settings/SVG/ic_fluent_archive_settings_32_light.svg?raw=true" width="24" height="24">|`archiveSettings32Light`|`ic_fluent_archive_settings_32_light`|
+|Arrow Bidirectional Left Right|<img src="assets/Arrow Bidirectional Left Right/SVG/ic_fluent_arrow_bidirectional_left_right_32_light.svg?raw=true" width="24" height="24">|`arrowBidirectionalLeftRight32Light`|`ic_fluent_arrow_bidirectional_left_right_32_light`|
+|Arrow Bidirectional Up Down|<img src="assets/Arrow Bidirectional Up Down/SVG/ic_fluent_arrow_bidirectional_up_down_32_light.svg?raw=true" width="24" height="24">|`arrowBidirectionalUpDown32Light`|`ic_fluent_arrow_bidirectional_up_down_32_light`|
 |Arrow Clockwise|<img src="assets/Arrow Clockwise/SVG/ic_fluent_arrow_clockwise_32_light.svg?raw=true" width="24" height="24">|`arrowClockwise32Light`|`ic_fluent_arrow_clockwise_32_light`|
 |Arrow Down|<img src="assets/Arrow Down/SVG/ic_fluent_arrow_down_32_light.svg?raw=true" width="24" height="24">|`arrowDown32Light`|`ic_fluent_arrow_down_32_light`|
 |Arrow Download|<img src="assets/Arrow Download/SVG/ic_fluent_arrow_download_32_light.svg?raw=true" width="24" height="24">|`arrowDownload32Light`|`ic_fluent_arrow_download_32_light`|
@@ -23,6 +25,7 @@
 |Arrow Hook Up Right|<img src="assets/Arrow Hook Up Right/SVG/ic_fluent_arrow_hook_up_right_32_light.svg?raw=true" width="24" height="24">|`arrowHookUpRight32Light`|`ic_fluent_arrow_hook_up_right_32_light`|
 |Arrow Import|<img src="assets/Arrow Import/SVG/ic_fluent_arrow_import_32_light.svg?raw=true" width="24" height="24">|`arrowImport32Light`|`ic_fluent_arrow_import_32_light`|
 |Arrow Redo|<img src="assets/Arrow Redo/SVG/ic_fluent_arrow_redo_32_light.svg?raw=true" width="24" height="24">|`arrowRedo32Light`|`ic_fluent_arrow_redo_32_light`|
+|Arrow Repeat All|<img src="assets/Arrow Repeat All/SVG/ic_fluent_arrow_repeat_all_32_light.svg?raw=true" width="24" height="24">|`arrowRepeatAll32Light`|`ic_fluent_arrow_repeat_all_32_light`|
 |Arrow Reply|<img src="assets/Arrow Reply/SVG/ic_fluent_arrow_reply_32_light.svg?raw=true" width="24" height="24">|`arrowReply32Light`|`ic_fluent_arrow_reply_32_light`|
 |Arrow Reply All|<img src="assets/Arrow Reply All/SVG/ic_fluent_arrow_reply_all_32_light.svg?raw=true" width="24" height="24">|`arrowReplyAll32Light`|`ic_fluent_arrow_reply_all_32_light`|
 |Arrow Undo|<img src="assets/Arrow Undo/SVG/ic_fluent_arrow_undo_32_light.svg?raw=true" width="24" height="24">|`arrowUndo32Light`|`ic_fluent_arrow_undo_32_light`|
@@ -38,6 +41,7 @@
 |Calendar Checkmark|<img src="assets/Calendar Checkmark/SVG/ic_fluent_calendar_checkmark_32_light.svg?raw=true" width="24" height="24">|`calendarCheckmark32Light`|`ic_fluent_calendar_checkmark_32_light`|
 |Calendar Clock|<img src="assets/Calendar Clock/SVG/ic_fluent_calendar_clock_32_light.svg?raw=true" width="24" height="24">|`calendarClock32Light`|`ic_fluent_calendar_clock_32_light`|
 |Calendar Data Bar|<img src="assets/Calendar Data Bar/SVG/ic_fluent_calendar_data_bar_32_light.svg?raw=true" width="24" height="24">|`calendarDataBar32Light`|`ic_fluent_calendar_data_bar_32_light`|
+|Calendar Date|<img src="assets/Calendar Date/SVG/ic_fluent_calendar_date_32_light.svg?raw=true" width="24" height="24">|`calendarDate32Light`|`ic_fluent_calendar_date_32_light`|
 |Calendar Day|<img src="assets/Calendar Day/SVG/ic_fluent_calendar_day_32_light.svg?raw=true" width="24" height="24">|`calendarDay32Light`|`ic_fluent_calendar_day_32_light`|
 |Calendar Edit|<img src="assets/Calendar Edit/SVG/ic_fluent_calendar_edit_32_light.svg?raw=true" width="24" height="24">|`calendarEdit32Light`|`ic_fluent_calendar_edit_32_light`|
 |Calendar Empty|<img src="assets/Calendar Empty/SVG/ic_fluent_calendar_empty_32_light.svg?raw=true" width="24" height="24">|`calendarEmpty32Light`|`ic_fluent_calendar_empty_32_light`|
@@ -60,6 +64,7 @@
 |Color Fill|<img src="assets/Color Fill/SVG/ic_fluent_color_fill_32_light.svg?raw=true" width="24" height="24">|`colorFill32Light`|`ic_fluent_color_fill_32_light`|
 |Color Fill Accent|<img src="assets/Color Fill Accent/SVG/ic_fluent_color_fill_accent_32_light.svg?raw=true" width="24" height="24">|`colorFillAccent32Light`|`ic_fluent_color_fill_accent_32_light`|
 |Color Line|<img src="assets/Color Line/SVG/ic_fluent_color_line_32_light.svg?raw=true" width="24" height="24">|`colorLine32Light`|`ic_fluent_color_line_32_light`|
+|Color Line Accent|<img src="assets/Color Line Accent/SVG/ic_fluent_color_line_accent_32_light.svg?raw=true" width="24" height="24">|`colorLineAccent32Light`|`ic_fluent_color_line_accent_32_light`|
 |Comment|<img src="assets/Comment/SVG/ic_fluent_comment_32_light.svg?raw=true" width="24" height="24">|`comment32Light`|`ic_fluent_comment_32_light`|
 |Comment Add|<img src="assets/Comment Add/SVG/ic_fluent_comment_add_32_light.svg?raw=true" width="24" height="24">|`commentAdd32Light`|`ic_fluent_comment_add_32_light`|
 |Compose|<img src="assets/Compose/SVG/ic_fluent_compose_32_light.svg?raw=true" width="24" height="24">|`compose32Light`|`ic_fluent_compose_32_light`|
@@ -109,6 +114,8 @@
 |Layout Row Two Focus Top Settings|<img src="assets/Layout Row Two Focus Top Settings/SVG/ic_fluent_layout_row_two_focus_top_settings_32_light.svg?raw=true" width="24" height="24">|`layoutRowTwoFocusTopSettings32Light`|`ic_fluent_layout_row_two_focus_top_settings_32_light`|
 |Layout Row Two Settings|<img src="assets/Layout Row Two Settings/SVG/ic_fluent_layout_row_two_settings_32_light.svg?raw=true" width="24" height="24">|`layoutRowTwoSettings32Light`|`ic_fluent_layout_row_two_settings_32_light`|
 |Lightbulb|<img src="assets/Lightbulb/SVG/ic_fluent_lightbulb_32_light.svg?raw=true" width="24" height="24">|`lightbulb32Light`|`ic_fluent_lightbulb_32_light`|
+|Line Horizontal 4|<img src="assets/Line Horizontal 4/SVG/ic_fluent_line_horizontal_4_32_light.svg?raw=true" width="24" height="24">|`lineHorizontal432Light`|`ic_fluent_line_horizontal_4_32_light`|
+|Line Horizontal 4 Search|<img src="assets/Line Horizontal 4 Search/SVG/ic_fluent_line_horizontal_4_search_32_light.svg?raw=true" width="24" height="24">|`lineHorizontal4Search32Light`|`ic_fluent_line_horizontal_4_search_32_light`|
 |Link|<img src="assets/Link/SVG/ic_fluent_link_32_light.svg?raw=true" width="24" height="24">|`link32Light`|`ic_fluent_link_32_light`|
 |Lock Closed|<img src="assets/Lock Closed/SVG/ic_fluent_lock_closed_32_light.svg?raw=true" width="24" height="24">|`lockClosed32Light`|`ic_fluent_lock_closed_32_light`|
 |Lock Open|<img src="assets/Lock Open/SVG/ic_fluent_lock_open_32_light.svg?raw=true" width="24" height="24">|`lockOpen32Light`|`ic_fluent_lock_open_32_light`|
@@ -167,6 +174,7 @@
 |Rectangle Landscape|<img src="assets/Rectangle Landscape/SVG/ic_fluent_rectangle_landscape_32_light.svg?raw=true" width="24" height="24">|`rectangleLandscape32Light`|`ic_fluent_rectangle_landscape_32_light`|
 |Rotate Left|<img src="assets/Rotate Left/SVG/ic_fluent_rotate_left_32_light.svg?raw=true" width="24" height="24">|`rotateLeft32Light`|`ic_fluent_rotate_left_32_light`|
 |Save|<img src="assets/Save/SVG/ic_fluent_save_32_light.svg?raw=true" width="24" height="24">|`save32Light`|`ic_fluent_save_32_light`|
+|Save Edit|<img src="assets/Save Edit/SVG/ic_fluent_save_edit_32_light.svg?raw=true" width="24" height="24">|`saveEdit32Light`|`ic_fluent_save_edit_32_light`|
 |Search|<img src="assets/Search/SVG/ic_fluent_search_32_light.svg?raw=true" width="24" height="24">|`search32Light`|`ic_fluent_search_32_light`|
 |Search Sparkle|<img src="assets/Search Sparkle/SVG/ic_fluent_search_sparkle_32_light.svg?raw=true" width="24" height="24">|`searchSparkle32Light`|`ic_fluent_search_sparkle_32_light`|
 |Send Clock|<img src="assets/Send Clock/SVG/ic_fluent_send_clock_32_light.svg?raw=true" width="24" height="24">|`sendClock32Light`|`ic_fluent_send_clock_32_light`|

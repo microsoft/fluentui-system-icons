@@ -5982,5 +5982,11 @@
   "ic_fluent_document_excel_20_filled": 63324,
   "ic_fluent_document_excel_20_regular": 63325,
   "ic_fluent_document_powerpoint_20_filled": 63326,
-  "ic_fluent_document_powerpoint_20_regular": 63327
+  "ic_fluent_document_powerpoint_20_regular": 63327,
+  "ic_fluent_autopilot_face_20_filled": 63328,
+  "ic_fluent_autopilot_face_20_regular": 63329,
+  "ic_fluent_card_ui_sparkle_20_filled": 63330,
+  "ic_fluent_card_ui_sparkle_20_regular": 63331,
+  "ic_fluent_threat_actor_20_filled": 63332,
+  "ic_fluent_threat_actor_20_regular": 63333
 }
