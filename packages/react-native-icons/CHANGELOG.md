@@ -1,3 +1,9 @@
+## 2.0.347 (2026-11-18)
+
+### 🚀 Features
+
+- **react-native-icons:** add per-style submodules and a codegen entry point ([#1292](https://github.com/microsoft/fluentui-system-icons/pull/1292))
+
 ## 2.0.346 (2026-11-13)
 
 ### 🚀 Features
