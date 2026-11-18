@@ -9,6 +9,7 @@ import {
   generateIconComponents,
   generateIconFile,
   generateIconModule,
+  renderIconModule,
   resolveSvgIconsDir,
 } from './src/codegen/index.ts';
 
@@ -35,32 +36,118 @@ describe('codegen', () => {
 
   it('generates a module with double quotes and the package util path by default', () => {
     const source = generateIconModule([{ name: 'dot_20_regular', svg: simple }]);
-    expect(source).toContain('import { Path } from "react-native-svg";');
-    expect(source).toContain('import type { SvgProps } from "react-native-svg";');
-    expect(source).toContain('import type { FluentIconsProps } from "@fluentui/react-native-icons/utils";');
-    expect(source).toContain('import { FluentSvg } from "@fluentui/react-native-icons/utils";');
-    expect(source).toContain('export const DotRegular = ');
-    expect(source).toContain('export const Dot20Regular = ');
+    expect(source).toMatchInlineSnapshot(`
+      "import { Path } from "react-native-svg";
+      import type { SvgProps } from "react-native-svg";
+      import type { FluentIconsProps } from "@fluentui/react-native-icons/utils";
+      import { FluentSvg } from "@fluentui/react-native-icons/utils";
+
+      export const DotRegular = /*#__PURE__*/(props: FluentIconsProps<SvgProps>) => <FluentSvg {...props}><Path d="M1 2h3" /></FluentSvg>;
+
+
+      export const Dot20Regular = /*#__PURE__*/(props: FluentIconsProps<SvgProps>) => <FluentSvg size={20} {...props}><Path d="M1 2h3" /></FluentSvg>;
+      "
+    `);
     assertValidTsx(source);
   });
 
-  it('honors the quote style and util path options', () => {
+  it('generates a module with single quotes', () => {
+    const source = generateIconModule([{ name: 'dot_24_filled', svg: mixed }], { quote: "'" });
+    expect(source).toMatchInlineSnapshot(`
+      "import { Path } from 'react-native-svg';
+      import type { SvgProps } from 'react-native-svg';
+      import type { FluentIconsProps } from '@fluentui/react-native-icons/utils';
+      import { FluentSvg } from '@fluentui/react-native-icons/utils';
+
+      export const Dot24Filled = /*#__PURE__*/(props: FluentIconsProps<SvgProps>) => {
+        const { primaryFill = 'currentColor' } = props;
+        return <FluentSvg size={24} {...props}><Path fill={primaryFill} d="M1 2h3" /><Path fill="none" d="M2 3h4" /></FluentSvg>;
+      };
+      "
+    `);
+    assertValidTsx(source);
+  });
+
+  it('generates a module with a custom util path', () => {
+    const source = generateIconModule([{ name: 'dot_24_filled', svg: mixed }], { utilPath: '../utils' });
+    expect(source).toMatchInlineSnapshot(`
+      "import { Path } from "react-native-svg";
+      import type { SvgProps } from "react-native-svg";
+      import type { FluentIconsProps } from "../utils";
+      import { FluentSvg } from "../utils";
+
+      export const Dot24Filled = /*#__PURE__*/(props: FluentIconsProps<SvgProps>) => {
+        const { primaryFill = "currentColor" } = props;
+        return <FluentSvg size={24} {...props}><Path fill={primaryFill} d="M1 2h3" /><Path fill="none" d="M2 3h4" /></FluentSvg>;
+      };
+      "
+    `);
+    assertValidTsx(source);
+  });
+
+  it('escapes the util path in imports', () => {
+    const source = generateIconModule([{ name: 'dot_24_filled', svg: mixed }], {
+      quote: "'",
+      utilPath: 'it\'s/a"path',
+    });
+    expect(source).toMatchInlineSnapshot(`
+      "import { Path } from 'react-native-svg';
+      import type { SvgProps } from 'react-native-svg';
+      import type { FluentIconsProps } from 'it\\'s/a"path';
+      import { FluentSvg } from 'it\\'s/a"path';
+
+      export const Dot24Filled = /*#__PURE__*/(props: FluentIconsProps<SvgProps>) => {
+        const { primaryFill = 'currentColor' } = props;
+        return <FluentSvg size={24} {...props}><Path fill={primaryFill} d="M1 2h3" /><Path fill="none" d="M2 3h4" /></FluentSvg>;
+      };
+      "
+    `);
+    assertValidTsx(source);
+  });
+
+  it('rejects invalid module options', () => {
     const icons = [{ name: 'dot_24_filled', svg: mixed }];
-    const single = generateIconModule(icons, { quote: "'", utilPath: '../utils' });
-    expect(single).toContain("import { Path } from 'react-native-svg';");
-    expect(single).toContain("import { FluentSvg } from '../utils';");
-    expect(single).toContain("const { primaryFill = 'currentColor' } = props;");
-    expect(single).not.toContain('"../utils"');
-    expect(single).toContain('fill="none"');
-    assertValidTsx(single);
-
-    const double = generateIconModule(icons, { utilPath: '../utils' });
-    expect(double).toContain('import { FluentSvg } from "../utils";');
-    expect(double).toContain('const { primaryFill = "currentColor" } = props;');
-
-    assertValidTsx(generateIconModule(icons, { quote: "'", utilPath: 'it\'s/a"path' }));
     expect(() => generateIconModule(icons, { quote: '`' })).toThrow(/Unsupported quote style/);
     expect(() => generateIconModule(icons, { utilPath: '' })).toThrow(/utilPath/);
+  });
+
+  it('imports native image and text elements used by component strings', () => {
+    const source = renderIconModule([
+      'export const ImageIcon = () => <Image />;',
+      'export const TextIcon = () => <Text><TSpan /><TextPath /></Text>;',
+    ]);
+    expect(source).toMatchInlineSnapshot(`
+      "import { Image, Text, TSpan, TextPath } from "react-native-svg";
+      import type { SvgProps } from "react-native-svg";
+      import type { FluentIconsProps } from "@fluentui/react-native-icons/utils";
+      import { FluentSvg } from "@fluentui/react-native-icons/utils";
+      export const ImageIcon = () => <Image />;
+      export const TextIcon = () => <Text><TSpan /><TextPath /></Text>;"
+    `);
+    assertValidTsx(source);
+  });
+
+  it('deduplicates native element imports across and within components', () => {
+    const source = renderIconModule([
+      'export const First = () => <G><Path /><Image /><Path /></G>;',
+      'export const Second = () => <G><Image /><TSpan /><TSpan /></G>;',
+    ]);
+    expect(source).toMatchInlineSnapshot(`
+      "import { Path, G, Image, TSpan } from "react-native-svg";
+      import type { SvgProps } from "react-native-svg";
+      import type { FluentIconsProps } from "@fluentui/react-native-icons/utils";
+      import { FluentSvg } from "@fluentui/react-native-icons/utils";
+      export const First = () => <G><Path /><Image /><Path /></G>;
+      export const Second = () => <G><Image /><TSpan /><TSpan /></G>;"
+    `);
+    assertValidTsx(source);
+  });
+
+  it('renders an empty component list as an empty module', () => {
+    expect(renderIconModule([])).toMatchInlineSnapshot(`
+      "export {};
+      "
+    `);
   });
 
   it('reads icons passed by name from svgDir', () => {
