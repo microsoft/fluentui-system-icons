@@ -12,6 +12,7 @@
         "iconGenerationToolchain",
         "{projectRoot}/package.json",
         "{projectRoot}/svgo.config.js",
+        "{projectRoot}/remove-full-viewbox-clip.js",
         "{projectRoot}/unfill.js"
       ],
       "outputs": ["{projectRoot}/icons"]

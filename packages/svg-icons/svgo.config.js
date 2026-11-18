@@ -1,4 +1,7 @@
-// Re-exports the shared SVGO config so raw-SVG processing stays identical to
-// @fluentui/react-icons, letting this package serve as the optimized-SVG base.
-// See importer/svgo.config.shared.cjs for details.
-module.exports = require('../../importer/svgo.config.shared.cjs');
+const shared = require('../../importer/svgo.config.shared.cjs');
+const removeFullViewBoxClip = require('./remove-full-viewbox-clip');
+
+module.exports = {
+  ...shared,
+  plugins: [removeFullViewBoxClip, ...shared.plugins],
+};
