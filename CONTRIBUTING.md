@@ -15,6 +15,11 @@ or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any addi
 
 ## Pull Request Guidelines
 
+### Assets
+
+Follow the [Asset Contract](docs/assets-contract.md) when adding or updating artwork.
+Validate locally with `yarn nx run system-icons-processing:check:assets`.
+
 ### Pull Request Titles
 
 Pull request titles must follow the [Conventional Commits](https://www.conventionalcommits.org/) standard. This helps us generate accurate changelogs and maintain a clear project history.
