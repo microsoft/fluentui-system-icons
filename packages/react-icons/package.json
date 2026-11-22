@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-icons",
-  "version": "2.0.346",
+  "version": "2.0.347",
   "type": "module",
   "sideEffects": [
     "**/headless/fonts/styles.css",
