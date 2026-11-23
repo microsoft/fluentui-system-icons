@@ -16,7 +16,7 @@
     "unfill": "node unfill.js --path=./icons/",
     "build": "yarn clean && yarn copy && yarn rename && yarn optimize && yarn unfill",
     "buildforblazor": "yarn copywithdirs && yarn rename && yarn optimize && yarn unfill",
-    "build-verify": "yarn run -T vitest run build-verify.test.js"
+    "build-verify": "yarn run -T vitest run build-verify.test.js svgo.config.test.js"
   },
   "files": [
     "icons/",
