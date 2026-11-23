@@ -95,6 +95,10 @@ ReactDOM.render(
 );
 ```
 
+### Breaking changes and migration
+
+See the [migration guide](./MIGRATION.md) for explicit breaking changes and upgrade instructions, including the Pride Flag families' move from `Filled` to `Color`.
+
 ### Localized and directional icons
 
 Localized artwork is exported explicitly, without runtime locale detection:
