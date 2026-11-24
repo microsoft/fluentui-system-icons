@@ -2,7 +2,11 @@
   "name": "Circle Off",
   "size": [
     16,
-    20
+    20,
+    48,
+    32,
+    28,
+    24
   ],
   "style": [
     "Regular",

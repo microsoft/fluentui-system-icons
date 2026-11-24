@@ -6,6 +6,8 @@
  * CSS-extraction and HTML plugins differ, so they are injected by the bundler-specific configs.
  */
 const { resolve, join } = require('path');
+const { readFileSync } = require('node:fs');
+const { create: createFont } = require('fontkit');
 
 const { default: FluentUIReactIconsFontSubsettingPlugin } = require('../lib/');
 
@@ -14,6 +16,23 @@ const { default: FluentUIReactIconsFontSubsettingPlugin } = require('../lib/');
 // Each entry is compiled separately (multi-compiler) so fonts are independently subset
 //  — this gives accurate per-entry size measurement in the build output.
 const entries = {
+  localized: {
+    src: './src/localized.js',
+    threshold: 3 * 1_024,
+    useAtomicLoader: true,
+    assertNoGriffel: true,
+    glyphs: ['TextBoldRegular', 'TextBoldRegular_es', 'TextBold24Regular_srCyrl', 'TextNumberListRtl90Regular'],
+    excludedGlyphs: ['TextBoldRegular_fr', 'TextBold24Regular_fr'],
+  },
+  localizedIcon: {
+    src: './src/localized.js',
+    threshold: 3 * 1_024,
+    useAtomicLoader: true,
+    moduleGranularity: 'icon',
+    assertNoGriffel: true,
+    glyphs: ['TextBoldRegular', 'TextBoldRegular_es', 'TextBold24Regular_srCyrl', 'TextNumberListRtl90Regular'],
+    excludedGlyphs: ['TextBoldRegular_fr', 'TextBold24Regular_fr'],
+  },
   index: { src: './src/index.js', threshold: 2 * 1_024 }, // 2 KB
   atoms: { src: './src/atoms.js', threshold: 2 * 1_024 }, // 2 KB
   // atomsImportStar uses `import *` and references more icon variants, producing a larger (but still properly subset) font.
@@ -77,6 +96,8 @@ const entries = {
  * @property {'icon'} [moduleGranularity]
  * @property {boolean} [assertNoGriffel]
  * @property {boolean} [assertModuleFormats]
+ * @property {string[]} [glyphs]
+ * @property {string[]} [excludedGlyphs]
  * @property {string} [runtimeChunkName] Name the runtime chunk, decoupling runtime name from entry name.
  * @property {Record<string, number>} [fontGlyphCounts]
  */
@@ -216,6 +237,24 @@ function createAssertionPlugin(name, entry, adapter) {
               `[${adapter.name}/${name}] Asset "${assetName}" (${source.size()} bytes) exceeds the ` +
                 `${entry.threshold}-byte threshold — font may not have been properly subset.`,
             );
+          }
+          if (entry.glyphs) {
+            const font = createFont(await readOutputFile(outputFileSystem, join(compiler.outputPath, assetName)));
+            if (!('hasGlyphForCodePoint' in font)) throw new Error(`Unexpected font collection: ${assetName}`);
+            const map = JSON.parse(
+              readFileSync(resolve(__dirname, `../../react-icons/lib/utils/fonts/${font.familyName}.json`), 'utf8'),
+            );
+            for (const glyph of entry.glyphs) {
+              if (map[glyph] === undefined) continue;
+              if (!font.hasGlyphForCodePoint(map[glyph]) || !font.glyphForCodePoint(map[glyph]).path.commands.length) {
+                throw new Error(`[${adapter.name}/${name}] Missing selected glyph ${glyph} in ${assetName}`);
+              }
+            }
+            for (const glyph of entry.excludedGlyphs || []) {
+              if (map[glyph] !== undefined && font.hasGlyphForCodePoint(map[glyph])) {
+                throw new Error(`[${adapter.name}/${name}] Unused locale glyph ${glyph} remains in ${assetName}`);
+              }
+            }
           }
         }
 

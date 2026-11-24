@@ -2,11 +2,13 @@
   "name": "Building Multiple",
   "size": [
     24,
-    20
+    20,
+    16
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Color"
   ],
   "keyword": "fluent-icon",
   "description": "Used for location scenarios.",

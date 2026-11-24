@@ -1,7 +1,9 @@
 {
   "name": "Task List Square Person",
   "size": [
-    20
+    20,
+    48,
+    24
   ],
   "style": [
     "Regular",

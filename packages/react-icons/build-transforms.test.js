@@ -14,11 +14,13 @@ import { resolveFluentIconImport } from './fluent-icons-transform.cjs';
  * by the SWC plugin at build time.
  *
  * @param {string} importName
- * @returns {string | null} capture group 1 (icon base name in PascalCase), or null on mismatch
+ * @returns {string | null} qualified atomic filename, or null on mismatch
  */
-function swcCaptureGroup1(importName) {
-  const m = importName.match(/(.+?)(\d+)?(Regular|Filled|Light|Color)$/);
-  return m ? m[1] : null;
+function swcAtomBaseName(importName) {
+  const qualified = importName.match(/^(.+?)(\d+)?(Regular|Filled|Light|Color)_([a-z][a-zA-Z0-9]*)$/);
+  if (qualified) return _.kebabCase(qualified[1]) + '_' + _.kebabCase(qualified[4]);
+  const matched = importName.match(/^(.+?)(\d+)?(Regular|Filled|Light|Color)$/);
+  return matched ? _.kebabCase(matched[1]) : null;
 }
 
 /**
@@ -29,12 +31,13 @@ function swcCaptureGroup1(importName) {
  * @returns {string}
  */
 function referenceKebab(importName) {
-  const withoutStyle = importName.replace(/(Regular|Filled|Light|Color)$/, '');
+  const [name, qualifier] = importName.split('_');
+  const withoutStyle = name.replace(/(Regular|Filled|Light|Color)$/, '');
   const parts = _.kebabCase(withoutStyle).split('-');
   if (parts.length > 1 && /^\d+$/.test(parts[parts.length - 1])) {
     parts.pop();
   }
-  return parts.join('-');
+  return parts.join('-') + (qualifier ? `_${_.kebabCase(qualifier)}` : '');
 }
 
 // Icon names that contain digits in the base name (the tricky cases).
@@ -86,7 +89,15 @@ const STANDARD_ICON_CASES = [
   ['AddFilled', 'add'],
 ];
 
-const ALL_CASES = [...DIGIT_ICON_CASES, ...TRAILING_DIGIT_CASES, ...STANDARD_ICON_CASES];
+const ALL_CASES = [
+  ...DIGIT_ICON_CASES,
+  ...TRAILING_DIGIT_CASES,
+  ...STANDARD_ICON_CASES,
+  ['TextBold24Regular_es', 'text-bold_es'],
+  ['TextBoldRegular_srCyrl', 'text-bold_sr-cyrl'],
+  ['TextBold24Regular_srLatn', 'text-bold_sr-latn'],
+  ['TextDirectionHorizontalRtl24Regular_ko', 'text-direction-horizontal-rtl_ko'],
+];
 
 describe('build-transforms kebab-case consistency', () => {
   describe('resolveFluentIconImport matches lodash.kebabCase (generation pipeline)', () => {
@@ -109,6 +120,15 @@ describe('build-transforms kebab-case consistency', () => {
   });
 
   describe('resolveFluentIconImport target parameter', () => {
+    it('resolves locale-qualified imports without changing default atom paths', () => {
+      expect(resolveFluentIconImport('TextBold24Regular_es')).toBe('@fluentui/react-icons/svg/text-bold_es');
+      expect(resolveFluentIconImport('TextBoldRegular_srCyrl', 'fonts')).toBe(
+        '@fluentui/react-icons/fonts/text-bold_sr-cyrl',
+      );
+      expect(resolveFluentIconImport('TextBoldRegular_es419')).toBe('@fluentui/react-icons/svg/text-bold_es-419');
+      expect(resolveFluentIconImport('TextBold24Regular')).toBe('@fluentui/react-icons/svg/text-bold');
+    });
+
     it.each([
       ['svg', '@fluentui/react-icons/svg/access-time'],
       ['svg-sprite', '@fluentui/react-icons/svg-sprite/access-time'],
@@ -132,9 +152,7 @@ describe('build-transforms kebab-case consistency', () => {
 
   describe('SWC regex captures correct base name for kebabCase helper', () => {
     it.each(ALL_CASES)('%s → group1 kebab-cases to %s', (importName, expected) => {
-      const group1 = swcCaptureGroup1(importName);
-      expect(group1).not.toBeNull();
-      expect(_.kebabCase(/** @type {string} */ (group1))).toBe(expected);
+      expect(swcAtomBaseName(importName)).toBe(expected);
     });
   });
 });
@@ -205,8 +223,7 @@ describe('build-transforms resolve every generated atom export', () => {
   it('SWC transform resolves every export to its atom file', () => {
     const failures = [];
     for (const [exportName, expectedFile] of atomExports) {
-      const group1 = swcCaptureGroup1(exportName);
-      const result = group1 ? _.kebabCase(group1) : '';
+      const result = swcAtomBaseName(exportName) || '';
       if (result !== expectedFile) {
         failures.push(`${exportName}: got "${result}", expected "${expectedFile}"`);
       }

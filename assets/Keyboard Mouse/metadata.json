@@ -1,7 +1,8 @@
 {
   "name": "Keyboard Mouse",
   "size": [
-    16
+    16,
+    20
   ],
   "style": [
     "Regular",

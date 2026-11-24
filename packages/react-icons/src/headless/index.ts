@@ -28,6 +28,4 @@ export type { UseIconStateOptions } from './useIconState';
 // SVG icon factories
 export { createFluentIcon } from './createFluentIcon';
 export { bundleIcon } from './bundleIcon';
-
-// TODO: to maintain API compat for build transform we will probably need to export this as well
-// export { wrapIcon } from './wrapIcon';
+export { wrapIcon } from './wrapIcon';

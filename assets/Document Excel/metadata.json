@@ -1,0 +1,17 @@
+{
+  "name": "Document Excel",
+  "size": [
+    20
+  ],
+  "style": [
+    "Regular",
+    "Filled"
+  ],
+  "keyword": "fluent-icon",
+  "description": "An Excel document.",
+  "metaphor": [
+    "document",
+    "spreadsheet",
+    "excel"
+  ]
+}

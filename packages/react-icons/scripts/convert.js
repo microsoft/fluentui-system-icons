@@ -4,10 +4,10 @@
 // @ts-check
 
 const fs = require('fs');
-const { readdir } = require('fs/promises');
 const path = require('path');
 const yargs = require('yargs');
 const {
+  processSourceDir,
   parseIconSource,
   buildIconExportCode,
   getCreateFluentIconHeader,
@@ -21,6 +21,7 @@ const {
 } = require('./deprecated-atoms');
 const { createStableChunks } = require('./chunking-utils');
 const { createFormatMetadata, writeMetadata } = require('./metadata.utils');
+const { isResizableIconSource } = require('../../../importer/icon-name');
 
 if (require.main === module) {
   main().catch((err) => {
@@ -174,7 +175,7 @@ function processFolder(srcFiles, rtlMetadata, resizable) {
   const iconNames = [];
 
   srcFiles.forEach(function (entry) {
-    if (resizable && !entry.file.includes('20')) {
+    if (resizable && !isResizableIconSource(entry.file)) {
       return;
     }
 
@@ -264,35 +265,6 @@ async function processPerIcon(
 
 /**
  *
- * @param {string} srcPath
- */
-async function processSourceDir(srcPath) {
-  const srcFiles = await readdir(srcPath);
-  /** @type {{ srcFile: string; file: string; }[]} */
-  const filePaths = [];
-
-  for (const file of srcFiles) {
-    const srcFile = path.join(srcPath, file);
-
-    // for now, ignore subdirectories/localization, until we have a plan for handling it
-    // Will likely involve appending the lang/locale to the end of the friendly name for the unique component name
-    // var joinedDestPath = path.join(destPath, file)
-    // if (!fs.existsSync(joinedDestPath)) {
-    //   fs.mkdirSync(joinedDestPath);
-    // }
-    // indexContents += processFolder(srcFile, joinedDestPath)
-    if (fs.lstatSync(srcFile).isDirectory() || !file.endsWith('.svg')) continue;
-
-    filePaths.push({ srcFile, file });
-  }
-
-  console.info(`[process src]: processed ${filePaths.length} files`);
-
-  return filePaths;
-}
-
-/**
- *
  * @param {string[]} argv
  * @returns
  */
@@ -364,5 +336,3 @@ function parseArgs(argv) {
     HEADLESS_SPRITE_DEST,
   };
 }
-
-module.exports = {};

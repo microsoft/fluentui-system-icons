@@ -3,11 +3,13 @@
   "size": [
     20,
     24,
-    32
+    32,
+    16
   ],
   "style": [
     "Filled",
-    "Regular"
+    "Regular",
+    "Color"
   ],
   "keyword": "fluent-icon",
   "description": "Used to represent moments that need measurement.",

@@ -4,11 +4,14 @@
     24,
     20,
     16,
-    12
+    12,
+    32,
+    28
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon",
   "description": "Used for measuring height.",

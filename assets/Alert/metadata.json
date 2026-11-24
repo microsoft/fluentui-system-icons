@@ -12,7 +12,8 @@
   "style": [
     "Regular",
     "Filled",
-    "Light"
+    "Light",
+    "Color"
   ],
   "keyword": "fluent-icon",
   "description": "Used for alerts or notifications.",

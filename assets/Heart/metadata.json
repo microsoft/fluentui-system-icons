@@ -11,7 +11,8 @@
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Color"
   ],
   "keyword": "fluent-icon",
   "description": "Used to represent really liking an idea in chat, following in comments, or content to save for later.",

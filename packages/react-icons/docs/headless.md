@@ -137,6 +137,21 @@ function MyComponent() {
 }
 ```
 
+### Custom Icons
+
+Use `createFluentIcon` to define custom headless icons from SVG content:
+
+```tsx
+import '@fluentui/react-icons/headless/styles.css';
+import { createFluentIcon } from '@fluentui/react-icons/headless';
+
+const CustomIcon = createFluentIcon('CustomIcon', '20', ['M10 2l6 16H4l6-16z']);
+```
+
+The factory takes a display name, an intrinsic width/height, SVG path data, and optional configuration such as `{ flipInRtl: true }`. For color icons, use a structured SVG node tree with `{ color: true }`. The usual headless CSS setup still applies.
+
+`wrapIcon` is **deprecated**; use `createFluentIcon` instead. It remains available from `@fluentui/react-icons/headless` and `@fluentui/react-icons/headless/utils` for compatibility with existing custom SVG components and headless import transforms.
+
 ## TypeScript Configuration
 
 **IMPORTANT**: TypeScript users must use `moduleResolution: "bundler"` (or `"node16"`/`"nodenext"`) in their `tsconfig.json` to properly resolve the headless atomic exports:

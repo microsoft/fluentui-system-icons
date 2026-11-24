@@ -1,3 +1,21 @@
+## 2.0.347 (2026-11-18)
+
+### 🚀 Features
+
+- **react-native-icons:** add per-style submodules and a codegen entry point ([#1292](https://github.com/microsoft/fluentui-system-icons/pull/1292))
+
+## 2.0.346 (2026-11-13)
+
+### 🚀 Features
+
+- **react-native-icons:** generate FluentSvg components and shrink package output ([#1290](https://github.com/microsoft/fluentui-system-icons/pull/1290))
+
+## 2.0.345 (2026-10-30)
+
+### 🚀 Features
+
+- **react-native-icons:** bump the minimum react-native version to 0.73 ([#1278](https://github.com/microsoft/fluentui-system-icons/pull/1278))
+
 ## 2.0.344 (2026-10-09)
 
 This release contains icon updates

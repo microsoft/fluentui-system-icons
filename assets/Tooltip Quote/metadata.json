@@ -2,7 +2,12 @@
   "name": "Tooltip Quote",
   "size": [
     20,
-    24
+    24,
+    48,
+    32,
+    28,
+    16,
+    12
   ],
   "style": [
     "Filled",

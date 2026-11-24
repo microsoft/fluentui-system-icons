@@ -5,11 +5,14 @@
     24,
     20,
     48,
-    32
+    32,
+    16,
+    12
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Color"
   ],
   "keyword": "fluent-icon",
   "description": "Used to represent headphone device audio.",

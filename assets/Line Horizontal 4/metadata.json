@@ -2,11 +2,16 @@
   "name": "Line Horizontal 4",
   "size": [
     20,
-    16
+    16,
+    48,
+    32,
+    28,
+    24
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Light"
   ],
   "keyword": "fluent-icon",
   "description": "Used in generic scenarios.Note that we also have Navigation used in navigation moments.",

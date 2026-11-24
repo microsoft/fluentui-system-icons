@@ -10,7 +10,8 @@
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Color"
   ],
   "keyword": "fluent-icon, powerpoint",
   "description": "Used to represent AI generated slides.",

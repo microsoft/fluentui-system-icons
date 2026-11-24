@@ -2,3 +2,4 @@
 // surface the documented package version on the Overview docs pages.
 export const reactIconsVersion = STORYBOOK_REACT_ICONS_VERSION;
 export const reactIconsFileTypeVersion = STORYBOOK_REACT_ICONS_FILE_TYPE_VERSION;
+export const svgIconsVersion = STORYBOOK_SVG_ICONS_VERSION;

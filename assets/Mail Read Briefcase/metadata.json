@@ -1,7 +1,9 @@
 {
   "name": "Mail Read Briefcase",
   "size": [
-    48
+    48,
+    24,
+    20
   ],
   "style": [
     "Regular",

@@ -1,229 +1,161 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
-const svgr = require('@svgr/core');
-const fs = require('fs');
-const path = require('path');
-const argv = require('yargs').boolean('selector').default('selector', false).option('native', {
-  type: 'boolean',
-}).argv;
-const _ = require('lodash');
+// Generates the icon submodules of this package from a folder of svg-icons SVGs.
+// The generator itself is src/codegen, which Node runs directly by stripping its types.
 
-const SRC_PATH = argv.source;
-const DEST_PATH = argv.dest;
-const REACT_NATIVE = argv.native;
-const exportNameRegex = /export const (\S*)/gm;
+const fs = require('node:fs');
+const path = require('node:path');
+const { parseArgs } = require('node:util');
 
-const rnSvgElements = [
-  'Path',
-  'Circle',
-  'Ellipse',
-  'G',
-  'Line',
-  'Polygon',
-  'Polyline',
-  'Rect',
-  'Symbol',
-  'Text',
-  'Use',
-  'Defs',
-  'LinearGradient',
-  'RadialGradient',
-  'Stop',
-  'ClipPath',
-  'Pattern',
-  'Mask',
-];
+const CHUNK_SIZE = 500;
+// The generated code imports the utilities relatively, so it builds with any module resolution mode.
+const UTIL_PATH = '../utils';
 
-if (!SRC_PATH) {
-  throw new Error('Icon source folder not specified by --source');
-}
-if (!DEST_PATH) {
-  throw new Error('Output destination folder not specified by --dest');
-}
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});
 
-if (!fs.existsSync(DEST_PATH)) {
-  fs.mkdirSync(DEST_PATH);
+async function main() {
+  const {
+    values: { source: SRC_PATH, dest: DEST_PATH },
+  } = parseArgs({
+    options: {
+      source: { type: 'string' },
+      dest: { type: 'string' },
+    },
+  });
+
+  if (!SRC_PATH) {
+    throw new Error('Icon source folder not specified by --source');
+  }
+  if (!DEST_PATH) {
+    throw new Error('Output destination folder not specified by --dest');
+  }
+
+  if (!fs.existsSync(DEST_PATH)) {
+    fs.mkdirSync(DEST_PATH);
+  }
+
+  processFiles(await import('./src/codegen/index.ts'), SRC_PATH, DEST_PATH);
 }
 
-processFiles(SRC_PATH, DEST_PATH);
+/**
+ * Generate one submodule per style (`<dest>/<style>/`), each with chunk files and an `index.ts` entry point,
+ * plus a root index that re-exports every chunk directly.
+ * @param {typeof import('./src/codegen/index.ts')} codegen
+ */
+function processFiles(codegen, src, dest) {
+  const iconGroups = readIconGroups(codegen, src);
 
-function processFiles(src, dest) {
   /** @type string[] */
   const indexContents = [];
-
-  // make file for resizeable icons
-  const iconPath = path.join(dest, 'icons');
-  const iconContents = processFolder(src, dest, true);
-
-  if (fs.existsSync(iconPath)) {
-    fs.rmSync(iconPath, { recursive: true, force: true });
+  for (const style of codegen.ICON_STYLES) {
+    const components = iconGroups.get(style).map((icons) => convertGroup(codegen, icons));
+    const chunkNames = writeStyle(codegen, path.join(dest, style), components);
+    indexContents.push(...chunkNames.map((chunk) => `export * from './${style}/${chunk}'`));
   }
-  fs.mkdirSync(iconPath);
 
-  iconContents.forEach((chunk, i) => {
-    const chunkFileName = `chunk-${i}`;
-    const chunkPath = path.resolve(iconPath, `${chunkFileName}.tsx`);
-    const exportNames = Array.from(chunk.matchAll(exportNameRegex), (m) => m[1]);
-    indexContents.push(`export { ${exportNames.join(', ')} } from './icons/${chunkFileName}'`);
-    fs.writeFileSync(chunkPath, chunk, (err) => {
-      if (err) throw err;
-    });
-  });
-
-  // make file for sized icons
-  const sizedIconPath = path.join(dest, 'sizedIcons');
-  const sizedIconContents = processFolder(src, dest, false);
-  if (fs.existsSync(sizedIconPath)) {
-    fs.rmSync(sizedIconPath, { recursive: true, force: true });
-  }
-  fs.mkdirSync(sizedIconPath);
-
-  sizedIconContents.forEach((chunk, i) => {
-    const chunkFileName = `chunk-${i}`;
-    const chunkPath = path.resolve(sizedIconPath, `${chunkFileName}.tsx`);
-    const exportNames = Array.from(chunk.matchAll(exportNameRegex), (m) => m[1]);
-    indexContents.push(`export { ${exportNames.join(', ')} } from './sizedIcons/${chunkFileName}'`);
-    fs.writeFileSync(chunkPath, chunk, (err) => {
-      if (err) throw err;
-    });
-  });
-
-  const indexPath = path.join(dest, 'index.tsx');
   // Finally add the interface definition and then write out the index.
   indexContents.push("export type { FluentIconsProps } from './utils/FluentIconsProps.types'");
   indexContents.push("export { default as wrapIcon } from './utils/wrapIcon'");
   indexContents.push("export { useIconState } from './utils/useIconState'");
+  indexContents.push("export { FluentSvg } from './utils/fluentSvg'");
+  indexContents.push("export type { FluentSvgProps } from './utils/fluentSvg'");
 
-  fs.writeFileSync(indexPath, indexContents.join('\n'), (err) => {
-    if (err) throw err;
-  });
+  fs.writeFileSync(path.join(dest, 'index.tsx'), indexContents.join('\n'));
 }
 
 /**
- * Process a folder of svg files and convert them to React components, following naming patterns for the FluentUI System Icons
+ * Read the svg files and group them by style and icon name, so every size of an icon is generated together.
+ * Subdirectories are ignored for now, until we have a plan for handling localization.
+ * That will likely involve appending the lang/locale to the end of the friendly name for the unique component name.
+ * @param {typeof import('./src/codegen/index.ts')} codegen
  * @param {string} srcPath
- * @param {boolean} resizable
- * @returns { string [] } - chunked icon files to insert
+ * @returns {Map<string, { name: string, srcFile: string, size: number }[][]>}
  */
-function processFolder(srcPath, destPath, resizable) {
-  var files = fs.readdirSync(srcPath);
+function readIconGroups(codegen, srcPath) {
+  const groups = new Map(codegen.ICON_STYLES.map((style) => [style, new Map()]));
+  const files = fs
+    .readdirSync(srcPath, { withFileTypes: true })
+    .filter((entry) => !entry.isDirectory() && entry.name.endsWith('.svg'))
+    .map((entry) => entry.name)
+    .sort();
 
-  // These options will be passed to svgr/core
-  // See https://react-svgr.com/docs/options/ for more info
-  function getSvgrOptions(file, isResizable) {
-    const isColorIcon = file.includes('_color.svg');
-
-    const options = {
-      template: fileTemplate,
-      expandProps: 'end',
-      replaceAttrValues: isColorIcon ? {} : { '#212121': '{primaryFill}' },
-      typescript: true,
-      prettier: true,
-      native: REACT_NATIVE,
-    };
-
-    // Add icon: true only if it's not a sized icon
-    if (isResizable) {
-      options.icon = true;
+  for (const file of files) {
+    const name = file.slice(0, -'.svg'.length).replace('ic_fluent_', '');
+    const { base, size, style } = codegen.parseIconName(name);
+    if (!groups.get(style).has(base)) {
+      groups.get(style).set(base, []);
     }
-
-    return options;
+    groups
+      .get(style)
+      .get(base)
+      .push({ name, srcFile: path.join(srcPath, file), size });
   }
 
-  /** @type string[] */
-  const iconExports = [];
-  files.forEach(function (file, index) {
-    var srcFile = path.join(srcPath, file);
-    if (fs.lstatSync(srcFile).isDirectory()) {
-      // for now, ignore subdirectories/localization, until we have a plan for handling it
-      // Will likely involve appending the lang/locale to the end of the friendly name for the unique component name
-      // var joinedDestPath = path.join(destPath, file)
-      // if (!fs.existsSync(joinedDestPath)) {
-      //   fs.mkdirSync(joinedDestPath);
-      // }
-      // indexContents += processFolder(srcFile, joinedDestPath)
-    } else {
-      if (resizable && !file.includes('20')) {
-        return;
-      }
-      var iconName = file.substring(0, file.length - 4); // strip '.svg'
-      iconName = iconName.replace('ic_fluent_', ''); // strip ic_fluent_
-      iconName = resizable ? iconName.replace('20', '') : iconName;
-      var destFilename = _.camelCase(iconName); // We want them to be camelCase, so access_time would become accessTime here
-      destFilename = destFilename.replace(destFilename.substring(0, 1), destFilename.substring(0, 1).toUpperCase()); // capitalize the first letter
-
-      var iconContent = fs.readFileSync(srcFile, { encoding: 'utf8' });
-
-      var jsxCode = resizable
-        ? svgr.transform.sync(iconContent, getSvgrOptions(file, true), { filePath: file })
-        : svgr.transform.sync(iconContent, getSvgrOptions(file, false), { filePath: file });
-
-      var jsCode = destFilename.endsWith('Color')
-        ? `
-const ${destFilename}Icon = (props) => {
-  return ${jsxCode};
+  return new Map(
+    codegen.ICON_STYLES.map((style) => [
+      style,
+      [...groups.get(style).values()].map((icons) => icons.sort((a, b) => a.size - b.size)),
+    ]),
+  );
 }
 
-export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename}Icon, '${destFilename}');
-      `
-        : `
-
-const ${destFilename}Icon = (props) => {
-  const { fill: primaryFill = 'currentColor' } = props;
-  return ${jsxCode};
+/**
+ * Convert every size of one icon (same name and style) to React components.
+ * @param {typeof import('./src/codegen/index.ts')} codegen
+ * @param {{ name: string, srcFile: string }[]} icons
+ * @returns {string[]} the code of each component
+ */
+function convertGroup(codegen, icons) {
+  return icons.flatMap(({ name, srcFile }) =>
+    codegen.generateIconComponents({ name, svg: fs.readFileSync(srcFile, 'utf8') }, { utilPath: UTIL_PATH }),
+  );
 }
 
-export const ${destFilename} = /*#__PURE__*/wrapIcon(/*#__PURE__*/${destFilename}Icon, '${destFilename}');
-      `;
-      iconExports.push(jsCode);
-    }
-  });
+/**
+ * Write the chunk files and index for one style directory. Icon groups are never split across chunks.
+ * @param {typeof import('./src/codegen/index.ts')} codegen
+ * @param {string} dir
+ * @param {string[][]} groups component code for each icon group
+ * @returns {string[]} chunk module names
+ */
+function writeStyle(codegen, dir, groups) {
+  fs.rmSync(dir, { recursive: true, force: true });
+  fs.mkdirSync(dir, { recursive: true });
 
-  // chunk all icons into separate files to keep build reasonably fast
+  const chunks = chunkGroups(groups);
+  const chunkNames = chunks.map((_, i) => `chunk-${i}`);
+  chunks.forEach((chunk, i) =>
+    fs.writeFileSync(path.join(dir, `${chunkNames[i]}.tsx`), codegen.renderIconModule(chunk, { utilPath: UTIL_PATH })),
+  );
+
+  const indexContents = chunkNames.map((chunk) => `export * from './${chunk}'`);
+  fs.writeFileSync(
+    path.join(dir, 'index.ts'),
+    (indexContents.length ? indexContents : ['export {}']).join('\n') + '\n',
+  );
+  return chunkNames;
+}
+
+/**
+ * Chunk the icon groups into separate files to keep the build reasonably fast.
+ * A group always stays whole in one chunk, so every size of an icon lives in the same file.
+ * @param {string[][]} groups component code for each icon group
+ * @returns {string[][]} the component code of each chunk file
+ */
+function chunkGroups(groups) {
   /** @type string[][] */
-  const iconChunks = [];
-  while (iconExports.length > 0) {
-    iconChunks.push(iconExports.splice(0, 500));
+  const chunks = [];
+  for (const group of groups) {
+    const current = chunks[chunks.length - 1];
+    if (current && current.length + group.length <= CHUNK_SIZE) {
+      current.push(...group);
+    } else {
+      chunks.push([...group]);
+    }
   }
-
-  for (const chunk of iconChunks) {
-    chunk.unshift(`import wrapIcon from "../utils/wrapIcon";`);
-    chunk.unshift(`import * as React from "react";`);
-
-    var foundElements = {};
-
-    chunk.forEach((text) => {
-      rnSvgElements.forEach((element) => {
-        if (
-          !foundElements[element] &&
-          (text.match(new RegExp(`<${element}\\b[\\S\\s]+\\/>`)) ||
-            text.match(new RegExp(`<${element}\\b[\\s\\S]*>[\\s\\S]*<\\/${element}>`)))
-        )
-          foundElements[element] = true;
-      });
-    });
-
-    var extraImports = '';
-    Object.entries(foundElements).forEach(([element, _]) => {
-      extraImports += ', ' + element;
-    });
-
-    chunk.unshift(`import {Svg${extraImports}} from "react-native-svg";`);
-  }
-
-  /** @type string[] */
-  const chunkContent = iconChunks.map((chunk) => chunk.join('\n'));
-
-  return chunkContent;
-}
-
-function fileTemplate(variables, { tpl }) {
-  variables.componentName = variables.componentName.substring(3);
-  variables.componentName = variables.componentName.replace('IcFluent', '');
-
-  return tpl`
-  ${variables.jsx}
- 
-`;
+  return chunks;
 }

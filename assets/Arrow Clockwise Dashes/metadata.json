@@ -6,11 +6,13 @@
     16,
     32,
     48,
-    28
+    28,
+    12
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Color"
   ],
   "keyword": "fluent-icon",
   "description": "Used for loading, retry, & skip actions.",

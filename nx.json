@@ -18,6 +18,7 @@
     "fontGenerationToolchain": [
       "iconGenerationToolchain",
       "{workspaceRoot}/importer/generateFont.js",
+      "{workspaceRoot}/importer/icon-name.js",
       "{workspaceRoot}/importer/svgo.config.mjs",
       "{workspaceRoot}/importer/package.json"
     ],

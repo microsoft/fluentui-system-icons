@@ -1,7 +1,8 @@
 {
   "name": "Panel Right Expand",
   "size": [
-    20
+    20,
+    28
   ],
   "style": [
     "Filled",

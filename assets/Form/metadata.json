@@ -4,11 +4,14 @@
     20,
     24,
     28,
-    48
+    48,
+    32
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Color",
+    "Light"
   ],
   "keyword": "fluent-icon, forms",
   "description": "Used to represent form elements.",

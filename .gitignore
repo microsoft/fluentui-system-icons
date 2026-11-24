@@ -52,8 +52,10 @@ packages/react-native-icons/intermediate
 packages/react-native-icons/react-icons-test/
 packages/react-native-icons/lib/
 packages/react-native-icons/lib-cjs/
-packages/react-native-icons/src/icons
-packages/react-native-icons/src/sizedIcons
+packages/react-native-icons/src/regular
+packages/react-native-icons/src/filled
+packages/react-native-icons/src/light
+packages/react-native-icons/src/color
 packages/react-native-icons/src/index.tsx
 
 # npm

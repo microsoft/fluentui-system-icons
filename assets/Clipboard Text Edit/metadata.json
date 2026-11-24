@@ -4,11 +4,13 @@
     32,
     24,
     20,
-    48
+    48,
+    28
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Color"
   ],
   "keyword": "fluent-icon, teams",
   "description": "Used in copy & task scenarios.",

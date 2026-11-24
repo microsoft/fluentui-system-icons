@@ -3,11 +3,13 @@
   "size": [
     16,
     24,
-    20
+    20,
+    28
   ],
   "style": [
     "Regular",
-    "Filled"
+    "Filled",
+    "Color"
   ],
   "keyword": "fluent-icon, visual studio code",
   "description": "Used to represent data bar graph.",
