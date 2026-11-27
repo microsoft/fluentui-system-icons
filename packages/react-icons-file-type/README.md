@@ -76,7 +76,38 @@ import { FileTypeIcon } from '@fluentui/react-icons-file-type/headless';
 
 The `/headless` entry point re-exports `FileTypeIconsProvider`, `useFileTypeIconsContext`, `FileIconType`, and the constants, so it is usable on its own. Prefer the default entry point unless you specifically need to drop the Griffel runtime.
 
+## JSON metadata
+
+Build tools can read the icon catalog and CDN default without loading React or Griffel:
+
+```js
+const { fileIconTypes, fileTypeIconMap, cdnBaseUrl } = require('@fluentui/react-icons-file-type/metadata.json');
+```
+
+- `fileIconTypes`: entries with stable numeric `value`, member `name`, and an icon name or `null`
+  (meaning the generic file fallback).
+- `fileTypeIconMap`: every icon name mapped to its extensions array, or `null` for icons without extensions.
+- `cdnBaseUrl`: the versioned Fluent CDN root. File-type assets use `/assets/item-types/`.
+
+The build generates this single file from the two JSON sources in `src/common/` and the
+compiled `FLUENT_CDN_BASE_URL` constant. The constant remains a literal in `constants.ts`;
+components never read the generated JSON. Do not edit the metadata artifact manually.
+
+Fluent v8 consumes this package as a dev dependency of `react-file-type-icons`. Its Node generator reads this
+export and produces local enum, map, lookup, and CDN TypeScript files. v8 retains its current
+TypeScript resolution and rendering behavior, with no runtime dependency on this package.
+The generator runs during v8 package builds; generated files are checked in for review.
+
+To update icons, edit the source JSON; to update the CDN, edit `src/common/constants.ts`.
+Run `yarn nx run react-icons-file-type:build` to regenerate everything, then release this package.
+Then update that package's dev dependency and Fluent's lockfile and run `generate-metadata` for both
+`react-file-type-icons` and `style-utilities`. `generate-metadata --check` detects stale output.
+CDN asset publication remains a separate prerequisite.
+
 ## Migrating from `@fluentui/react-file-type-icons` (v8)
+
+The following is an optional application migration to the modern component API. Applications
+remaining on the v8 compatibility adapter do not need to change their imports or initialization.
 
 > This section is written to be self-contained for both humans and automated agents. It lists
 > the exact package/API differences and the rewrite for each v8 usage pattern.
@@ -161,16 +192,16 @@ Notes for code that did unusual things with the v8 enum:
 
 ### 6. APIs that were NOT ported
 
-The following v8 exports are intentionally **not** part of the v9 public API. Use the
-`FileTypeIcon` component instead.
+The following v8 exports are intentionally **not** part of the root or `/headless` component API.
+The JSON metadata exports are intended for build-time generation, not rendering helpers.
 
-| v8 export                               | v9 replacement                                  |
-| --------------------------------------- | ----------------------------------------------- |
-| `initializeFileTypeIcons()`             | _removed_ — no global registry                  |
-| `getFileTypeIconProps()`                | `<FileTypeIcon {...options} />`                 |
-| `getFileTypeIconAsUrl()`                | _not exported_ — use `<FileTypeIcon>`           |
-| `getFileTypeIconAsHTMLString()`         | _not exported_ — use `<FileTypeIcon>`           |
-| `FileTypeIconMap` (raw extension table) | _not exported_ — internal implementation detail |
+| v8 export                               | v9 replacement                        |
+| --------------------------------------- | ------------------------------------- |
+| `initializeFileTypeIcons()`             | _removed_ — no global registry        |
+| `getFileTypeIconProps()`                | `<FileTypeIcon {...options} />`       |
+| `getFileTypeIconAsUrl()`                | _not exported_ — use `<FileTypeIcon>` |
+| `getFileTypeIconAsHTMLString()`         | _not exported_ — use `<FileTypeIcon>` |
+| `FileTypeIconMap` (raw extension table) | JSON metadata for build tools         |
 
 ### v9 public API surface (for reference)
 
