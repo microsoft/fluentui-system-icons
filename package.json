@@ -94,6 +94,7 @@
     "react-native-svg": "^15.15.3",
     "react-window": "^1.8.10",
     "remark-gfm": "^4.0.1",
+    "saxes": "6.0.0",
     "schema-utils": "^4.2.0",
     "shx": "^0.4.0",
     "storybook": "9.1.21",
